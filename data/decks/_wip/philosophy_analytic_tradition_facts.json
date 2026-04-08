@@ -1,0 +1,2206 @@
+{
+  "subDeckId": "analytic_tradition",
+  "chainThemeId": 6,
+  "facts": [
+    {
+      "id": "philosophy_at_frege_sense_reference",
+      "correctAnswer": "sense and reference",
+      "acceptableAlternatives": [
+        "Sinn and Bedeutung",
+        "Sinn und Bedeutung"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "type and token",
+        "sign and signifier",
+        "use and mention",
+        "name and description",
+        "extension and intension",
+        "form and content"
+      ],
+      "quizQuestion": "Frege's 1892 paper 'Ueber Sinn und Bedeutung' distinguished which two aspects of a linguistic expression, illustrated by the morning star / evening star example?",
+      "explanation": "Frege distinguished Sinn (sense, or mode of presentation) from Bedeutung (reference, or denotation). The morning star and evening star share the same reference (Venus) but differ in sense, explaining why 'the morning star is the evening star' is informative rather than trivially true.",
+      "wowFactor": "Frege showed that 'the morning star is the evening star' is a genuine discovery, not a tautology — because two names for Venus present it in different ways.",
+      "statement": "Frege's distinction between sense (Sinn) and reference (Bedeutung) explains why identity statements can be informative.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/frege/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "frege",
+        "philosophy_of_language",
+        "analytic_tradition",
+        "semantics"
+      ]
+    },
+    {
+      "id": "philosophy_at_frege_begriffsschrift_year",
+      "correctAnswer": "{1879}",
+      "acceptableAlternatives": [
+        "1879"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "bracket_dates",
+      "difficulty": 4,
+      "funScore": 4,
+      "distractors": [
+        "{1884}",
+        "{1892}",
+        "{1903}",
+        "{1872}",
+        "{1865}",
+        "{1897}"
+      ],
+      "quizQuestion": "In what year did Gottlob Frege publish the Begriffsschrift, the first fully formal system of predicate calculus with quantifiers and variables?",
+      "explanation": "The Begriffsschrift ('Concept-writing') was published in 1879 at the University of Jena. It introduced variables, quantifiers, and a function-argument analysis of propositions, superseding Aristotelian syllogistic after two thousand years.",
+      "wowFactor": "The Begriffsschrift (1879) made Aristotle's two-thousand-year-old logic obsolete overnight — yet almost nobody noticed until Bertrand Russell read it decades later.",
+      "statement": "Frege published the Begriffsschrift in 1879, launching modern formal logic.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/frege/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "frege",
+        "logic",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_frege_logicism",
+      "correctAnswer": "logicism",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "school_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "distractors": [
+        "formalism",
+        "intuitionism",
+        "platonism",
+        "structuralism",
+        "finitism",
+        "nominalism"
+      ],
+      "quizQuestion": "What is the philosophical program, championed by Frege and later Russell, that holds arithmetic truths are reducible to pure logic?",
+      "explanation": "Logicism holds that mathematics (at least arithmetic) is nothing but logic, derivable from purely logical axioms. Frege's program was derailed when Russell's Paradox showed his Basic Law V was inconsistent in 1902.",
+      "wowFactor": "Frege spent decades building a logical foundation for all mathematics — only to receive a letter from the young Bertrand Russell showing the entire system contained a fatal contradiction.",
+      "statement": "Logicism is the view that arithmetic is reducible to pure logic, defended by Frege and Russell.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/frege/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "frege",
+        "russell",
+        "philosophy_of_mathematics",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_russell_theory_descriptions",
+      "correctAnswer": "theory of descriptions",
+      "acceptableAlternatives": [
+        "theory of definite descriptions"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "direct reference theory",
+        "causal theory of reference",
+        "cluster theory of names",
+        "descriptivist semantics",
+        "sense-datum theory",
+        "logicism"
+      ],
+      "quizQuestion": "In his 1905 paper 'On Denoting,' Russell argued that phrases like 'the present King of France' are not names but disguised quantified claims. What is this doctrine called?",
+      "explanation": "Russell's theory of descriptions holds that a definite description like 'the present King of France' is analyzed as a complex quantified claim ('there exists exactly one x such that x is King of France...'), not as a name. This makes 'The present King of France is bald' false, not meaningless.",
+      "wowFactor": "Russell showed that 'the present King of France is bald' is false, not nonsense — solving a puzzle about how we can speak meaningfully about things that don't exist.",
+      "statement": "Russell's theory of descriptions analyzes definite descriptions as disguised quantified claims, not names.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/russell/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "russell",
+        "philosophy_of_language",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_russell_paradox",
+      "correctAnswer": "Russell's paradox",
+      "acceptableAlternatives": [
+        "Russell's Paradox"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "distractors": [
+        "Berry's paradox",
+        "the liar paradox",
+        "Cantor's paradox",
+        "Burali-Forti paradox",
+        "Hempel's paradox",
+        "Zeno's paradox"
+      ],
+      "quizQuestion": "Which logical antinomy — the set of all sets that do not contain themselves — was communicated by Russell to Frege in 1902 and devastated Frege's logicist program?",
+      "explanation": "Russell's Paradox asks: does the set R of all sets that don't contain themselves contain itself? If yes, it shouldn't; if no, it should. The contradiction showed that Frege's Basic Law V was inconsistent. Russell introduced type theory in Principia Mathematica to block it.",
+      "wowFactor": "In a single letter, the 29-year-old Russell dismantled decades of Frege's work — Frege himself acknowledged in his book's appendix that his life's project had collapsed.",
+      "statement": "Russell's Paradox showed that naïve set theory is inconsistent, destroying Frege's logicist foundation.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/russell/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "russell",
+        "logic",
+        "set_theory",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_russell_principia_author",
+      "correctAnswer": "Principia Mathematica",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 2,
+      "funScore": 6,
+      "distractors": [
+        "Begriffsschrift",
+        "Word and Object",
+        "Tractatus Logico-Philosophicus",
+        "Naming and Necessity",
+        "The Concept of Mind",
+        "Language Truth and Logic"
+      ],
+      "quizQuestion": "Which monumental three-volume work (1910–1913) did Bertrand Russell co-write with Alfred North Whitehead, attempting to derive all mathematics from logical axioms?",
+      "explanation": "Principia Mathematica (1910, 1912, 1913) introduced type theory to block Russell's Paradox and set out formal logic as the foundation for mathematics. It took hundreds of pages to prove that 1+1=2 — famously noted in the text as 'occasionally useful.'",
+      "wowFactor": "Principia Mathematica takes over 360 pages before it formally proves that 1+1=2, at which point the authors note the result 'is occasionally useful.'",
+      "statement": "Russell and Whitehead co-wrote Principia Mathematica (1910–1913), the most ambitious attempt to reduce mathematics to logic.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/russell/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "russell",
+        "whitehead",
+        "logic",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_wittgenstein_tractatus_author",
+      "correctAnswer": "Tractatus Logico-Philosophicus",
+      "acceptableAlternatives": [
+        "Tractatus",
+        "Logisch-Philosophische Abhandlung"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "Philosophical Investigations",
+        "The Concept of Mind",
+        "Language Truth and Logic",
+        "Word and Object",
+        "Principia Mathematica",
+        "Being and Nothingness"
+      ],
+      "quizQuestion": "Which 1921/1922 work — the only book Wittgenstein published in his lifetime — advanced the picture theory of meaning and ends with the proposition 'Whereof one cannot speak, thereof one must be silent'?",
+      "explanation": "The Tractatus Logico-Philosophicus (German 1921, English 1922) presents the picture theory: propositions picture facts as pictures picture states of affairs. Wittgenstein wrote it during WWI service. The English title was suggested by G.E. Moore as homage to Spinoza.",
+      "wowFactor": "Wittgenstein wrote the Tractatus while serving in WWI, believing he had solved all the problems of philosophy — then became an elementary school teacher because he thought philosophy was finished.",
+      "statement": "The Tractatus Logico-Philosophicus (1921) is the only book Wittgenstein published in his lifetime.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/wittgenstein/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "wittgenstein",
+        "early_wittgenstein",
+        "analytic_tradition",
+        "picture_theory"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who wrote the Tractatus Logico-Philosophicus (1921), containing the picture theory of meaning?",
+          "correctAnswer": "Ludwig Wittgenstein",
+          "distractors": [
+            "Bertrand Russell",
+            "G.E. Moore",
+            "Rudolf Carnap",
+            "Gottlob Frege"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philosophy_at_wittgenstein_picture_theory",
+      "correctAnswer": "picture theory of meaning",
+      "acceptableAlternatives": [
+        "picture theory"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "verificationism",
+        "language games",
+        "speech act theory",
+        "causal theory of reference",
+        "use theory of meaning",
+        "sense-datum theory"
+      ],
+      "quizQuestion": "The early Wittgenstein held that meaningful propositions share a logical form with the facts they describe, just as a painting shares a spatial form with what it depicts. What is this doctrine called?",
+      "explanation": "In the Tractatus, Wittgenstein's picture theory holds that a proposition is meaningful if and only if it pictures a possible state of affairs in the world. Atomic facts are the simplest components of reality; propositions are logical pictures of them.",
+      "wowFactor": "Wittgenstein reportedly got the idea for the picture theory of meaning from reading about a Paris court using a model car to reconstruct a road accident — models and propositions both 'picture' reality.",
+      "statement": "The picture theory of meaning holds that propositions are meaningful by sharing logical structure with the facts they depict.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/wittgenstein/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "wittgenstein",
+        "early_wittgenstein",
+        "tractatus",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_wittgenstein_investigations_year",
+      "correctAnswer": "{1953}",
+      "acceptableAlternatives": [
+        "1953"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "bracket_dates",
+      "difficulty": 3,
+      "funScore": 5,
+      "distractors": [
+        "{1945}",
+        "{1949}",
+        "{1958}",
+        "{1961}",
+        "{1936}",
+        "{1951}"
+      ],
+      "quizQuestion": "In what year was the Philosophical Investigations published, two years after Wittgenstein's death in 1951?",
+      "explanation": "Philosophical Investigations was published posthumously in 1953. It was voted the most important philosophical book of the 20th century in a survey of American philosophy teachers. Wittgenstein's student G.E.M. Anscombe prepared the translation.",
+      "wowFactor": "Wittgenstein spent decades writing Philosophical Investigations and refused to publish it during his lifetime; it appeared only in 1953, ranked the most important philosophy book of the 20th century.",
+      "statement": "Philosophical Investigations was published posthumously in 1953, two years after Wittgenstein's death.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/wittgenstein/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "wittgenstein",
+        "late_wittgenstein",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_wittgenstein_language_games",
+      "correctAnswer": "language games",
+      "acceptableAlternatives": [
+        "language-games",
+        "Sprachspiele"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 8,
+      "distractors": [
+        "speech acts",
+        "private language",
+        "family resemblance",
+        "category mistake",
+        "language strata",
+        "logical atomism"
+      ],
+      "quizQuestion": "In the Philosophical Investigations, the late Wittgenstein held that meaning is determined by use within a practice or 'form of life.' What is the name he gave to these rule-governed linguistic practices?",
+      "explanation": "Wittgenstein used 'language games' to emphasize that language is embedded in human activities — speaking is part of a practice, like moving pieces in a game. Meaning is not an inner mental state but a public, shared activity. 'The meaning of a word is its use in the language.'",
+      "wowFactor": "Wittgenstein compared language to games — there is no single essence all games share, just as there is no single essence 'meaning' shares across all words.",
+      "statement": "In the Philosophical Investigations, Wittgenstein holds that meaning is use within language games embedded in forms of life.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/wittgenstein/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "wittgenstein",
+        "late_wittgenstein",
+        "philosophy_of_language",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_wittgenstein_family_resemblance",
+      "correctAnswer": "family resemblance",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "private language",
+        "language games",
+        "category mistake",
+        "semantic holism",
+        "open texture",
+        "cluster concepts"
+      ],
+      "quizQuestion": "Wittgenstein argued in the Philosophical Investigations that concepts like 'game' have no single feature shared by all instances, but overlap like facial traits in a family. What did he call this relationship?",
+      "explanation": "Family resemblance describes how instances of a concept (like 'game') share overlapping but not universal features — board games, card games, and ball games share some traits but no single trait runs through all of them. Wittgenstein used this to argue against essentialism about concepts.",
+      "wowFactor": "Wittgenstein proved there is no definition of 'game' by listing games and asking what they all share — nothing! He called the overlapping web of similarities 'family resemblance.'",
+      "statement": "Family resemblance is Wittgenstein's term for the overlapping similarities among instances of a concept with no common essence.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/wittgenstein/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "wittgenstein",
+        "late_wittgenstein",
+        "philosophy_of_language",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_wittgenstein_private_language",
+      "correctAnswer": "private language",
+      "acceptableAlternatives": [
+        "private language argument"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 4,
+      "funScore": 7,
+      "distractors": [
+        "language games",
+        "solipsism",
+        "phenomenal language",
+        "inner speech",
+        "beetle in the box",
+        "mental imagery"
+      ],
+      "quizQuestion": "In the Philosophical Investigations, Wittgenstein argued that a language intelligible only to its single speaker — and referring only to that speaker's inner sensations — is impossible. What is this argument called?",
+      "explanation": "The private language argument holds that words require criteria for correct use that must be established publicly. A purely private sensation term has no standard for correct application; there is no meaningful difference between 'seeming correct' and 'being correct.' Language is essentially public.",
+      "wowFactor": "Wittgenstein showed that even your most intimate feelings — your pain, your inner experience — get their meaning only from public, shared language practices, not from a private mental act of naming.",
+      "statement": "Wittgenstein's private language argument shows that a language intelligible only to one speaker is impossible, since language is essentially public.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/wittgenstein/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "wittgenstein",
+        "late_wittgenstein",
+        "philosophy_of_language",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_godel_incompleteness",
+      "correctAnswer": "incompleteness theorems",
+      "acceptableAlternatives": [
+        "Gödel's incompleteness theorems",
+        "Gödel incompleteness"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "distractors": [
+        "completeness theorem",
+        "compactness theorem",
+        "Löwenheim-Skolem theorem",
+        "Church-Turing thesis",
+        "Tarski's undefinability theorem",
+        "halting problem"
+      ],
+      "quizQuestion": "Published in 1931, Gödel's results showed that any consistent formal system capable of basic arithmetic contains true statements it cannot prove, and cannot prove its own consistency. What are these results collectively called?",
+      "explanation": "Gödel's two incompleteness theorems (1931) proved that Hilbert's program — to find a complete and consistent set of axioms for all mathematics — is impossible. The first says there are unprovable truths; the second says no such system can certify its own consistency.",
+      "wowFactor": "Gödel, at age 25, proved that mathematics can never be fully pinned down — there will always be true statements that cannot be proved, no matter how many axioms you add.",
+      "statement": "Gödel's incompleteness theorems (1931) showed that no consistent formal system capable of arithmetic can be both complete and prove its own consistency.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/goedel/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "godel",
+        "logic",
+        "philosophy_of_mathematics",
+        "analytic_tradition"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who published the incompleteness theorems in 1931, showing that any consistent arithmetic system contains unprovable truths?",
+          "correctAnswer": "Kurt Gödel",
+          "distractors": [
+            "Alfred Tarski",
+            "Bertrand Russell",
+            "Alan Turing",
+            "David Hilbert"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philosophy_at_tarski_truth_schema",
+      "correctAnswer": "semantic theory of truth",
+      "acceptableAlternatives": [
+        "T-schema",
+        "Convention T",
+        "Tarski's T-schema"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 4,
+      "funScore": 6,
+      "distractors": [
+        "correspondence theory of truth",
+        "coherence theory of truth",
+        "pragmatic theory of truth",
+        "deflationary theory of truth",
+        "redundancy theory of truth",
+        "epistemic theory of truth"
+      ],
+      "quizQuestion": "Tarski's account of truth used the T-schema — ''Snow is white' is true if and only if snow is white' — to define truth for formal languages. What is this called?",
+      "explanation": "Tarski's semantic theory of truth defines truth as a property of sentences in a metalanguage: a sentence S of an object language is true iff what S says is the case. Tarski showed that a language cannot contain its own truth predicate without contradiction (the liar paradox).",
+      "wowFactor": "Tarski solved the liar paradox ('This sentence is false') by showing that 'true' must always refer to a higher-level language — there is no universal truth predicate.",
+      "statement": "Tarski's semantic theory of truth defines truth via the T-schema and requires a metalanguage/object-language distinction to avoid paradox.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/tarski/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "tarski",
+        "logic",
+        "philosophy_of_language",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_ayer_language_truth_logic",
+      "correctAnswer": "Language, Truth and Logic",
+      "acceptableAlternatives": [
+        "Language Truth and Logic"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "The Logic of Scientific Discovery",
+        "Word and Object",
+        "Naming and Necessity",
+        "The Concept of Mind",
+        "Philosophical Investigations",
+        "Tractatus Logico-Philosophicus"
+      ],
+      "quizQuestion": "Which 1936 book, written by A.J. Ayer at age 24 after visiting the Vienna Circle, brought logical positivism to English-speaking audiences and argued that metaphysical statements are literally meaningless?",
+      "explanation": "Ayer's Language, Truth and Logic (1936) applied the verification principle: a statement is cognitively meaningful only if empirically verifiable in principle or analytically true. Metaphysical, theological, and ethical statements fail both tests and are pseudo-propositions — not false, but nonsensical.",
+      "wowFactor": "Ayer wrote the most influential introduction to logical positivism at age 24, demolishing all of metaphysics and theology in one stroke — he later admitted the verification principle was 'too strong.'",
+      "statement": "Ayer's Language, Truth and Logic (1936) brought the Vienna Circle's verificationism to English readers, arguing metaphysics is literally meaningless.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ayer/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "ayer",
+        "logical_positivism",
+        "verificationism",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_popper_falsificationism",
+      "correctAnswer": "falsificationism",
+      "acceptableAlternatives": [
+        "falsifiability",
+        "the criterion of falsifiability"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 8,
+      "distractors": [
+        "verificationism",
+        "instrumentalism",
+        "conventionalism",
+        "inductivism",
+        "coherentism",
+        "pragmatism"
+      ],
+      "quizQuestion": "Karl Popper argued that the criterion separating science from non-science is not that theories can be confirmed, but that they can in principle be proven wrong by observation. What is this criterion called?",
+      "explanation": "Popper's falsificationism holds that a theory is scientific if and only if it makes bold predictions that could be shown false by observation. Unfalsifiable theories like Freudianism and astrology are pseudo-science — not wrong but meaningless as science. Even one counterexample can falsify a universal law.",
+      "wowFactor": "Popper declared psychoanalysis and Marxism unscientific not because they were obviously false, but because they could explain ANYTHING — a theory that can't be wrong isn't science.",
+      "statement": "Popper's falsificationism holds that scientific theories must make predictions that could in principle be falsified by observation.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/popper/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "popper",
+        "philosophy_of_science",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_hempel_raven_paradox",
+      "correctAnswer": "Hempel's paradox",
+      "acceptableAlternatives": [
+        "raven paradox",
+        "paradox of confirmation",
+        "Hempel's ravens"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "distractors": [
+        "Goodman's paradox",
+        "Russell's paradox",
+        "Simpson's paradox",
+        "the lottery paradox",
+        "the preface paradox",
+        "Moore's paradox"
+      ],
+      "quizQuestion": "Hempel argued that observing a white shoe logically confirms 'All ravens are black' because it confirms the equivalent 'All non-black things are non-ravens.' What is this counterintuitive puzzle called?",
+      "explanation": "Hempel's paradox of confirmation (1945) shows that 'All ravens are black' is logically equivalent to 'All non-black things are non-ravens.' Since observing a white shoe confirms the latter, it should confirm the former. This reveals deep problems in theories of inductive confirmation.",
+      "wowFactor": "Hempel proved you can confirm that all ravens are black by staying indoors and looking at white shoes — it's logically valid, just very, very weak evidence.",
+      "statement": "Hempel's paradox shows that observing a white shoe logically (but weakly) confirms that all ravens are black.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/hempel/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "hempel",
+        "philosophy_of_science",
+        "confirmation",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_moore_naturalistic_fallacy",
+      "correctAnswer": "naturalistic fallacy",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 6,
+      "distractors": [
+        "the open question argument",
+        "the is-ought gap",
+        "the genetic fallacy",
+        "the appeal to nature",
+        "the category mistake",
+        "emotivism"
+      ],
+      "quizQuestion": "G.E. Moore coined a term in Principia Ethica (1903) for the logical error of defining 'good' in purely natural terms (such as pleasure or evolutionary fitness). What is this error called?",
+      "explanation": "Moore argued that 'good' is a simple, non-natural, indefinable property. Defining it in natural terms commits the naturalistic fallacy. His open question argument supports this: for any natural property N, the question 'Is N good?' always remains genuinely open and non-trivial.",
+      "wowFactor": "Moore argued you can NEVER define 'good' in terms of anything else — not pleasure, not survival, not God's commands — because the question 'But is that good?' will always be open.",
+      "statement": "Moore coined 'naturalistic fallacy' for the error of defining 'good' in purely natural terms, arguing good is simple and indefinable.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/moore/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "moore",
+        "metaethics",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_neurath_boat",
+      "correctAnswer": "Neurath's boat",
+      "acceptableAlternatives": [
+        "Neurath's ship"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "distractors": [
+        "Carnap's principle of tolerance",
+        "Quine's web of belief",
+        "Putnam's brain in a vat",
+        "Rorty's mirror of nature",
+        "Sellars' manifest image",
+        "Popper's falsificationism"
+      ],
+      "quizQuestion": "Otto Neurath used the metaphor of sailors rebuilding their ship on the open sea — never able to dismantle it in dry dock — to argue that knowledge cannot be rebuilt from scratch on certain foundations. What is this metaphor called?",
+      "explanation": "Neurath's boat metaphor (1932) captures anti-foundationalism and coherentism: all our beliefs are like planks in a boat afloat at sea. We can replace planks one at a time while keeping the rest intact, but we can never rebuild the whole from scratch. No beliefs are immune from revision.",
+      "wowFactor": "Neurath used a ship repair metaphor to demolish foundationalist epistemology: there is no dry dock, no bedrock certainty — we're always rebuilding while afloat.",
+      "statement": "Neurath's boat metaphor argues that knowledge cannot be rebuilt from scratch on certain foundations — all beliefs are revisable from within.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/neurath/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "neurath",
+        "epistemology",
+        "logical_positivism",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_ryle_ghost_machine",
+      "correctAnswer": "category mistake",
+      "acceptableAlternatives": [
+        "category error"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "logical error",
+        "the mereological fallacy",
+        "begging the question",
+        "the mind-body problem",
+        "substance dualism",
+        "type-token confusion"
+      ],
+      "quizQuestion": "Gilbert Ryle argued in The Concept of Mind (1949) that Cartesian dualism makes an error of attributing mental terms to the wrong logical type, as if someone touring Oxford asked to see 'the University' after seeing all its buildings. What is this error called?",
+      "explanation": "A category mistake (Ryle 1949) occurs when a concept is applied to a category to which it does not belong. Ryle argued that Cartesian dualism — 'the dogma of the ghost in the machine' — treats the mind as an additional entity alongside the body, confusing a disposition to behave with a separate mental theater.",
+      "wowFactor": "Ryle explained Descartes' mind-body problem as a simple grammatical confusion — like asking 'where does the university go when I've seen all the buildings?' The mind is not a hidden extra thing.",
+      "statement": "Ryle's category mistake is the error of attributing a concept to the wrong logical type, as he argued Cartesian dualism does with the mind.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ryle/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "ryle",
+        "philosophy_of_mind",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_austin_speech_acts",
+      "correctAnswer": "speech acts",
+      "acceptableAlternatives": [
+        "speech act theory"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "performative contradiction",
+        "language games",
+        "implicature",
+        "illocutionary force",
+        "communication acts",
+        "pragmatic inference"
+      ],
+      "quizQuestion": "J.L. Austin's posthumous book How to Do Things with Words (1962) introduced the theory that utterances do more than describe states of affairs — they perform actions like promising, ordering, and declaring. What is Austin's framework called?",
+      "explanation": "Austin's speech act theory distinguishes locutionary acts (the meaningful utterance), illocutionary acts (the action performed in speaking — promising, warning, ordering), and perlocutionary acts (the effect caused — persuading, alarming). Performative utterances like 'I now pronounce you married' enact rather than describe.",
+      "wowFactor": "Austin showed that 'I promise' doesn't describe a promise — it IS the promise. Language doesn't just report reality; it creates it.",
+      "statement": "Austin's speech act theory holds that utterances perform actions (promising, declaring, ordering) not merely describe facts.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/austin-jl/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "austin",
+        "philosophy_of_language",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_searle_chinese_room",
+      "correctAnswer": "Chinese Room",
+      "acceptableAlternatives": [
+        "the Chinese Room argument"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "distractors": [
+        "Twin Earth",
+        "Mary's Room",
+        "philosophical zombies",
+        "the Turing Test",
+        "Brain in a Vat",
+        "Newcomb's problem"
+      ],
+      "quizQuestion": "John Searle's 1980 thought experiment imagines a person following rules to respond to Chinese symbols without understanding Chinese, arguing that running a program cannot produce genuine understanding. What is this argument?",
+      "explanation": "In the Chinese Room (Searle 1980, 'Minds, Brains, and Programs'), a person follows a program to produce Chinese outputs from Chinese inputs without understanding Chinese — showing that syntax (symbol manipulation) is not sufficient for semantics (genuine understanding). This challenges the computational theory of mind and strong AI.",
+      "wowFactor": "Searle showed that a computer might pass any language test you give it while understanding absolutely nothing — just as a Chinese-room rulebook operator produces perfect Chinese without speaking a word of it.",
+      "statement": "Searle's Chinese Room (1980) argues that syntax (symbol manipulation) is not sufficient for semantics (genuine understanding), challenging the computational theory of mind.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/chinese-room/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "searle",
+        "philosophy_of_mind",
+        "AI",
+        "analytic_tradition"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who devised the Chinese Room argument in 1980, arguing that symbol manipulation is insufficient for genuine understanding?",
+          "correctAnswer": "John Searle",
+          "distractors": [
+            "Daniel Dennett",
+            "Jerry Fodor",
+            "Hilary Putnam",
+            "David Chalmers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philosophy_at_quine_two_dogmas",
+      "correctAnswer": "Two Dogmas of Empiricism",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "Word and Object",
+        "Language Truth and Logic",
+        "Empiricism and the Philosophy of Mind",
+        "Truth and Meaning",
+        "The Logic of Scientific Discovery",
+        "On Denoting"
+      ],
+      "quizQuestion": "Which 1951 paper by Quine, described as 'sometimes regarded as the most important in all of twentieth-century philosophy,' attacked the analytic-synthetic distinction and reductionism?",
+      "explanation": "Quine's 'Two Dogmas of Empiricism' (1951, Philosophical Review) attacked two assumptions of logical empiricism: (1) the analytic-synthetic distinction, and (2) reductionism — the idea that each statement has its own determinate empirical content. Quine's alternative is holism: beliefs face experience as a corporate body.",
+      "wowFactor": "Quine argued that no sentence is immune from revision — even logical truths like '2+2=4' could in principle be given up if the overall web of belief demanded it.",
+      "statement": "Quine's 'Two Dogmas of Empiricism' (1951) attacked the analytic-synthetic distinction and defended confirmation holism.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/quine/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "quine",
+        "epistemology",
+        "philosophy_of_language",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_quine_gavagai",
+      "correctAnswer": "indeterminacy of translation",
+      "acceptableAlternatives": [
+        "radical translation",
+        "ontological relativity"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 4,
+      "funScore": 8,
+      "distractors": [
+        "semantic externalism",
+        "inscrutability of reference",
+        "underdetermination of theory",
+        "holism",
+        "meaning variance",
+        "the sapir-whorf hypothesis"
+      ],
+      "quizQuestion": "In Word and Object (1960), Quine illustrated that 'gavagai' (spoken by a native when a rabbit runs by) could mean 'rabbit,' 'undetached rabbit parts,' or 'rabbit-stage' — with no behavioral evidence to decide. What does this illustrate?",
+      "explanation": "Quine's gavagai thought experiment shows the indeterminacy of translation: there is no unique correct translation between languages based on behavioral evidence alone. Many incompatible 'manuals of translation' are equally consistent with all observable behavior.",
+      "wowFactor": "Quine showed that translation between languages is never fully determined — you can never know if 'gavagai' means 'rabbit' or 'undetached rabbit parts,' no matter how much evidence you collect.",
+      "statement": "Quine's gavagai thought experiment illustrates the indeterminacy of translation: behavioral evidence never uniquely determines the correct translation.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/quine/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "quine",
+        "philosophy_of_language",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_kripke_naming_necessity",
+      "correctAnswer": "Naming and Necessity",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "Word and Object",
+        "Meaning and Necessity",
+        "Language Truth and Logic",
+        "Tractatus Logico-Philosophicus",
+        "On Referring",
+        "The Concept of Mind"
+      ],
+      "quizQuestion": "Which 1972/1980 work by Saul Kripke — considered one of the most important philosophical works of the 20th century — introduced rigid designators and the causal-historical theory of reference?",
+      "explanation": "Naming and Necessity (lectures 1972, book 1980) argued that proper names are rigid designators — they pick out the same individual in every possible world — rather than abbreviated descriptions. Reference is fixed by a causal chain back to an original 'baptism,' not by descriptive content.",
+      "wowFactor": "Kripke delivered the lectures that became Naming and Necessity in 1970, and they were transcribed from recordings — the book that revolutionized philosophy of language was essentially an improvised lecture series.",
+      "statement": "Kripke's Naming and Necessity (1972/1980) introduced rigid designators and the causal-historical theory of reference.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/rigid-designators/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "kripke",
+        "philosophy_of_language",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_kripke_rigid_designators",
+      "correctAnswer": "rigid designators",
+      "acceptableAlternatives": [
+        "rigid designation"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "definite descriptions",
+        "natural kind terms",
+        "bound variables",
+        "indexicals",
+        "sortal terms",
+        "singular terms"
+      ],
+      "quizQuestion": "Kripke introduced a term for names and natural kind terms that pick out the same individual or kind across all possible worlds in which that individual exists, unlike descriptions which can pick out different things. What is this term?",
+      "explanation": "A rigid designator (Kripke) picks out the same object in every possible world where it exists. 'Aristotle' refers to Aristotle in all possible worlds — even worlds where he never tutored Alexander. By contrast, 'the teacher of Alexander' is non-rigid: a different person might have held that role.",
+      "wowFactor": "Kripke showed that 'Water is H2O' is necessarily true even though we discovered it empirically — something Kant thought was impossible. Necessity and a priority come apart.",
+      "statement": "Kripke's rigid designators are names that pick out the same individual in every possible world, unlike definite descriptions.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/rigid-designators/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "kripke",
+        "philosophy_of_language",
+        "modal_logic",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_putnam_twin_earth",
+      "correctAnswer": "Twin Earth",
+      "acceptableAlternatives": [
+        "Twin Earth thought experiment",
+        "Twin Earth scenario"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "distractors": [
+        "brains in a vat",
+        "Mary's Room",
+        "the Chinese Room",
+        "philosophical zombies",
+        "the experience machine",
+        "the teletransporter"
+      ],
+      "quizQuestion": "Hilary Putnam imagined a distant planet identical to Earth except 'water' there is XYZ not H2O. In 1750, before chemistry, earthlings and their counterparts on this planet have identical mental states when thinking 'water,' yet the word refers to different substances. What conclusion follows?",
+      "explanation": "The Twin Earth thought experiment (Putnam 1973/1975) establishes semantic externalism: 'meanings ain't in the head.' What a word refers to is partly determined by the external environment, not just by the speaker's internal mental states. The same mental state can involve different meanings if the environment differs.",
+      "wowFactor": "Putnam proved that your identical twin on a distant planet, with your exact same thoughts about 'water,' is thinking about something completely different — meaning escapes the mind.",
+      "statement": "Putnam's Twin Earth shows that meanings are not in the head — what words refer to depends partly on the external environment.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/putnam/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "putnam",
+        "philosophy_of_language",
+        "semantics",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_sellars_myth_given",
+      "correctAnswer": "myth of the given",
+      "acceptableAlternatives": [
+        "the myth of the given"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 4,
+      "funScore": 6,
+      "distractors": [
+        "neurath's boat",
+        "the naturalistic fallacy",
+        "the ghost in the machine",
+        "the private language argument",
+        "Quine's dogmas",
+        "the phenomenological reduction"
+      ],
+      "quizQuestion": "In Empiricism and the Philosophy of Mind (1956), Wilfrid Sellars attacked the foundationalist idea that there are immediate, non-conceptual sense-data providing an epistemological bedrock. What did he call this error?",
+      "explanation": "Sellars' myth of the given argues that there is no 'raw' pre-conceptual experience that can serve as the ultimate justification for knowledge. All awareness — including perceptual awareness — is already conceptually mediated. Sense-data are not epistemically prior to theory.",
+      "wowFactor": "Sellars pulled the rug out from under empiricism itself: even your direct perceptual experience is already shaped by concepts — there is no pure, uninterpreted 'given' to serve as a foundation.",
+      "statement": "Sellars' myth of the given argues there is no immediate, non-conceptual foundation for empirical knowledge — all awareness is conceptually mediated.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/sellars/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "sellars",
+        "epistemology",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_goodman_grue_paradox",
+      "correctAnswer": "grue paradox",
+      "acceptableAlternatives": [
+        "the new riddle of induction",
+        "Goodman's riddle"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "distractors": [
+        "Hempel's paradox",
+        "the lottery paradox",
+        "Russell's paradox",
+        "Popper's demarcation problem",
+        "Quine's underdetermination",
+        "the preface paradox"
+      ],
+      "quizQuestion": "Nelson Goodman defined 'grue' as green if observed before time T and blue if observed after. All observed emeralds equally confirm 'All emeralds are grue' and 'All emeralds are green.' What is this puzzle called?",
+      "explanation": "Goodman's grue paradox (Fact, Fiction, and Forecast, 1955) shows that any evidence equally confirms infinitely many incompatible predictions. Goodman's solution invokes 'entrenchment': 'green' has a longer history of successful inductive projection than 'grue,' so we prefer it without logical compulsion.",
+      "wowFactor": "Goodman invented 'grue' to show that induction has no logical foundation at all — any observation equally supports absurd predictions if you choose the right words.",
+      "statement": "Goodman's grue paradox shows that induction cannot be purely logical — the history of projecting a predicate ('entrenchment') determines which generalizations we accept.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/goodman/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "goodman",
+        "epistemology",
+        "induction",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_lewis_modal_realism",
+      "correctAnswer": "modal realism",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "school_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "distractors": [
+        "possibilism",
+        "actualism",
+        "fictionalism",
+        "ersatzism",
+        "counterpart theory",
+        "modal structuralism"
+      ],
+      "quizQuestion": "David Lewis defended in On the Plurality of Worlds (1986) the view that possible worlds are concrete, spatiotemporally isolated entities as real as the actual world. What is this view called?",
+      "explanation": "Lewis's modal realism holds that every genuinely possible world is a real, concrete universe — spatiotemporally isolated from ours, not a story or abstraction. Our world is distinguished only by being the one we inhabit. We are 'worldbound individuals' with counterparts in other worlds.",
+      "wowFactor": "David Lewis literally believed that every possible world — including ones where you made different choices — exists as concretely as ours. It's the most bizarre philosophical position that serious philosophers actually hold.",
+      "statement": "Lewis's modal realism holds that possible worlds are concrete, spatiotemporally isolated universes as real as the actual world.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/david-lewis/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "lewis",
+        "metaphysics",
+        "modal_logic",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_kuhn_paradigm_shift",
+      "correctAnswer": "paradigm shift",
+      "acceptableAlternatives": [
+        "paradigm"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 8,
+      "distractors": [
+        "normal science",
+        "scientific revolution",
+        "falsification",
+        "research programme",
+        "incommensurability",
+        "progressive science"
+      ],
+      "quizQuestion": "Thomas Kuhn introduced a term in The Structure of Scientific Revolutions (1962) for the revolutionary replacement of one scientific framework by another — e.g., Ptolemy to Copernicus, Newton to Einstein. What is this term?",
+      "explanation": "Kuhn's paradigm shift describes the revolutionary replacement of one scientific paradigm (a matrix of shared theories, methods, and exemplars) by another. Normal science involves puzzle-solving within a paradigm; scientific revolution occurs when anomalies accumulate until a crisis forces a paradigm change.",
+      "wowFactor": "'Paradigm shift' entered everyday English from Kuhn's philosophy of science. He also showed that science is not purely rational — paradigm shifts involve social, psychological, and political factors.",
+      "statement": "Kuhn's paradigm shift is the revolutionary replacement of one scientific framework by another, introduced in The Structure of Scientific Revolutions (1962).",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/thomas-kuhn/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "kuhn",
+        "philosophy_of_science",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_kuhn_structure_revolutions",
+      "correctAnswer": "The Structure of Scientific Revolutions",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "The Logic of Scientific Discovery",
+        "Against Method",
+        "Language Truth and Logic",
+        "The Concept of Mind",
+        "Conjectures and Refutations",
+        "Science in a Free Society"
+      ],
+      "quizQuestion": "Which 1962 book by Thomas Kuhn — described as 'one of the most cited academic books of all time' — introduced 'normal science,' 'paradigm,' and the concept of incommensurability between scientific theories?",
+      "explanation": "The Structure of Scientific Revolutions (1962) argued that science does not progress by steady accumulation but through 'normal science' within a paradigm, punctuated by revolutions when anomalies overwhelm the existing framework. The incommensurability thesis holds that competing paradigms cannot be fully compared.",
+      "wowFactor": "Kuhn's 1962 book is one of the most cited academic books of all time despite being a philosophy text — it changed how scientists, historians, and sociologists understand science.",
+      "statement": "Kuhn's The Structure of Scientific Revolutions (1962) introduced paradigm shifts, normal science, and incommensurability as concepts in the philosophy of science.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/thomas-kuhn/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "kuhn",
+        "philosophy_of_science",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_feyerabend_anything_goes",
+      "correctAnswer": "epistemological anarchism",
+      "acceptableAlternatives": [
+        "anarchist epistemology",
+        "methodological anarchism"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "school_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "distractors": [
+        "falsificationism",
+        "conventionalism",
+        "pragmatism",
+        "critical rationalism",
+        "coherentism",
+        "instrumentalism"
+      ],
+      "quizQuestion": "Paul Feyerabend argued in Against Method (1975) that no single scientific method should constrain inquiry, and that the only universal methodological rule consistent with the history of science is 'anything goes.' What is his position called?",
+      "explanation": "Feyerabend's epistemological anarchism holds that science has thrived by violating every methodological rule proposed for it. Galileo, for instance, used propaganda, rhetoric, and violated the norms of his day. Scientific progress requires methodological freedom, not constraints.",
+      "wowFactor": "Feyerabend argued that the only honest summary of how science works is 'anything goes' — and that scientists who claim a fixed method are either ignorant of history or lying.",
+      "statement": "Feyerabend's epistemological anarchism holds that 'anything goes' is the only methodological principle consistent with the actual history of science.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/feyerabend/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "feyerabend",
+        "philosophy_of_science",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_chalmers_hard_problem",
+      "correctAnswer": "hard problem of consciousness",
+      "acceptableAlternatives": [
+        "the hard problem"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 9,
+      "distractors": [
+        "the easy problems of consciousness",
+        "the binding problem",
+        "the mind-body problem",
+        "the other minds problem",
+        "qualia",
+        "the Cartesian theater"
+      ],
+      "quizQuestion": "David Chalmers distinguished routine cognitive questions (integration, attention, reporting) from the deeper question: why does any physical process give rise to subjective experience at all? What did he call this deeper question?",
+      "explanation": "The hard problem of consciousness (Chalmers 1995/1996) asks why physical processes give rise to subjective phenomenal experience — qualia, 'what it is like.' The easy problems concern how the brain performs cognitive functions; the hard problem concerns why these functions are accompanied by experience at all.",
+      "wowFactor": "Chalmers pointed out that even a perfect scientific account of how the brain integrates information wouldn't explain why it feels like anything from the inside — that's the 'hard problem.'",
+      "statement": "Chalmers' hard problem of consciousness asks why physical processes give rise to subjective experience at all, beyond explaining cognitive functions.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/consciousness/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "chalmers",
+        "philosophy_of_mind",
+        "consciousness",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_chalmers_philosophical_zombies",
+      "correctAnswer": "philosophical zombies",
+      "acceptableAlternatives": [
+        "p-zombies",
+        "p-zombie"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 9,
+      "distractors": [
+        "qualia",
+        "the Chinese Room",
+        "Mary's Room",
+        "inverted qualia",
+        "epiphenomenalism",
+        "mental causation"
+      ],
+      "quizQuestion": "Chalmers argued for the conceivability of beings physically identical to humans but with no inner subjective experience. What are these hypothetical beings called?",
+      "explanation": "Philosophical zombies (p-zombies) are conceivable beings identical to humans in every physical and functional respect but with no phenomenal consciousness — no 'what it is like' to be them. Chalmers uses their conceivability to argue that consciousness is not logically entailed by physical facts.",
+      "wowFactor": "Chalmers asks: could there be a 'you' made of the exact same atoms, behaving identically, but with the lights completely off inside — no experience at all? He thinks this is conceivable, and that alone has philosophical consequences.",
+      "statement": "Philosophical zombies are Chalmers' thought experiment: physically identical humans with no subjective experience, used to argue consciousness is not logically entailed by physical facts.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/consciousness/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "chalmers",
+        "philosophy_of_mind",
+        "consciousness",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_jackson_marys_room",
+      "correctAnswer": "knowledge argument",
+      "acceptableAlternatives": [
+        "Mary's Room",
+        "Mary the color scientist"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "distractors": [
+        "philosophical zombies",
+        "Twin Earth",
+        "the Chinese Room",
+        "the experience machine",
+        "inverted qualia",
+        "the hard problem of consciousness"
+      ],
+      "quizQuestion": "Frank Jackson's 1982 thought experiment asks whether a scientist who knows all physical facts about color vision but has lived in a black-and-white room learns something new upon seeing red. What is this argument called?",
+      "explanation": "Jackson's knowledge argument (1982, 'Epiphenomenal Qualia'): Mary knows all physical facts about color vision but learns what it is like to see red upon leaving her room — so there are non-physical facts (qualia). Jackson later recanted, becoming a physicalist, but the argument remains one of the most discussed in philosophy of mind.",
+      "wowFactor": "Jackson argued that a scientist who knows everything about color physics still doesn't know what red looks like — and after he published this, he changed his mind and became a physicalist.",
+      "statement": "Jackson's knowledge argument (Mary's Room, 1982) argues that Mary learns a new phenomenal fact upon seeing color, showing physicalism is false — though Jackson later recanted.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/qualia-knowledge/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "jackson",
+        "philosophy_of_mind",
+        "qualia",
+        "analytic_tradition"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who formulated the knowledge argument (Mary's Room) in 1982, arguing that qualia cannot be captured by complete physical knowledge?",
+          "correctAnswer": "Frank Jackson",
+          "distractors": [
+            "Thomas Nagel",
+            "David Chalmers",
+            "Daniel Dennett",
+            "Hilary Putnam"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philosophy_at_nagel_bat",
+      "correctAnswer": "What Is It Like to Be a Bat?",
+      "acceptableAlternatives": [
+        "What is it like to be a bat"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "distractors": [
+        "Epiphenomenal Qualia",
+        "The View From Nowhere",
+        "Consciousness Explained",
+        "The Conscious Mind",
+        "The Chinese Room",
+        "Mary's Room"
+      ],
+      "quizQuestion": "Thomas Nagel's 1974 paper argued that consciousness has an irreducibly subjective character — that there is something it is like to echolocate, which we cannot grasp from our objective viewpoint. What is this paper called?",
+      "explanation": "Nagel's 1974 paper 'What Is It Like to Be a Bat?' (Philosophical Review) argues that any objective physical description necessarily leaves out the subjective, first-person perspective. Even a complete neuroscience cannot tell us what echolocation experience feels like from the inside.",
+      "wowFactor": "Nagel asked a simple question — what is it like to be a bat? — and showed that no amount of scientific knowledge can answer it, because science deals with objective facts, not subjective experience.",
+      "statement": "Nagel's 1974 paper argues that consciousness has an irreducibly subjective character no objective description can capture.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/nagel/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "nagel",
+        "philosophy_of_mind",
+        "consciousness",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_parfit_reasons_persons",
+      "correctAnswer": "Reasons and Persons",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "On What Matters",
+        "Personal Identity",
+        "A Theory of Justice",
+        "Anarchy State and Utopia",
+        "Ethics and the Limits of Philosophy",
+        "The Sovereignty of Good"
+      ],
+      "quizQuestion": "Which 1984 book by Derek Parfit — described as 'the most significant work of moral philosophy since the 1800s' — argued that personal identity is not what matters and introduced the Repugnant Conclusion?",
+      "explanation": "Reasons and Persons (1984) argues that personal identity is not what matters in survival; what matters is psychological continuity. The Repugnant Conclusion shows that total utilitarianism implies a world of trillions of barely-worth-living lives is better than a world of billions of very happy people.",
+      "wowFactor": "Parfit argued that 'you' don't strictly persist through time — personal identity isn't what matters. He then spent the rest of his life worrying about obligations to the billions of people who will exist in the future.",
+      "statement": "Parfit's Reasons and Persons (1984) argues personal identity is not what matters, and introduces the Repugnant Conclusion about obligations to future generations.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/parfit/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "parfit",
+        "personal_identity",
+        "ethics",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_rawls_theory_justice",
+      "correctAnswer": "A Theory of Justice",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 1,
+      "funScore": 7,
+      "distractors": [
+        "Anarchy State and Utopia",
+        "Political Liberalism",
+        "The Sovereignty of Good",
+        "Animal Liberation",
+        "Reasons and Persons",
+        "Ethics and the Limits of Philosophy"
+      ],
+      "quizQuestion": "Which 1971 book by John Rawls — reviving the social contract tradition — introduced the veil of ignorance, the original position, and the difference principle as the basis for a liberal theory of justice?",
+      "explanation": "A Theory of Justice (1971) argues that principles of justice should be chosen from behind a 'veil of ignorance' — not knowing one's position in society. Rational agents in this 'original position' would choose equal basic liberties and the difference principle: inequalities are just only if they benefit the least advantaged.",
+      "wowFactor": "Rawls asked: what rules would you choose for society if you didn't know whether you'd be born rich or poor, talented or not? His answer transformed political philosophy.",
+      "statement": "Rawls' A Theory of Justice (1971) introduced the veil of ignorance and the difference principle as the basis for liberal political philosophy.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/rawls/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "rawls",
+        "political_philosophy",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_rawls_veil_ignorance",
+      "correctAnswer": "veil of ignorance",
+      "acceptableAlternatives": [
+        "the veil of ignorance"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 1,
+      "funScore": 8,
+      "distractors": [
+        "original position",
+        "reflective equilibrium",
+        "overlapping consensus",
+        "experience machine",
+        "difference principle",
+        "primary goods"
+      ],
+      "quizQuestion": "Rawls' device for selecting principles of justice requires rational agents to choose from behind a metaphorical barrier that prevents them from knowing their own social position, talents, or conception of the good. What is this device called?",
+      "explanation": "The veil of ignorance (Rawls 1971) ensures impartiality by having rational agents choose principles of justice without knowing their own place in society, class, sex, race, or natural abilities. Ignorance of one's position forces agents to consider the interests of all positions equally.",
+      "wowFactor": "Rawls said: imagine you're designing the rules of society but you don't know if you'll be born rich or poor, or with what talents. Those rules — designed fairly — are the rules of justice.",
+      "statement": "Rawls' veil of ignorance requires principles of justice to be chosen without knowledge of one's own social position, ensuring impartiality.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/rawls/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "rawls",
+        "political_philosophy",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_rawls_difference_principle",
+      "correctAnswer": "difference principle",
+      "acceptableAlternatives": [
+        "the difference principle"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "original position",
+        "equal liberty principle",
+        "fair equality of opportunity",
+        "maximin principle",
+        "utility principle",
+        "reflective equilibrium"
+      ],
+      "quizQuestion": "Rawls argued that social and economic inequalities are just only if they benefit the least advantaged members of society. What is this principle called?",
+      "explanation": "The difference principle (Rawls 1971) is the second part of Rawls' second principle of justice: inequalities are permissible only if they improve the position of the worst-off group. It reflects the 'maximin' strategy — maximize the minimum — that rational agents behind the veil of ignorance would choose.",
+      "wowFactor": "Rawls said inequality is only okay if even the worst-off person is better off than they would be under equality — otherwise, inequality is unjust.",
+      "statement": "Rawls' difference principle holds that social inequalities are just only if they benefit the least advantaged members of society.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/rawls/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "rawls",
+        "political_philosophy",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_nozick_experience_machine",
+      "correctAnswer": "experience machine",
+      "acceptableAlternatives": [
+        "the experience machine"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "distractors": [
+        "philosophical zombies",
+        "Twin Earth",
+        "the Chinese Room",
+        "the teletransporter",
+        "Mary's Room",
+        "the original position"
+      ],
+      "quizQuestion": "Robert Nozick's thought experiment in Anarchy, State, and Utopia (1974) imagined a machine that gives you any experiences you desire. Most people would not plug in, refuting the view that pleasure is all that matters. What is this thought experiment?",
+      "explanation": "The experience machine (Nozick 1974) shows that we care about things beyond pleasure: we want to actually do things, actually be a certain kind of person, and actually contact reality. This refutes hedonism — pleasure cannot be the only thing of value.",
+      "wowFactor": "Nozick asked: would you plug into a machine that guarantees you a perfect simulated life? Most say no — proving we care about something beyond just feeling good.",
+      "statement": "Nozick's experience machine (1974) refutes hedonism by showing most people would not choose a perfectly pleasurable simulated life over reality.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/nozick-political/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "nozick",
+        "ethics",
+        "political_philosophy",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_nozick_anarchy_state_utopia",
+      "correctAnswer": "Anarchy, State, and Utopia",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "A Theory of Justice",
+        "On Liberty",
+        "The Republic",
+        "Leviathan",
+        "Two Treatises of Government",
+        "The Open Society and Its Enemies"
+      ],
+      "quizQuestion": "Which 1974 National Book Award-winning work by Robert Nozick defended minimal-state libertarianism, the entitlement theory of justice, and the experience machine thought experiment?",
+      "explanation": "Anarchy, State, and Utopia (1974) is Nozick's libertarian response to Rawls. It argues that only a minimal state — limited to protecting against force, theft, and fraud — is morally justified. Any redistribution beyond that violates individual rights. Won the 1975 National Book Award in Philosophy.",
+      "wowFactor": "Nozick wrote Anarchy, State, and Utopia specifically to demolish Rawls' Theory of Justice, published three years earlier — and it won the National Book Award.",
+      "statement": "Nozick's Anarchy, State, and Utopia (1974) defends minimal-state libertarianism as a response to Rawls' egalitarian liberalism.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/nozick-political/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "nozick",
+        "political_philosophy",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_anscombe_consequentialism_coined",
+      "correctAnswer": "G.E.M. Anscombe",
+      "acceptableAlternatives": [
+        "Elizabeth Anscombe",
+        "Anscombe"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "twentieth_century_philosopher_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "Philippa Foot",
+        "Iris Murdoch",
+        "Bernard Williams",
+        "J.J.C. Smart",
+        "John Stuart Mill",
+        "Peter Singer"
+      ],
+      "quizQuestion": "Which philosopher coined the term 'consequentialism' in her landmark 1958 paper 'Modern Moral Philosophy' — using it critically — and also urged a return to Aristotelian virtue ethics?",
+      "explanation": "Anscombe's 'Modern Moral Philosophy' (1958) coined the word 'consequentialism' as a term of criticism, argued that obligation-based moral concepts presuppose a divine law no longer accepted, and urged revival of Aristotelian virtue ethics. It catalyzed the contemporary virtue ethics movement.",
+      "wowFactor": "The philosopher who invented the word 'consequentialism' introduced it in order to attack the doctrine — Anscombe thought judging actions by their consequences was a remnant of theological ethics gone wrong.",
+      "statement": "Anscombe coined the term 'consequentialism' in 1958 as a criticism, and her paper sparked the contemporary virtue ethics revival.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/anscombe/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "anscombe",
+        "ethics",
+        "virtue_ethics",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_foot_trolley_problem",
+      "correctAnswer": "Trolley Problem",
+      "acceptableAlternatives": [
+        "the trolley problem",
+        "trolley problem"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 1,
+      "funScore": 9,
+      "distractors": [
+        "Doctrine of Double Effect",
+        "the experience machine",
+        "the drowning child argument",
+        "the fat man problem",
+        "Mary's Room",
+        "the experience machine"
+      ],
+      "quizQuestion": "Which thought experiment — introduced by Philippa Foot in a 1967 paper on abortion and the doctrine of double effect — asks whether it is permissible to redirect a runaway trolley to kill one person rather than five?",
+      "explanation": "The Trolley Problem was first presented by Philippa Foot in 1967 in 'The Problem of Abortion and the Doctrine of Double Effect.' Judith Jarvis Thomson named it the 'trolley problem' in 1976. It is now one of the most discussed thought experiments in ethics, probing the difference between killing and letting die.",
+      "wowFactor": "The trolley problem — possibly the most famous thought experiment in modern ethics — was invented to analyze abortion, not runaway trolleys.",
+      "statement": "The Trolley Problem was invented by Philippa Foot in 1967, not Thomson; Thomson named it in 1976.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/philippa-foot/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "foot",
+        "ethics",
+        "thought_experiment",
+        "analytic_tradition"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who introduced the Trolley Problem in a 1967 paper — NOT Judith Jarvis Thomson, who merely named it in 1976?",
+          "correctAnswer": "Philippa Foot",
+          "distractors": [
+            "Judith Jarvis Thomson",
+            "G.E.M. Anscombe",
+            "Iris Murdoch",
+            "Bernard Williams"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philosophy_at_singer_speciesism",
+      "correctAnswer": "speciesism",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 8,
+      "distractors": [
+        "anthropocentrism",
+        "misanthropy",
+        "sentientism",
+        "moral status discrimination",
+        "zoomorphism",
+        "moral patienthood"
+      ],
+      "quizQuestion": "Peter Singer popularized a term for the unjustified discrimination against beings on the basis of their species membership alone, analogous to racism or sexism. What is this term?",
+      "explanation": "Speciesism (popularized by Singer in Animal Liberation, 1975) is the arbitrary privileging of members of one's own species in moral consideration. Singer argues that the capacity for suffering, not species membership, should determine moral considerability — 'equal consideration of interests.'",
+      "wowFactor": "Singer argued that treating animals differently from humans just because they're a different species is the same kind of irrational prejudice as racism — just speciesism.",
+      "statement": "Singer's speciesism is the unjustified discrimination against beings based on species membership, analogous to racism and sexism.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/peter-singer/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "singer",
+        "ethics",
+        "applied_ethics",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_singer_drowning_child",
+      "correctAnswer": "drowning child argument",
+      "acceptableAlternatives": [
+        "Singer's pond",
+        "Singer's drowning child"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "distractors": [
+        "experience machine",
+        "trolley problem",
+        "the demandingness objection",
+        "the repugnant conclusion",
+        "the drowning stranger",
+        "the footbridge case"
+      ],
+      "quizQuestion": "In his 1972 paper 'Famine, Affluence, and Morality,' Singer argued that if you could save a drowning child at trivial cost to yourself, you are morally required to — and the same obligation applies to distant suffering. What is this argument called?",
+      "explanation": "Singer's drowning child argument holds that if physical distance does not diminish the moral obligation to save a drowning child in front of you, then geographic distance does not diminish the obligation to save lives in distant countries. Therefore affluent people are morally required to donate to famine relief.",
+      "wowFactor": "Singer argued that you are just as obligated to donate to famine relief as to save a drowning child at your feet — distance doesn't change morality, only psychology.",
+      "statement": "Singer's drowning child argument extends the obligation to help the distressed from nearby cases to distant famine relief, eliminating the moral relevance of distance.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/peter-singer/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "singer",
+        "ethics",
+        "effective_altruism",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_nussbaum_capabilities",
+      "correctAnswer": "capabilities approach",
+      "acceptableAlternatives": [
+        "capability approach"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 6,
+      "distractors": [
+        "resourcism",
+        "welfarism",
+        "primary goods approach",
+        "preference utilitarianism",
+        "contractualism",
+        "effective altruism"
+      ],
+      "quizQuestion": "The framework developed by Amartya Sen and Martha Nussbaum holds that justice requires enabling people to realize central human functions and freedoms, rather than maximizing resources or utility. What is this framework called?",
+      "explanation": "The capabilities approach (Sen and Nussbaum) evaluates well-being and justice in terms of what people are actually able to do and be — their real freedoms or capabilities. Nussbaum produced a list of ten central human capabilities; Sen emphasized freedom to achieve valuable functionings.",
+      "wowFactor": "Nussbaum and Sen replaced GDP and utility as measures of human development with 'capabilities' — what you can actually do and be, not just what you have.",
+      "statement": "The capabilities approach, developed by Sen and Nussbaum, holds that justice requires enabling central human capabilities, not merely distributing resources or maximizing utility.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/nussbaum/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "nussbaum",
+        "sen",
+        "political_philosophy",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_vienna_circle_verificationism",
+      "correctAnswer": "verificationism",
+      "acceptableAlternatives": [
+        "verification principle",
+        "verifiability criterion"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "falsificationism",
+        "pragmatism",
+        "instrumentalism",
+        "coherentism",
+        "empiricism",
+        "operationalism"
+      ],
+      "quizQuestion": "The Vienna Circle held that a statement is cognitively meaningful only if it is either analytically true or empirically verifiable in principle. This doctrine — which condemns metaphysics as literally meaningless — is called what?",
+      "explanation": "Verificationism was the central doctrine of logical positivism: a statement has cognitive meaning only if there is some possible observation that would confirm or disconfirm it, or if it is an analytic truth. Metaphysical statements (about God, being, the absolute) fail both tests and are pseudo-propositions.",
+      "wowFactor": "The Vienna Circle used verificationism like a scalpel: any sentence that can't be tested by experience isn't false — it's literally meaningless, like 'green ideas sleep furiously.'",
+      "statement": "Verificationism holds that a statement is cognitively meaningful only if empirically verifiable in principle or analytically true, condemning metaphysics as meaningless.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/schlick/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "vienna_circle",
+        "logical_positivism",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_logical_positivism_school",
+      "correctAnswer": "Logical Positivism",
+      "acceptableAlternatives": [
+        "logical empiricism",
+        "logical positivism"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "school_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "distractors": [
+        "Ordinary Language Philosophy",
+        "Logical Atomism",
+        "Critical Rationalism",
+        "Reformed Epistemology",
+        "Functionalism",
+        "Analytic Pragmatism"
+      ],
+      "quizQuestion": "The Vienna Circle, founded by Moritz Schlick in c. 1924 and including Carnap, Neurath, and later Ayer, championed what philosophical movement that applied mathematical logic to eliminate metaphysics?",
+      "explanation": "Logical Positivism (also called Logical Empiricism) combined the rigor of modern mathematical logic with empiricist principles. The movement held that only empirically verifiable statements and analytic truths are meaningful; metaphysics is pseudo-philosophy. Dissolved after Schlick's assassination (1936) and WWII emigration.",
+      "wowFactor": "The Vienna Circle met weekly in the 1920s–30s to apply modern logic to all of human knowledge — they thought philosophy would be solved in a generation, then Hitler happened.",
+      "statement": "Logical Positivism, centered in the Vienna Circle (c. 1924), combined mathematical logic with empiricism to eliminate metaphysics as meaningless.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/schlick/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "vienna_circle",
+        "logical_positivism",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_marcus_quantified_modal_logic",
+      "correctAnswer": "Ruth Barcan Marcus",
+      "acceptableAlternatives": [
+        "Barcan Marcus",
+        "Ruth C. Barcan"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "twentieth_century_philosopher_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "distractors": [
+        "Saul Kripke",
+        "C.I. Lewis",
+        "Alvin Plantinga",
+        "David Lewis",
+        "Donald Davidson",
+        "Hilary Putnam"
+      ],
+      "quizQuestion": "Who published the first formal systems of quantified modal logic in 1946 — at age 24, before Kripke — and introduced the Barcan formula establishing constraints on possible worlds?",
+      "explanation": "Ruth Barcan Marcus (née Barcan, 1921–2012) published the first formal system of quantified modal logic in 1946. The Barcan formula states: if possibly something is F, then something is possibly F. Her work directly influenced Kripke's possible-worlds semantics and direct reference theory.",
+      "wowFactor": "Ruth Barcan Marcus invented quantified modal logic at age 24 in 1946 — before Kripke was born. Yet Kripke is far more famous, partly because he was better at publicizing his work.",
+      "statement": "Ruth Barcan Marcus published the first formal systems of quantified modal logic in 1946, introducing the Barcan formula and influencing Kripke.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/marcus-ruth-barcan/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "marcus",
+        "modal_logic",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_plantinga_reformed_epistemology",
+      "correctAnswer": "Reformed Epistemology",
+      "acceptableAlternatives": [
+        "reformed epistemology"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "school_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "distractors": [
+        "Logical Positivism",
+        "Ordinary Language Philosophy",
+        "Pragmatism",
+        "Functionalism",
+        "Critical Rationalism",
+        "Natural Theology"
+      ],
+      "quizQuestion": "Alvin Plantinga developed a school holding that belief in God can be 'properly basic' — rational without requiring evidential justification — just as perceptual and memory beliefs are. What is this school called?",
+      "explanation": "Reformed Epistemology (Plantinga, Wolterstorff) argues that theistic belief can be rational even without classical theistic arguments. A 'properly basic' belief is one that can serve as a foundation for knowledge without being derived from other beliefs. Theistic belief is properly basic for those who experience divine presence.",
+      "wowFactor": "Plantinga argued that believing in God is epistemically similar to believing you have hands — neither requires an argument, both are 'properly basic' for the people who hold them.",
+      "statement": "Reformed Epistemology (Plantinga) holds that theistic belief can be properly basic — rational without evidential support, like perception and memory.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/plantinga/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "plantinga",
+        "epistemology",
+        "philosophy_of_religion",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_fodor_language_of_thought",
+      "correctAnswer": "language of thought",
+      "acceptableAlternatives": [
+        "Mentalese",
+        "LOT hypothesis"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 4,
+      "funScore": 7,
+      "distractors": [
+        "multiple realizability",
+        "functionalism",
+        "connectionism",
+        "eliminativism",
+        "the intentional stance",
+        "sentential logic"
+      ],
+      "quizQuestion": "Jerry Fodor's 1975 hypothesis holds that thinking occurs in an internal system with compositional syntax and semantics — a kind of 'brain language' — explaining why thought is systematic and productive. What is this hypothesis called?",
+      "explanation": "The language of thought hypothesis (Fodor 1975) — sometimes called 'Mentalese' — proposes that cognitive processes operate over mental representations that have compositional structure like a language. Just as sentences are built from words, thoughts are built from mental symbols combined by rules.",
+      "wowFactor": "Fodor proposed that we literally think in an unspoken language — 'Mentalese' — wired into our brains and shared across all human languages.",
+      "statement": "Fodor's language of thought hypothesis holds that thinking occurs in an internal compositional symbol system ('Mentalese') with syntax and semantics.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/language-thought/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "fodor",
+        "philosophy_of_mind",
+        "cognitive_science",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_murdoch_sovereignty_good",
+      "correctAnswer": "Iris Murdoch",
+      "acceptableAlternatives": [
+        "Murdoch"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "twentieth_century_philosopher_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "G.E.M. Anscombe",
+        "Philippa Foot",
+        "Christine Korsgaard",
+        "Martha Nussbaum",
+        "Elizabeth Anscombe",
+        "Simone de Beauvoir"
+      ],
+      "quizQuestion": "Who wrote The Sovereignty of Good (1970), arguing that 'Good' is a transcendent Platonic reality and that moral virtue consists in 'unselfing' — the removal of the self-centered ego that distorts our vision of others?",
+      "explanation": "Murdoch's The Sovereignty of Good (1970) attacks existentialist and behaviourist ethics, defending a Platonic conception of Good as objective. Virtue involves 'unselfing' — attending correctly to reality — and 'the just and loving gaze' that sees others as they really are, not as ego projects them.",
+      "wowFactor": "Murdoch was simultaneously a major novelist (Booker Prize-winning) and a serious moral philosopher — she argued that good fiction and good ethics both require the same capacity: seeing people as they really are.",
+      "statement": "Murdoch's The Sovereignty of Good (1970) argues that moral virtue consists in 'unselfing' — correct attention to a transcendent, Platonic Good.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/murdoch/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "murdoch",
+        "ethics",
+        "virtue_ethics",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_williams_moral_luck",
+      "correctAnswer": "moral luck",
+      "acceptableAlternatives": [],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "moral responsibility",
+        "agent-relative reasons",
+        "integrity objection",
+        "internal reasons",
+        "moral residue",
+        "moral uncertainty"
+      ],
+      "quizQuestion": "Bernard Williams argued in a 1976 paper that moral praise and blame are pervasively influenced by factors outside agents' control — for example, a drunk driver who hits a child suffers greater blame than one who doesn't only by luck. What is this phenomenon called?",
+      "explanation": "Williams' moral luck (1976) challenges the Kantian view that moral worth is immune to luck. Cases of resultant luck (same action, different outcomes), circumstantial luck (being in the situation at all), and constitutive luck (your character and temperament) all infect moral assessment.",
+      "wowFactor": "Williams showed that our moral assessments are shot through with luck — two drivers, same recklessness, one child in the road — yet we judge them completely differently.",
+      "statement": "Bernard Williams' moral luck holds that moral assessment is pervasively influenced by factors outside agents' control, undermining the Kantian ideal of luck-immune moral worth.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/williams-bernard/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "williams",
+        "ethics",
+        "moral_psychology",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_sen_capabilities_economics",
+      "correctAnswer": "Amartya Sen",
+      "acceptableAlternatives": [
+        "Sen"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "twentieth_century_philosopher_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "distractors": [
+        "John Rawls",
+        "Martha Nussbaum",
+        "Robert Nozick",
+        "Derek Parfit",
+        "Christine Korsgaard",
+        "G.A. Cohen"
+      ],
+      "quizQuestion": "Which philosopher-economist, who won the 1998 Nobel Prize in Economics, argued that development should be understood as the expansion of human capabilities and freedoms rather than GNP growth, and coined 'poverty as capability deprivation'?",
+      "explanation": "Amartya Sen (b. 1933) developed the capabilities approach to welfare economics, arguing that development is the expansion of substantive freedoms — capabilities to achieve valued functionings — not simply income or utility. He also extended social choice theory and analyzed famines as capability failures.",
+      "wowFactor": "Sen showed that famines almost never occur in functioning democracies — not because democracies produce more food, but because information flows and political accountability prevent the capability deprivation that causes starvation.",
+      "statement": "Sen's capabilities approach defines development as the expansion of human freedoms and capabilities, not GDP growth; he won the Nobel Prize in Economics in 1998.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/sen/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "sen",
+        "political_philosophy",
+        "economics",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_ordinary_language_school",
+      "correctAnswer": "Ordinary Language Philosophy",
+      "acceptableAlternatives": [
+        "ordinary language philosophy"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "school_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "distractors": [
+        "Logical Positivism",
+        "Logical Atomism",
+        "Phenomenology",
+        "Critical Theory",
+        "Linguistic Pragmatism",
+        "Analytic Metaphysics"
+      ],
+      "quizQuestion": "The post-war Oxford movement associated with Ryle, Austin, and the late Wittgenstein, which held that philosophical problems often arise from systematic misuse of ordinary language and can be dissolved by careful attention to how words are actually used, is called what?",
+      "explanation": "Ordinary Language Philosophy (flourished at Oxford 1940s–1960s) holds that philosophical puzzles (free will, personal identity, perception) often arise from language going 'on holiday' — departing from its ordinary use. The cure is not a theory but careful attention to how language actually works.",
+      "wowFactor": "Oxford philosophers in the 1950s solved philosophical problems with the question 'But how do we actually use that word?' — they thought confusion about language, not facts, causes most philosophical puzzles.",
+      "statement": "Ordinary Language Philosophy holds that philosophical problems arise from misuse of language and can be dissolved by attending to ordinary usage.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ryle/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "ryle",
+        "austin",
+        "wittgenstein",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_logical_atomism_school",
+      "correctAnswer": "Logical Atomism",
+      "acceptableAlternatives": [
+        "logical atomism"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "school_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "distractors": [
+        "Logical Positivism",
+        "Ordinary Language Philosophy",
+        "Process Philosophy",
+        "Logicism",
+        "Phenomenalism",
+        "Neutral Monism"
+      ],
+      "quizQuestion": "The view, associated with early Russell and early Wittgenstein, that the world consists of logically independent atomic facts, and that a perfect philosophical language would map one-to-one onto those facts, is called what?",
+      "explanation": "Logical Atomism (Russell and early Wittgenstein) holds that reality is ultimately composed of logically simple, independent facts — 'atoms.' A perfect logical language would exactly mirror this atomic structure. Russell developed it after meeting Wittgenstein; Wittgenstein expressed it in the Tractatus.",
+      "wowFactor": "Russell and Wittgenstein believed the world had an atomic structure that logical language could perfectly mirror — a dream of a language that literally cannot say anything false.",
+      "statement": "Logical Atomism (Russell and early Wittgenstein) holds that the world consists of logically independent atomic facts, mirrored by an ideal logical language.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/russell/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "russell",
+        "wittgenstein",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_functionalism_mind",
+      "correctAnswer": "Functionalism",
+      "acceptableAlternatives": [
+        "functionalism"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "school_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "distractors": [
+        "Eliminativism",
+        "Behaviourism",
+        "Substance Dualism",
+        "Identity Theory",
+        "Property Dualism",
+        "Epiphenomenalism"
+      ],
+      "quizQuestion": "The view in philosophy of mind — championed by Putnam in the 1960s — that mental states are defined by their functional roles (causal relations to inputs, outputs, and other mental states) rather than by their physical implementation, is called what?",
+      "explanation": "Functionalism holds that what makes something a mental state is not what it is made of but what it does — its causal role. A pain is whatever plays the 'pain role': caused by tissue damage, producing avoidance behavior, interacting with beliefs and desires. Multiple realizability: pain can be implemented in carbon or silicon.",
+      "wowFactor": "Functionalism says a silicon robot and a carbon human can both feel pain — as long as their internal states play the same causal role, the substrate doesn't matter.",
+      "statement": "Functionalism defines mental states by their functional (causal) roles rather than physical implementation, entailing multiple realizability.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/putnam/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "putnam",
+        "fodor",
+        "philosophy_of_mind",
+        "analytic_tradition"
+      ]
+    },
+    {
+      "id": "philosophy_at_analytic_tradition_school",
+      "correctAnswer": "Analytic Philosophy",
+      "acceptableAlternatives": [
+        "analytic tradition"
+      ],
+      "chainThemeId": 6,
+      "subDeckId": "analytic_tradition",
+      "answerTypePoolId": "school_names",
+      "difficulty": 2,
+      "funScore": 5,
+      "distractors": [
+        "Continental Philosophy",
+        "Pragmatism",
+        "American Philosophy",
+        "Phenomenology",
+        "Ordinary Language Philosophy",
+        "Logical Positivism"
+      ],
+      "quizQuestion": "The philosophical tradition originating with Frege, Russell, Moore, and Wittgenstein — characterized by logical rigor, attention to language, and close argument — is called what?",
+      "explanation": "Analytic Philosophy, which began around 1900 with Frege's logic and Russell and Moore's revolt against British Idealism, is characterized by precision, argument analysis, attention to language, and use of formal logic. It is contrasted with Continental Philosophy and dominates Anglophone academic philosophy.",
+      "wowFactor": "Analytic philosophy began as a revolt against 'word soup' — Russell and Moore wanted to import the precision of mathematics into philosophy and throw out the obscurantist idealism of the Victorian era.",
+      "statement": "Analytic Philosophy, originating with Frege, Russell, and Moore around 1900, is characterized by logical rigor and close attention to language and argument.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/analytic-philosophy/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "analytic_tradition",
+        "frege",
+        "russell",
+        "moore"
+      ]
+    }
+  ]
+}

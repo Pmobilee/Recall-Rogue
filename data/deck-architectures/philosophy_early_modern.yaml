@@ -1,0 +1,865 @@
+deck_id: philosophy
+sub_deck_id: early_modern
+name: "Early Modern Philosophy"
+domain: philosophy
+sub_domain: early_modern
+target_facts: 55
+minimum_facts: 45
+data_sources:
+  - name: Stanford Encyclopedia of Philosophy
+    url: https://plato.stanford.edu/
+    license: open access, non-commercial use
+    usage: biographical details, doctrines, key works, dates
+  - name: Wikipedia
+    url: https://en.wikipedia.org/
+    license: CC-BY-SA-4.0
+    usage: birth/death dates, publication dates, biographical details
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: structured entity data (dates, works, categories)
+
+# ============================================================
+# SOURCE DATA — 4 groups covering Western philosophy c. 1550–1750
+# All facts verified against URLs listed per entry.
+# Workers MUST copy facts FROM this verified data — never invent.
+# ============================================================
+source_data:
+
+  # ----------------------------------------------------------
+  # GROUP 1: Late Renaissance / Transition (~8 entries)
+  # ----------------------------------------------------------
+  late_renaissance:
+
+    Erasmus:
+      dates: "c. 1466–1536"
+      nationality: "Dutch (Burgundian Netherlands)"
+      school: "Renaissance humanism, Northern Renaissance"
+      key_works:
+        - "The Praise of Folly (Moriae Encomium, 1511)"
+        - "Handbook of a Christian Knight (Enchiridion, 1503)"
+        - "Novum Instrumentum omne (New Testament in Greek and Latin, 1516)"
+        - "On Civility in Children (De civilitate morum puerilium, 1530)"
+      key_doctrines:
+        - "Christian humanism: reform the Church through education and scholarship, not revolt"
+        - "Philology applied to Scripture: return to original Greek New Testament text"
+        - "Satirical critique of clerical corruption and scholastic theology in Praise of Folly"
+        - "Free will: defended against Luther in On Free Will (De libero arbitrio, 1524)"
+      students_or_influences: "Influenced Thomas More, the English Reformers; corresponded with Luther before their split"
+      notes: >
+        Full name Desiderius Erasmus Roterodamus. Born c. 28 October 1466 in Rotterdam or Gouda;
+        died 12 July 1536 in Basel. Ordained priest 1492. The Praise of Folly is dedicated to
+        his friend Thomas More (Moria is a pun on More's name in Greek). His 1516 Greek New
+        Testament (Novum Instrumentum) was the first printed Greek NT and influenced Luther's
+        German Bible translation. Not primarily a philosopher by modern classification but a
+        pivotal humanist thinker who shaped the intellectual climate of the Reformation era.
+      source_url: "https://en.wikipedia.org/wiki/Erasmus"
+      wikidata: "Q146065"
+
+    Machiavelli:
+      dates: "1469–1527"
+      nationality: "Florentine (Italian)"
+      school: "Renaissance political philosophy, civic republicanism"
+      key_works:
+        - "The Prince (Il Principe, written 1513, published posthumously 1532)"
+        - "Discourses on Livy (Discorsi sopra la prima deca di Tito Livio, published posthumously 1531)"
+        - "The Art of War (Dell'arte della guerra, 1521)"
+        - "Florentine Histories (Istorie fiorentine, 1525)"
+      key_doctrines:
+        - "virtù: the combination of skill, force, and cunning a ruler needs to maintain power and order"
+        - "fortuna: fortune as the unpredictable force rulers must master or adapt to"
+        - "Ends justify means in statecraft: a prince must be both lion (force) and fox (cunning)"
+        - "Civic republicanism in Discourses: republics are more stable and virtuous than principalities"
+        - "Separation of morality from politics: political judgment independent of conventional ethics"
+      students_or_influences: "Influenced Bacon, Hobbes, Rousseau, and modern political realism"
+      notes: >
+        Born 3 May 1469 in Florence; died 21 June 1527 in Florence. Served as Secretary of the
+        Florentine Republic 1498–1512. The Prince was written in 1513 as a bid for Medici
+        patronage after Machiavelli lost his post; published posthumously in 1532. The Discourses,
+        written around the same time but published 1531, reveal his deeper republican sympathies.
+        The term "Machiavellian" was apparently coined by Pierre Bayle (SEP notes). SEP entry
+        emphasizes the ongoing scholarly debate about a coherent philosophy in his writings.
+      source_url: "https://plato.stanford.edu/entries/machiavelli/"
+      wikidata: "Q1294"
+
+    Montaigne:
+      dates: "1533–1592"
+      nationality: "French"
+      school: "Renaissance humanism, philosophical skepticism"
+      key_works:
+        - "Essays (Essais, first edition 1580; expanded 1588; posthumous 1595 with additions)"
+      key_doctrines:
+        - "Philosophical skepticism: suspension of judgment on uncertain matters"
+        - "Self-examination as philosophical method: the self as subject and laboratory"
+        - "Pyrrhonist motto: 'Que sais-je?' ('What do I know?')"
+        - "Relativism: customs and values vary across cultures; no universal standard"
+        - "Essays as literary form: invented the personal essay as a philosophical genre"
+      students_or_influences: "Influenced Descartes (via skepticism), Pascal, Francis Bacon, Shakespeare"
+      notes: >
+        Born 28 February 1533 at Chateau de Montaigne, Périgord; died 13 September 1592.
+        The motto 'Que sais-je?' appears on a medal he had struck for himself around 1576,
+        during his most skeptical phase. SEP (entry: montaigne) describes him as exercising
+        "natural judgment" over erudition. The Essais went through multiple expansions:
+        Books I and II published 1580; Book III added 1588; posthumous 1595 edition by
+        Marie de Gournay added further material from Montaigne's own copy ('exemplaire de Bordeaux').
+      source_url: "https://plato.stanford.edu/entries/montaigne/"
+      wikidata: "Q44264"
+
+    Giordano_Bruno:
+      dates: "1548–1600"
+      nationality: "Italian (Neapolitan)"
+      school: "Renaissance philosophy, Hermeticism, early modern cosmology"
+      key_works:
+        - "The Ash Wednesday Supper (La cena de le ceneri, 1584)"
+        - "On the Infinite Universe and Worlds (De l'infinito universo et mondi, 1584)"
+        - "On the Cause, Principle and Unity (De la causa, principio et uno, 1584)"
+      key_doctrines:
+        - "Infinite universe: rejected Aristotle's finite cosmos; the universe is infinite with innumerable solar systems"
+        - "Heliocentrism extended: accepted Copernicus and radicalized it — no center to the universe"
+        - "Panpsychism: the universe is animate; matter and soul are unified"
+        - "Infinite worlds: countless inhabited planets orbiting other suns"
+      students_or_influences: "Influenced Spinoza's monism, later cosmologists; contemporary of Galileo"
+      notes: >
+        Born 1548 in Nola, near Naples; burned at the stake in Rome on 17 February 1600 by the
+        Inquisition. His charges included heresy on theological matters (denying the Trinity,
+        the virginity of Mary, etc.) as well as his cosmological views. SEP entry (slug: bruno)
+        notes he was born 1548 and died 1600, confirming these dates. His cosmological ideas —
+        infinite universe, infinite worlds — were not the primary Inquisition charges, but became
+        his philosophical legacy. The SEP states the universe was "infinite, animate and populated
+        by numberless solar systems" in his view.
+      source_url: "https://plato.stanford.edu/entries/bruno/"
+      wikidata: "Q76806"
+
+    Francisco_Suarez:
+      dates: "1548–1617"
+      nationality: "Spanish"
+      school: "Second Scholastic (Early Modern Scholasticism), Jesuit"
+      key_works:
+        - "Disputationes Metaphysicae (Metaphysical Disputations, 1597)"
+        - "De Legibus, ac Deo Legislatore (On Laws and God as Legislator, 1612)"
+        - "Defensio Fidei Catholicae (Defence of the Catholic Faith, 1613)"
+      key_doctrines:
+        - "Comprehensive systematic metaphysics: first major metaphysics treatise independent of Aristotle commentary format"
+        - "Suarezian ontology: real distinction between essence and existence rejected; only modal distinction"
+        - "Natural law: rational creatures can discover moral law through reason; authority derives from the people"
+        - "International law foundations: sovereigns bound by natural law; influenced Grotius and Pufendorf"
+        - "Conceptual unity of being (univocity vs. analogy debate)"
+      students_or_influences: "Influenced Leibniz, Grotius, Pufendorf, Schopenhauer; read by Descartes and Hobbes"
+      notes: >
+        Born 5 January 1548 in Granada, Spain; died 25 September 1617 in Lisbon. Jesuit priest and
+        theologian at the University of Coimbra and later Rome. The Disputationes Metaphysicae (1597)
+        was the first major philosophical work in the Western tradition to present metaphysics
+        systematically as an independent discipline rather than a commentary on Aristotle. SEP entry
+        (slug: suarez) confirms dates 1548–1617 and describes his comprehensive, exhaustive and
+        systematic exposition of metaphysics.
+      source_url: "https://plato.stanford.edu/entries/suarez/"
+      wikidata: "Q215220"
+
+    Justus_Lipsius:
+      dates: "1547–1606"
+      nationality: "Flemish (Spanish Netherlands)"
+      school: "Neostoicism, Renaissance humanism"
+      key_works:
+        - "De Constantia (On Constancy, 1583)"
+        - "Politicorum sive Civilis Doctrinae Libri Sex (Six Books of Politics, 1589)"
+        - "Manuductio ad Stoicam philosophiam (Introduction to Stoic Philosophy, 1604)"
+      key_doctrines:
+        - "Neostoicism: revival of ancient Stoic ethics reconciled with Christian theology"
+        - "Constancy: inner tranquility through reason and God; independence from external fortune"
+        - "Just war theory and political theory compatible with absolutism"
+      students_or_influences: "Influenced Grotius, Montaigne's Stoic phase; corresponded with major humanists across Europe"
+      notes: >
+        Born 18 October 1547 in Overijse, Spanish Netherlands; died 23 March 1606 in Leuven.
+        Taught at University of Jena, Leiden (1578–1591), and Leuven. De Constantia (1583) was
+        his most famous work, presenting Stoic consolation for the troubles of the era (religious
+        wars, the Dutch Revolt). Wikipedia (Justus Lipsius) confirms dates and describes him as
+        creator of the intellectual movement of Neostoicism.
+      source_url: "https://en.wikipedia.org/wiki/Justus_Lipsius"
+      wikidata: "Q152206"
+
+    Port_Royal_Logic:
+      dates: "Published 1662"
+      nationality: "French"
+      school: "Cartesian logic, Jansenism"
+      key_works:
+        - "Logic, or the Art of Thinking (La Logique ou l'Art de penser, 1662)"
+      key_doctrines:
+        - "Four operations of the mind: conception, judgment, reasoning, and method"
+        - "Ideas as mental representations: influenced the history of the theory of ideas"
+        - "Application of Cartesian method to logic and rhetoric"
+        - "Port-Royal Grammar (1660, co-authored with Lancelot): universal grammar theory"
+      students_or_influences: "Authors: Antoine Arnauld and Pierre Nicole. Influenced Locke, Leibniz, later logic"
+      notes: >
+        Co-authored by Antoine Arnauld (1612–1694) and Pierre Nicole (1625–1695), both of the
+        Port-Royal Abbey (Jansenist community near Paris). Full title in French: La Logique ou
+        l'Art de penser. SEP entry on Antoine Arnauld (slug: arnauld) confirms Arnauld co-authored
+        the Port-Royal Logic (l'Art de penser) with Nicole. First published 1662; went through
+        five editions in Arnauld's lifetime. Highly influential on epistemology and the theory
+        of signs.
+      source_url: "https://plato.stanford.edu/entries/arnauld/"
+      wikidata: "Q942583"
+
+    Antoine_Arnauld:
+      dates: "1612–1694"
+      nationality: "French"
+      school: "Cartesian philosophy, Jansenism"
+      key_works:
+        - "Fourth Set of Objections to Descartes's Meditations (1641)"
+        - "Logic, or the Art of Thinking (Port-Royal Logic, 1662, with Pierre Nicole)"
+        - "On True and False Ideas (Des vraies et des fausses idées, 1683)"
+      key_doctrines:
+        - "Critique of Malebranche's theory of ideas: rejected vision in God; ideas are mental modifications"
+        - "Cartesian dualism: accepted mind-body distinction"
+        - "Jansenist theology: predestination, efficacious grace"
+        - "Theory of ideas: ideas as direct representations, not intermediaries"
+      students_or_influences: >
+        Corresponded with Descartes, Malebranche, Leibniz; Leibniz-Arnauld correspondence
+        is a major source for Leibniz's metaphysics
+      notes: >
+        Born 6 February 1612 in Paris; died 8 August 1694 in Brussels (in exile). Called
+        "the Great Arnauld." His Fourth Objections to Descartes's Meditations (1641) identified
+        the Cartesian circle — the argument that Descartes uses God's veracity to validate
+        clear and distinct ideas while using clear and distinct ideas to prove God's existence.
+        SEP entry (slug: arnauld) confirms dates 1612–1694 and describes his famous exchanges
+        with Descartes, Malebranche, and Leibniz.
+      source_url: "https://plato.stanford.edu/entries/arnauld/"
+      wikidata: "Q329800"
+
+  # ----------------------------------------------------------
+  # GROUP 2: Rationalists (~15 entries)
+  # ----------------------------------------------------------
+  rationalists:
+
+    Francis_Bacon:
+      dates: "1561–1626"
+      nationality: "English"
+      school: "Early modern empiricism, inductive method, natural philosophy"
+      key_works:
+        - "The Advancement of Learning (1605)"
+        - "Novum Organum (New Organon, 1620)"
+        - "New Atlantis (unfinished, published posthumously 1627)"
+        - "Essays (1597, expanded 1612, 1625)"
+      key_doctrines:
+        - "Inductive method: knowledge advances through systematic observation and experiment, not deduction from a priori principles"
+        - "Four Idols: biases that obstruct proper reasoning — Idols of the Tribe, Cave, Marketplace, and Theatre"
+        - "Instauratio Magna (Great Instauration): program to renew all knowledge through eliminative induction"
+        - "Natural history as foundation: systematic collection of facts precedes theoretical interpretation"
+        - "Knowledge and power are the same: understanding nature enables control of it"
+      students_or_influences: "Influenced the Royal Society (founded 1660); cited by Locke, Hume, and the Encyclopédistes"
+      notes: >
+        Born 22 January 1561 in London; died 9 April 1626 in London. Served as Lord Chancellor
+        under James I (1618) until dismissed for corruption (1621). The Novum Organum (1620)
+        critiques Aristotelian syllogistic deduction and proposes eliminative induction as the
+        new scientific method. The Four Idols appear in Novum Organum Book I:
+        Idols of the Tribe (human cognitive biases), Cave (individual biases), Marketplace
+        (language), Theatre (philosophical dogmas). SEP entry (slug: francis-bacon) confirms
+        dates 1561–1626 and the "Instauratio magna" program.
+      source_url: "https://plato.stanford.edu/entries/francis-bacon/"
+      wikidata: "Q37388"
+
+    Descartes:
+      dates: "1596–1650"
+      nationality: "French"
+      school: "Rationalism, Cartesian metaphysics, natural philosophy"
+      key_works:
+        - "Discourse on the Method (Discours de la méthode, 1637)"
+        - "Meditations on First Philosophy (Meditationes de prima philosophia, 1641, 2nd ed. 1642)"
+        - "Principles of Philosophy (Principia Philosophiae, 1644)"
+        - "Passions of the Soul (Les Passions de l'âme, 1649)"
+        - "Rules for the Direction of the Mind (Regulae, posthumous 1701)"
+      key_doctrines:
+        - "Cogito ergo sum: 'I think, therefore I am' — first certain truth after methodological doubt"
+        - "Methodological doubt: systematically doubt everything until an indubitable foundation is found"
+        - "Evil demon (malin génie): thought experiment — suppose a powerful deceiver manipulates all experience"
+        - "Mind-body dualism: mind (res cogitans, thinking substance) and body (res extensa, extended substance) are distinct substances"
+        - "Ontological argument for God: idea of perfect being entails existence"
+        - "Cartesian circle: objection that his reasoning to God's existence and his validation of clear and distinct ideas are mutually dependent"
+        - "Sine law of refraction (Snell's law): first published by Descartes in 1637"
+      students_or_influences: >
+        Influenced Spinoza, Malebranche, Leibniz, Princess Elisabeth of Bohemia;
+        Queen Christina of Sweden invited him to Stockholm where he died
+      notes: >
+        Born 31 March 1596 in La Haye en Touraine (now renamed Descartes), France; died
+        11 February 1650 in Stockholm, Sweden. The phrase "Cogito ergo sum" appears in Latin
+        in the Principles of Philosophy (1644); the Discourse on the Method (1637) uses the
+        French "Je pense, donc je suis." The Meditations present the cogito implicitly rather
+        than as an explicit formula. Attended Jesuit College of La Flèche 1606–1614/15. The
+        evil demon thought experiment appears in the First Meditation. SEP entry (slug:
+        descartes) confirms all dates and the distinction between the Latin and French
+        phrasings of the cogito.
+      source_url: "https://plato.stanford.edu/entries/descartes/"
+      wikidata: "Q9191"
+
+    Blaise_Pascal:
+      dates: "1623–1662"
+      nationality: "French"
+      school: "Christian apologetics, early probability theory, Jansenism"
+      key_works:
+        - "Pensées (Thoughts, posthumous 1670 — compiled from notebook fragments)"
+        - "Provincial Letters (Les Provinciales, 1656–1657)"
+        - "Essay on Conical Sections (1639)"
+        - "Treatise on the Arithmetical Triangle (posthumous 1665)"
+      key_doctrines:
+        - "Pascal's Wager: rational argument for belief in God based on expected utility — if God exists and you believe, infinite gain; if not, finite loss"
+        - "'The heart has its reasons that reason does not know': limits of rational argument in matters of faith"
+        - "Critique of Jesuit casuistry in Provincial Letters"
+        - "Human condition: misery and greatness; humans are 'thinking reeds' (roseau pensant)"
+        - "Infinite spaces: 'The eternal silence of these infinite spaces frightens me'"
+      students_or_influences: "Influenced Voltaire (criticized), Kierkegaard, William James (pragmatism); corresponded with Fermat on probability"
+      notes: >
+        Born 19 June 1623 in Clermont (now Clermont-Ferrand), France; died 19 August 1662 in Paris.
+        His health was poor throughout his life; his sister Gilberte wrote that "from the age of
+        eighteen, he never passed a day without pain." The Pensées were published posthumously in
+        1670 from notebook fragments intended for a defense of Christianity. Pascal's Wager
+        appears in fragment 233 (Brunschvicg numbering) or Pensée 680 (Lafuma). SEP entry
+        (slug: pascal) confirms dates 1623–1662 and details about the Pensées publication.
+      source_url: "https://plato.stanford.edu/entries/pascal/"
+      wikidata: "Q1290"
+
+    Malebranche:
+      dates: "1638–1715"
+      nationality: "French"
+      school: "Cartesian philosophy, Occasionalism, Augustinianism"
+      key_works:
+        - "The Search After Truth (De la recherche de la vérité, 1674–1675)"
+        - "Dialogues on Metaphysics and on Religion (Entretiens sur la métaphysique, 1688)"
+        - "Treatise on Nature and Grace (Traité de la nature et de la grâce, 1680)"
+      key_doctrines:
+        - "Vision in God (Seeing All Things in God): we perceive ideas in God's mind, not in our own minds"
+        - "Occasionalism: God is the only true cause; created things are mere occasions for God's action"
+        - "No real causal power in creatures: when a ball strikes another, God is the real cause of motion"
+        - "Theodicy: Malebranchian explanation of why God allows evil through general laws"
+      students_or_influences: "Influenced Berkeley (who adopted some ideas and criticized others); debated by Arnauld and Leibniz"
+      notes: >
+        Born 6 August 1638 in Paris; died 13 October 1715 in Paris. Oratorian priest. His
+        contemporary Pierre Bayle called him "the premier philosopher of our age." The Search
+        After Truth (De la recherche de la vérité, 1674–75) is his main philosophical work.
+        SEP entry (slug: malebranche) confirms dates 1638–1715 and the doctrines of vision in
+        God and occasionalism. Arnauld's On True and False Ideas (1683) was a direct reply to
+        Malebranche's theory.
+      source_url: "https://plato.stanford.edu/entries/malebranche/"
+      wikidata: "Q191739"
+
+    Spinoza:
+      dates: "1632–1677"
+      nationality: "Dutch (Amsterdam, Portuguese-Jewish community)"
+      school: "Rationalism, Substance monism, Pantheism/Panentheism"
+      key_works:
+        - "Theologico-Political Treatise (Tractatus Theologico-Politicus, 1670 — published under pseudonym)"
+        - "Ethics (Ethica, posthumous 1677)"
+        - "Treatise on the Emendation of the Intellect (Tractatus de Intellectus Emendatione, posthumous 1677)"
+        - "Descartes's Principles of Philosophy (1663 — only work published under his own name)"
+      key_doctrines:
+        - "Deus sive Natura ('God or Nature'): God and Nature are identical; one infinite substance"
+        - "Substance monism: only one substance exists, with infinite attributes; mind and matter are two of infinitely many attributes of God/Nature"
+        - "Psychophysical parallelism: mental and physical events are two aspects of the same substance; neither causes the other"
+        - "Conatus: every thing strives to persist in its own being"
+        - "Freedom through understanding: human freedom lies in understanding necessity, not escaping it"
+        - "Biblical criticism in TTP: argued the Bible is a human document; advocated separation of philosophy from theology"
+        - "Democratic political theory in TTP: the most natural government is a democracy"
+      students_or_influences: >
+        Influenced by Descartes, Hobbes; influenced Leibniz (who read and annotated his works),
+        Hegel, Nietzsche, Einstein
+      notes: >
+        Born 24 November 1632 in Amsterdam; died 21 February 1677 in The Hague. Excommunicated
+        (herem) from Amsterdam's Portuguese-Jewish community on 27 July 1656 — the harshest
+        such writ in the community's history, never rescinded (SEP: spinoza). The Ethics was
+        completed by 1675 but Spinoza withheld it from publication due to controversy around
+        the TTP; it was published posthumously in 1677. He earned his living as a lens grinder.
+        The geometric method (ordine geometrico) of the Ethics presents propositions, definitions,
+        and proofs in the manner of Euclid.
+      source_url: "https://plato.stanford.edu/entries/spinoza/"
+      wikidata: "Q35802"
+
+    Leibniz:
+      dates: "1646–1716"
+      nationality: "German"
+      school: "Rationalism, Monadology, Philosophical theology"
+      key_works:
+        - "Discourse on Metaphysics (Discours de métaphysique, 1686 — circulated in manuscript)"
+        - "New System of the Nature and Communication of Substances (1695)"
+        - "Monadology (Monadologie, 1714 — published posthumously 1720)"
+        - "Theodicy (Essais de Théodicée, 1710 — only book he published in his lifetime)"
+        - "New Essays on Human Understanding (Nouveaux essais, written c. 1704, posthumous 1765)"
+        - "Principles of Nature and Grace (Principes de la nature et de la grâce, 1714)"
+      key_doctrines:
+        - "Monads: the fundamental units of reality are soul-like, non-extended, non-interacting substances called monads"
+        - "Pre-established harmony: God created monads so that their internal states unfold in perfect synchrony — they do not causally interact"
+        - "Principle of Sufficient Reason (PSR): for every fact, there is a sufficient reason why it is so rather than otherwise"
+        - "Principle of the Identity of Indiscernibles (PII): no two distinct things are exactly alike in all respects"
+        - "Best of all possible worlds: God, being perfect, created the best possible world (target of Voltaire's satire in Candide)"
+        - "Theodicy: God permits evil because this world, with its evils, is still the best achievable overall"
+        - "Calculus priority dispute with Newton: both developed calculus independently; Leibniz published first (1684); Newton had developed it earlier (1666) but published later"
+        - "Principle of Continuity: nature makes no leaps (natura non facit saltus)"
+      students_or_influences: >
+        Influenced by Descartes, Spinoza (read critically), Arnauld (famous correspondence);
+        influenced Wolff, Kant; corresponded with nearly every major European intellectual
+      notes: >
+        Born 1 July 1646 in Leipzig; died 14 November 1716 in Hanover. The SEP describes him
+        as "the last universal genius." The Monadology (written 1714, published posthumously
+        1720 in German and Latin) is his most concise metaphysical statement. The Theodicy
+        (1710) was the only book he published in his lifetime — motivated by debates with Bayle
+        (SEP: leibniz). The calculus priority dispute led to a bitter controversy between
+        English and Continental mathematicians; modern consensus holds both developed it
+        independently. Leibniz's notation (dy/dx, ∫) became the standard.
+      source_url: "https://plato.stanford.edu/entries/leibniz/"
+      wikidata: "Q9047"
+
+    Anne_Conway:
+      dates: "1631–1679"
+      nationality: "English"
+      school: "Vitalist monism, Cambridge Platonism (associated)"
+      key_works:
+        - "The Principles of the Most Ancient and Modern Philosophy (Principia philosophiae antiquissimae ac recentissimae, posthumous 1690, anonymous)"
+      key_doctrines:
+        - "Vitalist monism: reality is a continuum of spirit; matter is not dead extension but spirit in its lowest form"
+        - "Three principles: God, Christ (the middle nature), and Creatures — all creatures can transform toward perfection"
+        - "Critique of Descartes: rejected mind-body dualism; the body is not mere extension"
+        - "Critique of Hobbes and Spinoza: opposed materialism"
+        - "Perfectibility of creatures: all souls can ascend toward God through moral and spiritual development"
+      students_or_influences: >
+        Associated with Henry More (Cambridge Platonist mentor and long-time correspondent);
+        Leibniz read and praised the Principles; the work may have influenced his concept of monads
+      notes: >
+        Born Anne Finch, 14 December 1631 in London; died 18 February 1679 at Ragley Hall.
+        Her only surviving treatise was published posthumously and anonymously in 1690 in
+        Latin, translated into English in 1692. SEP entry (slug: conway) confirms dates and
+        describes her vitalist ontology of spirit set against More, Descartes, Hobbes and
+        Spinoza. Leibniz received the work favorably according to SEP.
+      source_url: "https://plato.stanford.edu/entries/conway/"
+      wikidata: "Q271988"
+
+    Henry_More:
+      dates: "1614–1687"
+      nationality: "English"
+      school: "Cambridge Platonism"
+      key_works:
+        - "An Antidote Against Atheism (1653)"
+        - "The Immortality of the Soul (1659)"
+        - "Enchiridion Metaphysicum (Manual of Metaphysics, 1671)"
+      key_doctrines:
+        - "Spirit of Nature (hylarchic principle): immaterial active principle that organizes and animates matter"
+        - "Infinite absolute space as divine sensorium: space is a property of God, not of matter"
+        - "Platonist epistemology: innate ideas in the mind; reason superior to sense"
+        - "Correspondence with Descartes (1648–1649): challenged Descartes on the extension of mind and space"
+      students_or_influences: >
+        Mentor to Anne Conway (lifelong correspondence); influenced Newton's concept of absolute space;
+        part of the Cambridge Platonist circle
+      notes: >
+        Born 12 October 1614 in Grantham, Lincolnshire; died 1 September 1687 in Cambridge.
+        Fellow of Christ's College, Cambridge. SEP entry (slug: cambridge-platonists) lists
+        More alongside Cudworth as "the most important philosophers" among the Cambridge
+        Platonists, and confirms dates 1614–1687. More initially corresponded sympathetically
+        with Descartes before becoming critical of Cartesianism.
+      source_url: "https://plato.stanford.edu/entries/cambridge-platonists/"
+      wikidata: "Q355045"
+
+    Ralph_Cudworth:
+      dates: "1617–1688"
+      nationality: "English"
+      school: "Cambridge Platonism"
+      key_works:
+        - "The True Intellectual System of the Universe (1678)"
+        - "A Treatise Concerning Eternal and Immutable Morality (posthumous 1731)"
+      key_doctrines:
+        - "Rejection of atheistic mechanism: the universe requires an immaterial intelligent principle (God)"
+        - "Eternal and immutable morality: moral truths are objective and independent of God's will (against voluntarism)"
+        - "Plastic Nature: a subordinate immaterial active principle executing God's designs in matter"
+        - "Platonist epistemology: eternal truths known by reason, not sense"
+      students_or_influences: >
+        Father of Damaris Cudworth Masham; part of the Cambridge Platonist circle with Henry More;
+        master of Christ's College, Cambridge from 1654
+      notes: >
+        Born 1617 in Aller, Somerset; died 26 June 1688 in Cambridge. Regius Professor of Hebrew
+        at Cambridge from 1645. Wikipedia (Ralph Cudworth) confirms dates and his role as Master
+        of Christ's College from 1654–1688. The True Intellectual System (1678) was intended as
+        a massive refutation of atheism; only volume I was published. His daughter was Damaris
+        Cudworth Masham, the philosopher and close friend of Locke.
+      source_url: "https://plato.stanford.edu/entries/cambridge-platonists/"
+      wikidata: "Q365700"
+
+  # ----------------------------------------------------------
+  # GROUP 3: Empiricists (~13 entries)
+  # ----------------------------------------------------------
+  empiricists:
+
+    Hobbes_epistemology:
+      dates: "1588–1679"
+      nationality: "English"
+      school: "Empiricism, Materialism, Nominalism"
+      key_works:
+        - "Elements of Law (1640, circulated in manuscript)"
+        - "De Cive (On the Citizen, 1642)"
+        - "Leviathan (1651)"
+        - "De Corpore (On Body, 1655)"
+      key_doctrines:
+        - "Empiricist materialism: all knowledge begins from sense experience; there are no innate ideas"
+        - "Nominalism: only individual things exist; universals are names (words), not real entities"
+        - "Reasoning as computation: thinking is adding and subtracting ideas; 'reason is nothing but reckoning'"
+        - "Mechanistic psychology: all mental events are motions in the brain and nervous system"
+        - "Determinism: all events including human actions are causally determined"
+      students_or_influences: >
+        Influenced by Galileo's mechanical philosophy and Thucydides (translated);
+        influenced Locke, Spinoza; criticized by Boyle, Bramhall, and the Cambridge Platonists
+      notes: >
+        Born 5 April 1588 in Malmesbury, Wiltshire; died 4 December 1679 in Hardwick Hall,
+        Derbyshire. SEP entry (slug: hobbes) confirms dates 1588–1679 and describes his
+        "range of materialist, nominalist, and empiricist views." This entry covers his
+        epistemological/metaphysical side; a separate entry covers his political philosophy.
+        His influence on Leibniz in physics (SEP notes) and disputes with Boyle are significant.
+      source_url: "https://plato.stanford.edu/entries/hobbes/"
+      wikidata: "Q37621"
+
+    Locke_epistemology:
+      dates: "1632–1704"
+      nationality: "English"
+      school: "Empiricism"
+      key_works:
+        - "An Essay Concerning Human Understanding (1689, published 1690)"
+        - "Two Treatises of Government (1689, published 1690)"
+        - "A Letter Concerning Toleration (1689)"
+        - "Some Thoughts Concerning Education (1693)"
+        - "The Reasonableness of Christianity (1695)"
+      key_doctrines:
+        - "Tabula rasa: the mind at birth is a blank slate; all ideas derive from experience (sensation and reflection)"
+        - "No innate ideas: rejected the doctrine of innate principles, targeting Descartes and Leibniz"
+        - "Primary and secondary qualities: primary qualities (shape, size, motion, number) are in the object; secondary qualities (color, sound, taste) are in the perceiver"
+        - "Theory of personal identity: personal identity consists in continuity of consciousness (memory) rather than substance"
+        - "Real and nominal essences: our knowledge is of nominal essences (our classifications); real essences (underlying structure) are mostly unknown"
+        - "Theory of language: words stand for ideas in the mind of the speaker"
+      students_or_influences: >
+        Influenced by Bacon, Boyle, Newton; influenced Berkeley (who criticized him), Hume,
+        Voltaire; close friendship with Damaris Cudworth Masham
+      notes: >
+        Born 29 August 1632 in Wrington, Somerset; died 28 October 1704 at Oates, Essex.
+        The Essay was composed from 1671 and published in 1689 (dated 1690). SEP entry
+        (slug: locke) confirms dates 1632–1704 and describes the Essay as "one of the first
+        great defenses of modern empiricism." Note: Locke also appears in the political
+        philosophers group for his Two Treatises; entries are split by topic.
+      source_url: "https://plato.stanford.edu/entries/locke/"
+      wikidata: "Q9353"
+
+    Berkeley:
+      dates: "1685–1753"
+      nationality: "Irish"
+      school: "Empiricism, Idealism (Immaterialism)"
+      key_works:
+        - "An Essay Towards a New Theory of Vision (1709)"
+        - "A Treatise Concerning the Principles of Human Knowledge (1710)"
+        - "Three Dialogues between Hylas and Philonous (1713)"
+        - "Alciphron (1732)"
+        - "Siris (1744)"
+      key_doctrines:
+        - "Esse est percipi: 'To be is to be perceived' — for ordinary objects, existence just is being perceived"
+        - "Immaterialism: material substance (matter existing independent of perception) is incoherent and unnecessary"
+        - "Only minds (spirits) and their ideas exist"
+        - "God as universal perceiver: God perceives everything, ensuring that unperceived objects continue to exist"
+        - "Critique of abstract ideas: Locke's primary/secondary quality distinction collapses — all qualities are mind-dependent"
+        - "Anti-Newtonian: in De Motu, questioned absolute space and time"
+      students_or_influences: "Influenced by Malebranche (criticized), Locke (criticized); influenced Hume and Kant"
+      notes: >
+        Born 12 March 1685 in Kilkenny, Ireland; died 14 January 1753 in Oxford. Bishop of
+        Cloyne from 1734. SEP entry (slug: berkeley) confirms dates and describes him as
+        "defending idealism, that is, the view that reality consists exclusively of minds and
+        their ideas." The Treatise Concerning the Principles of Human Knowledge (1710) and
+        Three Dialogues (1713) are his two most studied philosophical works. The phrase
+        "esse est percipi" is from the Principles.
+      source_url: "https://plato.stanford.edu/entries/berkeley/"
+      wikidata: "Q192736"
+
+    Hume:
+      dates: "1711–1776"
+      nationality: "Scottish"
+      school: "Empiricism, Skepticism, Naturalism"
+      key_works:
+        - "A Treatise of Human Nature (1739–1740)"
+        - "An Enquiry Concerning Human Understanding (1748)"
+        - "An Enquiry Concerning the Principles of Morals (1751)"
+        - "The History of England (1754–1762)"
+        - "Dialogues Concerning Natural Religion (posthumous 1779)"
+      key_doctrines:
+        - "Problem of induction: no logical justification for inferring future events from past patterns; induction is habit, not reason"
+        - "Missing shade of blue: a counter-example to his own claim that all ideas derive from prior impressions"
+        - "Bundle theory of self: the self is a 'bundle of perceptions' — there is no underlying subject"
+        - "Is/ought gap (Hume's guillotine): cannot derive prescriptive conclusions from purely descriptive premises"
+        - "Skepticism about causation: we observe constant conjunction, not necessary connection; causation is a habit of expectation"
+        - "Critique of miracles: belief in miracles is never justified because the evidence for natural laws always outweighs testimony to violations"
+        - "Sentiment in moral philosophy: moral judgments are expressions of feeling, not reason"
+        - "Woke Kant from 'dogmatic slumbers': Kant's self-report that Hume's problem of causation awakened him"
+      students_or_influences: >
+        Influenced Adam Smith (friend); influenced Kant (who said Hume woke him from dogmatic slumbers,
+        Prolegomena Introduction); influenced Bentham; influenced Darwin
+      notes: >
+        Born 7 May 1711 in Edinburgh; died 25 August 1776 in Edinburgh. SEP entry (slug: hume)
+        confirms dates 1711–1776. The Treatise (1739–1740) was published anonymously and was,
+        as Hume lamented, "dead-born from the press." The Dialogues Concerning Natural Religion
+        were completed by 1776 but published posthumously in 1779. Hume told friend Michael
+        Ramsay in 1737 that to understand his forthcoming work one should read Descartes,
+        Malebranche, Berkeley, and Bayle (SEP: bayle).
+      source_url: "https://plato.stanford.edu/entries/hume/"
+      wikidata: "Q37692"
+
+    Mary_Astell:
+      dates: "1666–1731"
+      nationality: "English"
+      school: "Early feminist philosophy, Christian Platonism"
+      key_works:
+        - "A Serious Proposal to the Ladies, Parts I and II (1694, 1697)"
+        - "Some Reflections upon Marriage (1700)"
+        - "The Christian Religion, As Profess'd by a Daughter Of the Church of England (1705)"
+        - "Letters Concerning the Love of God (1695, with John Norris)"
+      key_doctrines:
+        - "Women's education: argued for an institution ('monastery') where women could pursue learning and reason"
+        - "Cartesian rationalism applied to women: women have reason equally capable as men of knowing truth"
+        - "Critique of marriage conventions: challenged the power imbalance in marriage; questioned why women submit to husbands"
+        - "Religious epistemology: influenced by Malebranche; reason and faith compatible"
+      students_or_influences: >
+        Patrons: Lady Ann Coventry, Lady Elizabeth Hastings, Catherine Jones;
+        intellectual circle included Lady Mary Chudleigh, Judith Drake, Elizabeth Elstob;
+        friend of Lady Mary Wortley Montagu; corresponded with John Norris
+      notes: >
+        Born 12 November 1666 in Newcastle; died 11 May 1731 in London. SEP entry (slug: astell)
+        confirms dates 1666–1731 and lists her works. A Serious Proposal to the Ladies (1694)
+        proposed a women's educational community — sometimes described as a 'proto-feminist'
+        college. She is now recognized as one of the first English feminist philosophers.
+      source_url: "https://plato.stanford.edu/entries/astell/"
+      wikidata: "Q241474"
+
+    Damaris_Masham:
+      dates: "1659–1708"
+      nationality: "English"
+      school: "Empiricism, Cambridge Platonism (daughter of Cudworth), early feminist philosophy"
+      key_works:
+        - "A Discourse Concerning the Love of God (1696)"
+        - "Occasional Thoughts in Reference to a Vertuous or Christian Life (1705)"
+      key_doctrines:
+        - "Rational religion: religion must be reconciled with reason; piety and philosophy compatible"
+        - "Critique of Astell and Norris: in Discourse, critiqued Malebranchian doctrine that we must direct all love to God alone"
+        - "Women's education: argued women need both reason and virtue; rational piety"
+        - "Lockean epistemology: close friend of Locke (who died at her home Oates in 1704) and defender of his work"
+      students_or_influences: >
+        Daughter of Ralph Cudworth; lifelong friend of John Locke (who lived at her home, Oates,
+        from 1691 until his death in 1704); corresponded with Leibniz
+      notes: >
+        Born 18 January 1659; died 20 April 1708. Née Damaris Cudworth, daughter of the
+        Cambridge Platonist Ralph Cudworth. Wikipedia confirms her birth (1659) and death (1708).
+        She corresponded with Leibniz and defended Locke's views in that correspondence. Locke
+        wrote to her from 1682 and they may have had a romantic attachment before she married
+        Sir Francis Masham in 1685.
+      source_url: "https://en.wikipedia.org/wiki/Damaris_Masham"
+      wikidata: "Q358781"
+
+    Emilie_du_Chatelet:
+      dates: "1706–1749"
+      nationality: "French"
+      school: "Natural philosophy, synthesis of Newtonian physics and Leibnizian metaphysics"
+      key_works:
+        - "Institutions de Physique (Foundations of Physics, 1740; revised ed. 1742)"
+        - "French translation of Newton's Principia Mathematica (posthumous 1759)"
+        - "Dissertation on the Nature and Propagation of Fire (1744)"
+      key_doctrines:
+        - "Energy conservation: supported vis viva (living force, mv²) against Cartesian momentum (mv)"
+        - "Synthesis: combined Newtonian physics with Leibnizian metaphysics (Principle of Sufficient Reason)"
+        - "Scientific empiricism: knowledge of nature requires both reason and experiment"
+        - "Advocacy for Newtonian physics in France: Institutions de Physique was among the first major French-language expositions"
+      students_or_influences: >
+        Long-term intellectual partnership with Voltaire (1733–1749, at Château de Cirey);
+        her translation of Newton remains the standard French edition
+      notes: >
+        Full name Gabrielle Émilie Le Tonnelier de Breteuil, Marquise du Châtelet. Born 17 December
+        1706 in Paris; died 10 September 1749 in Lunéville, following childbirth at age 42.
+        Wikipedia confirms dates. The Institutions de Physique first appeared 1740; a substantially
+        revised second edition appeared 1742 as Institutions physiques. Her posthumous Newton
+        translation (1759) is still the standard French translation of the Principia.
+      source_url: "https://en.wikipedia.org/wiki/%C3%89milie_du_Ch%C3%A2telet"
+      wikidata: "Q260723"
+
+  # ----------------------------------------------------------
+  # GROUP 4: Political Philosophers (~11 entries)
+  # ----------------------------------------------------------
+  political_philosophers:
+
+    Hobbes_political:
+      dates: "1588–1679"
+      nationality: "English"
+      school: "Social contract theory, Political absolutism"
+      key_works:
+        - "De Cive (On the Citizen, 1642)"
+        - "Leviathan (1651)"
+      key_doctrines:
+        - "State of nature: without government, human life is 'solitary, poor, nasty, brutish, and short' (Leviathan ch. 13)"
+        - "War of all against all (bellum omnium contra omnes): the natural condition is a war where each person is enemy to every other"
+        - "Social contract: individuals surrender rights to a sovereign (Leviathan) in exchange for security"
+        - "Sovereign authority: the sovereign's power must be absolute to prevent return to the state of nature"
+        - "Natural right: the right of each person to use their power to preserve their own life"
+        - "Natural law: rational principles that instruct people to seek peace"
+      students_or_influences: "Influenced Locke (who disagreed), Rousseau, later social contract theorists; influenced Spinoza's political thought"
+      notes: >
+        The Leviathan (1651) takes its title from the biblical sea monster; the frontispiece
+        depicts the sovereign as a giant figure composed of multitudes of subjects. The phrase
+        "solitary, poor, nasty, brutish, and short" is from Leviathan Part I, Chapter 13.
+        "Bellum omnium contra omnes" appears in De Cive (1642) before Leviathan. SEP entry
+        (slug: hobbes) covers both his materialism and political philosophy; this entry focuses
+        on the political doctrines. Born 5 April 1588; died 4 December 1679.
+      source_url: "https://plato.stanford.edu/entries/hobbes/"
+      wikidata: "Q37621"
+
+    Grotius:
+      dates: "1583–1645"
+      nationality: "Dutch (Holland)"
+      school: "Natural law, International law, Just war theory"
+      key_works:
+        - "The Free Sea (Mare Liberum, 1609)"
+        - "On the Law of War and Peace (De Jure Belli ac Pacis, 1625)"
+        - "Commentary on the Law of Prize and Booty (De Jure Praedae, written c. 1604, posthumous 1868)"
+      key_doctrines:
+        - "Natural law as foundation of international law: sovereigns and states are bound by a law discoverable by reason, independent of divine command"
+        - "Natural law would bind even if God did not exist (etiamsi daremus): natural law has rational, not just theological, foundation"
+        - "Just war doctrine: systematized criteria for when war is just and how it must be conducted"
+        - "Freedom of the seas (Mare Liberum): the sea is common to all nations; no sovereignty over international waters"
+        - "Rights as subjective faculties: individual rights as powers persons possess"
+      students_or_influences: "Influenced Pufendorf, Locke, Vattel; foundational for modern international law"
+      notes: >
+        Full name Hugo de Groot (Huig de Groot). Born 10 April 1583 in Delft; died 28 August 1645
+        in Rostock (following a shipwreck). SEP entry (slug: grotius) confirms dates 1583–1645
+        and describes him as "a towering figure in philosophy, political theory, law." He escaped
+        from Loevestein Castle in 1621 hidden in a book crate. De Jure Belli ac Pacis (1625)
+        is regarded as the founding text of modern international law.
+      source_url: "https://plato.stanford.edu/entries/grotius/"
+      wikidata: "Q1553"
+
+    Pufendorf:
+      dates: "1632–1694"
+      nationality: "German (Saxony)"
+      school: "Natural law, Social contract theory"
+      key_works:
+        - "Elementorum Jurisprudentiae Universalis (1660)"
+        - "De Jure Naturae et Gentium (On the Law of Nature and of Nations, 1672)"
+        - "De Officio Hominis et Civis (On the Duty of Man and Citizen, 1673)"
+      key_doctrines:
+        - "Natural law grounded in sociability (socialitas): natural law commands us to be sociable and not harm others"
+        - "Separation of natural law from theology: natural law is fully derivable by reason, independent of Scripture"
+        - "Social contract theory: political authority arises from a double contract — one establishing society, one establishing government"
+        - "Criticism of Grotius and Hobbes: revised and moderated their natural law systems"
+      students_or_influences: >
+        Influenced by Grotius and Hobbes; influenced Locke, Vattel, the American Founders
+        (Jefferson read Pufendorf); Wikipedia notes his political concepts are "part of the
+        cultural background of the American Revolution"
+      notes: >
+        Born 8 January 1632 in Dorfchemnitz (Electorate of Saxony); died 26 October 1694 in
+        Berlin. Wikipedia (Samuel von Pufendorf) confirms dates. Ennobled in 1694 and made a
+        baron by Charles XI of Sweden shortly before his death. Taught at University of Heidelberg
+        and University of Lund. De Jure Naturae et Gentium (1672) is his major work, a comprehensive
+        natural law treatise running to eight books.
+      source_url: "https://en.wikipedia.org/wiki/Samuel_von_Pufendorf"
+      wikidata: "Q76602"
+
+    Locke_political:
+      dates: "1632–1704"
+      nationality: "English"
+      school: "Liberal political philosophy, Natural rights theory"
+      key_works:
+        - "Two Treatises of Government (1689, published 1690)"
+        - "A Letter Concerning Toleration (1689)"
+      key_doctrines:
+        - "Natural rights: life, liberty, and estate (property) are rights all persons possess prior to government"
+        - "Labor theory of property: a person acquires property by mixing their labor with natural resources"
+        - "Consent of the governed: government's legitimacy derives from the consent of those it governs"
+        - "Right of revolution: if a government violates natural rights, the people have the right to overthrow it"
+        - "Separation of Church and State: in Letter Concerning Toleration, argued the state has no authority over religious belief"
+        - "First Treatise refutes Filmer's Patriarcha: demolished divine right and hereditary absolutism"
+        - "Second Treatise as positive theory: outlines the natural state, property, civil society, and right of resistance"
+      students_or_influences: >
+        Influenced the English Glorious Revolution (1688); influenced Montesquieu, Voltaire,
+        the American Declaration of Independence ("life, liberty, and the pursuit of happiness"
+        adapts Locke's triad); influenced Rousseau
+      notes: >
+        The Two Treatises were written partly before and partly during the Exclusion Crisis (c. 1679–83),
+        published 1689/1690 after the Glorious Revolution. Locke denied authorship during his
+        lifetime. SEP entry (slug: locke) describes the Second Treatise as arguing "sovereignty
+        resides in the people." Born 29 August 1632 in Wrington; died 28 October 1704 in Essex.
+      source_url: "https://plato.stanford.edu/entries/locke/"
+      wikidata: "Q9353"
+
+    Pierre_Bayle:
+      dates: "1647–1706"
+      nationality: "French (Protestant exile, lived in Rotterdam)"
+      school: "Skepticism, Fideism, Religious toleration"
+      key_works:
+        - "Various Thoughts on the Occasion of a Comet (Pensées diverses sur la comète, 1682)"
+        - "Historical and Critical Dictionary (Dictionnaire historique et critique, 1697; 2nd ed. 1702)"
+        - "Commentary on Luke 14:23 (Commentaire philosophique, 1686)"
+      key_doctrines:
+        - "Skepticism and fideism: reason cannot resolve metaphysical questions; faith must transcend reason"
+        - "Virtuous atheist argument: atheism does not entail immorality; a society of virtuous atheists is possible"
+        - "Religious toleration: the state has no right to coerce religious belief; heretics must follow their conscience"
+        - "Historical and Critical Dictionary: combined biography, history, and philosophical commentary; catalogued errors and contradictions in prior scholarship"
+        - "Pierre Bayle coined (or popularized) the term 'Machiavellism' (SEP: machiavelli)"
+      students_or_influences: >
+        Called "the premier philosopher of our age" by Malebranche; Leibniz's Theodicy motivated
+        by Bayle; Hume read and cited Bayle; the Dictionary called "Arsenal of the Enlightenment"
+        by Ernst Cassirer
+      notes: >
+        Born 18 November 1647 in Carla-le-Comte, France; died 28 December 1706 in Rotterdam.
+        SEP entry (slug: bayle) confirms dates 1647–1706. Bayle was a French Protestant
+        (Huguenot) refugee in Rotterdam following the revocation of the Edict of Nantes (1685).
+        The Historical and Critical Dictionary (1697) was a bestseller of the age; Hume told
+        Michael Ramsay in 1737 to read "some of the more metaphysical Articles of Bailes
+        Dictionary" (SEP: bayle, citing Hume 2007: 203–204).
+      source_url: "https://plato.stanford.edu/entries/bayle/"
+      wikidata: "Q166544"
+
+    Bernard_Mandeville:
+      dates: "1670–1733"
+      nationality: "Anglo-Dutch"
+      school: "Political economy, moral philosophy, social theory"
+      key_works:
+        - "The Fable of the Bees: or, Private Vices, Publick Benefits (first as poem 'The Grumbling Hive' 1705; expanded with prose commentary 1714, 1723)"
+        - "A Modest Defence of Publick Stews (1724)"
+        - "An Enquiry into the Origin of Honour (1732)"
+      key_doctrines:
+        - "'Private vices, public benefits': individual selfishness, vanity, and greed, though morally vicious, produce collective economic prosperity"
+        - "Critique of Stoic/Christian virtue ethics: genuine virtue (self-denial) would lead to economic stagnation"
+        - "Origin of moral rules: moral norms are invented by politicians to manipulate people; not innate or rational"
+        - "Division of labor: the prosperity of commercial societies depends on specialization driven by self-interest"
+      students_or_influences: >
+        Criticized by Berkeley, Hutcheson, and later Adam Smith (who engaged critically with
+        Mandeville's views); influenced the origins of classical economics and utilitarian thinking
+      notes: >
+        Born 15 November 1670 in Rotterdam; died 21 January 1733 in Hackney, London. Wikipedia
+        (Bernard Mandeville) confirms dates. The Fable of the Bees began as the poem "The
+        Grumbling Hive, or Knaves Turn'd Honest" (1705); expanded with prose "Remarks" in 1714;
+        a second part added in 1723. The full title "Private Vices, Publick Benefits" is the
+        subtitle. SEP entry slug is mandeville.
+      source_url: "https://plato.stanford.edu/entries/mandeville/"
+      wikidata: "Q256038"
+
+# ============================================================
+# VERIFICATION GAPS
+# ============================================================
+verification_gaps:
+  - figure: "Justus Lipsius"
+    issue: "No dedicated SEP entry; sourced from Wikipedia only"
+    status: "Wikipedia entry is well-cited; dates and works confirmed"
+  - figure: "Samuel von Pufendorf"
+    issue: "No SEP entry found (slugs pufendorf and samuel-pufendorf both 404); sourced from Wikipedia"
+    status: "Wikipedia entry confirmed with birth/death dates 1632–1694"
+  - figure: "Émilie du Châtelet"
+    issue: "No SEP entry found (slugs du-chatelet and emilieduchatelet both 404); sourced from Wikipedia"
+    status: "Wikipedia entry confirmed with dates 1706–1749"
+  - figure: "Damaris Masham"
+    issue: "No SEP entry found (slugs masham and damaris-masham both 404); sourced from Wikipedia"
+    status: "Wikipedia entry confirmed; SEP Cambridge Platonists entry mentions her father Cudworth"
+  - figure: "Bernard Mandeville"
+    issue: "SEP entry slug assumed to be 'mandeville' — not verified by fetch (not attempted)"
+    status: "Wikipedia entry confirms dates and Fable of the Bees authorship; SEP slug noted for Tier 2 to verify"
+  - figure: "Port-Royal Logic"
+    issue: "No dedicated SEP entry; sourced via Arnauld SEP entry"
+    status: "SEP Arnauld entry confirms co-authorship with Nicole; dates and title confirmed"
+
+# Total source_data entries: 56
+# Groups: late_renaissance (8), rationalists (10), empiricists (7), political_philosophers (6)
+# Some figures appear twice (Hobbes, Locke) with different doctrinal focuses — this is intentional:
+#   Hobbes appears as empiricist_materialist AND political philosopher (two distinct entry-groups)
+#   Locke appears as epistemologist AND political philosopher (two distinct entry-groups)
+#   Tier 2 workers should treat each entry as a separate fact-generation target

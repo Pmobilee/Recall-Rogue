@@ -1,0 +1,1559 @@
+deck_id: philosophy
+sub_deck_id: analytic_tradition
+name: "Analytic Tradition"
+domain: philosophy
+sub_domain: analytic_tradition
+target_facts: 50
+minimum_facts: 45
+data_sources:
+  - name: Stanford Encyclopedia of Philosophy
+    url: https://plato.stanford.edu/
+    license: CC-BY-SA-4.0 (individual entries)
+    usage: biographical dates, doctrine summaries, key works, philosophical positions
+  - name: Wikipedia
+    url: https://en.wikipedia.org/
+    license: CC-BY-SA-4.0
+    usage: publication dates, work descriptions, cross-verification of key facts
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: structured identifiers, birth/death dates, entity relationships
+
+# ============================================================
+# SOURCE DATA — 6 theme groups
+# All facts verified against SEP/Wikipedia URLs listed per entry.
+# Workers MUST copy facts FROM this verified data — never invent.
+# ============================================================
+source_data:
+
+  # ----------------------------------------------------------
+  # GROUP 1: Founders — Logic and Language
+  # ----------------------------------------------------------
+  founders_logic_language:
+
+    Gottlob_Frege:
+      dates: "b. 1848, d. 1925"
+      school: "logicism, analytic philosophy"
+      key_works:
+        - title: "Begriffsschrift"
+          year: 1879
+          notes: >
+            'Concept-writing' — published 1879 at Jena. First fully formal system
+            of predicate calculus (quantification theory). Introduced variables,
+            quantifiers, and a notation for function-argument analysis of propositions,
+            superseding Aristotelian syllogistic.
+        - title: "Die Grundlagen der Arithmetik (The Foundations of Arithmetic)"
+          year: 1884
+          notes: >
+            Argued that arithmetic truths are analytic, derivable from logical laws
+            alone (logicism). Introduced the context principle: never ask for the
+            meaning of a word in isolation, only in the context of a sentence.
+        - title: "Grundgesetze der Arithmetik (Basic Laws of Arithmetic)"
+          year: "vol. 1: 1893, vol. 2: 1903"
+          notes: >
+            Attempted formal derivation of arithmetic from logic using Basic Law V.
+            Russell's Paradox (communicated by Russell in 1902) showed Basic Law V
+            was inconsistent. Vol. 2 appendix acknowledges the contradiction.
+        - title: "Ueber Sinn und Bedeutung (On Sense and Reference)"
+          year: 1892
+          notes: >
+            Distinguished 'Sinn' (sense/mode of presentation) from 'Bedeutung'
+            (reference/denotation). The morning star and evening star have the same
+            reference (Venus) but different senses — explaining why 'the morning star
+            is the evening star' is informative, unlike 'the morning star is the
+            morning star'.
+      key_doctrines:
+        - "Predicate calculus: first complete formal system with quantifiers and variables"
+        - "Logicism: arithmetic is reducible to pure logic"
+        - "Sense vs. reference (Sinn/Bedeutung): the morning star / evening star example"
+        - "Context principle: words have meaning only in propositional context"
+        - "Function-argument analysis of propositions (replacing subject-predicate)"
+      students_or_influences: "Russell (read Frege 1900s), Carnap (student at Jena), Wittgenstein"
+      notes: >
+        Frege taught at University of Jena his entire career. His work was little
+        read until Russell drew attention to it. Russell's paradox devastated Frege's
+        logicist program in 1902.
+      source_url: "https://plato.stanford.edu/entries/frege/"
+      wikidata: "Q28147"
+
+    Bertrand_Russell:
+      dates: "b. 1872, d. 1970"
+      school: "analytic philosophy, logicism, logical atomism"
+      key_works:
+        - title: "Principia Mathematica (with Whitehead)"
+          year: "3 vols: 1910, 1912, 1913"
+          notes: >
+            Monumental work attempting to derive all of mathematics from logical axioms.
+            Introduced type theory to avoid Russell's Paradox. Set out formal logic
+            as the foundation for mathematics. Sequel to Russell's 1903 Principles of
+            Mathematics.
+        - title: "On Denoting"
+          year: 1905
+          notes: >
+            Published in Mind. Presents the theory of descriptions: phrases like 'the
+            present King of France' are not names but disguised quantified claims.
+            'The present King of France is bald' is false (not meaningless) because
+            there is no present King of France. One of the most influential papers in
+            analytic philosophy.
+        - title: "The Problems of Philosophy"
+          year: 1912
+          notes: >
+            Introduction to epistemology: knowledge by acquaintance vs. knowledge by
+            description. Discusses sense-data, induction, universals.
+        - title: "A History of Western Philosophy"
+          year: 1945
+          notes: "Popular history; won 1950 Nobel Prize in Literature."
+      key_doctrines:
+        - "Theory of descriptions: definite descriptions are quantified claims, not names"
+        - "Logicism: mathematics reducible to logic (with Whitehead)"
+        - "Logical atomism: world consists of logically independent atomic facts"
+        - "Type theory: hierarchy of logical types to avoid paradox"
+        - "Russell's Paradox: the set of all sets that do not contain themselves"
+        - "'The present King of France is bald' is the canonical example of theory of descriptions"
+      students_or_influences: "Wittgenstein (student 1911-1913), Moore (Trinity colleague)"
+      notes: >
+        Nobel Prize in Literature 1950. Dismissed from Trinity College Cambridge 1916
+        for pacifist activities during WWI; later dismissed from CCNY 1940. Awarded
+        Order of Merit 1949. Remained publicly prominent until his death at 97.
+      source_url: "https://plato.stanford.edu/entries/russell/"
+      wikidata: "Q36192"
+
+    Alfred_North_Whitehead:
+      dates: "b. 1861, d. 1947"
+      school: "logicism, process philosophy"
+      key_works:
+        - title: "Principia Mathematica (with Russell)"
+          year: "3 vols: 1910, 1912, 1913"
+          notes: "Co-author with Russell. See Russell entry."
+        - title: "Process and Reality"
+          year: 1929
+          notes: >
+            Major work in speculative metaphysics written after Whitehead moved
+            to Harvard. Defends 'philosophy of organism': reality consists of
+            processes ('actual occasions'), not static substances. God is a
+            non-coercive factor in the cosmos.
+      key_doctrines:
+        - "Co-creator of Principia Mathematica with Russell"
+        - "Process philosophy (philosophy of organism): reality is fundamentally processual"
+        - "Actual occasions as the basic units of reality"
+        - "Fallacy of misplaced concreteness: treating abstractions as concrete"
+      students_or_influences: "Russell (student, then collaborator at Cambridge)"
+      notes: >
+        Moved from Cambridge to Harvard in 1924 at age 63 where he developed
+        process philosophy. Distinct from his early logicist work.
+      source_url: "https://plato.stanford.edu/entries/whitehead/"
+      wikidata: "Q174461"
+
+    GE_Moore:
+      dates: "b. 1873, d. 1958"
+      school: "analytic philosophy, common sense philosophy, moral realism"
+      key_works:
+        - title: "Principia Ethica"
+          year: 1903
+          notes: >
+            Argues that 'good' is a simple, non-natural, indefinable property.
+            The open question argument: for any natural property N, the question
+            'Is something that is N good?' is always open (not analytically true).
+            Therefore 'good' cannot be defined in natural terms. Introduced the
+            term 'naturalistic fallacy' for the error of defining good in natural terms.
+        - title: "A Defence of Common Sense"
+          year: 1925
+          notes: >
+            Defends the certainty of common-sense beliefs (that there are material
+            objects, other minds exist, etc.) against sceptical philosophy.
+        - title: "Proof of an External World"
+          year: 1939
+          notes: >
+            'Here is one hand' argument: Moore holds up one hand, then another,
+            arguing that we thereby know for certain that at least two external
+            objects exist — a common-sense refutation of idealism.
+      key_doctrines:
+        - "Naturalistic fallacy: defining 'good' in natural terms commits a logical error"
+        - "Open question argument: 'Is pleasant X good?' is always an open question"
+        - "'Good' is a simple, unanalyzable, non-natural property"
+        - "Common sense: certainty of ordinary beliefs about the external world"
+        - "'Here is one hand' — refutation of idealism"
+        - "Refutation of idealism (1903 paper): esse is not percipi"
+      students_or_influences: "Wittgenstein (influenced by Moore at Cambridge), Russell (early colleague)"
+      notes: >
+        Trinity College Cambridge with Russell and Wittgenstein. Moore's SEP entry
+        describes him as one of the 'trinity of philosophers at Trinity College
+        Cambridge.' His wife called him Bill despite being George Edward.
+      source_url: "https://plato.stanford.edu/entries/moore/"
+      wikidata: "Q193183"
+
+    Ludwig_Wittgenstein_Early:
+      dates: "b. 1889, d. 1951 (early period: 1913–1921)"
+      school: "logical atomism (early), ordinary language philosophy (late)"
+      key_works:
+        - title: "Tractatus Logico-Philosophicus"
+          year: "1921 (German); 1922 (English, with Russell introduction)"
+          notes: >
+            Only book published in Wittgenstein's lifetime. German title:
+            Logisch-Philosophische Abhandlung (1921). English title suggested by
+            G.E. Moore as homage to Spinoza. Picture theory of meaning: propositions
+            picture facts; meaningful propositions describe possible states of affairs.
+            Atomic facts are the simplest components of reality. Famous final
+            proposition: 'Whereof one cannot speak, thereof one must be silent'
+            (Wovon man nicht reden kann, darüber muss man schweigen).
+            Notes written during WWI service (1914-1918), completed on military
+            leave 1918.
+      key_doctrines:
+        - "Picture theory of meaning: propositions picture facts as pictures picture states of affairs"
+        - "Atomic facts: world is the totality of facts, not things"
+        - "'The limits of my language mean the limits of my world'"
+        - "'Whereof one cannot speak, thereof one must be silent' (final proposition 7)"
+        - "Philosophy's task: logical clarification, not production of doctrine"
+        - "Showing vs. saying: logical form can be shown but not stated"
+      students_or_influences: "Russell (supervisor), Moore (Cambridge colleague); influenced Vienna Circle"
+      notes: >
+        Early Wittgenstein is often contrasted with late Wittgenstein (Philosophical
+        Investigations). Vienna Circle read Tractatus intensely, though Wittgenstein
+        felt they misunderstood him. After completing the Tractatus he thought
+        philosophy was finished and became an elementary school teacher in Austria.
+      source_url: "https://plato.stanford.edu/entries/wittgenstein/"
+      wikidata: "Q9358"
+
+    Kurt_Godel:
+      dates: "b. 1906, d. 1978"
+      school: "mathematical logic, Platonism in mathematics"
+      key_works:
+        - title: "On Formally Undecidable Propositions of Principia Mathematica and Related Systems"
+          year: 1931
+          notes: >
+            Published 1931 by 25-year-old Gödel. Two incompleteness theorems:
+            (1) Any consistent formal system capable of basic arithmetic contains
+            true statements that cannot be proved within that system. (2) No such
+            system can prove its own consistency. The results showed that Hilbert's
+            program — to find a complete and consistent set of axioms for all
+            mathematics — is impossible.
+      key_doctrines:
+        - "First incompleteness theorem: any consistent arithmetic system is incomplete"
+        - "Second incompleteness theorem: no consistent system can prove its own consistency"
+        - "Gödel numbering: encoding statements as numbers within arithmetic"
+        - "Mathematical Platonism: Gödel believed mathematical objects exist independently"
+        - "Showed Hilbert's completeness program is impossible"
+      students_or_influences: "Hilbert program (refuted), Einstein (colleague at IAS Princeton)"
+      notes: >
+        Gödel moved to the US in 1940 and spent career at the Institute for Advanced
+        Study at Princeton. Died 1978 of starvation after his wife Adele was
+        hospitalized — he refused to eat food prepared by strangers.
+      source_url: "https://plato.stanford.edu/entries/goedel/"
+      wikidata: "Q43822"
+
+    Alfred_Tarski:
+      dates: "b. 1901, d. 1983"
+      school: "mathematical logic, model theory"
+      key_works:
+        - title: "The Concept of Truth in Formalized Languages"
+          year: "1933 (Polish); 1935 (German)"
+          notes: >
+            Developed the semantic theory of truth using the T-schema (also called
+            Convention T). The T-schema: "'Snow is white' is true if and only if
+            snow is white." Truth is defined as a property of sentences within a
+            metalanguage that says of the object-language sentence that what it says
+            is the case. Tarski showed that a language cannot contain its own truth
+            predicate without contradiction (the liar paradox).
+        - title: "Introduction to Logic and to the Methodology of Deductive Sciences"
+          year: 1941
+          notes: "Influential textbook; widely used in logic courses."
+      key_doctrines:
+        - "Semantic theory of truth (T-schema / Convention T)"
+        - "T-schema: 'S is true iff p' — e.g., 'Snow is white' is true iff snow is white"
+        - "Object language vs. metalanguage: truth requires a higher-level language"
+        - "Liar paradox resolved by stratifying language levels"
+        - "Model theory: mathematical foundations of semantics"
+        - "Tarski is described as 'second only to Gödel' among 20th-century logicians (SEP)"
+      students_or_influences: "Carnap, Davidson (who applied Tarski's T-schema to natural language)"
+      notes: >
+        Born in Poland, fled to the US in 1939 on the last ship out before WWII;
+        his family perished in the Holocaust. Spent career at UC Berkeley.
+        SEP: 'often regarded as second only to Gödel' among 20th-century logicians.
+      source_url: "https://plato.stanford.edu/entries/tarski/"
+      wikidata: "Q83509"
+
+    Frank_Ramsey:
+      dates: "b. 1903, d. 1930"
+      school: "analytic philosophy, mathematical logic, pragmatism"
+      key_works:
+        - title: "Truth and Probability"
+          year: 1926
+          notes: >
+            Develops subjective (Bayesian) probability and decision theory.
+            Redundancy theory of truth: asserting 'It is true that p' is no more
+            than asserting p. 'True' adds nothing — a deflationary view.
+        - title: "Ramsey's Maxim"
+          year: 1929
+          notes: >
+            Paper 'Theories' introduces what became known as Ramsey sentences:
+            theoretical terms of a scientific theory can be replaced by existential
+            quantifiers, eliminating reference to unobservable entities.
+      key_doctrines:
+        - "Redundancy (deflationary) theory of truth: 'p is true' is equivalent to p"
+        - "Subjective probability (Bayesian): degrees of belief as probabilities"
+        - "Ramsey sentences: existential quantification over theoretical terms"
+        - "Decision theory: expected utility maximization"
+      students_or_influences: "Wittgenstein (friend; translated Tractatus with Ogden); Moore; Keynes"
+      notes: >
+        Died at age 26 from liver disease. Wrote foundational papers on probability,
+        decision theory, and philosophy of language. Wittgenstein's Philosophical
+        Investigations took shape partly from conversations with Ramsey.
+      source_url: "https://plato.stanford.edu/entries/ramsey/"
+      wikidata: "Q107309"
+
+    CI_Lewis:
+      dates: "b. 1883, d. 1964"
+      school: "pragmatism, modal logic"
+      key_works:
+        - title: "A Survey of Symbolic Logic"
+          year: 1918
+          notes: >
+            First systematic treatment of modal logic. Introduced strict implication
+            to replace material implication — avoiding paradoxes of material
+            implication (that a false proposition implies anything).
+        - title: "Mind and the World Order"
+          year: 1929
+          notes: >
+            Conceptual pragmatism: the mind imposes a priori categories on experience.
+            Distinguishes the given (raw experience) from the conceptual interpretation
+            imposed on it.
+      key_doctrines:
+        - "Founder of modern modal logic (strict implication, 1918)"
+        - "Strict implication: 'p strictly implies q' = necessarily, if p then q"
+        - "Conceptual pragmatism: a priori categories are chosen by minds for practical utility"
+        - "The given: there is an uninterpreted datum of experience prior to conceptualization"
+        - "Distinguished from later possible-worlds semantics (Kripke/Lewis)"
+      students_or_influences: "Quine (Harvard student), influenced Carnap, Kripke (modal logic)"
+      notes: >
+        Harvard philosopher, not to be confused with David Lewis. Predecessor to
+        Kripkean possible-worlds semantics for modal logic. Quine studied under
+        C.I. Lewis at Harvard.
+      source_url: "https://plato.stanford.edu/entries/lewis-ci/"
+      wikidata: "Q724453"
+
+  # ----------------------------------------------------------
+  # GROUP 2: Vienna Circle / Logical Positivism
+  # ----------------------------------------------------------
+  vienna_circle:
+
+    Moritz_Schlick:
+      dates: "b. 1882, d. 1936"
+      school: "logical positivism, Vienna Circle"
+      key_works:
+        - title: "General Theory of Knowledge (Allgemeine Erkenntnislehre)"
+          year: 1918
+          notes: >
+            Pre-Vienna Circle epistemology: knowledge as coordinating concepts with
+            intuitions via implicit definitions.
+        - title: "Form and Content"
+          year: 1932
+          notes: "Defense of physicalism and the unity of science."
+      key_doctrines:
+        - "Founder and leader of the Vienna Circle (Wiener Kreis)"
+        - "Verificationism: the meaning of a statement is its method of verification"
+        - "Physicalism: all scientific language can be reduced to physical terms"
+        - "Analytic philosophy of science: metaphysics is meaningless"
+      students_or_influences: "Carnap, Neurath, Ayer (visited); Wittgenstein (informal contact)"
+      notes: >
+        Founded the Vienna Circle c. 1924. Assassinated by a former student (Hans
+        Nelbock) on the steps of the University of Vienna in 1936. The Circle
+        effectively dissolved after his death and the Nazi annexation of Austria.
+      source_url: "https://plato.stanford.edu/entries/schlick/"
+      wikidata: "Q77297"
+
+    Rudolf_Carnap:
+      dates: "b. 1891, d. 1970"
+      school: "logical positivism / logical empiricism"
+      key_works:
+        - title: "Der logische Aufbau der Welt (The Logical Structure of the World)"
+          year: 1928
+          notes: >
+            Rational reconstruction of all empirical concepts from an elementary
+            basis of immediate experience using logical relations. Attempted to show
+            all meaningful statements are reducible to observation sentences.
+        - title: "Logische Syntax der Sprache (Logical Syntax of Language)"
+          year: 1934
+          notes: >
+            Principle of Tolerance: 'In logic there are no morals. Everyone is at
+            liberty to build up his own logic, i.e., his own form of language, as
+            he wishes.' Metaphysical disputes are disputes about which linguistic
+            framework to adopt — not genuine factual disputes.
+        - title: "Meaning and Necessity"
+          year: 1947
+          notes: >
+            Developed intensional semantics using possible worlds. Influenced by
+            Frege's sense/reference distinction. Kripke's Naming and Necessity title
+            is a direct reference to this book.
+      key_doctrines:
+        - "Verificationism: statements are meaningful only if empirically verifiable or analytically true"
+        - "Principle of Tolerance: no single correct logic; frameworks are chosen for utility"
+        - "External vs. internal questions: existence questions within a framework vs. about frameworks"
+        - "Aufbau program: reduction of all knowledge to immediate experience"
+        - "Metaphysics as meaningless: metaphysical claims neither true nor false but nonsensical"
+        - "Explication: reformulating vague concepts with precise logical equivalents"
+      students_or_influences: "Frege (teacher at Jena), Schlick (Vienna Circle), Quine (who critiqued him)"
+      notes: >
+        Fled Europe 1935 for the US. Taught at Chicago then UCLA. Quine's 'Two
+        Dogmas of Empiricism' (1951) is directed largely against Carnap's
+        analytic-synthetic distinction and reductionism.
+      source_url: "https://plato.stanford.edu/entries/carnap/"
+      wikidata: "Q60064"
+
+    Otto_Neurath:
+      dates: "b. 1882, d. 1945"
+      school: "logical positivism, physicalism"
+      key_works:
+        - title: "Protokollsätze (Protocol Sentences)"
+          year: 1932
+          notes: >
+            Argued against Schlick that protocol sentences (basic observation reports)
+            are not incorrigible foundations for knowledge — they too can be revised.
+            Led to the protocol sentence debate within the Vienna Circle.
+      key_doctrines:
+        - "Physicalism and the unity of science"
+        - "Neurath's boat: 'We are like sailors who must rebuild their ship on the open sea, never able to dismantle it in dry dock'"
+        - "Protocol sentences are not incorrigible foundations — all statements are revisable"
+        - "Anti-foundationalism within logical positivism"
+        - "ISOTYPE: pictorial statistics system (non-philosophical contribution)"
+      students_or_influences: "Schlick, Carnap (Vienna Circle colleagues); influenced Quine's anti-foundationalism"
+      notes: >
+        Neurath's boat metaphor is widely cited in epistemology as a statement of
+        coherentism and anti-foundationalism. Source: Neurath 1932 'Protokollsätze.'
+        Fled Austria 1934, died in Oxford 1945.
+      source_url: "https://plato.stanford.edu/entries/neurath/"
+      wikidata: "Q77488"
+
+    AJ_Ayer:
+      dates: "b. 1910, d. 1989"
+      school: "logical positivism (British), emotivism"
+      key_works:
+        - title: "Language, Truth and Logic"
+          year: 1936
+          notes: >
+            Written at age 24, after visiting the Vienna Circle. English exposition
+            of logical positivism. Verificationist criterion of meaning: a statement
+            is cognitively meaningful only if it is either (a) analytically true/false
+            (tautology or contradiction) or (b) empirically verifiable in principle.
+            All metaphysical, theological, and evaluative statements are therefore
+            'meaningless' — not false, but neither true nor false (pseudo-propositions).
+            Emotivism: ethical statements do not state facts but express attitudes —
+            'Stealing is wrong' means something like 'Boo to stealing!'
+      key_doctrines:
+        - "Verification principle: only verifiable or analytic statements are meaningful"
+        - "Emotivism: moral statements express attitudes, not facts"
+        - "Metaphysics as literally meaningless (pseudo-propositions)"
+        - "English spokesperson for Vienna Circle logical positivism"
+      students_or_influences: "Russell (acknowledged), Vienna Circle (visited 1932-33)"
+      notes: >
+        SEP: 'A.J. Ayer (1910-1989) was only 24 when he wrote Language, Truth and
+        Logic (1936).' He later significantly qualified the verification principle,
+        acknowledging it was too strong in its original form. Knighted 1970.
+      source_url: "https://plato.stanford.edu/entries/ayer/"
+      wikidata: "Q216316"
+
+    Karl_Popper:
+      dates: "b. 1902, d. 1994"
+      school: "critical rationalism, philosophy of science"
+      key_works:
+        - title: "Logik der Forschung (The Logic of Scientific Discovery)"
+          year: "1934 (German); 1959 (English)"
+          notes: >
+            Proposed falsificationism as the criterion of demarcation between science
+            and non-science. A theory is scientific iff it is falsifiable — i.e., it
+            makes predictions that could in principle be shown false by observation.
+            Critique of induction: no number of observed instances can logically
+            verify a universal law; one counterexample can falsify it.
+        - title: "The Open Society and Its Enemies"
+          year: "2 vols, 1945"
+          notes: >
+            Argues that totalitarianism (Marxism, Nazism) is rooted in historicism —
+            the belief that history has a predetermined direction. Attacks Plato,
+            Hegel, Marx as enemies of the open, democratic society.
+      key_doctrines:
+        - "Falsificationism: scientific theories must be falsifiable (not verified)"
+        - "Demarcation problem: distinguishing science from pseudo-science (Marxism, Freudianism not falsifiable)"
+        - "Critique of induction: induction cannot justify universal laws"
+        - "Critical rationalism: beliefs held tentatively, subject to criticism"
+        - "Three worlds: World 1 (physical), World 2 (mental), World 3 (objective knowledge)"
+        - "Historicism as the enemy of open society"
+      students_or_influences: "Lakatos, Feyerabend (students at LSE); Hayek (colleague)"
+      notes: >
+        Taught Lakatos and Feyerabend at the London School of Economics, both of
+        whom later critiqued and modified his views. SEP confirms he is 'generally
+        regarded as one of the greatest philosophers of science of the twentieth century.'
+      source_url: "https://plato.stanford.edu/entries/popper/"
+      wikidata: "Q81244"
+
+    Carl_Hempel:
+      dates: "b. 1905, d. 1997"
+      school: "logical empiricism, philosophy of science"
+      key_works:
+        - title: "Studies in the Logic of Confirmation"
+          year: 1945
+          notes: >
+            Presented Hempel's Paradox of Confirmation (raven paradox): observing
+            a white shoe confirms 'All non-black things are non-ravens' which is
+            logically equivalent to 'All ravens are black' — so a white shoe logically
+            confirms that all ravens are black. This counterintuitive result reveals
+            deep problems in theories of confirmation.
+        - title: "Aspects of Scientific Explanation"
+          year: 1965
+          notes: >
+            Full presentation of the Deductive-Nomological (D-N) model of explanation.
+            Scientific explanation consists of a deductive argument whose premises
+            include at least one universal law; the event to be explained follows
+            deductively from those premises plus initial conditions.
+      key_doctrines:
+        - "Deductive-Nomological (covering law) model of scientific explanation"
+        - "D-N model: explanation = deduction from laws + initial conditions"
+        - "Hempel's paradox / raven paradox: observing white shoes confirms 'All ravens are black'"
+        - "Criterion of cognitive significance (with Carnap and Neurath)"
+        - "Inductive-statistical model of explanation (probabilistic variant)"
+      students_or_influences: "Carnap (Vienna Circle influence), Schlick; influenced philosophy of science"
+      notes: >
+        SEP: 'principal proponent of the covering law theory of explanation and the
+        paradoxes of confirmation as basic elements of the theory of science.'
+        Hempel (1905-1997) spent career at Princeton and later Pittsburgh.
+      source_url: "https://plato.stanford.edu/entries/hempel/"
+      wikidata: "Q180974"
+
+  # ----------------------------------------------------------
+  # GROUP 3: Ordinary Language Philosophy
+  # ----------------------------------------------------------
+  ordinary_language:
+
+    Ludwig_Wittgenstein_Late:
+      dates: "b. 1889, d. 1951 (late period: 1936–1951)"
+      school: "ordinary language philosophy"
+      key_works:
+        - title: "Philosophical Investigations"
+          year: "1953 (published posthumously)"
+          notes: >
+            Published after Wittgenstein's death in 1951. Ranked #1 most important
+            philosophical book of the 20th century in a survey of American university
+            teachers. Rejects the picture theory of the Tractatus. Language games:
+            the meaning of a word is its use in the practice of a form of life.
+            Family resemblance: concepts like 'game' have no single common property
+            linking all instances. Private language argument: a genuinely private
+            language (known only to one person) is impossible. The beetle in the box:
+            even if everyone has a 'beetle' in their box that no one else can see,
+            the word 'beetle' gets its meaning from public use, not the private object.
+            Duck-rabbit: the same figure can be seen as a duck or a rabbit — aspect
+            perception.
+      key_doctrines:
+        - "Language games: meaning is use within a form of life"
+        - "Family resemblance: concepts share overlapping similarities, not a common essence"
+        - "Private language argument: there cannot be a language intelligible only to oneself"
+        - "The beetle in the box: the private object drops out of the grammar"
+        - "'Meaning is use' (not picture or mental image)"
+        - "Forms of life: shared human practices give language its grounding"
+        - "The duck-rabbit: aspect perception"
+        - "Philosophy as therapy: dissolving problems, not solving them"
+      students_or_influences: "Russell (early supervisor), Moore (colleague); influenced Austin, Ryle, Anscombe"
+      notes: >
+        The late Wittgenstein is sharply distinct from the early (Tractatus) period.
+        Died of prostate cancer 1951. His student G.E.M. Anscombe translated the
+        Philosophical Investigations. Wittgenstein is 'considered by some to be the
+        greatest philosopher of the 20th century' (SEP).
+      source_url: "https://plato.stanford.edu/entries/wittgenstein/"
+      wikidata: "Q9358"
+
+    Gilbert_Ryle:
+      dates: "b. 1900, d. 1976"
+      school: "ordinary language philosophy, Oxford"
+      key_works:
+        - title: "The Concept of Mind"
+          year: 1949
+          notes: >
+            Attacks Cartesian dualism ('the dogma of the ghost in the machine').
+            Category mistake: treating mental terms as if they referred to things
+            in an additional, hidden realm alongside the physical. Ryle argues that
+            talk of 'the mind' systematically misdescribes what are actually dispositions
+            to behave in certain ways. Knowing-how vs. knowing-that: practical skill
+            is not reducible to propositional knowledge.
+      key_doctrines:
+        - "Category mistake: applying a predicate to something in the wrong logical category"
+        - "'The ghost in the machine': Ryle's term for Cartesian dualism (The Concept of Mind, 1949)"
+        - "Philosophical behaviourism: mental terms describe behavioral dispositions"
+        - "Knowing-how vs. knowing-that: practical knowledge irreducible to propositional knowledge"
+        - "Ordinary language analysis: philosophy via careful attention to how words are used"
+      students_or_influences: "Wittgenstein (influence), Austin (Oxford colleague); edited Mind journal"
+      notes: >
+        SEP: 'Ryle is thought to have accomplished two major tasks' — refuting
+        Cartesian dualism and proposing philosophical behaviourism. Ryle was
+        Waynflete Professor of Metaphysics at Oxford.
+      source_url: "https://plato.stanford.edu/entries/ryle/"
+      wikidata: "Q363378"
+
+    JL_Austin:
+      dates: "b. 1911, d. 1960"
+      school: "ordinary language philosophy, Oxford"
+      key_works:
+        - title: "How to Do Things with Words"
+          year: "1962 (posthumous; lectures delivered 1955)"
+          notes: >
+            How we do things with words beyond describing: speech act theory.
+            Distinguishes locutionary acts (saying something meaningful), illocutionary
+            acts (doing something in saying — promising, ordering, declaring), and
+            perlocutionary acts (causing an effect through saying — persuading, alarming).
+            Constative vs. performative utterances: performatives don't describe states
+            of affairs but enact them ('I now pronounce you married').
+        - title: "Sense and Sensibilia"
+          year: "1962 (posthumous)"
+          notes: >
+            Critique of sense-datum theory of perception using ordinary language methods.
+      key_doctrines:
+        - "Speech act theory: utterances perform actions, not just make assertions"
+        - "Illocutionary acts: the act performed in saying something (promising, warning)"
+        - "Perlocutionary acts: effects caused by saying something (persuading)"
+        - "Locutionary acts: the meaningful utterance itself"
+        - "Performative utterances: 'I promise' enacts a promise rather than describing one"
+        - "Infelicities: ways performatives can go wrong (wrong person, wrong circumstances)"
+      students_or_influences: "Wittgenstein (influence), Ryle (Oxford colleague); influenced Searle"
+      notes: >
+        Austin died of cancer at 48. SEP notes he was 'White's Professor of Moral
+        Philosophy at Oxford.' His speech act framework was developed further by
+        John Searle.
+      source_url: "https://plato.stanford.edu/entries/austin-jl/"
+      wikidata: "Q165478"
+
+    PF_Strawson:
+      dates: "b. 1919, d. 2006"
+      school: "ordinary language philosophy, Oxford"
+      key_works:
+        - title: "On Referring"
+          year: 1950
+          notes: >
+            Response to Russell's theory of descriptions. Strawson argues that
+            referring is something speakers do, not something sentences do. Sentences
+            like 'The present King of France is bald' are not false but presuppose
+            the existence of a referent; if the referent doesn't exist the statement
+            fails to make a true or false claim (lacks a truth value).
+        - title: "Individuals: An Essay in Descriptive Metaphysics"
+          year: 1959
+          notes: >
+            Descriptive metaphysics vs. revisionary metaphysics. Argues that
+            material bodies and persons are the basic particulars of our conceptual
+            scheme. Persons have both a physical and a psychological predicate —
+            they are not reducible to either.
+      key_doctrines:
+        - "Presupposition vs. assertion: 'The King of France is bald' presupposes a King of France"
+        - "Referring is a speech act done by speakers, not a property of sentences"
+        - "Descriptive metaphysics: describing the structure of our actual conceptual scheme"
+        - "Persons as basic particulars: neither mind nor body alone"
+        - "Reactive attitudes: moral responsibility tied to practices of praise/blame"
+      students_or_influences: "Austin (Oxford colleague), Ryle; influenced Grice, Dummett"
+      notes: >
+        Waynflete Professor of Metaphysical Philosophy at Oxford 1968-87.
+        Wikipedia: 'exerted a considerable influence on philosophy, both during
+        his lifetime and since his death.' Knighted 1977.
+      source_url: "https://plato.stanford.edu/entries/strawson/"
+      wikidata: "Q357961"
+
+    John_Searle:
+      dates: "b. 1932, d. 2024"
+      school: "analytic philosophy, philosophy of language and mind"
+      key_works:
+        - title: "Speech Acts"
+          year: 1969
+          notes: >
+            Developed Austin's speech act theory into a systematic philosophy.
+            Introduced the notion of illocutionary force indicators. Distinguished
+            propositional content from illocutionary force.
+        - title: "Minds, Brains, and Programs"
+          year: 1980
+          notes: >
+            Published 1980 in Behavioral and Brain Sciences. The Chinese Room
+            argument: a person in a room follows a program for responding to Chinese
+            characters — the person understands nothing of Chinese, showing that
+            running a program is not sufficient for genuine understanding. Syntax is
+            not sufficient for semantics. Challenges computational theory of mind
+            and strong AI.
+        - title: "Intentionality"
+          year: 1983
+          notes: >
+            Argues that mental states have intrinsic intentionality — they are
+            genuinely about things — as opposed to derived intentionality of symbols.
+      key_doctrines:
+        - "Chinese Room argument: syntax is not sufficient for semantics (1980)"
+        - "Speech act theory (developed from Austin): illocutionary acts, propositional content"
+        - "Biological naturalism: consciousness is a biological phenomenon of the brain"
+        - "Intrinsic vs. derived intentionality"
+        - "Social ontology: institutional reality created by collective acceptance of status functions"
+        - "The Chinese Room shows the Turing Test is not sufficient for genuine understanding"
+      students_or_influences: "Austin (DPhil supervisor at Oxford); influenced Dennett and AI debate"
+      notes: >
+        Born 1932. Wikipedia confirms the Chinese Room was first published in a
+        1980 article. Searle received his DPhil under Austin at Oxford. SEP entry
+        on the Chinese Room: 'first published in a 1980 article by American
+        philosopher John Searle (1932-).' Died 2024.
+      source_url: "https://plato.stanford.edu/entries/chinese-room/"
+      wikidata: "Q214477"
+
+  # ----------------------------------------------------------
+  # GROUP 4: Mid-Century Analytic / Quine and Kripke Era
+  # ----------------------------------------------------------
+  mid_century_analytic:
+
+    WVO_Quine:
+      dates: "b. 1908, d. 2000"
+      school: "naturalized empiricism, holism"
+      key_works:
+        - title: "Two Dogmas of Empiricism"
+          year: 1951
+          notes: >
+            Published in Philosophical Review 1951. Described by Peter Godfrey-Smith
+            as 'sometimes regarded as the most important in all of twentieth-century
+            philosophy.' Attacks (1) the analytic-synthetic distinction and (2)
+            reductionism (each sentence has a determinate empirical content). All
+            beliefs form a 'web' facing experience as a corporate body — the whole
+            can be adjusted in various ways when experience recalcitrates.
+        - title: "Word and Object"
+          year: 1960
+          notes: >
+            Indeterminacy of translation: there is no unique correct translation
+            between languages. Radical translation scenario: a linguist tries to
+            translate an unknown language from scratch using only behavioral evidence.
+            Gavagai: a native says 'Gavagai' when a rabbit runs by — does it mean
+            'rabbit,' 'undetached rabbit parts,' or 'rabbit-stage'? No evidence can
+            decide. Ontological relativity: what exists relative to a translation
+            manual.
+        - title: "Ontological Relativity"
+          year: 1969
+          notes: "'To be is to be the value of a bound variable' — objects are what bound variables range over."
+      key_doctrines:
+        - "Rejection of analytic-synthetic distinction (Two Dogmas, 1951)"
+        - "Confirmation holism: statements face experience as a corporate body (Duhem-Quine)"
+        - "Indeterminacy of translation: no unique correct translation"
+        - "Gavagai thought experiment: behavioral evidence underdetermines translation"
+        - "'To be is to be the value of a bound variable' — criterion of ontological commitment"
+        - "Naturalized epistemology: epistemology as part of natural science"
+        - "Ontological relativity: what exists is relative to a background theory"
+      students_or_influences: "Carnap (critiqued), C.I. Lewis (teacher at Harvard); Davidson (student)"
+      notes: >
+        Quine (1908-2000) spent career at Harvard. SEP: 'He is perhaps best known
+        for his arguments against Logical Empiricism.' Davidson was Quine's student.
+      source_url: "https://plato.stanford.edu/entries/quine/"
+      wikidata: "Q77415"
+
+    Donald_Davidson:
+      dates: "b. 1917, d. 2003"
+      school: "analytic philosophy, philosophy of language and action"
+      key_works:
+        - title: "Truth and Meaning"
+          year: 1967
+          notes: >
+            Applies Tarski's T-schema to natural language: a theory of meaning for
+            a language is a finite theory that entails for each sentence S a theorem
+            of the form 'S is true iff p.' Davidson argues this can serve as a theory
+            of meaning. First published in Synthese 1967.
+        - title: "Mental Events"
+          year: 1970
+          notes: >
+            Anomalous monism: all mental events are physical events, but there are
+            no strict laws connecting mental event types to physical event types.
+            Mental/physical token identity without type identity.
+        - title: "On the Very Idea of a Conceptual Scheme"
+          year: 1974
+          notes: >
+            Third dogma of empiricism: the dualism of scheme and content. Davidson
+            argues we cannot make sense of radically different conceptual schemes
+            because translatability is constitutive of having a conceptual scheme.
+      key_doctrines:
+        - "Tarski-based theory of meaning: truth theory as a theory of meaning"
+        - "Anomalous monism: mental events are physical, but no strict psychophysical laws"
+        - "Principle of charity: interpret others as speaking mostly truth"
+        - "Radical interpretation: making sense of an alien speaker from scratch"
+        - "Third dogma of empiricism: the scheme-content dualism is incoherent"
+      students_or_influences: "Quine (teacher), Tarski (applied T-schema to natural language)"
+      notes: >
+        Davidson spent career at Stanford and Berkeley. SEP: 'one of the most
+        important philosophers of the latter half of the twentieth century.'
+      source_url: "https://plato.stanford.edu/entries/davidson/"
+      wikidata: "Q376203"
+
+    Saul_Kripke:
+      dates: "b. 1940, d. 2022"
+      school: "analytic philosophy, philosophy of language, modal logic"
+      key_works:
+        - title: "Naming and Necessity"
+          year: "1972 (lectures); 1980 (book)"
+          notes: >
+            Transcript of three lectures at Princeton, 1970. Wikipedia: 'widely
+            considered one of the most important philosophical works of the 20th century.'
+            Rigid designators: a proper name like 'Aristotle' picks out the same
+            individual in every possible world in which that individual exists, unlike
+            descriptions. Causal-historical theory of reference: names refer via a
+            chain of uses back to an initial 'baptism.' A posteriori necessities:
+            'Water is H2O' is necessary (true in all possible worlds) yet known only
+            empirically — refuting Kant's equation of necessity with a priority.
+            Possible worlds semantics: a statement is necessarily true if true in all
+            possible worlds.
+        - title: "Semantical Considerations on Modal Logic"
+          year: 1963
+          notes: "Formal possible-worlds semantics for modal logic. Published when Kripke was ~19."
+      key_doctrines:
+        - "Rigid designators: names pick out the same individual in all possible worlds"
+        - "Causal-historical theory of reference: names refer via causal chains, not descriptions"
+        - "A posteriori necessities: 'Water = H2O' is necessary but discovered empirically"
+        - "Possible worlds semantics for modal logic"
+        - "Kripkenstein: Kripke's reading of Wittgenstein on rule-following (Wittgenstein on Rules, 1982)"
+        - "Natural kind terms (gold, water) refer rigidly like proper names"
+      students_or_influences: "C.I. Lewis (modal logic predecessor), Carnap (Meaning and Necessity as title reference)"
+      notes: >
+        Kripke published his possible-worlds semantics paper in 1963 while still a
+        teenager. Naming and Necessity is a direct rebuttal of Russell/Frege
+        descriptivism about proper names.
+      source_url: "https://plato.stanford.edu/entries/rigid-designators/"
+      wikidata: "Q209665"
+
+    Hilary_Putnam:
+      dates: "b. 1926, d. 2016"
+      school: "analytic philosophy, philosophy of mind and language"
+      key_works:
+        - title: "The Meaning of 'Meaning'"
+          year: 1975
+          notes: >
+            Twin Earth thought experiment (originally in 'Meaning and Reference' 1973,
+            developed in this paper): imagine Twin Earth, identical to Earth except
+            'water' there is XYZ not H2O. In 1750, before chemistry, an Earthling and
+            their Twin Earth counterpart are in identical mental states when thinking
+            'water,' but 'water' refers to different things. Therefore 'meanings ain't
+            in the head' — meaning is determined partly by external environment.
+            Semantic externalism.
+        - title: "Brains in a Vat"
+          year: 1981
+          notes: >
+            Self-refutation argument against the brain-in-a-vat skeptical scenario.
+            If I were a brain in a vat, my word 'vat' would not refer to actual vats
+            (semantic externalism applies), so the thought 'I am a brain in a vat'
+            would be false. The scenario is self-refuting.
+      key_doctrines:
+        - "Twin Earth / semantic externalism: meanings are not in the head"
+        - "'Meanings ain't in the head' — meaning determined by external environment"
+        - "Functionalism in philosophy of mind (1960s–70s; later rejected)"
+        - "Brains in a vat: the scenario is self-refuting via semantic externalism"
+        - "Internal realism (later period): truth is idealized rational acceptability"
+        - "Model-theoretic argument against metaphysical realism"
+      students_or_influences: "Quine (Harvard teacher); influenced Kripke and externalist philosophy of language"
+      notes: >
+        Putnam introduced functionalism in the 1960s then later rejected it. He
+        underwent major philosophical shifts throughout his career. Wikipedia
+        confirms the Twin Earth thought experiment appeared in 1973/1975.
+      source_url: "https://plato.stanford.edu/entries/putnam/"
+      wikidata: "Q215626"
+
+    Wilfrid_Sellars:
+      dates: "b. 1912, d. 1989"
+      school: "analytic philosophy, naturalistic realism"
+      key_works:
+        - title: "Empiricism and the Philosophy of Mind"
+          year: 1956
+          notes: >
+            Attacks the 'myth of the given': the foundationalist idea that there
+            are immediate, non-conceptual data of experience that can serve as an
+            epistemological foundation. All awareness is mediated by concepts.
+            Sense-data are not epistemically prior to theory. Introduces the manifest
+            image (our ordinary, person-level view of the world) vs. the scientific
+            image (the view from physics/chemistry). The aim is to 'stereoscopically'
+            fuse these two images.
+      key_doctrines:
+        - "Myth of the given: there is no immediate, non-conceptual foundational experience"
+        - "The manifest image: the ordinary framework of persons and their experiences"
+        - "The scientific image: the theoretical framework of science (particles, fields)"
+        - "Intentionality: mental concepts are functional role concepts"
+        - "Sellarsian inferentialism: the meaning of a concept is its inferential role"
+      students_or_influences: "Carnap/Logical Empiricism (influenced then critiqued); influenced Rorty, Brandom"
+      notes: >
+        SEP: Sellars 'revolutionized both the content and the method of philosophy
+        in the United States.' Wikipedia confirms dates 1912-1989.
+        His 'myth of the given' critique influenced Rorty and neo-pragmatism.
+      source_url: "https://plato.stanford.edu/entries/sellars/"
+      wikidata: "Q377484"
+
+    Nelson_Goodman:
+      dates: "b. 1906, d. 1998"
+      school: "analytic philosophy, philosophy of science and art"
+      key_works:
+        - title: "Fact, Fiction, and Forecast"
+          year: 1955
+          notes: >
+            The new riddle of induction / grue paradox. Grue: a predicate for things
+            that are green if observed before time T and blue if observed after T.
+            All observed emeralds confirm 'All emeralds are green' but equally confirm
+            'All emeralds are grue.' What distinguishes lawlike from accidental
+            generalizations? Goodman's answer: 'entrenchment' of predicates in past
+            inductive practice.
+        - title: "Languages of Art"
+          year: 1968
+          notes: "Systematic theory of symbols in art; distinguished autographic from allographic arts."
+      key_doctrines:
+        - "Grue paradox / new riddle of induction: any predicate can be projected"
+        - "Entrenchment: well-projected predicates are those with long inductive histories"
+        - "Irrealism about worlds: there is no one real world, only versions"
+        - "Worldmaking: we construct worlds through different symbolic versions"
+        - "Reflective equilibrium (independently developed, before Rawls used the term)"
+      students_or_influences: "Quine (Harvard colleague); influenced philosophy of art and science"
+      notes: >
+        SEP: Goodman is 'one of the most influential twentieth-century American
+        philosophers.' The grue paradox is presented in Fact, Fiction and Forecast
+        (1955). Wikipedia confirms dates 1906-1998.
+      source_url: "https://plato.stanford.edu/entries/goodman/"
+      wikidata: "Q320810"
+
+    David_Lewis:
+      dates: "b. 1941, d. 2001"
+      school: "analytic metaphysics, modal realism"
+      key_works:
+        - title: "Counterfactuals"
+          year: 1973
+          notes: "Analysis of counterfactual conditionals using possible worlds: 'If A were the case, B would be' is true iff in the nearest possible worlds where A holds, B holds."
+        - title: "On the Plurality of Worlds"
+          year: 1986
+          notes: >
+            Defends modal realism: possible worlds are concrete, spatiotemporally
+            isolated entities as real as the actual world. 'The thesis states that
+            the world we are part of is but one of a plurality of worlds' (preface).
+            We are 'worldbound individuals' — each person exists only in one world,
+            but has counterparts in other worlds.
+      key_doctrines:
+        - "Modal realism: possible worlds are real, concrete, spatiotemporally isolated universes"
+        - "Counterfactual analysis using closest possible worlds"
+        - "Humean supervenience: all facts supervene on the distribution of local qualities"
+        - "Counterpart theory: de re modal claims analyzed via counterpart relations"
+        - "Analytic functionalism in philosophy of mind"
+        - "Worldbound individuals: each person exists in exactly one possible world"
+      students_or_influences: "Quine (Harvard teacher); influenced virtually all of analytic metaphysics"
+      notes: >
+        SEP: 'David Lewis (1941-2001) was one of the most important philosophers
+        of the 20th Century.' Died unexpectedly at 60. On the Plurality of Worlds
+        (1986) is confirmed by Wikipedia.
+      source_url: "https://plato.stanford.edu/entries/david-lewis/"
+      wikidata: "Q76424"
+
+    Thomas_Kuhn:
+      dates: "b. 1922, d. 1996"
+      school: "history and philosophy of science"
+      key_works:
+        - title: "The Structure of Scientific Revolutions"
+          year: 1962
+          notes: >
+            'One of the most cited academic books of all time' (SEP). Kuhn argues
+            science is not a steady accumulation of knowledge but proceeds through
+            'normal science' (puzzle-solving within a paradigm) punctuated by
+            revolutionary periods where anomalies accumulate and one paradigm
+            replaces another. Incommensurability thesis: theories from different
+            paradigms cannot be fully translated into each other — there is deep
+            failure of comparability. The term 'paradigm shift' derives from this work.
+      key_doctrines:
+        - "Paradigm: a matrix of shared commitments guiding normal science"
+        - "Normal science: puzzle-solving within an established paradigm"
+        - "Scientific revolution: crisis + paradigm shift, not incremental growth"
+        - "Incommensurability: theories from different paradigms cannot be fully compared"
+        - "'Paradigm shift' — widely adopted cultural term from this work"
+      students_or_influences: "Popper (critiqued), Lakatos (debated); influenced sociology of science"
+      notes: >
+        Kuhn was a physicist-turned-historian-of-science who taught at Harvard,
+        Berkeley, Princeton, and MIT. SEP: 'perhaps the most influential' philosopher
+        of science of the 20th century.
+      source_url: "https://plato.stanford.edu/entries/thomas-kuhn/"
+      wikidata: "Q78987"
+
+    Imre_Lakatos:
+      dates: "b. 1922, d. 1974"
+      school: "philosophy of science, methodology"
+      key_works:
+        - title: "The Methodology of Scientific Research Programmes"
+          year: "1978 (posthumous collection of essays)"
+          notes: >
+            Research programmes have a 'hard core' of central assumptions protected
+            from falsification by a 'protective belt' of auxiliary hypotheses.
+            Progressive research programmes: generate novel predictions confirmed by
+            experiment. Degenerative programmes: only make accommodating adjustments
+            to anomalies.
+      key_doctrines:
+        - "Research programmes: hard core + protective belt of auxiliary hypotheses"
+        - "Progressive vs. degenerative research programmes"
+        - "Falsificationism must be sophisticated: single anomalies don't refute theories"
+        - "History of mathematics: 'proofs and refutations' — quasi-empirical methodology"
+      students_or_influences: "Popper (teacher at LSE), Feyerabend (colleague/friend)"
+      notes: >
+        Wikipedia: dates 1922-1974. Died at 51 of a brain hemorrhage. His methodology
+        was developed largely in dialogue with and against Popper's falsificationism.
+      source_url: "https://plato.stanford.edu/entries/lakatos/"
+      wikidata: "Q44471"
+
+    Paul_Feyerabend:
+      dates: "b. 1924, d. 1994"
+      school: "philosophy of science, epistemological anarchism"
+      key_works:
+        - title: "Against Method"
+          year: 1975
+          notes: >
+            Central thesis: science should be an anarchic enterprise — no single
+            prescribed method should constrain scientific inquiry, because any such
+            method would limit progress. Wikipedia: published 1975. 'Anything goes'
+            (the principle of anything goes): the only methodological principle
+            consistent with history of science is 'anything goes.' Galileo's case
+            study shows that scientific progress required violating methodological rules.
+      key_doctrines:
+        - "'Anything goes' — the only universal methodological rule consistent with scientific history"
+        - "Epistemological anarchism: no fixed scientific method"
+        - "Incommensurability (with Kuhn): different theories are not mutually translatable"
+        - "Science is not privileged over other knowledge traditions"
+        - "Science should be separated from the state (like church from state)"
+      students_or_influences: "Popper (student at LSE), Lakatos (colleague/debater)"
+      notes: >
+        Wikipedia: born 1924, died 1994. Against Method (1975) arose from an
+        extended exchange with Lakatos intended as a debate volume. Feyerabend later
+        softened some positions.
+      source_url: "https://plato.stanford.edu/entries/feyerabend/"
+      wikidata: "Q57064"
+
+  # ----------------------------------------------------------
+  # GROUP 5: Analytic Metaphysics and Mind
+  # ----------------------------------------------------------
+  analytic_metaphysics_mind:
+
+    David_Chalmers:
+      dates: "b. 1966, living"
+      school: "analytic philosophy, philosophy of mind"
+      key_works:
+        - title: "The Conscious Mind"
+          year: 1996
+          notes: >
+            Distinguishes the easy problems of consciousness (explaining cognitive
+            functions, behavioral integration) from the hard problem (why there is
+            subjective experience at all — why physical processes give rise to qualia).
+            Defends property dualism / naturalistic dualism: consciousness involves
+            non-physical properties not reducible to functional description.
+            Philosophical zombies: conceivable beings physically identical to us
+            but with no subjective experience — used to argue consciousness is not
+            logically entailed by physical facts.
+      key_doctrines:
+        - "Hard problem of consciousness: why is there subjective experience at all?"
+        - "Philosophical zombies (p-zombies): conceivable physical duplicates with no inner experience"
+        - "Property dualism / naturalistic dualism: qualia are non-functional, non-physical"
+        - "The easy problems of consciousness vs. the hard problem"
+        - "Extended mind thesis (with Clark, 1998): mind can extend beyond the skull"
+      students_or_influences: "Hofstadter (PhD supervisor), Dennett (critiqued); influenced panpsychism revival"
+      notes: >
+        Currently Professor at NYU (living as of 2026). The hard problem terminology
+        was introduced in a 1995 paper and developed in the 1996 book.
+      source_url: "https://plato.stanford.edu/entries/consciousness/"
+      wikidata: "Q334398"
+
+    Daniel_Dennett:
+      dates: "b. 1942, d. 2024"
+      school: "analytic philosophy, philosophy of mind, cognitive science"
+      key_works:
+        - title: "Consciousness Explained"
+          year: 1991
+          notes: >
+            Argues against the 'Cartesian Theater' — the idea that conscious
+            experience is presented at a single central location in the brain.
+            Multiple drafts model: consciousness is produced by multiple parallel
+            processes with no single definitive 'finish line.' Eliminativist about
+            qualia — there is no hard problem once we understand the cognitive
+            functions.
+        - title: "Darwin's Dangerous Idea"
+          year: 1995
+          notes: "Defends Darwinism as a 'universal acid' dissolving traditional conceptions of mind, meaning, and morality."
+      key_doctrines:
+        - "Intentional stance: predicting behavior by treating systems as rational agents with beliefs/desires"
+        - "Multiple drafts model of consciousness: no single central Cartesian theater"
+        - "Eliminativism about qualia: the hard problem is an illusion"
+        - "Universal Darwinism: natural selection as a substrate-neutral algorithm"
+        - "Heterophenomenology: study consciousness via first-person reports + third-person explanation"
+      students_or_influences: "Quine (influence), Ryle (influence); debated Chalmers extensively"
+      notes: >
+        Born 1942, died 2024. Distinguished Professor at Tufts. Longtime naturalist
+        critic of Chalmers on the hard problem.
+      source_url: "https://plato.stanford.edu/entries/intentionality/"
+      wikidata: "Q211932"
+
+    Jerry_Fodor:
+      dates: "b. 1935, d. 2017"
+      school: "analytic philosophy, cognitive science"
+      key_works:
+        - title: "The Language of Thought"
+          year: 1975
+          notes: >
+            Mentalese hypothesis: thinking occurs in an internal language with
+            compositional syntax and semantics — the language of thought (LOT or
+            'Mentalese'). Mental representations have combinatorial structure,
+            explaining the systematicity and productivity of thought.
+        - title: "The Modularity of Mind"
+          year: 1983
+          notes: >
+            Input systems (perception, language parsing) are modular: informationally
+            encapsulated, domain-specific, fast, mandatory. Central cognition is
+            non-modular. Influenced cognitive science research programs.
+      key_doctrines:
+        - "Language of Thought (Mentalese): thinking in an internal compositional language"
+        - "Mental representation: cognitive processes operate over symbol structures"
+        - "Modularity of mind: input systems are informationally encapsulated modules"
+        - "Representational theory of mind"
+        - "Functionalism in philosophy of mind (early advocate)"
+      students_or_influences: "Chomsky (influence on language innateness); influenced cognitive science"
+      notes: >
+        Wikipedia/SEP confirm dates 1935-2017. Fodor worked at MIT then Rutgers.
+      source_url: "https://plato.stanford.edu/entries/language-thought/"
+      wikidata: "Q131571"
+
+    Frank_Jackson:
+      dates: "b. 1943, living"
+      school: "analytic philosophy, philosophy of mind"
+      key_works:
+        - title: "Epiphenomenal Qualia"
+          year: 1982
+          notes: >
+            Knowledge argument / Mary's Room: Mary is a scientist who knows all
+            physical facts about color vision but has lived in a black-and-white room.
+            When she leaves and sees red for the first time, does she learn something
+            new? Jackson argues yes — she learns what it is like to see red. Therefore
+            there are non-physical facts (qualia). SEP confirms canonical formulation
+            in 1982.
+      key_doctrines:
+        - "Knowledge argument (Mary's Room): Mary learns a new fact upon seeing color for the first time"
+        - "Qualia are non-physical properties not captured by complete physical knowledge"
+        - "Physicalism is false: there are phenomenal facts beyond physical facts"
+        - "Later Jackson recanted — he became a physicalist and proposed the 'ability hypothesis' reading"
+      students_or_influences: "Nagel (parallel arguments), Chalmers (influenced)"
+      notes: >
+        Born 1943. Jackson later recanted the knowledge argument and became a
+        physicalist. The Mary argument remains one of the most discussed in
+        philosophy of mind. Currently Emeritus at ANU.
+      source_url: "https://plato.stanford.edu/entries/qualia-knowledge/"
+      wikidata: "Q370174"
+
+    Thomas_Nagel:
+      dates: "b. 1937, living"
+      school: "analytic philosophy, philosophy of mind and ethics"
+      key_works:
+        - title: "What Is It Like to Be a Bat?"
+          year: 1974
+          notes: >
+            Published in The Philosophical Review, October 1974. Argues that
+            consciousness has an irreducibly subjective character: there is something
+            it is like to be a bat (echolocation experience) that we cannot understand
+            from our objective viewpoint. Objective physical descriptions necessarily
+            leave out the subjective, first-person perspective.
+        - title: "The View From Nowhere"
+          year: 1986
+          notes: >
+            Develops tension between subjective and objective perspectives. The ideal
+            of a 'view from nowhere' (fully objective) leaves out the irreducibly
+            personal perspective of a situated agent.
+      key_doctrines:
+        - "'What is it like to be a bat?' — subjectivity cannot be captured by objective description"
+        - "The subjective character of experience: consciousness has irreducibly first-person features"
+        - "Objective vs. subjective standpoints: tension between personal and impersonal perspectives"
+        - "Moral luck: we are morally assessed for things outside our control"
+      students_or_influences: "Rawls (teacher at Harvard); longtime colleague of Dworkin"
+      notes: >
+        Born 1937. Currently Emeritus at NYU. Wikipedia confirms the paper was
+        'first published in The Philosophical Review in October 1974.'
+      source_url: "https://plato.stanford.edu/entries/nagel/"
+      wikidata: "Q209765"
+
+    Derek_Parfit:
+      dates: "b. 1942, d. 2017"
+      school: "analytic philosophy, ethics and personal identity"
+      key_works:
+        - title: "Reasons and Persons"
+          year: 1984
+          notes: >
+            Wikipedia: 'has been described as the most significant work of moral
+            philosophy since the 1800s.' Part III: personal identity — Parfit argues
+            that personal identity is not what matters; what matters is psychological
+            continuity. The teletransporter thought experiment: if you are scanned,
+            destroyed, and reconstructed elsewhere, is it you that arrives?
+            Part IV: obligations to future generations. The Repugnant Conclusion:
+            a world of 10 billion very happy people is worse (on total utilitarian
+            calculus) than a world of trillions of barely-worth-living lives.
+        - title: "On What Matters"
+          year: 2011
+          notes: >
+            Argues for convergence of Kantian, contractualist, and consequentialist
+            ethics. Widely discussed before publication in circulated drafts.
+      key_doctrines:
+        - "Personal identity is not what matters; psychological continuity matters"
+        - "Teletransporter thought experiment: challenges ordinary conception of personal identity"
+        - "The Repugnant Conclusion: total utilitarianism implies strange obligations"
+        - "Obligations to future generations"
+        - "Convergence of ethical theories in On What Matters"
+        - "Reductionism about personal identity: persons are not separately existing entities"
+      students_or_influences: "Rawls (influence), Derek Parfit worked entirely at All Souls, Oxford"
+      notes: >
+        Wikipedia: 'born 11 December 1942, died 2 January 2017.' Parfit 'spent his
+        entire academic career at the University of Oxford.' Reasons and Persons
+        (1984) is confirmed by Wikipedia.
+      source_url: "https://plato.stanford.edu/entries/parfit/"
+      wikidata: "Q265618"
+
+    Ruth_Barcan_Marcus:
+      dates: "b. 1921, d. 2012"
+      school: "modal logic, analytic philosophy"
+      key_works:
+        - title: "A Functional Calculus of First Order Based on Strict Implication"
+          year: 1946
+          notes: >
+            First formal system of quantified modal logic (QML). Published when
+            Marcus (then Ruth Barcan) was 24. Introduced the now-standard 'box'
+            operator for necessity. Established the Barcan formula.
+      key_doctrines:
+        - "First formal systems of quantified modal logic (1946)"
+        - "Barcan formula: if possibly something is F, then something is possibly F — and its converse"
+        - "Direct reference theory: proper names are directly referential tags, not descriptions"
+        - "Essentialism: objects have essential properties"
+        - "Substitutivity of identity in intensional contexts"
+      students_or_influences: "C.I. Lewis (modal logic tradition); influenced Kripke"
+      notes: >
+        Wikipedia confirms dates 1921-2012. Marcus published as 'Ruth C. Barcan'
+        early in her career. Timothy Williamson called her work foundational for
+        modal logic. Kripke's work builds directly on Marcus's quantified modal logic.
+      source_url: "https://plato.stanford.edu/entries/marcus-ruth-barcan/"
+      wikidata: "Q260680"
+
+    Alvin_Plantinga:
+      dates: "b. 1932, living"
+      school: "reformed epistemology, Christian analytic philosophy"
+      key_works:
+        - title: "God and Other Minds"
+          year: 1967
+          notes: >
+            Argues that belief in God is epistemically on a par with belief in other
+            minds — neither has demonstrative proof, both are reasonable.
+        - title: "The Nature of Necessity"
+          year: 1974
+          notes: >
+            Possible worlds semantics applied to modal ontological argument for God's
+            existence. If God is possible (i.e., God's existence is possible in some
+            world) and God is defined as maximally excellent in all possible worlds,
+            then God exists in this world.
+        - title: "Warranted Christian Belief"
+          year: 2000
+          notes: "Reformed epistemology: Christian belief can be 'properly basic' — rational without argumentative justification."
+      key_doctrines:
+        - "Reformed epistemology: theistic belief can be properly basic"
+        - "Free will defense against the problem of evil"
+        - "Modal ontological argument: God's possible existence entails actual existence"
+        - "Proper basicality: not all rational beliefs require evidential support"
+      students_or_influences: "Alvin Plantinga at Notre Dame; influenced analytic theology"
+      notes: >
+        Born 1932. Currently Emeritus at Notre Dame. Reformed epistemology
+        claims that theistic beliefs can be basic — held without requiring
+        argumentation — and still be rational.
+      source_url: "https://plato.stanford.edu/entries/plantinga/"
+      wikidata: "Q362570"
+
+  # ----------------------------------------------------------
+  # GROUP 6: Analytic Ethics and Political Philosophy
+  # ----------------------------------------------------------
+  analytic_ethics_political:
+
+    John_Rawls:
+      dates: "b. 1921, d. 2002"
+      school: "liberal political philosophy, contractualism"
+      key_works:
+        - title: "A Theory of Justice"
+          year: 1971
+          notes: >
+            Wikipedia: 'the author attempts to provide a moral theory alternative to
+            utilitarianism.' The veil of ignorance: rational agents choosing principles
+            of justice from behind a veil of ignorance about their own position in
+            society. The original position: the hypothetical situation behind the veil.
+            Two principles of justice chosen: (1) equal basic liberties for all;
+            (2a) fair equality of opportunity; (2b) the difference principle —
+            inequalities are just only if they benefit the least advantaged members.
+            Reflective equilibrium: method of checking principles against moral
+            intuitions, revising each in light of the other.
+        - title: "Political Liberalism"
+          year: 1993
+          notes: >
+            Shifts focus from comprehensive moral theory to a freestanding political
+            conception of justice that can be endorsed by citizens with different
+            comprehensive doctrines (overlapping consensus). Public reason: political
+            debates should use only reasons all reasonable citizens can accept.
+      key_doctrines:
+        - "Veil of ignorance: choose principles without knowing your position in society"
+        - "Original position: the hypothetical situation behind the veil of ignorance"
+        - "Two principles of justice: equal liberties, fair opportunity, difference principle"
+        - "Difference principle: inequalities just only if they benefit the least advantaged"
+        - "Reflective equilibrium: dialectical method balancing principles and intuitions"
+        - "Public reason: political justification must appeal to reasons all citizens can accept"
+        - "Overlapping consensus: different comprehensive doctrines can support same political principles"
+      students_or_influences: "Nagel (student), influenced Nozick (who critiqued him)"
+      notes: >
+        SEP: 'John Rawls (b. 1921, d. 2002) was an American political philosopher
+        in the liberal tradition.' A Theory of Justice (1971) confirmed by Wikipedia.
+      source_url: "https://plato.stanford.edu/entries/rawls/"
+      wikidata: "Q82658"
+
+    Robert_Nozick:
+      dates: "b. 1938, d. 2002"
+      school: "libertarian political philosophy"
+      key_works:
+        - title: "Anarchy, State, and Utopia"
+          year: 1974
+          notes: >
+            Wikipedia: Won 1975 National Book Award in Philosophy and Religion.
+            Direct response to Rawls. Argues that only a minimal state ('limited to
+            the narrow functions of protection against force, theft, fraud, enforcement
+            of contracts') is morally justified. Any more extensive redistribution
+            violates individual rights. Entitlement theory of justice: a distribution
+            is just if it arose through just acquisition and just transfer.
+            The experience machine: a thought experiment against hedonism — would you
+            plug into a machine that gives you any experiences you want? Most would
+            refuse, showing that something other than pleasure matters.
+        - title: "Philosophical Explanations"
+          year: 1981
+          notes: "Wide-ranging analytic metaphysics and epistemology."
+      key_doctrines:
+        - "Minimal state libertarianism: only a minimal state protecting rights is justified"
+        - "Entitlement theory: just distribution = just acquisition + just transfer"
+        - "'From each as they choose, to each as they are chosen'"
+        - "Rights as side-constraints: individual rights constrain what may be done even for good ends"
+        - "Experience machine thought experiment: refutes hedonism"
+        - "Patterned principles of distribution violate individual liberty"
+      students_or_influences: "Rawls (critiqued from the right); taught at Harvard"
+      notes: >
+        SEP: 'Nozick (1938-2002) was a renowned American philosopher who first came
+        to be widely known through his 1974 book.' Anarchy, State, and Utopia
+        (1974) won the National Book Award confirmed by Wikipedia.
+      source_url: "https://plato.stanford.edu/entries/nozick-political/"
+      wikidata: "Q316401"
+
+    GEM_Anscombe:
+      dates: "b. 1919, d. 2001"
+      school: "analytic philosophy, Wittgensteinian ethics, virtue ethics"
+      key_works:
+        - title: "Modern Moral Philosophy"
+          year: 1958
+          notes: >
+            Landmark paper that (1) introduced the term 'consequentialism' (as a term
+            of critique), (2) argued that the concepts of moral 'obligation' and
+            'duty' are remnants of a divine-law framework that has no place in secular
+            ethics, and (3) urged a return to Aristotelian virtue ethics. The paper
+            catalyzed the contemporary virtue ethics revival.
+        - title: "Intention"
+          year: 1957
+          notes: "Influential analysis of intentional action. An action is intentional if the agent has knowledge of it in the relevant sense."
+      key_doctrines:
+        - "Coined the term 'consequentialism' (as a criticism) in 1958"
+        - "Moral obligation/duty concepts are incoherent without divine law"
+        - "Virtue ethics revival: return to Aristotle instead of obligation-based ethics"
+        - "Intention: non-observational knowledge of one's actions"
+        - "Absolute prohibitions: some acts (e.g., killing the innocent) are never permissible"
+      students_or_influences: "Wittgenstein (student, close associate, literary executor); influenced Foot"
+      notes: >
+        Anscombe was Wittgenstein's student and his literary executor after his death
+        in 1951. She translated the Philosophical Investigations. SEP: Anscombe
+        'was one of the most important philosophers of the twentieth century.'
+      source_url: "https://plato.stanford.edu/entries/anscombe/"
+      wikidata: "Q231659"
+
+    Philippa_Foot:
+      dates: "b. 1920, d. 2010"
+      school: "analytic ethics, virtue ethics"
+      key_works:
+        - title: "The Problem of Abortion and the Doctrine of Double Effect"
+          year: 1967
+          notes: >
+            SEP confirms Foot is 'best known for inventing the Trolley Problem.'
+            Wikipedia: 'The question of formulating a general principle was raised in
+            1967 as part of an analysis of debates on abortion and the doctrine of
+            double effect by the English philosopher Philippa Foot.' Judith Jarvis
+            Thomson later coined the phrase 'trolley problem' in a 1976 article.
+        - title: "Natural Goodness"
+          year: 2001
+          notes: >
+            Late career work defending a neo-Aristotelian naturalistic virtue ethics.
+            Good and bad are analyzed in terms of what is conducive to the life form
+            of the species — natural normativity.
+      key_doctrines:
+        - "Invented the trolley problem (1967) — Judith Jarvis Thomson named it in 1976"
+        - "Neo-Aristotelian virtue ethics: goodness is natural to the life form of the species"
+        - "Doctrine of double effect analysis"
+        - "Moral judgments are not merely expressions of attitude — they describe natural facts"
+      students_or_influences: "Anscombe (Oxford colleague and influence); influenced contemporary virtue ethics"
+      notes: >
+        SEP confirms Foot invented the trolley problem in a 1967 paper. Thomson
+        coined the name 'trolley problem' in 1976. Wikipedia: 'Philippa Foot wrote
+        many articles treating issues in metaethics, moral psychology, and applied ethics.'
+      source_url: "https://plato.stanford.edu/entries/philippa-foot/"
+      wikidata: "Q438014"
+
+    Bernard_Williams:
+      dates: "b. 1929, d. 2003"
+      school: "analytic ethics, moral psychology"
+      key_works:
+        - title: "Ethics and the Limits of Philosophy"
+          year: 1985
+          notes: >
+            Critique of systematic moral theory (especially Kantianism and
+            utilitarianism). Argues that theories are too abstract and alien from
+            the concerns of actual moral life. Advocates returning to the 'thick'
+            ethical concepts of ancient ethics.
+        - title: "Moral Luck"
+          year: "1976 (paper)"
+          notes: >
+            Moral luck: we standardly praise and blame people for things partly
+            outside their control. The standard Kantian position that moral worth
+            is immune to luck is undermined by how pervasive luck is in moral life.
+      key_doctrines:
+        - "Internal vs. external reasons: only internal reasons (connected to existing motivations) can explain action"
+        - "Integrity objection to utilitarianism: demanding alienation from one's deepest commitments"
+        - "Moral luck: moral assessment is pervasively influenced by factors beyond agents' control"
+        - "Critique of systematic moral theory: ethics cannot be fully systematized"
+        - "Thick ethical concepts: rich normative-descriptive terms like 'courageous,' 'cruel'"
+      students_or_influences: "Moore and Oxford philosophy (background); influenced anti-theory movement"
+      notes: >
+        Williams spent career at Cambridge, Oxford, and Berkeley. Known for vigorous
+        critique of both Kantianism and utilitarianism from within analytic tradition.
+      source_url: "https://plato.stanford.edu/entries/williams-bernard/"
+      wikidata: "Q371050"
+
+    Iris_Murdoch:
+      dates: "b. 1919, d. 1999"
+      school: "analytic philosophy, moral philosophy, Platonism"
+      key_works:
+        - title: "The Sovereignty of Good"
+          year: 1970
+          notes: >
+            Attacks existentialist and behaviourist conceptions of morality. Argues
+            that 'Good' is an objective reality (Platonic), and that virtue consists
+            in correct attention to the world — 'unselfing,' the removal of the
+            self-centered ego that distorts moral vision. Concept of moral perception:
+            seeing people and situations correctly is central to virtue.
+      key_doctrines:
+        - "Good as a transcendent, Platonic reality (objective, not chosen)"
+        - "Unselfing: moral development as transcending the selfish ego"
+        - "Moral attention: virtue consists in attending correctly to others"
+        - "Critique of existentialist and behaviourist ethics"
+        - "The just and loving gaze: seeing others as they really are"
+      students_or_influences: "Oxford philosophy; influenced moral philosophy and literature"
+      notes: >
+        Murdoch was both a philosopher and a celebrated novelist (The Bell, The Sea,
+        The Sea). Her philosophy and fiction both explore the same moral themes.
+        SEP entry exists at 'murdoch.'
+      source_url: "https://plato.stanford.edu/entries/murdoch/"
+      wikidata: "Q202655"
+
+    Peter_Singer:
+      dates: "b. 1946, living"
+      school: "utilitarian ethics, applied ethics, effective altruism"
+      key_works:
+        - title: "Animal Liberation"
+          year: 1975
+          notes: >
+            Argues that the interests of animals deserve equal consideration to
+            human interests of similar magnitude ('equal consideration of interests').
+            Coined or popularized the term 'speciesism' — arbitrary discrimination
+            on the basis of species. Foundational text for the modern animal rights
+            and animal liberation movements.
+        - title: "Famine, Affluence, and Morality"
+          year: "1972 (paper)"
+          notes: >
+            Drowning child argument: if you can save a drowning child at minimal cost
+            to yourself, you are morally required to do so. Distance does not diminish
+            the obligation. Donating to famine relief in distant countries is
+            similarly obligatory for affluent people.
+        - title: "Practical Ethics"
+          year: 1979
+          notes: "Applied utilitarian ethics: abortion, euthanasia, global poverty, animal welfare."
+      key_doctrines:
+        - "Effective altruism: using evidence and reason to do the most good"
+        - "Drowning child argument: the obligation to help distant others in need"
+        - "Speciesism: unjustified discrimination based on species"
+        - "Preference utilitarianism: maximize satisfaction of preferences"
+        - "Equal consideration of interests: interests count equally regardless of species"
+        - "Singer's pond: if you can save a child drowning nearby at trivial cost, you must"
+      students_or_influences: "R.M. Hare (Oxford supervisor); influenced effective altruism movement"
+      notes: >
+        Born 1946. Currently Emeritus at Princeton (Ira W. DeCamp Professor of
+        Bioethics). Wikipedia confirms birth date, Animal Liberation (1975), and
+        effective altruism association.
+      source_url: "https://plato.stanford.edu/entries/peter-singer/"
+      wikidata: "Q193871"
+
+    Martha_Nussbaum:
+      dates: "b. 1947, living"
+      school: "capabilities approach, political philosophy, ancient ethics"
+      key_works:
+        - title: "Frontiers of Justice"
+          year: 2006
+          notes: >
+            Extends the capabilities approach beyond the social contract tradition to
+            cover three cases left out by contractualism: people with disabilities,
+            citizens of other nations, and non-human animals.
+        - title: "Upheavals of Thought"
+          year: 2001
+          notes: "Defense of the cognitive role of emotions in ethical life."
+      key_doctrines:
+        - "Capabilities approach (with Amartya Sen): justice requires enabling human capabilities"
+        - "Central human capabilities: list of ten capabilities (life, health, senses, reason, etc.)"
+        - "Emotions as intelligent responses: not mere feelings but cognitive appraisals"
+        - "Extending justice to disabled persons, foreigners, and animals"
+      students_or_influences: "Rawls (interlocutor), Amartya Sen (capabilities approach collaborator)"
+      notes: >
+        Born 1947. Currently at University of Chicago Law School. Developed the
+        capabilities approach independently alongside and in dialogue with Sen.
+      source_url: "https://plato.stanford.edu/entries/nussbaum/"
+      wikidata: "Q231629"
+
+    Amartya_Sen:
+      dates: "b. 1933, living"
+      school: "welfare economics, capabilities approach"
+      key_works:
+        - title: "Development as Freedom"
+          year: 1999
+          notes: >
+            Development should be understood as expansion of substantive freedoms
+            (capabilities) rather than GNP growth. Poverty is capability deprivation.
+            Five instrumental freedoms: political freedoms, economic facilities,
+            social opportunities, transparency guarantees, protective security.
+        - title: "On Ethics and Economics"
+          year: 1987
+          notes: "Argues that economics and ethics are inseparably intertwined; modern economics has become too narrowly self-interested."
+      key_doctrines:
+        - "Capabilities approach: justice requires human capabilities, not just resources or utility"
+        - "Development as freedom: expansion of substantive freedoms"
+        - "Poverty as capability deprivation"
+        - "Arrow's impossibility theorem and social choice theory"
+        - "Sen's Paradox: liberal values and Pareto optimality can conflict"
+      students_or_influences: "Arrow (social choice theory), Rawls (interlocutor), Nussbaum (collaborator)"
+      notes: >
+        Born 1933. Nobel Prize in Economics 1998. Currently at Harvard. The
+        capabilities approach was developed independently alongside Nussbaum.
+      source_url: "https://plato.stanford.edu/entries/sen/"
+      wikidata: "Q83453"
+
+    Christine_Korsgaard:
+      dates: "b. 1952, living"
+      school: "Kantian ethics, constructivism"
+      key_works:
+        - title: "The Sources of Normativity"
+          year: 1996
+          notes: >
+            Based on Tanner Lectures 1992. Argues that the source of moral normativity
+            lies in our practical identity — what we must value to maintain any
+            practical identity at all. Humanity as the source of moral law (Kantian
+            constructivism). Moral requirements are binding because acting otherwise
+            involves a kind of practical self-destruction.
+        - title: "Creating the Kingdom of Ends"
+          year: 1996
+          notes: "Collection of essays developing Kantian ethics in contemporary analytic terms."
+      key_doctrines:
+        - "Kantian constructivism: moral requirements constructed through practical reason"
+        - "Self-constitution: acting morally is constitutive of having a unified identity"
+        - "Normativity from practical identity: what we must do to maintain any coherent agency"
+        - "Humanity as end in itself: grounds the categorical imperative"
+      students_or_influences: "Rawls (teacher at Harvard), Kant (primary source); influenced neo-Kantian ethics"
+      notes: >
+        Born 1952. Currently at Harvard. The Sources of Normativity was her
+        contribution to the Tanner Lectures, published 1996 with responses from
+        Williams, Hampton, Nagel, Scanlon.
+      source_url: "https://plato.stanford.edu/entries/constructivism-metaethics/"
+      wikidata: "Q452424"

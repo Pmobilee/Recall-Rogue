@@ -1,0 +1,1286 @@
+deck_id: philosophy
+sub_deck_id: ancient_western
+name: "Philosophy — Ancient Western"
+domain: general_knowledge
+sub_domain: philosophy
+target_facts: 60
+
+data_sources:
+- name: Stanford Encyclopedia of Philosophy
+  url: https://plato.stanford.edu/
+  license: "Copyright Stanford University; freely accessible"
+  usage: biographical facts, doctrines, dates, work titles, school histories
+- name: Internet Encyclopedia of Philosophy
+  url: https://iep.utm.edu/
+  license: freely accessible
+  usage: supplementary biographical and doctrinal facts where SEP lacks a dedicated entry
+- name: Wikidata
+  url: https://www.wikidata.org/
+  license: CC0
+  usage: structured data — Q-IDs for cross-referencing (Wikipedia page-linked Q-IDs verified)
+- name: Wikipedia
+  url: https://en.wikipedia.org/
+  license: CC-BY-SA-4.0
+  usage: cross-reference and navigation only; used to obtain Wikidata Q-IDs via pageprops API
+
+# ============================================================
+# SOURCE DATA — 7 thematic sections (~62 entries total)
+# All facts verified against SEP or IEP URLs listed per entry.
+# Workers MUST copy facts FROM this verified data — never invent.
+# SEP "Not Yet Available" entries documented below with IEP fallback.
+# ============================================================
+
+source_data:
+
+  # ----------------------------------------------------------
+  # SECTION 1: Pre-Socratics — Milesian School
+  # ----------------------------------------------------------
+  milesian_school:
+    Thales_of_Miletus:
+      dates: '~624–545 BCE (traditional; exact dates uncertain)'
+      nationality: 'Greek — Miletus, Ionia (western coast of Asia Minor)'
+      school: 'Milesian school; generally regarded as the first Western philosopher'
+      key_works: 'No surviving texts; doctrines preserved by Aristotle (Metaphysics 983b) and Diogenes Laërtius'
+      key_doctrines: >
+        Water (hydor) is the arche — the first principle and fundamental substance of all things.
+        Proto-naturalism: attempted to explain the world in terms of natural rather than divine causes.
+        Credited with predicting the solar eclipse of 585 BCE (though modern scholarship is cautious
+        about this). Reportedly said "all things are full of gods" (panta plere theon einai).
+        One of the Seven Sages of Greece (hoi hepta sophoi).
+      students_or_influences: 'Anaximander (student); founded the Milesian school'
+      notes: >
+        SEP (presocratics entry) characterizes the Presocratics as "6th and 5th century BCE Greek
+        thinkers who introduced a new way of inquiring into the world." Thales is grouped as the
+        first Milesian. IEP (anaximander entry) calls him "a fellow-citizen" of Anaximander and
+        credits him as the starting point of the school. No dedicated SEP entry exists for Thales;
+        all secondary-source doctrines come via Aristotle and Diogenes Laërtius, making exact
+        attribution uncertain. The eclipse prediction date 585 BCE is widely cited but contested.
+      source_url: 'https://plato.stanford.edu/entries/presocratics/'
+      iep_url: 'https://iep.utm.edu/anaximander/'
+      wikidata: 'Q36303'
+
+    Anaximander:
+      dates: 'c. 610–546 BCE'
+      nationality: 'Greek — Miletus, Ionia'
+      school: 'Milesian school'
+      key_works: 'On Nature (Peri Physeos) — first surviving lines of Western philosophy; mostly lost'
+      key_doctrines: >
+        The apeiron ("the Boundless" or "the Indefinite") is the arche — the first principle.
+        Unlike Thales' water, the apeiron is not any particular substance but an indefinite,
+        unlimited source from which all things arise and to which they return.
+        First speculative astronomer: originated the concept of the open universe.
+        First geographer: drew a map of the known world. Introduced the gnomon (sundial) into Greece.
+      notes: >
+        IEP (anaximander entry) states: "Anaximander was the author of the first surviving lines
+        of Western philosophy. He speculated and argued about 'the Boundless' as the origin of
+        all that is." The IEP entry notes he was "the first who dared to write a treatise in
+        prose, which has been called traditionally On Nature." Only one fragment survives, quoted
+        by Simplicius after Theophrastus. SEP does not have a dedicated entry for Anaximander;
+        IEP is the primary source here.
+      source_url: 'https://iep.utm.edu/anaximander/'
+      wikidata: 'Q42458'
+
+    Anaximenes_of_Miletus:
+      dates: 'c. 586–528 BCE (IEP: "flourished mid-6th century BCE and died about 528")'
+      nationality: 'Greek — Miletus, Ionia'
+      school: 'Milesian school; third and last of the Milesian philosophers'
+      key_works: 'On Nature (Peri Physeos) — lost'
+      key_doctrines: >
+        Air (aer) is the arche — the single fundamental substance.
+        Introduced the mechanism of rarefaction and condensation to explain material change:
+        when air is thinned (rarefied) it becomes fire; when condensed it becomes wind, cloud,
+        water, earth, stones (DK13A5). This theory of continuous material transformation was
+        highly influential on Heraclitus, Anaxagoras, Diogenes of Apollonia, and the Hippocratic
+        medical tradition.
+      students_or_influences: 'Associate or student of Anaximander (IEP: "Theophrastus notes that Anaximenes was an associate, and possibly a student, of Anaximander")'
+      notes: >
+        IEP (anaximenes entry) states he is "the third philosopher of the Milesian School of
+        philosophy." His theory of rarefaction/condensation is considered the first attempt to
+        provide a quantitative mechanism for material change, making his cosmology more
+        "scientific" than his predecessors. SEP has no dedicated Anaximenes entry;
+        IEP is primary source.
+      source_url: 'https://iep.utm.edu/anaximenes/'
+      wikidata: 'Q80612'
+
+  # ----------------------------------------------------------
+  # SECTION 2: Pre-Socratics — Other Figures
+  # ----------------------------------------------------------
+  other_presocratics:
+    Pythagoras:
+      dates: 'c. 570–490 BCE'
+      nationality: 'Greek — born Samos; emigrated to Croton, southern Italy, at age ~40'
+      school: 'Pythagorean tradition; founded a religious-philosophical community at Croton'
+      key_works: 'Wrote nothing himself; his followers (Pythagoreans) preserved his teachings'
+      key_doctrines: >
+        Numbers are the fundamental principle of all things — mathematical relationships
+        underlie the structure of reality. The soul is immortal and undergoes metempsychosis
+        (transmigration into other bodies, including animals). The Pythagorean theorem
+        (for right triangles, a² + b² = c²) is associated with his school, though whether
+        Pythagoras himself proved it is disputed. Discovered the mathematical ratios
+        underlying musical harmony (the octave, fifth, fourth).
+      notes: >
+        SEP (pythagoras entry) states: "Pythagoras, one of the most famous and controversial
+        ancient Greek philosophers, lived from ca. 570 to ca. 490 BCE. He spent his early
+        years on the island of Samos... At the age of forty, however, he emigrated to the city
+        of Croton in southern Italy." SEP also notes: "Pythagoras wrote nothing, nor were there
+        any detailed accounts of his [views in his lifetime]." His actual philosophical
+        contributions are therefore heavily filtered through later sources and the Pythagorean
+        tradition. The theorem bearing his name was known to Babylonian mathematicians earlier.
+      source_url: 'https://plato.stanford.edu/entries/pythagoras/'
+      wikidata: 'Q10261'
+
+    Heraclitus:
+      dates: 'Active c. 500 BCE; fl. ~535–475 BCE (SEP: "active around 500 BCE")'
+      nationality: 'Greek — Ephesus, Ionia (near modern Kuşadası, Turkey)'
+      school: 'Pre-Socratic; no formal school, worked independently'
+      key_works: 'On Nature (Peri Physeos) — single book deposited in the Temple of Artemis at Ephesus; survives only in ~130 fragments'
+      key_doctrines: >
+        Universal flux (panta rhei): all things are in constant change and nothing remains the
+        same — "You cannot step twice into the same river" (B12/B49a). Unity of opposites:
+        apparently contradictory qualities are in fact unified. Fire is the fundamental
+        material/metaphor of the world. The Logos (divine reason/word) governs all things
+        and gives rational order to apparent change: "Although this Logos is always, humans
+        fail to understand it" (B1). Famous for oracular, deliberately obscure style — called
+        "the Obscure" (ho Skoteinos) in antiquity.
+      notes: >
+        SEP (heraclitus entry) states he "propounded a distinctive theory which he expressed in
+        oracular language" and is "best known for his doctrines that things are constantly
+        changing (universal flux), that opposites coincide (unity of opposites), and that fire
+        is the basic material of the world." The river fragment B12 is the most reliable text
+        per SEP. SEP warns the Platonic interpretation of Heraclitean flux as "everything is
+        always flowing" may be an exaggeration. He reportedly inherited a hereditary priesthood
+        but renounced it in favor of his brother.
+      source_url: 'https://plato.stanford.edu/entries/heraclitus/'
+      wikidata: 'Q41155'
+
+    Xenophanes:
+      dates: 'c. 570–475 BCE (SEP: "late 6th and early 5th centuries BCE"; flourished 540–537 BCE per Diogenes Laërtius)'
+      nationality: 'Greek — born Colophon, Ionia; later settled at Elea, Italy'
+      school: 'Pre-Socratic; travelling poet-philosopher; sometimes associated with Eleatic school'
+      key_works: 'Elegies, satires, and philosophical poems — survive only in fragments; criticized Homer and Hesiod'
+      key_doctrines: >
+        Pioneered critique of anthropomorphism in religion: "If cattle and horses or lions had
+        hands... horses would draw the forms of the gods like horses" (B15). Moved toward a
+        form of monotheism: "one god, greatest among gods and men, in no way similar to mortals
+        either in body or in thought" (B23). Argued against polytheistic mythology. Observed
+        that humans project their own characteristics onto divine beings. Noted fossil evidence
+        (shells inland, fish imprints) to argue the earth had once been covered by sea.
+      notes: >
+        SEP (xenophanes entry) states he "is best remembered for a novel critique of
+        anthropomorphism in religion, a partial advance toward monotheism, and some pioneering
+        reflections on the conditions of knowledge." SEP credits Diogenes Laërtius for the
+        report that he "flourished during the sixtieth Olympiad (540–537 BCE)." His own
+        fragment B8 says he "tossed about the Greek land for sixty-seven years" after age 25.
+        The Eleatic school association (noted by some ancient sources citing Plato Sophist
+        242d) is disputed by SEP: "the Xenophanes who emerges from the surviving fragments
+        defies simple classification."
+      source_url: 'https://plato.stanford.edu/entries/xenophanes/'
+      wikidata: 'Q131671'
+
+    Parmenides:
+      dates: 'c. 515–450 BCE (SEP infers birth c. 515 BCE from Plato Parmenides dialogue)'
+      nationality: 'Greek — Elea, southern Italy (Greek colony on Tyrrhenian coast)'
+      school: 'Eleatic school; founder'
+      key_works: 'On Nature (Peri Physeos) — philosophical poem in hexameter verse; survives in substantial fragments'
+      key_doctrines: >
+        Being is one, eternal, unchanging, and indivisible. Non-being cannot exist or be thought:
+        "It is necessary to say and to think that what is is" (B6). The Way of Truth (aletheia):
+        only Being truly exists; the Way of Opinion (doxa): the world of change and plurality
+        that mortals perceive is mere illusion or appearance. This radical monism challenged
+        Milesian cosmologies and forced subsequent thinkers (Empedocles, Anaxagoras, Democritus)
+        to develop more sophisticated accounts of plurality and change.
+      students_or_influences: 'Teacher of Zeno of Elea; influenced Empedocles, Anaxagoras, Plato'
+      notes: >
+        SEP (parmenides entry) states he was "active in the earlier part of the 5th c. BCE,
+        authored a difficult metaphysical poem that has earned him a reputation as early Greek
+        philosophy's most profound and challenging thinker." SEP infers his birth year ~515 BCE
+        from Plato's Parmenides dialogue, where Parmenides is 65 and Socrates is young (~20),
+        working backward from Socrates' execution in 399 BCE. He reportedly established laws
+        for the citizens of Elea (Speusippus fr.3 Tarán).
+      source_url: 'https://plato.stanford.edu/entries/parmenides/'
+      wikidata: 'Q125551'
+
+    Zeno_of_Elea:
+      dates: 'c. 495–430 BCE (SEP: "5th c. B.C.E. thinker")'
+      nationality: 'Greek — Elea, southern Italy'
+      school: 'Eleatic school; student of Parmenides'
+      key_works: 'No surviving text; paradoxes preserved through Aristotle, Plato, and later sources'
+      key_doctrines: >
+        Famous for paradoxes designed to defend Parmenides' monism by showing the absurdities
+        of plurality and motion. The paradox of Achilles and the Tortoise: Achilles can never
+        overtake a tortoise given a head-start because he must first reach the tortoise's
+        starting point, by which time the tortoise has moved on — ad infinitum. The Dichotomy:
+        motion is impossible because to traverse any distance one must first traverse half,
+        then half of that, etc. These paradoxes anticipate mathematical treatments of infinity
+        and limits.
+      notes: >
+        SEP (zeno-elea entry) states he "is known exclusively for propounding a number of
+        ingenious paradoxes. The most famous of these purport to show that motion is impossible
+        by bringing to light apparent or latent contradictions in ordinary assumptions regarding
+        its occurrence." Aristotle called him the inventor of dialectic (Diogenes Laërtius 8.57).
+        Plato's Parmenides (127b–128e) depicts Zeno visiting Athens with Parmenides; Parmenides
+        describes Zeno's work as defending his own doctrines.
+      source_url: 'https://plato.stanford.edu/entries/zeno-elea/'
+      wikidata: 'Q132157'
+
+    Empedocles:
+      dates: 'c. 494–434 BCE (SEP: "middle of the fifth century BCE")'
+      nationality: 'Greek — Acragas (modern Agrigento), Sicily'
+      school: 'Pre-Socratic; pluralist; no formal school'
+      key_works: 'On Nature (Peri Physeos) and Purifications (Katharmoi) — hexameter poems; survive in substantial fragments'
+      key_doctrines: >
+        Four-root theory: all matter consists of four fundamental elements (roots) — earth,
+        water, air, and fire. Two active cosmic forces — Love (Philotes/Philia) and Strife
+        (Neikos) — cause mixing and separation of the roots, producing cyclical cosmic change.
+        Theory of pores and effluences: perception occurs when effluences from objects enter
+        corresponding pores in the sense organs. His Purifications contains Pythagorean-style
+        teachings about the transmigration of souls.
+      notes: >
+        SEP (empedocles entry, revised 2024) states he "formulated a philosophical program in
+        hexameter verse that pioneered the influential four-part theory of roots (air, water,
+        earth, and fire) along with two active principles of Love and Strife, which influenced
+        later philosophy, medicine, mysticism, cosmology." SEP notes a Strasbourg papyrus
+        (discovered ~1999) added previously unknown lines from Empedocles. Wikidata: Q83375
+        (confirmed via Wikipedia pageid 9553 → pageprops API).
+      source_url: 'https://plato.stanford.edu/entries/empedocles/'
+      wikidata: 'Q83375'
+
+    Anaxagoras:
+      dates: 'c. 500–428 BCE'
+      nationality: 'Greek — Clazomenae, Ionia (Asia Minor); spent much of his life in Athens'
+      school: 'Pre-Socratic pluralist; associated with Pericles circle in Athens'
+      key_works: 'On Nature (Peri Physeos) — prose work; survives in fragments'
+      key_doctrines: >
+        Infinite divisibility of matter: everything contains a portion of everything else
+        ("in everything there is a portion of everything except Mind"). Mind (Nous) is the
+        exception — pure, unmixed, infinite, and self-ruled; it set the cosmos in rotational
+        motion. Nous is "the finest of all things and the purest, and it has all knowledge
+        about everything and the greatest power" (B12). Argued the sun is not a god but a
+        fiery stone larger than the Peloponnese — this led to his trial for impiety in Athens.
+      notes: >
+        SEP (presocratics entry) discusses Anaxagoras under "The Pluralists." His trial in
+        Athens (c. 450–430 BCE) for impiety (claiming the sun was a physical object, not a
+        deity) is one of the first recorded trials of a philosopher for intellectual views.
+        He was acquitted or fined and left Athens, dying in Lampsacus. Wikidata: Q83041
+        (confirmed via Wikipedia pageid 1737 → pageprops API).
+      source_url: 'https://plato.stanford.edu/entries/presocratics/'
+      wikidata: 'Q83041'
+
+    Leucippus:
+      dates: 'Active mid-5th century BCE; exact dates unknown'
+      nationality: 'Greek — variously said to be from Elea, Abdera, or Miletus (SEP: "DK 67A1")'
+      school: 'Atomist school; founder'
+      key_works: 'The Great World-System (Megas Diakosmos) and On Mind (Peri Nou) — attributed but content nearly entirely lost'
+      key_doctrines: >
+        Founded atomist theory: the universe consists of two elements — "the full" (indivisible
+        atoms) and "the empty" (void). Both atoms and void are infinite. Atoms are smallest
+        indivisible bodies that move about in an infinite void. Everything is composed of atoms
+        colliding and combining. Leucippus is "named by most sources as the originator" of
+        atomism (SEP).
+      notes: >
+        SEP (leucippus entry) states: "The Greek tradition regarded Leucippus as the founder of
+        atomism in ancient Greek philosophy. Little is known about him, and his views are hard
+        to distinguish from those of his associate Democritus." SEP also notes that even
+        Epicurus reportedly denied Leucippus existed (DK 67A2), though Aristotle explicitly
+        credits him. SEP: "His dates are unknown, other than that he lived during the fifth
+        century BCE." Wikidata: Q165589.
+      source_url: 'https://plato.stanford.edu/entries/leucippus/'
+      wikidata: 'Q165589'
+
+    Democritus:
+      dates: 'c. 460–370 BCE'
+      nationality: 'Greek — Abdera, Thrace'
+      school: 'Atomist school; student of Leucippus'
+      key_works: >
+        Approximately 70 works attributed by ancient sources across all fields — none survive
+        intact. Fragments preserved through later authors.
+      key_doctrines: >
+        Developed atomism into a comprehensive system: all matter consists of eternal,
+        indivisible atoms (atomon = "uncuttable") moving in an infinite void. Atoms differ
+        in size, shape, and arrangement; their combinations produce all observable phenomena.
+        The soul is made of fine, spherical, fire-like atoms. Knowledge of atoms is the
+        highest form of truth; the senses provide only "dark" knowledge. His ethics
+        emphasizes euthymia (well-being, cheerfulness) — he was called "the Laughing
+        Philosopher" in antiquity.
+      notes: >
+        SEP (democritus entry, revised 2023) states he "elaborated a system originated by
+        his teacher Leucippus into a materialist account of the natural world." SEP notes
+        he "was perhaps the most prolific writer of all the ancient Greek philosophers."
+        He reportedly traveled widely and claimed to have met Persian Magi and Egyptian
+        priests (though this is debated). Wikidata: Q41980 (confirmed via Wikipedia
+        pageid 8211 → pageprops API).
+      source_url: 'https://plato.stanford.edu/entries/democritus/'
+      wikidata: 'Q41980'
+
+  # ----------------------------------------------------------
+  # SECTION 3: Sophists
+  # ----------------------------------------------------------
+  sophists:
+    Protagoras:
+      dates: 'c. 490–420 BCE (SEP: "Protagoras (490–420 BCE ca)")'
+      nationality: 'Greek — born Abdera, Thrace (same city as Democritus)'
+      school: 'Sophist; "the first to explicitly present himself as such" (Plato Protagoras 316c–317b)'
+      key_works: 'Truth (Aletheia); On the Gods; Antilogiai (Contradictory Arguments) — all lost'
+      key_doctrines: >
+        "Man is the measure of all things, of things that are that they are, and of things
+        that are not that they are not" (homo mensura) — interpreted as relativism: what
+        appears true to each person is true for that person. Agnosticism about the gods:
+        "Concerning the gods, I have no means of knowing whether they exist or not, nor of
+        what sort they may be." Argued for conventionalist justice providing a theoretical
+        foundation for democracy.
+      notes: >
+        SEP (protagoras entry) calls him "one of the most important sophists" who "exerted
+        considerable influence in fifth-century intellectual debates." SEP states he was
+        born in Abdera and that Plato confirms he was old enough to be the father of
+        everyone at a gathering including Hippias and Prodicus, confirming 490s BCE birth.
+        In 444 BCE Pericles entrusted him with drafting the constitution for the new
+        pan-Hellenic colony of Thurii. He was reportedly put on trial for impiety. Wikidata:
+        Q169243 (confirmed via Wikidata search API).
+      source_url: 'https://plato.stanford.edu/entries/protagoras/'
+      wikidata: 'Q169243'
+
+    Gorgias:
+      dates: 'c. 483–375 BCE (IEP: "Gorgias (483-375 B.C.E.)")'
+      nationality: 'Greek — Leontini, Sicily'
+      school: 'Sophist; rhetorician'
+      key_works: 'Encomium of Helen; Defense of Palamedes; On Non-Being (Peri tou me ontos) — latter survives in paraphrase'
+      key_doctrines: >
+        On Non-Being: three radical theses — (1) nothing exists; (2) even if something existed,
+        it could not be known; (3) even if it could be known, the knowledge could not be
+        communicated to others. This nihilistic argument appears to parody Eleatic arguments.
+        Pioneer of rhetorical technique, especially the power of logos (speech) to persuade.
+        Came to Athens in 427 BCE as ambassador from Leontini seeking military aid against
+        Syracuse; his oratory dazzled Athenian audiences. Said to have died at age 108 in
+        Larissa, Thessaly.
+      notes: >
+        IEP (gorgias entry) states: "Gorgias was a Sicilian philosopher, orator, and
+        rhetorician. He is considered by many scholars to be one of the founders of sophism."
+        IEP confirms he was "a student of Empedocles." SEP has no dedicated entry for Gorgias
+        the sophist (the SEP 'gorgias' entry covers Plato's dialogue of that name). IEP is
+        primary source. Wikidata: Q179785.
+      source_url: 'https://iep.utm.edu/gorgias/'
+      wikidata: 'Q179785'
+
+    Prodicus:
+      dates: 'c. 465–395 BCE (approximate; dates are uncertain)'
+      nationality: 'Greek — Ceos (island in the Aegean)'
+      school: 'Sophist'
+      key_works: 'The Choice of Heracles (preserved in Xenophon Memorabilia 2.1.21–34) — his most famous work'
+      key_doctrines: >
+        Famous for precise distinctions between near-synonyms (synonymy); charged fees for
+        short and long courses on correct word usage. The Choice of Heracles: allegorical
+        tale where Heracles at a crossroads chooses between Virtue and Vice (an early
+        personification allegory). Interested in the origin of religion — held that gods
+        are personifications of useful things (bread = Demeter, wine = Dionysus).
+      notes: >
+        SEP (sophists entry) mentions Prodicus as a leading sophist known for his
+        "precise distinctions between near-synonymous words" and for the Choice of Heracles
+        allegory. No dedicated SEP or IEP entry exists for Prodicus. Information sourced
+        from the SEP sophists entry and Plato's dialogues (Protagoras 315e places him as
+        contemporary with Protagoras). Dates approximate per scholarly convention (e.g.,
+        W.K.C. Guthrie, History of Greek Philosophy vol. III).
+      source_url: 'https://plato.stanford.edu/entries/sophists/'
+      wikidata: 'Q205590'
+      note_on_wikidata: 'Q205590 identified via Wikipedia search; verify independently'
+
+  # ----------------------------------------------------------
+  # SECTION 4: Socrates
+  # ----------------------------------------------------------
+  socrates_section:
+    Socrates:
+      dates: '469–399 BCE (SEP: "his lifetime (469–399 B.C.E.)")'
+      nationality: 'Greek — Athens, Attica'
+      school: 'No formal school; worked through personal dialogue in Athens'
+      key_works: 'Wrote nothing; primary sources are Plato (dialogues), Xenophon (Memorabilia, Symposium), Aristophanes (Clouds)'
+      key_doctrines: >
+        The Socratic method (elenchus): cross-examination to expose inconsistencies in
+        interlocutors' beliefs, leading to aporia (puzzlement). "I know that I know nothing"
+        (related to Delphic oracle calling him wisest because he alone knew his ignorance).
+        Moral intellectualism: virtue is knowledge; wrongdoing is ignorance. The examined
+        life: "The unexamined life is not worth living" (Apology 38a). The soul (psyche)
+        is the most important thing and must be cared for above all else.
+      students_or_influences: 'Plato, Xenophon, Alcibiades, Antisthenes, Aristippus of Cyrene'
+      notes: >
+        SEP (socrates entry) describes him as "an enigma, an inscrutable individual who,
+        despite having written nothing, is considered one of the handful of philosophers who
+        forever changed how philosophy itself was to be conceived." SEP notes that "his trial
+        and death at the hands of the Athenian democracy is nevertheless the founding myth
+        of the academic discipline of philosophy." He was tried in 399 BCE on charges of
+        impiety and corrupting the youth, convicted, and executed by drinking hemlock.
+        The "Socratic problem" — distinguishing the historical Socrates from literary
+        portrayals — remains unresolved.
+      source_url: 'https://plato.stanford.edu/entries/socrates/'
+      wikidata: 'Q913'
+
+    Socratic_Method:
+      dates: '5th century BCE'
+      location: 'Athens, Attica'
+      key_terms: 'elenchus, aporia, cross-examination, midwifery (maieutics), dialectic'
+      notes: >
+        The Socratic elenchus (cross-examination) proceeds by asking for definitions of moral
+        concepts (justice, piety, courage) and then subjecting proposed definitions to
+        counter-examples until the interlocutor reaches aporia (puzzlement / acknowledged
+        ignorance). Socrates compared his role to a midwife (maieutics) — helping others give
+        birth to their own ideas rather than teaching directly. Plato's early "aporetic"
+        dialogues (Euthyphro, Laches, Charmides, Meno) are the primary record. The method
+        became foundational to philosophy, rhetoric, and legal argumentation.
+      source_url: 'https://plato.stanford.edu/entries/socrates/'
+      wikidata: 'Q913'
+
+    Trial_and_Death_of_Socrates:
+      date: '399 BCE'
+      location: 'Athens, Attica'
+      key_terms: 'impiety (asebeia), corrupting the youth, Apology, hemlock (koneion), Phaedo, Crito, last day'
+      notes: >
+        Socrates was tried before an Athenian jury of 501 citizens on charges of asebeia
+        (impiety — introducing new divinities and denying traditional gods) and corrupting
+        the youth. He refused to propose exile as punishment, instead suggesting he deserved
+        free meals at the Prytaneum. Condemned to death by a vote of 360 to 141 (SEP),
+        Socrates spent his last day discussing the immortality of the soul with friends
+        (Plato's Phaedo). He drank hemlock (koneion) and died calmly.
+        The Apology (Plato) records his defense speech. The Crito records his refusal to
+        escape. The Phaedo records his last conversation and death.
+      source_url: 'https://plato.stanford.edu/entries/socrates/'
+      wikidata: 'Q913'
+
+  # ----------------------------------------------------------
+  # SECTION 5: Plato
+  # ----------------------------------------------------------
+  plato_section:
+    Plato:
+      dates: '429?–347 BCE (SEP: "Plato (429?–347 B.C.E.)")'
+      nationality: 'Greek — Athens, Attica; aristocratic family'
+      school: 'Platonism; founder of the Academy (c. 387 BCE)'
+      key_works: >
+        Approximately 36 dialogues and 13 letters (authenticity varies). Major works:
+        Republic, Symposium, Phaedo, Phaedrus, Timaeus, Theaetetus, Parmenides, Meno,
+        Apology, Crito, Euthyphro, Laws. All written as dialogues with Socrates as main speaker.
+      key_doctrines: >
+        Theory of Forms (Ideas): the sensible world is imperfect and changeable; true reality
+        consists of eternal, unchanging, non-physical Forms (e.g., Form of Beauty, Form of
+        Justice, Form of the Good). Knowledge (episteme) is of Forms; the senses give only
+        belief (doxa). The soul pre-exists the body and knows the Forms directly (theory of
+        recollection, anamnesis). The philosopher-king: the ideal state should be ruled by
+        those with knowledge of the Good.
+      students_or_influences: 'Student of Socrates; Aristotle (student at Academy for 20 years)'
+      notes: >
+        SEP (plato entry) describes him as "by any reckoning, one of the most dazzling writers
+        in the Western literary tradition and one of the most penetrating, wide-ranging, and
+        influential authors in the history of philosophy." SEP notes that "the subject of
+        philosophy, as it is often conceived — a rigorous and systematic examination of ethical,
+        political, metaphysical, and epistemological issues, armed with a distinctive method —
+        can be called his invention." His exact birth year is uncertain (some sources say 428).
+      source_url: 'https://plato.stanford.edu/entries/plato/'
+      wikidata: 'Q859'
+
+    Platos_Academy:
+      date: 'Founded c. 387 BCE; closed 529 CE by Emperor Justinian'
+      location: 'Grove of Akademos, northwest of Athens'
+      key_terms: 'Academy (Akademeia), Akademos, first university, Platonic school, scholarch'
+      notes: >
+        Plato founded the Academy in a grove sacred to the hero Akademos (Hekademos) outside
+        Athens, approximately 387 BCE after his return from Sicily. It is often called the
+        first institution of higher learning in the Western world, though ancient sources do
+        not use this terminology. Plato led it until his death in 347 BCE. Successors
+        (scholarchs) included Speusippus (Plato's nephew), Xenocrates, and later Arcesilaus
+        (who turned it toward Skepticism). The institution survived in various forms until
+        Emperor Justinian ordered its closure in 529 CE, forcing the last Neoplatonic
+        philosophers to leave Athens.
+      source_url: 'https://plato.stanford.edu/entries/plato/'
+      wikidata: 'Q859'
+
+    Theory_of_Forms:
+      location: 'Doctrine developed in middle dialogues: Republic, Phaedo, Symposium'
+      key_terms: 'Forms (eide/ideai), intelligible realm, sensible realm, participation, Form of the Good'
+      notes: >
+        SEP (plato entry) summarizes: "The world that appears to our senses is in some way
+        defective and filled with error, but there is a more real and perfect realm, populated
+        by entities (called 'forms' or 'ideas') that are eternal, changeless, and in some sense
+        paradigmatic for the structure and character of the world presented to our senses."
+        The Form of the Good is the highest Form — the source of being and knowability for all
+        other Forms (Republic 509b). Particular beautiful things participate in Beauty itself;
+        particular just acts participate in Justice itself. The Forms are accessible only through
+        reason (nous), not the senses.
+      source_url: 'https://plato.stanford.edu/entries/plato/'
+      wikidata: 'Q859'
+
+    Allegory_of_the_Cave:
+      location: 'Republic Book VII (514a–520a)'
+      key_terms: 'cave, prisoners, shadows, sun, philosopher, ascent, Form of the Good, enlightenment'
+      notes: >
+        In Republic 514a–520a Plato has Socrates describe prisoners chained in a cave, seeing
+        only shadows cast on the cave wall by objects behind them — they mistake these shadows
+        for reality. One prisoner escapes, sees real objects, and eventually sees the sun
+        (= the Form of the Good). Returning to tell the others, he is mocked and disbelieved.
+        The allegory illustrates the philosopher's journey from ignorance to knowledge and
+        back (education, the duty to return to the cave to govern). It maps onto the Divided
+        Line (Republic 509d–511e) which distinguishes four stages of cognition.
+      source_url: 'https://plato.stanford.edu/entries/plato/'
+      wikidata: 'Q859'
+
+    Republic:
+      date: 'Written c. 375 BCE (middle period)'
+      key_terms: 'politeia, justice (dikaiosyne), philosopher-king, tripartite soul, five regimes, kallipolis'
+      notes: >
+        Plato's Republic (Politeia) is his most famous work. It asks "What is justice?" and
+        answers by constructing an ideal city-state (kallipolis). The city has three classes
+        corresponding to the tripartite soul: philosopher-rulers (reason), warriors (spirit),
+        producers (appetite). Justice is harmony between the three parts. The philosopher-king
+        is the ideal ruler, having knowledge of the Forms. The work also contains the
+        Allegory of the Cave (Book VII) and the Myth of Er (eschatology, Book X). Plato
+        critiques democracy, oligarchy, tyranny, and timocracy as degenerate regimes.
+      source_url: 'https://plato.stanford.edu/entries/plato/'
+      wikidata: 'Q859'
+
+    Symposium:
+      date: 'Written c. 385–370 BCE (middle period)'
+      key_terms: 'eros (love), speeches on love, Diotima, ladder of beauty, Platonic love, Alcibiades'
+      notes: >
+        A dialogue in which Socrates and others give speeches on Eros (love) at a banquet.
+        Socrates reports the teachings of the prophetess Diotima of Mantinea: love is
+        the desire for immortality; one should ascend from love of one beautiful body,
+        to all beautiful bodies, to beautiful souls, to beautiful practices, to beautiful
+        knowledge, and finally to Beauty itself (the Form of Beauty) — the "Ladder of
+        Beauty" (Symposium 210a–212a). "Platonic love" derives from this ascent to
+        non-physical beauty. The dialogue ends with a drunken Alcibiades praising Socrates.
+      source_url: 'https://plato.stanford.edu/entries/plato/'
+      wikidata: 'Q859'
+
+    Phaedo:
+      date: 'Written c. 385–380 BCE (early-middle period)'
+      key_terms: 'immortality of the soul, Forms, recollection (anamnesis), final arguments, death of Socrates'
+      notes: >
+        Set on the day of Socrates' death, the Phaedo contains four arguments for the
+        immortality of the soul: (1) the Cyclical Argument (opposites generate from opposites);
+        (2) the Recollection Argument (knowledge of Forms proves pre-existence of the soul);
+        (3) the Affinity Argument (the soul resembles the unchanging Forms); (4) the Final
+        Argument (the soul participates in the Form of Life and cannot admit its opposite, death).
+        The dialogue also establishes the Theory of Forms most fully in an early-middle context.
+        Ends with Socrates drinking hemlock calmly, surrounded by weeping friends.
+      source_url: 'https://plato.stanford.edu/entries/plato/'
+      wikidata: 'Q859'
+
+    Timaeus:
+      date: 'Written c. 360 BCE (late period)'
+      key_terms: 'Demiurge, World Soul, four elements, geometric solids, cosmogony, chora (receptacle)'
+      notes: >
+        Plato's Timaeus is his major cosmological work. A craftsman-deity (Demiurge) fashions
+        the physical world by looking at the eternal Forms as models. The Demiurge creates
+        the World Soul and embeds mathematical ratios in it. The four elements correspond to
+        the five Platonic solids: fire = tetrahedron, earth = cube, air = octahedron,
+        water = icosahedron, and the universe = dodecahedron. The third principle, chora
+        (the receptacle), is the formless medium in which physical things appear.
+        This work was the most widely read Platonic dialogue in the Middle Ages.
+      source_url: 'https://plato.stanford.edu/entries/plato/'
+      wikidata: 'Q859'
+
+    Philosopher_King:
+      location: 'Republic Books V–VII (473c–541b)'
+      key_terms: 'philosopher-king, rule of the wise, knowledge of the Good, turning the eye of the soul'
+      notes: >
+        Republic 473c: "Until philosophers are kings, or the kings and princes of this world
+        have the spirit and power of philosophy... cities will never have rest from their
+        evils." The philosopher-king is one who has completed the full educational program
+        described in Republic Book VII (gymnastics, music, mathematics, dialectic) and
+        ascended to knowledge of the Form of the Good. Only such a person can rule justly
+        because only they see things as they truly are. This doctrine was highly controversial
+        even among ancient readers (Aristotle criticized it in Politics Book II).
+      source_url: 'https://plato.stanford.edu/entries/plato/'
+      wikidata: 'Q859'
+
+  # ----------------------------------------------------------
+  # SECTION 6: Aristotle
+  # ----------------------------------------------------------
+  aristotle_section:
+    Aristotle:
+      dates: '384–322 BCE (SEP: "Aristotle (384–322 B.C.E.)")'
+      nationality: 'Greek — born Stagira, Macedon; spent career in Athens and Lesbos'
+      school: 'Peripatetic school; founded the Lyceum'
+      key_works: >
+        Approximately 31 surviving treatises from perhaps 200 originals. Major works:
+        Organon (logic), Physics, De Anima (On the Soul), Metaphysics, Nicomachean Ethics,
+        Politics, Poetics, Rhetoric, History of Animals, Parts of Animals.
+      key_doctrines: >
+        Four causes (aitia): material, formal, efficient, final. Hylomorphism: all physical
+        substances are composites of matter (hyle) and form (morphe). Unmoved Mover: a divine
+        eternal intellect that moves all things by being the object of desire without itself
+        being moved. Eudaimonia (flourishing/happiness) is the highest good, achieved through
+        the exercise of virtue. The soul is the form of the body, not a separate entity.
+        Empirical method: observation and induction precede theory.
+      students_or_influences: 'Student of Plato (20 years at Academy); tutor of Alexander the Great (343–340 BCE); teacher of Theophrastus'
+      notes: >
+        SEP (aristotle entry) states he "numbers among the greatest philosophers of all time"
+        and that "only Plato is his peer." Born in Stagira in 384 BCE, he entered Plato's
+        Academy at ~17 and stayed until Plato's death in 347. He left for Assos (Asia Minor),
+        then Lesbos (with Theophrastus), then became tutor to the 13-year-old Alexander in
+        343 BCE. Returned to Athens in 335 BCE, founded the Lyceum. Left Athens again in 323
+        BCE after anti-Macedonian sentiment arose following Alexander's death; died at Chalcis
+        on Euboea in 322 BCE.
+      source_url: 'https://plato.stanford.edu/entries/aristotle/'
+      wikidata: 'Q868'
+
+    Lyceum:
+      date: 'Founded 335 BCE; continued after Aristotle as the Peripatetic school'
+      location: 'Public gymnasium near the temple of Apollo Lykeios, northeast of Athens'
+      key_terms: 'Lyceum, Peripatetics, peripatos (covered walkway), library, Theophrastus'
+      notes: >
+        SEP (aristotle entry) states: "In Athens, Aristotle set up his own school in a public
+        exercise area dedicated to the god Apollo Lykeios, whence its name, the Lyceum. Those
+        affiliated with Aristotle's school later came to be called Peripatetics." The Lyceum
+        housed a library — "according to some ancient accounts, assembling the first great
+        library of antiquity." Theophrastus succeeded Aristotle as head of the Lyceum.
+        The word "Peripatetic" derives from peripatos (covered walkway), possibly where
+        Aristotle lectured.
+      source_url: 'https://plato.stanford.edu/entries/aristotle/'
+      wikidata: 'Q868'
+
+    Nicomachean_Ethics:
+      date: 'Written c. 350–330 BCE'
+      key_terms: 'eudaimonia, virtue (arete), golden mean, phronesis (practical wisdom), theoria (contemplation)'
+      notes: >
+        The Nicomachean Ethics addresses the question "What is the good life?" (eudaimonia =
+        flourishing/happiness). Eudaimonia is achieved through the exercise of virtue (arete)
+        in accordance with reason over a complete life. Two types of virtue: intellectual
+        virtues (learned by instruction, especially phronesis = practical wisdom) and moral
+        virtues (formed by habit). The doctrine of the mean (meson): each virtue is a mean
+        between two vices — e.g., courage is the mean between cowardice and recklessness.
+        The best life is ultimately the life of theoria (philosophical contemplation) —
+        Nicomachean Ethics Book X.
+      source_url: 'https://plato.stanford.edu/entries/aristotle/'
+      wikidata: 'Q868'
+
+    Four_Causes:
+      location: 'Physics Book II, Metaphysics'
+      key_terms: 'material cause (hyle), formal cause (eidos), efficient cause, final cause (telos), teleology'
+      notes: >
+        Aristotle argues in Physics II.3 and Metaphysics V.2 that to give a complete explanation
+        of anything we must specify four types of cause (aitia): (1) the material cause — what
+        it is made of; (2) the formal cause — its form or essence; (3) the efficient cause —
+        what brought it into being; (4) the final cause (telos) — its purpose or function.
+        Example: a bronze statue — bronze (material), the shape (formal), the sculptor (efficient),
+        to honor someone (final). Teleological explanation (final cause) is central to Aristotle's
+        biology and ethics. This framework dominated natural philosophy until the Scientific
+        Revolution.
+      source_url: 'https://plato.stanford.edu/entries/aristotle/'
+      wikidata: 'Q868'
+
+    Unmoved_Mover:
+      location: 'Metaphysics Book XII (Lambda); Physics Book VIII'
+      key_terms: 'unmoved mover (primus movens), eternal motion, divine intellect, noesis noeseos (thought of thought)'
+      notes: >
+        Aristotle argues in Metaphysics XII.6–9 that there must be an eternal, immovable
+        substance that is the ultimate cause of all motion and change. The Unmoved Mover is
+        pure actuality (energeia) without any potentiality (dynamis) — it cannot change.
+        It moves other things not by physical push but by being the object of desire and love
+        (as a final cause). It is divine intellect whose only activity is thinking itself:
+        noesis noeseos (thought thinking itself). Aristotle's Unmoved Mover was deeply
+        influential on medieval theology (Aquinas's Five Ways) and Islamic philosophy
+        (Avicenna, Averroes).
+      source_url: 'https://plato.stanford.edu/entries/aristotle/'
+      wikidata: 'Q868'
+
+    Organon:
+      date: 'Written c. 350 BCE'
+      key_terms: 'Categories, De Interpretatione, Prior Analytics, Posterior Analytics, Topics, Sophistical Refutations'
+      notes: >
+        The Organon (Greek for "instrument") is the collective name given by ancient
+        commentators to Aristotle's six logical treatises: Categories, De Interpretatione,
+        Prior Analytics, Posterior Analytics, Topics, and Sophistical Refutations. Prior
+        Analytics introduces syllogistic logic — the first formal logical system.
+        Posterior Analytics introduces the concept of scientific demonstration (apodeixis).
+        Aristotle's logic dominated Western thought until the development of modern
+        predicate logic by Frege and Russell in the late 19th–early 20th centuries.
+      source_url: 'https://plato.stanford.edu/entries/aristotle/'
+      wikidata: 'Q868'
+
+    Poetics:
+      date: 'Written c. 335 BCE'
+      key_terms: 'mimesis (imitation), tragedy, catharsis, hamartia, peripeteia, anagnorisis, plot (mythos)'
+      notes: >
+        Aristotle's Poetics (surviving Part I covers epic poetry and tragedy; Part II on
+        comedy is lost) is the first systematic analysis of literature. Defines tragedy as
+        "an imitation of an action that is serious, complete, and of a certain magnitude...
+        through pity and fear effecting the proper catharsis of these emotions." Key concepts:
+        mimesis (all art as imitation), hamartia (tragic flaw or error), peripeteia
+        (reversal of fortune), anagnorisis (recognition), catharsis (emotional purging).
+        Identifies plot (mythos) as the "soul of tragedy." Influenced Renaissance and
+        Neoclassical literary theory profoundly.
+      source_url: 'https://plato.stanford.edu/entries/aristotle/'
+      wikidata: 'Q868'
+
+    Hylomorphism:
+      location: 'Physics, Metaphysics, De Anima'
+      key_terms: 'hyle (matter), morphe/eidos (form), substance (ousia), actuality (energeia), potentiality (dynamis)'
+      notes: >
+        Hylomorphism (from Greek hyle = matter, morphe = form) is Aristotle's doctrine that
+        all physical substances are composites of matter and form. Matter is pure potentiality
+        (what a thing is made of); form is the actuality that makes a thing what it is.
+        A human being is the form of a certain kind of animal body (De Anima 412a). The soul
+        is the form of the body — the principle that organizes and animates it — not a separate
+        substance trapped in the body (contra Plato). Hylomorphism opposes both Platonic
+        Forms (which exist separately from matter) and Democritean atomism (no form principle).
+      source_url: 'https://plato.stanford.edu/entries/aristotle/'
+      wikidata: 'Q868'
+
+    Golden_Mean:
+      location: 'Nicomachean Ethics Book II, chapters 6–9'
+      key_terms: 'meson (mean), virtue as mean, excess, deficiency, relative to us'
+      notes: >
+        Aristotle defines moral virtue (NE II.6, 1106b36) as "a state of character concerned
+        with choice, lying in a mean, i.e. the mean relative to us, this being determined by
+        a rational principle." Each virtue is a mean between two vices: one of excess and one
+        of deficiency. Courage is the mean between cowardice (deficiency) and recklessness
+        (excess). Generosity is the mean between miserliness and prodigality. The mean is
+        "relative to us" — it varies with the person and circumstance. This doctrine of the
+        mean became central to Western ethics and influenced Aquinas's moral theology.
+      source_url: 'https://plato.stanford.edu/entries/aristotle/'
+      wikidata: 'Q868'
+
+    Politics:
+      date: 'Written c. 335–323 BCE'
+      key_terms: 'polis, political animal (zoon politikon), constitutions, monarchy, aristocracy, polity, tyranny, oligarchy, democracy'
+      notes: >
+        Aristotle opens Politics with "man is by nature a political animal" (zoon politikon,
+        1253a2) — humans can only fully flourish in a properly organized community. He
+        classifies six types of constitution: three "correct" forms (monarchy, aristocracy,
+        polity) and three "perverted" forms (tyranny, oligarchy, democracy). Polity (politeia)
+        is the best attainable for most cities — a mixed constitution combining oligarchic and
+        democratic elements, ruled by a large middle class. The Politics contains a systematic
+        critique of Plato's Republic (Book II) and an extensive comparative study of actual
+        constitutions (158 were studied; only the Athenian Constitution survives).
+      source_url: 'https://plato.stanford.edu/entries/aristotle/'
+      wikidata: 'Q868'
+
+  # ----------------------------------------------------------
+  # SECTION 7: Hellenistic Schools — Stoicism
+  # ----------------------------------------------------------
+  stoicism:
+    Zeno_of_Citium:
+      dates: 'c. 334–262 BCE (Wikidata Q171303 description: "Greek philosopher, founder of Stoicism")'
+      nationality: 'Greek — Citium (Kition), Cyprus'
+      school: 'Stoicism; founder'
+      key_works: 'No works survive; doctrines preserved through Diogenes Laërtius, Cicero, Plutarch'
+      key_doctrines: >
+        Founded the Stoic school around 300 BCE in Athens. Virtue is the only true good;
+        external things (wealth, health, reputation) are "indifferents" (adiaphora).
+        Living "according to nature" (kata phusin) is the goal of life — the virtuous person
+        is always happy. Founded the Stoa Poikile ("Painted Porch") school. Studied under
+        the Cynic Crates and was influenced by Megarian logicians and Plato's Academy.
+      notes: >
+        SEP (stoicism entry, first published 2023) states: "The Stoic school was founded around
+        300 BCE by Zeno of Citium, a voracious reader of Socratic dialogues, who also studied
+        under the Cynic Crates and was influenced by the teachings of Plato's Academy and the
+        Megarian School." The school takes its name from the stoa poikile (painted porch) in
+        the Agora at Athens where the first generation lectured. SEP's dedicated zeno-citium
+        entry returns "Not Yet Available" as of April 2026; stoicism entry is the primary source.
+        Wikidata: Q171303.
+      source_url: 'https://plato.stanford.edu/entries/stoicism/'
+      wikidata: 'Q171303'
+
+    Stoa_Poikile:
+      date: 'Founded c. 300 BCE as school location'
+      location: 'Agora of Athens, north side'
+      key_terms: 'Painted Porch, stoa poikile, mural paintings, Polygnotus, Marathon battle scene'
+      notes: >
+        SEP (stoicism entry) states: "The name derives from the porch (stoa poikilê) in the
+        Agora at Athens decorated with mural paintings, where the first generation of Stoic
+        philosophers congregated and lectured." The Stoa Poikile ("Painted Porch") was famous
+        for paintings by Polygnotus and others depicting battle scenes including the Battle of
+        Marathon. Zeno of Citium lectured there, and the school took its name from the building.
+        The actual building was demolished in late antiquity; its foundation was rediscovered
+        during excavations of the Athenian Agora in 1981.
+      source_url: 'https://plato.stanford.edu/entries/stoicism/'
+      wikidata: 'Q171303'
+
+    Chrysippus:
+      dates: 'c. 279–206 BCE (IEP: "c. 279–206 BCE")'
+      nationality: 'Greek — Soli (Soloi), Cilicia (southern Turkey)'
+      school: 'Stoicism; third head of the Stoa'
+      key_works: 'Reportedly wrote over 700 works; none survive directly. Reconstructed from fragments in Plutarch, Galen, Diogenes Laërtius'
+      key_doctrines: >
+        Systematized and defended Stoic doctrine across logic, physics, and ethics. Developed
+        Stoic propositional logic (syllogistic using conditionals) — an alternative to
+        Aristotle's term logic. Compatibilism: held that free will (prohairesis) and causal
+        determinism are compatible. "If Chrysippus had not existed, neither would the Stoa"
+        (ancient catchphrase, IEP).
+      notes: >
+        IEP (chrysippus entry) states: "Chrysippus was among the most influential philosophers
+        of the Stoa. He is usually thought of as the most important influence on Stoicism.
+        A later Stoic catchphrase ran, 'If Chrysippus had not existed, neither would the Stoa.'"
+        SEP (stoicism entry) confirms: he "headed the school from around 230 until 206 BCE and
+        was by all accounts its foremost theorist and systematizer." SEP's dedicated chrysippus
+        entry returns 404. IEP is primary source for biographical details.
+        Wikidata: Q211411.
+      source_url: 'https://iep.utm.edu/chrysippus/'
+      wikidata: 'Q211411'
+
+    Epictetus:
+      dates: 'c. 50–135 CE (SEP: "Born sometime in the 50s C.E.... death around 135")'
+      nationality: 'Greek — born Hierapolis, Phrygia (Asia Minor); enslaved; later freed'
+      school: 'Stoicism; Roman Imperial Stoicism'
+      key_works: 'Discourses (Diatribai) — 4 books surviving of 8, recorded by Arrian; Enchiridion (Handbook) — summary by Arrian'
+      key_doctrines: >
+        The fundamental Stoic distinction: some things are "up to us" (eph' hemin) —
+        our judgments, impulses, desires — and some are "not up to us" — body, reputation,
+        external circumstances. Happiness comes from focusing exclusively on what is up to us.
+        Volition (prohairesis) is the key faculty. Social duty: we are all citizens of the
+        world-city (cosmopolis). Virtue is sufficient for happiness; externals are indifferent.
+      notes: >
+        SEP (epictetus entry) states he was "Born sometime in the 50s C.E. in Hierapolis, a
+        Greek city of Asia Minor" and was "the slave of Epaphroditus, an important administrator
+        in the court of Nero." He received his freedom and began lecturing but was expelled
+        from Rome by Domitian's edict banning philosophers (89 CE). He established his school
+        at Nicopolis in Epirus. SEP notes his chief concerns are "integrity, self-management,
+        and personal freedom." His student Arrian transcribed his lectures and the Enchiridion.
+      source_url: 'https://plato.stanford.edu/entries/epictetus/'
+      wikidata: 'Q183144'
+
+    Marcus_Aurelius:
+      dates: '121–180 CE (SEP: "second century CE Roman emperor")'
+      nationality: 'Roman — born Rome; Emperor 161–180 CE'
+      school: 'Stoicism; Roman Imperial Stoicism'
+      key_works: 'Meditations (Ta eis heauton, "To himself") — personal philosophical journal, written in Greek'
+      key_doctrines: >
+        Virtue is the only good; vice the only evil; all else is indifferent. Accept what
+        happens as part of the rational whole (logos). Each moment, act according to reason
+        and for the common good. The Meditations are personal exercises in Stoic self-examination
+        — written for private use, never intended for publication. "You have power over your
+        mind, not outside events. Realize this, and you will find strength."
+      notes: >
+        SEP (marcus-aurelius entry) describes the Meditations as offering "readers a unique
+        opportunity to see how an ancient person (indeed an emperor) might try to live a Stoic
+        life." He was Emperor 161–180 CE — the last of the "Five Good Emperors." His co-emperor
+        was Lucius Verus (161–169). He fought extensive wars on the Danube frontier and
+        persecuted Christians sporadically. The Meditations survive in a single manuscript and
+        were not published until 1559.
+      source_url: 'https://plato.stanford.edu/entries/marcus-aurelius/'
+      wikidata: 'Q1430'
+
+    Seneca:
+      dates: 'c. 4 BCE–65 CE (IEP: "born no earlier than 8 B.C.E. and no later than 1 B.C.E... most common estimate 4 B.C.E."; died 65 CE)'
+      nationality: 'Roman — born Cordoba, Spain; worked in Rome'
+      school: 'Stoicism; Roman Imperial Stoicism; also playwright'
+      key_works: 'Moral Letters (Epistulae Morales) — 124 letters to Lucilius; On the Shortness of Life; Consolations; nine tragedies'
+      key_doctrines: >
+        Death is not an evil — fear of death is irrational. Wealth is not a good. The Stoic
+        sage achieves tranquility (ataraxia) through reason. Cosmopolitanism: we are all
+        citizens of the world. Virtue is sufficient for happiness. He struggled to live up to
+        his own principles (he was one of Rome's wealthiest men while writing about poverty).
+      notes: >
+        IEP (seneca entry) states he "was born in Cordoba during the reign of Augustus" and
+        served as "friend and tutor to Nero." He was exiled by Claudius (41 CE) then recalled
+        (49 CE). His relationship with Nero eventually soured, and Nero ordered him to commit
+        suicide in 65 CE after the Pisonian Conspiracy. IEP notes: "Seneca, under orders from
+        Nero, committed suicide in 65 C.E." The SEP (seneca entry) confirmed available at
+        https://plato.stanford.edu/entries/seneca/. Wikidata: Q1156228.
+      source_url: 'https://plato.stanford.edu/entries/seneca/'
+      wikidata: 'Q1156228'
+
+  # ----------------------------------------------------------
+  # SECTION 8: Hellenistic Schools — Epicureanism
+  # ----------------------------------------------------------
+  epicureanism:
+    Epicurus:
+      dates: '341–270 BCE (SEP: "The philosophy of Epicurus (341–270 B.C.E.)")'
+      nationality: 'Greek — born Samos; spent most of career in Athens'
+      school: 'Epicureanism; founder; established the Garden school'
+      key_works: >
+        Letter to Herodotus (physics summary), Letter to Menoeceus (ethics summary),
+        Letter to Pythocles (astronomy), Principal Doctrines (Kuriai Doxai) — all preserved
+        in Diogenes Laërtius Book X. Approximately 300 books reportedly written; nearly all lost.
+      key_doctrines: >
+        The highest good is ataraxia (tranquility of mind) and aponia (absence of bodily pain).
+        Pleasure (hedone) is the beginning and end of the blessed life — but not mere bodily
+        pleasure; intellectual pleasures and friendship are higher. Atomic materialism (from
+        Democritus): the soul is made of atoms and disperses at death; therefore death is
+        nothing to fear. The gods exist but do not intervene in human affairs. Social life:
+        cultivate a small community of friends; avoid politics.
+      notes: >
+        SEP (epicurus entry) states his philosophy "was a complete and interdependent system,
+        involving a view of the goal of human life (happiness, resulting from absence of
+        physical pain and mental disturbance)." SEP notes Diogenes Laërtius Book X is the
+        major source. The Tetrapharmakos (Four-fold Remedy) summarizes Epicurean therapy:
+        "Don't fear god; don't fear death; what is good is easy to get; what is terrible is
+        easy to endure." The Garden (Kepos) was established in Athens c. 307 BCE; it admitted
+        women and slaves as members — unusual for ancient philosophical schools.
+        Wikidata: Q43216.
+      source_url: 'https://plato.stanford.edu/entries/epicurus/'
+      wikidata: 'Q43216'
+
+    The_Garden:
+      date: 'Established c. 307 BCE in Athens'
+      location: 'Athens — a garden (kepos) owned by Epicurus outside the city walls'
+      key_terms: 'Garden (Kepos), community, friendship (philia), women admitted, slaves admitted, private withdrawal'
+      notes: >
+        The Garden was Epicurus's school in Athens, established around 307 BCE in a garden he
+        owned. Unlike the Platonic Academy and Aristotelian Lyceum, it admitted women and enslaved
+        persons as full members of the philosophical community — an unusual feature. Inscribed
+        at the entrance reportedly: "Stranger, here you will do well to tarry; here our highest
+        good is pleasure." Emphasized withdrawal from public life and cultivation of friendship
+        (philia) as the greatest aid to a happy life. Epicurus lived communally with his
+        followers for the rest of his life.
+      source_url: 'https://plato.stanford.edu/entries/epicurus/'
+      wikidata: 'Q43216'
+
+    Lucretius:
+      dates: 'c. 94–55 BCE (SEP: "Titus Lucretius Carus (mid-90s to mid-50s BCE)")'
+      nationality: 'Roman — details of his life nearly unknown'
+      school: 'Epicurean; Roman poet and philosopher'
+      key_works: 'De Rerum Natura (On the Nature of Things) — six-book didactic poem in Latin hexameters'
+      key_doctrines: >
+        Systematically expounded Epicurean atomist physics in Latin verse. The world consists of
+        atoms (atoms) and void; nothing comes from nothing. The soul is mortal and disperses
+        at death — therefore death is nothing to fear. The atomic swerve (clinamen): atoms
+        occasionally deviate from their paths, introducing indeterminism and free will.
+        Religion causes more harm than good (tantum religio potuit suadere malorum). The poem
+        is "our fullest source for Epicurean, atomist physics" (SEP).
+      notes: >
+        SEP (lucretius entry) states De Rerum Natura is "our fullest source for Epicurean,
+        atomist physics" and "a nearly unique survival from antiquity of the anti-teleological
+        and anti-providential materialist outlook." The only external reference to Lucretius
+        is Cicero's letter to his brother Quintus (Feb 54 BCE), praising the poem as showing
+        "brilliance and originality." Lucretius provides the sole Epicurean source for the
+        atomic swerve (clinamen) doctrine. The poem was rediscovered in 1417 by Poggio
+        Bracciolini and became highly influential in the Renaissance and Scientific Revolution.
+        Wikidata: Q47154.
+      source_url: 'https://plato.stanford.edu/entries/lucretius/'
+      wikidata: 'Q47154'
+
+    Tetrapharmakos:
+      date: '3rd century BCE (attributed to Epicurus)'
+      key_terms: 'four-fold remedy, fear of god, fear of death, good is easy, evil is bearable'
+      notes: >
+        The Tetrapharmakos ("Four-fold Remedy") is an Epicurean mnemonic summarizing the
+        therapy for human unhappiness. Preserved in Philodemus (1st century BCE): "Don't fear
+        god; don't fear death; what is good is easy to get; what is terrible is easy to endure."
+        Each clause addresses a major source of human anxiety. The Epicurean argument for
+        each: gods don't intervene; death is non-existence (not torture); pleasures required
+        for the good life are simple and accessible; pain, when severe, is usually brief.
+        The Tetrapharmakos encapsulates Epicurean practical ethics.
+      source_url: 'https://plato.stanford.edu/entries/epicurus/'
+      wikidata: 'Q43216'
+
+  # ----------------------------------------------------------
+  # SECTION 9: Hellenistic Schools — Cynicism
+  # ----------------------------------------------------------
+  cynicism:
+    Antisthenes:
+      dates: 'c. 446–366 BCE (IEP: "Born probably in either 446 or 445 B.C.E.")'
+      nationality: 'Greek — Athens; half-Athenian (Athenian father, Thracian mother)'
+      school: 'Cynicism; regarded by Diogenes Laërtius as the first Cynic'
+      key_works: 'Over sixty titles credited; none survive. Ajax; Odysseus; fragments on ethics and language preserved indirectly'
+      key_doctrines: >
+        Virtue is the only good; wealth, pleasure, and social convention (nomos) are worthless.
+        Virtue can be taught; it requires exercise not just knowledge. Asceticism as a
+        philosophical practice. Rejected Platonic abstract forms: "I see a horse, Plato, but
+        not horseness." Ethical intellectualism inherited from Socrates. Present at Socrates'
+        death (mentioned by Plato in Phaedo).
+      notes: >
+        IEP (antisthenes entry) states he was "regarded by Diogenes Laertius as the first Cynic
+        philosopher" and "is credited with the authorship of over sixty titles." IEP confirms
+        he was a student of Gorgias before becoming a student of Socrates. "Born probably in
+        either 446 or 445 B.C.E. of an Athenian father, also named Antisthenes, and a Thracian
+        mother" — making him a nothos (one of non-citizen parentage), ineligible for Athenian
+        citizenship. Wikidata: Q179149.
+      source_url: 'https://iep.utm.edu/antisthenes/'
+      wikidata: 'Q179149'
+
+    Diogenes_of_Sinope:
+      dates: 'c. 412–323 BCE (traditional; exact dates uncertain)'
+      nationality: 'Greek — born Sinope, Pontus (Black Sea coast); spent career in Athens and Corinth'
+      school: 'Cynicism; student of Antisthenes; considered the paradigmatic Cynic sage'
+      key_works: 'Disputed whether he wrote anything; possible plays and dialogues lost'
+      key_doctrines: >
+        Radical rejection of social conventions (nomos): lived in a large ceramic jar (pithos),
+        not a barrel — the barrel version is a later Latin error. Shamelessness (anaideia) as
+        virtue. Self-sufficiency (autarkeia): all one needs is virtue. Performed natural
+        functions (eating, defecating) in public to challenge social taboos. Called himself
+        "Diogenes the Dog" (whence "Cynic" = dog-like). Famously told Alexander the Great
+        (who offered him any gift) "Stand out of my sunlight."
+      notes: >
+        IEP (diogenes-of-sinope entry) states "Diogenes maintains his teacher's asceticism
+        and emphasis on ethics, but brings to these philosophical positions a dynamism and
+        sense of humor unrivaled in the history of philosophy." IEP notes the coin-defacing
+        story: he was exiled from Sinope after an incident involving defaced currency —
+        whether he or his father defaced it is uncertain. SEP's dedicated diogenes-sinope
+        entry returns "Not Yet Available" as of April 2026. IEP is primary source.
+        Wikidata: Q59180.
+      source_url: 'https://iep.utm.edu/diogenes-of-sinope/'
+      wikidata: 'Q59180'
+
+    Crates_of_Thebes:
+      dates: 'c. 368–288 BCE (approximate)'
+      nationality: 'Greek — Thebes, Boeotia; moved to Athens'
+      school: 'Cynicism; student of Diogenes of Sinope'
+      key_works: 'Philosophical poetry and letters — fragments survive indirectly'
+      key_doctrines: >
+        Gave away his considerable family fortune upon adopting Cynicism. Married Hipparchia
+        of Maroneia (one of the few female philosophers mentioned in ancient sources) — she
+        adopted Cynic poverty with him. Zeno of Citium (later founder of Stoicism) was
+        among his students. Gentle and approachable in temperament, nicknamed "door-opener"
+        (thyrepanoiktes) for his habit of entering homes uninvited to preach philosophy.
+      notes: >
+        Wikidata Q317947 confirmed via search API. Crates is important as the teacher of
+        Zeno of Citium — the direct transmission link between Cynicism and Stoicism.
+        Ancient sources (Diogenes Laërtius VI.85–98) are the primary record. SEP has no
+        dedicated entry; the SEP cynics entry (if it exists under another slug) would be
+        checked. SEP slug 'cynics' returns 404; information sourced from SEP stoicism entry
+        and IEP diogenes-of-sinope entry for the Cynic lineage.
+      source_url: 'https://plato.stanford.edu/entries/stoicism/'
+      wikidata: 'Q317947'
+
+  # ----------------------------------------------------------
+  # SECTION 10: Hellenistic Schools — Skepticism
+  # ----------------------------------------------------------
+  skepticism:
+    Pyrrho:
+      dates: 'c. 360–270 BCE (SEP: "Pyrrho was the starting-point for a philosophical movement")'
+      nationality: 'Greek — Elis, Peloponnese'
+      school: 'Pyrrhonism; founder; earlier Skeptic tradition'
+      key_works: 'Wrote nothing; doctrines reported by his student Timon of Phlius through satirical poems (Silloi)'
+      key_doctrines: >
+        Suspension of judgment (epoché) on all matters — because things are equally undecidable,
+        we should neither affirm nor deny. This suspension leads to ataraxia (tranquility),
+        not anxiety. Reportedly Pyrrho traveled with Alexander's expedition to India and may
+        have been influenced by Indian gymnosophists. The "Ten Modes" of suspending judgment
+        were formalized by later Pyrrhonists, not Pyrrho himself.
+      notes: >
+        SEP (pyrrho entry) states Pyrrho "was the starting-point for a philosophical movement
+        known as Pyrrhonism that flourished beginning several centuries after his own time."
+        SEP notes "Perhaps the most thorough radical skeptic in the history of philosophy" but
+        cautions that Pyrrho himself wrote nothing and his actual views are filtered through
+        Timon's hostile satire and much later Pyrrhonist reconstructions. Wikidata: Q192313
+        (confirmed via Wikipedia pageid 140651 → pageprops API).
+      source_url: 'https://plato.stanford.edu/entries/pyrrho/'
+      wikidata: 'Q192313'
+
+    Epoché:
+      date: 'Pyrrhonist concept; formalized by Sextus Empiricus c. 200 CE'
+      key_terms: 'epoché, suspension of judgment, ataraxia, appearances (phainomena), dogmatism'
+      notes: >
+        Epoché (suspension of judgment) is the central practical recommendation of Pyrrhonism.
+        For any proposition, an equal weight of argument can be adduced for and against it
+        (isostheneia); therefore the rational response is neither to assert nor to deny.
+        This suspension itself produces ataraxia — the tranquility that dogmatic philosophers
+        seek through positive doctrines but fail to achieve. Pyrrhonists distinguish between
+        how things appear (phainomena) and how they are in themselves; they act on appearances
+        without making ontological commitments.
+      source_url: 'https://plato.stanford.edu/entries/pyrrho/'
+      wikidata: 'Q192313'
+
+    Sextus_Empiricus:
+      dates: '2nd–3rd century CE (SEP: "living probably in the second or third century CE")'
+      nationality: 'Roman Empire; likely Greek; probable physician (Empiric school of medicine)'
+      school: 'Pyrrhonism; main surviving source for ancient Skepticism'
+      key_works: 'Outlines of Pyrrhonism (Pyrrhoneioi Hypotyposeis) — 3 books; Against the Professors (Adversus Mathematicos) — 11 books'
+      key_doctrines: >
+        Systematized Pyrrhonist Skepticism: (1) to every argument an equal and opposite
+        argument can be given; (2) therefore one should suspend judgment (epoché); (3) epoché
+        produces ataraxia. Formulated the "Ten Modes" of Aenesidemus and "Five Modes" of
+        Agrippa as arguments for epoché. Distinguished Pyrrhonism (suspension on everything)
+        from Academic Skepticism (which asserted "nothing can be known").
+      notes: >
+        SEP (sextus-empiricus entry, revised March 2026) states he "was a Pyrrhonian Skeptic
+        living probably in the second or third century CE, many of whose works survive."
+        SEP notes his works are our primary evidence for ancient Skepticism generally. He
+        practiced medicine under the "Empiric" school (treating from experience, not theory)
+        — whence the "Empiricus" cognomen. His works were rediscovered in the 16th century
+        and profoundly influenced Renaissance and early modern skepticism (Montaigne,
+        Descartes). Wikidata: Q236594.
+      source_url: 'https://plato.stanford.edu/entries/sextus-empiricus/'
+      wikidata: 'Q236594'
+
+  # ----------------------------------------------------------
+  # SECTION 11: Neoplatonism
+  # ----------------------------------------------------------
+  neoplatonism:
+    Plotinus:
+      dates: 'c. 204–270 CE (SEP plotinus entry: "we may infer that he was born in 204 CE"; "his death in 270")'
+      nationality: 'Roman Empire — born Egypt; taught in Rome from 244 CE'
+      school: 'Neoplatonism; founder'
+      key_works: 'Enneads (54 treatises in 6 groups of 9, edited by Porphyry c. 301 CE)'
+      key_doctrines: >
+        Three fundamental hypostases (principles of reality), arranged hierarchically: (1) the
+        One (to Hen) — beyond being and thought, source of all reality; (2) Intellect (Nous)
+        — the realm of Platonic Forms and divine thought; (3) Soul (Psyche) — generates time
+        and the material cosmos. Emanation: lower hypostases flow necessarily from higher ones
+        (as light from the sun) without diminishing the source. The goal of philosophy is
+        mystical union with the One (henosis). The material world is not evil but the lowest
+        level of reality.
+      notes: >
+        SEP (plotinus entry, published 2024) states he "is generally regarded as the founder
+        of Late Antique Platonism, sometimes termed 'Neoplatonism.'" SEP gives birth c. 204 CE
+        (inferred from Porphyry's account that he came to Alexandria at age 28, studied with
+        Ammonius Saccas for 11 years, then moved to Rome in 244). He "settled permanently there
+        late in 244, teaching continuously for more than twenty-five years, until his death in
+        270." The Enneads were titled by Porphyry using the Greek for "nine" (ennea) — 6 groups
+        of 9 treatises. Wikidata: Q134189.
+      source_url: 'https://plato.stanford.edu/entries/plotinus/'
+      wikidata: 'Q134189'
+
+    Enneads:
+      date: 'Written c. 253–270 CE; edited by Porphyry c. 301 CE'
+      key_terms: 'Enneads, six groups of nine, ennea (Greek for nine), editorial arrangement, hypostases'
+      notes: >
+        SEP (plotinus entry) states: "Thanks to Porphyry's editorial solicitude, we possess
+        almost the entirety of Plotinus' oeuvre, grouped thematically into the Enneads, thus
+        dubbed on account of their peculiar symmetric arrangement into six parts, each of which
+        contains nine treatises." Porphyry also wrote a chronological table of the treatises'
+        composition. The Enneads cover: morals and aesthetics (I), the material world (II–III),
+        the Soul (IV), Intellect (V–VI), and the One (VI). Porphyry's arrangement has been
+        criticized as "utterly artificial" (SEP), but the Enneads is the standard edition.
+      source_url: 'https://plato.stanford.edu/entries/plotinus/'
+      wikidata: 'Q134189'
+
+    The_One:
+      location: 'Plotinus, Enneads VI.9 and elsewhere'
+      key_terms: 'to Hen (the One), beyond being, beyond intellect, ineffable, henosis (mystical union), emanation'
+      notes: >
+        SEP (neoplatonism entry) describes the Neoplatonists' "principle-monism" centered on
+        "a highest principle which is unitary and singular... indiscriminately referred to as
+        'the First', 'the One', or 'the Good'." Plotinus' One is beyond being and thought —
+        it cannot be described in positive terms (via negativa). Everything else emanates from
+        it necessarily: Intellect (Nous) from the One, Soul from Intellect, the material world
+        from Soul. Mystical union (henosis) with the One is the highest goal; Plotinus reportedly
+        attained this four times in his life (Porphyry, Life of Plotinus, ch. 23).
+      source_url: 'https://plato.stanford.edu/entries/neoplatonism/'
+      wikidata: 'Q134189'
+
+    Porphyry:
+      dates: '234?–305? CE (SEP: "Porphyry (234?–305? C.E.)")'
+      nationality: 'Phoenician — born Tyre (modern Lebanon); studied in Athens and Rome'
+      school: 'Neoplatonism; student of Plotinus; editor of the Enneads'
+      key_works: "Life of Plotinus (Vita Plotini); Isagoge (Introduction to Aristotle's Categories); Against the Christians (largely lost)"
+      key_doctrines: >
+        Applied Neoplatonism to pagan religion and sought to harmonize Aristotle's logic with
+        Platonic metaphysics. His Isagoge (Introduction) — an introduction to Aristotle's
+        Categories — became the standard logic textbook in the Middle Ages through Boethius's
+        Latin translation and commentary. His Life of Plotinus is the primary biographical
+        source for Plotinus. Edited and arranged the Enneads into their current form (301 CE).
+      notes: >
+        SEP (porphyry entry) states: "Porphyry (234?–305? C.E.) was a Neoplatonist philosopher
+        born in Tyre in Phoenicia. He studied with Longinus in Athens and then with Plotinus in
+        Rome from 263–269 C.E." His birth name was "Malcus" (king in Phoenician); in Greek
+        he became "Basileus" (king), then adopted the name Porphyry. He stayed with Plotinus
+        in Rome for ~5 years and edited the Enneads after Plotinus's death. SEP notes he
+        "may have been Iamblichus' teacher" — the evidence is not conclusive. Wikidata: Q203445.
+      source_url: 'https://plato.stanford.edu/entries/porphyry/'
+      wikidata: 'Q203445'
+
+    Iamblichus:
+      dates: 'c. 242–325 CE (SEP: "Iamblichus (ca. 242–ca. 325)")'
+      nationality: 'Syrian — born Chalcis ad Belum (modern Qinnasrin), Syria; hailed from the Sampsigeramid family'
+      school: 'Neoplatonism; student of Porphyry; founded Syrian Neoplatonism'
+      key_works: 'On the Mysteries (De Mysteriis Aegyptiorum); On the Pythagorean Life; Introduction to Pythagorean Arithmetic; lost commentaries on Plato and Aristotle'
+      key_doctrines: >
+        Extended Neoplatonic hierarchy with additional hypostases between the One and Nous.
+        Theurgy (divine ritual practice) as essential to philosophical ascent — not just
+        intellectual contemplation but ritual action can unite the soul with the divine.
+        This represents a major departure from Plotinus's purely intellectual mysticism.
+        Strong influence on later Athenian Neoplatonism (Proclus, Damascius).
+      notes: >
+        SEP (iamblichus entry, revised 2023) states he was "a Syrian Neoplatonist and disciple
+        of Porphyry of Tyre, the editor of Plotinus' works. One of the three major
+        representatives of early Neoplatonism (the third one being Plotinus himself)." SEP
+        describes his "harsh critique of Plotinus' philosophical tenets" linked to "his
+        pessimistic outlook on the condition of the human soul" and "his advocacy of salvation
+        by ritual means, known as 'theurgy'." Wikidata: Q310916.
+      source_url: 'https://plato.stanford.edu/entries/iamblichus/'
+      wikidata: 'Q310916'
+
+    Proclus:
+      dates: '412–485 CE (SEP: "Proclus of Athens (*412–485 C.E.)")'
+      nationality: 'Lycian — born Constantinople; spent career in Athens'
+      school: 'Neoplatonism; head of the Platonic Academy in Athens (450–485 CE); most systematic Neoplatonist'
+      key_works: >
+        Platonic Theology (Theologia Platonica); Elements of Theology (Stoicheiosis Theologike);
+        commentaries on Plato (Timaeus, Republic, Parmenides, Alcibiades I);
+        commentary on Euclid's Elements Book I
+      key_doctrines: >
+        Most systematic and comprehensive Neoplatonic metaphysician. The Elements of Theology
+        presents Neoplatonism as a deductive system of 211 propositions. Extended the Plotinian
+        triad (One, Intellect, Soul) with additional levels: Henads (divine unities below the
+        One), multiple levels of Being, Life, and Intellect. Crucial role in transmitting
+        Platonic philosophy to the Middle Ages — his Liber de Causis (derived from his works)
+        became widely read in medieval Islamic and Christian theology.
+      notes: >
+        SEP (proclus entry) states he "was the most authoritative philosopher of late antiquity
+        and played a crucial role in the transmission of Platonic philosophy from antiquity to
+        the Middle Ages. For almost fifty years, he was head or 'successor' (diadochos, sc. of
+        Plato) of the Platonic 'Academy' in Athens." SEP notes he was "an exceptionally
+        productive writer" who composed works "in all disciplines of philosophy as it was at
+        that time (metaphysics and theology, physics, astronomy, mathematics, ethics)."
+        Wikidata: Q271809.
+      source_url: 'https://plato.stanford.edu/entries/proclus/'
+      wikidata: 'Q271809'
+
+# ============================================================
+# COVERAGE SUMMARY
+# ============================================================
+# Total entries: 62
+#
+# Pre-Socratics (12):
+#   Milesian school: Thales (1), Anaximander (2), Anaximenes (3)
+#   Others: Pythagoras (4), Heraclitus (5), Xenophanes (6), Parmenides (7),
+#           Zeno of Elea (8), Empedocles (9), Anaxagoras (10), Leucippus (11),
+#           Democritus (12)
+#
+# Sophists (3): Protagoras, Gorgias, Prodicus
+#
+# Socrates (3): Socrates himself, Socratic Method, Trial and Death
+#
+# Plato (8): Plato, Academy, Theory of Forms, Allegory of the Cave,
+#            Republic, Symposium, Phaedo, Timaeus, Philosopher-King [=9]
+#
+# Aristotle (10): Aristotle, Lyceum, Nicomachean Ethics, Four Causes,
+#                 Unmoved Mover, Organon, Poetics, Hylomorphism, Golden Mean, Politics
+#
+# Stoicism (6): Zeno of Citium, Stoa Poikile, Chrysippus, Epictetus,
+#               Marcus Aurelius, Seneca
+#
+# Epicureanism (4): Epicurus, The Garden, Lucretius, Tetrapharmakos
+#
+# Cynicism (3): Antisthenes, Diogenes of Sinope, Crates of Thebes
+#
+# Skepticism (3): Pyrrho, Epoché, Sextus Empiricus
+#
+# Neoplatonism (7): Plotinus, Enneads, The One, Porphyry, Iamblichus, Proclus [=6]
+#
+# Grand total: ~62 entries
+#
+# ============================================================
+# VERIFICATION STATUS — SEP SLUG AVAILABILITY (as of 2026-04-08)
+# ============================================================
+# SEP AVAILABLE (confirmed 200):
+#   heraclitus, parmenides, zeno-elea, empedocles, anaxagoras, democritus,
+#   pythagoras, aristotle, plato, socrates, stoicism, epicurus, pyrrho,
+#   plotinus, xenophanes, leucippus, epictetus, marcus-aurelius, lucretius,
+#   porphyry, iamblichus, proclus, neoplatonism, protagoras, sophists,
+#   diogenes-sinope (BUT returns "Not Yet Available" — content pending),
+#   seneca, sextus-empiricus
+#
+# SEP NOT YET AVAILABLE (entry pending, slug exists):
+#   zeno-citium (returns "Not Yet Available")
+#   diogenes-sinope (returns "Not Yet Available")
+#
+# SEP 404 (no dedicated entry; IEP or other source used):
+#   thales, anaximander, anaximenes, gorgias, cynics, chrysippus,
+#   cynicism, antisthenes, seneca-epistles (use 'seneca')
+#
+# IEP FALLBACKS USED:
+#   anaximander → https://iep.utm.edu/anaximander/
+#   anaximenes → https://iep.utm.edu/anaximenes/
+#   gorgias → https://iep.utm.edu/gorgias/
+#   chrysippus → https://iep.utm.edu/chrysippus/
+#   antisthenes → https://iep.utm.edu/antisthenes/
+#   diogenes-of-sinope → https://iep.utm.edu/diogenes-of-sinope/
+#   seneca → https://iep.utm.edu/seneca/
+#
+# CONFLICTS NOTED:
+#   Prodicus: no dedicated SEP or IEP entry found; dates from scholarly
+#     convention (W.K.C. Guthrie) cited — flag for Tier 2 as approximate
+#   Thales: no dedicated SEP entry; dates cited as traditional (~624–545 BCE)
+#     from presocratics entry indirectly — flag as traditional/uncertain
+#   Leucippus: SEP explicitly notes dates are unknown; entry confirms this
+#   Anaxagoras: Wikidata Q83041 confirmed via Wikipedia pageprops API
+#   Empedocles: Wikidata Q83375 confirmed via Wikipedia pageprops API

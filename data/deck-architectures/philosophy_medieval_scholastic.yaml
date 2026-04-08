@@ -1,0 +1,1016 @@
+deck_id: philosophy
+sub_deck_id: medieval_scholastic
+name: "Medieval & Scholastic Philosophy"
+domain: philosophy
+sub_domain: medieval_scholastic
+target_facts: 40
+minimum_facts: 35
+description: >
+  Christian medieval thought, the Islamic Golden Age, and Jewish medieval
+  philosophy (~500–1400 CE). Covers scholasticism, Neoplatonic synthesis,
+  the universals debate, and the transmission of Aristotle through Arabic
+  into Latin Christendom.
+
+data_sources:
+  - name: Stanford Encyclopedia of Philosophy (SEP)
+    url: https://plato.stanford.edu/
+    license: CC-BY-4.0 (individual entries)
+    usage: >
+      Primary source for dates, doctrines, and biographical facts.
+      Every entry URL cited per figure.
+  - name: Wikipedia
+    url: https://en.wikipedia.org/
+    license: CC-BY-SA-4.0
+    usage: >
+      Supplementary dates cross-reference, Wikidata Q-codes, and figures
+      not yet in SEP (Ibn Tufayl, Saadia Gaon).
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: Structured cross-reference for Q-codes and date verification.
+
+asset_sources:
+  - type: historical_illustrations
+    source: custom pixel art
+    license: original work
+    note: >
+      Generate via ComfyUI. Suggested motifs: illuminated manuscripts,
+      Arabic astrolabes, Islamic geometric art, Gothic university halls,
+      Hebrew script scrolls, candlelit scriptoriums.
+
+# ============================================================
+# SOURCE DATA — 3 tradition groups, ~40 verified entries
+# All facts verified against SEP and/or Wikipedia URLs listed
+# per entry. Workers MUST copy facts FROM this data — never invent.
+#
+# TRANSMISSION NOTE (critical context for Tier 2):
+#   The central story of medieval philosophy is the recovery and
+#   transmission of Aristotle: Greek → Arabic (Baghdad, 9th c.)
+#   → Latin (Toledo, 12th c.) → scholastic synthesis (Paris, 13th c.).
+#   al-Kindi → al-Farabi → Avicenna → al-Ghazali (crisis) →
+#   Averroes (defense) → Aquinas (synthesis). Capture this arc in
+#   students_or_influences fields.
+# ============================================================
+
+source_data:
+
+  # ----------------------------------------------------------
+  # TRADITION 1: Christian Medieval Philosophy
+  # ----------------------------------------------------------
+  christian_medieval:
+
+    Augustine_of_Hippo:
+      dates: "354–430 CE"
+      location: "Thagaste, Roman Africa (modern Algeria); bishop of Hippo Regius"
+      school: "Christian Neoplatonism; Latin Patristics"
+      key_works:
+        - "Confessions (c. 397–400 CE) — autobiographical spiritual narrative"
+        - "City of God (De Civitate Dei, 413–426 CE) — response to the sack of Rome (410 CE)"
+        - "De Magistro (c. 389 CE) — theory of teaching and inner illumination"
+        - "De Trinitate (400–416 CE)"
+        - "On Free Will (De libero arbitrio, 387–395 CE)"
+      key_doctrines:
+        - "Divine illumination: the human mind gains certainty by consulting the inner teacher (Christ); a non-empiricist, Neoplatonic epistemology adapted from Plato's anamnesis doctrine"
+        - "Original sin: inherited guilt and damaged will from Adam's fall; shaped by controversy with Pelagius (d. after 418) who denied inherited sin"
+        - "Two cities: the City of God (heavenly) vs. the Earthly City — the organizing thesis of City of God"
+        - "Time and eternity: God exists outside time; time was created with the world (Confessions XI)"
+        - "Grace: salvation is entirely God's gift, not earned — hardened against Pelagianism after 411 CE"
+      students_or_influences:
+        influenced_by: "Cicero (Hortensius), Mani, Plotinus, Porphyry, Paul the Apostle, Ambrose of Milan"
+        influenced: "virtually all subsequent Latin Christian theology; Anselm, Aquinas, Luther, Calvin, Jansenius"
+      notes: >
+        Born 13 November 354 in Thagaste (modern Souk Ahras, Algeria). Baptized by
+        Ambrose of Milan at Easter 387. Bishop of Hippo from 396 until his death on
+        28 August 430. His mother Monica (d. 388) is central to the Confessions.
+        SEP notes that divine illumination is introduced in De magistro (c. 390) and
+        presents Christ as the inner teacher whose presence enables certain cognition —
+        an alternative to Platonic recollection that situates knowledge in creation.
+        City of God was prompted by pagan claims that Christianity caused the sack of Rome.
+      source_url: "https://plato.stanford.edu/entries/augustine/"
+      wikidata: "Q8018"
+
+    Boethius:
+      dates: "c. 475–7 to c. 524/526 CE"
+      location: "Rome; executed in Pavia under Theoderic the Ostrogoth"
+      school: "Late Roman philosophy; Christian Aristotelianism; Neoplatonism"
+      key_works:
+        - "Consolation of Philosophy (De consolatione philosophiae, c. 524 CE) — written in prison awaiting execution"
+        - "Translations of Aristotle's logical works into Latin (Categories, On Interpretation, Prior Analytics)"
+        - "Commentaries on Porphyry's Isagoge (two versions)"
+        - "Five theological tractates (Opuscula sacra)"
+      key_doctrines:
+        - "Wheel of Fortune: Fortune personified addresses Boethius in the Consolation, explaining that she raises and lowers all mortals on her wheel — wealth and status are not true goods"
+        - "Problem of universals: in his commentary on Porphyry's Isagoge, Boethius asks whether genera and species exist in reality or only in the mind — bequeathing the universals debate to medieval philosophy"
+        - "Divine foreknowledge vs. free will: God perceives all time in an eternal present (nunc stans); foreknowledge does not cause human acts, so free will is preserved"
+        - "True vs. false goods: Philosophy in the Consolation argues that fortune's gifts (wealth, fame, power) are not genuine goods; only virtue and God are"
+      students_or_influences:
+        influenced_by: "Aristotle, Plato, Porphyry, Iamblichus, Proclus"
+        influenced: "Virtually all Latin medieval philosophy; Anselm, Abelard, Aquinas — the Consolation was one of the most-read books of the Middle Ages"
+      notes: >
+        SEP gives birth as 'circa 475–7 CE' and death as '526? CE'. Boethius served
+        as Theoderic's Master of Offices but was accused of treason (reasons disputed)
+        and executed. The Consolation — written in prison — is a prosimetrum (prose
+        with verse interludes), presenting an imagined dialogue with Lady Philosophy.
+        His Latin translations of Aristotle's logic were the primary source of
+        Aristotelian thought in Western Europe until the 12th-century translations
+        from Arabic. SEP: Boethius is 'one of the most important intermediaries
+        between ancient philosophy and the Latin Middle Ages.'
+      source_url: "https://plato.stanford.edu/entries/boethius/"
+      wikidata: "Q102851"
+
+    Pseudo_Dionysius_the_Areopagite:
+      dates: "c. 485–518 CE (authorship window; wrote as if 1st-century disciple of Paul)"
+      location: "Likely Syria; wrote under the persona of Dionysius the Areopagite (Acts 17:34)"
+      school: "Christian Neoplatonism; mystical theology; apophatic tradition"
+      key_works:
+        - "Celestial Hierarchy (De caelesti hierarchia)"
+        - "Ecclesiastical Hierarchy (De ecclesiastica hierarchia)"
+        - "Divine Names (De divinis nominibus)"
+        - "Mystical Theology (De mystica theologia) — the key apophatic text"
+      key_doctrines:
+        - "Apophatic (negative) theology: God transcends all human concepts; one can only say what God is NOT; the Mystical Theology systematizes this via-negativa method"
+        - "Cataphatic (positive) theology: lower rung — attributes like 'good' and 'wise' can be predicated of God, but imperfectly"
+        - "Celestial hierarchy: nine orders of angels organized in three triads, mediating divine illumination downward"
+        - "Mystical union: the soul ascends through purification to union with the 'divine darkness' beyond all knowledge"
+      students_or_influences:
+        influenced_by: "Proclus (died 485 CE); Plotinus; Neoplatonic tradition; Paul the Apostle (persona)"
+        influenced: "John Scotus Eriugena (translated the corpus), Aquinas (extensive citations), Meister Eckhart, Nicholas of Cusa; foundational for Christian mystical theology"
+      notes: >
+        SEP: 'Pseudo-Dionysius lived in the late fifth and early sixth century C.E.'
+        and was 'most probably a pupil of Proclus.' The works were written as if by
+        the Dionysius converted by Paul in Athens, giving them near-apostolic authority
+        through the Middle Ages. This identity was first seriously challenged by Lorenzo
+        Valla in 1457 and John Grocyn in 1501. Nicholas of Cusa had already doubted
+        the attribution earlier. SEP confirms authorship between 485 and 518–28 CE.
+        The corpus transposed 'the whole of Pagan Neoplatonism from Plotinus to Proclus'
+        into Christian theological terms.
+      source_url: "https://plato.stanford.edu/entries/pseudo-dionysius-areopagite/"
+      wikidata: "Q313308"
+
+    John_Scottus_Eriugena:
+      dates: "c. 800–c. 877 CE"
+      location: "Ireland (birth); Carolingian court of Charles the Bald, France"
+      school: "Christian Neoplatonism; Carolingian Renaissance"
+      key_works:
+        - "Periphyseon (De divisione naturae, c. 862–866 CE) — 'On the Division of Nature'"
+        - "Translation of Pseudo-Dionysius's corpus into Latin (c. 860 CE)"
+        - "Translation of Gregory of Nyssa's De hominis opificio"
+        - "On Divine Predestination (De praedestinatione, 851 CE)"
+      key_doctrines:
+        - "Four divisions of Nature: (1) Nature that creates and is not created (God as source); (2) Nature that is created and creates (Platonic Ideas / divine Logos); (3) Nature that is created and does not create (the created world); (4) Nature that neither creates nor is created (God as final return) — the system is a great processio and reditus"
+        - "Apophatic theology absorbed from Pseudo-Dionysius: God is beyond all categories, even Being"
+        - "Universal salvation (apokatastasis): all things return to God at the end"
+      students_or_influences:
+        influenced_by: "Pseudo-Dionysius (translated him), Maximus Confessor, Gregory of Nyssa, Plato (via Calcidius translation of Timaeus)"
+        influenced: "Meister Eckhart; later German mysticism; Nicholas of Cusa; unusual for Carolingian period in having wide Greek access"
+      notes: >
+        SEP: signed himself 'Eriugena' in one manuscript; contemporaries called him
+        'the Irishman' (scottus = Irishman in 9th century). Born c. 800, died c. 877.
+        Remarkable for Latin West: he actually read Greek, enabling direct access to
+        the Eastern theological tradition. His Periphyseon was condemned as pantheistic
+        in 1225 CE (burning ordered). SEP emphasizes Periphyseon as 'a sustained attempt
+        to create a consistent, systematic, Christian Neoplatonism from diverse but
+        primarily Christian sources.' Contemporary of al-Kindi.
+      source_url: "https://plato.stanford.edu/entries/scottus-eriugena/"
+      wikidata: "Q107684"
+
+    Anselm_of_Canterbury:
+      dates: "1033–1109 CE"
+      location: "Born near Aosta (Burgundian); Prior then Abbot of Bec (Normandy); Archbishop of Canterbury from 1093"
+      school: "Scholasticism; Augustinian tradition; fides quaerens intellectum"
+      key_works:
+        - "Monologion (1075–76) — cosmological and ontological arguments, Trinity"
+        - "Proslogion (1077–78) — contains the Ontological Argument"
+        - "Cur Deus Homo (1095–98) — satisfaction theory of atonement"
+        - "De veritate, De libertate arbitrii, De casu diaboli (philosophical dialogues, c. 1080s)"
+      key_doctrines:
+        - "Ontological Argument (Proslogion II): God is 'that than which nothing greater can be conceived' (id quo nihil maius cogitari potest); if God exists only in the mind, a greater being — one that also exists in reality — can be conceived; therefore God must exist in reality"
+        - "Fides quaerens intellectum ('faith seeking understanding'): faith is the starting point and precondition for philosophical inquiry, not something to be replaced by reason"
+        - "Satisfaction theory of atonement (Cur Deus Homo): sin is an offense against God's honor that requires infinite satisfaction; only a being who is both human and divine can provide it"
+      students_or_influences:
+        influenced_by: "Augustine of Hippo; Boethius; Lanfranc (his teacher at Bec)"
+        influenced: "Scholastic method; Descartes, Leibniz, and Kant all engaged with the Ontological Argument; Gaunilo of Marmoutiers offered the first critique (the 'perfect island' objection)"
+      notes: >
+        SEP: 'Saint Anselm of Canterbury (1033–1109) was the outstanding Christian
+        philosopher and theologian of the eleventh century.' Born 1033 near Aosta.
+        Arrived Normandy 1059. Became Prior at Bec 1063, Abbot 1078. Enthroned
+        Archbishop of Canterbury 1093. Canonized 1494; named Doctor of the Church 1720.
+        Died 21 April 1109. The Proslogion argument was written as a meditation,
+        not a formal philosophical treatise. Gaunilo's contemporary 'perfect island'
+        objection is preserved and Anselm's reply survives.
+      source_url: "https://plato.stanford.edu/entries/anselm/"
+      wikidata: "Q153738"
+
+    Peter_Abelard:
+      dates: "1079–21 April 1142 CE"
+      location: "Le Pallet (Brittany), Paris; Paraclete convent (founded for Heloise)"
+      school: "Early Scholasticism; conceptualism (universals debate)"
+      key_works:
+        - "Sic et Non (c. 1120) — 158 theological questions with contradictory authorities juxtaposed, no resolutions given"
+        - "Logica Ingredientibus (c. 1118–20) — commentary series including theory of universals"
+        - "Historia Calamitatum ('Story of My Misfortunes', c. 1132) — autobiographical letter"
+        - "Ethics (Scito te ipsum, 'Know Thyself', c. 1138–39)"
+        - "Letters of Abelard and Heloise"
+      key_doctrines:
+        - "Conceptualism on universals: universals are neither real things (against realism) nor mere mouth noises (against Roscelin's extreme nominalism); they are common terms (nomina) that distributively refer to individuals while having a genuine cognitive content — a 'sermon' (sermo) that applies to many"
+        - "Sic et Non method: systematically collating contradictory patristic authorities on theological questions — laid methodological groundwork for the Summa tradition"
+        - "Intentionalist ethics: the moral quality of an act lies in the intention (consent to what one believes wrong), not in the act or its consequences"
+      students_or_influences:
+        influenced_by: "Roscelin (teacher, rejected his nominalism); William of Champeaux (teacher, rejected his realism); Anselm of Laon (theology)"
+        influenced: >
+          John of Salisbury, Peter Lombard (Sentences owes Sic et Non method);
+          Heloise (correspondent and student); Duns Scotus (conceptualist tradition)
+      notes: >
+        SEP: 'Peter Abelard (1079–21 April 1142) was the pre-eminent philosopher
+        and theologian of the twelfth century.' Born c. 1079 in Le Pallet, Brittany.
+        His affair with Heloise (niece of Canon Fulbert of Notre-Dame) ended in
+        his castration by Fulbert's agents (c. 1118). Abelard founded the Paraclete
+        convent for Heloise. His theology was condemned at the Council of Soissons
+        (1121) and Council of Sens (1141), the latter prosecuted by Bernard of Clairvaux.
+        He died 21 April 1142 at Cluny; buried at the Paraclete. Both Abelard and
+        Heloise are now interred at Pere Lachaise cemetery, Paris.
+      source_url: "https://plato.stanford.edu/entries/abelard/"
+      wikidata: "Q48482"
+
+    Albertus_Magnus:
+      dates: "c. 1200–15 November 1280 CE"
+      location: "Lauingen, Swabia (birth); Paris; Cologne (Studium generale)"
+      school: "Dominican Order; Aristotelian synthesis in Latin Christendom; scholasticism"
+      key_works:
+        - "Paraphrase commentaries on the entire Aristotelian corpus"
+        - "Summa de bono (on the good)"
+        - "On the Intellect and the Intelligible"
+        - "Summa theologiae (incomplete; different from Aquinas's)"
+      key_doctrines:
+        - "Systematic paraphrase of Aristotle: Albert undertook to make Aristotle fully intelligible to the Latins — commenting on the entire corpus including natural philosophy, metaphysics, ethics, and biology"
+        - "Separation of philosophy and theology: philosophy reasons from natural principles; theology from revelation — both are legitimate autonomous disciplines"
+        - "Nature as field of inquiry: Albert's natural philosophy went far beyond mere commentary; he conducted field observations in botany, zoology, and mineralogy, earning the title 'Doctor Universalis'"
+      students_or_influences:
+        influenced_by: "Aristotle; Avicenna; Averroes; al-Ghazali; Islamic philosophical tradition via translations"
+        influenced: "Thomas Aquinas (his most famous student, met in Paris c. 1245, followed to Cologne 1248)"
+      notes: >
+        SEP (entry published Nov 2025): Born in Lauingen, Swabia, 'around 1200, to
+        a noble family.' Became a Dominican in Padua in 1223. Received Master of
+        Theology at Paris 1245. Founded Dominican studium generale in Cologne with
+        Aquinas in 1248. Bishop of Regensburg 1260–62. Died Cologne 1280. Declared
+        Doctor of the Church by Pius XI in 1931; patron of natural scientists 1941.
+        SEP emphasizes he is 'at the vanguard' of the assimilation of Greek-Arabic
+        philosophy into the Latin tradition — without Albert, Aquinas could not have
+        achieved his synthesis.
+      source_url: "https://plato.stanford.edu/entries/albert-great/"
+      wikidata: "Q9047"
+
+    Thomas_Aquinas:
+      dates: "c. 1225–7 March 1274 CE"
+      location: "Roccasecca (near Naples, Italy); Paris; Cologne; Rome; Naples"
+      school: "Dominican Order; Scholasticism; Thomism; Aristotelian-Christian synthesis"
+      key_works:
+        - "Summa contra Gentiles (c. 1259–65) — philosophical defense of Christianity for non-believers"
+        - "Summa Theologica / Summa Theologiae (c. 1265–74, unfinished) — systematic theology"
+        - "Commentaries on Aristotle (Physics, Metaphysics, Ethics, De Anima, etc.)"
+        - "De ente et essentia ('On Being and Essence', c. 1252–56) — metaphysical treatise"
+        - "Disputed Questions on Truth, On Power, On Evil"
+      key_doctrines:
+        - "Five Ways (Quinque Viae, Summa Theologiae I.2.3): five cosmological/teleological arguments for God's existence — (1) Unmoved Mover, (2) First Cause, (3) Necessary Being, (4) Gradation of Being, (5) Teleological Argument from Design"
+        - "Natural law: moral norms are accessible through reason alone, rooted in God's eternal law; the Thomistic foundation of natural law theory in ethics and politics"
+        - "Aristotelian synthesis: faith and reason are compatible and mutually reinforcing; philosophy (via Aristotle) can establish preambles of faith; revelation adds what reason cannot reach"
+        - "Essence-existence distinction: in creatures, essence (what a thing is) and existence (that it is) are really distinct; in God alone they are identical"
+        - "Analogy of being: God's attributes are predicated neither univocally nor equivocally but analogically"
+      students_or_influences:
+        influenced_by: "Aristotle (primary), Augustine, Pseudo-Dionysius, Boethius, Maimonides, Avicenna, Averroes, Albertus Magnus (teacher)"
+        influenced: "Thomism became the official philosophy of the Catholic Church (Aeterni Patris, 1879); Suarez, Cajetan, modern Catholic natural law theory"
+      notes: >
+        SEP: 'The greatest figure of thirteenth-century Europe in the two preeminent
+        sciences of the era, philosophy and theology.' Born c. 1225 in Roccasecca.
+        Joined Dominicans age c. 19. Studied under Albertus Magnus in Paris and Cologne.
+        Held Dominican chair of theology in Paris 1256–59. Developed Summa contra gentiles
+        and Summa theologiae in Italy 1259–69. Returned to Naples 1272. Stopped writing
+        December 1273, reportedly saying 'All that I have written seems to me like straw
+        compared with what has now been revealed to me.' Died 7 March 1274 at Fossanova.
+        Canonized 1323. Doctor of the Church 1567. Known as the 'Angelic Doctor.'
+      source_url: "https://plato.stanford.edu/entries/aquinas/"
+      wikidata: "Q9438"
+
+    Bonaventure:
+      dates: "c. 1221–15 July 1274 CE"
+      location: "Civita di Bagnoregio (central Italy); Paris; Minister General of Franciscan Order"
+      school: "Franciscan Order; Augustinian tradition; Christian Neoplatonism"
+      key_works:
+        - "Itinerarium Mentis in Deum ('The Journey of the Mind into God', 1259) — the major mystical-philosophical work"
+        - "Commentarius in Sententias (Commentary on Peter Lombard's Sentences, c. 1250–52)"
+        - "Breviloquium (c. 1257) — summary of theology"
+        - "Reductio Artium ad Theologiam ('The Reduction of the Arts to Theology')"
+      key_doctrines:
+        - "Itinerarium: the soul's journey to God proceeds through three stages: exterior (the created world as mirror of God), interior (the soul as image of God), and superior (God as Being and Good beyond the soul)"
+        - "Divine illumination (Augustinian): genuine knowledge of eternal truths requires divine illumination; Bonaventure defends this against the emerging Aristotelian account of abstraction"
+        - "Exemplarism: all created things are traces (vestigia) or images (imagines) of the divine ideas; the physical world is a book written by God"
+        - "Eternity of the world: Bonaventure argued against Aristotle and even against Aquinas that the eternity of the world can be philosophically disproven, not merely a matter of faith"
+      students_or_influences:
+        influenced_by: "Augustine, Pseudo-Dionysius, Eriugena, Alexander of Hales (teacher at Paris)"
+        influenced: "Franciscan school of theology; Gerard of Bologna; Duns Scotus (shared Franciscan Augustinian commitments)"
+      notes: >
+        SEP: 'Bonaventure of Bagnoregio (b. ca. 1221, d. 15 July 1274) was a Franciscan,
+        a master of philosophy and theology at the University of Paris, Minister General
+        of the Order of Friars Minor (O.F.M.), a Bishop and Cardinal of the Roman Catholic
+        Church.' Died 15 July 1274 — the same year as Aquinas (7 March 1274). This
+        coincidence was noted in antiquity. Canonized 1482. The Itinerarium was composed
+        in 1259 on Mount La Verna where Francis received the stigmata. Often contrasted
+        with Aquinas as the Franciscan-Augustinian pole vs. the Dominican-Aristotelian.
+      source_url: "https://plato.stanford.edu/entries/bonaventure/"
+      wikidata: "Q43715"
+
+    Roger_Bacon:
+      dates: "c. 1214/1220–c. 1292 CE"
+      location: "England; University of Paris (1240s); Oxford (Franciscan friar)"
+      school: "Franciscan Order; early empiricism; experimental science"
+      key_works:
+        - "Opus Majus (1267) — encyclopedic reform proposal to Pope Clement IV"
+        - "Opus Minus (1267) — supplement to Opus Majus"
+        - "Opus Tertium (1267)"
+        - "Compendium Studii Philosophiae"
+      key_doctrines:
+        - "Experimental science (scientia experimentalis): genuine knowledge requires empirical verification; Bacon identifies experience (including controlled experiment) as the 'mistress of the speculative arts'"
+        - "Mathematics as the 'gateway' to natural science: mathematics must be the foundation of natural philosophy; mathematical optics particularly important"
+        - "Language reform: knowledge of biblical languages (Hebrew, Greek, Arabic) is essential for proper scriptural interpretation and scientific translation"
+        - "Unity of knowledge: all the sciences (language, mathematics, optics, experimental science, moral philosophy) should be reduced to theology — a Franciscan 'reduction' program"
+      students_or_influences:
+        influenced_by: "Robert Grosseteste (optical writings); Aristotle; Arabic optics (Ibn al-Haytham via translation)"
+        influenced: "Early modern empiricists; Francis Bacon (no direct lineage, but parallel rhetoric); Roger Bacon's optics used by Peter of Limoges"
+      notes: >
+        SEP: 'Roger Bacon (1214/1220–1292), Master of Arts, contemporary of Robert
+        Kilwardby, Peter of Spain, and Albert the Great at the University of Paris in
+        the 1240s.' The Opus Majus was written rapidly following Pope Clement IV's
+        request for Bacon's work on June 22, 1266. Bacon's dates are uncertain — SEP
+        gives 'c. 1214/1220' for birth. He likely spent some time imprisoned by his
+        Franciscan superiors for suspicious novelties. Not to be confused with Francis
+        Bacon (1561–1626), who coined 'Novum Organum' and cited similar empiricist ideas.
+      source_url: "https://plato.stanford.edu/entries/roger-bacon/"
+      wikidata: "Q37432"
+
+    Duns_Scotus:
+      dates: "c. 1263/1266–8 November 1308 CE"
+      location: "Duns, Scotland (birth); Oxford; Paris; Cologne (died)"
+      school: "Franciscan Order; Scotism; high scholasticism"
+      key_works:
+        - "Ordinatio (Opus Oxoniense) — revised lectures on Peter Lombard's Sentences, Oxford"
+        - "Lectura — earlier version of Sentences lectures"
+        - "Quodlibetal Questions (Paris, c. 1306–07)"
+        - "De primo principio ('On the First Principle')"
+      key_doctrines:
+        - "Haecceity (haecceitas, 'thisness'): the principle of individuation for Scotus is not matter (as for Aquinas) but a positive formal reality — 'thisness' — unique to each individual; Socrates is Socrates not merely by having this matter but by his haecceity"
+        - "Univocity of being: the concept of 'being' applies univocally to God and creatures — not equivocally and not merely analogically; required for any philosophical knowledge of God"
+        - "Formal distinction: a distinction short of a real distinction but more than merely conceptual — used to distinguish God's attributes and the categories of the soul"
+        - "Primacy of will: the will is superior to the intellect; God's commands are not constrained by natural necessity (an early voluntarist position)"
+      students_or_influences:
+        influenced_by: "Aristotle, Augustine, Anselm, Aquinas (engaged critically), Henry of Ghent"
+        influenced: "Scotist tradition in Franciscan theology; Ockham (his student in spirit who rejected the formal distinction and haecceity); Peirce and contemporary metaphysics revisit haecceity"
+      notes: >
+        SEP: 'John Duns Scotus (1263/66–1308) was one of the most important and
+        influential philosopher-theologians of the High Middle Ages. His brilliantly
+        complex and nuanced thought, which earned him the honorific "the Subtle Doctor,"
+        left a mark on discussions of...' Born in Duns, Scotland — SEP notes the birth
+        year 1263/64 is more likely than the traditional 1265/66. Ordained priest
+        17 March 1291. Taught Oxford, Paris, and finally Cologne where he died
+        8 November 1308. The word 'dunce' derives from 'Duns' (coined by Renaissance
+        humanists mocking late Scotist scholastics).
+      source_url: "https://plato.stanford.edu/entries/duns-scotus/"
+      wikidata: "Q175035"
+
+    William_of_Ockham:
+      dates: "c. 1287–c. 1347 CE"
+      location: "Ockham, Surrey (birth); Oxford; Avignon (papal summons 1324–28); Munich (exile)"
+      school: "Franciscan Order; nominalism; voluntarism; late scholasticism"
+      key_works:
+        - "Summa Logicae (c. 1323) — comprehensive logic treatise"
+        - "Ordinatio (Commentary on Sentences I)"
+        - "Quodlibetal Questions"
+        - "Dialogus (political theory)"
+        - "Eight Questions on the Power of the Pope"
+      key_doctrines:
+        - "Ockham's Razor (parsimony principle): 'entities should not be multiplied beyond necessity' (entia non sunt multiplicanda praeter necessitatem) — the most economical explanation is preferred; Ockham uses this to eliminate universals and many Scholastic posits"
+        - "Nominalism: only individuals exist; universals are mental concepts or spoken/written terms that stand for many individuals — not things in the world"
+        - "Voluntarism: God's will is absolutely free; the moral law is what God wills, not what reason dictates; God could have commanded different moral norms"
+        - "Separation of philosophy and theology: reason cannot prove core doctrines (existence of God, immortality, Trinity); these are known only by faith"
+      students_or_influences:
+        influenced_by: "Duns Scotus (Franciscan tradition, but critically departed); Aristotle"
+        influenced: "via moderna tradition; Luther (voluntarism, grace); early modern philosophy (anticipates empiricist skepticism about universals)"
+      notes: >
+        SEP: 'William of Ockham (c. 1287–1347) is among the most prominent figures in
+        the history of philosophy during the Late Middle Ages along with Thomas Aquinas
+        and John Duns Scotus.' Born probably late 1287/early 1288 in Ockham, Surrey.
+        Joined the Franciscans young. Summoned to Avignon 1324 to answer heresy charges
+        by Chancellor John Lutterell. Fled Avignon 1328 with Michael of Cesena to
+        the protection of Holy Roman Emperor Ludwig IV in Munich. Excommunicated.
+        Died Munich c. 1347, possibly of plague. The exact wording of 'Ockham's Razor'
+        does not appear verbatim in his surviving works — it is a distillation of his
+        repeated methodological practice.
+      source_url: "https://plato.stanford.edu/entries/ockham/"
+      wikidata: "Q41515"
+
+    Meister_Eckhart:
+      dates: "c. 1260–c. 1328 CE"
+      location: "Hochheim (Thuringia); Paris; Strasbourg; Cologne (Dominican)"
+      school: "Dominican Order; Rhineland mysticism; speculative mystical theology"
+      key_works:
+        - "Latin works: Opus Tripartitum (planned; Prologues survive), Latin sermons, Parisian Questions"
+        - "German works (Deutsche Werke): approximately 86 German sermons, Talks of Instruction (Reden der Unterweisung), The Book of Divine Consolation"
+      key_doctrines:
+        - "Gottesgeburt ('birth of God in the soul'): God continually gives birth to the Son (Logos) in the ground of the soul; the soul's deepest identity is this ongoing divine birth — the central motif of the German sermons"
+        - "Abgeschiedenheit ('detachment' or 'releasement'): the soul must detach from all creaturely things, even from willing goods, to become transparent to God's self-disclosure"
+        - "The 'spark of the soul' (Seelenfünklein / scintilla animae): the deepest point of the soul is uncreated and united with God; borrowed and radicalized from Augustine"
+        - "God and the Godhead: Eckhart distinguishes God (as Trinity, relational) from the Godhead (Gottheit) as the undifferentiated abyss (Abgrund) beyond all distinctions"
+      students_or_influences:
+        influenced_by: "Pseudo-Dionysius, Augustine, Aquinas (he lectured on the Sentences at Paris), Plotinus (via tradition)"
+        influenced: "Johannes Tauler, Henry Suso (direct disciples); Rhineland mystical tradition; Nicholas of Cusa; modern German idealism (Hegel noted his significance)"
+      notes: >
+        SEP (entry published May 2023): 'Meister Eckhart' — the title 'Meister' derives
+        from the Latin 'magister,' a university honorific, not a spiritual title.
+        Born c. 1260 in Hochheim (Thuringia). Dominican friar. Twice held the prestigious
+        'foreign master' chair in Paris. Summoned for heresy investigation in Cologne
+        1326; appealed to the Pope. Died c. 1328 before verdict. Pope John XXII condemned
+        28 propositions from his works in the bull In agro dominico (1329) — after
+        Eckhart's death. Eckhart himself explicitly professed Catholic orthodoxy.
+      source_url: "https://plato.stanford.edu/entries/meister-eckhart/"
+      wikidata: "Q57420"
+
+    Nicholas_of_Cusa:
+      dates: "1401–11 August 1464 CE"
+      location: "Kues on the Moselle (birth); Basel; Rome; Brixen (bishop)"
+      school: "Late scholasticism; Christian Neoplatonism; early Renaissance philosophy"
+      key_works:
+        - "De docta ignorantia ('On Learned Ignorance', 1440) — the central philosophical work"
+        - "De coniecturis ('On Conjectures', 1441–42)"
+        - "Idiota dialogues (1450) — the 'layman' dialogues on mind, wisdom, experiments"
+        - "De visione Dei ('On the Vision of God', 1453)"
+        - "De beryllo ('On the Beryl', 1458)"
+      key_doctrines:
+        - "Docta ignorantia ('learned ignorance'): the highest wisdom is knowing the limits of human knowledge; we know God better by knowing what God is not than by affirmative concepts; the infinity of God exceeds all finite ratio"
+        - "Coincidentia oppositorum ('coincidence of opposites'): in God, all opposites — maximum and minimum, rest and motion, unity and multiplicity — coincide and are resolved; the key metaphysical move of De docta ignorantia I–II"
+        - "Complication/explication: God 'complicates' (enfolds) all things; the universe 'explicates' (unfolds) God — a dynamic Neoplatonic cosmology"
+        - "Infinite universe: Cusa suggested the universe has no fixed center or circumference; the earth is not the center — a pre-Copernican cosmological revision"
+      students_or_influences:
+        influenced_by: "Proclus, Pseudo-Dionysius, Eriugena, Ramon Llull, Thierry of Chartres; also humanist scholarship"
+        influenced: "Giordano Bruno (most direct influence); Leibniz; 19th-century idealism (Hegel); Nicholas anticipated ideas in mathematics, cosmology, and experimental science"
+      notes: >
+        SEP: 'Nicholas of Cusa (1401–1464) was also an ecclesiastical reformer,
+        administrator and cardinal.' Born 1401 in Kues (now Bernkastel-Kues) on the
+        Moselle. Doctor of Canon Law from Padua 1423. Cardinal 1448. Died 11 August 1464
+        in Todi. SEP notes he was 'mostly self-taught in philosophy and theology' despite
+        deep learning. Nicholas was among the first to doubt the Pseudo-Dionysian
+        identity. His coincidentia oppositorum was influential on Giordano Bruno's
+        cosmology and pantheism.
+      source_url: "https://plato.stanford.edu/entries/cusanus/"
+      wikidata: "Q154751"
+
+  # ----------------------------------------------------------
+  # TRADITION 2: Islamic Golden Age Philosophy
+  # ----------------------------------------------------------
+  islamic_golden_age:
+
+    al_Kindi:
+      dates: "c. 801–c. 873 CE (died after 866 CE; death usually put in early 870s)"
+      location: "Kufa and Baghdad; Abbasid court of al-Ma'mun and al-Mu'tasim"
+      school: "Islamic Aristotelianism; falsafa (Arabic philosophy); first systematic Islamic philosopher"
+      key_works:
+        - "On First Philosophy (Fi al-Falsafa al-Ula) — dedicated to Caliph al-Mu'tasim's son Ahmad; first major philosophical work in Arabic"
+        - "On the Intellect (Fi al-Aql)"
+        - "On the Definitions of Things and Their Descriptions"
+        - "Numerous works on mathematics, medicine, music, cryptography (Ibn al-Nadim lists hundreds of titles)"
+      key_doctrines:
+        - "God as the First True One: God is absolutely simple, not composite in any way; the world is not eternal (against Aristotelianism) but created by God"
+        - "Theory of intellect: al-Kindi distinguishes four intellects — actual intellect, potential intellect, intellect in actuality, and a fourth demonstrative intellect; foundation of Islamic noetics"
+        - "Philosophy and revelation compatible: rational philosophy and divine revelation agree at the highest level; both lead to truth about God and the soul"
+        - "Form without matter: God and the divine intellect are pure form without any material substrate — a departure from Aristotelian hylomorphism"
+      students_or_influences:
+        influenced_by: "Aristotle, Plato, Plotinus (via the Theology of Aristotle, actually Enneads excerpts), Porphyry"
+        influenced: "al-Farabi, Avicenna; inaugurated the translation and synthesis movement that shaped all subsequent Islamic philosophy"
+      notes: >
+        SEP: al-Kindi earned 'the title "philosopher of the Arabs" among later writers.'
+        Death date is 'usually put in the early 870s.' He oversaw one of the two main
+        translation circles in 9th-century Baghdad (the other led by Hunayn ibn Ishaq).
+        The 'Kindi circle' produced Arabic versions of Aristotle, Porphyry, and Neoplatonic
+        texts, including the falsely attributed 'Theology of Aristotle' (actually Plotinus).
+        His extant On First Philosophy is incomplete; only the first part survives.
+      source_url: "https://plato.stanford.edu/entries/al-kindi/"
+      wikidata: "Q28563"
+
+    Abu_Bakr_al_Razi:
+      dates: "865–925 CE (AH 251–313)"
+      location: "Ray (near Tehran, Persia); Baghdad; court physician"
+      school: "Rationalist medicine and philosophy; skeptical of prophecy; heterodox"
+      key_works:
+        - "Kitab al-Hawi ('The Comprehensive Book') — enormous medical encyclopedia compiled by students"
+        - "Al-Tibb al-Ruhani ('Spiritual Medicine' / The Book of the Philosophic Life)"
+        - "Doubts about Galen (Shukuk 'ala Jalinuws)"
+        - "On the Five Eternals — philosophical cosmology (fragmentary, known from refutations)"
+      key_doctrines:
+        - "Five eternal principles cosmology: al-Razi posited five co-eternal substances — God (the Creator), the Universal Soul, prime matter, absolute time, and absolute void — sharply departing from Aristotelian cosmology and Islamic mainstream"
+        - "Critique of prophecy: prophets are not needed because reason is universally accessible; religious law causes conflict more than it resolves it — a highly heterodox position"
+        - "Medical rationalism: all claims about the body, including Galenic theory, must be tested against empirical observation; Doubts about Galen is the most important ancient-to-medieval medical critique"
+        - "Soul and cosmology: the Universal Soul, through ignorance, became entangled in matter (the world); the world was created as a prison for the Soul, which desires to escape to God"
+      students_or_influences:
+        influenced_by: "Plato (especially Timaeus cosmology), Galen (and criticized him), Greek Neoplatonism"
+        influenced: "Influenced later Islamic rationalist medicine; his medical works were central to European medicine (Liber continens = Hawi in Latin) through 16th century"
+      notes: >
+        SEP (Abu Bakr al-Razi, published 2021): 'Abu Bakr al-Razi (865–925 CE,
+        251–313 AH) was one of the greatest figures in the history of medicine in
+        the Islamic tradition, and one of its most controversial philosophers.'
+        Note: Not to be confused with Fakhr al-Din al-Razi (1149–1209), a different
+        theologian. Al-Razi's Five Eternals doctrine and critique of prophecy were
+        attacked by Ismaili thinkers, especially Abu Hatim al-Razi, in a famous
+        debate. His philosophy is known largely through refutations.
+      source_url: "https://plato.stanford.edu/entries/abu-bakr-al-razi/"
+      wikidata: "Q8011"
+
+    al_Farabi:
+      dates: "c. 870–December 950 CE (or January 951 CE)"
+      location: "Born near Farab (Central Asia, modern Kazakhstan); Baghdad; Damascus; Egypt"
+      school: "Islamic Neoplatonism; falsafa; political philosophy; logic"
+      key_works:
+        - "The Opinions of the Inhabitants of the Virtuous City (Ara' Ahl al-Madina al-Fadila)"
+        - "The Attainment of Happiness (Tahsil al-Sa'ada)"
+        - "On the Harmony between Plato and Aristotle"
+        - "The Great Book of Music (Kitab al-Musiqa al-Kabir)"
+        - "On the Intellect (Risala fi al-'Aql)"
+      key_doctrines:
+        - "Virtuous City: modeled on Plato's Republic, al-Farabi's ideal state is led by a philosopher-prophet who possesses both philosophical knowledge and prophetic imaginative faculty; political philosophy requires wisdom"
+        - "Emanation cosmology: the world proceeds from the One (God) through a series of necessary intellects and spheres, following Plotinus and Proclus via Arabic Neoplatonism"
+        - "Harmony of Plato and Aristotle: apparent disagreements between Plato and Aristotle are reconcilable — a cornerstone of the falsafa project"
+        - "Theory of intellect: distinguishes Active Intellect, Potential Intellect, Actual Intellect; the Active Intellect (identified with the lunar intellect in his cosmology) enables human rational thought — foundational for Avicenna's psychology"
+      students_or_influences:
+        influenced_by: "Aristotle (commented extensively), Plato, Plotinus (via Arabic tradition), al-Kindi"
+        influenced: "Avicenna (central influence); Averroes; Maimonides; al-Farabi is often called 'the Second Teacher' (al-Mu'allim al-Thani) — Aristotle being the First"
+      notes: >
+        SEP: 'al-Farabi was probably born in 870 CE (AH 257)...died in Damascus in
+        December 950 CE or January 951 CE (AH 339).' Scholars dispute whether he was
+        Turkish or Persian (SEP notes 'more recent research points to him being a
+        Persian'). His musical treatise is the largest surviving from the medieval
+        Islamic world. Ibn Rushd (Averroes) explicitly cites al-Farabi's recommendation
+        as the inspiration for his own Aristotelian commentaries (via Ibn Tufayl).
+      source_url: "https://plato.stanford.edu/entries/al-farabi/"
+      wikidata: "Q43936"
+
+    Ibn_Sina_Avicenna:
+      dates: "c. 970–1037 CE (SEP gives 'ca. 970'; some sources list 980; wikidata Q8011 gives 980)"
+      location: "Born Afshana near Bukhara (Samanid Persia, modern Uzbekistan); traveled extensively in Persia"
+      school: "Islamic Neoplatonism; Avicennism; medicine; logic; psychology"
+      key_works:
+        - "Kitab al-Shifa ('Book of Healing', c. 1020) — encyclopedia covering logic, natural science, mathematics, and metaphysics; most comprehensive philosophical work in Arabic"
+        - "Kitab al-Najat ('Book of Salvation') — summary of the Shifa"
+        - "Al-Qanun fi al-Tibb ('The Canon of Medicine', c. 1025) — medical encyclopedia used in European universities until 17th century"
+        - "Floating Man thought experiment (Kitab al-Shifa and Kitab al-Najat)"
+        - "Hayy ibn Yaqzan (Eastern Philosophy trilogy — allegorical philosophical narrative)"
+      key_doctrines:
+        - "Floating Man (Flying Man) argument: imagine a person created in mid-air, blindfolded, with no sensory contact with their own body; they would still be aware of their own existence — demonstrating the soul's independence from the body and self-awareness as primary"
+        - "Essence-existence distinction: in every contingent being, essence (mahiyya, 'what-it-is') is distinct from existence (wujud); in God alone they are identical — adopted and Christianized by Aquinas"
+        - "Necessary vs. contingent being: God alone is the Necessary Existent (Wajib al-Wujud); all other beings are contingent (possible) and require a cause"
+        - "Theory of soul: the soul is a self-subsistent substance that does not depend on the body for its existence; the Floating Man demonstrates this; prophetic intellect is the highest form"
+        - "Emanation cosmology: from God's self-knowledge proceeds a series of intellects, each emanating the next and the corresponding celestial sphere"
+      students_or_influences:
+        influenced_by: "Aristotle, al-Farabi (decisive influence on his theory of intellect and political philosophy), Pseudo-Dionysius (indirectly)"
+        influenced: "Aquinas (essence-existence distinction, Five Ways, nature of the soul); Averroes (reacted against Avicennism); Latin Avicennism; 'in his influence on the intellectual history of the world in the West, he is second only to Aristotle' (SEP)"
+      notes: >
+        SEP: 'Ibn-Sina [Avicenna] (ca. 970–1037) was the preeminent philosopher and
+        physician of the Islamic world.' The Autobiography states he mastered all
+        available sciences by age 18. Gained access to the Samanid ruler's library
+        after curing the ailing ruler. His Canon of Medicine formed 'the basis of
+        medical instruction in European universities until the 17th century' (SEP).
+        He is called 'the Chief Master' (al-Shaykh al-ra'is) and, after Aristotle,
+        'the Second Teacher.' SEP notes his birth year: the Autobiography makes an
+        exact date impossible; 'ca. 970' is SEP's formulation; wikidata and many
+        sources list 980. Death 1037 is secure.
+      source_url: "https://plato.stanford.edu/entries/ibn-sina/"
+      wikidata: "Q8011"
+      scholarly_dispute: >
+        Birth year: SEP gives 'ca. 970'; Wikipedia/Wikidata and many reference works
+        give 980. The Autobiography is vague. Both dates appear in scholarly literature.
+        Tier 2 should use 'c. 980' or '970–980' with a note that the exact date is disputed.
+
+    al_Ghazali:
+      dates: "c. 1056–19 December 1111 CE"
+      location: "Born Tus (northeastern Iran); Nishapur; Baghdad (Nizamiyya professor); withdrew to Syria, Jerusalem, Mecca; returned to Tus"
+      school: "Ash'arite theology; Sufi mysticism; critique of falsafa"
+      key_works:
+        - "Tahafut al-Falasifa ('Incoherence of the Philosophers', 1095) — refutation of 20 philosophical doctrines"
+        - "Ihya' Ulum al-Din ('Revival of the Religious Sciences', c. 1095–1106) — his most comprehensive work"
+        - "Maqasid al-Falasifa ('Aims of the Philosophers') — neutral summary of falsafa before the Tahafut"
+        - "Deliverance from Error (Al-Munqidh min al-Dalal) — spiritual autobiography"
+        - "Minhaj al-'Abidin ('Path of the Devoted')"
+      key_doctrines:
+        - "Incoherence of the Philosophers (Tahafut): al-Ghazali identifies 17 heretical positions and 3 kafir (infidel) positions in falsafa; the three most damaging are (1) eternity of the world, (2) God knows only universals, not particulars, (3) bodily resurrection denied"
+        - "Occasionalism: God is the only true cause; what appears as natural causation is God's habitual action, not a necessary connection — attacking Aristotelian secondary causality"
+        - "Sufi turn: after his spiritual crisis (1095), al-Ghazali abandoned his Baghdad professorship to pursue Sufi practice; the Ihya' synthesizes Islamic law, theology, and Sufi ethics"
+        - "Limits of reason: philosophy can establish many truths but cannot reach the deepest theological and spiritual truths, which require revelation and mystical experience"
+      students_or_influences:
+        influenced_by: "Ash'arite theology (al-Juwayni, his teacher at Nishapur); Avicenna (whose doctrines he summarized and then attacked); Sufi masters"
+        influenced: "Ibn Rushd (wrote the Incoherence of the Incoherence in direct reply); subsequent Islamic theology; Sufi tradition; Western occasionalism (via Latin translation)"
+      notes: >
+        SEP: 'Al-Ghazali (c. 1056–1111) was one of the most prominent and influential
+        philosophers, theologians, jurists, and mystics of Sunni Islam.' SEP gives birth
+        'c. 1056–1059' (the autobiography implies 1055–56; see Griffel 2009).
+        His spiritual crisis and departure from Baghdad in 1095 is recounted in the
+        Deliverance from Error. He spent about 10 years as a Sufi wanderer before
+        returning to teaching in 1106. SEP notes his Tahafut 'advances the nominalist
+        critique of Aristotelian science developed later in 14th century Europe.'
+      source_url: "https://plato.stanford.edu/entries/al-ghazali/"
+      wikidata: "Q51613"
+
+    Ibn_Bajja_Avempace:
+      dates: "c. born before 1085–1138/1139 CE (d. Fez, Morocco)"
+      location: "Saragossa, al-Andalus (Spain); Almeria; Granada; Fez (Morocco)"
+      school: "Islamic Aristotelianism; Andalusian falsafa"
+      key_works:
+        - "Governance of the Solitary (Tadbir al-Mutawahhid) — political philosophy for the philosopher unable to find a virtuous city"
+        - "Conjunction with the Active Intellect (Risala al-Ittisal)"
+        - "Notes on Aristotle's natural philosophy (partially surviving)"
+      key_doctrines:
+        - "Governance of the Solitary: when a philosopher cannot find a virtuous city (following al-Farabi), they must govern their own soul as a 'solitary' — living philosophically even in a deficient society"
+        - "Conjunction with the Active Intellect: the highest human achievement is intellectual union with the Active Intellect — the basis of human perfection and immortality"
+        - "Critique of Ptolemaic astronomy: anticipated later Andalusian revolt against epicycles and eccentrics in Ptolemaic astronomy (developed further by al-Bitruji under Ibn Tufayl)"
+      students_or_influences:
+        influenced_by: "Aristotle; al-Farabi; Avicenna"
+        influenced: "Ibn Tufayl (studied with him; Ibn Tufayl dedicated his Hayy ibn Yaqdhan to refining Avempace's idea); Ibn Rushd (Averroes) — Averroes wrote comments on Avempace"
+      notes: >
+        SEP: 'Bajja was known to the Latin philosophers as Avempace. We can assume
+        that he was born in Saragossa some years before 1085.' His death date is
+        1138 or 1139 CE in Fez. SEP notes his connection to Ibn Tufayl, citing
+        al-Maqqari and other sources. His influence is primarily through Andalusian
+        philosophical circle, and he was introduced to Averroes by Ibn Tufayl.
+        Many of his works survive only in fragmentary or paraphrase form.
+      source_url: "https://plato.stanford.edu/entries/ibn-bajja/"
+      wikidata: "Q286555"
+
+    Ibn_Tufayl:
+      dates: "c. 1105–1185 CE"
+      location: "Born Guadix (near Granada, al-Andalus); court of Almohad Caliph Abu Yaqub Yusuf; died Marrakesh (Morocco)"
+      school: "Islamic Aristotelianism; Avicennism; Sufism; Andalusian falsafa"
+      key_works:
+        - "Hayy ibn Yaqdhan ('Alive, Son of Awake', also Philosophus Autodidactus in Latin) — philosophical novel"
+      key_doctrines:
+        - "Autodidactic reason: the central philosophical claim of Hayy is that an isolated individual, through unaided reason and observation alone, can arrive at all the truths of natural science, metaphysics, and even mystical insight — reason is universal and self-sufficient"
+        - "Limits of social religion: when Hayy meets the outside world (through Absal), he discovers that revealed religion with its imagery and rituals is necessary for the masses but is ultimately an accommodation that the philosopher must transcend"
+        - "Tabula rasa: the feral child figure implies the mind begins as a blank slate formed by experience — an idea John Locke may have encountered via the 1671 Latin translation"
+      students_or_influences:
+        influenced_by: "Avicenna (the Hayy character names are from Ibn Sina's allegorical narratives); al-Farabi; Ibn Bajja (his teacher)"
+        influenced: >
+          Ibn Rushd (Averroes) — Ibn Tufayl introduced Averroes to the Almohad caliph
+          in 1169 and inspired him to write the Aristotelian commentaries;
+          European Enlightenment (Philosophus Autodidactus translated to Latin 1671,
+          English 1708); possibly influenced Robinson Crusoe and Locke's tabula rasa
+      notes: >
+        Wikipedia (Ibn Tufayl, accessed 2026-04-08): born c. 1105 in Guadix; died 1185
+        in Marrakesh. Wikidata Q251259 gives 1105–1185. Served as vizier and physician
+        to Almohad Caliph Abu Yaqub Yusuf. Retired 1182; Ibn Rushd succeeded him.
+        Hayy ibn Yaqdhan was the first philosophical novel and first desert-island
+        narrative in world literature. The Wikipedia article on Ibn Tufayl reports Ibn
+        Rushd's own account of how Ibn Tufayl inspired his Aristotelian commentaries:
+        'If you have the energy, you do it. I'm confident you can...'
+      source_url: "https://en.wikipedia.org/wiki/Ibn_Tufayl"
+      wikidata: "Q251259"
+
+    Ibn_Rushd_Averroes:
+      dates: "1126–1198 CE"
+      location: "Born Cordoba, al-Andalus; court of Almohad caliphs; exiled briefly to Lucena 1195"
+      school: "Islamic Aristotelianism; Averroism; Andalusian falsafa"
+      key_works:
+        - "Tahafut al-Tahafut ('Incoherence of the Incoherence') — defense of philosophy against al-Ghazali"
+        - "Short, Middle, and Long Commentaries on nearly the entire Aristotelian corpus"
+        - "Fasl al-Maqal ('Decisive Treatise') — on the relation of philosophy to Islamic law"
+        - "Bidayat al-Mujtahid ('Distinguished Jurist's Primer') — on Islamic jurisprudence"
+      key_doctrines:
+        - "Aristotle as the supreme philosopher: 'no one who has come after him to this our time — and this is close to 1500 years later — has been able to add a word worthy of attention to what he said' (Ibn Rushd); philosophy should be read demonstratively"
+        - "Philosophy and religion both lead to truth: the Decisive Treatise argues that philosophy is obligatory for qualified Muslims; apparent conflicts are resolved by allegorical interpretation of scripture"
+        - "Averroism (Latin reception): Latin readers extracted from his commentaries a 'double truth' doctrine (philosophy yields one truth, theology another) — but this was an attribution by Latin Averroists, NOT Ibn Rushd's own position"
+        - "Critique of Avicennian metaphysics: Ibn Rushd rejected Avicenna's essence-existence distinction and many other Avicennian innovations as departures from genuine Aristotelianism"
+        - "Unity of the intellect: the active and material intellects are a single, shared intellect for all of humanity — a position that threatens personal immortality and was condemned in Latin Europe"
+      students_or_influences:
+        influenced_by: "Aristotle (primary), al-Farabi, Ibn Bajja (introduced by Ibn Tufayl)"
+        influenced: >
+          Latin Averroism (Siger of Brabant, Boethius of Dacia at Paris); Aquinas
+          (reacted extensively against Averroist interpretations); Dante placed him
+          in Limbo; Spinoza; known simply as 'the Commentator' in medieval Latin Europe
+      notes: >
+        SEP: Ibn Rushd '(1126–1198) is one of the great figures of philosophy within
+        the Muslim contexts, and a foundational source for post-classical European thought.'
+        Born in Cordoba to a prominent juridical family in 1126. Introduced to philosophy
+        by Ibn Tufayl who recommended him to the Almohad caliph c. 1169. Briefly exiled
+        to Lucena 1195 (his works burned) — the Almohad court bowed to popular religious
+        pressure; restored to favor shortly before his death in 1198.
+        CRITICAL NOTE: The 'double truth' doctrine (philosophy and theology can each be
+        true even when contradictory) is NOT found in Ibn Rushd's own texts; it was
+        attributed to Latin Averroists (especially Siger of Brabant) by their opponents.
+        SEP and modern scholarship are clear on this. Tier 2 must NOT attribute it to
+        Ibn Rushd directly.
+      source_url: "https://plato.stanford.edu/entries/ibn-rushd/"
+      wikidata: "Q43188"
+
+    Ibn_Arabi:
+      dates: "1165–16 November 1240 CE"
+      location: "Born Murcia, al-Andalus; traveled North Africa; Mecca (pilgrimage 1201); Damascus (settled 1223, died)"
+      school: "Sufi metaphysics; theosophy; Islamic mysticism"
+      key_works:
+        - "Al-Futuhat al-Makkiyya ('The Meccan Openings/Illuminations') — encyclopedic mystical treatise, c. 37 volumes"
+        - "Fusus al-Hikam ('Bezels of Wisdom' / 'Ring-settings of Wisdom', 1229) — 27 chapters on prophets as divine reflections"
+      key_doctrines:
+        - "Wahdat al-wujud ('unity of being' or 'oneness of existence'): there is ultimately only one being — divine Being — and all apparent multiplicity of creatures is the self-disclosure (tajalli) of this one Being; God is the Real (al-Haqq), and creation is His self-manifestation"
+        - "Perfect Human (al-Insan al-Kamil): the fully realized human being is the microcosm and mirror of all divine attributes; prophets and saints represent the highest realization"
+        - "Self-disclosure (tajalli): God perpetually reveals Himself in new forms through creation; no two moments of divine self-disclosure are identical"
+        - "Imagination ('alam al-mithal): a fourth ontological world between the purely spiritual and purely material — the world of images and archetypes — where mystical visions occur"
+      students_or_influences:
+        influenced_by: "Quran, Hadith, Sufism, Islamic jurisprudence, Neoplatonism (indirectly)"
+        influenced: "Virtually all subsequent Sufi mystical thought; titled al-Shaykh al-Akbar ('The Greatest Master'); Mulla Sadra built on his metaphysics; Rumi contemporary (no evidence of direct contact)"
+      notes: >
+        SEP: 'Ibn 'Arabi (1165–1240) can be considered the greatest of all Muslim
+        philosophers, provided we understand philosophy in the broad, modern sense.'
+        Born in Murcia in 1165 to a minor official's family. Left al-Andalus for Mecca
+        pilgrimage in 1201, never returned. Settled in Damascus 1223. Died November 1240.
+        Title al-Shaykh al-Akbar means 'The Greatest Master.' The Futuhat al-Makkiyya
+        is one of the longest books in world literature. Note: the term wahdat al-wujud
+        itself was not used by Ibn Arabi himself but by later interpreters and critics
+        of his thought (per SEP and scholarly consensus).
+      source_url: "https://plato.stanford.edu/entries/ibn-arabi/"
+      wikidata: "Q178810"
+
+    Suhrawardi:
+      dates: "c. 1154–1191 CE (executed by order of Saladin's son)"
+      location: "Born Suhraward, northwestern Iran (near Maraghah); studied in Maraghah and Isfahan; executed in Aleppo"
+      school: "Illuminationist (Ishraqi) philosophy; Islamic mysticism"
+      key_works:
+        - "Hikmat al-Ishraq ('The Philosophy of Illumination', c. 1186) — the founding text of Ishraqi philosophy"
+        - "Hayakil al-Nur ('Temples of Light')"
+        - "Al-Talwihat ('Intimations')"
+        - "Symbolic narrative treatises (Qissas)"
+      key_doctrines:
+        - "Illuminationism (Ishraq): the metaphysics of light replaces Aristotelian hylomorphism; Being itself is luminosity; God is the Light of Lights (Nur al-Anwar); all other beings are gradations of light and darkness"
+        - "Knowledge by presence (ilm huduri): self-knowledge is direct and immediate — the soul does not know itself via a mental image of itself but by being directly present to itself; a critique of Avicennian abstractionism"
+        - "Ontology of lights: a complex hierarchy of pure lights (intellects), barriers (matter), and hovering lights (souls) replace the Aristotelian ten intellects"
+        - "World of Image ('alam al-mithal): Suhrawardi adds a fourth ontological world between intellects and matter — the world of archetypal images with spatial extension but no physical matter"
+      students_or_influences:
+        influenced_by: "Avicenna (trained in Avicennian Peripateticism before departing from it); Plato (Platonic ideas as lights); Zoroastrian light symbolism"
+        influenced: >
+          Persian philosophical tradition (Mulla Sadra built on Suhrawardi's ontology);
+          the Ishraqi school persisted in Iran through the 19th century;
+          unknown in the Latin West (no translations)
+      notes: >
+        SEP: 'Shihab al-Din al-Suhrawardi (1154–1191) has become the eponym of an
+        Illuminationist (ishraqi) philosophical tradition.' Born c. 1154 in the village
+        of Suhraward. Studied in Maraghah with Majd al-Din al-Jili. Executed in Aleppo
+        in 1191 by order of Saladin's son al-Zahir Ghazi, reportedly for heterodoxy
+        or political reasons. Died young, at around 36–37 years old. His works were
+        not translated into Latin, making him largely unknown in Western medieval
+        philosophy. The Ishraqi school remained influential in the Islamic East.
+      source_url: "https://plato.stanford.edu/entries/suhrawardi/"
+      wikidata: "Q57583"
+
+    Mulla_Sadra:
+      dates: "c. 1571/72–1635/36 CE (AH 979–1045)"
+      location: "Born Shiraz; studied Qazvin then Isfahan; taught in Kahak; died in Basra on pilgrimage"
+      school: "Transcendent theosophy (al-Hikma al-Muta'aliya); Safavid Iran; Shi'i seminary"
+      key_works:
+        - "Al-Asfar al-Arba'a ('The Four Journeys', c. 1637) — the major philosophical work"
+        - "Al-Shawahid al-Rububiyya ('Divine Witnesses')"
+        - "Al-Mabda' wa al-Ma'ad ('The Beginning and the Return')"
+      key_doctrines:
+        - "Primacy of existence (asalat al-wujud): existence (wujud), not essence, is primary and real; essences are mental abstractions — Mulla Sadra inverts Suhrawardi and the standard Avicennian view"
+        - "Substantial motion (harakat jawhariyya): substances do not remain static between accidental changes; being itself is dynamic, constantly intensifying or diminishing — a process metaphysics"
+        - "Transcendent theosophy (al-Hikma al-Muta'aliya): integrates Avicennian philosophy, Suhrawardi's illuminationism, and Sufi mysticism (especially Ibn Arabi) into a single systematic framework"
+        - "Unification of the knower and the known (ittihad al-'aqil wa-l-ma'qul): in the act of intellection, the intellect becomes identical with its object — knowledge is ontological"
+      students_or_influences:
+        influenced_by: "Avicenna; Suhrawardi; Ibn Arabi; his teachers Mir Damad and Shaykh Baha'i in Isfahan"
+        influenced: >
+          Has been 'the dominant philosophical paradigm in the Shi'i seminary in the
+          Islamic East' since the early 19th century (SEP); widely influential in
+          South Asia; 20th-century Iranian philosophers (Henry Corbin studied him)
+      notes: >
+        SEP: 'Mulla Sadra (1571–1636) is arguably the most significant Islamic
+        philosopher after Avicenna.' Born in Shiraz in around 979 AH/1571–72. Moved
+        to Qazvin then Isfahan for studies. Withdrew to Kahak for a long period of
+        spiritual retreat and writing. His Four Journeys is the systematic expression
+        of his transcendent theosophy. He died in Basra on his seventh pilgrimage
+        to Mecca. Slightly outside the medieval period (1400 CE cutoff) but included
+        here per the task brief as 'slightly later but seminal.'
+      source_url: "https://plato.stanford.edu/entries/mulla-sadra/"
+      wikidata: "Q711882"
+
+  # ----------------------------------------------------------
+  # TRADITION 3: Jewish Medieval Philosophy
+  # ----------------------------------------------------------
+  jewish_medieval:
+
+    Saadia_Gaon:
+      dates: "892–16 May 942 CE"
+      location: "Born Fayyum (Egypt); Tiberias (Palestine); Sura Academy (Babylonia/Iraq)"
+      school: "Jewish Kalam; rabbinic philosophy; Gaonic period"
+      key_works:
+        - "Emunot ve-Deot ('Book of Beliefs and Opinions', 933 CE) — first systematic Jewish philosophical work"
+        - "Commentary on the Torah (Arabic)"
+        - "Arabic translation of the Hebrew Bible (Tafsir)"
+        - "Sefer ha-Egron — Hebrew lexicon"
+        - "Siddur (prayer book)"
+      key_doctrines:
+        - "Reason and revelation compatible: the Book of Beliefs and Opinions argues that reason and revelation agree; if they appear to conflict, the scriptural text requires reinterpretation"
+        - "Creation ex nihilo: contra Aristotle's eternal world; God created the world from nothing at a definite moment in time — Saadia argues this from reason as well as scripture"
+        - "Four sources of knowledge: sensation, reason, logical inference, and reliable tradition — tradition is a legitimate epistemic source alongside rational ones"
+        - "Critique of Karaism: Saadia was a major polemicist against Karaite Judaism (which rejected Talmudic oral law), defending rabbinic tradition"
+      students_or_influences:
+        influenced_by: "Greek philosophy (Platonic and Aristotelian, via Arabic); Islamic Kalam (Mu'tazilite method of rational theology)"
+        influenced: "All subsequent medieval Jewish philosophy; often cited as the 'father' of Jewish rationalist philosophy"
+      notes: >
+        Wikipedia (Saadia Gaon, verified 2026-04-08): 'Saadia ben Yosef Gaon or Said
+        bin Yusuf al-Fayyumi (892–942) was a prominent rabbi, gaon, Jewish philosopher,
+        and exegete who was active in the Abbasid Caliphate.' Born in Dilaz in the
+        Fayyum, Egypt, in 892 CE. Settled in Babylonia (Sura Academy) in 926 CE.
+        Became Gaon (head) of the Sura Academy 928 CE. Died 16 May 942 CE.
+        Wikidata Q328748. Wikipedia notes: 'his philosophical work entitled The Book
+        of Beliefs and Opinions represents the first systematic attempt to integrate
+        Jewish theology with components of ancient Greek philosophy.'
+        Note: SEP entry not found under 'saadia-gaon'; Wikipedia is primary source here.
+      source_url: "https://en.wikipedia.org/wiki/Saadia_Gaon"
+      wikidata: "Q328748"
+
+    Solomon_Ibn_Gabirol_Avicebron:
+      dates: "c. 1021–c. 1057/1058 CE (birth dates disputed: 1021/2 is SEP's primary date)"
+      location: "Born Malaga, al-Andalus (Spain); Saragossa"
+      school: "Jewish Neoplatonism; Andalusian Jewish philosophy"
+      key_works:
+        - "Fons Vitae ('Fountain of Life' / Yanbu' al-Hayah in Arabic, c. 1050) — philosophical dialogue on matter and form"
+        - "Meqor Hayyim (Hebrew title of the same work)"
+        - "Keter Malkhut ('Crown of Kingship') — liturgical philosophical poem"
+        - "Tikkun Middot ha-Nefesh ('Improvement of the Moral Qualities')"
+      key_doctrines:
+        - "Universal Hylomorphism: all created things — including intellect and soul — are composed of matter and form; matter is not merely physical; spiritual beings also have a 'spiritual matter'; this doctrine was influential (and controversial) in Latin Scholasticism"
+        - "Divine Will (Ratzon): the intermediary between God and creation is the Divine Will/Wisdom/Word; Will is the creative principle that imposes form on matter"
+        - "Neoplatonic emanation: God is absolutely simple; the world emanates from God through a hierarchy of spiritual substances; human souls can ascend back toward God"
+        - "God beyond predication: God is so transcendent that positive attributes cannot properly be applied — akin to apophatic theology"
+      students_or_influences:
+        influenced_by: "Plotinus; Pseudo-Dionysius (indirectly); Islamic Neoplatonism"
+        influenced: >
+          Latin Scholasticism significantly: translated into Latin by Dominicus
+          Gundissalinus and John of Spain in the 12th century as 'Fons Vitae';
+          Latin thinkers (Albertus Magnus, Duns Scotus) adopted Universal Hylomorphism
+          as a Franciscan alternative to Aquinas; Latin readers did not know Avicebron
+          was Jewish until the 19th century
+      notes: >
+        SEP: 'A prolific poet and the author of the Fons Vitae, Ibn Gabirol is well known
+        in the history of philosophy for the doctrine that all things — including soul and
+        intellect — are comprised of matter and form ("Universal Hylomorphism").'
+        SEP gives birth as 'born in Malaga Spain in 1021/2 (Guttman offers 1026)' and
+        death as 'most likely in Valencia, most likely in 1057/8 (Guttman offers 1050;
+        Sirat offers 1054–8).' His Jewish identity was unknown to Latin Scholastics
+        who read him only as 'Avicebron' or 'Avicembron'; his identity was established
+        by Solomon Munk in 1845.
+      source_url: "https://plato.stanford.edu/entries/ibn-gabirol/"
+      wikidata: "Q311117"
+
+    Judah_Halevi:
+      dates: "c. 1075–c. 1141 CE"
+      location: "Born Toledo or Tudela (al-Andalus / Castile); Cordoba; traveled to Egypt and reportedly Jerusalem"
+      school: "Jewish philosophy; anti-Aristotelianism; revealed Judaism vs. philosophical religion"
+      key_works:
+        - "Kuzari (Sefer ha-Kuzari, 'The Book of the Khazars', c. 1130–40) — philosophical dialogue defending Judaism"
+        - "Diwan — extensive collection of Hebrew liturgical and secular poetry"
+      key_doctrines:
+        - "Kuzari dialogue: a Khazar king searching for the true religion debates a philosopher (dismissed quickly), a Christian, a Muslim, and a Jewish sage — the sage wins; the work is a sustained argument that Judaism is superior because it is based on direct collective historical revelation (the Exodus, Sinai), not abstract philosophical argument"
+        - "Limits of philosophy: the 'God of Aristotle' (the Unmoved Mover, abstract and impersonal) is not the God of Abraham, Isaac, and Jacob; philosophy cannot reach the living God of covenant and history"
+        - "Primacy of Hebrew and the Jewish people: the Jewish people have a special spiritual faculty (amr ilahi, 'divine influence') that enables prophecy; the Land of Israel is uniquely suited to this faculty"
+        - "Anti-rationalism: the highest religious life is not philosophical contemplation but obedience to divine commandments and trust in historical revelation"
+      students_or_influences:
+        influenced_by: "Saadia Gaon; al-Ghazali (the Kuzari shares anti-philosophical themes)"
+        influenced: "Major influence on modern Jewish thought (Franz Rosenzweig's 'Star of Redemption' engages Halevi; Zionist thought)"
+      notes: >
+        Dates c. 1075–c. 1141 from Wikipedia (Judah Halevi). SEP does not have a
+        dedicated entry; IEP has an entry confirming the Kuzari as c. 1130–40.
+        Halevi completed the Kuzari near the end of his life, reportedly leaving
+        Spain in 1140 to travel to the Land of Israel. He reportedly died in Egypt
+        or en route; a famous medieval tradition (disputed) says he died in Jerusalem
+        just as he arrived, trampled by an Arab horseman.
+        The Kuzari is written in Judeo-Arabic (Kitab al-Hujja wal-Dalil fi Nasr al-Din
+        al-Dhalil, 'Book of Argument and Proof in Defense of the Despised Religion').
+      source_url: "https://en.wikipedia.org/wiki/Judah_Halevi"
+      wikidata: "Q200797"
+
+    Moses_Maimonides:
+      dates: "30 March 1138–13 December 1204 CE"
+      location: "Born Cordoba, al-Andalus; fled with family (Almohad invasion 1148); Fez, Morocco; Fustat (Cairo), Egypt"
+      school: "Jewish Aristotelianism; medieval Jewish philosophy; Maimonidean synthesis"
+      key_works:
+        - "Mishneh Torah (1170–80) — 14-volume codification of all Jewish law"
+        - "Guide for the Perplexed (Moreh Nevukhim, completed 1190) — reconciliation of Aristotle and Torah"
+        - "Commentary on the Mishnah (including 13 Principles of Faith in introduction to Sanhedrin 10, c. 1168)"
+        - "Treatise on Logic (Maqala fi sina'at al-mantiq)"
+      key_doctrines:
+        - "Negative theology: proper theological language describes God only by negation — God is not composite, not finite, not ignorant, etc.; positive attributes imply limitation and multiplicity incompatible with divine simplicity"
+        - "13 Principles of Faith (Ikkarim): foundational beliefs required of every Jew — including existence of God, divine unity, incorporeality, eternity, exclusivity of worship, prophecy (Moses as supreme), Torah's divinity, immutability of Torah, divine omniscience, reward and punishment, coming of the Messiah, and resurrection of the dead"
+        - "Aristotelianism and Torah: the Guide interprets biblical terms (God's 'face,' 'hand,' 'anger') as parables; the true meaning is philosophical; God is the Necessary Existent (drawing from Avicenna)"
+        - "Limits of metaphysics: human intellect cannot grasp God's essence; philosophy can establish that God exists but not what God is"
+      students_or_influences:
+        influenced_by: "Aristotle (via Averroes's commentaries), Avicenna, al-Farabi, Saadia Gaon"
+        influenced: >
+          Thomas Aquinas (cited him as 'Rabbi Moses'; influenced Five Ways formulation);
+          Spinoza; Leibniz; Gersonides and Crescas (engaged critically);
+          remains the central figure of medieval Jewish philosophy
+      notes: >
+        SEP: 'Moses ben Maimon [known to English speaking audiences as Maimonides
+        and Hebrew speaking as Rambam] (1138–1204) is the greatest Jewish philosopher
+        of the medieval period and is still widely read today.' Born Cordoba 30 March 1138.
+        Family fled Cordoba when Almohads invaded 1148. Arrived Egypt 1166. Became
+        physician to Saladin's vizier and head of Egyptian Jewish community.
+        Guide for the Perplexed completed 1190. Died 13 December 1204 in Fustat.
+        His body was taken to Tiberias (traditional burial site). Known also as
+        Rambam (acronym of Rabbi Moses ben Maimon).
+      source_url: "https://plato.stanford.edu/entries/maimonides/"
+      wikidata: "Q8016"
+
+    Gersonides:
+      dates: "1288–20 April 1344 CE"
+      location: "Orange (Provence, southern France); Avignon region; never left France"
+      school: "Jewish Aristotelianism; rationalist Judaism; medieval astronomy"
+      key_works:
+        - "Sefer Milhamot Ha-Shem ('Wars of the Lord', completed 1329) — the major philosophical work"
+        - "Commentary on Averroes's commentaries on Aristotle"
+        - "Astronomical works (contributed to trigonometry and astronomical instruments)"
+        - "Biblical commentaries"
+      key_doctrines:
+        - "Rationalism: Gersonides upholds the primacy of reason; he attributes to Maimonides the principle that 'we must believe what reason has determined to be true' and follows this consistently — even where it departs from traditional readings"
+        - "Limited divine omniscience: God knows the general order of the universe but does not know the particular future free choices of individuals — a departure from mainstream theology motivated by preserving human free will"
+        - "Non-eternal world: Gersonides critiques the Aristotelian claim that matter is eternal; he argues that the world was created from pre-existing formless matter (not ex nihilo)"
+        - "Active Intellect and immortality: individual intellects can achieve conjunction with the Active Intellect (following al-Farabi and Averroes); the degree of intellectual perfection attained determines what survives after death"
+      students_or_influences:
+        influenced_by: "Maimonides (foundational), Averroes (commented on him extensively), al-Farabi, Aristotle"
+        influenced: >
+          Hasdai Crescas (wrote the Light of the Lord partly in response); Leibniz
+          (encountered Gersonides's ideas); SEP notes his ideas 'influenced...
+          Gottfried Wilhelm Leibniz and Benedict de Spinoza' through Crescas
+      notes: >
+        SEP: 'the centuries as Gersonides (Levi ben Gerson, acronym Ralbag)...his
+        major philosophical work, Sefer Milhamot Ha-Shem (The War of the Lord, 1329),
+        was called "Wars against the Lord" by one of his opponents.' Born 1288;
+        died 20 April 1344. Wikidata Q383906. He was also a significant mathematician
+        and astronomer: he invented the Jacob's staff (baculus Jacobi), a navigational
+        instrument, and made precise measurements of planetary positions. He corresponded
+        with Pope Clement VI on astronomical matters.
+      source_url: "https://plato.stanford.edu/entries/gersonides/"
+      wikidata: "Q383906"
+
+    Hasdai_Crescas:
+      dates: "c. 1340–1410/1411 CE"
+      location: "Born Barcelona; rabbi of Saragossa; head of Aragonese Jewish community; Saragossa (d.)"
+      school: "Anti-Aristotelian Jewish philosophy; critique of Maimonidean rationalism"
+      key_works:
+        - "Or Hashem ('Light of the Lord', completed c. 1410) — the major philosophical work"
+        - "Bittul Ikkarei ha-Notzrim ('Refutation of Christian Principles')"
+      key_doctrines:
+        - "Critique of Aristotle: Or Hashem systematically dismantles the Aristotelian cosmological premises (finite universe, impossibility of infinite, place as a limit, etc.) that Maimonides and Gersonides had accepted; Crescas argues the universe may be infinite"
+        - "Divine love over intellect: against the Maimonidean-Aristotelian view that the highest human good is intellectual contemplation, Crescas argues it is love of God — a more voluntarist, emotional conception"
+        - "Determinism: Crescas tends toward a compatibilist position on free will — human choices are determined but responsibility is preserved through the distinction between internal (voluntary) and external compulsion"
+        - "Against the 13 Principles: Crescas critiques Maimonides's list, arguing many of the 13 are not fundamental principles of Judaism"
+      students_or_influences:
+        influenced_by: "Maimonides (critically engaged), Gersonides (engaged), 14th-century Latin Scholastics (via Saragossa court connections), Abner of Burgos (apostate philosopher)"
+        influenced: >
+          SEP: 'Or Hashem was an important oeuvre of both Judaic thought and of the
+          criticism of Aristotelian science which spurred the growth of the new science
+          of the modern period';
+          Joseph Albo (student), Spinoza, Leibniz (via later reception)
+      notes: >
+        SEP: 'Rabbi Hasdai Crescas (ca. 1340–1410/11) was the head of the Jewish
+        community of Aragon...one of the leading rabbinic authorities of his time,
+        the political leader of the Jews of Aragon, and a philosophical thinker.'
+        Born Barcelona c. 1340. His son was killed in the anti-Jewish pogroms of 1391.
+        Completed Or Hashem c. 1410. SEP notes his critique of Aristotle 'spurred
+        the growth of the new science of the modern period' — anticipating infinite
+        universe arguments that appeared again in Giordano Bruno and Galileo.
+      source_url: "https://plato.stanford.edu/entries/crescas/"
+      wikidata: "Q386905"
+
+# ============================================================
+# TRANSMISSION SUMMARY (for Tier 2 context)
+# The central narrative arc: Aristotle recovered in Arabic, then
+# transmitted to Latin Europe and Jewish thought.
+#
+# Key transmission lines:
+#   Aristotle → al-Kindi (first Arabic Aristotelian)
+#   al-Kindi → al-Farabi (political phil, intellect theory)
+#   al-Farabi → Avicenna (essence/existence, Floating Man)
+#   Avicenna → al-Ghazali (critique) + Latin Avicennism
+#   al-Ghazali → Ibn Rushd (Incoherence of the Incoherence)
+#   Ibn Rushd → Latin Averroism + Aquinas (critical engagement)
+#   Avicenna + Ibn Rushd + Maimonides → Aquinas synthesis
+#   Aristotle → Latin via Toledo translations (12th century)
+#   Pseudo-Dionysius → Eriugena → Bonaventure → Eckhart → Cusa
+#   Augustine → Anselm → scholastic method (faith-reason)
+#   Saadia Gaon → Ibn Gabirol → Halevi → Maimonides → Gersonides → Crescas
+# ============================================================
+
+# Scholarly disputes noted:
+# 1. Avicenna birth year: SEP gives 'ca. 970'; most reference works give 980.
+#    Death 1037 is secure. Tier 2 should note the uncertainty.
+# 2. 'Double truth' doctrine: NEVER attribute to Averroes himself.
+#    This was a position attributed to Latin Averroists by their opponents.
+#    Ibn Rushd's own view was that philosophy and scripture both reach truth,
+#    with allegorical reading resolving apparent conflicts.
+# 3. 'wahdat al-wujud': the term itself was not used by Ibn Arabi but by
+#    later interpreters; scholars continue to debate whether the doctrine
+#    is actually 'pantheism' or a more nuanced form of panentheism.
+# 4. Mulla Sadra: strictly 1571–1636, outside the 1400 CE cutoff of the
+#    sub-deck — included per the task brief as 'slightly later but seminal.'
+#    Tier 2 should note the chronological extension if relevant.

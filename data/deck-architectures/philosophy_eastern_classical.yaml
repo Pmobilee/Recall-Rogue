@@ -1,0 +1,1012 @@
+deck_id: philosophy
+sub_deck_id: eastern_classical
+name: "Eastern Classical Philosophy"
+domain: general_knowledge
+sub_domain: philosophy
+target_facts: 55
+minimum_facts: 45
+
+data_sources:
+- name: Stanford Encyclopedia of Philosophy (SEP)
+  url: https://plato.stanford.edu/
+  license: fair use — non-commercial educational summary
+  usage: >
+    Primary source for verified philosopher dates, doctrines, school descriptions.
+    Entries consulted: confucius, mencius, xunzi, laozi, zhuangzi, mohism,
+    chinese-legalism, school-names, buddha, nagarjuna, jaina-philosophy, yogacara
+- name: Internet Encyclopedia of Philosophy (IEP)
+  url: https://iep.utm.edu/
+  license: fair use — non-commercial educational summary
+  usage: Nyaya (pramana, reliabilism), Yoga Sutras of Patanjali (eight limbs)
+- name: Wikipedia / Wikidata
+  url: https://en.wikipedia.org/
+  license: CC-BY-SA-4.0
+  usage: >
+    Supplementary dates and details: Zou Yan, Shang Yang, Han Feizi, Gongsun Long,
+    Vaisheshika (Kanada), Samkhya (Kapila), Mimamsa (Jaimini), Brahma Sutras
+    (Badarayana), Charvaka/Lokayata, Prince Shotoku, Padmasambhava, Mahavira,
+    Four Noble Truths, dependent origination, Tripitaka, Mahasanghika, Sarvastivada,
+    Abhidharma, Nirvana, Liezi, Karma, Three Marks of Existence, Lankavatara Sutra,
+    Tattvarthasutra, Korea Buddhist transmission
+
+# ============================================================
+# SOURCE DATA — 5 chain themes
+# All facts verified against source URLs listed per entry.
+# Workers MUST copy facts FROM this verified data — never invent.
+#
+# THEME 0: Confucianism (7 entries)
+# THEME 1: Other Chinese Schools — Daoism, Mohism, Legalism, Names, Yin-Yang (11 entries)
+# THEME 2: Early Buddhism — foundational doctrines and early schools (14 entries)
+# THEME 3: Hindu Darshanas and Upanishadic Concepts (7 entries)
+# THEME 4: Jainism, Charvaka, Eastern transmissions (12 entries)
+# TOTAL: 51 entries
+# ============================================================
+source_data:
+
+  # ----------------------------------------------------------
+  # THEME 0: Classical Chinese — Confucianism
+  # 7 entries
+  # ----------------------------------------------------------
+  confucianism:
+
+    Confucius_Life:
+      dates: "trad. 551–479 BCE (Warring States–Late Spring and Autumn period)"
+      school: Confucianism (Ru tradition)
+      key_works: "Analects (Lunyu) — compiled by disciples after his death, not by Confucius himself"
+      key_doctrines: "ren (benevolence/humaneness), li (ritual propriety), junzi (exemplary person), zhengming (rectification of names), filial piety"
+      students_or_influences: "Zengzi, Zilu, Yan Hui; later systematized by Mencius and Xunzi"
+      notes: >
+        SEP (2024): "Confucius (trad. 551–479 BCE) has been portrayed as a teacher, advisor,
+        editor, philosopher, reformer, and prophet." His Latinized name combines the surname
+        Kong with honorific fuzi (Master). The Analects (Lunyu) reflect "a diversity of
+        representations and concerns" compiled by his followers — Confucius himself did not
+        write it. The Chinese term Ru predates Confucius and "connoted specialists in ritual
+        and music." Key areas: a psychology of ritual, an ethics of personal virtue, and
+        normative theory of family and state. Described as "arguably the most significant
+        thinker in East Asian history."
+      source_url: "https://plato.stanford.edu/entries/confucius/"
+      wikidata: Q4604
+
+    Ren_Concept:
+      dates: "Articulated in the Analects (compiled c. 5th–3rd century BCE)"
+      school: Confucianism
+      key_works: "Analects"
+      key_doctrines: "ren — benevolence, humaneness, love for others; the core Confucian virtue"
+      students_or_influences: "Central to all later Confucian thought"
+      notes: >
+        SEP (2024): Ren is the core ethical concept in Confucian thought, typically translated
+        as "benevolence" or "humaneness." SEP describes it as central to "an ethics rooted in
+        the cultivation of a set of personal virtues." The Analects present ren as the quality
+        of the junzi (exemplary person) who expresses love and care for others through proper
+        ritual conduct (li). The two concepts ren and li are deeply intertwined in Confucian
+        ethics — ritual propriety is the outward form; ren is the inner disposition.
+      source_url: "https://plato.stanford.edu/entries/confucius/"
+      wikidata: Q4604
+
+    Junzi_Concept:
+      dates: "Central to Confucian ethics; core concept in the Analects (compiled c. 5th–3rd century BCE)"
+      school: Confucianism
+      key_works: "Analects (Lunyu)"
+      key_doctrines: "Junzi (exemplary person/gentleman): the Confucian ethical ideal of a person who embodies ren, li, and yi (righteousness); contrast with xiaoren (petty person); role in governance and moral cultivation"
+      students_or_influences: "The junzi ideal was elaborated by Mencius and Xunzi; central to the Confucian curriculum"
+      notes: >
+        SEP (2024) describes Confucian ethics as centered on "the cultivation of a set of
+        personal virtues" in the junzi (exemplary person). The Analects uses junzi (literally
+        "son of a ruler" — originally a social designation) to mean the morally cultivated
+        person who embodies ren (benevolence) and li (ritual propriety). The junzi is
+        characterized by moral self-cultivation, not by birth. The Confucian project — in
+        both the Analects and the Mengzi — is to show how anyone can become a junzi through
+        practice, study, and moral effort. The junzi is contrasted with the xiaoren (petty
+        person) who is motivated by personal profit.
+      source_url: "https://plato.stanford.edu/entries/confucius/"
+      wikidata: Q3255065
+
+    Five_Classics:
+      dates: "Canonical status formalized during Han dynasty (206 BCE–220 CE)"
+      school: Confucianism
+      key_works: "Classic of Poetry (Shijing), Book of Documents (Shujing), Book of Rites (Liji), Book of Changes (Yijing), Spring and Autumn Annals (Chunqiu)"
+      key_doctrines: "Canonical texts of Confucian learning; basis of imperial civil examinations"
+      students_or_influences: "Confucius credited with editing several; Spring and Autumn Annals attributed to him"
+      notes: >
+        The Five Classics (Wujing) are the core canonical texts of Confucian tradition.
+        Confucius is traditionally credited with editing or transmitting them, though modern
+        scholarship questions the extent of his involvement. The Spring and Autumn Annals
+        (Chunqiu) is the text most directly associated with Confucius himself. These texts
+        later formed the basis of China's imperial civil service examination system.
+        Wikipedia (CC-BY-SA): https://en.wikipedia.org/wiki/Four_Books_and_Five_Classics
+      source_url: "https://en.wikipedia.org/wiki/Four_Books_and_Five_Classics"
+      wikidata: Q11828
+
+    Mencius_Human_Nature:
+      dates: "4th century BCE (fl. c. 372–289 BCE, dates uncertain)"
+      school: Confucianism
+      key_works: "Mengzi (Mencius) — compiled by disciples or disciples of disciples; edited by Zhao Qi 2nd century CE"
+      key_doctrines: "Human nature is innately good (xing shan); Four Seeds/Sprouts (side duan): compassion, shame, modesty, moral approval/disapproval; Heaven (tian); Mandate of Heaven"
+      students_or_influences: "Called the 'Second Sage' of Confucianism; influenced Neo-Confucians"
+      notes: >
+        SEP (2024): "Mencius is best known for his claim that human nature is good." The
+        Mengzi is "divided into seven books, each of which is subdivided into two parts (labeled
+        A and B in English)." SEP notes he "attracted interest in recent Western philosophy
+        because his views on the virtues, ethical cultivation, and human nature have intriguing
+        similarities with but also provocative differences from familiar Humean and Aristotelian
+        formulations." Mencius is a Latinization "coined by Jesuit missionaries in the 17th
+        century" of Mengzi (Master Meng). His full name was Meng Ke. The received text reflects
+        Zhao Qi's 2nd century CE edited version.
+      source_url: "https://plato.stanford.edu/entries/mencius/"
+      wikidata: Q74244
+
+    Four_Books:
+      dates: "Designated as a canonical group by Zhu Xi (1130–1200 CE)"
+      school: Confucianism (Neo-Confucian systematization)
+      key_works: "Analects, Mengzi (Mencius), Great Learning (Daxue), Doctrine of the Mean (Zhongyong)"
+      key_doctrines: "Core curriculum for Confucian education; basis of civil service exams from 1313 CE"
+      students_or_influences: "Zhu Xi (Song dynasty Neo-Confucianism)"
+      notes: >
+        The Four Books (Sishu) were designated as a canonical group by Neo-Confucian scholar
+        Zhu Xi in the 12th century. They became the required curriculum for imperial civil
+        service examinations from 1313 CE under the Yuan dynasty through 1905 CE. The Analects
+        and Mengzi are the primary sources for Confucius and Mencius respectively; the Great
+        Learning and Doctrine of the Mean are chapters extracted from the Book of Rites.
+        Wikipedia (CC-BY-SA): https://en.wikipedia.org/wiki/Four_Books_and_Five_Classics
+      source_url: "https://en.wikipedia.org/wiki/Four_Books_and_Five_Classics"
+      wikidata: Q11828
+
+
+    Zengzi:
+      dates: "505–435 BCE (traditional dates)"
+      school: Confucianism
+      key_works: "Attributed sections of the Great Learning (Daxue)"
+      key_doctrines: "Filial piety (xiao); daily self-examination ('I daily examine myself on three points'); associated with transmission of Confucian teaching"
+      students_or_influences: "Direct disciple of Confucius; teacher of Confucius's grandson Zisi (who in turn taught Mencius); transmission chain: Confucius → Zengzi → Zisi → Mencius"
+      notes: >
+        Zengzi (Master Zeng, personal name Zeng Shen) was one of the direct disciples of
+        Confucius. Traditional dates are 505–435 BCE. He is credited in Confucian tradition
+        with transmitting Confucian teaching to subsequent generations — the lineage
+        Confucius → Zengzi → Zisi (Confucius's grandson) → Mencius forms the claimed
+        transmission chain of orthodox Confucianism. He is associated with the text of the
+        Great Learning (Daxue), one of the Four Books. His emphasis on filial piety (xiao)
+        became a cornerstone of Confucian social ethics. The Analects records his famous
+        saying: "I daily examine myself on three points: whether, in transacting business for
+        others, I may have been not faithful; whether, in intercourse with friends, I may have
+        been not sincere; whether I may have not mastered and practiced the instructions of my
+        teacher." Wikipedia (CC-BY-SA): https://en.wikipedia.org/wiki/Zengzi
+      source_url: "https://en.wikipedia.org/wiki/Zengzi"
+      wikidata: Q706997
+
+    Xunzi_Human_Nature_Bad:
+      dates: "c. 310–c. 235 BCE (third century BCE, precise dates unknown)"
+      school: Confucianism
+      key_works: "Xunzi (collection of essays compiled posthumously)"
+      key_doctrines: "Human nature is bad (xing e) — requires ritual (li) and education to become good; Heaven (tian) as natural order, not moral agent; rectifying names (zhengming)"
+      students_or_influences: "Students included Han Feizi and Li Si — later founders of Legalism; 'reckoned as the third of the three great classical Confucians' (SEP)"
+      notes: >
+        SEP (2025): "Xunzi (third century BCE) was a Confucian philosopher, sometimes reckoned
+        as the third of the three great classical Confucians (after Confucius and Mencius)."
+        His birth year is debated — SEP notes "there is disagreement as to whether he journeyed
+        to the philosophical center of Qi at the age of fifteen or fifty" but "a year of birth
+        sometime around 310 BCE" is more plausible. He died after 238 BCE. "For most of imperial
+        Chinese history, Xunzi was a bête noire who was typically cited as an example of a
+        Confucian who went astray by rejecting Mencian convictions." His counterintuitive claim
+        that "human nature is bad" (xing e) is his most famous doctrine — he argued moral
+        cultivation through ritual and study transforms this bad nature.
+      source_url: "https://plato.stanford.edu/entries/xunzi/"
+      wikidata: Q193636
+
+  # ----------------------------------------------------------
+  # THEME 1: Classical Chinese — Daoism, Mohism, Legalism, School of Names, Yin-Yang
+  # 11 entries
+  # ----------------------------------------------------------
+  other_chinese_schools:
+
+    Laozi_and_Daodejing:
+      dates: "Traditional: 6th century BCE; modern scholarly consensus uncertain — the text likely reached final form c. 4th–3rd century BCE"
+      school: Daoism (Daojia)
+      key_works: "Daodejing (Tao Te Ching) — also called the Laozi; 81 chapters"
+      key_doctrines: "The Dao (Way), de (virtue/power), wu wei (non-action/effortless action), ziran (naturalness/spontaneity)"
+      students_or_influences: "Foundational for all Daoist thought; influenced Chan Buddhism"
+      notes: >
+        SEP (2025): "Philosophical Daoism traces its origins to Laozi, an extraordinary thinker
+        who flourished during the sixth century B.C.E., according to Chinese sources. According
+        to some modern scholars, however, Laozi is entirely legendary; there was never a
+        historical Laozi." The name Laozi means "Old Master." Its key concerns are "the Dao or
+        Way and how it finds expression in virtue (de), especially through what the text calls
+        naturalness (ziran) and nonaction (wuwei). These concepts, however, are open to
+        interpretation." The Sima Qian biography (2nd century BCE) is the earliest biographical
+        account but its "reliability has been questioned." Two major manuscript recensions:
+        the received Wang Bi text and the Mawangdui silk manuscripts (c. 168 BCE discovery).
+      source_url: "https://plato.stanford.edu/entries/laozi/"
+      wikidata: Q9333
+
+    Wu_Wei:
+      dates: "Core concept in Daodejing (c. 4th–3rd century BCE text)"
+      school: Daoism
+      key_works: "Daodejing, Zhuangzi"
+      key_doctrines: "Wu wei — non-action, effortless action, acting in accordance with the natural order; ziran (spontaneity/naturalness)"
+      students_or_influences: "Central to both philosophical and religious Daoism; influenced Chan/Zen Buddhism"
+      notes: >
+        SEP (2025): Wu wei is described as "nonaction" and is a key term in the Daodejing
+        alongside ziran (naturalness). SEP notes these concepts "are open to interpretation.
+        While some interpreters see them as evidence that the Laozi is a deeply spiritual work,
+        others emphasize their contribution to ethics and political philosophy." Wu wei does not
+        mean total inaction — it means acting without forced or artificial intervention,
+        flowing naturally with the Dao. The political dimension includes a vision of effortless
+        governance that does not impose artificial structures.
+      source_url: "https://plato.stanford.edu/entries/laozi/"
+      wikidata: Q9333
+
+    Zhuangzi_Philosopher:
+      dates: "Late 4th century BCE"
+      school: Daoism (Classical Philosophical Daoism)
+      key_works: "Zhuangzi (text) — a compilation of his and others' writings; 33 chapters in received form (Inner, Outer, Miscellaneous chapters)"
+      key_doctrines: "Equality of things (qi wu), perspectivism, ethical relativism, naturalness, skepticism toward fixed norms, the Dao as natural path; butterfly dream parable"
+      students_or_influences: "Influenced Chan (Zen) Buddhism; major influence on Chinese literati"
+      notes: >
+        SEP (2024): "Zhuangzi (late 4th century BC) is the pivotal figure in Classical
+        Philosophical Daoism." The text is "a compilation of his and others' writings at the
+        pinnacle of the philosophically subtle Classical period in China (5th–3rd century BC)."
+        SEP notes "recent archaeological discoveries have largely laid that ancient orthodoxy
+        [of Zhuangzi as a mystic follower of Laozi] to rest." Philosophically, "Zhuangzi
+        strikes us as more the Hume of his tradition than a system builder." His prose style
+        features parables — "short, pithy, and amusing." The butterfly dream (Zhuangzi dreams
+        he is a butterfly, then wonders whether he is a man dreaming of being a butterfly or
+        a butterfly dreaming of being a man) is his most famous illustration of the
+        indeterminacy of perspective.
+      source_url: "https://plato.stanford.edu/entries/zhuangzi/"
+      wikidata: Q39045
+
+    Liezi_Daoist_Text:
+      dates: "Attributed to Lie Yukou (c. 5th century BCE); current text compiled c. 4th century CE (Zhang Zhan)"
+      school: Daoism
+      key_works: "Liezi (eight chapters)"
+      key_doctrines: "Destiny and spontaneity; the Master Lie stories; 'Foolish Old Man Moves Mountains'; the Yellow Emperor dreams; relativism of life and death"
+      students_or_influences: "Third of the three major classical Daoist texts (alongside the Daodejing and Zhuangzi)"
+      notes: >
+        Wikipedia (CC-BY-SA): "The Liezi is a Daoist text attributed to Lie Yukou, a c. 5th
+        century BC philosopher." However, "a number of Chinese and Western scholars believe
+        that the content of the current text was compiled around the 4th century CE by Zhang
+        Zhan." There is a "three-century historical gap until the next evidence of the Liezi:
+        the Jin dynasty commentary by Zhang Zhan (fl. ca. 370 CE)." During the Tang dynasty
+        reign of Emperor Xuanzong it was designated a Daoist classic and given the honorific
+        title Chongxu zhenjing ("True Classic of Simplicity and Vacuity"), completing the
+        classical Daoist canonical trilogy. Its eight chapters contain parables and stories
+        exploring fate, spontaneity, dreams, and the relativity of life and death.
+      source_url: "https://en.wikipedia.org/wiki/Liezi"
+      wikidata: Q324527
+
+    Mozi_Mohism:
+      dates: "fl. c. 430 BCE (Warring States period)"
+      school: Mohism
+      key_works: "Mozi (text) — attributed to Mozi and later Mohist disciples; contains Mohist canons"
+      key_doctrines: "Jian ai (universal/impartial love/concern); consequentialism based on collective welfare; against aggressive war; frugality; condemns music and elaborate funerals as wasteful; merit-based bureaucracy; reverence for Heaven (Tian)"
+      students_or_influences: "Mohist school; later Mohist canons (logic, optics, mechanics)"
+      notes: >
+        SEP (2024): "Mohism originates in the teachings of Mo Di, or Mozi (Master Mo, fl. ca.
+        430 BCE)." SEP states Mohists "were the first in the tradition to engage, like Socrates
+        in ancient Greece, in an explicit, reflective search for objective moral standards and
+        to give step-by-step, tightly reasoned arguments for their views." They "advanced the
+        world's earliest form of consequentialism, a remarkably sophisticated version based on
+        a plurality of intrinsic goods taken as constitutive of collective human welfare."
+        Jian ai (universal love/impartial concern) is the central ethical doctrine — all
+        persons should be regarded with equal care. The later Mohist Canons developed
+        sophisticated work in logic, geometry, optics, and economics.
+      source_url: "https://plato.stanford.edu/entries/mohism/"
+      wikidata: Q310781
+
+    Mozi_Anti_Music_Funerals:
+      dates: "Mozi fl. c. 430 BCE; doctrine presented in the Mozi text"
+      school: Mohism
+      key_works: "Mozi — chapters 'Against Music' (Feiyue) and 'Moderation in Funerals' (Jiezang)"
+      key_doctrines: "Music condemned as waste of resources; elaborate funerals and three-year mourning condemned as economically harmful; utilitarian standard: what benefits the people (sufficient population, wealth, good order)"
+      students_or_influences: "The anti-music and anti-funeral positions were some of Mohism's most controversial and ridiculed positions — targeted by Xunzi and Mencius"
+      notes: >
+        SEP (2024): Mohist ethics include "condemnation of waste and luxury" and the text
+        explicitly argues against music and elaborate funerals. The chapter "Against Music"
+        (Feiyue) argues that musical performance consumes resources that could feed the hungry
+        or clothe the cold — it fails the utilitarian standard of benefiting the three basics
+        (sufficient population, material wealth, and good social order). The chapter on
+        "Moderation in Funerals" (Jiezang) argues against the Confucian practice of
+        three-year mourning with elaborate burial goods, which Mozi saw as depleting
+        resources and weakening the state. These positions made Mohism a frequent target
+        of Confucian criticism, particularly from Mencius and Xunzi.
+      source_url: "https://plato.stanford.edu/entries/mohism/"
+      wikidata: Q310781
+
+    Han_Feizi_Legalism:
+      dates: "c. 280–233 BCE (died by forced suicide at the Qin court)"
+      school: Legalism (Fa tradition)
+      key_works: "Han Feizi (text, c. 233 BCE) — 55 chapters"
+      key_doctrines: "Fa (law/standards), shu (administrative technique/statecraft), shi (positional power/authority); ruler should rely on impersonal laws not virtue; human beings are inherently selfish"
+      students_or_influences: "Student of Xunzi; contemporary of Li Si; synthesized earlier Legalist thought (Shang Yang's fa, Shen Buhai's shu)"
+      notes: >
+        SEP (2023): Legalism (the "fa tradition") is "a popular albeit quite inaccurate
+        designation." Han Feizi (Han Fei) was the "most accomplished of fa writers" according to
+        Sima Qian. Wikipedia records Han Fei as c. 280–233 BCE. He was a student of Xunzi
+        despite adopting anti-Confucian conclusions. Han Feizi synthesized three strands:
+        Shang Yang's fa (laws), Shen Buhai's shu (techniques of control), and Shen Dao's
+        shi (positional power). He died at the Qin court after rival Li Si (also a Xunzi student)
+        had him imprisoned. The Han Feizi text is the primary source for Legalist philosophy.
+      source_url: "https://plato.stanford.edu/entries/chinese-legalism/"
+      wikidata: Q23852
+
+    Shang_Yang_Legalism:
+      dates: "c. 390–338 BCE (died by execution)"
+      school: Legalism
+      key_works: "Book of Lord Shang (Shangjunshu)"
+      key_doctrines: "Rule of law (fa); strict punishments and rewards; agriculture and military service as the only legitimate occupations; abolition of hereditary aristocratic privileges"
+      students_or_influences: "Transformed the State of Qin; laid institutional groundwork for Qin unification of China (221 BCE)"
+      notes: >
+        Wikipedia (CC-BY-SA): "Shang Yang (c. 390–338 BC), also known as Wei Yang, was a
+        chancellor and reformer of the State of Qin, arguably becoming the 'most famous and
+        influential statesman' from the (early) Warring States period." He "found office in
+        Qin in 359 BCE." His reforms — land reform, standardized laws, merit-based promotion —
+        transformed Qin into the dominant state. He was executed by death by chariot-tearing
+        after his patron Duke Xiao died. The Book of Lord Shang (Shangjunshu) is attributed
+        to him or his school.
+      source_url: "https://en.wikipedia.org/wiki/Shang_Yang"
+      wikidata: Q714596
+
+    Gongsun_Long_White_Horse:
+      dates: "c. 325–250 BCE"
+      school: School of Names (Ming Jia)
+      key_works: "Gongsun Longzi (text, attributed)"
+      key_doctrines: "White Horse Dialogue — 'white horses are not horses' (bai ma fei ma); distinction between universal and particular; rectification of names (zhengming)"
+      students_or_influences: "Hui Shi (contemporary dialectician)"
+      notes: >
+        SEP (2024): The School of Names "is a taxonomical fiction, however. The varied figures
+        assigned to it — Deng Xi, Yin Wen, Hui Shi, and Gongsun Long, among others — never
+        formed a distinct circle." Gongsun Long is "best known for a series of paradoxes in
+        the tradition of Yin Wen and Hui Shi, including 'white horses are not horses'." In the
+        White Horse Dialogue, Gongsun Long argues that "white horse" and "horse" pick out
+        different referents — "horse" picks out shape; "white horse" picks out shape plus
+        color; therefore the two terms do not refer to the same thing. Wikipedia records
+        his dates as c. 325–250 BCE.
+      source_url: "https://plato.stanford.edu/entries/school-names/"
+      wikidata: Q310868
+
+    Hui_Shi_Paradoxes:
+      dates: "c. 370–310 BCE"
+      school: School of Names (Ming Jia)
+      key_works: "No surviving texts; paradoxes preserved in the Zhuangzi and other sources"
+      key_doctrines: "Ten paradoxes including 'The greatest thing has nothing beyond it' and 'The smallest thing has nothing within it'; pan-relativity of space and time"
+      students_or_influences: "Close friend and philosophical sparring partner of Zhuangzi"
+      notes: >
+        SEP (2024): Hui Shi "was a government minister" who is grouped with the School of Names
+        though he "never formed a distinct circle." His ten paradoxes are preserved only in the
+        Zhuangzi. They include: "The greatest thing has nothing beyond it — call it the Great
+        One; the smallest thing has nothing within it — call it the Small One" and "Heaven and
+        earth are equally low; mountains and marshes are equally level." These explore the
+        relativity of distinctions. Zhuangzi regarded Hui Shi as his greatest intellectual
+        adversary and mourned his death.
+      source_url: "https://plato.stanford.edu/entries/school-names/"
+      wikidata: Q310882
+
+    Zou_Yan_Yin_Yang:
+      dates: "c. 305–240 BCE (Wikidata: 305 BC birth, 240 BC death)"
+      school: Yin-Yang school (Yinyang jia); School of Five Phases (Wuxing)
+      key_works: "His texts are lost; described in Shiji (Sima Qian)"
+      key_doctrines: "Five Phases (wuxing): wood, fire, earth, metal, water in cyclical conquest sequence; applied to dynastic cycles; combined with yin-yang (complementary forces)"
+      students_or_influences: "Foundational for Chinese cosmological thinking; influenced Han Confucian synthesis"
+      notes: >
+        Wikipedia (CC-BY-SA): Zou Yan (c. 305–240 BCE) is the leading figure of the Yin-Yang
+        school and chief systematizer of the Five Phases (wuxing) theory. His actual texts
+        are lost; knowledge comes through Sima Qian's Shiji. He applied the Five Phases
+        (wood, fire, earth, metal, water) to explain dynastic succession — each dynasty
+        corresponds to a phase that conquers the previous one. This provided a cosmological
+        justification for political change. The yin-yang polarity (dark/light, female/male,
+        passive/active) and wuxing together became foundational for Chinese medicine, feng shui,
+        and Han dynasty Confucian cosmology.
+      source_url: "https://en.wikipedia.org/wiki/Zou_Yan"
+      wikidata: Q468825
+
+  # ----------------------------------------------------------
+  # THEME 2: Early and Mahayana Buddhism — doctrines and schools
+  # 14 entries
+  # ----------------------------------------------------------
+  classical_buddhism:
+
+    Siddhartha_Gautama_Buddha:
+      dates: >
+        Traditional (Theravada): 563/566–483/486 BCE.
+        Modern scholarly consensus (long chronology): c. 480–400 BCE (died c. 405–400 BCE).
+        SEP notes "many scholars now hold that he must have died around 405 BCE."
+      school: Buddhism (founder)
+      key_works: "Did not write texts; teachings preserved in Nikayas/Agamas (Pali Canon compiled c. 3rd century BCE)"
+      key_doctrines: "Four Noble Truths, Eightfold Path, anatta (no-self), anicca (impermanence), dukkha (suffering), nirvana, dependent origination (pratitya-samutpada), Middle Way"
+      students_or_influences: "Five ascetics (first disciples); Ananda, Sariputta, Moggallana; later Nagarjuna, Asanga"
+      notes: >
+        SEP (2023): "The Buddha (fl. circa 450 BCE) is the individual whose teachings form
+        the basis of the Buddhist tradition." SEP states "up until recently his dates were
+        thought to be approximately 560–480 BCE, but many scholars now hold that he must have
+        died around 405 BCE." He was "born into a family of some wealth and power, members of
+        the Sakya clan, in the area of the present border between India and Nepal." After
+        abandoning household life, he "attained the state of enlightenment (bodhi)." SEP
+        treats him as a philosopher whose "analysis of the source of suffering centrally
+        involves claims concerning the nature of persons, as well as how we acquire knowledge
+        about the world." CAUTION: Do not project Mahayana concepts (bodhisattva path,
+        sunyata) back onto early Buddhism.
+      source_url: "https://plato.stanford.edu/entries/buddha/"
+      wikidata: Q9441
+
+    Four_Noble_Truths:
+      dates: "First teaching at Deer Park, Isipatana (Sarnath) — c. 5th century BCE"
+      school: Buddhism
+      key_works: "Dhammacakkappavattana Sutta (Setting the Wheel of Dhamma in Motion)"
+      key_doctrines: "1. Dukkha (suffering/unsatisfactoriness exists); 2. Samudaya (craving/tanha is the origin); 3. Nirodha (cessation is possible); 4. Magga (the Eightfold Path is the way)"
+      students_or_influences: "Five ascetics at Sarnath were the first audience; foundational for all Buddhist traditions"
+      notes: >
+        The Four Noble Truths (Pali: cattari ariya saccani) are the first formal teaching of
+        the Buddha at Deer Park, Sarnath — traditionally identified as his first sermon
+        after enlightenment. They form the structural framework of Buddhist soteriology.
+        Wikipedia (CC-BY-SA): The four truths are: dukkha (the nature of suffering), samudaya
+        (the arising of suffering from tanha/craving), nirodha (the cessation of suffering),
+        and magga (the path leading to cessation). The Third Truth (nirodha) describes nirvana
+        as the achievable cessation of all suffering.
+      source_url: "https://en.wikipedia.org/wiki/Four_Noble_Truths"
+      wikidata: Q211069
+
+    Eightfold_Path:
+      dates: "Formulated in the Buddha's first discourse (c. 5th century BCE)"
+      school: Buddhism
+      key_works: "Dhammacakkappavattana Sutta; elaborated throughout the Nikayas"
+      key_doctrines: "Right View, Right Intention, Right Speech, Right Action, Right Livelihood, Right Effort, Right Mindfulness, Right Concentration — organized into Wisdom, Ethics, Meditation"
+      students_or_influences: "Universal in Theravada, Mahayana, and Vajrayana Buddhism"
+      notes: >
+        The Noble Eightfold Path (Pali: ariya atthangika magga) is the fourth of the Four
+        Noble Truths — the practical path to the cessation of suffering. The eight factors
+        are grouped into three categories: Prajna (wisdom): Right View, Right Intention;
+        Sila (ethics): Right Speech, Right Action, Right Livelihood; Samadhi (meditation):
+        Right Effort, Right Mindfulness, Right Concentration. It constitutes the "Middle Way"
+        between extreme asceticism and sensual indulgence.
+        Wikipedia (CC-BY-SA): https://en.wikipedia.org/wiki/Noble_Eightfold_Path
+      source_url: "https://en.wikipedia.org/wiki/Noble_Eightfold_Path"
+      wikidata: Q128593
+
+    Three_Marks_Existence:
+      dates: "Foundational early Buddhist doctrine (c. 5th century BCE)"
+      school: Buddhism
+      key_works: "Dhammapada; Anattalakkhana Sutta; Alagaddupama Sutta"
+      key_doctrines: "Three marks (tilakkhana): anicca (impermanence — all conditioned phenomena are impermanent), dukkha (unsatisfactoriness/suffering), anatta (non-self); recognizing all three leads to liberation"
+      students_or_influences: "Universal across all Buddhist traditions; foundational for meditation practice (vipassana/insight)"
+      notes: >
+        The three marks of existence (Pali: ti-lakkhana; Sanskrit: tri-laksana) are
+        impermanence (anicca), suffering/unsatisfactoriness (dukkha), and non-self (anatta).
+        They describe the universal character of all conditioned phenomena. Anicca: nothing
+        conditioned is permanent — all arises and passes away. Dukkha: because all conditioned
+        things are impermanent, they are ultimately unsatisfying. Anatta: no conditioned
+        phenomenon possesses a permanent, unchanging self or essence. Contemplating these
+        three marks is a central practice in Buddhist meditation (vipassana). Together they
+        form the analytical framework of early Buddhist metaphysics.
+        Wikipedia (CC-BY-SA): https://en.wikipedia.org/wiki/Three_marks_of_existence
+      source_url: "https://en.wikipedia.org/wiki/Three_marks_of_existence"
+      wikidata: Q1054218
+
+    Anatta_No_Self:
+      dates: "Foundational early Buddhist doctrine (c. 5th century BCE)"
+      school: Buddhism
+      key_works: "Anattalakkhana Sutta; elaborated in Abhidharma literature"
+      key_doctrines: "Anatta/anatman (no permanent, unchanging self); contrast with Hindu Atman; the person is a collection of five aggregates (skandhas)"
+      students_or_influences: "Central to Theravada; developed differently in Mahayana (sunyata)"
+      notes: >
+        SEP (2023): The Buddha's "analysis of the source of suffering centrally involves
+        claims concerning the nature of persons." The doctrine of anatta (Pali; Sanskrit:
+        anatman) holds that no permanent, unchanging self exists — this directly opposes
+        the Hindu concept of Atman. The person is analyzed as five aggregates (skandhas):
+        form, sensation, perception, mental formations, and consciousness. This is paired
+        with anicca (impermanence) and dukkha (unsatisfactoriness) as the three marks of
+        existence. Note: "no-self" does not mean non-existence — it means no permanent essence.
+      source_url: "https://plato.stanford.edu/entries/buddha/"
+      wikidata: Q180819
+
+    Dependent_Origination:
+      dates: "Core early Buddhist doctrine; elaborated in the Nikayas (c. 5th–3rd century BCE)"
+      school: Buddhism
+      key_works: "Numerous Nikayas; later systematized in Abhidharma; central to Nagarjuna's Madhyamaka"
+      key_doctrines: "Pratitya-samutpada (Sanskrit): all phenomena arise dependently, not independently; 12-link chain of dependent origination; nothing has svabhava (own-nature)"
+      students_or_influences: "Nagarjuna's Madhyamaka builds directly on this; also foundational for Yogacara"
+      notes: >
+        Dependent origination (Pali: paticca-samuppada; Sanskrit: pratitya-samutpada) holds
+        that all conditioned phenomena arise in dependence on causes and conditions —
+        nothing arises independently or possesses inherent existence. The classical formulation:
+        "When this is, that is. From the arising of this comes the arising of that. When this
+        isn't, that isn't. From the cessation of this comes the cessation of that." The
+        12-link chain traces the arising of suffering from ignorance through to rebirth.
+        Wikipedia (CC-BY-SA): https://en.wikipedia.org/wiki/Dependent_origination
+      source_url: "https://en.wikipedia.org/wiki/Dependent_origination"
+      wikidata: Q378461
+
+    Nirvana_Buddhism:
+      dates: "Core early Buddhist concept; present in earliest Pali sources (c. 5th century BCE)"
+      school: Buddhism
+      key_works: "Throughout the Pali Nikayas; Itivuttaka; Udana"
+      key_doctrines: "Nirvana (Pali: nibbana) — literally 'blowing out' or 'quenching'; the extinguishing of greed, aversion, and ignorance; cessation of dukkha and the rebirth cycle; the summum bonum of Buddhism"
+      students_or_influences: "Central to all Buddhist traditions; interpreted differently — Theravada (liberation of arahant), Mahayana (also sunyata realization)"
+      notes: >
+        Wikipedia (CC-BY-SA): "Nirvana (Pali: nibbana) is the extinguishing of the passions,
+        the 'blowing out' or 'quenching' of the activity of the grasping mind and its related
+        suffering, stresses, and unease." It is "the goal of many Buddhist paths, and leads to
+        the soteriological release from dukkha ('suffering') and rebirths in samsara." Wikipedia
+        describes it as "the summum bonum of Buddhism and goal of the Eightfold Path." It is
+        "often described as the unconditioned or uncompounded (Skt.: asamskrita, Pali: asankhata),
+        meaning it is beyond all forms of conditionality — not subject to change, decay, or
+        the limitations of time and space." Two types in Theravada: sopadhishesa-nirvana
+        (nirvana with remainder — achieved before death) and parinirvana (complete nirvana
+        at death of an arahant).
+      source_url: "https://en.wikipedia.org/wiki/Nirvana_(Buddhism)"
+      wikidata: Q196273
+
+    Tripitaka_Pali_Canon:
+      dates: "Oral transmission from c. 5th century BCE; written down in Sri Lanka c. 29 BCE"
+      school: Buddhism (primarily Theravada)
+      key_works: "Three baskets: Vinaya Pitaka (monastic rules), Sutta Pitaka (discourses), Abhidhamma Pitaka (higher teaching)"
+      key_doctrines: "The authoritative scripture of Theravada Buddhism; the closest surviving record of early Buddhist teaching"
+      students_or_influences: "Theravada tradition; also Agamas in Sanskrit (parallel collection for other early schools)"
+      notes: >
+        The Tripitaka (Pali: Tipitaka; "Three Baskets") is the scriptural canon of Theravada
+        Buddhism. Compiled at the First Buddhist Council (traditionally c. 483 BCE, shortly
+        after the Buddha's death) and committed to writing in Sri Lanka under King Vattagamani
+        c. 29 BCE. The three divisions: Vinaya Pitaka (rules for monastic community),
+        Sutta Pitaka (discourses of the Buddha, including five Nikayas), Abhidhamma Pitaka
+        (philosophical analysis). Parallel Sanskrit collections (Agamas) survive in Chinese
+        translation for other early schools.
+        Wikipedia (CC-BY-SA): https://en.wikipedia.org/wiki/P%C4%81li_Canon
+      source_url: "https://en.wikipedia.org/wiki/Pali_Canon"
+      wikidata: Q380671
+
+
+    Theravada_School:
+      dates: "One of the earliest surviving schools; formalized after the Second Council (c. 4th century BCE)"
+      school: Buddhism — Theravada (early Buddhist schools)
+      key_works: "Pali Canon"
+      key_doctrines: "Doctrine of the Elders (Sthaviravada); arahant ideal; strict adherence to the Pali Canon; prominent in Sri Lanka and Southeast Asia"
+      students_or_influences: "Mahasanghika split from Sthaviravada led eventually to Mahayana origins"
+      notes: >
+        Theravada ("Doctrine of the Elders") is the surviving school of the Sthaviravada
+        lineage. The early Buddhist community split at the Second Council (c. 4th century BCE)
+        between the Sthaviravada (Elders) and the Mahasanghika (Great Assembly). Further
+        sub-school divisions occurred over the following centuries (Sarvastivada, Dharmaguptaka,
+        etc.). Theravada survived in Sri Lanka and later spread throughout Southeast Asia;
+        it preserves the Pali Canon as its scriptural authority. The arahant ideal (full
+        enlightenment through personal practice) distinguishes it from Mahayana's bodhisattva
+        ideal. Wikipedia (CC-BY-SA): https://en.wikipedia.org/wiki/Theravada
+      source_url: "https://en.wikipedia.org/wiki/Theravada"
+      wikidata: Q210112
+
+    Mahasanghika_Early_School:
+      dates: "Schism traditionally c. 4th–3rd century BCE (after the Second Buddhist Council)"
+      school: Buddhism — Mahasanghika (early Buddhist schools)
+      key_works: "Mahasanghika Vinaya; Lokottaravada sutras"
+      key_doctrines: "Lokottaravada (transcendentalism): the historical Buddha was a transcendent, supramundane being; early development of bodhisattva concept; mind is inherently pure (prakrti-prabhasvara citta)"
+      students_or_influences: "Scholars trace some Mahayana roots to Mahasanghika ideas; no longer a living tradition"
+      notes: >
+        Wikipedia (CC-BY-SA): "The Mahasanghika ('of the Great Sangha') was a major division of
+        the early Buddhist schools in India. They were one of the two original communities that
+        emerged from the first schism of the original pre-sectarian Buddhist tradition (the other
+        being the Sthavira Nikaya)." Wikipedia states "many scholars look to the Mahasanghika
+        tradition as an early source for some ideas that were later adopted by Mahayana Buddhism.
+        Some of these ideas include the view that the Buddha was a fully transcendent being
+        (term 'lokottaravada'), the idea that there are many contemporaneous buddhas and
+        bodhisattvas throughout the universe, [and] the doctrine of the inherent purity and
+        luminosity of the mind." The schism is "traditionally held to have occurred after the
+        Second Buddhist council" in the period during or after Ashoka's reign (3rd century BCE).
+      source_url: "https://en.wikipedia.org/wiki/Mahasamghika"
+      wikidata: Q907822
+
+    Sarvastivada_School:
+      dates: "c. 3rd century BCE onward; major influence in Gandhara/Kashmir region"
+      school: Buddhism — Sarvastivada (early Buddhist school)
+      key_works: "Mahavibhasha (Vaibhashika commentary, c. 2nd century CE); Abhidharmakosa (Vasubandhu, c. 4th–5th century CE)"
+      key_doctrines: "Sarvam asti ('everything exists') — dharmas (fundamental factors) exist in all three times (past, present, future); momentariness; Abhidharma systematization"
+      students_or_influences: "Vasubandhu (who later converted to Yogacara) wrote Abhidharmakosa critiquing Sarvastivada; major school in Central and East Asian Buddhism"
+      notes: >
+        Wikipedia (CC-BY-SA): Sarvastivada's characteristic teaching is "all exists" (sarvam
+        asti) — the doctrine that dharmas (fundamental existents) have reality across all three
+        time periods (past, present, future), not just in the present moment. Wikipedia notes
+        the Sarvastivada had "four great Abhidharmikas: Dharmatrata, Buddhadeva, Vasumitra,
+        and Ghoshaka." Its sub-schools include the Vaibhashika and Sautranthika. The
+        Vaibhashika relied on the massive Mahavibhasha (c. 2nd century CE). The Sautranthika
+        rejected the Abhidharma as canonical. Vasubandhu's Abhidharmakosa is the most
+        famous analysis of Sarvastivada doctrine, written from a critical Sautranthika
+        perspective before his conversion to Yogacara.
+      source_url: "https://en.wikipedia.org/wiki/Sarvastivada"
+      wikidata: Q907879
+
+    Abhidharma_Literature:
+      dates: "Composed c. 3rd–1st century BCE; Theravada Abhidhamma Pitaka; Sarvastivada Abhidharma texts"
+      school: Buddhism (Abhidharma is cross-sectarian)
+      key_works: "Theravada: seven Abhidhamma Pitaka texts; Sarvastivada: Jnanaprasthana, Mahavibhasha; Vasubandhu's Abhidharmakosa (c. 4th–5th century CE)"
+      key_doctrines: "Systematic analysis of experience into dharmas (fundamental mental/physical factors); classification by wholesome/unwholesome; supports meditation practice; central concept: svabhava (intrinsic nature of dharmas)"
+      students_or_influences: "Nagarjuna's Madhyamaka critiques Abhidharma svabhava doctrine; Yogacara develops from it; foundational for Theravada philosophy"
+      notes: >
+        Wikipedia (CC-BY-SA): "The ultimate goal of the Abhidharma is Nirvana and hence the
+        Abhidharmikas systematized dhammas into those which are skillful (kusala), purify the
+        mind and lead to liberation, and those which are unskillful and do not." The Abhidharma
+        "has a soteriological purpose, first and foremost." Abhidharmikas used the term
+        svabhava (intrinsic nature) to explain how dharmas operate causally — the Sarvastivada
+        held dharmas have svabhava in all three times; Nagarjuna's Mulamadhyamakakarika
+        systematically refutes this. The third division of the Pali Canon (Abhidhamma Pitaka)
+        contains seven texts of Theravada systematic philosophy.
+      source_url: "https://en.wikipedia.org/wiki/Abhidharma"
+      wikidata: Q468845
+
+    Nagarjuna_Madhyamaka:
+      dates: "c. 150–250 CE (southern India)"
+      school: Buddhism — Madhyamaka (Mahayana)
+      key_works: "Mulamadhyamakakarika (Fundamental Verses on the Middle Way) — his most important work; also Vigrahavyavartani, Yuktisastika"
+      key_doctrines: "Sunyata (emptiness) — all phenomena lack svabhava (inherent existence/own-nature); Madhyamaka (Middle Way) between nihilism and eternalism; two truths doctrine"
+      students_or_influences: "Founded Madhyamaka school; influenced Chandrakirti, Tsongkhapa (Tibetan Buddhism), Zen; 'the most important Buddhist philosopher after the historical Buddha himself' (SEP)"
+      notes: >
+        SEP (2022): "There is unanimous agreement that Nagarjuna (ca 150–250 CE) is the most
+        important Buddhist philosopher after the historical Buddha himself and one of the most
+        original and influential thinkers in the history of Indian philosophy." He lived
+        "probably mainly in southern India." His Mulamadhyamakakarika (MMK) systematically
+        argues that all phenomena lack svabhava (inherent existence) through reductio ad
+        absurdum arguments against four types of causation. This is sunyata (emptiness) — not
+        nothingness, but the absence of independent self-existence in all things. SEP notes
+        the Prasangika-Madhyamaka reading "became the official philosophical position of
+        Tibetan Buddhism." His work "influenced the Indian philosophical debate for a
+        thousand years after his death."
+      source_url: "https://plato.stanford.edu/entries/nagarjuna/"
+      wikidata: Q193187
+
+    Sunyata_Emptiness:
+      dates: "Systematized by Nagarjuna c. 150–250 CE; foundational Mahayana concept"
+      school: Buddhism — Mahayana (Madhyamaka)
+      key_works: "Nagarjuna's Mulamadhyamakakarika; Heart Sutra (Prajnaparamita literature)"
+      key_doctrines: "Sunyata (emptiness): all phenomena are empty of svabhava (inherent existence/own-nature); not nihilism — phenomena exist conventionally but lack ultimate independence; 'form is emptiness, emptiness is form' (Heart Sutra)"
+      students_or_influences: "Central to all Mahayana and Vajrayana traditions; Chandrakirti, Tsongkhapa, Shantideva all develop it"
+      notes: >
+        SEP (2022): Nagarjuna's philosophy is "based around the central notion of emptiness
+        (sunyata)" and "influenced the Indian philosophical debate for a thousand years after
+        his death." Sunyata (Sanskrit: sunyata) does not mean "nothingness" — it means that
+        all phenomena lack svabhava (inherent/independent existence, own-nature). Everything
+        exists dependently (pratitya-samutpada). Nagarjuna uses reductio ad absurdum
+        arguments (prasanga) to show that if things had svabhava, change, causation, and
+        motion would all be impossible. The Heart Sutra's formula "form is emptiness;
+        emptiness is form" became the most famous Mahayana statement of this doctrine.
+        CRITICAL NOTE: Sunyata is a Mahayana development — do not project it onto the
+        historical Buddha's early teachings.
+      source_url: "https://plato.stanford.edu/entries/nagarjuna/"
+      wikidata: Q1552370
+
+    Asanga_Vasubandhu_Yogacara:
+      dates: "Asanga: c. 4th century CE; Vasubandhu: c. 4th–5th century CE"
+      school: Buddhism — Yogacara (Vijnanavada) (Mahayana)
+      key_works: "Asanga: Yogacarabhumi, Mahayanasamgraha; Vasubandhu: Abhidharmakosa (pre-Yogacara), Vimshika, Trimsika; Lankavatara Sutra (key scriptural source)"
+      key_doctrines: "Cittamatra (mind-only): external objects are transformations of consciousness; alayavijnana (store-consciousness, 8th consciousness); trisvabhava (three natures); vigorous epistemology"
+      students_or_influences: "Dignaga, Dharmakirti (logico-epistemological branch); Sthiramati, Dharmapala; major influence on Chinese, Japanese, Tibetan Buddhism"
+      notes: >
+        SEP (2024): "Alongside Madhyamaka, Yogacara is one of the two major philosophical
+        traditions of Mahayana Buddhism that originated in India." Asanga and Vasubandhu are
+        the "(half-)brothers" who are "the school's founders or first systemisers (c. 4th–5th
+        century CE)." Key doctrines: cittamatra (mind-only teaching), alayavijnana
+        (store-consciousness that carries karmic seeds), and trisvabhava (imagined, dependent,
+        and perfected natures). Note: Vasubandhu's Abhidharmakosa is his pre-Yogacara
+        Sarvastivada-influenced work; his Vimshika and Trimsika are his Yogacara texts.
+      source_url: "https://plato.stanford.edu/entries/yogacara/"
+      wikidata: Q310853
+
+  # ----------------------------------------------------------
+  # THEME 3: Classical Indian — Hindu Darshanas and Upanishadic Concepts
+  # 7 entries
+  # ----------------------------------------------------------
+  hindu_darshanas:
+
+    Nyaya_School:
+      dates: "Foundational text: Nyaya Sutras attributed to Aksapada Gautama (c. 2nd century CE); earlier origins debated"
+      school: Nyaya (one of six orthodox Hindu darshanas)
+      key_works: "Nyaya Sutras (Aksapada Gautama); Nyaya Bhashya (Vatsyayana commentary)"
+      key_doctrines: "Pramana theory (valid sources of knowledge): perception, inference, analogy, testimony; epistemological realism; syllogistic inference with five members; debate with Buddhist epistemology"
+      students_or_influences: "Later merged with Vaisheshika; Navya-Nyaya (New Logic school, 10th century CE)"
+      notes: >
+        IEP: "Nyaya (literally 'rule or method of reasoning') is a leading school of philosophy
+        within the 'Hindu umbrella.' Epistemologically, Nyaya develops a sophisticated precursor
+        to contemporary reliabilism (particularly process reliabilism), centered on the notion
+        of 'knowledge-sources' (pramana)." The four pramanas (valid knowledge sources) are:
+        perception (pratyaksa), inference (anumana), analogy (upamana), and testimony (sabda).
+        The founder is traditionally Aksapada Gautama (not to be confused with the Buddha
+        Siddhartha Gautama) whose Nyaya Sutras systematized this tradition.
+      source_url: "https://iep.utm.edu/nyaya/"
+      wikidata: Q160236
+
+    Vaisheshika_School:
+      dates: "Foundational text: Vaisheshika Sutra (Kanada) — dated variously 6th–2nd century BCE by scholars"
+      school: Vaisheshika (one of six orthodox Hindu darshanas)
+      key_works: "Vaisheshika Sutra (Kanada); Padarthadharmasamgraha (Prashastapada, c. 4th century CE)"
+      key_doctrines: "Atomism: all physical matter is composed of eternal, indivisible atoms (anu); six categories (padarthas): substance, quality, activity, generality, particularity, inherence; nine substances including the five elements, time, space, atman, and mind"
+      students_or_influences: "Later merged with Nyaya; Prashastapada's commentary became primary Vaisheshika text"
+      notes: >
+        Wikipedia (CC-BY-SA): "The earliest systematic exposition of the Vaisheshika is found
+        in the Vaisesika Sutra of Kanada (or Kanabhaksha)." Kanada is also called Uluka.
+        The text "is divided into ten books." Vaisheshika developed India's most systematic
+        atomist cosmology — the universe is composed of eternal atoms (anu) of earth, water,
+        fire, and air that combine to form all objects. Prashastapada's Padarthadharmasamgraha
+        (c. 4th century CE) is "basically an independent work on the subject" rather than
+        merely a commentary. The six categories (padarthas) classify all that can be known.
+      source_url: "https://en.wikipedia.org/wiki/Vaisheshika"
+      wikidata: Q160238
+
+    Samkhya_School:
+      dates: "Traditional founder: Kapila (dates highly uncertain, legendary); foundational texts c. 1st–3rd century CE"
+      school: Samkhya (one of six orthodox Hindu darshanas)
+      key_works: "Samkhya Karika (Ishvarakrishna, c. 4th century CE) — earliest surviving systematic text"
+      key_doctrines: "Strict dualism: Purusha (pure consciousness, plural) and Prakriti (matter/nature); Prakriti has three gunas (tamas/rajas/sattva); 25 tattvas; liberation (moksha) via discriminative knowledge distinguishing Purusha from Prakriti"
+      students_or_influences: "Yoga school takes Samkhya metaphysics and adds practice; influenced Yoga Sutras of Patanjali"
+      notes: >
+        Wikipedia (CC-BY-SA): "Samkhya refers to the philosophical school in Hinduism based on
+        systematic enumeration and rational examination." The traditional founder is Kapila,
+        but his dates are "highly uncertain" and he is considered legendary by many scholars.
+        The earliest surviving systematic text is Ishvarakrishna's Samkhya Karika (c. 4th
+        century CE). Samkhya is a strict dualism: Purusha (pure consciousness, passive witness)
+        and Prakriti (primal matter, active). Prakriti evolves through the interplay of three
+        gunas (qualities): tamas (inertia), rajas (activity), sattva (clarity). Liberation
+        occurs when Purusha recognizes its distinction from Prakriti. Note: unlike other
+        orthodox systems, classical Samkhya is atheistic.
+      source_url: "https://en.wikipedia.org/wiki/Samkhya"
+      wikidata: Q160244
+
+    Yoga_School_Patanjali:
+      dates: "Patanjali's Yoga Sutras: c. 4th–5th century CE (scholarly range: 2nd century BCE to 4th century CE)"
+      school: Yoga (one of six orthodox Hindu darshanas)
+      key_works: "Yoga Sutras (Patanjali) — 196 sutras in four chapters (padas)"
+      key_doctrines: "Ashtanga yoga (eight limbs): yama, niyama, asana, pranayama, pratyahara, dharana, dhyana, samadhi; citta vritti nirodha (cessation of mental fluctuations); kaivalya (liberation)"
+      students_or_influences: "Accepts Samkhya metaphysics; adds Ishvara (God) as an object of meditation; influenced all subsequent yoga traditions"
+      notes: >
+        IEP: "The tradition of Patanjali in the oral and textual tradition of the Yoga Sutras
+        is accepted by traditional Vedic schools as the authoritative source on Yoga." The
+        Yoga Sutras define yoga as "citta vritti nirodha" (the cessation of mental fluctuations).
+        The eight limbs (ashtanga) are: yama (ethical restraints), niyama (personal observances),
+        asana (physical posture), pranayama (breath control), pratyahara (sensory withdrawal),
+        dharana (concentration), dhyana (meditation), and samadhi (absorption/liberation).
+        Patanjali accepts Samkhya's dualist metaphysics but adds the concept of Ishvara (a
+        special Purusha) as an aid to meditation. Scholarly dating of the text ranges from
+        2nd century BCE to 4th century CE; c. 400 CE is a common estimate.
+      source_url: "https://iep.utm.edu/yoga/"
+      wikidata: Q213439
+
+    Mimamsa_School:
+      dates: "Foundational text: Mimamsa Sutras (Jaimini) — c. 3rd century BCE to 1st century CE"
+      school: Mimamsa (one of six orthodox Hindu darshanas)
+      key_works: "Mimamsa Sutras (Jaimini); Shabara Bhashya (Shabara, c. 1st–2nd century CE)"
+      key_doctrines: "Vedic exegesis and ritual hermeneutics; eternal validity of the Vedas; svarga (heaven) achieved through correct ritual performance; sabda (Vedic testimony) as self-validating pramana"
+      students_or_influences: "Jaimini was student/disciple of Badarayana; influential on later Vedantic debates"
+      notes: >
+        Wikipedia (CC-BY-SA): "Badarayana was the Guru (teacher) of Jaimini, the latter credited
+        with authoring Mimamsa Sutras of the Mimamsa school of Hindu philosophy." Mimamsa
+        (literally "investigation") focuses on the correct interpretation and performance of
+        Vedic ritual. It holds that the Vedas are eternal, authorless, and self-validating
+        (apauruseya — not of human or divine authorship). The central concern is to determine
+        the proper meaning of Vedic injunctions (vidhi) to ensure correct ritual performance
+        and thereby attain svarga (heaven). Mimamsa developed a sophisticated philosophy of
+        language, particularly the theory that the relationship between words and meanings is
+        eternal and natural (not conventional).
+      source_url: "https://en.wikipedia.org/wiki/Mimamsa"
+      wikidata: Q160237
+
+    Vedanta_School_Badarayana:
+      dates: "Brahma Sutras (Badarayana/Vyasa): c. 500–200 BCE initial composition; final form c. 400–450 CE (scholarly controversy)"
+      school: Vedanta (one of six orthodox Hindu darshanas)
+      key_works: "Brahma Sutras (Vedanta Sutras) — attributed to Badarayana, also called Vyasa; Upanishads; Bhagavad Gita"
+      key_doctrines: "Brahman as ultimate reality; relationship between Brahman, Atman, and the world; systematizes Upanishadic teachings; later sub-schools (Advaita Vedanta of Shankara, Vishishtadvaita of Ramanuja, Dvaita of Madhva)"
+      students_or_influences: "Jaimini (Mimamsa) quoted by Badarayana; Adi Shankara's Advaita commentary (8th century CE)"
+      notes: >
+        Wikipedia (CC-BY-SA): "The Brahma Sutras or Brahmasutra are attributed to Badarayana.
+        In some texts, Badarayana is also called Vyasa." Dating is highly contested: "200 BCE
+        seems to be the most likely date for its initial composition" but "Hajime Nakamura [says]
+        the Brahma Sutras were likely complete in the current form between 400 and 450 CE."
+        The text "mentions and critiques the ideas of Buddhism and Jainism in Chapter 2,"
+        helping establish relative chronology. Vedanta ("end of the Vedas") takes the
+        Upanishads as its primary authority. Three major later sub-schools disagree on the
+        nature of Brahman: Shankara's Advaita (non-dual: Brahman = Atman), Ramanuja's
+        Vishishtadvaita (qualified non-dualism), and Madhva's Dvaita (dualism).
+      source_url: "https://en.wikipedia.org/wiki/Brahma_Sutras"
+      wikidata: Q1153028
+
+    Upanishadic_Concepts_Atman_Brahman:
+      dates: "Principal Upanishads composed c. 800–300 BCE"
+      school: Vedic/Pre-Vedanta (foundational texts for all Vedanta schools)
+      key_works: "Brihadaranyaka Upanishad, Chandogya Upanishad (oldest, c. 8th century BCE); Katha, Mundaka, Mandukya, and other principal Upanishads"
+      key_doctrines: "Brahman (ultimate impersonal reality/ground of being); Atman (individual self/soul); Tat Tvam Asi ('That thou art' — identity of Atman and Brahman); moksha (liberation from samsara); karma; samsara (cycle of rebirth)"
+      students_or_influences: "Foundation of all Vedanta schools; reinterpreted by Shankara, Ramanuja, Madhva"
+      notes: >
+        The Upanishads (literally "sitting near [the teacher]") are philosophical texts that
+        form the concluding portion of the Vedas (hence "Vedanta"). The principal Upanishads
+        (generally counted as 10–13 major ones) were composed c. 800–300 BCE. Key concepts:
+        Brahman as the ultimate impersonal ground of all being; Atman as the individual self
+        or soul; the great sayings (mahavakyas) including "Tat Tvam Asi" (That thou art —
+        from the Chandogya Upanishad), asserting the identity of individual Atman with
+        universal Brahman. Moksha (liberation) is attained through knowledge of this identity,
+        escaping samsara (the cycle of rebirth governed by karma).
+      source_url: "https://en.wikipedia.org/wiki/Upanishads"
+      wikidata: Q42553
+
+  # ----------------------------------------------------------
+  # THEME 4: Jainism, Charvaka/Lokayata, Karma concept, and Eastern Transmissions
+  # 12 entries
+  # ----------------------------------------------------------
+  jainism_and_transmission:
+
+    Mahavira_Jainism:
+      dates: >
+        Traditional: 599–527 BCE (Digambara tradition) or 599–510 BCE (Shvetambara tradition).
+        SEP (2023): "traditional dates 599–527/510 BCE, in Magadha, South of modern Bihar."
+        Modern scholarship often places him as a contemporary of the historical Buddha.
+      school: Jainism (last Tirthankara of current cosmic cycle)
+      key_works: "Did not write texts; his teachings preserved in the Agamas (Jain canonical literature)"
+      key_doctrines: "Ahimsa (non-violence); anekantavada (many-sidedness/non-absolutism); syadvada (conditional predication); five vows (mahavratas): non-violence, truth, non-stealing, celibacy, non-attachment; 24 Tirthankaras"
+      students_or_influences: "11 chief disciples (Ganadharas); Jain monastic and lay communities"
+      notes: >
+        SEP (2023): "The only extant teaching is that of Mahavira (traditional dates 599–527/510
+        BCE, in Magadha, South of modern Bihar), the last Jina of the current cosmic period."
+        Mahavira (literally "Great Hero") is the 24th and last Tirthankara (ford-crosser —
+        one who has crossed the ocean of rebirths) of the present cosmic cycle. Jainism holds
+        he did not found the religion but revived an eternal teaching; the tradition traces its
+        lineage through 24 Tirthankaras back to the legendary Rishabhadeva. Mahavira was
+        born into a kshatriya family, renounced the world at age 30, attained omniscience
+        after 12 years of austerities, and taught for 30 years. SEP notes he is likely
+        a historical contemporary of the historical Buddha.
+      source_url: "https://plato.stanford.edu/entries/jaina-philosophy/"
+      wikidata: Q9461
+
+    Ahimsa_Jainism:
+      dates: "Core Jain doctrine; formalized in the tradition attributed to Mahavira (c. 5th century BCE)"
+      school: Jainism
+      key_works: "Acaranga Sutra (one of the oldest Jain texts)"
+      key_doctrines: "Ahimsa (non-injury/non-violence toward all living beings); all living beings (jiva) have consciousness; harm to any living being creates karma and obstructs liberation"
+      students_or_influences: "Influenced Mahatma Gandhi's philosophy of non-violence; important in Indian ethics generally"
+      notes: >
+        SEP (2023): Jaina ethics "consists of practices focused on non-violence, non-absolutism
+        and non-attachment, which aim to disentangle the self and karmic matter." Ahimsa
+        (Sanskrit: ahimsa) is the central ethical commitment of Jainism — no injury should
+        be done to any living being (jiva). This extends to microscopic organisms, which is
+        why Jain monks use mouth-cloths and sweep the ground before walking. The five great
+        vows (mahavratas) for monks are: non-violence, truth (satya), non-stealing (asteya),
+        celibacy (brahmacharya), and non-possession (aparigraha). Lay Jains follow partial
+        versions (anuvratas).
+      source_url: "https://plato.stanford.edu/entries/jaina-philosophy/"
+      wikidata: Q134798
+
+    Anekantavada_Jainism:
+      dates: "Formalized in Jain philosophical tradition c. 5th century BCE onward"
+      school: Jainism
+      key_works: "Tattvarthasutra (Umasvati, c. 2nd–5th century CE) — first systematic Jain philosophical text"
+      key_doctrines: "Anekantavada (many-sidedness/non-absolutism): reality has multiple aspects; no single perspective is complete; syadvada (conditional predication): every claim qualified by 'perhaps' (syat); nayavada (standpoints)"
+      students_or_influences: "Highly influential in Indian epistemological debates; Jain philosophers debated with Buddhists and Hindus using this framework"
+      notes: >
+        SEP (2023): "Jaina philosophers are particular renown for developing a realist
+        epistemology centered on many-sidedness." Anekantavada holds that reality is complex
+        and cannot be fully captured from any single perspective. Syadvada (the doctrine of
+        conditional predication) qualifies every philosophical claim with "perhaps" (syat) —
+        e.g., "perhaps X is," "perhaps X is not," "perhaps X both is and is not." This is
+        not relativism but a recognition of ontological complexity. The Tattvarthasutra
+        (Umasvati) is the earliest systematic Jain philosophical text, accepted by both
+        major Jain sects (Digambara and Shvetambara).
+      source_url: "https://plato.stanford.edu/entries/jaina-philosophy/"
+      wikidata: Q1344578
+
+    Tattvarthasutra_Jainism:
+      dates: "Umasvati: c. 2nd–5th century CE (dates debated; Digambara: 2nd century CE; Shvetambara: 5th century CE)"
+      school: Jainism
+      key_works: "Tattvarthasutra (Tattvartha Sutra) — also called Mokshashastra; 10 chapters"
+      key_doctrines: "Nine tattvas (fundamental realities): jiva (soul), ajiva (non-soul), asrava (influx of karma), bandha (bondage), samvara (stoppage of karma), nirjara (shedding of karma), moksha (liberation), punya (merit), papa (demerit); ahimsa as the highest dharma"
+      students_or_influences: "Only text accepted by both major Jain sects (Digambara and Shvetambara) as authoritative"
+      notes: >
+        SEP (2023) notes the Tattvarthasutra as a key systematic Jain philosophical text.
+        Wikipedia (CC-BY-SA): Umasvati's Tattvarthasutra is "the earliest systematic Jain
+        philosophical text" written in Sanskrit. It is unique in being "accepted by both the
+        Digambara and Shvetambara sects." The text opens: "Right faith, right knowledge and
+        right conduct together constitute the path to liberation." The nine tattvas systematize
+        the Jain metaphysical categories. Ahimsa (non-violence) is declared the supreme dharma.
+        Wikipedia (CC-BY-SA): https://en.wikipedia.org/wiki/Tattvarthasutra
+      source_url: "https://en.wikipedia.org/wiki/Tattvarthasutra"
+      wikidata: Q1335038
+
+    Charvaka_Lokayata:
+      dates: "Pre-classical origins; texts largely lost; known primarily through opponents' critiques"
+      school: Charvaka / Lokayata (nastika — heterodox; materialist)
+      key_works: "Barhaspatya Sutras (attributed to Brihaspati — lost; known only through quotations)"
+      key_doctrines: "Materialism — only four elements (earth, water, fire, air) exist; no Atman, no afterlife, no karma, no gods; perception (pratyaksa) is the only valid knowledge source; hedonism — pursue pleasure and avoid pain"
+      students_or_influences: "Represents the Indian materialist tradition; debated by virtually all other Indian philosophical schools"
+      notes: >
+        Wikipedia (CC-BY-SA): "Charvaka is categorized as one of the nastika or 'heterodox'
+        schools of Indian philosophy." It is "also known as Lokayata" — "prevalent (ayatah)
+        among the people (lokesu)." The traditional founder is said to be Charvaka, a disciple
+        of Brihaspati, but "the primary sources are unavailable, and the meaning has been
+        deduced from divergent secondary literature." The Barhaspatya Sutras are lost; Charvaka
+        is known only through hostile summaries by opponents (Buddhists, Jains, Hindu schools).
+        Core materialism: consciousness is a product of the four material elements; there is
+        no soul separate from the body; after death, the person simply ceases to exist. The
+        only reliable knowledge source is direct perception (pratyaksa).
+      source_url: "https://en.wikipedia.org/wiki/Charvaka"
+      wikidata: Q311361
+
+    Karma_Samsara_Concept:
+      dates: "Pre-Buddhist; appears in Upanishads (c. 800–300 BCE); adopted by Buddhism and Jainism"
+      school: Cross-traditional (Hindu, Buddhist, Jain)
+      key_works: "Brhadaranyaka Upanishad (earliest Upanishadic discussion); Buddhist Nikayas; Jain Agamas"
+      key_doctrines: "Karma (Sanskrit: action and its consequences — moral causality); samsara (the cycle of rebirth/reincarnation driven by karma); moksha/nirvana as liberation from samsara"
+      students_or_influences: "Common ground between Hinduism, Buddhism, and Jainism; each school interprets karma differently"
+      notes: >
+        Wikipedia (CC-BY-SA): "The term karma (Sanskrit: karman; Pali: kamma) refers to both
+        the executed 'deed, work, action, act' and the 'object, intent'." Karma "is closely
+        associated with the idea of rebirth in many schools of Indian religions (particularly
+        in Hinduism, Buddhism, Jainism, and Sikhism)." The concept that intentional actions
+        (karma) create imprints that determine future rebirths is shared across traditions
+        but interpreted differently: Hinduism locates karma in the soul/Atman; Buddhism
+        holds karma operates without a permanent self (anatta); Jainism holds karma is a
+        subtle material substance that attaches to the soul (jiva). In all cases, the samsara
+        cycle of rebirth is the problem; moksha (Hinduism/Jainism) or nirvana (Buddhism)
+        is liberation from it.
+      source_url: "https://en.wikipedia.org/wiki/Karma"
+      wikidata: Q172185
+
+    Lankavatara_Sutra:
+      dates: "Composed c. 4th century CE; important for Yogacara and Chan Buddhism"
+      school: Buddhism — Mahayana (Yogacara and Chan)
+      key_works: "Lankavatara Sutra (Sanskrit and Chinese translations)"
+      key_doctrines: "Mind-only (cittamatra) teaching; alayavijnana (store-consciousness); tathagatagarbha (Buddha-nature); rejection of external reality; important for Chan/Zen origins"
+      students_or_influences: "Associated with Asanga and Yogacara; Bodhidharma reportedly transmitted it as the founding Chan sutra"
+      notes: >
+        The Lankavatara Sutra is a Mahayana sutra presented as the Buddha teaching on
+        Lanka (Sri Lanka). It is a key scriptural source for Yogacara philosophy, teaching
+        cittamatra (mind-only) — the doctrine that what we perceive as external reality is
+        in fact a transformation of consciousness (vijnanaptimatra). The sutra introduces
+        the alayavijnana (store-consciousness) and strongly promotes the tathagatagarbha
+        (Buddha-nature) doctrine. It is associated with Bodhidharma's transmission to
+        China and early Chan (Zen) Buddhism — though the precise historical relationship
+        is debated. Wikipedia (CC-BY-SA): https://en.wikipedia.org/wiki/Lankavatarasutra
+      source_url: "https://en.wikipedia.org/wiki/Lankavatarasutra"
+      wikidata: Q1810234
+
+    Korea_Buddhism_Transmission:
+      dates: "Buddhism transmitted to Korea: Goguryeo 372 CE; Baekje 384 CE; Silla 527 CE"
+      school: Buddhism (transmission to Korea/East Asia)
+      key_works: "Korean commentaries by Wonhyo (617–686 CE) show the reception"
+      key_doctrines: "Buddhism transmitted via China to Korean kingdoms; royal patronage; integration with Korean culture; Korean Buddhism then transmitted to Japan"
+      students_or_influences: "Buddhism from Korea (Baekje) officially introduced to Japan in 538 or 552 CE; Prince Shotoku received this transmission"
+      notes: >
+        Buddhism was officially introduced to the Korean kingdoms in the 4th century CE:
+        to Goguryeo in 372 CE when monk Sundo arrived from Former Qin with texts and statues;
+        to Baekje in 384 CE; and to Silla in 527 CE after the martyrdom of Ichadon.
+        The Korean kingdoms (especially Baekje) then transmitted Buddhism to Japan —
+        the traditional date for Japan's official reception is 538 or 552 CE (sources differ).
+        This Korean-Japanese transmission is the historical context for Prince Shotoku's
+        Buddhism patronage. Wikipedia (CC-BY-SA): https://en.wikipedia.org/wiki/Buddhism_in_Korea
+      source_url: "https://en.wikipedia.org/wiki/Buddhism_in_Korea"
+      wikidata: Q18553
+
+    Prince_Shotoku_Buddhism_Japan:
+      dates: "574–622 CE (Wikipedia: categories confirm '574 births, 622 deaths')"
+      school: Buddhism (Mahayana transmission to Japan)
+      key_works: "Constitution of Prince Shotoku (Seventeen-Article Constitution, 604 CE); commentaries on three Mahayana sutras"
+      key_doctrines: "State promotion of Buddhism in Japan; Confucian-Buddhist synthesis in governance; 'Venerate the Three Treasures' (Buddha, Dharma, Sangha) as the first principle"
+      students_or_influences: "Fostered Buddhism as state religion; built Horyuji temple (607 CE); pivotal in Japan's reception of continental culture"
+      notes: >
+        Wikipedia categories confirm dates 574–622 CE. Prince Shotoku (Shotoku Taishi) was
+        regent for Empress Suiko of Japan. His Seventeen-Article Constitution (604 CE) opens
+        with Confucian ethics and includes "Sincerely revere the Three Treasures. The Three
+        Treasures are the Buddha, the Law [Dharma] and the Monastic Brotherhood [Sangha]."
+        Buddhism had been officially introduced to Japan from the Korean kingdom of Baekje in
+        538 or 552 CE. Prince Shotoku is the key figure in Buddhism's establishment as a
+        Japanese state religion. He built the Horyuji temple complex (607 CE), one of the
+        world's oldest surviving wooden structures.
+      source_url: "https://en.wikipedia.org/wiki/Prince_Shotoku"
+      wikidata: Q263972
+
+    Padmasambhava_Tibet:
+      dates: "8th century CE (active c. 760–774 CE during reign of King Trisong Detsen)"
+      school: Buddhism (Vajrayana/Tibetan transmission)
+      key_works: "Associated with the Bardo Thodol (Tibetan Book of the Dead) attributed tradition; terma (hidden treasure texts)"
+      key_doctrines: "Nyingma school teachings; introduction of tantric Buddhism to Tibet; taming of local spirits; design of Samye Monastery (first in Tibet)"
+      students_or_influences: "Students: Yeshe Tsogyal, Mandarava; considered founding figure of Nyingma school of Tibetan Buddhism"
+      notes: >
+        Wikipedia (CC-BY-SA): "According to early Tibetan sources including the Testament of
+        Ba, he came to Tibet in the 8th century and designed Samye Monastery, the first
+        Buddhist monastery in Tibet, during the reign of King Trisong Detsen." He and the king
+        and Khenpo Shantarakshita "are also responsible for creating the Tibetan Canon through
+        translating all of the Buddha's teachings and their commentaries into the Tibetan
+        language." Wikipedia notes "his historical authenticity was questioned by earlier
+        Tibetologists" but "is now 'cautiously accepted'." He is known in Tibetan as
+        Guru Rinpoche (Precious Teacher). "The contemporary Nyingma school considers
+        Padmasambhava to be a founding figure."
+      source_url: "https://en.wikipedia.org/wiki/Padmasambhava"
+      wikidata: Q193238

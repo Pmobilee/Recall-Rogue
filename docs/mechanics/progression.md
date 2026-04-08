@@ -239,13 +239,14 @@ Master at A20 is still 82% (target: 5-15%). The sim cannot test quiz-pressure pe
 
 `applyAscensionEnemyTemplateAdjustments` scales mini-boss attacks to boss-tier at level 8 and adds a second phase to `final_lesson` (floor 24) at level 20.
 
-## Shop (`shopService.ts`)
+## Shop (`shopService.ts`, `gameFlowController.ts`)
 
 `ShopInventory` contains relics, cards, optional removal/transform service prices, and a sale card index.
 
 ### Inventory
 - `SHOP_RELIC_COUNT = 3` relics, `SHOP_CARD_COUNT = 3` cards per visit
 - Relic rarity weights: common 40%, uncommon 35%, rare 20%, legendary 5%
+- **Card selling removed (Ch14.2)** — `onShopSell()` is a no-op stub; `activeShopCards` store is always empty at shop generation
 
 ### Pricing
 `calculateShopPrice(basePrice, floor)`: `discount = min(floor × 0.03, 0.40)` — up to 40% off at deep floors.
@@ -255,10 +256,26 @@ Relic base prices (`SHOP_RELIC_PRICE`): common 100g, uncommon 160g, rare 250g, l
 
 One card per visit is on sale: `getSalePrice` = 50% off (applied after floor discount).
 
+### Shop Card Mastery (Ch14.7)
+Shop cards display a mastery level derived from the deck mean at inventory generation time. This gives players a preview of the card's power level relative to their current deck.
+
+Formula: `masteryLevel = clamp(round(approxGaussian(deckAvgMastery, stdDev=0.8)), 0, 5)`
+
+`approxGaussian` uses 3-sample uniform sum approximation (mean ± 1.15 × stdDev).
+
+The displayed mastery is a preview — the actual mastery assigned at purchase is computed independently by `addRewardCardToActiveDeck → computeCatchUpMastery`.
+
 ### Services
 - **Card removal**: `removalPrice(count) = SHOP_REMOVAL_BASE_PRICE (50) + count × 25` — escalates each removal
-- **Card transform**: `transformPrice(count) = 35 + count × 25` — escalates each transform
+- **Card transform (Ch14.3)**: `transformPrice(count) = 35 + count × 25` — escalates each transform
+  - `onShopTransform(cardId, haggled?)` — removes card, generates 3 options, sets `pendingTransformOptions` store
+  - `onShopTransformChoice(card)` — adds chosen card to deck, clears `pendingTransformOptions`
+  - `pendingTransformOptions: Writable<Card[] | null>` — UI subscribes to this for the choice picker
 - **Ascension level 5 buff**: one free card removal per shop visit
+
+### Haggle (Ch14.10 — UI-only)
+On haggle fail: no price penalty (original price kept), haggle button disabled for that item (`haggledThisItem` flag). Player can still buy at original price.
+Implementation is entirely in `ShopRoomOverlay.svelte` (owned by ui-agent). Backend service layer is not involved in haggle outcome tracking beyond `recordHaggleAttempt()`.
 
 ---
 

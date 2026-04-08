@@ -1,0 +1,2111 @@
+{
+  "subDeckId": "eastern_classical",
+  "chainThemeId": 1,
+  "facts": [
+    {
+      "id": "philosophy_ec_confucius_core_virtue",
+      "correctAnswer": "benevolence",
+      "acceptableAlternatives": [
+        "ren",
+        "humaneness",
+        "benevolence/humaneness"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 6,
+      "distractors": [
+        "righteousness",
+        "ritual propriety",
+        "filial piety",
+        "wisdom",
+        "trustworthiness",
+        "loyalty"
+      ],
+      "quizQuestion": "What is the central Confucian virtue, usually translated as 'benevolence' or 'humaneness,' that Confucius called the quality of the exemplary person?",
+      "explanation": "Ren (benevolence/humaneness) is the core ethical concept in Confucian thought. The Analects present it as the inner disposition of the junzi (exemplary person), expressed outwardly through li (ritual propriety). Together ren and li are inseparable in Confucian ethics.",
+      "wowFactor": "Confucius never precisely defined ren — he gave different answers to different disciples, suggesting it must be lived rather than defined.",
+      "statement": "Ren (benevolence/humaneness) is the central virtue of Confucian ethics, paired with ritual propriety (li).",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/confucius/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "confucianism",
+        "virtue",
+        "ethics",
+        "china"
+      ]
+    },
+    {
+      "id": "philosophy_ec_confucius_dates",
+      "correctAnswer": "551 BCE",
+      "acceptableAlternatives": [
+        "551",
+        "trad. 551 BCE"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "bracket_dates",
+      "difficulty": 2,
+      "funScore": 4,
+      "distractors": [
+        "479 BCE",
+        "500 BCE",
+        "563 BCE",
+        "604 BCE",
+        "372 BCE",
+        "305 BCE"
+      ],
+      "quizQuestion": "According to traditional Chinese sources, in what year was Confucius born?",
+      "explanation": "Confucius was traditionally born in 551 BCE and died in 479 BCE during the late Spring and Autumn period. His Latinized name combines the surname Kong with the honorific fuzi (Master). He is described by the SEP as 'arguably the most significant thinker in East Asian history.'",
+      "wowFactor": "The name 'Confucius' was invented by Jesuit missionaries in the 17th century — Chinese speakers knew him only as Kongzi (Master Kong).",
+      "statement": "Confucius was traditionally born in 551 BCE in the State of Lu, China.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/confucius/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "confucianism",
+        "china",
+        "dates"
+      ]
+    },
+    {
+      "id": "philosophy_ec_confucius_analects_authorship",
+      "correctAnswer": "Analects",
+      "acceptableAlternatives": [
+        "the Analects",
+        "Lunyu"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 1,
+      "funScore": 5,
+      "distractors": [
+        "Tao Te Ching",
+        "Mencius",
+        "Xunzi",
+        "Book of Rites",
+        "Spring and Autumn Annals",
+        "Great Learning"
+      ],
+      "quizQuestion": "Which text, compiled by Confucius's disciples after his death, is the primary source for his teachings on ren, li, and the junzi?",
+      "explanation": "The Analects (Lunyu) were compiled by Confucius's followers — not written by Confucius himself. The SEP notes the text reflects 'a diversity of representations and concerns.' It contains dialogues, sayings, and anecdotes that formed the core of Confucian learning.",
+      "wowFactor": "Confucius never wrote a word of the text that made him famous — the Analects were assembled by his students decades after his death.",
+      "statement": "The Analects (Lunyu) were compiled by Confucius's disciples, not written by Confucius himself.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/confucius/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "confucianism",
+        "texts",
+        "china"
+      ]
+    },
+    {
+      "id": "philosophy_ec_junzi_meaning",
+      "correctAnswer": "exemplary person",
+      "acceptableAlternatives": [
+        "junzi",
+        "gentleman",
+        "superior man",
+        "noble person"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 6,
+      "distractors": [
+        "petty person",
+        "ritual master",
+        "sage king",
+        "moral teacher",
+        "righteous official",
+        "filial son"
+      ],
+      "quizQuestion": "What Confucian term describes the morally cultivated person who embodies ren and li, contrasted with the xiaoren (petty person)?",
+      "explanation": "The junzi (exemplary person) is the Confucian ethical ideal. Originally a social title meaning 'son of a ruler,' Confucius redefines it as a moral category: anyone can become a junzi through self-cultivation, study, and practice — it is earned, not inherited.",
+      "wowFactor": "Confucius democratized the elite title 'junzi' — turning a word for aristocratic birth into an ideal of moral character anyone could achieve through effort.",
+      "statement": "Junzi (exemplary person) is the Confucian ethical ideal of one who embodies benevolence and ritual propriety through cultivation.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/confucius/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "confucianism",
+        "ethics",
+        "virtue",
+        "china"
+      ]
+    },
+    {
+      "id": "philosophy_ec_mencius_human_nature",
+      "correctAnswer": "good",
+      "acceptableAlternatives": [
+        "innately good",
+        "naturally good",
+        "xing shan"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "bad",
+        "neutral",
+        "mixed",
+        "evil",
+        "selfish",
+        "neither good nor bad"
+      ],
+      "quizQuestion": "What was Mencius's most famous claim about human nature, which directly opposed Xunzi's view?",
+      "explanation": "Mencius (4th century BCE) held that human nature is innately good. He described four moral 'sprouts' present in everyone: compassion, shame, modesty, and moral judgment. Xunzi later argued the opposite — that human nature is bad and requires ritual and education to become good.",
+      "wowFactor": "The Mencius vs. Xunzi debate — is human nature good or bad? — is arguably the oldest nature-vs-nurture argument in world philosophy.",
+      "statement": "Mencius argued that human nature (xing) is innately good, describable through four moral sprouts.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/mencius/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "confucianism",
+        "human nature",
+        "mencius",
+        "china"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which Confucian philosopher is best known for arguing that human nature is innately good, identifying four moral 'sprouts' in everyone?",
+          "correctAnswer": "Mencius",
+          "distractors": [
+            "Xunzi",
+            "Confucius",
+            "Zengzi",
+            "Han Feizi",
+            "Laozi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philosophy_ec_xunzi_human_nature",
+      "correctAnswer": "bad",
+      "acceptableAlternatives": [
+        "evil",
+        "xing e",
+        "corrupt"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "good",
+        "neutral",
+        "mixed",
+        "perfectible",
+        "selfish",
+        "indeterminate"
+      ],
+      "quizQuestion": "Xunzi's most famous and controversial doctrine claimed that human nature is what — requiring ritual and education to transform it?",
+      "explanation": "Xunzi (c. 310–235 BCE) held that human nature is bad (xing e) — we are born with selfish desires that must be shaped by ritual (li) and education. This counterintuitive view made him a 'bête noire' in later Confucian history. Ironically, his students Han Feizi and Li Si became founders of Legalism.",
+      "wowFactor": "Xunzi's two most famous students — Han Feizi and Li Si — rejected his Confucian conclusions entirely and became founders of hardline Legalism.",
+      "statement": "Xunzi argued human nature is bad (xing e) and must be transformed through ritual propriety and moral education.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/xunzi/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "confucianism",
+        "human nature",
+        "xunzi",
+        "china"
+      ]
+    },
+    {
+      "id": "philosophy_ec_four_books_compiler",
+      "correctAnswer": "Zhu Xi",
+      "acceptableAlternatives": [
+        "Chu Hsi"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "ancient_philosopher_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "distractors": [
+        "Mencius",
+        "Confucius",
+        "Zengzi",
+        "Xunzi",
+        "Wang Yangming",
+        "Dong Zhongshu"
+      ],
+      "quizQuestion": "Which Song dynasty Neo-Confucian scholar designated the Analects, Mencius, Great Learning, and Doctrine of the Mean as the canonical 'Four Books'?",
+      "explanation": "Zhu Xi (1130–1200 CE) grouped these four texts into a canonical curriculum that became the basis for imperial civil service examinations from 1313 CE under the Yuan dynasty through 1905 CE. The Four Books (Sishu) remain central to the Confucian educational tradition.",
+      "wowFactor": "For nearly 600 years — from 1313 to 1905 — mastery of the Four Books was the single most important qualification for government office across China.",
+      "statement": "Zhu Xi (12th century CE) designated the Four Books as the core Confucian curriculum, which then drove imperial examinations for 600 years.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Four_Books_and_Five_Classics",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "confucianism",
+        "neo-confucianism",
+        "texts",
+        "china"
+      ]
+    },
+    {
+      "id": "philosophy_ec_laozi_daodejing",
+      "correctAnswer": "Tao Te Ching",
+      "acceptableAlternatives": [
+        "Daodejing",
+        "Tao Te Ching",
+        "Laozi"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 1,
+      "funScore": 7,
+      "distractors": [
+        "Zhuangzi",
+        "Analects",
+        "I Ching",
+        "Liezi",
+        "Mozi",
+        "Book of Lord Shang"
+      ],
+      "quizQuestion": "What 81-chapter Daoist classic, attributed to Laozi, articulates the concepts of the Dao, de (virtue), wu wei, and ziran (naturalness)?",
+      "explanation": "The Daodejing (Tao Te Ching) is the foundational text of philosophical Daoism, traditionally attributed to Laozi ('Old Master'). Modern scholars debate whether Laozi was a historical person — the SEP notes some scholars consider him 'entirely legendary.' The text likely reached final form c. 4th–3rd century BCE.",
+      "wowFactor": "The Tao Te Ching is the most translated text in world history after the Bible — and its author may never have existed.",
+      "statement": "The Daodejing (Tao Te Ching), attributed to Laozi, is the foundational text of philosophical Daoism.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/laozi/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "daoism",
+        "texts",
+        "china",
+        "laozi"
+      ]
+    },
+    {
+      "id": "philosophy_ec_wu_wei_meaning",
+      "correctAnswer": "non-action",
+      "acceptableAlternatives": [
+        "wu wei",
+        "effortless action",
+        "non-interference",
+        "acting without forcing"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "universal love",
+        "rectification of names",
+        "filial piety",
+        "emptiness",
+        "non-attachment",
+        "impermanence"
+      ],
+      "quizQuestion": "What Daoist concept, central to both the Daodejing and Zhuangzi, describes acting in harmony with the natural order without forced or artificial intervention?",
+      "explanation": "Wu wei (non-action / effortless action) does not mean doing nothing — it means acting without artificial imposition, flowing naturally with the Dao. The SEP notes it has both ethical and political dimensions, including a vision of governance that does not impose unnatural structures.",
+      "wowFactor": "The most powerful leaders, according to the Daodejing, are those who govern so lightly that people feel they governed themselves.",
+      "statement": "Wu wei (non-action) is the Daoist principle of acting in harmony with the Dao without forced intervention.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/laozi/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "daoism",
+        "concepts",
+        "laozi",
+        "china"
+      ]
+    },
+    {
+      "id": "philosophy_ec_zhuangzi_butterfly_dream",
+      "correctAnswer": "Zhuangzi",
+      "acceptableAlternatives": [
+        "Chuangzi",
+        "Zhuang Zhou"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "ancient_philosopher_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "distractors": [
+        "Laozi",
+        "Liezi",
+        "Hui Shi",
+        "Confucius",
+        "Mozi",
+        "Gongsun Long"
+      ],
+      "quizQuestion": "Which late 4th century BCE Daoist philosopher is famous for the 'butterfly dream' — wondering whether he is a man dreaming of being a butterfly or a butterfly dreaming of being a man?",
+      "explanation": "Zhuangzi's butterfly dream is the most famous illustration of his philosophy of perspectivism and the indeterminacy of fixed categories. The SEP describes Zhuangzi as 'the pivotal figure in Classical Philosophical Daoism' and 'more the Hume of his tradition than a system builder.'",
+      "wowFactor": "Zhuangzi's butterfly dream is a 2,400-year-old thought experiment that modern philosophers still use to discuss personal identity, consciousness, and the limits of knowledge.",
+      "statement": "Zhuangzi's butterfly dream illustrates his perspectivism: the indeterminacy of identity and the relativity of all fixed distinctions.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/zhuangzi/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "daoism",
+        "zhuangzi",
+        "perspectivism",
+        "china"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The 'butterfly dream' — in which the philosopher wonders if he is a man dreaming of being a butterfly or vice versa — comes from which classical Chinese text?",
+          "correctAnswer": "Zhuangzi",
+          "distractors": [
+            "Tao Te Ching",
+            "Analects",
+            "Liezi",
+            "I Ching",
+            "Mozi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philosophy_ec_mozi_universal_love",
+      "correctAnswer": "universal love",
+      "acceptableAlternatives": [
+        "jian ai",
+        "impartial concern",
+        "universal concern",
+        "impartial love"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "filial piety",
+        "ritual propriety",
+        "non-action",
+        "non-violence",
+        "rectification of names",
+        "rule of law"
+      ],
+      "quizQuestion": "What is the central ethical doctrine of Mohism, which holds that all persons should be regarded with equal care regardless of kinship?",
+      "explanation": "Jian ai (universal love / impartial concern) is the core Mohist doctrine: all persons deserve equal moral regard, without privileging family over strangers. The SEP notes Mohism advanced 'the world's earliest form of consequentialism' based on collective human welfare.",
+      "wowFactor": "Mohists were the first Chinese philosophers to give step-by-step logical arguments for their moral positions — treating ethics like geometry, not tradition.",
+      "statement": "Jian ai (universal/impartial love) is Mohism's core doctrine: equal moral concern for all persons, not just kin.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/mohism/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "mohism",
+        "ethics",
+        "china",
+        "mozi"
+      ]
+    },
+    {
+      "id": "philosophy_ec_mohism_founder",
+      "correctAnswer": "Mozi",
+      "acceptableAlternatives": [
+        "Mo Di",
+        "Mo Tzu"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "ancient_philosopher_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "distractors": [
+        "Laozi",
+        "Xunzi",
+        "Han Feizi",
+        "Shang Yang",
+        "Gongsun Long",
+        "Hui Shi"
+      ],
+      "quizQuestion": "Which Warring States philosopher (fl. c. 430 BCE) founded Mohism, arguing against aggressive war, elaborate funerals, and music on utilitarian grounds?",
+      "explanation": "Mozi (Master Mo, fl. c. 430 BCE) founded the Mohist school, which argued all actions should be judged by their benefit to the people. His 'Against Music' and 'Moderation in Funerals' chapters condemned Confucian ritual extravagance as wasteful — making Mohism a frequent Confucian target.",
+      "wowFactor": "Mozi argued that music should be banned not because it was immoral, but because the resources spent on it could feed the hungry instead — a 2,400-year-old utilitarian argument.",
+      "statement": "Mozi (fl. c. 430 BCE) founded Mohism, which advanced consequentialist ethics and universal love as China's first explicit moral philosophy.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/mohism/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "mohism",
+        "china",
+        "mozi"
+      ]
+    },
+    {
+      "id": "philosophy_ec_han_feizi_legalism",
+      "correctAnswer": "Han Feizi",
+      "acceptableAlternatives": [
+        "Han Fei",
+        "Han Fei Tzu"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "ancient_philosopher_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "Shang Yang",
+        "Shen Buhai",
+        "Xunzi",
+        "Li Si",
+        "Shen Dao",
+        "Mozi"
+      ],
+      "quizQuestion": "Which Legalist thinker (c. 280–233 BCE), a student of Xunzi, synthesized fa (law), shu (statecraft), and shi (positional power) in a 55-chapter text?",
+      "explanation": "Han Feizi is considered the most accomplished Legalist thinker. Ironically a student of the Confucian Xunzi, he drew on Xunzi's view of bad human nature to conclude that impersonal law, not virtue, must govern the state. He died at the Qin court after being imprisoned by his rival Li Si.",
+      "wowFactor": "Han Feizi died at the court of the Qin ruler he had advised — imprisoned by his own former classmate Li Si, who feared him as a rival.",
+      "statement": "Han Feizi synthesized Legalism's three strands — fa (law), shu (technique), and shi (power) — in the most systematic Legalist text.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/chinese-legalism/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "legalism",
+        "china",
+        "han feizi"
+      ]
+    },
+    {
+      "id": "philosophy_ec_legalism_key_concept",
+      "correctAnswer": "Legalism",
+      "acceptableAlternatives": [
+        "Fa tradition",
+        "Fajia"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "school_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "distractors": [
+        "Confucianism",
+        "Mohism",
+        "Daoism",
+        "School of Names",
+        "Yin-Yang school",
+        "Syncretism"
+      ],
+      "quizQuestion": "Which Chinese philosophical school held that rulers should govern by impersonal law and administrative technique rather than personal virtue, providing the ideological basis for the Qin dynasty's unification of China?",
+      "explanation": "Legalism (the Fa tradition) argued that human selfishness made virtue-based governance naive. Shang Yang's reforms transformed Qin using strict law and merit-based promotion; Han Feizi systematized the theory. The Qin used Legalist principles to unify China in 221 BCE.",
+      "wowFactor": "Legalism worked so well that the Qin dynasty unified all of China in just 15 years — but governed so harshly the dynasty collapsed after only 15 more years.",
+      "statement": "Legalism held that impersonal law (fa), technique (shu), and positional authority (shi) — not virtue — should govern the state.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/chinese-legalism/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "legalism",
+        "china",
+        "politics"
+      ]
+    },
+    {
+      "id": "philosophy_ec_gongsun_long_white_horse",
+      "correctAnswer": "Gongsun Long",
+      "acceptableAlternatives": [
+        "Kung-sun Lung"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "ancient_philosopher_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "distractors": [
+        "Hui Shi",
+        "Zhuangzi",
+        "Laozi",
+        "Mozi",
+        "Confucius",
+        "Zou Yan"
+      ],
+      "quizQuestion": "Which School of Names philosopher (c. 325–250 BCE) is famous for the paradox 'white horses are not horses,' arguing that different terms pick out different referents?",
+      "explanation": "Gongsun Long argued in his White Horse Dialogue that 'horse' picks out shape while 'white horse' picks out shape plus color — so they refer to different things. This anticipates debates in analytic philosophy about universals, particulars, and the logic of reference.",
+      "wowFactor": "Gongsun Long's 'white horses are not horses' was considered absurd by most ancient readers — but it maps almost exactly onto debates in 20th-century analytic philosophy about reference and universals.",
+      "statement": "Gongsun Long's White Horse Dialogue argues that 'white horse' and 'horse' pick out different referents, an early analysis of universals and particulars.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/school-names/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "school of names",
+        "china",
+        "logic",
+        "paradox"
+      ]
+    },
+    {
+      "id": "philosophy_ec_zou_yan_five_phases",
+      "correctAnswer": "Five Phases",
+      "acceptableAlternatives": [
+        "wuxing",
+        "five elements",
+        "Five Agents"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 6,
+      "distractors": [
+        "Four Noble Truths",
+        "Eightfold Path",
+        "Six Darshanas",
+        "Eight Trigrams",
+        "Three Marks of Existence",
+        "Five Classics"
+      ],
+      "quizQuestion": "What cosmological theory, systematized by Zou Yan (c. 305–240 BCE), holds that wood, fire, earth, metal, and water cycle through conquest sequences governing both nature and dynastic change?",
+      "explanation": "Zou Yan systematized the Five Phases (wuxing) theory, applying it to explain dynastic succession: each ruling house corresponds to a phase that conquers the previous one. Combined with the yin-yang polarity, this framework became foundational for Chinese medicine, feng shui, and Han dynasty cosmology.",
+      "wowFactor": "Zou Yan used the Five Phases to predict which dynasty would rule China next — essentially the world's first political forecasting system based on cosmic cycles.",
+      "statement": "Zou Yan (c. 305–240 BCE) systematized the Five Phases (wuxing) theory applying wood, fire, earth, metal, and water to explain natural and political cycles.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Zou_Yan",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "yin-yang school",
+        "china",
+        "cosmology",
+        "zou yan"
+      ]
+    },
+    {
+      "id": "philosophy_ec_buddha_dates",
+      "correctAnswer": "c. 405 BCE",
+      "acceptableAlternatives": [
+        "c. 400 BCE",
+        "405 BCE",
+        "around 405 BCE"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "bracket_dates",
+      "difficulty": 3,
+      "funScore": 4,
+      "distractors": [
+        "480 BCE",
+        "563 BCE",
+        "483 BCE",
+        "350 BCE",
+        "500 BCE",
+        "527 BCE"
+      ],
+      "quizQuestion": "According to modern scholarly consensus (the 'long chronology'), approximately when did the historical Buddha die?",
+      "explanation": "The SEP notes 'many scholars now hold that he must have died around 405 BCE,' revising the traditional Theravada date of 483 BCE. The Buddha was born into the Sakya clan near the present India-Nepal border and attained enlightenment (bodhi) after abandoning household life.",
+      "wowFactor": "The dates of the Buddha are still genuinely disputed — scholars disagree by nearly 80 years, making him one of the most historically uncertain major world figures.",
+      "statement": "Modern scholarship dates the Buddha's death to c. 405 BCE, revising the traditional Theravada date of 483 BCE.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/buddha/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "buddha",
+        "dates"
+      ]
+    },
+    {
+      "id": "philosophy_ec_four_noble_truths_count",
+      "correctAnswer": "{4}",
+      "acceptableAlternatives": [
+        "four",
+        "4"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "bracket_numbers",
+      "difficulty": 1,
+      "funScore": 5,
+      "distractors": [
+        "3",
+        "5",
+        "8",
+        "6",
+        "10",
+        "12"
+      ],
+      "quizQuestion": "How many Noble Truths did the Buddha teach in his first sermon at the Deer Park in Sarnath?",
+      "explanation": "The Four Noble Truths (dukkha, samudaya, nirodha, magga) form the structural framework of Buddhist soteriology. The first sermon was delivered to five ascetics and is commemorated in the Dhammacakkappavattana Sutta — the 'Setting the Wheel of Dhamma in Motion.'",
+      "wowFactor": "The Buddha's first sermon is called 'Setting the Wheel of Dhamma in Motion' — and Buddhists still commemorate this exact teaching 2,500 years later.",
+      "statement": "The Four Noble Truths — suffering, its origin, its cessation, and the path — form the core of the Buddha's first teaching.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Four_Noble_Truths",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "four noble truths",
+        "doctrine"
+      ]
+    },
+    {
+      "id": "philosophy_ec_four_noble_truths_second",
+      "correctAnswer": "craving",
+      "acceptableAlternatives": [
+        "tanha",
+        "trishna",
+        "desire",
+        "clinging",
+        "attachment"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 6,
+      "distractors": [
+        "ignorance",
+        "karma",
+        "rebirth",
+        "suffering",
+        "greed",
+        "anger"
+      ],
+      "quizQuestion": "According to the Second Noble Truth (samudaya), what is the origin and cause of suffering?",
+      "explanation": "The Second Noble Truth identifies tanha (craving/thirst) as the origin of dukkha (suffering). This craving manifests in three forms: craving for sensual pleasure, craving for existence/becoming, and craving for non-existence. Eliminating this craving is the path to nirvana.",
+      "wowFactor": "The Buddha diagnosed all of human misery as having a single root cause — craving — and claimed to have found a cure.",
+      "statement": "The Second Noble Truth identifies craving (tanha) as the origin of suffering — desire for pleasure, existence, or annihilation.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Four_Noble_Truths",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "four noble truths",
+        "doctrine"
+      ]
+    },
+    {
+      "id": "philosophy_ec_eightfold_path_count",
+      "correctAnswer": "{8}",
+      "acceptableAlternatives": [
+        "eight",
+        "8"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "bracket_numbers",
+      "difficulty": 1,
+      "funScore": 5,
+      "distractors": [
+        "4",
+        "5",
+        "10",
+        "6",
+        "12",
+        "3"
+      ],
+      "quizQuestion": "The Noble Eightfold Path — the Fourth Noble Truth — contains how many practices organized into wisdom, ethics, and meditation?",
+      "explanation": "The Noble Eightfold Path consists of: Right View, Right Intention (wisdom); Right Speech, Right Action, Right Livelihood (ethics); Right Effort, Right Mindfulness, Right Concentration (meditation). It represents the 'Middle Way' between extreme asceticism and sensual indulgence.",
+      "wowFactor": "Every major Buddhist tradition — Theravada, Mahayana, Vajrayana — across 2,500 years and 500 million people still follows this same eight-step path.",
+      "statement": "The Noble Eightfold Path groups right view, intention, speech, action, livelihood, effort, mindfulness, and concentration into three categories.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Noble_Eightfold_Path",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "eightfold path",
+        "doctrine"
+      ]
+    },
+    {
+      "id": "philosophy_ec_three_marks_count",
+      "correctAnswer": "{3}",
+      "acceptableAlternatives": [
+        "three",
+        "3"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "bracket_numbers",
+      "difficulty": 2,
+      "funScore": 4,
+      "distractors": [
+        "4",
+        "5",
+        "8",
+        "2",
+        "6",
+        "10"
+      ],
+      "quizQuestion": "How many 'marks of existence' (tilakkhana) does Buddhism identify as characterizing all conditioned phenomena — impermanence, unsatisfactoriness, and non-self?",
+      "explanation": "The three marks are: anicca (impermanence), dukkha (unsatisfactoriness/suffering), and anatta (non-self). Recognizing all three in one's own experience is central to Buddhist meditation practice (vipassana). They describe the universal character of all conditioned phenomena.",
+      "wowFactor": "The Three Marks of Existence are the analytical framework for all Buddhist meditation — you're essentially training yourself to see these three things in every moment of experience.",
+      "statement": "The Three Marks of Existence — impermanence, suffering, and non-self — describe the universal character of conditioned phenomena in early Buddhist metaphysics.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Three_marks_of_existence",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "three marks",
+        "doctrine"
+      ]
+    },
+    {
+      "id": "philosophy_ec_anatta_meaning",
+      "correctAnswer": "non-self",
+      "acceptableAlternatives": [
+        "anatta",
+        "anatman",
+        "anātman",
+        "no-self",
+        "no permanent self"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 8,
+      "distractors": [
+        "impermanence",
+        "suffering",
+        "emptiness",
+        "nirvana",
+        "dependent origination",
+        "Buddha-nature"
+      ],
+      "quizQuestion": "What is the Buddhist doctrine, one of the Three Marks of Existence, that no permanent, unchanging self or soul exists — directly opposing the Hindu concept of Atman?",
+      "explanation": "Anatta (Pali; Sanskrit: anatman) holds that no permanent, unchanging self exists. The person is analyzed as five aggregates (skandhas): form, sensation, perception, mental formations, and consciousness. This does not mean non-existence — it means no permanent essence. It directly contradicts the Hindu doctrine of the eternal Atman.",
+      "wowFactor": "The Buddhist doctrine of anatta says there is no 'you' — just a flowing process of physical and mental events with no unchanging essence inside.",
+      "statement": "Anatta (non-self) holds that no permanent self exists; persons are analyzed as five aggregates (skandhas), directly opposing Hindu Atman doctrine.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/buddha/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "anatta",
+        "doctrine",
+        "metaphysics"
+      ]
+    },
+    {
+      "id": "philosophy_ec_nirvana_meaning",
+      "correctAnswer": "blowing out",
+      "acceptableAlternatives": [
+        "quenching",
+        "extinguishing",
+        "cessation of suffering",
+        "liberation from rebirth"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "enlightenment",
+        "oneness with brahman",
+        "heavenly rebirth",
+        "dissolution into void",
+        "perfect knowledge",
+        "bodily transcendence"
+      ],
+      "quizQuestion": "The Buddhist term nirvana (Pali: nibbana) literally means what — describing the extinguishing of greed, aversion, and ignorance as the summum bonum of all Buddhist practice?",
+      "explanation": "Nirvana literally means 'blowing out' or 'quenching' — the extinguishing of the three fires of greed, aversion, and ignorance. Wikipedia describes it as 'the summum bonum of Buddhism and goal of the Eightfold Path.' It is the unconditioned state beyond all change, decay, and suffering.",
+      "wowFactor": "Nirvana isn't a place you go — it's a fire going out. The Buddha described liberation as the cooling of the three flames: greed, hatred, and delusion.",
+      "statement": "Nirvana (literally 'blowing out') is the extinguishing of greed, aversion, and ignorance — the cessation of suffering and the end of the rebirth cycle.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nirvana_(Buddhism)",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "nirvana",
+        "doctrine"
+      ]
+    },
+    {
+      "id": "philosophy_ec_dependent_origination",
+      "correctAnswer": "dependent origination",
+      "acceptableAlternatives": [
+        "pratitya-samutpada",
+        "paticca-samuppada",
+        "dependent co-arising"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "karma",
+        "non-self",
+        "emptiness",
+        "impermanence",
+        "nirvana",
+        "Buddha-nature"
+      ],
+      "quizQuestion": "What Buddhist doctrine holds that all conditioned phenomena arise dependently — 'when this is, that is' — and that nothing possesses inherent independent existence?",
+      "explanation": "Dependent origination (pratitya-samutpada) is the formula: 'When this is, that is. From the arising of this comes the arising of that.' The 12-link chain traces suffering from ignorance through to rebirth. Nagarjuna's Madhyamaka builds directly on this to argue that all phenomena are therefore empty (sunyata) of inherent existence.",
+      "wowFactor": "The Buddha's insight into dependent origination is described in the texts as the moment of his enlightenment — the chain that explains how suffering arises and how it can be undone.",
+      "statement": "Dependent origination (pratitya-samutpada) holds that all phenomena arise dependently on causes and conditions, with nothing possessing inherent existence.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dependent_origination",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "dependent origination",
+        "doctrine",
+        "metaphysics"
+      ]
+    },
+    {
+      "id": "philosophy_ec_tripitaka_writing",
+      "correctAnswer": "Pali Canon",
+      "acceptableAlternatives": [
+        "Tipitaka",
+        "Tripitaka",
+        "Three Baskets"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 2,
+      "funScore": 5,
+      "distractors": [
+        "Mahayana Sutras",
+        "Agamas",
+        "Heart Sutra",
+        "Vinaya Pitaka",
+        "Dhammapada",
+        "Yoga Sutras"
+      ],
+      "quizQuestion": "What is the name of the Theravada Buddhist scriptural canon — 'Three Baskets' covering monastic rules, discourses, and philosophical analysis — committed to writing in Sri Lanka c. 29 BCE?",
+      "explanation": "The Tipitaka (Pali Canon) contains three divisions: the Vinaya Pitaka (monastic rules), Sutta Pitaka (discourses, including five Nikayas), and Abhidhamma Pitaka (philosophical analysis). Compiled orally from c. 5th century BCE, it was written down in Sri Lanka under King Vattagamani around 29 BCE.",
+      "wowFactor": "Buddhist monks memorized the entire Pali Canon — roughly 17,000 pages of text — for over 400 years before it was ever written down.",
+      "statement": "The Pali Canon (Tipitaka, 'Three Baskets') is the scriptural authority of Theravada Buddhism, committed to writing in Sri Lanka c. 29 BCE.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pali_Canon",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "theravada",
+        "texts",
+        "pali canon"
+      ]
+    },
+    {
+      "id": "philosophy_ec_nagarjuna_sunyata",
+      "correctAnswer": "emptiness",
+      "acceptableAlternatives": [
+        "sunyata",
+        "śūnyatā",
+        "shunyata",
+        "void"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 8,
+      "distractors": [
+        "non-self",
+        "impermanence",
+        "Buddha-nature",
+        "mind-only",
+        "dependent origination",
+        "nirvana"
+      ],
+      "quizQuestion": "What is the central doctrine of Nagarjuna's Madhyamaka philosophy — that all phenomena lack svabhava (inherent existence/own-nature) and exist only dependently?",
+      "explanation": "Sunyata (emptiness) does not mean nothingness — it means that all phenomena lack svabhava (inherent, independent existence). Nagarjuna uses reductio ad absurdum arguments to show that if things had inherent existence, change and causation would be impossible. The Heart Sutra's 'form is emptiness, emptiness is form' is its most famous expression.",
+      "wowFactor": "Nagarjuna argued that if anything existed independently, nothing could change — therefore the fact that things change proves nothing exists independently.",
+      "statement": "Sunyata (emptiness) — the absence of inherent existence in all phenomena — is the central doctrine of Nagarjuna's Madhyamaka philosophy.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/nagarjuna/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "mahayana",
+        "madhyamaka",
+        "nagarjuna",
+        "emptiness"
+      ]
+    },
+    {
+      "id": "philosophy_ec_nagarjuna_key_work",
+      "correctAnswer": "Mulamadhyamakakarika",
+      "acceptableAlternatives": [
+        "Mūlamadhyamakakārikā",
+        "Fundamental Verses on the Middle Way",
+        "MMK"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 4,
+      "funScore": 5,
+      "distractors": [
+        "Heart Sutra",
+        "Vimshika",
+        "Trimsika",
+        "Mahayanasamgraha",
+        "Abhidharmakosa",
+        "Lankavatara Sutra"
+      ],
+      "quizQuestion": "What is the most important work of Nagarjuna (c. 150–250 CE), systematically arguing through reductio ad absurdum that all phenomena lack inherent existence?",
+      "explanation": "The Mulamadhyamakakarika ('Fundamental Verses on the Middle Way') is Nagarjuna's masterwork. The SEP calls Nagarjuna 'the most important Buddhist philosopher after the historical Buddha himself.' The text systematically refutes inherent causation through four types of causal analysis.",
+      "wowFactor": "The Mulamadhyamakakarika has been continuously commented on for nearly 2,000 years — it remains the primary philosophical text of both Tibetan and East Asian Mahayana Buddhism.",
+      "statement": "Nagarjuna's Mulamadhyamakakarika (c. 150–250 CE) is the foundational text of Madhyamaka Buddhism, systematically arguing all phenomena are empty of inherent existence.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/nagarjuna/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "mahayana",
+        "madhyamaka",
+        "nagarjuna",
+        "texts"
+      ]
+    },
+    {
+      "id": "philosophy_ec_yogacara_mind_only",
+      "correctAnswer": "mind-only",
+      "acceptableAlternatives": [
+        "cittamatra",
+        "vijnanavada",
+        "consciousness-only",
+        "idealism"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "emptiness",
+        "dependent origination",
+        "non-self",
+        "Buddha-nature",
+        "inherent existence",
+        "middle way"
+      ],
+      "quizQuestion": "What is the key doctrine of the Yogacara school, founded by Asanga and Vasubandhu, holding that what appears as external reality is in fact a transformation of consciousness?",
+      "explanation": "Cittamatra ('mind-only') is Yogacara's central doctrine: what we perceive as an external world is actually a transformation of the alayavijnana (store-consciousness), which carries karmic seeds. The SEP notes Yogacara is one of the two major Mahayana philosophical traditions alongside Madhyamaka.",
+      "wowFactor": "Yogacara philosophers argued 1,600 years ago that what you experience as 'the outside world' is actually produced by your own consciousness — a position contemporary neuroscience debates in very similar terms.",
+      "statement": "Yogacara's cittamatra ('mind-only') doctrine holds that external objects are transformations of consciousness, not independently existing realities.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/yogacara/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "mahayana",
+        "yogacara",
+        "doctrine"
+      ]
+    },
+    {
+      "id": "philosophy_ec_nyaya_pramanas_count",
+      "correctAnswer": "{4}",
+      "acceptableAlternatives": [
+        "four",
+        "4"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "bracket_numbers",
+      "difficulty": 3,
+      "funScore": 5,
+      "distractors": [
+        "3",
+        "6",
+        "2",
+        "5",
+        "8",
+        "7"
+      ],
+      "quizQuestion": "How many valid sources of knowledge (pramanas) does the Nyaya school recognize — perception, inference, analogy, and testimony?",
+      "explanation": "The Nyaya school recognizes four pramanas (valid knowledge sources): pratyaksa (perception), anumana (inference), upamana (analogy), and sabda (testimony). The IEP describes Nyaya as developing 'a sophisticated precursor to contemporary reliabilism' in epistemology.",
+      "wowFactor": "The Nyaya school systematized epistemology in ancient India with the same rigor as Aristotle's logic — and India's logical tradition may be older than Greece's.",
+      "statement": "Nyaya epistemology recognizes four valid sources of knowledge: perception, inference, analogy, and testimony (pramanas).",
+      "sourceName": "Internet Encyclopedia of Philosophy",
+      "sourceUrl": "https://iep.utm.edu/nyaya/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "nyaya",
+        "hindu philosophy",
+        "epistemology",
+        "india"
+      ]
+    },
+    {
+      "id": "philosophy_ec_six_darshanas_count",
+      "correctAnswer": "{6}",
+      "acceptableAlternatives": [
+        "six",
+        "6"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "bracket_numbers",
+      "difficulty": 2,
+      "funScore": 5,
+      "distractors": [
+        "4",
+        "8",
+        "3",
+        "9",
+        "5",
+        "12"
+      ],
+      "quizQuestion": "How many orthodox Hindu philosophical schools (darshanas) are traditionally recognized — including Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, and Vedanta?",
+      "explanation": "The six orthodox (astika) Hindu darshanas all accept the authority of the Vedas. They are: Nyaya (logic/epistemology), Vaisheshika (atomism), Samkhya (dualism), Yoga (practice), Mimamsa (ritual hermeneutics), and Vedanta (Upanishadic metaphysics). Each offers a distinct metaphysical and epistemological system.",
+      "wowFactor": "Ancient India simultaneously developed six distinct philosophical schools — atomism, idealism, dualism, logic — centuries before these topics appeared in Western philosophy.",
+      "statement": "The six orthodox Hindu darshanas — Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, and Vedanta — all accept Vedic authority while offering distinct metaphysical systems.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "hindu philosophy",
+        "darshanas",
+        "india",
+        "overview"
+      ]
+    },
+    {
+      "id": "philosophy_ec_vaisheshika_atomism",
+      "correctAnswer": "atomism",
+      "acceptableAlternatives": [
+        "atomic theory",
+        "anu theory"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "idealism",
+        "monism",
+        "dualism",
+        "materialism",
+        "nihilism",
+        "pantheism"
+      ],
+      "quizQuestion": "What philosophical position is the Vaisheshika school (founded by Kanada) best known for — the doctrine that all matter consists of eternal, indivisible particles?",
+      "explanation": "Vaisheshika developed India's most systematic atomist cosmology: the universe is composed of eternal atoms (anu) of earth, water, fire, and air that combine to form all objects. This is independent of Greek atomism (Democritus) and emerged around the same period.",
+      "wowFactor": "Two completely separate civilizations — ancient India and ancient Greece — both invented atomic theory within a few centuries of each other, with no known contact between them.",
+      "statement": "Vaisheshika, founded by Kanada, developed Indian atomism: the doctrine that all matter consists of eternal, indivisible atoms (anu).",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Vaisheshika",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "vaisheshika",
+        "hindu philosophy",
+        "atomism",
+        "india"
+      ]
+    },
+    {
+      "id": "philosophy_ec_samkhya_dualism",
+      "correctAnswer": "Samkhya",
+      "acceptableAlternatives": [
+        "Sankhya"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "school_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "distractors": [
+        "Yoga",
+        "Vedanta",
+        "Nyaya",
+        "Vaisheshika",
+        "Mimamsa",
+        "Charvaka"
+      ],
+      "quizQuestion": "Which Hindu darshana is a strict dualism between Purusha (pure consciousness) and Prakriti (matter), and is notably atheistic among the orthodox schools?",
+      "explanation": "Samkhya holds that Purusha (pure, passive consciousness, plural) and Prakriti (active, primal matter) are the two ultimate realities. Liberation occurs when Purusha recognizes its distinction from Prakriti. Unlike other orthodox schools, classical Samkhya is atheistic. It provided the metaphysical framework adopted by the Yoga school.",
+      "wowFactor": "Samkhya is the only ancient Hindu philosophical school that is explicitly atheistic — yet still orthodox because it accepts the authority of the Vedas.",
+      "statement": "Samkhya is a strict dualism between Purusha (consciousness) and Prakriti (matter), notable as the only atheistic orthodox Hindu darshana.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Samkhya",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "samkhya",
+        "hindu philosophy",
+        "dualism",
+        "india"
+      ]
+    },
+    {
+      "id": "philosophy_ec_yoga_sutras_definition",
+      "correctAnswer": "Yoga Sutras",
+      "acceptableAlternatives": [
+        "Yoga Sutra",
+        "Yogasutras of Patanjali"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 2,
+      "funScore": 6,
+      "distractors": [
+        "Samkhya Karika",
+        "Brahma Sutras",
+        "Nyaya Sutras",
+        "Vaisheshika Sutra",
+        "Mimamsa Sutras",
+        "Bhagavad Gita"
+      ],
+      "quizQuestion": "Which text by Patanjali (c. 4th–5th century CE) defines yoga as 'citta vritti nirodha' (cessation of mental fluctuations) and outlines the eight-limbed path to liberation?",
+      "explanation": "The Yoga Sutras of Patanjali contain 196 sutras in four chapters, defining yoga as 'citta vritti nirodha' (the cessation of mental fluctuations). The eight limbs (ashtanga) progress from ethical restraints through to samadhi (liberation). Patanjali accepts Samkhya's dualist metaphysics but adds Ishvara as a meditation object.",
+      "wowFactor": "Every modern yoga class in the world ultimately traces its philosophical lineage back to a 4th-century Indian text that never once mentions physical exercise — the Yoga Sutras are about controlling the mind, not the body.",
+      "statement": "Patanjali's Yoga Sutras define yoga as 'citta vritti nirodha' and outline the eight-limbed path (ashtanga) from ethical restraint to liberation (samadhi).",
+      "sourceName": "Internet Encyclopedia of Philosophy",
+      "sourceUrl": "https://iep.utm.edu/yoga/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "yoga",
+        "hindu philosophy",
+        "patanjali",
+        "india",
+        "texts"
+      ]
+    },
+    {
+      "id": "philosophy_ec_vedanta_brahman_atman",
+      "correctAnswer": "Vedanta",
+      "acceptableAlternatives": [
+        "Vedantic",
+        "Uttara Mimamsa"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "school_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "distractors": [
+        "Samkhya",
+        "Nyaya",
+        "Mimamsa",
+        "Vaisheshika",
+        "Yoga",
+        "Advaita"
+      ],
+      "quizQuestion": "Which Hindu darshana, based on the Upanishads and Brahma Sutras, systematizes the relationship between Brahman (ultimate reality) and Atman (individual self)?",
+      "explanation": "Vedanta ('end of the Vedas') takes the Upanishads as its primary authority. The Brahma Sutras (attributed to Badarayana) systematize Upanishadic teachings. Three major sub-schools dispute the Brahman-Atman relationship: Shankara's Advaita (non-dual identity), Ramanuja's Vishishtadvaita (qualified non-dualism), and Madhva's Dvaita (dualism).",
+      "wowFactor": "Vedanta split into three schools that agree on everything except the most fundamental metaphysical question: is the individual soul ultimately identical to Ultimate Reality, or not?",
+      "statement": "Vedanta, based on the Upanishads and Brahma Sutras, systematizes the relationship between Brahman (ultimate reality) and Atman (individual self).",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Brahma_Sutras",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "vedanta",
+        "hindu philosophy",
+        "india",
+        "metaphysics"
+      ]
+    },
+    {
+      "id": "philosophy_ec_tat_tvam_asi",
+      "correctAnswer": "That thou art",
+      "acceptableAlternatives": [
+        "Tat Tvam Asi",
+        "You are that",
+        "Thou art that"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 8,
+      "distractors": [
+        "I am Brahman",
+        "All is one",
+        "Know thyself",
+        "The self is unborn",
+        "Consciousness alone is real",
+        "Form is emptiness"
+      ],
+      "quizQuestion": "What is the meaning of the Upanishadic mahavakya 'Tat Tvam Asi' from the Chandogya Upanishad, asserting the identity of individual Atman with universal Brahman?",
+      "explanation": "Tat Tvam Asi ('That thou art') is one of the four great sayings (mahavakyas) of the Upanishads, asserting that the individual self (Atman) is identical with ultimate reality (Brahman). It is the key text for Shankara's Advaita Vedanta, which holds Atman and Brahman are non-dually identical.",
+      "wowFactor": "The Upanishadic declaration 'Tat Tvam Asi' — you ARE ultimate reality — is the philosophical opposite of the Buddhist claim that no permanent self exists.",
+      "statement": "Tat Tvam Asi ('That thou art'), from the Chandogya Upanishad, asserts the identity of individual Atman with universal Brahman.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Upanishads",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "upanishads",
+        "vedanta",
+        "atman",
+        "brahman",
+        "india"
+      ]
+    },
+    {
+      "id": "philosophy_ec_mahavira_tirthankaras",
+      "correctAnswer": "{24}",
+      "acceptableAlternatives": [
+        "twenty-four",
+        "24"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "bracket_numbers",
+      "difficulty": 3,
+      "funScore": 5,
+      "distractors": [
+        "12",
+        "7",
+        "8",
+        "10",
+        "36",
+        "16"
+      ],
+      "quizQuestion": "Mahavira is considered the last of how many Tirthankaras ('ford-crossers') in the current cosmic cycle of Jain tradition?",
+      "explanation": "Jainism holds that 24 Tirthankaras (enlightened teachers) appear in each cosmic cycle, of whom Mahavira (c. 599–527 BCE) is the 24th and last in the current cycle. The SEP notes Mahavira was likely a historical contemporary of the Buddha.",
+      "wowFactor": "Jainism claims to be older than Hinduism — its 24 Tirthankaras stretch back through immeasurable cosmic time, with Mahavira merely the most recent revival of an eternal teaching.",
+      "statement": "Mahavira is the 24th and last Tirthankara of the current cosmic cycle in Jain tradition, likely a historical contemporary of the Buddha.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/jaina-philosophy/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "jainism",
+        "mahavira",
+        "india",
+        "tirthankaras"
+      ]
+    },
+    {
+      "id": "philosophy_ec_ahimsa_meaning",
+      "correctAnswer": "non-violence",
+      "acceptableAlternatives": [
+        "ahimsa",
+        "non-injury",
+        "non-harm",
+        "harmlessness"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 1,
+      "funScore": 7,
+      "distractors": [
+        "universal love",
+        "non-attachment",
+        "non-stealing",
+        "non-lying",
+        "celibacy",
+        "equanimity"
+      ],
+      "quizQuestion": "What is the central ethical commitment of Jainism — the principle that no injury should be done to any living being, extending even to microscopic organisms?",
+      "explanation": "Ahimsa (non-violence/non-injury) is the supreme Jain ethical commitment, requiring that no harm be done to any living being (jiva). Jain monks use mouth-cloths to avoid inhaling insects and sweep the path before walking. This principle later influenced Mahatma Gandhi's philosophy of nonviolent resistance.",
+      "wowFactor": "Jain monks sweep the ground before every step with a soft broom to avoid harming microscopic organisms — a level of non-violence so rigorous it shaped Gandhi's philosophy 2,500 years later.",
+      "statement": "Ahimsa (non-violence) is Jainism's central ethical principle, applied to all living beings including microorganisms, and later central to Gandhi's thought.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/jaina-philosophy/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "jainism",
+        "ahimsa",
+        "ethics",
+        "india"
+      ]
+    },
+    {
+      "id": "philosophy_ec_anekantavada_meaning",
+      "correctAnswer": "many-sidedness",
+      "acceptableAlternatives": [
+        "anekantavada",
+        "non-absolutism",
+        "many-pointedness",
+        "philosophical pluralism"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 4,
+      "funScore": 7,
+      "distractors": [
+        "non-violence",
+        "non-self",
+        "emptiness",
+        "dependent origination",
+        "karma",
+        "universal love"
+      ],
+      "quizQuestion": "What Jain epistemological doctrine holds that reality has multiple aspects and no single perspective is complete, leading to the practice of qualifying every claim with 'perhaps' (syat)?",
+      "explanation": "Anekantavada (many-sidedness/non-absolutism) holds that reality is ontologically complex — no single perspective captures it fully. Syadvada qualifies every philosophical claim with 'syat' (perhaps). This is not relativism but recognition of genuine ontological complexity. The Tattvarthasutra is its key systematic text.",
+      "wowFactor": "Jain philosophers debated Buddhists and Hindus using a built-in philosophical trump card: 'Your view is partially right, but reality is too complex for any single position to be fully correct.'",
+      "statement": "Anekantavada (many-sidedness) is the Jain doctrine that reality has multiple aspects, so every claim should be qualified with 'perhaps' (syadvada).",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/jaina-philosophy/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "jainism",
+        "epistemology",
+        "anekantavada",
+        "india"
+      ]
+    },
+    {
+      "id": "philosophy_ec_tattvarthasutra_author",
+      "correctAnswer": "Umasvati",
+      "acceptableAlternatives": [
+        "Umasvami",
+        "Umāsvāti"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "ancient_philosopher_names",
+      "difficulty": 4,
+      "funScore": 4,
+      "distractors": [
+        "Mahavira",
+        "Parshvanatha",
+        "Kundakunda",
+        "Haribhadra",
+        "Hemachandra",
+        "Jinasena"
+      ],
+      "quizQuestion": "Which Jain philosopher authored the Tattvarthasutra — the earliest systematic Jain philosophical text in Sanskrit, uniquely accepted by both the Digambara and Shvetambara sects?",
+      "explanation": "Umasvati (c. 2nd–5th century CE) authored the Tattvarthasutra, which opens: 'Right faith, right knowledge and right conduct together constitute the path to liberation.' It is the only Jain philosophical text accepted as authoritative by both major sects.",
+      "wowFactor": "The Tattvarthasutra is the only text in 2,500 years of Jain history that both major sects — who disagree on almost everything else — accept as authoritative.",
+      "statement": "Umasvati's Tattvarthasutra is the earliest systematic Jain philosophical text in Sanskrit, uniquely accepted by both Digambara and Shvetambara sects.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tattvarthasutra",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "jainism",
+        "texts",
+        "india",
+        "tattvarthasutra"
+      ]
+    },
+    {
+      "id": "philosophy_ec_charvaka_epistemology",
+      "correctAnswer": "perception",
+      "acceptableAlternatives": [
+        "pratyaksa",
+        "direct perception",
+        "sensory perception"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "inference",
+        "testimony",
+        "analogy",
+        "revelation",
+        "intuition",
+        "scripture"
+      ],
+      "quizQuestion": "The Charvaka (Lokayata) materialist school held that what is the ONLY valid source of knowledge — rejecting inference, analogy, and scriptural testimony?",
+      "explanation": "Charvaka is India's materialist philosophical tradition, holding that direct perception (pratyaksa) is the only reliable knowledge source. It rejected the soul, afterlife, karma, and gods. Its texts are lost — it is known primarily through hostile summaries by Buddhist, Jain, and Hindu opponents.",
+      "wowFactor": "India's ancient materialists argued against gods, karma, and the afterlife so effectively that every other philosophical school felt compelled to write detailed refutations — which is how we know about Charvaka at all.",
+      "statement": "Charvaka (Lokayata) held that perception is the only valid knowledge source, rejecting gods, karma, afterlife, and all scriptural authority.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Charvaka",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "charvaka",
+        "materialism",
+        "india",
+        "epistemology"
+      ]
+    },
+    {
+      "id": "philosophy_ec_karma_shared_doctrine",
+      "correctAnswer": "karma",
+      "acceptableAlternatives": [
+        "karman",
+        "kamma"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 1,
+      "funScore": 6,
+      "distractors": [
+        "nirvana",
+        "dharma",
+        "maya",
+        "samsara",
+        "moksha",
+        "atman"
+      ],
+      "quizQuestion": "What concept, shared by Hinduism, Buddhism, and Jainism, holds that intentional actions create consequences that shape future rebirths — though each tradition interprets it differently?",
+      "explanation": "Karma (Sanskrit: action and its moral consequences) is shared across Hindu, Buddhist, and Jain traditions but interpreted differently: Hinduism ties karma to the Atman; Buddhism holds karma operates without a permanent self; Jainism holds karma is a subtle material substance that physically attaches to the soul (jiva).",
+      "wowFactor": "Karma means exactly the same thing across three completely different religions — but they can't agree on who or what the karma attaches to.",
+      "statement": "Karma (intentional action and its moral consequences) is shared by Hinduism, Buddhism, and Jainism, though each tradition interprets its metaphysical basis differently.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Karma",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "karma",
+        "hinduism",
+        "buddhism",
+        "jainism",
+        "india"
+      ]
+    },
+    {
+      "id": "philosophy_ec_samsara_meaning",
+      "correctAnswer": "rebirth cycle",
+      "acceptableAlternatives": [
+        "samsara",
+        "cycle of rebirth",
+        "cycle of reincarnation",
+        "wheel of existence"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 1,
+      "funScore": 5,
+      "distractors": [
+        "nirvana",
+        "karma",
+        "dharma",
+        "moksha",
+        "liberation",
+        "emptiness"
+      ],
+      "quizQuestion": "What Sanskrit term describes the cycle of birth, death, and rebirth governed by karma, from which nirvana (Buddhism) or moksha (Hinduism/Jainism) provides liberation?",
+      "explanation": "Samsara (literally 'wandering through') is the cycle of conditioned existence — repeated birth, aging, death, and rebirth driven by karma and craving. Liberation from samsara is the ultimate soteriological goal in Hinduism (moksha), Buddhism (nirvana), and Jainism (moksha), though the paths and metaphysics differ.",
+      "wowFactor": "Three of the world's major religious philosophies — Buddhism, Hinduism, and Jainism — all independently concluded that existence is a trap you need to escape from.",
+      "statement": "Samsara is the cycle of rebirth governed by karma; liberation from it is the ultimate goal of Hindu, Buddhist, and Jain soteriology.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Karma",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "samsara",
+        "hinduism",
+        "buddhism",
+        "jainism",
+        "india"
+      ]
+    },
+    {
+      "id": "philosophy_ec_theravada_arahant",
+      "correctAnswer": "Theravada",
+      "acceptableAlternatives": [
+        "Theravada Buddhism",
+        "Doctrine of the Elders"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "school_names",
+      "difficulty": 2,
+      "funScore": 5,
+      "distractors": [
+        "Mahayana",
+        "Vajrayana",
+        "Madhyamaka",
+        "Yogacara",
+        "Zen",
+        "Pure Land"
+      ],
+      "quizQuestion": "Which Buddhist school, dominant in Sri Lanka and Southeast Asia, holds the Pali Canon as its scriptural authority and the arahant (personal enlightenment) as the soteriological ideal?",
+      "explanation": "Theravada ('Doctrine of the Elders') is the surviving school from the Sthaviravada lineage following the schism with the Mahasanghika. The arahant ideal (full enlightenment through personal practice) distinguishes it from Mahayana's bodhisattva ideal of postponing nirvana to help all beings.",
+      "wowFactor": "Theravada Buddhism has survived 2,500 years with its original Pali texts intact — it may preserve the closest record we have to what the historical Buddha actually taught.",
+      "statement": "Theravada ('Doctrine of the Elders') is the oldest surviving Buddhist school, dominant in Southeast Asia, holding the Pali Canon and the arahant liberation ideal.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Theravada",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "theravada",
+        "buddhism",
+        "southeast asia"
+      ]
+    },
+    {
+      "id": "philosophy_ec_mahasanghika_buddha_transcendent",
+      "correctAnswer": "transcendent",
+      "acceptableAlternatives": [
+        "supramundane",
+        "lokottara",
+        "divine"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 4,
+      "funScore": 6,
+      "distractors": [
+        "historical",
+        "human",
+        "mortal",
+        "conditioned",
+        "ordinary",
+        "fallible"
+      ],
+      "quizQuestion": "The Mahasanghika school (which emerged from the first Buddhist schism) held that the historical Buddha was actually a what kind of being — beyond ordinary human existence?",
+      "explanation": "The Mahasanghika's Lokottaravada held the historical Buddha was a transcendent (lokottara), supramundane being whose earthly life was a display. This idea — that Buddhas exist beyond the ordinary world — is seen by scholars as an early source for some Mahayana developments, including the concept of multiple simultaneous Buddhas.",
+      "wowFactor": "The seeds of Mahayana Buddhism — with its cosmic Buddhas and divine bodhisattvas — may have been planted by a single schism in the Buddhist community less than 200 years after the Buddha's death.",
+      "statement": "The Mahasanghika school's Lokottaravada held the Buddha was a transcendent, supramundane being — ideas later developed in Mahayana Buddhism.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mahasamghika",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "mahasanghika",
+        "buddhism",
+        "early schools",
+        "mahayana origins"
+      ]
+    },
+    {
+      "id": "philosophy_ec_sarvastivada_teaching",
+      "correctAnswer": "all exists",
+      "acceptableAlternatives": [
+        "sarvam asti",
+        "dharmas exist in all three times",
+        "everything exists"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 4,
+      "funScore": 5,
+      "distractors": [
+        "mind-only",
+        "everything is empty",
+        "nothing is permanent",
+        "consciousness is primary",
+        "only the present exists",
+        "all is illusion"
+      ],
+      "quizQuestion": "The Sarvastivada school's characteristic teaching — 'sarvam asti' — holds that dharmas (fundamental factors of existence) have reality in what time frames?",
+      "explanation": "Sarvastivada's defining doctrine is that dharmas (fundamental existents) possess intrinsic reality (svabhava) in all three times: past, present, and future — not just the present. Nagarjuna's Mulamadhyamakakarika directly targets this svabhava doctrine, arguing that if dharmas had inherent existence, change would be impossible.",
+      "wowFactor": "Nagarjuna's entire philosophy of emptiness was developed as a systematic refutation of one school's claim that the basic building blocks of reality exist in the past, present, AND future simultaneously.",
+      "statement": "Sarvastivada's 'sarvam asti' doctrine holds that dharmas (fundamental factors) possess intrinsic reality across all three time periods — past, present, and future.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sarvastivada",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "sarvastivada",
+        "buddhism",
+        "early schools",
+        "metaphysics"
+      ]
+    },
+    {
+      "id": "philosophy_ec_lankavatara_alayavijnana",
+      "correctAnswer": "store-consciousness",
+      "acceptableAlternatives": [
+        "alayavijnana",
+        "ālayavijñāna",
+        "repository consciousness",
+        "eighth consciousness"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 4,
+      "funScore": 6,
+      "distractors": [
+        "mind-only",
+        "Buddha-nature",
+        "emptiness",
+        "dependent origination",
+        "non-self",
+        "nirvana"
+      ],
+      "quizQuestion": "What Yogacara concept, prominently featured in the Lankavatara Sutra, refers to the 'eighth consciousness' that stores karmic seeds and underlies all conscious experience?",
+      "explanation": "Alayavijnana ('store-consciousness') is the eighth consciousness in Yogacara psychology — a kind of karmic repository that stores 'seeds' (bija) of past actions, which then ripen into present and future experiences. This concept bridges the mind-only doctrine with an explanation of how karma persists without a permanent self.",
+      "wowFactor": "Yogacara's 'store-consciousness' is an ancient Indian attempt to solve the same problem neuroscience tackles today: how does memory and personality persist without requiring a permanent unchanging soul?",
+      "statement": "Alayavijnana ('store-consciousness') is Yogacara's eighth consciousness — a karmic repository that stores seeds of past actions, explaining continuity without a permanent self.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lankavatarasutra",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "yogacara",
+        "buddhism",
+        "mahayana",
+        "consciousness"
+      ]
+    },
+    {
+      "id": "philosophy_ec_prince_shotoku_constitution",
+      "correctAnswer": "Japan",
+      "acceptableAlternatives": [
+        "Yamato Japan",
+        "ancient Japan"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "distractors": [
+        "Korea",
+        "China",
+        "Vietnam",
+        "Tibet",
+        "India",
+        "Cambodia"
+      ],
+      "quizQuestion": "Prince Shotoku (574–622 CE) issued a Seventeen-Article Constitution opening with 'Venerate the Three Treasures' — making Buddhism a state ideology in which country?",
+      "explanation": "Prince Shotoku was regent of Japan under Empress Suiko. His Seventeen-Article Constitution (604 CE) blended Confucian ethics and Buddhist piety. Buddhism had reached Japan from the Korean kingdom of Baekje in 538 or 552 CE. Shotoku built the Horyuji temple (607 CE), one of the world's oldest surviving wooden structures.",
+      "wowFactor": "Prince Shotoku encoded 'venerate the Buddha, Dharma, and Sangha' into Japan's founding constitution — making philosophical Buddhism a matter of state law 1,400 years ago.",
+      "statement": "Prince Shotoku issued Japan's Seventeen-Article Constitution (604 CE), establishing Buddhist-Confucian principles as state ideology.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Prince_Shotoku",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "japan",
+        "east asia transmission",
+        "prince shotoku"
+      ]
+    },
+    {
+      "id": "philosophy_ec_padmasambhava_tibet",
+      "correctAnswer": "Padmasambhava",
+      "acceptableAlternatives": [
+        "Guru Rinpoche",
+        "Precious Teacher"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "ancient_philosopher_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "Nagarjuna",
+        "Asanga",
+        "Shantarakshita",
+        "Atisha",
+        "Milarepa",
+        "Tsongkhapa"
+      ],
+      "quizQuestion": "Which 8th-century figure, known in Tibetan as Guru Rinpoche, introduced Vajrayana Buddhism to Tibet and designed Samye — the first Buddhist monastery in Tibet?",
+      "explanation": "Padmasambhava (Guru Rinpoche) came to Tibet during the reign of King Trisong Detsen (c. 760–774 CE) and designed Samye Monastery, the first in Tibet. He, the king, and Shantarakshita together created the Tibetan Canon by translating Buddhist texts. He is the founding figure of the Nyingma school.",
+      "wowFactor": "Padmasambhava is credited with 'taming' the pre-Buddhist spirits of Tibet and converting them into protectors of Buddhism — making him the legendary architect of an entirely new Buddhist culture.",
+      "statement": "Padmasambhava (Guru Rinpoche) introduced Vajrayana Buddhism to Tibet in the 8th century CE, founding the Nyingma school and designing Samye Monastery.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Padmasambhava",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "tibet",
+        "vajrayana",
+        "transmission",
+        "padmasambhava"
+      ]
+    },
+    {
+      "id": "philosophy_ec_confucianism_school",
+      "correctAnswer": "Confucianism",
+      "acceptableAlternatives": [
+        "Ru tradition",
+        "Rujia",
+        "Kongism"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "school_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "distractors": [
+        "Daoism",
+        "Mohism",
+        "Legalism",
+        "School of Names",
+        "Buddhism",
+        "Yin-Yang School"
+      ],
+      "quizQuestion": "Which Chinese philosophical tradition, associated with the Analects, emphasizes ren (benevolence), li (ritual propriety), filial piety, and the cultivation of the junzi (exemplary person)?",
+      "explanation": "Confucianism (the Ru tradition) is arguably the most influential East Asian philosophical tradition. The SEP describes its founder as 'arguably the most significant thinker in East Asian history.' Its core concerns are personal virtue, ritual propriety, family relationships, and governance.",
+      "wowFactor": "Confucianism governed the education system, civil service, family structure, and social ethics of China for over 2,000 years — the longest-lasting philosophical influence in human history.",
+      "statement": "Confucianism (the Ru tradition) centers on ren, li, filial piety, and cultivating the junzi, shaping East Asian culture for over two millennia.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/confucius/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "confucianism",
+        "china",
+        "overview"
+      ]
+    },
+    {
+      "id": "philosophy_ec_daoism_school",
+      "correctAnswer": "Daoism",
+      "acceptableAlternatives": [
+        "Taoism",
+        "Daojia",
+        "philosophical Daoism"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "school_names",
+      "difficulty": 1,
+      "funScore": 6,
+      "distractors": [
+        "Confucianism",
+        "Mohism",
+        "Legalism",
+        "Buddhism",
+        "Yin-Yang School",
+        "School of Names"
+      ],
+      "quizQuestion": "Which Chinese philosophical tradition, associated with the Daodejing and Zhuangzi, emphasizes the Dao (Way), wu wei (non-action), ziran (naturalness), and harmony with the natural order?",
+      "explanation": "Philosophical Daoism (Daojia) traces its origins to the Daodejing, attributed to Laozi, and is developed in the Zhuangzi and Liezi. Its core concepts — the Dao, wu wei, and ziran — influenced both Chan (Zen) Buddhism and Chinese literati culture for millennia.",
+      "wowFactor": "Daoism's core teaching is that the most effective action is often no action — a message so counterintuitive that philosophers are still debating what it means 2,500 years later.",
+      "statement": "Philosophical Daoism emphasizes the Dao, wu wei (non-action), and ziran (naturalness) as the path to living in harmony with the natural order.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/laozi/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "daoism",
+        "china",
+        "overview"
+      ]
+    },
+    {
+      "id": "philosophy_ec_buddhism_school",
+      "correctAnswer": "Buddhism",
+      "acceptableAlternatives": [
+        "Buddhist philosophy"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "school_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "distractors": [
+        "Jainism",
+        "Hinduism",
+        "Vedanta",
+        "Samkhya",
+        "Mimamsa",
+        "Charvaka"
+      ],
+      "quizQuestion": "Which Indian philosophical and religious tradition, founded by Siddhartha Gautama, is organized around the Four Noble Truths, Eightfold Path, anatta, and nirvana?",
+      "explanation": "Buddhism was founded by Siddhartha Gautama (the Buddha, fl. c. 450 BCE) and became one of the world's major philosophical traditions. The SEP treats the Buddha as a philosopher whose analysis of suffering involves sophisticated claims about the nature of persons and knowledge.",
+      "wowFactor": "Buddhism is the only major world religion whose founder explicitly described his own teaching as a philosophical analysis of suffering with an empirically testable cure.",
+      "statement": "Buddhism, founded by Siddhartha Gautama (the Buddha), is organized around the Four Noble Truths, the Eightfold Path, and the doctrines of anatta and nirvana.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/buddha/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "india",
+        "overview"
+      ]
+    },
+    {
+      "id": "philosophy_ec_jainism_school",
+      "correctAnswer": "Jainism",
+      "acceptableAlternatives": [
+        "Jain philosophy",
+        "Jaina philosophy"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "school_names",
+      "difficulty": 1,
+      "funScore": 6,
+      "distractors": [
+        "Buddhism",
+        "Hinduism",
+        "Charvaka",
+        "Samkhya",
+        "Vedanta",
+        "Nyaya"
+      ],
+      "quizQuestion": "Which Indian philosophical tradition, associated with Mahavira, is distinctive for its doctrines of ahimsa (non-violence), anekantavada (many-sidedness), and syadvada (conditional predication)?",
+      "explanation": "Jainism combines radical non-violence (ahimsa), metaphysical pluralism (anekantavada), and rigorous monastic practice. The SEP notes Jain philosophers are 'particularly renowned for developing a realist epistemology centered on many-sidedness.' Its influence on Indian ethics, particularly on Gandhi, has been profound.",
+      "wowFactor": "Jainism's philosophical tradition is so rigorous that its monks can become professional logicians — their debate system defeated Hindu and Buddhist opponents across centuries of Indian philosophical tournaments.",
+      "statement": "Jainism is distinctive for ahimsa (non-violence), anekantavada (many-sidedness), and the five great vows of its monastic tradition.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/jaina-philosophy/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "jainism",
+        "india",
+        "overview"
+      ]
+    },
+    {
+      "id": "philosophy_ec_hui_shi_paradox",
+      "correctAnswer": "Hui Shi",
+      "acceptableAlternatives": [
+        "Huizi",
+        "Hui Shi of Song"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "ancient_philosopher_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "distractors": [
+        "Gongsun Long",
+        "Zhuangzi",
+        "Zou Yan",
+        "Laozi",
+        "Mozi",
+        "Han Feizi"
+      ],
+      "quizQuestion": "Which School of Names philosopher (c. 370–310 BCE), known for paradoxes like 'heaven and earth are equally low; mountains and marshes are equally level,' was Zhuangzi's closest intellectual rival?",
+      "explanation": "Hui Shi was a government minister and dialectician whose ten paradoxes explored the relativity of distinctions. His texts are lost — the paradoxes survive only in the Zhuangzi. Zhuangzi regarded him as his greatest intellectual adversary and reportedly mourned his death deeply.",
+      "wowFactor": "When Hui Shi died, Zhuangzi said he had lost his whetstone — the friend who sharpened his mind. Even 2,400 years ago, philosophers understood that a great opponent makes you a better thinker.",
+      "statement": "Hui Shi's ten paradoxes — preserved only in the Zhuangzi — explored the relativity of spatial and temporal distinctions; he was Zhuangzi's great intellectual rival.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/school-names/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "school of names",
+        "china",
+        "paradox",
+        "hui shi"
+      ]
+    },
+    {
+      "id": "philosophy_ec_mimamsa_vedas",
+      "correctAnswer": "Mimamsa",
+      "acceptableAlternatives": [
+        "Purva Mimamsa",
+        "Mimamsa school"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "school_names",
+      "difficulty": 3,
+      "funScore": 4,
+      "distractors": [
+        "Vedanta",
+        "Nyaya",
+        "Vaisheshika",
+        "Samkhya",
+        "Yoga",
+        "Charvaka"
+      ],
+      "quizQuestion": "Which Hindu darshana specializes in the correct interpretation of Vedic ritual injunctions, holding that the Vedas are eternal and authorless (apauruseya)?",
+      "explanation": "Mimamsa ('investigation') focuses on Vedic ritual hermeneutics, holding that the Vedas are eternal, authorless, and self-validating. Correct performance of Vedic ritual (following proper injunctions) achieves svarga (heaven). It developed a sophisticated philosophy of language, arguing that word-meaning relationships are eternal.",
+      "wowFactor": "Mimamsa philosophers argued that the Vedas have no author — not even God wrote them — making Vedic authority independent of any creator deity.",
+      "statement": "Mimamsa holds that the Vedas are eternal and authorless (apauruseya), and focuses on correct interpretation of ritual injunctions to achieve liberation.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mimamsa",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "mimamsa",
+        "hindu philosophy",
+        "india",
+        "vedas"
+      ]
+    },
+    {
+      "id": "philosophy_ec_nagarjuna_description",
+      "correctAnswer": "Nagarjuna",
+      "acceptableAlternatives": [
+        "Nāgārjuna"
+      ],
+      "chainThemeId": 1,
+      "subDeckId": "eastern_classical",
+      "answerTypePoolId": "ancient_philosopher_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "Asanga",
+        "Vasubandhu",
+        "Chandrakirti",
+        "Dignaga",
+        "Dharmakirti",
+        "Buddhapalita"
+      ],
+      "quizQuestion": "Which Mahayana philosopher (c. 150–250 CE), described by the SEP as 'the most important Buddhist philosopher after the historical Buddha himself,' founded the Madhyamaka school?",
+      "explanation": "Nagarjuna lived in southern India and founded the Madhyamaka school through his Mulamadhyamakakarika, arguing all phenomena are empty (sunyata) of inherent existence. His philosophical influence extended through Candrakirti to Tibetan Buddhism and through the Madhyamaka-Chan synthesis to Zen.",
+      "wowFactor": "Nagarjuna's influence on Buddhist philosophy is so profound that nearly every Buddhist school for 2,000 years has had to either follow him or explain why they disagree with him.",
+      "statement": "Nagarjuna (c. 150–250 CE) founded the Madhyamaka school of Mahayana Buddhism, whose sunyata doctrine influenced all subsequent Buddhist philosophy.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/nagarjuna/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "buddhism",
+        "mahayana",
+        "madhyamaka",
+        "nagarjuna"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which philosophical school, founded by Nagarjuna, holds that all phenomena are empty (sunyata) of inherent existence and became the official philosophy of Tibetan Buddhism?",
+          "correctAnswer": "Madhyamaka",
+          "distractors": [
+            "Yogacara",
+            "Theravada",
+            "Sarvastivada",
+            "Mahasanghika",
+            "Zen",
+            "Pure Land"
+          ]
+        }
+      ]
+    }
+  ]
+}

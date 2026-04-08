@@ -1,0 +1,1284 @@
+deck_id: philosophy
+sub_deck_id: continental_tradition
+name: "Continental Tradition"
+domain: philosophy
+sub_domain: continental_tradition
+target_facts: 45
+minimum_facts: 40
+data_sources:
+  - name: Stanford Encyclopedia of Philosophy (SEP)
+    url: https://plato.stanford.edu/
+    license: fair use / open access
+    usage: biographical details, key doctrines, publication dates, philosophical concepts
+  - name: Internet Encyclopedia of Philosophy (IEP)
+    url: https://iep.utm.edu/
+    license: fair use / open access
+    usage: supplementary biographical and doctrinal details
+  - name: Wikipedia
+    url: https://en.wikipedia.org/
+    license: CC-BY-SA-4.0
+    usage: birth/death dates, key works, cross-reference
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: structured data (dates, QIDs, relationships)
+
+# ============================================================
+# SOURCE DATA — 6 thematic groups
+# All facts verified against SEP/IEP/Wikipedia URLs per entry.
+# Workers MUST copy facts FROM this verified data — never invent.
+# ============================================================
+source_data:
+
+  # ----------------------------------------------------------
+  # GROUP 1: Phenomenology (~7 entries)
+  # ----------------------------------------------------------
+  phenomenology:
+
+    Edmund_Husserl:
+      dates: "1859–1938"
+      school: phenomenology
+      key_works:
+        - "Logical Investigations (1900–1901)"
+        - "Ideas I: Ideas Pertaining to a Pure Phenomenology (1913)"
+        - "Cartesian Meditations (1931)"
+        - "The Crisis of European Sciences and Transcendental Phenomenology (1936, posthumous full pub. 1954)"
+      key_doctrines: >
+        Founding father of phenomenology. Intentionality: all consciousness is consciousness
+        of something (derived from Brentano). The epoché (phenomenological reduction):
+        bracketing of the natural attitude to reveal pure transcendental consciousness.
+        Eidetic reduction: intuiting essential structures (essences) of experiences.
+        Lebenswelt (life-world): the pre-theoretical world of lived experience, central in
+        the Crisis. Noesis (act of consciousness) / noema (intentional object). Motto: "back
+        to the things themselves" (Zu den Sachen selbst). Transcendental idealism in the
+        Ideas period. Influenced Heidegger, Sartre, Merleau-Ponty, Stein, and Gadamer.
+      students_or_influences:
+        - "Edith Stein (research assistant)"
+        - "Martin Heidegger (student, later critic)"
+        - "Eugen Fink (assistant)"
+        - "Roman Ingarden"
+        - "Max Scheler (colleague)"
+      notes: >
+        Born April 8, 1859, Prossnitz (now Prostějov, Czech Republic); died April 26, 1938,
+        Freiburg. Studied mathematics under Weierstrass in Berlin; studied philosophy under
+        Brentano in Vienna. Professor at Halle (1887–1900), Göttingen (1901–1916),
+        Freiburg (1916–1928). His papers were smuggled to Belgium before Nazi book-burning.
+      source_url: "https://plato.stanford.edu/entries/husserl/"
+      wikidata: "Q58586"
+
+    Max_Scheler:
+      dates: "1874–1928"
+      school: phenomenology, philosophical anthropology
+      key_works:
+        - "Formalism in Ethics and Non-Formal Ethics of Values (1913–1916)"
+        - "The Nature of Sympathy (1913)"
+        - "The Human Place in the Cosmos (1928)"
+      key_doctrines: >
+        Pioneer of early phenomenology; developed material (non-formal) value-ethics as
+        an alternative to Kant's formal ethics. Values have an objective, hierarchical order
+        grasped through emotional intuition (Wertfühlen). Philosophical anthropology: asked
+        what is distinctive about the human being in the cosmos. Work on sympathy, empathy,
+        and solidarity. Later moved toward pantheism. Scheler's work was suppressed by
+        the Nazis due to his Jewish heritage.
+      students_or_influences:
+        - "Influenced Edith Stein, Karol Wojtyla (John Paul II), Hartmann"
+      notes: >
+        Born August 22, 1874, Munich; died May 19, 1928, Frankfurt. Associated with
+        the Göttingen phenomenological circle.
+      source_url: "https://plato.stanford.edu/entries/scheler/"
+      wikidata: "Q76521"
+
+    Edith_Stein:
+      dates: "1891–1942"
+      school: phenomenology, Christian metaphysics
+      key_works:
+        - "On the Problem of Empathy (1917; her doctoral dissertation)"
+        - "Finite and Eternal Being (completed 1936, pub. 1950)"
+        - "The Science of the Cross (1942)"
+      key_doctrines: >
+        Realist phenomenologist of the Göttingen school. Doctoral thesis on empathy
+        (Einfühlung) as a mode of knowing other persons — a foundational contribution
+        to intersubjective phenomenology. Served as Husserl's research assistant in
+        Freiburg 1916–1918. Converted from Judaism to Catholicism in 1922; entered
+        the Carmelite order as Sister Teresa Benedicta of the Cross in 1933.
+        Later work integrated Husserlian phenomenology with Thomist metaphysics.
+        Killed at Auschwitz, August 9, 1942. Beatified 1987, canonized 1998 by John Paul II;
+        declared co-patron of Europe 1999.
+      students_or_influences:
+        - "Husserl (teacher)"
+        - "Ingarden, Conrad-Martius (colleagues)"
+      notes: >
+        Born October 12, 1891, Breslau (now Wrocław, Poland); died August 9, 1942,
+        Auschwitz-Birkenau.
+      source_url: "https://plato.stanford.edu/entries/stein/"
+      wikidata: "Q76749"
+
+    Roman_Ingarden:
+      dates: "1893–1970"
+      school: phenomenology, ontology, aesthetics
+      key_works:
+        - "The Literary Work of Art (1931)"
+        - "The Ontology of the Work of Art (1962)"
+        - "The Controversy over the Existence of the World (1947–1948)"
+      key_doctrines: >
+        Polish phenomenologist; student of Husserl and critic of Husserl's transcendental
+        idealism, defending ontological realism. Best known for ontology of the literary
+        work: the literary work is an intentional object with four strata (sounds, semantic
+        units, represented objects, schematized aspects). Advocated aesthetic concretization
+        (the reader "fills in" the work's indeterminate spots). His controversy with Husserl
+        over idealism vs. realism is a central episode in phenomenology.
+      students_or_influences:
+        - "Husserl (teacher)"
+        - "Influenced Polish analytic philosophy and aesthetics"
+      notes: >
+        Born February 5, 1893, Kraków; died June 14, 1970, Kraków.
+      source_url: "https://en.wikipedia.org/wiki/Roman_Ingarden"
+      wikidata: "Q355355"
+
+    Maurice_Merleau-Ponty:
+      dates: "1908–1961"
+      school: phenomenology, existentialism
+      key_works:
+        - "The Structure of Behavior (1942)"
+        - "Phenomenology of Perception (1945)"
+        - "The Visible and the Invisible (1968, posthumous)"
+        - "Signs (1960)"
+      key_doctrines: >
+        Leading figure in both phenomenology and existentialism; central contribution is
+        the philosophy of embodiment. Against Cartesian dualism: the body is the subject
+        of perception, not merely an object in the world. The body-schema (schéma corporel):
+        pre-reflective motor awareness of the body as a unified whole. The flesh (la chair):
+        ontological concept in the late work — both perceiver and perceived are made of
+        the same flesh; chiasm (chiasme): the intertwining of seer and seen, touching and
+        touched. The Visible and the Invisible introduced the concept of "wild being"
+        (l'être sauvage). Integrated Gestalt psychology with Husserlian phenomenology.
+        Co-editor of Les Temps Modernes with Sartre; later broke with Sartre politically.
+      students_or_influences:
+        - "Influenced Foucault, Derrida, Deleuze"
+        - "Teacher of Ricoeur (indirectly)"
+      notes: >
+        Born March 14, 1908, Rochefort-sur-Mer; died May 3, 1961, Paris.
+        Elected to the Collège de France 1952. Died at his desk of a stroke at age 53.
+        Cross-reference: also listed under existentialism.
+      source_url: "https://plato.stanford.edu/entries/merleau-ponty/"
+      wikidata: "Q212639"
+
+    Edith_Stein_note: "See entry above — also cross-referenced in phenomenology"
+
+    Eugen_Fink:
+      dates: "1905–1975"
+      school: phenomenology
+      key_works:
+        - "Sixth Cartesian Meditation (written 1932, pub. 1988)"
+        - "Play as Symbol of the World (1960)"
+      key_doctrines: >
+        Husserl's last assistant at Freiburg (1928–1938); co-authored with Husserl in the
+        final years. Known for the Sixth Cartesian Meditation (written at Husserl's request
+        as an extension of the Cartesian Meditations). Later developed an independent
+        philosophy of play and cosmology. Also engaged in dialogue with Heidegger.
+      notes: >
+        Born December 11, 1905, Konstanz; died July 25, 1975, Freiburg.
+      source_url: "https://en.wikipedia.org/wiki/Eugen_Fink"
+      wikidata: "Q213522"
+
+  # ----------------------------------------------------------
+  # GROUP 2: Existentialism (~10 entries)
+  # ----------------------------------------------------------
+  existentialism:
+
+    Martin_Heidegger:
+      dates: "1889–1976"
+      school: existentialism, phenomenology, ontology
+      key_works:
+        - "Being and Time (Sein und Zeit, 1927)"
+        - "What Is Metaphysics? (1929)"
+        - "Letter on Humanism (Brief über den Humanismus, 1947)"
+        - "The Origin of the Work of Art (1935/1950)"
+        - "Introduction to Metaphysics (1953)"
+        - "Black Notebooks (Schwarze Hefte, written 1931–1970, pub. from 2014)"
+      key_doctrines: >
+        Central project: the question of Being (die Seinsfrage) — the meaning of Being
+        as such, which Western philosophy since Plato has forgotten (Seinsvergessenheit).
+        Dasein: the specifically human mode of being, characterized by being-in-the-world.
+        Being-in-the-world: human existence is always already embedded in a practical,
+        social world — refuting Cartesian subject-object split. Thrownness (Geworfenheit):
+        we find ourselves always already thrown into a world, a language, a historical
+        situation we did not choose. The "they" (das Man): inauthentic everyday conformity
+        to anonymous social norms. Being-toward-death (Sein zum Tode): authentic existence
+        requires owning one's own mortality. Authenticity (Eigentlichkeit): resolute
+        self-appropriation of one's existence. The later "turn" (die Kehre): shift from
+        analysis of Dasein to meditation on Being itself, language, technology, and art.
+        Language as "the house of Being." "Only a god can save us" (Spiegel interview, 1966,
+        pub. posthumously 1976). Technology as revealing-as-enframing (Gestell).
+        NAZI AFFILIATION: Rector of Freiburg University 1933–1934; joined the Nazi Party
+        May 1, 1933; did not publicly renounce Nazism. The Black Notebooks (published
+        from 2014) contain antisemitic remarks and have intensified the scholarly controversy
+        about the relationship between his political commitments and his philosophy.
+      students_or_influences:
+        - "Hannah Arendt (student and lover)"
+        - "Hans-Georg Gadamer (student)"
+        - "Herbert Marcuse (student)"
+        - "Emmanuel Levinas (attended lectures)"
+        - "Keiji Nishitani (studied under Heidegger 1937–1939)"
+        - "Influenced Sartre, Derrida, Foucault, Deleuze"
+      notes: >
+        Born September 26, 1889, Meßkirch, Baden; died May 26, 1976, Freiburg.
+        His relationship with his student Hannah Arendt is documented. The "Black Notebooks"
+        controversy: published from 2014 by Klostermann, they contain passages that scholars
+        interpret as antisemitic, particularly about "world Jewry" and metaphysical rootlessness.
+        Peter Trawny (editor) coined the term "seinsgeschichtlicher Antisemitismus."
+      source_url: "https://plato.stanford.edu/entries/heidegger/"
+      wikidata: "Q48301"
+
+    Karl_Jaspers:
+      dates: "1883–1969"
+      school: existentialism (Existenzphilosophie), psychiatry-turned-philosophy
+      key_works:
+        - "General Psychopathology (1913)"
+        - "Philosophy (3 vols., 1932)"
+        - "Man in the Modern Age (1931)"
+        - "The Origin and Goal of History (1949)"
+        - "The Future of Germany (1967)"
+      key_doctrines: >
+        Began as a psychiatrist, converted to philosophy in the early 1920s. Existenz:
+        authentic selfhood achieved through confrontation with "boundary situations"
+        (Grenzsituationen) — death, suffering, struggle, and guilt — which cannot be
+        overcome but must be faced. The encompassing (das Umgreifende): the horizon
+        within which all thought and being appears; Being itself cannot be an object.
+        Transcendence: the ground of Existenz accessible through "philosophical faith"
+        (not religious faith). The "axial age" (Achsenzeit): the period 800–200 BCE when
+        independent spiritual breakthroughs occurred simultaneously in China, India, Persia,
+        and the Mediterranean. Major post-war voice for German moral reckoning (The
+        Question of German Guilt, 1946). Influenced by Kierkegaard, Nietzsche, Kant.
+      students_or_influences:
+        - "Influenced Hannah Arendt (close friend and correspondent)"
+      notes: >
+        Born February 23, 1883, Oldenburg; died February 26, 1969, Basel.
+        Removed from professorship by Nazis in 1937; wife was Jewish.
+        Returned to teaching in 1945; emigrated to Basel in 1948.
+      source_url: "https://plato.stanford.edu/entries/jaspers/"
+      wikidata: "Q76509"
+
+    Gabriel_Marcel:
+      dates: "1889–1973"
+      school: Christian existentialism, phenomenology
+      key_works:
+        - "Metaphysical Journal (1927)"
+        - "Being and Having (1935)"
+        - "The Mystery of Being (2 vols., 1950–1951)"
+      key_doctrines: >
+        Christian existentialist; distinguished between problems (which can be solved
+        objectively) and mysteries (which involve the being of the questioner, such as
+        love, fidelity, hope, death). Being vs. having: authentic existence oriented toward
+        being rather than accumulating possessions or roles. Intersubjectivity and the
+        "I-thou" encounter (influenced by Buber). Converted to Catholicism in 1929.
+        Resisted the systematic tendencies of both Sartrean atheistic existentialism and
+        academic scholasticism.
+      notes: >
+        Born December 7, 1889, Paris; died October 8, 1973, Paris.
+        Playwright as well as philosopher.
+      source_url: "https://en.wikipedia.org/wiki/Gabriel_Marcel"
+      wikidata: "Q154145"
+
+    Jean-Paul_Sartre:
+      dates: "1905–1980"
+      school: existentialism, phenomenology
+      key_works:
+        - "Nausea (La Nausée, 1938)"
+        - "Being and Nothingness (L'Être et le Néant, 1943)"
+        - "Existentialism is a Humanism (L'existentialisme est un humanisme, 1945)"
+        - "No Exit (Huis clos, 1944)"
+        - "Critique of Dialectical Reason (Critique de la raison dialectique, 1960)"
+      key_doctrines: >
+        "Existence precedes essence": human beings first exist, encounter themselves in
+        the world, and only afterward define themselves — there is no pre-given human nature.
+        Radical freedom: consciousness is always free; we are "condemned to be free"
+        (French: condamnés à être libres). Bad faith (mauvaise foi): self-deception in which
+        one denies one's freedom, pretending one is determined by one's role or situation.
+        The for-itself (pour-soi): consciousness — characterized by nothingness, always
+        projecting toward possibilities. The in-itself (en-soi): the opaque, fully
+        determined being of things. The look (le regard): the gaze of the Other turns me
+        into an object, producing shame and alienation. "Hell is other people" (L'enfer
+        c'est les autres) from No Exit. Later work: Critique of Dialectical Reason attempted
+        to synthesize existentialism with Marxism using concepts of scarcity, seriality,
+        and the group-in-fusion. Founded Les Temps Modernes (1945). Declined Nobel Prize
+        in Literature (1964).
+      students_or_influences:
+        - "Simone de Beauvoir (lifelong partner)"
+        - "Frantz Fanon (influenced)"
+        - "Merleau-Ponty (collaborator, later estranged)"
+      notes: >
+        Born June 21, 1905, Paris; died April 15, 1980, Paris.
+        Influenced by Hegel, Husserl, Heidegger. Public intellectual, playwright, novelist.
+      source_url: "https://plato.stanford.edu/entries/sartre/"
+      wikidata: "Q9364"
+
+    Simone_de_Beauvoir:
+      dates: "1908–1986"
+      school: existentialism, feminism, phenomenology
+      key_works:
+        - "She Came to Stay (L'Invitée, 1943)"
+        - "The Ethics of Ambiguity (Pour une morale de l'ambiguïté, 1947)"
+        - "The Second Sex (Le Deuxième Sexe, 1949)"
+        - "A Very Easy Death (Une mort très douce, 1964)"
+        - "The Coming of Age (La Vieillesse, 1970)"
+      key_doctrines: >
+        "One is not born, but rather becomes, a woman" (On ne naît pas femme: on le devient)
+        — from The Second Sex, Part Two, ch. 1 (Borde/Malovany-Chevallier 2010 translation).
+        Woman is constructed as "the Other" relative to a masculine subject. Applied
+        existentialist freedom to the situation of women: women are oppressed insofar as
+        their freedom is denied or constrained by social structures and ideology.
+        The Ethics of Ambiguity: ethics must embrace rather than flee the ambiguity of
+        freedom and facticity; condemned the "spirit of seriousness" that flees freedom.
+        Original contributions to existentialism, phenomenology, and feminist philosophy —
+        not merely derivative of Sartre. Lifelong partner of Sartre; also partner of Nelson
+        Algren and others.
+      students_or_influences:
+        - "Influenced second-wave feminism globally"
+        - "Influenced Judith Butler, Betty Friedan"
+      notes: >
+        Born January 9, 1908, Paris; died April 14, 1986, Paris.
+        The Second Sex was condemned by the Vatican and placed on the Index of Forbidden Books.
+      source_url: "https://plato.stanford.edu/entries/beauvoir/"
+      wikidata: "Q7197"
+
+    Albert_Camus:
+      dates: "1913–1960"
+      school: absurdism (refused "existentialism" label)
+      key_works:
+        - "The Stranger (L'Étranger, 1942)"
+        - "The Myth of Sisyphus (Le Mythe de Sisyphe, 1942)"
+        - "The Plague (La Peste, 1947)"
+        - "The Rebel (L'Homme révolté, 1951)"
+      key_doctrines: >
+        The absurd: the confrontation between the human need for meaning and the world's
+        silence in the face of that need. Camus diagnosed three responses to the absurd:
+        (1) physical suicide — rejected as escapism; (2) philosophical suicide — adopting
+        faith or metaphysical consolation — also rejected (Kierkegaard); (3) revolt —
+        the only authentic response: living fully in defiance of absurdity without false hope.
+        "One must imagine Sisyphus happy" — final line of The Myth of Sisyphus. The Rebel:
+        political critique of revolutionary nihilism and totalitarianism; led to the
+        famous rupture with Sartre (1952). Born in French Algeria; Nobel Prize in Literature
+        (1957).
+      notes: >
+        Born November 7, 1913, Dréan (then Mondovi), Algeria; died January 4, 1960,
+        Villeblevin, France (car accident). Camus explicitly rejected the "existentialist"
+        label; he differed from Sartre by refusing to subordinate individual ethics to
+        collective ideology.
+      source_url: "https://plato.stanford.edu/entries/camus/"
+      wikidata: "Q34670"
+
+    Nikolai_Berdyaev:
+      dates: "1874–1948"
+      school: Russian existentialism, Christian personalism
+      key_works:
+        - "The Meaning of the Creative Act (1916)"
+        - "The Destiny of Man (1931)"
+        - "The Realm of Spirit and the Realm of Caesar (1951)"
+      key_doctrines: >
+        Russian religious philosopher and existentialist. Personhood and creativity
+        as the supreme values; human beings are co-creators with God. Freedom precedes
+        Being — influenced by Boehme's concept of the Ungrund (abyss prior to God).
+        Critical of both bourgeois capitalism and Soviet communism. Exiled from Soviet
+        Russia in 1922 on the "Philosophers' Steamer." Settled in Paris and became a
+        leading voice of Russian émigré thought.
+      notes: >
+        Born March 18, 1874, Kiev; died March 24, 1948, Clamart, France.
+      source_url: "https://en.wikipedia.org/wiki/Nikolai_Berdyaev"
+      wikidata: "Q184656"
+
+    Frantz_Fanon:
+      dates: "1925–1961"
+      school: existentialism, anti-colonialism, psychiatry
+      key_works:
+        - "Black Skin, White Masks (Peau noire, masques blancs, 1952)"
+        - "A Dying Colonialism (L'An V de la révolution algérienne, 1959)"
+        - "The Wretched of the Earth (Les Damnés de la Terre, 1961)"
+      key_doctrines: >
+        Born in Martinique; French-trained psychiatrist who joined the Algerian independence
+        movement (FLN). Black Skin, White Masks: phenomenological and psychoanalytic study
+        of the experience of Black colonial subjects — the psychic damage of racism and
+        internalized inferiority; analysis of the "Negrophobic" white gaze and the
+        "lactification" complex (desire to assimilate whiteness). Sartrean existentialism
+        applied to colonized peoples: decolonization requires not only political liberation
+        but psychic re-humanization. The Wretched of the Earth: theorized violence as a
+        necessary catharsis for the colonized (controversial); analyzed the pitfalls of
+        national consciousness after independence; included a preface by Sartre.
+      notes: >
+        Born July 20, 1925, Fort-de-France, Martinique; died December 6, 1961, Bethesda,
+        Maryland (leukemia). The Wretched of the Earth published weeks before his death.
+        Widely influential in postcolonial studies, Black liberation movements, and
+        anti-colonial theory globally.
+      source_url: "https://plato.stanford.edu/entries/frantz-fanon/"
+      wikidata: "Q193670"
+
+    Maurice_Merleau-Ponty_cross_ref:
+      notes: "Cross-reference — see full entry under phenomenology group above."
+
+  # ----------------------------------------------------------
+  # GROUP 3: Hermeneutics (~3 entries)
+  # ----------------------------------------------------------
+  hermeneutics:
+
+    Hans-Georg_Gadamer:
+      dates: "1900–2002"
+      school: hermeneutics, phenomenology
+      key_works:
+        - "Truth and Method (Wahrheit und Methode, 1960)"
+        - "Philosophical Hermeneutics (essays, 1976)"
+        - "The Relevance of the Beautiful (1977)"
+      key_doctrines: >
+        Definitive figure of twentieth-century hermeneutics. Truth and Method argued that
+        understanding is not a method but an event — we are always already embedded in
+        tradition. Key concepts: the hermeneutic circle — understanding a text requires
+        understanding its parts, but understanding the parts requires understanding the whole;
+        this is not a vicious circle but the structure of understanding itself.
+        Fusion of horizons (Horizontverschmelzung): genuine understanding occurs when the
+        horizon of the interpreter merges with the horizon of the text — neither is
+        unchanged. Prejudice (Vorurteil): not a bias to be overcome but the enabling
+        pre-judgments that make understanding possible (rehabilitating the Enlightenment's
+        rejected concept). The linguisticality of understanding: language is not a tool but
+        the medium in which understanding occurs ("Being that can be understood is language").
+        Dialogue as the model of understanding: understanding is always dialogical —
+        the "logic of question and answer." Strongly influenced by Heidegger and Dilthey.
+      students_or_influences:
+        - "Heidegger (teacher)"
+        - "Influenced Ricoeur, Habermas (contested), Vattimo"
+      notes: >
+        Born February 11, 1900, Marburg; died March 13, 2002, Heidelberg (age 102).
+        The Gadamer–Habermas debate on the universality of hermeneutics (1960s–1970s):
+        Habermas argued that ideology critique requires stepping outside tradition.
+      source_url: "https://plato.stanford.edu/entries/gadamer/"
+      wikidata: "Q76356"
+
+    Paul_Ricoeur:
+      dates: "1913–2005"
+      school: hermeneutics, phenomenology, philosophy of language
+      key_works:
+        - "Freud and Philosophy: An Essay on Interpretation (1965)"
+        - "The Conflict of Interpretations (1969)"
+        - "The Rule of Metaphor (1975)"
+        - "Time and Narrative (3 vols., 1983–1985)"
+        - "Oneself as Another (Soi-même comme un autre, 1990)"
+      key_doctrines: >
+        French philosopher who synthesized phenomenology, hermeneutics, and analytic
+        philosophy of language. The hermeneutics of suspicion: a phrase Ricoeur coined
+        to describe the interpretive strategies of Marx, Nietzsche, and Freud — who
+        treat surface meaning as a disguise for underlying forces (ideology, will to power,
+        unconscious desire). Contrasted with a hermeneutics of faith/restoration which
+        seeks to recover meaning. Narrative identity (identité narrative): the self is not
+        a fixed substance but a story one tells about oneself — ipse identity (who one is
+        as promised, narrated) vs idem identity (sameness over time). Time and Narrative:
+        human time is structured narratively; history and fiction are both forms of
+        narrative configuration (mimesis). Oneself as Another: ethics grounded in the
+        capable human being; influenced by Aristotle's phronesis.
+      notes: >
+        Born February 27, 1913, Valence; died May 20, 2005, Châtenay-Malabry.
+        Influenced by Gabriel Marcel, Husserl, Heidegger, Gadamer. Spent years in
+        Chicago (University of Chicago). A square in Paris named in his honor (2013).
+      source_url: "https://plato.stanford.edu/entries/ricoeur/"
+      wikidata: "Q192066"
+
+  # ----------------------------------------------------------
+  # GROUP 4: Critical Theory / Frankfurt School (~7 entries)
+  # ----------------------------------------------------------
+  critical_theory:
+
+    Max_Horkheimer:
+      dates: "1895–1973"
+      school: critical theory, Frankfurt School
+      key_works:
+        - "Traditional and Critical Theory (1937; essay)"
+        - "Eclipse of Reason (1947)"
+        - "Dialectic of Enlightenment (with Adorno, 1944/1947)"
+      key_doctrines: >
+        Director of the Institute for Social Research (Institut für Sozialforschung),
+        Frankfurt, 1930–1958 (interrupted by exile in the USA). Defined "critical theory"
+        in distinction from "traditional theory" (1937): traditional theory aims at
+        pure knowledge; critical theory aims at human emancipation. Dialectic of
+        Enlightenment (with Adorno): Enlightenment rationality, intended to liberate,
+        has regressed into myth and domination — the domination of nature leads to the
+        domination of human beings. Instrumental reason: reason reduced to calculation
+        of means, losing its critical capacity to evaluate ends. The culture industry
+        thesis (developed with Adorno): mass culture standardizes taste and enforces
+        conformity.
+      students_or_influences:
+        - "Adorno (close collaborator)"
+        - "Marcuse (colleague)"
+        - "Habermas (student of Adorno, influenced by Horkheimer)"
+      notes: >
+        Born February 14, 1895, Stuttgart; died July 7, 1973, Nuremberg.
+        The Institute went into exile in Geneva (1933), then New York (1935, Columbia),
+        then returned to Frankfurt 1950.
+      source_url: "https://plato.stanford.edu/entries/horkheimer/"
+      wikidata: "Q76826"
+
+    Theodor_W_Adorno:
+      dates: "1903–1969"
+      school: critical theory, Frankfurt School, aesthetic theory
+      key_works:
+        - "Dialectic of Enlightenment (with Horkheimer, 1944/1947)"
+        - "Minima Moralia: Reflections on Damaged Life (1951)"
+        - "Negative Dialectics (Negative Dialektik, 1966)"
+        - "Aesthetic Theory (Ästhetische Theorie, 1970, posthumous)"
+        - "Authoritarian Personality (1950, with others)"
+      key_doctrines: >
+        Negative dialectics: rejecting Hegel's reconciling dialectic (in which negation
+        leads to synthesis), Adorno insisted on the irreducible non-identity between
+        concept and object — the concept never captures its object fully. Identity thinking
+        (Identitätsdenken): the tendency to subsume particulars under universal concepts,
+        suppressing what is different — the root of intellectual and social domination.
+        The culture industry: mass-produced popular culture manufactures false needs and
+        conformity, pacifying the proletariat. "To write poetry after Auschwitz is barbaric"
+        (aus dem Essay "Kulturkritik und Gesellschaft," 1951) — later qualified but widely
+        cited as a statement on the impossibility of aesthetics after the Holocaust.
+        Aesthetic theory: art's autonomy is its critical force; genuine art negates
+        the status quo and preserves utopian possibilities.
+      students_or_influences:
+        - "Horkheimer (collaborator)"
+        - "Walter Benjamin (friend, correspondence)"
+        - "Habermas (student and assistant)"
+        - "Influenced cultural studies, musicology, postwar German thought"
+      notes: >
+        Born September 11, 1903, Frankfurt; died August 6, 1969, Visp, Switzerland.
+        Born Theodor Ludwig Wiesengrund; took mother's surname Adorno. Music critic and
+        composer as well as philosopher. The full quote: "Kulturkritik findet sich der
+        letzten Stufe der Dialektik von Kultur und Barbarei gegenüber: nach Auschwitz ein
+        Gedicht zu schreiben, ist barbarisch" (1951).
+      source_url: "https://plato.stanford.edu/entries/adorno/"
+      wikidata: "Q152388"
+
+    Walter_Benjamin:
+      dates: "1892–1940"
+      school: critical theory, cultural criticism, messianic Marxism
+      key_works:
+        - "The Work of Art in the Age of Mechanical Reproduction (1935, pub. 1936)"
+        - "Theses on the Philosophy of History (1940, posthumous)"
+        - "The Arcades Project (Passagen-Werk; unfinished, pub. 1982)"
+        - "One-Way Street (1928)"
+        - "The Origin of German Tragic Drama (1928)"
+      key_doctrines: >
+        Idiosyncratic Marxist-messianic cultural critic. Aura: the unique presence of an
+        artwork in time and space, bound to ritual and tradition; mechanical reproduction
+        destroys the aura, democratizing art but also stripping its critical distance.
+        Dialectical image (dialektisches Bild): a flash of the past that illuminates the
+        present — the method of the Arcades Project (a vast study of 19th-century Paris as
+        ur-form of modernity). Theses on the Philosophy of History: nine theses written
+        in 1940; the angel of history (Angelus Novus) is blown forward into the future by
+        the storm of progress while facing the ruins of the past; messianic time ruptures
+        the continuum of history. Benjamin-Adorno debate: Adorno criticized Benjamin's
+        ambivalence about mass culture (Brecht's influence). Corresponded with Scholem
+        on Jewish mysticism and with Adorno on aesthetics.
+      students_or_influences:
+        - "Adorno (friend, editor of posthumous work)"
+        - "Brecht (influence)"
+        - "Influenced cultural studies, media theory, postcolonial studies"
+      notes: >
+        Born July 15, 1892, Berlin; died September 26, 1940, Portbou, Spain (suicide
+        while fleeing Nazi-occupied France, fearing deportation). Stateless; his manuscripts
+        were saved by Georges Bataille at the Bibliothèque nationale.
+      source_url: "https://plato.stanford.edu/entries/benjamin/"
+      wikidata: "Q61078"
+
+    Herbert_Marcuse:
+      dates: "1898–1979"
+      school: critical theory, Frankfurt School, New Left
+      key_works:
+        - "Eros and Civilization: A Philosophical Inquiry into Freud (1955)"
+        - "One-Dimensional Man (1964)"
+        - "Repressive Tolerance (1965)"
+        - "An Essay on Liberation (1969)"
+      key_doctrines: >
+        Synthesized Hegel, Marx, and Freud. Eros and Civilization: argued against Freud's
+        pessimism — the "surplus repression" demanded by modern capitalist civilization
+        (beyond what is biologically necessary for civilization) can be overcome; a
+        non-repressive civilization based on Eros (life/pleasure) is possible.
+        One-Dimensional Man: advanced industrial society creates a "one-dimensional" world
+        in which genuine opposition is absorbed and neutralized through mass consumption,
+        the media, and technological rationality; the working class has been integrated
+        and is no longer a revolutionary subject. Repressive tolerance: in a repressive
+        society, tolerance of opposing views serves the status quo; genuine liberation
+        may require intolerance of oppressive forces. Became a hero of the 1960s student
+        movements (the "three Ms": Marx, Mao, Marcuse).
+      notes: >
+        Born July 19, 1898, Berlin; died July 29, 1979, Starnberg, Germany.
+        Studied under Heidegger in Freiburg; later repudiated Heidegger's Nazism.
+        Remained in the United States after the war; taught at Brandeis and UC San Diego.
+      source_url: "https://plato.stanford.edu/entries/marcuse/"
+      wikidata: "Q60030"
+
+    Jurgen_Habermas:
+      dates: "1929–2026"
+      school: critical theory, second-generation Frankfurt School, discourse ethics
+      key_works:
+        - "The Structural Transformation of the Public Sphere (1962)"
+        - "Knowledge and Human Interests (1968)"
+        - "The Theory of Communicative Action (2 vols., 1981)"
+        - "Moral Consciousness and Communicative Action (1983)"
+        - "Between Facts and Norms (1992)"
+      key_doctrines: >
+        Leading second-generation Frankfurt School theorist. The public sphere
+        (Öffentlichkeit): the bourgeois public sphere (18th c.) was a space of rational
+        discourse between private persons on matters of public concern — subsequently
+        colonized and degraded by commercial mass media and the welfare state.
+        Communicative rationality: distinguished from instrumental rationality (means-ends
+        calculation) — communicative reason is oriented toward mutual understanding
+        (Verständigung) through language. Theory of Communicative Action: the lifeworld
+        (Lebenswelt) — the shared background of communicative practices and cultural
+        meanings — is threatened by colonization by system (market and state bureaucracy),
+        expressed as pathologies like anomie and meaninglessness. Discourse ethics:
+        a norm is morally valid if all those affected could agree to it in an ideal speech
+        situation (idealer Sprechakt) — free from coercion, with equal participation.
+        Engaged in debates with Gadamer (hermeneutics), Foucault (power), Rawls, and
+        continental postmodernism.
+      notes: >
+        Born June 18, 1929, Düsseldorf; died February 2026. Student and assistant of
+        Adorno. Professor at Frankfurt 1964–1994. Vigorous public intellectual.
+        SEP entry published September 15, 2023.
+      source_url: "https://plato.stanford.edu/entries/habermas/"
+      wikidata: "Q76357"
+
+    Erich_Fromm:
+      dates: "1900–1980"
+      school: Frankfurt School (early), humanistic psychoanalysis
+      key_works:
+        - "Escape from Freedom (1941)"
+        - "Man for Himself (1947)"
+        - "The Sane Society (1955)"
+        - "The Art of Loving (1956)"
+      key_doctrines: >
+        Synthesized Freudian psychoanalysis and Marxism from a humanist standpoint.
+        Escape from Freedom: the rise of fascism reflects a psychological flight from
+        the anxiety of modern freedom into authoritarianism, destructiveness, or
+        conformism — the "authoritarian character." The Art of Loving argued that
+        love is an art requiring practice, knowledge, and discipline — not a passive
+        feeling; distinguished different forms: brotherly love, erotic love, maternal love,
+        self-love, love of God. Necrophilia (psychological): orientation toward dead,
+        mechanical, bureaucratic things — vs. biophilia, orientation toward life.
+        Departed from the Frankfurt School mainstream; less focused on aesthetic theory.
+      notes: >
+        Born March 23, 1900, Frankfurt; died March 18, 1980, Muralto, Switzerland.
+        Left Germany 1934; settled in New York; later moved to Mexico City and Switzerland.
+        Associated with the Frankfurt School in its early period but later diverged.
+      source_url: "https://en.wikipedia.org/wiki/Erich_Fromm"
+      wikidata: "Q57085"
+
+    Axel_Honneth:
+      dates: "1949–present"
+      school: critical theory, third-generation Frankfurt School
+      key_works:
+        - "The Critique of Power (1985)"
+        - "The Struggle for Recognition (Kampf um Anerkennung, 1992)"
+        - "Disrespect: The Normative Foundations of Critical Theory (2003)"
+        - "The Pathologies of Individual Freedom: Hegel's Social Theory (2001)"
+      key_doctrines: >
+        Third-generation Frankfurt School; director of the Institute for Social Research
+        2001–2009. Recognition (Anerkennung): following Hegel, argued that social struggles
+        are fundamentally struggles for recognition — love (in family), rights (in civil
+        society), and solidarity (in communities of value). Disrespect (Missachtung) —
+        denial of recognition — is the primary source of social pathologies and the
+        motivating force of social movements. Extended and modified Habermas's framework
+        by grounding it in intersubjective relations of recognition rather than communicative
+        rationality alone. Influenced by Hegel's early Jena writings on recognition.
+      notes: >
+        Born July 18, 1949, Essen, Germany. Professor at Goethe University Frankfurt and
+        Columbia University. Director of the Institute for Social Research, Frankfurt,
+        2001–2009.
+      source_url: "https://en.wikipedia.org/wiki/Axel_Honneth"
+      wikidata: "Q60735"
+
+  # ----------------------------------------------------------
+  # GROUP 5: Structuralism & Post-Structuralism (~13 entries)
+  # ----------------------------------------------------------
+  structuralism_post:
+
+    Ferdinand_de_Saussure:
+      dates: "1857–1913"
+      school: linguistics, structuralism (foundational)
+      key_works:
+        - "Course in General Linguistics (Cours de linguistique générale, 1916; posthumous — compiled by students)"
+      key_doctrines: >
+        Swiss linguist and semiotician whose posthumously compiled lectures became the
+        foundation of 20th-century structuralism. Key distinctions: langue (the abstract
+        linguistic system shared by a community) vs. parole (actual individual speech acts).
+        Signifier (signifiant — the sound-image) vs. signified (signifié — the concept):
+        the sign is the arbitrary union of signifier and signified — no natural connection
+        between sound and meaning. Synchrony vs. diachrony: linguistics should study
+        language as a system at a given moment (synchronic) rather than only historically
+        (diachronic). Value: meaning is relational — signs derive meaning from their
+        differences from other signs, not from positive content. "In language there are only
+        differences without positive terms." This structural relational view became the
+        philosophical foundation for Lévi-Strauss, Barthes, Lacan, and Derrida.
+      notes: >
+        Born November 26, 1857, Geneva; died February 22, 1913, Vufflens-le-Château.
+        The Course was not written by Saussure himself but compiled from student notes
+        by Charles Bally and Albert Sechehaye after his death.
+      source_url: "https://en.wikipedia.org/wiki/Ferdinand_de_Saussure"
+      wikidata: "Q13230"
+
+    Claude_Levi-Strauss:
+      dates: "1908–2009"
+      school: structural anthropology
+      key_works:
+        - "The Elementary Structures of Kinship (1949)"
+        - "Tristes Tropiques (1955)"
+        - "Structural Anthropology (1958)"
+        - "The Savage Mind (La Pensée sauvage, 1962)"
+        - "Mythologiques (4 vols., 1964–1971), including The Raw and the Cooked (1964)"
+      key_doctrines: >
+        Applied Saussurean structural linguistics to anthropology and mythology. The
+        fundamental structures of myth, kinship, and totemism are binary oppositions
+        (raw/cooked, nature/culture) that reflect universal structures of the human mind.
+        The savage mind (pensée sauvage): "primitive" thinking is not inferior but
+        employs a different logic — bricolage (using available materials creatively) —
+        as opposed to modern engineering (designing from scratch). Totemism: not a
+        religious phenomenon but a structural system of classification. Influential debate
+        with Sartre about history and structure (The Savage Mind, ch. 9).
+      notes: >
+        Born November 28, 1908, Brussels; died October 30, 2009, Paris (age 100).
+        Elected to the Académie française 1973. One of the most influential intellectuals
+        of the 20th century.
+      source_url: "https://en.wikipedia.org/wiki/Claude_Lévi-Strauss"
+      wikidata: "Q128126"
+
+    Roland_Barthes:
+      dates: "1915–1980"
+      school: semiology, structuralism, post-structuralism
+      key_works:
+        - "Writing Degree Zero (1953)"
+        - "Mythologies (1957)"
+        - "Elements of Semiology (1964)"
+        - "S/Z (1970)"
+        - "The Death of the Author (essay, 1967/1968)"
+        - "The Pleasure of the Text (1973)"
+        - "Camera Lucida (1980)"
+      key_doctrines: >
+        French literary theorist and semiotician. Mythologies: analysis of popular
+        culture as ideological myth — bourgeois ideology naturalizes the historical,
+        presenting contingent cultural constructs as natural facts. "The Death of the
+        Author" (1968): the meaning of a text is produced by the reader, not determined
+        by the author's intention; the author's biographical context is irrelevant to
+        interpretation — "the birth of the reader must be ransomed by the death of the
+        Author." S/Z: detailed analysis of a Balzac novella, distinguishing five codes
+        of reading (hermeneutic, proairetic, semic, symbolic, cultural/referential).
+        The readerly (lisible) vs. writerly (scriptible) text. Contributed to the
+        development of semiotics from structural (langue-focused) to post-structural
+        (reader/text-focused) approaches.
+      notes: >
+        Born November 12, 1915, Cherbourg; died March 26, 1980, Paris (hit by laundry
+        van; died of injuries). Associated with EHESS and Collège de France.
+      source_url: "https://en.wikipedia.org/wiki/Roland_Barthes"
+      wikidata: "Q179109"
+
+    Michel_Foucault:
+      dates: "1926–1984"
+      school: post-structuralism, genealogy, archaeology of knowledge
+      key_works:
+        - "Madness and Civilization (Folie et Déraison, 1961; abridged trans. 1964)"
+        - "The Birth of the Clinic (1963)"
+        - "The Order of Things (Les Mots et les Choses, 1966)"
+        - "The Archaeology of Knowledge (1969)"
+        - "Discipline and Punish (Surveiller et Punir, 1975)"
+        - "The History of Sexuality (3 vols., 1976–1984)"
+      key_doctrines: >
+        French historian-philosopher; associated with structuralism and post-structuralism
+        though he rejected both labels. Archaeology: analysis of the episteme — the
+        underlying historical a priori that determines what can count as knowledge in a
+        given period (Order of Things). Genealogy (from Nietzsche): history of the
+        present — how current power-knowledge arrangements emerged through contingent
+        struggles, not rational progress. Power/knowledge (pouvoir-savoir): knowledge
+        is not neutral but always entangled with relations of power; power produces
+        subjects, not merely represses them. The panopticon (from Bentham): architectural
+        figure of surveillance — prisoners internalize the gaze of power; used in
+        Discipline and Punish to analyze the "disciplinary society." Biopower and
+        biopolitics: the modern management of populations and bodies — the shift from
+        sovereign power (right to kill) to biopower (administration of life). Governmentality
+        (gouvernementalité): the arts of government — how subjects come to govern themselves.
+      notes: >
+        Born October 15, 1926, Poitiers; died June 25, 1984, Paris (AIDS-related illness).
+        Professor at the Collège de France 1970–1984 under the chair "History of Systems of
+        Thought." Frequently described himself as a historian rather than a philosopher.
+      source_url: "https://plato.stanford.edu/entries/foucault/"
+      wikidata: "Q44272"
+
+    Jacques_Derrida:
+      dates: "1930–2004"
+      school: deconstruction, post-structuralism
+      key_works:
+        - "Of Grammatology (De la grammatologie, 1967)"
+        - "Writing and Difference (L'Écriture et la Différence, 1967)"
+        - "Speech and Phenomena (La Voix et le phénomène, 1967)"
+        - "Dissemination (1972)"
+        - "Margins of Philosophy (1972)"
+        - "The Post Card (1980)"
+        - "Specters of Marx (1993)"
+      key_doctrines: >
+        Founder of deconstruction. Logocentrism: Western metaphysics has privileged
+        speech (logos, presence) over writing — Derrida inverts and destabilizes this
+        hierarchy. Différance (with an 'a'): Derrida's coinage — the simultaneous
+        deferral and difference that structures all meaning; cannot be heard in French
+        (spoken différance and différence are identical), only seen. "There is nothing
+        outside the text" (il n'y a pas de hors-texte) — from Of Grammatology: meaning
+        never escapes the play of signification into a transcendental signified.
+        The supplement: a Derridean figure for something that is both added to something
+        complete and reveals that the original was not complete — e.g., writing as
+        supplement to speech. The trace: the mark left by what is absent; presence is
+        always constituted by traces of absence. Deconstruction is not destruction but
+        a reading practice that reveals the unstable foundations of texts and institutions.
+      notes: >
+        Born July 15, 1930, El-Biar, Algeria; died October 8, 2004, Paris (pancreatic
+        cancer). Trained at ENS; taught at ENS and UC Irvine. Visited Cambridge 1992
+        for honorary degree — controversial vote (letter of protest by analytic philosophers).
+        Note: SEP returned Q122766403 but correct Wikidata entity is Q130631.
+      source_url: "https://plato.stanford.edu/entries/derrida/"
+      wikidata: "Q130631"
+
+    Gilles_Deleuze:
+      dates: "1925–1995"
+      school: post-structuralism, immanent metaphysics
+      key_works:
+        - "Empiricism and Subjectivity (1953)"
+        - "Nietzsche and Philosophy (1962)"
+        - "Difference and Repetition (Différence et Répétition, 1968)"
+        - "The Logic of Sense (1969)"
+        - "Anti-Oedipus (with Guattari, 1972)"
+        - "A Thousand Plateaus (with Guattari, 1980)"
+        - "What Is Philosophy? (with Guattari, 1991)"
+        - "Cinema 1: The Movement-Image (1983) and Cinema 2: The Time-Image (1985)"
+      key_doctrines: >
+        Self-described "pure metaphysician." Philosophy as the creation of concepts.
+        Difference and Repetition: replaced substance with difference and event — being
+        is difference, not identity. Immanence: no transcendence; reality is a single
+        plane of immanence populated by differences. With Guattari: the rhizome (vs.
+        tree/root model): a mode of thought/culture without a center or hierarchical
+        structure — multiple entry points, lateral connections (opposed to arborescent,
+        hierarchical thinking). The body without organs (BwO): a concept from Artaud,
+        developed against the Oedipal organization of desire; a field of intensities.
+        Deterritorialization/reterritorialization: processes by which social and
+        psychological formations are destabilized and reformed. Capitalism and
+        Schizophrenia (Anti-Oedipus + A Thousand Plateaus): capitalism decodes/
+        deterritorializes all flows and then reterritorializes them.
+      students_or_influences:
+        - "Félix Guattari (collaborator)"
+        - "Influenced Badiou, Agamben, and continental metaphysics"
+      notes: >
+        Born January 18, 1925, Paris; died November 4, 1995, Paris (defenestration;
+        suffering from severe respiratory illness). Professor at University of Paris VIII
+        (Vincennes/St. Denis) with Foucault and others.
+      source_url: "https://plato.stanford.edu/entries/deleuze/"
+      wikidata: "Q184226"
+
+    Felix_Guattari:
+      dates: "1930–1992"
+      school: post-structuralism, schizoanalysis, political theory
+      key_works:
+        - "Anti-Oedipus (with Deleuze, 1972)"
+        - "A Thousand Plateaus (with Deleuze, 1980)"
+        - "The Three Ecologies (1989)"
+        - "Chaosmosis (1992)"
+      key_doctrines: >
+        Radical psychoanalyst and political activist; collaborator of Deleuze. Trained
+        under Lacan at La Borde clinic (a therapeutic community he helped run for decades).
+        Schizoanalysis: a critique of Freudian and Lacanian psychoanalysis as repressive;
+        desire is productive (not lacking) and political. The Three Ecologies: an ecosophy
+        linking mental ecology (psychic life), social ecology (collective life), and
+        environmental ecology. His independent work developed concepts of transversality
+        (communication across institutional hierarchies) and machinic assemblage.
+      notes: >
+        Born April 30, 1930, Villeneuve-les-Sablons; died August 29, 1992, La Borde clinic.
+        Active in radical politics (May 1968) and anti-psychiatry movement.
+      source_url: "https://en.wikipedia.org/wiki/Félix_Guattari"
+      wikidata: "Q352465"
+
+    Jean-Francois_Lyotard:
+      dates: "1924–1998"
+      school: post-structuralism, postmodernism
+      key_works:
+        - "Discours, figure (1971)"
+        - "Libidinal Economy (1974)"
+        - "The Postmodern Condition: A Report on Knowledge (La Condition postmoderne, 1979)"
+        - "The Differend: Phrases in Dispute (Le Différend, 1983)"
+        - "The Inhuman (1988)"
+      key_doctrines: >
+        The Postmodern Condition (commissioned by the Council of Universities of Quebec):
+        defined postmodernity as "incredulity toward metanarratives" — the grand narratives
+        that had legitimated knowledge (Enlightenment emancipation, Hegelian Spirit,
+        Marxist liberation) have lost credibility. Knowledge becomes legitimated by
+        performativity (efficiency) in postmodern societies. The differend (Le Différend):
+        a dispute in which no available rule of judgment can be applied because the idioms
+        of the parties are incommensurable; the differend marks a point of injustice that
+        cannot be adjudicated — as distinct from a mere litigation (litige). Language games
+        (from Wittgenstein): different practices governed by different rules that cannot
+        be reduced to one another.
+      notes: >
+        Born August 10, 1924, Versailles; died April 21, 1998, Paris. Professor at
+        University of Paris VIII. Wrote The Postmodern Condition reluctantly; it became
+        his most famous and most debated work.
+      source_url: "https://plato.stanford.edu/entries/lyotard/"
+      wikidata: "Q193257"
+
+    Jean_Baudrillard:
+      dates: "1929–2007"
+      school: post-structuralism, hyperreality theory, media theory
+      key_works:
+        - "The System of Objects (1968)"
+        - "The Consumer Society (1970)"
+        - "Symbolic Exchange and Death (1976)"
+        - "Simulacra and Simulation (Simulacres et Simulation, 1981)"
+        - "The Gulf War Did Not Take Place (1991)"
+        - "The Spirit of Terrorism (2002)"
+      key_doctrines: >
+        Simulacra and simulation: reality has been replaced by its representation.
+        Simulacrum: a copy without an original. Four orders of simulacra: (1) faithful
+        copy that masks a deep reality; (2) copy that masks the absence of deep reality;
+        (3) copy that masks the absence of any original; (4) the pure simulacrum — no
+        relation to any reality. Hyperreality: the condition in which signs no longer
+        refer to any external reality but only to other signs — Disneyland is offered
+        as a perfect example. "The Gulf War Did Not Take Place": the televised war was
+        a simulation — the spectacle of the war replaced any real event. Critical of
+        both structuralism and Marxism (Symbolic Exchange and Death critiques the
+        Marxist assumption of production as the foundation of society).
+      notes: >
+        Born July 27, 1929, Reims; died March 6, 2007, Paris. Professor at University
+        of Paris X Nanterre. Widely influential in cultural studies and media theory.
+      source_url: "https://en.wikipedia.org/wiki/Jean_Baudrillard"
+      wikidata: "Q182847"
+
+    Louis_Althusser:
+      dates: "1918–1990"
+      school: structural Marxism, theory of ideology
+      key_works:
+        - "For Marx (Pour Marx, 1965)"
+        - "Reading Capital (Lire le Capital, with Balibar, 1965)"
+        - "Ideology and Ideological State Apparatuses (essay, 1970)"
+        - "The Future Lasts a Long Time (autobiography, posthumous 1992)"
+      key_doctrines: >
+        Structural Marxist; sought to make Marxism philosophically rigorous against
+        both Hegelian humanism and empiricism. Symptomatic reading (lecture symptomale):
+        reading a text for what it cannot say — its absences and silences reveal its
+        ideological limits; applied to Marx's Capital to reveal an epistemological
+        break (coupure épistémologique) between early humanist Marx and mature
+        scientific Marx. Ideological State Apparatuses (ISAs): unlike Repressive
+        State Apparatuses (police, army), ISAs (schools, churches, media, family)
+        reproduce the dominant ideology by consent. Interpellation: ideology hails
+        individuals as subjects — the classic example: a policeman shouts "Hey, you
+        there!" and the individual turns around, recognizing themselves as the
+        addressed subject; thereby constituted as an ideological subject.
+        Overdetermination: social formations are determined by multiple contradictions,
+        not a single economic base.
+      notes: >
+        Born October 16, 1918, Birmendreïs, Algeria; died October 22, 1990, Paris.
+        Strangled his wife Hélène Rytmann in 1980; found not responsible by reason
+        of insanity; institutionalized until 1983. Taught at ENS.
+      source_url: "https://plato.stanford.edu/entries/althusser/"
+      wikidata: "Q184169"
+
+    Julia_Kristeva:
+      dates: "1941–present"
+      school: post-structuralism, psychoanalysis, semiotics, feminism
+      key_works:
+        - "Semeiotiké (1969)"
+        - "Revolution in Poetic Language (La Révolution du langage poétique, 1974)"
+        - "Powers of Horror: An Essay on Abjection (1980)"
+        - "Tales of Love (1983)"
+        - "Black Sun: Depression and Melancholia (1987)"
+        - "Strangers to Ourselves (1988)"
+      key_doctrines: >
+        Bulgarian-French philosopher, psychoanalyst, literary critic. Coined "intertextuality"
+        (intertextualité): all texts are composed of quotations and references to other texts;
+        no text is original. The semiotic vs. the symbolic: the symbolic order is the domain
+        of grammar, syntax, and the law of the father (Lacan's symbolic); the semiotic
+        (from Greek semeion — sign) is the pre-linguistic, bodily, rhythmic dimension of
+        language rooted in the infant's relation to the mother's body (the chora, from Plato).
+        Abjection: the process of expelling what the subject must cast out (filth, corpse,
+        bodily fluids) in order to constitute a self and a social order; the abject is
+        neither subject nor object but disturbs identity and borders. Powers of Horror
+        applies abjection to horror literature (Céline) and the Holocaust.
+      notes: >
+        Born June 24, 1941, Sliven, Bulgaria. Moved to France 1965. Holberg Prize 2004;
+        Hannah Arendt Prize 2006. A 2018 Bulgarian investigation alleged she was an
+        informant for communist-era Bulgarian intelligence — she denied it.
+      source_url: "https://en.wikipedia.org/wiki/Julia_Kristeva"
+      wikidata: "Q159876"
+
+    Helene_Cixous:
+      dates: "1937–present"
+      school: post-structuralism, écriture féminine, feminist theory
+      key_works:
+        - "The Laugh of the Medusa (Le Rire de la Méduse, 1975)"
+        - "The Newly Born Woman (La Jeune Née, with Clément, 1975)"
+        - "Sorties (1975)"
+      key_doctrines: >
+        Algerian-French writer, poet, and feminist theorist. écriture féminine (feminine
+        writing): a writing practice that escapes phallogocentric language (which equates
+        man/presence/logos) — writing from and through the body, multiplicity, and
+        the unconscious. "The Laugh of the Medusa": women must write themselves; feminine
+        writing will subvert the binary oppositions that structure patriarchal thought.
+        The economy of the gift vs. the masculine economy of exchange: feminine libidinal
+        economy is characterized by excess, giving without return. Founded the first
+        women's studies center in Europe at University of Paris VIII (1974).
+        Also a prolific playwright and novelist (influenced by Joyce and Kafka).
+      notes: >
+        Born June 5, 1937, Oran, Algeria. Professor at University of Paris VIII.
+      source_url: "https://en.wikipedia.org/wiki/Hélène_Cixous"
+      wikidata: "Q234964"
+
+    Luce_Irigaray:
+      dates: "1930–present"
+      school: post-structuralism, psychoanalysis, feminist philosophy
+      key_works:
+        - "Speculum of the Other Woman (Speculum de l'autre femme, 1974)"
+        - "This Sex Which Is Not One (Ce sexe qui n'en est pas un, 1977)"
+        - "An Ethics of Sexual Difference (1984)"
+      key_doctrines: >
+        Belgian-French feminist philosopher and psychoanalyst. Speculum of the Other
+        Woman: a deconstruction of Western philosophical and psychoanalytic texts showing
+        that "woman" functions as the unrepresented Other — the speculum (mirror) of
+        masculine subjectivity. Dismissed from the École freudienne de Paris by Lacan
+        after its publication. This Sex Which Is Not One: female sexuality is not
+        singular, unified (like the phallus) but plural, diffuse, self-touching — the
+        labia as a figure for a non-phallic sexuality. Sexual difference is a fundamental
+        ontological difference that philosophy must think, not erase through formal equality.
+        Criticized both Freud and Lacan for their phallocentrism while using their frameworks.
+      notes: >
+        Born May 3, 1930, Blaton, Belgium. Holds doctorates in both linguistics and
+        philosophy. Currently lives in France.
+      source_url: "https://en.wikipedia.org/wiki/Luce_Irigaray"
+      wikidata: "Q28918"
+
+  # ----------------------------------------------------------
+  # GROUP 6: Other Continental / Arendt / Levinas / Badiou /
+  #          Agamben / Žižek + Kyoto School (~8 entries)
+  # ----------------------------------------------------------
+  other_continental_and_kyoto:
+
+    Hannah_Arendt:
+      dates: "1906–1975"
+      school: political philosophy, phenomenology (influenced)
+      key_works:
+        - "The Origins of Totalitarianism (1951)"
+        - "The Human Condition (1958)"
+        - "Between Past and Future (1961)"
+        - "Eichmann in Jerusalem: A Report on the Banality of Evil (1963)"
+        - "On Revolution (1963)"
+        - "The Life of the Mind (2 vols., unfinished, pub. 1978)"
+      key_doctrines: >
+        German-Jewish political philosopher. Born in Hanover; fled Germany 1933; student
+        and (for a period) lover of Heidegger. Origins of Totalitarianism: analyzed Nazi
+        and Stalinist regimes as novel forms of domination, not reducible to tyranny —
+        characterized by terror and ideology as ends in themselves. The Human Condition:
+        the vita activa has three fundamental activities: labor (biological necessity),
+        work (making a durable world of artifacts), and action (political activity in
+        the public sphere — the domain of freedom, speech, and natality). Natality:
+        each birth is a new beginning; action is the human capacity to begin something
+        radically new. The public sphere: the space of appearance where human freedom
+        is enacted through speech and action, as opposed to the private realm.
+        "The banality of evil": Eichmann in Jerusalem reported on the trial of Adolf
+        Eichmann (1961); Arendt argued that Eichmann was not a monster but a bureaucrat
+        who failed to think — the "banality" was not that evil was trivial but that it
+        could be perpetrated by thoughtless conformity.
+      students_or_influences:
+        - "Heidegger (teacher, lover)"
+        - "Jaspers (mentor and friend)"
+        - "Influenced political theory, feminist philosophy, postcolonial thought"
+      notes: >
+        Born October 14, 1906, Linden (now part of Hannover); died December 4, 1975,
+        New York City. The "banality of evil" phrase is from the subtitle of Eichmann
+        in Jerusalem (1963). It was widely misunderstood as trivializing evil; Arendt
+        meant that Eichmann represented evil without demonic motivation — thoughtlessness
+        rather than malice.
+      source_url: "https://plato.stanford.edu/entries/arendt/"
+      wikidata: "Q60025"
+
+    Emmanuel_Levinas:
+      dates: "1905–1995"
+      school: phenomenology, ethics as first philosophy
+      key_works:
+        - "Totality and Infinity (Totalité et Infini, 1961)"
+        - "Otherwise than Being or Beyond Essence (Autrement qu'être ou au-delà de l'essence, 1974)"
+        - "Existence and Existents (1947)"
+        - "Time and the Other (1947)"
+      key_doctrines: >
+        Lithuanian-born French philosopher; introduced Husserl and Heidegger to the
+        French-speaking world (1930). Ethics as first philosophy: contra Heidegger's
+        fundamental ontology, Levinas argued that the encounter with the Other precedes
+        and grounds all ontology. The face (le visage): the encounter with the face of
+        the Other is an epiphany — the face commands "Do not kill me"; it cannot be
+        reduced to a representation or concept. The Saying (le Dire) vs. the Said
+        (le Dit): the Saying is the ethical event of address — the exposure to the Other;
+        the Said is the thematized content of discourse; philosophy tends to reduce the
+        Saying to the Said. Totality and Infinity: the Other is infinite — exceeds any
+        concept or totality I can form; the face breaks open any closed totality.
+        Otherwise than Being: replaced Totality and Infinity's language of "exteriority"
+        with a radical analysis of substitution — the ethical subject is a hostage to
+        the Other. Influenced theology, postcolonial theory, and philosophy of religion.
+      notes: >
+        Born January 12, 1905, Kaunas, Lithuania; died December 25, 1995, Paris.
+        Most of his family in Lithuania was murdered during the Holocaust. His own
+        wartime imprisonment and the loss of his family shaped his ethics.
+      source_url: "https://plato.stanford.edu/entries/levinas/"
+      wikidata: "Q153034"
+
+    Alain_Badiou:
+      dates: "1937–present"
+      school: ontology, mathematics as first philosophy, communist political theory
+      key_works:
+        - "Theory of the Subject (Théorie du sujet, 1982)"
+        - "Being and Event (L'Être et l'événement, 1988)"
+        - "Manifesto for Philosophy (1989)"
+        - "Ethics: An Essay on the Understanding of Evil (1993)"
+        - "Logics of Worlds (Logiques des mondes, 2006)"
+        - "The Communist Hypothesis (2009)"
+      key_doctrines: >
+        French philosopher; formerly chair at ENS; co-founded philosophy at University of
+        Paris VIII with Deleuze, Foucault, and Lyotard. Mathematics as ontology: following
+        Plato and Cantor, Badiou argued that ontology is mathematics — specifically, set
+        theory describes the structure of being qua being. The event: a rupture in a
+        situation that cannot be accounted for by existing rules — reveals a void within
+        a situation and opens the possibility of truth. Four truth procedures (generic
+        procedures): the domains in which events can produce truths — love, art, science,
+        and politics. Subject: not a pre-given individual but a subject is constituted by
+        fidelity to an event. The four truth procedures are equally primary; philosophy's
+        task is to think their compossibility (not to be "sutured" to any one of them).
+        Politically a committed communist; The Communist Hypothesis argues for a revival
+        of the idea of communism against parliamentary democracy and capitalism.
+        Engaged in polemics against Levinas, Deleuze, and postmodern ethics.
+      notes: >
+        Born January 17, 1937, Rabat, Morocco. Professor emeritus at ENS.
+        Mathematics background: influenced by Cantor's set theory and Paul Cohen's
+        forcing technique.
+      source_url: "https://en.wikipedia.org/wiki/Alain_Badiou"
+      wikidata: "Q311005"
+
+    Giorgio_Agamben:
+      dates: "1942–present"
+      school: political philosophy, biopolitics, ontology
+      key_works:
+        - "Language and Death (1982)"
+        - "The Coming Community (La comunità che viene, 1990)"
+        - "Homo Sacer: Sovereign Power and Bare Life (1995)"
+        - "The Open: Man and Animal (2002)"
+        - "State of Exception (Stato di eccezione, 2003)"
+        - "The Kingdom and the Glory (2007)"
+      key_doctrines: >
+        Italian philosopher; influenced by Heidegger, Benjamin, Foucault, Aristotle,
+        and Carl Schmitt. Homo Sacer: drawn from Roman law — the homo sacer is the one
+        who can be killed but not sacrificed; a figure at the limit of the political order.
+        Bare life (zoê vs. bios): distinguishes bare biological life (zoê) from politically
+        qualified life (bios); sovereign power operates by reducing the political subject
+        to bare life — the camp (concentration camp) as the nomos (fundamental law) of
+        modernity. State of exception: following Schmitt, the sovereign is he who decides
+        on the exception; Agamben argues the state of exception has become the permanent
+        rule of modern governance. Potentiality and impotentiality: being's capacity not
+        to be — the capacity to refuse — is as fundamental as actuality.
+      notes: >
+        Born April 22, 1942, Rome. Professor at IUAV Venice, European Graduate School.
+        Refused a US visa due to objection to biometric fingerprinting (2003), linking
+        it to concentration camp practices.
+      source_url: "https://en.wikipedia.org/wiki/Giorgio_Agamben"
+      wikidata: "Q311687"
+
+    Slavoj_Zizek:
+      dates: "1949–present"
+      school: Lacanian psychoanalysis, Hegelian Marxism, cultural criticism
+      key_works:
+        - "The Sublime Object of Ideology (1989)"
+        - "Looking Awry (1991)"
+        - "The Plague of Fantasies (1997)"
+        - "The Ticklish Subject (1999)"
+        - "The Parallax View (2006)"
+        - "Less Than Nothing: Hegel and the Shadow of Dialectical Materialism (2012)"
+      key_doctrines: >
+        Slovenian philosopher and cultural critic. Synthesizes Lacanian psychoanalysis,
+        Hegelian dialectics, and Marxist theory with readings of popular culture.
+        Ideology: ideology is not false consciousness (a veil over reality) but a fantasy
+        that structures reality itself — "they know very well what they are doing, but they
+        are doing it anyway." The Other: Lacan's big Other as the symbolic order; ideology
+        functions through the big Other. The Real (Lacan): what cannot be symbolized;
+        returns as antagonism and trauma. Critiques liberal multiculturalism and postmodern
+        ethics as symptoms of late capitalism. Prolific and deliberately provocative;
+        widely read and contested.
+      notes: >
+        Born March 21, 1949, Ljubljana, Slovenia (then Yugoslavia). Senior researcher at
+        the Institute of Sociology, Ljubljana; international visiting professor at numerous
+        universities. Known for eclectic, rapid-fire output.
+      source_url: "https://en.wikipedia.org/wiki/Slavoj_Žižek"
+      wikidata: "Q184750"
+
+    Kitaro_Nishida:
+      dates: "1870–1945"
+      school: Kyoto School, Buddhist philosophy meets Western metaphysics
+      key_works:
+        - "An Inquiry into the Good (善の研究 / Zen no Kenkyū, 1911)"
+        - "Intuition and Reflection in Self-Consciousness (1917)"
+        - "From the Acting to the Seeing (1927)"
+        - "Last Writings: Nothingness and the Religious Worldview (1945)"
+      key_doctrines: >
+        Founder of the Kyoto School. Pure experience (junsui keiken): experience prior
+        to the subject-object split — the basic datum of philosophy; influenced by William
+        James but radicalized. The logic of place (basho no ronri): Nishida developed a
+        logic of "place" (topos) to replace the Aristotelian logic of substance — being
+        occurs within a place; the deepest place is "absolute nothingness" (zettai mu),
+        the field in which both being and nothingness co-arise. Absolute nothingness
+        (zettai mu): not a negation of being but the positive ground of all being and
+        knowing — distinguished from relative nothingness (mere absence). This concept
+        drew on Mahayana Buddhist logic (influenced by Zen and D.T. Suzuki) while engaging
+        Western philosophy (Kant, Hegel, Fichte, Husserl, James). Self-awareness (jikaku):
+        the self knows itself not by reflection but through acting-intuition.
+      notes: >
+        Born June 17, 1870, Unoke, Ishikawa Prefecture; died June 7, 1945, Kamakura.
+        Graduated from Tokyo Imperial University 1894; professor at Kyoto Imperial University
+        1910–1927. Founder of the Kyoto School; mentor to Tanabe and Nishitani.
+      source_url: "https://plato.stanford.edu/entries/kyoto-school/"
+      wikidata: "Q45125"
+
+    Hajime_Tanabe:
+      dates: "1885–1962"
+      school: Kyoto School, philosophy of religion, logic of species
+      key_works:
+        - "The Logic of Species (Shu no ronri, 1935–1946; essays)"
+        - "Philosophy as Metanoetics (Zangedō toshite no tetsugaku, 1946)"
+        - "Dialectics of Christianity (1948)"
+      key_doctrines: >
+        Second major figure of the Kyoto School; student and colleague of Nishida, later critic.
+        The logic of species (shu no ronri): a triadic social ontology — individual, species
+        (the historical-ethnic-national collective), and genus (universal humanity); criticized
+        Nishida's logic of place as insufficiently historical and social. Metanoetics:
+        after the defeat of Japan in 1945, Tanabe underwent a philosophical conversion —
+        the limits of human reason require a turn to Other-power (tariki; from Pure Land
+        Buddhism) and repentance (zange / metanoia). Philosophy as Metanoetics: genuine
+        philosophy must pass through the death and resurrection of reason through absolute
+        critique — a philosophical analogue to religious repentance. Studied under Husserl
+        and Heidegger in Germany in the 1920s.
+      notes: >
+        Born February 3, 1885, Tokyo; died April 29, 1962, Kita-Karuizawa, Nagano.
+        Taught at Tōhoku Imperial University 1913 and Kyōto Imperial University from 1919.
+        The "logic of species" was co-opted by Japanese militarism to justify nationalism —
+        a controversial legacy Tanabe later repudiated in Philosophy as Metanoetics.
+      source_url: "https://plato.stanford.edu/entries/kyoto-school/"
+      wikidata: "Q1394797"
+
+    Keiji_Nishitani:
+      dates: "1900–1990"
+      school: Kyoto School, philosophy of religion, Buddhist nihilism
+      key_works:
+        - "The Self-Overcoming of Nihilism (1949)"
+        - "Religion and Nothingness (宗教とは何か / Shūkyō to wa nanika, 1961; trans. 1982)"
+        - "Nishida Kitarō (biography/study, 1985)"
+      key_doctrines: >
+        Third major figure of the Kyoto School; student of Nishida; studied under
+        Heidegger at Freiburg 1937–1939. Religion and Nothingness: the central work.
+        A three-field topology: (1) the field of being (ordinary consciousness, scientific
+        view); (2) the field of nihility (confronting groundlessness — European nihilism,
+        Heidegger, Nietzsche); (3) the field of emptiness (śūnyatā — the Mahayana Buddhist
+        concept of emptiness as the positive ground of all phenomena). The Great Nihilism
+        of European thought (Nietzsche) must be overcome not by a new metaphysics but by
+        passing through nihility to śūnyatā — the "standpoint of śūnyatā" in which self
+        and world are realized as mutually arising and empty. This constitutes the
+        "self-overcoming of nihilism."
+      notes: >
+        Born February 27, 1900, Noto, Ishikawa Prefecture; died November 24, 1990, Kyoto.
+        Professor at Kyoto University. The Self-Overcoming of Nihilism written in 1949
+        while Japan grappled with postwar nihilism; translated into English 1990.
+      source_url: "https://plato.stanford.edu/entries/kyoto-school/"
+      wikidata: "Q1993564"

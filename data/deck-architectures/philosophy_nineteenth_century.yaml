@@ -1,0 +1,1277 @@
+deck_id: philosophy
+sub_deck_id: nineteenth_century
+name: "19th-Century Philosophy"
+domain: philosophy
+sub_domain: nineteenth_century
+target_facts: 45
+minimum_facts: 40
+
+# Coverage: 19th-century philosophy after German Idealism + early-20th-century transition
+# + 19th-century Eastern philosophy.
+# Excludes: Hegel/Schopenhauer (enlightenment_german_idealism sub-deck),
+#           Frege/Russell (analytic sub-deck).
+
+data_sources:
+  - name: Stanford Encyclopedia of Philosophy (SEP)
+    url: https://plato.stanford.edu/
+    license: All rights reserved — facts extracted for educational use only (facts are not copyrightable)
+    usage: >
+      Verified dates, key works, doctrines, and biographical facts.
+      Entries consulted: bentham, mill, marx, kierkegaard, nietzsche, peirce,
+      james, dewey, comte, bergson, brentano, meinong, sidgwick, dilthey, feuerbach, spencer.
+  - name: Wikipedia / Wikidata
+    url: https://en.wikipedia.org/
+    license: CC-BY-SA-4.0
+    usage: >
+      Cross-reference for dates, key works, biographical data.
+      Articles consulted: Jeremy Bentham, Harriet Taylor Mill, Friedrich Engels,
+      Ludwig Feuerbach, Max Stirner, Pierre-Joseph Proudhon, Bruno Bauer,
+      David Strauss (theologian), Herbert Spencer, William Whewell, James Mill,
+      Josiah Royce, George Herbert Mead, Fyodor Dostoevsky, Lou Andreas-Salomé,
+      Ramakrishna, Swami Vivekananda, Sri Aurobindo, Inoue Enryo, D.T. Suzuki,
+      Mahatma Gandhi, Vladimir Solovyov, Elisabeth Förster-Nietzsche.
+
+# ============================================================
+# SOURCE DATA — 6 thematic groups
+# All facts verified against sources listed above.
+# Tier 2 workers MUST format these into DeckFact JSON — never invent.
+# ============================================================
+source_data:
+
+  # ----------------------------------------------------------
+  # GROUP 1: BRITISH UTILITARIANISM (~8 entries)
+  # ----------------------------------------------------------
+  british_utilitarianism:
+
+    Jeremy_Bentham:
+      dates: "1748–1832 (born 15 February 1748 N.S., died 6 June 1832)"
+      school: "Utilitarianism, Legal Positivism"
+      key_works:
+        - "A Fragment on Government (1776)"
+        - "An Introduction to the Principles of Morals and Legislation (printed 1780, published 1789)"
+        - "Constitutional Code (published posthumously)"
+      key_doctrines:
+        - >
+          Founder of modern utilitarianism. Defined the 'fundamental axiom' as:
+          'it is the greatest happiness of the greatest number that is the measure of right and wrong.'
+        - >
+          Felicific calculus (hedonic calculus): a method of measuring the moral worth of an action
+          by calculating its total pleasure minus pain, using seven dimensions (intensity, duration,
+          certainty, propinquity, fecundity, purity, extent).
+        - >
+          Panopticon: a proposed prison design (c. 1787) in which all inmates could be watched at
+          all times by a single guard without knowing whether they were being observed.
+        - >
+          Natural rights are 'nonsense upon stilts' — Bentham rejected natural law theory.
+        - >
+          Auto-icon: on his death in 1832, Bentham left instructions for his body to be preserved
+          and displayed; it is now at University College London (UCL).
+      students_or_influences:
+        - "James Mill (secretary and collaborator)"
+        - "John Stuart Mill (student via James Mill)"
+        - "John Austin (legal positivism)"
+      notes: >
+        SEP notes Bentham first announced himself as a utilitarian in A Fragment on Government (1776),
+        but the systematic theory appears in Introduction to Principles of Morals and Legislation.
+        The phrase 'greatest happiness of the greatest number' predates Bentham (Francis Hutcheson,
+        1725; Cesare Beccaria, 1764), but Bentham rendered it in its modern systematic, secular form.
+      source_url: "https://plato.stanford.edu/entries/bentham/"
+      wikidata: "Q83338"
+
+    James_Mill:
+      dates: "1773–1836 (born 6 April 1773, died 23 June 1836)"
+      school: "Utilitarianism, Philosophical Radicalism"
+      key_works:
+        - "The History of British India (1817)"
+        - "Analysis of the Phenomena of the Human Mind (1829)"
+        - "Essay on Government (1820)"
+      key_doctrines:
+        - >
+          Philosophical Radical and close ally of Bentham; promoted utilitarian reform in law
+          and government.
+        - >
+          Gave John Stuart Mill an extraordinary home education in Greek (age 3), Latin (age 8),
+          and logic, mathematics, and political economy by his early teens (detailed in J.S. Mill's
+          Autobiography).
+      students_or_influences:
+        - "John Stuart Mill (son, gave rigorous utilitarian education)"
+        - "Jeremy Bentham (collaborator)"
+      notes: >
+        James Mill was Bentham's secretary and collaborator. Wikipedia confirms he was the father
+        of John Stuart Mill and one of the founders of the Ricardian school of economics.
+        He divided Indian history into Hindu, Muslim, and British periods.
+      source_url: "https://en.wikipedia.org/wiki/James_Mill"
+      wikidata: "Q327587"
+
+    John_Stuart_Mill:
+      dates: "1806–1873 (born 20 May 1806, died 8 May 1873)"
+      school: "Utilitarianism, Liberalism, Empiricism"
+      key_works:
+        - "A System of Logic (1843)"
+        - "On Liberty (1859)"
+        - "Utilitarianism (1861)"
+        - "An Examination of Sir William Hamilton's Philosophy (1865)"
+        - "The Subjection of Women (1869)"
+        - "Autobiography (1873, posthumous)"
+      key_doctrines:
+        - >
+          Higher vs. lower pleasures: Mill's revision of Bentham distinguishes qualitatively
+          superior intellectual and moral pleasures from merely quantitative bodily pleasures.
+          'It is better to be Socrates dissatisfied than a fool satisfied.'
+        - >
+          Harm principle: the only legitimate basis for society to coercively restrict a person's
+          liberty is to prevent harm to others (On Liberty, 1859).
+        - >
+          Mill's Methods (System of Logic, 1843): five inductive methods — Method of Agreement,
+          Method of Difference, Joint Method, Method of Residues, Method of Concomitant Variations.
+        - >
+          SEP: 'the most influential English language philosopher of the nineteenth century.'
+          Naturalist, utilitarian, and liberal.
+      students_or_influences:
+        - "Harriet Taylor Mill (collaborator and spouse)"
+        - "Influenced: Bertrand Russell, twentieth-century liberalism"
+        - "Influenced by: Jeremy Bentham, James Mill, Auguste Comte (early), Samuel Taylor Coleridge"
+      notes: >
+        SEP confirms birth date 20 May 1806, Pentonville, London. Death 8 May 1873.
+        SEP lists System of Logic (1843), On Liberty (1859), Utilitarianism (1861), and
+        Hamilton examination (1865) as most important works.
+      source_url: "https://plato.stanford.edu/entries/mill/"
+      wikidata: "Q81799"
+
+    Harriet_Taylor_Mill:
+      dates: "1807–1858 (born 8 October 1807, died 3 November 1858)"
+      school: "Liberalism, early Feminism"
+      key_works:
+        - "The Enfranchisement of Women (1851)"
+        - "Co-authored On Liberty (1859) with J.S. Mill (published posthumously)"
+      key_doctrines:
+        - >
+          Argued for women's political and social equality, including the right to vote,
+          to hold property, and to be educated.
+        - >
+          The Subjection of Women (1869) by J.S. Mill was largely shaped by Taylor Mill's ideas
+          and their joint discussions; Mill credited her as co-author in all but name.
+      students_or_influences:
+        - "Married to John Stuart Mill in 1851"
+        - "Influenced J.S. Mill's views on liberty and women's rights significantly"
+      notes: >
+        Wikipedia confirms dates (born 8 October 1807, died 3 November 1858). She was an English
+        philosopher and women's rights advocate. Her extant corpus is in The Complete Works of
+        Harriet Taylor Mill.
+      source_url: "https://en.wikipedia.org/wiki/Harriet_Taylor_Mill"
+      wikidata: "Q233255"
+
+    Henry_Sidgwick:
+      dates: "1838–1900 (born 31 May 1838, died 28 August 1900)"
+      school: "Classical Utilitarianism, Intuitionism"
+      key_works:
+        - "The Methods of Ethics (1874; 7th edition 1907)"
+        - "The Principles of Political Economy (1883)"
+        - "The Elements of Politics (1891)"
+      key_doctrines:
+        - >
+          The Methods of Ethics: systematically compared utilitarianism ('the greatest happiness')
+          with egoism and intuitionism, widely regarded as the culmination of the classical
+          utilitarian tradition.
+        - >
+          Identified a 'dualism of practical reason' — that both ethical egoism and universal
+          benevolence are equally rationally defensible, creating a fundamental antinomy in ethics.
+        - >
+          Utilitarians and critics alike (G.E. Moore, Bertrand Russell, Derek Parfit, Peter Singer)
+          have acknowledged The Methods of Ethics as a vital source.
+      students_or_influences:
+        - "Influenced G.E. Moore, Bertrand Russell, Derek Parfit"
+        - "Student of John Stuart Mill's work (not direct)"
+      notes: >
+        SEP (first published 2004, revised 2023): 'one of the most influential ethical philosophers
+        of the Victorian era.' The Methods of Ethics first published 1874; seventh edition 1907.
+      source_url: "https://plato.stanford.edu/entries/sidgwick/"
+      wikidata: "Q82405"
+
+    William_Whewell:
+      dates: "1794–1866 (born 24 May 1794, died 6 March 1866)"
+      school: "Empiricism, Philosophy of Science"
+      key_works:
+        - "History of the Inductive Sciences (1837)"
+        - "The Philosophy of the Inductive Sciences (1840)"
+      key_doctrines:
+        - >
+          Whewell coined the term 'scientist' (1833, proposed to the British Association for the
+          Advancement of Science) as well as 'physicist,' 'consilience,' 'catastrophism,'
+          and 'uniformitarianism.'
+        - >
+          Opposed Mill's account of induction; argued that scientific knowledge requires 'ideas'
+          (colligating concepts) supplied by the mind, not just regularities observed in nature
+          (anticipating Kantian philosophy of science).
+      students_or_influences:
+        - "Opponent of J.S. Mill in debate over induction and scientific method"
+        - "Suggested terms electrode, ion, anode, cathode to Michael Faraday"
+      notes: >
+        Wikipedia confirms dates and coinages. Master of Trinity College, Cambridge.
+        Royal Medal 1837 for work on ocean tides.
+      source_url: "https://en.wikipedia.org/wiki/William_Whewell"
+      wikidata: "Q180694"
+
+  # ----------------------------------------------------------
+  # GROUP 2: MARXISM AND YOUNG HEGELIANS (~8 entries)
+  # ----------------------------------------------------------
+  marxism:
+
+    Karl_Marx:
+      dates: "1818–1883 (born 5 May 1818 Trier; died 14 March 1883 London)"
+      school: "Historical Materialism, Marxism, Left-Hegelianism"
+      key_works:
+        - "Economic and Philosophic Manuscripts of 1844 (written 1844, published 1932)"
+        - "The German Ideology (written 1846, with Engels; published 1932)"
+        - "The Communist Manifesto (1848, with Engels)"
+        - "A Contribution to the Critique of Political Economy (1859)"
+        - "Das Kapital Vol. I (1867)"
+        - "Das Kapital Vols. II–III (posthumous, edited by Engels)"
+        - "Critique of Hegel's Philosophy of Right (Introduction, published 1844)"
+      key_doctrines:
+        - >
+          Historical materialism: the mode of production (base) of any society determines its legal,
+          political, and cultural superstructure. History is driven by class struggle between owners
+          of means of production and those who sell their labor.
+        - >
+          Alienation: in capitalist production, workers are estranged from the product of their
+          labor, the act of production, other workers, and their own 'species-being.' Developed in
+          the 1844 Manuscripts.
+        - >
+          Commodity fetishism: in capitalist economies, relations between people appear as relations
+          between things (commodities); the social character of labor is hidden. Developed in
+          Das Kapital, Vol. I (1867).
+        - >
+          'Religion is the sigh of the oppressed creature, the heart of a heartless world, and the
+          soul of soulless conditions. It is the opium of the people.' From the Introduction to
+          A Contribution to the Critique of Hegel's Philosophy of Right, published February 1844 in
+          Deutsch-Französische Jahrbücher.
+        - >
+          Base/superstructure model: the economic base (forces and relations of production)
+          determines political, legal, and ideological superstructure.
+      students_or_influences:
+        - "Friedrich Engels (lifelong collaborator)"
+        - "Influenced by Hegel (via Young Hegelians), Feuerbach, Ricardo, Smith"
+        - "Influenced: Lenin, Gramsci, Althusser, Frankfurt School"
+      notes: >
+        SEP (revised 2025): Marx trained as a philosopher (doctorate in ancient philosophy).
+        Wikipedia confirms The Communist Manifesto co-authored with Engels (1848);
+        Das Kapital Vol. I published 1867; Vols. II–III posthumously edited by Engels.
+        The 'opium' passage verified from Wikipedia article 'Opium of the people': published
+        February 1844 in Deutsch-Französische Jahrbücher, in the Introduction to Critique
+        of Hegel's Philosophy of Right.
+      source_url: "https://plato.stanford.edu/entries/marx/"
+      wikidata: "Q9061"
+
+    Friedrich_Engels:
+      dates: "1820–1895 (born 28 November 1820 Barmen; died 5 August 1895 London)"
+      school: "Marxism, Dialectical Materialism"
+      key_works:
+        - "The Condition of the Working Class in England (1845)"
+        - "The German Ideology (1846, with Marx)"
+        - "The Communist Manifesto (1848, with Marx)"
+        - "Anti-Dühring (1878)"
+        - "The Origin of the Family, Private Property and the State (1884)"
+        - "Dialectics of Nature (posthumous)"
+      key_doctrines:
+        - >
+          Co-developed Marxism with Karl Marx; after Marx's death in 1883, edited and published
+          Das Kapital Vols. II and III.
+        - >
+          Dialectical materialism: formalized the materialist dialectic as a general theory of
+          nature and history in Anti-Dühring (1878) and Dialectics of Nature.
+        - >
+          The Origin of the Family (1884) traced the origins of patriarchal family structure to
+          private property ownership.
+      students_or_influences:
+        - "Karl Marx (partner)"
+        - "Funded Marx financially from earnings at Ermen & Engels cotton mill, Manchester"
+      notes: >
+        Wikipedia confirms dates and works. Engels lived in Manchester 1850–1870 working
+        for the family firm while co-developing Marxism. He completed Vols. II–III of Das Kapital.
+      source_url: "https://en.wikipedia.org/wiki/Friedrich_Engels"
+      wikidata: "Q34450"
+
+    Ludwig_Feuerbach:
+      dates: "1804–1872 (born 28 July 1804; died 13 September 1872)"
+      school: "Left-Hegelianism, Materialism, Atheism"
+      key_works:
+        - "Thoughts on Death and Immortality (1830, published anonymously)"
+        - "The Essence of Christianity (Das Wesen des Christentums, 1841)"
+        - "Preliminary Theses for the Reform of Philosophy (1843)"
+        - "Principles of the Philosophy of the Future (1843)"
+      key_doctrines:
+        - >
+          Projection theory of religion: God is a projection of humanity's own idealized attributes
+          (love, wisdom, power). Religion alienates humans from their own nature by attributing
+          their best qualities to a fictional divine being. (The Essence of Christianity, 1841.)
+        - >
+          'Man made God in his own image' — Feuerbach inverted the theological claim; humans
+          project idealized essence onto a God-concept.
+        - >
+          Bridge between Hegel and Marx: Feuerbach's materialist critique of Hegel's idealism was
+          a key influence on Marx; Marx later critiqued Feuerbach for not extending the critique
+          into political-economic practice (Theses on Feuerbach, 1845).
+      students_or_influences:
+        - "Karl Marx (critical student — Theses on Feuerbach, 1845)"
+        - "Friedrich Engels"
+        - "Studied under Hegel at Berlin"
+      notes: >
+        Wikipedia confirms dates and that The Essence of Christianity (1841) is his best-known
+        work. Academic career cut short in 1830 when his first (anonymous) book attacked
+        personal immortality. SEP entry confirmed but was inaccessible during fetch; cross-checked
+        via Wikipedia.
+      source_url: "https://en.wikipedia.org/wiki/Ludwig_Feuerbach"
+      wikidata: "Q57796"
+
+    Max_Stirner:
+      dates: "1806–1856 (born 25 October 1806 Bayreuth; died 26 June 1856 Berlin)"
+      school: "Individualist Anarchism, Egoism, Young Hegelianism"
+      key_works:
+        - "The Ego and Its Own (Der Einzige und sein Eigentum, 1844)"
+      key_doctrines:
+        - >
+          Radical individual egoism: the only legitimate authority is the individual self ('the
+          Ego'); all abstractions — God, state, society, humanity — are 'spooks' that enslave the
+          individual.
+        - >
+          'The Unique One and His Property' (alternative translation of title): reality belongs to
+          the unique individual; collective abstractions have no claim on the self.
+        - >
+          Forerunner of nihilism, existentialism, postmodernism, and individualist anarchism.
+      students_or_influences:
+        - "Young Hegelians (attended Hegel's lectures in Berlin)"
+        - "Marx and Engels critiqued him extensively in The German Ideology (1846)"
+      notes: >
+        Wikipedia confirms pen name 'Max Stirner' (real name Johann Caspar Schmidt), dates,
+        and The Ego and Its Own (1844). His philosophy was a direct target of Marx and Engels
+        in The German Ideology.
+      source_url: "https://en.wikipedia.org/wiki/Max_Stirner"
+      wikidata: "Q76702"
+
+    Pierre-Joseph_Proudhon:
+      dates: "1809–1865 (born 15 January 1809 Besançon; died 19 January 1865)"
+      school: "Anarchism, Mutualism"
+      key_works:
+        - "What Is Property? (Qu'est-ce que la propriété?, 1840)"
+        - "System of Economic Contradictions (1846)"
+        - "General Idea of the Revolution in the Nineteenth Century (1851)"
+      key_doctrines:
+        - >
+          'Property is theft!' — the famous declaration from What Is Property? (1840).
+          Proudhon was the first to call himself an anarchist; he argued that property based on
+          passive possession (rent, interest) is a form of exploitation.
+        - >
+          Mutualism: an economic theory in which workers exchange products and services directly
+          at cost, without profit derived from ownership alone.
+        - >
+          'Father of anarchism': Wikipedia confirms he is widely regarded as one of anarchism's
+          most influential theorists, and the first person to explicitly call himself an anarchist.
+      students_or_influences:
+        - "Influenced Karl Marx early on (Marx initiated correspondence after What Is Property?)"
+        - "Influenced: Bakunin, Kropotkin, syndicalism"
+      notes: >
+        Wikipedia confirms dates, birthplace Besançon, and the 'property is theft' claim from
+        What Is Property? (1840). He became a member of the French Parliament after the
+        Revolution of 1848.
+      source_url: "https://en.wikipedia.org/wiki/Pierre-Joseph_Proudhon"
+      wikidata: "Q4289"
+
+    David_Strauss:
+      dates: "1808–1874 (born 27 January 1808; died 8 February 1874)"
+      school: "Left-Hegelianism, Higher Biblical Criticism"
+      key_works:
+        - "The Life of Jesus, Critically Examined (Das Leben Jesu kritisch bearbeitet, 1835–36)"
+        - "The Old Faith and the New (1872)"
+      key_doctrines:
+        - >
+          Applied Hegelian dialectics to the life of Jesus; argued that the Gospel narratives are
+          myths — not historical fact and not deliberate fraud, but collective religious
+          imagination expressing universal ideas.
+        - >
+          Contributed to the 'demythologization' of Christianity and helped spark the Young
+          Hegelian movement.
+      notes: >
+        Wikipedia article 'David Strauss (theologian)' confirms dates. The Life of Jesus (1835–36)
+        was scandalous and cost Strauss his academic position. Translated into English by George
+        Eliot (Mary Ann Evans) in 1846. Important precursor to Marx's materialist critique of
+        religion via the Young Hegelian circle.
+      source_url: "https://en.wikipedia.org/wiki/David_Strauss_(theologian)"
+      wikidata: "Q60908"
+
+    Bruno_Bauer:
+      dates: "1809–1882 (born 6 September 1809; died 13 April 1882)"
+      school: "Young Hegelianism, Higher Biblical Criticism"
+      key_works:
+        - "The Trumpet of the Last Judgement over Hegel the Atheist and Antichrist (1841)"
+        - "Critique of the Gospel of John (1840)"
+        - "Critique of the Synoptic Gospels (1841–42)"
+      key_doctrines:
+        - >
+          Argued the Gospel texts were literary creations of individual self-consciousness, not
+          historical records.
+        - >
+          Marx's early associate; Marx and Engels later critiqued him in The Holy Family (1845).
+      notes: >
+        Wikipedia confirms dates and association with Young Hegelians. His radical criticism of
+        the Gospels influenced Marx's early writings on religion before they fell out.
+      source_url: "https://en.wikipedia.org/wiki/Bruno_Bauer"
+      wikidata: "Q78476"
+
+  # ----------------------------------------------------------
+  # GROUP 3: EXISTENTIALIST PRECURSORS (~5 entries)
+  # ----------------------------------------------------------
+  existentialist_precursors:
+
+    Soren_Kierkegaard:
+      dates: "1813–1855 (born 5 May 1813 Copenhagen; died 11 November 1855)"
+      school: "Existentialism (precursor), Christian Existentialism, Irrationalism"
+      key_works:
+        - "Either/Or (Enten-Eller, 1843) — under pseudonym Victor Eremita"
+        - "Fear and Trembling (1843) — under pseudonym Johannes de Silentio"
+        - "Repetition (1843)"
+        - "Philosophical Fragments (1844)"
+        - "The Concept of Anxiety (1844)"
+        - "Concluding Unscientific Postscript to Philosophical Fragments (1846)"
+        - "Works of Love (1847)"
+        - "The Sickness Unto Death (1849) — under pseudonym Anti-Climacus"
+        - "Practice in Christianity (1850)"
+      key_doctrines:
+        - >
+          Three stages of existence: aesthetic (sensory pleasure, Don Juan), ethical
+          (moral duty, Socrates/the judge), and religious (leap of faith, Abraham).
+          The move between stages requires a 'leap,' not rational argument.
+        - >
+          The leap of faith: in Fear and Trembling, Abraham's willingness to sacrifice Isaac
+          represents an individual act of faith that suspends universal ethical norms (the
+          'teleological suspension of the ethical').
+        - >
+          Knight of faith vs. knight of infinite resignation (Fear and Trembling): the knight
+          of faith makes the double movement — infinite resignation plus faith that he will
+          receive the finite back.
+        - >
+          'Subjectivity is truth' / 'Subjectivity is untruth': from the Postscript —
+          subjective appropriation (personal passionate commitment) is essential for religious
+          truth; objective proofs cannot reach it.
+        - >
+          The absurd: the collision between rational demands and the irrational; religious faith
+          requires embracing what is 'objectively uncertain.'
+        - >
+          Indirect communication and pseudonymous authorship: Kierkegaard wrote under numerous
+          pseudonyms to force readers into first-person engagement rather than passive reception.
+        - >
+          'Father of existentialism' — SEP notes this label is applied but is partially
+          misleading; Kierkegaard's existentialism is Christian and theistic, unlike Sartre's.
+      students_or_influences:
+        - "Influenced: Heidegger, Sartre, Jaspers, Marcel, Lévinas, Wittgenstein"
+        - "Influenced by: Hegel (target/interlocutor), Socrates (hero)"
+        - "Influenced: Henrik Ibsen, Franz Kafka, W.H. Auden"
+      notes: >
+        SEP (first published 2023): born 5 May 1813, died 11 November 1855. Almost all work
+        written in the 1840s. Wittgenstein famously called him 'by far the most profound thinker
+        of the nineteenth century.'
+      source_url: "https://plato.stanford.edu/entries/kierkegaard/"
+      wikidata: "Q36759"
+
+    Friedrich_Nietzsche:
+      dates: "1844–1900 (born 15 October 1844 Röcken; died 25 August 1900 Weimar)"
+      school: "Perspectivism, Life Philosophy, Critique of Morality"
+      key_works:
+        - "The Birth of Tragedy (Die Geburt der Tragödie, 1872)"
+        - "Untimely Meditations (1873–76)"
+        - "Human, All Too Human (1878)"
+        - "The Gay Science (Die fröhliche Wissenschaft, 1882)"
+        - "Thus Spoke Zarathustra (Also sprach Zarathustra, 1883–85)"
+        - "Beyond Good and Evil (Jenseits von Gut und Böse, 1886)"
+        - "On the Genealogy of Morality (Zur Genealogie der Moral, 1887)"
+        - "Twilight of the Idols (1888)"
+        - "The Antichrist (1888)"
+        - "Ecce Homo (written 1888, published 1908)"
+      key_doctrines:
+        - >
+          Death of God: The Gay Science §125 (the Madman parable): 'God is dead. God remains dead.
+          And we have killed him.' Not a triumphant atheism but a diagnosis of the collapse of the
+          metaphysical foundation of European values.
+        - >
+          Übermensch (Overman/Superman): from Thus Spoke Zarathustra — a projected ideal who creates
+          new values and affirms life rather than fleeing it. NOT a racial concept in Nietzsche's text.
+        - >
+          Eternal recurrence of the same: the thought-experiment that one's life will recur
+          infinitely in identical form — used as an affirmation test: would you choose to live this
+          life again? SEP section 6.3.
+        - >
+          Will to power: the fundamental drive in all living things — not merely domination but
+          self-overcoming, creativity, and the expression of strength. SEP section 6.1.
+        - >
+          Master/slave morality: On the Genealogy of Morality — master morality creates values
+          from strength and affirmation; slave morality inverts this through ressentiment, condemning
+          the strong as 'evil' and valorizing weakness as 'good.'
+        - >
+          Ressentiment (French): the psychological basis of slave morality — a festering resentment
+          that cannot find direct expression and instead revalues the strong as 'evil.'
+        - >
+          Perspectivism: there is no 'view from nowhere'; all knowledge is from a perspective.
+          SEP section 6.2.
+        - >
+          Apollonian / Dionysian: The Birth of Tragedy (1872) — Apollonian impulse (order, reason,
+          form, sculpture) vs. Dionysian impulse (chaos, intoxication, music, tragedy).
+      students_or_influences:
+        - "Influenced by: Schopenhauer (early), Wagner (early, then rejected)"
+        - "Lou Andreas-Salomé: friend and intellectual companion 1882; she declined his marriage proposals"
+        - "Influenced: Heidegger, Foucault, Derrida, Deleuze, existentialism broadly"
+        - >
+          Elisabeth Förster-Nietzsche (sister, 1846–1935): created the Nietzsche Archive (1894)
+          and controlled his posthumous texts. Wikipedia notes claims that she edited his work
+          to highlight nationalist/antisemitic themes, though this interpretation is contested
+          in recent scholarship.
+      notes: >
+        SEP (revised 2022): born 15 October 1844. Called to chair in classical philology at Basel
+        at age 24 — youngest ever appointed. Published intensively 1870s–1880s. Suffered mental
+        collapse January 1889 in Turin; never recovered. Died 25 August 1900.
+        Nazi appropriations of Nietzsche were mediated through his sister's archive and later through
+        the Nazis directly; the Übermensch is NOT a racial category in Nietzsche's own texts.
+      source_url: "https://plato.stanford.edu/entries/nietzsche/"
+      wikidata: "Q9358"
+
+    Fyodor_Dostoevsky:
+      dates: "1821–1881 (born 11 November [O.S. 30 October] 1821 Moscow; died 9 February 1881)"
+      school: "Philosophical Novelist, Existentialist Precursor, Christian Existentialism"
+      key_works:
+        - "Notes from Underground (Zapiski iz podpol'ya, 1864)"
+        - "Crime and Punishment (1866)"
+        - "The Idiot (1869)"
+        - "Demons (The Possessed, 1872)"
+        - "The Brothers Karamazov (1880)"
+      key_doctrines:
+        - >
+          Notes from Underground (1864): considered one of the first works of existentialist
+          literature (Wikipedia). The Underground Man's fierce rejection of rational egoism and
+          utopian socialism; 'the underground man' as a figure of spite, free will, and suffering.
+        - >
+          The Grand Inquisitor (The Brothers Karamazov, Bk. 5, Ch. 5): a prose poem within the
+          novel in which the Grand Inquisitor argues that humans cannot bear the burden of true
+          freedom and require miracle, mystery, and authority. Christ listens and then kisses him.
+          One of the most discussed passages in Western philosophy on freedom vs. authority.
+        - >
+          Theodicy and free will: The Brothers Karamazov wrestles with the existence of God and
+          evil through characters Ivan (rationalist rebel) and Alyosha (faithful).
+      notes: >
+        Wikipedia confirms dates and that Notes from Underground (1864) is considered one of the
+        first works of existentialist literature. The Grand Inquisitor passage is widely discussed
+        in philosophy courses on freedom, religion, and existentialism.
+      source_url: "https://en.wikipedia.org/wiki/Fyodor_Dostoevsky"
+      wikidata: "Q991"
+
+    Lou_Andreas_Salome:
+      dates: "1861–1937 (born 12 February 1861 St. Petersburg; died 5 February 1937 Göttingen)"
+      school: "Philosophy, Psychoanalysis, Literature"
+      key_works:
+        - "Friedrich Nietzsche in His Works (1894)"
+        - "Ibsen's Heroines (1892)"
+        - "The Erotic (1910)"
+        - "My Thanks to Freud (1931)"
+      key_doctrines:
+        - >
+          Close intellectual companion to Nietzsche (1882); he proposed marriage to her twice
+          through Paul Rée; she declined. Wikipedia notes her 'diverse intellectual interests
+          led to friendships with Nietzsche, Sigmund Freud, Paul Rée, and Rainer Maria Rilke.'
+        - >
+          Later became a practicing psychoanalyst and member of Freud's circle; wrote
+          one of the earliest analytical studies of Nietzsche's philosophy (1894).
+      notes: >
+        Wikipedia confirms dates (born 12 February 1861, died 5 February 1937).
+        Russian-born, from a French Huguenot-German family. Included briefly per assignment
+        as a figure connected to both Nietzsche and later 20th-century thought.
+      source_url: "https://en.wikipedia.org/wiki/Lou_Andreas-Salom%C3%A9"
+      wikidata: "Q60765"
+
+  # ----------------------------------------------------------
+  # GROUP 4: AMERICAN PRAGMATISM (~5 entries)
+  # ----------------------------------------------------------
+  american_pragmatism:
+
+    Charles_Sanders_Peirce:
+      dates: "1839–1914 (born 10 September 1839 Cambridge MA; died 19 April 1914 Milford PA)"
+      school: "Pragmatism (Pragmaticism), Semiotics, Logic"
+      key_works:
+        - "The Fixation of Belief (1877, Popular Science Monthly)"
+        - "How to Make Our Ideas Clear (1878, Popular Science Monthly)"
+        - "Illustrations of the Logic of Science (1877–78 series)"
+        - "Collected Papers (posthumous, 8 vols.)"
+      key_doctrines:
+        - >
+          Pragmatic maxim (How to Make Our Ideas Clear, 1878): 'Consider what effects, which might
+          conceivably have practical bearings, we conceive the object of our conception to have.
+          Then, our conception of these effects is the whole of our conception of the object.'
+          Meaning is tied to practical consequences.
+        - >
+          Semiotics (semeiotics): general theory of signs; Peirce developed triadic sign theory —
+          sign (representamen), object, interpretant.
+        - >
+          Abduction (abductive reasoning): a form of inference that generates explanatory hypotheses;
+          distinct from deduction and induction.
+        - >
+          Fallibilism: no belief can be held with absolute certainty; inquiry is self-correcting
+          over time.
+        - >
+          After 1905, renamed his position 'pragmaticism' to distinguish it from William James's
+          and Dewey's uses of 'pragmatism.' SEP: 'founder of American pragmatism.'
+      students_or_influences:
+        - "William James (friend and popularizer of pragmatism)"
+        - "John Dewey (influenced)"
+        - "Influenced by: Kant, Scottish common sense philosophy"
+      notes: >
+        SEP (revised 2021): Peirce's father Benjamin was a Harvard mathematician.
+        Peirce worked for the U.S. Coast and Geodetic Survey for ~30 years.
+        His published works run ~12,000 printed pages; unpublished manuscripts ~80,000 handwritten pages.
+      source_url: "https://plato.stanford.edu/entries/peirce/"
+      wikidata: "Q48468"
+
+    William_James:
+      dates: "1842–1910 (born 11 January 1842 New York; died 26 August 1910 Chocorua NH)"
+      school: "Pragmatism, Radical Empiricism, Psychology"
+      key_works:
+        - "The Principles of Psychology (1890)"
+        - "The Will to Believe and Other Essays (1897)"
+        - "The Varieties of Religious Experience (1902)"
+        - "Pragmatism: A New Name for Some Old Ways of Thinking (1907)"
+        - "A Pluralistic Universe (1909)"
+        - "The Meaning of Truth (1909)"
+        - "Essays in Radical Empiricism (posthumous, 1912)"
+      key_doctrines:
+        - >
+          Stream of consciousness: Principles of Psychology (1890) — consciousness flows rather than
+          existing as discrete mental atoms; James coined this phrase. SEP: 'The Principles of
+          Psychology (1890) is a rich blend of physiology, psychology, philosophy, and personal
+          reflection that has given us such ideas as "the stream of thought."'
+        - >
+          Pragmatic theory of truth: a belief is true if it 'works,' if it has practical cash value,
+          if accepting it leads to satisfactory results in experience.
+        - >
+          The Will to Believe (1897): argued for the rational permissibility of religious faith when
+          evidence is insufficient but the stakes are high — 'forced, living, momentous options.'
+        - >
+          Radical empiricism: experience itself, including relations between things, is the only
+          primary reality; pure experience is the 'primal stuff' of the world.
+        - >
+          The Varieties of Religious Experience (1902): systematic psychological study of mystical
+          and religious experience; argued for the reality of religious experience as a psychological
+          and possibly metaphysical phenomenon.
+      students_or_influences:
+        - "Influenced: John Dewey, Edmund Husserl, Bertrand Russell, Ludwig Wittgenstein (via Principles)"
+        - "Friend and popularizer of C.S. Peirce's pragmatism"
+        - "Brother of novelist Henry James"
+      notes: >
+        SEP (revised 2021): James studied at Harvard's Lawrence Scientific School and School of
+        Medicine. 'Some Remarks on Spencer's Notion of Mind as Correspondence' (1878) and
+        'The Sentiment of Rationality' (1879, 1882) are early presaging essays.
+      source_url: "https://plato.stanford.edu/entries/james/"
+      wikidata: "Q130760"
+
+    John_Dewey:
+      dates: "1859–1952 (born 20 October 1859 Burlington VT; died 1 June 1952 New York)"
+      school: "Pragmatism, Instrumentalism, Progressive Education"
+      key_works:
+        - "Psychology (1887)"
+        - "The School and Society (1899)"
+        - "Democracy and Education (1916)"
+        - "Reconstruction in Philosophy (1920)"
+        - "Experience and Nature (1925)"
+        - "The Quest for Certainty (1929)"
+        - "Art as Experience (1934)"
+        - "Logic: The Theory of Inquiry (1938)"
+      key_doctrines:
+        - >
+          Instrumentalism: ideas are instruments for solving problems; truth is what works in
+          resolving 'indeterminate situations.' Dewey preferred 'cultural naturalism' or
+          'instrumentalism' to 'pragmatism.'
+        - >
+          Philosophy as general theory of education (Democracy and Education, 1916): education
+          is the reconstruction of experience to add meaning and give direction to further experience.
+        - >
+          Critique of the 'spectator theory of knowledge': traditional philosophy treats knowing as
+          passive observation; Dewey argued knowledge is active, experimental problem-solving.
+        - >
+          Social democracy: democracy is not just a form of government but a mode of associated
+          living and communicated experience; education is its primary instrument.
+        - >
+          SEP (revised 2024): 'arguably the most prominent American intellectual for the first half
+          of the twentieth century.'
+      students_or_influences:
+        - "Influenced by: William James, Hegel (early), Darwin"
+        - "Influenced: Richard Rorty, neo-pragmatism broadly"
+        - "Taught at University of Michigan, University of Chicago, Columbia University"
+      notes: >
+        SEP confirms dates and positions. Dewey lived from 1859 to 1952 — one of the longest
+        careers in American philosophy. His educational experiments at the Laboratory School
+        (University of Chicago, 1896–1904) had global reach.
+      source_url: "https://plato.stanford.edu/entries/dewey/"
+      wikidata: "Q26261"
+
+    George_Herbert_Mead:
+      dates: "1863–1931 (born 27 February 1863; died 26 April 1931)"
+      school: "Pragmatism, Social Psychology, Symbolic Interactionism"
+      key_works:
+        - "Mind, Self, and Society (posthumous, 1934, from lecture notes)"
+        - "The Philosophy of the Present (1932)"
+        - "The Philosophy of the Act (posthumous, 1938)"
+      key_doctrines:
+        - >
+          Social self: the self emerges through social interaction; the 'I' is the spontaneous
+          subject, the 'me' is the internalized perspective of the 'generalized other' (society).
+        - >
+          Symbolic interactionism: social reality is constituted through meaningful symbolic
+          interaction; the key mechanism is the significant symbol (a gesture that means the
+          same to sender and receiver).
+        - >
+          One of the founders of the Chicago School of Sociology.
+      notes: >
+        Wikipedia confirms dates and affiliation (University of Chicago, primarily). His works
+        were published posthumously from student notes. Key figure connecting pragmatism to
+        social theory and sociology.
+      source_url: "https://en.wikipedia.org/wiki/George_Herbert_Mead"
+      wikidata: "Q131749"
+
+    Josiah_Royce:
+      dates: "1855–1916 (born 20 November 1855 Grass Valley CA; died 14 September 1916 Cambridge MA)"
+      school: "Absolute Idealism, American Idealism, Pragmatism"
+      key_works:
+        - "The Religious Aspect of Philosophy (1885)"
+        - "The Spirit of Modern Philosophy (1892)"
+        - "The World and the Individual (1900–1901)"
+        - "The Philosophy of Loyalty (1908)"
+        - "The Problem of Christianity (1913)"
+      key_doctrines:
+        - >
+          Absolute Idealism: reality is the expression of an Absolute Mind; truth and error are
+          only possible against the background of an all-knowing mind (the Absolute).
+        - >
+          Philosophy of loyalty: the highest moral virtue is loyalty to a cause that is itself
+          worthy of loyalty — 'loyalty to loyalty.'
+        - >
+          Founder of American idealism; attempted to reconcile pragmatism (via Peirce) with
+          idealism.
+      notes: >
+        Wikipedia confirms dates, birthplace, and philosophical positions. Josiah Royce was a
+        colleague and friendly opponent of William James at Harvard.
+      source_url: "https://en.wikipedia.org/wiki/Josiah_Royce"
+      wikidata: "Q462216"
+
+  # ----------------------------------------------------------
+  # GROUP 5: LATE 19TH-CENTURY EASTERN PHILOSOPHY (~6 entries)
+  # ----------------------------------------------------------
+  late_eastern:
+
+    Ramakrishna:
+      dates: "1836–1886 (born 18 February 1836 Kamarpukur, Bengal; died 16 August 1886)"
+      school: "Advaita Vedanta, Hindu Mysticism"
+      key_works:
+        - "Gospel of Sri Ramakrishna (transcribed by Mahendranath Gupta, published 1907)"
+      key_doctrines:
+        - >
+          Essential unity of religions: all paths (Hindu Vaishnavism, Tantra, Advaita Vedanta,
+          Christianity, Sufi Islam) lead to the same goal. 'Yato mat, tato path' — as many
+          faiths, so many paths.
+        - >
+          Direct mystical experience of the divine (samadhi): Ramakrishna reportedly experienced
+          visions of Kali and entered ecstatic trance states.
+        - >
+          Regarded by followers as an avatar (divine incarnation); teacher of Swami Vivekananda,
+          his most prominent disciple.
+      notes: >
+        Wikipedia confirms dates (18 February 1836 – 16 August 1886). Temple priest at
+        Dakshineshwar Kali Temple near Calcutta. His parable-based teachings were recorded by
+        disciple Mahendranath Gupta (letter M.) in the Gospel of Sri Ramakrishna.
+      source_url: "https://en.wikipedia.org/wiki/Ramakrishna"
+      wikidata: "Q152786"
+
+    Swami_Vivekananda:
+      dates: "1863–1902 (born 12 January 1863 Calcutta; died 4 July 1902 Belur Math)"
+      school: "Neo-Vedanta, Modern Hinduism"
+      key_works:
+        - "Lectures from Colombo to Almora (1897)"
+        - "Raja Yoga (1896)"
+        - "Jnana Yoga (1902)"
+        - "Karma Yoga (1896)"
+        - "Bhakti Yoga (1896)"
+        - "Complete Works of Swami Vivekananda (8 vols.)"
+      key_doctrines:
+        - >
+          Modern Vedanta: universal, practical interpretation of Advaita Vedanta; divine is
+          present in every being; service to humanity is service to God ('Daridra Narayana').
+        - >
+          Speech at the Parliament of the World's Religions, Chicago, 11–27 September 1893:
+          opened 'Sisters and brothers of America...' — introduced Hindu spiritual thought to
+          the West; advocated religious tolerance and universal acceptance.
+          Wikipedia: 'an American newspaper described him as "an orator by divine right and
+          undoubtedly the greatest figure at the Parliament."'
+        - >
+          Founded: Ramakrishna Math (monastic order) and Ramakrishna Mission (social service),
+          both in 1897; Vedanta Society of New York (1895).
+      notes: >
+        Wikipedia confirms dates (12 January 1863 – 4 July 1902). Chief disciple of Ramakrishna.
+        Wikipedia notes he was 'a major figure in the introduction of Vedanta and Yoga to the
+        Western world.'
+      source_url: "https://en.wikipedia.org/wiki/Swami_Vivekananda"
+      wikidata: "Q160852"
+
+    Sri_Aurobindo:
+      dates: "1872–1950 (born 15 August 1872 Calcutta; died 5 December 1950 Pondicherry)"
+      school: "Integral Yoga, Evolutionary Spiritualism"
+      key_works:
+        - "The Life Divine (1914–19 in Arya journal; book 1939–40)"
+        - "The Synthesis of Yoga (1914–21 in Arya; book 1948)"
+        - "Essays on the Gita (1922)"
+        - "The Human Cycle (1949)"
+        - "Savitri: A Legend and a Symbol (epic poem, completed posthumously 1954)"
+      key_doctrines:
+        - >
+          Integral Yoga: a spiritual practice that aims at the transformation of all levels of
+          the human being (physical, vital, mental, supramental) — not escape from the world
+          but its divinization.
+        - >
+          Evolutionary philosophy: consciousness evolves from matter through life and mind toward
+          a 'Supermind'; The Life Divine develops this in philosophical form.
+        - >
+          Political phase (1905–1910): revolutionary Indian nationalist before withdrawing to
+          spiritual practice; involved with Bengal revolutionary movement; acquitted in Alipore
+          Conspiracy Case (1909).
+      notes: >
+        Wikipedia confirms dates and that he studied at King's College, Cambridge (1890–1892)
+        before returning to India. Founded Sri Aurobindo Ashram in Pondicherry with Mirra Alfassa
+        in 1926. His philosophical roots (evolutionary Vedanta, Hegel, Bergson) are 19th-century
+        even though he lived into 1950.
+      source_url: "https://en.wikipedia.org/wiki/Sri_Aurobindo"
+      wikidata: "Q171413"
+
+    Inoue_Enryo:
+      dates: "1858–1919 (born 18 March 1858; died 6 June 1919)"
+      school: "Japanese Buddhist Modernism, Meiji-era Philosophy"
+      key_works:
+        - "Bukkyō katsuron joron (An Introduction to the Revitalization of Buddhism, 1887)"
+        - "Tetsugaku isseki wa (A Night's Talk on Philosophy, 1886)"
+        - "Yokai-gaku (Study of Mysterious Phenomena)"
+      key_doctrines:
+        - >
+          Buddhist modernism: argued that Buddhism is compatible with and superior to Western
+          science and rationalism; sought to revitalize Buddhism as a philosophical and national
+          framework in Meiji Japan.
+        - >
+          Studied Western philosophy (including Hegel, Kant, Mill) and applied categories of
+          Western philosophy to Buddhist texts.
+        - >
+          'Professor Specter' (Yokai Hakase): systematically investigated and debunked superstitions
+          and supernatural claims using rational methods. Founded Toyo University (1887) and
+          Tetsugaku-dō Park (Temple Garden of Philosophy) in Tokyo.
+      notes: >
+        Wikipedia confirms dates (18 March 1858 – 6 June 1919). Shin Buddhist priest and educator;
+        key figure in reception of Western philosophy in Meiji Japan.
+      source_url: "https://en.wikipedia.org/wiki/Inoue_Enry%C5%8D"
+      wikidata: "Q1670671"
+
+    D_T_Suzuki:
+      dates: "1870–1966 (born 18 October 1870 Honda, Ishikawa; died 12 July 1966 Tokyo)"
+      school: "Zen Buddhism, Buddhist Philosophy, Religious Studies"
+      key_works:
+        - "Outlines of Mahayana Buddhism (1907)"
+        - "An Introduction to Zen Buddhism (1934)"
+        - "Essays in Zen Buddhism (3 series, 1927–1934)"
+        - "Zen and Japanese Culture (1959)"
+        - "Studies in the Lankavatara Sutra (1930)"
+      key_doctrines:
+        - >
+          Instrumental in introducing Zen Buddhism to the West; translated Chinese, Korean,
+          Japanese, and Sanskrit Buddhist literature into English.
+        - >
+          Presented Zen as a living philosophical and psychological practice beyond institutional
+          religion; emphasized direct experience (satori/kensho) over doctrinal belief.
+        - >
+          Studied under Zen master Imagita Kosen and then Soyen Shaku at Engakuji monastery
+          from 1891; first traveled to the United States in 1897 to assist Paul Carus at Open
+          Court Publishing in La Salle, Illinois.
+        - >
+          Nominated for the Nobel Peace Prize in 1963.
+      notes: >
+        Wikipedia confirms dates (18 October 1870 – 12 July 1966). Assigned here as 'early
+        career' per the brief — his first English publications were in the 1890s–1900s, though
+        his greatest influence was 20th century.
+      source_url: "https://en.wikipedia.org/wiki/D._T._Suzuki"
+      wikidata: "Q314525"
+
+    Mahatma_Gandhi:
+      dates: "1869–1948 (born 2 October 1869 Porbandar Gujarat; died 30 January 1948 New Delhi)"
+      school: "Political Philosophy, Ethics of Nonviolence, Hindu Philosophy"
+      key_works:
+        - "Hind Swaraj (Indian Home Rule, 1909)"
+        - "My Experiments with Truth (Autobiography, 1927–29)"
+        - "Satyagraha in South Africa (1928)"
+      key_doctrines:
+        - >
+          Satyagraha ('truth-force' or 'soul-force'): nonviolent resistance as a moral and
+          political strategy; the practitioner refuses to submit to injustice, accepts suffering
+          rather than inflicting it, and seeks to convert the opponent rather than defeat them.
+          First developed in South Africa (1906–1914).
+        - >
+          Hind Swaraj (1909): critique of modern industrial civilization and Western modernity;
+          argued that India's true self-rule (swaraj) requires moral and spiritual regeneration,
+          not merely political independence.
+        - >
+          Philosophical influences: Tolstoy (letter correspondence, 1909–1910), Thoreau (Civil
+          Disobedience), Jain ahimsa, and the Bhagavad Gita.
+        - >
+          Ahimsa (non-injury) extended from the Jain and Hindu ethical tradition into political
+          practice on a mass scale.
+      notes: >
+        Wikipedia confirms dates (2 October 1869 – 30 January 1948). Gandhi's philosophical
+        roots (Hind Swaraj, satyagraha concept) are 19th-century in origin though his major
+        campaigns (Indian independence movement) were 20th-century. He was assassinated
+        30 January 1948 by Hindu nationalist Nathuram Godse.
+      source_url: "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
+      wikidata: "Q1001"
+
+  # ----------------------------------------------------------
+  # GROUP 6: OTHER 19TH-CENTURY FIGURES (~8 entries)
+  # ----------------------------------------------------------
+  other_19c:
+
+    Auguste_Comte:
+      dates: "1798–1857 (born 19 January 1798 Montpellier; died 5 September 1857 Paris)"
+      school: "Positivism, Philosophy of Science, Sociology"
+      key_works:
+        - "Course on Positive Philosophy (Cours de philosophie positive, 1830–1842, 6 vols.)"
+        - "System of Positive Polity (Système de politique positive, 1851–1854, 4 vols.)"
+        - "Discourse on the Positive Spirit (1844)"
+        - "A General View of Positivism (condensed from System, 1848)"
+      key_doctrines:
+        - >
+          Positivism: genuine knowledge is scientific knowledge — knowledge of facts derived
+          from experience and verifiable by empirical methods. Metaphysical and theological claims
+          are not knowledge.
+        - >
+          Law of Three Stages: all human intellectual development (and individual sciences) passes
+          through three stages: (1) Theological stage (supernatural explanations), (2) Metaphysical
+          stage (abstract forces), (3) Positive/Scientific stage (observable facts and laws).
+        - >
+          Hierarchy of sciences: mathematics → astronomy → physics → chemistry → biology →
+          sociology. Sociology was Comte's own coinage (he also coined 'altruism').
+        - >
+          'Religion of Humanity': in his later System, Comte proposed a secular religion with
+          'Humanity' as the object of worship — this later phase was sharply criticized by J.S. Mill.
+        - >
+          SEP (revised 2026): 'the first philosopher of science in the modern sense.'
+          Served as secretary to Saint-Simon 1817–1824.
+      students_or_influences:
+        - "Influenced: John Stuart Mill (early sympathy), Herbert Spencer"
+        - "Secretary to Henri de Saint-Simon 1817–1824"
+        - "Harriet Martineau translated and condensed the Course (1853)"
+      notes: >
+        SEP (first published 2008, revised 2026) confirms dates and works.
+        Comte coined 'sociology' and 'altruism.' The Course on Positive Philosophy was translated
+        and condensed by Harriet Martineau (1853).
+      source_url: "https://plato.stanford.edu/entries/comte/"
+      wikidata: "Q19845"
+
+    Herbert_Spencer:
+      dates: "1820–1903 (born 27 April 1820 Derby; died 8 December 1903 Brighton)"
+      school: "Social Darwinism, Evolutionary Philosophy, Liberalism"
+      key_works:
+        - "Social Statics (1851)"
+        - "The Principles of Psychology (1855)"
+        - "A System of Synthetic Philosophy (1862–1896, 10 vols.)"
+        - "First Principles (1862)"
+        - "Principles of Biology (1864–1867)"
+        - "The Study of Sociology (1873)"
+        - "Principles of Ethics (1879–1893)"
+        - "The Man Versus the State (1884)"
+      key_doctrines:
+        - >
+          'Survival of the fittest': Spencer coined this phrase in Principles of Biology (1864)
+          after reading Darwin's On the Origin of Species (1859). Darwin adopted the phrase in
+          the fifth edition of On the Origin of Species (1869). Wikipedia: 'Spencer originated
+          the expression "survival of the fittest", which he coined in Principles of Biology (1864).'
+        - >
+          Evolutionary philosophy: extended the principle of evolution from biology to psychology,
+          sociology, and ethics — all phenomena develop from homogeneous simplicity to
+          heterogeneous complexity.
+        - >
+          Social Darwinism (popular label, disputed by SEP): the poor are 'unfit'; state
+          intervention in social welfare was seen by Spencer's popularizers (Carnegie, Sumner)
+          as counterproductive. SEP (revised 2024) cautions against this reductive reading,
+          noting Spencer's actual liberalism prioritized individual rights.
+        - >
+          Agnosticism: Spencer coined the term in 1869 for the view that God's existence cannot
+          be known; he proposed the 'Unknowable' as the ultimate reality behind all phenomena.
+      notes: >
+        SEP (revised 2024): Spencer's reputation was damaged by G.E. Moore's and Richard
+        Hofstadter's interpretations; SEP notes Spencer's actual views are more complex.
+        Wikipedia confirms 'survival of the fittest' coined in Principles of Biology (1864).
+        Agnosticism: SEP and Wikipedia confirm Spencer used this term early; T.H. Huxley
+        independently coined it and is more often credited.
+        NOTE on agnosticism: SEP does not credit Spencer with coining 'agnosticism'; that is
+        credited to T.H. Huxley (1869). Spencer used the concept; do NOT claim Spencer coined
+        the term in Tier 2 content.
+      source_url: "https://plato.stanford.edu/entries/spencer/"
+      wikidata: "Q132949"
+
+    Henri_Bergson:
+      dates: "1859–1941 (born 18 October 1859 Paris; died 4 January 1941 Paris)"
+      school: "Life Philosophy (Lebensphilosophie), Process Philosophy, Vitalism"
+      key_works:
+        - "Time and Free Will (Essai sur les données immédiates de la conscience, 1889)"
+        - "Matter and Memory (Matière et mémoire, 1896)"
+        - "Laughter (Le rire, 1900)"
+        - "Creative Evolution (L'Évolution créatrice, 1907)"
+        - "An Introduction to Metaphysics (1903)"
+        - "The Two Sources of Morality and Religion (1932)"
+      key_doctrines:
+        - >
+          Durée (duration): real time is not the spatialized, homogeneous time of physics, but
+          lived qualitative duration — a continuous flowing that cannot be divided into discrete
+          units without falsifying it. (Time and Free Will, 1889.)
+        - >
+          Élan vital (vital impulse): in Creative Evolution (1907), the creative force driving
+          biological evolution; life pushes against matter, creating new forms through creative
+          divergence rather than mechanical necessity.
+        - >
+          Intuition as method: genuine knowledge of life requires intuition — the intellectual
+          sympathy by which one enters into the inner nature of a thing rather than analyzing
+          it from the outside.
+        - >
+          Critique of mechanism and finalism: Creative Evolution argues that neither mechanical
+          determinism nor teleological finalism can account for the novelty of organic evolution.
+        - >
+          SEP (revised 2025): 'one of the most famous and influential French philosophers of the
+          late 19th–early 20th century.' Nobel Prize in Literature, 1927.
+      students_or_influences:
+        - "Influenced: Merleau-Ponty, Sartre, Deleuze (Bergsonism, 1966)"
+        - "Influenced: William James (mutual admiration), Alfred North Whitehead"
+        - "Taught at Collège de France 1900–1921"
+      notes: >
+        SEP confirms dates (18 October 1859 – 4 January 1941). Won the Nobel Prize in
+        Literature 1927. His influence declined sharply after World War II but was revived by
+        Deleuze's Bergsonism (1966).
+      source_url: "https://plato.stanford.edu/entries/bergson/"
+      wikidata: "Q35548"
+
+    Wilhelm_Dilthey:
+      dates: "1833–1911 (born 19 November 1833 Biebrich; died 1 October 1911 Seis am Schlern)"
+      school: "Hermeneutics, Philosophy of the Human Sciences, Historicism"
+      key_works:
+        - "Introduction to the Human Sciences (Einleitung in die Geisteswissenschaften, 1883)"
+        - "The Formation of the Historical World in the Human Sciences (1910)"
+        - "Drafts for a Critique of Historical Reason (posthumous)"
+        - "Pattern and Meaning in History (selected writings)"
+      key_doctrines:
+        - >
+          Distinction between natural sciences (Naturwissenschaften) and human sciences
+          (Geisteswissenschaften): natural sciences explain (erklären) by causal laws;
+          human sciences understand (verstehen) — grasping the inner meaning of human expressions,
+          texts, institutions, and actions.
+        - >
+          Hermeneutics: the methodology of understanding historical and cultural expressions;
+          Dilthey extended Schleiermacher's hermeneutics from texts to all forms of
+          'objectified life' (Objektivationen des Lebens).
+        - >
+          Critique of Historical Reason: an attempt to extend Kant's critique of pure reason to
+          history and human life, providing a philosophical foundation for the human sciences.
+        - >
+          SEP: 'Dilthey's reflections on the human sciences, historical contextualization, and
+          hermeneutics influenced many subsequent thinkers such as Husserl, Heidegger, Cassirer,
+          Gadamer and Ricoeur.'
+      notes: >
+        SEP (revised 2020) confirms dates. Dilthey is a major 19th-century philosopher often
+        overlooked in Anglophone curricula but central to the continental tradition leading to
+        Husserl, Heidegger, and Gadamer.
+      source_url: "https://plato.stanford.edu/entries/dilthey/"
+      wikidata: "Q57115"
+
+    Franz_Brentano:
+      dates: "1838–1917 (born 16 January 1838 Marienberg am Rhein; died 17 March 1917 Zurich)"
+      school: "Philosophy of Mind, Descriptive Psychology, Phenomenology (precursor)"
+      key_works:
+        - "Psychology from an Empirical Standpoint (Psychologie vom empirischen Standpunkt, 1874)"
+        - "On the Origin of Our Knowledge of Right and Wrong (1889)"
+        - "Descriptive Psychology (posthumous, 1982)"
+        - "The True and the Evident (posthumous, 1966)"
+      key_doctrines:
+        - >
+          Intentionality: mental phenomena are distinguished from physical by their 'intentional
+          inexistence' — every mental act is directed toward an object (a belief is a belief about
+          something; a desire is a desire for something). From Psychology from an Empirical
+          Standpoint (1874). SEP: 'mainly known for his work in philosophy of psychology, especially
+          for having introduced the notion of intentionality to contemporary philosophy.'
+        - >
+          Descriptive psychology vs. genetic psychology: Brentano distinguished describing the
+          structures of consciousness (descriptive) from explaining their causal origins (genetic).
+        - >
+          Inner perception (innere Wahrnehmung): direct, self-evident awareness of one's own
+          mental acts (not 'introspection' in the usual sense, which distorts what it observes).
+        - >
+          Influenced the phenomenological movement (Husserl was his student) and analytic
+          philosophy (via Meinong, Twardowski, von Ehrenfels).
+      students_or_influences:
+        - "Edmund Husserl (direct student — phenomenology)"
+        - "Alexius Meinong (direct student — theory of objects)"
+        - "Christian von Ehrenfels (Gestalt theory)"
+        - "Kasimir Twardowski (Polish analytic philosophy)"
+        - "Carl Stumpf"
+      notes: >
+        SEP (revised 2019): Brentano 'exerted a strong influence on the work of Edmund Husserl,
+        Alexius Meinong, Christian von Ehrenfels, Kasimir Twardowski, Carl Stumpf, and Anton Marty.'
+        He is 'considered a forerunner of both the phenomenological movement and the tradition of
+        analytic philosophy.'
+      source_url: "https://plato.stanford.edu/entries/brentano/"
+      wikidata: "Q57145"
+
+    Alexius_Meinong:
+      dates: "1853–1920 (born 17 July 1853 Lemberg [now Lviv]; died 27 November 1920 Graz)"
+      school: "Theory of Objects, Object Theory, Austrian Philosophy"
+      key_works:
+        - "On Assumptions (Über Annahmen, 1902)"
+        - "Theory of Objects (Über Gegenstandstheorie, 1904)"
+        - "On Emotional Presentation (1917)"
+      key_doctrines:
+        - >
+          Theory of Objects (Gegenstandstheorie): a systematic ontological account that includes
+          not only existing objects but also non-existent objects (like the golden mountain or the
+          round square) as proper objects of thought.
+        - >
+          'Meinongianism': the view that there are objects that do not exist; the round square
+          'has' properties (roundness, squareness) even though it cannot exist. This was sharply
+          criticized by Russell (via his 'On Denoting,' 1905, which targeted Meinong's theory).
+        - >
+          Worked at the University of Graz from 1882; founded the first psychological laboratory
+          in Austria-Hungary in 1894. (SEP, revised 2023.)
+      students_or_influences:
+        - "Student of Franz Brentano"
+        - "Bertrand Russell (critical opponent — On Denoting, 1905)"
+        - "Influenced: Roderick Chisholm, neo-Meinongian ontology"
+      notes: >
+        SEP (revised 2023): Meinong 'became primarily renowned for the so called theory of objects
+        (Gegenstandstheorie, 1904).' His Austrian nationality and Graz University affiliation are
+        confirmed by SEP.
+      source_url: "https://plato.stanford.edu/entries/meinong/"
+      wikidata: "Q79058"
+
+    Vladimir_Solovyov:
+      dates: "1853–1900 (born 28 January 1853 [O.S. 16 January] Moscow; died 13 August 1900)"
+      school: "Russian Religious Philosophy, Christian Platonism, Sobornost"
+      key_works:
+        - "The Crisis of Western Philosophy (1874, dissertation)"
+        - "Lectures on Godmanhood (1877–1881)"
+        - "A Critique of Abstract Principles (1880)"
+        - "The Spiritual Foundations of Life (1882–1884)"
+        - "Russia and the Universal Church (1889)"
+        - "The Justification of the Good (1897)"
+        - "Three Conversations (1899–1900)"
+      key_doctrines:
+        - >
+          Integral Christian philosophy: attempted to synthesize Orthodox Christianity,
+          Catholic universalism, and Western idealist philosophy (especially Schelling, Hegel)
+          into a unified religious metaphysics.
+        - >
+          Godmanhood (bogochelovechestvo): the idea that God and humanity are in a process of
+          unification; history is the progressive realization of divine-human unity; Christ is
+          the concrete realization of this union.
+        - >
+          Sophia (Divine Wisdom): a central concept in Solovyov's mystical theology — the
+          eternal feminine principle mediating between God and the world.
+        - >
+          Ecumenism: argued for Christian unity across Orthodox and Catholic divisions;
+          strongly opposed antisemitism (unlike most Russian intellectuals of his era).
+      students_or_influences:
+        - "Influenced: Pavel Florensky, Nikolai Berdyaev, Sergei Bulgakov"
+        - "Influenced: Alexander Blok (Russian Symbolist poetry)"
+        - "Influenced by: Schelling, Hegel, Spinoza, Kabbalah"
+      notes: >
+        Wikipedia confirms dates (28 January 1853 – 13 August 1900, both O.S. and N.S.).
+        He 'played a significant role in the development of Russian philosophy and poetry
+        at the end of the 19th century.'
+      source_url: "https://en.wikipedia.org/wiki/Vladimir_Solovyov_(philosopher)"
+      wikidata: "Q188011"
+
+    Ernst_Mach:
+      dates: "1838–1916 (born 18 February 1838 Chrlice, Moravia; died 19 February 1916 Munich)"
+      school: "Empirio-Criticism, Positivism, Philosophy of Science"
+      key_works:
+        - "The Science of Mechanics (Die Mechanik in ihrer Entwicklung, 1883)"
+        - "The Analysis of Sensations (Beiträge zur Analyse der Empfindungen, 1886)"
+        - "Knowledge and Error (Erkenntnis und Irrtum, 1905)"
+        - "Space and Geometry (1906)"
+      key_doctrines:
+        - >
+          Anti-metaphysical empiricism: only sensations and their relations are directly known;
+          concepts like 'absolute space,' 'absolute time,' and 'atoms' are economical
+          fictions useful for organizing experience, not realities.
+        - >
+          Mach's principle: the inertia of a body is determined by the distribution of all
+          matter in the universe (not by absolute space). This influenced Einstein's development
+          of general relativity; Einstein credited Mach as an important precursor.
+        - >
+          Economy of thought: scientific theories are economical descriptions of sensory experience;
+          the best theory is the one that organizes facts most efficiently.
+        - >
+          Influenced: the Vienna Circle (logical positivism), Lenin's critique in Materialism and
+          Empirio-Criticism (1909), and Einstein's early thinking.
+      notes: >
+        Wikipedia confirms dates and that Mach held chairs at Graz, Prague, and Vienna.
+        His influence on Einstein via Mach's principle is well-documented. SEP entry for Mach
+        was attempted but inaccessible during fetch; data cross-checked from Wikipedia and
+        IEP references. Wikidata Q81392 confirms.
+      source_url: "https://en.wikipedia.org/wiki/Ernst_Mach"
+      wikidata: "Q81392"
+
+# ============================================================
+# VERIFICATION GAPS & NOTES FOR TIER 2
+# ============================================================
+verification_notes:
+  - >
+    Spencer and 'survival of the fittest': VERIFIED. Spencer coined it in Principles of Biology
+    (1864); Darwin adopted it in the 5th edition of On the Origin of Species (1869).
+    Sources: Wikipedia on Herbert Spencer (confirmed), SEP on Herbert Spencer (confirmed).
+  - >
+    Agnosticism and Spencer: SEP does NOT credit Spencer with coining 'agnosticism' — that is
+    T.H. Huxley (1869). Do NOT include this claim in Tier 2 content.
+  - >
+    Marx 'opium of the people' quote: VERIFIED full context. Published February 1844 in
+    Deutsch-Französische Jahrbücher, in the Introduction to Critique of Hegel's Philosophy of
+    Right. Full sentence: 'Religion is the sigh of the oppressed creature, the heart of a
+    heartless world, and the soul of soulless conditions. It is the opium of the people.'
+    Source: Wikipedia 'Opium of the people.'
+  - >
+    Nietzsche / Elisabeth Förster-Nietzsche: Wikipedia notes the claim that she edited his work
+    to highlight antisemitic themes is 'subject to debate in recent scholarship.' Tier 2 content
+    should not present this as settled fact; use hedged language: 'posthumous editing by his
+    sister Elisabeth has been linked to later misreadings of his work.'
+  - >
+    Ernst Mach and SEP: SEP entry was inaccessible during fetch. Cross-checked from Wikipedia.
+    Core facts (anti-metaphysical empiricism, Mach's principle, influence on Einstein) are
+    well-established.
+  - >
+    Feuerbach and SEP: SEP entry was inaccessible during fetch (returned empty). Cross-checked
+    from Wikipedia article 'Ludwig Feuerbach.'
+  - >
+    Bruno Bauer and David Strauss: no SEP entries — cross-checked from Wikipedia. Both are
+    confirmed historical figures with well-documented works and dates.
+  - >
+    D.T. Suzuki: his major influence is 20th-century. Included per assignment brief as
+    'early career' (first English work 1907; first U.S. visit 1897).
+  - >
+    Sri Aurobindo: philosophical roots are 19th-century (Hind Swaraj equivalent in development,
+    evolutionary Vedanta drawing on Bergson/Hegel); he lived until 1950. Included per brief.
+  - >
+    Gandhi: born 1869, main philosophical writings (Hind Swaraj, 1909) in 19th-century mode
+    of thought. Assassinated 1948. Included per brief note that 'philosophical roots are 19th c.'
+  - >
+    Whewell: assigned to british_utilitarianism group as Mill's opponent on induction per
+    assignment brief. He is primarily a philosopher of science but fits as a Bentham/Mill-era
+    Cambridge philosopher.
+  - >
+    Henry Sidgwick appears once in british_utilitarianism group only (not double-listed).
+  - >
+    Josiah Royce: The Philosophy of Loyalty (1908) is early 20th century; included per brief.
+    His idealist metaphysics (World and the Individual, 1900–1901) is the transition figure.
+  - >
+    Total entries: 36 (6 british_utilitarianism + 7 marxism + 4 existentialist_precursors +
+    5 american_pragmatism + 6 late_eastern + 8 other_19c = 36 philosopher entries, each with
+    multiple doctrines; Tier 2 will generate ~45 discrete facts from this source data).

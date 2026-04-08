@@ -19,7 +19,6 @@
   import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
   import ChainIcon from './ChainIcon.svelte'
   import { isLandscape } from '../../stores/layoutStore'
-  import { getSynergyLabel, findSynergies } from '../../data/synergies'
   import { getActiveDeckCards } from '../../services/encounterBridge'
   import { playCardAudio } from '../../services/cardAudioManager'
   import { ambientAudio } from '../../services/ambientAudioService'
@@ -169,19 +168,6 @@
     }
   })
 
-  // === Synergy cross-highlighting (P3-A) ===
-  let highlightedMechanics = $state<Set<string>>(new Set())
-
-  function onCardHover(card: Card) {
-    if (!card.mechanicId) return
-    const synergies = findSynergies(card.mechanicId, cards.map(c => c.mechanicId).filter((id): id is string => !!id))
-    highlightedMechanics = new Set(synergies)
-  }
-
-  function onCardLeave() {
-    highlightedMechanics = new Set()
-  }
-
   // === Removal burn animation (P2-D) ===
   let burningCardId = $state<string | null>(null)
 
@@ -257,13 +243,6 @@
       ondone()
     }
   }
-
-  /** Mechanic IDs present in the full active deck, for synergy detection. */
-  let deckMechanics = $derived(
-    getActiveDeckCards()
-      .map(c => c.mechanicId)
-      .filter((id): id is string => id !== undefined)
-  )
 
   /** Chain composition summary for the removal picker */
   let chainComposition = $derived.by(() => {
@@ -521,7 +500,6 @@
       <div class="card-list">
         {#each shopInventory.cards as item, idx (item.card.id)}
           {@const canAfford = currency >= item.price}
-          {@const shopCardSynergy = item.card.mechanicId ? getSynergyLabel(item.card.mechanicId, deckMechanics) : null}
           <article
             class="card-item"
             class:unaffordable={!canAfford}
@@ -529,8 +507,6 @@
             class:purchased={purchasedItemId === 'card-' + idx}
             style="border-top: 6px solid {getChainColor(item.card.chainType ?? 0)}; border-color: {getChainColor(item.card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(item.card.chainType ?? 0)};"
             onclick={(e) => !canAfford && handleUnaffordableTap(item.price, `card-${idx}`, e)}
-            onmouseenter={() => onCardHover(item.card)}
-            onmouseleave={onCardLeave}
           >
             {#if shopInventory.saleCardIndex === idx}
               <div class="sale-ribbon">SALE</div>
@@ -551,12 +527,10 @@
                     </span>
                   {/if}
                 </div>
-                <div class="sub">{getEffectLabel(item.card)}</div>
-                {#if shopCardSynergy}
-                  <div class="synergy-badge synergy-match">Synergy: {shopCardSynergy}</div>
-                {:else}
-                  <div class="synergy-badge synergy-none">No synergies</div>
-                {/if}
+                <div class="card-sub-row">
+                  <span class="sub">{getEffectLabel(item.card)}</span>
+                  <span class="chain-dot" style="background: {getChainColor(item.card.chainType ?? 0)}; box-shadow: 0 0 4px {getChainGlowColor(item.card.chainType ?? 0)};" title="{getChainTypeName(item.card.chainType ?? 0)}"></span>
+                </div>
               </div>
             </div>
             <button
@@ -630,7 +604,6 @@
       {#each cards as card (card.id)}
         <article
           class="card-item"
-          class:synergy-highlight={card.mechanicId && highlightedMechanics.has(card.mechanicId)}
           class:selling={sellingCardId === card.id}
           style="border-color: {getChainColor(card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(card.chainType ?? 0)};"
         >
@@ -871,10 +844,10 @@
     display: flex;
     align-items: center;
     gap: calc(12px * var(--layout-scale, 1));
-    height: calc(44px * var(--layout-scale, 1));
-    background: rgba(13, 17, 23, 0.98);
+    height: calc(48px * var(--layout-scale, 1));
+    background: rgba(10, 15, 25, 0.95);
     padding: 0 calc(12px * var(--layout-scale, 1));
-    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    border-bottom: calc(2px * var(--layout-scale, 1)) solid rgba(194, 157, 72, 0.5);
     margin: 0 calc(-16px * var(--layout-scale, 1));
   }
 
@@ -1107,29 +1080,19 @@
     line-height: 1.4;
   }
 
-  .synergy-badge {
+  /* === Card chain dot pill === */
+  .card-sub-row {
+    display: flex;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+  }
+
+  .chain-dot {
+    width: calc(8px * var(--layout-scale, 1));
+    height: calc(8px * var(--layout-scale, 1));
+    border-radius: 50%;
+    flex-shrink: 0;
     display: inline-block;
-    margin-top: calc(3px * var(--layout-scale, 1));
-    padding: 1px calc(6px * var(--layout-scale, 1));
-    border-radius: 8px;
-    font-size: calc(10px * var(--layout-scale, 1));
-    font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-  }
-
-  .synergy-match {
-    color: #4ade80;
-    background: rgba(74, 222, 128, 0.12);
-    border: 1px solid rgba(74, 222, 128, 0.35);
-  }
-
-  .synergy-none {
-    color: #6b7280;
-    background: rgba(107, 114, 128, 0.12);
-    border: 1px solid rgba(107, 114, 128, 0.25);
   }
 
   .buy {
@@ -1172,8 +1135,9 @@
 
   /* === Affordability states === */
   .unaffordable {
-    opacity: 0.4;
-    transition: opacity 300ms ease;
+    filter: grayscale(0.3);
+    border-color: rgba(239, 68, 68, 0.3);
+    transition: filter 300ms ease;
   }
 
   .unaffordable .buy {
@@ -1181,6 +1145,8 @@
     color: #ef4444 !important;
     background: rgba(239, 68, 68, 0.1) !important;
   }
+
+
 
   .shake {
     animation: shake-horizontal 150ms ease;
@@ -1615,19 +1581,6 @@
     0% { color: #f59e0b; }
     30% { color: #ef4444; transform: scale(1.1); }
     100% { color: #f59e0b; transform: scale(1); }
-  }
-
-  /* === Synergy cross-highlight (P3-A) === */
-  .synergy-highlight {
-    animation: synergy-pulse 600ms ease;
-    border-color: #22c55e !important;
-    box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(34, 197, 94, 0.4) !important;
-  }
-
-  @keyframes synergy-pulse {
-    0% { box-shadow: 0 0 0 rgba(34, 197, 94, 0); }
-    50% { box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(34, 197, 94, 0.5); }
-    100% { box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(34, 197, 94, 0.4); }
   }
 
   /* === Card burn animation (P2-D) === */

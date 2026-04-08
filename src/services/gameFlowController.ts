@@ -248,6 +248,13 @@ export const activeShopInventory = writable<ShopInventory | null>(null);
  */
 export const pendingStudyUpgrade = writable<{ count: number; candidates: Card[] } | null>(null);
 
+/**
+ * Set when a card transform is initiated in the shop.
+ * The UI subscribes to this and shows the card picker (single mode) for the player to choose one.
+ * Cleared by onShopTransformChoice() after the player selects a replacement card.
+ */
+export const pendingTransformOptions = writable<Card[] | null>(null);
+
 let pendingFloorCompleted = false;
 let pendingSpecialEvent = false;
 let pendingClearedFloor = 0;
@@ -822,6 +829,7 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData, prebuiltSum
   activeRewardRevealStep.set('gold');
   activeShopCards.set([]);
   activeShopInventory.set(null);
+  pendingTransformOptions.set(null);
   activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
   activeMasteryChallenge.set(null);
@@ -1817,15 +1825,24 @@ export function onRelicRewardSelected(relic: RelicDefinition): void {
   openCardReward();
 }
 
+/**
+ * Gaussian approximation using sum of 3 uniform samples (Box-Muller-free).
+ * Produces values with mean ≈ `mean` and std dev ≈ `stdDev`.
+ * Range is approximately mean ± 1.72 * stdDev (never goes below mean-2σ in practice).
+ *
+ * Used for shop card mastery display — small spread around deck average.
+ */
+function approxGaussian(mean: number, stdDev: number): number {
+  const u = Math.random() + Math.random() + Math.random();
+  return mean + (u - 1.5) * 1.15 * stdDev;
+}
+
 function openShopRoom(): void {
   const run = get(activeRunState);
   if (!run) return;
 
-  // Existing sell cards
-  const sellCards = shuffled(
-    [...getActiveDeckCards()].filter((card) => card.cardType !== 'wild'),
-  ).slice(0, 3);
-  activeShopCards.set(sellCards);
+  // Card selling removed (Ch14.2) — clear the sell cards store
+  activeShopCards.set([]);
 
   // Generate buy inventory
   const relicPool = buildRelicPool();
@@ -1842,7 +1859,21 @@ function openShopRoom(): void {
     run.floor.currentFloor,
   );
   const shopCardCount = hasMerchantsFavor ? 4 : 3; // merchants_favor: +1 card option
-  const shopCards = priceShopCards(cardRewardOptions.slice(0, shopCardCount), run.floor.currentFloor);
+  const rawShopCards = priceShopCards(cardRewardOptions.slice(0, shopCardCount), run.floor.currentFloor);
+
+  // 14.7 — Apply deck-mean-based mastery to each shop card so the UI shows mastery
+  // indicators reflecting where the player currently is in mastery progression.
+  // The actual mastery assigned at purchase time is computed independently by
+  // addRewardCardToActiveDeck → computeCatchUpMastery.
+  const deckCards = getActiveDeckCards();
+  const avgMastery = deckCards.length > 0
+    ? deckCards.reduce((s, c) => s + (c.masteryLevel ?? 0), 0) / deckCards.length
+    : 0;
+  const shopCards: import('./shopService').ShopCardItem[] = rawShopCards.map(item => {
+    const masteryLevel = Math.max(0, Math.min(5, Math.round(approxGaussian(avgMastery, 0.8))));
+    const card: Card = { ...item.card, masteryLevel };
+    return { ...item, card };
+  });
 
   // One random card per visit gets a 50% sale discount (applied after floor discount).
   // Haggle still works on top of this price multiplicatively.
@@ -1864,7 +1895,7 @@ function openShopRoom(): void {
     name: 'shop_visit',
     properties: {
       floor: run.floor.currentFloor,
-      options: sellCards.length,
+      options: shopCards.length,
       currency: run.currency,
     },
   });
@@ -1872,24 +1903,13 @@ function openShopRoom(): void {
   currentScreen.set('shopRoom');
 }
 
-export function onShopSell(cardId: string): void {
-  const run = get(activeRunState);
-  if (!run) return;
-  const { soldCard, gold } = sellCardFromActiveDeck(cardId);
-  if (!soldCard || gold <= 0) return;
-  run.currency += gold;
-  activeRunState.set(run);
-  activeShopCards.update((cards) => cards.filter((card) => card.id !== cardId));
-  analyticsService.track({
-    name: 'shop_sell',
-    properties: {
-      fact_id: soldCard.factId,
-      card_type: soldCard.cardType,
-      tier: soldCard.tier,
-      gold,
-      floor: run.floor.currentFloor,
-    },
-  });
+/**
+ * Card selling has been removed from the shop (Ch14.2).
+ * This stub is kept for backward compatibility with CardApp.svelte imports.
+ * @deprecated — no longer performs any action
+ */
+export function onShopSell(_cardId: string): void {
+  // Selling removed — no-op
 }
 
 /** Buy a relic from the shop. When haggled=true, applies 30% discount before deducting. */
@@ -2009,25 +2029,28 @@ export function onShopBuyRemoval(cardId: string, haggled = false): boolean {
 
 /**
  * Handler for card transformation: deducts gold, destroys the selected card,
- * and generates 3 replacement card options for the player to choose from.
+ * generates 3 replacement card options, and stores them in `pendingTransformOptions`
+ * for the UI to display.
  * Price escalates with each transformation: 35g base +25g per prior transform.
  * When haggled=true, applies 30% discount before deducting.
  *
+ * Returns true on success, false if insufficient funds or card not found.
+ * The UI should subscribe to `pendingTransformOptions` to receive the choices.
+ *
  * @param cardId - ID of the card to transform.
  * @param haggled - Whether a haggle discount was applied.
- * @returns Array of 3 replacement Card options, or empty array if insufficient funds or card not found.
  */
-export function onShopTransformCard(cardId: string, haggled = false): Card[] {
+export function onShopTransform(cardId: string, haggled = false): boolean {
   const run = get(activeRunState);
-  if (!run) return [];
+  if (!run) return false;
 
   const cost = transformPrice(run.cardsTransformedAtShop ?? 0);
   const effectiveCost = haggled ? Math.floor(cost * (1 - SHOP_HAGGLE_DISCOUNT)) : cost;
 
-  if (run.currency < effectiveCost) return [];
+  if (run.currency < effectiveCost) return false;
 
   const { soldCard } = sellCardFromActiveDeck(cardId);
-  if (!soldCard) return [];
+  if (!soldCard) return false;
 
   run.currency -= effectiveCost;
   if (haggled) run.haggleSuccesses = (run.haggleSuccesses ?? 0) + 1;
@@ -2040,7 +2063,7 @@ export function onShopTransformCard(cardId: string, haggled = false): Card[] {
     activeShopInventory.set(inventory);
   }
 
-  // Generate 3 replacement card options
+  // Generate 3 replacement card options (same-rarity-or-higher from the run pool)
   const options = generateCardRewardOptionsByType(
     getRunPoolCards() as any,
     getActiveDeckFactIds(),
@@ -2050,6 +2073,9 @@ export function onShopTransformCard(cardId: string, haggled = false): Card[] {
   ).slice(0, 3);
 
   activeRunState.set(run);
+
+  // Expose options to UI via store — cleared by onShopTransformChoice()
+  pendingTransformOptions.set(options);
 
   analyticsService.track({
     name: 'shop_transform',
@@ -2065,16 +2091,26 @@ export function onShopTransformCard(cardId: string, haggled = false): Card[] {
     },
   });
 
-  return options;
+  return true;
 }
 
 /**
- * Handler for selecting a replacement card after transformation.
- * Adds the chosen card to the active deck and marks its fact as consumed.
+ * @deprecated Use onShopTransform() instead — same API with boolean return and store-based options.
+ * Retained for backward compatibility.
+ */
+export function onShopTransformCard(cardId: string, haggled = false): Card[] {
+  onShopTransform(cardId, haggled);
+  return get(pendingTransformOptions) ?? [];
+}
+
+/**
+ * Handler for choosing a replacement card after transformation.
+ * Adds the chosen card to the active deck at catch-up mastery level,
+ * marks its fact as consumed, and clears pendingTransformOptions.
  *
  * @param card - The replacement card chosen by the player.
  */
-export function onShopTransformSelect(card: Card): void {
+export function onShopTransformChoice(card: Card): void {
   addRewardCardToActiveDeck(card);
 
   const run = get(activeRunState);
@@ -2082,6 +2118,9 @@ export function onShopTransformSelect(card: Card): void {
     run.consumedRewardFactIds.add(card.factId);
     activeRunState.set(run);
   }
+
+  // Clear the pending transform options — flow returns to shop
+  pendingTransformOptions.set(null);
 
   analyticsService.track({
     name: 'shop_transform_select',
@@ -2091,6 +2130,14 @@ export function onShopTransformSelect(card: Card): void {
       fact_id: card.factId,
     },
   });
+}
+
+/**
+ * @deprecated Use onShopTransformChoice() instead.
+ * Retained for backward compatibility.
+ */
+export function onShopTransformSelect(card: Card): void {
+  onShopTransformChoice(card);
 }
 
 /**
@@ -2148,6 +2195,7 @@ export function onShopDone(): void {
   if (!run) return;
   activeShopCards.set([]);
   activeShopInventory.set(null);
+  pendingTransformOptions.set(null);
   run.floor.lastSlotWasEvent = true;
   activeRunState.set(run);
   showRoomExitNarrative('shop');
@@ -2463,6 +2511,7 @@ export function abandonActiveRun(): void {
   activeRewardRevealStep.set('gold');
   activeShopCards.set([]);
   activeShopInventory.set(null);
+  pendingTransformOptions.set(null);
   activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
   activeMasteryChallenge.set(null);
@@ -3048,6 +3097,7 @@ export function returnToMenu(): void {
   activeRewardRevealStep.set('gold');
   activeShopCards.set([]);
   activeShopInventory.set(null);
+  pendingTransformOptions.set(null);
   activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
   activeMasteryChallenge.set(null);
@@ -3074,6 +3124,7 @@ export function playAgain(): void {
   activeRewardRevealStep.set('gold');
   activeShopCards.set([]);
   activeShopInventory.set(null);
+  pendingTransformOptions.set(null);
   activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
   activeMasteryChallenge.set(null);

@@ -1,0 +1,1209 @@
+deck_id: philosophy
+sub_deck_id: enlightenment_german_idealism
+name: "Enlightenment & German Idealism"
+domain: philosophy
+sub_domain: enlightenment_german_idealism
+target_facts: 50
+minimum_facts: 45
+
+data_sources:
+- name: Stanford Encyclopedia of Philosophy (SEP)
+  url: https://plato.stanford.edu/
+  license: open access (fair use, educational)
+  usage: doctrines, key works, biographical dates, school classification
+- name: Wikipedia
+  url: https://en.wikipedia.org/
+  license: CC-BY-SA-4.0
+  usage: biographical details, publication dates, cross-reference
+- name: Wikidata
+  url: https://www.wikidata.org/
+  license: CC0
+  usage: structured data (dates, birth/death, works)
+
+# ============================================================
+# SOURCE DATA — 5 groups, ~50 entries
+# All facts verified against SEP / Wikipedia URLs listed per entry.
+# Workers MUST copy facts FROM this verified data — never invent.
+#
+# SCHOLARLY NOTE: The "thesis-antithesis-synthesis" formula is
+# NOT from Hegel. It was popularized by Heinrich Moritz Chalybäus
+# in his 1837 survey of Kantian and post-Kantian philosophy, and
+# later picked up by Marx commentators. Hegel's own terms for
+# the movement of Spirit are Aufhebung (sublation), moments of
+# the concept, and negation-of-negation. See SEP "Hegel."
+# ============================================================
+
+source_data:
+
+  # ----------------------------------------------------------
+  # GROUP 1: French Enlightenment (~10 entries)
+  # ----------------------------------------------------------
+  french_enlightenment:
+
+    Voltaire:
+      dates: "1694–1778 (François-Marie Arouet)"
+      school: "French Enlightenment, deism"
+      key_works:
+        - "Candide (1759)"
+        - "Letters Concerning the English Nation (Lettres philosophiques, 1733)"
+        - "Philosophical Dictionary (Dictionnaire philosophique, 1764)"
+        - "Treatise on Tolerance (1763)"
+      key_doctrines:
+        - "Deism — belief in a creator God who does not intervene in the world; rejection of revealed religion"
+        - "Anti-clericalism — crusade against religious superstition, summarized in slogan 'écrasez l'infâme' ('crush the infamous thing,' i.e., religious fanaticism)"
+        - "Religious toleration and civil liberties"
+        - "Candide satirizes Leibnizian optimism ('best of all possible worlds') through the character of Dr. Pangloss"
+      students_or_influences: "Frederick the Great of Prussia (correspondent); influenced Enlightenment across Europe"
+      notes: >
+        Voltaire (pen name of François-Marie Arouet) was the foremost satirist of the French Enlightenment.
+        His Lettres philosophiques (1733) introduced Locke and Newton to French readers and implicitly
+        criticized French institutions by praising English religious toleration and parliamentary government.
+        The slogan "écrasez l'infâme" appears repeatedly in his correspondence from the 1760s and refers
+        to fanaticism, superstition, and institutional religion rather than to Christianity per se.
+        Candide (1759) attacks Leibnizian theodicy and optimism through comic narrative; its final
+        line "we must cultivate our garden" (il faut cultiver notre jardin) is among the most quoted
+        sentences in French literature.
+      source_url: "https://plato.stanford.edu/entries/voltaire/"
+      wikidata: "Q9068"
+
+    Montesquieu:
+      dates: "1689–1755 (Charles-Louis de Secondat, Baron de La Brède et de Montesquieu)"
+      school: "French Enlightenment, political philosophy"
+      key_works:
+        - "The Spirit of the Laws (De l'esprit des lois, 1748)"
+        - "Persian Letters (Lettres persanes, 1721)"
+        - "Considerations on the Causes of the Greatness of the Romans and their Decline (1734)"
+      key_doctrines:
+        - "Separation of powers — executive, legislative, and judicial branches must be separate to prevent tyranny"
+        - "Comparative government — laws must be suited to the climate, customs, and history of each people"
+        - "Liberty requires that power checks power"
+        - "Typology of governments: republic, monarchy, despotism — each with its animating principle (virtue, honour, fear)"
+      students_or_influences: "Direct influence on James Madison and the U.S. Constitution (Federalist No. 47); influenced Blackstone"
+      notes: >
+        De l'esprit des lois (1748) is the founding text of comparative political science. Montesquieu
+        analyzed governments of different nations and derived from England's constitutional monarchy
+        the doctrine of separation of powers, particularly the independence of the judiciary.
+        Madison cited Montesquieu by name in Federalist No. 47 as the "oracle" on separation of powers.
+        The Persian Letters (1721) used the device of fictional Persian travelers to satirize French
+        society and religious institutions.
+      source_url: "https://plato.stanford.edu/entries/montesquieu/"
+      wikidata: "Q15975"
+
+    Rousseau:
+      dates: "1712–1778 (Jean-Jacques Rousseau)"
+      school: "French Enlightenment (critic), social contract theory, early Romanticism"
+      key_works:
+        - "Discourse on the Sciences and Arts (First Discourse, 1750)"
+        - "Discourse on the Origin of Inequality (Second Discourse, 1755)"
+        - "The Social Contract (Du contrat social, 1762)"
+        - "Émile, or On Education (1762)"
+        - "Confessions (written c. 1769–1770, pub. 1782)"
+        - "Julie, or the New Heloise (1761)"
+      key_doctrines:
+        - "General will (volonté générale) — the collective will of the people aimed at the common good, distinct from the 'will of all' (sum of private interests)"
+        - "Social contract — legitimate political authority derives from a pact among free and equal citizens"
+        - "'Man is born free, and everywhere he is in chains' — opening line of The Social Contract"
+        - "Amour-propre (self-regard based on comparison with others) vs. amour de soi (natural self-love) — inequality corrupts the latter into the former"
+        - "Noble savage concept — NOTE: Rousseau did NOT use this term; he argued the 'state of nature' was a peaceful intermediate condition, not a glorification of 'savages'"
+        - "Natural education in Émile — the child must develop through experience, not rote instruction"
+        - "Civil religion — in Book IV of The Social Contract, a minimal public religion is needed for social cohesion"
+      students_or_influences: "Kant (read Émile in 1762, reportedly the only day he broke his daily walk); Robespierre; Romantic movement; Pestalozzi in education"
+      notes: >
+        The phrase 'noble savage' is widely misattributed to Rousseau; he never used it (the phrase
+        comes from Dryden's 1672 play The Conquest of Granada). Rousseau's Second Discourse describes
+        a 'state of nature' that is neither idyllic nor savage — it is pre-social, pre-linguistic,
+        and morally neutral. He argued civilization corrupts natural equality. The Social Contract
+        opens with the most famous sentence in modern political philosophy. The general will is not
+        simply majority rule; it is what the community would will if it sought the common good.
+      source_url: "https://plato.stanford.edu/entries/rousseau/"
+      wikidata: "Q9152"
+
+    Diderot:
+      dates: "1713–1784 (Denis Diderot)"
+      school: "French Enlightenment, materialism, atheism"
+      key_works:
+        - "Encyclopédie (co-editor with d'Alembert, 28 vols., 1751–1772)"
+        - "Rameau's Nephew (Le Neveu de Rameau, written c. 1761–1774, pub. posthumously 1805)"
+        - "D'Alembert's Dream (Le Rêve de d'Alembert, written 1769)"
+        - "Letter on the Blind (Lettre sur les aveugles, 1749)"
+      key_doctrines:
+        - "Editor-in-chief of the Encyclopédie — the central project of the French Enlightenment, aimed to compile and disseminate all human knowledge"
+        - "Materialism — matter in motion can account for all phenomena including thought"
+        - "Atheism — later works reject deism in favor of full atheism"
+        - "Rameau's Nephew — a dialectical dialogue examining morality, genius, and social conformity; Hegel quoted it in the Phenomenology of Spirit"
+      students_or_influences: "d'Alembert (co-editor of Encyclopédie); Goethe (translated Rameau's Nephew into German)"
+      notes: >
+        The Encyclopédie, ou dictionnaire raisonné des sciences, des arts et des métiers was the
+        flagship project of the French Enlightenment, aiming to replace religious authority with
+        rational, empirical knowledge. Diderot managed the project for over 20 years despite royal
+        censorship and the withdrawal of d'Alembert after the first volumes. Rameau's Nephew was
+        not published until Goethe's German translation (1805); the French original was not published
+        until 1891. Hegel used it in the Phenomenology as a depiction of 'the alienated soul.'
+      source_url: "https://plato.stanford.edu/entries/diderot/"
+      wikidata: "Q9191"
+
+    d_Alembert:
+      dates: "1717–1783 (Jean le Rond d'Alembert)"
+      school: "French Enlightenment, mathematics, empiricism"
+      key_works:
+        - "Preliminary Discourse to the Encyclopédie (Discours préliminaire, 1751)"
+        - "Treatise on Dynamics (Traité de dynamique, 1743)"
+      key_doctrines:
+        - "Preliminary Discourse — a philosophical manifesto for the Encyclopédie; maps all human knowledge onto three faculties: memory (history), reason (philosophy), imagination (poetry/arts)"
+        - "Bacon, Descartes, and Newton as the three heroes of modern learning"
+        - "Mathematical and empiricist approach to natural philosophy"
+      students_or_influences: "Co-editor of Encyclopédie with Diderot until 1758"
+      notes: >
+        The Preliminary Discourse (1751) is d'Alembert's philosophical introduction to the first
+        volume of the Encyclopédie. It draws on Locke's empiricism and classifies all knowledge
+        according to three mental faculties (from Bacon). D'Alembert withdrew from the Encyclopédie
+        in 1758 after the controversy over the article 'Geneva,' which was written by Voltaire.
+        As a mathematician, d'Alembert made major contributions to calculus and mechanics (d'Alembert's
+        principle). He was a member of the Académie française and later its permanent secretary.
+      source_url: "https://plato.stanford.edu/entries/alembert/"
+      wikidata: "Q2472"
+
+    Helvetius:
+      dates: "1715–1771 (Claude Adrien Helvétius)"
+      school: "French Enlightenment, sensationalism, utilitarianism (proto)"
+      key_works:
+        - "De l'Esprit (On the Mind, 1758)"
+        - "De l'Homme (On Man, posthumous 1772)"
+      key_doctrines:
+        - "Sensationalism — all mental activity derives from sensation; there are no innate ideas"
+        - "Pleasure and pain as the sole springs of human action — a proto-utilitarian position"
+        - "Education can make any person equally virtuous or criminal — environment determines character entirely"
+        - "De l'Esprit was immediately condemned by the Sorbonne and the Parlement of Paris and burned"
+      students_or_influences: "Influenced Bentham's utilitarianism; Condorcet"
+      notes: >
+        De l'Esprit (1758) was one of the most controversial books of the eighteenth century; it was
+        condemned and burned within months of publication. Helvétius argued that self-interest (physical
+        sensation, pleasure/pain) is the true motive of all human action, including apparently virtuous
+        acts. He extended Condillac's sensationalism in a radically materialist direction. His claim
+        that all humans are born with equal capacity — and character is wholly determined by education
+        and circumstance — had a major impact on later utilitarian and progressive thought.
+      source_url: "https://plato.stanford.edu/entries/helvetius/"
+      wikidata: "Q315215"
+
+    d_Holbach:
+      dates: "1723–1789 (Paul-Henri Thiry, Baron d'Holbach)"
+      school: "French Enlightenment, materialism, atheism"
+      key_works:
+        - "System of Nature (Système de la nature, 1770, published under pseudonym Mirabaud)"
+        - "Good Sense (Le bon sens, 1772)"
+        - "The Social System (Système social, 1773)"
+      key_doctrines:
+        - "Hard materialism — the universe consists entirely of matter in motion; there is no soul, no free will, no God"
+        - "Atheism explicitly stated — among the first published atheist works in the Enlightenment"
+        - "Determinism — all events including human thoughts and actions follow from prior physical causes"
+        - "Religion as politically harmful — used to keep people in ignorance and subjection"
+      students_or_influences: "Regular member of Diderot's salon; Goethe later criticized the System of Nature as bleak and joyless"
+      notes: >
+        The System of Nature (1770) is one of the most systematic statements of materialist atheism
+        in the Enlightenment period. Published anonymously under the name of the long-deceased
+        secretary of the Académie française (Mirabaud), it argues that nature operates by fixed
+        laws of matter and motion with no need for a divine creator or providential design. Voltaire,
+        who was a deist, criticized the book as going too far. D'Holbach's Paris salon was one of
+        the intellectual centers of the late Enlightenment.
+      source_url: "https://plato.stanford.edu/entries/holbach/"
+      wikidata: "Q9176"
+
+    Condillac:
+      dates: "1714–1780 (Étienne Bonnot de Condillac)"
+      school: "French Enlightenment, sensationalism, empiricism"
+      key_works:
+        - "Essay on the Origin of Human Knowledge (Essai sur l'origine des connaissances humaines, 1746)"
+        - "Treatise on Sensations (Traité des sensations, 1754)"
+        - "Treatise on Systems (Traité des systèmes, 1749)"
+      key_doctrines:
+        - "Sensationalism — all human cognition derives from transformed sensations; no innate ideas (radicalizing Locke)"
+        - "The statue thought experiment — imagines a statue gradually given one sense at a time to derive all mental faculties from sensation alone"
+        - "Language shapes thought — signs and language are necessary for higher cognition, not just communication"
+      students_or_influences: "Influenced Helvétius; responded to by Kant's 'inner sense' doctrine"
+      notes: >
+        In the Traité des sensations (1754), Condillac introduces the famous statue thought experiment:
+        a statue endowed with only the sense of smell gradually develops attention, memory, comparison,
+        judgment, and desire — deriving all mental operations from sensation. This was a more radical
+        sensationalism than Locke's, since it denied even reflection as a separate source of ideas.
+        Condillac was a close friend of Rousseau and Diderot and a member of the Encyclopédie circle.
+      source_url: "https://plato.stanford.edu/entries/condillac/"
+      wikidata: "Q23689"
+
+    La_Mettrie:
+      dates: "1709–1751 (Julien Offray de La Mettrie)"
+      school: "French Enlightenment, materialism"
+      key_works:
+        - "L'Homme Machine (Machine Man, 1747)"
+        - "Natural History of the Soul (Histoire naturelle de l'âme, 1745)"
+        - "Discours sur le bonheur (Anti-Seneca, 1748)"
+      key_doctrines:
+        - "Mechanistic materialism — the human being is entirely a machine; soul is a fiction; thought is a function of brain organization"
+        - "Continuity between animals and humans — difference is one of degree, not kind"
+        - "Atheism — consistent with mechanistic view; anticipates later scientific eliminativism about the soul"
+      students_or_influences: "Fled to Frederick the Great's court in Berlin after L'Homme Machine caused scandal; influenced later French materialists"
+      notes: >
+        L'Homme Machine (1747) caused an immediate scandal: La Mettrie was expelled from the Netherlands
+        and took refuge at the court of Frederick the Great in Prussia, where he died in 1751. The
+        book extends Descartes' mechanistic account of animals to human beings, arguing that body and
+        soul are one. It is one of the earliest works to propose a fully naturalistic account of mind.
+      source_url: "https://plato.stanford.edu/entries/la-mettrie/"
+      wikidata: "Q191763"
+
+    Condorcet:
+      dates: "1743–1794 (Marie Jean Antoine Nicolas de Caritat, Marquis de Condorcet)"
+      school: "French Enlightenment, philosophy of history, early feminism, social mathematics"
+      key_works:
+        - "Sketch for a Historical Picture of the Progress of the Human Mind (Esquisse d'un tableau historique des progrès de l'esprit humain, 1795, posthumous)"
+        - "On the Admission of Women to the Rights of Citizenship (1790)"
+        - "Essay on the Application of Analysis to the Probability of Majority Decisions (1785)"
+      key_doctrines:
+        - "Perfectibility (perfectibilité) — the human race can improve indefinitely through reason and education; no fixed human nature limits progress"
+        - "Ten epochs of history culminating in a future of equality and rational governance"
+        - "First major Enlightenment argument for women's equal political rights"
+        - "Condorcet's jury theorem — under certain conditions, majority vote is more reliable than individual judgment as group size grows"
+      students_or_influences: "Died in prison during the Terror (1794); the Esquisse was written while in hiding from the Jacobins"
+      notes: >
+        The Esquisse (1795) was written by Condorcet while hiding from arrest during the Reign of
+        Terror after falling out of favor with Robespierre. He divided human history into ten epochs
+        and argued that the tenth — the future — would witness the eradication of inequality among
+        nations, among classes, and between men and women, through universal education and the spread
+        of reason. He was arrested in 1794 and died in prison (possibly suicide). The Esquisse is
+        the most optimistic statement of Enlightenment belief in human progress.
+      source_url: "https://plato.stanford.edu/entries/condorcet/"
+      wikidata: "Q200790"
+
+  # ----------------------------------------------------------
+  # GROUP 2: Scottish Enlightenment (~6 entries)
+  # ----------------------------------------------------------
+  scottish_enlightenment:
+
+    Adam_Smith:
+      dates: "1723–1790"
+      school: "Scottish Enlightenment, moral philosophy, political economy"
+      key_works:
+        - "The Theory of Moral Sentiments (1759)"
+        - "An Inquiry into the Nature and Causes of the Wealth of Nations (1776)"
+        - "Lectures on Jurisprudence (not published in his lifetime)"
+      key_doctrines:
+        - "Sympathy (not empathy) — moral judgments arise from imaginative sympathy with others; we judge by imagining an impartial spectator"
+        - "The impartial spectator — an internalized ideal figure whose approval we seek; the basis of conscience"
+        - "The invisible hand — in The Wealth of Nations (Book IV, ch. 2), individuals pursuing self-interest unintentionally promote the public good; Smith uses the phrase only once in WoN"
+        - "Division of labor — specialization massively increases productive capacity; illustrated with the pin factory example in WoN Book I"
+        - "Labor theory of value (early version) — the real price of things is the toil and trouble of acquiring them"
+        - "Free trade and against mercantilism — nations prosper through comparative advantage and open markets"
+      students_or_influences: "Student of Francis Hutcheson at Glasgow; friend of David Hume; influenced Ricardo, Malthus, Marx"
+      notes: >
+        The Theory of Moral Sentiments (1759) laid out a sympathy-based moral philosophy before
+        The Wealth of Nations (1776). Smith regarded TMS as his more important work. The phrase
+        'invisible hand' appears only three times across all of Smith's published writings: once
+        in The History of Astronomy (early essay), once in TMS (Book IV), and once in WoN (Book IV,
+        ch. 2) — it was not a central theoretical term for Smith himself. The pin factory example
+        in WoN Book I, Chapter 1 is the most famous illustration of the division of labor.
+      source_url: "https://plato.stanford.edu/entries/smith-moral-political/"
+      wikidata: "Q9381"
+
+    Thomas_Reid:
+      dates: "1710–1796"
+      school: "Scottish Enlightenment, common sense philosophy"
+      key_works:
+        - "An Inquiry into the Human Mind on the Principles of Common Sense (1764)"
+        - "Essays on the Intellectual Powers of Man (1786)"
+        - "Essays on the Active Powers of Man (1788)"
+      key_doctrines:
+        - "Common sense philosophy — certain first principles (e.g., the existence of the external world, other minds, the reliability of memory) are immediately and universally believed without inference"
+        - "Critique of the 'way of ideas' — Locke and Hume's doctrine that we perceive only our own ideas (not external objects directly) leads to skepticism; Reid rejects this"
+        - "Direct realism — we perceive external objects directly, not via mental representations"
+        - "Response to Hume — Hume's bundle theory of the self undermines common-sense beliefs; Reid defends them as basic and non-inferential"
+      students_or_influences: "Dugald Stewart (student and successor); influenced G.E. Moore's twentieth-century defense of common sense"
+      notes: >
+        Reid's common sense philosophy was a direct response to Hume's skeptical conclusions. He
+        argued that the 'way of ideas' — from Descartes through Locke and Berkeley to Hume — is
+        itself a philosophical error that generates fake skeptical puzzles. Common sense principles
+        are not inferred; they are part of the constitution of the human mind and are self-evident
+        to any rational person. Reid held the Chair of Moral Philosophy at Glasgow (succeeding Adam
+        Smith) from 1764 to 1796.
+      source_url: "https://plato.stanford.edu/entries/reid/"
+      wikidata: "Q270015"
+
+    Adam_Ferguson:
+      dates: "1723–1816"
+      school: "Scottish Enlightenment, social philosophy, history of civil society"
+      key_works:
+        - "Essay on the History of Civil Society (1767)"
+        - "Institutes of Moral Philosophy (1769)"
+      key_doctrines:
+        - "Civil society — the realm of social, economic, and political life that mediates between the individual and the state"
+        - "Critique of the division of labor — commercial specialization corrupts civic virtue and militarism; anticipated Marx's theory of alienation"
+        - "Conjectural history — tracing the development of human society through stadial stages (hunting, herding, agriculture, commerce)"
+        - "Sociability is natural — humans are inherently social; the 'state of nature' is always already social"
+      students_or_influences: "Influenced Hegel (read Essay on the History of Civil Society); Marx on alienation"
+      notes: >
+        The Essay on the History of Civil Society (1767) is one of the founding texts of sociology.
+        Ferguson argued against the idea that commercial society automatically produces progress; he
+        warned that specialization fragments civic life and produces citizens concerned only with
+        private gain. This critique was read closely by Hegel and influenced his concept of civil
+        society (bürgerliche Gesellschaft) in the Philosophy of Right.
+      source_url: "https://plato.stanford.edu/entries/ferguson/"
+      wikidata: "Q333504"
+
+    Francis_Hutcheson:
+      dates: "1694–1746"
+      school: "Scottish Enlightenment, moral sense theory"
+      key_works:
+        - "An Inquiry into the Original of Our Ideas of Beauty and Virtue (1725)"
+        - "An Essay on the Nature and Conduct of the Passions and Affections (1728)"
+        - "A System of Moral Philosophy (posthumous, 1755)"
+      key_doctrines:
+        - "Moral sense — humans possess an innate, non-inferential faculty for perceiving moral qualities (benevolence, virtue) analogous to the aesthetic sense of beauty"
+        - "Benevolence as the foundation of virtue — the morally good act is one that promotes the greatest happiness of the greatest number"
+        - "Formulation anticipating utilitarianism: 'the greatest happiness for the greatest numbers'"
+      students_or_influences: "Teacher of Adam Smith at Glasgow; influenced Hume and the Scottish Enlightenment; Shaftesbury as prior influence"
+      notes: >
+        Hutcheson was Professor of Moral Philosophy at Glasgow (1729–1746) and one of Smith's most
+        important teachers. His moral sense theory argued that moral judgments are not derived from
+        reason alone but from an innate moral faculty analogous to the senses. The phrase 'greatest
+        happiness for the greatest numbers' appears in his 1725 Inquiry and anticipates Bentham's
+        utilitarian formula by fifty years.
+      source_url: "https://plato.stanford.edu/entries/hutcheson/"
+      wikidata: "Q310430"
+
+    Henry_Home_Lord_Kames:
+      dates: "1696–1782 (Henry Home, Lord Kames)"
+      school: "Scottish Enlightenment, law, aesthetics, moral philosophy"
+      key_works:
+        - "Essays on the Principles of Morality and Natural Religion (1751)"
+        - "Elements of Criticism (1762)"
+        - "Sketches of the History of Man (1774)"
+      key_doctrines:
+        - "Free will and moral responsibility — argued humans have an innate sense of necessity compatible with moral agency"
+        - "Aesthetics — Elements of Criticism applies psychological principles to literary and artistic judgment"
+        - "Stadial theory of history — human societies progress through stages from savage to polished"
+      students_or_influences: "Mentor and patron of David Hume; corresponded with Benjamin Franklin"
+      notes: >
+        Lord Kames was a Scottish judge (he sat on the Court of Session) as well as philosopher.
+        His Essays on the Principles of Morality (1751) drew Hume's criticism for its compatibilist
+        account of free will. Elements of Criticism (1762) was widely used as a textbook in
+        American colleges in the late 18th century and influenced early American literary culture.
+      source_url: "https://plato.stanford.edu/entries/kames/"
+      wikidata: "Q718195"
+
+    Dugald_Stewart:
+      dates: "1753–1828"
+      school: "Scottish Enlightenment, common sense philosophy (second generation)"
+      key_works:
+        - "Elements of the Philosophy of the Human Mind (3 vols., 1792–1827)"
+        - "Account of the Life and Writings of Adam Smith (1793)"
+        - "Outlines of Moral Philosophy (1793)"
+      key_doctrines:
+        - "Extended and systematized Reid's common sense philosophy"
+        - "Conjectural history — defended and popularized the stadial method of historical reasoning"
+        - "Advocate of free trade and political liberalism in the tradition of Smith"
+      students_or_influences: "Student of Reid; teacher of Walter Scott, Henry Brougham, Francis Jeffrey, and several future Whig politicians"
+      notes: >
+        Stewart held the Chair of Moral Philosophy at Edinburgh (1785–1810) and was enormously
+        influential in transmitting Scottish Enlightenment thought to the nineteenth century. His
+        Account of the Life and Writings of Adam Smith (1793) is an important early source for
+        Smith's intellectual biography. His lectures shaped a generation of Scottish and British
+        Whig intellectuals.
+      source_url: "https://plato.stanford.edu/entries/dugald-stewart/"
+      wikidata: "Q526278"
+
+  # ----------------------------------------------------------
+  # GROUP 3: Immanuel Kant (~12 entries)
+  # ----------------------------------------------------------
+  kant:
+
+    Kant_overview:
+      dates: "1724–1804 (Immanuel Kant)"
+      school: "Transcendental idealism; 'critical philosophy'"
+      key_works:
+        - "Critique of Pure Reason (Kritik der reinen Vernunft, 1781; revised 2nd ed. 1787)"
+        - "Prolegomena to Any Future Metaphysics (1783)"
+        - "Groundwork of the Metaphysics of Morals (Grundlegung, 1785)"
+        - "Critique of Practical Reason (Kritik der praktischen Vernunft, 1788)"
+        - "Critique of the Power of Judgment (Kritik der Urteilskraft, 1790)"
+        - "Religion within the Boundaries of Mere Reason (1793)"
+        - "Perpetual Peace (Zum ewigen Frieden, 1795)"
+        - "The Metaphysics of Morals (1797)"
+        - "'What Is Enlightenment?' (Beantwortung der Frage: Was ist Aufklärung?, 1784)"
+      key_doctrines:
+        - "Transcendental idealism — space, time, and the categories are forms the mind imposes on experience, not features of things in themselves"
+        - "Copernican Revolution in epistemology — instead of cognition conforming to objects, objects conform to our cognitive faculties"
+        - "Critical philosophy — philosophy must first examine the conditions and limits of possible knowledge"
+      students_or_influences: "Lived entire life in Königsberg, Prussia (now Kaliningrad, Russia); never traveled more than a few miles from birthplace; students included Fichte, Reinhold, Maimon"
+      notes: >
+        Kant is generally regarded as the pivotal figure of Western philosophy, synthesizing British
+        empiricism (Hume) and Continental rationalism (Leibniz, Wolff). He famously said Hume's
+        skepticism woke him from his 'dogmatic slumber.' His three Critiques define the scope and
+        limits of theoretical reason, practical reason, and aesthetic/teleological judgment.
+        He spent his entire life in Königsberg; his daily afternoon walk was reportedly so regular
+        that neighbors set their clocks by it.
+      source_url: "https://plato.stanford.edu/entries/kant/"
+      wikidata: "Q9312"
+
+    Kant_Critique_Pure_Reason:
+      dates: "First edition 1781 (A edition); second edition 1787 (B edition)"
+      school: "Transcendental idealism, epistemology"
+      key_works:
+        - "Critique of Pure Reason (1781/1787)"
+      key_doctrines:
+        - "Phenomena vs. noumena — we can only know appearances (phenomena), not things as they are in themselves (noumena / Ding an sich)"
+        - "Synthetic a priori judgments — knowledge that is both informative (synthetic) and known prior to experience (a priori); e.g., '7 + 5 = 12' or 'Every event has a cause'"
+        - "Twelve categories of the understanding — pure concepts (e.g., causality, substance, unity) that structure all experience"
+        - "The antinomies — four pairs of contradictory claims about the world (e.g., 'The world has a beginning in time' vs. 'The world has no beginning') that reason generates when it oversteps experience"
+        - "Refutation of idealism — Kant argues in the B edition that Descartes' and Berkeley's idealisms are self-refuting; inner experience presupposes outer experience"
+        - "Transcendental aesthetic — space and time are pure forms of sensible intuition, not independent realities"
+      students_or_influences: "The 'Kant problem' set the agenda for Fichte, Schelling, and Hegel; Reinhold's 'Letters on the Kantian Philosophy' (1786–87) popularized the first Critique"
+      notes: >
+        The first Critique distinguishes the Transcendental Analytic (legitimate use of categories
+        within experience) from the Transcendental Dialectic (illegitimate use of reason beyond
+        experience — producing the antinomies, the paralogisms of rational psychology, and the
+        ideal of pure reason). The 'Copernican Revolution' formulation appears in the Preface to
+        the B edition (1787).
+      source_url: "https://plato.stanford.edu/entries/kant-cpure/"
+      wikidata: "Q9312"
+
+    Kant_Categorical_Imperative:
+      dates: "Groundwork of the Metaphysics of Morals (1785); Critique of Practical Reason (1788)"
+      school: "Kantian ethics, deontology"
+      key_works:
+        - "Groundwork of the Metaphysics of Morals (1785)"
+        - "Critique of Practical Reason (1788)"
+        - "The Metaphysics of Morals (1797)"
+      key_doctrines:
+        - "Categorical imperative — a moral command that applies unconditionally, regardless of desires or consequences"
+        - "Formula of Universal Law: 'Act only according to that maxim whereby you can at the same time will that it should become a universal law'"
+        - "Formula of Humanity: 'Act so that you treat humanity, whether in your own person or that of another, always as an end and never as a means only'"
+        - "Kingdom of Ends: act as if you were a legislating member of a realm of rational beings each treated as an end in themselves"
+        - "Autonomy — the will is morally self-legislating; morality is not imposed from outside but is reason's own law"
+        - "Good will — the only thing good without qualification; courage, intelligence, happiness can all be misused"
+        - "Duty — moral worth comes from acting from duty (aus Pflicht), not merely in conformity with duty"
+      students_or_influences: "Contrasted with consequentialism (Bentham); influenced W.D. Ross's prima facie duties; Christine Korsgaard's constructivist Kantianism"
+      notes: >
+        The Groundwork (1785) is Kant's most readable ethical work. It contains three formulations
+        of the categorical imperative; the Formula of Universal Law (FUL) and the Formula of Humanity
+        (FH) are the most discussed. The Critique of Practical Reason (1788) extends moral philosophy
+        to include the postulates of practical reason: God, freedom, and immortality — not provable
+        theoretically but required for the coherence of the moral life.
+      source_url: "https://plato.stanford.edu/entries/kant-moral/"
+      wikidata: "Q9312"
+
+    Kant_Critique_Judgment:
+      dates: "Critique of the Power of Judgment (Kritik der Urteilskraft, 1790)"
+      school: "Kantian aesthetics, teleology"
+      key_works:
+        - "Critique of the Power of Judgment (1790)"
+      key_doctrines:
+        - "Aesthetic judgment — judgments of beauty are neither purely subjective nor objective; they claim universal assent yet cannot be proven"
+        - "Free beauty vs. dependent beauty — free beauty (pulchritudo vaga) is judged without a concept of what the object ought to be"
+        - "The sublime (das Erhabene) — arises when nature's magnitude or power overwhelms our sensory faculties but is mastered by our rational/moral vocation; the dynamically sublime and the mathematically sublime"
+        - "Teleological judgment — we must judge organisms as if they were purposively designed (as if they had Zwecke — ends), even though we cannot prove this theoretically"
+        - "The third Critique as bridge — connects the theoretical philosophy of the first Critique with the practical philosophy of the second"
+      students_or_influences: "Influenced Schiller's aesthetic philosophy; Schopenhauer's aesthetics; 20th-century aesthetic theory"
+      notes: >
+        The third Critique addresses the faculty of judgment in two halves: the Critique of Aesthetic
+        Judgment and the Critique of Teleological Judgment. The analysis of the sublime distinguishes
+        the mathematical sublime (overwhelmed by sheer magnitude) from the dynamical sublime (overwhelmed
+        by power), both involving a moment of humiliation followed by recognition of our rational
+        dignity. Kant's analysis of purposiveness (Zweckmäßigkeit) without a definite purpose in
+        aesthetic objects influenced Schopenhauer and later German Idealism's philosophy of nature.
+      source_url: "https://plato.stanford.edu/entries/kant-aesthetics/"
+      wikidata: "Q9312"
+
+    Kant_What_Is_Enlightenment:
+      dates: "Published 1784 in the Berlinische Monatsschrift"
+      school: "Political philosophy, philosophy of culture"
+      key_works:
+        - "'What Is Enlightenment?' (Was ist Aufklärung?, 1784)"
+      key_doctrines:
+        - "Enlightenment is 'man's emergence from his self-incurred immaturity (Unmündigkeit)'"
+        - "'Sapere aude!' — 'Dare to know!' (from Horace, Epistles I.2) — the motto of the Enlightenment"
+        - "Distinction between public and private use of reason: public use (as a scholar writing for the world) must be free; private use (as an officer following orders) may be constrained"
+        - "Freedom to make public use of reason in all matters is the only prerequisite for Enlightenment"
+      students_or_influences: "Written in response to a 1783 essay in the same journal by Moses Mendelssohn on the same question; both published December 1784"
+      notes: >
+        This short essay (about 2,500 words) is one of the most cited statements of Enlightenment
+        ideals. Kant defines immaturity as the inability to use one's understanding without guidance
+        from another. 'Sapere aude' (dare to know / dare to use your own understanding) comes from
+        Horace's Epistles. The distinction between public and private uses of reason allows Kant to
+        defend both a limited freedom of speech and the necessity of obedience in certain institutional
+        roles — a pragmatic compromise.
+      source_url: "https://plato.stanford.edu/entries/kant-social-political/"
+      wikidata: "Q9312"
+
+    Kant_Perpetual_Peace:
+      dates: "Perpetual Peace: A Philosophical Sketch (Zum ewigen Frieden, 1795)"
+      school: "Political philosophy, international law"
+      key_works:
+        - "Perpetual Peace: A Philosophical Sketch (1795)"
+        - "The Metaphysics of Morals (1797) — doctrine of right"
+      key_doctrines:
+        - "Federation of free states — nations should form a pacific federation (Völkerbund) to prevent war, not a world government"
+        - "Republican constitution required — only republican (representative, law-governed) states can reliably pursue peace"
+        - "Hospitality right — cosmopolitan right to visit foreign lands without being treated as an enemy"
+        - "Three definitive articles for perpetual peace: (1) republican civil constitution, (2) international federation, (3) cosmopolitan right of universal hospitality"
+      students_or_influences: "Influenced the League of Nations and United Nations design; precursor to liberal internationalism"
+      notes: >
+        Perpetual Peace (1795) is structured like a satirical peace treaty with 'preliminary articles'
+        and 'definitive articles.' Kant argues that the natural condition among states is war and that
+        a durable peace requires republican government (citizens bear the cost of war and would vote
+        against it), a league of nations, and cosmopolitan hospitality rights. This essay is the
+        founding document of the liberal international order theory.
+      source_url: "https://plato.stanford.edu/entries/kant-social-political/"
+      wikidata: "Q9312"
+
+    Kant_Thing_In_Itself:
+      dates: "Central to Critique of Pure Reason (1781/1787) and throughout the critical philosophy"
+      school: "Transcendental idealism, metaphysics"
+      key_works:
+        - "Critique of Pure Reason — passim"
+      key_doctrines:
+        - "Ding an sich (thing in itself / noumenon) — what an object is independently of how it appears to our cognitive faculties"
+        - "We can never have theoretical knowledge of things in themselves — they are unknowable because we can only know phenomena (appearances)"
+        - "The Ding an sich is a limiting concept — it marks the boundary of possible knowledge; it is thinkable but not knowable"
+        - "Affection problem — if things in themselves are unknowable, how do they cause our sensations? This became a central problem for post-Kantian idealism"
+      students_or_influences: "Fichte eliminated the Ding an sich as incoherent; Schopenhauer identified it with 'Will'; Hegel dissolved the distinction"
+      notes: >
+        The Ding an sich is both the most discussed and most contested concept in Kant's philosophy.
+        Jacobi argued that without the thing-in-itself one cannot enter the critical philosophy, but
+        with it one cannot remain. Fichte's response was to eliminate it entirely: for Fichte, the
+        non-I is posited by the I, not an independent entity. Schopenhauer took the opposite path,
+        identifying the thing-in-itself with the will (Wille) — the metaphysical ground of all
+        phenomena accessible via the body.
+      source_url: "https://plato.stanford.edu/entries/kant-things-in-themselves/"
+      wikidata: "Q9312"
+
+    Kant_Transcendental_Apperception:
+      dates: "Critique of Pure Reason (1781/1787), Transcendental Analytic"
+      school: "Transcendental idealism, philosophy of mind"
+      key_works:
+        - "Critique of Pure Reason — Transcendental Deduction of the Pure Concepts of the Understanding"
+      key_doctrines:
+        - "Transcendental unity of apperception — the 'I think' that must be able to accompany all my representations; the formal identity of the subject of experience"
+        - "'The 'I think' must be capable of accompanying all my representations' (B132) — the unity of experience requires a single subject"
+        - "Contrast with Hume's bundle theory — Hume could find no self behind the stream of perceptions; Kant argues the unity of self is a transcendental condition, not an empirical datum"
+        - "Not a substantial soul — the transcendental subject is a logical/functional unity, not a metaphysical substance"
+      students_or_influences: "Fichte radicalized this into the absolute self (Ich); Hegel criticized the abstract emptiness of Kant's pure self"
+      notes: >
+        The Transcendental Deduction (§15-27 of the B edition) is the most technically complex
+        section of the first Critique. Kant argues that for experience to be possible, the manifold
+        of intuition must be unified by a synthesizing activity — and this synthesis is grounded in
+        the transcendental unity of apperception. This 'I think' is not the empirical psychological
+        self but the formal condition for any experience to be mine at all.
+      source_url: "https://plato.stanford.edu/entries/kant-mind/"
+      wikidata: "Q9312"
+
+  # ----------------------------------------------------------
+  # GROUP 4: German Idealism (~17 entries)
+  # ----------------------------------------------------------
+  german_idealism:
+
+    Fichte:
+      dates: "1762–1814 (Johann Gottlieb Fichte)"
+      school: "German Idealism, absolute idealism (first generation)"
+      key_works:
+        - "Foundations of the Science of Knowledge (Grundlage der gesamten Wissenschaftslehre, 1794/95, revised multiple times)"
+        - "Science of Knowledge (Wissenschaftslehre — general name for multiple versions)"
+        - "Addresses to the German Nation (Reden an die deutsche Nation, 1807–08)"
+        - "The Vocation of Man (Die Bestimmung des Menschen, 1800)"
+        - "The Closed Commercial State (Der geschlossene Handelsstaat, 1800)"
+      key_doctrines:
+        - "The absolute I (das absolute Ich) — the self-positing I is the unconditioned ground of all reality; it posits itself and then posits the non-I (the world) as the field for its practical activity"
+        - "Three foundational principles: (1) I = I (the I posits itself); (2) I posits the not-I in opposition to itself; (3) I and not-I limit each other in the finite I"
+        - "Elimination of the thing-in-itself — Kant's Ding an sich is an incoherent residue; the non-I is posited by the I, not independent of it"
+        - "Primacy of practical reason — the theoretical (knowing) is grounded in the practical (willing and striving)"
+        - "Addresses to the German Nation — lectures delivered in occupied Berlin; argued for German cultural nationalism and public education as basis for national regeneration"
+      students_or_influences: "Student of Kant (met Kant 1791); Schelling was his student; Hegel critiqued his subjective idealism; influenced German nationalism"
+      notes: >
+        Fichte was the first major post-Kantian systematic philosopher. He saw the Wissenschaftslehre
+        as the definitive completion of the Kantian project — eliminating the inconsistencies left by
+        the thing-in-itself. He rewrote the Wissenschaftslehre multiple times over his career (at least
+        15 versions). The Addresses to the German Nation (1807-08) were delivered after Napoleon
+        defeated Prussia at Jena (1806) and are founding texts of German nationalism and the idea of
+        public education as the basis of a free people.
+      source_url: "https://plato.stanford.edu/entries/fichte/"
+      wikidata: "Q9285"
+
+    Schelling:
+      dates: "1775–1854 (Friedrich Wilhelm Joseph Schelling)"
+      school: "German Idealism, Naturphilosophie, identity philosophy, late positive philosophy"
+      key_works:
+        - "Ideas for a Philosophy of Nature (Ideen zu einer Philosophie der Natur, 1797)"
+        - "System of Transcendental Idealism (System des transcendentalen Idealismus, 1800)"
+        - "Philosophy of Identity (Darstellung meines Systems der Philosophie, 1801)"
+        - "Of Human Freedom (Über das Wesen der menschlichen Freiheit, 1809)"
+        - "The Ages of the World (Die Weltalter, 1811–15, incomplete)"
+        - "Philosophy of Mythology and Revelation (Berlin lectures, 1841–42)"
+      key_doctrines:
+        - "Naturphilosophie — nature is not dead mechanism but a living whole; the same principle (Absolute) that manifests in mind also manifests in nature; nature is 'visible spirit'"
+        - "System of Transcendental Idealism — parallel series: nature develops toward consciousness; consciousness develops toward art; art is the 'organ of philosophy'"
+        - "Identity philosophy (Identitätsphilosophie) — subject and object are identical in the Absolute; the Absolute is the point of indifference between ideal and real"
+        - "Freedom essay (1809) — investigated the possibility of evil within an idealist system; the will of the ground vs. the will of the existent"
+        - "Positive philosophy (later work) — a philosophy of existence that goes beyond what reason can demonstrate a priori; criticized Hegel's 'negative philosophy'"
+      students_or_influences: "Classmate and early friend of Hegel at the Tübingen Stift (along with Hölderlin); influenced Coleridge, Emerson, Schopenhauer, and late Romantic Naturphilosophie"
+      notes: >
+        Schelling is the most varied and difficult of the German Idealists. His philosophy went through
+        distinct phases: Fichtean period, Naturphilosophie, identity philosophy, philosophy of freedom,
+        and late positive philosophy. His identity philosophy prompted Hegel's famous jibe about 'the
+        night in which all cows are black' — a critique of undifferentiated absolute identity. Schelling
+        outlived Hegel by 23 years and was called to Berlin in 1841 to 'slay the dragon of Hegelianism.'
+      source_url: "https://plato.stanford.edu/entries/schelling/"
+      wikidata: "Q9297"
+
+    Hegel_overview:
+      dates: "1770–1831 (Georg Wilhelm Friedrich Hegel)"
+      school: "German Idealism, absolute idealism"
+      key_works:
+        - "Phenomenology of Spirit (Phänomenologie des Geistes, 1807)"
+        - "Science of Logic (Wissenschaft der Logik, 2 vols., 1812–16; revised 1832)"
+        - "Encyclopedia of the Philosophical Sciences (Enzyklopädie, 1817; revised 1827, 1830)"
+        - "Philosophy of Right (Grundlinien der Philosophie des Rechts, 1820)"
+        - "Lectures on the Philosophy of History (Vorlesungen über die Philosophie der Geschichte, posthumous)"
+        - "Lectures on Aesthetics, Philosophy of Religion, History of Philosophy (posthumous)"
+      key_doctrines:
+        - "Absolute Idealism — reality is the self-unfolding of Geist (Spirit/Mind); the Absolute is not a static substance but a process"
+        - "Dialectic — the movement of thought and reality through contradiction and resolution (Aufhebung — sublation/supersession); Hegel's own terms are NOT 'thesis-antithesis-synthesis' (that formula is from Chalybäus)"
+        - "Geist (Spirit) — the immanent rational principle of reality; develops through nature, finite minds, art, religion, and philosophy"
+        - "The Owl of Minerva — 'The owl of Minerva spreads its wings only with the falling of the dusk' (Preface to Philosophy of Right) — philosophy always comes too late to prescribe how the world should be; it comprehends only what has already occurred"
+        - "Sittlichkeit vs. Moralität — sittlichkeit (ethical life embedded in institutions: family, civil society, state) is higher than abstract moralität (Kantian conscience)"
+        - "The cunning of reason (List der Vernunft) — world history uses great individuals (Napoleon, Caesar) as instruments of Geist without their knowledge"
+      students_or_influences: "Classmates: Schelling and Hölderlin at Tübingen Stift; students included Feuerbach, Marx, Kierkegaard (indirect), Strauss; the 'Old Hegelians' and 'Young Hegelians' defined post-1831 German philosophy"
+      notes: >
+        Hegel completed the Phenomenology of Spirit the night before the Battle of Jena (October 1806),
+        famously writing to a friend that he had seen 'the world spirit on horseback' (Napoleon entering
+        Jena). The formula 'thesis-antithesis-synthesis' was NOT used by Hegel himself; it was used
+        by Heinrich Moritz Chalybäus (1837) to describe the Kantian-Fichtean tradition and was then
+        applied loosely to Hegel. The Preface to the Philosophy of Right contains the owl of Minerva
+        passage and the famous line 'What is rational is actual; and what is actual is rational.'
+      source_url: "https://plato.stanford.edu/entries/hegel/"
+      wikidata: "Q9235"
+
+    Hegel_Phenomenology:
+      dates: "Phenomenology of Spirit (Phänomenologie des Geistes, 1807)"
+      school: "German Idealism, absolute idealism"
+      key_works:
+        - "Phenomenology of Spirit (1807)"
+      key_doctrines:
+        - "Consciousness traces its development from immediate sensory certainty through perception, understanding, self-consciousness, reason, spirit, religion, to absolute knowing"
+        - "Master-slave dialectic (Herrschaft und Knechtschaft) — the struggle for recognition between self-consciousnesses; the master becomes dependent on the slave's recognition; the slave gains self-consciousness through labor"
+        - "Unhappy consciousness — the stage of self-consciousness that is divided against itself, seeking its true self in an inaccessible beyond"
+        - "The dialectic of Enlightenment — Hegel analyzes how Enlightenment reason dissolves all content into pure utility and then collapses into the Terror"
+        - "'The True is the Whole' — the opening thesis: reality is not a static given but a complete developmental process"
+      students_or_influences: "Marx inverted the master-slave dialectic into class struggle; Kojève's 1930s lectures on the Phenomenology shaped 20th-century French philosophy (Sartre, Merleau-Ponty, Lacan)"
+      notes: >
+        The Phenomenology is Hegel's most innovative and difficult work. It describes the journey
+        of 'natural consciousness' as it encounters and overcomes each form of inadequate self-
+        understanding, progressing toward absolute knowing. The master-slave dialectic (Chapter IV)
+        is the most famous section: the master, who needs the slave's recognition to confirm his
+        self-consciousness, is actually dependent on the slave, while the slave who transforms the
+        world through labor achieves genuine self-consciousness. Marx uses this dialectic to analyze
+        alienated labor.
+      source_url: "https://plato.stanford.edu/entries/hegel-dialectic/"
+      wikidata: "Q9235"
+
+    Hegel_Philosophy_of_Right:
+      dates: "Philosophy of Right (Grundlinien der Philosophie des Rechts, 1820)"
+      school: "German Idealism, political philosophy, social philosophy"
+      key_works:
+        - "Philosophy of Right (1820)"
+      key_doctrines:
+        - "Abstract right — property, contract, and wrong at the level of individual will"
+        - "Morality (Moralität) — Kantian conscience; the individual's subjective right to act from duty"
+        - "Ethical life (Sittlichkeit) — the family, civil society (bürgerliche Gesellschaft), and the state as three moments of concrete freedom"
+        - "Civil society — the market economy and its regulatory bodies; where private interests interact; influenced by Adam Smith and Adam Ferguson"
+        - "The state as the highest form of ethical life — not Rousseau's contractual state but a rational institution actualizing freedom"
+        - "'What is rational is actual; and what is actual is rational' — Preface; often misread as endorsing the Prussian status quo; Hegel meant that the rational has achieved or will achieve actuality"
+        - "'The owl of Minerva spreads its wings only with the falling of the dusk' — Preface; philosophy comprehends a historical world only once it is complete"
+      students_or_influences: "Marx criticized the Philosophy of Right (1843 Introduction); influenced communitarianism (MacIntyre, Taylor, Sandel)"
+      notes: >
+        The Philosophy of Right (1820) is Hegel's systematic political philosophy. Its tripartite
+        structure (abstract right, morality, ethical life) shows how freedom is progressively
+        concretized through institutions. The distinction between civil society (bourgeois economic
+        life) and the state is one of Hegel's most influential contributions — Marx adopted it to
+        argue that political emancipation in the state does not entail social emancipation in civil
+        society. The Preface's famous lines on the owl of Minerva and the rationality of the actual
+        are among the most quoted passages in German philosophy.
+      source_url: "https://plato.stanford.edu/entries/hegel-social-political/"
+      wikidata: "Q9235"
+
+    Hegel_Logic:
+      dates: "Science of Logic (Wissenschaft der Logik, 2 vols., 1812–16; one-volume revision 1831)"
+      school: "German Idealism, logic, metaphysics"
+      key_works:
+        - "Science of Logic (1812–16, rev. 1831)"
+        - "Encyclopedia Logic (smaller Logic, 1817, rev. 1830)"
+      key_doctrines:
+        - "Logic and metaphysics are identical — the categories of thought are the categories of being; logic describes the structure of reality itself"
+        - "Three moments of the dialectic: being (Sein), essence (Wesen), concept (Begriff)"
+        - "Aufhebung (sublation) — the movement whereby a concept is simultaneously negated, preserved, and raised to a higher level; the key logical operation in Hegel"
+        - "Being, Nothing, Becoming — the opening triad: pure being is indistinguishable from nothing; their unity is becoming; this generates all subsequent logical categories"
+        - "The Idea (die Idee) — the highest logical category: the unity of concept and objectivity; nature and spirit are the Idea in its otherness and return to itself"
+      students_or_influences: "McTaggart's commentary (1910); Mure; Pippin's neo-Kantian reading; 'Pittsburgh Hegelians' (McDowell, Brandom)"
+      notes: >
+        The Science of Logic is Hegel's most technically demanding work. It is a presuppositionless
+        philosophy — it attempts to begin with the most minimal possible thought (pure Being) and
+        derive all subsequent logical and ontological categories from the immanent movement of thought
+        itself. Hegel revises Kant's twelve categories of the understanding, arguing they cannot be
+        treated as fixed and separate but develop dialectically into one another. The opening move
+        — Being passes into Nothing, and their unity is Becoming — is both famous and famously
+        difficult to assess.
+      source_url: "https://plato.stanford.edu/entries/hegel-dialectic/"
+      wikidata: "Q9235"
+
+    Schleiermacher:
+      dates: "1768–1834 (Friedrich Daniel Ernst Schleiermacher)"
+      school: "German Idealism (adjacent), hermeneutics, theology, romanticism"
+      key_works:
+        - "On Religion: Speeches to its Cultured Despisers (Über die Religion: Reden an die Gebildeten unter ihren Verächtern, 1799)"
+        - "Soliloquies (Monologen, 1800)"
+        - "The Christian Faith (Der christliche Glaube, 1821–22, rev. 1830)"
+        - "Hermeneutics and Criticism (collected lectures, posthumous)"
+      key_doctrines:
+        - "Hermeneutics as universal theory of interpretation — understanding any text requires reconstructing the author's intention AND the linguistic and historical context; grammatical and psychological (or divinatory) interpretation"
+        - "On Religion — religion is not metaphysics or morality but a distinct domain of 'feeling and intuition of the universe' (Gefühl und Anschauung des Universums); later revised to 'feeling of absolute dependence' (schlechthinniges Abhängigkeitsgefühl)"
+        - "The hermeneutic circle — understanding the whole requires understanding the parts, and vice versa"
+        - "Divination — the interpreter must imaginatively reconstruct the author's individual mind to understand the text"
+      students_or_influences: "Friend of Friedrich Schlegel; influenced Dilthey's hermeneutics; precursor to Gadamer; co-founder of Humboldt University Berlin"
+      notes: >
+        Schleiermacher is the father of modern hermeneutics — the theory of interpretation applied
+        to texts, speech, and human action generally. On Religion (1799) was addressed to the
+        educated class who had abandoned religion under Enlightenment influence; he argued that
+        religion, properly understood, is not about supernatural beliefs but about a distinctive
+        form of immediate feeling. This influenced both liberal Protestant theology and Romantic
+        thought. He translated the complete works of Plato into German.
+      source_url: "https://plato.stanford.edu/entries/schleiermacher/"
+      wikidata: "Q76768"
+
+    Schopenhauer:
+      dates: "1788–1860 (Arthur Schopenhauer)"
+      school: "Post-Kantian pessimism, voluntarism; influenced by Kant and Indian philosophy"
+      key_works:
+        - "The World as Will and Representation (Die Welt als Wille und Vorstellung, 1818; expanded 2nd ed. 1844)"
+        - "On the Fourfold Root of the Principle of Sufficient Reason (1813, doctoral dissertation)"
+        - "On Vision and Colors (1816)"
+        - "On the Basis of Morality (Über die Grundlage der Moral, 1840)"
+        - "Parerga and Paralipomena (1851)"
+      key_doctrines:
+        - "The world as representation — the phenomenal world is my representation, structured by the principle of sufficient reason (time, space, causality); follows Kant's transcendental idealism"
+        - "The will (Wille) — the thing-in-itself underlying all representation; a blind, striving, purposeless force; identified with the will we feel in our own bodies"
+        - "Pessimism — the will is insatiable; fulfillment produces only momentary relief before new desire; life is fundamentally suffering"
+        - "Aesthetic contemplation as temporary escape — in genuine aesthetic experience (especially music) we briefly lose individuality and achieve will-less knowing"
+        - "Ethical basis in compassion (Mitleid) — morality rests on compassionate identification with others' suffering, not on Kantian reason"
+        - "Influence of Indian philosophy — Schopenhauer identified the will with the Upanishadic Brahman and the illusory phenomenal world with maya; he kept a bust of Kant and a gilt Buddha"
+        - "Asceticism as ultimate negation of the will — the saint who denies the will provides the only genuine escape from suffering"
+      students_or_influences: "Read Anquetil-Duperron's Latin translation of the Upanishads (Oupnek'hat); influenced Wagner, Nietzsche, Freud, Wittgenstein (early), Thomas Mann"
+      notes: >
+        Schopenhauer submitted his World as Will and Representation (1818) to compete with Hegel at
+        Berlin by scheduling his lectures at the same hours — he attracted almost no students while
+        Hegel's lectures were full. He waited 26 years for recognition, which finally came with the
+        Parerga (1851). His identification of the Kantian thing-in-itself with will (rather than
+        eliminating it like Fichte or absorbing it into Geist like Hegel) is the most original
+        metaphysical move in post-Kantian philosophy. Nietzsche initially revered him and later
+        criticized him in The Gay Science.
+      source_url: "https://plato.stanford.edu/entries/schopenhauer/"
+      wikidata: "Q38193"
+
+    Krause:
+      dates: "1781–1832 (Karl Christian Friedrich Krause)"
+      school: "German Idealism, panentheism"
+      key_works:
+        - "Outline of the System of Philosophy (Entwurf des Systems der Philosophie, 1804)"
+        - "The Ideal of Humanity for Human Life (Das Urbild der Menschheit, 1811)"
+      key_doctrines:
+        - "Panentheism (the world is in God but God transcends the world) — distinguished from both pantheism and theism"
+        - "Krausismo — Krause had enormous influence in Spain and Latin America in the late 19th century through the Free Institution of Learning (Institución Libre de Enseñanza)"
+      students_or_influences: "Julián Sanz del Río brought Krausismo to Spain (1843); Giner de los Ríos; enormous influence on Spanish Republican and liberal educational thought"
+      notes: >
+        Krause is a minor figure in German philosophy but had an outsized influence in Spain and
+        Latin America through 'Krausismo.' Sanz del Río visited Germany, encountered Krause's
+        philosophy, and introduced it to Spain in the 1840s. The Institución Libre de Enseñanza
+        (founded 1876) was the most important Spanish educational institution of the late 19th century
+        and drew on Krausist ideals of non-dogmatic, liberal education.
+      source_url: "https://plato.stanford.edu/entries/krause/"
+      wikidata: "Q61100"
+
+    Friedrich_Schlegel:
+      dates: "1772–1829 (Karl Wilhelm Friedrich von Schlegel)"
+      school: "German Romanticism, Romantic irony"
+      key_works:
+        - "Critical Fragments (Lyceum Fragments, 1797)"
+        - "Athenäum Fragments (1798–1800, with August Wilhelm Schlegel)"
+        - "Lucinde (novel, 1799)"
+        - "On the Language and Wisdom of the Indians (Über die Sprache und Weisheit der Indier, 1808)"
+      key_doctrines:
+        - "Romantic irony — the artist must simultaneously engage in creation and stand back in ironic detachment, acknowledging the infinite gap between the ideal and the actual"
+        - "Fragment as literary form — the fragment is the perfect Romantic form because it is complete yet incomplete, pointing beyond itself"
+        - "Progressive universal poetry — Romanticism seeks to reunite all literary genres, art forms, and philosophy into one living whole"
+        - "'Romantic poetry is a progressive universal poetry' (Athenäum Fragment 116 — the most quoted text of German Romanticism)"
+      students_or_influences: "Co-founded the Athenäum journal with his brother August Wilhelm; friend of Novalis, Tieck, Schleiermacher; later converted to Catholicism (1808)"
+      notes: >
+        Athenäum Fragment 116 is the defining text of German Romanticism: it describes 'Romantic
+        poetry' as a 'progressive universal poetry' that seeks to reunite all genres and disciplines.
+        Romantic irony is Schlegel's most original philosophical contribution: the artist, as an
+        infinite creator, must ironically withdraw from every finite form. Schlegel later converted
+        to Catholicism and became a conservative political thinker, abandoning his early Romanticism.
+      source_url: "https://plato.stanford.edu/entries/schlegel/"
+      wikidata: "Q57286"
+
+    Novalis:
+      dates: "1772–1801 (Georg Philipp Friedrich von Hardenberg, pen name 'Novalis')"
+      school: "German Early Romanticism (Frühromantik)"
+      key_works:
+        - "Hymns to the Night (Hymnen an die Nacht, 1800)"
+        - "Heinrich von Ofterdingen (unfinished novel, posthumous 1802)"
+        - "Pollen (Blüthenstaub, philosophical fragments, 1798)"
+        - "Christendom or Europe (Die Christenheit oder Europa, 1799, published 1826)"
+      key_doctrines:
+        - "Magic idealism (Magischer Idealismus) — the poet-philosopher can transform reality through imagination and will"
+        - "The 'blue flower' (blaue Blume) — the central symbol of German Romanticism, from Heinrich von Ofterdingen; represents unattainable longing, the infinite ideal"
+        - "Night and death as gateways to the infinite — Hymns to the Night transform mourning into mystical affirmation"
+        - "Medievalism — Christendom or Europe celebrates a unified Christian Europe as an ideal and critiques Enlightenment fragmentation"
+      students_or_influences: "Close friend of Friedrich Schlegel; both were at the center of the Jena Romantic circle; died of tuberculosis at 28"
+      notes: >
+        Novalis is the most lyrical of the Early Romantics. He died of tuberculosis at 28 shortly
+        after completing the Hymns to the Night, which were inspired by the death of his fiancée
+        Sophie von Kühn (1797). The 'blue flower' in Heinrich von Ofterdingen became the central
+        symbol of German Romanticism — representing infinite longing, the unattainable ideal, and
+        the fusion of nature and spirit. His philosophical fragments (Blüthenstaub, Teplitzer Fragmente)
+        engage deeply with Fichte's Wissenschaftslehre.
+      source_url: "https://plato.stanford.edu/entries/novalis/"
+      wikidata: "Q44069"
+
+    Holderlin:
+      dates: "1770–1843 (Johann Christian Friedrich Hölderlin)"
+      school: "German Romanticism, poet-philosopher"
+      key_works:
+        - "Hyperion, or The Hermit in Greece (Hyperion oder der Eremit in Griechenland, 2 vols., 1797–1799)"
+        - "The Death of Empedocles (Der Tod des Empedokles, unfinished tragedy)"
+        - "Hymns and odes (Patmos, Bread and Wine, The Rhine, Germania)"
+        - "Remarks on Sophocles (Anmerkungen zur Antigone, Anmerkungen zum Ödipus, 1804)"
+      key_doctrines:
+        - "Unified life (Hen kai Pan — 'One and All') — the Romantic ideal of reconciling nature, art, and philosophy into a living whole; close to pantheism"
+        - "The tragic — later fragments on tragedy anticipate Nietzsche's The Birth of Tragedy; tragedy arises from the conflict between mortals and the divine"
+        - "Philosophy and poetry as parallel vocations — Hölderlin studied philosophy with Fichte and Schelling at Tübingen alongside Hegel"
+        - "Significance of insanity (1806–1843) — spent the last 37 years in a tower in Tübingen in a state of mental illness; his late poetry influenced 20th-century phenomenology"
+      students_or_influences: "Classmates with Hegel and Schelling at Tübingen Stift (1788–93); Nietzsche, Heidegger, and Paul Celan were deeply influenced by his poetry"
+      notes: >
+        Hölderlin attended the Tübinger Stift simultaneously with Hegel and Schelling; all three
+        reportedly planted a 'tree of liberty' together during the French Revolution. He is the
+        paradigmatic figure of the Romantic poet-philosopher: trained in philosophy, he chose poetry
+        as his medium. His late hymns (Patmos, Bread and Wine, The Rhine) are among the most demanding
+        works in the German lyric tradition. Heidegger wrote extensively on his poetry, particularly
+        in Poetry, Language, Thought.
+      source_url: "https://plato.stanford.edu/entries/holderlin/"
+      wikidata: "Q44092"
+
+  # ----------------------------------------------------------
+  # GROUP 5: Early Romantics & Adjacent (~5 entries)
+  # ----------------------------------------------------------
+  early_romantics_adjacent:
+
+    Herder:
+      dates: "1744–1803 (Johann Gottfried von Herder)"
+      school: "Counter-Enlightenment, philosophy of history, philosophy of language, nationalism"
+      key_works:
+        - "Treatise on the Origin of Language (Abhandlung über den Ursprung der Sprache, 1772)"
+        - "This Too a Philosophy of History for the Formation of Humanity (Auch eine Philosophie der Geschichte, 1774)"
+        - "Ideas on the Philosophy of the History of Humanity (Ideen zur Philosophie der Geschichte der Menschheit, 4 vols., 1784–91)"
+        - "Letters for the Advancement of Humanity (1793–97)"
+      key_doctrines:
+        - "Volksgeist — each nation (Volk) has its own unique spirit (Geist) expressed in language, folklore, culture, and history; no universal standard of civilization"
+        - "Language shapes thought — language is not a mere tool of thought but its constitutive medium; different languages embody different ways of being in the world"
+        - "Expressivism — the authentic expression of a people's identity through art, language, and culture is a fundamental human need"
+        - "Anti-universalism — the Enlightenment's claim to a single universal reason is false; each culture has its own internal standard of excellence"
+        - "Organic history — history is not linear progress toward one goal but the flourishing of diverse cultural organisms"
+      students_or_influences: "Student of Hamann; influenced Goethe; major influence on Hegel's concept of Geist; foundational for German nationalism and later Romantic nationalisms"
+      notes: >
+        Herder is the key link between the Enlightenment and Romanticism. His challenge to the
+        Enlightenment's universalism — his insistence that every culture must be understood on its
+        own terms and that human nature is expressed differently in each Volk — is foundational for
+        modern cultural anthropology, nationalism, and hermeneutics. Isaiah Berlin called him the
+        father of nationalism and pluralism. His Ideas (1784–91) is the first systematic philosophy
+        of history organized around cultural diversity rather than progress.
+      source_url: "https://plato.stanford.edu/entries/herder/"
+      wikidata: "Q16867"
+
+    Hamann:
+      dates: "1730–1788 (Johann Georg Hamann)"
+      school: "Counter-Enlightenment, fideism, philosophy of language"
+      key_works:
+        - "Socratic Memorabilia (Sokratische Denkwürdigkeiten, 1759)"
+        - "Metacritique on the Purism of Pure Reason (Metakritik über den Purismus der Vernunft, 1784, pub. 1800)"
+        - "Aesthetica in Nuce (1762)"
+      key_doctrines:
+        - "Language as the medium of all thought — you cannot separate pure reason from its linguistic embodiment; reason is always already language"
+        - "Metacritique of Kant — in the Metacritique (1784), Hamann argues that Kant's 'pure reason' is an abstraction; language, sensation, and tradition are unavoidable"
+        - "Fideism — faith is not opposed to reason but is its ground; reason cannot ground itself"
+        - "'Magus of the North' — nickname given to Hamann for his oracular, allusive, difficult style"
+      students_or_influences: "Teacher and friend of Herder; influenced Kierkegaard deeply; Goethe admired him; Kant was his contemporary and friend (though they disagreed)"
+      notes: >
+        Hamann is the most difficult and prophetic writer of the German Enlightenment period.
+        His Metacritique (1784) anticipated later 20th-century arguments (Wittgenstein, Gadamer)
+        that reason is always already linguistic and embedded in tradition — it cannot purify itself
+        by abstracting from language as Kant tried to do. He was Kant's personal friend and
+        philosophical opponent. Kierkegaard read him obsessively as a model of indirect communication.
+      source_url: "https://plato.stanford.edu/entries/hamann/"
+      wikidata: "Q57328"
+
+    Jacobi:
+      dates: "1743–1819 (Friedrich Heinrich Jacobi)"
+      school: "Counter-Enlightenment, fideism, philosophy of faith"
+      key_works:
+        - "Concerning the Doctrine of Spinoza in Letters to Moses Mendelssohn (Über die Lehre des Spinoza in Briefen an Herrn Moses Mendelssohn, 1785)"
+        - "David Hume on Faith, or Idealism and Realism (1787)"
+        - "Letters on the Kantian Philosophy (1789)"
+      key_doctrines:
+        - "The Pantheism Controversy (Pantheismusstreit) — Jacobi revealed to Mendelssohn that Lessing had privately confessed to being a Spinozist; ignited a major debate (1785) about whether consistent rationalism leads to Spinoza's pantheism and then to fatalism and atheism"
+        - "Salto mortale (the mortal leap) — reason alone cannot escape nihilism; a leap of faith is required"
+        - "'Without presuppositions into the system, with presuppositions out of it' — Jacobi's dilemma about Kant's thing-in-itself: you need it to enter the system but it's incoherent within the system"
+        - "Faith as direct, immediate knowledge (Glaube) — Jacobi distinguishes this from rational demonstration"
+      students_or_influences: "Pantheism controversy involved Mendelssohn, Lessing (posthumously), Herder, Goethe; Fichte responded; influenced Schelling and Kierkegaard"
+      notes: >
+        Jacobi's revelation in 1785 that Lessing was a Spinozist triggered the most important
+        philosophical debate of the late 18th century: if rationalism is followed consistently,
+        does it end in Spinozistic pantheism (and therefore fatalism and atheism)? Jacobi argued
+        yes, and that therefore faith and revelation are rationally indispensable. This 'Pantheism
+        Controversy' forced every major philosopher of the period to take a position on Spinoza.
+        Jacobi's critique of Kant's thing-in-itself anticipates Fichte's and Hegel's responses.
+      source_url: "https://plato.stanford.edu/entries/jacobi/"
+      wikidata: "Q57337"
+
+    Moses_Mendelssohn:
+      dates: "1729–1786 (Moses Mendelssohn)"
+      school: "Jewish Enlightenment (Haskalah), Leibnizian rationalism"
+      key_works:
+        - "Phaedon, or On the Immortality of the Soul (Phädon oder über die Unsterblichkeit der Seele, 1767)"
+        - "Jerusalem, or On Religious Power and Judaism (Jerusalem oder über religiöse Macht und Judenthum, 1783)"
+        - "Morning Hours (Morgenstunden, 1785)"
+        - "To Lessing's Friends (An die Freunde Lessings, 1786 — response to Jacobi)"
+      key_doctrines:
+        - "Phaedon — a modern Platonic dialogue arguing for the immortality of the soul; a major bestseller in the 18th century"
+        - "Jerusalem — argues for the separation of religious and civil authority; Judaism is a religion of law (practical commandments) rather than dogma; the state should tolerate all religions"
+        - "Jewish emancipation — argued Jews could be loyal citizens without converting; the model of religious pluralism in a civic state"
+        - "Leibnizian metaphysics — Mendelssohn was a follower of Leibniz-Wolff philosophy; won a prize essay contest in 1763 beating Kant"
+      students_or_influences: "Friend of Lessing (Lessing modeled Nathan the Wise on him); triggered the Pantheism Controversy with Jacobi; friend of Kant; grandfather of composer Felix Mendelssohn"
+      notes: >
+        Mendelssohn was called 'the German Socrates' in his lifetime. Phaedon (1767) made him
+        famous across Europe. Jerusalem (1783) is the founding text of Jewish religious liberalism:
+        it argues that Judaism's essence is not creedal dogma but practical law, and therefore
+        civil tolerance and religious observance are compatible. Kant praised Jerusalem as a
+        masterwork of liberalism. The Pantheism Controversy erupted when Jacobi claimed to Mendelssohn
+        that Lessing had been a Spinozist — Mendelssohn died shortly after publishing his defense.
+      source_url: "https://plato.stanford.edu/entries/mendelssohn/"
+      wikidata: "Q160852"
+
+    Wilhelm_von_Humboldt:
+      dates: "1767–1835 (Friedrich Wilhelm Christian Karl Ferdinand von Humboldt)"
+      school: "Neohumanism, philosophy of language, liberal political philosophy"
+      key_works:
+        - "The Limits of State Action (Ideen zu einem Versuch, die Grenzen der Wirksamkeit des Staates zu bestimmen, written 1792, pub. 1851)"
+        - "On the Diversity of Human Language Construction and Its Influence on the Intellectual Development of the Human Species (Über die Verschiedenheit des menschlichen Sprachbaues, 1836)"
+        - "Plan for the Organization of an Enlightened Institution (1809) — founding document of Berlin University"
+      key_doctrines:
+        - "Language as energeia, not ergon — language is not a product (ergon) but an activity (energeia) that constitutes thought; each language embodies a distinct world-view"
+        - "The Humboldtian University — Humboldt's 1809 plan for the University of Berlin established the model of the research university unifying teaching and research (Einheit von Lehre und Forschung)"
+        - "Limits of state action — the state should restrict itself to security; individual self-cultivation (Bildung) is the highest human goal"
+        - "Linguistic relativity — different languages structure reality differently; cf. Sapir-Whorf hypothesis"
+      students_or_influences: "Brother of Alexander von Humboldt (naturalist); student of Schiller and friend of Goethe; Chomsky's concept of generative grammar credits Humboldt; co-founded Humboldt University Berlin"
+      notes: >
+        Wilhelm von Humboldt is the founder of the philosophy of language as an autonomous discipline.
+        His posthumous work on language diversity (1836) established the framework for comparative
+        linguistics and anticipated the Sapir-Whorf hypothesis of linguistic relativity. As Prussian
+        Minister of Education (1809–10), he designed the University of Berlin on the principle that
+        research and teaching are inseparable — the model for the modern research university worldwide.
+        The university was renamed Humboldt University (Humboldt-Universität) in 1949.
+      source_url: "https://plato.stanford.edu/entries/humboldt/"
+      wikidata: "Q1891"
+
+  # ----------------------------------------------------------
+  # SUPPLEMENTAL: Additional Kant entries (to reach ~12 total)
+  # ----------------------------------------------------------
+  kant_supplemental:
+
+    Kant_Groundwork:
+      dates: "Groundwork of the Metaphysics of Morals (Grundlegung zur Metaphysik der Sitten, 1785)"
+      school: "Kantian ethics, deontology"
+      key_works:
+        - "Groundwork of the Metaphysics of Morals (1785)"
+      key_doctrines:
+        - "The Groundwork has three sections: (1) common rational moral cognition to philosophical; (2) popular moral philosophy to metaphysics of morals; (3) the final step to a critique of pure practical reason"
+        - "The good will — the only unconditionally good thing; its goodness does not depend on what it produces"
+        - "Three formulations of the categorical imperative presented in a single text: FUL (universal law), FH (humanity), FKE (kingdom of ends)"
+        - "Hypothetical vs. categorical imperatives — hypothetical imperatives bind conditionally (if you want X, do Y); categorical imperatives bind unconditionally"
+        - "Autonomy vs. heteronomy — moral worth requires autonomy (giving the law to oneself); acting from inclination or external authority is heteronomous"
+      students_or_influences: "The Groundwork is Kant's most-assigned ethical text; influenced W.D. Ross, Korsgaard, Rawls (via the categorical imperative structure)"
+      notes: >
+        The Groundwork (1785) is Kant's concise and most accessible ethical work. It is the foundation
+        for the Critique of Practical Reason (1788) and The Metaphysics of Morals (1797). The three
+        formulations of the categorical imperative all express the same fundamental law from different
+        angles. The argument for autonomy — that the moral law must be self-legislated by reason, not
+        derived from happiness, God, or nature — is Kant's most distinctive contribution to ethics.
+      source_url: "https://plato.stanford.edu/entries/kant-moral/"
+      wikidata: "Q9312"
+
+    Kant_Religion:
+      dates: "Religion within the Boundaries of Mere Reason (Die Religion innerhalb der Grenzen der bloßen Vernunft, 1793)"
+      school: "Kantian philosophy of religion"
+      key_works:
+        - "Religion within the Boundaries of Mere Reason (1793)"
+      key_doctrines:
+        - "Radical evil (das radikale Böse) — humans have a propensity to subordinate the moral law to self-love; this is not original sin but a freely chosen disposition"
+        - "Moral religion — religion is legitimate only insofar as it promotes moral duty; historical, revealed religion must be reinterpreted as symbolic expression of moral truths"
+        - "The 'invisible church' — the ideal of a moral community of rational beings, prefigured in historical churches"
+        - "Kant was censured by the Prussian government after publishing the text; he agreed not to publish further on religion during Frederick William II's reign"
+      students_or_influences: "Influenced liberal Protestant theology; Schleiermacher responded to its rationalist reduction of religion"
+      notes: >
+        Religion within the Boundaries of Mere Reason (1793) provoked censorship from the Prussian
+        government, which saw it as undermining Christianity. Kant argued that what matters in religion
+        is not revealed doctrine but the moral disposition; the historical elements of Christianity
+        (scripture, church, sacraments) are symbolic representations of moral truths. The concept
+        of radical evil — that humans freely subordinate moral duty to inclination — was a departure
+        from Enlightenment optimism and influenced later discussions of human nature and theodicy.
+      source_url: "https://plato.stanford.edu/entries/kant-religion/"
+      wikidata: "Q9312"
+
+    Kant_Synthetic_A_Priori:
+      dates: "Central to Critique of Pure Reason (1781/1787) and Prolegomena (1783)"
+      school: "Transcendental idealism, epistemology"
+      key_works:
+        - "Critique of Pure Reason (1781/1787)"
+        - "Prolegomena to Any Future Metaphysics (1783)"
+      key_doctrines:
+        - "Analytic judgment — the predicate is contained in the concept of the subject (e.g., 'All bachelors are unmarried'); these are necessarily true but uninformative"
+        - "Synthetic judgment — the predicate adds information not contained in the subject (e.g., 'The cat is on the mat'); informative but typically known only a posteriori"
+        - "Synthetic a priori judgment — both informative (synthetic) AND necessarily true and known prior to experience (a priori); Kant's signature claim"
+        - "Examples of synthetic a priori: '7 + 5 = 12' (mathematics), 'Every event has a cause' (pure natural science), propositions of geometry"
+        - "The central question of the Critique: 'How are synthetic a priori judgments possible?' — answered by transcendental idealism"
+      students_or_influences: "Hume's problem of induction was the starting point; Quine's 'Two Dogmas of Empiricism' (1951) later attacked the analytic-synthetic distinction"
+      notes: >
+        The analytic-synthetic distinction is introduced in the Introduction to the first Critique.
+        Kant argues that Hume correctly showed that causal necessity cannot be derived from experience
+        (analytic), but incorrectly concluded it was merely a habit of mind (psychologism). Kant's
+        answer: causal necessity is a synthetic a priori truth — it is not from experience but is a
+        condition of possible experience, contributed by the understanding's category of causality.
+        Quine attacked the distinction in 1951, launching decades of analytic philosophy debate.
+      source_url: "https://plato.stanford.edu/entries/kant-syntheticapriori/"
+      wikidata: "Q9312"
+
+    Kant_Antinomies:
+      dates: "Critique of Pure Reason — Transcendental Dialectic, 'The Antinomy of Pure Reason' (1781/1787)"
+      school: "Transcendental idealism, metaphysics"
+      key_works:
+        - "Critique of Pure Reason — Transcendental Dialectic"
+      key_doctrines:
+        - "The four antinomies — pairs of contradictory theses about the world that pure reason generates when it tries to think the totality of conditions beyond experience"
+        - "First antinomy: The world has a beginning in time / The world has no beginning in time (and space)"
+        - "Second antinomy: Every composite substance consists of simple parts / No composite thing consists of simple parts"
+        - "Third antinomy: There is causality through freedom / There is no freedom; everything is natural causality"
+        - "Fourth antinomy: There exists an absolutely necessary being / There is no absolutely necessary being"
+        - "Resolution: the antinomies arise because we mistake phenomena for things-in-themselves; transcendental idealism dissolves the conflict"
+        - "The third antinomy is key for ethics: freedom is possible in the noumenal realm even if determinism governs phenomena"
+      students_or_influences: "The third antinomy is directly relevant to Kant's moral philosophy; Hegel criticized the antinomies in his Logic"
+      notes: >
+        The antinomies are Kant's most dramatic demonstration that speculative metaphysics leads to
+        self-contradiction. He argues that both the thesis and antithesis of each pair can be proven
+        by valid arguments — the contradiction is not logical error but the result of applying categories
+        legitimately used within experience to the world as a whole (which is never given in experience).
+        The third antinomy — cosmological freedom vs. universal determinism — is the pivot for Kant's
+        practical philosophy, showing that freedom is possible in the noumenal order.
+      source_url: "https://plato.stanford.edu/entries/kant-cpure/"
+      wikidata: "Q9312"
+
+  # ----------------------------------------------------------
+  # SUPPLEMENTAL: Additional German Idealism entries
+  # ----------------------------------------------------------
+  german_idealism_supplemental:
+
+    Hegel_Philosophy_of_History:
+      dates: "Lectures on the Philosophy of History (Vorlesungen über die Philosophie der Geschichte, posthumous, 1837, compiled by students)"
+      school: "German Idealism, philosophy of history"
+      key_works:
+        - "Lectures on the Philosophy of History (posthumous 1837; revised editions 1840, 1847)"
+      key_doctrines:
+        - "World history as the self-realization of Geist (Spirit) — history is not a sequence of random events but the progressive realization of freedom"
+        - "Oriental world (one is free — the despot), Greek-Roman world (some are free — citizens), Germanic Christian world (all are free — the principle, not yet fully realized)"
+        - "The cunning of reason (List der Vernunft) — Geist uses the passions and interests of individuals (Napoleon, Caesar, Alexander) as instruments of historical development without their awareness"
+        - "End of history (Geschichtsende) — history reaches its goal when freedom is fully actualized in rational institutions; not a literal temporal end but a conceptual completion"
+        - "World-historical individuals — great figures who embody the next stage of Spirit; 'they are the World-Spirit's business agents'"
+      students_or_influences: "Kojève's reading (1930s) made the 'end of history' famous; Fukuyama's 'The End of History and the Last Man' (1992) applied it to liberal democracy"
+      notes: >
+        The Lectures on the Philosophy of History were not written by Hegel himself but compiled by
+        students after his death from lecture notes. They present Hegel's stadial philosophy of history:
+        the Orient, Greece-Rome, and the Germanic-Christian world represent three phases in the
+        progressive realization of freedom. The cunning of reason explains how historical figures
+        (Napoleon at Jena prompted the remark about 'the world-spirit on horseback') serve the ends
+        of Geist while pursuing their own interests. Alexandre Kojève's 1930s Paris lectures on the
+        Phenomenology (which incorporated the end-of-history thesis) had enormous influence on
+        20th-century French thought.
+      source_url: "https://plato.stanford.edu/entries/hegel/"
+      wikidata: "Q9235"
+
+    Hegel_Dialectic_Aufhebung:
+      dates: "Throughout Hegel's mature work, especially Science of Logic (1812–16) and Phenomenology of Spirit (1807)"
+      school: "German Idealism, dialectical method"
+      key_works:
+        - "Science of Logic (1812–16)"
+        - "Phenomenology of Spirit (1807)"
+      key_doctrines:
+        - "Aufhebung (sublation) — Hegel's key logical operation: a concept or stage is simultaneously negated (annulled), preserved, and elevated to a higher level; the German word unifies three meanings: to cancel, to preserve, to raise up"
+        - "The dialectical movement — each category or stage of consciousness contains its own negation; the tension drives a movement to a higher synthesis that preserves both moments"
+        - "SCHOLARLY CORRECTION: 'thesis-antithesis-synthesis' is NOT Hegel's own terminology — it was used by Heinrich Moritz Chalybäus (Historische Entwicklung, 1837) to characterize Kantian and Fichtean philosophy, then improperly applied to Hegel by later commentators including Marx"
+        - "Determinate negation — negation is not empty; what is negated is preserved in a determinate form at the higher level"
+        - "The dialectic is logical, not temporal — it describes the internal structure of the concept, not a chronological sequence"
+      students_or_influences: "Marx inverted the Hegelian dialectic ('standing it on its feet') to produce dialectical materialism"
+      notes: >
+        The misidentification of Hegel's dialectic with 'thesis-antithesis-synthesis' is one of
+        the most persistent errors in the history of philosophy. Hegel uses the German terms
+        Moment (moment/element), Aufhebung (sublation), and Negation but never the triad
+        thesis-antithesis-synthesis. Chalybäus applied this schema to Fichte's three principles
+        (I, not-I, limited I) in 1837 and later commentators generalized it to all of German
+        Idealism. Marx's dialectical materialism uses Aufhebung but in a materialist rather than
+        idealist register.
+      source_url: "https://plato.stanford.edu/entries/hegel-dialectic/"
+      wikidata: "Q9235"
+
+    Reinhold:
+      dates: "1757–1823 (Karl Leonhard Reinhold)"
+      school: "Post-Kantian idealism, early systematization"
+      key_works:
+        - "Letters on the Kantian Philosophy (Briefe über die Kantische Philosophie, 1786–87)"
+        - "Essay Towards a New Theory of the Human Faculty of Representation (Versuch einer neuen Theorie des menschlichen Vorstellungsvermögens, 1789)"
+        - "Contribution to the Correction of Previous Misunderstandings of Philosophers (Beiträge, 1790)"
+      key_doctrines:
+        - "The principle of consciousness — Reinhold attempted to found Kantian philosophy on a single self-evident first principle: 'In consciousness the representation is distinguished by the subject from both subject and object and is referred to both'"
+        - "Popularizer of Kant — his Letters (1786–87) were the text that first made Kant's philosophy widely accessible and popular; he was called 'the herald of Kant'"
+        - "The demand for a single first principle became the starting point for Fichte's Wissenschaftslehre"
+      students_or_influences: "His student Schulze's skeptical critique prompted Fichte's response; Maimon also responded to his system"
+      notes: >
+        Reinhold was the crucial transmitter between Kant and the next generation. His Letters on
+        the Kantian Philosophy (1786–87) made the first Critique comprehensible and triggered
+        enormous public interest. His attempt to found the critical philosophy on a single first
+        principle of consciousness was criticized by the skeptic Schulze (Aenesidemus, 1792), whose
+        critique in turn prompted Fichte's more radical response in the Wissenschaftslehre (1794).
+      source_url: "https://plato.stanford.edu/entries/reinhold/"
+      wikidata: "Q76818"
+
+    Feuerbach:
+      dates: "1804–1872 (Ludwig Andreas von Feuerbach)"
+      school: "Young Hegelianism, materialism, anthropological philosophy of religion"
+      key_works:
+        - "The Essence of Christianity (Das Wesen des Christentums, 1841)"
+        - "Principles of the Philosophy of the Future (Grundsätze der Philosophie der Zukunft, 1843)"
+        - "Lectures on the Essence of Religion (1851)"
+      key_doctrines:
+        - "Projection theory of religion — 'God' is a projection of humanity's own highest qualities (reason, love, will); religion alienates humans from their own nature by externalizing it into a transcendent being"
+        - "'Man made God in his own image' — the inversion of traditional theology"
+        - "Sensuous materialism — philosophy must return from abstract thought to the sensuous human being; the basis of knowledge is sensory experience and intersubjective love"
+        - "'Der Mensch ist was er ißt' ('Man is what he eats') — pithy formulation of his materialism (though possibly coined by a critic)"
+        - "Critique of Hegel — Hegel's Geist is a theologized abstraction; the real subject is the concrete human being"
+      students_or_influences: "Student of Hegel; direct influence on the young Marx (Economic and Philosophical Manuscripts, 1844); Engels described reading Feuerbach as a 'liberating' experience"
+      notes: >
+        The Essence of Christianity (1841) was the most influential book in Germany in the decade
+        before the 1848 revolutions. George Eliot (Mary Ann Evans) translated it into English (1854).
+        Marx wrote his Theses on Feuerbach (1845) as a critique: Feuerbach correctly showed that
+        religion is a human product, but he didn't ask why humans produce such alienated self-images —
+        the answer requires analyzing material-social conditions, not just sensuous nature. Engels
+        summarized this: Feuerbach completed the theoretical criticism of religion; Marx showed the
+        practical conditions that generate it.
+      source_url: "https://plato.stanford.edu/entries/feuerbach/"
+      wikidata: "Q57238"

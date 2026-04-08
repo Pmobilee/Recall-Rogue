@@ -1,0 +1,1572 @@
+{
+  "subDeckId": "medieval_scholastic",
+  "chainThemeId": 2,
+  "facts": [
+    {
+      "id": "philosophy_ms_augustine_divine_illumination",
+      "correctAnswer": "Divine illumination",
+      "acceptableAlternatives": [
+        "divine illumination theory",
+        "illumination theory"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 6,
+      "distractors": [
+        "Platonic recollection",
+        "abstract reason",
+        "empirical abstraction",
+        "sensory intuition",
+        "dialectical inference",
+        "apophatic ascent"
+      ],
+      "quizQuestion": "What epistemological doctrine, developed in De Magistro, holds that Christ is the 'inner teacher' who enables the human mind to grasp certain truths?",
+      "explanation": "Augustine argued that genuine knowledge of eternal truths requires divine illumination — the soul cannot attain certainty through sense experience or unaided reason alone, but only through the inner presence of Christ. It is his Christian adaptation of Platonic recollection, grounding knowledge in God rather than pre-natal experience.",
+      "wowFactor": "For Augustine, every time you grasp a certain truth, you're secretly consulting Jesus — who lives in your mind as an inner teacher.",
+      "statement": "Augustine held that the human mind gains certain knowledge through divine illumination, with Christ as the inner teacher.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/augustine/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "augustine",
+        "epistemology",
+        "christian_neoplatonism",
+        "illumination"
+      ]
+    },
+    {
+      "id": "philosophy_ms_augustine_city_of_god",
+      "correctAnswer": "City of God",
+      "acceptableAlternatives": [
+        "De Civitate Dei",
+        "The City of God"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "Confessions",
+        "De Trinitate",
+        "De Magistro",
+        "On Free Will",
+        "Monologion",
+        "Summa Theologica"
+      ],
+      "quizQuestion": "Which work by Augustine, written 413–426 CE, argued that the sack of Rome was not Christianity's fault by contrasting the heavenly community with the earthly political order?",
+      "explanation": "The City of God was Augustine's massive response to pagan accusations that Christianity weakened Rome and caused the sack of 410 CE. It contrasts two communities: the City of God (those who love God, destined for eternal peace) and the Earthly City (those who love self and worldly power). It became one of the most influential texts in Western political theology.",
+      "wowFactor": "Augustine spent 13 years writing a book to answer one question: 'Did Christianity cause the fall of Rome?' His answer was 392 chapters long.",
+      "statement": "Augustine wrote the City of God (413–426 CE) to defend Christianity against the charge that it caused Rome's sack in 410 CE.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/augustine/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "augustine",
+        "political_philosophy",
+        "christian_neoplatonism",
+        "rome"
+      ]
+    },
+    {
+      "id": "philosophy_ms_augustine_confessions",
+      "correctAnswer": "Confessions",
+      "acceptableAlternatives": [],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 1,
+      "funScore": 8,
+      "distractors": [
+        "City of God",
+        "De Trinitate",
+        "De Magistro",
+        "On Free Will",
+        "Periphyseon",
+        "Itinerarium Mentis in Deum"
+      ],
+      "quizQuestion": "Which autobiographical work by Augustine (c. 397–400 CE), addressed directly to God, recounts his years of spiritual wandering and conversion?",
+      "explanation": "The Confessions traces Augustine's life from his childhood in Roman Africa through his Manichaean period, his academic career in Carthage and Rome, his conversion in Milan (387 CE) after hearing Ambrose preach, and his baptism. The work ends with philosophical reflections on time and God's eternity. It is widely regarded as the first autobiography in Western literature.",
+      "wowFactor": "Augustine literally prays the entire book — the Confessions is addressed to God, not to readers. He wrote a 13-book diary for an audience of one.",
+      "statement": "Augustine's Confessions (c. 397 CE) is the first great autobiography in Western literature, addressed directly to God.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/augustine/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "augustine",
+        "autobiography",
+        "conversion",
+        "christian_neoplatonism"
+      ]
+    },
+    {
+      "id": "philosophy_ms_boethius_consolation",
+      "correctAnswer": "Consolation of Philosophy",
+      "acceptableAlternatives": [
+        "De consolatione philosophiae",
+        "The Consolation of Philosophy"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 2,
+      "funScore": 9,
+      "distractors": [
+        "City of God",
+        "Confessions",
+        "Proslogion",
+        "Sic et Non",
+        "Periphyseon",
+        "Monologion"
+      ],
+      "quizQuestion": "Which philosophical work did Boethius write in prison while awaiting execution, featuring an imagined dialogue with the personified Lady Philosophy?",
+      "explanation": "Written c. 524 CE while awaiting execution under Theoderic the Ostrogoth, the Consolation is a prosimetrum — alternating prose and verse — in which Lady Philosophy appears to Boethius and explains why Fortune's gifts (wealth, fame, power) are not true goods. The work addresses divine foreknowledge and free will. It became one of the most widely read books of the Middle Ages.",
+      "wowFactor": "Boethius wrote one of the most influential philosophy books in history on death row. He was executed shortly after finishing it.",
+      "statement": "Boethius wrote the Consolation of Philosophy in prison while awaiting execution, producing one of the Middle Ages' most widely read texts.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/boethius/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "boethius",
+        "fortune",
+        "free_will",
+        "late_antiquity"
+      ]
+    },
+    {
+      "id": "philosophy_ms_boethius_universals",
+      "correctAnswer": "Boethius",
+      "acceptableAlternatives": [],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "medieval_philosopher_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "distractors": [
+        "Abelard",
+        "Anselm",
+        "Eriugena",
+        "Ockham",
+        "Roscelin",
+        "Duns Scotus"
+      ],
+      "quizQuestion": "Which late Roman philosopher, in his commentary on Porphyry's Isagoge, bequeathed the problem of universals to medieval philosophy by asking whether genera and species exist in reality or only in the mind?",
+      "explanation": "In his commentary on Porphyry's Isagoge, Boethius posed the question of whether universals (genera and species like 'humanity' or 'animality') are real things or only mental concepts. He did not resolve the question but laid out its terms, and this formulation set the agenda for the universals debate that occupied medieval philosophers for centuries.",
+      "wowFactor": "One unresolved question in a footnote commentary launched 800 years of philosophical argument. Boethius asked 'are categories real?' and the Middle Ages couldn't stop arguing.",
+      "statement": "Boethius's commentary on Porphyry's Isagoge bequeathed the problem of universals to medieval philosophy.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/boethius/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "boethius",
+        "universals",
+        "logic",
+        "transmission"
+      ]
+    },
+    {
+      "id": "philosophy_ms_anselm_ontological_argument",
+      "correctAnswer": "Ontological Argument",
+      "acceptableAlternatives": [
+        "the ontological argument",
+        "ontological proof"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "distractors": [
+        "Cosmological Argument",
+        "Teleological Argument",
+        "Five Ways",
+        "Kalam Argument",
+        "Design Argument",
+        "Transcendental Argument"
+      ],
+      "quizQuestion": "Which famous argument, presented in the Proslogion (1077–78), claims that God — defined as 'that than which nothing greater can be conceived' — must exist in reality and not merely in the mind?",
+      "explanation": "Anselm argued that if God existed only in the mind, we could conceive of a greater being — one that also exists in reality — contradicting the definition. Therefore God must exist in reality. Gaunilo of Marmoutiers immediately challenged it with the 'perfect island' objection. Descartes, Leibniz, and Kant all later engaged with this argument.",
+      "wowFactor": "Anselm tried to prove God exists using pure logic — no evidence required, just the definition of 'God.' Kant later called this move illegal, and philosophers are still arguing about it today.",
+      "statement": "Anselm's Ontological Argument (Proslogion, 1077–78) claims that God, as the greatest conceivable being, must exist in reality.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/anselm/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "anselm",
+        "god",
+        "ontological_argument",
+        "scholasticism"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who formulated the Ontological Argument for God's existence in the Proslogion (1077–78)?",
+          "correctAnswer": "Anselm",
+          "distractors": [
+            "Aquinas",
+            "Bonaventure",
+            "Ockham",
+            "Abelard",
+            "Boethius",
+            "Augustine"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philosophy_ms_anselm_fides_quaerens",
+      "correctAnswer": "fides quaerens intellectum",
+      "acceptableAlternatives": [
+        "faith seeking understanding",
+        "fides quaerens intellectum (faith seeking understanding)"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 6,
+      "distractors": [
+        "credo ut intelligam",
+        "sola ratio",
+        "docta ignorantia",
+        "via negativa",
+        "intellectus quaerens fidem",
+        "ratio et fides"
+      ],
+      "quizQuestion": "What Latin phrase, closely associated with Anselm of Canterbury, expresses the scholastic principle that faith is the precondition for philosophical inquiry rather than something reason should replace?",
+      "explanation": "Anselm's motto 'faith seeking understanding' (fides quaerens intellectum) — also expressed as 'I believe so that I may understand' (credo ut intelligam) — held that the believer's faith does not require proof but naturally seeks rational comprehension. This became the charter for scholastic theology: reason serves faith, not the reverse.",
+      "wowFactor": "Anselm's philosophical method was: believe first, understand later. Faith wasn't the finish line — it was the starting block.",
+      "statement": "Anselm's motto 'fides quaerens intellectum' (faith seeking understanding) established the scholastic relationship between faith and reason.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/anselm/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "anselm",
+        "scholasticism",
+        "faith_reason",
+        "latin"
+      ]
+    },
+    {
+      "id": "philosophy_ms_abelard_sic_et_non",
+      "correctAnswer": "Sic et Non",
+      "acceptableAlternatives": [
+        "Yes and No",
+        "Sic et Non (Yes and No)"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "Proslogion",
+        "Summa Theologica",
+        "Cur Deus Homo",
+        "Ordinatio",
+        "Historia Calamitatum",
+        "Periphyseon"
+      ],
+      "quizQuestion": "Which work by Peter Abelard (c. 1120) juxtaposed 158 contradictory theological statements from Church authorities without resolving them, establishing a model for scholastic argumentation?",
+      "explanation": "Sic et Non ('Yes and No') collated contradictory passages from scripture and Church fathers on 158 theological questions, leaving them unresolved. The preface argued that apparent contradictions require careful linguistic and historical analysis. This method — presenting opposing authorities, then resolving — directly influenced the Summa tradition of Aquinas and Peter Lombard's Sentences.",
+      "wowFactor": "Abelard's most influential book was 158 unanswered questions. He deliberately left them open to force students to think — philosophy as controlled confusion.",
+      "statement": "Abelard's Sic et Non (c. 1120) juxtaposed contradictory theological authorities to establish the scholastic method of dialectical inquiry.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/abelard/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "abelard",
+        "scholasticism",
+        "method",
+        "dialectic"
+      ]
+    },
+    {
+      "id": "philosophy_ms_abelard_conceptualism",
+      "correctAnswer": "Conceptualism",
+      "acceptableAlternatives": [
+        "conceptualism (universals)"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "school_names",
+      "difficulty": 4,
+      "funScore": 5,
+      "distractors": [
+        "Realism",
+        "Nominalism",
+        "Platonism",
+        "Thomism",
+        "Scotism",
+        "Empiricism"
+      ],
+      "quizQuestion": "What position on universals did Peter Abelard defend — holding that universal terms are neither real things nor mere mouth noises but common concepts that genuinely apply to many individuals?",
+      "explanation": "Abelard rejected the extreme realism of his teacher William of Champeaux (who held universals are real things shared by individuals) and the extreme nominalism of Roscelin (who called universals mere vocal sounds). His conceptualism held that universal terms have real cognitive content — a 'sermon' (sermo) that applies to many — without requiring universals to exist as things in the world.",
+      "wowFactor": "Abelard steered between 'universals are real things' and 'universals are just noise' — his position was that they're real concepts in the mind, which sounds obvious but took centuries to figure out.",
+      "statement": "Abelard's conceptualism held that universals are genuine mental concepts, neither real things in the world nor mere empty words.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/abelard/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "abelard",
+        "universals",
+        "conceptualism",
+        "scholasticism"
+      ]
+    },
+    {
+      "id": "philosophy_ms_aquinas_five_ways",
+      "correctAnswer": "{5}",
+      "acceptableAlternatives": [
+        "5",
+        "five",
+        "Five Ways",
+        "Quinque Viae"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "bracket_numbers",
+      "difficulty": 1,
+      "funScore": 7,
+      "distractors": [
+        "{3}",
+        "{4}",
+        "{6}",
+        "{7}",
+        "{2}",
+        "{9}"
+      ],
+      "quizQuestion": "In Summa Theologiae I.2.3, Aquinas presents how many arguments for the existence of God, including the Unmoved Mover and the Argument from Design?",
+      "explanation": "The Five Ways (Quinque Viae) are Aquinas's five cosmological and teleological arguments: (1) the Unmoved Mover, (2) the First Cause, (3) the Necessary Being, (4) Gradation of Being, and (5) the Argument from Design (teleological). Each argues from observable features of the world to God as their ultimate explanation. They draw heavily on Aristotle's physics and metaphysics.",
+      "wowFactor": "Aquinas gave five different arguments for God's existence in a single article — each using a different feature of the universe as its starting point.",
+      "statement": "Aquinas's Five Ways are five arguments for God's existence presented in the Summa Theologiae.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/aquinas/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "aquinas",
+        "god",
+        "cosmological_argument",
+        "scholasticism"
+      ]
+    },
+    {
+      "id": "philosophy_ms_aquinas_summa_theologica",
+      "correctAnswer": "Summa Theologica",
+      "acceptableAlternatives": [
+        "Summa Theologiae",
+        "Summa Theologica / Summa Theologiae"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 1,
+      "funScore": 6,
+      "distractors": [
+        "Summa contra Gentiles",
+        "Confessions",
+        "City of God",
+        "Guide for the Perplexed",
+        "Canon of Medicine",
+        "Proslogion"
+      ],
+      "quizQuestion": "Which unfinished masterwork (c. 1265–74) by Thomas Aquinas systematically synthesizes Christian theology with Aristotelian philosophy, organized in three parts as a teaching manual for theology students?",
+      "explanation": "The Summa Theologiae is Aquinas's magnum opus — a comprehensive synthesis of Christian doctrine organized as questions, objections, replies, and answers. He stopped writing in December 1273, reportedly saying 'All that I have written seems like straw compared to what has now been revealed to me.' It remains the foundational text of Catholic theology.",
+      "wowFactor": "Aquinas stopped writing the most influential theology book ever written mid-sentence, said everything he wrote was 'straw,' and never wrote again. He died three months later.",
+      "statement": "Thomas Aquinas's Summa Theologica (c. 1265–74) is the central text of Catholic scholastic theology, left unfinished at his death.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/aquinas/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "aquinas",
+        "scholasticism",
+        "theology",
+        "catholicism"
+      ]
+    },
+    {
+      "id": "philosophy_ms_aquinas_natural_law",
+      "correctAnswer": "Natural law",
+      "acceptableAlternatives": [
+        "natural law theory",
+        "lex naturalis"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 2,
+      "funScore": 6,
+      "distractors": [
+        "divine command theory",
+        "positive law",
+        "eternal law",
+        "human law",
+        "moral relativism",
+        "voluntarism"
+      ],
+      "quizQuestion": "What ethical and legal doctrine, central to Aquinas's moral philosophy, holds that moral norms are accessible through reason alone as a participation in God's eternal law?",
+      "explanation": "Aquinas distinguished eternal law (God's rational governance of creation), natural law (human reason's participation in eternal law), human law (civil law derived from natural law), and divine law (Scripture). Natural law is universal and accessible to all rational beings regardless of revelation, providing the Thomistic foundation for cross-cultural ethics and political philosophy.",
+      "wowFactor": "Aquinas invented the idea that everyone — including atheists — can know basic ethics through reason, because morality is built into human nature. He called it natural law.",
+      "statement": "Aquinas's natural law theory holds that moral norms are accessible through reason as a participation in God's eternal law.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/aquinas/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "aquinas",
+        "ethics",
+        "natural_law",
+        "thomism"
+      ]
+    },
+    {
+      "id": "philosophy_ms_scotus_haecceity",
+      "correctAnswer": "haecceity",
+      "acceptableAlternatives": [
+        "haecceitas",
+        "thisness",
+        "haecceity (thisness)"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 5,
+      "funScore": 7,
+      "distractors": [
+        "quiddity",
+        "univocity",
+        "formal distinction",
+        "individuation by matter",
+        "accidental form",
+        "primary substance"
+      ],
+      "quizQuestion": "What term did Duns Scotus coin for the positive formal reality — distinct from matter, essence, or accidental properties — that makes each individual uniquely itself?",
+      "explanation": "Against Aquinas, who held that matter individuates (Socrates is Socrates because he has this particular matter), Scotus argued for haecceity ('thisness') — a positive formal feature unique to each individual that cannot be reduced to matter or universal essence. This became the basis of Scotist metaphysics and was later rejected by Ockham. Contemporary metaphysicians revisit the concept when discussing primitive thisness.",
+      "wowFactor": "Scotus invented a new philosophical concept to explain why you are you and not someone else — your 'thisness' (haecceity), a formal reality beyond all your properties. Philosophers still argue about it today.",
+      "statement": "Duns Scotus's doctrine of haecceity ('thisness') holds that each individual has a unique positive formal reality that makes it the individual it is.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/duns-scotus/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "duns_scotus",
+        "metaphysics",
+        "individuation",
+        "scotism"
+      ]
+    },
+    {
+      "id": "philosophy_ms_ockham_razor",
+      "correctAnswer": "Ockham's Razor",
+      "acceptableAlternatives": [
+        "Occam's Razor",
+        "parsimony principle",
+        "the principle of parsimony"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 1,
+      "funScore": 9,
+      "distractors": [
+        "Hume's Fork",
+        "Anselm's Proof",
+        "Gaunilo's Island",
+        "Five Ways",
+        "Floating Man",
+        "Formal Distinction"
+      ],
+      "quizQuestion": "What methodological principle, associated with William of Ockham, states that 'entities should not be multiplied beyond necessity' — preferring the most economical explanation?",
+      "explanation": "Ockham used the parsimony principle throughout his philosophy to eliminate unnecessary posits — especially Platonic universals, which he replaced with individual things and mental concepts. The exact wording 'entities must not be multiplied beyond necessity' does not appear verbatim in his surviving works; it is a later distillation of his consistent practice. It is now the most widely cited principle in science and philosophy.",
+      "wowFactor": "The most famous tool in all of science — Ockham's Razor — was invented by a medieval friar who used it to prove that universal concepts don't really exist.",
+      "statement": "Ockham's Razor states that entities should not be multiplied beyond necessity — the simplest explanation is preferred.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ockham/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "ockham",
+        "nominalism",
+        "parsimony",
+        "method"
+      ]
+    },
+    {
+      "id": "philosophy_ms_ockham_nominalism",
+      "correctAnswer": "Nominalism",
+      "acceptableAlternatives": [
+        "nominalism (universals)",
+        "William of Ockham's nominalism"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "school_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "distractors": [
+        "Realism",
+        "Conceptualism",
+        "Thomism",
+        "Scotism",
+        "Illuminationism",
+        "Platonism"
+      ],
+      "quizQuestion": "What position on universals did William of Ockham defend, holding that only individuals exist and that universal terms are merely mental concepts or spoken words standing for many things?",
+      "explanation": "Ockham's nominalism denied that universals (like 'humanity' or 'redness') are real entities in the world. Only individual things exist; universals are names or concepts the mind uses to group similar individuals. Paired with Ockham's Razor, this eliminated most of Scholastic metaphysics. His position is called nominalism or the via moderna ('modern way'), contrasting with the via antiqua of Aquinas and Scotus.",
+      "wowFactor": "Ockham argued that abstract concepts like 'humanity' or 'justice' don't exist anywhere — not in heaven, not in things, not in matter. Only individual people and acts are real.",
+      "statement": "Ockham's nominalism holds that universals are merely names or concepts, with only individual things having real existence.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ockham/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "ockham",
+        "universals",
+        "nominalism",
+        "late_scholasticism"
+      ]
+    },
+    {
+      "id": "philosophy_ms_eckhart_gottesgeburt",
+      "correctAnswer": "Gottesgeburt",
+      "acceptableAlternatives": [
+        "birth of God in the soul",
+        "Gottesgeburt (birth of God in the soul)"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 5,
+      "funScore": 8,
+      "distractors": [
+        "Abgeschiedenheit",
+        "coincidentia oppositorum",
+        "docta ignorantia",
+        "wahdat al-wujud",
+        "divine illumination",
+        "apophatic ascent"
+      ],
+      "quizQuestion": "What is the German term for the central motif of Meister Eckhart's sermons — the idea that God perpetually gives birth to the Son (Logos) in the deepest ground of the soul?",
+      "explanation": "Eckhart taught that the soul is not merely created by God but that God continuously births the divine Word (Logos) in the soul's innermost ground (Seelengrund). This is not a past event but an ongoing present reality. Twenty-eight propositions from his works were posthumously condemned as heretical by Pope John XXII in 1329, though Eckhart himself denied heterodoxy.",
+      "wowFactor": "Eckhart preached that God is literally being born inside you right now, continuously, in the depths of your soul — a claim so radical that it was condemned as heresy after his death.",
+      "statement": "Meister Eckhart's Gottesgeburt doctrine holds that God continuously births the divine Word in the ground of the human soul.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/meister-eckhart/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "eckhart",
+        "mysticism",
+        "rhineland_mysticism",
+        "soul"
+      ]
+    },
+    {
+      "id": "philosophy_ms_cusa_docta_ignorantia",
+      "correctAnswer": "docta ignorantia",
+      "acceptableAlternatives": [
+        "learned ignorance",
+        "docta ignorantia (learned ignorance)",
+        "De docta ignorantia"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 4,
+      "funScore": 7,
+      "distractors": [
+        "coincidentia oppositorum",
+        "apophatic theology",
+        "divine illumination",
+        "fides quaerens intellectum",
+        "Abgeschiedenheit",
+        "negative theology"
+      ],
+      "quizQuestion": "What concept did Nicholas of Cusa articulate in De docta ignorantia (1440), arguing that the highest wisdom consists in recognizing the limits of human knowledge before God's infinity?",
+      "explanation": "Cusa's 'learned ignorance' holds that because God is infinite and the human intellect is finite, our concepts can never truly grasp God — we know God best by knowing what God is not. The work also introduced the coincidence of opposites (coincidentia oppositorum): in God, apparent contradictions (maximum/minimum, rest/motion) are resolved. It bridges medieval mystical theology and Renaissance thought.",
+      "wowFactor": "Nicholas of Cusa's greatest insight was that knowing you can't know God is itself a form of wisdom — and he wrote a 400-page book to explain the depths of not knowing.",
+      "statement": "Nicholas of Cusa's 'docta ignorantia' (learned ignorance) holds that the highest wisdom is recognizing the limits of human knowledge before God's infinity.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/cusanus/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "nicholas_of_cusa",
+        "apophatic_theology",
+        "renaissance",
+        "mysticism"
+      ]
+    },
+    {
+      "id": "philosophy_ms_alkindi_first_philosopher",
+      "correctAnswer": "al-Kindi",
+      "acceptableAlternatives": [
+        "Al-Kindi",
+        "Abu Yaqub al-Kindi"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "medieval_philosopher_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "al-Farabi",
+        "Avicenna",
+        "Averroes",
+        "al-Ghazali",
+        "Ibn Bajja",
+        "Suhrawardi"
+      ],
+      "quizQuestion": "Which 9th-century Baghdad philosopher, known as 'the Philosopher of the Arabs,' wrote On First Philosophy and inaugurated the systematic translation and synthesis of Greek philosophy into Arabic?",
+      "explanation": "Al-Kindi (c. 801–873 CE), working at the Abbasid court, oversaw a circle that translated Aristotle, Porphyry, and Neoplatonic texts — including the falsely attributed 'Theology of Aristotle' (actually excerpts from Plotinus). His On First Philosophy was the first major philosophical work written in Arabic. He argued philosophy and revelation are compatible and that the world is not eternal.",
+      "wowFactor": "Al-Kindi was so prolific that medieval bibliographers listed hundreds of his works — on philosophy, mathematics, medicine, music, cryptography, and even how to decode secret messages.",
+      "statement": "Al-Kindi, 'the Philosopher of the Arabs,' inaugurated Arabic philosophy in 9th-century Baghdad by synthesizing Greek thought with Islamic theology.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/al-kindi/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "al_kindi",
+        "islamic_philosophy",
+        "falsafa",
+        "transmission"
+      ]
+    },
+    {
+      "id": "philosophy_ms_alfarabi_second_teacher",
+      "correctAnswer": "al-Farabi",
+      "acceptableAlternatives": [
+        "Al-Farabi",
+        "Abu Nasr al-Farabi"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "medieval_philosopher_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "distractors": [
+        "al-Kindi",
+        "Avicenna",
+        "Averroes",
+        "al-Ghazali",
+        "Ibn Arabi",
+        "Suhrawardi"
+      ],
+      "quizQuestion": "Which Islamic philosopher (c. 870–950 CE), called 'the Second Teacher' after Aristotle, wrote the Virtuous City and developed the theory of intellect that decisively shaped Avicenna?",
+      "explanation": "Al-Farabi modeled his ideal political community on Plato's Republic, requiring a philosopher-prophet as ruler. His theory of intellect — distinguishing Active, Potential, and Actual Intellect — was foundational for Avicenna's psychology. His work on the harmony between Plato and Aristotle set the agenda for Islamic philosophy for centuries. Ibn Rushd (Averroes) cited al-Farabi's recommendation as the inspiration for his Aristotelian commentaries.",
+      "wowFactor": "Al-Farabi argued the ideal ruler must be both a philosopher AND a prophet — combining the wisdom of Plato's philosopher-king with the divine connection of a prophet.",
+      "statement": "Al-Farabi, 'the Second Teacher,' developed the Virtuous City ideal and the theory of intellect that decisively shaped Avicenna.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/al-farabi/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "al_farabi",
+        "islamic_philosophy",
+        "political_philosophy",
+        "intellect"
+      ]
+    },
+    {
+      "id": "philosophy_ms_avicenna_floating_man",
+      "correctAnswer": "Floating Man",
+      "acceptableAlternatives": [
+        "Flying Man",
+        "Floating Man argument",
+        "Flying Man argument"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "argument_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "distractors": [
+        "Cogito ergo sum",
+        "Ontological Argument",
+        "Veil of Ignorance",
+        "Brain in a Vat",
+        "Chinese Room",
+        "Five Ways"
+      ],
+      "quizQuestion": "What thought experiment by Avicenna imagines a person created in mid-air with no sensory contact with their body, who would still be aware of their own existence — demonstrating the soul's independence from the body?",
+      "explanation": "Avicenna's thought experiment asks: imagine someone created in mid-air, blindfolded, without sensing their own body — would they be aware of their existence? Yes, says Avicenna — demonstrating that self-awareness and the soul are primary, independent of bodily sensation. This anticipates Descartes' Cogito by 600 years and was influential on both Latin scholastics and Islamic thinkers.",
+      "wowFactor": "Avicenna invented the 'I think therefore I am' argument 600 years before Descartes — except he imagined the thinker floating in the air with no body at all.",
+      "statement": "Avicenna's Floating Man thought experiment demonstrates that self-awareness is independent of the body, anticipating Descartes' Cogito by six centuries.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ibn-sina/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "avicenna",
+        "soul",
+        "self_awareness",
+        "thought_experiment"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who developed the Floating Man thought experiment to prove the soul's independence from the body?",
+          "correctAnswer": "Avicenna",
+          "distractors": [
+            "Descartes",
+            "al-Ghazali",
+            "Averroes",
+            "Aquinas",
+            "al-Farabi",
+            "Maimonides"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philosophy_ms_avicenna_canon_medicine",
+      "correctAnswer": "Canon of Medicine",
+      "acceptableAlternatives": [
+        "Al-Qanun fi al-Tibb",
+        "The Canon of Medicine",
+        "Qanun"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 2,
+      "funScore": 8,
+      "distractors": [
+        "Book of Healing",
+        "Book of Salvation",
+        "Comprehensive Book",
+        "Guide for the Perplexed",
+        "Tahafut al-Falasifa",
+        "Incoherence of the Incoherence"
+      ],
+      "quizQuestion": "Which medical encyclopedia by Avicenna (c. 1025) became the standard medical textbook at European universities from the 12th century until the 17th century?",
+      "explanation": "The Canon of Medicine (Al-Qanun fi al-Tibb) is Avicenna's systematic synthesis of Greek (especially Galenic), Islamic, and his own clinical medical knowledge across five volumes. It covered general principles, simple drugs, organ-by-organ diseases, general diseases, and compound drugs. Translated into Latin in the 12th century, it dominated European medical education for five centuries.",
+      "wowFactor": "A medieval Islamic philosopher's medicine textbook was taught in European universities for 500 years — Avicenna's Canon was the Harvard Medical School curriculum of the Middle Ages.",
+      "statement": "Avicenna's Canon of Medicine (c. 1025) was the standard medical textbook in European universities from the 12th to 17th centuries.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ibn-sina/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "avicenna",
+        "medicine",
+        "transmission",
+        "science"
+      ]
+    },
+    {
+      "id": "philosophy_ms_avicenna_essence_existence",
+      "correctAnswer": "Avicenna",
+      "acceptableAlternatives": [
+        "Ibn Sina"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "medieval_philosopher_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "distractors": [
+        "al-Farabi",
+        "al-Kindi",
+        "Averroes",
+        "al-Ghazali",
+        "Aquinas",
+        "Maimonides"
+      ],
+      "quizQuestion": "Which Islamic philosopher first articulated the essence-existence distinction — arguing that in all contingent beings, what-a-thing-is differs from that-it-is, while in God alone they are identical — a distinction Aquinas later adopted?",
+      "explanation": "Avicenna argued that in every contingent being, essence (mahiyya — what something is) and existence (wujud — that something exists) are distinct. A horse's essence does not include existence; the horse might or might not exist. Only in God (the Necessary Existent) are essence and existence identical. Aquinas adopted and Christianized this distinction in his own metaphysics.",
+      "wowFactor": "The most fundamental metaphysical distinction in Catholic philosophy — between what something is and that it exists — was invented by a Muslim physician in Persia, not a Christian theologian.",
+      "statement": "Avicenna's essence-existence distinction — adopted by Aquinas — holds that only in God are what-a-thing-is and that-it-exists identical.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ibn-sina/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "avicenna",
+        "metaphysics",
+        "essence_existence",
+        "aquinas"
+      ]
+    },
+    {
+      "id": "philosophy_ms_alghazali_tahafut",
+      "correctAnswer": "Tahafut al-Falasifa",
+      "acceptableAlternatives": [
+        "Incoherence of the Philosophers",
+        "Tahafut al-Falasifa (Incoherence of the Philosophers)"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 3,
+      "funScore": 8,
+      "distractors": [
+        "Tahafut al-Tahafut",
+        "Guide for the Perplexed",
+        "Canon of Medicine",
+        "Book of Healing",
+        "Ihya Ulum al-Din",
+        "Deliverance from Error"
+      ],
+      "quizQuestion": "Which 1095 work by al-Ghazali attacked Islamic Aristotelian philosophy (falsafa) on 20 points, including the eternity of the world and God's knowledge of particulars?",
+      "explanation": "The Tahafut al-Falasifa ('Incoherence of the Philosophers') identified 17 heretical and 3 kafir (infidel) positions in the philosophy of Avicenna and al-Farabi. Al-Ghazali's three most devastating charges were: (1) the philosophers wrongly held the world is eternal; (2) God knows only universals, not particular events; (3) they denied bodily resurrection. Ibn Rushd replied directly with the Tahafut al-Tahafut.",
+      "wowFactor": "Al-Ghazali wrote a book calling three of the most respected philosophers of his age heretics — and it sparked a philosophical controversy that lasted centuries across three continents.",
+      "statement": "Al-Ghazali's Tahafut al-Falasifa (1095) attacked Aristotelian philosophy for heresy on 20 counts, provoking Averroes's direct rebuttal.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/al-ghazali/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "al_ghazali",
+        "falsafa",
+        "critique",
+        "islamic_philosophy"
+      ]
+    },
+    {
+      "id": "philosophy_ms_alghazali_occasionalism",
+      "correctAnswer": "Occasionalism",
+      "acceptableAlternatives": [
+        "occasionalism (al-Ghazali)",
+        "Islamic occasionalism"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "school_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "distractors": [
+        "Determinism",
+        "Secondary causality",
+        "Emanationism",
+        "Necessitarianism",
+        "Voluntarism",
+        "Compatibilism"
+      ],
+      "quizQuestion": "What doctrine did al-Ghazali use to attack Aristotelian natural causation, arguing that God is the only true cause and that fire does not burn cotton by its own nature but only by God's habitual action?",
+      "explanation": "Al-Ghazali's occasionalism held that God is the only genuine causal agent — what appears to be natural causation (fire burning cotton) is actually God's habitual action on each occasion. There is no necessary connection between cause and effect; God could, on any occasion, allow fire to not burn. This Ash'arite position was later paralleled by Hume's denial of necessary causal connections.",
+      "wowFactor": "Al-Ghazali argued that fire doesn't actually burn anything — God just happens to create burning whenever fire and cotton touch. Remarkably, Hume reached a similar conclusion 650 years later through pure empiricism.",
+      "statement": "Al-Ghazali's occasionalism holds that God is the only true cause — natural causal connections are God's habitual action, not necessary laws of nature.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/al-ghazali/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "al_ghazali",
+        "causation",
+        "occasionalism",
+        "asharite"
+      ]
+    },
+    {
+      "id": "philosophy_ms_averroes_tahafut_tahafut",
+      "correctAnswer": "Tahafut al-Tahafut",
+      "acceptableAlternatives": [
+        "Incoherence of the Incoherence",
+        "Tahafut al-Tahafut (Incoherence of the Incoherence)"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 3,
+      "funScore": 8,
+      "distractors": [
+        "Tahafut al-Falasifa",
+        "Guide for the Perplexed",
+        "Decisive Treatise",
+        "Book of Healing",
+        "City of God",
+        "Summa contra Gentiles"
+      ],
+      "quizQuestion": "Which work by Ibn Rushd (Averroes) directly refuted al-Ghazali's attack on philosophy by defending the compatibility of Aristotelian philosophy and Islamic law?",
+      "explanation": "The Tahafut al-Tahafut ('Incoherence of the Incoherence') quotes al-Ghazali's Tahafut al-Falasifa paragraph by paragraph and responds to each charge. Averroes defended philosophy's autonomy and the coherence of Aristotelian natural science. In the Fasl al-Maqal ('Decisive Treatise'), he argued that philosophy is not merely permitted but obligatory for qualified Muslims.",
+      "wowFactor": "Averroes titled his rebuttal 'The Incoherence of the Incoherence' — essentially calling al-Ghazali's 'Incoherence of the Philosophers' itself incoherent. Medieval philosophy had strong genre conventions for philosophical trash talk.",
+      "statement": "Averroes's Tahafut al-Tahafut refuted al-Ghazali point by point, defending Aristotelian philosophy as compatible with Islamic law.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ibn-rushd/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "averroes",
+        "islamic_philosophy",
+        "falsafa",
+        "aristotle"
+      ]
+    },
+    {
+      "id": "philosophy_ms_averroes_commentator",
+      "correctAnswer": "Averroes",
+      "acceptableAlternatives": [
+        "Ibn Rushd",
+        "Ibn Rushd (Averroes)"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "medieval_philosopher_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "al-Farabi",
+        "Avicenna",
+        "al-Kindi",
+        "al-Ghazali",
+        "Ibn Bajja",
+        "Ibn Arabi"
+      ],
+      "quizQuestion": "Which 12th-century Andalusian philosopher, known in Latin Europe simply as 'the Commentator,' wrote short, middle, and long commentaries on nearly the entire Aristotelian corpus?",
+      "explanation": "Ibn Rushd (1126–1198) wrote commentaries on almost every work of Aristotle, earning the title 'the Commentator' in Latin Europe — just as Aristotle was 'the Philosopher.' His commentaries were translated into Latin in the 13th century and became the standard tool for reading Aristotle in European universities. Aquinas wrote extensively against his interpretation of the unitary intellect.",
+      "wowFactor": "Averroes was so famous for explaining Aristotle that medieval Europeans just called him 'the Commentator' — no name needed. Dante put him in the noble pagan limbo of Inferno.",
+      "statement": "Averroes (Ibn Rushd), known in Latin Europe as 'the Commentator,' wrote comprehensive commentaries on nearly the entire Aristotelian corpus.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ibn-rushd/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "averroes",
+        "aristotle",
+        "transmission",
+        "latin_europe"
+      ]
+    },
+    {
+      "id": "philosophy_ms_averroes_double_truth_caveat",
+      "correctAnswer": "Latin Averroists",
+      "acceptableAlternatives": [
+        "Latin Averroism",
+        "Siger of Brabant and Latin Averroists"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "school_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "distractors": [
+        "Averroes himself",
+        "Islamic Averroism",
+        "Ash'arite theologians",
+        "Thomists",
+        "Scotists",
+        "Nominalists"
+      ],
+      "quizQuestion": "The 'double truth' doctrine — that philosophy and theology can each be true even when contradictory — is correctly attributed to which group, NOT to Averroes himself?",
+      "explanation": "The 'double truth' doctrine was attributed to thinkers like Siger of Brabant (Paris, 13th century) by their opponents. Averroes himself held that philosophy and scripture both point toward one truth, with allegorical interpretation resolving apparent conflicts — as argued in his Decisive Treatise. Modern scholars are clear that attributing 'double truth' directly to Ibn Rushd misreads his actual position.",
+      "wowFactor": "One of the most famous doctrines in medieval philosophy — 'double truth' — was never actually held by the man it's named after. It was a caricature invented by his opponents.",
+      "statement": "The 'double truth' doctrine is correctly attributed to Latin Averroists like Siger of Brabant, not to Averroes himself, who held philosophy and scripture point toward one truth.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ibn-rushd/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "averroes",
+        "double_truth",
+        "latin_averroism",
+        "misattribution"
+      ]
+    },
+    {
+      "id": "philosophy_ms_ibnarabi_wahdat_al_wujud",
+      "correctAnswer": "wahdat al-wujud",
+      "acceptableAlternatives": [
+        "unity of being",
+        "oneness of existence",
+        "wahdat al-wujud (unity of being)"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 4,
+      "funScore": 8,
+      "distractors": [
+        "Gottesgeburt",
+        "fana",
+        "tajalli",
+        "baqa",
+        "Illuminationism",
+        "occasionalism"
+      ],
+      "quizQuestion": "What concept, associated with Ibn Arabi's metaphysics, holds that there is ultimately only one Being — divine Being — and that all apparent multiplicity of creatures is the self-disclosure (tajalli) of this one Being?",
+      "explanation": "Ibn Arabi (1165–1240) developed a metaphysics in which God is the only true Being (al-Haqq, 'the Real') and creation is God's perpetual self-disclosure (tajalli) in ever-new forms. Notably, the term wahdat al-wujud ('unity of being') was not coined by Ibn Arabi himself but by later interpreters. The concept influenced virtually all subsequent Sufi thought and Mulla Sadra's transcendent theosophy.",
+      "wowFactor": "Ibn Arabi argued that every rock, tree, and person is literally God in disguise — creation is God endlessly revealing Himself in new forms, so there is ultimately only one Being.",
+      "statement": "Wahdat al-wujud, associated with Ibn Arabi, holds that only divine Being is ultimately real and creation is its perpetual self-disclosure.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ibn-arabi/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "ibn_arabi",
+        "sufi_metaphysics",
+        "mysticism",
+        "being"
+      ]
+    },
+    {
+      "id": "philosophy_ms_suhrawardi_illuminationism",
+      "correctAnswer": "Illuminationism",
+      "acceptableAlternatives": [
+        "Ishraq",
+        "Ishraqi philosophy",
+        "Hikmat al-Ishraq"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "school_names",
+      "difficulty": 5,
+      "funScore": 8,
+      "distractors": [
+        "Sufism",
+        "Avicennism",
+        "Averroism",
+        "Ash'arite theology",
+        "Transcendent Theosophy",
+        "Neoplatonism"
+      ],
+      "quizQuestion": "What philosophical school did Suhrawardi found in The Philosophy of Illumination (c. 1186), replacing Aristotelian hylomorphism with a metaphysics of light in which God is the 'Light of Lights'?",
+      "explanation": "Suhrawardi (c. 1154–1191) broke from Avicennian Peripateticism to argue that being itself is luminosity — God is the Light of Lights (Nur al-Anwar), and all other beings are graded intensities of light and darkness. He also developed 'knowledge by presence' (ilm huduri): the soul knows itself directly, not through a mental image. He was executed in Aleppo at around age 36.",
+      "wowFactor": "Suhrawardi built an entire metaphysics out of light — God is pure light, matter is darkness, and everything in between is different grades of luminosity. He was executed as a heretic at 36.",
+      "statement": "Suhrawardi founded Illuminationist (Ishraqi) philosophy, replacing hylomorphism with a metaphysics of light in which God is the Light of Lights.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/suhrawardi/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "suhrawardi",
+        "illuminationism",
+        "ishraq",
+        "islamic_philosophy"
+      ]
+    },
+    {
+      "id": "philosophy_ms_saadia_emunot_vedeot",
+      "correctAnswer": "Saadia Gaon",
+      "acceptableAlternatives": [
+        "Saadia Gaon",
+        "Saadia ben Yosef"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "medieval_philosopher_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "distractors": [
+        "Maimonides",
+        "Judah Halevi",
+        "Solomon Ibn Gabirol",
+        "Gersonides",
+        "Hasdai Crescas",
+        "al-Kindi"
+      ],
+      "quizQuestion": "Which 10th-century Jewish philosopher, head of the Sura Academy in Babylonia, wrote the first systematic Jewish philosophical work — Emunot ve-Deot ('Book of Beliefs and Opinions', 933 CE) — reconciling reason and revelation?",
+      "explanation": "Saadia Gaon (892–942 CE) argued in the Emunot ve-Deot that reason and revelation agree, and apparent conflicts require reinterpretation. He identified four sources of knowledge: sensation, reason, logical inference, and reliable tradition. He also defended creation ex nihilo against Aristotle's eternal world. Considered the 'father' of Jewish rationalist philosophy.",
+      "wowFactor": "Saadia Gaon wrote the first systematic Jewish philosophy book in 933 CE — a thousand years before most people think medieval Jewish philosophy began. He essentially invented the field.",
+      "statement": "Saadia Gaon's Emunot ve-Deot (933 CE) is the first systematic Jewish philosophical work, reconciling reason and revelation.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Saadia_Gaon",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "saadia_gaon",
+        "jewish_philosophy",
+        "reason_revelation",
+        "medieval"
+      ]
+    },
+    {
+      "id": "philosophy_ms_ibngabirol_universal_hylomorphism",
+      "correctAnswer": "Universal Hylomorphism",
+      "acceptableAlternatives": [
+        "universal hylomorphism",
+        "universal hylomorphism (Ibn Gabirol)"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 5,
+      "funScore": 6,
+      "distractors": [
+        "Divine illumination",
+        "Emanationism",
+        "Conceptualism",
+        "Occasionalism",
+        "Essence-existence distinction",
+        "Formal distinction"
+      ],
+      "quizQuestion": "What doctrine, developed by Solomon Ibn Gabirol in the Fons Vitae, holds that all created things — including intellect and soul — are composed of matter and form, with 'spiritual matter' in immaterial beings?",
+      "explanation": "Ibn Gabirol (c. 1021–1057) argued in the Fons Vitae that even purely spiritual beings like intellects and souls are composed of matter and form — there is a 'spiritual matter' in non-physical substances. This doctrine was controversial in Latin Scholasticism. Duns Scotus and the Franciscan school adopted it as an alternative to Aquinas's position. Remarkably, Latin Scholastics who read Fons Vitae did not know the author 'Avicebron' was Jewish until 1845.",
+      "wowFactor": "A medieval Jewish philosopher's book was read as a Christian authority for 700 years — nobody knew 'Avicebron' was actually Solomon Ibn Gabirol, a Jewish poet, until a scholar figured it out in 1845.",
+      "statement": "Ibn Gabirol's Universal Hylomorphism holds that all created things, including souls and intellects, are composed of matter and form.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/ibn-gabirol/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "ibn_gabirol",
+        "jewish_philosophy",
+        "metaphysics",
+        "hylomorphism"
+      ]
+    },
+    {
+      "id": "philosophy_ms_judahhalevi_kuzari",
+      "correctAnswer": "Kuzari",
+      "acceptableAlternatives": [
+        "Sefer ha-Kuzari",
+        "The Kuzari",
+        "The Book of the Khazars"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 3,
+      "funScore": 8,
+      "distractors": [
+        "Guide for the Perplexed",
+        "Fons Vitae",
+        "Emunot ve-Deot",
+        "Wars of the Lord",
+        "Or Hashem",
+        "Mishneh Torah"
+      ],
+      "quizQuestion": "Which philosophical dialogue (c. 1130–40) by Judah Halevi features a Khazar king choosing Judaism over philosophy, Christianity, and Islam because Jewish collective historical revelation (Sinai) is more reliable than philosophical argument?",
+      "explanation": "The Kuzari presents a fictional Khazar king consulting a philosopher (quickly dismissed), a Christian, a Muslim, and finally a Jewish sage. The sage argues that direct collective historical experience — the entire Jewish people witnessing the Exodus and Sinai — provides more certain knowledge than philosophical argument alone. Halevi argues the 'God of Aristotle' (abstract Unmoved Mover) is not the God of Abraham.",
+      "wowFactor": "Judah Halevi's philosophical dialogue features the ultimate philosophical takedown: the sage dismisses the philosopher first, in a few lines, then spends the rest of the book explaining why history beats logic.",
+      "statement": "Judah Halevi's Kuzari argues that collective historical revelation (Sinai) provides more certain knowledge of God than philosophical argument.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Judah_Halevi",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "judah_halevi",
+        "jewish_philosophy",
+        "revelation",
+        "anti_rationalism"
+      ]
+    },
+    {
+      "id": "philosophy_ms_maimonides_guide_perplexed",
+      "correctAnswer": "Guide for the Perplexed",
+      "acceptableAlternatives": [
+        "Moreh Nevukhim",
+        "Guide of the Perplexed",
+        "Guide for the Perplexed (Moreh Nevukhim)"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "famous_works",
+      "difficulty": 2,
+      "funScore": 8,
+      "distractors": [
+        "Mishneh Torah",
+        "Emunot ve-Deot",
+        "Kuzari",
+        "Fons Vitae",
+        "Wars of the Lord",
+        "Or Hashem"
+      ],
+      "quizQuestion": "Which work by Maimonides (completed 1190) reconciles Aristotelian philosophy with Torah by arguing that biblical anthropomorphisms for God (hands, face, anger) are parables for philosophical truths?",
+      "explanation": "The Guide for the Perplexed addresses educated Jews troubled by apparent conflicts between Aristotle and scripture. Maimonides argued that biblical language describing God's 'hand,' 'face,' or emotions must be interpreted allegorically — the true meaning is philosophical. He drew heavily on Avicenna's Necessary Existent. Aquinas cited him as 'Rabbi Moses' and the Guide influenced his Five Ways formulation.",
+      "wowFactor": "Maimonides argued the entire Bible is written in code — when it says God has a hand or gets angry, it means something philosophical. He wrote 500 pages to decode it.",
+      "statement": "Maimonides's Guide for the Perplexed (1190) reconciles Aristotle and Torah by reading biblical anthropomorphisms as philosophical parables.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/maimonides/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "maimonides",
+        "jewish_philosophy",
+        "aristotle",
+        "biblical_interpretation"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who wrote the Guide for the Perplexed (1190), the central text of medieval Jewish philosophy?",
+          "correctAnswer": "Maimonides",
+          "distractors": [
+            "Judah Halevi",
+            "Saadia Gaon",
+            "Solomon Ibn Gabirol",
+            "Gersonides",
+            "Hasdai Crescas",
+            "Averroes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philosophy_ms_maimonides_thirteen_principles",
+      "correctAnswer": "{13}",
+      "acceptableAlternatives": [
+        "13",
+        "thirteen",
+        "Thirteen Principles of Faith"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "bracket_numbers",
+      "difficulty": 2,
+      "funScore": 7,
+      "distractors": [
+        "{10}",
+        "{12}",
+        "{14}",
+        "{7}",
+        "{5}",
+        "{6}"
+      ],
+      "quizQuestion": "How many Principles of Faith did Maimonides enumerate in his Commentary on the Mishnah — foundational beliefs required of every Jew, including divine unity, incorporeality, and the coming of the Messiah?",
+      "explanation": "Maimonides's 13 Principles of Faith, set out in his commentary on Tractate Sanhedrin, are: (1) God's existence, (2) divine unity, (3) incorporeality, (4) eternity, (5) exclusive worship, (6) prophecy, (7) Moses as supreme prophet, (8) Torah's divine origin, (9) Torah's immutability, (10) divine omniscience, (11) reward and punishment, (12) the Messiah, (13) bodily resurrection. These became central to Jewish liturgy.",
+      "wowFactor": "Maimonides condensed all of Judaism into 13 must-believe principles — and religious Jews still recite them as part of morning prayers today, 800 years later.",
+      "statement": "Maimonides enumerated 13 Principles of Faith — foundational Jewish beliefs still recited in daily prayer today.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/maimonides/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "maimonides",
+        "jewish_philosophy",
+        "theology",
+        "principles_of_faith"
+      ]
+    },
+    {
+      "id": "philosophy_ms_maimonides_negative_theology",
+      "correctAnswer": "Maimonides",
+      "acceptableAlternatives": [
+        "Moses Maimonides",
+        "Rambam"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "medieval_philosopher_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "distractors": [
+        "Saadia Gaon",
+        "Judah Halevi",
+        "Gersonides",
+        "Hasdai Crescas",
+        "Averroes",
+        "Avicenna"
+      ],
+      "quizQuestion": "Which medieval Jewish philosopher argued that proper theological language describes God only by negation — stating what God is not — because any positive attribute implies limitation incompatible with divine simplicity?",
+      "explanation": "Maimonides's negative theology (in the Guide for the Perplexed) holds that saying 'God exists,' 'God is wise,' or 'God is good' implies God shares properties with finite beings — which would compromise divine simplicity and unity. We can only say 'God is not ignorant,' 'God is not finite,' etc. This radical position was influential on Aquinas's analogical language about God.",
+      "wowFactor": "Maimonides argued you can't say anything true about God — only what God isn't. Even 'God exists' is technically wrong, because God doesn't 'exist' the way everything else does.",
+      "statement": "Maimonides's negative theology holds that God can only be properly described by negation — saying what God is not — since positive attributes imply limitation.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/maimonides/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "maimonides",
+        "negative_theology",
+        "apophatic",
+        "jewish_philosophy"
+      ]
+    },
+    {
+      "id": "philosophy_ms_gersonides_limited_omniscience",
+      "correctAnswer": "Gersonides",
+      "acceptableAlternatives": [
+        "Levi ben Gerson",
+        "Ralbag"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "medieval_philosopher_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "distractors": [
+        "Maimonides",
+        "Judah Halevi",
+        "Saadia Gaon",
+        "Hasdai Crescas",
+        "Ibn Gabirol",
+        "Averroes"
+      ],
+      "quizQuestion": "Which 14th-century Jewish philosopher in Provence argued, against mainstream theology, that God knows the general order of the universe but not the particular future free choices of individuals?",
+      "explanation": "Gersonides (1288–1344) in the Wars of the Lord argued that divine omniscience extends to the general laws and patterns of the universe but not to the specific future contingent choices of individuals — preserving human free will. This was a controversial departure from Maimonides and traditional theology. He was also a significant astronomer who invented the Jacob's staff navigational instrument.",
+      "wowFactor": "Gersonides argued God doesn't know what you'll have for breakfast tomorrow — because if God knew, you couldn't choose freely. He limited God's knowledge to protect human freedom.",
+      "statement": "Gersonides argued that God knows the general order of the universe but not individual future free choices, preserving human free will.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/gersonides/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "gersonides",
+        "jewish_philosophy",
+        "free_will",
+        "omniscience"
+      ]
+    },
+    {
+      "id": "philosophy_ms_crescas_or_hashem",
+      "correctAnswer": "Hasdai Crescas",
+      "acceptableAlternatives": [
+        "Crescas"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "medieval_philosopher_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "distractors": [
+        "Gersonides",
+        "Maimonides",
+        "Judah Halevi",
+        "Saadia Gaon",
+        "Solomon Ibn Gabirol",
+        "Averroes"
+      ],
+      "quizQuestion": "Which late medieval Jewish philosopher in Aragon (c. 1340–1410) systematically dismantled Aristotelian cosmological premises — including the impossibility of the infinite — anticipating infinite-universe arguments later developed by Giordano Bruno?",
+      "explanation": "Hasdai Crescas's Or Hashem ('Light of the Lord') attacked the Aristotelian foundations that Maimonides and Gersonides had accepted, arguing the universe could be infinite and that Aristotle's cosmological framework was internally inconsistent. He also argued that divine love, not intellectual contemplation, is the highest human good. SEP notes his critique 'spurred the growth of the new science of the modern period.'",
+      "wowFactor": "A 14th-century rabbi in Saragossa blew up Aristotle's physics 200 years before Copernicus — his argument that the universe might be infinite was picked up by Giordano Bruno and eventually Galileo.",
+      "statement": "Hasdai Crescas's Or Hashem dismantled Aristotelian cosmology, including the finite-universe premise, anticipating arguments later used by Giordano Bruno.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/crescas/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "crescas",
+        "jewish_philosophy",
+        "cosmology",
+        "anti_aristotle"
+      ]
+    },
+    {
+      "id": "philosophy_ms_mulla_sadra_primacy_existence",
+      "correctAnswer": "Mulla Sadra",
+      "acceptableAlternatives": [
+        "Sadr al-Din al-Shirazi",
+        "Mulla Sadra Shirazi"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "medieval_philosopher_names",
+      "difficulty": 5,
+      "funScore": 7,
+      "distractors": [
+        "Suhrawardi",
+        "Ibn Arabi",
+        "Avicenna",
+        "al-Ghazali",
+        "al-Farabi",
+        "Ibn Rushd"
+      ],
+      "quizQuestion": "Which Safavid-era philosopher (1571–1636) developed the doctrine of the 'primacy of existence' — inverting Avicenna and Suhrawardi by arguing that existence, not essence, is primary and real — and is considered arguably the most significant Islamic philosopher after Avicenna?",
+      "explanation": "Mulla Sadra's transcendent theosophy (al-Hikma al-Muta'aliya) held that existence (wujud) is the primary reality and essences are mental abstractions — inverting both Avicenna (who gave priority to essence) and Suhrawardi (who gave priority to essence as light). He also developed 'substantial motion' — the radical idea that substances themselves change continuously, not just their accidents. His Four Journeys remains the standard text in Shi'i seminaries.",
+      "wowFactor": "Mulla Sadra argued that everything in the universe is constantly changing — not just accidents, but the very substances themselves. Reality is a process, not a collection of static things. He developed this in a book called 'The Four Journeys.'",
+      "statement": "Mulla Sadra's 'primacy of existence' holds that existence is primary and real, with essences as mental abstractions — inverting the standard Avicennian priority.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/mulla-sadra/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "mulla_sadra",
+        "islamic_philosophy",
+        "existence",
+        "safavid"
+      ]
+    },
+    {
+      "id": "philosophy_ms_scholasticism_movement",
+      "correctAnswer": "Scholasticism",
+      "acceptableAlternatives": [
+        "scholasticism",
+        "Scholastic philosophy"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "school_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "distractors": [
+        "Nominalism",
+        "Mysticism",
+        "Neoplatonism",
+        "Averroism",
+        "Sufism",
+        "Humanism"
+      ],
+      "quizQuestion": "What is the term for the method and tradition of Christian medieval philosophy — practiced in cathedral schools and universities — that used dialectical reasoning to reconcile faith and reason, typified by Anselm, Abelard, and Aquinas?",
+      "explanation": "Scholasticism (from Latin schola, 'school') was the dominant philosophical and theological method of medieval European universities from the 11th to 15th centuries. It used formal logical disputation — presenting questions, objections, and replies — to harmonize Christian faith with ancient philosophy (especially Aristotle). The Summa Theologiae is its archetypal product.",
+      "wowFactor": "Scholasticism invented the university lecture format: present a question, list all the objections, answer each one systematically. Every philosophy course today still follows Aquinas's Summa method.",
+      "statement": "Scholasticism, the dominant method of medieval European philosophy, used dialectical reasoning to reconcile Christian faith with ancient philosophy.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/aquinas/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "scholasticism",
+        "medieval_philosophy",
+        "method",
+        "university"
+      ]
+    },
+    {
+      "id": "philosophy_ms_pseudo_dionysius_apophatic",
+      "correctAnswer": "apophatic theology",
+      "acceptableAlternatives": [
+        "negative theology",
+        "via negativa",
+        "apophatic (negative) theology"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "concept_terms_general",
+      "difficulty": 3,
+      "funScore": 6,
+      "distractors": [
+        "cataphatic theology",
+        "docta ignorantia",
+        "divine illumination",
+        "analogical predication",
+        "mystical union",
+        "faith seeking understanding"
+      ],
+      "quizQuestion": "What theological method, systematized in Pseudo-Dionysius's Mystical Theology, holds that God so transcends human concepts that we can only say what God is NOT?",
+      "explanation": "Pseudo-Dionysius (c. 485–518 CE), writing under the pseudonym of Paul's Athenian convert, developed apophatic (negative) theology into a systematic method: one ascends to God by progressively denying all attributes — God is not finite, not wise (in any human sense), not even 'Being' in the ordinary sense. He contrasted this with cataphatic theology (which predicts positive attributes imperfectly). This became foundational for Christian mystical theology.",
+      "wowFactor": "Pseudo-Dionysius argued the most accurate thing you can say about God is nothing at all — the more attributes you strip away, the closer you get to truth. This is called 'the way of negation.'",
+      "statement": "Pseudo-Dionysius's apophatic theology holds that God transcends all human concepts and can only be approached by negating all positive attributes.",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/pseudo-dionysius-areopagite/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "pseudo_dionysius",
+        "apophatic_theology",
+        "mysticism",
+        "christian_neoplatonism"
+      ]
+    },
+    {
+      "id": "philosophy_ms_thomism_school",
+      "correctAnswer": "Thomism",
+      "acceptableAlternatives": [
+        "Thomism (school of Aquinas)",
+        "Neo-Thomism"
+      ],
+      "chainThemeId": 2,
+      "subDeckId": "medieval_scholastic",
+      "answerTypePoolId": "school_names",
+      "difficulty": 2,
+      "funScore": 5,
+      "distractors": [
+        "Scotism",
+        "Nominalism",
+        "Averroism",
+        "Augustinianism",
+        "Illuminationism",
+        "Voluntarism"
+      ],
+      "quizQuestion": "What is the name of the philosophical and theological tradition founded on the work of Thomas Aquinas, which became the official philosophy of the Catholic Church after Pope Leo XIII's encyclical Aeterni Patris (1879)?",
+      "explanation": "Thomism synthesizes Aristotelian philosophy with Christian theology, emphasizing natural law, the five proofs for God's existence, the distinction of faith and reason as complementary, and the essence-existence distinction. After Aquinas was canonized (1323) and declared Doctor of the Church (1567), his synthesis grew in influence. Pope Leo XIII's 1879 encyclical directed Catholic seminaries to teach Thomism as their primary philosophical framework.",
+      "wowFactor": "A medieval friar's philosophy was made official policy of a billion-member institution 600 years after his death — in 1879, the Pope ordered all Catholic schools to teach Aquinas.",
+      "statement": "Thomism, the philosophical tradition of Thomas Aquinas, became the official philosophy of the Catholic Church after Pope Leo XIII's encyclical Aeterni Patris (1879).",
+      "sourceName": "Stanford Encyclopedia of Philosophy",
+      "sourceUrl": "https://plato.stanford.edu/entries/aquinas/",
+      "volatile": false,
+      "ageGroup": "teen",
+      "categoryL1": "general_knowledge",
+      "categoryL2": "philosophy",
+      "tags": [
+        "thomism",
+        "aquinas",
+        "catholic_church",
+        "scholasticism"
+      ]
+    }
+  ]
+}
