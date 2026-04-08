@@ -1,0 +1,309 @@
+deck_id: world_literature
+name: "World Literature"
+domain: art_architecture
+sub_domain: literature
+target_facts: 280
+minimum_facts: 200
+
+description: >
+  From Homer's wine-dark sea to Marquez's butterflies — master the authors, works,
+  characters, and movements that shaped world literature across 3,000 years. Follow
+  Odysseus home, solve a murder with Raskolnikov, survive dystopia with Winston Smith,
+  and discover why Kafka turned a man into a beetle. When you finish this deck, you
+  will KNOW world literature.
+
+# Sourcing & licensing
+data_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Western_canon
+    license: CC-BY-SA-4.0
+    usage: fact text, biographical data, plot summaries, publication dates
+  - name: Wikidata
+    url: https://www.wikidata.org
+    license: CC0
+    usage: structured data (dates, nationalities, movements)
+  - name: Project Gutenberg
+    url: https://www.gutenberg.org
+    license: public domain
+    usage: verification of opening lines and quotes (all works pre-1928)
+  - name: Norton Anthology / Great Books lists
+    url: https://en.wikipedia.org/wiki/Great_Books_of_the_Western_World
+    license: CC-BY-SA-4.0 (Wikipedia article about the list)
+    usage: canon selection guidance only — no content copied
+
+# Answer Type Pools
+answer_type_pools:
+  - id: author_names
+    format: name
+    estimated_count: 65
+    min_distractors: 4
+    note: "Core pool. Highly confusable within eras/nationalities. Russian authors, Victorian novelists, Modernists all cluster."
+
+  - id: work_titles
+    format: name
+    estimated_count: 80
+    min_distractors: 4
+    note: "Second-largest pool. 'Who wrote X?' and 'Which novel features Y?' — strong confusability within movements."
+
+  - id: character_names
+    format: name
+    estimated_count: 40
+    min_distractors: 4
+    note: "Fictional characters. Confusable within same era/genre. Austen heroines, Dickens protagonists, Russian novel characters."
+
+  - id: movement_names
+    format: term
+    estimated_count: 12
+    min_distractors: 4
+    note: "Literary movements/periods. Romanticism, Realism, Modernism, Naturalism, Magic Realism, Existentialism, etc."
+    syntheticDistractors:
+      - "Imagism"
+      - "Dadaism"
+      - "Aestheticism"
+      - "Decadence"
+      - "Objectivism"
+      - "Futurism"
+      - "Sentimentalism"
+
+  - id: country_names
+    format: place
+    estimated_count: 18
+    min_distractors: 4
+    note: "Countries/literary traditions. Confusable for less-known authors."
+    syntheticDistractors:
+      - "Portugal"
+      - "Poland"
+      - "Sweden"
+      - "Greece"
+      - "Turkey"
+      - "Egypt"
+      - "South Korea"
+
+  - id: genre_form_names
+    format: term
+    estimated_count: 12
+    min_distractors: 4
+    note: "Literary forms/genres: bildungsroman, epistolary novel, stream of consciousness, picaresque, etc."
+    syntheticDistractors:
+      - "Pastoral"
+      - "Picaresque"
+      - "Epistolary"
+      - "Roman à clef"
+      - "Allegory"
+      - "Farce"
+      - "Panegyric"
+
+  - id: opening_line_sources
+    format: name
+    estimated_count: 20
+    min_distractors: 4
+    note: "Which novel has this famous opening line? Answers are work titles."
+
+  - id: publication_years
+    format: bracket_number
+    estimated_count: 30
+    note: "When was X published? Bracket notation — runtime generates nearby year distractors."
+
+# Sub-decks (4 eras)
+sub_decks:
+  - id: ancient_classical
+    name: "Ancient & Classical"
+    estimated_facts: 55
+    entities:
+      - Homer (Iliad, Odyssey)
+      - Sophocles (Oedipus Rex, Antigone)
+      - Euripides (Medea)
+      - Virgil (Aeneid)
+      - Ovid (Metamorphoses)
+      - Sappho
+      - Aeschylus (Oresteia)
+      - Epic of Gilgamesh
+      - Mahabharata / Ramayana
+      - Tale of Genji (Murasaki Shikibu)
+      - One Thousand and One Nights
+      - Rumi
+      - Li Bai / Du Fu (Tang poetry)
+      - Confucius (Analects)
+
+  - id: renaissance_early_modern
+    name: "Renaissance & Early Modern"
+    estimated_facts: 60
+    entities:
+      - Dante (Divine Comedy)
+      - Chaucer (Canterbury Tales)
+      - Shakespeare (Hamlet, Macbeth, Romeo and Juliet, Othello, King Lear, A Midsummer Night's Dream, The Tempest)
+      - Cervantes (Don Quixote)
+      - Milton (Paradise Lost)
+      - Molière (Tartuffe)
+      - Montaigne (Essays)
+      - Boccaccio (Decameron)
+      - Petrarch
+      - Goethe (Faust)
+      - Swift (Gulliver's Travels)
+      - Defoe (Robinson Crusoe)
+
+  - id: nineteenth_century
+    name: "19th Century"
+    estimated_facts: 80
+    entities:
+      - Austen (Pride and Prejudice, Emma, Sense and Sensibility)
+      - Dickens (Great Expectations, Oliver Twist, A Tale of Two Cities, A Christmas Carol)
+      - Tolstoy (War and Peace, Anna Karenina)
+      - Dostoevsky (Crime and Punishment, Brothers Karamazov, The Idiot)
+      - Brontë sisters (Jane Eyre, Wuthering Heights)
+      - Hugo (Les Misérables, Hunchback of Notre-Dame)
+      - Melville (Moby-Dick)
+      - Twain (Huckleberry Finn, Tom Sawyer)
+      - Flaubert (Madame Bovary)
+      - Wilde (Picture of Dorian Gray, Importance of Being Earnest)
+      - Poe (The Raven, Tell-Tale Heart)
+      - Shelley (Frankenstein)
+      - Stoker (Dracula)
+      - Dumas (Three Musketeers, Count of Monte Cristo)
+      - Chekhov (The Cherry Orchard, The Seagull)
+      - Pushkin (Eugene Onegin)
+      - Whitman (Leaves of Grass)
+      - Eliot, George (Middlemarch)
+      - Hardy (Tess of the d'Urbervilles)
+      - Carroll (Alice in Wonderland)
+
+  - id: modern_contemporary
+    name: "Modern & Contemporary"
+    estimated_facts: 85
+    entities:
+      - Joyce (Ulysses, Dubliners, Portrait of the Artist)
+      - Woolf (Mrs Dalloway, To the Lighthouse, A Room of One's Own)
+      - Kafka (The Metamorphosis, The Trial)
+      - Orwell (1984, Animal Farm)
+      - Hemingway (Old Man and the Sea, A Farewell to Arms, The Sun Also Rises)
+      - Fitzgerald (The Great Gatsby)
+      - Faulkner (The Sound and the Fury, As I Lay Dying)
+      - García Márquez (One Hundred Years of Solitude)
+      - Morrison (Beloved, The Bluest Eye, Song of Solomon)
+      - Achebe (Things Fall Apart)
+      - Camus (The Stranger, The Plague)
+      - Huxley (Brave New World)
+      - Beckett (Waiting for Godot)
+      - Borges (Ficciones)
+      - Neruda
+      - Solzhenitsyn (One Day in the Life of Ivan Denisovich)
+      - Atwood (The Handmaid's Tale)
+      - Rushdie (Midnight's Children)
+      - Conrad (Heart of Darkness)
+      - Proust (In Search of Lost Time)
+      - Nabokov (Lolita)
+      - Bulgakov (The Master and Margarita)
+      - Vonnegut (Slaughterhouse-Five)
+      - Salinger (Catcher in the Rye)
+      - Lee (To Kill a Mockingbird)
+      - Golding (Lord of the Flies)
+      - Murakami (Norwegian Wood, Kafka on the Shore)
+      - Allende (House of the Spirits)
+      - Steinbeck (Of Mice and Men, The Grapes of Wrath)
+
+# Question templates
+question_templates:
+  - id: author_from_work
+    format: "Who wrote {work}?"
+    answer_pool: author_names
+    available_from_mastery: 0
+    difficulty: 1-3
+
+  - id: work_from_author
+    format: "Which novel was written by {author}?"
+    answer_pool: work_titles
+    available_from_mastery: 1
+    difficulty: 2-3
+
+  - id: character_from_work
+    format: "Which novel features the character {character}?"
+    answer_pool: work_titles
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: author_from_character
+    format: "Who created the character {character}?"
+    answer_pool: author_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: work_from_opening
+    format: "Which novel opens with: '{opening_line}'?"
+    answer_pool: opening_line_sources
+    available_from_mastery: 2
+    difficulty: 3-4
+
+  - id: movement_from_description
+    format: "Which literary movement {description}?"
+    answer_pool: movement_names
+    available_from_mastery: 1
+    difficulty: 2-3
+
+  - id: country_from_author
+    format: "Which country was {author} from?"
+    answer_pool: country_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: genre_from_description
+    format: "What literary form {description}?"
+    answer_pool: genre_form_names
+    available_from_mastery: 2
+    difficulty: 3
+
+# Common confusions (seeded into confusion matrix)
+common_confusions:
+  # Russian authors
+  - ["Tolstoy", "Dostoevsky"]
+  - ["Tolstoy", "Chekhov"]
+  - ["Dostoevsky", "Gogol"]
+  - ["Pushkin", "Turgenev"]
+  # Brontë sisters
+  - ["Charlotte Brontë", "Emily Brontë"]
+  - ["Jane Eyre", "Wuthering Heights"]
+  # Modernists
+  - ["Joyce", "Woolf"]
+  - ["Ulysses", "Mrs Dalloway"]
+  - ["Hemingway", "Fitzgerald"]
+  # Similar titles/themes
+  - ["1984", "Brave New World"]
+  - ["Crime and Punishment", "The Brothers Karamazov"]
+  - ["War and Peace", "Anna Karenina"]
+  - ["Great Expectations", "Oliver Twist"]
+  - ["The Iliad", "The Odyssey"]
+  # Magic realism
+  - ["García Márquez", "Borges"]
+  - ["García Márquez", "Allende"]
+  # Famous opening lines
+  - ["Pride and Prejudice", "A Tale of Two Cities"]
+  # Movements
+  - ["Romanticism", "Realism"]
+  - ["Modernism", "Postmodernism"]
+  - ["Naturalism", "Realism"]
+
+# Synonym groups
+synonym_groups:
+  - id: twain_names
+    members: ["Mark Twain", "Samuel Clemens"]
+    reason: "Pen name and real name"
+  - id: eliot_names
+    members: ["George Eliot", "Mary Ann Evans"]
+    reason: "Pen name and real name"
+  - id: orwell_names
+    members: ["George Orwell", "Eric Arthur Blair"]
+    reason: "Pen name and real name"
+
+# Difficulty tiers
+difficulty_tiers:
+  easy:
+    - Shakespeare, Homer, Dickens, Austen, Tolstoy, Orwell, Fitzgerald
+    - Hamlet, Pride and Prejudice, 1984, Great Gatsby, Romeo and Juliet
+    - "Call me Ishmael", "It was the best of times"
+  medium:
+    - Dostoevsky, Hugo, Woolf, Hemingway, Kafka, García Márquez, Morrison
+    - Crime and Punishment, Les Misérables, The Metamorphosis, One Hundred Years of Solitude
+    - Romanticism, Realism, Modernism
+  hard:
+    - Proust, Borges, Beckett, Faulkner, Nabokov, Bulgakov, Solzhenitsyn
+    - In Search of Lost Time, Ficciones, Waiting for Godot, The Master and Margarita
+    - Naturalism, Stream of consciousness, Bildungsroman, Magic Realism

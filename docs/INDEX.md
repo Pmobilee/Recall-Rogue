@@ -3,7 +3,7 @@
 > Navigation hub for all modular documentation. Each file is independently useful —
 > an agent reading just that file should understand that system.
 >
-> **Last rebuilt:** 2026-04-07
+> **Last rebuilt:** 2026-04-08
 
 ---
 
