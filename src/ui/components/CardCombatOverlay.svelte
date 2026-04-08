@@ -887,23 +887,27 @@
     return 'tip-hand'
   })
 
-  function showWowFactor(card: Card): void {
+  /**
+   * Display the wow-factor text for the fact that was actually answered in the quiz.
+   * @param answeredFactId - The ID of the fact shown in the quiz (may differ from card.factId in study mode).
+   * @param card - The card being played (used for tier check and deck-mode resolution).
+   */
+  function showWowFactor(answeredFactId: string, card: Card): void {
     if (wowFactorCount >= WOW_FACTOR_MAX_PER_ENCOUNTER) return
     if (card.tier !== '1') return
 
     let wowText: string | null = null
 
-    // Study mode: look up the curated deck fact by __studyFactId for its wowFactor/explanation
+    // Study mode: look up the curated deck fact by the answered fact ID
     const runState = $activeRunState
     if (runState?.deckMode?.type === 'study') {
-      const studyFactId = (card as any).__studyFactId as string | undefined
-      if (studyFactId && runState.deckMode.deckId) {
-        const deckFact = getCuratedDeckFact(runState.deckMode.deckId, studyFactId)
+      if (answeredFactId && runState.deckMode.deckId) {
+        const deckFact = getCuratedDeckFact(runState.deckMode.deckId, answeredFactId)
         wowText = (deckFact as any)?.wowFactor ?? deckFact?.explanation ?? null
       }
     } else {
-      // Trivia mode: use the facts DB
-      const fact = factsDB.isReady() ? factsDB.getById(card.factId) : null
+      // Trivia mode: use the answered fact ID directly from the facts DB
+      const fact = factsDB.isReady() ? factsDB.getById(answeredFactId) : null
       wowText = fact?.wowFactor ?? null
     }
 
@@ -913,13 +917,13 @@
     wowFactorText = wowText
     wowFactorVisible = true
 
-    // fade in 200ms (CSS), hold 5s, fade out 300ms (CSS), cleanup
+    // fade in 200ms (CSS), hold 10s, fade out 300ms (CSS), cleanup
     setTimeout(() => {
       wowFactorVisible = false
-    }, turboDelay(5200)) // 200ms fade-in + 5000ms hold
+    }, turboDelay(10200)) // 200ms fade-in + 10000ms hold
     setTimeout(() => {
       wowFactorText = null
-    }, turboDelay(5500)) // + 300ms fade-out
+    }, turboDelay(10500)) // + 300ms fade-out
   }
 
   function removeDamageNumber(id: number): void {
@@ -2184,7 +2188,10 @@
         checkAutoEndTurn()
       }, turboDelay(FIZZLE_DURATION))
     } else {
-      showWowFactor(card)
+      // Derive the fact ID that was actually quizzed — in study mode this is __studyFactId
+      // (assigned by getStudyModeQuiz), in trivia mode it matches card.factId.
+      const answeredFactId = ((card as any).__studyFactId as string | undefined) ?? card.factId
+      showWowFactor(answeredFactId, card)
 
       // Correct answer: new 5-phase animation sequence
       // Call onplaycard first — for Phase Shift QP/CW and Unstable Flux CC the resolver

@@ -2,8 +2,8 @@
 
 > **Purpose:** Design spec for the procedural narrative system that delivers dark RPG storytelling woven from four concurrent threads, reactive to actual knowledge the player studies.
 > **Last verified:** 2026-04-08
-> **Status:** IMPLEMENTED — Full pipeline operational. Engine, overlay, and game flow integration complete.
-> **Source files:** `src/services/narrativeTypes.ts` (data interfaces), `src/services/narrativeGravity.ts` (classification + gravity scoring), `src/services/narrativeLoader.ts` (runtime loader), `src/services/narrativeEngine.ts` (IMPLEMENTED — 2026-04-03), `src/services/encounterBridge.ts` (NarrativeEncounterSnapshot snapshot mechanism), `src/services/gameFlowController.ts` (integration hooks), `data/narratives/` (COMPLETE — 61 YAML files), `scripts/build-narratives.mjs` (YAML-to-JSON converter), `public/data/narratives/` (generated JSON output)
+> **Status:** IMPLEMENTED — Ch4 narrative overhaul complete: FactTypeAdapter registry (cross-deck echo text), smart narration ratio tracking (Seeker boost).
+> **Source files:** `src/services/narrativeTypes.ts` (data interfaces), `src/services/narrativeGravity.ts` (classification + gravity scoring), `src/services/narrativeAdapterRegistry.ts` (FactTypeAdapter registry — cross-deck echo text), `src/services/narrativeLoader.ts` (runtime loader), `src/services/narrativeEngine.ts` (IMPLEMENTED — 2026-04-03), `src/services/encounterBridge.ts` (NarrativeEncounterSnapshot snapshot mechanism), `src/services/gameFlowController.ts` (integration hooks), `data/narratives/` (COMPLETE — 61 YAML files), `scripts/build-narratives.mjs` (YAML-to-JSON converter), `public/data/narratives/` (generated JSON output)
 
 
 ## Data Pipeline (2026-04-03)
@@ -1128,3 +1128,76 @@ Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RP
 - date → medium
 - number → low
 - object → medium
+
+---
+
+## Ch4 — Cross-Deck Narration Improvements (2026-04-08)
+
+### FactTypeAdapter Registry (Task 4.2)
+
+**Root cause fixed:** The old `buildEchoText()` only distinguished vocab facts (via `partOfSpeech`) from knowledge facts. For math, grammar, kanji, and other non-entity decks it returned the raw `correctAnswer` which often produced garbage narrative text (e.g. "42", "~てくれる", "食べ").
+
+**File:** `src/services/narrativeAdapterRegistry.ts`
+
+The adapter registry provides per-deck-type echo text extraction via the `FactTypeAdapter` interface:
+
+```typescript
+interface FactTypeAdapter {
+  readonly name: string;
+  canEcho(fact: AdaptableFact): boolean;
+  extractEchoText(fact: AdaptableFact): string;
+  selectTemplateFamily(): string;
+}
+```
+
+**Built-in adapters (in priority order):**
+
+| Adapter | Trigger | Echo Text Strategy | Template Family |
+|---|---|---|---|
+| `VocabForeignAdapter` | `partOfSpeech` present | Foreign word extracted from "What does X mean?" pattern | `foreign_word` |
+| `KanjiAdapter` | `categoryL2 = kanji/hanzi` or `language = ja` + pronunciation | Pairs kanji + English meaning: "食べる — to eat" | `foreign_word` |
+| `GrammarForeignAdapter` | `categoryL2 = grammar` or `~` syntax/particle keywords in question | Poetic function description: "verbs that twist when touched by negation" | `concept` |
+| `MathAdapter` | `categoryL1 = math/mathematics` | Fixed evocative fragment: "the shape of a problem yet unsolved" | `concept` |
+| `MythologyAdapter` | `categoryL1 = mythology/religion/folklore` | First proper noun from answer or explanation | `person` |
+| `HistoryAdapter` | `categoryL1 = history/biography/politics` | Capitalised answer or first proper noun from explanation | `person` |
+| `GeographyAdapter` | `categoryL1 = geography/travel` or `categoryL2 = capitals/countries` | Raw `correctAnswer` (place names work verbatim) | `place` |
+| `ScienceAdapter` | `categoryL1 = science/medicine/anatomy` | Capitalised answer or concept-suffix term from explanation | `concept` |
+| `DefaultAdapter` | Always matches (fallback) | `correctAnswer` if 4-50 chars; first explanation sentence otherwise | `context` |
+
+**Integration:** `narrativeEngine.ts` `recordEncounterResults()` calls `buildAdaptedEchoText()` instead of the old `buildEchoText()`. The `EncounterNarrativeData.correctAnswers` array now accepts optional `categoryL1`, `categoryL2`, `language`, `targetLanguageWord`, and `pronunciation` fields to power the adapter.
+
+**Key exports:**
+- `resolveAdapter(fact): FactTypeAdapter` — returns first matching adapter
+- `buildAdaptedEchoText(fact): string` — primary integration function
+- `getTemplateFamilyForFact(fact): string` — returns echo template pool name
+
+The old `buildEchoText(answer, quizQuestion, partOfSpeech)` in `narrativeGravity.ts` is retained for backward compatibility (the adapter uses the same foreign-word extraction logic internally).
+
+---
+
+### Smart Narration Ratio Tracking (Task 4.5)
+
+**File:** `src/services/narrativeEngine.ts` + `src/services/narrativeTypes.ts`
+
+**Problem:** In decks with few facts or when the player Quick-Plays most cards (no quiz questions generated), the narrative engine falls back to ambient lines (generic atmosphere text). If this happens too often, the "knowledge-reactive" value proposition is lost.
+
+**Solution:** Track smart vs. generic line counts at runtime and apply a soft Seeker boost when the ratio falls below threshold.
+
+**New fields in `RunNarrativeState`:**
+
+| Field | Type | Purpose |
+|---|---|---|
+| `smartNarrativeCount` | `number` | Lines from Echo/Seeker/Inhabitants/Descent (run-specific content) |
+| `totalNarrativeCount` | `number` | All emitted lines this run |
+| `seekerBoostActive` | `boolean` | Whether the ×1.5 Seeker throughput boost is currently active |
+
+**Classification:**
+- **Smart:** `echo`, `seeker`, `inhabitants`, `descent` threads (contain real run content)
+- **Generic:** `ambient` thread (answer-free fallbacks)
+
+**Boost logic:**
+- Checked at midpoint: `context.floor >= 2 || _currentRoom >= 5`, with minimum 3 total lines emitted
+- If `smartNarrativeCount / totalNarrativeCount < 0.65`, sets `seekerBoostActive = true`
+- When active: the Seeker cooldown threshold is multiplied by 2/3 (`Math.floor(cooldown * 2/3)`), making Seeker fire one room sooner
+- Boost is a soft nudge only — it does not override cooldowns to 0 or force lines when no conditions are met
+- DEV console: logs when boost activates with current ratio percentage

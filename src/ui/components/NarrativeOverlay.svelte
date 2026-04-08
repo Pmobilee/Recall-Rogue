@@ -1,13 +1,15 @@
 <!-- src/ui/components/NarrativeOverlay.svelte
   Full-screen atmospheric narrative overlay for room transitions and NPC dialogue.
 
-  Always click-through: line 1 appears on mount, each click reveals the next line.
-  When all lines are visible, next click triggers ash dissolve exit.
+  Auto-reveal: lines appear automatically without requiring a click.
+  After all lines are visible, narration stays until player clicks to continue.
+  Clicking during auto-reveal cancels the timer and jumps to the final settled state.
 
   State machine: REVEALING → DISSOLVING → DONE
-  - REVEALING: lines appear one at a time on click. Clicking during a line's
-    animation (< 0.8s) skips to fully visible. Clicking when fully visible
-    advances to next line or, when on the last line, begins DISSOLVING.
+  - REVEALING: lines appear one at a time via auto-reveal timers (or on click).
+    Clicking during a line's CSS animation (< 0.8s) skips to fully visible.
+    Clicking when fully visible and more lines remain: cancels auto-reveal, settles all.
+    Clicking when on the last settled line begins DISSOLVING.
   - DISSOLVING: ash animation plays out, clicks ignored, onDismiss fires after
     all lines finish (0.8s + 0.15s * (numLines - 1) + 0.3s grace).
   - DONE: onDismiss called.
@@ -22,7 +24,7 @@
   // ── Props ──────────────────────────────────────────────────
   interface Props {
     lines: NarrativeLine[];
-    /** Kept for API compatibility — ignored. Always behaves as click-through. */
+    /** Kept for API compatibility — ignored. Always behaves as auto-reveal. */
     mode?: 'auto-fade' | 'click-through';
     onDismiss: () => void;
   }
@@ -56,12 +58,19 @@
   let hintTimer: ReturnType<typeof setTimeout> | null = null
   let dissolveTimer: ReturnType<typeof setTimeout> | null = null
   let settleTimer: ReturnType<typeof setTimeout> | null = null
+  /** Timer for auto-reveal of successive lines. */
+  let autoRevealTimer: ReturnType<typeof setTimeout> | null = null
 
   const LINE_REVEAL_DURATION = 800  // ms — matches CSS animation duration
   const HINT_DELAY = 800            // ms after line settles before hint appears
   const DISSOLVE_STAGGER = 150      // ms between each line's ash animation
   const DISSOLVE_DURATION = 800     // ms per line dissolve
   const DISSOLVE_GRACE = 300        // ms after last line finishes before onDismiss
+
+  /** Delay before the very first line auto-reveals (ms). */
+  const AUTO_REVEAL_START_DELAY = 800
+  /** Delay between successive auto-revealed lines (ms). */
+  const AUTO_REVEAL_DELAY = 400
 
   // ── Derived ────────────────────────────────────────────────
   /** Lines to render — only up to visibleUpTo. */
@@ -76,20 +85,32 @@
   // ── Helpers ────────────────────────────────────────────────
 
   function clearTimers(): void {
-    if (hintTimer)    { clearTimeout(hintTimer);    hintTimer = null }
-    if (dissolveTimer){ clearTimeout(dissolveTimer); dissolveTimer = null }
-    if (settleTimer)  { clearTimeout(settleTimer);   settleTimer = null }
+    if (hintTimer)       { clearTimeout(hintTimer);       hintTimer = null }
+    if (dissolveTimer)   { clearTimeout(dissolveTimer);   dissolveTimer = null }
+    if (settleTimer)     { clearTimeout(settleTimer);     settleTimer = null }
+    if (autoRevealTimer) { clearTimeout(autoRevealTimer); autoRevealTimer = null }
   }
 
   /**
-   * Mark line `idx` as fully revealed (no more animation), show hint.
-   * Called either by the settle timer or by a click that skips the animation.
+   * Mark the current line as fully revealed (no more animation) and show hint.
+   * If not on the last line, also schedule the next auto-reveal.
+   * Called either by the settle timer or by a click that skips animation.
    */
   function settleCurrentLine(): void {
-    if (hintTimer) { clearTimeout(hintTimer); hintTimer = null }
+    if (hintTimer)   { clearTimeout(hintTimer);   hintTimer = null }
     if (settleTimer) { clearTimeout(settleTimer); settleTimer = null }
     currentLineSettled = true
-    showHint = true
+
+    if (!isLastLine) {
+      // Schedule next line auto-reveal after delay
+      autoRevealTimer = setTimeout(() => {
+        autoRevealTimer = null
+        revealLine(visibleUpTo + 1)
+      }, AUTO_REVEAL_DELAY)
+    } else {
+      // Last line settled — show the hint to prompt player to dismiss
+      showHint = true
+    }
   }
 
   /**
@@ -102,10 +123,22 @@
     currentLineSettled = false
     showHint = false
 
-    // Schedule line settle + hint appearance
+    // Schedule line settle (which will schedule next auto-reveal or show hint)
     settleTimer = setTimeout(() => {
       hintTimer = setTimeout(() => settleCurrentLine(), HINT_DELAY)
     }, LINE_REVEAL_DURATION)
+  }
+
+  /**
+   * Jump to the fully-settled final state: all lines visible, no auto-timers,
+   * hint prompt shown. Called when player clicks during auto-reveal.
+   */
+  function jumpToFinalState(): void {
+    clearTimers()
+    visibleUpTo = lines.length - 1
+    lineRevealStart = 0
+    currentLineSettled = true
+    showHint = true
   }
 
   /**
@@ -134,7 +167,11 @@
 
   // ── Lifecycle ──────────────────────────────────────────────
   onMount(() => {
-    revealLine(0)
+    // Schedule first reveal with start delay so overlay fade-in finishes first
+    autoRevealTimer = setTimeout(() => {
+      autoRevealTimer = null
+      revealLine(0)
+    }, AUTO_REVEAL_START_DELAY)
   })
 
   onDestroy(() => {
@@ -146,18 +183,24 @@
   function handleAdvance(): void {
     if (phase === 'DISSOLVING' || phase === 'DONE') return
 
+    // Auto-reveal is in progress (timer is pending or line is animating)
+    // Jump to the final settled state immediately on any click
+    const autoInProgress = autoRevealTimer !== null || !currentLineSettled
+    if (autoInProgress && !isLastLine) {
+      jumpToFinalState()
+      return
+    }
+
     const elapsed = performance.now() - lineRevealStart
 
     if (!currentLineSettled && elapsed < LINE_REVEAL_DURATION) {
-      // Mid-animation click: skip to fully visible
+      // Mid-animation click on the last line: skip to fully visible
       settleCurrentLine()
       return
     }
 
-    // Line is settled — advance or dismiss
-    if (!isLastLine) {
-      revealLine(visibleUpTo + 1)
-    } else {
+    // Last line is settled — dismiss
+    if (isLastLine) {
       beginDissolve()
     }
   }
@@ -200,7 +243,7 @@
     {/each}
   </div>
 
-  <!-- Hint prompt — visible once current line's animation finishes -->
+  <!-- Hint prompt — visible only after last line settles (auto-reveal complete) -->
   {#if showHint && phase === 'REVEALING'}
     <div class="hint" aria-hidden="true">
       {hintLabel}

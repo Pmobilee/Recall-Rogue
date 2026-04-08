@@ -41,6 +41,7 @@ import {
   scoreGravity,
   buildEchoText,
 } from './narrativeGravity';
+import { buildAdaptedEchoText } from './narrativeAdapterRegistry';
 
 // ============================================================
 // MODULE-LEVEL STATE (pattern mirrors turnManager)
@@ -63,6 +64,16 @@ export interface EncounterNarrativeData {
     quizQuestion: string;
     partOfSpeech?: string;
     responseTimeMs?: number;
+    /** Top-level domain category (e.g. 'history', 'math', 'language'). Passed to adapter registry. */
+    categoryL1?: string;
+    /** Sub-domain category (e.g. 'grammar', 'kanji', 'algebra'). Passed to adapter registry. */
+    categoryL2?: string;
+    /** Language code (e.g. 'ja', 'es') for vocab/grammar/kanji facts. */
+    language?: string;
+    /** Target language word for vocabulary facts (e.g. hiragana/kanji). */
+    targetLanguageWord?: string;
+    /** Pronunciation/reading for kanji facts. */
+    pronunciation?: string;
   }>;
   wrongAnswers: Array<{
     factId: string;
@@ -218,6 +229,9 @@ export function initNarrative(runState: RunState): void {
     relicsSeen: [],
     linesShown: new Set(),
     threadCooldowns: new Map(),
+    smartNarrativeCount: 0,
+    totalNarrativeCount: 0,
+    seekerBoostActive: false,
   };
 
   _currentRoom = 0;
@@ -244,7 +258,16 @@ export function recordEncounterResults(results: EncounterNarrativeData): void {
       ca.partOfSpeech,
       results.domain,
     );
-    const echoText = buildEchoText(ca.answer, ca.quizQuestion, ca.partOfSpeech);
+    const echoText = buildAdaptedEchoText({
+      correctAnswer: ca.answer,
+      quizQuestion: ca.quizQuestion,
+      partOfSpeech: ca.partOfSpeech,
+      categoryL1: ca.categoryL1,
+      categoryL2: ca.categoryL2,
+      language: ca.language,
+      targetLanguageWord: ca.targetLanguageWord,
+      pronunciation: ca.pronunciation,
+    });
     const gravity = scoreGravity(answerType, results.domain, echoText.length);
 
     const echo: FactEcho = {
@@ -265,7 +288,10 @@ export function recordEncounterResults(results: EncounterNarrativeData): void {
   // Build FactEcho entries for wrong answers (low priority echoes)
   for (const wa of results.wrongAnswers) {
     const answerType = classifyAnswerType(wa.answer, wa.quizQuestion, undefined, results.domain);
-    const echoText = buildEchoText(wa.answer, wa.quizQuestion);
+    const echoText = buildAdaptedEchoText({
+      correctAnswer: wa.answer,
+      quizQuestion: wa.quizQuestion,
+    });
     const gravity = scoreGravity(answerType, results.domain, echoText.length);
 
     const echo: FactEcho = {
@@ -400,8 +426,14 @@ export function getNarrativeLines(context: NarrativeContext): NarrativeLine[] {
   }
 
   // ── PRIORITY 4: Seeker — fires on state change only ──
+  // When seekerBoostActive (smart ratio below 0.65 at midpoint), the effective
+  // cooldown is halved (rounded down) — a ×1.5 throughput boost that makes
+  // Seeker fire more readily without overriding hard constraints.
   if (lines.length < budget && !usedThreads.has('seeker')) {
-    const seekerCooldown = state.threadCooldowns.get('seeker') ?? 0;
+    const seekerCooldownRaw = state.threadCooldowns.get('seeker') ?? 0;
+    const seekerCooldown = state.seekerBoostActive
+      ? Math.floor(seekerCooldownRaw * (2 / 3)) // boost: remaining wait is 2/3 of normal
+      : seekerCooldownRaw;
     if (_currentRoom >= seekerCooldown) {
       const seekerLine = selectSeekerLine(state, context, hpPercent, lensVars);
       if (seekerLine) {
@@ -421,6 +453,37 @@ export function getNarrativeLines(context: NarrativeContext): NarrativeLine[] {
         lines.push(ambientLine);
         usedThreads.add('ambient');
         state.threadCooldowns.set('ambient', _currentRoom + 1);
+      }
+    }
+  }
+
+  // ── SMART NARRATION RATIO TRACKING (Task 4.5) ──
+  // Classify each emitted line as smart (run-specific content) or generic (ambient fallback).
+  // Smart = Echo, Seeker, Inhabitants, or Descent (contain real run knowledge/state).
+  // Generic = Ambient (answer-free fallbacks with no run-specific content).
+  const SMART_THREADS = new Set(['echo', 'seeker', 'inhabitants', 'descent']);
+  for (const line of lines) {
+    state.totalNarrativeCount += 1;
+    if (SMART_THREADS.has(line.thread)) {
+      state.smartNarrativeCount += 1;
+    }
+  }
+
+  // At midpoint: check if smart ratio has fallen below 0.65.
+  // Midpoint is defined as floor 2 OR after 5 rooms (whichever comes first).
+  // If ratio is low, activate the Seeker weight boost for subsequent rooms.
+  // This is a soft nudge — it does not override cooldowns or force lines.
+  const isMidpoint = context.floor >= 2 || _currentRoom >= 5;
+  if (isMidpoint && !state.seekerBoostActive && state.totalNarrativeCount >= 3) {
+    const ratio = state.smartNarrativeCount / state.totalNarrativeCount;
+    if (ratio < 0.65) {
+      state.seekerBoostActive = true;
+      if (import.meta.env.DEV) {
+        console.log(
+          '[NarrativeEngine] Smart ratio low (' +
+          (ratio * 100).toFixed(0) +
+          '%) — activating Seeker ×1.5 boost'
+        );
       }
     }
   }

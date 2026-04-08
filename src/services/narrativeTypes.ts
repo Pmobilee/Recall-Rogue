@@ -145,6 +145,24 @@ export interface RunNarrativeState {
    * Prevents any single thread from dominating consecutive rooms.
    */
   threadCooldowns: Map<NarrativeThread, number>;
+  /**
+   * Smart narration ratio tracking (Task 4.5 — Ch4 narrative overhaul).
+   * 'Smart' lines are those from Echo/Seeker/Inhabitants/Descent threads that
+   * contain run-specific content (fact echoes, state reactions, archetype beats).
+   * 'Generic' lines are ambient fallbacks.
+   *
+   * Used to detect template starvation: if smartCount/totalCount < 0.65 at the
+   * midpoint (floor 2 or after 5 rooms), Seeker thread selection gets a ×1.5
+   * weight boost so run-specific content appears more frequently.
+   */
+  smartNarrativeCount: number;
+  /** Total narrative lines emitted this run (smart + generic). */
+  totalNarrativeCount: number;
+  /**
+   * Whether the ×1.5 Seeker weight boost is active.
+   * Set to true at midpoint if smartCount/totalCount < 0.65.
+   */
+  seekerBoostActive: boolean;
 }
 
 // ============================================================
