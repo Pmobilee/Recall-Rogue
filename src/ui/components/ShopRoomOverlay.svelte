@@ -28,7 +28,7 @@
   import { getShopkeeperBark, type ShopBarkTrigger } from '../../data/shopkeeperBarks'
   import { fade } from 'svelte/transition'
   import { staggerPopIn } from '../utils/roomPopIn'
-  import { tick } from 'svelte'
+  import { tick, untrack } from 'svelte'
   import { displayAnswer } from '../../services/numericalDistractorService'
 
   function getEffectLabel(card: Card): string {
@@ -159,7 +159,7 @@
 
   // === Gold counter animation (P3-E) ===
   let goldFlash = $state<'gain' | 'loss' | null>(null)
-  let previousCurrency = $state(currency)
+  let previousCurrency = $state(untrack(() => currency))
 
   $effect(() => {
     if (currency !== previousCurrency) {
@@ -1548,11 +1548,6 @@
     0% { transform: scale(1); opacity: 1; }
     30% { transform: scale(1.02); opacity: 1; filter: brightness(1.3); }
     100% { transform: scale(0.8) translateY(calc(20px * var(--layout-scale, 1))); opacity: 0; }
-  }
-
-  /* === Affordability pulse (newly affordable) === */
-  .newly-affordable {
-    animation: afford-pulse 600ms ease;
   }
 
   @keyframes afford-pulse {

@@ -1325,11 +1325,6 @@
     transition: all 300ms ease;
   }
 
-  /* Ceremony Phase 4: Integration — spotlight narrows */
-  .ceremony-phase-4 .spotlight-cone {
-    animation: spotlightNarrow 300ms ease-in-out;
-  }
-
   @keyframes spotlightNarrow {
     0% {
       opacity: 1;
@@ -1369,8 +1364,7 @@
   @media (prefers-reduced-motion: reduce) {
     .ceremony-phase-1,
     .ceremony-phase-2 .altar-option,
-    .ceremony-phase-3 .altar-option.selected,
-    .ceremony-phase-4 .spotlight-cone {
+    .ceremony-phase-3 .altar-option.selected {
       animation: none !important;
     }
   }

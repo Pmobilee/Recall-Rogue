@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-06
+> **Last verified:** 2026-04-08
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`
 
 ---
@@ -91,11 +91,12 @@ A brief visual beat fires at each turn boundary to signal the phase change and g
 | `FIRST_CHARGE_FREE_AP_SURCHARGE` | 0 (first attempt at a fact is free) |
 
 Charge plays add +1 AP surcharge. Surcharge waivers (checked in priority order in `playCardAction`):
-1. **Surge turn** — `getSurgeChargeSurcharge(turnNumber) === 0`; fires every `SURGE_INTERVAL (4)` turns starting at `SURGE_FIRST_TURN (2)`
+1. **Surge turn** — `isSurgeTurn(turnNumber)`; fires every `SURGE_INTERVAL (4)` turns starting at `SURGE_FIRST_TURN (2)`. `getSurgeChargeSurcharge()` returns 0 on surge turns, `CHARGE_AP_SURCHARGE` (1) on normal turns.
 2. **Warcry buff** — `warcryFreeChargeActive` flag (consumed on use)
 3. **Chain Momentum** — `CHAIN_MOMENTUM_ENABLED = true`; previous correct Charge waives surcharge for next same chain-type Charge
 4. **Free First Charge** — `isFirstChargeFree(factId, ...)` — first attempt at any fact in the run costs +0 surcharge
-5. **Free Play Charges** — `turnState.freePlayCharges > 0` — set by frenzy mechanic or `focus_next2free` tag; reduces AP cost to 0 (highest priority — checked AFTER Focus discount)
+5. **Active Chain Color Match** — `card.chainType === getActiveChainColor()`; charging a card that matches the current active chain color waives the surcharge. Rewards focused chain-building play — you pay full AP to Quick Play or charge an off-color card, but charging on-color is free of surcharge.
+6. **Free Play Charges** — `turnState.freePlayCharges > 0` — set by frenzy mechanic or `focus_next2free` tag; reduces AP cost to 0 (highest priority — checked AFTER Focus discount)
 
 If `apCurrent < apCost`, card is blocked (`blocked: true`, no AP deducted).
 

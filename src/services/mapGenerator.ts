@@ -312,6 +312,7 @@ function assignRoomTypes(
     MYSTERY_MIN_COUNT,
     MYSTERY_MAX_COUNT,
     SHOP_MIN_SPACING,
+    TREASURE_MIN_COUNT,
     PRE_BOSS_ROW,
     BOSS_ROW,
     ROOM_DISTRIBUTION,
@@ -455,6 +456,24 @@ function assignRoomTypes(
       if (currentMystery.length >= MYSTERY_MIN_COUNT) break
       c.type = 'mystery'
       currentMystery = regularNodes.filter(n => n.type === 'mystery')
+    }
+  }
+
+  // 4. Guarantee TREASURE_MIN_COUNT treasures per act.
+  // If the weighted random produced fewer, convert a combat node to treasure.
+  const currentTreasures = regularNodes.filter(n => n.type === 'treasure')
+  if (currentTreasures.length < TREASURE_MIN_COUNT) {
+    const treasureCandidates = regularNodes.filter(n => n.type === 'combat')
+    const shuffled = [...treasureCandidates]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    let treasureCount = currentTreasures.length
+    for (const c of shuffled) {
+      if (treasureCount >= TREASURE_MIN_COUNT) break
+      c.type = 'treasure'
+      treasureCount++
     }
   }
 

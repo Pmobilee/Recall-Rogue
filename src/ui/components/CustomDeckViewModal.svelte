@@ -4,6 +4,7 @@
   import { getAllDecks, getDeckById } from '../../data/deckRegistry';
   import { getDeckProgress, getSubDeckProgress } from '../../services/deckProgressService';
   import { getDeckTags, getTagFactIds } from '../../data/deckFactIndex';
+  import { untrack } from 'svelte';
 
   /** Human-readable display labels for known exam tags. */
   const TAG_DISPLAY: Record<string, string> = {
@@ -41,7 +42,7 @@
   }: Props = $props();
 
   let isEditing = $state(false);
-  let editName = $state(customDeck.name);
+  let editName = $state(untrack(() => customDeck.name));
   let showDeleteConfirm = $state(false);
 
   /** Tracks which item indices are expanded. */

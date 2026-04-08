@@ -46,6 +46,7 @@
   role="dialog"
   aria-modal="true"
   aria-label={prompt}
+  tabindex="-1"
 >
   <div class="multi-choice-card" tabindex="-1">
     <div class="prompt-row">

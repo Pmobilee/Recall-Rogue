@@ -13,6 +13,7 @@ import { DEFAULT_ARCHETYPE_DATA } from '../services/archetypeDetector'
 import { DEFAULT_ENGAGEMENT_DATA } from '../services/engagementScorer'
 import { profileService } from '../services/profileService'
 import { getBackend } from './storageBackend'
+import { migrateRelicsV1toV2, needsRelicMigrationV1toV2 } from './saveMigration'
 
 /**
  * Legacy/fallback save key. Used when no profiles exist (backward compatibility).
@@ -58,6 +59,10 @@ export function save(data: PlayerSave): void {
  * Loads player save data from localStorage using the active profile's key.
  *
  * Returns null when no save exists or the stored JSON is invalid.
+ *
+ * Applies all in-place compatibility migrations before returning, including
+ * the V1→V2 relic catalogue migration. When migration runs, the result is
+ * immediately re-persisted so the migration only executes once.
  */
 export function load(): PlayerSave | null {
   const raw = getBackend().readSync(getActiveSaveKey())
@@ -498,7 +503,16 @@ export function load(): PlayerSave | null {
         }
       }
     }
-        return parsed as PlayerSave
+
+    // V1 → V2 relic catalogue migration.
+    // Must run after unlockedRelicIds is guaranteed to be an array (see above).
+    // Re-persists the save immediately so the migration only executes once.
+    if (needsRelicMigrationV1toV2(parsed)) {
+      migrateRelicsV1toV2(parsed)
+      getBackend().write(getActiveSaveKey(), JSON.stringify(parsed))
+    }
+
+    return parsed as PlayerSave
   } catch {
     return null
   }

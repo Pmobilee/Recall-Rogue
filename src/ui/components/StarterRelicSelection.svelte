@@ -198,10 +198,6 @@
     display: none;
   }
 
-  .choice-icon[style*="display: none"] + .choice-emoji {
-    display: block;
-  }
-
   .choice-name {
     font-size: calc(13px * var(--layout-scale, 1));
     font-weight: 700;

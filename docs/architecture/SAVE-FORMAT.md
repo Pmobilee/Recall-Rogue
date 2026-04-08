@@ -10,6 +10,7 @@ Source files:
 - `src/data/types.ts`
 - `src/services/storageBackend.ts` (storage abstraction layer)
 - `src/services/saveService.ts`
+- `src/services/saveMigration.ts` — versioned migration functions (V1→V2 relic catalogue)
 - `src/services/profileService.ts`
 - `src/data/saveState.ts`
 - `src/services/runSaveService.ts`
@@ -63,7 +64,14 @@ Note: `src/services/saveService.ts` still exports `SAVE_KEY = 'recall-rogue-save
 
 | Domain | Version field | Current constant |
 | --- | --- | --- |
-| Full player save | `PlayerSave.version` | `SAVE_VERSION = 1` (`saveService.ts`) |
+| Full player save | `PlayerSave.version` | `SAVE_VERSION = 2` (`saveService.ts`) |
+
+## Save version history
+
+| Version | What changed |
+| --- | --- |
+| 1 | Original schema — 50-relic catalogue |
+| 2 | Relic catalogue replacement: 50 relics → 42 relics. IDs renamed, merged, refunded, or dropped. Migration function: `migrateRelicsV1toV2()` in `saveMigration.ts`. |
 
 ## Full save schema (`PlayerSave`)
 
@@ -132,6 +140,9 @@ synchronous on all platforms.
 ## Migration behavior in `saveService.load()`
 
 `load()` applies additive, in-place compatibility fixes before returning `PlayerSave`.
+Versioned structural migrations use `needsRelicMigrationV1toV2()` / `migrateRelicsV1toV2()`
+from `saveMigration.ts` and immediately re-persist the save after migration so it only
+runs once.
 
 Current migrations/defaulting include:
 
@@ -145,6 +156,7 @@ Current migrations/defaulting include:
 | Personalization fields | Adds `interestConfig`, `behavioralSignals`, `archetypeData`, `engagementData` defaults |
 | Tutorial/addictiveness fields | Adds onboarding counters, login calendar, grace/streak support fields |
 | Monetization/prestige/gallery/analyzer | Adds newly introduced optional arrays/numbers (`unlockedPaintings`, `prestigeLevel`, `pendingArtifacts`, etc.) |
+| V1 → V2 relic catalogue | Renames/refunds/drops v1 relic IDs via `migrateRelicsV1toV2()`; saves are immediately re-persisted after migration so it only runs once. Triggered when `save.version < 2` or `version` is absent. |
 
 There is no external migration framework; compatibility is code-based inside `load()`.
 

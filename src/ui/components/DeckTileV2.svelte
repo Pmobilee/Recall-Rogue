@@ -346,10 +346,6 @@
     transition: transform 0.12s ease-out;
   }
 
-  .plx-fg {
-    z-index: 1;
-  }
-
   /* Deck title floats above parallax layers */
   .deck-title-3d {
     font-size: calc(20px * var(--text-scale, 1));

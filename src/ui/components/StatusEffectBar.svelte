@@ -214,14 +214,6 @@
     bottom: calc(calc(88px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
   }
 
-  .popup-title {
-    font-size: calc(13px * var(--layout-scale, 1));
-    font-weight: 700;
-    color: #f8fafc;
-    margin-bottom: calc(8px * var(--layout-scale, 1));
-    text-align: center;
-  }
-
   .popup-row {
     display: flex;
     align-items: flex-start;

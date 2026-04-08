@@ -811,7 +811,8 @@ export function playCardAction(
   let apCost = Math.max(0, cardInHand.apCost ?? 1);
 
   // Charge AP surcharge: charging costs base AP + CHARGE_AP_SURCHARGE (1) on normal turns.
-  // Surge, Warcry, and Chain Momentum waive the surcharge. Free First Charge uses FIRST_CHARGE_FREE_AP_SURCHARGE.
+  // Surge, Warcry, Chain Momentum, and active chain color match waive the surcharge.
+  // Free First Charge uses FIRST_CHARGE_FREE_AP_SURCHARGE.
   let usedFreeCharge = false;
   if (playMode === 'charge') {
     const runStateForCharge = get(activeRunState);
@@ -831,6 +832,9 @@ export function playCardAction(
       // Free first Charge: surcharge is FIRST_CHARGE_FREE_AP_SURCHARGE (0) — first attempt is always free
       apCost += FIRST_CHARGE_FREE_AP_SURCHARGE;
       usedFreeCharge = true;
+    } else if (cardInHand.chainType != null && cardInHand.chainType === getActiveChainColor()) {
+      // Chain color match: waive surcharge — charging into the active chain is free.
+      // Rewards focused chain-building play by not penalizing AP for on-color charges.
     } else {
       // Normal Charge: apply CHARGE_AP_SURCHARGE (+1 AP over Quick Play)
       apCost += CHARGE_AP_SURCHARGE;
@@ -3432,7 +3436,7 @@ export function getHandSize(turnState: TurnState): number {
  * - Battle Trance restriction (blocks ALL plays when active)
  *
  * Quick Play costs base AP only (no surcharge).
- * Charge costs base AP + CHARGE_AP_SURCHARGE (1) on normal turns; waived on Surge/Warcry/Momentum.
+ * Charge costs base AP + CHARGE_AP_SURCHARGE (1) on normal turns; waived on Surge/Warcry/Momentum/active chain color match.
  */
 export function isAnyCardPlayable(turnState: TurnState): boolean {
   if (turnState.phase !== 'player_action') return false;
@@ -3442,9 +3446,20 @@ export function isAnyCardPlayable(turnState: TurnState): boolean {
   const { deck, apCurrent, focusCharges } = turnState;
   const focusDiscount = focusCharges > 0 ? 1 : 0;
 
+  // A card is playable if:
+  //   - Quick Play: baseAp <= apCurrent (no surcharge ever applies)
+  //   - Charge with surcharge waived: same as QP cost
+  // Since QP is always available (no surcharge), checking baseAp <= apCurrent is sufficient
+  // to determine if a card can be played in ANY mode. The surcharge only affects charge plays
+  // but doesn't block play — QP remains available. This means no change is needed here for
+  // the chain-color waiver: QP already ensures any baseAp-affordable card is playable.
+  //
+  // NOTE: isAnyCardPlayable updated (2026-04-08) to document chain-color match waiver in JSDoc.
+  // The loop logic is unchanged because Quick Play (baseAp only, no surcharge) covers all cases
+  // where baseAp <= apCurrent. Chain-color matching affects charge AP cost in playCardAction.
   for (const card of deck.hand) {
     const baseAp = Math.max(0, (card.apCost ?? 1) - focusDiscount);
-    // Quick Play costs baseAp. Charge costs baseAp + 1 (unless Surge/Warcry/Momentum waives it).
+    // Quick Play costs baseAp. Any card affordable via QP is playable.
     if (baseAp <= apCurrent) return true;
   }
   return false;

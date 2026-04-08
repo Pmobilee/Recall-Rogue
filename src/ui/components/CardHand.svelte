@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onDestroy, onMount } from 'svelte'
+  import { onDestroy, onMount, untrack } from 'svelte'
   import type { Card, FactDomain } from '../../data/card-types'
   import { getDomainMetadata } from '../../data/domainMetadata'
   import { getCardbackUrl, onCardbackReady } from '../utils/cardbackManifest'
@@ -521,7 +521,7 @@
   })
 
   // Track card count to detect newly dealt cards and play staggered deal sounds
-  let prevCardCount = $state(cards.length)
+  let prevCardCount = $state(untrack(() => cards.length))
   $effect(() => {
     const newCount = cards.length
     const added = newCount - prevCardCount
@@ -2058,9 +2058,6 @@
     }
   }
 
-  [data-pw-animations="disabled"] .cursed-orb {
-    animation: none;
-  }
 
   @keyframes cursed-orb-float {
     0%   { transform: translateY(0); opacity: 0; }
@@ -2114,9 +2111,6 @@
     }
   }
 
-  [data-pw-animations="disabled"] .card--curing {
-    animation: none;
-  }
 
   @keyframes cursed-cure {
     0%   { filter: brightness(0.8) saturate(0.6); box-shadow: 0 0 0px rgba(255, 200, 0, 0); }
@@ -2724,10 +2718,6 @@
   .card-detail-close:hover {
     background: rgba(255, 255, 255, 0.16);
     color: #fff;
-  }
-  /* AR-310: Active chain color highlight — pill pulse animation handles chain indication */
-  .card--active-chain {
-    /* outline removed: chainPillPulse animation on .v2-card-type.pill-chain-active replaces the rectangle outline */
   }
 
   @keyframes chainPillPulse {

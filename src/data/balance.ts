@@ -364,7 +364,9 @@ export const CHAIN_MOMENTUM_ENABLED = true;
 /**
  * AP surcharge for Charge plays (added on top of card's base apCost).
  * Set to 1 — Charging costs +1 AP over Quick Play, creating a real charge-vs-quick decision.
- * Waived on Surge turns (every 4th global turn), making Surge the burst window for free charging.
+ * Waived on: Surge turns (every 4th global turn), Warcry buff, Chain Momentum matching chain type,
+ * Free First Charge, and charging a card that matches the active chain color (rewards focused
+ * chain-building play). See playCardAction() in turnManager.ts for the full priority chain.
  * Was 0 from 2026-04-03 stat overhaul; restored to 1 on 2026-04-04 balance audit (game too easy + surge meaningless).
  */
 export const CHARGE_AP_SURCHARGE = 1;
@@ -879,10 +881,11 @@ export const MAP_CONFIG = {
   ELITE_MIN_COUNT: 1,
   ELITE_MAX_COUNT: 2,
   SHOP_MIN_COUNT: 1,
-  SHOP_MAX_COUNT: 2,
+  SHOP_MAX_COUNT: 3,
   MYSTERY_MIN_COUNT: 2,
   MYSTERY_MAX_COUNT: 4,
-  SHOP_MIN_SPACING: 2,     // minimum rows between two shops
+  SHOP_MIN_SPACING: 1,     // minimum rows between two shops
+  TREASURE_MIN_COUNT: 1,   // guarantee at least 1 treasure per act
   PRE_BOSS_ROW: 6,         // rest or shop, paths converge
   BOSS_ROW: 7,             // single boss node
   // StS-aligned weights: fewer combat/treasure, more mystery/shops in later segments

@@ -97,4 +97,74 @@ describe('saveService migration safety', () => {
       expect(Array.isArray(migrated?.reviewStates)).toBe(true)
     }
   })
+
+  describe('V1 → V2 relic migration wiring', () => {
+    it('runs relic migration when save has version 1', () => {
+      const base = createNewPlayer('teen') as unknown as Record<string, unknown>
+      // Force v1 save with a renamed relic and one that should be refunded
+      base.version = 1
+      base.unlockedRelicIds = ['iron_buckler', 'glass_cannon', 'whetstone']
+      base.masteryCoins = 10
+      base.masteryCoinsAvailable = 10
+
+      writeRawSave(base)
+      const migrated = load()
+
+      expect(migrated).not.toBeNull()
+      // iron_buckler → iron_shield (rename)
+      expect(migrated?.unlockedRelicIds).toContain('iron_shield')
+      expect(migrated?.unlockedRelicIds).not.toContain('iron_buckler')
+      // whetstone → preserved
+      expect(migrated?.unlockedRelicIds).toContain('whetstone')
+      // glass_cannon → refunded (25 coins), removed from list
+      expect(migrated?.unlockedRelicIds).not.toContain('glass_cannon')
+      expect(migrated?.masteryCoins).toBe(35) // 10 + 25 refund
+      // version bumped to 2
+      expect(migrated?.version).toBe(2)
+    })
+
+    it('does not re-run migration on a v2 save', () => {
+      const base = createNewPlayer('teen') as unknown as Record<string, unknown>
+      base.version = 2
+      base.unlockedRelicIds = ['iron_buckler'] // v1 ID still present — should NOT be migrated on v2 load
+
+      writeRawSave(base)
+      const migrated = load()
+
+      expect(migrated).not.toBeNull()
+      // Migration must NOT run for v2 saves — iron_buckler stays as-is
+      expect(migrated?.unlockedRelicIds).toContain('iron_buckler')
+    })
+
+    it('persists the migrated save so migration only runs once', () => {
+      const base = createNewPlayer('teen') as unknown as Record<string, unknown>
+      base.version = 1
+      base.unlockedRelicIds = ['iron_buckler']
+
+      writeRawSave(base)
+      // First load — migration runs
+      load()
+
+      // Second load — must not re-run migration (version is now 2 in storage)
+      const secondLoad = JSON.parse(localStorage.getItem(activeSaveKey()) ?? '{}') as Record<string, unknown>
+      expect(secondLoad['version']).toBe(2)
+      // Confirms iron_buckler was replaced in persisted data
+      expect((secondLoad['unlockedRelicIds'] as string[])).toContain('iron_shield')
+      expect((secondLoad['unlockedRelicIds'] as string[])).not.toContain('iron_buckler')
+    })
+
+    it('runs migration when version field is absent (implicit v1)', () => {
+      const base = createNewPlayer('teen') as unknown as Record<string, unknown>
+      delete base.version
+      base.unlockedRelicIds = ['whetstone', 'flame_brand'] // flame_brand → drop
+
+      writeRawSave(base)
+      const migrated = load()
+
+      expect(migrated).not.toBeNull()
+      expect(migrated?.unlockedRelicIds).toContain('whetstone')
+      expect(migrated?.unlockedRelicIds).not.toContain('flame_brand')
+      expect(migrated?.version).toBe(2)
+    })
+  })
 })

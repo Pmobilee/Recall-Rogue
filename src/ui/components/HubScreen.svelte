@@ -70,8 +70,8 @@
   let transitionDepthUrl = $state('')
 
   // Hub container element refs for campfire center calculation and mouse proximity
-  let hubCenterEl: HTMLElement | undefined
-  let campHubEl: HTMLElement | undefined
+  let hubCenterEl = $state<HTMLElement | undefined>()
+  let campHubEl = $state<HTMLElement | undefined>()
 
   // Mouse tracking state — used for cursor light, glow canvas, and sprite proximity
   let mouseX = $state<number | undefined>(undefined)
