@@ -1,0 +1,480 @@
+deck_id: spanish_b2_grammar
+name: "Spanish B2 Grammar"
+domain: vocabulary
+sub_domain: spanish_grammar
+target_facts: 550
+minimum_facts: 400
+language: es
+
+data_sources:
+  - name: Instituto Cervantes PCIC B2 Grammar Inventory
+    url: https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/niveles/03_gramatica_inventario_b1-b2.htm
+    license: Reference only — scope/structure. Instituto Cervantes, 2011.
+    usage: Authoritative B2 grammar scope. Determines which grammar points are included and their canonical descriptions.
+  - name: Tatoeba
+    url: https://tatoeba.org/
+    license: CC BY 2.0
+    usage: Verified example sentences with Spanish text + English translation + sentence ID. All sentence IDs documented in tatoeba_b2_sentences.tsv.
+
+# -----------------------------------------------------------------
+# Chain Themes (8 grammar areas — B1 advice to split subjunctive honored):
+#   0 — imperfect_subjunctive : -ra forms (regular + irregulars)
+#   1 — compound_subjunctive  : present perfect subj (haya+PP) + pluperfect subj (hubiera+PP)
+#   2 — si_clauses_full       : type 2 (imp. subj + conditional), type 3 (plup. subj + cond. perfect), mixed
+#   3 — compound_tenses       : future perfect (habré+PP) + conditional perfect (habría+PP)
+#   4 — passive_voice         : ser+PP (with por-agent), se-passive (expansion), estar+PP (resultative)
+#   5 — reported_speech       : tense backshift + reporting verbs + imperative → imperfect subj
+#   6 — connectors_advanced   : concessive / causal / consecutive / temporal+subj / conditional+subj
+#   7 — por_para_advanced     : full por/para system — all uses, confusable pairs
+#
+# Answer Type Pools (split aggressively for homogeneity):
+#   imp_subj_ra_ar             : hablara, hablaras, hablara, habláramos... (-ar -ra forms)
+#   imp_subj_ra_er_ir          : comiera, viviera, aprendiera... (-er/-ir -ra forms)
+#   imp_subj_ra_irregulars     : fuera, tuviera, hiciera, dijera, pudiera, supiera, pusiera, viniera, quisiera, estuviera
+#   imp_subj_se_ar             : hablase, hablases, hablase, hablásemos... (-ar -se forms)
+#   imp_subj_se_er_ir          : comiese, viviese, aprendiese... (-er/-ir -se forms)
+#   imp_subj_se_irregulars     : fuese, tuviese, hiciese, dijese, pudiese, supiese, pusiese, viniese, quisiese, estuviese
+#   haber_subj_present         : haya, hayas, haya, hayamos, hayáis, hayan (forms in context)
+#   haber_subj_pluperfect      : hubiera/hubiese + past participle constructions
+#   si_clause_type2            : full si-type-2 sentences (homogeneityExempt: variable length)
+#   si_clause_type3            : full si-type-3 sentences (homogeneityExempt: variable length)
+#   si_clause_mixed            : mixed conditional constructions (homogeneityExempt)
+#   haber_future               : habré, habrás, habrá, habremos, habréis, habrán (forms in context)
+#   haber_conditional          : habría, habrías, habría, habríamos, habríais, habrían (forms in context)
+#   passive_ser_pp             : past participle forms in ser passive (written, signed, built, etc.)
+#   passive_se_pattern         : se-passive constructions (homogeneityExempt)
+#   passive_estar_pp           : past participle forms with estar (cerrada, terminado, firmado, etc.)
+#   reported_speech_tense      : backshift verb forms (past tense → pluperfect, future → conditional, etc.)
+#   reported_speech_imperative : reporting imperatives as imperfect subjunctive constructions
+#   concessive_connectors      : aunque, a pesar de que, por mucho que, por más que, aun cuando
+#   causal_connectors          : puesto que, ya que, dado que, debido a (que), visto que
+#   consecutive_connectors     : por lo tanto, así que, de modo que, de manera que, por consiguiente, en consecuencia
+#   temporal_subj_connectors   : en cuanto, tan pronto como, cuando, hasta que, mientras, después de que (+ subj, future)
+#   conditional_connectors     : a menos que, con tal de que, siempre que, en caso de que, a condición de que
+#   por_advanced               : por in various roles: cause, agent, exchange, duration, through, per, on behalf of
+#   para_advanced              : para in various roles: purpose, recipient, destination, deadline, opinion, contrast
+# -----------------------------------------------------------------
+
+chain_themes:
+  - id: 0
+    name: "Imperfect Subjunctive"
+    description: "Imperfecto de subjuntivo — both -ra and -se variants, regular and irregular (fuera, tuviera, hiciera, dijera, pudiera)"
+    color: "#8E44AD"
+    icon: "verb"
+  - id: 1
+    name: "Compound Subjunctive"
+    description: "Present perfect subjunctive (haya hablado) + pluperfect subjunctive (hubiera/hubiese hablado)"
+    color: "#9B59B6"
+    icon: "verb"
+  - id: 2
+    name: "Si-Clauses: Full System"
+    description: "Type 2 hypothetical (si tuviera... haría) + Type 3 counterfactual (si hubiera tenido... habría hecho) + mixed conditionals"
+    color: "#E74C3C"
+    icon: "structure"
+  - id: 3
+    name: "Compound Tenses"
+    description: "Future perfect (habré hecho) + conditional perfect (habría hecho) — compound tense formation and uses"
+    color: "#3498DB"
+    icon: "verb"
+  - id: 4
+    name: "Passive Voice"
+    description: "Ser + past participle (action passive) + se-passive (impersonal) + estar + past participle (resultative state)"
+    color: "#1ABC9C"
+    icon: "structure"
+  - id: 5
+    name: "Reported Speech"
+    description: "Estilo indirecto — tense backshift rules + reporting verbs + imperative becomes imperfect subjunctive"
+    color: "#E67E22"
+    icon: "phrase"
+  - id: 6
+    name: "Advanced Connectors"
+    description: "Concessive (aunque + subj, por mucho que) + causal (puesto que, dado que) + consecutive (por lo tanto, así que) + temporal/conditional with subjunctive"
+    color: "#27AE60"
+    icon: "connector"
+  - id: 7
+    name: "Por vs. Para: Advanced"
+    description: "Full por/para system — cause, agent, exchange, duration, through, per vs. purpose, recipient, destination, deadline, opinion"
+    color: "#F39C12"
+    icon: "preposition"
+
+# -----------------------------------------------------------------
+# Answer Type Pools — grammar form groupings for distractor selection
+# All pools target factIds.length + syntheticDistractors.length >= 15
+# -----------------------------------------------------------------
+
+answer_type_pools:
+  imp_subj_ra_ar:
+    description: "Imperfect subjunctive -ra forms: regular -ar verbs (hablara, llegaras, trabajaran...)"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "cantara"
+      - "cantaras"
+      - "cantáramos"
+      - "descansara"
+      - "descansaras"
+      - "llamara"
+      - "llamaras"
+      - "esperara"
+      - "esperaras"
+      - "pasara"
+
+  imp_subj_ra_er_ir:
+    description: "Imperfect subjunctive -ra forms: regular -er/-ir verbs (comiera, viviera, aprendiera...)"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "corriera"
+      - "corrieras"
+      - "leyera"
+      - "leyeras"
+      - "bebiera"
+      - "bebieras"
+      - "rompiera"
+      - "rompieras"
+      - "saliera"
+      - "salieras"
+
+  imp_subj_ra_irregulars:
+    description: "Imperfect subjunctive -ra forms: irregular verbs (fuera, tuviera, hiciera, dijera, pudiera, supiera, pusiera, viniera, quisiera, estuviera)"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "trajera"
+      - "trajeras"
+      - "diera"
+      - "dieras"
+      - "cayera"
+      - "cayeras"
+      - "leyera"
+      - "durmiera"
+      - "pidiera"
+      - "siguiera"
+
+  imp_subj_se_ar:
+    description: "Imperfect subjunctive -se forms: regular -ar verbs (hablase, llegases, trabajasen...)"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "cantase"
+      - "cantases"
+      - "descansase"
+      - "llamase"
+      - "llamases"
+      - "esperase"
+      - "esperases"
+      - "pasase"
+      - "pasases"
+      - "mirases"
+
+  imp_subj_se_er_ir:
+    description: "Imperfect subjunctive -se forms: regular -er/-ir verbs (comiese, viviese, aprendiese...)"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "corriese"
+      - "corrieses"
+      - "bebiese"
+      - "bebieses"
+      - "rompiese"
+      - "rompieses"
+      - "saliese"
+      - "salieses"
+      - "leyese"
+      - "entendiese"
+
+  imp_subj_se_irregulars:
+    description: "Imperfect subjunctive -se forms: irregular verbs (fuese, tuviese, hiciese, dijese, pudiese, supiese, pusiese, viniese, quisiese, estuviese)"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "trajese"
+      - "trajeses"
+      - "diese"
+      - "dieses"
+      - "cayese"
+      - "cayeses"
+      - "durmiese"
+      - "pidiese"
+      - "siguiese"
+      - "oyese"
+
+  haber_subj_present:
+    description: "Present perfect subjunctive: haya/hayas/haya/hayamos/hayáis/hayan forms in context"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "ha llegado"
+      - "has llegado"
+      - "había llegado"
+      - "hayas llegado — ¡correcto!"
+      - "hube llegado"
+      - "habría llegado"
+      - "he terminado"
+      - "habrá terminado"
+      - "hubiera terminado"
+      - "habiendo terminado"
+
+  haber_subj_pluperfect:
+    description: "Pluperfect subjunctive: hubiera/hubiese + past participle constructions"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Mixed compound constructions: hubiera + various past participles; inherent length variation"
+    syntheticDistractors:
+      - "habría llegado"
+      - "habría venido"
+      - "habría dicho"
+      - "había llegado"
+      - "hubiese terminado"
+      - "hubieran salido"
+      - "hubiese pedido"
+      - "habrían ido"
+      - "hubiéramos visto"
+      - "hubierais comido"
+
+  si_clause_type2:
+    description: "Si-clause type 2 hypothetical: si + imperfect subjunctive + conditional (full sentences)"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Full conditional sentences with inherent length variation between subjects and verbs"
+    syntheticDistractors:
+      - "si tienes dinero, compras un coche"
+      - "si tendrías dinero, comprarías un coche"
+      - "si tengas dinero, comprarías un coche"
+      - "si has tenido dinero, comprarás un coche"
+      - "si tenías dinero, compraste un coche"
+      - "si tendrás dinero, comprarás un coche"
+      - "si tendría más tiempo, estudiaría más"
+      - "si habría sabido, habría venido"
+      - "si supiste la respuesta, la dijiste"
+      - "si puedes venir, me alegrarías"
+
+  si_clause_type3:
+    description: "Si-clause type 3 counterfactual past: si + pluperfect subjunctive + conditional perfect"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Full counterfactual sentences with inherent length variation"
+    syntheticDistractors:
+      - "si hubiera estudiado, aprobé"
+      - "si habría estudiado, habría aprobado"
+      - "si estudiaría más, habría aprobado"
+      - "si había estudiado más, habría aprobado"
+      - "si hubiera estudiado, aprobaría ahora"
+      - "si habría llegado antes, habría visto"
+      - "si hubiera llegado antes, había visto"
+      - "si llegaste antes, habrías visto"
+      - "si hubiera sabido, no vengo"
+      - "si hubiese pedido, me habrías ayudado"
+
+  si_clause_mixed:
+    description: "Mixed conditionals: past si-clause with present consequence (or vice versa)"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Mixed conditional sentences have inherent structural length variation"
+    syntheticDistractors:
+      - "si hubiera estudiado medicina, habría sido médico"
+      - "si estudiaría medicina, sería médico ahora"
+      - "si hubiera comido menos, estaría sano"
+      - "si comería menos, estaré sano"
+      - "si habría nevado ayer, hará menos frío hoy"
+      - "si hubiera nevado ayer, haría menos frío ahora"
+      - "si no habría venido, no habría conocido"
+      - "si no venías, no conocerías"
+
+  haber_future:
+    description: "Future perfect: habré/habrás/habrá/habremos/habréis/habrán forms in context"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "habría terminado"
+      - "ha terminado"
+      - "había terminado"
+      - "hube terminado"
+      - "habrías llegado"
+      - "habré comido — ¡sí!"
+      - "habremos visto"
+      - "habréis salido"
+      - "habrán llegado — ya"
+      - "habiendo terminado ya"
+
+  haber_conditional:
+    description: "Conditional perfect: habría/habrías/habría/habríamos/habríais/habrían forms in context"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "habré terminado"
+      - "había terminado"
+      - "hubiera terminado"
+      - "hubiese terminado"
+      - "habrías llegado — no"
+      - "habríamos visto antes"
+      - "habríais podido"
+      - "habrían hecho más"
+      - "habiendo podido ayudar"
+      - "habría — correcto"
+
+  passive_ser_pp:
+    description: "Past participle forms in ser-passive (written, sent, built, signed, founded...)"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "cocinado"
+      - "cocinada"
+      - "lavado"
+      - "lavada"
+      - "pintado"
+      - "pintada"
+      - "vendido"
+      - "vendida"
+      - "comprado"
+      - "comprada"
+
+  passive_se_pattern:
+    description: "Se-passive constructions showing impersonal passive in various tenses"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Se-passive constructions vary in length due to different subject nouns and tense forms"
+    syntheticDistractors:
+      - "se habla cinco idiomas"
+      - "se vendemos pisos aquí"
+      - "se construía tres puentes"
+      - "se necesitamos trabajadores"
+      - "se alquilen habitaciones"
+      - "se firmaron — bien"
+      - "se hablan — correcto"
+      - "se venden — bien hecho"
+
+  passive_estar_pp:
+    description: "Past participle forms with estar showing resultative state (cerrada, terminado, firmado...)"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "cocinado"
+      - "cocinada"
+      - "lavado"
+      - "lavada"
+      - "pintado"
+      - "pintada"
+      - "preparado"
+      - "preparada"
+      - "roto"
+      - "rota"
+
+  reported_speech_tense:
+    description: "Reported speech: backshifted verb forms (was/had been/would) in indirect speech context"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Indirect speech constructions vary in length due to different verbs and context"
+    syntheticDistractors:
+      - "dijo que está cansado"
+      - "dijo que estará cansado"
+      - "dijo que ha llegado tarde"
+      - "dijo que llegará tarde"
+      - "explicó que vendría — sí"
+      - "explicó que vendrá mañana"
+      - "afirmó que lo sabe todo"
+      - "prometió que está allí"
+      - "aseguró que ha pagado — no"
+      - "contó que vivió en Madrid"
+
+  reported_speech_imperative:
+    description: "Reported imperatives as imperfect subjunctive constructions (le dijo que viniera, le pidió que ayudara...)"
+    homogeneityExempt: true
+    homogeneityExemptNote: "These constructions vary in length due to different reporting verbs and content"
+    syntheticDistractors:
+      - "le dijo que venga inmediatamente"
+      - "le dijo que vino inmediatamente"
+      - "le pidió que le ayude"
+      - "le pidió que le ayudó"
+      - "le aconsejé que descanse"
+      - "le aconsejé que ha descansado"
+      - "le ordenó que saliera — bien"
+      - "me pidió que no diga nada"
+
+  concessive_connectors:
+    description: "Concessive connectors: aunque, a pesar de que, por mucho que, por más que, aun cuando"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "porque"
+      - "ya que"
+      - "puesto que"
+      - "dado que"
+      - "sin embargo"
+      - "no obstante"
+      - "pero"
+      - "así que"
+      - "por lo tanto"
+      - "cuando"
+
+  causal_connectors:
+    description: "Causal connectors: puesto que, ya que, dado que, debido a (que), visto que"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "aunque"
+      - "sin embargo"
+      - "por lo tanto"
+      - "así que"
+      - "a menos que"
+      - "con tal de que"
+      - "mientras"
+      - "hasta que"
+      - "en cuanto"
+      - "no obstante"
+
+  consecutive_connectors:
+    description: "Consecutive connectors: por lo tanto, así que, de modo que, de manera que, por consiguiente, en consecuencia"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "porque"
+      - "ya que"
+      - "aunque"
+      - "a pesar de que"
+      - "sin embargo"
+      - "no obstante"
+      - "mientras"
+      - "hasta que"
+      - "con tal de que"
+      - "a menos que"
+
+  temporal_subj_connectors:
+    description: "Temporal connectors that take subjunctive for future events: en cuanto, tan pronto como, cuando, hasta que, mientras, después de que"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "porque"
+      - "aunque"
+      - "dado que"
+      - "puesto que"
+      - "por lo tanto"
+      - "a menos que"
+      - "con tal de que"
+      - "a pesar de que"
+      - "por mucho que"
+      - "sin embargo"
+
+  conditional_connectors:
+    description: "Conditional connectors with subjunctive: a menos que, con tal de que, siempre que, en caso de que, a condición de que"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "cuando"
+      - "en cuanto"
+      - "hasta que"
+      - "mientras"
+      - "aunque"
+      - "a pesar de que"
+      - "ya que"
+      - "puesto que"
+      - "por lo tanto"
+      - "así que"
+
+  por_advanced:
+    description: "Por in advanced roles: cause, passive agent, exchange, duration, through/along, per/rate, on behalf of, medium"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "para"
+      - "por — incorrecto aquí"
+      - "a"
+      - "en"
+      - "de"
+      - "con"
+      - "sobre"
+      - "desde"
+      - "hasta"
+      - "hacia"
+
+  para_advanced:
+    description: "Para in advanced roles: purpose, recipient, destination, deadline, opinion, unexpected contrast, employment"
+    homogeneityExempt: false
+    syntheticDistractors:
+      - "por"
+      - "a"
+      - "en"
+      - "de"
+      - "con"
+      - "sobre"
+      - "desde"
+      - "hasta"
+      - "hacia"
+      - "sin"

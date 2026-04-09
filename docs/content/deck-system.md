@@ -151,6 +151,7 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | `spanish_a1_grammar_arch.yaml` | `spanish_a1_grammar` | complete — live | 134 | PCIC A1-scoped; 8 named chain themes, 14 answer pools, 8 sub-decks; sentences from Tatoeba CC BY 2.0; first Spanish grammar deck. 2026-04-09. |
 | `spanish_a2_grammar_arch.yaml` | `spanish_a2_grammar` | complete — live | 177 | PCIC A2-scoped; 8 named chain themes, 25 answer pools, 8 sub-decks; 94.4% Tatoeba sentences; 2nd Spanish grammar deck. 2026-04-09. |
 | `spanish_b1_grammar_arch.yaml` | `spanish_b1_grammar` | complete — live | 175 | PCIC B1-scoped; 8 named chain themes, 24 answer pools, 8 sub-decks; 82.3% Tatoeba sentences; 3rd Spanish grammar deck; assembled from 9 batch files. 2026-04-09. |
+| `spanish_b2_grammar_arch.yaml` | `spanish_b2_grammar` | complete — live | 176 | PCIC B2-scoped; 8 named chain themes, 25 answer pools, 8 sub-decks; 90.9% Tatoeba sentences; 4th Spanish grammar deck (completes A1–B2 suite). Topics: imperfect subjunctive (-ra/-se), compound subjunctive, si-clauses types 2/3/mixed, future/conditional perfect, passive voice, reported speech, advanced connectors, full por/para system. 2026-04-10. |
 
 The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
 
@@ -2188,3 +2189,40 @@ The `spanish_a1_grammar` deck establishes these conventions for A1–B2 Spanish 
 - Verbal periphrases: acabar de, volver a, seguir, llevar + gerundio
 
 **Language coverage note:** As of 2026-04-09, 3 of 4 planned Spanish grammar decks (A1–B2) are complete. B2 is next.
+
+## spanish_b2_grammar Deck
+
+`data/decks/spanish_b2_grammar.json` — generated 2026-04-10. Fourth and final deck in the Spanish grammar suite (A1–B2). Covers all major PCIC B2 grammar challenges: imperfect subjunctive in both -ra and -se variants (regular + 11 irregular stems), present perfect subjunctive (haya + PP), pluperfect subjunctive (hubiera/hubiese + PP), si-clauses types 2 and 3 and mixed conditionals, future perfect, conditional perfect, passive voice (ser+PP, se-passive, estar+PP), reported speech with full tense backshift, advanced connectors, and the complete por/para system.
+
+| Field | Value |
+|-------|-------|
+| `id` | `spanish_b2_grammar` |
+| `domain` | `vocabulary` |
+| `subDomain` | `spanish_grammar` |
+| `language` | `es` |
+| `facts` | 176 |
+| `chainThemes` | 8 (Imperfect Subjunctive, Compound Subjunctive, Si-Clauses Full System, Compound Tenses, Passive Voice, Reported Speech, Advanced Connectors, Por vs. Para Advanced) |
+| `answerTypePools` | 25 |
+| `subDecks` | 8 |
+| `examTags` | `["CEFR_B2"]` |
+| `minimumFacts` | 150 |
+| `targetFacts` | 500 |
+| `sourceRef` | Tatoeba (CC BY 2.0): 90.9% — PCIC-pattern: 9.1% |
+
+**Key B2 additions over B1:**
+- **Imperfect subjunctive** — the largest new B2 topic: 54 facts across 6 pools (-ra -ar, -ra -er/-ir, -ra irregulars, -se -ar, -se -er/-ir, -se irregulars)
+- **Compound subjunctive** — present perfect subj (haya hablado) and pluperfect subj (hubiera/hubiese hablado)
+- **Si-clauses types 2 and 3** — hypothetical present (si tuviera...haría) and counterfactual past (si hubiera tenido...habría hecho), plus mixed conditionals
+- **Compound tenses** — future perfect (habré hecho) and conditional perfect (habría hecho)
+- **Passive voice** — ser+PP (true passive with por-agent), se-passive (impersonal), estar+PP (resultative state distinction)
+- **Reported speech** — tense backshift rules + imperative → imperfect subjunctive in indirect speech
+- **Advanced connectors** — concessive (aunque+subj/indic, por mucho que, a pesar de que), causal (puesto que, ya que, dado que), consecutive (por lo tanto, así que, de modo que), temporal+subj (en cuanto, tan pronto como, cuando, hasta que, mientras), conditional+subj (a menos que, con tal de que, siempre que, en caso de que)
+- **Full por/para** — all 8 uses of por and 7 uses of para, including confusable pairs
+
+**Architecture files:**
+- `data/deck-architectures/spanish_b2_grammar_arch.yaml` — grammar points with PCIC references and verified sentences
+- `data/deck-architectures/_research/spanish/pcic_b2_grammar_scope.md` — PCIC B2 scope document
+- `data/deck-architectures/_research/spanish/tatoeba_b2_sentences.tsv` — 225 verified Tatoeba sentences (CC BY 2.0)
+- `scripts/assemble-b2-deck.mjs` — assembly script (reads all b2_batch*.json from data/decks/_wip/)
+
+**Language coverage note:** As of 2026-04-10, all 4 planned Spanish grammar decks (A1–B2) are complete. Spanish grammar suite totals: A1 (134) + A2 (177) + B1 (175) + B2 (176) = **662 facts**. C1/C2 grammar decks are future work.
