@@ -1258,6 +1258,7 @@ The UN and EU decks have exceptionally clean pool structures — both organizati
 
 | Date Started | Deck ID | Phase | Facts Target | Sub-decks | Notes |
 |---|---|---|---|---|---|
-| 2026-04-09 | `fifa_world_cup` | **Discover complete** → Architect next | 300 | 5 | Architecture YAML written. BLOCKER: Add `sports_entertainment` to CanonicalFactDomain before architect phase. Provenance: `docs/deck-provenance/fifa_world_cup_discover.md`. Architecture: `data/deck-architectures/fifa_world_cup_arch.yaml`. |
+| 2026-04-09 | `fifa_world_cup` | **Shipped** (181 facts) | 300 | 5 | Shipped 2026-04-09. Domain `sports_entertainment` added. Provenance: `docs/deck-provenance/fifa_world_cup_discover.md`. Architecture: `data/deck-architectures/fifa_world_cup_arch.yaml`. |
+| 2026-04-09 | `olympics` | **Discover complete** → Architect next | 300 | 5 | Architecture YAML written. Domain `sports_entertainment` already wired (no TypeScript changes needed). Provenance: `docs/deck-provenance/olympics_discover.md`. Architecture: `data/deck-architectures/olympics_arch.yaml`. 135+ verified data points across 30 Summer + 24 Winter editions, 35+ legendary athletes, 20 iconic moments. |
 
-*Last updated: 2026-04-09 by content-agent (FIFA World Cup discover phase complete)*
+*Last updated: 2026-04-09 by content-agent (Olympics discover phase complete)*

@@ -1,0 +1,1494 @@
+deck_id: olympics
+deck_name: "Olympic Games"
+domain: sports_entertainment
+subDomain: Olympics
+status: discover_complete
+discovered: 2026-04-09
+target_fact_count: 300
+
+# ============================================================
+# SOURCES
+# ============================================================
+sources:
+  - name: Wikipedia (List of Olympic Games host cities)
+    url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [All Summer and Winter Olympic host cities and years, cancelled editions, notable firsts]
+
+  - name: Wikipedia (Summer Olympic Games)
+    url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [Summer editions list, top nation per games, competitor counts, year/city table]
+
+  - name: Wikipedia (All-time Olympic Games medal table)
+    url: https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [All-time medal counts by nation, Summer/Winter split, special cases Germany/Russia/China]
+
+  - name: Wikipedia (List of multiple Olympic gold medalists)
+    url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [Top gold medal winners ranked, sport/nation/games type, total career medals]
+
+  - name: Wikipedia (Michael Phelps)
+    url: https://en.wikipedia.org/wiki/Michael_Phelps
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [28 total medals (23 gold), swimming, USA, games 2000-2016]
+
+  - name: Wikipedia (Usain Bolt)
+    url: https://en.wikipedia.org/wiki/Usain_Bolt
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [8 Olympic gold medals, 100m WR 9.58s (2009), 200m WR 19.19s (2009), Jamaica, 2008-2016]
+
+  - name: Wikipedia (Jesse Owens)
+    url: https://en.wikipedia.org/wiki/Jesse_Owens
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [4 gold medals 1936 Berlin (100m, 200m, long jump, 4x100m relay), USA]
+
+  - name: Wikipedia (Bob Beamon)
+    url: https://en.wikipedia.org/wiki/Bob_Beamon
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [8.90m long jump world record at 1968 Mexico City, stood as WR until 1991]
+
+  - name: Wikipedia (Miracle on Ice)
+    url: https://en.wikipedia.org/wiki/Miracle_on_Ice
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [USA 4-3 Soviet Union, Feb 22 1980, Lake Placid, ice hockey, USA went on to win gold]
+
+  - name: Wikipedia (Nadia Comaneci)
+    url: https://en.wikipedia.org/wiki/Nadia_Com%C4%83neci
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [First perfect 10 in Olympic gymnastics history (July 18 1976 Montreal), 7 perfect 10s total, 5 medals (3 gold), age 14, Romania]
+
+  - name: Wikipedia (Mark Spitz)
+    url: https://en.wikipedia.org/wiki/Mark_Spitz
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [7 gold medals at 1972 Munich each setting a world record, USA, swimming]
+
+  - name: Wikipedia (Carl Lewis)
+    url: https://en.wikipedia.org/wiki/Carl_Lewis
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [9 Olympic gold medals, 4 golds at 1984 LA, 1984-1996, USA, sprinting/long jump]
+
+  - name: Wikipedia (Michael Johnson sprinter)
+    url: https://en.wikipedia.org/wiki/Michael_Johnson_(sprinter)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [Only man to win 200m and 400m at same Olympics (1996 Atlanta), gold shoes, USA]
+
+  - name: Wikipedia (Cathy Freeman)
+    url: https://en.wikipedia.org/wiki/Cathy_Freeman
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [400m gold 2000 Sydney, lit Olympic cauldron, Aboriginal Australian]
+
+  - name: Wikipedia (Simone Biles)
+    url: https://en.wikipedia.org/wiki/Simone_Biles
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [7 Olympic golds (2016 + 2024), 11 total medals, most decorated US gymnast, USA]
+
+  - name: Wikipedia (Katie Ledecky)
+    url: https://en.wikipedia.org/wiki/Katie_Ledecky
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [9 Olympic golds, 14 total medals (as of 2024), swimming freestyle, USA, 2012-2024]
+
+  - name: Wikipedia (Munich massacre)
+    url: https://en.wikipedia.org/wiki/Munich_massacre
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [5 September 1972, 1972 Munich Olympics, Black September attack on Israeli team, 11 Israeli victims, 1 German officer killed]
+
+  - name: Wikipedia (1980 Summer Olympics boycott)
+    url: https://en.wikipedia.org/wiki/1980_Summer_Olympics_boycott
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [USA-led boycott of 1980 Moscow Games following Soviet invasion of Afghanistan, approximately 65 nations boycotted]
+
+  - name: Wikipedia (1984 Summer Olympics boycott)
+    url: https://en.wikipedia.org/wiki/1984_Summer_Olympics_boycott
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [Soviet-led boycott of 1984 Los Angeles Games, approximately 14 Eastern Bloc nations, retaliation for 1980 boycott]
+
+  - name: Wikipedia (Eddie Eagan)
+    url: https://en.wikipedia.org/wiki/Eddie_Eagan
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [Only person to win gold in both Summer (1920 Antwerp boxing light-heavyweight) and Winter (1932 Lake Placid bobsled four-man) Olympics]
+
+  - name: Wikipedia (Olympic flame)
+    url: https://en.wikipedia.org/wiki/Olympic_flame
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [First symbolic flame at 1928 Amsterdam; torch relay introduced 1936 Berlin by Carl Diem, 3,331 runners, 12 days, 3,187 km from Olympia to Berlin]
+
+  - name: Wikipedia (Larisa Latynina)
+    url: https://en.wikipedia.org/wiki/Larisa_Latynina
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [18 total Olympic medals (9 gold), gymnastics, Soviet Union, 1956-1964; held most Olympic medals record until Phelps 2012]
+
+  - name: Wikipedia (Paavo Nurmi)
+    url: https://en.wikipedia.org/wiki/Paavo_Nurmi
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [9 gold medals (12 total), distance running, Finland, 1920-1928]
+
+  - name: Wikipedia (Bjorn Daehlie)
+    url: https://en.wikipedia.org/wiki/Bj%C3%B8rn_D%C3%A6hlie
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [8 Olympic gold medals (12 total), cross-country skiing, Norway, 1992-1998; most decorated Winter Olympian at retirement]
+
+  - name: Wikipedia (Ole Einar Bjoerndalen)
+    url: https://en.wikipedia.org/wiki/Ole_Einar_Bj%C3%B8rndalen
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [8 Olympic gold medals (14 total), biathlon, Norway, 1998-2014]
+
+  - name: Wikipedia (Birgit Fischer)
+    url: https://en.wikipedia.org/wiki/Birgit_Fischer
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [8 Olympic gold medals (12 total), canoeing, East Germany/Germany, 1980-2004; won gold at age 18 (1980) and age 42 (2004)]
+
+  - name: Wikipedia (Marit Bjoergen)
+    url: https://en.wikipedia.org/wiki/Marit_Bj%C3%B8rgen
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [8 Olympic golds (15 total), cross-country skiing, Norway, 2002-2018; most decorated Winter Olympian of all time by total medals]
+
+# ============================================================
+# WIKIDATA SPARQL NOTE
+# ============================================================
+wikidata_sparql_note: >
+  The mcp__wikidata__query tool was not tested in this session (failed in FIFA discover;
+  Wikipedia was used as primary source following the FIFA precedent). All data points
+  have Wikipedia source URLs. The architect phase should retry Wikidata SPARQL for
+  structured medal-count data and cross-reference.
+
+# ============================================================
+# SUB-DECK 1: Summer Olympics — Games
+# ============================================================
+sub_decks:
+  - id: summer_olympics_games
+    name: "Summer Games — Host & History"
+    chain_theme: "Summer Games"
+    chain_theme_id: 0
+    estimated_facts: 90
+    notes: >
+      ~3 facts per edition × 29 editions = ~87 facts.
+      Covers: host city/country, year, notable first/record, top medal nation, opening ceremony notable.
+      SKIP: 1916 (WWI cancelled), 1940 (WWII cancelled), 1944 (WWII cancelled).
+      NOTE: 1906 Intercalated Games are NOT IOC-recognized — exclude entirely.
+      NOTE: 2020 Tokyo held in 2021 due to COVID-19 — use "2020 Summer Olympics" as the official name.
+
+    verified_data:
+      - edition: 1
+        year: 1896
+        host_city: Athens
+        host_country: Greece
+        top_medal_nation: United States
+        notable: "First modern Olympic Games; organized by Pierre de Coubertin; 14 nations, 241 athletes, 9 sports"
+        notable_first: "First modern Olympics since ancient Greek era ended in 393 CE"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 2
+        year: 1900
+        host_city: Paris
+        host_country: France
+        top_medal_nation: United States
+        notable: "Part of World's Fair; first Games to allow women; 997 athletes, 26 nations"
+        notable_first: "First Olympic Games to include women athletes"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 3
+        year: 1904
+        host_city: St. Louis
+        host_country: United States
+        top_medal_nation: United States
+        notable: "Part of Louisiana Purchase Exposition World's Fair; only 12 non-US nations competed due to travel cost"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 4
+        year: 1908
+        host_city: London
+        host_country: Great Britain
+        top_medal_nation: Great Britain
+        notable: "Originally awarded to Rome; moved to London after Mount Vesuvius eruption (1906). First marathon measured at 26.2 miles to accommodate royal family viewing"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 5
+        year: 1912
+        host_city: Stockholm
+        host_country: Sweden
+        top_medal_nation: United States
+        notable: "First use of electrical timing and photo-finish technology. First Games with athletes from all 5 continents"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: "1916 CANCELLED"
+        year: 1916
+        host_city: Berlin
+        host_country: Germany
+        cancelled_reason: "World War I"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 6
+        year: 1920
+        host_city: Antwerp
+        host_country: Belgium
+        top_medal_nation: United States
+        notable: "First Games after WWI; Olympic flag with five rings debuted; Olympic oath introduced"
+        notable_first: "First use of the Olympic flag (five interlocking rings)"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 7
+        year: 1924
+        host_city: Paris
+        host_country: France
+        top_medal_nation: United States
+        notable: "Paavo Nurmi won 5 gold medals in 6 days. Inspired the film Chariots of Fire (Harold Abrahams, Eric Liddell)"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 8
+        year: 1928
+        host_city: Amsterdam
+        host_country: Netherlands
+        top_medal_nation: United States
+        notable: "First time Olympic flame lit at the Games (not a relay yet; employee of Amsterdam Electric Utility lit it)"
+        notable_first: "First Olympic flame at the Games"
+        source_url: https://en.wikipedia.org/wiki/Olympic_flame
+
+      - edition: 9
+        year: 1932
+        host_city: Los Angeles
+        host_country: United States
+        top_medal_nation: United States
+        notable: "First use of the Olympic Village for athletes. Great Depression reduced athlete attendance by ~50%"
+        notable_first: "First Olympic Village purpose-built for athletes"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 10
+        year: 1936
+        host_city: Berlin
+        host_country: Germany
+        top_medal_nation: Germany
+        notable: "Jesse Owens won 4 gold medals (100m, 200m, long jump, 4x100m relay), embarrassing Nazi regime's Aryan supremacy narrative. First Olympics broadcast on television. First torch relay from Olympia to host city."
+        notable_first: "First Olympic torch relay from Olympia to the host city (Carl Diem, Nazi Germany)"
+        source_url: https://en.wikipedia.org/wiki/Olympic_flame
+
+      - edition: 11
+        year: 1948
+        host_city: London
+        host_country: Great Britain
+        top_medal_nation: United States
+        notable: "First post-WWII Games; Germany and Japan excluded. Called 'Austerity Olympics' due to post-war rationing. First Games broadcast on BBC television."
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 12
+        year: 1952
+        host_city: Helsinki
+        host_country: Finland
+        top_medal_nation: United States
+        notable: "First Games for the Soviet Union; Cold War rivalry began. Emil Zatopek won marathon, 5000m, and 10000m in one week."
+        notable_first: "First Olympic Games for the Soviet Union"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 13
+        year: 1956
+        host_city: Melbourne
+        host_country: Australia
+        top_medal_nation: Soviet Union
+        notable: "First Games in Southern Hemisphere. Equestrian events held separately in Stockholm due to Australian quarantine laws. Soviet Union topped medal table for first time."
+        notable_first: "First Summer Olympics in the Southern Hemisphere"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 14
+        year: 1960
+        host_city: Rome
+        host_country: Italy
+        top_medal_nation: Soviet Union
+        notable: "Cassius Clay (later Muhammad Ali) won boxing light-heavyweight gold. Abebe Bikila of Ethiopia won marathon barefoot — first Black African Olympic champion."
+        notable_first: "First Olympic gold medal won by a Black African athlete (Abebe Bikila, marathon)"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 15
+        year: 1964
+        host_city: Tokyo
+        host_country: Japan
+        top_medal_nation: United States
+        notable: "First Olympics in Asia. South Africa banned for apartheid policies (ban lasted until 1992). Judo and volleyball added as Olympic sports."
+        notable_first: "First Summer Olympics in Asia"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 16
+        year: 1968
+        host_city: Mexico City
+        host_country: Mexico
+        top_medal_nation: United States
+        notable: "Bob Beamon's 8.90m long jump world record (stood until 1991). Tommie Smith and John Carlos raised Black Power fist salute on podium. High altitude (2,240m) aided sprint times."
+        notable_first: "First Olympics in Latin America"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 17
+        year: 1972
+        host_city: Munich
+        host_country: West Germany
+        top_medal_nation: Soviet Union
+        notable: "Mark Spitz won 7 gold medals (all world records) in swimming. Munich Massacre: Black September terrorists killed 11 Israeli athletes and coaches on Sept 5-6."
+        source_url: https://en.wikipedia.org/wiki/Munich_massacre
+
+      - edition: 18
+        year: 1976
+        host_city: Montreal
+        host_country: Canada
+        top_medal_nation: Soviet Union
+        notable: "Nadia Comaneci earned first perfect 10 in Olympic gymnastics history (July 18, 1976, uneven bars). 29 African nations boycotted over New Zealand's rugby tour of South Africa."
+        source_url: https://en.wikipedia.org/wiki/Nadia_Com%C4%83neci
+
+      - edition: 19
+        year: 1980
+        host_city: Moscow
+        host_country: Soviet Union
+        top_medal_nation: Soviet Union
+        notable: "USA-led boycott by approximately 65 nations protesting Soviet invasion of Afghanistan. USA, West Germany, Japan among boycotters. Soviet Union topped medal table."
+        source_url: https://en.wikipedia.org/wiki/1980_Summer_Olympics_boycott
+
+      - edition: 20
+        year: 1984
+        host_city: Los Angeles
+        host_country: United States
+        top_medal_nation: United States
+        notable: "Soviet-led boycott by 14 Eastern Bloc nations in retaliation for 1980 boycott. Carl Lewis won 4 gold medals emulating Jesse Owens (100m, 200m, long jump, 4x100m relay)."
+        source_url: https://en.wikipedia.org/wiki/1984_Summer_Olympics_boycott
+
+      - edition: 21
+        year: 1988
+        host_city: Seoul
+        host_country: South Korea
+        top_medal_nation: Soviet Union
+        notable: "Ben Johnson stripped of 100m gold after positive steroid test (Canadian sprinter). First Olympics in South Korea. First Games after end of apartheid-era boycotts began."
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 22
+        year: 1992
+        host_city: Barcelona
+        host_country: Spain
+        top_medal_nation: Unified Team
+        notable: "South Africa returned after 32-year apartheid ban. USA basketball Dream Team (Jordan, Bird, Magic) dominated. Unified Team (former Soviet states) competed together for last time."
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 23
+        year: 1996
+        host_city: Atlanta
+        host_country: United States
+        top_medal_nation: United States
+        notable: "Centennial Olympics. Michael Johnson won 200m (19.32 WR) and 400m — only man to win both at one Olympics. Centennial Olympic Park bombing killed 2."
+        source_url: https://en.wikipedia.org/wiki/Michael_Johnson_(sprinter)
+
+      - edition: 24
+        year: 2000
+        host_city: Sydney
+        host_country: Australia
+        top_medal_nation: United States
+        notable: "Cathy Freeman lit the cauldron and won 400m gold — powerful moment for Aboriginal Australian reconciliation. 'Best Olympics ever' per IOC. 200 nations, 10,651 athletes."
+        source_url: https://en.wikipedia.org/wiki/Cathy_Freeman
+
+      - edition: 25
+        year: 2004
+        host_city: Athens
+        host_country: Greece
+        top_medal_nation: United States
+        notable: "Olympics returned to birthplace in Athens for centennial of modern Games. Michael Phelps won 8 medals (6 gold) in debut full Olympics."
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 26
+        year: 2008
+        host_city: Beijing
+        host_country: China
+        top_medal_nation: China
+        notable: "Usain Bolt set 100m WR (9.69s later revised to 9.58s at 2009 Worlds) and 200m WR. Michael Phelps won 8 gold medals in one Games. China topped gold medal table for first time."
+        notable_first: "First Summer Olympics in China; China topped gold medal table"
+        source_url: https://en.wikipedia.org/wiki/Usain_Bolt
+
+      - edition: 27
+        year: 2012
+        host_city: London
+        host_country: Great Britain
+        top_medal_nation: United States
+        notable: "London became first city to host Summer Olympics three times (1908, 1948, 2012). Usain Bolt won 100m and 200m again. Michael Phelps surpassed Larisa Latynina for most Olympic medals ever."
+        notable_first: "First city to host Summer Olympics three times"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 28
+        year: 2016
+        host_city: Rio de Janeiro
+        host_country: Brazil
+        top_medal_nation: United States
+        notable: "First Olympics in South America. Simone Biles won 4 gold medals. Usain Bolt completed historic 100m-200m-relay triple for third consecutive Games."
+        notable_first: "First Summer Olympics in South America"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 29
+        year: 2020
+        host_city: Tokyo
+        host_country: Japan
+        top_medal_nation: United States
+        notable: "Postponed one year to 2021 due to COVID-19 pandemic — first Olympic postponement in history. Held without spectators. Simone Biles withdrew from team final citing mental health. Skateboarding, sport climbing, surfing, karate debuted."
+        notable_first: "First Olympic Games postponed (held in 2021)"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - edition: 30
+        year: 2024
+        host_city: Paris
+        host_country: France
+        top_medal_nation: United States
+        notable: "Paris hosted for third time (1900, 1924, 2024). Simone Biles won 3 more golds. Breaking (breakdancing) debuted as Olympic sport — and was immediately removed for 2028. Katie Ledecky won 2 more golds bringing total to 9."
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+# ============================================================
+# SUB-DECK 2: Winter Olympics — Games
+# ============================================================
+  - id: winter_olympics_games
+    name: "Winter Games — Host & History"
+    chain_theme: "Winter Games"
+    chain_theme_id: 1
+    estimated_facts: 55
+    notes: >
+      ~2-3 facts per edition × 24 editions = ~55 facts.
+      1924-2022. SKIP: 1940 (WWII cancelled), 1944 (WWII cancelled).
+      NOTE: 2022 Beijing = first city to host both Summer (2008) and Winter (2022) Olympics.
+
+    verified_data:
+      - edition: 1
+        year: 1924
+        host_city: Chamonix
+        host_country: France
+        notable: "Retroactively designated first Winter Olympics; originally called 'International Winter Sports Week'. Norway dominated."
+        top_medal_nation: Norway
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 2
+        year: 1928
+        host_city: St. Moritz
+        host_country: Switzerland
+        top_medal_nation: Norway
+        notable: "Sonja Henie (Norway) won figure skating gold at age 15. Second Winter Games; first outside France."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 3
+        year: 1932
+        host_city: Lake Placid
+        host_country: United States
+        top_medal_nation: United States
+        notable: "Eddie Eagan (USA) won bobsled gold — unique because he had won boxing gold at 1920 Summer Olympics, making him the only person to win gold in both Summer and Winter Games."
+        source_url: https://en.wikipedia.org/wiki/Eddie_Eagan
+
+      - edition: 4
+        year: 1936
+        host_city: Garmisch-Partenkirchen
+        host_country: Germany
+        top_medal_nation: Norway
+        notable: "Only Winter Games in Nazi Germany. Sonja Henie won third consecutive figure skating gold. Alpine skiing events first added."
+        notable_first: "Alpine skiing debuted at Winter Olympics"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: "1940 CANCELLED"
+        year: 1940
+        host_city: "Sapporo (then Garmisch-Partenkirchen)"
+        host_country: Japan
+        cancelled_reason: "World War II"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: "1944 CANCELLED"
+        year: 1944
+        host_city: Cortina d'Ampezzo
+        host_country: Italy
+        cancelled_reason: "World War II"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 5
+        year: 1948
+        host_city: St. Moritz
+        host_country: Switzerland
+        top_medal_nation: Norway
+        notable: "First post-WWII Winter Games; Germany and Japan excluded. Henri Oreiller (France) won two alpine skiing golds."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 6
+        year: 1952
+        host_city: Oslo
+        host_country: Norway
+        top_medal_nation: Norway
+        notable: "First Winter Olympics in Scandinavia. Sonja Henie's home city. First time torch relay used for Winter Games."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 7
+        year: 1956
+        host_city: Cortina d'Ampezzo
+        host_country: Italy
+        top_medal_nation: Soviet Union
+        notable: "Soviet Union's first Winter Olympics; immediately dominated. First Games broadcast on television in Europe. Toni Sailer (Austria) won all 3 alpine skiing events."
+        notable_first: "Soviet Union's first Winter Olympics"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 8
+        year: 1960
+        host_city: Squaw Valley
+        host_country: United States
+        top_medal_nation: Soviet Union
+        notable: "Biathlon and speed skating for women added. Walt Disney organized opening/closing ceremonies. First Games to use a computer for results scoring."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 9
+        year: 1964
+        host_city: Innsbruck
+        host_country: Austria
+        top_medal_nation: Soviet Union
+        notable: "Luge added as Olympic sport. Tony Nash and Robin Dixon (Great Britain) won bobsled gold despite equipment failures — helped by Eugenio Monti (Italy) who lent them a bolt."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 10
+        year: 1968
+        host_city: Grenoble
+        host_country: France
+        top_medal_nation: Norway
+        notable: "Jean-Claude Killy (France) won all 3 alpine skiing events. First use of drug testing at Winter Olympics."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 11
+        year: 1972
+        host_city: Sapporo
+        host_country: Japan
+        top_medal_nation: Soviet Union
+        notable: "First Winter Olympics in Asia. Sapporo was the first Asian city to host Winter Games."
+        notable_first: "First Winter Olympics in Asia"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 12
+        year: 1976
+        host_city: Innsbruck
+        host_country: Austria
+        top_medal_nation: Soviet Union
+        notable: "Originally awarded to Denver (Colorado) but US voters rejected funding in referendum — awarded to Innsbruck instead. Second time Innsbruck hosted."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 13
+        year: 1980
+        host_city: Lake Placid
+        host_country: United States
+        top_medal_nation: Soviet Union
+        notable: "'Miracle on Ice': USA ice hockey defeated heavily favored Soviet Union 4-3 (Feb 22, 1980), then beat Finland to win gold. Eric Heiden won all 5 individual speed skating events."
+        source_url: https://en.wikipedia.org/wiki/Miracle_on_Ice
+
+      - edition: 14
+        year: 1984
+        host_city: Sarajevo
+        host_country: Yugoslavia
+        top_medal_nation: East Germany
+        notable: "Jayne Torvill and Christopher Dean (Great Britain) received 12 perfect 6.0s for ice dance — all 9 judges gave perfect scores for artistic impression. Sarajevo later destroyed in 1990s Bosnian War."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 15
+        year: 1988
+        host_city: Calgary
+        host_country: Canada
+        top_medal_nation: Soviet Union
+        notable: "Eddie 'The Eagle' Edwards (Great Britain) became famous as the lovably last-place ski jumper. Jamaican bobsled team debuted. Katarina Witt (East Germany) won second consecutive figure skating gold."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 16
+        year: 1992
+        host_city: Albertville
+        host_country: France
+        top_medal_nation: Germany
+        notable: "Last Winter Olympics in same year as Summer Olympics. Unified Team (former Soviet states) competed together. Short-track speed skating added as official sport."
+        notable_first: "Last Winter Olympics held same year as Summer Olympics; Winter/Summer staggered from 1994 onward"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 17
+        year: 1994
+        host_city: Lillehammer
+        host_country: Norway
+        top_medal_nation: Russia
+        notable: "First Winter Games on staggered 4-year cycle (not same year as Summer). Nancy Kerrigan/Tonya Harding scandal. Dan Jansen (USA) finally won speed skating gold on last attempt. Bjørn Dæhlie won 2 golds."
+        notable_first: "First Winter Games on independent 4-year cycle from Summer Games"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 18
+        year: 1998
+        host_city: Nagano
+        host_country: Japan
+        top_medal_nation: Germany
+        notable: "NHL players allowed to compete for first time. Czech Republic beat Canada and Russia for ice hockey gold. Bjørn Dæhlie won 3 golds bringing career total to 8 gold, 12 medals."
+        source_url: https://en.wikipedia.org/wiki/Bj%C3%B8rn_D%C3%A6hlie
+
+      - edition: 19
+        year: 2002
+        host_city: Salt Lake City
+        host_country: United States
+        top_medal_nation: Norway
+        notable: "Figure skating pairs scandal: French judge admitted pressured to vote for Russians. Canadian pair Sale/Pelletier eventually received gold too. Doping scandal in cross-country skiing."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 20
+        year: 2006
+        host_city: Turin
+        host_country: Italy
+        top_medal_nation: Germany
+        notable: "Cold War-era doping cases finally resolved for cross-country skiers. Bode Miller (USA) much-hyped but failed to medal in first three events. Italy strong on home snow."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 21
+        year: 2010
+        host_city: Vancouver
+        host_country: Canada
+        top_medal_nation: Canada
+        notable: "Canada won 14 gold medals — most ever for a Winter host nation. Sidney Crosby scored overtime gold-medal goal in ice hockey. Nodar Kumaritashvili (Georgia) luge training death."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 22
+        year: 2014
+        host_city: Sochi
+        host_country: Russia
+        top_medal_nation: Russia
+        notable: "Russia topped medal table on home ice. State-sponsored doping program later revealed (McLaren Report); Russia's medal count partially stripped. Most expensive Games ever (~$51 billion)."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 23
+        year: 2018
+        host_city: Pyeongchang
+        host_country: South Korea
+        top_medal_nation: Norway
+        notable: "Norway topped medal table with 39 medals (14 gold). Russian athletes competed as 'Olympic Athletes from Russia (OAR)' after doping ban. First time games held in South Korea."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - edition: 24
+        year: 2022
+        host_city: Beijing
+        host_country: China
+        top_medal_nation: Norway
+        notable: "Beijing became first city to host both Summer (2008) and Winter (2022) Olympics. Norway set Winter Games all-time gold record (16 gold). Russian athletes competed as ROC. Some nations diplomatic boycott over human rights."
+        notable_first: "First city to host both Summer and Winter Olympics (Beijing 2008 + 2022)"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+# ============================================================
+# SUB-DECK 3: Legendary Olympians
+# ============================================================
+  - id: legendary_olympians
+    name: "Olympic Legends"
+    chain_theme: "Olympic Legends"
+    chain_theme_id: 2
+    estimated_facts: 85
+    notes: >
+      ~2-3 facts per athlete × 35+ athletes = ~85 facts.
+      Covers medal totals, most famous moments, nationalities, sports, unique achievements.
+      Split internally between Summer (30+ athletes) and Winter (15+ athletes).
+      Each top athlete should have: (a) medal count fact, (b) "most famous for" fact, (c) unique achievement.
+
+    verified_data:
+      # ---- TOP SUMMER OLYMPIANS ----
+      - name: Michael Phelps
+        nationality: United States
+        sport: Swimming
+        total_medals: 28
+        gold_medals: 23
+        silver_medals: 3
+        bronze_medals: 2
+        games_attended: [2000, 2004, 2008, 2012, 2016]
+        most_famous_for: "Most decorated Olympian of all time (28 medals, 23 gold)"
+        unique_fact: "Won 8 gold medals at single Games (2008 Beijing) — matching Mark Spitz's 1972 record then surpassing it"
+        surpassed: "Surpassed Larisa Latynina's record of 18 total medals at 2012 London"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Larisa Latynina
+        nationality: Soviet Union
+        sport: Gymnastics
+        total_medals: 18
+        gold_medals: 9
+        silver_medals: 5
+        bronze_medals: 4
+        games_attended: [1956, 1960, 1964]
+        most_famous_for: "Held record for most Olympic medals (18) for 48 years (1964-2012) until Michael Phelps"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Paavo Nurmi
+        nationality: Finland
+        sport: Distance running (Athletics)
+        total_medals: 12
+        gold_medals: 9
+        games_attended: [1920, 1924, 1928]
+        most_famous_for: "The 'Flying Finn' — won 5 gold medals in 6 days at 1924 Paris Olympics including 1500m and 5000m within one hour"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Mark Spitz
+        nationality: United States
+        sport: Swimming
+        total_medals: 11
+        gold_medals: 9
+        games_attended: [1968, 1972]
+        most_famous_for: "Won 7 gold medals at 1972 Munich Olympics — every one setting a world record"
+        unique_fact: "All 7 Munich golds came with world records; record tied by Phelps 2008, stood from 1972-2008"
+        source_url: https://en.wikipedia.org/wiki/Mark_Spitz
+
+      - name: Carl Lewis
+        nationality: United States
+        sport: Athletics (sprinting and long jump)
+        total_medals: 10
+        gold_medals: 9
+        games_attended: [1984, 1988, 1992, 1996]
+        most_famous_for: "Won 4 gold medals at 1984 Los Angeles emulating Jesse Owens (100m, 200m, long jump, 4x100m); 9 golds across 4 Games"
+        unique_fact: "Won the long jump gold at 4 consecutive Olympics (1984, 1988, 1992, 1996)"
+        source_url: https://en.wikipedia.org/wiki/Carl_Lewis
+
+      - name: Usain Bolt
+        nationality: Jamaica
+        sport: Athletics (sprinting)
+        total_medals: 8
+        gold_medals: 8
+        games_attended: [2008, 2012, 2016]
+        most_famous_for: "Only person to win 100m and 200m at three consecutive Olympics (2008, 2012, 2016)"
+        world_records: "100m: 9.58s (2009); 200m: 19.19s (2009) — both still stand as of 2026"
+        source_url: https://en.wikipedia.org/wiki/Usain_Bolt
+
+      - name: Simone Biles
+        nationality: United States
+        sport: Gymnastics
+        total_medals: 11
+        gold_medals: 7
+        silver_medals: 2
+        bronze_medals: 2
+        games_attended: [2016, 2020, 2024]
+        most_famous_for: "Most decorated US gymnast ever; 4 golds at 2016 Rio; returned from 2020 withdrawal to win 3 golds at 2024 Paris"
+        source_url: https://en.wikipedia.org/wiki/Simone_Biles
+
+      - name: Jesse Owens
+        nationality: United States
+        sport: Athletics (sprinting and long jump)
+        total_medals: 4
+        gold_medals: 4
+        games_attended: [1936]
+        most_famous_for: "Won 4 gold medals (100m, 200m, long jump, 4x100m relay) at 1936 Berlin Olympics, embarrassing Nazi racial ideology"
+        unique_fact: "Adolf Hitler refused to publicly congratulate Owens; Owens later said US President Roosevelt also sent no congratulations"
+        source_url: https://en.wikipedia.org/wiki/Jesse_Owens
+
+      - name: Nadia Comaneci
+        nationality: Romania
+        sport: Gymnastics
+        total_medals: 9
+        gold_medals: 5
+        silver_medals: 3
+        bronze_medals: 1
+        games_attended: [1976, 1980]
+        most_famous_for: "First gymnast to receive a perfect 10 in Olympic history (July 18, 1976, Montreal, uneven bars); earned 7 perfect 10s at 1976 Games"
+        unique_fact: "Scoreboards at 1976 Montreal could only display '1.00' because they weren't designed to show '10.00'"
+        age_at_1976: 14
+        source_url: https://en.wikipedia.org/wiki/Nadia_Com%C4%83neci
+
+      - name: Katie Ledecky
+        nationality: United States
+        sport: Swimming (freestyle)
+        total_medals: 14
+        gold_medals: 9
+        games_attended: [2012, 2016, 2020, 2024]
+        most_famous_for: "9 Olympic gold medals in freestyle swimming (800m, 1500m, 400m, 200m, relays); dominated distance freestyle for over a decade"
+        unique_fact: "Won 800m freestyle gold in her first Olympics at age 15 (2012 London)"
+        source_url: https://en.wikipedia.org/wiki/Katie_Ledecky
+
+      - name: Birgit Fischer
+        nationality_plural: "East Germany (GDR) 1980-1988; Germany 1992-2004"
+        sport: Canoeing (kayak)
+        total_medals: 12
+        gold_medals: 8
+        games_attended: [1980, 1988, 1992, 1996, 2000, 2004]
+        most_famous_for: "Won Olympic gold medals 24 years apart — 1980 East Germany (age 18) and 2004 Germany (age 42)"
+        unique_fact: "Only athlete to win Olympic gold medals at 6 different Olympic Games in a non-combat sport"
+        naming_note: "Pool member must be 'Birgit Fischer' — nationality is 'East Germany/Germany' for period-accurate framing, as she competed under GDR flag initially"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Ray Ewry
+        nationality: United States
+        sport: Athletics (standing jumps)
+        total_medals: 8
+        gold_medals: 8
+        games_attended: [1900, 1904, 1906, 1908]
+        most_famous_for: "Won 8 Olympic gold medals in standing jump events (standing long jump, standing high jump, standing triple jump); overcame childhood polio"
+        unique_fact: "8 gold medals in events that were later removed from the Olympic program (standing jumps discontinued after 1912)"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Abebe Bikila
+        nationality: Ethiopia
+        sport: Athletics (marathon)
+        total_medals: 2
+        gold_medals: 2
+        games_attended: [1960, 1964]
+        most_famous_for: "Won 1960 Rome marathon barefoot — first Black African Olympic champion; successfully defended at 1964 Tokyo"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - name: Emil Zatopek
+        nationality: Czechoslovakia
+        sport: Athletics (distance running)
+        total_medals: 4
+        gold_medals: 4
+        games_attended: [1948, 1952]
+        most_famous_for: "Won 5000m, 10000m AND marathon at 1952 Helsinki — had never run a marathon before. Triple across 8 days."
+        naming_note: "Nationality is 'Czechoslovakia' — not Czech Republic (which didn't exist until 1993)"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - name: "Michael Johnson (sprinter)"
+        nationality: United States
+        sport: Athletics (sprinting)
+        total_medals: 5
+        gold_medals: 4
+        games_attended: [1992, 1996, 2000]
+        most_famous_for: "Only man to win 200m and 400m at same Olympics (1996 Atlanta); wore famous gold shoes; set 200m WR of 19.32s"
+        disambiguation: "Always use 'Michael Johnson (sprinter)' — do NOT use bare 'Michael Johnson' as multiple Olympic gold medalists have this name"
+        source_url: https://en.wikipedia.org/wiki/Michael_Johnson_(sprinter)
+
+      - name: Cathy Freeman
+        nationality: Australia
+        sport: Athletics (400m)
+        total_medals: 2
+        gold_medals: 1
+        silver_medals: 1
+        games_attended: [1996, 2000]
+        most_famous_for: "Lit the Olympic cauldron at 2000 Sydney opening ceremony then won 400m gold — celebrated wearing both Australian and Aboriginal flags"
+        source_url: https://en.wikipedia.org/wiki/Cathy_Freeman
+
+      - name: Sawao Kato
+        nationality: Japan
+        sport: Gymnastics
+        total_medals: 12
+        gold_medals: 8
+        games_attended: [1968, 1972, 1976]
+        most_famous_for: "8 Olympic gold medals in gymnastics, the most by a Japanese athlete; helped Japan win team gold at three consecutive Games"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Matt Biondi
+        nationality: United States
+        sport: Swimming
+        total_medals: 11
+        gold_medals: 8
+        games_attended: [1984, 1988, 1992]
+        most_famous_for: "8 gold medals; at 1988 Seoul attempted to match Spitz's 7 golds in one Games but won 5 golds plus silver and bronze"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Vera Caslavska
+        nationality: Czechoslovakia
+        sport: Gymnastics
+        total_medals: 11
+        gold_medals: 7
+        games_attended: [1960, 1964, 1968]
+        most_famous_for: "7 gold medals; at 1968 Mexico City, visibly bowed her head during Soviet national anthem on podium in quiet protest of Soviet invasion of Czechoslovakia"
+        naming_note: "Nationality is 'Czechoslovakia' — not Czech Republic"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Allyson Felix
+        nationality: United States
+        sport: Athletics (sprinting)
+        total_medals: 11
+        gold_medals: 7
+        games_attended: [2004, 2008, 2012, 2016, 2020]
+        most_famous_for: "Most decorated US track and field Olympic athlete; 11 medals across 5 Games; 2020 Tokyo gold after childbirth and preeclampsia"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      # ---- TOP WINTER OLYMPIANS ----
+      - name: Marit Bjoergen
+        nationality: Norway
+        sport: Cross-country skiing
+        total_medals: 15
+        gold_medals: 8
+        games_attended: [2002, 2006, 2010, 2014, 2018]
+        most_famous_for: "Most decorated Winter Olympian of all time by total medals (15); dominated women's cross-country skiing for 16 years"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Ole Einar Bjoerndalen
+        nationality: Norway
+        sport: Biathlon
+        total_medals: 14
+        gold_medals: 8
+        games_attended: [1994, 1998, 2002, 2006, 2010, 2014]
+        most_famous_for: "8 Olympic gold medals in biathlon; competed at 6 Winter Games; won gold at 2014 Sochi at age 40"
+        source_url: https://en.wikipedia.org/wiki/Ole_Einar_Bj%C3%B8rndalen
+
+      - name: Bjorn Daehlie
+        nationality: Norway
+        sport: Cross-country skiing
+        total_medals: 12
+        gold_medals: 8
+        games_attended: [1992, 1994, 1998]
+        most_famous_for: "8 Olympic gold medals in cross-country skiing (12 total); considered greatest Winter Olympian at the time of retirement (1998)"
+        source_url: https://en.wikipedia.org/wiki/Bj%C3%B8rn_D%C3%A6hlie
+
+      - name: Ireen Wust
+        nationality: Netherlands
+        sport: Speed skating
+        total_medals: 13
+        gold_medals: 6
+        games_attended: [2006, 2010, 2014, 2018, 2022]
+        most_famous_for: "6 Olympic gold medals, including winning gold at 5 consecutive Winter Olympics (2006-2022); most decorated Dutch Winter Olympian"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Apolo Anton Ohno
+        nationality: United States
+        sport: Short-track speed skating
+        total_medals: 8
+        gold_medals: 2
+        games_attended: [2002, 2006, 2010]
+        most_famous_for: "Most decorated US Winter Olympian at time of 2010 retirement; 8 medals (2 gold) in short-track speed skating"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Eric Heiden
+        nationality: United States
+        sport: Speed skating
+        total_medals: 5
+        gold_medals: 5
+        games_attended: [1980]
+        most_famous_for: "Won all 5 individual speed skating events at 1980 Lake Placid — unprecedented single-Games sweep across sprint and distance events"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - name: Lidiya Skoblikova
+        nationality: Soviet Union
+        sport: Speed skating
+        total_medals: 6
+        gold_medals: 6
+        games_attended: [1960, 1964]
+        most_famous_for: "Won 6 Olympic gold medals — all 6 in speed skating (1960: 1500m, 3000m; 1964: 500m, 1000m, 1500m, 3000m)"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Sonja Henie
+        nationality: Norway
+        sport: Figure skating
+        total_medals: 3
+        gold_medals: 3
+        games_attended: [1928, 1932, 1936]
+        most_famous_for: "Won 3 consecutive figure skating gold medals (1928, 1932, 1936); won first at age 15; later became Hollywood actress"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - name: Katarina Witt
+        nationality: East Germany
+        sport: Figure skating
+        total_medals: 2
+        gold_medals: 2
+        games_attended: [1984, 1988]
+        most_famous_for: "Won consecutive figure skating gold medals (1984 Sarajevo, 1988 Calgary); became global icon of East German sport under Communist system"
+        naming_note: "Nationality is 'East Germany' (GDR) — not Germany"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - name: Martin Fourcade
+        nationality: France
+        sport: Biathlon
+        total_medals: 7
+        gold_medals: 6
+        games_attended: [2010, 2014, 2018]
+        most_famous_for: "6 Olympic gold medals in biathlon; dominated biathlon for a decade with 7 consecutive World Cup overall titles (2012-2018)"
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+      - name: Eddie Eagan
+        nationality: United States
+        sport_summer: Boxing (light-heavyweight)
+        sport_winter: Bobsled (four-man)
+        total_medals: 2
+        gold_medals: 2
+        games_attended_summer: [1920]
+        games_attended_winter: [1932]
+        most_famous_for: "Only person in history to win gold medals at both Summer and Winter Olympic Games: boxing 1920 Antwerp; bobsled 1932 Lake Placid"
+        unique_fact: "His Summer gold was in 1920 and Winter gold in 1932 — 12 years apart"
+        source_url: https://en.wikipedia.org/wiki/Eddie_Eagan
+
+      - name: Jayne Torvill and Christopher Dean
+        nationality: Great Britain
+        sport: Ice dance (figure skating)
+        total_medals: 2
+        gold_medals: 1
+        bronze_medals: 1
+        games_attended: [1984, 1994]
+        most_famous_for: "Received 12 perfect 6.0 scores at 1984 Sarajevo for Bolero routine — all 9 judges gave perfect artistic impression scores"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - name: Toni Sailer
+        nationality: Austria
+        sport: Alpine skiing
+        total_medals: 3
+        gold_medals: 3
+        games_attended: [1956]
+        most_famous_for: "Won all 3 alpine skiing events (downhill, slalom, giant slalom) at 1956 Cortina d'Ampezzo — first 'alpine skiing triple'"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - name: Johannes Hoesflot Klaebo
+        nationality: Norway
+        sport: Cross-country skiing
+        total_medals: 13
+        gold_medals: 11
+        games_attended: [2018, 2022, 2026]
+        most_famous_for: "11 Olympic gold medals in cross-country skiing (as of 2026 Milan-Cortina); surpassed Bjorn Daehlie's gold medal record"
+        naming_note: "Games attended includes 2026 Milan-Cortina but we only cover through 2022 Beijing in this deck"
+        architect_note: "VERIFY: Klæbo had 9 golds through 2022 per our sources; 11 is post-2026 which we exclude. Use 2022 figure (9 golds, 12 total through 2022) for deck facts."
+        source_url: https://en.wikipedia.org/wiki/List_of_multiple_Olympic_gold_medalists
+
+# ============================================================
+# SUB-DECK 4: Iconic Moments
+# ============================================================
+  - id: iconic_moments
+    name: "Unforgettable Moments"
+    chain_theme: "Unforgettable Moments"
+    chain_theme_id: 3
+    estimated_facts: 45
+    notes: >
+      ~2-3 facts per moment × 20 iconic events = ~45 facts.
+      Mix of Summer and Winter. Handle sensitive content (Munich, Black Power salute) factually.
+
+    verified_data:
+      - name: "Jesse Owens — four golds in Nazi Germany"
+        year: 1936
+        games: Summer
+        host: Berlin
+        fact: "Jesse Owens won 4 gold medals (100m, 200m, long jump, 4x100m relay) in front of Adolf Hitler at the 1936 Berlin Games, directly contradicting Nazi Aryan supremacy propaganda"
+        source_url: https://en.wikipedia.org/wiki/Jesse_Owens
+
+      - name: "First Olympic torch relay"
+        year: 1936
+        games: Summer
+        host: Berlin
+        fact: "The first Olympic torch relay, introduced for the 1936 Berlin Games, carried flame from Olympia, Greece to Berlin over 3,187 km by 3,331 runners in 12 days — designed by Carl Diem, promoted by Nazi propaganda minister Joseph Goebbels"
+        source_url: https://en.wikipedia.org/wiki/Olympic_flame
+
+      - name: "Nadia Comaneci's perfect 10"
+        year: 1976
+        games: Summer
+        host: Montreal
+        fact: "On July 18, 1976, Romanian gymnast Nadia Comăneci (age 14) became the first person to receive a perfect score of 10 in Olympic gymnastics — the scoreboard, not designed to show 10.00, displayed '1.00'"
+        source_url: https://en.wikipedia.org/wiki/Nadia_Com%C4%83neci
+
+      - name: "Munich Massacre"
+        year: 1972
+        games: Summer
+        host: Munich
+        fact: "On September 5-6, 1972, members of the Palestinian militant group Black September took 11 Israeli Olympic team members hostage at the Munich Olympic Village; all 11 Israeli hostages and 1 German officer were killed in the ensuing events"
+        sensitive_content_note: "Factual framing; include respectfully. One fact max."
+        source_url: https://en.wikipedia.org/wiki/Munich_massacre
+
+      - name: "Mark Spitz — 7 golds and 7 world records"
+        year: 1972
+        games: Summer
+        host: Munich
+        fact: "Mark Spitz (USA) won 7 gold medals at the 1972 Munich Olympics, setting a world record in every single event — a feat unmatched for 36 years until Michael Phelps's 8 golds at 2008 Beijing"
+        source_url: https://en.wikipedia.org/wiki/Mark_Spitz
+
+      - name: "Bob Beamon's long jump world record"
+        year: 1968
+        games: Summer
+        host: Mexico City
+        fact: "Bob Beamon (USA) jumped 8.90 metres at the 1968 Mexico City Olympics, shattering the previous long jump world record by 55 cm — the record stood for 23 years until Mike Powell broke it in 1991"
+        source_url: https://en.wikipedia.org/wiki/Bob_Beamon
+
+      - name: "Black Power salute — 1968 podium"
+        year: 1968
+        games: Summer
+        host: Mexico City
+        fact: "Tommie Smith and John Carlos (USA), gold and bronze medalists in the 200m at 1968 Mexico City, raised black-gloved fists during the US national anthem on the podium — both were expelled from the US team"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - name: "Miracle on Ice"
+        year: 1980
+        games: Winter
+        host: Lake Placid
+        fact: "On February 22, 1980, the US ice hockey team — average age 21, mostly college players — defeated the heavily favored Soviet Union 4-3 at the Lake Placid Winter Olympics; the US went on to win gold by beating Finland"
+        source_url: https://en.wikipedia.org/wiki/Miracle_on_Ice
+
+      - name: "Torvill and Dean's perfect Bolero"
+        year: 1984
+        games: Winter
+        host: Sarajevo
+        fact: "British ice dancers Jayne Torvill and Christopher Dean performed their Bolero routine at the 1984 Sarajevo Winter Olympics and received 12 perfect 6.0 scores — all 9 judges gave them maximum marks for artistic impression"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - name: "Eric Heiden's speed skating sweep"
+        year: 1980
+        games: Winter
+        host: Lake Placid
+        fact: "Eric Heiden (USA) won all 5 individual speed skating events at the 1980 Lake Placid Winter Olympics — from the 500m sprint to the 10,000m — setting a world record in every distance event"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - name: "Cathy Freeman lights the cauldron"
+        year: 2000
+        games: Summer
+        host: Sydney
+        fact: "Aboriginal Australian sprinter Cathy Freeman lit the Olympic cauldron at the 2000 Sydney opening ceremony, then won the 400m gold medal — one of the most charged moments in Australian sporting history"
+        source_url: https://en.wikipedia.org/wiki/Cathy_Freeman
+
+      - name: "Usain Bolt's triple-triple"
+        year: 2016
+        games: Summer
+        host: Rio de Janeiro
+        fact: "Usain Bolt won the 100m, 200m, and 4x100m relay at three consecutive Olympics (2008 Beijing, 2012 London, 2016 Rio de Janeiro), becoming the only athlete in history to win all three sprint events at three successive Games"
+        source_url: https://en.wikipedia.org/wiki/Usain_Bolt
+
+      - name: "Michael Phelps breaks Latynina's record"
+        year: 2012
+        games: Summer
+        host: London
+        fact: "Michael Phelps won his 19th Olympic medal at the 2012 London Games, surpassing Larisa Latynina's record of 18 medals that had stood since 1964 — Latynina was watching in the stadium as her record fell"
+        source_url: https://en.wikipedia.org/wiki/Michael_Phelps
+
+      - name: "Abebe Bikila runs marathon barefoot"
+        year: 1960
+        games: Summer
+        host: Rome
+        fact: "Abebe Bikila (Ethiopia) won the 1960 Rome Olympic marathon barefoot along the Appian Way at night, becoming the first Black African Olympic champion — he defended the title at 1964 Tokyo with shoes"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - name: "Emil Zatopek's triple"
+        year: 1952
+        games: Summer
+        host: Helsinki
+        fact: "Emil Zatopek (Czechoslovakia) won the 5000m, 10,000m, and marathon at the 1952 Helsinki Olympics — despite having never raced a marathon before; he ran the marathon chatting with his rival Jim Peters"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - name: "Carl Lewis emulates Jesse Owens"
+        year: 1984
+        games: Summer
+        host: Los Angeles
+        fact: "Carl Lewis (USA) won 4 gold medals at the 1984 Los Angeles Olympics (100m, 200m, long jump, 4x100m relay), matching Jesse Owens's 1936 achievement — nearly 50 years later, same four events"
+        source_url: https://en.wikipedia.org/wiki/Carl_Lewis
+
+      - name: "Michael Johnson's golden shoes"
+        year: 1996
+        games: Summer
+        host: Atlanta
+        fact: "Michael Johnson (USA) ran the 200m in world-record 19.32 seconds at the 1996 Atlanta Olympics wearing distinctive gold-colored sprinting shoes — became the only man ever to win 200m and 400m at same Games"
+        source_url: https://en.wikipedia.org/wiki/Michael_Johnson_(sprinter)
+
+      - name: "Eddie Eagan — Summer and Winter gold"
+        year: "1920 and 1932"
+        games: Summer and Winter
+        fact: "Eddie Eagan (USA) is the only person to win Olympic gold medals in both Summer (boxing, 1920 Antwerp) and Winter (bobsled four-man, 1932 Lake Placid) Games"
+        source_url: https://en.wikipedia.org/wiki/Eddie_Eagan
+
+      - name: "Simone Biles withdraws, then returns"
+        year: "2020 and 2024"
+        games: Summer
+        fact: "At the 2020 Tokyo Olympics, Simone Biles withdrew from the team final citing mental health and the 'twisties'; she won silver with the team and a bronze on beam. At the 2024 Paris Olympics, she returned to win 3 gold medals."
+        source_url: https://en.wikipedia.org/wiki/Simone_Biles
+
+      - name: "Beijing hosts Summer and Winter"
+        year: 2022
+        games: Winter
+        host: Beijing
+        fact: "When Beijing hosted the 2022 Winter Olympics, it became the first city in history to have hosted both Summer (2008) and Winter (2022) Olympic Games"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+# ============================================================
+# SUB-DECK 5: Host Cities & Firsts
+# ============================================================
+  - id: host_cities_and_firsts
+    name: "Host Cities & Legacies"
+    chain_theme: "Host Cities & Legacies"
+    chain_theme_id: 4
+    estimated_facts: 25
+    notes: >
+      ~25 facts covering: host city firsts (Asia, South America, Africa), boycotts,
+      all-time medal rankings, global records, Olympic symbols/history.
+      IMPORTANT: No African nation has ever hosted the Summer Olympics — this is a verified gap.
+
+    verified_data:
+      - fact: "First Asian Summer Olympics host"
+        answer: "Tokyo 1964"
+        context: "Japan hosted the 1964 Summer Olympics in Tokyo — first Summer Olympics in Asia; 1972 Sapporo was first Winter Olympics in Asia"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - fact: "First Winter Olympics in Asia"
+        answer: "Sapporo 1972"
+        context: "Japan hosted the 1972 Winter Olympics in Sapporo — first Winter Olympics in Asia; preceded Asia's first Summer Olympics (Tokyo 1964)"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - fact: "First Summer Olympics in Southern Hemisphere"
+        answer: "Melbourne 1956"
+        context: "Australia hosted the 1956 Summer Olympics in Melbourne — first time the Games were held in the Southern Hemisphere"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - fact: "First Summer Olympics in South America"
+        answer: "Rio de Janeiro 2016"
+        context: "Brazil hosted the 2016 Summer Olympics in Rio de Janeiro — first time Summer Olympics were held in South America"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - fact: "No African Summer Olympics host"
+        answer: "No African city has hosted the Summer Olympics as of 2026"
+        context: "Despite Africa being the world's second-largest continent by population, no African city has ever hosted the Summer Olympics. This is the most glaring geographic gap in Olympic hosting history."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - fact: "USA-led boycott of 1980 Moscow Olympics"
+        answer: "Soviet invasion of Afghanistan"
+        context: "US President Jimmy Carter led a boycott of the 1980 Moscow Summer Olympics in protest of the Soviet Union's invasion of Afghanistan (December 1979); approximately 65 nations did not attend"
+        source_url: https://en.wikipedia.org/wiki/1980_Summer_Olympics_boycott
+
+      - fact: "Soviet-led boycott of 1984 Los Angeles Olympics"
+        answer: "Retaliation for 1980 US boycott (Soviet-led Eastern Bloc)"
+        context: "The Soviet Union and approximately 14 Eastern Bloc nations boycotted the 1984 Los Angeles Summer Olympics, citing security concerns — widely seen as retaliation for the 1980 US-led Moscow boycott"
+        source_url: https://en.wikipedia.org/wiki/1984_Summer_Olympics_boycott
+
+      - fact: "All-time most Olympic medals — nation (combined)"
+        answer: "United States"
+        context: "The United States has won the most combined Olympic medals of any nation in history, with over 2,600 medals (Summer + Winter combined) as of 2024. Note: Soviet Union medals are counted separately in all-time tables."
+        source_url: https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table
+
+      - fact: "All-time most Winter Olympics golds — nation"
+        answer: "Norway"
+        context: "Norway has won more Winter Olympic gold medals than any other nation, with 166+ gold medals through 2022. Norway's dominance in Nordic skiing and biathlon drives its Winter medal superiority."
+        source_url: https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table
+
+      - fact: "City that has hosted Summer Olympics three times"
+        answer: "London"
+        context: "London has hosted the Summer Olympics three times: 1908, 1948, and 2012 — more than any other city. Paris also reached three times with 1900, 1924, 2024."
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - fact: "Olympic rings introduced"
+        answer: "1920 Antwerp"
+        context: "The Olympic flag bearing five interlocking rings was first raised at the 1920 Antwerp Olympics. The rings represent the five continents whose athletes participate; designed by Pierre de Coubertin in 1913."
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - fact: "First Olympic flame at Games"
+        answer: "1928 Amsterdam"
+        context: "The first symbolic flame at the Olympic Games was lit at the 1928 Amsterdam Olympics — by an Amsterdam Electric Utility employee in the Marathon Tower. It was not yet a relay from Olympia."
+        source_url: https://en.wikipedia.org/wiki/Olympic_flame
+
+      - fact: "Olympic torch relay introduced"
+        answer: "1936 Berlin"
+        context: "The Olympic torch relay from Olympia, Greece to the host city was first held for the 1936 Berlin Olympics, covering 3,187 km with 3,331 runners in 12 days. It was designed by Carl Diem and promoted heavily by Nazi Germany."
+        source_url: https://en.wikipedia.org/wiki/Olympic_flame
+
+      - fact: "South Africa Olympic ban duration"
+        answer: "1964-1988 (excluded from 5 Summer Games)"
+        context: "South Africa was banned from Olympic competition from 1964 to 1988 due to its apartheid policies. The ban lasted 24 years across 5 Summer Games; South Africa returned at the 1992 Barcelona Olympics."
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+      - fact: "First city to host both Summer and Winter Olympics"
+        answer: "Beijing"
+        context: "Beijing hosted the 2008 Summer Olympics and the 2022 Winter Olympics, becoming the first city to host both Summer and Winter Games"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - fact: "Olympic Games cancelled for World Wars"
+        answer: "1916, 1940, 1944 (three editions)"
+        context: "Three Summer Olympics and two Winter Olympics were cancelled due to World Wars: 1916 Berlin (WWI), and 1940 and 1944 editions for both Summer and Winter (WWII)"
+        source_url: https://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities
+
+      - fact: "2020 Tokyo postponed"
+        answer: "COVID-19 pandemic"
+        context: "The 2020 Tokyo Summer Olympics were postponed to 2021 due to the COVID-19 pandemic — the first Olympic postponement in history; the Games were held without spectators"
+        source_url: https://en.wikipedia.org/wiki/Summer_Olympic_Games
+
+# ============================================================
+# ANSWER TYPE POOLS PREVIEW
+# ============================================================
+answer_type_pools_preview:
+  - id: summer_host_cities
+    description: "Host cities of all recognized Summer Olympics (1896-2024)"
+    example_members: [Athens, Paris, "St. Louis", London, Stockholm, Antwerp, Amsterdam, "Los Angeles", Berlin, Helsinki, Melbourne, Rome, Tokyo, "Mexico City", Munich, Montreal, Moscow, Seoul, Barcelona, Atlanta, Sydney, Beijing, "Rio de Janeiro"]
+    note: "Athens appears twice (1896, 2004). Tokyo appears twice (1964, 2020). Beijing appears twice (2008 Summer, 2022 Winter — separate pools). London appears three times (1908, 1948, 2012)."
+    estimated_size: 23
+    homogeneity: "city names, short strings, minimal length variation"
+
+  - id: winter_host_cities
+    description: "Host cities of all recognized Winter Olympics (1924-2022)"
+    example_members: [Chamonix, "St. Moritz", "Lake Placid", "Garmisch-Partenkirchen", "St. Moritz", Oslo, "Cortina d'Ampezzo", "Squaw Valley", Innsbruck, Grenoble, Sapporo, Innsbruck, "Lake Placid", Sarajevo, Calgary, Albertville, Lillehammer, Nagano, "Salt Lake City", Turin, Vancouver, Sochi, Pyeongchang, Beijing]
+    note: "Innsbruck appears twice (1964, 1976). St. Moritz appears twice (1928, 1948). Lake Placid appears twice (1932, 1980)."
+    estimated_size: 21
+    homogeneity: "city names; moderate length variation — Garmisch-Partenkirchen (24ch) vs Oslo (4ch) = 6x ratio — WILL NEED homogeneityExempt"
+    homogeneity_warning: "Garmisch-Partenkirchen is significantly longer than single-word cities. Flag for pool-homogeneity check; consider exemption or split."
+
+  - id: summer_host_countries
+    description: "Countries that have hosted Summer Olympics"
+    example_members: [Greece, France, "United States", "Great Britain", Sweden, Belgium, Netherlands, Australia, Germany, Finland, Italy, Japan, Mexico, "West Germany", Canada, "Soviet Union", "South Korea", Spain, Brazil, China]
+    estimated_size: 20
+    homogeneity: "country names; moderate variation; 'Soviet Union' (12ch) vs USA (3ch)"
+
+  - id: winter_host_countries
+    description: "Countries that have hosted Winter Olympics"
+    example_members: [France, Switzerland, "United States", Germany, Norway, Italy, Austria, Japan, Yugoslavia, Canada, Russia, "South Korea", China]
+    estimated_size: 14
+
+  - id: summer_olympians_names
+    description: "Famous Summer Olympics athletes (multi-gold medalists)"
+    example_members: ["Michael Phelps", "Larisa Latynina", "Paavo Nurmi", "Mark Spitz", "Carl Lewis", "Usain Bolt", "Simone Biles", "Jesse Owens", "Nadia Comaneci", "Katie Ledecky", "Birgit Fischer", "Emil Zatopek", "Cathy Freeman", "Abebe Bikila", "Allyson Felix", "Sawao Kato"]
+    estimated_size: 20+
+    homogeneity_warning: "Bolt (4ch) vs Ole Einar Bjørndalen (18ch) — if Summer/Winter pools ever combined, ratio exceeds 3x. Keep SEPARATE."
+    note: "This pool is Summer athletes only. Winter athletes are in winter_olympians_names."
+
+  - id: winter_olympians_names
+    description: "Famous Winter Olympics athletes (multi-gold medalists)"
+    example_members: ["Marit Bjoergen", "Ole Einar Bjoerndalen", "Bjorn Daehlie", "Ireen Wust", "Eric Heiden", "Lidiya Skoblikova", "Sonja Henie", "Katarina Witt", "Martin Fourcade", "Eddie Eagan"]
+    estimated_size: 15+
+    homogeneity_warning: "Ireen Wust (10ch) vs Ole Einar Bjoerndalen (20ch) = 2x, within limit. Monitor."
+
+  - id: olympic_sport_names_summer
+    description: "Summer Olympic sports (core permanent sports + notable events)"
+    example_members: [Athletics, Swimming, Gymnastics, Cycling, Rowing, Fencing, Boxing, Wrestling, Judo, Shooting, Volleyball, Basketball, Football, Tennis, Weightlifting, Canoeing, Equestrian, Sailing]
+    estimated_size: 20+
+
+  - id: olympic_sport_names_winter
+    description: "Winter Olympic sports"
+    example_members: ["Alpine skiing", "Cross-country skiing", "Biathlon", "Figure skating", "Speed skating", "Short-track speed skating", "Ice hockey", "Curling", Bobsled, Luge, Skeleton, Ski jumping, "Nordic combined", Snowboard, Freestyle]
+    estimated_size: 15
+
+  - id: olympic_nation_names_medal
+    description: "Nations with major all-time medal counts (Summer combined)"
+    example_members: ["United States", "Soviet Union", "Germany", "Great Britain", France, Italy, China, Japan, Australia, Hungary, Norway, Sweden, Finland, "South Korea", "East Germany", Netherlands]
+    note: "Soviet Union (1952-1988) and Russia (1994+) are SEPARATE pool members — NOT synonyms. East Germany (GDR) is SEPARATE from Germany. See period-accurate naming decisions."
+    estimated_size: 16+
+
+  - id: year_values_summer
+    description: "Years of recognized Summer Olympics (excluding cancelled)"
+    example_members: [1896, 1900, 1904, 1908, 1912, 1920, 1924, 1928, 1932, 1936, 1948, 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024]
+    estimated_size: 30
+    note: "1916, 1940, 1944 excluded (cancelled). 2020 is official name despite being held in 2021."
+
+  - id: year_values_winter
+    description: "Years of recognized Winter Olympics (excluding cancelled)"
+    example_members: [1924, 1928, 1932, 1936, 1948, 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1994, 1998, 2002, 2006, 2010, 2014, 2018, 2022]
+    estimated_size: 24
+    note: "1940 and 1944 excluded (cancelled). From 1994 onward, Winter Games are 2 years offset from Summer."
+
+  - id: olympic_medal_counts_career
+    description: "Career Olympic medal counts (integers) for legendary athletes"
+    example_members: [28, 23, 18, 15, 14, 12, 11, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+    note: "Pool mixes gold-only counts with total-medal counts — ARCHITECT PHASE: consider splitting into gold_medal_counts and total_medal_counts to avoid ambiguity"
+    homogeneity_warning: "28 (Phelps total) vs 1 (min) = 28x ratio. Must use tightly-scoped subpool or homogeneityExempt. Recommended: split by tier (top-10 range: 8-28) and lower (1-7)."
+
+  - id: olympic_world_records
+    description: "Notable Olympic world records (times/distances)"
+    example_members: ["9.58s (100m, Bolt 2009)", "19.19s (200m, Bolt 2009)", "8.90m (long jump, Beamon 1968)", "19.32s (200m, Johnson 1996)"]
+    estimated_size: 8
+    homogeneity_warning: "Mixed format (time in seconds vs distance in meters) — keep as single pool only if all questions use the same frame ('what record was set', not 'what measurement')"
+
+  - id: summer_games_notable_firsts_text
+    description: "Short text descriptions of Olympic firsts/notable facts (used for true/false or context questions)"
+    example_members: ["First modern Olympics", "First women athletes", "First torch relay", "First perfect 10 in gymnastics", "First Black African champion", "First Summer Olympics in Asia", "First Summer Olympics in South America"]
+    estimated_size: 15+
+
+# ============================================================
+# POOL DESIGN WARNINGS
+# ============================================================
+pool_design_warnings:
+  - "summer_host_cities vs winter_host_cities — KEEP SEPARATE. Some cities appear in both (Beijing: Summer 2008, Winter 2022). If combined, distractors become implausible (1936 Summer was Berlin, 1936 Winter was Garmisch-Partenkirchen — impossible to distinguish without season label)."
+
+  - "olympic_medal_counts_career — potential length heterogeneity is irrelevant (they're integers) but SEMANTIC heterogeneity is real: '28' means Phelps TOTAL but also '28' could be a year value. These pools must not be mixed. Architect phase: create separate fact pools for career_medal_counts."
+
+  - "winter_host_cities — Garmisch-Partenkirchen (24 chars) vs Oslo (4 chars) = 6x ratio. Flag for pool-homogeneity analysis. Will need homogeneityExempt because geographic naming is inherent."
+
+  - "summer_olympians_names and winter_olympians_names — NEVER combine into one pool. The question 'Who is the most decorated Winter Olympian?' must not offer Michael Phelps as a distractor. Season-specific pools protect quiz integrity."
+
+  - "Soviet Union vs Russia — these are SEPARATE pool members for any nation-answer pool. Soviet Union competed 1952-1988 (and 1956 Winter). Russia competed 1994 onward. 'Unified Team' (EUN) competed at 1992. 'Olympic Athletes from Russia' (OAR) at 2018. 'Russian Olympic Committee' (ROC) at 2020. Do NOT treat as synonyms."
+
+  - "East Germany (GDR) vs Germany — SEPARATE pool members. East Germany competed as a separate team 1968-1988 (they first competed in unified German team 1956-1964 as 'Unified Team of Germany'). Birgit Fischer won GDR gold in 1980/1988 and then German gold 1992-2004."
+
+  - "Czechoslovakia vs Czech Republic/Slovakia — SEPARATE. Czechoslovakia competed until 1992 (dissolution 1993). Czech Republic first competed 1994. Slovakia first competed 1994. Emil Zatopek = Czechoslovakia. Vera Caslavska = Czechoslovakia."
+
+  - "Yugoslavia vs successor states — Yugoslavia (SFR Yugoslavia) hosted 1984 Winter Games in Sarajevo. Yugoslavia dissolved 1992. Bosnia and Herzegovina hosted, not present-day Serbia or Croatia."
+
+  - "Michael Johnson disambiguation — full reference 'Michael Johnson (sprinter)' required to avoid confusion with Michael Johnson the boxer (1992 gold, USA) and other Olympians named Michael Johnson."
+
+  - "sport_names pool — scope is enormous (hundreds of events); keep sport_names as high-level sport names not event names. Split summer_sports and winter_sports. Do NOT mix 'speed skating' (winter) and 'rowing' (summer) in one undifferentiated pool."
+
+  - "1906 Intercalated Games — IOC derecognized these in 1949. Do NOT include facts about them. Ray Ewry competed in 1906 but his 1906 medals do NOT count in official tallies."
+
+  - "2020 Tokyo Games — official name is '2020 Summer Olympics' even though held in 2021 due to COVID postponement. Always use '2020' as the year label."
+
+# ============================================================
+# DEMAND SIGNALS
+# ============================================================
+demand_signals:
+  - "Summer Olympics attracts ~3 billion viewers per edition (IOC/NBC figures for 2024 Paris)"
+  - "Second most-watched recurring sporting event globally after FIFA World Cup"
+  - "Explicitly international: 200+ nations participate; natural audience in every country"
+  - "Multiple Anki Olympic history decks with thousands of downloads"
+  - "Perfect complement to fifa_world_cup.json already shipped in sports_entertainment domain"
+  - "Olympic content appears in high school history, geography, and PE curricula worldwide"
+  - "Cross-generational appeal: Jesse Owens (1936) through Simone Biles (2024)"
+
+# ============================================================
+# NAMING DECISIONS (PERIOD-ACCURATE)
+# ============================================================
+period_accurate_naming_decisions:
+  soviet_russia:
+    rule: "Use nation name that was active during the specific Games"
+    entries:
+      - name: "Soviet Union"
+        period: "1952-1988 Summer; 1956-1988 Winter"
+        ioc_code: URS
+      - name: "Unified Team"
+        period: "1992 Summer and Winter only"
+        ioc_code: EUN
+        context: "Commonwealth of Independent States (former Soviet states) competed together one last time"
+      - name: Russia
+        period: "1994 onward Summer and Winter"
+        ioc_code: RUS
+        exceptions: "2018 = OAR (Olympic Athletes from Russia); 2020 = ROC (Russian Olympic Committee); 2022 = ROC"
+
+  germany:
+    rule: "Use the designation active during specific Games"
+    entries:
+      - name: Germany
+        period: "1896-1912, 1928-1936, 1952-1964 (as unified Gesamtdeutsche Mannschaft), 1994-present"
+      - name: "West Germany"
+        period: "1968-1988 Summer and Winter"
+        ioc_code: FRG
+      - name: "East Germany"
+        period: "1968-1988 Summer and Winter"
+        ioc_code: GDR
+        note: "Birgit Fischer's 1980 Canoeing gold is under East Germany. Her 1992-2004 golds are under Germany."
+
+  czechoslovakia:
+    rule: "Use 'Czechoslovakia' for all athletes before 1993 dissolution"
+    examples: ["Emil Zatopek (1948, 1952)", "Vera Caslavska (1960, 1964, 1968)"]
+    successors: ["Czech Republic (1994+)", "Slovakia (1994+)"]
+
+  yugoslavia:
+    rule: "Use 'Yugoslavia' for 1984 Sarajevo Winter Olympics host designation"
+    successors: ["Bosnia and Herzegovina", "Serbia", "Croatia", "Slovenia", "North Macedonia", "Montenegro"]
+
+  china:
+    rule: "Distinguish Republic of China (ROC, Taiwan) from People's Republic of China (PRC)"
+    note: "From 1981, Taiwan competes as 'Chinese Taipei'. Facts should use 'China' for PRC (1952+, 1984+) and 'Chinese Taipei' for ROC post-1981."
+
+# ============================================================
+# ESTIMATED FACT DISTRIBUTION
+# ============================================================
+estimated_fact_distribution:
+  summer_olympics_games: 90
+  winter_olympics_games: 55
+  legendary_olympians: 85
+  iconic_moments: 45
+  host_cities_and_firsts: 25
+  total_estimated: 300
+
+# ============================================================
+# ARCHITECT PHASE REQUIREMENTS
+# ============================================================
+architect_phase_requirements:
+  - "Domain 'sports_entertainment' already wired (commit 1551e225a) — NO TypeScript changes needed"
+  - "Verify Johannes Klæbo gold count through 2022 only (9 golds, not 11 — 11 includes 2026 Milan-Cortina which we exclude)"
+  - "Confirm Bolt 2008 100m result: 9.69s in Beijing (later adjusted to 9.58s at 2009 Worlds — these are different events; Beijing performance was 9.69)"
+  - "Verify exact boycott counts: 1980 boycott (approximately 65 nations) and 1984 (approximately 14 Eastern Bloc + some others)"
+  - "Confirm Abebe Bikila's 1960 marathon time vs world record status"
+  - "Decide pool split: career_gold_medal_counts vs career_total_medal_counts (currently combined in preview)"
+  - "Decide pool split: summer_host_cities by era (pre-WWII vs post-WWII) if length homogeneity check fails"
+  - "Pad all pools under 15 factIds with synthetic distractors before generate phase"
+  - "winter_host_cities: Garmisch-Partenkirchen homogeneityExempt decision required"
+  - "Write deck shell JSON (data/decks/olympics.json) with correct envelope before generate phase"
+  - "Run pool-homogeneity-analysis.mjs on all pools before generate phase — catch any 3x ratio violations early"
+
+estimated_build_time: "3-5 days (architect + generate + QA)"
