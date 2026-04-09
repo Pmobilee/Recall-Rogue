@@ -1251,3 +1251,13 @@ The UN and EU decks have exceptionally clean pool structures — both organizati
 |---|---|---|---|---|
 | 2026-04-08 | `ocean_life` | 182 | 5 | Marine life from iconic whales and sharks to deep-sea creatures, coral reefs, and conservation. 12 answer pools, Wikipedia sourced. |
 | 2026-04-08 | `world_religions` | 377 | 7 | World religions survey: Christianity, Islam, Judaism, Hinduism, Buddhism, Sikhism, and 8 other living traditions. Wikipedia CC BY-SA 4.0. |
+
+---
+
+## In Progress
+
+| Date Started | Deck ID | Phase | Facts Target | Sub-decks | Notes |
+|---|---|---|---|---|---|
+| 2026-04-09 | `fifa_world_cup` | **Discover complete** → Architect next | 300 | 5 | Architecture YAML written. BLOCKER: Add `sports_entertainment` to CanonicalFactDomain before architect phase. Provenance: `docs/deck-provenance/fifa_world_cup_discover.md`. Architecture: `data/deck-architectures/fifa_world_cup_arch.yaml`. |
+
+*Last updated: 2026-04-09 by content-agent (FIFA World Cup discover phase complete)*

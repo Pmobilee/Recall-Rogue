@@ -612,6 +612,17 @@ export interface BossQuizPhaseConfig {
    * null = use the standard encounter timer. Rapid-fire phases often use 4000ms.
    */
   timerOverrideMs?: number | null;
+  /**
+   * Timer decrease (in seconds) per question for a gauntlet phase.
+   * Applied as: max(timerMinSeconds, timerStart - questionIndex * timerDecreasePerQ).
+   * null/undefined = no decrease (flat timer for all questions).
+   */
+  timerDecreasePerQ?: number | null;
+  /**
+   * Minimum timer in seconds when using timerDecreasePerQ.
+   * Prevents timer from going below this floor.
+   */
+  timerMinSeconds?: number | null;
   /** Rewards for correct answers during this phase. */
   rewards: {
     /** Fraction of boss's current HP to drain per correct answer. */
@@ -627,6 +638,8 @@ export interface BossQuizPhaseConfig {
     wrongStrengthGain?: number;
     /** HP to restore to boss per wrong answer. */
     wrongBossHeal?: number;
+    /** Flat damage to deal to the player per wrong answer (goes through damage pipeline so block reduces it). */
+    wrongPlayerDamage?: number;
   };
 }
 
@@ -635,6 +648,30 @@ export interface BossQuizPhaseConfig {
  * Applied to the boss's current HP for each correct answer.
  */
 export const QUIZ_PHASE_CORRECT_HP_DRAIN = 0.05;
+
+/**
+ * Comprehensive Review Gauntlet — Act 1 boss Phase 2 ("Show what you've learned").
+ * At HP_THRESHOLD, Act 1 bosses stop normal combat and run a rapid-fire quiz gauntlet.
+ * Correct answers damage the boss; wrong answers hurt the player. Timer decreases per question.
+ */
+export const BOSS_QUIZ_GAUNTLET = {
+  /** HP threshold to trigger Phase 2 (fraction 0–1). */
+  HP_THRESHOLD: 0.5,
+  /** Number of questions in the gauntlet. */
+  QUESTION_COUNT: 8,
+  /** Starting timer in seconds for question 0. */
+  TIMER_START_SECONDS: 12,
+  /** Timer decrease per question (applied cumulatively). */
+  TIMER_DECREASE_PER_Q: 0.5,
+  /** Minimum timer in seconds (floor after decreases). */
+  TIMER_MIN_SECONDS: 5,
+  /** Damage to boss per correct answer, as a fraction of boss maxHP. */
+  CORRECT_HP_DRAIN_PCT: 0.05,
+  /** Flat damage dealt to player per wrong answer (goes through damage pipeline). */
+  WRONG_PLAYER_DAMAGE: 10,
+  /** Draw questions from the player's weakest knowledge domain. */
+  USE_WEAKEST_DOMAIN: true,
+} as const;
 
 /**
  * Boss quiz phase configurations keyed by enemy template ID.
@@ -672,6 +709,40 @@ export const BOSS_QUIZ_PHASES: Record<string, BossQuizPhaseConfig[]> = {
       timerOverrideMs: 4000,
       rewards: { correctDirectDamage: 8 },
       penalties: { wrongBossHeal: 5 },
+    },
+  ],
+  /**
+   * The Final Exam: Comprehensive Review Gauntlet at 50% HP.
+   * Rapid-fire, weakest-domain questions with decreasing timer. Boss stops attacking.
+   */
+  final_exam: [
+    {
+      hpThreshold: BOSS_QUIZ_GAUNTLET.HP_THRESHOLD,
+      questionCount: BOSS_QUIZ_GAUNTLET.QUESTION_COUNT,
+      rapidFire: true,
+      useWeakestDomain: BOSS_QUIZ_GAUNTLET.USE_WEAKEST_DOMAIN,
+      timerOverrideMs: BOSS_QUIZ_GAUNTLET.TIMER_START_SECONDS * 1000,
+      timerDecreasePerQ: BOSS_QUIZ_GAUNTLET.TIMER_DECREASE_PER_Q,
+      timerMinSeconds: BOSS_QUIZ_GAUNTLET.TIMER_MIN_SECONDS,
+      rewards: { correctHpDrainPct: BOSS_QUIZ_GAUNTLET.CORRECT_HP_DRAIN_PCT },
+      penalties: { wrongPlayerDamage: BOSS_QUIZ_GAUNTLET.WRONG_PLAYER_DAMAGE },
+    },
+  ],
+  /**
+   * The Burning Deadline: Comprehensive Review Gauntlet at 50% HP.
+   * Same structure as Final Exam — fire-themed variant.
+   */
+  burning_deadline: [
+    {
+      hpThreshold: BOSS_QUIZ_GAUNTLET.HP_THRESHOLD,
+      questionCount: BOSS_QUIZ_GAUNTLET.QUESTION_COUNT,
+      rapidFire: true,
+      useWeakestDomain: BOSS_QUIZ_GAUNTLET.USE_WEAKEST_DOMAIN,
+      timerOverrideMs: BOSS_QUIZ_GAUNTLET.TIMER_START_SECONDS * 1000,
+      timerDecreasePerQ: BOSS_QUIZ_GAUNTLET.TIMER_DECREASE_PER_Q,
+      timerMinSeconds: BOSS_QUIZ_GAUNTLET.TIMER_MIN_SECONDS,
+      rewards: { correctHpDrainPct: BOSS_QUIZ_GAUNTLET.CORRECT_HP_DRAIN_PCT },
+      penalties: { wrongPlayerDamage: BOSS_QUIZ_GAUNTLET.WRONG_PLAYER_DAMAGE },
     },
   ],
 };

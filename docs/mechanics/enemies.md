@@ -312,10 +312,24 @@ Status effect values (poison, weakness, vulnerable) kept at 1–2 per applicatio
 | `study_group` | 20 | **Phase 8**: raised from 13 to 20 (simulate 3 members). Phase transition at 33% HP — last member stands alone (phase 2: atk 11). Group synergy Strength buff removed on transition |
 
 ### Act 1 Bosses
-| Enemy | Base HP | Phase | Notes |
-|---|---|---|---|
-| `final_exam` | 27 | 40% HP | Ph1: atk 5, multi 6×4, defend 8. Ph2: atk 8, multi 6×3, defend 8, charge 12 |
-| `burning_deadline` | 28 | 40% HP | Ph1: atk 5/6 (weight 2 each). Ph2: atk 8, multi 6×4 |
+| Enemy | Base HP | Phase transition | Quiz Gauntlet | Notes |
+|---|---|---|---|---|
+| `final_exam` | 27 | 40% HP | 50% HP — see below | Ph1: atk 5, multi 6×4, defend 8. Ph2: atk 8, multi 6×3, defend 8, charge 12 |
+| `burning_deadline` | 28 | 40% HP | 50% HP — see below | Ph1: atk 5/6 (weight 2 each). Ph2: atk 8, multi 6×4 |
+
+#### Boss Phase 2: Comprehensive Review Gauntlet (Phase 7 — 2026-04-09)
+
+At 50% HP, Act 1 bosses (`final_exam` and `burning_deadline`) stop all normal combat attacks and enter the **Comprehensive Review Gauntlet** — the signature "show what you've learned" moment of Act 1.
+
+**Gauntlet rules (defined in `BOSS_QUIZ_GAUNTLET`, `src/data/balance.ts`):**
+- 8 rapid-fire quiz questions drawn from the player's weakest knowledge domain (lowest accuracy across the run)
+- Correct answer: deals 5% of boss maxHP as damage to the boss
+- Wrong answer: deals 10 damage to the player (goes through the damage pipeline — block reduces it)
+- Timer starts at **12 seconds** for question 0, decreasing by 0.5s per question, with a floor of **5 seconds**
+- Timer sequence: 12s, 11.5s, 11s, 10.5s, 10s, 9.5s, 9s, 9s (clamped at 5s minimum)
+- Gauntlet ends after all 8 questions; boss resumes normal Phase 2 combat (if still alive)
+
+**Implementation:** `BOSS_QUIZ_PHASES['final_exam']` and `BOSS_QUIZ_PHASES['burning_deadline']` in `balance.ts`. Timer per question computed via `getQuizPhaseTimerSeconds(config, questionIndex)` in `bossQuizPhase.ts`. The `rapidFire` flag means per-answer effects are applied immediately during the phase; `resolveQuizPhaseResults` returns `playerDamage` (total wrong x 10) in the outcome for the caller to apply.
 
 ---
 

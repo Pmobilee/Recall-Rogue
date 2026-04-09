@@ -50,11 +50,50 @@ export interface QuizPhaseOutcome {
   bossStrengthGain: number;
   /** Number of random buffs to grant the player (Archivist phase). */
   playerRandomBuffs: number;
+  /**
+   * Total damage to deal to the player (from wrongPlayerDamage penalties).
+   * Goes through the damage pipeline so block can reduce it.
+   * For rapid-fire phases, this is pre-computed here; the caller applies it.
+   */
+  playerDamage: number;
   correctCount: number;
   wrongCount: number;
   totalCount: number;
   /** Theme for the results screen. */
   theme: 'positive' | 'negative' | 'neutral';
+}
+
+// ---------------------------------------------------------------------------
+// getQuizPhaseTimerSeconds
+// ---------------------------------------------------------------------------
+
+/**
+ * Returns the timer duration in milliseconds for a specific question index in a boss quiz phase.
+ *
+ * For phases with timerDecreasePerQ and timerMinSeconds, the timer decreases by
+ * timerDecreasePerQ seconds per question, floored at timerMinSeconds.
+ *
+ * For phases with only timerOverrideMs (no decrease config), returns timerOverrideMs
+ * for all questions.
+ *
+ * @param config - The phase configuration.
+ * @param questionIndex - Zero-based index of the current question (0 = first question).
+ * @returns Timer duration in milliseconds for the given question.
+ */
+export function getQuizPhaseTimerSeconds(
+  config: BossQuizPhaseConfig,
+  questionIndex: number,
+): number {
+  const startMs = config.timerOverrideMs ?? 12000;
+  const startSeconds = startMs / 1000;
+
+  if (config.timerDecreasePerQ != null && config.timerDecreasePerQ > 0) {
+    const minSeconds = config.timerMinSeconds ?? 5;
+    const seconds = Math.max(minSeconds, startSeconds - questionIndex * config.timerDecreasePerQ);
+    return seconds * 1000;
+  }
+
+  return startMs;
 }
 
 // ---------------------------------------------------------------------------
@@ -271,15 +310,18 @@ export function resolveQuizPhaseResults(
     theme = 'neutral';
   }
 
-  // Rapid-fire: damage/heal already applied per-answer during questioning
+  // Rapid-fire: boss damage/heal are applied per-answer during questioning;
+  // playerDamage is pre-computed here so callers can apply it through the damage pipeline.
   if (config.rapidFire) {
     const bossStrengthGain = (config.penalties.wrongStrengthGain ?? 0) * results.wrong;
     const playerRandomBuffs = config.rewards.correctRandomBuff ? results.correct : 0;
+    const playerDamage = (config.penalties.wrongPlayerDamage ?? 0) * results.wrong;
     return {
       bossDamage: 0,
       bossHeal: 0,
       bossStrengthGain,
       playerRandomBuffs,
+      playerDamage,
       correctCount: results.correct,
       wrongCount: results.wrong,
       totalCount: total,
@@ -301,12 +343,14 @@ export function resolveQuizPhaseResults(
   const bossStrengthGain = (config.penalties.wrongStrengthGain ?? 0) * results.wrong;
   const bossHeal = (config.penalties.wrongBossHeal ?? 0) * results.wrong;
   const playerRandomBuffs = config.rewards.correctRandomBuff ? results.correct : 0;
+  const playerDamage = (config.penalties.wrongPlayerDamage ?? 0) * results.wrong;
 
   return {
     bossDamage,
     bossHeal,
     bossStrengthGain,
     playerRandomBuffs,
+    playerDamage,
     correctCount: results.correct,
     wrongCount: results.wrong,
     totalCount: total,

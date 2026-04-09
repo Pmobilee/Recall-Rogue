@@ -5,6 +5,10 @@ import {
   CANARY_ASSIST_WRONG_THRESHOLD,
   CANARY_CHALLENGE_ENEMY_DMG_MULT,
   CANARY_CHALLENGE_STREAK_THRESHOLD,
+  CANARY_ASSIST_ENEMY_HP_MULT,
+  CANARY_DEEP_ASSIST_ENEMY_HP_MULT,
+  CANARY_CHALLENGE_ENEMY_HP_MULT_3,
+  CANARY_CHALLENGE_ENEMY_HP_MULT_5,
 } from '../data/balance'
 
 /**
@@ -19,17 +23,24 @@ export interface CanaryState {
   correctStreak: number
   mode: CanaryMode
   enemyDamageMultiplier: number
+  /** Enemy HP multiplier: reduced in assist modes, increased in challenge mode. */
+  enemyHpMultiplier: number
   questionBias: -1 | 0 | 1
 }
 
 function deriveMode(wrongAnswersThisFloor: number, correctStreak: number): CanaryState {
   // Check challenge mode first (high performance)
   if (correctStreak >= CANARY_CHALLENGE_STREAK_THRESHOLD) {
+    // Within challenge mode: use the stronger HP multiplier for streak >= 5, weaker for >= 3
+    const challengeHpMult = correctStreak >= CANARY_CHALLENGE_STREAK_THRESHOLD
+      ? CANARY_CHALLENGE_ENEMY_HP_MULT_5
+      : CANARY_CHALLENGE_ENEMY_HP_MULT_3;
     return {
       wrongAnswersThisFloor,
       correctStreak,
       mode: 'challenge',
       enemyDamageMultiplier: CANARY_CHALLENGE_ENEMY_DMG_MULT,
+      enemyHpMultiplier: challengeHpMult,
       questionBias: 1,
     }
   }
@@ -41,6 +52,7 @@ function deriveMode(wrongAnswersThisFloor: number, correctStreak: number): Canar
       correctStreak,
       mode: 'deep_assist',
       enemyDamageMultiplier: CANARY_DEEP_ASSIST_ENEMY_DMG_MULT,
+      enemyHpMultiplier: CANARY_DEEP_ASSIST_ENEMY_HP_MULT,
       questionBias: -1,
     }
   }
@@ -52,6 +64,7 @@ function deriveMode(wrongAnswersThisFloor: number, correctStreak: number): Canar
       correctStreak,
       mode: 'assist',
       enemyDamageMultiplier: CANARY_ASSIST_ENEMY_DMG_MULT,
+      enemyHpMultiplier: CANARY_ASSIST_ENEMY_HP_MULT,
       questionBias: -1,
     }
   }
@@ -62,6 +75,7 @@ function deriveMode(wrongAnswersThisFloor: number, correctStreak: number): Canar
     correctStreak,
     mode: 'neutral',
     enemyDamageMultiplier: 1.0,
+    enemyHpMultiplier: 1.0,
     questionBias: 0,
   }
 }

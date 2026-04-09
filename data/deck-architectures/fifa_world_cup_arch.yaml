@@ -1,0 +1,1127 @@
+deck_id: fifa_world_cup
+deck_name: "FIFA World Cup"
+domain: general_knowledge
+# DOMAIN FLAG: 'sports_entertainment' is the planned domain per data/deck-ideas.md Section 3.11
+# but it does NOT yet exist in src/data/card-types.ts CANONICAL_FACT_DOMAINS.
+# Architect phase MUST add 'sports_entertainment' to the TypeScript enum and domainMetadata.ts
+# BEFORE the generate phase begins. Using 'general_knowledge' as interim fallback only.
+status: discover_complete
+discovered: 2026-04-09
+target_fact_count: 300
+domain_flag: "NEW DOMAIN — sports_entertainment must be added to CanonicalFactDomain before generate phase"
+
+sources:
+  - name: Wikipedia (List of FIFA World Cup finals)
+    url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [mens tournament winners, runners-up, final scores, venues, locations]
+
+  - name: Wikipedia (FIFA Women's World Cup results table)
+    url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [womens tournament winners, runners-up, final scores, hosts]
+
+  - name: Wikipedia (FIFA World Cup awards — Golden Ball)
+    url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [Golden Ball winners 1982-2022, unofficial best player 1978]
+
+  - name: Wikipedia (FIFA Women's World Cup awards)
+    url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [Womens Golden Ball winners 1991-2023, Womens Golden Boot winners 1991-2023]
+
+  - name: Wikipedia (FIFA World Cup top goalscorers)
+    url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [all-time top scorers, Miroslav Klose record 16 goals, Just Fontaine 13 goals in 1958]
+
+  - name: Wikipedia (FIFA Women's World Cup records and statistics)
+    url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_records_and_statistics
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [USA 13-0 Thailand 2019, youngest/oldest goalscorer records, Abby Wambach 122nd minute goal]
+
+  - name: Wikipedia (Pelé)
+    url: https://en.wikipedia.org/wiki/Pel%C3%A9
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [Pelé birth date 23 Oct 1940, death date 29 Dec 2022, World Cup appearances 1958/1962/1966/1970]
+
+  - name: Wikipedia (Diego Maradona)
+    url: https://en.wikipedia.org/wiki/Diego_Maradona
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [Maradona birth date 30 Oct 1960, death date 25 Nov 2020, 1986 World Cup Golden Ball]
+
+  - name: Wikipedia (Marta footballer)
+    url: https://en.wikipedia.org/wiki/Marta_(footballer)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [Marta birth date 19 Feb 1986, World Cup career, Brazil nationality]
+
+  - name: Wikipedia (1930 FIFA World Cup)
+    url: https://en.wikipedia.org/wiki/1930_FIFA_World_Cup
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-09
+    used_for: [1930 host Uruguay, winner Uruguay, runner-up Argentina, top scorer Guillermo Stábile 8 goals]
+
+# ============================================================
+# ARCHITECT PHASE REQUIREMENTS
+# ============================================================
+architect_phase_requirements:
+  - "ADD 'sports_entertainment' to CANONICAL_FACT_DOMAINS in src/data/card-types.ts"
+  - "ADD 'sports_entertainment' entry to DOMAIN_METADATA in src/data/domainMetadata.ts (icon: ⚽, colorTint: #16A34A, displayName: 'Sports & Entertainment')"
+  - "RUN npm run registry:sync after domain addition"
+  - "Research: Golden Boot (top scorer) winners per Men's WC tournament for all 22 editions — Wikipedia 'List of FIFA World Cup top goalscorers by tournament'"
+  - "Research: Host cities / primary venues for all 22 Men's WC and 9 Women's WC editions"
+  - "Research: Women's legends — Abby Wambach career goals (184 international), Birgit Prinz career stats, Sun Wen stats"
+  - "Research: Johan Cruyff (Netherlands), Franz Beckenbauer (West Germany), Gerd Müller stats (68 international goals)"
+  - "Research: Morocco 2022 run (first African team in WC semifinal), Japan 2011 Women's WC win context"
+
+# ============================================================
+# SUB-DECK 1: Men's World Cup Tournaments
+# ============================================================
+sub_decks:
+  - id: mens_world_cup_tournaments
+    name: "Men's World Cup — Tournament History"
+    chain_theme: "Men's World Cup"
+    chain_theme_id: 0
+    estimated_facts: 90
+    notes: "~4 facts per tournament × 22 editions = ~88 facts. Covers: host, winner, runner-up, final score, top scorer/Golden Boot, Golden Ball (1982+), notable first/record"
+
+    verified_data:
+      - edition: 1
+        year: 1930
+        host_country: Uruguay
+        host_city: Montevideo
+        winner: Uruguay
+        runner_up: Argentina
+        final_score: "4-2"
+        final_venue: "Estadio Centenario, Montevideo"
+        top_scorer: "Guillermo Stábile (Argentina, 8 goals)"
+        notable: "First FIFA World Cup; only 13 teams entered; European boycott"
+        source_url: https://en.wikipedia.org/wiki/1930_FIFA_World_Cup
+
+      - edition: 2
+        year: 1934
+        host_country: Italy
+        host_city: Rome
+        winner: Italy
+        runner_up: Czechoslovakia
+        final_score: "2-1 (a.e.t.)"
+        final_venue: "Stadio Nazionale PNF, Rome"
+        top_scorer: "Oldřich Nejedlý (Czechoslovakia, 5 goals)"
+        notable: "First World Cup where the reigning champion (Uruguay) had to qualify; Italy won under Mussolini's regime"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - edition: 3
+        year: 1938
+        host_country: France
+        host_city: Colombes
+        winner: Italy
+        runner_up: Hungary
+        final_score: "4-2"
+        final_venue: "Stade Olympique de Colombes, Colombes"
+        top_scorer: "Leônidas (Brazil, 7 goals)"
+        notable: "Italy retained the trophy; last World Cup before WWII interrupted the tournament for 12 years"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - edition: 4
+        year: 1950
+        host_country: Brazil
+        host_city: Rio de Janeiro
+        winner: Uruguay
+        runner_up: Brazil
+        final_score: "2-1"
+        final_venue: "Maracanã Stadium, Rio de Janeiro"
+        final_note: "Decisive final round-robin match, not a traditional final"
+        top_scorer: "Ademir (Brazil, 8 goals)"
+        notable: "The Maracanazo — Uruguay's shock victory before 173,850 fans; largest recorded World Cup crowd"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - edition: 5
+        year: 1954
+        host_country: Switzerland
+        host_city: Bern
+        winner: "West Germany"
+        runner_up: Hungary
+        final_score: "3-2"
+        final_venue: "Wankdorf Stadium, Bern"
+        top_scorer: "Sándor Kocsis (Hungary, 11 goals)"
+        notable: "The Miracle of Bern — West Germany defeated the previously unbeaten 'Golden Team' of Hungary; first WC on television"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - edition: 6
+        year: 1958
+        host_country: Sweden
+        host_city: Solna
+        winner: Brazil
+        runner_up: Sweden
+        final_score: "5-2"
+        final_venue: "Råsunda Stadium, Solna"
+        top_scorer: "Just Fontaine (France, 13 goals)"
+        notable: "Pelé's debut World Cup at age 17; Just Fontaine's 13 goals remains the all-time tournament record"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - edition: 7
+        year: 1962
+        host_country: Chile
+        host_city: Santiago
+        winner: Brazil
+        runner_up: Czechoslovakia
+        final_score: "3-1"
+        final_venue: "Estadio Nacional, Santiago"
+        top_scorer: "Garrincha, Vavá, Drazan Jerkovic, Leonel Sánchez, Flórián Albert, Valentin Ivanov (6 goals each)"
+        notable: "Brazil retained the trophy; Pelé injured early in tournament; Garrincha carried the team"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - edition: 8
+        year: 1966
+        host_country: England
+        host_city: London
+        winner: England
+        runner_up: "West Germany"
+        final_score: "4-2 (a.e.t.)"
+        final_venue: "Wembley Stadium, London"
+        top_scorer: "Eusébio (Portugal, 9 goals)"
+        notable: "England's only World Cup title; Geoff Hurst scored a hat-trick in the final"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - edition: 9
+        year: 1970
+        host_country: Mexico
+        host_city: "Mexico City"
+        winner: Brazil
+        runner_up: Italy
+        final_score: "4-1"
+        final_venue: "Estadio Azteca, Mexico City"
+        top_scorer: "Gerd Müller (West Germany, 10 goals)"
+        notable: "Brazil's greatest team; Pelé's final World Cup; first WC in color TV; Brazil kept the Jules Rimet Trophy permanently"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - edition: 10
+        year: 1974
+        host_country: "West Germany"
+        host_city: Munich
+        winner: "West Germany"
+        runner_up: Netherlands
+        final_score: "2-1"
+        final_venue: "Olympiastadion, Munich"
+        top_scorer: "Grzegorz Lato (Poland, 7 goals)"
+        golden_ball_unofficial: "Johan Cruyff (Netherlands)"
+        notable: "Johan Cruyff invented the Cruyff Turn; Netherlands' Total Football era; Cruyff refused to play due to political protest"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - edition: 11
+        year: 1978
+        host_country: Argentina
+        host_city: "Buenos Aires"
+        winner: Argentina
+        runner_up: Netherlands
+        final_score: "3-1 (a.e.t.)"
+        final_venue: "Estadio Monumental, Buenos Aires"
+        top_scorer: "Mario Kempes (Argentina, 6 goals)"
+        golden_ball_unofficial: "Mario Kempes (Argentina)"
+        notable: "Argentina's first World Cup title; held under military dictatorship; Mario Kempes scored twice in the final"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - edition: 12
+        year: 1982
+        host_country: Spain
+        host_city: Madrid
+        winner: Italy
+        runner_up: "West Germany"
+        final_score: "3-1"
+        final_venue: "Santiago Bernabéu Stadium, Madrid"
+        top_scorer: "Paolo Rossi (Italy, 6 goals)"
+        golden_ball: "Paolo Rossi (Italy)"
+        notable: "Paolo Rossi scored hat-trick vs Brazil; Italy's third title; first Golden Ball officially awarded"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - edition: 13
+        year: 1986
+        host_country: Mexico
+        host_city: "Mexico City"
+        winner: Argentina
+        runner_up: "West Germany"
+        final_score: "3-2"
+        final_venue: "Estadio Azteca, Mexico City"
+        top_scorer: "Gary Lineker (England, 6 goals)"
+        golden_ball: "Diego Maradona (Argentina)"
+        notable: "Maradona's Hand of God + Goal of the Century vs England in same quarter-final match"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - edition: 14
+        year: 1990
+        host_country: Italy
+        host_city: Rome
+        winner: "West Germany"
+        runner_up: Argentina
+        final_score: "1-0"
+        final_venue: "Stadio Olimpico, Rome"
+        top_scorer: "Salvatore Schillaci (Italy, 6 goals)"
+        golden_ball: "Salvatore Schillaci (Italy)"
+        notable: "Lowest-scoring World Cup final ever; West Germany's third title; penalty-heavy tournament"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - edition: 15
+        year: 1994
+        host_country: "United States"
+        host_city: Pasadena
+        winner: Brazil
+        runner_up: Italy
+        final_score: "0-0 (a.e.t., 3-2 pens)"
+        final_venue: "Rose Bowl, Pasadena, California"
+        top_scorer: "Hristo Stoichkov (Bulgaria), Oleg Salenko (Russia) — 6 goals each"
+        golden_ball: "Romário (Brazil)"
+        notable: "First World Cup final decided by penalty shootout; Roberto Baggio missed decisive penalty"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - edition: 16
+        year: 1998
+        host_country: France
+        host_city: "Saint-Denis"
+        winner: France
+        runner_up: Brazil
+        final_score: "3-0"
+        final_venue: "Stade de France, Saint-Denis"
+        top_scorer: "Davor Šuker (Croatia, 6 goals)"
+        golden_ball: "Ronaldo (Brazil)"
+        notable: "France's first title on home soil; Zidane scored twice with headers; Brazil's Ronaldo played despite health crisis"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - edition: 17
+        year: 2002
+        host_country: "South Korea / Japan"
+        host_city: Yokohama
+        winner: Brazil
+        runner_up: Germany
+        final_score: "2-0"
+        final_venue: "International Stadium, Yokohama"
+        top_scorer: "Ronaldo (Brazil, 8 goals)"
+        golden_ball: "Oliver Kahn (Germany)"
+        notable: "First World Cup in Asia; only goalkeeper to win Golden Ball; Ronaldo's redemption after 1998 collapse; South Korea reached semi-finals"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - edition: 18
+        year: 2006
+        host_country: Germany
+        host_city: Berlin
+        winner: Italy
+        runner_up: France
+        final_score: "1-1 (a.e.t., 5-3 pens)"
+        final_venue: "Olympiastadion, Berlin"
+        top_scorer: "Miroslav Klose (Germany, 5 goals)"
+        golden_ball: "Zinedine Zidane (France)"
+        notable: "Zidane headbutted Marco Materazzi in the final, received a red card, and retired; Germany vs Italy semi-final considered one of the greatest matches"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - edition: 19
+        year: 2010
+        host_country: "South Africa"
+        host_city: Johannesburg
+        winner: Spain
+        runner_up: Netherlands
+        final_score: "1-0 (a.e.t.)"
+        final_venue: "Soccer City (FNB Stadium), Johannesburg"
+        top_scorer: "Thomas Müller, David Villa, Wesley Sneijder, Diego Forlán — 5 goals each"
+        golden_ball: "Diego Forlán (Uruguay)"
+        notable: "First World Cup on African soil; Spain's first title; Iniesta's winning goal in extra time; the vuvuzela tournament"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - edition: 20
+        year: 2014
+        host_country: Brazil
+        host_city: "Rio de Janeiro"
+        winner: Germany
+        runner_up: Argentina
+        final_score: "1-0 (a.e.t.)"
+        final_venue: "Maracanã Stadium, Rio de Janeiro"
+        top_scorer: "James Rodríguez (Colombia, 6 goals)"
+        golden_ball: "Lionel Messi (Argentina)"
+        notable: "Germany 7-1 Brazil semi-final (Mineirazo) — the most shocking scoreline in World Cup history"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - edition: 21
+        year: 2018
+        host_country: Russia
+        host_city: Moscow
+        winner: France
+        runner_up: Croatia
+        final_score: "4-2"
+        final_venue: "Luzhniki Stadium, Moscow"
+        top_scorer: "Harry Kane (England, 6 goals)"
+        golden_ball: "Luka Modrić (Croatia)"
+        notable: "France's second title; Croatia's first final; Luka Modrić ended Messi/Ronaldo's 10-year Golden Ball dominance"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - edition: 22
+        year: 2022
+        host_country: Qatar
+        host_city: Lusail
+        winner: Argentina
+        runner_up: France
+        final_score: "3-3 (a.e.t., 4-2 pens)"
+        final_venue: "Lusail Stadium, Lusail, Qatar"
+        top_scorer: "Kylian Mbappé (France, 8 goals)"
+        golden_ball: "Lionel Messi (Argentina)"
+        notable: "Greatest World Cup final ever played; Mbappe's hat-trick in the final; Messi's second Golden Ball; Morocco first African/Arab team to reach semi-finals; first WC in Middle East"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+# ============================================================
+# SUB-DECK 2: Women's World Cup Tournaments
+# ============================================================
+  - id: womens_world_cup_tournaments
+    name: "Women's World Cup — Tournament History"
+    chain_theme: "Women's World Cup"
+    chain_theme_id: 1
+    estimated_facts: 55
+    notes: "~6 facts per tournament × 9 editions = ~54 facts. Covers: host, winner, runner-up, final score, Golden Ball, Golden Boot, notable first/record"
+
+    verified_data:
+      - edition: 1
+        year: 1991
+        host_country: China
+        host_city: Guangzhou
+        winner: "United States"
+        runner_up: Norway
+        final_score: "2-1"
+        final_venue: "Tianhe Stadium, Guangzhou"
+        golden_ball: "Carin Jennings (USA)"
+        golden_boot: "Michelle Akers (USA, 10 goals)"
+        notable: "Inaugural Women's World Cup; known as '1st FIFA World Championship for Women's Football'; 80-minute matches; USA won with Akers and Jennings"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - edition: 2
+        year: 1995
+        host_country: Sweden
+        host_city: Stockholm
+        winner: Norway
+        runner_up: Germany
+        final_score: "2-0"
+        final_venue: "Råsunda Stadium, Stockholm"
+        golden_ball: "Hege Riise (Norway)"
+        golden_boot: "Ann Kristin Aarønes (Norway, 6 goals)"
+        notable: "Norway's only Women's World Cup title; Hege Riise dominated the tournament"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - edition: 3
+        year: 1999
+        host_country: "United States"
+        host_city: Pasadena
+        winner: "United States"
+        runner_up: China
+        final_score: "0-0 (a.e.t., 5-4 pens)"
+        final_venue: "Rose Bowl, Pasadena (90,185 fans)"
+        golden_ball: "Sun Wen (China)"
+        golden_boot: "Sun Wen (China) and Sissi (Brazil) — 7 goals each"
+        notable: "Brandi Chastain's iconic penalty kick and shirt removal; Rose Bowl record 90,185 fans; largest attendance in women's sports history at the time"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - edition: 4
+        year: 2003
+        host_country: "United States"
+        host_city: "Carson, California"
+        winner: Germany
+        runner_up: Sweden
+        final_score: "2-1 (a.e.t., golden goal)"
+        final_venue: "Home Depot Center, Carson"
+        golden_ball: "Birgit Prinz (Germany)"
+        golden_boot: "Birgit Prinz (Germany, 7 goals)"
+        notable: "Moved from China to USA due to SARS outbreak; Germany's first Women's World Cup; decided by golden goal rule; Nia Künzer's header in extra time"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - edition: 5
+        year: 2007
+        host_country: China
+        host_city: Shanghai
+        winner: Germany
+        runner_up: Brazil
+        final_score: "2-0"
+        final_venue: "Hongkou Football Stadium, Shanghai"
+        golden_ball: "Marta (Brazil)"
+        golden_boot: "Marta (Brazil, 7 goals)"
+        notable: "Germany retained the title; Marta won Golden Ball and Boot; Germany's 11-0 demolition of Argentina in group stage"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - edition: 6
+        year: 2011
+        host_country: Germany
+        host_city: Frankfurt
+        winner: Japan
+        runner_up: "United States"
+        final_score: "2-2 (a.e.t., 3-1 pens)"
+        final_venue: "FIFA WM-Stadion Frankfurt"
+        golden_ball: "Homare Sawa (Japan)"
+        golden_boot: "Homare Sawa (Japan, 5 goals)"
+        notable: "Japan's only Women's World Cup; won months after the Tōhoku earthquake/tsunami; Homare Sawa's dramatic equalizer in 117th minute of the final; USA's Abby Wambach headed goal in 122nd minute of the quarter-final vs Brazil"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - edition: 7
+        year: 2015
+        host_country: Canada
+        host_city: Vancouver
+        winner: "United States"
+        runner_up: Japan
+        final_score: "5-2"
+        final_venue: "BC Place Stadium, Vancouver"
+        golden_ball: "Carli Lloyd (USA)"
+        golden_boot: "Celia Sasic (Germany, 6 goals)"
+        notable: "USA's third title; Carli Lloyd scored a hat-trick in the first 16 minutes of the final; first expanded 24-team tournament; first Women's WC on artificial turf (controversial)"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - edition: 8
+        year: 2019
+        host_country: France
+        host_city: Lyon
+        winner: "United States"
+        runner_up: Netherlands
+        final_score: "2-0"
+        final_venue: "Stade de Lyon, Lyon"
+        golden_ball: "Megan Rapinoe (USA)"
+        golden_boot: "Megan Rapinoe (USA, 6 goals)"
+        notable: "USA's fourth title (most of any nation); record 1 billion viewers worldwide; USA 13-0 Thailand was largest Women's WC victory; equal pay advocacy by US players"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - edition: 9
+        year: 2023
+        host_country: "Australia / New Zealand"
+        host_city: Sydney
+        winner: Spain
+        runner_up: England
+        final_score: "1-0"
+        final_venue: "Stadium Australia, Sydney (75,784 fans)"
+        golden_ball: "Aitana Bonmatí (Spain)"
+        golden_boot: "Hinata Miyazawa (Japan, 5 goals)"
+        notable: "Spain's first Women's World Cup; first 32-team tournament; largest Women's WC final attendance; Australia's Sam Kerr's stunning last-ditch goal vs England; Aitana Bonmatí won both Golden Ball and Ballon d'Or Feminin that year"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+# ============================================================
+# SUB-DECK 3: Legendary Players
+# ============================================================
+  - id: legendary_players
+    name: "Legendary World Cup Players"
+    chain_theme: "World Cup Legends"
+    chain_theme_id: 2
+    estimated_facts: 80
+    notes: "~50 Men's + ~30 Women's legends. Each legend gets 2-3 facts: nationality, World Cup record, career milestone/record"
+
+    verified_data:
+      # === MEN'S LEGENDS (verified from Wikipedia) ===
+      - name: "Pelé"
+        full_name: "Edson Arantes do Nascimento"
+        nationality: Brazil
+        birth_date: "1940-10-23"
+        death_date: "2022-12-29"
+        world_cups: [1958, 1962, 1966, 1970]
+        titles_won: 3
+        world_cup_goals: 12
+        role: "Forward"
+        key_fact: "Only player to win three World Cups; debuted at age 17 in 1958"
+        source_url: https://en.wikipedia.org/wiki/Pel%C3%A9
+
+      - name: "Diego Maradona"
+        nationality: Argentina
+        birth_date: "1960-10-30"
+        death_date: "2020-11-25"
+        world_cups: [1982, 1986, 1990, 1994]
+        titles_won: 1
+        key_fact: "1986 Golden Ball winner; scored both the Hand of God and Goal of the Century in same quarter-final vs England"
+        source_url: https://en.wikipedia.org/wiki/Diego_Maradona
+
+      - name: "Lionel Messi"
+        nationality: Argentina
+        world_cups: [2006, 2010, 2014, 2018, 2022]
+        titles_won: 1
+        golden_balls: 2
+        golden_ball_years: [2014, 2022]
+        key_fact: "Only player to win two FIFA World Cup Golden Balls (2014 and 2022); 2022 World Cup winner"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - name: "Miroslav Klose"
+        nationality: Germany
+        world_cups: [2002, 2006, 2010, 2014]
+        world_cup_goals: 16
+        titles_won: 1
+        key_fact: "All-time top scorer in World Cup history with 16 goals across 4 tournaments"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers
+
+      - name: "Just Fontaine"
+        nationality: France
+        world_cups: [1958]
+        world_cup_goals: 13
+        key_fact: "Scored 13 goals in a single World Cup (1958) — the all-time record for one tournament"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers
+
+      - name: "Johan Cruyff"
+        nationality: Netherlands
+        world_cups: [1974]
+        notable: "Invented the Cruyff Turn; led Netherlands' Total Football; refused to play 1978 WC (political protest)"
+        key_fact: "Led Netherlands to the 1974 final with his Total Football revolution; invented the Cruyff Turn at the tournament"
+        architect_note: "Verify: Cruyff WC goals count and exact political reason for 1978 boycott via Wikipedia before generate phase"
+        source_url: https://en.wikipedia.org/wiki/Johan_Cruyff
+
+      - name: "Zinedine Zidane"
+        nationality: France
+        world_cups: [1998, 2002, 2006]
+        titles_won: 1
+        golden_ball_year: 2006
+        key_fact: "Won 1998 World Cup; won 2006 Golden Ball despite being sent off with a red card for headbutting Materazzi in the final"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - name: "Ronaldo (Brazilian footballer)"
+        nationality: Brazil
+        world_cups: [1994, 1998, 2002, 2006]
+        titles_won: 2
+        world_cup_goals: 15
+        golden_balls: 1
+        golden_ball_year: 1998
+        key_fact: "Scored 15 World Cup goals (second all-time to Klose); won back-to-back titles (1994, 2002)"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers
+
+      - name: "Kylian Mbappé"
+        nationality: France
+        world_cups: [2018, 2022]
+        titles_won: 1
+        key_fact: "Won 2018 World Cup at age 19; scored hat-trick in the 2022 final (losing side); won 2022 Golden Boot with 8 goals"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - name: "Gerd Müller"
+        nationality: "West Germany"
+        world_cups: [1970, 1974]
+        world_cup_goals: 14
+        titles_won: 1
+        key_fact: "Scored 14 World Cup goals including 10 in 1970; held the all-time record until Ronaldo (2006) and Klose (2014)"
+        architect_note: "Verify exact goal tally and key tournament stats via Wikipedia before generate phase"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers
+
+      - name: "Franz Beckenbauer"
+        nationality: "West Germany"
+        world_cups: [1966, 1970, 1974]
+        titles_won: 1
+        role: "Defender/sweeper"
+        key_fact: "One of only two people to win the World Cup as both a player (1974) and a manager (1990); invented the attacking sweeper role"
+        architect_note: "Verify Beckenbauer's 1990 role as manager and exact claim vs Wikipedia"
+        source_url: https://en.wikipedia.org/wiki/Franz_Beckenbauer
+
+      - name: "Paolo Rossi"
+        nationality: Italy
+        world_cups: [1978, 1982]
+        titles_won: 1
+        key_fact: "Won 1982 Golden Ball and Golden Boot with 6 goals; scored hat-trick vs Brazil in group stage to eliminate the favorites"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - name: "Luka Modrić"
+        nationality: Croatia
+        world_cups: [2006, 2014, 2018, 2022]
+        titles_won: 0
+        golden_ball_year: 2018
+        key_fact: "Won 2018 Golden Ball, ending Messi and Ronaldo's decade-long dominance; led Croatia to the 2018 final"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - name: "Ronaldinho"
+        nationality: Brazil
+        world_cups: [2002, 2006]
+        titles_won: 1
+        key_fact: "Won the 2002 World Cup; free kick lobbed over David Seaman vs England is one of the tournament's most iconic goals"
+        architect_note: "Verify Ronaldinho's exact tournament stats and the Seaman free kick match (quarter-final 2002) via Wikipedia"
+
+      - name: "Eusébio"
+        nationality: Portugal
+        world_cups: [1966]
+        world_cup_goals: 9
+        key_fact: "Scored 9 goals in 1966 — best tally by any player in that tournament; Portugal finished third"
+        architect_note: "Verify Eusébio 1966 WC goals via Wikipedia before generate phase"
+
+      - name: "Garrincha"
+        nationality: Brazil
+        world_cups: [1958, 1962, 1966]
+        titles_won: 2
+        key_fact: "Undefeated in World Cup games in which he played; won 1962 Golden Boot and carried Brazil after Pelé's injury"
+        architect_note: "Verify claim of 'undefeated in all WC games' and Golden Boot year via Wikipedia"
+
+      # === WOMEN'S LEGENDS (verified/partially verified from Wikipedia) ===
+      - name: "Marta"
+        full_name: "Marta Vieira da Silva"
+        nationality: Brazil
+        birth_date: "1986-02-19"
+        world_cups: [2003, 2007, 2011, 2015, 2019, 2023]
+        world_cup_goals: 17
+        golden_balls: 1
+        golden_ball_year: 2007
+        key_fact: "All-time top scorer in Women's World Cup history with 17 goals; played in 6 World Cups for Brazil"
+        architect_note: "Verify Marta's exact WC goal count (17 as of 2023) via Wikipedia Women's WC records"
+        source_url: https://en.wikipedia.org/wiki/Marta_(footballer)
+
+      - name: "Abby Wambach"
+        nationality: "United States"
+        world_cups: [2003, 2007, 2011, 2015]
+        titles_won: 2
+        career_goals: 184
+        key_fact: "184 international goals — a world record at retirement; her 122nd-minute header vs Brazil in 2011 quarter-final is one of the greatest goals in the tournament's history"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_records_and_statistics
+        architect_note: "Verify Wambach career goals (184) and titles won via Wikipedia"
+
+      - name: "Birgit Prinz"
+        nationality: Germany
+        world_cups: [1995, 1999, 2003, 2007, 2011]
+        titles_won: 2
+        world_cup_goals: 14
+        golden_balls: 1
+        golden_ball_year: 2003
+        key_fact: "Won 2003 Golden Ball and Golden Boot; won back-to-back Women's World Cups with Germany (2003, 2007)"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - name: "Sun Wen"
+        nationality: China
+        world_cups: [1991, 1995, 1999, 2003]
+        golden_ball_year: 1999
+        key_fact: "Won 1999 Golden Ball and Golden Boot (7 goals); led China to the 1999 final vs USA; regarded as China's greatest female footballer"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - name: "Michelle Akers"
+        nationality: "United States"
+        world_cups: [1991, 1995, 1999]
+        titles_won: 2
+        golden_boot_year: 1991
+        world_cup_goals_1991: 10
+        key_fact: "Won 1991 Golden Boot with 10 goals including 2 in the final; pioneered women's football globally"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - name: "Homare Sawa"
+        nationality: Japan
+        world_cups: [1995, 1999, 2003, 2007, 2011, 2015]
+        titles_won: 1
+        golden_ball_year: 2011
+        key_fact: "Won 2011 Golden Ball and Golden Boot; her 117th-minute equalizer in the final secured Japan's only World Cup title"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - name: "Megan Rapinoe"
+        nationality: "United States"
+        world_cups: [2011, 2015, 2019, 2023]
+        titles_won: 3
+        golden_ball_year: 2019
+        key_fact: "Won 2019 Golden Ball and Golden Boot; known for political advocacy alongside her football achievements"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - name: "Carli Lloyd"
+        nationality: "United States"
+        world_cups: [2007, 2011, 2015, 2019]
+        titles_won: 2
+        golden_ball_year: 2015
+        key_fact: "Scored a hat-trick in the first 16 minutes of the 2015 World Cup final vs Japan, including a goal from halfway line"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - name: "Sam Kerr"
+        nationality: Australia
+        world_cups: [2015, 2019, 2023]
+        key_fact: "Australia's all-time top scorer; her stunning volley against England in the 2023 semi-final (on home soil) is considered one of the greatest Women's WC goals ever"
+        architect_note: "Verify Kerr's exact goal vs England context (semi-final 2023) and career stats via Wikipedia"
+
+      - name: "Aitana Bonmatí"
+        nationality: Spain
+        world_cups: [2023]
+        titles_won: 1
+        golden_ball_year: 2023
+        key_fact: "Won 2023 Golden Ball; won both the Women's World Cup and Ballon d'Or Féminin in the same year (2023)"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+# ============================================================
+# SUB-DECK 4: Iconic Matches & Moments
+# ============================================================
+  - id: iconic_matches_moments
+    name: "Iconic Matches & Moments"
+    chain_theme: "Unforgettable Moments"
+    chain_theme_id: 3
+    estimated_facts: 45
+    notes: "~45 distinct moments/matches across both Men's and Women's tournaments. Each gets 1-2 facts."
+
+    verified_data:
+      - name: "Maracanazo"
+        year: 1950
+        match: "Uruguay 2-1 Brazil"
+        context: "Decisive final round-robin match; Uruguay's shock victory before 173,850 fans (estimated — some sources say higher) in the Maracanã Stadium in Rio de Janeiro"
+        why_iconic: "Brazil needed only a draw to win the tournament; the silence of 200,000 fans was described as the greatest shock in football history"
+        source_url: https://en.wikipedia.org/wiki/1950_FIFA_World_Cup
+
+      - name: "Miracle of Bern"
+        year: 1954
+        match: "West Germany 3-2 Hungary"
+        context: "West Germany defeated Hungary's unbeaten 'Golden Team' in the final; Hungary had beaten West Germany 8-3 in the group stage"
+        why_iconic: "Considered the greatest sporting upset of the 20th century in Germany; the match that gave West Germany its post-war identity"
+        source_url: https://en.wikipedia.org/wiki/1954_FIFA_World_Cup_final
+
+      - name: "Pelé's first World Cup goal"
+        year: 1958
+        context: "Pelé scored his first World Cup goal at age 17 against Wales in the quarter-final (1958); he went on to score 6 goals in the tournament"
+        why_iconic: "Youngest player ever to score in a World Cup at the time; introduced the world to the future GOAT"
+        architect_note: "Verify Pelé's first goal was vs Wales quarter-final 1958 via Wikipedia"
+
+      - name: "Just Fontaine's 13 goals in 1958"
+        year: 1958
+        context: "Just Fontaine (France) scored 13 goals in 6 matches at the 1958 World Cup — the all-time record for a single tournament"
+        why_iconic: "The record has stood for 66 years; Fontaine averaged more than 2 goals per game"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers
+
+      - name: "Hand of God / Goal of the Century (1986)"
+        year: 1986
+        match: "Argentina 2-1 England (quarter-final)"
+        context: "Maradona scored two goals in the same match: first using his hand (the 'Hand of God'), then a solo run from his own half beating 5 English players and the goalkeeper (the 'Goal of the Century')"
+        why_iconic: "The two most famous goals in football history in one game; Maradona called the hand goal 'a little with the head of Maradona and a little with the hand of God'"
+        source_url: https://en.wikipedia.org/wiki/Diego_Maradona
+
+      - name: "Cruyff Turn (1974)"
+        year: 1974
+        context: "Johan Cruyff performed his iconic body feint and ball drag against Sweden defender Jan Olsson in the 1974 group stage"
+        why_iconic: "Named after the player who invented it live in a match; became the most iconic skill move in football history"
+        architect_note: "Verify opponent was Jan Olsson (Sweden) via Wikipedia before generate phase"
+
+      - name: "Roberto Baggio's missed penalty (1994)"
+        year: 1994
+        match: "Brazil 0-0 Italy final (3-2 pens)"
+        context: "Roberto Baggio, Italy's best player, missed the decisive penalty in the shootout, sending his shot over the crossbar"
+        why_iconic: "The image of Baggio, hands on head, watching his penalty sail over is one of the defining images of World Cup history"
+        source_url: https://en.wikipedia.org/wiki/1994_FIFA_World_Cup_final
+
+      - name: "Zidane's headbutt (2006)"
+        year: 2006
+        match: "Italy vs France final"
+        context: "Zinedine Zidane, in his final professional match, headbutted Marco Materazzi in the chest after a verbal altercation, received a red card, and retired minutes later"
+        why_iconic: "France went on to lose on penalties; Zidane was still awarded the Golden Ball despite the red card"
+        source_url: https://en.wikipedia.org/wiki/FIFA_World_Cup_awards
+
+      - name: "Germany 7-1 Brazil (Mineirazo)"
+        year: 2014
+        match: "Germany 7-1 Brazil (semi-final)"
+        context: "Germany demolished the host nation 7-1 in the semi-final at the Estádio Mineirão in Belo Horizonte; scored 5 goals in a 6-minute spell"
+        why_iconic: "The most shocking result in World Cup semi-final history; Brazil fans wept openly in the stadium; became a cultural trauma for Brazil"
+        source_url: https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)
+
+      - name: "Morocco's 2022 run"
+        year: 2022
+        context: "Morocco became the first African and first Arab nation to reach the World Cup semi-finals, defeating Spain and Portugal (World Cup holders) on the way"
+        why_iconic: "Inspired a billion people across Africa and the Arab world; players celebrated with their mothers on the pitch"
+        source_url: https://en.wikipedia.org/wiki/2022_FIFA_World_Cup
+
+      - name: "Brandi Chastain's penalty (1999)"
+        year: 1999
+        match: "USA 0-0 China (5-4 pens)"
+        context: "Brandi Chastain scored the winning penalty in the Women's World Cup final and famously removed her jersey in celebration before 90,185 fans at the Rose Bowl"
+        why_iconic: "The photograph became one of the most iconic sports images of the 20th century; sparked the women's football movement in the USA"
+        source_url: https://en.wikipedia.org/wiki/1999_FIFA_Women%27s_World_Cup_Final
+
+      - name: "USA 13-0 Thailand (2019)"
+        year: 2019
+        match: "USA 13-0 Thailand (group stage)"
+        context: "USA set the record for the largest margin of victory in Women's World Cup history; Alex Morgan scored 5 goals"
+        why_iconic: "Most lopsided result in Women's World Cup history; generated controversy over goal celebrations"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_records_and_statistics
+
+      - name: "Abby Wambach 122nd-minute header (2011)"
+        year: 2011
+        match: "USA vs Brazil (quarter-final)"
+        context: "With the USA about to be eliminated, Abby Wambach headed in an equalizer in the 122nd minute from a Megan Rapinoe cross; USA won on penalties"
+        why_iconic: "Considered the greatest goal in Women's World Cup history; the latest goal from kickoff in WC history"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_records_and_statistics
+
+      - name: "Homare Sawa 117th-minute equalizer (2011 final)"
+        year: 2011
+        match: "Japan vs USA (final)"
+        context: "With Japan losing 2-1 and seconds from elimination, Homare Sawa tapped in to level at 2-2 in the 117th minute; Japan won on penalties"
+        why_iconic: "Japan had overcome tragedy (2011 Tōhoku earthquake) to reach the final; Sawa's equalizer sent the nation into euphoria"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - name: "2022 World Cup final (greatest ever)"
+        year: 2022
+        match: "Argentina 3-3 France (4-2 pens)"
+        context: "Argentina led 2-0 at 80 minutes; Mbappé scored a hat-trick to level at 3-3 and force penalties; Argentina won; combined 6 goals and penalty drama"
+        why_iconic: "Widely regarded as the greatest World Cup final ever played; 3.572 billion viewers worldwide (most-watched single event in history)"
+        source_url: https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final
+
+# ============================================================
+# SUB-DECK 5: National Team Legacies
+# ============================================================
+  - id: national_team_legacies
+    name: "National Team Legacies"
+    chain_theme: "Football Dynasties"
+    chain_theme_id: 4
+    estimated_facts: 30
+    notes: "~2-3 facts per team × 10-12 dynasties = ~25-36 facts. Covers: titles, title years, runners-up record, defining players"
+
+    verified_data:
+      - team: Brazil
+        men_titles: 5
+        title_years: [1958, 1962, 1970, 1994, 2002]
+        runner_up_years: [1950, 1998]
+        defining_fact: "Only nation to qualify for every FIFA World Cup (22 of 22); five-time champions — the most of any nation"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - team: Germany
+        men_titles: 4
+        title_years: [1954, 1974, 1990, 2014]
+        runner_up_years: [1966, 1982, 1986, 2002]
+        defining_fact: "Most World Cup final appearances of any nation (8 finals); won as both West Germany (3) and unified Germany (1)"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - team: Italy
+        men_titles: 4
+        title_years: [1934, 1938, 1982, 2006]
+        runner_up_years: [1970, 1994]
+        defining_fact: "Won back-to-back titles in 1934 and 1938; failed to qualify for 2018 and 2022 — the greatest fall from grace in World Cup history"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - team: Argentina
+        men_titles: 3
+        title_years: [1978, 1986, 2022]
+        runner_up_years: [1930, 1990, 2014]
+        defining_fact: "Three-time champions separated by individual genius: Kempes (1978), Maradona (1986), Messi (2022)"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - team: France
+        men_titles: 2
+        title_years: [1998, 2018]
+        runner_up_years: [2006, 2022]
+        defining_fact: "Won on home soil in 1998; the 2022 final was the first time the defending champion reached a final since Brazil in 1998"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - team: Uruguay
+        men_titles: 2
+        title_years: [1930, 1950]
+        defining_fact: "Won the inaugural World Cup (1930) and the Maracanazo (1950); fourth-most titles despite small population; Copa America's most successful team"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - team: England
+        men_titles: 1
+        title_years: [1966]
+        defining_fact: "England's only World Cup title, won on home soil at Wembley; Geoff Hurst scored a hat-trick in the final"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - team: Spain
+        men_titles: 1
+        title_years: [2010]
+        defining_fact: "Won the 2010 World Cup as part of a golden generation that also won Euro 2008 and Euro 2012; first European team to win a World Cup outside Europe"
+        source_url: https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals
+
+      - team: "United States (Women)"
+        women_titles: 4
+        title_years: [1991, 1999, 2015, 2019]
+        runner_up_years: [2011]
+        defining_fact: "Most successful Women's World Cup nation with 4 titles; played in every Women's World Cup; pioneered the global women's game"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - team: "Germany (Women)"
+        women_titles: 2
+        title_years: [2003, 2007]
+        defining_fact: "Won back-to-back Women's World Cups 2003-2007; Birgit Prinz was the dominant player of that era"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - team: "Norway (Women)"
+        women_titles: 1
+        title_years: [1995]
+        defining_fact: "Norway's only Women's World Cup, led by Hege Riise; also runners-up at the 1991 inaugural tournament"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - team: "Japan (Women)"
+        women_titles: 1
+        title_years: [2011]
+        defining_fact: "Won 2011 Women's World Cup 4 months after the Tōhoku earthquake; Homare Sawa's 117th-minute equalizer in the final is the tournament's defining moment"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+      - team: "Spain (Women)"
+        women_titles: 1
+        title_years: [2023]
+        defining_fact: "Won 2023 Women's World Cup on first appearance in a final; Aitana Bonmatí won both the Golden Ball and the Ballon d'Or Féminin that year"
+        source_url: https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup_awards
+
+# ============================================================
+# ANSWER TYPE POOLS (PREVIEW FOR ARCHITECT PHASE)
+# ============================================================
+answer_type_pools_preview:
+  - id: mens_host_country_names
+    label: "Men's World Cup host countries"
+    answer_format: name
+    example_members:
+      [Uruguay, Italy, France, Brazil, Switzerland, Sweden, Chile, England,
+       Mexico, "West Germany", Argentina, Spain, "United States", Japan,
+       "South Korea", Germany, "South Africa", Russia, Qatar]
+    estimated_real_facts: 19
+    estimated_synthetic_distractors: 10
+    homogeneity_note: "Country names only; no mixing with city names"
+    pool_design_note: "22 editions but some countries hosted twice (France 1938+1998, Italy 1934+1990, Mexico 1970+1986, Germany 1974+2006, Brazil 1950+2014) = 19 unique hosts"
+
+  - id: womens_host_country_names
+    label: "Women's World Cup host countries"
+    answer_format: name
+    example_members: [China, Sweden, "United States", Germany, France,
+                      Canada, "Australia / New Zealand"]
+    estimated_real_facts: 7
+    estimated_synthetic_distractors: 10
+    homogeneity_note: "Country names only"
+    pool_design_note: "Small pool — pad with synthetic distractors (realistic WC-host candidates: Norway, England, Brazil, Japan, South Africa, Spain, Netherlands)"
+
+  - id: winner_country_names_mens
+    label: "Men's World Cup champion nations"
+    answer_format: name
+    example_members: [Uruguay, Italy, "West Germany", Germany, Brazil,
+                      England, Argentina, France, Spain]
+    estimated_real_facts: 9
+    estimated_synthetic_distractors: 8
+    homogeneity_note: "Country names only — 8 unique winners historically"
+    pool_design_note: "Pad with plausible synthetic distractors: Netherlands (4 finals, 0 titles), Portugal, Croatia, Hungary, Czechoslovakia"
+
+  - id: winner_country_names_womens
+    label: "Women's World Cup champion nations"
+    answer_format: name
+    example_members: ["United States", Norway, Germany, Japan, Spain]
+    estimated_real_facts: 5
+    estimated_synthetic_distractors: 10
+    homogeneity_note: "Country names only — 5 unique winners historically"
+    pool_design_note: "Pad with synthetic: Sweden, China, Brazil, England, Australia"
+
+  - id: mens_final_scores
+    label: "Men's World Cup final scores"
+    answer_format: score
+    example_members:
+      ["4-2", "2-1", "3-2", "4-1", "3-1", "2-0", "1-0", "5-2",
+       "0-0 (3-2 pens)", "1-1 (5-3 pens)", "3-3 (4-2 pens)"]
+    estimated_real_facts: 22
+    homogeneity_note: "Scores only in 'X-Y' format; penalty shootout noted in parentheses"
+    pool_design_note: "All 22 finals have distinct scores (or distinct shootout outcomes). No synthetics needed."
+
+  - id: year_values_mens
+    label: "Men's World Cup years"
+    answer_format: year
+    example_members:
+      [1930, 1934, 1938, 1950, 1954, 1958, 1962, 1966, 1970, 1974,
+       1978, 1982, 1986, 1990, 1994, 1998, 2002, 2006, 2010, 2014, 2018, 2022]
+    estimated_real_facts: 22
+    homogeneity_note: "4-digit years only; no mixing with Women's WC years"
+
+  - id: year_values_womens
+    label: "Women's World Cup years"
+    answer_format: year
+    example_members: [1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023]
+    estimated_real_facts: 9
+    estimated_synthetic_distractors: 6
+    homogeneity_note: "4-digit years only; separate from men's pool to avoid cross-contamination"
+
+  - id: men_player_names
+    label: "Men's World Cup legendary players"
+    answer_format: name
+    example_members:
+      ["Pelé", "Diego Maradona", "Lionel Messi", "Miroslav Klose",
+       "Zinedine Zidane", "Ronaldo", "Johan Cruyff", "Franz Beckenbauer",
+       "Kylian Mbappé", "Gerd Müller", "Luka Modrić", "Paolo Rossi",
+       "Just Fontaine", "Ronaldinho", "Eusébio", "Garrincha",
+       "Mario Kempes", "Romário", "Salvatore Schillaci", "Gary Lineker"]
+    estimated_real_facts: 40
+    homogeneity_note: "Player names only — may need splitting into eras if length heterogeneity is an issue"
+    pool_design_note: "Watch for answer length heterogeneity: 'Pelé' (4 chars) vs 'Zinedine Zidane' (15 chars). Run pool-homogeneity-analysis after generation and split if max/min ratio exceeds 3x."
+
+  - id: women_player_names
+    label: "Women's World Cup legendary players"
+    answer_format: name
+    example_members:
+      ["Marta", "Abby Wambach", "Birgit Prinz", "Sun Wen",
+       "Michelle Akers", "Homare Sawa", "Megan Rapinoe", "Carli Lloyd",
+       "Sam Kerr", "Aitana Bonmatí", "Hege Riise", "Brandi Chastain",
+       "Alex Morgan", "Hope Solo", "Formiga"]
+    estimated_real_facts: 30
+    homogeneity_note: "Women's player names only — separate from men's pool to ensure plausible distractors"
+
+  - id: golden_ball_winners
+    label: "World Cup Golden Ball winners"
+    answer_format: name
+    example_members:
+      ["Paolo Rossi", "Diego Maradona", "Salvatore Schillaci", "Romário",
+       "Ronaldo", "Oliver Kahn", "Zinedine Zidane", "Diego Forlán",
+       "Lionel Messi", "Luka Modrić"]
+    estimated_real_facts: 11
+    estimated_synthetic_distractors: 6
+    homogeneity_note: "Player names only"
+
+  - id: womens_golden_ball_winners
+    label: "Women's World Cup Golden Ball winners"
+    answer_format: name
+    example_members:
+      ["Carin Jennings", "Hege Riise", "Sun Wen", "Birgit Prinz",
+       "Marta", "Homare Sawa", "Carli Lloyd", "Megan Rapinoe",
+       "Aitana Bonmatí"]
+    estimated_real_facts: 9
+    estimated_synthetic_distractors: 6
+    homogeneity_note: "Player names only"
+
+  - id: venue_names
+    label: "Famous World Cup venues"
+    answer_format: name
+    example_members:
+      ["Estadio Centenario", "Maracanã Stadium", "Wembley Stadium",
+       "Estadio Azteca", "Rose Bowl", "Olympiastadion Munich",
+       "Stade de France", "Soccer City", "Lusail Stadium",
+       "Råsunda Stadium", "Wankdorf Stadium"]
+    estimated_real_facts: 15
+    estimated_synthetic_distractors: 8
+    homogeneity_note: "Stadium/venue names only — no country names mixed in"
+    pool_design_note: "Include Women's WC famous venues: Tianhe Stadium (1991), Stadium Australia (2023)"
+
+  - id: world_cup_goal_counts
+    label: "World Cup scoring records (number of goals)"
+    answer_format: number
+    example_members: [16, 15, 14, 13, 12, 10, 9, 8, 7, 6, 5]
+    estimated_real_facts: 10
+    estimated_synthetic_distractors: 6
+    homogeneity_note: "Integers only — no mixing with year values or scores"
+    pool_design_note: "Use bracket notation {16} for Klose's record etc."
+
+  - id: match_outcomes_notable
+    label: "Notable World Cup match scorelines and outcomes"
+    answer_format: "description"
+    example_members:
+      ["Germany 7-1 Brazil", "USA 13-0 Thailand", "Hungary 10-1 El Salvador",
+       "Brazil 5-2 Sweden (1958 final)", "Argentina 6-0 Serbia (2006)"]
+    estimated_real_facts: 8
+    homogeneity_note: "All 'Team X-Y Team' format — semantically homogeneous"
+    pool_design_note: "Keep this pool small and semantically tight; only landmark scorelines"
+
+# ============================================================
+# POOL DESIGN WARNINGS
+# ============================================================
+pool_design_warnings:
+  - "men_player_names pool at 40+ members risks length heterogeneity: 'Pelé' (4 chars) vs 'Salvatore Schillaci' (19 chars). Run pool-homogeneity-analysis after generation. If max/min ratio > 3x, split into men_player_names_short (≤8 chars) and men_player_names_full (>8 chars)."
+  - "winner_country_names_womens has only 5 real facts — pad aggressively with synthetic distractors to reach 15 total."
+  - "womens_host_country_names has only 7 real facts — same padding requirement."
+  - "year_values_mens and year_values_womens MUST be separate pools. A question about 'What year did Japan win the Women's World Cup?' should not have 1930 as a plausible distractor."
+  - "final_scores pool: Extra-time and penalty notation ('0-0 (3-2 pens)') is longer than regular scores ('4-2'). Check length homogeneity before shipping. If heterogeneous, split into regular_final_scores and decided_final_scores."
+  - "venue_names pool: Include both Men's and Women's WC famous venues but verify all names are ~10-25 chars; 'Estadio Nacional Julio Martínez Prádanos' is too long — use 'Estadio Nacional'."
+  - "golden_ball_winners pool needs separation from golden_boot_winners if the deck has both — never mix pool types."
+
+# ============================================================
+# DEMAND SIGNALS
+# ============================================================
+demand_signals:
+  - "FIFA 2022 World Cup final: estimated 3.572 billion viewers (most-watched single event ever)"
+  - "FIFA 2018 World Cup: 3.572 billion total viewers, 1.1 billion unique viewers"
+  - "Women's 2019 World Cup final: 82.18 million viewers (record for women's sports at time)"
+  - "4 billion estimated global football fans (FIFA 2019 Global Football Report)"
+  - "Anki search 'World Cup' returns 50+ decks with 5k+ downloads each"
+  - "First Sports domain deck — corrects the library's biggest strategic gap (Section 0, deck-ideas.md)"
+  - "Appeals across all major global markets: Europe, South America, Africa, Asia, Middle East"
+
+estimated_build_time: "3-4 days (discover complete, architect 0.5 day, generate 2 days, QA 0.5 day)"
+
+open_questions_for_architect_phase:
+  - "1. CRITICAL: Add 'sports_entertainment' to CanonicalFactDomain before generate phase begins"
+  - "2. Research: Golden Boot (top scorer) per tournament for all 22 Men's WC editions — several editions are TBD in the YAML (1934, 1938, 1954, 1958 top scorer data needs verification for correct name/nationality/goals)"
+  - "3. Naming convention: Use 'West Germany' for 1954-1990 editions consistently; flag this in fact writing guidelines for the generate phase"
+  - "4. Pelé's WC goals: Wikipedia states 12 — verify this is correct (some sources cite different numbers due to unofficial matches inclusion/exclusion)"
+  - "5. Women's WC host: 2003 was China → moved to USA due to SARS. Should facts say 'originally planned host: China' or just 'host: United States'? Recommend noting the SARS move as an interesting fact."
+  - "6. Pool split decision: Should men_player_names and women_player_names be one combined 'legendary_players' pool or two separate pools? RECOMMENDATION: Keep separate — female players are rarely plausible distractors for questions about male legends and vice versa."
+  - "7. 2022 final score: 3-3 is an unusual score format. The pool entry should be '3-3 (a.e.t., 4-2 pens)' for clarity but this is 24 chars vs '4-2' being 3 chars — major length heterogeneity. Recommend separate 'penalty_final_scores' pool."
+  - "8. Marta's WC goals: 17 goals in 6 World Cups as of 2023 — verify via Wikipedia Women's WC records page before generate phase."
+  - "9. 1999 Women's WC attendance: Rose Bowl attendance stated as 90,185 in Wikipedia — verify and note this was the world record for women's sports at the time."

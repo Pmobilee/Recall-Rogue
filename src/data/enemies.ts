@@ -75,6 +75,8 @@ export interface QuizPhaseConfig {
   timerSeconds?: number;
   /** Whether this phase is RAPID FIRE mode (shorter timers, more questions). */
   rapidFire?: boolean;
+  /** If true, draws questions from the player's weakest knowledge domain. */
+  useWeakestDomain?: boolean;
 }
 
 /** Template definition for an enemy type. */
@@ -425,6 +427,15 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'charge', value: 12, weight: 1, telegraph: 'Charging: Overdrive Burst!' },
     ],
     animArchetype: 'slammer',
+    quizPhases: [
+      {
+        hpThreshold: 0.5,
+        questionCount: 8,
+        timerSeconds: 12,
+        rapidFire: true,
+        useWeakestDomain: true,
+      },
+    ],
   },
 
   {
@@ -447,6 +458,15 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 4, weight: 1, telegraph: 'Meltdown', statusEffect: { type: 'poison', value: 4, turns: 3 } },
     ],
     animArchetype: 'trembler',
+    quizPhases: [
+      {
+        hpThreshold: 0.5,
+        questionCount: 8,
+        timerSeconds: 12,
+        rapidFire: true,
+        useWeakestDomain: true,
+      },
+    ],
   },
 
   // AR-59.13: The Archivist is the Act 2 boss. Stats updated; quizPhases added for AR-59.7.

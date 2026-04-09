@@ -103,7 +103,7 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 | `scavenge` | Scavenge | 1 | Retrieve card from discard (player picks); L3+ (`scavenge_draw1`): also draw 1 |
 | `swap` | Swap | 1 | Discard 1, draw 1 (QP) or 2 (CC); CC + `swap_cc_draw3`: CC draws 3 instead |
 | `conjure` | Conjure | 2 | Summon 1 of 3 cards to hand this encounter |
-| `transmute` | Transmute | 2 | Transform weakest hand card to different type |
+| `transmute` | Transmute | 2 | Permanently replace a hand card with a different mechanic; new card keeps source fact binding + catch-up mastery. L2+: choose from 3 options. L5: transform 2 cards. |
 | `immunity` | Immunity | 2 | Absorb next damage instance up to 8 |
 
 ### Wild Mechanics
