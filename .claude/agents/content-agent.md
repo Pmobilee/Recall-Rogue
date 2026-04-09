@@ -62,7 +62,8 @@ Before ANY content work, read `docs/content/`. After changes, update those docs.
 2. Run `node scripts/pool-homogeneity-analysis.mjs --deck <id>` — 0 FAIL required. Pools must have max/min answer length ratio < 3x. Use `homogeneityExempt: true` only for inherent domain variation (geographic names, element symbols).
 3. Run `node scripts/quiz-audit.mjs --deck <id> --full` — 0 FAIL required. Checks every fact's quiz presentation (Q + distractors from pool).
 4. **MANDATORY Docker visual verify** — `scripts/docker-visual-test.sh` with `__rrScreenshotFile()` + `__rrLayoutDump()`. Load a study deck scenario for the affected deck and verify quiz rendering. No exceptions. Do not skip. Do not wait for user to ask.
-5. Flag qa-agent if balance values changed
+5. **MANDATORY output verification** — sample 5-10 items from EVERY batch operation. Read the actual JSON/text back. Check for broken grammar, "this structure" placeholders jammed into wrong positions, corrupted fields, duplicates. NEVER trust batch output without sampling. This caught 262 broken rewrites that would have shipped.
+6. Flag qa-agent if balance values changed
 6. Update `docs/content/` files
 7. `npm run registry:sync` if domains changed
 8. Run `/curated-trivia-bridge` if this is a knowledge deck (not vocab/language) — bridge output must be committed alongside the deck

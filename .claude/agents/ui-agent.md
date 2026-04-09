@@ -63,7 +63,8 @@ Before ANY code change, read the relevant doc under `docs/ui/`. After changes, u
 1. `npm run typecheck` — must pass
 2. `npm run build` — must pass
 3. **MANDATORY Docker visual verify** — `scripts/docker-visual-test.sh` with `__rrScreenshotFile()` + `__rrLayoutDump()` at 1920×1080. No exceptions. Do not skip. Do not wait for user to ask.
-4. Update `docs/ui/` files
+4. **MANDATORY output verification** — sample 5-10 items from any batch/content change. Read them back. Check for broken grammar, corrupted data, duplicates. NEVER trust your own output without checking.
+5. Update `docs/ui/` files
 
 ## Mandatory Prompt Requirements (for orchestrator)
 When spawning this agent, the orchestrator MUST include in the prompt:

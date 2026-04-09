@@ -54,9 +54,10 @@ Before ANY code change, read the relevant doc under `docs/mechanics/` or `docs/a
 1. `npm run typecheck` — must pass
 2. `npx vitest run` — must pass
 3. **MANDATORY Docker visual verify** — `scripts/docker-visual-test.sh` with `__rrScreenshotFile()` + `__rrLayoutDump()`. Load a scenario where the change is observable and verify it visually. No exceptions. Do not skip. Do not wait for user to ask.
-4. Flag qa-agent if balance values changed
-5. Update relevant `docs/mechanics/` files
-6. `npm run registry:sync` if game elements added/removed
+4. **MANDATORY output verification** — sample 5-10 items from any batch/content change. Read them back. Check for broken logic, corrupted data, unintended side effects. NEVER trust your own output without checking.
+5. Flag qa-agent if balance values changed
+6. Update relevant `docs/mechanics/` files
+7. `npm run registry:sync` if game elements added/removed
 
 ## Mandatory Prompt Requirements (for orchestrator)
 When spawning this agent, the orchestrator MUST include in the prompt:

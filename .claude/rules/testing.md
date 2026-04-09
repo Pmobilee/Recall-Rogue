@@ -25,6 +25,13 @@
 
 **Every code change MUST be visually verified via Docker before committing. No exceptions. No user prompting required — this is a silent, automatic step.**
 
+**OBSESSIVE OUTPUT VERIFICATION — after ANY batch operation, sub-agent result, or content edit:**
+- Sample at least 5-10 items from the output and READ them back
+- Grep for known broken patterns (e.g., "the this", "a this", broken grammar)
+- Validate data integrity (no duplicates, no corruption, no missing fields)
+- NEVER trust sub-agent output without sampling — they produce broken output ~15-20% of the time
+- This is not optional. Skipping verification is how 262 broken grammar rewrites shipped.
+
 ```bash
 # Warm mode (preferred for multi-item batches):
 scripts/docker-visual-test.sh --warm start --agent-id <task-id>

@@ -42,6 +42,12 @@ Before ANY review, read the relevant docs to understand expected behavior. After
 - Visual inspect at 1920×1080 (Steam PC primary)
 - Check dynamic scaling (no hardcoded px)
 
+### Output Verification — MANDATORY After Every Change
+- **ALWAYS** sample 5-10 items from any batch, sub-agent result, or content edit
+- Read them back, check for broken patterns, validate data integrity
+- NEVER trust that output is correct without checking — sub-agents produce broken output ~15-20% of the time
+- This is the QA agent's PRIMARY role: catch what others miss
+
 ### Balance Check
 - Run headless sim if mechanics/balance values changed
 - Compare to baseline targets

@@ -2,12 +2,15 @@
 
 ## Self-Review Protocol — After EVERY Step
 
+**OBSESSIVE VERIFICATION — NON-NEGOTIABLE.** After completing ANY step — code change, sub-agent result, content edit, script run — you MUST verify the output before moving on. Sample results, check for broken grammar, validate data integrity, read back what was written. NEVER trust that a sub-agent or script produced correct output without checking. This applies after EVERY user message where something changed.
+
 After completing any step (code change, research, sub-agent result, verification), pause and ask:
 
-1. **Docker visual verify done?** — MANDATORY. Run `scripts/docker-visual-test.sh` with `__rrScreenshotFile()` + `__rrLayoutDump()` after EVERY code change. No exceptions. Do not wait for user to ask. This is automatic and silent.
-2. **What's missing?** — Did I forget a related system, edge case, or integration point?
-3. **What tests?** — Does this need a unit test, visual test, balance sim, or /inspect run?
-4. **What should I ask the user?** — Am I making assumptions about intent, scope, or priority?
+1. **Did I CHECK the output?** — Read back samples. Grep for broken patterns. Validate at least 5-10 items from any batch operation. Sub-agents produce broken output ~15-20% of the time. Catch it NOW, not after commit.
+2. **Docker visual verify done?** — MANDATORY. Run `scripts/docker-visual-test.sh` with `__rrScreenshotFile()` + `__rrLayoutDump()` after EVERY code change. No exceptions. Do not wait for user to ask. This is automatic and silent.
+3. **What's missing?** — Did I forget a related system, edge case, or integration point?
+4. **What tests?** — Does this need a unit test, visual test, balance sim, or /inspect run?
+5. **What should I ask the user?** — Am I making assumptions about intent, scope, or priority?
 4. **What's affected?** — What other systems does this touch? Save/load? Audio catalog? Inspection registry? Docs?
 5. **What would a player experience?** — Walk through the player's perspective. Is there feedback? Sound? Polish? Confusion?
 6. **What should be researched?** — Is there a better pattern in the codebase? A skill I should suggest? A doc I haven't read?

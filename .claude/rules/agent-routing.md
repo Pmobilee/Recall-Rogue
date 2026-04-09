@@ -50,7 +50,8 @@ Every sub-agent prompt MUST include:
    **This is non-negotiable. Every sub-agent deliverable MUST include doc updates. There is no change too small to document.**
 4. "Run `npm run typecheck` and `npm run build` after implementation."
 5. **"Run Docker visual verification (`scripts/docker-visual-test.sh`) with `__rrScreenshotFile()` + `__rrLayoutDump()` after implementation. Load a scenario where the change is observable. No exceptions."**
-6. The specific task description
+6. **"After ANY batch operation or content edit, sample 5-10 items and READ them back. Check for broken grammar, corrupted data, unintended patterns. NEVER deliver output without verifying samples."**
+7. The specific task description
 7. "Break work into granular TaskCreate tasks BEFORE starting. One task per discrete step. Mark in_progress when beginning, completed when done. Run TaskList before delivering — zero pending tasks allowed."
 
 ## Anti-Patterns — NEVER Do These
