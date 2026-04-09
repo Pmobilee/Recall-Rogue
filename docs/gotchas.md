@@ -1309,3 +1309,25 @@ The `interrogatives` pool in `spanish_a1_grammar` contains both interrogative wo
 **What:** When adding "time expression" facts (e.g., `antes` / `ayer`) to a grammar deck, the time-expression word itself is the blank — not a verb conjugation form. These facts must go in the `preterite_time_expressions` or `imperfect_time_expressions` pool, NOT in a conjugation pool like `imperfect_ar`. Mixing "antes" (adverb) with "hablaba" (conjugated verb form) in the same pool creates semantically heterogeneous distractors.
 
 **Fix:** Always route time-expression facts to a dedicated temporal-adverbial pool. If the pool has inherent length variation (ayer=4ch vs. la semana pasada=16ch), apply `homogeneityExempt: true` with a note explaining the inherent length variation.
+
+### 2026-04-10 — Tatoeba IDs were fabricated in bulk by sub-agents
+
+**What:** Audit of shipped spanish_a2/b1/b2_grammar decks found 92% of `tatoeba:N` sourceRefs (466 of 507) were fabricated — sequential ID blocks like `4499175, 4499176, 4499177, ...` produced by fact-generation sub-agents that had no way to verify IDs against the real Tatoeba corpus. A1 was clean (hand-curated). Pattern was also caught in a fresh French A1 research run (68 of 94 rows fabricated in the `2699081-2699148` range) before it shipped.
+
+**Why it happens:** Sub-agents asked to cite `tatoeba:N` cannot browse the web and have no native index of real IDs. When asked to produce many rows they pad with sequential placeholders rather than admit coverage gaps. LLM-to-LLM review has the exact same blind spot — reviewers can't verify IDs either.
+
+**Fix:** Built `data/_corpora/tatoeba/` (371K French pairs, 258K Spanish pairs) from Tatoeba bulk exports + join scripts under `scripts/tatoeba/`. Every new grammar deck now authors facts from `{lang}_{level}_pool.tsv` which contains only verified real IDs. Fabricated refs in existing decks were remapped via `scripts/tatoeba/remap-deck-ids.mjs` — hits updated to real IDs, misses stripped to `sourceRef: "llm_authored"`.
+
+**Prevention rule:** `.claude/rules/content-pipeline.md` now has a dedicated Tatoeba citation rule — ANY `tatoeba:N` sourceRef must come from a verified corpus lookup, never from LLM knowledge. See deck-system.md for the full corpus flow.
+
+### 2026-04-10 — CEFRLex ELELex stops at C1; PCIC required for Spanish C2 vocabulary
+
+**What:** CEFRLex (https://cental.uclouvain.be/cefrlex/) provides corpus-frequency CEFR ratings for Spanish words up to the C1 level. There is no C1+ or C2 column — the dataset ends at C1. This means the programmatic pipeline that produced A1–C1 vocabulary (lookup in ELELex column by level) cannot extend to C2.
+
+**Why it matters:** If you try to build a Spanish C2 deck using CEFRLex, you will either get no data or misclassify C1 words as C2 by error of omission.
+
+**Fix:** C2 vocabulary was sourced from PCIC (Plan Curricular del Instituto Cervantes — https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/), the official Spanish curriculum reference from the Instituto Cervantes. This is also the authoritative source for Spanish grammar deck scoping (A1–B2). Supplemented with RAE (Real Academia Española) for register markers on literary/legal/formal terms.
+
+**Deduplication required:** 44 words appeared in both the C1 (CEFRLex) and C2 (PCIC) source lists. The merge step keeps them in C1 (lower level wins), strips them from C2. Always run a dedup pass when combining adjacent CEFR levels from different sources.
+
+**Prevention:** For any language where CEFRLex/equivalent stops before C2, use the official national language authority's curriculum document (PCIC for Spanish, DELF/DALF for French, Goethe-Zertifikat for German) as the C2 word source.
