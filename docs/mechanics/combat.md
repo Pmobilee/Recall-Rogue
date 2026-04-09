@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-08 (7.6 AP surcharge ordering fix)
+> **Last verified:** 2026-04-09 (balance pass: speed bonus disabled, enrage raised, enemy HP +50%, Act 1 damage cap 14→22)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`
 
 ---
@@ -113,7 +113,7 @@ Computed in `resolveCardEffect()` (`cardEffectResolver.ts`):
 2. **Player strength/weakness modifier** — `getStrengthModifier(playerState.statusEffects)` — multiplied against base attack damage. Strength: +25% per stack; Weakness: −25% per stack; floor: 0.25×. Applied inside `applyAttackDamage()` in `cardEffectResolver.ts`. Does NOT affect shield cards.
 3. **Cursed multipliers** (if `card.isCursed`) — QP: 0.7×, CC: 1.0×, CW: 0.5×
 4. **Inscription of Fury bonus** — flat add for attack cards from `activeInscriptions`
-5. **Speed/trick bonus** — speed bonus (1.5× if answered fast) × trick question unlock (2.0×)
+5. **Speed/trick bonus** — speed bonus (`SPEED_BONUS_MULTIPLIER = 1.0×` — disabled as of 2026-04-09; timer still enforces urgency but no damage multiplier. Speed bonus is relic-only via Quicksilver Quill) × trick question unlock (2.0×)
 6. **Combo multipliers** — `chainMultiplier × overclockMultiplier × buffMultiplier`
 7. **Relic modifiers** — `resolveAttackModifiers()` / `resolveShieldModifiers()`
 8. **Enemy modifiers** — QP damage multiplier, hardcover armor, `chargeResistant` (−50% QP), `chainVulnerable` (+50% chain damage)
@@ -314,7 +314,7 @@ Screen shake for the sword (micro shake) fires at the same T+250ms contact frame
 
 `getEnrageBonus(encounterTurnNumber, floor, enemyHpPercent)` returns flat bonus added to all enemy attacks.
 
-Uses `ENRAGE_SEGMENTS` (floor-based): Phase 1 ramps at `ENRAGE_PHASE1_BONUS` (+1/turn) for `ENRAGE_PHASE1_DURATION` (3) turns; Phase 2 escalates at `ENRAGE_PHASE2_BONUS` (+2/turn, reduced from +3 on 2026-04-04). Enemies below `ENRAGE_LOW_HP_THRESHOLD` (30%) deal an extra `ENRAGE_LOW_HP_BONUS` (+3) regardless of segment.
+Uses `ENRAGE_SEGMENTS` (floor-based): Phase 1 ramps at `ENRAGE_PHASE1_BONUS` (+2/turn, raised from +1 on 2026-04-09) for `ENRAGE_PHASE1_DURATION` (3) turns; Phase 2 escalates at `ENRAGE_PHASE2_BONUS` (+4/turn, raised from +2 on 2026-04-09 — fights dragging past enrage should get scary fast). Shallow Depths (floors 1–6) enrage starts at turn 8 (reduced from 12 on 2026-04-09 for earlier urgency). Enemies below `ENRAGE_LOW_HP_THRESHOLD` (30%) deal an extra `ENRAGE_LOW_HP_BONUS` (+3) regardless of segment.
 
 **Damage cap enforcement (2026-04-04 fix):** The per-turn damage cap () is re-applied in  AFTER the enrage bonus is added. Previously,  capped damage before returning, then  added the enrage bonus on top — bypassing the cap entirely. At turn 40 in Act 3 this produced +114 uncapped flat damage. Fix: after adding enrage, re-cap using  to determine the segment (same floor-to-segment mapping as ). Charged attacks with  are still exempt.
 

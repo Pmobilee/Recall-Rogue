@@ -439,8 +439,8 @@ export const POST_ENCOUNTER_HEAL_CAP: Record<number, number> = {
   3: 0.50,   // Segment 3 (floors 13-18): cap at 50%
   4: 0.30,   // Segment 4 (floors 19-24): cap at 30%
 };
-/** Global base HP multiplier for all enemies. Ensures early fights require 2+ turns. */
-export const ENEMY_BASE_HP_MULTIPLIER = 4.0;
+/** Global base HP multiplier for all enemies. Raised 4.0→6.0 on 2026-04-09: 50% HP increase, #1 balance fix. Ensures meaningful multi-turn fights. */
+export const ENEMY_BASE_HP_MULTIPLIER = 6.0;
 /**
  * HP scaling per floor above floor 1. Each floor adds this fraction to the base HP multiplier.
  * @deprecated Use ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT for segment-aware scaling.
@@ -493,7 +493,7 @@ export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 2.0;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. Doubled 2026-04-08 to match GLOBAL_ENEMY_DAMAGE_MULTIPLIER x2. */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 14,   // was 7, doubled for x2 global multiplier
+  1: 22,   // was 14, raised 2026-04-09: Act 1 enemies need scarier damage
   2: 28,   // was 14
   3: 40,   // was 20
   4: 56,   // was 28
@@ -551,17 +551,17 @@ export const QA_LIMITS = {
 
 /** Segment-based enrage turn budgets. Enrage starts earlier in deeper floors. */
 export const ENRAGE_SEGMENTS: { maxFloor: number; startTurn: number }[] = [
-  { maxFloor: 6, startTurn: 12 },       // Shallow Depths (extended from 10 on 2026-04-01: more breathing room at 100 HP)
+  { maxFloor: 6, startTurn: 8 },        // Shallow Depths (reduced from 12 on 2026-04-09: urgency before fights are over)
   { maxFloor: 12, startTurn: 6 },       // Deep Caverns (earlier from 8: harder mid-late)
   { maxFloor: 18, startTurn: 5 },       // The Abyss (earlier from 7: harder late)
   { maxFloor: 24, startTurn: 4 },       // The Archive (earlier from 6: hardest late)
   { maxFloor: Infinity, startTurn: 5 }, // Endless
 ];
 
-/** +1 damage per turn for the first 3 enrage turns. Reduced from 2 on 2026-04-01 — slower enrage ramp helps beginners at 100 HP. */
-export const ENRAGE_PHASE1_BONUS = 1;
-/** +2 damage per turn after 3 enrage turns (was 3). Reduced from 4 on 2026-04-01; then 3→2 on 2026-04-04 — enrage was bypassing damage cap (+114 uncapped damage at turn 40 Act 3). Now subject to cap. */
-export const ENRAGE_PHASE2_BONUS = 2;
+/** +2 damage per turn for the first 3 enrage turns. Raised from 1→2 on 2026-04-09 for steeper enrage pressure. */
+export const ENRAGE_PHASE1_BONUS = 2;
+/** +4 damage per turn after 3 enrage turns. Raised 1→2→4 on 2026-04-09 — fights dragging past enrage should get scary fast. */
+export const ENRAGE_PHASE2_BONUS = 4;
 /** Number of turns at phase 1 bonus before escalating to phase 2. */
 export const ENRAGE_PHASE1_DURATION = 3;
 /** Enemy HP threshold below which they gain bonus damage (desperate attack). */
@@ -580,7 +580,7 @@ export const SOFT_ENRAGE_PHASE2_BONUS = 5;
 
 // Speed bonus
 export const SPEED_BONUS_THRESHOLD = 0.25;    // answer in first 25% of timer
-export const SPEED_BONUS_MULTIPLIER = 1.5;
+export const SPEED_BONUS_MULTIPLIER = 1.0; // Disabled 2026-04-09: speed bonus is relic-only (Quicksilver Quill). Timer remains for urgency.
 
 /** Wrong answer still applies this fraction of card effect (0 = full fizzle, 1 = no penalty).
  * Reverted from 0.5 back to 0.25 — at 0.5× fizzle damage exceeded quick play, undermining
@@ -692,6 +692,9 @@ export const RELIC_DROP_CHANCE_REGULAR = 0.05;
 
 /** Chance of a bonus relic appearing alongside card choices in reward rooms (per floor). */
 export const RELIC_BONUS_CHANCE_REWARD_ROOM = 0.08;
+
+/** Chance of a health vial appearing in normal combat rewards. Elite/boss encounters always include a health vial. */
+export const HEALTH_VIAL_DROP_CHANCE = 0.10;
 
 /** Number of relic choices presented at bosses and first mini-boss. */
 export const RELIC_BOSS_CHOICES = 3;

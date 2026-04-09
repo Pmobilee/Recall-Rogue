@@ -181,6 +181,27 @@ Edge connection lines (SVG `.edge-layer`) follow the same opacity progression: 1
 
 Named bosses: floor 3 = `final_exam`, floor 6 = `burning_deadline`, floor 9 = `algorithm`, floor 12 = `curriculum`, floors 15–24 continue the series.
 
+## Combat Rewards (`gameFlowController.ts`, `src/data/balance.ts`)
+
+After each combat encounter, `openCardReward()` assembles a `RewardItem[]` for the reward room scene. All normal combat paths end at this function.
+
+### Reward Composition
+
+| Item | Normal Combat | Elite / Mini-Boss (first) / Boss |
+|------|--------------|----------------------------------|
+| Gold | Always (minimum 5g) | Always (minimum 5g) |
+| Health Vial | 10% chance (`HEALTH_VIAL_DROP_CHANCE = 0.10`) | Always |
+| Card choices | 3 options | 3 options |
+| Bonus relic | 8% per floor (`RELIC_BONUS_CHANCE_REWARD_ROOM = 0.08`) | N/A (gets relic choice instead) |
+
+Boss, elite, and first mini-boss encounters route through `openRelicChoiceRewardRoom()` first (relic choice screen), which chains to `openCardReward()`. A module-level flag `pendingRewardIsEliteOrBoss` is set before `openRelicChoiceRewardRoom()` is called so `openCardReward()` knows to guarantee the health vial.
+
+**Balance constant:** `HEALTH_VIAL_DROP_CHANCE = 0.10` (added 2026-04-09) in `src/data/balance.ts` near the other reward-room drop chance constants.
+
+### Health Vial Sizing
+
+When a vial does appear, `healAmount` comes from the encounter reward bundle (`activeRewardBundle.healAmount`). Size: `large` if `healAmount > 15`, otherwise `small`. Default when bundle has no heal: 8 HP.
+
 ## Ascension System (`ascension.ts`)
 
 `MAX_ASCENSION_LEVEL = 20`. Each level adds one challenge, most with a compensating buff (cumulative). `getAscensionModifiers(level)` returns `AscensionModifiers`.

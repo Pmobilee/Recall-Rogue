@@ -339,19 +339,19 @@ describe('Enemy Templates', () => {
     expect(miniBoss).toHaveLength(24);
   });
 
-  it('page_flutter has 5 baseHP (2026-04-03 balance pass #7)', () => {
+  it('page_flutter has 7 baseHP (2026-04-09 balance pass #8)', () => {
     const bat = ENEMY_TEMPLATES.find(t => t.id === 'page_flutter');
-    expect(bat?.baseHP).toBe(5);
+    expect(bat?.baseHP).toBe(7);
   });
 
-  it('thesis_construct has 6 baseHP (2026-04-03 balance pass #7)', () => {
+  it('thesis_construct has 9 baseHP (2026-04-09 balance pass #8)', () => {
     const golem = ENEMY_TEMPLATES.find(t => t.id === 'thesis_construct');
-    expect(golem?.baseHP).toBe(6);
+    expect(golem?.baseHP).toBe(9);
   });
 
-  it('algorithm has 12 baseHP (2026-04-03 balance pass #5)', () => {
+  it('algorithm has 15 baseHP (2026-04-09 balance pass #8)', () => {
     const archivist = ENEMY_TEMPLATES.find(t => t.id === 'algorithm');
-    expect(archivist?.baseHP).toBe(12);
+    expect(archivist?.baseHP).toBe(15);
   });
 
   it('peer_reviewer has no immuneDomain (removed in consolidation)', () => {
@@ -403,16 +403,16 @@ describe('Enemy Manager', () => {
     it('creates enemy with scaled HP for floor 1', () => {
       const template = mockEnemyTemplate({ baseHP: 20 });
       const enemy = createEnemy(template, 1);
-      // 20 * 4.0 (ENEMY_BASE_HP_MULTIPLIER) * 1.0 (floor 1) = 80
-      expect(enemy.currentHP).toBe(80);
-      expect(enemy.maxHP).toBe(80);
+      // 20 * 6.0 (ENEMY_BASE_HP_MULTIPLIER) * 1.0 (floor 1) = 120
+      expect(enemy.currentHP).toBe(120);
+      expect(enemy.maxHP).toBe(120);
     });
 
     it('scales HP for higher floors', () => {
       const template = mockEnemyTemplate({ baseHP: 20 });
       const enemy = createEnemy(template, 5);
-      // 20 * 4.0 * 1.40 (floor 5) = 112
-      expect(enemy.currentHP).toBe(Math.round(20 * 4.0 * getFloorScaling(5)));
+      // 20 * 6.0 * 1.40 (floor 5) = 168
+      expect(enemy.currentHP).toBe(Math.round(20 * 6.0 * getFloorScaling(5)));
     });
 
     it('starts in phase 1', () => {
@@ -522,8 +522,8 @@ describe('Enemy Manager', () => {
         statusEffects: [{ type: 'strength', value: 2, turnsRemaining: 3 }],
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: round(10 * 1.5 * 1.0 * 2.0) = 30, capped at segment 1 cap of 14.
-      expect(result.damage).toBe(14);
+      // Floor 1: round(10 * 1.5 * 1.0 * 2.0) = 30, capped at segment 1 cap of 22.
+      expect(result.damage).toBe(22);
     });
 
     it('calculates multi_attack damage correctly', () => {
@@ -531,8 +531,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Flurry', hitCount: 4 },
       });
       const result = executeEnemyIntent(enemy);
-      // round(5 * 1.0 * 1.0 * 2.0) * 4 = 40, capped at segment 1 cap of 14.
-      expect(result.damage).toBe(14);
+      // round(5 * 1.0 * 1.0 * 2.0) * 4 = 40, capped at segment 1 cap of 22.
+      expect(result.damage).toBe(22);
     });
 
     it('returns player debuffs for debuff intent', () => {
