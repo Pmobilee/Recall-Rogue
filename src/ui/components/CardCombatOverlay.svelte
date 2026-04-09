@@ -79,6 +79,7 @@
   import { computeDamagePreview, type DamagePreviewContext, type DamagePreview } from '../../services/damagePreviewService'
   import { isVulnerable, getStrengthModifier } from '../../data/statusEffects'
   import { computeIntentDisplayDamage } from '../../services/intentDisplay'
+  import { quizPanelVisible } from '../stores/combatUiStore'
 
 
   interface Props {
@@ -643,8 +644,9 @@
     if (!enemy) return base
     // Reuse the shared pure function so display and pipeline never drift.
     // We pass a minimal intent stub since computeIntentDisplayDamage only reads .value.
+    // Pass turnState as scalingCtx so canary/ascension/relaxed modifiers are applied.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return computeIntentDisplayDamage({ type: 'attack', value: base } as any, enemy)
+    return computeIntentDisplayDamage({ type: 'attack', value: base } as any, enemy, turnState ?? undefined)
   }
 
   let intentDisplay = $derived.by(() => {
@@ -2242,6 +2244,12 @@
           ...chargeResult.pendingCardPick,
           selectedCards: [],
         }
+        // Fix: card was added to animatingCards before we knew about pendingCardPick.
+        // Remove it now so it doesn't hang in mid-air while the picker is shown.
+        // For Transmute, the source card stays in hand (mutated in-place) — no animation needed.
+        animatingCards = animatingCards.filter(c => c.id !== cardId)
+        cardAnimations = { ...cardAnimations, [cardId]: null }
+        resetCardFlow()
         return // Don't continue turn until pick is resolved
       }
 
@@ -2454,6 +2462,11 @@
     } else {
       ambientAudio.unduck()
     }
+  })
+
+  /** Mirror isQuizPanelVisible to combatUiStore so sibling components (MultiplayerHUD) can react. */
+  $effect(() => {
+    quizPanelVisible.set(isQuizPanelVisible)
   })
 
   let kbdUnsubscribers: Array<() => void> = []

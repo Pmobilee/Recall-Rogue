@@ -175,7 +175,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import NarrativeOverlay from './ui/components/NarrativeOverlay.svelte'
   import { musicService } from './services/musicService'
   import { ambientAudio } from './services/ambientAudioService'
-  import { getReviewQueueLength } from './services/reviewQueueSystem'
+  import { quizPanelVisible } from './ui/stores/combatUiStore'
   import { getAuraLevel, getAuraState } from './services/knowledgeAuraSystem'
   import { narrativeDisplay, dismissNarrative } from './ui/stores/narrativeStore'
   import MultiplayerLobby from './ui/components/MultiplayerLobby.svelte'
@@ -1382,7 +1382,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       triggeredRelicId={$activeTurnState?.triggeredRelicId ?? null}
       maxRelicSlots={topBarMaxRelicSlots}
       ascensionLevel={$activeRunState?.ascensionLevel ?? 0}
-      reviewQueueLength={$activeTurnState != null ? getReviewQueueLength() : 0}
       fogLevel={$activeTurnState != null ? getAuraLevel() : 0}
       fogState={$activeTurnState != null ? getAuraState() : undefined}
       statusEffects={topBarPlayerEffects}
@@ -1532,6 +1531,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         progress={opponentProgress}
         displayName={opponentDisplayName}
         mode={currentLobby?.mode ?? 'race'}
+        quizVisible={$quizPanelVisible}
       />
     {/if}
     {#if combatTransitionActive}

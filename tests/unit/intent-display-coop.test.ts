@@ -9,9 +9,9 @@
  * (co-op scaling) caused the display to show 18 while only 11 damage was applied.
  *
  * Key balance constants used here (from src/data/balance.ts):
- *   GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 2.0
+ *   GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.5
  *   FLOOR_DAMAGE_SCALE_MID = 1.0 (applies to floors 1-6)
- *   ENEMY_TURN_DAMAGE_CAP[1] = 22  (segment 1, floors 1-6)
+ *   ENEMY_TURN_DAMAGE_CAP[1] = 16  (segment 1, floors 1-6)
  */
 
 import { describe, it, expect } from 'vitest';
@@ -58,8 +58,8 @@ function makeEnemy(overrides: Partial<EnemyInstance> = {}): EnemyInstance {
 // ── Tests ────────────────────────────────────────────────────────────────────
 
 describe('computeIntentDisplayDamage — coop scaling', () => {
-  // Floor 1: floorScaling = 1.0, strengthMod = 1, GLOBAL = 2.0, cap = 16
-  // 18 * 1 * 1.0 * 2.0 = 36 → capped to 16
+  // Floor 1: floorScaling = 1.0, strengthMod = 1, GLOBAL = 1.5, cap = 16
+  // 18 * 1 * 1.0 * 1.5 = 27 → capped to 16
   it('base case: floor 1 with GLOBAL multiplier and segment cap → 16', () => {
     const enemy = makeEnemy();
     const intent: EnemyIntent = { type: 'attack', value: 18 };
@@ -101,9 +101,9 @@ describe('computeIntentDisplayDamage — coop scaling', () => {
     expect(display).toBe(10);
   });
 
-  it('small intent bypassing cap: canary 0.6, value 5 → round(10 * 0.6) = 6', () => {
+  it('small intent bypassing cap: canary 0.6, value 5 → round(8 * 0.6) = 5', () => {
     const enemy = makeEnemy();
-    // 5 * 1 * 1.0 * 2.0 = 10 (below cap=22), then * 0.6 = 6
+    // 5 * 1 * 1.0 * 1.5 = 7.5 → round 8 (below cap=16), then * 0.6 = 4.8 → round 5
     const intent: EnemyIntent = { type: 'attack', value: 5, bypassDamageCap: false };
 
     const display = computeIntentDisplayDamage(intent, enemy, {
@@ -111,7 +111,7 @@ describe('computeIntentDisplayDamage — coop scaling', () => {
       ascensionEnemyDamageMultiplier: 1,
       difficultyMode: 'normal',
     });
-    expect(display).toBe(6);
+    expect(display).toBe(5);
   });
 
   it('applyPostIntentDamageScaling: relaxed mode reduces by 0.7×', () => {
@@ -169,9 +169,9 @@ describe('computeIntentDisplayDamage — coop scaling', () => {
     expect(display).toBe(16); // 24 capped to segment-1 cap of 16
   });
 
-  it('difficultyVariance 0.8 with small value: round(5*1*1.0*2.0=10, *0.8) = 8 (below cap)', () => {
+  it('difficultyVariance 0.8 with small value: round(5*1*1.0*1.5=8, *0.8) = 6 (below cap)', () => {
     const enemy = makeEnemy({ difficultyVariance: 0.8 });
-    // 5 * 1 * 1.0 * 2.0 = 10, then 10 * 0.8 = 8 (below cap=22)
+    // 5 * 1 * 1.0 * 1.5 = 7.5 → round 8, then 8 * 0.8 = 6.4 → round 6 (below cap=16)
     const intent: EnemyIntent = { type: 'attack', value: 5 };
 
     const display = computeIntentDisplayDamage(intent, enemy, {
@@ -179,7 +179,7 @@ describe('computeIntentDisplayDamage — coop scaling', () => {
       ascensionEnemyDamageMultiplier: 1,
       difficultyMode: 'normal',
     });
-    expect(display).toBe(8);
+    expect(display).toBe(6);
   });
 
   it('non-attack intents (defend) return 0', () => {

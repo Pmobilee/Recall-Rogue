@@ -1,8 +1,8 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-09 (Phase 5: Transmute permanent deck changes; Phase 6: Canary v2 HP scaling added)
-> **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`
+> **Last verified:** 2026-04-09 (Phase 7: Enemy damage display unified with pipeline; Coop turn-end timeout removed)
+> **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`, `src/services/enemyDamageScaling.ts`, `src/services/intentDisplay.ts`, `src/services/multiplayerCoopSync.ts`
 
 ---
 
@@ -209,6 +209,35 @@ When a player picks a new card as a reward mid-run, `encounterBridge.addRewardCa
 `revertTransmutedCards()` still runs at encounter end but only affects cards with `isTransmuted: true && originalCard` set (conjure, mimic) — not transmuted cards.
 
 See `docs/mechanics/cards.md` — Catch-Up Mastery section for full details.
+
+---
+
+## Enemy Damage Scaling Pipeline
+
+Enemy attack damage passes through two layers before `takeDamage()` is called:
+
+**Layer 1 — `executeEnemyIntent()` in `enemyManager.ts`:**
+1. `intent.value × strengthMod × getFloorDamageScaling(floor) × GLOBAL_ENEMY_DAMAGE_MULTIPLIER`
+2. `enemy.difficultyVariance` (0.8–1.2× for common enemies, fixed at instance creation)
+3. Brain Fog aura (+20% if aura state is 'brain_fog')
+4. Segment damage cap (`ENEMY_TURN_DAMAGE_CAP[segment]` — floored to cap value, bypassed if `intent.bypassDamageCap`)
+
+**Layer 2 — `turnManager.ts` §3094-3130 (applied to `intentResult.damage`):**
+5. Enrage bonus (runtime: added after layer 1, capped again — **excluded from intent display**)
+6. Segment cap re-applied after enrage
+7. Relaxed difficulty mode (×0.7)
+8. `ascensionEnemyDamageMultiplier` (ascension difficulty scaling)
+9. `canaryEnemyDamageMultiplier` (co-op scaling — often 0.6 in 2-player coop)
+10. Glass Cannon relic penalty (runtime: depends on player HP — **excluded from intent display**)
+11. Self-Burn bonus (runtime: depends on player burn stacks — **excluded from intent display**)
+
+**Shared helper — `applyPostIntentDamageScaling(baseDamage, ctx)` in `src/services/enemyDamageScaling.ts`:**
+Both `turnManager.ts` layer 2 (items 7–9) AND `computeIntentDisplayDamage()` use this helper so the two paths can never silently diverge. Items 5, 10, 11 are runtime/HP-dependent and are not applied to the display value.
+
+**Intent display — `computeIntentDisplayDamage(intent, enemy, scalingCtx?)` in `src/services/intentDisplay.ts`:**
+Applies layer 1 inline (mirrors executeEnemyIntent math without side-effects), then calls `applyPostIntentDamageScaling` for layer 2 items 7–9. The optional `scalingCtx` parameter must be passed from the UI for canary/ascension multipliers to apply — if omitted, only layer 1 is applied (backward-compatible).
+
+**Result:** The enemy intent display now shows the same number that `takeDamage()` receives, including coop canary scaling. This fixes the AR-263 bug where coop intent showed 18 but only 11 was applied (canary multiplier 0.6 not reflected in display).
 
 ---
 

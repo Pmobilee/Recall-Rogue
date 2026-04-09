@@ -11,9 +11,15 @@
     displayName: string
     /** Multiplayer game mode — controls which stats are visible */
     mode: MultiplayerMode
+    /**
+     * True while the charge-quiz panel is visible in CardCombatOverlay.
+     * When true the HUD dims (opacity 0.25, blur 1px) and loses pointer-events
+     * so the quiz panel is fully usable regardless of stacking-context order.
+     */
+    quizVisible?: boolean
   }
 
-  let { progress, displayName, mode }: Props = $props()
+  let { progress, displayName, mode, quizVisible = false }: Props = $props()
 
   /** Toggle expanded view */
   let expanded = $state(false)
@@ -61,6 +67,7 @@
   class="mp-hud"
   class:expanded
   class:finished={isFinished}
+  class:quiz-hidden={quizVisible}
   role="complementary"
   aria-label="Opponent progress: {displayName}"
 >
@@ -180,12 +187,23 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: calc(10px * var(--layout-scale, 1));
     backdrop-filter: blur(8px);
-    /* z-index 20: below .quiz-backdrop (25) so HUD dims during quiz moments and reappears after. */
-    z-index: 20;
+    /* z-index 9: well below any quiz surface (backdrop z-index: 25, quiz panel z-index: 30).
+       The backdrop-filter on this element creates an implicit stacking context that previously
+       caused it to render above the quiz panel despite lower z-index values. Setting to 9
+       pushes it safely beneath ALL quiz-related layers AND uses the quizVisible prop to add
+       pointer-events:none + opacity dimming as a belt-and-suspenders guarantee. */
+    z-index: 9;
     font-family: var(--font-body, 'Lora', serif);
     color: #e0e0e0;
     overflow: hidden;
-    transition: width 0.2s ease;
+    transition: width 0.2s ease, opacity 150ms ease, filter 150ms ease;
+  }
+
+  /* When the quiz panel is visible: dim and block all interactions */
+  .mp-hud.quiz-hidden {
+    pointer-events: none;
+    opacity: 0.25;
+    filter: blur(calc(1px * var(--layout-scale, 1)));
   }
 
   .mp-hud.finished {

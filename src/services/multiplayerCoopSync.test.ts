@@ -66,8 +66,16 @@ vi.mock('./multiplayerTransport', () => ({
   destroyMultiplayerTransport: vi.fn(),
 }));
 
+let mockLobbyUpdateCb: ((lobby: LobbyState) => void) | null = null;
+
 vi.mock('./multiplayerLobbyService', () => ({
   getCurrentLobby: vi.fn(() => mockLobby),
+  // onLobbyUpdate: capture the callback so tests can fire partner-leave events.
+  // Returns a no-op unsub function.
+  onLobbyUpdate: vi.fn((cb: (lobby: LobbyState) => void) => {
+    mockLobbyUpdateCb = cb;
+    return () => { mockLobbyUpdateCb = null; };
+  }),
 }));
 
 // ---------------------------------------------------------------------------
@@ -115,6 +123,7 @@ describe('multiplayerCoopSync — awaitCoopTurnEnd', () => {
     destroyCoopSync();
     mockTransport = createMockTransport();
     mockLobby = null;
+    mockLobbyUpdateCb = null;
   });
 
   it('resolves completed immediately when solo (1 player lobby)', async () => {
@@ -167,6 +176,7 @@ describe('multiplayerCoopSync — cancelCoopTurnEnd', () => {
     destroyCoopSync();
     mockTransport = createMockTransport();
     mockLobby = null;
+    mockLobbyUpdateCb = null;
   });
 
   it('resolves cancelled when cancel is called before partner signals', async () => {
@@ -228,6 +238,7 @@ describe('multiplayerCoopSync — broadcastPartnerState', () => {
     destroyCoopSync();
     mockTransport = createMockTransport();
     mockLobby = null;
+    mockLobbyUpdateCb = null;
   });
 
   it('includes score and accuracy in the broadcast payload', () => {
@@ -262,6 +273,7 @@ describe('multiplayerCoopSync — remote cancel', () => {
     destroyCoopSync();
     mockTransport = createMockTransport();
     mockLobby = null;
+    mockLobbyUpdateCb = null;
   });
 
   it('removes partner signal when mp:coop:turn_end_cancel arrives from remote', async () => {
@@ -284,5 +296,30 @@ describe('multiplayerCoopSync — remote cancel', () => {
     mockTransport.simulateReceive('mp:coop:turn_end', { playerId: 'bob' });
     const result = await promise;
     expect(result).toBe('completed');
+  });
+});
+
+describe('multiplayerCoopSync — partner leave cancels barrier', () => {
+  beforeEach(() => {
+    destroyCoopSync();
+    mockTransport = createMockTransport();
+    mockLobby = null;
+    mockLobbyUpdateCb = null;
+  });
+
+  it('auto-resolves cancelled when partner leaves lobby mid-barrier', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const promise = awaitCoopTurnEnd();
+    expect(isLocalTurnEndPending()).toBe(true);
+
+    // Simulate bob leaving the lobby — lobby now has only alice
+    const reducedLobby = makeLobby(['alice']);
+    mockLobbyUpdateCb?.({ ...reducedLobby });
+
+    const result = await promise;
+    expect(result).toBe('cancelled');
+    expect(isLocalTurnEndPending()).toBe(false);
   });
 });

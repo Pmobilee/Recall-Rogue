@@ -1103,3 +1103,55 @@ But this is INSIDE the block `if (correctStreak >= CANARY_CHALLENGE_STREAK_THRES
 Win rates dropped slightly vs Ch12.2 numbers — the previous inflated health vial rate was masking real difficulty. The post-fix numbers are the correct baseline for balance work going forward.
 
 **Lesson:** Sim fidelity degrades silently. Any time the sim reimplements game logic rather than importing it, it will drift. Rule: if a game service exists, import it — never reimplement. The right test is: "does this sim path import the same code the game runs?" If not, it will diverge. Add `canaryService.ts`, `catchUpMasteryService.ts`, and `balance.ts` constants to the list of things that MUST be imported rather than approximated.
+
+### 2026-04-09 — CardPickerOverlay CSS must verbatim-match CardHand CSS for shared class names
+
+**What:** CardPickerOverlay.svelte and CardHand.svelte both render `.card-v2-frame`, `.frame-layer`, `.v2-mechanic-name`, `.v2-ap-cost`, etc. Svelte scopes CSS to each component via auto-generated data attributes, so the styles do NOT leak between components. But both components must use IDENTICAL CSS values for visually matching renders.
+
+**Why it broke:** Phase 3 reimplemented the card frame CSS in the picker with several divergent values: `object-fit: fill` on `.frame-layer` (CardHand uses `contain`), wrong color `#f4e8c8` on `.v2-mechanic-name` (CardHand uses `#1a0a00`), no `text-transform: uppercase`, no `use:stretchText`, wrong AP cost styling, missing `z-index: 5` on `.frame-text`, and a simplified `.mastery-glow` filter. Result: empty pentagon frames (fill distorted frame PNGs), mechanic names in wrong color without uppercase, and incorrect AP cost display.
+
+**Fix:** Copy CSS properties verbatim from CardHand.svelte. Key properties:
+- `.frame-layer`: `object-fit: contain` (NOT `fill`)
+- `.v2-mechanic-name`: `color: #1a0a00; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; overflow: visible;`
+- `.v2-ap-cost`: `color: #ffffff; -webkit-text-stroke: 1.5px #000;` + correct text-shadow
+- `.frame-text`: `z-index: 5`
+- `.mastery-glow`: full `hue-rotate(60deg) saturate(2) brightness(1.3) drop-shadow(...)` filter
+- Always add `use:stretchText` to `.v2-mechanic-name`
+
+**Lesson:** When two components render the same visual element using the same CSS class names, they MUST use the same CSS values. "Reimplementing" a subset of card CSS in a picker/preview component will drift over time. Consider adding a CSS comment `/* VERBATIM from CardHand.svelte — keep in sync */` above such blocks as a maintenance signal.
+
+**Centering fix:** `display: grid; grid-template-columns: repeat(auto-fill, minmax(N, 1fr))` does NOT center items when fewer items than columns exist. Use `display: flex; flex-wrap: wrap; justify-content: center` instead for picker-card rows that can have 1-N cards.
+
+### 2026-04-09 — Coop turn-end barrier had a 30s auto-advance timeout
+
+**What:** `awaitCoopTurnEnd(timeoutMs = 30_000)` in `multiplayerCoopSync.ts` would resolve `'completed'` after 30 seconds even if the partner never signaled. This auto-advanced the enemy phase without the partner having ended their turn — breaking coop turn order.
+
+**Why:** The timeout was added as a "safety valve" to prevent infinite waits when a partner disconnects. But it fired even for normal slow partners, and a dropped partner should be handled by the lobby-leave event, not a timer.
+
+**Fix:** Removed the `setTimeout` entirely. The barrier now waits indefinitely. Added an `onLobbyUpdate` listener that fires `cancelCoopTurnEnd()` (resolves `'cancelled'`) when the lobby player count drops below the count at barrier-start. This handles disconnections without a timer.
+
+**Lesson:** Timeout-based safety valves in barriers are wrong when the "safe" behavior should be cancellation, not completion. If a peer drops, fire a cancel event, don't silently proceed. The 30s timer was completing the turn without the partner's combat result — a worse outcome than being stuck.
+
+---
+
+### 2026-04-09 — onPartnerStateUpdate single-subscriber slot overwrites on re-subscribe
+
+**What:** `onPartnerStateUpdate(cb)` stored callbacks in a single slot (`_onPartnerStateChange = cb`). Svelte 5 `$effect` blocks re-run on reactive dependencies, calling `onPartnerStateUpdate` again each time — silently overwriting the previous subscription. If any other code subscribed, they'd overwrite each other. The returned unsub function nulled the slot but didn't protect against subsequent overwrites.
+
+**Why:** The original implementation followed the single-callback pattern used in older `onRaceProgress`-style APIs in the codebase. But `onPartnerStateUpdate` is called from an `$effect` that can re-run multiple times (and potentially from multiple components), making single-slot wrong.
+
+**Fix:** Converted to a `Set<callback>` pattern. `onPartnerStateUpdate(cb)` adds to the set and returns a proper unsubscribe that removes only that callback. The `mp:coop:partner_state` listener iterates the set. `destroyCoopSync()` does NOT clear the set — consumer subscriptions have their own lifecycle (the caller holds the unsub).
+
+**Lesson:** Any pub/sub API where the caller gets an unsub function back is signaling that the module does NOT own the subscription lifetime. Never null subscriber slots from within `destroyCoopSync()`/`destroy*()`-style teardown functions — only clear run-level state. If the API returns an unsub, the consumer is responsible for calling it.
+
+---
+
+### 2026-04-09 — Intent display damage diverged from actual pipeline damage
+
+**What:** `computeIntentDisplayDamage()` only applied `strengthMod × floorScaling × GLOBAL_ENEMY_DAMAGE_MULTIPLIER`. The actual pipeline in `turnManager.ts` also applies `difficultyVariance`, Brain Fog aura, segment damage cap, relaxed mode (×0.7), `ascensionEnemyDamageMultiplier`, and `canaryEnemyDamageMultiplier`. In coop mode with canary=0.6, the display showed 18 but only 11 damage was dealt.
+
+**Fix:** Extracted `applyPostIntentDamageScaling(baseDamage, ctx)` in `src/services/enemyDamageScaling.ts` as a shared helper. `computeIntentDisplayDamage()` now takes an optional `scalingCtx` and applies the full first-layer formula (including difficultyVariance, Brain Fog, segment cap) plus the second-layer via the shared helper. `turnManager.ts` calls the same helper for items 7–9, so the two paths cannot drift.
+
+**Intentionally excluded from display:** enrage bonus (HP-dependent), glass cannon penalty (player-HP-dependent), self-burn (burn-stack-dependent). These are runtime-variable and showing them in the intent preview would be misleading.
+
+**Lesson:** Whenever a UI displays a computed value and the game also computes "the same thing" separately in the pipeline, they WILL drift. Extract a shared pure function. Both consumers call the function. No exceptions.

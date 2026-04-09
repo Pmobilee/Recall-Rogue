@@ -41,7 +41,6 @@
     triggeredRelicId?: string | null
     maxRelicSlots?: number
     ascensionLevel?: number
-    reviewQueueLength?: number
     fogLevel?: number
     fogState?: 'brain_fog' | 'neutral' | 'flow_state'
     statusEffects?: StatusEffect[]
@@ -61,7 +60,6 @@
     triggeredRelicId = null,
     maxRelicSlots = 5,
     ascensionLevel = 0,
-    reviewQueueLength = 0,
     fogLevel = 0,
     fogState = undefined,
     statusEffects = [],
@@ -241,11 +239,6 @@
     {#if ascensionLevel > 0}
       <span class="ascension-badge" aria-label="Ascension {ascensionLevel}">
         A{ascensionLevel}
-      </span>
-    {/if}
-    {#if reviewQueueLength > 0}
-      <span class="review-queue-pill" aria-label="{reviewQueueLength} facts in review queue">
-        📝 {reviewQueueLength}
       </span>
     {/if}
   </div>
@@ -686,24 +679,6 @@
     white-space: nowrap;
     flex-shrink: 0;
   }
-
-  .review-queue-pill {
-    display: inline-flex;
-    align-items: center;
-    border-radius: 999px;
-    font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(8px * var(--text-scale, 1));
-    font-weight: 700;
-    color: #fcd34d;
-    background: rgba(251, 191, 36, 0.12);
-    border: 1px solid rgba(251, 191, 36, 0.35);
-    padding: calc(1px * var(--layout-scale, 1)) calc(5px * var(--layout-scale, 1));
-    white-space: nowrap;
-    flex-shrink: 0;
-    line-height: 1;
-    letter-spacing: 0.03em;
-  }
-
   /* ============================================================
      Gold Counter
      ============================================================ */
