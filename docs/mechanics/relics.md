@@ -1,7 +1,7 @@
 # Relic System
 
 > **Purpose:** Complete reference for relic catalog, rarities, trigger system, acquisition mechanics, and slot rules.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-09
 > **Source files:** `src/data/relics/index.ts`, `src/data/relics/starters.ts`, `src/data/relics/unlockable.ts`, `src/data/relics/types.ts`, `src/services/relicEffectResolver.ts`, `src/services/relicAcquisitionService.ts`, `src/data/balance.ts`
 
 ## Relic Slots
@@ -85,20 +85,20 @@ All have `unlockCost: 0` and `startsUnlocked: true`.
 | ID | Effect | Trigger |
 |---|---|---|
 | `whetstone` | +3 attack damage, -1 block on shields | permanent |
-| `iron_shield` | +5 block each turn start; -1 draw on turn 1 | on_turn_start |
+| `iron_shield` | Turn start block = 2 + shields played last turn | on_turn_start |
 | `vitality_ring` | +20 max HP | on_run_start |
-| `herbal_pouch` | Heal 8 HP after each combat | on_encounter_end |
+| `herbal_pouch` | Apply 1 Poison to all enemies each turn; heal 3 HP after combat | on_turn_start |
 | `swift_boots` | Draw 6 cards per turn instead of 5 | permanent |
 | `steel_skin` | -3 damage taken (min 1) | on_damage_taken |
 | `gold_magnet` | +30% gold from all sources | permanent |
 | `merchants_favor` | +1 card and +1 relic choice in shops | permanent |
 | `lucky_coin` | After 3 wrong Charges in encounter: +50% damage on next correct Charge | on_charge_wrong |
-| `scavengers_eye` | 4 card reward choices instead of 3 | permanent |
+| `scavengers_eye` | Exhausting a card draws 1 card from draw pile | on_exhaust |
 | `quick_study` | Preview 1 answer after 3+ correct Charges; wrong answers deal +2 self-damage | on_encounter_end |
-| `thick_skin` | Immune to first debuff per encounter; +2 damage taken | permanent |
-| `tattered_notebook` | +5 gold on first correct Charge per encounter | on_charge_correct |
+| `thick_skin` | Reflect debuffs onto enemy; +2 damage taken from all sources | permanent |
+| `tattered_notebook` | Exhausting a card grants +1 Strength this turn | on_exhaust |
 | `battle_scars` | After taking a hit: next attack +3 damage (once/turn) | on_damage_taken |
-| `brass_knuckles` | Every 3rd attack card played deals +6 damage | on_attack |
+| `brass_knuckles` | Every 3rd attack grants +1 permanent Strength (this encounter) | on_attack |
 
 ### Uncommon Starters (14)
 

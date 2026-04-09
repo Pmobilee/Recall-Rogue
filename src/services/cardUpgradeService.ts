@@ -64,7 +64,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
 
   // ── Core Attacks (7) ────────────────────────────────────────────────────────
 
-  /** Standard reliable attack. L3 and L5 are the big damage jumps. */
+  /** Standard reliable attack. L3 and L5 are the big damage jumps. L5: +4 bonus if 3+ cards played this turn (Tempo archetype). */
   strike: {
     levels: [
       { qpValue: 4 },                                                         // L0 — Weak but reliable
@@ -72,7 +72,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 5 },                                                         // L2
       { qpValue: 6 },                                                         // L3
       { qpValue: 7 },                                                         // L4
-      { qpValue: 8 },                                                         // L5 — Bread and butter, fully grown
+      { qpValue: 8, tags: ['strike_tempo3'] },                                // L5 — Bread and butter + Tempo bonus
     ],
   },
 
@@ -112,7 +112,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
     ],
   },
 
-  /** Reckless: high damage, self-damage decreases as you master it. */
+  /** Reckless: high damage, self-damage decreases as you master it. L5: qp=10, selfDmg=0, scales self-damage with chain length instead (reckless_selfdmg_scale3 — takes 3 self-damage per chain tier). */
   reckless: {
     levels: [
       { qpValue: 4,  extras: { selfDmg: 4 } },                             // L0 — Hurts you a lot
@@ -120,7 +120,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 6,  extras: { selfDmg: 3 } },                             // L2 — Self-damage drops!
       { qpValue: 8,  extras: { selfDmg: 3 } },                             // L3
       { qpValue: 10, extras: { selfDmg: 2 } },                             // L4 — Mastering the recklessness
-      { qpValue: 12, extras: { selfDmg: 1 } },                             // L5 — Near-zero risk, full power
+      { qpValue: 10, extras: { selfDmg: 0 }, tags: ['reckless_selfdmg_scale3'] }, // L5 — 0 flat self-dmg, chain-scaled
     ],
   },
 
@@ -150,7 +150,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
 
   // ── Expansion Attacks (8) ────────────────────────────────────────────────────
 
-  /** Power Strike: clean scaling, L5 applies Vulnerable 1t. */
+  /** Power Strike: clean scaling. L5: qp=8, applies Vulnerable for 2 turns AND at 75% efficiency (power_vuln2t, power_vuln75). */
   power_strike: {
     levels: [
       { qpValue: 4 },                                                         // L0
@@ -158,11 +158,11 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 6 },                                                         // L2
       { qpValue: 7 },                                                         // L3
       { qpValue: 8 },                                                         // L4
-      { qpValue: 9, tags: ['power_vuln1'] },                                // L5 — applies Vulnerable 1t
+      { qpValue: 8, tags: ['power_vuln2t', 'power_vuln75'] },               // L5 — Vuln 2 turns + 75% vuln bonus
     ],
   },
 
-  /** Twin Strike: two hits, L3 adds third hit, L5 adds Burn per hit. */
+  /** Twin Strike: two hits, L3 adds third hit, L5 adds Burn per hit + chain-extends Burn (twin_burn_chain). */
   twin_strike: {
     levels: [
       { qpValue: 2, hitCount: 2 },                                           // L0
@@ -170,11 +170,11 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 3, hitCount: 2 },                                           // L2
       { qpValue: 3, hitCount: 3 },                                           // L3 — third strike!
       { qpValue: 4, hitCount: 3 },                                           // L4
-      { qpValue: 4, hitCount: 3, tags: ['twin_burn2'] },                   // L5 — each hit applies 2 Burn
+      { qpValue: 4, hitCount: 3, tags: ['twin_burn2', 'twin_burn_chain'] }, // L5 — 2 Burn/hit + chain extends Burn
     ],
   },
 
-  /** Iron Wave: attack + block simultaneously. Both scale together. */
+  /** Iron Wave: attack + block simultaneously. Both scale together. L5: block doubles (iron_wave_block_double). */
   iron_wave: {
     levels: [
       { qpValue: 2, secondaryValue: 3 },                                     // L0 — 2 dmg + 3 block
@@ -182,7 +182,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 3, secondaryValue: 5 },                                     // L2
       { qpValue: 4, secondaryValue: 5 },                                     // L3
       { qpValue: 4, secondaryValue: 6 },                                     // L4
-      { qpValue: 5, secondaryValue: 7 },                                     // L5 — Balanced fighter's dream
+      { qpValue: 5, secondaryValue: 7, tags: ['iron_wave_block_double'] },  // L5 — Balanced fighter's dream + block doubles
     ],
   },
 
@@ -296,7 +296,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
     ],
   },
 
-  /** Riposte: attack + block. L5 draws a card. */
+  /** Riposte: attack + block. L5: qp=3, sec=5, block-based counterattack deals 40% of block as bonus damage (riposte_block_dmg40). */
   riposte: {
     levels: [
       { qpValue: 2, secondaryValue: 3 },                                     // L0 — 2 dmg + 3 block
@@ -304,7 +304,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 3, secondaryValue: 4 },                                     // L2
       { qpValue: 4, secondaryValue: 5 },                                     // L3
       { qpValue: 4, secondaryValue: 6 },                                     // L4
-      { qpValue: 5, secondaryValue: 7, tags: ['riposte_draw1'] },          // L5 — also draws 1 card
+      { qpValue: 3, secondaryValue: 5, tags: ['riposte_block_dmg40'] },    // L5 — deals bonus dmg = 40% of block
     ],
   },
 
@@ -375,7 +375,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
 
   // ── Core Shields (7) ──────────────────────────────────────────────────────
 
-  /** block: simple block scaling, reliable baseline */
+  /** block: simple block scaling, reliable baseline. L5: +bonus block when played 3+ times consecutively (block_consecutive3). */
   block: {
     levels: [
       { qpValue: 4 },                                          // L0: weak but reliable
@@ -383,7 +383,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 5 },                                          // L2
       { qpValue: 6 },                                          // L3
       { qpValue: 7 },                                          // L4
-      { qpValue: 8 },                                          // L5: bread-and-butter, fully grown
+      { qpValue: 8, tags: ['block_consecutive3'] },            // L5: bonus block on 3+ consecutive plays
     ],
   },
 
@@ -461,7 +461,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
 
   // ── Expansion Shields (5) ─────────────────────────────────────────────────
 
-  /** reinforce: solid block scaling with late-game draw payoff */
+  /** reinforce: solid block scaling with late-game draw payoff. L5: draws 1 AND gains 1 permanent block (reinforce_perm1). */
   reinforce: {
     levels: [
       { qpValue: 5 },                                          // L0
@@ -469,7 +469,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 6 },                                          // L2
       { qpValue: 7 },                                          // L3
       { qpValue: 8 },                                          // L4
-      { qpValue: 9, tags: ['reinforce_draw1'] },                // L5: also draws 1
+      { qpValue: 9, tags: ['reinforce_draw1', 'reinforce_perm1'] }, // L5: draw 1 + 1 permanent block
     ],
   },
 
@@ -497,7 +497,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
     ],
   },
 
-  /** absorb: block with CC draw payoff — tags activate CC-only effects */
+  /** absorb: block with CC draw payoff. L5: CC draws 2 + refunds 1 AP when block absorbs damage (absorb_ap_on_block). */
   absorb: {
     levels: [
       { qpValue: 2 },                                          // L0: CC=4 + draw 1
@@ -505,7 +505,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 4 },                                          // L2
       { qpValue: 4, tags: ['absorb_draw2cc'] },                 // L3: CC draws 2!
       { qpValue: 5 },                                          // L4
-      { qpValue: 6, tags: ['absorb_draw2cc', 'absorb_heal1cc'] }, // L5: CC also heals 1
+      { qpValue: 6, tags: ['absorb_draw2cc', 'absorb_ap_on_block'] }, // L5: CC draws 2 + AP refund on block
     ],
   },
 
@@ -563,6 +563,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   },
   // ── Buff Cards ──
 
+  /** empower: percentage buff to next card(s). L5: 60% to next 2 cards + applies Weakness 2 to enemy (empower_weak2). */
   empower: {
     levels: [
       { qpValue: 30 },                                           // L0: 30% boost
@@ -570,7 +571,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 40 },                                           // L2
       { qpValue: 45, tags: ['empower_2cards'] },                 // L3: boosts next 2 cards!
       { qpValue: 50 },                                           // L4
-      { qpValue: 60, tags: ['empower_2cards'] },                 // L5: 60% to next 2 cards
+      { qpValue: 60, tags: ['empower_2cards', 'empower_weak2'] }, // L5: 60% to next 2 cards + Weakness 2 on enemy
     ],
   },
 
@@ -662,6 +663,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
     ],
   },
 
+  /** mastery_surge: boost mastery of cards in hand. L5: choose 3 cards, +2 mastery each, refunds 1 AP (msurge_ap_on_l5). */
   mastery_surge: {
     levels: [
       { qpValue: 0, extras: { targets: 1 } },                    // L0: +1 mastery to 1 card
@@ -669,12 +671,13 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 0, extras: { targets: 2 } },                    // L2: 2 cards!
       { qpValue: 0, extras: { targets: 2 }, tags: ['msurge_choose'] }, // L3: choose which cards (not random)
       { qpValue: 0, extras: { targets: 3 } },                    // L4: 3 cards!
-      { qpValue: 0, extras: { targets: 3 }, tags: ['msurge_choose', 'msurge_plus2'] }, // L5: +2 mastery per card!
+      { qpValue: 0, extras: { targets: 3 }, tags: ['msurge_choose', 'msurge_plus2', 'msurge_ap_on_l5'] }, // L5: +2 mastery + AP refund
     ],
   },
 
   // ── Debuff Cards ──
 
+  /** weaken: applies Weakness stacks to enemy (reduces enemy damage). L5: 3 stacks 3 turns + player gains 30 block (weaken_shield30). */
   weaken: {
     levels: [
       { qpValue: 0, extras: { stacks: 1, turns: 1 } },           // L0: 1 Weakness, 1 turn
@@ -682,10 +685,11 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 0, extras: { stacks: 1, turns: 2 } },           // L2
       { qpValue: 0, extras: { stacks: 2, turns: 2 } },           // L3: 2 stacks!
       { qpValue: 0, extras: { stacks: 2, turns: 3 } },           // L4
-      { qpValue: 0, extras: { stacks: 3, turns: 3 } },           // L5: 3 stacks, 3 turns
+      { qpValue: 0, extras: { stacks: 3, turns: 3 }, tags: ['weaken_shield30'] }, // L5: 3 stacks 3 turns + 30 shield
     ],
   },
 
+  /** expose: applies Vulnerable stacks to enemy (increases damage taken). L5: 2 stacks 3 turns, deals 3 damage, 75% Vuln amplification (expose_dmg3, expose_vuln75). */
   expose: {
     levels: [
       { qpValue: 0, extras: { stacks: 1, turns: 1 } },           // L0: 1 Vulnerable, 1 turn
@@ -693,7 +697,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 0, extras: { stacks: 1, turns: 2 } },           // L2: Lasts 2 turns
       { qpValue: 0, extras: { stacks: 2, turns: 2 } },           // L3: 2 stacks!
       { qpValue: 0, extras: { stacks: 2, turns: 2 } },           // L4
-      { qpValue: 0, extras: { stacks: 2, turns: 3 }, tags: ['expose_dmg3'] }, // L5: also deals 3 damage
+      { qpValue: 0, extras: { stacks: 2, turns: 3 }, tags: ['expose_dmg3', 'expose_vuln75'] }, // L5: 3 dmg + 75% Vuln amp
     ],
   },
 

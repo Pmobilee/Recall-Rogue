@@ -1,7 +1,7 @@
 # Card System Mechanics
 
 > **Purpose:** Card entity, card types, tier system, damage formula, mastery system, and card creation pipeline.
-> **Last verified:** 2026-04-08 (10.1 liveCardStats service, 10.2 foresight draw fix)
+> **Last verified:** 2026-04-09 (Phase 1 mechanics overhaul: starter deck swap, Canary v2 HP constants, 13 L5 archetype tags)
 > **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/services/catchUpMasteryService.ts`, `src/data/balance.ts`
 
 > **See also:** [`card-mechanics.md`](card-mechanics.md) — Complete table of all 50+ mechanics (attack, shield, buff, debuff, utility, wild).
@@ -262,7 +262,7 @@ The old helpers (`getMasteryBaseBonus`, `getMasterySecondaryBonus`, `getMasteryA
 | L2 | 6 | 10.5 | 3 | Self-damage drops! |
 | L3 | 8 | 14 | 3 | |
 | L4 | 10 | 17.5 | 2 | Mastering the recklessness |
-| L5 | 12 | 21 | **1** | Near-zero risk, full power |
+| L5 | 10 | 17.5 | **0** | Zero flat self-dmg; chain-scaled instead (`reckless_selfdmg_scale3`) |
 
 ### "Wow Moment" Milestones
 
@@ -272,7 +272,7 @@ Several mechanics have designed creative milestones at key mastery levels that c
 |---|---|---|
 | `heavy_strike` | L5 | Drops from 3 AP to **1 AP** |
 | `scout` | L5 | Becomes **FREE** (0 AP). Draw 3 + scry 2 |
-| `reckless` | L5 | Self-damage shrinks from 4 → **1** |
+| `reckless` | L5 | Self-damage drops to **0** flat; scales with chain length instead (`reckless_selfdmg_scale3`) |
 | `lifetap` | L5 | Drops from 2 AP to **1 AP** |
 | `execute` | L3 | Execute threshold widens from 25% → **40% HP** |
 | `execute` | L5 | Execute threshold widens to **50% HP** |
@@ -282,7 +282,7 @@ Several mechanics have designed creative milestones at key mastery levels that c
 | `double_strike` | L5 | Pierces block |
 | `pierce_strip3` | L3 | Strips **3 enemy block** |
 | `piercing` | L5 | Applies **Vulnerable 1t** |
-| `power_strike` | L5 | Applies **Vulnerable 1t** |
+| `power_strike` | L5 | qp=8; Applies **Vulnerable 2t** at 75% amp (`power_vuln2t`, `power_vuln75`) |
 | `scout` | L3 | Gains **scry 2** |
 | `foresight` | L3 | Reveals enemy's **next intent** |
 | `conjure` | L2 | Upgrades to **uncommon** cards |
@@ -303,7 +303,7 @@ Several mechanics have designed creative milestones at key mastery levels that c
 | `twin_strike` | L5 | Each hit applies **2 Burn** (`twin_burn2` tag) |
 | `precision_strike` | L3 | +**50% quiz timer** extension (`precision_timer_ext50` tag) |
 | `precision_strike` | L5 | +50% timer + **difficulty bonus ×2** (`precision_timer_ext50`, `precision_bonus_x2` tags) |
-| `riposte` | L5 | Also draws **1 card** (`riposte_draw1` tag) |
+| `riposte` | L5 | qp=3, sec=5; deals **40% of block as bonus damage** (`riposte_block_dmg40` tag) |
 | `smite` | L3 | Aura scaling **doubled** (`smite_aura_x2` tag) |
 | `smite` | L5 | Aura scaling doubled (persists at L5) |
 | `feedback_loop` | L3 | CW Aura crash **halved** (`feedback_crash_half` tag) |
@@ -314,6 +314,16 @@ Several mechanics have designed creative milestones at key mastery levels that c
 | `volatile_slash` | L5 | **No longer exhausts** on CC (`volatile_no_exhaust` tag) |
 | `chain_lightning` | L3 | Minimum chain count = **2** (`chain_lightning_min2` tag) |
 | `chain_lightning` | L5 | Min chain = 2 (persists at L5) |
+| `strike` | L5 | **+Tempo bonus** if 3+ cards played this turn (`strike_tempo3`) |
+| `iron_wave` | L5 | Block component **doubles** on CC (`iron_wave_block_double`) |
+| `twin_strike` | L5 | Each hit applies 2 Burn + **chain extends Burn duration** (`twin_burn2`, `twin_burn_chain`) |
+| `block` | L5 | **+bonus block** when played 3+ consecutive turns (`block_consecutive3`) |
+| `reinforce` | L5 | Draws 1 + gains **1 permanent block** (`reinforce_draw1`, `reinforce_perm1`) |
+| `absorb` | L5 | CC draws 2 + **refunds 1 AP** when block absorbs damage (`absorb_draw2cc`, `absorb_ap_on_block`) |
+| `empower` | L5 | 60% boost to 2 cards + applies **Weakness 2** to enemy (`empower_2cards`, `empower_weak2`) |
+| `mastery_surge` | L5 | +2 mastery to 3 cards + **refunds 1 AP** (`msurge_choose`, `msurge_plus2`, `msurge_ap_on_l5`) |
+| `weaken` | L5 | 3 stacks 3 turns + player gains **30 block** (`weaken_shield30`) |
+| `expose` | L5 | 2 stacks 3 turns + 3 damage + **75% Vuln amplification** (`expose_dmg3`, `expose_vuln75`) |
 
 ### Tag System — How Tags Work in the Resolver
 

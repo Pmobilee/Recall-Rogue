@@ -482,6 +482,12 @@ export const CANARY_CHALLENGE_ENEMY_DMG_MULT = 1.1;
 /** Correct answer streak threshold to trigger challenge mode. */
 export const CANARY_CHALLENGE_STREAK_THRESHOLD = 5;
 
+/** Canary v2: enemy HP scaling based on quiz streaks */
+export const CANARY_ASSIST_ENEMY_HP_MULT = 0.9;        // 3+ wrong streak: -10% enemy HP
+export const CANARY_DEEP_ASSIST_ENEMY_HP_MULT = 0.8;   // 5+ wrong streak: -20% enemy HP  
+export const CANARY_CHALLENGE_ENEMY_HP_MULT_3 = 1.1;   // 3+ correct streak: +10% enemy HP
+export const CANARY_CHALLENGE_ENEMY_HP_MULT_5 = 1.2;   // 5+ correct streak: +20% enemy HP
+
 /** Per-floor enemy damage scaling increment above floor 6. (AR-97b: 0.05→0.02, sweep r=+0.668; 2026-04-01: 0.02→0.06 to steepen late-game curve — floor 12 = +36%, floor 18 = +72%; reverted 2026-04-01: 0.06→0.03 — enemy HP scaling is the better lever; 2026-04-01: 0.03→0.06 — paired with FLOOR_DAMAGE_SCALE_MID 0.8→0.5 to keep early floors easy while steepening late-game pressure for experts) */
 export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.09; // Raised from 0.06 (2026-04-04): chain momentum makes game too easy; 0.08 was too harsh on low-acc players
 
@@ -1004,13 +1010,13 @@ export const MIN_DECK_SIZE = 5;
 
 /**
  * Fixed starter deck composition (AR-59.6).
- * 5 Strike, 4 Block, 1 Surge (foresight mechanic: 0 AP, draw 2).
+ * 5 Strike, 4 Block, 1 Transmute (transmute mechanic: transforms a card).
  * Cards are drawn from the run pool so they carry real fact IDs/domains.
  */
 export const STARTER_DECK_COMPOSITION = [
   { mechanicId: 'strike', count: 5 },
   { mechanicId: 'block',  count: 4 },
-  { mechanicId: 'foresight', count: 1 },
+  { mechanicId: 'transmute', count: 1 },
 ] as const;
 
 /** Get an override value if set, otherwise return the default constant. */
