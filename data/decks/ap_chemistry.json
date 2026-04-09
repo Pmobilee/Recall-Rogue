@@ -1028,7 +1028,7 @@
         "single molar mass",
         "only one phase present"
       ],
-      "quizQuestion": "What distinguishes a mixture from a pure substance in terms of this biological process?",
+      "quizQuestion": "What distinguishes a mixture from a pure substance in terms of composition?",
       "explanation": "A mixture has variable composition — the proportions of components can be any value. A pure substance (element or compound) has fixed composition: water is always 88.81% oxygen and 11.19% hydrogen by mass, no matter where it comes from. This difference is why mass percent and mole fraction are needed to describe mixtures but not pure compounds.",
       "statement": "Mixtures have variable composition; pure substances (elements and compounds) have fixed, definite composition.",
       "wowFactor": "The law of definite proportions — pure compounds always have the same mass ratios — was discovered by Joseph Proust in 1799 and was one of the first quantitative laws of chemistry.",
@@ -1263,7 +1263,7 @@
       "answerTypePoolId": "bracket_numbers",
       "difficulty": 2,
       "funScore": 5,
-      "quizQuestion": "Nitrogen (atomic number 7) has the electron configuration 1s²2s²2p³. How many this value electrons does a neutral nitrogen atom have?",
+      "quizQuestion": "Nitrogen (atomic number 7) has the electron configuration 1s²2s²2p³. How many valence electrons does a neutral nitrogen atom have?",
       "explanation": "Valence electrons are in the outermost principal energy level. For nitrogen, the valence shell is n = 2, containing 2 electrons in 2s and 3 electrons in 2p, giving 5 total valence electrons. This matches nitrogen's group number (Group 15 / Group VA) on the periodic table. These 5 valence electrons explain why nitrogen commonly forms 3 bonds (sharing 3) and can also act as a Lewis base.",
       "distractors": [],
       "sourceName": "OpenStax Chemistry 2e, Chapter 6.4",
@@ -1453,7 +1453,7 @@
       "answerTypePoolId": "periodic_trend_terms",
       "difficulty": 3,
       "funScore": 8,
-      "quizQuestion": "In a PES spectrum, the relative height (intensity) of each peak is proportional to what property of the corresponding this value?",
+      "quizQuestion": "In a PES spectrum, the relative height (intensity) of each peak is proportional to what property of the corresponding subshell?",
       "explanation": "More electrons in a subshell means more ejected electrons at that binding energy, producing a taller peak. For example, sodium (1s²2s²2p⁶3s¹) would show: 1s peak height of 2, 2s peak height of 2, 2p peak height of 6 (the tallest), and 3s peak height of 1 (the shortest). Comparing peak heights lets chemists determine how many electrons occupy each subshell without knowing the element in advance.",
       "distractors": [
         "Distance of the subshell from the nucleus",
@@ -1485,7 +1485,7 @@
       "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
-      "quizQuestion": "Magnesium has the electron configuration 1s²2s²2p⁶3s². How many distinct this value would appear in the PES spectrum of a magnesium atom?",
+      "quizQuestion": "Magnesium has the electron configuration 1s²2s²2p⁶3s². How many distinct peaks would appear in the PES spectrum of a magnesium atom?",
       "explanation": "Each distinct subshell in the electron configuration produces one PES peak. Magnesium (1s²2s²2p⁶3s²) has four occupied subshells: 1s, 2s, 2p, and 3s. Each subshell appears as a separate peak at its characteristic binding energy. The resulting spectrum has 4 peaks: the 2p peak is tallest (6 electrons), the 3s peak is shortest (2 electrons), and the 1s and 2s peaks are both height 2 but at higher binding energies.",
       "distractors": [],
       "sourceName": "College Board AP Chemistry CED, Unit 1 Topic 1.6",
@@ -1755,7 +1755,7 @@
       "answerTypePoolId": "periodic_trend_terms",
       "difficulty": 3,
       "funScore": 8,
-      "quizQuestion": "The net positive this value experienced by an electron after accounting for the shielding effect of inner electrons is called what?",
+      "quizQuestion": "The net positive nuclear charge experienced by an electron after accounting for the shielding effect of inner electrons is called what?",
       "explanation": "Effective nuclear charge (Zeff) = Z − shielding constant (S). Core electrons between a valence electron and the nucleus reduce the full nuclear charge felt by the valence electron. For sodium (Z = 11, [Ne]3s¹): the 10 core electrons roughly shield the 3s electron from 10 protons, so Zeff ≈ +1. Higher Zeff means stronger pull on valence electrons — this drives ionization energy, electronegativity, and atomic radius trends.",
       "distractors": [
         "Shielding constant",
@@ -1825,7 +1825,7 @@
       "answerTypePoolId": "periodic_trend_terms",
       "difficulty": 2,
       "funScore": 6,
-      "quizQuestion": "Moving down a group on the periodic table, what happens to this value character?",
+      "quizQuestion": "Moving down a group on the periodic table, what happens to metallic character?",
       "explanation": "Metallic character measures how readily an atom loses electrons. Going down a group, increasing atomic radius and greater electron shielding lower Zeff on valence electrons, making them easier to remove. For example, in Group 14: carbon is a nonmetal, silicon and germanium are metalloids, and tin and lead are metals. The lowest ionization energies are in the lower-left of the periodic table (cesium, francium).",
       "distractors": [
         "Decreases",
@@ -2408,7 +2408,7 @@
         "Formal charge increases",
         "Lone pairs increase"
       ],
-      "quizQuestion": "As the bond order between two atoms increases from single to double to triple, what happens to the bond this value?",
+      "quizQuestion": "As the bond order between two atoms increases from single to double to triple, what happens to the bond length?",
       "explanation": "Greater bond order means more shared electron pairs pulling the nuclei closer together, reducing internuclear distance. For carbon-carbon bonds: C–C ≈ 154 pm, C=C ≈ 134 pm, C≡C ≈ 120 pm. This inverse relationship between bond order and bond length is a core concept in AP Chemistry Unit 2.",
       "statement": "",
       "wowFactor": "",
@@ -2531,7 +2531,7 @@
         "Viscous",
         "Thermoplastic"
       ],
-      "quizQuestion": "Ionic solids like NaCl shatter when struck because shifting layers brings like charges into alignment, causing repulsion. This makes them what?",
+      "quizQuestion": "Ionic solids like NaCl shatter when struck because shifting layers brings like charges into alignment, causing repulsion. this makes them what?",
       "explanation": "When a mechanical force shifts one layer of an ionic crystal relative to an adjacent layer, ions of the same charge line up and strongly repel each other, causing the crystal to cleave or shatter. This is in stark contrast to metals, where layers of atoms can slide past each other without disrupting the electron sea.",
       "statement": "",
       "wowFactor": "",
@@ -2613,7 +2613,7 @@
         "Ceramic composite",
         "Amalgam"
       ],
-      "quizQuestion": "In brass, zinc atoms replace some copper atoms in the crystal lattice because the atoms are similar in size. What type of this value is brass?",
+      "quizQuestion": "In brass, zinc atoms replace some copper atoms in the crystal lattice because the atoms are similar in size. What type of alloy is brass?",
       "explanation": "In a substitutional alloy, atoms of the added element are close in size to the host metal atoms (within ~15%) and replace them at lattice sites. Brass (copper-zinc) and bronze (copper-tin) are classic examples. The substituted atoms disrupt the regularity of the lattice, often increasing hardness compared to the pure metal.",
       "statement": "",
       "wowFactor": "",
@@ -2653,7 +2653,7 @@
         "Amalgam",
         "Network solid"
       ],
-      "quizQuestion": "Steel is formed when small carbon atoms occupy the gaps between iron atoms in the metal lattice. What type of this value is steel?",
+      "quizQuestion": "Steel is formed when small carbon atoms occupy the gaps between iron atoms in the metal lattice. What type of alloy is steel?",
       "explanation": "In an interstitial alloy, small atoms (like carbon, nitrogen, or hydrogen) fit into the spaces between the larger host metal atoms rather than replacing them. Steel is the most important example: carbon atoms in the iron lattice impede dislocation movement, dramatically increasing hardness and tensile strength compared to pure iron.",
       "statement": "",
       "wowFactor": "",
@@ -2849,7 +2849,7 @@
         "Distribute charge equally across all atoms",
         "Subtract one electron for each bond formed"
       ],
-      "quizQuestion": "When drawing the Lewis structure of a negatively charged polyatomic ion like NO3–, how do you account for the negative this value in the total electron count?",
+      "quizQuestion": "When drawing the Lewis structure of a negatively charged polyatomic ion like NO3–, how do you account for the negative charge in the total electron count?",
       "explanation": "Each unit of negative charge on a polyatomic ion represents one extra electron beyond what the neutral atoms contribute. For NO3– (charge = –1), you add 1 electron to the sum of valence electrons from N (5) and the three O atoms (3 × 6 = 18), giving 5 + 18 + 1 = 24 total electrons to distribute in the Lewis structure.",
       "statement": "",
       "wowFactor": "",
@@ -3058,7 +3058,7 @@
         "Minimizes the number of bonds",
         "Maximizes bond order on terminal atoms"
       ],
-      "quizQuestion": "When choosing among multiple valid Lewis structures for the same molecule, the preferred (most accurate) structure is the one that does what with this value charges?",
+      "quizQuestion": "When choosing among multiple valid Lewis structures for the same molecule, the preferred (most accurate) structure is the one that does what with formal charges?",
       "explanation": "The preferred Lewis structure minimizes formal charges, ideally giving every atom a formal charge of zero. When nonzero formal charges are unavoidable, negative formal charges should reside on more electronegative atoms. For CO2, the structure with C=O double bonds (all atoms at formal charge 0) is preferred over the structure with a C–O single bond and C≡O triple bond (which creates nonzero formal charges).",
       "statement": "",
       "wowFactor": "",
@@ -3180,7 +3180,7 @@
         "dsp2",
         "p3"
       ],
-      "quizQuestion": "A carbon atom in ethylene (C2H4) has three electron domains — two C–H bonds and one C=C bond. What this biological process does this carbon adopt?",
+      "quizQuestion": "A carbon atom in ethylene (C2H4) has three electron domains — two C–H bonds and one C=C bond. What hybridization does this carbon adopt?",
       "explanation": "Three electron domains require three hybrid orbitals, formed by mixing one s and two p orbitals — called sp2 hybridization. The three sp2 orbitals point toward the corners of a triangle at 120° (trigonal planar geometry). The unhybridized p orbital perpendicular to this plane overlaps with the adjacent carbon's p orbital to form the pi bond of the double bond.",
       "statement": "",
       "wowFactor": "",
@@ -3221,7 +3221,7 @@
         "Two sigma bonds and one pi bond",
         "Three pi bonds"
       ],
-      "quizQuestion": "A double bond between two atoms consists of how many this value bonds and how many pi bonds?",
+      "quizQuestion": "A double bond between two atoms consists of how many sigma bonds and how many pi bonds?",
       "explanation": "Every covalent bond, regardless of order, contains exactly one sigma (σ) bond formed by direct, end-on orbital overlap along the bond axis. Double bonds add one pi (π) bond formed by side-on (lateral) overlap of parallel p orbitals. Triple bonds consist of one σ and two π bonds. Pi bonds are weaker than sigma bonds because lateral overlap is less effective than axial overlap.",
       "statement": "",
       "wowFactor": "",
@@ -3430,7 +3430,7 @@
         "hydrogen bonded to transition metals",
         "molecules with O-H and C=O groups"
       ],
-      "quizQuestion": "What structural requirement must a molecule meet to participate in this value bonding as the donor?",
+      "quizQuestion": "What structural requirement must a molecule meet to participate in hydrogen bonding as the donor?",
       "explanation": "Hydrogen bonding requires a hydrogen atom covalently bonded directly to fluorine (F), oxygen (O), or nitrogen (N). These three elements are so electronegative that the H becomes very electron-poor (δ+), allowing it to interact strongly with lone pairs on adjacent F, O, or N atoms. H bonded to Cl or S does NOT qualify — they are not electronegative enough.",
       "statement": "Hydrogen bonding requires a hydrogen atom covalently bonded directly to F, O, or N — the three most electronegative elements that create a sufficiently electron-poor H for strong dipole interactions.",
       "wowFactor": "Water's anomalously high boiling point (100°C vs. the expected ~−80°C for a molecule its size) is almost entirely explained by hydrogen bonding between H and O.",
@@ -3716,7 +3716,7 @@
         "coordination solid",
         "ceramic solid"
       ],
-      "quizQuestion": "Diamond, quartz (SiO2), and silicon carbide (SiC) are examples of what type of solid, characterized by extremely high melting points and a continuous lattice of this value bonds?",
+      "quizQuestion": "Diamond, quartz (SiO2), and silicon carbide (SiC) are examples of what type of solid, characterized by extremely high melting points and a continuous lattice of covalent bonds?",
       "explanation": "Covalent network solids consist of atoms connected throughout the entire material by covalent bonds — there are no discrete molecules. To melt these solids, you must break covalent bonds, requiring enormous amounts of energy. Diamond has a melting point around 3550°C. SiO2 (quartz) melts at ~1650°C. SiC is used industrially as an abrasive.",
       "statement": "Covalent network solids (diamond, SiO2, SiC) consist of atoms connected by covalent bonds throughout the entire lattice, giving them extremely high melting points and hardness.",
       "wowFactor": "Diamond is the hardest naturally occurring material because every carbon atom is covalently bonded to four others in a rigid 3D network — there's no weak point anywhere in the structure.",
@@ -4580,7 +4580,7 @@
         "molecules per milliliter",
         "milligrams per deciliter"
       ],
-      "quizQuestion": "Molarity (M) is defined as the number of moles of this value divided by what quantity?",
+      "quizQuestion": "Molarity (M) is defined as the number of moles of solute divided by what quantity?",
       "explanation": "Molarity M = n (mol) / V (L of solution). It is the most common concentration unit in chemistry. Note that the denominator is the total volume of solution — not the volume of solvent. A 1 M NaCl solution means 1 mol NaCl was dissolved and then solution was diluted to exactly 1 L total.",
       "statement": "Molarity (M) = moles of solute ÷ liters of solution.",
       "wowFactor": "Molarity depends on temperature because solutions expand when heated — a 1.00 M solution at 25 °C is slightly more dilute at 100 °C, even though you added nothing.",
@@ -4621,7 +4621,7 @@
         "volume of solute per mass of solvent",
         "moles of solution per kilogram of solvent"
       ],
-      "quizQuestion": "Molality (m) is a concentration unit defined as moles of this value per what?",
+      "quizQuestion": "Molality (m) is a concentration unit defined as moles of solute per what?",
       "explanation": "Molality m = moles of solute / kilograms of solvent (not solution). Unlike molarity, molality does not change with temperature because it is based on mass. This makes it the preferred concentration unit for colligative property calculations involving boiling point elevation and freezing point depression.",
       "statement": "Molality (m) = moles of solute ÷ kilograms of solvent.",
       "wowFactor": "Molality is temperature-independent because masses don't change when heated — which is exactly what you need for colligative property calculations.",
@@ -6120,7 +6120,7 @@
         "Gay-Lussac's law",
         "Dalton's law of partial pressures"
       ],
-      "quizQuestion": "Balancing a chemical equation ensures that the number of each type of atom is the same on both sides. This requirement reflects which fundamental law of chemistry?",
+      "quizQuestion": "Balancing a chemical equation ensures that the number of each type of atom is the same on both sides. this requirement reflects which fundamental law of chemistry?",
       "explanation": "Lavoisier's law of conservation of mass states that matter is neither created nor destroyed in a chemical reaction. Balancing an equation — adjusting coefficients so atom counts match on both sides — is how we apply this law. You may only change COEFFICIENTS, never subscripts, because subscripts define the molecular formula of each substance.",
       "statement": "Balanced chemical equations enforce the law of conservation of mass: atoms are neither created nor destroyed, only rearranged.",
       "wowFactor": "Antoine Lavoisier proved conservation of mass using sealed flasks in the 1780s — and was guillotined during the French Revolution just a decade later. His judge reportedly said 'The Republic needs neither scientists nor chemists.'",
@@ -6269,7 +6269,7 @@
         "acid-base reaction",
         "combustion reaction"
       ],
-      "quizQuestion": "Ice melting into liquid water involves no change in molecular formula — both are H2O. This is classified as what type of change?",
+      "quizQuestion": "Ice melting into liquid water involves no change in molecular formula — both are H2O. this is classified as what type of change?",
       "explanation": "Melting is a physical change because the substance (H2O) retains its molecular identity throughout the process. Only intermolecular hydrogen bonds are disrupted — no covalent O–H bonds are broken or formed. The water molecules rearrange from the rigid lattice of ice into the mobile arrangement of liquid water, but no new substance is created. Physical changes are generally reversible (liquid water can refreeze).",
       "statement": "Melting is a physical change: the substance retains its molecular formula (H2O) and no new substances form — only intermolecular forces are disrupted.",
       "wowFactor": "Even though melting requires energy input (breaking hydrogen bonds), it is NOT a chemical change — the same molecules exist before and after. Energy changes alone cannot classify a change as chemical.",
@@ -6306,7 +6306,7 @@
         "allotropic change",
         "conformational change"
       ],
-      "quizQuestion": "When a candle burns, wax (C25H52) reacts with oxygen to produce carbon dioxide and water. This is classified as what type of change?",
+      "quizQuestion": "When a candle burns, wax (C25H52) reacts with oxygen to produce carbon dioxide and water. this is classified as what type of change?",
       "explanation": "Combustion is a chemical change because new substances with different molecular formulas (CO2 and H2O) are formed from C25H52 and O2. Covalent bonds in the wax molecules and the O=O double bonds are broken; new C=O and O–H bonds are formed. The original wax cannot be recovered from the CO2 and H2O products without additional reactions. New substance formation + irreversibility are hallmarks of chemical change.",
       "statement": "Combustion is a chemical change: covalent bonds break and new ones form, producing entirely new substances (CO2, H2O) that differ from the reactants.",
       "wowFactor": "A candle flame operates at about 1400°C at the tip — hot enough to emit visible light from thermally excited molecules. That glow is literally photons from newly formed, vibrationally excited CO2 molecules.",
@@ -6455,7 +6455,7 @@
         "solvent",
         "equilibrium reactant"
       ],
-      "quizQuestion": "After a reaction reaches completion, some of a reactant remains unconsumed. This leftover reactant is referred to as what?",
+      "quizQuestion": "After a reaction reaches completion, some of a reactant remains unconsumed. this leftover reactant is referred to as what?",
       "explanation": "The excess reagent is the reactant that is NOT completely consumed — it remains after the limiting reagent is exhausted and the reaction stops. The amount of excess reagent left over can be calculated by subtracting the amount consumed (determined from the limiting reagent via mole ratios) from the initial amount present. Identifying excess reagent is important for calculating leftover materials and for green chemistry waste minimization.",
       "statement": "The excess reagent is the reactant that remains after the limiting reagent is fully consumed and the reaction stops.",
       "wowFactor": "In biological systems, enzyme substrates are often supplied in excess — cells maintain excess glucose relative to available enzymes so that the reaction rate is controlled by enzyme concentration (the limiting 'reagent'), not substrate availability.",
@@ -6492,7 +6492,7 @@
         "theoretical yield / (actual yield × molar mass)",
         "(excess reagent / limiting reagent) × 100%"
       ],
-      "quizQuestion": "What is the formula for percent this value in a chemical reaction?",
+      "quizQuestion": "What is the formula for percent yield in a chemical reaction?",
       "explanation": "Percent yield = (actual yield / theoretical yield) × 100%. The theoretical yield is the maximum amount of product predicted from the limiting reagent using stoichiometry (assuming perfect reaction conditions). The actual yield is what is experimentally collected. Percent yield is always ≤ 100% because side reactions, product losses during collection, and incomplete reactions reduce the actual amount obtained.",
       "statement": "Percent yield = (actual yield / theoretical yield) × 100%.",
       "wowFactor": "In pharmaceutical synthesis, even a 70% yield per step is considered excellent — but a 10-step drug synthesis at 70% per step gives only 0.7^10 ≈ 2.8% overall yield! This is why chemists obsess over improving each step.",
@@ -7254,7 +7254,7 @@
         "monoprotic",
         "diprotic"
       ],
-      "quizQuestion": "Water can act as either an acid (donating H+) or a base (accepting H+). this characteristic makes water ___.",
+      "quizQuestion": "Water can act as either an acid (donating H+) or a base (accepting H+). What property does this give water?",
       "explanation": "An amphoteric (or amphiprotic) substance can act as either an acid or a base depending on what it reacts with. Water: acts as acid with NH3 (donates H+ → NH4+ + OH-), acts as base with HCl (accepts H+ → H3O+ + Cl-). The autoionization of water (H2O + H2O ⇌ H3O+ + OH-) demonstrates both roles simultaneously.",
       "statement": "Water is amphoteric — it can donate a proton (acting as an acid) or accept a proton (acting as a base) depending on its reaction partner.",
       "wowFactor": "Water's amphoteric nature is why the pH scale exists: the Kw = [H3O+][OH-] = 1.0 × 10-14 at 25°C arises from water's self-ionization, setting neutral pH at exactly 7.",
@@ -7712,7 +7712,7 @@
         "sign depends on activation energy",
         "sign is always zero at equilibrium"
       ],
-      "quizQuestion": "When writing rate expressions using Δ[concentration]/Δt, what sign convention applies to reactants versus this value?",
+      "quizQuestion": "When writing rate expressions using Δ[concentration]/Δt, what sign convention applies to reactants versus products?",
       "explanation": "Reactant concentrations decrease over time (Δ[A] is negative), so the rate of disappearance must carry a negative sign: rate = −Δ[A]/Δt to give a positive rate value. Product concentrations increase (Δ[P] is positive), so rate = +Δ[P]/Δt. This sign convention ensures rate is always reported as a positive quantity.",
       "statement": "Rate expressions carry a negative sign for reactants (their concentration decreases) and a positive sign for products (their concentration increases).",
       "wowFactor": "For aA → bB, the rates are related: (1/a)(−Δ[A]/Δt) = (1/b)(Δ[B]/Δt). The stoichiometric coefficients are required to express a single unified reaction rate.",
@@ -8169,7 +8169,7 @@
         "both equal 0.693/k",
         "zero order: t½ = k[A]₀; second order: t½ = k/[A]₀"
       ],
-      "quizQuestion": "How do the half-life formulas differ between this value-order and second-order reactions?",
+      "quizQuestion": "How do the half-life formulas differ between zero-order and second-order reactions?",
       "explanation": "Zero-order: t½ = [A]₀/2k — directly proportional to initial concentration, so half-life gets shorter as the reaction proceeds (less reactant remains). Second-order: t½ = 1/k[A]₀ — inversely proportional to initial concentration, so half-life gets longer as the reaction proceeds. This is the opposite trend. First-order is the unique case where t½ remains constant throughout. These trends appear on AP free-response analysis questions.",
       "statement": "Zero-order half-life (t½ = [A]₀/2k) decreases as the reaction proceeds; second-order half-life (t½ = 1/k[A]₀) increases — opposite trends from each other.",
       "wowFactor": "For a second-order reaction, each successive half-life is twice as long as the previous one — making the second half of the reaction take three times longer than the first half.",
@@ -10172,7 +10172,7 @@
         "high pressure",
         "condensed phase"
       ],
-      "quizQuestion": "Bond enthalpy calculations for ΔHrxn are estimates that are strictly valid this value for reactions in the ___.",
+      "quizQuestion": "Bond enthalpy calculations for ΔHrxn are estimates that are strictly valid only for reactions in which physical state?",
       "explanation": "Bond enthalpies assume all species are in the gas phase because bond enthalpy values are measured for isolated gaseous molecules. In liquids or solids, intermolecular forces between molecules also contribute to enthalpy changes, which bond enthalpies do not account for. Using bond enthalpies for reactions involving liquids or solids introduces additional error.",
       "statement": "Bond enthalpy estimates for ΔHrxn are only strictly valid when all reactants and products are gases.",
       "wowFactor": "This is why bond enthalpy gives a notably poor estimate for the combustion of liquid ethanol vs. gaseous ethanol — the ~43 kJ/mol enthalpy of vaporization of ethanol is completely ignored in the bond-enthalpy approach.",
@@ -11086,7 +11086,7 @@
         "Apply Hess's law to the standard enthalpies",
         "Use Arrhenius equation to find the rate ratio"
       ],
-      "quizQuestion": "Given experimentally measured equilibrium this value of all species, what is the procedure for calculating the equilibrium constant Kc?",
+      "quizQuestion": "Given experimentally measured equilibrium concentrations of all species, what is the procedure for calculating the equilibrium constant Kc?",
       "explanation": "Once you know the equilibrium concentrations of all species from experimental data, you directly plug those values into the mass action expression (products over reactants, each raised to stoichiometric powers) to compute Kc. No ICE table is needed when equilibrium concentrations are already given — ICE is only needed when you start from initial conditions.",
       "wowFactor": "The fact that K comes out the same no matter what initial concentrations you use was one of the original experimental verifications of the Law of Mass Action.",
       "statement": "Kc is calculated by substituting the equilibrium concentrations of all gases and dissolved species (not solids or pure liquids) into the mass action expression.",
@@ -11125,7 +11125,7 @@
         "Ideal gas simplification",
         "Buffer capacity approximation"
       ],
-      "quizQuestion": "In ICE table problems where K is very small, what this biological process allows students to avoid solving a quadratic equation, and what percentage threshold is used to check its validity?",
+      "quizQuestion": "In ICE table problems where K is very small, what mathematical shortcut allows students to avoid solving a quadratic equation, and what percentage threshold is used to check its validity?",
       "explanation": "When K << 1, the change x (shift toward equilibrium) is very small relative to initial concentrations. You can approximate (initial − x) ≈ initial, simplifying the algebra to avoid a quadratic. After solving, you check validity: if x / initial × 100% < 5%, the approximation is valid. If ≥ 5%, you must use the quadratic formula.",
       "wowFactor": "The 5% rule lets AP students solve problems in 30 seconds that would otherwise require a graphing calculator — and it's built right into the AP exam scoring.",
       "statement": "When K is small, the 5% approximation (x << initial concentration) avoids the quadratic formula; the approximation is valid if x / [initial] × 100% < 5%.",
@@ -11163,7 +11163,7 @@
         "The system is metastable",
         "ΔG is positive"
       ],
-      "quizQuestion": "When the equilibrium constant K is much greater than 1 (K >> 1), what does this indicate about the relative amounts of this value and reactants at equilibrium?",
+      "quizQuestion": "When the equilibrium constant K is much greater than 1 (K >> 1), what does this indicate about the relative amounts of products and reactants at equilibrium?",
       "explanation": "K >> 1 means the numerator of the mass action expression (products) is much larger than the denominator (reactants) at equilibrium. The reaction strongly favors the product side — essentially 'goes to completion' if K is extremely large (e.g., K > 10^3). Conversely, K << 1 means reactants dominate.",
       "wowFactor": "The complete neutralization of a strong acid by a strong base has K ≈ 10^14 — overwhelmingly product-favored, which is why we say the reaction 'goes to completion.'",
       "statement": "K >> 1 indicates product-favored equilibrium; K << 1 indicates reactant-favored; K ≈ 1 means significant amounts of both are present.",
@@ -11394,7 +11394,7 @@
         "Input, conversion, excess amounts",
         "Internal energy, change in enthalpy, entropy"
       ],
-      "quizQuestion": "In an ICE table, what information is entered in each of the three rows — I, C, and E — when solving an equilibrium problem from this value conditions?",
+      "quizQuestion": "In an ICE table, what information is entered in each of the three rows — I, C, and E — when solving an equilibrium problem from initial conditions?",
       "explanation": "I (Initial): the starting concentrations (or 0 if a species is absent). C (Change): the change in concentration toward equilibrium, expressed as +x or −x scaled by stoichiometric coefficients. E (Equilibrium): the sum of I + C for each species. The E row expressions are substituted into the K expression to solve for x.",
       "wowFactor": "The elegant 'x' variable in ICE tables elegantly captures conservation of mass — every x lost from one species shows up proportionally in another.",
       "statement": "ICE rows: I = known starting concentrations, C = ±stoichiometric·x (change toward equilibrium), E = I + C (used to write the K expression).",
@@ -11471,7 +11471,7 @@
         "Apply conservation of mass without an ICE table",
         "Estimate concentrations by assuming 100% conversion to products"
       ],
-      "quizQuestion": "Given K and initial concentrations, describe the complete procedure for calculating the equilibrium this value of each species.",
+      "quizQuestion": "Given K and initial concentrations, describe the complete procedure for calculating the equilibrium concentrations of each species.",
       "explanation": "Step 1: Set up an ICE table with initial concentrations in row I. Step 2: In row C, write the change for each species as ±stoichiometric coefficient × x. Step 3: Row E = I + C for each species. Step 4: Substitute E-row expressions into the K expression. Step 5: Solve for x (using approximation or quadratic if needed). Step 6: Substitute x back into each E expression to get the numerical equilibrium concentrations. Step 7: Verify by plugging into K.",
       "wowFactor": "This seven-step procedure is used to design industrial chemical reactors, pharmaceutical synthesis, and environmental remediation systems worldwide.",
       "statement": "To find equilibrium concentrations: build ICE table → write K expression using E row → solve for x → substitute x back into E expressions → verify against K.",
@@ -11853,7 +11853,7 @@
         "saturation constant",
         "equilibrium quotient"
       ],
-      "quizQuestion": "The equilibrium this value for the dissolution of a slightly soluble ionic compound in water is called the ___.",
+      "quizQuestion": "The equilibrium constant for the dissolution of a slightly soluble ionic compound in water is called the ___.",
       "explanation": "Ksp (solubility product constant) is the equilibrium constant for the dissolution reaction of a slightly soluble salt. It equals the product of the ion concentrations, each raised to the power of its stoichiometric coefficient. Pure solids are excluded from the expression because their activity is defined as 1.",
       "statement": "Ksp is the equilibrium constant for dissolving a slightly soluble salt, equal to the product of ion concentrations raised to their stoichiometric powers.",
       "wowFactor": "Ksp values span an enormous range: AgCl has Ksp = 1.8×10⁻¹⁰ while BaSO₄ has Ksp = 1.1×10⁻¹⁰ — almost identical Ksp values, but they dissolve very differently in acid because of their anion chemistry.",
@@ -12164,7 +12164,7 @@
         "oxalate salts",
         "bicarbonate salts"
       ],
-      "quizQuestion": "Unlike this value with basic anions, the solubility of which type of slightly soluble salt is NOT affected by changes in pH?",
+      "quizQuestion": "Unlike salts with basic anions, the solubility of which type of slightly soluble salt is NOT affected by changes in pH?",
       "explanation": "Salts whose anions are conjugate bases of strong acids (Cl⁻, NO₃⁻, Br⁻, I⁻) are not basic — they do not react with H⁺. Since H⁺ cannot remove these anions from solution, decreasing pH does not increase solubility. For example, AgCl solubility is unaffected by pH because Cl⁻ does not react with H⁺.",
       "statement": "Salts with non-basic anions (conjugate bases of strong acids, like Cl⁻) have solubility unaffected by pH because their anions do not react with H⁺.",
       "wowFactor": "This distinction is critical for understanding selective precipitation in qualitative analysis: adding HCl precipitates Ag⁺, Pb²⁺, and Hg₂²⁺ as chlorides — but their solubilities won't change with further pH adjustments once precipitated.",
@@ -12615,7 +12615,7 @@
         "pH = Kw / [OH-]",
         "use ICE table with Kw"
       ],
-      "quizQuestion": "To this value the pH of a strong base solution, the correct two-step method is to ___.",
+      "quizQuestion": "To calculate the pH of a strong base solution, what is the correct two-step method?",
       "explanation": "Strong bases fully dissociate, so [OH-] equals the base concentration (times the number of OH- per formula unit). Then pOH = -log[OH-], and finally pH = 14 - pOH. For example, 0.020 M NaOH → [OH-] = 0.020 M → pOH = 1.70 → pH = 12.30.",
       "statement": "For a strong base, calculate pOH = -log[OH-] first, then use pH = 14 - pOH to find the pH.",
       "wowFactor": "Ba(OH)2 releases two OH- per formula unit — a student trap. A 0.010 M Ba(OH)2 solution gives [OH-] = 0.020 M, not 0.010 M, so the pH is 12.30, not 12.00.",
@@ -13218,7 +13218,7 @@
         "electron affinity",
         "resonance"
       ],
-      "quizQuestion": "Going down the halogen group (HF → HCl → HBr → HI), binary acid this value increases because ___ decreases.",
+      "quizQuestion": "Going down the halogen group (HF → HCl → HBr → HI), binary acid strength increases because what bond property decreases?",
       "explanation": "As you move down a group, the halogen atom gets larger, making the H–X bond longer and weaker. A weaker bond means H+ is released more easily, so acid strength increases: HF << HCl < HBr < HI. Note that across a period, electronegativity dominates instead.",
       "statement": "Binary acid strength increases down a group (HF < HCl < HBr < HI) because H–X bond strength decreases with increasing atomic size.",
       "wowFactor": "HF is actually one of the weakest hydrohalic acids despite fluorine being the most electronegative element — the F–H bond is so strong it barely ionizes at all.",
@@ -13329,7 +13329,7 @@
         "HClO4",
         "H3PO4"
       ],
-      "quizQuestion": "Which hydrogen halide is classified as a weak acid this value fluorine being the most electronegative halogen?",
+      "quizQuestion": "Which hydrogen halide is classified as a weak acid despite fluorine being the most electronegative halogen?",
       "explanation": "Fluorine's extreme electronegativity makes the H–F bond very short and very strong (bond energy ~569 kJ/mol vs. ~431 kJ/mol for H–Cl). This strong bond is so hard to break that HF is only partially ionized in water, making it a weak acid with Ka ≈ 6.8 × 10⁻⁴.",
       "statement": "HF is a weak acid (Ka ≈ 6.8 × 10⁻⁴) because the very strong H–F bond resists ionization, despite fluorine being the most electronegative element.",
       "wowFactor": "HF is so unusual that it forms bifluoride ions (HF2⁻) in solution — a hydrogen bond so strong it's almost a real chemical bond.",
@@ -13517,7 +13517,7 @@
         "pH 4–10",
         "pKa ± 1.5"
       ],
-      "quizQuestion": "The effective buffering this value of a weak acid/conjugate base buffer system is ___.",
+      "quizQuestion": "The effective buffering range of a weak acid/conjugate base buffer system spans what interval?",
       "explanation": "From Henderson-Hasselbalch: pH = pKa + log([A⁻]/[HA]). The buffer is effective when [A⁻]/[HA] is between 0.1 and 10, which corresponds to log values of -1 and +1, giving a pH range of pKa ± 1. Outside this range, the buffer is overwhelmed.",
       "statement": "A buffer is effective in the pH range of pKa ± 1, where the [A⁻]/[HA] ratio stays between 0.1 and 10.",
       "wowFactor": "Human blood uses a carbonic acid/bicarbonate buffer with pKa = 6.1, yet blood pH must stay between 7.35–7.45 — this is outside the 'optimal' range, relying on the lungs and kidneys for additional regulation.",
