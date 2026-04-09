@@ -40,7 +40,6 @@ export const DOMAIN_METADATA: Record<CanonicalFactDomain, DomainMetadata> = {
     icon: '🌌',
     description: 'Planets, stars, missions, and cosmic discoveries.',
     ageDefault: 'kid',
-    comingSoon: true,
   },
   geography: {
     id: 'geography',
@@ -77,7 +76,6 @@ export const DOMAIN_METADATA: Record<CanonicalFactDomain, DomainMetadata> = {
     icon: '🐉',
     description: 'Myths, deities, creatures, and cultural storytelling traditions.',
     ageDefault: 'teen',
-    comingSoon: true,
   },
   animals_wildlife: {
     id: 'animals_wildlife',
@@ -87,7 +85,6 @@ export const DOMAIN_METADATA: Record<CanonicalFactDomain, DomainMetadata> = {
     icon: '🦉',
     description: 'Species, habitats, behavior, and conservation.',
     ageDefault: 'kid',
-    comingSoon: true,
   },
   human_body_health: {
     id: 'human_body_health',
@@ -97,7 +94,6 @@ export const DOMAIN_METADATA: Record<CanonicalFactDomain, DomainMetadata> = {
     icon: '🫀',
     description: 'Anatomy, physiology, medicine, and health literacy.',
     ageDefault: 'teen',
-    comingSoon: true,
   },
   food_cuisine: {
     id: 'food_cuisine',
@@ -107,7 +103,6 @@ export const DOMAIN_METADATA: Record<CanonicalFactDomain, DomainMetadata> = {
     icon: '🍜',
     description: 'Dishes, ingredients, food culture, and culinary science.',
     ageDefault: 'kid',
-    comingSoon: true,
   },
   art_architecture: {
     id: 'art_architecture',
@@ -117,7 +112,6 @@ export const DOMAIN_METADATA: Record<CanonicalFactDomain, DomainMetadata> = {
     icon: '🎨',
     description: 'Art movements, famous works, styles, and structures.',
     ageDefault: 'kid',
-    comingSoon: true,
   },
   social_sciences: {
     id: 'social_sciences',
