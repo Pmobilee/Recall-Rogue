@@ -50,6 +50,9 @@ npm run registry:sync    # Rebuild inspection registry from source
 npm run registry:stale   # Show stale/never-inspected elements
 npm run build:curated    # Rebuild public/curated.db from data/decks/ JSON files
 npm run build:obfuscate  # XOR-obfuscate public/facts.db and public/curated.db for production
+npm run deck:quality      # Full deck quality gate (structural + quiz audit)
+npm run deck:fix-pools    # Auto-split heterogeneous answer pools
+npm run deck:fix-synthetics # Pad pools to 15+ with synthetic distractors
 ```
 
 ## Directory Structure

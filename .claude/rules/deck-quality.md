@@ -98,3 +98,64 @@ npm run audit:quiz-engine -- --render --deck <id>   # Render for LLM review
 Generate rendered samples, then have LLM evaluate: question clarity, answer correctness, distractor plausibility, eliminatability, length tells, domain coherence, ambiguity.
 
 Required: after initial assembly, after bulk modifications (10+ facts), after pool redesign, before production-ready status.
+
+## Post-Assembly Quality Gate — MANDATORY (added 2026-04-08)
+
+**After assembling ANY new deck, run this COMPLETE quality pipeline before committing:**
+
+```bash
+# Step 1: Structural validation (22 checks, 0 failures required)
+node scripts/verify-all-decks.mjs
+
+# Step 2: Quiz engine audit (simulates actual quiz play, 0 failures required)
+node scripts/quiz-audit.mjs --full --deck <id>
+
+# Step 3: Pool heterogeneity check (auto-fix length mismatches)
+node scripts/fix-pool-heterogeneity.mjs --dry-run
+
+# Step 4: Synthetic distractor padding (pad pools to 15+)
+node scripts/add-synthetic-distractors.mjs --dry-run
+
+# Step 5: Self-answering detection
+node scripts/fix-self-answering.mjs --dry-run
+
+# Step 6: Sub-deck population (verify all sub-decks have factIds)
+node scripts/fix-empty-subdecks.mjs --dry-run
+
+# Step 7: Rebuild curated DB
+npm run build:curated
+```
+
+**If ANY step finds issues, fix them BEFORE committing. Never ship a deck with known quality issues.**
+
+## 4 Deck Quality Anti-Patterns — Lessons from 2026-04-08 Audit
+
+### Anti-Pattern 1: Empty Sub-Deck factIds
+**What:** Sub-decks defined in deck JSON with `factIds: []` even though facts have valid `chainThemeId` values.
+**Why it happens:** Sub-deck arrays are hand-crafted instead of programmatically populated from facts.
+**Impact:** Chain/themed grouping system doesn't work — facts aren't associated with their sub-deck.
+**Prevention:** ALWAYS populate factIds by scanning facts: `subDeck.factIds = facts.filter(f => f.chainThemeId === subDeck.chainThemeId).map(f => f.id)`. Run `node scripts/fix-empty-subdecks.mjs --dry-run` to catch any misses.
+**Fix script:** `node scripts/fix-empty-subdecks.mjs`
+
+### Anti-Pattern 2: Pool Length Heterogeneity (Length Tells)
+**What:** Answer pools mix short answers (e.g., "ATP" 3ch) with long answers (e.g., "Aminoacyl-tRNA synthetase" 25ch). Quiz shows 1 short + 3 long options = correct answer is obvious from length alone.
+**Why it happens:** Pools are designed by semantic category ("molecule_names") without considering answer length distribution.
+**Impact:** 354 quiz audit failures. Players can guess correctly without reading the question.
+**Prevention:** After defining pools, check answer length distribution. If max/min ratio > 3x, split into `{pool}_short` and `{pool}_long`. Common splits:
+  - `molecule_names` → `molecule_abbreviations` (≤5ch: ATP, CDK, p53) + `molecule_full_names` (>5ch)
+  - `term_definitions` → `term_short` (single words) + `term_descriptions` (phrases/sentences)
+**Fix script:** `node scripts/fix-pool-heterogeneity.mjs`
+
+### Anti-Pattern 3: Pools Without Synthetic Distractors
+**What:** Pools with 5-14 real facts and no syntheticDistractors. Players see the same 4-5 wrong answers every time.
+**Why it happens:** syntheticDistractors forgotten during assembly or considered optional.
+**Impact:** Repetitive quiz experience, easy to memorize distractors instead of learning.
+**Prevention:** EVERY pool must have `factIds.length + syntheticDistractors.length >= 15`. After assembly, run `node scripts/add-synthetic-distractors.mjs --dry-run` to find gaps.
+**Fix script:** `node scripts/add-synthetic-distractors.mjs`
+
+### Anti-Pattern 4: Self-Answering Questions
+**What:** The correctAnswer appears verbatim in the quizQuestion stem (>5 chars). Example: "What is the **deltoid** muscle that..." with answer "deltoid".
+**Why it happens:** Questions are written in a form that names the answer. Common in anatomy and terminology decks.
+**Impact:** Questions are trivially easy — no knowledge required, just match the bolded/obvious term.
+**Prevention:** After writing questions, check: `quizQuestion.toLowerCase().includes(correctAnswer.toLowerCase())`. If true, rewrite using generic placeholders ("this muscle", "this term", "which structure").
+**Fix script:** `node scripts/fix-self-answering.mjs`

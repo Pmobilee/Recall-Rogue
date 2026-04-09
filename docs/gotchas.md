@@ -825,3 +825,21 @@ Compare against the current `data/decks/manifest.json` deck list. Any mismatch =
 **Fix:** Exported `CARD_ART_MECHANIC_IDS: readonly string[]` from `cardArtManifest.ts` (derived from `Object.keys(CARD_ART_MAP)`) and replaced the hardcoded list in `RewardRoomScene.ts` with `for (const id of CARD_ART_MECHANIC_IDS)`. Single source of truth — new art additions are automatically preloaded.
 
 **Rule:** If a Phaser scene needs to preload art from the same manifest that Svelte components use, always import the manifest's key list rather than duplicating it. Duplication guarantees drift.
+
+### 2026-04-08 — Deck Quality Audit: 4 systemic issues found across 83 decks
+
+**What:** A comprehensive deck audit revealed 4 categories of quality issues that had accumulated across all 83 shipped decks:
+1. 42 empty sub-decks (factIds: []) across 7 decks — chain grouping was broken
+2. 354 quiz audit failures from pool length heterogeneity — short answers got long distractors, creating obvious length tells
+3. 151 pools under 15 members with no syntheticDistractors — repetitive quiz experience
+4. 500+ self-answering questions where the answer appeared in the question stem
+
+**Why:** Each issue had a different root cause:
+- Empty sub-decks: factIds weren't populated programmatically from chainThemeId
+- Length heterogeneity: pools designed by semantic category without checking answer length distribution
+- Missing synthetics: syntheticDistractors considered optional rather than mandatory
+- Self-answering: question stems named the answer directly
+
+**Fix:** Created 4 fix scripts (fix-pool-heterogeneity.mjs, add-synthetic-distractors.mjs, fix-self-answering.mjs, fix-empty-subdecks.mjs) and a prevention pipeline. Pre-commit hook now runs quiz audit alongside structural verification. All 4 issues documented as anti-patterns in .claude/rules/deck-quality.md.
+
+**Prevention:** Every new deck must pass `npm run deck:quality` (structural + quiz audit, 0 failures). The deck-master skill now includes a mandatory post-assembly quality pipeline with all 6 check scripts.

@@ -1273,6 +1273,41 @@ The final deck JSON file is NOT a flat array of facts. It MUST be wrapped in the
 - `deck.domain` is a valid `CanonicalFactDomain` from `src/data/card-types.ts`
 - Run the structural validation script from the "Implementation Discipline" section before committing
 
+### Post-Assembly Automated Quality Pipeline — MANDATORY (added 2026-04-08)
+
+**After assembly and before committing, run the FULL automated quality pipeline:**
+
+```bash
+# 1. Structural validation (already in existing checklist)
+node scripts/verify-all-decks.mjs
+
+# 2. Quiz engine audit — catches length tells, distractor collisions
+node scripts/quiz-audit.mjs --full --deck <deck_id>
+# Target: 0 FAIL. Warnings are informational.
+
+# 3. Pool heterogeneity auto-fix — splits pools where answer lengths vary >3x
+node scripts/fix-pool-heterogeneity.mjs
+# Automatically splits e.g. molecule_names into molecule_abbreviations + molecule_full_names
+
+# 4. Synthetic distractor padding — pads all pools to 15+ members
+node scripts/add-synthetic-distractors.mjs
+# Uses cross-pool borrowing + domain term banks. Idempotent.
+
+# 5. Self-answering detection — flags questions containing their own answer
+node scripts/fix-self-answering.mjs
+# Auto-rewrites where safe, flags ambiguous cases for manual review.
+
+# 6. Sub-deck factId population — ensures all sub-decks are wired
+node scripts/fix-empty-subdecks.mjs
+# Scans facts by chainThemeId and populates sub-deck factIds.
+
+# 7. Rebuild and verify
+npm run build:curated
+```
+
+**This pipeline was created after a 2026-04-08 audit found 354 quiz failures, 42 empty sub-decks, 151 under-padded pools, and 500+ self-answering questions across 83 shipped decks. Every issue was preventable with these checks.**
+
+
 **After writing the deck JSON**, update `data/decks/manifest.json` to include the new deck filename in the `decks` array. The manifest is a flat array of filename strings:
 
 ```json

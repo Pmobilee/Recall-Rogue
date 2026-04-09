@@ -109,7 +109,14 @@
     "registry:stale": "tsx scripts/registry/stale.ts",
     "narratives:build": "node scripts/build-narratives.mjs",
     "audit:quiz-engine": "npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts",
-    "audit:japanese-grammar": "node scripts/audit-japanese-grammar.mjs"
+    "audit:japanese-grammar": "node scripts/audit-japanese-grammar.mjs",
+    "deck:verify": "node scripts/verify-all-decks.mjs",
+    "deck:audit": "node scripts/quiz-audit.mjs --full",
+    "deck:fix-pools": "node scripts/fix-pool-heterogeneity.mjs",
+    "deck:fix-synthetics": "node scripts/add-synthetic-distractors.mjs",
+    "deck:fix-self-answering": "node scripts/fix-self-answering.mjs",
+    "deck:fix-subdecks": "node scripts/fix-empty-subdecks.mjs",
+    "deck:quality": "node scripts/verify-all-decks.mjs && node scripts/quiz-audit.mjs --full"
   },
   "devDependencies": {
     "@napi-rs/canvas": "^0.1.97",
