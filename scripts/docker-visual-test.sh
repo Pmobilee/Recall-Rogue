@@ -17,13 +17,35 @@
 #   scripts/docker-visual-test.sh --warm status --agent-id agent-1    # Health check
 #
 # Options:
-#   --scenario <preset>    Scenario preset (default: combat-basic)
+#   --scenario <preset>    Scenario preset (default: combat-basic, use 'none' to skip scenario load)
 #   --output <dir>         Output directory (default: /tmp/rr-docker-visual/<timestamp>)
 #   --wait <ms>            Wait after scenario load (default: 2000)
 #   --agent-id <id>        Agent identifier (default: docker-<pid>)
 #   --eval <js>            Custom JS to evaluate after scenario load
+#   --actions-file <path>  JSON file containing an array of actions to execute (warm mode only)
 #   --no-build             Skip Docker image rebuild check
 #   --warm <cmd>           Warm mode: start|test|stop|status
+#
+# Action types (for --actions-file JSON):
+#   {type:'click',     selector, button?, clickCount?, waitAfter?}  native mouse click (fires pointerdown/up)
+#   {type:'dblclick',  selector, waitAfter?}
+#   {type:'hover',     selector, waitAfter?}
+#   {type:'mousedown', selector, waitAfter?}  press without release (long-press init)
+#   {type:'mouseup',   selector?, waitAfter?} release (optionally after moving to selector)
+#   {type:'drag',      from, to, steps?, waitAfter?}  from/to are selectors or {x,y}
+#   {type:'type',      selector, text, waitAfter?}  keystroke-level typing
+#   {type:'fill',      selector, text, waitAfter?}  instant fill
+#   {type:'key',       key, waitAfter?}  e.g. 'Enter', 'Escape', 'Space'
+#   {type:'wait',      ms}
+#   {type:'waitFor',   selector, state?, timeout?}  wait for element
+#   {type:'scenario',  preset}  load an __rrScenario preset mid-sequence
+#   {type:'rrPlay',    method, args?}  call window.__rrPlay[method](...args)
+#   {type:'eval',      js}
+#   {type:'screenshot',name}  intermediate screenshot (saves {name}.png + {name}.layout.txt)
+#   {type:'rrScreenshot', name}  intermediate composite capture
+#   {type:'layoutDump',name}  intermediate layout dump only
+#   {type:'assert',    selector, exists?, text?}  fail the test on mismatch
+#   {type:'url'}  capture page.url() into action log
 #
 # Output files in <output-dir>/:
 #   screenshot.png         Playwright full-page screenshot
@@ -42,6 +64,7 @@ SCENARIO="combat-basic"
 WAIT_MS="2000"
 AGENT_ID="docker-$$"
 CUSTOM_EVAL=""
+ACTIONS_FILE=""
 NO_BUILD=false
 OUTPUT_DIR=""
 WARM_CMD=""
@@ -49,14 +72,15 @@ WARM_CMD=""
 # Parse arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --scenario)   SCENARIO="$2"; shift 2 ;;
-        --output)     OUTPUT_DIR="$2"; shift 2 ;;
-        --wait)       WAIT_MS="$2"; shift 2 ;;
-        --agent-id)   AGENT_ID="$2"; shift 2 ;;
-        --eval)       CUSTOM_EVAL="$2"; shift 2 ;;
-        --no-build)   NO_BUILD=true; shift ;;
-        --warm)       WARM_CMD="$2"; shift 2 ;;
-        *)            echo "Unknown option: $1"; exit 1 ;;
+        --scenario)     SCENARIO="$2"; shift 2 ;;
+        --output)       OUTPUT_DIR="$2"; shift 2 ;;
+        --wait)         WAIT_MS="$2"; shift 2 ;;
+        --agent-id)     AGENT_ID="$2"; shift 2 ;;
+        --eval)         CUSTOM_EVAL="$2"; shift 2 ;;
+        --actions-file) ACTIONS_FILE="$2"; shift 2 ;;
+        --no-build)     NO_BUILD=true; shift ;;
+        --warm)         WARM_CMD="$2"; shift 2 ;;
+        *)              echo "Unknown option: $1"; exit 1 ;;
     esac
 done
 
@@ -140,9 +164,26 @@ if [ -n "$WARM_CMD" ]; then
             fi
 
             echo "Warm test: scenario=$SCENARIO agent=$AGENT_ID port=$WARM_PORT"
+
+            # Build request body via Python so JSON escaping is correct
+            # (actions come from a JSON file; eval is a raw string; scenario/wait are simple)
+            REQUEST_BODY=$(ACTIONS_FILE="$ACTIONS_FILE" SCENARIO="$SCENARIO" WAIT_MS="$WAIT_MS" CUSTOM_EVAL="$CUSTOM_EVAL" python3 -c '
+import json, os, sys
+body = {
+    "scenario": os.environ["SCENARIO"],
+    "wait": int(os.environ["WAIT_MS"]),
+    "evalJs": os.environ.get("CUSTOM_EVAL", ""),
+}
+af = os.environ.get("ACTIONS_FILE", "").strip()
+if af:
+    with open(af) as f:
+        body["actions"] = json.load(f)
+print(json.dumps(body))
+')
+
             RESULT=$(curl -s -X POST "http://localhost:${WARM_PORT}/test" \
                 -H 'Content-Type: application/json' \
-                -d "{\"scenario\":\"${SCENARIO}\",\"wait\":${WAIT_MS},\"evalJs\":\"${CUSTOM_EVAL}\"}")
+                -d "$REQUEST_BODY")
 
             # Extract test dir from result
             TEST_ID=$(echo "$RESULT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('testId','unknown'))" 2>/dev/null || echo "unknown")

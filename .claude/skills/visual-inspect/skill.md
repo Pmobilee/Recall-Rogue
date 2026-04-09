@@ -95,6 +95,65 @@ Read("/tmp/rr-docker-visual/{agent-id}_{scenario}_{timestamp}/result.json")
 - Requires host dev server running on port 5173 (container uses `host.docker.internal:5173`)
 - For single quick tests where no parallelism is needed, the Direct Node.js Script method below is faster
 
+### Docker `--actions-file` Full Gameplay Driver (PREFERRED for multi-step playtests)
+
+**The warm container now supports a full action DSL — native mouse clicks, keyboard, drag, waitFor, intermediate screenshots, `__rrPlay` calls, assertions.** This is the only way to drive real `onpointerdown` card-hand interactions (synthetic click events do NOT trigger them).
+
+Write a JSON array of action steps to a temp file and pass with `--actions-file`:
+
+```bash
+cat > /tmp/rr-play-combat.json <<'EOF'
+[
+  { "type": "wait", "ms": 3000 },
+  { "type": "screenshot", "name": "01-combat-start" },
+  { "type": "click", "selector": "[data-testid='card-hand-0']", "waitAfter": 800 },
+  { "type": "screenshot", "name": "02-card-selected" },
+  { "type": "click", "selector": "[data-testid='card-hand-0']", "waitAfter": 3000 },
+  { "type": "screenshot", "name": "03-card-played" },
+  { "type": "click", "selector": "[data-testid='btn-end-turn']", "waitAfter": 4000 },
+  { "type": "screenshot", "name": "04-after-end-turn" }
+]
+EOF
+
+scripts/docker-visual-test.sh --warm test \
+  --agent-id my-agent \
+  --scenario combat-basic \
+  --wait 6000 \
+  --actions-file /tmp/rr-play-combat.json
+```
+
+Every `screenshot` action saves both `{name}.png` AND `{name}.layout.txt` in the test dir so you can reconstruct the full trace. The final `result.json` includes an `actionLog` with per-step success/error.
+
+**Supported action types** (see `docker/playwright-xvfb/warm-server.mjs` `executeAction` for full reference):
+
+| type | purpose |
+|---|---|
+| `click` | Native mouse click — fires real pointerdown/up (required for card hand, anything with `onpointerdown`). Optional `force:true`, `button`, `clickCount`, `waitAfter`. |
+| `dblclick`, `hover` | Self-explanatory |
+| `mousedown` / `mouseup` | Press + release separately — for long-press or drag init |
+| `drag` | `from` + `to` either selectors or `{x,y}`, with `steps` for intermediate moves |
+| `type` / `fill` | Keystroke-level typing / instant fill into an input |
+| `key` | Press a named key: `Enter`, `Escape`, `Space`, arrow keys, etc. |
+| `wait` | Sleep `ms` |
+| `waitFor` | Wait for selector to reach `state` (`visible` default) |
+| `scenario` | Load an `__rrScenario` preset mid-sequence |
+| `rrPlay` | Call `window.__rrPlay[method](...args)` — dev gameplay API |
+| `eval` | Run arbitrary JS via `page.evaluate` |
+| `screenshot` | Intermediate PNG + layout dump (`{name}.png` + `{name}.layout.txt`) |
+| `rrScreenshot` | Intermediate composited capture (`{name}.rr.jpg`) |
+| `layoutDump` | Layout dump only |
+| `assert` | Fail the action on `selector` mismatch (`exists`/`text` checks) |
+| `url` | Capture current URL into the action log |
+
+**When to use actions vs `--eval`:**
+- **Actions** — anything involving native input (clicks, keys, drags). CardHand `onpointerdown` requires this.
+- **Actions** — multi-step flows where you want screenshots at each step.
+- **`--eval`** — one-shot state manipulation (localStorage tweaks, calling internal services, reading values).
+- Both can be combined in the same test.
+
+**Gotcha — warm container state persistence:**
+The warm container reuses the same page across tests, so state from a previous test (open narrative overlays, mid-combat hand, shop state) can leak into the next. If actions time out with `intercepts pointer events` errors, the previous test left a modal open. Add `{"type":"key","key":"Escape"}` at the start of your action list, or stop and restart the warm container.
+
 ### Docker `--eval` Custom JS Pattern (write to file, not inline)
 
 The `--eval` flag lets you run custom JS after scenario load. Shell-escaping long inline JS is painful — **write the JS to a temp file and read via `$(cat ...)`**:
