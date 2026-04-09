@@ -1,0 +1,24 @@
+# data/narratives/mystery-pools/rival_student.yaml
+# Per-mystery-room narration templates for the Rival Student event.
+# Fires when mysteryRoomId === "rival" or "rival_student".
+# Thread values: inhabitants | seeker | ambient
+id: rival_student
+templates:
+  - thread: inhabitants
+    text: "The rival studies you with the same hunger you study your cards. They have been waiting for an opponent."
+  - thread: seeker
+    text: "You are not the only one who came here to learn. The dungeon offers competition as its own kind of lesson."
+  - thread: ambient
+    text: "Two sets of footprints in the dust. One arriving. One already here, waiting."
+  - thread: inhabitants
+    text: "The rival has read the same books. Walked the same floors. They believe this makes them your equal. It does not."
+  - thread: seeker
+    text: "Victory over another seeker is a different kind of knowledge. The dungeon files it separately."
+  - thread: ambient
+    text: "The room holds the particular silence of two minds measuring each other across a small space."
+  - thread: inhabitants
+    text: "Defeat here is not shameful. The rival was shaped by the same dungeon that is shaping you. They had a head start."
+  - thread: seeker
+    text: "You answered what the rival could not. Or you did not. Either way, the encounter has been recorded in the archive."
+  - thread: ambient
+    text: "The rival's notes are still here. You recognize some of the questions. You wrote different answers."

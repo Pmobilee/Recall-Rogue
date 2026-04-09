@@ -1,0 +1,24 @@
+# data/narratives/mystery-pools/wrong_answer_museum.yaml
+# Per-mystery-room narration templates for the Wrong Answer Museum event.
+# Fires when mysteryRoomId === "wrong_answer_museum" or "reviewMuseum".
+# Thread values: inhabitants | seeker | ambient
+id: wrong_answer_museum
+templates:
+  - thread: ambient
+    text: "Every wrong answer ever given in this dungeon is preserved here, behind glass, labeled, and illuminated."
+  - thread: seeker
+    text: "Your worst answers are exhibited alongside everyone else's. The museum does not rank by shame. It ranks by frequency."
+  - thread: ambient
+    text: "The placards do not say who answered incorrectly. The dungeon prefers collective accountability to individual embarrassment."
+  - thread: inhabitants
+    text: "The curator here collects errors the way others collect relics. They believe wrong answers are more instructive than right ones."
+  - thread: seeker
+    text: "You studied what you failed. The confusion matrix has been adjusted. The exhibit has been noted in your file."
+  - thread: ambient
+    text: "A display case holds answers that were almost right — close enough to feel cruel, too wrong to be useful."
+  - thread: seeker
+    text: "Returning to a mistake is not weakness. The museum was built specifically for seekers willing to do this."
+  - thread: inhabitants
+    text: "The curator watches you study your own failures with an expression that might be sympathy or might be professional interest. It is difficult to tell."
+  - thread: ambient
+    text: "Near the exit, a smaller case: answers that were wrong when first given and later proven correct. The museum calls this the correction wing. It is always crowded."

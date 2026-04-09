@@ -1,0 +1,20 @@
+# data/narratives/echoes/default.yaml
+# Echo templates for the DefaultAdapter family — the fallback for any fact type
+# not matched by a more specific adapter.
+# {entity} is replaced at runtime by DefaultAdapter.extractEchoText() output
+# — a fragment of the explanation or the correct answer itself.
+id: default_echoes
+family: default
+templates:
+  - "The dungeon catalogues what you know. {entity} has been added to your file."
+  - "{entity}. One more fact absorbed. The archive below grows slightly less impatient."
+  - "You know {entity} now. The dungeon wonders when you will be tested on it again — and in what form."
+  - "The walls of this corridor absorbed {entity} from the moment you answered. It is in the stone now."
+  - "{entity} — a thing understood, filed, and held against the possibility of forgetting."
+  - "Something in the deep received the information about {entity}. It does not share its conclusions."
+  - "Knowledge of {entity} is now part of what you carry. The dungeon adjusts the weight it expects from you accordingly."
+  - "The dungeon's record of what you know has been updated. {entity}. The list is longer than when you started."
+  - "{entity}. The dungeon has no opinion on whether this was useful to know. It simply notes that you know it."
+  - "You answered. The correct answer was {entity}. The dungeon filed the response under your designation, which is not a name."
+  - "The echo of {entity} moves through the archive below. Whether it arrives intact is a question the dungeon does not answer."
+  - "Knowing {entity} is not the same as understanding it. The dungeon contains the distinction between those two things, somewhere in the lower levels."

@@ -1,0 +1,20 @@
+# data/narratives/echoes/grammar_foreign.yaml
+# Echo templates for the GrammarForeignAdapter family.
+# {entity} is replaced at runtime by GrammarForeignAdapter.extractEchoText() output
+# — an evocative description of the grammatical construct, not a named entity.
+# Templates should be abstract: structure, mood, tense, arrangement — not names.
+id: grammar_foreign_echoes
+family: grammar_foreign
+templates:
+  - "Verbs twist when touched by negation. The dungeon operates in the negative mood more often than you might prefer."
+  - "The conditional mood hangs in the air here — everything possible, nothing confirmed. The dungeon finds this structurally elegant."
+  - "Something about the arrangement of the sentence matters as much as the words themselves. Structure is meaning. The dungeon was built on this principle."
+  - "A grammatical rule that holds in one language and breaks in the next. The dungeon speaks several. It has opinions about which is correct."
+  - "Tense is a claim about time. The dungeon's relationship to time is complicated; it has its own tense system, and you are conjugating into it."
+  - "The passive voice — where the subject receives the action. Down here, you are always the subject. The dungeon always acts."
+  - "Agreement between subject and verb is a social contract that language enforces. The dungeon enforces its own agreements. The penalty clause is significant."
+  - "Grammar describes how a thought is held — not what the thought is, but its shape in transmission. The dungeon transmits its thoughts carefully."
+  - "The particle that holds two words in relation to each other is invisible but load-bearing. This corridor is the same: what appears to be nothing connects two significant chambers."
+  - "Aspect is not tense. A completed action and a past action are different things. The dungeon is full of completed actions that are not yet past."
+  - "The subjunctive exists for what might be, what was wished, what was doubted. The dungeon has rooms built in the subjunctive. You have been in several."
+  - "Syntax is architecture. Every language builds a different structure for the same thought to live in. The dungeon contains all of them, stacked."

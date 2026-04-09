@@ -1,0 +1,20 @@
+# data/narratives/echoes/math.yaml
+# Echo templates for the MathAdapter family.
+# {entity} is replaced at runtime by MathAdapter.extractEchoText() output
+# — an abstract fragment generated from the question, not a named entity.
+# Templates should be abstract and non-referential: numbers/shapes, not names.
+id: math_echoes
+family: math
+templates:
+  - "Numbers refuse to resolve. The pattern holds — but holding is not the same as yielding an answer."
+  - "The shape of a problem yet unsolved hangs in the air of this corridor, patient as stone."
+  - "A relationship between quantities that should not matter here. It matters. The dungeon is built on relationships between quantities."
+  - "Something is counting. Not the dungeon — or not only the dungeon. The numbers are accumulating toward a conclusion."
+  - "The proof is complete. Its implications are not. The dungeon will take a long time to finish with what you just understood."
+  - "An equation balanced itself in the moment you answered. The dungeon felt the correction."
+  - "Geometry describes the space you are moving through in ways you cannot verify without tools you do not have."
+  - "The ratio holds here. Everything in the deep levels obeys the same ratios. This is either reassuring or the opposite."
+  - "What you calculated is correct. The dungeon's version of correct has additional decimal places it has not revealed."
+  - "A quantity that was undefined became defined. That change has consequences. The dungeon's architecture shifted slightly to accommodate."
+  - "The dungeon is a closed system. Its variables are knowable, in principle. You are working toward knowing them, one answer at a time."
+  - "Infinity is the dungeon's preferred number. All others are approximations it tolerates out of politeness."

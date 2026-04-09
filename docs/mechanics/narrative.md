@@ -3,7 +3,7 @@
 > **Purpose:** Design spec for the procedural narrative system that delivers dark RPG storytelling woven from four concurrent threads, reactive to actual knowledge the player studies.
 > **Last verified:** 2026-04-08
 > **Status:** IMPLEMENTED — Ch4 narrative overhaul complete: FactTypeAdapter registry (cross-deck echo text), smart narration ratio tracking (Seeker boost).
-> **Source files:** `src/services/narrativeTypes.ts` (data interfaces), `src/services/narrativeGravity.ts` (classification + gravity scoring), `src/services/narrativeAdapterRegistry.ts` (FactTypeAdapter registry — cross-deck echo text), `src/services/narrativeLoader.ts` (runtime loader), `src/services/narrativeEngine.ts` (IMPLEMENTED — 2026-04-03), `src/services/encounterBridge.ts` (NarrativeEncounterSnapshot snapshot mechanism), `src/services/gameFlowController.ts` (integration hooks), `data/narratives/` (COMPLETE — 61 YAML files), `scripts/build-narratives.mjs` (YAML-to-JSON converter), `public/data/narratives/` (generated JSON output)
+> **Source files:** `src/services/narrativeTypes.ts` (data interfaces), `src/services/narrativeGravity.ts` (classification + gravity scoring), `src/services/narrativeAdapterRegistry.ts` (FactTypeAdapter registry — cross-deck echo text), `src/services/narrativeLoader.ts` (runtime loader), `src/services/narrativeEngine.ts` (IMPLEMENTED — 2026-04-03), `src/services/encounterBridge.ts` (NarrativeEncounterSnapshot snapshot mechanism), `src/services/gameFlowController.ts` (integration hooks), `data/narratives/` (COMPLETE — 78 YAML files), `scripts/build-narratives.mjs` (YAML-to-JSON converter), `public/data/narratives/` (generated JSON output)
 
 
 ## Data Pipeline (2026-04-03)
@@ -16,7 +16,7 @@ Narrative YAML files are converted to JSON at build time, then loaded at runtime
 npm run narratives:build
 ```
 
-Reads all 61 YAML files from `data/narratives/`, normalises snake_case keys to camelCase (e.g. `min_gravity` to `minGravity`, `deck_categories` to `deckCategories`, `relic_id` to `relicId`), and writes JSON to `public/data/narratives/` mirroring the directory structure. Also writes `public/data/narratives/manifest.json` with the full file list.
+Reads all 78 YAML files from `data/narratives/`, normalises snake_case keys to camelCase (e.g. `min_gravity` to `minGravity`, `deck_categories` to `deckCategories`, `relic_id` to `relicId`), and writes JSON to `public/data/narratives/` mirroring the directory structure. Also writes `public/data/narratives/manifest.json` with the full file list.
 
 The inhabitant greeting field is normalised from `{ 1: text, 2: text, default: text }` to `InhabitantGreeting[]` with `visitNumber: number | 'default'` as required by the TS interface.
 
@@ -44,18 +44,19 @@ All accessor functions are synchronous after `preloadNarrativeData()` completes.
 ---
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -89,18 +90,19 @@ This conceit explains:
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -119,18 +121,19 @@ Every room transition assembles 1-3 lines from different threads. The combinatio
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -223,18 +226,19 @@ fields:
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -387,18 +391,19 @@ Context echoes fire when `echoText.length < 12` AND `gravity >= medium`. They in
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -479,18 +484,19 @@ Each relic gets 1-2 narrative lines triggered when entering specific room types 
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -611,18 +617,19 @@ The Oracle references a specific fact the player learned earlier in the run. It 
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -731,18 +738,19 @@ Fact details (answer text, quizQuestion) are resolved synchronously from `factsD
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -809,18 +817,19 @@ interface FactEcho {
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -849,18 +858,19 @@ The camp's unused Expedition Journal becomes the home for run narrative logs.
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -890,18 +900,19 @@ Total authoring volume: ~8-10 pages of writing. Manageable scope.
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -974,18 +985,19 @@ public/data/narratives/     — Build output (JSON, generated by scripts/build-n
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -1007,18 +1019,19 @@ Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RP
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -1044,18 +1057,19 @@ Dry-tested against real facts from 6 decks (Spanish A1, Ancient Greece, Computer
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -1076,18 +1090,19 @@ Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RP
 
 ## Content Inventory (2026-04-03)
 
-All narrative content authored and placed in `data/narratives/`. 61 YAML files across 6 directories:
+All narrative content authored and placed in `data/narratives/`. 78 YAML files across 7 directories:
 
 | Directory | Count | Contents |
 |---|---|---|
 | `archetypes/` | 12 | lost_archive, sealed_vault, scholars_descent, the_infection, the_trial, the_excavation, the_convergence, the_bargain, the_cartographer, the_heresy, the_resonance, the_wake |
 | `lenses/` | 15 | history_ancient, history_modern, history_medieval, science_biology, science_physics, science_computing, geography, language_european, language_east_asian, language_slavic, mythology, arts_literature, nature, philosophy, general_trivia |
-| `echoes/` | 11 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context |
+| `echoes/` | 20 | person, place, concept, foreign_word, date, number, object, chain_completion, wrong_answer, answer_free, context + adapter families: history, science, geography, mythology, math, vocab_foreign, grammar_foreign, kanji, default |
 | `inhabitants/` | 4 | merchant, keeper, oracle, guardian |
 | `seeker/` | 4 | hp_reactive, streak_reactive, floor_reactive, relic_callbacks |
 | `ambient/` | 15 | one per lens — 10 atmospheric lines each |
+| `mystery-pools/` | 8 | flashcard_merchant, tutors_office, rival_student, forgotten_shrine, riddle_stranger, burning_library, wrong_answer_museum, meditation_chamber |
 
-Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
+Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RPG throughout. Voice: The Creature Below.
 
 ---
 
@@ -1100,7 +1115,7 @@ Total authored lines: ~580+ narrative fragments. Tone: dark, serious literary RP
 | `src/services/narrativeGravity.test.ts` | IMPLEMENTED | 74 passing tests covering all classification rules, gravity scoring, edge cases. |
 | `src/services/narrativeEngine.ts` | IMPLEMENTED | Core engine: archetype selection, beat tracking, slot-filling, thread assembly per room. Integrated into gameFlowController (2026-04-03). |
 | `src/services/narrativeLoader.ts` | IMPLEMENTED | fetch()-based loader with module-level cache. preloadNarrativeData() loads all JSON at game init. All accessors synchronous after preload. |
-| `data/narratives/` | COMPLETE | 61 YAML files across 6 directories. Build script converts to JSON in public/data/narratives/. |
+| `data/narratives/` | COMPLETE | 78 YAML files across 7 directories. Build script converts to JSON in public/data/narratives/. |
 | `src/ui/stores/narrativeStore.ts` | IMPLEMENTED | `narrativeDisplay` writable store, `showNarrative()`, `dismissNarrative()`. The engine calls showNarrative() with lines + mode; the overlay dismisses via onDismiss. |
 | `src/services/encounterBridge.ts` | INTEGRATED | `NarrativeEncounterSnapshot` interface + module-level capture in victory setTimeout. `getLastNarrativeEncounterSnapshot()` / `clearNarrativeEncounterSnapshot()` exports. |
 | `src/services/gameFlowController.ts` | INTEGRATED | All 8 narrative hooks wired: preload, initNarrative, recordEncounterResults, getNarrativeLines (post-encounter + special rooms), recordShopPurchase (relic/card), recordRestAction (upgrade), resetNarrative. |

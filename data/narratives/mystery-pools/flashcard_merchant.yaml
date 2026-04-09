@@ -1,0 +1,24 @@
+# data/narratives/mystery-pools/flashcard_merchant.yaml
+# Per-mystery-room narration templates for the Flashcard Merchant event.
+# Fires when mysteryRoomId === "flashcard_merchant" or "flashcard_merchant" event resolves.
+# Thread values: inhabitants | seeker | ambient
+id: flashcard_merchant
+templates:
+  - thread: inhabitants
+    text: "The merchant's eyes glint with borrowed wisdom — every card a debt unpaid."
+  - thread: seeker
+    text: "Knowledge has its price. The merchant knows yours."
+  - thread: ambient
+    text: "Scrolls and tomes line the walls, each one a bargain struck in silence."
+  - thread: inhabitants
+    text: "They say the merchant once taught kings. Now they trade in fragments of what was."
+  - thread: seeker
+    text: "You leave lighter in gold, heavier in questions you didn't know you had."
+  - thread: ambient
+    text: "A faint smell of old ink and something older. The merchant has been here a long time."
+  - thread: inhabitants
+    text: "Flashcards spread across the counter like a map of what you don't yet know."
+  - thread: seeker
+    text: "Gold spent on preparation is gold that comes back as victory. The merchant counts on you believing this."
+  - thread: ambient
+    text: "The cards here hold what someone else once memorized in desperation. That desperation transferred with the purchase."

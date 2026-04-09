@@ -1,0 +1,24 @@
+# data/narratives/mystery-pools/tutors_office.yaml
+# Per-mystery-room narration templates for the Tutor's Office event.
+# Fires when mysteryRoomId === "tutor" or "tutors_office".
+# Thread values: inhabitants | seeker | ambient
+id: tutors_office
+templates:
+  - thread: inhabitants
+    text: "The tutor does not ask if you are ready. It asks what you know. The difference matters."
+  - thread: seeker
+    text: "Three questions. Not a test of memory — a test of what kind of seeker you are becoming."
+  - thread: ambient
+    text: "Chalk dust on a dark floor. Someone was taught here. Someone else failed here. The room remembers both."
+  - thread: inhabitants
+    text: "The tutor's patience is not kindness. It is curiosity about how long it takes you to crack."
+  - thread: seeker
+    text: "You answered. Correctly or not, the dungeon has updated its record of you."
+  - thread: ambient
+    text: "Lesson plans pinned to stone. None of them written for you — and yet they all apply."
+  - thread: inhabitants
+    text: "The office smells of authority and old failure. The tutor has seen better students. The tutor has also seen worse."
+  - thread: seeker
+    text: "What the tutor gives, it gives because you earned it. What it withholds, it withholds for the same reason."
+  - thread: ambient
+    text: "A desk, a chair, a window that shows nothing. The tutor requires no view. Knowledge is its own landscape."

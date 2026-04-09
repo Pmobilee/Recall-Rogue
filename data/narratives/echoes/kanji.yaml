@@ -1,0 +1,20 @@
+# data/narratives/echoes/kanji.yaml
+# Echo templates for the KanjiAdapter family.
+# {entity} is replaced at runtime by KanjiAdapter.extractEchoText() output
+# — typically "{character} — {meaning}" (e.g. "火 — fire").
+# Templates should evoke visual, structural, and meaning-carrying qualities of written characters.
+id: kanji_echoes
+family: kanji
+templates:
+  - "Strokes on paper, meanings in the mind. The dungeon reads both layers — the visible and the understood."
+  - "The character speaks in borrowed silence. Every stroke is a decision made centuries ago that you are now repeating."
+  - "A written form that is older than the language it now belongs to. The dungeon respects that kind of endurance."
+  - "The radicals that build the character each carry their own meaning. Meanings stacked on meanings. The dungeon was built the same way."
+  - "You traced the stroke order without being asked. The dungeon noticed the instinct. Instinct is mastery's earliest symptom."
+  - "The character exists in the space between picture and word — visual enough to be recognized, abstract enough to be read. The dungeon occupies the same space."
+  - "A single character containing a concept that requires a paragraph in the other direction. Compression like that does not happen by accident."
+  - "The ink that makes this character was invented to last. It has. Down here, everything that was made to last eventually arrives."
+  - "Meanings shift over a thousand years. The character retains its shape while the meaning underneath it changes gradually, like a river changing course beneath a fixed bridge."
+  - "The character you learned today was designed by a hand that has been ash for six centuries. The design survived. That is a form of victory."
+  - "Reading is touching the past without moving. The dungeon is where that metaphor becomes architecturally accurate."
+  - "Each character is a small architecture of meaning. The dungeon is made of larger architectures that follow the same structural logic."

@@ -91,6 +91,10 @@
     onCombatExitComplete,
     reshuffleChainDistribution,
     confirmChainDistribution,
+    pendingStudyUpgrade,
+    onStudyUpgradeConfirmed,
+    pendingTransformOptions,
+    onShopTransformChoice,
   } from './services/gameFlowController'
   import {
     activeTurnState,
@@ -153,6 +157,7 @@
   import RelicPickupToast from './ui/components/RelicPickupToast.svelte'
   import UpgradeSelectionOverlay from './ui/components/UpgradeSelectionOverlay.svelte'
   import PostMiniBossRestOverlay from './ui/components/PostMiniBossRestOverlay.svelte'
+  import CardPickerOverlay from './ui/components/CardPickerOverlay.svelte'
   import DungeonMap from './ui/components/DungeonMap.svelte'
   // StarterRelicSelection removed in AR-59.12 — file kept as dead code pending deletion approval
   import DeckSelectionHub from './ui/components/DeckSelectionHub.svelte'
@@ -874,6 +879,26 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   function handleStudyComplete(correctFactIds: string[]): void {
     studyQuestions = []
     onStudyComplete(correctFactIds)
+  }
+
+  // Accumulates cards selected in the study upgrade picker (multi-mode).
+  // CardPickerOverlay.onselect is called once per card in multi mode (not as an array).
+  // We buffer selections and flush them all to onStudyUpgradeConfirmed when the count is met.
+  let studyUpgradeSelectionBuffer = $state<import('./data/card-types').Card[]>([])
+
+  function handleStudyUpgradeSelect(card: import('./data/card-types').Card): void {
+    const pending = get(pendingStudyUpgrade)
+    const buffer = [...studyUpgradeSelectionBuffer, card]
+    studyUpgradeSelectionBuffer = buffer
+    if (pending && buffer.length >= pending.count) {
+      studyUpgradeSelectionBuffer = []
+      onStudyUpgradeConfirmed(buffer)
+    }
+  }
+
+  function handleStudyUpgradeSkip(): void {
+    studyUpgradeSelectionBuffer = []
+    onStudyUpgradeConfirmed([])
   }
 
   function handleMeditateRemove(cardId: string): void {
@@ -1631,6 +1656,34 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   {#if $currentScreen === 'restStudy'}
     <div in:fly={{ y: 8, duration: 350 }}>
       <StudyQuizOverlay questions={studyQuestions} oncomplete={handleStudyComplete} />
+    </div>
+  {/if}
+
+  {#if $pendingStudyUpgrade}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <CardPickerOverlay
+        title="Choose {$pendingStudyUpgrade.count} card(s) to upgrade"
+        cards={$pendingStudyUpgrade.candidates}
+        pickCount={$pendingStudyUpgrade.count}
+        mode="multi"
+        confirmLabel="Upgrade"
+        onselect={handleStudyUpgradeSelect}
+        onskip={handleStudyUpgradeSkip}
+      />
+    </div>
+  {/if}
+
+  {#if $pendingTransformOptions}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <CardPickerOverlay
+        title="Choose a replacement card"
+        cards={$pendingTransformOptions}
+        pickCount={1}
+        mode="single"
+        confirmLabel="Transform"
+        onselect={(card) => onShopTransformChoice(card)}
+        onskip={() => { pendingTransformOptions.set(null) }}
+      />
     </div>
   {/if}
 

@@ -250,26 +250,38 @@
   let studyFacts: StudyFact[] = $state([])
   let studyComplete: boolean = $state(false)
 
-  /** Build the study fact list from the curated deck. */
+  /** Build the study fact list from curated deck (study mode) or trivia DB (trivia mode). */
   function buildStudyFacts(): void {
     const runState = get(activeRunState)
-    if (!runState?.deckMode || runState.deckMode.type !== 'study') {
-      studyFacts = []
-      return
+    if (runState?.deckMode?.type === 'study') {
+      // Study Temple mode — pull from the curated deck
+      const allFacts = getCuratedDeckFacts(runState.deckMode.deckId, runState.deckMode.subDeckId, runState.deckMode.examTags)
+      if (allFacts.length === 0) {
+        studyFacts = []
+        return
+      }
+      // Pick 3 random facts
+      const shuffled = [...allFacts].sort(() => Math.random() - 0.5).slice(0, 3)
+      studyFacts = shuffled.map(f => ({
+        factId: f.id,
+        question: f.quizQuestion,
+        answer: f.correctAnswer,
+        chainThemeId: f.chainThemeId,
+      }))
+    } else {
+      // Trivia Dungeon mode — pull random facts from trivia DB (excludes language/vocab)
+      const triviaFacts = factsDB.getTriviaFacts()
+      if (triviaFacts.length === 0) {
+        studyFacts = []
+        return
+      }
+      const shuffled = [...triviaFacts].sort(() => Math.random() - 0.5).slice(0, 3)
+      studyFacts = shuffled.map(f => ({
+        factId: f.id,
+        question: f.quizQuestion,
+        answer: f.correctAnswer,
+      }))
     }
-    const allFacts = getCuratedDeckFacts(runState.deckMode.deckId, runState.deckMode.subDeckId, runState.deckMode.examTags)
-    if (allFacts.length === 0) {
-      studyFacts = []
-      return
-    }
-    // Pick 3 random facts
-    const shuffled = [...allFacts].sort(() => Math.random() - 0.5).slice(0, 3)
-    studyFacts = shuffled.map(f => ({
-      factId: f.id,
-      question: f.quizQuestion,
-      answer: f.correctAnswer,
-      chainThemeId: f.chainThemeId,
-    }))
     studyComplete = false
   }
 
