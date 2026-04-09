@@ -1154,10 +1154,10 @@
     },
     {
       "id": "am_nana_copies_sold",
-      "correctAnswer": "{50} million",
+      "correctAnswer": "{50}",
       "acceptableAlternatives": [
-        "50 million copies",
-        "approximately 50 million"
+        "50 million",
+        "50 million copies"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "count_values",
@@ -1165,16 +1165,16 @@
       "funScore": 6,
       "ageGroup": "all",
       "distractors": [
-        "{5} million",
-        "{10} million",
-        "{20} million",
-        "{30} million",
-        "{70} million",
-        "{100} million",
-        "{2} million",
-        "{15} million"
+        "{5}",
+        "{10}",
+        "{20}",
+        "{30}",
+        "{70}",
+        "{100}",
+        "{2}",
+        "{15}"
       ],
-      "quizQuestion": "Approximately how many copies of Nana manga had been sold before its serialization went on indefinite hiatus in 2009?",
+      "quizQuestion": "Approximately how many million copies of Nana manga had been sold before its serialization went on indefinite hiatus in 2009?",
       "explanation": "Nana by Ai Yazawa sold approximately 50 million copies before the series went on hiatus in 2009 due to Yazawa's illness. The manga ran in Cookie magazine from 2000 to 2009 and was adapted into a 47-episode anime by Madhouse in 2006.",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Nana_(manga)",
