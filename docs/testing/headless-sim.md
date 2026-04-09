@@ -172,10 +172,11 @@ Meditate is never chosen when deck is at or below the threshold, or when HP is c
 
 `POST_ENCOUNTER_HEAL_PCT` (flat 7% heal) has been replaced with a randomized health vial drop system. After each combat encounter:
 
-- **25% chance** — health vial drops
+- **`HEALTH_VIAL_DROP_CHANCE` (10%)** — health vial drops on regular combat nodes
   - **Small vial** (70% of drops): restores 8–18 HP
   - **Large vial** (30% of drops): restores 20–35 HP
-- **75% chance** — no vial drops; no healing
+- **Elite and boss nodes** — always drop a health vial (guaranteed)
+- **Regular combat** — 10% chance per `HEALTH_VIAL_DROP_CHANCE` in `balance.ts`
 
 This produces more variance in run health curves than the old flat heal. The `balance.ts` constant `POST_ENCOUNTER_HEAL_PCT` is no longer read by the sim.
 
@@ -440,6 +441,23 @@ Bot heuristics updated to survive `GLOBAL_ENEMY_DAMAGE_MULTIPLIER=2.0`:
 | Shield quick-play gate: acc < 0.72 | Only force guaranteed block when fizzle risk is meaningful (>28%); high-acc bots still charge |
 | Attack quick-play gate: HP < 25% AND acc < 65% | Avoids AP surcharge waste on fizzle when survival matters more than EV |
 | `_decideMode` receives HP context | `playerHpPct`, `enemyNextDamage`, `playerCurrentHP` now passed through |
+
+## Fidelity Bug Fixes (2026-04-09)
+
+Eight correctness bugs fixed to reduce sim-vs-real-game drift:
+
+| Bug | Files | Old Behavior | Fix |
+|-----|-------|-------------|-----|
+| HP tracking approximation | both | `currentHP - damageTaken` missed relic heals, poison, lethal saves | `finalPlayerHp: turnState.playerState.hp` returned from `simulateSingleEncounter` |
+| Health vial drop rate | full-run-sim | Hardcoded 25% | Uses `HEALTH_VIAL_DROP_CHANCE` (10%) from `balance.ts`; elite/boss always drop |
+| Canary reimplementation | both | Manual `wrongsThisEncounter` counter, no HP multiplier, no streak tracking | Uses `canaryService.ts` (`createCanaryState`, `recordCanaryAnswer`, `resetCanaryFloor`); state threads through encounters |
+| Bot gives up on blocked cards | both | `break` on blocked card, abandoning rest of hand | `blockedCardIds.add(card.id); continue` — tries remaining cards in plan |
+| Transmute dead weight | both | Transmute cards in starter deck wasted a slot | Replaced with `strike` in `buildSimDeck()` and `buildStarterDeck()` |
+| Mastery lost after each encounter | full-run-sim | `createDeck()` made copies; mastery upgrades lost when deck object discarded | After encounter, syncs `encounterCard.masteryLevel` back to `runState.deck` cards |
+| No catch-up mastery on rewards | full-run-sim | New reward cards always started at mastery 0 | New cards start at `floor(avgMastery * 0.75)` |
+| Stale AP surcharge comments | simulator | Comments said "CHARGE_AP_SURCHARGE = 0" (wrong) | Fixed to say "CHARGE_AP_SURCHARGE applied below" |
+
+**Canary state threading:** `CanaryState` is now initialized in `runSimulation()` / `simulateFullRun()`, reset per-floor via `resetCanaryFloor()` before each encounter, updated per-answer via `recordCanaryAnswer()` inside `simulateSingleEncounter()`, and the updated state returned alongside the result for carry-over across encounters. Enemy HP multiplier from Canary is applied at enemy creation time; enemy damage multiplier is applied to `turnState.canaryEnemyDamageMultiplier` before each `endPlayerTurn()` call.
 
 ## Ascension Support
 

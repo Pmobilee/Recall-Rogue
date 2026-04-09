@@ -43,7 +43,9 @@ import {
   SURGE_FIRST_TURN,
   SURGE_INTERVAL,
   REST_SITE_HEAL_PCT,
+  HEALTH_VIAL_DROP_CHANCE,
 } from '../../../src/data/balance.js';
+import { createCanaryState, recordCanaryAnswer, resetCanaryFloor, type CanaryState } from '../../../src/services/canaryService.js';
 import { MECHANIC_DEFINITIONS, type MechanicDefinition } from '../../../src/data/mechanics.js';
 import { getAscensionModifiers } from '../../../src/services/ascension.js';
 import {
@@ -237,6 +239,15 @@ function buildStarterDeck(seed: number = 0): Card[] {
       cards.push(makeMechanicCard(mechanic));
     }
   }
+
+  // Bug 5: Replace any transmute cards with strike — transmute has no sim target behavior
+  const strikeMechanic = findMechanic('strike');
+  for (let i = 0; i < cards.length; i++) {
+    if (cards[i].mechanicId === 'transmute') {
+      cards[i] = makeMechanicCard(strikeMechanic);
+    }
+  }
+
   // Assign chain types round-robin from the 3 types selected for this run
   const runChainTypes = selectRunChainTypes(seed);
   for (let i = 0; i < cards.length; i++) {
@@ -319,6 +330,10 @@ interface EncounterResult {
   damageFromCharges: number;
   damageFromQuickPlays: number;
   masteryUpgradesEarned: number;
+  /** Bug 8: authoritative player HP from turnState at encounter end */
+  finalPlayerHp: number;
+  /** Bug 3: updated Canary state after this encounter */
+  canaryState: CanaryState;
 }
 
 function simulateSingleEncounter(
@@ -329,6 +344,8 @@ function simulateSingleEncounter(
     maxTurns: number;
     /** Optional BotBrain for intelligent play. When absent, uses legacy dumb-bot logic. */
     brain?: BotBrain;
+    /** Bug 3: Canary state from outer context, updated per-answer and returned. */
+    canaryState: CanaryState;
   },
   ascMods: ReturnType<typeof getAscensionModifiers>,
 ): EncounterResult {
@@ -348,6 +365,8 @@ function simulateSingleEncounter(
   let masteryUpgradesEarned = 0;
 
   const { correctRate, chargeRate, maxTurns, brain } = opts;
+  // Bug 3: use proper Canary state (reset per floor by caller, persists streak across answers)
+  let canaryState = opts.canaryState;
 
   while (turnsUsed < maxTurns) {
     // ── Player turn: play all cards in hand ──
@@ -357,6 +376,9 @@ function simulateSingleEncounter(
       // ── BotBrain-driven play loop ──────────────────────────────────────
       // Re-plan each iteration because playCardAction can change the hand
       // (cards consumed, new cards drawn, etc.)
+      // Bug 4: track blocked cards within this turn so we try others instead of giving up
+      const blockedCardIds = new Set<string>();
+
       while (!isHandEmpty(turnState) && turnState.result === null) {
         if (safetyBreak++ > 200) break;
 
@@ -372,6 +394,9 @@ function simulateSingleEncounter(
           // Re-check hand after each attempt — cards may have been removed
           const card = turnState.deck.hand.find(c => c.id === play.cardId);
           if (!card) continue;
+
+          // Bug 4: skip cards that were blocked this turn
+          if (blockedCardIds.has(card.id)) continue;
 
           const apCost = card.apCost ?? 1;
           // AP surcharge check — must mirror real playCardAction() logic for momentum/surge/warcry
@@ -398,9 +423,17 @@ function simulateSingleEncounter(
           const answeredCorrectly = Math.random() < brain.skills.accuracy;
           const speedBonus = answeredCorrectly && Math.random() < 0.5;
 
+          // Bug 3: update Canary state per answer, then apply damage multiplier to turn state
+          canaryState = recordCanaryAnswer(canaryState, answeredCorrectly);
+          turnState.canaryEnemyDamageMultiplier = canaryState.enemyDamageMultiplier;
+
           const res = playCardAction(turnState, card.id, answeredCorrectly, speedBonus, play.mode);
 
-          if (res.blocked && !res.fizzled) break;
+          // Bug 4: on blocked, record the card and continue trying others
+          if (res.blocked && !res.fizzled) {
+            blockedCardIds.add(card.id);
+            continue;
+          }
 
           turnState = res.turnState;
           cardsPlayed++;
@@ -442,7 +475,7 @@ function simulateSingleEncounter(
           const midCheckResult = checkEncounterEnd(turnState);
           if (midCheckResult !== null) {
             const enemyHpPctMid = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
-            return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned };
+            return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState };
           }
 
           break; // Only execute first valid play, then re-plan
@@ -465,7 +498,7 @@ function simulateSingleEncounter(
         const card = hand[0];
         const cardMinCost = card.apCost ?? 1;
 
-        // CHARGE_AP_SURCHARGE = 0: Charge costs same AP as Quick Play
+        // CHARGE_AP_SURCHARGE applied below (surcharge waived on surge/momentum turns)
         const chargeSurcharge = CHARGE_AP_SURCHARGE;
         const chargeApCost = cardMinCost + chargeSurcharge;
         const canCharge = turnState.apCurrent >= chargeApCost;
@@ -481,6 +514,10 @@ function simulateSingleEncounter(
         const answeredCorrectly = Math.random() < correctRate;
         const speedBonus = answeredCorrectly && Math.random() < 0.5;
 
+        // Bug 3: update Canary state per answer, then apply damage multiplier to turn state
+        canaryState = recordCanaryAnswer(canaryState, answeredCorrectly);
+        turnState.canaryEnemyDamageMultiplier = canaryState.enemyDamageMultiplier;
+
         const res = playCardAction(
           turnState,
           card.id,
@@ -489,7 +526,13 @@ function simulateSingleEncounter(
           isCharge ? 'charge' : 'quick',
         );
 
-        if (res.blocked && !res.fizzled) break;
+        // Bug 4: If blocked, rotate to try next card instead of ending turn entirely
+        if (res.blocked && !res.fizzled) {
+          if (hand.length <= 1) break;
+          const rotated = hand.shift()!;
+          hand.push(rotated);
+          continue;
+        }
 
         turnState = res.turnState;
         cardsPlayed++;
@@ -530,10 +573,14 @@ function simulateSingleEncounter(
         const midCheckResult = checkEncounterEnd(turnState);
         if (midCheckResult !== null) {
           const enemyHpPctMid = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
-          return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned };
+          return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState };
         }
       }
     }
+
+    // ── Canary: apply latest multiplier before endPlayerTurn ──────────────
+    // Bug 3: canaryState is already up-to-date from per-answer tracking above
+    turnState.canaryEnemyDamageMultiplier = canaryState.enemyDamageMultiplier;
 
     // ── Enemy turn ──
     const enemyResult = endPlayerTurn(turnState);
@@ -551,12 +598,12 @@ function simulateSingleEncounter(
     const afterEnemyResult = checkEncounterEnd(turnState);
     if (afterEnemyResult !== null) {
       const enemyHpPctEnd = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
-      return { result: afterEnemyResult, turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctEnd, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned };
+      return { result: afterEnemyResult, turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctEnd, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState };
     }
   }
 
   const enemyHpPctTimeout = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
-  return { result: 'timeout', turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctTimeout, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned };
+  return { result: 'timeout', turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctTimeout, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState };
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -640,6 +687,7 @@ function handleCombatNode(
   verbose: boolean,
   runChainTypes: number[],
   brain?: BotBrain,
+  canaryState: CanaryState = createCanaryState(),
 ): EncounterResult & { goldAwarded: number } {
   // Map MapNodeType to enemy pool type
   let enemyPoolType: 'combat' | 'elite' | 'mini_boss' | 'boss';
@@ -655,13 +703,18 @@ function handleCombatNode(
     try {
       enemyTemplate = pickEnemyForNode(act, 'combat');
     } catch {
-      return { result: 'victory', turnsUsed: 0, damageDealt: 0, damageTaken: 0, cardsPlayed: 0, correctAnswers: 0, wrongAnswers: 0, maxCombo: 0, goldAwarded: 0 };
+      return { result: 'victory', turnsUsed: 0, damageDealt: 0, damageTaken: 0, cardsPlayed: 0, correctAnswers: 0, wrongAnswers: 0, maxCombo: 0, enemyHpPct: 0, chargedPlays: 0, quickPlays: 0, correctWhenCharged: 0, damageFromCharges: 0, damageFromQuickPlays: 0, masteryUpgradesEarned: 0, finalPlayerHp: runState.hp, canaryState, goldAwarded: 0 };
     }
   }
 
   const isBossLike = nodeType === 'boss' || nodeType === 'elite';
+
+  // Bug 3: reset Canary wrongs-per-floor at encounter start (streak carries over from caller)
+  const encounterCanaryState = resetCanaryFloor(canaryState);
+
+  // Bug 3: Canary HP multiplier modulates enemy HP (harder/easier based on player skill)
   const enemy = createEnemy(enemyTemplate, floor, {
-    hpMultiplier: ascMods.enemyHpMultiplier * (isBossLike ? ascMods.bossHpMultiplier : 1),
+    hpMultiplier: ascMods.enemyHpMultiplier * encounterCanaryState.enemyHpMultiplier * (isBossLike ? ascMods.bossHpMultiplier : 1),
   });
 
   const deckCards = [...runState.deck];
@@ -691,6 +744,9 @@ function handleCombatNode(
   initialTurnState.ascensionPreventFlee = ascMods.preventFlee;
   initialTurnState.activeRelicIds = new Set(runState.relicIds);
 
+  // Bug 3: apply initial Canary damage multiplier
+  initialTurnState.canaryEnemyDamageMultiplier = encounterCanaryState.enemyDamageMultiplier;
+
   if (ascMods.firstTurnBonusAp > 0) initialTurnState.apCurrent += ascMods.firstTurnBonusAp;
   if (ascMods.encounterStartShield > 0) initialTurnState.playerState.shield += ascMods.encounterStartShield;
 
@@ -701,21 +757,23 @@ function handleCombatNode(
       chargeRate: opts.chargeRate,
       maxTurns: opts.maxTurnsPerEncounter,
       brain,
+      canaryState: encounterCanaryState,
     },
     ascMods,
   );
 
-  // Update HP from encounter result
-  const hpAfter = Math.max(0, runState.hp - result.damageTaken);
-  runState.hp = hpAfter;
+  // Bug 8: use authoritative HP from turnState instead of approximating via damageTaken
+  runState.hp = result.finalPlayerHp;
 
   if (verbose) {
     console.log(`    Result: ${result.result.toUpperCase()} | Turns: ${result.turnsUsed} | HP: ${runState.hp}/${runState.maxHp}`);
   }
 
   if (result.result === 'victory' || result.result === 'timeout') {
-    // 25% chance health vial drop (matches real game probability)
-    if (Math.random() < 0.25) {
+    // Bug 2: use HEALTH_VIAL_DROP_CHANCE from balance.ts (real rate is 10%, not 25%)
+    // Elite and boss nodes always drop a vial; regular combat uses the random chance
+    const alwaysDrop = nodeType === 'elite' || nodeType === 'boss';
+    if (alwaysDrop || Math.random() < HEALTH_VIAL_DROP_CHANCE) {
       const isLarge = Math.random() < 0.3;
       const vialHeal = isLarge
         ? 20 + Math.floor(Math.random() * 16)  // 20-35 HP
@@ -732,15 +790,32 @@ function handleCombatNode(
       const options = [pickRandomMechanic(), pickRandomMechanic(), pickRandomMechanic()];
       const chosen = brain.pickReward(options, runState.deck);
       if (chosen && runState.deck.length < MAX_DECK_SIZE) {
-        const newCard = makeMechanicCard(chosen);
+        // Bug 5: never add transmute as a reward — it has no sim target behavior
+        const mechanic = chosen.id === 'transmute' ? findMechanic('strike') : chosen;
+        const newCard = makeMechanicCard(mechanic);
         newCard.chainType = runChainTypes[runState.deck.length % runChainTypes.length];
+        // Bug 7: catch-up mastery — new cards start near 75% of deck average
+        const avgMastery = runState.deck.reduce((sum, c) => sum + (c.masteryLevel ?? 0), 0) / (runState.deck.length || 1);
+        newCard.masteryLevel = Math.max(0, Math.floor(avgMastery * 0.75));
         runState.deck.push(newCard);
         runState.cardsAdded++;
       }
     } else {
       const newCard = pickCardReward(runState.deck);
       if (newCard) {
+        // Bug 5: transmute is dead weight in sim (pickCardReward can return any mechanic)
+        if (newCard.mechanicId === 'transmute') {
+          const strikeMech = findMechanic('strike');
+          newCard.mechanicId = strikeMech.id;
+          newCard.mechanicName = strikeMech.name;
+          newCard.cardType = strikeMech.type;
+          newCard.baseEffectValue = strikeMech.baseValue;
+          newCard.apCost = strikeMech.apCost;
+        }
         newCard.chainType = runChainTypes[runState.deck.length % runChainTypes.length];
+        // Bug 7: catch-up mastery — new cards start near 75% of deck average
+        const avgMastery = runState.deck.reduce((sum, c) => sum + (c.masteryLevel ?? 0), 0) / (runState.deck.length || 1);
+        newCard.masteryLevel = Math.max(0, Math.floor(avgMastery * 0.75));
         runState.deck.push(newCard);
         runState.cardsAdded++;
       }
@@ -777,7 +852,19 @@ function handleCombatNode(
       }
     }
 
-    return { ...result, goldAwarded };
+    // Bug 6: sync mastery from encounter deck back to persistent runState.deck
+    // createDeck() makes copies of cards; mastery upgrades happen on those copies.
+    const allEncounterCards = [
+      ...deck.drawPile, ...deck.hand, ...deck.discardPile, ...(deck.exhaustPile ?? [])
+    ];
+    for (const persistentCard of runState.deck) {
+      const encounterCard = allEncounterCards.find(c => c.id === persistentCard.id);
+      if (encounterCard && encounterCard.masteryLevel !== undefined) {
+        persistentCard.masteryLevel = encounterCard.masteryLevel;
+      }
+    }
+
+    return { ...result, canaryState: result.canaryState, goldAwarded };
   }
 
   return { ...result, goldAwarded: 0 };
@@ -1020,6 +1107,7 @@ function handleMysteryNode(
   verbose: boolean,
   runChainTypes: number[],
   brain?: BotBrain,
+  canaryState: CanaryState = createCanaryState(),
 ): { didCombat: boolean; combatResult?: EncounterResult } {
   const event = generateMysteryEvent(floor);
 
@@ -1097,7 +1185,7 @@ function handleMysteryNode(
     case 'combat': {
       // Fight a random enemy, no reward
       const combatResult = handleCombatNode(
-        runState, 'combat', floor, act, opts, ascMods, relicPool, verbose, runChainTypes, brain,
+        runState, 'combat', floor, act, opts, ascMods, relicPool, verbose, runChainTypes, brain, canaryState,
       );
       return { didCombat: true, combatResult };
     }
@@ -1280,6 +1368,9 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   let deathFloor = 0;
   let lastEnemyHpPct: number | undefined = undefined;
 
+  // Bug 3: Canary state persists across encounters for streak tracking
+  let canaryState: CanaryState = createCanaryState();
+
   // ── Act loop ──
   for (let act = 1; act <= options.acts; act++) {
     if (!survived) break;
@@ -1318,8 +1409,10 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
           totalEncounters++;
           const combatResult = handleCombatNode(
             runState, nodeType, floor, act as 1 | 2 | 3,
-            options, ascMods, relicPool, verbose, runChainTypes, brain,
+            options, ascMods, relicPool, verbose, runChainTypes, brain, canaryState,
           );
+          // Bug 3: carry Canary state forward across encounters
+          if (combatResult.canaryState) canaryState = combatResult.canaryState;
 
           visitRecord.result = combatResult.result;
           totalTurns += combatResult.turnsUsed;
@@ -1368,8 +1461,10 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
         case 'mystery': {
           const { didCombat, combatResult } = handleMysteryNode(
             runState, floor, act as 1 | 2 | 3,
-            options, ascMods, relicPool, verbose, runChainTypes, brain,
+            options, ascMods, relicPool, verbose, runChainTypes, brain, canaryState,
           );
+          // Bug 3: carry Canary state forward if mystery triggered combat
+          if (didCombat && combatResult?.canaryState) canaryState = combatResult.canaryState;
           if (didCombat && combatResult) {
             totalEncounters++;
             totalTurns += combatResult.turnsUsed;

@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-04-09T02:02:23.475Z",
-  "totalBridgedFacts": 5169,
+  "lastRun": "2026-04-09T08:41:29.373Z",
+  "totalBridgedFacts": 5219,
   "decks": {
     "ancient_greece": {
       "totalFacts": 246,
@@ -241,6 +241,12 @@
       "totalFacts": 440,
       "entities": 11,
       "bridged": 11,
+      "skipped": 0
+    },
+    "fifa_world_cup": {
+      "totalFacts": 181,
+      "entities": 50,
+      "bridged": 50,
       "skipped": 0
     }
   }

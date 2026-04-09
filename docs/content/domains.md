@@ -34,7 +34,7 @@ Defined in `src/data/domainMetadata.ts` as `Record<CanonicalFactDomain, DomainMe
 | `food_cuisine` | Food & World Cuisine | Cuisine | `#F97316` | 🍜 | kid | coming soon | |
 | `art_architecture` | Art & Architecture | Art | `#EC4899` | 🎨 | kid | coming soon | |
 | `social_sciences` | Social Sciences | Social Sci | `#7C3AED` | 📊 | teen | coming soon | |
-| `sports_entertainment` | Sports & Entertainment | Sports | `#EF4444` | 🏆 | kid | coming soon | Added 2026-04-09 — internationalization strategic priority |
+| `sports_entertainment` | Sports & Entertainment | Sports | `#EF4444` | 🏆 | kid | active | First deck: FIFA World Cup (181 facts), launched 2026-04-09 |
 | `language` | Language | Language | `#34D399` | 🗣️ | kid | active | Study Temple only |
 | `mathematics` | Mathematics | Math | `#3B82F6` | 🔢 | kid | active | Procedural — no static facts |
 
@@ -70,13 +70,13 @@ Added 2026-04-09 as the library's first dedicated Sports & Entertainment domain,
 - **Color:** `#EF4444` (crimson red — athletic energy, competition, victory)
 - **Icon:** 🏆
 - **Age Default:** kid
-- **Status:** `comingSoon: true` — first deck (FIFA World Cup) in architecture phase as of 2026-04-09
+- **Status:** Active — FIFA World Cup deck complete (181 facts, 5 sub-decks, launched 2026-04-09). `comingSoon` flag removed.
 
 ### Planned Decks
 
 | Deck | Status | Sub-deck themes |
 |---|---|---|
-| FIFA World Cup | Architecture phase (content-agent) | Championship, Legendary, Iconic Moments |
+| FIFA World Cup | **Complete** — 181 facts, 5 sub-decks, launched 2026-04-09 | Championship, Legendary, Iconic Moments |
 | Olympics | Planned | Summer Games, Winter Games, Legendary Athletes |
 | Formula 1 | Planned | Championship, Circuits, Constructors |
 | Chess | Planned | World Champions, Famous Matches, Openings |
@@ -107,7 +107,7 @@ Facts in this domain should have `categoryL1: 'sports_entertainment'` or `catego
 
 `GENERAL_MODE_DOMAINS` in `presetPoolBuilder.ts` also excludes `mathematics` (along with `language`, `geography`, `geography_drill`) so trivia runs never attempt to query math facts.
 
-`sports_entertainment` is included by `getKnowledgeDomains()` — it is a standard knowledge domain for trivia dungeon use. It will appear in general runs once fact content is populated (currently `comingSoon: true` so the UI hides it from primary selection).
+`sports_entertainment` is included by `getKnowledgeDomains()` — it is a standard knowledge domain for trivia dungeon use. The FIFA World Cup deck provides the first 181 facts. The `comingSoon` flag should be removed from `domainMetadata.ts` once the trivia dungeon pool is large enough for good variety (recommend: 500+ facts across 3+ decks).
 
 ---
 
