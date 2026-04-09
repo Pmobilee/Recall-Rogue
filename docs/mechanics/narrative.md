@@ -1,8 +1,8 @@
 # Run Narrative System — Woven Narrative Architecture
 
 > **Purpose:** Design spec for the procedural narrative system that delivers dark RPG storytelling woven from four concurrent threads, reactive to actual knowledge the player studies.
-> **Last verified:** 2026-04-08
-> **Status:** IMPLEMENTED — Ch4 narrative overhaul complete: FactTypeAdapter registry (cross-deck echo text), smart narration ratio tracking (Seeker boost).
+> **Last verified:** 2026-04-09
+> **Status:** IMPLEMENTED — Ch4 narrative overhaul complete: FactTypeAdapter registry (cross-deck echo text), smart narration ratio tracking (Seeker boost). 2026-04-09: curated-deck fact integration fix (resolveNarrativeFact, chain tracking).
 > **Source files:** `src/services/narrativeTypes.ts` (data interfaces), `src/services/narrativeGravity.ts` (classification + gravity scoring), `src/services/narrativeAdapterRegistry.ts` (FactTypeAdapter registry — cross-deck echo text), `src/services/narrativeLoader.ts` (runtime loader), `src/services/narrativeEngine.ts` (IMPLEMENTED — 2026-04-03), `src/services/encounterBridge.ts` (NarrativeEncounterSnapshot snapshot mechanism), `src/services/gameFlowController.ts` (integration hooks), `data/narratives/` (COMPLETE — 78 YAML files), `scripts/build-narratives.mjs` (YAML-to-JSON converter), `public/data/narratives/` (generated JSON output)
 
 
@@ -705,13 +705,39 @@ Special-room narration fires on **EXIT**, never on entry. `showRoomExitNarrative
 - `onMysteryEffectResolved()` default branch — when a direct-effect mystery event resolves to map
 - Treasure room `onComplete` callback — after player accepts/skips relic choice
 
-**NarrativeEncounterSnapshot** (added to `encounterBridge.ts`):
+**NarrativeEncounterSnapshot** (added to `encounterBridge.ts`, updated 2026-04-09):
 Because `activeTurnState` is cleared inside a 550ms setTimeout before `notifyEncounterComplete` fires,
 TurnState data is unavailable in `onEncounterComplete`. The bridge now captures a `NarrativeEncounterSnapshot`
 just before clearing — containing `answeredFactIds`, `fizzledFactIds` (wrong charges, mapped from turnLog fizzle entries),
-`isBoss`, `isElite`, `enemyId`, and `streakAtEnd`. `gameFlowController` reads this snapshot via
+`isBoss`, `isElite`, `enemyId`, `streakAtEnd`, and `chainCompletions: string[][]` (factId arrays for chains
+that reached 3+ correct answers before breaking). The `chainCompletions` field is populated at snapshot time
+from `TurnState.completedChainSequences`, with a final flush of any active chain in
+`TurnState.currentChainAnswerFactIds` that also reached 3+. `gameFlowController` reads this snapshot via
 `getLastNarrativeEncounterSnapshot()` and clears it via `clearNarrativeEncounterSnapshot()` after consumption.
-Fact details (answer text, quizQuestion) are resolved synchronously from `factsDB.getById()`.
+Fact details are resolved via `resolveNarrativeFact()` — NOT `factsDB.getById()` directly — to support
+curated-deck facts (see Fact Resolution subsection below).
+
+
+### Fact Resolution (2026-04-09)
+
+Trivia-mode facts live in `factsDB` (the XOR-decoded `public/facts.db` SQLite). Curated-deck facts live in
+`curatedDeckStore` (loaded from `public/curated.db`). Before this fix, `gameFlowController.onEncounterComplete()`
+called `factsDB.getById()` directly, which returns `null` for any curated-deck factId — silently dropping
+every quizzed fact from study and custom-deck runs.
+
+**`resolveNarrativeFact(factId, run)`** in `src/services/encounterBridge.ts` is the unified resolver:
+1. Checks `factsDB.getById(factId)` first (covers trivia/Trivia Dungeon runs).
+2. Falls back to `curatedDeckStore.getCuratedDeckFact(factId)` when the first lookup returns null — used
+   when `run.deckMode` is `'study'` or `'custom_deck'`.
+3. Returns a `NarrativeFactInfo` object with full metadata:
+   `{ answer, quizQuestion, partOfSpeech?, targetLanguageWord?, pronunciation?, categoryL1?, categoryL2?, language? }`.
+   This is the typed input the `FactTypeAdapter` registry needs to select the correct echo strategy.
+
+`gameFlowController.ts` uses `resolveNarrativeFact()` for both `answeredFactIds` and `chainCompletions`
+resolution. Chain factId arrays are resolved to answer strings and filtered to sequences still ≥3 after
+resolution before being passed to `recordEncounterResults()` as `chainCompletions: string[][]`.
+
+See `docs/gotchas.md` entry dated 2026-04-09 for the full failure history.
 
 ### Display System
 
@@ -1117,8 +1143,8 @@ Total authored lines: ~700+ narrative fragments. Tone: dark, serious literary RP
 | `src/services/narrativeLoader.ts` | IMPLEMENTED | fetch()-based loader with module-level cache. preloadNarrativeData() loads all JSON at game init. All accessors synchronous after preload. |
 | `data/narratives/` | COMPLETE | 78 YAML files across 7 directories. Build script converts to JSON in public/data/narratives/. |
 | `src/ui/stores/narrativeStore.ts` | IMPLEMENTED | `narrativeDisplay` writable store, `showNarrative()`, `dismissNarrative()`. The engine calls showNarrative() with lines + mode; the overlay dismisses via onDismiss. |
-| `src/services/encounterBridge.ts` | INTEGRATED | `NarrativeEncounterSnapshot` interface + module-level capture in victory setTimeout. `getLastNarrativeEncounterSnapshot()` / `clearNarrativeEncounterSnapshot()` exports. |
-| `src/services/gameFlowController.ts` | INTEGRATED | All 8 narrative hooks wired: preload, initNarrative, recordEncounterResults, getNarrativeLines (post-encounter + special rooms), recordShopPurchase (relic/card), recordRestAction (upgrade), resetNarrative. |
+| `src/services/encounterBridge.ts` | INTEGRATED | `NarrativeEncounterSnapshot` interface + module-level capture in victory setTimeout. Added 2026-04-09: `chainCompletions: string[][]` field, `TurnState.currentChainAnswerFactIds` / `completedChainSequences` chain tracking fields, and `resolveNarrativeFact(factId, run)` unified fact resolver with fallback to `curatedDeckStore`. `NarrativeFactInfo` type exported. |
+| `src/services/gameFlowController.ts` | INTEGRATED | All 8 narrative hooks wired: preload, initNarrative, recordEncounterResults, getNarrativeLines (post-encounter + special rooms), recordShopPurchase (relic/card), recordRestAction (upgrade), resetNarrative. Updated 2026-04-09: uses `resolveNarrativeFact()` instead of `factsDB.getById()`, resolves `chainCompletions` factId arrays to answer strings before passing to `recordEncounterResults()`. |
 | `src/ui/components/NarrativeOverlay.svelte` | IMPLEMENTED | Full-screen overlay: black + CSS fog, italic RPG text, auto-fade and click-through modes. Props: lines, mode, onDismiss. z-index 950. CardApp.svelte wiring is PLANNED (separate task). |
 
 ### Implementation Notes
@@ -1180,6 +1206,13 @@ interface FactTypeAdapter {
 | `DefaultAdapter` | Always matches (fallback) | `correctAnswer` if 4-50 chars; first explanation sentence otherwise | `context` |
 
 **Integration:** `narrativeEngine.ts` `recordEncounterResults()` calls `buildAdaptedEchoText()` instead of the old `buildEchoText()`. The `EncounterNarrativeData.correctAnswers` array now accepts optional `categoryL1`, `categoryL2`, `language`, `targetLanguageWord`, and `pronunciation` fields to power the adapter.
+
+**(2026-04-09)** The caller side was finally wired when `gameFlowController.onEncounterComplete()` switched
+to `resolveNarrativeFact()`. Before that fix, curated-deck fact IDs silently returned `null` from
+`factsDB.getById()` and the metadata the adapter needs — `partOfSpeech`, `categoryL1`, `language`, etc. —
+never reached `recordEncounterResults()`. Every quizzed fact in study/knowledge runs fell through to the
+weak `DefaultAdapter`, and `chainCompletions` was hardcoded to `[]` so `{a1}..{a5}` echo templates and
+`lastChainCompletion` state never fired.
 
 **Key exports:**
 - `resolveAdapter(fact): FactTypeAdapter` — returns first matching adapter

@@ -73,6 +73,18 @@ The narrative system NEVER references specific facts, answers, or knowledge the 
 
 If it wasn't a quiz question this run, it doesn't exist for the narrative.
 
+### Fact Resolution (2026-04-09)
+
+Quizzed fact IDs live in TWO stores depending on run type:
+- **Trivia runs** → `factsDB` (facts.db, `src/services/factsDB.ts`)
+- **Study / custom-deck runs** → `curatedDeckStore` (curated.db, `src/data/curatedDeckStore.ts`)
+
+**Never use `factsDB.getById()` directly in narrative integration code.** Always use the unified `resolveNarrativeFact(factId, run)` helper exported from `src/services/encounterBridge.ts`. It checks `factsDB` first, then falls back to `curatedDeckStore.getCuratedDeckFact()` using `run.deckMode` (handles both `study` and `custom_deck` modes). The returned `NarrativeFactInfo` carries all metadata fields the adapter registry needs: `partOfSpeech`, `targetLanguageWord`, `pronunciation`, `categoryL1`, `categoryL2`, `language`.
+
+Chain completions (3+ answer sequences) are tracked in `TurnState.currentChainAnswerFactIds` (working buffer) and `TurnState.completedChainSequences` (sealed sequences), flushed on chain break / Quick Play / encounter end. The snapshot carries them as `chainCompletions: string[][]` (factId arrays); `gameFlowController` resolves them to answer strings before calling `recordEncounterResults()`, filtering any sequence that drops below 3 after resolution.
+
+See `docs/gotchas.md` 2026-04-09 "Narration silently dropped curated-deck facts (3 compounding bugs)" for the full failure history.
+
 ---
 
 ## Task Types
@@ -298,7 +310,8 @@ When wiring narrative into the game, verify these connections:
 
 - [ ] `RunState.narrativeState` — optional field on RunState
 - [ ] `gameFlowController.ts` — room transition hook calls `narrativeEngine.getNextLines()`
-- [ ] `encounterBridge.ts` — after encounter, feeds results to `narrativeEngine.recordEncounter()`
+- [ ] `gameFlowController.ts` — `onEncounterComplete()` uses `resolveNarrativeFact(factId, run)` (NEVER `factsDB.getById` directly) so curated-deck facts flow through
+- [ ] `encounterBridge.ts` — after encounter, feeds results to `narrativeEngine.recordEncounter()`; snapshot carries `chainCompletions: string[][]` from `TurnState.completedChainSequences`
 - [ ] `shopService.ts` — on purchase, calls `narrativeEngine.recordPurchase(type)`
 - [ ] `ChainDistribution` — provides chain color names and topic labels
 - [ ] Svelte overlay component — displays narrative text on transitions
