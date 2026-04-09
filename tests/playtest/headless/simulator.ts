@@ -167,10 +167,11 @@ function findMechanic(id: string): MechanicDefinition {
 function pickRandomMechanic(): MechanicDefinition {
   // Type distribution: ~40% attack, 25% shield, 15% utility, 10% buff, 10% debuff
   const typePool: CardType[] = [
-    'attack', 'attack', 'attack', 'attack',
+    'attack', 'attack', 'attack',
     'shield', 'shield', 'shield',
     'utility', 'utility',
     'buff',
+    'debuff', // enables poison/control builds in sim rewards
   ];
   const type = typePool[Math.floor(Math.random() * typePool.length)];
 

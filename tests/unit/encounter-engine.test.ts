@@ -512,8 +512,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'attack', value: 5, weight: 1, telegraph: 'Strike' },
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: round(5 * 1.0 * 2.0) = 10, segment 1 cap is 14, so result = 10.
-      expect(result.damage).toBe(10);
+      // Floor 1: round(5 * 1.0 * 1.5) = 8, segment 1 cap is 16, so result = 8.
+      expect(result.damage).toBe(8);
     });
 
     it('applies strength modifier to attacks', () => {
@@ -522,7 +522,7 @@ describe('Enemy Manager', () => {
         statusEffects: [{ type: 'strength', value: 2, turnsRemaining: 3 }],
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: round(10 * 1.5 * 1.0 * 2.0) = 30, capped at segment 1 cap of 16.
+      // Floor 1: round(10 * 1.5 * 1.0 * 1.5) = 23, capped at segment 1 cap of 16.
       expect(result.damage).toBe(16);
     });
 
@@ -531,7 +531,7 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Flurry', hitCount: 4 },
       });
       const result = executeEnemyIntent(enemy);
-      // round(5 * 1.0 * 1.0 * 2.0) * 4 = 40, capped at segment 1 cap of 16.
+      // round(5 * 1.0 * 1.0 * 1.5) * 4 = 32, capped at segment 1 cap of 16.
       expect(result.damage).toBe(16);
     });
 
@@ -1234,9 +1234,9 @@ describe('Turn Manager', () => {
       const ts = startEncounter(deck, enemy);
       ts.playerState.shield = 10;
       endPlayerTurn(ts);
-      // Enemy attacks first: 10 damage (5 * 2.0 global mult, under cap 14) → shield 10 - 10 = 0
-      // Then resetTurnState decays: floor(0 * 0.75) = 0
-      expect(ts.playerState.shield).toBe(0);
+      // Enemy attacks first: 8 damage (round(5 * 1.5) = 8, under cap 16) → shield 10 - 8 = 2
+      // Then resetTurnState decays: floor(2 * 0.75) = floor(1.5) = 1
+      expect(ts.playerState.shield).toBe(1);
     });
 
     it('ticks player and enemy status effects', () => {

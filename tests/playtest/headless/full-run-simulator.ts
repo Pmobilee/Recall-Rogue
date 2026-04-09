@@ -231,10 +231,11 @@ function findMechanic(id: string): MechanicDefinition {
 
 function pickRandomMechanic(): MechanicDefinition {
   const typePool: CardType[] = [
-    'attack', 'attack', 'attack', 'attack',
+    'attack', 'attack', 'attack',
     'shield', 'shield', 'shield',
     'utility', 'utility',
     'buff',
+    'debuff', // enables poison/control builds in sim rewards
   ];
   const type = typePool[Math.floor(Math.random() * typePool.length)];
   const activeMechanics = getActiveMechanics();

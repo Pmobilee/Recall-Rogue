@@ -89,16 +89,16 @@ All have `unlockCost: 0` and `startsUnlocked: true`.
 | `vitality_ring` | +20 max HP | on_run_start |
 | `herbal_pouch` | Apply 1 Poison to all enemies each turn; heal 3 HP after combat | on_turn_start |
 | `swift_boots` | Draw 6 cards per turn instead of 5 | permanent |
-| `steel_skin` | -3 damage taken (min 1) | on_damage_taken |
+| `steel_skin` | -1 damage taken (min 1) | on_damage_taken |
 | `gold_magnet` | +30% gold from all sources | permanent |
 | `merchants_favor` | +1 card and +1 relic choice in shops | permanent |
 | `lucky_coin` | After 3 wrong Charges in encounter: +50% damage on next correct Charge | on_charge_wrong |
 | `scavengers_eye` | Exhausting a card draws 1 card from draw pile | on_exhaust |
 | `quick_study` | Preview 1 answer after 3+ correct Charges; wrong answers deal +2 self-damage | on_encounter_end |
-| `thick_skin` | Reflect debuffs onto enemy; +2 damage taken from all sources | permanent |
+| `thick_skin` | Start each encounter with 5 block | on_encounter_start |
 | `tattered_notebook` | Exhausting a card grants +1 Strength this turn | on_exhaust |
 | `battle_scars` | After taking a hit: next attack +3 damage (once/turn) | on_damage_taken |
-| `brass_knuckles` | Every 3rd attack grants +1 permanent Strength (this encounter) | on_attack |
+| `brass_knuckles` | Start each turn with +1 temporary Strength (resets at turn end) | on_turn_start |
 
 ### Uncommon Starters (14)
 
@@ -110,7 +110,7 @@ All have `unlockCost: 0` and `startsUnlocked: true`.
 | `volatile_core` | +50% attack damage; wrong Charge deals 3 self-damage AND 3 enemy damage | permanent |
 | `aegis_stone` | Block from shields carries between turns (max 15); at 15 block gain Thorns 2 | on_turn_end |
 | `regeneration_orb` | Heal 3 HP if 2+ shield cards played this turn | on_turn_end |
-| `plague_flask` | Poison ticks deal +2 extra damage; Poison lasts 1 extra turn | permanent |
+| `plague_flask` | All enemies start combat with 2 Poison | on_encounter_start |
 | `memory_nexus` | Every 3 correct Charges per encounter: draw 2 extra next turn (repeats) | on_charge_correct |
 | `insight_prism` | Wrong Charge: reveals answer; next same-fact appearance auto-succeeds | on_charge_wrong |
 | `blood_price` | +1 AP per turn; -2 HP per turn | permanent |
@@ -139,6 +139,7 @@ All have `isStarter: false`, `startsUnlocked: false`. Eligible once `playerLevel
 | `archive_codex` | After combat: +1 flat damage per 10 total mastery levels in deck | on_encounter_end | 8 |
 | `chain_forge` | Once/encounter: chain break prevented, card gets current multiplier, chain increments | on_chain_complete | 8 |
 | `berserker_s_oath` | -30 max HP at run start; +40% attack damage | on_run_start | 9 |
+| `ritual_blade` | First card each turn +50% damage; other cards -25% | on_card_play | 7 |
 | `thorn_crown` | At 10+ block when attacked: reflect 5 damage | on_damage_taken | 10 |
 | `bastions_will` | Charged shield cards: +75% block; Quick Play shields: +25% block | on_charge_correct | 11 |
 | `festering_wound` | When enemy has 3+ poison stacks: all attacks +40% damage | permanent | 13 |
@@ -166,17 +167,30 @@ All have `isStarter: false`, `startsUnlocked: false`. Eligible once `playerLevel
 Effects are resolved via pure functions from a `Set<string>` of held relic IDs. No side effects.
 
 Key resolved contexts:
-- `resolveTurnStartEffects()` — block grants (iron_shield: 2 + shieldsPlayedLastTurn), AP bonuses, draw bonuses, poison to all enemies (herbal_pouch), Capacitor release, Deja Vu spawn. Context field `shieldsPlayedLastTurn` required for iron_shield dynamic block.
-- `resolveDamageTakenEffects()` — flat damage reduction (steel_skin), flat increase (thick_skin: +2), thorns, pity counter
-- `resolveChargeCorrectEffects()` — multiplier bonuses, draw bonuses, speed bonuses. Note: tattered_notebook gold removed (v3: exhaust effect).
+- `resolveTurnStartEffects()` — block grants (iron_shield: 2 + shieldsPlayedLastTurn), AP bonuses, draw bonuses, poison to all enemies (herbal_pouch), Capacitor release, Deja Vu spawn, `tempStrengthGain` (brass_knuckles: +1 temp Strength each turn start). Context field `shieldsPlayedLastTurn` required for iron_shield dynamic block.
+- `resolveDamageTakenEffects()` — flat damage reduction (steel_skin: -1 nerfed from -3), thorns, pity counter. Note: thick_skin no longer increases damage taken (reworked to encounter_start_block, 2026-04-09).
+- `resolveEncounterStartEffects()` — hollow_armor starting block, gladiator_s_mark temp Strength, plague_flask encounter start poison (2 stacks to all enemies), thick_skin encounter start block (+5).
+- `resolveChargeCorrectEffects()` — multiplier bonuses, draw bonuses, speed bonuses.
 - `resolveChargeWrongEffects()` — safety nets (lucky_coin), self-damage (volatile_core, scholars_gambit)
-- `resolveAttackModifiers()` — returns `strengthGain` field: brass_knuckles grants +1 permanent Strength (9999 turns) on every 3rd attack. Caller must apply to playerState.statusEffects.
-- `resolveDebuffAppliedModifiers()` — returns `reflectToEnemy: boolean`; thick_skin v3 reflects ALL debuffs to enemy instead of player.
+- `resolveAttackModifiers()` — percentDamageBonus includes ritual_blade (+50% first card, -25% other cards; nerfed from +100% 2026-04-09). brass_knuckles strengthGain is always 0 (moved to turn start).
+- `resolveDebuffAppliedModifiers()` — returns `reflectToEnemy: boolean`; always false now (thick_skin no longer reflects debuffs, 2026-04-09).
+- `resolveShieldModifiers()` — worn_shield grants +2 flatBlockBonus (reworked from thorns+penalty, 2026-04-09).
 - `resolveExhaustEffects()` — returns `bonusCardDraw` (exhaustion_engine +2, scavengers_eye +1) and `tempStrengthGain` (tattered_notebook +1 for 1 turn). Caller must apply strength status effect.
-- `resolveEncounterEndEffects()` — herbal_pouch heals 3 HP post-combat (was 8 in v2).
-- `resolveCardRewardOptionCountV2()` — scavengers_eye no longer grants +1 card reward option (v3 rework).
-- `resolvePoisonTickBonus()` — plague_flask extra damage per stack
+- `resolveEncounterEndEffects()` — herbal_pouch heals 3 HP post-combat.
 - `getMaxRelicSlots()` — returns 5, or 6 if scholars_gambit held
+
+## 2026-04-09 Balance Pass
+
+**Nerfs:**
+- `steel_skin`: flat damage reduction 3 → 1 (was causing trivial early-game clearing)
+- `ritual_blade`: first card bonus +100% → +50% (97% win rate, too dominant)
+- `phoenix_feather`: already once/run; no change needed (85% win rate explained by the auto-Charge turn)
+
+**Buffs (garbage tier relics):**
+- `brass_knuckles`: every-2nd-attack strength → +1 temp Strength at turn start every turn (2.7% win rate)
+- `plague_flask`: poison tick/duration bonus → all enemies start with 2 Poison at encounter start
+- `thick_skin`: debuff reflect + damage penalty → start each encounter with 5 block
+- `worn_shield`: thorns + -20% block → +2 flat block on all shield cards
 
 ## Functional Categories
 

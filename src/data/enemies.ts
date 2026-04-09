@@ -530,7 +530,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Group Project',
     category: 'boss',
     region: 'the_abyss',
-    baseHP: 18, // rebalanced — HP raised 16→22 (pass #1), 22→17 (pass #4), 17→15 (pass #5, 2026-04-03), raised 15→18 (pass #8, 2026-04-09, Act 2 +20%)
+    baseHP: 14, // rebalanced — HP raised 16→22 (pass #1), 22→17 (pass #4), 17→15 (pass #5, 2026-04-03), raised 15→18 (pass #8, 2026-04-09, Act 2 +20%), 18→14 (pass 2: -22%)
     intentPool: [
       { type: 'attack', value: 5, weight: 35, telegraph: 'Hydra strike' },
       { type: 'multi_attack', value: 4, weight: 30, telegraph: 'Twin fangs', hitCount: 3 },
@@ -543,7 +543,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'multi_attack', value: 4, weight: 3, telegraph: 'Dual hydra strike', hitCount: 2 },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Fang barrage', hitCount: 4 },
       { type: 'debuff', value: 4, weight: 2, telegraph: 'Toxic deluge', statusEffect: { type: 'poison', value: 4, turns: 3 } },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Decapitation bite' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Decapitation bite' },
     ],
     animArchetype: 'lurcher',
   },
@@ -570,7 +570,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Omnibus',
     category: 'boss',
     region: 'the_archive',
-    baseHP: 15, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4), 20→18 (pass #5, 2026-04-03), 18→15 (pass #6, 2026-04-09)
+    baseHP: 12, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4), 20→18 (pass #5, 2026-04-03), 18→15 (pass #6, 2026-04-09), 15→12 (pass 2)
     intentPool: [
       { type: 'attack', value: 4, weight: 35, telegraph: 'Tome slam' },
       { type: 'attack', value: 5, weight: 25, telegraph: 'Crushing knowledge' },
@@ -584,7 +584,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     phase2IntentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Tome crush' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Page storm', hitCount: 2 },
-      { type: 'buff', value: 3, weight: 1, telegraph: 'Knowledge consumed', statusEffect: { type: 'strength', value: 3, turns: 3 } },
+      { type: 'buff', value: 2, weight: 1, telegraph: 'Knowledge consumed', statusEffect: { type: 'strength', value: 2, turns: 3 } },
       { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
     ],
   },

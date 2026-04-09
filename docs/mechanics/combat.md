@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-09 (Phase 7: Enemy damage display unified with pipeline; Coop turn-end timeout removed)
+> **Last verified:** 2026-04-09 (Phase 7 + pass 2 balance: GLOBAL_ENEMY_DAMAGE_MULTIPLIER 2.0→1.5, Act 2/3 caps reduced, omnibus/group_project HP/attack tuned)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`, `src/services/enemyDamageScaling.ts`, `src/services/intentDisplay.ts`, `src/services/multiplayerCoopSync.ts`
 
 ---
@@ -127,7 +127,7 @@ Charge plays add +1 AP surcharge. Surcharge waivers (checked in priority order i
 1. **Surge turn** — `isSurgeTurn(turnNumber)`; fires every `SURGE_INTERVAL (4)` turns starting at `SURGE_FIRST_TURN (2)`. `getSurgeChargeSurcharge()` returns 0 on surge turns, `CHARGE_AP_SURCHARGE` (1) on normal turns.
 2. **Warcry buff** — `warcryFreeChargeActive` flag (consumed on use)
 3. **Chain Momentum** — `CHAIN_MOMENTUM_ENABLED = true`; previous correct Charge waives surcharge for next same chain-type Charge
-4. **Active Chain Color Match** (7.6 fix) — `card.chainType === getActiveChainColor()`; charging a card that matches the current active chain color waives the surcharge. Comes BEFORE free-first-charge so an on-colour first charge does NOT consume the free-first-charge slot.
+4. **Active Chain Color Match** (7.6 fix) — `card.chainType === getActiveChainColor()`; charging a card that matches the current active chain color waives the surcharge. Comes BEFORE free-first-charge so an on-colour first charge does NOT consume the free-first-charge slot. After a mid-turn color switch (see chains.md), `getActiveChainColor()` returns the newly pivoted color — so the switched-to color immediately benefits from this waiver.
 5. **Free First Charge** — `isFirstChargeFree(factId, ...)` — first attempt at any fact in the run costs +0 surcharge
 6. **Free Play Charges** — `turnState.freePlayCharges > 0` — set by frenzy mechanic or `focus_next2free` tag; reduces AP cost to 0 (highest priority — checked AFTER Focus discount)
 
@@ -221,6 +221,10 @@ Enemy attack damage passes through two layers before `takeDamage()` is called:
 2. `enemy.difficultyVariance` (0.8–1.2× for common enemies, fixed at instance creation)
 3. Brain Fog aura (+20% if aura state is 'brain_fog')
 4. Segment damage cap (`ENEMY_TURN_DAMAGE_CAP[segment]` — floored to cap value, bypassed if `intent.bypassDamageCap`)
+
+**Current tuned values (pass 2, 2026-04-09):**
+- `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.5` (tuned from 2.0→1.5: 25% damage reduction, post-16% win-rate playtest)
+- `ENEMY_TURN_DAMAGE_CAP = { 1: 16, 2: 22, 3: 32, 4: 56, endless: null }` (Act 2 capped 28→22, Act 3 capped 40→32)
 
 **Layer 2 — `turnManager.ts` §3094-3130 (applied to `intentResult.damage`):**
 5. Enrage bonus (runtime: added after layer 1, capped again — **excluded from intent display**)

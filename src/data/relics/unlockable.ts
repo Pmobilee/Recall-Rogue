@@ -255,7 +255,6 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
     category: 'sustain',
     trigger: 'on_lethal',
     effects: [
-      // TODO(AR-59.11): once/run semantics — requires phoenixFeather_usedThisRun run flag.
       { effectId: 'lethal_save_run', description: 'Resurrect at 15% HP (once/run)', value: 15 },
       { effectId: 'phoenix_autocharge_turns', description: 'Auto-Charge all cards free for 1 turn on resurrect', value: 1 },
     ],

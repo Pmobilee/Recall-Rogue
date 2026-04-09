@@ -84,6 +84,11 @@ export interface TurnStartEffects {
    * 0 if herbal_pouch not held.
    */
   poisonToAllEnemies?: number;
+  /**
+   * Temporary Strength gained at turn start from brass_knuckles (resets at turn end).
+   * 0 if brass_knuckles not held.
+   */
+  tempStrengthGain?: number;
 }
 
 /**
@@ -192,7 +197,10 @@ export function resolveTurnStartEffects(
   if (relicFired) playCardAudio('relic-trigger');
   if (dejaVuCardSpawn) playCardAudio('relic-card-spawn');
 
-  return { bonusBlock, capacitorReleasedAP, bonusAP, pocketWatchDrawBonus, dejaVuCardSpawn, bonusCardDraw, maxApReduction, auraApModifier, poisonToAllEnemies };
+  // brass_knuckles — +1 temporary Strength at turn start (resets at turn end)
+  const tempStrengthGain = relicIds.has('brass_knuckles') ? 1 : 0;
+
+  return { bonusBlock, capacitorReleasedAP, bonusAP, pocketWatchDrawBonus, dejaVuCardSpawn, bonusCardDraw, maxApReduction, auraApModifier, poisonToAllEnemies, tempStrengthGain };
 }
 
 // ─── Encounter Start ────────────────────────────────────────────────
@@ -230,6 +238,16 @@ export interface EncounterStartEffects {
    * 0 if hollow_armor not held. Note: block gain is disabled after turn 0 (see resolveShieldModifiers).
    */
   startingBlock?: number;
+  /**
+   * Poison stacks applied to ALL enemies at encounter start (plague_flask: 2 stacks).
+   * 0 if plague_flask not held.
+   */
+  encounterStartPoison?: number;
+  /**
+   * Block granted to player at encounter start (thick_skin rework: 5 block).
+   * Stacks with bonusBlock from other sources.
+   */
+  thickSkinBlock?: number;
 }
 
 /** @deprecated lucky_coin v3 no longer uses a buff pool (moved to on_charge_wrong). */
@@ -288,6 +306,12 @@ export function resolveEncounterStartEffects(
     startingBlock !== undefined;
   if (encounterRelicFired) playCardAudio('relic-trigger');
 
+  // plague_flask — apply 2 Poison to all enemies at encounter start
+  const encounterStartPoison = relicIds.has('plague_flask') ? 2 : 0;
+
+  // thick_skin rework — start each encounter with 5 block
+  const thickSkinBlock = relicIds.has('thick_skin') ? 5 : 0;
+
   return {
     bonusBlock,
     bonusHeal,
@@ -298,6 +322,8 @@ export function resolveEncounterStartEffects(
     firstAttackDamageBonus,
     tempStrengthBonus,
     startingBlock,
+    encounterStartPoison,
+    thickSkinBlock,
   };
 }
 
@@ -353,7 +379,7 @@ export interface AttackContext {
    * Keyed by FactDomain string. Used by domain_mastery_sigil v2.
    */
   deckDomainCounts?: Record<string, number>;
-  /** Number of attacks played this encounter (brass_knuckles: every 3rd attack +6). */
+  /** Number of attacks played this encounter (brass_knuckles was moved to turn_start in 2026-04-09 balance pass). */
   attackCountThisEncounter?: number;
   /** Accumulated Fury stacks from bloodstone_pendant. Consumed after attack. */
   furyStacks?: number;
@@ -500,10 +526,9 @@ export function resolveAttackModifiers(
     flatDamageBonus += 3;
   }
 
-  // brass_knuckles — every 2nd attack grants +1 permanent Strength (encounter-scoped)
-  const attackCount = context.attackCountThisEncounter ?? 0;
-  const strengthGain =
-    relicIds.has('brass_knuckles') && attackCount > 0 && attackCount % 2 === 0 ? 1 : 0;
+  // brass_knuckles — moved to turn_start (buff now grants +1 temp Strength each turn start)
+  // strengthGain is always 0 here; kept for interface compatibility
+  const strengthGain = 0;
 
   // null_shard — all attacks +25% damage (chain mult override handled in resolveChainModifiers)
   if (relicIds.has('null_shard')) {
@@ -538,7 +563,7 @@ export function resolveAttackModifiers(
   // ritual_blade — first card this turn: +100% damage; subsequent cards: -25%
   if (relicIds.has('ritual_blade')) {
     if (context.isFirstCardThisTurn !== false) {  // first card or unset
-      percentDamageBonus += 100;
+      percentDamageBonus += 50; // nerfed from +100 to +50 (2026-04-09 balance pass)
     } else {
       percentDamageBonus -= 25;
     }
@@ -625,20 +650,22 @@ export function resolveShieldModifiers(
   relicIds: Set<string>,
   context?: ShieldModifiersContext,
 ): ShieldModifiers {
-  // worn_shield v2 — -20% block penalty + 1 Thorns stack per shield play (replaces v1 every-2nd bonus)
+  // worn_shield rework (2026-04-09) — +2 flat block on all block cards (replaces v2 penalty+thorns)
   let percentBlockBonus = 0;
   let grantsThorns: number | undefined;
   const shieldCount = context?.shieldCardPlayCountThisEncounter ?? 0;
-  // Keep v1 wornShieldBonus for legacy callers; v2 uses percentBlockBonus + grantsThorns instead
-  const wornShieldBonus = 0; // v1 behaviour removed — worn_shield reworked in v2
+  // Keep v1 wornShieldBonus for legacy callers
+  const wornShieldBonus = 0; // v1 behaviour removed
   if (relicIds.has('worn_shield')) {
-    percentBlockBonus -= 20;
-    grantsThorns = 1;
     playCardAudio('relic-trigger');
   }
 
   // whetstone — penalty: -1 flat block on shield cards
+  // worn_shield rework — +2 flat block on all shield cards
   let flatBlockBonus = relicIds.has('stone_wall') ? 3 : 0;
+  if (relicIds.has('worn_shield')) {
+    flatBlockBonus += 2;
+  }
   if (relicIds.has('whetstone')) {
     flatBlockBonus -= 1;
   }
@@ -771,8 +798,8 @@ export function resolveDamageTakenEffects(
   const thornCrownReflect =
     relicIds.has('thorn_crown') && (context.currentBlock ?? 0) >= 10 ? 5 : 0;
 
-  // steel_skin: v2 value is -3; v1 was -2
-  const flatReduction = relicIds.has('steel_skin') ? 3 : 0;
+  // steel_skin: nerfed from 3 → 1 flat damage reduction (2026-04-09 balance pass)
+  const flatReduction = relicIds.has('steel_skin') ? 1 : 0;
 
   // battle_scars — taking a hit arms next-attack +3 (once/turn; caller manages the flag)
   const battleScarsTriggered = relicIds.has('battle_scars');
@@ -780,8 +807,8 @@ export function resolveDamageTakenEffects(
   // bloodstone_pendant — 1 Fury stack per hit taken
   const furyStacksGained = relicIds.has('bloodstone_pendant') ? 1 : 0;
 
-  // thick_skin v2 rework — tradeoff: take +2 more damage (debuff reduction moved to resolveDebuffAppliedModifiers)
-  const flatDamageIncrease = relicIds.has('thick_skin') ? 2 : undefined;
+  // thick_skin reworked to encounter_start_block — no longer has a damage penalty
+  const flatDamageIncrease: number | undefined = undefined;
 
   // Audio: fire if any on-hit relic produced an active effect
   if (thornReflect > 0 || thornCrownReflect > 0 || furyStacksGained > 0 || battleScarsTriggered) {
@@ -2293,10 +2320,8 @@ export function resolveDebuffAppliedModifiers(
   relicIds: Set<string>,
   context: DebuffAppliedContext,
 ): DebuffAppliedModifiers {
-  // thick_skin v3 rework: debuffs are reflected to the enemy instead of reducing duration.
-  // v2: +2 damage taken (still in resolveDamageTakenEffects).
-  // v1 legacy (duration -1 on first debuff) is superseded by this reflect mechanic.
-  const reflectToEnemy = relicIds.has('thick_skin');
+  // thick_skin reworked to encounter_start_block (2026-04-09) — no longer reflects debuffs.
+  const reflectToEnemy = false;
   return { reflectToEnemy };
 }
 

@@ -1,11 +1,11 @@
 /**
- * Unit tests for 6 reworked relic effects (Phase 4 mechanics overhaul).
+ * Unit tests for reworked relic effects.
  *
  * Relic reworks tested:
- *   brass_knuckles — every 2nd attack grants +1 permanent Strength (was: +6 flat damage)
+ *   brass_knuckles — +1 temp Strength at turn start (was: every 2nd attack; 2026-04-09 buff)
  *   iron_shield    — 2 + shieldsPlayedLastTurn block per turn (was: static +5 block)
  *   herbal_pouch   — +1 Poison/turn + heal 3 post-combat (was: conditional heal)
- *   thick_skin     — debuffs reflected to enemy (was: debuff duration -1)
+ *   thick_skin     — start encounter with 5 block (was: debuff reflect; 2026-04-09 buff)
  *   scavengers_eye — draw 1 on exhaust (was: +1 card reward)
  *   tattered_notebook — +1 temp Strength on exhaust (was: +5 gold)
  */
@@ -14,6 +14,7 @@ import { describe, it, expect } from 'vitest';
 import {
   resolveAttackModifiers,
   resolveTurnStartEffects,
+  resolveEncounterStartEffects,
   resolveEncounterEndEffects,
   resolveDebuffAppliedModifiers,
   resolveExhaustEffects,
@@ -37,60 +38,39 @@ const DEFAULT_ATTACK_CONTEXT: AttackContext = {
 };
 
 // ── brass_knuckles ────────────────────────────────────────────────────────────
+// Reworked 2026-04-09: was every-2nd-attack strength; now +1 temp Strength at turn start.
 
-describe('brass_knuckles (v3) — +1 Strength every 2nd attack', () => {
-  it('does NOT grant Strength on 1st attack (count=1)', () => {
-    const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
-      attackCountThisEncounter: 1,
+describe('brass_knuckles (v4) — +1 temp Strength at turn start', () => {
+  it('grants tempStrengthGain=1 at turn start when held', () => {
+    const result = resolveTurnStartEffects(makeRelics('brass_knuckles'), 0, {
+      turnNumberThisEncounter: 1,
+      characterLevel: 1,
+      dejaVuUsedThisEncounter: false,
     });
-    expect(result.strengthGain).toBe(0);
+    expect(result.tempStrengthGain).toBe(1);
   });
 
-  it('grants +1 Strength on 2nd attack (count=2)', () => {
+  it('grants tempStrengthGain=1 on any turn (not just turn 1)', () => {
+    const result = resolveTurnStartEffects(makeRelics('brass_knuckles'), 0, {
+      turnNumberThisEncounter: 3,
+      characterLevel: 1,
+      dejaVuUsedThisEncounter: false,
+    });
+    expect(result.tempStrengthGain).toBe(1);
+  });
+
+  it('grants tempStrengthGain=0 when brass_knuckles is not held', () => {
+    const result = resolveTurnStartEffects(makeRelics(), 0, {
+      turnNumberThisEncounter: 1,
+      characterLevel: 1,
+      dejaVuUsedThisEncounter: false,
+    });
+    expect(result.tempStrengthGain).toBe(0);
+  });
+
+  it('no longer grants strengthGain via resolveAttackModifiers', () => {
     const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
       attackCountThisEncounter: 2,
-    });
-    expect(result.strengthGain).toBe(1);
-  });
-
-  it('does NOT grant Strength on 3rd attack (count=3, odd)', () => {
-    const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
-      attackCountThisEncounter: 3,
-    });
-    expect(result.strengthGain).toBe(0);
-  });
-
-  it('grants +1 Strength on 4th attack (count=4, even)', () => {
-    const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
-      attackCountThisEncounter: 4,
-    });
-    expect(result.strengthGain).toBe(1);
-  });
-
-  it('grants Strength on 6th attack (every 3rd)', () => {
-    const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
-      attackCountThisEncounter: 6,
-    });
-    expect(result.strengthGain).toBe(1);
-  });
-
-  it('grants Strength on 8th attack (every 2nd)', () => {
-    const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
-      attackCountThisEncounter: 8,
-    });
-    expect(result.strengthGain).toBe(1);
-  });
-
-  it('does NOT grant Strength when brass_knuckles is not held', () => {
-    const result = resolveAttackModifiers(makeRelics(), { ...DEFAULT_ATTACK_CONTEXT,
-      attackCountThisEncounter: 3,
-    });
-    expect(result.strengthGain).toBe(0);
-  });
-
-  it('strengthGain is 0 when attackCount is 0', () => {
-    const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
-      attackCountThisEncounter: 0,
     });
     expect(result.strengthGain).toBe(0);
   });
@@ -180,24 +160,21 @@ describe('herbal_pouch (v3) — +1 Poison per turn + heal 3 post-combat', () => 
 });
 
 // ── thick_skin ────────────────────────────────────────────────────────────────
+// Reworked 2026-04-09: was debuff reflect + damage penalty; now +5 block at encounter start.
 
-describe('thick_skin (v3) — reflect debuffs to enemy instead of applying to player', () => {
-  it('sets reflectToEnemy=true when thick_skin is held', () => {
-    const result = resolveDebuffAppliedModifiers(makeRelics('thick_skin'), {
-      isFirstDebuffThisEncounter: true,
-    });
-    expect(result.reflectToEnemy).toBe(true);
+describe('thick_skin (v4) — start each encounter with 5 block', () => {
+  it('grants thickSkinBlock=5 at encounter start when held', () => {
+    const result = resolveEncounterStartEffects(makeRelics('thick_skin'));
+    expect(result.thickSkinBlock).toBe(5);
   });
 
-  it('sets reflectToEnemy=true even on non-first debuff', () => {
-    const result = resolveDebuffAppliedModifiers(makeRelics('thick_skin'), {
-      isFirstDebuffThisEncounter: false,
-    });
-    expect(result.reflectToEnemy).toBe(true);
+  it('grants thickSkinBlock=0 when thick_skin is not held', () => {
+    const result = resolveEncounterStartEffects(makeRelics());
+    expect(result.thickSkinBlock).toBe(0);
   });
 
-  it('sets reflectToEnemy=false when thick_skin is not held', () => {
-    const result = resolveDebuffAppliedModifiers(makeRelics(), {
+  it('no longer reflects debuffs to enemy', () => {
+    const result = resolveDebuffAppliedModifiers(makeRelics('thick_skin'), {
       isFirstDebuffThisEncounter: true,
     });
     expect(result.reflectToEnemy).toBe(false);

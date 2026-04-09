@@ -6,7 +6,7 @@ import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-t
 import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier } from './discoverySystem';
 import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags, getMasteryBaseBonus, getMasteryStats } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
-import { resetChain, decayChain, extendOrResetChain, getChainState, getCurrentChainLength, initChainSystem, rotateActiveChainColor, getActiveChainColor, getChainMultiplier } from './chainSystem';
+import { resetChain, decayChain, extendOrResetChain, getChainState, getCurrentChainLength, initChainSystem, rotateActiveChainColor, getActiveChainColor, getChainMultiplier, switchActiveChainColor } from './chainSystem';
 import { resetAura, adjustAura, getAuraState } from './knowledgeAuraSystem';
 import { resetReviewQueue, addToReviewQueue, clearReviewQueueFact, isReviewQueueFact } from './reviewQueueSystem';
 import { CHAIN_MOMENTUM_ENABLED, CHARGE_AP_SURCHARGE, FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
@@ -487,6 +487,18 @@ export interface TurnState {
    * buffed attack fires. Set when empower with empower_weak2 tag is played. Cleared on consumption.
    */
   empowerWeakPending: number;
+  /**
+   * Narrative: Working buffer — factIds of cards charged correctly in the current unbroken chain.
+   * Cleared when the chain breaks (wrong answer or Quick Play) or when a completed sequence
+   * (length >= 3) is flushed to completedChainSequences.
+   * Using factIds here; answer strings are resolved at snapshot time in encounterBridge.
+   */
+  currentChainAnswerFactIds: string[];
+  /**
+   * Narrative: Completed chain sequences (each inner array has factIds for a chain that reached 3+).
+   * Captured at chain break / wrong answer / encounter end; consumed by NarrativeEncounterSnapshot.
+   */
+  completedChainSequences: string[][];
 }
 
 export interface PlayCardResult {
@@ -746,6 +758,9 @@ export function startEncounter(
     lockedCardType: null,
     vulnMultiplierOverride: null,
     weakShieldBonusPercent: 0,
+    // Narrative chain tracking — reset each encounter
+    currentChainAnswerFactIds: [],
+    completedChainSequences: [],
   };
 
   // Reset chain at encounter start (clean slate)
@@ -1039,6 +1054,11 @@ export function playCardAction(
     if (playMode === 'charge') {
       const prevChainLengthWrong = getCurrentChainLength();
       const isOffColourWrong = cardInHand.chainType !== getActiveChainColor();
+      // Narrative: flush chain buffer before chain resets (off-colour halves, on-colour resets fully)
+      if (turnState.currentChainAnswerFactIds.length >= 3) {
+        turnState.completedChainSequences.push([...turnState.currentChainAnswerFactIds]);
+      }
+      turnState.currentChainAnswerFactIds = [];
       extendOrResetChain(null, undefined, isOffColourWrong); // null chainType = wrong answer
       if (prevChainLengthWrong > 0) playCardAudio('chain-break');
       if (prevChainLengthWrong > 0 && turnState.activeRelicIds.size > 0) {
@@ -1344,12 +1364,34 @@ export function playCardAction(
   // Quick Play: break the chain (no chain bonus from Quick Play).
   let currentChainMultiplier = 1.0;
   if (playMode === 'charge') {
+    // Mid-turn active chain color switch (2026-04-09):
+    // When the player correctly Charges an off-colour card, pivot the active chain color
+    // to the card's color for the rest of this turn. Chain length is preserved — the correct
+    // answer earned the pivot. The new color becomes the surcharge-free color immediately.
+    // Quick Play and wrong Charge never trigger the switch (handled by their own branches).
+    if (
+      card.chainType != null &&
+      getActiveChainColor() != null &&
+      card.chainType !== getActiveChainColor()
+    ) {
+      switchActiveChainColor(card.chainType);
+      turnState.activeChainColor = card.chainType; // mirror for Svelte UI reactivity
+    }
     currentChainMultiplier = extendOrResetChain(card.chainType);
     // prismatic_shard — all chain multipliers +0.5x
     currentChainMultiplier += resolveChainMultiplierBonus(turnState.activeRelicIds);
+    // Narrative: track factId for chain completion sequence
+    if (card.factId) {
+      turnState.currentChainAnswerFactIds.push(card.factId);
+    }
   } else {
     // Quick Play breaks the chain
     const prevChainLengthQuick = getCurrentChainLength();
+    // Narrative: flush chain buffer before Quick Play breaks the chain
+    if (turnState.currentChainAnswerFactIds.length >= 3) {
+      turnState.completedChainSequences.push([...turnState.currentChainAnswerFactIds]);
+    }
+    turnState.currentChainAnswerFactIds = [];
     extendOrResetChain(null);
     if (prevChainLengthQuick > 0) playCardAudio('chain-break');
     if (prevChainLengthQuick > 0 && turnState.activeRelicIds.size > 0) {

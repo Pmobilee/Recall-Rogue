@@ -107,26 +107,21 @@ describe('quick_study (common)', () => {
   });
 });
 
-describe('thick_skin (common)', () => {
-  it('reflects debuff to enemy (reflectToEnemy = true)', () => {
-    const result = resolveDebuffAppliedModifiers(
-      new Set(['thick_skin']),
-      { isFirstDebuffThisEncounter: true },
-    );
-    expect(result.reflectToEnemy).toBe(true);
+// thick_skin reworked 2026-04-09: was debuff reflect; now +5 block at encounter start
+describe('thick_skin (common, reworked)', () => {
+  it('grants thickSkinBlock=5 at encounter start', () => {
+    const result = resolveEncounterStartEffects(new Set(['thick_skin']));
+    expect(result.thickSkinBlock).toBe(5);
   });
 
-  it('still reflects on any debuff, not just first (reflectToEnemy = true)', () => {
-    const result = resolveDebuffAppliedModifiers(
-      new Set(['thick_skin']),
-      { isFirstDebuffThisEncounter: false },
-    );
-    expect(result.reflectToEnemy).toBe(true);
+  it('thickSkinBlock=0 when relic not held', () => {
+    const result = resolveEncounterStartEffects(new Set());
+    expect(result.thickSkinBlock).toBe(0);
   });
 
-  it('does NOT reflect when relic not held', () => {
+  it('no longer reflects debuffs to enemy', () => {
     const result = resolveDebuffAppliedModifiers(
-      new Set(),
+      new Set(['thick_skin']),
       { isFirstDebuffThisEncounter: true },
     );
     expect(result.reflectToEnemy).toBe(false);
@@ -188,45 +183,41 @@ describe('battle_scars (common)', () => {
   });
 });
 
-describe('brass_knuckles (common, v3 rework — every 2nd attack)', () => {
-  it('does NOT grant strengthGain on 3rd attack (odd)', () => {
-    const result = resolveAttackModifiers(
+// brass_knuckles reworked 2026-04-09: was every-2nd-attack strength; now +1 temp Strength at turn start
+describe('brass_knuckles (common, v4 rework — temp Strength at turn start)', () => {
+  it('grants tempStrengthGain=1 at turn start when held', () => {
+    const result = resolveTurnStartEffects(
       new Set(['brass_knuckles']),
-      makeAttackCtx({ attackCountThisEncounter: 3 }),
+      0,
+      { turnNumberThisEncounter: 1, characterLevel: 1, dejaVuUsedThisEncounter: false },
     );
-    expect(result.strengthGain).toBe(0);
+    expect(result.tempStrengthGain).toBe(1);
   });
 
-  it('grants +1 strengthGain on 6th attack', () => {
-    const result = resolveAttackModifiers(
+  it('grants tempStrengthGain=1 on any turn', () => {
+    const result = resolveTurnStartEffects(
       new Set(['brass_knuckles']),
-      makeAttackCtx({ attackCountThisEncounter: 6 }),
+      0,
+      { turnNumberThisEncounter: 4, characterLevel: 1, dejaVuUsedThisEncounter: false },
     );
-    expect(result.strengthGain).toBe(1);
+    expect(result.tempStrengthGain).toBe(1);
   });
 
-  it('does NOT grant strength on 1st attack', () => {
-    const result = resolveAttackModifiers(
-      new Set(['brass_knuckles']),
-      makeAttackCtx({ attackCountThisEncounter: 1 }),
+  it('tempStrengthGain=0 when relic not held', () => {
+    const result = resolveTurnStartEffects(
+      new Set([]),
+      0,
+      { turnNumberThisEncounter: 1, characterLevel: 1, dejaVuUsedThisEncounter: false },
     );
-    expect(result.strengthGain).toBe(0);
+    expect(result.tempStrengthGain).toBe(0);
   });
 
-  it('grants +1 strengthGain on 2nd attack (even)', () => {
+  it('no longer grants strengthGain via resolveAttackModifiers', () => {
     const result = resolveAttackModifiers(
       new Set(['brass_knuckles']),
       makeAttackCtx({ attackCountThisEncounter: 2 }),
     );
-    expect(result.strengthGain).toBe(1);
-  });
-
-  it('no longer grants flatDamageBonus on 2nd attack (only strengthGain)', () => {
-    const result = resolveAttackModifiers(
-      new Set(['brass_knuckles']),
-      makeAttackCtx({ attackCountThisEncounter: 2 }),
-    );
-    expect(result.flatDamageBonus).toBe(0);
+    expect(result.strengthGain).toBe(0);
   });
 });
 
@@ -279,22 +270,38 @@ describe('chain_link_charm (uncommon)', () => {
   });
 });
 
+// worn_shield reworked 2026-04-09: was thorns + -20% block; now +2 flat block on all shield cards
 describe('worn_shield (uncommon, reworked)', () => {
-  it('grants thorns and reduces block percentage', () => {
+  it('grants +2 flatBlockBonus on shield cards', () => {
     const result = resolveShieldModifiers(
       new Set(['worn_shield']),
       { shieldCardPlayCountThisEncounter: 1 },
     );
-    expect(result.grantsThorns).toBe(1);
-    expect(result.percentBlockBonus).toBe(-20);
+    expect(result.flatBlockBonus).toBe(2);
   });
 
-  it('does NOT grant thorns when relic not held', () => {
+  it('no longer grants thorns', () => {
+    const result = resolveShieldModifiers(
+      new Set(['worn_shield']),
+      { shieldCardPlayCountThisEncounter: 1 },
+    );
+    expect(result.grantsThorns).toBeUndefined();
+  });
+
+  it('no longer has -20% block penalty', () => {
+    const result = resolveShieldModifiers(
+      new Set(['worn_shield']),
+      { shieldCardPlayCountThisEncounter: 1 },
+    );
+    expect(result.percentBlockBonus).toBe(0);
+  });
+
+  it('no block bonus when relic not held', () => {
     const result = resolveShieldModifiers(
       new Set([]),
       { shieldCardPlayCountThisEncounter: 1 },
     );
-    expect(result.grantsThorns).toBeUndefined();
+    expect(result.flatBlockBonus).toBe(0);
   });
 });
 
@@ -994,10 +1001,15 @@ describe('iron_shield (reworked, v3)', () => {
   });
 });
 
-describe('thick_skin (reworked)', () => {
-  it('increases damage taken by 2', () => {
+describe('thick_skin (reworked to block — 2026-04-09)', () => {
+  it('no longer increases damage taken', () => {
     const result = resolveDamageTakenEffects(new Set(['thick_skin']), makeDamageTakenCtx());
-    expect(result.flatDamageIncrease).toBe(2);
+    expect(result.flatDamageIncrease).toBeUndefined();
+  });
+
+  it('grants 5 block at encounter start', () => {
+    const result = resolveEncounterStartEffects(new Set(['thick_skin']));
+    expect(result.thickSkinBlock).toBe(5);
   });
 });
 
@@ -1079,10 +1091,11 @@ describe('chain break hook', () => {
   });
 });
 
-describe('ritual_blade (tradeoff)', () => {
-  it('doubles first card damage', () => {
+describe('ritual_blade (tradeoff, nerfed 2026-04-09)', () => {
+  it('grants +50% to first card (nerfed from +100%)', () => {
     const result = resolveAttackModifiers(new Set(['ritual_blade']), makeAttackCtx({ isFirstCardThisTurn: true }));
-    expect(result.percentDamageBonus).toBeGreaterThanOrEqual(100);
+    expect(result.percentDamageBonus).toBeGreaterThanOrEqual(50);
+    expect(result.percentDamageBonus).toBeLessThan(100);
   });
 
   it('reduces subsequent card damage by 25%', () => {

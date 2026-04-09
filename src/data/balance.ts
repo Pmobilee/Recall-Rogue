@@ -495,13 +495,13 @@ export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.09; // Raised from 0.06 (2026-04
 export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
 /** Global enemy damage multiplier. Applied to ALL enemy attacks across all acts. Added 2026-04-08 playtest Ch12.1. */
-export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 2.0;
+export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.5; // tuned from 2.0→1.5 (pass 2): 25% damage reduction, experienced was 16% win rate
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. Doubled 2026-04-08 to match GLOBAL_ENEMY_DAMAGE_MULTIPLIER x2. */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
   1: 16,   // was 22, reduced 2026-04-09: act 1 tuning
-  2: 28,   // was 14
-  3: 40,   // was 20
+  2: 22,   // was 14, tuned 28→22 (pass 2): Act 2 cap reduction
+  3: 32,   // was 20, tuned 40→32 (pass 2): Act 3 cap reduction
   4: 56,   // was 28
   endless: null,
 };
