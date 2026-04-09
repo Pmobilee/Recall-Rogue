@@ -375,8 +375,8 @@ describe('AR-271 Card Mechanic: Precision Strike + Distractor Count', () => {
 
 describe('AR-271 Relic Mechanic: Scar Tissue stacking', () => {
   /**
-   * Test 4: Scar Tissue adds +2 flat damage per stack accumulated from wrong Charges.
-   * After 2 wrong Charges with scar_tissue active, _scarTissueStacks = 2 → +4 flat on next CC.
+   * Test 4: Scar Tissue adds +3 flat damage per stack (Pass 7) accumulated from wrong Charges.
+   * After 2 wrong Charges with scar_tissue active, _scarTissueStacks = 2 → +6 flat on next CC.
    *
    * We compare:
    *   (A) CC damage WITHOUT scar_tissue (baseline)
@@ -384,7 +384,7 @@ describe('AR-271 Relic Mechanic: Scar Tissue stacking', () => {
    *
    * Uses `result.effect.damageDealt` directly (no enemy HP tracking needed).
    */
-  it('Scar Tissue adds +4 flat damage after 2 wrong Charges (2 stacks × +2)', () => {
+  it('Scar Tissue adds +6 flat damage after 2 wrong Charges (2 stacks × +3, Pass 7)', () => {
     // ── (A) Baseline: CC damage without scar_tissue ──────────────────────────
     const baseAttack = makeCard({
       id: 'base_attack',
@@ -437,7 +437,7 @@ describe('AR-271 Relic Mechanic: Scar Tissue stacking', () => {
     const scarDamage = scarResult.effect.damageDealt;
 
     expect(scarDamage).toBeGreaterThan(baseDamage);
-    expect(scarDamage - baseDamage).toBe(4); // +2 per stack × 2 stacks
+    expect(scarDamage - baseDamage).toBe(6); // +3 per stack × 2 stacks (Pass 7)
   });
 });
 

@@ -82,20 +82,20 @@ describe('scar_tissue (v3)', () => {
   });
 
   describe('resolveAttackModifiers', () => {
-    it('adds +2 flat damage per scar stack (3 stacks = +6)', () => {
+    it('adds +3 flat damage per scar stack (3 stacks = +9, Pass 7)', () => {
       const result = resolveAttackModifiers(
         new Set(['scar_tissue']),
         makeAttackCtx({ scarTissueStacks: 3 }),
       );
-      expect(result.flatDamageBonus).toBe(6);
+      expect(result.flatDamageBonus).toBe(9);
     });
 
-    it('adds +10 flat damage at 5 stacks', () => {
+    it('adds +15 flat damage at 5 stacks (Pass 7)', () => {
       const result = resolveAttackModifiers(
         new Set(['scar_tissue']),
         makeAttackCtx({ scarTissueStacks: 5 }),
       );
-      expect(result.flatDamageBonus).toBe(10);
+      expect(result.flatDamageBonus).toBe(15);
     });
 
     it('adds +0 flat damage when stacks is 0', () => {
@@ -119,8 +119,8 @@ describe('scar_tissue (v3)', () => {
         new Set(['scar_tissue', 'whetstone']),
         makeAttackCtx({ scarTissueStacks: 2 }),
       );
-      // whetstone: +3, scar_tissue: 2×2 = +4 → total 7
-      expect(result.flatDamageBonus).toBe(7);
+      // whetstone: +3, scar_tissue: 2×3 = +6 → total 9
+      expect(result.flatDamageBonus).toBe(9);
     });
   });
 });
@@ -128,15 +128,23 @@ describe('scar_tissue (v3)', () => {
 // ─── memory_nexus (v3) ──────────────────────────────────────────────
 
 describe('memory_nexus (v3)', () => {
-  it('triggers draw bonus on 3rd correct Charge', () => {
+  it('triggers draw bonus on 2nd correct Charge (buffed from 3rd, Pass 7)', () => {
     const result = resolveChargeCorrectEffects(
       new Set(['memory_nexus']),
-      makeChargeCorrectCtx({ chargeCountThisEncounter: 3 }),
+      makeChargeCorrectCtx({ chargeCountThisEncounter: 2 }),
     );
     expect(result.drawBonus).toBe(2);
   });
 
-  it('triggers draw bonus on 6th correct Charge (repeatable)', () => {
+  it('triggers draw bonus on 4th correct Charge (repeatable)', () => {
+    const result = resolveChargeCorrectEffects(
+      new Set(['memory_nexus']),
+      makeChargeCorrectCtx({ chargeCountThisEncounter: 4 }),
+    );
+    expect(result.drawBonus).toBe(2);
+  });
+
+  it('triggers draw bonus on 6th correct Charge (repeatable again)', () => {
     const result = resolveChargeCorrectEffects(
       new Set(['memory_nexus']),
       makeChargeCorrectCtx({ chargeCountThisEncounter: 6 }),
@@ -144,26 +152,16 @@ describe('memory_nexus (v3)', () => {
     expect(result.drawBonus).toBe(2);
   });
 
-  it('triggers draw bonus on 9th correct Charge (repeatable again)', () => {
+  it('does NOT trigger on 1st Charge', () => {
     const result = resolveChargeCorrectEffects(
       new Set(['memory_nexus']),
-      makeChargeCorrectCtx({ chargeCountThisEncounter: 9 }),
+      makeChargeCorrectCtx({ chargeCountThisEncounter: 1 }),
     );
-    expect(result.drawBonus).toBe(2);
+    expect(result.drawBonus).toBe(0);
   });
 
-  it('does NOT trigger on 1st or 2nd Charge', () => {
-    for (const count of [1, 2]) {
-      const result = resolveChargeCorrectEffects(
-        new Set(['memory_nexus']),
-        makeChargeCorrectCtx({ chargeCountThisEncounter: count }),
-      );
-      expect(result.drawBonus).toBe(0);
-    }
-  });
-
-  it('does NOT trigger on 4th or 5th Charge (between thresholds)', () => {
-    for (const count of [4, 5]) {
+  it('does NOT trigger on 3rd or 5th Charge (between thresholds)', () => {
+    for (const count of [3, 5]) {
       const result = resolveChargeCorrectEffects(
         new Set(['memory_nexus']),
         makeChargeCorrectCtx({ chargeCountThisEncounter: count }),
@@ -175,7 +173,7 @@ describe('memory_nexus (v3)', () => {
   it('does NOT trigger when memory_nexus not held', () => {
     const result = resolveChargeCorrectEffects(
       new Set([]),
-      makeChargeCorrectCtx({ chargeCountThisEncounter: 3 }),
+      makeChargeCorrectCtx({ chargeCountThisEncounter: 2 }),
     );
     expect(result.drawBonus).toBe(0);
   });

@@ -660,23 +660,23 @@ describe('inferno_crown (rare)', () => {
       new Set(['inferno_crown']),
       makeAttackCtx({ enemyHasBurn: true, enemyHasPoison: true }),
     );
-    expect(result.percentDamageBonus).toBeCloseTo(0.30);
+    expect(result.percentDamageBonus).toBeCloseTo(0.20);
   });
 
-  it('no bonus when only Burn (no Poison)', () => {
+  it('grants +20% when only Burn (no Poison needed)', () => {
     const result = resolveAttackModifiers(
       new Set(['inferno_crown']),
       makeAttackCtx({ enemyHasBurn: true, enemyHasPoison: false }),
     );
-    expect(result.percentDamageBonus).toBe(0);
+    expect(result.percentDamageBonus).toBeCloseTo(0.20);
   });
 
-  it('no bonus when only Poison (no Burn)', () => {
+  it('grants +20% when only Poison (no Burn needed)', () => {
     const result = resolveAttackModifiers(
       new Set(['inferno_crown']),
       makeAttackCtx({ enemyHasBurn: false, enemyHasPoison: true }),
     );
-    expect(result.percentDamageBonus).toBe(0);
+    expect(result.percentDamageBonus).toBeCloseTo(0.20);
   });
 });
 
@@ -1098,9 +1098,9 @@ describe('ritual_blade (tradeoff, nerfed 2026-04-09)', () => {
     expect(result.percentDamageBonus).toBeLessThan(100);
   });
 
-  it('reduces subsequent card damage by 25%', () => {
+  it('reduces subsequent card damage by 15% (Pass 7 nerf)', () => {
     const result = resolveAttackModifiers(new Set(['ritual_blade']), makeAttackCtx({ isFirstCardThisTurn: false }));
-    expect(result.percentDamageBonus).toBeLessThanOrEqual(-25);
+    expect(result.percentDamageBonus).toBeLessThanOrEqual(-15);
   });
 });
 
@@ -1117,20 +1117,25 @@ describe('momentum_wheel (conditional)', () => {
   });
 });
 
-describe('hollow_armor (tradeoff)', () => {
-  it('halves block gain after turn 0', () => {
-    const result = resolveShieldModifiers(new Set(['hollow_armor']), { shieldCardPlayCountThisEncounter: 0, encounterTurnNumber: 1 });
-    expect(result.blockGainHalved).toBe(true);
+describe('hollow_armor (tradeoff, reworked Pass 7)', () => {
+  it('grants 12 starting block at encounter start (Pass 7)', () => {
+    const result = resolveEncounterStartEffects(new Set(['hollow_armor']));
+    expect(result.startingBlock).toBe(12);
   });
 
-  it('does not halve block on turn 0 (starting block applies separately)', () => {
-    const result = resolveShieldModifiers(new Set(['hollow_armor']), { shieldCardPlayCountThisEncounter: 0, encounterTurnNumber: 0 });
+  it('does NOT halve block gain (blockGainHalved removed Pass 7)', () => {
+    const result = resolveShieldModifiers(new Set(['hollow_armor']), { shieldCardPlayCountThisEncounter: 0, encounterTurnNumber: 1 });
     expect(result.blockGainHalved).toBeFalsy();
   });
 
-  it('grants starting block at encounter start (15 block rework)', () => {
-    const result = resolveEncounterStartEffects(new Set(['hollow_armor']));
-    expect(result.startingBlock).toBe(15);
+  it('drains 3 block per turn after turn 3', () => {
+    const result = resolveTurnEndEffects(new Set(['hollow_armor']), { damageDealtThisTurn: 0, cardsPlayedThisTurn: 0, isPerfectTurn: false, encounterTurnNumber: 4 });
+    expect(result.blockDrain).toBe(3);
+  });
+
+  it('does not drain block on turn 3 or earlier', () => {
+    const result = resolveTurnEndEffects(new Set(['hollow_armor']), { damageDealtThisTurn: 0, cardsPlayedThisTurn: 0, isPerfectTurn: false, encounterTurnNumber: 3 });
+    expect(result.blockDrain).toBeUndefined();
   });
 });
 
@@ -1215,9 +1220,9 @@ describe('knowledge_tax (tradeoff) — charge correct', () => {
 });
 
 describe('glass_lens (tradeoff) — charge wrong', () => {
-  it('deals 3 self-damage on wrong', () => {
+  it('deals 1 self-damage on wrong (Pass 7 nerf from 3)', () => {
     const result = resolveChargeWrongEffects(new Set(['glass_lens']), { factId: 'test' });
-    expect(result.selfDamage).toBeGreaterThanOrEqual(3);
+    expect(result.selfDamage).toBe(1);
   });
 });
 

@@ -137,7 +137,7 @@ export function resolveTurnStartEffects(
   const capacitorReleasedAP =
     relicIds.has('capacitor') ? Math.min(capacitorStored, RELIC_CAPACITOR_MAX_STORED_AP) : 0;
 
-  // blood_price (v2) — grants +1 AP per turn in exchange for 2 HP/turn loss
+  // blood_price — grants +1 AP per turn in exchange for 3 HP/turn loss (Pass 7: nerfed from 2)
   // paradox_engine (legendary) — unconditional +1 AP per turn
   let bonusAP = 0;
   if (relicIds.has('blood_price')) bonusAP += 1;
@@ -292,7 +292,7 @@ export function resolveEncounterStartEffects(
     : null;
 
   // hollow_armor — +15 starting block (block from shield cards halved after turn 0)
-  const startingBlock = relicIds.has('hollow_armor') ? 15 : undefined;
+  const startingBlock = relicIds.has('hollow_armor') ? 12 : undefined;
 
   // Audio: fire if any encounter-start relic produced a non-zero effect
   const encounterRelicFired =
@@ -516,7 +516,7 @@ export function resolveAttackModifiers(
 
   // scar_tissue (v3) — +2 flat damage per accumulated wrong Charge this run
   if (relicIds.has('scar_tissue') && (context.scarTissueStacks ?? 0) > 0) {
-    flatDamageBonus += (context.scarTissueStacks ?? 0) * 2;
+    flatDamageBonus += (context.scarTissueStacks ?? 0) * 3;
   }
 
   // === EXPANSION RELICS ===
@@ -541,8 +541,8 @@ export function resolveAttackModifiers(
   }
 
   // inferno_crown — enemy has both Burn AND Poison: +30% all damage
-  if (relicIds.has('inferno_crown') && context.enemyHasBurn && context.enemyHasPoison) {
-    percentDamageBonus += 0.30;
+  if (relicIds.has('inferno_crown') && (context.enemyHasBurn || context.enemyHasPoison)) {
+    percentDamageBonus += 0.20;
   }
 
   // ember_core — enemy has 5+ Burn stacks: +20% damage
@@ -560,12 +560,12 @@ export function resolveAttackModifiers(
     flatDamageBonus += 2;
   }
 
-  // ritual_blade — first card this turn: +100% damage; subsequent cards: -25%
+  // ritual_blade — first card this turn: +50% damage; subsequent cards: -15% (Pass 7)
   if (relicIds.has('ritual_blade')) {
     if (context.isFirstCardThisTurn !== false) {  // first card or unset
       percentDamageBonus += 50; // nerfed from +100 to +50 (2026-04-09 balance pass)
     } else {
-      percentDamageBonus -= 25;
+      percentDamageBonus -= 15;
     }
     playCardAudio('relic-trigger');
   }
@@ -673,11 +673,8 @@ export function resolveShieldModifiers(
   const reflectDamage = relicIds.has('thorned_vest') ? 2 : 0;
   const quickPlayShieldBonus = relicIds.has('bastions_will') ? 25 : 0;
 
-  // hollow_armor — block from shield cards is halved on turns after turn 0
-  let blockGainHalved: boolean | undefined;
-  if (relicIds.has('hollow_armor') && context?.encounterTurnNumber !== undefined && context.encounterTurnNumber > 0) {
-    blockGainHalved = true;
-  }
+  // hollow_armor — blockGainHalved removed in Pass 7 rework (block drain replaces penalty)
+  const blockGainHalved: boolean | undefined = undefined;
 
   // Audio: fire if any relic actually boosted this shield play
   if (flatBlockBonus > 0 || quickPlayShieldBonus > 0) {
@@ -926,7 +923,7 @@ export interface TurnEndEffects {
   healFromDamage: number;
   /** Bonus cards to draw next turn from afterimage (v1 legacy) or resonance_crystal (v2). */
   bonusDrawNext: number;
-  /** HP lost per turn from blood_price (v2: 2 HP/turn). */
+  /** HP lost per turn from blood_price (Pass 7: 3 HP/turn). */
   hpLoss: number;
   /** Bonus AP to grant next turn — v1 legacy placeholder. */
   bonusApFromAfterimage: number;
@@ -950,6 +947,11 @@ export interface TurnEndEffects {
    * 0 if not triggered.
    */
   bonusApNextTurn?: number;
+  /**
+   * Block drained at end of turn (hollow_armor Pass 7: 3 block/turn after turn 3).
+   * undefined if not applicable.
+   */
+  blockDrain?: number;
 }
 
 /** Context required to resolve turn-end effects. */
@@ -966,6 +968,8 @@ export interface TurnEndContext {
   currentBlock?: number;
   /** Number of correctly charged cards this turn (quiz_master: 3+ triggers +2 AP next turn). */
   chargeCorrectsThisTurn?: number;
+  /** Turn number within this encounter (hollow_armor: drain 3 block after turn 3). */
+  encounterTurnNumber?: number;
 }
 
 /**
@@ -990,9 +994,9 @@ export function resolveTurnEndEffects(
       ? 20
       : Infinity;
 
-  // blood_price v2: -2 HP/turn (v1 was -3)
+  // blood_price: -3 HP/turn (nerfed from -2, 2026-04-09 Pass 7)
   const hpLoss = relicIds.has('blood_price')
-    ? (hasSynergy(relicIds, 'perpetual_motion') ? 1 : 2)
+    ? (hasSynergy(relicIds, 'perpetual_motion') ? 2 : 3)
     : 0;
 
   // entropy_engine — 3+ distinct card types this turn: 5 damage + 5 block
@@ -1022,6 +1026,12 @@ export function resolveTurnEndEffects(
     playCardAudio('relic-trigger');
   }
 
+  // hollow_armor — drain 3 block per turn after turn 3 (Pass 7 rework)
+  let blockDrain: number | undefined;
+  if (relicIds.has('hollow_armor') && (context.encounterTurnNumber ?? 0) > 3) {
+    blockDrain = 3;
+  }
+
   return {
     blockCarries,
     blockCarryMax,
@@ -1035,6 +1045,7 @@ export function resolveTurnEndEffects(
     forceDiscard,
     grantThorns,
     bonusApNextTurn,
+    blockDrain,
   };
 }
 
@@ -1619,7 +1630,7 @@ export function resolveChargeCorrectEffects(
   if (
     relicIds.has('memory_nexus') &&
     context.chargeCountThisEncounter > 0 &&
-    context.chargeCountThisEncounter % 3 === 0
+    context.chargeCountThisEncounter % 2 === 0
   ) {
     drawBonus = 2;
   }
@@ -1673,7 +1684,7 @@ export function resolveChargeCorrectEffects(
   // Applied as flatDamageBonus in resolveAttackModifiers; surfaced here for charge-correct context
   // (already wired below via return; caller also uses scarTissueStacks directly in damage pipeline)
   const scarTissueFlatBonus = relicIds.has('scar_tissue')
-    ? (context.scarTissueStacks ?? 0) * 2
+    ? (context.scarTissueStacks ?? 0) * 3
     : 0;
   // Note: flatDamageBonus is part of AttackModifiers, not ChargeCorrectEffects.
   // The scarTissueFlatBonus is returned here as chargeCorrectBonusPercent is not the right slot.
@@ -1690,7 +1701,7 @@ export function resolveChargeCorrectEffects(
 
   // obsidian_dice — 60%: +50% multiplier; 40%: -25% multiplier
   if (relicIds.has('obsidian_dice')) {
-    if (Math.random() < 0.60) {
+    if (Math.random() < 0.50) {
       extraMultiplier *= 1.5;
     } else {
       extraMultiplier *= 0.75;
@@ -1850,7 +1861,7 @@ export function resolveChargeWrongEffects(
 
   // glass_lens — +3 self-damage on wrong Charge
   if (relicIds.has('glass_lens')) {
-    selfDamage = (selfDamage ?? 0) + 3;
+    selfDamage = (selfDamage ?? 0) + 1;
   }
 
   // mnemonic_scar — if fact was previously correct, resolve at CC power; otherwise +5 self-damage

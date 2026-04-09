@@ -167,7 +167,7 @@ describe('resolveChargeCorrectEffects', () => {
   });
 
   describe('memory_nexus', () => {
-    it('triggers drawBonus of 2 exactly on the 3rd correct Charge', () => {
+    it('triggers drawBonus of 2 on every 2nd correct Charge (Pass 7: every 2nd, was every 3rd)', () => {
       const relics = new Set(['memory_nexus']);
       const makeCtx = (chargeCount: number) => ({
         answerTimeMs: 5000,
@@ -182,11 +182,11 @@ describe('resolveChargeCorrectEffects', () => {
         adrenalineShard_usedThisTurn: false,
       });
 
+      // Triggers on every 2nd charge (2, 4, 6...), not on odd charges
       expect(resolveChargeCorrectEffects(relics, makeCtx(1)).drawBonus).toBe(0);
-      expect(resolveChargeCorrectEffects(relics, makeCtx(2)).drawBonus).toBe(0);
-      expect(resolveChargeCorrectEffects(relics, makeCtx(3)).drawBonus).toBe(2);
-      // After 3rd hit, further hits don't re-trigger (charge count > 3, but (4-1) = 3, not < 3)
-      expect(resolveChargeCorrectEffects(relics, makeCtx(4)).drawBonus).toBe(0);
+      expect(resolveChargeCorrectEffects(relics, makeCtx(2)).drawBonus).toBe(2);
+      expect(resolveChargeCorrectEffects(relics, makeCtx(3)).drawBonus).toBe(0);
+      expect(resolveChargeCorrectEffects(relics, makeCtx(4)).drawBonus).toBe(2);
     });
   });
 

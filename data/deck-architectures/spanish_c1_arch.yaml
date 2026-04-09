@@ -1,0 +1,109 @@
+# Spanish C1 Vocabulary Deck — Architecture
+# Deck ID: spanish_c1
+# Generated: 2026-04-09
+
+metadata:
+  id: spanish_c1
+  name: Spanish C1 Vocabulary
+  domain: vocabulary
+  subDomain: spanish
+  description: Advanced Spanish — CEFR C1 level vocabulary for near-fluent learners
+  cefr_level: C1
+  language: es
+
+source:
+  primary: CEFRLex ELELex.tsv
+  source_url: https://cental.uclouvain.be/cefrlex/
+  translation_source: Kaikki.org en-es-wikt.jsonl.gz (Wiktionary, CC BY-SA)
+  translation_url: https://kaikki.org/
+  elelex_version: ELELex (UCLouvain CENTAL)
+  filter_criteria:
+    - level_freq@c1 > 8.5 (CEFRLex threshold for meaningful C1 presence)
+    - word NOT already in spanish_a1, spanish_a2, spanish_b1, or spanish_b2 decks
+    - sorted by level_freq@c1 descending (most C1-characteristic words first)
+    - capped at 1500 facts (top by C1 frequency)
+  translation_quality:
+    - Wiktionary English gloss from Kaikki open-source dump
+    - Bad glosses filtered: plural/form-of/variant-of/inflection-of/person forms
+    - Answer cleaned: qualifier parens stripped, truncated at first comma/semicolon ≤25 chars
+
+dedup_stats:
+  total_words_with_c1_freq_above_threshold: 6592
+  already_in_a1: 1546
+  already_in_a2: 873
+  already_in_b1: 596
+  already_in_b2: 964
+  total_existing_a1_b2_words: 3979
+  dropped_due_to_dedup: 2945
+  remaining_after_dedup: 3647
+  no_translation_found: 83
+  final_fact_count: 1500
+
+pos_breakdown:
+  noun: 880
+  adjective: 280
+  verb: 279
+  pronoun: 17
+  preposition: 10
+  adverb: 9
+  pron: 7
+  conjunction: 6
+  intj: 4
+  det: 3
+  num: 2
+  adj: 2
+  article: 1
+
+id_range:
+  start: es-cefr-3980
+  end: es-cefr-5479
+  note: Continues from spanish_b2 (es-cefr-3016 to es-cefr-3979)
+
+pool_architecture:
+  pools:
+    - id: english_meanings
+      label: English Meanings
+      answer_format: word
+      fact_count: 1500
+      synthetic_distractors: 0
+      note: All facts — forward direction (Spanish → English)
+
+    - id: target_language_words
+      label: Spanish Words
+      answer_format: word
+      fact_count: 300
+      synthetic_distractors: 0
+      note: Every 5th fact — reverse direction (English → Spanish, mastery ≥2)
+
+schema:
+  fact_fields:
+    - id: "es-cefr-{N}" (3980-5479)
+    - correctAnswer: English translation (cleaned Kaikki gloss)
+    - acceptableAlternatives: []
+    - chainThemeId: 0-5 (cycles through 6 generic themes)
+    - answerTypePoolId: english_meanings (all facts)
+    - difficulty: 4 (C1 = hard)
+    - funScore: 5-7 (based on answer length — shorter answers score higher)
+    - quizQuestion: 'What does "{word}" mean?'
+    - explanation: "{word} — {answer}."
+    - targetLanguageWord: Spanish word from ELELex
+    - language: "es"
+    - partOfSpeech: noun/verb/adjective/adverb/other
+
+chain_themes:
+  note: Vocabulary decks use generic chain themes (0-5), no chainThemes object.
+  cycling: chainThemeId assigned as (fact_index % 6) for even distribution
+
+synonym_groups:
+  count: 10
+  reason: Facts sharing the same English correctAnswer are grouped to prevent
+          one being used as distractor for another with the same translation
+
+validation:
+  structural_failures: 0
+  structural_warnings: 0
+  pool_homogeneity: PASS (vocabulary answers are generally short, consistent format)
+  self_answering: SKIP (vocabulary decks exempt per fix-self-answering.mjs)
+  synthetic_distractors_needed: 0 (english_meanings pool has 1500 facts — far above minimum)
+
+research_cache: data/deck-architectures/_research/spanish/c1_vocab_source.tsv

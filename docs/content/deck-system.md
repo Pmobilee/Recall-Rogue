@@ -117,10 +117,10 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-09 it contains **87 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-10 it contains **94 decks**:
 
-- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar/N1–N5 Kanji, Korean Hangul/TOPIK 1–2, Spanish A1–B2, Spanish A1 Grammar, Spanish A2 Grammar, Spanish B1 Grammar
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**, **AP Human Geography**, **Philosophy**
+- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar/N1–N5 Kanji, Korean Hangul/TOPIK 1–2, Spanish A1–C2 (vocab), Spanish A1–B2 (grammar)
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**, **AP Human Geography**, **Philosophy**, **Chess Tactics** (300 Lichess CC0 puzzles)
 
 ### Deck Architecture Files
 
@@ -152,9 +152,39 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | `spanish_a2_grammar_arch.yaml` | `spanish_a2_grammar` | complete — live | 177 | PCIC A2-scoped; 8 named chain themes, 25 answer pools, 8 sub-decks; 94.4% Tatoeba sentences; 2nd Spanish grammar deck. 2026-04-09. |
 | `spanish_b1_grammar_arch.yaml` | `spanish_b1_grammar` | complete — live | 175 | PCIC B1-scoped; 8 named chain themes, 24 answer pools, 8 sub-decks; 82.3% Tatoeba sentences; 3rd Spanish grammar deck; assembled from 9 batch files. 2026-04-09. |
 | `spanish_b2_grammar_arch.yaml` | `spanish_b2_grammar` | complete — live | 176 | PCIC B2-scoped; 8 named chain themes, 25 answer pools, 8 sub-decks; 90.9% Tatoeba sentences; 4th Spanish grammar deck (completes A1–B2 suite). Topics: imperfect subjunctive (-ra/-se), compound subjunctive, si-clauses types 2/3/mixed, future/conditional perfect, passive voice, reported speech, advanced connectors, full por/para system. 2026-04-10. |
+| `spanish_c1_arch.yaml` | `spanish_c1` | complete — live | 1500 | CEFRLex ELELex C1 column + Kaikki.org/Wiktionary translations; 2 answer pools (english_meanings, english_meanings_b); 13 synonym groups; POS on all facts. 2026-04-10. |
+| `spanish_c2_arch.yaml` | `spanish_c2` | complete — live | 794 | PCIC C2 (Instituto Cervantes) + RAE; literary, formal, and legal register; 2 answer pools; 0 synonym groups (dedup'd against C1); 44 overlapping C1 words removed. 2026-04-10. |
 | `*(inline generation)*` | `anime_manga` | complete — live | 204 | art_architecture / anime_manga domain; 8 chain themes, 15 answer pools (short/long splits for length-tell prevention), 3 sub-decks; 116 trivia facts bridged. 2026-04-10. |
 
 The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
+
+### Spanish Full Suite — A1 to C2
+
+Spanish is the first language in the project with complete CEFR A1–C2 vocabulary coverage AND A1–B2 grammar coverage. As of 2026-04-10:
+
+**Vocabulary decks (10 decks, ~6,273 facts):**
+
+| Deck | CEFR | Facts | Source |
+|------|------|-------|--------|
+|  | A1 | 1,546 | CEFRLex ELELex A1 column + Kaikki.org |
+|  | A2 | 873 | CEFRLex ELELex A2 column + Kaikki.org |
+|  | B1 | 596 | CEFRLex ELELex B1 column + Kaikki.org |
+|  | B2 | 964 | CEFRLex ELELex B2 column + Kaikki.org |
+|  | C1 | 1,500 | CEFRLex ELELex C1 column + Kaikki.org/Wiktionary |
+|  | C2 | 794 | PCIC C2 (Instituto Cervantes) + RAE — literary, formal, legal register |
+
+**Note on C2 sourcing:** CEFRLex ELELex stops at C1. The C2 vocabulary list was sourced from PCIC (Plan Curricular del Instituto Cervantes), the official Spanish C2 curriculum reference, supplemented with RAE (Real Academia Española) register markers for literary and legal terms. 44 words present in both C1 and C2 source lists were deduplicated, keeping them in C1 (lower level wins).
+
+**Grammar decks (4 decks, 662 facts):**
+
+| Deck | CEFR | Facts | Source |
+|------|------|-------|--------|
+|  | A1 | 134 | PCIC A1; Tatoeba example sentences |
+|  | A2 | 177 | PCIC A2; Tatoeba example sentences |
+|  | B1 | 175 | PCIC B1; Tatoeba example sentences |
+|  | B2 | 176 | PCIC B2; Tatoeba example sentences |
+
+**Total Spanish content: ~6,935 facts across 10 decks.** (6,273 vocab + 662 grammar) C1/C2 grammar decks are future work.
 
 ---
 
@@ -294,6 +324,77 @@ After ANY deck modification:
 4. `npm run typecheck && npm run build` → clean
 5. **Trivia Bridge (knowledge decks only):** Add deck to `deck-bridge-config.json`, run `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`, verify 0 collisions. Commit `bridge-curated.json` + `bridge-manifest.json` alongside the deck. Language/vocab decks are exempt. See `docs/content/trivia-bridge.md`.
 
+
+---
+
+## Tatoeba Citation — Corpus-Backed, Never Fabricated
+
+> **Enforcement rule:** `.claude/rules/content-pipeline.md` — "Tatoeba citation" section. This section documents the infrastructure; the rule file governs who is allowed to write `tatoeba:N` sourceRefs and how.
+
+Grammar decks cite example sentences with `sourceRef: "tatoeba:N"` where N is a Tatoeba sentence ID, or `sourceRef: "llm_authored"` when no real Tatoeba sentence was used. The `tatoeba:N` form is only valid when N is a verified real ID confirmed against the downloaded corpus. Sub-agents cannot browse the web and cannot verify IDs — they fabricate sequential blocks that look plausible but are wrong. All corpus lookups must happen via the scripts below.
+
+### Corpus Infrastructure — `data/_corpora/tatoeba/`
+
+The local corpus is gitignored (too large for the repo) but regenerated on demand from Tatoeba bulk exports:
+
+| File | Contents | Size (approx.) |
+|---|---|---|
+| `data/_corpora/tatoeba/spa_en_pairs.tsv` | Spanish↔English sentence pairs (joined) | 258K rows |
+| `data/_corpora/tatoeba/fra_en_pairs.tsv` | French↔English sentence pairs (joined) | 371K rows |
+| `data/_corpora/tatoeba/spa_a1_pool.tsv` | Spanish A1 CEFR-filtered sentences | ~1K rows |
+| `data/_corpora/tatoeba/spa_a2_pool.tsv` | Spanish A2 CEFR-filtered sentences | ~3K rows |
+| `data/_corpora/tatoeba/spa_b1_pool.tsv` | Spanish B1 CEFR-filtered sentences | ~5K rows |
+| `data/_corpora/tatoeba/spa_b2_pool.tsv` | Spanish B2 CEFR-filtered sentences | ~8K rows |
+| `data/_corpora/tatoeba/fra_a1_pool.tsv` — `fra_b2_pool.tsv` | French CEFR-filtered sentences | similar scale |
+
+**Attribution:** All Tatoeba sentences are licensed CC BY 2.0 (https://tatoeba.org/).
+
+To rebuild the corpus after downloading fresh Tatoeba bulk exports:
+```bash
+node scripts/tatoeba/build-cefr-corpus.mjs --lang spa   # builds spa_en_pairs.tsv + spa_{a1,a2,b1,b2}_pool.tsv
+node scripts/tatoeba/build-cefr-corpus.mjs --lang fra   # same for French
+```
+
+### Tatoeba Scripts
+
+| Script | Purpose | When to use |
+|---|---|---|
+| `scripts/tatoeba/build-cefr-corpus.mjs` | Downloads Tatoeba bulk exports, joins sentence/translation files, emits per-level filtered pool TSVs | Before authoring any new grammar deck for a language |
+| `scripts/tatoeba/audit-deck-ids.mjs` | Verifies every `tatoeba:N` sourceRef in a deck against the real corpus; reports hit/miss counts | After generating any deck that cites Tatoeba IDs |
+| `scripts/tatoeba/remap-deck-ids.mjs` | For each fact, reconstructs sentence from `quizQuestion` + `correctAnswer`, matches against corpus; hits get the real ID, misses get `sourceRef: "llm_authored"` | When cleaning fabricated IDs from an existing deck |
+
+**Usage examples:**
+```bash
+# Audit a finished deck
+node scripts/tatoeba/audit-deck-ids.mjs --lang spa --deck data/decks/spanish_b2_grammar.json
+
+# Audit any deck glob (e.g., all WIP batches)
+node scripts/tatoeba/audit-deck-ids.mjs --lang spa --glob 'data/decks/_wip/b2_batch*.json'
+
+# Remap fabricated IDs in place (dry-run first)
+node scripts/tatoeba/remap-deck-ids.mjs --dry-run --lang spa --deck data/decks/spanish_b2_grammar.json
+node scripts/tatoeba/remap-deck-ids.mjs --lang spa --deck data/decks/spanish_b2_grammar.json
+```
+
+### sourceRef Values
+
+| Value | Meaning | When to use |
+|---|---|---|
+| `"tatoeba:N"` | Sentence N is a verified real Tatoeba sentence ID | Only when N was confirmed by corpus lookup |
+| `"llm_authored"` | Sentence was authored by the LLM; no Tatoeba citation is justified | When no real corpus match was found, or when the sentence was deliberately constructed |
+| `"PCIC-pattern"` | Canonical example from the PCIC curriculum documents | Spanish grammar decks only; no Tatoeba ID assigned |
+
+**Rule:** Never write `tatoeba:N` unless the ID came from one of the corpus TSV files above or from a `scripts/tatoeba/` lookup. If in doubt, use `llm_authored` — a missing citation is honest; a fabricated one is a quality defect.
+
+### Remapping History
+
+| Deck | Date | Before | After | Notes |
+|---|---|---|---|---|
+| `spanish_a2_grammar` | 2026-04-10 | 507 tatoeba refs total (A2/B1/B2 combined count); 92% fabricated | 36 remapped to real IDs, 469 stripped to `llm_authored` | Sequential ID blocks (4499175...) were fabricated |
+| `spanish_b1_grammar` | 2026-04-10 | included in combined count above | — | same pass |
+| `spanish_b2_grammar` | 2026-04-10 | included in combined count above | — | same pass |
+| `spanish_a1_grammar` | 2026-04-10 | 16 tatoeba refs (mostly hand-curated) | 4 remapped to real IDs, 12 stripped to `llm_authored` | Smaller correction pass |
+| WIP batches (`a2_batch*.json`, `b2_batch*.json`) | 2026-04-10 | fabricated IDs | remapped/stripped in same pass | ~969 total refs processed across all _wip files |
 
 ---
 
@@ -874,6 +975,77 @@ Each skill's `tierParams` maps FSRS tiers `1 → 2a → 2b → 3` to progressive
 
 **Strategy-test note:** `generateMathDistractors` slices to exactly `count` items. Strategy-verification tests (carry error, sign error) request count=15 to expose all generated candidates before the slice — this is intentional and correct.
 
+
+---
+
+## Chess Tactics Deck (`chess_tactics`)
+
+**Source:** 300 curated puzzles from the Lichess puzzle database (CC0 license)
+**Domain:** `games`, **subDomain:** `chess_tactics`
+**Facts:** 300 — each fact is one puzzle position
+
+### Deck Structure
+
+| Field | Value |
+|-------|-------|
+| Chain themes | 10 (see below) |
+| Difficulty range | 1–5 (mapped from Lichess Elo: 600–3000) |
+| Quiz mode | `chess_tactic` — board rendered by `ChessBoard.svelte` |
+| Response mode | `chess_move` — player moves pieces instead of choosing from a list |
+| Distractors | None — the board position is the answer space |
+| Pool structure | One pool per chain theme, `answerFormat: 'move'` |
+
+### Chain Themes
+
+| chainThemeId | Theme | Description |
+|---|---|---|
+| 1 | Knight Forks | Double attacks with a knight |
+| 2 | Pins & Skewers | Linear tactical motifs |
+| 3 | Discovered Attacks | Unmasking a hidden attacker |
+| 4 | Back Rank Mates | Mating on rank 1 or 8 |
+| 5 | Mate in Two | Two-move checkmates |
+| 6 | Sacrifices | Material sacrifice for positional gain |
+| 7 | Endgame Tactics | King and pawn endings, rook endings |
+| 8 | Deflection | Removing a key defender |
+| 9 | Removing the Defender | Capturing or driving away a guard piece |
+| 10 | Zugzwang | Positions where any move worsens the side to move |
+
+### Puzzle DeckFact Fields
+
+Beyond standard `DeckFact` fields, chess puzzle facts carry:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `fenPosition` | `string` | Starting board position in FEN notation |
+| `solutionMoves` | `string[]` | Acceptable first moves in UCI notation |
+| `tacticTheme` | `string` | Lichess tactic tag — maps to `chainThemeId` |
+| `lichessRating` | `number` | Lichess Elo (600–3000), used for adaptive selection |
+
+### Pool Design
+
+Each chain theme has one `AnswerTypePool` with `answerFormat: 'move'`. Because the answer space is the board itself, no `syntheticDistractors` are needed and the pool sizing rules (minimum 15) do not apply — move legality and position uniqueness replace distractor variety.
+
+### Production Pipeline
+
+```
+scripts/chess/fetch-lichess-puzzles.mjs      # Pull puzzles from Lichess DB dump
+scripts/chess/select-puzzles.mjs             # Filter and theme-label 300 puzzles
+scripts/chess/assemble-facts.mjs             # Convert to DeckFact JSON
+scripts/chess/validate-chess-deck.mjs        # Structural validation
+npm run build:curated                        # Compile to public/curated.db
+```
+
+### DB Schema Extension
+
+`curated.db` has four additional columns for chess facts (added 2026-04-10):
+`fen_position`, `solution_moves` (JSON array), `tactic_theme`, `lichess_rating`
+
+### PlayerSave Fields
+
+- `chessEloRating?: number` — current player tactical Elo (default 1000)
+- `chessEloHistory?: Array<{ rating, puzzleRating, correct, timestamp }>` — last 100 entries
+
+For Elo formula and rating labels, see `docs/mechanics/quiz.md` — Chess Tactics sections.
 
 ---
 
@@ -2293,3 +2465,60 @@ The `spanish_a1_grammar` deck establishes these conventions for A1–B2 Spanish 
 **Trivia bridge:** 116 facts extracted to bridge database. Domain: `art_architecture`, sub-domain: `anime_manga`.
 
 **Architecture:** Inline generation (no separate YAML architecture file).
+
+## pop_culture Deck
+
+`data/decks/pop_culture.json` — assembled 2026-04-10 from 6 WIP batch files by `scripts/assemble-pop-culture-deck.mjs`. Architecture: `data/deck-architectures/pop_culture_arch.yaml`.
+
+| Field | Value |
+|---|---|
+| `id` | `pop_culture` |
+| `name` | Pop Culture |
+| `domain` | `general_knowledge` |
+| `subDomain` | `pop_culture` |
+| `minimumFacts` | 150 |
+| `targetFacts` | 200 |
+| Total facts | 202 |
+
+**Chain Themes (6):**
+
+| chainThemeId | Name | SubDeck ID |
+|---|---|---|
+| 0 | Binge-Worthy | `binge_worthy` |
+| 1 | Game On | `game_on` |
+| 2 | Hero Complex | `hero_complex` |
+| 3 | Gone Viral | `gone_viral` |
+| 4 | Franchise Empires | `franchise_empires` |
+| 5 | Pop Icons | `pop_icons` |
+
+**Answer Type Pools (11):**
+
+| Pool ID | Format | Facts | Notes |
+|---|---|---|---|
+| `tv_show_names` | name | 3 | TV show/series titles; minimumSize:3 with 10 synths |
+| `game_titles` | name | 4 | Video game titles; minimumSize:4 with 15 synths |
+| `character_names` | name | 5 | Fictional character and team names; homogeneityExempt |
+| `person_names_creators` | name | 45 | Creators, artists, real people; homogeneityExempt |
+| `company_studio_names` | name | 17 | Companies, studios, publishers; homogeneityExempt |
+| `network_channel_names` | name | 4 | Broadcast networks (CBS/NBC/Fox/AMC); minimumSize:4, homogeneityExempt |
+| `franchise_ip_names` | name | 8 | Franchise and IP names; homogeneityExempt |
+| `platform_console_names` | name | 12 | Consoles, platforms, online services; homogeneityExempt |
+| `meme_viral_names` | name | 4 | Meme names and viral content; minimumSize:3 |
+| `genre_format_names` | term | 14 | Genres, formats, descriptive terms |
+| `bracket_numbers` | bracket | 86 | Years, viewer counts, sales figures; homogeneityExempt |
+
+**Pool notes:**
+- Blair Witch Project moved from tv_show_names → franchise_ip_names (film, not TV show; fixed length-tell FAIL)
+- PSY moved from person_names_creators → meme_viral_names (viral cultural figure fits better)
+- network_channel_names split from company_studio_names to prevent 3ch (CBS) vs 14ch (Larian Studios) length-tells
+- 17 bracket_numbers normalized: viewer counts ≥1M divided to millions (e.g. `{44000000}` → `{44}` with "million" added to question)
+
+**Trivia bridge:** 168 facts extracted to bridge database. Domain: `general_knowledge`, categoryL2: `pop_culture`.
+
+**Source WIP files:**
+- `_wip/pop_culture_batch1_binge_worthy.json` — 35 facts, chainThemeId 0 (classic TV)
+- `_wip/pop_culture_batch2_game_on.json` — 36 facts, chainThemeId 1 (video games)
+- `_wip/pop_culture_batch3_hero_complex.json` — 30 facts, chainThemeId 2 (comics/superheroes)
+- `_wip/pop_culture_batch4_gone_viral.json` — 31 facts, chainThemeId 3 (internet culture)
+- `_wip/pop_culture_batch5_franchise_empires.json` — 35 facts, chainThemeId 4 (mega-franchises)
+- `_wip/pop_culture_batch6_pop_icons.json` — 35 facts, chainThemeId 5 (cultural moments)
