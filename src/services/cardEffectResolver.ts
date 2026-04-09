@@ -2220,8 +2220,8 @@ export function resolveCardEffect(
     // power_strike — clean scaling; Tags: power_vuln1, power_vuln2t, power_vuln75
     case 'power_strike': {
       applyAttackDamage(finalValue);
-      // Tag: power_vuln1 — apply Vulnerable 1t on hit.
-      if (hasTag('power_vuln1')) {
+      // Tag: power_vuln1 OR power_vuln2t — apply Vulnerable on hit.
+      if (hasTag('power_vuln1') || hasTag('power_vuln2t')) {
         // Phase 3 Tag: power_vuln2t — Vulnerable lasts 2 turns instead of 1.
         const vulnDuration = hasTag('power_vuln2t') ? 2 : 1;
         result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: vulnDuration });

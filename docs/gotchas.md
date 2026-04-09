@@ -1013,3 +1013,37 @@ These are accepted as false positives in the detection.
 4. Never use naive find-and-replace for natural language rewrites — always rephrase the whole clause
 
 **Rule:** Added to `content-pipeline.md`, all agent definitions, `agent-mindset.md`, and `testing.md` as mandatory verification step.
+
+---
+
+### 2026-04-09 — power_vuln1 tag gating makes power_strike Vulnerable apply never fire
+
+**What:** The `power_strike` mechanic resolver in `cardEffectResolver.ts` wraps the Vulnerable application inside `if (hasTag('power_vuln1'))`. However, `power_vuln1` is never defined in any MASTERY_STAT_TABLES level. Only `power_vuln2t` (at L5) and `power_vuln75` (at L5) exist as tags. This means `power_strike` NEVER applies Vulnerable at any mastery level.
+
+**Why:** The resolver logic was written to check `power_vuln1` as a lower-mastery tag gate (to optionally enable Vulnerable at an intermediate level), but the stat tables never added the `power_vuln1` tag to any level entry.
+
+**Fix needed (game-logic agent):** Either:
+1. Add `power_vuln1` tag to relevant MASTERY_STAT_TABLES levels (L3 or L4), OR
+2. Change the resolver to check `power_vuln2t` directly (L5 always gets 2-turn Vulnerable)
+
+**Discovered by:** Unit test in `tests/unit/card-archetype-tags.test.ts` — the test documents the current broken behavior with a BUG marker comment.
+
+---
+
+### 2026-04-09 — CANARY_CHALLENGE_ENEMY_HP_MULT_3 (1.1) is dead code — always overridden by 1.2
+
+**What:** In `canaryService.ts`, the `deriveMode()` function has this inner ternary:
+```ts
+const challengeHpMult = correctStreak >= CANARY_CHALLENGE_STREAK_THRESHOLD
+  ? CANARY_CHALLENGE_ENEMY_HP_MULT_5    // 1.2
+  : CANARY_CHALLENGE_ENEMY_HP_MULT_3;  // 1.1 — never reached
+```
+But this is INSIDE the block `if (correctStreak >= CANARY_CHALLENGE_STREAK_THRESHOLD)`, so the condition is always true. `CANARY_CHALLENGE_ENEMY_HP_MULT_3` (1.1 for 3-4 streak) is never used.
+
+**Why:** The intent was to give 1.1x HP for streaks 3-4 and 1.2x for streaks 5+. But `CANARY_CHALLENGE_STREAK_THRESHOLD` is set to 5, meaning challenge mode only starts at streak 5. The inner ternary uses the same threshold constant, making the `CANARY_CHALLENGE_ENEMY_HP_MULT_3` branch unreachable.
+
+**Fix needed (game-logic agent):** Either:
+1. Add a lower `CANARY_CHALLENGE_STREAK_THRESHOLD_3 = 3` constant, or
+2. Remove the dead inner ternary and just use `CANARY_CHALLENGE_ENEMY_HP_MULT_5` directly
+
+**Discovered by:** Code review during writing of `tests/unit/canary.test.ts`.

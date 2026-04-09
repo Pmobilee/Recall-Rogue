@@ -29,9 +29,9 @@ export interface CanaryState {
 }
 
 function deriveMode(wrongAnswersThisFloor: number, correctStreak: number): CanaryState {
-  // Check challenge mode first (high performance)
-  if (correctStreak >= CANARY_CHALLENGE_STREAK_THRESHOLD) {
-    // Within challenge mode: use the stronger HP multiplier for streak >= 5, weaker for >= 3
+  // Check challenge mode: streak >= 3 enters challenge, with two tiers
+  if (correctStreak >= 3) {
+    // Tier 2 (5+ streak): stronger HP multiplier. Tier 1 (3-4 streak): weaker HP multiplier.
     const challengeHpMult = correctStreak >= CANARY_CHALLENGE_STREAK_THRESHOLD
       ? CANARY_CHALLENGE_ENEMY_HP_MULT_5
       : CANARY_CHALLENGE_ENEMY_HP_MULT_3;

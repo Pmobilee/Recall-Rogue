@@ -122,6 +122,16 @@ export const DOMAIN_METADATA: Record<CanonicalFactDomain, DomainMetadata> = {
     description: 'Psychology, economics, sociology, and behavioral sciences.',
     ageDefault: 'teen',
   },
+  sports_entertainment: {
+    id: 'sports_entertainment',
+    displayName: 'Sports & Entertainment',
+    shortName: 'Sports',
+    colorTint: '#EF4444',  // Crimson red — athletic energy, competition, victory
+    icon: '🏆',
+    description: 'Global sports, iconic competitions, and legendary athletes — from the FIFA World Cup to the Olympics, Formula 1, and chess grandmasters.',
+    ageDefault: 'kid',
+    comingSoon: true,
+  },
   language: {
     id: 'language',
     displayName: 'Language',

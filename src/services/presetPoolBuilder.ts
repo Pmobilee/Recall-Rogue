@@ -36,6 +36,7 @@ const DOMAIN_TO_CATEGORY: Record<string, string[]> = {
   human_body_health: ['Human Body & Health', 'Life Sciences', 'Medicine', 'Health'],
   food_cuisine: ['Food & World Cuisine'],
   art_architecture: ['Art & Architecture', 'Culture', 'Arts'],
+  sports_entertainment: ['Sports & Entertainment', 'Sports'],
 };
 
 /**

@@ -1,7 +1,7 @@
 # Domains & Content Themes
 
 > **Purpose:** Documents all knowledge domains, their metadata, subcategory taxonomy, domain resolution logic, and the distinction between language and knowledge domains.
-> **Last verified:** 2026-04-03
+> **Last verified:** 2026-04-09
 > **Source files:** `src/data/domainMetadata.ts`, `src/data/subcategoryTaxonomy.ts`, `src/data/categories.ts`, `src/services/domainResolver.ts`, `src/services/domainSubcategoryService.ts`
 
 ---
@@ -33,6 +33,8 @@ Defined in `src/data/domainMetadata.ts` as `Record<CanonicalFactDomain, DomainMe
 | `human_body_health` | Human Body & Health | Health | `#14B8A6` | 🫀 | teen | coming soon | |
 | `food_cuisine` | Food & World Cuisine | Cuisine | `#F97316` | 🍜 | kid | coming soon | |
 | `art_architecture` | Art & Architecture | Art | `#EC4899` | 🎨 | kid | coming soon | |
+| `social_sciences` | Social Sciences | Social Sci | `#7C3AED` | 📊 | teen | coming soon | |
+| `sports_entertainment` | Sports & Entertainment | Sports | `#EF4444` | 🏆 | kid | coming soon | Added 2026-04-09 — internationalization strategic priority |
 | `language` | Language | Language | `#34D399` | 🗣️ | kid | active | Study Temple only |
 | `mathematics` | Mathematics | Math | `#3B82F6` | 🔢 | kid | active | Procedural — no static facts |
 
@@ -57,6 +59,43 @@ interface DomainMetadata {
 
 ---
 
+## Sports & Entertainment Domain
+
+Added 2026-04-09 as the library's first dedicated Sports & Entertainment domain, part of the internationalization strategic priority (see `data/deck-ideas.md` Section 3.11).
+
+- **ID:** `sports_entertainment`
+- **Display Name:** Sports & Entertainment
+- **Short Name:** Sports
+- **Description:** Global sports, iconic competitions, and legendary athletes — from the FIFA World Cup to the Olympics, Formula 1, and chess grandmasters.
+- **Color:** `#EF4444` (crimson red — athletic energy, competition, victory)
+- **Icon:** 🏆
+- **Age Default:** kid
+- **Status:** `comingSoon: true` — first deck (FIFA World Cup) in architecture phase as of 2026-04-09
+
+### Planned Decks
+
+| Deck | Status | Sub-deck themes |
+|---|---|---|
+| FIFA World Cup | Architecture phase (content-agent) | Championship, Legendary, Iconic Moments |
+| Olympics | Planned | Summer Games, Winter Games, Legendary Athletes |
+| Formula 1 | Planned | Championship, Circuits, Constructors |
+| Chess | Planned | World Champions, Famous Matches, Openings |
+| Cricket | Planned | Test Cricket, World Cup, Legendary Players |
+| Tennis | Planned | Grand Slams, Rivalries, Records |
+
+### Default Chain Themes
+
+Sports decks default to these chain themes (matching `fifa_world_cup_arch.yaml`):
+- **Championship** — tournament/competition knowledge chain
+- **Legendary** — iconic players and athletes chain
+- **Iconic Moments** — match and performance highlights chain
+
+### Domain Resolution
+
+Facts in this domain should have `categoryL1: 'sports_entertainment'` or `category[0]: 'Sports & Entertainment'` or `category[0]: 'Sports'`. The `DOMAIN_TO_CATEGORY` mapping in `presetPoolBuilder.ts` includes both `'Sports & Entertainment'` and `'Sports'` as legacy category strings.
+
+---
+
 ## Knowledge Domains vs Special Domains
 
 `getKnowledgeDomains()` returns all canonical domains except `'language'`, `'geography_drill'`, and `'mathematics'`. These three are excluded because:
@@ -67,6 +106,8 @@ interface DomainMetadata {
 `geography_drill` facts are geography facts with subcategories in the capitals/flags set (`capitals_countries`, `world_capitals`, `flags`, `national_flags`, etc.) — routed to the dedicated drill domain by `domainResolver.ts`.
 
 `GENERAL_MODE_DOMAINS` in `presetPoolBuilder.ts` also excludes `mathematics` (along with `language`, `geography`, `geography_drill`) so trivia runs never attempt to query math facts.
+
+`sports_entertainment` is included by `getKnowledgeDomains()` — it is a standard knowledge domain for trivia dungeon use. It will appear in general runs once fact content is populated (currently `comingSoon: true` so the UI hides it from primary selection).
 
 ---
 
@@ -129,6 +170,8 @@ The legacy `'math'` domain (in `LEGACY_DOMAIN_NORMALIZATION`) now normalizes to 
 
 **art_architecture** (7): Museums & Institutions, Historic Buildings, Painting & Visual Arts, Sculpture & Decorative Arts, Modern & Contemporary Art, Architectural Styles, Engineering & Design
 
+**sports_entertainment** (8): Football (Soccer), Olympics, Formula 1, Tennis, Chess, Cricket, Athletics, Records & Firsts — added 2026-04-09
+
 **language** (40+): Chinese HSK 1–7, Japanese N5–N1/Hiragana/Katakana, Spanish A1–C1, French A1–C2, German A1–C2, Dutch A1–C1, Czech A1–C1, Korean Beginner/Intermediate/Advanced
 
 **mathematics**: No subcategory taxonomy — uses `ProceduralSubDeck` groupings (Addition, Subtraction, Multiplication, etc.) defined in `ProceduralDeck.subDecks`.
@@ -157,4 +200,4 @@ Note: calling `getDomainSubcategories('mathematics')` will always return an empt
 
 ## CSS Domain Classes
 
-`getDomainCSSClass(domain)` returns a CSS class string in the form `domain-<canonicalId>` (e.g. `domain-history`, `domain-language`, `domain-mathematics`). Used for domain-tinted styling in card frames and UI elements.
+`getDomainCSSClass(domain)` returns a CSS class string in the form `domain-<canonicalId>` (e.g. `domain-history`, `domain-language`, `domain-mathematics`, `domain-sports_entertainment`). Used for domain-tinted styling in card frames and UI elements.

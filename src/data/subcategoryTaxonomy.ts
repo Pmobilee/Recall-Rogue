@@ -155,6 +155,16 @@ export const SUBCATEGORY_TAXONOMY: Partial<Record<CanonicalFactDomain, Subcatego
     { id: 'psychology', label: 'Psychology', description: 'Cognitive, behavioral, developmental, and clinical psychology' },
     { id: 'sociology', label: 'Sociology', description: 'Social structures, institutions, culture, and group behavior' },
   ],
+  sports_entertainment: [
+    { id: 'football_soccer', label: 'Football (Soccer)', description: 'FIFA World Cup, club competitions, iconic players and matches worldwide' },
+    { id: 'olympics', label: 'Olympics', description: 'Summer and Winter Olympics, host cities, records, and legendary athletes' },
+    { id: 'formula_one', label: 'Formula 1', description: 'F1 drivers, constructors, circuits, championships, and race history' },
+    { id: 'tennis', label: 'Tennis', description: 'Grand Slams, legendary players, records, and match history' },
+    { id: 'chess', label: 'Chess', description: 'World champions, famous matches, openings, and chess history' },
+    { id: 'cricket', label: 'Cricket', description: 'Test matches, World Cups, iconic players, and cricketing nations' },
+    { id: 'athletics', label: 'Athletics', description: 'Track and field world records, legendary sprinters, jumpers, and marathoners' },
+    { id: 'sports_records', label: 'Records & Firsts', description: 'Sporting world records, first achievements, and historic milestones' },
+  ],
   language: [
     { id: 'chinese_hsk1', label: 'Chinese HSK 1', description: 'HSK Level 1 (A1) beginner Chinese vocabulary' },
     { id: 'chinese_hsk2', label: 'Chinese HSK 2', description: 'HSK Level 2 (A2) elementary Chinese vocabulary' },
