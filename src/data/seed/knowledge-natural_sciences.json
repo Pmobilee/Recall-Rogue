@@ -72165,5 +72165,3615 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-24T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_photosynthesis_equation",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Photosynthesis converts carbon dioxide and water into glucose and oxygen: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂.",
+    "quizQuestion": "What is the correct chemical equation for photosynthesis?",
+    "correctAnswer": "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂",
+    "distractors": [
+      "6O₂ + 6H₂O → C₆H₁₂O₆ + 6CO₂",
+      "C₆H₁₂O₆ → 6CO₂ + 6H₂O + energy",
+      "6CO₂ + 6O₂ → C₆H₁₂O₆ + 6H₂O",
+      "H₂O + CO₂ → O₂ + sugar",
+      "6C + 6H₂O → C₆H₁₂O₆ + 6O",
+      "CO₂ + H₂O + light → CH₂O + O",
+      "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O",
+      "ATP + NADPH → C₆H₁₂O₆"
+    ],
+    "acceptableAnswers": [
+      "6CO2 + 6H2O → C6H12O6 + 6O2"
+    ],
+    "explanation": "Photosynthesis uses light energy (from sunlight) to convert 6 molecules of carbon dioxide and 6 molecules of water into one molecule of glucose (C₆H₁₂O₆) and 6 molecules of oxygen. The oxygen is released as a byproduct — it's the source of essentially all the oxygen in Earth's atmosphere.",
+    "wowFactor": "Every breath of oxygen you take was produced by this equation — photosynthesis has been oxygenating Earth's atmosphere for over 2.5 billion years.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Photosynthesis produces glucose and ___ from CO₂ and H₂O using light energy.",
+        "correctAnswer": "oxygen",
+        "distractors": [
+          "nitrogen",
+          "carbon monoxide",
+          "water vapor",
+          "ATP"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: In photosynthesis, carbon dioxide is a product and oxygen is a reactant.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which process has the equation 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂?",
+        "correctAnswer": "Photosynthesis",
+        "distractors": [
+          "Cellular respiration",
+          "Fermentation",
+          "Nitrogen fixation",
+          "Chemosynthesis"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Plants capture sunlight and use it to combine CO₂ and H₂O. What molecule do they produce as food?",
+        "correctAnswer": "Glucose",
+        "distractors": [
+          "Starch",
+          "ATP",
+          "Cellulose",
+          "Chlorophyll"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Photosynthesis",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art diagram of a green leaf cross-section with sunlight arrows entering, CO₂ molecules shown entering from air, water molecules rising from roots, glucose and O₂ molecules exiting",
+    "tags": [
+      "photosynthesis",
+      "plants",
+      "chemistry",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_oxygen_production_share",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Plants produce approximately 50% of Earth's oxygen — the other 50% comes from ocean phytoplankton.",
+    "quizQuestion": "What produces approximately 50% of Earth's oxygen alongside land plants?",
+    "correctAnswer": "Ocean phytoplankton",
+    "distractors": [
+      "Coral reefs",
+      "Freshwater algae",
+      "Bacteria",
+      "Fungi",
+      "Mosses",
+      "Seaweed",
+      "Wetlands",
+      "Wetland grasses"
+    ],
+    "acceptableAnswers": [
+      "Phytoplankton",
+      "Marine phytoplankton",
+      "ocean algae"
+    ],
+    "explanation": "Land plants produce roughly 50% of Earth's oxygen through photosynthesis. The other 50% comes from phytoplankton — microscopic photosynthetic organisms in the ocean. This makes the ocean equally important as forests for maintaining breathable air.",
+    "wowFactor": "Half the air you breathe was made by tiny ocean creatures you've never seen — phytoplankton collectively outproduce all the world's rainforests.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Land plants produce ~50% of Earth's oxygen. The other ~50% is produced by ocean ___.",
+        "correctAnswer": "phytoplankton",
+        "distractors": [
+          "coral reefs",
+          "seaweed",
+          "bacteria",
+          "algae mats"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Rainforests produce most of Earth's oxygen — about 90%.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ocean organisms produce roughly half of Earth's oxygen, matching the output of all land plants?",
+        "correctAnswer": "Phytoplankton",
+        "distractors": [
+          "Coral reefs",
+          "Seaweed",
+          "Freshwater algae",
+          "Sea sponges"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "It's a common myth that rainforests make most of Earth's oxygen. What actually produces about 50% of it?",
+        "correctAnswer": "Ocean phytoplankton",
+        "distractors": [
+          "Coral reefs",
+          "Freshwater algae",
+          "Mangrove forests",
+          "Bacteria"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phytoplankton",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split-screen: left shows dense green forest canopy with oxygen bubbles rising, right shows microscopic glowing phytoplankton in ocean blue — both producing equal streams of oxygen bubbles",
+    "tags": [
+      "oxygen",
+      "phytoplankton",
+      "photosynthesis",
+      "atmosphere"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_methuselah_oldest_tree",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "A bristlecone pine called 'Methuselah' is approximately 4,855 years old — the world's oldest known living tree.",
+    "quizQuestion": "Which species is the world's oldest known individual tree, estimated at ~4,855 years old?",
+    "correctAnswer": "Bristlecone pine",
+    "distractors": [
+      "Coast redwood",
+      "Giant sequoia",
+      "Ginkgo biloba",
+      "Olive tree",
+      "Baobab",
+      "Yew tree",
+      "Douglas fir",
+      "Kauri tree"
+    ],
+    "acceptableAnswers": [
+      "Great Basin bristlecone pine",
+      "Pinus longaeva"
+    ],
+    "explanation": "Methuselah, a Great Basin bristlecone pine (Pinus longaeva) in California's White Mountains, is approximately 4,855 years old — making it the world's oldest known non-clonal living tree. Its exact location is kept secret to protect it from damage.",
+    "wowFactor": "Methuselah was already 800 years old when the Egyptian pyramids were being built — it has witnessed the entire span of recorded human history.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "A ___ pine called 'Methuselah' (~4,855 years old) is the world's oldest known living tree.",
+        "correctAnswer": "bristlecone",
+        "distractors": [
+          "redwood",
+          "sequoia",
+          "ginkgo",
+          "yew"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Methuselah is a coast redwood tree.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which tree species, found in California's White Mountains, includes Methuselah — the world's oldest known living tree at ~4,855 years?",
+        "correctAnswer": "Bristlecone pine",
+        "distractors": [
+          "Coast redwood",
+          "Giant sequoia",
+          "Ginkgo biloba",
+          "Joshua tree"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The world's oldest living tree was 800 years old when Egypt's pyramids were built. What species is it?",
+        "correctAnswer": "Bristlecone pine",
+        "distractors": [
+          "Coast redwood",
+          "Giant sequoia",
+          "Ginkgo biloba",
+          "Baobab"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Methuselah_(tree)",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a gnarled ancient tree with twisted pale bark and sparse needles clinging to a rocky mountain slope, stars visible in the dark sky above, wind-sculpted form",
+    "tags": [
+      "oldest tree",
+      "bristlecone pine",
+      "methuselah",
+      "botany"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_general_sherman_largest_volume",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "General Sherman, a giant sequoia in California, is the world's largest tree by volume.",
+    "quizQuestion": "Which tree species holds the record as the world's largest by volume?",
+    "correctAnswer": "Giant sequoia",
+    "distractors": [
+      "Coast redwood",
+      "Sitka spruce",
+      "Douglas fir",
+      "Kauri tree",
+      "Banyan tree",
+      "Baobab",
+      "African mahogany",
+      "Deodar cedar"
+    ],
+    "acceptableAnswers": [
+      "sequoia",
+      "Sequoiadendron giganteum"
+    ],
+    "explanation": "General Sherman in Sequoia National Park, California, is a giant sequoia (Sequoiadendron giganteum) with a volume of about 1,487 m³ — making it the world's largest tree by volume. It is about 84 meters tall and the base circumference is about 31 meters.",
+    "wowFactor": "General Sherman contains enough wood to build about 40 five-room houses — yet it is still growing, adding roughly a cubic meter of wood every year.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "General Sherman, the world's largest tree by volume, is a giant ___ in California.",
+        "correctAnswer": "sequoia",
+        "distractors": [
+          "redwood",
+          "spruce",
+          "fir",
+          "pine"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: General Sherman is the world's tallest tree.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which California tree, named General Sherman, is the world's largest living tree by volume at ~1,487 m³?",
+        "correctAnswer": "Giant sequoia",
+        "distractors": [
+          "Coast redwood",
+          "Douglas fir",
+          "Sitka spruce",
+          "Kauri"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The world's largest tree by volume is not the tallest — it's a giant sequoia in California. What is it named?",
+        "correctAnswer": "General Sherman",
+        "distractors": [
+          "Hyperion",
+          "Methuselah",
+          "President",
+          "Stratosphere Giant"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/General_Sherman_tree",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of an impossibly wide tree trunk emerging from forest floor, its base wider than a car, bark deeply furrowed in orange-red, tiny human figure standing at base for scale",
+    "tags": [
+      "general sherman",
+      "giant sequoia",
+      "largest tree",
+      "california"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_hyperion_tallest_tree",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Hyperion, a coast redwood in California, is the world's tallest known tree at 115.9 meters.",
+    "quizQuestion": "What is the name of the world's tallest known living tree?",
+    "correctAnswer": "Hyperion",
+    "distractors": [
+      "General Sherman",
+      "Methuselah",
+      "Titan",
+      "Centurion",
+      "El Grande",
+      "Prometheus",
+      "Archangel",
+      "Hyperion Two"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Hyperion is a coast redwood (Sequoia sempervirens) discovered in 2006 in Redwood National Park, California. At 115.9 meters (380.3 feet), it is the world's tallest known living tree. Its exact location is kept secret to protect it from human damage.",
+    "wowFactor": "Hyperion is taller than the Statue of Liberty, Big Ben, and the Leaning Tower of Pisa. It's roughly the height of a 38-story building — made entirely of wood.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "___ is a coast redwood in California measuring 115.9 meters — the world's tallest known tree.",
+        "correctAnswer": "Hyperion",
+        "distractors": [
+          "General Sherman",
+          "Methuselah",
+          "Centurion",
+          "Titan"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hyperion is a giant sequoia.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which coast redwood in California measures 115.9 meters, earning the title of world's tallest known living tree?",
+        "correctAnswer": "Hyperion",
+        "distractors": [
+          "General Sherman",
+          "Centurion",
+          "Titan",
+          "Prometheus"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Discovered in 2006 and taller than the Statue of Liberty, which Californian coast redwood is the world's tallest tree?",
+        "correctAnswer": "Hyperion",
+        "distractors": [
+          "General Sherman",
+          "Centurion",
+          "Titan",
+          "Methuselah"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hyperion_(tree)",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of an immense redwood tree disappearing into fog far above, its trunk a red-brown column wider than a car, forest floor far below in deep shadow",
+    "tags": [
+      "hyperion",
+      "coast redwood",
+      "tallest tree",
+      "california"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_bamboo_fastest_growing",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Bamboo is the fastest-growing plant on Earth, capable of growing up to 91 cm in a single day.",
+    "quizQuestion": "How much can bamboo grow in a single day at its fastest?",
+    "correctAnswer": "Up to 91 cm",
+    "distractors": [
+      "Up to 10 cm",
+      "Up to 30 cm",
+      "Up to 200 cm",
+      "Up to 5 cm",
+      "Up to 50 cm",
+      "Up to 150 cm",
+      "Up to 2 cm",
+      "Kudzu"
+    ],
+    "acceptableAnswers": [
+      "91 centimeters",
+      "~90 cm",
+      "about 91 cm"
+    ],
+    "explanation": "Some bamboo species can grow up to 91 cm (about 36 inches) per day under ideal conditions — that's almost 4 cm per hour. Bamboo is technically a grass, not a tree, and it grows from its base rather than its tip, which is why its incredible growth rate is possible.",
+    "wowFactor": "You can literally watch bamboo grow — at its peak rate you could see it moving if you watched carefully enough, growing nearly a meter in just 24 hours.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Bamboo, the world's fastest-growing plant, can grow up to ___ cm in a single day.",
+        "correctAnswer": "91",
+        "distractors": [
+          "10",
+          "30",
+          "200",
+          "50"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Bamboo is actually a type of grass, not a tree.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which plant, technically a grass, holds the record for fastest growth at up to 91 cm per day?",
+        "correctAnswer": "Bamboo",
+        "distractors": [
+          "Kudzu vine",
+          "Giant kelp",
+          "Water hyacinth",
+          "Elephant grass"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Growing from its base rather than its tip, which grass plant can shoot up nearly a meter in a single day?",
+        "correctAnswer": "Bamboo",
+        "distractors": [
+          "Elephant grass",
+          "Sugarcane",
+          "Giant kelp",
+          "Kudzu"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bamboo",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of tall bamboo shoots in bright green, a ruler alongside showing rapid height, arrows indicating upward growth, a panda eating shoots in the background",
+    "tags": [
+      "bamboo",
+      "growth rate",
+      "plants",
+      "records"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_corpse_flower_inflorescence",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "The corpse flower (Amorphophallus titanum) produces the world's largest unbranched inflorescence and smells like rotting flesh.",
+    "quizQuestion": "Why does the corpse flower smell like rotting flesh?",
+    "correctAnswer": "Attract carrion pollinators",
+    "distractors": [
+      "To repel herbivores",
+      "Because it feeds on decomposing matter",
+      "To warn predators",
+      "Due to its digestive enzymes",
+      "Because it is carnivorous",
+      "To attract fruit bats",
+      "Due to its high sulfur content",
+      "Nepenthes"
+    ],
+    "acceptableAnswers": [
+      "attract pollinators",
+      "attract flies and beetles",
+      "attract carrion insects"
+    ],
+    "explanation": "The corpse flower (Amorphophallus titanum) mimics the smell of rotting meat to attract carrion beetles and flesh flies as pollinators. It produces heat to spread the smell further. It only blooms for 24-48 hours every few years, generating massive public attention at botanic gardens.",
+    "wowFactor": "The corpse flower heats itself to body temperature to spread its rotting smell — an evolutionary trick to fool flies into thinking it's a dead animal.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The corpse flower smells like rotting flesh to attract ___ as pollinators.",
+        "correctAnswer": "carrion beetles and flies",
+        "distractors": [
+          "bees",
+          "butterflies",
+          "birds",
+          "moths"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The corpse flower heats itself to spread its scent more effectively.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which plant produces the world's largest unbranched inflorescence and heats itself to spread the scent of rotting meat?",
+        "correctAnswer": "Corpse flower",
+        "distractors": [
+          "Rafflesia",
+          "Venus flytrap",
+          "Pitcher plant",
+          "Giant water lily"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Zoos and botanic gardens draw huge crowds when this plant blooms — because it smells absolutely terrible. Which plant is it?",
+        "correctAnswer": "Corpse flower",
+        "distractors": [
+          "Rafflesia",
+          "Venus flytrap",
+          "Pitcher plant",
+          "Baobab"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amorphophallus_titanum",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a massive dark maroon flower spike taller than a person, surrounded by a purple-green spathe, wavy heat lines rising from the top, flies circling around it",
+    "tags": [
+      "corpse flower",
+      "pollination",
+      "carnivorous plants",
+      "botany"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_venus_flytrap_native_range",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "The Venus flytrap is native only to a small area near Wilmington, North Carolina.",
+    "quizQuestion": "Where is the Venus flytrap native to in its natural range?",
+    "correctAnswer": "Near Wilmington, NC",
+    "distractors": [
+      "Amazon rainforest",
+      "Florida Everglades",
+      "Pacific Northwest coast",
+      "Central African rainforest",
+      "Southeast Asian swamps",
+      "Australian wetlands",
+      "South African bogs",
+      "Louisiana bayous"
+    ],
+    "acceptableAnswers": [
+      "North Carolina",
+      "Wilmington NC",
+      "Carolina coastal plain"
+    ],
+    "explanation": "Despite being sold worldwide as a houseplant, the Venus flytrap (Dionaea muscipula) is native only to the subtropical wetlands within about 150 km of Wilmington, North Carolina. It grows in nutrient-poor, boggy soils and supplements its nutrition by catching and digesting insects.",
+    "wowFactor": "The most famous carnivorous plant on Earth — sold in every garden center worldwide — naturally exists in one tiny patch of swampland in North Carolina.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Venus flytrap, despite being sold worldwide, is native only to a small area near Wilmington, ___.",
+        "correctAnswer": "North Carolina",
+        "distractors": [
+          "Florida",
+          "South Carolina",
+          "Georgia",
+          "Louisiana"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Venus flytrap is native to tropical rainforests in South America.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which US state contains the only natural habitat of the Venus flytrap — a small area of coastal plain bogs?",
+        "correctAnswer": "North Carolina",
+        "distractors": [
+          "Florida",
+          "South Carolina",
+          "Georgia",
+          "Louisiana"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Although sold globally as a houseplant, the Venus flytrap's entire wild native range covers just ~150 km radius around which US city?",
+        "correctAnswer": "Wilmington, North Carolina",
+        "distractors": [
+          "Miami, Florida",
+          "Charleston, South Carolina",
+          "Savannah, Georgia",
+          "New Orleans, Louisiana"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Venus_flytrap",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a Venus flytrap with open red-lined jaws in a boggy coastal wetland, pine trees in the background, a fly hovering dangerously close to the trap's trigger hairs",
+    "tags": [
+      "venus flytrap",
+      "carnivorous plants",
+      "north carolina",
+      "endemic species"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_rafflesia_largest_flower",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Rafflesia arnoldii produces the world's largest individual flower, reaching up to 1 meter in diameter.",
+    "quizQuestion": "Which plant produces the world's largest individual flower at up to 1 meter in diameter?",
+    "correctAnswer": "Rafflesia",
+    "distractors": [
+      "Corpse flower",
+      "Giant water lily",
+      "Lotus",
+      "Sunflower",
+      "Magnolia",
+      "Titan arum",
+      "Tree peony",
+      "Heliconia"
+    ],
+    "acceptableAnswers": [
+      "Rafflesia arnoldii"
+    ],
+    "explanation": "Rafflesia arnoldii is a parasitic plant found in the rainforests of Sumatra and Borneo. It has no visible stems, leaves, or roots — it lives entirely inside its host vine. It produces a single enormous flower up to 1 meter across and weighing up to 11 kg, which also smells like rotting flesh.",
+    "wowFactor": "Rafflesia is the ultimate botanical mystery — it has no roots, no leaves, and no stem. The entire plant IS the flower, hiding inside another plant until it blooms.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "___ arnoldii produces the world's largest individual flower, up to 1 meter across and 11 kg.",
+        "correctAnswer": "Rafflesia",
+        "distractors": [
+          "Amorphophallus",
+          "Nelumbo",
+          "Victoria",
+          "Magnolia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Rafflesia has leaves, stems, and roots like most plants.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which parasitic plant with no roots, leaves, or stem produces Earth's largest individual flower at ~1 meter across?",
+        "correctAnswer": "Rafflesia",
+        "distractors": [
+          "Corpse flower",
+          "Giant water lily",
+          "Lotus",
+          "Sunflower"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Hidden inside a host vine in Borneo's rainforest, which plant emerges only as a 1-meter diameter flower with no visible stem or leaves?",
+        "correctAnswer": "Rafflesia",
+        "distractors": [
+          "Corpse flower",
+          "Giant water lily",
+          "Lotus",
+          "Magnolia"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rafflesia_arnoldii",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a massive dark red and white spotted flower lying on the rainforest floor, broader than a person's arm span, no visible plant attached to it, surrounding vegetation dwarfed by comparison",
+    "tags": [
+      "rafflesia",
+      "largest flower",
+      "parasitic plants",
+      "borneo"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_baobab_water_storage",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "The baobab tree can store up to 120,000 liters of water in its swollen trunk.",
+    "quizQuestion": "How much water can a baobab tree store in its trunk?",
+    "correctAnswer": "Up to 120,000 liters",
+    "distractors": [
+      "Up to 1,000 liters",
+      "Up to 10,000 liters",
+      "Up to 500,000 liters",
+      "Up to 5,000 liters",
+      "Up to 50,000 liters",
+      "Up to 2,000 liters",
+      "Up to 200,000 liters",
+      "Up to 300,000 liters"
+    ],
+    "acceptableAnswers": [
+      "120,000 litres",
+      "up to 120000 liters"
+    ],
+    "explanation": "The baobab (Adansonia) stores up to 120,000 liters of water in its massive, swollen trunk to survive long dry seasons. This makes it a crucial water source for wildlife and humans in African dry lands. Baobabs can live for thousands of years and are sometimes called the 'Tree of Life.'",
+    "wowFactor": "A baobab trunk stores enough water to fill about 800 bathtubs — making it a self-contained oasis that sustains entire ecosystems through the dry season.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The baobab tree can store up to ___ liters of water in its trunk to survive dry seasons.",
+        "correctAnswer": "120,000",
+        "distractors": [
+          "1,000",
+          "10,000",
+          "50,000",
+          "500,000"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The baobab stores water in its roots, not its trunk.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which African tree, called the 'Tree of Life,' stores up to 120,000 liters of water in its swollen trunk?",
+        "correctAnswer": "Baobab",
+        "distractors": [
+          "Acacia",
+          "Sausage tree",
+          "Marula tree",
+          "Camel thorn"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In African dry lands, which tree acts as a natural reservoir, storing up to 120,000 liters of water for wildlife?",
+        "correctAnswer": "Baobab",
+        "distractors": [
+          "Acacia",
+          "Joshua tree",
+          "Camel thorn",
+          "Euphorbia"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Adansonia",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a massive bottle-shaped baobab trunk in a dry savannah at sunset, its bloated girth dwarfing nearby trees, branches reaching up like roots in the orange sky",
+    "tags": [
+      "baobab",
+      "water storage",
+      "africa",
+      "tree of life"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_ginkgo_oldest_species",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Ginkgo biloba is Earth's oldest tree species, having existed virtually unchanged for approximately 270 million years.",
+    "quizQuestion": "Which tree species has existed virtually unchanged for about 270 million years?",
+    "correctAnswer": "Ginkgo biloba",
+    "distractors": [
+      "Bristlecone pine",
+      "Giant sequoia",
+      "Wollemi pine",
+      "Metasequoia",
+      "Araucaria",
+      "Cycad",
+      "Baobab",
+      "Tree fern"
+    ],
+    "acceptableAnswers": [
+      "Ginkgo",
+      "maidenhair tree"
+    ],
+    "explanation": "Ginkgo biloba is the world's oldest extant tree species, with fossils dating back about 270 million years to the Permian period. Its leaf shape has remained virtually identical since the age of dinosaurs, earning it the nickname 'living fossil.' It is the sole surviving member of the order Ginkgoales.",
+    "wowFactor": "Dinosaurs walked under ginkgo trees that looked exactly like today's ginkgos — this tree has outlasted every mass extinction event for 270 million years.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Ginkgo ___ has existed virtually unchanged for ~270 million years, making it Earth's oldest tree species.",
+        "correctAnswer": "biloba",
+        "distractors": [
+          "sempervirens",
+          "giganteum",
+          "communis",
+          "japonica"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ginkgo biloba has been called a 'living fossil' because it has barely changed in 270 million years.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which 'living fossil' tree, virtually unchanged since the Permian era 270 million years ago, is the oldest tree species on Earth?",
+        "correctAnswer": "Ginkgo biloba",
+        "distractors": [
+          "Bristlecone pine",
+          "Wollemi pine",
+          "Metasequoia",
+          "Araucaria"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Dinosaurs sheltered under trees looking identical to those you see today. Which species, 270 million years old, is this 'living fossil'?",
+        "correctAnswer": "Ginkgo biloba",
+        "distractors": [
+          "Bristlecone pine",
+          "Giant sequoia",
+          "Wollemi pine",
+          "Cycad"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ginkgo_biloba",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a ginkgo tree with its distinctive fan-shaped leaves in golden yellow, a fossil of the same leaf shape shown beside it from Permian rock — identical shape, 270 million years apart",
+    "tags": [
+      "ginkgo",
+      "living fossil",
+      "ancient species",
+      "evolution"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_mangroves_carbon_sinks",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Mangroves are salt-tolerant trees that protect coastlines from erosion and are highly efficient carbon sinks.",
+    "quizQuestion": "What unique adaptation allows mangroves to grow in saltwater environments?",
+    "correctAnswer": "Salt tolerance",
+    "distractors": [
+      "Storing water underground",
+      "Photosynthesizing at night",
+      "Using salt as fuel",
+      "Growing above waterline only",
+      "Filtering through bark",
+      "Shedding leaves in seawater",
+      "Producing anti-salt enzymes",
+      "Cypress swamps"
+    ],
+    "acceptableAnswers": [
+      "salt-tolerant roots",
+      "ability to tolerate salt",
+      "halophyte adaptations"
+    ],
+    "explanation": "Mangroves have evolved several salt-tolerance mechanisms: some exclude salt at their roots, others excrete it through their leaves, and some concentrate salt in old leaves and shed them. Their complex root systems stabilize coastlines, provide nursery habitat for fish, and store carbon 3-5 times more efficiently than rainforests.",
+    "wowFactor": "Mangroves store carbon 3-5 times more efficiently per hectare than tropical rainforests — yet are being destroyed at twice the rate.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Mangroves protect coastlines and store carbon 3-5 times more efficiently per hectare than tropical ___.",
+        "correctAnswer": "rainforests",
+        "distractors": [
+          "grasslands",
+          "wetlands",
+          "deserts",
+          "savannahs"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mangroves can grow in saltwater environments where most other trees cannot survive.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which coastal tree type, famous for salt tolerance and tangled aerial roots, stores carbon 3-5 times more efficiently than rainforests?",
+        "correctAnswer": "Mangrove",
+        "distractors": [
+          "Cypress",
+          "Willow",
+          "Alder",
+          "Casuarina"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A highly efficient carbon sink that protects coastlines from storm damage — what type of salt-tolerant coastal tree does this?",
+        "correctAnswer": "Mangrove",
+        "distractors": [
+          "Cypress",
+          "Sea oak",
+          "Casuarina",
+          "Buttonwood"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mangrove",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of mangrove trees with their distinctive arching prop roots standing in green-brown tidal water, small fish visible among the roots, the open sea behind",
+    "tags": [
+      "mangroves",
+      "carbon sink",
+      "coastal ecology",
+      "salt tolerance"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_mycorrhizal_wood_wide_web",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Mycorrhizal fungal networks, called the 'wood wide web,' connect trees underground and allow them to share nutrients.",
+    "quizQuestion": "What is the informal name for the underground fungal network connecting trees in a forest?",
+    "correctAnswer": "Wood wide web",
+    "distractors": [
+      "Forest internet",
+      "Root network",
+      "Mycelial matrix",
+      "Underground highway",
+      "Symbiotic web",
+      "Soil network",
+      "Tree internet",
+      "Lichen network"
+    ],
+    "acceptableAnswers": [
+      "the wood wide web",
+      "mycorrhizal network"
+    ],
+    "explanation": "Mycorrhizal fungi form networks connecting the roots of different trees, allowing them to share water, nutrients, and chemical signals. This 'wood wide web' enables mother trees to support seedlings and allows forests to function as cooperative communities rather than individual competing plants.",
+    "wowFactor": "Trees use the wood wide web to feed their seedlings in deep shade, warn neighbors of insect attacks, and even send nutrients to dying trees to help them survive.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The underground fungal network connecting forest trees is informally called the '___ wide web.'",
+        "correctAnswer": "wood",
+        "distractors": [
+          "world",
+          "forest",
+          "root",
+          "green"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Trees can send nutrients to other trees through underground fungal networks.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which type of underground symbiotic network allows trees to share nutrients and chemical warning signals?",
+        "correctAnswer": "Mycorrhizal network",
+        "distractors": [
+          "Root parasitism",
+          "Soil bacteria chain",
+          "Leaf litter exchange",
+          "Waterway transport"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A 'mother tree' in a forest can feed seedlings in deep shade through which type of underground network?",
+        "correctAnswer": "Mycorrhizal network",
+        "distractors": [
+          "Root parasitism",
+          "Soil bacteria chain",
+          "Osmotic pressure system",
+          "Capillary water network"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mycorrhizal_network",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art underground cross-section showing white fungal threads connecting the root systems of multiple trees, glowing nutrients moving along the threads, a seedling being fed in deep shade",
+    "tags": [
+      "mycorrhizal network",
+      "wood wide web",
+      "trees",
+      "fungi",
+      "ecology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_chlorophyll_color",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Chlorophyll absorbs red and blue light for photosynthesis but reflects green light — which is why plants appear green.",
+    "quizQuestion": "Why do most plants appear green?",
+    "correctAnswer": "Chlorophyll reflects green",
+    "distractors": [
+      "Chlorophyll absorbs green light",
+      "Green pigments block photosynthesis",
+      "Plants produce green oxygen",
+      "Cellulose is naturally green",
+      "Green light is unused byproduct",
+      "Green wavelengths slow growth",
+      "Chlorophyll emits green radiation",
+      "Red"
+    ],
+    "acceptableAnswers": [
+      "chlorophyll reflects green",
+      "green light is reflected not absorbed"
+    ],
+    "explanation": "Chlorophyll absorbs mainly red and blue wavelengths of light to power photosynthesis. Green wavelengths are reflected rather than absorbed, which is why we perceive plants as green. The primary chlorophylls (a and b) work together to capture sunlight across the spectrum, except green.",
+    "wowFactor": "Plants are green because they don't use green light — they reflect the most abundant wavelength from the sun right back at us, unused.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Chlorophyll absorbs red and ___ light for photosynthesis, reflecting green light — making plants appear green.",
+        "correctAnswer": "blue",
+        "distractors": [
+          "yellow",
+          "orange",
+          "violet",
+          "white"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Chlorophyll absorbs green light, which is why plants appear green.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Plants reflect which color of light back to our eyes, making them appear green?",
+        "correctAnswer": "Green",
+        "distractors": [
+          "Red",
+          "Blue",
+          "Yellow",
+          "Orange"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Photosynthesis uses red and blue light. What happens to the green light that hits a leaf?",
+        "correctAnswer": "It is reflected",
+        "distractors": [
+          "It is absorbed for structural growth",
+          "It powers night photosynthesis",
+          "It is stored in vacuoles",
+          "It converts to heat"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chlorophyll",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a leaf cross-section with a light spectrum entering from above, red and blue arrows being absorbed into the leaf's chloroplasts, a green arrow bouncing back off the surface",
+    "tags": [
+      "chlorophyll",
+      "photosynthesis",
+      "light absorption",
+      "plant biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_carnivorous_plants_species_count",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "There are approximately 800 species of carnivorous plants that trap and digest insects or other small animals.",
+    "quizQuestion": "Approximately how many species of carnivorous plants exist?",
+    "correctAnswer": "~800",
+    "distractors": [
+      "~50",
+      "~200",
+      "~2,000",
+      "~100",
+      "~5,000",
+      "~400",
+      "~10,000",
+      "~1,500"
+    ],
+    "acceptableAnswers": [
+      "800",
+      "about 800",
+      "around 800"
+    ],
+    "explanation": "About 800 species of carnivorous plants have been identified across about 20 genera. They evolved in nutrient-poor environments (particularly nitrogen-poor bogs) and supplement their nutrition by trapping and digesting insects, spiders, or even small vertebrates. They evolved carnivory independently at least six separate times.",
+    "wowFactor": "Carnivory evolved in plants at least 6 times independently — suggesting that eating animals is such a good survival strategy for nutrient-poor environments that evolution keeps reinventing it.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "There are approximately ___ species of carnivorous plants worldwide.",
+        "correctAnswer": "800",
+        "distractors": [
+          "50",
+          "200",
+          "2,000",
+          "100"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Carnivory evolved in plants only once, in a single ancestor.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "About 800 species of which type of plant trap insects to supplement nutrients in poor soils?",
+        "correctAnswer": "Carnivorous plants",
+        "distractors": [
+          "Epiphytic plants",
+          "Parasitic plants",
+          "Succulent plants",
+          "Halophyte plants"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In nitrogen-poor bogs, why have roughly 800 plant species evolved to catch and digest insects?",
+        "correctAnswer": "To supplement nutrients in poor soil",
+        "distractors": [
+          "For energy production",
+          "To repel herbivores",
+          "For water storage",
+          "For pollinator attraction"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carnivorous_plant",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art collage showing six different carnivorous plant types side by side — pitcher plant, sundew, bladderwort, butterwort, Venus flytrap, cobra lily — each catching a different insect",
+    "tags": [
+      "carnivorous plants",
+      "adaptation",
+      "nutrients",
+      "evolution"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_transpiration_water_movement",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Large trees can move over 100 gallons (380 liters) of water per day through transpiration.",
+    "quizQuestion": "How much water can a large tree move per day through transpiration?",
+    "correctAnswer": "Over 100 gallons",
+    "distractors": [
+      "About 1 gallon",
+      "About 10 gallons",
+      "Over 500 gallons",
+      "About 5 gallons",
+      "Over 1,000 gallons",
+      "About 50 gallons",
+      "About 3 gallons",
+      "About 200 gallons"
+    ],
+    "acceptableAnswers": [
+      "100+ gallons",
+      "more than 100 gallons",
+      "over 380 liters"
+    ],
+    "explanation": "Large trees like oaks can transpire over 100 gallons (about 380 liters) of water per day through their leaves. Transpiration is the process by which water evaporates from leaf surfaces, creating a suction that pulls water up from roots — a capillary action system that can reach heights of 100+ meters.",
+    "wowFactor": "A tree moves water upward against gravity through a purely physical mechanism — no pump, no heart, no energy cost — just the physics of evaporation.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "A large tree can move over ___ gallons of water per day through transpiration.",
+        "correctAnswer": "100",
+        "distractors": [
+          "1",
+          "10",
+          "500",
+          "50"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Trees use transpiration to pull water upward from roots without any active pumping mechanism.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which plant process moves over 100 gallons of water per day upward from roots to leaves through evaporation?",
+        "correctAnswer": "Transpiration",
+        "distractors": [
+          "Osmosis",
+          "Guttation",
+          "Translocation",
+          "Xylem pumping"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A tree moves water over 100 meters upward using no pump — just the physics of water evaporating from its leaves. What is this process?",
+        "correctAnswer": "Transpiration",
+        "distractors": [
+          "Osmosis",
+          "Guttation",
+          "Root pressure",
+          "Photosynthetic pull"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Transpiration",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a tree cross-section with blue water molecules moving upward through the trunk in streams, tiny water vapor particles leaving leaf surfaces, arrows showing continuous upward flow",
+    "tags": [
+      "transpiration",
+      "trees",
+      "water movement",
+      "plant physiology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_fibonacci_sunflower",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Sunflower seed spirals and pine cone scales follow Fibonacci numbers — a mathematical sequence found throughout nature.",
+    "quizQuestion": "What mathematical sequence appears in the spiral patterns of sunflower seeds and pine cone scales?",
+    "correctAnswer": "Fibonacci sequence",
+    "distractors": [
+      "Prime number sequence",
+      "Pascal's triangle",
+      "Golden ratio series",
+      "Pythagorean sequence",
+      "Logarithmic sequence",
+      "Harmonic series",
+      "Geometric sequence",
+      "Euler's number sequence"
+    ],
+    "acceptableAnswers": [
+      "Fibonacci numbers",
+      "Fibonacci series"
+    ],
+    "explanation": "Sunflower seeds are arranged in spirals that follow consecutive Fibonacci numbers (1, 1, 2, 3, 5, 8, 13, 21...). Typically sunflowers have 34 spirals in one direction and 55 in the other — both Fibonacci numbers. This packing pattern allows the maximum number of seeds to fit in the available space.",
+    "wowFactor": "Sunflowers 'know' advanced mathematics — the Fibonacci packing pattern evolved because it maximizes the number of seeds that fit in the flower head.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The spiral patterns in sunflower seeds and pine cone scales follow the ___ sequence.",
+        "correctAnswer": "Fibonacci",
+        "distractors": [
+          "prime number",
+          "geometric",
+          "logarithmic",
+          "harmonic"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sunflower spirals typically contain consecutive Fibonacci numbers (e.g., 34 and 55 spirals).",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The series 1, 1, 2, 3, 5, 8, 13, 21 appears in sunflower seed arrangements and pine cone scales. What is this sequence called?",
+        "correctAnswer": "Fibonacci sequence",
+        "distractors": [
+          "Pascal's triangle",
+          "Prime series",
+          "Golden mean",
+          "Logarithmic series"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A sunflower head typically has 34 spirals one way and 55 the other — both numbers from which mathematical sequence?",
+        "correctAnswer": "Fibonacci sequence",
+        "distractors": [
+          "Pascal's triangle",
+          "Prime numbers",
+          "Perfect squares",
+          "Harmonic series"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fibonacci_sequence",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art close-up of a sunflower head with seed spirals highlighted in two colors — clockwise spirals in gold, counterclockwise in orange — the Fibonacci spiral pattern clearly visible",
+    "tags": [
+      "fibonacci",
+      "sunflower",
+      "mathematics",
+      "plant patterns"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_wolffia_smallest_plant",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Wolffia, the world's smallest flowering plant, measures less than 1 mm — smaller than a grain of rice.",
+    "quizQuestion": "Which genus contains the world's smallest flowering plant, measuring less than 1 mm?",
+    "correctAnswer": "Wolffia",
+    "distractors": [
+      "Lemna",
+      "Spirodela",
+      "Azolla",
+      "Salvinia",
+      "Riccia",
+      "Marsilea",
+      "Pilularia",
+      "Azolla"
+    ],
+    "acceptableAnswers": [
+      "Watermeal",
+      "Wolffia globosa"
+    ],
+    "explanation": "Wolffia (watermeal) is the world's smallest flowering plant, with some species measuring less than 1 mm in diameter — smaller than a pinhead. Despite their size, they are true flowering plants that produce tiny flowers and seeds. They float on freshwater surfaces and are consumed as a high-protein food in Southeast Asia.",
+    "wowFactor": "The world's smallest flowering plant is so tiny that 5,000 of them would fit in a thimble — yet this miniature plant produces flowers, fruits, and seeds just like any other flowering plant.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "___ is the genus of the world's smallest flowering plant, measuring less than 1 mm across.",
+        "correctAnswer": "Wolffia",
+        "distractors": [
+          "Lemna",
+          "Spirodela",
+          "Azolla",
+          "Salvinia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Wolffia is too small to produce flowers or seeds.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which floating freshwater plant, less than 1 mm wide, is the world's smallest flowering plant?",
+        "correctAnswer": "Wolffia",
+        "distractors": [
+          "Lemna",
+          "Azolla",
+          "Salvinia",
+          "Spirodela"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Eaten as a protein source in Southeast Asia, which tiny aquatic plant less than 1 mm across is the world's smallest flowering plant?",
+        "correctAnswer": "Wolffia",
+        "distractors": [
+          "Lemna",
+          "Azolla",
+          "Salvinia",
+          "Spirodela"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wolffia",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a magnifying glass over a water surface showing tiny pale green dots — each one a complete flowering plant — with a grain of rice next to the lens for scale",
+    "tags": [
+      "wolffia",
+      "smallest plant",
+      "flowering plants",
+      "aquatic plants"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_coffee_traded_commodity",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Coffee is the world's second most traded commodity after crude oil.",
+    "quizQuestion": "What commodity is second only to crude oil in global trade volume?",
+    "correctAnswer": "Coffee",
+    "distractors": [
+      "Tea",
+      "Wheat",
+      "Sugar",
+      "Cotton",
+      "Soybeans",
+      "Palm oil",
+      "Copper",
+      "Rubber"
+    ],
+    "acceptableAnswers": [
+      "coffee beans"
+    ],
+    "explanation": "Coffee is one of the world's most valuable traded commodities, second only to crude oil in trade value. Over 2.25 billion cups of coffee are consumed globally every day. Coffee plants (Coffea) are native to Ethiopia and were first cultivated there — the word 'coffee' likely derives from 'Kaffa,' an Ethiopian region.",
+    "wowFactor": "Coffee was discovered in Ethiopia when a goat herder noticed his goats wouldn't sleep after eating certain berries — that curious goat may have triggered one of history's biggest industries.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Coffee is the world's most traded commodity after ___.",
+        "correctAnswer": "crude oil",
+        "distractors": [
+          "natural gas",
+          "wheat",
+          "gold",
+          "cotton"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Coffee plants are native to Ethiopia.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which agricultural product, second only to crude oil in trade value, originated in Ethiopia?",
+        "correctAnswer": "Coffee",
+        "distractors": [
+          "Tea",
+          "Sugar",
+          "Cotton",
+          "Cocoa"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Over 2.25 billion cups are consumed daily worldwide. Which plant product is the second most traded commodity after oil?",
+        "correctAnswer": "Coffee",
+        "distractors": [
+          "Tea",
+          "Sugar",
+          "Cotton",
+          "Wheat"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coffee",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a coffee plant with red cherries and green leaves, a globe in the background with shipping routes connecting Ethiopia to every continent, a steaming cup of coffee in the foreground",
+    "tags": [
+      "coffee",
+      "trade",
+      "ethiopia",
+      "commodities"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_epiphyte_not_parasitic",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Epiphytes grow on other plants for support but do not parasitize them — they absorb water from air and rain.",
+    "quizQuestion": "How do epiphytes get water without being parasitic on their host plant?",
+    "correctAnswer": "From air and rain",
+    "distractors": [
+      "Through host plant roots",
+      "Through underground fungi",
+      "By storing dew in leaves",
+      "From soil via hanging roots",
+      "By capturing insects",
+      "Through osmosis from bark",
+      "By photosynthesizing at high intensity",
+      "From host sap directly"
+    ],
+    "acceptableAnswers": [
+      "From rainfall and humidity",
+      "from rainfall and air moisture",
+      "air moisture and rain"
+    ],
+    "explanation": "Epiphytes (from Greek: 'upon plants') such as bromeliads, orchids, and some ferns grow on tree branches for support and access to light, but obtain all their water and nutrients from rain, air, and organic debris — not from the host plant. They are commensals, not parasites.",
+    "wowFactor": "Bromeliads are epiphytes that form tiny aerial pools in their leaf bases — miniature ecosystems where frogs breed, insects live, and whole food chains exist in a cup of rainwater 30 meters off the ground.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Epiphytes grow on other plants for support but are not parasitic — they absorb water from ___ and rain.",
+        "correctAnswer": "air",
+        "distractors": [
+          "host roots",
+          "soil",
+          "fungi",
+          "insects"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Epiphytes steal water and nutrients from the plants they grow on.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which type of plant grows on trees for light and support but absorbs its own water from rain and humid air?",
+        "correctAnswer": "Epiphyte",
+        "distractors": [
+          "Hemiparasite",
+          "Holoparasite",
+          "Mycoheterotroph",
+          "Liana"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Spanish moss, orchids, and bromeliads grow on tree branches without harming them. What type of plant is this?",
+        "correctAnswer": "Epiphyte",
+        "distractors": [
+          "Parasite",
+          "Hemiparasite",
+          "Saprophyte",
+          "Liana"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Epiphyte",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a rainforest tree branch covered in colorful bromeliads and orchids, each plant holding a small pool of water, a tiny red frog sitting in one of the leaf cups",
+    "tags": [
+      "epiphyte",
+      "bromeliads",
+      "orchids",
+      "rainforest ecology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_sequoia_fire_resistant_bark",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Giant sequoia bark can be up to 90 cm thick and is highly fire-resistant due to its low resin content.",
+    "quizQuestion": "Why are giant sequoias highly resistant to fire damage?",
+    "correctAnswer": "Thick, low-resin bark",
+    "distractors": [
+      "They produce fire-retardant chemicals",
+      "Their wood is fireproof",
+      "They grow in wet climates",
+      "Their leaves repel flames",
+      "They have asbestos fibers",
+      "Their roots release water",
+      "They have fire-detecting senses",
+      "Jeffrey pine"
+    ],
+    "acceptableAnswers": [
+      "thick bark with low resin",
+      "non-resinous thick bark"
+    ],
+    "explanation": "Giant sequoia bark can reach 90 cm (3 feet) thick and contains virtually no resin — making it highly fire-resistant. Fire is actually essential to sequoia reproduction: cones can remain on the tree for 20+ years, and they open to release seeds only after being heated by fire.",
+    "wowFactor": "Giant sequoias don't just survive fire — they need it. Fire opens their cones to release seeds and clears the forest floor for germination. Without fire, sequoias can't reproduce.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Giant sequoia bark, up to ___ cm thick and low in resin, makes the tree highly resistant to fire.",
+        "correctAnswer": "90",
+        "distractors": [
+          "10",
+          "5",
+          "50",
+          "200"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Giant sequoias require fire to open their cones and release seeds.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which tree's 90 cm thick, low-resin bark protects it from fire — which also opens its cones to release seeds?",
+        "correctAnswer": "Giant sequoia",
+        "distractors": [
+          "Coast redwood",
+          "Douglas fir",
+          "Lodgepole pine",
+          "Ponderosa pine"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A tree that not only survives wildfire but depends on it for reproduction — which Californian conifer is this?",
+        "correctAnswer": "Giant sequoia",
+        "distractors": [
+          "Coast redwood",
+          "Douglas fir",
+          "Lodgepole pine",
+          "Ponderosa pine"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sequoiadendron_giganteum",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a massive sequoia trunk with red-orange fire burning at its base, the tree completely unharmed, open pine cones visible near the flames releasing seeds into rising heat",
+    "tags": [
+      "giant sequoia",
+      "fire adaptation",
+      "bark",
+      "california"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_strangler_fig_lifecycle",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "The strangler fig starts life as an epiphyte on a host tree, eventually enveloping and killing the host.",
+    "quizQuestion": "How does a strangler fig eventually kill its host tree?",
+    "correctAnswer": "Envelops and blocks host",
+    "distractors": [
+      "By injecting toxic sap into roots",
+      "By decomposing the bark with fungi",
+      "By drying out the host's leaves",
+      "By attracting bark-eating insects",
+      "By producing root toxins",
+      "By blocking water absorption",
+      "By outgrowing and snapping the trunk",
+      "Banyan"
+    ],
+    "acceptableAnswers": [
+      "by surrounding and strangling it",
+      "by encasing the trunk and shading it out"
+    ],
+    "explanation": "Strangler figs germinate as epiphytes high in the forest canopy after birds or bats deposit seeds there. They grow aerial roots downward that eventually reach the soil. The roots slowly fuse around the host tree's trunk, blocking its growth and access to light. Eventually the host dies and rots away, leaving a hollow fig tree.",
+    "wowFactor": "The strangler fig starts life as an innocent epiphyte — then spends decades slowly encasing its host in a living prison, leaving a hollow wooden ghost of the tree it killed.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The strangler fig begins as an ___ in the forest canopy, then roots down to strangle and kill its host.",
+        "correctAnswer": "epiphyte",
+        "distractors": [
+          "parasite",
+          "seedling",
+          "vine",
+          "fungus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Strangler figs begin life as seeds deposited by birds in the forest canopy.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which type of fig tree starts as a canopy epiphyte, then grows roots down to envelop and kill its host?",
+        "correctAnswer": "Strangler fig",
+        "distractors": [
+          "Banyan",
+          "Common fig",
+          "Moreton Bay fig",
+          "Banyandah"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A bird deposits seeds in a treetop. Decades later, the tree it landed on is dead, replaced by a hollow living cage of roots. What plant did this?",
+        "correctAnswer": "Strangler fig",
+        "distractors": [
+          "Banyan",
+          "Liana",
+          "Rafflesia",
+          "Dodder"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Strangler_fig",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a massive lattice of interlocked fig roots forming a hollow tree shape, the original host tree gone, visible as a dark hollow interior, the living fig roots surrounding an empty space",
+    "tags": [
+      "strangler fig",
+      "epiphyte",
+      "tropical ecology",
+      "plant adaptation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_pitcher_plant_digestion",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Pitcher plants trap insects by luring them into a fluid-filled cup where they are dissolved by digestive enzymes.",
+    "quizQuestion": "How does a pitcher plant capture and digest insects?",
+    "correctAnswer": "Fluid-filled cup with enzymes",
+    "distractors": [
+      "Uses sticky surfaces to trap insects",
+      "Snaps shut when triggered",
+      "Rolls leaves around prey",
+      "Produces paralyzing chemical spray",
+      "Uses suction to capture insects",
+      "Absorbs nutrients through bark",
+      "Releases toxic pollen",
+      "Sticky leaves curled inward"
+    ],
+    "acceptableAnswers": [
+      "digestive fluid-filled pitcher",
+      "fluid trap with enzymes"
+    ],
+    "explanation": "Pitcher plants (genus Nepenthes and others) form cup-shaped leaves filled with digestive fluid. Insects are lured in by nectar, color, or smell, then slip on the waxy rim and fall in. The digestive fluid drowns them and enzymes break down the prey, releasing nutrients the plant absorbs — mainly nitrogen and phosphorus.",
+    "wowFactor": "The largest pitcher plants (Nepenthes rajah) are big enough to hold 3.5 liters of fluid and have been found containing drowned rats and frogs.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Pitcher plants digest insects in fluid-filled cups containing ___ that break down prey.",
+        "correctAnswer": "digestive enzymes",
+        "distractors": [
+          "acid rain",
+          "bacterial colonies",
+          "toxic alkaloids",
+          "electric charges"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Some pitcher plants are large enough to trap and digest small vertebrates.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which carnivorous plant uses a fluid-filled cup to drown and digest insects, supplementing nutrients in poor soil?",
+        "correctAnswer": "Pitcher plant",
+        "distractors": [
+          "Venus flytrap",
+          "Sundew",
+          "Bladderwort",
+          "Butterwort"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A plant in a nutrient-poor bog needs nitrogen. It lures insects into a cup of digestive fluid to get it. What type of plant is this?",
+        "correctAnswer": "Pitcher plant",
+        "distractors": [
+          "Venus flytrap",
+          "Sundew",
+          "Bladderwort",
+          "Butterwort"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nepenthes",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a green-purple pitcher plant cup in cross-section, showing a drowned insect floating in amber fluid at the bottom, a fly approaching the nectar-coated rim",
+    "tags": [
+      "pitcher plant",
+      "carnivorous plants",
+      "digestion",
+      "adaptation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_dandelion_seed_travel",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Dandelion seeds can travel up to 100 km on the wind using their parachute-like pappus structure.",
+    "quizQuestion": "How far can dandelion seeds travel on the wind?",
+    "correctAnswer": "Up to 100 km",
+    "distractors": [
+      "Up to 1 km",
+      "Up to 10 km",
+      "Up to 500 km",
+      "Up to 5 km",
+      "Up to 50 km",
+      "Up to 0.1 km",
+      "Up to 200 km",
+      "Up to 25 km"
+    ],
+    "acceptableAnswers": [
+      "100 kilometers",
+      "up to 100 kilometres"
+    ],
+    "explanation": "Dandelion seeds are attached to a feathery pappus (modified calyx) that acts like a miniature parachute. Each seed can stay aloft for long periods and travel up to 100 km in favorable wind conditions. The pappus structure creates a vortex ring that provides remarkable aerodynamic efficiency.",
+    "wowFactor": "Scientists discovered that the dandelion pappus creates a special vortex ring — a kind of spinning air bubble — that makes it 4 times more aerodynamic than a solid parachute.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Dandelion seeds can travel up to ___ km on the wind using their feathery pappus structure.",
+        "correctAnswer": "100",
+        "distractors": [
+          "1",
+          "10",
+          "500",
+          "50"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dandelion seeds create a vortex ring that makes them more aerodynamic than a solid parachute.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which common weed's seeds can travel up to 100 km on the wind using a specialized pappus parachute?",
+        "correctAnswer": "Dandelion",
+        "distractors": [
+          "Thistles",
+          "Milkweed",
+          "Cottonwood",
+          "Maple"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Scientists found that blowing on a dandelion seed creates a tiny aerodynamic vortex. How far can these seeds travel in good wind?",
+        "correctAnswer": "Up to 100 km",
+        "distractors": [
+          "Up to 1 km",
+          "Up to 10 km",
+          "Up to 50 km",
+          "Up to 500 km"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Taraxacum",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of dandelion seeds floating on wind currents high above a landscape, the feathery pappus structures visible as tiny parachutes, seeds drifting toward a distant horizon 100 km away",
+    "tags": [
+      "dandelion",
+      "seed dispersal",
+      "wind dispersal",
+      "aerodynamics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_oak_acorn_production",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "An oak tree produces approximately 70,000 acorns per year on average.",
+    "quizQuestion": "How many acorns does an oak tree produce per year on average?",
+    "correctAnswer": "~70,000",
+    "distractors": [
+      "~1,000",
+      "~10,000",
+      "~200,000",
+      "~500",
+      "~30,000",
+      "~5,000",
+      "~500,000",
+      "~100,000"
+    ],
+    "acceptableAnswers": [
+      "70000",
+      "about 70,000",
+      "seventy thousand"
+    ],
+    "explanation": "A mature oak tree produces approximately 20,000-70,000 acorns per year, depending on species and conditions. Of all these seeds, typically only 1 in 10,000 will ever successfully grow into a new tree. Oaks practice 'masting' — producing far more seeds in some years than others to overwhelm predators.",
+    "wowFactor": "An oak produces up to 70,000 acorns per year and only 1 in 10,000 will become a tree — this extreme overproduction is the oak's strategy to overwhelm squirrels and other seed predators.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "An oak tree produces approximately ___ acorns per year.",
+        "correctAnswer": "70,000",
+        "distractors": [
+          "1,000",
+          "10,000",
+          "200,000",
+          "5,000"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Only about 1 in 10,000 oak acorns ever successfully grows into a tree.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which tree produces up to 70,000 seeds per year, with only 1 in 10,000 becoming a new plant?",
+        "correctAnswer": "Oak",
+        "distractors": [
+          "Maple",
+          "Birch",
+          "Ash",
+          "Beech"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "To overwhelm seed predators like squirrels, which tree produces up to 70,000 acorns per year?",
+        "correctAnswer": "Oak",
+        "distractors": [
+          "Beech",
+          "Chestnut",
+          "Walnut",
+          "Hazel"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Quercus",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a massive oak tree with acorns showering down from its canopy, a squirrel frantically collecting them below, the ground covered in more acorns than the squirrel could possibly store",
+    "tags": [
+      "oak",
+      "acorns",
+      "seed production",
+      "masting"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_cacao_fermentation",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Cacao beans must be fermented for 5-7 days before processing — fermentation is essential to develop chocolate flavor.",
+    "quizQuestion": "How many days must cacao beans ferment before they can be processed into chocolate?",
+    "correctAnswer": "5-7 days",
+    "distractors": [
+      "1 day",
+      "2-3 days",
+      "2 weeks",
+      "1 month",
+      "30 minutes",
+      "10-14 days",
+      "24 hours",
+      "3-4 days"
+    ],
+    "acceptableAnswers": [
+      "5 to 7 days",
+      "five to seven days"
+    ],
+    "explanation": "After cacao pods are harvested, the beans must ferment for 5-7 days before drying and roasting. During fermentation, microorganisms break down the sweet pulp surrounding the beans and develop the complex chemical precursors needed for chocolate flavor. Without fermentation, cacao beans would not develop the taste we associate with chocolate.",
+    "wowFactor": "Unfermented cacao beans taste nothing like chocolate — fermentation is the hidden step that transforms bitter seeds into the world's most beloved flavor.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Cacao beans must ferment for ___ days to develop the chemical precursors needed for chocolate flavor.",
+        "correctAnswer": "5-7",
+        "distractors": [
+          "1",
+          "2-3",
+          "14",
+          "30"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Unfermented cacao beans taste like chocolate.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which plant's seeds require 5-7 days of fermentation to develop the flavor precursors needed for chocolate?",
+        "correctAnswer": "Cacao",
+        "distractors": [
+          "Coffee",
+          "Vanilla",
+          "Cocoa palm",
+          "Carob"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Without this step, cacao seeds would never become chocolate. What 5-7 day process is essential?",
+        "correctAnswer": "Fermentation",
+        "distractors": [
+          "Drying",
+          "Roasting",
+          "Grinding",
+          "Freezing"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Theobroma_cacao",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of cacao pods split open on a banana leaf, cream-colored beans surrounded by white pulp piled in a mound, covered with more leaves to trap heat for fermentation, steam rising",
+    "tags": [
+      "cacao",
+      "chocolate",
+      "fermentation",
+      "food science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_giant_water_lily_strength",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "The giant Amazon water lily (Victoria amazonica) has pads strong enough to support the weight of a small child.",
+    "quizQuestion": "What gives the giant Amazon water lily pads their impressive load-bearing strength?",
+    "correctAnswer": "Ribbed underside structure",
+    "distractors": [
+      "Thick waxy coating",
+      "Dense fibrous cells",
+      "Air-filled chambers throughout",
+      "Multiple root anchors",
+      "Calcified veins",
+      "Foam-like core material",
+      "Interlocked spiral growth",
+      "Laminated multiple leaf layers"
+    ],
+    "acceptableAnswers": [
+      "rib-like underside",
+      "structural ribs on underside",
+      "radial rib structure"
+    ],
+    "explanation": "Victoria amazonica pads can span over 3 meters and support up to 40 kg. Their strength comes from a network of radial and concentric ribs on the underside — a natural engineering solution that inspired the design of the Crystal Palace in London (1851) by Joseph Paxton, who studied the lily's structure.",
+    "wowFactor": "The Crystal Palace — the iconic Victorian glass building housing the world's first international exhibition — was designed after an engineer was inspired by looking at the underside of a water lily.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The giant water lily's ribbed ___ structure gives its pads strength to support a small child.",
+        "correctAnswer": "underside",
+        "distractors": [
+          "topside",
+          "stem",
+          "root",
+          "flower"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Crystal Palace's design was inspired by the ribbed underside of a giant water lily.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Amazon water lily has pads over 3 meters wide whose ribbed structure inspired the design of London's Crystal Palace?",
+        "correctAnswer": "Victoria amazonica",
+        "distractors": [
+          "Nelumbo nucifera",
+          "Nymphaea odorata",
+          "Euryale ferox",
+          "Nuphar lutea"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A Victorian engineer looked at a water lily's underside and designed an entire building from it. Which lily's ribs inspired the Crystal Palace?",
+        "correctAnswer": "Victoria amazonica",
+        "distractors": [
+          "Nelumbo nucifera",
+          "Nymphaea odorata",
+          "Euryale ferox",
+          "Nuphar lutea"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Victoria_amazonica",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a massive flat green water lily pad with a child sitting on it in calm brown river water, underside ribbing shown in a cutaway diagram — like an engineer's blueprint from nature",
+    "tags": [
+      "water lily",
+      "victoria amazonica",
+      "biomimicry",
+      "plant engineering"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_joshua_tree_yucca",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "The Joshua tree is actually a yucca (Yucca brevifolia), not a tree — and can live over 500 years.",
+    "quizQuestion": "What plant family does the Joshua tree actually belong to?",
+    "correctAnswer": "Yucca",
+    "distractors": [
+      "Pine",
+      "Cactus",
+      "Acacia",
+      "Palm",
+      "Agave",
+      "Aloe",
+      "Saguaro",
+      "Saguaro"
+    ],
+    "acceptableAnswers": [
+      "Yucca plant",
+      "Asparagaceae",
+      "yuccas"
+    ],
+    "explanation": "Despite its name, the Joshua tree (Yucca brevifolia) is not a true tree but a species of yucca in the asparagus family. It can live over 500 years and grows in the Mojave Desert. Its survival depends on the yucca moth (Tegeticula synthetica) — the only pollinator that can fertilize it.",
+    "wowFactor": "The Joshua tree and its moth evolved together so perfectly that neither can survive without the other — remove one, and the other goes extinct too.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Joshua tree is actually a ___ (Yucca brevifolia) in the asparagus family, not a true tree.",
+        "correctAnswer": "yucca",
+        "distractors": [
+          "cactus",
+          "palm",
+          "pine",
+          "agave"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Joshua tree can only be pollinated by one specific species of moth.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which desert plant, named a 'tree' but actually a yucca, has a mutually dependent relationship with a specific moth pollinator?",
+        "correctAnswer": "Joshua tree",
+        "distractors": [
+          "Saguaro cactus",
+          "Desert willow",
+          "Palo verde",
+          "Creosote bush"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "This Mojave Desert 'tree' is actually a yucca that can only be pollinated by one moth species. What is it called?",
+        "correctAnswer": "Joshua tree",
+        "distractors": [
+          "Saguaro cactus",
+          "Desert willow",
+          "Palo verde",
+          "Ocotillo"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Yucca_brevifolia",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of spiky Joshua trees silhouetted against a peach desert sunset, their twisted branches radiating in all directions, a single white yucca moth visible near the flower cluster",
+    "tags": [
+      "joshua tree",
+      "yucca",
+      "mojave desert",
+      "coevolution"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_photosynthesis_light_dark_reactions",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Photosynthesis has two stages: light-dependent reactions in the thylakoids and the Calvin cycle in the stroma.",
+    "quizQuestion": "Where in the chloroplast do the light-dependent reactions of photosynthesis occur?",
+    "correctAnswer": "Thylakoids",
+    "distractors": [
+      "Stroma",
+      "Grana outer membrane",
+      "Chloroplast envelope",
+      "Vacuole",
+      "Mitochondria",
+      "Cell wall",
+      "Cytoplasm",
+      "Outer chloroplast membrane"
+    ],
+    "acceptableAnswers": [
+      "thylakoid membranes",
+      "thylakoid"
+    ],
+    "explanation": "Photosynthesis occurs in two stages within the chloroplast. Light-dependent reactions occur in the thylakoid membranes, where light energy converts water to oxygen and produces ATP and NADPH. The Calvin cycle (light-independent reactions) then occurs in the stroma, using that ATP and NADPH to fix CO₂ into glucose.",
+    "wowFactor": "The 'dark reactions' of photosynthesis don't actually require darkness — the name just means they don't directly use light. They can and do happen in daylight.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Photosynthesis light-dependent reactions occur in the ___, while the Calvin cycle occurs in the stroma.",
+        "correctAnswer": "thylakoids",
+        "distractors": [
+          "stroma",
+          "grana",
+          "vacuole",
+          "cytoplasm"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Calvin cycle requires direct light to operate.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In which chloroplast structure do light-dependent reactions convert water into oxygen and produce ATP?",
+        "correctAnswer": "Thylakoids",
+        "distractors": [
+          "Stroma",
+          "Grana outer membrane",
+          "Chloroplast envelope",
+          "Cytoplasm"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Light splits water and produces ATP in one location, while the Calvin cycle builds glucose in another. Where do the light reactions occur?",
+        "correctAnswer": "Thylakoids",
+        "distractors": [
+          "Stroma",
+          "Grana outer membrane",
+          "Mitochondria",
+          "Cell wall"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Photosynthesis",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section of a chloroplast showing stacked green thylakoid discs glowing with light reactions, surrounded by the darker stroma where the Calvin cycle molecules float",
+    "tags": [
+      "photosynthesis",
+      "chloroplast",
+      "thylakoids",
+      "calvin cycle"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_plant_communication_chemicals",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Plants under attack by insects release volatile chemicals that warn neighboring plants to activate their defenses.",
+    "quizQuestion": "How do plants warn neighboring plants of insect attacks?",
+    "correctAnswer": "By releasing volatiles",
+    "distractors": [
+      "By sending electrical signals through roots",
+      "By shaking their leaves",
+      "Through mycorrhizal nutrient pulses",
+      "By producing ultrasonic clicks",
+      "By changing leaf color",
+      "By releasing oxygen bursts",
+      "By dropping leaves rapidly",
+      "By vibrating at low frequency"
+    ],
+    "acceptableAnswers": [
+      "airborne chemicals",
+      "volatile organic compounds",
+      "chemical signals"
+    ],
+    "explanation": "When plants are attacked by insects or damaged, many species release volatile organic compounds (VOCs) that drift to neighboring plants. These chemical signals trigger the neighboring plants to upregulate their own defensive chemicals — such as tannins, toxins, or protease inhibitors — before being attacked themselves.",
+    "wowFactor": "Plants essentially shout warnings to their neighbors using chemical language — and the neighbors actually listen and respond, arming themselves before the threat arrives.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Insect-attacked plants release ___ chemicals that trigger neighboring plants to activate their defenses.",
+        "correctAnswer": "volatile",
+        "distractors": [
+          "toxic",
+          "electrical",
+          "root-based",
+          "invisible"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Plants can warn neighboring plants of insect attacks through chemical signals in the air.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which plant defense involves releasing airborne volatile compounds that warn neighbors to prepare their own chemical defenses?",
+        "correctAnswer": "Volatile chemical signaling",
+        "distractors": [
+          "Mycorrhizal signaling",
+          "Root toxin release",
+          "Leaf color change",
+          "Physical barrier growth"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A caterpillar starts eating a tomato plant. Nearby tomato plants then increase their defensive chemical production. What triggered this?",
+        "correctAnswer": "Volatile chemicals from the attacked plant",
+        "distractors": [
+          "Mycorrhizal network signals",
+          "Root chemical signals",
+          "Electrical pulses through soil",
+          "Leaf shape changes"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Plant_perception_(physiology)",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of two plants side by side — one being attacked by caterpillars with green chemical clouds rising from its leaves, the other plant glowing slightly as it detects the signal and activates defenses",
+    "tags": [
+      "plant communication",
+      "volatile chemicals",
+      "plant defense",
+      "ecology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_xylem_phloem_transport",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Plants have two transport systems: xylem carries water upward from roots, and phloem carries sugars from leaves to other tissues.",
+    "quizQuestion": "Which plant tissue carries sugars produced by leaves to the rest of the plant?",
+    "correctAnswer": "Phloem",
+    "distractors": [
+      "Xylem",
+      "Cambium",
+      "Cortex",
+      "Epidermis",
+      "Pericycle",
+      "Endodermis",
+      "Parenchyma",
+      "Cortex"
+    ],
+    "acceptableAnswers": [
+      "phloem tissue"
+    ],
+    "explanation": "Vascular plants have two transport systems. Xylem conducts water and dissolved minerals upward from roots to leaves — flow driven by transpiration. Phloem transports sugars (primarily sucrose) produced during photosynthesis from leaves to growing tissues, roots, and storage organs in both directions.",
+    "wowFactor": "Xylem is dead when it works — it's hollow dead cells forming tubes. Phloem is alive. A plant's circulatory system is made of both living and dead tissue working together.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "___ carries water up from roots, while phloem transports sugars from leaves to the rest of the plant.",
+        "correctAnswer": "Xylem",
+        "distractors": [
+          "Cambium",
+          "Cortex",
+          "Pericycle",
+          "Endodermis"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Xylem tissue is made of dead cells that form hollow tubes for water transport.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which vascular tissue carries sugars (sucrose) from photosynthesizing leaves to growing roots and other plant tissues?",
+        "correctAnswer": "Phloem",
+        "distractors": [
+          "Xylem",
+          "Cambium",
+          "Cortex",
+          "Pericycle"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Aphids pierce plant stems to drink sugary sap. Which plant tissue are they tapping — the one that carries photosynthesis products?",
+        "correctAnswer": "Phloem",
+        "distractors": [
+          "Xylem",
+          "Cambium",
+          "Cortex",
+          "Epidermis"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vascular_tissue",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section of a plant stem showing two clearly differentiated tissue types — blue xylem tubes and orange phloem tubes — with arrows showing water flowing up and sugar flowing down",
+    "tags": [
+      "xylem",
+      "phloem",
+      "plant transport",
+      "vascular system"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_seeds_longest_viability",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "A date palm was successfully grown from a 2,000-year-old seed found at Masada, Israel, in 1963.",
+    "quizQuestion": "How old were the date palm seeds successfully germinated from the ancient fortress of Masada?",
+    "correctAnswer": "~2,000 years",
+    "distractors": [
+      "~100 years",
+      "~500 years",
+      "~5,000 years",
+      "~10,000 years",
+      "~200 years",
+      "~1,000 years",
+      "~300 years",
+      "~800 years"
+    ],
+    "acceptableAnswers": [
+      "2000 years old",
+      "two thousand years"
+    ],
+    "explanation": "In 1963, date palm seeds were found during excavations at Masada, Israel. In 2005, scientists germinated one — now called 'Methuselah' — making it the oldest seed ever successfully sprouted. The Judean date palm, thought extinct for centuries, was revived from a 2,000-year-old seed.",
+    "wowFactor": "Scientists brought an extinct species back from the dead using a seed that was buried when ancient Romans were besieging Masada — a tree resurrection from the time of Jesus.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "A date palm named 'Methuselah' was grown from a ___-year-old seed found at Masada, Israel.",
+        "correctAnswer": "2,000",
+        "distractors": [
+          "100",
+          "500",
+          "10,000",
+          "1,000"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Seeds can remain viable for thousands of years under dry conditions.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ancient Israeli fortress yielded 2,000-year-old date palm seeds that were successfully germinated in 2005?",
+        "correctAnswer": "Masada",
+        "distractors": [
+          "Jerusalem",
+          "Jericho",
+          "Qumran",
+          "Petra"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "An extinct date palm species was revived from seeds found at Masada. How old were the seeds?",
+        "correctAnswer": "~2,000 years",
+        "distractors": [
+          "~100 years",
+          "~500 years",
+          "~5,000 years",
+          "~10,000 years"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Methuselah_(date_palm)",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a single small date palm seedling growing in a laboratory pot, an ancient clay jar beside it where the seed was found, a date showing 2,000 years across a timeline",
+    "tags": [
+      "seed viability",
+      "date palm",
+      "masada",
+      "extinction",
+      "botany"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_c4_photosynthesis_efficiency",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "C4 plants like corn and sugarcane have a more efficient photosynthesis pathway that concentrates CO₂ for hot, sunny conditions.",
+    "quizQuestion": "Which photosynthesis pathway, used by corn and sugarcane, concentrates CO₂ for greater efficiency in hot climates?",
+    "correctAnswer": "C4 pathway",
+    "distractors": [
+      "C3 pathway",
+      "CAM pathway",
+      "Calvin cycle",
+      "Krebs cycle",
+      "Glycolysis",
+      "C2 pathway",
+      "Photorespiration",
+      "Rubisco pathway"
+    ],
+    "acceptableAnswers": [
+      "C4 photosynthesis",
+      "C4 carbon fixation"
+    ],
+    "explanation": "C4 plants (about 8,000 species including corn, sugarcane, and sorghum) have evolved a supplementary carbon fixation step that concentrates CO₂ around Rubisco, the key enzyme for photosynthesis. This prevents the wasteful photorespiration process and makes C4 plants far more efficient in hot, sunny, dry conditions than C3 plants.",
+    "wowFactor": "Corn and sugarcane use a turbo-charged photosynthesis pathway that standard plants lack — it's why they grow so explosively fast in summer heat.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Corn and sugarcane use the ___ photosynthesis pathway that concentrates CO₂ for greater efficiency in hot climates.",
+        "correctAnswer": "C4",
+        "distractors": [
+          "C3",
+          "CAM",
+          "C2",
+          "Calvin"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: C4 photosynthesis is more efficient than C3 in hot, bright, dry conditions.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which photosynthesis pathway, used by corn and sugarcane, concentrates CO₂ around Rubisco to avoid wasteful photorespiration?",
+        "correctAnswer": "C4 pathway",
+        "distractors": [
+          "C3 pathway",
+          "CAM pathway",
+          "Calvin cycle",
+          "Krebs cycle"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Wheat uses C3 photosynthesis while corn uses a more efficient alternative in hot weather. What pathway does corn use?",
+        "correctAnswer": "C4 pathway",
+        "distractors": [
+          "C3 pathway",
+          "CAM pathway",
+          "Calvin cycle",
+          "Rubisco pathway"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/C4_carbon_fixation",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a tall corn plant in blazing sun with an efficiency meter showing 'C4: HIGH' next to a shorter wheat plant with 'C3: STANDARD', heat waves rising around both",
+    "tags": [
+      "c4 photosynthesis",
+      "corn",
+      "sugarcane",
+      "plant physiology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_pollination_types",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "About 87.5% of flowering plant species depend on animal pollinators — primarily insects — for reproduction.",
+    "quizQuestion": "Approximately what percentage of flowering plants depend on animal pollinators?",
+    "correctAnswer": "~87.5%",
+    "distractors": [
+      "~20%",
+      "~50%",
+      "~99%",
+      "~10%",
+      "~60%",
+      "~30%",
+      "~75%",
+      "~40%"
+    ],
+    "acceptableAnswers": [
+      "87.5 percent",
+      "about 88%",
+      "~88%"
+    ],
+    "explanation": "Studies estimate that about 87.5% of all flowering plant species rely on animal pollinators for sexual reproduction — primarily insects (especially bees), but also birds, bats, and other animals. The remaining ~12.5% are wind-pollinated (grasses, conifers, many trees). Pollinator decline therefore threatens most of Earth's flowering plant species.",
+    "wowFactor": "Bees pollinate 7 out of every 8 flowering plant species on Earth — the collapse of bee populations would trigger a mass extinction of plants far beyond just food crops.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Approximately ___% of all flowering plant species depend on animal pollinators for reproduction.",
+        "correctAnswer": "87.5",
+        "distractors": [
+          "20",
+          "50",
+          "99",
+          "60"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The majority of flowering plant species are wind-pollinated.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What fraction of flowering plants depend on animal pollinators — making pollinator decline an ecological crisis for plant diversity?",
+        "correctAnswer": "~87.5%",
+        "distractors": [
+          "~20%",
+          "~50%",
+          "~99%",
+          "~60%"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Bees, butterflies, bats, and birds pollinate most plants. What percentage of flowering species rely on animal pollinators?",
+        "correctAnswer": "~87.5%",
+        "distractors": [
+          "~20%",
+          "~50%",
+          "~10%",
+          "~30%"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pollination",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art infographic of a bee visiting flowers, with 87.5% of flower species illustrated in color and the remaining 12.5% shown as grey wind-pollinated grasses and conifers",
+    "tags": [
+      "pollination",
+      "bees",
+      "flowering plants",
+      "ecology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_dormancy_seeds_cold_stratification",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Many seeds require cold stratification — a period of cold and moisture — before they will germinate.",
+    "quizQuestion": "Why do many temperate plant seeds require a cold period before they will germinate?",
+    "correctAnswer": "Prevent winter germination",
+    "distractors": [
+      "To kill surface bacteria",
+      "To activate photosynthesis enzymes",
+      "To harden the seed coat",
+      "To attract soil fungi",
+      "To concentrate sugars",
+      "To signal soil worms",
+      "To align with lunar cycles",
+      "Scarification"
+    ],
+    "acceptableAnswers": [
+      "to ensure winter has passed",
+      "so seedlings don't emerge in winter",
+      "winter dormancy signal"
+    ],
+    "explanation": "Cold stratification evolved as a survival mechanism in temperate climates. Seeds require sustained cold (typically 2-10°C for weeks to months) to break dormancy, ensuring they don't germinate in late autumn warm spells only to be killed by winter. The cold period signals that winter has truly passed and spring growth conditions are safe.",
+    "wowFactor": "Apple seeds won't sprout until they've experienced a fake winter in your refrigerator — they evolved to count cold hours to ensure spring has actually arrived.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Many seeds require cold ___ — exposure to cold and moisture — before they will germinate.",
+        "correctAnswer": "stratification",
+        "distractors": [
+          "calcification",
+          "oxidation",
+          "hydration",
+          "scarification"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cold stratification evolved to prevent seeds from germinating during warm autumn spells only to die in winter.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which seed germination requirement ensures seeds have truly experienced winter before sprouting in spring?",
+        "correctAnswer": "Cold stratification",
+        "distractors": [
+          "Scarification",
+          "Desiccation",
+          "Light exposure",
+          "Flooding"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A gardener stores apple seeds in wet paper towels in the fridge for 3 months before planting. What requirement does this satisfy?",
+        "correctAnswer": "Cold stratification",
+        "distractors": [
+          "Scarification",
+          "Desiccation",
+          "Light exposure",
+          "Bacterial treatment"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stratification_(botany)",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of seeds in moist soil under snow, a thermometer showing near-freezing temperature, a timeline arrow showing weeks passing, then the seed sprouting as snow melts in spring",
+    "tags": [
+      "seed dormancy",
+      "cold stratification",
+      "germination",
+      "plant adaptation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_nightshade_family_importance",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "The nightshade family (Solanaceae) includes tomatoes, potatoes, peppers, and eggplants — plus deadly nightshade and tobacco.",
+    "quizQuestion": "Which plant family includes both tomatoes, potatoes, and peppers AND deadly nightshade and tobacco?",
+    "correctAnswer": "Solanaceae",
+    "distractors": [
+      "Rosaceae",
+      "Fabaceae",
+      "Cucurbitaceae",
+      "Asteraceae",
+      "Brassicaceae",
+      "Apiaceae",
+      "Poaceae",
+      "Rutaceae"
+    ],
+    "acceptableAnswers": [
+      "Nightshade family",
+      "nightshades"
+    ],
+    "explanation": "The Solanaceae (nightshade family) is one of the most economically important plant families. It includes staple food crops (tomatoes, potatoes, peppers, eggplant, tomatillo) alongside extremely toxic plants (deadly nightshade, jimsonweed) and tobacco. This remarkable range from food to poison to drug in one family reflects the family's chemical diversity.",
+    "wowFactor": "The tomato, potato, tobacco, and deadly nightshade are all close cousins in the same plant family — one feeds billions while another has killed countless throughout history.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Tomatoes, potatoes, peppers, and deadly nightshade all belong to the ___ family.",
+        "correctAnswer": "Solanaceae",
+        "distractors": [
+          "Rosaceae",
+          "Fabaceae",
+          "Cucurbitaceae",
+          "Brassicaceae"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tomatoes and deadly nightshade belong to the same plant family.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which plant family (Solanaceae) contains both major food crops like tomatoes and potatoes AND toxic plants like deadly nightshade?",
+        "correctAnswer": "Nightshade family",
+        "distractors": [
+          "Rose family",
+          "Legume family",
+          "Carrot family",
+          "Mustard family"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The plant family that gave us french fries and pizza sauce also gave us some of history's deadliest poisons. Which family?",
+        "correctAnswer": "Solanaceae",
+        "distractors": [
+          "Rosaceae",
+          "Fabaceae",
+          "Cucurbitaceae",
+          "Brassicaceae"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Solanaceae",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a split family portrait — left side showing colorful tomatoes, peppers, and potatoes in warm red and orange; right side showing dark purple deadly nightshade berries — same family crest above",
+    "tags": [
+      "solanaceae",
+      "nightshade family",
+      "food plants",
+      "toxic plants"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_tree_rings_dendrochronology",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Tree rings (dendrochronology) record past climate — wide rings indicate good growing years, narrow rings indicate drought or cold.",
+    "quizQuestion": "What do narrow tree rings indicate about the year they formed?",
+    "correctAnswer": "Drought or cold stress",
+    "distractors": [
+      "Excellent growing conditions",
+      "Fire damage",
+      "Insect infestation",
+      "Fungal infection",
+      "High altitude location",
+      "Flooding",
+      "Volcanic ash",
+      "Excellent growing conditions"
+    ],
+    "acceptableAnswers": [
+      "poor growing conditions",
+      "drought or stress",
+      "harsh growing year"
+    ],
+    "explanation": "Trees grow a new ring of wood each year — wider rings in good growing years (warm, wet) and narrower rings during droughts, cold spells, or other stresses. Dendrochronology uses these ring patterns to reconstruct climate history going back thousands of years from preserved ancient wood.",
+    "wowFactor": "Ancient bristlecone pine rings have been used to reconstruct Earth's climate for the past 9,000 years — trees as climate archives covering all of recorded human history.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Narrow tree rings indicate a year of ___ or cold stress, while wide rings indicate good growing conditions.",
+        "correctAnswer": "drought",
+        "distractors": [
+          "flooding",
+          "fire",
+          "disease",
+          "shade"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Wide tree rings indicate favorable growing conditions with adequate water and warmth.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which scientific method uses tree ring width patterns to reconstruct past climate going back thousands of years?",
+        "correctAnswer": "Dendrochronology",
+        "distractors": [
+          "Palynology",
+          "Sedimentology",
+          "Ice core dating",
+          "Isotope analysis"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A cross-section of an ancient tree shows alternating wide and narrow rings. What can scientists read from this pattern?",
+        "correctAnswer": "Past climate conditions",
+        "distractors": [
+          "Tree species identity",
+          "Soil chemistry",
+          "Altitude of growth",
+          "Fire history only"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dendrochronology",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a tree trunk cross-section with clearly visible rings — some wide and light-colored, some narrow and dark — a zoomed callout showing a narrow ring labeled 'drought year' and a wide ring labeled 'wet year'",
+    "tags": [
+      "dendrochronology",
+      "tree rings",
+      "climate history",
+      "botany"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_sunflower_heliotropism",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Young sunflowers track the sun across the sky (heliotropism), but mature flowers stop moving and face east permanently.",
+    "quizQuestion": "What happens to a sunflower's sun-tracking behavior when it matures?",
+    "correctAnswer": "Stops and faces east",
+    "distractors": [
+      "It reverses to face west",
+      "It speeds up dramatically",
+      "It begins tracking the moon",
+      "It rotates randomly",
+      "It faces the equator",
+      "It faces upward",
+      "It faces north",
+      "It stops and faces west"
+    ],
+    "acceptableAnswers": [
+      "stops moving, faces east",
+      "ceases tracking, faces east"
+    ],
+    "explanation": "Young sunflowers display heliotropism, tracking the sun from east in the morning to west in the evening. Once mature, the stem stiffens and the flower stops moving — permanently facing east. East-facing flowers warm up faster in morning sun, which attracts more pollinating insects earlier in the day.",
+    "wowFactor": "Mature sunflowers face east on purpose — facing the morning sun warms them faster, attracting bees hours earlier than west-facing flowers, giving them a pollination advantage.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Young sunflowers track the sun (heliotropism), but mature flowers stop moving and permanently face ___.",
+        "correctAnswer": "east",
+        "distractors": [
+          "west",
+          "south",
+          "north",
+          "upward"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mature sunflowers continue to track the sun from east to west every day.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which plant behavior describes young sunflowers tracking the sun across the sky before their stems stiffen?",
+        "correctAnswer": "Heliotropism",
+        "distractors": [
+          "Phototropism",
+          "Gravitropism",
+          "Thigmotropism",
+          "Chemotropism"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Mature sunflowers face east permanently to warm faster in morning sun and attract more bees. What is the sun-tracking behavior in young sunflowers called?",
+        "correctAnswer": "Heliotropism",
+        "distractors": [
+          "Phototropism",
+          "Gravitropism",
+          "Thigmotropism",
+          "Nutation"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heliotropism",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art triptych: morning shows a young sunflower facing east toward a rising sun, midday shows it facing up and south, evening shows it facing west — then a mature flower always facing east with bees visiting",
+    "tags": [
+      "sunflower",
+      "heliotropism",
+      "plant movement",
+      "pollination"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_gravity_roots_geotropism",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Plant roots grow downward in response to gravity (positive gravitropism) regardless of how a seed is oriented when planted.",
+    "quizQuestion": "What term describes roots growing downward in response to gravity?",
+    "correctAnswer": "Positive gravitropism",
+    "distractors": [
+      "Negative gravitropism",
+      "Positive phototropism",
+      "Thigmotropism",
+      "Hydrotropism",
+      "Geotropism reversal",
+      "Heliotropism",
+      "Chemotropism",
+      "Chemotropism"
+    ],
+    "acceptableAnswers": [
+      "gravitropism",
+      "geotropism"
+    ],
+    "explanation": "Roots display positive gravitropism — they grow in the direction of gravity, downward into the soil. Shoots display negative gravitropism — they grow against gravity, upward. This occurs because gravity causes auxin (a plant hormone) to accumulate on the lower side of a root, inhibiting growth there and causing the root to curve downward.",
+    "wowFactor": "Plant a seed upside down — the root will still find 'down' and the shoot will still find 'up.' Plants sense gravity using specialized starch-filled cells called statocytes.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Roots growing downward in response to gravity is called positive ___, while stems growing upward is called negative gravitropism.",
+        "correctAnswer": "gravitropism",
+        "distractors": [
+          "phototropism",
+          "heliotropism",
+          "hydrotropism",
+          "thigmotropism"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: If a seed is planted upside down, its root will still grow downward due to gravity sensing.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which plant tropism describes roots growing toward gravity and stems growing away from it?",
+        "correctAnswer": "Gravitropism",
+        "distractors": [
+          "Phototropism",
+          "Hydrotropism",
+          "Thigmotropism",
+          "Heliotropism"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Astronauts tried growing plants in zero gravity — roots grew in all directions. What mechanism had stopped working?",
+        "correctAnswer": "Gravitropism",
+        "distractors": [
+          "Phototropism",
+          "Hydrotropism",
+          "Thigmotropism",
+          "Chemotropism"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gravitropism",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a seed planted sideways in soil, with the root curving downward and the shoot curving upward regardless of initial orientation, gravity arrow pointing down beside it",
+    "tags": [
+      "gravitropism",
+      "roots",
+      "plant growth",
+      "plant hormones"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "ns_botany_pollen_fossil_record",
+    "type": "knowledge",
+    "categoryL1": "natural_sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "domain": "Natural Sciences",
+    "statement": "Pollen grains are extraordinarily durable — they can survive in sediment for millions of years, providing a detailed record of past plant life.",
+    "quizQuestion": "Why do scientists use pollen grains to reconstruct past vegetation and climate?",
+    "correctAnswer": "Pollen survives in sediment",
+    "distractors": [
+      "Pollen contains DNA that lasts forever",
+      "Pollen is always brightly colored",
+      "Pollen is found only near fossils",
+      "Pollen contains unique chemical signatures",
+      "Pollen only forms near water",
+      "Pollen reflects specific temperature ranges",
+      "Pollen absorbs minerals from soil",
+      "Pollen contains unique mineral ratios"
+    ],
+    "acceptableAnswers": [
+      "Pollen is very durable in sediment",
+      "pollen is preserved for millions of years"
+    ],
+    "explanation": "Pollen grains have walls made of sporopollenin — one of the most chemically resistant biological materials known. This makes pollen almost indestructible in sediment and ice cores. Scientists use fossil pollen (palynology) to reconstruct what plants grew in a region over millions of years, revealing past climates, migrations, and extinctions.",
+    "wowFactor": "Pollen is essentially immortal — a grain of pollen that fell into a lake millions of years ago may still be identifiable today, a tiny time capsule of the ancient world's vegetation.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Pollen grains survive for millions of years in sediment due to their ___, one of biology's most durable materials.",
+        "correctAnswer": "sporopollenin walls",
+        "distractors": [
+          "waxy coating",
+          "silica shell",
+          "calcified surface",
+          "resin coating"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Scientists can use fossil pollen to determine what plant species grew in a region millions of years ago.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which scientific field uses microscopic pollen grains preserved in sediment to reconstruct past climates and vegetation?",
+        "correctAnswer": "Palynology",
+        "distractors": [
+          "Paleobotany",
+          "Dendrochronology",
+          "Stratigraphy",
+          "Paleoecology"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Drilling into lake sediment, scientists find pollen grains from trees that went extinct millions of years ago. What makes pollen so durable?",
+        "correctAnswer": "Sporopollenin walls",
+        "distractors": [
+          "Waxy cuticle",
+          "Silica shell",
+          "Calcified surface",
+          "Resin coating"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Palynology",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of magnified pollen grains floating down into lake sediment layers, a microscope showing the same grain millions of years later perfectly preserved, a scientist reading the record",
+    "tags": [
+      "pollen",
+      "palynology",
+      "fossil record",
+      "plant history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
   }
 ]

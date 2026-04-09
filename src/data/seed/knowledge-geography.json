@@ -89329,5 +89329,4065 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_second_largest_continent",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Africa is the second largest continent, covering 30.37 million km².",
+    "quizQuestion": "What is Africa's rank among continents by area?",
+    "correctAnswer": "Second largest",
+    "distractors": [
+      "Largest",
+      "Third largest",
+      "Fourth largest",
+      "Fifth largest",
+      "Smallest",
+      "Second smallest",
+      "Third smallest",
+      "Middle-sized"
+    ],
+    "acceptableAnswers": [
+      "2nd largest",
+      "second"
+    ],
+    "explanation": "Africa covers approximately 30.37 million km², making it the world's second largest continent after Asia. It spans about 8,000 km north to south and 7,400 km east to west.",
+    "wowFactor": "Africa is so large it could fit the US, China, India, and most of Europe inside it simultaneously.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Africa is the ___ largest continent by area.",
+        "correctAnswer": "second",
+        "distractors": [
+          "largest",
+          "third",
+          "fourth",
+          "fifth"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Africa is the largest continent on Earth.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which continent covers 30.37 million km², making it second only to Asia?",
+        "correctAnswer": "Africa",
+        "distractors": [
+          "South America",
+          "Antarctica",
+          "Europe",
+          "Australia"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Asia is the world's largest continent. Which continent ranks second, covering 30.37 million km²?",
+        "correctAnswer": "Africa",
+        "distractors": [
+          "South America",
+          "North America",
+          "Antarctica",
+          "Europe"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 3,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Africa",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art political map of Africa rendered in warm terracotta tones against a blue ocean, continent outline bold and recognizable, no labels",
+    "tags": [
+      "africa",
+      "continents",
+      "geography",
+      "size"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_country_count",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Africa has 54 internationally recognized countries, more than any other continent.",
+    "quizQuestion": "How many countries are in Africa?",
+    "correctAnswer": "54",
+    "distractors": [
+      "47",
+      "49",
+      "51",
+      "57",
+      "60",
+      "44",
+      "63",
+      "38"
+    ],
+    "acceptableAnswers": [
+      "fifty-four"
+    ],
+    "explanation": "Africa contains 54 internationally recognized sovereign states, giving it more countries than any other continent. This reflects the 1960s wave of decolonization that created dozens of new nations.",
+    "wowFactor": "Africa has more countries than any other continent — more than Europe and the Americas combined.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Africa has ___ internationally recognized countries.",
+        "correctAnswer": "54",
+        "distractors": [
+          "47",
+          "51",
+          "60",
+          "44"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Africa has more countries than any other continent.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which continent has 54 countries, more than any other?",
+        "correctAnswer": "Africa",
+        "distractors": [
+          "Asia",
+          "Europe",
+          "South America",
+          "North America"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "After widespread decolonization in the 1960s, Africa gained many new nations. How many countries does Africa have today?",
+        "correctAnswer": "54",
+        "distractors": [
+          "47",
+          "51",
+          "60",
+          "44"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Africa",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of Africa map with 54 small flag pins dotting the continent, each country outlined in faint gold lines against a warm beige background",
+    "tags": [
+      "africa",
+      "countries",
+      "nations",
+      "political geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_sahara_largest_hot_desert",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Sahara is the world's largest hot desert, covering approximately 9.2 million km².",
+    "quizQuestion": "What is the world's largest hot desert?",
+    "correctAnswer": "Sahara",
+    "distractors": [
+      "Gobi",
+      "Arabian Desert",
+      "Great Victoria Desert",
+      "Patagonian Desert",
+      "Kalahari",
+      "Syrian Desert",
+      "Chihuahuan Desert",
+      "Patagonian Desert"
+    ],
+    "acceptableAnswers": [
+      "Sahara Desert"
+    ],
+    "explanation": "The Sahara covers approximately 9.2 million km² across North Africa, making it the world's largest hot desert. Note: Antarctica and the Arctic are technically larger deserts, but the Sahara is the largest hot desert.",
+    "wowFactor": "The Sahara is roughly the size of the entire United States — a sea of sand larger than any country except Russia.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The ___ is the world's largest hot desert, located in North Africa.",
+        "correctAnswer": "Sahara",
+        "distractors": [
+          "Gobi",
+          "Arabian Desert",
+          "Kalahari",
+          "Namib"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sahara Desert is roughly the same size as the continental United States.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which desert spans 9.2 million km² across North Africa, earning the title of world's largest hot desert?",
+        "correctAnswer": "Sahara",
+        "distractors": [
+          "Gobi",
+          "Arabian Desert",
+          "Great Victoria Desert",
+          "Kalahari"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Antarctica is technically a desert, but which African desert holds the record as Earth's largest hot desert at ~9.2 million km²?",
+        "correctAnswer": "Sahara",
+        "distractors": [
+          "Kalahari",
+          "Namib",
+          "Arabian Desert",
+          "Gobi"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sahara",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art aerial view of golden sand dunes stretching to the horizon under a blazing orange sun, a single camel caravan visible as tiny silhouettes",
+    "tags": [
+      "sahara",
+      "desert",
+      "africa",
+      "size records"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_nile_longest_river",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Nile River is approximately 6,650 km long, making it one of the longest rivers on Earth.",
+    "quizQuestion": "Which African river is approximately 6,650 km long?",
+    "correctAnswer": "Nile",
+    "distractors": [
+      "Congo",
+      "Niger",
+      "Zambezi",
+      "Orange River",
+      "Limpopo",
+      "Volta",
+      "Senegal River",
+      "Limpopo River"
+    ],
+    "acceptableAnswers": [
+      "Nile River",
+      "River Nile"
+    ],
+    "explanation": "The Nile stretches approximately 6,650 km from its headwaters in the Great Lakes region of East Africa northward through Sudan and Egypt to the Mediterranean Sea. It has historically been cited as the world's longest river, though some measurements favor the Amazon.",
+    "wowFactor": "The Nile flows north — opposite to most people's intuition — starting near the equator and ending at the Mediterranean.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The ___ River, approximately 6,650 km long, flows northward through Egypt to the Mediterranean.",
+        "correctAnswer": "Nile",
+        "distractors": [
+          "Congo",
+          "Niger",
+          "Zambezi",
+          "Limpopo"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Nile River flows northward through Africa to reach the Mediterranean Sea.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which river, approximately 6,650 km long, is among the longest on Earth and flows through Egypt?",
+        "correctAnswer": "Nile",
+        "distractors": [
+          "Amazon",
+          "Congo",
+          "Niger",
+          "Zambezi"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Ancient Egyptian civilization grew along the banks of which African river, which runs approximately 6,650 km from central Africa to the Mediterranean?",
+        "correctAnswer": "Nile",
+        "distractors": [
+          "Congo",
+          "Niger",
+          "Zambezi",
+          "Limpopo"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "noveltyScore": 4,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nile",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art satellite-style view of the Nile as a thin blue ribbon cutting through golden desert, a green fertile strip on each bank, pyramids visible near the delta",
+    "tags": [
+      "nile",
+      "rivers",
+      "africa",
+      "egypt"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_congo_deepest_river",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Congo River is the world's deepest river, reaching depths over 220 meters.",
+    "quizQuestion": "Which is the world's deepest river, with depths exceeding 220 meters?",
+    "correctAnswer": "Congo River",
+    "distractors": [
+      "Amazon River",
+      "Nile River",
+      "Yangtze River",
+      "Mississippi River",
+      "Zambezi River",
+      "Niger River",
+      "Mekong River",
+      "Lena River"
+    ],
+    "acceptableAnswers": [
+      "Congo",
+      "River Congo"
+    ],
+    "explanation": "The Congo River in Central Africa reaches depths of over 220 meters (720 feet), making it the deepest river in the world. It also has the second largest discharge of any river on Earth, after the Amazon.",
+    "wowFactor": "The Congo is so deep that unique blind fish species have evolved in its pitch-dark depths — an underwater world unreachable by light.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The ___ River in Central Africa is the world's deepest river at over 220 meters deep.",
+        "correctAnswer": "Congo",
+        "distractors": [
+          "Amazon",
+          "Nile",
+          "Niger",
+          "Zambezi"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Congo River is the world's deepest river.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Central African river holds the record for world's deepest river at 220+ meters?",
+        "correctAnswer": "Congo River",
+        "distractors": [
+          "Nile River",
+          "Amazon River",
+          "Niger River",
+          "Zambezi River"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "While the Amazon has the greatest water discharge, which African river beats all others in depth, plunging over 220 meters?",
+        "correctAnswer": "Congo River",
+        "distractors": [
+          "Nile River",
+          "Niger River",
+          "Zambezi River",
+          "Orange River"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Congo_River",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section view of a massive dark river canyon plunging into deep blue-black depths, dense jungle canopy framing both banks above",
+    "tags": [
+      "congo river",
+      "rivers",
+      "africa",
+      "depth records"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_lake_victoria_largest",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Lake Victoria is Africa's largest lake, covering 68,800 km².",
+    "quizQuestion": "Which is Africa's largest lake by surface area?",
+    "correctAnswer": "Lake Victoria",
+    "distractors": [
+      "Lake Tanganyika",
+      "Lake Malawi",
+      "Lake Chad",
+      "Lake Turkana",
+      "Lake Volta",
+      "Lake Albert",
+      "Lake Kivu",
+      "Lake Nasser"
+    ],
+    "acceptableAnswers": [
+      "Victoria"
+    ],
+    "explanation": "Lake Victoria covers 68,800 km², making it Africa's largest lake and the world's largest tropical lake. It borders Uganda, Kenya, and Tanzania and is one of the sources of the White Nile.",
+    "wowFactor": "Lake Victoria is the world's largest tropical lake and a source of the Nile — named by explorer John Hanning Speke after Queen Victoria in 1858.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Lake ___ is Africa's largest lake at 68,800 km², bordering Uganda, Kenya, and Tanzania.",
+        "correctAnswer": "Victoria",
+        "distractors": [
+          "Tanganyika",
+          "Malawi",
+          "Chad",
+          "Turkana"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lake Tanganyika is Africa's largest lake by surface area.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which African lake, covering 68,800 km², is also one of the sources of the Nile River?",
+        "correctAnswer": "Lake Victoria",
+        "distractors": [
+          "Lake Tanganyika",
+          "Lake Malawi",
+          "Lake Chad",
+          "Lake Turkana"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Explorer John Hanning Speke named Africa's largest lake after the British queen in 1858. Which lake is it?",
+        "correctAnswer": "Lake Victoria",
+        "distractors": [
+          "Lake Tanganyika",
+          "Lake Malawi",
+          "Lake Albert",
+          "Lake Edward"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lake_Victoria",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art aerial view of a vast inland sea with three different colored country borders meeting at its shores, small fishing boats dotting the blue water",
+    "tags": [
+      "lake victoria",
+      "lakes",
+      "africa",
+      "great lakes africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_kilimanjaro_height",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Mount Kilimanjaro stands 5,895 meters tall and is Africa's highest peak.",
+    "quizQuestion": "How tall is Mount Kilimanjaro, Africa's highest peak?",
+    "correctAnswer": "5,895 m",
+    "distractors": [
+      "5,199 m",
+      "4,892 m",
+      "6,310 m",
+      "5,642 m",
+      "4,507 m",
+      "6,050 m",
+      "5,110 m",
+      "5,820 m"
+    ],
+    "acceptableAnswers": [
+      "5895 m",
+      "5895 meters",
+      "5,895 meters"
+    ],
+    "explanation": "Mount Kilimanjaro in Tanzania rises 5,895 meters above sea level, making it Africa's highest mountain. It is also the world's highest free-standing mountain, rising directly from near sea level without a surrounding mountain range.",
+    "wowFactor": "Kilimanjaro sits just 330 km from the equator yet has permanent glaciers at its summit — though they are rapidly disappearing due to climate change.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Mount Kilimanjaro, Africa's highest peak, stands ___ meters tall.",
+        "correctAnswer": "5,895",
+        "distractors": [
+          "5,199",
+          "4,892",
+          "6,310",
+          "5,642"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Kilimanjaro is the world's highest free-standing mountain.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which mountain, standing 5,895 meters in Tanzania, is Africa's highest peak and the world's tallest free-standing mountain?",
+        "correctAnswer": "Kilimanjaro",
+        "distractors": [
+          "Mount Kenya",
+          "Ras Dashen",
+          "Mount Elgon",
+          "Rwenzori"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Near the equator in Tanzania, which mountain rises 5,895 meters — higher than any other point in Africa?",
+        "correctAnswer": "Kilimanjaro",
+        "distractors": [
+          "Mount Kenya",
+          "Ras Dashen",
+          "Mount Elgon",
+          "Atlas Mountains"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mount_Kilimanjaro",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a snow-capped volcanic peak rising dramatically above a flat savannah plain, acacia trees silhouetted in the foreground against an orange sunset",
+    "tags": [
+      "kilimanjaro",
+      "mountains",
+      "africa",
+      "Tanzania"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_great_rift_valley_length",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Great Rift Valley stretches approximately 6,000 km from the Afar Triangle to Mozambique.",
+    "quizQuestion": "Approximately how long is Africa's Great Rift Valley?",
+    "correctAnswer": "6,000 km",
+    "distractors": [
+      "2,500 km",
+      "4,000 km",
+      "8,000 km",
+      "3,200 km",
+      "1,800 km",
+      "9,500 km",
+      "5,100 km",
+      "7,200 km"
+    ],
+    "acceptableAnswers": [
+      "6000 km",
+      "about 6000 km",
+      "~6000 km"
+    ],
+    "explanation": "The Great Rift Valley is a continuous geographic trench approximately 6,000 km long, running from the Afar Triangle in Ethiopia southward through East Africa to Mozambique. It was formed by tectonic plate separation and contains many of Africa's great lakes.",
+    "wowFactor": "The Great Rift Valley is slowly splitting Africa apart — in millions of years, the Horn of Africa will become a separate island.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Great Rift Valley stretches approximately ___ km through East Africa.",
+        "correctAnswer": "6,000",
+        "distractors": [
+          "2,500",
+          "4,000",
+          "8,000",
+          "3,200"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Great Rift Valley is gradually splitting the African continent apart.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which 6,000 km geological feature runs through East Africa and contains many of the continent's great lakes?",
+        "correctAnswer": "Great Rift Valley",
+        "distractors": [
+          "Atlas Mountains",
+          "Drakensberg",
+          "Congo Basin",
+          "Sahel zone"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Tectonic forces are slowly separating the African plate. Which 6,000 km-long feature marks this division running through East Africa?",
+        "correctAnswer": "Great Rift Valley",
+        "distractors": [
+          "Congo River basin",
+          "Atlas fault line",
+          "Drakensberg escarpment",
+          "Nile valley"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/East_African_Rift",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art bird's-eye view of a dramatic escarpment edge with steep cliffs dropping into a wide valley floor, small lakes glinting blue far below, volcanic peaks in the distance",
+    "tags": [
+      "great rift valley",
+      "tectonics",
+      "east africa",
+      "geology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_madagascar_unique_wildlife",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Madagascar is the 4th largest island in the world, with 90% of its wildlife found nowhere else on Earth.",
+    "quizQuestion": "What percentage of Madagascar's wildlife is found nowhere else on Earth?",
+    "correctAnswer": "90%",
+    "distractors": [
+      "60%",
+      "70%",
+      "50%",
+      "80%",
+      "40%",
+      "95%",
+      "30%",
+      "45%"
+    ],
+    "acceptableAnswers": [
+      "ninety percent",
+      "~90%"
+    ],
+    "explanation": "Madagascar separated from the African mainland about 88 million years ago, allowing its species to evolve in isolation. Today, about 90% of its wildlife — including all its lemurs, most chameleons, and thousands of plant species — exists nowhere else on Earth.",
+    "wowFactor": "Madagascar has been called the 'eighth continent' — its isolation is so extreme that 90% of its species exist literally nowhere else on the planet.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Approximately ___% of Madagascar's wildlife is endemic — found nowhere else on Earth.",
+        "correctAnswer": "90",
+        "distractors": [
+          "60",
+          "70",
+          "50",
+          "80"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Madagascar is the world's largest island.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which island, the world's 4th largest, has 90% endemic wildlife due to millions of years of isolation?",
+        "correctAnswer": "Madagascar",
+        "distractors": [
+          "Borneo",
+          "Sri Lanka",
+          "Sumatra",
+          "New Guinea"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Madagascar separated from Africa 88 million years ago. What fraction of its wildlife is now found nowhere else?",
+        "correctAnswer": "90%",
+        "distractors": [
+          "50%",
+          "60%",
+          "70%",
+          "80%"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Madagascar",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a lemur clinging to a spiky baobab tree on a red-soiled cliff, turquoise ocean visible in the background, lush rainforest on one side and dry scrub on the other",
+    "tags": [
+      "madagascar",
+      "endemic species",
+      "islands",
+      "biodiversity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_serengeti_wildebeest",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Serengeti hosts over 1.5 million wildebeest in the world's largest terrestrial migration.",
+    "quizQuestion": "How many wildebeest participate in the Serengeti's great migration?",
+    "correctAnswer": "Over 1.5 million",
+    "distractors": [
+      "Over 500,000",
+      "Over 3 million",
+      "Over 800,000",
+      "Over 250,000",
+      "Over 2 million",
+      "Over 100,000",
+      "Over 4 million",
+      "Over 750,000"
+    ],
+    "acceptableAnswers": [
+      "1.5 million+",
+      "more than 1.5 million",
+      "1.5M"
+    ],
+    "explanation": "The Serengeti in Tanzania and Kenya hosts the world's largest terrestrial animal migration, with over 1.5 million wildebeest joined by hundreds of thousands of zebras and gazelles moving in a massive annual circuit following rainfall and fresh grass.",
+    "wowFactor": "The Serengeti migration is so large it can be seen from space — a river of animals spanning the horizon that has continued for at least a million years.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Serengeti's great wildebeest migration involves over ___ million animals.",
+        "correctAnswer": "1.5",
+        "distractors": [
+          "0.5",
+          "3",
+          "0.8",
+          "2"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Serengeti migration involves more than one million wildebeest.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which African ecosystem hosts over 1.5 million wildebeest in the world's largest terrestrial migration?",
+        "correctAnswer": "Serengeti",
+        "distractors": [
+          "Okavango Delta",
+          "Masai Mara",
+          "Kruger National Park",
+          "Ngorongoro Crater"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Tanzania and Kenya share an ecosystem famous for the world's largest land animal migration. Which ecosystem is it?",
+        "correctAnswer": "Serengeti",
+        "distractors": [
+          "Okavango Delta",
+          "Sahel savannah",
+          "Kalahari basin",
+          "Congo rainforest"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Serengeti",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art aerial view of a vast savannah covered wall-to-wall with wildebeest, dust clouds rising from the herd, a winding river in the background under a wide African sky",
+    "tags": [
+      "serengeti",
+      "migration",
+      "wildebeest",
+      "wildlife"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_victoria_falls_width",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Victoria Falls is 1,708 meters wide and 108 meters tall, making it the world's largest waterfall by area.",
+    "quizQuestion": "How wide is Victoria Falls, the world's largest waterfall by area?",
+    "correctAnswer": "1,708 m",
+    "distractors": [
+      "855 m",
+      "500 m",
+      "2,100 m",
+      "1,200 m",
+      "3,000 m",
+      "650 m",
+      "980 m",
+      "420 m"
+    ],
+    "acceptableAnswers": [
+      "1708 m",
+      "1708 meters",
+      "about 1,700 m"
+    ],
+    "explanation": "Victoria Falls on the Zambezi River between Zambia and Zimbabwe measures 1,708 meters wide and 108 meters tall. Its combined width and height make it the world's largest waterfall by total area of falling water — about twice the height of Niagara Falls.",
+    "wowFactor": "Local people call Victoria Falls 'Mosi-oa-Tunya' — 'The Smoke That Thunders' — audible from 40 km away and visible as mist from 50 km.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Victoria Falls on the Zambezi River is ___ meters wide — the world's largest waterfall by curtain area.",
+        "correctAnswer": "1,708",
+        "distractors": [
+          "855",
+          "500",
+          "2,100",
+          "1,200"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Victoria Falls is twice the height of Niagara Falls.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which African waterfall, 1,708 m wide and 108 m tall, is known locally as 'The Smoke That Thunders'?",
+        "correctAnswer": "Victoria Falls",
+        "distractors": [
+          "Kaieteur Falls",
+          "Tugela Falls",
+          "Blue Nile Falls",
+          "Iguazu Falls"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "On the Zambezi River between Zambia and Zimbabwe, which 1,708-meter-wide waterfall is the largest by falling water area?",
+        "correctAnswer": "Victoria Falls",
+        "distractors": [
+          "Iguazu Falls",
+          "Angel Falls",
+          "Niagara Falls",
+          "Kaieteur Falls"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Victoria_Falls",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art panoramic view of a massive waterfall spanning the full width of a gorge, enormous spray plumes rising like smoke, a rainbow arcing through the mist",
+    "tags": [
+      "victoria falls",
+      "waterfalls",
+      "zambezi",
+      "zambia",
+      "zimbabwe"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_atlas_mountains_length",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Atlas Mountains stretch approximately 2,500 km across Morocco, Algeria, and Tunisia.",
+    "quizQuestion": "Which African mountain range spans ~2,500 km across Morocco, Algeria, and Tunisia?",
+    "correctAnswer": "Atlas Mountains",
+    "distractors": [
+      "Drakensberg",
+      "Ethiopian Highlands",
+      "Rwenzori Mountains",
+      "Hoggar Mountains",
+      "Tibesti Mountains",
+      "Nuba Mountains",
+      "Adamawa Highlands",
+      "Simien Mountains"
+    ],
+    "acceptableAnswers": [
+      "Atlas",
+      "the Atlas"
+    ],
+    "explanation": "The Atlas Mountains run approximately 2,500 km across northwestern Africa, spanning Morocco, Algeria, and Tunisia. They separate the Mediterranean and Atlantic coastlines from the Sahara Desert and contain North Africa's highest peak, Toubkal (4,167 m) in Morocco.",
+    "wowFactor": "The Atlas Mountains are named after the Titan Atlas from Greek mythology — the ancient Greeks believed these mountains held up the sky.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The ___ Mountains stretch 2,500 km across Morocco, Algeria, and Tunisia in North Africa.",
+        "correctAnswer": "Atlas",
+        "distractors": [
+          "Drakensberg",
+          "Rwenzori",
+          "Hoggar",
+          "Tibesti"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Atlas Mountains separate the Sahara from the Mediterranean coast.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which 2,500 km mountain range runs across the northwestern tip of Africa through Morocco, Algeria, and Tunisia?",
+        "correctAnswer": "Atlas Mountains",
+        "distractors": [
+          "Drakensberg",
+          "Rwenzori Mountains",
+          "Ethiopian Highlands",
+          "Ahaggar Mountains"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Named after a Greek Titan, which North African mountain range spans 2,500 km across three countries?",
+        "correctAnswer": "Atlas Mountains",
+        "distractors": [
+          "Drakensberg",
+          "Ethiopian Highlands",
+          "Tibesti",
+          "Rwenzori"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Atlas_Mountains",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of jagged mountain peaks dusted with snow at their tops, descending into fertile green valleys with Berber villages, golden desert visible on the far horizon",
+    "tags": [
+      "atlas mountains",
+      "north africa",
+      "morocco",
+      "algeria"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_niger_river_boomerang",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Niger River, Africa's third longest river, famously curves in a boomerang shape through West Africa.",
+    "quizQuestion": "Which African river is notable for its unusual boomerang-shaped course?",
+    "correctAnswer": "Niger River",
+    "distractors": [
+      "Congo River",
+      "Nile River",
+      "Zambezi River",
+      "Volta River",
+      "Senegal River",
+      "Limpopo River",
+      "Orange River",
+      "Okavango River"
+    ],
+    "acceptableAnswers": [
+      "Niger",
+      "the Niger"
+    ],
+    "explanation": "The Niger River is Africa's third longest river. Uniquely, it starts near the Atlantic coast, flows northeast into the Sahara, then bends sharply southeast back toward the Gulf of Guinea — creating a distinctive boomerang shape unusual for a major river.",
+    "wowFactor": "The Niger flows toward the Sahara Desert before reversing direction — a 4,180 km boomerang that baffled European geographers for centuries.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The ___ River, Africa's third longest, curves in an unusual boomerang shape through West Africa.",
+        "correctAnswer": "Niger",
+        "distractors": [
+          "Congo",
+          "Zambezi",
+          "Volta",
+          "Senegal"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Niger River flows in a straight line from the Atlantic to the Gulf of Guinea.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which West African river, Africa's third longest, is famous for its boomerang-shaped course that dips into the Sahara?",
+        "correctAnswer": "Niger River",
+        "distractors": [
+          "Congo River",
+          "Volta River",
+          "Senegal River",
+          "Gambia River"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "European explorers were confused for centuries by which West African river that flows toward the desert before curving back south?",
+        "correctAnswer": "Niger River",
+        "distractors": [
+          "Congo River",
+          "Volta River",
+          "Senegal River",
+          "Orange River"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Niger_River",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art map view of West Africa showing a blue river curving dramatically in a wide arc — starting near ocean, looping inland toward desert, then curving back to sea",
+    "tags": [
+      "niger river",
+      "west africa",
+      "rivers",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_lake_tanganyika_depth",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Lake Tanganyika is the world's second deepest lake at 1,470 meters deep.",
+    "quizQuestion": "What is the maximum depth of Lake Tanganyika, the world's second deepest lake?",
+    "correctAnswer": "1,470 m",
+    "distractors": [
+      "990 m",
+      "2,100 m",
+      "750 m",
+      "680 m",
+      "1,800 m",
+      "500 m",
+      "1,100 m",
+      "330 m"
+    ],
+    "acceptableAnswers": [
+      "1470 m",
+      "1470 meters",
+      "about 1,470 meters"
+    ],
+    "explanation": "Lake Tanganyika in East Africa reaches a maximum depth of 1,470 meters, making it the world's second deepest lake after Lake Baikal in Russia. It also holds about 18% of the world's available fresh surface water.",
+    "wowFactor": "Lake Tanganyika is so deep that its bottom water has been separated from the surface for thousands of years — a completely separate ecosystem with no oxygen.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Lake Tanganyika reaches a depth of ___ meters, making it the world's second deepest lake.",
+        "correctAnswer": "1,470",
+        "distractors": [
+          "990",
+          "2,100",
+          "750",
+          "680"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lake Tanganyika is deeper than Lake Baikal.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which East African lake, 1,470 meters deep, is the world's second deepest lake?",
+        "correctAnswer": "Lake Tanganyika",
+        "distractors": [
+          "Lake Malawi",
+          "Lake Victoria",
+          "Lake Turkana",
+          "Lake Albert"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Only Russia's Lake Baikal is deeper. Which East African lake reaches 1,470 meters in depth?",
+        "correctAnswer": "Lake Tanganyika",
+        "distractors": [
+          "Lake Malawi",
+          "Lake Victoria",
+          "Lake Kivu",
+          "Lake Albert"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lake_Tanganyika",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section diagram of Lake Tanganyika showing its immense depth, blue surface shading to near-black at the bottom, cliff-like walls dropping to an abyss",
+    "tags": [
+      "lake tanganyika",
+      "lakes",
+      "east africa",
+      "depth records"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_okavango_inland_delta",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Okavango Delta in Botswana is the world's largest inland delta, with no outlet to the sea.",
+    "quizQuestion": "Where is the world's largest inland river delta located?",
+    "correctAnswer": "Botswana",
+    "distractors": [
+      "Namibia",
+      "Zimbabwe",
+      "Zambia",
+      "South Africa",
+      "Angola",
+      "Mozambique",
+      "Tanzania",
+      "Zimbabwe"
+    ],
+    "acceptableAnswers": [
+      "Okavango, Botswana",
+      "Botswana, Africa"
+    ],
+    "explanation": "The Okavango Delta is formed where the Okavango River fans out into the Kalahari Desert in Botswana. Unlike most deltas, it has no outlet to the sea — the water simply evaporates or seeps into the sand, creating a seasonal oasis that supports extraordinary wildlife.",
+    "wowFactor": "The Okavango Delta appears and disappears — seasonal flooding transforms desert into a vast watery paradise for millions of animals each year.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Okavango Delta, the world's largest inland delta, is located in ___.",
+        "correctAnswer": "Botswana",
+        "distractors": [
+          "Namibia",
+          "Zimbabwe",
+          "Zambia",
+          "Angola"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Okavango Delta flows into the Atlantic Ocean.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which country contains the Okavango Delta, the world's largest inland river delta?",
+        "correctAnswer": "Botswana",
+        "distractors": [
+          "Namibia",
+          "Zimbabwe",
+          "Angola",
+          "South Africa"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The Okavango River flows into the Kalahari Desert and disappears — forming the world's largest what?",
+        "correctAnswer": "Inland delta",
+        "distractors": [
+          "Underground river system",
+          "Seasonal lake",
+          "Alluvial plain",
+          "Wetland forest"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Okavango_Delta",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art aerial view of a vast maze of water channels winding through green papyrus reeds and palm islands in a sea of desert, elephants visible at the water's edge",
+    "tags": [
+      "okavango delta",
+      "botswana",
+      "inland delta",
+      "wetlands"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_namib_oldest_desert",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Namib Desert is possibly the oldest desert on Earth, estimated to be 55-80 million years old.",
+    "quizQuestion": "Which desert may be the oldest on Earth, dating back 55-80 million years?",
+    "correctAnswer": "Namib",
+    "distractors": [
+      "Sahara",
+      "Kalahari",
+      "Gobi",
+      "Arabian Desert",
+      "Atacama",
+      "Patagonian Desert",
+      "Great Victoria Desert",
+      "Syrian Desert"
+    ],
+    "acceptableAnswers": [
+      "Namib Desert"
+    ],
+    "explanation": "The Namib Desert along the Atlantic coast of southern Africa is estimated to have been arid for 55-80 million years, making it possibly the oldest desert on Earth. It is famous for its towering red sand dunes, which are among the tallest in the world.",
+    "wowFactor": "The Namib may have existed since the age of dinosaurs — beetles there have evolved unique fog-harvesting body structures to survive in one of the driest places on Earth.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The ___ Desert, estimated at 55-80 million years old, may be Earth's oldest desert.",
+        "correctAnswer": "Namib",
+        "distractors": [
+          "Sahara",
+          "Kalahari",
+          "Gobi",
+          "Atacama"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Namib Desert is younger than the Sahara Desert.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which southern African desert, possibly 55-80 million years old, may be the oldest desert on Earth?",
+        "correctAnswer": "Namib",
+        "distractors": [
+          "Kalahari",
+          "Sahara",
+          "Karoo",
+          "Tanami"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Along Namibia's Atlantic coast, a desert has remained arid since the time of dinosaurs. Which desert is it?",
+        "correctAnswer": "Namib",
+        "distractors": [
+          "Kalahari",
+          "Sahara",
+          "Karoo",
+          "Arabian"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Namib",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of towering red sand dunes beside a blue-grey Atlantic Ocean, a dead acacia tree skeleton silhouetted against a burnt orange sky, no footprints in the sand",
+    "tags": [
+      "namib",
+      "desert",
+      "namibia",
+      "ancient",
+      "age records"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_suez_canal_length",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Suez Canal is 193 km long and was opened in 1869, connecting the Mediterranean and Red Sea.",
+    "quizQuestion": "In what year did the Suez Canal open?",
+    "correctAnswer": "1869",
+    "distractors": [
+      "1848",
+      "1892",
+      "1914",
+      "1830",
+      "1879",
+      "1901",
+      "1856",
+      "1945"
+    ],
+    "acceptableAnswers": [
+      "eighteen sixty-nine"
+    ],
+    "explanation": "The Suez Canal opened on November 17, 1869, after a decade of construction. The 193 km-long canal connects the Mediterranean Sea to the Red Sea, eliminating the need to sail around Africa's Cape of Good Hope and cutting the Europe-Asia sea route by about 7,000 km.",
+    "wowFactor": "Before the Suez Canal, ships had to sail an extra 7,000 km around the entire continent of Africa — the canal transformed global trade overnight.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Suez Canal, connecting the Mediterranean to the Red Sea, opened in ___.",
+        "correctAnswer": "1869",
+        "distractors": [
+          "1848",
+          "1892",
+          "1914",
+          "1879"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Suez Canal eliminated the need to sail around Africa's Cape of Good Hope for Asia-bound ships.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which 193 km Egyptian canal, opened in 1869, connects the Mediterranean Sea to the Red Sea?",
+        "correctAnswer": "Suez Canal",
+        "distractors": [
+          "Panama Canal",
+          "Corinth Canal",
+          "Kiel Canal",
+          "Grand Canal"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Opening in 1869, which Egyptian canal cut the Europe-to-Asia shipping route by roughly 7,000 km?",
+        "correctAnswer": "Suez Canal",
+        "distractors": [
+          "Panama Canal",
+          "Corinth Canal",
+          "Kiel Canal",
+          "Cape Route"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Suez_Canal",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a massive container ship passing through a narrow straight waterway with sandy desert on both sides, another ship visible in the distance ahead",
+    "tags": [
+      "suez canal",
+      "egypt",
+      "trade routes",
+      "engineering"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_mount_kenya_equator_glaciers",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Mount Kenya (5,199 m) sits directly on the equator yet has permanent glaciers at its summit.",
+    "quizQuestion": "Which African mountain sits on the equator yet has permanent glaciers at its summit?",
+    "correctAnswer": "Mount Kenya",
+    "distractors": [
+      "Kilimanjaro",
+      "Rwenzori",
+      "Ras Dashen",
+      "Mount Elgon",
+      "Mount Cameroon",
+      "Toubkal",
+      "Emi Koussi",
+      "Mount Cameroon"
+    ],
+    "acceptableAnswers": [
+      "Mt Kenya",
+      "Kenya"
+    ],
+    "explanation": "Mount Kenya stands 5,199 meters tall and passes directly through the equator. Despite its equatorial location, its summit is cold enough for permanent glaciers, though these are rapidly retreating due to climate change. It is Africa's second highest peak.",
+    "wowFactor": "Mount Kenya sits exactly on the equator — the imaginary line that defines 'the tropics' — yet has glaciers and permanent snow at its top.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "___ Kenya, at 5,199 meters, is Africa's second highest peak and sits directly on the equator.",
+        "correctAnswer": "Mount",
+        "distractors": [
+          "Lake",
+          "River",
+          "Cape",
+          "Gulf"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mount Kenya has permanent glaciers despite sitting on the equator.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which 5,199 m peak is Africa's second highest mountain and lies directly on the equator in Kenya?",
+        "correctAnswer": "Mount Kenya",
+        "distractors": [
+          "Kilimanjaro",
+          "Rwenzori",
+          "Ras Dashen",
+          "Mount Elgon"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Africa's second highest peak has glaciers at its summit despite sitting directly on the equator. Which mountain is it?",
+        "correctAnswer": "Mount Kenya",
+        "distractors": [
+          "Kilimanjaro",
+          "Rwenzori",
+          "Ras Dashen",
+          "Mount Elgon"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mount_Kenya",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a jagged multi-peaked mountain with white glaciers at the summit, dense tropical forest on its lower slopes, a red equator line cutting directly through the mountain's midpoint",
+    "tags": [
+      "mount kenya",
+      "glaciers",
+      "equator",
+      "mountains"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_lake_malawi_cichlids",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Lake Malawi contains approximately 1,000 cichlid fish species, more than any other lake on Earth.",
+    "quizQuestion": "Which African lake contains roughly 1,000 cichlid fish species — more than any other lake?",
+    "correctAnswer": "Lake Malawi",
+    "distractors": [
+      "Lake Victoria",
+      "Lake Tanganyika",
+      "Lake Turkana",
+      "Lake Albert",
+      "Lake Kivu",
+      "Lake Volta",
+      "Lake Chad",
+      "Lake Kivu"
+    ],
+    "acceptableAnswers": [
+      "Malawi",
+      "Lake Nyasa"
+    ],
+    "explanation": "Lake Malawi, also called Lake Nyasa, harbors approximately 1,000 species of cichlid fish — the highest concentration of freshwater fish species in any lake on Earth. Most are endemic, having evolved in isolation within the lake over millions of years.",
+    "wowFactor": "Lake Malawi has more fish species than all of Europe's rivers and lakes combined — and most exist nowhere else on the planet.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Lake ___ contains roughly 1,000 cichlid species — more than any other lake on Earth.",
+        "correctAnswer": "Malawi",
+        "distractors": [
+          "Victoria",
+          "Tanganyika",
+          "Turkana",
+          "Albert"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lake Malawi has more fish species than any other lake in the world.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which East African lake, also called Lake Nyasa, holds approximately 1,000 cichlid species?",
+        "correctAnswer": "Lake Malawi",
+        "distractors": [
+          "Lake Victoria",
+          "Lake Tanganyika",
+          "Lake Turkana",
+          "Lake Albert"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Aquarium enthusiasts prize cichlids from which East African lake, which has more fish species than any other lake on Earth?",
+        "correctAnswer": "Lake Malawi",
+        "distractors": [
+          "Lake Victoria",
+          "Lake Tanganyika",
+          "Lake Kivu",
+          "Lake Chad"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lake_Malawi",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art underwater view of dozens of colorful cichlid fish in electric blues, oranges, and yellows swimming among rocky lakeside boulders, crystal clear warm water",
+    "tags": [
+      "lake malawi",
+      "cichlids",
+      "fish",
+      "biodiversity",
+      "endemic species"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_kalahari_not_true_desert",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Kalahari is not a true desert — it receives enough rainfall to support grasses and wildlife.",
+    "quizQuestion": "Why is the Kalahari considered a semi-arid savannah rather than a true desert?",
+    "correctAnswer": "It receives too much rain",
+    "distractors": [
+      "It has no sand",
+      "It has rivers",
+      "It has mountains",
+      "It is too cold",
+      "It is forested",
+      "It borders an ocean",
+      "It has permanent lakes",
+      "It is too warm"
+    ],
+    "acceptableAnswers": [
+      "Receives rainfall",
+      "Gets too much rain",
+      "Has enough rainfall"
+    ],
+    "explanation": "The Kalahari receives 150-500mm of rain per year — far more than a true desert (which gets less than 250mm in most definitions, and the Kalahari exceeds this in many areas). It supports grasslands, shrubs, and wildlife including meerkats, brown hyenas, and large antelope herds.",
+    "wowFactor": "The Kalahari 'desert' supports lions, cheetahs, and wildebeest — ecosystems that would be impossible in a true desert like the Sahara.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Kalahari is classified as a semi-arid savannah, not a true desert, because it receives enough ___ to support plant life.",
+        "correctAnswer": "rainfall",
+        "distractors": [
+          "groundwater",
+          "fog",
+          "snowmelt",
+          "river water"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Kalahari is a true desert by the technical definition.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which southern African region is commonly called a desert but receives enough rain to support grasslands and large wildlife?",
+        "correctAnswer": "Kalahari",
+        "distractors": [
+          "Namib",
+          "Karoo",
+          "Sahel",
+          "Tanezrouft"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Despite being called a desert, the Kalahari has lions, cheetahs, and wildebeest. What makes it different from a true desert?",
+        "correctAnswer": "It receives too much rain",
+        "distractors": [
+          "It has no sand",
+          "It has rivers",
+          "It borders the sea",
+          "It has forests"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kalahari_Desert",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a golden grassland with red sand visible between clumps of dry grass, a meerkat standing upright on a termite mound, sun-bleached blue sky above",
+    "tags": [
+      "kalahari",
+      "semi-arid",
+      "southern africa",
+      "savannah"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_table_mountain_age",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Table Mountain near Cape Town is approximately 600 million years old, making it one of the oldest mountains on Earth.",
+    "quizQuestion": "How old is Table Mountain near Cape Town, South Africa?",
+    "correctAnswer": "~600 million years",
+    "distractors": [
+      "~60 million years",
+      "~200 million years",
+      "~100 million years",
+      "~1 billion years",
+      "~30 million years",
+      "~400 million years",
+      "~50 million years",
+      "~5 million years"
+    ],
+    "acceptableAnswers": [
+      "600 million years old",
+      "approximately 600 million years"
+    ],
+    "explanation": "Table Mountain's sandstone formation is approximately 600 million years old, making it one of Earth's oldest mountains. Its flat top, formed by horizontal sandstone layers resistant to erosion, creates the distinctive 'table' shape — and often hosts a cloud formation called the 'tablecloth.'",
+    "wowFactor": "Table Mountain is older than most of the world's major mountain ranges combined — its rocks predate the dinosaurs by hundreds of millions of years.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Table Mountain near Cape Town is approximately ___ million years old.",
+        "correctAnswer": "600",
+        "distractors": [
+          "60",
+          "200",
+          "100",
+          "30"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Table Mountain is younger than the Himalayas.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which South African mountain, about 600 million years old, overlooks Cape Town with its distinctive flat top?",
+        "correctAnswer": "Table Mountain",
+        "distractors": [
+          "Drakensberg",
+          "Chapman's Peak",
+          "Lion's Head",
+          "Signal Hill"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A famous Cape Town landmark, this ~600 million year old flat-topped mountain often wears a cloud 'tablecloth.' What is it?",
+        "correctAnswer": "Table Mountain",
+        "distractors": [
+          "Lion's Head",
+          "Devil's Peak",
+          "Chapman's Peak",
+          "Signal Hill"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Table_Mountain",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a perfectly flat-topped mountain draped in a white cloud waterfall, city lights twinkling at its base, Table Bay shimmering blue in the foreground",
+    "tags": [
+      "table mountain",
+      "cape town",
+      "south africa",
+      "geology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_ethiopian_highlands_blue_nile",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Ethiopian Highlands, called the 'Roof of Africa,' are the source of the Blue Nile.",
+    "quizQuestion": "Which region of Africa is both the 'Roof of Africa' and the source of the Blue Nile?",
+    "correctAnswer": "Ethiopian Highlands",
+    "distractors": [
+      "Great Rift Valley",
+      "Atlas Mountains",
+      "Drakensberg",
+      "Rwenzori Mountains",
+      "Congo Basin",
+      "Ahaggar Plateau",
+      "Tibesti Massif",
+      "Tibesti Mountains"
+    ],
+    "acceptableAnswers": [
+      "Ethiopia Highlands",
+      "Ethiopian Plateau"
+    ],
+    "explanation": "The Ethiopian Highlands are the largest continuous highland area in Africa, averaging over 2,000 meters elevation — earning the name 'Roof of Africa.' Lake Tana in these highlands is the source of the Blue Nile, which joins the White Nile in Sudan to form the main Nile.",
+    "wowFactor": "The Blue Nile carries about 80% of the Nile's total water volume despite the White Nile being longer — and it all begins in Ethiopia's ancient highlands.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The ___ Highlands, called the 'Roof of Africa,' are the source of the Blue Nile.",
+        "correctAnswer": "Ethiopian",
+        "distractors": [
+          "Kenyan",
+          "Rwenzori",
+          "Atlas",
+          "Drakensberg"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Blue Nile originates in the Ethiopian Highlands.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which African highlands, nicknamed the 'Roof of Africa,' contain Lake Tana, the source of the Blue Nile?",
+        "correctAnswer": "Ethiopian Highlands",
+        "distractors": [
+          "Rwenzori Mountains",
+          "Atlas Mountains",
+          "Drakensberg",
+          "Great Rift escarpment"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The Blue Nile, which provides 80% of the Nile's water, begins at Lake Tana in which highland region?",
+        "correctAnswer": "Ethiopian Highlands",
+        "distractors": [
+          "Rwenzori Mountains",
+          "Great Rift Valley",
+          "Atlas Mountains",
+          "Ahaggar Plateau"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ethiopian_Highlands",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of dramatic terraced highlands rising in layers of green and brown, a blue lake visible in the valley below, waterfalls tumbling off escarpment edges into cloud",
+    "tags": [
+      "ethiopian highlands",
+      "blue nile",
+      "ethiopia",
+      "roof of africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_zanzibar_spice_trade",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Zanzibar, an island off Tanzania, was a historic center of the Indian Ocean spice trade.",
+    "quizQuestion": "Which East African island was historically famous as a center of the spice trade?",
+    "correctAnswer": "Zanzibar",
+    "distractors": [
+      "Madagascar",
+      "Comoros",
+      "Mauritius",
+      "Réunion",
+      "Seychelles",
+      "Pemba Island",
+      "Mombasa",
+      "Mombasa"
+    ],
+    "acceptableAnswers": [
+      "Zanzibar Island"
+    ],
+    "explanation": "Zanzibar, part of Tanzania, was a major hub of the Indian Ocean spice trade for centuries, particularly famous for cloves. It was also a center of the East African slave trade. The archipelago's Stone Town remains a UNESCO World Heritage Site reflecting its cosmopolitan trading history.",
+    "wowFactor": "Zanzibar once supplied 90% of the world's cloves — the island's wealth came from a spice you can still smell across the ocean before you see land.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "___ island off Tanzania was historically the center of East Africa's Indian Ocean spice trade.",
+        "correctAnswer": "Zanzibar",
+        "distractors": [
+          "Madagascar",
+          "Comoros",
+          "Mauritius",
+          "Réunion"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Zanzibar is part of Tanzania.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Tanzanian island, once supplying 90% of the world's cloves, was a historic Indian Ocean spice trade hub?",
+        "correctAnswer": "Zanzibar",
+        "distractors": [
+          "Madagascar",
+          "Comoros",
+          "Mauritius",
+          "Pemba"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Arab, Persian, Indian, and Portuguese traders all passed through which East African island's Stone Town, a UNESCO spice trade hub?",
+        "correctAnswer": "Zanzibar",
+        "distractors": [
+          "Madagascar",
+          "Comoros",
+          "Seychelles",
+          "Mombasa"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Zanzibar",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of an Arabian-influenced stone archway opening onto a harbor with dhow sailing vessels, spice merchants with cinnamon-colored sacks, a turquoise Indian Ocean beyond",
+    "tags": [
+      "zanzibar",
+      "spice trade",
+      "tanzania",
+      "indian ocean"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_sahel_semi_arid_belt",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Sahel is a semi-arid belt of land stretching across Africa south of the Sahara Desert.",
+    "quizQuestion": "What is the name of the semi-arid transition zone between the Sahara Desert and African savannah?",
+    "correctAnswer": "Sahel",
+    "distractors": [
+      "Serengeti",
+      "Savannah Belt",
+      "Sudan Zone",
+      "Sahara Fringe",
+      "Equatorial Belt",
+      "Kalahari Fringe",
+      "Congo Corridor",
+      "Saharan Fringe"
+    ],
+    "acceptableAnswers": [
+      "the Sahel"
+    ],
+    "explanation": "The Sahel ('coast' or 'shore' in Arabic) is a semi-arid ecozone running roughly 5,400 km from the Atlantic Ocean to the Red Sea, forming a transition between the Sahara Desert to the north and the savannahs to the south. It faces severe challenges including desertification and drought.",
+    "wowFactor": "The Sahel is named the 'shore' of the Sahara — and it is literally disappearing, with the Sahara expanding southward at alarming rates.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The ___ is a semi-arid belt south of the Sahara, stretching from the Atlantic to the Red Sea.",
+        "correctAnswer": "Sahel",
+        "distractors": [
+          "Serengeti",
+          "Sudan Zone",
+          "Equatorial Belt",
+          "Congo Corridor"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sahel lies north of the Sahara Desert.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which 5,400 km-wide African ecozone forms the transition between the Sahara and the tropical savannahs?",
+        "correctAnswer": "Sahel",
+        "distractors": [
+          "Savannah Belt",
+          "Sudan Zone",
+          "Congo Basin",
+          "Serengeti"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Named from the Arabic word for 'shore,' which African ecozone is the transition zone between desert and savannah?",
+        "correctAnswer": "Sahel",
+        "distractors": [
+          "Savannah",
+          "Sudan Zone",
+          "Congo Basin",
+          "Equatorial Zone"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sahel",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a flat horizon where yellow desert sand gradually transitions to sparse thorn scrub, then taller dry grass — a gradient landscape under a bleached sky",
+    "tags": [
+      "sahel",
+      "semi-arid",
+      "north africa",
+      "desertification"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_horn_of_africa_countries",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Horn of Africa comprises Ethiopia, Eritrea, Djibouti, and Somalia — the continent's easternmost projection.",
+    "quizQuestion": "Which four countries form the Horn of Africa?",
+    "correctAnswer": "Ethiopia, Eritrea, Djibouti",
+    "distractors": [
+      "Kenya, Uganda, Tanzania, Rwanda",
+      "Sudan, South Sudan, Chad, Niger",
+      "Egypt, Libya, Tunisia, Algeria",
+      "Mozambique, Madagascar, Comoros, Seychelles",
+      "Ghana, Nigeria, Benin, Togo",
+      "Angola, Zambia, Zimbabwe, Malawi",
+      "Senegal, Gambia, Guinea, Mali",
+      "Sudan, Uganda, Tanzania, Rwanda"
+    ],
+    "acceptableAnswers": [
+      "Eritrea, Ethiopia, Djibouti, Somalia",
+      "Somalia, Ethiopia, Eritrea, Djibouti",
+      "Ethiopia, Eritrea, Djibouti, Somalia"
+    ],
+    "explanation": "The Horn of Africa is the peninsula that juts into the Arabian Sea from East Africa, named for its resemblance to a rhino horn. It comprises Ethiopia, Eritrea, Djibouti, and Somalia — a region of extreme strategic importance controlling access to the Suez Canal shipping lanes.",
+    "wowFactor": "The Horn of Africa sits at one of the world's most important choke points — ships passing through the Suez Canal must navigate these waters.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Horn of Africa comprises Ethiopia, Eritrea, Djibouti, and ___.",
+        "correctAnswer": "Somalia",
+        "distractors": [
+          "Kenya",
+          "Sudan",
+          "Egypt",
+          "Tanzania"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Kenya is one of the four countries that form the Horn of Africa.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ethiopia, Eritrea, Djibouti, and Somalia together form which African geographic region?",
+        "correctAnswer": "Horn of Africa",
+        "distractors": [
+          "East African Community",
+          "Great Lakes Region",
+          "Swahili Coast",
+          "African Sahel"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The peninsula jutting into the Arabian Sea from East Africa is called the Horn. Which four countries make it up?",
+        "correctAnswer": "Ethiopia, Eritrea, Djibouti, Somalia",
+        "distractors": [
+          "Kenya, Uganda, Tanzania, Rwanda",
+          "Sudan, Chad, Niger, Mali",
+          "Egypt, Libya, Tunisia, Morocco"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Horn_of_Africa",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art map showing the easternmost tip of Africa jutting like a pointed peninsula into the blue Arabian Sea, four country colors marked, shipping routes shown as dotted lines",
+    "tags": [
+      "horn of africa",
+      "east africa",
+      "somalia",
+      "ethiopia"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_drakensberg_southern_highest",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Drakensberg is the highest mountain range in southern Africa, stretching across South Africa and Lesotho.",
+    "quizQuestion": "What is the name of the highest mountain range in southern Africa?",
+    "correctAnswer": "Drakensberg",
+    "distractors": [
+      "Atlas Mountains",
+      "Rwenzori",
+      "Ethiopian Highlands",
+      "Cape Fold Mountains",
+      "Nuba Mountains",
+      "Magaliesberg",
+      "Lebombo Mountains",
+      "Lebombo Mountains"
+    ],
+    "acceptableAnswers": [
+      "Drakensberg Mountains",
+      "uKhahlamba-Drakensberg"
+    ],
+    "explanation": "The Drakensberg ('Dragon's Mountains' in Afrikaans) stretches about 1,000 km along the eastern escarpment of southern Africa, forming a natural border between South Africa and Lesotho. Its highest point, Thabana Ntlenyana, reaches 3,482 m.",
+    "wowFactor": "The Drakensberg contains the world's largest collection of San Bushman rock art — over 35,000 paintings spanning thousands of years.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The ___ is the highest mountain range in southern Africa, whose name means 'Dragon's Mountains' in Afrikaans.",
+        "correctAnswer": "Drakensberg",
+        "distractors": [
+          "Rwenzori",
+          "Atlas Mountains",
+          "Cape Fold Mountains",
+          "Nuba Mountains"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Drakensberg forms part of the border between South Africa and Lesotho.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which southern African mountain range, meaning 'Dragon's Mountains,' contains over 35,000 San rock art paintings?",
+        "correctAnswer": "Drakensberg",
+        "distractors": [
+          "Atlas Mountains",
+          "Rwenzori",
+          "Cape Fold Mountains",
+          "Lebombo"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Lesotho is entirely surrounded by South Africa. Which mountain range forms the natural escarpment along their border?",
+        "correctAnswer": "Drakensberg",
+        "distractors": [
+          "Atlas Mountains",
+          "Rwenzori",
+          "Cape Fold Mountains",
+          "Magaliesberg"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Drakensberg",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of dramatic basalt cliffs rising vertically from a green valley, their flat tops lost in clouds, waterfalls streaming down the dark rock face",
+    "tags": [
+      "drakensberg",
+      "south africa",
+      "lesotho",
+      "mountains"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_population_estimate",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Africa has approximately 1.4 billion people, the second largest population of any continent.",
+    "quizQuestion": "Approximately how many people live in Africa?",
+    "correctAnswer": "~1.4 billion",
+    "distractors": [
+      "~800 million",
+      "~600 million",
+      "~2 billion",
+      "~500 million",
+      "~1 billion",
+      "~3 billion",
+      "~300 million",
+      "~2.5 billion"
+    ],
+    "acceptableAnswers": [
+      "1.4 billion",
+      "about 1.4 billion",
+      "1.4B"
+    ],
+    "explanation": "Africa's population is approximately 1.4 billion people, making it the world's second most populous continent after Asia. Africa's population is growing faster than any other continent and is projected to double by 2050, reaching about 2.5 billion.",
+    "wowFactor": "Africa's population is growing so fast it is expected to double by 2050 — by 2100, one in three people on Earth may be African.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Africa has approximately ___ billion people, the second largest continental population.",
+        "correctAnswer": "1.4",
+        "distractors": [
+          "0.8",
+          "0.6",
+          "2",
+          "1"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Africa has a larger population than South America.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which continent has approximately 1.4 billion people and the world's fastest-growing population?",
+        "correctAnswer": "Africa",
+        "distractors": [
+          "Asia",
+          "South America",
+          "Europe",
+          "North America"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Africa's population is projected to double by 2050. How many people live there today?",
+        "correctAnswer": "~1.4 billion",
+        "distractors": [
+          "~800 million",
+          "~600 million",
+          "~2 billion",
+          "~1 billion"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Africa",
+    "sourceVerified": true,
+    "contentVolatility": "volatile",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a crowded market scene with dozens of colorful stalls and people representing multiple African cultures, traditional textiles and foods visible",
+    "tags": [
+      "africa",
+      "population",
+      "demographics",
+      "continent"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_congo_basin_rainforest",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Congo Basin contains the world's second largest tropical rainforest, covering about 3.3 million km².",
+    "quizQuestion": "Which African basin contains the world's second largest tropical rainforest?",
+    "correctAnswer": "Congo Basin",
+    "distractors": [
+      "Niger Delta",
+      "Okavango Basin",
+      "Nile Basin",
+      "Zambezi Basin",
+      "Limpopo Basin",
+      "Volta Basin",
+      "Chad Basin",
+      "Okavango Basin"
+    ],
+    "acceptableAnswers": [
+      "Congo",
+      "Congo River Basin"
+    ],
+    "explanation": "The Congo Basin rainforest covers approximately 3.3 million km², making it the world's second largest tropical rainforest after the Amazon. It is home to forest elephants, gorillas, bonobos, and okapis, and plays a critical role in regulating global climate.",
+    "wowFactor": "The Congo rainforest is the world's second lung after the Amazon — together they produce much of Earth's oxygen and absorb vast amounts of CO₂.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The ___ Basin in Central Africa contains the world's second largest tropical rainforest at 3.3 million km².",
+        "correctAnswer": "Congo",
+        "distractors": [
+          "Niger",
+          "Zambezi",
+          "Nile",
+          "Volta"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Congo Basin rainforest is larger than the Amazon rainforest.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Central African basin, home to gorillas and bonobos, contains the world's second largest tropical rainforest?",
+        "correctAnswer": "Congo Basin",
+        "distractors": [
+          "Niger Delta",
+          "Okavango Basin",
+          "Nile Delta",
+          "Zambezi Valley"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The Amazon is the world's largest tropical rainforest. Which Central African basin holds the second largest?",
+        "correctAnswer": "Congo Basin",
+        "distractors": [
+          "Niger Basin",
+          "Nile Basin",
+          "Zambezi Basin",
+          "Okavango Basin"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Congo_Basin",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art aerial view of an impenetrable dark green rainforest canopy stretching to the horizon, the silver ribbon of the Congo River winding through it, mist rising from the trees",
+    "tags": [
+      "congo basin",
+      "rainforest",
+      "central africa",
+      "biodiversity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_nile_delta_fertile",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Nile Delta is one of the world's largest river deltas, where the Nile fans into the Mediterranean Sea.",
+    "quizQuestion": "Where does the Nile River empty into the sea?",
+    "correctAnswer": "Mediterranean Sea",
+    "distractors": [
+      "Red Sea",
+      "Black Sea",
+      "Adriatic Sea",
+      "Indian Ocean",
+      "Atlantic Ocean",
+      "Arabian Sea",
+      "Caspian Sea",
+      "Persian Gulf"
+    ],
+    "acceptableAnswers": [
+      "the Mediterranean",
+      "Mediterranean"
+    ],
+    "explanation": "The Nile River flows north through Egypt and empties into the Mediterranean Sea, forming a vast delta approximately 160 km wide and 160 km long. This delta has some of the most fertile farmland in the world and has supported Egyptian civilization for thousands of years.",
+    "wowFactor": "The Nile Delta is so fertile that ancient Egyptians called it 'The Black Land' — its dark alluvial soil contrasts sharply with the surrounding 'Red Land' desert.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Nile River empties into the ___ Sea through its wide delta in northern Egypt.",
+        "correctAnswer": "Mediterranean",
+        "distractors": [
+          "Red",
+          "Arabian",
+          "Black",
+          "Adriatic"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Nile empties into the Red Sea.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Into which sea does the Nile River empty, forming a delta that has supported civilization for thousands of years?",
+        "correctAnswer": "Mediterranean Sea",
+        "distractors": [
+          "Red Sea",
+          "Black Sea",
+          "Arabian Sea",
+          "Caspian Sea"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Ancient Egyptians called the Nile Delta's dark soil 'The Black Land.' Into which sea does the Nile empty to form this delta?",
+        "correctAnswer": "Mediterranean Sea",
+        "distractors": [
+          "Red Sea",
+          "Arabian Sea",
+          "Black Sea",
+          "Indian Ocean"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 6,
+    "noveltyScore": 4,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nile_Delta",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art satellite-style view of the triangular Nile Delta, green farmland fanning into the blue Mediterranean, surrounded by tan desert on all sides",
+    "tags": [
+      "nile delta",
+      "egypt",
+      "mediterranean",
+      "fertile land"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_sahara_size_comparison",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Sahara covers about 9.2 million km², roughly the same area as the contiguous United States.",
+    "quizQuestion": "What country's total area is roughly equal to the Sahara Desert?",
+    "correctAnswer": "United States",
+    "distractors": [
+      "Russia",
+      "Canada",
+      "China",
+      "Brazil",
+      "Australia",
+      "India",
+      "Argentina",
+      "Antarctica"
+    ],
+    "acceptableAnswers": [
+      "USA",
+      "the US",
+      "America"
+    ],
+    "explanation": "The Sahara Desert covers approximately 9.2 million km², very close to the contiguous 48 US states at about 8 million km². This comparison helps illustrate the Sahara's immense scale — it stretches across 11 African countries.",
+    "wowFactor": "The Sahara is not a featureless sand sea — only about 25% is actual sand dunes; the rest is rocky plateaus, mountains, and gravel plains.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "At 9.2 million km², the Sahara Desert is roughly the size of the ___.",
+        "correctAnswer": "United States",
+        "distractors": [
+          "Russia",
+          "Canada",
+          "China",
+          "Australia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Only about 25% of the Sahara is actual sand dunes.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which desert, covering 9.2 million km² across 11 countries, is roughly the size of the United States?",
+        "correctAnswer": "Sahara",
+        "distractors": [
+          "Gobi",
+          "Arabian Desert",
+          "Australian Outback",
+          "Patagonian Desert"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The Sahara stretches across 11 countries. How large is it?",
+        "correctAnswer": "~9.2 million km²",
+        "distractors": [
+          "~3 million km²",
+          "~5 million km²",
+          "~15 million km²",
+          "~1 million km²"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sahara",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split-screen comparison: left side shows golden Sahara sand dunes, right side shows the US map, both roughly the same size, joined by an equals sign",
+    "tags": [
+      "sahara",
+      "desert",
+      "size",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_cape_good_hope",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Cape of Good Hope in South Africa was historically a key waypoint for sea trade between Europe and Asia.",
+    "quizQuestion": "Why was the Cape of Good Hope historically important to European trade?",
+    "correctAnswer": "Europe-Asia sea route",
+    "distractors": [
+      "Source of the Nile",
+      "Largest natural harbor",
+      "Richest gold deposits",
+      "Gateway to the Congo",
+      "Meeting of Atlantic and Indian Ocean",
+      "Furthest point south in Africa",
+      "Site of first European settlement",
+      "Slave trade hub"
+    ],
+    "acceptableAnswers": [
+      "Europe-Asia trade route",
+      "trade route to Asia",
+      "route to India"
+    ],
+    "explanation": "The Cape of Good Hope at the southern tip of South Africa was the key waypoint on the sea route between Europe and Asia before the Suez Canal opened in 1869. Portuguese explorer Bartolomeu Dias first rounded the cape in 1488, and Vasco da Gama reached India via this route in 1498.",
+    "wowFactor": "Bartolomeu Dias originally named it 'Cape of Storms' because of its treacherous winds — the King of Portugal renamed it 'Cape of Good Hope' to reassure merchants.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Cape of Good Hope was historically important as the ___ between Europe and Asia before the Suez Canal.",
+        "correctAnswer": "sea route",
+        "distractors": [
+          "overland route",
+          "gold source",
+          "naval base",
+          "trade settlement"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Bartolomeu Dias originally named the cape 'Cape of Good Hope.'",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which southern African cape, first rounded in 1488 by Bartolomeu Dias, was the key Europe-to-Asia sea route?",
+        "correctAnswer": "Cape of Good Hope",
+        "distractors": [
+          "Cape Agulhas",
+          "Cape Verde",
+          "Cape Horn",
+          "Cape Bojador"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Before the Suez Canal, which cape did ships round to sail from Europe to India?",
+        "correctAnswer": "Cape of Good Hope",
+        "distractors": [
+          "Cape Agulhas",
+          "Cape Verde",
+          "Cape Horn",
+          "Cape Bojador"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cape_of_Good_Hope",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a dramatic rocky headland jutting into a stormy sea where two ocean colors meet, a lighthouse on the cliff top, white waves crashing far below",
+    "tags": [
+      "cape of good hope",
+      "south africa",
+      "trade routes",
+      "exploration"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_africa_equator_crossing",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The equator runs through the middle of Africa, crossing countries including Kenya, Uganda, and the Democratic Republic of Congo.",
+    "quizQuestion": "Which African country does the equator cross that is also home to Mount Kenya?",
+    "correctAnswer": "Kenya",
+    "distractors": [
+      "Tanzania",
+      "Ethiopia",
+      "Rwanda",
+      "Sudan",
+      "Nigeria",
+      "Ghana",
+      "Cameroon",
+      "Cameroon"
+    ],
+    "acceptableAnswers": [
+      "Republic of Kenya"
+    ],
+    "explanation": "The equator cuts through Africa's center, crossing Gabon, Republic of Congo, Democratic Republic of Congo, Uganda, Kenya, and Somalia. Kenya is notable because Mount Kenya — named after the country — sits directly on the equator yet has glaciers.",
+    "wowFactor": "The equator crosses Africa almost perfectly through its center — Africa is the only continent spanning from the north temperate zone through the tropics to the south temperate zone.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The equator crosses ___, the East African country where a 5,199 m mountain sits directly on it.",
+        "correctAnswer": "Kenya",
+        "distractors": [
+          "Tanzania",
+          "Ethiopia",
+          "Rwanda",
+          "Uganda"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The equator runs through the Democratic Republic of Congo.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which East African country, home to a 5,199 m equatorial glacier mountain, is crossed by the equator?",
+        "correctAnswer": "Kenya",
+        "distractors": [
+          "Tanzania",
+          "Ethiopia",
+          "Rwanda",
+          "Sudan"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Africa is bisected by the equator. Which East African country, famous for its namesake mountain, sits directly on the equatorial line?",
+        "correctAnswer": "Kenya",
+        "distractors": [
+          "Tanzania",
+          "Ethiopia",
+          "Uganda",
+          "Rwanda"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Equator",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a red equator line cutting across an African map, crossing through multiple country borders, the line passing directly through a tiny mountain symbol",
+    "tags": [
+      "equator",
+      "kenya",
+      "africa",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_great_green_wall",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Great Green Wall is a pan-African initiative to grow an 8,000 km belt of trees across the Sahel to combat desertification.",
+    "quizQuestion": "What is the Great Green Wall initiative in Africa designed to combat?",
+    "correctAnswer": "Desertification",
+    "distractors": [
+      "Deforestation",
+      "Flooding",
+      "Coastal erosion",
+      "Air pollution",
+      "Ocean acidification",
+      "Glacial retreat",
+      "Urbanization",
+      "Soil acidification"
+    ],
+    "acceptableAnswers": [
+      "desert expansion",
+      "Sahara expansion",
+      "land degradation"
+    ],
+    "explanation": "The Great Green Wall is an ambitious African-led initiative to grow an 8,000 km mosaic of trees, vegetation, and land across the Sahel from Senegal to Djibouti, aimed at halting the southward expansion of the Sahara Desert and restoring degraded land.",
+    "wowFactor": "The Great Green Wall, if completed, will be the largest living structure on Earth — three times the length of the Great Barrier Reef.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Great Green Wall is an 8,000 km tree-planting initiative across the Sahel to combat ___.",
+        "correctAnswer": "desertification",
+        "distractors": [
+          "deforestation",
+          "flooding",
+          "coastal erosion",
+          "air pollution"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Great Green Wall would be the largest living structure on Earth if completed.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which pan-African initiative plans to plant an 8,000 km belt of trees from Senegal to Djibouti to stop the Sahara's expansion?",
+        "correctAnswer": "Great Green Wall",
+        "distractors": [
+          "African Forest Initiative",
+          "Sahel Reforestation Project",
+          "Pan-African Greenbelt",
+          "African Climate Shield"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Africa is fighting the Sahara's southward expansion with an 8,000 km tree belt. What is this initiative called?",
+        "correctAnswer": "Great Green Wall",
+        "distractors": [
+          "African Forest Initiative",
+          "Sahel Reforestation Project",
+          "Pan-African Greenbelt",
+          "African Climate Deal"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Great_Green_Wall",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a green ribbon of trees and vegetation stretching across a wide sandy landscape, dry desert on the left transitioning to green farmland on the right",
+    "tags": [
+      "great green wall",
+      "sahel",
+      "desertification",
+      "africa",
+      "environment"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_africa_only_continent_four_hemispheres",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Africa is the only continent that spans all four hemispheres — northern, southern, eastern, and western.",
+    "quizQuestion": "Which is the only continent to span all four hemispheres?",
+    "correctAnswer": "Africa",
+    "distractors": [
+      "Asia",
+      "South America",
+      "Antarctica",
+      "North America",
+      "Europe",
+      "Australia",
+      "Eurasia",
+      "Oceania"
+    ],
+    "acceptableAnswers": [],
+    "explanation": "Africa straddles the equator (north-south hemispheres) and the prime meridian runs near its western coast, while Africa also extends into the eastern hemisphere. This means Africa technically occupies all four hemispheres: northern, southern, eastern, and western.",
+    "wowFactor": "Africa is the only continent cut by both the equator and the prime meridian — it is literally at the center of the world by both measures.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "___ is the only continent that spans all four hemispheres — north, south, east, and west.",
+        "correctAnswer": "Africa",
+        "distractors": [
+          "Asia",
+          "South America",
+          "Europe",
+          "Antarctica"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Africa is the only continent that lies in all four hemispheres.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Only one continent is bisected by both the equator and the prime meridian, placing it in all four hemispheres. Which?",
+        "correctAnswer": "Africa",
+        "distractors": [
+          "Asia",
+          "South America",
+          "Europe",
+          "North America"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Both the equator and the prime meridian pass through this continent, making it the only one in all four hemispheres. Which continent?",
+        "correctAnswer": "Africa",
+        "distractors": [
+          "Asia",
+          "South America",
+          "Europe",
+          "Antarctica"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Africa",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of Africa on a globe with the equator line and prime meridian crossing at a point within the continent, four quadrant labels marking the four hemispheres",
+    "tags": [
+      "africa",
+      "hemispheres",
+      "equator",
+      "prime meridian",
+      "geography facts"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_ngorongoro_crater",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Tanzania's Ngorongoro Crater is the world's largest intact volcanic caldera, home to 25,000+ animals.",
+    "quizQuestion": "Which Tanzanian volcanic caldera is home to over 25,000 large animals?",
+    "correctAnswer": "Ngorongoro Crater",
+    "distractors": [
+      "Olduvai Gorge",
+      "Lengai Volcano",
+      "Kilimanjaro caldera",
+      "Mount Meru crater",
+      "Serengeti plains",
+      "Rift Valley floor",
+      "Arusha crater",
+      "Amboseli basin"
+    ],
+    "acceptableAnswers": [
+      "Ngorongoro",
+      "Ngorongoro caldera"
+    ],
+    "explanation": "The Ngorongoro Crater in Tanzania is the world's largest intact volcanic caldera, about 20 km across and 600 m deep. Its enclosed environment supports an estimated 25,000 large animals including lions, elephants, rhinos, zebras, and wildebeest — making it one of Africa's densest wildlife areas.",
+    "wowFactor": "Ngorongoro Crater is like a natural zoo — animals rarely leave its 264 km² bowl, making it one of the densest concentrations of wildlife anywhere on Earth.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Tanzania's ___ Crater is the world's largest intact volcanic caldera and holds 25,000+ animals.",
+        "correctAnswer": "Ngorongoro",
+        "distractors": [
+          "Kilimanjaro",
+          "Meru",
+          "Lengai",
+          "Serengeti"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ngorongoro Crater is the world's largest intact volcanic caldera.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which 264 km² Tanzanian caldera, 600 m deep, holds 25,000 large animals in its natural enclosure?",
+        "correctAnswer": "Ngorongoro Crater",
+        "distractors": [
+          "Olduvai Gorge",
+          "Mount Meru",
+          "Kilimanjaro summit",
+          "Arusha basin"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Animals rarely leave this Tanzanian caldera's natural bowl, creating one of Africa's densest wildlife concentrations. Which caldera?",
+        "correctAnswer": "Ngorongoro Crater",
+        "distractors": [
+          "Olduvai Gorge",
+          "Mount Meru crater",
+          "Serengeti plain",
+          "Rift Valley basin"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ngorongoro_Crater",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art aerial view looking down into a massive volcanic bowl with green crater floor dotted with animals, steep caldera walls rising on all sides, morning mist in the basin",
+    "tags": [
+      "ngorongoro",
+      "tanzania",
+      "caldera",
+      "wildlife"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_red_sea_youngest_ocean",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Red Sea is the world's youngest ocean in formation, created by tectonic rifting between Africa and Arabia.",
+    "quizQuestion": "How was the Red Sea formed?",
+    "correctAnswer": "Tectonic rifting",
+    "distractors": [
+      "Volcanic eruption",
+      "Sea level rise",
+      "River delta flooding",
+      "Meteor impact",
+      "Glacial melting",
+      "Continental collision",
+      "Subduction",
+      "River erosion"
+    ],
+    "acceptableAnswers": [
+      "Continental rifting",
+      "plate tectonics",
+      "rifting between plates"
+    ],
+    "explanation": "The Red Sea was formed by tectonic rifting — the gradual separation of the African and Arabian tectonic plates. This process began about 30 million years ago and continues today, slowly widening the sea. The Red Sea is considered a nascent ocean, showing how new oceans form.",
+    "wowFactor": "The Red Sea is still growing — the African and Arabian plates are separating at about 1-2 cm per year, and in millions of years it will widen into a full ocean.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Red Sea was formed by tectonic ___ between the African and Arabian plates.",
+        "correctAnswer": "rifting",
+        "distractors": [
+          "collision",
+          "subduction",
+          "eruption",
+          "flooding"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Red Sea is still growing wider due to ongoing tectonic rifting.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which body of water, separating Africa from Arabia, is considered the world's youngest nascent ocean due to ongoing rifting?",
+        "correctAnswer": "Red Sea",
+        "distractors": [
+          "Gulf of Aden",
+          "Mediterranean Sea",
+          "Arabian Sea",
+          "Persian Gulf"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The African and Arabian plates are slowly pulling apart. Which sea between them is widening at 1-2 cm per year?",
+        "correctAnswer": "Red Sea",
+        "distractors": [
+          "Gulf of Aden",
+          "Mediterranean Sea",
+          "Arabian Sea",
+          "Indian Ocean"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Red_Sea",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section diagram showing two continents slowly pulling apart, a narrow sea between them getting gradually wider, arrows showing plate movement direction",
+    "tags": [
+      "red sea",
+      "tectonics",
+      "africa",
+      "plate movement"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_sahara_green_6000_years_ago",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "About 6,000 years ago the Sahara was green and wet — a savannah with lakes, rivers, and hippos.",
+    "quizQuestion": "What was the Sahara like approximately 6,000 years ago?",
+    "correctAnswer": "Green and wet savannah",
+    "distractors": [
+      "Frozen tundra",
+      "Dense tropical rainforest",
+      "Shallow inland sea",
+      "Rocky volcanic wasteland",
+      "Ice sheet",
+      "Grassless gravel desert",
+      "Mountain range",
+      "Shallow salt lake"
+    ],
+    "acceptableAnswers": [
+      "Wet and green",
+      "Savannah with lakes",
+      "humid grassland"
+    ],
+    "explanation": "During the 'African Humid Period' or 'Green Sahara' (roughly 11,000-5,000 years ago), changes in Earth's orbital cycles brought monsoon rains far north. The Sahara was a lush savannah with rivers, lakes, and wildlife including hippos, elephants, and crocodiles — as evidenced by cave paintings and fossil remains.",
+    "wowFactor": "Cave paintings in the Sahara show hippos, crocodiles, and cattle — proof that the world's harshest desert was once a paradise.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "During the 'Green Sahara' period about 6,000 years ago, the desert was a lush ___ with lakes and wildlife.",
+        "correctAnswer": "savannah",
+        "distractors": [
+          "rainforest",
+          "tundra",
+          "swamp",
+          "glacier"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sahara was green and wet approximately 6,000 years ago.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Cave paintings of hippos and crocodiles have been found in which desert, proving it was once a green savannah?",
+        "correctAnswer": "Sahara",
+        "distractors": [
+          "Kalahari",
+          "Namib",
+          "Gobi",
+          "Arabian Desert"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Orbital changes in Earth's tilt once brought monsoons deep into North Africa. What did the Sahara look like 6,000-11,000 years ago?",
+        "correctAnswer": "Green and wet savannah",
+        "distractors": [
+          "Frozen tundra",
+          "Tropical rainforest",
+          "Shallow inland sea",
+          "Rocky plateau"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/African_humid_period",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art side-by-side comparison: left shows green savannah with hippos in a lake and acacia trees; right shows the same view as barren desert — same location, 6,000 years apart",
+    "tags": [
+      "green sahara",
+      "paleoclimate",
+      "sahara",
+      "ancient africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_lake_chad_shrinking",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Lake Chad has shrunk by about 90% since the 1960s due to climate change and irrigation demands.",
+    "quizQuestion": "By approximately what percentage has Lake Chad shrunk since the 1960s?",
+    "correctAnswer": "90%",
+    "distractors": [
+      "20%",
+      "40%",
+      "60%",
+      "99%",
+      "10%",
+      "50%",
+      "75%",
+      "30%"
+    ],
+    "acceptableAnswers": [
+      "ninety percent",
+      "~90%"
+    ],
+    "explanation": "Lake Chad in the Sahel region once covered about 25,000 km² — now it covers less than 2,500 km². This dramatic shrinkage is caused by a combination of decreased rainfall from climate change, increased irrigation for farming, and population growth. It is one of the world's most severe water crises.",
+    "wowFactor": "Lake Chad was once one of Africa's largest lakes — visible from space. Today it has almost disappeared, threatening the water supply of 30 million people.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Lake Chad has shrunk by roughly ___% since the 1960s due to climate change and irrigation.",
+        "correctAnswer": "90",
+        "distractors": [
+          "20",
+          "40",
+          "60",
+          "50"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lake Chad has lost more than 80% of its surface area since the 1960s.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which African lake, once 25,000 km², has shrunk by 90% since the 1960s due to climate change?",
+        "correctAnswer": "Lake Chad",
+        "distractors": [
+          "Lake Victoria",
+          "Lake Turkana",
+          "Lake Malawi",
+          "Lake Albert"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Once visible clearly from space, which Sahel lake has almost disappeared, shrinking 90% since the 1960s?",
+        "correctAnswer": "Lake Chad",
+        "distractors": [
+          "Lake Victoria",
+          "Lake Turkana",
+          "Lake Malawi",
+          "Lake Tanganyika"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lake_Chad",
+    "sourceVerified": true,
+    "contentVolatility": "volatile",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art satellite comparison showing Lake Chad in 1963 as a large blue body of water versus today as a tiny fragment, surrounding land turning from green to tan",
+    "tags": [
+      "lake chad",
+      "climate change",
+      "sahel",
+      "water crisis"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_africa_oldest_human_fossils",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Africa is considered the cradle of humankind — the oldest Homo sapiens fossils (~300,000 years old) were found in Morocco.",
+    "quizQuestion": "In which African country were the oldest Homo sapiens fossils discovered?",
+    "correctAnswer": "Morocco",
+    "distractors": [
+      "Ethiopia",
+      "Kenya",
+      "Tanzania",
+      "South Africa",
+      "Chad",
+      "Egypt",
+      "Nigeria",
+      "Tanzania"
+    ],
+    "acceptableAnswers": [
+      "Jebel Irhoud, Morocco",
+      "Jebel Irhoud"
+    ],
+    "explanation": "The oldest known Homo sapiens fossils, estimated at about 300,000 years old, were found at Jebel Irhoud in Morocco. Africa is considered humanity's birthplace — all modern humans trace their ancestry to Africa.",
+    "wowFactor": "The oldest human remains are 300,000 years old and found in Morocco — meaning modern humans roamed Africa for 200,000 years before the first humans left for Europe.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The oldest Homo sapiens fossils (~300,000 years old) were found at Jebel Irhoud in ___.",
+        "correctAnswer": "Morocco",
+        "distractors": [
+          "Ethiopia",
+          "Kenya",
+          "Tanzania",
+          "South Africa"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The oldest known Homo sapiens fossils were found in Africa.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Where were 300,000-year-old fossils found that are the oldest known Homo sapiens remains?",
+        "correctAnswer": "Morocco",
+        "distractors": [
+          "Ethiopia",
+          "Kenya",
+          "Tanzania",
+          "Chad"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Africa is called the 'cradle of humankind.' In which North African country were the oldest Homo sapiens fossils found?",
+        "correctAnswer": "Morocco",
+        "distractors": [
+          "Ethiopia",
+          "Kenya",
+          "Tanzania",
+          "Egypt"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jebel_Irhoud",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of an archaeological excavation site in Morocco with a fossilized skull emerging from reddish desert rock, brushes and tools around it, ancient cave backdrop",
+    "tags": [
+      "homo sapiens",
+      "human origins",
+      "morocco",
+      "fossils",
+      "cradle of humankind"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_sahara_climate_change_expansion",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Sahara has expanded by about 10% since 1920 due to climate change and human land use.",
+    "quizQuestion": "By approximately what percentage has the Sahara expanded since 1920?",
+    "correctAnswer": "~10%",
+    "distractors": [
+      "~50%",
+      "~2%",
+      "~25%",
+      "~75%",
+      "~1%",
+      "~40%",
+      "~100%",
+      "~60%"
+    ],
+    "acceptableAnswers": [
+      "about 10 percent",
+      "10 percent"
+    ],
+    "explanation": "Studies have shown the Sahara Desert expanded by about 10% between 1920 and 2013, primarily due to decreased rainfall driven by climate change and decades of overgrazing and farming that stripped vegetation. The expansion has been greatest in the Sahel regions to the south.",
+    "wowFactor": "The Sahara grew by an area roughly the size of California and Nevada combined in less than a century — driven partly by the farming practices of people living on its edges.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The Sahara has expanded by approximately ___% since 1920 due to climate change and land use.",
+        "correctAnswer": "10",
+        "distractors": [
+          "50",
+          "2",
+          "25",
+          "75"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sahara Desert has been shrinking due to the Great Green Wall planting initiative.",
+        "correctAnswer": "false",
+        "distractors": [
+          "true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which African desert has expanded by about 10% since 1920 due to climate change and land degradation?",
+        "correctAnswer": "Sahara",
+        "distractors": [
+          "Kalahari",
+          "Namib",
+          "Karoo",
+          "Chalbi"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Climate change and overgrazing have caused which massive African desert to grow by roughly 10% since 1920?",
+        "correctAnswer": "Sahara",
+        "distractors": [
+          "Kalahari",
+          "Namib",
+          "Karoo",
+          "Chalbi"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Desertification",
+    "sourceVerified": true,
+    "contentVolatility": "volatile",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a satellite image showing yellow desert encroaching on green farmland at its border, a before/after split showing the Sahara's southern edge growing southward",
+    "tags": [
+      "sahara",
+      "desertification",
+      "climate change",
+      "africa"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_africa_no_country_borders_explained",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "About 44% of Africa's borders are straight lines drawn by European powers at the 1884-85 Berlin Conference.",
+    "quizQuestion": "What event in 1884-85 resulted in many of Africa's straight-line borders?",
+    "correctAnswer": "Berlin Conference",
+    "distractors": [
+      "Treaty of Versailles",
+      "Congress of Vienna",
+      "Paris Peace Conference",
+      "Brussels Conference",
+      "London Conference",
+      "Rome Conference",
+      "Madrid Protocol",
+      "Geneva Convention"
+    ],
+    "acceptableAnswers": [
+      "Berlin Conference of 1884",
+      "Scramble for Africa",
+      "1884 Berlin Conference"
+    ],
+    "explanation": "The 1884-85 Berlin Conference ('Scramble for Africa') divided Africa among European colonial powers. About 44% of Africa's resulting borders are straight geometric lines that ignored tribal territories, ethnic groups, and natural boundaries — a major cause of ongoing political conflicts across the continent.",
+    "wowFactor": "European leaders divided Africa by drawing straight lines on a map in Berlin, mostly without visiting Africa or consulting any Africans — creating borders that still define 54 nations today.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The 1884-85 ___ Conference divided Africa among European powers, creating many straight-line borders.",
+        "correctAnswer": "Berlin",
+        "distractors": [
+          "Vienna",
+          "Versailles",
+          "Brussels",
+          "London"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: About 44% of Africa's borders are straight geometric lines drawn by European colonial powers.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which 1884-85 European conference divided Africa into colonial territories, drawing many straight borders that still exist today?",
+        "correctAnswer": "Berlin Conference",
+        "distractors": [
+          "Treaty of Versailles",
+          "Congress of Vienna",
+          "Paris Peace Conference",
+          "Brussels Conference"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "European powers met in a German city to divide Africa without consulting Africans, drawing straight borders on a map. Which conference was this?",
+        "correctAnswer": "Berlin Conference",
+        "distractors": [
+          "Congress of Vienna",
+          "Treaty of Versailles",
+          "Paris Peace Conference",
+          "Geneva Convention"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Berlin_Conference",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of an old map of Africa with bold geometric straight lines cutting across it, European flags dotting different zones, a ruler visibly placed across the map by a white-gloved hand",
+    "tags": [
+      "berlin conference",
+      "colonialism",
+      "africa borders",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_lesotho_enclave",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Lesotho is one of only three countries in the world completely surrounded by a single other country — in this case, South Africa.",
+    "quizQuestion": "Which African country is completely surrounded by South Africa?",
+    "correctAnswer": "Lesotho",
+    "distractors": [
+      "Swaziland",
+      "Botswana",
+      "Zimbabwe",
+      "Namibia",
+      "Mozambique",
+      "Malawi",
+      "Rwanda",
+      "Djibouti"
+    ],
+    "acceptableAnswers": [
+      "Kingdom of Lesotho"
+    ],
+    "explanation": "Lesotho is completely encircled by South Africa — an enclave nation. It is one of only three countries in the world entirely surrounded by a single other country (the others are San Marino and Vatican City, both surrounded by Italy). Lesotho's high-altitude mountain terrain gives it the highest lowest point of any country on Earth.",
+    "wowFactor": "Lesotho has the world's highest 'lowest point' — even the lowest part of the country sits 1,400 meters above sea level — meaning you're always in the mountains.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "___ is a country entirely surrounded by South Africa — one of only three national enclaves in the world.",
+        "correctAnswer": "Lesotho",
+        "distractors": [
+          "Swaziland",
+          "Botswana",
+          "Zimbabwe",
+          "Malawi"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lesotho is the only country entirely surrounded by South Africa.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which African kingdom, entirely surrounded by South Africa, has the world's highest minimum elevation at 1,400 m?",
+        "correctAnswer": "Lesotho",
+        "distractors": [
+          "Eswatini",
+          "Botswana",
+          "Zimbabwe",
+          "Malawi"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Like San Marino inside Italy, which African country is entirely enclosed within South Africa's borders?",
+        "correctAnswer": "Lesotho",
+        "distractors": [
+          "Eswatini",
+          "Botswana",
+          "Zimbabwe",
+          "Malawi"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lesotho",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a map showing Lesotho as a small colored enclave completely surrounded by the larger expanse of South Africa, its mountain terrain shown as jagged peaks inside the border",
+    "tags": [
+      "lesotho",
+      "enclave",
+      "south africa",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_great_lakes_freshwater",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Africa's Great Lakes region — including Tanganyika, Victoria, and Malawi — holds about 25% of the world's unfrozen fresh surface water.",
+    "quizQuestion": "Approximately what fraction of Earth's unfrozen fresh surface water is held in Africa's Great Lakes region?",
+    "correctAnswer": "About 25%",
+    "distractors": [
+      "About 5%",
+      "About 10%",
+      "About 50%",
+      "About 2%",
+      "About 35%",
+      "About 70%",
+      "About 15%",
+      "About 45%"
+    ],
+    "acceptableAnswers": [
+      "25 percent",
+      "one quarter",
+      "~25%"
+    ],
+    "explanation": "Africa's Great Lakes region, centered on the East African Rift System, contains an extraordinary concentration of freshwater. Lakes Tanganyika, Victoria, and Malawi alone hold roughly 25% of the world's available unfrozen surface fresh water — a critical global resource.",
+    "wowFactor": "A quarter of all the fresh water you could actually reach on Earth's surface sits in three East African lakes — together they hold more fresh water than all of North America's Great Lakes.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Africa's Great Lakes hold about ___% of the world's unfrozen fresh surface water.",
+        "correctAnswer": "25",
+        "distractors": [
+          "5",
+          "10",
+          "50",
+          "70"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Africa's Great Lakes together hold more fresh water than North America's Great Lakes.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which region containing Lakes Tanganyika, Victoria, and Malawi holds about 25% of Earth's unfrozen surface fresh water?",
+        "correctAnswer": "Africa's Great Lakes region",
+        "distractors": [
+          "Amazon basin",
+          "North American Great Lakes",
+          "Tibetan Plateau lakes",
+          "Siberian lakes"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Lakes Tanganyika, Victoria, and Malawi together contain roughly what share of Earth's unfrozen fresh surface water?",
+        "correctAnswer": "About 25%",
+        "distractors": [
+          "About 5%",
+          "About 10%",
+          "About 50%",
+          "About 2%"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/African_Great_Lakes",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a map of East Africa with three massive lakes glowing blue in the Great Rift Valley, the lakes labeled, their combined water volume shown as a percentage gauge",
+    "tags": [
+      "african great lakes",
+      "fresh water",
+      "east africa",
+      "water resources"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_africa_languages",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "Africa has over 2,000 languages — more linguistic diversity than any other continent.",
+    "quizQuestion": "Approximately how many languages are spoken in Africa?",
+    "correctAnswer": "Over 2,000",
+    "distractors": [
+      "About 500",
+      "About 1,000",
+      "About 200",
+      "Over 5,000",
+      "About 100",
+      "Over 3,500",
+      "About 800",
+      "About 3,000"
+    ],
+    "acceptableAnswers": [
+      "2000+",
+      "more than 2000",
+      "~2000"
+    ],
+    "explanation": "Africa is home to over 2,000 distinct languages, representing about one-third of all the world's languages. These belong to four major language families: Niger-Congo (the world's largest by number of languages), Afroasiatic, Nilo-Saharan, and Khoisan. This makes Africa the world's most linguistically diverse continent.",
+    "wowFactor": "Africa has one-third of all the world's languages — more than Europe and the Americas combined — yet most are unwritten and known only to small communities.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "Africa has over ___ distinct languages — about one-third of all languages in the world.",
+        "correctAnswer": "2,000",
+        "distractors": [
+          "500",
+          "1,000",
+          "200",
+          "100"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Africa has more distinct languages than any other continent.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which continent has over 2,000 languages — about one-third of all the world's languages?",
+        "correctAnswer": "Africa",
+        "distractors": [
+          "Asia",
+          "South America",
+          "Europe",
+          "North America"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "More languages are spoken in this continent than in Europe and the Americas combined. Which continent?",
+        "correctAnswer": "Africa",
+        "distractors": [
+          "Asia",
+          "South America",
+          "North America",
+          "Oceania"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Languages_of_Africa",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of Africa with colorful language family zones marked — green, blue, orange, red — dozens of smaller zones visible, a speech bubble with different script characters rising from the continent",
+    "tags": [
+      "africa",
+      "languages",
+      "linguistic diversity",
+      "culture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
+  },
+  {
+    "id": "geo_africa_sahara_cave_paintings",
+    "type": "knowledge",
+    "categoryL1": "geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "domain": "General Geography",
+    "statement": "The Tassili n'Ajjer plateau in Algeria contains over 15,000 cave paintings and engravings from 6,000-10,000 years ago.",
+    "quizQuestion": "Where in Africa are over 15,000 prehistoric rock art paintings from when the Sahara was green?",
+    "correctAnswer": "Tassili n'Ajjer, Algeria",
+    "distractors": [
+      "Drakensberg, South Africa",
+      "Saharan Atlas, Morocco",
+      "Tibesti Massif, Chad",
+      "Air Mountains, Niger",
+      "Hoggar, Algeria",
+      "Fezzan, Libya",
+      "Nubian Desert, Sudan",
+      "Nubian Desert, Sudan"
+    ],
+    "acceptableAnswers": [
+      "Tassili n'Ajjer",
+      "Algeria's Tassili"
+    ],
+    "explanation": "The Tassili n'Ajjer plateau in southeastern Algeria contains one of the most important collections of prehistoric cave art in the world — over 15,000 engravings and paintings showing cattle herding, hunting, and scenes of life from when the Sahara was a green grassland 6,000-10,000 years ago.",
+    "wowFactor": "Hidden in today's deadly Sahara desert are paintings of hippos, elephants, and cattle herders — proof that the world's harshest desert was once a paradise supporting millions of people.",
+    "variants": [
+      {
+        "type": "fill_blank",
+        "question": "The ___ n'Ajjer plateau in Algeria contains over 15,000 prehistoric rock paintings from when the Sahara was green.",
+        "correctAnswer": "Tassili",
+        "distractors": [
+          "Hoggar",
+          "Atlas",
+          "Tibesti",
+          "Fezzan"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Prehistoric rock art in the Sahara shows cattle, hippos, and elephants from when it was a grassland.",
+        "correctAnswer": "true",
+        "distractors": [
+          "false"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Algerian plateau contains 15,000+ prehistoric rock paintings of cattle herders and hippos from 10,000 years ago?",
+        "correctAnswer": "Tassili n'Ajjer",
+        "distractors": [
+          "Hoggar Massif",
+          "Atlas Mountains",
+          "Tibesti plateau",
+          "Fezzan region"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In the deepest Sahara, 15,000 rock paintings show people herding cattle and hunting hippos. Where are these paintings?",
+        "correctAnswer": "Tassili n'Ajjer, Algeria",
+        "distractors": [
+          "Hoggar Massif, Algeria",
+          "Atlas Mountains, Morocco",
+          "Tibesti, Chad",
+          "Ennedi, Chad"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tassili_n%27Ajjer",
+    "sourceVerified": true,
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of ancient painted rock faces showing silhouettes of cattle, humans with bows, and hippos in ochre and charcoal, the surrounding landscape now bare desert rock",
+    "tags": [
+      "tassili n'ajjer",
+      "rock art",
+      "algeria",
+      "green sahara",
+      "prehistoric"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-04-09T00:00:00.000Z"
   }
 ]
