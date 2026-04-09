@@ -83,14 +83,22 @@ Run the full analytics suite:
 npm run sim:analytics
 ```
 
-This runs 1000+ simulations across all profiles and generates 6 analytics reports in `data/playtests/runs/{timestamp}/analytics/`:
+This runs 1000+ simulations across all profiles and generates 9 analytics reports in `data/playtests/runs/{timestamp}/analytics/`:
 
+**Original 6 (observational):**
 - `card-analysis.md` — per-card win-rate contribution (Layer 1)
 - `balance-report.md` — tension metrics: avg turns, HP at death (Layer 2)
 - `correlation-report.md` — predictability and balance insights (Layer 3)
 - `enemy-analysis.md` — per-enemy difficulty, deadliest enemies, floor difficulty curve
-- `relic-analysis.md` — relic impact, combos, category win rates
+- `relic-analysis.md` — relic impact, combos, category win rates (⚠️ survivorship bias)
 - `archetype-analysis.md` — build viability comparison (8 archetype builds)
+
+**3 new survivorship-free reports (Pass 6, 2026-04-09):**
+- `relic-performance.md` — per-relic avg floors after acquisition, damage/AP, power score. Uses RelicAcquisition timeline to compute causal impact.
+- `card-performance.md` — per-card damage/AP efficiency, charge rate, floor delta. The KEY card balance metric.
+- `archetype-performance.md` — HP efficiency, deck diversity (Shannon entropy), avg floors reached.
+
+**IMPORTANT:** The old `relic-analysis.md` uses observational win rates which are almost entirely survivorship bias (proven 2026-04-04). Always prefer `relic-performance.md` for relic balance decisions.
 
 Read these files before doing any manual analysis — they contain pre-computed insights across all three layers.
 

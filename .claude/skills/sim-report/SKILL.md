@@ -81,12 +81,15 @@ When the sim is run with `npm run sim:analytics`, additional analytics reports a
 
 - `balance-report.md` — Win rate table by profile × ascension level
 - `card-analysis.md` + `.json` — Per-mechanic win rate correlation, deck type distributions
-- `relic-analysis.md` + `.json` — Per-relic win rates, relic combos, category impact
+- `relic-analysis.md` + `.json` — Per-relic win rates, relic combos (⚠️ survivorship bias — use relic-performance.md instead)
 - `enemy-analysis.md` + `.json` — Deadliest enemies, most-failed, floor difficulty curve
 - `archetype-analysis.md` — Build viability comparison (8 archetype builds)
 - `correlation-report.md` — Top positive/negative balance correlations
+- `relic-performance.md` — **Survivorship-free** relic scoring: avg floors after acquisition, damage/AP, power score
+- `card-performance.md` — **Survivorship-free** card efficiency: damage/AP, charge rate, floor delta
+- `archetype-performance.md` — Multi-dimensional archetype scoring: HP efficiency, deck diversity, avg floors
 
-Read these files FIRST before doing manual analysis — they contain pre-computed insights.
+Read these files FIRST before doing manual analysis — they contain pre-computed insights. **For relic balance, ALWAYS prefer relic-performance.md over relic-analysis.md.**
 
 ### Extended FullRunResult Fields (analytics mode)
 

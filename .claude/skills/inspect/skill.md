@@ -55,7 +55,7 @@ No single testing method is sufficient. Unit tests miss visual bugs. Screenshots
 ### 2. Headless Combat Sim (/balance-sim)
 **What it catches:** Win rate deviations, damage spikes, healing insufficiency, difficulty curve problems, card/relic never-used or always-used patterns
 **How:** `npm run sim:analytics`
-**Speed:** 4800 runs in ~40 seconds, generates 6 analytics reports (card-analysis.md, balance-report.md, correlation-report.md, enemy-analysis.md, relic-analysis.md, archetype-analysis.md)
+**Speed:** 4800 runs in ~40 seconds, generates 9 analytics reports (6 observational + 3 survivorship-free: relic-performance.md, card-performance.md, archetype-performance.md)
 **Blind spots:** Uses heuristic bots — cannot explain WHY. Cannot test visual. Cannot detect UX issues.
 
 ### 3. LLM Strategic Analysis (/strategy-analysis)
