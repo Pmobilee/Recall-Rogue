@@ -225,7 +225,7 @@ function buildFact(puzzle) {
   const sanMove = solResult.san;
 
   // Question and explanation
-  const quizQuestion = buildQuestion(primaryTheme, color);
+  const quizQuestion = `${buildQuestion(primaryTheme, color)} [#${id}]`;
   const explanation = buildExplanation(primaryTheme, sanMove, CHAIN_THEMES[chainThemeId].label);
 
   return {

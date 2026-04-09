@@ -230,6 +230,11 @@ export type SoundName =
   | 'tutorial_tooltip'
   | 'tutorial_step_complete'
   | 'tutorial_complete'
+  // --- Chess ---
+  | 'chess_move'
+  | 'chess_capture'
+  | 'chess_check'
+  | 'chess_checkmate'
 
 
 // ---------------------------------------------------------------------------
@@ -2723,6 +2728,58 @@ function playTutorialComplete(ctx: AnyAudioContext, master: GainNode): void {
   scheduleNoiseBurst(ctx, master, 0.08, 0.1, now + 0.3)
 }
 
+
+// ---------------------------------------------------------------------------
+// Chess sounds
+// ---------------------------------------------------------------------------
+
+/**
+ * Chess piece move — short wooden click: white noise through a low-pass filter (cutoff 800 Hz).
+ * Duration 80 ms, quick gain decay.
+ */
+function playChessMove(ctx: AnyAudioContext, master: GainNode): void {
+  scheduleFilteredNoise(ctx, master, 0.3, 0.08, 'lowpass', 800)
+}
+
+/**
+ * Chess capture — deeper thud: white noise through a low-pass filter (cutoff 400 Hz).
+ * Slightly louder and longer than a normal move.
+ */
+function playChessCapture(ctx: AnyAudioContext, master: GainNode): void {
+  scheduleFilteredNoise(ctx, master, 0.5, 0.12, 'lowpass', 400)
+}
+
+/**
+ * Chess check — sharp rising ding: sine oscillator sweep 800→1200 Hz over 150 ms.
+ */
+function playChessCheck(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  const osc = ctx.createOscillator()
+  const gain = ctx.createGain()
+  osc.type = 'sine'
+  osc.frequency.setValueAtTime(800, now)
+  osc.frequency.exponentialRampToValueAtTime(1200, now + 0.15)
+  gain.gain.setValueAtTime(0.4, now)
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.15)
+  osc.connect(gain)
+  gain.connect(master)
+  osc.start(now)
+  osc.stop(now + 0.17)
+}
+
+/**
+ * Chess checkmate — triumphant chord: three sine oscillators (C5, E5, G5)
+ * with exponential decay over 300 ms.
+ */
+function playChessCheckmate(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  // C5=523Hz, E5=659Hz, G5=784Hz
+  const notes = [523.25, 659.25, 783.99]
+  notes.forEach((freq) => {
+    scheduleOscillator(ctx, master, freq, 'sine', 0.3, 0.3, now)
+  })
+}
+
 // ---------------------------------------------------------------------------
 // Sound dispatch map
 // ---------------------------------------------------------------------------
@@ -3018,6 +3075,11 @@ const SOUND_MAP: Record<SoundName, SoundFn> = {
   tutorial_tooltip: playTutorialTooltip,
   tutorial_step_complete: playTutorialStepComplete,
   tutorial_complete: playTutorialComplete,
+  // --- Chess ---
+  chess_move: playChessMove,
+  chess_capture: playChessCapture,
+  chess_check: playChessCheck,
+  chess_checkmate: playChessCheckmate,
 }
 
 // ---------------------------------------------------------------------------

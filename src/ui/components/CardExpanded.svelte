@@ -28,8 +28,9 @@
   import { getLanguageConfig } from '../../types/vocabulary'
   import { displayAnswer, isNumericalAnswer } from '../../services/numericalDistractorService'
   import ChessBoard from './ChessBoard.svelte'
-  import { getPlayerContext, gradeChessMove, isInCheck as chessIsInCheck } from '../../services/chessGrader'
+  import { getPlayerContext, gradeChessMove, isInCheck as chessIsInCheck, applyMove, getOpponentResponse } from '../../services/chessGrader'
   import { updateChessElo } from '../../services/chessEloService'
+  import { audioManager } from '../../services/audioService'
 
   interface Props {
     card: Card
@@ -81,6 +82,8 @@
     sentenceTranslation?: string
     /** Short grammar-point label shown as hint above typing input (e.g., "が — subject marker particle"). */
     grammarPointLabel?: string
+    /** Hint level for chess puzzles: 0 = no hint, 1 = from-square highlighted, 2 = from+to squares highlighted. */
+    chessHintLevel?: number
     onanswer: (answerIndex: number, isCorrect: boolean, speedBonus: boolean) => void
     onskip: () => void
     oncancel: () => void
@@ -114,6 +117,7 @@
     sentenceRomaji,
     sentenceTranslation,
     grammarPointLabel,
+    chessHintLevel = 0,
     fenPosition,
     solutionMoves,
     lichessRating,
@@ -176,14 +180,55 @@
   let chessDisabled = $state(false)
   let chessCheckState = $state(false)
   let chessMoveTimeoutId: ReturnType<typeof setTimeout> | undefined
+  /** Current move index in a multi-move puzzle (0 = first player move). */
+  let chessCurrentMoveIndex = $state(0)
+  /** Tracks current board FEN for multi-move puzzles (updates after each ply). */
+  let chessBoardFen = $state<string | undefined>(undefined)
+  /** True while the opponent's animated response is playing (disables player input). */
+  let chessAnimatingOpponent = $state(false)
+  /** Setup animation phase: pre-move (showing base FEN), animating (setup move playing), ready (player can move). */
+  let chessSetupPhase = $state<'pre-move' | 'animating' | 'ready'>('ready')
+  /** Highlight squares for chess hints: empty = no hint, [from] = hint 1, [from, to] = hint 2. */
+  const chessHighlightSquares = $derived.by(() => {
+    if (!chessContext || !chessHintLevel) return undefined
+    const squares: string[] = []
+    const solutionUCI = chessContext.solutionUCI
+    if (chessHintLevel >= 1) squares.push(solutionUCI.substring(0, 2)) // from-square
+    if (chessHintLevel >= 2) squares.push(solutionUCI.substring(2, 4)) // to-square
+    return squares.length > 0 ? squares : undefined
+  })
+
   /** Elo rating change after the last chess puzzle attempt (+N or -N). */
   let eloChange = $state<number | null>(null)
 
   $effect(() => {
     if (chessContext) {
-      chessLastMove = chessContext.setupMove
-      chessDisabled = false
-      chessCheckState = chessIsInCheck(chessContext.playerFen)
+      // Start with the base FEN (before opponent's setup move)
+      chessSetupPhase = 'pre-move'
+      chessBoardFen = chessContext.baseFen ?? chessContext.playerFen
+      chessLastMove = undefined
+      chessDisabled = true
+      chessCheckState = false
+      chessCurrentMoveIndex = 0
+      chessAnimatingOpponent = false
+      eloChange = null
+
+      // After a brief pause, animate the opponent's setup move
+      const setupTimer = setTimeout(() => {
+        chessSetupPhase = 'animating'
+        chessBoardFen = chessContext!.playerFen
+        chessLastMove = chessContext!.setupMove
+        chessCheckState = chessIsInCheck(chessContext!.playerFen)
+        audioManager.playSound('chess_move')
+
+        // After animation completes, enable interaction
+        const readyTimer = setTimeout(() => {
+          chessSetupPhase = 'ready'
+          chessDisabled = false
+        }, 350)
+        chessMoveTimeoutId = readyTimer
+      }, 500)
+      chessMoveTimeoutId = setupTimer
     }
   })
 
@@ -522,29 +567,92 @@
 
   /**
    * Handle a move from the ChessBoard component.
-   * Grades the move against the solution, disables the board, then fires handleAnswer.
+   * For multi-move puzzles: validates each step, animates opponent responses,
+   * then fires handleAnswer only when the full sequence is complete or fails.
    */
   function handleChessMove(uci: string): void {
-    if (!chessContext || chessDisabled) return
-    const isCorrect = gradeChessMove(uci, chessContext.solutionUCI)
-    chessDisabled = true
+    if (!chessContext || chessDisabled || chessAnimatingOpponent) return
 
-    const from = uci.substring(0, 2)
-    const to = uci.substring(2, 4)
-    chessLastMove = { from, to }
+    const currentMove = chessContext.moveSequence[chessCurrentMoveIndex]
+    if (!currentMove) return
 
-    // Update Elo rating if puzzle has a Lichess rating
-    if (lichessRating) {
-      const result = updateChessElo(lichessRating, isCorrect)
-      eloChange = result.ratingChange
+    const isCorrect = gradeChessMove(uci, currentMove.solutionUCI)
+
+    if (!isCorrect) {
+      // Wrong at any step = fail the whole puzzle
+      chessDisabled = true
+      chessLastMove = { from: uci.substring(0, 2), to: uci.substring(2, 4) }
+
+      if (lichessRating) {
+        const result = updateChessElo(lichessRating, false)
+        eloChange = result.ratingChange
+      }
+
+      chessMoveTimeoutId = setTimeout(() => {
+        const wrongIdx = answers.findIndex((a) => a !== correctAnswer)
+        handleAnswer(wrongIdx >= 0 ? wrongIdx : 0)
+      }, 800)
+      return
     }
 
-    const correctIdx = answers.indexOf(correctAnswer)
-    const wrongIdx = answers.findIndex((a) => a !== correctAnswer)
+    // Correct move — apply it to the board
+    try {
+      const newFen = applyMove(chessBoardFen ?? currentMove.fen, uci)
+      chessBoardFen = newFen
+      chessLastMove = { from: uci.substring(0, 2), to: uci.substring(2, 4) }
+      chessCheckState = chessIsInCheck(newFen)
 
-    chessMoveTimeoutId = setTimeout(() => {
-      handleAnswer(isCorrect ? (correctIdx >= 0 ? correctIdx : 0) : (wrongIdx >= 0 ? wrongIdx : 0))
-    }, isCorrect ? 400 : 800)
+      if (chessCheckState) {
+        audioManager.playSound('chess_check')
+      } else {
+        audioManager.playSound('chess_move')
+      }
+    } catch {
+      // Fallback if applyMove throws (shouldn't happen for a graded-correct move)
+      chessLastMove = { from: uci.substring(0, 2), to: uci.substring(2, 4) }
+    }
+
+    // Check if there are more player moves
+    if (chessCurrentMoveIndex < chessContext.totalPlayerMoves - 1) {
+      // More moves needed — animate opponent response
+      chessAnimatingOpponent = true
+      chessDisabled = true
+
+      const oppUCI = getOpponentResponse(solutionMoves!, chessCurrentMoveIndex)
+      if (oppUCI) {
+        chessMoveTimeoutId = setTimeout(() => {
+          try {
+            const oppFen = applyMove(chessBoardFen!, oppUCI)
+            chessBoardFen = oppFen
+            chessLastMove = { from: oppUCI.substring(0, 2), to: oppUCI.substring(2, 4) }
+            chessCheckState = chessIsInCheck(oppFen)
+            audioManager.playSound('chess_move')
+          } catch {
+            // Fallback
+          }
+          chessCurrentMoveIndex++
+          chessAnimatingOpponent = false
+          chessDisabled = false
+        }, 600)
+      } else {
+        // No opponent response — advance directly
+        chessCurrentMoveIndex++
+        chessAnimatingOpponent = false
+        chessDisabled = false
+      }
+    } else {
+      // Last player move — puzzle complete!
+      chessDisabled = true
+
+      if (lichessRating) {
+        const result = updateChessElo(lichessRating, true)
+        eloChange = result.ratingChange
+      }
+
+      chessMoveTimeoutId = setTimeout(() => {
+        handleAnswer(answers.indexOf(correctAnswer) >= 0 ? answers.indexOf(correctAnswer) : 0)
+      }, 400)
+    }
   }
 
   onDestroy(() => {
@@ -676,13 +784,27 @@
 
   {#if effectiveResponseMode === 'chess_move' && chessContext}
     <div class="chess-puzzle-container">
+      {#if chessSetupPhase === 'pre-move' || chessSetupPhase === 'animating'}
+        <div class="chess-setup-label">Opponent plays...</div>
+      {/if}
+      {#if chessContext.totalPlayerMoves > 1 && chessSetupPhase === 'ready'}
+        <div class="chess-move-progress">
+          Move {chessCurrentMoveIndex + 1} / {chessContext.totalPlayerMoves}
+        </div>
+      {/if}
       <ChessBoard
-        fen={chessContext.playerFen}
+        fen={chessBoardFen ?? chessContext.playerFen}
         orientation={chessContext.orientation}
         onmove={handleChessMove}
-        disabled={chessDisabled || answersDisabled}
+        disabled={chessDisabled || answersDisabled || chessAnimatingOpponent}
         lastMove={chessLastMove}
         isInCheck={chessCheckState}
+        highlightSquares={chessHighlightSquares}
+        showNotationInput={$isLandscape}
+        onSoundEvent={(event) => {
+          if (event === 'capture') audioManager.playSound('chess_capture')
+          // move sounds handled in handleChessMove for player moves; setup handled in init effect
+        }}
       />
       {#if chessDisabled && selectedAnswerIndex !== null}
         <div class="chess-solution-display">
@@ -1591,6 +1713,29 @@
   @keyframes elo-float {
     0% { opacity: 1; transform: translateY(0); }
     100% { opacity: 0; transform: translateY(calc(-20px * var(--layout-scale, 1))); }
+  }
+
+  /* Multi-move puzzle progress indicator */
+  .chess-move-progress {
+    font-size: calc(13px * var(--text-scale, 1));
+    color: var(--text-muted, #94a3b8);
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  /* Setup animation label shown while opponent's opening move plays */
+  .chess-setup-label {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: var(--text-muted, #94a3b8);
+    text-align: center;
+    font-style: italic;
+    animation: pulse 1s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
   }
 
 </style>

@@ -6,7 +6,7 @@
   import type { EnemyInstance } from '../../data/enemies'
   import type { TurnState } from '../../services/turnManager'
   import { isAnyCardPlayable, resolveTransmutePick } from '../../services/turnManager'
-  import { FLOOR_TIMER, MASTERY_MAX_LEVEL, MASTERY_BASE_DISTRACTORS, MASTERY_UPGRADED_DISTRACTORS } from '../../data/balance'
+  import { BALANCE, FLOOR_TIMER, MASTERY_MAX_LEVEL, MASTERY_BASE_DISTRACTORS, MASTERY_UPGRADED_DISTRACTORS } from '../../data/balance'
   import { isSurgeTurn } from '../../services/surgeSystem'
   import { getQuestionPresentation } from '../../services/questionFormatter'
   import {
@@ -177,6 +177,8 @@
   let committedQuizData = $state<QuizData | null>(null)
   let committedAtMs = $state(0)
   // showCombatSettings removed — cogwheel moved into CardExpanded
+  /** Chess hint level: 0 = no hint, 1 = from-square highlighted, 2 = from+to highlighted. */
+  let chessHintLevel = $state(0)
 
   // V2 Echo: "Must Charge!" tooltip state — shown when Quick Play is attempted on an Echo card
   let showMustChargeTooltip = $state(false)
@@ -847,6 +849,11 @@
     const ascensionPenalty = (turnState.ascensionBaseTimerPenaltySeconds ?? 0) + (turnState.ascensionEncounterTimerPenaltySeconds ?? 0)
     let timer = floorBase + wordBonus + slowReaderBonus - ascensionPenalty
 
+
+    // Chess puzzles need extra time for board reading + tactical analysis
+    if (committedQuizData.quizResponseMode === 'chess_move') {
+      timer = Math.round(timer * BALANCE.CHESS_TIMER_MULTIPLIER)
+    }
 
     return Math.max(2, timer)
   })
@@ -1629,6 +1636,7 @@
     committedCardSnapshot = null
     committedQuizData = null
     committedAtMs = 0
+    chessHintLevel = 0
     // Slide enemy back to center if quiz was active in landscape
     if ($isLandscape) {
       getCombatScene()?.slideEnemyForQuiz(false)
@@ -2402,6 +2410,22 @@
     }
   }
 
+  /**
+   * Intercepts the hint action.
+   * In chess_move mode: increments chessHintLevel (capped at 2) to highlight puzzle squares.
+   * In other modes: delegates to the parent onusehint (normal MC answer elimination).
+   */
+  function handleUseHintIntercepted(): void {
+    if (committedQuizData?.quizResponseMode === 'chess_move') {
+      if (chessHintLevel < 2) {
+        chessHintLevel = chessHintLevel + 1
+      }
+      onusehint() // still decrement hintsRemaining in game state
+    } else {
+      onusehint()
+    }
+  }
+
   function handleEndTurn(): void {
     const state = get(onboardingState)
     if (!state.hasCompletedOnboarding && !state.hasSeenEndTurnTooltip) {
@@ -2786,6 +2810,7 @@
           fenPosition={committedQuizData.fenPosition}
           solutionMoves={committedQuizData.solutionMoves}
           lichessRating={committedQuizData.lichessRating}
+          chessHintLevel={chessHintLevel}
           onanswer={handleAnswer}
           onskip={handleSkip}
           oncancel={() => {}}

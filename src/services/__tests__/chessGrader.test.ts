@@ -16,6 +16,8 @@ import {
   uciToSan,
   getLegalMovesForSquare,
   isInCheck,
+  applyMove,
+  getOpponentResponse,
 } from '../chessGrader';
 
 // ---------------------------------------------------------------------------
@@ -66,7 +68,6 @@ describe('setupPuzzlePosition', () => {
   });
 
   it('applies a capture move correctly', () => {
-    // After 1.e4 e5, white can play Qh5 or other moves. Test a capture:
     // After 1.e4 d5 2.exd5: e4 captures d5
     const afterE4D5 = 'rnbqkbnr/ppp1pppp/8/3p4/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2';
     const resultFen = setupPuzzlePosition(afterE4D5, 'e4d5');
@@ -119,6 +120,18 @@ describe('getPlayerContext', () => {
     expect(ctx.orientation).toBe('white');
     expect(ctx.solutionUCI).toBe('h5f7');
     expect(ctx.setupMove).toEqual({ from: 'd8', to: 'f6' });
+  });
+
+  it('returns baseFen equal to the input FEN', () => {
+    const ctx = getPlayerContext(STARTING_FEN, ['e2e4', 'e7e5']);
+    expect(ctx.baseFen).toBe(STARTING_FEN);
+  });
+
+  it('single-move puzzle has totalPlayerMoves=1 and moveSequence of length 1', () => {
+    const ctx = getPlayerContext(STARTING_FEN, ['e2e4', 'e7e5']);
+    expect(ctx.totalPlayerMoves).toBe(1);
+    expect(ctx.moveSequence).toHaveLength(1);
+    expect(ctx.moveSequence[0].solutionUCI).toBe('e7e5');
   });
 });
 
@@ -286,5 +299,89 @@ describe('isInCheck', () => {
     // Black king on a8, white queen on b7 — queen diagonally checks king on a8
     const checkFen = 'k7/1Q6/8/8/8/8/8/K7 b - - 0 1';
     expect(isInCheck(checkFen)).toBe(true);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// multi-move puzzles
+// ---------------------------------------------------------------------------
+
+describe('multi-move puzzles', () => {
+  it('getPlayerContext with 4-move puzzle returns 2 player moves', () => {
+    // Setup: e2e4 (setup), Player1: d7d5, Opponent1: e4d5 (capture), Player2: d8d5 (recapture)
+    const moves = ['e2e4', 'd7d5', 'e4d5', 'd8d5'];
+    const ctx = getPlayerContext(STARTING_FEN, moves);
+    expect(ctx.totalPlayerMoves).toBe(2);
+    expect(ctx.moveSequence).toHaveLength(2);
+    expect(ctx.moveSequence[0].solutionUCI).toBe('d7d5');
+    expect(ctx.moveSequence[1].solutionUCI).toBe('d8d5');
+    expect(ctx.baseFen).toBe(STARTING_FEN);
+  });
+
+  it('getPlayerContext with 4-move puzzle has correct FEN for second player move', () => {
+    // After e2e4 (setup), d7d5 (player1), e4d5 (opp1), the board should show d5 pawn captured
+    const moves = ['e2e4', 'd7d5', 'e4d5', 'd8d5'];
+    const ctx = getPlayerContext(STARTING_FEN, moves);
+
+    // First player move FEN = after e4 is played
+    expect(ctx.moveSequence[0].fen).toBe(setupPuzzlePosition(STARTING_FEN, 'e2e4'));
+
+    // Second player move FEN = after e4, d5, exd5 — position where queen captures
+    const fenAfterSetup = setupPuzzlePosition(STARTING_FEN, 'e2e4');
+    const fenAfterD5 = setupPuzzlePosition(fenAfterSetup, 'd7d5');
+    const fenAfterExd5 = setupPuzzlePosition(fenAfterD5, 'e4d5');
+    expect(ctx.moveSequence[1].fen).toBe(fenAfterExd5);
+  });
+
+  it('single-move puzzle still works (backward compat)', () => {
+    const moves = ['e2e4', 'd7d5'];
+    const ctx = getPlayerContext(STARTING_FEN, moves);
+    expect(ctx.totalPlayerMoves).toBe(1);
+    expect(ctx.moveSequence).toHaveLength(1);
+    expect(ctx.moveSequence[0].solutionUCI).toBe('d7d5');
+    expect(ctx.baseFen).toBe(STARTING_FEN);
+  });
+
+  it('6-move puzzle returns 3 player moves', () => {
+    // Sequence: setup, p1, opp1, p2, opp2, p3
+    // Using simple legal pawn/queen moves from a known position
+    // Start: e2e4 (setup), then d7d5, e4d5, d8d5, d2d4, d5d4 — 3 player moves
+    const moves = ['e2e4', 'd7d5', 'e4d5', 'd8d5', 'd2d4', 'd5d4'];
+    const ctx = getPlayerContext(STARTING_FEN, moves);
+    expect(ctx.totalPlayerMoves).toBe(3);
+    expect(ctx.moveSequence).toHaveLength(3);
+    expect(ctx.moveSequence[0].solutionUCI).toBe('d7d5');
+    expect(ctx.moveSequence[1].solutionUCI).toBe('d8d5');
+    expect(ctx.moveSequence[2].solutionUCI).toBe('d5d4');
+  });
+
+  it('applyMove returns correct FEN after a pawn move', () => {
+    const fen = 'rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1';
+    const newFen = applyMove(fen, 'd7d5');
+    // d5 square should now have a black pawn
+    expect(newFen).toContain('3p4');
+  });
+
+  it('applyMove throws on an illegal move', () => {
+    // d7d5 is Black's move, but STARTING_FEN is White to move
+    expect(() => applyMove(STARTING_FEN, 'd7d5')).toThrow();
+  });
+
+  it('getOpponentResponse returns correct move at index 0', () => {
+    const moves = ['e2e4', 'd7d5', 'e4d5', 'd8d5'];
+    expect(getOpponentResponse(moves, 0)).toBe('e4d5');
+  });
+
+  it('getOpponentResponse returns null after last player move', () => {
+    const moves = ['e2e4', 'd7d5', 'e4d5', 'd8d5'];
+    // playerMoveIndex=1 → oppIndex=4, but moves only has 4 entries (indices 0-3)
+    expect(getOpponentResponse(moves, 1)).toBeNull();
+  });
+
+  it('getOpponentResponse for 6-move puzzle', () => {
+    const moves = ['e2e4', 'd7d5', 'e4d5', 'd8d5', 'd2d4', 'd5d4'];
+    expect(getOpponentResponse(moves, 0)).toBe('e4d5');  // opp response to player move 1
+    expect(getOpponentResponse(moves, 1)).toBe('d2d4');  // opp response to player move 2
+    expect(getOpponentResponse(moves, 2)).toBeNull();    // no response after player move 3 (last)
   });
 });

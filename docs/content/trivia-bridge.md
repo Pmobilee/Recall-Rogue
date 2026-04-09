@@ -1,7 +1,7 @@
 # Curated Deck → Trivia Bridge
 
 > **Purpose:** Documents the build-time bridge that extracts representative trivia facts from curated knowledge decks and injects them into `facts.db`, enabling FSRS knowledge transfer between Study Temple and Trivia Dungeon. Also covers the runtime pool-based distractor selection that activates for bridged facts in trivia mode.
-> **Last verified:** 2026-04-08
+> **Last verified:** 2026-04-10
 > **Source files:** `scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`, `scripts/content-pipeline/bridge/deck-bridge-config.json`, `src/data/seed/bridge-curated.json`, `src/services/quizService.ts`, `src/services/curatedDistractorSelector.ts`
 
 ---
@@ -21,7 +21,7 @@ The isolation meant a player could master T-Rex facts in Study Temple (dinosaurs
 
 The **trivia bridge** fixes this. It is a build-time script that reads curated knowledge deck JSONs, selects the single best trivia question per entity, maps `DeckFact` fields to the `Fact` schema, and outputs a seed file (`bridge-curated.json`) that is ingested into `facts.db` alongside regular trivia.
 
-**Impact:** ~2,000+ new trivia facts across 23 knowledge decks (including AP Human Geography, added 2026-04-08) — a 32%+ increase in the trivia pool — with shared FSRS states.
+**Impact:** ~2,300+ new trivia facts across 24 knowledge decks (including `chess_tactics`, added 2026-04-10) — a 38%+ increase in the trivia pool — with shared FSRS states.
 
 ---
 
@@ -184,6 +184,18 @@ node scripts/build-facts-db.mjs
 3. Verify entity grouping looks correct (each group should be a single named subject)
 4. Run without `--dry-run` to generate the seed output
 5. Rebuild: `node scripts/build-facts-db.mjs`
+
+---
+
+
+## Chess Tactics in Trivia Dungeon
+
+The `chess_tactics` deck (300 Lichess puzzles) is bridged to Trivia Dungeon with the following behavior:
+
+- In trivia mode, chess facts present as **text-based multiple choice**: the correct SAN answer (e.g., "Nf6+") is shown among SAN move distractors drawn from other facts in the same tactic pool
+- Distractors are intra-pool SAN moves — semantically appropriate (same tactic type, different puzzle)
+- The interactive chessboard only appears in Study Temple combat/study modes (where `quizResponseMode === 'chess_move'` is rendered by `ChessBoard.svelte`)
+- Entity key: fact IDs like `chess_tac_4172G` with `prefixSegments=2` → entity key is the Lichess puzzle ID portion (e.g. `4172G`)
 
 ---
 

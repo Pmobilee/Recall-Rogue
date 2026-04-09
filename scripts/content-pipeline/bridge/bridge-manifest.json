@@ -1,5 +1,5 @@
 {
-  "lastRun": "2026-04-09T16:24:12.322Z",
+  "lastRun": "2026-04-09T17:01:49.922Z",
   "totalBridgedFacts": 5406,
   "decks": {
     "ancient_greece": {
@@ -253,6 +253,12 @@
       "totalFacts": 214,
       "entities": 69,
       "bridged": 69,
+      "skipped": 0
+    },
+    "chess_tactics": {
+      "totalFacts": 300,
+      "entities": 0,
+      "bridged": 0,
       "skipped": 0
     }
   }

@@ -8,6 +8,7 @@
   import { getLanguageCodeForDeck } from '../../services/deckOptionsService';
   import { getLanguageConfig } from '../../types/vocabulary'
   import { getChessElo, getEloLabel } from '../../services/chessEloService';
+  import { playerSave } from '../stores/playerData';
 
   /** Human-readable display labels for known exam tags. */
   const TAG_DISPLAY: Record<string, string> = {
@@ -55,6 +56,37 @@
 
   /** Current chess Elo rating — shown only for chess_tactics deck. */
   const chessElo = $derived(deck.id === 'chess_tactics' ? getChessElo() : null);
+
+  /**
+   * Last 30 Elo history entries for sparkline display.
+   * Only populated when there are at least 2 data points.
+   */
+  const sparklineData = $derived.by(() => {
+    if (deck.id !== 'chess_tactics') return null;
+    const history = $playerSave?.chessEloHistory;
+    if (!history?.length || history.length < 2) return null;
+    return history.slice(-30);
+  });
+
+  /**
+   * Build a polyline points string and trend color for the Elo sparkline.
+   */
+  function buildSparklinePath(data: Array<{ rating: number }>): { points: string; color: string } {
+    if (!data.length) return { points: '', color: '#94a3b8' };
+    const ratings = data.map(d => d.rating);
+    const min = Math.min(...ratings) - 20;
+    const max = Math.max(...ratings) + 20;
+    const range = max - min || 1;
+    const w = 120;
+    const h = 36;
+    const points = ratings.map((r, i) => {
+      const x = (i / (ratings.length - 1)) * w;
+      const y = h - ((r - min) / range) * h;
+      return `${x},${y}`;
+    }).join(' ');
+    const trending = ratings[ratings.length - 1] > ratings[0];
+    return { points, color: trending ? '#22c55e' : '#ef4444' };
+  }
 
   /**
    * Count of facts matching the selected tags (union).
@@ -147,6 +179,19 @@
               <span class="chess-elo-icon">♟</span>
               <span class="chess-elo-rating">{chessElo}</span>
               <span class="chess-elo-label">{getEloLabel(chessElo)}</span>
+              {#if sparklineData}
+                {@const sparkline = buildSparklinePath(sparklineData)}
+                <svg class="elo-sparkline" viewBox="0 0 120 36" preserveAspectRatio="none">
+                  <polyline
+                    points={sparkline.points}
+                    fill="none"
+                    stroke={sparkline.color}
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              {/if}
             </div>
           {/if}
         </div>
@@ -696,6 +741,12 @@
   .chess-elo-label {
     font-size: calc(14px * var(--text-scale, 1));
     color: var(--text-muted, #94a3b8);
+  }
+
+  .elo-sparkline {
+    width: calc(100px * var(--layout-scale, 1));
+    height: calc(30px * var(--layout-scale, 1));
+    flex-shrink: 0;
   }
 
   /* Deck language options — retheme DeckOptionsPanel for modal context */

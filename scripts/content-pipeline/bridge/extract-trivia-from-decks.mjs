@@ -62,6 +62,9 @@ const DOMAIN_NAMES = {
   food_cuisine: 'Food & Cuisine',
   general_knowledge: 'General Knowledge',
   art_architecture: 'Art & Architecture',
+  games: 'Games',
+  social_sciences: 'Social Sciences',
+  sports_entertainment: 'Sports & Entertainment',
 }
 
 // ---------------------------------------------------------------------------

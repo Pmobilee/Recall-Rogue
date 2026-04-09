@@ -39,6 +39,14 @@ export interface QuizQuestion {
   sentenceTranslation?: string;
   /** Short grammar-point label for hint display. */
   grammarPointLabel?: string;
+  /** Chess puzzle board position in FEN notation (chess_move response mode). */
+  fenPosition?: string;
+  /** Lichess puzzle solution moves: [0]=opponent setup move, [1]=player correct response (UCI). */
+  solutionMoves?: string[];
+  /** Lichess puzzle rating for Elo calculation. */
+  lichessRating?: number;
+  /** Response mode override for this question. 'chess_move' renders ChessBoard instead of answer buttons. */
+  quizResponseMode?: 'choice' | 'typing' | 'chess_move';
 }
 
 export interface QuizPhaseOutcome {
@@ -173,6 +181,10 @@ export function generateQuizPhaseQuestions(
           quizMode: q.quizMode,
           imageAssetPath: q.imageAssetPath,
           answerImagePaths: q.answerImagePaths,
+          fenPosition: q.fenPosition,
+          solutionMoves: q.solutionMoves,
+          lichessRating: q.lichessRating,
+          quizResponseMode: q.quizResponseMode,
         });
       }
     }
@@ -205,6 +217,10 @@ export function generateQuizPhaseQuestions(
           quizMode: q.quizMode,
           imageAssetPath: q.imageAssetPath,
           answerImagePaths: q.answerImagePaths,
+          fenPosition: q.fenPosition,
+          solutionMoves: q.solutionMoves,
+          lichessRating: q.lichessRating,
+          quizResponseMode: q.quizResponseMode,
         });
       }
     }

@@ -48,6 +48,14 @@ export interface NonCombatQuizQuestion {
   sentenceTranslation?: string;
   /** Short grammar-point label for hint display. */
   grammarPointLabel?: string;
+  /** Chess puzzle FEN position (chess_move response mode). */
+  fenPosition?: string;
+  /** Lichess puzzle solution moves in UCI notation. [0]=setup, [1]=player solution. */
+  solutionMoves?: string[];
+  /** Lichess puzzle rating for Elo calculation. */
+  lichessRating?: number;
+  /** Response mode override: 'choice' | 'typing' | 'chess_move'. */
+  quizResponseMode?: 'choice' | 'typing' | 'chess_move';
 }
 
 /**
@@ -267,6 +275,10 @@ export function selectNonCombatStudyQuestion(
     sentenceRomaji: fact.sentenceRomaji,
     sentenceTranslation: fact.sentenceTranslation,
     grammarPointLabel: fact.grammarPointLabel,
+    fenPosition: fact.fenPosition,
+    solutionMoves: fact.solutionMoves,
+    lichessRating: fact.lichessRating,
+    quizResponseMode: fact.quizResponseMode,
   };
 }
 
@@ -454,6 +466,10 @@ export function selectNonCombatCustomDeckQuestion(
     sentenceRomaji: fact.sentenceRomaji,
     sentenceTranslation: fact.sentenceTranslation,
     grammarPointLabel: fact.grammarPointLabel,
+    fenPosition: fact.fenPosition,
+    solutionMoves: fact.solutionMoves,
+    lichessRating: fact.lichessRating,
+    quizResponseMode: fact.quizResponseMode,
   };
 }
 

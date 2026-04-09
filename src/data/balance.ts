@@ -5,6 +5,7 @@ export const BALANCE = {
   // === QUIZ ===
   QUIZ_DISTRACTORS_SHOWN: 3,         // 3 wrong + 1 correct = 4 choices
   QUIZ_GATE_MAX_FAILURES: 2,
+  CHESS_TIMER_MULTIPLIER: 2.0,           // Chess puzzles get 2x timer (board reading + tactical analysis)
 
   // === SM-2 DEFAULTS ===
   SM2_INITIAL_EASE: 2.5,

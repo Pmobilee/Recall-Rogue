@@ -10,6 +10,10 @@
    *   3. Player taps elsewhere → deselects
    *   4. Player taps different own piece → selects that piece instead
    *
+   * Desktop notation input (showNotationInput=true):
+   *   A text input below the board accepts algebraic notation (e.g. "Nf3", "e4", "O-O").
+   *   Enter submits; Escape clears. Auto-focused when visible and board is not disabled.
+   *
    * Piece images served from /assets/chess/pieces/{color}{piece}.svg
    * FEN parsing done locally — no server round-trip needed for rendering.
    * Legal move computation via chess.js (imported directly).
@@ -42,6 +46,17 @@
     highlightSquares?: string[]
     /** When true, apply red tint to the active side's king. */
     isInCheck?: boolean
+    /**
+     * When true, show a text input below the board for algebraic notation entry.
+     * Intended for desktop/landscape mode where keyboard input is comfortable.
+     * Default: false.
+     */
+    showNotationInput?: boolean
+    /**
+     * Optional audio event callback. Fires 'move' or 'capture' when the player
+     * executes a legal move. Used by callers to trigger chess sound effects.
+     */
+    onSoundEvent?: (event: 'move' | 'capture') => void
   }
 
   let {
@@ -52,6 +67,8 @@
     lastMove,
     highlightSquares,
     isInCheck = false,
+    showNotationInput = false,
+    onSoundEvent,
   }: Props = $props()
 
   // ---------------------------------------------------------------------------
@@ -134,6 +151,49 @@
 
   /** Whether the highlighted destination is a capture (for ring vs dot). */
   let capturableSquares = $state<Set<string>>(new Set())
+
+  // ---------------------------------------------------------------------------
+  // Notation input state
+  // ---------------------------------------------------------------------------
+
+  let notationInput = $state('')
+  let notationError = $state<string | null>(null)
+  let inputEl: HTMLInputElement | undefined = $state()
+
+  /**
+   * Handle algebraic notation submission.
+   * Parses the input using chess.js, converts to UCI, and fires onmove.
+   * Shows a brief error message for invalid moves.
+   */
+  function handleNotationSubmit(): void {
+    if (!notationInput.trim() || disabled) return
+    try {
+      const chess = new Chess(fen)
+      const result = chess.move(notationInput.trim())
+      if (result) {
+        const uci = result.from + result.to + (result.promotion ?? '')
+        notationInput = ''
+        notationError = null
+        // For notation input, determine capture from the result flags
+        const isNotationCapture = result.flags.includes('c') || result.flags.includes('e')
+        onSoundEvent?.(isNotationCapture ? 'capture' : 'move')
+        onmove(uci)
+      } else {
+        notationError = 'Invalid move'
+        setTimeout(() => { notationError = null }, 1500)
+      }
+    } catch {
+      notationError = 'Invalid move'
+      setTimeout(() => { notationError = null }, 1500)
+    }
+  }
+
+  /** Auto-focus the notation input when it becomes visible and the board is active. */
+  $effect(() => {
+    if (showNotationInput && inputEl && !disabled) {
+      inputEl.focus()
+    }
+  })
 
   // ---------------------------------------------------------------------------
   // Square geometry
@@ -226,6 +286,10 @@
       if (legalMoves.has(square)) {
         // Execute the move
         const uci = legalMoves.get(square)!
+        const destRankIdx = 8 - parseInt(square[1], 10)
+        const destFileIdx = square.charCodeAt(0) - 'a'.charCodeAt(0)
+        const isCapture = board[destRankIdx]?.[destFileIdx] != null
+        onSoundEvent?.(isCapture ? 'capture' : 'move')
         selectedSquare = null
         legalMoves = new Map()
         capturableSquares = new Set()
@@ -309,6 +373,120 @@
     return String.fromCharCode('a'.charCodeAt(0) + fileIdx)
   }
 
+  // ---------------------------------------------------------------------------
+  // Drag-and-drop state
+  // ---------------------------------------------------------------------------
+
+  /** Reference to the .chess-board element for bounding rect calculations. */
+  let boardEl: HTMLDivElement | undefined = $state()
+
+  /** Active drag: the piece being dragged and its starting screen position. */
+  let dragging = $state<{ square: string; piece: PieceInfo; startX: number; startY: number } | null>(null)
+
+  /** Current pointer position during drag (screen coords). */
+  let dragPos = $state<{ x: number; y: number } | null>(null)
+
+  /**
+   * Handle pointer-down on a square button.
+   * If the square has an own piece, start a drag AND visually select the piece.
+   * If the square is a legal destination for an already-selected piece, execute the move.
+   * Otherwise fall through to tap logic.
+   */
+  function handlePointerDown(e: PointerEvent, square: string): void {
+    if (disabled) return
+
+    const rankIdx = 8 - parseInt(square[1], 10)
+    const fileIdx = square.charCodeAt(0) - 'a'.charCodeAt(0)
+    const piece = board[rankIdx]?.[fileIdx] ?? null
+
+    // If we already have a selection and this is a legal dest, execute immediately via tap
+    if (selectedSquare !== null && legalMoves.has(square)) {
+      handleSquareTap(square)
+      return
+    }
+
+    // Only start a drag for the active side's own piece
+    if (piece && piece.color === activeSideColor) {
+      dragging = { square, piece, startX: e.clientX, startY: e.clientY }
+      dragPos = { x: e.clientX, y: e.clientY }
+      selectedSquare = square
+      computeLegalMoves(square)
+      ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
+      e.preventDefault() // prevent default touch scroll during piece drag
+    } else {
+      // Non-own piece: tap only (select or deselect)
+      handleSquareTap(square)
+    }
+  }
+
+  function handlePointerMove(e: PointerEvent): void {
+    if (!dragging) return
+    dragPos = { x: e.clientX, y: e.clientY }
+  }
+
+  function handlePointerUp(e: PointerEvent): void {
+    if (!dragging) return
+
+    const dx = e.clientX - dragging.startX
+    const dy = e.clientY - dragging.startY
+    const distance = Math.sqrt(dx * dx + dy * dy)
+
+    if (distance < 5) {
+      // Treat as tap: piece is already selected (done in pointerdown), do nothing extra
+      dragging = null
+      dragPos = null
+      return
+    }
+
+    // Compute target square from pointer position
+    if (boardEl) {
+      const rect = boardEl.getBoundingClientRect()
+      const squareSize = rect.width / 8
+      let col = Math.floor((e.clientX - rect.left) / squareSize)
+      let row = Math.floor((e.clientY - rect.top) / squareSize)
+      col = Math.max(0, Math.min(7, col))
+      row = Math.max(0, Math.min(7, row))
+
+      // Convert grid col/row to algebraic notation, respecting board orientation
+      const file = orientation === 'white' ? col : 7 - col
+      const rank = orientation === 'white' ? 7 - row : row
+      const targetSquare = String.fromCharCode(97 + file) + (rank + 1)
+
+      if (legalMoves.has(targetSquare)) {
+        const uci = legalMoves.get(targetSquare)!
+        const destRankIdx = 8 - parseInt(targetSquare[1], 10)
+        const destFileIdx = targetSquare.charCodeAt(0) - 'a'.charCodeAt(0)
+        const isCaptureDrag = board[destRankIdx]?.[destFileIdx] != null
+        onSoundEvent?.(isCaptureDrag ? 'capture' : 'move')
+        selectedSquare = null
+        legalMoves = new Map()
+        capturableSquares = new Set()
+        dragging = null
+        dragPos = null
+        onmove(uci)
+        return
+      }
+    }
+
+    // Dropped on invalid square — deselect
+    selectedSquare = null
+    legalMoves = new Map()
+    capturableSquares = new Set()
+    dragging = null
+    dragPos = null
+  }
+
+  function handleBoardPointerLeave(): void {
+    if (dragging) {
+      // Dropped off board — deselect
+      selectedSquare = null
+      legalMoves = new Map()
+      capturableSquares = new Set()
+      dragging = null
+      dragPos = null
+    }
+  }
+
   // Last-move animation trigger
   let lastMovePrev = $state<{ from: string; to: string } | undefined>(undefined)
   let animatingSquare = $state<string | null>(null)
@@ -330,7 +508,12 @@
 <!-- ============================================================ -->
 
 <div class="chess-board-container" role="grid" aria-label="Chess board">
-  <div class="chess-board" role="presentation">
+  <div class="chess-board" role="presentation"
+    bind:this={boardEl}
+    onpointermove={handlePointerMove}
+    onpointerup={handlePointerUp}
+    onpointerleave={handleBoardPointerLeave}
+  >
     {#each orderedSquares as { rankIdx, fileIdx, square, isLight } (square)}
       {@const piece = board[rankIdx]?.[fileIdx] ?? null}
       {@const isSelected = square === selectedSquare}
@@ -347,13 +530,14 @@
         class:chess-square--capture={isLegalDest && isCapture}
         class:chess-square--disabled={disabled}
         class:chess-square--animating={isAnimating}
-        style="background-color: {bgColor}; {overlayStyle}"
         role="gridcell"
         aria-label="{square}{piece ? ` ${piece.color === 'w' ? 'white' : 'black'} ${piece.piece}` : ''}"
         aria-selected={isSelected}
         aria-disabled={disabled}
         onclick={() => handleSquareTap(square)}
+        onpointerdown={(e) => handlePointerDown(e, square)}
         tabindex={disabled ? -1 : 0}
+        style="background-color: {bgColor}; {overlayStyle}{dragging?.square === square ? '; opacity: 0.4' : ''}"
       >
         <!-- Rank label: shown on left edge of each rank (first file per row) -->
         {#if isFirstFileInRow(fileIdx)}
@@ -394,7 +578,36 @@
         {/if}
       </button>
     {/each}
+
+    <!-- Floating drag piece — follows pointer during drag, fixed position -->
+    {#if dragging && dragPos}
+      <img
+        class="chess-drag-piece"
+        src="/assets/chess/pieces/{dragging.piece.color}{dragging.piece.piece}.svg"
+        alt=""
+        aria-hidden="true"
+        style="left: {dragPos.x}px; top: {dragPos.y}px;"
+      />
+    {/if}
   </div>
+
+  {#if showNotationInput}
+    <div class="notation-input-container">
+      <input
+        bind:this={inputEl}
+        type="text"
+        class="notation-input"
+        class:notation-error={notationError}
+        bind:value={notationInput}
+        placeholder="Type move (e.g. Nf3)"
+        disabled={disabled}
+        onkeydown={(e) => { if (e.key === 'Enter') handleNotationSubmit(); if (e.key === 'Escape') { notationInput = ''; notationError = null } }}
+      />
+      {#if notationError}
+        <span class="notation-error-text">{notationError}</span>
+      {/if}
+    </div>
+  {/if}
 </div>
 
 <!-- ============================================================ -->
@@ -405,20 +618,25 @@
   .chess-board-container {
     width: 100%;
     max-width: calc(400px * var(--layout-scale, 1));
-    aspect-ratio: 1;
+    aspect-ratio: unset;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .chess-board {
+    width: 100%;
+    max-width: calc(400px * var(--layout-scale, 1));
+    aspect-ratio: 1;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
     border: calc(2px * var(--layout-scale, 1)) solid rgba(0, 0, 0, 0.6);
     border-radius: calc(2px * var(--layout-scale, 1));
     overflow: hidden;
     box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.5);
-  }
-
-  .chess-board {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    width: 100%;
-    height: 100%;
   }
 
   .chess-square {
@@ -517,4 +735,67 @@
   }
 
   /* .chess-square--animating: piece image handles animation; square itself stays stable */
+
+  /* ---- Algebraic notation input (desktop/landscape) ---- */
+
+  .notation-input-container {
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    width: 100%;
+    max-width: calc(400px * var(--layout-scale, 1));
+    margin-top: calc(4px * var(--layout-scale, 1));
+  }
+
+  .notation-input {
+    flex: 1;
+    font-family: monospace;
+    font-size: calc(14px * var(--text-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: calc(4px * var(--layout-scale, 1));
+    color: var(--text-primary, #e2e8f0);
+    outline: none;
+    transition: border-color 150ms;
+  }
+
+  .notation-input:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .notation-input.notation-error {
+    border-color: #ef4444;
+    animation: shake 200ms;
+  }
+
+  .notation-error-text {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #ef4444;
+    white-space: nowrap;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(calc(-4px * var(--layout-scale, 1))); }
+    75% { transform: translateX(calc(4px * var(--layout-scale, 1))); }
+  }
+
+  /* ---- Drag piece — floats with the pointer ---- */
+
+  .chess-drag-piece {
+    position: fixed;
+    /* Square size is board-width / 8. Board max-width is 400px * scale, but actual size
+       may vary — use a matching size with slight scale-up for grab feel. */
+    width: calc(52px * var(--layout-scale, 1));
+    height: calc(52px * var(--layout-scale, 1));
+    /* Center on pointer */
+    transform: translate(-50%, -50%) scale(1.15);
+    pointer-events: none;
+    z-index: 100;
+    image-rendering: auto;
+    filter: drop-shadow(0 calc(4px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.5));
+    /* Prevent layout interference */
+    will-change: transform;
+  }
 </style>

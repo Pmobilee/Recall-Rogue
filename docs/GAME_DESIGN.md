@@ -3335,7 +3335,9 @@ The user toggles EPIC/QUIET via `MusicWidget.svelte`. Stings fire from `musicSer
 
 ### SFX Asset Sources
 
-229 CC0 SFX files sourced from OpenGameArt and Kenney.nl are now in `public/assets/audio/sfx/` organised by folder (combat, status, quiz, turn, surge, relic, encounter, map, hub, shop, rest, reward, mystery, run, ui, reveal, mastery, keeper, transition, tutorial, progression, legacy). Synthesis fallbacks remain for every SoundName — the Sonniss GDC 2026 Bundle path (originally planned in AR-228) was superseded by this CC0 sourcing pass.
+229 CC0 SFX files sourced from OpenGameArt and Kenney.nl are now in `public/assets/audio/sfx/` organised by folder (combat, status, quiz, turn, surge, relic, encounter, map, hub, shop, rest, reward, mystery, run, ui, reveal, mastery, keeper, transition, tutorial, progression, legacy, chess). Synthesis fallbacks remain for every SoundName — the Sonniss GDC 2026 Bundle path (originally planned in AR-228) was superseded by this CC0 sourcing pass.
+
+Four chess-specific SoundNames were added: `chess_move` (wooden click, lowpass noise 800 Hz, 80 ms), `chess_capture` (deeper thud, lowpass 400 Hz, 120 ms), `chess_check` (rising ding, sine sweep 800→1200 Hz, 150 ms), `chess_checkmate` (triumphant chord, C5+E5+G5 sines, 300 ms). All are synthesized via Web Audio API with `.m4a` file slots reserved for future asset sourcing.
 
 ### Key Sound Design Principles
 

@@ -295,6 +295,21 @@ When `segments` is empty (un-baked fact or CardExpanded), `fallbackText` is spli
 
 `DeckFact` (sentenceFurigana/Romaji/Translation/grammarPointLabel) → `NonCombatQuizQuestion` (forwarded by `selectNonCombatStudyQuestion` and `selectNonCombatCustomDeckQuestion`) → `QuizQuestion` (forwarded in both study + custom_deck branches of `generateStudyQuestions` in `gameFlowController.ts`) → `StudyQuizOverlay` via `questions` prop.
 
+### StudyQuizOverlay Chess Puzzle Integration (2026-04-10)
+
+`StudyQuizOverlay.svelte` supports chess puzzle questions via `quizResponseMode === 'chess_move'`:
+
+- Detects chess questions via `currentQuestion.quizResponseMode === 'chess_move'` AND `fenPosition` + `solutionMoves` present
+- Builds `chessContext` via `getPlayerContext(fenPosition, solutionMoves)` in a `$effect` (reacts to question changes)
+- Renders `<ChessBoard>` instead of answer buttons when `chessContext !== null`
+- `handleChessMove(uci)` grades via `gradeChessMove()`, updates Elo via `updateChessElo()` if `lichessRating` set, then calls `selectAnswer()` after delay
+- Falls back to standard MCQ if `getPlayerContext()` throws (invalid puzzle data)
+- `showNotationInput={$isLandscape}` passed to ChessBoard — desktop-only notation input
+
+**Chess data pipeline for study mode:**
+
+`DeckFact` (fenPosition/solutionMoves/lichessRating/quizResponseMode) → `NonCombatQuizQuestion` (forwarded in both selectors) → `QuizQuestion` (forwarded in study + custom_deck branches of `bossQuizPhase.generateQuizPhaseQuestions`) → `StudyQuizOverlay` via `questions` prop.
+
 ---
 
 ## Typing Mode (Always Write Answers)
@@ -503,25 +518,80 @@ The `chess_tactic` quiz mode renders an interactive chessboard instead of a text
 | Field | Type | Description |
 |-------|------|-------------|
 | `fenPosition` | `string` | FEN position string for the puzzle starting state |
-| `solutionMoves` | `string[]` | Acceptable first moves in UCI notation (e.g. `[e2e4, d2d4]`). Only the first move is graded — puzzles with one solution are typical |
+| `solutionMoves` | `string[]` | Lichess puzzle move array in UCI notation. Index 0 = opponent setup move, index 1 = player's first correct response, index 2 = opponent response (multi-move), index 3 = player's second move, etc. Player moves at odd indices, opponent at even indices ≥ 2. |
 | `tacticTheme` | `string` | Tactic category from Lichess (e.g. `fork`, `pin`, `mateIn2`). Maps to `chainThemeId` |
 | `lichessRating` | `number` | Lichess Elo rating for the puzzle (600–3000). Used for adaptive selection and Elo updates |
 | `quizMode` | `'chess_tactic'` | Triggers board rendering path in quiz overlay |
 
 ### Grading (`chessGrader.ts`)
 
-- `parseFEN(fen)` — extracts board position, side to move, castling rights
-- `getLegalMoves(fen)` — enumerates all legal moves for the side to move (used for highlighting)
-- `gradeChessMove(selectedUCI, fact)` — returns `correct: boolean` by comparing against `fact.solutionMoves`
-- `uciToSAN(uci, fen)` — converts UCI notation to Standard Algebraic Notation for display in result feedback
+- `setupPuzzlePosition(baseFen, setupUCI)` — applies the setup move to reach the puzzle position
+- `getPlayerContext(baseFen, solutionMoves)` — returns `PlayerContext` with full multi-move sequence
+- `getLegalMovesForSquare(fen, square)` — enumerates legal moves from a square (used for highlighting)
+- `gradeChessMove(playerUCI, solutionUCI)` — returns `true` if the player's UCI move matches the expected solution
+- `uciToSan(fen, uci)` — converts UCI notation to Standard Algebraic Notation for result feedback
+- `applyMove(fen, moveUCI)` — applies a move to a FEN and returns the new FEN (for multi-move UI updates)
+- `getOpponentResponse(solutionMoves, playerMoveIndex)` — returns the opponent's response UCI for a given player-move step, or `null` if there is none (last move in sequence)
+
+### Multi-Move Puzzles
+
+`PlayerContext` supports puzzles with multiple player moves (e.g. 4-move or 6-move tactics):
+
+```typescript
+interface PlayerContext {
+  playerFen: string;         // FEN after setup move — what the player sees first
+  solutionUCI: string;       // Player's first correct move (shorthand)
+  orientation: 'white' | 'black';
+  setupMove: { from: string; to: string };
+  baseFen: string;           // Original FEN before setup (for animation)
+  totalPlayerMoves: number;  // 1 for 2-move, 2 for 4-move, 3 for 6-move, etc.
+  moveSequence: Array<{ fen: string; solutionUCI: string }>;
+  // moveSequence[0] = first player move (fen = playerFen, solutionUCI = first correct move)
+  // moveSequence[1] = second player move (fen = FEN after opp response 1)
+  // etc.
+}
+```
+
+The UI wires through `moveSequence` to present each board state in turn. After the player makes a correct move, the opponent's response (from `getOpponentResponse()`) is animated on the board, then the next entry in `moveSequence` is activated. Single-move puzzles are fully backward-compatible: `totalPlayerMoves = 1`, `moveSequence` has 1 entry.
 
 ### Timer
 
-Chess puzzles use a `CHESS_TIMER_MULTIPLIER = 2.0×` — the base floor timer is doubled to give players adequate time for tactical calculation. The timer is a speed-bonus timer only, not a hard deadline.
+Chess puzzles use `BALANCE.CHESS_TIMER_MULTIPLIER = 2.0` (defined in `src/data/balance.ts`). The base floor timer is multiplied by this constant in `effectiveTimerSeconds` inside `CardCombatOverlay.svelte`, applied whenever `committedQuizData.quizResponseMode === 'chess_move'`. This gives 2x the normal time for board reading + tactical analysis. The timer is a speed-bonus timer only, not a hard deadline.
 
 ### Piece Assets
 
 Piece sprites are at `/assets/chess/pieces/` — one PNG per piece type and color (e.g. `wp.png` for white pawn, `bk.png` for black king).
+
+### Chess Hint System (2026-04-10)
+
+When a player uses a hint during a chess puzzle, the hint intercept logic in `CardCombatOverlay.svelte` detects `quizResponseMode === 'chess_move'` and increments `chessHintLevel` (capped at 2) instead of doing normal MC answer elimination:
+
+- **Hint level 1:** Highlights the from-square (piece to move) in green on the board
+- **Hint level 2:** Highlights both from-square and to-square in green
+
+`chessHintLevel` is a `$state` in `CardCombatOverlay` and is reset to 0 when a new quiz starts (in `resetCardFlow()`). It is passed down as the `chessHintLevel` prop to `CardExpanded`, which derives `chessHighlightSquares` via `chessContext.solutionUCI` substring extraction and passes it to `ChessBoard.highlightSquares`.
+
+The hint still calls `onusehint()` to decrement `hintsRemaining` in the game state (via `encounterBridge.handleUseHint()`).
+
+Handler: `handleUseHintIntercepted()` in `CardCombatOverlay.svelte`.
+
+### Drag-and-Drop (2026-04-10)
+
+`ChessBoard.svelte` supports pointer-based drag alongside the existing tap-tap interaction:
+
+- **Tap-tap (unchanged):** Tap piece to select → tap destination to move
+- **Drag:** Press and hold piece → drag to destination → release to move
+
+The 5px movement threshold distinguishes a tap from a drag: if the pointer moves less than 5px between `pointerdown` and `pointerup`, it is treated as a tap (piece is already selected from `pointerdown`). If it moves more, the target square is computed from the final pointer position relative to the board bounding rect.
+
+Key implementation details:
+- `boardEl: HTMLDivElement` is bound to `.chess-board` via `bind:this` for bounding rect calculations
+- The dragged source square gets `opacity: 0.4` via inline style to indicate the piece is in flight
+- A floating `.chess-drag-piece` `<img>` is rendered at `position: fixed` following `dragPos` (screen coords), with `transform: translate(-50%, -50%) scale(1.15)` and `pointer-events: none`
+- Legal move dots remain visible during drag for drop-zone feedback
+- Auto-promotion to queen when dragging a pawn to the last rank
+- `pointerleave` on the board cancels an in-progress drag (deselects)
+- `setPointerCapture` ensures the `pointermove`/`pointerup` events are received even when dragging outside the square button
 
 ---
 

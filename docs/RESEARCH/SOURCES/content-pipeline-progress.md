@@ -230,3 +230,26 @@ To add more facts to an existing domain:
 | Korean definitions are explanatory | ✅ FIXED (AR-45) | Was: ~90% of Korean vocab | 8,245 NIKL definitions rewritten to concise 1-3 word translations via Haiku batch. Median 59→10 chars. |
 | French/German/etc verbose definitions | ✅ FIXED (AR-45) | Was: 26-34% of EU vocab | Parentheticals stripped, answers capped at 45 chars. 21,887 facts normalized. |
 | Answer length exploit (guess by longest/shortest) | ✅ FIXED (AR-45) | All 8 languages | Runtime vocabDistractorService now filters by answer length ±2.5x. Audit: 1/80 issues (from 24/80). |
+
+---
+
+## TODO-TATOEBA-AUDIT — Retroactive Tatoeba Audit (2026-04-10)
+
+**Context:** An audit of `tatoeba:N` sourceRefs in shipped grammar decks found 92% (466/507) were fabricated — sub-agents producing sequential ID blocks that do not correspond to real Tatoeba sentences. A corpus infrastructure was built and a remap pass was applied to all existing Spanish grammar decks and WIP batch files. See `docs/content/deck-system.md` — "Tatoeba Citation" section — for the full corpus flow, and `docs/gotchas.md` 2026-04-10 entry for the root cause analysis.
+
+### Already Completed (2026-04-10)
+
+- **Spanish A2 grammar** (`data/decks/spanish_a2_grammar.json`) — 507 combined refs across A2/B1/B2; 92% fabricated. Pass result: 36 remapped to real IDs, 469 stripped to `sourceRef: "llm_authored"`.
+- **Spanish B1 grammar** (`data/decks/spanish_b1_grammar.json`) — included in combined count above; same remap pass.
+- **Spanish B2 grammar** (`data/decks/spanish_b2_grammar.json`) — included in combined count above; same remap pass.
+- **Spanish A1 grammar** (`data/decks/spanish_a1_grammar.json`) — 16 refs (mostly hand-curated). Pass result: 4 remapped to real IDs, 12 stripped to `sourceRef: "llm_authored"`.
+- **WIP batches** (`data/decks/_wip/a2_batch*.json`, `b1_batch*.json`, `b2_batch*.json`) — ~969 total refs across all WIP files; remapped/stripped in same pass.
+
+### Still To Do When Work Resumes
+
+- [ ] **Spanish C1 grammar deck** (planned, not yet built) — must author facts from `data/_corpora/tatoeba/spa_c1_pool.tsv` from day one; never fabricate IDs. Run `node scripts/tatoeba/build-cefr-corpus.mjs --lang spa` to generate the C1/C2 pool TSVs before starting.
+- [ ] **Spanish C2 grammar deck** (planned, not yet built) — same requirement as C1.
+- [ ] **French A1–B2 grammar decks** (in progress) — French corpus (`data/_corpora/tatoeba/fra_en_pairs.tsv`, 371K rows) is already built. All new French grammar facts must use `node scripts/tatoeba/audit-deck-ids.mjs --lang fra` before shipping.
+- [ ] **German, Italian, and other future language grammar decks** — run `node scripts/tatoeba/build-cefr-corpus.mjs --lang <code>` to build corpus before starting any grammar deck generation.
+- [ ] **Audit non-grammar curated decks** — vocabulary decks may also cite `tatoeba:N` in sourceRef. Run: `node scripts/tatoeba/audit-deck-ids.mjs --lang <code> --glob 'data/decks/<pattern>.json'` to check. If fabricated refs are found, run the remap script.
+- [ ] **Consider second-pass sentence replacement** — decks with large numbers of `llm_authored` sentences could be improved by replacing them with real corpus sentences on a second generation pass. This is optional but would restore full Tatoeba provenance. Prioritize if a C1/C2 deck ships with >30% `llm_authored` refs.

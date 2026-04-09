@@ -3,6 +3,9 @@
   import { isLandscape } from '../../stores/layoutStore'
   import GrammarSentenceFurigana from './GrammarSentenceFurigana.svelte'
   import { deckOptions } from '../../services/deckOptionsService'
+  import ChessBoard from './ChessBoard.svelte'
+  import { getPlayerContext, gradeChessMove, isInCheck } from '../../services/chessGrader'
+  import { updateChessElo } from '../../services/chessEloService'
 
   interface Props {
     questions: QuizQuestion[]
@@ -36,6 +39,65 @@
   /** Reactively read romaji toggle from deckOptions store. */
   const showRomaji = $derived.by(() => ($deckOptions as any)?.ja?.romaji ?? false)
 
+  // ---------------------------------------------------------------------------
+  // Chess puzzle state
+  // ---------------------------------------------------------------------------
+
+  type PlayerContext = ReturnType<typeof getPlayerContext>
+
+  let chessContext = $state<PlayerContext | null>(null)
+  let chessLastMove = $state<{ from: string; to: string } | undefined>(undefined)
+  let chessDisabled = $state(false)
+  let chessCheckState = $state(false)
+
+  /** Rebuild chess context whenever the question changes to a chess_move type. */
+  $effect(() => {
+    const q = currentQuestion
+    if (q?.quizResponseMode === 'chess_move' && q.fenPosition && q.solutionMoves && q.solutionMoves.length >= 2) {
+      try {
+        const ctx = getPlayerContext(q.fenPosition, q.solutionMoves)
+        chessContext = ctx
+        chessLastMove = ctx.setupMove
+        chessDisabled = false
+        chessCheckState = isInCheck(ctx.playerFen)
+      } catch {
+        // Invalid puzzle data — fall back to choice mode
+        chessContext = null
+      }
+    } else {
+      chessContext = null
+    }
+  })
+
+  /**
+   * Handle a chess move from the ChessBoard component.
+   * Grades against the solution UCI, updates Elo, then fires selectAnswer after a brief delay.
+   */
+  function handleChessMove(uci: string): void {
+    if (!chessContext || !currentQuestion) return
+    const isCorrect = gradeChessMove(uci, chessContext.solutionUCI)
+    chessDisabled = true
+    chessLastMove = { from: uci.substring(0, 2), to: uci.substring(2, 4) }
+
+    if (currentQuestion.lichessRating) {
+      updateChessElo(currentQuestion.lichessRating, isCorrect)
+    }
+
+    setTimeout(() => {
+      if (isCorrect) {
+        selectAnswer(currentQuestion!.correctAnswer)
+      } else {
+        // Pick any wrong answer to trigger the wrong-answer flow
+        const wrongAnswer = currentQuestion!.answers.find(a => a !== currentQuestion!.correctAnswer)
+        if (wrongAnswer) selectAnswer(wrongAnswer)
+      }
+    }, isCorrect ? 400 : 800)
+  }
+
+  // ---------------------------------------------------------------------------
+  // Answer flow
+  // ---------------------------------------------------------------------------
+
   function selectAnswer(answer: string): void {
     if (showFeedback) return
     selectedAnswer = answer
@@ -49,6 +111,8 @@
       if (currentIndex < questions.length - 1) {
         selectedAnswer = null
         showFeedback = false
+        chessContext = null
+        chessDisabled = false
         currentIndex++
       } else {
         done = true
@@ -109,7 +173,19 @@
         {/if}
 
         {#key currentIndex}
-        {#if currentQuestion.quizMode === 'image_answers' && currentQuestion.answerImagePaths?.length}
+        {#if currentQuestion.quizResponseMode === 'chess_move' && chessContext}
+          <div class="chess-puzzle-container">
+            <ChessBoard
+              fen={chessContext.playerFen}
+              orientation={chessContext.orientation}
+              onmove={handleChessMove}
+              disabled={chessDisabled || selectedAnswer !== null}
+              lastMove={chessLastMove}
+              isInCheck={chessCheckState}
+              showNotationInput={$isLandscape}
+            />
+          </div>
+        {:else if currentQuestion.quizMode === 'image_answers' && currentQuestion.answerImagePaths?.length}
           <div class="answers-image-grid">
             {#each currentQuestion.answers as answer, i}
               <button
@@ -308,6 +384,16 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: calc(4px * var(--layout-scale, 1));
     box-shadow: 0 calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
+  }
+
+  /* Chess puzzle container */
+  .chess-puzzle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    width: 100%;
+    padding: calc(4px * var(--layout-scale, 1));
   }
 
   .answers-image-grid {
