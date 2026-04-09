@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-09 (balance pass: speed bonus disabled, enrage raised, enemy HP +50%, Act 1 damage cap 14→22)
+> **Last verified:** 2026-04-09 (Phase 5: Transmute permanent deck changes; Phase 6: Canary v2 HP scaling added)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`
 
 ---
@@ -77,6 +77,23 @@ A brief visual beat fires at each turn boundary to signal the phase change and g
 **Reduce-motion / turbo-mode:** All tweens and the DOM event are suppressed. The overlay is still destroyed if it exists.
 
 **State:** The transient overlay is held in `CombatScene._turnOverlay` (private field, cleaned up in `onShutdown()`).
+
+## Turn-End Hand Hiding
+
+During the enemy-turn animation delay, `encounterBridge.handleEndTurn()` publishes a modified `preAnimTurnState` where `deck.hand` is set to `[]`. This hides the player's cards visually while enemy animations play, preventing interaction with stale hand state. The real hand is restored when `activeTurnState` is updated after the delay completes.
+
+```typescript
+// encounterBridge.ts
+const preAnimTurnState = freshTurnState(result.turnState);
+preAnimTurnState.playerState = { ...preAnimTurnState.playerState, hp: previousHp };
+preAnimTurnState.deck = { ...preAnimTurnState.deck, hand: [] }; // hide cards during enemy anim
+activeTurnState.set(preAnimTurnState);
+// ... 2s animation delay ...
+activeTurnState.set(freshTurnState(result.turnState)); // restore real state with real hand
+```
+
+The empty-hand trick is applied ONLY to the pre-animation state snapshot. It does not affect the draw pile, discard pile, or any other deck state — only the `hand` array shown in the UI.
+
 
 ---
 
@@ -166,6 +183,14 @@ When a player picks a new card as a reward mid-run, `encounterBridge.addRewardCa
 
 - Deck avg < 1 → new card starts at L0 (early game, no catch-up)
 - Deck avg ≥ 1 → starting level = `floor(rand(0.5–1.5) × avgMastery)`, capped at mechanic's `maxLevel`
+
+**Transmute (permanent, 2026-04-09):** The `transmute` mechanic permanently replaces a card in the run deck. `resolveTransmutePick()` in `turnManager.ts` removes the source card and inserts the transformed card with:
+- `factId` kept from the source card (fact binding preserved)
+- New `id: 'transmute_' + random` (independent identity)
+- Catch-up mastery via `computeCatchUpMastery()` (same as reward cards)
+- No `isTransmuted` flag — transformed cards are NOT reverted at encounter end
+
+`revertTransmutedCards()` still runs at encounter end but only affects cards with `isTransmuted: true && originalCard` set (conjure, mimic) — not transmuted cards.
 
 See `docs/mechanics/cards.md` — Catch-Up Mastery section for full details.
 
@@ -584,3 +609,42 @@ Tag implementations in `cardEffectResolver.ts` and `turnManager.ts`. All tags ar
 ### `triggerBurn` Signature Change
 
 `triggerBurn(effects: StatusEffect[], skipHalving = false)` — new optional second parameter. When `true` (set by `twin_burn_chain`), Burn stacks are not halved after the tick. All existing callers pass no second argument and retain default behavior (halving).
+
+
+---
+
+## Canary Adaptive Difficulty — v2 HP Scaling (2026-04-09)
+
+The Canary system (`src/services/canaryService.ts`) now modulates **enemy HP** in addition to enemy damage, giving struggling players easier enemies to defeat and challenging experts with beefier foes.
+
+### CanaryState Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `enemyDamageMultiplier` | number | Applied to incoming player damage per attack |
+| `enemyHpMultiplier` | number | **NEW** — Applied at enemy creation via `createEnemy()` |
+
+### HP Multiplier Table
+
+| Mode | Trigger | `enemyHpMultiplier` | `enemyDamageMultiplier` |
+|------|---------|---------------------|------------------------|
+| `neutral` | Default | 1.0 | 1.0 |
+| `assist` | 3+ wrong this floor | 0.9 (`CANARY_ASSIST_ENEMY_HP_MULT`) | 0.80 |
+| `deep_assist` | 5+ wrong this floor | 0.8 (`CANARY_DEEP_ASSIST_ENEMY_HP_MULT`) | 0.65 |
+| `challenge` | 5+ correct streak | 1.2 (`CANARY_CHALLENGE_ENEMY_HP_MULT_5`) | 1.1 |
+
+**Note:** The `CANARY_CHALLENGE_ENEMY_HP_MULT_3` constant (1.1) is reserved for a future "entry challenge" sub-tier (correct streak 3–4) that hasn't been implemented yet — the current threshold check always uses the `_5` constant when in challenge mode.
+
+### Wiring
+
+`encounterBridge.ts` multiplies `run.canary.enemyHpMultiplier` into the `enemyHpMultiplier` variable (alongside ascension modifiers) **before** calling `createEnemy()`:
+
+```typescript
+let enemyHpMultiplier = (
+  ascensionModifiers.enemyHpMultiplier *
+  (ascensionTemplate.category === 'boss' ? ascensionModifiers.bossHpMultiplier : 1) *
+  run.canary.enemyHpMultiplier   // ← Canary v2
+);
+```
+
+Enemy damage multiplier is threaded through `TurnState.canaryEnemyDamageMultiplier` (unchanged from v1) — applied per incoming attack in `takeDamage()`.

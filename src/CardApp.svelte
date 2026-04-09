@@ -519,14 +519,15 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     }
   }
 
+  // TODO(multiplayer): Replace placeholder display names with real Steam usernames when Steam integration lands. See docs/roadmap/AR-MULTIPLAYER.md.
   function handleCreateLobby(mode: MultiplayerMode): void {
-    const lobby = createLobby(localPlayerId, 'Player', mode)
+    const lobby = createLobby(localPlayerId, 'Player 1', mode)
     currentLobby = lobby
     transitionScreen('multiplayerLobby')
   }
 
   function handleJoinLobby(code: string): void {
-    const lobby = joinLobby(code, localPlayerId, 'Player')
+    const lobby = joinLobby(code, localPlayerId, 'Player 2')
     currentLobby = lobby
     transitionScreen('multiplayerLobby')
   }
@@ -603,16 +604,19 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       void commitMapNodeSelection(nodeId)
     })
     const unsubPartner = onPartnerStateUpdate((states) => {
-      // Pipe the first available partner's HP into opponentProgress so the
-      // existing MultiplayerHUD renders it during co-op combat.
+      // Pipe the first available partner's HP (and score/accuracy in co-op) into
+      // opponentProgress so the existing MultiplayerHUD renders it during co-op combat.
       const ids = Object.keys(states)
       if (ids.length === 0) return
-      const partner: PartnerState = states[ids[0]]
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const partner = states[ids[0]] as PartnerState & { score?: number; accuracy?: number }
       opponentProgress = {
         ...opponentProgress,
         playerId: partner.playerId,
         playerHp: partner.hp,
         playerMaxHp: partner.maxHp,
+        score: partner.score ?? opponentProgress.score,
+        accuracy: partner.accuracy ?? opponentProgress.accuracy,
       }
     })
     return () => {
@@ -1504,6 +1508,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       <MultiplayerHUD
         progress={opponentProgress}
         displayName={opponentDisplayName}
+        mode={currentLobby?.mode ?? 'race'}
       />
     {/if}
     {#if combatTransitionActive}

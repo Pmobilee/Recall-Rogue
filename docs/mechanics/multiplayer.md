@@ -514,3 +514,77 @@ These three systems are designed to work together as a coherent co-op combat lay
 3. Split damage keeps AoE from feeling punishing at higher player counts
 
 None of these require changes to the quiz or card systems — they are purely enemy-side targeting upgrades and one new status effect (taunt).
+
+## Co-op Turn Synchronization
+
+`src/services/multiplayerCoopSync.ts` manages the turn-end barrier between co-op players.
+
+### PartnerState interface
+
+```typescript
+export interface PartnerState {
+  playerId: string;
+  hp: number;
+  maxHp: number;
+  block: number;
+  score?: number;    // Current run score (computeRaceScore result), broadcast at turn-end
+  accuracy?: number; // Answer accuracy 0-1 (factsCorrect/factsAnswered), broadcast at turn-end
+}
+```
+
+`score` and `accuracy` are included in the `mp:coop:partner_state` broadcast so the partner's HUD can show their performance stats without a separate broadcast channel.
+
+### awaitCoopTurnEnd return type
+
+`awaitCoopTurnEnd(timeoutMs?)` now returns `Promise<'completed' | 'cancelled'>` instead of `Promise<void>`. Callers MUST check the result:
+
+```typescript
+const result = await awaitCoopTurnEnd();
+if (result === 'cancelled') {
+  coopWaitingForPartner.set(false);
+  return; // Restore turn control — do not run enemy phase
+}
+```
+
+### cancelCoopTurnEnd
+
+```typescript
+export function cancelCoopTurnEnd(): void
+```
+
+Cancels a pending turn-end signal. Removes local signal from the set, broadcasts `mp:coop:turn_end_cancel` to peers (so they remove the local player from their signal set), and resolves the in-flight `awaitCoopTurnEnd()` promise with `'cancelled'`. No-op if no barrier is in flight.
+
+### isLocalTurnEndPending
+
+```typescript
+export function isLocalTurnEndPending(): boolean
+```
+
+Returns `true` when the local player has signaled turn-end and is waiting for consensus. Use this to conditionally show a "Cancel" button in the UI during the wait.
+
+### Message types added
+
+- `mp:coop:turn_end_cancel` — sent when local player cancels a pending turn-end signal. Receivers remove the sender from their `_turnEndSignals` set. Registered in `MultiplayerMessageType` union.
+
+### RNG determinism invariant
+
+Enemy intent rolls use a named fork `'enemyIntents'` of the run RNG via `getRunRng('enemyIntents')`. Enemy pool selection (boss/mini-boss/elite/common) uses fork `'enemyPool'`. Both fall back to `Math.random()` when no run RNG is active (tests, dev contexts).
+
+**Invariant:** Two co-op clients with the same `runSeed` will produce identical enemy intent sequences and identical enemy pool picks for the same encounter, because both use the same seeded fork. This is what makes client-side enemy simulation deterministic without a host-authoritative server.
+
+---
+
+## Known Placeholders (2026-04-09)
+
+### Player Display Names
+`createLobby()` is called with `'Player 1'` and `joinLobby()` with `'Player 2'` as placeholder display names in `CardApp.svelte`. These will be replaced with real Steam usernames when Steam integration lands. See `docs/roadmap/AR-MULTIPLAYER.md` for the planned integration point.
+
+---
+
+## Co-op Cancel UX (2026-04-09)
+
+When a player taps "End Turn" in co-op mode, `coopWaitingForPartner` becomes `true` and the End Turn button shows "WAITING…". The `.coop-waiting-banner` now contains a **Cancel** button (`data-testid="coop-cancel-btn"`):
+
+- Calls `cancelCoopTurnEnd()` from `multiplayerCoopSync` — sends `mp:coop:turn_end_cancel` to peers and resolves the local barrier promise with `'cancelled'`
+- Sets `coopWaitingForPartner` to `false` — restores End Turn button immediately
+- The banner has `pointer-events: auto` and `display: flex` to keep text + cancel button inline

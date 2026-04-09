@@ -2,16 +2,18 @@
      Race Mode opponent progress HUD — compact overlay panel, top-right corner.
      Expands on click to show full stats. Not wired into app flow yet. -->
 <script lang="ts">
-  import type { RaceProgress } from '../../data/multiplayerTypes'
+  import type { RaceProgress, MultiplayerMode } from '../../data/multiplayerTypes'
 
   interface Props {
     /** Race progress data for the opponent being displayed */
     progress: RaceProgress
     /** Opponent's display name */
     displayName: string
+    /** Multiplayer game mode — controls which stats are visible */
+    mode: MultiplayerMode
   }
 
-  let { progress, displayName }: Props = $props()
+  let { progress, displayName, mode }: Props = $props()
 
   /** Toggle expanded view */
   let expanded = $state(false)
@@ -115,11 +117,13 @@
         <span class="stat-value" aria-live="polite">{accuracyPct}%</span>
       </div>
 
-      <!-- Encounters Won -->
+      <!-- Encounters Won: only shown in race mode (coop doesn't track encounters won) -->
+      {#if mode === 'race'}
       <div class="stat-row">
         <span class="stat-label">Encounters</span>
         <span class="stat-value">{progress.encountersWon}</span>
       </div>
+      {/if}
 
       <!-- Status -->
       <div class="status-row" aria-live="polite">
@@ -142,7 +146,8 @@
     position: fixed;
     /* Sit just below the fog meter (which sits below the topbar). topbar = 4.5vh, fog ≈ 28px. */
     top: calc(var(--topbar-height, 4.5vh) + 36px * var(--layout-scale, 1));
-    right: calc(16px * var(--layout-scale, 1));
+    left: calc(16px * var(--layout-scale, 1));
+    right: auto;
     width: calc(260px * var(--layout-scale, 1));
     background: rgba(10, 12, 20, 0.82);
     border: 1px solid rgba(255, 255, 255, 0.1);

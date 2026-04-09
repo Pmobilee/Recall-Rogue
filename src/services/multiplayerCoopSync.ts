@@ -27,7 +27,7 @@ let _turnEndSignals: Set<string> = new Set();
 let _localPlayerId: string = '';
 
 /** Resolver for the current pending barrier promise (null if none in flight). */
-let _pendingBarrierResolve: (() => void) | null = null;
+let _pendingBarrierResolve: ((result: 'completed' | 'cancelled') => void) | null = null;
 
 /** Cleanup for transport listener. Null when not active. */
 let _cleanupListener: (() => void) | null = null;
@@ -43,13 +43,17 @@ export interface PartnerState {
   hp: number;
   maxHp: number;
   block: number;
+  /** Current run score for this player, updated at turn-end. */
+  score?: number;
+  /** Current answer accuracy (0–1) for this player, updated at turn-end. */
+  accuracy?: number;
 }
 
 // ── Lifecycle ────────────────────────────────────────────────────────────────
 
 /**
- * Activate co-op sync for the current run. Subscribes to `mp:coop:turn_end`
- * and `mp:coop:partner_state` messages.
+ * Activate co-op sync for the current run. Subscribes to `mp:coop:turn_end`,
+ * `mp:coop:turn_end_cancel`, and `mp:coop:partner_state` messages.
  */
 export function initCoopSync(localPlayerId: string): void {
   destroyCoopSync();
@@ -64,6 +68,13 @@ export function initCoopSync(localPlayerId: string): void {
     _turnEndSignals.add(playerId);
     _maybeReleaseBarrier();
   });
+  const offTurnEndCancel = transport.on('mp:coop:turn_end_cancel', (msg) => {
+    const { playerId } = msg.payload as { playerId: string };
+    if (!playerId) return;
+    // Remote player cancelled their turn-end signal — remove them from the set.
+    // The barrier will not release until they re-signal.
+    _turnEndSignals.delete(playerId);
+  });
   const offPartner = transport.on('mp:coop:partner_state', (msg) => {
     const state = msg.payload as unknown as PartnerState;
     if (!state?.playerId || state.playerId === _localPlayerId) return;
@@ -72,6 +83,7 @@ export function initCoopSync(localPlayerId: string): void {
   });
   _cleanupListener = () => {
     offTurnEnd();
+    offTurnEndCancel();
     offPartner();
   };
 }
@@ -84,7 +96,7 @@ export function destroyCoopSync(): void {
   }
   if (_pendingBarrierResolve) {
     // Release any in-flight barrier so callers don't hang on teardown.
-    _pendingBarrierResolve();
+    _pendingBarrierResolve('completed');
     _pendingBarrierResolve = null;
   }
   _turnEndSignals = new Set();
@@ -97,17 +109,18 @@ export function destroyCoopSync(): void {
 
 /**
  * Signal "I have ended my turn" to all players, then await consensus.
- * Resolves when every player in the lobby has signaled (or after `timeoutMs`).
+ * Resolves `'completed'` when every player in the lobby has signaled (or after `timeoutMs`).
+ * Resolves `'cancelled'` if the local player calls `cancelCoopTurnEnd()` before consensus.
  *
  * If no lobby exists or only the local player is connected, resolves immediately.
  */
-export function awaitCoopTurnEnd(timeoutMs = 30_000): Promise<void> {
+export function awaitCoopTurnEnd(timeoutMs = 30_000): Promise<'completed' | 'cancelled'> {
   const lobby = getCurrentLobby();
   const players = lobby?.players ?? [];
 
   // Solo or no lobby → no barrier needed.
   if (players.length <= 1 || !_localPlayerId) {
-    return Promise.resolve();
+    return Promise.resolve('completed');
   }
 
   // Mark self and broadcast.
@@ -118,31 +131,58 @@ export function awaitCoopTurnEnd(timeoutMs = 30_000): Promise<void> {
   // If we already have everyone (e.g. partner finished first), resolve fast.
   if (_allPlayersSignaled()) {
     _turnEndSignals = new Set();
-    return Promise.resolve();
+    return Promise.resolve('completed');
   }
 
   // Otherwise wait for the barrier with a safety timeout.
-  return new Promise<void>((resolve) => {
+  return new Promise<'completed' | 'cancelled'>((resolve) => {
     const timer = setTimeout(() => {
       console.warn('[multiplayerCoopSync] Turn-end barrier timeout — proceeding anyway');
       _pendingBarrierResolve = null;
       _turnEndSignals = new Set();
-      resolve();
+      resolve('completed');
     }, timeoutMs);
-    _pendingBarrierResolve = () => {
+    _pendingBarrierResolve = (result: 'completed' | 'cancelled') => {
       clearTimeout(timer);
       _pendingBarrierResolve = null;
       _turnEndSignals = new Set();
-      resolve();
+      resolve(result);
     };
   });
 }
 
 /**
- * Broadcast this player's current HP/maxHP/block so peers' HUDs can update.
+ * Cancel a pending turn-end signal. Removes local signal, broadcasts cancellation,
+ * and resolves the in-flight `awaitCoopTurnEnd()` promise with `'cancelled'` so
+ * the caller can restore turn control to the player.
+ *
+ * No-op if no barrier is in flight or no local player is set.
+ */
+export function cancelCoopTurnEnd(): void {
+  if (!_localPlayerId) return;
+  _turnEndSignals.delete(_localPlayerId);
+  const transport = getMultiplayerTransport();
+  transport.send('mp:coop:turn_end_cancel', { playerId: _localPlayerId });
+  if (_pendingBarrierResolve) {
+    const resolve = _pendingBarrierResolve;
+    _pendingBarrierResolve = null;
+    resolve('cancelled');
+  }
+}
+
+/**
+ * Returns true if the local player has signaled turn-end and is waiting for consensus.
+ * Use this to guard UI state (e.g. show "Cancel" button while waiting).
+ */
+export function isLocalTurnEndPending(): boolean {
+  return _pendingBarrierResolve !== null;
+}
+
+/**
+ * Broadcast this player's current HP/maxHP/block/score/accuracy so peers' HUDs can update.
  * Call after damage is applied at end of turn.
  */
-export function broadcastPartnerState(state: { hp: number; maxHp: number; block: number }): void {
+export function broadcastPartnerState(state: { hp: number; maxHp: number; block: number; score?: number; accuracy?: number }): void {
   if (!_localPlayerId) return;
   const transport = getMultiplayerTransport();
   transport.send('mp:coop:partner_state', {
@@ -150,6 +190,8 @@ export function broadcastPartnerState(state: { hp: number; maxHp: number; block:
     hp: state.hp,
     maxHp: state.maxHp,
     block: state.block,
+    ...(state.score !== undefined ? { score: state.score } : {}),
+    ...(state.accuracy !== undefined ? { accuracy: state.accuracy } : {}),
   });
 }
 
@@ -171,7 +213,7 @@ export function onPartnerStateUpdate(
 function _maybeReleaseBarrier(): void {
   if (!_pendingBarrierResolve) return;
   if (_allPlayersSignaled()) {
-    _pendingBarrierResolve();
+    _pendingBarrierResolve('completed');
   }
 }
 

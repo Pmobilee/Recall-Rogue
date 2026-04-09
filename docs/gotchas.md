@@ -1,3 +1,25 @@
+### 2026-04-09 — Math.random() broke co-op determinism for enemy intents and pool picks
+
+**What:** In co-op mode, two clients with the same run seed could produce different enemy intents and different enemy pool selections (boss/mini-boss/elite/common) on the same encounter. Replays were also non-deterministic.
+
+**Why:** `weightedRandomIntent()` in `enemyManager.ts` and the enemy pool selection block in `encounterBridge.ts` used `Math.random()` directly instead of the seeded run RNG. The `enemyVariance` fork was already seeded (a prior fix) but intent and pool selection were missed.
+
+**Fix:** Added named forks `'enemyIntents'` (in `weightedRandomIntent`) and `'enemyPool'` (in the encounterBridge pool selection block), both falling back to `Math.random()` when no run RNG is active.
+
+**Lesson:** Any `Math.random()` call that runs during a seeded run is a determinism bug waiting to cause co-op desyncs. Search for `Math.random()` before shipping any multiplayer feature.
+
+---
+
+### 2026-04-09 — Intent display value must mirror the real damage pipeline
+
+**What:** If a UI component computes enemy intent display damage using a different formula than the real `executeEnemyIntent()` pipeline, the displayed threat value will diverge from actual damage dealt — especially on floors 7+ where `getFloorDamageScaling()` applies.
+
+**Fix:** Created `src/services/intentDisplay.ts` with `computeIntentDisplayDamage(intent, enemy)` as the single source of truth. UI components MUST call this function rather than recomputing inline. The function applies: `intent.value * strengthMod * floorScaling * GLOBAL_ENEMY_DAMAGE_MULTIPLIER` — the exact same multipliers as `executeEnemyIntent()`.
+
+**Lesson:** Display formulas that recompute pipeline logic inline always drift. Extract to a shared pure function used by both the display code and the real pipeline, or at minimum document the formula as the canonical reference.
+
+---
+
 ### 2026-04-09 — multiplayerMapSync.destroyMapNodeSync wiped UI subscriptions
 
 **What:** In coop multiplayer, clicking a map node produced no pick badge on any

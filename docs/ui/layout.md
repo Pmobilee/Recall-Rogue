@@ -160,3 +160,13 @@ Requires `position: absolute` and explicit `width`/`height` on the element. Algo
 | `pointer: fine` | Mouse hover states enabled |
 
 Safari fixes: `min-height: 100dvh` (avoids 100vh miscalculation), `overscroll-behavior: none`.
+
+---
+
+## Multiplayer HUD Positioning (2026-04-09)
+
+`MultiplayerHUD.svelte` is positioned **top-left** during combat:
+- `left: calc(16px * var(--layout-scale, 1)); right: auto`
+- Sits below the fog meter: `top: calc(var(--topbar-height, 4.5vh) + 36px * var(--layout-scale, 1))`
+
+This was moved from top-right to avoid collision with the topbar controls (pause, settings, skip button).

@@ -53,18 +53,17 @@
 
 <style>
   .enemy-power-badges {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    left: auto;
-    transform: translateY(-50%);
+    position: fixed;
+    top: 22vh;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
     z-index: 10;
     display: flex;
     gap: calc(4px * var(--layout-scale, 1));
     flex-wrap: nowrap;
     align-items: center;
     pointer-events: auto;
-    margin-bottom: calc(8px * var(--layout-scale, 1));
   }
 
   .power-badge {

@@ -3,6 +3,7 @@
   import { onMount, onDestroy } from 'svelte'
   import { fade } from 'svelte/transition'
   import type { Card } from '../../data/card-types'
+  import type { EnemyInstance } from '../../data/enemies'
   import type { TurnState } from '../../services/turnManager'
   import { isAnyCardPlayable, resolveTransmutePick } from '../../services/turnManager'
   import { FLOOR_TIMER, MASTERY_MAX_LEVEL, MASTERY_BASE_DISTRACTORS, MASTERY_UPGRADED_DISTRACTORS } from '../../data/balance'
@@ -30,6 +31,7 @@
   import { getMaxRelicSlots, resolveChargeButtonState } from '../../services/relicEffectResolver'
   import { juiceManager } from '../../services/juiceManager'
   import { getCombatScene, consumeSoulJarCharge, handlePendingChoice, enemyDamageEvent, coopWaitingForPartner } from '../../services/encounterBridge'
+  import { cancelCoopTurnEnd } from '../../services/multiplayerCoopSync'
   import { factsDB } from '../../services/factsDB'
   import { getReviewStateByFactId, playerSave } from '../stores/playerData'
   import type { CombatScene } from '../../game/scenes/CombatScene'
@@ -76,6 +78,7 @@
   import { tick } from 'svelte'
   import { computeDamagePreview, type DamagePreviewContext, type DamagePreview } from '../../services/damagePreviewService'
   import { isVulnerable, getStrengthModifier } from '../../data/statusEffects'
+  import { computeIntentDisplayDamage } from '../../services/intentDisplay'
 
 
   interface Props {
@@ -631,6 +634,19 @@
     heal: 'Heal',
   }
 
+  /**
+   * Compute display damage for an enemy intent, using the shared intentDisplay service.
+   * Mirrors the exact formula used in enemyManager.executeEnemyIntent so the UI always
+   * shows the actual damage the player will take.
+   */
+  function displayDmg(base: number, enemy: EnemyInstance | null): number {
+    if (!enemy) return base
+    // Reuse the shared pure function so display and pipeline never drift.
+    // We pass a minimal intent stub since computeIntentDisplayDamage only reads .value.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return computeIntentDisplayDamage({ type: 'attack', value: base } as any, enemy)
+  }
+
   let intentDisplay = $derived.by(() => {
     if (!enemyIntent) return null
     const icon = INTENT_EMOJI[enemyIntent.type] ?? '❓'
@@ -642,10 +658,12 @@
 
     if (enemyIntent.type === 'multi_attack') {
       const hits = enemyIntent.hitCount ?? 2
-      return { icon, text: `${val}×${hits}`, type: enemyIntent.type, label, color, borderColor, telegraph }
+      const dmg = displayDmg(val, turnState?.enemy ?? null)
+      return { icon, text: `${dmg}×${hits}`, type: enemyIntent.type, label, color, borderColor, telegraph }
     }
     if (enemyIntent.type === 'attack') {
-      return { icon, text: `${val}`, type: enemyIntent.type, label, color, borderColor, telegraph }
+      const dmg = displayDmg(val, turnState?.enemy ?? null)
+      return { icon, text: `${dmg}`, type: enemyIntent.type, label, color, borderColor, telegraph }
     }
     if (enemyIntent.type === 'defend') {
       return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type, label, color, borderColor, telegraph }
@@ -670,11 +688,14 @@
     if (!enemyIntent) return 'Preparing...'
     const val = enemyIntent.value
     switch (enemyIntent.type) {
-      case 'attack':
-        return `Charging ${val} damage next turn`
+      case 'attack': {
+        const dmg = displayDmg(val, turnState?.enemy ?? null)
+        return `Attacking for ${dmg} damage`
+      }
       case 'multi_attack': {
         const hits = enemyIntent.hitCount ?? 2
-        return `Charging ${val} × ${hits} damage next turn`
+        const dmg = displayDmg(val, turnState?.enemy ?? null)
+        return `Attacking for ${dmg} × ${hits} hits`
       }
       case 'defend':
         return `Gains ${val} Block`
@@ -697,6 +718,13 @@
         return 'Preparing...'
     }
   })
+
+
+  /** Cancel co-op turn-end wait — unblocks local player immediately. */
+  function handleCoopCancel(): void {
+    cancelCoopTurnEnd()
+    coopWaitingForPartner.set(false)
+  }
 
   let selectedCard = $derived<Card | null>(
     selectedIndex !== null && handCards[selectedIndex] ? handCards[selectedIndex] : null,
@@ -2777,7 +2805,6 @@
     <!-- AP indicator: positioned right of End Turn button (portrait) -->
     <div class="player-ap-right" class:ap-active={apCurrent > 0} aria-label="Action Points">
       <span class="ap-num">{apCurrent}</span>
-      <span class="ap-label">AP</span>
     </div>
 
     <ChainCounter {isPerfectTurn} {chainLength} {chainType} {chainMultiplier} {activeChainColor} />
@@ -2822,6 +2849,12 @@
     {#if $coopWaitingForPartner}
       <div class="coop-waiting-banner" role="status" aria-live="polite">
         Waiting for partner to end turn…
+        <button
+          type="button"
+          class="coop-cancel-btn"
+          onclick={handleCoopCancel}
+          data-testid="coop-cancel-btn"
+        >Cancel</button>
       </div>
     {/if}
 
@@ -3372,14 +3405,14 @@
   .end-turn-btn {
     position: absolute;
     /* Shifted left to make room for the AP indicator on the far right. */
-    right: calc(70px * var(--layout-scale, 1));
+    right: calc(90px * var(--layout-scale, 1));
     left: auto;
     bottom: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
     width: auto;
     min-width: calc(110px * var(--layout-scale, 1));
     padding: 0 calc(20px * var(--layout-scale, 1));
     height: calc(48px * var(--layout-scale, 1));
-    background: #854d0e;
+    background: #b8860b;
     color: #fbbf24;
     border: calc(2px * var(--layout-scale, 1)) solid rgba(251, 191, 36, 0.4);
     border-radius: 10px;
@@ -3396,7 +3429,7 @@
   /* Co-op "waiting for partner" banner: small status pill above the End Turn button. */
   .coop-waiting-banner {
     position: absolute;
-    right: calc(70px * var(--layout-scale, 1));
+    right: calc(90px * var(--layout-scale, 1));
     bottom: calc(calc(70px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
     z-index: 9;
     padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
@@ -3409,13 +3442,36 @@
     letter-spacing: 0.5px;
     text-transform: uppercase;
     box-shadow: 0 0 12px rgba(125, 211, 252, 0.3);
-    pointer-events: none;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
     animation: coopWaitPulse 1.6s ease-in-out infinite;
   }
 
   @keyframes coopWaitPulse {
     0%, 100% { opacity: 0.85; }
     50% { opacity: 1; box-shadow: 0 0 18px rgba(125, 211, 252, 0.5); }
+  }
+
+  .coop-cancel-btn {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(125, 211, 252, 0.5);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #bae6fd;
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 700;
+    padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    min-height: calc(28px * var(--layout-scale, 1));
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .coop-cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
   }
 
   /* AP indicator — portrait: right of status strip; landscape: right of End Turn button */
@@ -3433,8 +3489,8 @@
     min-width: calc(48px * var(--layout-scale, 1));
     height: calc(38px * var(--layout-scale, 1));
     border-radius: 8px;
-    border: 1px solid rgba(255, 100, 0, 0.4);
-    background: rgba(60, 20, 10, 0.6);
+    border: 1px solid rgba(255, 160, 60, 0.7);
+    background: rgba(180, 100, 40, 0.85);
     color: #f8fafc;
     font-weight: 700;
     z-index: 6;
@@ -3444,7 +3500,7 @@
   /* Landscape: reposition to right of End Turn button (fixed position) */
   .layout-landscape .player-ap-right {
     position: fixed;
-    left: calc(148px * var(--layout-scale, 1));
+    left: calc(208px * var(--layout-scale, 1));
     right: auto;
     bottom: calc(16px * var(--layout-scale, 1));
     z-index: 20;
@@ -3454,23 +3510,19 @@
   }
 
   .player-ap-right.ap-active {
-    border-color: rgba(255, 100, 0, 0.85);
-    background: rgba(100, 30, 10, 0.78);
-    box-shadow: 0 0 6px 1px rgba(255, 120, 0, 0.35);
+    border-color: rgba(255, 180, 80, 0.9);
+    background: rgba(220, 140, 60, 0.92);
+    box-shadow: 0 0 8px 2px rgba(255, 180, 80, 0.55);
   }
 
   .player-ap-right .ap-num {
     font-size: calc(15px * var(--text-scale, 1));
     font-weight: 800;
     line-height: 1;
+    color: #fff7e6;
   }
 
-  .player-ap-right .ap-label {
-    font-size: calc(9px * var(--text-scale, 1));
-    opacity: 0.8;
-    letter-spacing: 0.5px;
-    line-height: 1;
-  }
+
 
   .end-turn-btn.disabled,
   .end-turn-btn:disabled {
@@ -3484,8 +3536,8 @@
   }
 
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 4px rgba(234, 179, 8, 0.5); background: #854d0e; }
-    50% { box-shadow: 0 0 16px rgba(234, 179, 8, 0.8); background: #a16207; }
+    0%, 100% { box-shadow: 0 0 4px rgba(234, 179, 8, 0.5); background: #b8860b; }
+    50% { box-shadow: 0 0 16px rgba(234, 179, 8, 0.8); background: #c4960d; }
   }
 
   .end-turn-confirm-overlay {
@@ -3563,8 +3615,8 @@
     gap: calc(3px * var(--layout-scale, 1));
     padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     border-radius: 8px;
-    border: 1px solid rgba(255, 100, 0, 0.4);
-    background: rgba(60, 20, 10, 0.6);
+    border: 1px solid rgba(255, 160, 60, 0.7);
+    background: rgba(180, 100, 40, 0.85);
     min-height: calc(26px * var(--layout-scale, 1));
     font-size: calc(13px * var(--layout-scale, 1));
     font-weight: 700;
