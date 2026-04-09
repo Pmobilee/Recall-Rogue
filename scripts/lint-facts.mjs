@@ -332,6 +332,61 @@ for (const f of facts) {
   }
 }
 
+// ─── CHECK 8: SELF_ANSWERING (word-level leak) ─────────────────────────────
+// A distinguishing word from the answer appears in the question, making
+// distractors eliminable. Uses corpus-frequency filter: words appearing in
+// 3+ facts as leaks are domain terms (excluded).
+
+console.log('Running CHECK 8: SELF_ANSWERING...');
+
+const SA_STOPWORDS = new Set([
+  'the','a','an','what','who','how','why','did','does','was','are','is',
+  'which','when','where','whom','whose','that','this','these','those',
+  'in','on','at','to','of','by','as','or','for',
+  'with','from','into','over','under','about','after','before','upon',
+  'between','during','through','among','within','against','without','above',
+  'and','but','nor','yet','so','not','its',
+  'also','both','each','many','most','more','some','such','then','than',
+  'has','had','have','were','been','will','can','may','his','her',
+]);
+
+// Build corpus frequency map
+const saWordCounts = new Map();
+for (const f of facts) {
+  const q = (f.quiz_question || '').toLowerCase();
+  const a = (f.correct_answer || '').toLowerCase();
+  if (!q || !a) continue;
+  const qWords = new Set(q.split(/[\s\-/,.:;!?'"()\[\]{}]+/));
+  const ansWords = a.split(/[\s\-/]+/).filter(w => w.length >= 4 && !SA_STOPWORDS.has(w));
+  for (const w of ansWords) {
+    if (qWords.has(w)) { saWordCounts.set(w, (saWordCounts.get(w) || 0) + 1); break; }
+  }
+}
+const saFrequent = new Set();
+for (const [w, c] of saWordCounts) { if (c >= 3) saFrequent.add(w); }
+
+for (const f of facts) {
+  const q = (f.quiz_question || '').toLowerCase();
+  const a = (f.correct_answer || '').toLowerCase();
+  if (!q || !a) continue;
+
+  // (a) Verbatim full-answer leak
+  if (a.length > 5 && q.includes(a)) {
+    flag(f, 'SELF_ANSWERING', `Full answer "${f.correct_answer?.slice(0, 40)}" appears verbatim in question`);
+    continue;
+  }
+
+  // (b) Word-level leak (corpus-frequency filtered)
+  const qWords = new Set(q.split(/[\s\-/,.:;!?'"()\[\]{}]+/));
+  const ansWords = a.split(/[\s\-/]+/).filter(w => w.length >= 4 && !SA_STOPWORDS.has(w));
+  for (const w of ansWords) {
+    if (qWords.has(w) && !saFrequent.has(w)) {
+      flag(f, 'SELF_ANSWERING', `Answer word "${w}" (from "${f.correct_answer?.slice(0, 40)}") appears in question`);
+      break;
+    }
+  }
+}
+
 // ─── AGGREGATE STATS ─────────────────────────────────────────────────────────
 
 const byCheck = {};
@@ -343,6 +398,7 @@ const CHECK_IDS = [
   'CATEGORY_MISMATCH',
   'ANSWER_FORMAT_MISMATCH',
   'LOW_DISTRACTOR_COUNT',
+  'SELF_ANSWERING',
 ];
 for (const c of CHECK_IDS) byCheck[c] = issues.filter(i => i.check === c);
 
@@ -362,6 +418,7 @@ console.log(`  ${pad('PREMISE_CONTRADICTING_DISTRACTORS:', 42)} ${byCheck['PREMI
 console.log(`  ${pad('CATEGORY_MISMATCH:', 42)} ${byCheck['CATEGORY_MISMATCH'].length} facts`);
 console.log(`  ${pad('ANSWER_FORMAT_MISMATCH:', 42)} ${byCheck['ANSWER_FORMAT_MISMATCH'].length} facts`);
 console.log(`  ${pad('LOW_DISTRACTOR_COUNT:', 42)} ${byCheck['LOW_DISTRACTOR_COUNT'].length} facts`);
+console.log(`  ${pad('SELF_ANSWERING:', 42)} ${byCheck['SELF_ANSWERING'].length} facts`);
 console.log('');
 console.log(`Total unique facts with issues: ${uniqueFlaggedIds.size} (${((uniqueFlaggedIds.size / facts.length) * 100).toFixed(1)}%)`);
 

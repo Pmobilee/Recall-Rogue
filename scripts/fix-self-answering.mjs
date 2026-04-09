@@ -35,6 +35,60 @@ const DECK_FILTER = (() => {
   return idx >= 0 ? args[idx + 1] : null;
 })();
 
+// ─── Corpus-frequency leak filter (built lazily) ─────────────────────────────
+
+const WORD_STOPWORDS = new Set([
+  'the','a','an','what','who','how','why','did','does','was','are','is',
+  'which','when','where','whom','whose','that','this','these','those',
+  'in','on','at','to','of','by','as','or','for',
+  'with','from','into','over','under','about','after','before','upon',
+  'between','during','through','among','within','against','without','above',
+  'and','but','nor','yet','so','not','its',
+  'also','both','each','many','most','more','some','such','then','than',
+  'has','had','have','were','been','will','can','may','his','her',
+]);
+
+let _corpusFrequentWords = null;
+function getCorpusFrequentWords() {
+  if (_corpusFrequentWords) return _corpusFrequentWords;
+  const wordCounts = new Map();
+  const files = fs.readdirSync(DECKS_DIR).filter(f => f.endsWith('.json') && f !== 'manifest.json');
+  for (const file of files) {
+    try {
+      const d = JSON.parse(fs.readFileSync(path.join(DECKS_DIR, file), 'utf-8'));
+      if (!d.facts || d.domain === 'vocabulary') continue;
+      for (const f of d.facts) {
+        if (!f.quizQuestion || !f.correctAnswer) continue;
+        const qWords = new Set(f.quizQuestion.toLowerCase().split(/[\s\-/,.:;!?'"()\[\]{}]+/));
+        const ansWords = f.correctAnswer.toLowerCase().split(/[\s\-/]+/).filter(w => w.length >= 4 && !WORD_STOPWORDS.has(w));
+        for (const w of ansWords) {
+          if (qWords.has(w)) { wordCounts.set(w, (wordCounts.get(w) || 0) + 1); break; }
+        }
+      }
+    } catch (_) {}
+  }
+  _corpusFrequentWords = new Set();
+  for (const [w, c] of wordCounts) { if (c >= 3) _corpusFrequentWords.add(w); }
+  return _corpusFrequentWords;
+}
+
+/**
+ * Detect word-level leak: a distinguishing word from the answer appears in the question.
+ * Excludes corpus-frequent domain terms (nerve, system, cells, etc.)
+ * Returns { leakedWord } or null.
+ */
+function detectWordLevelLeak(question, answer) {
+  const qWords = new Set(question.toLowerCase().split(/[\s\-/,.:;!?'"()\[\]{}]+/));
+  const ansWords = answer.toLowerCase().split(/[\s\-/]+/).filter(w => w.length >= 4 && !WORD_STOPWORDS.has(w));
+  const frequent = getCorpusFrequentWords();
+  for (const w of ansWords) {
+    if (qWords.has(w) && !frequent.has(w)) {
+      return { leakedWord: w };
+    }
+  }
+  return null;
+}
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function escapeRegex(str) {
@@ -623,8 +677,10 @@ for (const file of deckFiles) {
     // Skip short answers (high false positive rate)
     if (aLower.length <= 5) continue;
 
-    // Check if self-answering at all
-    if (!qLower.includes(aLower)) continue;
+    // Check if self-answering: full answer or word-level leak
+    const isFullAnswerLeak = qLower.includes(aLower);
+    const wordLeakResult = !isFullAnswerLeak ? detectWordLevelLeak(q, a) : null;
+    if (!isFullAnswerLeak && !wordLeakResult) continue;
 
     // Skip medical combining forms / root meanings — vocabulary-like
     if (qLower.includes('combining form') || qLower.includes('medical root') ||
@@ -634,6 +690,19 @@ for (const file of deckFiles) {
       continue;
     }
 
+    // Word-level leak path: flag for LLM rewriting (not auto-fixable by regex —
+    // naive word replacement produces broken grammar like "the this" or "this ships")
+    if (wordLeakResult && !isFullAnswerLeak) {
+      flaggedForReview.push({
+        deckId, factId: fact.id, q, a,
+        reason: 'word_level_leak',
+        leakedWord: wordLeakResult.leakedWord,
+        poolId: fact.answerTypePoolId
+      });
+      continue;
+    }
+
+    // Full answer leak path (existing logic)
     // Check for word boundary match vs substring-only
     const isWordBoundary = appearsAtWordBoundary(q, a);
     const hasManualFix = Boolean(MANUAL_FIXES[fact.id]);
