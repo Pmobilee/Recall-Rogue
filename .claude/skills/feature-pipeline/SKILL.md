@@ -199,9 +199,9 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
 1. Run full verification gate: `npm run typecheck`, `npm run build`, `npx vitest run`
 2. **Balance simulation gate** (mandatory if the change touches gameplay/balance — enemies, cards, relics, damage, HP, costs, turn economy):
    ```
-   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000
+   npm run sim:analytics
    ```
-   Compare results against the pre-change baseline. If win rates, clear rates, or economy metrics shift significantly, investigate before declaring done.
+   Review the analytics reports in `data/playtests/runs/{latest}/analytics/` for card, relic, enemy, and archetype balance. Compare results against the pre-change baseline. If win rates, clear rates, or economy metrics shift significantly, investigate before declaring done.
 3. **Visual inspection** of EVERY affected screen — MANDATORY, NO EXCEPTIONS:
    - Navigate to each affected screen using `__rrScenario.load()`
    - Take screenshot AND layout dump (ALWAYS use both — required, not optional):

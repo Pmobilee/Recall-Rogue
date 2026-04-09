@@ -49,10 +49,12 @@ If ANY of these files were changed, automatically run the headless balance simul
 
 **Balance sim command:**
 ```bash
-npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 500
+npm run sim:analytics
 ```
 
-Review the output for significant shifts in win rate, average turns, or damage metrics compared to expected baselines.
+This generates detailed reports in `data/playtests/runs/{timestamp}/analytics/` covering card win rates, enemy difficulty, relic impact, archetype viability, and balance correlations.
+
+Review the analytics reports for significant shifts in win rate, average turns, or damage metrics compared to expected baselines.
 
 ## Step 4: Report
 

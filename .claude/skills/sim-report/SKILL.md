@@ -75,6 +75,33 @@ Headless sim output lives in `data/playtests/runs/{timestamp}/`:
 | `dedicated` | 70% | Consistent, high charge rate |
 | `scholar` | 82% | Near-perfect accuracy |
 
+## Analytics Output (when run with --analytics flag)
+
+When the sim is run with `npm run sim:analytics`, additional analytics reports are generated in `{run_dir}/analytics/`:
+
+- `balance-report.md` — Win rate table by profile × ascension level
+- `card-analysis.md` + `.json` — Per-mechanic win rate correlation, deck type distributions
+- `relic-analysis.md` + `.json` — Per-relic win rates, relic combos, category impact
+- `enemy-analysis.md` + `.json` — Deadliest enemies, most-failed, floor difficulty curve
+- `archetype-analysis.md` — Build viability comparison (8 archetype builds)
+- `correlation-report.md` — Top positive/negative balance correlations
+
+Read these files FIRST before doing manual analysis — they contain pre-computed insights.
+
+### Extended FullRunResult Fields (analytics mode)
+
+When analytics mode is active, `SimRunResult` entries include additional fields:
+
+```typescript
+{
+  encounters: EncounterSummary[];           // full per-encounter breakdown
+  finalDeckMechanics: string[];             // mechanic IDs in deck at run end
+  finalDeckTypeDistribution: Record<string, number>; // archetype tag counts
+  deckEvolution: DeckSnapshot[];            // deck state at each reward pick
+  masteryAtEnd: Record<string, number>;     // mechanicId → mastery level at end
+}
+```
+
 ## Steps
 
 ### Phase 0: Generate Thresholds (ALWAYS run first)

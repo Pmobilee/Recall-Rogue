@@ -1094,11 +1094,11 @@ Cards unlock as character level increases. New players start at level 0 with 36 
 |------|-------|----|------------|---------------------|---------------|
 | Strike | 5 | 1 | 4 dmg | 6 dmg | 2.8 dmg |
 | Block | 4 | 1 | 3 block | 4.5 block | 2.1 block |
-| Transmute | 1 | 1 | Pick 1 of 3 cards to permanently replace in deck | Expanded choice pool | Weaker pick |
+| Transmute | 1 | 1 | Auto-transform source card (encounter-only) | Pick 1 of 3 to transform into (2 at M3+) | Auto-transform (random, like QP) |
 
 **10 cards = cycle every 2 turns** (draw 5 per turn). Each card reward is a 10% deck change — immediately impactful. Boring by design; interesting mechanics come from rewards.
 
-**One Transmute (1 AP):** The single interesting starter card. Immediately introduces deck-building within the run — players permanently replace a deck card with one of 3 offered options. Replaces the old Surge (draw 2) that was removed from the starter in 2026-04-09.
+**One Transmute (1 AP):** The single interesting starter card. Introduces card transformation as a mechanic. Transmute is encounter-only: the source card transforms into a new mechanic for the duration of the encounter, then reverts at encounter end. QP auto-picks randomly; CC opens a picker for player choice. Replaces the old Surge (draw 2) that was removed from the starter in 2026-04-09.
 
 ### Card Unlock Progression (Level 0–13)
 
@@ -1181,7 +1181,7 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0�
 |----------|----|------------|-----------------|---------------|-------|
 | **Mirror** | 1 | Copy last card effect (1.0×) | Copy at 1.3× power | Copy at 0.7× | Mirrors the chain too |
 | **Adapt** | 1 | Shows CardPickerOverlay: choose attack form, shield form, or cleanse+draw form | Same forms at 1.5× power | Forms at 0.7× power | REWORKED: player picks form each play via overlay instead of auto-selecting |
-| **Transmute** | 1 | Shows CardPickerOverlay: choose 1 of 3 cards to become for this encounter | At M3: choose up to 2 of 3 (all at Transmute's mastery level) | Card reverts to Transmute at encounter end | REWORKED: self-transforms into player's choice (M1: 1 option at M1; M2: all options at M1; M3: 2 picks at Transmute mastery). Player can always skip. |
+| **Transmute** | 1 | Auto-transform source card into 1 random candidate (encounter-only) | Pick 1 of 3 candidates; 2 picks at M3+ (encounter-only) | Auto-transform random (like QP) | QP/CW: 'applyTransmuteAuto' inline swap. CC: CardPickerOverlay picker. All modes: encounter-only, reverts at end. |
 
 ### Key Balance Principles (v2)
 
@@ -1202,15 +1202,20 @@ Some cards are temporarily transformed for the duration of a single encounter an
 - **Mimic** copies a discard card for the current turn only (per-turn variant of the same pattern)
 - Mastery level of the temporary form can differ from the source card's mastery level
 
-### Transmute — Permanent Deck Building (2026-04-09)
+### Transmute — Encounter-Only Transform (2026-04-09 Phase 1 fix)
 
-**Transmute permanently replaces a card in the run deck** (not encounter-scoped). When Transmute resolves, `resolveTransmutePick()` in `turnManager.ts` removes the source card and inserts the chosen card permanently:
+**Transmute is encounter-scoped.** The source card transforms for the duration of the encounter and reverts at encounter end via `revertTransmutedCards()`. It uses the same pattern as Conjure/Mimic.
 
-- The new card keeps the original card's `factId` (fact binding preserved)
-- Catch-up mastery via `computeCatchUpMastery()` — same as reward cards
-- `isTransmuted` flag is NOT set on permanently replaced cards
-- `revertTransmutedCards()` does NOT undo permanent Transmute replacements
-- This makes Transmute a deck-building mechanic: players refine their deck throughout the run, not just at reward rooms
+**Play mode behavior:**
+- **Quick Play (QP):** Auto-picks 1 random candidate; inline apply via `applyTransmuteAuto` result field. No picker shown.
+- **Charge Correct (CC):** Opens CardPickerOverlay. Player picks 1 candidate (2 at mastery 3+).
+- **Charge Wrong (CW):** Same as QP — auto-pick random. Card always resolves.
+
+**Implementation:**
+- `applyTransmuteSwap(turnState, sourceCardId, selectedCards)` — shared helper in `turnManager.ts`. Searches hand/discard/draw/exhaust for source card; swaps mechanic fields in-place; sets `isTransmuted=true` + `originalCard` snapshot.
+- Source card `id` and `factId` preserved across the transform. Catch-up mastery applied.
+- Mastery 3+ CC: first pick replaces source; second pick added to hand with sentinel `originalCard.id` (`transmute_extra_remove_*`) — dropped entirely by revert.
+- `revertTransmutedCards()` restores originals in hand/drawPile/discardPile. Extras with sentinel prefix are removed without replacement.
 
 ### New Mechanic Summary by Type
 

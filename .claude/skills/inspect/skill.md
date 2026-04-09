@@ -54,8 +54,8 @@ No single testing method is sufficient. Unit tests miss visual bugs. Screenshots
 
 ### 2. Headless Combat Sim (/balance-sim)
 **What it catches:** Win rate deviations, damage spikes, healing insufficiency, difficulty curve problems, card/relic never-used or always-used patterns
-**How:** `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000`
-**Speed:** 6000 runs in 5 seconds
+**How:** `npm run sim:analytics`
+**Speed:** 4800 runs in ~40 seconds, generates 6 analytics reports (card-analysis.md, balance-report.md, correlation-report.md, enemy-analysis.md, relic-analysis.md, archetype-analysis.md)
 **Blind spots:** Uses heuristic bots — cannot explain WHY. Cannot test visual. Cannot detect UX issues.
 
 ### 3. LLM Strategic Analysis (/strategy-analysis)
@@ -137,7 +137,7 @@ This is the ground truth for what gets tested and how. If a cell says YES, that 
 ```
 Parallel batch 1 (fast, no browser needed):
 ├── Worker A: Unit tests — npx vitest run --grep "{relevant patterns}"
-├── Worker B: Headless sim — npx tsx run-batch.ts --runs 500 --profile all
+├── Worker B: Headless sim — npm run sim:analytics (generates 6 analytics reports in analytics/)
 └── Worker C: Rogue Brain — python3 analyze.py --episodes 100 (if model exists)
 
 Parallel batch 2 (needs Playwright, sequential screenshots):

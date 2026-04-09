@@ -27,8 +27,8 @@ Track which cards are played, how often, and whether playing them correlates wit
 - Cards always skipped at reward = boring/weak
 - Cards only strong in specific matchups = niche (OK) vs. too niche (problem)
 
-**How to add to headless sim:**
-After each run, log per-card data: `{ cardType, timesPlayed, timesQuickPlayed, timesCharged, timesCorrect, runWon }`. Aggregate across thousands of runs. Compare card play frequency in wins vs losses.
+**NOW IMPLEMENTED via `--analytics`:**
+Run `npm run sim:analytics` to generate `card-analysis.md` and `card-analysis.json` in `data/playtests/runs/{timestamp}/analytics/`. These files contain pre-computed per-mechanic win rate correlation, deck type distributions, and play frequency data across all profiles.
 
 **Key metrics:**
 - `playRate`: % of runs where this card was played at least once
@@ -58,6 +58,8 @@ Numbers can't capture "feel" directly, but these metrics proxy for it:
 - High (>15%): game has rubber-banding and hope (good for engagement)
 - Low (<5%): once you're losing, you've lost (feels unfair)
 
+**These tension metrics are pre-computed in `balance-report.md`** — the analytics run generates avg turns, HP at death distributions, and per-profile fight length data automatically.
+
 ### Layer 3: Predictability Scoring
 
 Can you predict win/loss from the state at turn 1?
@@ -72,18 +74,29 @@ Can you predict win/loss from the state at turn 1?
 - Whether certain relic combos guarantee victory
 - Whether deck composition matters more than play skill (bad for a skill-based game)
 
-**Implementation:** Can be done in a Node.js script with simple math — no ML library needed. Just compute feature correlations with win/loss from the JSON output.
+**Pre-computed in `correlation-report.md`** — the analytics run computes top positive/negative balance correlations and predictability insights automatically.
 
 ## Usage
 
-1. Run headless sim first: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000`
-2. This skill analyzes the JSON output in `data/playtests/runs/`
-3. Produces a narrative report with all three layers
-4. Recommends specific balance changes with reasoning
+Run the full analytics suite:
+```
+npm run sim:analytics
+```
+
+This runs 1000+ simulations across all profiles and generates 6 analytics reports in `data/playtests/runs/{timestamp}/analytics/`:
+
+- `card-analysis.md` — per-card win-rate contribution (Layer 1)
+- `balance-report.md` — tension metrics: avg turns, HP at death (Layer 2)
+- `correlation-report.md` — predictability and balance insights (Layer 3)
+- `enemy-analysis.md` — per-enemy difficulty, deadliest enemies, floor difficulty curve
+- `relic-analysis.md` — relic impact, combos, category win rates
+- `archetype-analysis.md` — build viability comparison (8 archetype builds)
+
+Read these files before doing any manual analysis — they contain pre-computed insights across all three layers.
 
 ## Relationship to Other Skills
 
-- **Headless sim** provides the raw data
+- **Headless sim** provides the raw data (`npm run sim:analytics` runs it automatically)
 - **Balance check** (`/balance-check`) provides the basic narrative report
 - **This skill** goes deeper with per-card, tension, and predictability analysis
 - **LLM playtest** (`/llm-playtest`) complements with qualitative reasoning about specific states

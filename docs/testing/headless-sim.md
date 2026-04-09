@@ -1,8 +1,8 @@
 # Headless Balance Simulator
 
 > **Purpose:** How to run the headless combat simulator for balance testing — profiles, output format, and key internals.
-> **Last verified:** 2026-04-09 (8 fidelity bug fixes — HP tracking, health vials, Canary, bot blocked cards, Transmute, mastery persistence, catch-up mastery, comment cleanup)
-> **Source files:** `tests/playtest/headless/simulator.ts`, `tests/playtest/headless/run-batch.ts`, `tests/playtest/headless/sim-worker.ts`, `tests/playtest/headless/browser-shim.ts`, `tests/playtest/headless/tsconfig.json`, `tests/playtest/headless/full-run-simulator.ts`, `tests/playtest/headless/bot-brain.ts`, `tests/playtest/headless/bot-profiles.ts`
+> **Last verified:** 2026-04-09 (analytics overhaul — 8 build profiles, BuildPreferences, 6 analytics reports, --analytics flag)
+> **Source files:** `tests/playtest/headless/simulator.ts`, `tests/playtest/headless/run-batch.ts`, `tests/playtest/headless/sim-worker.ts`, `tests/playtest/headless/browser-shim.ts`, `tests/playtest/headless/tsconfig.json`, `tests/playtest/headless/full-run-simulator.ts`, `tests/playtest/headless/bot-brain.ts`, `tests/playtest/headless/bot-profiles.ts`, `tests/playtest/headless/analytics-report.ts`
 
 ## What It Is
 
@@ -50,6 +50,13 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
   tests/playtest/headless/run-batch.ts --runs 500 --profile scholar --force-relic scavengers_eye
 
+# Full analytics run — 6 progression + 8 build profiles + ascension sweep (4800 runs total)
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
+  tests/playtest/headless/run-batch.ts --runs 200 --analytics
+
+# npm shortcut for analytics mode
+npm run sim:analytics
+
 # Single run with verbose output
 npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
   tests/playtest/headless/simulator.ts --verbose
@@ -60,7 +67,7 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 | Flag | Default | Description |
 |------|---------|-------------|
 | `--runs N` | 10000 | Runs per profile |
-| `--profile ID` | all 6 progression | Named profile (legacy, archetype, or progression) — see Player Profiles |
+| `--profile ID` | all 6 progression | Named profile (legacy, archetype, build, or progression) — see Player Profiles |
 | `--archetype NAME` | — | Alias for `--profile`; shorthand for archetype names |
 | `--ascension N` | 0 | Ascension level (0–20) |
 | `--mode full\|combat` | full | Full run vs combat-only |
@@ -71,6 +78,7 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 | `--isolation` | — | Test each axis at 1.0 with all others at baseline (0.3) |
 | `--skills JSON` | — | Custom `BotSkills` JSON (partial OK; unspecified axes default to 0.5) |
 | `--force-relic ID` | — | Force a specific relic at run start on every run (added on top of normal starter relics; for causal win-rate measurement free of survivorship bias) |
+| `--analytics` | — | Full analytics run: 6 progression + 8 build profiles + ascension sweep. Generates 6 analytics reports in `analytics/` subfolder |
 | `--parallel` | ON | Enable parallel execution (default: on) |
 | `--no-parallel` | — | Disable parallel, run sequentially |
 | `--workers N` | min(cpus-2, 12) | Number of worker threads (parallel mode only) |
@@ -99,7 +107,7 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 
 ## BotBrain System
 
-`BotBrain` (`bot-brain.ts`) is the parameterized decision engine that replaced hardcoded bot logic. All decisions are driven by a `BotSkills` profile — 11 axes from 0 (worst) to 1 (optimal).
+`BotBrain` (`bot-brain.ts`) is the parameterized decision engine that replaced hardcoded bot logic. All decisions are driven by a `BotSkills` profile — 12 axes from 0 (worst) to 1 (optimal) — plus an optional `BuildPreferences` object that biases card reward and relic selection toward a specific playstyle.
 
 ### BotSkills Interface
 
@@ -116,6 +124,24 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 | `rewardSkill` | Card reward selection quality (gap-filling, high-scaling picks) |
 | `shopSkill` | Shop purchase intelligence (removal, relics, food timing) |
 | `restSkill` | Rest site decision quality (heal vs study vs meditate based on HP% and deck size) |
+| `relicSkill` | Relic selection quality (tier awareness + context bonuses) |
+
+### BuildPreferences Interface
+
+`BuildPreferences` is an optional second argument to `BotBrain(skills, buildPrefs?)`. When set, it biases two decision methods:
+
+- **`pickReward()`** — adds +50 score to any mechanic whose `id` is in `preferredMechanics`
+- **`pickRelic()`** — adds +40 score for a relic ID in `preferredRelicIds`; +25 for a relic whose `category` matches any entry in `preferredRelicCategories`
+
+```typescript
+export interface BuildPreferences {
+  preferredMechanics: string[];       // mechanic IDs to prioritize in rewards
+  preferredRelicCategories: string[]; // relic category names to prefer
+  preferredRelicIds: string[];        // specific relic IDs to strongly prefer
+}
+```
+
+Build profile scores still compete with normal scoring — the +50/+40/+25 bonuses shift preference without making the bot ignore better options when the gap is large.
 
 ### How planTurn() Works
 
@@ -124,7 +150,7 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 3. `_decideMode()` — tiered thresholds for `chargeSkill`, `surgeAwareness`, `masteryHunting`; receives `playerHpPct` + `enemyNextDamage` for HP-aware override logic
 4. Returns `CardPlay[]` — `{ cardId, mode }` pairs. **The simulator rolls accuracy, not the brain.**
 
-Other methods: `pickReward()`, `planShop()`, `planRest()`, `pickRoom()` — each driven by its axis.
+Other methods: `pickReward()`, `pickRelic()`, `planShop()`, `planRest()`, `pickRoom()` — each driven by its axis.
 
 ### HP-Aware Heuristics (Ch12.2, 2026-04-08)
 
@@ -259,6 +285,70 @@ Strategy composites for testing specific playstyles. Access via `--profile NAME`
 | `complete_noob` | 35% | All axes 0 | Worst possible player — sanity check |
 | `perfect_player` | 90% | All axes 1.0 | Ceiling test — should win nearly every run |
 
+### Build Profiles (8) — Mechanics-Focused
+
+Build profiles use `BuildPreferences` to bias `pickReward()` (+50 for preferred mechanics) and `pickRelic()` (+40 for preferred IDs, +25 for preferred categories) toward a specific archetype. All use 76% accuracy (experienced baseline) except `build_berserker` (80%). Defined in `BUILD_PROFILES` in `bot-profiles.ts`.
+
+| ID | Label | Preferred Mechanics | Key Relics | `blockSkill` |
+|----|-------|---------------------|------------|--------------|
+| `build_poison` | Build: Poison/DoT | hex, lacerate, kindle, corroding_touch, corrode | herbal_pouch, plague_flask | 0.4 |
+| `build_fortress` | Build: Fortress/Block | block, fortify, reinforce, absorb, thorns, bulwark, brace, guard | iron_shield, aegis_stone, stone_wall | 1.0 |
+| `build_strength` | Build: Strength/Power | power_strike, empower, iron_wave, reckless, heavy_strike, bash | brass_knuckles, whetstone, volatile_core, berserker_band | 0.3 |
+| `build_chain` | Build: Chain Master | chain_anchor, strike, twin_strike | chain_addict, obsidian_dice | 0.4 |
+| `build_exhaust` | Build: Exhaust | sacrifice, volatile_slash, bulwark, catalyst | scavengers_eye, tattered_notebook | 0.5 |
+| `build_tempo` | Build: Tempo/Draw | swap, scout, quicken, foresight, sift, reflex | swift_boots, quicksilver_quill | 0.4 |
+| `build_control` | Build: Control | weaken, expose, slow, stagger, hex, sap | plague_flask, null_shard | 0.6 |
+| `build_berserker` | Build: Berserker | reckless, lifetap, execute, volatile_slash, heavy_strike | blood_price, berserker_band | 0.0 |
+
+**First run findings (analytics mode, 2026-04-09):**
+- `build_fortress` had the highest win rate (~13%) among build profiles
+- `build_berserker` had the lowest win rate (~0%) — `blockSkill=0.0` is fatal at x2 damage
+- `reinforce` mechanic had the strongest positive correlation with winning
+- Attack-heavy decks (high attack-type card %) correlate with losing at x2 damage multiplier
+
+Build profiles are available via `--profile build_poison` etc. They are not included in the default progression run — use `--analytics` to run all 8.
+
+## Analytics Mode — `--analytics` Flag
+
+`--analytics` runs the full test matrix and generates 6 detailed reports in `data/playtests/runs/{timestamp}/analytics/`.
+
+**Profile matrix run:**
+- All 6 `PROGRESSION_PROFILES` at ascension 0
+- All 8 `BUILD_PROFILES` at ascension 0
+- `experienced` and `master` at ascension 0, 5, 10, 15, 20
+
+With `--runs 200`: 14 base profiles + 8 ascension variants = 22 profile-runs × 200 = **4,400 total runs** (some profiles run at multiple ascension levels).
+
+```bash
+# Quick analytics run (~90 seconds on 12-core machine)
+npm run sim:analytics
+
+# More runs for higher confidence
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
+  tests/playtest/headless/run-batch.ts --runs 500 --analytics
+```
+
+### Analytics Reports (6)
+
+Reports are generated by `analytics-report.ts` → `generateAnalyticsReports(results, outputDir)`. Each report saves into the `analytics/` subfolder.
+
+| Report File | Format | Contents |
+|-------------|--------|----------|
+| `balance-report.md` | Markdown table | Win rate per profile × ascension level. Primary balance health check. |
+| `card-analysis.md` + `.json` | MD + JSON | Per-mechanic stats: win rate when present, avg damage/play, charge vs quick breakdown, deck-type distribution. |
+| `relic-analysis.md` + `.json` | MD + JSON | Per-relic win rates, relic combo win rates, category-level distribution across runs. |
+| `enemy-analysis.md` + `.json` | MD + JSON | Per-enemy: most-defeated, deadliest (highest damageTaken), most-failed (highest defeat rate). Floor difficulty curve. |
+| `archetype-analysis.md` | Markdown | Build profile viability comparison — win rates, avg deck composition, preferred mechanic uptake. |
+| `correlation-report.md` | Markdown | Top positive and negative balance correlations: conditions (mechanic in deck, relic held, deck type %) sorted by win-rate delta. Identifies what most predicts winning or losing. |
+
+**`AnalyticsRun` interface** (passed to report generator from `FullRunResult`):
+- All base `FullRunResult` fields (survived, actsCompleted, finalHP, accuracy, etc.)
+- `encounters: AnalyticsEncounter[]` — per-encounter: enemyId, enemyName, enemyCategory, floor, result, turns, damageDealt, damageTaken, playerHpAfter, cardPlays (mechanic + wasCharged + answeredCorrectly + damageDealt per play)
+- `finalDeckMechanics: Record<string, number>` — mechanic ID → count at run end
+- `finalDeckTypeDistribution: Record<string, number>` — card type → count at run end
+- `deckEvolution: { floor, deckSize, types }[]` — deck composition snapshot per floor
+- `masteryAtEnd: Record<string, number>` — mechanic ID → mastery level at run end
+
 ## Sweep Mode
 
 Sweeps one skill axis from 0→1 in 11 steps (0.0, 0.1, …, 1.0), running `--runs` per step. All other axes fixed at baseline 0.5, accuracy fixed at 0.65. Use to isolate the win-rate impact of a single axis.
@@ -293,6 +383,7 @@ Files written:
 - `combined.json` — all profiles merged with metadata
 - `README.md` — human-readable summary table
 - `latest` symlink — points to the most recent run folder
+- `analytics/` subfolder — present only when `--analytics` flag is used (6 report files)
 
 **Console output per profile (full run mode):**
 ```
@@ -329,6 +420,11 @@ Files written:
 - `minHpSeen: number` — lowest HP reached during the run
 - `isComeback: boolean` — `survived && minHpSeen < maxHp * 0.3` — great tension indicator
 - `avgTurnsPerEncounter: number` — total turns / total encounters
+- `encounters: EncounterDetail[]` — detailed per-encounter breakdown (enemyId, floor, result, turns, cardPlays)
+- `finalDeckMechanics: Record<string, number>` — mechanic → count at run end
+- `finalDeckTypeDistribution: Record<string, number>` — card type → count at run end
+- `deckEvolution: { floor, deckSize, types }[]` — deck snapshot per floor
+- `masteryAtEnd: Record<string, number>` — mechanic → mastery level at run end
 
 ## New Metrics Reference (2026-04-05)
 
@@ -383,8 +479,10 @@ In `--mode combat`, the batch runner also outputs `MechanicStats[]`:
 ## Key Internal Functions
 
 **`bot-brain.ts`:**
+- `BotBrain(skills, buildPrefs?)` — constructor; `buildPrefs` is optional `BuildPreferences` for build-focused bots
 - `BotBrain.planTurn(hand, turnState, ascMods)` — public API; returns ordered `CardPlay[]` plan for the turn
-- `BotBrain.pickReward(options, currentDeck)` — selects best card reward; `null` = skip
+- `BotBrain.pickReward(options, currentDeck)` — selects best card reward; applies +50 score for `buildPrefs.preferredMechanics`; `null` = skip
+- `BotBrain.pickRelic(options, hpPct, deckAttackPct)` — selects best relic; applies +40 for `preferredRelicIds`, +25 for `preferredRelicCategories`
 - `BotBrain.planShop(runState, shopCards, shopRelics, ...)` — returns ordered `ShopAction[]`
 - `BotBrain.planRest(runState)` — returns `'heal' | 'study' | 'meditate'`
 - `BotBrain.pickRoom(options, runState)` — selects next map node by HP-weighted scoring; called per step when brain is active
@@ -393,10 +491,16 @@ In `--mode combat`, the batch runner also outputs `MechanicStats[]`:
 - `makeSkills(overrides, baseline)` — builds a `BotSkills` object with baseline fill
 - `generateSweepProfiles(axis, steps, baseline, accuracy)` — generates step profiles for sweep mode
 - `generateIsolationProfiles(baseline, accuracy)` — one profile per axis at 1.0
-- `ALL_PROFILES` — merged lookup for `--profile` flag (legacy + archetype + progression)
+- `ALL_PROFILES` — merged lookup for `--profile` flag (legacy + archetype + progression + build)
 - `PROGRESSION_PROFILES` — 6 learning-curve profiles; default set when no `--profile` is given
 - `LEGACY_PROFILES` — 6 original profiles (@deprecated for balance work; still accessible via `--profile`)
-- `SKILL_AXES` — typed tuple of all 10 non-accuracy axis names
+- `BUILD_PROFILES` — 8 build-archetype profiles with `BuildPreferences`; used by `--analytics` mode
+- `SKILL_AXES` — typed tuple of all 11 non-accuracy axis names (includes `relicSkill`)
+
+**`analytics-report.ts`:**
+- `generateAnalyticsReports(results, outputDir)` — entry point; generates all 6 report files into `outputDir`
+- Accepts `AnalyticsRun[]` (local mirror of extended `FullRunResult` fields)
+- Self-contained: no imports from game code; safe to run in any Node.js context
 
 **`simulator.ts`:**
 - `runSimulation(opts: SimOptions): SimRunResult` — public API, runs one full sim
