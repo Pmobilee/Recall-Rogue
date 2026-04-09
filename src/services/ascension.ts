@@ -9,16 +9,16 @@ export interface AscensionLevelRule {
 }
 
 export const ASCENSION_LEVEL_RULES: AscensionLevelRule[] = [
-  { level: 1, name: 'First Trial', effect: '+1 elite per segment. BUFF: Choose 1 of 3 starter relics.' },
+  { level: 1, name: 'First Trial', effect: '+1 elite per segment.' },
   { level: 2, name: 'Aggressive Foes', effect: 'Enemies +15% damage.' },
-  { level: 3, name: 'Scarce Healing', effect: 'Rest heals 25% instead of 30%. BUFF: Free card removal at rest.' },
+  { level: 3, name: 'Scarce Healing', effect: 'Rest heals 25% instead of 30%.' },
   { level: 4, name: 'Quick Thinking', effect: 'Timer -1s on all questions. BUFF: Start with a random uncommon card.' },
-  { level: 5, name: 'Lean Start', effect: 'Start with 12 cards. BUFF: One free card removal per shop visit.' },
-  { level: 6, name: 'No Escape', effect: 'Cannot flee encounters. BUFF: Heal 5 HP on 3+ combo.' },
-  { level: 7, name: 'Harsh Grading', effect: 'Close distractors more common. BUFF: Charged correct +10% damage.' },
-  { level: 8, name: 'Elite Surge', effect: 'Mini-bosses gain boss-tier attacks. BUFF: Mini-boss victories always drop a relic.' },
+  { level: 5, name: 'Lean Start', effect: 'Start with 12 cards. BUFF: Free card removal at rest.' },
+  { level: 6, name: 'No Escape', effect: 'Cannot flee encounters. BUFF: Heal 3 HP on 4+ combo.' },
+  { level: 7, name: 'Harsh Grading', effect: 'Close distractors more common.' },
+  { level: 8, name: 'Elite Surge', effect: 'Mini-bosses gain boss-tier attacks. BUFF: Mini-boss victories always drop a relic. Free card removal at shops.' },
   { level: 9, name: 'Undying Foes', effect: 'Enemies regenerate 3 HP/turn. BUFF: Start encounters with 3 shield.' },
-  { level: 10, name: 'Cursed Start', effect: 'Start with a Curse card in deck. BUFF: +1 free relic reroll per boss.' },
+  { level: 10, name: 'Cursed Start', effect: 'Start with a Curse card in deck. BUFF: Choose 1 of 3 starter relics. +1 free relic reroll per boss.' },
   { level: 11, name: 'Slim Pickings', effect: 'Boss relics reduced to 2 choices. BUFF: Relics trigger +15% more.' },
   { level: 12, name: 'Deep Knowledge', effect: 'Tier 1 cards use 4-option MCQ. BUFF: Tier 1 charged correct +20% damage.' },
   { level: 13, name: 'Fragile', effect: 'Player max HP reduced to 75. BUFF: Start with Vitality Ring (+20 HP, takes slot).' },
@@ -116,34 +116,31 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     startWithCurseCard: l >= 10,
     comboResetsOnTurnEnd: l >= 14,
     // --- Buffs (cumulative) ---
-    starterRelicChoice: l >= 1,
-    // Removed: +1 AP first turn was too strong — A2 challenge (15% enemy damage) stands alone
+    // Pass 7: Buffs delayed to higher ascensions. A1-A7 should be pure difficulty increases.
+    // StS philosophy: ascension = harder. Buffs are rewards for reaching high levels, not
+    // compensation that cancels out the challenge.
+    starterRelicChoice: l >= 10,  // was A1 — delayed to A10 (choose-from-3 is powerful)
     firstTurnBonusAp: 0,
-    freeRestCardRemoval: l >= 3,
-    freeShopCardRemoval: l >= 5,
-    // Reduced from 0.15: 10% still meaningful but compounds less with mastery/chains/surge
-    chargeCorrectDamageBonus: l >= 7 ? 0.10 : 0,
+    freeRestCardRemoval: l >= 5,  // was A3 — delayed
+    freeShopCardRemoval: l >= 8,  // was A5 — delayed
+    chargeCorrectDamageBonus: l >= 12 ? 0.10 : 0,  // was A7 — delayed to A12
     miniBossGuaranteedRelic: l >= 8,
-    encounterStartShield: l >= 9 ? 3 : 0,
+    encounterStartShield: l >= 9 ? 2 : 0,  // was 3 — reduced to 2
     freeRelicReroll: l >= 10,
-    // Reduced from 0.25 to 0.15 — still rewards relic builds but less snowbally
     relicTriggerBonus: l >= 11 ? 0.15 : 0,
     tier1ChargedDamageBonus: l >= 12 ? 0.20 : 0,
-    // Removed: perfect turn +1 AP was broken for master players who hit perfect turns constantly
     perfectTurnBonusAp: 0,
-    // Removed: full heal on boss defeat erased run attrition — A15's challenge stands alone
     bossDefeatFullHeal: false,
     discardGivesShield: l >= 16 ? 1 : 0,
     correctAnswerHeal: l >= 17 ? 1 : 0,
     chooseStartingHand: l >= 18,
-    // Removed: CHARGE_AP_SURCHARGE is already 0, making this a no-op. Kept as false so if
-    // surcharge is restored later, Asc 19 doesn't automatically bypass it without review.
     freeCharging: false,
-    // Reduced: Asc 20 gets 2 (was 3), Asc 10 gets 1 (was 2). Still a buff, less overwhelming.
-    startingRelicCount: l >= 20 ? 2 : l >= 10 ? 1 : l >= 1 ? 1 : 0,
-    // A6 buff: heal HP when achieving a combo streak of 3+
-    comboHealThreshold: l >= 6 ? 3 : 0,
-    comboHealAmount: l >= 6 ? 5 : 0,
+    // Pass 7: No free relic at A1 (was the #1 cause of A1 > A0). Relics start at A10.
+    startingRelicCount: l >= 20 ? 2 : l >= 10 ? 1 : 0,
+    // Pass 7: Combo heal nerfed — 4+ combo for 3 HP (was 3+ combo for 5 HP).
+    // High-accuracy players hit 3-combos constantly; 4+ is rarer and 3 HP is less snowbally.
+    comboHealThreshold: l >= 6 ? 4 : 0,
+    comboHealAmount: l >= 6 ? 3 : 0,
   };
 }
 
