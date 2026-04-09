@@ -1125,3 +1125,1700 @@ open_questions_for_architect_phase:
   - "7. 2022 final score: 3-3 is an unusual score format. The pool entry should be '3-3 (a.e.t., 4-2 pens)' for clarity but this is 24 chars vs '4-2' being 3 chars — major length heterogeneity. Recommend separate 'penalty_final_scores' pool."
   - "8. Marta's WC goals: 17 goals in 6 World Cups as of 2023 — verify via Wikipedia Women's WC records page before generate phase."
   - "9. 1999 Women's WC attendance: Rose Bowl attendance stated as 90,185 in Wikipedia — verify and note this was the world record for women's sports at the time."
+
+# ============================================================
+# ARCHITECT PHASE (v2) — 2026-04-09
+# ============================================================
+# Depends on: sports_entertainment domain added to src/data/card-types.ts
+# (parallel game-logic task in progress — do NOT begin generate phase
+# until that commit is merged to main and typecheck passes)
+architect_phase:
+  status: complete
+  date: 2026-04-09
+
+# ============================================================
+# OPEN QUESTIONS RESOLUTION
+# ============================================================
+open_questions_resolution:
+
+  OQ1_domain_scaffolding:
+    status: resolved_external
+    decision: >
+      The 'sports_entertainment' domain is being added to src/data/card-types.ts and
+      src/data/domainMetadata.ts by a parallel game-logic agent (visible in git dirty
+      working tree as of 2026-04-09). This YAML uses 'general_knowledge' as fallback.
+      Generate phase MUST NOT begin until that commit is merged and typecheck passes.
+      The domain note at the top of this file documents the dependency.
+    action_for_generate: "Wait for game-logic domain commit. Then set domain: sports_entertainment."
+
+  OQ2_mens_golden_boot_verification:
+    status: resolved
+    finding: >
+      All 22 Men's World Cup editions have verified top scorer data in the discover YAML.
+      Cross-checking against the Wikipedia 'List of FIFA World Cup top goalscorers' page
+      (already a verified source in this YAML), all entries are consistent:
+      - 1930: Guillermo Stábile 8 goals (Argentina) — source: 1930_FIFA_World_Cup
+      - 1934: Oldřich Nejedlý 5 goals (Czechoslovakia) — noted; source URL needed: https://en.wikipedia.org/wiki/1934_FIFA_World_Cup
+      - 1938: Leônidas 7 goals (Brazil) — noted; source: https://en.wikipedia.org/wiki/1938_FIFA_World_Cup
+      - 1950: Ademir 8 goals (Brazil) — verified
+      - 1954: Sándor Kocsis 11 goals (Hungary) — verified
+      - 1958: Just Fontaine 13 goals (France) — verified (all-time record)
+      - 1962: 6-way tie at 6 goals (Garrincha, Vavá, Jerkovic, Sánchez, Albert, Ivanov) — verified
+      - 1966: Eusébio 9 goals (Portugal) — verified
+      - 1970: Gerd Müller 10 goals (West Germany) — verified
+      - 1974: Grzegorz Lato 7 goals (Poland) — verified
+      - 1978: Mario Kempes 6 goals (Argentina) — verified
+      - 1982: Paolo Rossi 6 goals (Italy) — verified
+      - 1986: Gary Lineker 6 goals (England) — verified
+      - 1990: Salvatore Schillaci 6 goals (Italy) — verified
+      - 1994: Stoichkov & Salenko tied 6 goals each — verified
+      - 1998: Davor Šuker 6 goals (Croatia) — verified
+      - 2002: Ronaldo 8 goals (Brazil) — verified
+      - 2006: Miroslav Klose 5 goals (Germany) — verified
+      - 2010: 4-way tie at 5 goals (Müller, Villa, Sneijder, Forlán) — verified
+      - 2014: James Rodríguez 6 goals (Colombia) — verified
+      - 2018: Harry Kane 6 goals (England) — verified
+      - 2022: Kylian Mbappé 8 goals (France) — verified
+    action_for_generate: >
+      Add source_url for 1934 and 1938 editions in facts:
+      https://en.wikipedia.org/wiki/1934_FIFA_World_Cup
+      https://en.wikipedia.org/wiki/1938_FIFA_World_Cup
+      The 1962 tie means any single-player 'who was top scorer' question is ambiguous —
+      do NOT generate that question type for 1962. Instead use: 'How many goals did the
+      top scorers of the 1962 World Cup score?' Answer: 6.
+
+  OQ3_pool_split_final_scores:
+    status: resolved
+    decision: SPLIT
+    rationale: >
+      Regulation scores ('4-2', '3-1') range 3-5 chars.
+      Penalty/AET scores ('3-3 (a.e.t., 4-2 pens)', '0-0 (a.e.t., 3-2 pens)') range 14-24 chars.
+      Max/min ratio = 8x — far exceeds the 3x homogeneity limit.
+      Mixing them creates length tells that make questions trivially easy.
+    pools_created:
+      - id: regulation_final_scores_mens
+        contains: >
+          All Men's WC finals decided in regulation or extra time WITHOUT a penalty shootout:
+          1930 (4-2), 1934 (2-1 a.e.t.), 1938 (4-2), 1950 (2-1), 1954 (3-2),
+          1958 (5-2), 1962 (3-1), 1966 (4-2 a.e.t.), 1970 (4-1), 1974 (2-1),
+          1978 (3-1 a.e.t.), 1982 (3-1), 1986 (3-2), 1990 (1-0), 1998 (3-0),
+          2002 (2-0), 2010 (1-0 a.e.t.), 2014 (1-0 a.e.t.), 2018 (4-2)
+          [19 entries, range 3-11 chars — homogeneous]
+        note: >
+          AET scores like '4-2 (a.e.t.)' and '3-1 (a.e.t.)' are 10-14 chars vs bare '4-2'
+          at 3 chars — still a mild heterogeneity concern. Consider two sub-approaches:
+          1) Strip the AET notation and just list the score (simpler, loses context)
+          2) Keep AET notation only for scores where the match went to extra time (more accurate)
+          RECOMMENDATION: Strip AET from the score field; put AET context in the quizQuestion
+          text (e.g., 'What was the final score of the 1966 World Cup Final, played at Wembley
+          after extra time?'). Answers remain bare scores like '4-2'.
+      - id: penalty_final_scores
+        contains: >
+          Finals decided by penalty shootout (both tournaments):
+          1994 Men's: '0-0 (3-2 pens)' [Brazil beat Italy]
+          2006 Men's: '1-1 (5-3 pens)' [Italy beat France]
+          2022 Men's: '3-3 (4-2 pens)' [Argentina beat France]
+          1999 Women's: '0-0 (5-4 pens)' [USA beat China]
+          2011 Women's: '2-2 (3-1 pens)' [Japan beat USA]
+          [5 entries — pad to 15 with synthetic distractors]
+        synthetic_distractors_needed: 10
+        note: >
+          Synthetic distractors should be plausible-but-fictional penalty shootout outcomes,
+          e.g., '1-1 (4-3 pens)', '2-2 (4-2 pens)', '0-0 (4-2 pens)'.
+          Never use real historical scores as synthetics.
+
+  OQ4_marta_goal_count:
+    status: resolved
+    decision: "17 goals confirmed"
+    finding: >
+      The discover YAML states Marta scored 17 World Cup goals in 6 World Cups (2003-2023).
+      Wikipedia's 'Marta (footballer)' article (accessed 2026-04-09 per discover YAML sources)
+      is cited as the source. The Women's WC records page (also a verified source) corroborates.
+      The generate phase should use exactly 17 with source URL:
+      https://en.wikipedia.org/wiki/Marta_(footballer)
+    note: >
+      Marta's tally could theoretically increase if she plays in a future tournament
+      (2027 Women's WC). The fact should be worded 'As of 2023' to future-proof it.
+
+  OQ5_wikidata_sparql:
+    status: unavailable
+    finding: >
+      The mcp__wikidata__query tool was not available in this session (same result as discover phase).
+      All structured data was already sourced from Wikipedia in the discover phase and is complete
+      for all 22 Men's and 9 Women's editions. No blocking gap from SPARQL unavailability.
+      The generate phase may retry SPARQL if the tool becomes available, to cross-reference
+      dates and crowd figures. No generate-phase work is blocked.
+
+  OQ6_west_germany_naming:
+    status: resolved
+    decision: >
+      Use period-accurate names throughout the deck:
+      - 'West Germany' for editions: 1954, 1966 (runner-up), 1974, 1978 (runner-up), 1982 (runner-up), 1986 (runner-up), 1990
+      - 'Germany' for editions: 1994 onward
+      Miroslav Klose's career (2002-2014) falls entirely in the 'Germany' era.
+      Gerd Müller (1970, 1974) and Franz Beckenbauer (1966, 1970, 1974) are 'West Germany' players.
+    synonym_group: >
+      Do NOT create a synonym group making Germany ≡ West Germany for distractor purposes.
+      They are politically and temporally distinct. A question asking 'Who won the 1990 World Cup?'
+      with answer 'West Germany' should NOT offer 'Germany' as a distractor (it would be too
+      close to correct in casual usage and would confuse players).
+      Instead: treat 'West Germany' and 'Germany' as two distinct entries in winner_country_names
+      pool. Fact count: West Germany 3 wins, Germany 1 win = 4 entries total for Germany's dynasty.
+    pool_note: >
+      The winner_country_names_mens pool will contain both 'West Germany' and 'Germany' as
+      separate members. The pool annotation should note this temporal distinction so the
+      generate phase knows to use period-accurate names in quizQuestions.
+
+  OQ7_player_pool_split:
+    status: resolved
+    decision: SPLIT into men_player_names and women_player_names
+    rationale: >
+      A question about Pelé (Men's, 1958-1970) should never have Marta (Women's, 2003-2023)
+      as a distractor — wrong era, wrong tournament, wrong gender category. Mixing them:
+      1) Makes distractors obviously eliminable on category grounds
+      2) Creates confusion about which tournament is being asked about
+      3) Produces semantically incoherent answer sets
+      Separate pools keep every distractor plausible within the question's context.
+
+  OQ8_rose_bowl_attendance:
+    status: resolved
+    finding: >
+      Wikipedia '1999 FIFA Women's World Cup Final' article (cited in discover YAML with
+      source URL https://en.wikipedia.org/wiki/1999_FIFA_Women%27s_World_Cup_Final) gives
+      attendance as 90,185.
+      This figure IS confirmed as the world record attendance for a women's sporting event
+      at the time. As of 2023, the record still stands for Women's World Cup finals —
+      the 2023 final at Stadium Australia drew 75,784 (smaller).
+      The record was later broken by other women's events but remains the Women's WC
+      attendance record.
+    fact_framing: >
+      'The 1999 Women's World Cup Final at the Rose Bowl was attended by 90,185 fans —
+      still the largest crowd ever at a Women's World Cup Final.'
+      Source: https://en.wikipedia.org/wiki/1999_FIFA_Women%27s_World_Cup_Final
+
+  OQ9_morocco_2022_framing:
+    status: resolved
+    finding: >
+      Wikipedia '2022 FIFA World Cup' confirms:
+      Morocco reached the semi-finals, defeating Spain (on penalties) and Portugal.
+      They are correctly described as 'the first African team' and 'the first Arab team'
+      to reach a World Cup semi-final. 'Arab nation' is established in football and political
+      usage and is not problematic in this context — FIFA itself used this framing.
+      Morocco lost the semi-final 2-0 to France and finished fourth (beat Croatia 2-1
+      in the third-place match).
+    fact_framing: >
+      Use: 'Morocco became the first African and first Arab nation to reach the
+      FIFA World Cup semi-finals, at the 2022 tournament in Qatar.'
+      Source: https://en.wikipedia.org/wiki/2022_FIFA_World_Cup
+
+# ============================================================
+# FINALIZED ANSWER TYPE POOLS
+# ============================================================
+# Replaces answer_type_pools_preview from discover phase.
+# Every pool: id, name, semantic_type, estimated_size_from_facts,
+# syntheticDistractors_needed, homogeneity_notes, split_rationale,
+# example_members, example_synthetic_distractors.
+# ============================================================
+answer_type_pools:
+
+  # --- HOST COUNTRY POOLS ---
+
+  - id: mens_host_country_names
+    name: "Men's World Cup Host Countries"
+    semantic_type: country_name
+    estimated_size_from_facts: 19
+    syntheticDistractors_needed: 0
+    homogeneity_notes: >
+      All are country names. No city names, venue names, or regions mixed in.
+      Length range: 4 chars (Italy, Spain) to 13 chars (South Africa).
+      Max/min ratio ~3.25x — borderline. Given that all are country names,
+      homogeneity is semantic not length-based; mark homogeneityExempt.
+    homogeneityExempt: true
+    homogeneityExemptNote: >
+      Country name length variation is inherent geographic variation, not
+      a pool design error. All distractors are plausible country names.
+    split_rationale: "Separate from Women's host pool to avoid cross-tournament confusion."
+    example_members:
+      - Uruguay
+      - Italy
+      - France
+      - Brazil
+      - Switzerland
+      - Sweden
+      - Chile
+      - England
+      - Mexico
+      - "West Germany"
+      - Argentina
+      - Spain
+      - "United States"
+      - Japan
+      - "South Korea / Japan"
+      - Germany
+      - "South Africa"
+      - Russia
+      - Qatar
+    pool_design_note: >
+      'South Korea / Japan' (co-hosts 2002) should be treated as one answer.
+      19 unique host entries already exceed the 15-member minimum — no synthetics needed.
+      Distractors for 'Which country hosted the 2022 WC?' naturally come from this pool.
+
+  - id: womens_host_country_names
+    name: "Women's World Cup Host Countries"
+    semantic_type: country_name
+    estimated_size_from_facts: 7
+    syntheticDistractors_needed: 10
+    homogeneity_notes: "All country names. Small pool — needs synthetic padding."
+    homogeneityExempt: true
+    homogeneityExemptNote: "Country name length variation is inherent geographic variation."
+    split_rationale: "Separate from Men's host pool."
+    example_members:
+      - China
+      - Sweden
+      - "United States"
+      - Germany
+      - France
+      - Canada
+      - "Australia / New Zealand"
+    example_synthetic_distractors:
+      - Norway
+      - England
+      - Brazil
+      - Japan
+      - "South Africa"
+      - Spain
+      - Netherlands
+      - Italy
+      - "South Korea"
+      - Mexico
+
+  # --- WINNER / RUNNER-UP COUNTRY POOLS ---
+
+  - id: winner_country_names_mens
+    name: "Men's World Cup Champion Nations"
+    semantic_type: country_name
+    estimated_size_from_facts: 10
+    syntheticDistractors_needed: 5
+    homogeneity_notes: >
+      Country names only. Includes both 'West Germany' (3 wins) and 'Germany' (1 win)
+      as distinct entries. These are 10 distinct country-era entries:
+      Uruguay (×2), Italy (×4), West Germany (×3), Brazil (×5), England (×1),
+      Argentina (×3), France (×2), Germany (×1), Spain (×1).
+      For distractor purposes, each unique country name is one pool member.
+    homogeneityExempt: true
+    homogeneityExemptNote: "Country name length variation inherent."
+    split_rationale: >
+      Separate from Women's winner pool. Providing 'United States' as a distractor
+      for 'Who won the Men's 1966 WC?' would be historically absurd.
+    example_members:
+      - Uruguay
+      - Italy
+      - "West Germany"
+      - Brazil
+      - England
+      - Argentina
+      - France
+      - Germany
+      - Spain
+      - "West Germany"
+    example_synthetic_distractors:
+      - Netherlands
+      - Portugal
+      - Croatia
+      - Hungary
+      - Czechoslovakia
+    pool_design_note: >
+      Brazil has 5 entries, Germany/West Germany combined 4, Italy 4, Argentina 3 —
+      these repeat across multiple tournament facts but each fact has its own question.
+      The pool members list for runtime use should be unique country names (8 distinct),
+      not repeated entries. Synthetic distractors should be strong runner-up nations.
+
+  - id: winner_country_names_womens
+    name: "Women's World Cup Champion Nations"
+    semantic_type: country_name
+    estimated_size_from_facts: 5
+    syntheticDistractors_needed: 10
+    homogeneity_notes: "5 unique champions. Very small — pad aggressively."
+    homogeneityExempt: true
+    homogeneityExemptNote: "Country name length variation inherent."
+    example_members:
+      - "United States"
+      - Norway
+      - Germany
+      - Japan
+      - Spain
+    example_synthetic_distractors:
+      - Sweden
+      - China
+      - Brazil
+      - England
+      - Australia
+      - Netherlands
+      - France
+      - Canada
+      - "South Korea"
+      - Italy
+
+  - id: runner_up_country_names_mens
+    name: "Men's World Cup Runner-Up Nations"
+    semantic_type: country_name
+    estimated_size_from_facts: 13
+    syntheticDistractors_needed: 2
+    homogeneity_notes: >
+      Country names only. Overlaps significantly with winner_country_names_mens
+      (Hungary, Czechoslovakia, Netherlands, Croatia appear only as runners-up).
+      Use this pool for 'Which country finished second in the X World Cup?' questions.
+    homogeneityExempt: true
+    homogeneityExemptNote: "Country name length variation inherent."
+    example_members:
+      - Argentina
+      - Czechoslovakia
+      - Hungary
+      - Sweden
+      - Brazil
+      - Italy
+      - Netherlands
+      - "West Germany"
+      - Germany
+      - France
+      - Croatia
+      - England
+      - China
+
+  # --- FINAL SCORE POOLS (SPLIT) ---
+
+  - id: regulation_final_scores_mens
+    name: "Men's WC Final Scores (Regulation/AET, No Shootout)"
+    semantic_type: match_score
+    estimated_size_from_facts: 19
+    syntheticDistractors_needed: 0
+    homogeneity_notes: >
+      Bare scores in 'X-Y' format. Range: 3-5 chars ('4-2', '4-1', '5-2').
+      19 finals were decided without a penalty shootout. All entries are short
+      and length-homogeneous. The AET notation is stripped from the score answer —
+      context about extra time goes in the question stem, not the answer.
+    example_members:
+      - "4-2"
+      - "2-1"
+      - "4-2"
+      - "3-2"
+      - "4-1"
+      - "5-2"
+      - "3-1"
+      - "1-0"
+      - "3-0"
+      - "2-0"
+    pool_design_note: >
+      Several editions share the same score (4-2 appears for 1930, 1938, 2018;
+      3-1 appears for 1962, 1982). This is fine — different questions reference
+      different years. For runtime distractor selection, duplicates in the answer
+      list are deduplicated. The generate phase should write 19 distinct facts,
+      each tied to a specific year/match context.
+
+  - id: penalty_final_scores
+    name: "WC Finals Decided by Penalty Shootout"
+    semantic_type: match_score_with_penalties
+    estimated_size_from_facts: 5
+    syntheticDistractors_needed: 10
+    homogeneity_notes: >
+      Format: 'X-X (Y-Z pens)'. Consistent format across all 5 members.
+      Range: 14-22 chars. Homogeneous within pool.
+      Separate from regulation_final_scores to prevent length tells.
+    example_members:
+      - "0-0 (3-2 pens)"
+      - "1-1 (5-3 pens)"
+      - "3-3 (4-2 pens)"
+      - "0-0 (5-4 pens)"
+      - "2-2 (3-1 pens)"
+    example_synthetic_distractors:
+      - "1-1 (4-3 pens)"
+      - "0-0 (4-2 pens)"
+      - "2-2 (4-2 pens)"
+      - "1-1 (3-2 pens)"
+      - "0-0 (6-5 pens)"
+      - "2-2 (5-3 pens)"
+      - "1-1 (4-2 pens)"
+      - "0-0 (4-3 pens)"
+      - "3-3 (5-4 pens)"
+      - "2-2 (4-3 pens)"
+    pool_design_note: >
+      Only 5 real facts (1994M, 2006M, 2022M, 1999W, 2011W) — must pad to 15.
+      Synthetic distractors must be plausible-but-fictional penalty shootout outcomes.
+      NEVER use real historical WC scorelines as synthetics.
+
+  # --- PLAYER NAME POOLS ---
+
+  - id: men_player_names
+    name: "Men's World Cup Legendary Players"
+    semantic_type: person_name
+    estimated_size_from_facts: 20
+    syntheticDistractors_needed: 0
+    homogeneity_notes: >
+      Person names only. Length range: 4 chars ('Pelé') to 20 chars
+      ('Salvatore Schillaci'). Max/min ratio = 5x — exceeds 3x threshold.
+      However, this pool will be split at generate phase if analysis confirms
+      the problem. See pool_design_note.
+    homogeneityExempt: false
+    split_required: conditional
+    split_condition: >
+      Run node scripts/pool-homogeneity-analysis.mjs after generate phase.
+      If max/min ratio > 3x: split into:
+        men_player_names_short (≤8 chars): Pelé, Eusébio, Ronaldo, Messi, Romário
+        men_player_names_full (>8 chars): Diego Maradona, Miroslav Klose, Zinedine Zidane, etc.
+    example_members:
+      - "Pelé"
+      - "Diego Maradona"
+      - "Lionel Messi"
+      - "Miroslav Klose"
+      - "Just Fontaine"
+      - "Johan Cruyff"
+      - "Zinedine Zidane"
+      - "Ronaldo"
+      - "Kylian Mbappé"
+      - "Gerd Müller"
+      - "Luka Modrić"
+      - "Paolo Rossi"
+      - "Franz Beckenbauer"
+      - "Ronaldinho"
+      - "Eusébio"
+      - "Garrincha"
+      - "Mario Kempes"
+      - "Romário"
+      - "Salvatore Schillaci"
+      - "Gary Lineker"
+    pool_design_note: >
+      20 verified legendary players from discover YAML. No synthetics needed given pool size.
+      All names are real historical players, semantically homogeneous (men who played in WC).
+      The length issue is acknowledged — conditional split at QA stage.
+
+  - id: women_player_names
+    name: "Women's World Cup Legendary Players"
+    semantic_type: person_name
+    estimated_size_from_facts: 12
+    syntheticDistractors_needed: 3
+    homogeneity_notes: >
+      Person names only. Length range: 5 chars ('Marta') to 15 chars
+      ('Aitana Bonmatí'). Max/min ratio = 3x — at the limit.
+      Separated from men's pool per OQ7 decision.
+    homogeneityExempt: false
+    example_members:
+      - "Marta"
+      - "Abby Wambach"
+      - "Birgit Prinz"
+      - "Sun Wen"
+      - "Michelle Akers"
+      - "Homare Sawa"
+      - "Megan Rapinoe"
+      - "Carli Lloyd"
+      - "Sam Kerr"
+      - "Aitana Bonmatí"
+      - "Hege Riise"
+      - "Brandi Chastain"
+    example_synthetic_distractors:
+      - "Alex Morgan"
+      - "Formiga"
+      - "Hope Solo"
+
+  # --- YEAR POOLS ---
+
+  - id: mens_wc_years
+    name: "Men's World Cup Tournament Years"
+    semantic_type: year_value
+    estimated_size_from_facts: 22
+    syntheticDistractors_needed: 0
+    homogeneity_notes: >
+      4-digit year integers only. All are valid Men's WC years: 1930-2022.
+      No Women's WC years mixed in (OQ7 decision extended to years).
+      22 members — exceeds 15 minimum. Homogeneous.
+    example_members:
+      - 1930
+      - 1934
+      - 1938
+      - 1950
+      - 1954
+      - 1958
+      - 1962
+      - 1966
+      - 1970
+      - 1974
+      - 1978
+      - 1982
+      - 1986
+      - 1990
+      - 1994
+      - 1998
+      - 2002
+      - 2006
+      - 2010
+      - 2014
+      - 2018
+      - 2022
+
+  - id: womens_wc_years
+    name: "Women's World Cup Tournament Years"
+    semantic_type: year_value
+    estimated_size_from_facts: 9
+    syntheticDistractors_needed: 6
+    homogeneity_notes: >
+      4-digit year integers only: 1991-2023.
+      Separate from mens_wc_years — '1930' is not a plausible distractor
+      for Women's WC year questions (tournament didn't exist until 1991).
+    example_members:
+      - 1991
+      - 1995
+      - 1999
+      - 2003
+      - 2007
+      - 2011
+      - 2015
+      - 2019
+      - 2023
+    example_synthetic_distractors:
+      - 1993
+      - 1997
+      - 2001
+      - 2005
+      - 2009
+      - 2013
+
+  # --- VENUE / STADIUM POOLS ---
+
+  - id: venue_names
+    name: "Famous World Cup Venues"
+    semantic_type: venue_name
+    estimated_size_from_facts: 15
+    syntheticDistractors_needed: 0
+    homogeneity_notes: >
+      Stadium names only. No city names, country names mixed in.
+      Length range: 9 chars ('Rose Bowl') to 28 chars ('Råsunda Stadium, Solna').
+      Trim to short-form venue names (e.g., 'Estadio Nacional' not the full long form).
+      Target range: 9-22 chars. Conditional split if needed.
+    example_members:
+      - "Estadio Centenario"
+      - "Maracanã Stadium"
+      - "Wembley Stadium"
+      - "Estadio Azteca"
+      - "Rose Bowl"
+      - "Olympiastadion Munich"
+      - "Stade de France"
+      - "Soccer City"
+      - "Lusail Stadium"
+      - "Råsunda Stadium"
+      - "Wankdorf Stadium"
+      - "Tianhe Stadium"
+      - "Stadium Australia"
+      - "Estadio Monumental"
+      - "Santiago Bernabéu"
+    pool_design_note: >
+      Both Men's and Women's WC venues included in one pool — venue names are
+      semantically homogeneous regardless of tournament gender. 15 members at minimum;
+      the generate phase will source the primary final venue per tournament.
+
+  # --- NUMERIC POOLS ---
+
+  - id: national_title_counts
+    name: "World Cup Title Counts by Nation"
+    semantic_type: integer_count
+    estimated_size_from_facts: 6
+    syntheticDistractors_needed: 9
+    homogeneity_notes: >
+      Integer counts only: 1, 2, 3, 4, 5. No mixing with goal counts or years.
+      Semantically: 'how many World Cups has X won?'
+      Brazil = 5, Germany (combined) = 4, Italy = 4, Argentina = 3, France = 2,
+      Uruguay = 2, England = 1, Spain = 1, USA Women = 4, Germany Women = 2.
+    example_members:
+      - "5"
+      - "4"
+      - "3"
+      - "2"
+      - "1"
+    example_synthetic_distractors:
+      - "6"
+      - "7"
+      - "8"
+      - "0"
+      - "9"
+      - "10"
+      - "11"
+      - "12"
+      - "15"
+    pool_design_note: >
+      Only 5 distinct integer values in the real data (1-5). Pad aggressively with
+      implausible but not impossible integers (6, 7, 8, 0, etc.).
+      Questions must specify Men's or Women's to avoid ambiguity.
+
+  - id: world_cup_goal_tallies
+    name: "World Cup Career/Tournament Goal Counts"
+    semantic_type: integer_count
+    estimated_size_from_facts: 12
+    syntheticDistractors_needed: 3
+    homogeneity_notes: >
+      Integer goal counts only: tournament records and career records.
+      Range: 5 to 17 (Marta Women's career record to Klose Men's career record).
+      Includes both per-tournament bests and career totals.
+      Questions must specify the context (career vs. single tournament, Men's vs Women's).
+    example_members:
+      - "16"
+      - "15"
+      - "14"
+      - "13"
+      - "12"
+      - "10"
+      - "11"
+      - "9"
+      - "8"
+      - "7"
+      - "6"
+      - "17"
+    example_synthetic_distractors:
+      - "18"
+      - "19"
+      - "20"
+    pool_design_note: >
+      Klose career: 16, Ronaldo career: 15, Müller career: 14, Fontaine tournament: 13,
+      Pelé career: 12, Müller tournament: 10 (1970), Kocsis tournament: 11 (1954),
+      Eusébio tournament: 9 (1966), Stábile tournament: 8 (1930), Lineker career: 10,
+      Marta Women's career: 17, Akers tournament: 10 (1991).
+      Pool is semantically tight (goal counts in WC context).
+
+  # --- AWARD WINNER POOLS ---
+
+  - id: golden_ball_winners_mens
+    name: "Men's World Cup Golden Ball Winners"
+    semantic_type: person_name
+    estimated_size_from_facts: 12
+    syntheticDistractors_needed: 3
+    homogeneity_notes: >
+      Person names only. Range: 7 chars ('Romário') to 19 chars ('Salvatore Schillaci').
+      Max/min ratio ~2.7x — within limit. Homogeneous.
+    example_members:
+      - "Paolo Rossi"
+      - "Diego Maradona"
+      - "Salvatore Schillaci"
+      - "Romário"
+      - "Ronaldo"
+      - "Oliver Kahn"
+      - "Zinedine Zidane"
+      - "Diego Forlán"
+      - "Lionel Messi"
+      - "Luka Modrić"
+      - "Mario Kempes"
+      - "Johan Cruyff"
+    example_synthetic_distractors:
+      - "Pelé"
+      - "Miroslav Klose"
+      - "Kylian Mbappé"
+    pool_design_note: >
+      1982 was first official Golden Ball. 1978 and 1974 had unofficial 'best player'
+      awards (Kempes, Cruyff). Include them with appropriate context in fact explanations.
+      Note: Messi won it twice (2014, 2022) — each is a separate fact with its own year.
+
+  - id: golden_ball_winners_womens
+    name: "Women's World Cup Golden Ball Winners"
+    semantic_type: person_name
+    estimated_size_from_facts: 9
+    syntheticDistractors_needed: 6
+    homogeneity_notes: >
+      Person names only. 9 editions = 9 distinct winners.
+      Range: 5 chars ('Marta') to 15 chars ('Aitana Bonmatí'). Ratio ~3x — at limit.
+    example_members:
+      - "Carin Jennings"
+      - "Hege Riise"
+      - "Sun Wen"
+      - "Birgit Prinz"
+      - "Marta"
+      - "Homare Sawa"
+      - "Carli Lloyd"
+      - "Megan Rapinoe"
+      - "Aitana Bonmatí"
+    example_synthetic_distractors:
+      - "Abby Wambach"
+      - "Alex Morgan"
+      - "Michelle Akers"
+      - "Brandi Chastain"
+      - "Sam Kerr"
+      - "Formiga"
+
+  - id: golden_boot_winners_mens
+    name: "Men's World Cup Golden Boot (Top Scorer) Winners"
+    semantic_type: person_name
+    estimated_size_from_facts: 20
+    syntheticDistractors_needed: 0
+    homogeneity_notes: >
+      Person names only. 22 editions but some are tied (1962, 1994, 2010).
+      Range: 4 chars ('Pelé') to 20 chars ('Salvatore Schillaci').
+      Length heterogeneity risk — conditional split at generate phase.
+    homogeneityExempt: false
+    split_condition: "Run pool-homogeneity-analysis.mjs after generate phase."
+    example_members:
+      - "Guillermo Stábile"
+      - "Just Fontaine"
+      - "Gerd Müller"
+      - "Grzegorz Lato"
+      - "Mario Kempes"
+      - "Paolo Rossi"
+      - "Gary Lineker"
+      - "Salvatore Schillaci"
+      - "Davor Šuker"
+      - "Ronaldo"
+      - "Miroslav Klose"
+      - "James Rodríguez"
+      - "Harry Kane"
+      - "Kylian Mbappé"
+
+  - id: golden_boot_winners_womens
+    name: "Women's World Cup Golden Boot (Top Scorer) Winners"
+    semantic_type: person_name
+    estimated_size_from_facts: 9
+    syntheticDistractors_needed: 6
+    homogeneity_notes: "Person names only. 9 editions, 9 distinct scorers (no ties for sole winner)."
+    example_members:
+      - "Michelle Akers"
+      - "Ann Kristin Aarønes"
+      - "Sun Wen"
+      - "Birgit Prinz"
+      - "Marta"
+      - "Homare Sawa"
+      - "Celia Sasic"
+      - "Megan Rapinoe"
+      - "Hinata Miyazawa"
+    example_synthetic_distractors:
+      - "Abby Wambach"
+      - "Carli Lloyd"
+      - "Alex Morgan"
+      - "Brandi Chastain"
+      - "Sam Kerr"
+      - "Aitana Bonmatí"
+
+  # --- ORDINAL / EDITION POOLS ---
+
+  - id: tournament_edition_ordinals
+    name: "World Cup Edition Numbers"
+    semantic_type: ordinal
+    estimated_size_from_facts: 22
+    syntheticDistractors_needed: 0
+    homogeneity_notes: >
+      Cardinal integers 1-22 for Men's WC editions.
+      Not mixed with Women's edition numbers (1-9) to prevent confusion.
+      Used for 'Which edition of the World Cup was held in X year?' questions.
+    example_members:
+      - "1st"
+      - "2nd"
+      - "3rd"
+      - "4th"
+      - "5th"
+      - "10th"
+      - "15th"
+      - "18th"
+      - "22nd"
+    pool_design_note: >
+      This pool is used sparingly — only for the rare question asking 'which edition?'
+      All 22 are included (22 > 15 minimum). No synthetics needed.
+
+# ============================================================
+# CHAIN THEMES — FINALIZED
+# ============================================================
+chain_themes_finalized:
+
+  - id: mens_world_cup_chain
+    name: "Men's World Cup"
+    chain_theme_id: 0
+    sub_deck_id: mens_world_cup_tournaments
+    description: >
+      The tournament that defines football history — 22 editions from Uruguay 1930 to Qatar 2022.
+      Each era brings new dynasties, upsets, and records. Players who master this chain know the
+      winners, hosts, scorelines, and defining moments of the Men's World Cup across 92 years.
+    imagery: >
+      A gleaming golden trophy (Jules Rimet style) against shifting backdrops — pampas grass,
+      European cathedrals, South American stadiums, Middle Eastern domes. Pixel art. Night sky.
+    sub_deck_fact_ids_pattern: "mens_wc_*"
+    estimated_facts: 90
+    pools_used:
+      - mens_host_country_names
+      - winner_country_names_mens
+      - runner_up_country_names_mens
+      - regulation_final_scores_mens
+      - penalty_final_scores
+      - mens_wc_years
+      - venue_names
+      - golden_ball_winners_mens
+      - golden_boot_winners_mens
+
+  - id: womens_world_cup_chain
+    name: "Women's World Cup"
+    chain_theme_id: 1
+    sub_deck_id: womens_world_cup_tournaments
+    description: >
+      Nine editions of the Women's World Cup from China 1991 to Australia/New Zealand 2023.
+      USA's dominance, Japan's miracle, Germany's back-to-back titles, Spain's rise.
+      Players who master this chain know the champions, moments, and records of the women's game.
+    imagery: >
+      A FIFA Women's World Cup trophy with a golden figure over a football globe, against
+      stadiums from across the world — Rose Bowl, Stadium Australia, Stade de Lyon. Pixel art.
+    sub_deck_fact_ids_pattern: "womens_wc_*"
+    estimated_facts: 55
+    pools_used:
+      - womens_host_country_names
+      - winner_country_names_womens
+      - regulation_final_scores_mens
+      - penalty_final_scores
+      - womens_wc_years
+      - venue_names
+      - golden_ball_winners_womens
+      - golden_boot_winners_womens
+
+  - id: world_cup_legends_chain
+    name: "World Cup Legends"
+    chain_theme_id: 2
+    sub_deck_id: legendary_players
+    description: >
+      The players who transcended the sport — Pelé, Maradona, Messi, Marta, and 25+ more
+      legends whose World Cup performances became permanent chapters of football history.
+      Facts cover nationalities, records, tournament years, and defining moments.
+    imagery: >
+      Silhouettes of iconic player poses — Pelé's scissor kick, Maradona's clenched fist,
+      Messi's arms wide in celebration. Pixel art with golden outlines. Dark pitch background.
+    sub_deck_fact_ids_pattern: "legend_*"
+    estimated_facts: 80
+    pools_used:
+      - men_player_names
+      - women_player_names
+      - mens_wc_years
+      - womens_wc_years
+      - national_title_counts
+      - world_cup_goal_tallies
+      - golden_ball_winners_mens
+      - golden_ball_winners_womens
+
+  - id: unforgettable_moments_chain
+    name: "Unforgettable Moments"
+    chain_theme_id: 3
+    sub_deck_id: iconic_matches_moments
+    description: >
+      The moments that stopped the world — the Maracanazo, the Miracle of Bern, the Hand of God,
+      the Mineirazo, Brandi Chastain's penalty, the 2022 final. These facts test knowledge of
+      the specific matches and context behind football's most extraordinary moments.
+    imagery: >
+      A montage of dramatic scenes: a penalty kick silhouette, a packed stadium at night,
+      floodlights and confetti. Dark and cinematic pixel art. Crowd roaring.
+    sub_deck_fact_ids_pattern: "moment_*"
+    estimated_facts: 45
+    pools_used:
+      - men_player_names
+      - women_player_names
+      - mens_wc_years
+      - womens_wc_years
+      - regulation_final_scores_mens
+      - penalty_final_scores
+      - world_cup_goal_tallies
+      - mens_host_country_names
+
+  - id: football_dynasties_chain
+    name: "Football Dynasties"
+    chain_theme_id: 4
+    sub_deck_id: national_team_legacies
+    description: >
+      The nations that shaped the World Cup — Brazil's five titles, Germany's eight finals,
+      Italy's back-to-back, the USA women's four-peat. Facts cover dynasty-level records:
+      total titles, title years, and the facts that define each national football identity.
+    imagery: >
+      National flags rendered as pixel art shields arranged like a dynasty tree.
+      Brazil gold and green center-stage. Dark background, gold accents.
+    sub_deck_fact_ids_pattern: "dynasty_*"
+    estimated_facts: 30
+    pools_used:
+      - winner_country_names_mens
+      - winner_country_names_womens
+      - national_title_counts
+      - mens_wc_years
+      - womens_wc_years
+      - men_player_names
+      - women_player_names
+
+# ============================================================
+# QUESTION TEMPLATES
+# ============================================================
+# 4-8 templates per sub-deck. Each specifies:
+#   template_id, target_sub_deck, quizMode, template_string,
+#   answerTypePoolId, example_rendered
+# Anti-self-answering: templates MUST NOT contain the correct answer.
+# ============================================================
+question_templates:
+
+  # --- SUB-DECK 1: Men's World Cup Tournaments ---
+
+  - template_id: mens_wc_winner
+    target_sub_deck: mens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "Which country won the {year} FIFA World Cup?"
+    answerTypePoolId: winner_country_names_mens
+    notes: "Year is in the question; answer is the winning country. No self-answering risk."
+    example_rendered:
+      question: "Which country won the 1970 FIFA World Cup?"
+      correct: "Brazil"
+      distractors: ["Italy", "West Germany", "England"]
+
+  - template_id: mens_wc_host
+    target_sub_deck: mens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "Which country hosted the {year} FIFA World Cup?"
+    answerTypePoolId: mens_host_country_names
+    notes: "Host is distinct from winner in 20+ editions — low ambiguity risk."
+    example_rendered:
+      question: "Which country hosted the 1986 FIFA World Cup?"
+      correct: "Mexico"
+      distractors: ["Argentina", "Brazil", "Colombia"]
+
+  - template_id: mens_wc_runner_up
+    target_sub_deck: mens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "Which country was the runner-up in the {year} FIFA World Cup Final?"
+    answerTypePoolId: runner_up_country_names_mens
+    notes: "Phrasing avoids saying 'lost' — more neutral. Runner-up is unambiguous."
+    example_rendered:
+      question: "Which country was the runner-up in the 2022 FIFA World Cup Final?"
+      correct: "France"
+      distractors: ["Morocco", "Croatia", "Netherlands"]
+
+  - template_id: mens_wc_top_scorer
+    target_sub_deck: mens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "Who was the top scorer (Golden Boot) at the {year} FIFA World Cup?"
+    answerTypePoolId: golden_boot_winners_mens
+    notes: >
+      Do NOT generate this template for 1962 (6-way tie) or 1994 (2-way tie) or
+      2010 (4-way tie) — use the goal tally template instead for those editions.
+    example_rendered:
+      question: "Who was the top scorer (Golden Boot) at the 1966 FIFA World Cup?"
+      correct: "Eusébio"
+      distractors: ["Bobby Charlton", "Garrincha", "Just Fontaine"]
+
+  - template_id: mens_wc_golden_ball
+    target_sub_deck: mens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "Who won the Golden Ball (best player) award at the {year} FIFA World Cup?"
+    answerTypePoolId: golden_ball_winners_mens
+    notes: "Only for editions 1982-2022 where the award was officially given."
+    example_rendered:
+      question: "Who won the Golden Ball (best player) award at the 2006 FIFA World Cup?"
+      correct: "Zinedine Zidane"
+      distractors: ["Miroslav Klose", "Gianluigi Buffon", "Ronaldo"]
+
+  - template_id: mens_wc_final_score
+    target_sub_deck: mens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "What was the final score of the {year} FIFA World Cup Final between {winner} and {runner_up}?"
+    answerTypePoolId: regulation_final_scores_mens
+    notes: >
+      Winner and runner-up are in the question (both known) — no self-answering risk for the
+      score itself. Only use this template for regulation/AET finals (not penalty shootouts).
+      For penalty finals, use the penalty_final_scores pool and include 'decided on penalties' in stem.
+    example_rendered:
+      question: "What was the final score of the 1970 FIFA World Cup Final between Brazil and Italy?"
+      correct: "4-1"
+      distractors: ["3-1", "5-2", "2-1"]
+
+  - template_id: mens_wc_year_of_host
+    target_sub_deck: mens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "In what year did {country} first host the FIFA World Cup?"
+    answerTypePoolId: mens_wc_years
+    notes: >
+      'First host' framing avoids ambiguity for repeat hosts (Mexico hosted 1970 and 1986).
+      For non-repeat hosts, just 'In what year did {country} host the World Cup?'
+    example_rendered:
+      question: "In what year did Japan co-host the FIFA World Cup?"
+      correct: "2002"
+      distractors: ["1998", "2006", "2010"]
+
+  - template_id: mens_wc_tournament_venue
+    target_sub_deck: mens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "In which stadium was the {year} FIFA World Cup Final played?"
+    answerTypePoolId: venue_names
+    notes: "Venue name is fully separate from winner/host — no self-answering risk."
+    example_rendered:
+      question: "In which stadium was the 1950 FIFA World Cup Final played?"
+      correct: "Maracanã Stadium"
+      distractors: ["Estadio Centenario", "Estadio Azteca", "Rose Bowl"]
+
+  # --- SUB-DECK 2: Women's World Cup Tournaments ---
+
+  - template_id: womens_wc_winner
+    target_sub_deck: womens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "Which country won the {year} FIFA Women's World Cup?"
+    answerTypePoolId: winner_country_names_womens
+    notes: "Women's tournament specified explicitly to prevent men's/women's confusion."
+    example_rendered:
+      question: "Which country won the 2011 FIFA Women's World Cup?"
+      correct: "Japan"
+      distractors: ["United States", "Germany", "Sweden"]
+
+  - template_id: womens_wc_host
+    target_sub_deck: womens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "Which country hosted the {year} FIFA Women's World Cup?"
+    answerTypePoolId: womens_host_country_names
+    notes: "2003 hosted by USA after SARS outbreak; correct answer is 'United States'."
+    example_rendered:
+      question: "Which country hosted the 2007 FIFA Women's World Cup?"
+      correct: "China"
+      distractors: ["Germany", "France", "Japan"]
+
+  - template_id: womens_wc_golden_ball
+    target_sub_deck: womens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "Who won the Golden Ball (best player) at the {year} FIFA Women's World Cup?"
+    answerTypePoolId: golden_ball_winners_womens
+    notes: "All 9 Women's WC editions have a Golden Ball winner."
+    example_rendered:
+      question: "Who won the Golden Ball (best player) at the 2019 FIFA Women's World Cup?"
+      correct: "Megan Rapinoe"
+      distractors: ["Carli Lloyd", "Alex Morgan", "Homare Sawa"]
+
+  - template_id: womens_wc_golden_boot
+    target_sub_deck: womens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "Who was the top scorer (Golden Boot) at the {year} FIFA Women's World Cup?"
+    answerTypePoolId: golden_boot_winners_womens
+    example_rendered:
+      question: "Who was the top scorer (Golden Boot) at the 2007 FIFA Women's World Cup?"
+      correct: "Marta"
+      distractors: ["Birgit Prinz", "Abby Wambach", "Sun Wen"]
+
+  - template_id: womens_wc_penalty_final
+    target_sub_deck: womens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "What was the score (including penalty shootout) when {winner} beat {runner_up} in the {year} Women's World Cup Final?"
+    answerTypePoolId: penalty_final_scores
+    notes: "Only for 1999 and 2011 Women's WC finals."
+    example_rendered:
+      question: "What was the score (including penalty shootout) when the United States beat China in the 1999 Women's World Cup Final?"
+      correct: "0-0 (5-4 pens)"
+      distractors: ["1-0", "2-1", "0-0 (4-3 pens)"]
+
+  - template_id: womens_wc_attendance_record
+    target_sub_deck: womens_world_cup_tournaments
+    quizMode: multiple_choice
+    template_string: "How many fans attended the 1999 FIFA Women's World Cup Final at the Rose Bowl — a world record for women's sports at the time?"
+    answerTypePoolId: world_cup_goal_tallies
+    notes: >
+      This is a fixed-fact question (one specific fact); the answer pool here is used loosely.
+      Actually better as a fill_blank question. The answer '90,185' should be a separate
+      numeric pool or a standalone fact with synthetic numeric distractors.
+      Generate phase should handle this as a standalone fact with custom distractors.
+    example_rendered:
+      question: "How many fans attended the 1999 FIFA Women's World Cup Final at the Rose Bowl — a world record for women's sports at the time?"
+      correct: "90,185"
+      distractors: ["75,784", "85,000", "100,000"]
+
+  # --- SUB-DECK 3: Legendary Players ---
+
+  - template_id: legend_nationality
+    target_sub_deck: legendary_players
+    quizMode: multiple_choice
+    template_string: "Which country did {player} represent at the FIFA World Cup?"
+    answerTypePoolId: winner_country_names_mens
+    notes: "Player name in the question; country is the answer. No self-answering risk."
+    example_rendered:
+      question: "Which country did Just Fontaine represent at the FIFA World Cup?"
+      correct: "France"
+      distractors: ["Belgium", "Italy", "Brazil"]
+
+  - template_id: legend_wc_goals_career
+    target_sub_deck: legendary_players
+    quizMode: multiple_choice
+    template_string: "How many goals did {player} score in total across their World Cup career?"
+    answerTypePoolId: world_cup_goal_tallies
+    example_rendered:
+      question: "How many goals did Miroslav Klose score in total across his World Cup career?"
+      correct: "16"
+      distractors: ["15", "14", "12"]
+
+  - template_id: legend_tournament_record
+    target_sub_deck: legendary_players
+    quizMode: multiple_choice
+    template_string: "How many goals did {player} score at the {year} FIFA World Cup — an all-time record for a single tournament?"
+    answerTypePoolId: world_cup_goal_tallies
+    notes: "Only for Just Fontaine (1958, 13 goals) and similar single-tournament records."
+    example_rendered:
+      question: "How many goals did Just Fontaine score at the 1958 FIFA World Cup — an all-time record for a single tournament?"
+      correct: "13"
+      distractors: ["11", "10", "12"]
+
+  - template_id: legend_world_cups_won
+    target_sub_deck: legendary_players
+    quizMode: multiple_choice
+    template_string: "How many FIFA World Cup titles did {player} win during their career?"
+    answerTypePoolId: national_title_counts
+    notes: >
+      Only use for players with a clear title count (Pelé 3, Messi 1, etc.).
+      Do not use for players who won 0 titles unless question framing makes this interesting
+      (e.g., Johan Cruyff — 0 despite reaching the 1974 final).
+    example_rendered:
+      question: "How many FIFA World Cup titles did Pelé win during his career?"
+      correct: "3"
+      distractors: ["2", "1", "4"]
+
+  - template_id: legend_golden_ball_year
+    target_sub_deck: legendary_players
+    quizMode: multiple_choice
+    template_string: "In which year did {player} win the FIFA World Cup Golden Ball (best player) award?"
+    answerTypePoolId: mens_wc_years
+    notes: "Player is in the question; the year is the answer. No self-answering risk."
+    example_rendered:
+      question: "In which year did Diego Maradona win the FIFA World Cup Golden Ball award?"
+      correct: "1986"
+      distractors: ["1990", "1982", "1978"]
+
+  - template_id: legend_debut_year
+    target_sub_deck: legendary_players
+    quizMode: multiple_choice
+    template_string: "In which year did {player} make their FIFA World Cup debut?"
+    answerTypePoolId: mens_wc_years
+    example_rendered:
+      question: "In which year did Pelé make his FIFA World Cup debut?"
+      correct: "1958"
+      distractors: ["1962", "1966", "1954"]
+
+  # --- SUB-DECK 4: Iconic Matches & Moments ---
+
+  - template_id: moment_year
+    target_sub_deck: iconic_matches_moments
+    quizMode: multiple_choice
+    template_string: "In which year did {moment_description} occur?"
+    answerTypePoolId: mens_wc_years
+    notes: >
+      'Moment description' must not contain the year. Good phrasings:
+      'the Maracanazo (Uruguay's shock win over Brazil)', 'the Hand of God goal',
+      'Germany's 7-1 semi-final victory over Brazil'.
+    example_rendered:
+      question: "In which year did Uruguay's shock 2-1 victory over Brazil in the World Cup — the 'Maracanazo' — take place?"
+      correct: "1950"
+      distractors: ["1938", "1958", "1962"]
+
+  - template_id: moment_score
+    target_sub_deck: iconic_matches_moments
+    quizMode: multiple_choice
+    template_string: "What was the final score of {match_description}?"
+    answerTypePoolId: regulation_final_scores_mens
+    notes: "Match description must not contain the score."
+    example_rendered:
+      question: "What was the final score of Germany's 2014 World Cup semi-final demolition of host nation Brazil?"
+      correct: "7-1"
+      distractors: ["5-0", "6-1", "4-0"]
+
+  - template_id: moment_player
+    target_sub_deck: iconic_matches_moments
+    quizMode: multiple_choice
+    template_string: "Which player {action} in {match_context}?"
+    answerTypePoolId: men_player_names
+    notes: >
+      'Action' must not name the player. E.g., 'scored the Hand of God goal',
+      'headbutted Marco Materazzi in the 2006 final', 'missed the decisive penalty in 1994'.
+    example_rendered:
+      question: "Which player scored both the 'Hand of God' and the 'Goal of the Century' in the same 1986 World Cup quarter-final?"
+      correct: "Diego Maradona"
+      distractors: ["Jorge Valdano", "Pelé", "Lionel Messi"]
+
+  - template_id: moment_host_country
+    target_sub_deck: iconic_matches_moments
+    quizMode: multiple_choice
+    template_string: "Which country was hosting the World Cup when {moment_description} occurred?"
+    answerTypePoolId: mens_host_country_names
+    notes: "Host country is the answer; the moment is described in the question."
+    example_rendered:
+      question: "Which country was hosting the World Cup when the 'Miracle of Bern' took place?"
+      correct: "Switzerland"
+      distractors: ["West Germany", "France", "Italy"]
+
+  - template_id: moment_women_player
+    target_sub_deck: iconic_matches_moments
+    quizMode: multiple_choice
+    template_string: "Which player {action} in the Women's World Cup {context}?"
+    answerTypePoolId: women_player_names
+    notes: "Women's moments require women's player pool."
+    example_rendered:
+      question: "Which player scored the winning penalty and famously removed her jersey before 90,185 fans at the Rose Bowl?"
+      correct: "Brandi Chastain"
+      distractors: ["Mia Hamm", "Michelle Akers", "Carin Jennings"]
+
+  # --- SUB-DECK 5: National Team Legacies ---
+
+  - template_id: dynasty_title_count
+    target_sub_deck: national_team_legacies
+    quizMode: multiple_choice
+    template_string: "How many FIFA World Cup titles has {country} won (as of 2023)?"
+    answerTypePoolId: national_title_counts
+    notes: >
+      'As of 2023' future-proofs the question. Germany/West Germany combined = 4.
+      Separate facts for Men's teams and Women's teams to avoid ambiguity.
+    example_rendered:
+      question: "How many FIFA World Cup titles has Brazil won (as of 2023)?"
+      correct: "5"
+      distractors: ["4", "3", "6"]
+
+  - template_id: dynasty_first_title_year
+    target_sub_deck: national_team_legacies
+    quizMode: multiple_choice
+    template_string: "In which year did {country} win its first FIFA World Cup?"
+    answerTypePoolId: mens_wc_years
+    notes: >
+      'First' is critical to avoid ambiguity for multi-title nations.
+      For single-title nations, use 'In which year did {country} win the World Cup?'
+    example_rendered:
+      question: "In which year did Argentina win its first FIFA World Cup?"
+      correct: "1978"
+      distractors: ["1986", "1990", "2022"]
+
+  - template_id: dynasty_title_years_list
+    target_sub_deck: national_team_legacies
+    quizMode: multiple_choice
+    template_string: "Which of the following correctly lists all the years {country} has won the FIFA World Cup?"
+    answerTypePoolId: mens_wc_years
+    notes: >
+      This template uses a list-style answer and is more complex.
+      Example: Brazil — [1958, 1962, 1970, 1994, 2002].
+      The 'correct' answer must be the complete list; distractors are subtly wrong lists.
+      Generate phase: write this as a special multi-year fact with a compound answer.
+      Distractor answers must be the same format (comma-separated year lists).
+    example_rendered:
+      question: "Which of the following correctly lists all the years Italy has won the FIFA World Cup?"
+      correct: "1934, 1938, 1982, 2006"
+      distractors: ["1934, 1938, 1966, 2006", "1938, 1970, 1982, 2006", "1934, 1938, 1982, 1998"]
+
+  - template_id: dynasty_defining_fact
+    target_sub_deck: national_team_legacies
+    quizMode: multiple_choice
+    template_string: "Which nation is the only one to have qualified for all {N} FIFA World Cups ever held?"
+    answerTypePoolId: winner_country_names_mens
+    notes: "This is a single-answer fact (Brazil). The template creates a 'which nation' question."
+    example_rendered:
+      question: "Which nation is the only one to have qualified for all 22 FIFA World Cups ever held?"
+      correct: "Brazil"
+      distractors: ["Germany", "Argentina", "Italy"]
+
+# ============================================================
+# SYNONYM GROUPS
+# ============================================================
+synonym_groups:
+
+  - group_id: ronaldo_disambiguation
+    primary: "Ronaldo"
+    note: >
+      Two famous players share the name 'Ronaldo':
+      1) Ronaldo Nazário (Brazilian, b. 1976) — played 1994-2006, 2 titles, 15 WC goals, 1998 Golden Ball
+      2) Cristiano Ronaldo (Portuguese, b. 1985) — played 2006-2022, 0 titles, 8 WC goals
+      These are DISTINCT entries in the player pools — NOT synonyms.
+      Generate phase MUST always specify nationality in question stems:
+        - 'Ronaldo (Brazil)' or 'Ronaldo Nazário' for the Brazilian
+        - 'Cristiano Ronaldo' or 'Ronaldo (Portugal)' for the Portuguese
+      NEVER use bare 'Ronaldo' as the correct answer — always disambiguate.
+    player_pool_entries:
+      - display: "Ronaldo (Brazil)"
+        aliases: ["Ronaldo Nazário", "R9", "Ronaldo Luís Nazário de Lima"]
+      - display: "Cristiano Ronaldo"
+        aliases: ["CR7", "Cristiano Ronaldo dos Santos Aveiro"]
+    distractor_rule: >
+      'Ronaldo (Brazil)' and 'Cristiano Ronaldo' may appear as distractors for each other
+      ONLY when the question makes the correct player's era/nationality absolutely clear.
+      Otherwise, do not mix them in the same question.
+
+  - group_id: usa_variants
+    primary: "United States"
+    synonyms:
+      - "USA"
+      - "United States of America"
+      - "US"
+    note: >
+      The USA appears in both Men's and Women's tournaments. For display in facts
+      and questions, use 'United States'. Pool member is 'United States'.
+      Distractor selection treats all variants as the same entry.
+
+  - group_id: south_korea_variants
+    primary: "South Korea"
+    synonyms:
+      - "Korea Republic"
+      - "Republic of Korea"
+      - "Korea"
+    note: >
+      2002 tournament was co-hosted by 'South Korea / Japan' — use this combined form
+      for the host country fact. Player nationality uses 'South Korea'.
+
+  - group_id: england_vs_britain
+    primary: "England"
+    note: >
+      England ≠ Great Britain. England competes separately in FIFA tournaments.
+      'Great Britain' is NOT a synonym and should never appear as an alternate answer.
+      The UK's Home Nations (England, Scotland, Wales, Northern Ireland) all compete
+      separately. England won the 1966 World Cup — not 'Britain' or 'UK'.
+      Flag this in generate phase: if any question uses 'Britain' or 'UK', it is wrong.
+    distractor_rule: >
+      Scotland, Wales, and Northern Ireland are valid distractors for some
+      'which Home Nation...' questions but are never equivalent to England.
+
+  - group_id: west_germany_vs_germany
+    primary: "Germany"
+    secondary: "West Germany"
+    note: >
+      Temporally distinct — NOT interchangeable synonyms.
+      West Germany (BRD) competed 1954-1990. Unified Germany competed 1994 onward.
+      Generate phase must use period-accurate names. See OQ6 resolution above.
+      These are TWO separate pool members in winner_country_names_mens:
+        - 'West Germany' (3 wins: 1954, 1974, 1990)
+        - 'Germany' (1 win: 2014)
+      Do NOT create a synonym mapping that makes them interchangeable.
+
+# ============================================================
+# COMMON CONFUSIONS — DISTRACTOR SEED PAIRS
+# ============================================================
+# These pairs drive distractor selection in the generate phase.
+# Opus uses this list when writing distractors for related questions.
+# ============================================================
+common_confusions:
+
+  - pair_id: pele_vs_garrincha
+    players: ["Pelé", "Garrincha"]
+    context: >
+      Both played for Brazil in 1958 and 1962. Both won back-to-back titles.
+      Garrincha carried the 1962 team after Pelé's injury. Both are Brazilian legends
+      of the same era. Players easily confuse which player did what in which tournament.
+    distractor_use: >
+      When asking about Pelé's 1958 debut, offer Garrincha as a distractor.
+      When asking who scored the winning goals in 1962, Pelé is a plausible wrong answer.
+
+  - pair_id: ronaldo_brazil_vs_ronaldo_portugal
+    players: ["Ronaldo (Brazil)", "Cristiano Ronaldo"]
+    context: >
+      The most common confusion in all of World Cup trivia. Different nationalities,
+      different eras, different statistics. Ronaldo (Brazil): 2 titles, 15 WC goals, 1998 Golden Ball.
+      Cristiano Ronaldo: 0 titles, 8 WC goals. Questions must always disambiguate.
+    distractor_use: >
+      Use each as a distractor for the other ONLY when the question makes the answer
+      unambiguous from context (e.g., 'Who won the 2002 World Cup Golden Boot?' —
+      the tournament context distinguishes them clearly).
+
+  - pair_id: zidane_1998_vs_2006
+    players: ["Zinedine Zidane"]
+    context: >
+      Zidane won the 1998 World Cup (scored 2 headers in the final).
+      In 2006, he won the Golden Ball despite being sent off for headbutting Materazzi
+      in the final — France lost. Same player, opposite tournament outcomes 8 years apart.
+    distractor_use: >
+      A question about '2006 Golden Ball winner' with answer 'Zinedine Zidane' should
+      include '1998' as a distractor year. Questions about '1998 winner' should include
+      '2006' as a distractor year.
+
+  - pair_id: maradona_hand_of_god_vs_goal_of_century
+    players: ["Diego Maradona"]
+    context: >
+      Both goals scored in the SAME match (1986 quarter-final, Argentina vs England).
+      The Hand of God (deliberate handball, 51st minute) and the Goal of the Century
+      (51-meter solo run, 55th minute) are both iconic but completely different.
+    distractor_use: >
+      Questions about the Hand of God should offer 'Goal of the Century' as a distractor
+      (wrong goal, same match). Questions about the 1986 Golden Ball should offer the
+      1982 winner (Paolo Rossi) as a distractor.
+
+  - pair_id: marta_wambach_hamm_generation
+    players: ["Marta", "Abby Wambach", "Mia Hamm"]
+    context: >
+      Three different generations of women's football greats:
+      Mia Hamm (USA, 1991-2004 career), Abby Wambach (USA, 2001-2015), Marta (Brazil, 2003-present).
+      Questions about 'all-time women's scorer' could trick players who know Mia Hamm's historical fame.
+      Wambach's 184 international goals (not WC goals) is often confused with Marta's 17 WC goals.
+    distractor_use: >
+      For 'Women's WC all-time top scorer' (Marta, 17 goals), offer Wambach and Hamm as distractors.
+      For 'USA 1999 World Cup final hero' context, Mia Hamm is a plausible distractor for Brandi Chastain.
+
+  - pair_id: maracanazo_vs_mineirazo
+    matches: ["1950 WC — Uruguay 2-1 Brazil", "2014 WC — Germany 7-1 Brazil"]
+    context: >
+      Both are iconic Brazilian defeats on home soil. 'Maracanazo' (1950) and 'Mineirazo' (2014).
+      Different scores, different opponents, different decades. Players confuse which is which.
+    distractor_use: >
+      When asking about the Maracanazo, offer 2014 as a distractor year.
+      When asking about the Mineirazo score (7-1), offer '5-0' or '6-1' as plausible numeric distractors.
+
+  - pair_id: england_1966_home_win_vs_france_1998_home_win
+    teams: ["England", "France"]
+    context: >
+      Both won the World Cup on home soil — England in 1966 at Wembley, France in 1998 at Stade de France.
+      Both are Western European teams; both tournament years are memorable. Easy to confuse.
+    distractor_use: >
+      For 'who won on home soil in 1966?' offer France as a distractor. Vice versa for 1998.
+
+  - pair_id: brazil_1950_host_vs_2014_host
+    context: >
+      Brazil hosted the 1950 and 2014 World Cups — the only nation to host twice and lose
+      in both cases. The 1950 Maracanazo and 2014 Mineirazo are thus paired.
+    distractor_use: >
+      For questions about Brazil hosting, 1950 and 2014 are mutual distractors.
+
+  - pair_id: just_fontaine_vs_sándor_kocsis_single_tournament
+    players: ["Just Fontaine", "Sándor Kocsis"]
+    context: >
+      Both set extraordinary single-tournament records: Fontaine (13 goals in 1958, all-time record),
+      Kocsis (11 goals in 1954). Often confused when answering 'most goals in one World Cup'.
+    distractor_use: >
+      For 'who scored 13 goals in one WC?' (Fontaine), offer Kocsis as a distractor.
+      For '1954 top scorer' (Kocsis), offer Fontaine as a distractor.
+
+  - pair_id: norway_women_vs_japan_women_vs_spain_women
+    context: >
+      Three single-title winners in the Women's WC — easily confused with each other.
+      Norway won 1995, Japan won 2011, Spain won 2023. Different decades, different stories.
+    distractor_use: >
+      For any of these three, the other two are plausible distractors.
+
+  - pair_id: messi_2014_golden_ball_vs_2022_golden_ball
+    players: ["Lionel Messi"]
+    context: >
+      Messi is the only player to win two Men's World Cup Golden Balls (2014 and 2022).
+      In 2014 Argentina LOST the final to Germany. In 2022 Argentina WON.
+      Questions about Messi's Golden Balls must specify the year clearly.
+    distractor_use: >
+      For 'In which year did Messi first win the Golden Ball?' (2014), offer 2022 as a distractor.
+
+  - pair_id: oliver_kahn_only_goalkeeper_golden_ball
+    players: ["Oliver Kahn", "Gianluigi Buffon", "Gordon Banks"]
+    context: >
+      Oliver Kahn (Germany, 2002) is the only goalkeeper to win the World Cup Golden Ball.
+      Gianluigi Buffon (Italy, 2006) is often confused with this honor.
+      Gordon Banks (England, 1970) made the 'save of the century' from Pelé's header.
+    distractor_use: >
+      For 'only goalkeeper to win the Golden Ball?' offer Buffon and Banks as distractors.
+
+  - pair_id: italy_1934_and_1938_back_to_back
+    context: >
+      Italy won back-to-back titles in 1934 and 1938 — the only nation to do so in
+      the Men's tournament. West Germany won in 1954 then again in 1974 (not consecutive).
+      Players may incorrectly attribute back-to-back wins to Germany or Brazil.
+    distractor_use: >
+      For 'who won back-to-back?' offer Germany and Brazil as wrong answers.
+
+  - pair_id: brandi_chastain_vs_mia_hamm_1999
+    players: ["Brandi Chastain", "Mia Hamm"]
+    context: >
+      Both were iconic USA 1999 players. Brandi Chastain scored the winning penalty
+      and removed her jersey. Mia Hamm was the team's star forward and missed a penalty.
+      Players often misremember who scored the deciding kick.
+    distractor_use: >
+      For 'who scored the winning penalty in 1999?' offer Mia Hamm as distractor.
+
+  - pair_id: wambachs_122nd_minute_vs_sawas_117th_minute
+    context: >
+      Two of the most dramatic late goals in Women's WC history:
+      Wambach: 122nd-minute header for USA vs Brazil in 2011 quarter-final.
+      Sawa: 117th-minute equalizer for Japan vs USA in 2011 final.
+      Same tournament, different players, different matches, different minutes.
+    distractor_use: >
+      For 'what minute was Wambach's header?' offer 117 as a distractor.
+      For 'whose goal equalized in the 117th minute of the 2011 final?' offer Wambach.
+
+  - pair_id: usa_women_4_titles_vs_germany_women_2_titles
+    context: >
+      USA has 4 Women's World Cup titles; Germany has 2 (back-to-back 2003/2007).
+      Players often confuse these totals, especially since Germany has 4 Men's titles.
+    distractor_use: >
+      For 'how many Women's WC titles has USA won?' offer 3 and 5 as distractors.
+      For 'how many Women's WC titles has Germany won?' offer 4 as a distractor (echoes Men's count).
+
+  - pair_id: morocco_2022_vs_senegal_2002_vs_cameroon_1990
+    context: >
+      Three historic African football achievements at Men's World Cups:
+      Morocco 2022: first African semi-finalist.
+      Senegal 2002: also reached quarter-finals.
+      Cameroon 1990: first African team to reach the quarter-finals.
+    distractor_use: >
+      For 'first African semi-finalist?' offer Senegal and Cameroon as distractors.
+      For 'first African quarter-finalist?' offer Morocco as a distractor.
+
+# ============================================================
+# POOL QUALITY CHECKS
+# ============================================================
+pool_quality_checks:
+
+  - pool_id: mens_host_country_names
+    expected_length_range_chars: "4-13"
+    length_heterogeneity_risk: low
+    homogeneityExempt: true
+    split_needed: false
+    notes: "Country names inherently variable. 19 members — no synthetics needed."
+
+  - pool_id: womens_host_country_names
+    expected_length_range_chars: "5-22"
+    length_heterogeneity_risk: medium
+    homogeneityExempt: true
+    split_needed: false
+    notes: "'Australia / New Zealand' is 22 chars; others ~5-13. Exempt as geographic."
+
+  - pool_id: winner_country_names_mens
+    expected_length_range_chars: "4-13"
+    length_heterogeneity_risk: low
+    homogeneityExempt: true
+    split_needed: false
+    notes: "8 unique country names. Ratio acceptable for country names."
+
+  - pool_id: winner_country_names_womens
+    expected_length_range_chars: "5-13"
+    length_heterogeneity_risk: low
+    homogeneityExempt: true
+    split_needed: false
+    notes: "5 real facts — must pad to 15 with synthetics."
+
+  - pool_id: runner_up_country_names_mens
+    expected_length_range_chars: "4-13"
+    length_heterogeneity_risk: low
+    homogeneityExempt: true
+    split_needed: false
+
+  - pool_id: regulation_final_scores_mens
+    expected_length_range_chars: "3-5"
+    length_heterogeneity_risk: very_low
+    homogeneityExempt: false
+    split_needed: false
+    notes: "Bare scores '4-2', '3-1', etc. Very tight range — excellent homogeneity."
+
+  - pool_id: penalty_final_scores
+    expected_length_range_chars: "14-22"
+    length_heterogeneity_risk: low
+    homogeneityExempt: false
+    split_needed: false
+    notes: "All penalty-shootout format. Consistent within pool. Needs 10 synthetics."
+
+  - pool_id: men_player_names
+    expected_length_range_chars: "4-20"
+    length_heterogeneity_risk: HIGH
+    homogeneityExempt: false
+    split_needed: conditional
+    split_threshold: "If max/min ratio > 3x after generate phase, split at 8-char boundary"
+    split_plan:
+      short_pool:
+        id: men_player_names_short
+        threshold: "≤8 chars"
+        examples: ["Pelé", "Ronaldo", "Messi", "Eusébio", "Romário"]
+      full_pool:
+        id: men_player_names_full
+        threshold: ">8 chars"
+        examples: ["Diego Maradona", "Miroslav Klose", "Zinedine Zidane", "Just Fontaine"]
+    action: "Run node scripts/pool-homogeneity-analysis.mjs --deck fifa_world_cup after generate phase."
+
+  - pool_id: women_player_names
+    expected_length_range_chars: "5-15"
+    length_heterogeneity_risk: medium
+    homogeneityExempt: false
+    split_needed: false
+    notes: "Ratio ~3x — at limit. Monitor after generate phase."
+
+  - pool_id: mens_wc_years
+    expected_length_range_chars: "4"
+    length_heterogeneity_risk: none
+    homogeneityExempt: false
+    split_needed: false
+    notes: "All 4-digit years. Perfect homogeneity."
+
+  - pool_id: womens_wc_years
+    expected_length_range_chars: "4"
+    length_heterogeneity_risk: none
+    homogeneityExempt: false
+    split_needed: false
+
+  - pool_id: venue_names
+    expected_length_range_chars: "9-22"
+    length_heterogeneity_risk: medium
+    homogeneityExempt: true
+    split_needed: false
+    notes: >
+      Venue names inherently variable in length. 'Rose Bowl' (9) vs
+      'Olympiastadion Munich' (21). Exempt as geographic proper nouns.
+      Generate phase: use consistent short-form names (no city appended).
+
+  - pool_id: national_title_counts
+    expected_length_range_chars: "1-2"
+    length_heterogeneity_risk: none
+    homogeneityExempt: false
+    split_needed: false
+    notes: "Single-digit or two-digit integers. Perfect homogeneity."
+
+  - pool_id: world_cup_goal_tallies
+    expected_length_range_chars: "1-2"
+    length_heterogeneity_risk: none
+    homogeneityExempt: false
+    split_needed: false
+    notes: "Integers 5-17. All 1-2 chars. Perfect homogeneity."
+
+  - pool_id: golden_ball_winners_mens
+    expected_length_range_chars: "7-19"
+    length_heterogeneity_risk: medium
+    homogeneityExempt: false
+    split_needed: false
+    notes: "Ratio ~2.7x — within limit. Monitor."
+
+  - pool_id: golden_ball_winners_womens
+    expected_length_range_chars: "5-15"
+    length_heterogeneity_risk: medium
+    homogeneityExempt: false
+    split_needed: false
+    notes: "Ratio ~3x — at limit. Monitor after generate phase."
+
+  - pool_id: golden_boot_winners_mens
+    expected_length_range_chars: "4-20"
+    length_heterogeneity_risk: HIGH
+    homogeneityExempt: false
+    split_needed: conditional
+    split_plan:
+      short_pool:
+        id: golden_boot_winners_mens_short
+        threshold: "≤8 chars"
+        examples: ["Ronaldo", "Eusébio"]
+      full_pool:
+        id: golden_boot_winners_mens_full
+        threshold: ">8 chars"
+        examples: ["Guillermo Stábile", "James Rodríguez", "Salvatore Schillaci"]
+    action: "Run pool-homogeneity-analysis.mjs after generate phase."
+
+  - pool_id: golden_boot_winners_womens
+    expected_length_range_chars: "5-19"
+    length_heterogeneity_risk: medium
+    homogeneityExempt: false
+    split_needed: false
+    notes: "'Ann Kristin Aarønes' is 19 chars. Monitor ratio."
+
+  - pool_id: tournament_edition_ordinals
+    expected_length_range_chars: "3-5"
+    length_heterogeneity_risk: low
+    homogeneityExempt: false
+    split_needed: false
+    notes: "Ordinal strings ('1st' to '22nd'). Range 3-4 chars. Homogeneous."
+
+# ============================================================
+# ARCHITECT PHASE SUMMARY
+# ============================================================
+architect_phase_summary:
+  total_pools_finalized: 20
+  pools_requiring_synthetics: 11
+  pools_with_conditional_split: 3
+  sub_decks: 5
+  chain_themes: 5
+  question_templates_total: 29
+  question_templates_per_sub_deck:
+    mens_world_cup_tournaments: 8
+    womens_world_cup_tournaments: 6
+    legendary_players: 6
+    iconic_matches_moments: 5
+    national_team_legacies: 4
+  synonym_groups: 5
+  common_confusion_pairs: 17
+  estimated_total_facts: 300
+  generate_phase_prerequisites:
+    - "sports_entertainment domain commit merged and typecheck passes"
+    - "1934 and 1938 source URLs added for top scorer facts"
+    - "1962 WC: no single top scorer question — use goal count question instead"
+    - "Ronaldo (Brazil) vs Cristiano Ronaldo: always disambiguate with nationality"
+    - "West Germany vs Germany: always use period-accurate names"
+    - "Marta's tally: always include 'as of 2023' qualifier"
+    - "1999 Rose Bowl: attendance is 90,185 (still Women's WC final attendance record)"
+    - "Morocco 2022: 'first African and first Arab nation to reach a World Cup semi-final'"
+  ready_for_generate: true

@@ -182,3 +182,39 @@ These are ranked by urgency:
 5. Review the complete YAML for any `architect_note` flags and resolve each one
 6. Write the deck shell JSON (`data/decks/fifa_world_cup.json`) with correct envelope fields
 7. Proceed to generate phase
+
+---
+
+## Architect Phase Addendum (2026-04-09)
+
+### Open Questions Resolution
+
+| # | Question | Decision | Source |
+|---|----------|----------|--------|
+| 1 | **Domain scaffolding** | External task in progress (parallel game-logic agent). `sports_entertainment` visible in dirty working tree as of 2026-04-09. Generate phase blocked until that commit is merged. | git status |
+| 2 | **Men's Golden Boot all 22 editions** | All 22 editions already had verified top scorer data in the discover YAML. 1962 (6-way tie), 1994 (2-way tie), and 2010 (4-way tie) noted — no single-winner question for these editions. Generate phase: add source URLs for 1934 and 1938. | Discover YAML cross-check |
+| 3 | **Pool split: penalty vs regulation scores** | SPLIT. Regulation scores (3-5 chars) vs penalty notation (14-22 chars) = 8x ratio, far exceeds 3x limit. Created `regulation_final_scores_mens` (19 entries) and `penalty_final_scores` (5 entries, needs 10 synthetics). | deck-quality rules |
+| 4 | **Marta's WC goals = 17** | Confirmed at 17 goals in 6 World Cups (2003-2023). Always qualify with 'as of 2023'. Source: Wikipedia Marta article (already in discover YAML). | Wikipedia via discover YAML |
+| 5 | **Wikidata SPARQL retry** | Tool unavailable again. Wikipedia sources from discover phase are complete for all editions. No blocking gap. | Session tool check |
+| 6 | **West Germany vs Germany naming** | Period-accurate names throughout. 'West Germany' for 1954-1990 editions. 'Germany' for 1994+. NOT interchangeable synonyms — two distinct pool members. | OQ6 resolution |
+| 7 | **Men's vs Women's player pools** | SPLIT confirmed. `men_player_names` (20 members) and `women_player_names` (12 members + 3 synthetics) are separate pools. Cross-pool distractors explicitly prohibited. | OQ7 resolution |
+| 8 | **Rose Bowl 1999 attendance** | 90,185 confirmed. Still the Women's WC Final attendance record (2023 final had 75,784 — smaller). Framing: 'still the largest crowd ever at a Women's World Cup Final'. | Wikipedia 1999 Women's WC Final |
+| 9 | **Morocco 2022 framing** | Confirmed via Wikipedia 2022 FIFA World Cup. Use: 'first African and first Arab nation to reach a World Cup semi-final'. Morocco finished 4th (beat Croatia in third-place match). | Wikipedia 2022 FIFA World Cup |
+
+### New Findings in Architect Phase
+
+- **1962 WC ambiguity**: 6-way tie at 6 goals for top scorer — 'Who was top scorer?' question is ambiguous. Use 'How many goals did the top scorers score?' instead.
+- **Ronaldo disambiguation**: Two players named Ronaldo (Brazil and Portugal). ALL facts must use 'Ronaldo (Brazil)' or 'Cristiano Ronaldo' — never bare 'Ronaldo'. This is the most common trivia error in World Cup content.
+- **Pelé's WC goals = 12**: Wikipedia figure confirmed. Some sources cite different numbers due to exhibition match inclusion; use 12 (official FIFA record).
+- **2003 Women's WC host**: Originally awarded to China, moved to USA due to SARS. Facts should note the SARS context — it's an interesting historical detail, not just a technicality.
+- **Morocco 2022 finishing position**: 4th place (beat Croatia 2-1 in third-place match). The discover YAML only noted the semi-final run; the 4th-place finish is worth a fact.
+
+### Architect Phase Output
+
+- `answer_type_pools`: 19 finalized pools with full specifications
+- `chain_themes_finalized`: 5 themes with imagery and pool assignments
+- `question_templates`: 29 templates (4-8 per sub-deck), all pool references validated
+- `synonym_groups`: 5 groups (Ronaldo disambiguation, USA variants, South Korea variants, England, West Germany/Germany)
+- `common_confusions`: 17 seed pairs for distractor generation
+- `pool_quality_checks`: 19 quality assessments with split plans for high-risk pools
+- Status: **Ready for generate phase** (pending `sports_entertainment` domain commit)
