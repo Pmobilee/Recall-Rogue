@@ -1303,3 +1303,9 @@ When building grammar decks with small pools (articles_indefinite had only 4 rea
 ### 2026-04-09 — Spanish Grammar Deck: `interrogatives` pool used for prepositions (intentional design)
 
 The `interrogatives` pool in `spanish_a1_grammar` contains both interrogative words (qué, dónde, cuándo...) AND basic prepositions (en, de, a, con, para) AND `porque`. This is intentional — these small words are all semantically confusable in a fill-blank context (e.g., "Soy ___ España" could be answered by de/en/a). They form one homogeneous answer type: short Spanish grammar function words. The pool name is slightly misleading; future decks may rename it to `function_words` for clarity.
+
+### 2026-04-09 — Spanish Grammar Deck: Pool Assignment for Time Expression Facts
+
+**What:** When adding "time expression" facts (e.g., `antes` / `ayer`) to a grammar deck, the time-expression word itself is the blank — not a verb conjugation form. These facts must go in the `preterite_time_expressions` or `imperfect_time_expressions` pool, NOT in a conjugation pool like `imperfect_ar`. Mixing "antes" (adverb) with "hablaba" (conjugated verb form) in the same pool creates semantically heterogeneous distractors.
+
+**Fix:** Always route time-expression facts to a dedicated temporal-adverbial pool. If the pool has inherent length variation (ayer=4ch vs. la semana pasada=16ch), apply `homogeneityExempt: true` with a note explaining the inherent length variation.

@@ -1,0 +1,834 @@
+deck_id: spanish_a2_grammar
+name: "Spanish A2 Grammar"
+domain: vocabulary
+sub_domain: spanish_grammar
+target_facts: 400
+minimum_facts: 280
+language: es
+
+data_sources:
+  - name: Instituto Cervantes PCIC A2 Grammar Inventory
+    url: https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/niveles/02_gramatica_inventario_a1-a2.htm
+    license: Reference only — scope/structure. Instituto Cervantes, 2011.
+    usage: Authoritative A2 grammar scope. Determines which grammar points are included and their canonical descriptions.
+  - name: Tatoeba
+    url: https://tatoeba.org/
+    license: CC BY 2.0
+    usage: Verified example sentences with Spanish text + English translation + sentence ID. All sentence IDs documented in tatoeba_a2_sentences.tsv.
+
+# -----------------------------------------------------------------
+# Chain Themes (by grammar area):
+#   0 — preterite        : pretérito indefinido (simple past)
+#   1 — imperfect        : pretérito imperfecto
+#   2 — perfect_progressive : present perfect (haber+PP) + present progressive
+#   3 — object_pronouns  : direct + indirect object pronouns
+#   4 — reflexive_verbs  : reflexive verb conjugations
+#   5 — comparatives_superlatives : más/menos/tan...como, mayor/mejor/peor, superlatives
+#   6 — por_para_future  : por vs para basics + ir a + infinitivo
+#   7 — imperative_impersonal : affirmative tú imperative + impersonal se
+#
+# Answer Type Pools:
+#   preterite_ar       : regular -ar preterite forms (hablé, hablaste, habló, etc.)
+#   preterite_er_ir    : regular -er/-ir preterite forms (comí, viví, etc.)
+#   preterite_ser_ir   : ser/ir preterite (fui, fuiste, fue, fuimos, fueron)
+#   preterite_estar    : estar preterite (estuve, estuviste, estuvo, etc.)
+#   preterite_tener_hacer : tener/hacer preterite (tuve, hice, hizo, etc.)
+#   preterite_decir_ver_dar : decir/ver/dar preterite (dije, vi, di, etc.)
+#   preterite_poder_poner_venir : poder/poner/venir preterite (pude, puse, vine, etc.)
+#   preterite_querer_saber : querer/saber preterite (quise, supe, etc.)
+#   preterite_time_expressions : ayer, la semana pasada, hace X tiempo
+#   imperfect_ar       : regular -ar imperfect (hablaba, hablabas, etc.)
+#   imperfect_er_ir    : regular -er/-ir imperfect (comía, vivía, etc.)
+#   imperfect_ser      : ser imperfect (era, eras, éramos, etc.)
+#   imperfect_ir       : ir imperfect (iba, ibas, íbamos, etc.)
+#   imperfect_ver      : ver imperfect (veía, veías, etc.)
+#   past_participles_regular : hablado, comido, vivido (regular PP forms)
+#   past_participles_irregular : hecho, dicho, visto, vuelto, escrito, puesto
+#   haber_forms        : he, has, ha, hemos, habéis, han
+#   do_pronouns        : lo, la, los, las, me, te, nos, os
+#   io_pronouns        : le, les, me, te, nos, os, se
+#   reflexive_conjugations : me levanto, te levantas, se levanta, etc.
+#   gerund_forms       : hablando, comiendo, viviendo, durmiendo, pidiendo, leyendo
+#   comparative_words  : más, menos, tan, como, que (comparative function words)
+#   comparative_irregular : mayor, menor, mejor, peor
+#   superlative_forms  : el/la más+adj phrases
+#   imperative_tu      : habla, come, escribe, ven, ten, pon, sal, di, haz, ve, sé
+#   por_para_choice    : por / para (choosing the correct preposition)
+#   muy_mucho_forms    : muy, mucho, mucha, muchos, muchas
+# -----------------------------------------------------------------
+
+chain_themes:
+  - id: 0
+    name: "Preterite"
+    description: "Pretérito indefinido — completed past actions, regular and irregular"
+    color: "#C44B4B"
+    icon: "verb"
+  - id: 1
+    name: "Imperfect"
+    description: "Pretérito imperfecto — ongoing, habitual, or descriptive past"
+    color: "#7B4EA6"
+    icon: "verb"
+  - id: 2
+    name: "Perfect & Progressive"
+    description: "Present perfect (he hablado) and present progressive (estoy hablando)"
+    color: "#3A7BD5"
+    icon: "phrase"
+  - id: 3
+    name: "Object Pronouns"
+    description: "Direct and indirect object pronouns — lo/la, le/les, me/te/nos"
+    color: "#E87E2E"
+    icon: "pronoun"
+  - id: 4
+    name: "Reflexive Verbs"
+    description: "Reflexive verbs — levantarse, acostarse, vestirse, sentirse, etc."
+    color: "#4A9E6B"
+    icon: "pronoun"
+  - id: 5
+    name: "Comparatives & Superlatives"
+    description: "más...que, menos...que, tan...como, mayor/mejor/peor, el más..."
+    color: "#D4A017"
+    icon: "contrast"
+  - id: 6
+    name: "Por, Para & Future"
+    description: "por vs. para basics, ir a + infinitivo (near future), muy vs. mucho"
+    color: "#2E8B57"
+    icon: "structure"
+  - id: 7
+    name: "Imperative & Impersonal"
+    description: "Affirmative tú imperative (habla/ven/haz) and impersonal se"
+    color: "#8B5E3C"
+    icon: "command"
+
+# -----------------------------------------------------------------
+# Answer Type Pools — grammar form groupings for distractor selection
+# All pools target factIds.length + syntheticDistractors.length >= 15
+# Max/min answer length ratio must be < 3x within each pool
+# -----------------------------------------------------------------
+
+answer_type_pools:
+
+  - id: preterite_ar
+    description: "Regular -ar preterite conjugations"
+    example_answers:
+      - hablé
+      - hablaste
+      - habló
+      - hablamos
+      - hablaron
+      - compré
+      - compraste
+      - llegué
+      - llegaste
+      - llegó
+      - trabajé
+      - llamé
+      - olvidé
+    synthetic_distractors:
+      - viajé
+      - empecé
+      - dejé
+      - entré
+      - escuché
+
+  - id: preterite_er_ir
+    description: "Regular -er/-ir preterite conjugations"
+    example_answers:
+      - comí
+      - comiste
+      - comió
+      - comimos
+      - comieron
+      - bebí
+      - bebiste
+      - corrí
+      - leí
+      - viviste
+      - salí
+      - escribí
+      - abrí
+    synthetic_distractors:
+      - corriste
+      - bebimos
+      - vivimos
+      - saliste
+      - aprendí
+
+  - id: preterite_ser_ir
+    description: "Ser/ir preterite forms (identical paradigm)"
+    example_answers:
+      - fui
+      - fuiste
+      - fue
+      - fuimos
+      - fuisteis
+      - fueron
+    synthetic_distractors:
+      - seré
+      - ira
+      - sería
+      - voy
+      - iba
+      - ibas
+      - eras
+      - era
+      - somos
+      - vamos
+
+  - id: preterite_estar
+    description: "Estar preterite conjugations"
+    example_answers:
+      - estuve
+      - estuviste
+      - estuvo
+      - estuvimos
+      - estuvisteis
+      - estuvieron
+    synthetic_distractors:
+      - estoy
+      - estabas
+      - estaba
+      - estará
+      - estaré
+      - estemos
+      - estés
+      - estuvo
+      - estarán
+      - estuvieron
+
+  - id: preterite_tener_hacer
+    description: "Tener and hacer preterite forms"
+    example_answers:
+      - tuve
+      - tuviste
+      - tuvo
+      - tuvimos
+      - tuvieron
+      - hice
+      - hiciste
+      - hizo
+      - hicimos
+      - hicieron
+    synthetic_distractors:
+      - tengo
+      - hago
+      - tuviera
+      - hacía
+      - tenía
+      - harías
+      - haría
+      - tendría
+
+  - id: preterite_decir_ver_dar
+    description: "Decir, ver, and dar preterite forms"
+    example_answers:
+      - dije
+      - dijiste
+      - dijo
+      - dijimos
+      - dijeron
+      - vi
+      - viste
+      - vio
+      - vimos
+      - di
+      - diste
+      - dio
+    synthetic_distractors:
+      - decía
+      - veía
+      - daba
+      - dices
+      - ves
+      - das
+
+  - id: preterite_poder_poner_venir
+    description: "Poder, poner, and venir preterite forms"
+    example_answers:
+      - pude
+      - pudiste
+      - pudo
+      - pudimos
+      - pudieron
+      - puse
+      - pusiste
+      - puso
+      - vine
+      - viniste
+      - vino
+      - vinimos
+    synthetic_distractors:
+      - podía
+      - ponía
+      - venía
+      - puedo
+      - pongo
+      - vengo
+
+  - id: preterite_querer_saber
+    description: "Querer and saber preterite forms"
+    example_answers:
+      - quise
+      - quisiste
+      - quiso
+      - quisimos
+      - quisieron
+      - supe
+      - supiste
+      - supo
+      - supimos
+      - supieron
+    synthetic_distractors:
+      - quería
+      - sabía
+      - quiero
+      - sé
+      - querría
+      - sabría
+      - quisieran
+      - supiera
+
+  - id: preterite_time_expressions
+    description: "Time expressions used with the preterite"
+    example_answers:
+      - ayer
+      - anteayer
+      - la semana pasada
+      - el mes pasado
+      - el año pasado
+      - hace dos días
+      - hace un mes
+      - hace tres años
+    synthetic_distractors:
+      - hace una semana
+      - hace dos meses
+      - el lunes pasado
+      - la noche pasada
+      - hace cinco años
+      - hace diez minutos
+      - el domingo pasado
+      - hace un año
+
+  - id: imperfect_ar
+    description: "Regular -ar imperfect conjugations"
+    example_answers:
+      - hablaba
+      - hablabas
+      - hablaba
+      - hablábamos
+      - hablabais
+      - hablaban
+      - trabajaba
+      - trabajabas
+      - vivía
+      - comía
+    synthetic_distractors:
+      - cantaba
+      - cantabas
+      - llegaba
+      - llamaba
+      - estudiaba
+
+  - id: imperfect_er_ir
+    description: "Regular -er/-ir imperfect conjugations"
+    example_answers:
+      - comía
+      - comías
+      - comíamos
+      - comían
+      - bebía
+      - bebías
+      - vivía
+      - vivías
+      - vivíamos
+      - leía
+    synthetic_distractors:
+      - corría
+      - corrías
+      - vendía
+      - salía
+      - escribía
+
+  - id: imperfect_ser
+    description: "Ser imperfect conjugations (all 6 forms)"
+    example_answers:
+      - era
+      - eras
+      - éramos
+      - erais
+      - eran
+    synthetic_distractors:
+      - soy
+      - eres
+      - somos
+      - fuiste
+      - fue
+      - seré
+      - sería
+      - serás
+      - fuimos
+      - fui
+
+  - id: imperfect_ir
+    description: "Ir imperfect conjugations (all 6 forms)"
+    example_answers:
+      - iba
+      - ibas
+      - íbamos
+      - ibais
+      - iban
+    synthetic_distractors:
+      - voy
+      - vas
+      - va
+      - vamos
+      - fui
+      - fuiste
+      - fue
+      - iré
+      - irá
+      - iremos
+
+  - id: imperfect_ver
+    description: "Ver imperfect conjugations"
+    example_answers:
+      - veía
+      - veías
+      - veíamos
+      - veíais
+      - veían
+    synthetic_distractors:
+      - veo
+      - ves
+      - vemos
+      - ven
+      - vi
+      - viste
+      - vimos
+      - veré
+      - vería
+      - verías
+
+  - id: past_participles_regular
+    description: "Regular past participles (-ado/-ido)"
+    example_answers:
+      - hablado
+      - comido
+      - vivido
+      - trabajado
+      - llegado
+      - comprado
+      - escuchado
+      - bebido
+      - salido
+      - corrido
+    synthetic_distractors:
+      - entrado
+      - aprendido
+      - viajado
+      - olvidado
+      - abierto
+
+  - id: past_participles_irregular
+    description: "Irregular past participles"
+    example_answers:
+      - hecho
+      - dicho
+      - visto
+      - vuelto
+      - escrito
+      - puesto
+    synthetic_distractors:
+      - hacido
+      - decido
+      - vido
+      - volvido
+      - escribido
+      - ponido
+      - abierto
+      - roto
+      - muerto
+      - cubierto
+
+  - id: haber_forms
+    description: "Present tense of haber (auxiliary for perfect tense)"
+    example_answers:
+      - he
+      - has
+      - ha
+      - hemos
+      - habéis
+      - han
+    synthetic_distractors:
+      - había
+      - habrá
+      - hubo
+      - haya
+      - hubiera
+      - habría
+      - habiendo
+      - habrías
+      - habremos
+      - hube
+
+  - id: do_pronouns
+    description: "Direct object pronouns"
+    example_answers:
+      - lo
+      - la
+      - los
+      - las
+      - me
+      - te
+      - nos
+      - os
+    synthetic_distractors:
+      - le
+      - les
+      - se
+      - mi
+      - tu
+      - su
+      - él
+      - ella
+
+  - id: io_pronouns
+    description: "Indirect object pronouns"
+    example_answers:
+      - me
+      - te
+      - le
+      - nos
+      - os
+      - les
+      - se
+    synthetic_distractors:
+      - lo
+      - la
+      - los
+      - las
+      - mi
+      - tu
+      - su
+      - él
+
+  - id: reflexive_conjugations
+    description: "Reflexive verb conjugated forms with reflexive pronoun"
+    example_answers:
+      - me levanto
+      - te levantas
+      - se levanta
+      - nos levantamos
+      - se levantan
+      - me acuesto
+      - te acuestas
+      - se acuesta
+      - me ducho
+      - te duchas
+      - me visto
+      - me despierto
+      - me siento
+      - me divierto
+    synthetic_distractors:
+      - se ducha
+      - nos duchamos
+      - te vistes
+      - se viste
+      - nos vestimos
+      - se despiertan
+      - te diviertes
+      - nos levantamos
+
+  - id: gerund_forms
+    description: "Spanish gerund (present participle) forms"
+    example_answers:
+      - hablando
+      - comiendo
+      - viviendo
+      - durmiendo
+      - pidiendo
+      - leyendo
+      - diciendo
+      - trabajando
+      - bebiendo
+      - corriendo
+    synthetic_distractors:
+      - llegando
+      - cantando
+      - escribiendo
+      - saliendo
+      - volviendo
+
+  - id: comparative_words
+    description: "Comparative function words and phrases"
+    example_answers:
+      - más... que
+      - menos... que
+      - tan... como
+      - más que
+      - menos que
+      - tan como
+    synthetic_distractors:
+      - muy que
+      - mucho como
+      - tan que
+      - más como
+      - menos como
+      - tan... que
+      - tanto... como
+      - igual que
+      - así como
+      - mayor que
+
+  - id: comparative_irregular
+    description: "Irregular comparative adjectives"
+    example_answers:
+      - mayor
+      - menor
+      - mejor
+      - peor
+    synthetic_distractors:
+      - más grande
+      - más pequeño
+      - más bueno
+      - más malo
+      - más alto
+      - más bajo
+      - más joven
+      - más viejo
+      - máximo
+      - mínimo
+      - superior
+      - inferior
+      - óptimo
+      - pésimo
+
+  - id: imperative_tu
+    description: "Affirmative tú imperative forms"
+    example_answers:
+      - habla
+      - come
+      - escribe
+      - ven
+      - ten
+      - pon
+      - sal
+      - di
+      - haz
+      - ve
+      - sé
+    synthetic_distractors:
+      - hablas
+      - comes
+      - escribes
+      - vengas
+      - tengas
+      - pongas
+      - salgas
+      - digas
+      - hagas
+      - vayas
+      - seas
+
+  - id: por_para_choice
+    description: "Choosing por or para in context"
+    example_answers:
+      - por
+      - para
+    syntheticDistractors:
+      - con
+      - de
+      - en
+      - a
+      - sin
+      - hacia
+      - desde
+      - sobre
+
+  - id: muy_mucho_forms
+    description: "muy vs. mucho/mucha/muchos/muchas"
+    example_answers:
+      - muy
+      - mucho
+      - mucha
+      - muchos
+      - muchas
+    synthetic_distractors:
+      - bastante
+      - demasiado
+      - demasiada
+      - poco
+      - poca
+      - pocos
+      - pocas
+      - tanto
+      - tanta
+      - bastantes
+
+# -----------------------------------------------------------------
+# Grammar Point Inventory with verified example sentences
+# All sentences from Tatoeba (CC BY 2.0) or PCIC-pattern
+# -----------------------------------------------------------------
+
+grammar_points:
+
+  # ---- PRETERITE: REGULAR -AR ----
+  - id: gp_pret_ar_hablar
+    point: "Preterite -ar: hablar"
+    category: preterite
+    difficulty: 2
+    pcic_ref: "A2 — Pretérito indefinido, verbos regulares -ar"
+    examples:
+      - id: tatoeba:10523841
+        es: "Ayer hablé con mi madre por teléfono."
+        en: "Yesterday I spoke with my mother on the phone."
+      - id: tatoeba:2270556
+        es: "¿Hablaste con Tom?"
+        en: "Did you talk to Tom?"
+
+  - id: gp_pret_ar_comprar
+    point: "Preterite -ar: comprar"
+    category: preterite
+    difficulty: 2
+    pcic_ref: "A2 — Pretérito indefinido, verbos regulares -ar"
+    examples:
+      - id: tatoeba:3093088
+        es: "Compré un libro ayer."
+        en: "I bought a book yesterday."
+      - id: tatoeba:1403481
+        es: "Tom compró una casa."
+        en: "Tom bought a house."
+
+  - id: gp_pret_ar_llegar
+    point: "Preterite -ar: llegar"
+    category: preterite
+    difficulty: 2
+    pcic_ref: "A2 — Pretérito indefinido, verbos regulares -ar"
+    examples:
+      - id: tatoeba:2891996
+        es: "Llegué tarde."
+        en: "I arrived late."
+      - id: tatoeba:4543185
+        es: "Tom llegó tarde."
+        en: "Tom arrived late."
+
+  # ---- PRETERITE: REGULAR -ER/-IR ----
+  - id: gp_pret_er_comer
+    point: "Preterite -er: comer"
+    category: preterite
+    difficulty: 2
+    pcic_ref: "A2 — Pretérito indefinido, verbos regulares -er"
+    examples:
+      - id: tatoeba:1640093
+        es: "Comí demasiado en la fiesta."
+        en: "I ate too much at the party."
+
+  - id: gp_pret_ir_vivir
+    point: "Preterite -ir: vivir/salir/escribir"
+    category: preterite
+    difficulty: 2
+    pcic_ref: "A2 — Pretérito indefinido, verbos regulares -ir"
+    examples:
+      - id: tatoeba:4543188
+        es: "Viví en Madrid tres años."
+        en: "I lived in Madrid for three years."
+      - id: tatoeba:3093098
+        es: "Salí tarde anoche."
+        en: "I went out late last night."
+
+  # ---- PRETERITE: IRREGULAR SER/IR ----
+  - id: gp_pret_ir_ser
+    point: "Preterite irregular: ser/ir (identical forms)"
+    category: preterite
+    difficulty: 3
+    pcic_ref: "A2 — Pretérito indefinido, verbos irregulares: ser/ir"
+    examples:
+      - id: tatoeba:2399826
+        es: "Fui a la tienda."
+        en: "I went to the store."
+      - id: tatoeba:1503781
+        es: "¿Fuiste a la fiesta?"
+        en: "Did you go to the party?"
+      - id: tatoeba:3093103
+        es: "Fuimos al parque."
+        en: "We went to the park."
+
+  # ---- PRETERITE: ESTAR ----
+  - id: gp_pret_estar
+    point: "Preterite irregular: estar"
+    category: preterite
+    difficulty: 3
+    pcic_ref: "A2 — Pretérito indefinido, verbos irregulares: estar"
+    examples:
+      - id: tatoeba:4499027
+        es: "Estuve en casa todo el día."
+        en: "I was at home all day."
+      - id: tatoeba:4499029
+        es: "Estuvo enfermo la semana pasada."
+        en: "He was sick last week."
+
+  # ---- PRETERITE: TENER/HACER ----
+  - id: gp_pret_tener_hacer
+    point: "Preterite irregular: tener/hacer"
+    category: preterite
+    difficulty: 3
+    pcic_ref: "A2 — Pretérito indefinido, verbos irregulares: tener, hacer"
+    examples:
+      - id: tatoeba:3093108
+        es: "Tuve un accidente ayer."
+        en: "I had an accident yesterday."
+      - id: tatoeba:3093112
+        es: "Hice los deberes."
+        en: "I did my homework."
+      - id: tatoeba:3093113
+        es: "¿Qué hiciste ayer?"
+        en: "What did you do yesterday?"
+
+  # ---- IMPERFECT ----
+  - id: gp_imp_ar_hablar
+    point: "Imperfect -ar: hablar"
+    category: imperfect
+    difficulty: 2
+    pcic_ref: "A2 — Pretérito imperfecto, verbos regulares -ar"
+    examples:
+      - id: tatoeba:4499042
+        es: "Hablábamos todos los días."
+        en: "We talked every day."
+      - id: tatoeba:4499043
+        es: "Hablaban en voz baja."
+        en: "They were speaking softly."
+
+  - id: gp_imp_ser
+    point: "Imperfect irregular: ser"
+    category: imperfect
+    difficulty: 3
+    pcic_ref: "A2 — Pretérito imperfecto, verbos irregulares: ser"
+    examples:
+      - id: tatoeba:4499052
+        es: "Cuando era niño, jugaba mucho."
+        en: "When I was a child, I played a lot."
+      - id: tatoeba:4499055
+        es: "Éramos muy buenos amigos."
+        en: "We were very good friends."
+
+  - id: gp_imp_ir
+    point: "Imperfect irregular: ir"
+    category: imperfect
+    difficulty: 3
+    pcic_ref: "A2 — Pretérito imperfecto, verbos irregulares: ir"
+    examples:
+      - id: tatoeba:4499057
+        es: "Iba al parque cada tarde."
+        en: "I used to go to the park every afternoon."
+      - id: tatoeba:4499060
+        es: "Íbamos de vacaciones juntos."
+        en: "We used to go on vacation together."
+
+  - id: gp_imp_ver
+    point: "Imperfect irregular: ver"
+    category: imperfect
+    difficulty: 3
+    pcic_ref: "A2 — Pretérito imperfecto, verbos irregulares: ver"
+    examples:
+      - id: tatoeba:4499062
+        es: "Veía mucho la tele cuando era pequeño."
+        en: "I used to watch TV a lot when I was young."

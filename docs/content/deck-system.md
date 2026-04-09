@@ -117,9 +117,9 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-09 it contains **85 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-09 it contains **86 decks**:
 
-- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar/N1–N5 Kanji, Korean Hangul/TOPIK 1–2, Spanish A1–B2, Spanish A1 Grammar
+- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar/N1–N5 Kanji, Korean Hangul/TOPIK 1–2, Spanish A1–B2, Spanish A1 Grammar, Spanish A2 Grammar
 - **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**, **AP Human Geography**, **Philosophy**
 
 ### Deck Architecture Files
@@ -149,6 +149,7 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | *(inline generation)* | `famous_inventions` | complete — live, pool-redesigned | 200 | Pool redesign 2026-04-05 (5 pools → 10): split 104-fact `term` pool into `invention_specs` (short ≤20c), `invention_details` (long), `discovery_descriptions` (narratives), `invention_dates`; split `name` into `person_inventor_names` + `invention_names`; added `tech_codes` for acronyms ≤7c; split `number` into `percentage_values` + `count_values`. 0 quiz-audit fails. |
 | *(inline generation)* | `philosophy` | complete — live | 425 | Global-canon; domain: `general_knowledge`, sub-domain: `philosophy`; 8 chain themes (Ancient Western, Classical Eastern, Medieval & Scholastic, Early Modern, Enlightenment & German Idealism, 19th Century, 20th C. Analytic, 20th C. Continental), 13 answer pools (split for length-tell avoidance), 8 sub-decks; sourced from Stanford Encyclopedia of Philosophy. |
 | `spanish_a1_grammar_arch.yaml` | `spanish_a1_grammar` | complete — live | 134 | PCIC A1-scoped; 8 named chain themes, 14 answer pools, 8 sub-decks; sentences from Tatoeba CC BY 2.0; first Spanish grammar deck. 2026-04-09. |
+| `spanish_a2_grammar_arch.yaml` | `spanish_a2_grammar` | complete — live | 177 | PCIC A2-scoped; 8 named chain themes, 25 answer pools, 8 sub-decks; 94.4% Tatoeba sentences; 2nd Spanish grammar deck. 2026-04-09. |
 
 The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
 
@@ -2028,4 +2029,82 @@ The `spanish_a1_grammar` deck establishes these conventions for A1–B2 Spanish 
 7. **examTags**: `["CEFR_A1"]` on all facts; subsequent decks use `CEFR_A2`, `CEFR_B1`, `CEFR_B2`.
 8. **partOfSpeech**: `"grammar"` on all facts (consistent with Japanese grammar decks).
 
-**Language coverage note:** Spanish is the second language with grammar decks (Japanese was first). As of 2026-04-09, 1 of 4 planned Spanish grammar decks (A1–B2) is complete.
+**Language coverage note:** Spanish is the second language with grammar decks (Japanese was first). As of 2026-04-09, 2 of 4 planned Spanish grammar decks (A1–B2) are complete.
+
+
+## spanish_a2_grammar Deck
+
+`data/decks/spanish_a2_grammar.json` — generated 2026-04-09. Second deck in the Spanish grammar suite (A1–B2). Builds on A1 by introducing past tenses, object pronouns, reflexive verbs, comparatives, affirmative imperative, and impersonal se.
+
+**Fill-in-the-blank format.** Same pattern as A1: Spanish sentence with `{___}` placeholder + English translation.
+
+**Scope source:** Instituto Cervantes PCIC A2 Grammar Inventory (same URL as A1). A2 scope cached at `data/deck-architectures/_research/spanish/pcic_a2_grammar_scope.md`.
+
+**Sentence sources:** Tatoeba (https://tatoeba.org/) CC BY 2.0 — 167/177 facts (94.4%). Remaining 10 facts are PCIC-pattern sentences. Sentence IDs in `data/deck-architectures/_research/spanish/tatoeba_a2_sentences.tsv`.
+
+| Field | Value |
+|---|---|
+| `id` | `spanish_a2_grammar` |
+| `domain` | `vocabulary` |
+| `subDomain` | `spanish_grammar` |
+| `facts` | 177 |
+| `minimumFacts` | 120 |
+| `targetFacts` | 300 |
+| `language` | `es` |
+
+**Chain Themes (8):**
+
+| chainThemeId | Name | Facts | Grammar Area |
+|---|---|---|---|
+| 0 | Preterite | 62 | Pretérito indefinido — regular -ar/-er/-ir + 10 irregular verbs (ser/ir, estar, tener/hacer, decir/ver/dar, poder/poner/venir, querer/saber) + time expressions |
+| 1 | Imperfect | 27 | Pretérito imperfecto — regular -ar/-er/-ir + 3 irregular verbs (ser/ir/ver) + preterite vs. imperfect contrast |
+| 2 | Perfect & Progressive | 19 | Present perfect (haber + past participle), regular/irregular past participles, present progressive with stem-change gerunds |
+| 3 | Object Pronouns | 12 | Direct object pronouns (lo/la/los/las/me/te/nos/os), indirect object pronouns (le/les/me/te/nos), pronoun attachment to infinitive, se lo construction |
+| 4 | Reflexive Verbs | 13 | levantarse, acostarse, ducharse, vestirse (e→i), despertarse (e→ie), sentirse (e→ie), divertirse (e→ie) |
+| 5 | Comparatives & Superlatives | 12 | más...que, menos...que, tan...como; irregular comparatives (mayor/menor/mejor/peor); superlatives (el/la más...) |
+| 6 | Por, Para & Future | 18 | por (cause/exchange/time/behalf), para (purpose/recipient/destination/opinion), ir a + infinitivo, muy vs. mucho/mucha |
+| 7 | Imperative & Impersonal | 14 | Tú affirmative imperative — regular (habla/come/escribe) + 8 irregulars (ven/ten/pon/sal/di/haz/ve/sé); impersonal se (se habla/se vende/se come) |
+
+**Answer Type Pools (25):**
+
+| Pool ID | Real | Synth | Total | Description |
+|---|---|---|---|---|
+| `preterite_ar` | 13 | 7 | 20 | Regular -ar preterite forms |
+| `preterite_er_ir` | 9 | 7 | 16 | Regular -er/-ir preterite forms |
+| `preterite_ser_ir` | 5 | 11 | 16 | Ser/ir preterite (identical paradigm) |
+| `preterite_estar` | 5 | 12 | 17 | Estar preterite forms |
+| `preterite_tener_hacer` | 6 | 9 | 15 | Tener/hacer preterite forms |
+| `preterite_decir_ver_dar` | 8 | 8 | 16 | Decir/ver/dar preterite forms |
+| `preterite_poder_poner_venir` | 5 | 10 | 15 | Poder/poner/venir preterite forms |
+| `preterite_querer_saber` | 5 | 13 | 18 | Querer/saber preterite forms |
+| `preterite_time_expressions` | 6 | 11 | 17 | Ayer/anteayer/la semana pasada/hace X tiempo (homogeneityExempt: inherent length variation) |
+| `imperfect_ar` | 5 | 9 | 14 | Regular -ar imperfect forms |
+| `imperfect_er_ir` | 5 | 11 | 16 | Regular -er/-ir imperfect forms |
+| `imperfect_ser` | 7 | 9 | 16 | Ser imperfect (irregular) |
+| `imperfect_ir` | 5 | 12 | 17 | Ir imperfect (irregular) |
+| `imperfect_ver` | 5 | 12 | 17 | Ver imperfect (irregular) |
+| `past_participles_irregular` | 6 | 10 | 16 | Hecho/dicho/visto/vuelto/escrito/puesto |
+| `haber_forms` | 6 | 9 | 15 | He/has/ha/hemos/habéis/han |
+| `do_pronouns` | 7 | 8 | 15 | Direct object pronouns: lo/la/los/las/me/te/nos/os |
+| `io_pronouns` | 5 | 11 | 16 | Indirect object pronouns: me/te/le/nos/les/se |
+| `reflexive_conjugations` | 13 | 7 | 20 | Me levanto/te levantas/se levanta etc. (2-word forms) |
+| `gerund_forms` | 6 | 10 | 16 | Hablando/comiendo/viviendo/durmiendo/pidiendo/leyendo |
+| `comparative_words` | 7 | 8 | 15 | Más...que/menos...que/tan...como phrases |
+| `comparative_irregular` | 6 | 10 | 16 | Mayor/menor/mejor/peor |
+| `imperative_tu` | 15 | 11 | 26 | Tú imperative forms + impersonal se constructions |
+| `por_para_choice` | 12 | 10 | 22 | Por vs. para choice + ir a + future |
+| `muy_mucho_forms` | 5 | 10 | 15 | Muy/mucho/mucha/muchos/muchas |
+
+**Architecture files:**
+- `data/deck-architectures/spanish_a2_grammar_arch.yaml` — grammar points with PCIC references and verified sentences
+- `data/deck-architectures/_research/spanish/pcic_a2_grammar_scope.md` — full PCIC A2 scope extraction
+- `data/deck-architectures/_research/spanish/tatoeba_a2_sentences.tsv` — all Tatoeba sentences with IDs and CC BY 2.0 attribution
+
+**Key A2 vs A1 differences:**
+- A2 introduces the **two core Spanish past tenses** (preterite + imperfect) — the most conceptually complex A2 topic
+- Preterite is split into 8 pools (by verb class) to ensure semantically homogeneous distractors
+- Reflexive verbs expanded from A1 (only llamarse) to 7 full paradigms including stem-changing verbs
+- Object pronouns get their own chain theme (not covered at A1)
+-  pool marked  — temporal adverbials range from single words (ayer/antes) to multi-word phrases (la semana pasada) by nature
+
+**Language coverage note:** As of 2026-04-09, 2 of 4 planned Spanish grammar decks (A1–B2) are complete.
