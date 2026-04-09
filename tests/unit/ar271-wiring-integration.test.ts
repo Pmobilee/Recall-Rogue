@@ -505,14 +505,14 @@ describe('AR-271 Relic Mechanic: Domain Mastery Sigil AP modifier', () => {
 
 describe('AR-271 Relic Mechanic: Lucky Coin armed flag', () => {
   /**
-   * Test 6: Lucky Coin arms after exactly 3 wrong Charges in one encounter.
+   * Test 6: Lucky Coin arms after exactly 2 wrong Charges in one encounter.
    * The next correct Charge gets +50% damage multiplier.
    *
    * Approach: compare `result.effect.damageDealt` of a CC attack with vs without
    * the coin armed. Without prior wrongs (coin unarmed): baseDamage.
-   * With 3 prior wrong Charges (coin armed): ~1.5× baseDamage.
+   * With 2 prior wrong Charges (coin armed): ~1.5× baseDamage.
    */
-  it('Lucky Coin boosts CC damage after 3 wrong Charges (armed → +50%)', () => {
+  it('Lucky Coin boosts CC damage after 2 wrong Charges (armed → +50%)', () => {
     const relics = new Set(['lucky_coin']);
 
     // ── Baseline: play CC immediately without arming lucky_coin ─────────────
@@ -561,7 +561,7 @@ describe('AR-271 Relic Mechanic: Lucky Coin armed flag', () => {
     injectIntoHand(lcTS, lc2);
     injectIntoHand(lcTS, lcCC);
 
-    // 3 wrong Charges → _wrongChargesForLuckyCoin reaches 3 → armed
+    // 2 wrong Charges → _wrongChargesForLuckyCoin reaches 2 → armed
     playCardAction(lcTS, 'lc_w0', false, false, 'charge');
     playCardAction(lcTS, 'lc_w1', false, false, 'charge');
     playCardAction(lcTS, 'lc_w2', false, false, 'charge');
@@ -577,9 +577,9 @@ describe('AR-271 Relic Mechanic: Lucky Coin armed flag', () => {
   });
 
   /**
-   * Test 6b: Lucky Coin does NOT fire if only 2 wrong Charges (threshold = 3).
+   * Test 6b: Lucky Coin does NOT fire if only 1 wrong Charge (threshold = 2).
    */
-  it('Lucky Coin does NOT boost damage after only 2 wrong Charges (unarmed)', () => {
+  it('Lucky Coin does NOT boost damage after only 1 wrong Charge (unarmed)', () => {
     const relics = new Set(['lucky_coin']);
 
     // Baseline: CC with no prior wrongs
@@ -620,9 +620,8 @@ describe('AR-271 Relic Mechanic: Lucky Coin armed flag', () => {
     injectIntoHand(lcTS2, lcW1);
     injectIntoHand(lcTS2, lcCC2);
 
-    // Only 2 wrong charges → NOT armed (threshold is 3)
+    // Only 1 wrong charge → NOT armed (threshold is 2)
     playCardAction(lcTS2, 'lc2_w0', false, false, 'charge');
-    playCardAction(lcTS2, 'lc2_w1', false, false, 'charge');
     const lcResult2 = playCardAction(lcTS2, 'lc2_cc', true, false, 'charge');
 
     // Should be same as baseline (coin unarmed)

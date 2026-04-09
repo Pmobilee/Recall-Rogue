@@ -439,8 +439,8 @@ export const POST_ENCOUNTER_HEAL_CAP: Record<number, number> = {
   3: 0.50,   // Segment 3 (floors 13-18): cap at 50%
   4: 0.30,   // Segment 4 (floors 19-24): cap at 30%
 };
-/** Global base HP multiplier for all enemies. Raised 4.0→6.0 on 2026-04-09: 50% HP increase, #1 balance fix. Ensures meaningful multi-turn fights. */
-export const ENEMY_BASE_HP_MULTIPLIER = 6.0;
+/** Global base HP multiplier for all enemies. Reduced 6.0→4.5 on 2026-04-09: tuned down after playtesting. */
+export const ENEMY_BASE_HP_MULTIPLIER = 4.5;
 /**
  * HP scaling per floor above floor 1. Each floor adds this fraction to the base HP multiplier.
  * @deprecated Use ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT for segment-aware scaling.
@@ -499,7 +499,7 @@ export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 2.0;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. Doubled 2026-04-08 to match GLOBAL_ENEMY_DAMAGE_MULTIPLIER x2. */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 22,   // was 14, raised 2026-04-09: Act 1 enemies need scarier damage
+  1: 16,   // was 22, reduced 2026-04-09: act 1 tuning
   2: 28,   // was 14
   3: 40,   // was 20
   4: 56,   // was 28

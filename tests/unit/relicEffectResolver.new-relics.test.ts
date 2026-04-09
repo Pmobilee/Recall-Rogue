@@ -2,7 +2,7 @@
  * Unit tests for 6 reworked relic effects (Phase 4 mechanics overhaul).
  *
  * Relic reworks tested:
- *   brass_knuckles — every 3rd attack grants +1 permanent Strength (was: +6 flat damage)
+ *   brass_knuckles — every 2nd attack grants +1 permanent Strength (was: +6 flat damage)
  *   iron_shield    — 2 + shieldsPlayedLastTurn block per turn (was: static +5 block)
  *   herbal_pouch   — +1 Poison/turn + heal 3 post-combat (was: conditional heal)
  *   thick_skin     — debuffs reflected to enemy (was: debuff duration -1)
@@ -38,7 +38,7 @@ const DEFAULT_ATTACK_CONTEXT: AttackContext = {
 
 // ── brass_knuckles ────────────────────────────────────────────────────────────
 
-describe('brass_knuckles (v3) — +1 Strength every 3rd attack', () => {
+describe('brass_knuckles (v3) — +1 Strength every 2nd attack', () => {
   it('does NOT grant Strength on 1st attack (count=1)', () => {
     const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
       attackCountThisEncounter: 1,
@@ -46,25 +46,25 @@ describe('brass_knuckles (v3) — +1 Strength every 3rd attack', () => {
     expect(result.strengthGain).toBe(0);
   });
 
-  it('does NOT grant Strength on 2nd attack (count=2)', () => {
+  it('grants +1 Strength on 2nd attack (count=2)', () => {
     const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
       attackCountThisEncounter: 2,
-    });
-    expect(result.strengthGain).toBe(0);
-  });
-
-  it('grants +1 Strength on 3rd attack (count=3)', () => {
-    const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
-      attackCountThisEncounter: 3,
     });
     expect(result.strengthGain).toBe(1);
   });
 
-  it('does NOT grant on 4th attack (count=4)', () => {
+  it('does NOT grant Strength on 3rd attack (count=3, odd)', () => {
+    const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
+      attackCountThisEncounter: 3,
+    });
+    expect(result.strengthGain).toBe(0);
+  });
+
+  it('grants +1 Strength on 4th attack (count=4, even)', () => {
     const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
       attackCountThisEncounter: 4,
     });
-    expect(result.strengthGain).toBe(0);
+    expect(result.strengthGain).toBe(1);
   });
 
   it('grants Strength on 6th attack (every 3rd)', () => {
@@ -74,9 +74,9 @@ describe('brass_knuckles (v3) — +1 Strength every 3rd attack', () => {
     expect(result.strengthGain).toBe(1);
   });
 
-  it('grants Strength on 9th attack (every 3rd)', () => {
+  it('grants Strength on 8th attack (every 2nd)', () => {
     const result = resolveAttackModifiers(makeRelics('brass_knuckles'), { ...DEFAULT_ATTACK_CONTEXT,
-      attackCountThisEncounter: 9,
+      attackCountThisEncounter: 8,
     });
     expect(result.strengthGain).toBe(1);
   });

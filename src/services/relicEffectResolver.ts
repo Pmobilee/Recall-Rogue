@@ -500,10 +500,10 @@ export function resolveAttackModifiers(
     flatDamageBonus += 3;
   }
 
-  // brass_knuckles — every 3rd attack grants +1 permanent Strength (encounter-scoped)
+  // brass_knuckles — every 2nd attack grants +1 permanent Strength (encounter-scoped)
   const attackCount = context.attackCountThisEncounter ?? 0;
   const strengthGain =
-    relicIds.has('brass_knuckles') && attackCount > 0 && attackCount % 3 === 0 ? 1 : 0;
+    relicIds.has('brass_knuckles') && attackCount > 0 && attackCount % 2 === 0 ? 1 : 0;
 
   // null_shard — all attacks +25% damage (chain mult override handled in resolveChainModifiers)
   if (relicIds.has('null_shard')) {

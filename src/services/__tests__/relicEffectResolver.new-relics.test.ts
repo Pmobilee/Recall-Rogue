@@ -188,13 +188,13 @@ describe('battle_scars (common)', () => {
   });
 });
 
-describe('brass_knuckles (common, v3 rework)', () => {
-  it('grants +1 strengthGain on 3rd attack', () => {
+describe('brass_knuckles (common, v3 rework — every 2nd attack)', () => {
+  it('does NOT grant strengthGain on 3rd attack (odd)', () => {
     const result = resolveAttackModifiers(
       new Set(['brass_knuckles']),
       makeAttackCtx({ attackCountThisEncounter: 3 }),
     );
-    expect(result.strengthGain).toBe(1);
+    expect(result.strengthGain).toBe(0);
   });
 
   it('grants +1 strengthGain on 6th attack', () => {
@@ -213,18 +213,18 @@ describe('brass_knuckles (common, v3 rework)', () => {
     expect(result.strengthGain).toBe(0);
   });
 
-  it('does NOT grant strength on 2nd attack', () => {
+  it('grants +1 strengthGain on 2nd attack (even)', () => {
     const result = resolveAttackModifiers(
       new Set(['brass_knuckles']),
       makeAttackCtx({ attackCountThisEncounter: 2 }),
     );
-    expect(result.strengthGain).toBe(0);
+    expect(result.strengthGain).toBe(1);
   });
 
-  it('no longer grants flatDamageBonus on 3rd attack', () => {
+  it('no longer grants flatDamageBonus on 2nd attack (only strengthGain)', () => {
     const result = resolveAttackModifiers(
       new Set(['brass_knuckles']),
-      makeAttackCtx({ attackCountThisEncounter: 3 }),
+      makeAttackCtx({ attackCountThisEncounter: 2 }),
     );
     expect(result.flatDamageBonus).toBe(0);
   });

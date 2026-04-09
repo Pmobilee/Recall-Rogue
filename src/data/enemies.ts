@@ -570,7 +570,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Omnibus',
     category: 'boss',
     region: 'the_archive',
-    baseHP: 18, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4), 20→18 (pass #5, 2026-04-03)
+    baseHP: 15, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4), 20→18 (pass #5, 2026-04-03), 18→15 (pass #6, 2026-04-09)
     intentPool: [
       { type: 'attack', value: 4, weight: 35, telegraph: 'Tome slam' },
       { type: 'attack', value: 5, weight: 25, telegraph: 'Crushing knowledge' },
@@ -583,7 +583,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     phaseTransitionAt: 0.5,
     phase2IntentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Tome crush' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Page storm', hitCount: 3 },
+      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Page storm', hitCount: 2 },
       { type: 'buff', value: 3, weight: 1, telegraph: 'Knowledge consumed', statusEffect: { type: 'strength', value: 3, turns: 3 } },
       { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
     ],
@@ -595,13 +595,12 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Final Lesson',
     category: 'boss',
     region: 'the_archive',
-    baseHP: 18, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4), 20→18 (pass #5, 2026-04-03)
+    baseHP: 14, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4), 20→18 (pass #5, 2026-04-03), 18→14 (pass #6, 2026-04-09)
     intentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Cataloguing strike' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Archive barrage', hitCount: 4 },
       { type: 'debuff', value: 3, weight: 2, telegraph: 'Forgotten lore', statusEffect: { type: 'weakness', value: 2, turns: 2 } },
       { type: 'buff', value: 3, weight: 2, telegraph: 'Ancient wisdom', statusEffect: { type: 'strength', value: 2, turns: 3 } },
-      { type: 'heal', value: 12, weight: 1, telegraph: 'Restoration protocol' },
     ],
     description: 'Final guardian. Quiz phases at 66% and 33% HP. Wrong Charge answers make it stronger. The second quiz phase is Rapid Fire.',
     phaseTransitionAt: 0.33,
@@ -609,7 +608,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 6, weight: 3, telegraph: 'Judgement' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Knowledge storm', hitCount: 4 },
       { type: 'debuff', value: 4, weight: 2, telegraph: 'Mind shatter', statusEffect: { type: 'vulnerable', value: 2, turns: 3 } },
-      { type: 'heal', value: 10, weight: 1, telegraph: 'Archive restoration' },
+      { type: 'heal', value: 6, weight: 1, telegraph: 'Archive restoration' },
       { type: 'buff', value: 3, weight: 1, telegraph: 'Final form', statusEffect: { type: 'strength', value: 3, turns: 5 } },
     ],
     animArchetype: 'caster',

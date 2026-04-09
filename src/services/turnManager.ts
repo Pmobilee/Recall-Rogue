@@ -70,6 +70,7 @@ import {
   resolveExhaustEffects,
   resolveChainBreakEffects,
 } from './relicEffectResolver';
+import { applyPostIntentDamageScaling } from './enemyDamageScaling';
 
 // ─── AR-269: Akashic Record — fact spacing tracker ──────────────────────────
 /**
@@ -1249,10 +1250,10 @@ export function playCardAction(
         _scarTissueStacks++;
         turnState.scarTissueStacks = _scarTissueStacks;
       }
-      // lucky_coin (v3): track wrong Charges this encounter; arm on reaching 3
+      // lucky_coin (v3): track wrong Charges this encounter; arm on reaching 2
       if (chargeWrongFx.luckyCoinWrongCount !== -1) {
         _wrongChargesForLuckyCoin = chargeWrongFx.luckyCoinWrongCount;
-        if (_wrongChargesForLuckyCoin >= 3) {
+        if (_wrongChargesForLuckyCoin >= 2) {
           _luckyCoinArmed = true;
           _wrongChargesForLuckyCoin = 0;
         }
@@ -2095,6 +2096,11 @@ export function playCardAction(
   if (effect.applySlow) turnState.slowEnemyIntent = true;
   if (effect.applyForesight) turnState.foresightTurnsRemaining = 2;
   // applyTransmute removed — Transmute now uses CardPickerOverlay (pendingCardPick flow)
+
+  // Transmute QP / Charge Wrong: auto-swap source card in-place with the selected candidate
+  if (effect.applyTransmuteAuto) {
+    applyTransmuteSwap(turnState, effect.applyTransmuteAuto.sourceCardId, [effect.applyTransmuteAuto.selected]);
+  }
 
   // cleanse: remove all debuff-type status effects from player
   if (effect.applyCleanse) {
@@ -3110,19 +3116,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
         incomingDamage = Math.min(incomingDamage, cap);
       }
     }
-    const mode = get(difficultyMode);
-    if (mode === 'relaxed') {
-      incomingDamage = Math.round(incomingDamage * 0.7);
-    }
-
-    incomingDamage = Math.max(
-      0,
-      Math.round(
-        incomingDamage *
-        (turnState.ascensionEnemyDamageMultiplier ?? 1) *
-        (turnState.canaryEnemyDamageMultiplier ?? 1),
-      ),
-    );
+    // Use the shared helper so the pipeline stays in sync with computeIntentDisplayDamage.
+    incomingDamage = applyPostIntentDamageScaling(incomingDamage, {
+      difficultyMode: get(difficultyMode),
+      ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+      canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+    });
 
     const damageTakenFx = resolveDamageTakenEffects(turnState.activeRelicIds, {
       playerHpPercent: playerState.hp / playerState.maxHP,
@@ -3764,52 +3763,115 @@ export function applyPendingChoice(
 }
 
 /**
- * Resolve a Transmute card pick — permanently replace the source card with the chosen card(s).
- * Transmuted cards are permanent run-deck changes: the source card is removed, the new card
- * keeps the source fact binding, gets a new ID, and receives catch-up mastery.
- * No revert at encounter end — this is a permanent deck transformation.
+ * Shared in-place swap helper for Transmute (encounter-only scope).
+ *
+ * Searches all four piles for sourceCardId. When found, transforms it in-place:
+ * - Overwrites mechanic fields (mechanicId, mechanicName, cardType, apCost, baseEffectValue,
+ *   originalBaseEffectValue, chainType) with the first selected candidate.
+ * - Sets isTransmuted=true and stashes full original card in originalCard for revert at encounter end.
+ * - Keeps the card's id, factId, and position in its pile stable.
+ * - Applies catch-up mastery to the new mechanic.
+ * - At mastery 3+ with 2+ selections, extra selections are added as NEW transmuted cards in hand.
+ *   These extras carry a stub originalCard (just id) so revertTransmutedCards removes them cleanly.
+ *
+ * If sourceCardId is not found in any pile, logs a warning and returns without mutating state.
+ */
+function applyTransmuteSwap(
+  turnState: TurnState,
+  sourceCardId: string,
+  selectedCards: Card[],
+): void {
+  if (selectedCards.length === 0) return;
+
+  const { hand, discardPile, drawPile, exhaustPile } = turnState.deck;
+
+  // Search all piles — source card may be in hand (QP path), discard (post-play), draw, or exhaust
+  let sourceCard: Card | undefined;
+  let sourcePile: Card[] | undefined;
+  let sourceIdx = -1;
+
+  const piles: Card[][] = [hand, discardPile, drawPile, exhaustPile];
+  for (const pile of piles) {
+    const idx = pile.findIndex(c => c.id === sourceCardId);
+    if (idx >= 0) {
+      sourceCard = pile[idx];
+      sourcePile = pile;
+      sourceIdx = idx;
+      break;
+    }
+  }
+
+  if (!sourceCard || !sourcePile || sourceIdx < 0) {
+    console.warn(`[turnManager] applyTransmuteSwap: source card ${sourceCardId} not found in any pile`);
+    return;
+  }
+
+  // Capture full original state for revert
+  const originalCardSnapshot: Card = { ...sourceCard };
+
+  // Gather current deck for catch-up mastery calculation (before mutation)
+  const allDeckCards = [...drawPile, ...hand, ...discardPile, ...exhaustPile];
+
+  // Transform first selection in-place (preserving id + factId)
+  const primary = selectedCards[0];
+  const primaryMastery = computeCatchUpMastery(primary, allDeckCards);
+  sourcePile[sourceIdx] = {
+    ...sourceCard,
+    // Mechanic fields overwritten
+    mechanicId: primary.mechanicId,
+    mechanicName: primary.mechanicName,
+    cardType: primary.cardType,
+    apCost: primary.apCost,
+    baseEffectValue: primary.baseEffectValue,
+    originalBaseEffectValue: primary.baseEffectValue,
+    chainType: primary.chainType,
+    masteryLevel: primaryMastery,
+    isUpgraded: primaryMastery > 0,
+    // Encounter-only: remember original for revert
+    isTransmuted: true,
+    originalCard: originalCardSnapshot,
+  };
+
+  // Extra selections (mastery 3+ CC 2-pick): add as new transmuted cards in hand
+  for (let i = 1; i < selectedCards.length; i++) {
+    const extra = selectedCards[i];
+    const extraMastery = computeCatchUpMastery(extra, allDeckCards);
+    // Stub originalCard marks this as a "remove on revert" extra (no real original to restore)
+    const extraCard: Card = {
+      ...extra,
+      id: `transmute_extra_${Math.random().toString(36).slice(2, 10)}`,
+      factId: originalCardSnapshot.factId,
+      masteryLevel: extraMastery,
+      isUpgraded: extraMastery > 0,
+      isTransmuted: true,
+      originalCard: { id: `transmute_extra_remove_${Math.random().toString(36).slice(2, 10)}` } as Card,
+    };
+    hand.push(extraCard);
+  }
+}
+
+/**
+ * Resolve a Transmute card pick (Charge Correct path) — encounter-only in-place swap.
+ * Finds the source card in any pile, transforms it in-place with the selected candidate(s),
+ * sets isTransmuted=true + originalCard for revert at encounter end.
+ * Mastery 3+ with 2 selections: first replaces the source, second is added to hand.
  */
 export function resolveTransmutePick(
   turnState: TurnState,
   sourceCardId: string,
   selectedCards: Card[],
 ): void {
-  const { hand, discardPile, drawPile, exhaustPile } = turnState.deck;
-
-  // Find the source card (might be in discard since it was "played")
-  const discardIdx = discardPile.findIndex(c => c.id === sourceCardId);
-  let sourceCard: Card | undefined;
-
-  if (discardIdx >= 0) {
-    sourceCard = discardPile[discardIdx];
-    discardPile.splice(discardIdx, 1);
-  }
-
-  if (!sourceCard) return;
-
-  // Gather all current deck cards for catch-up mastery calculation
-  const allDeckCards = [...drawPile, ...hand, ...discardPile, ...exhaustPile];
-
-  // Create transformed card(s) and add to hand — permanently replaces source in the run deck.
-  // Source card is already removed from discard above, so the deck is in the correct final state.
-  for (const selected of selectedCards) {
-    const catchUpLevel = computeCatchUpMastery(selected, allDeckCards);
-    const transformed: Card = {
-      ...selected,
-      id: 'transmute_' + Math.random().toString(36).slice(2, 10),
-      factId: sourceCard.factId, // Keep the fact binding from the original card
-      masteryLevel: catchUpLevel,
-      isUpgraded: catchUpLevel > 0,
-      // No isTransmuted flag — this is a permanent card, not a temporary transform
-    };
-    hand.push(transformed);
-  }
+  applyTransmuteSwap(turnState, sourceCardId, selectedCards);
 }
 
 /**
- * Revert temporary transformed cards (conjure, mimic) back to their original form.
- * Called at encounter end. Note: Transmute cards are now permanent and are NOT reverted —
- * only cards with isTransmuted=true AND originalCard set are affected (conjure/mimic).
+ * Revert temporary transformed cards (transmute, conjure, mimic) back to their original form.
+ * Called at encounter end.
+ *
+ * Cards with isTransmuted=true AND originalCard set:
+ * - If originalCard.id starts with "transmute_extra_remove_": this is an extra card added by
+ *   mastery 3+ transmute. Remove it entirely (do not restore).
+ * - Otherwise: restore the full original card once (deduplicated by originalCard.id).
  */
 export function revertTransmutedCards(deck: CardRunState): void {
   const revert = (cards: Card[]): Card[] => {
@@ -3818,8 +3880,14 @@ export function revertTransmutedCards(deck: CardRunState): void {
 
     for (const card of cards) {
       if (card.isTransmuted && card.originalCard) {
-        // Only add the original once (mastery 3 splits into 2, merge back to 1)
         const origId = card.originalCard.id;
+        // Extra transmuted cards (mastery 3+ second pick) are marked with a sentinel prefix.
+        // They should be removed entirely at encounter end — no original to restore.
+        if (origId.startsWith('transmute_extra_remove_')) {
+          // Drop the card — intentionally excluded from result
+          continue;
+        }
+        // Restore the original card once (multiple transmuted copies share one original)
         if (!reverted.has(origId)) {
           result.push({ ...card.originalCard });
           reverted.add(origId);

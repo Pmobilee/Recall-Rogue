@@ -817,18 +817,10 @@ const combined = {
   timestamp:       new Date().toISOString(),
   description,
   mode:            simMode,
-  totalRuns:       simMode === 'full' ? allFullResults.length : allResults.length,
-  runsPerProfile,
-  durationSeconds: parseFloat(totalElapsed),
-  profiles:        profilesToRun.map(p => p.label),
-  config:          { maxEncounters, healRate, ascensionLevel, simMode, sweepAxis, isIsolation, parallel: useParallel, workers: workerCount },
-  mechanicStats:   simMode === 'combat' ? profileMechanicStats : {},
-  results:         simMode === 'full' ? allFullResults : allResults,
-  ...(sweepResults.length > 0 ? { sweepResults } : {}),
 };
-fs.writeFileSync(path.join(outputDir, 'combined.json'), JSON.stringify(combined, null, 2));
+// ── Analytics mode: generate detailed analytics reports BEFORE combined.json ─
+// (combined.json can exceed V8 string limit at high run counts with encounter details)
 
-// ── Analytics mode: generate detailed analytics reports ──────────────────────
 if (isAnalyticsMode && simMode === 'full' && allFullResults.length > 0) {
   const analyticsRuns: AnalyticsRun[] = allFullResults.map(r => {
     // Determine ascension for this run from profilesToRun
@@ -893,6 +885,32 @@ if (isAnalyticsMode && simMode === 'full' && allFullResults.length > 0) {
 
   const analyticsOutputDir = path.join(outputDir, 'analytics');
   generateAnalyticsReports(analyticsRuns, analyticsOutputDir);
+}
+
+// Write combined.json — strip encounter details to avoid V8 string limit at high run counts
+try {
+  const strippedResults = simMode === 'full'
+    ? allFullResults.map(r => {
+        const { encounters, deckEvolution, ...rest } = r as Record<string, unknown>;
+        void encounters; void deckEvolution;
+        return rest;
+      })
+    : allResults;
+  const combined = {
+    timestamp,
+    description: runDescription,
+    totalRuns:   simMode === 'full' ? allFullResults.length : allResults.length,
+    runsPerProfile: runsPerProfile,
+    durationSeconds: totalElapsed,
+    profiles:    profilesToRun.map(p => p.label),
+    config:      { maxEncounters, healRate, ascensionLevel, simMode, sweepAxis, isIsolation, parallel: useParallel, workers: workerCount },
+    mechanicStats: simMode === 'combat' ? profileMechanicStats : {},
+    results:     strippedResults,
+    ...(sweepResults.length > 0 ? { sweepResults } : {}),
+  };
+  fs.writeFileSync(path.join(outputDir, 'combined.json'), JSON.stringify(combined, null, 2));
+} catch (err) {
+  console.warn(`  [WARN] combined.json too large to write (${allFullResults.length} runs). Analytics reports still generated.`);
 }
 
 // ──────────────────────────────────────────────────────────────────────────────

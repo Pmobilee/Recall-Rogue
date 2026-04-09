@@ -403,16 +403,16 @@ describe('Enemy Manager', () => {
     it('creates enemy with scaled HP for floor 1', () => {
       const template = mockEnemyTemplate({ baseHP: 20 });
       const enemy = createEnemy(template, 1);
-      // 20 * 6.0 (ENEMY_BASE_HP_MULTIPLIER) * 1.0 (floor 1) = 120
-      expect(enemy.currentHP).toBe(120);
-      expect(enemy.maxHP).toBe(120);
+      // 20 * 4.5 (ENEMY_BASE_HP_MULTIPLIER) * 1.0 (floor 1) = 90
+      expect(enemy.currentHP).toBe(90);
+      expect(enemy.maxHP).toBe(90);
     });
 
     it('scales HP for higher floors', () => {
       const template = mockEnemyTemplate({ baseHP: 20 });
       const enemy = createEnemy(template, 5);
-      // 20 * 6.0 * 1.40 (floor 5) = 168
-      expect(enemy.currentHP).toBe(Math.round(20 * 6.0 * getFloorScaling(5)));
+      // 20 * 4.5 * 1.40 (floor 5) = 126
+      expect(enemy.currentHP).toBe(Math.round(20 * 4.5 * getFloorScaling(5)));
     });
 
     it('starts in phase 1', () => {
@@ -522,8 +522,8 @@ describe('Enemy Manager', () => {
         statusEffects: [{ type: 'strength', value: 2, turnsRemaining: 3 }],
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: round(10 * 1.5 * 1.0 * 2.0) = 30, capped at segment 1 cap of 22.
-      expect(result.damage).toBe(22);
+      // Floor 1: round(10 * 1.5 * 1.0 * 2.0) = 30, capped at segment 1 cap of 16.
+      expect(result.damage).toBe(16);
     });
 
     it('calculates multi_attack damage correctly', () => {
@@ -531,8 +531,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Flurry', hitCount: 4 },
       });
       const result = executeEnemyIntent(enemy);
-      // round(5 * 1.0 * 1.0 * 2.0) * 4 = 40, capped at segment 1 cap of 22.
-      expect(result.damage).toBe(22);
+      // round(5 * 1.0 * 1.0 * 2.0) * 4 = 40, capped at segment 1 cap of 16.
+      expect(result.damage).toBe(16);
     });
 
     it('returns player debuffs for debuff intent', () => {
