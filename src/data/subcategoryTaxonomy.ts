@@ -76,8 +76,6 @@ export const SUBCATEGORY_TAXONOMY: Partial<Record<CanonicalFactDomain, Subcatego
     { id: 'world_war_ii', label: 'World War II', description: 'WWII events, battles, figures, and turning points' },
     { id: 'world_wars', label: 'World Wars', description: 'WWI and WWII specifically' },
     { id: 'wwii_aftermath', label: 'WWII Aftermath', description: 'Post-war reconstruction, Cold War origins, and geopolitical consequences of WWII' },
-    { id: 'wwii_alliances', label: 'WWII Alliances', description: 'Allied powers, coalitions, and international cooperation in WWII' },
-    { id: 'wwii_axis', label: 'WWII Axis Powers', description: 'Germany, Italy, Japan, and Axis-aligned nations in WWII' },
     { id: 'wwii_diplomacy', label: 'WWII Diplomacy', description: 'Treaties, conferences, negotiations, and political decisions during WWII' },
   ],
   mythology_folklore: [
