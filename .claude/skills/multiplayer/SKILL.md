@@ -89,6 +89,15 @@ Guide the user through testing with 2 Steam accounts:
 4. Verify P2P message round-trip via console logs
 5. Start Race Mode, verify shared seed produces same encounters
 
+## Critical Invariants
+
+### Content Selection Sync (host ↔ guest)
+Host + guest MUST end up with identical card pools. Two known pitfalls:
+
+1. **`mp:lobby:start` MUST carry `contentSelection`** in its payload — don't rely on a prior `mp:lobby:settings` broadcast to have landed. Network reordering makes that race-condition-prone. `multiplayerLobbyService.startGame()` includes it; the `mp:lobby:start` handler assigns it to `_currentLobby.contentSelection` before firing `_onGameStart`.
+2. **Guest MUST NOT silently fall back to general mode.** `CardApp.svelte` game-start callback guards with `if (!lobby.contentSelection) { console.error(...); transitionScreen('multiplayerLobby'); return; }` — never let a run start without a definitive content selection.
+3. **Mixed custom decks (language + knowledge):** `buildPresetRunPool` / `buildGeneralRunPool` accept `allowLanguageFacts: boolean`. `encounterBridge.ts` computes `hasLanguageItem` from the custom deck's items and passes it through. Never use the old `domains.some(d => !d.startsWith('language:'))` heuristic — it strips grammar from mixed decks. Tests live in `src/services/presetPoolBuilder.test.ts` and `src/services/multiplayerLobbyService.test.ts`.
+
 ## Subcommand: `wire <mode>`
 For each mode, read the relevant service file and existing UI component, then wire into gameFlowController following the Race Mode pattern:
 - **duel**: `multiplayerGameService.ts` (initDuel, hostCreateSharedEnemy, submitDuelTurnAction) + `DuelOpponentPanel.svelte`

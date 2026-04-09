@@ -55,7 +55,31 @@ Both `LobbyState` and `LobbyPlayer` carry an optional `contentSelection?: LobbyC
 
 Respects `deckSelectionMode`: host-only writes to `LobbyState.contentSelection` when `host_picks`; per-player writes to the local `LobbyPlayer.contentSelection` when `each_picks`.
 
-`broadcastSettings()` now includes `contentSelection` in the settings payload so non-host clients receive it via `mp:lobby:settings`.
+`broadcastSettings()` includes `contentSelection` in the settings payload so non-host clients receive it via `mp:lobby:settings`.
+
+### contentSelection in mp:lobby:start (fix 2026-04-09)
+
+`startGame()` includes `contentSelection` directly in the `mp:lobby:start` payload. The `mp:lobby:start` handler on guest clients reads this value and assigns it to `_currentLobby.contentSelection` BEFORE invoking `_onGameStart`.
+
+**Why both mp:lobby:settings and mp:lobby:start carry contentSelection:**
+`mp:lobby:settings` is broadcast on every settings change and is the primary sync mechanism during lobby configuration. `mp:lobby:start` is the authoritative game-start event — it must be self-contained because it may arrive before or instead of a late/dropped settings broadcast in high-latency or lossy conditions. Having contentSelection in the start payload guarantees the guest always has the definitive value at run-start time regardless of message ordering.
+
+### Mixed custom-deck language filter (fix 2026-04-09)
+
+`buildPresetRunPool()` in `src/services/presetPoolBuilder.ts` accepts an `allowLanguageFacts?: boolean` option. When true, the `factIsTrivia` filter is skipped — language, vocabulary, and grammar facts are included alongside non-language domain facts.
+
+`buildGeneralRunPool()` forwards this option to `buildPresetRunPool()`.
+
+In `encounterBridge.ts`, the `custom_deck` pool-assembly branch computes:
+```typescript
+const hasLanguageItem = run.deckMode.items.some((item) => {
+  const deckPrefix = item.deckId.indexOf('_') > 0
+    ? item.deckId.substring(0, item.deckId.indexOf('_'))
+    : item.deckId;
+  return LANG_PREFIX_TO_CODE[deckPrefix] !== undefined;
+});
+```
+and passes `allowLanguageFacts: hasLanguageItem` into `buildGeneralRunPool`. This ensures that when a custom deck intentionally mixes a Japanese vocab deck with a World History deck, the language facts are not stripped from the pool.
 
 ## Race Mode Scoring
 

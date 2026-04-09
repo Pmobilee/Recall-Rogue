@@ -291,7 +291,15 @@ export function allReady(): boolean {
          _currentLobby.players.every(p => p.isReady);
 }
 
-/** Start the game (host only, requires allReady) */
+/**
+ * Start the game (host only, requires allReady).
+ *
+ * Fix 2026-04-09: contentSelection is now included in the mp:lobby:start payload
+ * so guest clients receive the same content selection the host configured.
+ * Previously only mp:lobby:settings carried contentSelection — guests who received
+ * the start message before a late-arriving settings broadcast would silently fall
+ * back to general mode, causing host/guest pool divergence.
+ */
 export function startGame(): void {
   if (!_currentLobby || !isHost() || !allReady()) return;
   const seed = Math.floor(Math.random() * 2147483647);
@@ -303,6 +311,9 @@ export function startGame(): void {
     mode: _currentLobby.mode,
     deckId: _currentLobby.selectedDeckId,
     houseRules: _currentLobby.houseRules as unknown as Record<string, unknown>,
+    // contentSelection is always sent so guests have the definitive value at game-start
+    // time, even if mp:lobby:settings arrived late or was lost due to packet drop.
+    contentSelection: _currentLobby.contentSelection as unknown as Record<string, unknown> | undefined,
   });
   _onGameStart?.(seed, _currentLobby);
 }
@@ -405,10 +416,20 @@ function setupMessageHandlers(): void {
 
   transport.on('mp:lobby:start', (msg) => {
     if (!_currentLobby) return;
-    const { seed } = msg.payload as { seed: number };
-    _currentLobby.seed = seed;
+    const payload = msg.payload as {
+      seed: number;
+      contentSelection?: LobbyContentSelection;
+    };
+    // Apply contentSelection BEFORE invoking _onGameStart so the callback
+    // always sees the definitive value the host committed at game-start time.
+    // This is the authoritative source — mp:lobby:settings may have been lost
+    // or reordered relative to mp:lobby:start in high-latency/lossy conditions.
+    if (payload.contentSelection !== undefined) {
+      _currentLobby.contentSelection = payload.contentSelection;
+    }
+    _currentLobby.seed = payload.seed;
     _currentLobby.status = 'in_game';
-    _onGameStart?.(seed, _currentLobby);
+    _onGameStart?.(payload.seed, _currentLobby);
   });
 
   transport.on('mp:race:progress', (msg) => {

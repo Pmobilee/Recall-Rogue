@@ -450,6 +450,14 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
           arabic: 'ar', hindi: 'hi', vietnamese: 'vi', turkish: 'tr',
         };
 
+        // Detect if ANY item in the custom deck is a language/vocabulary deck.
+        // When true, we must allow language facts into the general pool built for
+        // non-language items so the merged pool is truly mixed, not stripped.
+        const hasLanguageItem = run.deckMode.items.some((item) => {
+          const deckPrefix = item.deckId.indexOf('_') > 0 ? item.deckId.substring(0, item.deckId.indexOf('_')) : item.deckId;
+          return LANG_PREFIX_TO_CODE[deckPrefix] !== undefined;
+        });
+
         let mergedPool: Card[] = [];
         const seenFactIds = new Set<string>();
 
@@ -470,6 +478,10 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
               categoryFilters,
               funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
               chainDistribution: run.chainDistribution,
+              // Allow language/vocab facts when the custom deck mixes language and knowledge items.
+              // Without this, factIsTrivia would strip all grammar/vocab facts from the non-language
+              // domain builds, producing divergent pools between host and guest in coop.
+              allowLanguageFacts: hasLanguageItem,
             });
             const curatedDeck = getCuratedDeck(item.deckId);
             if (curatedDeck) {
@@ -481,6 +493,8 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
           }
 
           // Deduplicate by factId across deck items.
+          // Uses a Set<string> keyed by factId — order-independent dedup that preserves
+          // first-seen insertion order. Safe regardless of which item is iterated first.
           for (const card of itemPool) {
             if (!seenFactIds.has(card.factId)) {
               seenFactIds.add(card.factId);

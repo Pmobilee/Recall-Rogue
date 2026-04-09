@@ -314,6 +314,17 @@ export function buildPresetRunPool(
      * Falls back to round-robin when absent (trivia runs).
      */
     chainDistribution?: ChainDistribution;
+    /**
+     * When true, language/grammar/vocabulary facts are allowed in the run pool
+     * even when non-language domains are also present.
+     *
+     * Set this when the caller explicitly mixes language decks with knowledge
+     * decks (e.g. a custom deck containing both a Japanese vocab deck and a
+     * World History deck). Leaving it false/undefined preserves the legacy
+     * trivia-run behaviour where language facts are always excluded from
+     * non-language domain runs.
+     */
+    allowLanguageFacts?: boolean;
   },
 ): Card[] {
   const poolSize = options?.poolSize ?? DEFAULT_POOL_SIZE;
@@ -342,8 +353,12 @@ export function buildPresetRunPool(
       const categories = DOMAIN_TO_CATEGORY[normalized] ?? DOMAIN_TO_CATEGORY.general_knowledge;
       facts = factsDB.getByCategory(categories, contentTarget * 3);
       facts = applyCategoryFilters(normalized, facts, options?.categoryFilters);
-      // Exclude vocabulary/language facts from trivia pool — they live in Study Temple curated decks.
-      facts = facts.filter(factIsTrivia);
+      // Exclude vocabulary/language facts from trivia pool — they live in Study Temple curated
+      // decks. Exception: allowLanguageFacts=true means the caller has explicitly mixed language
+      // deck items with knowledge items (e.g. a custom deck), so the filter must be skipped.
+      if (!options?.allowLanguageFacts) {
+        facts = facts.filter(factIsTrivia);
+      }
     }
 
     // Remove facts without a valid question before any further processing.
@@ -382,9 +397,10 @@ export function buildPresetRunPool(
 
   // ── Step 3: Build review pool (30%) ──
 
-  // True when the run contains at least one non-language domain (i.e. trivia/general/preset mode).
-  // In that case, language and vocabulary facts must be excluded from reviews and backfill.
-  const isTriviaRun = domains.some((d) => !d.startsWith('language:'));
+  // isTriviaRun: true when at least one non-language domain is present AND we have NOT
+  // been told to allow language facts. When allowLanguageFacts is set, the caller has
+  // explicitly mixed domains — language facts are valid in both content and reviews.
+  const isTriviaRun = !options?.allowLanguageFacts && domains.some((d) => !d.startsWith('language:'));
 
   const now = Date.now();
   const DAY_MS = 86_400_000;
@@ -555,6 +571,12 @@ export function buildGeneralRunPool(
      * Used when a knowledge curated deck run has a chain distribution computed at run start.
      */
     chainDistribution?: ChainDistribution;
+    /**
+     * When true, language/grammar/vocabulary facts are allowed in the pool alongside
+     * non-language domain facts. Forwarded to buildPresetRunPool. See that function's
+     * allowLanguageFacts option for full semantics.
+     */
+    allowLanguageFacts?: boolean;
   },
 ): Card[] {
   const domainSelections: Record<string, string[]> = {};

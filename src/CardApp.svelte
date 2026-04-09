@@ -545,26 +545,38 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       const opponent = lobby.players.find(p => p.id !== localPlayerId)
       opponentDisplayName = opponent?.displayName ?? 'Opponent'
 
-      // Set deck mode from lobby content selection so the run knows what content to load
-      if (lobby.contentSelection) {
-        const sel: LobbyContentSelection = lobby.contentSelection
-        if (sel.type === 'study') {
-          playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'study' as const, deckId: sel.deckId, subDeckId: sel.subDeckId } } : s)
-        } else if (sel.type === 'trivia') {
-          playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'trivia' as const, domains: sel.domains, subdomains: sel.subdomains } } : s)
-        } else if (sel.type === 'custom_deck') {
-          // Load custom deck items from player's saved custom decks and map to run items
-          const save = get(playerSave)
-          const customDeck = save?.lastDungeonSelection?.customDecks?.find(d => d.id === sel.customDeckId)
-          if (customDeck) {
-            const items: CustomDeckRunItem[] = customDeck.items
-              .filter((item): item is { type: 'study'; deckId: string; subDeckId?: string; label: string } => item.type === 'study')
-              .map(item => ({ deckId: item.deckId, subDeckId: item.subDeckId }))
-            playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'custom_deck' as const, items } } : s)
-          }
-        }
-        persistPlayer()
+      // Guard: contentSelection must be present before starting the run.
+      // If it is missing the guest received mp:lobby:start before the settings broadcast —
+      // proceeding would silently diverge host and guest onto different card pools.
+      if (!lobby.contentSelection) {
+        console.error(
+          '[Multiplayer] mp:lobby:start received without contentSelection — ' +
+          'aborting run start to prevent host/guest card-pool divergence.',
+          { lobby, seed, localPlayerId }
+        )
+        // Return to the lobby screen so the player is not left in a broken state.
+        transitionScreen('multiplayerLobby')
+        return
       }
+
+      // Set deck mode from lobby content selection so the run knows what content to load
+      const sel: LobbyContentSelection = lobby.contentSelection
+      if (sel.type === 'study') {
+        playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'study' as const, deckId: sel.deckId, subDeckId: sel.subDeckId } } : s)
+      } else if (sel.type === 'trivia') {
+        playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'trivia' as const, domains: sel.domains, subdomains: sel.subdomains } } : s)
+      } else if (sel.type === 'custom_deck') {
+        // Load custom deck items from player's saved custom decks and map to run items
+        const save = get(playerSave)
+        const customDeck = save?.lastDungeonSelection?.customDecks?.find(d => d.id === sel.customDeckId)
+        if (customDeck) {
+          const items: CustomDeckRunItem[] = customDeck.items
+            .filter((item): item is { type: 'study'; deckId: string; subDeckId?: string; label: string } => item.type === 'study')
+            .map(item => ({ deckId: item.deckId, subDeckId: item.subDeckId }))
+          playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'custom_deck' as const, items } } : s)
+        }
+      }
+      persistPlayer()
 
       startNewRun({
         multiplayerSeed: seed,
