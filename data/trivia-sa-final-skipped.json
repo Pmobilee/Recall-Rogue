@@ -1,0 +1,2261 @@
+[
+  {
+    "id": "ap_bio_abiotic_synthesis_def",
+    "q": "What is abiotic synthesis in the context of the origin of life?",
+    "a": "Abiotic organic molecule synthesis",
+    "leakedWord": "abiotic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_base_pairing_dna",
+    "q": "In a DNA double helix, what are the complementary base pairing rules — which nitrogenous base pairs with adenine, and which pairs with guanine?",
+    "a": "A-T and G-C base pairing",
+    "leakedWord": "base",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_chr_theory",
+    "q": "Which theory, developed by Sutton and Boveri (~1902), states that genes are located on chromosomes and that chromosome behavior during meiosis explains Mendel's laws?",
+    "a": "Chromosome theory of inheritance",
+    "leakedWord": "chromosome",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_fluid_mosaic_model",
+    "q": "What model, proposed by Singer and Nicolson in 1972, describes the plasma membrane as a fluid phospholipid bilayer with a mosaic of embedded proteins, cholesterol, and glycoproteins?",
+    "a": "Fluid mosaic model",
+    "leakedWord": "mosaic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_free_vs_bound_ribosomes",
+    "q": "What functional distinction exists between free ribosomes in the cytoplasm and ribosomes bound to the rough ER?",
+    "a": "Free ribosomes make cytoplasmic proteins; bound ribosomes make secretory and membrane proteins",
+    "leakedWord": "free",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_functional_groups_properties",
+    "q": "How do functional groups determine the chemical properties of biological molecules such as reactivity, polarity, and solubility?",
+    "a": "Determine reactivity, polarity, solubility",
+    "leakedWord": "determine",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_haart_hiv",
+    "q": "Why is combination therapy (HAART) used to treat HIV instead of a single antiviral drug?",
+    "a": "Triple-drug therapy resistance",
+    "leakedWord": "drug",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_incomp_vs_codom",
+    "q": "What is the key difference between incomplete dominance and codominance in heterozygotes?",
+    "a": "Incomplete dominance blends phenotypes; codominance expresses both simultaneously",
+    "leakedWord": "incomplete",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_intron_exon_splicing",
+    "q": "During eukaryotic RNA processing, what happens to introns and exons in the pre-mRNA transcript?",
+    "a": "Introns removed; exons joined",
+    "leakedWord": "introns",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_mono_vs_para_compare",
+    "q": "How does a monophyletic clade differ from a paraphyletic group?",
+    "a": "Monophyletic = ALL descendants; paraphyletic = SOME only",
+    "leakedWord": "monophyletic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_morgan_experiment",
+    "q": "Which experiment crossed white-eyed male Drosophila with red-eyed females, finding that F2 white eyes appeared ONLY in males — proving the eye-color gene is on the X chromosome?",
+    "a": "Morgan's Drosophila eye-color experiment",
+    "leakedWord": "drosophila",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_nondisj_I_vs_II",
+    "q": "How do the outcomes of nondisjunction in meiosis I differ from nondisjunction in meiosis II in terms of aneuploid gametes produced?",
+    "a": "Meiosis I: all 4 gametes aneuploid; meiosis II: 2 of 4 gametes aneuploid",
+    "leakedWord": "meiosis",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_paraphyletic_def",
+    "q": "How does a paraphyletic group differ from a monophyletic group (clade)?",
+    "a": "Paraphyletic = ancestor + SOME descendants; clade = ALL",
+    "leakedWord": "paraphyletic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_phosphorylation_cascade_purpose",
+    "q": "What is the primary function of a phosphorylation cascade in signal transduction — what does it accomplish for the original signal?",
+    "a": "Relay and amplify the signal",
+    "leakedWord": "signal",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_plant_cytokinesis_cell_plate",
+    "q": "In plant cells, what structure — formed by Golgi vesicles fusing at the cell's equator — serves as the new cell wall boundary that divides the cytoplasm during cytokinesis?",
+    "a": "Cell plate",
+    "leakedWord": "cell",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_receptor_mediated_endo",
+    "q": "What highly selective type of endocytosis involves ligands binding to membrane receptor proteins, clustering in coated pits, and invaginating to form a coated vesicle — used for LDL cholesterol uptake?",
+    "a": "Receptor-mediated endocytosis",
+    "leakedWord": "receptor",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_recessive_allele",
+    "q": "Which type of allele is masked by the dominant allele in a heterozygote and is only expressed in the homozygous recessive (bb) condition?",
+    "a": "Recessive allele",
+    "leakedWord": "recessive",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_reductional_equational",
+    "q": "How do meiosis I and meiosis II differ in terms of 'reductional' vs. 'equational' division?",
+    "a": "Meiosis I is reductional; meiosis II is equational",
+    "leakedWord": "meiosis",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_selection_comparison",
+    "q": "How do directional, stabilizing, and disruptive selection differ in their effects on a population's phenotype distribution?",
+    "a": "Directional shifts mean; stabilizing reduces variance; disruptive increases variance",
+    "leakedWord": "directional",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_transcription_direction",
+    "q": "In what direction does RNA polymerase read the DNA template strand, and in what direction is the mRNA strand synthesized?",
+    "a": "Template 3→5; mRNA 5→3",
+    "leakedWord": "template",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_unsaturated_kink",
+    "q": "A double bond in a fatty acid's carbon chain causes the chain to kink, preventing tight packing and resulting in a lipid that is liquid at room temperature. This describes which type of fatty acid?",
+    "a": "Unsaturated fatty acid",
+    "leakedWord": "fatty",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_bio_waxes",
+    "q": "What type of lipid made of a long-chain alcohol and a fatty chain serves as a waterproofing agent in plant cuticles and feathers?",
+    "a": "Hydrophobic waterproofing agent",
+    "leakedWord": "waterproofing",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_chem_115_core_vs_valence",
+    "q": "Electrons in filled inner shells that do not participate in chemical bonding, shield valence electrons from nuclear charge, and appear in a noble gas shorthand bracket notation are called what?",
+    "a": "Core electrons",
+    "leakedWord": "electrons",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_chem_4_5_limiting_reagent_identification",
+    "q": "To identify the limiting reagent when given moles of each reactant, you divide each reactant's available moles by its stoichiometric coefficient. The limiting reagent is which?",
+    "a": "the reactant with the smaller mole-to-coefficient ratio",
+    "leakedWord": "reactant",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_chem_5_4_rate_determining_step",
+    "q": "What term describes the slowest elementary step in a reaction mechanism, which controls the overall rate of the reaction?",
+    "a": "rate-determining step",
+    "leakedWord": "step",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_chem_7_7_ICE_table_setup",
+    "q": "In an ICE table, what information is entered in each of the three rows — I, C, and E — when solving an equilibrium problem from initial conditions?",
+    "a": "Initial concentrations, Changes (±x), Equilibrium values",
+    "leakedWord": "initial",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_chem_u2_formal_charge_minimize",
+    "q": "When choosing among multiple valid Lewis structures for the same molecule, the preferred (most accurate) structure is the one that does what with formal charges?",
+    "a": "Minimizes formal charges",
+    "leakedWord": "formal",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_chem_u2_sigma_pi_bonds",
+    "q": "A double bond between two atoms consists of how many sigma bonds and how many pi bonds?",
+    "a": "One sigma bond and one pi bond",
+    "leakedWord": "sigma",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_euro_u7_mazzini_role",
+    "q": "Giuseppe Mazzini was called the ___ of Italian unification for his republican ideals and inspiration of the Young Italy movement.",
+    "a": "Voice/Soul of Italian unification",
+    "leakedWord": "italian",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_euro_u7_nationalism_multi_ethnic_empires",
+    "q": "Which two vast multi-ethnic polities — the Ottoman and Austro-Hungarian — were most threatened by 19th-century nationalist movements?",
+    "a": "Multi-ethnic empires",
+    "leakedWord": "multi",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_macro_1_ppc_capital_vs_consumer",
+    "q": "On a PPC showing the trade-off between two types of goods, producing more of which type today — capital investment or consumer goods — leads to faster economic growth and an outward shift of the future PPC?",
+    "a": "capital goods",
+    "leakedWord": "capital",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_macro_6b_twin_deficits",
+    "q": "What phenomenon describes the tendency for budget deficits and current account (trade) deficits to occur together in the same country?",
+    "a": "Twin deficits",
+    "leakedWord": "deficits",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_accel_direction",
+    "q": "If an object moves in the positive direction but its acceleration points in the negative direction, what is happening to its speed?",
+    "a": "Opposite to the direction of motion (object is slowing down)",
+    "leakedWord": "direction",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_angular_impulse_formula",
+    "q": "What is the rotational analog of the impulse-momentum theorem?",
+    "a": "Angular impulse = τ × Δt = ΔL (rotational analog of impulse-momentum theorem)",
+    "leakedWord": "impulse",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_at_rest_zero_accel",
+    "q": "What do 'at rest' and 'moving at constant velocity' have in common regarding acceleration?",
+    "a": "At rest and moving at constant velocity both have zero acceleration",
+    "leakedWord": "rest",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_atwood_machine_concept",
+    "q": "In an Atwood machine with a massless rope and ideal frictionless pulley, what is true about the rope tension?",
+    "a": "The tension is the same throughout a massless rope over an ideal pulley",
+    "leakedWord": "massless",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_banked_curve",
+    "q": "On a banked curve with no friction, what force provides the centripetal acceleration for a car?",
+    "a": "The horizontal component of the normal force provides centripetal force",
+    "leakedWord": "provides",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_bernoulli_applications",
+    "q": "What are three real-world applications of the Bernoulli effect (faster flow = lower pressure)?",
+    "a": "Higher speed flow has lower pressure (Bernoulli): airplane wings, Venturi tubes, curved ball spin",
+    "leakedWord": "flow",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_centrifugal_force",
+    "q": "Why is 'centrifugal force' (the outward force felt in circular motion) not a real force in AP Physics 1?",
+    "a": "Centrifugal force is a fictitious force",
+    "leakedWord": "centrifugal",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_centripetal_force_not_separate",
+    "q": "Why is 'centripetal force' never drawn as a separate arrow on a free-body diagram?",
+    "a": "Centripetal force is NOT a separate force",
+    "leakedWord": "centripetal",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_circular_centripetal_misconception",
+    "q": "A student draws a free-body diagram for a car on a circular track and adds a 'centripetal force' arrow. What is wrong?",
+    "a": "Centripetal force is not a separate force",
+    "leakedWord": "centripetal",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_circular_period_frequency",
+    "q": "What is the relationship between the period T and frequency f of circular motion?",
+    "a": "Period T = 1/f; frequency f = 1/T",
+    "leakedWord": "frequency",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_circular_speed_radius",
+    "q": "For an object moving in a circular path with fixed centripetal force and mass, how does speed change if the radius doubles?",
+    "a": "At fixed centripetal force: speed increases if radius increases (v² = Fr/m)",
+    "leakedWord": "fixed",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_cm_velocity_collision",
+    "q": "During a collision between two objects with no external horizontal forces, what happens to the velocity of the center of mass?",
+    "a": "The center of mass velocity stays constant throughout a collision if no external forces act",
+    "leakedWord": "center",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_coefficient_restitution",
+    "q": "What value of the coefficient of restitution (e = relative speed after/before collision) characterizes an elastic vs. perfectly inelastic collision?",
+    "a": "Coefficient of restitution (e): e=1 elastic, e=0 perfectly inelastic",
+    "leakedWord": "coefficient",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_collapsing_star_angular_momentum",
+    "q": "A dying star collapses into a neutron star, reducing its radius by a factor of 100,000. What happens to its rotation rate?",
+    "a": "A collapsing star spins faster as its radius shrinks, conserving angular momentum",
+    "leakedWord": "radius",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_continuity_narrowing",
+    "q": "Water flows through a pipe that narrows to half its original diameter. By what factor does the flow speed change?",
+    "a": "Where a pipe narrows, flow speed increases (A₁v₁ = A₂v₂); narrower = faster",
+    "leakedWord": "pipe",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_damped_oscillations",
+    "q": "What happens to the amplitude of oscillation when a spring-mass system experiences friction?",
+    "a": "Amplitude decreases over time due to friction or air resistance (energy lost to heat)",
+    "leakedWord": "amplitude",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_disk_vs_ring_faster",
+    "q": "A solid disk and a hollow ring of equal mass and radius roll down an incline. Which reaches the bottom first?",
+    "a": "Solid disk (I = ½MR²) reaches bottom faster; less rotational inertia than hollow ring (I = MR²)",
+    "leakedWord": "disk",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_drag_qualitative",
+    "q": "Qualitatively, how does air drag affect a falling object, and what is terminal velocity?",
+    "a": "Drag increases with speed and opposes motion; terminal velocity when drag equals weight",
+    "leakedWord": "drag",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_efficiency_formula",
+    "q": "What is the formula for efficiency of an energy conversion process?",
+    "a": "Efficiency = (useful energy output / total energy input) × 100%",
+    "leakedWord": "efficiency",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_energy_bar_charts",
+    "q": "What does an energy bar chart (LOL diagram) show in AP Physics 1?",
+    "a": "Bar charts show KE + PE + W_friction = constant total energy at each stage",
+    "leakedWord": "show",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_energy_forms",
+    "q": "What are the four main forms of energy tracked in AP Physics 1 conservation problems?",
+    "a": "Kinetic, gravitational potential, elastic potential, and thermal energy in AP Physics 1",
+    "leakedWord": "physics",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_equal_mass_elastic",
+    "q": "What happens in a perfectly elastic 1D collision between two equal-mass balls when one is stationary?",
+    "a": "Moving object stops; stationary target moves at the original speed (1D elastic, equal masses)",
+    "leakedWord": "stationary",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_fbd_contact_vs_field",
+    "q": "What is the distinction between contact forces and field forces, and which appear on free-body diagrams?",
+    "a": "Contact forces (normal, friction, tension) and field forces (gravity, electric); both appear on FBDs",
+    "leakedWord": "contact",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_fbd_what_to_include",
+    "q": "What forces should appear on a free-body diagram of a single object?",
+    "a": "All forces acting ON the object (not forces the object exerts on others)",
+    "leakedWord": "object",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_flow_rate_def",
+    "q": "What equation gives the volume flow rate Q (volume per unit time) through a pipe in terms of cross-sectional area A and fluid speed v?",
+    "a": "Volume flow rate (Q = Av)",
+    "leakedWord": "volume",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_fluid_newton_third",
+    "q": "How does Newton's Third Law explain why a submerged object experiences a buoyant force?",
+    "a": "The fluid pushes back with an equal and opposite force (Newton's Third Law)",
+    "leakedWord": "third",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_force_pairs_not_on_same_object",
+    "q": "Why can Newton's 3rd law force pairs never cancel each other out on a free-body diagram?",
+    "a": "Newton's 3rd law force pairs always act on DIFFERENT objects",
+    "leakedWord": "pairs",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_friction_independent_area",
+    "q": "Does the kinetic friction force change if you increase the contact area between two surfaces (same material, same normal force)?",
+    "a": "Kinetic friction does not depend on the contact area between surfaces",
+    "leakedWord": "kinetic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_gauge_absolute_pressure",
+    "q": "A tire gauge reads 30 PSI (gauge). What is the actual (absolute) pressure inside the tire?",
+    "a": "Absolute pressure = gauge pressure + atmospheric pressure; gauge is measured relative to atmosphere",
+    "leakedWord": "absolute",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_gravitational_pe_reference",
+    "q": "Why can you choose any reference level for gravitational potential energy?",
+    "a": "Gravitational PE = mgh; h is measured from any chosen reference level",
+    "leakedWord": "gravitational",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_gravity_surface_vs_universal",
+    "q": "When is it appropriate to use F_g = mg vs. F_g = Gm₁m₂/r² for gravitational force?",
+    "a": "Near-surface: F_g = mg; Universal: F_g = Gm₁m₂/r²",
+    "leakedWord": "gm₁m₂",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_height_to_speed",
+    "q": "Using conservation of energy, what is the speed of an object that falls from height h starting from rest?",
+    "a": "v = √(2gh) for an object falling from height h from rest (ignoring friction)",
+    "leakedWord": "object",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_hookes_law_restoring",
+    "q": "What does it mean that the spring force is a 'restoring force' in Hooke's Law?",
+    "a": "The spring force is proportional to and opposite the displacement from equilibrium",
+    "leakedWord": "spring",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_horizontal_projectile_range",
+    "q": "For a projectile launched at the same initial speed, at what launch angle is horizontal range maximized (on level ground)?",
+    "a": "Range increases as launch angle approaches 45°",
+    "leakedWord": "launch",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_hydrostatic_shape_independence",
+    "q": "A narrow cylinder and a wide tank are both filled with water to the same depth. Which has greater pressure at the bottom?",
+    "a": "Pressure at a given depth depends only on depth and fluid density, not the shape of the container",
+    "leakedWord": "pressure",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_impulse_approximation",
+    "q": "Why can we usually ignore external forces like gravity or friction during a collision when applying momentum conservation?",
+    "a": "During a brief collision, external forces are negligible compared to the large collision forces",
+    "leakedWord": "external",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_impulse_area_Ft",
+    "q": "What does the area under a Force-versus-time graph represent?",
+    "a": "Impulse = area under F-t graph",
+    "leakedWord": "graph",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_impulse_momentum_theorem",
+    "q": "What theorem states that the impulse delivered to an object equals its change in momentum?",
+    "a": "Impulse-momentum theorem: J = FΔt = Δp",
+    "leakedWord": "impulse",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_inclined_plane_components",
+    "q": "For an object on an incline at angle θ, what are the components of gravity parallel and perpendicular to the incline surface?",
+    "a": "F_g parallel = mg sin θ; F_g perpendicular = mg cos θ",
+    "leakedWord": "perpendicular",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_inertial_frame",
+    "q": "What type of reference frame moves at constant velocity (zero acceleration), so Newton's laws hold without modification?",
+    "a": "Inertial reference frame",
+    "leakedWord": "reference",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_ke_loss_formula_inelastic",
+    "q": "In a perfectly inelastic collision, what is the easiest method to find kinetic energy lost?",
+    "a": "ΔKE_lost = ½(m₁m₂/(m₁+m₂)) × (v₁ − v₂)²  for head-on perfectly inelastic collision",
+    "leakedWord": "perfectly",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_ke_loss_inelastic",
+    "q": "In an inelastic collision, where does the 'lost' kinetic energy go?",
+    "a": "Some kinetic energy converts to thermal energy, sound, or deformation",
+    "leakedWord": "kinetic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_ke_speed_quadrupling",
+    "q": "If a car's speed doubles, by what factor does its kinetic energy change?",
+    "a": "Doubling speed quadruples kinetic energy (KE ∝ v²)",
+    "leakedWord": "speed",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_kepler3_application",
+    "q": "If a satellite's orbital radius doubles, by what factor does its orbital period increase?",
+    "a": "T² ∝ r³: if orbital radius doubles, period increases by a factor of 2√2 ≈ 2.83",
+    "leakedWord": "orbital",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_kin_eq2",
+    "q": "Which kinematic equation gives position as a function of time for constant acceleration (includes a ½at² term)?",
+    "a": "x = x₀ + v₀t + ½at²",
+    "leakedWord": "½at²",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_manometer_barometer",
+    "q": "What is the difference between a barometer and a manometer?",
+    "a": "Barometer measures atmospheric pressure; manometer measures gauge pressure of a gas",
+    "leakedWord": "barometer",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_mass_vs_weight",
+    "q": "What is the key distinction between mass and weight?",
+    "a": "Mass is amount of matter (kg); weight is gravitational force (N)",
+    "leakedWord": "weight",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_moi_common_values",
+    "q": "What are the moments of inertia for a solid disk, a hollow ring, and a solid sphere (all about their symmetry axis)?",
+    "a": "Solid disk: I = ½MR²; hollow ring: I = MR²; solid sphere: I = (2/5)MR²; rod (center): I = (1/12)ML²",
+    "leakedWord": "hollow",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_momentum_external_only",
+    "q": "Under what condition is the total momentum of a system conserved?",
+    "a": "Total momentum of a system is constant only when the net external force on the system is zero",
+    "leakedWord": "total",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_negative_accel_not_decel",
+    "q": "Does negative acceleration always mean an object is slowing down?",
+    "a": "Acceleration in the negative direction",
+    "leakedWord": "acceleration",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_net_force_direction_equals_accel",
+    "q": "What is the directional relationship between the net force on an object and its acceleration?",
+    "a": "The net force and the acceleration always point in the same direction",
+    "leakedWord": "acceleration",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_pe_diagram_equilibrium",
+    "q": "On a potential energy diagram, what do PE minima and maxima tell you about equilibrium?",
+    "a": "Stable equilibrium at a potential energy minimum; unstable equilibrium at a maximum",
+    "leakedWord": "equilibrium",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_perfectly_inelastic_max_ke_loss",
+    "q": "Which type of collision results in the greatest loss of kinetic energy?",
+    "a": "A perfectly inelastic collision (objects stick together) has maximum kinetic energy loss",
+    "leakedWord": "collision",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_period_independent_amplitude",
+    "q": "How does the amplitude of oscillation affect the period of a simple harmonic oscillator?",
+    "a": "Period is independent of amplitude in SHM",
+    "leakedWord": "amplitude",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_position_vs_displacement",
+    "q": "What is the key distinction between position and displacement?",
+    "a": "Position (from origin) vs displacement (change)",
+    "leakedWord": "position",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_pressure_depth_formula",
+    "q": "What is the pressure at depth h in a fluid of density ρ with surface pressure P₀?",
+    "a": "P = P₀ + ρgh (absolute pressure at depth h = surface pressure plus ρgh)",
+    "leakedWord": "pressure",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_recoil_gun",
+    "q": "A bullet is fired from a stationary gun at rest. Why does the gun recoil backward?",
+    "a": "The gun recoils backward with the same magnitude momentum as the bullet (but opposite direction)",
+    "leakedWord": "backward",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_relative_velocity_concept",
+    "q": "If object A moves at velocity vA and object B moves at velocity vB (both relative to ground), what is the velocity of A as seen by B?",
+    "a": "Velocity of object A relative to B equals vA minus vB",
+    "leakedWord": "object",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_rolling_condition",
+    "q": "What condition relates the center-of-mass velocity to the angular velocity for an object rolling without slipping?",
+    "a": "v_cm = Rω (rolling without slipping condition)",
+    "leakedWord": "without",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_rotational_kinematic_eqs",
+    "q": "How are the rotational kinematic equations related to the linear kinematic equations?",
+    "a": "Rotational equations mirror linear ones: ω = ω₀ + αt; θ = ω₀t + ½αt²; ω² = ω₀² + 2αθ",
+    "leakedWord": "equations",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_rotational_kinematics",
+    "q": "How do the rotational kinematic equations for constant angular acceleration relate to the linear kinematic equations?",
+    "a": "Rotational equations mirror linear equations (θ↔x, ω↔v, α↔a)",
+    "leakedWord": "equations",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_satellite_orbit",
+    "q": "For an orbiting satellite, what equation expresses the balance between gravitational force and the centripetal force requirement?",
+    "a": "Gravitational force provides centripetal force: Gm₁m₂/r² = mv²/r",
+    "leakedWord": "gravitational",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_satellite_orbit_speed",
+    "q": "What is the orbital speed of a satellite at orbital radius r around a planet of mass M?",
+    "a": "Orbital speed v = √(GM/r); faster for lower orbits (closer to planet)",
+    "leakedWord": "orbital",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_seesaw_torque_balance",
+    "q": "A heavy person sits 1 m from the pivot of a seesaw; where must a lighter person sit to balance it?",
+    "a": "m₁ × d₁ = m₂ × d₂ (torques balance about the pivot when in equilibrium)",
+    "leakedWord": "balance",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_shm_restoring_condition",
+    "q": "What mathematical condition must the restoring force satisfy for an object to undergo Simple Harmonic Motion?",
+    "a": "A restoring force proportional to displacement from equilibrium: F = −kx",
+    "leakedWord": "restoring",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_solid_vs_hollow_rolling",
+    "q": "Ranking from fastest to slowest rolling down a ramp: solid sphere, hollow sphere, solid cylinder, hollow cylinder. What is the order?",
+    "a": "Solid sphere rolls faster than hollow sphere; smaller I means more translational KE",
+    "leakedWord": "hollow",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_spring_period_mass_k",
+    "q": "How does doubling the mass or doubling the spring constant each affect the period of a spring-mass oscillator?",
+    "a": "Increasing mass increases period; increasing spring constant decreases period (T = 2π√(m/k))",
+    "leakedWord": "spring",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_static_vs_kinetic_friction",
+    "q": "What is the key difference between static friction and kinetic friction?",
+    "a": "Static friction is greater than kinetic friction; static prevents sliding, kinetic opposes sliding",
+    "leakedWord": "static",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_symmetry_projectile",
+    "q": "For a projectile launched and landing at the same height, how do the launch and landing speeds compare?",
+    "a": "The projectile returns to the same height with the same speed but opposite vertical velocity",
+    "leakedWord": "projectile",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_system_internal_external",
+    "q": "In systems thinking, what is the difference between internal and external forces?",
+    "a": "Internal forces act between objects within the system; external forces act from outside",
+    "leakedWord": "internal",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_tension_pulley",
+    "q": "For an ideal (massless, frictionless) pulley system with a single rope, how does tension vary along the rope?",
+    "a": "Tension is the same throughout a massless, frictionless rope",
+    "leakedWord": "frictionless",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_tension_rope_mass",
+    "q": "Under what condition is the tension in a rope uniform (the same at every point)?",
+    "a": "Tension varies along a massive rope; it is uniform only in a massless (ideal) rope",
+    "leakedWord": "uniform",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_torque_lever_arm",
+    "q": "What is the lever arm in a torque calculation, and why does it use perpendicular distance?",
+    "a": "Lever arm is the perpendicular distance from the axis of rotation to the line of action of the force",
+    "leakedWord": "lever",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_torque_work_rotational",
+    "q": "What is the formula for work done by a constant torque rotating an object through angle Δθ?",
+    "a": "W = τ × Δθ (rotational work equals torque times angular displacement in radians)",
+    "leakedWord": "torque",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_torque_zero_cases",
+    "q": "Under what conditions does a force produce zero torque about a given axis?",
+    "a": "Torque is zero when force is parallel to position vector r (θ = 0° or 180°) or when r = 0",
+    "leakedWord": "torque",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_total_mechanical_energy",
+    "q": "What is total mechanical energy and when is it conserved?",
+    "a": "Total mechanical energy E = KE + PE; conserved when only conservative forces do work",
+    "leakedWord": "total",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_vector_addition_tip_to_tail",
+    "q": "What graphical method for adding vectors involves placing the tail of the second vector at the tip of the first?",
+    "a": "Tip-to-tail method",
+    "leakedWord": "tail",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_velocity_vs_acceleration_direction",
+    "q": "What common misconception about velocity and acceleration does AP Physics 1 specifically address?",
+    "a": "Velocity and acceleration can point in different directions",
+    "leakedWord": "acceleration",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_viscosity_laminar_turbulent",
+    "q": "What is viscosity, and what distinguishes laminar from turbulent flow?",
+    "a": "Viscosity is resistance to flow; laminar = smooth layers; turbulent = chaotic eddies",
+    "leakedWord": "viscosity",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_weight_vs_mass_planet",
+    "q": "An astronaut travels from Earth to the Moon. What happens to their mass and weight?",
+    "a": "Mass stays the same; weight changes depending on the planet's gravitational field",
+    "leakedWord": "weight",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_weightlessness_misconception",
+    "q": "Why do astronauts in the International Space Station appear weightless even though Earth's gravity still acts on them?",
+    "a": "Astronauts in orbit are not weightless",
+    "leakedWord": "astronauts",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_work_area_under_Fx",
+    "q": "What does the area under a Force-versus-displacement graph represent?",
+    "a": "Area under F-x graph = work done",
+    "leakedWord": "graph",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_phys1_work_by_normal_force",
+    "q": "How much work does the normal force do on an object sliding horizontally on a surface?",
+    "a": "Zero, because the normal force is always perpendicular to displacement",
+    "leakedWord": "normal",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_psych_antisocial_pd",
+    "q": "Which personality disorder is characterized by a pervasive pattern of disregard for and violation of the rights of others, deceitfulness, impulsivity, aggression, and lack of remorse, beginning before age 15?",
+    "a": "Antisocial personality disorder",
+    "leakedWord": "personality",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_psych_cbt_definition",
+    "q": "Which evidence-based therapy targets both maladaptive thought patterns and problematic behaviors, using techniques such as cognitive restructuring, behavioral activation, and homework assignments?",
+    "a": "Cognitive-behavioral therapy",
+    "leakedWord": "cognitive",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_psych_diathesis_stress",
+    "q": "Which model proposes that a psychological disorder emerges when a genetic or biological predisposition (diathesis) is combined with sufficient environmental stress or adversity?",
+    "a": "Diathesis-stress model",
+    "leakedWord": "diathesis",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_psych_did_definition",
+    "q": "Which dissociative disorder, formerly known as multiple personality disorder, involves the presence of two or more distinct personality states that recurrently take control of the person's behavior, often accompanied by amnesia between states?",
+    "a": "Dissociative identity disorder",
+    "leakedWord": "dissociative",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_psych_gad_definition",
+    "q": "Which anxiety disorder involves persistent, excessive, and difficult-to-control worry about a wide range of events or activities, lasting at least 6 months, accompanied by symptoms such as restlessness, fatigue, and muscle tension?",
+    "a": "Generalized anxiety disorder",
+    "leakedWord": "anxiety",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_psych_ocd_reclassification",
+    "q": "Which disorder, characterized by intrusive, unwanted obsessions and repetitive compulsive behaviors performed to neutralize anxiety, was notably moved OUT of the anxiety disorders chapter in DSM-5 into its own category?",
+    "a": "Obsessive-compulsive disorder",
+    "leakedWord": "compulsive",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_psych_panic_disorder",
+    "q": "Which disorder is characterized by recurrent, unexpected panic attacks followed by at least one month of persistent concern about future attacks or significant behavioral change to avoid them?",
+    "a": "Panic disorder",
+    "leakedWord": "panic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_psych_pituitary_master_gland",
+    "q": "Which small endocrine gland located at the base of the brain is called the 'master gland' because it regulates the activity of most other endocrine glands?",
+    "a": "Pituitary gland",
+    "leakedWord": "gland",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_psych_ptsd_definition",
+    "q": "Which disorder, reclassified in DSM-5 into its own 'Trauma- and Stressor-Related Disorders' chapter, is characterized by intrusive re-experiencing, avoidance, negative cognitions, and hyperarousal following exposure to a traumatic event?",
+    "a": "Post-traumatic stress disorder",
+    "leakedWord": "traumatic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ap_psych_thyroid_metabolism",
+    "q": "Which butterfly-shaped endocrine gland in the neck regulates the body's metabolic rate by producing thyroid hormones (T3 and T4)?",
+    "a": "Thyroid gland",
+    "leakedWord": "thyroid",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "aphg_u2_nir",
+    "q": "What is subtracted from the crude birth rate to calculate natural increase rate (NIR)?",
+    "a": "crude death rate",
+    "leakedWord": "crude",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "aphg_u6_burgess_model",
+    "q": "Which urban land-use model depicts cities as a series of concentric rings expanding outward from the Central Business District?",
+    "a": "Burgess Concentric-Zone Model",
+    "leakedWord": "concentric",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "aphg_u6_multiple_nuclei_model",
+    "q": "Which urban land-use model, developed by Harris and Ullman, argues that cities have multiple centers of activity rather than a single CBD?",
+    "a": "Harris-Ullman Multiple-Nuclei Model",
+    "leakedWord": "harris",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "aphg_u6_southeast_asian_city_model",
+    "q": "Which urban model describes a port zone as the dominant center, surrounded by a commercial zone and ethnic quarters radiating outward, reflecting colonial-era Southeast Asian cities?",
+    "a": "Southeast Asian City Model",
+    "leakedWord": "southeast",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "aphg_u6_transit_oriented_development",
+    "q": "What is mixed-use development concentrated in a walkable area around a transit station called?",
+    "a": "transit-oriented development",
+    "leakedWord": "transit",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "aphg_u7_core_periphery_model",
+    "q": "Which geographic model describes an economic and spatial divide between wealthy, industrialized nations that dominate (the core) and less-developed nations that supply raw materials (the periphery)?",
+    "a": "core-periphery model",
+    "leakedWord": "periphery",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p1_pueblo_revolt_1680",
+    "q": "Which 1680 revolt, led by the Pueblo religious leader Popé, temporarily drove Spanish colonizers out of New Mexico for 12 years in one of the most successful Native resistance movements in North American colonial history?",
+    "a": "Pueblo Revolt (1680 uprising)",
+    "leakedWord": "pueblo",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p2_colonial_rice_carolina",
+    "q": "What cash crop formed the economic foundation of the Carolina lowcountry plantation system, with enslaved Africans' agricultural knowledge from West Africa's 'Rice Coast' being essential to its cultivation?",
+    "a": "Rice (Carolina cash crop)",
+    "leakedWord": "rice",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p2_virginia_company",
+    "q": "What joint-stock company founded Jamestown in 1607 and held the royal charter for English colonization in Virginia?",
+    "a": "Virginia Company",
+    "leakedWord": "virginia",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p3_elastic_clause",
+    "q": "What constitutional provision grants Congress the power to make all laws 'necessary and proper' for carrying out its enumerated powers, allowing broad federal action beyond specifically listed powers?",
+    "a": "Necessary and Proper Clause",
+    "leakedWord": "necessary",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p3_native_land_loss",
+    "q": "What general process — often through coerced treaties, military defeat, and settler encroachment — resulted in Native American nations losing most of their territory in the post-Revolution era?",
+    "a": "Native American land cessions",
+    "leakedWord": "native",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p3_two_term_precedent",
+    "q": "What important precedent did Washington set by voluntarily stepping down after two terms as president, a tradition that held until Franklin Roosevelt's third-term election in 1940?",
+    "a": "Two-term precedent",
+    "leakedWord": "term",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p4_democrats_whigs",
+    "q": "Which political party formed in the 1830s as the main opposition to Andrew Jackson and the Democrats, drawing support from businessmen, evangelical Protestants, and those who favored internal improvements?",
+    "a": "Whig Party (anti-Jackson coalition)",
+    "leakedWord": "jackson",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p4_hudson_river_school",
+    "q": "What first major American art movement celebrated the grandeur of the American landscape in paintings of the Hudson River Valley and the Catskill Mountains, with Thomas Cole as its founding figure?",
+    "a": "Hudson River School",
+    "leakedWord": "hudson",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p4_internal_slave_trade",
+    "q": "What commerce transported approximately one million enslaved people from the Upper South (Virginia, Maryland) to the Deep South cotton and sugar frontier between 1790 and 1860 — far exceeding the transatlantic slave trade to the U.S.?",
+    "a": "Internal slave trade",
+    "leakedWord": "slave",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p4_war_of_1812_causes",
+    "q": "What was one of the primary causes of the War of 1812 — the British practice of seizing American sailors from their ships and forcing them into the Royal Navy?",
+    "a": "Impressment of American sailors",
+    "leakedWord": "sailors",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p5_free_soil_party",
+    "q": "What third party, formed in 1848, opposed the extension of slavery into new western territories under the slogan \"Free Soil, Free Speech, Free Labor, and Free Men\"?",
+    "a": "Free Soil Party",
+    "leakedWord": "free",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p6_carlisle_indian_school",
+    "q": "What boarding school in Pennsylvania, founded in 1879 by Richard Henry Pratt with the motto 'kill the Indian, save the man,' became the model for federal Native American assimilation policy?",
+    "a": "Carlisle Indian Industrial School",
+    "leakedWord": "indian",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p7_executive_order_9066",
+    "q": "Signed by FDR on February 19, 1942, which executive order authorized the forced relocation and internment of approximately 120,000 Japanese Americans?",
+    "a": "Executive Order 9066",
+    "leakedWord": "executive",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p7_kellogg_briand_pact",
+    "q": "Which 1928 international agreement, co-authored by U.S. Secretary of State Frank Kellogg and French Foreign Minister Aristide Briand, renounced war as an instrument of national policy?",
+    "a": "Kellogg-Briand Pact",
+    "leakedWord": "kellogg",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p7_washington_naval_conference",
+    "q": "Which 1921–1922 international conference produced naval arms limitation treaties — including a 5:5:3 ratio for capital ships among the U.S., Britain, and Japan — marking the first successful arms limitation agreement?",
+    "a": "Washington Naval Conference",
+    "leakedWord": "naval",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p8_aim_wounded_knee",
+    "q": "What Native American activist organization, founded in 1968, occupied Wounded Knee, South Dakota in 1973 for 71 days to protest broken treaties and federal Indian policy?",
+    "a": "American Indian Movement",
+    "leakedWord": "indian",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p8_berkeley_free_speech",
+    "q": "What 1964 student movement at the University of California, Berkeley — led by Mario Savio — challenged university rules prohibiting political organizing on campus and helped launch the New Left?",
+    "a": "Berkeley Free Speech Movement",
+    "leakedWord": "berkeley",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p8_epa_created",
+    "q": "What federal agency, established by President Nixon in December 1970 following the first Earth Day, was created to enforce environmental regulations and protect human health and the natural environment?",
+    "a": "Environmental Protection Agency",
+    "leakedWord": "environmental",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p8_immigration_act_1965",
+    "q": "What 1965 Great Society law abolished the national-origins quota system that had favored European immigration since 1924, transforming the demographic makeup of American immigration?",
+    "a": "Immigration and Nationality Act (1965)",
+    "leakedWord": "immigration",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p8_iran_hostage_crisis",
+    "q": "What 444-day crisis, beginning November 4, 1979, saw Iranian students hold 52 American diplomats hostage and ultimately doomed Jimmy Carter's re-election bid?",
+    "a": "Iran hostage crisis",
+    "leakedWord": "hostage",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p8_now_founded",
+    "q": "What organization, co-founded by Betty Friedan in 1966, became the leading organization of second-wave feminism and advocated for the Equal Rights Amendment and equal opportunity for women?",
+    "a": "National Organization for Women",
+    "leakedWord": "organization",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p8_southern_strategy",
+    "q": "What Republican electoral strategy, associated with Nixon's 1968 and 1972 campaigns, appealed to white Southern voters disaffected by the Democratic Party's support for civil rights?",
+    "a": "Southern Strategy",
+    "leakedWord": "southern",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p8_voting_rights_act",
+    "q": "What August 1965 law signed by President Johnson prohibited discriminatory voting practices such as literacy tests, and required federal oversight of elections in states with a history of discrimination?",
+    "a": "Voting Rights Act of 1965",
+    "leakedWord": "voting",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p8_war_on_poverty",
+    "q": "What 1964 law established the Office of Economic Opportunity and created programs like Head Start, VISTA, and the Job Corps as the legislative foundation of LBJ's War on Poverty?",
+    "a": "Economic Opportunity Act",
+    "leakedWord": "economic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p9_iran_contra_affair",
+    "q": "What Reagan-era scandal involved secretly selling arms to Iran and illegally diverting proceeds to fund Nicaraguan Contra rebels, in violation of a congressional ban?",
+    "a": "Iran-Contra Affair",
+    "leakedWord": "iran",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apush_p9_latino_asian_immigration_surge",
+    "q": "What 1965 legislation abolished national-origin immigration quotas, setting in motion the demographic transformation of American immigration toward Latino and Asian source countries that reshaped U.S. demographics by 2000?",
+    "a": "Immigration and Nationality Act (1965)",
+    "leakedWord": "immigration",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "apwh_3_070",
+    "q": "Which empire used Sikhism as a spiritual movement that emerged partly in response to Mughal religious tensions?",
+    "a": "Mughal Empire",
+    "leakedWord": "mughal",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "const_myth_pleiades_homer",
+    "q": "What mythological relationship does Hesiod's Works and Days describe between Orion and the Pleiades?",
+    "a": "Orion is chasing the Pleiades",
+    "leakedWord": "orion",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "cs_1_dennard_scaling_breakdown",
+    "q": "What scaling rule — formulated in 1974 by Robert Dennard — held that as transistors shrank, power density stayed constant, enabling decades of CPU clock speed increases, until it broke down around 2006?",
+    "a": "Dennard scaling",
+    "leakedWord": "dennard",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "cs_2_prolog_stands_for",
+    "q": "What does Prolog stand for — reflecting its logic-programming approach where you declare facts and rules and let the interpreter find solutions?",
+    "a": "PROgramming in LOGic",
+    "leakedWord": "programming",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "cs_5_yahoo_founders",
+    "q": "Which two Stanford PhD students founded Yahoo in January 1994, initially calling it 'Jerry and David's Guide to the World Wide Web'?",
+    "a": "Jerry Yang and David Filo",
+    "leakedWord": "jerry",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "cs_7_fsf_license",
+    "q": "What copyleft software license, created and maintained by the Free Software Foundation, requires any software built on it to also be free — and became the most widely used free software license?",
+    "a": "GNU General Public License",
+    "leakedWord": "license",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "egypt_sym_djed_byblos",
+    "q": "In the Osiris myth, how did the djed pillar originate at Byblos?",
+    "a": "Isis consecrated djed pillar",
+    "leakedWord": "djed",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "egypt_sym_scarab_sun",
+    "q": "Why did ancient Egyptians associate the dung beetle's ball-rolling behavior with the sun?",
+    "a": "Dung-ball rolling like the sun",
+    "leakedWord": "dung",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "food_dish_green_curry_color",
+    "q": "What ingredient makes Thai green curry green — and what does 'sweet' refer to in its Thai name?",
+    "a": "Green chilies",
+    "leakedWord": "green",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "greece_oc_theater_dionysus",
+    "q": "Which theater on the south slope of the Acropolis in Athens is considered the world's first theater — host to the premieres of works by Aeschylus, Sophocles, Euripides, and Aristophanes?",
+    "a": "Theater of Dionysus",
+    "leakedWord": "theater",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "greece_rel_panathenaia",
+    "q": "Which goddess of wisdom and warfare was the patron deity honored by the Panathenaia festival in Athens, which included athletic and musical competitions?",
+    "a": "Athena",
+    "flagType": "verbatim",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ha_multi_030",
+    "q": "What are the five ABCDE clinical warning signs used to identify a suspicious pigmented lesion that may be malignant melanoma?",
+    "a": "ABCDE melanoma criteria",
+    "leakedWord": "abcde",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ha_skel_004",
+    "q": "Which bone is the only one in the body that does not articulate with any other bone?",
+    "a": "Hyoid bone",
+    "leakedWord": "bone",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "lit_mod_solzhenitsyn_ivan_denisovich",
+    "q": "Which 1962 Aleksandr Solzhenitsyn novel, the first work to openly describe Stalin's labor camps in Soviet literature, follows a single day in the life of prisoner Ivan Shukhov?",
+    "a": "One Day in the Life of Ivan Denisovich",
+    "leakedWord": "life",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "med_feu_motte_bailey",
+    "q": "What were the two key components of a motte-and-bailey castle, the dominant early medieval castle design?",
+    "a": "Motte (mound) and bailey (yard)",
+    "leakedWord": "motte",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "med_vik_stamford_bridge",
+    "q": "At the Battle of Stamford Bridge (September 25, 1066), who killed Harald Hardrada, and how many Viking ships were needed to carry survivors home?",
+    "a": "Harald Hardrada killed by arrow",
+    "leakedWord": "harald",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "mh_0_rachmaninoff_piano_concerto_2",
+    "q": "What Rachmaninoff concerto, premiered 1901, is one of the most beloved in the piano repertoire?",
+    "a": "Piano Concerto No. 2",
+    "leakedWord": "concerto",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "nasa_iss_partner_agencies",
+    "q": "Which space station was built through an unprecedented collaboration between NASA, Roscosmos, ESA, JAXA, and CSA — five different space agencies?",
+    "a": "International Space Station",
+    "leakedWord": "station",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "nasa_mro_mars",
+    "q": "Which Mars orbiter has been mapping Mars since 2006 and found evidence of seasonal liquid water flows on the surface?",
+    "a": "Mars Reconnaissance Orbiter",
+    "leakedWord": "mars",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "nasa_roman_overview",
+    "q": "Which upcoming NASA space telescope will have a field of view 100 times wider than Hubble's and will study dark energy and exoplanets?",
+    "a": "Nancy Grace Roman Space Telescope",
+    "leakedWord": "telescope",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "nasa_spitzer_trappist",
+    "q": "Which space telescope confirmed 7 Earth-sized planets orbiting TRAPPIST-1, the most planets ever found around a single star?",
+    "a": "Spitzer Space Telescope",
+    "leakedWord": "telescope",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ocean_0_orca_apex_predator",
+    "q": "What natural predators does an adult orca have?",
+    "a": "No natural predators",
+    "leakedWord": "natural",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ocean_0_seahorse_pregnancy",
+    "q": "Which parent carries and gives birth to young seahorses?",
+    "a": "The male carries the young",
+    "leakedWord": "carries",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ocean_3_pufferfish_sand_circles",
+    "q": "Why do male pufferfish spend days creating elaborate geometric circles in the seafloor sand?",
+    "a": "Sand circles to attract mates",
+    "leakedWord": "sand",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ocean_4_endangered_north_atlantic_right_whale",
+    "q": "With only ~350 remaining, which large whale species faces extinction mainly from ship strikes and fishing gear entanglement in the North Atlantic?",
+    "a": "North Atlantic right whale",
+    "leakedWord": "north",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "periodic_table_nickel_devils_copper",
+    "q": "Which element was originally called \"Kupfernickel\" — devil's copper — by German miners who were frustrated that the ore looked like copper but yielded none?",
+    "a": "Nickel",
+    "flagType": "verbatim",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "us_states_indiana_indy500",
+    "q": "The Indianapolis 500 — considered the world's largest single-day sporting event — takes place at the Motor Speedway in which U.S. state?",
+    "a": "Indiana",
+    "flagType": "verbatim",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "world_religions_oth_bahai_nine_pointed_star",
+    "q": "What is the primary symbol of the Bahá'í Faith — a star whose nine points represent completeness and the unity of all religions, seen on temples, literature, and jewelry worldwide?",
+    "a": "Nine-pointed star",
+    "leakedWord": "nine",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "world_religions_sik_banda_singh",
+    "q": "Which Sikh military commander, commissioned by Guru Gobind Singh in 1708, led the Khalsa army to defeat the Mughal forces at Samana and Sirhind, avenging the martyrdom of Guru Gobind Singh's sons?",
+    "a": "Banda Singh Bahadur",
+    "leakedWord": "singh",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ww_bridge_tower_bridge_type",
+    "q": "What type of moveable bridge is London's Tower Bridge?",
+    "a": "Bascule bridge",
+    "leakedWord": "bridge",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ww_pal_himeji_nickname",
+    "q": "What is the popular nickname of Himeji Castle in Japan, given for its gleaming white plastered exterior?",
+    "a": "White Heron Castle",
+    "leakedWord": "white",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ww_pal_neuschwanstein_disney",
+    "q": "Which famous Disney theme park castle was directly inspired by Neuschwanstein Castle in Bavaria?",
+    "a": "Sleeping Beauty Castle",
+    "leakedWord": "castle",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ww_pal_potala_dalai_lama",
+    "q": "Which Dalai Lama ordered construction of the modern Potala Palace in Lhasa in 1649?",
+    "a": "5th Dalai Lama",
+    "leakedWord": "dalai",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "wwii_ad_reverse_lend_lease",
+    "q": "What arrangement allowed Allied nations to supply the United States with goods, services, and military bases in return for Lend-Lease aid?",
+    "a": "Reverse Lend-Lease",
+    "leakedWord": "lend",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "wwii_ef_bagration_army_group_center",
+    "q": "What was the decisive military outcome of Operation Bagration for the German Army Group Center?",
+    "a": "Army Group Center encircled",
+    "leakedWord": "center",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "wwii_nw_bismarck_sank_hood",
+    "q": "On May 24, 1941, the German battleship Bismarck scored a catastrophic hit that shocked the British public. What famous British warship did Bismarck sink?",
+    "a": "British HMS Hood",
+    "leakedWord": "british",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "wwii_pt_island_hopping",
+    "q": "What was the core principle of the US 'island-hopping' strategy in the Pacific from 1943-1945?",
+    "a": "Island hopping",
+    "leakedWord": "hopping",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "wwii_re_jedburgh_composition",
+    "q": "What made Jedburgh Teams unusual in their composition compared to other Allied special operations units?",
+    "a": "Allied/French teams",
+    "leakedWord": "allied",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "wwii_rtw_002",
+    "q": "The London Schedule of Payments (1921) set Germany's reparations at 132 billion gold marks — but what was Germany's actual legally required payment under the 'A' and 'B' bonds?",
+    "a": "50 billion gold marks",
+    "leakedWord": "billion",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "wwii_rtw_016",
+    "q": "The 1925 Locarno Treaties guaranteed Germany's western borders with France and Belgium — but what critical category of borders was deliberately LEFT without a military guarantee?",
+    "a": "Eastern borders undefined",
+    "leakedWord": "borders",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "wwii_rtw_army_oath",
+    "q": "On 2 August 1934, the day Hitler became Führer, the entire German armed forces swore a new oath — notable because it broke from tradition. What made this oath different from all previous German military oaths?",
+    "a": "Personal oath to Hitler",
+    "leakedWord": "oath",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "wwii_rtw_peace_for_our_time_quote",
+    "q": "Chamberlain's 1938 speech after Munich is constantly misquoted as \"peace in our time.\" What was his actual EXACT phrase (one word differs from the common misquote)?",
+    "a": "Peace for our time",
+    "leakedWord": "peace",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "wwii_rtw_sudetenland_ethnic_exclusion",
+    "q": "At the Munich Conference that decided Czechoslovakia's fate, how was Czechoslovakia itself involved in the negotiations?",
+    "a": "Czechoslovakia excluded",
+    "leakedWord": "czechoslovakia",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "wwii_tw_blood_banks",
+    "q": "Two WWII medical innovations — mobile blood banks and what antibiotic class — dramatically reduced soldier mortality from wounds and infections?",
+    "a": "Sulfa drugs, blood banks",
+    "leakedWord": "banks",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "wwii_tw_t34_production",
+    "q": "What Soviet tank — with revolutionary sloped armor that deflected shells, a powerful diesel engine, and wide tracks for mud and snow — shocked German crews in 1941 and prompted Germany to design the Panther tank specifically to counter it?",
+    "a": "T-34 tank",
+    "leakedWord": "tank",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "animals_wildlife-bovidae-143-species",
+    "q": "How many extinct species of bovids are known, compared to living ones?",
+    "a": "{300} extinct vs 143 living",
+    "leakedWord": "extinct",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "animals_wildlife-hominoidea-no-tails-tbxt",
+    "q": "What specific gene mutation is responsible for apes having no tails?",
+    "a": "TBXT gene mutation",
+    "leakedWord": "gene",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "animals_wildlife-alligator-snapping-turtle-largest",
+    "q": "Which turtle is the largest freshwater turtle in North America?",
+    "a": "Alligator snapping turtle",
+    "leakedWord": "turtle",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "animals-adder-widest-range-viper",
+    "q": "What makes the common adder extraordinary in terms of geographic range among terrestrial snakes?",
+    "a": "It has the widest range of any terrestrial snake",
+    "leakedWord": "terrestrial",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "animals-peafowl-three-species",
+    "q": "Which peafowl species is native only to the Congo Basin?",
+    "a": "Congo peafowl",
+    "leakedWord": "congo",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "animals-blue-whale-largest-ever",
+    "q": "The blue whale is not just the largest living animal — what record does it hold in Earth's entire history?",
+    "a": "Largest animal ever",
+    "leakedWord": "animal",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "animals_wildlife-heron-egret-same-family",
+    "q": "What is the actual biological relationship between egrets and herons?",
+    "a": "Same family — egrets are herons",
+    "leakedWord": "egrets",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "animals_wildlife-tiger-shark-diet-diversity",
+    "q": "Which shark is known for having the widest food spectrum of any shark species?",
+    "a": "Tiger shark",
+    "leakedWord": "shark",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "art_architecture-borobudur-2672-reliefs-504-statues",
+    "q": "How many relief panels decorate the 9th-century Borobudur temple in Java?",
+    "a": "{2,672} relief panels",
+    "leakedWord": "relief",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "art_architecture-decorative-art-vs-fine-art",
+    "q": "What is the key distinction between decorative arts and fine arts?",
+    "a": "Decorative arts must be functional",
+    "leakedWord": "decorative",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "food-vinegar-double-fermentation",
+    "q": "How many fermentation steps does it take to make vinegar from sugar?",
+    "a": "{2} fermentation steps",
+    "leakedWord": "fermentation",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "food_cuisine-gordon-ramsay-michelin-stars",
+    "q": "How many Michelin stars has Gordon Ramsay's restaurant group been awarded in total?",
+    "a": "{17} Michelin stars",
+    "leakedWord": "michelin",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "food_cuisine-pork-water-footprint",
+    "q": "How many cubic metres of water are needed to produce one tonne of pork?",
+    "a": "{5988} cubic metres",
+    "leakedWord": "cubic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "food_cuisine-green-bean-water-footprint",
+    "q": "How many cubic metres of water are needed to produce one tonne of green beans?",
+    "a": "{561} cubic metres",
+    "leakedWord": "cubic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-programming-software-engineering",
+    "q": "What term applies when software development uses formal engineering design processes?",
+    "a": "Software engineering",
+    "leakedWord": "software",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-ibm-patents-29-years",
+    "q": "How many consecutive years did IBM hold the U.S. annual patent record?",
+    "a": "{29} consecutive years",
+    "leakedWord": "consecutive",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-mit-105-nobel-laureates",
+    "q": "How many Nobel laureates have been affiliated with MIT as of October 2024?",
+    "a": "{105} Nobel laureates",
+    "leakedWord": "nobel",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-lever-simple-machine",
+    "q": "How many simple machines did Renaissance scientists identify, of which the lever is one?",
+    "a": "{6} simple machines",
+    "leakedWord": "simple",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-japanese-three-writing-systems",
+    "q": "How many different writing systems does Japanese use simultaneously in everyday text?",
+    "a": "{3} writing systems",
+    "leakedWord": "writing",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-ipa-standard-phonetics",
+    "q": "How many segmental letters does the International Phonetic Alphabet contain?",
+    "a": "{107} segmental letters",
+    "leakedWord": "segmental",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-romanian-romance-language-isolated",
+    "q": "What makes Romanian unusual among Romance languages geographically?",
+    "a": "It is the only major Romance language spoken in Eastern Europe, surrounded by non-Romance languages",
+    "leakedWord": "romance",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-un-193-member-states",
+    "q": "How many member states does the United Nations currently have?",
+    "a": "{193} member states",
+    "leakedWord": "member",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "gk-pashto-word-order",
+    "q": "In what order does Pashto place subject, object, and verb?",
+    "a": "Subject-Object-Verb",
+    "leakedWord": "subject",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-paleontology-media-budget",
+    "q": "How does the public entertainment budget for prehistoric life compare to actual paleontology research funding?",
+    "a": "Entertainment often exceeds research",
+    "leakedWord": "entertainment",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-computer-hardware-software-only-systems",
+    "q": "Most computers need hardware and software together, but what do some systems operate on alone?",
+    "a": "Hardware alone",
+    "leakedWord": "hardware",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-cpu-alу",
+    "q": "What component inside every CPU handles all arithmetic and logic operations?",
+    "a": "Arithmetic Logic Unit (ALU)",
+    "leakedWord": "arithmetic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-japanese-three-scripts",
+    "q": "How many distinct writing systems does modern Japanese use simultaneously?",
+    "a": "{3} writing systems",
+    "leakedWord": "writing",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "general_knowledge-linguistics-six-areas",
+    "q": "How many core areas of analysis does linguistics officially recognise?",
+    "a": "{6} core areas",
+    "leakedWord": "areas",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geography-philippines-14th-populous",
+    "q": "What rank does the Philippines hold among the world's most populous countries?",
+    "a": "{14}th most populous",
+    "leakedWord": "populous",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geography-uae-seven-emirates",
+    "q": "How many emirates make up the United Arab Emirates?",
+    "a": "{7} emirates",
+    "leakedWord": "emirates",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geography-laos-three-unesco-sites",
+    "q": "How many UNESCO World Heritage Sites does Laos have?",
+    "a": "{3} World Heritage Sites",
+    "leakedWord": "heritage",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geography-marshall-islands-nuclear-tests",
+    "q": "How many nuclear tests did the US conduct in the Marshall Islands between 1946 and 1958?",
+    "a": "{67} nuclear tests",
+    "leakedWord": "tests",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geography-american-samoa-timezone",
+    "q": "How many hours apart are American Samoa and independent Samoa in time zones?",
+    "a": "{25} hours apart",
+    "leakedWord": "apart",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geo_american_samoa_military_enlistment",
+    "q": "American Samoa has the highest military enlistment rate of any U.S. territory or state. Why is this notable given residents' legal status?",
+    "a": "American Samoans are U.S. nationals (not citizens) but still enlist at the highest per-capita rate in the U.S.",
+    "leakedWord": "highest",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geo-uae-seven-emirates",
+    "q": "How many individual emirates make up the United Arab Emirates?",
+    "a": "{7} emirates",
+    "leakedWord": "emirates",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geo-kuwait-city-state",
+    "q": "Kuwait is described as a city-state because most of its people live in which city?",
+    "a": "Kuwait City",
+    "leakedWord": "kuwait",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geography-saint-petersburg-siege",
+    "q": "Which WWII siege is recorded as the most lethal siege in all of history?",
+    "a": "Siege of Leningrad",
+    "leakedWord": "siege",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geo-marshall-islands-67-nuclear-tests",
+    "q": "How many nuclear tests did the US conduct in the Marshall Islands between 1946 and 1958?",
+    "a": "{67} nuclear tests",
+    "leakedWord": "tests",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geo-delhi-seven-cities",
+    "q": "What name was given to the series of earlier cities that preceded modern Delhi in the same region?",
+    "a": "Seven Cities of Delhi",
+    "leakedWord": "delhi",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geo-mumbai-financial-capital-natural-harbour",
+    "q": "Which coastal feature made Mumbai's natural harbour strategically important for trade?",
+    "a": "Its deep natural harbour",
+    "leakedWord": "natural",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geography-usa-no-official-language",
+    "q": "Does the United States have an official language at the federal level?",
+    "a": "No official language",
+    "leakedWord": "language",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "geography-usa-time-zones",
+    "q": "How many primary time zones span the contiguous United States and its territories?",
+    "a": "{6} time zones",
+    "leakedWord": "zones",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "history-crusades-four-states",
+    "q": "How many Crusader states were established in the Levant after the First Crusade?",
+    "a": "{4} Crusader states",
+    "leakedWord": "crusader",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "history-little-ice-age-three-cold-intervals",
+    "q": "How many particularly cold intervals did NASA identify within the Little Ice Age?",
+    "a": "{3} cold intervals",
+    "leakedWord": "cold",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "history-crusader-states-four-polities",
+    "q": "How many Crusader states were established in the Levant after the First Crusade?",
+    "a": "{4} Crusader states",
+    "leakedWord": "crusader",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "history-french-revolution-feudalism-abolished",
+    "q": "What landmark declaration of human rights emerged from the French Revolution in 1789?",
+    "a": "Declaration of the Rights of Man",
+    "leakedWord": "declaration",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "hist_napoleon_iii_nephew",
+    "q": "What was Napoleon III's relationship to Napoleon Bonaparte?",
+    "a": "He was Napoleon Bonaparte's nephew",
+    "leakedWord": "napoleon",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "history-saddam-nationalized-oil",
+    "q": "Which company did Saddam Hussein nationalize while serving as Iraq's Vice President?",
+    "a": "Iraq Petroleum Company",
+    "leakedWord": "iraq",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "history-napoleon-iii-first-president",
+    "q": "Napoleon III was France's first president and second emperor — who was the first emperor?",
+    "a": "Napoleon I",
+    "flagType": "verbatim",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "history-khrushchev-secret-speech-1956",
+    "q": "At which party congress did Khrushchev deliver his famous 'Secret Speech' denouncing Stalin's purges?",
+    "a": "20th Congress of the Communist Party of the Soviet Union",
+    "leakedWord": "congress",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "history-neolithic-revolution-diet-tradeoff",
+    "q": "How did the Neolithic switch to farming affect human food quality compared to hunter-gatherer diets?",
+    "a": "It reduced food quality",
+    "leakedWord": "quality",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-eye-ten-eye-forms",
+    "q": "How many fundamentally different eye forms have evolved across animals?",
+    "a": "{10} different forms",
+    "leakedWord": "forms",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-human-brain-blood-barrier",
+    "q": "What specialized barrier isolates the human brain from the bloodstream?",
+    "a": "Blood-brain barrier",
+    "leakedWord": "barrier",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-immune-innate-adaptive",
+    "q": "Which part of the immune system forms memory of past pathogens and is the basis for vaccines?",
+    "a": "Adaptive immune system",
+    "leakedWord": "immune",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "health-eye-ten-forms",
+    "q": "How many fundamentally different eye forms have evolved in animals?",
+    "a": "{10} different forms",
+    "leakedWord": "forms",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "health-human-brain-blood-brain-barrier",
+    "q": "What barrier isolates the human brain from the bloodstream?",
+    "a": "Blood-brain barrier",
+    "leakedWord": "barrier",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-cardiac-arrest-vs-heart-attack",
+    "q": "What is the fundamental difference between a heart attack and cardiac arrest?",
+    "a": "A heart attack is a blocked artery; cardiac arrest is the heart stopping beating",
+    "leakedWord": "heart",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-taste-five-basics-cats-cant-sweet",
+    "q": "How many basic tastes can humans perceive?",
+    "a": "{5} basic tastes",
+    "leakedWord": "basic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-hepatitis-five-viruses",
+    "q": "Which hepatitis virus can only infect someone who already has hepatitis B?",
+    "a": "Hepatitis D",
+    "leakedWord": "hepatitis",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-eye-ten-forms",
+    "q": "How many fundamentally different structural forms have eyes with resolving power evolved into?",
+    "a": "{10} different forms",
+    "leakedWord": "forms",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-human-brain-blood-brain-barrier",
+    "q": "What protective barrier isolates the brain from the general bloodstream?",
+    "a": "Blood-brain barrier",
+    "leakedWord": "barrier",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-brain-damage-tbi-common",
+    "q": "What is the most common type of brain injury overall?",
+    "a": "Traumatic brain injury",
+    "leakedWord": "injury",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-disease-four-types",
+    "q": "How many main types of disease are recognized in medicine?",
+    "a": "{4} main types",
+    "leakedWord": "main",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-aneurysm-rupture-risk",
+    "q": "What happens to an aneurysm's rupture risk as its size increases?",
+    "a": "Rupture risk increases",
+    "leakedWord": "rupture",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-root-canal-anatomy",
+    "q": "What is a root canal actually referring to in tooth anatomy?",
+    "a": "Hollow space in tooth root",
+    "leakedWord": "tooth",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "human_body_health-hepatitis-d-requires-b",
+    "q": "Which hepatitis type can only infect people already infected with Hepatitis B?",
+    "a": "Hepatitis D",
+    "leakedWord": "hepatitis",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "mythology_folklore-anu-passive-sky-king",
+    "q": "What paradox defined Anu, king of the Mesopotamian gods?",
+    "a": "King of gods but rarely worshipped",
+    "leakedWord": "gods",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "natural_sciences-rutherford-invited-bohr",
+    "q": "Which famous atomic model resulted from Rutherford inviting Bohr to his lab in 1912?",
+    "a": "Bohr model of the atom",
+    "leakedWord": "bohr",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "natural_sciences-natural-number-foundation-of-all",
+    "q": "Which foundational numbers underlie integers, rationals, and real numbers?",
+    "a": "Natural numbers",
+    "leakedWord": "numbers",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "natural_sciences-year-martian-longer",
+    "q": "Approximately how long is one Martian year in Earth years?",
+    "a": "{1.88} Earth years",
+    "leakedWord": "earth",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "natural_sciences-sodium-sixth-most-abundant",
+    "q": "What is sodium's rank among the most abundant elements in Earth's crust?",
+    "a": "Sixth most abundant",
+    "leakedWord": "abundant",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "natural_sciences-calcium-fifth-most-abundant",
+    "q": "What rank does calcium hold among the most abundant metals in the human body?",
+    "a": "Most abundant metal",
+    "flagType": "verbatim",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "natural_sciences-silicon-second-abundant-crust",
+    "q": "What rank does silicon hold among the most abundant elements in Earth's crust?",
+    "a": "Second most abundant",
+    "leakedWord": "abundant",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ns_schrodinger_wave_equation",
+    "q": "What fundamental equation did Erwin Schrödinger develop in 1926 that describes how quantum systems evolve over time?",
+    "a": "The Schrödinger equation",
+    "leakedWord": "schrödinger",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ns_titanium_biocompatible",
+    "q": "Titanium is widely used in medical implants. What property makes it safe to place inside the human body?",
+    "a": "Biocompatibility — the human body does not reject it and it does not corrode in body fluids",
+    "leakedWord": "human",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "ns_diamond_graphite_same_element",
+    "q": "Diamond and graphite (pencil lead) are both made entirely of carbon. Why are their properties so different?",
+    "a": "Different atomic structure: diamond has a 3D tetrahedral lattice; graphite has flat layers that slide",
+    "leakedWord": "diamond",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "natural_sciences-seismology-richter",
+    "q": "On the Richter scale, each whole number increase represents how many times greater ground motion?",
+    "a": "{10} times greater",
+    "leakedWord": "greater",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "natural_sciences-schrödinger-wave-equation",
+    "q": "What equation did Schrödinger develop to describe how quantum systems evolve?",
+    "a": "Schrödinger equation",
+    "leakedWord": "schrödinger",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "science-chemical-compound-four-bond-types",
+    "q": "Which type of chemical compound is held together by ionic bonds?",
+    "a": "Ionic compound",
+    "leakedWord": "ionic",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "natural_sciences-earth-formation-4-54-billion",
+    "q": "According to scientific evidence, approximately how many billion years ago did Earth form?",
+    "a": "About {4.54} billion years ago",
+    "leakedWord": "billion",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  },
+  {
+    "id": "space_astronomy-pleiades-800-solar-mass-cluster",
+    "q": "What is the total mass of the Pleiades star cluster in solar masses?",
+    "a": "{800} solar masses",
+    "leakedWord": "solar",
+    "flagType": "word_level",
+    "reason": "no_v3_pattern"
+  }
+]

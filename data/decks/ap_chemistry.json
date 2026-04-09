@@ -1684,7 +1684,7 @@
       "answerTypePoolId": "periodic_trend_terms",
       "difficulty": 2,
       "funScore": 6,
-      "quizQuestion": "Moving left to right across a period on the periodic table, what happens to atomic radius?",
+      "quizQuestion": "Moving left to right across a period on the periodic table, what happens to atomic?",
       "explanation": "Across a period, electrons are added to the same valence shell while nuclear charge increases. The greater nuclear pull contracts the electron cloud, shrinking atomic radius. For example, in Period 2: Li (152 pm) > Be (112 pm) > B (87 pm) > C (77 pm) > N (75 pm) > O (73 pm) > F (64 pm). More protons pulling the same-shell electrons inward is the driving force.",
       "distractors": [
         "Increases",
@@ -4992,7 +4992,7 @@
         "differences in density",
         "differences in solubility in mobile phase only"
       ],
-      "quizQuestion": "In chromatography, components of a mixture are separated based on differences in what?",
+      "quizQuestion": "In chromatography, components of a mixture are separated based on in what?",
       "explanation": "Chromatography separates mixtures because different components have different affinities for the stationary phase (e.g., silica, paper) versus the mobile phase (solvent). More polar components are retained longer on a polar stationary phase; nonpolar components travel farther. This differential migration separates the mixture.",
       "statement": "Chromatography separates mixtures by differential affinity for the stationary phase versus the mobile phase.",
       "wowFactor": "Paper chromatography can reveal that 'black' ink is actually a mixture of blue, red, and yellow pigments — a revelation that surprises many students seeing it for the first time.",
@@ -6231,7 +6231,7 @@
         "use oxidation numbers to determine coefficients",
         "only change the reactant side"
       ],
-      "quizQuestion": "When balancing a chemical equation, which numbers are you ALLOWED to change to make atom counts equal on both sides?",
+      "quizQuestion": "When balancing a chemical equation, which numbers are you ALLOWED to transformation to make atom counts equal on both sides?",
       "explanation": "Coefficients are the numbers placed in front of a formula — they scale the entire molecule multiplicatively. Subscripts are part of the formula itself — changing them would change which substance you are describing (e.g., changing H2O to H3O creates a completely different substance: the hydronium ion). Balancing always uses coefficient adjustment only. This is a common source of errors for beginning chemistry students.",
       "statement": "When balancing equations, only coefficients (numbers in front of formulas) may be changed — never subscripts, which define the chemical identity of each substance.",
       "wowFactor": "The restriction against changing subscripts is why balancing some equations (like combustion reactions) requires systematic trial-and-error or algebraic methods — there's no shortcut that bypasses this rule.",
@@ -9422,7 +9422,7 @@
         "equilibrium axis",
         "collision frequency axis"
       ],
-      "quizQuestion": "On a potential energy diagram, the horizontal axis is called the ___ and represents the progress of the reaction from reactants to products.",
+      "quizQuestion": "On a potential energy diagram, the horizontal axis is called the ___ and represents the progress of the chemical process from reactants to products.",
       "explanation": "The reaction coordinate (or reaction progress) axis is not time — it represents a conceptual path from reactants through the transition state to products, tracking changes in bond lengths and angles as the reaction proceeds. This clarifies that the diagram shows energetics along the reaction pathway, not a time series.",
       "statement": "The horizontal axis of a potential energy diagram is the reaction coordinate, representing the structural progress from reactants to products.",
       "wowFactor": "The 'reaction coordinate' is not a single bond distance — it is a multidimensional path through a potential energy surface. For a three-atom reaction like H + H₂ → H₂ + H, the full surface is a 3D landscape that Nobel Laureate Dudley Herschbach mapped experimentally using crossed molecular beams.",
@@ -12916,7 +12916,7 @@
         "depends only on concentration",
         "amphiprotic salt solution"
       ],
-      "quizQuestion": "When a weak acid reacts completely with a strong base, the resulting salt solution is ___.",
+      "quizQuestion": "When a weak acid reacts completely with a strong base, the resulting salt liquid mixture is ___.",
       "explanation": "A weak acid + strong base reaction (e.g., CH3COOH + NaOH → CH3COONa + H2O) produces the conjugate base of the weak acid as the salt anion. CH3COO- is a Brønsted-Lowry base and reacts with water (hydrolyzes): CH3COO- + H2O ⇌ CH3COOH + OH-. This produces OH-, making the solution basic (pH > 7).",
       "statement": "Weak acid + strong base produces a basic salt solution (pH > 7) because the conjugate base of the weak acid undergoes hydrolysis.",
       "wowFactor": "Baking soda (NaHCO3) is the salt of carbonic acid (a weak acid) and NaOH (a strong base) — this is why a baking soda solution has pH ≈ 8.3, making it gently basic and effective for settling upset stomachs.",
@@ -14080,7 +14080,7 @@
         "is always negative",
         "mirrors enthalpy change"
       ],
-      "quizQuestion": "When the number of moles of gas increases during a chemical reaction, the entropy of the system generally ___.",
+      "quizQuestion": "When the number of moles of gas rises during a chemical reaction, does the entropy of the system generally increase or decrease?",
       "explanation": "More moles of gas means more particles with translational freedom, vastly more microstates, and therefore higher entropy. For reactions where Δn(gas) > 0, ΔS° is typically positive. For example, 2SO₂(g) + O₂(g) → 2SO₃(g) has Δn(gas) = -1, so ΔS° is negative.",
       "statement": "Reactions that produce more moles of gas than they consume have positive ΔS because more gas molecules create more microstates.",
       "wowFactor": "The explosive decomposition of nitroglycerin produces 29 moles of gas from 4 moles of liquid — a 725% increase in moles — which is one reason the entropy surge helps drive the detonation.",
@@ -15249,7 +15249,7 @@
         "hybrid cell",
         "redox cell"
       ],
-      "quizQuestion": "An electrochemical cell in which both electrodes are made of the same material but are in contact with solutions of different ion concentrations is called a ___.",
+      "quizQuestion": "An electrochemical biological unit in which both electrodes are made of the same material but are in contact with solutions of different ion concentrations is called a ___.",
       "explanation": "A concentration cell has identical electrodes and the same ion in both half-cells, but at different concentrations. The cell generates voltage because of the concentration difference: the half-cell with higher concentration acts as the cathode (reduction) and drives ion flow toward equilibrium. Voltage is calculated using the Nernst equation with E° = 0.",
       "statement": "A concentration cell uses identical electrodes with different ion concentrations to generate voltage, analyzed via the Nernst equation with E° = 0.",
       "wowFactor": "Your cells use concentration gradients as concentration cells — the Na+/K+ ATPase pump maintains ion concentration differences across cell membranes to power nerve signals.",

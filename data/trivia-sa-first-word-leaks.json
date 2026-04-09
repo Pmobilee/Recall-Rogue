@@ -1,0 +1,572 @@
+[
+  {
+    "id": "ap_bio_abiotic_synthesis_def",
+    "q": "What is abiotic synthesis in the context of the origin of life?",
+    "a": "Abiotic organic molecule synthesis",
+    "leakedWord": "abiotic"
+  },
+  {
+    "id": "ap_bio_chr_theory",
+    "q": "Which theory, developed by Sutton and Boveri (~1902), states that genes are located on chromosomes and that chromosome behavior during meiosis explains Mendel's laws?",
+    "a": "Chromosome theory of inheritance",
+    "leakedWord": "chromosome"
+  },
+  {
+    "id": "ap_bio_free_vs_bound_ribosomes",
+    "q": "What functional distinction exists between free ribosomes in the cytoplasm and ribosomes bound to the rough ER?",
+    "a": "Free ribosomes make cytoplasmic proteins; bound ribosomes make secretory and membrane proteins",
+    "leakedWord": "free"
+  },
+  {
+    "id": "ap_bio_functional_groups_properties",
+    "q": "How do functional groups determine the chemical properties of biological molecules such as reactivity, polarity, and solubility?",
+    "a": "Determine reactivity, polarity, solubility",
+    "leakedWord": "determine"
+  },
+  {
+    "id": "ap_bio_incomp_vs_codom",
+    "q": "What is the key difference between incomplete dominance and codominance in heterozygotes?",
+    "a": "Incomplete dominance blends phenotypes; codominance expresses both simultaneously",
+    "leakedWord": "incomplete"
+  },
+  {
+    "id": "ap_bio_intron_exon_splicing",
+    "q": "During eukaryotic RNA processing, what happens to introns and exons in the pre-mRNA transcript?",
+    "a": "Introns removed; exons joined",
+    "leakedWord": "introns"
+  },
+  {
+    "id": "ap_bio_mono_vs_para_compare",
+    "q": "How does a monophyletic clade differ from a paraphyletic group?",
+    "a": "Monophyletic = ALL descendants; paraphyletic = SOME only",
+    "leakedWord": "monophyletic"
+  },
+  {
+    "id": "ap_bio_nondisj_I_vs_II",
+    "q": "How do the outcomes of nondisjunction in meiosis I differ from nondisjunction in meiosis II in terms of aneuploid gametes produced?",
+    "a": "Meiosis I: all 4 gametes aneuploid; meiosis II: 2 of 4 gametes aneuploid",
+    "leakedWord": "meiosis"
+  },
+  {
+    "id": "ap_bio_paraphyletic_def",
+    "q": "How does a paraphyletic group differ from a monophyletic group (clade)?",
+    "a": "Paraphyletic = ancestor + SOME descendants; clade = ALL",
+    "leakedWord": "paraphyletic"
+  },
+  {
+    "id": "ap_bio_plant_cytokinesis_cell_plate",
+    "q": "In plant cells, what structure — formed by Golgi vesicles fusing at the cell's equator — serves as the new cell wall boundary that divides the cytoplasm during cytokinesis?",
+    "a": "Cell plate",
+    "leakedWord": "cell"
+  },
+  {
+    "id": "ap_bio_recessive_allele",
+    "q": "Which type of allele is masked by the dominant allele in a heterozygote and is only expressed in the homozygous recessive (bb) condition?",
+    "a": "Recessive allele",
+    "leakedWord": "recessive"
+  },
+  {
+    "id": "ap_bio_reductional_equational",
+    "q": "How do meiosis I and meiosis II differ in terms of 'reductional' vs. 'equational' division?",
+    "a": "Meiosis I is reductional; meiosis II is equational",
+    "leakedWord": "meiosis"
+  },
+  {
+    "id": "ap_bio_selection_comparison",
+    "q": "How do directional, stabilizing, and disruptive selection differ in their effects on a population's phenotype distribution?",
+    "a": "Directional shifts mean; stabilizing reduces variance; disruptive increases variance",
+    "leakedWord": "directional"
+  },
+  {
+    "id": "ap_bio_transcription_direction",
+    "q": "In what direction does RNA polymerase read the DNA template strand, and in what direction is the mRNA strand synthesized?",
+    "a": "Template 3→5; mRNA 5→3",
+    "leakedWord": "template"
+  },
+  {
+    "id": "ap_chem_7_7_ICE_table_setup",
+    "q": "In an ICE table, what information is entered in each of the three rows — I, C, and E — when solving an equilibrium problem from initial conditions?",
+    "a": "Initial concentrations, Changes (±x), Equilibrium values",
+    "leakedWord": "initial"
+  },
+  {
+    "id": "ap_macro_1_ppc_capital_vs_consumer",
+    "q": "On a PPC showing the trade-off between two types of goods, producing more of which type today — capital investment or consumer goods — leads to faster economic growth and an outward shift of the future PPC?",
+    "a": "capital goods",
+    "leakedWord": "capital"
+  },
+  {
+    "id": "ap_phys1_centrifugal_force",
+    "q": "Why is 'centrifugal force' (the outward force felt in circular motion) not a real force in AP Physics 1?",
+    "a": "Centrifugal force is a fictitious force",
+    "leakedWord": "centrifugal"
+  },
+  {
+    "id": "ap_phys1_centripetal_force_not_separate",
+    "q": "Why is 'centripetal force' never drawn as a separate arrow on a free-body diagram?",
+    "a": "Centripetal force is NOT a separate force",
+    "leakedWord": "centripetal"
+  },
+  {
+    "id": "ap_phys1_circular_centripetal_misconception",
+    "q": "A student draws a free-body diagram for a car on a circular track and adds a 'centripetal force' arrow. What is wrong?",
+    "a": "Centripetal force is not a separate force",
+    "leakedWord": "centripetal"
+  },
+  {
+    "id": "ap_phys1_coefficient_restitution",
+    "q": "What value of the coefficient of restitution (e = relative speed after/before collision) characterizes an elastic vs. perfectly inelastic collision?",
+    "a": "Coefficient of restitution (e): e=1 elastic, e=0 perfectly inelastic",
+    "leakedWord": "coefficient"
+  },
+  {
+    "id": "ap_phys1_damped_oscillations",
+    "q": "What happens to the amplitude of oscillation when a spring-mass system experiences friction?",
+    "a": "Amplitude decreases over time due to friction or air resistance (energy lost to heat)",
+    "leakedWord": "amplitude"
+  },
+  {
+    "id": "ap_phys1_drag_qualitative",
+    "q": "Qualitatively, how does air drag affect a falling object, and what is terminal velocity?",
+    "a": "Drag increases with speed and opposes motion; terminal velocity when drag equals weight",
+    "leakedWord": "drag"
+  },
+  {
+    "id": "ap_phys1_efficiency_formula",
+    "q": "What is the formula for efficiency of an energy conversion process?",
+    "a": "Efficiency = (useful energy output / total energy input) × 100%",
+    "leakedWord": "efficiency"
+  },
+  {
+    "id": "ap_phys1_fbd_contact_vs_field",
+    "q": "What is the distinction between contact forces and field forces, and which appear on free-body diagrams?",
+    "a": "Contact forces (normal, friction, tension) and field forces (gravity, electric); both appear on FBDs",
+    "leakedWord": "contact"
+  },
+  {
+    "id": "ap_phys1_flow_rate_def",
+    "q": "What equation gives the volume flow rate Q (volume per unit time) through a pipe in terms of cross-sectional area A and fluid speed v?",
+    "a": "Volume flow rate (Q = Av)",
+    "leakedWord": "volume"
+  },
+  {
+    "id": "ap_phys1_friction_independent_area",
+    "q": "Does the kinetic friction force change if you increase the contact area between two surfaces (same material, same normal force)?",
+    "a": "Kinetic friction does not depend on the contact area between surfaces",
+    "leakedWord": "kinetic"
+  },
+  {
+    "id": "ap_phys1_gauge_absolute_pressure",
+    "q": "A tire gauge reads 30 PSI (gauge). What is the actual (absolute) pressure inside the tire?",
+    "a": "Absolute pressure = gauge pressure + atmospheric pressure; gauge is measured relative to atmosphere",
+    "leakedWord": "absolute"
+  },
+  {
+    "id": "ap_phys1_gravitational_pe_reference",
+    "q": "Why can you choose any reference level for gravitational potential energy?",
+    "a": "Gravitational PE = mgh; h is measured from any chosen reference level",
+    "leakedWord": "gravitational"
+  },
+  {
+    "id": "ap_phys1_hydrostatic_shape_independence",
+    "q": "A narrow cylinder and a wide tank are both filled with water to the same depth. Which has greater pressure at the bottom?",
+    "a": "Pressure at a given depth depends only on depth and fluid density, not the shape of the container",
+    "leakedWord": "pressure"
+  },
+  {
+    "id": "ap_phys1_manometer_barometer",
+    "q": "What is the difference between a barometer and a manometer?",
+    "a": "Barometer measures atmospheric pressure; manometer measures gauge pressure of a gas",
+    "leakedWord": "barometer"
+  },
+  {
+    "id": "ap_phys1_momentum_external_only",
+    "q": "Under what condition is the total momentum of a system conserved?",
+    "a": "Total momentum of a system is constant only when the net external force on the system is zero",
+    "leakedWord": "total"
+  },
+  {
+    "id": "ap_phys1_negative_accel_not_decel",
+    "q": "Does negative acceleration always mean an object is slowing down?",
+    "a": "Acceleration in the negative direction",
+    "leakedWord": "acceleration"
+  },
+  {
+    "id": "ap_phys1_position_vs_displacement",
+    "q": "What is the key distinction between position and displacement?",
+    "a": "Position (from origin) vs displacement (change)",
+    "leakedWord": "position"
+  },
+  {
+    "id": "ap_phys1_satellite_orbit",
+    "q": "For an orbiting satellite, what equation expresses the balance between gravitational force and the centripetal force requirement?",
+    "a": "Gravitational force provides centripetal force: Gm₁m₂/r² = mv²/r",
+    "leakedWord": "gravitational"
+  },
+  {
+    "id": "ap_phys1_satellite_orbit_speed",
+    "q": "What is the orbital speed of a satellite at orbital radius r around a planet of mass M?",
+    "a": "Orbital speed v = √(GM/r); faster for lower orbits (closer to planet)",
+    "leakedWord": "orbital"
+  },
+  {
+    "id": "ap_phys1_static_vs_kinetic_friction",
+    "q": "What is the key difference between static friction and kinetic friction?",
+    "a": "Static friction is greater than kinetic friction; static prevents sliding, kinetic opposes sliding",
+    "leakedWord": "static"
+  },
+  {
+    "id": "ap_phys1_system_internal_external",
+    "q": "In systems thinking, what is the difference between internal and external forces?",
+    "a": "Internal forces act between objects within the system; external forces act from outside",
+    "leakedWord": "internal"
+  },
+  {
+    "id": "ap_phys1_torque_lever_arm",
+    "q": "What is the lever arm in a torque calculation, and why does it use perpendicular distance?",
+    "a": "Lever arm is the perpendicular distance from the axis of rotation to the line of action of the force",
+    "leakedWord": "lever"
+  },
+  {
+    "id": "ap_phys1_torque_zero_cases",
+    "q": "Under what conditions does a force produce zero torque about a given axis?",
+    "a": "Torque is zero when force is parallel to position vector r (θ = 0° or 180°) or when r = 0",
+    "leakedWord": "torque"
+  },
+  {
+    "id": "ap_phys1_total_mechanical_energy",
+    "q": "What is total mechanical energy and when is it conserved?",
+    "a": "Total mechanical energy E = KE + PE; conserved when only conservative forces do work",
+    "leakedWord": "total"
+  },
+  {
+    "id": "ap_phys1_viscosity_laminar_turbulent",
+    "q": "What is viscosity, and what distinguishes laminar from turbulent flow?",
+    "a": "Viscosity is resistance to flow; laminar = smooth layers; turbulent = chaotic eddies",
+    "leakedWord": "viscosity"
+  },
+  {
+    "id": "ap_phys1_weightlessness_misconception",
+    "q": "Why do astronauts in the International Space Station appear weightless even though Earth's gravity still acts on them?",
+    "a": "Astronauts in orbit are not weightless",
+    "leakedWord": "astronauts"
+  },
+  {
+    "id": "ap_psych_did_definition",
+    "q": "Which dissociative disorder, formerly known as multiple personality disorder, involves the presence of two or more distinct personality states that recurrently take control of the person's behavior, often accompanied by amnesia between states?",
+    "a": "Dissociative identity disorder",
+    "leakedWord": "dissociative"
+  },
+  {
+    "id": "ap_psych_panic_disorder",
+    "q": "Which disorder is characterized by recurrent, unexpected panic attacks followed by at least one month of persistent concern about future attacks or significant behavioral change to avoid them?",
+    "a": "Panic disorder",
+    "leakedWord": "panic"
+  },
+  {
+    "id": "ap_psych_thyroid_metabolism",
+    "q": "Which butterfly-shaped endocrine gland in the neck regulates the body's metabolic rate by producing thyroid hormones (T3 and T4)?",
+    "a": "Thyroid gland",
+    "leakedWord": "thyroid"
+  },
+  {
+    "id": "aphg_u2_nir",
+    "q": "What is subtracted from the crude birth rate to calculate natural increase rate (NIR)?",
+    "a": "crude death rate",
+    "leakedWord": "crude"
+  },
+  {
+    "id": "aphg_u6_southeast_asian_city_model",
+    "q": "Which urban model describes a port zone as the dominant center, surrounded by a commercial zone and ethnic quarters radiating outward, reflecting colonial-era Southeast Asian cities?",
+    "a": "Southeast Asian City Model",
+    "leakedWord": "southeast"
+  },
+  {
+    "id": "apush_p1_pueblo_revolt_1680",
+    "q": "Which 1680 revolt, led by the Pueblo religious leader Popé, temporarily drove Spanish colonizers out of New Mexico for 12 years in one of the most successful Native resistance movements in North American colonial history?",
+    "a": "Pueblo Revolt (1680 uprising)",
+    "leakedWord": "pueblo"
+  },
+  {
+    "id": "apush_p2_colonial_rice_carolina",
+    "q": "What cash crop formed the economic foundation of the Carolina lowcountry plantation system, with enslaved Africans' agricultural knowledge from West Africa's 'Rice Coast' being essential to its cultivation?",
+    "a": "Rice (Carolina cash crop)",
+    "leakedWord": "rice"
+  },
+  {
+    "id": "apush_p2_virginia_company",
+    "q": "What joint-stock company founded Jamestown in 1607 and held the royal charter for English colonization in Virginia?",
+    "a": "Virginia Company",
+    "leakedWord": "virginia"
+  },
+  {
+    "id": "apush_p3_elastic_clause",
+    "q": "What constitutional provision grants Congress the power to make all laws 'necessary and proper' for carrying out its enumerated powers, allowing broad federal action beyond specifically listed powers?",
+    "a": "Necessary and Proper Clause",
+    "leakedWord": "necessary"
+  },
+  {
+    "id": "apush_p3_native_land_loss",
+    "q": "What general process — often through coerced treaties, military defeat, and settler encroachment — resulted in Native American nations losing most of their territory in the post-Revolution era?",
+    "a": "Native American land cessions",
+    "leakedWord": "native"
+  },
+  {
+    "id": "apush_p4_hudson_river_school",
+    "q": "What first major American art movement celebrated the grandeur of the American landscape in paintings of the Hudson River Valley and the Catskill Mountains, with Thomas Cole as its founding figure?",
+    "a": "Hudson River School",
+    "leakedWord": "hudson"
+  },
+  {
+    "id": "apush_p5_free_soil_party",
+    "q": "What third party, formed in 1848, opposed the extension of slavery into new western territories under the slogan \"Free Soil, Free Speech, Free Labor, and Free Men\"?",
+    "a": "Free Soil Party",
+    "leakedWord": "free"
+  },
+  {
+    "id": "apush_p7_executive_order_9066",
+    "q": "Signed by FDR on February 19, 1942, which executive order authorized the forced relocation and internment of approximately 120,000 Japanese Americans?",
+    "a": "Executive Order 9066",
+    "leakedWord": "executive"
+  },
+  {
+    "id": "apush_p8_berkeley_free_speech",
+    "q": "What 1964 student movement at the University of California, Berkeley — led by Mario Savio — challenged university rules prohibiting political organizing on campus and helped launch the New Left?",
+    "a": "Berkeley Free Speech Movement",
+    "leakedWord": "berkeley"
+  },
+  {
+    "id": "apush_p8_epa_created",
+    "q": "What federal agency, established by President Nixon in December 1970 following the first Earth Day, was created to enforce environmental regulations and protect human health and the natural environment?",
+    "a": "Environmental Protection Agency",
+    "leakedWord": "environmental"
+  },
+  {
+    "id": "apush_p8_immigration_act_1965",
+    "q": "What 1965 Great Society law abolished the national-origins quota system that had favored European immigration since 1924, transforming the demographic makeup of American immigration?",
+    "a": "Immigration and Nationality Act (1965)",
+    "leakedWord": "immigration"
+  },
+  {
+    "id": "apush_p8_southern_strategy",
+    "q": "What Republican electoral strategy, associated with Nixon's 1968 and 1972 campaigns, appealed to white Southern voters disaffected by the Democratic Party's support for civil rights?",
+    "a": "Southern Strategy",
+    "leakedWord": "southern"
+  },
+  {
+    "id": "apush_p8_voting_rights_act",
+    "q": "What August 1965 law signed by President Johnson prohibited discriminatory voting practices such as literacy tests, and required federal oversight of elections in states with a history of discrimination?",
+    "a": "Voting Rights Act of 1965",
+    "leakedWord": "voting"
+  },
+  {
+    "id": "apush_p8_war_on_poverty",
+    "q": "What 1964 law established the Office of Economic Opportunity and created programs like Head Start, VISTA, and the Job Corps as the legislative foundation of LBJ's War on Poverty?",
+    "a": "Economic Opportunity Act",
+    "leakedWord": "economic"
+  },
+  {
+    "id": "apush_p9_latino_asian_immigration_surge",
+    "q": "What 1965 legislation abolished national-origin immigration quotas, setting in motion the demographic transformation of American immigration toward Latino and Asian source countries that reshaped U.S. demographics by 2000?",
+    "a": "Immigration and Nationality Act (1965)",
+    "leakedWord": "immigration"
+  },
+  {
+    "id": "apwh_3_070",
+    "q": "Which empire used Sikhism as a spiritual movement that emerged partly in response to Mughal religious tensions?",
+    "a": "Mughal Empire",
+    "leakedWord": "mughal"
+  },
+  {
+    "id": "const_myth_pleiades_homer",
+    "q": "What mythological relationship does Hesiod's Works and Days describe between Orion and the Pleiades?",
+    "a": "Orion is chasing the Pleiades",
+    "leakedWord": "orion"
+  },
+  {
+    "id": "cs_1_dennard_scaling_breakdown",
+    "q": "What scaling rule — formulated in 1974 by Robert Dennard — held that as transistors shrank, power density stayed constant, enabling decades of CPU clock speed increases, until it broke down around 2006?",
+    "a": "Dennard scaling",
+    "leakedWord": "dennard"
+  },
+  {
+    "id": "cs_2_prolog_stands_for",
+    "q": "What does Prolog stand for — reflecting its logic-programming approach where you declare facts and rules and let the interpreter find solutions?",
+    "a": "PROgramming in LOGic",
+    "leakedWord": "programming"
+  },
+  {
+    "id": "cs_5_yahoo_founders",
+    "q": "Which two Stanford PhD students founded Yahoo in January 1994, initially calling it 'Jerry and David's Guide to the World Wide Web'?",
+    "a": "Jerry Yang and David Filo",
+    "leakedWord": "jerry"
+  },
+  {
+    "id": "food_dish_green_curry_color",
+    "q": "What ingredient makes Thai green curry green — and what does 'sweet' refer to in its Thai name?",
+    "a": "Green chilies",
+    "leakedWord": "green"
+  },
+  {
+    "id": "greece_oc_theater_dionysus",
+    "q": "Which theater on the south slope of the Acropolis in Athens is considered the world's first theater — host to the premieres of works by Aeschylus, Sophocles, Euripides, and Aristophanes?",
+    "a": "Theater of Dionysus",
+    "leakedWord": "theater"
+  },
+  {
+    "id": "ha_multi_030",
+    "q": "What are the five ABCDE clinical warning signs used to identify a suspicious pigmented lesion that may be malignant melanoma?",
+    "a": "ABCDE melanoma criteria",
+    "leakedWord": "abcde"
+  },
+  {
+    "id": "med_feu_motte_bailey",
+    "q": "What were the two key components of a motte-and-bailey castle, the dominant early medieval castle design?",
+    "a": "Motte (mound) and bailey (yard)",
+    "leakedWord": "motte"
+  },
+  {
+    "id": "med_vik_stamford_bridge",
+    "q": "At the Battle of Stamford Bridge (September 25, 1066), who killed Harald Hardrada, and how many Viking ships were needed to carry survivors home?",
+    "a": "Harald Hardrada killed by arrow",
+    "leakedWord": "harald"
+  },
+  {
+    "id": "nasa_mro_mars",
+    "q": "Which Mars orbiter has been mapping Mars since 2006 and found evidence of seasonal liquid water flows on the surface?",
+    "a": "Mars Reconnaissance Orbiter",
+    "leakedWord": "mars"
+  },
+  {
+    "id": "ocean_3_pufferfish_sand_circles",
+    "q": "Why do male pufferfish spend days creating elaborate geometric circles in the seafloor sand?",
+    "a": "Sand circles to attract mates",
+    "leakedWord": "sand"
+  },
+  {
+    "id": "ocean_4_endangered_north_atlantic_right_whale",
+    "q": "With only ~350 remaining, which large whale species faces extinction mainly from ship strikes and fishing gear entanglement in the North Atlantic?",
+    "a": "North Atlantic right whale",
+    "leakedWord": "north"
+  },
+  {
+    "id": "ww_pal_himeji_nickname",
+    "q": "What is the popular nickname of Himeji Castle in Japan, given for its gleaming white plastered exterior?",
+    "a": "White Heron Castle",
+    "leakedWord": "white"
+  },
+  {
+    "id": "wwii_nw_bismarck_sank_hood",
+    "q": "On May 24, 1941, the German battleship Bismarck scored a catastrophic hit that shocked the British public. What famous British warship did Bismarck sink?",
+    "a": "British HMS Hood",
+    "leakedWord": "british"
+  },
+  {
+    "id": "wwii_rtw_peace_for_our_time_quote",
+    "q": "Chamberlain's 1938 speech after Munich is constantly misquoted as \"peace in our time.\" What was his actual EXACT phrase (one word differs from the common misquote)?",
+    "a": "Peace for our time",
+    "leakedWord": "peace"
+  },
+  {
+    "id": "wwii_rtw_sudetenland_ethnic_exclusion",
+    "q": "At the Munich Conference that decided Czechoslovakia's fate, how was Czechoslovakia itself involved in the negotiations?",
+    "a": "Czechoslovakia excluded",
+    "leakedWord": "czechoslovakia"
+  },
+  {
+    "id": "animals-peafowl-three-species",
+    "q": "Which peafowl species is native only to the Congo Basin?",
+    "a": "Congo peafowl",
+    "leakedWord": "congo"
+  },
+  {
+    "id": "art_architecture-decorative-art-vs-fine-art",
+    "q": "What is the key distinction between decorative arts and fine arts?",
+    "a": "Decorative arts must be functional",
+    "leakedWord": "decorative"
+  },
+  {
+    "id": "general_knowledge-programming-software-engineering",
+    "q": "What term applies when software development uses formal engineering design processes?",
+    "a": "Software engineering",
+    "leakedWord": "software"
+  },
+  {
+    "id": "general_knowledge-paleontology-media-budget",
+    "q": "How does the public entertainment budget for prehistoric life compare to actual paleontology research funding?",
+    "a": "Entertainment often exceeds research",
+    "leakedWord": "entertainment"
+  },
+  {
+    "id": "general_knowledge-computer-hardware-software-only-systems",
+    "q": "Most computers need hardware and software together, but what do some systems operate on alone?",
+    "a": "Hardware alone",
+    "leakedWord": "hardware"
+  },
+  {
+    "id": "general_knowledge-cpu-alу",
+    "q": "What component inside every CPU handles all arithmetic and logic operations?",
+    "a": "Arithmetic Logic Unit (ALU)",
+    "leakedWord": "arithmetic"
+  },
+  {
+    "id": "geo-kuwait-city-state",
+    "q": "Kuwait is described as a city-state because most of its people live in which city?",
+    "a": "Kuwait City",
+    "leakedWord": "kuwait"
+  },
+  {
+    "id": "geography-saint-petersburg-siege",
+    "q": "Which WWII siege is recorded as the most lethal siege in all of history?",
+    "a": "Siege of Leningrad",
+    "leakedWord": "siege"
+  },
+  {
+    "id": "history-french-revolution-feudalism-abolished",
+    "q": "What landmark declaration of human rights emerged from the French Revolution in 1789?",
+    "a": "Declaration of the Rights of Man",
+    "leakedWord": "declaration"
+  },
+  {
+    "id": "history-saddam-nationalized-oil",
+    "q": "Which company did Saddam Hussein nationalize while serving as Iraq's Vice President?",
+    "a": "Iraq Petroleum Company",
+    "leakedWord": "iraq"
+  },
+  {
+    "id": "human_body_health-hepatitis-five-viruses",
+    "q": "Which hepatitis virus can only infect someone who already has hepatitis B?",
+    "a": "Hepatitis D",
+    "leakedWord": "hepatitis"
+  },
+  {
+    "id": "human_body_health-aneurysm-rupture-risk",
+    "q": "What happens to an aneurysm's rupture risk as its size increases?",
+    "a": "Rupture risk increases",
+    "leakedWord": "rupture"
+  },
+  {
+    "id": "human_body_health-hepatitis-d-requires-b",
+    "q": "Which hepatitis type can only infect people already infected with Hepatitis B?",
+    "a": "Hepatitis D",
+    "leakedWord": "hepatitis"
+  },
+  {
+    "id": "natural_sciences-rutherford-invited-bohr",
+    "q": "Which famous atomic model resulted from Rutherford inviting Bohr to his lab in 1912?",
+    "a": "Bohr model of the atom",
+    "leakedWord": "bohr"
+  },
+  {
+    "id": "natural_sciences-schrödinger-wave-equation",
+    "q": "What equation did Schrödinger develop to describe how quantum systems evolve?",
+    "a": "Schrödinger equation",
+    "leakedWord": "schrödinger"
+  },
+  {
+    "id": "science-chemical-compound-four-bond-types",
+    "q": "Which type of chemical compound is held together by ionic bonds?",
+    "a": "Ionic compound",
+    "leakedWord": "ionic"
+  }
+]

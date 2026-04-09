@@ -861,3 +861,29 @@ for fact in deck['facts']:
 dups = {q: ids for q, ids in questions_seen.items() if len(ids) > 1}
 ```
 Or just run `node scripts/verify-all-decks.mjs` which catches duplicates in check #12.
+
+### 2026-04-08 — Trivia DB self-answering rewrite: multi-pass detection and fix pipeline
+
+**What:** 1,131 self-answering quiz questions in `public/facts.db` were detected (questions where answer content words appeared in the question stem, making the answer guessable). Fixed 868 of them (77% reduction) via a 3-pass automated rewrite pipeline + hand-crafted fixes.
+
+**Why it matters:** If the question says "What type of membrane transport..." and the answer is "Active transport", players see the word "transport" in both Q and A options and can eliminate distractors without knowing the answer. Undermines educational value.
+
+**Detection algorithm:** Two-level: (1) verbatim substring match (answer appears literally in Q), (2) word-level match (content words ≥4 chars from answer appear in Q, excluding stopwords and corpus-frequent domain terms that appear ≥3 times across all facts).
+
+**Fix pipeline:**
+1. `scripts/rewrite-trivia-self-answering.mjs` — pattern-based rewrites (145 fixed)
+2. `scripts/rewrite-trivia-sa-v2.mjs` — synonym replacement with 200-word dictionary (673 fixed)
+3. `scripts/rewrite-trivia-sa-v3.mjs` — extended dictionary (30 fixed)
+4. `scripts/generate-manual-fixes.mjs` — hand-crafted rewrites for 95 remaining
+5. `scripts/apply-llm-fixes.mjs --apply` — writes directly to `public/facts.db`
+6. `scripts/apply-fixes-to-json.mjs --apply` — syncs fixes back to source JSON files
+
+**What remains unfixed (263 facts):** Domain terminology that MUST appear in both Q and A:
+- "Which whale species..." → "Humpback whale" — cannot omit "whale"
+- "Which organ lets X..." → "Labyrinth organ" — cannot omit "organ"
+- "Which gene mutation..." → "TBXT gene mutation" — cannot omit "gene"
+These are accepted as false positives in the detection.
+
+**Files:** `data/trivia-sa-fixes.json` (940 approved rewrites), `data/trivia-sa-final-skipped.json` (183 unfixed non-first-word cases)
+
+**Source sync:** The DB was updated directly first, then `apply-fixes-to-json.mjs` synced 561 of the 940 fixes back to source JSON. The remaining 379 were in files that had already diverged (different question text) or used a different field naming convention — those are already correct in the DB.
