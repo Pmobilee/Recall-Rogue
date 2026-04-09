@@ -103,7 +103,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Piercing: ignores block. L3 strips enemy block, L5 adds Vuln. */
   piercing: {
     levels: [
-      { qpValue: 2 },                                                         // L0 — Weak pierce
+      { qpValue: 3 },                                                         // L0 — Weak pierce
       { qpValue: 3 },                                                         // L1
       { qpValue: 3 },                                                         // L2
       { qpValue: 4, tags: ['pierce_strip3'] },                              // L3 — also strips 3 enemy block

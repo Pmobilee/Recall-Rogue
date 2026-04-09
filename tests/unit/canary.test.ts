@@ -3,12 +3,12 @@
  *
  * Canary adjusts enemy HP and damage based on quiz performance:
  *   - Neutral (default): 1.0x HP, 1.0x damage
- *   - Assist mode (3+ wrong this floor): 0.9x HP, 0.8x damage, easier questions
- *   - Deep Assist (5+ wrong this floor): 0.8x HP, 0.65x damage, easier questions
- *   - Challenge (5+ correct streak): 1.2x HP, 1.1x damage, harder questions
+ *   - Assist mode (2+ wrong this floor): 0.85x HP, 0.70x damage, easier questions
+ *   - Deep Assist (4+ wrong this floor): 0.70x HP, 0.55x damage, easier questions
+ *   - Challenge (5+ correct streak): 1.25x HP, 1.15x damage, harder questions
  *
  * NOTE: There is a known bug in deriveMode() where CANARY_CHALLENGE_ENEMY_HP_MULT_3 (1.1)
- * is never used — the inner ternary always evaluates to CANARY_CHALLENGE_ENEMY_HP_MULT_5 (1.2)
+ * is never used — the inner ternary always evaluates to CANARY_CHALLENGE_ENEMY_HP_MULT_5 (1.25)
  * because the condition duplicates the outer guard. See gotchas.md.
  *
  * Tests cover: createCanaryState, recordCanaryAnswer, resetCanaryFloor,
@@ -70,7 +70,7 @@ describe('createCanaryState', () => {
 
 // ── Wrong Answer Accumulation → Assist Mode ───────────────────────────────────
 
-describe('Assist mode activation (3+ wrong answers on floor)', () => {
+describe('Assist mode activation (2+ wrong answers on floor)', () => {
   function getStateWithWrongs(count: number): CanaryState {
     let state = createCanaryState();
     for (let i = 0; i < count; i++) {
@@ -79,27 +79,27 @@ describe('Assist mode activation (3+ wrong answers on floor)', () => {
     return state;
   }
 
-  it('remains neutral with 2 wrong answers (below threshold)', () => {
+  it('remains neutral with 1 wrong answer (below threshold)', () => {
     const state = getStateWithWrongs(CANARY_ASSIST_WRONG_THRESHOLD - 1);
     expect(state.mode).toBe('neutral');
     expect(state.enemyHpMultiplier).toBe(1.0);
   });
 
-  it('enters assist mode at 3 wrong answers (CANARY_ASSIST_WRONG_THRESHOLD)', () => {
+  it('enters assist mode at 2 wrong answers (CANARY_ASSIST_WRONG_THRESHOLD)', () => {
     const state = getStateWithWrongs(CANARY_ASSIST_WRONG_THRESHOLD);
     expect(state.mode).toBe('assist');
   });
 
-  it('assist mode HP multiplier is CANARY_ASSIST_ENEMY_HP_MULT (0.9)', () => {
+  it('assist mode HP multiplier is CANARY_ASSIST_ENEMY_HP_MULT (0.85)', () => {
     const state = getStateWithWrongs(CANARY_ASSIST_WRONG_THRESHOLD);
     expect(state.enemyHpMultiplier).toBe(CANARY_ASSIST_ENEMY_HP_MULT);
-    expect(state.enemyHpMultiplier).toBe(0.9);
+    expect(state.enemyHpMultiplier).toBe(0.85);
   });
 
-  it('assist mode damage multiplier is CANARY_ASSIST_ENEMY_DMG_MULT (0.8)', () => {
+  it('assist mode damage multiplier is CANARY_ASSIST_ENEMY_DMG_MULT (0.70)', () => {
     const state = getStateWithWrongs(CANARY_ASSIST_WRONG_THRESHOLD);
     expect(state.enemyDamageMultiplier).toBe(CANARY_ASSIST_ENEMY_DMG_MULT);
-    expect(state.enemyDamageMultiplier).toBe(0.8);
+    expect(state.enemyDamageMultiplier).toBe(0.70);
   });
 
   it('assist mode question bias is -1 (easier questions)', () => {
@@ -107,21 +107,21 @@ describe('Assist mode activation (3+ wrong answers on floor)', () => {
     expect(state.questionBias).toBe(-1);
   });
 
-  it('enters deep_assist mode at 5 wrong answers (CANARY_DEEP_ASSIST_WRONG_THRESHOLD)', () => {
+  it('enters deep_assist mode at 4 wrong answers (CANARY_DEEP_ASSIST_WRONG_THRESHOLD)', () => {
     const state = getStateWithWrongs(CANARY_DEEP_ASSIST_WRONG_THRESHOLD);
     expect(state.mode).toBe('deep_assist');
   });
 
-  it('deep_assist HP multiplier is CANARY_DEEP_ASSIST_ENEMY_HP_MULT (0.8)', () => {
+  it('deep_assist HP multiplier is CANARY_DEEP_ASSIST_ENEMY_HP_MULT (0.70)', () => {
     const state = getStateWithWrongs(CANARY_DEEP_ASSIST_WRONG_THRESHOLD);
     expect(state.enemyHpMultiplier).toBe(CANARY_DEEP_ASSIST_ENEMY_HP_MULT);
-    expect(state.enemyHpMultiplier).toBe(0.8);
+    expect(state.enemyHpMultiplier).toBe(0.70);
   });
 
-  it('deep_assist damage multiplier is CANARY_DEEP_ASSIST_ENEMY_DMG_MULT (0.65)', () => {
+  it('deep_assist damage multiplier is CANARY_DEEP_ASSIST_ENEMY_DMG_MULT (0.55)', () => {
     const state = getStateWithWrongs(CANARY_DEEP_ASSIST_WRONG_THRESHOLD);
     expect(state.enemyDamageMultiplier).toBe(CANARY_DEEP_ASSIST_ENEMY_DMG_MULT);
-    expect(state.enemyDamageMultiplier).toBe(0.65);
+    expect(state.enemyDamageMultiplier).toBe(0.55);
   });
 });
 
@@ -153,16 +153,16 @@ describe('Challenge mode activation (5+ correct streak)', () => {
     expect(state.mode).toBe('challenge');
   });
 
-  it('challenge mode HP multiplier is CANARY_CHALLENGE_ENEMY_HP_MULT_5 (1.2)', () => {
+  it('challenge mode HP multiplier is CANARY_CHALLENGE_ENEMY_HP_MULT_5 (1.25)', () => {
     const state = getStateWithCorrects(CANARY_CHALLENGE_STREAK_THRESHOLD);
     expect(state.enemyHpMultiplier).toBe(CANARY_CHALLENGE_ENEMY_HP_MULT_5);
-    expect(state.enemyHpMultiplier).toBe(1.2);
+    expect(state.enemyHpMultiplier).toBe(1.25);
   });
 
-  it('challenge mode damage multiplier is CANARY_CHALLENGE_ENEMY_DMG_MULT (1.1)', () => {
+  it('challenge mode damage multiplier is CANARY_CHALLENGE_ENEMY_DMG_MULT (1.15)', () => {
     const state = getStateWithCorrects(CANARY_CHALLENGE_STREAK_THRESHOLD);
     expect(state.enemyDamageMultiplier).toBe(CANARY_CHALLENGE_ENEMY_DMG_MULT);
-    expect(state.enemyDamageMultiplier).toBe(1.1);
+    expect(state.enemyDamageMultiplier).toBe(1.15);
   });
 
   it('challenge mode question bias is +1 (harder questions)', () => {
@@ -170,13 +170,13 @@ describe('Challenge mode activation (5+ correct streak)', () => {
     expect(state.questionBias).toBe(1);
   });
 
-  it('enemies have MORE HP in challenge mode than neutral (1.2 > 1.0)', () => {
+  it('enemies have MORE HP in challenge mode than neutral (1.25 > 1.0)', () => {
     const neutral = createCanaryState();
     const challenge = getStateWithCorrects(CANARY_CHALLENGE_STREAK_THRESHOLD);
     expect(challenge.enemyHpMultiplier).toBeGreaterThan(neutral.enemyHpMultiplier);
   });
 
-  it('enemies deal MORE damage in challenge mode than neutral (1.1 > 1.0)', () => {
+  it('enemies deal MORE damage in challenge mode than neutral (1.15 > 1.0)', () => {
     const neutral = createCanaryState();
     const challenge = getStateWithCorrects(CANARY_CHALLENGE_STREAK_THRESHOLD);
     expect(challenge.enemyDamageMultiplier).toBeGreaterThan(neutral.enemyDamageMultiplier);
@@ -287,5 +287,220 @@ describe('resetCanaryFloor', () => {
     state = resetCanaryFloor(state);
     // Wrong count reset to 0, streak stays 0 — should be neutral
     expect(state.mode).toBe('neutral');
+  });
+});
+
+// ── Run-Level Accuracy Tracking ───────────────────────────────────────────────
+
+import {
+  CANARY_RUN_WINDOW,
+  CANARY_RUN_STRONG_ASSIST_THRESHOLD,
+  CANARY_RUN_MILD_ASSIST_THRESHOLD,
+  CANARY_RUN_MILD_CHALLENGE_THRESHOLD,
+  CANARY_RUN_STRONG_CHALLENGE_THRESHOLD,
+  CANARY_RUN_STRONG_ASSIST_DMG_MULT,
+  CANARY_RUN_STRONG_ASSIST_HP_MULT,
+  CANARY_RUN_MILD_ASSIST_DMG_MULT,
+  CANARY_RUN_MILD_ASSIST_HP_MULT,
+  CANARY_RUN_MILD_CHALLENGE_DMG_MULT,
+  CANARY_RUN_MILD_CHALLENGE_HP_MULT,
+  CANARY_RUN_STRONG_CHALLENGE_DMG_MULT,
+  CANARY_RUN_STRONG_CHALLENGE_HP_MULT,
+} from '../../src/data/balance';
+
+/** Helper: build a state with N correct and M wrong answers fed in sequence. */
+function buildRunState(correct: number, wrong: number): CanaryState {
+  let state = createCanaryState();
+  // Interleave to keep encounter-level in neutral (avoid triggering assist/challenge mode)
+  const total = correct + wrong;
+  let c = correct;
+  let w = wrong;
+  for (let i = 0; i < total; i++) {
+    // Distribute: feed one correct then one wrong to keep streaks low
+    if (c > 0 && (w === 0 || i % 2 === 0)) {
+      state = recordCanaryAnswer(state, true);
+      c--;
+    } else if (w > 0) {
+      state = recordCanaryAnswer(state, false);
+      w--;
+    }
+  }
+  return state;
+}
+
+describe('Run-level tracking: initial state', () => {
+  it('createCanaryState initializes runAnswers to empty array', () => {
+    const state = createCanaryState();
+    expect(state.runAnswers).toEqual([]);
+  });
+
+  it('createCanaryState initializes runAccuracy to 0', () => {
+    const state = createCanaryState();
+    expect(state.runAccuracy).toBe(0);
+  });
+
+  it('createCanaryState initializes runDamageMultiplier to 1.0', () => {
+    const state = createCanaryState();
+    expect(state.runDamageMultiplier).toBe(1.0);
+  });
+
+  it('createCanaryState initializes runHpMultiplier to 1.0', () => {
+    const state = createCanaryState();
+    expect(state.runHpMultiplier).toBe(1.0);
+  });
+});
+
+describe('Run-level tracking: answer recording', () => {
+  it('recordCanaryAnswer appends answer to runAnswers', () => {
+    let state = createCanaryState();
+    state = recordCanaryAnswer(state, true);
+    expect(state.runAnswers).toEqual([true]);
+    state = recordCanaryAnswer(state, false);
+    expect(state.runAnswers).toEqual([true, false]);
+  });
+
+  it('run multipliers remain 1.0 until 10 answers are recorded (not enough data)', () => {
+    let state = createCanaryState();
+    for (let i = 0; i < 9; i++) {
+      state = recordCanaryAnswer(state, true);
+    }
+    expect(state.runDamageMultiplier).toBe(1.0);
+    expect(state.runHpMultiplier).toBe(1.0);
+    expect(state.runAccuracy).toBe(0); // not computed until 10 answers
+  });
+
+  it('run multipliers activate at exactly 10 answers', () => {
+    let state = createCanaryState();
+    // 10 correct answers = 100% accuracy → strong challenge zone
+    for (let i = 0; i < 10; i++) {
+      state = recordCanaryAnswer(state, true);
+    }
+    expect(state.runAccuracy).toBeGreaterThan(0);
+  });
+
+  it('runAnswers array is trimmed to CANARY_RUN_WINDOW', () => {
+    let state = createCanaryState();
+    for (let i = 0; i < CANARY_RUN_WINDOW + 5; i++) {
+      state = recordCanaryAnswer(state, i % 2 === 0);
+    }
+    expect(state.runAnswers.length).toBe(CANARY_RUN_WINDOW);
+  });
+});
+
+describe('Run-level tracking: accuracy tiers', () => {
+  /**
+   * Helper: create a state with a specific run accuracy using exactly 20 answers.
+   * Uses a fresh canary state; mixes corrects/wrongs to hit target accuracy.
+   * NOTE: encounter-level mode may vary — we only check run-level multipliers here.
+   */
+  function stateWithRunAccuracy(accuracy: number): CanaryState {
+    let state = createCanaryState();
+    const total = 20;
+    const corrects = Math.round(accuracy * total);
+    const answers = Array(corrects).fill(true).concat(Array(total - corrects).fill(false));
+    for (const a of answers) {
+      state = recordCanaryAnswer(state, a);
+    }
+    return state;
+  }
+
+  it('strong assist: accuracy below CANARY_RUN_STRONG_ASSIST_THRESHOLD applies assist multipliers', () => {
+    // 55% accuracy = below 0.60 threshold
+    const state = stateWithRunAccuracy(0.55);
+    expect(state.runDamageMultiplier).toBe(CANARY_RUN_STRONG_ASSIST_DMG_MULT);
+    expect(state.runHpMultiplier).toBe(CANARY_RUN_STRONG_ASSIST_HP_MULT);
+  });
+
+  it('mild assist: accuracy between 0.60 and 0.70 applies mild assist multipliers', () => {
+    // 65% accuracy
+    const state = stateWithRunAccuracy(0.65);
+    expect(state.runDamageMultiplier).toBe(CANARY_RUN_MILD_ASSIST_DMG_MULT);
+    expect(state.runHpMultiplier).toBe(CANARY_RUN_MILD_ASSIST_HP_MULT);
+  });
+
+  it('neutral: accuracy between 0.70 and 0.80 applies no run-level scaling', () => {
+    // 75% accuracy
+    const state = stateWithRunAccuracy(0.75);
+    expect(state.runDamageMultiplier).toBe(1.0);
+    expect(state.runHpMultiplier).toBe(1.0);
+  });
+
+  it('mild challenge: accuracy between 0.80 and 0.85 applies mild challenge multipliers', () => {
+    // 82% accuracy = 0.80 < 0.82 <= 0.85, but NOT > 0.85
+    // stateWithRunAccuracy(0.82) → Math.round(0.82 * 20) = 16 correct → 16/20 = 0.80
+    // Need 17/20 = 0.85 exactly → that's the boundary. Use 16.5 rounds to 17... let's use exact values.
+    // 17 correct out of 20 = 0.85 → exactly at strong challenge boundary (> 0.85 is false)
+    // 16 correct out of 20 = 0.80 → exactly at mild challenge boundary (> 0.80 is false)
+    // Use 17 correct → 0.85 → not > 0.85, but > 0.80: mild challenge
+    let state = createCanaryState();
+    const answers = Array(17).fill(true).concat(Array(3).fill(false));
+    for (const a of answers) state = recordCanaryAnswer(state, a);
+    // 17/20 = 0.85: > 0.80 but NOT > 0.85 → mild challenge
+    expect(state.runDamageMultiplier).toBe(CANARY_RUN_MILD_CHALLENGE_DMG_MULT);
+    expect(state.runHpMultiplier).toBe(CANARY_RUN_MILD_CHALLENGE_HP_MULT);
+  });
+
+  it('strong challenge: accuracy above CANARY_RUN_STRONG_CHALLENGE_THRESHOLD applies strong challenge multipliers', () => {
+    // 18/20 = 0.90 > 0.85 threshold
+    let state = createCanaryState();
+    const answers = Array(18).fill(true).concat(Array(2).fill(false));
+    for (const a of answers) state = recordCanaryAnswer(state, a);
+    expect(state.runDamageMultiplier).toBe(CANARY_RUN_STRONG_CHALLENGE_DMG_MULT);
+    expect(state.runHpMultiplier).toBe(CANARY_RUN_STRONG_CHALLENGE_HP_MULT);
+  });
+});
+
+describe('Run-level tracking: multiplicative stacking with encounter-level', () => {
+  it('combined enemyDamageMultiplier is product of encounter-level and run-level', () => {
+    // Drive 18/20 correct answers to get strong run-level challenge (1.25x dmg)
+    // Then trigger encounter-level challenge with 5+ streak
+    let state = createCanaryState();
+    // First 20 answers: interleaved, then 5 correct streak
+    // Actually let's keep it simple: neutral encounter + run challenge
+    // Build run state with 18/20 correct (but keep encounter-level neutral by resetting floor)
+    const answers = Array(18).fill(true).concat(Array(2).fill(false));
+    for (const a of answers) state = recordCanaryAnswer(state, a);
+    // At this point encounter level may be challenge due to streak. Reset floor to isolate.
+    state = resetCanaryFloor(state);
+    // Now encounter-level = neutral (wrongAnswersThisFloor=0, correctStreak preserved but reset)
+    // Run-level should still be strong challenge
+    // enemyDamageMultiplier = encounterDmgMult * runDmgMult
+    expect(state.enemyDamageMultiplier).toBeCloseTo(state.runDamageMultiplier * 1.0, 5);
+  });
+
+  it('assist encounter + strong assist run = stacked reduction (lower than either alone)', () => {
+    let state = createCanaryState();
+    // Seed 12 wrong out of 20 answers to get <60% run accuracy (strong assist)
+    // But we need to distribute answers to also accumulate wrong answers this floor
+    const answers = Array(8).fill(true).concat(Array(12).fill(false));
+    for (const a of answers) state = recordCanaryAnswer(state, a);
+    // strong assist run: 0.75 dmg, 0.80 hp
+    // encounter-level may be deep_assist: 0.45 dmg, 0.70 hp
+    expect(state.enemyDamageMultiplier).toBeLessThan(CANARY_RUN_STRONG_ASSIST_DMG_MULT);
+    expect(state.enemyHpMultiplier).toBeLessThan(CANARY_RUN_STRONG_ASSIST_HP_MULT);
+  });
+});
+
+describe('Run-level tracking: floor reset preserves runAnswers', () => {
+  it('resetCanaryFloor does NOT reset runAnswers', () => {
+    let state = createCanaryState();
+    for (let i = 0; i < 15; i++) {
+      state = recordCanaryAnswer(state, i % 3 !== 0); // ~67% correct
+    }
+    const runAnswersBefore = [...state.runAnswers];
+    state = resetCanaryFloor(state);
+    expect(state.runAnswers).toEqual(runAnswersBefore);
+  });
+
+  it('run-level multipliers persist across floor resets', () => {
+    let state = createCanaryState();
+    // Build strong challenge run accuracy (18/20 correct)
+    const answers = Array(18).fill(true).concat(Array(2).fill(false));
+    for (const a of answers) state = recordCanaryAnswer(state, a);
+    const runDmgBefore = state.runDamageMultiplier;
+    const runHpBefore = state.runHpMultiplier;
+    state = resetCanaryFloor(state);
+    expect(state.runDamageMultiplier).toBe(runDmgBefore);
+    expect(state.runHpMultiplier).toBe(runHpBefore);
   });
 });

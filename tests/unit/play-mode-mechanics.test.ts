@@ -170,9 +170,9 @@ describe('strike mechanic play modes', () => {
     expect(result.damageDealt).toBe(4);
   });
 
-  it('charge_correct: deals 7 damage (round(4*1.75)=7, stat table L0 QP=4)', () => {
+  it('charge_correct: deals 6 damage (round(4*1.50)=6, stat table L0 QP=4)', () => {
     const result = resolve('strike', 'charge_correct');
-    expect(result.damageDealt).toBe(7);
+    expect(result.damageDealt).toBe(6);
   });
 
   it('charge_wrong: deals 3 damage (chargeWrongValue=3 + masteryBonus=0 = 3)', () => {
@@ -195,9 +195,9 @@ describe('reckless mechanic', () => {
     expect(result.selfDamage).toBe(3);
   });
 
-  it('charge_correct: 7 damage (round(4*1.75)=7), still 3 self-damage (flat, stat table extras.selfDmg not wired to resolver)', () => {
+  it('charge_correct: 6 damage (round(4*1.50)=6), still 3 self-damage (flat, stat table extras.selfDmg not wired to resolver)', () => {
     const result = resolve('reckless', 'charge_correct');
-    expect(result.damageDealt).toBe(7);
+    expect(result.damageDealt).toBe(6);
     expect(result.selfDamage).toBe(3); // self-damage does NOT scale
   });
 
@@ -216,16 +216,16 @@ describe('execute mechanic', () => {
     expect(result.damageDealt).toBe(2);
   });
 
-  it('charge_correct: 28 damage (4 base + 24 bonus) at <30% HP (stat table L0 QP=2, CC=round(2*1.75)=4)', () => {
+  it('charge_correct: 27 damage (3 base + 24 bonus) at <30% HP (stat table L0 QP=2, CC=round(2*1.50)=3)', () => {
     const result = resolve('execute', 'charge_correct', undefined, { currentHP: 10, maxHP: 100 });
-    // 4 base (Math.round(2*1.75)) + 24 hardcoded bonus = 28
-    // At chargeMultiplier=1.0, tier=1, effectMultiplier=1: finalValue=4, bonus=24
-    expect(result.damageDealt).toBe(28);
+    // 3 base (Math.round(2*1.50)) + 24 hardcoded bonus = 27
+    // At chargeMultiplier=1.0, tier=1, effectMultiplier=1: finalValue=3, bonus=24
+    expect(result.damageDealt).toBe(27);
   });
 
-  it('charge_correct: only 4 damage at full HP (no bonus trigger)', () => {
+  it('charge_correct: only 3 damage at full HP (no bonus trigger)', () => {
     const result = resolve('execute', 'charge_correct', undefined, { currentHP: 100, maxHP: 100 });
-    expect(result.damageDealt).toBe(4);
+    expect(result.damageDealt).toBe(3);
   });
 
   it('charge_wrong: > 0 damage in all modes', () => {
@@ -417,9 +417,9 @@ describe('block mechanic', () => {
     const result = resolve('block', 'quick');
     expect(result.shieldApplied).toBe(4);
   });
-  it('charge_correct: 7 shield (Math.round(4*1.75)=7, stat table L0 QP=4 and CC_MULT=1.75)', () => {
+  it('charge_correct: 6 shield (Math.round(4*1.50)=6, stat table L0 QP=4 and CC_MULT=1.50)', () => {
     const result = resolve('block', 'charge_correct');
-    expect(result.shieldApplied).toBe(7);
+    expect(result.shieldApplied).toBe(6);
   });
   it('charge_wrong: 2 shield (chargeWrongValue=3 + masteryBonus=-1 = 2, stat table L0 QP=4 vs mechanic QP=5)', () => {
     const result = resolve('block', 'charge_wrong');
@@ -461,9 +461,9 @@ describe('thorns mechanic', () => {
     expect(result.shieldApplied).toBe(2);
     expect(result.thornsValue).toBe(3);
   });
-  it('charge_correct: 4 block (round(2*1.75)=4), 9 reflect (hardcoded)', () => {
+  it('charge_correct: 3 block (round(2*1.50)=3), 9 reflect (hardcoded)', () => {
     const result = resolve('thorns', 'charge_correct');
-    expect(result.shieldApplied).toBe(4);
+    expect(result.shieldApplied).toBe(3);
     expect(result.thornsValue).toBe(9);
   });
   it('charge_wrong: 1 block, 2 reflect (chargeWrongValue=2 + masteryBonus=-1 = 1; reflect hardcoded to 2)', () => {
@@ -492,9 +492,9 @@ describe('empower mechanic', () => {
     const result = resolve('empower', 'quick');
     expect(result.finalValue).toBe(30);
   });
-  it('charge_correct: finalValue=53 (round(30*1.75)=53, stat table L0 QP=30 and CC_MULT=1.75)', () => {
+  it('charge_correct: finalValue=45 (round(30*1.50)=45, stat table L0 QP=30 and CC_MULT=1.50)', () => {
     const result = resolve('empower', 'charge_correct');
-    expect(result.finalValue).toBe(53);
+    expect(result.finalValue).toBe(45);
   });
   it('charge_wrong: finalValue=15 (chargeWrongValue=35 + masteryBonus=-20 = 15, stat table L0 QP=30 vs mechanic QP=50)', () => {
     const result = resolve('empower', 'charge_wrong');

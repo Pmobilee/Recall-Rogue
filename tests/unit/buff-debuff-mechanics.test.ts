@@ -120,7 +120,7 @@ describe('MechanicDefinition presence — buff and debuff mechanics', () => {
 // ── Empower (buff) ────────────────────────────────────────────────────────────
 // Mechanic: empower — next card deals % more damage (via buffNextCard% in turnManager)
 // Stat table L0: qpValue=30 (NOT mechanic.quickPlayValue=50 — stat table overrides!)
-// QP finalValue=30; CC=round(30*1.75)=53; CW=Math.max(0, 35+(-20))=15
+// QP finalValue=30; CC=round(30*1.50)=45; CW=Math.max(0, 35+(-20))=15
 
 describe('empower mechanic', () => {
   it('quick: finalValue=30 (stat table L0 qpValue=30, not mechanic quickPlayValue=50)', () => {
@@ -128,9 +128,9 @@ describe('empower mechanic', () => {
     expect(result.finalValue).toBe(30);
   });
 
-  it('charge_correct: finalValue=53 (round(30*1.75)=53)', () => {
+  it('charge_correct: finalValue=45 (round(30*1.50)=45)', () => {
     const result = resolve('empower', 'charge_correct');
-    expect(result.finalValue).toBe(53);
+    expect(result.finalValue).toBe(45);
   });
 
   it('charge_wrong: finalValue=15 (chargeWrongValue=35 + masteryBonus(L0)=-20)', () => {
@@ -293,7 +293,7 @@ describe('ignite mechanic', () => {
 
   it('CC also resolves to applyIgniteBuff=0 at L0 (stat table qpValue=0)', () => {
     const result = resolve('ignite', 'charge_correct');
-    // round(0 * 1.75) = 0
+    // round(0 * 1.50) = 0
     expect(result.applyIgniteBuff).toBe(0);
   });
 
@@ -316,7 +316,7 @@ describe('ignite mechanic', () => {
 // ── Inscription of Fury (buff/inscription) ────────────────────────────────────
 // Mechanic: inscription_fury — all attacks deal +N flat damage rest of combat; exhausts
 // Stat table L0: qpValue=1 (mechanic quickPlayValue=1, so masteryBonus=0)
-// QP finalValue=1; CC=round(1*1.75)=2 (rounds to 2); CW=chargeWrongValue=1+masteryBonus=0... wait
+// QP finalValue=1; CC=round(1*1.50)=2 (rounds to 2); CW=chargeWrongValue=1+masteryBonus=0... wait
 // mechanic.chargeWrongValue=1 for inscription_fury, masteryBonus=1-1=0, so CW=1
 
 describe('inscription_fury mechanic', () => {
@@ -356,7 +356,7 @@ describe('inscription_fury mechanic', () => {
 // ── Inscription of Iron (buff/inscription) ────────────────────────────────────
 // Mechanic: inscription_iron — gain block at start of each turn rest of combat
 // Stat table L0: qpValue=1 (mechanic quickPlayValue=2 → masteryBonus=-1)
-// QP finalValue=1; CC=round(1*1.75)=2; CW=Math.max(0, chargeWrongValue=1 + masteryBonus=-1)=0
+// QP finalValue=1; CC=round(1*1.50)=2; CW=Math.max(0, chargeWrongValue=1 + masteryBonus=-1)=0
 
 describe('inscription_iron mechanic', () => {
   it('quick: finalValue=1 (stat table L0 qpValue=1)', () => {
@@ -585,7 +585,7 @@ describe('slow mechanic', () => {
 // ── Sap (debuff) ──────────────────────────────────────────────────────────────
 // Mechanic: sap — deal damage AND apply Weakness 1 stack
 // Stat table L0: qpValue=1 (mechanic quickPlayValue=2 → masteryBonus=-1)
-// QP: finalValue=1, damage=1; CC: finalValue=round(1*1.75)=2; CW: max(0, 1+(-1))=0 — no damage at L0!
+// QP: finalValue=1, damage=1; CC: finalValue=round(1*1.50)=2; CW: max(0, 1+(-1))=0 — no damage at L0!
 
 describe('sap mechanic', () => {
   it('quick: deals damage > 0 (L0 qpValue=1)', () => {
@@ -646,7 +646,7 @@ describe('sap mechanic', () => {
 // ── Lacerate (debuff) ─────────────────────────────────────────────────────────
 // Mechanic: lacerate — deal damage AND apply Bleed stacks
 // Stat table L0: qpValue=2 (matches mechanic quickPlayValue=2, masteryBonus=0)
-// QP: damage=2, bleed=4; CC: damage=round(2*1.75)=4, bleed=8; CW: damage=max(0,2+0)=2, bleed=2
+// QP: damage=2, bleed=4; CC: damage=round(2*1.50)=3, bleed=8; CW: damage=max(0,2+0)=2, bleed=2
 
 describe('lacerate mechanic', () => {
   it('quick: deals damage > 0', () => {

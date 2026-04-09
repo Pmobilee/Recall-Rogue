@@ -293,13 +293,13 @@ describe('eruption mechanic', () => {
     expect(result.xCostApConsumed).toBe(3);
   });
 
-  it('CC with 3 AP: Math.round(6*1.75)*3 = 11*3 = 33 damage at L0', () => {
-    // ccPerAp = Math.round(dmgPerAp * CHARGE_CORRECT_MULTIPLIER) = Math.round(6*1.75) = Math.round(10.5) = 11.
-    // 11 * 3 AP = 33.
+  it('CC with 3 AP: Math.round(6*1.50)*3 = 9*3 = 27 damage at L0', () => {
+    // ccPerAp = Math.round(dmgPerAp * CHARGE_CORRECT_MULTIPLIER) = Math.round(6*1.50) = Math.round(9) = 9.
+    // 9 * 3 AP = 27.
     const result = resolve('eruption', 'charge_correct', undefined, undefined, undefined, {
       eruptionXAp: 3,
     });
-    expect(result.damageDealt).toBe(33);
+    expect(result.damageDealt).toBe(27);
   });
 
   it('CW with 3 AP: Math.round(6*0.5)*3 = 3*3 = 9 damage at L0', () => {
@@ -486,8 +486,8 @@ describe('war_drum mechanic', () => {
     expect(result.warDrumBonus).toBe(0);
   });
 
-  it('CC at L0: warDrumBonus = 0 (Math.round((1-1)*1.75) = 0)', () => {
-    // mechanicBaseValue = Math.round((quickPlayValue + masteryBonus) * CC_MULT) = Math.round(0*1.75) = 0.
+  it('CC at L0: warDrumBonus = 0 (Math.round((1-1)*1.50) = 0)', () => {
+    // mechanicBaseValue = Math.round((quickPlayValue + masteryBonus) * CC_MULT) = Math.round(0*1.50) = 0.
     const result = resolve('war_drum', 'charge_correct');
     expect(result.warDrumBonus).toBeGreaterThanOrEqual(0);
   });
@@ -525,7 +525,7 @@ describe('entropy mechanic', () => {
 
   it('CC: 0 Burn stacks at L0 and 4 Poison for 3 turns', () => {
     // At L0, burnStacks = finalValue = 0 (stat table qpValue=0 makes mechanicBaseValue=0 via CC mult too).
-    // CC mechanicBaseValue = Math.round((2-2)*1.75) = 0.
+    // CC mechanicBaseValue = Math.round((2-2)*1.50) = 0.
     // Poison comes from hardcoded CC path (poisonStacks=4, poisonDuration=3).
     const result = resolve('entropy', 'charge_correct');
     expect(result.applyBurnStacks).toBe(0);

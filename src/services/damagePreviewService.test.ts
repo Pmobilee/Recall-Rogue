@@ -1,7 +1,7 @@
 /**
  * Unit tests for damagePreviewService — display-only damage/block preview.
- * Updated 2026-04-01: All CC values updated for CHARGE_CORRECT_MULTIPLIER 2.0→1.75.
- * Block card CC values recalculated for CC_MULT=1.75.
+ * Updated 2026-04-09 (Pass 4): All CC values updated for CHARGE_CORRECT_MULTIPLIER 1.75→1.50.
+ * Block card CC values recalculated for CC_MULT=1.50.
  */
 
 import { describe, it, expect } from 'vitest';
@@ -72,11 +72,11 @@ function baseCtx(overrides: Partial<DamagePreviewContext> = {}): DamagePreviewCo
 
 describe('computeDamagePreview — base case', () => {
   it('returns mechanic QP and CC values with neutral modifiers when no context active', () => {
-    // strike stat table L0: QP=4, CC=round(4*1.75)=round(7)=7
+    // strike stat table L0: QP=4, CC=round(4*1.50)=round(6)=6
     const card = makeAttackCard();
     const result = computeDamagePreview(card, baseCtx());
     expect(result.qpValue).toBe(4);
-    expect(result.ccValue).toBe(7);
+    expect(result.ccValue).toBe(6);
     expect(result.qpModified).toBe('neutral');
     expect(result.ccModified).toBe('neutral');
   });
@@ -84,12 +84,12 @@ describe('computeDamagePreview — base case', () => {
 
 describe('computeDamagePreview — whetstone relic', () => {
   it('adds +3 flat to attack QP and CC after multipliers, both buffed', () => {
-    // strike stat table L0 QP=4: round(4*1.0*1.0*1.0)+3=7; CC=7: round(7*1.0*1.0*1.0)+3=10
+    // strike stat table L0 QP=4: round(4*1.0*1.0*1.0)+3=7; CC=6: round(6*1.0*1.0*1.0)+3=9
     const card = makeAttackCard();
     const ctx = baseCtx({ activeRelicIds: new Set(['whetstone']) });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(7);
-    expect(result.ccValue).toBe(10);
+    expect(result.ccValue).toBe(9);
     expect(result.qpModified).toBe('buffed');
     expect(result.ccModified).toBe('buffed');
   });
@@ -97,12 +97,12 @@ describe('computeDamagePreview — whetstone relic', () => {
 
 describe('computeDamagePreview — glass_cannon relic', () => {
   it('applies +35% percent bonus to both QP and CC, both buffed', () => {
-    // QP: round(4*1.35)=round(5.4)=5; CC: round(7*1.35)=round(9.45)=9
+    // QP: round(4*1.35)=round(5.4)=5; CC: round(6*1.35)=round(8.1)=8
     const card = makeAttackCard();
     const ctx = baseCtx({ activeRelicIds: new Set(['glass_cannon']) });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(5);
-    expect(result.ccValue).toBe(9);
+    expect(result.ccValue).toBe(8);
     expect(result.qpModified).toBe('buffed');
     expect(result.ccModified).toBe('buffed');
   });
@@ -110,11 +110,11 @@ describe('computeDamagePreview — glass_cannon relic', () => {
 
 describe('computeDamagePreview — cursed card QP', () => {
   it('reduces QP by 0.7x (nerfed) but leaves CC at 1.0x (neutral)', () => {
-    // strike stat table L0 QP=4 → round(4*0.7)=round(2.8)=3; CC=7 → round(7*1.0)=7
+    // strike stat table L0 QP=4 → round(4*0.7)=round(2.8)=3; CC=6 → round(6*1.0)=6
     const card = makeAttackCard({ isCursed: true });
     const result = computeDamagePreview(card, baseCtx());
     expect(result.qpValue).toBe(3);
-    expect(result.ccValue).toBe(7);
+    expect(result.ccValue).toBe(6);
     expect(result.qpModified).toBe('nerfed');
     expect(result.ccModified).toBe('neutral');
   });
@@ -122,33 +122,33 @@ describe('computeDamagePreview — cursed card QP', () => {
 
 describe('computeDamagePreview — cursed + scar_tissue relic', () => {
   it('uses 0.85x cursed QP multiplier instead of 0.7x (no stacks)', () => {
-    // QP: round(4*0.85)=round(3.4)=3; CC=7; scar_tissue flat with 0 stacks = 0
+    // QP: round(4*0.85)=round(3.4)=3; CC=6; scar_tissue flat with 0 stacks = 0
     const card = makeAttackCard({ isCursed: true });
     const ctx = baseCtx({ activeRelicIds: new Set(['scar_tissue']), scarTissueStacks: 0 });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(3);
-    expect(result.ccValue).toBe(7);
+    expect(result.ccValue).toBe(6);
   });
 
   it('adds +2 flat per scar_tissue stack on top of 0.85x cursed QP', () => {
-    // QP: round(4*0.85)=3, + 2*2 stacks=4 flat → 7; CC: 7 + 4 flat = 11
+    // QP: round(4*0.85)=3, + 2*2 stacks=4 flat → 7; CC: 6 + 4 flat = 10
     const card = makeAttackCard({ isCursed: true });
     const ctx = baseCtx({ activeRelicIds: new Set(['scar_tissue']), scarTissueStacks: 2 });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(7);
-    expect(result.ccValue).toBe(11);
+    expect(result.ccValue).toBe(10);
     expect(result.qpModified).toBe('buffed');
   });
 });
 
 describe('computeDamagePreview — enemyQpDamageMultiplier', () => {
   it('reduces QP by the multiplier (min 1), CC is unaffected', () => {
-    // QP=4 * 0.3 = round(1.2) = 1 (min 1); CC=7 unchanged
+    // QP=4 * 0.3 = round(1.2) = 1 (min 1); CC=6 unchanged
     const card = makeAttackCard();
     const ctx = baseCtx({ enemyQpDamageMultiplier: 0.3 });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(1);
-    expect(result.ccValue).toBe(7);
+    expect(result.ccValue).toBe(6);
     expect(result.qpModified).toBe('nerfed');
     expect(result.ccModified).toBe('neutral');
   });
@@ -156,12 +156,12 @@ describe('computeDamagePreview — enemyQpDamageMultiplier', () => {
 
 describe('computeDamagePreview — charge resistant enemy', () => {
   it('halves QP (0.5x), CC is unaffected', () => {
-    // QP=4 * 0.5 = round(2.0)=2; CC=7 unchanged
+    // QP=4 * 0.5 = round(2.0)=2; CC=6 unchanged
     const card = makeAttackCard();
     const ctx = baseCtx({ enemyChargeResistant: true });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(2);
-    expect(result.ccValue).toBe(7);
+    expect(result.ccValue).toBe(6);
     expect(result.qpModified).toBe('nerfed');
     expect(result.ccModified).toBe('neutral');
   });
@@ -169,12 +169,12 @@ describe('computeDamagePreview — charge resistant enemy', () => {
 
 describe('computeDamagePreview — hardcover armor', () => {
   it('reduces QP by flat hardcover amount, CC is unaffected', () => {
-    // QP=4 - 2 = max(1, 2) = 2; CC=7
+    // QP=4 - 2 = max(1, 2) = 2; CC=6
     const card = makeAttackCard();
     const ctx = baseCtx({ enemyHardcover: 2 });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(2);
-    expect(result.ccValue).toBe(7);
+    expect(result.ccValue).toBe(6);
     expect(result.qpModified).toBe('nerfed');
     expect(result.ccModified).toBe('neutral');
   });
@@ -190,12 +190,12 @@ describe('computeDamagePreview — hardcover armor', () => {
 
 describe('computeDamagePreview — vulnerable enemy', () => {
   it('applies 1.5x to both QP and CC, both buffed', () => {
-    // QP=round(4*1.5)=round(6)=6; CC=round(7*1.5)=round(10.5)=11
+    // QP=round(4*1.5)=round(6)=6; CC=round(6*1.5)=round(9)=9
     const card = makeAttackCard();
     const ctx = baseCtx({ enemyIsVulnerable: true });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(6);
-    expect(result.ccValue).toBe(11);
+    expect(result.ccValue).toBe(9);
     expect(result.qpModified).toBe('buffed');
     expect(result.ccModified).toBe('buffed');
   });
@@ -203,12 +203,12 @@ describe('computeDamagePreview — vulnerable enemy', () => {
 
 describe('computeDamagePreview — overclock', () => {
   it('doubles both QP and CC for attack cards, both buffed', () => {
-    // QP=4*2=8; CC=7*2=14
+    // QP=4*2=8; CC=6*2=12
     const card = makeAttackCard();
     const ctx = baseCtx({ overclockReady: true });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(8);
-    expect(result.ccValue).toBe(14);
+    expect(result.ccValue).toBe(12);
     expect(result.qpModified).toBe('buffed');
     expect(result.ccModified).toBe('buffed');
   });
@@ -216,12 +216,12 @@ describe('computeDamagePreview — overclock', () => {
 
 describe('computeDamagePreview — empower buff', () => {
   it('increases both QP and CC by buff%, both buffed', () => {
-    // 50% empower with stat table L0 QP=4: QP round(4*1.5)=round(6)=6; CC round(7*1.5)=round(10.5)=11
+    // 50% empower with stat table L0 QP=4: QP round(4*1.5)=round(6)=6; CC round(6*1.5)=round(9)=9
     const card = makeAttackCard();
     const ctx = baseCtx({ buffNextCard: 50 });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(6);
-    expect(result.ccValue).toBe(11);
+    expect(result.ccValue).toBe(9);
     expect(result.qpModified).toBe('buffed');
     expect(result.ccModified).toBe('buffed');
   });
@@ -229,13 +229,13 @@ describe('computeDamagePreview — empower buff', () => {
 
 describe('computeDamagePreview — shield + stone_wall', () => {
   it('adds +3 flat block to both QP and CC, both buffed', () => {
-    // block stat table L0 QP=4, CC=round(4*1.75)=7
-    // With stone_wall: QP: round((4+3)*1.0)=7; CC: round((7+3)*1.0)=10
+    // block stat table L0 QP=4, CC=round(4*1.50)=6
+    // With stone_wall: QP: round((4+3)*1.0)=7; CC: round((6+3)*1.0)=9
     const card = makeShieldCard();
     const ctx = baseCtx({ activeRelicIds: new Set(['stone_wall']) });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(7);
-    expect(result.ccValue).toBe(10);
+    expect(result.ccValue).toBe(9);
     expect(result.qpModified).toBe('buffed');
     expect(result.ccModified).toBe('buffed');
   });
@@ -243,12 +243,12 @@ describe('computeDamagePreview — shield + stone_wall', () => {
 
 describe('computeDamagePreview — shield + bastions_will', () => {
   it('applies +25% to QP only, CC is neutral', () => {
-    // block stat table L0 QP=4: round(4*1.25)=round(5)=5; CC=7 (no bastions_will bonus on CC)
+    // block stat table L0 QP=4: round(4*1.25)=round(5)=5; CC=6 (no bastions_will bonus on CC)
     const card = makeShieldCard();
     const ctx = baseCtx({ activeRelicIds: new Set(['bastions_will']) });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(5);
-    expect(result.ccValue).toBe(7);
+    expect(result.ccValue).toBe(6);
     expect(result.qpModified).toBe('buffed');
     expect(result.ccModified).toBe('neutral');
   });
@@ -310,12 +310,12 @@ describe('computeDamagePreview — non-attack/shield card', () => {
 
 describe('computeDamagePreview — double strike', () => {
   it('doubles both QP and CC for attack cards, both buffed', () => {
-    // QP=4*2=8; CC=7*2=14
+    // QP=4*2=8; CC=6*2=12
     const card = makeAttackCard();
     const ctx = baseCtx({ doubleStrikeReady: true });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(8);
-    expect(result.ccValue).toBe(14);
+    expect(result.ccValue).toBe(12);
     expect(result.qpModified).toBe('buffed');
     expect(result.ccModified).toBe('buffed');
   });
@@ -328,9 +328,9 @@ describe('computeDamagePreview — stacking: whetstone + vulnerable + 50% buff',
     //   QP: qpScaled = round(4 * 1.0 * 1.5buff * 1.0relicPct * 1.0oc) = round(6) = 6
     //   + whetstone flat = 3 → 9
     //   vulnerable ×1.5 = round(9*1.5) = round(13.5) = 14
-    //   CC: base=7, ccScaled = round(7 * 1.0 * 1.5 * 1.0 * 1.0) = round(10.5) = 11
-    //   + 3 flat = 14
-    //   vulnerable: round(14*1.5) = round(21) = 21
+    //   CC: base=6, ccScaled = round(6 * 1.0 * 1.5 * 1.0 * 1.0) = round(9) = 9
+    //   + 3 flat = 12
+    //   vulnerable: round(12*1.5) = round(18) = 18
     const ctx = baseCtx({
       activeRelicIds: new Set(['whetstone']),
       buffNextCard: 50,
@@ -338,7 +338,7 @@ describe('computeDamagePreview — stacking: whetstone + vulnerable + 50% buff',
     });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(14);
-    expect(result.ccValue).toBe(21);
+    expect(result.ccValue).toBe(18);
     expect(result.qpModified).toBe('buffed');
     expect(result.ccModified).toBe('buffed');
   });
@@ -359,11 +359,11 @@ describe('computeDamagePreview — fallback (no mechanic definition)', () => {
     };
     // Tier-based effectMultiplier removed. Legacy fallback = baseEffectValue directly.
     // nakedQpBase = 10
-    // nakedCcBase = round(10 * 1.75) = round(17.5) = 18 (CHARGE_CORRECT_MULTIPLIER=1.75)
+    // nakedCcBase = round(10 * 1.50) = round(15) = 15 (CHARGE_CORRECT_MULTIPLIER=1.50)
     // No other modifiers in baseCtx
     const result = computeDamagePreview(card, baseCtx());
     expect(result.qpValue).toBe(10);
-    expect(result.ccValue).toBe(18);
+    expect(result.ccValue).toBe(15);
   });
 });
 
@@ -371,13 +371,13 @@ describe('computeDamagePreview — mastery bonus', () => {
   it('adds mastery flat bonus (stat table L5 for strike QP=8) to QP and CC', () => {
     // strike stat table L5: QP=8; masteryBonus = 8-4 = 4
     // nakedQpBase = Math.round(4 + 4) = 8
-    // nakedCcBase = Math.round(8 * 1.75) = Math.round(14) = 14
-    // effectMultiplier=1.0, no other modifiers → qpFinal=8, ccFinal=14
-    // compared to nakedQpBase=8 and nakedCcBase=14 → both neutral
+    // nakedCcBase = Math.round(8 * 1.50) = Math.round(12) = 12
+    // effectMultiplier=1.0, no other modifiers → qpFinal=8, ccFinal=12
+    // compared to nakedQpBase=8 and nakedCcBase=12 → both neutral
     const card = makeAttackCard({ masteryLevel: 5 });
     const result = computeDamagePreview(card, baseCtx());
     expect(result.qpValue).toBe(8);
-    expect(result.ccValue).toBe(14);
+    expect(result.ccValue).toBe(12);
     expect(result.qpModified).toBe('neutral');
     expect(result.ccModified).toBe('neutral');
   });
@@ -386,12 +386,12 @@ describe('computeDamagePreview — mastery bonus', () => {
 describe('computeDamagePreview — inscription fury bonus', () => {
   it('adds flat bonus to attack cards only', () => {
     // Stat table L0 QP=4 + fury=5 = 9 effectiveBase; round(9*1.0)=9
-    // CC: nakedCcBase=7, ccEffective=7+0(barbed)+5(fury)=12; ccFinal=round(12*1.0)=12
+    // CC: nakedCcBase=6, ccEffective=6+0(barbed)+5(fury)=11; ccFinal=round(11*1.0)=11
     const card = makeAttackCard();
     const ctx = baseCtx({ inscriptionFuryBonus: 5 });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(9);
-    expect(result.ccValue).toBe(12);
+    expect(result.ccValue).toBe(11);
     expect(result.qpModified).toBe('buffed');
     expect(result.ccModified).toBe('buffed');
   });

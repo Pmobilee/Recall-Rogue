@@ -1,7 +1,7 @@
 # Card System Mechanics
 
 > **Purpose:** Card entity, card types, tier system, damage formula, mastery system, and card creation pipeline.
-> **Last verified:** 2026-04-09 (Phase 1 mechanics overhaul: starter deck swap, Canary v2 HP constants, 13 L5 archetype tags; Transmute encounter-only + QP/CC/CW split)
+> **Last verified:** 2026-04-09 (Pass 4 balance: CC 1.75→1.50, fizzle 0.25→0.40, L0 QP buffs)
 > **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/services/catchUpMasteryService.ts`, `src/data/balance.ts`
 
 > **See also:** [`card-mechanics.md`](card-mechanics.md) — Complete table of all 50+ mechanics (attack, shield, buff, debuff, utility, wild).
@@ -224,25 +224,25 @@ The old helpers (`getMasteryBaseBonus`, `getMasterySecondaryBonus`, `getMasteryA
 
 **`strike`** — Standard reliable attack (Solid tier):
 
-| Level | QP | CC (×1.75) | Notes |
+| Level | QP | CC (×1.50) | Notes |
 |-------|-----|-----------|-------|
-| L0 | 3 | 5.25 | Weak but reliable |
-| L1 | 4 | 7 | |
-| L2 | 5 | 8.75 | |
-| L3 | 6 | 10.5 | Big jump |
-| L4 | 7 | 12.25 | |
-| L5 | 8 | 14 | Bread and butter, fully grown |
+| L0 | 4 | 6 | Weak but reliable |
+| L1 | 4 | 6 | |
+| L2 | 5 | 7.5 | |
+| L3 | 6 | 9 | Big jump |
+| L4 | 7 | 10.5 | |
+| L5 | 8 | 12 | Bread and butter, fully grown |
 
 **`heavy_strike`** — High-base slow attack (Solid tier, WOW milestone at L5):
 
-| Level | QP | AP | CC (×1.75) | Notes |
+| Level | QP | AP | CC (×1.50) | Notes |
 |-------|----|----|-----------|-------|
-| L0 | 7 | 3 | 12.25 | Big but expensive |
-| L1 | 8 | 3 | 14 | |
-| L2 | 9 | 3 | 15.75 | |
-| L3 | 10 | 3 | 17.5 | |
-| L4 | 11 | 3 | 19.25 | |
-| L5 | 12 | **1** | 21 | WOW: costs 1 AP now! |
+| L0 | 6 | 3 | 9 | Big but expensive |
+| L1 | 8 | 3 | 12 | |
+| L2 | 9 | 3 | 13.5 | |
+| L3 | 10 | 3 | 15 | |
+| L4 | 11 | 3 | 16.5 | |
+| L5 | 12 | **1** | 18 | WOW: costs 1 AP now! |
 
 **`scout`** — Utility draw card (Modest tier, WOW milestone at L5):
 
@@ -257,14 +257,14 @@ The old helpers (`getMasteryBaseBonus`, `getMasterySecondaryBonus`, `getMasteryA
 
 **`reckless`** — Self-damage decreases as you master it (Great tier):
 
-| Level | QP | CC (×1.75) | Self-Dmg | Notes |
+| Level | QP | CC (×1.50) | Self-Dmg | Notes |
 |-------|-----|-----------|---------|-------|
-| L0 | 4 | 7 | 4 | Hurts you a lot |
-| L1 | 5 | 8.75 | 4 | |
-| L2 | 6 | 10.5 | 3 | Self-damage drops! |
-| L3 | 8 | 14 | 3 | |
-| L4 | 10 | 17.5 | 2 | Mastering the recklessness |
-| L5 | 10 | 17.5 | **0** | Zero flat self-dmg; chain-scaled instead (`reckless_selfdmg_scale3`) |
+| L0 | 4 | 6 | 4 | Hurts you a lot |
+| L1 | 5 | 7.5 | 4 | |
+| L2 | 6 | 9 | 3 | Self-damage drops! |
+| L3 | 8 | 12 | 3 | |
+| L4 | 10 | 15 | 2 | Mastering the recklessness |
+| L5 | 10 | 15 | **0** | Zero flat self-dmg; chain-scaled instead (`reckless_selfdmg_scale3`) |
 
 ### "Wow Moment" Milestones
 

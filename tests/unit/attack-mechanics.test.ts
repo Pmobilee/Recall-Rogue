@@ -7,7 +7,7 @@
  *
  * Key formula at L0 (masteryBonus = stats.qpValue - mechanic.quickPlayValue):
  *   QP  = stats.qpValue
- *   CC  = Math.round(stats.qpValue * CHARGE_CORRECT_MULTIPLIER [1.75])
+ *   CC  = Math.round(stats.qpValue * CHARGE_CORRECT_MULTIPLIER [1.50])
  *   CW  = Math.max(0, mechanic.chargeWrongValue + masteryBonus)
  */
 import { describe, it, expect } from 'vitest';
@@ -95,15 +95,15 @@ function resolve(
 
 // ── 1. strike ────────────────────────────────────────────────────────────────
 // Stat table L0: qpValue=4
-// QP=4, CC=round(4*1.75)=7, CW=3 (mechanic.chargeWrongValue=3 + masteryBonus=0)
+// QP=4, CC=round(4*1.50)=6, CW=3 (mechanic.chargeWrongValue=3 + masteryBonus=0)
 
 describe('strike mechanic', () => {
   it('QP: deals 4 damage', () => {
     expect(resolve('strike', 'quick').damageDealt).toBe(4);
   });
 
-  it('CC: deals 7 damage (round(4*1.75))', () => {
-    expect(resolve('strike', 'charge_correct').damageDealt).toBe(7);
+  it('CC: deals 6 damage (round(4*1.50))', () => {
+    expect(resolve('strike', 'charge_correct').damageDealt).toBe(6);
   });
 
   it('CW: deals 3 damage', () => {
@@ -127,9 +127,9 @@ describe('multi_hit mechanic', () => {
     expect(result.hitCount).toBe(3);
   });
 
-  it('CC: per-hit damage = 2 (round(1*1.75)=2), hitCount = 3', () => {
+  it('CC: per-hit damage = 2 (round(1*1.50)=2), hitCount = 3', () => {
     const result = resolve('multi_hit', 'charge_correct');
-    // Math.round(1 * 1.75) = Math.round(1.75) = 2
+    // Math.round(1 * 1.50) = Math.round(1.5) = 2
     expect(result.damageDealt).toBe(2);
     expect(result.hitCount).toBe(3);
   });
@@ -148,21 +148,21 @@ describe('multi_hit mechanic', () => {
 });
 
 // ── 3. heavy_strike ──────────────────────────────────────────────────────────
-// Stat table L0: qpValue=7 (mechanic quickPlayValue=10, masteryBonus=7-10=-3)
-// QP=7, CC=round(7*1.75)=round(12.25)=12, CW=max(0, 7+(-3))=4 (chargeWrongValue=7)
+// Stat table L0: qpValue=6 (mechanic quickPlayValue=10, masteryBonus=6-10=-4)
+// QP=6, CC=round(6*1.50)=9, CW=max(0, 7+(-4))=3 (chargeWrongValue=7)
 // apCost=2 at L0 (from stat table)
 
 describe('heavy_strike mechanic', () => {
-  it('QP: deals 7 damage (stat table L0 qpValue=7)', () => {
-    expect(resolve('heavy_strike', 'quick').damageDealt).toBe(7);
+  it('QP: deals 6 damage (stat table L0 qpValue=6)', () => {
+    expect(resolve('heavy_strike', 'quick').damageDealt).toBe(6);
   });
 
-  it('CC: deals 12 damage (round(7*1.75)=round(12.25)=12)', () => {
-    expect(resolve('heavy_strike', 'charge_correct').damageDealt).toBe(12);
+  it('CC: deals 9 damage (round(6*1.50)=9)', () => {
+    expect(resolve('heavy_strike', 'charge_correct').damageDealt).toBe(9);
   });
 
-  it('CW: deals 4 damage (chargeWrongValue=7 + masteryBonus=-3 = 4)', () => {
-    expect(resolve('heavy_strike', 'charge_wrong').damageDealt).toBe(4);
+  it('CW: deals 3 damage (chargeWrongValue=7 + masteryBonus=-4 = 3)', () => {
+    expect(resolve('heavy_strike', 'charge_wrong').damageDealt).toBe(3);
   });
 
   it('apCost is 2 at L0 (expensive heavy attack)', () => {
@@ -176,26 +176,26 @@ describe('heavy_strike mechanic', () => {
 });
 
 // ── 4. piercing ──────────────────────────────────────────────────────────────
-// Stat table L0: qpValue=2 (mechanic quickPlayValue=3, masteryBonus=2-3=-1)
-// QP=2, CC=round(2*1.75)=round(3.5)=4, CW=max(0, 2+(-1))=1 (chargeWrongValue=2)
+// Stat table L0: qpValue=3 (mechanic quickPlayValue=3, masteryBonus=3-3=0)
+// QP=3, CC=round(3*1.50)=round(4.5)=5, CW=max(0, 2+0)=2 (chargeWrongValue=2)
 // Key effect: damageDealtBypassesBlock = true in all modes
 
 describe('piercing mechanic', () => {
-  it('QP: deals 2 damage (stat table L0 qpValue=2), bypasses block', () => {
+  it('QP: deals 3 damage (stat table L0 qpValue=3), bypasses block', () => {
     const result = resolve('piercing', 'quick');
-    expect(result.damageDealt).toBe(2);
+    expect(result.damageDealt).toBe(3);
     expect(result.damageDealtBypassesBlock).toBe(true);
   });
 
-  it('CC: deals 4 damage (round(2*1.75)=round(3.5)=4), bypasses block', () => {
+  it('CC: deals 5 damage (round(3*1.50)=round(4.5)=5), bypasses block', () => {
     const result = resolve('piercing', 'charge_correct');
-    expect(result.damageDealt).toBe(4);
+    expect(result.damageDealt).toBe(5);
     expect(result.damageDealtBypassesBlock).toBe(true);
   });
 
-  it('CW: deals 1 damage (chargeWrongValue=2 + masteryBonus=-1 = 1), bypasses block', () => {
+  it('CW: deals 2 damage (chargeWrongValue=2 + masteryBonus=0 = 2), bypasses block', () => {
     const result = resolve('piercing', 'charge_wrong');
-    expect(result.damageDealt).toBe(1);
+    expect(result.damageDealt).toBe(2);
     expect(result.damageDealtBypassesBlock).toBe(true);
   });
 
@@ -207,7 +207,7 @@ describe('piercing mechanic', () => {
 
 // ── 5. reckless ──────────────────────────────────────────────────────────────
 // Stat table L0: qpValue=4, extras.selfDmg=4 (but resolver reads mechanic.secondaryValue=3)
-// QP=4, CC=round(4*1.75)=round(7)=7, CW=max(0, 4+(-2))=2 (chargeWrongValue=4, masteryBonus=4-6=-2)
+// QP=4, CC=round(4*1.50)=6, CW=max(0, 4+(-2))=2 (chargeWrongValue=4, masteryBonus=4-6=-2)
 // selfDamage = mechanic.secondaryValue = 3 (extras.selfDmg not wired to resolver at L0)
 // Note: stat table qpValue=4, mechanic.quickPlayValue=6, masteryBonus = 4-6 = -2
 
@@ -218,9 +218,9 @@ describe('reckless mechanic', () => {
     expect(result.selfDamage).toBe(3);
   });
 
-  it('CC: 7 damage (round(4*1.75)=7), 3 self-damage (flat — does NOT scale)', () => {
+  it('CC: 6 damage (round(4*1.50)=6), 3 self-damage (flat — does NOT scale)', () => {
     const result = resolve('reckless', 'charge_correct');
-    expect(result.damageDealt).toBe(7);
+    expect(result.damageDealt).toBe(6);
     expect(result.selfDamage).toBe(3);
   });
 
@@ -243,7 +243,7 @@ describe('reckless mechanic', () => {
 
 // ── 6. execute ───────────────────────────────────────────────────────────────
 // Stat table L0: qpValue=2, extras.execBonus=4 (resolver hardcodes bonus: QP=8, CC=24, CW=4)
-// QP=2, CC=round(2*1.75)=round(3.5)=4, CW=max(0, 2+(-1))=1 (chargeWrongValue=2, masteryBonus=2-3=-1)
+// QP=2, CC=round(2*1.50)=3, CW=max(0, 2+(-1))=1 (chargeWrongValue=2, masteryBonus=2-3=-1)
 // Bonus below 30% HP threshold: QP+8, CC+24, CW+4 (resolver hardcodes these)
 
 describe('execute mechanic', () => {
@@ -257,14 +257,14 @@ describe('execute mechanic', () => {
     expect(result.damageDealt).toBe(10);
   });
 
-  it('CC: 4 damage at full HP (no bonus)', () => {
+  it('CC: 3 damage at full HP (no bonus)', () => {
     const result = resolve('execute', 'charge_correct', undefined, { currentHP: 100, maxHP: 100 });
-    expect(result.damageDealt).toBe(4);
+    expect(result.damageDealt).toBe(3);
   });
 
-  it('CC: 4+24=28 damage below 30% HP (CC bonus = 24)', () => {
+  it('CC: 3+24=27 damage below 30% HP (CC bonus = 24)', () => {
     const result = resolve('execute', 'charge_correct', undefined, { currentHP: 10, maxHP: 100 });
-    expect(result.damageDealt).toBe(28);
+    expect(result.damageDealt).toBe(27);
   });
 
   it('CW: 1 damage at full HP (chargeWrongValue=2 + masteryBonus=-1 = 1)', () => {
@@ -291,7 +291,7 @@ describe('execute mechanic', () => {
 
 // ── 7. lifetap ───────────────────────────────────────────────────────────────
 // Stat table L0: qpValue=3 (mechanic quickPlayValue=4, masteryBonus=3-4=-1)
-// QP=3, CC=round(3*1.75)=round(5.25)=5, CW=max(0, 3+(-1))=2 (chargeWrongValue=3, masteryBonus=-1)
+// QP=3, CC=round(3*1.50)=round(4.5)=5, CW=max(0, 3+(-1))=2 (chargeWrongValue=3, masteryBonus=-1)
 // heal = Math.max(1, Math.floor(damage * 0.20))
 
 describe('lifetap mechanic', () => {
@@ -301,7 +301,7 @@ describe('lifetap mechanic', () => {
     expect(result.healApplied).toBe(1);
   });
 
-  it('CC: 5 damage (round(3*1.75)=5), heals 1 (floor(5*0.20)=1)', () => {
+  it('CC: 5 damage (round(3*1.50)=5), heals 1 (floor(5*0.20)=1)', () => {
     const result = resolve('lifetap', 'charge_correct');
     expect(result.damageDealt).toBe(5);
     expect(result.healApplied).toBe(1);
@@ -322,15 +322,15 @@ describe('lifetap mechanic', () => {
 
 // ── 8. power_strike ──────────────────────────────────────────────────────────
 // Stat table L0: qpValue=4 (mechanic quickPlayValue=5, masteryBonus=4-5=-1)
-// QP=4, CC=round(4*1.75)=round(7)=7, CW=max(0, 4+(-1))=3 (chargeWrongValue=4)
+// QP=4, CC=round(4*1.50)=6, CW=max(0, 4+(-1))=3 (chargeWrongValue=4)
 
 describe('power_strike mechanic', () => {
   it('QP: deals 4 damage (stat table L0 qpValue=4)', () => {
     expect(resolve('power_strike', 'quick').damageDealt).toBe(4);
   });
 
-  it('CC: deals 7 damage (round(4*1.75)=7)', () => {
-    expect(resolve('power_strike', 'charge_correct').damageDealt).toBe(7);
+  it('CC: deals 6 damage (round(4*1.50)=6)', () => {
+    expect(resolve('power_strike', 'charge_correct').damageDealt).toBe(6);
   });
 
   it('CW: deals 3 damage (chargeWrongValue=4 + masteryBonus=-1 = 3)', () => {
@@ -344,7 +344,7 @@ describe('power_strike mechanic', () => {
 
 // ── 9. twin_strike ───────────────────────────────────────────────────────────
 // Stat table L0: qpValue=2, hitCount=2 (mechanic quickPlayValue=3, masteryBonus=2-3=-1)
-// QP=2, CC=round(2*1.75)=round(3.5)=4, CW=max(0, 2+(-1))=1 (chargeWrongValue=2)
+// QP=2, CC=round(2*1.50)=3, CW=max(0, 2+(-1))=1 (chargeWrongValue=2)
 // hitCount=2 — triggers burn/bleed per hit (L3 adds third strike)
 
 describe('twin_strike mechanic', () => {
@@ -354,9 +354,9 @@ describe('twin_strike mechanic', () => {
     expect(result.hitCount).toBe(2);
   });
 
-  it('CC: per-hit damage = 4 (round(2*1.75)=round(3.5)=4), hitCount = 2', () => {
+  it('CC: per-hit damage = 3 (round(2*1.50)=3), hitCount = 2', () => {
     const result = resolve('twin_strike', 'charge_correct');
-    expect(result.damageDealt).toBe(4);
+    expect(result.damageDealt).toBe(3);
     expect(result.hitCount).toBe(2);
   });
 
@@ -382,8 +382,8 @@ describe('twin_strike mechanic', () => {
 // Stat table L0: qpValue=2, secondaryValue=3 (mechanic: quickPlayValue=3, secondaryValue=5)
 // masteryBonus = 2-3 = -1; masterySecondaryBonus = 3-5 = -2
 // QP: damage=2, block=card.secondaryValue=5 (mechanic value, no negative adjustment applied)
-// CC: damage=round(2*1.75)=round(3.5)=4, block=round(mechanic.quickPlayValue*1.75+masterySecBonus)
-//         = round(3*1.75 + (-2)) = round(5.25-2) = round(3.25) = 3
+// CC: damage=round(2*1.50)=3, block=round(mechanic.quickPlayValue*1.50+masterySecBonus)
+//         = round(3*1.50 + 0) = round(4.5) = 5
 // CW: damage=1 (max(0,2+(-1))=1), block=round(card.secondaryValue*0.7)=round(5*0.7)=round(3.5)=4
 
 describe('iron_wave mechanic', () => {
@@ -393,13 +393,13 @@ describe('iron_wave mechanic', () => {
     expect(result.shieldApplied).toBe(5);
   });
 
-  it('CC: 4 damage (round(2*1.75)=4) AND 5 block', () => {
-    // CC block = round(mechanic.quickPlayValue * 1.75 + getMasterySecondaryBonus(L0))
-    //          = round(3 * 1.75 + 0) = round(5.25) = 5
+  it('CC: 3 damage (round(2*1.50)=3) AND 5 block', () => {
+    // CC block = round(mechanic.quickPlayValue * 1.50 + getMasterySecondaryBonus(L0))
+    //          = round(3 * 1.50 + 0) = round(4.5) = 5
     // getMasterySecondaryBonus uses old MASTERY_UPGRADE_DEFS (secondaryPerLevelDelta * level)
     // At level 0: 1.0 * 0 = 0, so no secondary bonus adjustment
     const result = resolve('iron_wave', 'charge_correct');
-    expect(result.damageDealt).toBe(4);
+    expect(result.damageDealt).toBe(3);
     expect(result.shieldApplied).toBe(5);
   });
 
@@ -421,7 +421,7 @@ describe('iron_wave mechanic', () => {
 
 // ── 11. bash ─────────────────────────────────────────────────────────────────
 // Stat table L0: qpValue=3, apCost=2 (mechanic quickPlayValue=5, masteryBonus=3-5=-2)
-// QP=3, CC=round(3*1.75)=round(5.25)=5, CW=max(0, 4+(-2))=2 (chargeWrongValue=4)
+// QP=3, CC=round(3*1.50)=round(4.5)=5, CW=max(0, 4+(-2))=2 (chargeWrongValue=4)
 // Always applies Vulnerable; CC applies 2 turns, QP/CW 1 turn
 
 describe('bash mechanic', () => {
@@ -433,7 +433,7 @@ describe('bash mechanic', () => {
     expect(vuln!.turnsRemaining).toBe(1);
   });
 
-  it('CC: 5 damage (round(3*1.75)=5), applies Vulnerable 2 turns', () => {
+  it('CC: 5 damage (round(3*1.50)=5), applies Vulnerable 2 turns', () => {
     const result = resolve('bash', 'charge_correct');
     expect(result.damageDealt).toBe(5);
     const vuln = result.statusesApplied.find(s => s.type === 'vulnerable');
@@ -459,7 +459,7 @@ describe('bash mechanic', () => {
 // ── 12. rupture ──────────────────────────────────────────────────────────────
 // Stat table L0: qpValue=2, secondaryValue=2 (mechanic: quickPlayValue=3, secondaryValue=3)
 // masteryBonus = 2-3 = -1
-// QP=2, CC=round(2*1.75)=round(3.5)=4, CW=max(0, 2+(-1))=1 (chargeWrongValue=2)
+// QP=2, CC=round(2*1.50)=3, CW=max(0, 2+(-1))=1 (chargeWrongValue=2)
 // Bleed QP=card.secondaryValue=3 (mechanic value; masterySecBonus=-1 < 0, no adjustment)
 //       CC=8 (hardcoded in resolver), CW=2 (hardcoded in resolver)
 
@@ -470,9 +470,9 @@ describe('rupture mechanic', () => {
     expect(result.applyBleedStacks).toBe(3);
   });
 
-  it('CC: 4 damage (round(2*1.75)=round(3.5)=4), applies 8 bleed stacks (hardcoded CC)', () => {
+  it('CC: 3 damage (round(2*1.50)=3), applies 8 bleed stacks (hardcoded CC)', () => {
     const result = resolve('rupture', 'charge_correct');
-    expect(result.damageDealt).toBe(4);
+    expect(result.damageDealt).toBe(3);
     expect(result.applyBleedStacks).toBe(8);
   });
 
@@ -492,7 +492,7 @@ describe('rupture mechanic', () => {
 // ── 13. kindle ───────────────────────────────────────────────────────────────
 // Stat table L0: qpValue=1, secondaryValue=2 (mechanic: quickPlayValue=2, secondaryValue=4)
 // masteryBonus = 1-2 = -1
-// QP=1, CC=round(1*1.75)=round(1.75)=2, CW=max(0, 2+(-1))=1 (chargeWrongValue=2)
+// QP=1, CC=round(1*1.50)=round(1.5)=2, CW=max(0, 2+(-1))=1 (chargeWrongValue=2)
 // Burn: QP=card.secondaryValue=4 (mechanic value), CC=8, CW=2 (hardcoded in resolver)
 // hitCount=1 — turnManager triggers Burn immediately once
 
@@ -504,7 +504,7 @@ describe('kindle mechanic', () => {
     expect(result.hitCount).toBe(1);
   });
 
-  it('CC: 2 damage (round(1*1.75)=round(1.75)=2), applies 8 burn stacks (hardcoded CC), hitCount=1', () => {
+  it('CC: 2 damage (round(1*1.50)=round(1.5)=2), applies 8 burn stacks (hardcoded CC), hitCount=1', () => {
     const result = resolve('kindle', 'charge_correct');
     expect(result.damageDealt).toBe(2);
     expect(result.applyBurnStacks).toBe(8);
@@ -527,7 +527,7 @@ describe('kindle mechanic', () => {
 
 // ── 14. overcharge ───────────────────────────────────────────────────────────
 // Stat table L0: qpValue=2 (mechanic quickPlayValue=3, masteryBonus=2-3=-1)
-// QP=2, CC=round(2*1.75)=round(3.5)=4, CW=max(0, 2+(-1))=1 (chargeWrongValue=2)
+// QP=2, CC=round(2*1.50)=3, CW=max(0, 2+(-1))=1 (chargeWrongValue=2)
 // CC scaling with encounter charge count is handled by turnManager (resolver is pure)
 
 describe('overcharge mechanic', () => {
@@ -535,8 +535,8 @@ describe('overcharge mechanic', () => {
     expect(resolve('overcharge', 'quick').damageDealt).toBe(2);
   });
 
-  it('CC: deals 4 damage (round(2*1.75)=4; turnManager scales further with charge count)', () => {
-    expect(resolve('overcharge', 'charge_correct').damageDealt).toBe(4);
+  it('CC: deals 3 damage (round(2*1.50)=3; turnManager scales further with charge count)', () => {
+    expect(resolve('overcharge', 'charge_correct').damageDealt).toBe(3);
   });
 
   it('CW: deals 1 damage (chargeWrongValue=2 + masteryBonus=-1 = 1)', () => {
@@ -564,7 +564,7 @@ describe('overcharge mechanic', () => {
 // ── 15. riposte ──────────────────────────────────────────────────────────────
 // Stat table L0: qpValue=2, secondaryValue=3 (mechanic: quickPlayValue=3, secondaryValue=4)
 // masteryBonus = 2-3 = -1
-// QP=2, CC=round(2*1.75)=round(3.5)=4, CW=max(0, 2+(-1))=1 (chargeWrongValue=2)
+// QP=2, CC=round(2*1.50)=3, CW=max(0, 2+(-1))=1 (chargeWrongValue=2)
 // Block: QP=card.secondaryValue=4 (mechanic.secondaryValue, no negative masterySecBonus adjustment)
 //        CC=12 (hardcoded in resolver)
 //        CW=round(card.secondaryValue*0.75)=round(4*0.75)=round(3)=3
@@ -576,9 +576,9 @@ describe('riposte mechanic', () => {
     expect(result.shieldApplied).toBe(4);
   });
 
-  it('CC: 4 damage (round(2*1.75)=4) AND 12 block (hardcoded CC value in resolver)', () => {
+  it('CC: 3 damage (round(2*1.50)=3) AND 12 block (hardcoded CC value in resolver)', () => {
     const result = resolve('riposte', 'charge_correct');
-    expect(result.damageDealt).toBe(4);
+    expect(result.damageDealt).toBe(3);
     expect(result.shieldApplied).toBe(12);
   });
 

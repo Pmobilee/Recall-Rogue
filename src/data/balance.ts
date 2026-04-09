@@ -246,22 +246,22 @@ export const LEGACY_TIER_MULTIPLIER: Record<1 | 2 | 3, number> = {
 /**
  * Flat Charge Correct multiplier applied to quickPlayValue. The real power scaling
  * comes from mastery level bonuses (getMasteryStats) only — tier has NO effect on damage.
- * Nerfed to 1.75× (from 2.0×) in 2026-04-01 balance pass to reduce expert player damage
- * output (dedicated 100% → ~85-95% target).
+ * Reduced from 1.75 to 1.50 (Pass 4 skill curve fix): narrows CC/QP ratio so Quick Play
+ * is more viable for lower-accuracy players.
  *
- * Runtime formula: CC damage = getMasteryStats(mechanicId, level).qpValue × 1.75 × chainMult × ...
+ * Runtime formula: CC damage = getMasteryStats(mechanicId, level).qpValue × 1.50 × chainMult × ...
  *
  * Note: The `chargeCorrectValue` field in mechanics.ts is DEAD DATA — the resolver
  * always computes CC as quickPlayValue × this constant. Do not read chargeCorrectValue.
  */
-export const CHARGE_CORRECT_MULTIPLIER = 1.75;
+export const CHARGE_CORRECT_MULTIPLIER = 1.50;
 
 /** @deprecated Use CHARGE_CORRECT_MULTIPLIER instead. Kept for backward compat. */
 export const CHARGE_CORRECT_MULTIPLIERS: Record<string, number> = {
-  '1': 1.75,
-  '2a': 1.75,
-  '2b': 1.75,
-  '3': 1.75,
+  '1': 1.50,
+  '2a': 1.50,
+  '2b': 1.50,
+  '3': 1.50,
 };
 
 /** Charge play multipliers for wrong answers, by tier. */
@@ -454,7 +454,7 @@ export const POST_ENCOUNTER_HEAL_CAP: Record<number, number> = {
   4: 0.30,   // Segment 4 (floors 19-24): cap at 30%
 };
 /** Global base HP multiplier for all enemies. Reduced 6.0→4.5 on 2026-04-09: tuned down after playtesting. */
-export const ENEMY_BASE_HP_MULTIPLIER = 5.25; // tuned 4.5→5.25 (pass 3b): structural changes made players stronger, enemies need more HP to compensate
+export const ENEMY_BASE_HP_MULTIPLIER = 4.75; // tuned 5.0→4.75 (pass 4c): lower base + aggressive Canary challenge for asymmetry
 /**
  * HP scaling per floor above floor 1. Each floor adds this fraction to the base HP multiplier.
  * @deprecated Use ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT for segment-aware scaling.
@@ -484,23 +484,45 @@ export const AUTO_CALIBRATE_MIN_ANSWERS = 5;
 
 // === CANARY ADAPTIVE DIFFICULTY ===
 /** Canary deep-assist enemy damage multiplier (severe struggling). */
-export const CANARY_DEEP_ASSIST_ENEMY_DMG_MULT = 0.65;
+export const CANARY_DEEP_ASSIST_ENEMY_DMG_MULT = 0.45;
 /** Wrong answers on a floor to trigger deep assist. */
-export const CANARY_DEEP_ASSIST_WRONG_THRESHOLD = 5;
+export const CANARY_DEEP_ASSIST_WRONG_THRESHOLD = 4;
 /** Canary assist enemy damage multiplier (moderate struggling). */
-export const CANARY_ASSIST_ENEMY_DMG_MULT = 0.80;
+export const CANARY_ASSIST_ENEMY_DMG_MULT = 0.70;
 /** Wrong answers on a floor to trigger assist mode. */
-export const CANARY_ASSIST_WRONG_THRESHOLD = 3;
+export const CANARY_ASSIST_WRONG_THRESHOLD = 2;
 /** Enemy damage multiplier for challenge mode (5+ correct streak). */
-export const CANARY_CHALLENGE_ENEMY_DMG_MULT = 1.1;
+export const CANARY_CHALLENGE_ENEMY_DMG_MULT = 1.15;  // pass 4d: softened (run-level Canary handles persistent challenge now)
 /** Correct answer streak threshold to trigger challenge mode. */
 export const CANARY_CHALLENGE_STREAK_THRESHOLD = 5;
 
 /** Canary v2: enemy HP scaling based on quiz streaks */
-export const CANARY_ASSIST_ENEMY_HP_MULT = 0.9;        // 3+ wrong streak: -10% enemy HP
-export const CANARY_DEEP_ASSIST_ENEMY_HP_MULT = 0.8;   // 5+ wrong streak: -20% enemy HP  
-export const CANARY_CHALLENGE_ENEMY_HP_MULT_3 = 1.1;   // 3+ correct streak: +10% enemy HP
-export const CANARY_CHALLENGE_ENEMY_HP_MULT_5 = 1.2;   // 5+ correct streak: +20% enemy HP
+export const CANARY_ASSIST_ENEMY_HP_MULT = 0.85;        // 2+ wrong: -15% enemy HP
+export const CANARY_DEEP_ASSIST_ENEMY_HP_MULT = 0.70;   // 4+ wrong: -30% enemy HP
+export const CANARY_CHALLENGE_ENEMY_HP_MULT_3 = 1.10;   // 3+ correct streak: +10% enemy HP (reverted from 1.20)
+export const CANARY_CHALLENGE_ENEMY_HP_MULT_5 = 1.20;   // 5+ correct streak: +20% enemy HP (reverted from 1.50)
+
+// === RUN-LEVEL CANARY (Pass 4) ===
+/** Number of recent answers to track for run-level accuracy. */
+export const CANARY_RUN_WINDOW = 40;
+/** Run accuracy below this = strong assist. */
+export const CANARY_RUN_STRONG_ASSIST_THRESHOLD = 0.60;
+/** Run accuracy below this = mild assist. */
+export const CANARY_RUN_MILD_ASSIST_THRESHOLD = 0.72;  // pass 4d: widened so competent (68%) solidly in assist
+/** Run accuracy above this = mild challenge. */
+export const CANARY_RUN_MILD_CHALLENGE_THRESHOLD = 0.73;  // pass 4d: experienced (76%) in mild challenge band
+/** Run accuracy above this = strong challenge. */
+export const CANARY_RUN_STRONG_CHALLENGE_THRESHOLD = 0.85;
+
+/** Run-level multipliers — stack multiplicatively with encounter-level Canary. */
+export const CANARY_RUN_STRONG_ASSIST_DMG_MULT = 0.75;
+export const CANARY_RUN_STRONG_ASSIST_HP_MULT = 0.80;
+export const CANARY_RUN_MILD_ASSIST_DMG_MULT = 0.85;
+export const CANARY_RUN_MILD_ASSIST_HP_MULT = 0.90;
+export const CANARY_RUN_MILD_CHALLENGE_DMG_MULT = 1.15;
+export const CANARY_RUN_MILD_CHALLENGE_HP_MULT = 1.10;
+export const CANARY_RUN_STRONG_CHALLENGE_DMG_MULT = 1.15;  // same as mild — encounter-level streak challenge differentiates master from experienced
+export const CANARY_RUN_STRONG_CHALLENGE_HP_MULT = 1.10;
 
 /** Per-floor enemy damage scaling increment above floor 6. (AR-97b: 0.05→0.02, sweep r=+0.668; 2026-04-01: 0.02→0.06 to steepen late-game curve — floor 12 = +36%, floor 18 = +72%; reverted 2026-04-01: 0.06→0.03 — enemy HP scaling is the better lever; 2026-04-01: 0.03→0.06 — paired with FLOOR_DAMAGE_SCALE_MID 0.8→0.5 to keep early floors easy while steepening late-game pressure for experts) */
 export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.09; // Raised from 0.06 (2026-04-04): chain momentum makes game too easy; 0.08 was too harsh on low-acc players
@@ -509,7 +531,7 @@ export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.09; // Raised from 0.06 (2026-04
 export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
 /** Global enemy damage multiplier. Applied to ALL enemy attacks across all acts. Added 2026-04-08 playtest Ch12.1. */
-export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.75; // tuned 1.5→1.75 (pass 3b): structural changes (enrage removal, AP bump, hand bias) made players stronger
+export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.60; // tuned back to 1.60 (pass 4d): 1.40 was too easy base, run-level Canary provides asymmetric adjustment
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. Doubled 2026-04-08 to match GLOBAL_ENEMY_DAMAGE_MULTIPLIER x2. */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
@@ -603,9 +625,9 @@ export const SPEED_BONUS_THRESHOLD = 0.25;    // answer in first 25% of timer
 export const SPEED_BONUS_MULTIPLIER = 1.0; // Disabled 2026-04-09: speed bonus is relic-only (Quicksilver Quill). Timer remains for urgency.
 
 /** Wrong answer still applies this fraction of card effect (0 = full fizzle, 1 = no penalty).
- * Reverted from 0.5 back to 0.25 — at 0.5× fizzle damage exceeded quick play, undermining
- * knowledge-as-power mechanic (BATCH-2026-04-02-004 H-2). */
-export const FIZZLE_EFFECT_RATIO = 0.25;
+ * Raised 0.25→0.40→0.50 (Pass 4/4b): wrong charges are tempo costs not punishment. At CC=1.50x,
+ * 0.50x fizzle is still only 33% of CC value, well below QP (1.0x). */
+export const FIZZLE_EFFECT_RATIO = 0.50;
 
 // === BOSS QUIZ PHASE SYSTEM (AR-59.7) ===
 

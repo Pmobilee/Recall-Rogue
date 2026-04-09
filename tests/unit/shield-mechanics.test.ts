@@ -85,7 +85,7 @@ function resolve(
 
 // ── 1. block — basic shield gain ──────────────────────────────────────────────
 // MASTERY_STAT_TABLES L0: qpValue=4; mechanic.quickPlayValue=5 → masteryBonus=-1
-// QP=4, CC=round(4*1.75)=7, CW=max(0, chargeWrongValue=3 + masteryBonus=-1)=2
+// QP=4, CC=round(4*1.50)=6, CW=max(0, chargeWrongValue=3 + masteryBonus=-1)=2
 
 describe('block mechanic (Phase 1 shield)', () => {
   it('quick: gains 4 shield (stat table L0 qpValue=4)', () => {
@@ -93,9 +93,9 @@ describe('block mechanic (Phase 1 shield)', () => {
     expect(result.shieldApplied).toBe(4);
   });
 
-  it('charge_correct: gains 7 shield (round(4*1.75)=7)', () => {
+  it('charge_correct: gains 6 shield (round(4*1.50)=6)', () => {
     const result = resolve('block', 'charge_correct');
-    expect(result.shieldApplied).toBe(7);
+    expect(result.shieldApplied).toBe(6);
   });
 
   it('charge_wrong: gains 2 shield (chargeWrongValue=3 + masteryBonus=-1 = 2)', () => {
@@ -112,7 +112,7 @@ describe('block mechanic (Phase 1 shield)', () => {
 
 // ── 2. thorns — block + reflect damage when hit ───────────────────────────────
 // MASTERY_STAT_TABLES L0: qpValue=2, secondaryValue=1; mechanic.quickPlayValue=3 → masteryBonus=-1
-// QP shield=2, CC shield=round(2*1.75)=4, CW shield=max(0,2+(-1))=1
+// QP shield=2, CC shield=round(2*1.50)=3, CW shield=max(0,2+(-1))=1
 // thornsValue hardcoded in resolver: QP=3, CC=9, CW=2 (focusAdjustedMultiplier=1)
 
 describe('thorns mechanic (Phase 1 shield)', () => {
@@ -122,9 +122,9 @@ describe('thorns mechanic (Phase 1 shield)', () => {
     expect(result.thornsValue).toBe(3);
   });
 
-  it('charge_correct: 4 shield (round(2*1.75)), 9 reflect (hardcoded CC=9)', () => {
+  it('charge_correct: 3 shield (round(2*1.50)), 9 reflect (hardcoded CC=9)', () => {
     const result = resolve('thorns', 'charge_correct');
-    expect(result.shieldApplied).toBe(4);
+    expect(result.shieldApplied).toBe(3);
     expect(result.thornsValue).toBe(9);
   });
 
@@ -144,7 +144,7 @@ describe('thorns mechanic (Phase 1 shield)', () => {
 
 // ── 3. emergency — double block below 30% HP ──────────────────────────────────
 // MASTERY_STAT_TABLES L0: qpValue=2; mechanic.quickPlayValue=2 → masteryBonus=0
-// QP finalValue=2, CC finalValue=round(2*1.75)=4 (round(3.5)=4), CW finalValue=max(0,2+0)=2
+// QP finalValue=2, CC finalValue=round(2*1.50)=3, CW finalValue=max(0,2+0)=2
 // Resolver: block = hpPercent < 0.3 ? finalValue * 2 : finalValue; Math.round applied.
 
 describe('emergency mechanic (Phase 1 shield)', () => {
@@ -158,14 +158,14 @@ describe('emergency mechanic (Phase 1 shield)', () => {
     expect(result.shieldApplied).toBe(4);
   });
 
-  it('charge_correct: 4 shield at full HP', () => {
+  it('charge_correct: 3 shield at full HP', () => {
     const result = resolve('emergency', 'charge_correct', { hp: 80, maxHP: 80 });
-    expect(result.shieldApplied).toBe(4);
+    expect(result.shieldApplied).toBe(3);
   });
 
-  it('charge_correct: 8 shield below 30% HP (doubles CC value)', () => {
+  it('charge_correct: 6 shield below 30% HP (doubles CC value)', () => {
     const result = resolve('emergency', 'charge_correct', { hp: 20, maxHP: 100 });
-    expect(result.shieldApplied).toBe(8);
+    expect(result.shieldApplied).toBe(6);
   });
 
   it('charge_wrong: 2 shield at full HP', () => {
@@ -187,7 +187,7 @@ describe('emergency mechanic (Phase 1 shield)', () => {
 
 // ── 4. fortify (Entrench) — gain block based on current block ─────────────────
 // MASTERY_STAT_TABLES L0: qpValue=4; mechanic.quickPlayValue=6 → masteryBonus=-2
-// QP finalValue=4, CC finalValue=round((6+(-2))*1.75)=round(7)=7, CW finalValue=max(0,4+(-2))=2
+// QP finalValue=4, CC finalValue=round((6+(-2))*1.50)=round(6)=6, CW finalValue=max(0,4+(-2))=2
 // Resolver: QP shieldApplied=floor(currentBlock*0.5) — finalValue NOT added on QP
 //           CC shieldApplied=floor(currentBlock*0.75)+finalValue — finalValue added only on CC
 //           CW shieldApplied=floor(currentBlock*0.25) — finalValue NOT added on CW
@@ -199,9 +199,9 @@ describe('fortify mechanic (Entrench, Phase 1 shield)', () => {
       expect(result.shieldApplied).toBe(0);
     });
 
-    it('charge_correct: 7 shield (0.75×0 + finalValue=7)', () => {
+    it('charge_correct: 6 shield (0.75×0 + finalValue=6)', () => {
       const result = resolve('fortify', 'charge_correct', { shield: 0 });
-      expect(result.shieldApplied).toBe(7);
+      expect(result.shieldApplied).toBe(6);
     });
 
     it('charge_wrong: 0 shield (0.25×0 — no finalValue added on CW)', () => {
@@ -216,9 +216,9 @@ describe('fortify mechanic (Entrench, Phase 1 shield)', () => {
       expect(result.shieldApplied).toBe(10);
     });
 
-    it('charge_correct: 22 shield (floor(20*0.75)=15 + finalValue=7)', () => {
+    it('charge_correct: 21 shield (floor(20*0.75)=15 + finalValue=6)', () => {
       const result = resolve('fortify', 'charge_correct', { shield: 20 });
-      expect(result.shieldApplied).toBe(22);
+      expect(result.shieldApplied).toBe(21);
     });
 
     it('charge_wrong: 5 shield (floor(20*0.25)=5)', () => {
@@ -236,7 +236,7 @@ describe('fortify mechanic (Entrench, Phase 1 shield)', () => {
 
 // ── 5. brace — block equal to enemy telegraph ──────────────────────────────────
 // MASTERY_STAT_TABLES L0: qpValue=2; mechanic.quickPlayValue=3 → masteryBonus=-1
-// QP finalValue=2, CC finalValue=round(2*1.75)=4 (round(3.5)=4), CW finalValue=max(0,2+(-1))=1
+// QP finalValue=2, CC finalValue=round(2*1.50)=3, CW finalValue=max(0,2+(-1))=1
 // Resolver: braceMultiplier QP=1.0, CC=3.0, CW=0.7
 //           intentBlock=round(intent.value * mult); shieldApplied=max(intentBlock, finalValue)
 
@@ -266,15 +266,15 @@ describe('brace mechanic (Phase 1 shield)', () => {
   });
 
   it('uses card value as floor when intent is very small', () => {
-    // intent value 1, CC: intentBlock=round(1*3.0)=3, finalValue=4 → max(3,4)=4
+    // intent value 1, CC: intentBlock=round(1*3.0)=3, finalValue=3 → max(3,3)=3
     const result = resolve('brace', 'charge_correct', undefined, attackingEnemy(1));
-    expect(result.shieldApplied).toBe(4);
+    expect(result.shieldApplied).toBe(3);
   });
 });
 
 // ── 6. overheal — double block below 60% HP ───────────────────────────────────
 // MASTERY_STAT_TABLES L0: qpValue=5; mechanic.quickPlayValue=5 → masteryBonus=0
-// QP finalValue=5, CC finalValue=round(5*1.75)=9 (round(8.75)=9), CW finalValue=max(0,4+0)=4
+// QP finalValue=5, CC finalValue=round(5*1.50)=8 (round(7.5)=8), CW finalValue=max(0,4+0)=4
 // Resolver: bonusMultiplier = hpPercent < 0.6 ? 2.0 : 1.0; shieldApplied=round(finalValue*bonusMult)
 
 describe('overheal mechanic (Phase 1 shield)', () => {
@@ -288,14 +288,14 @@ describe('overheal mechanic (Phase 1 shield)', () => {
     expect(result.shieldApplied).toBe(10);
   });
 
-  it('charge_correct: 9 shield at full HP', () => {
+  it('charge_correct: 8 shield at full HP', () => {
     const result = resolve('overheal', 'charge_correct', { hp: 80, maxHP: 80 });
-    expect(result.shieldApplied).toBe(9);
+    expect(result.shieldApplied).toBe(8);
   });
 
-  it('charge_correct: 18 shield below 60% HP (doubles CC value)', () => {
+  it('charge_correct: 16 shield below 60% HP (doubles CC value)', () => {
     const result = resolve('overheal', 'charge_correct', { hp: 40, maxHP: 100 });
-    expect(result.shieldApplied).toBe(18);
+    expect(result.shieldApplied).toBe(16);
   });
 
   it('charge_wrong: 4 shield at full HP (chargeWrongValue=4)', () => {
@@ -317,7 +317,7 @@ describe('overheal mechanic (Phase 1 shield)', () => {
 
 // ── 7. reinforce — more block than basic shield ────────────────────────────────
 // MASTERY_STAT_TABLES L0: qpValue=5; mechanic.quickPlayValue=7 → masteryBonus=-2
-// QP=5, CC=round(5*1.75)=9 (round(8.75)=9), CW=max(0, chargeWrongValue=4 + masteryBonus=-2)=2
+// QP=5, CC=round(5*1.50)=8 (round(7.5)=8), CW=max(0, chargeWrongValue=4 + masteryBonus=-2)=2
 
 describe('reinforce mechanic (Phase 1 shield)', () => {
   it('quick: 5 shield (stat table L0 qpValue=5, masteryBonus=-2 → 7+(-2)=5)', () => {
@@ -325,9 +325,9 @@ describe('reinforce mechanic (Phase 1 shield)', () => {
     expect(result.shieldApplied).toBe(5);
   });
 
-  it('charge_correct: 9 shield (round(5*1.75)=round(8.75)=9)', () => {
+  it('charge_correct: 8 shield (round(5*1.50)=round(7.5)=8)', () => {
     const result = resolve('reinforce', 'charge_correct');
-    expect(result.shieldApplied).toBe(9);
+    expect(result.shieldApplied).toBe(8);
   });
 
   it('charge_wrong: 2 shield (chargeWrongValue=4 + masteryBonus=-2 = 2)', () => {
@@ -351,7 +351,7 @@ describe('reinforce mechanic (Phase 1 shield)', () => {
 // ── 8. shrug_it_off — block + draw on QP and CC, no draw on CW ────────────────
 // MASTERY_STAT_TABLES L0: qpValue=2, drawCount=1; mechanic.quickPlayValue=3 → masteryBonus=-1
 // QP finalValue=2, shield=2, draws=1 (from stats.drawCount)
-// CC finalValue=round(2*1.75)=4, shield=4, draws=1
+// CC finalValue=round(2*1.50)=3, shield=3, draws=1
 // CW finalValue=max(0,2+(-1))=1, shield=1, no draw
 
 describe('shrug_it_off mechanic (Phase 1 shield)', () => {
@@ -361,9 +361,9 @@ describe('shrug_it_off mechanic (Phase 1 shield)', () => {
     expect(result.extraCardsDrawn).toBe(1);
   });
 
-  it('charge_correct: 4 shield AND 1 card drawn', () => {
+  it('charge_correct: 3 shield AND 1 card drawn', () => {
     const result = resolve('shrug_it_off', 'charge_correct');
-    expect(result.shieldApplied).toBe(4);
+    expect(result.shieldApplied).toBe(3);
     expect(result.extraCardsDrawn).toBe(1);
   });
 
@@ -382,7 +382,7 @@ describe('shrug_it_off mechanic (Phase 1 shield)', () => {
 // ── 9. absorb — block, CC also draws a card ───────────────────────────────────
 // MASTERY_STAT_TABLES L0: qpValue=2; mechanic.quickPlayValue=3 → masteryBonus=-1
 // QP finalValue=2, shield=2, no draw
-// CC finalValue=round(2*1.75)=4 (round(3.5)=4), shield=4, extraCardsDrawn=1
+// CC finalValue=round(2*1.50)=3, shield=3, extraCardsDrawn=1
 // CW finalValue=max(0,2+(-1))=1, shield=1, no draw
 
 describe('absorb mechanic (Phase 1 shield)', () => {
@@ -392,9 +392,9 @@ describe('absorb mechanic (Phase 1 shield)', () => {
     expect(result.extraCardsDrawn).toBe(0);
   });
 
-  it('charge_correct: 4 shield AND 1 card drawn (CC bonus)', () => {
+  it('charge_correct: 3 shield AND 1 card drawn (CC bonus)', () => {
     const result = resolve('absorb', 'charge_correct');
-    expect(result.shieldApplied).toBe(4);
+    expect(result.shieldApplied).toBe(3);
     expect(result.extraCardsDrawn).toBe(1);
   });
 
@@ -416,7 +416,7 @@ describe('absorb mechanic (Phase 1 shield)', () => {
 // masteryBonus=2-2=0; masterySecondaryBonus=1-2=-1 (not applied since <0)
 // card.secondaryValue stays at mechanic.secondaryValue=2 (from makeCard)
 // QP finalValue=2, shield=2, thornsValue=card.secondaryValue=2 (QP path in resolver)
-// CC finalValue=round(2*1.75)=4 (round(3.5)=4), shield=4, thornsValue=5 (CC hardcoded)
+// CC finalValue=round(2*1.50)=3, shield=3, thornsValue=5 (CC hardcoded)
 // CW finalValue=max(0,2+0)=2, shield=2, thornsValue=1 (CW hardcoded)
 
 describe('reactive_shield mechanic (Phase 1 shield)', () => {
@@ -426,9 +426,9 @@ describe('reactive_shield mechanic (Phase 1 shield)', () => {
     expect(result.thornsValue).toBe(2);
   });
 
-  it('charge_correct: 4 shield AND 5 thorns (CC hardcoded value)', () => {
+  it('charge_correct: 3 shield AND 5 thorns (CC hardcoded value)', () => {
     const result = resolve('reactive_shield', 'charge_correct');
-    expect(result.shieldApplied).toBe(4);
+    expect(result.shieldApplied).toBe(3);
     expect(result.thornsValue).toBe(5);
   });
 
