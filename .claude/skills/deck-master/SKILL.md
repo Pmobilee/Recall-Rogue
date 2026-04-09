@@ -13,6 +13,18 @@ Single skill for creating high-quality curated decks. Every deck is a self-conta
 
 **Living brainstorm doc:** `data/deck-ideas.md` — append all discovered deck candidates here with demand signals and notes. Consult it before discovery runs to avoid duplicate research.
 
+### 🌍 Strategic Priority: Internationalization (adopted 2026-04-09)
+
+Before picking your next deck, **read Section 0 of `data/deck-ideas.md`**. The library currently over-indexes on US exam prep (9 AP decks dominate by fact volume) and is structurally under-served in three areas:
+
+1. **Sports** — FIFA World Cup, Olympics, Formula 1, Chess, Cricket, Tennis (zero sports decks shipped)
+2. **International exam systems** — IB DP, GCSE, A-Level, Abitur, Baccalauréat, Gaokao (zero shipped vs 9 AP decks)
+3. **Non-US pop culture** — Anime/Manga, K-pop/K-drama, Bollywood, Eurovision (zero shipped)
+
+**Until each of these three pillars has at least 3 shipped decks, new domain openers should lean international.** The Section 4 Production Priority Queue in `data/deck-ideas.md` has been reshuffled accordingly — FIFA World Cup (Rank 5), Olympics (Rank 8), IB DP History (Rank 10), Formula 1 (Rank 12), and Anime & Manga (Rank 14) now sit in the top 20. Follow that order unless the user explicitly overrides it.
+
+This does NOT mean abandoning AP — shipping in-progress AP decks continues — but new discovery runs should prefer international-appeal topics until the balance is corrected.
+
 ---
 
 ## Implementation Discipline — READ BEFORE DOING ANYTHING

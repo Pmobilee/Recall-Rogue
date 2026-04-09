@@ -2,13 +2,33 @@
 
 **Purpose:** Master planning document for all curated deck content. Tracks pool architecture, chain themes, estimated fact counts, and cross-deck dependencies before any fact generation begins.
 
-**Last Updated:** 2026-04-08
+**Last Updated:** 2026-04-09
 
 **Design Philosophy:**
 - **Pool-first design:** Every deck starts by identifying answer type pools — semantically confusable groups of 5+ answers. Pool viability determines fact count, not the other way around. A domain is only writable if its pools hold up.
 - **Composite deck architecture:** Facts live in exactly one source deck (their "home deck") but can be surfaced in composite decks that pull from multiple sources. See Section 2 for architecture details.
 - **AP alignment:** Where applicable, eras and decks are mapped to AP course units to support the student market. This is a signal for prioritization and marketing, not a constraint on content.
 - **Distractor safety:** All pools must be internally homogeneous enough for LLM-generated distractors to be plausible but wrong. A pool of "Egyptian pharaohs" is safe. A pool mixing pharaohs, gods, and cities is not.
+
+---
+
+## Section 0: Strategic Priorities (2026-04-09)
+
+The library is currently **over-indexed on US exam prep** and under-served in three areas that represent the majority of the global non-US audience. Nine AP decks dominate by fact volume. Sports has zero shipped decks. International exam systems (IB, GCSE, A-Level) have zero representation. Non-US pop culture is limited to Greek/Norse mythology and a handful of language decks.
+
+**Internationalization is an active strategic priority as of 2026-04-09.** The next discovery runs and domain openers should prefer international-appeal decks over additional US content until the balance is corrected.
+
+### The Three Pillars
+
+1. **Sports** — FIFA World Cup, Olympic Games, Formula 1, Chess, Cricket, Tennis. Global audiences that dwarf any single AP exam cohort. Zero shipped decks is the most glaring gap in the library.
+2. **International Exam Systems** — IB Diploma Programme, GCSE, A-Level, Abitur, Baccalauréat, Gaokao. ~1.5M students/year globally across 150+ countries who currently have no exam-prep content in the library.
+3. **Non-US Pop Culture** — Anime & Manga, K-pop/K-drama, Bollywood, Eurovision. Culturally resonant globally; directly counterweights the Hollywood-centric `movies_cinema` framing.
+
+### Operational Guidance
+
+- Shipping AP decks continues — do not stop. But **new domain openers should lean international** until Sports and International Exam Prep each have at least 3 shipped decks.
+- The new-domain scaffolding cost for Sports & Entertainment is accepted and will be absorbed as part of the FIFA World Cup build.
+- All international exam decks MUST be architected from official published subject guides / course specifications per the curriculum-sourced rule in `.claude/rules/content-pipeline.md` — never from LLM compilation.
 
 ---
 
@@ -908,26 +928,33 @@ Technology & Computing requires creating a new domain in `domainMetadata.ts` bef
 
 ### 3.11 Sports & Entertainment
 
-**Current State:** Proposed new domain. Zero decks, zero seed facts. Would map to a new `sports_entertainment` domain.
+**Current State:** Proposed new domain. Zero decks, zero seed facts. Would map to a new `sports_entertainment` domain. **Sports is now a top-priority domain** (see Section 0). New-domain scaffolding cost is accepted as part of FIFA World Cup build.
 
-**Top 5 Deck Candidates**
+**Deck Candidates**
 
 | # | Deck Name | Pool Potential (concrete examples) | Demand Signal | Priority |
 |---|-----------|-------------------------------------|---------------|----------|
-| SE-01 | Olympic Games — History & Records | country_names (60+ with medals), sport_names (30+ Olympic sports), host_city_names (30+), champion_names (50+) | Sports fans, students, international audience | **Tier 2** |
-| SE-02 | FIFA World Cup | host_country_names (22 tournaments), winner_country_names (8 winners), top_scorer_names (30+), tournament_year_names (22) | Massive global football/soccer audience | **Tier 2** |
+| SE-01 | Olympic Games — History & Records | country_names (60+ with medals), sport_names (30+ Olympic sports), host_city_names (30+), champion_names (50+) | Sports fans, students, international audience | **Tier 1** (promoted) |
+| SE-02 | FIFA World Cup | host_country_names (22 tournaments), winner_country_names (8 winners), top_scorer_names (30+), tournament_year_names (22) | Massive global football/soccer audience — 3.5B fans | **Tier 1** (promoted) |
 | SE-03 | Academy Awards (Oscars) | film_names (80+), director_names (60+), actor_names (80+), award_category_names (6+ major), decade_names (9) | Film buffs, pop culture fans | **Tier 3** |
 | SE-04 | Famous Athletes — All Time | athlete_names (80+), sport_names (20+), nationality_names (30+), era_names (5) | Sports fans, broad appeal | **Tier 3** |
 | SE-05 | Board Games & Card Games | game_names (50+ notable games), mechanic_type_names (8: strategy/luck/deck-building/etc), designer_names (25+), origin_decade_names (8) | Board game enthusiasts — highly relevant to Recall Rogue's own audience | **Tier 3** |
+| SE-06 | Formula 1 — History & Champions | champion_names (34 drivers), constructor_names (25+), circuit_names (70+), country_names (25+ host), era_names (6 decades) | Huge global audience (450M fans), FIA-authoritative data | **Tier 1** (promoted) |
+| SE-07 | Chess — World Champions & Openings | champion_names (17 undisputed), opening_names (30+ ECO classes), tournament_names (20+), era_names (6) | Massive global interest post-Queen's Gambit, 600M players | **Tier 1** (promoted) |
+| SE-08 | Cricket — World Cup & Legends | country_names (12 Test nations), player_names (50+), format_names (Test/ODI/T20), trophy_names (15+) | ~2.5B fans (India/Pakistan/UK/Aus/SA/WI/NZ/BD/SL) — currently 0% served | **Tier 1** (promoted) |
+| SE-09 | Tennis Grand Slams | tournament_names (4 majors), champion_names (80+ singles), surface_names (grass/clay/hard), country_names (30+) | Year-round global audience, clean quadrennial structure | Tier 2 |
+| SE-10 | Basketball — NBA & FIBA | player_names (80+), team_names (30 NBA + FIBA), championship_names (75+ Finals/WC) | Global reach via NBA + Olympics; balances US/intl | Tier 2 |
 
 **Cross-Domain Links**
 - SE-01 (Olympics) links to Geography (host countries, nations) and History (1936 Berlin Olympics, boycotts)
-- SE-02 (FIFA) links to Geography (countries, continents)
+- SE-02 (FIFA) links to Geography (countries, continents); pairs with IPC-05 (World Football Clubs)
 - SE-03 (Oscars) links to Art & Architecture (cultural arts)
 - SE-05 (Board Games) has meta-appeal for Recall Rogue players specifically
+- SE-06 (F1) links to Geography (circuit host countries), History (era framing)
+- SE-08 (Cricket) links to Language decks (Hindi, Bengali) via cultural audience overlap
 
 **Notes**
-Sports & Entertainment requires new domain scaffolding. FIFA World Cup is a uniquely powerful deck — the global football audience dwarfs every other sport combined, and pool structure is clean (past winners, top scorers, host nations). Olympics works cross-generationally. SE-05 (Board Games) is a niche deck but has exceptional resonance for Recall Rogue's core audience of strategy and card game enthusiasts — consider as a promotional/community deck. Avoid licensing-sensitive content (specific team logos, copyrighted images for Oscars categories).
+Sports is now the highest-priority zero-deck domain. FIFA World Cup is the anchor: the global football audience dwarfs every other sport combined, pool structure is clean (past winners, top scorers, host nations), and it opens the domain for all subsequent sports decks. Cricket (SE-08) represents the single largest currently-unserved audience in the library — ~2.5B fans across South Asia, UK, and the Caribbean have zero content targeted at them. Chess has exceptional clean pool structure (17 undisputed world champions, 30+ named ECO openings). SE-05 (Board Games) is a niche deck but has exceptional resonance for Recall Rogue's core audience — consider as a promotional/community deck. Avoid licensing-sensitive content (specific team logos, copyrighted images).
 
 ---
 
@@ -1065,9 +1092,92 @@ Sports & Entertainment requires new domain scaffolding. FIFA World Cup is a uniq
 
 ---
 
+### 3.14 International Pop Culture (New Subsection)
+
+**Overview:** The counterweight to the Hollywood-centric `movies_cinema` deck. International pop culture is a massive, globally engaged audience — anime alone has hundreds of millions of active fans — and is currently completely unserved by the library. Maps to `general_knowledge` domain for now; may warrant its own domain as the subsection grows.
+
+**Deck Candidates**
+
+| # | Deck Name | Pool Potential (concrete examples) | Demand Signal | Priority |
+|---|-----------|-------------------------------------|---------------|----------|
+| IPC-01 | Anime & Manga — Landmark Works | series_names (60+), studio_names (20+: Ghibli/MAPPA/Ufotable/Kyoto Animation/etc), mangaka_names (40+), genre_names (12: shonen/seinen/isekai/etc), decade_names (7) | Global phenomenon, complements JLPT N1-N5 family | **Tier 1** |
+| IPC-02 | K-pop & K-drama | group_names (40+), idol_names (60+), drama_titles (40+), company_names (4 big: HYBE/SM/YG/JYP), era_names (5 generations) | Complements Korean TOPIK decks; global Gen Z audience | Tier 2 |
+| IPC-03 | Bollywood & Indian Cinema | film_titles (60+), actor_names (40+), director_names (25+), playback_singer_names (20+), era_names (golden age/new wave/modern) | 1.4B potential audience, direct counterweight to Hollywood bias | Tier 2 |
+| IPC-04 | Eurovision Song Contest | winner_country_names (27), host_city_names (30+), winning_song_titles (60+), iconic_artist_names (30+), decade_names (7) | Quintessentially international (since 1956), cult following | Tier 3 |
+| IPC-05 | World Football Clubs & Rivalries | club_names (60+ legendary), league_names (20+ top leagues), derby_names (El Clasico/Old Firm/etc, 15+), trophy_names (Champions League/Libertadores/etc) | Complements SE-02 FIFA World Cup with club-level depth | Tier 2 |
+
+**Cross-Domain Links**
+- IPC-01 (Anime) cross-links with Language decks (Japanese JLPT N5-N1), MF-05 (Japanese Mythology & Folklore)
+- IPC-02 (K-pop) cross-links with Language decks (Korean TOPIK 1-2)
+- IPC-03 (Bollywood) cross-links with History (Indian independence, Bollywood golden age context)
+- IPC-04 (Eurovision) cross-links with Geography (host countries, participating nations)
+- IPC-05 (Football Clubs) cross-links with SE-02 (FIFA World Cup) — natural paired study arc
+
+**Notes**
+IPC-01 (Anime & Manga) is the Tier 1 priority because it directly reinforces the JLPT language deck audience — players studying Japanese are the most naturally engaged audience for anime trivia. Pool structure is clean: 20+ named studios, 40+ mangaka, 12 defined genre names, 7 decade bands. Eurovision (IPC-04) is uniquely international by design — 27 winning countries, continuous since 1956, enormous cult following in Europe and beyond. Bollywood (IPC-03) represents the largest currently-unserved cultural film audience. Sourcing: Wikipedia "List of highest-grossing Bollywood films", IMDb for director/actor data.
+
+---
+
+### 3.15 International Exam Prep (New Subsection)
+
+**Overview:** Currently the Academic/Exam Prep category (Section 3.13) is 100% College Board AP decks. Nine AP decks dominate the library by volume. This subsection adds the international equivalents used by ~1.5M students/year globally across 150+ countries.
+
+**Critical rule:** Per the curriculum-sourced rule in `.claude/rules/content-pipeline.md`, **all of these MUST be architected from the official published subject guide / course specification — NEVER from LLM compilation.** IB subject guides are publicly available at ibo.org. GCSE/A-Level specs are available from AQA/Edexcel/OCR. This is non-negotiable.
+
+**Deck Candidates**
+
+| # | Deck Name | Pool Potential (concrete examples) | Demand Signal | Priority |
+|---|-----------|-------------------------------------|---------------|----------|
+| IEP-01 | IB DP History (Route 2: 20th Century) | topic_names (authoritarian states/causes of war/cold war/civil rights/independence movements), country_case_names, era_names | Direct counterweight to AP World/Euro/USH; ~170k IB students/year; official IB subject guide publicly available | **Tier 1** |
+| IEP-02 | IB DP Biology | topic_names (per IB syllabus: cells/molecular/genetics/ecology/evolution/physiology), concept_names, experiment_names | Complements AP Biology for non-US students; official IB guide | **Tier 1** |
+| IEP-03 | IB DP Mathematics: Analysis & Approaches (SL) | topic_names (number/algebra/functions/geometry/trig/stats/calculus), theorem_names, method_names | Fills the standalone math gap left by no AP Calc deck; IB is international | **Tier 1** |
+| IEP-04 | GCSE Biology (AQA/Edexcel) | topic_names, organism_names, process_names | UK/Commonwealth standard; ~800k students/year; official specs public | Tier 2 |
+| IEP-05 | A-Level Physics (AQA) | topic_names (mechanics/materials/waves/electricity/nuclear/particles), formula_names, constant_names | UK sixth-form standard; complements AP Physics 1 | Tier 2 |
+| IEP-06 | Abitur (Germany) — Grundkurs subjects | subject_names, topic_names per state | German Gymnasium standard; ~280k students/year | Tier 3 |
+| IEP-07 | Baccalauréat (France) | discipline_names, topic_names per série | French standard; ~720k students/year | Tier 3 |
+| IEP-08 | Gaokao (China) — Core Subjects | subject_names, topic_names | Chinese college entrance exam; ~12M students/year; complements HSK decks | Tier 3 |
+
+**Cross-Domain Links**
+- IEP-01 (IB History) cross-links with History Era 11-12 (WWI/WWII/Cold War)
+- IEP-02 (IB Biology) cross-links with NS-01 Human Anatomy, AP Biology
+- IEP-03 (IB Math) is standalone; potential cross-link with AP Chemistry (math tools)
+- IEP-08 (Gaokao) cross-links with Language decks (Chinese HSK 1-6)
+
+**Notes**
+IB is the highest-priority international exam system: ~170k students/year worldwide, English-medium, and the official subject guides are publicly downloadable from ibo.org. IEP-01 (IB History) is the most direct counterweight to the AP US/World/Euro history decks. IEP-03 (IB Math AA SL) fills the gap that no AP Calculus deck currently addresses. Abitur and Baccalauréat are Tier 3 because their syllabi vary by state/série and require more architectural complexity; Gaokao is Tier 3 because of Chinese-language sourcing requirements, but the ~12M students/year signal is enormous once that hurdle is cleared.
+
+---
+
+### 3.16 Civics & International Institutions (New Subsection)
+
+**Overview:** Universal civic literacy decks with global appeal. Not exam-aligned but broadly educational — the kind of content that makes a player feel like a more informed global citizen. Maps to `general_knowledge` domain.
+
+**Deck Candidates**
+
+| # | Deck Name | Pool Potential (concrete examples) | Demand Signal | Priority |
+|---|-----------|-------------------------------------|---------------|----------|
+| CII-01 | United Nations | organ_names (GA/SC/ECOSOC/ICJ/Secretariat), specialized_agency_names (WHO/UNESCO/UNICEF/etc 15+), secretary_general_names (9), member_state_names (193), landmark_resolution_names (20+) | Universal civics literacy; Wikipedia-rich | Tier 2 |
+| CII-02 | European Union | member_state_names (27), institution_names (Commission/Council/Parliament/ECJ/ECB), treaty_names (Rome/Maastricht/Lisbon/Schengen/etc), commissioner_names, president_names | Huge European audience; official EU datasets | Tier 2 |
+| CII-03 | Nobel Prize Winners | laureate_names (900+), category_names (6), country_names, year_names, discovery_names | Already listed at Rank 13 in Section 4 Priority Queue — cross-reference only | Already tracked |
+| CII-04 | NATO & Military Alliances | member_state_names (32), secretary_general_names, treaty_article_names, summit_location_names | Topical post-2022; Wikipedia complete | Tier 3 |
+| CII-05 | World Currencies | currency_names (180+), country_code_names (ISO 4217), central_bank_names, symbol_names ($/€/¥/₹/£/etc) | Universal reference deck; clean Wikidata source | Tier 2 |
+
+**Cross-Domain Links**
+- CII-01 (UN) links to History (Cold War, decolonization chains in Era 12)
+- CII-02 (EU) links to Geography (European Countries Deep Dive), History (post-WWII Europe)
+- CII-04 (NATO) links to History (Cold War), current events
+- CII-05 (Currencies) links to Geography (World Countries), History (monetary history)
+
+**Notes**
+The UN and EU decks have exceptionally clean pool structures — both organizations publish official rosters of member states, institutions, and treaties. CII-05 (Currencies) is the most immediately buildable: ISO 4217 is authoritative and complete (180 currency codes), Wikidata has full coverage. CII-03 (Nobel) is already in the Section 4 Priority Queue at Rank 13 — do not duplicate effort; the cross-reference here is for discoverability only.
+
+---
+
 ## Section 4: Production Priority Queue
 
 > Ranked by combined score of Demand × Feasibility × Strategic Value. History era decks (from Sections 1-2) are included and ranked against domain decks. This is the definitive build order for the next 20 decks.
+
+**As of 2026-04-09, sports and international pop culture receive Tier 1 priority to correct library imbalance. See Section 0.**
 
 | Rank | Deck | Domain | Est. Facts | Demand | Feasibility | Strategic Value | Notes |
 |------|------|--------|------------|--------|-------------|-----------------|-------|
@@ -1075,27 +1185,27 @@ Sports & Entertainment requires new domain scaffolding. FIFA World Cup is a uniq
 | 2 | World War II | history | 220-260 | Very High (highest trivia demand signal globally) | Very High — Wikipedia-rich, architecture YAML exists | Unlocks AP World History composite | Architecture `world_war_ii_arch.yaml` exists |
 | 3 | Ancient Rome | history | 180-220 | High (classics students, HBO fans, D&D) | High — Wikidata complete, English sources rich | Unlocks AP World History composite | Pairs with Ancient Greece for study arc |
 | 4 | Constellations | space_astronomy | 120-150 | High (stargazers, astrology-adjacent, kids) | Very High — 88 IAU official constellations, clean pool | First new Space deck; mythology crossover | Pool: 88 names, 2 hemispheres, 4 seasons |
-| 5 | Famous Inventions & Inventors | general_knowledge | 180-220 | High (trivia fans, students, Jeopardy audience) | High — Wikipedia List of Inventions is authoritative | Opens GK domain; links to TC-01 | Nobel facts as bonus layer |
+| 5 | FIFA World Cup (SE-02) | sports_entertainment | 180-220 | Very High — 3.5B global fans; biggest gap in library | High — FIA/FIFA data authoritative; past winner/scorer lists clean | **Domain opener #1 for Sports; highest-impact internationalization move** | Includes new domain scaffolding; accepts 2-3 day setup cost |
 | 6 | Mammals of the World | animals_wildlife | 150-200 | High (kids + nature fans, massive casual audience) | High — Wikipedia mammal list + Wikidata taxa | Opens Animals domain; broadest age range | Focus on 150 most-recognizable species |
 | 7 | Egyptian Mythology | mythology_folklore | 150-200 | High (Egypt interest consistently top-5 globally) | High — Wikipedia + Egyptology sources complete | Completes "Big Three" mythology arc (Greek/Norse/Egyptian) | Cross-sell with History Ancient Egypt deck |
-| 8 | Famous Paintings & Artists | art_architecture | 160-200 | High (art history curriculum, museum-goers) | High — Wikipedia "Great Masters" lists complete | Opens Art domain; strong visual card potential | Artist portrait card art opportunity |
-| 9 | Ancient Greece | history | 180-220 | High (AP World History, philosophy fans) | High — excellent academic sources | Pairs with Ancient Rome; unlocks composite | Pool: city-states, philosophers, battles |
-| 10 | Spices & Herbs of the World | food_cuisine | 120-160 | Medium-High (foodies + culinary students) | Very High — Wikipedia spice list complete, clean pool | Opens Food domain; strong origin-country pool | 70+ spices, clear origin geography |
-| 11 | World Rivers & Mountains | geography | 140-180 | High (geography students, AP Human Geo) | High — Wikidata complete, clean lists | Expands Geography beyond drill decks | Pool: 50+ rivers, 50+ peaks, 7 continents |
-| 12 | Bones of the Human Body | human_body_health | 120-150 | High (medical students, anatomy classes) | Very High — 206 named bones, Terminologia Anatomica complete | Complements HB-01 Anatomy; pre-med bundle | Cleanest pool in entire pipeline |
+| 8 | Olympic Games (SE-01) | sports_entertainment | 160-200 | High — global multi-sport audience, students | High — IOC data complete; host city/sport pools clean | **Domain opener #2 for Sports; cross-generational appeal** | Builds on domain scaffolding from SE-02 |
+| 9 | Famous Paintings & Artists | art_architecture | 160-200 | High (art history curriculum, museum-goers) | High — Wikipedia "Great Masters" lists complete | Opens Art domain; strong visual card potential | Artist portrait card art opportunity |
+| 10 | IB DP History (IEP-01) | academic_exam_prep | 200-250 | High — ~170k IB students/year, 150+ countries | High — official IB subject guide publicly available from ibo.org | **Direct counterweight to AP World/Euro/USH; opens intl exam prep** | Must be architected from official IB guide — never LLM compilation |
+| 11 | Ancient Greece | history | 180-220 | High (AP World History, philosophy fans) | High — excellent academic sources | Pairs with Ancient Rome; unlocks composite | Pool: city-states, philosophers, battles |
+| 12 | Formula 1 — History & Champions (SE-06) | sports_entertainment | 160-200 | High — 450M global fans; FIA data complete | High — past champions/constructors/circuits all authoritative | Third Sports deck; complements SE-01/02 with individual-sport depth | Champion names (34 drivers), constructor names (25+), circuit names (70+) |
 | 13 | Nobel Prize Winners | general_knowledge | 180-220 | High (academic community, Jeopardy devotees) | Very High — Nobelprize.org complete through 2025 | Unlocks EP-02 AP Bio (science laureates layer) | 6 categories = 6 natural pool groups |
-| 14 | Dinosaurs & Paleontology | natural_sciences | 140-180 | High (kids + museum audience, perennial favorite) | High — Wikipedia paleontology articles complete | Opens kid-audience funnel; NS domain flagship | Pool: 55+ genera, 5 geologic periods |
-| 15 | European Countries Deep Dive | geography | 140-180 | Medium-High (European students, travelers) | High — Wikipedia European countries complete | Deepens Geography; enables EU composite | 44 countries, languages, EU membership |
-| 16 | ✅ Ocean Life | animals_wildlife | **182 shipped** | High (kids, marine bio, documentary audience) | High — Wikipedia marine life lists complete | Second Animals deck; ocean zone pool | **SHIPPED 2026-04-08** |
-| 17 | Ancient Egypt | history | 160-200 | High (popular culture, museum audiences) | High — Egyptology Wikipedia excellent | Cross-sells with Egyptian Mythology (rank 7) | Pool: pharaohs, gods, periods, dynasties |
-| 18 | Brain & Neuroscience | human_body_health | 130-170 | High (psychology students, mental health interest) | Medium — requires careful clinical sourcing | Third HB deck; unlocks psychology composite | Pool: 30+ brain regions, 8+ neurotransmitters |
-| 19 | Famous Scientists & Discoveries | natural_sciences | 160-200 | High (science students, history of science) | High — Wikipedia and Nobel records complete | Opens NS narrative layer (not just periodic table) | Combines with Nobel deck for mega-deck potential |
-| 20 | Monsters & Creatures — World Mythology | mythology_folklore | 130-170 | Medium-High (D&D/TTRPG players, fantasy fans, kids) | High — Wikipedia mythology articles complete | Opens cross-cultural mythology; strong combat art potential | 80+ creatures across 15+ cultures |
+| 14 | Anime & Manga — Landmark Works (IPC-01) | general_knowledge | 160-200 | High — global phenomenon; complements JLPT audience | High — Wikipedia anime/manga lists complete; studio roster clean | **Intl pop culture opener; directly reinforces Japanese language deck audience** | Studio names (20+), mangaka (40+), genre names (12) |
+| 15 | Spices & Herbs of the World | food_cuisine | 120-160 | Medium-High (foodies + culinary students) | Very High — Wikipedia spice list complete, clean pool | Opens Food domain; strong origin-country pool | 70+ spices, clear origin geography |
+| 16 | World Rivers & Mountains | geography | 140-180 | High (geography students, AP Human Geo) | High — Wikidata complete, clean lists | Expands Geography beyond drill decks | Pool: 50+ rivers, 50+ peaks, 7 continents |
+| 17 | Bones of the Human Body | human_body_health | 120-150 | High (medical students, anatomy classes) | Very High — 206 named bones, Terminologia Anatomica complete | Complements HB-01 Anatomy; pre-med bundle | Cleanest pool in entire pipeline |
+| 18 | ✅ Ocean Life | animals_wildlife | **182 shipped** | High (kids, marine bio, documentary audience) | High — Wikipedia marine life lists complete | Second Animals deck; ocean zone pool | **SHIPPED 2026-04-08** |
+| 19 | Famous Inventions & Inventors | general_knowledge | 180-220 | High (trivia fans, students, Jeopardy audience) | High — Wikipedia List of Inventions is authoritative | Opens GK domain; links to TC-01 | Nobel facts as bonus layer |
+| 20 | Dinosaurs & Paleontology | natural_sciences | 140-180 | High (kids + museum audience, perennial favorite) | High — Wikipedia paleontology articles complete | Opens kid-audience funnel; NS domain flagship | Pool: 55+ genera, 5 geologic periods |
 
 **Priority tier summary:**
-- **Ranks 1-5** (ship within 60 days): All have either existing WIP content or a clean architecture. Highest demand-per-effort ratio.
-- **Ranks 6-12** (ship within 120 days): Domain openers — these are the first deck in their domain, multiplying strategic value.
-- **Ranks 13-20** (ship within 180 days): Depth decks — excellent quality but secondary to opening new domains.
+- **Ranks 1-5** (ship within 60 days): Includes FIFA World Cup — domain scaffolding cost accepted. Human Anatomy WIP is still #1.
+- **Ranks 6-14** (ship within 120 days): Mix of domain openers and internationalization priorities (Olympics, IB History, Anime). These directly correct the library imbalance.
+- **Ranks 15-20** (ship within 180 days): Depth decks — excellent quality but secondary to opening new domains and internationalizing.
 
 ---
 
@@ -1114,19 +1224,24 @@ Sports & Entertainment requires new domain scaffolding. FIFA World Cup is a uniq
 | Food & Cuisine | 0 | — | 8 total | Spices & Herbs | 3-5 weeks |
 | General Knowledge | 0 | — | 14 total | Famous Inventions & Inventors | 4-6 weeks |
 | Technology & Computing | 0 | Requires new domain setup | 8 total | Computer Science Fundamentals | 6-8 weeks (domain setup first) |
-| Sports & Entertainment | 0 | Requires new domain setup | 8 total | Olympic Games History | 6-8 weeks (domain setup first) |
+| Sports & Entertainment | 0 | **New-domain scaffolding accepted** — budget 2-3 days as part of FIFA build | 10 total | **FIFA World Cup** | **4-6 weeks (includes new domain scaffolding)** |
+| International Pop Culture | 0 (new subsection 3.14) | — | 5 total | Anime & Manga | 4-6 weeks |
+| International Exam Prep | 0 (new subsection 3.15) | — | 8 total | IB DP History | 5-7 weeks (official IB guide required) |
+| Civics & Intl Institutions | 0 (new subsection 3.16) | — | 5 total | United Nations | 4-6 weeks |
 | Language (Vocabulary) | **37** | Portuguese/Italian/Russian next | 22 remaining | Portuguese A1-B2 | 1-2 weeks (pipeline exists) |
-| Academic / Exam Prep | 0 | Composite — depends on source decks | 18 total | AP US History | After Tier 1 History ships |
-| **TOTAL** | **49** | **~2,200 WIP facts** | **~180 candidates** | — | — |
+| Academic / Exam Prep (AP) | 0 | Composite — depends on source decks | 18 total | AP US History | After Tier 1 History ships |
+| **TOTAL** | **49** | **~2,200 WIP facts** | **~195 candidates** | — | — |
 
-**Key gaps to close first:**
+**Key gaps to close first (updated 2026-04-09):**
 1. Human Anatomy (WIP facts → published deck) — immediate
-2. Open zero-deck domains in priority order: Animals, Art, Food, General Knowledge
-3. New domain scaffolding for Technology and Sports before first deck in each
+2. FIFA World Cup — highest-impact single addition; opens Sports domain; corrects biggest library gap
+3. Open zero-deck domains in priority order: Sports, Animals, Art, International Pop Culture
+4. New domain scaffolding for Technology and Sports before first deck in each (Sports cost accepted for FIFA)
+5. International exam prep (IB first) to counterbalance 9 AP decks
 
 ---
 
-*Last updated: 2026-04-08 by docs-agent*
+*Last updated: 2026-04-09 by docs-agent (internationalization strategic priority)*
 
 ---
 
