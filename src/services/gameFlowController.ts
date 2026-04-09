@@ -37,6 +37,7 @@ import {
   startEncounterForRoom,
   getLastNarrativeEncounterSnapshot,
   clearNarrativeEncounterSnapshot,
+  resolveNarrativeFact,
   getCombatScene,
 } from './encounterBridge';
 import { activeRunState } from './runStateStore';
@@ -1664,22 +1665,27 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     if (narrativeSnap) {
       const domain = run.primaryDomain ?? 'general_knowledge';
       const fizzledSet = new Set(narrativeSnap.fizzledFactIds);
-      const correctAnswers: Array<{ factId: string; answer: string; quizQuestion: string }> = [];
+      const correctAnswers: Array<{ factId: string; answer: string; quizQuestion: string; partOfSpeech?: string; targetLanguageWord?: string; pronunciation?: string; categoryL1?: string; categoryL2?: string; language?: string }> = [];
       const wrongAnswers: Array<{ factId: string; answer: string; quizQuestion: string }> = [];
       for (const factId of narrativeSnap.answeredFactIds) {
-        const fact = factsDB.getById(factId);
-        if (!fact) continue;
-        const entry = { factId: fact.id, answer: fact.correctAnswer, quizQuestion: fact.quizQuestion };
+        const info = resolveNarrativeFact(factId, run);
+        if (!info) continue;
+        const entry = { factId: info.factId, answer: info.answer, quizQuestion: info.quizQuestion, partOfSpeech: info.partOfSpeech, targetLanguageWord: info.targetLanguageWord, pronunciation: info.pronunciation, categoryL1: info.categoryL1, categoryL2: info.categoryL2, language: info.language };
         if (fizzledSet.has(factId)) {
           wrongAnswers.push(entry);
         } else {
           correctAnswers.push(entry);
         }
       }
+      // Resolve chainCompletions: snapshot holds factId arrays; convert each to answer strings.
+      // Sequences that lose facts during resolution (fact not found) and drop below 3 are dropped.
+      const chainCompletions: string[][] = narrativeSnap.chainCompletions.map(factIds =>
+        factIds.map(fid => resolveNarrativeFact(fid, run)?.answer ?? '').filter(Boolean)
+      ).filter(seq => seq.length >= 3);
       recordEncounterResults({
         correctAnswers,
         wrongAnswers,
-        chainCompletions: [],
+        chainCompletions,
         enemyId: narrativeSnap.enemyId,
         isBoss: narrativeSnap.isBoss,
         isElite: narrativeSnap.isElite,
