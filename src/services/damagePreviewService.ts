@@ -287,8 +287,8 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
   const whetstonePenalty = relicIds.has('whetstone') ? -1 : 0;
   const shieldFlatBonus = stoneWallFlat + whetstonePenalty;
 
-  // worn_shield v2: -20% block
-  const wornShieldMult = relicIds.has('worn_shield') ? 0.8 : 1.0;
+  // worn_shield v3: +1 flat block on CHARGED (CC) shield cards only; no bonus on QP
+  const wornShieldCcFlat = relicIds.has('worn_shield') ? 1 : 0;
 
   // hollow_armor: block disabled after turn 0
   if (relicIds.has('hollow_armor') && ctx.encounterTurnNumber > 0) {
@@ -306,8 +306,8 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
   const buffMult = 1 + ctx.buffNextCard / 100;
   const overclockMult = ctx.overclockReady ? 2 : 1;
 
-  let qpFinalShield = Math.round((qpShield + shieldFlatBonus) * wornShieldMult * bastionsWillQpMult * buffMult * overclockMult);
-  let ccFinalShield = Math.round((ccShield + shieldFlatBonus) * wornShieldMult * buffMult * overclockMult);
+  let qpFinalShield = Math.round((qpShield + shieldFlatBonus) * bastionsWillQpMult * buffMult * overclockMult);
+  let ccFinalShield = Math.round((ccShield + shieldFlatBonus + wornShieldCcFlat) * buffMult * overclockMult);
 
   qpFinalShield = Math.max(0, qpFinalShield);
   ccFinalShield = Math.max(0, ccFinalShield);

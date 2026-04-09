@@ -1,7 +1,7 @@
 # Relic System
 
 > **Purpose:** Complete reference for relic catalog, rarities, trigger system, acquisition mechanics, and slot rules.
-> **Last verified:** 2026-04-09
+> **Last verified:** 2026-04-10
 > **Source files:** `src/data/relics/index.ts`, `src/data/relics/starters.ts`, `src/data/relics/unlockable.ts`, `src/data/relics/types.ts`, `src/services/relicEffectResolver.ts`, `src/services/relicAcquisitionService.ts`, `src/data/balance.ts`
 
 ## Relic Slots
@@ -166,6 +166,7 @@ All have `isStarter: false`, `startsUnlocked: false`. Eligible once `playerLevel
 |---|---|---|---|---|
 | `scholars_gambit` | +1 relic slot (max 6) | Wrong Charge deals 1 self-damage | 60 | 20 |
 | `phoenix_feather` | Once/run: resurrect at 15% HP; auto-Charge all cards free for 1 turn | — | 60 | 18 |
+| `mnemonic_scar` | Previously-correct facts: +25% CC damage. Wrong charges: draw 1 card | — | 0 | 10 |
 
 ## Relic Effect Resolver (`relicEffectResolver.ts`)
 
@@ -175,11 +176,11 @@ Key resolved contexts:
 - `resolveTurnStartEffects()` — block grants (iron_shield: 2 + shieldsPlayedLastTurn), AP bonuses, draw bonuses, poison to all enemies (herbal_pouch), Capacitor release, Deja Vu spawn, `tempStrengthGain` (brass_knuckles: +1 temp Strength each turn start). Context field `shieldsPlayedLastTurn` required for iron_shield dynamic block.
 - `resolveDamageTakenEffects()` — flat damage reduction (steel_skin: -1 nerfed from -3), thorns, pity counter. Note: thick_skin no longer increases damage taken (reworked to encounter_start_block, 2026-04-09).
 - `resolveEncounterStartEffects()` — hollow_armor starting block (12), gladiator_s_mark temp Strength, plague_flask encounter start poison (2 stacks to all enemies), thick_skin encounter start block (+5).
-- `resolveChargeCorrectEffects()` — multiplier bonuses, draw bonuses, speed bonuses.
-- `resolveChargeWrongEffects()` — safety nets (lucky_coin), self-damage (volatile_core, scholars_gambit)
+- `resolveChargeCorrectEffects()` — multiplier bonuses, draw bonuses, speed bonuses. mnemonic_scar v3: +25% extraMultiplier when `factPreviouslyCorrect` is true.
+- `resolveChargeWrongEffects()` — safety nets (lucky_coin), self-damage (volatile_core, scholars_gambit), draw bonus (mnemonic_scar v3: drawBonus=1 on any wrong charge)
 - `resolveAttackModifiers()` — percentDamageBonus includes ritual_blade (+50% first card, -15% other cards; Pass 7 2026-04-09). brass_knuckles strengthGain is always 0 (moved to turn start).
 - `resolveDebuffAppliedModifiers()` — returns `reflectToEnemy: boolean`; always false now (thick_skin no longer reflects debuffs, 2026-04-09).
-- `resolveShieldModifiers()` — worn_shield grants +1 flatBlockBonus (nerfed from +2, Pass 7). hollow_armor: shields work normally; `blockGainHalved` removed (Pass 7). TurnEndEffects.blockDrain = 3 after turn 3.
+- `resolveShieldModifiers()` — worn_shield grants +1 flatBlockBonus on CHARGED shield cards only (nerf: Pass 7 removed QP bonus entirely). hollow_armor: shields work normally; `blockGainHalved` removed (Pass 7). Context field `wasCharged` required to get the worn_shield bonus. TurnEndEffects.blockDrain = 3 after turn 3.
 - `resolveExhaustEffects()` — returns `bonusCardDraw` (exhaustion_engine +2, scavengers_eye +1) and `tempStrengthGain` (tattered_notebook +1 for 1 turn). Caller must apply strength status effect.
 - `resolveEncounterEndEffects()` — herbal_pouch heals 3 HP post-combat.
 - `getMaxRelicSlots()` — returns 5, or 6 if scholars_gambit held
@@ -195,7 +196,12 @@ Key resolved contexts:
 - `brass_knuckles`: every-2nd-attack strength → +1 temp Strength at turn start every turn (2.7% win rate)
 - `plague_flask`: poison tick/duration bonus → all enemies start with 2 Poison at encounter start
 - `thick_skin`: debuff reflect + damage penalty → start each encounter with 5 block
-- `worn_shield`: thorns + -20% block → +2 flat block (Pass 7: nerfed to +1 flat block)
+- `worn_shield`: thorns + -20% block → +2 flat block (Pass 7: nerfed to +1 flat block on CHARGED shields only, 0 on Quick Play)
+
+### mnemonic_scar v3 (Pass 7 Rework)
+Old: wrong on known fact → CC power; wrong on new fact → 2 self-damage (was `category: cursed`).
+New: any wrong charge → draw 1 card consolation; previously-correct facts → +25% CC damage bonus.
+Removed `category: 'cursed'`. Context: `ChargeCorrectContext.factPreviouslyCorrect` wired in turnManager.
 
 ## 2026-04-09 Balance Pass 6 (Canary Assist + Relic Rarity/Reworks)
 
@@ -225,11 +231,11 @@ Key resolved contexts:
 - `ritual_blade`: first card bonus +50% (unchanged), subsequent card penalty -25% → **-15%**
 - `blood_price`: HP loss per turn -2 → **-3** ("+1 AP per turn, lose 3 HP per turn")
 - `obsidian_dice`: good outcome probability 60% → **50%** (true 50/50 gamble)
-- `worn_shield`: flat block bonus +2 → **+1** (on all shield cards)
+- `worn_shield`: flat block bonus +2 → **+1 (CHARGED shield cards only; Quick Play grants 0)**
 
 ### Tier 2 Trap Relic Fixes
 
-- `mnemonic_scar`: REWORKED — removed all self-damage. New effect: previously-correct facts get CC+25% damage; all wrong charges draw 1 card. Category changed from `cursed` to `knowledge`. `mnemonicScarDrawBonus` field added to `ChargeWrongEffects`.
+- `mnemonic_scar`: REWORKED — removed all self-damage. New effect: previously-correct facts get CC+25% damage; all wrong charges draw 1 card. Category changed from `cursed` to `knowledge`. `drawBonus` field added to `ChargeWrongEffects` interface. `factPreviouslyCorrect` field added to `ChargeCorrectContext`.
 - `hollow_armor`: REWORKED — starting block 15 → **12**; `blockGainHalved` removed (shields work normally). New turn-end effect: lose **3 block per turn after turn 3**. `TurnEndEffects.blockDrain` field added; `TurnEndContext.encounterTurnNumber` added.
 - `glass_lens`: wrong charge self-damage -3 → **-1**
 
@@ -242,9 +248,10 @@ Key resolved contexts:
 
 ### Resolver Changes
 
-- `resolveChargeWrongEffects` return: added `mnemonicScarDrawBonus: number`
-- `ChargeWrongEffects` interface: new `mnemonicScarDrawBonus` field
+- `resolveChargeWrongEffects` return: added `drawBonus: number` (mnemonic_scar v3 consolation draw)
+- `ChargeWrongEffects` interface: new `drawBonus` field (0 if not held)
 - `ChargeCorrectContext` interface: new `factPreviouslyCorrect?: boolean` field (mnemonic_scar CC+25%)
+- `ShieldModifiersContext` interface: new `wasCharged?: boolean` field (worn_shield v3 charged-only bonus)
 - `TurnEndEffects` interface: new `blockDrain?: number` field (hollow_armor)
 - `TurnEndContext` interface: new `encounterTurnNumber?: number` field (hollow_armor drain)
 

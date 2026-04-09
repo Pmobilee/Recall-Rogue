@@ -270,20 +270,36 @@ describe('chain_link_charm (uncommon)', () => {
   });
 });
 
-// worn_shield reworked 2026-04-09: was thorns + -20% block; now +2 flat block on all shield cards
-describe('worn_shield (uncommon, reworked)', () => {
-  it('grants +2 flatBlockBonus on shield cards', () => {
+// worn_shield v3 (Pass 7 nerf): +1 flat block on CHARGED shield cards only
+describe('worn_shield (uncommon, v3 charged-only)', () => {
+  it('grants +1 flatBlockBonus on CHARGED shield cards', () => {
+    const result = resolveShieldModifiers(
+      new Set(['worn_shield']),
+      { shieldCardPlayCountThisEncounter: 1, wasCharged: true },
+    );
+    expect(result.flatBlockBonus).toBe(1);
+  });
+
+  it('grants NO bonus on Quick Play shield cards', () => {
+    const result = resolveShieldModifiers(
+      new Set(['worn_shield']),
+      { shieldCardPlayCountThisEncounter: 1, wasCharged: false },
+    );
+    expect(result.flatBlockBonus).toBe(0);
+  });
+
+  it('grants NO bonus when wasCharged is not provided (defaults false)', () => {
     const result = resolveShieldModifiers(
       new Set(['worn_shield']),
       { shieldCardPlayCountThisEncounter: 1 },
     );
-    expect(result.flatBlockBonus).toBe(2);
+    expect(result.flatBlockBonus).toBe(0);
   });
 
   it('no longer grants thorns', () => {
     const result = resolveShieldModifiers(
       new Set(['worn_shield']),
-      { shieldCardPlayCountThisEncounter: 1 },
+      { shieldCardPlayCountThisEncounter: 1, wasCharged: true },
     );
     expect(result.grantsThorns).toBeUndefined();
   });
@@ -291,7 +307,7 @@ describe('worn_shield (uncommon, reworked)', () => {
   it('no longer has -20% block penalty', () => {
     const result = resolveShieldModifiers(
       new Set(['worn_shield']),
-      { shieldCardPlayCountThisEncounter: 1 },
+      { shieldCardPlayCountThisEncounter: 1, wasCharged: true },
     );
     expect(result.percentBlockBonus).toBe(0);
   });
@@ -299,7 +315,7 @@ describe('worn_shield (uncommon, reworked)', () => {
   it('no block bonus when relic not held', () => {
     const result = resolveShieldModifiers(
       new Set([]),
-      { shieldCardPlayCountThisEncounter: 1 },
+      { shieldCardPlayCountThisEncounter: 1, wasCharged: true },
     );
     expect(result.flatBlockBonus).toBe(0);
   });
@@ -1226,20 +1242,36 @@ describe('glass_lens (tradeoff) — charge wrong', () => {
   });
 });
 
-describe('mnemonic_scar (tradeoff)', () => {
-  it('resolves at CC power when fact previously correct', () => {
+describe('mnemonic_scar v3 (Pass 7 rework)', () => {
+  it('draws 1 card on any wrong charge (known fact)', () => {
     const result = resolveChargeWrongEffects(new Set(['mnemonic_scar']), { factId: 'test', factPreviouslyCorrect: true });
-    expect(result.resolveAtCcPower).toBe(true);
+    expect(result.drawBonus).toBe(1);
   });
 
-  it('deals 2 self-damage on new fact wrong', () => {
+  it('draws 1 card on any wrong charge (new fact)', () => {
     const result = resolveChargeWrongEffects(new Set(['mnemonic_scar']), { factId: 'test', factPreviouslyCorrect: false });
-    expect(result.selfDamage).toBeGreaterThanOrEqual(2);
+    expect(result.drawBonus).toBe(1);
   });
 
-  it('no effect without relic', () => {
+  it('no self-damage on new fact wrong (v3 removes penalty)', () => {
+    const result = resolveChargeWrongEffects(new Set(['mnemonic_scar']), { factId: 'test', factPreviouslyCorrect: false });
+    expect(result.selfDamage).toBe(0);
+  });
+
+  it('resolveAtCcPower is always undefined in v3', () => {
+    const result = resolveChargeWrongEffects(new Set(['mnemonic_scar']), { factId: 'test', factPreviouslyCorrect: true });
+    expect(result.resolveAtCcPower).toBeUndefined();
+  });
+
+  it('drawBonus is 0 without relic', () => {
     const result = resolveChargeWrongEffects(new Set([]), { factId: 'test', factPreviouslyCorrect: false });
-    expect(result.resolveAtCcPower).toBeFalsy();
+    expect(result.drawBonus).toBe(0);
+  });
+
+  it('+25% CC damage on previously-correct facts', () => {
+    const base = resolveChargeCorrectEffects(new Set(['mnemonic_scar']), makeChargeCorrectCtx({ factPreviouslyCorrect: false }));
+    const known = resolveChargeCorrectEffects(new Set(['mnemonic_scar']), makeChargeCorrectCtx({ factPreviouslyCorrect: true }));
+    expect(known.extraMultiplier).toBeCloseTo(base.extraMultiplier * 1.25, 5);
   });
 });
 

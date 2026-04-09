@@ -1285,6 +1285,10 @@ export function playCardAction(
           _wrongChargesForLuckyCoin = 0;
         }
       }
+      // mnemonic_scar v3: draw 1 card on any wrong Charge
+      if (chargeWrongFx.drawBonus > 0) {
+        drawHand(deck, chargeWrongFx.drawBonus);
+      }
     }
 
     // Step 5a (AR-59.13): onPlayerChargeWrong callback — normal mode, Charge plays only
@@ -1729,6 +1733,10 @@ export function playCardAction(
     const factEncounterGap = factLastSeen === undefined
       ? 0  // never seen → treat as gap 0 (qualifies for Akashic bonus)
       : turnState.encounterNumber - factLastSeen;
+    const _runStateForCC = get(activeRunState);
+    const _factPrevCorrect = card.factId
+      ? _runStateForCC?.factsAnsweredCorrectly?.has(card.factId) ?? false
+      : false;
     const chargeFx = resolveChargeCorrectEffects(turnState.activeRelicIds, {
       answerTimeMs: 9999, // timing not available here; speed relics handled upstream
       cardTier: cardTierNum,
@@ -1744,6 +1752,7 @@ export function playCardAction(
       wasReviewQueueFact,
       luckyCoinArmed: _luckyCoinArmed,
       scarTissueStacks: _scarTissueStacks,
+      factPreviouslyCorrect: _factPrevCorrect,
     });
     // lucky_coin (v3): consume the armed flag after it fires
     if (_luckyCoinArmed && chargeFx.luckyCoinArmed) {
@@ -2056,6 +2065,7 @@ export function playCardAction(
       ? resolveShieldModifiers(turnState.activeRelicIds, {
           shieldCardPlayCountThisEncounter: 0,
           encounterTurnNumber: turnState.encounterTurnNumber,
+          wasCharged: playMode === 'charge',
         })
       : null;
     // hollow_armor: halve block from shield cards (blockGainHalved)

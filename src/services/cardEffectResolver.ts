@@ -640,7 +640,7 @@ export function resolveCardEffect(
 
   // ── Relic shield modifiers ──────────────────────────────────────────────────
   const relicShieldMods = (effectiveType === 'shield' || effectiveType === 'wild')
-    ? resolveShieldModifiers(activeRelicIds)
+    ? resolveShieldModifiers(activeRelicIds, { shieldCardPlayCountThisEncounter: 0, wasCharged: isChargeCorrect })
     : null;
 
   // Build the attack relic multiplier from the resolver results.

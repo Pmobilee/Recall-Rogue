@@ -637,6 +637,11 @@ export interface ShieldModifiersContext {
   shieldCardPlayCountThisEncounter: number;
   /** Current turn number within the encounter (hollow_armor: block halved after turn 0). */
   encounterTurnNumber?: number;
+  /**
+   * Whether the shield card was played as a Charged card (worn_shield v3: +1 only on charged shields).
+   * Defaults to false (Quick Play) when not provided.
+   */
+  wasCharged?: boolean;
 }
 
 /**
@@ -650,21 +655,18 @@ export function resolveShieldModifiers(
   relicIds: Set<string>,
   context?: ShieldModifiersContext,
 ): ShieldModifiers {
-  // worn_shield rework (2026-04-09) — +2 flat block on all block cards (replaces v2 penalty+thorns)
+  // worn_shield v3 (Pass 7 nerf) — +1 flat block on CHARGED shield cards only
   let percentBlockBonus = 0;
   let grantsThorns: number | undefined;
   const shieldCount = context?.shieldCardPlayCountThisEncounter ?? 0;
   // Keep v1 wornShieldBonus for legacy callers
   const wornShieldBonus = 0; // v1 behaviour removed
-  if (relicIds.has('worn_shield')) {
-    playCardAudio('relic-trigger');
-  }
 
   // whetstone — penalty: -1 flat block on shield cards
-  // worn_shield rework — +2 flat block on all shield cards
+  // worn_shield v3 (Pass 7 nerf) — +1 flat block on CHARGED shield cards only
   let flatBlockBonus = relicIds.has('stone_wall') ? 3 : 0;
-  if (relicIds.has('worn_shield')) {
-    flatBlockBonus += 2;
+  if (relicIds.has('worn_shield') && context?.wasCharged) {
+    flatBlockBonus += 1;
   }
   if (relicIds.has('whetstone')) {
     flatBlockBonus -= 1;
@@ -1593,6 +1595,12 @@ export interface ChargeCorrectContext {
    * factEncounterGap >= 3 OR factEncounterGap === 0 triggers the Akashic bonus.
    */
   factEncounterGap?: number;
+  /**
+   * Whether the player has previously answered this fact correctly (mnemonic_scar v3).
+   * When true, mnemonic_scar grants +25% damage on correct Charge.
+   * Optional; defaults to false when not provided.
+   */
+  factPreviouslyCorrect?: boolean;
 }
 
 /**
@@ -1737,6 +1745,11 @@ export function resolveChargeCorrectEffects(
     extraMultiplier *= 1.5;
   }
 
+  // mnemonic_scar v3 — +25% damage on facts the player has previously answered correctly
+  if (relicIds.has('mnemonic_scar') && context.factPreviouslyCorrect) {
+    extraMultiplier *= 1.25;
+  }
+
   // akashic_record v3 — +50% damage on all correct Charges
   if (akashicChargeBonus > 0) {
     extraMultiplier *= (1 + akashicChargeBonus / 100);
@@ -1791,8 +1804,13 @@ export interface ChargeWrongEffects {
    */
   piercingDamage: number;
   /**
-   * Whether the card should resolve at charge-correct power instead of wrong penalty.
-   * mnemonic_scar: true if the fact was previously answered correctly (saves from penalty).
+   * Bonus cards to draw immediately on wrong Charge (mnemonic_scar v3: draw 1 on any wrong charge).
+   * 0 if no relic grants this bonus.
+   */
+  drawBonus: number;
+  /**
+   * @deprecated mnemonic_scar v3: resolveAtCcPower removed. CC+25% is now in resolveChargeCorrectEffects.
+   * Kept for interface compatibility — always undefined.
    */
   resolveAtCcPower?: boolean;
   /**
@@ -1864,14 +1882,12 @@ export function resolveChargeWrongEffects(
     selfDamage = (selfDamage ?? 0) + 1;
   }
 
-  // mnemonic_scar — if fact was previously correct, resolve at CC power; otherwise +5 self-damage
-  let resolveAtCcPower: boolean | undefined;
+  // mnemonic_scar v3 (Pass 7): NO self-damage. Wrong charges draw 1 card as consolation.
+  // CC+25% for previously-correct facts is handled in resolveChargeCorrectEffects.
+  const resolveAtCcPower: undefined = undefined; // deprecated; kept for interface compat
+  let mnemonicScarDrawBonus = 0;
   if (relicIds.has('mnemonic_scar')) {
-    if (context.factPreviouslyCorrect) {
-      resolveAtCcPower = true;
-    } else {
-      selfDamage = (selfDamage ?? 0) + 5;
-    }
+    mnemonicScarDrawBonus = 1; // draw 1 card on ANY wrong charge
     playCardAudio('relic-trigger');
   }
 
@@ -1889,7 +1905,7 @@ export function resolveChargeWrongEffects(
 
   void context; // factId used by caller to update run state
 
-  return { selfDamage, enemyDamage, revealAndAutopass, goldBonus, multiplierOverride, piercingDamage, resolveAtCcPower, scarTissueStackIncrement, luckyCoinWrongCount };
+  return { selfDamage, enemyDamage, revealAndAutopass, goldBonus, multiplierOverride, piercingDamage, resolveAtCcPower, scarTissueStackIncrement, luckyCoinWrongCount, drawBonus: mnemonicScarDrawBonus };
 }
 
 // ─── V2 Chain Complete Effects ──────────────────────────────────────

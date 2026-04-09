@@ -871,22 +871,21 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'mnemonic_scar',
     name: 'Mnemonic Scar',
-    description: 'Wrong on a previously-correct fact: CC power. Wrong on a new fact: take 2 damage.',
-    flavorText: 'The scar remembers what you learned — and punishes you for reaching beyond your knowledge.',
-    visualDescription: 'A glowing scar across a forehead, half golden (knowledge) and half red (pain). Lightning arcs between the two halves. 32x32 pixel art.',
+    description: 'Previously-correct facts: +25% Charge Correct damage. Wrong charges: draw 1 card.',
+    flavorText: 'The scar remembers what you learned — and turns every stumble into a second chance.',
+    visualDescription: 'A glowing scar across a forehead, half golden (knowledge) and half blue (resilience). Lightning arcs between the two halves. 32x32 pixel art.',
     rarity: 'uncommon',
-    category: 'cursed',
+    category: 'knowledge',
     trigger: 'on_charge_wrong',
     effects: [
-      { effectId: 'wrong_known_fact_cc_power', description: 'CW on known fact resolves at CC power', value: 1 },
-      { effectId: 'wrong_new_fact_self_damage', description: 'CW on new fact: take 2 damage', value: 2 },
+      { effectId: 'known_fact_cc_bonus_percent', description: '+25% CC damage on previously-correct facts', value: 25 },
+      { effectId: 'wrong_charge_draw', description: 'Wrong charges: draw 1 card', value: 1 },
     ],
     icon: '⚡',
     unlockCost: 0,
     unlockLevel: 10,
     isStarter: false,
     startsUnlocked: false,
-    curseDescription: 'Wrong answers on facts you have never answered correctly deal 2 damage to you.',
   },
 
   {
