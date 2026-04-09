@@ -428,6 +428,12 @@ Picking a different node before consensus simply replaces the previous pick — 
 
 Source: `src/services/multiplayerMapSync.ts`, `src/CardApp.svelte` (`handleMapNodeSelect` / `commitMapNodeSelection`), `src/ui/components/MapNode.svelte` (`pickedBy` prop), `src/ui/components/DungeonMap.svelte` (`nodePicks` prop).
 
+### Subscription lifecycle invariant (fix 2026-04-09)
+
+`onMapNodeConsensus()` and `onMapNodePicksChanged()` are registered ONCE by the consumer (`CardApp.svelte`) at component mount, BEFORE the game-start callback fires. They persist across `initMapNodeSync()` / `destroyMapNodeSync()` re-init cycles (which only reset run-level state — picks, local player ID, transport listener). Subscribers tear themselves down via the unsubscribe functions returned from the registration APIs when the consumer unmounts.
+
+`destroyMapNodeSync()` MUST NOT null these UI subscription slots. Only run-level state belongs to teardown: `_picks`, `_localPlayerId`, and the transport listener cleanup. If a registration API returns an unsubscribe function, that is a strong signal the caller owns the subscription lifetime — the module must not null it from inside teardown helpers.
+
 ---
 
 ## Co-op Turn Synchronization (2026-04-08)

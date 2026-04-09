@@ -72,8 +72,13 @@ export function destroyMapNodeSync(): void {
   }
   _picks = {};
   _localPlayerId = '';
-  _onConsensus = null;
-  _onPicksChanged = null;
+  // NOTE: Do NOT null _onConsensus / _onPicksChanged here. Those are
+  // long-lived UI subscriptions owned by the consumer (CardApp), set up
+  // once at component mount via onMapNodeConsensus / onMapNodePicksChanged,
+  // and MUST persist across re-init cycles — initMapNodeSync() calls
+  // destroyMapNodeSync() at its start on every run/encounter boundary.
+  // Subscribers clear themselves via the unsubscribe functions returned
+  // from those registration APIs when the consumer unmounts.
 }
 
 // ── Public API ───────────────────────────────────────────────────────────────

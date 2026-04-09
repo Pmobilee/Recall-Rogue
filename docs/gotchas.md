@@ -1,3 +1,30 @@
+### 2026-04-09 — multiplayerMapSync.destroyMapNodeSync wiped UI subscriptions
+
+**What:** In coop multiplayer, clicking a map node produced no pick badge on any
+tab and consensus never fired, so the run was stuck on the dungeon map.
+
+**Why:** `destroyMapNodeSync()` nulled `_onConsensus` and `_onPicksChanged` —
+the UI subscription slots owned by `CardApp.svelte`. Because `initMapNodeSync()`
+calls `destroyMapNodeSync()` as its first step, the UI callbacks registered at
+component mount time were wiped the moment the run started. Subsequent
+`pickMapNode()` calls updated internal `_picks` but `_notifyPicksChanged()` was
+a silent no-op, so `mapNodePicks` reactive state was never refreshed and the
+consensus callback never fired either.
+
+**Lesson:** In pub/sub modules with global state, distinguish between
+**run-level state** (things that must reset between encounters: picks, player
+IDs, transport listeners) and **consumer-owned subscriptions** (UI callbacks
+with their own unsubscribe lifecycle). Teardown helpers must only clear the
+former. If a setter function returns its own unsubscribe fn, that's a strong
+signal the caller owns the subscription lifetime — do not null it from inside
+the module.
+
+**Fix:** Remove the two lines nulling `_onConsensus` / `_onPicksChanged` from
+`destroyMapNodeSync()`. Regression test in `src/services/multiplayerMapSync.test.ts`.
+
+**Files changed:** `src/services/multiplayerMapSync.ts`, `src/services/multiplayerMapSync.test.ts`
+
+
 ### 2026-04-09 — Coop custom-deck sync + mixed-deck trivia filter
 
 **What:** Two compounding bugs in multiplayer coop caused host and guest to end up with different card pools when a custom deck mixed language/grammar items with knowledge items.
