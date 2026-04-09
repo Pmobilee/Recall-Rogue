@@ -107,15 +107,21 @@ export function tickStatusEffects(effects: StatusEffect[]): TickResult {
  * @param effects - The target's status effects array (mutated in place).
  * @returns { bonusDamage, stacksAfter }
  */
-export function triggerBurn(effects: StatusEffect[]): { bonusDamage: number; stacksAfter: number } {
+export function triggerBurn(
+  effects: StatusEffect[],
+  skipHalving = false,
+): { bonusDamage: number; stacksAfter: number } {
   const burn = effects.find(e => e.type === 'burn' && e.turnsRemaining > 0);
   if (!burn) return { bonusDamage: 0, stacksAfter: 0 };
   const bonusDamage = burn.value;
-  burn.value = Math.floor(burn.value / 2);
-  if (burn.value <= 0) {
-    const idx = effects.indexOf(burn);
-    if (idx !== -1) effects.splice(idx, 1);
-    return { bonusDamage, stacksAfter: 0 };
+  // Phase 3 twin_burn_chain tag: skipHalving=true prevents Burn stacks from halving per hit.
+  if (!skipHalving) {
+    burn.value = Math.floor(burn.value / 2);
+    if (burn.value <= 0) {
+      const idx = effects.indexOf(burn);
+      if (idx !== -1) effects.splice(idx, 1);
+      return { bonusDamage, stacksAfter: 0 };
+    }
   }
   return { bonusDamage, stacksAfter: burn.value };
 }

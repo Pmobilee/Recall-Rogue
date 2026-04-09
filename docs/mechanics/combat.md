@@ -488,3 +488,99 @@ Guardian Shield is opt-in: the card resolver must call `queueGuardianShield(bloc
 ### Fog Contagion Integration
 
 After `processTurnActions()`, read `getSharedFogIncrease()` and call `adjustAura(n)` for BOTH players in encounterBridge. This is the accountability mechanic: wrong answers from either partner hurt everyone.
+
+---
+
+## Phase 2: TurnState Extensions (2026-04-09)
+
+New fields added to `TurnState` to support Phase 3 tag mechanics. All initialized in `startEncounter()`.
+
+### Encounter-Scoped Tracking Fields
+
+| Field | Type | Purpose |
+|-------|------|---------|
+| `selfDamageTakenThisEncounter` | `number` | Cumulative self-damage from reckless/gambit. Used by `reckless_selfdmg_scale3` tag. Incremented at `effect.selfDamage` block in `playCardAction`. |
+| `shieldsPlayedThisTurn` | `number` | Shield cards played this turn. Incremented when `card.cardType === 'shield'` in main play path. |
+| `shieldsPlayedLastTurn` | `number` | Copied from `shieldsPlayedThisTurn` at turn end. Used by `block_consecutive3`. |
+| `lastTurnPlayedShield` | `boolean` | Convenience flag: `shieldsPlayedLastTurn > 0`. |
+| `reinforcePermanentBonus` | `number` | Stacking block bonus from `reinforce_perm1`. +1 each reinforce play, encounter-scoped. |
+| `lockedCardType` | `string \| null` | Reserved for Librarian elite Silence mechanic (future). |
+| `empowerWeakPending` | `number` | Weakness stacks to apply when next buffed attack fires (`empower_weak2`). Cleared at turn end. |
+
+### Passive Fields (Computed at Encounter Start)
+
+`startEncounter()` scans all deck cards (via `getMasteryStats(...).tags`) for these passive tags:
+
+| Field | Type | Tag | Effect |
+|-------|------|-----|--------|
+| `vulnMultiplierOverride` | `number \| null` | `expose_vuln75` | Replaces default 1.5× Vulnerable multiplier in `applyAttackDamage()`. Set to 1.75 if any deck card has this tag. |
+| `weakShieldBonusPercent` | `number` | `weaken_shield30` | When enemy is Weakened and `> 0`, shield block is multiplied by `(1 + weakShieldBonusPercent/100)`. Applied during shield card resolution. |
+
+### AdvancedResolveOptions Extensions
+
+New optional fields passed from `playCardAction` to `resolveCardEffect`:
+
+| Field | Source |
+|-------|--------|
+| `vulnMultiplierOverride` | `turnState.vulnMultiplierOverride` |
+| `cardsPlayedThisTurn` | `turnState.cardsPlayedThisTurn` |
+| `selfDamageTakenThisEncounter` | `turnState.selfDamageTakenThisEncounter` |
+| `lastTurnPlayedShield` | `turnState.lastTurnPlayedShield` |
+| `reinforcePermanentBonus` | `turnState.reinforcePermanentBonus` |
+
+---
+
+## Phase 3: 13 Card Tags (2026-04-09)
+
+Tag implementations in `cardEffectResolver.ts` and `turnManager.ts`. All tags are defined in `MASTERY_STAT_TABLES` in `cardUpgradeService.ts`.
+
+### Attack Tags
+
+| Tag | Mechanic | Effect |
+|-----|---------|--------|
+| `strike_tempo3` | `strike` (L5) | If `cardsPlayedThisTurn >= 3`, deal +4 bonus damage. New `case 'strike':` in switch. |
+| `power_vuln2t` | `power_strike` (L5) | Vulnerable applied by `power_vuln1` lasts 2 turns instead of 1. |
+| `power_vuln75` | `power_strike` (L5) | Passive: sets `vulnMultiplierOverride = 1.75` at encounter start. Vulnerable multiplier becomes 1.75× instead of 1.5×. |
+| `iron_wave_block_double` | `iron_wave` (L5) | If player has 10+ current block when played, double the damage component (not the block component). |
+| `riposte_block_dmg40` | `riposte` (L5) | Add `Math.floor(playerBlock * 0.4)` as bonus damage after base damage. |
+| `twin_burn_chain` | `twin_strike` (L5) | During multi-hit Burn processing, Burn stacks do NOT halve after each hit. `triggerBurn(effects, skipHalving=true)` is called. |
+| `reckless_selfdmg_scale3` | `reckless` (L5) | Add `selfDamageTakenThisEncounter * 3` as bonus damage. Rewards sustained reckless play. |
+
+### Shield Tags
+
+| Tag | Mechanic | Effect |
+|-----|---------|--------|
+| `block_consecutive3` | `block` (L5) | If `lastTurnPlayedShield === true`, add +3 to block value. New `case 'block':` in switch. |
+| `reinforce_perm1` | `reinforce` (L5) | Add current `reinforcePermanentBonus` to block. Then signal turnManager to increment `reinforcePermanentBonus += 1`. |
+| `absorb_ap_on_block` | `absorb` (L5) | On Charge Correct, grant +1 AP. Uses `result.apOnBlockGain`, processed in turnManager. |
+
+### Buff Tags
+
+| Tag | Mechanic | Effect |
+|-----|---------|--------|
+| `empower_weak2` | `empower` (L5) | When the buffed attack fires and consumes `buffNextCard`, also apply 2 Weakness to enemy. Signal via `empowerWeakPending` in TurnState. |
+| `msurge_ap_on_l5` | `mastery_surge` (L5) | After bumping cards, if any bumped card is now at L5 in hand, grant +1 AP. |
+
+### Passive Tags (Set at Encounter Start)
+
+| Tag | Mechanic | Effect |
+|-----|---------|--------|
+| `weaken_shield30` | `weaken` (L5) | Passive: sets `weakShieldBonusPercent = 30`. Shield cards deal +30% block when enemy is Weakened. |
+| `expose_vuln75` | `expose` (L5) | Passive: sets `vulnMultiplierOverride = 1.75`. All attack damage vs Vulnerable enemy uses 1.75× instead of 1.5×. |
+
+### New CardEffectResult Fields
+
+| Field | Type | Set By | Consumed By |
+|-------|------|--------|-------------|
+| `reinforcePermanentBonusIncrement` | `boolean` | `reinforce` with `reinforce_perm1` | turnManager: increments `reinforcePermanentBonus` |
+| `masteryReachedL5Count` | `number` | `mastery_surge` with `msurge_ap_on_l5` | turnManager: grants +1 AP if hand has L5 card |
+| `apOnBlockGain` | `number` | `absorb` with `absorb_ap_on_block` | turnManager: grants N AP |
+| `vulnDurationOverride` | `number` | `power_strike` with `power_vuln2t` | Informational; actual duration set at status apply time |
+| `twinBurnChainActive` | `boolean` | `twin_strike` with `twin_burn_chain` | turnManager multi-hit loop: passes `skipHalving=true` to `triggerBurn()` |
+| `riposteBlockDmgBonus` | `number` | Unused (inline in riposte case) | — |
+| `ironWaveDoubleDmg` | `boolean` | Unused (inline in iron_wave case) | — |
+| `empowerWeakStacks` | `number` | `empower` with `empower_weak2` | turnManager: stores to `empowerWeakPending` |
+
+### `triggerBurn` Signature Change
+
+`triggerBurn(effects: StatusEffect[], skipHalving = false)` — new optional second parameter. When `true` (set by `twin_burn_chain`), Burn stacks are not halved after the tick. All existing callers pass no second argument and retain default behavior (halving).

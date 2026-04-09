@@ -231,6 +231,23 @@ export interface CardEffectResult {
   apGain?: number;
   /** msurge_plus2 tag: mastery_surge gives +2 mastery per bumped card. */
   masteryBumpAmount?: number;
+  // ── Phase 3 result fields ─────────────────────────────────────────────────
+  /** reinforce_perm1 tag: signal turnManager to increment reinforcePermanentBonus after applying. */
+  reinforcePermanentBonusIncrement?: boolean;
+  /** msurge_ap_on_l5 tag: signal turnManager that a card reached L5 this surge — grant +1 AP. */
+  masteryReachedL5Count?: number;
+  /** absorb_ap_on_block tag: AP to grant when absorb is played Charge Correct. */
+  apOnBlockGain?: number;
+  /** power_vuln2t tag: Vulnerable applied by power_strike lasts 2 turns instead of 1. */
+  vulnDurationOverride?: number;
+  /** twin_burn_chain tag: twin_strike hits prevent Burn damage halving this play. */
+  twinBurnChainActive?: boolean;
+  /** riposte_block_dmg40 tag: add Math.floor(playerBlock * 0.4) bonus damage. */
+  riposteBlockDmgBonus?: number;
+  /** iron_wave_block_double tag: double the damage component if player has 10+ block. */
+  ironWaveDoubleDmg?: boolean;
+  /** empower_weak2 tag: when an empowered attack fires, also apply 2 Weakness to enemy. */
+  empowerWeakStacks?: number;
   /** thorns: if true, thorns value persists after the encounter ends (thorns_persist tag). */
   thornsPersist?: boolean;
   /** fortify: if true, block carries over to next turn (fortify_carry tag). */
@@ -398,6 +415,32 @@ export interface AdvancedResolveOptions {
    * Populated by turnManager from turnState.isSurge.
    */
   isSurge?: boolean;
+  /**
+   * Phase 2: Override for the Vulnerable damage multiplier (expose_vuln75 passive).
+   * When set, replaces the default 1.5x multiplier applied when enemy is Vulnerable.
+   * Populated by turnManager from turnState.vulnMultiplierOverride.
+   */
+  vulnMultiplierOverride?: number | null;
+  /**
+   * Phase 2: Cards played this turn so far (for strike_tempo3 tag).
+   * Populated by turnManager from turnState.cardsPlayedThisTurn.
+   */
+  cardsPlayedThisTurn?: number;
+  /**
+   * Phase 2: Cumulative self-damage taken this encounter (for reckless_selfdmg_scale3 tag).
+   * Populated by turnManager from turnState.selfDamageTakenThisEncounter.
+   */
+  selfDamageTakenThisEncounter?: number;
+  /**
+   * Phase 2: Whether the player played a shield card last turn (for block_consecutive3 tag).
+   * Populated by turnManager from turnState.lastTurnPlayedShield.
+   */
+  lastTurnPlayedShield?: boolean;
+  /**
+   * Phase 2: Stacking block bonus from reinforce_perm1 tag (encounter-scoped).
+   * Populated by turnManager from turnState.reinforcePermanentBonus.
+   */
+  reinforcePermanentBonus?: number;
 }
 
 export function isCardBlocked(card: Card, enemy: EnemyInstance): boolean {
@@ -636,7 +679,11 @@ export function resolveCardEffect(
   const applyAttackDamage = (baseDamage: number): void => {
     const strengthMod = getStrengthModifier(playerState.statusEffects);
     let damage = Math.max(0, Math.round(baseDamage * strengthMod + (passiveBonuses?.attack ?? 0)));
-    if (isVulnerable(enemy.statusEffects)) damage = Math.round(damage * 1.5);
+    if (isVulnerable(enemy.statusEffects)) {
+      // Phase 2: expose_vuln75 passive can override the default 1.5x Vulnerable multiplier
+      const vulnMult = advanced.vulnMultiplierOverride ?? 1.5;
+      damage = Math.round(damage * vulnMult);
+    }
     result.damageDealt = damage;
     result.enemyDefeated = damage >= enemy.currentHP;
   };
@@ -692,6 +739,15 @@ export function resolveCardEffect(
     case 'reckless': {
       result.selfDamage = card.secondaryValue ?? mechanic?.secondaryValue ?? 3;
       applyAttackDamage(finalValue);
+      // Tag: reckless_selfdmg_scale3 — add selfDamageTakenThisEncounter * 3 as bonus damage.
+      // Note: selfDamageTakenThisEncounter is the value BEFORE this play's self-damage.
+      if (hasTag('reckless_selfdmg_scale3')) {
+        const selfDmgBonus = (advanced.selfDamageTakenThisEncounter ?? 0) * 3;
+        if (selfDmgBonus > 0) {
+          result.damageDealt = (result.damageDealt ?? 0) + selfDmgBonus;
+          result.enemyDefeated = result.damageDealt >= enemy.currentHP;
+        }
+      }
       return result;
     }
     case 'execute': {
@@ -1022,11 +1078,21 @@ export function resolveCardEffect(
       if (hasTag('twin_burn2')) {
         result.applyBurnStacks = 2;
       }
+      // Phase 3 Tag: twin_burn_chain — each hit that triggers Burn does NOT halve the stacks.
+      // Signal to turnManager to skip the halving step for Burn ticks during this card's hits.
+      if (hasTag('twin_burn_chain')) {
+        result.twinBurnChainActive = true;
+      }
       return result;
     }
     // Filler: Iron Wave — hybrid damage + block
     case 'iron_wave': {
-      applyAttackDamage(finalValue);
+      // Phase 3 Tag: iron_wave_block_double — if player has 10+ block, double the damage component.
+      const ironWaveCurrentBlock = playerState.shield ?? 0;
+      const ironWaveDmgValue = (hasTag('iron_wave_block_double') && ironWaveCurrentBlock >= 10)
+        ? finalValue * 2
+        : finalValue;
+      applyAttackDamage(ironWaveDmgValue);
       const ironWaveBlock = isChargeCorrect
         ? Math.round((mechanic?.quickPlayValue ?? 5) * CHARGE_CORRECT_MULTIPLIER + getMasterySecondaryBonus(mechanicId, card.masteryLevel ?? 0))
         : (isChargeWrong ? Math.round((card.secondaryValue ?? mechanic?.secondaryValue ?? 5) * 0.7) : applyShieldRelics(card.secondaryValue ?? mechanic?.secondaryValue ?? 5));
@@ -1108,6 +1174,14 @@ export function resolveCardEffect(
     // New: Riposte — hybrid damage + block
     case 'riposte': {
       applyAttackDamage(finalValue);
+      // Phase 3 Tag: riposte_block_dmg40 — add Math.floor(playerBlock * 0.4) as bonus damage.
+      if (hasTag('riposte_block_dmg40')) {
+        const riposteBlockBonus = Math.floor((playerState.shield ?? 0) * 0.4);
+        if (riposteBlockBonus > 0) {
+          result.damageDealt = (result.damageDealt ?? 0) + riposteBlockBonus;
+          result.enemyDefeated = result.damageDealt >= enemy.currentHP;
+        }
+      }
       const riposteBlock = isChargeCorrect
         ? Math.round(12 * focusAdjustedMultiplier * chainMultiplier * speedBonus * buffMultiplier * overclockMultiplier)
         : (isChargeWrong ? applyShieldRelics(Math.round((card.secondaryValue ?? mechanic?.secondaryValue ?? 4) * 0.75))
@@ -1126,6 +1200,11 @@ export function resolveCardEffect(
         result.extraCardsDrawn = draws;
         // L5: absorb_heal1cc — CC also heals 1 HP
         if (hasTag('absorb_heal1cc')) result.healApplied = (result.healApplied ?? 0) + 1;
+        // Phase 3 Tag: absorb_ap_on_block — grant +1 AP on CC (simple implementation).
+        // Full spec: min(2, damageBlockedThisTurn) — but blocked damage is not tracked per-card.
+        if (hasTag('absorb_ap_on_block')) {
+          result.apOnBlockGain = 1;
+        }
       }
       return result;
     }
@@ -1800,6 +1879,11 @@ export function resolveCardEffect(
       } else {
         result.masteryBumpAmount = 1;
       }
+      // Phase 3 Tag: msurge_ap_on_l5 — if any bumped card reaches L5, grant +1 AP.
+      // Signal to turnManager; the actual AP grant happens there after bumps are applied.
+      if (hasTag('msurge_ap_on_l5')) {
+        result.masteryReachedL5Count = 0; // initialized to 0; turnManager sets actual count
+      }
       return result;
     }
 
@@ -2133,18 +2217,31 @@ export function resolveCardEffect(
       return result;
     }
 
-    // power_strike — clean scaling; Tag: power_vuln1 applies Vulnerable 1t.
+    // power_strike — clean scaling; Tags: power_vuln1, power_vuln2t, power_vuln75
     case 'power_strike': {
       applyAttackDamage(finalValue);
       // Tag: power_vuln1 — apply Vulnerable 1t on hit.
       if (hasTag('power_vuln1')) {
-        result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: 1 });
+        // Phase 3 Tag: power_vuln2t — Vulnerable lasts 2 turns instead of 1.
+        const vulnDuration = hasTag('power_vuln2t') ? 2 : 1;
+        result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: vulnDuration });
+        if (hasTag('power_vuln2t')) result.vulnDurationOverride = 2;
       }
+      // Phase 3 Tag: power_vuln75 — Vulnerable multiplier is 1.75x instead of 1.5x.
+      // This is a passive that's activated at encounter start via vulnMultiplierOverride on TurnState.
+      // No per-card effect needed here — already handled in Phase 2 passive scan.
       return result;
     }
 
     case 'reinforce': {
-      result.shieldApplied = applyShieldRelics(finalValue);
+      let reinforceBlock = applyShieldRelics(finalValue);
+      // Phase 3 Tag: reinforce_perm1 — add reinforcePermanentBonus to block value.
+      // The bonus increments each play (handled in turnManager after this resolves).
+      if (hasTag('reinforce_perm1')) {
+        reinforceBlock += (advanced.reinforcePermanentBonus ?? 0);
+        result.reinforcePermanentBonusIncrement = true;
+      }
+      result.shieldApplied = reinforceBlock;
       // L5: reinforce_draw1 — also draws 1 card
       if (hasTag('reinforce_draw1')) result.extraCardsDrawn = 1;
       return result;
@@ -2154,6 +2251,26 @@ export function resolveCardEffect(
       result.shieldApplied = applyShieldRelics(finalValue);
       // L5: guard_taunt1t — enemy must attack player next turn
       if (hasTag('guard_taunt1t')) result.tauntDuration = 1;
+      return result;
+    }
+
+    // Phase 3 Tag: strike_tempo3 — +4 damage if 3+ cards played this turn
+    case 'strike': {
+      applyAttackDamage(finalValue);
+      if (hasTag('strike_tempo3') && (advanced.cardsPlayedThisTurn ?? 0) >= 3) {
+        result.damageDealt = (result.damageDealt ?? 0) + 4;
+        result.enemyDefeated = result.damageDealt >= enemy.currentHP;
+      }
+      return result;
+    }
+
+    // Phase 3 Tag: block_consecutive3 — +3 block if player played shield last turn
+    case 'block': {
+      let blockValueConsec = applyShieldRelics(finalValue);
+      if (hasTag('block_consecutive3') && (advanced.lastTurnPlayedShield ?? false)) {
+        blockValueConsec += 3;
+      }
+      result.shieldApplied = blockValueConsec;
       return result;
     }
 

@@ -16,21 +16,21 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 
 | ID | Name | Ph | QP | AP | Key Behavior |
 |----|------|----|----|----|-------------|
-| `strike` | Strike | 1 | 4 | 1 | Basic damage |
+| `strike` | Strike | 1 | 4 | 1 | Basic damage; L5 (`strike_tempo3`): +4 damage if 3+ cards played this turn |
 | `multi_hit` | Multi-Hit | 1 | 2 | 2 | Hits 3× (`secondaryValue: 3`) |
 | `heavy_strike` | Heavy Strike | 1 | 10 | 2 | High damage |
 | `piercing` | Piercing | 1 | 3 | 1 | Ignores enemy block |
-| `reckless` | Reckless | 1 | 6 | 1 | +self-damage `secondaryValue: 3` |
+| `reckless` | Reckless | 1 | 6 | 1 | +self-damage `secondaryValue: 3`; L5 (`reckless_selfdmg_scale3`): add `selfDamageTakenThisEncounter × 3` bonus damage |
 | `execute` | Execute | 1 | 3 | 1 | +`secondaryValue: 8` bonus below 30% HP |
 | `lifetap` | Lifetap | 1 | 4 | 2 | Heal 20% of damage dealt |
-| `power_strike` | Power Strike | 1 | 5 | 1 | Heavier basic strike |
-| `twin_strike` | Twin Strike | 1 | 3 | 1 | Hits 2×, triggers Burn/Bleed per hit |
-| `iron_wave` | Iron Wave | 1 | 3 | 1 | Damage + block (`secondaryValue: 5`) |
+| `power_strike` | Power Strike | 1 | 5 | 1 | Heavier basic strike; L5 (`power_vuln2t`, `power_vuln75`): Vulnerable lasts 2 turns + passive 1.75× Vuln multiplier |
+| `twin_strike` | Twin Strike | 1 | 3 | 1 | Hits 2×, triggers Burn/Bleed per hit; L5 (`twin_burn2`, `twin_burn_chain`): 2 Burn/hit, Burn stacks don't halve on each hit |
+| `iron_wave` | Iron Wave | 1 | 3 | 1 | Damage + block (`secondaryValue: 5`); L5 (`iron_wave_block_double`): double damage component if player has 10+ block |
 | `bash` | Bash | 1 | 5 | 2 | Damage + Vulnerable; L3+ (`bash_vuln2t`): Vuln lasts 2t even on QP |
 | `rupture` | Rupture | 1 | 3 | 1 | Damage + Bleed |
 | `kindle` | Kindle | 1 | 2 | 1 | Damage + Burn + trigger immediately |
 | `overcharge` | Overcharge | 1 | 3 | 1 | CC scales with Charges this encounter |
-| `riposte` | Riposte | 1 | 3 | 1 | Damage + block |
+| `riposte` | Riposte | 1 | 3 | 1 | Damage + block; L5 (`riposte_block_dmg40`): +40% of current block as bonus damage |
 | `precision_strike` | Precision Strike | 1 | 8 | 1 | CC scales with question difficulty |
 | `siphon_strike` | Siphon Strike | 1 | 3 | 1 | Overkill heals (min 2, max 10) |
 | `gambit` | Gambit | 2 | 5 | 1 | QP: dmg + self-HP loss; CC: dmg + heal |
@@ -41,16 +41,16 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 
 | ID | Name | Ph | QP | AP | Key Behavior |
 |----|------|----|----|----|-------------|
-| `block` | Block | 1 | 3 | 1 | Basic block |
+| `block` | Block | 1 | 3 | 1 | Basic block; L5 (`block_consecutive3`): +3 block if player played a shield card last turn |
 | `thorns` | Thorns | 1 | 3 | 1 | Block + reflect `secondaryValue: 3` on hit; L5 (`thorns_persist`): thorns don't reset at encounter end |
 | `emergency` | Emergency | 1 | 2 | 1 | Block; doubled if HP < 30% |
 | `fortify` | Entrench | 1 | 4 | 2 | QP: 50% of current block. CC: 75% block + card value. CW: 25%; L5 (`fortify_carry`): block persists next turn, AP cost reduced to 1 |
 | `brace` | Brace | 1 | 0 | 1 | Block = enemy telegraph value; L3+ (`brace_exceed2`): +2 block bonus; L5 (`brace_draw1`): also draws 1 |
 | `overheal` | Overheal | 1 | 5 | 2 | L0: 5 block (was 3); doubled if HP < 60% (was 50%); L3+ (`overheal_heal2`): also heals 2 HP, AP cost reduced to 1; L5 (`overheal_heal_pct5`): also heals 5% max HP (AP=1) |
-| `reinforce` | Reinforce | 1 | 4 | 1 | More block than basic shield; L5 (`reinforce_draw1`): also draws 1 |
+| `reinforce` | Reinforce | 1 | 4 | 1 | More block than basic shield; L5 (`reinforce_draw1`, `reinforce_perm1`): draws 1 + gains stacking +1 permanent block each play |
 | `shrug_it_off` | Shrug It Off | 1 | 3 | 1 | Block + draw (1 or 2 from stat table); L5 (`shrug_cleanse1`): also removes 1 debuff |
 | `guard` | Guard | 1 | 7 | 2 | Large block; L5 (`guard_taunt1t`): enemy must attack player next turn, AP cost reduced to 1 |
-| `absorb` | Absorb | 1 | 3 | 1 | Block; CC draws 1 (or 2 at L3+ via `absorb_draw2cc`); L5 (`absorb_heal1cc`): CC also heals 1 |
+| `absorb` | Absorb | 1 | 3 | 1 | Block; CC draws 1 (or 2 at L3+ via `absorb_draw2cc`); L5 (`absorb_draw2cc`, `absorb_ap_on_block`): CC draws 2 + grants +1 AP |
 | `reactive_shield` | Reactive Shield | 1 | 2 | 1 | Block + Thorns (value from stat secondaryValue); L5 (`reactive_thorns_persist`): thorns persist encounter |
 | `aegis_pulse` | Aegis Pulse | 1 | 3 | 1 | Block; CC: same-chain cards in hand +2 block |
 | `parry` | Parry | 2 | 2 | 1 | Block + draw if enemy attacks; L5 (`parry_counter3`): deals 3 damage back to attacker |
@@ -64,7 +64,7 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 
 | ID | Name | Ph | Notes |
 |----|------|----|-------|
-| `empower` | Empower | 1 | Next card deals +X% damage; L3+ (`empower_2cards`): next 2 cards get the buff |
+| `empower` | Empower | 1 | Next card deals +X% damage; L3+ (`empower_2cards`): next 2 cards get the buff; L5 (`empower_2cards`, `empower_weak2`): also applies 2 Weakness to enemy when buffed attack fires |
 | `quicken` | Quicken | 1 | +1 AP this turn (or +2 at L5 via `quicken_ap2`); L1+ (`quicken_draw1`): also draws 1; L3+ (`quicken_draw2`): draws 2 |
 | `focus` | Focus | 1 | Next card -1 AP; CC: 2 cards get AP reduction; L2+ (`focus_draw1`): also draws 1; L5 (`focus_next2free`): next 2 cards cost 0 AP |
 | `double_strike` | Double Strike | 1 | Next attack hits twice; L3+: AP cost reduced to 1; CC (`double_strike_pierce`): next attack also pierces |
@@ -79,8 +79,8 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 
 | ID | Name | Ph | Notes |
 |----|------|----|-------|
-| `weaken` | Weaken | 1 | Apply Weakness stacks (no damage). QP: 1 stack, 1t. CC: 1+ stacks, 2t. Previously fell through to generic debuff fallback — fixed 2026-04-01. |
-| `expose` | Expose | 1 | Apply Vulnerable stacks (no damage). QP: 1 stack, 1t. CC: 1+ stacks, 2t. L5 (`expose_dmg3`): also deals 3 damage. |
+| `weaken` | Weaken | 1 | Apply Weakness stacks (no damage). QP: 1 stack, 1t. CC: 1+ stacks, 2t. L5 (`weaken_shield30`): passive — player gains +30% block bonus when enemy is Weakened. |
+| `expose` | Expose | 1 | Apply Vulnerable stacks (no damage). QP: 1 stack, 1t. CC: 1+ stacks, 2t. L5 (`expose_dmg3`, `expose_vuln75`): also deals 3 damage; passive — Vulnerable multiplier becomes 1.75× for entire encounter. |
 | `hex` | Hex | 1 | Apply Poison 3 for 3 turns; L3+ (`hex_vuln1t`): also applies Vulnerable 1t |
 | `slow` | Slow | 1 | Skip enemy's next defend/buff; CC: also applies Weakness 1t; L2+ (`slow_any_action`): can skip ANY action; L5 (`slow_weak1t`): QP/CW also apply Weakness 1t |
 | `sap` | Sap | 1 | Damage + Weakness; L2+ (`sap_weak2t`): Weakness lasts 2t; L5 (`sap_strip3block`): also strips 3 enemy block |
@@ -161,6 +161,11 @@ const hasTag = (tag: string) => activeTags.includes(tag);
 | `igniteDuration` | `number` | `ignite_2attacks` | Ignite buff applies to next N attacks (default 1) |
 | `apGain` | `number` | `trance_cc_ap1` | AP granted this turn (battle_trance CC) |
 | `masteryBumpAmount` | `number` | `msurge_plus2` | Mastery Surge: +N mastery per bumped card (default 1) |
+| `reinforcePermanentBonusIncrement` | `boolean` | `reinforce_perm1` | Signal to increment `reinforcePermanentBonus` in TurnState after block applied |
+| `masteryReachedL5Count` | `number` | `msurge_ap_on_l5` | Signal that mastery_surge should grant +1 AP if any bumped card reached L5 |
+| `apOnBlockGain` | `number` | `absorb_ap_on_block` | AP to grant on absorb Charge Correct |
+| `twinBurnChainActive` | `boolean` | `twin_burn_chain` | Burn ticks don't halve during multi-hit loop |
+| `empowerWeakStacks` | `number` | `empower_weak2` | Weakness stacks to apply to enemy when buffed attack fires |
 
 ### Tags that affect turnManager behavior (not CardEffectResult fields)
 

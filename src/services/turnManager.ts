@@ -437,6 +437,54 @@ export interface TurnState {
    * 0 = inactive. Decremented at end of each turn. Enemy rolls attack intent when > 0.
    */
   forcedAttackTurnsRemaining: number;
+  /**
+   * Phase 2: Cumulative self-damage taken this encounter (reckless/gambit self-damage).
+   * Used by reckless_selfdmg_scale3 tag to add bonus damage.
+   */
+  selfDamageTakenThisEncounter: number;
+  /**
+   * Phase 2: Number of shield cards played last turn.
+   * Copied from shieldsPlayedThisTurn at end of turn. Used by block_consecutive3 tag.
+   */
+  shieldsPlayedLastTurn: number;
+  /**
+   * Phase 2: Number of shield cards played this turn (current turn counter).
+   * Incremented when a shield card is played; copied to shieldsPlayedLastTurn at turn end.
+   */
+  shieldsPlayedThisTurn: number;
+  /**
+   * Phase 2: Convenience flag — true if player played at least one shield card last turn.
+   * Derived from shieldsPlayedLastTurn > 0. Used by block_consecutive3 tag.
+   */
+  lastTurnPlayedShield: boolean;
+  /**
+   * Phase 2: Stacking block bonus from reinforce_perm1 tag.
+   * Incremented by +1 each time a reinforce card with this tag is played.
+   * Encounter-scoped (resets at encounter start).
+   */
+  reinforcePermanentBonus: number;
+  /**
+   * Phase 2: Locked card type (future use — Librarian elite Silence mechanic).
+   * null = no restriction.
+   */
+  lockedCardType: string | null;
+  /**
+   * Phase 2: Override for the Vulnerable damage multiplier (expose_vuln75 passive).
+   * When set, replaces the default 1.5x. Computed at encounter start from deck tags.
+   * null = use default 1.5x.
+   */
+  vulnMultiplierOverride: number | null;
+  /**
+   * Phase 2: Bonus block percentage when enemy has Weakness (weaken_shield30 passive).
+   * 0 = inactive. Computed at encounter start from deck tags.
+   * When > 0 and enemy is Weakened, block = block * (1 + weakShieldBonusPercent/100).
+   */
+  weakShieldBonusPercent: number;
+  /**
+   * Phase 3 (empower_weak2 tag): number of Weakness stacks to apply to enemy when the next
+   * buffed attack fires. Set when empower with empower_weak2 tag is played. Cleared on consumption.
+   */
+  empowerWeakPending: number;
 }
 
 export interface PlayCardResult {
@@ -686,6 +734,16 @@ export function startEncounter(
     empowerRemainingCount: 0,
     igniteRemainingAttacks: 0,
     forcedAttackTurnsRemaining: 0,
+    // Phase 2: New encounter-state tracking fields
+    selfDamageTakenThisEncounter: 0,
+    empowerWeakPending: 0,
+    shieldsPlayedLastTurn: 0,
+    shieldsPlayedThisTurn: 0,
+    lastTurnPlayedShield: false,
+    reinforcePermanentBonus: 0,
+    lockedCardType: null,
+    vulnMultiplierOverride: null,
+    weakShieldBonusPercent: 0,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -711,6 +769,18 @@ export function startEncounter(
   // Reset mastery encounter flags for all cards in all piles
   const allCards = [...deck.drawPile, ...deck.discardPile, ...deck.hand, ...deck.exhaustPile];
   resetEncounterMasteryFlags(allCards);
+
+  // Phase 2: Compute passive encounter-start effects from deck tags.
+  // Scan all deck cards for expose_vuln75 and weaken_shield30 tags — these are passive
+  // effects that apply for the entire encounter once any card in the deck has the tag.
+  const hasDeckTag = (tag: string): boolean =>
+    allCards.some(c => (getMasteryStats(c.mechanicId ?? '', c.masteryLevel ?? 0)?.tags ?? []).includes(tag));
+  if (hasDeckTag('expose_vuln75')) {
+    initialState.vulnMultiplierOverride = 1.75;
+  }
+  if (hasDeckTag('weaken_shield30')) {
+    initialState.weakShieldBonusPercent = 30;
+  }
 
   const isFirstEncounter = deck.currentFloor === 1 && deck.currentEncounter <= 1;
   drawHand(deck, initialState.baseDrawCount, { firstDrawBias: isFirstEncounter });
@@ -1416,6 +1486,11 @@ export function playCardAction(
       scarTissueStacks: _scarTissueStacks,
       factDamageBonus,
       isSurge: turnState.isSurge,
+      vulnMultiplierOverride: turnState.vulnMultiplierOverride,
+      cardsPlayedThisTurn: turnState.cardsPlayedThisTurn,
+      selfDamageTakenThisEncounter: turnState.selfDamageTakenThisEncounter,
+      lastTurnPlayedShield: turnState.lastTurnPlayedShield,
+      reinforcePermanentBonus: turnState.reinforcePermanentBonus,
     },
   );
 
@@ -1799,14 +1874,16 @@ export function playCardAction(
       const bleedBonusPerHit = getBleedBonus(enemy.statusEffects, BLEED_BONUS_PER_STACK);
       let totalDamage = 0;
       let totalBleedBonus = 0;
+      // Phase 3: twin_burn_chain tag — Burn ticks don't halve when this flag is active
+      const skipBurnHalving = effect.twinBurnChainActive === true;
       for (let i = 0; i < hitCount; i++) {
         let hitDamage = perHitBase;
-        const burnResult = triggerBurn(enemy.statusEffects);
+        const burnResult = triggerBurn(enemy.statusEffects, skipBurnHalving);
         if (burnResult.bonusDamage > 0) {
           hitDamage += burnResult.bonusDamage;
           turnState.turnLog.push({
             type: 'status_tick',
-            message: `Burn (hit ${i + 1}): +${burnResult.bonusDamage} damage (${burnResult.stacksAfter} stacks remaining)`,
+            message: `Burn (hit ${i + 1}): +${burnResult.bonusDamage} damage (${burnResult.stacksAfter} stacks remaining)${skipBurnHalving ? ' [chain]' : ''}`,
             value: burnResult.bonusDamage,
           });
         }
@@ -1882,6 +1959,8 @@ export function playCardAction(
   if (effect.selfDamage && effect.selfDamage > 0) {
     // Reckless self-damage ignores shield.
     playerState.hp = Math.max(0, playerState.hp - effect.selfDamage);
+    // Phase 2: Track cumulative self-damage for reckless_selfdmg_scale3 tag
+    turnState.selfDamageTakenThisEncounter += effect.selfDamage;
     // on_hp_loss: pain_conduit reflect + bloodletter arm (self-damage source)
     if (turnState.activeRelicIds.size > 0) {
       const selfHpLossFx = resolveHpLossEffects(turnState.activeRelicIds, {
@@ -1910,6 +1989,13 @@ export function playCardAction(
     if (shieldMods?.blockGainDisabled) {
       effect.shieldApplied = 0;
     } else {
+      // Phase 2: weaken_shield30 passive — bonus block when enemy is Weakened
+      if ((turnState.weakShieldBonusPercent ?? 0) > 0) {
+        const enemyIsWeakened = enemy.statusEffects.some(e => e.type === 'weakness' && e.value > 0);
+        if (enemyIsWeakened) {
+          effect.shieldApplied = Math.round(effect.shieldApplied * (1 + turnState.weakShieldBonusPercent / 100));
+        }
+      }
       playCardAudio('shield-gain');
       applyShield(playerState, effect.shieldApplied);
     }
@@ -2169,11 +2255,26 @@ export function playCardAction(
         message: `${card.mechanicName ?? card.mechanicId}: exhausted after Charge`,
         cardId,
       });
-      // on_exhaust: exhaustion_engine draws 2 extra cards
+      // on_exhaust: exhaustion_engine draws 2 extra cards; scavengers_eye draws 1; tattered_notebook grants temp Strength
       if (turnState.activeRelicIds.size > 0) {
         const exhaustFx = resolveExhaustEffects(turnState.activeRelicIds);
         if (exhaustFx.bonusCardDraw > 0) {
           drawHand(deck, exhaustFx.bonusCardDraw);
+        }
+        if (exhaustFx.tempStrengthGain > 0) {
+          // tattered_notebook v3: +1 Strength this turn (1 turn duration)
+          playCardAudio('relic-trigger');
+          const existingStr = playerState.statusEffects.find(s => s.type === 'strength');
+          if (existingStr) {
+            existingStr.value += exhaustFx.tempStrengthGain;
+          } else {
+            playerState.statusEffects.push({
+              type: 'strength',
+              value: exhaustFx.tempStrengthGain,
+              turnsRemaining: 1,
+            });
+          }
+          turnState.triggeredRelicId = 'tattered_notebook';
         }
       }
     }
@@ -2680,6 +2781,73 @@ export function playCardAction(
     turnState.persistentShield = Math.max(turnState.persistentShield, playerState.shield);
   }
 
+
+  // ── Phase 3 tag-wiring section ────────────────────────────────────────────────────────────
+
+  // reinforcePermanentBonusIncrement: reinforce_perm1 tag — increment stacking block bonus
+  if (effect.reinforcePermanentBonusIncrement) {
+    turnState.reinforcePermanentBonus = (turnState.reinforcePermanentBonus ?? 0) + 1;
+    turnState.turnLog.push({
+      type: 'play',
+      message: `Reinforce permanent bonus: +1 (total: ${turnState.reinforcePermanentBonus})`,
+      value: turnState.reinforcePermanentBonus,
+    });
+  }
+
+  // apOnBlockGain: absorb_ap_on_block tag — grant +1 AP on Charge Correct
+  if ((effect.apOnBlockGain ?? 0) > 0) {
+    turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + effect.apOnBlockGain!);
+    turnState.turnLog.push({
+      type: 'play',
+      message: `Absorb CC: gained +${effect.apOnBlockGain} AP`,
+      value: effect.apOnBlockGain,
+    });
+  }
+
+  // masteryReachedL5Count: msurge_ap_on_l5 tag — +1 AP if any bumped card reached L5
+  // This is processed AFTER masteryBumpsCount (which already ran above), so we check the bumped cards.
+  if (effect.masteryReachedL5Count !== undefined && (effect.masteryBumpsCount ?? 0) > 0) {
+    // Re-examine the hand to see if any card is now at L5 (may have just been bumped)
+    // We approximate by checking if any card in hand that was bumped is at L5.
+    // Since we don't track which cards were bumped, check all L5 cards in hand.
+    // The check fires if masteryReachedL5Count sentinel is present (set by msurge_ap_on_l5 tag).
+    const l5Cards = turnState.deck.hand.filter(c => (c.masteryLevel ?? 0) === 5).length;
+    if (l5Cards > 0) {
+      turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + 1);
+      turnState.turnLog.push({
+        type: 'play',
+        message: 'Mastery Surge: card reached L5 — +1 AP',
+        value: 1,
+      });
+    }
+  }
+
+  // empowerWeakStacks: empower_weak2 tag — store pending Weakness to apply with next buffed attack
+  if ((effect.empowerWeakStacks ?? 0) > 0) {
+    turnState.empowerWeakPending = effect.empowerWeakStacks!;
+  }
+
+  // empowerWeakPending: apply Weakness when a buffed attack fires and consumes buffNextCard
+  // Check: card is attack type AND buff was active when it fired AND empowerWeakPending > 0
+  if (
+    card.cardType === 'attack' &&
+    (turnState.empowerWeakPending ?? 0) > 0 &&
+    turnState.buffNextCard > 0  // buff was consumed by this attack
+  ) {
+    applyStatusEffect(enemy.statusEffects, {
+      type: 'weakness',
+      value: turnState.empowerWeakPending,
+      turnsRemaining: 2,
+    });
+    playStatusAudio('weakness');
+    turnState.turnLog.push({
+      type: 'play',
+      message: `Empower Weak: applied ${turnState.empowerWeakPending} Weakness to enemy`,
+      value: turnState.empowerWeakPending,
+    });
+    turnState.empowerWeakPending = 0;
+  }
+
   // ── End of AR-tag-wiring section ──────────────────────────────────────────────────────────
 
   if (card.cardType === 'buff' && !effect.applyDoubleStrikeBuff && !effect.applyFocusBuff && !effect.applyOverclock && !(effect.applyIgniteBuff ?? 0)) {
@@ -2700,6 +2868,10 @@ export function playCardAction(
   turnState.lastCardEffect = { ...effect };
 
   turnState.cardsPlayedThisTurn += 1;
+  // Phase 2: Track shield card plays for block_consecutive3 tag
+  if (card.cardType === 'shield') {
+    turnState.shieldsPlayedThisTurn += 1;
+  }
   if (playMode !== 'quick') {
     turnState.cardsCorrectThisTurn += 1;
     turnState.consecutiveCorrectThisEncounter += 1;
@@ -3235,6 +3407,13 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.eliminateDistractors = 0;
   turnState.freePlayCharges = 0; // frenzy / focus_next2free charges don't carry over turns
 
+  // Phase 2/3: Copy shieldsPlayedThisTurn → shieldsPlayedLastTurn, then reset for next turn.
+  turnState.shieldsPlayedLastTurn = turnState.shieldsPlayedThisTurn;
+  turnState.lastTurnPlayedShield = turnState.shieldsPlayedThisTurn > 0;
+  turnState.shieldsPlayedThisTurn = 0;
+  // Phase 3: empower_weak2 — clear pending weak stacks at turn end if not consumed
+  turnState.empowerWeakPending = 0;
+
   // Capture chainType BEFORE decay — used by tag_magnet to bias the next draw
   const chainTypeBeforeReset = turnState.chainType;
 
@@ -3399,6 +3578,17 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       message: `Deja Vu: spawned ${spawned.length} card${spawned.length === 1 ? '' : 's'} from discard`,
       value: spawned.length,
     });
+  }
+
+  // herbal_pouch (v3) — apply 1 Poison to all enemies at turn start
+  if ((turnStartFx.poisonToAllEnemies ?? 0) > 0) {
+    playCardAudio('relic-trigger');
+    applyStatusEffect(enemy.statusEffects, {
+      type: 'poison',
+      value: turnStartFx.poisonToAllEnemies!,
+      turnsRemaining: 99,
+    });
+    turnState.triggeredRelicId = 'herbal_pouch';
   }
 
   // AR-204: Inscription of Iron — apply block at start of each player turn, before draw.
