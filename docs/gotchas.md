@@ -1271,3 +1271,27 @@ $effect(() => {
 - `.claude/skills/visual-inspect/skill.md` has a new "CRITICAL — Read This Before Diagnosing Any Visual Bug" section covering PNG-as-ground-truth, layout-dump pitfalls, ≥5000ms wait floors, HIDDEN-flag false positives, and a pre-claim checklist.
 
 **Lesson for future agents:** `screenshot.png` at its native resolution is the ONLY ground truth for what the game looks like. Layout dumps are a hint, the JPG is a preview, and both can lie. When in doubt, cross-check against the PNG and ask the user before writing a long bug report.
+
+---
+
+### 2026-04-09 — Concurrent Claude Session git-reset Wiped Phase 2/4 Work
+
+**What happened:** A concurrent Claude Code session performed git operations (git reset or similar) that reverted several edited source files back to HEAD state. The `cardEffectResolver.ts`, `mechanics.ts`, and `cardDescriptionService.ts` files lost their Phase 1/2/4 edits while `turnManager.ts` retained the Phase 1 helper (`applyTransmuteSwap`, `applyTransmuteAuto` handler). This produced 3 typecheck errors: `Property 'applyTransmuteAuto' does not exist on type 'CardEffectResult'`.
+
+**Root cause:** Multiple Claude sessions were active on the same worktree. One session ran a destructive git operation affecting files the other session had edited. Working in separate git worktrees prevents this class of conflict.
+
+**Files recovered:** `src/services/cardEffectResolver.ts` (added `applyTransmuteAuto` field + play-mode branching), `src/data/mechanics.ts` (transmute description updated), `src/services/cardDescriptionService.ts` (62 missing mechanics added across all 3 functions).
+
+**Lesson:** When running parallel sessions in the same repo, use `git worktree add` to give each session an isolated working tree. Never run git reset/stash/checkout on a working tree that another session may be actively editing. Always commit frequently (each phase completion) so recovery is just a stash pop or rebase.
+
+---
+
+### 2026-04-09 — Concurrent session git reset can revert Phase 3 CardPickerOverlay refactor
+
+**What:** A concurrent Claude session doing `git reset` reverted `CardPickerOverlay.svelte` back to its pre-Phase-3 state (importing `getShortCardDescription`, rendering bespoke `.card-v2-frame` inline). The `CardVisual.svelte` extraction (which `CardHand.svelte` had already adopted) was left stranded — CardHand used it, CardPickerOverlay did not.
+
+**Symptoms:** CardPickerOverlay showed cards with bespoke frame rendering that drifted from the hand card style; the "Phase 3 extraction" in the plan was only half-present.
+
+**Fix:** Recovery task re-applied the refactor — CardPickerOverlay now imports `CardVisual` directly and removes all bespoke frame code. The `.card-visual-wrapper` div provides the sized `position: relative` container that CardVisual's `position: absolute; inset: 0` inner layout requires.
+
+**Lesson:** When multiple agent sessions work concurrently, `git reset --hard` in one session can silently revert completed work in another. Always check component-level ownership and compare against docs before starting recovery work. Also: CardVisual's internal layout requires a correctly-sized `position: relative` wrapper — callers must set `--card-w` CSS var and explicit `width`/`height` on the wrapper.

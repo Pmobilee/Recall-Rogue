@@ -1,11 +1,6 @@
 <script lang="ts">
   import type { Card } from '../../data/card-types'
-  import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl } from '../utils/cardFrameV2'
-  import { getCardArtUrl } from '../utils/cardArtManifest'
-  import { getShortCardDescription } from '../../services/cardDescriptionService'
-  import { getMechanicDefinition } from '../../data/mechanics'
-  import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
-  import { getChainTypeColor, getChainTypeName } from '../../data/chainTypes'
+  import CardVisual from './CardVisual.svelte'
 
   interface Props {
     title: string
@@ -127,13 +122,9 @@
       </div>
     {/if}
 
-    <!-- Cards grid (scrollable, adapts from 3-card row to many-card grid) -->
+    <!-- Cards row — horizontally centered -->
     <div class="picker-cards">
       {#each cards as card, i (card.id)}
-        {@const mechanic = getMechanicDefinition(card.mechanicId)}
-        {@const artUrl = card.mechanicId ? getCardArtUrl(card.mechanicId) : null}
-        {@const chainColor = getChainColor(card.chainType ?? 0)}
-        {@const chainGlow = getChainGlowColor(card.chainType ?? 0)}
         {@const selected = isSelected(card)}
         <button
           class="card-btn"
@@ -143,40 +134,21 @@
             --bob-duration: {BOB_DURATIONS[i % BOB_DURATIONS.length]};
             --bob-delay: {BOB_DELAYS[i % BOB_DELAYS.length]};
             --fade-delay: {FADE_DELAYS[Math.min(i, FADE_DELAYS.length - 1)]};
-            --chain-color: {chainColor};
-            --chain-glow: {chainGlow};
             animation-delay: var(--bob-delay), var(--fade-delay);
           "
           onclick={() => handleCardClick(card)}
           aria-label={`Select ${card.mechanicName ?? card.cardType} card`}
           aria-pressed={selected}
         >
-          <!-- V2 layered card frame -->
-          <div class="card-v2-frame">
-            <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" style="z-index:0;" />
-            {#if artUrl}
-              <img class="frame-card-art" src={artUrl} alt="" style="z-index:1;" />
-            {/if}
-            <img class="frame-layer" src={getBaseFrameUrl()} alt="" style="z-index:2;" />
-            <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" style="z-index:3;" />
-            {#if (card.masteryLevel ?? 0) > 0}
-              <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" style="z-index:4;" />
-            {/if}
+          <!-- Sized container required by CardVisual (uses position:absolute inset:0 internally) -->
+          <div class="card-visual-wrapper">
+            <CardVisual {card} />
           </div>
-
-          <!-- AP cost gem -->
-          <div class="card-ap">{card.apCost ?? mechanic?.apCost ?? 1}</div>
 
           <!-- Gold checkmark for selected cards in multi/multiUpTo modes -->
           {#if selected && effectiveMode !== 'single'}
             <div class="card-check" aria-hidden="true">✓</div>
           {/if}
-
-          <!-- Card info below frame -->
-          <div class="card-info">
-            <div class="card-name">{card.mechanicName ?? card.cardType}</div>
-            <div class="card-desc">{getShortCardDescription(card)}</div>
-          </div>
         </button>
       {/each}
     </div>
@@ -252,32 +224,15 @@
     color: #f6d57d;
   }
 
-  /* ===== Cards grid (scrollable) ===== */
+  /* ===== Cards row — flex centered for 1–3 Transmute candidates ===== */
   .picker-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(calc(160px * var(--layout-scale, 1)), 1fr));
-    gap: calc(12px * var(--layout-scale, 1));
-    overflow-y: auto;
-    max-height: calc(60vh);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: calc(24px * var(--layout-scale, 1));
     padding: calc(12px * var(--layout-scale, 1));
-    width: 100%;
-    /* Subtle scrollbar styling */
-    scrollbar-width: thin;
-    scrollbar-color: rgba(246, 213, 125, 0.3) rgba(255, 255, 255, 0.05);
-  }
-
-  .picker-cards::-webkit-scrollbar {
-    width: calc(6px * var(--layout-scale, 1));
-  }
-
-  .picker-cards::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: calc(3px * var(--layout-scale, 1));
-  }
-
-  .picker-cards::-webkit-scrollbar-thumb {
-    background: rgba(246, 213, 125, 0.3);
-    border-radius: calc(3px * var(--layout-scale, 1));
   }
 
   /* ===== Card button ===== */
@@ -290,8 +245,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: calc(8px * var(--layout-scale, 1));
-    width: 100%;
 
     /* Staggered fade-in, then persistent bob */
     animation:
@@ -306,7 +259,7 @@
   /* Hover: scale up + glow */
   .card-btn:hover {
     transform: scale(1.08) translateY(calc(-4px * var(--layout-scale, 1)));
-    filter: drop-shadow(0 0 calc(12px * var(--layout-scale, 1)) var(--chain-glow, rgba(255, 215, 0, 0.5)));
+    filter: drop-shadow(0 0 calc(12px * var(--layout-scale, 1)) rgba(255, 215, 0, 0.5));
     z-index: 2;
   }
 
@@ -316,7 +269,8 @@
     opacity: 0.85;
   }
 
-  .card-btn.card-selected .card-v2-frame {
+  /* Gold outline on the card wrapper when selected in multi-pick mode */
+  .card-btn.card-selected .card-visual-wrapper {
     outline: calc(3px * var(--layout-scale, 1)) solid #f6d57d;
     outline-offset: calc(2px * var(--layout-scale, 1));
   }
@@ -326,59 +280,14 @@
     animation: cardPulse 200ms ease forwards;
   }
 
-  /* ===== V2 card frame ===== */
-  .card-v2-frame {
+  /* ===== Card visual wrapper — sized container for CardVisual (position:absolute inset:0) ===== */
+  .card-visual-wrapper {
     position: relative;
+    /* Card dimensions: 886:1142 aspect ratio, same as CardHand default card width */
     width: calc(160px * var(--layout-scale, 1));
-    /* 886:1142 aspect ratio */
-    height: calc(206px * var(--layout-scale, 1));
-    pointer-events: none;
-  }
-
-  .frame-layer {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    image-rendering: pixelated;
-  }
-
-  .frame-card-art {
-    position: absolute;
-    /* Exact position from PSD: bbox(176,186,719,609) on 886x1142 */
-    left: 19.9%;
-    top: 16.3%;
-    width: 61.4%;
-    height: 37.0%;
-    object-fit: cover;
-    image-rendering: auto;
-  }
-
-  .upgrade-icon {
-    object-fit: contain;
-  }
-
-  /* ===== AP cost gem ===== */
-  .card-ap {
-    position: absolute;
-    top: calc(6px * var(--layout-scale, 1));
-    left: calc(6px * var(--layout-scale, 1));
-    width: calc(22px * var(--layout-scale, 1));
-    height: calc(22px * var(--layout-scale, 1));
-    border-radius: 50%;
-    background: rgba(10, 16, 28, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    color: #f6e4a0;
-    font-size: calc(11px * var(--text-scale, 1));
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    z-index: 10;
-    pointer-events: none;
+    height: calc(calc(160px * var(--layout-scale, 1)) * (1142 / 886));
+    /* Pass card width as CSS var for CardVisual typography scaling */
+    --card-w: calc(160px * var(--layout-scale, 1));
   }
 
   /* ===== Checkmark overlay (multi-pick) ===== */
@@ -399,33 +308,6 @@
     line-height: 1;
     z-index: 10;
     pointer-events: none;
-  }
-
-  /* ===== Card info row ===== */
-  .card-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: calc(3px * var(--layout-scale, 1));
-    pointer-events: none;
-    text-align: center;
-    width: 100%;
-  }
-
-  .card-name {
-    font-size: calc(13px * var(--text-scale, 1));
-    font-weight: 800;
-    color: #f4e8c8;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
-    letter-spacing: 0.01em;
-    line-height: 1.2;
-  }
-
-  .card-desc {
-    font-size: calc(11px * var(--text-scale, 1));
-    color: #a8b8cc;
-    line-height: 1.3;
-    max-width: calc(150px * var(--layout-scale, 1));
   }
 
   /* ===== Action buttons ===== */

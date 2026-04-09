@@ -317,9 +317,11 @@ async function registerStoresLazy(): Promise<void> {
   try {
     const { activeTurnState } = await import('../services/encounterBridge');
     const { activeRunState } = await import('../services/runStateStore');
+    const { pendingTransformOptions } = await import('../services/gameFlowController');
     const g = globalThis as Record<symbol, unknown>;
     g[Symbol.for('rr:activeTurnState')] = activeTurnState;
     g[Symbol.for('rr:activeRunState')] = activeRunState;
+    g[Symbol.for('rr:pendingTransformOptions')] = pendingTransformOptions;
   } catch {
     // Silently ignore — stores may not be available yet
   }

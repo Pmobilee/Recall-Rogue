@@ -248,7 +248,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   },
   {
     id: 'transmute', name: 'Transmute', type: 'utility',
-    description: 'Transform your weakest hand card into a different type.',
+    description: 'Transform this card into a different card for this encounter. Charge to choose from 3 options.',
     baseValue: 1, apCost: 1, maxPerPool: 0, tags: ['transmute'], launchPhase: 2, unlockLevel: 0,
     quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 1,
   },

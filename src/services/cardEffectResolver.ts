@@ -297,6 +297,11 @@ export interface CardEffectResult {
     allowSkip: boolean;
     title: string;
   };
+  /**
+   * Transmute QP/CW — auto-pick one random candidate and swap source card in-place.
+   * turnManager handles the actual in-place swap via applyTransmuteSwap().
+   */
+  applyTransmuteAuto?: { sourceCardId: string; selected: Card };
   /** Tag: rupture_bleed_perm — bleed applied by this card does not decay each turn. */
   bleedPermanent?: boolean;
   /** Tag: precision_timer_ext50 — quiz timer extended by 50% for this card's charge quiz. */
@@ -888,14 +893,21 @@ export function resolveCardEffect(
     }
     case 'transmute': {
       const candidates = generateTransmuteCandidates(card.masteryLevel ?? 0);
-      result.pendingCardPick = {
-        type: 'transmute',
-        sourceCardId: card.id,
-        candidates,
-        pickCount: (card.masteryLevel ?? 0) >= 3 ? 2 : 1,
-        allowSkip: true,
-        title: 'Transform Card',
-      };
+      const isCharge = playMode === 'charge' || playMode === 'charge_correct';
+      if (isCharge) {
+        result.pendingCardPick = {
+          type: 'transmute',
+          sourceCardId: card.id,
+          candidates,
+          pickCount: (card.masteryLevel ?? 0) >= 3 ? 2 : 1,
+          allowSkip: true,
+          title: 'Transform Card',
+        };
+      } else {
+        // QP or Charge Wrong: auto-pick 1 random candidate, apply inline
+        const pick = candidates[Math.floor(Math.random() * candidates.length)];
+        result.applyTransmuteAuto = { sourceCardId: card.id, selected: pick };
+      }
       return result;
     }
     case 'conjure': {

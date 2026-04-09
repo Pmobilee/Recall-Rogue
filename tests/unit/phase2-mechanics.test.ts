@@ -581,12 +581,14 @@ describe('conjure mechanic', () => {
 // ── UTILITY: transmute ──
 
 describe('transmute mechanic', () => {
-  it('QP: emits pendingCardPick of type transmute with 3 candidates', () => {
+  // Phase 1 rework: QP and CW auto-pick a random candidate (applyTransmuteAuto).
+  // Only CC opens the card picker (pendingCardPick). See plan/hazy-stargazing-candle.md.
+  it('QP: emits applyTransmuteAuto with sourceCardId and a selected card', () => {
     const result = resolve('transmute', 'quick');
-    expect(result.pendingCardPick).toBeDefined();
-    expect(result.pendingCardPick!.type).toBe('transmute');
-    expect(result.pendingCardPick!.candidates).toHaveLength(3);
-    expect(result.pendingCardPick!.allowSkip).toBe(true);
+    expect(result.applyTransmuteAuto).toBeDefined();
+    expect(result.applyTransmuteAuto!.sourceCardId).toBeTruthy();
+    expect(result.applyTransmuteAuto!.selected).toBeDefined();
+    expect(result.pendingCardPick).toBeUndefined();
   });
 
   it('CC: emits pendingCardPick of type transmute', () => {
@@ -595,14 +597,15 @@ describe('transmute mechanic', () => {
     expect(result.pendingCardPick!.type).toBe('transmute');
   });
 
-  it('CW: emits pendingCardPick of type transmute', () => {
+  it('CW: emits applyTransmuteAuto (same as QP path)', () => {
     const result = resolve('transmute', 'charge_wrong');
-    expect(result.pendingCardPick).toBeDefined();
-    expect(result.pendingCardPick!.type).toBe('transmute');
+    expect(result.applyTransmuteAuto).toBeDefined();
+    expect(result.applyTransmuteAuto!.selected).toBeDefined();
+    expect(result.pendingCardPick).toBeUndefined();
   });
 
-  it('candidates include attack, shield, and one utility/buff/debuff type', () => {
-    const result = resolve('transmute', 'quick');
+  it('CC candidates include attack, shield, and one utility/buff/debuff type', () => {
+    const result = resolve('transmute', 'charge_correct');
     const types = result.pendingCardPick!.candidates.map(c => c.cardType);
     expect(types).toContain('attack');
     expect(types).toContain('shield');
