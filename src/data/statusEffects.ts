@@ -15,7 +15,9 @@ export type StatusEffectType =
   /** AR-207: Curse of Doubt — percentage amplifier on Charge damage. value = percent bonus (e.g. 30 = +30%). */
   | 'charge_damage_amp_percent'
   /** AR-207: Mark of Ignorance — flat amplifier on Charge damage. value = flat bonus (e.g. 3 = +3 dmg). */
-  | 'charge_damage_amp_flat';
+  | 'charge_damage_amp_flat'
+  /** Phase 8/9: strip_block — enemy intent that removes player block. value = amount stripped (clamped to current block). Optionally enemy gains stripped amount as block. */
+  | 'strip_block';
 
 /** A single active status effect instance. */
 export interface StatusEffect {

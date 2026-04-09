@@ -1,7 +1,7 @@
 # Enemy System
 
 > **Purpose:** Complete reference for the enemy roster, categories, scaling formulas, special behaviors, and encounter selection.
-> **Last verified:** 2026-04-09 (ENEMY_BASE_HP_MULTIPLIER 4.0→6.0, Act 1 damage cap 14→22, Balance Pass #8: Act 1/2 baseHP raised + attack damage tuned)
+> **Last verified:** 2026-04-09 (Phase 8: Elite unique mechanics — Librarian Silence, Tutor Pop Quiz, Headmistress Detention, Study Group phase sim. Phase 9: strip_block intents on page_flutter/bookmark_vine/staple_bug)
 > **Source files:** `src/data/enemies.ts`, `src/services/enemyManager.ts`, `src/data/balance.ts`, `src/services/ascension.ts`
 
 ## Enemy Categories
@@ -300,16 +300,16 @@ Status effect values (poison, weakness, vulnerable) kept at 1–2 per applicatio
 ### Act 1 Elite
 | Enemy | Base HP | Phase | Notes |
 |---|---|---|---|
-| `librarian` | 16 | 40% HP | Phase 1: attack 6, defend 7, charge 10. Phase 2: attack 8, multi 5×3, charge 10 |
+| `librarian` | 16 | 40% HP | Phase 1: attack 6, defend 7, charge 10. Phase 2: attack 8, multi 5×3, charge 10. **Silence**: locks random card type each enemy turn (`onEnemyTurnStart`) |
 
 ### Act 1 Mini-Bosses
 | Enemy | Base HP | Special |
 |---|---|---|
 | `plagiarist` | 11 | Gains +1 Strength/turn from turn 4; attack 8/6 |
 | `card_catalogue` | 12 | Healer (reduced weight) + multi-hit 5×3; attack 8 |
-| `headmistress` | 13 | Heavy defender (defend 9, weight 2) + charge 10; attack 6 (weight 2) |
-| `tutor` | 11 | Attack weight raised 1→3; debuff/heal weights lowered; attack 8 |
-| `study_group` | 13 | Attack weight raised 1→2; debuff weight lowered; attack 8, defend 9 |
+| `headmistress` | 13 | Heavy defender (defend 9, weight 2) + charge 10; attack 6 (weight 2). **Detention**: exhausts player's 2 highest-mastery cards at encounter start (`onEncounterStart`) |
+| `tutor` | 11 | Attack weight raised 1→3; debuff/heal weights lowered; attack 8. **Pop Quiz**: wrong Charge doubles next attack (`onPlayerChargeWrong`) |
+| `study_group` | 20 | **Phase 8**: raised from 13 to 20 (simulate 3 members). Phase transition at 33% HP — last member stands alone (phase 2: atk 11). Group synergy Strength buff removed on transition |
 
 ### Act 1 Bosses
 | Enemy | Base HP | Phase | Notes |
@@ -499,25 +499,25 @@ Enemy selection uses `getEnemiesForNode(act, nodeType)` which maps to `ACT_ENEMY
 
 | ID | base HP | Rarity | Special mechanic |
 |---|---|---|---|
-| `page_flutter` | 7 | standard | Can self-buff Strength 1 for 2 turns |
+| `page_flutter` | 7 | standard | Can self-buff Strength 1 for 2 turns. **Phase 9**: Flutter dive strips 5 player block (strip_block debuff) |
 | `thesis_construct` | 9 | standard | `chargeResistant` — Quick Play deals 50% damage |
 | `mold_puff` | 6 | standard | Stacks Poison 2 for 3 turns each attack |
 | `crib_sheet` | 5 | standard | `onPlayerChargeWrong`: reflects card's base damage to player |
 | `citation_needed` | 9 | standard | `onPlayerChargeWrong`: steals up to 5 block, heals enemy that amount. **Heal overshoot WAI**: heal intent (+5) and block-steal (+up to 5) are independent — both can fire in the same turn window for up to +10 HP total. **UX gap**: no floating text on block-steal; planned fix via ui-agent. |
 | `pop_quiz` | 7 | uncommon | `onPlayerChargeCorrect`: stuns enemy next turn; `onPlayerNoCharge`: +1 permanent `enrageBonusDamage` |
 | `eraser_worm` | 6 | rare | `chainVulnerable` — chain attacks deal +50% damage |
-| `bookmark_vine` | 8 | uncommon | `chainVulnerable`; multi-hit 3×vine lash |
+| `bookmark_vine` | 8 | uncommon | `chainVulnerable`; multi-hit 3×vine lash. **Phase 9**: Binding grip strips 8 player block (strip_block debuff) |
 | `margin_gremlin` | 8 | uncommon | Self-buffs Strength 1 for 2 turns; fast repeated jabs |
 | `index_weaver` | 9 | standard | `chainVulnerable`; multi-hit 4×3 fang barrage + Poison 2×3 turns |
 | `overdue_golem` | 10 | standard | Heals 5 HP per turn (reduced from 9, 2026-04-03) |
 | `ink_slug` | 10 | standard | Stacks Poison 2 per attack; slow attacker |
-| `staple_bug` | 11 | standard | `chargeResistant`; Mandible snap (7) + 2-hit Chittering strike (4 per hit) |
+| `staple_bug` | 11 | standard | `chargeResistant`; Mandible snap (7) + 2-hit Chittering strike (4 per hit). **Phase 9**: Pierce defense strips 10 player block (strip_block debuff) |
 
 ### Elite Enemies
 
 | ID | base HP | Special mechanic |
 |---|---|---|
-| `librarian` | 16 | Phase 2 at 40% HP — gains enraged smash + 3-hit rending claws |
+| `librarian` | 16 | Phase 2 at 40% HP — gains enraged smash + 3-hit rending claws. **Phase 8 Silence**: locks a random card type each enemy turn via `onEnemyTurnStart`; synced to `turnState.lockedCardType`, cleared at next player turn start |
 | `bookwyrm` | 7 | **Deprecated** (not in ACT_ENEMY_POOLS); phase 2 at 50% |
 | `peer_reviewer` | 7 | **Deprecated**; `onPlayerNoCharge` gains +3 permanent Strength (999 turns) |
 
@@ -557,7 +557,7 @@ Enemies telegraph next action via `EnemyIntent.telegraph`. Selected by `weighted
 | `multi_attack` | Above × `hitCount` hits |
 | `defend` | Adds `value` to enemy block (resets at enemy turn start) |
 | `buff` | Applies status effect to self (e.g., Strength) |
-| `debuff` | Applies status effect to player |
+| `debuff` | Applies status effect to player. If `statusEffect.type === 'strip_block'`: instantly removes `value` player block (not a persistent status — resolved immediately in turnManager) |
 | `heal` | Restores `value` HP, capped at maxHP |
 | `charge` | Winds up; next turn fires auto-attack with `bypassDamageCap: true` |
 
@@ -570,6 +570,7 @@ Enemies telegraph next action via `EnemyIntent.telegraph`. Selected by `weighted
 | `onPlayerNoCharge(ctx)` | End of player turn with zero Charge plays that turn |
 | `onEnemyTurnStart(ctx)` | Start of each enemy turn (enrage, stun clear, mastery erosion) |
 | `onPhaseTransition(enemy)` | When phase 1 → 2 transition fires |
+| `onEncounterStart(enemy, deck)` | Once after encounter setup (hand dealt, relics applied). Returns `string[]` of card IDs to exhaust. Used by Headmistress Detention. Dispatched from `encounterBridge.startEncounterForRoom` |
 
 `chainMultiplierOverride` (used by The Nullifier): forces all Knowledge Chain multipliers to a fixed value while the enemy is alive.
 
@@ -680,6 +681,56 @@ All Act 2 commons: attack 3→4, multi 2→3, defend 2→3. Elites/mini-bosses: 
 - `ENRAGE_PHASE1_BONUS`: 1 → 2 (+2 damage per enrage turn, was +1)
 - `ENRAGE_PHASE2_BONUS`: 2 → 4 (was 2)
 - Shallow startTurn: 12 → 8 (enrage pressure earlier in Act 1)
+
+---
+
+## Phase 8 — Elite Unique Mechanics (2026-04-09)
+
+Four Act 1 elite/mini-boss encounters now have unique encounter mechanics that create novel strategic challenges.
+
+### Librarian — Silence
+- **Trigger:** `onEnemyTurnStart` — fires every enemy turn
+- **Effect:** Picks a random card type from `['attack', 'shield', 'buff', 'debuff', 'utility', 'wild']` and sets `turnState.lockedCardType`
+- **Result:** Player cannot play cards of that type for the upcoming player turn
+- **Implementation:** `enemy._silencedCardType` set by callback, synced to `turnState.lockedCardType` in `endPlayerTurn()` after `dispatchEnemyTurnStart`. Cleared at start of next player turn in `endPlayerTurn()`'s per-turn reset block
+- **Card play check:** `playCardAction` checks `turnState.lockedCardType` before AP validation; returns `blocked: true` if type matches
+
+### Tutor — Pop Quiz (Wrong Answer Enrage)
+- **Trigger:** `onPlayerChargeWrong` — fires on every incorrect Charge
+- **Effect:** Sets `enemy._nextAttackDoubled = true`
+- **Result:** Next `attack` intent deals ×2 damage. Flag cleared after it fires
+- **Implementation:** Handled in `executeEnemyIntent()` attack case — doubles computed damage and clears the flag
+
+### Headmistress — Detention
+- **Trigger:** `onEncounterStart` — fires once after the opening hand is dealt
+- **Effect:** Returns IDs of the 2 highest-mastery cards in hand + draw pile
+- **Result:** Those 2 cards are moved to exhaustPile before the encounter begins. Player fights without their strongest cards
+- **Implementation:** Dispatched in `encounterBridge.startEncounterForRoom()` before `activeTurnState.set()`. Directly mutates `activeDeck` and syncs back to `turnState.deck`
+
+### Study Group — Phase Simulation
+- **HP raised:** 13 → 20 (simulates 3 members at ~6-7 HP each × 6.0× multiplier)
+- **Phase transition:** 33% HP threshold (`phaseTransitionAt: 0.33`)
+- **Phase 2:** Last member attacks solo — attack 11 (up from 8), fewer support actions
+- **`onPhaseTransition`:** Removes 1 Strength stack from group synergy if buffed
+
+---
+
+## Phase 9 — Block-Strip Intents (2026-04-09)
+
+Three Act 1 commons now have `strip_block` debuff intents that counter Fortress/block-stacking builds.
+
+### strip_block Intent Mechanics
+- **Intent type:** `debuff` with `statusEffect: { type: 'strip_block', value: N, turns: 0 }`
+- **Effect:** Instantly removes up to `N` player block (clamped to current block)
+- **Not a persistent status:** Resolved immediately in `endPlayerTurn()` after `executeEnemyIntent()` — never applied via `applyStatusEffect()`
+- **Implementation:** `executeEnemyIntent()` sets `blockStripped` on return value; `endPlayerTurn()` reads it and reduces `playerState.shield`
+
+### Block-Strip Enemies
+| Enemy | Strip amount | Telegraph |
+|---|---|---|
+| `page_flutter` | 5 block | "Flutter dive" |
+| `bookmark_vine` | 8 block | "Binding grip" |
+| `staple_bug` | 10 block | "Pierce defense" |
 
 ---
 

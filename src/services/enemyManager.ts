@@ -8,6 +8,7 @@ import { applyStatusEffect, tickStatusEffects, getStrengthModifier } from '../da
 import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_MID, GLOBAL_ENEMY_DAMAGE_MULTIPLIER, getBalanceValue, ENEMY_BASE_HP_MULTIPLIER, ENEMY_HP_SCALING_PER_FLOOR, ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT } from '../data/balance';
 import { resolvePoisonTickBonus } from './relicEffectResolver';
 import { getAuraState } from './knowledgeAuraSystem';
+import { getRunRng, isRunRngActive } from './seededRng';
 
 /**
  * Computes HP scaling factor for a given floor using segment-based scaling.
@@ -50,7 +51,8 @@ export function getFloorDamageScaling(floor: number): number {
  */
 function weightedRandomIntent(pool: EnemyIntent[]): EnemyIntent {
   const totalWeight = pool.reduce((sum, intent) => sum + intent.weight, 0);
-  let roll = Math.random() * totalWeight;
+  const intentRng = isRunRngActive() ? getRunRng('enemyIntents') : null;
+  let roll = (intentRng ? intentRng.next() : Math.random()) * totalWeight;
 
   for (const intent of pool) {
     roll -= intent.weight;
@@ -283,11 +285,13 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
   playerEffects: StatusEffect[];
   enemyHealed: number;
   stunned: boolean;
+  /** Phase 9: Amount of player block stripped by a strip_block debuff intent. 0 = none. */
+  blockStripped: number;
 } {
   // AR-263: Pop Quiz stun — if stunned, skip action entirely
   if (enemy._stunNextTurn) {
     enemy._stunNextTurn = false;
-    return { damage: 0, playerEffects: [], enemyHealed: 0, stunned: true };
+    return { damage: 0, playerEffects: [], enemyHealed: 0, stunned: true, blockStripped: 0 };
   }
 
   const intent = enemy.nextIntent;
@@ -295,12 +299,18 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
 
   let damage = 0;
   let enemyHealed = 0;
+  let blockStripped = 0;
   const playerEffects: StatusEffect[] = [];
 
   switch (intent.type) {
     case 'attack': {
       const baseValue = intent.value + (enemy.enrageBonusDamage ?? 0);
       damage = Math.round(baseValue * strengthMod * getFloorDamageScaling(enemy.floor) * GLOBAL_ENEMY_DAMAGE_MULTIPLIER);
+      // Phase 8: Tutor _nextAttackDoubled — double damage on wrong Charge, then clear flag
+      if (enemy._nextAttackDoubled) {
+        damage *= 2;
+        enemy._nextAttackDoubled = false;
+      }
       break;
     }
     case 'multi_attack': {
@@ -330,12 +340,18 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
     case 'debuff': {
       // Apply debuff to player
       if (intent.statusEffect) {
-        const effect = {
-          type: intent.statusEffect.type,
-          value: intent.statusEffect.value,
-          turnsRemaining: intent.statusEffect.turns,
-        };
-        playerEffects.push(effect);
+        if (intent.statusEffect.type === 'strip_block') {
+          // Phase 9: strip_block is an instant block removal, not a persistent status.
+          // We record the amount; turnManager applies it to playerState.shield.
+          blockStripped = intent.statusEffect.value;
+        } else {
+          const effect = {
+            type: intent.statusEffect.type,
+            value: intent.statusEffect.value,
+            turnsRemaining: intent.statusEffect.turns,
+          };
+          playerEffects.push(effect);
+        }
       }
       break;
     }
@@ -374,7 +390,7 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
     }
   }
 
-  return { damage, playerEffects, enemyHealed, stunned: false };
+  return { damage, playerEffects, enemyHealed, stunned: false, blockStripped };
 }
 
 /**

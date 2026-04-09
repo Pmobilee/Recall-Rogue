@@ -1,7 +1,7 @@
 # Status Effects
 
 > **Purpose:** Complete list of all status effects, stacking rules, tick timing, and application behavior.
-> **Last verified:** 2026-04-08 (6.3 enemy buff persistence, 6.5 Plagiarist strength indicator)
+> **Last verified:** 2026-04-09 (Phase 9: strip_block added — instant block removal, not a persistent status)
 > **Source files:** `src/data/statusEffects.ts`, `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`
 
 ---
@@ -105,6 +105,14 @@ export interface StatusEffect {
 - **Stacking:** Values add; duration = max
 - **Tick:** `turnsRemaining` countdown
 
+### strip_block (Phase 9)
+- **Target:** player (applied via enemy `debuff` intent)
+- **Effect:** Instantly removes up to `value` block from the player (clamped to current block)
+- **NOT a persistent status** — handled as an immediate effect in `endPlayerTurn()` and never stored in `statusEffects[]`
+- **How it works:** `executeEnemyIntent()` detects `intent.statusEffect.type === 'strip_block'` in the `debuff` case and returns `blockStripped: N` instead of pushing to `playerEffects`. `endPlayerTurn()` reads `intentResult.blockStripped` and subtracts from `playerState.shield`
+- **Turn timing:** Fires during the enemy action phase (same timing as other debuff intents)
+- **Enemies using it:** `page_flutter` (5 block, "Flutter dive"), `bookmark_vine` (8 block, "Binding grip"), `staple_bug` (10 block, "Pierce defense")
+
 ---
 
 ## Stacking Rules
@@ -150,6 +158,7 @@ Burn and Bleed do NOT tick in this function. Burn fires in `triggerBurn()` (call
 | `bleed` | No | Yes |
 | `charge_damage_amp_percent` | No | Yes |
 | `charge_damage_amp_flat` | No | Yes |
+| `strip_block` | instant (not stored) | No |
 
 Player status effects live in `playerState.statusEffects`; enemy effects live in `enemy.statusEffects`. Both use the same `StatusEffect[]` array type and identical `applyStatusEffect()`/`tickStatusEffects()` functions.
 

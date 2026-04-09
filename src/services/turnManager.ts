@@ -16,6 +16,7 @@ import type { StatusEffect } from '../data/statusEffects';
 import type { PlayerCombatState } from './playerCombatState';
 import type { CardEffectResult } from './cardEffectResolver';
 import { discardHand, drawHand, playCard as deckPlayCard } from './deckManager';
+import { computeCatchUpMastery } from './catchUpMasteryService';
 import {
   createPlayerCombatState,
   applyShield,
@@ -861,6 +862,27 @@ export function playCardAction(
     });
     return {
       effect: lockedBlockEffect,
+      enemyDefeated: false,
+      fizzled: false,
+      blocked: true,
+      isPerfectTurn: turnState.isPerfectTurn,
+      turnState,
+      usedFreeCharge: false,
+      masteryChange: null,
+      masteryChangedCardId: null,
+    };
+  }
+
+  // Phase 8: Librarian Silence — block all plays of the locked card type
+  if (turnState.lockedCardType && cardInHand.cardType === turnState.lockedCardType) {
+    const silencedEffect: CardEffectResult = createNoEffect(cardInHand);
+    turnState.turnLog.push({
+      type: 'blocked',
+      message: `${cardInHand.cardType} cards are Silenced this turn`,
+      cardId,
+    });
+    return {
+      effect: silencedEffect,
       enemyDefeated: false,
       fizzled: false,
       blocked: true,
@@ -3026,11 +3048,17 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   // Pass whether the player made any correct Charges this turn (read before reset) and the actual hand objects.
   const playerChargedCorrectThisTurn = turnState.cardsCorrectThisTurn > 0;
   dispatchEnemyTurnStart(enemy, turnState.turnNumber, playerChargedCorrectThisTurn, deck.hand);
+  // Phase 8: Sync Librarian's _silencedCardType (set by onEnemyTurnStart) to turnState.lockedCardType.
+  // This locks a card type for the upcoming player turn. Cleared at the start of the next player turn.
+  if (enemy._silencedCardType != null) {
+    turnState.lockedCardType = enemy._silencedCardType;
+    enemy._silencedCardType = null; // consume so it's re-rolled each turn
+  }
 
   // Block decays each turn — enemy must re-defend to maintain it (STS-style)
   enemy.block = 0;
 
-  let intentResult = { damage: 0, playerEffects: [] as StatusEffect[], enemyHealed: 0, stunned: false };
+  let intentResult = { damage: 0, playerEffects: [] as StatusEffect[], enemyHealed: 0, stunned: false, blockStripped: 0 };
   let intentSkipped = false;
   if (turnState.staggeredEnemyNextTurn) {
     // AR-206: Stagger — skip enemy action entirely. Turn counter advances, enrage still ticks.
@@ -3186,6 +3214,19 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     message: intentSkipped ? 'Enemy action disrupted by Slow' : `Enemy uses ${enemy.nextIntent.telegraph}`,
     value: intentResult.damage,
   });
+
+  // Phase 9: strip_block — instant player block removal from enemy debuff intent
+  if (intentResult.blockStripped > 0) {
+    const stripped = Math.min(playerState.shield, intentResult.blockStripped);
+    playerState.shield = Math.max(0, playerState.shield - stripped);
+    if (stripped > 0) {
+      turnState.turnLog.push({
+        type: 'enemy_action',
+        message: `Enemy strips ${stripped} block`,
+        value: stripped,
+      });
+    }
+  }
 
   for (const effect of intentResult.playerEffects) {
     applyStatusEffect(playerState.statusEffects, effect);
@@ -3390,6 +3431,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.cardsPlayedThisTurn = 0;
   turnState.cardsCorrectThisTurn = 0;
   turnState.isPerfectTurn = false;
+  // Phase 8: Librarian Silence — clear locked card type at start of new player turn
+  turnState.lockedCardType = null;
   turnState.buffNextCard = 0;
   turnState.lastCardType = undefined;
   turnState.lastCardEffect = null;
@@ -3721,17 +3764,19 @@ export function applyPendingChoice(
 }
 
 /**
- * Resolve a Transmute card pick — replace the source card in hand with the chosen card(s).
- * The chosen card is marked as transmuted so it can revert at encounter end.
+ * Resolve a Transmute card pick — permanently replace the source card with the chosen card(s).
+ * Transmuted cards are permanent run-deck changes: the source card is removed, the new card
+ * keeps the source fact binding, gets a new ID, and receives catch-up mastery.
+ * No revert at encounter end — this is a permanent deck transformation.
  */
 export function resolveTransmutePick(
   turnState: TurnState,
   sourceCardId: string,
   selectedCards: Card[],
 ): void {
-  const { hand, discardPile } = turnState.deck;
+  const { hand, discardPile, drawPile, exhaustPile } = turnState.deck;
 
-  // Find the transmute card (might be in discard since it was "played")
+  // Find the source card (might be in discard since it was "played")
   const discardIdx = discardPile.findIndex(c => c.id === sourceCardId);
   let sourceCard: Card | undefined;
 
@@ -3742,22 +3787,29 @@ export function resolveTransmutePick(
 
   if (!sourceCard) return;
 
-  // Create transformed card(s) and add to hand
+  // Gather all current deck cards for catch-up mastery calculation
+  const allDeckCards = [...drawPile, ...hand, ...discardPile, ...exhaustPile];
+
+  // Create transformed card(s) and add to hand — permanently replaces source in the run deck.
+  // Source card is already removed from discard above, so the deck is in the correct final state.
   for (const selected of selectedCards) {
+    const catchUpLevel = computeCatchUpMastery(selected, allDeckCards);
     const transformed: Card = {
       ...selected,
-      id: sourceCard.id + '_transmuted_' + Math.random().toString(36).slice(2, 6),
-      factId: sourceCard.factId, // Keep the fact binding
-      isTransmuted: true,
-      originalCard: { ...sourceCard }, // Save original for revert
+      id: 'transmute_' + Math.random().toString(36).slice(2, 10),
+      factId: sourceCard.factId, // Keep the fact binding from the original card
+      masteryLevel: catchUpLevel,
+      isUpgraded: catchUpLevel > 0,
+      // No isTransmuted flag — this is a permanent card, not a temporary transform
     };
     hand.push(transformed);
   }
 }
 
 /**
- * Revert all transmuted cards back to their original form.
- * Called at encounter end.
+ * Revert temporary transformed cards (conjure, mimic) back to their original form.
+ * Called at encounter end. Note: Transmute cards are now permanent and are NOT reverted —
+ * only cards with isTransmuted=true AND originalCard set are affected (conjure/mimic).
  */
 export function revertTransmutedCards(deck: CardRunState): void {
   const revert = (cards: Card[]): Card[] => {

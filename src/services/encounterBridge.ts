@@ -50,6 +50,7 @@ import type { FactDomain } from '../data/card-types'
 import { turboDelay } from '../utils/turboMode'
 import { getRunRng, isRunRngActive } from './seededRng'
 import { awaitCoopTurnEnd, broadcastPartnerState } from './multiplayerCoopSync'
+import { computeRaceScore } from './multiplayerScoring'
 import { calculateFunnessBoostFactor } from './funnessBoost';
 import { calculateAccuracyGrade } from './accuracyGradeSystem';
 import {
@@ -558,6 +559,10 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
 
   let templateId = enemyId;
   if (!templateId) {
+    // Use seeded RNG fork for enemy pool picks so co-op and replays are deterministic.
+    const poolRng = isRunRngActive() ? getRunRng('enemyPool') : null;
+    const poolRand = () => poolRng ? poolRng.next() : Math.random();
+
     if (isBossFloor(run.floor.currentFloor) && run.floor.currentEncounter === run.floor.encountersPerFloor) {
       // V2: use act-based boss pool with rotation (AR-98 — no same boss twice in a row per act)
       const bossCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'boss');
@@ -566,7 +571,7 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
         const lastBoss = getLastBossForAct(act);
         const filtered = lastBoss ? bossCandidates.filter(b => b.id !== lastBoss) : bossCandidates;
         const pool = filtered.length > 0 ? filtered : bossCandidates;
-        templateId = pool[Math.floor(Math.random() * pool.length)].id;
+        templateId = pool[Math.floor(poolRand() * pool.length)].id;
         setLastBossForAct(act, templateId);
       } else {
         templateId = getBossForFloor(run.floor.currentFloor) ?? pickCombatEnemy(run.floor.currentFloor);
@@ -575,25 +580,25 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
       // V2: use act-based mini-boss pool, fall back to legacy
       const miniBossCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'mini_boss');
       templateId = miniBossCandidates.length > 0
-        ? miniBossCandidates[Math.floor(Math.random() * miniBossCandidates.length)].id
+        ? miniBossCandidates[Math.floor(poolRand() * miniBossCandidates.length)].id
         : getMiniBossForFloor(run.floor.currentFloor);
     } else {
-      if (run.canary.mode === 'challenge' && Math.random() < 0.50) {
+      if (run.canary.mode === 'challenge' && poolRand() < 0.50) {
         // V2: use act-based elite pool, fall back to region-based
         const eliteCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'elite');
         if (eliteCandidates.length > 0) {
-          templateId = eliteCandidates[Math.floor(Math.random() * eliteCandidates.length)].id;
+          templateId = eliteCandidates[Math.floor(poolRand() * eliteCandidates.length)].id;
         } else {
           const region = getRegionForFloor(run.floor.currentFloor);
           const regionElites = ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite' && enemyTemplate.region === region);
           const effectiveElites = regionElites.length > 0 ? regionElites : ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite');
-          templateId = effectiveElites[Math.floor(Math.random() * effectiveElites.length)]?.id ?? pickCombatEnemy(run.floor.currentFloor);
+          templateId = effectiveElites[Math.floor(poolRand() * effectiveElites.length)]?.id ?? pickCombatEnemy(run.floor.currentFloor);
         }
       } else {
         // V2: use act-based common pool for regular encounters
         const commonCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'combat');
         templateId = commonCandidates.length > 0
-          ? commonCandidates[Math.floor(Math.random() * commonCandidates.length)].id
+          ? commonCandidates[Math.floor(poolRand() * commonCandidates.length)].id
           : pickCombatEnemy(run.floor.currentFloor);
       }
     }
@@ -611,7 +616,8 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   );
   let enemyHpMultiplier = (
     ascensionModifiers.enemyHpMultiplier *
-    (ascensionTemplate.category === 'boss' ? ascensionModifiers.bossHpMultiplier : 1)
+    (ascensionTemplate.category === 'boss' ? ascensionModifiers.bossHpMultiplier : 1) *
+    run.canary.enemyHpMultiplier
   );
   // Roll difficulty variance for common and elite enemies (0.85-1.15x HP and damage)
   // Uses a dedicated seeded RNG fork ('enemyVariance') so co-op players see identical
@@ -684,6 +690,35 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   }
 
   turnState.activePassives = [];
+
+  // Phase 8: Dispatch onEncounterStart callback (e.g. Headmistress Detention — exhaust top-2 mastery cards).
+  // Called after hand is drawn and relic hooks applied, so we're operating on the real opening hand.
+  if (enemy.template.onEncounterStart && activeDeck) {
+    const deckArg = {
+      hand: activeDeck.hand,
+      drawPile: activeDeck.drawPile,
+      exhaustPile: activeDeck.exhaustPile,
+    };
+    const idsToExhaust = enemy.template.onEncounterStart(enemy, deckArg);
+    for (const cardId of idsToExhaust) {
+      // Remove from hand first, then drawPile
+      const handIdx = activeDeck.hand.findIndex(c => c.id === cardId);
+      if (handIdx !== -1) {
+        const [card] = activeDeck.hand.splice(handIdx, 1);
+        activeDeck.exhaustPile.push(card);
+      } else {
+        const drawIdx = activeDeck.drawPile.findIndex(c => c.id === cardId);
+        if (drawIdx !== -1) {
+          const [card] = activeDeck.drawPile.splice(drawIdx, 1);
+          activeDeck.exhaustPile.push(card);
+        }
+      }
+    }
+    // Sync the modified deck back to turnState
+    turnState.deck.hand = activeDeck.hand;
+    turnState.deck.drawPile = activeDeck.drawPile;
+    turnState.deck.exhaustPile = activeDeck.exhaustPile;
+  }
 
   // Increment generation so any stale 550ms victory/defeat timers from the previous
   // encounter will abort before clearing this new encounter's state.
@@ -1163,10 +1198,16 @@ export async function handleEndTurn(): Promise<void> {
   const isCoop = runForMode?.multiplayerMode === 'coop';
   if (isCoop) {
     coopWaitingForPartner.set(true);
+    let coopResult: 'completed' | 'cancelled' = 'completed';
     try {
-      await awaitCoopTurnEnd();
+      coopResult = await awaitCoopTurnEnd();
     } finally {
       coopWaitingForPartner.set(false);
+    }
+    if (coopResult === 'cancelled') {
+      // Partner (or local player) cancelled the turn-end barrier.
+      // Restore turn control without running the enemy phase.
+      return;
     }
   }
 
@@ -1189,6 +1230,7 @@ export async function handleEndTurn(): Promise<void> {
   // Publish a modified turn state where playerState.hp is still the old value.
   const preAnimTurnState = freshTurnState(result.turnState);
   preAnimTurnState.playerState = { ...preAnimTurnState.playerState, hp: previousHp };
+  preAnimTurnState.deck = { ...preAnimTurnState.deck, hand: [] };
   activeTurnState.set(preAnimTurnState);
 
   // AR-222: Delay before enemy animations so the player can register their
@@ -1205,12 +1247,18 @@ export async function handleEndTurn(): Promise<void> {
   }
   activeTurnState.set(freshTurnState(result.turnState));
 
-  // Co-op: broadcast our post-turn HP/block so the partner's HUD reflects damage taken.
+  // Co-op: broadcast our post-turn HP/block/score/accuracy so the partner's HUD reflects damage taken.
   if (isCoop && runAfterDelay) {
+    const coopScore = computeRaceScore(runAfterDelay);
+    const coopAccuracy = runAfterDelay.factsAnswered > 0
+      ? runAfterDelay.factsCorrect / runAfterDelay.factsAnswered
+      : 1;
     broadcastPartnerState({
       hp: runAfterDelay.playerHp,
       maxHp: runAfterDelay.playerMaxHp,
       block: result.turnState.playerState.shield ?? 0,
+      score: coopScore,
+      accuracy: coopAccuracy,
     });
   }
 

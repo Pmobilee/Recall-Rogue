@@ -169,6 +169,12 @@ export interface EnemyTemplate {
    * Incentivizes players to build Knowledge Chains against vulnerable foes.
    */
   chainVulnerable?: boolean;
+  /**
+   * Phase 8: Called once after the encounter has been set up (hand dealt, relic hooks applied).
+   * Used by the Headmistress to exhaust the player's 2 highest-mastery cards (Detention mechanic).
+   * Dispatched from encounterBridge.startEncounterForRoom after turnState is fully initialized.
+   */
+  onEncounterStart?: (enemy: EnemyInstance, deck: { hand: Array<{ id: string; masteryLevel?: number; mechName?: string }>, drawPile: Array<{ id: string; masteryLevel?: number; mechName?: string }>, exhaustPile: Array<{ id: string; masteryLevel?: number; mechName?: string }> }) => string[];
 }
 
 /** A live enemy instance in an encounter. */
@@ -239,6 +245,17 @@ export interface EnemyInstance {
    */
   _lockTurnsRemaining?: number;
   /**
+   * Phase 8: Librarian — the card type silenced this turn (set by _silenceRandomType onEnemyTurnStart).
+   * Null = no silence active. Synced to turnState.lockedCardType by turnManager after dispatchEnemyTurnStart.
+   * Cleared at the start of each new player turn.
+   */
+  _silencedCardType?: string | null;
+  /**
+   * Phase 8: Tutor — if true, the Tutor's next attack intent deals double damage.
+   * Set by onPlayerChargeWrong. Cleared after the doubled attack fires.
+   */
+  _nextAttackDoubled?: boolean;
+  /**
    * Co-op player count this enemy was spawned for.
    * Stored at creation time for use by block and damage cap scaling.
    * Defaults to 1 (solo). Used by getCoopBlockMultiplier and getCoopDamageCapMultiplier.
@@ -268,6 +285,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 9, weight: 2, telegraph: 'Frenzied bite' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Screeching', statusEffect: { type: 'strength', value: 1, turns: 2 } },
       { type: 'defend', value: 9, weight: 1, telegraph: 'Wing cover' },
+      { type: 'debuff', value: 0, weight: 1, telegraph: 'Flutter dive', statusEffect: { type: 'strip_block', value: 5, turns: 0 } },
     ],
     description: 'Common cave predator. Fast and fragile. First thing you\'ll see down here.',
     rarity: 'standard',
@@ -769,6 +787,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'multi_attack', value: 5, weight: 3, telegraph: 'Vine lash', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Poisoned thorns', statusEffect: { type: 'poison', value: 2, turns: 2 } },
       { type: 'attack', value: 8, weight: 1, telegraph: 'Root strike' },
+      { type: 'debuff', value: 0, weight: 1, telegraph: 'Binding grip', statusEffect: { type: 'strip_block', value: 8, turns: 0 } },
     ],
     description: 'Roots that move on their own. Vines, poison, persistence.',
     rarity: 'uncommon',
@@ -787,6 +806,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'defend', value: 10, weight: 3, telegraph: 'Harden shell' },
       { type: 'attack', value: 10, weight: 2, telegraph: 'Mandible snap' },
       { type: 'multi_attack', value: 6, weight: 1, telegraph: 'Chittering strike', hitCount: 2 },
+      { type: 'debuff', value: 0, weight: 1, telegraph: 'Pierce defense', statusEffect: { type: 'strip_block', value: 10, turns: 0 } },
     ],
     description: 'Heavy carapace. Prefers to block and wait.',
     rarity: 'standard',
@@ -923,6 +943,14 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     ],
     description: 'A colony of iron beetles, stacked and coordinated. Doesn\'t yield.',
     animArchetype: 'slammer',
+    onEncounterStart: (_enemy, deck) => {
+      // Phase 8: Detention mechanic — exhaust the 2 highest-mastery cards from hand + draw pile.
+      // Returns card IDs to exhaust. encounterBridge handles moving them to exhaustPile.
+      const allCards = [...deck.hand, ...deck.drawPile];
+      // Sort descending by mastery level (undefined treated as 0)
+      allCards.sort((a, b) => (b.masteryLevel ?? 0) - (a.masteryLevel ?? 0));
+      return allCards.slice(0, 2).map(c => c.id);
+    },
   },
 
   {
@@ -939,6 +967,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     ],
     description: 'Swamp hag. Curses and weakens before she bothers to hit.',
     animArchetype: 'caster',
+    onPlayerChargeWrong: (ctx) => {
+      // Phase 8: Pop Quiz mechanic — wrong answers power up the Tutor's next attack.
+      // Set a flag on the enemy instance; executeEnemyIntent doubles damage when set.
+      ctx.enemy._nextAttackDoubled = true;
+    },
   },
 
   {
@@ -946,15 +979,31 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Study Group',
     category: 'mini_boss',
     region: 'shallow_depths',
-    baseHP: 13, // rebalanced — HP raised 8→22 (pass #1), 22→15 (pass #4), 15→11, further reduced 11→9 (pass #7, 2026-04-03), raised 9→13 (pass #8, 2026-04-09, 6.0x multiplier)
+    baseHP: 20, // Phase 8 — raised from 13 to 20 to simulate 3-member group; phases represent members falling
     intentPool: [
       { type: 'debuff', value: 2, weight: 1, telegraph: 'Toxic bloom', statusEffect: { type: 'poison', value: 3, turns: 3 } },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Spore ascension', statusEffect: { type: 'strength', value: 2, turns: 2 } },
       { type: 'defend', value: 9, weight: 1, telegraph: 'Cap shield' },
       { type: 'attack', value: 8, weight: 2, telegraph: 'Regal strike' },
     ],
-    description: 'Crowned fungus. Rules its colony through poison.',
+    description: 'A fungal study group. They cover for each other — pick them apart.',
     animArchetype: 'caster',
+    phaseTransitionAt: 0.33,
+    phase2IntentPool: [
+      // Last member standing — sole attacker, hits harder but no more group support
+      { type: 'attack', value: 11, weight: 3, telegraph: 'Desperate strike' },
+      { type: 'debuff', value: 2, weight: 1, telegraph: 'Spore cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
+      { type: 'defend', value: 6, weight: 1, telegraph: 'Last stand' },
+    ],
+    onPhaseTransition: (enemy) => {
+      // Phase 8: Last member standing — emit a message via enrageBonusDamage is not ideal,
+      // so instead we mark that the group is broken (damage increase in phase2IntentPool covers it).
+      // Reset any accumulated group buffs when the last member stands alone.
+      const strBuff = enemy.statusEffects.find(e => e.type === 'strength');
+      if (strBuff) {
+        strBuff.value = Math.max(0, strBuff.value - 1); // lose group synergy bonus
+      }
+    },
   },
 
   // ── SHALLOW DEPTHS — ELITE (1 new) ──
@@ -979,6 +1028,14 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'charge', value: 10, weight: 1, telegraph: 'Charging: Unstoppable rampage!' },
     ],
     animArchetype: 'slammer',
+    onEnemyTurnStart: (ctx) => {
+      // Phase 8: Silence mechanic — lock a random card type each turn.
+      // Silences prevent the player from playing cards of that type this turn.
+      // The locked type is synced to turnState.lockedCardType by turnManager after dispatchEnemyTurnStart.
+      const CARD_TYPES = ['attack', 'shield', 'buff', 'debuff', 'utility', 'wild'] as const;
+      const idx = Math.floor(Math.random() * CARD_TYPES.length);
+      ctx.enemy._silencedCardType = CARD_TYPES[idx];
+    },
   },
 
   // ── DEEP CAVERNS — COMMON (11 new) ──
