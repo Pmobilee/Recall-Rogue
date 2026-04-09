@@ -508,21 +508,21 @@ export const CANARY_RUN_WINDOW = 40;
 /** Run accuracy below this = strong assist. */
 export const CANARY_RUN_STRONG_ASSIST_THRESHOLD = 0.60;
 /** Run accuracy below this = mild assist. */
-export const CANARY_RUN_MILD_ASSIST_THRESHOLD = 0.72;  // pass 4d: widened so competent (68%) solidly in assist
-/** Run accuracy above this = mild challenge. */
-export const CANARY_RUN_MILD_CHALLENGE_THRESHOLD = 0.73;  // pass 4d: experienced (76%) in mild challenge band
+export const CANARY_RUN_MILD_ASSIST_THRESHOLD = 0.70;  // pass 5: interpolation anchor — competent (68%) near strong assist
+/** Run accuracy above this = interpolated challenge begins. */
+export const CANARY_RUN_MILD_CHALLENGE_THRESHOLD = 0.70;  // pass 5: same as mild assist — NO neutral zone, everyone gets assist or challenge
 /** Run accuracy above this = strong challenge. */
 export const CANARY_RUN_STRONG_CHALLENGE_THRESHOLD = 0.85;
 
-/** Run-level multipliers — stack multiplicatively with encounter-level Canary. */
-export const CANARY_RUN_STRONG_ASSIST_DMG_MULT = 0.75;
-export const CANARY_RUN_STRONG_ASSIST_HP_MULT = 0.80;
-export const CANARY_RUN_MILD_ASSIST_DMG_MULT = 0.85;
-export const CANARY_RUN_MILD_ASSIST_HP_MULT = 0.90;
-export const CANARY_RUN_MILD_CHALLENGE_DMG_MULT = 1.15;
-export const CANARY_RUN_MILD_CHALLENGE_HP_MULT = 1.10;
-export const CANARY_RUN_STRONG_CHALLENGE_DMG_MULT = 1.15;  // same as mild — encounter-level streak challenge differentiates master from experienced
-export const CANARY_RUN_STRONG_CHALLENGE_HP_MULT = 1.10;
+/** Run-level anchor multipliers — linearly interpolated between thresholds (Pass 5). */
+export const CANARY_RUN_STRONG_ASSIST_DMG_MULT = 0.70;   // ≤60% accuracy: -30% enemy damage
+export const CANARY_RUN_STRONG_ASSIST_HP_MULT = 0.75;     // ≤60% accuracy: -25% enemy HP
+export const CANARY_RUN_MILD_ASSIST_DMG_MULT = 0.90;      // ~72% accuracy: -10% enemy damage
+export const CANARY_RUN_MILD_ASSIST_HP_MULT = 0.95;       // ~72% accuracy: -5% enemy HP
+export const CANARY_RUN_MILD_CHALLENGE_DMG_MULT = 1.0;    // 70% accuracy: neutral (crossing point)
+export const CANARY_RUN_MILD_CHALLENGE_HP_MULT = 1.0;     // 70% accuracy: neutral
+export const CANARY_RUN_STRONG_CHALLENGE_DMG_MULT = 1.20; // ≥85% accuracy: +20% enemy damage (gentle — encounter streaks handle the rest)
+export const CANARY_RUN_STRONG_CHALLENGE_HP_MULT = 1.12;  // ≥85% accuracy: +12% enemy HP
 
 /** Per-floor enemy damage scaling increment above floor 6. (AR-97b: 0.05→0.02, sweep r=+0.668; 2026-04-01: 0.02→0.06 to steepen late-game curve — floor 12 = +36%, floor 18 = +72%; reverted 2026-04-01: 0.06→0.03 — enemy HP scaling is the better lever; 2026-04-01: 0.03→0.06 — paired with FLOOR_DAMAGE_SCALE_MID 0.8→0.5 to keep early floors easy while steepening late-game pressure for experts) */
 export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.09; // Raised from 0.06 (2026-04-04): chain momentum makes game too easy; 0.08 was too harsh on low-acc players

@@ -59,25 +59,56 @@ export interface CanaryState {
 }
 
 /**
- * Computes the run-level multipliers from the rolling accuracy window.
+ * Linearly interpolates between two values based on t (0→a, 1→b).
+ */
+function lerp(a: number, b: number, t: number): number {
+  return a + (b - a) * Math.max(0, Math.min(1, t))
+}
+
+/**
+ * Computes run-level multipliers using continuous linear interpolation.
+ * Instead of stepped bands, multipliers scale smoothly between anchor points:
+ *   - Below strong assist threshold: maximum assist
+ *   - Between strong and mild assist: interpolated assist
+ *   - Between mild assist and mild challenge: interpolated toward neutral (1.0)
+ *   - Between mild and strong challenge: interpolated challenge
+ *   - Above strong challenge: maximum challenge
  * Returns 1.0 for both until at least 10 answers have been recorded.
  */
 function computeRunLevelMultipliers(runAnswers: boolean[]): { dmgMult: number; hpMult: number } {
   if (runAnswers.length < 10) return { dmgMult: 1.0, hpMult: 1.0 }
   const accuracy = runAnswers.filter(a => a).length / runAnswers.length
-  if (accuracy < CANARY_RUN_STRONG_ASSIST_THRESHOLD) {
+
+  // Below strong assist threshold — max assist
+  if (accuracy <= CANARY_RUN_STRONG_ASSIST_THRESHOLD) {
     return { dmgMult: CANARY_RUN_STRONG_ASSIST_DMG_MULT, hpMult: CANARY_RUN_STRONG_ASSIST_HP_MULT }
   }
-  if (accuracy < CANARY_RUN_MILD_ASSIST_THRESHOLD) {
-    return { dmgMult: CANARY_RUN_MILD_ASSIST_DMG_MULT, hpMult: CANARY_RUN_MILD_ASSIST_HP_MULT }
+  // Strong assist → mild assist (interpolate between strong assist and mild assist values)
+  if (accuracy <= CANARY_RUN_MILD_ASSIST_THRESHOLD) {
+    const t = (accuracy - CANARY_RUN_STRONG_ASSIST_THRESHOLD) / (CANARY_RUN_MILD_ASSIST_THRESHOLD - CANARY_RUN_STRONG_ASSIST_THRESHOLD)
+    return {
+      dmgMult: lerp(CANARY_RUN_STRONG_ASSIST_DMG_MULT, CANARY_RUN_MILD_ASSIST_DMG_MULT, t),
+      hpMult: lerp(CANARY_RUN_STRONG_ASSIST_HP_MULT, CANARY_RUN_MILD_ASSIST_HP_MULT, t),
+    }
   }
-  if (accuracy > CANARY_RUN_STRONG_CHALLENGE_THRESHOLD) {
-    return { dmgMult: CANARY_RUN_STRONG_CHALLENGE_DMG_MULT, hpMult: CANARY_RUN_STRONG_CHALLENGE_HP_MULT }
+  // Mild assist → mild challenge (interpolate through neutral 1.0)
+  if (accuracy <= CANARY_RUN_MILD_CHALLENGE_THRESHOLD) {
+    const t = (accuracy - CANARY_RUN_MILD_ASSIST_THRESHOLD) / (CANARY_RUN_MILD_CHALLENGE_THRESHOLD - CANARY_RUN_MILD_ASSIST_THRESHOLD)
+    return {
+      dmgMult: lerp(CANARY_RUN_MILD_ASSIST_DMG_MULT, CANARY_RUN_MILD_CHALLENGE_DMG_MULT, t),
+      hpMult: lerp(CANARY_RUN_MILD_ASSIST_HP_MULT, CANARY_RUN_MILD_CHALLENGE_HP_MULT, t),
+    }
   }
-  if (accuracy > CANARY_RUN_MILD_CHALLENGE_THRESHOLD) {
-    return { dmgMult: CANARY_RUN_MILD_CHALLENGE_DMG_MULT, hpMult: CANARY_RUN_MILD_CHALLENGE_HP_MULT }
+  // Mild challenge → strong challenge
+  if (accuracy <= CANARY_RUN_STRONG_CHALLENGE_THRESHOLD) {
+    const t = (accuracy - CANARY_RUN_MILD_CHALLENGE_THRESHOLD) / (CANARY_RUN_STRONG_CHALLENGE_THRESHOLD - CANARY_RUN_MILD_CHALLENGE_THRESHOLD)
+    return {
+      dmgMult: lerp(CANARY_RUN_MILD_CHALLENGE_DMG_MULT, CANARY_RUN_STRONG_CHALLENGE_DMG_MULT, t),
+      hpMult: lerp(CANARY_RUN_MILD_CHALLENGE_HP_MULT, CANARY_RUN_STRONG_CHALLENGE_HP_MULT, t),
+    }
   }
-  return { dmgMult: 1.0, hpMult: 1.0 }
+  // Above strong challenge — max challenge
+  return { dmgMult: CANARY_RUN_STRONG_CHALLENGE_DMG_MULT, hpMult: CANARY_RUN_STRONG_CHALLENGE_HP_MULT }
 }
 
 /**
