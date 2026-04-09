@@ -44,7 +44,7 @@ Single source of truth for all Japanese language content in Recall Rogue. Covers
 
 ### Authoritative Sources (CC BY-SA 4.0)
 - **Full Japanese Study Deck (FJSD)**: github.com/Ronokof — grammar points, vocab, kanji
-- **Tatoeba Corpus**: CC-BY 2.0 — example sentences with translations
+- **Tatoeba Corpus**: CC-BY 2.0 — example sentences with translations. ⚠️ IDs MUST come from the local corpus at `data/_corpora/tatoeba/` — NEVER fabricated from LLM knowledge. Build with `node scripts/tatoeba/build-cefr-corpus.mjs --lang jpn` (add jpn support if missing); audit with `audit-deck-ids.mjs`. See `.claude/rules/content-pipeline.md` → "Tatoeba Citation" rule.
 - **Tanaka Corpus**: CC-BY-SA 3.0 — additional example sentences
 - **JMdict/EDICT**: CC-BY-SA 4.0 — 214K+ Japanese-English dictionary entries
 - **takoboto.jp**: Per-grammar-point reference URLs

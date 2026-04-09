@@ -1,0 +1,1925 @@
+deck_id: french_a1_grammar
+name: "French A1 Grammar"
+domain: vocabulary
+sub_domain: french_grammar
+target_facts: 200
+minimum_facts: 120
+language: fr
+
+data_sources:
+  - name: Référentiel A1 pour le français (Beacco et al., Didier)
+    url: https://www.didier.fr/livre/referentiel-pour-le-cadre-europeen-commun-a1.html
+    license: Reference only — scope/structure. Conseil de l'Europe / Didier, 2007.
+    usage: Authoritative A1 grammar scope. Determines which grammar points are included and their canonical descriptions. Cross-referenced against DELF A1 scope and Grammaire progressive du français (CLE International).
+  - name: Tatoeba
+    url: https://tatoeba.org/
+    license: CC BY 2.0
+    usage: Verified example sentences with French text + English translation + sentence ID. All sentence IDs documented in data/deck-architectures/_research/french/tatoeba_a1_sentences.tsv.
+
+# -----------------------------------------------------------------
+# Grammar Point Categories
+#
+# Chain Themes (by grammar area):
+#   0 — present_er      : regular present -ER verbs (parler, aimer, travailler)
+#   1 — etre_avoir      : être and avoir (the two essential auxiliaries)
+#   2 — articles_genre  : articles (défini, indéfini, partitif) + gender agreement
+#   3 — pronoms_poss    : subject pronouns, tonic pronouns, possessives
+#   4 — questions_neg   : interrogatives + ne…pas negation
+#   5 — present_ir_re   : -IR and -RE verbs (finir, partir, prendre, comprendre)
+#   6 — temps_peri      : futur proche, passé récent, il y a
+#   7 — prepositions    : prepositions of place + c'est/il est structure
+#
+# Answer Type Pools (one pool per semantically homogeneous answer type):
+#   present_er_forms         : -er verb conjugations (parle, parles, etc.)
+#   etre_forms               : être conjugations (suis, es, est, sommes, êtes, sont)
+#   avoir_forms              : avoir conjugations (ai, as, a, avons, avez, ont)
+#   aller_forms              : aller conjugations (vais, vas, va, allons, allez, vont)
+#   faire_forms              : faire conjugations (fais, fais, fait, faisons, faites, font)
+#   venir_forms              : venir conjugations (viens, viens, vient, venons, venez, viennent)
+#   pouvoir_forms            : pouvoir conjugations (peux, peux, peut, pouvons, pouvez, peuvent)
+#   vouloir_forms            : vouloir conjugations (veux, veux, veut, voulons, voulez, veulent)
+#   present_ir_forms         : -ir verb conjugations (finis, pars, sortez, etc.)
+#   present_re_forms         : -re verb conjugations (prends, comprends, attend, etc.)
+#   reflexive_forms          : pronominal verb forms (m'appelle, te lèves, se couche, etc.)
+#   articles_definis         : le, la, l', les (+ contractions au, aux, du, des)
+#   articles_indefinis       : un, une, des
+#   articles_partitifs       : du, de la, de l', de
+#   possessifs_sg            : mon, ma, mes, ton, ta, tes, son, sa, ses
+#   possessifs_pl            : notre, nos, votre, vos, leur, leurs
+#   demonstratifs            : ce, cet, cette, ces
+#   pronoms_sujets           : je, tu, il, elle, on, nous, vous, ils, elles
+#   pronoms_toniques         : moi, toi, lui, elle, nous, vous, eux, elles
+#   mots_interrogatifs       : où, quand, comment, pourquoi, combien, quel, qui, que
+#   negation_ne_pas          : ne…pas forms and structures
+#   futur_proche_forms       : aller + infinitif patterns (vais + inf, vas + inf, etc.)
+#   passe_recent_forms       : venir de + infinitif patterns (viens de + inf, etc.)
+#   prepositions_lieu        : à, de, en, dans, sur, sous, chez, devant, derrière
+# -----------------------------------------------------------------
+
+chain_themes:
+  - id: 0
+    name: "Present: -er Verbs"
+    description: "Regular present indicative conjugations for -ER verbs: parler, aimer, travailler, habiter"
+    color: "#4A9E6B"
+    icon: "verb"
+  - id: 1
+    name: "Être & Avoir"
+    description: "The two essential irregular verbs — être and avoir — backbone of all compound tenses"
+    color: "#C44B4B"
+    icon: "verb"
+  - id: 2
+    name: "Articles & Genre"
+    description: "Definite, indefinite, and partitive articles plus noun gender and agreement"
+    color: "#3E7BC4"
+    icon: "article"
+  - id: 3
+    name: "Pronoms & Possessifs"
+    description: "Subject pronouns, tonic pronouns, possessive adjectives, and demonstratives"
+    color: "#7B4EA6"
+    icon: "pronoun"
+  - id: 4
+    name: "Questions & Négation"
+    description: "Interrogative words (où, quand, comment…) and basic negation with ne…pas"
+    color: "#D99A2E"
+    icon: "question"
+  - id: 5
+    name: "Present: -ir et -re"
+    description: "Regular and common -IR verbs (finir, partir) and -RE verbs (prendre, comprendre)"
+    color: "#5EA05E"
+    icon: "verb"
+  - id: 6
+    name: "Temps Périphrastiques"
+    description: "Near future (aller + inf), recent past (venir de + inf), and il y a existence"
+    color: "#C45EA0"
+    icon: "structure"
+  - id: 7
+    name: "Prépositions & Structure"
+    description: "Prepositions of place and time (à, en, dans, chez, sur…) and c'est/il est patterns"
+    color: "#A67C52"
+    icon: "particle"
+
+# -----------------------------------------------------------------
+# Answer Type Pools
+# Each pool contains the grammar forms that serve as distractors
+# for each other. Total example_answers + synthetic_distractors must be ≥ 15.
+# -----------------------------------------------------------------
+
+answer_type_pools:
+
+  - id: present_er_forms
+    description: "Present indicative -er verb conjugations (parler, aimer, habiter, travailler, écouter, etc.)"
+    example_answers:
+      - parle
+      - parles
+      - parle
+      - parlons
+      - parlez
+      - parlent
+      - aime
+      - aimes
+      - travaille
+      - travailles
+      - habitons
+      - habitez
+      - écoute
+    synthetic_distractors:
+      - parlait
+      - parlera
+      - aimait
+      - aimiez
+      - habiterait
+      - travaillaient
+
+  - id: etre_forms
+    description: "Present indicative conjugations of être"
+    example_answers:
+      - suis
+      - es
+      - est
+      - sommes
+      - êtes
+      - sont
+    synthetic_distractors:
+      - serai
+      - seras
+      - sera
+      - serons
+      - serez
+      - seront
+      - étais
+      - étais
+      - fut
+      - fûmes
+      - fût
+      - serait
+
+  - id: avoir_forms
+    description: "Present indicative conjugations of avoir"
+    example_answers:
+      - ai
+      - as
+      - a
+      - avons
+      - avez
+      - ont
+    synthetic_distractors:
+      - aurai
+      - auras
+      - aura
+      - aurons
+      - aurez
+      - auront
+      - avais
+      - avait
+      - eut
+      - eûmes
+      - aurait
+      - aviez
+
+  - id: aller_forms
+    description: "Present indicative conjugations of aller"
+    example_answers:
+      - vais
+      - vas
+      - va
+      - allons
+      - allez
+      - vont
+    synthetic_distractors:
+      - irai
+      - iras
+      - ira
+      - irons
+      - irez
+      - iront
+      - allais
+      - allait
+      - alla
+      - allaient
+
+  - id: faire_forms
+    description: "Present indicative conjugations of faire"
+    example_answers:
+      - fais
+      - fais
+      - fait
+      - faisons
+      - faites
+      - font
+    synthetic_distractors:
+      - ferai
+      - feras
+      - fera
+      - ferons
+      - ferez
+      - feront
+      - faisais
+      - faisait
+      - fît
+      - feraient
+
+  - id: venir_forms
+    description: "Present indicative conjugations of venir"
+    example_answers:
+      - viens
+      - viens
+      - vient
+      - venons
+      - venez
+      - viennent
+    synthetic_distractors:
+      - viendrai
+      - viendras
+      - viendra
+      - viendrons
+      - viendrez
+      - viendront
+      - venais
+      - venait
+      - vint
+      - venaient
+
+  - id: pouvoir_forms
+    description: "Present indicative conjugations of pouvoir"
+    example_answers:
+      - peux
+      - peux
+      - peut
+      - pouvons
+      - pouvez
+      - peuvent
+    synthetic_distractors:
+      - pourrai
+      - pourras
+      - pourra
+      - pourrons
+      - pourrez
+      - pourront
+      - pouvais
+      - pouvait
+      - put
+      - pouvaient
+
+  - id: vouloir_forms
+    description: "Present indicative conjugations of vouloir"
+    example_answers:
+      - veux
+      - veux
+      - veut
+      - voulons
+      - voulez
+      - veulent
+    synthetic_distractors:
+      - voudrai
+      - voudras
+      - voudra
+      - voudrons
+      - voudrez
+      - voudront
+      - voulais
+      - voulait
+      - voulut
+      - voudraient
+
+  - id: present_ir_forms
+    description: "Present indicative -ir verb conjugations (finir-type with -iss- and partir-type without)"
+    example_answers:
+      - finis
+      - finis
+      - finit
+      - finissons
+      - finissez
+      - finissent
+      - pars
+      - pars
+      - part
+      - partons
+      - partez
+      - partent
+      - sors
+    synthetic_distractors:
+      - finirai
+      - partirai
+      - partais
+      - finissait
+      - sortirait
+
+  - id: present_re_forms
+    description: "Present indicative -re verb conjugations (attendre, prendre, comprendre)"
+    example_answers:
+      - prends
+      - prends
+      - prend
+      - prenons
+      - prenez
+      - prennent
+      - comprends
+      - comprends
+      - comprend
+      - attendons
+      - attendez
+      - attendent
+      - vends
+    synthetic_distractors:
+      - prendrai
+      - comprendrait
+      - attendait
+      - vendrait
+      - prendrions
+
+  - id: reflexive_forms
+    description: "Pronominal/reflexive verb forms: s'appeler, se lever, se coucher, se réveiller"
+    example_answers:
+      - m'appelle
+      - t'appelles
+      - s'appelle
+      - nous appelons
+      - vous appelez
+      - s'appellent
+      - me lève
+      - te lèves
+      - se lève
+      - me couche
+      - te couches
+      - se couche
+      - me réveille
+    synthetic_distractors:
+      - m'appellerai
+      - te lèveras
+      - se lèverait
+      - m'habille
+      - te promènes
+
+  - id: articles_definis
+    description: "Definite articles le, la, l', les and obligatory contractions au, aux, du, des"
+    example_answers:
+      - le
+      - la
+      - l'
+      - les
+      - au
+      - aux
+      - du
+      - des
+    synthetic_distractors:
+      - un
+      - une
+      - ce
+      - cette
+      - mon
+      - ton
+      - son
+      - notre
+      - leur
+      - votre
+
+  - id: articles_indefinis
+    description: "Indefinite articles un, une, des"
+    example_answers:
+      - un
+      - une
+      - des
+    synthetic_distractors:
+      - le
+      - la
+      - les
+      - l'
+      - au
+      - du
+      - ce
+      - cette
+      - mon
+      - ma
+      - ton
+      - ta
+      - quelque
+      - quelques
+      - certain
+      - certaine
+
+  - id: articles_partitifs
+    description: "Partitive articles du, de la, de l', and de/d' after negation"
+    example_answers:
+      - du
+      - de la
+      - de l'
+      - de
+      - d'
+    synthetic_distractors:
+      - le
+      - la
+      - les
+      - un
+      - une
+      - des
+      - au
+      - à la
+      - à l'
+      - ce
+      - cette
+      - mon
+      - ma
+      - quelque
+      - quelques
+
+  - id: possessifs_sg
+    description: "Singular possessive adjectives: mon/ma/mes, ton/ta/tes, son/sa/ses"
+    example_answers:
+      - mon
+      - ma
+      - mes
+      - ton
+      - ta
+      - tes
+      - son
+      - sa
+      - ses
+    synthetic_distractors:
+      - notre
+      - nos
+      - votre
+      - vos
+      - leur
+      - leurs
+      - ce
+      - cette
+      - le
+      - la
+
+  - id: possessifs_pl
+    description: "Plural possessive adjectives: notre/nos, votre/vos, leur/leurs"
+    example_answers:
+      - notre
+      - nos
+      - votre
+      - vos
+      - leur
+      - leurs
+    synthetic_distractors:
+      - mon
+      - ma
+      - mes
+      - ton
+      - ta
+      - tes
+      - son
+      - sa
+      - ses
+      - le
+      - la
+      - les
+
+  - id: demonstratifs
+    description: "Demonstrative adjectives: ce, cet (before vowel), cette, ces"
+    example_answers:
+      - ce
+      - cet
+      - cette
+      - ces
+    synthetic_distractors:
+      - le
+      - la
+      - les
+      - un
+      - une
+      - mon
+      - ton
+      - son
+      - notre
+      - votre
+      - leur
+      - quel
+      - quelle
+      - quels
+      - quelles
+
+  - id: pronoms_sujets
+    description: "Subject pronouns: je, tu, il, elle, on, nous, vous, ils, elles"
+    example_answers:
+      - je
+      - tu
+      - il
+      - elle
+      - on
+      - nous
+      - vous
+      - ils
+      - elles
+    synthetic_distractors:
+      - me
+      - te
+      - se
+      - lui
+      - y
+      - en
+      - le
+      - la
+      - les
+      - leur
+
+  - id: pronoms_toniques
+    description: "Tonic/disjunctive pronouns: moi, toi, lui, elle, nous, vous, eux, elles"
+    example_answers:
+      - moi
+      - toi
+      - lui
+      - elle
+      - nous
+      - vous
+      - eux
+      - elles
+    synthetic_distractors:
+      - je
+      - tu
+      - il
+      - ils
+      - me
+      - te
+      - se
+      - soi
+      - ce
+      - ça
+
+  - id: mots_interrogatifs
+    description: "Question words: où, quand, comment, pourquoi, combien, quel/quelle, qui, que/qu'"
+    example_answers:
+      - où
+      - quand
+      - comment
+      - pourquoi
+      - combien
+      - quel
+      - quelle
+      - quels
+      - quelles
+      - qui
+      - que
+      - qu'
+    synthetic_distractors:
+      - lequel
+      - laquelle
+      - lesquels
+      - dont
+      - quoi
+      - si
+      - puisque
+      - parce que
+
+  - id: negation_ne_pas
+    description: "Basic negation structures with ne…pas (and n'…pas before vowel)"
+    example_answers:
+      - ne parle pas
+      - ne suis pas
+      - ne comprends pas
+      - n'ai pas
+      - ne vais pas
+      - n'habite pas
+      - ne fais pas
+      - ne veux pas
+      - ne peux pas
+      - ne vient pas
+      - n'y a pas
+      - ne travaille pas
+    synthetic_distractors:
+      - ne parle jamais
+      - ne suis plus
+      - ne comprends rien
+      - n'ai personne
+      - ne vais nulle part
+      - n'habite jamais
+      - ne fais plus
+
+  - id: futur_proche_forms
+    description: "Futur proche: aller (present) + infinitif — expressing planned or imminent actions"
+    example_answers:
+      - vais manger
+      - vas partir
+      - va travailler
+      - allons voyager
+      - allez faire
+      - vont arriver
+      - vais essayer
+      - vas prendre
+      - va apprendre
+      - allons faire
+    synthetic_distractors:
+      - irai manger
+      - iras partir
+      - ira travailler
+      - allais manger
+      - allait partir
+      - viens de manger
+      - viens de partir
+      - vient d'arriver
+
+  - id: passe_recent_forms
+    description: "Passé récent: venir de (present) + infinitif — expressing a just-completed action"
+    example_answers:
+      - viens d'arriver
+      - viens de partir
+      - vient de finir
+      - venons de manger
+      - venez de voir
+      - viennent de rentrer
+      - viens de faire
+      - vient d'appeler
+    synthetic_distractors:
+      - allais arriver
+      - allait partir
+      - vais arriver
+      - vas partir
+      - va finir
+      - allons manger
+      - viendrai d'arriver
+      - viendrais de partir
+
+  - id: prepositions_lieu
+    description: "Prepositions of place and movement: à, de, en, dans, sur, sous, chez, devant, derrière, avec, pour"
+    example_answers:
+      - à
+      - de
+      - en
+      - dans
+      - sur
+      - sous
+      - chez
+      - devant
+      - derrière
+      - avec
+      - pour
+      - près de
+    synthetic_distractors:
+      - entre
+      - parmi
+      - vers
+      - jusqu'à
+      - depuis
+      - pendant
+      - selon
+      - grâce à
+
+# -----------------------------------------------------------------
+# Grammar Points with verified example sentences
+# (All Tatoeba IDs verified against tatoeba_a1_sentences.tsv)
+# -----------------------------------------------------------------
+
+grammar_points:
+
+  # ======= PRÉSENT -ER : PARLER =======
+
+  - id: "fr-a1-pres-er-parler-je"
+    point: "parler (je) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "parle"
+    examples:
+      - id: "tatoeba:6796"
+        fr: "Il parle anglais."
+        en: "He is speaking English."
+      - id: "tatoeba:9311"
+        fr: "Parlez-vous anglais ?"
+        en: "Do you speak English?"
+
+  - id: "fr-a1-pres-er-parler-tu"
+    point: "parler (tu) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "parles"
+    examples:
+      - id: "tatoeba:558576"
+        fr: "Parles-tu italien ?"
+        en: "Do you speak Italian?"
+
+  - id: "fr-a1-pres-er-parler-il"
+    point: "parler (il/elle) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "parle"
+    examples:
+      - id: "tatoeba:6796"
+        fr: "Il parle anglais."
+        en: "He is speaking English."
+
+  - id: "fr-a1-pres-er-parler-nous"
+    point: "parler (nous) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "parlons"
+    examples:
+      - id: "tatoeba:15033"
+        fr: "Parlons anglais."
+        en: "Let's speak English."
+
+  - id: "fr-a1-pres-er-parler-vous"
+    point: "parler (vous) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "parlez"
+    examples:
+      - id: "tatoeba:9311"
+        fr: "Parlez-vous anglais ?"
+        en: "Do you speak English?"
+
+  - id: "fr-a1-pres-er-parler-ils"
+    point: "parler (ils/elles) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "parlent"
+    examples: []
+    note: "no A1 pool coverage for ils parlent"
+
+  # ======= PRÉSENT -ER : TRAVAILLER =======
+
+  - id: "fr-a1-pres-er-travailler-tu"
+    point: "travailler (tu) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "travailles"
+    examples:
+      - id: "tatoeba:430396"
+        fr: "Tu travailles dur."
+        en: "You work hard."
+
+  - id: "fr-a1-pres-er-travailler-il"
+    point: "travailler (il) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "travaille"
+    examples:
+      - id: "tatoeba:15520"
+        fr: "Il travaille bien."
+        en: "He works well."
+
+  - id: "fr-a1-pres-er-travailler-vous"
+    point: "travailler (vous) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "travaillez"
+    examples:
+      - id: "tatoeba:2226654"
+        fr: "Vous travaillez dur."
+        en: "You work hard."
+
+  # ======= PRÉSENT -ER : AIMER =======
+
+  - id: "fr-a1-pres-er-aimer-je"
+    point: "aimer (je) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "aime"
+    examples:
+      - id: "tatoeba:7555"
+        fr: "J'aime les chiens."
+        en: "I like dogs."
+      - id: "tatoeba:6785"
+        fr: "J'aime apprendre l'anglais."
+        en: "I like to study English."
+
+  - id: "fr-a1-pres-er-aimer-tu"
+    point: "aimer (tu) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "aimes"
+    examples:
+      - id: "tatoeba:342086"
+        fr: "Qu'aimes-tu ?"
+        en: "What do you like?"
+
+  # ======= PRÉSENT -ER : HABITER =======
+
+  - id: "fr-a1-pres-er-habiter-je"
+    point: "habiter (je) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "habite"
+    examples:
+      - id: "tatoeba:9626"
+        fr: "J'habite à Kakogawa."
+        en: "I live in Kakogawa."
+
+  - id: "fr-a1-pres-er-habiter-tu"
+    point: "habiter (tu) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "habites"
+    examples:
+      - id: "tatoeba:6145"
+        fr: "Où habites-tu ?"
+        en: "Where do you live?"
+
+  # ======= PRÉSENT -ER : ÉTUDIER =======
+
+  - id: "fr-a1-pres-er-etudier-je"
+    point: "étudier (je) — Présent -er"
+    category: "Present: -er Verbs"
+    chain_theme: 0
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes réguliers en -er (§8)"
+    conjugation: "étudie"
+    examples:
+      - id: "tatoeba:14326"
+        fr: "J'étudie l'anglais."
+        en: "I'm studying English."
+      - id: "tatoeba:6734"
+        fr: "J'étudie l'anglais chez moi."
+        en: "I study English at home."
+
+  # ======= PRÉSENT : ÊTRE =======
+
+  - id: "fr-a1-etre-je"
+    point: "être (je) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, être (§11)"
+    conjugation: "suis"
+    examples:
+      - id: "tatoeba:6556"
+        fr: "Je suis heureux."
+        en: "I am happy."
+      - id: "tatoeba:6692"
+        fr: "Je suis étudiant."
+        en: "I am a student."
+      - id: "tatoeba:3252"
+        fr: "Je suis curieux."
+        en: "I am curious."
+
+  - id: "fr-a1-etre-tu"
+    point: "être (tu) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, être (§11)"
+    conjugation: "es"
+    examples:
+      - id: "tatoeba:3989"
+        fr: "Où es-tu ?"
+        en: "Where are you?"
+
+  - id: "fr-a1-etre-il"
+    point: "être (il/elle) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, être (§11)"
+    conjugation: "est"
+    examples:
+      - id: "tatoeba:15601"
+        fr: "Elle est heureuse."
+        en: "She is happy."
+      - id: "tatoeba:14484"
+        fr: "Il est enseignant."
+        en: "He is a teacher."
+
+  - id: "fr-a1-etre-nous"
+    point: "être (nous) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, être (§11)"
+    conjugation: "sommes"
+    examples:
+      - id: "tatoeba:8826"
+        fr: "Nous sommes lundi."
+        en: "It's Monday."
+
+  - id: "fr-a1-etre-vous"
+    point: "être (vous) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, être (§11)"
+    conjugation: "êtes"
+    examples: []
+    note: "no A1 pool coverage for vous êtes"
+
+  - id: "fr-a1-etre-ils"
+    point: "être (ils/elles) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, être (§11)"
+    conjugation: "sont"
+    examples: []
+    note: "no A1 pool coverage for ils sont"
+
+  # ======= PRÉSENT : AVOIR =======
+
+  - id: "fr-a1-avoir-je"
+    point: "avoir (je) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, avoir (§11)"
+    conjugation: "ai"
+    examples:
+      - id: "tatoeba:3636"
+        fr: "J'ai soif."
+        en: "I'm thirsty."
+      - id: "tatoeba:3447"
+        fr: "J'ai un rêve."
+        en: "I have a dream."
+      - id: "tatoeba:6567"
+        fr: "J'ai un chien."
+        en: "I have a dog."
+      - id: "tatoeba:7896"
+        fr: "J'ai deux filles."
+        en: "I have two daughters."
+
+  - id: "fr-a1-avoir-tu"
+    point: "avoir (tu) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, avoir (§11)"
+    conjugation: "as"
+    examples:
+      - id: "tatoeba:3640"
+        fr: "Tu as raison."
+        en: "You're right."
+
+  - id: "fr-a1-avoir-il"
+    point: "avoir (il/elle) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, avoir (§11)"
+    conjugation: "a"
+    examples: []
+    note: "no A1 pool coverage for il/elle a in isolation"
+
+  - id: "fr-a1-avoir-nous"
+    point: "avoir (nous) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, avoir (§11)"
+    conjugation: "avons"
+    examples: []
+    note: "no A1 pool coverage for nous avons"
+
+  # ======= PRÉSENT : ALLER =======
+
+  - id: "fr-a1-aller-je"
+    point: "aller (je) — Présent irrégulier"
+    category: "Temps Périphrastiques"
+    chain_theme: 6
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, aller (§11); futur proche (§16)"
+    conjugation: "vais"
+    examples:
+      - id: "tatoeba:15441"
+        fr: "Je vais essayer."
+        en: "I will try."
+      - id: "tatoeba:378541"
+        fr: "Je vais y aller."
+        en: "I'm going to go."
+
+  - id: "fr-a1-aller-tu"
+    point: "aller (tu) — Présent irrégulier"
+    category: "Temps Périphrastiques"
+    chain_theme: 6
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, aller (§11)"
+    conjugation: "vas"
+    examples:
+      - id: "tatoeba:3991"
+        fr: "Où vas-tu ?"
+        en: "Where are you going?"
+
+  - id: "fr-a1-aller-il"
+    point: "aller (il) — Présent irrégulier"
+    category: "Temps Périphrastiques"
+    chain_theme: 6
+    difficulty: 1
+    referentiel_ref: "A1 — Présent de l'indicatif, aller (§11)"
+    conjugation: "va"
+    examples:
+      - id: "tatoeba:8664"
+        fr: "Va au parc."
+        en: "Go to the park."
+
+  # ======= PRÉSENT : FAIRE =======
+
+  - id: "fr-a1-faire-je"
+    point: "faire (je) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, faire (§11)"
+    conjugation: "fais"
+    examples:
+      - id: "tatoeba:7403"
+        fr: "Je fais trop d'erreurs."
+        en: "I make too many mistakes."
+
+  - id: "fr-a1-faire-tu"
+    point: "faire (tu) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, faire (§11)"
+    conjugation: "fais"
+    examples:
+      - id: "tatoeba:1037587"
+        fr: "Tu fais quoi ?"
+        en: "What are you doing?"
+
+  - id: "fr-a1-faire-il"
+    point: "faire (il) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, faire (§11)"
+    conjugation: "fait"
+    examples:
+      - id: "tatoeba:3635"
+        fr: "Il fait froid."
+        en: "It's cold."
+      - id: "tatoeba:8415"
+        fr: "Il fait frais aujourd'hui."
+        en: "It's cool today."
+
+  # ======= PRÉSENT : VENIR =======
+
+  - id: "fr-a1-venir-je"
+    point: "venir (je) — Présent irrégulier"
+    category: "Temps Périphrastiques"
+    chain_theme: 6
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, venir (§11); passé récent (§17)"
+    conjugation: "viens"
+    examples:
+      - id: "tatoeba:6531"
+        fr: "Je viens d'arriver."
+        en: "I just arrived now."
+      - id: "tatoeba:10660"
+        fr: "Je viens d'Angleterre."
+        en: "I come from England."
+      - id: "tatoeba:10978"
+        fr: "Je viens du Canada."
+        en: "I'm from Canada."
+
+  # ======= PRÉSENT : POUVOIR =======
+
+  - id: "fr-a1-pouvoir-je"
+    point: "pouvoir (je) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, pouvoir (§11)"
+    conjugation: "peux"
+    examples:
+      - id: "tatoeba:6925"
+        fr: "Je peux parler français."
+        en: "I can speak French."
+
+  - id: "fr-a1-pouvoir-tu"
+    point: "pouvoir (tu) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, pouvoir (§11)"
+    conjugation: "peux"
+    examples:
+      - id: "tatoeba:474834"
+        fr: "Tu peux y aller."
+        en: "You may go there."
+      - id: "tatoeba:126643"
+        fr: "Tu peux y arriver."
+        en: "You can do it."
+
+  - id: "fr-a1-pouvoir-il"
+    point: "pouvoir (il) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, pouvoir (§11)"
+    conjugation: "peut"
+    examples:
+      - id: "tatoeba:15362"
+        fr: "Il peut venir."
+        en: "He can come."
+
+  # ======= PRÉSENT : VOULOIR =======
+
+  - id: "fr-a1-vouloir-je"
+    point: "vouloir (je) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, vouloir (§11)"
+    conjugation: "veux"
+    examples:
+      - id: "tatoeba:6368"
+        fr: "Je veux conduire."
+        en: "I want to drive."
+      - id: "tatoeba:6617"
+        fr: "Je veux t'accompagner."
+        en: "I want to go with you."
+      - id: "tatoeba:3874"
+        fr: "Je veux un bonbon."
+        en: "I want a piece of candy."
+
+  - id: "fr-a1-vouloir-tu"
+    point: "vouloir (tu) — Présent irrégulier"
+    category: "Être & Avoir"
+    chain_theme: 1
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, vouloir (§11)"
+    conjugation: "veux"
+    examples:
+      - id: "tatoeba:3439"
+        fr: "Que veux-tu ?"
+        en: "What do you want?"
+
+  # ======= PRÉSENT : VERBES -IR (FINIR-TYPE) =======
+
+  - id: "fr-a1-pres-ir-finir-je"
+    point: "finir (je) — Présent -ir finir-type"
+    category: "Present: -ir et -re"
+    chain_theme: 5
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes en -ir type finir (§9)"
+    conjugation: "finis"
+    examples:
+      - id: "tatoeba:7229"
+        fr: "Je finis mes devoirs."
+        en: "I'm finishing my homework."
+
+  - id: "fr-a1-pres-ir-finir-ils"
+    point: "finir (ils/elles) — Présent -ir finir-type + -iss-"
+    category: "Present: -ir et -re"
+    chain_theme: 5
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes en -ir type finir (§9)"
+    conjugation: "finissent"
+    examples: []
+    note: "no A1 pool coverage for ils finissent"
+
+  - id: "fr-a1-pres-ir-finir-nous"
+    point: "finir (nous) — Présent -ir finir-type + -iss-"
+    category: "Present: -ir et -re"
+    chain_theme: 5
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes en -ir type finir (§9)"
+    conjugation: "finissons"
+    examples: []
+    note: "no A1 pool coverage for nous finissons"
+
+  # ======= PRÉSENT : VERBES -IR (PARTIR-TYPE) =======
+
+  - id: "fr-a1-pres-ir-partir-je"
+    point: "partir (je) — Présent -ir partir-type"
+    category: "Present: -ir et -re"
+    chain_theme: 5
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes en -ir type partir (§9)"
+    conjugation: "pars"
+    examples:
+      - id: "tatoeba:8509"
+        fr: "Je pars maintenant."
+        en: "I'm leaving now."
+
+  - id: "fr-a1-pres-ir-sortir-je"
+    point: "sortir (je) — Présent -ir partir-type"
+    category: "Present: -ir et -re"
+    chain_theme: 5
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes en -ir type partir (§9)"
+    conjugation: "sors"
+    examples:
+      - id: "tatoeba:6520"
+        fr: "Je sors cet après-midi."
+        en: "I am going out this afternoon."
+
+  # ======= PRÉSENT : VERBES -RE (PRENDRE/COMPRENDRE) =======
+
+  - id: "fr-a1-pres-re-comprendre-je"
+    point: "comprendre (je) — Présent prendre-type"
+    category: "Present: -ir et -re"
+    chain_theme: 5
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes en -re, groupe prendre (§10)"
+    conjugation: "comprends"
+    examples:
+      - id: "tatoeba:3528"
+        fr: "Je ne comprends pas."
+        en: "I don't get it."
+      - id: "tatoeba:3605"
+        fr: "Je ne comprends pas l'allemand."
+        en: "I don't understand German."
+      - id: "tatoeba:9670"
+        fr: "Je comprends à peu près."
+        en: "I sort of understand."
+
+  - id: "fr-a1-pres-re-comprendre-il"
+    point: "comprendre (il) — Présent prendre-type"
+    category: "Present: -ir et -re"
+    chain_theme: 5
+    difficulty: 2
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes en -re, groupe prendre (§10)"
+    conjugation: "comprend"
+    examples: []
+    note: "no A1 pool coverage for il comprend"
+
+  - id: "fr-a1-pres-re-prendre-ils"
+    point: "prendre (ils) — Présent prendre-type, stem change"
+    category: "Present: -ir et -re"
+    chain_theme: 5
+    difficulty: 3
+    referentiel_ref: "A1 — Présent de l'indicatif, verbes en -re, groupe prendre (§10)"
+    conjugation: "prennent"
+    examples: []
+    note: "no A1 pool coverage for ils prennent"
+
+  # ======= VERBES PRONOMINAUX =======
+
+  - id: "fr-a1-reflexive-sappeler-je"
+    point: "s'appeler (je) — Verbe pronominal"
+    category: "Present: -ir et -re"
+    chain_theme: 5
+    difficulty: 2
+    referentiel_ref: "A1 — Verbes pronominaux au présent, s'appeler (§12)"
+    conjugation: "m'appelle"
+    examples:
+      - id: "tatoeba:3464"
+        fr: "Je m'appelle Jack."
+        en: "My name is Jack."
+      - id: "tatoeba:14871"
+        fr: "Je m'appelle Hisashi."
+        en: "My name is Hisashi."
+      - id: "tatoeba:8095"
+        fr: "Je m'appelle Edgar Degas."
+        en: "My name is Edgar Degas."
+
+  - id: "fr-a1-reflexive-sappeler-il"
+    point: "s'appeler (il/elle) — Verbe pronominal"
+    category: "Present: -ir et -re"
+    chain_theme: 5
+    difficulty: 2
+    referentiel_ref: "A1 — Verbes pronominaux au présent, s'appeler (§12)"
+    conjugation: "s'appelle"
+    examples:
+      - id: "tatoeba:3464"
+        fr: "Je m'appelle Jack."
+        en: "My name is Jack."
+
+  - id: "fr-a1-reflexive-se-lever"
+    point: "se lever — Verbe pronominal (se déshabiller, se réveiller)"
+    category: "Present: -ir et -re"
+    chain_theme: 5
+    difficulty: 2
+    referentiel_ref: "A1 — Verbes pronominaux au présent (§12)"
+    conjugation: "me lève / me réveille"
+    examples:
+      - id: "tatoeba:3585"
+        fr: "Je me déshabille."
+        en: "I'm undressing."
+      - id: "tatoeba:6233"
+        fr: "Je dois me réveiller tôt."
+        en: "I have to get up early."
+
+  # ======= ARTICLES DÉFINIS =======
+
+  - id: "fr-a1-article-defini-le-la"
+    point: "le / la — Article défini singulier"
+    category: "Articles & Genre"
+    chain_theme: 2
+    difficulty: 1
+    referentiel_ref: "A1 — Articles définis (§2)"
+    conjugation: "le / la"
+    examples:
+      - id: "tatoeba:3881"
+        fr: "Je n'aime pas l'école."
+        en: "I don't like school."
+      - id: "tatoeba:6734"
+        fr: "J'étudie l'anglais chez moi."
+        en: "I study English at home."
+
+  - id: "fr-a1-article-defini-les"
+    point: "les — Article défini pluriel"
+    category: "Articles & Genre"
+    chain_theme: 2
+    difficulty: 1
+    referentiel_ref: "A1 — Articles définis, pluriel (§2)"
+    conjugation: "les"
+    examples:
+      - id: "tatoeba:7555"
+        fr: "J'aime les chiens."
+        en: "I like dogs."
+
+  - id: "fr-a1-article-defini-contraction-au-du"
+    point: "au / du — Contractions obligatoires (à+le, de+le)"
+    category: "Articles & Genre"
+    chain_theme: 2
+    difficulty: 2
+    referentiel_ref: "A1 — Articles définis, contractions au/aux/du/des (§2)"
+    conjugation: "au / du"
+    examples:
+      - id: "tatoeba:8664"
+        fr: "Va au parc."
+        en: "Go to the park."
+      - id: "tatoeba:10978"
+        fr: "Je viens du Canada."
+        en: "I'm from Canada."
+
+  # ======= ARTICLES INDÉFINIS =======
+
+  - id: "fr-a1-article-indefini-un-une"
+    point: "un / une — Article indéfini singulier"
+    category: "Articles & Genre"
+    chain_theme: 2
+    difficulty: 1
+    referentiel_ref: "A1 — Articles indéfinis (§2)"
+    conjugation: "un / une"
+    examples:
+      - id: "tatoeba:6400"
+        fr: "J'ai une voiture."
+        en: "I have a car."
+      - id: "tatoeba:3384"
+        fr: "C'est une surprise."
+        en: "It's a surprise."
+      - id: "tatoeba:7916"
+        fr: "J'ai une idée."
+        en: "I have an idea."
+      - id: "tatoeba:13776"
+        fr: "Je mange une pomme."
+        en: "I am eating an apple."
+
+  - id: "fr-a1-article-indefini-des"
+    point: "des — Article indéfini pluriel"
+    category: "Articles & Genre"
+    chain_theme: 2
+    difficulty: 1
+    referentiel_ref: "A1 — Articles indéfinis, pluriel (§2)"
+    conjugation: "des"
+    examples:
+      - id: "tatoeba:7555"
+        fr: "J'aime les chiens."
+        en: "I like dogs."
+
+  # ======= ARTICLES PARTITIFS =======
+
+  - id: "fr-a1-article-partitif-du-de-la"
+    point: "du / de la — Article partitif"
+    category: "Articles & Genre"
+    chain_theme: 2
+    difficulty: 2
+    referentiel_ref: "A1 — Articles partitifs (§2)"
+    conjugation: "du / de la"
+    examples:
+      - id: "tatoeba:698815"
+        fr: "Tu bois du thé."
+        en: "You drink tea."
+      - id: "tatoeba:14411"
+        fr: "Je veux de l'eau."
+        en: "I want some water."
+      - id: "tatoeba:500272"
+        fr: "J'écoute de la musique."
+        en: "I listen to music."
+
+  - id: "fr-a1-article-partitif-neg"
+    point: "de / d' — Article partitif après négation"
+    category: "Articles & Genre"
+    chain_theme: 2
+    difficulty: 3
+    referentiel_ref: "A1 — Articles partitifs, forme négative (§2, §13)"
+    conjugation: "de / d'"
+    examples:
+      - id: "tatoeba:6369"
+        fr: "Je n'ai pas de voiture."
+        en: "I don't have a car."
+
+  # ======= ADJECTIFS POSSESSIFS =======
+
+  - id: "fr-a1-possessif-mon-ma-mes"
+    point: "mon / ma / mes — Adjectif possessif 1re pers. sg."
+    category: "Pronoms & Possessifs"
+    chain_theme: 3
+    difficulty: 1
+    referentiel_ref: "A1 — Adjectifs possessifs (§4)"
+    conjugation: "mon / ma / mes"
+    examples:
+      - id: "tatoeba:397346"
+        fr: "C'est mon CD."
+        en: "It's my CD."
+      - id: "tatoeba:7696"
+        fr: "Mon grand-père aime marcher."
+        en: "My grandfather likes to walk."
+
+  - id: "fr-a1-possessif-ton-ta-tes"
+    point: "ton / ta / tes — Adjectif possessif 2e pers. sg."
+    category: "Pronoms & Possessifs"
+    chain_theme: 3
+    difficulty: 1
+    referentiel_ref: "A1 — Adjectifs possessifs (§4)"
+    conjugation: "ton / ta / tes"
+    examples:
+      - id: "tatoeba:8996"
+        fr: "C'est ton tour."
+        en: "It's your move."
+
+  - id: "fr-a1-possessif-son-sa-ses"
+    point: "son / sa / ses — Adjectif possessif 3e pers. sg."
+    category: "Pronoms & Possessifs"
+    chain_theme: 3
+    difficulty: 2
+    referentiel_ref: "A1 — Adjectifs possessifs, accord avec le possédé (§4)"
+    conjugation: "son / sa / ses"
+    examples:
+      - id: "tatoeba:7696"
+        fr: "Mon grand-père aime marcher."
+        en: "My grandfather likes to walk."
+
+  - id: "fr-a1-possessif-votre-vos"
+    point: "votre / vos — Adjectif possessif 2e pers. pl."
+    category: "Pronoms & Possessifs"
+    chain_theme: 3
+    difficulty: 1
+    referentiel_ref: "A1 — Adjectifs possessifs (§4)"
+    conjugation: "votre / vos"
+    examples:
+      - id: "tatoeba:6610"
+        fr: "J'aime votre voiture."
+        en: "I like your car."
+
+  - id: "fr-a1-possessif-notre-nos"
+    point: "notre / nos — Adjectif possessif 1re pers. pl."
+    category: "Pronoms & Possessifs"
+    chain_theme: 3
+    difficulty: 1
+    referentiel_ref: "A1 — Adjectifs possessifs (§4)"
+    conjugation: "notre / nos"
+    examples:
+      - id: "tatoeba:10615"
+        fr: "C'est notre école."
+        en: "That is our school."
+
+  # ======= ADJECTIFS DÉMONSTRATIFS =======
+
+  - id: "fr-a1-demo-ce-cet-cette"
+    point: "ce / cet / cette — Adjectif démonstratif singulier"
+    category: "Pronoms & Possessifs"
+    chain_theme: 3
+    difficulty: 2
+    referentiel_ref: "A1 — Adjectifs démonstratifs (§5)"
+    conjugation: "ce / cet / cette"
+    examples:
+      - id: "tatoeba:7413"
+        fr: "J'adore cette publicité."
+        en: "I love that commercial."
+      - id: "tatoeba:10476"
+        fr: "Regarde cette maison."
+        en: "Look at that house."
+      - id: "tatoeba:389636"
+        fr: "J'aime cette chaise."
+        en: "I love that chair."
+
+  - id: "fr-a1-demo-ces"
+    point: "ces — Adjectif démonstratif pluriel"
+    category: "Pronoms & Possessifs"
+    chain_theme: 3
+    difficulty: 2
+    referentiel_ref: "A1 — Adjectifs démonstratifs (§5)"
+    conjugation: "ces"
+    examples:
+      - id: "tatoeba:11315"
+        fr: "Montez ces escaliers."
+        en: "Go up these stairs."
+      - id: "tatoeba:7241"
+        fr: "J'aime beaucoup ces histoires."
+        en: "I really like these stories."
+
+  # ======= PRONOMS PERSONNELS SUJETS =======
+
+  - id: "fr-a1-pronom-sujet-paradigm"
+    point: "je/tu/il/elle/on/nous/vous/ils/elles — Paradigme complet"
+    category: "Pronoms & Possessifs"
+    chain_theme: 3
+    difficulty: 1
+    referentiel_ref: "A1 — Pronoms personnels sujets (§6)"
+    conjugation: "je, tu, il, elle, on, nous, vous, ils, elles"
+    examples:
+      - id: "tatoeba:7862444"
+        fr: "Nous sommes sept."
+        en: "There are seven of us."
+      - id: "tatoeba:8973"
+        fr: "Et vous ?"
+        en: "How about you?"
+
+  - id: "fr-a1-pronom-sujet-on"
+    point: "on — Pronom sujet (= nous en style familier)"
+    category: "Pronoms & Possessifs"
+    chain_theme: 3
+    difficulty: 2
+    referentiel_ref: "A1 — Pronoms personnels sujets, on = nous (§6)"
+    conjugation: "on"
+    examples:
+      - id: "tatoeba:337034"
+        fr: "On mange pour vivre."
+        en: "We eat so we can live."
+
+  # ======= PRONOMS TONIQUES =======
+
+  - id: "fr-a1-pronom-tonique-moi-toi"
+    point: "moi / toi — Pronoms toniques"
+    category: "Pronoms & Possessifs"
+    chain_theme: 3
+    difficulty: 2
+    referentiel_ref: "A1 — Pronoms toniques (§7)"
+    conjugation: "moi / toi"
+    examples:
+      - id: "tatoeba:12365"
+        fr: "C'est moi."
+        en: "It's me."
+      - id: "tatoeba:10770"
+        fr: "Bien. Et toi ?"
+        en: "Fine. And you?"
+      - id: "tatoeba:14704"
+        fr: "Moi aussi, j'aime l'anglais."
+        en: "I like English, too."
+      - id: "tatoeba:12810"
+        fr: "Fais comme chez toi."
+        en: "Make yourself at home."
+
+  # ======= NÉGATION =======
+
+  - id: "fr-a1-negation-ne-pas-basic"
+    point: "ne…pas — Négation de base"
+    category: "Questions & Négation"
+    chain_theme: 4
+    difficulty: 1
+    referentiel_ref: "A1 — La négation ne…pas (§13)"
+    conjugation: "ne + verbe + pas"
+    examples:
+      - id: "tatoeba:3297"
+        fr: "Je ne parle pas japonais."
+        en: "I don't speak Japanese."
+      - id: "tatoeba:562667"
+        fr: "Je ne suis pas."
+        en: "I don't follow."
+
+  - id: "fr-a1-negation-ne-pas-avoir"
+    point: "n'…pas de — Négation avec article partitif / indéfini"
+    category: "Questions & Négation"
+    chain_theme: 4
+    difficulty: 2
+    referentiel_ref: "A1 — La négation, article après négation (§13)"
+    conjugation: "n'…pas de"
+    examples:
+      - id: "tatoeba:6369"
+        fr: "Je n'ai pas de voiture."
+        en: "I don't have a car."
+      - id: "tatoeba:3528"
+        fr: "Je ne comprends pas."
+        en: "I don't get it."
+
+  - id: "fr-a1-negation-ne-pas-comprendre"
+    point: "ne…pas — Négation avec comprendre"
+    category: "Questions & Négation"
+    chain_theme: 4
+    difficulty: 1
+    referentiel_ref: "A1 — La négation ne…pas (§13)"
+    conjugation: "ne comprends pas"
+    examples:
+      - id: "tatoeba:3528"
+        fr: "Je ne comprends pas."
+        en: "I don't get it."
+      - id: "tatoeba:3605"
+        fr: "Je ne comprends pas l'allemand."
+        en: "I don't understand German."
+
+  # ======= INTERROGATION =======
+
+  - id: "fr-a1-interro-quel-quelle"
+    point: "quel / quelle — Adjectif interrogatif + accord"
+    category: "Questions & Négation"
+    chain_theme: 4
+    difficulty: 2
+    referentiel_ref: "A1 — L'interrogation, quel (§14)"
+    conjugation: "quel / quelle"
+    examples:
+      - id: "tatoeba:3474"
+        fr: "Quelle heure est-il ?"
+        en: "What time is it?"
+      - id: "tatoeba:3494"
+        fr: "Quel âge as-tu ?"
+        en: "What is your age?"
+
+  - id: "fr-a1-interro-que"
+    point: "que — Mot interrogatif (objet)"
+    category: "Questions & Négation"
+    chain_theme: 4
+    difficulty: 2
+    referentiel_ref: "A1 — L'interrogation, que/qu' (§14)"
+    conjugation: "que / qu'"
+    examples:
+      - id: "tatoeba:334351"
+        fr: "Que fais-tu ?"
+        en: "What are you doing?"
+      - id: "tatoeba:3439"
+        fr: "Que veux-tu ?"
+        en: "What do you want?"
+
+  - id: "fr-a1-interro-pourquoi"
+    point: "pourquoi — Mot interrogatif"
+    category: "Questions & Négation"
+    chain_theme: 4
+    difficulty: 1
+    referentiel_ref: "A1 — L'interrogation, pourquoi (§14)"
+    conjugation: "pourquoi"
+    examples:
+      - id: "tatoeba:3184"
+        fr: "Pourquoi demandes-tu ?"
+        en: "Why do you ask?"
+      - id: "tatoeba:12774"
+        fr: "Pourquoi pleures-tu ?"
+        en: "Why are you crying?"
+
+  - id: "fr-a1-interro-comment"
+    point: "comment — Mot interrogatif"
+    category: "Questions & Négation"
+    chain_theme: 4
+    difficulty: 1
+    referentiel_ref: "A1 — L'interrogation, comment (§14)"
+    conjugation: "comment"
+    examples:
+      - id: "tatoeba:8742"
+        fr: "Comment vas-tu ?"
+        en: "What's up?"
+
+  - id: "fr-a1-interro-combien"
+    point: "combien — Mot interrogatif"
+    category: "Questions & Négation"
+    chain_theme: 4
+    difficulty: 1
+    referentiel_ref: "A1 — L'interrogation, combien (§14)"
+    conjugation: "combien"
+    examples:
+      - id: "tatoeba:9001"
+        fr: "Combien mesures-tu ?"
+        en: "How tall are you?"
+
+  - id: "fr-a1-interro-quand"
+    point: "quand — Mot interrogatif"
+    category: "Questions & Négation"
+    chain_theme: 4
+    difficulty: 1
+    referentiel_ref: "A1 — L'interrogation, quand (§14)"
+    conjugation: "quand"
+    examples:
+      - id: "tatoeba:435865"
+        fr: "Quand reviendras-tu ?"
+        en: "When will you be back?"
+
+  - id: "fr-a1-interro-qui"
+    point: "qui — Mot interrogatif (sujet/objet personne)"
+    category: "Questions & Négation"
+    chain_theme: 4
+    difficulty: 1
+    referentiel_ref: "A1 — L'interrogation, qui (§14)"
+    conjugation: "qui"
+    examples:
+      - id: "tatoeba:13185"
+        fr: "Qui est-elle ?"
+        en: "Who is she?"
+
+  # ======= IL Y A =======
+
+  - id: "fr-a1-il-y-a-affirmative"
+    point: "il y a — Existence (affirmative)"
+    category: "Temps Périphrastiques"
+    chain_theme: 6
+    difficulty: 1
+    referentiel_ref: "A1 — Il y a (§15)"
+    conjugation: "il y a"
+    examples:
+      - id: "tatoeba:4238"
+        fr: "Il n'y a aucun doute."
+        en: "There's no doubt."
+
+  - id: "fr-a1-il-y-a-negative"
+    point: "il n'y a pas — Existence (négative)"
+    category: "Temps Périphrastiques"
+    chain_theme: 6
+    difficulty: 2
+    referentiel_ref: "A1 — Il y a, forme négative (§15)"
+    conjugation: "il n'y a pas de"
+    examples:
+      - id: "tatoeba:4238"
+        fr: "Il n'y a aucun doute."
+        en: "There's no doubt."
+      - id: "tatoeba:4239"
+        fr: "Il n'y a aucune solution."
+        en: "There isn't any solution."
+
+  # ======= FUTUR PROCHE =======
+
+  - id: "fr-a1-futur-proche-structure"
+    point: "futur proche — aller + infinitif"
+    category: "Temps Périphrastiques"
+    chain_theme: 6
+    difficulty: 2
+    referentiel_ref: "A1 — Le futur proche (§16)"
+    conjugation: "vais/vas/va/allons/allez/vont + infinitif"
+    examples:
+      - id: "tatoeba:3296"
+        fr: "Demain, il va alunir."
+        en: "Tomorrow, he will land on the moon."
+      - id: "tatoeba:4270"
+        fr: "Je vais me baigner."
+        en: "I'm going to take a bath."
+      - id: "tatoeba:10788"
+        fr: "Emi va apprendre l'anglais."
+        en: "Emi will study English."
+
+  - id: "fr-a1-futur-proche-je"
+    point: "futur proche (je) — Je vais + infinitif"
+    category: "Temps Périphrastiques"
+    chain_theme: 6
+    difficulty: 1
+    referentiel_ref: "A1 — Le futur proche (§16)"
+    conjugation: "je vais + infinitif"
+    examples:
+      - id: "tatoeba:6548"
+        fr: "Je vais le faire maintenant."
+        en: "I will do it right now."
+      - id: "tatoeba:15441"
+        fr: "Je vais essayer."
+        en: "I will try."
+
+  - id: "fr-a1-futur-proche-tu"
+    point: "futur proche (tu) — Tu vas + infinitif"
+    category: "Temps Périphrastiques"
+    chain_theme: 6
+    difficulty: 1
+    referentiel_ref: "A1 — Le futur proche (§16)"
+    conjugation: "tu vas + infinitif"
+    examples:
+      - id: "tatoeba:427710"
+        fr: "Tu vas prendre froid."
+        en: "You will catch cold."
+
+  # ======= PASSÉ RÉCENT =======
+
+  - id: "fr-a1-passe-recent-structure"
+    point: "passé récent — venir de + infinitif"
+    category: "Temps Périphrastiques"
+    chain_theme: 6
+    difficulty: 3
+    referentiel_ref: "A1 — Le passé récent (§17)"
+    conjugation: "viens/vient de + infinitif"
+    examples:
+      - id: "tatoeba:6531"
+        fr: "Je viens d'arriver."
+        en: "I just arrived now."
+      - id: "tatoeba:15376"
+        fr: "Il vient juste d'arriver."
+        en: "He has come home just now."
+      - id: "tatoeba:7502"
+        fr: "Je viens d'avoir 20 ans."
+        en: "I have turned 20."
+
+  # ======= PRÉPOSITIONS DE LIEU =======
+
+  - id: "fr-a1-prep-a-en"
+    point: "à / en — Prépositions de lieu (ville / pays)"
+    category: "Prépositions & Structure"
+    chain_theme: 7
+    difficulty: 2
+    referentiel_ref: "A1 — Prépositions de lieu, à et en (§18)"
+    conjugation: "à / en"
+    examples:
+      - id: "tatoeba:9626"
+        fr: "J'habite à Kakogawa."
+        en: "I live in Kakogawa."
+      - id: "tatoeba:9726"
+        fr: "Je vis en ville."
+        en: "I'm living in the city."
+
+  - id: "fr-a1-prep-sur"
+    point: "sur — Préposition de lieu (sur la table)"
+    category: "Prépositions & Structure"
+    chain_theme: 7
+    difficulty: 1
+    referentiel_ref: "A1 — Prépositions de lieu, sur (§18)"
+    conjugation: "sur"
+    examples:
+      - id: "tatoeba:12418"
+        fr: "Posez-le sur la table."
+        en: "Lay it on the table."
+
+  - id: "fr-a1-prep-chez"
+    point: "chez — Préposition (chez moi, chez le médecin)"
+    category: "Prépositions & Structure"
+    chain_theme: 7
+    difficulty: 2
+    referentiel_ref: "A1 — Prépositions de lieu, chez (§18)"
+    conjugation: "chez"
+    examples:
+      - id: "tatoeba:12810"
+        fr: "Fais comme chez toi."
+        en: "Make yourself at home."
+      - id: "tatoeba:6734"
+        fr: "J'étudie l'anglais chez moi."
+        en: "I study English at home."
+
+  - id: "fr-a1-prep-a-maison"
+    point: "à la maison — Lieu de destination"
+    category: "Prépositions & Structure"
+    chain_theme: 7
+    difficulty: 1
+    referentiel_ref: "A1 — Prépositions de lieu (§18)"
+    conjugation: "à la maison"
+    examples:
+      - id: "tatoeba:7808"
+        fr: "Viens à la maison."
+        en: "Come to my house."
+
+  # ======= C'EST / IL EST =======
+
+  - id: "fr-a1-cest-il-est-cest"
+    point: "c'est — Identification (c'est + article + nom)"
+    category: "Prépositions & Structure"
+    chain_theme: 7
+    difficulty: 2
+    referentiel_ref: "A1 — C'est / il est (§20)"
+    conjugation: "c'est"
+    examples:
+      - id: "tatoeba:10654"
+        fr: "C'est une belle journée."
+        en: "It's a beautiful day."
+      - id: "tatoeba:3384"
+        fr: "C'est une surprise."
+        en: "It's a surprise."
+      - id: "tatoeba:12365"
+        fr: "C'est moi."
+        en: "It's me."
+
+  - id: "fr-a1-cest-il-est-il-est"
+    point: "il est / elle est — Description (il est + adjectif nu)"
+    category: "Prépositions & Structure"
+    chain_theme: 7
+    difficulty: 2
+    referentiel_ref: "A1 — C'est / il est (§20)"
+    conjugation: "il est / elle est"
+    examples:
+      - id: "tatoeba:15601"
+        fr: "Elle est heureuse."
+        en: "She is happy."
+      - id: "tatoeba:14484"
+        fr: "Il est enseignant."
+        en: "He is a teacher."
+
+  # ======= ACCORD ADJECTIF-NOM =======
+
+  - id: "fr-a1-accord-adj-masc-fem"
+    point: "Accord adjectif — genre masculin/féminin"
+    category: "Articles & Genre"
+    chain_theme: 2
+    difficulty: 2
+    referentiel_ref: "A1 — Adjectifs qualificatifs, accord en genre (§3)"
+    conjugation: "grand/grande, heureux/heureuse, beau/belle"
+    examples:
+      - id: "tatoeba:11121"
+        fr: "Ken est heureux."
+        en: "Ken is happy."
+      - id: "tatoeba:531744"
+        fr: "Je suis fatiguée."
+        en: "I'm tired."
+      - id: "tatoeba:11762"
+        fr: "Judy est intelligente."
+        en: "Judy is smart."
+      - id: "tatoeba:575783"
+        fr: "Tu es beau."
+        en: "You are beautiful."
+      - id: "tatoeba:575784"
+        fr: "Tu es belle."
+        en: "You are beautiful."

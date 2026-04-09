@@ -14,8 +14,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hayas llegado",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800047",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -35,8 +37,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "haya terminado",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800048",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -56,8 +60,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hayan salido",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800049",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -77,8 +83,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hayas venido",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800050",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -98,8 +106,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hayas comido",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800051",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -119,8 +129,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "haya dicho",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800052",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -140,8 +152,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hayamos terminado",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800053",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -161,8 +175,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "haya llegado",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800199",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -182,8 +198,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hayamos cometido",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800200",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -191,7 +209,9 @@
   {
     "id": "es-gram-b2-plup-subj-hubiera-estudiar-0",
     "correctAnswer": "hubiera estudiado",
-    "acceptableAlternatives": ["hubiese estudiado"],
+    "acceptableAlternatives": [
+      "hubiese estudiado"
+    ],
     "chainThemeId": 1,
     "answerTypePoolId": "haber_subj_pluperfect",
     "difficulty": 4,
@@ -203,8 +223,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hubiera estudiado",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800057",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -212,7 +234,9 @@
   {
     "id": "es-gram-b2-plup-subj-hubiera-venir-alegro-0",
     "correctAnswer": "hubiera venido",
-    "acceptableAlternatives": ["hubiese venido"],
+    "acceptableAlternatives": [
+      "hubiese venido"
+    ],
     "chainThemeId": 1,
     "answerTypePoolId": "haber_subj_pluperfect",
     "difficulty": 4,
@@ -224,8 +248,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hubiera venido",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800058",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -233,7 +259,9 @@
   {
     "id": "es-gram-b2-plup-subj-hubieran-terminar-0",
     "correctAnswer": "hubieran terminado",
-    "acceptableAlternatives": ["hubiesen terminado"],
+    "acceptableAlternatives": [
+      "hubiesen terminado"
+    ],
     "chainThemeId": 1,
     "answerTypePoolId": "haber_subj_pluperfect",
     "difficulty": 4,
@@ -245,8 +273,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hubieran terminado",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800059",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -254,7 +284,9 @@
   {
     "id": "es-gram-b2-plup-subj-hubieras-llegar-antes-0",
     "correctAnswer": "hubieras llegado",
-    "acceptableAlternatives": ["hubieses llegado"],
+    "acceptableAlternatives": [
+      "hubieses llegado"
+    ],
     "chainThemeId": 1,
     "answerTypePoolId": "haber_subj_pluperfect",
     "difficulty": 4,
@@ -266,8 +298,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hubieras llegado",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800060",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -275,7 +309,9 @@
   {
     "id": "es-gram-b2-plup-subj-hubiera-saber-no-ir-0",
     "correctAnswer": "hubiera sabido",
-    "acceptableAlternatives": ["hubiese sabido"],
+    "acceptableAlternatives": [
+      "hubiese sabido"
+    ],
     "chainThemeId": 1,
     "answerTypePoolId": "haber_subj_pluperfect",
     "difficulty": 4,
@@ -287,8 +323,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hubiera sabido",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800062",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -296,7 +334,9 @@
   {
     "id": "es-gram-b2-plup-subj-hubiera-vivir-como-si-0",
     "correctAnswer": "hubiera vivido",
-    "acceptableAlternatives": ["hubiese vivido"],
+    "acceptableAlternatives": [
+      "hubiese vivido"
+    ],
     "chainThemeId": 1,
     "answerTypePoolId": "haber_subj_pluperfect",
     "difficulty": 4,
@@ -308,8 +348,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hubiera vivido",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800061",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -317,7 +359,9 @@
   {
     "id": "es-gram-b2-plup-subj-hubieran-llegar-antes-0",
     "correctAnswer": "hubieran llegado",
-    "acceptableAlternatives": ["hubiesen llegado"],
+    "acceptableAlternatives": [
+      "hubiesen llegado"
+    ],
     "chainThemeId": 1,
     "answerTypePoolId": "haber_subj_pluperfect",
     "difficulty": 4,
@@ -329,8 +373,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hubieran llegado",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800201",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"

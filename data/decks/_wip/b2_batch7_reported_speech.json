@@ -14,8 +14,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "estaba cansado",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800112",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -35,8 +37,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "había llegado tarde",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800113",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -44,7 +48,9 @@
   {
     "id": "es-gram-b2-reported-fut-conditional-venir-0",
     "correctAnswer": "vendría al día siguiente",
-    "acceptableAlternatives": ["vendría mañana"],
+    "acceptableAlternatives": [
+      "vendría mañana"
+    ],
     "chainThemeId": 5,
     "answerTypePoolId": "reported_speech_tense",
     "difficulty": 4,
@@ -56,8 +62,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "vendría al día siguiente",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800114",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -77,8 +85,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "había terminado el trabajo",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800115",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -98,8 +108,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "vivía en Madrid",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800116",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -119,8 +131,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "estaría allí",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800118",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -140,8 +154,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no podía venir",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800217",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -149,7 +165,9 @@
   {
     "id": "es-gram-b2-reported-imp-viniera-inmediatamente-0",
     "correctAnswer": "viniera inmediatamente",
-    "acceptableAlternatives": ["viniese inmediatamente"],
+    "acceptableAlternatives": [
+      "viniese inmediatamente"
+    ],
     "chainThemeId": 5,
     "answerTypePoolId": "reported_speech_imperative",
     "difficulty": 4,
@@ -161,8 +179,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "viniera inmediatamente",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800120",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -170,7 +190,9 @@
   {
     "id": "es-gram-b2-reported-imp-ayudara-pedir-0",
     "correctAnswer": "le ayudara",
-    "acceptableAlternatives": ["le ayudase"],
+    "acceptableAlternatives": [
+      "le ayudase"
+    ],
     "chainThemeId": 5,
     "answerTypePoolId": "reported_speech_imperative",
     "difficulty": 4,
@@ -182,8 +204,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "le ayudara",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800121",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -191,7 +215,9 @@
   {
     "id": "es-gram-b2-reported-imp-descansara-aconsejar-0",
     "correctAnswer": "descansara",
-    "acceptableAlternatives": ["descansase"],
+    "acceptableAlternatives": [
+      "descansase"
+    ],
     "chainThemeId": 5,
     "answerTypePoolId": "reported_speech_imperative",
     "difficulty": 4,
@@ -203,8 +229,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "descansara",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800122",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "tatoeba:2162931",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -212,7 +240,9 @@
   {
     "id": "es-gram-b2-reported-imp-saliera-ordenar-0",
     "correctAnswer": "saliera de la sala",
-    "acceptableAlternatives": ["saliese de la sala"],
+    "acceptableAlternatives": [
+      "saliese de la sala"
+    ],
     "chainThemeId": 5,
     "answerTypePoolId": "reported_speech_imperative",
     "difficulty": 4,
@@ -224,8 +254,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "saliera de la sala",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800123",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -233,7 +265,9 @@
   {
     "id": "es-gram-b2-reported-imp-no-dijera-nada-0",
     "correctAnswer": "no dijera nada",
-    "acceptableAlternatives": ["no dijese nada"],
+    "acceptableAlternatives": [
+      "no dijese nada"
+    ],
     "chainThemeId": 5,
     "answerTypePoolId": "reported_speech_imperative",
     "difficulty": 4,
@@ -245,8 +279,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no dijera nada",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800124",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -254,7 +290,9 @@
   {
     "id": "es-gram-b2-reported-imp-hablara-despacio-0",
     "correctAnswer": "hablara más despacio",
-    "acceptableAlternatives": ["hablase más despacio"],
+    "acceptableAlternatives": [
+      "hablase más despacio"
+    ],
     "chainThemeId": 5,
     "answerTypePoolId": "reported_speech_imperative",
     "difficulty": 3,
@@ -266,8 +304,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hablara más despacio",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800220",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"

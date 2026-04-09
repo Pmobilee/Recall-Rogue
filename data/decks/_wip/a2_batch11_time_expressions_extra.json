@@ -1,0 +1,474 @@
+[
+  {
+    "id": "es-gram-a2-time-ayer-0",
+    "correctAnswer": "ayer",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "preterite_time_expressions",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "{___} fui al parque con mi familia.\n(Yesterday I went to the park with my family.)",
+    "sentenceTranslation": "Yesterday I went to the park with my family.",
+    "grammarPointLabel": "Time expression with preterite: ayer (yesterday)",
+    "explanation": "ayer — yesterday. Always used with the preterite (completed action). One of the clearest triggers for preterite tense.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "ayer",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-time-semana-pasada-0",
+    "correctAnswer": "la semana pasada",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "preterite_time_expressions",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "{___} trabajé mucho en el proyecto.\n(Last week I worked a lot on the project.)",
+    "sentenceTranslation": "Last week I worked a lot on the project.",
+    "grammarPointLabel": "Time expression with preterite: la semana pasada",
+    "explanation": "la semana pasada — last week. Time expressions with 'pasado/a' (past) signal the preterite: la semana pasada, el mes pasado, el año pasado.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "la semana pasada",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-time-hace-dos-anios-0",
+    "correctAnswer": "hace dos años",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "preterite_time_expressions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "{___} compré esta casa.\n(Two years ago I bought this house.)",
+    "sentenceTranslation": "Two years ago I bought this house.",
+    "grammarPointLabel": "Time expression: hace X tiempo (X ago)",
+    "explanation": "hace dos años — two years ago. Structure: hace + time period. Always with preterite for completed actions. 'hace' is invariable.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "hace dos años",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-time-anio-pasado-0",
+    "correctAnswer": "el año pasado",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "preterite_time_expressions",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "{___} viajé a Argentina.\n(Last year I traveled to Argentina.)",
+    "sentenceTranslation": "Last year I traveled to Argentina.",
+    "grammarPointLabel": "Time expression with preterite: el año pasado",
+    "explanation": "el año pasado — last year. Like 'la semana pasada', signals the preterite for a completed past event.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "el año pasado",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-perf-todavia-no-0",
+    "correctAnswer": "todavía no",
+    "acceptableAlternatives": [
+      "aún no"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "haber_forms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "{___} he terminado los deberes.\n(I haven't finished my homework yet.)",
+    "sentenceTranslation": "I haven't finished my homework yet.",
+    "grammarPointLabel": "Present perfect time expression: todavía no (not yet)",
+    "explanation": "todavía no — 'not yet'. Used with present perfect to indicate something hasn't happened up to now. Also: aún no. Opposite: ya (already).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "todavía no",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "tatoeba:2144812",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-perf-alguna-vez-0",
+    "correctAnswer": "alguna vez",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "haber_forms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "¿Has comido {___} sushi?\n(Have you ever eaten sushi?)",
+    "sentenceTranslation": "Have you ever eaten sushi?",
+    "grammarPointLabel": "Present perfect time expression: alguna vez (ever)",
+    "explanation": "alguna vez — 'ever' (in questions). Used with present perfect in questions: ¿Has + PP + alguna vez? Common structure for asking about life experiences.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "alguna vez",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-imp-antes-0",
+    "correctAnswer": "antes",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "imperfect_ar",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "{___} vivía en una ciudad pequeña.\n(Before, I used to live in a small town.)",
+    "sentenceTranslation": "Before, I used to live in a small town.",
+    "grammarPointLabel": "Imperfect time expression: antes (before/previously)",
+    "explanation": "antes — 'before / previously'. One of the strongest imperfect triggers. Indicates a habitual or ongoing past state that has changed.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "antes",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "PCIC-pattern",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-imp-cuando-era-0",
+    "correctAnswer": "era",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "imperfect_ser",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Cuando {___} pequeño, jugaba mucho al fútbol.\n(When I was young, I used to play football a lot.)",
+    "sentenceTranslation": "When I was young, I used to play football a lot.",
+    "grammarPointLabel": "Imperfect: cuando era pequeño (when I was young)",
+    "explanation": "era — imperfect of ser. 'Cuando era pequeño/a' (when I was young) is a standard phrase for talking about childhood habits. Sets up imperfect for both verbs.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "era",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "PCIC-pattern",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-pret-hacer-nosotros-0",
+    "correctAnswer": "hicimos",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "preterite_tener_hacer",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "El sábado {___} una excursión a la montaña.\n(On Saturday we went on a trip to the mountains.)",
+    "sentenceTranslation": "On Saturday we went on a trip to the mountains.",
+    "grammarPointLabel": "hacer (nosotros) — Preterite irregular",
+    "explanation": "hicimos — nosotros form of hacer in the preterite. Irregular: hicim- + -os.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "hicimos",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-pret-decir-nosotros-0",
+    "correctAnswer": "dijimos",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "preterite_decir_ver_dar",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "{___} la verdad sobre lo que pasó.\n(We told the truth about what happened.)",
+    "sentenceTranslation": "We told the truth about what happened.",
+    "grammarPointLabel": "decir (nosotros) — Preterite irregular",
+    "explanation": "dijimos — nosotros form of decir in the preterite. Irregular: dijim- + -os.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "dijimos",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-pret-ver-nosotros-0",
+    "correctAnswer": "vimos",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "preterite_decir_ver_dar",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Anoche {___} el partido de fútbol.\n(Last night we watched the football match.)",
+    "sentenceTranslation": "Last night we watched the football match.",
+    "grammarPointLabel": "ver (nosotros) — Preterite irregular",
+    "explanation": "vimos — nosotros form of ver in the preterite. Irregular: vim- + -os.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "vimos",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-pret-venir-nosotros-0",
+    "correctAnswer": "vinimos",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "preterite_poder_poner_venir",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "{___} juntos en el mismo autobús.\n(We came together on the same bus.)",
+    "sentenceTranslation": "We came together on the same bus.",
+    "grammarPointLabel": "venir (nosotros) — Preterite irregular",
+    "explanation": "vinimos — nosotros form of venir in the preterite. Irregular: vinim- + -os.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "vinimos",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-pret-estar-nosotros-0",
+    "correctAnswer": "estuvimos",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "preterite_estar",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "El verano pasado {___} en la playa dos semanas.\n(Last summer we were at the beach for two weeks.)",
+    "sentenceTranslation": "Last summer we were at the beach for two weeks.",
+    "grammarPointLabel": "estar (nosotros) — Preterite irregular",
+    "explanation": "estuvimos — nosotros form of estar in the preterite. Irregular: estuvim- + -os.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "estuvimos",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-prog-estar-form-0",
+    "correctAnswer": "está hablando",
+    "acceptableAlternatives": [
+      "hablando"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "gerund_forms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "María no puede venir ahora, {___} por teléfono.\n(María can't come now, she is talking on the phone.)",
+    "sentenceTranslation": "María can't come now, she is talking on the phone.",
+    "grammarPointLabel": "Present progressive: está + hablando",
+    "explanation": "está hablando — estar (present, él/ella) + gerund. The progressive expresses an action happening right now, at this exact moment.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "está hablando",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-reflex-nosotros-0",
+    "correctAnswer": "nos levantamos",
+    "acceptableAlternatives": [
+      "levantamos"
+    ],
+    "chainThemeId": 4,
+    "answerTypePoolId": "reflexive_conjugations",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Los fines de semana {___} tarde.\n(On weekends we get up late.)",
+    "sentenceTranslation": "On weekends we get up late.",
+    "grammarPointLabel": "levantarse (nosotros) — Reflexive verb",
+    "explanation": "nos levantamos — nosotros form of levantarse. Reflexive pronoun 'nos' (nosotros) + levantamos.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "nos levantamos",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-impers-se-venden-0",
+    "correctAnswer": "se venden",
+    "acceptableAlternatives": [],
+    "chainThemeId": 7,
+    "answerTypePoolId": "imperative_tu",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "En esa tienda {___} coches de segunda mano.\n(In that store used cars are sold.)",
+    "sentenceTranslation": "In that store used cars are sold.",
+    "grammarPointLabel": "Impersonal se: se venden (plural — cars for sale)",
+    "explanation": "se venden — impersonal se, plural. The verb agrees with the noun (plural noun 'coches' → plural verb 'venden'). Compare: se vende piso (singular).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "se venden",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-comp-mas-que-rápido-0",
+    "correctAnswer": "más rápido que",
+    "acceptableAlternatives": [
+      "más rápido"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_words",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Él habla {___} yo.\n(He speaks faster than me.)",
+    "sentenceTranslation": "He speaks faster than me.",
+    "grammarPointLabel": "Comparative: más + adverb + que",
+    "explanation": "más rápido que — comparative used with adverbs too: más rápido que (faster than), más despacio que (more slowly than). Same structure as with adjectives.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "más rápido que",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-ir-a-vamos-0",
+    "correctAnswer": "vamos a comer",
+    "acceptableAlternatives": [
+      "vamos a"
+    ],
+    "chainThemeId": 6,
+    "answerTypePoolId": "por_para_choice",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "¿{___} juntos esta tarde?\n(Are we going to eat together this afternoon?)",
+    "sentenceTranslation": "Are we going to eat together this afternoon?",
+    "grammarPointLabel": "ir a + infinitivo (nosotros): vamos a comer",
+    "explanation": "vamos a comer — nosotros near future. 'Vamos a + infinitive'. Note: 'vamos a' can also mean 'let's': ¡Vamos a comer! (Let's eat!).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "vamos a comer",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-perf-vivir-alguna-0",
+    "correctAnswer": "has vivido",
+    "acceptableAlternatives": [
+      "vivido"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "haber_forms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "¿{___} alguna vez en el extranjero?\n(Have you ever lived abroad?)",
+    "sentenceTranslation": "Have you ever lived abroad?",
+    "grammarPointLabel": "Present perfect: vivir (tú) — has vivido",
+    "explanation": "has vivido — tú form of present perfect. 'Has' = you have. Regular -ir past participle: viv- + -ido.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "has vivido",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "tatoeba:10097999",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-imp-ser-el-0",
+    "correctAnswer": "era",
+    "acceptableAlternatives": [],
+    "chainThemeId": 1,
+    "answerTypePoolId": "imperfect_ser",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "De joven, {___} muy activo.\n(As a young man, he was very active.)",
+    "sentenceTranslation": "As a young man, he was very active.",
+    "grammarPointLabel": "ser (él/ella) — Imperfect irregular (era)",
+    "explanation": "era — él/ella form of ser in the imperfect. Note: same form as yo: yo era, él era (context clarifies). Different from estar imperfect: estaba.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "era",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  }
+]

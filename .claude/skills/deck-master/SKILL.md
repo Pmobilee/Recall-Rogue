@@ -35,6 +35,23 @@ This section exists because every mistake listed below was actually made during 
 
 **NEVER EVER generate facts from LLM training knowledge. This is the #1 content pipeline failure mode.**
 
+### 🚨🚨🚨 ABSOLUTE RULE #1b: TATOEBA IDs MUST COME FROM THE CORPUS 🚨🚨🚨
+
+**NEVER write `sourceRef: "tatoeba:N"` or a `tatoeba_id` column value from LLM knowledge. Every Tatoeba citation must be a real ID verified against the local corpus at `data/_corpora/tatoeba/`.**
+
+On 2026-04-10, an audit of the shipped `spanish_a2/b1/b2_grammar.json` decks found 92% of `tatoeba:N` sourceRefs were fabricated by sub-agents as sequential placeholder blocks (`4499175, 4499176, 4499177, ...`). The same pattern was caught in a fresh French A1 research run before shipping. Root cause: sub-agents cannot browse the web and pad coverage gaps with plausible-looking numbers.
+
+**The required flow:**
+1. Build the corpus once per language: `node scripts/tatoeba/build-cefr-corpus.mjs --lang <fra|spa|...>`
+2. Give sub-agents a slice of `data/_corpora/tatoeba/{lang}_{level}_pool.tsv` as their ONLY sentence source
+3. Sub-agents cite only IDs that appear in their slice
+4. Audit before committing: `node scripts/tatoeba/audit-deck-ids.mjs --lang <code> --glob <pattern>` — zero misses required
+5. If corpus has no coverage for a grammar point, use `sourceRef: "llm_authored"` honestly instead of fabricating
+
+**Canonical rule:** `.claude/rules/content-pipeline.md` → "Tatoeba Citation — MUST Come From Corpus, NEVER Fabricated"
+**Scripts:** `scripts/tatoeba/{build-cefr-corpus,audit-deck-ids,remap-deck-ids}.mjs`
+**Retroactive backlog:** `docs/RESEARCH/SOURCES/content-pipeline-progress.md` → `TODO-TATOEBA-AUDIT`
+
 ### 🚨🚨🚨 ABSOLUTE RULE #2: CURRICULUM-SOURCED SCOPE FOR EDUCATIONAL DECKS 🚨🚨🚨
 
 **For ANY deck where real students depend on completeness, the SCOPE must come from an authoritative curriculum — NEVER from LLM compilation.**

@@ -1,0 +1,290 @@
+[
+  {
+    "id": "es-gram-a2-comp-mas-que-0",
+    "correctAnswer": "más alto que",
+    "acceptableAlternatives": [
+      "más alto"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_words",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Mi hermano es {___} yo.\n(My brother is taller than me.)",
+    "sentenceTranslation": "My brother is taller than me.",
+    "grammarPointLabel": "Comparative of superiority: más + adj + que",
+    "explanation": "más alto que — comparative of superiority. Structure: más + [adjective] + que. 'que' introduces the second element of comparison.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "más alto que",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-comp-mas-que-1",
+    "correctAnswer": "más inteligente que",
+    "acceptableAlternatives": [
+      "más inteligente"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_words",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "María es {___} su hermano.\n(María is smarter than her brother.)",
+    "sentenceTranslation": "María is smarter than her brother.",
+    "grammarPointLabel": "Comparative of superiority: más + adj + que",
+    "explanation": "más inteligente que — comparative: más + inteligente + que. Most Spanish adjectives use más/menos for comparison (no -er/-est suffix like English).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "más inteligente que",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-comp-menos-que-0",
+    "correctAnswer": "menos caro que",
+    "acceptableAlternatives": [
+      "menos caro"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_words",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Este hotel es {___} el otro.\n(This hotel is less expensive than the other one.)",
+    "sentenceTranslation": "This hotel is less expensive than the other one.",
+    "grammarPointLabel": "Comparative of inferiority: menos + adj + que",
+    "explanation": "menos caro que — comparative of inferiority. Structure: menos + [adjective] + que.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "menos caro que",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-comp-tan-como-0",
+    "correctAnswer": "tan inteligente como",
+    "acceptableAlternatives": [
+      "tan inteligente"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_words",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Pedro es {___} tú.\n(Pedro is as intelligent as you.)",
+    "sentenceTranslation": "Pedro is as intelligent as you.",
+    "grammarPointLabel": "Comparative of equality: tan + adj + como",
+    "explanation": "tan inteligente como — comparative of equality. Structure: tan + [adjective] + como. 'tan' precedes the adjective; 'como' introduces the comparison.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "tan inteligente como",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-comp-tan-como-1",
+    "correctAnswer": "tan difícil como",
+    "acceptableAlternatives": [
+      "tan difícil"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_words",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Este examen no es {___} parece.\n(This exam is not as difficult as it seems.)",
+    "sentenceTranslation": "This exam is not as difficult as it seems.",
+    "grammarPointLabel": "Comparative of equality: tan + adj + como (negated)",
+    "explanation": "tan difícil como — equality comparison. The negative form 'no es tan X como Y' is very common in spoken Spanish.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "tan difícil como",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-comp-irr-mayor-0",
+    "correctAnswer": "mayor",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_irregular",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Mi hermano es {___} que yo.\n(My brother is older than me.)",
+    "sentenceTranslation": "My brother is older than me.",
+    "grammarPointLabel": "Irregular comparative: mayor (older/bigger)",
+    "explanation": "mayor — irregular comparative of grande/viejo when referring to age or size. 'más viejo' also acceptable but 'mayor' is preferred. Contrast: mayor (older) vs el mayor (the oldest).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "mayor",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-comp-irr-menor-0",
+    "correctAnswer": "menor",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_irregular",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Ana es {___} que su hermano.\n(Ana is younger than her brother.)",
+    "sentenceTranslation": "Ana is younger than her brother.",
+    "grammarPointLabel": "Irregular comparative: menor (younger/smaller)",
+    "explanation": "menor — irregular comparative of pequeño/joven when referring to age. Contrast with mayor (older).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "menor",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-comp-irr-mejor-0",
+    "correctAnswer": "mejor",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_irregular",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Este libro es {___} que ese.\n(This book is better than that one.)",
+    "sentenceTranslation": "This book is better than that one.",
+    "grammarPointLabel": "Irregular comparative: mejor (better)",
+    "explanation": "mejor — irregular comparative of bueno. Never say 'más bueno' for quality — use 'mejor'. Exception: 'más buena persona' (better person) is OK for character.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "mejor",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-comp-irr-peor-0",
+    "correctAnswer": "peor",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_irregular",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "El tiempo hoy está {___} que ayer.\n(The weather today is worse than yesterday.)",
+    "sentenceTranslation": "The weather today is worse than yesterday.",
+    "grammarPointLabel": "Irregular comparative: peor (worse)",
+    "explanation": "peor — irregular comparative of malo. Never say 'más malo' — use 'peor'. Exception: 'más malo' can mean 'meaner/nastier' colloquially.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "peor",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-sup-mas-adj-0",
+    "correctAnswer": "el más inteligente",
+    "acceptableAlternatives": [
+      "más inteligente"
+    ],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_words",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Carlos es {___} de la clase.\n(Carlos is the most intelligent in the class.)",
+    "sentenceTranslation": "Carlos is the most intelligent in the class.",
+    "grammarPointLabel": "Superlative: el/la más + adjective",
+    "explanation": "el más inteligente — superlative. Structure: el/la/los/las + más/menos + adjective + de [group]. 'De' introduces the group of comparison.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "el más inteligente",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-sup-mejor-0",
+    "correctAnswer": "el mejor",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_irregular",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Es {___} restaurante de la ciudad.\n(It is the best restaurant in the city.)",
+    "sentenceTranslation": "It is the best restaurant in the city.",
+    "grammarPointLabel": "Superlative: el mejor (the best)",
+    "explanation": "el mejor — irregular superlative of bueno. 'el mejor' = the best (masculine). Superlatives use the article + irregular form: el mejor, la mejor, el mayor, la mayor.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "el mejor",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-sup-peor-0",
+    "correctAnswer": "el peor",
+    "acceptableAlternatives": [],
+    "chainThemeId": 5,
+    "answerTypePoolId": "comparative_irregular",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Fue {___} día de mi vida.\n(It was the worst day of my life.)",
+    "sentenceTranslation": "It was the worst day of my life.",
+    "grammarPointLabel": "Superlative: el peor (the worst)",
+    "explanation": "el peor — irregular superlative of malo. 'el peor' = the worst (masculine). 'el peor día de mi vida' is a very common phrase.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "el peor",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "tatoeba:2408795",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  }
+]

@@ -14,8 +14,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "si",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499363",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"

@@ -14,8 +14,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hablara",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800002",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -35,8 +37,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hablaras",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800186",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -44,7 +48,9 @@
   {
     "id": "es-gram-b2-imp-subj-ra-ar-hablar-el-0",
     "correctAnswer": "hablara",
-    "acceptableAlternatives": ["hablase"],
+    "acceptableAlternatives": [
+      "hablase"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_ra_ar",
     "difficulty": 3,
@@ -56,7 +62,9 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hablara",
     "language": "es",
-    "examTags": ["CEFR_B2"],
+    "examTags": [
+      "CEFR_B2"
+    ],
     "sourceRef": "PCIC-pattern",
     "volatile": false,
     "distractors": [],
@@ -65,7 +73,9 @@
   {
     "id": "es-gram-b2-imp-subj-ra-ar-llegar-yo-0",
     "correctAnswer": "llegara",
-    "acceptableAlternatives": ["llegase"],
+    "acceptableAlternatives": [
+      "llegase"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_ra_ar",
     "difficulty": 3,
@@ -77,8 +87,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "llegara",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800003",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -86,7 +98,9 @@
   {
     "id": "es-gram-b2-imp-subj-ra-ar-llegar-tu-0",
     "correctAnswer": "llegaras",
-    "acceptableAlternatives": ["llegases"],
+    "acceptableAlternatives": [
+      "llegases"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_ra_ar",
     "difficulty": 3,
@@ -98,8 +112,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "llegaras",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800005",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -107,7 +123,9 @@
   {
     "id": "es-gram-b2-imp-subj-ra-ar-trabajar-ellos-0",
     "correctAnswer": "trabajaran",
-    "acceptableAlternatives": ["trabajasen"],
+    "acceptableAlternatives": [
+      "trabajasen"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_ra_ar",
     "difficulty": 3,
@@ -119,8 +137,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "trabajaran",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800004",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -128,7 +148,9 @@
   {
     "id": "es-gram-b2-imp-subj-ra-ar-llamar-yo-0",
     "correctAnswer": "llamara",
-    "acceptableAlternatives": ["llamase"],
+    "acceptableAlternatives": [
+      "llamase"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_ra_ar",
     "difficulty": 3,
@@ -140,8 +162,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "llamara",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800007",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -149,7 +173,9 @@
   {
     "id": "es-gram-b2-imp-subj-ra-ar-ayudar-tu-0",
     "correctAnswer": "ayudaras",
-    "acceptableAlternatives": ["ayudases"],
+    "acceptableAlternatives": [
+      "ayudases"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_ra_ar",
     "difficulty": 3,
@@ -161,8 +187,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "ayudaras",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800006",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -170,7 +198,9 @@
   {
     "id": "es-gram-b2-imp-subj-ra-ar-descansar-tu-0",
     "correctAnswer": "descansaras",
-    "acceptableAlternatives": ["descansases"],
+    "acceptableAlternatives": [
+      "descansases"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_ra_ar",
     "difficulty": 3,
@@ -182,8 +212,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "descansaras",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800187",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -191,7 +223,9 @@
   {
     "id": "es-gram-b2-imp-subj-ra-ar-estudiar-ellos-0",
     "correctAnswer": "estudiaran",
-    "acceptableAlternatives": ["estudiasen"],
+    "acceptableAlternatives": [
+      "estudiasen"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_ra_ar",
     "difficulty": 3,
@@ -203,7 +237,9 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "estudiaran",
     "language": "es",
-    "examTags": ["CEFR_B2"],
+    "examTags": [
+      "CEFR_B2"
+    ],
     "sourceRef": "PCIC-pattern",
     "volatile": false,
     "distractors": [],
@@ -212,7 +248,9 @@
   {
     "id": "es-gram-b2-imp-subj-ra-ar-hablar-nosotros-0",
     "correctAnswer": "habláramos",
-    "acceptableAlternatives": ["hablásemos"],
+    "acceptableAlternatives": [
+      "hablásemos"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_ra_ar",
     "difficulty": 4,
@@ -224,7 +262,9 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "habláramos",
     "language": "es",
-    "examTags": ["CEFR_B2"],
+    "examTags": [
+      "CEFR_B2"
+    ],
     "sourceRef": "PCIC-pattern",
     "volatile": false,
     "distractors": [],
@@ -233,7 +273,9 @@
   {
     "id": "es-gram-b2-imp-subj-ra-ar-trabajar-tu-0",
     "correctAnswer": "trabajaras",
-    "acceptableAlternatives": ["trabajases"],
+    "acceptableAlternatives": [
+      "trabajases"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_ra_ar",
     "difficulty": 3,
@@ -245,8 +287,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "trabajaras",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800188",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"

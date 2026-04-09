@@ -1,0 +1,520 @@
+[
+  {
+    "id": "fr-gram-a1-pro-sujet-nous-0",
+    "correctAnswer": "Nous",
+    "acceptableAlternatives": [
+      "nous"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "pronoms_sujets",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "{___} sommes sept.\n(There are seven of us.)",
+    "sentenceTranslation": "There are seven of us.",
+    "grammarPointLabel": "nous — Pronom sujet 1re pers. pl.",
+    "explanation": "nous — the first-person plural subject pronoun. Used as the grammatical subject; distinct from the tonic pronoun nous used after prepositions.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "nous",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "tatoeba:7862444",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-pro-sujet-vous-0",
+    "correctAnswer": "vous",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "pronoms_sujets",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "Et {___} ?\n(How about you?)",
+    "sentenceTranslation": "How about you?",
+    "grammarPointLabel": "vous — Pronom sujet 2e pers. pl. / politesse",
+    "explanation": "vous — second-person plural (or formal singular) subject pronoun. Used to address multiple people or one person formally.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "vous",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "tatoeba:8973",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-pro-sujet-on-0",
+    "correctAnswer": "On",
+    "acceptableAlternatives": [
+      "on"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "pronoms_sujets",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "{___} mange pour vivre.\n(We eat so we can live.)",
+    "sentenceTranslation": "We eat so we can live.",
+    "grammarPointLabel": "on — Pronom sujet (= nous en style familier)",
+    "explanation": "on — third-person singular pronoun that in informal French equals nous. The verb always takes a third-person singular form: on mange, on part.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "on",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "tatoeba:337034",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-pro-sujet-je-0",
+    "correctAnswer": "je",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "pronoms_sujets",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "{___} parle français.\n(I speak French.)",
+    "sentenceTranslation": "I speak French.",
+    "grammarPointLabel": "je — Pronom sujet 1re pers. sg.",
+    "explanation": "je — first-person singular subject pronoun. It becomes j' before a vowel or mute h: j'aime, j'habite.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "je",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-pro-sujet-il-0",
+    "correctAnswer": "Il",
+    "acceptableAlternatives": [
+      "il"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "pronoms_sujets",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "{___} s'appelle Tom.\n(His name is Tom.)",
+    "sentenceTranslation": "His name is Tom.",
+    "grammarPointLabel": "il — Pronom sujet 3e pers. sg. masc.",
+    "explanation": "il — third-person masculine singular subject pronoun. Used for masculine nouns and male persons; contrasts with elle for feminine.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "il",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-pro-sujet-elle-0",
+    "correctAnswer": "Elle",
+    "acceptableAlternatives": [
+      "elle"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "pronoms_sujets",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "{___} est professeure.\n(She is a teacher.)",
+    "sentenceTranslation": "She is a teacher.",
+    "grammarPointLabel": "elle — Pronom sujet 3e pers. sg. fém.",
+    "explanation": "elle — third-person feminine singular subject pronoun. Matches the gender of the person or feminine noun it refers to.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "elle",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-pro-sujet-ils-0",
+    "correctAnswer": "Ils",
+    "acceptableAlternatives": [
+      "ils"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "pronoms_sujets",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "{___} habitent à Paris.\n(They live in Paris.)",
+    "sentenceTranslation": "They live in Paris.",
+    "grammarPointLabel": "ils — Pronom sujet 3e pers. pl. masc.",
+    "explanation": "ils — third-person masculine plural subject pronoun. Also used for mixed-gender groups; elles is used for all-female groups.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "ils",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-pro-tonique-moi-0",
+    "correctAnswer": "moi",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "pronoms_toniques",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "C'est {___}.\n(It's me.)",
+    "sentenceTranslation": "It's me.",
+    "grammarPointLabel": "moi — Pronom tonique 1re pers. sg.",
+    "explanation": "moi — tonic pronoun for je. Required after c'est (c'est moi), after prepositions (pour moi, avec moi), and for emphasis.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "moi",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "tatoeba:12365",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-pro-tonique-toi-chez-0",
+    "correctAnswer": "toi",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "pronoms_toniques",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Fais comme chez {___}.\n(Make yourself at home.)",
+    "sentenceTranslation": "Make yourself at home.",
+    "grammarPointLabel": "toi — Pronom tonique après préposition",
+    "explanation": "toi — tonic pronoun required after the preposition chez. Subject pronouns (tu) cannot follow prepositions; only tonic forms can.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "toi",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "tatoeba:12810",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-pro-tonique-lui-0",
+    "correctAnswer": "lui",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "pronoms_toniques",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "C'est {___}, le professeur.\n(He is the teacher.)",
+    "sentenceTranslation": "He is the teacher.",
+    "grammarPointLabel": "lui — Pronom tonique 3e pers. sg. masc.",
+    "explanation": "lui — tonic pronoun for il (masculine). Used after c'est (c'est lui), after prepositions (avec lui), and for emphasis or contrast.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "lui",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-pro-tonique-eux-0",
+    "correctAnswer": "eux",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "pronoms_toniques",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Je mange avec {___}.\n(I eat with them.)",
+    "sentenceTranslation": "I eat with them.",
+    "grammarPointLabel": "eux — Pronom tonique 3e pers. pl. masc.",
+    "explanation": "eux — tonic pronoun for ils (masculine or mixed group). Required after prepositions: avec eux, pour eux, chez eux.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "eux",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-poss-sg-mon-0",
+    "correctAnswer": "mon",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "possessifs_sg",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "C'est {___} CD.\n(It's my CD.)",
+    "sentenceTranslation": "It's my CD.",
+    "grammarPointLabel": "mon — Possessif 1re pers. sg. + nom masculin",
+    "explanation": "mon — masculine singular possessive for my. Agrees with the noun possessed, not the speaker: CD is masculine, so mon (not ma) is used.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "mon",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "tatoeba:397346",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-poss-sg-mon-gp-0",
+    "correctAnswer": "Mon",
+    "acceptableAlternatives": [
+      "mon"
+    ],
+    "chainThemeId": 3,
+    "answerTypePoolId": "possessifs_sg",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "{___} grand-père aime marcher.\n(My grandfather likes to walk.)",
+    "sentenceTranslation": "My grandfather likes to walk.",
+    "grammarPointLabel": "mon — Possessif 1re pers. sg. + nom masc. en tête de phrase",
+    "explanation": "mon — used before grand-père (masculine noun). Possessive adjectives in French agree with the gender and number of the object possessed, not the owner.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "mon",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "tatoeba:7696",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-poss-sg-ton-0",
+    "correctAnswer": "ton",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "possessifs_sg",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "C'est {___} tour.\n(It's your move.)",
+    "sentenceTranslation": "It's your move.",
+    "grammarPointLabel": "ton — Possessif 2e pers. sg. + nom masculin",
+    "explanation": "ton — masculine singular possessive for your (informal). Tour is masculine, so ton is used; ta would be used with a feminine noun.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "ton",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "tatoeba:8996",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-poss-sg-ma-0",
+    "correctAnswer": "ma",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "possessifs_sg",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "Voici {___} mère.\n(Here is my mother.)",
+    "sentenceTranslation": "Here is my mother.",
+    "grammarPointLabel": "ma — Possessif 1re pers. sg. + nom féminin",
+    "explanation": "ma — feminine singular possessive for my. Mère is feminine, so ma is used. Note: before feminine nouns beginning with a vowel, mon is used instead: mon amie.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "ma",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-poss-sg-son-0",
+    "correctAnswer": "son",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "possessifs_sg",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Il range {___} sac.\n(He puts away his bag.)",
+    "sentenceTranslation": "He puts away his bag.",
+    "grammarPointLabel": "son — Possessif 3e pers. sg. + nom masculin",
+    "explanation": "son — masculine singular possessive for his/her/its. French possessives agree with the noun (sac is masculine), not the gender of the owner — so son sac works for both a male and female owner.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "son",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-poss-sg-ses-0",
+    "correctAnswer": "ses",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "possessifs_sg",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Elle aime {___} chats.\n(She loves her cats.)",
+    "sentenceTranslation": "She loves her cats.",
+    "grammarPointLabel": "ses — Possessif 3e pers. sg. pluriel",
+    "explanation": "ses — plural possessive for his/her/its. Used regardless of the owner's gender when the possessed noun is plural: ses chats (his or her cats).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "ses",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-poss-pl-notre-0",
+    "correctAnswer": "notre",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "possessifs_pl",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "C'est {___} école.\n(That is our school.)",
+    "sentenceTranslation": "That is our school.",
+    "grammarPointLabel": "notre — Possessif 1re pers. pl. + nom sg.",
+    "explanation": "notre — singular possessive for our. Used before any singular noun regardless of gender; nos is used before plural nouns: nos écoles.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "notre",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "tatoeba:10615",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-poss-pl-votre-0",
+    "correctAnswer": "votre",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "possessifs_pl",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "J'aime {___} voiture.\n(I like your car.)",
+    "sentenceTranslation": "I like your car.",
+    "grammarPointLabel": "votre — Possessif 2e pers. pl. + nom sg.",
+    "explanation": "votre — singular possessive for your (plural/formal). Voiture is singular, so votre is used; vos would be used with plural nouns: vos voitures.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "votre",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "tatoeba:6610",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-poss-pl-leur-0",
+    "correctAnswer": "leur",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "possessifs_pl",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "C'est {___} maison.\n(It is their house.)",
+    "sentenceTranslation": "It is their house.",
+    "grammarPointLabel": "leur — Possessif 3e pers. pl. + nom sg.",
+    "explanation": "leur — singular possessive for their. Invariable before singular nouns (masculine or feminine): leur maison, leur jardin. Becomes leurs before plural nouns.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "leur",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-poss-pl-stub-nos",
+    "correctAnswer": "nos",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "possessifs_pl",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "Voici {___} amis.\n(Here are our friends.)",
+    "sentenceTranslation": "Here are our friends.",
+    "grammarPointLabel": "possessive nos — plural noun, 1st person plural",
+    "explanation": "nos — plural form of notre. Nos amis = our friends.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "nos",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  },
+  {
+    "id": "fr-gram-a1-poss-pl-stub-vos",
+    "correctAnswer": "vos",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "possessifs_pl",
+    "difficulty": 1,
+    "funScore": 6,
+    "quizQuestion": "J'aime {___} idées.\n(I like your [plural] ideas.)",
+    "sentenceTranslation": "I like your ideas.",
+    "grammarPointLabel": "possessive vos — plural noun, 2nd person plural",
+    "explanation": "vos — plural form of votre. Vos idées = your ideas.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "vos",
+    "language": "fr",
+    "examTags": [
+      "CEFR_A1"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar fill-in-the-blank card"
+  }
+]

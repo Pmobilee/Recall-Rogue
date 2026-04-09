@@ -14,8 +14,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "aunque",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800126",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -35,8 +37,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "aunque",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800127",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "tatoeba:531663",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -56,8 +60,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "Por mucho que",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800130",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -65,7 +71,9 @@
   {
     "id": "es-gram-b2-conc-a-pesar-de-que-0",
     "correctAnswer": "A pesar de que",
-    "acceptableAlternatives": ["a pesar de que"],
+    "acceptableAlternatives": [
+      "a pesar de que"
+    ],
     "chainThemeId": 6,
     "answerTypePoolId": "concessive_connectors",
     "difficulty": 3,
@@ -77,8 +85,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "A pesar de que",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800132",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -86,7 +96,9 @@
   {
     "id": "es-gram-b2-causal-puesto-que-0",
     "correctAnswer": "Puesto que",
-    "acceptableAlternatives": ["puesto que"],
+    "acceptableAlternatives": [
+      "puesto que"
+    ],
     "chainThemeId": 6,
     "answerTypePoolId": "causal_connectors",
     "difficulty": 3,
@@ -98,8 +110,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "Puesto que",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800134",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -107,7 +121,9 @@
   {
     "id": "es-gram-b2-causal-ya-que-0",
     "correctAnswer": "ya que",
-    "acceptableAlternatives": ["Ya que"],
+    "acceptableAlternatives": [
+      "Ya que"
+    ],
     "chainThemeId": 6,
     "answerTypePoolId": "causal_connectors",
     "difficulty": 3,
@@ -119,8 +135,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "ya que",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800135",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -128,7 +146,9 @@
   {
     "id": "es-gram-b2-causal-dado-que-0",
     "correctAnswer": "Dado que",
-    "acceptableAlternatives": ["dado que"],
+    "acceptableAlternatives": [
+      "dado que"
+    ],
     "chainThemeId": 6,
     "answerTypePoolId": "causal_connectors",
     "difficulty": 4,
@@ -140,8 +160,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "Dado que",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800137",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -149,7 +171,9 @@
   {
     "id": "es-gram-b2-causal-debido-a-0",
     "correctAnswer": "Debido a",
-    "acceptableAlternatives": ["debido a"],
+    "acceptableAlternatives": [
+      "debido a"
+    ],
     "chainThemeId": 6,
     "answerTypePoolId": "causal_connectors",
     "difficulty": 3,
@@ -161,8 +185,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "Debido a",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800138",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -170,7 +196,9 @@
   {
     "id": "es-gram-b2-consec-por-lo-tanto-0",
     "correctAnswer": "por lo tanto",
-    "acceptableAlternatives": ["por tanto"],
+    "acceptableAlternatives": [
+      "por tanto"
+    ],
     "chainThemeId": 6,
     "answerTypePoolId": "consecutive_connectors",
     "difficulty": 3,
@@ -182,8 +210,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "por lo tanto",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800140",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -203,8 +233,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "así que",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800141",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -212,7 +244,9 @@
   {
     "id": "es-gram-b2-consec-de-modo-que-0",
     "correctAnswer": "de modo que",
-    "acceptableAlternatives": ["de manera que"],
+    "acceptableAlternatives": [
+      "de manera que"
+    ],
     "chainThemeId": 6,
     "answerTypePoolId": "consecutive_connectors",
     "difficulty": 4,
@@ -224,8 +258,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "de modo que",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800142",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -245,8 +281,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "en cuanto",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800145",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -254,7 +292,9 @@
   {
     "id": "es-gram-b2-temporal-tan-pronto-como-0",
     "correctAnswer": "Tan pronto como",
-    "acceptableAlternatives": ["tan pronto como"],
+    "acceptableAlternatives": [
+      "tan pronto como"
+    ],
     "chainThemeId": 6,
     "answerTypePoolId": "temporal_subj_connectors",
     "difficulty": 4,
@@ -266,8 +306,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "Tan pronto como",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800147",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -287,8 +329,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "cuando",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800149",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -308,8 +352,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "a menos que",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800156",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -329,8 +375,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "con tal de que",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800158",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -350,8 +398,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "en caso de que",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800162",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -371,8 +421,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "siempre que",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800160",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"

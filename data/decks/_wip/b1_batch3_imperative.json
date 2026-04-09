@@ -14,8 +14,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no hables",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499249",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -35,8 +37,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no comas",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499250",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -56,8 +60,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no escribas",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499251",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -77,8 +83,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no vayas",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499252",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -98,8 +106,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no seas",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499253",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -119,8 +129,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no tengas",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499254",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "tatoeba:450220",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -140,8 +152,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no hagas",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499255",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "tatoeba:1143083",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -161,8 +175,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no digas",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499256",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "tatoeba:582487",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -182,8 +198,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no vengas",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499257",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -203,8 +221,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no salgas",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499258",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -224,8 +244,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no hable",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499259",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -233,7 +255,9 @@
   {
     "id": "es-gram-b1-neg-imp-usted-preocupar-0",
     "correctAnswer": "no se preocupe",
-    "acceptableAlternatives": ["no se preocupe usted"],
+    "acceptableAlternatives": [
+      "no se preocupe usted"
+    ],
     "chainThemeId": 1,
     "answerTypePoolId": "neg_imp_formal",
     "difficulty": 3,
@@ -245,8 +269,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no se preocupe",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499260",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "tatoeba:1284869",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -266,8 +292,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no hablen",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499261",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -287,8 +315,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "no hablemos",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499262",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "tatoeba:8104986",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -308,8 +338,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hable",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499263",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "tatoeba:2873",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -329,8 +361,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "venga",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499264",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -350,8 +384,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "tenga",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499265",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -371,8 +407,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "diga",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499268",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -392,8 +430,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "haga",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499269",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -413,8 +453,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hablen",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499270",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -434,8 +476,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "vengan",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499271",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -455,8 +499,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hablemos",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499272",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -476,8 +522,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "comamos",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499273",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -485,7 +533,9 @@
   {
     "id": "es-gram-b1-imp-nosotros-ir-0",
     "correctAnswer": "vayamos",
-    "acceptableAlternatives": ["vamos"],
+    "acceptableAlternatives": [
+      "vamos"
+    ],
     "chainThemeId": 1,
     "answerTypePoolId": "imp_nosotros",
     "difficulty": 4,
@@ -497,7 +547,9 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "vayamos",
     "language": "es",
-    "examTags": ["CEFR_B1"],
+    "examTags": [
+      "CEFR_B1"
+    ],
     "sourceRef": "PCIC-pattern",
     "volatile": false,
     "distractors": [],

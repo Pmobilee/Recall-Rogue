@@ -2,7 +2,9 @@
   {
     "id": "es-gram-b2-imp-subj-se-ar-llegar-nosotros-0",
     "correctAnswer": "llegásemos",
-    "acceptableAlternatives": ["llegáramos"],
+    "acceptableAlternatives": [
+      "llegáramos"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_se_ar",
     "difficulty": 5,
@@ -14,7 +16,9 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "llegásemos",
     "language": "es",
-    "examTags": ["CEFR_B2"],
+    "examTags": [
+      "CEFR_B2"
+    ],
     "sourceRef": "PCIC-pattern",
     "volatile": false,
     "distractors": [],
@@ -23,7 +27,9 @@
   {
     "id": "es-gram-b2-imp-subj-se-ar-hablar-nosotros-0",
     "correctAnswer": "hablásemos",
-    "acceptableAlternatives": ["habláramos"],
+    "acceptableAlternatives": [
+      "habláramos"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_se_ar",
     "difficulty": 5,
@@ -35,7 +41,9 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "hablásemos",
     "language": "es",
-    "examTags": ["CEFR_B2"],
+    "examTags": [
+      "CEFR_B2"
+    ],
     "sourceRef": "PCIC-pattern",
     "volatile": false,
     "distractors": [],
@@ -44,7 +52,9 @@
   {
     "id": "es-gram-b2-imp-subj-se-er-comer-nosotros-0",
     "correctAnswer": "comiésemos",
-    "acceptableAlternatives": ["comiéramos"],
+    "acceptableAlternatives": [
+      "comiéramos"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_se_er_ir",
     "difficulty": 5,
@@ -56,7 +66,9 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "comiésemos",
     "language": "es",
-    "examTags": ["CEFR_B2"],
+    "examTags": [
+      "CEFR_B2"
+    ],
     "sourceRef": "PCIC-pattern",
     "volatile": false,
     "distractors": [],
@@ -65,7 +77,9 @@
   {
     "id": "es-gram-b2-imp-subj-se-er-aprender-tu-0",
     "correctAnswer": "aprendieses",
-    "acceptableAlternatives": ["aprendieras"],
+    "acceptableAlternatives": [
+      "aprendieras"
+    ],
     "chainThemeId": 0,
     "answerTypePoolId": "imp_subj_se_er_ir",
     "difficulty": 4,
@@ -77,7 +91,9 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "aprendieses",
     "language": "es",
-    "examTags": ["CEFR_B2"],
+    "examTags": [
+      "CEFR_B2"
+    ],
     "sourceRef": "PCIC-pattern",
     "volatile": false,
     "distractors": [],
@@ -86,7 +102,9 @@
   {
     "id": "es-gram-b2-si2-hablara-entendería-0",
     "correctAnswer": "Si hablaras con él, lo entenderías.",
-    "acceptableAlternatives": ["Si hablases con él, lo entenderías."],
+    "acceptableAlternatives": [
+      "Si hablases con él, lo entenderías."
+    ],
     "chainThemeId": 2,
     "answerTypePoolId": "si_clause_type2",
     "difficulty": 4,
@@ -98,8 +116,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "Si hablaras con él, lo entenderías.",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800204",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -107,7 +127,9 @@
   {
     "id": "es-gram-b2-si3-tener-tiempo-hecho-0",
     "correctAnswer": "Si hubiera tenido tiempo, lo habría hecho.",
-    "acceptableAlternatives": ["Si hubiese tenido tiempo, lo habría hecho."],
+    "acceptableAlternatives": [
+      "Si hubiese tenido tiempo, lo habría hecho."
+    ],
     "chainThemeId": 2,
     "answerTypePoolId": "si_clause_type3",
     "difficulty": 5,
@@ -119,8 +141,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "Si hubiera tenido tiempo, lo habría hecho.",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800075",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -140,8 +164,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "Si no hubiera nevado ayer, haría menos frío hoy.",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800078",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -161,7 +187,9 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "Si no hubiera venido, no te habría conocido.",
     "language": "es",
-    "examTags": ["CEFR_B2"],
+    "examTags": [
+      "CEFR_B2"
+    ],
     "sourceRef": "PCIC-pattern",
     "volatile": false,
     "distractors": [],
@@ -182,8 +210,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "Se alquila",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800104",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -203,8 +233,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "se firmaron",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800105",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -212,7 +244,9 @@
   {
     "id": "es-gram-b2-reported-imp-se-quedara-rogar-0",
     "correctAnswer": "se quedara",
-    "acceptableAlternatives": ["se quedase"],
+    "acceptableAlternatives": [
+      "se quedase"
+    ],
     "chainThemeId": 5,
     "answerTypePoolId": "reported_speech_imperative",
     "difficulty": 4,
@@ -224,8 +258,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "se quedara",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800125",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -233,7 +269,9 @@
   {
     "id": "es-gram-b2-consec-de-manera-que-0",
     "correctAnswer": "de manera que",
-    "acceptableAlternatives": ["de modo que"],
+    "acceptableAlternatives": [
+      "de modo que"
+    ],
     "chainThemeId": 6,
     "answerTypePoolId": "consecutive_connectors",
     "difficulty": 4,
@@ -245,8 +283,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "de manera que",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800144",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -266,8 +306,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "mientras",
     "language": "es",
-    "examTags": ["CEFR_B2"],
-    "sourceRef": "tatoeba:5800155",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -287,7 +329,9 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "cuando",
     "language": "es",
-    "examTags": ["CEFR_B2"],
+    "examTags": [
+      "CEFR_B2"
+    ],
     "sourceRef": "PCIC-pattern",
     "volatile": false,
     "distractors": [],

@@ -1,7 +1,7 @@
 # Progression & Run Structure
 
 > **Purpose:** Documents the run lifecycle, floor/room generation, map layout, room types, ascension system, and shop mechanics.
-> **Last verified:** 2026-04-08
+> **Last verified:** 2026-04-09
 > **Source files:** `src/services/runManager.ts`, `src/services/floorManager.ts`, `src/services/mapGenerator.ts`, `src/services/ascension.ts`, `src/data/balance.ts`, `src/services/shopService.ts`
 
 ---
@@ -204,47 +204,58 @@ When a vial does appear, `healAmount` comes from the encounter reward bundle (`a
 
 ## Ascension System (`ascension.ts`)
 
-`MAX_ASCENSION_LEVEL = 20`. Each level adds one challenge, most with a compensating buff (cumulative). `getAscensionModifiers(level)` returns `AscensionModifiers`.
+`MAX_ASCENSION_LEVEL = 20`. Each level adds a cumulative challenge. Higher levels add compensating buffs. `getAscensionModifiers(level)` returns `AscensionModifiers`.
 
 **2026-04-05 redesign** — reverted progressive multipliers to stepped values, strengthened challenge bites, fixed broken field wiring, removed overcompensating buffs (STS philosophy: challenges stand alone).
+
+**2026-04-09 Pass 7 (ascension curve fix)** — A1-A7 are now pure difficulty increases with no compensating buffs. Buffs begin at A5 (card removal at rest sites) and scale up from there. This follows StS philosophy where ascending = harder, not a buffed-and-challenged trade. Selected buff moves: starter relic choice delayed A1→A10, free rest card removal delayed A3→A5, free shop card removal moved to A8, charged correct bonus delayed A7→A12. Combo heal nerfed A6: 4+ combo threshold (was 3+), 3 HP (was 5 HP).
 
 Selected level effects:
 | Level | Challenge | Buff |
 |-------|-----------|------|
-| 2  | Enemies +15% damage | *(none — challenge stands alone)* |
-| 4  | Timer -1s all questions | Start with random uncommon |
-| 5  | 12 starter cards | Free card removal per shop |
-| 6  | Cannot flee encounters | Heal 5 HP on 3+ combo |
-| 7  | Close distractors more common | Charged correct +10% damage |
-| 8  | Mini-bosses use boss-tier attacks | Mini-boss victories always drop a relic |
-| 9  | Enemies regen 3 HP/turn | Start encounters with 3 shield |
-| 10 | Start with a Curse card | +1 free relic reroll per boss |
-| 11 | Boss relics reduced to 2 choices | Relics trigger +15% more |
-| 13 | Player max HP → 75 | Start with Vitality Ring |
-| 14 | Combo resets each turn | *(none — challenge stands alone)* |
-| 15 | Bosses +50% HP | *(none — challenge stands alone)* |
-| 17 | Wrong answers deal 5 self-damage | Correct answers heal 1 HP |
+| 1  | +1 elite per segment | *(none — pure challenge)* |
+| 2  | Enemies +15% damage | *(none — pure challenge)* |
+| 3  | Rest heals 25% instead of 30% | *(none — pure challenge)* |
+| 4  | Timer -1s all questions | Start with random uncommon card |
+| 5  | Start with 12 cards | BUFF: Free card removal at rest sites |
+| 6  | Cannot flee encounters | BUFF: Heal 3 HP on 4+ combo |
+| 7  | Close distractors more common | *(none — pure challenge)* |
+| 8  | Mini-bosses use boss-tier attacks | BUFF: Mini-boss victories always drop a relic; free card removal at shops |
+| 9  | Enemies regen 3 HP/turn | BUFF: Start encounters with 2 shield |
+| 10 | Start with a Curse card | BUFF: Choose 1 of 3 starter relics; +1 free relic reroll per boss |
+| 11 | Boss relics reduced to 2 choices | BUFF: Relics trigger +15% more |
+| 12 | Tier 1 cards use 4-option MCQ | BUFF: Tier 1 charged correct +20% damage; charged correct +10% damage |
+| 13 | Player max HP → 75 | BUFF: Start with Vitality Ring (+20 HP) |
+| 14 | Combo resets each turn | *(none — pure challenge)* |
+| 15 | Bosses +50% HP | *(none — pure challenge)* |
+| 16 | Echo mechanic disabled | BUFF: Discarding a card grants 1 shield |
+| 17 | Wrong answers deal 5 self-damage | BUFF: Correct answers heal 1 HP |
+| 18 | Start with 10 cards | BUFF: Choose starting hand each encounter |
 | 19 | All questions use hard formats | (Reserved for future surcharge mechanic) |
-| 20 | Final boss second phase | Start with 2 relics (choose from 5) |
+| 20 | Final boss second phase | BUFF: Start with 2 relics (choose from 5) |
 
 **Stepped multipliers (2026-04-05 — reverted from progressive formula):**
 - `enemyHpMultiplier`: `l >= 15 ? 1.15 : l >= 9 ? 1.10 : 1.00` (A9 durability wall, A15 tougher regulars)
 - `enemyDamageMultiplier`: `l >= 17 ? 1.30 : l >= 8 ? 1.20 : l >= 2 ? 1.15 : 1.00` (A2 raw damage, A8 all enemies, A17 pressure)
 
 **Key modifier values:**
-- `enemyRegenPerTurn`: `l >= 9 ? 3 : 0` (was 2 — forces faster kills)
-- `playerMaxHpOverride`: `l >= 13 ? 75 : null` (was 80)
-- `bossHpMultiplier`: `l >= 15 ? 1.50 : 1.00` (was 1.25)
-- `wrongAnswerSelfDamage`: `l >= 17 ? 5 : 0` (was 3)
-- `chargeCorrectDamageBonus`: `l >= 7 ? 0.10 : 0` (was 0.15)
-- `relicTriggerBonus`: `l >= 11 ? 0.15 : 0` (was 0.25)
+- `enemyRegenPerTurn`: `l >= 9 ? 3 : 0` (forces faster kills)
+- `playerMaxHpOverride`: `l >= 13 ? 75 : null`
+- `bossHpMultiplier`: `l >= 15 ? 1.50 : 1.00`
+- `wrongAnswerSelfDamage`: `l >= 17 ? 5 : 0`
+- `chargeCorrectDamageBonus`: `l >= 12 ? 0.10 : 0` (was A7 — delayed to A12, Pass 7)
+- `relicTriggerBonus`: `l >= 11 ? 0.15 : 0`
 - `firstTurnBonusAp`: always `0` (removed — A2 challenge stands alone)
 - `perfectTurnBonusAp`: always `0` (removed — A14 challenge stands alone)
 - `bossDefeatFullHeal`: always `false` (removed — A15 challenge stands alone)
-- `comboHealThreshold`: `l >= 6 ? 3 : 0` (NEW — wired A6 buff)
-- `comboHealAmount`: `l >= 6 ? 5 : 0` (NEW — wired A6 buff)
-- `comboResetsOnTurnEnd`: `l >= 14` (NEW — wired A14 challenge)
-- `startingRelicCount`: `l >= 20 ? 2 : l >= 10 ? 1 : l >= 1 ? 1 : 0`
+- `comboHealThreshold`: `l >= 6 ? 4 : 0` (Pass 7: 4+ combo, was 3+)
+- `comboHealAmount`: `l >= 6 ? 3 : 0` (Pass 7: 3 HP, was 5 HP)
+- `comboResetsOnTurnEnd`: `l >= 14`
+- `startingRelicCount`: `l >= 20 ? 2 : l >= 10 ? 1 : 0` (no free relic until A10 — was A1, Pass 7)
+- `encounterStartShield`: `l >= 9 ? 2 : 0` (2 shield, not 3)
+- `freeRestCardRemoval`: `l >= 5` (was A3 — delayed to A5, Pass 7)
+- `freeShopCardRemoval`: `l >= 8` (was A5 — moved to A8, Pass 7)
+- `starterRelicChoice`: `l >= 10` (was A1 — delayed to A10, Pass 7)
 - `freeCharging`: always `false` — `CHARGE_AP_SURCHARGE` is 0, making this a no-op; preserved for future surcharge restoration
 
 **Sim results (2026-04-05, 500 runs each):**
@@ -257,6 +268,15 @@ Selected level effects:
 | master | 100% | 82% | still too high — further tuning needed |
 
 Master at A20 is still 82% (target: 5-15%). The sim cannot test quiz-pressure penalties (A4/A7/A12/A19), so the real number will be lower. Further combat-side tuning may be needed.
+
+**Ascension curve win rates (2026-04-09, experienced profile, 500 runs each):**
+| Ascension | Win% |
+|-----------|------|
+| A0  | 80.5% |
+| A1  | 78.3% |
+| A2  | 55.6% |
+| A5  | 51.4% |
+| A10 | 49.0% |
 
 `applyAscensionEnemyTemplateAdjustments` scales mini-boss attacks to boss-tier at level 8 and adds a second phase to `final_lesson` (floor 24) at level 20.
 
@@ -292,7 +312,7 @@ The displayed mastery is a preview — the actual mastery assigned at purchase i
   - `onShopTransform(cardId, haggled?)` — removes card, generates 3 options, sets `pendingTransformOptions` store
   - `onShopTransformChoice(card)` — adds chosen card to deck, clears `pendingTransformOptions`
   - `pendingTransformOptions: Writable<Card[] | null>` — UI subscribes to this for the choice picker
-- **Ascension level 5 buff**: one free card removal per shop visit
+- **Ascension level 8 buff**: one free card removal per shop visit (was A5 before Pass 7 curve fix 2026-04-09)
 
 ### Haggle (Ch14.10 — UI-only)
 On haggle fail: no price penalty (original price kept), haggle button disabled for that item (`haggledThisItem` flag). Player can still buy at original price.

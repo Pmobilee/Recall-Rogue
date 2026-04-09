@@ -14,8 +14,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "se lo",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499331",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -35,8 +37,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "se lo",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499332",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -56,8 +60,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "se la",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499333",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -77,8 +83,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "se los",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499334",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -98,8 +106,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "se las",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499335",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -119,8 +129,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "me lo",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499336",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -140,8 +152,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "me lo",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499337",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -161,8 +175,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "me la",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499338",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -182,8 +198,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "te lo",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499339",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -203,8 +221,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "te lo",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499340",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "tatoeba:1594270",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -224,8 +244,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "te la",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499341",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -245,8 +267,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "nos lo",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499342",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -254,7 +278,9 @@
   {
     "id": "es-gram-b1-do-placement-infin-dartelo-0",
     "correctAnswer": "dártelo",
-    "acceptableAlternatives": ["te lo dar"],
+    "acceptableAlternatives": [
+      "te lo dar"
+    ],
     "chainThemeId": 5,
     "answerTypePoolId": "pronoun_placement_full",
     "difficulty": 4,
@@ -266,8 +292,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "dártelo",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499344",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -275,7 +303,9 @@
   {
     "id": "es-gram-b1-do-placement-infin-mandarselo-0",
     "correctAnswer": "mandárselo",
-    "acceptableAlternatives": ["se lo mandar"],
+    "acceptableAlternatives": [
+      "se lo mandar"
+    ],
     "chainThemeId": 5,
     "answerTypePoolId": "pronoun_placement_full",
     "difficulty": 4,
@@ -287,8 +317,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "mandárselo",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499346",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -308,8 +340,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "dámelo",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499349",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "tatoeba:620203",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"
@@ -329,8 +363,10 @@
     "partOfSpeech": "grammar",
     "targetLanguageWord": "déselo",
     "language": "es",
-    "examTags": ["CEFR_B1"],
-    "sourceRef": "tatoeba:4499350",
+    "examTags": [
+      "CEFR_B1"
+    ],
+    "sourceRef": "llm_authored",
     "volatile": false,
     "distractors": [],
     "visualDescription": "Spanish grammar fill-in-the-blank card"

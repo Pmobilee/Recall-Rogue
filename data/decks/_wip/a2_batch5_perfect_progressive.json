@@ -1,0 +1,334 @@
+[
+  {
+    "id": "es-gram-a2-perf-hablar-yo-0",
+    "correctAnswer": "he hablado",
+    "acceptableAlternatives": [
+      "hablado"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "haber_forms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Hoy {___} con el director.\n(Today I have spoken with the director.)",
+    "sentenceTranslation": "Today I have spoken with the director.",
+    "grammarPointLabel": "Present perfect: hablar (yo) — he + hablado",
+    "explanation": "he hablado — present perfect of hablar. Formed with haber (present) + past participle. 'He' = I have (auxiliary). Used for recent or relevant past actions.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "he hablado",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-perf-hablar-tu-0",
+    "correctAnswer": "has hablado",
+    "acceptableAlternatives": [
+      "hablado"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "haber_forms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "¿{___} alguna vez con una persona famosa?\n(Have you ever spoken with a famous person?)",
+    "sentenceTranslation": "Have you ever spoken with a famous person?",
+    "grammarPointLabel": "Present perfect: hablar (tú) — has + hablado",
+    "explanation": "has hablado — tú form of present perfect. 'Has' = you have (auxiliary). 'Alguna vez' = ever.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "has hablado",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-perf-comer-yo-0",
+    "correctAnswer": "he comido",
+    "acceptableAlternatives": [
+      "comido"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "haber_forms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Hoy ya {___} dos veces.\n(Today I have already eaten twice.)",
+    "sentenceTranslation": "Today I have already eaten twice.",
+    "grammarPointLabel": "Present perfect: comer (yo) — he + comido",
+    "explanation": "he comido — present perfect of comer. Regular -er past participle: com- + -ido.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "he comido",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-perf-hacer-yo-0",
+    "correctAnswer": "he hecho",
+    "acceptableAlternatives": [
+      "hecho"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "past_participles_irregular",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Esta semana {___} mucho ejercicio.\n(This week I have done a lot of exercise.)",
+    "sentenceTranslation": "This week I have done a lot of exercise.",
+    "grammarPointLabel": "Present perfect: hacer (yo) — he + hecho (irregular PP)",
+    "explanation": "he hecho — present perfect of hacer. Irregular past participle: hecho (NOT 'hacido'). One of the most common irregular past participles.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "he hecho",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-perf-ver-yo-0",
+    "correctAnswer": "he visto",
+    "acceptableAlternatives": [
+      "visto"
+    ],
+    "chainThemeId": 2,
+    "answerTypePoolId": "past_participles_irregular",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "¿{___} alguna vez esa película?\n(Have you ever seen that film?)",
+    "sentenceTranslation": "Have you ever seen that film?",
+    "grammarPointLabel": "Present perfect: ver — he visto (irregular PP)",
+    "explanation": "he visto — present perfect of ver. Irregular past participle: visto (NOT 'vido'). Very common in conversation.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "he visto",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-perf-pp-hecho-0",
+    "correctAnswer": "hecho",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "past_participles_irregular",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "¿Qué has {___} hoy?\n(What have you done today?)",
+    "sentenceTranslation": "What have you done today?",
+    "grammarPointLabel": "Irregular past participle: hacer → hecho",
+    "explanation": "hecho — irregular past participle of hacer. Common irregulars to memorize: hacer→hecho, decir→dicho, ver→visto, volver→vuelto, escribir→escrito, poner→puesto.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "hecho",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "tatoeba:738793",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-perf-pp-dicho-0",
+    "correctAnswer": "dicho",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "past_participles_irregular",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Ya lo he {___} muchas veces.\n(I have already said it many times.)",
+    "sentenceTranslation": "I have already said it many times.",
+    "grammarPointLabel": "Irregular past participle: decir → dicho",
+    "explanation": "dicho — irregular past participle of decir (to say/tell). The -cho ending is a pattern for hacer and decir.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "dicho",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-perf-pp-vuelto-0",
+    "correctAnswer": "vuelto",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "past_participles_irregular",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "¿Ha {___} ya de su viaje?\n(Has he/she returned from his/her trip already?)",
+    "sentenceTranslation": "Has he/she returned from his/her trip already?",
+    "grammarPointLabel": "Irregular past participle: volver → vuelto",
+    "explanation": "vuelto — irregular past participle of volver (to return). Pattern: vowel change in root: vuelto.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "vuelto",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-perf-pp-escrito-0",
+    "correctAnswer": "escrito",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "past_participles_irregular",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "He {___} tres correos esta mañana.\n(I have written three emails this morning.)",
+    "sentenceTranslation": "I have written three emails this morning.",
+    "grammarPointLabel": "Irregular past participle: escribir → escrito",
+    "explanation": "escrito — irregular past participle of escribir (to write). The -to ending appears in: escrito, puesto, visto, vuelto.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "escrito",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-prog-hablar-yo-0",
+    "correctAnswer": "hablando",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "gerund_forms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Estoy {___} con mi jefe ahora.\n(I am talking with my boss right now.)",
+    "sentenceTranslation": "I am talking with my boss right now.",
+    "grammarPointLabel": "Present progressive: hablar → hablando",
+    "explanation": "hablando — gerund of hablar. Regular -ar gerund: habl- + -ando. Used with estar to form the present progressive.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "hablando",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-prog-comer-yo-0",
+    "correctAnswer": "comiendo",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "gerund_forms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Estoy {___} en este momento, ¿puedo llamarte luego?\n(I am eating right now, can I call you later?)",
+    "sentenceTranslation": "I am eating right now, can I call you later?",
+    "grammarPointLabel": "Present progressive: comer → comiendo",
+    "explanation": "comiendo — gerund of comer. Regular -er gerund: com- + -iendo.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "comiendo",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-prog-dormir-stem-0",
+    "correctAnswer": "durmiendo",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "gerund_forms",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "El bebé está {___}.\n(The baby is sleeping.)",
+    "sentenceTranslation": "The baby is sleeping.",
+    "grammarPointLabel": "Present progressive: dormir → durmiendo (o→u stem change)",
+    "explanation": "durmiendo — gerund of dormir. Stem-change gerund: o→u in the stem: durm- + -iendo. Occurs in -ir verbs with o→ue stem change.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "durmiendo",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "tatoeba:746906",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-prog-pedir-stem-0",
+    "correctAnswer": "pidiendo",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "gerund_forms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Están {___} demasiado dinero.\n(They are asking for too much money.)",
+    "sentenceTranslation": "They are asking for too much money.",
+    "grammarPointLabel": "Present progressive: pedir → pidiendo (e→i stem change)",
+    "explanation": "pidiendo — gerund of pedir. Stem-change gerund: e→i: pid- + -iendo. Applies to -ir verbs with e→i stem change.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "pidiendo",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  },
+  {
+    "id": "es-gram-a2-prog-leer-stem-0",
+    "correctAnswer": "leyendo",
+    "acceptableAlternatives": [],
+    "chainThemeId": 2,
+    "answerTypePoolId": "gerund_forms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Está {___} en la cama.\n(He is reading in bed.)",
+    "sentenceTranslation": "He is reading in bed.",
+    "grammarPointLabel": "Present progressive: leer → leyendo (i→y change)",
+    "explanation": "leyendo — gerund of leer. When the stem ends in a vowel, the -iendo ending changes to -yendo: le- + yendo.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "leyendo",
+    "language": "es",
+    "examTags": [
+      "CEFR_A2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  }
+]
