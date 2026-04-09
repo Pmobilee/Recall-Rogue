@@ -117,9 +117,9 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-09 it contains **86 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-09 it contains **87 decks**:
 
-- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar/N1–N5 Kanji, Korean Hangul/TOPIK 1–2, Spanish A1–B2, Spanish A1 Grammar, Spanish A2 Grammar
+- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar/N1–N5 Kanji, Korean Hangul/TOPIK 1–2, Spanish A1–B2, Spanish A1 Grammar, Spanish A2 Grammar, Spanish B1 Grammar
 - **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**, **AP Human Geography**, **Philosophy**
 
 ### Deck Architecture Files
@@ -150,6 +150,7 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | *(inline generation)* | `philosophy` | complete — live | 425 | Global-canon; domain: `general_knowledge`, sub-domain: `philosophy`; 8 chain themes (Ancient Western, Classical Eastern, Medieval & Scholastic, Early Modern, Enlightenment & German Idealism, 19th Century, 20th C. Analytic, 20th C. Continental), 13 answer pools (split for length-tell avoidance), 8 sub-decks; sourced from Stanford Encyclopedia of Philosophy. |
 | `spanish_a1_grammar_arch.yaml` | `spanish_a1_grammar` | complete — live | 134 | PCIC A1-scoped; 8 named chain themes, 14 answer pools, 8 sub-decks; sentences from Tatoeba CC BY 2.0; first Spanish grammar deck. 2026-04-09. |
 | `spanish_a2_grammar_arch.yaml` | `spanish_a2_grammar` | complete — live | 177 | PCIC A2-scoped; 8 named chain themes, 25 answer pools, 8 sub-decks; 94.4% Tatoeba sentences; 2nd Spanish grammar deck. 2026-04-09. |
+| `spanish_b1_grammar_arch.yaml` | `spanish_b1_grammar` | complete — live | 175 | PCIC B1-scoped; 8 named chain themes, 24 answer pools, 8 sub-decks; 82.3% Tatoeba sentences; 3rd Spanish grammar deck; assembled from 9 batch files. 2026-04-09. |
 
 The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
 
@@ -2029,7 +2030,7 @@ The `spanish_a1_grammar` deck establishes these conventions for A1–B2 Spanish 
 7. **examTags**: `["CEFR_A1"]` on all facts; subsequent decks use `CEFR_A2`, `CEFR_B1`, `CEFR_B2`.
 8. **partOfSpeech**: `"grammar"` on all facts (consistent with Japanese grammar decks).
 
-**Language coverage note:** Spanish is the second language with grammar decks (Japanese was first). As of 2026-04-09, 2 of 4 planned Spanish grammar decks (A1–B2) are complete.
+**Language coverage note:** Spanish is the second language with grammar decks (Japanese was first). As of 2026-04-09, 3 of 4 planned Spanish grammar decks (A1–B2) are complete.
 
 
 ## spanish_a2_grammar Deck
@@ -2107,4 +2108,83 @@ The `spanish_a1_grammar` deck establishes these conventions for A1–B2 Spanish 
 - Object pronouns get their own chain theme (not covered at A1)
 -  pool marked  — temporal adverbials range from single words (ayer/antes) to multi-word phrases (la semana pasada) by nature
 
-**Language coverage note:** As of 2026-04-09, 2 of 4 planned Spanish grammar decks (A1–B2) are complete.
+**Language coverage note:** As of 2026-04-09, 3 of 4 planned Spanish grammar decks (A1–B2) are complete.
+
+
+## spanish_b1_grammar Deck
+
+`data/decks/spanish_b1_grammar.json` — generated 2026-04-09. Third deck in the Spanish grammar suite (A1–B2). Covers the major PCIC B1 grammar challenges: present subjunctive and all trigger categories, imperative for all persons (including negative and nosotros forms), simple conditional, future simple, pluperfect + irregular past participles, double object pronouns, relative clauses, and verbal periphrases.
+
+**Fill-in-the-blank format.** Same pattern as A1/A2: Spanish sentence with `{___}` placeholder + English translation.
+
+**Scope source:** Instituto Cervantes PCIC B1 Grammar Inventory. B1 scope cached at `data/deck-architectures/_research/spanish/pcic_b1_grammar_scope.md`.
+
+**Sentence sources:** Tatoeba (https://tatoeba.org/) CC BY 2.0 — 144/175 facts (82.3%). Remaining 31 facts are PCIC-pattern sentences. Sentence IDs in `data/deck-architectures/_research/spanish/tatoeba_b1_sentences.tsv`.
+
+**Assembly:** Built from 9 batch files (`data/decks/_wip/b1_batch1_*.json` – `b1_batch9_*.json`) via `scripts/assemble-b1-deck.mjs`.
+
+| Field | Value |
+|---|---|
+| `id` | `spanish_b1_grammar` |
+| `domain` | `vocabulary` |
+| `subDomain` | `spanish_grammar` |
+| `facts` | 175 |
+| `minimumFacts` | 150 |
+| `targetFacts` | 400 |
+| `language` | `es` |
+
+**Chain Themes (8):**
+
+| chainThemeId | Name | Facts | Grammar Area |
+|---|---|---|---|
+| 0 | Present Subjunctive | 59 | Presente de subjuntivo — regular -ar/-er/-ir + 14 irregular verbs + all trigger categories (espero que, cuando, para que, no creo que, etc.) |
+| 1 | Imperative: All Persons | 38 | Affirmative usted/ustedes/nosotros + negative imperative all persons (uses subjunctive) |
+| 2 | Simple Conditional | 18 | Condicional simple — regular (hablaría) + 6 irregular stems (haría, diría, tendría, podría, vendría, saldría) |
+| 3 | Future Simple | 26 | Futuro simple — regular (hablaré) + 6 irregular stems (haré, diré, tendré, podré, vendré, saldré) + si-clauses type 1 |
+| 4 | Pluperfect & Past Participles | 16 | Pluscuamperfecto (había + PP) + 9 irregular past participles (abierto, escrito, hecho, muerto, roto, resuelto, cubierto, puesto, vuelto) |
+| 5 | Double Object Pronouns | 16 | se lo/la/los/las + me/te/nos lo/la/las + pronoun attachment to infinitive and imperative |
+| 6 | Relative Clauses | 8 | que / quien / donde / lo que — basic relative clause structures |
+| 7 | Verbal Periphrases | 12 | acabar de + inf / volver a + inf / seguir + gerundio / llevar + tiempo + gerundio |
+
+**Answer Type Pools (24):**
+
+| Pool ID | Real | Synth | Total | Notes |
+|---|---|---|---|---|
+| `subj_ar_regular` | 10 | 9 | 19 | Regular -ar subjunctive conjugations |
+| `subj_er_ir_regular` | 8 | 9 | 17 | Regular -er/-ir subjunctive conjugations |
+| `subj_irregulars_ser_estar` | 8 | 8 | 16 | ser (sea) and estar (esté) subjunctive forms |
+| `subj_irregulars_tener_hacer` | 9 | 8 | 17 | tener/hacer/salir/poner/decir subjunctive forms |
+| `subj_irregulars_ir_querer` | 8 | 10 | 18 | ir/querer/poder/saber/venir subjunctive forms |
+| `subj_trigger_phrases` | 12 | 8 | 20 | Trigger phrases that require subjunctive |
+| `neg_imp_tu` | 10 | 9 | 19 | Negative tú imperative (no + subjunctive) |
+| `neg_imp_formal` | 8 | 9 | 17 | Negative formal imperative (usted/ustedes/nosotros) |
+| `imp_formal_affirm` | 8 | 9 | 17 | Affirmative usted imperative forms |
+| `imp_formal_ustedes` | 8 | 10 | 18 | Affirmative ustedes imperative forms |
+| `imp_nosotros` | 8 | 9 | 17 | Affirmative nosotros imperative (let's...) |
+| `conditional_regular` | 6 | 9 | 15 | Simple conditional regular forms |
+| `conditional_irregular` | 8 | 10 | 18 | Simple conditional irregular stems |
+| `future_regular` | 7 | 9 | 16 | Simple future regular forms |
+| `future_irregular` | 8 | 10 | 18 | Simple future irregular stems |
+| `haber_imperfect` | 6 | 14 | 20 | Imperfect of haber (pluperfect formation) |
+| `irregular_pp_b1` | 9 | 13 | 22 | Irregular past participles (abierto, escrito, hecho, etc.) |
+| `double_obj_se_combo` | 8 | 15 | 23 | se lo/la/los/las combos |
+| `double_obj_me_te_nos` | 7 | 8 | 15 | me/te/nos + direct object combos |
+| `pronoun_placement_full` | 8 | 7 | 15 | Full phrases with attached pronouns (homogeneityExempt: attachment forms vary) |
+| `relative_pronouns` | 8 | 9 | 17 | que / quien / donde / lo que |
+| `si_clause_patterns` | 5 | 11 | 16 | Si-clause type 1 patterns (homogeneityExempt: sentence patterns vs. single words) |
+| `periphrasis_forms` | 12 | 8 | 20 | Verbal periphrasis constructions (homogeneityExempt: full constructions vary) |
+| *(unused)* | — | — | — | `double_obj_me_te_nos` overlaps in usage — see pool above |
+
+**Architecture files:**
+- `data/deck-architectures/spanish_b1_grammar_arch.yaml` — grammar points with PCIC references and verified sentences
+- `data/deck-architectures/_research/spanish/pcic_b1_grammar_scope.md` — full PCIC B1 scope extraction
+- `data/deck-architectures/_research/spanish/tatoeba_b1_sentences.tsv` — all Tatoeba sentences with IDs and CC BY 2.0 attribution
+
+**Key B1 vs A2 differences:**
+- B1 introduces the **present subjunctive** — the largest single B1 topic (59 facts, 5 pools)
+- Imperative expands to all persons including formal (usted/ustedes) and nosotros
+- Future and conditional tenses appear (A2 only covers ir a + infinitive for future)
+- Double object pronouns require se-replacement (le/les → se before lo/la)
+- Verbal periphrases: acabar de, volver a, seguir, llevar + gerundio
+
+**Language coverage note:** As of 2026-04-09, 3 of 4 planned Spanish grammar decks (A1–B2) are complete. B2 is next.

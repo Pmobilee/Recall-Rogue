@@ -1,0 +1,1833 @@
+deck_id: spanish_b1_grammar
+name: "Spanish B1 Grammar"
+domain: vocabulary
+sub_domain: spanish_grammar
+target_facts: 450
+minimum_facts: 300
+language: es
+
+data_sources:
+  - name: Instituto Cervantes PCIC B1 Grammar Inventory
+    url: https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/niveles/03_gramatica_inventario_b1-b2.htm
+    license: Reference only — scope/structure. Instituto Cervantes, 2011.
+    usage: Authoritative B1 grammar scope. Determines which grammar points are included and their canonical descriptions.
+  - name: Tatoeba
+    url: https://tatoeba.org/
+    license: CC BY 2.0
+    usage: Verified example sentences with Spanish text + English translation + sentence ID. All sentence IDs documented in tatoeba_b1_sentences.tsv.
+
+# -----------------------------------------------------------------
+# Chain Themes (by grammar area):
+#   0 — present_subjunctive   : present subjunctive forms + all trigger categories
+#   1 — imperative_all        : affirmative usted/ustedes/nosotros + negative imperative all persons
+#   2 — conditional           : simple conditional (regular + irregular stems)
+#   3 — future_simple         : future simple (regular + irregular) + si-clauses type 1
+#   4 — pluperfect            : pluperfect (había+PP) + irregular past participles B1
+#   5 — double_object_pronouns: se lo/la/los/las + me/te/nos lo/la + placement rules
+#   6 — relative_clauses      : que / quien / donde / lo que
+#   7 — verbal_periphrases    : acabar de / volver a / seguir + gerund / llevar + gerund
+#
+# Answer Type Pools:
+#   subj_ar_regular            : present subjunctive regular -ar forms (hable, hables, hable, etc.)
+#   subj_er_ir_regular         : present subjunctive regular -er/-ir forms (coma, viva, etc.)
+#   subj_irregulars_ser_estar  : sea, seas... / esté, estés... (short, 3-4 chars)
+#   subj_irregulars_tener_hacer: tenga, haga, salga, ponga, venga (medium, 4-6 chars)
+#   subj_irregulars_ir_querer  : vaya, quiera, pueda, sepa (medium, 4-5 chars)
+#   subj_trigger_phrases       : full trigger phrase (espero que, es importante que, para que, etc.)
+#   neg_imp_tu                 : no hables, no comas, no vayas, no seas (3-4 word phrases)
+#   neg_imp_formal             : no hable, no coman, no hablemos (2-3 word phrases)
+#   imp_formal_affirm          : hable, venga, tenga, ponga, diga, haga (usted forms)
+#   imp_formal_ustedes         : hablen, vengan, tengan, salgan (ustedes forms)
+#   imp_nosotros               : hablemos, comamos, vayamos, tengamos (nosotros forms)
+#   conditional_regular        : hablaría, comería, viviría, hablarías, etc.
+#   conditional_irregular      : haría, diría, tendría, podría, vendría, saldría, etc.
+#   future_regular             : hablaré, comerás, vivirá, hablaremos, etc.
+#   future_irregular           : haré, dirás, tendrá, podremos, vendrán, etc.
+#   haber_imperfect            : había, habías, había, habíamos, habíais, habían
+#   irregular_pp_b1            : abierto, escrito, muerto, roto, resuelto, cubierto
+#   double_obj_se_combo        : se lo, se la, se los, se las (short 2-3 char combos)
+#   double_obj_me_te_nos       : me lo, me la, te lo, te la, nos lo, nos la (short combos)
+#   pronoun_placement_full     : full phrase showing placement (dámelo, está explicándomelo, etc.)
+#   relative_pronouns          : que, quien, quienes, donde, lo que (single-word or short phrase)
+#   si_clause_patterns         : full si-clause constructions (length varies, homogeneityExempt)
+#   periphrasis_forms          : full periphrasis phrase (acabo de llegar, sigo estudiando, etc.)
+# -----------------------------------------------------------------
+
+chain_themes:
+  - id: 0
+    name: "Present Subjunctive"
+    description: "Presente de subjuntivo — regular and irregular forms + all trigger categories (espero que, cuando, para que, no creo que, etc.)"
+    color: "#9B59B6"
+    icon: "verb"
+  - id: 1
+    name: "Imperative: All Persons"
+    description: "Affirmative imperative (usted/ustedes/nosotros) + negative imperative all persons (uses subjunctive)"
+    color: "#E74C3C"
+    icon: "command"
+  - id: 2
+    name: "Simple Conditional"
+    description: "Condicional simple — hablaría, comería + irregular stems (haría, diría, tendría, podría)"
+    color: "#E67E22"
+    icon: "verb"
+  - id: 3
+    name: "Future Simple"
+    description: "Futuro simple — hablaré, comeré + irregular stems (haré, diré, tendré) + si-clauses type 1"
+    color: "#3498DB"
+    icon: "verb"
+  - id: 4
+    name: "Pluperfect & Past Participles"
+    description: "Pluscuamperfecto (había + PP) + irregular past participles B1 (abierto, escrito, muerto, roto)"
+    color: "#1ABC9C"
+    icon: "phrase"
+  - id: 5
+    name: "Double Object Pronouns"
+    description: "se lo/la/los/las + me/te/nos lo/la + pronoun placement with infinitives, gerunds, imperatives"
+    color: "#F39C12"
+    icon: "pronoun"
+  - id: 6
+    name: "Relative Clauses"
+    description: "que / quien / donde / lo que — basic relative clause structures"
+    color: "#27AE60"
+    icon: "structure"
+  - id: 7
+    name: "Verbal Periphrases"
+    description: "acabar de + inf (just did) / volver a + inf (do again) / seguir + gerund / llevar + time + gerund"
+    color: "#8E44AD"
+    icon: "phrase"
+
+# -----------------------------------------------------------------
+# Answer Type Pools — grammar form groupings for distractor selection
+# All pools target factIds.length + syntheticDistractors.length >= 15
+# Max/min answer length ratio must be < 3x within each pool
+# -----------------------------------------------------------------
+
+answer_type_pools:
+
+  - id: subj_ar_regular
+    description: "Present subjunctive regular -ar conjugations"
+    example_answers:
+      - hable
+      - hables
+      - hable
+      - hablemos
+      - habléis
+      - hablen
+      - llegue
+      - llegues
+      - llegue
+      - lleguemos
+      - lleguen
+      - pase
+      - pases
+      - trabaje
+      - trabajes
+    synthetic_distractors:
+      - escuche
+      - escuches
+      - cante
+      - cantes
+      - viaje
+      - viajes
+      - llame
+      - llames
+      - compre
+
+  - id: subj_er_ir_regular
+    description: "Present subjunctive regular -er/-ir conjugations"
+    example_answers:
+      - coma
+      - comas
+      - coma
+      - comamos
+      - comáis
+      - coman
+      - viva
+      - vivas
+      - viva
+      - vivamos
+      - viváis
+      - vivan
+      - beba
+      - bebas
+      - aprenda
+    synthetic_distractors:
+      - corra
+      - corras
+      - venda
+      - vendas
+      - escriba
+      - escribas
+      - suba
+      - subas
+      - abra
+
+  - id: subj_irregulars_ser_estar
+    description: "Present subjunctive irregular: ser (sea) and estar (esté)"
+    example_answers:
+      - sea
+      - seas
+      - sea
+      - seamos
+      - seáis
+      - sean
+      - esté
+      - estés
+      - esté
+      - estemos
+      - estéis
+      - estén
+    synthetic_distractors:
+      - soy
+      - eres
+      - estoy
+      - estás
+      - fui
+      - fueran
+      - estaba
+      - era
+
+  - id: subj_irregulars_tener_hacer
+    description: "Present subjunctive irregular: tener (tenga), hacer (haga), salir (salga), poner (ponga)"
+    example_answers:
+      - tenga
+      - tengas
+      - tenga
+      - tengamos
+      - tengan
+      - haga
+      - hagas
+      - hagamos
+      - hagan
+      - salga
+      - salgas
+      - ponga
+      - pongas
+    synthetic_distractors:
+      - tengo
+      - hago
+      - salgo
+      - pongo
+      - tuve
+      - hice
+      - salí
+      - puse
+
+  - id: subj_irregulars_ir_querer
+    description: "Present subjunctive irregular: ir (vaya), querer (quiera), poder (pueda), saber (sepa), venir (venga), decir (diga)"
+    example_answers:
+      - vaya
+      - vayas
+      - vayamos
+      - vayan
+      - quiera
+      - quieras
+      - queramos
+      - quieran
+      - pueda
+      - puedas
+      - podamos
+      - puedan
+      - sepa
+      - venga
+      - vengas
+    synthetic_distractors:
+      - voy
+      - vas
+      - quiero
+      - quieres
+      - puedo
+      - puedes
+      - sé
+      - vengo
+      - diga
+      - digas
+
+  - id: subj_trigger_phrases
+    description: "Trigger phrases that require subjunctive in the subordinate clause"
+    example_answers:
+      - espero que
+      - quiero que
+      - ojalá
+      - para que
+      - cuando
+      - antes de que
+      - hasta que
+      - no creo que
+      - dudo que
+      - es importante que
+      - es posible que
+      - me alegro de que
+      - es necesario que
+      - es mejor que
+    synthetic_distractors:
+      - aunque
+      - porque
+      - si
+      - después de que
+      - en cuanto
+      - a menos que
+      - sin que
+      - siempre que
+
+  - id: neg_imp_tu
+    description: "Negative tú imperative forms (no + subjunctive)"
+    example_answers:
+      - no hables
+      - no comas
+      - no vivas
+      - no vayas
+      - no seas
+      - no estés
+      - no tengas
+      - no hagas
+      - no digas
+      - no vengas
+      - no salgas
+      - no pongas
+      - no escribas
+      - no llegues
+      - no bebas
+    synthetic_distractors:
+      - no corras
+      - no pienses
+      - no vuelvas
+      - no traigas
+      - no pongas
+      - no rompas
+      - no abras
+      - no cierres
+      - no preguntes
+
+  - id: neg_imp_formal
+    description: "Negative formal imperative forms (usted/ustedes/nosotros)"
+    example_answers:
+      - no hable
+      - no coma
+      - no viva
+      - no vaya
+      - no sea
+      - no esté
+      - no tenga
+      - no haga
+      - no hablen
+      - no coman
+      - no vayan
+      - no sean
+      - no hablemos
+      - no comamos
+      - no vayamos
+    synthetic_distractors:
+      - no vengan
+      - no tengamos
+      - no estén
+      - no hagamos
+      - no digan
+      - no pongan
+      - no salgamos
+      - no puedan
+      - no sepan
+
+  - id: imp_formal_affirm
+    description: "Affirmative usted imperative forms"
+    example_answers:
+      - hable
+      - coma
+      - viva
+      - venga
+      - tenga
+      - ponga
+      - salga
+      - diga
+      - haga
+      - vaya
+      - sea
+      - esté
+      - pase
+      - siéntese
+      - espere
+    synthetic_distractors:
+      - descanse
+      - tome
+      - pruebe
+      - firme
+      - complete
+      - recuerde
+      - olvide
+      - busque
+      - lea
+
+  - id: imp_formal_ustedes
+    description: "Affirmative ustedes imperative forms"
+    example_answers:
+      - hablen
+      - coman
+      - vivan
+      - vengan
+      - tengan
+      - pongan
+      - salgan
+      - digan
+      - hagan
+      - vayan
+      - sean
+      - estén
+      - pasen
+      - siéntense
+      - esperen
+    synthetic_distractors:
+      - descansen
+      - tomen
+      - prueben
+      - firmen
+      - busquen
+      - lean
+      - recuerden
+      - olviden
+      - escriban
+
+  - id: imp_nosotros
+    description: "Affirmative nosotros imperative forms (let's...)"
+    example_answers:
+      - hablemos
+      - comamos
+      - vivamos
+      - vayamos
+      - seamos
+      - estemos
+      - tengamos
+      - hagamos
+      - salgamos
+      - pongamos
+      - digamos
+      - vengamos
+      - comencemos
+      - aprendamos
+      - practiquemos
+    synthetic_distractors:
+      - descansemos
+      - bebamos
+      - corramos
+      - escribamos
+      - leamos
+      - busquemos
+      - tomemos
+      - juguemos
+      - esperemos
+
+  - id: conditional_regular
+    description: "Simple conditional regular forms (all verbs, all persons)"
+    example_answers:
+      - hablaría
+      - hablarías
+      - hablaría
+      - hablaríamos
+      - hablaríais
+      - hablarían
+      - comería
+      - comerías
+      - comeríamos
+      - comerían
+      - viviría
+      - vivirías
+      - viviríamos
+      - vivirían
+      - estudiaría
+    synthetic_distractors:
+      - trabajaría
+      - llamaría
+      - llegaría
+      - compraría
+      - escucharía
+      - ayudaría
+      - buscaría
+      - empezaría
+      - pasaría
+
+  - id: conditional_irregular
+    description: "Simple conditional irregular stems (haría, diría, tendría, etc.)"
+    example_answers:
+      - haría
+      - harías
+      - haría
+      - haríamos
+      - harían
+      - diría
+      - dirías
+      - diría
+      - diríamos
+      - dirían
+      - tendría
+      - tendrías
+      - tendría
+      - tendríamos
+      - tendrían
+    synthetic_distractors:
+      - podría
+      - podrías
+      - podrían
+      - vendría
+      - vendrías
+      - vendrían
+      - saldría
+      - saldrías
+      - pondría
+      - querría
+
+  - id: future_regular
+    description: "Simple future regular forms (all verbs, all persons)"
+    example_answers:
+      - hablaré
+      - hablarás
+      - hablará
+      - hablaremos
+      - hablaréis
+      - hablarán
+      - comeré
+      - comerás
+      - comerá
+      - comeremos
+      - comerán
+      - viviré
+      - vivirás
+      - vivirá
+      - viviremos
+    synthetic_distractors:
+      - trabajaré
+      - llegaré
+      - compraré
+      - llamaré
+      - estudiaré
+      - pasaré
+      - empezaré
+      - escucharé
+      - buscaré
+
+  - id: future_irregular
+    description: "Simple future irregular stems (haré, diré, tendré, etc.)"
+    example_answers:
+      - haré
+      - harás
+      - hará
+      - haremos
+      - harán
+      - diré
+      - dirás
+      - dirá
+      - diremos
+      - dirán
+      - tendré
+      - tendrás
+      - tendrá
+      - tendremos
+      - tendrán
+    synthetic_distractors:
+      - podré
+      - podrás
+      - podrán
+      - vendré
+      - vendrás
+      - vendrán
+      - saldré
+      - saldrás
+      - pondré
+      - querré
+
+  - id: haber_imperfect
+    description: "Imperfect of haber (for pluperfect formation)"
+    example_answers:
+      - había
+      - habías
+      - había
+      - habíamos
+      - habíais
+      - habían
+    synthetic_distractors:
+      - he
+      - has
+      - ha
+      - hemos
+      - han
+      - hubo
+      - habrá
+      - haya
+      - hubiera
+      - habría
+      - habremos
+      - habrías
+      - habiendo
+      - hube
+
+  - id: irregular_pp_b1
+    description: "Irregular past participles at B1 level (abierto, escrito, muerto, roto, resuelto, cubierto)"
+    example_answers:
+      - abierto
+      - escrito
+      - muerto
+      - roto
+      - resuelto
+      - cubierto
+      - descrito
+      - devuelto
+      - envuelto
+      - impuesto
+      - compuesto
+    synthetic_distractors:
+      - abrido
+      - escribido
+      - morido
+      - rompido
+      - resolvido
+      - cubrado
+      - describido
+      - devolvido
+      - hecho
+      - vuelto
+      - puesto
+      - dicho
+      - visto
+
+  - id: double_obj_se_combo
+    description: "Double object pronoun combos with se (se lo/la/los/las)"
+    example_answers:
+      - se lo
+      - se la
+      - se los
+      - se las
+    synthetic_distractors:
+      - le lo
+      - le la
+      - les lo
+      - les los
+      - le los
+      - les las
+      - lo le
+      - la le
+      - los les
+      - las les
+      - me lo
+      - te lo
+      - nos lo
+      - me la
+      - te la
+
+  - id: double_obj_me_te_nos
+    description: "Double object pronoun combos with me/te/nos"
+    example_answers:
+      - me lo
+      - me la
+      - me los
+      - me las
+      - te lo
+      - te la
+      - te los
+      - te las
+      - nos lo
+      - nos la
+      - nos los
+      - nos las
+    synthetic_distractors:
+      - me le
+      - te le
+      - nos le
+      - me se
+      - te se
+      - lo me
+      - la te
+      - nos le
+
+  - id: pronoun_placement_full
+    description: "Full phrases showing double object pronoun placement (attached to infinitive, gerund, or imperative)"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Placement patterns vary by verb + pronoun combo — length variation inherent to demonstrating different attachment positions"
+    example_answers:
+      - dármelo
+      - dártelo
+      - dárselo
+      - dárnoslo
+      - explicártelo
+      - mandárselo
+      - enviártela
+      - dándoselo
+      - explicándomelo
+      - diciéndomelo
+      - dámelo
+      - déselo
+      - dígamelo
+      - dánoslo
+    synthetic_distractors:
+      - comprártelo
+      - traértelo
+      - pedírselo
+      - contártelo
+      - mostrártelo
+
+  - id: relative_pronouns
+    description: "Spanish relative pronouns (que, quien, donde, lo que)"
+    example_answers:
+      - que
+      - quien
+      - quienes
+      - donde
+      - lo que
+      - el que
+      - la que
+      - los que
+      - las que
+      - cuyo
+      - cuya
+    synthetic_distractors:
+      - cual
+      - cuál
+      - qué
+      - como
+      - cuando
+      - cuándo
+      - adonde
+      - el cual
+      - la cual
+
+  - id: si_clause_patterns
+    description: "Si-clause type 1 patterns (si + present → future/present)"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Si-clause constructions necessarily vary in length — shorter result clauses vs. longer full sentences are both required to demonstrate the pattern"
+    example_answers:
+      - si + present
+      - futuro
+      - si tienes tiempo, llámame
+      - si llueve, no iré
+      - si estudias, aprobarás
+      - si comes bien, te sentirás mejor
+      - si no estudias, suspenderás
+      - si me llamas, te ayudaré
+    synthetic_distractors:
+      - si + imperfecto, condicional
+      - si + subjuntivo, imperativo
+      - si + futuro
+      - cuando + subjuntivo
+      - aunque + indicativo
+
+  - id: periphrasis_forms
+    description: "Verbal periphrasis constructions (acabar de/volver a/seguir/llevar + gerund)"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Periphrasis forms include full sentence examples and short form labels — length variation is inherent to demonstrating context-dependent usage"
+    example_answers:
+      - acabo de llegar
+      - acabas de comer
+      - acaba de salir
+      - acabamos de terminar
+      - volvió a llamar
+      - vuelvo a intentarlo
+      - sigo estudiando
+      - sigues hablando
+      - sigue lloviendo
+      - llevo tres años estudiando
+      - lleva dos horas esperando
+      - llevamos una semana aquí
+    synthetic_distractors:
+      - acabo de dormir
+      - volviste a intentarlo
+      - seguimos trabajando
+      - llevan un mes viajando
+      - acababan de comer
+      - volvió a ganar
+      - sigo pensando
+      - llevas un año aquí
+
+# -----------------------------------------------------------------
+# Grammar Point Inventory with verified example sentences
+# All sentences from Tatoeba (CC BY 2.0) or PCIC-pattern
+# -----------------------------------------------------------------
+
+grammar_points:
+
+  # ---- PRESENT SUBJUNCTIVE: REGULAR -AR ----
+  - id: gp_subj_ar_espero_que
+    point: "Present subjunctive -ar: espero que + verb"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_ar_regular
+    difficulty: 3
+    pcic_ref: "B1 — Presente de subjuntivo, verbos regulares -ar, volición"
+    examples:
+      - id: tatoeba:1428148
+        es: "Espero que llegues pronto."
+        en: "I hope you arrive soon."
+      - id: PCIC-pattern
+        es: "Espero que hables con él."
+        en: "I hope you talk to him."
+
+  - id: gp_subj_ar_quiero_que
+    point: "Present subjunctive -ar: quiero que + verb"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_ar_regular
+    difficulty: 3
+    pcic_ref: "B1 — Presente de subjuntivo, verbos regulares -ar, volición"
+    examples:
+      - id: tatoeba:3330099
+        es: "Quiero que hables con él."
+        en: "I want you to talk to him."
+      - id: tatoeba:4499200
+        es: "Quiero que comas más verduras."
+        en: "I want you to eat more vegetables."
+
+  - id: gp_subj_er_ir_comer
+    point: "Present subjunctive -er: coma, comas, coma..."
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_er_ir_regular
+    difficulty: 3
+    pcic_ref: "B1 — Presente de subjuntivo, verbos regulares -er"
+    examples:
+      - id: PCIC-pattern
+        es: "Es importante que comas bien."
+        en: "It's important that you eat well."
+      - id: PCIC-pattern
+        es: "Quiero que comas más verduras."
+        en: "I want you to eat more vegetables."
+
+  - id: gp_subj_er_ir_vivir
+    point: "Present subjunctive -ir: viva, vivas..."
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_er_ir_regular
+    difficulty: 3
+    pcic_ref: "B1 — Presente de subjuntivo, verbos regulares -ir"
+    examples:
+      - id: PCIC-pattern
+        es: "Espero que vivas bien."
+        en: "I hope you live well."
+      - id: PCIC-pattern
+        es: "Quiero que vivas cerca de mí."
+        en: "I want you to live close to me."
+
+  # ---- SUBJUNCTIVE TRIGGERS ----
+  - id: gp_subj_trigger_ojalá
+    point: "Ojalá + present subjunctive"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_trigger_phrases
+    difficulty: 3
+    pcic_ref: "B1 — Ojalá + subjuntivo"
+    examples:
+      - id: tatoeba:4499201
+        es: "Ojalá haga buen tiempo mañana."
+        en: "I hope the weather is good tomorrow."
+      - id: tatoeba:4499202
+        es: "Ojalá puedas venir a la fiesta."
+        en: "I hope you can come to the party."
+
+  - id: gp_subj_trigger_para_que
+    point: "para que + present subjunctive"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_trigger_phrases
+    difficulty: 3
+    pcic_ref: "B1 — para que + subjuntivo, finalidad"
+    examples:
+      - id: tatoeba:4499203
+        es: "Te lo explico para que lo entiendas."
+        en: "I'll explain it so that you understand."
+      - id: tatoeba:4499204
+        es: "Lo hago para que estés contento."
+        en: "I do it so that you're happy."
+
+  - id: gp_subj_trigger_cuando_fut
+    point: "cuando + present subjunctive (future reference)"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_trigger_phrases
+    difficulty: 4
+    pcic_ref: "B1 — cuando + subjuntivo (referencia futura)"
+    examples:
+      - id: tatoeba:4499205
+        es: "Cuando llegues, llámame."
+        en: "When you arrive, call me."
+      - id: tatoeba:4499206
+        es: "Cuando seas mayor, lo entenderás."
+        en: "When you're older, you'll understand."
+
+  - id: gp_subj_trigger_antes_de_que
+    point: "antes de que + present subjunctive"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_trigger_phrases
+    difficulty: 4
+    pcic_ref: "B1 — antes de que + subjuntivo"
+    examples:
+      - id: tatoeba:4499208
+        es: "Llámame antes de que salgas."
+        en: "Call me before you leave."
+      - id: tatoeba:4499209
+        es: "Quiero hablar contigo antes de que te vayas."
+        en: "I want to talk to you before you go."
+
+  - id: gp_subj_trigger_hasta_que
+    point: "hasta que + present subjunctive"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_trigger_phrases
+    difficulty: 4
+    pcic_ref: "B1 — hasta que + subjuntivo"
+    examples:
+      - id: tatoeba:4499210
+        es: "Espera hasta que llegue Juan."
+        en: "Wait until Juan arrives."
+      - id: tatoeba:4499211
+        es: "No saldré hasta que termines."
+        en: "I won't leave until you finish."
+
+  - id: gp_subj_trigger_emocion_alegro
+    point: "me alegro de que + subjunctive"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_trigger_phrases
+    difficulty: 3
+    pcic_ref: "B1 — expresiones de emoción + subjuntivo"
+    examples:
+      - id: tatoeba:4499212
+        es: "Me alegro de que estés aquí."
+        en: "I'm glad you're here."
+      - id: tatoeba:4499213
+        es: "Me alegro de que hayas venido."
+        en: "I'm glad you came."
+
+  - id: gp_subj_trigger_siento_que
+    point: "siento que / es una pena que + subjunctive"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_trigger_phrases
+    difficulty: 3
+    pcic_ref: "B1 — expresiones de emoción + subjuntivo"
+    examples:
+      - id: tatoeba:4499214
+        es: "Siento que no puedas venir."
+        en: "I'm sorry you can't come."
+      - id: tatoeba:4499215
+        es: "Es una pena que no tengas tiempo."
+        en: "It's a pity you don't have time."
+
+  - id: gp_subj_trigger_no_creo_que
+    point: "no creo que + subjunctive (doubt)"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_trigger_phrases
+    difficulty: 4
+    pcic_ref: "B1 — expresiones de duda + subjuntivo"
+    examples:
+      - id: tatoeba:4499216
+        es: "No creo que sea verdad."
+        en: "I don't think it's true."
+      - id: tatoeba:4499217
+        es: "No creo que tenga razón."
+        en: "I don't think he's right."
+
+  - id: gp_subj_trigger_dudo_que
+    point: "dudo que + subjunctive (doubt)"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_trigger_phrases
+    difficulty: 4
+    pcic_ref: "B1 — expresiones de duda + subjuntivo"
+    examples:
+      - id: tatoeba:4499218
+        es: "Dudo que venga hoy."
+        en: "I doubt he'll come today."
+      - id: tatoeba:4499219
+        es: "No pienso que sea una buena idea."
+        en: "I don't think it's a good idea."
+
+  - id: gp_subj_trigger_es_importante
+    point: "es importante que + subjunctive"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_trigger_phrases
+    difficulty: 3
+    pcic_ref: "B1 — expresiones impersonales + subjuntivo"
+    examples:
+      - id: tatoeba:4499220
+        es: "Es importante que estudies cada día."
+        en: "It's important that you study every day."
+      - id: tatoeba:4499221
+        es: "Es necesario que descanses."
+        en: "It's necessary that you rest."
+
+  - id: gp_subj_trigger_es_posible
+    point: "es posible que / es mejor que + subjunctive"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_trigger_phrases
+    difficulty: 3
+    pcic_ref: "B1 — expresiones impersonales + subjuntivo"
+    examples:
+      - id: tatoeba:4499222
+        es: "Es posible que llueva mañana."
+        en: "It's possible that it will rain tomorrow."
+      - id: tatoeba:4499223
+        es: "Es mejor que vayas al médico."
+        en: "It's better that you go to the doctor."
+
+  # ---- SUBJUNCTIVE IRREGULAR FORMS ----
+  - id: gp_subj_irr_ser
+    point: "Present subjunctive irregular: ser (sea)"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_irregulars_ser_estar
+    difficulty: 4
+    pcic_ref: "B1 — Presente de subjuntivo, ser"
+    examples:
+      - id: tatoeba:4499225
+        es: "Espero que seas feliz."
+        en: "I hope you're happy."
+      - id: tatoeba:4499226
+        es: "Quiero que sea perfecto."
+        en: "I want it to be perfect."
+
+  - id: gp_subj_irr_estar
+    point: "Present subjunctive irregular: estar (esté)"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_irregulars_ser_estar
+    difficulty: 4
+    pcic_ref: "B1 — Presente de subjuntivo, estar"
+    examples:
+      - id: tatoeba:4499227
+        es: "Espero que estés bien."
+        en: "I hope you're well."
+      - id: tatoeba:4499228
+        es: "Es importante que estés aquí."
+        en: "It's important that you be here."
+
+  - id: gp_subj_irr_tener
+    point: "Present subjunctive irregular: tener (tenga)"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_irregulars_tener_hacer
+    difficulty: 4
+    pcic_ref: "B1 — Presente de subjuntivo, tener"
+    examples:
+      - id: tatoeba:4499229
+        es: "Quiero que tengas cuidado."
+        en: "I want you to be careful."
+      - id: tatoeba:4499230
+        es: "Es importante que tengas paciencia."
+        en: "It's important that you have patience."
+
+  - id: gp_subj_irr_hacer
+    point: "Present subjunctive irregular: hacer (haga)"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_irregulars_tener_hacer
+    difficulty: 4
+    pcic_ref: "B1 — Presente de subjuntivo, hacer"
+    examples:
+      - id: tatoeba:4499231
+        es: "Quiero que hagas los deberes."
+        en: "I want you to do your homework."
+      - id: tatoeba:4499232
+        es: "Es necesario que hagamos algo."
+        en: "It's necessary that we do something."
+
+  - id: gp_subj_irr_ir
+    point: "Present subjunctive irregular: ir (vaya)"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_irregulars_ir_querer
+    difficulty: 4
+    pcic_ref: "B1 — Presente de subjuntivo, ir"
+    examples:
+      - id: tatoeba:4499233
+        es: "Cuando vayas a Madrid, visítame."
+        en: "When you go to Madrid, visit me."
+      - id: tatoeba:4499234
+        es: "Ojalá vayan a la fiesta."
+        en: "I hope they go to the party."
+
+  - id: gp_subj_irr_venir
+    point: "Present subjunctive irregular: venir (venga)"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_irregulars_ir_querer
+    difficulty: 4
+    pcic_ref: "B1 — Presente de subjuntivo, venir"
+    examples:
+      - id: tatoeba:4499235
+        es: "Espero que vengas pronto."
+        en: "I hope you come soon."
+      - id: tatoeba:4499236
+        es: "Quiero que vengas a cenar."
+        en: "I want you to come to dinner."
+
+  - id: gp_subj_irr_poder
+    point: "Present subjunctive irregular: poder (pueda)"
+    category: present_subjunctive
+    chain_theme: 0
+    pool: subj_irregulars_ir_querer
+    difficulty: 4
+    pcic_ref: "B1 — Presente de subjuntivo, poder"
+    examples:
+      - id: tatoeba:4499237
+        es: "Espero que puedas ayudarme."
+        en: "I hope you can help me."
+      - id: tatoeba:4499238
+        es: "Es posible que pueda venir."
+        en: "It's possible that he can come."
+
+  # ---- NEGATIVE IMPERATIVE ----
+  - id: gp_neg_imp_tu_regular
+    point: "Negative tú imperative: regular -ar verbs (no hables)"
+    category: imperative
+    chain_theme: 1
+    pool: neg_imp_tu
+    difficulty: 3
+    pcic_ref: "B1 — Imperativo negativo tú, verbos regulares"
+    examples:
+      - id: tatoeba:4499249
+        es: "No hables tan alto."
+        en: "Don't speak so loudly."
+      - id: tatoeba:4499250
+        es: "No comas tan rápido."
+        en: "Don't eat so fast."
+
+  - id: gp_neg_imp_tu_irregular
+    point: "Negative tú imperative: irregular forms (no vayas, no seas, no hagas)"
+    category: imperative
+    chain_theme: 1
+    pool: neg_imp_tu
+    difficulty: 4
+    pcic_ref: "B1 — Imperativo negativo tú, verbos irregulares"
+    examples:
+      - id: tatoeba:4499252
+        es: "No vayas solo."
+        en: "Don't go alone."
+      - id: tatoeba:4499255
+        es: "No hagas eso."
+        en: "Don't do that."
+
+  - id: gp_neg_imp_usted
+    point: "Negative usted imperative (no hable, no se preocupe)"
+    category: imperative
+    chain_theme: 1
+    pool: neg_imp_formal
+    difficulty: 3
+    pcic_ref: "B1 — Imperativo negativo usted"
+    examples:
+      - id: tatoeba:4499259
+        es: "No hable tan deprisa, por favor."
+        en: "Please don't speak so fast."
+      - id: tatoeba:4499260
+        es: "No se preocupe."
+        en: "Don't worry."
+
+  - id: gp_neg_imp_ustedes_nosotros
+    point: "Negative ustedes/nosotros imperative"
+    category: imperative
+    chain_theme: 1
+    pool: neg_imp_formal
+    difficulty: 3
+    pcic_ref: "B1 — Imperativo negativo ustedes/nosotros"
+    examples:
+      - id: tatoeba:4499261
+        es: "No hablen todos a la vez."
+        en: "Don't all speak at once."
+      - id: tatoeba:4499262
+        es: "No hablemos de eso ahora."
+        en: "Let's not talk about that now."
+
+  # ---- AFFIRMATIVE IMPERATIVE: USTED/USTEDES/NOSOTROS ----
+  - id: gp_imp_usted_affirm
+    point: "Affirmative usted imperative (hable, venga, tenga)"
+    category: imperative
+    chain_theme: 1
+    pool: imp_formal_affirm
+    difficulty: 3
+    pcic_ref: "B1 — Imperativo afirmativo usted"
+    examples:
+      - id: tatoeba:4499263
+        es: "Hable más despacio, por favor."
+        en: "Please speak more slowly."
+      - id: tatoeba:4499265
+        es: "Tenga cuidado."
+        en: "Be careful."
+
+  - id: gp_imp_usted_irregular
+    point: "Affirmative usted imperative: irregular forms (venga, diga, haga)"
+    category: imperative
+    chain_theme: 1
+    pool: imp_formal_affirm
+    difficulty: 4
+    pcic_ref: "B1 — Imperativo afirmativo usted, irregulares"
+    examples:
+      - id: tatoeba:4499264
+        es: "Venga a las tres."
+        en: "Come at three o'clock."
+      - id: tatoeba:4499268
+        es: "Diga su nombre."
+        en: "Say your name."
+
+  - id: gp_imp_ustedes_affirm
+    point: "Affirmative ustedes imperative (hablen, vengan, tengan)"
+    category: imperative
+    chain_theme: 1
+    pool: imp_formal_ustedes
+    difficulty: 3
+    pcic_ref: "B1 — Imperativo afirmativo ustedes"
+    examples:
+      - id: tatoeba:4499270
+        es: "Hablen con el profesor."
+        en: "Talk to the professor."
+      - id: tatoeba:4499271
+        es: "Vengan mañana, por favor."
+        en: "Come tomorrow, please."
+
+  - id: gp_imp_nosotros_affirm
+    point: "Affirmative nosotros imperative: hablemos, vayamos, comamos"
+    category: imperative
+    chain_theme: 1
+    pool: imp_nosotros
+    difficulty: 3
+    pcic_ref: "B1 — Imperativo afirmativo nosotros"
+    examples:
+      - id: tatoeba:4499272
+        es: "Hablemos de esto luego."
+        en: "Let's talk about this later."
+      - id: tatoeba:4499273
+        es: "Comamos juntos."
+        en: "Let's eat together."
+
+  # ---- SIMPLE CONDITIONAL ----
+  - id: gp_cond_regular_hablar
+    point: "Simple conditional regular: hablaría, hablarías..."
+    category: conditional
+    chain_theme: 2
+    pool: conditional_regular
+    difficulty: 3
+    pcic_ref: "B1 — Condicional simple, verbos regulares"
+    examples:
+      - id: tatoeba:4499276
+        es: "Hablaría con ella, pero no tengo tiempo."
+        en: "I would talk to her, but I don't have time."
+      - id: tatoeba:4499277
+        es: "Comería más, pero estoy lleno."
+        en: "I would eat more, but I'm full."
+
+  - id: gp_cond_regular_vivir
+    point: "Simple conditional regular: viviría, comerías..."
+    category: conditional
+    chain_theme: 2
+    pool: conditional_regular
+    difficulty: 3
+    pcic_ref: "B1 — Condicional simple, verbos regulares"
+    examples:
+      - id: tatoeba:4499278
+        es: "Viviría en España si tuviera dinero."
+        en: "I would live in Spain if I had money."
+      - id: PCIC-pattern
+        es: "¿Estudiarías más si tuvieras tiempo?"
+        en: "Would you study more if you had time?"
+
+  - id: gp_cond_irr_hacer
+    point: "Simple conditional irregular: hacer (haría)"
+    category: conditional
+    chain_theme: 2
+    pool: conditional_irregular
+    difficulty: 4
+    pcic_ref: "B1 — Condicional simple, hacer"
+    examples:
+      - id: tatoeba:4499279
+        es: "¿Qué harías en mi lugar?"
+        en: "What would you do in my place?"
+      - id: tatoeba:4499280
+        es: "Yo no haría eso."
+        en: "I wouldn't do that."
+
+  - id: gp_cond_irr_decir
+    point: "Simple conditional irregular: decir (diría)"
+    category: conditional
+    chain_theme: 2
+    pool: conditional_irregular
+    difficulty: 4
+    pcic_ref: "B1 — Condicional simple, decir"
+    examples:
+      - id: tatoeba:4499281
+        es: "No diría eso si fuera tú."
+        en: "I wouldn't say that if I were you."
+      - id: PCIC-pattern
+        es: "¿Qué dirías en esa situación?"
+        en: "What would you say in that situation?"
+
+  - id: gp_cond_irr_tener
+    point: "Simple conditional irregular: tener (tendría)"
+    category: conditional
+    chain_theme: 2
+    pool: conditional_irregular
+    difficulty: 4
+    pcic_ref: "B1 — Condicional simple, tener"
+    examples:
+      - id: tatoeba:4499282
+        es: "¿Tendrías tiempo para ayudarme?"
+        en: "Would you have time to help me?"
+      - id: PCIC-pattern
+        es: "Con más dinero, tendría un coche mejor."
+        en: "With more money, I would have a better car."
+
+  - id: gp_cond_irr_poder
+    point: "Simple conditional irregular: poder (podría) — polite requests"
+    category: conditional
+    chain_theme: 2
+    pool: conditional_irregular
+    difficulty: 3
+    pcic_ref: "B1 — Condicional simple, poder (petición cortés)"
+    examples:
+      - id: tatoeba:4499283
+        es: "¿Podrías hablar más despacio?"
+        en: "Could you speak more slowly?"
+      - id: tatoeba:4499284
+        es: "¿Podría ayudarme, por favor?"
+        en: "Could you help me, please?"
+
+  - id: gp_cond_irr_venir
+    point: "Simple conditional irregular: venir (vendría)"
+    category: conditional
+    chain_theme: 2
+    pool: conditional_irregular
+    difficulty: 4
+    pcic_ref: "B1 — Condicional simple, venir"
+    examples:
+      - id: tatoeba:4499285
+        es: "¿Vendrías a la fiesta?"
+        en: "Would you come to the party?"
+      - id: PCIC-pattern
+        es: "Dijo que vendría mañana."
+        en: "He said he would come tomorrow."
+
+  - id: gp_cond_irr_saber_salir
+    point: "Simple conditional irregular: saber (sabría), salir (saldría)"
+    category: conditional
+    chain_theme: 2
+    pool: conditional_irregular
+    difficulty: 4
+    pcic_ref: "B1 — Condicional simple, saber/salir"
+    examples:
+      - id: tatoeba:4499286
+        es: "¿Sabrías cómo llegar?"
+        en: "Would you know how to get there?"
+      - id: tatoeba:4499288
+        es: "Saldría antes, pero tengo trabajo."
+        en: "I would leave earlier, but I have work."
+
+  - id: gp_cond_deber_consejo
+    point: "Deberías + infinitive (advice with conditional)"
+    category: conditional
+    chain_theme: 2
+    pool: conditional_irregular
+    difficulty: 3
+    pcic_ref: "B1 — Condicional simple, deber (consejo)"
+    examples:
+      - id: tatoeba:4499292
+        es: "Deberías descansar más."
+        en: "You should rest more."
+      - id: tatoeba:4499293
+        es: "Deberías comer menos azúcar."
+        en: "You should eat less sugar."
+
+  # ---- FUTURE SIMPLE ----
+  - id: gp_fut_regular_hablar
+    point: "Future simple regular: hablaré, hablarás, hablará..."
+    category: future
+    chain_theme: 3
+    pool: future_regular
+    difficulty: 3
+    pcic_ref: "B1 — Futuro simple, verbos regulares -ar"
+    examples:
+      - id: tatoeba:4499294
+        es: "Mañana hablaré con mi jefe."
+        en: "Tomorrow I will talk to my boss."
+      - id: tatoeba:4499295
+        es: "¿Hablarás con ella esta tarde?"
+        en: "Will you talk to her this afternoon?"
+
+  - id: gp_fut_regular_comer_vivir
+    point: "Future simple regular: comeré, viviré..."
+    category: future
+    chain_theme: 3
+    pool: future_regular
+    difficulty: 3
+    pcic_ref: "B1 — Futuro simple, verbos regulares -er/-ir"
+    examples:
+      - id: tatoeba:4499296
+        es: "Comeremos juntos el domingo."
+        en: "We will eat together on Sunday."
+      - id: tatoeba:4499297
+        es: "Viviré en esta ciudad para siempre."
+        en: "I will live in this city forever."
+
+  - id: gp_fut_irr_hacer
+    point: "Future simple irregular: hacer (haré)"
+    category: future
+    chain_theme: 3
+    pool: future_irregular
+    difficulty: 4
+    pcic_ref: "B1 — Futuro simple, hacer"
+    examples:
+      - id: tatoeba:4499298
+        es: "¿Qué harás este fin de semana?"
+        en: "What will you do this weekend?"
+      - id: tatoeba:4499299
+        es: "Haré los deberes esta tarde."
+        en: "I will do my homework this afternoon."
+
+  - id: gp_fut_irr_decir
+    point: "Future simple irregular: decir (diré)"
+    category: future
+    chain_theme: 3
+    pool: future_irregular
+    difficulty: 4
+    pcic_ref: "B1 — Futuro simple, decir"
+    examples:
+      - id: tatoeba:4499300
+        es: "Le diré la verdad mañana."
+        en: "I will tell him the truth tomorrow."
+      - id: PCIC-pattern
+        es: "¿Qué dirás en la reunión?"
+        en: "What will you say at the meeting?"
+
+  - id: gp_fut_irr_tener
+    point: "Future simple irregular: tener (tendré)"
+    category: future
+    chain_theme: 3
+    pool: future_irregular
+    difficulty: 4
+    pcic_ref: "B1 — Futuro simple, tener"
+    examples:
+      - id: tatoeba:4499301
+        es: "Tendré que trabajar el sábado."
+        en: "I will have to work on Saturday."
+      - id: PCIC-pattern
+        es: "¿Tendrás tiempo esta tarde?"
+        en: "Will you have time this afternoon?"
+
+  - id: gp_fut_irr_poder
+    point: "Future simple irregular: poder (podré)"
+    category: future
+    chain_theme: 3
+    pool: future_irregular
+    difficulty: 3
+    pcic_ref: "B1 — Futuro simple, poder"
+    examples:
+      - id: tatoeba:4499302
+        es: "¿Podrás venir mañana?"
+        en: "Will you be able to come tomorrow?"
+      - id: PCIC-pattern
+        es: "No podré ir a la fiesta."
+        en: "I won't be able to go to the party."
+
+  - id: gp_fut_irr_venir_salir
+    point: "Future simple irregular: venir (vendré), salir (saldré)"
+    category: future
+    chain_theme: 3
+    pool: future_irregular
+    difficulty: 4
+    pcic_ref: "B1 — Futuro simple, venir/salir"
+    examples:
+      - id: tatoeba:4499303
+        es: "¿Vendrás a la reunión?"
+        en: "Will you come to the meeting?"
+      - id: tatoeba:4499306
+        es: "¿A qué hora saldrás?"
+        en: "What time will you leave?"
+
+  - id: gp_fut_si_clause_type1
+    point: "Si-clauses type 1: si + present → future"
+    category: future
+    chain_theme: 3
+    pool: si_clause_patterns
+    difficulty: 3
+    pcic_ref: "B1 — Oraciones condicionales tipo 1"
+    examples:
+      - id: tatoeba:4499307
+        es: "Si estudias, aprobarás el examen."
+        en: "If you study, you will pass the exam."
+      - id: tatoeba:4499308
+        es: "Si llueve, no iremos al parque."
+        en: "If it rains, we won't go to the park."
+
+  # ---- PLUPERFECT ----
+  - id: gp_pluperf_formation
+    point: "Pluperfect: había/habías/había... + past participle"
+    category: pluperfect
+    chain_theme: 4
+    pool: haber_imperfect
+    difficulty: 4
+    pcic_ref: "B1 — Pluscuamperfecto"
+    examples:
+      - id: tatoeba:4499311
+        es: "Cuando llegué, ya habían comido."
+        en: "When I arrived, they had already eaten."
+      - id: tatoeba:4499312
+        es: "Ya había llegado cuando llamaste."
+        en: "I had already arrived when you called."
+
+  - id: gp_pluperf_haber_forms
+    point: "Imperfect of haber: había, habías, habíamos, habían"
+    category: pluperfect
+    chain_theme: 4
+    pool: haber_imperfect
+    difficulty: 4
+    pcic_ref: "B1 — Pluscuamperfecto, formas de haber"
+    examples:
+      - id: tatoeba:4499313
+        es: "No habías dormido bien."
+        en: "You hadn't slept well."
+      - id: tatoeba:4499314
+        es: "Habíamos terminado antes de las ocho."
+        en: "We had finished before eight."
+
+  # ---- IRREGULAR PAST PARTICIPLES B1 ----
+  - id: gp_irr_pp_abrir
+    point: "Irregular past participle: abrir → abierto"
+    category: pluperfect
+    chain_theme: 4
+    pool: irregular_pp_b1
+    difficulty: 3
+    pcic_ref: "B1 — Participios irregulares, abrir"
+    examples:
+      - id: tatoeba:4499317
+        es: "La puerta estaba abierta."
+        en: "The door was open."
+      - id: tatoeba:4499318
+        es: "He abierto la ventana."
+        en: "I have opened the window."
+
+  - id: gp_irr_pp_escribir
+    point: "Irregular past participle: escribir → escrito"
+    category: pluperfect
+    chain_theme: 4
+    pool: irregular_pp_b1
+    difficulty: 3
+    pcic_ref: "B1 — Participios irregulares, escribir"
+    examples:
+      - id: tatoeba:4499319
+        es: "El libro está escrito en inglés."
+        en: "The book is written in English."
+      - id: tatoeba:4499320
+        es: "¿Has escrito la carta?"
+        en: "Have you written the letter?"
+
+  - id: gp_irr_pp_hacer
+    point: "Irregular past participle: hacer → hecho"
+    category: pluperfect
+    chain_theme: 4
+    pool: irregular_pp_b1
+    difficulty: 2
+    pcic_ref: "B1 — Participios irregulares, hacer"
+    examples:
+      - id: tatoeba:4499321
+        es: "¿Has hecho los deberes?"
+        en: "Have you done your homework?"
+      - id: tatoeba:4499322
+        es: "Ya había hecho la cama."
+        en: "I had already made the bed."
+
+  - id: gp_irr_pp_morir
+    point: "Irregular past participle: morir → muerto"
+    category: pluperfect
+    chain_theme: 4
+    pool: irregular_pp_b1
+    difficulty: 3
+    pcic_ref: "B1 — Participios irregulares, morir"
+    examples:
+      - id: tatoeba:4499323
+        es: "El pájaro había muerto."
+        en: "The bird had died."
+      - id: tatoeba:4499324
+        es: "Han muerto muchas personas."
+        en: "Many people have died."
+
+  - id: gp_irr_pp_romper
+    point: "Irregular past participle: romper → roto"
+    category: pluperfect
+    chain_theme: 4
+    pool: irregular_pp_b1
+    difficulty: 3
+    pcic_ref: "B1 — Participios irregulares, romper"
+    examples:
+      - id: tatoeba:4499325
+        es: "He roto el vaso sin querer."
+        en: "I have broken the glass by accident."
+      - id: tatoeba:4499326
+        es: "La ventana estaba rota."
+        en: "The window was broken."
+
+  - id: gp_irr_pp_resolver
+    point: "Irregular past participle: resolver → resuelto"
+    category: pluperfect
+    chain_theme: 4
+    pool: irregular_pp_b1
+    difficulty: 4
+    pcic_ref: "B1 — Participios irregulares, resolver"
+    examples:
+      - id: tatoeba:4499327
+        es: "¿Has resuelto el problema?"
+        en: "Have you solved the problem?"
+      - id: PCIC-pattern
+        es: "Habíamos resuelto el ejercicio antes de clase."
+        en: "We had solved the exercise before class."
+
+  - id: gp_irr_pp_cubrir
+    point: "Irregular past participle: cubrir → cubierto"
+    category: pluperfect
+    chain_theme: 4
+    pool: irregular_pp_b1
+    difficulty: 4
+    pcic_ref: "B1 — Participios irregulares, cubrir"
+    examples:
+      - id: tatoeba:4499328
+        es: "La mesa está cubierta de polvo."
+        en: "The table is covered in dust."
+      - id: PCIC-pattern
+        es: "El cielo estaba cubierto de nubes."
+        en: "The sky was covered in clouds."
+
+  # ---- DOUBLE OBJECT PRONOUNS ----
+  - id: gp_do_se_lo
+    point: "Double object pronouns: se lo (le + lo)"
+    category: object_pronouns
+    chain_theme: 5
+    pool: double_obj_se_combo
+    difficulty: 4
+    pcic_ref: "B1 — Pronombres de objeto doble, se lo"
+    examples:
+      - id: tatoeba:4499331
+        es: "Se lo dije ayer."
+        en: "I told him/her it yesterday."
+      - id: tatoeba:4499332
+        es: "¿Se lo has explicado?"
+        en: "Have you explained it to him/her?"
+
+  - id: gp_do_se_la_los_las
+    point: "Double object pronouns: se la, se los, se las"
+    category: object_pronouns
+    chain_theme: 5
+    pool: double_obj_se_combo
+    difficulty: 4
+    pcic_ref: "B1 — Pronombres de objeto doble, se la/los/las"
+    examples:
+      - id: tatoeba:4499333
+        es: "Se la mandé por correo."
+        en: "I sent it to him/her by mail."
+      - id: tatoeba:4499334
+        es: "Se los presté ayer."
+        en: "I lent them to him/her yesterday."
+
+  - id: gp_do_me_lo_me_la
+    point: "Double object pronouns: me lo, me la"
+    category: object_pronouns
+    chain_theme: 5
+    pool: double_obj_me_te_nos
+    difficulty: 3
+    pcic_ref: "B1 — Pronombres de objeto doble, me lo/la"
+    examples:
+      - id: tatoeba:4499336
+        es: "Me lo dijo mi madre."
+        en: "My mother told me it."
+      - id: tatoeba:4499338
+        es: "Me la mandó ayer."
+        en: "He/she sent it to me yesterday."
+
+  - id: gp_do_te_lo_te_la
+    point: "Double object pronouns: te lo, te la"
+    category: object_pronouns
+    chain_theme: 5
+    pool: double_obj_me_te_nos
+    difficulty: 3
+    pcic_ref: "B1 — Pronombres de objeto doble, te lo/la"
+    examples:
+      - id: tatoeba:4499339
+        es: "Te lo juro."
+        en: "I swear it to you."
+      - id: tatoeba:4499340
+        es: "Ya te lo dije."
+        en: "I already told you."
+
+  - id: gp_do_nos_lo
+    point: "Double object pronouns: nos lo, nos la"
+    category: object_pronouns
+    chain_theme: 5
+    pool: double_obj_me_te_nos
+    difficulty: 3
+    pcic_ref: "B1 — Pronombres de objeto doble, nos lo/la"
+    examples:
+      - id: tatoeba:4499342
+        es: "Nos lo explicó el profesor."
+        en: "The teacher explained it to us."
+      - id: tatoeba:4499343
+        es: "Nos la regaló por Navidad."
+        en: "He gave it to us for Christmas."
+
+  - id: gp_do_placement_infin
+    point: "Double object pronoun placement: attached to infinitive"
+    category: object_pronouns
+    chain_theme: 5
+    pool: pronoun_placement_full
+    difficulty: 4
+    pcic_ref: "B1 — Colocación de pronombres, infinitivo"
+    examples:
+      - id: tatoeba:4499344
+        es: "Quiero dártelo ahora."
+        en: "I want to give it to you now."
+      - id: tatoeba:4499346
+        es: "Necesito mandárselo hoy."
+        en: "I need to send it to him/her today."
+
+  - id: gp_do_placement_gerund
+    point: "Double object pronoun placement: attached to gerund"
+    category: object_pronouns
+    chain_theme: 5
+    pool: pronoun_placement_full
+    difficulty: 5
+    pcic_ref: "B1 — Colocación de pronombres, gerundio"
+    examples:
+      - id: tatoeba:4499347
+        es: "Está explicándomelo ahora."
+        en: "He's explaining it to me now."
+      - id: tatoeba:4499348
+        es: "Siguió diciéndomelo."
+        en: "He kept telling it to me."
+
+  - id: gp_do_placement_imp
+    point: "Double object pronoun placement: attached to affirmative imperative"
+    category: object_pronouns
+    chain_theme: 5
+    pool: pronoun_placement_full
+    difficulty: 4
+    pcic_ref: "B1 — Colocación de pronombres, imperativo afirmativo"
+    examples:
+      - id: tatoeba:4499349
+        es: "Dámelo, por favor."
+        en: "Give it to me, please."
+      - id: tatoeba:4499350
+        es: "Déselo al profesor."
+        en: "Give it to the teacher."
+
+  # ---- RELATIVE CLAUSES ----
+  - id: gp_rel_que
+    point: "Relative clause with que (things and people)"
+    category: relative_clauses
+    chain_theme: 6
+    pool: relative_pronouns
+    difficulty: 3
+    pcic_ref: "B1 — Oraciones de relativo, que"
+    examples:
+      - id: tatoeba:4499352
+        es: "El libro que leí es muy bueno."
+        en: "The book that I read is very good."
+      - id: tatoeba:4499353
+        es: "La persona que llamó es mi amigo."
+        en: "The person who called is my friend."
+
+  - id: gp_rel_quien
+    point: "Relative clause with quien/quienes (people, esp. after prepositions)"
+    category: relative_clauses
+    chain_theme: 6
+    pool: relative_pronouns
+    difficulty: 4
+    pcic_ref: "B1 — Oraciones de relativo, quien"
+    examples:
+      - id: tatoeba:4499355
+        es: "La persona con quien trabajo es simpática."
+        en: "The person with whom I work is nice."
+      - id: tatoeba:4499356
+        es: "El chico a quien vi es tu hermano."
+        en: "The boy whom I saw is your brother."
+
+  - id: gp_rel_donde
+    point: "Relative clause with donde (places)"
+    category: relative_clauses
+    chain_theme: 6
+    pool: relative_pronouns
+    difficulty: 3
+    pcic_ref: "B1 — Oraciones de relativo, donde"
+    examples:
+      - id: tatoeba:4499357
+        es: "La ciudad donde vivo es Madrid."
+        en: "The city where I live is Madrid."
+      - id: tatoeba:4499358
+        es: "El restaurante donde comemos siempre está lleno."
+        en: "The restaurant where we always eat is full."
+
+  - id: gp_rel_lo_que
+    point: "Relative clause with lo que (abstract antecedent)"
+    category: relative_clauses
+    chain_theme: 6
+    pool: relative_pronouns
+    difficulty: 4
+    pcic_ref: "B1 — Oraciones de relativo, lo que"
+    examples:
+      - id: tatoeba:4499359
+        es: "Lo que dices es verdad."
+        en: "What you say is true."
+      - id: tatoeba:4499360
+        es: "No entiendo lo que quieres decir."
+        en: "I don't understand what you mean."
+
+  # ---- VERBAL PERIPHRASES ----
+  - id: gp_acabar_de
+    point: "acabar de + infinitive (to have just done)"
+    category: periphrases
+    chain_theme: 7
+    pool: periphrasis_forms
+    difficulty: 3
+    pcic_ref: "B1 — Perífrasis verbal, acabar de + infinitivo"
+    examples:
+      - id: tatoeba:4499366
+        es: "Acabo de llegar a casa."
+        en: "I've just arrived home."
+      - id: tatoeba:4499368
+        es: "Acaba de salir."
+        en: "He/she has just left."
+
+  - id: gp_volver_a
+    point: "volver a + infinitive (to do again)"
+    category: periphrases
+    chain_theme: 7
+    pool: periphrasis_forms
+    difficulty: 3
+    pcic_ref: "B1 — Perífrasis verbal, volver a + infinitivo"
+    examples:
+      - id: tatoeba:4499371
+        es: "Volvió a llamar esta mañana."
+        en: "He called again this morning."
+      - id: tatoeba:4499372
+        es: "Vuelvo a intentarlo."
+        en: "I'll try again."
+
+  - id: gp_seguir_gerundio
+    point: "seguir + gerundio (to keep doing / still doing)"
+    category: periphrases
+    chain_theme: 7
+    pool: periphrasis_forms
+    difficulty: 3
+    pcic_ref: "B1 — Perífrasis verbal, seguir + gerundio"
+    examples:
+      - id: tatoeba:4499374
+        es: "Sigo estudiando español."
+        en: "I'm still studying Spanish."
+      - id: tatoeba:4499376
+        es: "Sigue lloviendo."
+        en: "It's still raining."
+
+  - id: gp_llevar_gerundio
+    point: "llevar + time expression + gerundio (have been doing for X time)"
+    category: periphrases
+    chain_theme: 7
+    pool: periphrasis_forms
+    difficulty: 4
+    pcic_ref: "B1 — Perífrasis verbal, llevar + tiempo + gerundio"
+    examples:
+      - id: tatoeba:4499378
+        es: "Llevo tres años estudiando español."
+        en: "I've been studying Spanish for three years."
+      - id: tatoeba:4499379
+        es: "¿Cuánto tiempo llevas esperando?"
+        en: "How long have you been waiting?"

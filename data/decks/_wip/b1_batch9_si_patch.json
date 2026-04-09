@@ -1,0 +1,23 @@
+[
+  {
+    "id": "es-gram-b1-si-type1-llueve-0",
+    "correctAnswer": "si",
+    "acceptableAlternatives": [],
+    "chainThemeId": 3,
+    "answerTypePoolId": "si_clause_patterns",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "{___} llueve, nos quedamos en casa.\n(If it rains, we'll stay at home.)",
+    "sentenceTranslation": "If it rains, we'll stay at home.",
+    "grammarPointLabel": "si-clause type 1: si + present → present/future",
+    "explanation": "si — Si llueve (condition: present indicative) → nos quedamos en casa (result: present or future). Type 1 si-clauses can also have the present indicative in the result (habit/general truth). Si + present → never subjunctive in type 1.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "si",
+    "language": "es",
+    "examTags": ["CEFR_B1"],
+    "sourceRef": "tatoeba:4499363",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "Spanish grammar fill-in-the-blank card"
+  }
+]

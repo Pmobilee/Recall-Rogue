@@ -960,7 +960,7 @@ Sports is now the highest-priority zero-deck domain. FIFA World Cup is the ancho
 
 ### 3.12 Language (Vocabulary)
 
-**Current State: Largely complete.** 37 decks shipped across 8 languages. Full coverage: Chinese HSK 1-6 (6 decks), Japanese N5-N1 + Hiragana/Katakana (7 decks), Spanish A1-B2 (4 decks), French A1-B2 (4 decks), German A1-B2 (4 decks), Dutch A1-B2 (4 decks), Czech A1-B2 (4 decks), Korean Hangul + TOPIK 1-2 (3 decks), Japanese Grammar N3-N5 (3 decks), Spanish A1 Grammar (1 deck — shipped 2026-04-09), Spanish A2 Grammar (1 deck — shipped 2026-04-09).
+**Current State: Largely complete.** 37 decks shipped across 8 languages. Full coverage: Chinese HSK 1-6 (6 decks), Japanese N5-N1 + Hiragana/Katakana (7 decks), Spanish A1-B2 (4 decks), French A1-B2 (4 decks), German A1-B2 (4 decks), Dutch A1-B2 (4 decks), Czech A1-B2 (4 decks), Korean Hangul + TOPIK 1-2 (3 decks), Japanese Grammar N3-N5 (3 decks), Spanish A1 Grammar (1 deck — shipped 2026-04-09), Spanish A2 Grammar (1 deck — shipped 2026-04-09), Spanish B1 Grammar (1 deck — shipped 2026-04-09).
 
 **Next priorities:** Portuguese A1-B2, Italian A1-B2, Russian A1-A2, Arabic MSA A1 (requires RTL script handling), Hindi A1 (requires Devanagari). Pipeline documented in `memory/language-pipeline-learnings.md`.
 
