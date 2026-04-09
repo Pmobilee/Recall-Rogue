@@ -4,7 +4,7 @@
 
 import type { StatusEffect } from '../data/statusEffects';
 import { applyStatusEffect as applyEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
-import { PLAYER_START_HP, BLOCK_DECAY_RETAIN_RATE } from '../data/balance';
+import { PLAYER_START_HP, BLOCK_DECAY_RETAIN_RATE, BLOCK_DECAY_PER_ACT } from '../data/balance';
 
 /** The player's combat state for a single encounter. */
 export interface PlayerCombatState {
@@ -151,9 +151,14 @@ export function tickPlayerStatusEffects(state: PlayerCombatState): {
  *
  * @param state - The player combat state (mutated in place).
  */
-export function resetTurnState(state: PlayerCombatState): void {
-  // Block decays 25% each turn (retains 75%) — rewards consistent shield investment
-  // Steady state: playing X block/turn converges to 4X max block
-  state.shield = Math.floor(state.shield * BLOCK_DECAY_RETAIN_RATE);
+export function resetTurnState(state: PlayerCombatState, currentAct?: number): void {
+  // Block decays per act: Act 1 = 15%, Act 2 = 25%, Act 3 = 35% decay per turn.
+  // Act 1 is gentler (85% retained) to let new players build block freely.
+  // Act 3 is harsher (65% retained) to create late-game shield pressure.
+  const decayRate = currentAct !== undefined
+    ? (BLOCK_DECAY_PER_ACT[currentAct] ?? 0.25)
+    : (1 - BLOCK_DECAY_RETAIN_RATE); // fallback: 0.25 (25% decay = 75% retain)
+  const retainRate = 1 - decayRate;
+  state.shield = Math.floor(state.shield * retainRate);
   state.cardsPlayedThisTurn = 0;
 }

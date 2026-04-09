@@ -356,6 +356,12 @@ export const SURGE_INTERVAL = 4;
 export const SURGE_CC_BONUS_MULTIPLIER = 1.5;
 /** Extra cards drawn at the start of a Surge turn. */
 export const SURGE_DRAW_BONUS = 1;
+/**
+ * Bonus AP granted at the start of each Surge turn (turn 2, 6, 10, ...).
+ * Changed from surcharge-waiver to +1 AP grant (Pass 3 balance, 2026-04-09).
+ * Surge turns still pay full CHARGE_AP_SURCHARGE; they get +1 AP to spend freely.
+ */
+export const SURGE_BONUS_AP = 1;
 
 // Chain Momentum system (AR-122)
 /** When true, a correct Charge answer waives the AP surcharge on the NEXT Charge that turn. */
@@ -364,9 +370,11 @@ export const CHAIN_MOMENTUM_ENABLED = true;
 /**
  * AP surcharge for Charge plays (added on top of card's base apCost).
  * Set to 1 — Charging costs +1 AP over Quick Play, creating a real charge-vs-quick decision.
- * Waived on: Surge turns (every 4th global turn), Warcry buff, Chain Momentum matching chain type,
+ * Waived on: Warcry buff, Chain Momentum matching chain type,
  * Free First Charge, and charging a card that matches the active chain color (rewards focused
- * chain-building play). See playCardAction() in turnManager.ts for the full priority chain.
+ * chain-building play). NOTE: Surge turns are no longer waiver-based — they grant +1 AP
+ * (SURGE_BONUS_AP) at turn start instead (Pass 3 balance, 2026-04-09).
+ * See playCardAction() in turnManager.ts for the full priority chain.
  * Was 0 from 2026-04-03 stat overhaul; restored to 1 on 2026-04-04 balance audit (game too easy + surge meaningless).
  */
 export const CHARGE_AP_SURCHARGE = 1;
@@ -415,6 +423,12 @@ export const PLAYER_MAX_HP = 100;
 export const HINTS_PER_ENCOUNTER = 1;
 export const START_AP_PER_TURN = 3;
 export const MAX_AP_PER_TURN = 5;
+/**
+ * AP per turn by act. Act 1 = 3 AP (same as START_AP_PER_TURN).
+ * Act 2+ = 4 AP — gives players more room to charge and combo on later floors.
+ * Used in turnManager.ts to set apCurrent at the start of each player turn.
+ */
+export const AP_PER_ACT: Record<number, number> = { 1: 3, 2: 4, 3: 4 };
 
 /**
  * Base rest site heal percentage. Applied when the player chooses "Rest" at a rest room.
@@ -440,7 +454,7 @@ export const POST_ENCOUNTER_HEAL_CAP: Record<number, number> = {
   4: 0.30,   // Segment 4 (floors 19-24): cap at 30%
 };
 /** Global base HP multiplier for all enemies. Reduced 6.0→4.5 on 2026-04-09: tuned down after playtesting. */
-export const ENEMY_BASE_HP_MULTIPLIER = 4.5;
+export const ENEMY_BASE_HP_MULTIPLIER = 5.25; // tuned 4.5→5.25 (pass 3b): structural changes made players stronger, enemies need more HP to compensate
 /**
  * HP scaling per floor above floor 1. Each floor adds this fraction to the base HP multiplier.
  * @deprecated Use ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT for segment-aware scaling.
@@ -495,7 +509,7 @@ export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.09; // Raised from 0.06 (2026-04
 export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
 /** Global enemy damage multiplier. Applied to ALL enemy attacks across all acts. Added 2026-04-08 playtest Ch12.1. */
-export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.5; // tuned from 2.0→1.5 (pass 2): 25% damage reduction, experienced was 16% win rate
+export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.75; // tuned 1.5→1.75 (pass 3b): structural changes (enrage removal, AP bump, hand bias) made players stronger
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. Doubled 2026-04-08 to match GLOBAL_ENEMY_DAMAGE_MULTIPLIER x2. */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
@@ -822,8 +836,17 @@ export const RELIC_SELL_VALUE_LEGENDARY = 50;
 
 /** Fraction of block retained between turns. 0.75 = 25% decay per turn.
  * At steady state, playing X block/turn converges to X/0.25 = 4X max block.
- * Rewards consistent shield investment without infinite stacking. */
+ * Rewards consistent shield investment without infinite stacking.
+ * @deprecated Use BLOCK_DECAY_PER_ACT for act-aware decay. This constant kept for imports that haven't been updated. */
 export const BLOCK_DECAY_RETAIN_RATE = 0.75;
+/**
+ * Block decay per act (fraction LOST per turn; complementary to BLOCK_DECAY_RETAIN_RATE).
+ * Act 1: 0.15 (85% retained) — gentler early game, lets new players build block freely.
+ * Act 2: 0.25 (75% retained) — standard decay, same as old flat rate.
+ * Act 3: 0.35 (65% retained) — harsher late game, shields are harder to maintain under pressure.
+ * Used in playerCombatState.ts resetTurnState().
+ */
+export const BLOCK_DECAY_PER_ACT: Record<number, number> = { 1: 0.15, 2: 0.25, 3: 0.35 };
 
 /** @deprecated Use BLOCK_DECAY_RETAIN_RATE instead. Decay naturally caps block. */
 export const BLOCK_CARRY_CAP_MULTIPLIER = 2.0;

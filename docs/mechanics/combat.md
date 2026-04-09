@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-09 (Phase 7 + pass 2 balance: GLOBAL_ENEMY_DAMAGE_MULTIPLIER 2.0→1.5, Act 2/3 caps reduced, omnibus/group_project HP/attack tuned)
+> **Last verified:** 2026-04-09 (Pass 3 balance: surge AP grant, enrage removal, act-aware AP/block-decay, starting hand shield bias, steel_skin revert)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`, `src/services/enemyDamageScaling.ts`, `src/services/intentDisplay.ts`, `src/services/multiplayerCoopSync.ts`
 
 ---
@@ -24,10 +24,10 @@ The encounter begins with `startEncounter()`: initializes `TurnState`, resets ch
 7. `tickPlayerStatusEffects()` — poison/regen tick on player
 8. `tickEnemyStatusEffects()` — poison tick on enemy; Bleed decays by `BLEED_DECAY_PER_TURN`
 9. `resolveTurnEndEffects()` — relic hooks (perfect turn bonus, etc.)
-10. `resetTurnState(playerState)` — shield decays, AP refills, chain resets
+10. `resetTurnState(playerState, currentAct)` — shield decays (act-aware: 15%/25%/35% for Act 1/2/3), AP refills, chain resets
 11. `drawHand()` — draw 5 new cards for next turn
 
-**Turn counters:** `turnNumber` is global (run-level, drives Surge system); `encounterTurnNumber` resets to 1 per encounter (drives enrage system).
+**Turn counters:** `turnNumber` is global (run-level, drives Surge system); `encounterTurnNumber` resets to 1 per encounter. **Note:** Enrage system removed (Pass 3 balance, 2026-04-09) — `getEnrageBonus()` always returns 0. Fights are balanced via enemy stats, not invisible timers.
 
 > **See also:** For floor transition effects between encounters, see Floor Descent Ceremony in `docs/mechanics/progression.md`.
 
@@ -119,17 +119,22 @@ The empty-hand trick uses the current (pre-damage) `turnState` — it does not r
 |---|---|
 | `START_AP_PER_TURN` | 3 |
 | `MAX_AP_PER_TURN` | 5 |
+| `AP_PER_ACT` | `{ 1: 3, 2: 4, 3: 4 }` — Act 2+ gives 4 AP/turn |
 | Normal card cost | `card.apCost` |
 | Charge surcharge | +1 AP added to `apCost` |
 | `FIRST_CHARGE_FREE_AP_SURCHARGE` | 0 (first attempt at a fact is free) |
+| `SURGE_BONUS_AP` | 1 — bonus AP at the start of Surge turns |
+
+**Act-aware AP:** Floors 1-6 = Act 1 (3 AP), floors 7-12 = Act 2 (4 AP), floors 13+ = Act 3 (4 AP). More AP in later acts gives players room to charge and combo under heavier enemy pressure.
+
+**Surge turns** (`isSurgeTurn(turnNumber)`; turns 2, 6, 10, 14, ...) grant `+SURGE_BONUS_AP` (+1) at the start of the turn. Surge turns still pay full `CHARGE_AP_SURCHARGE` — the extra AP is a flexible resource, not a free-charge voucher. Changed from surcharge-waiver to AP-grant (Pass 3 balance, 2026-04-09).
 
 Charge plays add +1 AP surcharge. Surcharge waivers (checked in priority order in `playCardAction`):
-1. **Surge turn** — `isSurgeTurn(turnNumber)`; fires every `SURGE_INTERVAL (4)` turns starting at `SURGE_FIRST_TURN (2)`. `getSurgeChargeSurcharge()` returns 0 on surge turns, `CHARGE_AP_SURCHARGE` (1) on normal turns.
-2. **Warcry buff** — `warcryFreeChargeActive` flag (consumed on use)
-3. **Chain Momentum** — `CHAIN_MOMENTUM_ENABLED = true`; previous correct Charge waives surcharge for next same chain-type Charge
-4. **Active Chain Color Match** (7.6 fix) — `card.chainType === getActiveChainColor()`; charging a card that matches the current active chain color waives the surcharge. Comes BEFORE free-first-charge so an on-colour first charge does NOT consume the free-first-charge slot. After a mid-turn color switch (see chains.md), `getActiveChainColor()` returns the newly pivoted color — so the switched-to color immediately benefits from this waiver.
-5. **Free First Charge** — `isFirstChargeFree(factId, ...)` — first attempt at any fact in the run costs +0 surcharge
-6. **Free Play Charges** — `turnState.freePlayCharges > 0` — set by frenzy mechanic or `focus_next2free` tag; reduces AP cost to 0 (highest priority — checked AFTER Focus discount)
+1. **Warcry buff** — `warcryFreeChargeActive` flag (consumed on use)
+2. **Chain Momentum** — `CHAIN_MOMENTUM_ENABLED = true`; previous correct Charge waives surcharge for next same chain-type Charge
+3. **Active Chain Color Match** (7.6 fix) — `card.chainType === getActiveChainColor()`; charging a card that matches the current active chain color waives the surcharge. Comes BEFORE free-first-charge so an on-colour first charge does NOT consume the free-first-charge slot. After a mid-turn color switch (see chains.md), `getActiveChainColor()` returns the newly pivoted color — so the switched-to color immediately benefits from this waiver.
+4. **Free First Charge** — `isFirstChargeFree(factId, ...)` — first attempt at any fact in the run costs +0 surcharge
+5. **Free Play Charges** — `turnState.freePlayCharges > 0` — set by frenzy mechanic or `focus_next2free` tag; reduces AP cost to 0 (highest priority — checked AFTER Focus discount)
 
 If `apCurrent < apCost`, card is blocked (`blocked: true`, no AP deducted).
 
@@ -183,6 +188,16 @@ Chains now **decay by 1** per turn end (`CHAIN_DECAY_PER_TURN=1`) instead of ful
 **Charge Wrong (`playMode = 'charge'`, `answeredCorrectly = false`)**
 - Partial effect at `FIZZLE_EFFECT_RATIO = 0.25×` of base effect — always resolves, never zero
 - At 0.5× the fizzle damage equaled or exceeded quick play, undermining knowledge-as-power; current 0.25× keeps wrong answers clearly inferior
+
+### Charge Wrong Values
+
+Each mechanic defines explicit `chargeWrongValue` — typically 60-75% of `quickPlayValue`:
+- Strike: QP=4, CW=3 (75%)
+- Block: QP=3, CW=2 (67%)
+- Heavy Strike: QP=10, CW=7 (70%)
+
+The `FIZZLE_EFFECT_RATIO` (0.25×) is a FALLBACK for cards without explicit CW values, not the default.
+Additionally, the first Charge of any fact in a run uses 1.0× multiplier on wrong (same as QP) — see Discovery System.
 - Breaks Knowledge Chain, loses Chain Momentum
 - Mastery downgrade (skipped on first attempt at a fact, `isFirstAttempt` flag)
 - Adds fact to `cursedFactIds` if `masteryLevel === 0` and not first attempt

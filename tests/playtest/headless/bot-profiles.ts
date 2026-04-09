@@ -453,7 +453,7 @@ export const BUILD_PROFILES: Record<string, { label: string; skills: BotSkills; 
   },
   build_berserker: {
     label: 'Build: Berserker',
-    skills: { accuracy: 0.80, cardSelection: 0.6, chargeSkill: 0.9, chainSkill: 0.5, blockSkill: 0.0, apEfficiency: 0.5, surgeAwareness: 0.6, masteryHunting: 0.7, rewardSkill: 0.6, shopSkill: 0.4, restSkill: 0.4, relicSkill: 0.6 },
+    skills: { accuracy: 0.80, cardSelection: 0.6, chargeSkill: 0.9, chainSkill: 0.5, blockSkill: 0.15, apEfficiency: 0.5, surgeAwareness: 0.6, masteryHunting: 0.7, rewardSkill: 0.6, shopSkill: 0.4, restSkill: 0.4, relicSkill: 0.6 },
     buildPrefs: { preferredMechanics: ['reckless', 'lifetap', 'execute', 'volatile_slash', 'heavy_strike'], preferredRelicCategories: ['glass_cannon', 'offensive'], preferredRelicIds: ['blood_price', 'berserker_band'] },
   },
 };

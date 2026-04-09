@@ -1,12 +1,14 @@
 /**
- * Knowledge Surge System (AR-59.4, updated AR-122)
+ * Knowledge Surge System (AR-59.4, updated AR-122, Pass 3 balance 2026-04-09)
  *
- * Every 4th player turn is a Surge turn granting a CC bonus multiplier and extra draw.
+ * Every 4th player turn is a Surge turn granting a CC bonus multiplier, extra draw, and +1 AP.
  * The turn counter persists across encounters within a run (not reset per encounter).
  * Surge turns: 2, 6, 10, 14, ...
  *
- * Surge waives the CHARGE_AP_SURCHARGE (+1 AP) on Charge plays, making it the strategic
- * burst window for free charging. On non-surge turns, charging costs base AP + CHARGE_AP_SURCHARGE.
+ * Pass 3 balance change: Surge no longer waives the CHARGE_AP_SURCHARGE.
+ * Instead, Surge turns grant SURGE_BONUS_AP (+1 AP) at the start of the turn via endPlayerTurn().
+ * Players spend this AP freely — charging still costs full surcharge.
+ * getSurgeChargeSurcharge() is kept for API compatibility but always returns CHARGE_AP_SURCHARGE.
  */
 
 import { CHARGE_AP_SURCHARGE, SURGE_FIRST_TURN, SURGE_INTERVAL } from '../data/balance';
@@ -28,9 +30,11 @@ export function isSurgeTurn(turnNumber: number): boolean {
 
 /**
  * Returns the AP surcharge for Charge Play on this turn.
- * Surge turns return 0 (surcharge waived — free charging window).
- * Non-surge turns return CHARGE_AP_SURCHARGE (currently 1).
+ * @deprecated As of Pass 3 balance (2026-04-09), Surge turns no longer waive the surcharge.
+ * Surge grants +1 AP (SURGE_BONUS_AP) at turn-start instead. This function always returns
+ * CHARGE_AP_SURCHARGE regardless of whether the turn is a Surge turn.
+ * Kept for test compatibility — callers should check CHARGE_AP_SURCHARGE directly.
  */
-export function getSurgeChargeSurcharge(turnNumber: number): number {
-  return isSurgeTurn(turnNumber) ? 0 : CHARGE_AP_SURCHARGE;
+export function getSurgeChargeSurcharge(_turnNumber: number): number {
+  return CHARGE_AP_SURCHARGE;
 }

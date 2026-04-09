@@ -798,8 +798,9 @@ export function resolveDamageTakenEffects(
   const thornCrownReflect =
     relicIds.has('thorn_crown') && (context.currentBlock ?? 0) >= 10 ? 5 : 0;
 
-  // steel_skin: nerfed from 3 → 1 flat damage reduction (2026-04-09 balance pass)
-  const flatReduction = relicIds.has('steel_skin') ? 1 : 0;
+  // steel_skin: reverted to 2 flat damage reduction (Pass 3 balance, 2026-04-09)
+  // Was nerfed to 1 in earlier pass; 2 gives more defensive value as a starter relic.
+  const flatReduction = relicIds.has('steel_skin') ? 2 : 0;
 
   // battle_scars — taking a hit arms next-attack +3 (once/turn; caller manages the flag)
   const battleScarsTriggered = relicIds.has('battle_scars');

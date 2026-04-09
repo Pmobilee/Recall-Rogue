@@ -459,8 +459,8 @@ describe('AR-271 Relic Mechanic: Domain Mastery Sigil AP modifier', () => {
     // End turn — this triggers enemy turn + turn-start effects for the new player turn
     endPlayerTurn(turnState);
 
-    // Base AP per turn = 3 (START_AP_PER_TURN). Flow State bonus = +1 → total 4.
-    expect(turnState.apCurrent).toBe(4);
+    // Base AP per turn = 3 (Act 1, floor 1) + SURGE_BONUS_AP +1 (turn 2 is surge) + flow_state +1 = 5.
+    expect(turnState.apCurrent).toBe(5);
     expect(turnState.triggeredRelicId).toBe('domain_mastery_sigil');
   });
 
@@ -479,8 +479,8 @@ describe('AR-271 Relic Mechanic: Domain Mastery Sigil AP modifier', () => {
 
     endPlayerTurn(turnState);
 
-    // max(1, 3 - 1) = 2
-    expect(turnState.apCurrent).toBe(2);
+    // base 3 (Act 1) + surge turn 2 (+1) = 4, then max(1, 4 - 1) = 3 (brain_fog penalty).
+    expect(turnState.apCurrent).toBe(3);
     expect(turnState.triggeredRelicId).toBe('domain_mastery_sigil');
   });
 
@@ -498,8 +498,8 @@ describe('AR-271 Relic Mechanic: Domain Mastery Sigil AP modifier', () => {
 
     endPlayerTurn(turnState);
 
-    // No modifier → base 3 AP
-    expect(turnState.apCurrent).toBe(3);
+    // No modifier → base 3 AP (Act 1) + SURGE_BONUS_AP +1 (turn 2 is surge) = 4.
+    expect(turnState.apCurrent).toBe(4);
   });
 });
 

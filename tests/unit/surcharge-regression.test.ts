@@ -64,27 +64,28 @@ describe('Surcharge Regression — getSurgeChargeSurcharge + isSurgeTurn', () =>
     });
   });
 
-  // ── getSurgeChargeSurcharge — surge turns return 0 ────────────────
+  // ── getSurgeChargeSurcharge — DEPRECATED: now always returns CHARGE_AP_SURCHARGE ────────────────
+  // Pass 3 balance (2026-04-09): Surge turns no longer waive surcharge; they grant +1 AP at turn-start instead.
 
-  describe('getSurgeChargeSurcharge — surge turns return 0 (surcharge waived)', () => {
-    it('turn 2 returns 0 (first Surge turn)', () => {
-      expect(getSurgeChargeSurcharge(2)).toBe(0);
+  describe('getSurgeChargeSurcharge — always returns CHARGE_AP_SURCHARGE after Pass 3 balance', () => {
+    it('turn 2 (surge) returns CHARGE_AP_SURCHARGE (no longer waived)', () => {
+      expect(getSurgeChargeSurcharge(2)).toBe(CHARGE_AP_SURCHARGE);
     });
 
-    it('turn 6 returns 0 (second Surge turn)', () => {
-      expect(getSurgeChargeSurcharge(6)).toBe(0);
+    it('turn 6 (surge) returns CHARGE_AP_SURCHARGE (no longer waived)', () => {
+      expect(getSurgeChargeSurcharge(6)).toBe(CHARGE_AP_SURCHARGE);
     });
 
-    it('turn 10 returns 0 (third Surge turn)', () => {
-      expect(getSurgeChargeSurcharge(10)).toBe(0);
+    it('turn 10 (surge) returns CHARGE_AP_SURCHARGE (no longer waived)', () => {
+      expect(getSurgeChargeSurcharge(10)).toBe(CHARGE_AP_SURCHARGE);
     });
 
-    it('turn 14 returns 0 (fourth Surge turn)', () => {
-      expect(getSurgeChargeSurcharge(14)).toBe(0);
+    it('turn 14 (surge) returns CHARGE_AP_SURCHARGE (no longer waived)', () => {
+      expect(getSurgeChargeSurcharge(14)).toBe(CHARGE_AP_SURCHARGE);
     });
 
-    it('turn 18 returns 0 (fifth Surge turn: 2 + 4*4)', () => {
-      expect(getSurgeChargeSurcharge(18)).toBe(0);
+    it('turn 18 (surge) returns CHARGE_AP_SURCHARGE (no longer waived)', () => {
+      expect(getSurgeChargeSurcharge(18)).toBe(CHARGE_AP_SURCHARGE);
     });
   });
 
@@ -124,11 +125,12 @@ describe('Surcharge Regression — getSurgeChargeSurcharge + isSurgeTurn', () =>
 
   // ── Consistency: getSurgeChargeSurcharge mirrors isSurgeTurn ─────
 
-  describe('getSurgeChargeSurcharge is consistent with isSurgeTurn for all turns 1-20', () => {
+  describe('getSurgeChargeSurcharge always returns CHARGE_AP_SURCHARGE for all turns 1-20 (Pass 3 balance)', () => {
+    // After Pass 3 balance, surge turns no longer get a surcharge waiver.
+    // getSurgeChargeSurcharge() always returns CHARGE_AP_SURCHARGE regardless of isSurgeTurn().
     for (let turn = 1; turn <= 20; turn++) {
-      it(`turn ${turn}: surcharge = ${isSurgeTurn(turn) ? 0 : CHARGE_AP_SURCHARGE}`, () => {
-        const expectedSurcharge = isSurgeTurn(turn) ? 0 : CHARGE_AP_SURCHARGE;
-        expect(getSurgeChargeSurcharge(turn)).toBe(expectedSurcharge);
+      it(`turn ${turn}: surcharge = CHARGE_AP_SURCHARGE (${CHARGE_AP_SURCHARGE}) — no waiver on surge turns`, () => {
+        expect(getSurgeChargeSurcharge(turn)).toBe(CHARGE_AP_SURCHARGE);
       });
     }
   });

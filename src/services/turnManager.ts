@@ -46,6 +46,8 @@ import {
   BLEED_BONUS_PER_STACK,
   BLEED_DECAY_PER_TURN,
   SURGE_DRAW_BONUS,
+  SURGE_BONUS_AP,
+  AP_PER_ACT,
   ENEMY_TURN_DAMAGE_CAP,
 } from '../data/balance';
 import { MECHANICS_BY_TYPE, getMechanicDefinition, type PlayMode } from '../data/mechanics';
@@ -136,24 +138,11 @@ function playStatusAudio(statusType: string): void {
 
 /**
  * Calculate enrage bonus damage based on floor segment, turn number, and enemy HP.
- * Deeper floors have tighter turn budgets. Enemies below 30% HP deal extra damage.
+ * @deprecated Enrage removed (Pass 3 balance, 2026-04-09) — fights should be balanced via
+ * enemy stats, not invisible timers. Function kept for compatibility; always returns 0.
  */
-export function getEnrageBonus(turnNumber: number, floor: number, enemyHpPercent: number): number {
-  const seg = ENRAGE_SEGMENTS.find(s => floor <= s.maxFloor) ?? ENRAGE_SEGMENTS[ENRAGE_SEGMENTS.length - 1];
-  let bonus = 0;
-  if (turnNumber >= seg.startTurn) {
-    const enrageTurns = turnNumber - seg.startTurn + 1;
-    if (enrageTurns <= ENRAGE_PHASE1_DURATION) {
-      bonus = enrageTurns * ENRAGE_PHASE1_BONUS;
-    } else {
-      bonus = ENRAGE_PHASE1_DURATION * ENRAGE_PHASE1_BONUS
-        + (enrageTurns - ENRAGE_PHASE1_DURATION) * ENRAGE_PHASE2_BONUS;
-    }
-  }
-  if (enemyHpPercent < ENRAGE_LOW_HP_THRESHOLD) {
-    bonus += ENRAGE_LOW_HP_BONUS;
-  }
-  return bonus;
+export function getEnrageBonus(_turnNumber: number, _floor: number, _enemyHpPercent: number): number {
+  return 0; // Enrage removed — fights balanced via enemy stats, not invisible timers
 }
 
 export type TurnPhase = 'draw' | 'player_action' | 'enemy_turn' | 'turn_end' | 'encounter_end';
@@ -801,6 +790,27 @@ export function startEncounter(
 
   const isFirstEncounter = deck.currentFloor === 1 && deck.currentEncounter <= 1;
   drawHand(deck, initialState.baseDrawCount, { firstDrawBias: isFirstEncounter });
+
+  // Guarantee at least 2 shield cards in opening hand (starting-hand bias).
+  // If fewer than 2 shields are drawn, swap non-shield cards with shield cards from the draw pile.
+  const handShields = initialState.deck.hand.filter(c => c.cardType === 'shield');
+  if (handShields.length < 2) {
+    const drawPileShields = initialState.deck.drawPile.filter(c => c.cardType === 'shield');
+    const needed = 2 - handShields.length;
+    for (let i = 0; i < Math.min(needed, drawPileShields.length); i++) {
+      // Find a non-shield card in hand to swap out
+      const swapIdx = initialState.deck.hand.findIndex(c => c.cardType !== 'shield');
+      if (swapIdx === -1) break;
+      const shieldCard = drawPileShields[i];
+      const shieldInDrawIdx = initialState.deck.drawPile.indexOf(shieldCard);
+      if (shieldInDrawIdx === -1) continue;
+      // Swap: hand card → draw pile, draw pile shield → hand
+      const removed = initialState.deck.hand[swapIdx];
+      initialState.deck.hand[swapIdx] = shieldCard;
+      initialState.deck.drawPile[shieldInDrawIdx] = removed;
+    }
+  }
+
   return initialState;
 }
 
@@ -926,12 +936,9 @@ export function playCardAction(
   if (playMode === 'charge') {
     const runStateForCharge = get(activeRunState);
     const isSurge = isSurgeTurn(turnState.turnNumber);
-    if (isSurge) {
-      // Surge turns: waive surcharge — charging is free. Consume Chain Momentum flag if set.
-      if (CHAIN_MOMENTUM_ENABLED && turnState.nextChargeFreeForChainType !== null) {
-        turnState.nextChargeFreeForChainType = null; // consume the flag even on Surge
-      }
-    } else if (turnState.warcryFreeChargeActive) {
+    // Surge turns no longer waive surcharge — they grant +1 AP at turn-start (SURGE_BONUS_AP).
+    // Normal waiver priority applies on all turns including surge.
+    if (turnState.warcryFreeChargeActive) {
       // AR-207: Warcry CC — waive surcharge, consume the flag
       turnState.warcryFreeChargeActive = false; // consume the flag
     } else if (CHAIN_MOMENTUM_ENABLED && turnState.nextChargeFreeForChainType !== null && cardInHand.chainType === turnState.nextChargeFreeForChainType) {
@@ -3451,7 +3458,10 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     turnState.bonusApNextTurn = (turnState.bonusApNextTurn ?? 0) + turnEndFx.bonusApNextTurn!;
   }
 
-  resetTurnState(playerState); // 25% decay applied
+  // Compute act for act-aware block decay before calling resetTurnState
+  const _decayFloor = turnState.deck?.currentFloor ?? 1;
+  const _decayAct = _decayFloor <= 6 ? 1 : _decayFloor <= 12 ? 2 : 3;
+  resetTurnState(playerState, _decayAct); // act-aware block decay applied
   // Entrench CC: persistent shield adds on TOP of decayed block
   if (turnState.persistentShield > 0) {
     playerState.shield += turnState.persistentShield;
@@ -3479,7 +3489,11 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.lastCardEffect = null;
   turnState.damageDealtThisTurn = 0;
   turnState.firstAttackUsed = false;
-  turnState.apCurrent = Math.min(turnState.apMax, START_AP_PER_TURN + turnState.bonusApNextTurn);
+  // Act-aware AP: Act 1 = 3 AP, Act 2+ = 4 AP (floors 1-6=Act1, 7-12=Act2, 13+=Act3).
+  const _currentFloor = turnState.deck?.currentFloor ?? 1;
+  const _currentAct = _currentFloor <= 6 ? 1 : _currentFloor <= 12 ? 2 : 3;
+  const _baseAp = AP_PER_ACT[_currentAct] ?? START_AP_PER_TURN;
+  turnState.apCurrent = Math.min(turnState.apMax, _baseAp + turnState.bonusApNextTurn);
   turnState.bonusApNextTurn = 0;
   // Reset per-turn relic tracking fields
   turnState.bloodletterArmed = false;
@@ -3567,6 +3581,11 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   let drawCount = turnState.pendingDrawCountOverride ?? turnState.baseDrawCount;
   turnState.pendingDrawCountOverride = null;
+  // Surge AP Bonus: +1 AP at the start of Surge turns (replaces old surcharge-waiver).
+  // Gives players an extra resource to spend freely; they still pay full surcharge to charge.
+  if (turnState.isSurge) {
+    turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + SURGE_BONUS_AP);
+  }
   // Surge Draw Bonus: draw one extra card at the start of Surge turns.
   if (turnState.isSurge) {
     drawCount += SURGE_DRAW_BONUS;

@@ -344,11 +344,7 @@ function simulateSingleEncounter(
                 && card.chainType === turnState.nextChargeFreeForChainType) {
               chargeSurcharge = 0;
             }
-            // Surge turns: CHARGE_AP_SURCHARGE applied below (surcharge waived on surge turns)
-            else if (turnState.turnNumber >= SURGE_FIRST_TURN
-                && (turnState.turnNumber - SURGE_FIRST_TURN) % SURGE_INTERVAL === 0) {
-              chargeSurcharge = 0;
-            }
+            // NOTE: Surge turns no longer waive surcharge — they grant +1 AP at turn-start instead.
             // Warcry free charge
             else if (turnState.warcryFreeChargeActive) {
               chargeSurcharge = 0;
@@ -450,7 +446,7 @@ function simulateSingleEncounter(
         const cardMinCost = card.apCost ?? 1;
 
         // Decide play mode based on available AP
-        // CHARGE_AP_SURCHARGE applied below (surcharge waived on surge/momentum turns)
+        // Surge turns grant +1 AP at turn-start; no waiver here. Surcharge always applies.
         const chargeSurcharge = CHARGE_AP_SURCHARGE;
         const chargeApCost = cardMinCost + chargeSurcharge;
         const canCharge = turnState.apCurrent >= chargeApCost;

@@ -104,15 +104,17 @@ describe('Knowledge Surge System (AR-59.4, updated AR-122 — interval 4, run-pe
     });
   });
 
-  describe('getSurgeChargeSurcharge', () => {
-    it('returns 0 during Surge turns (surcharge waived — free Charging burst window)', () => {
-      expect(getSurgeChargeSurcharge(2)).toBe(0);
-      expect(getSurgeChargeSurcharge(6)).toBe(0);
-      expect(getSurgeChargeSurcharge(10)).toBe(0);
-      expect(getSurgeChargeSurcharge(14)).toBe(0);
+  describe('getSurgeChargeSurcharge (deprecated — Pass 3 balance 2026-04-09)', () => {
+    // After Pass 3 balance, Surge turns no longer waive surcharge.
+    // getSurgeChargeSurcharge() always returns CHARGE_AP_SURCHARGE now.
+    it('returns CHARGE_AP_SURCHARGE on surge turns (no longer waived)', () => {
+      expect(getSurgeChargeSurcharge(2)).toBe(CHARGE_AP_SURCHARGE);
+      expect(getSurgeChargeSurcharge(6)).toBe(CHARGE_AP_SURCHARGE);
+      expect(getSurgeChargeSurcharge(10)).toBe(CHARGE_AP_SURCHARGE);
+      expect(getSurgeChargeSurcharge(14)).toBe(CHARGE_AP_SURCHARGE);
     });
 
-    it('returns CHARGE_AP_SURCHARGE (1) during normal turns', () => {
+    it('returns CHARGE_AP_SURCHARGE (1) during normal turns (unchanged)', () => {
       expect(getSurgeChargeSurcharge(1)).toBe(CHARGE_AP_SURCHARGE);
       expect(getSurgeChargeSurcharge(3)).toBe(CHARGE_AP_SURCHARGE);
       expect(getSurgeChargeSurcharge(4)).toBe(CHARGE_AP_SURCHARGE);
@@ -197,7 +199,7 @@ describe('Knowledge Surge System (AR-59.4, updated AR-122 — interval 4, run-pe
   });
 
   describe('Charge AP cost during Surge', () => {
-    it('Charge costs only base AP (no +1 surcharge) during Surge turn', () => {
+    it('Charge costs base AP + CHARGE_AP_SURCHARGE during Surge turn (Pass 3: no waiver, +1 AP at turn-start)', () => {
       const deck = makeDeckWithHand();
       const enemy = mockEnemyInstance();
       const ts = startEncounter(deck, enemy);
@@ -205,14 +207,15 @@ describe('Knowledge Surge System (AR-59.4, updated AR-122 — interval 4, run-pe
       // Advance to turn 2 (Surge turn)
       endPlayerTurn(ts);
       expect(ts.isSurge).toBe(true);
+      // Surge grants +1 AP at turn-start. apCurrent = base (3) + surge (+1) = 4.
 
       const card = ts.deck.hand.find(c => c.tier !== '3' && (c.apCost ?? 1) === 1);
       if (!card) return; // skip if no 1-AP non-T3 card
 
       const apBefore = ts.apCurrent;
-      playCardAction(ts, card.id, 'charge', true);
-      // Base cost = 1, no surcharge during Surge → spend 1 AP
-      expect(ts.apCurrent).toBe(apBefore - 1);
+      playCardAction(ts, card.id, true, false, 'charge');
+      // Charge: base=1 + surcharge=1 = 2 AP spent (surcharge no longer waived on surge turns).
+      expect(ts.apCurrent).toBe(apBefore - 1 - CHARGE_AP_SURCHARGE);
     });
 
     it('Charge costs base AP + CHARGE_AP_SURCHARGE (1) during normal turns', () => {
@@ -224,7 +227,7 @@ describe('Knowledge Surge System (AR-59.4, updated AR-122 — interval 4, run-pe
       if (!card) return;
 
       const apBefore = ts.apCurrent;
-      playCardAction(ts, card.id, 'charge', true);
+      playCardAction(ts, card.id, true, false, 'charge');
       // Base cost = 1, +1 surcharge on normal turn → spend 2 AP
       expect(ts.apCurrent).toBe(apBefore - 1 - CHARGE_AP_SURCHARGE);
     });
@@ -242,8 +245,8 @@ describe('Knowledge Surge System (AR-59.4, updated AR-122 — interval 4, run-pe
       if (!card) return;
 
       const apBefore = ts.apCurrent;
-      playCardAction(ts, card.id, 'quick', true);
-      // Quick Play: base cost only, never has surcharge
+      playCardAction(ts, card.id, true, false, 'quick');
+      // Quick Play: base cost only, never has surcharge — unchanged by surge
       expect(ts.apCurrent).toBe(apBefore - 1);
     });
   });
