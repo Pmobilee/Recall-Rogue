@@ -83,6 +83,13 @@ export interface EncounterDetail {
   damageTaken: number;
   playerHpAfter: number;
   cardPlays: CardPlayRecord[];
+  // Survivorship-free analytics fields
+  relicsHeld: string[];       // copy of relic IDs held at encounter start
+  playerHpBefore: number;     // player HP entering the encounter
+  apAvailable: number;        // total AP available across all turns this encounter
+  apSpent: number;            // total AP actually spent this encounter
+  chargeRate: number;         // fraction of plays that were charges (0-1)
+  chargeAccuracy: number;     // fraction of charges that were correct (0-1)
 }
 
 export interface FullRunOptions {
@@ -108,6 +115,17 @@ export interface FullRunOptions {
   buildPrefs?: BuildPreferences;
 }
 
+/**
+ * Records when a relic was acquired and the run context at that moment.
+ * Enables survivorship-free relic impact analysis.
+ */
+export interface RelicAcquisition {
+  relicId: string;
+  acquiredAtFloor: number;
+  acquiredAtAct: number;
+  acquiredAtEncounter: number;  // encounter index at time of acquisition (0-based)
+}
+
 export interface NodeVisitRecord {
   nodeType: MapNodeType;
   act: number;
@@ -116,6 +134,10 @@ export interface NodeVisitRecord {
   goldChange?: number;
   hpChange?: number;
   deckSizeChange?: number;
+  relicGained?: string;       // relic ID if acquired at this node
+  cardGained?: string;        // mechanic ID if card added at this node
+  cardRemoved?: string;       // mechanic ID if card removed at this node
+  restChoice?: string;        // rest site choice made ('heal' | 'meditate' | 'study')
 }
 
 export interface FullRunResult {
@@ -129,6 +151,8 @@ export interface FullRunResult {
   goldSpent: number;
   goldFinal: number;
   relicsAcquired: string[];
+  /** Relic acquisition timeline for survivorship-free analysis. */
+  relicTimeline: RelicAcquisition[];
   roomsVisited: Record<MapNodeType, number>;
   nodeVisits: NodeVisitRecord[];
   // Combat aggregates
@@ -187,6 +211,9 @@ interface SimRunState {
   goldSpent: number;
   cardsAdded: number;
   cardsRemoved: number;
+  // Survivorship-free analytics
+  relicTimeline: RelicAcquisition[];
+  encounterCount: number;  // number of encounters fought so far (for relicTimeline)
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -359,6 +386,9 @@ interface EncounterResult {
   canaryState: CanaryState;
   /** Card-level detail for analytics */
   cardPlays: CardPlayRecord[];
+  // Survivorship-free analytics
+  apAvailable: number;             // total AP available across all turns (turnsUsed * apMax)
+  apSpent: number;                 // total AP actually spent (sum of cardPlay.apCost)
 }
 
 function simulateSingleEncounter(
@@ -388,6 +418,7 @@ function simulateSingleEncounter(
   let damageFromCharges = 0;
   let damageFromQuickPlays = 0;
   let masteryUpgradesEarned = 0;
+  let apAvailable = 0;   // total AP available across all turns (sum of apMax per turn)
   const cardPlays: CardPlayRecord[] = [];
 
   const { correctRate, chargeRate, maxTurns, brain } = opts;
@@ -396,6 +427,8 @@ function simulateSingleEncounter(
 
   while (turnsUsed < maxTurns) {
     // ── Player turn: play all cards in hand ──
+    // Track AP available this turn — captured at start of player phase when apCurrent is freshly set
+    apAvailable += turnState.apCurrent;
     let safetyBreak = 0;
 
     if (brain) {
@@ -479,6 +512,10 @@ function simulateSingleEncounter(
             answeredCorrectly,
             damageDealt: res.effect.damageDealt > 0 ? res.effect.damageDealt : 0,
             wasMomentumFree: play.mode === 'charge' && (turnState.nextChargeFreeForChainType !== null),
+            blockGained: res.effect.shieldApplied ?? 0,
+            apCost: play.mode === 'charge' ? (apCost) + chargeSurcharge : apCost,
+            effectValue: card.baseEffectValue ?? 0,
+            chainLength: turnState.chainLength,
           });
 
           if (answeredCorrectly) {
@@ -506,7 +543,7 @@ function simulateSingleEncounter(
           const midCheckResult = checkEncounterEnd(turnState);
           if (midCheckResult !== null) {
             const enemyHpPctMid = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
-            return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState, cardPlays };
+            return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState, cardPlays, apAvailable, apSpent: cardPlays.reduce((s, p) => s + p.apCost, 0) };
           }
 
           break; // Only execute first valid play, then re-plan
@@ -586,6 +623,10 @@ function simulateSingleEncounter(
           answeredCorrectly,
           damageDealt: res.effect.damageDealt > 0 ? res.effect.damageDealt : 0,
           wasMomentumFree: false,
+          blockGained: res.effect.shieldApplied ?? 0,
+          apCost: isCharge ? (card.apCost ?? 1) + chargeSurcharge : (card.apCost ?? 1),
+          effectValue: card.baseEffectValue ?? 0,
+          chainLength: turnState.chainLength,
         });
 
         if (answeredCorrectly) {
@@ -613,7 +654,7 @@ function simulateSingleEncounter(
         const midCheckResult = checkEncounterEnd(turnState);
         if (midCheckResult !== null) {
           const enemyHpPctMid = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
-          return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState, cardPlays };
+          return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState, cardPlays, apAvailable, apSpent: cardPlays.reduce((s, p) => s + p.apCost, 0) };
         }
       }
     }
@@ -638,12 +679,12 @@ function simulateSingleEncounter(
     const afterEnemyResult = checkEncounterEnd(turnState);
     if (afterEnemyResult !== null) {
       const enemyHpPctEnd = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
-      return { result: afterEnemyResult, turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctEnd, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState, cardPlays };
+      return { result: afterEnemyResult, turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctEnd, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState, cardPlays, apAvailable, apSpent: cardPlays.reduce((s, p) => s + p.apCost, 0) };
     }
   }
 
   const enemyHpPctTimeout = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
-  return { result: 'timeout', turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctTimeout, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState, cardPlays };
+  return { result: 'timeout', turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctTimeout, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState, cardPlays, apAvailable, apSpent: cardPlays.reduce((s, p) => s + p.apCost, 0) };
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -694,10 +735,23 @@ function pickRelicFromPool(pool: string[]): string | null {
   return id;
 }
 
-function awardRelic(runState: SimRunState, relicPool: string[]): string | null {
+function awardRelic(
+  runState: SimRunState,
+  relicPool: string[],
+  context?: { floor: number; act: number },
+): string | null {
   const id = pickRelicFromPool(relicPool);
   if (id) {
     runState.relicIds.add(id);
+    // Record acquisition in timeline for survivorship-free analysis
+    if (context) {
+      runState.relicTimeline.push({
+        relicId: id,
+        acquiredAtFloor: context.floor,
+        acquiredAtAct: context.act,
+        acquiredAtEncounter: runState.encounterCount,
+      });
+    }
     // Apply passive HP bonus relics immediately
     const def = RELIC_BY_ID[id];
     if (def) {
@@ -743,7 +797,7 @@ function handleCombatNode(
     try {
       enemyTemplate = pickEnemyForNode(act, 'combat');
     } catch {
-      return { result: 'victory', turnsUsed: 0, damageDealt: 0, damageTaken: 0, cardsPlayed: 0, correctAnswers: 0, wrongAnswers: 0, maxCombo: 0, enemyHpPct: 0, chargedPlays: 0, quickPlays: 0, correctWhenCharged: 0, damageFromCharges: 0, damageFromQuickPlays: 0, masteryUpgradesEarned: 0, finalPlayerHp: runState.hp, canaryState, cardPlays: [], goldAwarded: 0, enemyId: 'unknown', enemyName: 'Unknown', enemyCategory: 'unknown' };
+      return { result: 'victory', turnsUsed: 0, damageDealt: 0, damageTaken: 0, cardsPlayed: 0, correctAnswers: 0, wrongAnswers: 0, maxCombo: 0, enemyHpPct: 0, chargedPlays: 0, quickPlays: 0, correctWhenCharged: 0, damageFromCharges: 0, damageFromQuickPlays: 0, masteryUpgradesEarned: 0, finalPlayerHp: runState.hp, canaryState, cardPlays: [], apAvailable: 0, apSpent: 0, goldAwarded: 0, enemyId: 'unknown', enemyName: 'Unknown', enemyCategory: 'unknown' };
     }
   }
 
@@ -875,6 +929,12 @@ function handleCombatNode(
         if (chosenIdx >= 0) {
           relicPool.splice(chosenIdx, 1);
           runState.relicIds.add(chosenId);
+          runState.relicTimeline.push({
+            relicId: chosenId,
+            acquiredAtFloor: floor,
+            acquiredAtAct: act,
+            acquiredAtEncounter: runState.encounterCount,
+          });
           const def = RELIC_BY_ID[chosenId];
           if (def) {
             for (const eff of def.effects) {
@@ -885,10 +945,10 @@ function handleCombatNode(
             }
           }
         } else {
-          awardRelic(runState, relicPool);
+          awardRelic(runState, relicPool, { floor, act });
         }
       } else {
-        awardRelic(runState, relicPool);
+        awardRelic(runState, relicPool, { floor, act });
       }
     }
 
@@ -912,11 +972,12 @@ function handleCombatNode(
 
 function handleShopNode(
   runState: SimRunState,
-  _floor: number,
+  floor: number,
   relicPool: string[],
   verbose: boolean,
   runChainTypes: number[],
   brain?: BotBrain,
+  act: number = 1,
 ): void {
   const cardPrice = SHOP_CARD_PRICE_V2['common'] ?? 50;
   const relicPrice = SHOP_RELIC_PRICE['common'] ?? 100;
@@ -961,7 +1022,7 @@ function handleShopNode(
           if (verbose) console.log(`    [SHOP/bot] Bought card. Deck: ${runState.deck.length}`);
         }
       } else if (action.type === 'buy_relic' && runState.gold >= relicPrice && relicPool.length > 0) {
-        const id = awardRelic(runState, relicPool);
+        const id = awardRelic(runState, relicPool, { floor, act });
         if (id) {
           runState.gold -= relicPrice;
           runState.goldSpent += relicPrice;
@@ -1011,7 +1072,7 @@ function handleShopNode(
 
   // 3. Buy a relic if affordable and pool is not empty (common relic = 100g)
   if (runState.gold >= relicPrice && relicPool.length > 0) {
-    const id = awardRelic(runState, relicPool);
+    const id = awardRelic(runState, relicPool, { floor, act });
     if (id) {
       runState.gold -= relicPrice;
       runState.goldSpent += relicPrice;
@@ -1035,7 +1096,7 @@ function handleRestNode(
   ascMods: ReturnType<typeof getAscensionModifiers>,
   verbose: boolean,
   brain?: BotBrain,
-): void {
+): string {
   if (brain) {
     // ── BotBrain-driven rest ──────────────────────────────────────────────
     const decision = brain.planRest({ hp: runState.hp, maxHp: runState.maxHp, deckSize: runState.deck.length });
@@ -1045,6 +1106,7 @@ function handleRestNode(
       const healAmt = Math.floor(runState.maxHp * healPct);
       runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
       if (verbose) console.log(`    [REST/bot] Healed ${healAmt}. HP: ${runState.hp}/${runState.maxHp}`);
+      return 'heal';
     } else if (decision === 'meditate') {
       // Remove weakest card (basic strike first)
       if (runState.deck.length > 8) {
@@ -1053,20 +1115,22 @@ function handleRestNode(
         runState.deck.splice(removeIdx, 1);
         runState.cardsRemoved++;
         if (verbose) console.log(`    [REST/bot] Meditated (removed card). Deck: ${runState.deck.length}`);
+        return 'meditate';
       } else {
         // Deck too small to remove, heal instead
         const healPct = REST_SITE_HEAL_PCT * ascMods.restHealMultiplier;
         const healAmt = Math.floor(runState.maxHp * healPct);
         runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
         if (verbose) console.log(`    [REST/bot] Deck too small to meditate, healed ${healAmt}. HP: ${runState.hp}/${runState.maxHp}`);
+        return 'heal';
       }
     } else {
       // Study: heal a bit as proxy for mastery gain
       const healAmt = Math.floor(runState.maxHp * 0.05);
       runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
       if (verbose) console.log(`    [REST/bot] Studied. HP: ${runState.hp}/${runState.maxHp}`);
+      return 'study';
     }
-    return;
   }
 
   // ── Legacy dumb-bot rest (unchanged for backward compatibility) ──────────
@@ -1078,6 +1142,7 @@ function handleRestNode(
     const healAmt = Math.floor(runState.maxHp * healPct);
     runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
     if (verbose) console.log(`    [REST] Healed ${healAmt}. HP: ${runState.hp}/${runState.maxHp}`);
+    return 'heal';
   } else if (runState.deck.length > 15) {
     // Meditate: remove a weak card (basic strike)
     const strikeIdx = runState.deck.findIndex(c => c.mechanicId === 'strike');
@@ -1086,6 +1151,7 @@ function handleRestNode(
       runState.deck.splice(removeIdx, 1);
       runState.cardsRemoved++;
       if (verbose) console.log(`    [REST] Meditated (removed card). Deck: ${runState.deck.length}`);
+      return 'meditate';
     }
   } else {
     // Study: "upgrade" a card by boosting its base effect value slightly
@@ -1094,16 +1160,20 @@ function handleRestNode(
       const healAmt = Math.floor(runState.maxHp * 0.05);
       runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
       if (verbose) console.log(`    [REST] Studied. HP: ${runState.hp}/${runState.maxHp}`);
+      return 'study';
     }
   }
+  return 'heal';
 }
 
 function handleTreasureNode(
   runState: SimRunState,
   relicPool: string[],
   verbose: boolean,
+  floor: number = 0,
+  act: number = 1,
 ): void {
-  const id = awardRelic(runState, relicPool);
+  const id = awardRelic(runState, relicPool, { floor, act });
   if (verbose) console.log(`    [TREASURE] Got relic: ${id ?? 'none'}`);
 }
 
@@ -1329,6 +1399,8 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     goldSpent: 0,
     cardsAdded: 0,
     cardsRemoved: 0,
+    relicTimeline: [],
+    encounterCount: 0,
   };
 
   // Apply starter deck size override from ascension
@@ -1444,12 +1516,20 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
       const hpBefore = runState.hp;
       const goldBefore = runState.gold;
       const deckSizeBefore = runState.deck.length;
+      // Capture pre-node state for NodeVisitRecord diff (relicGained, cardGained, etc.)
+      const relicsBefore = new Set(runState.relicIds);
+      const deckMechanicsBefore = runState.deck.map(c => c.mechanicId ?? c.cardType);
 
       switch (nodeType) {
         case 'combat':
         case 'elite':
         case 'boss': {
           totalEncounters++;
+          // Capture pre-encounter context for survivorship-free analytics
+          const relicsHeldAtStart = [...runState.relicIds];
+          const playerHpBeforeEncounter = runState.hp;
+          runState.encounterCount++;
+
           const combatResult = handleCombatNode(
             runState, nodeType, floor, act as 1 | 2 | 3,
             options, ascMods, relicPool, verbose, runChainTypes, brain, canaryState,
@@ -1474,7 +1554,12 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
           totalMasteryUpgrades += combatResult.masteryUpgradesEarned;
           minHpSeen = Math.min(minHpSeen, runState.hp);
 
-          // Record encounter detail for analytics
+          // Compute per-encounter charge analytics from cardPlays
+          const encTotalPlays = combatResult.cardPlays.length;
+          const encChargedPlays = combatResult.cardPlays.filter(p => p.wasCharged).length;
+          const encCorrectCharged = combatResult.cardPlays.filter(p => p.wasCharged && p.answeredCorrectly).length;
+
+          // Record encounter detail for analytics (survivorship-free fields included)
           encounters.push({
             enemyId: combatResult.enemyId,
             enemyName: combatResult.enemyName,
@@ -1486,6 +1571,12 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
             damageTaken: combatResult.damageTaken,
             playerHpAfter: runState.hp,
             cardPlays: combatResult.cardPlays,
+            relicsHeld: relicsHeldAtStart,
+            playerHpBefore: playerHpBeforeEncounter,
+            apAvailable: combatResult.apAvailable,
+            apSpent: combatResult.apSpent,
+            chargeRate: encTotalPlays > 0 ? encChargedPlays / encTotalPlays : 0,
+            chargeAccuracy: encChargedPlays > 0 ? encCorrectCharged / encChargedPlays : 0,
           });
 
           if (combatResult.result === 'victory' || combatResult.result === 'timeout') {
@@ -1501,17 +1592,19 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
         }
 
         case 'shop':
-          handleShopNode(runState, floor, relicPool, verbose, runChainTypes, brain);
+          handleShopNode(runState, floor, relicPool, verbose, runChainTypes, brain, act);
           visitRecord.result = 'skipped'; // shops don't have win/loss
           break;
 
-        case 'rest':
-          handleRestNode(runState, ascMods, verbose, brain);
+        case 'rest': {
+          const restChoice = handleRestNode(runState, ascMods, verbose, brain);
           visitRecord.result = 'skipped';
+          visitRecord.restChoice = restChoice;
           break;
+        }
 
         case 'treasure':
-          handleTreasureNode(runState, relicPool, verbose);
+          handleTreasureNode(runState, relicPool, verbose, floor, act);
           visitRecord.result = 'skipped';
           break;
 
@@ -1558,6 +1651,39 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
       visitRecord.hpChange = runState.hp - hpBefore;
       visitRecord.goldChange = runState.gold - goldBefore;
       visitRecord.deckSizeChange = runState.deck.length - deckSizeBefore;
+
+      // Populate relic/card diff fields for survivorship-free analysis
+      for (const relicId of runState.relicIds) {
+        if (!relicsBefore.has(relicId)) {
+          visitRecord.relicGained = relicId;
+          break; // only track the first relic gained per node
+        }
+      }
+      const deckMechanicsAfter = runState.deck.map(c => c.mechanicId ?? c.cardType);
+      if (deckMechanicsAfter.length > deckMechanicsBefore.length) {
+        // A card was added — find it by comparing arrays
+        const beforeCounts: Record<string, number> = {};
+        for (const m of deckMechanicsBefore) beforeCounts[m] = (beforeCounts[m] ?? 0) + 1;
+        for (const m of deckMechanicsAfter) {
+          if (!beforeCounts[m] || beforeCounts[m] <= 0) {
+            visitRecord.cardGained = m;
+            break;
+          }
+          beforeCounts[m]--;
+        }
+      } else if (deckMechanicsAfter.length < deckMechanicsBefore.length) {
+        // A card was removed — find it
+        const afterCounts: Record<string, number> = {};
+        for (const m of deckMechanicsAfter) afterCounts[m] = (afterCounts[m] ?? 0) + 1;
+        for (const m of deckMechanicsBefore) {
+          if (!afterCounts[m] || afterCounts[m] <= 0) {
+            visitRecord.cardRemoved = m;
+            break;
+          }
+          afterCounts[m]--;
+        }
+      }
+
       nodeVisits.push(visitRecord);
 
       // Record deck evolution snapshot
@@ -1672,6 +1798,7 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     goldSpent: runState.goldSpent,
     goldFinal: runState.gold,
     relicsAcquired: [...runState.relicIds],
+    relicTimeline: runState.relicTimeline,
     roomsVisited,
     nodeVisits,
     totalEncounters,

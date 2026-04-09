@@ -66,7 +66,7 @@ export const STARTER_RELICS: RelicDefinition[] = [
     description: 'Apply 1 Poison to all enemies at the start of each turn. Heal 3 HP after combat.',
     flavorText: 'Left behind by a traveling healer who frequented the upper floors. The herbs inside regenerate overnight, drawing nutrients from ambient dungeon magic. Smells like lavender and old stone.',
     visualDescription: 'A small brown leather pouch tied with green twine, overflowing with dried herbs and small glowing leaves. A faint green healing aura. 32x32 pixel art.',
-    rarity: 'common',
+    rarity: 'uncommon',
     category: 'offensive',
     trigger: 'on_turn_start',
     effects: [{ effectId: 'turn_start_poison', description: 'Apply 1 Poison to all enemies each turn', value: 1 }, { effectId: 'encounter_end_heal', description: 'Heal 3 HP after combat', value: 3 }],
@@ -98,7 +98,7 @@ export const STARTER_RELICS: RelicDefinition[] = [
     description: 'Take 2 less damage from all sources (min 1).',
     flavorText: 'A shard of living metal from the Crystal Warden\'s molt. It bonds with skin on contact, hardening into an invisible second layer that turns aside the worst of blows.',
     visualDescription: 'A hexagonal metallic scale with a brushed steel texture and faint blue veins running through it. Subtle metallic sheen. 32x32 pixel art.',
-    rarity: 'common',
+    rarity: 'uncommon',
     category: 'defensive',
     trigger: 'on_damage_taken',
     effects: [{ effectId: 'flat_damage_reduction', description: '-2 damage taken (min 1)', value: 2 }],
@@ -233,7 +233,7 @@ export const STARTER_RELICS: RelicDefinition[] = [
   {
     id: 'volatile_core',
     name: 'Volatile Core',
-    description: 'All attacks +50% damage. Wrong Charged answers deal 3 damage to you AND the enemy.',
+    description: 'All attacks +50% damage. Wrong Charged answers deal 3 damage to you.',
     flavorText: 'Harvested from the core of a Volatile Elemental. Pure destructive energy barely contained in crystal form. It amplifies every strike — but instability has a price.',
     visualDescription: 'A cracked red-orange crystal core with streams of dangerous energy leaking from the fractures. Heat shimmer distorts the air around it. Cursed glow. 32x32 pixel art.',
     rarity: 'uncommon',
@@ -242,13 +242,12 @@ export const STARTER_RELICS: RelicDefinition[] = [
     effects: [
       { effectId: 'attack_multiplier_bonus', description: '+50% attack damage', value: 50 },
       { effectId: 'wrong_charge_self_damage', description: 'Wrong Charge deals 3 self-damage', value: 3 },
-      { effectId: 'wrong_charge_enemy_damage', description: 'Wrong Charge deals 3 enemy damage', value: 3 },
     ],
     icon: '💥',
     unlockCost: 0,
     isStarter: true,
     startsUnlocked: true,
-    curseDescription: 'Wrong Charged answers deal 3 damage to both you and the enemy.',
+    curseDescription: 'Wrong Charged answers deal 3 damage to you.',
   },
 
   {
@@ -340,7 +339,7 @@ export const STARTER_RELICS: RelicDefinition[] = [
     description: '+1 AP per turn. Lose 2 HP per turn.',
     flavorText: 'A demonic contract from the depths below Floor 18. More action at your command — but the parchment drinks a little of your life force each turn. The ink is always wet.',
     visualDescription: 'A dark parchment scroll dripping with blood-red ink, a single red AP crystal hovering above it. Dark red sacrificial energy aura. 32x32 pixel art.',
-    rarity: 'uncommon',
+    rarity: 'rare',
     category: 'cursed',
     trigger: 'permanent',
     effects: [

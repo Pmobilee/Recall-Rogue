@@ -514,11 +514,11 @@ export const CANARY_RUN_MILD_CHALLENGE_THRESHOLD = 0.70;  // pass 5: same as mil
 /** Run accuracy above this = strong challenge. */
 export const CANARY_RUN_STRONG_CHALLENGE_THRESHOLD = 0.85;
 
-/** Run-level anchor multipliers — linearly interpolated between thresholds (Pass 5). */
-export const CANARY_RUN_STRONG_ASSIST_DMG_MULT = 0.70;   // ≤60% accuracy: -30% enemy damage
-export const CANARY_RUN_STRONG_ASSIST_HP_MULT = 0.75;     // ≤60% accuracy: -25% enemy HP
-export const CANARY_RUN_MILD_ASSIST_DMG_MULT = 0.90;      // ~72% accuracy: -10% enemy damage
-export const CANARY_RUN_MILD_ASSIST_HP_MULT = 0.95;       // ~72% accuracy: -5% enemy HP
+/** Run-level anchor multipliers — linearly interpolated between thresholds (Pass 6: reduced assist strength, first_timer was 73% at 45% accuracy). */
+export const CANARY_RUN_STRONG_ASSIST_DMG_MULT = 0.88;   // ≤60% accuracy: -12% enemy damage (pass 6b: 0.82 too generous, first_timer 39.5%)
+export const CANARY_RUN_STRONG_ASSIST_HP_MULT = 0.90;     // ≤60% accuracy: -10% enemy HP
+export const CANARY_RUN_MILD_ASSIST_DMG_MULT = 0.86;      // ~70% accuracy: -14% enemy damage (pass 6c: competent at 25.7%, needs 30%+)
+export const CANARY_RUN_MILD_ASSIST_HP_MULT = 0.90;       // ~70% accuracy: -10% enemy HP
 export const CANARY_RUN_MILD_CHALLENGE_DMG_MULT = 1.0;    // 70% accuracy: neutral (crossing point)
 export const CANARY_RUN_MILD_CHALLENGE_HP_MULT = 1.0;     // 70% accuracy: neutral
 export const CANARY_RUN_STRONG_CHALLENGE_DMG_MULT = 1.20; // ≥85% accuracy: +20% enemy damage (gentle — encounter streaks handle the rest)

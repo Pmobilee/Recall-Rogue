@@ -1118,19 +1118,19 @@ describe('momentum_wheel (conditional)', () => {
 });
 
 describe('hollow_armor (tradeoff)', () => {
-  it('disables block gain after turn 0', () => {
+  it('halves block gain after turn 0', () => {
     const result = resolveShieldModifiers(new Set(['hollow_armor']), { shieldCardPlayCountThisEncounter: 0, encounterTurnNumber: 1 });
-    expect(result.blockGainDisabled).toBe(true);
+    expect(result.blockGainHalved).toBe(true);
   });
 
-  it('allows block on turn 0 (starting block applies separately)', () => {
+  it('does not halve block on turn 0 (starting block applies separately)', () => {
     const result = resolveShieldModifiers(new Set(['hollow_armor']), { shieldCardPlayCountThisEncounter: 0, encounterTurnNumber: 0 });
-    expect(result.blockGainDisabled).toBeFalsy();
+    expect(result.blockGainHalved).toBeFalsy();
   });
 
-  it('grants starting block at encounter start', () => {
+  it('grants starting block at encounter start (15 block rework)', () => {
     const result = resolveEncounterStartEffects(new Set(['hollow_armor']));
-    expect(result.startingBlock).toBe(20);
+    expect(result.startingBlock).toBe(15);
   });
 });
 
@@ -1227,9 +1227,9 @@ describe('mnemonic_scar (tradeoff)', () => {
     expect(result.resolveAtCcPower).toBe(true);
   });
 
-  it('deals 5 self-damage on new fact wrong', () => {
+  it('deals 2 self-damage on new fact wrong', () => {
     const result = resolveChargeWrongEffects(new Set(['mnemonic_scar']), { factId: 'test', factPreviouslyCorrect: false });
-    expect(result.selfDamage).toBeGreaterThanOrEqual(5);
+    expect(result.selfDamage).toBeGreaterThanOrEqual(2);
   });
 
   it('no effect without relic', () => {

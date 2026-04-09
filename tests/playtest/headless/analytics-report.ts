@@ -1,13 +1,16 @@
 /**
  * Analytics Report Generator
  * ===========================
- * Takes aggregated run results from --analytics mode and generates 6 report files:
+ * Takes aggregated run results from --analytics mode and generates 9 report files:
  *   1. balance-report.md        — Win rates per profile × ascension
  *   2. card-analysis.md/.json   — Per-mechanic win correlation
  *   3. relic-analysis.md/.json  — Per-relic and relic-combo win correlation
  *   4. enemy-analysis.md/.json  — Enemy difficulty and floor progression
  *   5. archetype-analysis.md    — Build archetype comparison
  *   6. correlation-report.md    — Condition→win-rate correlation ranking
+ *   7. relic-performance.md     — Survivorship-free relic scoring (post-acquisition metrics)
+ *   8. card-performance.md      — Per-card efficiency metrics (dmg/AP, block/play, floor delta)
+ *   9. archetype-performance.md — Multi-dimensional archetype scoring (hp efficiency, diversity)
  *
  * Self-contained: accepts a plain data object, no imports from game code.
  * The AnalyticsRun interface mirrors the extended FullRunResult fields added
@@ -27,6 +30,11 @@ export interface AnalyticsCardPlay {
   wasCharged: boolean;
   answeredCorrectly: boolean;
   damageDealt: number;
+  // Extended fields (optional — populated by data model expansion agent)
+  blockGained?: number;
+  apCost?: number;
+  effectValue?: number;
+  chainLength?: number;
 }
 
 export interface AnalyticsEncounter {
@@ -40,6 +48,21 @@ export interface AnalyticsEncounter {
   damageTaken: number;
   playerHpAfter: number;
   cardPlays: AnalyticsCardPlay[];
+  // Extended fields (optional — populated by data model expansion agent)
+  relicsHeld?: string[];
+  playerHpBefore?: number;
+  apAvailable?: number;
+  apSpent?: number;
+  chargeRate?: number;
+  chargeAccuracy?: number;
+}
+
+/** Relic acquisition event attached to a run's timeline. */
+export interface RelicAcquisition {
+  relicId: string;
+  acquiredAtFloor: number;
+  acquiredAtAct?: number;
+  acquiredAtEncounter?: number;
 }
 
 export interface AnalyticsRun {
@@ -65,6 +88,8 @@ export interface AnalyticsRun {
   finalDeckTypeDistribution: Record<string, number>;
   masteryAtEnd: Record<string, number>;
   deathFloor?: number;
+  // Extended field (optional — populated by data model expansion agent)
+  relicTimeline?: RelicAcquisition[];
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -72,8 +97,10 @@ export interface AnalyticsRun {
 // ──────────────────────────────────────────────────────────────────────────────
 
 /**
- * Generate all 6 analytics report files into the given output directory.
+ * Generate all 9 analytics report files into the given output directory.
  * Creates the directory if it does not exist.
+ * Reports 1-6 are the original survivorship-biased reports (preserved unchanged).
+ * Reports 7-9 are survivorship-free multi-dimensional reports.
  */
 export function generateAnalyticsReports(
   results: AnalyticsRun[],
@@ -89,6 +116,9 @@ export function generateAnalyticsReports(
   generateEnemyAnalysis(results, outputDir);
   generateArchetypeAnalysis(results, outputDir);
   generateCorrelationReport(results, outputDir);
+  generateRelicPerformanceReport(results, outputDir);
+  generateCardPerformanceReport(results, outputDir);
+  generateArchetypePerformanceReport(results, outputDir);
 
   console.log('  Analytics reports complete.');
 }
@@ -117,6 +147,32 @@ function padL(s: string, n: number): string {
 function warn(rate: number): string {
   if (rate < 0.10 || rate > 0.90) return ' ⚠️';
   return '';
+}
+
+/** Median of a numeric array. Returns 0 for empty arrays. */
+function median(values: number[]): number {
+  if (values.length === 0) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 === 0
+    ? (sorted[mid - 1] + sorted[mid]) / 2
+    : sorted[mid];
+}
+
+/**
+ * Shannon entropy of a frequency distribution (in bits).
+ * Used for deck diversity scoring.
+ */
+function shannonEntropy(distribution: Record<string, number>): number {
+  const total = Object.values(distribution).reduce((s, v) => s + v, 0);
+  if (total === 0) return 0;
+  let entropy = 0;
+  for (const count of Object.values(distribution)) {
+    if (count <= 0) continue;
+    const p = count / total;
+    entropy -= p * Math.log2(p);
+  }
+  return entropy;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -226,7 +282,7 @@ function generateBalanceReport(results: AnalyticsRun[], outputDir: string): void
   }
 
   fs.writeFileSync(path.join(outputDir, 'balance-report.md'), lines.join('\n') + '\n');
-  console.log('    [1/6] balance-report.md');
+  console.log('    [1/9] balance-report.md');
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -374,7 +430,7 @@ function generateCardAnalysis(results: AnalyticsRun[], outputDir: string): void 
     path.join(outputDir, 'card-analysis.json'),
     JSON.stringify({ overallWinRate, mechanicStats: stats, deckTypeDistribution: { winners: winTypeDist, losers: lossTypeDist } }, null, 2),
   );
-  console.log('    [2/6] card-analysis.md + card-analysis.json');
+  console.log('    [2/9] card-analysis.md + card-analysis.json');
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -480,7 +536,7 @@ function generateRelicAnalysis(results: AnalyticsRun[], outputDir: string): void
     path.join(outputDir, 'relic-analysis.json'),
     JSON.stringify({ overallWinRate, relicStats, topCombos }, null, 2),
   );
-  console.log('    [3/6] relic-analysis.md + relic-analysis.json');
+  console.log('    [3/9] relic-analysis.md + relic-analysis.json');
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -626,7 +682,7 @@ function generateEnemyAnalysis(results: AnalyticsRun[], outputDir: string): void
     path.join(outputDir, 'enemy-analysis.json'),
     JSON.stringify({ enemyStats: byDmgTaken, floorStats }, null, 2),
   );
-  console.log('    [4/6] enemy-analysis.md + enemy-analysis.json');
+  console.log('    [4/9] enemy-analysis.md + enemy-analysis.json');
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -653,7 +709,7 @@ function generateArchetypeAnalysis(results: AnalyticsRun[], outputDir: string): 
       '*No build/archetype profiles found in results. Run with --analytics to include build profiles.*',
     ];
     fs.writeFileSync(path.join(outputDir, 'archetype-analysis.md'), lines.join('\n') + '\n');
-    console.log('    [5/6] archetype-analysis.md (no archetype data)');
+    console.log('    [5/9] archetype-analysis.md (no archetype data)');
     return;
   }
 
@@ -742,7 +798,7 @@ function generateArchetypeAnalysis(results: AnalyticsRun[], outputDir: string): 
   }
 
   fs.writeFileSync(path.join(outputDir, 'archetype-analysis.md'), lines.join('\n') + '\n');
-  console.log('    [5/6] archetype-analysis.md');
+  console.log('    [5/9] archetype-analysis.md');
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -753,7 +809,7 @@ function generateCorrelationReport(results: AnalyticsRun[], outputDir: string): 
   if (results.length === 0) {
     const lines = ['# Correlation Report', '', '*No data.*'];
     fs.writeFileSync(path.join(outputDir, 'correlation-report.md'), lines.join('\n') + '\n');
-    console.log('    [6/6] correlation-report.md (no data)');
+    console.log('    [6/9] correlation-report.md (no data)');
     return;
   }
 
@@ -907,5 +963,582 @@ function generateCorrelationReport(results: AnalyticsRun[], outputDir: string): 
   }
 
   fs.writeFileSync(path.join(outputDir, 'correlation-report.md'), lines.join('\n') + '\n');
-  console.log('    [6/6] correlation-report.md');
+  console.log('    [6/9] correlation-report.md');
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Report 7: relic-performance.md  (survivorship-free relic scoring)
+// ──────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Survivorship-free relic performance report.
+ *
+ * Unlike the binary win/lose relic-analysis, this report measures what happens
+ * AFTER a relic is acquired — so both early-run and late-run relics are scored
+ * on equal footing. Relies on the optional `relicTimeline` and `relicsHeld`
+ * fields; falls back gracefully when they are absent.
+ *
+ * Key metrics:
+ *   avgFloorsAfterAcq    — floors survived after picking up the relic (outcome-agnostic)
+ *   avgEncWonAfterAcq    — encounters won after acquisition
+ *   avgDmgPerEncWith     — mean damage dealt in encounters where this relic was held
+ *   avgHpLostPerEncWith  — mean HP lost in encounters where this relic was held
+ *   avgDmgPerAP          — damage / AP spent in those encounters (requires apSpent)
+ *   acqFloorMedian       — typical acquisition floor
+ *   shortTermSurvival    — fraction of runs surviving ≥3 floors after acquisition
+ *   observationalWinRate — traditional win rate kept for reference
+ *   powerScore           — composite score combining the above metrics
+ */
+export function generateRelicPerformanceReport(results: AnalyticsRun[], outputDir: string): void {
+  if (results.length === 0) {
+    const lines = ['# Relic Performance (Survivorship-Free)', '', '*No data.*'];
+    fs.writeFileSync(path.join(outputDir, 'relic-performance.md'), lines.join('\n') + '\n');
+    console.log('    [7/9] relic-performance.md (no data)');
+    return;
+  }
+
+  // Max floors in a run: survived runs end at floor 18, dead runs use deathFloor
+  const MAX_FLOORS = 18;
+
+  // Resolved acquisition floor for a relic in a run.
+  // Uses relicTimeline if present, else assumes floor 1 (conservative fallback).
+  function getAcqFloor(run: AnalyticsRun, relicId: string): number {
+    const entry = run.relicTimeline?.find(rt => rt.relicId === relicId);
+    return entry?.acquiredAtFloor ?? 1;
+  }
+
+  // Effective "final floor" of a run (18 if survived, else deathFloor ?? actsCompleted * 4)
+  function runFinalFloor(run: AnalyticsRun): number {
+    if (run.survived) return MAX_FLOORS;
+    return run.deathFloor ?? (run.actsCompleted * 4);
+  }
+
+  // Collect per-relic accumulators keyed by relicId
+  interface RelicPerfAcc {
+    floorsAfterAcq: number[];
+    encWonAfterAcq: number[];
+    acqFloors: number[];
+    // For encounters where relic was held (uses relicsHeld if available, else all encs post-acq)
+    dmgPerEnc: number[];
+    hpLostPerEnc: number[];
+    totalDmg: number;
+    totalAP: number;  // needs enc.apSpent
+    shortTermSurvives: number;  // survived 3+ floors after acq
+    totalRuns: number;
+    wins: number;
+  }
+
+  const acc: Record<string, RelicPerfAcc> = {};
+
+  for (const run of results) {
+    // Build a set of unique relics in this run
+    const relicsInRun = Array.from(new Set(run.relicsAcquired));
+
+    for (const relicId of relicsInRun) {
+      if (!acc[relicId]) {
+        acc[relicId] = {
+          floorsAfterAcq: [],
+          encWonAfterAcq: [],
+          acqFloors: [],
+          dmgPerEnc: [],
+          hpLostPerEnc: [],
+          totalDmg: 0,
+          totalAP: 0,
+          shortTermSurvives: 0,
+          totalRuns: 0,
+          wins: 0,
+        };
+      }
+
+      const a = acc[relicId];
+      const acqFloor = getAcqFloor(run, relicId);
+      const finalFloor = runFinalFloor(run);
+      const floorsAfter = Math.max(0, finalFloor - acqFloor);
+
+      a.acqFloors.push(acqFloor);
+      a.floorsAfterAcq.push(floorsAfter);
+      a.totalRuns++;
+      if (run.survived) a.wins++;
+      if (floorsAfter >= 3) a.shortTermSurvives++;
+
+      // Count encounters won and aggregate combat metrics after acquisition
+      let encWon = 0;
+      for (const enc of run.encounters) {
+        // Is this encounter "after" the relic was acquired?
+        const encIsPostAcq = enc.floor >= acqFloor;
+        // If relicsHeld is available, check it directly; otherwise fall back to floor check
+        const relicHeldDuringEnc = enc.relicsHeld != null
+          ? enc.relicsHeld.includes(relicId)
+          : encIsPostAcq;
+
+        if (relicHeldDuringEnc) {
+          if (enc.result === 'victory') encWon++;
+          a.dmgPerEnc.push(enc.damageDealt);
+          a.hpLostPerEnc.push(enc.damageTaken);
+          a.totalDmg += enc.damageDealt;
+          a.totalAP += enc.apSpent ?? 0;
+        }
+      }
+      a.encWonAfterAcq.push(encWon);
+    }
+  }
+
+  // Build stats rows — only for relics appearing in 10+ runs
+  interface RelicPerfStat {
+    relicId: string;
+    runs: number;
+    avgFloorsAfterAcq: number;
+    avgEncWonAfterAcq: number;
+    avgDmgPerEncWith: number;
+    avgHpLostPerEncWith: number;
+    avgDmgPerAP: number;
+    acqFloorMedian: number;
+    shortTermSurvival: number;
+    observationalWinRate: number;
+    powerScore: number;
+  }
+
+  const stats: RelicPerfStat[] = [];
+
+  for (const [relicId, a] of Object.entries(acc)) {
+    if (a.totalRuns < 10) continue;
+
+    const avgFloorsAfterAcq = a.floorsAfterAcq.reduce((s, v) => s + v, 0) / a.floorsAfterAcq.length;
+    const avgEncWonAfterAcq = a.encWonAfterAcq.reduce((s, v) => s + v, 0) / a.encWonAfterAcq.length;
+    const avgDmgPerEncWith = a.dmgPerEnc.length > 0
+      ? a.dmgPerEnc.reduce((s, v) => s + v, 0) / a.dmgPerEnc.length
+      : 0;
+    const avgHpLostPerEncWith = a.hpLostPerEnc.length > 0
+      ? a.hpLostPerEnc.reduce((s, v) => s + v, 0) / a.hpLostPerEnc.length
+      : 0;
+    const avgDmgPerAP = a.totalAP > 0 ? a.totalDmg / a.totalAP : 0;
+    const acqFloorMedian = median(a.acqFloors);
+    const shortTermSurvival = a.shortTermSurvives / a.totalRuns;
+    const observationalWinRate = a.wins / a.totalRuns;
+
+    stats.push({
+      relicId,
+      runs: a.totalRuns,
+      avgFloorsAfterAcq,
+      avgEncWonAfterAcq,
+      avgDmgPerEncWith,
+      avgHpLostPerEncWith,
+      avgDmgPerAP,
+      acqFloorMedian,
+      shortTermSurvival,
+      observationalWinRate,
+      powerScore: 0, // computed after normalization below
+    });
+  }
+
+  if (stats.length === 0) {
+    const lines = [
+      '# Relic Performance (Survivorship-Free)',
+      '',
+      '*Not enough data — need 10+ runs per relic. Run with --analytics and more runs.*',
+    ];
+    fs.writeFileSync(path.join(outputDir, 'relic-performance.md'), lines.join('\n') + '\n');
+    console.log('    [7/9] relic-performance.md (insufficient data)');
+    return;
+  }
+
+  // Compute power scores: normalize each axis to [0, 1] across all relics, then combine.
+  const maxFloors = Math.max(...stats.map(s => s.avgFloorsAfterAcq), 1);
+  const maxDmgPerAP = Math.max(...stats.map(s => s.avgDmgPerAP), 1);
+
+  for (const s of stats) {
+    s.powerScore =
+      (s.avgFloorsAfterAcq / maxFloors) * 0.4
+      + s.shortTermSurvival * 0.3
+      + (s.avgDmgPerAP / maxDmgPerAP) * 0.3;
+  }
+
+  // Sort by avgFloorsAfterAcq descending (primary axis)
+  stats.sort((a, b) => b.avgFloorsAfterAcq - a.avgFloorsAfterAcq);
+
+  const lines: string[] = [
+    '# Relic Performance (Survivorship-Free)',
+    '',
+    `*${results.length} total runs | ${stats.length} relics with ≥10 appearances*`,
+    '',
+    '> **Survivorship-free design:** metrics are computed from the moment of relic acquisition',
+    '> forward, so a relic acquired on floor 15 is scored the same way as one acquired on floor 1.',
+    '> Use `avgFloorsAfterAcq` and `powerScore` as primary ranking signals.',
+    '> `observationalWinRate` is kept for comparison with the legacy relic-analysis report.',
+    '',
+    '## Relic Performance Table (sorted by avgFloorsAfterAcq)',
+    '',
+    '| Relic ID | Runs | AcqFloor (med) | Floors After Acq | Enc Won After | Dmg/Enc | HP Lost/Enc | Dmg/AP | 3-Floor Surv% | Win% (obs) | Power Score |',
+    '|----------|------|----------------|------------------|---------------|---------|-------------|--------|---------------|------------|-------------|',
+  ];
+
+  for (const s of stats) {
+    lines.push(
+      `| ${s.relicId} | ${s.runs} | ${fmt(s.acqFloorMedian, 1)} | ${fmt(s.avgFloorsAfterAcq, 1)} | ${fmt(s.avgEncWonAfterAcq, 1)} | ${fmt(s.avgDmgPerEncWith, 0)} | ${fmt(s.avgHpLostPerEncWith, 0)} | ${fmt(s.avgDmgPerAP, 2)} | ${(s.shortTermSurvival * 100).toFixed(1)}% | ${(s.observationalWinRate * 100).toFixed(1)}% | ${fmt(s.powerScore, 3)} |`,
+    );
+  }
+
+  // Power score ranking (separate view sorted by powerScore)
+  const byPower = [...stats].sort((a, b) => b.powerScore - a.powerScore);
+
+  lines.push(
+    '',
+    '## Relic Power Score Ranking',
+    '',
+    '> `powerScore = (avgFloorsAfterAcq / maxFloors) × 0.4 + shortTermSurvival × 0.3 + (avgDmgPerAP / maxDmgPerAP) × 0.3`',
+    '',
+    '| Rank | Relic ID | Power Score | Floors After Acq | 3-Floor Surv% | Dmg/AP |',
+    '|------|----------|-------------|------------------|---------------|--------|',
+  );
+
+  for (let i = 0; i < byPower.length; i++) {
+    const s = byPower[i];
+    lines.push(
+      `| ${i + 1} | ${s.relicId} | ${fmt(s.powerScore, 3)} | ${fmt(s.avgFloorsAfterAcq, 1)} | ${(s.shortTermSurvival * 100).toFixed(1)}% | ${fmt(s.avgDmgPerAP, 2)} |`,
+    );
+  }
+
+  fs.writeFileSync(path.join(outputDir, 'relic-performance.md'), lines.join('\n') + '\n');
+  console.log('    [7/9] relic-performance.md');
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Report 8: card-performance.md  (survivorship-free per-card efficiency)
+// ──────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Per-card efficiency metrics that go beyond binary win/lose.
+ *
+ * Key improvements over card-analysis.md:
+ *   - avgDmgPerAP: damage efficiency normalised by AP cost (uses optional apCost field)
+ *   - avgBlockPerPlay: quantifies defensive value for shield cards
+ *   - floorDelta: avgFloorsWithCard − avgFloorsWithout — the survivorship-free signal
+ *   - playFrequency: how often the card is played relative to encounters (demand signal)
+ *
+ * Cards are filtered to those played 50+ times across all runs to ensure statistical
+ * significance. Sorted by avgDmgPerAP for attack cards, avgBlockPerPlay for shield cards.
+ */
+export function generateCardPerformanceReport(results: AnalyticsRun[], outputDir: string): void {
+  if (results.length === 0) {
+    const lines = ['# Card Performance (Efficiency Metrics)', '', '*No data.*'];
+    fs.writeFileSync(path.join(outputDir, 'card-performance.md'), lines.join('\n') + '\n');
+    console.log('    [8/9] card-performance.md (no data)');
+    return;
+  }
+
+  // Accumulator per mechanic
+  interface CardPerfAcc {
+    totalPlays: number;
+    totalDmg: number;
+    totalAP: number;  // from play.apCost
+    totalBlock: number; // from play.blockGained
+    chargedPlays: number;
+    correctCharges: number;
+    runsWithCard: Set<number>; // run indices
+    runsWithoutCard: Set<number>;
+  }
+
+  const acc: Record<string, CardPerfAcc> = {};
+
+  // Index runs for floor-delta calculation
+  for (let runIdx = 0; runIdx < results.length; runIdx++) {
+    const run = results[runIdx];
+    const mechanicsInRun = new Set<string>();
+
+    for (const enc of run.encounters) {
+      for (const play of enc.cardPlays) {
+        const m = play.mechanic;
+        if (!acc[m]) {
+          acc[m] = {
+            totalPlays: 0,
+            totalDmg: 0,
+            totalAP: 0,
+            totalBlock: 0,
+            chargedPlays: 0,
+            correctCharges: 0,
+            runsWithCard: new Set(),
+            runsWithoutCard: new Set(),
+          };
+        }
+        acc[m].totalPlays++;
+        acc[m].totalDmg += play.damageDealt;
+        acc[m].totalAP += play.apCost ?? 1; // default 1 AP if not recorded
+        acc[m].totalBlock += play.blockGained ?? 0;
+        if (play.wasCharged) acc[m].chargedPlays++;
+        if (play.wasCharged && play.answeredCorrectly) acc[m].correctCharges++;
+        mechanicsInRun.add(m);
+      }
+    }
+
+    // Also check finalDeckMechanics for cards held but not played
+    for (const m of Object.keys(run.finalDeckMechanics)) {
+      mechanicsInRun.add(m);
+    }
+
+    // Tag which runs have / don't have each mechanic
+    const allMechanics = new Set(Object.keys(acc));
+    for (const m of allMechanics) {
+      if (mechanicsInRun.has(m)) {
+        acc[m].runsWithCard.add(runIdx);
+      } else {
+        acc[m].runsWithoutCard.add(runIdx);
+      }
+    }
+  }
+
+  // Effective "final floor" for floor-delta calculation
+  const MAX_FLOORS = 18;
+  function runFinalFloor(run: AnalyticsRun): number {
+    if (run.survived) return MAX_FLOORS;
+    return run.deathFloor ?? (run.actsCompleted * 4);
+  }
+
+  interface CardPerfStat {
+    mechanic: string;
+    totalPlays: number;
+    avgDmgPerPlay: number;
+    avgDmgPerAP: number;
+    avgBlockPerPlay: number;
+    chargeRate: number;
+    chargeAccuracy: number;
+    playFrequency: number; // plays / (runs with card * avg enc count)
+    avgFloorsWithCard: number;
+    avgFloorsWithout: number;
+    floorDelta: number;
+  }
+
+  // Compute total encounters per run for playFrequency denominator
+  const avgEncPerRun = results.reduce((s, r) => s + r.encounters.length, 0) / Math.max(results.length, 1);
+
+  const stats: CardPerfStat[] = [];
+
+  for (const [mechanic, a] of Object.entries(acc)) {
+    if (a.totalPlays < 50) continue; // skip low-sample mechanics
+
+    const runsWith = Array.from(a.runsWithCard).map(i => results[i]);
+    const runsWithout = Array.from(a.runsWithoutCard).map(i => results[i]);
+
+    const avgFloorsWithCard = runsWith.length > 0
+      ? runsWith.reduce((s, r) => s + runFinalFloor(r), 0) / runsWith.length
+      : 0;
+    const avgFloorsWithout = runsWithout.length > 0
+      ? runsWithout.reduce((s, r) => s + runFinalFloor(r), 0) / runsWithout.length
+      : avgFloorsWithCard;
+
+    const playFrequency = runsWith.length > 0 && avgEncPerRun > 0
+      ? a.totalPlays / (runsWith.length * avgEncPerRun)
+      : 0;
+
+    stats.push({
+      mechanic,
+      totalPlays: a.totalPlays,
+      avgDmgPerPlay: a.totalPlays > 0 ? a.totalDmg / a.totalPlays : 0,
+      avgDmgPerAP: a.totalAP > 0 ? a.totalDmg / a.totalAP : 0,
+      avgBlockPerPlay: a.totalPlays > 0 ? a.totalBlock / a.totalPlays : 0,
+      chargeRate: a.totalPlays > 0 ? a.chargedPlays / a.totalPlays : 0,
+      chargeAccuracy: a.chargedPlays > 0 ? a.correctCharges / a.chargedPlays : 0,
+      playFrequency,
+      avgFloorsWithCard,
+      avgFloorsWithout,
+      floorDelta: avgFloorsWithCard - avgFloorsWithout,
+    });
+  }
+
+  if (stats.length === 0) {
+    const lines = [
+      '# Card Performance (Efficiency Metrics)',
+      '',
+      '*Not enough data — need 50+ plays per mechanic. Run with more --runs.*',
+    ];
+    fs.writeFileSync(path.join(outputDir, 'card-performance.md'), lines.join('\n') + '\n');
+    console.log('    [8/9] card-performance.md (insufficient data)');
+    return;
+  }
+
+  // Split into attack (non-zero avg damage) and shield (non-zero avg block) groups
+  const attackStats = stats.filter(s => s.avgDmgPerPlay > 0).sort((a, b) => b.avgDmgPerAP - a.avgDmgPerAP);
+  const shieldStats = stats.filter(s => s.avgBlockPerPlay > 0).sort((a, b) => b.avgBlockPerPlay - a.avgBlockPerPlay);
+  // Utility/other: neither significant damage nor block
+  const otherStats = stats
+    .filter(s => s.avgDmgPerPlay === 0 && s.avgBlockPerPlay === 0)
+    .sort((a, b) => b.floorDelta - a.floorDelta);
+
+  const lines: string[] = [
+    '# Card Performance (Efficiency Metrics)',
+    '',
+    `*${results.length} total runs | ${stats.length} mechanics with ≥50 plays*`,
+    '',
+    '> **Survivorship-free signal:** `floorDelta` = avgFloorsWithCard − avgFloorsWithout.',
+    '> Positive floorDelta means runs containing this card progress farther on average.',
+    '> `avgDmgPerAP` normalises damage by AP cost — accounts for cheap vs expensive cards.',
+    '',
+  ];
+
+  if (attackStats.length > 0) {
+    lines.push(
+      '## Attack Cards (sorted by avgDmgPerAP)',
+      '',
+      '| Mechanic | Plays | Dmg/Play | Dmg/AP | Charge% | Accuracy% | Play Freq | Floors w/ | Floors w/o | Delta |',
+      '|----------|-------|----------|--------|---------|-----------|-----------|-----------|------------|-------|',
+    );
+    for (const s of attackStats) {
+      lines.push(
+        `| ${s.mechanic} | ${s.totalPlays} | ${fmt(s.avgDmgPerPlay, 1)} | ${fmt(s.avgDmgPerAP, 2)} | ${(s.chargeRate * 100).toFixed(0)}% | ${(s.chargeAccuracy * 100).toFixed(0)}% | ${fmt(s.playFrequency, 2)} | ${fmt(s.avgFloorsWithCard, 1)} | ${fmt(s.avgFloorsWithout, 1)} | ${s.floorDelta >= 0 ? '+' : ''}${fmt(s.floorDelta, 1)} |`,
+      );
+    }
+    lines.push('');
+  }
+
+  if (shieldStats.length > 0) {
+    lines.push(
+      '## Shield / Block Cards (sorted by avgBlockPerPlay)',
+      '',
+      '| Mechanic | Plays | Block/Play | Dmg/AP | Charge% | Accuracy% | Play Freq | Floors w/ | Floors w/o | Delta |',
+      '|----------|-------|------------|--------|---------|-----------|-----------|-----------|------------|-------|',
+    );
+    for (const s of shieldStats) {
+      lines.push(
+        `| ${s.mechanic} | ${s.totalPlays} | ${fmt(s.avgBlockPerPlay, 1)} | ${fmt(s.avgDmgPerAP, 2)} | ${(s.chargeRate * 100).toFixed(0)}% | ${(s.chargeAccuracy * 100).toFixed(0)}% | ${fmt(s.playFrequency, 2)} | ${fmt(s.avgFloorsWithCard, 1)} | ${fmt(s.avgFloorsWithout, 1)} | ${s.floorDelta >= 0 ? '+' : ''}${fmt(s.floorDelta, 1)} |`,
+      );
+    }
+    lines.push('');
+  }
+
+  if (otherStats.length > 0) {
+    lines.push(
+      '## Utility / Other Cards (sorted by floorDelta)',
+      '',
+      '| Mechanic | Plays | Charge% | Accuracy% | Play Freq | Floors w/ | Floors w/o | Delta |',
+      '|----------|-------|---------|-----------|-----------|-----------|------------|-------|',
+    );
+    for (const s of otherStats) {
+      lines.push(
+        `| ${s.mechanic} | ${s.totalPlays} | ${(s.chargeRate * 100).toFixed(0)}% | ${(s.chargeAccuracy * 100).toFixed(0)}% | ${fmt(s.playFrequency, 2)} | ${fmt(s.avgFloorsWithCard, 1)} | ${fmt(s.avgFloorsWithout, 1)} | ${s.floorDelta >= 0 ? '+' : ''}${fmt(s.floorDelta, 1)} |`,
+      );
+    }
+    lines.push('');
+  }
+
+  fs.writeFileSync(path.join(outputDir, 'card-performance.md'), lines.join('\n') + '\n');
+  console.log('    [8/9] card-performance.md');
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Report 9: archetype-performance.md  (multi-dimensional archetype scoring)
+// ──────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Multi-dimensional archetype performance report.
+ *
+ * Extends the binary win-rate archetype-analysis.md with:
+ *   avgFloorsReached   — mean floors reached (18 if won; survivorship-free)
+ *   avgEncountersWon   — mean encounters won per run
+ *   avgGoldEarned      — not yet collected in AnalyticsRun; placeholder logged
+ *   hpEfficiency       — totalDamageDealt / totalDamageTaken (combat efficiency ratio)
+ *   deckDiversity      — Shannon entropy of finalDeckTypeDistribution (bits)
+ *
+ * Groups results by profile name. Includes all profiles (not just build_ prefix)
+ * so progression profiles appear alongside archetype profiles.
+ */
+export function generateArchetypePerformanceReport(results: AnalyticsRun[], outputDir: string): void {
+  if (results.length === 0) {
+    const lines = ['# Archetype Performance (Multi-Dimensional)', '', '*No data.*'];
+    fs.writeFileSync(path.join(outputDir, 'archetype-performance.md'), lines.join('\n') + '\n');
+    console.log('    [9/9] archetype-performance.md (no data)');
+    return;
+  }
+
+  const MAX_FLOORS = 18;
+
+  function runFinalFloor(run: AnalyticsRun): number {
+    if (run.survived) return MAX_FLOORS;
+    return run.deathFloor ?? (run.actsCompleted * 4);
+  }
+
+  const profiles = Array.from(new Set(results.map(r => r.profile))).sort();
+
+  interface ArchetypePerfStat {
+    profile: string;
+    runs: number;
+    winRate: number;
+    avgFloorsReached: number;
+    avgEncountersWon: number;
+    hpEfficiency: number;
+    deckDiversity: number;
+  }
+
+  const stats: ArchetypePerfStat[] = profiles.map(profile => {
+    const pRuns = results.filter(r => r.profile === profile);
+    const wins = pRuns.filter(r => r.survived).length;
+    const winRate = pRuns.length > 0 ? wins / pRuns.length : 0;
+
+    const avgFloorsReached = pRuns.reduce((s, r) => s + runFinalFloor(r), 0) / Math.max(pRuns.length, 1);
+
+    const avgEncountersWon = pRuns.reduce((s, r) => {
+      const won = r.encounters.filter(e => e.result === 'victory').length;
+      return s + won;
+    }, 0) / Math.max(pRuns.length, 1);
+
+    // hpEfficiency: aggregate across all runs in this profile
+    const totalDmgDealt = pRuns.reduce((s, r) => s + r.totalDamageDealt, 0);
+    const totalDmgTaken = pRuns.reduce((s, r) => s + r.totalDamageTaken, 0);
+    const hpEfficiency = totalDmgTaken > 0 ? totalDmgDealt / totalDmgTaken : 0;
+
+    // deckDiversity: average Shannon entropy across runs
+    const avgDiversity = pRuns.reduce((s, r) => s + shannonEntropy(r.finalDeckTypeDistribution), 0)
+      / Math.max(pRuns.length, 1);
+
+    return {
+      profile,
+      runs: pRuns.length,
+      winRate,
+      avgFloorsReached,
+      avgEncountersWon,
+      hpEfficiency,
+      deckDiversity: avgDiversity,
+    };
+  });
+
+  // Sort by avgFloorsReached descending (survivorship-free primary axis)
+  stats.sort((a, b) => b.avgFloorsReached - a.avgFloorsReached);
+
+  const lines: string[] = [
+    '# Archetype Performance (Multi-Dimensional)',
+    '',
+    `*${results.length} total runs across ${profiles.length} profiles*`,
+    '',
+    '> **Primary sort:** avgFloorsReached (survivorship-free — 18 for wins, deathFloor for losses).',
+    '> **hpEfficiency:** totalDamageDealt / totalDamageTaken — values >1 mean more damage dealt than taken.',
+    '> **deckDiversity:** Shannon entropy of deck type distribution (bits) — higher = more varied deck.',
+    '',
+    '## Archetype Performance Table',
+    '',
+    '| Profile | Runs | Win% | Avg Floors | Avg Enc Won | HP Efficiency | Deck Diversity (bits) |',
+    '|---------|------|------|------------|-------------|---------------|-----------------------|',
+  ];
+
+  for (const s of stats) {
+    lines.push(
+      `| ${s.profile} | ${s.runs} | ${(s.winRate * 100).toFixed(1)}% | ${fmt(s.avgFloorsReached, 1)} | ${fmt(s.avgEncountersWon, 1)} | ${fmt(s.hpEfficiency, 2)} | ${fmt(s.deckDiversity, 2)} |`,
+    );
+  }
+
+  // Highlight top and bottom performers on each axis
+  const topEfficiency = [...stats].sort((a, b) => b.hpEfficiency - a.hpEfficiency);
+  const topDiversity = [...stats].sort((a, b) => b.deckDiversity - a.deckDiversity);
+
+  if (stats.length >= 3) {
+    lines.push(
+      '',
+      '## Notable Archetypes',
+      '',
+      `**Most HP-Efficient:** ${topEfficiency[0].profile} (${fmt(topEfficiency[0].hpEfficiency, 2)}× ratio)`,
+      `**Most Diverse Deck:** ${topDiversity[0].profile} (${fmt(topDiversity[0].deckDiversity, 2)} bits)`,
+      `**Most Floors Reached:** ${stats[0].profile} (${fmt(stats[0].avgFloorsReached, 1)} avg)`,
+      `**Highest Win Rate:** ${[...stats].sort((a, b) => b.winRate - a.winRate)[0].profile} (${([...stats].sort((a, b) => b.winRate - a.winRate)[0].winRate * 100).toFixed(1)}%)`,
+    );
+  }
+
+  fs.writeFileSync(path.join(outputDir, 'archetype-performance.md'), lines.join('\n') + '\n');
+  console.log('    [9/9] archetype-performance.md');
 }

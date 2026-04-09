@@ -72,6 +72,11 @@ export interface CardPlayRecord {
   answeredCorrectly: boolean;
   damageDealt: number;
   wasMomentumFree: boolean;
+  // Survivorship-free analytics fields (added for causal relic/card analysis)
+  blockGained: number;     // block (shield) gained from this play; 0 for non-shield cards
+  apCost: number;          // AP spent on this play (base card cost, or base+surcharge if charged)
+  effectValue: number;     // raw baseEffectValue of the card before multipliers
+  chainLength: number;     // chain length at time of play
 }
 
 export interface EncounterSummary {
@@ -378,6 +383,10 @@ function simulateSingleEncounter(
             answeredCorrectly,
             damageDealt: res.effect.damageDealt ?? 0,
             wasMomentumFree: play.mode === 'charge' && chargeSurcharge === 0 && CHARGE_AP_SURCHARGE > 0,
+            blockGained: res.effect.shieldApplied ?? 0,
+            apCost: play.mode === 'charge' ? (card.apCost ?? 1) + chargeSurcharge : (card.apCost ?? 1),
+            effectValue: card.baseEffectValue ?? 0,
+            chainLength: turnState.chainLength,
           });
 
           if (answeredCorrectly) {
@@ -495,6 +504,10 @@ function simulateSingleEncounter(
           answeredCorrectly,
           damageDealt: res.effect.damageDealt ?? 0,
           wasMomentumFree: false, // quick plays are never momentum-free in sim
+          blockGained: res.effect.shieldApplied ?? 0,
+          apCost: isCharge ? (card.apCost ?? 1) + chargeSurcharge : (card.apCost ?? 1),
+          effectValue: card.baseEffectValue ?? 0,
+          chainLength: turnState.chainLength,
         });
 
         if (answeredCorrectly) {

@@ -124,19 +124,19 @@ describe("Scholar's Gambit relic", () => {
     expect(effect?.value).toBe(1)
   })
 
-  it('has wrong_charge_self_damage effect with value 3', () => {
+  it('has wrong_charge_self_damage effect with value 1', () => {
     const def = RELIC_BY_ID['scholars_gambit']
     const effect = def.effects.find(e => e.effectId === 'wrong_charge_self_damage')
     expect(effect).toBeDefined()
-    expect(effect?.value).toBe(3)
+    expect(effect?.value).toBe(1)
   })
 })
 
 describe("Scholar's Gambit — wrong answer self-damage effect resolver", () => {
-  it('deals 3 self-damage on wrong Charged answer when scholars_gambit is held', () => {
+  it('deals 1 self-damage on wrong Charged answer when scholars_gambit is held', () => {
     const relicIds = new Set(['scholars_gambit'])
     const result = resolveWrongAnswerEffects(relicIds, { wasChargedCard: true })
-    expect(result.scholarGambitSelfDamage).toBe(3)
+    expect(result.scholarGambitSelfDamage).toBe(1)
   })
 
   it('deals 0 self-damage on wrong non-Charged answer even with scholars_gambit held', () => {

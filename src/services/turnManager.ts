@@ -2058,19 +2058,19 @@ export function playCardAction(
           encounterTurnNumber: turnState.encounterTurnNumber,
         })
       : null;
-    if (shieldMods?.blockGainDisabled) {
-      effect.shieldApplied = 0;
-    } else {
-      // Phase 2: weaken_shield30 passive — bonus block when enemy is Weakened
-      if ((turnState.weakShieldBonusPercent ?? 0) > 0) {
-        const enemyIsWeakened = enemy.statusEffects.some(e => e.type === 'weakness' && e.value > 0);
-        if (enemyIsWeakened) {
-          effect.shieldApplied = Math.round(effect.shieldApplied * (1 + turnState.weakShieldBonusPercent / 100));
-        }
-      }
-      playCardAudio('shield-gain');
-      applyShield(playerState, effect.shieldApplied);
+    // hollow_armor: halve block from shield cards (blockGainHalved)
+    if (shieldMods?.blockGainHalved) {
+      effect.shieldApplied = Math.floor(effect.shieldApplied * 0.5);
     }
+    // Phase 2: weaken_shield30 passive — bonus block when enemy is Weakened
+    if ((turnState.weakShieldBonusPercent ?? 0) > 0) {
+      const enemyIsWeakened = enemy.statusEffects.some(e => e.type === 'weakness' && e.value > 0);
+      if (enemyIsWeakened) {
+        effect.shieldApplied = Math.round(effect.shieldApplied * (1 + turnState.weakShieldBonusPercent / 100));
+      }
+    }
+    playCardAudio('shield-gain');
+    applyShield(playerState, effect.shieldApplied);
   }
   if (effect.shieldApplied > 0 && turnState.ascensionShieldCardMultiplier !== 1) {
     const adjustedShield = Math.max(0, Math.round(effect.shieldApplied * turnState.ascensionShieldCardMultiplier));

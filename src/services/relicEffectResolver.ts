@@ -234,8 +234,8 @@ export interface EncounterStartEffects {
    */
   tempStrengthBonus: { amount: number; durationTurns: number } | null;
   /**
-   * Starting block from hollow_armor: +20 block at encounter start.
-   * 0 if hollow_armor not held. Note: block gain is disabled after turn 0 (see resolveShieldModifiers).
+   * Starting block from hollow_armor: +15 block at encounter start.
+   * 0 if hollow_armor not held. Note: block from shield cards is halved after turn 0 (see resolveShieldModifiers).
    */
   startingBlock?: number;
   /**
@@ -291,8 +291,8 @@ export function resolveEncounterStartEffects(
     ? { amount: 1, durationTurns: 3 }
     : null;
 
-  // hollow_armor — +20 starting block (block gain disabled after turn 0)
-  const startingBlock = relicIds.has('hollow_armor') ? 20 : undefined;
+  // hollow_armor — +15 starting block (block from shield cards halved after turn 0)
+  const startingBlock = relicIds.has('hollow_armor') ? 15 : undefined;
 
   // Audio: fire if any encounter-start relic produced a non-zero effect
   const encounterRelicFired =
@@ -626,16 +626,16 @@ export interface ShieldModifiers {
   grantsThorns?: number;
   /**
    * Whether block gain is disabled this turn (hollow_armor: disabled on turns > 0).
-   * When true, caller skips applying block from this shield card.
+   * When true, caller applies 50% of block from this shield card.
    */
-  blockGainDisabled?: boolean;
+  blockGainHalved?: boolean;
 }
 
 /** Context for resolveShieldModifiers. */
 export interface ShieldModifiersContext {
   /** Number of shield cards played this encounter (worn_shield: every 2nd gets +3 block). */
   shieldCardPlayCountThisEncounter: number;
-  /** Current turn number within the encounter (hollow_armor: disabled after turn 0). */
+  /** Current turn number within the encounter (hollow_armor: block halved after turn 0). */
   encounterTurnNumber?: number;
 }
 
@@ -673,10 +673,10 @@ export function resolveShieldModifiers(
   const reflectDamage = relicIds.has('thorned_vest') ? 2 : 0;
   const quickPlayShieldBonus = relicIds.has('bastions_will') ? 25 : 0;
 
-  // hollow_armor — block is disabled on turns after turn 0
-  let blockGainDisabled: boolean | undefined;
+  // hollow_armor — block from shield cards is halved on turns after turn 0
+  let blockGainHalved: boolean | undefined;
   if (relicIds.has('hollow_armor') && context?.encounterTurnNumber !== undefined && context.encounterTurnNumber > 0) {
-    blockGainDisabled = true;
+    blockGainHalved = true;
   }
 
   // Audio: fire if any relic actually boosted this shield play
@@ -692,7 +692,7 @@ export function resolveShieldModifiers(
     wornShieldBonus,
     percentBlockBonus,
     grantsThorns,
-    blockGainDisabled,
+    blockGainHalved,
   };
 }
 
@@ -1178,9 +1178,9 @@ export function resolveWrongAnswerEffects(
   relicIds: Set<string>,
   context?: WrongAnswerContext,
 ): WrongAnswerEffects {
-  // Scholar's Gambit: wrong Charged answers deal 3 self-damage (bypasses block)
+  // Scholar's Gambit: wrong Charged answers deal 1 self-damage (bypasses block)
   const scholarGambitSelfDamage =
-    relicIds.has('scholars_gambit') && (context?.wasChargedCard ?? false) ? 3 : 0;
+    relicIds.has('scholars_gambit') && (context?.wasChargedCard ?? false) ? 1 : 0;
   return {
     healHp: relicIds.has('scholars_hat') ? 1 : 0,
     scholarGambitSelfDamage,
@@ -1757,9 +1757,9 @@ export function resolveChargeCorrectEffects(
 
 /** Effects from relics that fire when a Charged quiz is answered incorrectly. */
 export interface ChargeWrongEffects {
-  /** Self-damage dealt (bypasses block). Sum of volatile_core (3) + scholars_gambit (3). */
+  /** Self-damage dealt (bypasses block). Sum of volatile_core (3) + scholars_gambit (1). */
   selfDamage: number;
-  /** Enemy damage dealt (volatile_core: 3). */
+  /** Enemy damage dealt from charge-wrong relics (currently unused — volatile_core enemy damage removed). */
   enemyDamage: number;
   /**
    * Whether insight_prism stored this fact for auto-success on next appearance.
@@ -1828,15 +1828,14 @@ export function resolveChargeWrongEffects(
   let selfDamage = 0;
   let enemyDamage = 0;
 
-  // volatile_core — wrong Charge deals 3 to self AND 3 to enemy
+  // volatile_core — wrong Charge deals 3 to self only (enemy damage removed)
   if (relicIds.has('volatile_core')) {
     selfDamage += 3;
-    enemyDamage += 3;
   }
 
-  // scholars_gambit — wrong Charge deals 3 self-damage (bypasses block)
+  // scholars_gambit — wrong Charge deals 1 self-damage (bypasses block)
   if (relicIds.has('scholars_gambit')) {
-    selfDamage += 3;
+    selfDamage += 1;
   }
 
   // insight_prism — reveal answer and auto-succeed next appearance

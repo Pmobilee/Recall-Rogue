@@ -268,7 +268,7 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'scholars_gambit',
     name: "Scholar's Gambit",
-    description: '5 relic slots → 6. Wrong Charged answers deal 3 damage to you.',
+    description: '5 relic slots → 6. Wrong Charged answers deal 1 damage to you.',
     flavorText: 'Knowledge is power. Power has a price. The Gambit demands both.',
     visualDescription: 'A cracked obsidian tome bound with a golden chain, forbidden glyphs glowing on the cover. Wisps of dark energy seep from the spine. 32x32 pixel art, dark dungeon palette.',
     rarity: 'rare',
@@ -276,14 +276,14 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
     trigger: 'permanent',
     effects: [
       { effectId: 'relic_slot_bonus', description: '+1 relic slot (max becomes 6)', value: 1 },
-      { effectId: 'wrong_charge_self_damage', description: 'Wrong Charged answers deal 3 self-damage', value: 3 },
+      { effectId: 'wrong_charge_self_damage', description: 'Wrong Charged answers deal 1 self-damage', value: 1 },
     ],
     icon: '📖',
     unlockCost: 60,
     unlockLevel: 20,
     isStarter: false,
     startsUnlocked: false,
-    curseDescription: 'Wrong Charged answers deal 3 damage to you.',
+    curseDescription: 'Wrong Charged answers deal 1 damage to you.',
   },
 
   // === LEGENDARY (2) ===
@@ -811,7 +811,7 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
     description: 'First card each turn deals double damage. Other cards deal -25%.',
     flavorText: 'The blade demands a single, decisive cut. Those who swing wildly find their strength draining into the hilt.',
     visualDescription: 'An ornate ceremonial dagger with a single perfect edge, glowing gold on first strike, dimming to grey after. Ritual circles etched along the blade. 32x32 pixel art.',
-    rarity: 'uncommon',
+    rarity: 'rare',
     category: 'cursed',
     trigger: 'on_card_play',
     effects: [
@@ -829,22 +829,22 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'hollow_armor',
     name: 'Hollow Armor',
-    description: 'Start each encounter with 20 block. Cannot gain new block.',
+    description: 'Start each encounter with 15 block. Block gained from shield cards is halved.',
     flavorText: 'Forged from a single piece of dungeon-stone, it guards you once and only once. When it breaks, nothing can replace it.',
     visualDescription: 'A hollow suit of stone armor with a large shield, crumbling at the edges. Glowing blue ward lines that are fading. 32x32 pixel art.',
     rarity: 'uncommon',
     category: 'cursed',
     trigger: 'on_encounter_start',
     effects: [
-      { effectId: 'encounter_start_block', description: 'Start with 20 block', value: 20 },
-      { effectId: 'block_gain_disabled', description: 'Cannot gain new block', value: 0 },
+      { effectId: 'encounter_start_block', description: 'Start with 15 block', value: 15 },
+      { effectId: 'block_gain_halved', description: 'Block from shield cards is halved', value: 0 },
     ],
     icon: '🏰',
     unlockCost: 0,
     unlockLevel: 9,
     isStarter: false,
     startsUnlocked: false,
-    curseDescription: 'Shield cards and block-granting effects do nothing. Your starting 20 block is all you get.',
+    curseDescription: 'Shield cards grant half their normal block. Your starting 15 block is your main defense.',
   },
 
   {
@@ -871,7 +871,7 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'mnemonic_scar',
     name: 'Mnemonic Scar',
-    description: 'Wrong on a previously-correct fact: CC power. Wrong on a new fact: take 5 damage.',
+    description: 'Wrong on a previously-correct fact: CC power. Wrong on a new fact: take 2 damage.',
     flavorText: 'The scar remembers what you learned — and punishes you for reaching beyond your knowledge.',
     visualDescription: 'A glowing scar across a forehead, half golden (knowledge) and half red (pain). Lightning arcs between the two halves. 32x32 pixel art.',
     rarity: 'uncommon',
@@ -879,14 +879,14 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
     trigger: 'on_charge_wrong',
     effects: [
       { effectId: 'wrong_known_fact_cc_power', description: 'CW on known fact resolves at CC power', value: 1 },
-      { effectId: 'wrong_new_fact_self_damage', description: 'CW on new fact: take 5 damage', value: 5 },
+      { effectId: 'wrong_new_fact_self_damage', description: 'CW on new fact: take 2 damage', value: 2 },
     ],
     icon: '⚡',
     unlockCost: 0,
     unlockLevel: 10,
     isStarter: false,
     startsUnlocked: false,
-    curseDescription: 'Wrong answers on facts you have never answered correctly deal 5 damage to you.',
+    curseDescription: 'Wrong answers on facts you have never answered correctly deal 2 damage to you.',
   },
 
   {

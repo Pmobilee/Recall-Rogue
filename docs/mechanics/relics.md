@@ -87,9 +87,7 @@ All have `unlockCost: 0` and `startsUnlocked: true`.
 | `whetstone` | +3 attack damage, -1 block on shields | permanent |
 | `iron_shield` | Turn start block = 2 + shields played last turn | on_turn_start |
 | `vitality_ring` | +20 max HP | on_run_start |
-| `herbal_pouch` | Apply 1 Poison to all enemies each turn; heal 3 HP after combat | on_turn_start |
 | `swift_boots` | Draw 6 cards per turn instead of 5 | permanent |
-| `steel_skin` | -1 damage taken (min 1) | on_damage_taken |
 | `gold_magnet` | +30% gold from all sources | permanent |
 | `merchants_favor` | +1 card and +1 relic choice in shops | permanent |
 | `lucky_coin` | After 3 wrong Charges in encounter: +50% damage on next correct Charge | on_charge_wrong |
@@ -105,19 +103,26 @@ All have `unlockCost: 0` and `startsUnlocked: true`.
 | ID | Effect | Trigger |
 |---|---|---|
 | `last_breath` | Survive lethal at 1 HP + 8 block (once/encounter) | on_lethal |
+| `herbal_pouch` | Apply 1 Poison to all enemies each turn; heal 3 HP after combat | on_turn_start |
+| `steel_skin` | -2 damage taken (min 1) | on_damage_taken |
 | `tag_magnet` | +30% chance to draw same chain-type cards | permanent |
 | `adrenaline_shard` | Charge correct in <3s: refund 1 AP (once/turn) | on_charge_correct |
-| `volatile_core` | +50% attack damage; wrong Charge deals 3 self-damage AND 3 enemy damage | permanent |
+| `volatile_core` | +50% attack damage; wrong Charge deals 3 self-damage only | permanent |
 | `aegis_stone` | Block from shields carries between turns (max 15); at 15 block gain Thorns 2 | on_turn_end |
 | `regeneration_orb` | Heal 3 HP if 2+ shield cards played this turn | on_turn_end |
 | `plague_flask` | All enemies start combat with 2 Poison | on_encounter_start |
 | `memory_nexus` | Every 3 correct Charges per encounter: draw 2 extra next turn (repeats) | on_charge_correct |
 | `insight_prism` | Wrong Charge: reveals answer; next same-fact appearance auto-succeeds | on_charge_wrong |
-| `blood_price` | +1 AP per turn; -2 HP per turn | permanent |
 | `reckless_resolve` | Below 40% HP: +50% attack; above 80% HP: -15% attack | permanent |
 | `overflow_gem` | 4+ AP spent in a turn: last card played gets +75% effect | on_turn_end |
 | `resonance_crystal` | Per chain link beyond 2: draw +1 card at turn end | on_chain_complete |
 | `domain_mastery_sigil` | Flow State: +1 AP/turn; Brain Fog: -1 AP/turn | on_turn_start |
+
+### Rare Starters (1)
+
+| ID | Effect | Trigger |
+|---|---|---|
+| `blood_price` | +1 AP per turn; -2 HP per turn (rarity: rare) | permanent |
 
 ## Unlockable Relics (17 total)
 
@@ -139,7 +144,7 @@ All have `isStarter: false`, `startsUnlocked: false`. Eligible once `playerLevel
 | `archive_codex` | After combat: +1 flat damage per 10 total mastery levels in deck | on_encounter_end | 8 |
 | `chain_forge` | Once/encounter: chain break prevented, card gets current multiplier, chain increments | on_chain_complete | 8 |
 | `berserker_s_oath` | -30 max HP at run start; +40% attack damage | on_run_start | 9 |
-| `ritual_blade` | First card each turn +50% damage; other cards -25% | on_card_play | 7 |
+| `ritual_blade` | First card each turn +50% damage; other cards -25% (rarity: rare) | on_card_play | 7 |
 | `thorn_crown` | At 10+ block when attacked: reflect 5 damage | on_damage_taken | 10 |
 | `bastions_will` | Charged shield cards: +75% block; Quick Play shields: +25% block | on_charge_correct | 11 |
 | `festering_wound` | When enemy has 3+ poison stacks: all attacks +40% damage | permanent | 13 |
@@ -159,7 +164,7 @@ All have `isStarter: false`, `startsUnlocked: false`. Eligible once `playerLevel
 
 | ID | Effect | Curse | unlockCost | unlockLevel |
 |---|---|---|---|---|
-| `scholars_gambit` | +1 relic slot (max 6) | Wrong Charge deals 3 self-damage | 60 | 20 |
+| `scholars_gambit` | +1 relic slot (max 6) | Wrong Charge deals 1 self-damage | 60 | 20 |
 | `phoenix_feather` | Once/run: resurrect at 15% HP; auto-Charge all cards free for 1 turn | — | 60 | 18 |
 
 ## Relic Effect Resolver (`relicEffectResolver.ts`)
@@ -169,12 +174,12 @@ Effects are resolved via pure functions from a `Set<string>` of held relic IDs. 
 Key resolved contexts:
 - `resolveTurnStartEffects()` — block grants (iron_shield: 2 + shieldsPlayedLastTurn), AP bonuses, draw bonuses, poison to all enemies (herbal_pouch), Capacitor release, Deja Vu spawn, `tempStrengthGain` (brass_knuckles: +1 temp Strength each turn start). Context field `shieldsPlayedLastTurn` required for iron_shield dynamic block.
 - `resolveDamageTakenEffects()` — flat damage reduction (steel_skin: -1 nerfed from -3), thorns, pity counter. Note: thick_skin no longer increases damage taken (reworked to encounter_start_block, 2026-04-09).
-- `resolveEncounterStartEffects()` — hollow_armor starting block, gladiator_s_mark temp Strength, plague_flask encounter start poison (2 stacks to all enemies), thick_skin encounter start block (+5).
+- `resolveEncounterStartEffects()` — hollow_armor starting block (15), gladiator_s_mark temp Strength, plague_flask encounter start poison (2 stacks to all enemies), thick_skin encounter start block (+5).
 - `resolveChargeCorrectEffects()` — multiplier bonuses, draw bonuses, speed bonuses.
 - `resolveChargeWrongEffects()` — safety nets (lucky_coin), self-damage (volatile_core, scholars_gambit)
 - `resolveAttackModifiers()` — percentDamageBonus includes ritual_blade (+50% first card, -25% other cards; nerfed from +100% 2026-04-09). brass_knuckles strengthGain is always 0 (moved to turn start).
 - `resolveDebuffAppliedModifiers()` — returns `reflectToEnemy: boolean`; always false now (thick_skin no longer reflects debuffs, 2026-04-09).
-- `resolveShieldModifiers()` — worn_shield grants +2 flatBlockBonus (reworked from thorns+penalty, 2026-04-09).
+- `resolveShieldModifiers()` — worn_shield grants +2 flatBlockBonus (reworked from thorns+penalty, 2026-04-09). hollow_armor: `blockGainHalved=true` on turns > 0; caller applies 50% of block from shield cards.
 - `resolveExhaustEffects()` — returns `bonusCardDraw` (exhaustion_engine +2, scavengers_eye +1) and `tempStrengthGain` (tattered_notebook +1 for 1 turn). Caller must apply strength status effect.
 - `resolveEncounterEndEffects()` — herbal_pouch heals 3 HP post-combat.
 - `getMaxRelicSlots()` — returns 5, or 6 if scholars_gambit held
@@ -191,6 +196,26 @@ Key resolved contexts:
 - `plague_flask`: poison tick/duration bonus → all enemies start with 2 Poison at encounter start
 - `thick_skin`: debuff reflect + damage penalty → start each encounter with 5 block
 - `worn_shield`: thorns + -20% block → +2 flat block on all shield cards
+
+## 2026-04-09 Balance Pass 6 (Canary Assist + Relic Rarity/Reworks)
+
+**Canary Assist Reduction (first_timer was 73% win rate at 45% accuracy — assist was too strong):**
+- `CANARY_RUN_STRONG_ASSIST_DMG_MULT`: 0.70 → 0.82 (enemy damage reduction -30% → -18%)
+- `CANARY_RUN_STRONG_ASSIST_HP_MULT`: 0.75 → 0.85 (enemy HP reduction -25% → -15%)
+- `CANARY_RUN_MILD_ASSIST_DMG_MULT`: 0.90 → 0.93 (enemy damage reduction -10% → -7%)
+- `CANARY_RUN_MILD_ASSIST_HP_MULT`: 0.95 → 0.96 (enemy HP reduction -5% → -4%)
+
+**Rarity Adjustments:**
+- `steel_skin`: common → uncommon (too much value for common slot)
+- `herbal_pouch`: common → uncommon (poison + heal was overloaded for common)
+- `blood_price`: uncommon → rare (AP+1 swing is run-defining)
+- `ritual_blade`: uncommon → rare (first-card double is run-defining)
+
+**Dead Relic Reworks:**
+- `hollow_armor`: 20 block + block disabled → 15 block + shield cards halved (`blockGainHalved` flag)
+- `mnemonic_scar`: new-fact wrong self-damage 5 → 2 (was deterring use)
+- `scholars_gambit`: wrong-charge self-damage 3 → 1 (was deterring use despite +1 slot upside)
+- `volatile_core`: enemy damage on wrong charge removed (was punishing player for enemy getting healed indirectly; now just 3 self-damage)
 
 ## Functional Categories
 

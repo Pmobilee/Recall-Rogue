@@ -197,15 +197,15 @@ describe('resolveChargeCorrectEffects', () => {
 describe('resolveChargeWrongEffects', () => {
   const ctx = { factId: 'test_fact_001' };
 
-  it('volatile_core: 3 self-damage, 3 enemy damage', () => {
+  it('volatile_core: 3 self-damage, 0 enemy damage (enemy damage removed)', () => {
     const result = resolveChargeWrongEffects(new Set(['volatile_core']), ctx);
     expect(result.selfDamage).toBe(3);
-    expect(result.enemyDamage).toBe(3);
+    expect(result.enemyDamage).toBe(0);
   });
 
-  it('scholars_gambit: 3 self-damage', () => {
+  it('scholars_gambit: 1 self-damage', () => {
     const result = resolveChargeWrongEffects(new Set(['scholars_gambit']), ctx);
-    expect(result.selfDamage).toBe(3);
+    expect(result.selfDamage).toBe(1);
     expect(result.enemyDamage).toBe(0);
   });
 
@@ -215,13 +215,13 @@ describe('resolveChargeWrongEffects', () => {
     expect(result.selfDamage).toBe(0);
   });
 
-  it('volatile_core + scholars_gambit stacks: 6 self-damage total', () => {
+  it('volatile_core + scholars_gambit stacks: 4 self-damage total', () => {
     const result = resolveChargeWrongEffects(
       new Set(['volatile_core', 'scholars_gambit']),
       ctx,
     );
-    expect(result.selfDamage).toBe(6); // 3 + 3
-    expect(result.enemyDamage).toBe(3);
+    expect(result.selfDamage).toBe(4); // 3 + 1
+    expect(result.enemyDamage).toBe(0);
   });
 
   it('no relics: no damage, no autopass', () => {
