@@ -9,7 +9,15 @@
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": ["Right lymphatic duct", "Cisterna chyli", "Left subclavian artery", "Superior vena cava", "Thoracic aorta", "Brachiocephalic trunk", "Azygos vein"],
+      "distractors": [
+        "Right lymphatic duct",
+        "Cisterna chyli",
+        "Left subclavian artery",
+        "Superior vena cava",
+        "Thoracic aorta",
+        "Brachiocephalic trunk",
+        "Azygos vein"
+      ],
       "quizQuestion": "Which large lymphatic vessel drains the LEFT side of the body and empties into the left subclavian vein?",
       "explanation": "The thoracic duct is the largest lymphatic vessel in the body, collecting lymph from the lower limbs, abdomen, left thorax, left arm, and left side of the head and neck — roughly three-quarters of the body. It ascends through the thorax and empties into the junction of the left internal jugular and left subclavian veins. The right lymphatic duct handles only the right arm and right side of the head and thorax, draining into the right subclavian vein.",
       "statement": "The thoracic duct drains approximately three-quarters of the body's lymph and empties into the left subclavian vein.",
@@ -26,32 +34,54 @@
           "type": "reverse",
           "question": "The thoracic duct empties lymph into which blood vessel?",
           "correctAnswer": "Left subclavian vein",
-          "distractors": ["Right subclavian vein", "Superior vena cava", "Left jugular vein", "Aorta"]
+          "distractors": [
+            "Right subclavian vein",
+            "Superior vena cava",
+            "Left jugular vein",
+            "Aorta"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The ___ is the largest lymphatic vessel and drains roughly three-quarters of the body.",
           "correctAnswer": "Thoracic duct",
-          "distractors": ["Right lymphatic duct", "Cisterna chyli", "Thoracic vein", "Lymphatic trunk"]
+          "distractors": [
+            "Right lymphatic duct",
+            "Cisterna chyli",
+            "Thoracic vein",
+            "Lymphatic trunk"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: The thoracic duct empties into the right subclavian vein.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_002",
       "correctAnswer": "Right subclavian vein",
-      "acceptableAlternatives": ["Right lymphatic duct"],
+      "acceptableAlternatives": [
+        "Right lymphatic duct"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "anatomy_structures",
       "difficulty": 3,
       "funScore": 5,
       "ageGroup": "all",
-      "distractors": ["Left subclavian vein", "Right jugular vein", "Superior vena cava", "Azygos vein", "Right brachiocephalic vein", "Thoracic duct", "Inferior vena cava"],
+      "distractors": [
+        "Left subclavian vein",
+        "Right jugular vein",
+        "Superior vena cava",
+        "Azygos vein",
+        "Right brachiocephalic vein",
+        "Thoracic duct",
+        "Inferior vena cava"
+      ],
       "quizQuestion": "The right lymphatic duct drains lymph from the right arm and right side of the head and thorax into which vein?",
       "explanation": "The right lymphatic duct is a short vessel (about 1.25 cm) that empties into the junction of the right internal jugular and right subclavian veins. It handles lymph from the right upper quadrant of the body — the right arm, right side of the head and neck, and right thorax. Everything else drains via the larger thoracic duct into the left subclavian vein.",
       "statement": "The right lymphatic duct drains the right arm, right head/neck, and right thorax into the right subclavian vein. It is only ~1.25 cm long.",
@@ -68,20 +98,34 @@
           "type": "true_false",
           "question": "True or false: The right lymphatic duct drains the right arm, right head/neck, and right thorax.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_003",
       "correctAnswer": "~600",
-      "acceptableAlternatives": ["600", "about 600", "approximately 600"],
+      "acceptableAlternatives": [
+        "600",
+        "about 600",
+        "approximately 600"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": ["~100", "~200", "~1,000", "~2,000", "~50", "~300", "~5,000"],
+      "distractors": [
+        "~100",
+        "~200",
+        "~1,000",
+        "~2,000",
+        "~50",
+        "~300",
+        "~5,000"
+      ],
       "quizQuestion": "Approximately how many lymph nodes does the human body contain?",
       "explanation": "The body contains approximately 600 lymph nodes distributed throughout the lymphatic network. They cluster in strategic locations — the axilla (armpit), groin, neck, and around the major abdominal vessels. Their job is to filter lymph: as fluid passes through, resident B cells in germinal centers and T cells in the paracortex can mount an immune response against any pathogens detected. Swollen lymph nodes are a sign this filtration is actively fighting an infection.",
       "statement": "The human body contains approximately 600 lymph nodes that filter lymph and harbor B cells (germinal centers) and T cells (paracortex).",
@@ -98,13 +142,21 @@
           "type": "context",
           "question": "Swollen lymph nodes during an infection indicate which process?",
           "correctAnswer": "Active immune filtration and lymphocyte proliferation",
-          "distractors": ["Blocked lymphatic drainage", "Red blood cell production", "Hormone secretion"]
+          "distractors": [
+            "Blocked lymphatic drainage",
+            "Red blood cell production",
+            "Hormone secretion"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "Lymph node germinal centers contain ___ cells, while the paracortex contains ___ cells.",
           "correctAnswer": "B cells; T cells",
-          "distractors": ["T cells; B cells", "NK cells; macrophages", "Neutrophils; platelets"]
+          "distractors": [
+            "T cells; B cells",
+            "NK cells; macrophages",
+            "Neutrophils; platelets"
+          ]
         }
       ]
     },
@@ -117,7 +169,15 @@
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Thymus", "Liver", "Appendix", "Tonsils", "Lymph node", "Bone marrow", "Peyer's patches"],
+      "distractors": [
+        "Thymus",
+        "Liver",
+        "Appendix",
+        "Tonsils",
+        "Lymph node",
+        "Bone marrow",
+        "Peyer's patches"
+      ],
       "quizQuestion": "Which is the largest lymphoid organ in the body, located in the left upper quadrant and about 12 cm long?",
       "explanation": "The spleen is the largest lymphoid organ, sitting in the left upper quadrant behind the stomach and protected by ribs 9-11. It has two functional compartments: red pulp filters the blood and removes aged or damaged red blood cells; white pulp contains lymphocytes (B and T cells) and performs immune surveillance. Despite its size, the spleen is not essential for survival — it can be removed (splenectomy) after trauma, though patients become more susceptible to encapsulated bacteria.",
       "statement": "The spleen (~12 cm) is the largest lymphoid organ, with red pulp filtering blood and removing old RBCs, and white pulp performing immune functions.",
@@ -134,19 +194,30 @@
           "type": "reverse",
           "question": "What is the function of the red pulp of the spleen?",
           "correctAnswer": "Filters blood and removes old red blood cells",
-          "distractors": ["Produces T cells", "Secretes antibodies", "Produces lymph fluid", "Stores platelets only"]
+          "distractors": [
+            "Produces T cells",
+            "Secretes antibodies",
+            "Produces lymph fluid",
+            "Stores platelets only"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: The spleen is essential for life and cannot be surgically removed.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The spleen's ___ pulp filters blood and removes aged RBCs, while the ___ pulp contains lymphocytes for immune function.",
           "correctAnswer": "Red; white",
-          "distractors": ["White; red", "Cortex; medulla", "Inner; outer"]
+          "distractors": [
+            "White; red",
+            "Cortex; medulla",
+            "Inner; outer"
+          ]
         }
       ]
     },
@@ -159,7 +230,15 @@
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Spleen", "Bone marrow", "Lymph nodes", "Tonsils", "Bursa of Fabricius", "Adrenal gland", "Thyroid"],
+      "distractors": [
+        "Spleen",
+        "Bone marrow",
+        "Lymph nodes",
+        "Tonsils",
+        "Bursa of Fabricius",
+        "Adrenal gland",
+        "Thyroid"
+      ],
       "quizQuestion": "Where do T lymphocytes mature and become immunocompetent?",
       "explanation": "T cells are born in the bone marrow but travel to the thymus to mature — the 'T' in T cell stands for thymus. Located in the anterior mediastinum (in front of the heart and great vessels), the thymus is most active and largest during childhood. After puberty it progressively involutes, replaced by fat. Thymic education is critical: T cells that react too strongly to self-antigens are deleted (central tolerance), preventing autoimmunity.",
       "statement": "T cells mature in the thymus, which is located in the anterior mediastinum, is largest in childhood, and involutes after puberty.",
@@ -176,13 +255,23 @@
           "type": "context",
           "question": "The 'T' in T lymphocyte stands for which organ?",
           "correctAnswer": "Thymus",
-          "distractors": ["Tonsil", "Thorax", "Thalamus", "Trabecular"]
+          "distractors": [
+            "Tonsil",
+            "Thorax",
+            "Thalamus",
+            "Trabecular"
+          ]
         },
         {
           "type": "reverse",
           "question": "The thymus is located in which region of the chest?",
           "correctAnswer": "Anterior mediastinum",
-          "distractors": ["Posterior mediastinum", "Left pleural cavity", "Superior abdomen", "Right axilla"]
+          "distractors": [
+            "Posterior mediastinum",
+            "Left pleural cavity",
+            "Superior abdomen",
+            "Right axilla"
+          ]
         }
       ]
     },
@@ -195,7 +284,15 @@
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": ["Peyer's patches", "Spleen", "Thymus", "Lymph nodes", "Adenoids only", "MALT", "Vermiform appendix"],
+      "distractors": [
+        "Peyer's patches",
+        "Spleen",
+        "Thymus",
+        "Lymph nodes",
+        "Adenoids only",
+        "MALT",
+        "Vermiform appendix"
+      ],
       "quizQuestion": "Which three paired sets of lymphoid tissue in the pharyngeal ring serve as the first line of defense against inhaled and ingested pathogens?",
       "explanation": "The three sets of tonsils form Waldeyer's tonsillar ring: the pharyngeal tonsils (adenoids, on the posterior nasopharynx), the palatine tonsils (visible in the back of the throat, most commonly removed by tonsillectomy), and the lingual tonsils (at the base of the tongue). Together they sample pathogens entering through the mouth and nose, initiating immune responses before anything reaches the lower respiratory or digestive tract.",
       "statement": "Three sets of tonsils — pharyngeal (adenoids), palatine, and lingual — guard the pharyngeal ring against inhaled and ingested pathogens.",
@@ -212,26 +309,43 @@
           "type": "fill_blank",
           "question": "The pharyngeal tonsils are also commonly known as ___.",
           "correctAnswer": "Adenoids",
-          "distractors": ["Palatine tonsils", "Lingual tonsils", "Peyer's patches", "Follicles"]
+          "distractors": [
+            "Palatine tonsils",
+            "Lingual tonsils",
+            "Peyer's patches",
+            "Follicles"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: The palatine tonsils are the ones visible at the back of the throat.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_007",
       "correctAnswer": "Peyer's patches",
-      "acceptableAlternatives": ["Peyers patches"],
+      "acceptableAlternatives": [
+        "Peyers patches"
+      ],
       "chainThemeId": 5,
       "answerTypePoolId": "anatomy_structures",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Brunner's glands", "Crypts of Lieberkuhn", "Haustra", "Villi", "Mesenteric lymph nodes", "Plicae circulares", "Lacteals"],
+      "distractors": [
+        "Brunner's glands",
+        "Crypts of Lieberkuhn",
+        "Haustra",
+        "Villi",
+        "Mesenteric lymph nodes",
+        "Plicae circulares",
+        "Lacteals"
+      ],
       "quizQuestion": "Mucosa-associated lymphoid tissue (MALT) in the ileum is specifically called what?",
       "explanation": "Peyer's patches are aggregates of lymphoid follicles in the mucosa and submucosa of the ileum (the final segment of the small intestine). They are part of the broader MALT system — mucosa-associated lymphoid tissue found throughout the GI, respiratory, and urogenital tracts. Peyer's patches monitor intestinal bacteria, generate immune responses to gut pathogens, and are critical for oral tolerance (teaching the immune system not to attack food antigens).",
       "statement": "Peyer's patches are clusters of lymphoid follicles in the ileum, part of the MALT system that monitors intestinal contents for pathogens.",
@@ -248,20 +362,35 @@
           "type": "reverse",
           "question": "In which segment of the small intestine are Peyer's patches primarily found?",
           "correctAnswer": "Ileum",
-          "distractors": ["Duodenum", "Jejunum", "Cecum", "Colon"]
+          "distractors": [
+            "Duodenum",
+            "Jejunum",
+            "Cecum",
+            "Colon"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_008",
       "correctAnswer": "Innate immunity",
-      "acceptableAlternatives": ["Innate immune system"],
+      "acceptableAlternatives": [
+        "Innate immune system"
+      ],
       "chainThemeId": 6,
       "answerTypePoolId": "immune_types",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": ["Adaptive immunity", "Humoral immunity", "Cell-mediated immunity", "Passive immunity", "Acquired immunity", "Active immunity", "Memory immunity"],
+      "distractors": [
+        "Adaptive immunity",
+        "Humoral immunity",
+        "Cell-mediated immunity",
+        "Passive immunity",
+        "Acquired immunity",
+        "Active immunity",
+        "Memory immunity"
+      ],
       "quizQuestion": "Which division of immunity is non-specific, responds immediately, and includes barriers like skin, phagocytes, NK cells, and the complement system?",
       "explanation": "Innate immunity is the first line of defense — it acts within minutes to hours, does not require prior exposure to a pathogen, and does not produce immunological memory. Its components include physical barriers (skin, mucous membranes), phagocytes (neutrophils, macrophages), natural killer cells, the complement cascade, and the inflammatory response including fever. It recognizes broad patterns of non-self molecules (PAMPs) via pattern recognition receptors like Toll-like receptors.",
       "statement": "Innate immunity is non-specific and immediate, using barriers, phagocytes, NK cells, complement, inflammation, and fever as its tools.",
@@ -278,26 +407,42 @@
           "type": "fill_blank",
           "question": "The ___ immune system responds immediately and non-specifically, while the ___ immune system is specific and takes days but generates memory.",
           "correctAnswer": "Innate; adaptive",
-          "distractors": ["Adaptive; innate", "Humoral; cellular", "Primary; secondary"]
+          "distractors": [
+            "Adaptive; innate",
+            "Humoral; cellular",
+            "Primary; secondary"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: Innate immunity produces long-lasting immunological memory after exposure to a pathogen.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_009",
       "correctAnswer": "Adaptive immunity",
-      "acceptableAlternatives": ["Acquired immunity"],
+      "acceptableAlternatives": [
+        "Acquired immunity"
+      ],
       "chainThemeId": 6,
       "answerTypePoolId": "immune_types",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": ["Innate immunity", "Passive immunity", "Non-specific immunity", "Complement system", "Inflammatory response", "Natural immunity", "Congenital immunity"],
+      "distractors": [
+        "Innate immunity",
+        "Passive immunity",
+        "Non-specific immunity",
+        "Complement system",
+        "Inflammatory response",
+        "Natural immunity",
+        "Congenital immunity"
+      ],
       "quizQuestion": "Which arm of the immune system is pathogen-specific, takes days to develop, and produces immunological memory?",
       "explanation": "Adaptive immunity is the sophisticated, targeted response coordinated by lymphocytes. It has two branches: humoral immunity (B cells secreting antibodies that neutralize pathogens in body fluids) and cell-mediated immunity (T cells that directly kill infected cells or coordinate other immune cells). The key feature is memory — after the primary response, long-lived memory cells persist so that future encounters with the same pathogen trigger a faster and stronger secondary response. This memory is the basis of vaccination.",
       "statement": "Adaptive immunity is specific, takes days to activate, and produces memory cells — its two arms are humoral (B cells/antibodies) and cell-mediated (T cells).",
@@ -314,20 +459,37 @@
           "type": "context",
           "question": "Vaccination works by exploiting which property of adaptive immunity?",
           "correctAnswer": "Immunological memory",
-          "distractors": ["Immediate non-specific response", "Complement activation", "Phagocytosis", "Fever generation"]
+          "distractors": [
+            "Immediate non-specific response",
+            "Complement activation",
+            "Phagocytosis",
+            "Fever generation"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_010",
       "correctAnswer": "Helper T cells (CD4+)",
-      "acceptableAlternatives": ["CD4+ T cells", "Helper T cells", "Th cells"],
+      "acceptableAlternatives": [
+        "CD4+ T cells",
+        "Helper T cells",
+        "Th cells"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "cell_types",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
-      "distractors": ["Cytotoxic T cells (CD8+)", "B cells", "NK cells", "Macrophages", "Neutrophils", "Regulatory T cells", "Plasma cells"],
+      "distractors": [
+        "Cytotoxic T cells (CD8+)",
+        "B cells",
+        "NK cells",
+        "Macrophages",
+        "Neutrophils",
+        "Regulatory T cells",
+        "Plasma cells"
+      ],
       "quizQuestion": "Which T cell subtype carries the CD4+ surface marker, activates B cells and macrophages, and is specifically targeted and depleted by HIV?",
       "explanation": "Helper T cells (CD4+ T cells) are the coordinators of the adaptive immune response. They recognize antigen presented on MHC class II molecules and release cytokines that stimulate B cells to produce antibodies and activate macrophages to destroy intracellular pathogens. HIV specifically infects CD4+ T cells using their CD4 receptor as an entry point. As the infection progresses and CD4+ count falls below 200 cells/uL, the patient is diagnosed with AIDS and becomes vulnerable to opportunistic infections.",
       "statement": "Helper T cells (CD4+) activate B cells and macrophages; HIV specifically targets and destroys CD4+ T cells, causing AIDS when their count falls critically low.",
@@ -344,26 +506,47 @@
           "type": "reverse",
           "question": "HIV causes AIDS by depleting which specific immune cell type?",
           "correctAnswer": "CD4+ helper T cells",
-          "distractors": ["CD8+ cytotoxic T cells", "B cells", "NK cells", "Macrophages"]
+          "distractors": [
+            "CD8+ cytotoxic T cells",
+            "B cells",
+            "NK cells",
+            "Macrophages"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "Helper T cells display the ___ surface marker and recognize antigens presented on MHC class ___ molecules.",
           "correctAnswer": "CD4+; II",
-          "distractors": ["CD8+; I", "CD4+; I", "CD8+; II"]
+          "distractors": [
+            "CD8+; I",
+            "CD4+; I",
+            "CD8+; II"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_011",
       "correctAnswer": "Cytotoxic T cells (CD8+)",
-      "acceptableAlternatives": ["CD8+ T cells", "Killer T cells", "Cytotoxic T lymphocytes"],
+      "acceptableAlternatives": [
+        "CD8+ T cells",
+        "Killer T cells",
+        "Cytotoxic T lymphocytes"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "cell_types",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Helper T cells (CD4+)", "NK cells", "B cells", "Macrophages", "Neutrophils", "Plasma cells", "Dendritic cells"],
+      "distractors": [
+        "Helper T cells (CD4+)",
+        "NK cells",
+        "B cells",
+        "Macrophages",
+        "Neutrophils",
+        "Plasma cells",
+        "Dendritic cells"
+      ],
       "quizQuestion": "Which T cell subtype carries the CD8+ marker and directly kills virus-infected cells and cancer cells?",
       "explanation": "Cytotoxic T cells (CTLs, CD8+) are the immune system's assassins. They recognize virus-infected, cancerous, or otherwise abnormal cells by the fragments displayed on MHC class I molecules — which are present on almost all nucleated cells. Once a CTL identifies a target, it releases perforin (which punches holes in the target cell membrane) and granzymes (proteases that trigger apoptosis). This kills the infected cell before it can produce more virus.",
       "statement": "Cytotoxic T cells (CD8+) kill virus-infected and cancer cells by releasing perforin and granzymes that punch holes and trigger apoptosis in target cells.",
@@ -380,20 +563,34 @@
           "type": "fill_blank",
           "question": "Cytotoxic T cells recognize infected cells via fragments displayed on MHC class ___ molecules.",
           "correctAnswer": "I",
-          "distractors": ["II", "III", "IV"]
+          "distractors": [
+            "II",
+            "III",
+            "IV"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_012",
       "correctAnswer": "Plasma cells",
-      "acceptableAlternatives": ["Antibody-secreting cells"],
+      "acceptableAlternatives": [
+        "Antibody-secreting cells"
+      ],
       "chainThemeId": 8,
       "answerTypePoolId": "cell_types",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": ["Memory B cells", "Helper T cells", "Mast cells", "NK cells", "Dendritic cells", "Macrophages", "Naive B cells"],
+      "distractors": [
+        "Memory B cells",
+        "Helper T cells",
+        "Mast cells",
+        "NK cells",
+        "Dendritic cells",
+        "Macrophages",
+        "Naive B cells"
+      ],
       "quizQuestion": "When a B cell is activated by an antigen (with helper T cell assistance), it differentiates into which antibody-secreting cells?",
       "explanation": "Activated B cells differentiate into two populations: plasma cells, which are antibody factories that can secrete thousands of antibodies per second, and memory B cells, which persist long-term and enable a rapid secondary response. Plasma cells are terminally differentiated — they have largely downregulated their B cell receptor and are committed entirely to antibody production. Most live only days to weeks; a subset migrates to the bone marrow and survives for years.",
       "statement": "Activated B cells differentiate into plasma cells (antibody secretion) and memory B cells (long-term immunity). B cells mature in the bone marrow.",
@@ -410,26 +607,46 @@
           "type": "reverse",
           "question": "B cells mature in which organ?",
           "correctAnswer": "Bone marrow",
-          "distractors": ["Thymus", "Spleen", "Lymph nodes", "Liver"]
+          "distractors": [
+            "Thymus",
+            "Spleen",
+            "Lymph nodes",
+            "Liver"
+          ]
         },
         {
           "type": "context",
           "question": "Memory B cells produced during a primary immune response are responsible for which feature of adaptive immunity?",
           "correctAnswer": "Faster, stronger secondary response upon re-exposure",
-          "distractors": ["First-line non-specific defense", "Direct killing of infected cells", "Complement activation", "Fever induction"]
+          "distractors": [
+            "First-line non-specific defense",
+            "Direct killing of infected cells",
+            "Complement activation",
+            "Fever induction"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_013",
       "correctAnswer": "Natural killer (NK) cells",
-      "acceptableAlternatives": ["NK cells"],
+      "acceptableAlternatives": [
+        "NK cells"
+      ],
       "chainThemeId": 9,
       "answerTypePoolId": "cell_types",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
-      "distractors": ["Cytotoxic T cells", "Macrophages", "Neutrophils", "Helper T cells", "B cells", "Mast cells", "Dendritic cells"],
+      "distractors": [
+        "Cytotoxic T cells",
+        "Macrophages",
+        "Neutrophils",
+        "Helper T cells",
+        "B cells",
+        "Mast cells",
+        "Dendritic cells"
+      ],
       "quizQuestion": "Which innate immune cells kill virus-infected and tumor cells WITHOUT requiring prior sensitization or antigen presentation?",
       "explanation": "NK cells are large granular lymphocytes of the innate immune system that patrol for cells displaying 'missing self' — the absence of MHC class I molecules, which infected cells and tumor cells often downregulate to avoid cytotoxic T cell detection. NK cells also respond to stress proteins upregulated by infected or damaged cells. They kill targets using the same perforin/granzyme mechanism as cytotoxic T cells, but without requiring prior sensitization.",
       "statement": "NK cells are innate lymphocytes that kill virus-infected and tumor cells without prior sensitization, detecting 'missing self' (absent MHC class I).",
@@ -446,7 +663,9 @@
           "type": "true_false",
           "question": "True or false: NK cells are part of innate immunity and kill targets without requiring prior antigen sensitization.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
@@ -459,7 +678,15 @@
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Neutrophils", "Dendritic cells", "NK cells", "Mast cells", "Basophils", "Eosinophils", "Plasma cells"],
+      "distractors": [
+        "Neutrophils",
+        "Dendritic cells",
+        "NK cells",
+        "Mast cells",
+        "Basophils",
+        "Eosinophils",
+        "Plasma cells"
+      ],
       "quizQuestion": "Which phagocytic cells derive from monocytes and are known as Kupffer cells in the liver, microglia in the CNS, and alveolar macrophages in the lungs?",
       "explanation": "Macrophages are tissue-resident phagocytes derived from circulating monocytes. They are the garbage collectors and sentinels of every tissue in the body, ingesting pathogens, dead cells, and debris while presenting antigens to T cells. When they take up residence in specific tissues they acquire local names: Kupffer cells (liver), alveolar macrophages (lungs), microglia (central nervous system), osteoclasts (bone), and Langerhans cells (skin). They also produce cytokines that amplify both innate and adaptive immune responses.",
       "statement": "Macrophages are monocyte-derived phagocytes and antigen-presenting cells with tissue-specific names: Kupffer cells (liver), microglia (CNS), alveolar macrophages (lungs), osteoclasts (bone).",
@@ -476,13 +703,22 @@
           "type": "context",
           "question": "What is the tissue-specific name for macrophages residing in the liver?",
           "correctAnswer": "Kupffer cells",
-          "distractors": ["Microglia", "Alveolar macrophages", "Osteoclasts", "Langerhans cells"]
+          "distractors": [
+            "Microglia",
+            "Alveolar macrophages",
+            "Osteoclasts",
+            "Langerhans cells"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "Macrophages in the CNS are called ___, while those lining liver sinusoids are called ___.",
           "correctAnswer": "Microglia; Kupffer cells",
-          "distractors": ["Kupffer cells; microglia", "Astrocytes; hepatocytes", "Oligodendrocytes; Kupffer cells"]
+          "distractors": [
+            "Kupffer cells; microglia",
+            "Astrocytes; hepatocytes",
+            "Oligodendrocytes; Kupffer cells"
+          ]
         }
       ]
     },
@@ -495,7 +731,15 @@
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Macrophages", "B cells", "Helper T cells", "NK cells", "Langerhans cells only", "Neutrophils", "Monocytes"],
+      "distractors": [
+        "Macrophages",
+        "B cells",
+        "Helper T cells",
+        "NK cells",
+        "Langerhans cells only",
+        "Neutrophils",
+        "Monocytes"
+      ],
       "quizQuestion": "Which cells are considered the MOST potent antigen-presenting cells (APCs) in the immune system?",
       "explanation": "Dendritic cells (DCs) are the professional antigen-presenting cells of the immune system. They patrol tissues, capture antigens, and migrate to lymph nodes where they present antigen fragments on both MHC class I and class II molecules to naive T cells, initiating primary adaptive immune responses. Their exceptional APC efficiency comes from high levels of MHC molecules and co-stimulatory signals. Langerhans cells are dendritic cells of the epidermis. Without dendritic cells, naive T cells cannot be activated.",
       "statement": "Dendritic cells are the most potent antigen-presenting cells (APCs), capturing antigens in tissues and migrating to lymph nodes to activate naive T cells.",
@@ -512,7 +756,9 @@
           "type": "true_false",
           "question": "True or false: Dendritic cells are the most potent antigen-presenting cells and are essential for activating naive T cells.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
@@ -525,7 +771,15 @@
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Macrophages", "Lymphocytes", "Eosinophils", "Basophils", "Monocytes", "NK cells", "Platelets"],
+      "distractors": [
+        "Macrophages",
+        "Lymphocytes",
+        "Eosinophils",
+        "Basophils",
+        "Monocytes",
+        "NK cells",
+        "Platelets"
+      ],
       "quizQuestion": "Which white blood cells are the most abundant (60-70% of all WBCs), are first responders to infection, form pus, and survive only hours to days?",
       "explanation": "Neutrophils are the foot soldiers of the innate immune system — the most numerous white blood cell at 60-70% of the circulating WBC count. Within minutes of infection or tissue damage, they are recruited by chemokines to the site, where they engulf pathogens (phagocytosis), release toxic granules (degranulation), and form neutrophil extracellular traps (NETs) to snare bacteria. Their brief lifespan (hours to days in tissues) and mass death at infection sites produce pus — essentially a graveyard of neutrophils, their debris, and dead bacteria.",
       "statement": "Neutrophils are the most abundant WBC (60-70%), are the first responders to bacterial infection, and form pus when they die in large numbers at infection sites.",
@@ -542,26 +796,43 @@
           "type": "fill_blank",
           "question": "Neutrophils make up approximately ___% of circulating white blood cells.",
           "correctAnswer": "60-70%",
-          "distractors": ["20-30%", "1-5%", "40-50%", "80-90%"]
+          "distractors": [
+            "20-30%",
+            "1-5%",
+            "40-50%",
+            "80-90%"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: Neutrophils are the most abundant white blood cells and are the first immune cells recruited to a bacterial infection site.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_017",
       "correctAnswer": "IgG",
-      "acceptableAlternatives": ["Immunoglobulin G"],
+      "acceptableAlternatives": [
+        "Immunoglobulin G"
+      ],
       "chainThemeId": 11,
       "answerTypePoolId": "immunoglobulin_types",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["IgA", "IgM", "IgE", "IgD", "IgG4", "Secretory IgA", "IgG1"],
+      "distractors": [
+        "IgA",
+        "IgM",
+        "IgE",
+        "IgD",
+        "IgG4",
+        "Secretory IgA",
+        "IgG1"
+      ],
       "quizQuestion": "Which antibody class makes up about 75% of serum immunoglobulins, dominates the secondary immune response, and is the only class that crosses the placenta?",
       "explanation": "IgG is the most abundant antibody in blood and extracellular fluid, constituting about 75-80% of serum immunoglobulins. It is the dominant antibody of the secondary (memory) immune response. Its ability to cross the placenta via neonatal Fc receptors provides passive immunity to newborns during the first months of life before their own immune systems mature. IgG has four subclasses (IgG1-4) with somewhat different effector functions.",
       "statement": "IgG is the most abundant antibody (75% of serum Ig), dominates the secondary immune response, and is the only class that crosses the placenta to protect newborns.",
@@ -578,20 +849,36 @@
           "type": "context",
           "question": "Which antibody class provides passive immunity to newborns by crossing the placenta?",
           "correctAnswer": "IgG",
-          "distractors": ["IgA", "IgM", "IgE", "IgD"]
+          "distractors": [
+            "IgA",
+            "IgM",
+            "IgE",
+            "IgD"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_018",
       "correctAnswer": "IgA",
-      "acceptableAlternatives": ["Immunoglobulin A", "Secretory IgA"],
+      "acceptableAlternatives": [
+        "Immunoglobulin A",
+        "Secretory IgA"
+      ],
       "chainThemeId": 11,
       "answerTypePoolId": "immunoglobulin_types",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["IgG", "IgM", "IgE", "IgD", "IgG2", "Complement proteins", "Lysozyme"],
+      "distractors": [
+        "IgG",
+        "IgM",
+        "IgE",
+        "IgD",
+        "IgG2",
+        "Complement proteins",
+        "Lysozyme"
+      ],
       "quizQuestion": "Which antibody class provides mucosal immunity and is found in breast milk, saliva, tears, and secretions of the respiratory and GI tracts?",
       "explanation": "IgA is the dominant antibody at mucosal surfaces — the respiratory tract, GI tract, urogenital tract, and all exocrine secretions including saliva, tears, sweat, and breast milk. In secretions it exists as secretory IgA (sIgA), a dimer with a secretory component that protects it from proteolytic digestion. Breast milk IgA is a major source of passive mucosal immunity for newborns whose own immune systems are not yet producing adequate IgA.",
       "statement": "IgA provides mucosal immunity and is present in breast milk, saliva, tears, and respiratory/GI secretions. As secretory IgA (dimer) it protects mucosal surfaces.",
@@ -608,20 +895,32 @@
           "type": "true_false",
           "question": "True or false: IgA is the dominant antibody at mucosal surfaces and is found in saliva, tears, and breast milk.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_019",
       "correctAnswer": "IgM",
-      "acceptableAlternatives": ["Immunoglobulin M"],
+      "acceptableAlternatives": [
+        "Immunoglobulin M"
+      ],
       "chainThemeId": 11,
       "answerTypePoolId": "immunoglobulin_types",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["IgG", "IgA", "IgE", "IgD", "IgG3", "Complement C3b", "IgG1"],
+      "distractors": [
+        "IgG",
+        "IgA",
+        "IgE",
+        "IgD",
+        "IgG3",
+        "Complement C3b",
+        "IgG1"
+      ],
       "quizQuestion": "Which antibody class is the first produced in a primary immune response, exists as a pentamer, and is the most effective complement activator?",
       "explanation": "IgM is the first antibody produced when the immune system encounters a new antigen. It exists as a pentamer (5 Y-shaped units joined by a J chain), giving it 10 antigen-binding sites. Its large size keeps it largely confined to the bloodstream. The pentameric structure makes it exceptionally efficient at activating the classical complement pathway. Positive IgM serology indicates recent or current infection.",
       "statement": "IgM is the first antibody produced in a primary immune response, forms a pentamer (10 binding sites), and is the strongest complement activator.",
@@ -638,20 +937,34 @@
           "type": "fill_blank",
           "question": "IgM exists as a ___ (5 units joined by a J chain), giving it ___ antigen-binding sites.",
           "correctAnswer": "Pentamer; 10",
-          "distractors": ["Monomer; 2", "Dimer; 4", "Hexamer; 12"]
+          "distractors": [
+            "Monomer; 2",
+            "Dimer; 4",
+            "Hexamer; 12"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_020",
       "correctAnswer": "IgE",
-      "acceptableAlternatives": ["Immunoglobulin E"],
+      "acceptableAlternatives": [
+        "Immunoglobulin E"
+      ],
       "chainThemeId": 11,
       "answerTypePoolId": "immunoglobulin_types",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
-      "distractors": ["IgG", "IgA", "IgM", "IgD", "Complement C4a", "Histamine", "IgG4"],
+      "distractors": [
+        "IgG",
+        "IgA",
+        "IgM",
+        "IgD",
+        "Complement C4a",
+        "Histamine",
+        "IgG4"
+      ],
       "quizQuestion": "Which antibody class is responsible for allergic reactions and defense against parasites, and triggers mast cell degranulation?",
       "explanation": "IgE is the least abundant antibody in serum but has the most powerful effector functions per molecule. It binds with high affinity to Fc receptors on mast cells and basophils. When a previously sensitized person re-encounters an allergen, IgE molecules cross-link on these cells, triggering degranulation and release of histamine, leukotrienes, and prostaglandins — producing allergic symptoms from hay fever to anaphylaxis. Evolutionarily, IgE likely evolved to defend against large parasites (helminths).",
       "statement": "IgE mediates allergic reactions and anti-parasite defense by binding mast cells and basophils, triggering degranulation and histamine release upon allergen exposure.",
@@ -668,20 +981,35 @@
           "type": "context",
           "question": "Why might IgE-mediated allergic responses have evolved? What was the original biological purpose?",
           "correctAnswer": "Defense against parasitic worms (helminths)",
-          "distractors": ["Defense against viruses", "Primary antibacterial response", "Placental immune transfer", "Mucosal surface protection"]
+          "distractors": [
+            "Defense against viruses",
+            "Primary antibacterial response",
+            "Placental immune transfer",
+            "Mucosal surface protection"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_021",
       "correctAnswer": "Membrane attack complex (MAC)",
-      "acceptableAlternatives": ["MAC"],
+      "acceptableAlternatives": [
+        "MAC"
+      ],
       "chainThemeId": 12,
       "answerTypePoolId": "immune_structures",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
-      "distractors": ["Opsonin complex", "Perforin pore", "Neutrophil extracellular trap", "MHC class I complex", "Terminal complement", "C3 convertase", "Antibody-antigen complex"],
+      "distractors": [
+        "Opsonin complex",
+        "Perforin pore",
+        "Neutrophil extracellular trap",
+        "MHC class I complex",
+        "Terminal complement",
+        "C3 convertase",
+        "Antibody-antigen complex"
+      ],
       "quizQuestion": "What is the terminal product of complement activation that physically punches holes in bacterial cell membranes?",
       "explanation": "The complement system comprises ~30 proteins that form a cascade activated through three pathways (classical, lectin, and alternative). All three converge on formation of C3 convertase, then C5 convertase, and ultimately the membrane attack complex (MAC). The MAC is formed by C5b, C6, C7, C8, and multiple C9 molecules that polymerize to form a transmembrane pore, disrupting the osmotic gradient across bacterial membranes and causing lysis. Complement also generates opsonins (C3b tags bacteria for phagocytosis) and anaphylatoxins (C3a, C5a promote inflammation).",
       "statement": "Complement activation ends in the membrane attack complex (MAC), a pore that lyses bacteria. It also produces opsonins (C3b) and pro-inflammatory anaphylatoxins (C3a, C5a).",
@@ -698,20 +1026,36 @@
           "type": "reverse",
           "question": "The complement system produces opsonin (C3b) to tag bacteria for phagocytosis. What does it produce to lyse bacteria directly?",
           "correctAnswer": "Membrane attack complex (MAC)",
-          "distractors": ["Perforin", "Lysozyme", "Interferons", "Defensins"]
+          "distractors": [
+            "Perforin",
+            "Lysozyme",
+            "Interferons",
+            "Defensins"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_022",
       "correctAnswer": "4 cardinal signs",
-      "acceptableAlternatives": ["Four cardinal signs", "Rubor, calor, dolor, tumor"],
+      "acceptableAlternatives": [
+        "Four cardinal signs",
+        "Rubor, calor, dolor, tumor"
+      ],
       "chainThemeId": 13,
       "answerTypePoolId": "medical_concepts",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["3 cardinal signs", "5 cardinal signs", "6 cardinal signs", "2 cardinal signs", "Signs of allergy", "SIRS criteria", "Signs of sepsis"],
+      "distractors": [
+        "3 cardinal signs",
+        "5 cardinal signs",
+        "6 cardinal signs",
+        "2 cardinal signs",
+        "Signs of allergy",
+        "SIRS criteria",
+        "Signs of sepsis"
+      ],
       "quizQuestion": "The Roman physician Celsus described how many classical cardinal signs of inflammation, and what is the fifth sign added later?",
       "explanation": "Celsus described four cardinal signs of inflammation: rubor (redness), calor (heat), dolor (pain), and tumor (swelling). A fifth sign — functio laesa (loss of function) — was added later, often attributed to Rudolf Virchow or Galen. The signs reflect the underlying vascular and cellular events: vasodilation causes redness and heat; increased vascular permeability causes swelling; inflammatory mediators (bradykinin, prostaglandins) cause pain; and combined tissue disruption causes loss of function.",
       "statement": "The 4 classical cardinal signs of inflammation are rubor (redness), calor (heat), dolor (pain), and tumor (swelling); functio laesa (loss of function) is the fifth.",
@@ -728,26 +1072,45 @@
           "type": "fill_blank",
           "question": "The four Latin cardinal signs of inflammation are rubor (___ ), calor (___), dolor (___), and tumor (___).",
           "correctAnswer": "redness; heat; pain; swelling",
-          "distractors": ["pallor; cold; numbness; hardness", "cyanosis; warmth; itching; bruising"]
+          "distractors": [
+            "pallor; cold; numbness; hardness",
+            "cyanosis; warmth; itching; bruising"
+          ]
         },
         {
           "type": "context",
           "question": "What is the fifth sign of inflammation, added after Celsus's original four?",
           "correctAnswer": "Functio laesa (loss of function)",
-          "distractors": ["Pallor (whitening)", "Pruritis (itching)", "Crepitus (crackling)", "Ecchymosis (bruising)"]
+          "distractors": [
+            "Pallor (whitening)",
+            "Pruritis (itching)",
+            "Crepitus (crackling)",
+            "Ecchymosis (bruising)"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_023",
       "correctAnswer": "Interstitial fluid (excess tissue fluid)",
-      "acceptableAlternatives": ["Interstitial fluid", "Tissue fluid"],
+      "acceptableAlternatives": [
+        "Interstitial fluid",
+        "Tissue fluid"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "anatomy_concepts",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
-      "distractors": ["Blood plasma", "Cerebrospinal fluid", "Synovial fluid", "Pleural fluid", "Bile", "Urine", "Lymph from thoracic duct"],
+      "distractors": [
+        "Blood plasma",
+        "Cerebrospinal fluid",
+        "Synovial fluid",
+        "Pleural fluid",
+        "Bile",
+        "Urine",
+        "Lymph from thoracic duct"
+      ],
       "quizQuestion": "What fluid do lymphatic capillaries collect and return to the bloodstream?",
       "explanation": "Blood capillaries leak about 20 liters of fluid per day into surrounding tissues as part of normal exchange. Most is reabsorbed directly back into venous capillaries, but about 3-4 liters of excess interstitial fluid (plus large proteins and fat absorbed from the gut as chyle) cannot re-enter the blood capillaries and is instead collected by blind-ended lymphatic capillaries. The lymphatic system returns this fluid to the bloodstream via the thoracic duct and right lymphatic duct, preventing edema.",
       "statement": "Lymphatic capillaries collect excess interstitial fluid that cannot re-enter blood capillaries and return it to the circulation, preventing edema.",
@@ -764,20 +1127,35 @@
           "type": "context",
           "question": "What condition results when lymphatic drainage is blocked and interstitial fluid accumulates in tissues?",
           "correctAnswer": "Lymphedema",
-          "distractors": ["Ascites", "Pleural effusion", "Anasarca", "Deep vein thrombosis"]
+          "distractors": [
+            "Ascites",
+            "Pleural effusion",
+            "Anasarca",
+            "Deep vein thrombosis"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_024",
       "correctAnswer": "Bone marrow",
-      "acceptableAlternatives": ["Red bone marrow"],
+      "acceptableAlternatives": [
+        "Red bone marrow"
+      ],
       "chainThemeId": 8,
       "answerTypePoolId": "anatomy_structures",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": ["Thymus", "Spleen", "Lymph nodes", "Liver (fetal)", "Tonsils", "Peyer's patches", "MALT"],
+      "distractors": [
+        "Thymus",
+        "Spleen",
+        "Lymph nodes",
+        "Liver (fetal)",
+        "Tonsils",
+        "Peyer's patches",
+        "MALT"
+      ],
       "quizQuestion": "B cells mature and become immunocompetent in which primary lymphoid organ?",
       "explanation": "B cells are born and mature in the bone marrow — the 'B' originally stood for bursa of Fabricius, a bird organ where B cells were discovered, but in humans this function is served by the bone marrow. During maturation, B cells undergo VDJ recombination to generate a unique antigen receptor (BCR) and are tested for self-reactivity. Self-reactive B cells are eliminated (clonal deletion) or made anergic to prevent autoimmunity. Only mature, non-self-reactive B cells exit to the peripheral lymphoid organs.",
       "statement": "B cells mature in bone marrow where they generate unique B cell receptors and are screened for self-reactivity before release. T cells mature in the thymus.",
@@ -794,21 +1172,36 @@
           "type": "reverse",
           "question": "Both B cells and T cells originate in the bone marrow, but only T cells leave to mature elsewhere. Where do T cells go to mature?",
           "correctAnswer": "Thymus",
-          "distractors": ["Spleen", "Lymph nodes", "Peyer's patches", "Tonsils"]
+          "distractors": [
+            "Spleen",
+            "Lymph nodes",
+            "Peyer's patches",
+            "Tonsils"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_025",
       "correctAnswer": "Opsonization",
-      "acceptableAlternatives": ["Opsonisation"],
+      "acceptableAlternatives": [
+        "Opsonisation"
+      ],
       "chainThemeId": 12,
       "answerTypePoolId": "immune_processes",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Phagocytosis", "Diapedesis", "Chemotaxis", "Agglutination", "Lysis", "Margination", "Extravasation"],
-      "quizQuestion": "When antibodies or complement proteins (C3b) coat a pathogen to enhance phagocytosis, this process is called what?",
+      "distractors": [
+        "Phagocytosis",
+        "Diapedesis",
+        "Chemotaxis",
+        "Agglutination",
+        "Lysis",
+        "Margination",
+        "Extravasation"
+      ],
+      "quizQuestion": "When antibodies or complement proteins (C3b) coat a pathogen to enhance phagocytosis, this biological process is called what?",
       "explanation": "Opsonization (from Greek 'opsonin' — 'to prepare food for') is the coating of a pathogen or foreign particle with molecules that enhance its recognition and engulfment by phagocytes. The main opsonins are IgG antibodies (recognized by Fc receptors on phagocytes) and complement fragment C3b (recognized by complement receptors). Together they dramatically increase the efficiency of phagocytosis.",
       "statement": "Opsonization is the coating of pathogens with antibodies (IgG) or complement (C3b) to 'flag' them for more efficient phagocytosis by neutrophils and macrophages.",
       "wowFactor": "The word opsonization comes from the Greek for 'to prepare food' — from the perspective of a macrophage, opsonins are literally seasoning for bacteria. IgG antibodies act as a 'grab-me' tag, with the Fab region sticking to the bacterium and the Fc region sticking out for phagocytes to grip.",
@@ -824,20 +1217,34 @@
           "type": "fill_blank",
           "question": "The two main opsonins that coat pathogens to enhance phagocytosis are ___ and ___.",
           "correctAnswer": "IgG antibodies; C3b (complement)",
-          "distractors": ["IgM; IgE", "Neutrophils; macrophages", "C5a; histamine"]
+          "distractors": [
+            "IgM; IgE",
+            "Neutrophils; macrophages",
+            "C5a; histamine"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_026",
       "correctAnswer": "Fever",
-      "acceptableAlternatives": ["Pyrexia"],
+      "acceptableAlternatives": [
+        "Pyrexia"
+      ],
       "chainThemeId": 13,
       "answerTypePoolId": "immune_responses",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": ["Inflammation", "Anaphylaxis", "Chemotaxis", "Diapedesis", "Complement activation", "Antibody production", "Phagocytosis"],
+      "distractors": [
+        "Inflammation",
+        "Anaphylaxis",
+        "Chemotaxis",
+        "Diapedesis",
+        "Complement activation",
+        "Antibody production",
+        "Phagocytosis"
+      ],
       "quizQuestion": "Which innate immune response raises core body temperature via pyrogens (IL-1, IL-6, TNF-alpha) acting on the hypothalamus?",
       "explanation": "Fever (pyrexia) is a regulated elevation of body temperature above normal (>37.5 degrees C), mediated by pyrogens — molecules that signal the hypothalamus to raise its temperature set-point. Exogenous pyrogens (bacterial LPS, viral RNA) stimulate immune cells to produce endogenous pyrogens: interleukin-1 (IL-1), IL-6, and TNF-alpha, which act on the hypothalamic thermoregulatory center. Fever enhances immune function, inhibits pathogen replication, and accelerates production of acute-phase proteins.",
       "statement": "Fever is an innate immune response where pyrogens (IL-1, IL-6, TNF-alpha) act on the hypothalamus to raise body temperature, enhancing immune function and inhibiting pathogen replication.",
@@ -854,20 +1261,34 @@
           "type": "fill_blank",
           "question": "The endogenous pyrogens ___, ___, and TNF-alpha act on the ___ to raise the temperature set-point during fever.",
           "correctAnswer": "IL-1; IL-6; hypothalamus",
-          "distractors": ["IgG; IgM; thalamus", "C3a; C5a; cerebellum", "Histamine; bradykinin; cortex"]
+          "distractors": [
+            "IgG; IgM; thalamus",
+            "C3a; C5a; cerebellum",
+            "Histamine; bradykinin; cortex"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_027",
       "correctAnswer": "IgD",
-      "acceptableAlternatives": ["Immunoglobulin D"],
+      "acceptableAlternatives": [
+        "Immunoglobulin D"
+      ],
       "chainThemeId": 11,
       "answerTypePoolId": "immunoglobulin_types",
       "difficulty": 4,
       "funScore": 5,
       "ageGroup": "all",
-      "distractors": ["IgG", "IgA", "IgM", "IgE", "BCR complex", "IgG4", "Toll-like receptor"],
+      "distractors": [
+        "IgG",
+        "IgA",
+        "IgM",
+        "IgE",
+        "BCR complex",
+        "IgG4",
+        "Toll-like receptor"
+      ],
       "quizQuestion": "Which antibody class functions primarily as an antigen receptor on the surface of naive B cells and has the least understood serum function?",
       "explanation": "IgD is found at very low concentrations in serum but is expressed at high levels on the surface of mature naive B cells, coexpressed with IgM as the B cell receptor (BCR). Its surface role is to contribute to B cell activation. Its exact serum function remains incompletely understood, making it the most mysterious of the five antibody classes. IgD-expressing B cells are also found in the tonsils and upper respiratory mucosa.",
       "statement": "IgD is co-expressed with IgM as the B cell receptor on naive B cells and has very low serum concentration with incompletely understood function.",
@@ -884,20 +1305,33 @@
           "type": "true_false",
           "question": "True or false: IgD is primarily found as a surface receptor on naive B cells and has the least understood serum function of the antibody classes.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_028",
       "correctAnswer": "MHC class II",
-      "acceptableAlternatives": ["HLA class II", "MHC-II"],
+      "acceptableAlternatives": [
+        "HLA class II",
+        "MHC-II"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "immune_structures",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": ["MHC class I", "MHC class III", "Toll-like receptor", "Complement receptor", "IgG Fc receptor", "CD8 receptor", "Integrin"],
+      "distractors": [
+        "MHC class I",
+        "MHC class III",
+        "Toll-like receptor",
+        "Complement receptor",
+        "IgG Fc receptor",
+        "CD8 receptor",
+        "Integrin"
+      ],
       "quizQuestion": "Antigen-presenting cells (macrophages, dendritic cells, B cells) display pathogen fragments to helper T cells via which type of molecule?",
       "explanation": "MHC class II molecules are expressed only on professional antigen-presenting cells (APCs): dendritic cells, macrophages, and B cells. They display peptide fragments derived from exogenous proteins (pathogens engulfed by phagocytosis) to CD4+ helper T cells. In contrast, MHC class I molecules are expressed on all nucleated cells and display peptides from endogenous proteins (e.g., viral proteins being made inside the cell) to CD8+ cytotoxic T cells. This division ensures the right T cell type responds to the right threat.",
       "statement": "MHC class II molecules on APCs present extracellular antigen fragments to CD4+ helper T cells; MHC class I on all nucleated cells presents intracellular fragments to CD8+ cytotoxic T cells.",
@@ -914,20 +1348,35 @@
           "type": "fill_blank",
           "question": "MHC class ___ presents antigens to CD4+ T cells; MHC class ___ presents antigens to CD8+ T cells.",
           "correctAnswer": "II; I",
-          "distractors": ["I; II", "I; III", "III; II"]
+          "distractors": [
+            "I; II",
+            "I; III",
+            "III; II"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_029",
       "correctAnswer": "Autoimmunity",
-      "acceptableAlternatives": ["Autoimmune disease", "Autoimmune response"],
+      "acceptableAlternatives": [
+        "Autoimmune disease",
+        "Autoimmune response"
+      ],
       "chainThemeId": 14,
       "answerTypePoolId": "medical_concepts",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Immunodeficiency", "Hypersensitivity", "Allergy", "Graft rejection", "Anaphylaxis", "Immune tolerance", "Lymphoma"],
+      "distractors": [
+        "Immunodeficiency",
+        "Hypersensitivity",
+        "Allergy",
+        "Graft rejection",
+        "Anaphylaxis",
+        "Immune tolerance",
+        "Lymphoma"
+      ],
       "quizQuestion": "What condition results when the immune system fails to maintain tolerance and attacks the body's own tissues?",
       "explanation": "Autoimmunity occurs when central or peripheral tolerance fails and self-reactive lymphocytes are not eliminated or suppressed. The thymus normally deletes self-reactive T cells (central tolerance), and the bone marrow eliminates self-reactive B cells. When these mechanisms fail, immune cells mount attacks on self-tissues. Examples include rheumatoid arthritis (joints), multiple sclerosis (myelin), type 1 diabetes (pancreatic beta cells), Hashimoto's thyroiditis (thyroid), and systemic lupus erythematosus (multiple tissues/DNA).",
       "statement": "Autoimmunity occurs when self-tolerance fails and the immune system attacks the body's own tissues, as in rheumatoid arthritis, MS, type 1 diabetes, and lupus.",
@@ -944,7 +1393,12 @@
           "type": "context",
           "question": "In which primary lymphoid organ are self-reactive T cells normally deleted to prevent autoimmunity?",
           "correctAnswer": "Thymus (central tolerance)",
-          "distractors": ["Spleen", "Lymph nodes", "Bone marrow", "Tonsils"]
+          "distractors": [
+            "Spleen",
+            "Lymph nodes",
+            "Bone marrow",
+            "Tonsils"
+          ]
         }
       ]
     },
@@ -957,7 +1411,15 @@
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": ["Thoracic duct origin", "Right lymphatic duct", "Inguinal lymph nodes", "Mesenteric lymph nodes", "Lacteals", "Lymphatic trunk", "Portal vein"],
+      "distractors": [
+        "Thoracic duct origin",
+        "Right lymphatic duct",
+        "Inguinal lymph nodes",
+        "Mesenteric lymph nodes",
+        "Lacteals",
+        "Lymphatic trunk",
+        "Portal vein"
+      ],
       "quizQuestion": "What is the name of the dilated sac at the base of the thoracic duct (at L1-L2) that receives lymph from the lower limbs and intestinal lymphatics?",
       "explanation": "The cisterna chyli (Latin: 'cistern of chyle') is a dilated sac at the level of the L1-L2 vertebrae that acts as the reservoir for lymph from the lower body before it enters the thoracic duct. It receives lymph from the right and left lumbar lymphatic trunks (lower limbs and pelvic organs) and the intestinal lymphatic trunk (which carries chyle — fat-laden lymph from the small intestine). Chyle has a milky-white appearance due to its high triglyceride content.",
       "statement": "The cisterna chyli is the dilated sac at L1-L2 that collects lymph and chyle from the lower limbs and intestines before the thoracic duct ascends.",
@@ -974,20 +1436,33 @@
           "type": "true_false",
           "question": "True or false: The cisterna chyli is located at the level of L1-L2 and is the origin of the thoracic duct.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_031",
       "correctAnswer": "Regulatory T cells (Tregs)",
-      "acceptableAlternatives": ["Tregs", "Regulatory T cells"],
+      "acceptableAlternatives": [
+        "Tregs",
+        "Regulatory T cells"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "cell_types",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Helper T cells", "Cytotoxic T cells", "Memory T cells", "NK cells", "Suppressor B cells", "Dendritic cells", "Monocytes"],
+      "distractors": [
+        "Helper T cells",
+        "Cytotoxic T cells",
+        "Memory T cells",
+        "NK cells",
+        "Suppressor B cells",
+        "Dendritic cells",
+        "Monocytes"
+      ],
       "quizQuestion": "Which T cell subset suppresses immune responses and is critical for preventing autoimmunity and excessive inflammation?",
       "explanation": "Regulatory T cells (Tregs) are a subset of CD4+ T cells that express the transcription factor FoxP3. Their primary role is to maintain immune homeostasis by suppressing excessive immune responses — they release anti-inflammatory cytokines (IL-10, TGF-beta) and can directly contact and suppress other T cells. Loss of Tregs leads to severe multi-organ autoimmunity (IPEX syndrome in humans). Conversely, tumors exploit Tregs to suppress anti-tumor immunity, making Treg depletion a target for cancer immunotherapy.",
       "statement": "Regulatory T cells (Tregs, CD4+FoxP3+) suppress immune responses via IL-10 and TGF-beta, preventing autoimmunity and excessive inflammation.",
@@ -1004,20 +1479,35 @@
           "type": "context",
           "question": "How do tumors sometimes evade immune destruction?",
           "correctAnswer": "By recruiting regulatory T cells to suppress anti-tumor immune responses",
-          "distractors": ["By activating complement to protect themselves", "By increasing MHC class I expression", "By producing antibodies against T cells", "By stimulating NK cells"]
+          "distractors": [
+            "By activating complement to protect themselves",
+            "By increasing MHC class I expression",
+            "By producing antibodies against T cells",
+            "By stimulating NK cells"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_032",
       "correctAnswer": "Lacteals",
-      "acceptableAlternatives": ["Lacteal"],
+      "acceptableAlternatives": [
+        "Lacteal"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "anatomy_structures",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Villi capillaries", "Portal venules", "Mesenteric arteries", "Crypts of Lieberkuhn", "Peyer's patches", "Brunner's glands", "Hepatic sinusoids"],
+      "distractors": [
+        "Villi capillaries",
+        "Portal venules",
+        "Mesenteric arteries",
+        "Crypts of Lieberkuhn",
+        "Peyer's patches",
+        "Brunner's glands",
+        "Hepatic sinusoids"
+      ],
       "quizQuestion": "What are the specialized lymphatic capillaries in intestinal villi that absorb dietary fats (forming chyle)?",
       "explanation": "Lacteals are blind-ended lymphatic capillaries located in the core of each intestinal villus. Unlike sugars and amino acids (which are absorbed directly into blood capillaries and travel via the portal vein to the liver), long-chain dietary fats are packaged into chylomicrons in intestinal epithelial cells and secreted into lacteals. The fat-laden lymph (chyle) is milky white and travels via mesenteric lymphatics to the cisterna chyli and thoracic duct, bypassing the liver entirely on first pass.",
       "statement": "Lacteals are lymphatic capillaries in intestinal villi that absorb dietary fat as chylomicrons, forming chyle that travels via the thoracic duct to the bloodstream.",
@@ -1034,7 +1524,12 @@
           "type": "reverse",
           "question": "Unlike sugars and amino acids that go directly into blood capillaries, dietary fats are absorbed into lacteals as what type of lipoprotein particle?",
           "correctAnswer": "Chylomicrons",
-          "distractors": ["LDL particles", "HDL particles", "VLDL particles", "Bile micelles"]
+          "distractors": [
+            "LDL particles",
+            "HDL particles",
+            "VLDL particles",
+            "Bile micelles"
+          ]
         }
       ]
     },
@@ -1047,7 +1542,15 @@
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Basophils", "Eosinophils", "Neutrophils", "NK cells", "Macrophages", "Plasma cells", "Monocytes"],
+      "distractors": [
+        "Basophils",
+        "Eosinophils",
+        "Neutrophils",
+        "NK cells",
+        "Macrophages",
+        "Plasma cells",
+        "Monocytes"
+      ],
       "quizQuestion": "Which tissue-resident immune cells carry IgE on their surface and degranulate to release histamine and leukotrienes during allergic reactions?",
       "explanation": "Mast cells are connective tissue residents found especially in skin, mucous membranes, and around blood vessels. They express high-affinity IgE receptors (FcεRI) and are coated with IgE antibodies produced during sensitization. When allergen cross-links adjacent IgE molecules, mast cells rapidly degranulate, releasing histamine (vasodilation, increased permeability, smooth muscle contraction), leukotrienes (prolonged bronchoconstriction), prostaglandins, and cytokines. They also have protective roles against parasites and bacteria.",
       "statement": "Mast cells are IgE-coated tissue residents that degranulate histamine and leukotrienes during allergic reactions; their circulating counterpart is the basophil.",
@@ -1064,20 +1567,35 @@
           "type": "context",
           "question": "Why is epinephrine (adrenaline) the first-line treatment for anaphylaxis?",
           "correctAnswer": "It reverses the massive vasodilation caused by mast cell histamine release",
-          "distractors": ["It destroys IgE antibodies", "It blocks antigen binding to IgE", "It stimulates mast cells to reabsorb granules", "It activates regulatory T cells"]
+          "distractors": [
+            "It destroys IgE antibodies",
+            "It blocks antigen binding to IgE",
+            "It stimulates mast cells to reabsorb granules",
+            "It activates regulatory T cells"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_034",
       "correctAnswer": "Lymphedema",
-      "acceptableAlternatives": ["Lymphoedema"],
+      "acceptableAlternatives": [
+        "Lymphoedema"
+      ],
       "chainThemeId": 16,
       "answerTypePoolId": "medical_conditions",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": ["Edema", "Ascites", "Hydrocele", "Anasarca", "Pitting edema", "Deep vein thrombosis", "Varicose veins"],
+      "distractors": [
+        "Edema",
+        "Ascites",
+        "Hydrocele",
+        "Anasarca",
+        "Pitting edema",
+        "Deep vein thrombosis",
+        "Varicose veins"
+      ],
       "quizQuestion": "Blockage or removal of lymphatic vessels or nodes leads to accumulation of interstitial fluid and chronic swelling of an extremity — what is this condition called?",
       "explanation": "Lymphedema results from impaired lymphatic drainage, causing protein-rich fluid to accumulate in interstitial tissue. Primary lymphedema is caused by developmental abnormalities of lymphatic vessels. Secondary lymphedema — far more common — is caused by damage to lymphatics through surgery (especially lymph node dissection in cancer treatment), radiation, infection (filariasis/elephantiasis caused by parasitic worms is the leading cause worldwide), or trauma.",
       "statement": "Lymphedema is chronic swelling from impaired lymphatic drainage; in cancer treatment it commonly follows lymph node removal; globally, filariasis (parasitic worms) is the most common cause.",
@@ -1094,20 +1612,37 @@
           "type": "context",
           "question": "In tropical countries, which parasitic infection (filariasis) is the most common cause of lymphedema and can cause extreme limb swelling?",
           "correctAnswer": "Wuchereria bancrofti (lymphatic filariasis / elephantiasis)",
-          "distractors": ["Malaria", "Schistosomiasis", "Trypanosomiasis", "Ascariasis"]
+          "distractors": [
+            "Malaria",
+            "Schistosomiasis",
+            "Trypanosomiasis",
+            "Ascariasis"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_035",
       "correctAnswer": "Diapedesis (extravasation)",
-      "acceptableAlternatives": ["Diapedesis", "Extravasation", "Transendothelial migration"],
+      "acceptableAlternatives": [
+        "Diapedesis",
+        "Extravasation",
+        "Transendothelial migration"
+      ],
       "chainThemeId": 17,
       "answerTypePoolId": "immune_processes",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Chemotaxis", "Margination", "Phagocytosis", "Opsonization", "Degranulation", "Complement activation", "Pinocytosis"],
+      "distractors": [
+        "Chemotaxis",
+        "Margination",
+        "Phagocytosis",
+        "Opsonization",
+        "Degranulation",
+        "Complement activation",
+        "Pinocytosis"
+      ],
       "quizQuestion": "The process by which white blood cells squeeze through capillary walls to enter infected tissue is called what?",
       "explanation": "Diapedesis (also called extravasation or transendothelial migration) is the process by which leukocytes (especially neutrophils and monocytes) exit the bloodstream to enter infected or inflamed tissue. It involves sequential steps: margination (leukocytes roll along the vessel wall via selectins), adhesion (binding to integrins on activated endothelium), and transmigration (squeezing between endothelial cells). The signal is provided by chemokines released by damaged tissue and resident immune cells, creating a gradient that leukocytes follow via chemotaxis.",
       "statement": "Diapedesis is WBCs squeezing between endothelial cells to exit blood vessels into infected tissue, preceded by rolling (selectins), margination, and firm adhesion (integrins).",
@@ -1124,20 +1659,35 @@
           "type": "reverse",
           "question": "What is the term for the directed migration of leukocytes toward a chemical gradient released at an infection site?",
           "correctAnswer": "Chemotaxis",
-          "distractors": ["Diapedesis", "Opsonization", "Margination", "Phagocytosis"]
+          "distractors": [
+            "Diapedesis",
+            "Opsonization",
+            "Margination",
+            "Phagocytosis"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_036",
       "correctAnswer": "Splenomegaly",
-      "acceptableAlternatives": ["Enlarged spleen"],
+      "acceptableAlternatives": [
+        "Enlarged spleen"
+      ],
       "chainThemeId": 18,
       "answerTypePoolId": "medical_conditions",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
-      "distractors": ["Lymphadenopathy", "Hepatomegaly", "Splenectomy", "Thrombocytopenia", "Anemia", "Leukemia", "Lymphoma"],
+      "distractors": [
+        "Lymphadenopathy",
+        "Hepatomegaly",
+        "Splenectomy",
+        "Thrombocytopenia",
+        "Anemia",
+        "Leukemia",
+        "Lymphoma"
+      ],
       "quizQuestion": "Abnormal enlargement of the spleen beyond its normal ~12 cm — caused by infection (EBV), liver disease, or blood cancers — is called what?",
       "explanation": "Splenomegaly (from Greek: splen = spleen, megaly = enlargement) is palpable below the left costal margin when the spleen exceeds roughly 13-14 cm. Causes include infectious diseases (EBV/mononucleosis classically causes splenomegaly, as does malaria and schistosomiasis), liver disease (portal hypertension causing congestive splenomegaly), hematologic malignancies (leukemia, lymphoma), hemolytic anemias, and infiltrative diseases. An enlarged spleen is at risk of rupture from minor trauma.",
       "statement": "Splenomegaly (enlarged spleen >13 cm) is caused by infection (EBV, malaria), liver disease (portal hypertension), blood cancers, or hemolytic anemia. Risks rupture with trauma.",
@@ -1154,20 +1704,37 @@
           "type": "context",
           "question": "Why are patients with infectious mononucleosis (EBV) advised to avoid contact sports for several weeks?",
           "correctAnswer": "Splenomegaly makes the spleen vulnerable to rupture from blunt abdominal trauma",
-          "distractors": ["Myocarditis makes strenuous exercise dangerous", "Their immune system cannot fight wound infections", "Lymph nodes around joints restrict movement", "Fever elevates the risk of heat stroke"]
+          "distractors": [
+            "Myocarditis makes strenuous exercise dangerous",
+            "Their immune system cannot fight wound infections",
+            "Lymph nodes around joints restrict movement",
+            "Fever elevates the risk of heat stroke"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_037",
       "correctAnswer": "Toll-like receptors (TLRs)",
-      "acceptableAlternatives": ["Toll-like receptors", "TLRs", "Pattern recognition receptors"],
+      "acceptableAlternatives": [
+        "Toll-like receptors",
+        "TLRs",
+        "Pattern recognition receptors"
+      ],
       "chainThemeId": 19,
       "answerTypePoolId": "immune_structures",
       "difficulty": 4,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["T cell receptors (TCRs)", "B cell receptors (BCRs)", "MHC class I molecules", "Fc receptors", "Complement receptors", "Cytokine receptors", "Integrin receptors"],
+      "distractors": [
+        "T cell receptors (TCRs)",
+        "B cell receptors (BCRs)",
+        "MHC class I molecules",
+        "Fc receptors",
+        "Complement receptors",
+        "Cytokine receptors",
+        "Integrin receptors"
+      ],
       "quizQuestion": "Which innate immune receptors recognize conserved pathogen-associated molecular patterns (PAMPs) like bacterial LPS and viral RNA?",
       "explanation": "Toll-like receptors (TLRs) are a family of pattern-recognition receptors (PRRs) expressed on innate immune cells. They recognize evolutionarily conserved pathogen-associated molecular patterns (PAMPs) — molecular signatures unique to microbes not present in host cells, such as bacterial lipopolysaccharide (LPS, recognized by TLR4), flagellin (TLR5), double-stranded viral RNA (TLR3), and bacterial CpG DNA (TLR9). TLR activation triggers NF-kB signaling, leading to cytokine production (TNF-alpha, IL-1, IL-6) and the inflammatory response. Jules Hoffmann and Bruce Beutler received the 2011 Nobel Prize for this work.",
       "statement": "Toll-like receptors (TLRs) are innate pattern-recognition receptors that detect bacterial/viral PAMPs (LPS via TLR4, flagellin via TLR5, viral dsRNA via TLR3) and trigger the inflammatory response.",
@@ -1184,20 +1751,35 @@
           "type": "fill_blank",
           "question": "TLR4 recognizes bacterial ___, while TLR3 recognizes double-stranded viral ___.",
           "correctAnswer": "LPS (lipopolysaccharide); RNA",
-          "distractors": ["Peptidoglycan; DNA", "Flagellin; proteins", "Capsid proteins; RNA"]
+          "distractors": [
+            "Peptidoglycan; DNA",
+            "Flagellin; proteins",
+            "Capsid proteins; RNA"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_038",
       "correctAnswer": "Clonal selection",
-      "acceptableAlternatives": ["Clonal expansion", "Clonal selection and expansion"],
+      "acceptableAlternatives": [
+        "Clonal expansion",
+        "Clonal selection and expansion"
+      ],
       "chainThemeId": 20,
       "answerTypePoolId": "immune_processes",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Somatic hypermutation", "Affinity maturation", "Isotype switching", "VDJ recombination", "Central tolerance", "Negative selection", "Thymic education"],
+      "distractors": [
+        "Somatic hypermutation",
+        "Affinity maturation",
+        "Isotype switching",
+        "VDJ recombination",
+        "Central tolerance",
+        "Negative selection",
+        "Thymic education"
+      ],
       "quizQuestion": "The process by which a lymphocyte with the matching antigen receptor is selected and proliferates into a large clone of identical effector and memory cells is called what?",
       "explanation": "Clonal selection theory (proposed by Frank Macfarlane Burnet, 1957, Nobel Prize 1960) explains adaptive immunity: among billions of pre-existing B and T cells, each with a unique antigen receptor generated by VDJ recombination, an antigen selects the one (or few) lymphocyte(s) with a matching receptor. That cell is then activated and undergoes clonal expansion — rapid proliferation into thousands of identical effector cells and memory cells. This is why vaccines work: they trigger clonal expansion of memory lymphocytes against a specific pathogen.",
       "statement": "Clonal selection: antigen selects the lymphocyte with the matching receptor, triggering clonal expansion into effector and memory cells. Proposed by Burnet (1957, Nobel 1960).",
@@ -1214,20 +1796,37 @@
           "type": "context",
           "question": "Frank Macfarlane Burnet won the 1960 Nobel Prize for proposing which theory that explains how adaptive immunity is specific to individual antigens?",
           "correctAnswer": "Clonal selection theory",
-          "distractors": ["Instructive theory of antibody formation", "Self-non-self discrimination theory", "Innate receptor diversity theory", "Somatic mutation theory"]
+          "distractors": [
+            "Instructive theory of antibody formation",
+            "Self-non-self discrimination theory",
+            "Innate receptor diversity theory",
+            "Somatic mutation theory"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_039",
       "correctAnswer": "Interferon",
-      "acceptableAlternatives": ["Interferons", "Type I interferons", "IFN-alpha/IFN-beta"],
+      "acceptableAlternatives": [
+        "Interferons",
+        "Type I interferons",
+        "IFN-alpha/IFN-beta"
+      ],
       "chainThemeId": 21,
       "answerTypePoolId": "immune_molecules",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
-      "distractors": ["Interleukins", "Complement proteins", "Antibodies", "Perforin", "Defensins", "Lysozyme", "Tumor necrosis factor"],
+      "distractors": [
+        "Interleukins",
+        "Complement proteins",
+        "Antibodies",
+        "Perforin",
+        "Defensins",
+        "Lysozyme",
+        "Tumor necrosis factor"
+      ],
       "quizQuestion": "Which antiviral cytokines are secreted by virus-infected cells to warn neighboring cells and activate NK cells?",
       "explanation": "Interferons (IFNs) are signaling proteins secreted by virus-infected cells. Type I interferons (IFN-alpha produced by leukocytes; IFN-beta produced by fibroblasts) are the primary antiviral interferons — they signal neighboring uninfected cells to upregulate antiviral defenses (degrading viral RNA, halting protein synthesis), activate NK cells and macrophages, and enhance MHC class I expression to help T cells detect infected cells. Type II interferon (IFN-gamma) is produced by T cells and NK cells and has both antiviral and immunomodulatory roles.",
       "statement": "Type I interferons (IFN-alpha, IFN-beta) are antiviral cytokines released by infected cells that alert neighbors, activate NK cells, and upregulate antiviral defenses.",
@@ -1244,20 +1843,33 @@
           "type": "true_false",
           "question": "True or false: Type I interferons are secreted by virus-infected cells and signal neighboring cells to upregulate antiviral defenses.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_lymph_040",
       "correctAnswer": "Herd immunity",
-      "acceptableAlternatives": ["Population immunity", "Community immunity"],
+      "acceptableAlternatives": [
+        "Population immunity",
+        "Community immunity"
+      ],
       "chainThemeId": 22,
       "answerTypePoolId": "medical_concepts",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
-      "distractors": ["Active immunity", "Passive immunity", "Cross-reactive immunity", "Natural immunity", "Innate immunity", "Mucosal immunity", "Sterilizing immunity"],
+      "distractors": [
+        "Active immunity",
+        "Passive immunity",
+        "Cross-reactive immunity",
+        "Natural immunity",
+        "Innate immunity",
+        "Mucosal immunity",
+        "Sterilizing immunity"
+      ],
       "quizQuestion": "When enough individuals in a population are immune to an infection, transmission chains break and even non-immune individuals are indirectly protected — this is called what?",
       "explanation": "Herd immunity (community immunity) occurs when a sufficiently high proportion of a population is immune to an infectious disease (through vaccination or prior infection) that the pathogen cannot sustain transmission chains. Even individuals who cannot be vaccinated (newborns, immunocompromised people) are protected because they rarely contact infectious individuals. The threshold proportion needed varies by disease — roughly 95% for measles (very contagious, R0 ~15), ~85% for polio, ~70-90% for COVID-19 variants.",
       "statement": "Herd immunity protects non-immune individuals when enough of the population is immune (threshold varies: ~95% for measles, ~85% for polio). It enabled smallpox eradication.",
@@ -1274,7 +1886,12 @@
           "type": "context",
           "question": "Why does measles require a higher vaccination coverage (~95%) for herd immunity than polio (~85%)?",
           "correctAnswer": "Measles is far more contagious (higher R0 ~15) than polio, requiring more immune individuals to break transmission chains",
-          "distractors": ["Measles vaccine is less effective than polio vaccine", "Measles infects immune cells, reducing vaccine duration", "Polio only affects children so fewer people need immunity", "The measles virus mutates faster"]
+          "distractors": [
+            "Measles vaccine is less effective than polio vaccine",
+            "Measles infects immune cells, reducing vaccine duration",
+            "Polio only affects children so fewer people need immunity",
+            "The measles virus mutates faster"
+          ]
         }
       ]
     }

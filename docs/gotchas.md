@@ -887,3 +887,19 @@ These are accepted as false positives in the detection.
 **Files:** `data/trivia-sa-fixes.json` (940 approved rewrites), `data/trivia-sa-final-skipped.json` (183 unfixed non-first-word cases)
 
 **Source sync:** The DB was updated directly first, then `apply-fixes-to-json.mjs` synced 561 of the 940 fixes back to source JSON. The remaining 379 were in files that had already diverged (different question text) or used a different field naming convention — those are already correct in the DB.
+
+### 2026-04-08 — Broken placeholder rewrites from self-answering fix pass
+
+**What:** A previous pass rewrote 1,561 self-answering questions by replacing the leaking answer word with `this [category]` placeholders (e.g., "this quantity", "this concept", "this type", "This War"). This created 748 grammatically broken questions like "For a this quantity launched and landing at the same height" and "Which Seljuk This Turk clan controlled..."
+
+**Pattern of failures:**
+- Physics: "this quantity" inserted mid-noun-phrase (e.g., "this quantity force", "this quantity arm", "For an This quantity machine")
+- Philosophy: "this concept" inserted where the philosophical term was (e.g., "Pseudo-Dionysius's Mystical This concept", "a 'this concept of perceptions'")
+- History: Named-noun capitalized placeholders (e.g., "The This Canal (opened 1869)", "This War", "This Empire")
+- Biology/Anatomy: "this structure", "this process" used where the named entity was
+
+**Fix:** `scripts/fix-broken-rewrites.py` — 748 targeted regex substitutions restoring the correct term in context. Specific fixes for each domain run before generic fallbacks. False positives (valid English uses of "this canal", "this pattern", "this plan" as demonstratives) excluded from detection via pattern refinement.
+
+**Detection pitfall:** Japanese questions contain "この" which transliterates as "kono" (= "this") — the script filters these via Unicode range check to avoid false positives.
+
+**Scale:** 748 facts fixed across 38 files (43 unique decks detected initially, but some were false positives). 0 failures on `verify-all-decks.mjs` post-fix.

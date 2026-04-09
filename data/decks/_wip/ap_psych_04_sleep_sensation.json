@@ -3,7 +3,10 @@
     {
       "id": "ap_psych_sleep_rem",
       "correctAnswer": "REM sleep",
-      "acceptableAlternatives": ["Rapid eye movement sleep", "rapid eye movement sleep"],
+      "acceptableAlternatives": [
+        "Rapid eye movement sleep",
+        "rapid eye movement sleep"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "sleep_stage_terms",
       "difficulty": 1,
@@ -14,13 +17,29 @@
       "sourceName": "Wikipedia — Rapid eye movement sleep",
       "sourceUrl": "https://en.wikipedia.org/wiki/Rapid_eye_movement_sleep",
       "volatile": false,
-      "distractors": ["NREM Stage 1", "NREM Stage 2", "NREM Stage 3", "Deep sleep", "Light sleep", "Hypnagogic state", "Delta sleep", "Slow-wave sleep"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "NREM Stage 1",
+        "NREM Stage 2",
+        "NREM Stage 3",
+        "Deep sleep",
+        "Light sleep",
+        "Hypnagogic state",
+        "Delta sleep",
+        "Slow-wave sleep"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sleep_spindles",
       "correctAnswer": "NREM Stage 2",
-      "acceptableAlternatives": ["Stage 2", "Stage 2 sleep", "N2"],
+      "acceptableAlternatives": [
+        "Stage 2",
+        "Stage 2 sleep",
+        "N2"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "sleep_stage_terms",
       "difficulty": 2,
@@ -31,13 +50,30 @@
       "sourceName": "Wikipedia — Sleep spindle",
       "sourceUrl": "https://en.wikipedia.org/wiki/Sleep_spindle",
       "volatile": false,
-      "distractors": ["NREM Stage 1", "NREM Stage 3", "REM sleep", "Hypnagogic stage", "Delta sleep", "Wake state", "Light sleep", "Deep sleep"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "NREM Stage 1",
+        "NREM Stage 3",
+        "REM sleep",
+        "Hypnagogic stage",
+        "Delta sleep",
+        "Wake state",
+        "Light sleep",
+        "Deep sleep"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sleep_delta_waves",
       "correctAnswer": "NREM Stage 3",
-      "acceptableAlternatives": ["Stage 3", "slow-wave sleep", "deep sleep", "N3"],
+      "acceptableAlternatives": [
+        "Stage 3",
+        "slow-wave sleep",
+        "deep sleep",
+        "N3"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "sleep_stage_terms",
       "difficulty": 2,
@@ -48,13 +84,30 @@
       "sourceName": "Wikipedia — Slow-wave sleep",
       "sourceUrl": "https://en.wikipedia.org/wiki/Slow-wave_sleep",
       "volatile": false,
-      "distractors": ["NREM Stage 1", "NREM Stage 2", "REM sleep", "Hypnagogic state", "Stage 4", "Light sleep", "Sleep spindle phase", "Paradoxical sleep"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "NREM Stage 1",
+        "NREM Stage 2",
+        "REM sleep",
+        "Hypnagogic state",
+        "Stage 4",
+        "Light sleep",
+        "Sleep spindle phase",
+        "Paradoxical sleep"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sleep_nrem1",
       "correctAnswer": "NREM Stage 1",
-      "acceptableAlternatives": ["Stage 1", "Stage 1 sleep", "N1", "light sleep"],
+      "acceptableAlternatives": [
+        "Stage 1",
+        "Stage 1 sleep",
+        "N1",
+        "light sleep"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "sleep_stage_terms",
       "difficulty": 2,
@@ -65,13 +118,28 @@
       "sourceName": "Wikipedia — Sleep cycle",
       "sourceUrl": "https://en.wikipedia.org/wiki/Sleep_cycle",
       "volatile": false,
-      "distractors": ["NREM Stage 2", "NREM Stage 3", "REM sleep", "Delta sleep", "Hypnagogic sleep", "Deep sleep", "Paradoxical sleep", "Sleep spindle phase"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "NREM Stage 2",
+        "NREM Stage 3",
+        "REM sleep",
+        "Delta sleep",
+        "Hypnagogic sleep",
+        "Deep sleep",
+        "Paradoxical sleep",
+        "Sleep spindle phase"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sleep_circadian",
       "correctAnswer": "circadian rhythm",
-      "acceptableAlternatives": ["circadian clock", "biological clock"],
+      "acceptableAlternatives": [
+        "circadian clock",
+        "biological clock"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "psych_concept_terms",
       "difficulty": 1,
@@ -82,13 +150,28 @@
       "sourceName": "Wikipedia — Circadian rhythm",
       "sourceUrl": "https://en.wikipedia.org/wiki/Circadian_rhythm",
       "volatile": false,
-      "distractors": ["ultradian rhythm", "infradian rhythm", "homeostatic drive", "sleep pressure", "REM cycle", "cortisol cycle", "melatonin cycle", "theta wave cycle"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "ultradian rhythm",
+        "infradian rhythm",
+        "homeostatic drive",
+        "sleep pressure",
+        "REM cycle",
+        "cortisol cycle",
+        "melatonin cycle",
+        "theta wave cycle"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sleep_scn",
       "correctAnswer": "suprachiasmatic nucleus",
-      "acceptableAlternatives": ["SCN", "suprachiasmatic nucleus (SCN)"],
+      "acceptableAlternatives": [
+        "SCN",
+        "suprachiasmatic nucleus (SCN)"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "psych_concept_terms",
       "difficulty": 3,
@@ -99,8 +182,20 @@
       "sourceName": "Wikipedia — Suprachiasmatic nucleus",
       "sourceUrl": "https://en.wikipedia.org/wiki/Suprachiasmatic_nucleus",
       "volatile": false,
-      "distractors": ["pineal gland", "hippocampus", "amygdala", "thalamus", "reticular activating system", "substantia nigra", "locus coeruleus", "paraventricular nucleus"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "pineal gland",
+        "hippocampus",
+        "amygdala",
+        "thalamus",
+        "reticular activating system",
+        "substantia nigra",
+        "locus coeruleus",
+        "paraventricular nucleus"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sleep_melatonin",
@@ -116,8 +211,20 @@
       "sourceName": "Wikipedia — Melatonin",
       "sourceUrl": "https://en.wikipedia.org/wiki/Melatonin",
       "volatile": false,
-      "distractors": ["cortisol", "serotonin", "dopamine", "adenosine", "norepinephrine", "oxytocin", "growth hormone", "histamine"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "cortisol",
+        "serotonin",
+        "dopamine",
+        "adenosine",
+        "norepinephrine",
+        "oxytocin",
+        "growth hormone",
+        "histamine"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sleep_narcolepsy",
@@ -133,13 +240,28 @@
       "sourceName": "Wikipedia — Narcolepsy",
       "sourceUrl": "https://en.wikipedia.org/wiki/Narcolepsy",
       "volatile": false,
-      "distractors": ["insomnia", "sleep apnea", "somnambulism", "restless leg syndrome", "night terrors", "hypersomnia", "REM sleep behavior disorder", "circadian rhythm disorder"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "insomnia",
+        "sleep apnea",
+        "somnambulism",
+        "restless leg syndrome",
+        "night terrors",
+        "hypersomnia",
+        "REM sleep behavior disorder",
+        "circadian rhythm disorder"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sleep_apnea",
       "correctAnswer": "sleep apnea",
-      "acceptableAlternatives": ["obstructive sleep apnea", "OSA"],
+      "acceptableAlternatives": [
+        "obstructive sleep apnea",
+        "OSA"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "sleep_stage_terms",
       "difficulty": 2,
@@ -150,13 +272,28 @@
       "sourceName": "Wikipedia — Sleep apnea",
       "sourceUrl": "https://en.wikipedia.org/wiki/Sleep_apnea",
       "volatile": false,
-      "distractors": ["narcolepsy", "insomnia", "somnambulism", "hypersomnia", "restless leg syndrome", "night terrors", "REM sleep behavior disorder", "sleep paralysis"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "narcolepsy",
+        "insomnia",
+        "somnambulism",
+        "hypersomnia",
+        "restless leg syndrome",
+        "night terrors",
+        "REM sleep behavior disorder",
+        "sleep paralysis"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sleep_activation_synthesis",
       "correctAnswer": "activation-synthesis hypothesis",
-      "acceptableAlternatives": ["activation-synthesis theory", "Hobson-McCarley hypothesis"],
+      "acceptableAlternatives": [
+        "activation-synthesis theory",
+        "Hobson-McCarley hypothesis"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "psych_concept_terms",
       "difficulty": 3,
@@ -167,25 +304,52 @@
       "sourceName": "Wikipedia — Activation-synthesis hypothesis",
       "sourceUrl": "https://en.wikipedia.org/wiki/Activation-synthesis_hypothesis",
       "volatile": false,
-      "distractors": ["wish fulfillment theory", "information processing theory", "memory consolidation theory", "threat simulation theory", "continuity hypothesis", "cognitive dream theory", "problem-solving hypothesis", "neural pruning theory"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "wish fulfillment theory",
+        "information processing theory",
+        "memory consolidation theory",
+        "threat simulation theory",
+        "continuity hypothesis",
+        "cognitive dream theory",
+        "problem-solving hypothesis",
+        "neural pruning theory"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sleep_freud_dreams",
       "correctAnswer": "wish fulfillment",
-      "acceptableAlternatives": ["wish-fulfillment theory", "Freud's wish fulfillment theory"],
+      "acceptableAlternatives": [
+        "wish-fulfillment theory",
+        "Freud's wish fulfillment theory"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "psych_concept_terms",
       "difficulty": 2,
       "funScore": 7,
-      "quizQuestion": "Sigmund Freud argued in 'The Interpretation of Dreams' (1899) that dreams are the 'royal road to the unconscious' and represent the disguised expression of repressed desires. He called this process what?",
+      "quizQuestion": "Sigmund Freud argued in 'The Interpretation of Dreams' (1899) that dreams are the 'royal road to the unconscious' and represent the disguised expression of repressed desires. He called this biological process what?",
       "explanation": "Freud's wish fulfillment theory holds that every dream represents the disguised fulfillment of a repressed wish. Dreams have manifest content (the literal story) and latent content (the hidden symbolic meaning). Dream work — condensation, displacement, symbolization — transforms unacceptable desires into acceptable dream imagery. Modern neuroscience largely rejects this view in favor of biological accounts like activation-synthesis.",
       "visualDescription": "",
       "sourceName": "Wikipedia — The Interpretation of Dreams",
       "sourceUrl": "https://en.wikipedia.org/wiki/The_Interpretation_of_Dreams",
       "volatile": false,
-      "distractors": ["activation-synthesis", "memory consolidation", "neural pruning", "threat simulation", "problem solving", "information processing", "continuity theory", "REM rebound"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "activation-synthesis",
+        "memory consolidation",
+        "neural pruning",
+        "threat simulation",
+        "problem solving",
+        "information processing",
+        "continuity theory",
+        "REM rebound"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sensation_transduction",
@@ -201,8 +365,20 @@
       "sourceName": "Wikipedia — Sensory transduction",
       "sourceUrl": "https://en.wikipedia.org/wiki/Sensory_transduction",
       "volatile": false,
-      "distractors": ["perception", "adaptation", "habituation", "signal detection", "accommodation", "convergence", "encoding", "modulation"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "perception",
+        "adaptation",
+        "habituation",
+        "signal detection",
+        "accommodation",
+        "convergence",
+        "encoding",
+        "modulation"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sensation_absolute_threshold",
@@ -218,13 +394,28 @@
       "sourceName": "Wikipedia — Absolute threshold",
       "sourceUrl": "https://en.wikipedia.org/wiki/Absolute_threshold",
       "volatile": false,
-      "distractors": ["difference threshold", "just noticeable difference", "signal-to-noise ratio", "sensory adaptation", "Weber fraction", "terminal threshold", "response bias", "subliminal threshold"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "difference threshold",
+        "just noticeable difference",
+        "signal-to-noise ratio",
+        "sensory adaptation",
+        "Weber fraction",
+        "terminal threshold",
+        "response bias",
+        "subliminal threshold"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sensation_jnd",
       "correctAnswer": "just noticeable difference",
-      "acceptableAlternatives": ["JND", "difference threshold"],
+      "acceptableAlternatives": [
+        "JND",
+        "difference threshold"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "sensation_terms",
       "difficulty": 2,
@@ -235,13 +426,28 @@
       "sourceName": "Wikipedia — Just-noticeable difference",
       "sourceUrl": "https://en.wikipedia.org/wiki/Just-noticeable_difference",
       "volatile": false,
-      "distractors": ["absolute threshold", "signal detection criterion", "Weber fraction", "sensory adaptation", "subliminal perception", "response bias", "terminal threshold", "perceptual set"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "absolute threshold",
+        "signal detection criterion",
+        "Weber fraction",
+        "sensory adaptation",
+        "subliminal perception",
+        "response bias",
+        "terminal threshold",
+        "perceptual set"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sensation_webers_law",
       "correctAnswer": "Weber's Law",
-      "acceptableAlternatives": ["Weber's law", "Weber's law of just noticeable differences"],
+      "acceptableAlternatives": [
+        "Weber's law",
+        "Weber's law of just noticeable differences"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "sensation_terms",
       "difficulty": 2,
@@ -252,13 +458,28 @@
       "sourceName": "Wikipedia — Weber–Fechner law",
       "sourceUrl": "https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law",
       "volatile": false,
-      "distractors": ["Fechner's Law", "Stevens' Power Law", "Signal Detection Theory", "Fitts' Law", "Hick's Law", "Yerkes-Dodson Law", "Gestalt Law", "Ohm's Acoustic Law"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "Fechner's Law",
+        "Stevens' Power Law",
+        "Signal Detection Theory",
+        "Fitts' Law",
+        "Hick's Law",
+        "Yerkes-Dodson Law",
+        "Gestalt Law",
+        "Ohm's Acoustic Law"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sensation_signal_detection",
       "correctAnswer": "signal detection theory",
-      "acceptableAlternatives": ["SDT", "signal detection"],
+      "acceptableAlternatives": [
+        "SDT",
+        "signal detection"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "sensation_terms",
       "difficulty": 3,
@@ -269,13 +490,28 @@
       "sourceName": "Wikipedia — Detection theory",
       "sourceUrl": "https://en.wikipedia.org/wiki/Detection_theory",
       "volatile": false,
-      "distractors": ["Weber's Law", "absolute threshold theory", "sensory adaptation theory", "Gestalt theory", "Fechner's Law", "subliminal perception theory", "perceptual set theory", "frequency theory"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "Weber's Law",
+        "absolute threshold theory",
+        "sensory adaptation theory",
+        "Gestalt theory",
+        "Fechner's Law",
+        "subliminal perception theory",
+        "perceptual set theory",
+        "frequency theory"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sensation_adaptation",
       "correctAnswer": "sensory adaptation",
-      "acceptableAlternatives": ["adaptation", "neural adaptation"],
+      "acceptableAlternatives": [
+        "adaptation",
+        "neural adaptation"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "sensation_terms",
       "difficulty": 1,
@@ -286,13 +522,27 @@
       "sourceName": "Wikipedia — Neural adaptation",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neural_adaptation",
       "volatile": false,
-      "distractors": ["habituation", "signal detection", "transduction", "accommodation", "perceptual set", "subliminal perception", "sensory gating", "threshold elevation"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "habituation",
+        "signal detection",
+        "transduction",
+        "accommodation",
+        "perceptual set",
+        "subliminal perception",
+        "sensory gating",
+        "threshold elevation"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sensation_rods_cones",
       "correctAnswer": "rods",
-      "acceptableAlternatives": ["rod cells"],
+      "acceptableAlternatives": [
+        "rod cells"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "sensation_terms",
       "difficulty": 1,
@@ -303,13 +553,28 @@
       "sourceName": "Wikipedia — Rod cell",
       "sourceUrl": "https://en.wikipedia.org/wiki/Rod_cell",
       "volatile": false,
-      "distractors": ["cones", "bipolar cells", "ganglion cells", "amacrine cells", "horizontal cells", "foveal cells", "Müller cells", "optic nerve fibers"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "cones",
+        "bipolar cells",
+        "ganglion cells",
+        "amacrine cells",
+        "horizontal cells",
+        "foveal cells",
+        "Müller cells",
+        "optic nerve fibers"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sensation_gate_control",
       "correctAnswer": "gate-control theory",
-      "acceptableAlternatives": ["gate control theory", "Melzack-Wall theory"],
+      "acceptableAlternatives": [
+        "gate control theory",
+        "Melzack-Wall theory"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "sensation_terms",
       "difficulty": 3,
@@ -320,13 +585,27 @@
       "sourceName": "Wikipedia — Gate control theory of pain",
       "sourceUrl": "https://en.wikipedia.org/wiki/Gate_control_theory_of_pain",
       "volatile": false,
-      "distractors": ["activation-synthesis theory", "signal detection theory", "specificity theory of pain", "pattern theory of pain", "endorphin theory", "Weber's Law", "opponent-process theory", "place theory"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "activation-synthesis theory",
+        "signal detection theory",
+        "specificity theory of pain",
+        "pattern theory of pain",
+        "endorphin theory",
+        "Weber's Law",
+        "opponent-process theory",
+        "place theory"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sensation_pitch_place_theory",
       "correctAnswer": "place theory",
-      "acceptableAlternatives": ["place theory of pitch"],
+      "acceptableAlternatives": [
+        "place theory of pitch"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "sensation_terms",
       "difficulty": 3,
@@ -337,13 +616,28 @@
       "sourceName": "Wikipedia — Place theory (hearing)",
       "sourceUrl": "https://en.wikipedia.org/wiki/Place_theory_(hearing)",
       "volatile": false,
-      "distractors": ["frequency theory", "gate-control theory", "volley theory", "resonance theory", "signal detection theory", "temporal theory", "duplex theory", "opponent-process theory"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "frequency theory",
+        "gate-control theory",
+        "volley theory",
+        "resonance theory",
+        "signal detection theory",
+        "temporal theory",
+        "duplex theory",
+        "opponent-process theory"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     },
     {
       "id": "ap_psych_sensation_pitch_frequency_theory",
       "correctAnswer": "frequency theory",
-      "acceptableAlternatives": ["frequency theory of pitch", "temporal theory"],
+      "acceptableAlternatives": [
+        "frequency theory of pitch",
+        "temporal theory"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "sensation_terms",
       "difficulty": 3,
@@ -354,8 +648,20 @@
       "sourceName": "Wikipedia — Frequency theory (hearing)",
       "sourceUrl": "https://en.wikipedia.org/wiki/Frequency_theory",
       "volatile": false,
-      "distractors": ["place theory", "gate-control theory", "volley theory", "resonance theory", "signal detection theory", "temporal summation theory", "cochlear theory", "duplex theory"],
-      "examTags": ["AP_Psychology", "Unit_1"]
+      "distractors": [
+        "place theory",
+        "gate-control theory",
+        "volley theory",
+        "resonance theory",
+        "signal detection theory",
+        "temporal summation theory",
+        "cochlear theory",
+        "duplex theory"
+      ],
+      "examTags": [
+        "AP_Psychology",
+        "Unit_1"
+      ]
     }
   ]
 }

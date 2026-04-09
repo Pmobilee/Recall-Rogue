@@ -14,26 +14,44 @@
       "sourceName": "Verified source data — kidney anatomy",
       "sourceUrl": "https://en.wikipedia.org/wiki/Kidney",
       "volatile": false,
-      "distractors": ["intraperitoneal", "extraperitoneal", "subperitoneal", "transperitoneal", "preperitoneal", "supraperitoneal", "infraperitoneal", "periperitoneal"],
+      "distractors": [
+        "intraperitoneal",
+        "extraperitoneal",
+        "subperitoneal",
+        "transperitoneal",
+        "preperitoneal",
+        "supraperitoneal",
+        "infraperitoneal",
+        "periperitoneal"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: the kidneys are intraperitoneal organs, meaning they are enclosed within the peritoneal cavity.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The kidneys lie ___ to the peritoneum, against the posterior abdominal wall.",
           "correctAnswer": "posterior",
-          "distractors": ["anterior", "lateral", "inferior"]
+          "distractors": [
+            "anterior",
+            "lateral",
+            "inferior"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_002",
       "correctAnswer": "11 cm × 6 cm × 3 cm",
-      "acceptableAlternatives": ["11 by 6 by 3 cm", "11x6x3 cm"],
+      "acceptableAlternatives": [
+        "11 by 6 by 3 cm",
+        "11x6x3 cm"
+      ],
       "chainThemeId": "kidney_anatomy",
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
@@ -44,20 +62,34 @@
       "sourceName": "Verified source data — kidney anatomy",
       "sourceUrl": "https://en.wikipedia.org/wiki/Kidney",
       "volatile": false,
-      "distractors": ["8 cm × 4 cm × 2 cm", "15 cm × 8 cm × 4 cm", "6 cm × 3 cm × 2 cm", "13 cm × 7 cm × 4 cm", "9 cm × 5 cm × 2 cm", "11 cm × 4 cm × 2 cm"],
+      "distractors": [
+        "8 cm × 4 cm × 2 cm",
+        "15 cm × 8 cm × 4 cm",
+        "6 cm × 3 cm × 2 cm",
+        "13 cm × 7 cm × 4 cm",
+        "9 cm × 5 cm × 2 cm",
+        "11 cm × 4 cm × 2 cm"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "An adult kidney weighs approximately how much?",
           "correctAnswer": "150 g",
-          "distractors": ["50 g", "300 g", "500 g", "75 g"]
+          "distractors": [
+            "50 g",
+            "300 g",
+            "500 g",
+            "75 g"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_003",
       "correctAnswer": "right kidney",
-      "acceptableAlternatives": ["the right kidney"],
+      "acceptableAlternatives": [
+        "the right kidney"
+      ],
       "chainThemeId": "kidney_anatomy",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -68,44 +100,67 @@
       "sourceName": "Verified source data — kidney anatomy",
       "sourceUrl": "https://en.wikipedia.org/wiki/Kidney",
       "volatile": false,
-      "distractors": ["left kidney", "both kidneys equally", "neither — they are at the same level"],
+      "distractors": [
+        "left kidney",
+        "both kidneys equally",
+        "neither — they are at the same level"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: the left kidney sits lower than the right kidney because of the position of the liver.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_004",
       "correctAnswer": "hilum",
-      "acceptableAlternatives": ["renal hilum"],
+      "acceptableAlternatives": [
+        "renal hilum"
+      ],
       "chainThemeId": "kidney_anatomy",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
       "funScore": 6,
-      "quizQuestion": "The renal artery, renal vein, and ureter all enter or exit the kidney through a medial indentation. What is this structure called?",
+      "quizQuestion": "The renal artery, renal vein, and ureter all enter or exit the kidney through a medial indentation. What is this anatomical structure called?",
       "explanation": "The hilum is the concave medial indentation of the kidney through which the renal artery enters, the renal vein exits, and the ureter exits. It is the gateway to the renal sinus — the central cavity containing the renal pelvis, major and minor calyces, blood vessels, lymphatics, and nerves. Imaging of the hilum is essential for assessing renal vascular anatomy before surgery.",
       "visualDescription": "Pixel art kidney viewed from the front showing the concave medial border with arrows labeling the renal artery (entering), renal vein (exiting), and ureter (exiting) at the hilum",
       "sourceName": "Verified source data — kidney anatomy",
       "sourceUrl": "https://en.wikipedia.org/wiki/Kidney",
       "volatile": false,
-      "distractors": ["cortex", "pelvis", "fornix", "calyx", "sinus", "capsule", "medulla", "papilla"],
+      "distractors": [
+        "cortex",
+        "pelvis",
+        "fornix",
+        "calyx",
+        "sinus",
+        "capsule",
+        "medulla",
+        "papilla"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "The renal artery, vein, and ureter pass through the ___ on the medial surface of the kidney.",
           "correctAnswer": "hilum",
-          "distractors": ["cortex", "medulla", "pelvis"]
+          "distractors": [
+            "cortex",
+            "medulla",
+            "pelvis"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_005",
       "correctAnswer": "cortex",
-      "acceptableAlternatives": ["renal cortex"],
+      "acceptableAlternatives": [
+        "renal cortex"
+      ],
       "chainThemeId": "kidney_anatomy",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -116,20 +171,33 @@
       "sourceName": "Verified source data — kidney anatomy",
       "sourceUrl": "https://en.wikipedia.org/wiki/Kidney",
       "volatile": false,
-      "distractors": ["medulla", "renal pelvis", "fibrous capsule", "renal sinus", "renal pyramid", "collecting duct", "loop of Henle"],
+      "distractors": [
+        "medulla",
+        "renal pelvis",
+        "fibrous capsule",
+        "renal sinus",
+        "renal pyramid",
+        "collecting duct",
+        "loop of Henle"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: the glomeruli are located in the renal medulla.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_006",
       "correctAnswer": "renal pyramids",
-      "acceptableAlternatives": ["pyramids of Malpighi", "medullary pyramids"],
+      "acceptableAlternatives": [
+        "pyramids of Malpighi",
+        "medullary pyramids"
+      ],
       "chainThemeId": "kidney_anatomy",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -140,20 +208,35 @@
       "sourceName": "Verified source data — kidney anatomy",
       "sourceUrl": "https://en.wikipedia.org/wiki/Kidney",
       "volatile": false,
-      "distractors": ["renal columns", "renal papillae", "minor calyces", "renal lobes", "nephrons", "collecting tubules", "vasa recta"],
+      "distractors": [
+        "renal columns",
+        "renal papillae",
+        "minor calyces",
+        "renal lobes",
+        "nephrons",
+        "collecting tubules",
+        "vasa recta"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "The renal medulla consists of cone-shaped ___ whose tips drain urine into the minor calyces.",
           "correctAnswer": "renal pyramids",
-          "distractors": ["renal columns", "renal papillae", "collecting ducts"]
+          "distractors": [
+            "renal columns",
+            "renal papillae",
+            "collecting ducts"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_007",
       "correctAnswer": "25%",
-      "acceptableAlternatives": ["one quarter", "25 percent"],
+      "acceptableAlternatives": [
+        "one quarter",
+        "25 percent"
+      ],
       "chainThemeId": "kidney_anatomy",
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
@@ -164,26 +247,45 @@
       "sourceName": "Verified source data — kidney anatomy",
       "sourceUrl": "https://en.wikipedia.org/wiki/Renal_circulation",
       "volatile": false,
-      "distractors": ["5%", "10%", "15%", "40%", "50%", "8%", "20%", "35%"],
+      "distractors": [
+        "5%",
+        "10%",
+        "15%",
+        "40%",
+        "50%",
+        "8%",
+        "20%",
+        "35%"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: the kidneys receive approximately 25% of the heart's resting cardiac output.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The kidneys receive approximately ___% of resting cardiac output — about 1.25 L of blood per minute.",
           "correctAnswer": "25",
-          "distractors": ["5", "10", "50"]
+          "distractors": [
+            "5",
+            "10",
+            "50"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_008",
       "correctAnswer": "1 million",
-      "acceptableAlternatives": ["~1 million", "approximately 1 million", "one million"],
+      "acceptableAlternatives": [
+        "~1 million",
+        "approximately 1 million",
+        "one million"
+      ],
       "chainThemeId": "nephron",
       "answerTypePoolId": "number_stats",
       "difficulty": 2,
@@ -194,20 +296,32 @@
       "sourceName": "Verified source data — nephron structure",
       "sourceUrl": "https://en.wikipedia.org/wiki/Nephron",
       "volatile": false,
-      "distractors": ["10,000", "100,000", "10 million", "500,000", "5 million", "50,000", "2 million"],
+      "distractors": [
+        "10,000",
+        "100,000",
+        "10 million",
+        "500,000",
+        "5 million",
+        "50,000",
+        "2 million"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: humans can regenerate nephrons lost to kidney disease.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_009",
       "correctAnswer": "renal corpuscle",
-      "acceptableAlternatives": ["malpighian corpuscle"],
+      "acceptableAlternatives": [
+        "malpighian corpuscle"
+      ],
       "chainThemeId": "nephron",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -218,20 +332,35 @@
       "sourceName": "Verified source data — nephron structure",
       "sourceUrl": "https://en.wikipedia.org/wiki/Renal_corpuscle",
       "volatile": false,
-      "distractors": ["juxtaglomerular apparatus", "loop of Henle", "vasa recta", "macula densa", "collecting duct", "proximal tubule", "podocyte layer"],
+      "distractors": [
+        "juxtaglomerular apparatus",
+        "loop of Henle",
+        "vasa recta",
+        "macula densa",
+        "collecting duct",
+        "proximal tubule",
+        "podocyte layer"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "The ___ consists of the glomerulus plus Bowman's capsule and is the site of blood filtration in the nephron.",
           "correctAnswer": "renal corpuscle",
-          "distractors": ["loop of Henle", "proximal tubule", "vasa recta"]
+          "distractors": [
+            "loop of Henle",
+            "proximal tubule",
+            "vasa recta"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_010",
       "correctAnswer": "125 mL/min",
-      "acceptableAlternatives": ["~125 mL/min", "approximately 125 mL per minute"],
+      "acceptableAlternatives": [
+        "~125 mL/min",
+        "approximately 125 mL per minute"
+      ],
       "chainThemeId": "glomerular_filtration",
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
@@ -242,26 +371,45 @@
       "sourceName": "Verified source data — glomerular filtration",
       "sourceUrl": "https://en.wikipedia.org/wiki/Glomerular_filtration_rate",
       "volatile": false,
-      "distractors": ["10 mL/min", "50 mL/min", "250 mL/min", "500 mL/min", "75 mL/min", "200 mL/min", "30 mL/min", "1000 mL/min"],
+      "distractors": [
+        "10 mL/min",
+        "50 mL/min",
+        "250 mL/min",
+        "500 mL/min",
+        "75 mL/min",
+        "200 mL/min",
+        "30 mL/min",
+        "1000 mL/min"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "At a GFR of 125 mL/min, how many litres of filtrate does the kidney produce per day?",
           "correctAnswer": "180 L",
-          "distractors": ["1–2 L", "50 L", "300 L", "20 L"]
+          "distractors": [
+            "1–2 L",
+            "50 L",
+            "300 L",
+            "20 L"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: the normal GFR produces about 180 litres of filtrate per day.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_011",
       "correctAnswer": "brush border",
-      "acceptableAlternatives": ["microvilli", "brush border (microvilli)"],
+      "acceptableAlternatives": [
+        "microvilli",
+        "brush border (microvilli)"
+      ],
       "chainThemeId": "tubular_reabsorption",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -272,20 +420,35 @@
       "sourceName": "Verified source data — tubular reabsorption",
       "sourceUrl": "https://en.wikipedia.org/wiki/Proximal_tubule",
       "volatile": false,
-      "distractors": ["cilia", "flagella", "basal folds", "gap junctions", "tight junctions", "stereocilia", "lamellipodia"],
+      "distractors": [
+        "cilia",
+        "flagella",
+        "basal folds",
+        "gap junctions",
+        "tight junctions",
+        "stereocilia",
+        "lamellipodia"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "The PCT's apical surface is covered in a ___, which greatly increases its surface area for reabsorption.",
           "correctAnswer": "brush border",
-          "distractors": ["basement membrane", "tight junction belt", "glycocalyx"]
+          "distractors": [
+            "basement membrane",
+            "tight junction belt",
+            "glycocalyx"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_012",
       "correctAnswer": "65%",
-      "acceptableAlternatives": ["~65%", "approximately 65 percent"],
+      "acceptableAlternatives": [
+        "~65%",
+        "approximately 65 percent"
+      ],
       "chainThemeId": "tubular_reabsorption",
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
@@ -296,20 +459,33 @@
       "sourceName": "Verified source data — tubular reabsorption",
       "sourceUrl": "https://en.wikipedia.org/wiki/Proximal_tubule",
       "volatile": false,
-      "distractors": ["25%", "10%", "80%", "95%", "50%", "40%", "15%"],
+      "distractors": [
+        "25%",
+        "10%",
+        "80%",
+        "95%",
+        "50%",
+        "40%",
+        "15%"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: the PCT reabsorbs virtually all filtered glucose under normal blood glucose levels.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_013",
       "correctAnswer": "descending limb",
-      "acceptableAlternatives": ["descending thin limb", "thin descending limb"],
+      "acceptableAlternatives": [
+        "descending thin limb",
+        "thin descending limb"
+      ],
       "chainThemeId": "loop_of_henle",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -320,20 +496,32 @@
       "sourceName": "Verified source data — loop of Henle",
       "sourceUrl": "https://en.wikipedia.org/wiki/Loop_of_Henle",
       "volatile": false,
-      "distractors": ["ascending limb", "thick ascending limb", "proximal convoluted tubule", "distal convoluted tubule", "collecting duct", "Bowman's capsule"],
+      "distractors": [
+        "ascending limb",
+        "thick ascending limb",
+        "proximal convoluted tubule",
+        "distal convoluted tubule",
+        "collecting duct",
+        "Bowman's capsule"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: the descending limb of the loop of Henle is impermeable to water.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_014",
       "correctAnswer": "ascending limb",
-      "acceptableAlternatives": ["thick ascending limb", "ascending thick limb"],
+      "acceptableAlternatives": [
+        "thick ascending limb",
+        "ascending thick limb"
+      ],
       "chainThemeId": "loop_of_henle",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -344,20 +532,33 @@
       "sourceName": "Verified source data — loop of Henle",
       "sourceUrl": "https://en.wikipedia.org/wiki/Loop_of_Henle",
       "volatile": false,
-      "distractors": ["descending limb", "proximal convoluted tubule", "distal convoluted tubule", "collecting duct", "thin descending limb"],
+      "distractors": [
+        "descending limb",
+        "proximal convoluted tubule",
+        "distal convoluted tubule",
+        "collecting duct",
+        "thin descending limb"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "The thick ___ limb of the loop of Henle actively pumps Na+/K+/Cl- out but is impermeable to water, diluting the filtrate.",
           "correctAnswer": "ascending",
-          "distractors": ["descending", "proximal", "distal"]
+          "distractors": [
+            "descending",
+            "proximal",
+            "distal"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_015",
       "correctAnswer": "countercurrent multiplier",
-      "acceptableAlternatives": ["countercurrent multiplication", "countercurrent mechanism"],
+      "acceptableAlternatives": [
+        "countercurrent multiplication",
+        "countercurrent mechanism"
+      ],
       "chainThemeId": "loop_of_henle",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 4,
@@ -368,13 +569,22 @@
       "sourceName": "Verified source data — loop of Henle",
       "sourceUrl": "https://en.wikipedia.org/wiki/Countercurrent_exchange",
       "volatile": false,
-      "distractors": ["countercurrent exchange", "tubuloglomerular feedback", "Starling mechanism", "pressure natriuresis", "osmotic gradient pump", "medullary recycling"],
+      "distractors": [
+        "countercurrent exchange",
+        "tubuloglomerular feedback",
+        "Starling mechanism",
+        "pressure natriuresis",
+        "osmotic gradient pump",
+        "medullary recycling"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: the medullary osmotic gradient created by the loop of Henle can reach ~1200 mOsm/kg at the papillary tip.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
@@ -392,26 +602,44 @@
       "sourceName": "Verified source data — DCT hormonal regulation",
       "sourceUrl": "https://en.wikipedia.org/wiki/Aldosterone",
       "volatile": false,
-      "distractors": ["ADH", "ANP", "PTH", "cortisol", "insulin", "glucagon", "renin", "angiotensin II"],
+      "distractors": [
+        "ADH",
+        "ANP",
+        "PTH",
+        "cortisol",
+        "insulin",
+        "glucagon",
+        "renin",
+        "angiotensin II"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Aldosterone increases Na+ reabsorption in the DCT — but what ion does it simultaneously cause to be secreted?",
           "correctAnswer": "K+",
-          "distractors": ["Ca²+", "Cl-", "HCO₃-", "Mg²+"]
+          "distractors": [
+            "Ca²+",
+            "Cl-",
+            "HCO₃-",
+            "Mg²+"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: aldosterone acts on the DCT to increase Na+ reabsorption and K+ secretion.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_017",
       "correctAnswer": "PTH",
-      "acceptableAlternatives": ["parathyroid hormone"],
+      "acceptableAlternatives": [
+        "parathyroid hormone"
+      ],
       "chainThemeId": "tubular_reabsorption",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -422,20 +650,35 @@
       "sourceName": "Verified source data — DCT hormonal regulation",
       "sourceUrl": "https://en.wikipedia.org/wiki/Parathyroid_hormone",
       "volatile": false,
-      "distractors": ["aldosterone", "ADH", "calcitonin", "ANP", "cortisol", "insulin", "renin"],
+      "distractors": [
+        "aldosterone",
+        "ADH",
+        "calcitonin",
+        "ANP",
+        "cortisol",
+        "insulin",
+        "renin"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: PTH acts on the DCT to promote Ca²+ reabsorption.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_018",
       "correctAnswer": "ADH",
-      "acceptableAlternatives": ["antidiuretic hormone", "vasopressin", "arginine vasopressin", "AVP"],
+      "acceptableAlternatives": [
+        "antidiuretic hormone",
+        "vasopressin",
+        "arginine vasopressin",
+        "AVP"
+      ],
       "chainThemeId": "hormonal_regulation",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -446,26 +689,43 @@
       "sourceName": "Verified source data — collecting duct / ADH",
       "sourceUrl": "https://en.wikipedia.org/wiki/Antidiuretic_hormone",
       "volatile": false,
-      "distractors": ["aldosterone", "ANP", "renin", "PTH", "cortisol", "oxytocin", "erythropoietin"],
+      "distractors": [
+        "aldosterone",
+        "ANP",
+        "renin",
+        "PTH",
+        "cortisol",
+        "oxytocin",
+        "erythropoietin"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "ADH inserts which specific water channels into the collecting duct apical membrane to allow water reabsorption?",
           "correctAnswer": "aquaporin-2",
-          "distractors": ["aquaporin-1", "SGLT2", "NKCC2", "ENaC"]
+          "distractors": [
+            "aquaporin-1",
+            "SGLT2",
+            "NKCC2",
+            "ENaC"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: without ADH, the collecting duct is impermeable to water and large volumes of dilute urine are produced.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_019",
       "correctAnswer": "diabetes insipidus",
-      "acceptableAlternatives": ["DI"],
+      "acceptableAlternatives": [
+        "DI"
+      ],
       "chainThemeId": "hormonal_regulation",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -476,13 +736,23 @@
       "sourceName": "Verified source data — ADH / diabetes insipidus",
       "sourceUrl": "https://en.wikipedia.org/wiki/Diabetes_insipidus",
       "volatile": false,
-      "distractors": ["diabetes mellitus", "SIADH", "Addison's disease", "nephrotic syndrome", "Cushing's syndrome", "Conn's syndrome", "renal tubular acidosis"],
+      "distractors": [
+        "diabetes mellitus",
+        "SIADH",
+        "Addison's disease",
+        "nephrotic syndrome",
+        "Cushing's syndrome",
+        "Conn's syndrome",
+        "renal tubular acidosis"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: diabetes insipidus is caused by excess blood sugar, just like diabetes mellitus.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
@@ -500,13 +770,25 @@
       "sourceName": "Verified source data — RAAS",
       "sourceUrl": "https://en.wikipedia.org/wiki/Renin%E2%80%93angiotensin_system",
       "volatile": false,
-      "distractors": ["aldosterone", "ACE", "angiotensin I", "angiotensin II", "ADH", "ANP", "erythropoietin"],
+      "distractors": [
+        "aldosterone",
+        "ACE",
+        "angiotensin I",
+        "angiotensin II",
+        "ADH",
+        "ANP",
+        "erythropoietin"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "Juxtaglomerular cells detect low blood pressure and release ___, the enzyme that starts the RAAS cascade.",
           "correctAnswer": "renin",
-          "distractors": ["aldosterone", "ACE", "angiotensin II"]
+          "distractors": [
+            "aldosterone",
+            "ACE",
+            "angiotensin II"
+          ]
         }
       ]
     },
@@ -524,20 +806,36 @@
       "sourceName": "Verified source data — RAAS",
       "sourceUrl": "https://en.wikipedia.org/wiki/Renin%E2%80%93angiotensin_system",
       "volatile": false,
-      "distractors": ["angiotensin I", "angiotensin II", "aldosterone", "bradykinin", "kininogen", "fibrinogen", "plasminogen"],
+      "distractors": [
+        "angiotensin I",
+        "angiotensin II",
+        "aldosterone",
+        "bradykinin",
+        "kininogen",
+        "fibrinogen",
+        "plasminogen"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "In the RAAS, renin cleaves angiotensinogen into which inactive precursor?",
           "correctAnswer": "angiotensin I",
-          "distractors": ["angiotensin II", "aldosterone", "bradykinin"]
+          "distractors": [
+            "angiotensin II",
+            "aldosterone",
+            "bradykinin"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_022",
       "correctAnswer": "lungs",
-      "acceptableAlternatives": ["pulmonary vasculature", "pulmonary endothelium", "pulmonary capillaries"],
+      "acceptableAlternatives": [
+        "pulmonary vasculature",
+        "pulmonary endothelium",
+        "pulmonary capillaries"
+      ],
       "chainThemeId": "raas",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -548,20 +846,33 @@
       "sourceName": "Verified source data — RAAS",
       "sourceUrl": "https://en.wikipedia.org/wiki/Angiotensin-converting_enzyme",
       "volatile": false,
-      "distractors": ["liver", "kidney", "adrenal gland", "heart", "spleen", "pancreas", "brain"],
+      "distractors": [
+        "liver",
+        "kidney",
+        "adrenal gland",
+        "heart",
+        "spleen",
+        "pancreas",
+        "brain"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: ACE inhibitors lower blood pressure by blocking conversion of angiotensin I to angiotensin II.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_023",
       "correctAnswer": "vasoconstriction and aldosterone release",
-      "acceptableAlternatives": ["vasoconstriction + aldosterone release", "raises BP and stimulates aldosterone"],
+      "acceptableAlternatives": [
+        "vasoconstriction + aldosterone release",
+        "raises BP and stimulates aldosterone"
+      ],
       "chainThemeId": "raas",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -572,20 +883,34 @@
       "sourceName": "Verified source data — RAAS",
       "sourceUrl": "https://en.wikipedia.org/wiki/Angiotensin_II",
       "volatile": false,
-      "distractors": ["vasodilation and ANP release", "vasoconstriction and ANP release", "vasodilation and aldosterone release", "vasoconstriction and ADH suppression", "Na+ excretion and K+ retention"],
+      "distractors": [
+        "vasodilation and ANP release",
+        "vasoconstriction and ANP release",
+        "vasodilation and aldosterone release",
+        "vasoconstriction and ADH suppression",
+        "Na+ excretion and K+ retention"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "Angiotensin II raises blood pressure by causing ___ and stimulating aldosterone release from the adrenal cortex.",
           "correctAnswer": "vasoconstriction",
-          "distractors": ["vasodilation", "diuresis", "natriuresis"]
+          "distractors": [
+            "vasodilation",
+            "diuresis",
+            "natriuresis"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_024",
       "correctAnswer": "ANP",
-      "acceptableAlternatives": ["atrial natriuretic peptide", "atrial natriuretic factor", "ANF"],
+      "acceptableAlternatives": [
+        "atrial natriuretic peptide",
+        "atrial natriuretic factor",
+        "ANF"
+      ],
       "chainThemeId": "hormonal_regulation",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -596,26 +921,42 @@
       "sourceName": "Verified source data — ANP / hormonal regulation",
       "sourceUrl": "https://en.wikipedia.org/wiki/Atrial_natriuretic_peptide",
       "volatile": false,
-      "distractors": ["ADH", "aldosterone", "BNP", "renin", "angiotensin II", "erythropoietin", "calcitonin"],
+      "distractors": [
+        "ADH",
+        "aldosterone",
+        "BNP",
+        "renin",
+        "angiotensin II",
+        "erythropoietin",
+        "calcitonin"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: ANP is secreted by the atria of the heart in response to high blood volume and promotes sodium excretion.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         },
         {
           "type": "reverse",
           "question": "ANP promotes natriuresis — meaning it causes the kidneys to excrete more of which ion?",
           "correctAnswer": "sodium (Na+)",
-          "distractors": ["potassium (K+)", "calcium (Ca²+)", "bicarbonate (HCO₃-)"]
+          "distractors": [
+            "potassium (K+)",
+            "calcium (Ca²+)",
+            "bicarbonate (HCO₃-)"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_025",
       "correctAnswer": "erythropoietin",
-      "acceptableAlternatives": ["EPO"],
+      "acceptableAlternatives": [
+        "EPO"
+      ],
       "chainThemeId": "hormonal_regulation",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -626,20 +967,34 @@
       "sourceName": "Verified source data — EPO / hormonal regulation",
       "sourceUrl": "https://en.wikipedia.org/wiki/Erythropoietin",
       "volatile": false,
-      "distractors": ["aldosterone", "ADH", "renin", "ANP", "thrombopoietin", "G-CSF", "insulin"],
+      "distractors": [
+        "aldosterone",
+        "ADH",
+        "renin",
+        "ANP",
+        "thrombopoietin",
+        "G-CSF",
+        "insulin"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: chronic kidney disease can cause anaemia because damaged kidneys produce less erythropoietin.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_026",
       "correctAnswer": "25–30 cm",
-      "acceptableAlternatives": ["25 to 30 cm", "~25–30 cm", "approximately 25–30 cm"],
+      "acceptableAlternatives": [
+        "25 to 30 cm",
+        "~25–30 cm",
+        "approximately 25–30 cm"
+      ],
       "chainThemeId": "ureters_bladder",
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
@@ -650,20 +1005,32 @@
       "sourceName": "Verified source data — ureters",
       "sourceUrl": "https://en.wikipedia.org/wiki/Ureter",
       "volatile": false,
-      "distractors": ["5–10 cm", "10–15 cm", "40–50 cm", "60–70 cm", "15–20 cm", "50–60 cm"],
+      "distractors": [
+        "5–10 cm",
+        "10–15 cm",
+        "40–50 cm",
+        "60–70 cm",
+        "15–20 cm",
+        "50–60 cm"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: the ureters enter the bladder at a right angle, which allows the bladder to squeeze urine back up if too full.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_027",
       "correctAnswer": "3",
-      "acceptableAlternatives": ["three", "3 sites"],
+      "acceptableAlternatives": [
+        "three",
+        "3 sites"
+      ],
       "chainThemeId": "ureters_bladder",
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
@@ -674,26 +1041,43 @@
       "sourceName": "Verified source data — ureters / kidney stones",
       "sourceUrl": "https://en.wikipedia.org/wiki/Ureter",
       "volatile": false,
-      "distractors": ["1", "2", "4", "5", "6"],
+      "distractors": [
+        "1",
+        "2",
+        "4",
+        "5",
+        "6"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "There are ___ sites of physiological narrowing in the ureter where kidney stones most commonly lodge.",
           "correctAnswer": "3",
-          "distractors": ["2", "4", "1"]
+          "distractors": [
+            "2",
+            "4",
+            "1"
+          ]
         },
         {
           "type": "reverse",
           "question": "The narrowest and most common site for kidney stones to obstruct the ureter is which junction?",
           "correctAnswer": "ureterovesical junction",
-          "distractors": ["ureteropelvic junction", "iliac vessel crossing", "bladder neck"]
+          "distractors": [
+            "ureteropelvic junction",
+            "iliac vessel crossing",
+            "bladder neck"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_028",
       "correctAnswer": "500 mL",
-      "acceptableAlternatives": ["~500 mL", "approximately 500 millilitres"],
+      "acceptableAlternatives": [
+        "~500 mL",
+        "approximately 500 millilitres"
+      ],
       "chainThemeId": "ureters_bladder",
       "answerTypePoolId": "number_stats",
       "difficulty": 2,
@@ -704,20 +1088,34 @@
       "sourceName": "Verified source data — bladder",
       "sourceUrl": "https://en.wikipedia.org/wiki/Urinary_bladder",
       "volatile": false,
-      "distractors": ["50 mL", "100 mL", "1000 mL", "2000 mL", "200 mL", "1500 mL", "250 mL"],
+      "distractors": [
+        "50 mL",
+        "100 mL",
+        "1000 mL",
+        "2000 mL",
+        "200 mL",
+        "1500 mL",
+        "250 mL"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "The urge to urinate typically begins at what volume in the adult bladder?",
           "correctAnswer": "200–300 mL",
-          "distractors": ["500 mL", "50 mL", "1000 mL"]
+          "distractors": [
+            "500 mL",
+            "50 mL",
+            "1000 mL"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_029",
       "correctAnswer": "trigone",
-      "acceptableAlternatives": ["vesical trigone"],
+      "acceptableAlternatives": [
+        "vesical trigone"
+      ],
       "chainThemeId": "ureters_bladder",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -728,20 +1126,32 @@
       "sourceName": "Verified source data — bladder / trigone",
       "sourceUrl": "https://en.wikipedia.org/wiki/Trigone_of_urinary_bladder",
       "volatile": false,
-      "distractors": ["detrusor", "dome", "neck", "fundus", "uvula vesicae", "rugae", "apex"],
+      "distractors": [
+        "detrusor",
+        "dome",
+        "neck",
+        "fundus",
+        "uvula vesicae",
+        "rugae",
+        "apex"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: the trigone is the triangular smooth region of the bladder floor between the two ureteral openings and the internal urethral orifice.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_030",
       "correctAnswer": "detrusor muscle",
-      "acceptableAlternatives": ["detrusor"],
+      "acceptableAlternatives": [
+        "detrusor"
+      ],
       "chainThemeId": "ureters_bladder",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -752,20 +1162,34 @@
       "sourceName": "Verified source data — bladder / detrusor",
       "sourceUrl": "https://en.wikipedia.org/wiki/Detrusor_urinae_muscle",
       "volatile": false,
-      "distractors": ["sphincter urethrae", "trigone muscle", "rugae", "pubococcygeus", "levator ani", "bulbospongiosus"],
+      "distractors": [
+        "sphincter urethrae",
+        "trigone muscle",
+        "rugae",
+        "pubococcygeus",
+        "levator ani",
+        "bulbospongiosus"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "The ___ muscle forms the three-layered smooth muscle wall of the bladder and contracts during micturition.",
           "correctAnswer": "detrusor",
-          "distractors": ["sphincter urethrae", "levator ani", "pubococcygeus"]
+          "distractors": [
+            "sphincter urethrae",
+            "levator ani",
+            "pubococcygeus"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_031",
       "correctAnswer": "~20 cm",
-      "acceptableAlternatives": ["20 cm", "approximately 20 cm"],
+      "acceptableAlternatives": [
+        "20 cm",
+        "approximately 20 cm"
+      ],
       "chainThemeId": "ureters_bladder",
       "answerTypePoolId": "number_stats",
       "difficulty": 2,
@@ -776,20 +1200,34 @@
       "sourceName": "Verified source data — male urethra",
       "sourceUrl": "https://en.wikipedia.org/wiki/Male_urethra",
       "volatile": false,
-      "distractors": ["4 cm", "10 cm", "35 cm", "5 cm", "50 cm", "8 cm"],
+      "distractors": [
+        "4 cm",
+        "10 cm",
+        "35 cm",
+        "5 cm",
+        "50 cm",
+        "8 cm"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "What are the three named segments of the male urethra, in order from bladder to external opening?",
           "correctAnswer": "prostatic, membranous, spongy (penile)",
-          "distractors": ["prostatic, penile, membranous", "membranous, prostatic, spongy", "bulbar, membranous, penile"]
+          "distractors": [
+            "prostatic, penile, membranous",
+            "membranous, prostatic, spongy",
+            "bulbar, membranous, penile"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_032",
       "correctAnswer": "~4 cm",
-      "acceptableAlternatives": ["4 cm", "approximately 4 cm"],
+      "acceptableAlternatives": [
+        "4 cm",
+        "approximately 4 cm"
+      ],
       "chainThemeId": "ureters_bladder",
       "answerTypePoolId": "number_stats",
       "difficulty": 2,
@@ -800,20 +1238,33 @@
       "sourceName": "Verified source data — female urethra",
       "sourceUrl": "https://en.wikipedia.org/wiki/Female_urethra",
       "volatile": false,
-      "distractors": ["1 cm", "10 cm", "20 cm", "15 cm", "8 cm", "2 cm"],
+      "distractors": [
+        "1 cm",
+        "10 cm",
+        "20 cm",
+        "15 cm",
+        "8 cm",
+        "2 cm"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: the female urethra is shorter than the male urethra, which contributes to a higher UTI risk in women.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_033",
       "correctAnswer": "sodium (Na+)",
-      "acceptableAlternatives": ["Na+", "sodium", "sodium ions"],
+      "acceptableAlternatives": [
+        "Na+",
+        "sodium",
+        "sodium ions"
+      ],
       "chainThemeId": "electrolyte_balance",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -824,20 +1275,32 @@
       "sourceName": "Verified source data — electrolyte balance",
       "sourceUrl": "https://en.wikipedia.org/wiki/Sodium_in_biology",
       "volatile": false,
-      "distractors": ["potassium (K+)", "calcium (Ca²+)", "magnesium (Mg²+)", "chloride (Cl-)", "bicarbonate (HCO₃-)", "phosphate (PO₄³-)"],
+      "distractors": [
+        "potassium (K+)",
+        "calcium (Ca²+)",
+        "magnesium (Mg²+)",
+        "chloride (Cl-)",
+        "bicarbonate (HCO₃-)",
+        "phosphate (PO₄³-)"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: sodium is the most abundant cation in the extracellular fluid.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_034",
       "correctAnswer": "potassium (K+)",
-      "acceptableAlternatives": ["K+", "potassium"],
+      "acceptableAlternatives": [
+        "K+",
+        "potassium"
+      ],
       "chainThemeId": "electrolyte_balance",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -848,20 +1311,34 @@
       "sourceName": "Verified source data — electrolyte balance",
       "sourceUrl": "https://en.wikipedia.org/wiki/Potassium_in_biology",
       "volatile": false,
-      "distractors": ["sodium (Na+)", "calcium (Ca²+)", "magnesium (Mg²+)", "chloride (Cl-)", "hydrogen (H+)"],
+      "distractors": [
+        "sodium (Na+)",
+        "calcium (Ca²+)",
+        "magnesium (Mg²+)",
+        "chloride (Cl-)",
+        "hydrogen (H+)"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Hyperkalemia — elevated plasma K+ — can cause which dangerous cardiac complication?",
           "correctAnswer": "arrhythmias",
-          "distractors": ["hypertension", "heart failure", "pericarditis", "bradycardia only"]
+          "distractors": [
+            "hypertension",
+            "heart failure",
+            "pericarditis",
+            "bradycardia only"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_035",
       "correctAnswer": "7.35–7.45",
-      "acceptableAlternatives": ["7.35 to 7.45", "between 7.35 and 7.45"],
+      "acceptableAlternatives": [
+        "7.35 to 7.45",
+        "between 7.35 and 7.45"
+      ],
       "chainThemeId": "electrolyte_balance",
       "answerTypePoolId": "number_stats",
       "difficulty": 2,
@@ -872,26 +1349,43 @@
       "sourceName": "Verified source data — pH / electrolyte balance",
       "sourceUrl": "https://en.wikipedia.org/wiki/Acid%E2%80%93base_homeostasis",
       "volatile": false,
-      "distractors": ["6.8–7.0", "7.0–7.2", "7.5–7.6", "7.6–7.8", "7.2–7.5", "7.0–7.4"],
+      "distractors": [
+        "6.8–7.0",
+        "7.0–7.2",
+        "7.5–7.6",
+        "7.6–7.8",
+        "7.2–7.5",
+        "7.0–7.4"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: the normal arterial blood pH range is 7.35–7.45.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "A blood pH below ___ is defined as acidosis.",
           "correctAnswer": "7.35",
-          "distractors": ["7.0", "7.45", "7.5"]
+          "distractors": [
+            "7.0",
+            "7.45",
+            "7.5"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_036",
       "correctAnswer": "bicarbonate (HCO₃-)",
-      "acceptableAlternatives": ["HCO₃-", "bicarbonate", "bicarb"],
+      "acceptableAlternatives": [
+        "HCO₃-",
+        "bicarbonate",
+        "bicarb"
+      ],
       "chainThemeId": "electrolyte_balance",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -902,20 +1396,33 @@
       "sourceName": "Verified source data — pH / electrolyte balance",
       "sourceUrl": "https://en.wikipedia.org/wiki/Bicarbonate",
       "volatile": false,
-      "distractors": ["chloride (Cl-)", "phosphate (PO₄³-)", "sodium (Na+)", "calcium (Ca²+)", "albumin", "haemoglobin"],
+      "distractors": [
+        "chloride (Cl-)",
+        "phosphate (PO₄³-)",
+        "sodium (Na+)",
+        "calcium (Ca²+)",
+        "albumin",
+        "haemoglobin"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: in acidosis, the kidneys excrete more H+ and reabsorb more bicarbonate to raise blood pH.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_037",
       "correctAnswer": "1–2 L/day",
-      "acceptableAlternatives": ["1 to 2 litres per day", "~1–2 L/day", "1000–2000 mL/day"],
+      "acceptableAlternatives": [
+        "1 to 2 litres per day",
+        "~1–2 L/day",
+        "1000–2000 mL/day"
+      ],
       "chainThemeId": "glomerular_filtration",
       "answerTypePoolId": "number_stats",
       "difficulty": 2,
@@ -926,20 +1433,32 @@
       "sourceName": "Verified source data — urine formation",
       "sourceUrl": "https://en.wikipedia.org/wiki/Urine",
       "volatile": false,
-      "distractors": ["100–200 mL/day", "10–15 L/day", "500 mL/day", "5–8 L/day", "0.5 L/day", "4–5 L/day"],
+      "distractors": [
+        "100–200 mL/day",
+        "10–15 L/day",
+        "500 mL/day",
+        "5–8 L/day",
+        "0.5 L/day",
+        "4–5 L/day"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: urine output below 400 mL/day is called oliguria and often indicates kidney injury or severe dehydration.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_038",
       "correctAnswer": "urea, creatinine, uric acid",
-      "acceptableAlternatives": ["urea, creatinine, and uric acid", "creatinine, urea, uric acid"],
+      "acceptableAlternatives": [
+        "urea, creatinine, and uric acid",
+        "creatinine, urea, uric acid"
+      ],
       "chainThemeId": "glomerular_filtration",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -950,13 +1469,23 @@
       "sourceName": "Verified source data — urine composition",
       "sourceUrl": "https://en.wikipedia.org/wiki/Urine",
       "volatile": false,
-      "distractors": ["glucose, albumin, bilirubin", "ammonia, acetone, ketones", "urea, albumin, glucose", "creatinine, cholesterol, bile salts", "urea, haemoglobin, bilirubin"],
+      "distractors": [
+        "glucose, albumin, bilirubin",
+        "ammonia, acetone, ketones",
+        "urea, albumin, glucose",
+        "creatinine, cholesterol, bile salts",
+        "urea, haemoglobin, bilirubin"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Which nitrogenous waste product of muscle metabolism is used clinically as a marker to estimate GFR?",
           "correctAnswer": "creatinine",
-          "distractors": ["urea", "uric acid", "ammonia"]
+          "distractors": [
+            "urea",
+            "uric acid",
+            "ammonia"
+          ]
         }
       ]
     },
@@ -974,20 +1503,31 @@
       "sourceName": "Verified source data — nephron / blood supply",
       "sourceUrl": "https://en.wikipedia.org/wiki/Vasa_recta_of_kidney",
       "volatile": false,
-      "distractors": ["peritubular capillaries", "arcuate arteries", "interlobular veins", "afferent arterioles", "efferent arterioles", "renal plexus"],
+      "distractors": [
+        "peritubular capillaries",
+        "arcuate arteries",
+        "interlobular veins",
+        "afferent arterioles",
+        "efferent arterioles",
+        "renal plexus"
+      ],
       "variants": [
         {
           "type": "true_false",
           "question": "True or false: the vasa recta are hairpin-shaped capillaries that preserve the medullary osmotic gradient through countercurrent exchange.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     },
     {
       "id": "ha_urin_040",
       "correctAnswer": "afferent arteriole → glomerulus → efferent arteriole",
-      "acceptableAlternatives": ["afferent arteriole, glomerulus, efferent arteriole"],
+      "acceptableAlternatives": [
+        "afferent arteriole, glomerulus, efferent arteriole"
+      ],
       "chainThemeId": "glomerular_filtration",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -998,19 +1538,30 @@
       "sourceName": "Verified source data — glomerular filtration / blood supply",
       "sourceUrl": "https://en.wikipedia.org/wiki/Glomerulus_(kidney)",
       "volatile": false,
-      "distractors": ["efferent arteriole → glomerulus → afferent arteriole", "afferent venule → glomerulus → efferent venule", "afferent arteriole → Bowman's capsule → efferent arteriole", "interlobular artery → glomerulus → peritubular capillary"],
+      "distractors": [
+        "efferent arteriole → glomerulus → afferent arteriole",
+        "afferent venule → glomerulus → efferent venule",
+        "afferent arteriole → Bowman's capsule → efferent arteriole",
+        "interlobular artery → glomerulus → peritubular capillary"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "Blood enters the glomerular capillaries via the ___ arteriole and exits via the efferent arteriole.",
           "correctAnswer": "afferent",
-          "distractors": ["efferent", "arcuate", "interlobular"]
+          "distractors": [
+            "efferent",
+            "arcuate",
+            "interlobular"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: constriction of the efferent arteriole increases glomerular filtration pressure and thus increases GFR.",
           "correctAnswer": "True",
-          "distractors": ["False"]
+          "distractors": [
+            "False"
+          ]
         }
       ]
     }

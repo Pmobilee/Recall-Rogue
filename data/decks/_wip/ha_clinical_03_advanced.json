@@ -4,7 +4,11 @@
       "id": "ha_clinical_061",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "T1–T4",
-      "acceptableAlternatives": ["T1-T4", "thoracic segments 1 to 4", "T1 to T4"],
+      "acceptableAlternatives": [
+        "T1-T4",
+        "thoracic segments 1 to 4",
+        "T1 to T4"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_levels",
       "difficulty": 3,
@@ -15,28 +19,52 @@
       "sourceName": "StatPearls — Referred Pain; PMC Mechanisms of Cardiac Pain",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK560843/",
       "volatile": false,
-      "distractors": ["C3–C5", "T5–T8", "L1–L3", "T8–T12", "C6–C8", "T4–T7"],
+      "distractors": [
+        "C3–C5",
+        "T5–T8",
+        "L1–L3",
+        "T8–T12",
+        "C6–C8",
+        "T4–T7"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "The spinal cord segments T1–T4 receive convergent input from which organ, explaining referred pain to the left arm and jaw?",
           "correctAnswer": "Heart",
-          "distractors": ["Gallbladder", "Kidney", "Appendix"]
+          "distractors": [
+            "Gallbladder",
+            "Kidney",
+            "Appendix"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "Cardiac referred pain to the left arm and jaw is explained by visceral afferents entering spinal segments ___.",
           "correctAnswer": "T1–T4",
-          "distractors": ["C3–C5", "T5–T9", "L1–L2"]
+          "distractors": [
+            "C3–C5",
+            "T5–T9",
+            "L1–L2"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_062",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "C3–C5 (phrenic nerve)",
-      "acceptableAlternatives": ["C3-C5", "C3 to C5", "phrenic nerve dermatomes", "C3–C5"],
+      "acceptableAlternatives": [
+        "C3-C5",
+        "C3 to C5",
+        "phrenic nerve dermatomes",
+        "C3–C5"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_levels",
       "difficulty": 3,
@@ -47,28 +75,50 @@
       "sourceName": "StatPearls — Referred Pain Mechanisms; NCBI Abdominal Pain",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK412/",
       "volatile": false,
-      "distractors": ["T1–T4", "T10–L1", "L2–L4", "C1–C2", "T6–T9", "C6–C8"],
+      "distractors": [
+        "T1–T4",
+        "T10–L1",
+        "L2–L4",
+        "C1–C2",
+        "T6–T9",
+        "C6–C8"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Shoulder tip pain in a patient with acute cholecystitis is mediated by which nerve?",
           "correctAnswer": "Phrenic nerve",
-          "distractors": ["Vagus nerve", "Intercostal nerve", "Femoral nerve"]
+          "distractors": [
+            "Vagus nerve",
+            "Intercostal nerve",
+            "Femoral nerve"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The phrenic nerve, which transmits referred pain from the gallbladder to the right shoulder, arises from cervical segments ___.",
           "correctAnswer": "C3–C5",
-          "distractors": ["C5–C7", "C1–C3", "T1–T4"]
+          "distractors": [
+            "C5–C7",
+            "C1–C3",
+            "T1–T4"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_063",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "T10–L1",
-      "acceptableAlternatives": ["T10-L1", "T10 to L1"],
+      "acceptableAlternatives": [
+        "T10-L1",
+        "T10 to L1"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_levels",
       "difficulty": 3,
@@ -79,28 +129,51 @@
       "sourceName": "StatPearls — Anatomy Retroperitoneum Nerve Supply to Kidneys",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK459339/",
       "volatile": false,
-      "distractors": ["C3–C5", "T1–T4", "L3–S1", "T6–T9", "L2–L4", "T4–T8"],
+      "distractors": [
+        "C3–C5",
+        "T1–T4",
+        "L3–S1",
+        "T6–T9",
+        "L2–L4",
+        "T4–T8"
+      ],
       "variants": [
         {
           "type": "context",
           "question": "A patient presents with flank pain radiating to the groin — classic for ureteric colic. Which spinal segment range carries renal visceral afferents?",
           "correctAnswer": "T10–L1",
-          "distractors": ["T1–T4", "L2–S1", "C3–C5"]
+          "distractors": [
+            "T1–T4",
+            "L2–S1",
+            "C3–C5"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "Kidney pain refers to the groin because renal visceral afferents enter spinal segments ___.",
           "correctAnswer": "T10–L1",
-          "distractors": ["C3–C5", "T1–T4", "L4–S1"]
+          "distractors": [
+            "C3–C5",
+            "T1–T4",
+            "L4–S1"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_064",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Periumbilical, then right lower quadrant",
-      "acceptableAlternatives": ["periumbilical then RLQ", "umbilical then RLQ", "central then RLQ"],
+      "acceptableAlternatives": [
+        "periumbilical then RLQ",
+        "umbilical then RLQ",
+        "central then RLQ"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_regions",
       "difficulty": 2,
@@ -111,28 +184,49 @@
       "sourceName": "NCBI Bookshelf — Abdominal Pain, Clinical Methods",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK412/",
       "volatile": false,
-      "distractors": ["Right upper quadrant, then epigastric", "Epigastric, then left lower quadrant", "Right lower quadrant throughout", "Epigastric, then periumbilical", "Left lower quadrant, then right lower quadrant"],
+      "distractors": [
+        "Right upper quadrant, then epigastric",
+        "Epigastric, then left lower quadrant",
+        "Right lower quadrant throughout",
+        "Epigastric, then periumbilical",
+        "Left lower quadrant, then right lower quadrant"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "A patient's abdominal pain shifted from periumbilical to the right lower quadrant over 18 hours. What does this migration strongly suggest?",
           "correctAnswer": "Appendicitis",
-          "distractors": ["Cholecystitis", "Renal colic", "Mesenteric ischemia"]
+          "distractors": [
+            "Cholecystitis",
+            "Renal colic",
+            "Mesenteric ischemia"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "In appendicitis, pain begins in the ___ region before localizing to the right lower quadrant.",
           "correctAnswer": "Periumbilical",
-          "distractors": ["Epigastric", "Hypogastric", "Left iliac"]
+          "distractors": [
+            "Epigastric",
+            "Hypogastric",
+            "Left iliac"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_065",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "McBurney's point",
-      "acceptableAlternatives": ["McBurney point", "one-third from ASIS to umbilicus"],
+      "acceptableAlternatives": [
+        "McBurney point",
+        "one-third from ASIS to umbilicus"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_landmarks",
       "difficulty": 2,
@@ -143,28 +237,50 @@
       "sourceName": "Wikipedia — McBurney's Point; StatPearls — Appendectomy",
       "sourceUrl": "https://en.wikipedia.org/wiki/McBurney%27s_point",
       "volatile": false,
-      "distractors": ["Lanz point", "Murphy's point", "Rovsing's point", "Psoas point", "Cullen's sign", "Grey Turner's point"],
+      "distractors": [
+        "Lanz point",
+        "Murphy's point",
+        "Rovsing's point",
+        "Psoas point",
+        "Cullen's sign",
+        "Grey Turner's point"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "McBurney's point is the anatomical landmark for maximal tenderness in appendicitis. Where exactly is it located?",
           "correctAnswer": "One-third from the right ASIS to the umbilicus",
-          "distractors": ["One-half from right ASIS to umbilicus", "One-third from right ASIS to pubic symphysis", "Two-thirds from umbilicus to right ASIS"]
+          "distractors": [
+            "One-half from right ASIS to umbilicus",
+            "One-third from right ASIS to pubic symphysis",
+            "Two-thirds from umbilicus to right ASIS"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The Lanz incision for open appendectomy is a transverse cut made at the same anatomical level as ___ point.",
           "correctAnswer": "McBurney's",
-          "distractors": ["Lanz's", "Murphy's", "Rovsing's"]
+          "distractors": [
+            "Lanz's",
+            "Murphy's",
+            "Rovsing's"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_066",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Below the inguinal ligament, medial to the femoral vein",
-      "acceptableAlternatives": ["inferior to inguinal ligament, medial to femoral vein", "below inguinal ligament medial to femoral vein"],
+      "acceptableAlternatives": [
+        "inferior to inguinal ligament, medial to femoral vein",
+        "below inguinal ligament medial to femoral vein"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_relationships",
       "difficulty": 3,
@@ -175,28 +291,48 @@
       "sourceName": "NCBI Bookshelf — Surgical Access Incisions; PMC Femoral Hernia",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK541018/",
       "volatile": false,
-      "distractors": ["Above the inguinal ligament, medial to femoral artery", "Below the inguinal ligament, lateral to femoral artery", "Above the inguinal ligament, lateral to femoral vein", "Through the superficial inguinal ring", "Medial to femoral nerve, below inguinal ligament"],
+      "distractors": [
+        "Above the inguinal ligament, medial to femoral artery",
+        "Below the inguinal ligament, lateral to femoral artery",
+        "Above the inguinal ligament, lateral to femoral vein",
+        "Through the superficial inguinal ring",
+        "Medial to femoral nerve, below inguinal ligament"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "A hernia appearing below the inguinal ligament medial to the femoral vein is classified as which type?",
           "correctAnswer": "Femoral hernia",
-          "distractors": ["Indirect inguinal hernia", "Direct inguinal hernia", "Obturator hernia"]
+          "distractors": [
+            "Indirect inguinal hernia",
+            "Direct inguinal hernia",
+            "Obturator hernia"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The femoral canal lies ___ the inguinal ligament, medial to the femoral vein.",
           "correctAnswer": "Below",
-          "distractors": ["Above", "Lateral to", "Posterior to"]
+          "distractors": [
+            "Above",
+            "Lateral to",
+            "Posterior to"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_067",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Interscalene block",
-      "acceptableAlternatives": ["interscalene brachial plexus block"],
+      "acceptableAlternatives": [
+        "interscalene brachial plexus block"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "procedure_names",
       "difficulty": 3,
@@ -207,28 +343,53 @@
       "sourceName": "StatPearls — Interscalene Block; Brachial Plexus Block Techniques",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK519491/",
       "volatile": false,
-      "distractors": ["Axillary block", "Supraclavicular block", "Infraclavicular block", "Femoral nerve block", "Stellate ganglion block", "Median nerve block"],
+      "distractors": [
+        "Axillary block",
+        "Supraclavicular block",
+        "Infraclavicular block",
+        "Femoral nerve block",
+        "Stellate ganglion block",
+        "Median nerve block"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "The interscalene brachial plexus block is the preferred approach for which body region?",
           "correctAnswer": "Shoulder",
-          "distractors": ["Hand and wrist", "Elbow", "Forearm only"]
+          "distractors": [
+            "Hand and wrist",
+            "Elbow",
+            "Forearm only"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "For hand surgery, the ___ approach to brachial plexus block is preferred because it avoids phrenic nerve block and pneumothorax risk.",
           "correctAnswer": "Axillary",
-          "distractors": ["Interscalene", "Supraclavicular", "Cervical paravertebral"]
+          "distractors": [
+            "Interscalene",
+            "Supraclavicular",
+            "Cervical paravertebral"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_068",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "L3–L4",
-      "acceptableAlternatives": ["L3/L4", "L3-L4", "between L3 and L4"],
+      "acceptableAlternatives": [
+        "L3/L4",
+        "L3-L4",
+        "between L3 and L4"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_levels",
       "difficulty": 2,
@@ -239,28 +400,51 @@
       "sourceName": "Wikipedia — Lumbar Puncture; StatPearls — Lumbar Puncture",
       "sourceUrl": "https://en.wikipedia.org/wiki/Lumbar_puncture",
       "volatile": false,
-      "distractors": ["T12–L1", "L1–L2", "L5–S1", "L4–L5", "L2–L3"],
+      "distractors": [
+        "T12–L1",
+        "L1–L2",
+        "L5–S1",
+        "L4–L5",
+        "L2–L3"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "The iliac crest landmark (intercristal line) guides lumbar puncture by locating which vertebral level?",
           "correctAnswer": "L4",
-          "distractors": ["L3", "L2", "L5"]
+          "distractors": [
+            "L3",
+            "L2",
+            "L5"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "Lumbar puncture in adults is performed at L3–L4 or L4–L5 to stay below the ___, which ends at approximately L1–L2.",
           "correctAnswer": "Conus medullaris",
-          "distractors": ["Epidural space", "Foramen magnum", "Filum terminale"]
+          "distractors": [
+            "Epidural space",
+            "Foramen magnum",
+            "Filum terminale"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_069",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Subarachnoid space",
-      "acceptableAlternatives": ["subarachnoid", "lumbar cistern"],
+      "acceptableAlternatives": [
+        "subarachnoid",
+        "lumbar cistern"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_spaces",
       "difficulty": 2,
@@ -271,28 +455,52 @@
       "sourceName": "Wikipedia — Lumbar Puncture; StatPearls — Spinal Meninges",
       "sourceUrl": "https://en.wikipedia.org/wiki/Lumbar_puncture",
       "volatile": false,
-      "distractors": ["Epidural space", "Subdural space", "Intramedullary canal", "Ligamentum flavum", "Vertebral foramen"],
+      "distractors": [
+        "Epidural space",
+        "Subdural space",
+        "Intramedullary canal",
+        "Ligamentum flavum",
+        "Vertebral foramen"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "CSF is collected from the lumbar cistern, which is part of which meningeal space?",
           "correctAnswer": "Subarachnoid space",
-          "distractors": ["Epidural space", "Subdural space", "Intraventricular space"]
+          "distractors": [
+            "Epidural space",
+            "Subdural space",
+            "Intraventricular space"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "During lumbar puncture, the needle enters the ___ space after passing through the dura mater, where CSF can be collected.",
           "correctAnswer": "Subarachnoid",
-          "distractors": ["Epidural", "Subdural", "Extradural"]
+          "distractors": [
+            "Epidural",
+            "Subdural",
+            "Extradural"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_070",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "4th–5th intercostal space, mid-axillary line (safe triangle)",
-      "acceptableAlternatives": ["4th or 5th ICS mid-axillary line", "fifth intercostal space anterior axillary line", "ICS 4–5 mid-axillary line"],
+      "acceptableAlternatives": [
+        "4th or 5th ICS mid-axillary line",
+        "fifth intercostal space anterior axillary line",
+        "ICS 4–5 mid-axillary line"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_regions",
       "difficulty": 3,
@@ -303,28 +511,52 @@
       "sourceName": "StatPearls — Chest Tube; Radiopaedia — Triangle of Safety",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK459199/",
       "volatile": false,
-      "distractors": ["2nd intercostal space, mid-clavicular line", "7th intercostal space, posterior axillary line", "3rd intercostal space, anterior axillary line", "6th intercostal space, scapular line", "1st intercostal space, lateral to sternum"],
+      "distractors": [
+        "2nd intercostal space, mid-clavicular line",
+        "7th intercostal space, posterior axillary line",
+        "3rd intercostal space, anterior axillary line",
+        "6th intercostal space, scapular line",
+        "1st intercostal space, lateral to sternum"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "To avoid the intercostal neurovascular bundle during chest tube insertion, the tube should be placed along which margin of the rib?",
           "correctAnswer": "Superior margin of the lower rib",
-          "distractors": ["Inferior margin of the upper rib", "Middle of the intercostal space", "Posterior rib groove"]
+          "distractors": [
+            "Inferior margin of the upper rib",
+            "Middle of the intercostal space",
+            "Posterior rib groove"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The safe triangle for chest tube insertion uses the ___ line at the 4th–5th intercostal space.",
           "correctAnswer": "Mid-axillary",
-          "distractors": ["Mid-clavicular", "Posterior axillary", "Paravertebral"]
+          "distractors": [
+            "Mid-clavicular",
+            "Posterior axillary",
+            "Paravertebral"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_071",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Between the two heads of the sternocleidomastoid muscle",
-      "acceptableAlternatives": ["between SCM heads", "within the SCM triangle", "between sternal and clavicular heads of SCM"],
+      "acceptableAlternatives": [
+        "between SCM heads",
+        "within the SCM triangle",
+        "between sternal and clavicular heads of SCM"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_landmarks",
       "difficulty": 3,
@@ -335,28 +567,51 @@
       "sourceName": "StatPearls — Internal Jugular Vein Anatomy; Central Venous Catheter Insertion",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/sites/books/NBK513258/",
       "volatile": false,
-      "distractors": ["Lateral to the sternocleidomastoid", "Medial to the carotid artery only", "Between anterior scalene and sternocleidomastoid", "Deep to the trapezius muscle", "Medial to the SCM, lateral to trachea"],
+      "distractors": [
+        "Lateral to the sternocleidomastoid",
+        "Medial to the carotid artery only",
+        "Between anterior scalene and sternocleidomastoid",
+        "Deep to the trapezius muscle",
+        "Medial to the SCM, lateral to trachea"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "The internal jugular vein lies only 1–1.5 cm below the skin between the two heads of which muscle at the base of the neck?",
           "correctAnswer": "Sternocleidomastoid",
-          "distractors": ["Trapezius", "Anterior scalene", "Omohyoid"]
+          "distractors": [
+            "Trapezius",
+            "Anterior scalene",
+            "Omohyoid"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The internal jugular vein for central line access is found between the ___ heads of the sternocleidomastoid muscle.",
           "correctAnswer": "Sternal and clavicular",
-          "distractors": ["Anterior and posterior", "Superior and inferior", "Medial and lateral"]
+          "distractors": [
+            "Anterior and posterior",
+            "Superior and inferior",
+            "Medial and lateral"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_072",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "2–3 cm inferior to the midpoint of the clavicle",
-      "acceptableAlternatives": ["infraclavicular, 2-3 cm below midpoint of clavicle", "below the clavicle midpoint"],
+      "acceptableAlternatives": [
+        "infraclavicular, 2-3 cm below midpoint of clavicle",
+        "below the clavicle midpoint"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_landmarks",
       "difficulty": 4,
@@ -367,28 +622,51 @@
       "sourceName": "StatPearls — Anatomy Thorax Subclavian Veins; Central Venous Catheter Insertion",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK532885/",
       "volatile": false,
-      "distractors": ["Directly at the midpoint of the clavicle", "1 cm superior to the clavicle midpoint", "At the medial third of the clavicle", "At the lateral third of the clavicle", "Below the medial clavicle near sternum"],
+      "distractors": [
+        "Directly at the midpoint of the clavicle",
+        "1 cm superior to the clavicle midpoint",
+        "At the medial third of the clavicle",
+        "At the lateral third of the clavicle",
+        "Below the medial clavicle near sternum"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "The main structural risk when placing an infraclavicular subclavian central line is injury to which adjacent structure?",
           "correctAnswer": "Lung (pneumothorax)",
-          "distractors": ["Subclavian artery", "Phrenic nerve", "Brachial plexus"]
+          "distractors": [
+            "Subclavian artery",
+            "Phrenic nerve",
+            "Brachial plexus"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "During subclavian central line placement, the subclavian artery is ___ and posterior to the subclavian vein, separated by the anterior scalene muscle.",
           "correctAnswer": "Superior",
-          "distractors": ["Inferior", "Medial", "Lateral"]
+          "distractors": [
+            "Inferior",
+            "Medial",
+            "Lateral"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_073",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Radial artery at the wrist",
-      "acceptableAlternatives": ["radial artery", "wrist radial artery"],
+      "acceptableAlternatives": [
+        "radial artery",
+        "wrist radial artery"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_vessels",
       "difficulty": 2,
@@ -399,28 +677,52 @@
       "sourceName": "StatPearls — Arterial Lines; Allen Test",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK499989/",
       "volatile": false,
-      "distractors": ["Femoral artery", "Brachial artery", "Ulnar artery", "Dorsalis pedis artery", "Axillary artery"],
+      "distractors": [
+        "Femoral artery",
+        "Brachial artery",
+        "Ulnar artery",
+        "Dorsalis pedis artery",
+        "Axillary artery"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Before placing a radial arterial line, the Allen test compresses both radial and ulnar arteries. A positive (normal) result is flushing of the hand within how many seconds after releasing the ulnar artery?",
           "correctAnswer": "5–15 seconds",
-          "distractors": ["1–3 seconds", "20–30 seconds", "30–60 seconds"]
+          "distractors": [
+            "1–3 seconds",
+            "20–30 seconds",
+            "30–60 seconds"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The radial artery at the wrist runs between the ___ and brachioradialis tendons.",
           "correctAnswer": "Flexor carpi radialis",
-          "distractors": ["Flexor carpi ulnaris", "Palmaris longus", "Extensor carpi radialis"]
+          "distractors": [
+            "Flexor carpi ulnaris",
+            "Palmaris longus",
+            "Extensor carpi radialis"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_074",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "T4–T5 vertebral level",
-      "acceptableAlternatives": ["T4-T5", "T4/T5", "T4 to T5 interspace"],
+      "acceptableAlternatives": [
+        "T4-T5",
+        "T4/T5",
+        "T4 to T5 interspace"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_levels",
       "difficulty": 3,
@@ -431,28 +733,49 @@
       "sourceName": "Radiopaedia — Carina; PMC — Reading Chest Radiographs in the Critically Ill",
       "sourceUrl": "https://radiopaedia.org/articles/carina?lang=us",
       "volatile": false,
-      "distractors": ["T2–T3", "T6–T7", "T1–T2", "T8–T9", "L1–L2"],
+      "distractors": [
+        "T2–T3",
+        "T6–T7",
+        "T1–T2",
+        "T8–T9",
+        "L1–L2"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "A carina at the T8 level on a chest X-ray is abnormal. What condition can cause inferior displacement of the carina?",
           "correctAnswer": "Left atrial enlargement (widened carinal angle)",
-          "distractors": ["Right ventricular hypertrophy", "Pneumothorax", "Pleural effusion"]
+          "distractors": [
+            "Right ventricular hypertrophy",
+            "Pneumothorax",
+            "Pleural effusion"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "An endotracheal tube should ideally be positioned approximately ___ cm above the carina to prevent right mainstem intubation.",
           "correctAnswer": "5",
-          "distractors": ["1", "10", "2"]
+          "distractors": [
+            "1",
+            "10",
+            "2"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_075",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Left hilum is higher than the right in 97% of individuals",
-      "acceptableAlternatives": ["left hilum higher than right", "left higher than right hilum"],
+      "acceptableAlternatives": [
+        "left hilum higher than right",
+        "left higher than right hilum"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_relationships",
       "difficulty": 4,
@@ -463,28 +786,48 @@
       "sourceName": "PMC — Lateral Chest X-Ray for Physicians; NCBI — Systematic Approach to Chest Radiographic Analysis",
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1168914/",
       "volatile": false,
-      "distractors": ["Right hilum is higher than the left in 97%", "Both hila are at equal height in 97%", "Left hilum is lower in 80% of cases", "Right hilum is always higher due to the right pulmonary artery"],
+      "distractors": [
+        "Right hilum is higher than the left in 97%",
+        "Both hila are at equal height in 97%",
+        "Left hilum is lower in 80% of cases",
+        "Right hilum is always higher due to the right pulmonary artery"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "In ___ of individuals, the left hilum sits higher than the right hilum on a chest X-ray — this is normal.",
           "correctAnswer": "97%",
-          "distractors": ["50%", "70%", "30%"]
+          "distractors": [
+            "50%",
+            "70%",
+            "30%"
+          ]
         },
         {
           "type": "reverse",
           "question": "The hilar structures on a chest X-ray are formed mainly by which vascular structures?",
           "correctAnswer": "Pulmonary arteries and superior pulmonary veins",
-          "distractors": ["Bronchial arteries only", "Pulmonary veins only", "Bronchi and lymph nodes"]
+          "distractors": [
+            "Bronchial arteries only",
+            "Pulmonary veins only",
+            "Bronchi and lymph nodes"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_076",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Between the 2nd and 3rd tracheal rings, below the cricoid, avoiding the thyroid isthmus",
-      "acceptableAlternatives": ["2nd–3rd tracheal rings below cricoid", "below cricoid cartilage between rings 2 and 3"],
+      "acceptableAlternatives": [
+        "2nd–3rd tracheal rings below cricoid",
+        "below cricoid cartilage between rings 2 and 3"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_landmarks",
       "difficulty": 4,
@@ -495,28 +838,52 @@
       "sourceName": "StatPearls — Tracheostomy; PMC — Clinically Correlated Anatomy of Cricothyrotomy and Tracheostomy",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK559124/",
       "volatile": false,
-      "distractors": ["Between the 4th and 5th rings, avoiding the cricothyroid membrane", "Between the 1st and 2nd rings, superior to the thyroid isthmus", "Just below the thyroid cartilage, at ring 1", "Between rings 5 and 6, below the isthmus"],
+      "distractors": [
+        "Between the 4th and 5th rings, avoiding the cricothyroid membrane",
+        "Between the 1st and 2nd rings, superior to the thyroid isthmus",
+        "Just below the thyroid cartilage, at ring 1",
+        "Between rings 5 and 6, below the isthmus"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Tracheostomy incision must avoid the cricoid cartilage superiorly because it is which type of cartilaginous ring?",
           "correctAnswer": "The only complete (full) ring of the airway",
-          "distractors": ["The thinnest ring", "The only C-shaped ring", "The most superior ring of the trachea"]
+          "distractors": [
+            "The thinnest ring",
+            "The only C-shaped ring",
+            "The most superior ring of the trachea"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The thyroid isthmus crosses the trachea at the level of the ___ tracheal rings, which must be addressed during tracheostomy.",
           "correctAnswer": "2nd and 3rd",
-          "distractors": ["4th and 5th", "1st and 2nd", "5th and 6th"]
+          "distractors": [
+            "4th and 5th",
+            "1st and 2nd",
+            "5th and 6th"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_077",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Zone 3 (pericentral / centrilobular zone)",
-      "acceptableAlternatives": ["zone 3", "pericentral zone", "centrilobular zone", "Zone III"],
+      "acceptableAlternatives": [
+        "zone 3",
+        "pericentral zone",
+        "centrilobular zone",
+        "Zone III"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_zones",
       "difficulty": 3,
@@ -527,28 +894,49 @@
       "sourceName": "Wikipedia — Lobules of Liver; PMC — Metabolic Zonation of the Liver",
       "sourceUrl": "https://en.wikipedia.org/wiki/Lobules_of_liver",
       "volatile": false,
-      "distractors": ["Zone 1 (periportal)", "Zone 2 (midzone)", "All zones equally", "Zone 1 and 2 only", "Portal triad exclusively"],
+      "distractors": [
+        "Zone 1 (periportal)",
+        "Zone 2 (midzone)",
+        "All zones equally",
+        "Zone 1 and 2 only",
+        "Portal triad exclusively"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Acetaminophen overdose causes centrilobular (zone 3) necrosis because this zone has the highest concentration of which enzyme?",
           "correctAnswer": "CYP2E1 (cytochrome P-450)",
-          "distractors": ["Glucuronosyltransferase", "Sulfotransferase", "Glutathione-S-transferase"]
+          "distractors": [
+            "Glucuronosyltransferase",
+            "Sulfotransferase",
+            "Glutathione-S-transferase"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "Zone 3 of the hepatic acinus surrounds the ___ vein and is the primary site of cytochrome P-450 drug metabolism.",
           "correctAnswer": "Central",
-          "distractors": ["Portal", "Hepatic", "Sinusoidal"]
+          "distractors": [
+            "Portal",
+            "Hepatic",
+            "Sinusoidal"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_078",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Portal triad (portal vein branch, hepatic artery branch, bile duct)",
-      "acceptableAlternatives": ["portal triad", "portal vein, hepatic artery, and bile duct"],
+      "acceptableAlternatives": [
+        "portal triad",
+        "portal vein, hepatic artery, and bile duct"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_structures",
       "difficulty": 2,
@@ -559,28 +947,48 @@
       "sourceName": "Wikipedia — Lobules of Liver; StatPearls — Physiology Liver",
       "sourceUrl": "https://en.wikipedia.org/wiki/Lobules_of_liver",
       "volatile": false,
-      "distractors": ["Central vein, sinusoid, and lymphatic", "Hepatic vein, bile duct, and lymphatic", "Portal vein, hepatic vein, and lymphatic", "Hepatic artery, canaliculus, and central vein"],
+      "distractors": [
+        "Central vein, sinusoid, and lymphatic",
+        "Hepatic vein, bile duct, and lymphatic",
+        "Portal vein, hepatic vein, and lymphatic",
+        "Hepatic artery, canaliculus, and central vein"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "In the liver lobule, blood flows from portal triads toward the central vein, while bile flows in which direction?",
           "correctAnswer": "From hepatocytes toward the bile duct at the portal triad (opposite to blood flow)",
-          "distractors": ["In the same direction as blood flow", "From central vein toward portal triads", "From sinusoids into the space of Disse"]
+          "distractors": [
+            "In the same direction as blood flow",
+            "From central vein toward portal triads",
+            "From sinusoids into the space of Disse"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "In a portal triad, bile drains toward the ___ duct while blood from the portal vein and hepatic artery flows toward the central vein.",
           "correctAnswer": "Bile",
-          "distractors": ["Lymphatic", "Canalicular", "Sinusoidal"]
+          "distractors": [
+            "Lymphatic",
+            "Canalicular",
+            "Sinusoidal"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_079",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Retroperitoneum",
-      "acceptableAlternatives": ["retroperitoneal", "retroperitoneal space"],
+      "acceptableAlternatives": [
+        "retroperitoneal",
+        "retroperitoneal space"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_regions",
       "difficulty": 2,
@@ -591,28 +999,48 @@
       "sourceName": "StatPearls — Anatomy Abdomen and Pelvis; NCBI Bookshelf",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK553104/",
       "volatile": false,
-      "distractors": ["Peritoneal cavity", "Extraperitoneal pelvis", "Mesentery", "Greater sac", "Paracolic gutter"],
+      "distractors": [
+        "Peritoneal cavity",
+        "Extraperitoneal pelvis",
+        "Mesentery",
+        "Greater sac",
+        "Paracolic gutter"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "The duodenum (2nd–4th parts), pancreas body/tail, and ascending colon are secondarily retroperitoneal. What does this mean embryologically?",
           "correctAnswer": "They were originally intraperitoneal but fused to the posterior wall during development",
-          "distractors": ["They never had a peritoneal covering", "They are covered by two layers of peritoneum", "They formed from the dorsal mesoderm exclusively"]
+          "distractors": [
+            "They never had a peritoneal covering",
+            "They are covered by two layers of peritoneum",
+            "They formed from the dorsal mesoderm exclusively"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The kidneys, aorta, IVC, and ureters are all found in the ___ compartment of the abdomen.",
           "correctAnswer": "Retroperitoneum",
-          "distractors": ["Peritoneal cavity", "Anterior abdominal wall", "Mesentery"]
+          "distractors": [
+            "Peritoneal cavity",
+            "Anterior abdominal wall",
+            "Mesentery"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_080",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Femoral nerve block",
-      "acceptableAlternatives": ["femoral nerve block"],
+      "acceptableAlternatives": [
+        "femoral nerve block"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "procedure_names",
       "difficulty": 3,
@@ -623,28 +1051,50 @@
       "sourceName": "StatPearls — Axillary Block; Brachial Plexus Block Techniques (comparison)",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK470213/",
       "volatile": false,
-      "distractors": ["Sciatic nerve block", "Obturator nerve block", "Saphenous nerve block", "Lateral femoral cutaneous nerve block", "Lumbar plexus block"],
+      "distractors": [
+        "Sciatic nerve block",
+        "Obturator nerve block",
+        "Saphenous nerve block",
+        "Lateral femoral cutaneous nerve block",
+        "Lumbar plexus block"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Using the NAVY mnemonic at the femoral triangle (lateral to medial), what is the order of structures from lateral to medial?",
           "correctAnswer": "Nerve, Artery, Vein, Y-fronts (lymphatics)",
-          "distractors": ["Vein, Artery, Nerve, lymphatics", "Artery, Nerve, Vein, lymphatics", "Nerve, Vein, Artery, lymphatics"]
+          "distractors": [
+            "Vein, Artery, Nerve, lymphatics",
+            "Artery, Nerve, Vein, lymphatics",
+            "Nerve, Vein, Artery, lymphatics"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The femoral nerve arises from spinal segments ___ and lies lateral to the femoral artery in the femoral triangle.",
           "correctAnswer": "L2–L4",
-          "distractors": ["L4–S3", "T12–L2", "L1–L3"]
+          "distractors": [
+            "L4–S3",
+            "T12–L2",
+            "L1–L3"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_081",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Sciatic nerve",
-      "acceptableAlternatives": ["sciatic"],
+      "acceptableAlternatives": [
+        "sciatic"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_nerves",
       "difficulty": 2,
@@ -655,28 +1105,51 @@
       "sourceName": "StatPearls — Brachial Plexus Block Techniques (sciatic comparison); Wikipedia — Sciatic Nerve",
       "sourceUrl": "https://en.wikipedia.org/wiki/Sciatic_nerve",
       "volatile": false,
-      "distractors": ["Femoral nerve", "Obturator nerve", "Common peroneal nerve", "Saphenous nerve", "Tibial nerve"],
+      "distractors": [
+        "Femoral nerve",
+        "Obturator nerve",
+        "Common peroneal nerve",
+        "Saphenous nerve",
+        "Tibial nerve"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "The sciatic nerve exits the pelvis below the piriformis muscle through which foramen?",
           "correctAnswer": "Greater sciatic foramen",
-          "distractors": ["Lesser sciatic foramen", "Obturator foramen", "Sacral foramen"]
+          "distractors": [
+            "Lesser sciatic foramen",
+            "Obturator foramen",
+            "Sacral foramen"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The sciatic nerve divides into the tibial and common peroneal nerves typically at the ___.",
           "correctAnswer": "Popliteal fossa",
-          "distractors": ["Gluteal fold", "Mid-thigh", "Ankle"]
+          "distractors": [
+            "Gluteal fold",
+            "Mid-thigh",
+            "Ankle"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_082",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Superior to the lower rib (along the superior margin of the rib below)",
-      "acceptableAlternatives": ["above the rib below", "superior to the inferior rib of the intercostal space"],
+      "acceptableAlternatives": [
+        "above the rib below",
+        "superior to the inferior rib of the intercostal space"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_techniques",
       "difficulty": 2,
@@ -687,28 +1160,49 @@
       "sourceName": "StatPearls — Chest Tube; PMC — Tube Thoracostomy Complications",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK459199/",
       "volatile": false,
-      "distractors": ["Inferior to the upper rib", "In the middle of the intercostal space", "Anteriorly through the rib cartilage", "Posteriorly at the costovertebral junction"],
+      "distractors": [
+        "Inferior to the upper rib",
+        "In the middle of the intercostal space",
+        "Anteriorly through the rib cartilage",
+        "Posteriorly at the costovertebral junction"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "The VAN mnemonic describes the order of structures in the costal groove. What does VAN stand from superior to inferior?",
           "correctAnswer": "Vein, Artery, Nerve",
-          "distractors": ["Nerve, Artery, Vein", "Artery, Vein, Nerve", "Vein, Nerve, Artery"]
+          "distractors": [
+            "Nerve, Artery, Vein",
+            "Artery, Vein, Nerve",
+            "Vein, Nerve, Artery"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The intercostal neurovascular bundle runs in the ___ groove on the inferior surface of each rib.",
           "correctAnswer": "Costal",
-          "distractors": ["Interosseous", "Subcostal", "Paravertebral"]
+          "distractors": [
+            "Interosseous",
+            "Subcostal",
+            "Paravertebral"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_083",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Lanz incision",
-      "acceptableAlternatives": ["Lanz"],
+      "acceptableAlternatives": [
+        "Lanz"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "procedure_names",
       "difficulty": 4,
@@ -719,60 +1213,103 @@
       "sourceName": "StatPearls — Surgical Access Incisions; Wikipedia — Surgical Incision",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK541018/",
       "volatile": false,
-      "distractors": ["Pfannenstiel incision", "Kocher incision", "Rutherford Morrison incision", "Battle's incision", "Midline laparotomy", "Rocky–Davis incision"],
+      "distractors": [
+        "Pfannenstiel incision",
+        "Kocher incision",
+        "Rutherford Morrison incision",
+        "Battle's incision",
+        "Midline laparotomy",
+        "Rocky–Davis incision"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "The Lanz incision and McBurney gridiron incision use the same anatomical landmark. What is the key difference between them?",
           "correctAnswer": "The Lanz incision is transverse (follows Langer lines) vs. the McBurney which is perpendicular to the ASIS–umbilicus line",
-          "distractors": ["The Lanz incision is more medial", "The Lanz incision extends further into the midline", "The McBurney incision is transverse, Lanz is oblique"]
+          "distractors": [
+            "The Lanz incision is more medial",
+            "The Lanz incision extends further into the midline",
+            "The McBurney incision is transverse, Lanz is oblique"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The Lanz incision follows ___ lines of skin tension, resulting in a better cosmetic scar than the traditional McBurney incision.",
           "correctAnswer": "Langer's",
-          "distractors": ["Blaschko's", "Voigt's", "Kraissl's"]
+          "distractors": [
+            "Blaschko's",
+            "Voigt's",
+            "Kraissl's"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_084",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Conus medullaris",
-      "acceptableAlternatives": ["conus", "spinal cord termination"],
+      "acceptableAlternatives": [
+        "conus",
+        "spinal cord termination"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_structures",
       "difficulty": 2,
       "funScore": 7,
-      "quizQuestion": "The tapered end of the spinal cord terminates at approximately L1–L2 in adults. What is the name of this structure?",
+      "quizQuestion": "The tapered end of the spinal cord terminates at approximately L1–L2 in adults. What is the name of this anatomical structure?",
       "explanation": "The conus medullaris is the tapered, cone-shaped terminal end of the spinal cord, typically ending at the middle of the L1 vertebral body in adults (range T11–L3). Below the conus, the spinal canal contains only the cauda equina — a bundle of lumbar, sacral, and coccygeal nerve roots that float freely in CSF. The filum terminale, a thin strand of pia mater, extends from the tip of the conus to the coccyx. The cauda equina can move away from needles, making lumbar puncture below L2 safe.",
       "visualDescription": "Pixel art posterior spinal cord: cord tapering to cone shape at L1–L2 level (conus medullaris), loose cauda equina strands descending below, filum terminale as thin thread to coccyx",
       "sourceName": "StatPearls — Neuroanatomy Conus Medullaris",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK545227/",
       "volatile": false,
-      "distractors": ["Cauda equina", "Filum terminale", "Epiconus", "Dural sac terminus", "Lumbar cistern"],
+      "distractors": [
+        "Cauda equina",
+        "Filum terminale",
+        "Epiconus",
+        "Dural sac terminus",
+        "Lumbar cistern"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Below the conus medullaris, the spinal canal contains only loose nerve roots called the cauda equina. Why does this make lumbar puncture safe below L2?",
           "correctAnswer": "The loose nerve roots can float away from the needle without being injured",
-          "distractors": ["There is no CSF below L2", "The dural sac ends at L2", "The epidural space is largest below L2"]
+          "distractors": [
+            "There is no CSF below L2",
+            "The dural sac ends at L2",
+            "The epidural space is largest below L2"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "A thin strand of pia mater called the ___ extends from the tip of the conus medullaris to the coccyx.",
           "correctAnswer": "Filum terminale",
-          "distractors": ["Cauda equina", "Dentate ligament", "Dural sac"]
+          "distractors": [
+            "Cauda equina",
+            "Dentate ligament",
+            "Dural sac"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_085",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Aortic knob",
-      "acceptableAlternatives": ["aortic arch", "aortic knob/arch shadow"],
+      "acceptableAlternatives": [
+        "aortic arch",
+        "aortic knob/arch shadow"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_structures",
       "difficulty": 3,
@@ -783,28 +1320,49 @@
       "sourceName": "PubMed — Carina as a Radiographic Landmark; Radiopaedia — Carina",
       "sourceUrl": "https://radiopaedia.org/articles/carina?lang=us",
       "volatile": false,
-      "distractors": ["Pulmonary trunk", "Left atrial appendage", "Azygos vein knuckle", "Left superior pulmonary vein", "Descending aorta shadow"],
+      "distractors": [
+        "Pulmonary trunk",
+        "Left atrial appendage",
+        "Azygos vein knuckle",
+        "Left superior pulmonary vein",
+        "Descending aorta shadow"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "A widened aortic knob on a chest X-ray should raise suspicion for which serious condition?",
           "correctAnswer": "Aortic aneurysm or dissection",
-          "distractors": ["Left atrial enlargement", "Pulmonary hypertension", "Right ventricular hypertrophy"]
+          "distractors": [
+            "Left atrial enlargement",
+            "Pulmonary hypertension",
+            "Right ventricular hypertrophy"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The aortic knob on CXR creates an indentation on the ___ side of the trachea at approximately T4.",
           "correctAnswer": "Left",
-          "distractors": ["Right", "Anterior", "Posterior"]
+          "distractors": [
+            "Right",
+            "Anterior",
+            "Posterior"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_086",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Axillary brachial plexus block",
-      "acceptableAlternatives": ["axillary block", "axillary approach"],
+      "acceptableAlternatives": [
+        "axillary block",
+        "axillary approach"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "procedure_names",
       "difficulty": 3,
@@ -815,28 +1373,51 @@
       "sourceName": "StatPearls — Axillary Block; PMC — Axillary Brachial Plexus Block",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK537201/",
       "volatile": false,
-      "distractors": ["Interscalene block", "Supraclavicular block", "Infraclavicular block", "Costoclavicular block", "Cervical plexus block"],
+      "distractors": [
+        "Interscalene block",
+        "Supraclavicular block",
+        "Infraclavicular block",
+        "Costoclavicular block",
+        "Cervical plexus block"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "The interscalene brachial plexus block consistently blocks the phrenic nerve. Why does this limit its use in certain patients?",
           "correctAnswer": "It causes hemidiaphragm paresis — contraindicated in severe COPD, contralateral phrenic palsy, or single lung",
-          "distractors": ["It causes Horner syndrome only", "It blocks the recurrent laryngeal nerve in all patients", "It cannot reach C5 roots"]
+          "distractors": [
+            "It causes Horner syndrome only",
+            "It blocks the recurrent laryngeal nerve in all patients",
+            "It cannot reach C5 roots"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "In the axillary approach, the musculocutaneous nerve lies within the ___ muscle and must be blocked separately.",
           "correctAnswer": "Coracobrachialis",
-          "distractors": ["Biceps brachii", "Brachialis", "Deltoid"]
+          "distractors": [
+            "Biceps brachii",
+            "Brachialis",
+            "Deltoid"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_087",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Fenestrated endothelium → glomerular basement membrane → podocyte slit diaphragm",
-      "acceptableAlternatives": ["endothelium, GBM, podocytes", "endothelial cells, basement membrane, podocyte foot processes"],
+      "acceptableAlternatives": [
+        "endothelium, GBM, podocytes",
+        "endothelial cells, basement membrane, podocyte foot processes"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_structures",
       "difficulty": 3,
@@ -847,28 +1428,48 @@
       "sourceName": "StatPearls — Histology Kidney and Glomerulus; PMC — Glomerular Filtration Barrier Assembly",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK554544/",
       "volatile": false,
-      "distractors": ["Podocytes → GBM → endothelium", "GBM → endothelium → podocytes", "Mesangium → GBM → endothelium", "Endothelium → mesangium → podocytes"],
+      "distractors": [
+        "Podocytes → GBM → endothelium",
+        "GBM → endothelium → podocytes",
+        "Mesangium → GBM → endothelium",
+        "Endothelium → mesangium → podocytes"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Mutations in nephrin, a key component of the slit diaphragm between podocyte foot processes, cause which congenital kidney disease with massive proteinuria?",
           "correctAnswer": "Congenital nephrotic syndrome of the Finnish type",
-          "distractors": ["Alport syndrome", "Minimal change disease", "IgA nephropathy"]
+          "distractors": [
+            "Alport syndrome",
+            "Minimal change disease",
+            "IgA nephropathy"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The glomerular basement membrane is approximately ___ nm thick and contains type IV collagen, laminin, and heparan sulfate.",
           "correctAnswer": "250–400",
-          "distractors": ["50–100", "1000–1500", "10–20"]
+          "distractors": [
+            "50–100",
+            "1000–1500",
+            "10–20"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_088",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Apical (upward) for pneumothorax; dependent/posterior for effusion or hemothorax",
-      "acceptableAlternatives": ["upward for pneumo, posterior for effusion", "toward apex for air, toward base for fluid"],
+      "acceptableAlternatives": [
+        "upward for pneumo, posterior for effusion",
+        "toward apex for air, toward base for fluid"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "anatomy_techniques",
       "difficulty": 3,
@@ -879,22 +1480,39 @@
       "sourceName": "StatPearls — Chest Tube; PMC — Chest Tube Placement and Management",
       "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK459199/",
       "volatile": false,
-      "distractors": ["Posterior for pneumothorax; anterior for effusion", "Direction does not matter if positioned in the safe triangle", "Apical for both; tube drainage handles direction", "Medial for pneumothorax; lateral for effusion"],
+      "distractors": [
+        "Posterior for pneumothorax; anterior for effusion",
+        "Direction does not matter if positioned in the safe triangle",
+        "Apical for both; tube drainage handles direction",
+        "Medial for pneumothorax; lateral for effusion"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "A chest tube for pneumothorax should be directed ___ toward the apex, while one for hemothorax should be directed posteroinferiorly.",
           "correctAnswer": "Apically / anterosuperiorly",
-          "distractors": ["Posteriorly", "Inferiorly", "Medially"]
+          "distractors": [
+            "Posteriorly",
+            "Inferiorly",
+            "Medially"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf", "PLAB", "AMC"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf",
+        "PLAB",
+        "AMC"
+      ]
     },
     {
       "id": "ha_clinical_089",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Murphy's sign",
-      "acceptableAlternatives": ["Murphy sign"],
+      "acceptableAlternatives": [
+        "Murphy sign"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "clinical_signs",
       "difficulty": 2,
@@ -905,28 +1523,50 @@
       "sourceName": "Wikipedia — Murphy's Sign; NCBI — Clinical Methods Abdominal Pain",
       "sourceUrl": "https://en.wikipedia.org/wiki/Murphy%27s_sign_(medical)",
       "volatile": false,
-      "distractors": ["Rovsing's sign", "McBurney's sign", "Kehr's sign", "Grey Turner's sign", "Cullen's sign", "Psoas sign"],
+      "distractors": [
+        "Rovsing's sign",
+        "McBurney's sign",
+        "Kehr's sign",
+        "Grey Turner's sign",
+        "Cullen's sign",
+        "Psoas sign"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Murphy's sign is most specific for which condition?",
           "correctAnswer": "Acute cholecystitis",
-          "distractors": ["Appendicitis", "Hepatitis", "Renal colic"]
+          "distractors": [
+            "Appendicitis",
+            "Hepatitis",
+            "Renal colic"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "Murphy's sign is elicited by pressing under the ___ costal margin at the mid-clavicular line during deep inspiration.",
           "correctAnswer": "Right",
-          "distractors": ["Left", "Bilateral", "Epigastric"]
+          "distractors": [
+            "Left",
+            "Bilateral",
+            "Epigastric"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     },
     {
       "id": "ha_clinical_090",
       "subDeckId": "clinical_anatomy",
       "correctAnswer": "Psoas sign",
-      "acceptableAlternatives": ["iliopsoas sign", "iliopsoas test"],
+      "acceptableAlternatives": [
+        "iliopsoas sign",
+        "iliopsoas test"
+      ],
       "chainThemeId": 7,
       "answerTypePoolId": "clinical_signs",
       "difficulty": 3,
@@ -937,22 +1577,40 @@
       "sourceName": "Wikipedia — Psoas Sign; NCBI — Abdominal Pain",
       "sourceUrl": "https://en.wikipedia.org/wiki/Psoas_sign",
       "volatile": false,
-      "distractors": ["Obturator sign", "Rovsing's sign", "Murphy's sign", "Cullen's sign", "Carnett's sign"],
+      "distractors": [
+        "Obturator sign",
+        "Rovsing's sign",
+        "Murphy's sign",
+        "Cullen's sign",
+        "Carnett's sign"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "A positive psoas sign suggests inflammation adjacent to the iliopsoas muscle — which appendix position most commonly causes this?",
           "correctAnswer": "Retrocecal appendix",
-          "distractors": ["Pelvic appendix", "Pre-ileal appendix", "Subcecal appendix"]
+          "distractors": [
+            "Pelvic appendix",
+            "Pre-ileal appendix",
+            "Subcecal appendix"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The psoas sign is elicited by passive ___ of the right hip, which stretches the iliopsoas and causes pain if adjacent inflammation is present.",
           "correctAnswer": "Extension",
-          "distractors": ["Flexion", "Abduction", "Adduction"]
+          "distractors": [
+            "Flexion",
+            "Abduction",
+            "Adduction"
+          ]
         }
       ],
-      "examTags": ["USMLE_Step2", "clinical_correlation", "NBME_Shelf"]
+      "examTags": [
+        "USMLE_Step2",
+        "clinical_correlation",
+        "NBME_Shelf"
+      ]
     }
   ]
 }

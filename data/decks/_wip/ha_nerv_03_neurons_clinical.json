@@ -3,7 +3,10 @@
     {
       "id": "ha_nerv_055",
       "correctAnswer": "Nissl bodies",
-      "acceptableAlternatives": ["Nissl substance", "rough ER"],
+      "acceptableAlternatives": [
+        "Nissl substance",
+        "rough ER"
+      ],
       "chainThemeId": "neuron_structure",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -14,32 +17,53 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["Golgi apparatus", "synaptic vesicles", "myelin granules", "Cajal bodies", "Lewy bodies", "chromatin clumps", "axon hillocks", "dendritic spines"],
+      "distractors": [
+        "Golgi apparatus",
+        "synaptic vesicles",
+        "myelin granules",
+        "Cajal bodies",
+        "Lewy bodies",
+        "chromatin clumps",
+        "axon hillocks",
+        "dendritic spines"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Nissl bodies are large clumps of rough endoplasmic reticulum found in the soma and dendrites of neurons — but notably absent from what part of the neuron?",
           "correctAnswer": "axon",
-          "distractors": ["dendrites", "nucleus", "cell body"]
+          "distractors": [
+            "dendrites",
+            "nucleus",
+            "cell body"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: Nissl bodies are found in the axon of a neuron.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The clumps of rough endoplasmic reticulum found in a neuron's cell body are called ___ bodies.",
           "correctAnswer": "Nissl",
-          "distractors": ["Golgi", "Lewy", "Cajal"]
+          "distractors": [
+            "Golgi",
+            "Lewy",
+            "Cajal"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_056",
       "correctAnswer": "axon hillock",
-      "acceptableAlternatives": ["hillock"],
+      "acceptableAlternatives": [
+        "hillock"
+      ],
       "chainThemeId": "neuron_structure",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -50,26 +74,45 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["synaptic knob", "dendritic spine", "Ranvier node", "soma junction", "terminal bouton", "schwann junction", "myelin cap", "initial segment cap"],
+      "distractors": [
+        "synaptic knob",
+        "dendritic spine",
+        "Ranvier node",
+        "soma junction",
+        "terminal bouton",
+        "schwann junction",
+        "myelin cap",
+        "initial segment cap"
+      ],
       "variants": [
         {
           "type": "context",
           "question": "A neuron only fires if the sum of excitatory and inhibitory signals exceeds a threshold of about -55 mV. Where on the neuron is this summation point and trigger zone located?",
           "correctAnswer": "axon hillock",
-          "distractors": ["dendritic tips", "synaptic cleft", "node of Ranvier"]
+          "distractors": [
+            "dendritic tips",
+            "synaptic cleft",
+            "node of Ranvier"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The trigger zone where action potentials are initiated is the axon ___.",
           "correctAnswer": "hillock",
-          "distractors": ["terminal", "knob", "node"]
+          "distractors": [
+            "terminal",
+            "knob",
+            "node"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_057",
       "correctAnswer": "saltatory conduction",
-      "acceptableAlternatives": ["saltatory"],
+      "acceptableAlternatives": [
+        "saltatory"
+      ],
       "chainThemeId": "neuron_structure",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -80,26 +123,45 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["continuous conduction", "graded conduction", "ephaptic conduction", "retrograde conduction", "anterograde transmission", "axoplasmic flow", "cable conduction", "ionic relay"],
+      "distractors": [
+        "continuous conduction",
+        "graded conduction",
+        "ephaptic conduction",
+        "retrograde conduction",
+        "anterograde transmission",
+        "axoplasmic flow",
+        "cable conduction",
+        "ionic relay"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Saltatory conduction is faster and more energy-efficient than continuous conduction — what structural feature of myelinated axons makes it possible?",
           "correctAnswer": "nodes of Ranvier",
-          "distractors": ["axon hillock", "synaptic vesicles", "Nissl bodies"]
+          "distractors": [
+            "axon hillock",
+            "synaptic vesicles",
+            "Nissl bodies"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: Saltatory conduction is slower than continuous conduction in unmyelinated axons.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_058",
       "correctAnswer": "20 nanometers",
-      "acceptableAlternatives": ["20 nm", "~20 nm", "approximately 20 nanometers"],
+      "acceptableAlternatives": [
+        "20 nm",
+        "~20 nm",
+        "approximately 20 nanometers"
+      ],
       "chainThemeId": "neuron_structure",
       "answerTypePoolId": "number_stats",
       "difficulty": 4,
@@ -110,26 +172,43 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["2 nanometers", "200 nanometers", "1 micrometer", "5 nanometers", "50 nanometers", "1 nanometer", "100 nanometers", "500 nanometers"],
+      "distractors": [
+        "2 nanometers",
+        "200 nanometers",
+        "1 micrometer",
+        "5 nanometers",
+        "50 nanometers",
+        "1 nanometer",
+        "100 nanometers",
+        "500 nanometers"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "The synaptic cleft — the gap between a presynaptic terminal and postsynaptic membrane — is approximately ___ nanometers wide.",
           "correctAnswer": "20",
-          "distractors": ["200", "2", "100"]
+          "distractors": [
+            "200",
+            "2",
+            "100"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: The synaptic cleft is wider than 1 micrometer.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_059",
       "correctAnswer": "multipolar",
-      "acceptableAlternatives": ["multipolar neuron"],
+      "acceptableAlternatives": [
+        "multipolar neuron"
+      ],
       "chainThemeId": "neuron_structure",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -140,26 +219,45 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["bipolar", "pseudounipolar", "unipolar", "anaxonic", "interneuron type", "sensory type", "Purkinje type", "granule type"],
+      "distractors": [
+        "bipolar",
+        "pseudounipolar",
+        "unipolar",
+        "anaxonic",
+        "interneuron type",
+        "sensory type",
+        "Purkinje type",
+        "granule type"
+      ],
       "variants": [
         {
           "type": "context",
           "question": "Sensory neurons in the dorsal root ganglia have a single process that splits into a peripheral branch and a central branch going to the spinal cord. What type of neuron is this?",
           "correctAnswer": "pseudounipolar",
-          "distractors": ["multipolar", "bipolar", "anaxonic"]
+          "distractors": [
+            "multipolar",
+            "bipolar",
+            "anaxonic"
+          ]
         },
         {
           "type": "context",
           "question": "Neurons in the retina and olfactory epithelium that have exactly one axon and one dendrite are classified as which type?",
           "correctAnswer": "bipolar",
-          "distractors": ["multipolar", "pseudounipolar", "unipolar"]
+          "distractors": [
+            "multipolar",
+            "pseudounipolar",
+            "unipolar"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_060",
       "correctAnswer": "oligodendrocytes",
-      "acceptableAlternatives": ["oligodendrocyte"],
+      "acceptableAlternatives": [
+        "oligodendrocyte"
+      ],
       "chainThemeId": "glial_cells",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -170,32 +268,53 @@
       "sourceName": "Wikipedia — Neuroglia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
       "volatile": false,
-      "distractors": ["Schwann cells", "astrocytes", "microglia", "ependymal cells", "satellite cells", "Bergmann glia", "radial glia", "tanycytes"],
+      "distractors": [
+        "Schwann cells",
+        "astrocytes",
+        "microglia",
+        "ependymal cells",
+        "satellite cells",
+        "Bergmann glia",
+        "radial glia",
+        "tanycytes"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Oligodendrocytes myelinate axons in the CNS — but which glial cell performs the equivalent myelinating role in the PNS?",
           "correctAnswer": "Schwann cells",
-          "distractors": ["astrocytes", "microglia", "ependymal cells"]
+          "distractors": [
+            "astrocytes",
+            "microglia",
+            "ependymal cells"
+          ]
         },
         {
           "type": "context",
           "question": "In multiple sclerosis, the immune system attacks the myelin sheaths of the CNS. Which cell type produces that myelin?",
           "correctAnswer": "oligodendrocytes",
-          "distractors": ["Schwann cells", "astrocytes", "microglia"]
+          "distractors": [
+            "Schwann cells",
+            "astrocytes",
+            "microglia"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: A single Schwann cell can myelinate multiple axons simultaneously.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_061",
       "correctAnswer": "astrocytes",
-      "acceptableAlternatives": ["astrocyte"],
+      "acceptableAlternatives": [
+        "astrocyte"
+      ],
       "chainThemeId": "glial_cells",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -206,26 +325,44 @@
       "sourceName": "Wikipedia — Neuroglia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
       "volatile": false,
-      "distractors": ["oligodendrocytes", "microglia", "Schwann cells", "ependymal cells", "satellite cells", "radial glia", "pericytes", "tanycytes"],
+      "distractors": [
+        "oligodendrocytes",
+        "microglia",
+        "Schwann cells",
+        "ependymal cells",
+        "satellite cells",
+        "radial glia",
+        "pericytes",
+        "tanycytes"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "The star-shaped CNS glial cells that maintain the blood-brain barrier and support neuronal function are called ___.",
           "correctAnswer": "astrocytes",
-          "distractors": ["oligodendrocytes", "microglia", "ependymal cells"]
+          "distractors": [
+            "oligodendrocytes",
+            "microglia",
+            "ependymal cells"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: Astrocytes are the immune-surveillance cells of the CNS responsible for phagocytosis.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_062",
       "correctAnswer": "microglia",
-      "acceptableAlternatives": ["microglial cells", "microglia cells"],
+      "acceptableAlternatives": [
+        "microglial cells",
+        "microglia cells"
+      ],
       "chainThemeId": "glial_cells",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -236,26 +373,44 @@
       "sourceName": "Wikipedia — Neuroglia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
       "volatile": false,
-      "distractors": ["astrocytes", "oligodendrocytes", "ependymal cells", "Schwann cells", "neurons", "satellite cells", "pericytes", "T-cells"],
+      "distractors": [
+        "astrocytes",
+        "oligodendrocytes",
+        "ependymal cells",
+        "Schwann cells",
+        "neurons",
+        "satellite cells",
+        "pericytes",
+        "T-cells"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "The CNS's resident immune cells that perform phagocytosis are called ___.",
           "correctAnswer": "microglia",
-          "distractors": ["astrocytes", "oligodendrocytes", "ependymal cells"]
+          "distractors": [
+            "astrocytes",
+            "oligodendrocytes",
+            "ependymal cells"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: Microglia originate from neural progenitor cells like most other CNS cells.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_063",
       "correctAnswer": "ependymal cells",
-      "acceptableAlternatives": ["ependymocytes", "ependyma"],
+      "acceptableAlternatives": [
+        "ependymocytes",
+        "ependyma"
+      ],
       "chainThemeId": "glial_cells",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -266,20 +421,37 @@
       "sourceName": "Wikipedia — Neuroglia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
       "volatile": false,
-      "distractors": ["astrocytes", "microglia", "oligodendrocytes", "Schwann cells", "satellite cells", "tanycytes", "pericytes", "radial glia"],
+      "distractors": [
+        "astrocytes",
+        "microglia",
+        "oligodendrocytes",
+        "Schwann cells",
+        "satellite cells",
+        "tanycytes",
+        "pericytes",
+        "radial glia"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "The choroid plexus produces cerebrospinal fluid — which ciliated cell type forms the choroid plexus and lines the brain ventricles?",
           "correctAnswer": "ependymal cells",
-          "distractors": ["astrocytes", "microglia", "oligodendrocytes"]
+          "distractors": [
+            "astrocytes",
+            "microglia",
+            "oligodendrocytes"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_064",
       "correctAnswer": "-70 mV",
-      "acceptableAlternatives": ["negative 70 millivolts", "approximately -70 mV", "-70 millivolts"],
+      "acceptableAlternatives": [
+        "negative 70 millivolts",
+        "approximately -70 mV",
+        "-70 millivolts"
+      ],
       "chainThemeId": "action_potential",
       "answerTypePoolId": "number_stats",
       "difficulty": 2,
@@ -290,80 +462,134 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["-55 mV", "-90 mV", "+30 mV", "0 mV", "-40 mV", "-110 mV", "+70 mV", "-20 mV"],
+      "distractors": [
+        "-55 mV",
+        "-90 mV",
+        "+30 mV",
+        "0 mV",
+        "-40 mV",
+        "-110 mV",
+        "+70 mV",
+        "-20 mV"
+      ],
       "variants": [
         {
           "type": "context",
           "question": "The Na+/K+ ATPase pump maintains the neuron's resting potential by moving 3 Na+ out and 2 K+ in per cycle. What resting membrane potential does this help establish?",
           "correctAnswer": "-70 mV",
-          "distractors": ["-55 mV", "+30 mV", "-90 mV"]
+          "distractors": [
+            "-55 mV",
+            "+30 mV",
+            "-90 mV"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The resting membrane potential of a typical neuron is approximately ___ mV.",
           "correctAnswer": "-70",
-          "distractors": ["-55", "+30", "-90"]
+          "distractors": [
+            "-55",
+            "+30",
+            "-90"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_065",
       "correctAnswer": "-55 mV",
-      "acceptableAlternatives": ["negative 55 millivolts", "approximately -55 mV", "-55 millivolts"],
+      "acceptableAlternatives": [
+        "negative 55 millivolts",
+        "approximately -55 mV",
+        "-55 millivolts"
+      ],
       "chainThemeId": "action_potential",
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
       "funScore": 7,
-      "quizQuestion": "When a neuron is sufficiently depolarized, voltage-gated Na+ channels snap open and an action potential fires. What is the approximate threshold membrane potential at which this occurs?",
+      "quizQuestion": "When a neuron is sufficiently depolarized, voltage-gated Na+ channels snap open and an action potential fires. What is the approximate threshold membrane potential at which occurs?",
       "explanation": "The action potential threshold is approximately -55 mV. When depolarization from the resting potential (-70 mV) reaches this threshold, voltage-gated Na+ channels open explosively in a positive feedback loop — Na+ rushes in, further depolarizing the membrane and opening more channels. Below threshold, the depolarization dissipates without generating an action potential. This is the basis of the all-or-none law.",
       "visualDescription": "Pixel art action potential graph: horizontal axis = time, vertical axis = voltage; resting line at -70 mV, dotted threshold line at -55 mV, sharp upswing to +30 mV labeled 'depolarization', then downswing",
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["-70 mV", "-40 mV", "0 mV", "+30 mV", "-30 mV", "-80 mV", "-90 mV", "-65 mV"],
+      "distractors": [
+        "-70 mV",
+        "-40 mV",
+        "0 mV",
+        "+30 mV",
+        "-30 mV",
+        "-80 mV",
+        "-90 mV",
+        "-65 mV"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "An action potential is triggered when the membrane potential reaches the threshold of approximately ___ mV.",
           "correctAnswer": "-55",
-          "distractors": ["-70", "-40", "0"]
+          "distractors": [
+            "-70",
+            "-40",
+            "0"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_066",
       "correctAnswer": "all-or-none law",
-      "acceptableAlternatives": ["all or none law", "all-or-none principle"],
+      "acceptableAlternatives": [
+        "all or none law",
+        "all-or-none principle"
+      ],
       "chainThemeId": "action_potential",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
       "funScore": 8,
-      "quizQuestion": "An action potential either fires completely or not at all — a stronger stimulus doesn't produce a bigger action potential, only a higher firing frequency. What law describes this property?",
+      "quizQuestion": "An action potential either fires completely or not at all — a stronger stimulus doesn't produce a bigger action potential, only a higher firing frequency. What law describes this characteristic?",
       "explanation": "The all-or-none law states that an action potential fires at full amplitude whenever threshold is reached, regardless of how much the stimulus exceeds threshold. Signal intensity is therefore encoded not by the size of individual action potentials (which are always the same amplitude) but by their frequency — stronger stimuli cause more action potentials per second. This is called rate coding or frequency coding.",
       "visualDescription": "Pixel art: two stimulus scenarios side by side — weak sub-threshold stimulus producing flat line, strong supra-threshold stimulus producing identical full-size spikes at higher frequency, labeled 'All-or-None'",
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["graded potential law", "frequency coding rule", "cable theory", "refractory principle", "threshold law", "amplitude law", "Ohm's neural law", "Weber-Fechner law"],
+      "distractors": [
+        "graded potential law",
+        "frequency coding rule",
+        "cable theory",
+        "refractory principle",
+        "threshold law",
+        "amplitude law",
+        "Ohm's neural law",
+        "Weber-Fechner law"
+      ],
       "variants": [
         {
           "type": "context",
           "question": "A neuron encodes signal strength by firing action potentials more frequently rather than producing larger action potentials. Which law explains why individual action potentials cannot vary in amplitude?",
           "correctAnswer": "all-or-none law",
-          "distractors": ["graded potential law", "Weber-Fechner law", "cable theory"]
+          "distractors": [
+            "graded potential law",
+            "Weber-Fechner law",
+            "cable theory"
+          ]
         },
         {
           "type": "true_false",
           "question": "True or false: A stronger stimulus causes a larger-amplitude action potential in the same neuron.",
           "correctAnswer": "False",
-          "distractors": ["True"]
+          "distractors": [
+            "True"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_067",
       "correctAnswer": "absolute refractory period",
-      "acceptableAlternatives": ["absolute refractory"],
+      "acceptableAlternatives": [
+        "absolute refractory"
+      ],
       "chainThemeId": "action_potential",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 3,
@@ -374,26 +600,45 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["relative refractory period", "hyperpolarization phase", "depolarization block", "refractory window", "post-spike silence", "dead time interval", "inactivation pause", "Na+ lockout phase"],
+      "distractors": [
+        "relative refractory period",
+        "hyperpolarization phase",
+        "depolarization block",
+        "refractory window",
+        "post-spike silence",
+        "dead time interval",
+        "inactivation pause",
+        "Na+ lockout phase"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "During the relative refractory period, a stronger-than-normal stimulus CAN trigger an action potential. What period immediately precedes it, during which NO stimulus can trigger firing?",
           "correctAnswer": "absolute refractory period",
-          "distractors": ["hyperpolarization phase", "depolarization phase", "resting phase"]
+          "distractors": [
+            "hyperpolarization phase",
+            "depolarization phase",
+            "resting phase"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The period immediately after an action potential during which no stimulus can trigger another is called the ___ refractory period.",
           "correctAnswer": "absolute",
-          "distractors": ["relative", "extended", "total"]
+          "distractors": [
+            "relative",
+            "extended",
+            "total"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_068",
       "correctAnswer": "acetylcholine",
-      "acceptableAlternatives": ["ACh"],
+      "acceptableAlternatives": [
+        "ACh"
+      ],
       "chainThemeId": "neurotransmitters",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -404,19 +649,36 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["dopamine", "serotonin", "norepinephrine", "GABA", "glutamate", "glycine", "substance P", "nitric oxide"],
+      "distractors": [
+        "dopamine",
+        "serotonin",
+        "norepinephrine",
+        "GABA",
+        "glutamate",
+        "glycine",
+        "substance P",
+        "nitric oxide"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Acetylcholine is released at the neuromuscular junction — but in the CNS, ACh is particularly important for which cognitive function?",
           "correctAnswer": "memory",
-          "distractors": ["pain perception", "blood pressure regulation", "visual processing"]
+          "distractors": [
+            "pain perception",
+            "blood pressure regulation",
+            "visual processing"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The neurotransmitter released at the neuromuscular junction is ___.",
           "correctAnswer": "acetylcholine",
-          "distractors": ["dopamine", "serotonin", "norepinephrine"]
+          "distractors": [
+            "dopamine",
+            "serotonin",
+            "norepinephrine"
+          ]
         }
       ]
     },
@@ -434,26 +696,46 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["serotonin", "acetylcholine", "GABA", "norepinephrine", "glutamate", "endorphin", "histamine", "glycine"],
+      "distractors": [
+        "serotonin",
+        "acetylcholine",
+        "GABA",
+        "norepinephrine",
+        "glutamate",
+        "endorphin",
+        "histamine",
+        "glycine"
+      ],
       "variants": [
         {
           "type": "context",
           "question": "The mesolimbic dopamine pathway (VTA → nucleus accumbens) mediates reward and motivation — but the nigrostriatal dopamine pathway (substantia nigra → striatum) mediates what function?",
           "correctAnswer": "movement / motor control",
-          "distractors": ["mood regulation", "pain suppression", "memory formation"]
+          "distractors": [
+            "mood regulation",
+            "pain suppression",
+            "memory formation"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "Parkinson's disease results from the loss of ___ neurons in the substantia nigra.",
           "correctAnswer": "dopaminergic",
-          "distractors": ["serotonergic", "cholinergic", "GABAergic"]
+          "distractors": [
+            "serotonergic",
+            "cholinergic",
+            "GABAergic"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_070",
       "correctAnswer": "GABA",
-      "acceptableAlternatives": ["gamma-aminobutyric acid", "gamma aminobutyric acid"],
+      "acceptableAlternatives": [
+        "gamma-aminobutyric acid",
+        "gamma aminobutyric acid"
+      ],
       "chainThemeId": "neurotransmitters",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -464,26 +746,46 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["glutamate", "dopamine", "serotonin", "glycine", "acetylcholine", "norepinephrine", "endorphin", "adenosine"],
+      "distractors": [
+        "glutamate",
+        "dopamine",
+        "serotonin",
+        "glycine",
+        "acetylcholine",
+        "norepinephrine",
+        "endorphin",
+        "adenosine"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Benzodiazepines reduce anxiety and seizures by enhancing which inhibitory neurotransmitter's effect at its receptor?",
           "correctAnswer": "GABA",
-          "distractors": ["serotonin", "glycine", "dopamine"]
+          "distractors": [
+            "serotonin",
+            "glycine",
+            "dopamine"
+          ]
         },
         {
           "type": "context",
           "question": "Glutamate is the primary EXCITATORY neurotransmitter in the brain. What is the primary INHIBITORY neurotransmitter?",
           "correctAnswer": "GABA",
-          "distractors": ["serotonin", "dopamine", "acetylcholine"]
+          "distractors": [
+            "serotonin",
+            "dopamine",
+            "acetylcholine"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_071",
       "correctAnswer": "serotonin",
-      "acceptableAlternatives": ["5-HT", "5-hydroxytryptamine"],
+      "acceptableAlternatives": [
+        "5-HT",
+        "5-hydroxytryptamine"
+      ],
       "chainThemeId": "neurotransmitters",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -494,26 +796,47 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["dopamine", "norepinephrine", "GABA", "acetylcholine", "glutamate", "histamine", "oxytocin", "cortisol"],
+      "distractors": [
+        "dopamine",
+        "norepinephrine",
+        "GABA",
+        "acetylcholine",
+        "glutamate",
+        "histamine",
+        "oxytocin",
+        "cortisol"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "SSRIs treat depression by preventing reuptake of ___ in the synaptic cleft.",
           "correctAnswer": "serotonin",
-          "distractors": ["dopamine", "norepinephrine", "GABA"]
+          "distractors": [
+            "dopamine",
+            "norepinephrine",
+            "GABA"
+          ]
         },
         {
           "type": "reverse",
           "question": "Serotonin is produced primarily in the raphe nuclei — but where in the brain is the primary nucleus for norepinephrine production?",
           "correctAnswer": "locus coeruleus",
-          "distractors": ["substantia nigra", "ventral tegmental area", "raphe nuclei"]
+          "distractors": [
+            "substantia nigra",
+            "ventral tegmental area",
+            "raphe nuclei"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_072",
       "correctAnswer": "endorphins",
-      "acceptableAlternatives": ["endorphin", "endogenous opioids", "beta-endorphin"],
+      "acceptableAlternatives": [
+        "endorphin",
+        "endogenous opioids",
+        "beta-endorphin"
+      ],
       "chainThemeId": "neurotransmitters",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -524,26 +847,47 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["dopamine", "serotonin", "adrenaline", "cortisol", "oxytocin", "enkephalins", "substance P", "glutamate"],
+      "distractors": [
+        "dopamine",
+        "serotonin",
+        "adrenaline",
+        "cortisol",
+        "oxytocin",
+        "enkephalins",
+        "substance P",
+        "glutamate"
+      ],
       "variants": [
         {
           "type": "context",
           "question": "Morphine and heroin produce pain relief and euphoria by binding opioid receptors — which endogenous peptides do they mimic?",
           "correctAnswer": "endorphins",
-          "distractors": ["dopamine", "serotonin", "enkephalins"]
+          "distractors": [
+            "dopamine",
+            "serotonin",
+            "enkephalins"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The natural pain-relieving neuropeptides responsible for 'runner's high' are called ___.",
           "correctAnswer": "endorphins",
-          "distractors": ["dopamine", "serotonin", "cortisol"]
+          "distractors": [
+            "dopamine",
+            "serotonin",
+            "cortisol"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_073",
       "correctAnswer": "150 mL",
-      "acceptableAlternatives": ["approximately 150 mL", "about 150 mL", "150 milliliters"],
+      "acceptableAlternatives": [
+        "approximately 150 mL",
+        "about 150 mL",
+        "150 milliliters"
+      ],
       "chainThemeId": "ventricles_csf",
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
@@ -554,26 +898,46 @@
       "sourceName": "Wikipedia — Neuroglia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
       "volatile": false,
-      "distractors": ["500 mL", "50 mL", "1000 mL", "300 mL", "75 mL", "250 mL", "30 mL", "600 mL"],
+      "distractors": [
+        "500 mL",
+        "50 mL",
+        "1000 mL",
+        "300 mL",
+        "75 mL",
+        "250 mL",
+        "30 mL",
+        "600 mL"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Only ~150 mL of CSF is present at any time despite continuous production — how much CSF does the choroid plexus produce per day?",
           "correctAnswer": "500 mL",
-          "distractors": ["150 mL", "1000 mL", "300 mL"]
+          "distractors": [
+            "150 mL",
+            "1000 mL",
+            "300 mL"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "Approximately ___ mL of cerebrospinal fluid is present in the CNS at any given moment.",
           "correctAnswer": "150",
-          "distractors": ["500", "50", "300"]
+          "distractors": [
+            "500",
+            "50",
+            "300"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_074",
       "correctAnswer": "cerebral aqueduct",
-      "acceptableAlternatives": ["aqueduct of Sylvius", "aqueductus cerebri"],
+      "acceptableAlternatives": [
+        "aqueduct of Sylvius",
+        "aqueductus cerebri"
+      ],
       "chainThemeId": "ventricles_csf",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 4,
@@ -584,26 +948,45 @@
       "sourceName": "Wikipedia — Neuroglia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
       "volatile": false,
-      "distractors": ["foramen of Monro", "foramen of Luschka", "foramen of Magendie", "interventricular foramen", "central canal", "cisterna magna", "lateral aperture", "subarachnoid foramen"],
+      "distractors": [
+        "foramen of Monro",
+        "foramen of Luschka",
+        "foramen of Magendie",
+        "interventricular foramen",
+        "central canal",
+        "cisterna magna",
+        "lateral aperture",
+        "subarachnoid foramen"
+      ],
       "variants": [
         {
           "type": "context",
           "question": "Obstructive hydrocephalus most commonly results from blockage of a narrow midbrain passage. CSF backs up because it cannot flow from the 3rd to 4th ventricle. What is this passage?",
           "correctAnswer": "cerebral aqueduct",
-          "distractors": ["foramen of Monro", "central canal", "foramen of Magendie"]
+          "distractors": [
+            "foramen of Monro",
+            "central canal",
+            "foramen of Magendie"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The ___ aqueduct (of Sylvius) connects the third and fourth ventricles.",
           "correctAnswer": "cerebral",
-          "distractors": ["spinal", "pontine", "midbrain"]
+          "distractors": [
+            "spinal",
+            "pontine",
+            "midbrain"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_075",
       "correctAnswer": "hydrocephalus",
-      "acceptableAlternatives": ["hydrocephaly"],
+      "acceptableAlternatives": [
+        "hydrocephaly"
+      ],
       "chainThemeId": "ventricles_csf",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -614,20 +997,36 @@
       "sourceName": "Wikipedia — Neuroglia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
       "volatile": false,
-      "distractors": ["meningitis", "encephalitis", "increased ICP alone", "ventriculitis", "syringomyelia", "arachnoid cyst", "subdural hygroma", "cerebral edema"],
+      "distractors": [
+        "meningitis",
+        "encephalitis",
+        "increased ICP alone",
+        "ventriculitis",
+        "syringomyelia",
+        "arachnoid cyst",
+        "subdural hygroma",
+        "cerebral edema"
+      ],
       "variants": [
         {
           "type": "fill_blank",
           "question": "Excessive accumulation of CSF in the brain's ventricles, causing increased intracranial pressure, is called ___.",
           "correctAnswer": "hydrocephalus",
-          "distractors": ["meningitis", "encephalitis", "syringomyelia"]
+          "distractors": [
+            "meningitis",
+            "encephalitis",
+            "syringomyelia"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_076",
       "correctAnswer": "ischemic stroke",
-      "acceptableAlternatives": ["ischemic", "ischaemic stroke"],
+      "acceptableAlternatives": [
+        "ischemic",
+        "ischaemic stroke"
+      ],
       "chainThemeId": "clinical_neuro",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -638,26 +1037,45 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["hemorrhagic stroke", "transient ischemic attack", "subarachnoid hemorrhage", "intracerebral hemorrhage", "lacunar infarct", "cerebral vasospasm", "venous sinus thrombosis", "hypoxic encephalopathy"],
+      "distractors": [
+        "hemorrhagic stroke",
+        "transient ischemic attack",
+        "subarachnoid hemorrhage",
+        "intracerebral hemorrhage",
+        "lacunar infarct",
+        "cerebral vasospasm",
+        "venous sinus thrombosis",
+        "hypoxic encephalopathy"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Ischemic strokes account for 87% of strokes — what percentage are hemorrhagic (caused by vessel rupture)?",
           "correctAnswer": "13%",
-          "distractors": ["30%", "50%", "5%"]
+          "distractors": [
+            "30%",
+            "50%",
+            "5%"
+          ]
         },
         {
           "type": "context",
           "question": "tPA (tissue plasminogen activator) is a clot-dissolving drug used to treat acute stroke within 4.5 hours — which type of stroke is it appropriate for?",
           "correctAnswer": "ischemic stroke",
-          "distractors": ["hemorrhagic stroke", "subarachnoid hemorrhage", "both types"]
+          "distractors": [
+            "hemorrhagic stroke",
+            "subarachnoid hemorrhage",
+            "both types"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_077",
       "correctAnswer": "multiple sclerosis",
-      "acceptableAlternatives": ["MS"],
+      "acceptableAlternatives": [
+        "MS"
+      ],
       "chainThemeId": "clinical_neuro",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -668,26 +1086,46 @@
       "sourceName": "Wikipedia — Neuroglia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
       "volatile": false,
-      "distractors": ["Parkinson's disease", "Guillain-Barré syndrome", "ALS", "myasthenia gravis", "Huntington's disease", "cerebral palsy", "neuromyelitis optica", "transverse myelitis"],
+      "distractors": [
+        "Parkinson's disease",
+        "Guillain-Barré syndrome",
+        "ALS",
+        "myasthenia gravis",
+        "Huntington's disease",
+        "cerebral palsy",
+        "neuromyelitis optica",
+        "transverse myelitis"
+      ],
       "variants": [
         {
           "type": "context",
           "question": "Multiple sclerosis destroys oligodendrocytes and myelin in the CNS — which glial cell does the equivalent damage target in Guillain-Barré syndrome?",
           "correctAnswer": "Schwann cells",
-          "distractors": ["oligodendrocytes", "astrocytes", "microglia"]
+          "distractors": [
+            "oligodendrocytes",
+            "astrocytes",
+            "microglia"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "Multiple sclerosis is an autoimmune disease causing ___ of CNS axons.",
           "correctAnswer": "demyelination",
-          "distractors": ["degeneration", "ischemia", "inflammation only"]
+          "distractors": [
+            "degeneration",
+            "ischemia",
+            "inflammation only"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_078",
       "correctAnswer": "Alzheimer's disease",
-      "acceptableAlternatives": ["Alzheimer disease", "Alzheimer's"],
+      "acceptableAlternatives": [
+        "Alzheimer disease",
+        "Alzheimer's"
+      ],
       "chainThemeId": "clinical_neuro",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -698,26 +1136,46 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["Parkinson's disease", "vascular dementia", "Huntington's disease", "frontotemporal dementia", "Lewy body dementia", "Pick's disease", "Creutzfeldt-Jakob disease", "normal pressure hydrocephalus"],
+      "distractors": [
+        "Parkinson's disease",
+        "vascular dementia",
+        "Huntington's disease",
+        "frontotemporal dementia",
+        "Lewy body dementia",
+        "Pick's disease",
+        "Creutzfeldt-Jakob disease",
+        "normal pressure hydrocephalus"
+      ],
       "variants": [
         {
           "type": "reverse",
           "question": "Alzheimer's disease affects the hippocampus earliest — which brain structure's early damage best explains why new memory formation is the first ability lost?",
           "correctAnswer": "hippocampus",
-          "distractors": ["amygdala", "prefrontal cortex", "cerebellum"]
+          "distractors": [
+            "amygdala",
+            "prefrontal cortex",
+            "cerebellum"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "The two pathological hallmarks of Alzheimer's disease are amyloid plaques and neurofibrillary ___.",
           "correctAnswer": "tangles",
-          "distractors": ["plaques", "deposits", "lesions"]
+          "distractors": [
+            "plaques",
+            "deposits",
+            "lesions"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_079",
       "correctAnswer": "epilepsy",
-      "acceptableAlternatives": ["epileptic disorder", "seizure disorder"],
+      "acceptableAlternatives": [
+        "epileptic disorder",
+        "seizure disorder"
+      ],
       "chainThemeId": "clinical_neuro",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 1,
@@ -728,20 +1186,36 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["narcolepsy", "Parkinson's disease", "multiple sclerosis", "Tourette syndrome", "meningitis", "encephalitis", "migraine disorder", "tremor disorder"],
+      "distractors": [
+        "narcolepsy",
+        "Parkinson's disease",
+        "multiple sclerosis",
+        "Tourette syndrome",
+        "meningitis",
+        "encephalitis",
+        "migraine disorder",
+        "tremor disorder"
+      ],
       "variants": [
         {
           "type": "context",
           "question": "Many anti-epileptic drugs work by enhancing GABA-mediated inhibition or blocking voltage-gated Na+ channels. What is the goal of these mechanisms in treating epilepsy?",
           "correctAnswer": "reduce abnormal excessive neuronal firing",
-          "distractors": ["increase dopamine transmission", "dissolve amyloid plaques", "restore myelin"]
+          "distractors": [
+            "increase dopamine transmission",
+            "dissolve amyloid plaques",
+            "restore myelin"
+          ]
         }
       ]
     },
     {
       "id": "ha_nerv_080",
       "correctAnswer": "Bell's palsy",
-      "acceptableAlternatives": ["facial nerve palsy", "idiopathic facial paralysis"],
+      "acceptableAlternatives": [
+        "facial nerve palsy",
+        "idiopathic facial paralysis"
+      ],
       "chainThemeId": "clinical_neuro",
       "answerTypePoolId": "anatomy_terms",
       "difficulty": 2,
@@ -752,19 +1226,36 @@
       "sourceName": "Wikipedia — Neuron",
       "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
       "volatile": false,
-      "distractors": ["CN V (trigeminal)", "CN III (oculomotor)", "CN VI (abducens)", "CN IX (glossopharyngeal)", "CN X (vagus)", "CN XII (hypoglossal)", "CN VIII (vestibulocochlear)", "CN IV (trochlear)"],
+      "distractors": [
+        "CN V (trigeminal)",
+        "CN III (oculomotor)",
+        "CN VI (abducens)",
+        "CN IX (glossopharyngeal)",
+        "CN X (vagus)",
+        "CN XII (hypoglossal)",
+        "CN VIII (vestibulocochlear)",
+        "CN IV (trochlear)"
+      ],
       "variants": [
         {
           "type": "context",
           "question": "In a stroke causing facial weakness, the forehead is typically spared (central lesion — forehead has bilateral cortical representation). In Bell's palsy, the forehead IS affected. What does this tell us about the level of the lesion?",
           "correctAnswer": "peripheral (CN VII distal to brainstem)",
-          "distractors": ["central (above brainstem)", "brainstem nucleus only", "cortical"]
+          "distractors": [
+            "central (above brainstem)",
+            "brainstem nucleus only",
+            "cortical"
+          ]
         },
         {
           "type": "fill_blank",
           "question": "Bell's palsy is caused by dysfunction of cranial nerve ___ (the facial nerve).",
           "correctAnswer": "VII",
-          "distractors": ["V", "III", "X"]
+          "distractors": [
+            "V",
+            "III",
+            "X"
+          ]
         }
       ]
     }
