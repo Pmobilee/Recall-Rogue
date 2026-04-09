@@ -1295,3 +1295,11 @@ $effect(() => {
 **Fix:** Recovery task re-applied the refactor — CardPickerOverlay now imports `CardVisual` directly and removes all bespoke frame code. The `.card-visual-wrapper` div provides the sized `position: relative` container that CardVisual's `position: absolute; inset: 0` inner layout requires.
 
 **Lesson:** When multiple agent sessions work concurrently, `git reset --hard` in one session can silently revert completed work in another. Always check component-level ownership and compare against docs before starting recovery work. Also: CardVisual's internal layout requires a correctly-sized `position: relative` wrapper — callers must set `--card-w` CSS var and explicit `width`/`height` on the wrapper.
+
+### 2026-04-09 — Spanish Grammar Deck: Pool minimum-5 check applies to factIds only (not synthetics)
+
+When building grammar decks with small pools (articles_indefinite had only 4 real facts), `verify-all-decks.mjs` check #N requires a minimum of **5 real `factIds`** per pool — the `syntheticDistractors` count does NOT satisfy this minimum. We had 4 factIds + 12 syntheticDistractors = 16 total, but still got "pool has only 4 members (minimum: 5)". Fix: add one more real fact to each under-minimum pool. Affected pools in first build: `articles_indefinite`, `subject_pronouns`, `negation_words`.
+
+### 2026-04-09 — Spanish Grammar Deck: `interrogatives` pool used for prepositions (intentional design)
+
+The `interrogatives` pool in `spanish_a1_grammar` contains both interrogative words (qué, dónde, cuándo...) AND basic prepositions (en, de, a, con, para) AND `porque`. This is intentional — these small words are all semantically confusable in a fill-blank context (e.g., "Soy ___ España" could be answered by de/en/a). They form one homogeneous answer type: short Spanish grammar function words. The pool name is slightly misleading; future decks may rename it to `function_words` for clarity.

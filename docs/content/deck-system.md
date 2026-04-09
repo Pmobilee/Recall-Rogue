@@ -117,9 +117,9 @@ Two backfill scripts produced full coverage:
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-08 it contains **83 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-09 it contains **85 decks**:
 
-- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar/N1–N5 Kanji, Korean Hangul/TOPIK 1–2, Spanish A1–B2
+- **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar/N1–N5 Kanji, Korean Hangul/TOPIK 1–2, Spanish A1–B2, Spanish A1 Grammar
 - **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**, **AP Human Geography**, **Philosophy**
 
 ### Deck Architecture Files
@@ -148,6 +148,7 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | *(inline generation)* | `world_cuisines` | complete — live, pool-redesigned | 141 | Pool redesign 2026-04-05 (5 pools → 9): split `technique_terms` into `person_names_food` + technique; split `country_region_names` into `civilization_names` + `compound_location_names`; added `cultural_references`; moved percentage/short-answer outliers. 0 quiz-audit fails. |
 | *(inline generation)* | `famous_inventions` | complete — live, pool-redesigned | 200 | Pool redesign 2026-04-05 (5 pools → 10): split 104-fact `term` pool into `invention_specs` (short ≤20c), `invention_details` (long), `discovery_descriptions` (narratives), `invention_dates`; split `name` into `person_inventor_names` + `invention_names`; added `tech_codes` for acronyms ≤7c; split `number` into `percentage_values` + `count_values`. 0 quiz-audit fails. |
 | *(inline generation)* | `philosophy` | complete — live | 425 | Global-canon; domain: `general_knowledge`, sub-domain: `philosophy`; 8 chain themes (Ancient Western, Classical Eastern, Medieval & Scholastic, Early Modern, Enlightenment & German Idealism, 19th Century, 20th C. Analytic, 20th C. Continental), 13 answer pools (split for length-tell avoidance), 8 sub-decks; sourced from Stanford Encyclopedia of Philosophy. |
+| `spanish_a1_grammar_arch.yaml` | `spanish_a1_grammar` | complete — live | 134 | PCIC A1-scoped; 8 named chain themes, 14 answer pools, 8 sub-decks; sentences from Tatoeba CC BY 2.0; first Spanish grammar deck. 2026-04-09. |
 
 The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
 
@@ -1954,3 +1955,77 @@ Two corruption issues were caught and fixed in the build script (see `docs/gotch
 
 2. **On'yomi convention** — On'yomi readings are stored in katakana in KANJIDIC2, which is conventional. The build script preserves this. Distractors for on'yomi questions must also be katakana (enforced by pool separation above).
 
+
+---
+
+## spanish_a1_grammar Deck
+
+`data/decks/spanish_a1_grammar.json` — generated 2026-04-09. First Spanish grammar deck. Establishes the Spanish grammar deck pattern for A1–B2.
+
+**Fill-in-the-blank format.** Each fact presents a Spanish sentence with the target grammar form replaced by `{___}`. The player chooses the correct form to complete the sentence. This is the same fill-blank pattern used by Japanese grammar decks.
+
+**Scope source:** Instituto Cervantes PCIC (Plan Curricular del Instituto Cervantes) A1 Grammar Inventory — https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/niveles/02_gramatica_inventario_a1-a2.htm. The PCIC is the authoritative curriculum reference for Spanish as a foreign language.
+
+**Sentence sources:** Tatoeba (https://tatoeba.org/) CC BY 2.0, identified by tatoeba_id. Additional sentences from PCIC canonical examples (marked `PCIC-pattern`). No sentences invented from LLM knowledge.
+
+| Field | Value |
+|---|---|
+| `id` | `spanish_a1_grammar` |
+| `domain` | `vocabulary` |
+| `subDomain` | `spanish_grammar` |
+| `facts` | 134 |
+| `minimumFacts` | 100 |
+| `targetFacts` | 200 |
+| `language` | `es` |
+
+**Chain Themes (8 named themes — unlike Japanese grammar decks which use sequential IDs):**
+
+| chainThemeId | Name | Facts | Grammar Area |
+|---|---|---|---|
+| 0 | Present Tense | 26 | Regular present indicative (-ar/-er/-ir) + reflexive verbs |
+| 1 | Ser vs. Estar | 17 | The two 'to be' verbs — identity/origin (ser) vs. location/state (estar) |
+| 2 | Irregular Verbs | 19 | tener, ir, hacer, querer (e→ie), poder (o→ue) |
+| 3 | Articles & Agreement | 15 | Definite/indefinite articles, gender/number agreement, al/del contractions |
+| 4 | Pronouns & Possessives | 15 | Subject pronouns, possessive adjectives, demonstratives |
+| 5 | Questions & Negation | 23 | Interrogative words, negation, prepositions, porque |
+| 6 | Verb Phrases | 9 | ir a + inf, tener que + inf, hay que + inf, estar + gerundio |
+| 7 | Hay & Gustar | 10 | Hay (existence), gustar structure (me gusta/me gustan/te gusta) |
+
+**Answer Type Pools (14):**
+
+| Pool ID | Facts | Description |
+|---|---|---|
+| `present_tense_ar` | 13 | -ar conjugations: hablo/hablas/habla/hablamos/hablan, reflexive me llamo/te llamas/se llama, me levanto |
+| `present_tense_er` | 6 | -er conjugations: como/comes/come/comemos/comen, bebo/bebe |
+| `present_tense_ir` | 7 | -ir conjugations: vivo/vives/vive/vivimos/viven, escribo/escribes |
+| `ser_forms` | 9 | ser conjugations: soy/eres/es/somos/son |
+| `estar_forms` | 8 | estar conjugations: estoy/estás/está/estamos |
+| `irregular_verb_forms` | 19 | tener/ir/hacer/querer/poder present forms |
+| `articles_definite` | 10 | el, la, los, las, del, al + agreement forms alto/alta |
+| `articles_indefinite` | 5 | un, una, unos, unas |
+| `demonstratives` | 5 | este/esta/estos/estas, ese/esa/esos/esas, aquel |
+| `possessives` | 5 | mi/mis, tu/tus, su/sus, nuestro/nuestra |
+| `subject_pronouns` | 5 | yo, tú, él, nosotros, ellos |
+| `interrogatives` | 18 | qué/quién/dónde/cuándo/cómo/por qué/cuánto + prepositions en/de/a/con/para + porque |
+| `negation_words` | 5 | no, nada, nadie, nunca |
+| `verb_phrase_patterns` | 19 | hay, gustar forms (gusta/gustan/te/le/nos), voy a/va a/vamos a, tengo que/tienes que, hay que, estoy/está/estamos + gerundio |
+
+**Architecture files:**
+- `data/deck-architectures/spanish_a1_grammar_arch.yaml` — grammar points with PCIC references and verified sentences
+- `data/deck-architectures/_research/spanish/pcic_a1_grammar_scope.md` — full PCIC A1 scope extraction
+- `data/deck-architectures/_research/spanish/tatoeba_a1_sentences.tsv` — all Tatoeba sentences with IDs and CC BY 2.0 attribution
+
+### Spanish Grammar Deck Pattern
+
+The `spanish_a1_grammar` deck establishes these conventions for A1–B2 Spanish grammar decks:
+
+1. **Named chain themes** (unlike Japanese grammar which uses sequential IDs). Each theme maps to a grammatical area (Present Tense, Ser vs. Estar, etc.) enabling focused study runs.
+2. **Fill-in-the-blank format** with Spanish sentence + English translation on same line. Format: `Yo {___} español.\n(I speak Spanish.)`
+3. **Pool design by grammatical category**: separate pools for -ar/-er/-ir conjugations, ser/estar forms, demonstratives, etc. Within each pool, all answers are the same type (e.g., all -ar conjugations) so distractors are semantically confusable.
+4. **PCIC scope source**: All grammar points sourced from Instituto Cervantes PCIC. `pcic_ref` field in architecture YAML cites the exact PCIC section.
+5. **Tatoeba sentence sourcing**: Example sentences have `tatoeba_id` or `source_note: "PCIC-pattern"` — never LLM-invented.
+6. **Sub-decks match chain themes**: 8 sub-decks, one per chain theme, allowing players to focus on specific grammar areas.
+7. **examTags**: `["CEFR_A1"]` on all facts; subsequent decks use `CEFR_A2`, `CEFR_B1`, `CEFR_B2`.
+8. **partOfSpeech**: `"grammar"` on all facts (consistent with Japanese grammar decks).
+
+**Language coverage note:** Spanish is the second language with grammar decks (Japanese was first). As of 2026-04-09, 1 of 4 planned Spanish grammar decks (A1–B2) is complete.

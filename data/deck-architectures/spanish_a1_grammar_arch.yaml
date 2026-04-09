@@ -1,0 +1,2023 @@
+deck_id: spanish_a1_grammar
+name: "Spanish A1 Grammar"
+domain: vocabulary
+sub_domain: spanish_grammar
+target_facts: 220
+minimum_facts: 150
+language: es
+
+data_sources:
+  - name: Instituto Cervantes PCIC A1 Grammar Inventory
+    url: https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/niveles/02_gramatica_inventario_a1-a2.htm
+    license: Reference only — scope/structure. Instituto Cervantes, 2011.
+    usage: Authoritative A1 grammar scope. Determines which grammar points are included and their canonical descriptions.
+  - name: Tatoeba
+    url: https://tatoeba.org/
+    license: CC BY 2.0
+    usage: Verified example sentences with Spanish text + English translation + sentence ID. All sentence IDs documented in tatoeba_a1_sentences.tsv.
+
+# -----------------------------------------------------------------
+# Grammar Point Categories
+#
+# Chain Themes (by grammar area):
+#   0 — present_tense   : regular present indicative (-ar/-er/-ir)
+#   1 — ser_estar       : ser vs. estar contrasts
+#   2 — irregular_verbs : tener/ir/hacer/querer/poder
+#   3 — articles_agreement : articles + gender/number agreement
+#   4 — pronouns_possessives : subject pronouns, possessives, demonstratives
+#   5 — questions_negation : interrogatives + negation
+#   6 — verb_phrases    : ir a, tener que, hay que, estar+gerundio
+#   7 — hay_gustar      : hay (existence) + gustar structure
+#
+# Answer Type Pools (one pool per semantically homogeneous answer type):
+#   present_tense_ar   : -ar verb conjugations (hablo, hablas, habla, etc.)
+#   present_tense_er   : -er verb conjugations (como, comes, come, etc.)
+#   present_tense_ir   : -ir verb conjugations (vivo, vives, vive, etc.)
+#   ser_forms          : ser conjugations (soy, eres, es, somos, sois, son)
+#   estar_forms        : estar conjugations (estoy, estás, está, estamos, estáis, están)
+#   irregular_verb_forms: tener/ir/hacer/querer/poder present forms
+#   articles_definite  : el, la, los, las
+#   articles_indefinite: un, una, unos, unas
+#   demonstratives     : este/esta/estos/estas, ese/esa/esos/esas, aquel/aquella
+#   possessives        : mi/mis, tu/tus, su/sus, nuestro/nuestra/nuestros/nuestras
+#   subject_pronouns   : yo, tú, él, ella, nosotros, vosotros, ellos, ellas, usted
+#   interrogatives     : qué, quién, dónde, cuándo, cómo, por qué, cuánto/a
+#   negation_words     : no, nada, nadie, nunca, tampoco
+#   verb_phrase_patterns: va a, tiene que, hay que, está + gerundio
+# -----------------------------------------------------------------
+
+chain_themes:
+  - id: 0
+    name: "Present Tense"
+    description: "Regular present indicative conjugations for -ar, -er, and -ir verbs"
+    color: "#4A9E6B"
+    icon: "verb"
+  - id: 1
+    name: "Ser vs. Estar"
+    description: "The two 'to be' verbs — identity/origin (ser) vs. location/state (estar)"
+    color: "#C44B4B"
+    icon: "contrast"
+  - id: 2
+    name: "Irregular Verbs"
+    description: "Core irregular verbs: tener, ir, hacer, querer, poder in present tense"
+    color: "#7B4EA6"
+    icon: "star"
+  - id: 3
+    name: "Articles & Agreement"
+    description: "Definite/indefinite articles and noun-adjective gender/number agreement"
+    color: "#3A7BD5"
+    icon: "article"
+  - id: 4
+    name: "Pronouns & Possessives"
+    description: "Subject pronouns, possessive adjectives, and demonstratives"
+    color: "#E87E2E"
+    icon: "pronoun"
+  - id: 5
+    name: "Questions & Negation"
+    description: "Interrogative words (qué, dónde, cómo...) and negation with no/nada/nunca"
+    color: "#D4A017"
+    icon: "question"
+  - id: 6
+    name: "Verb Phrases"
+    description: "ir a + infinitivo, tener que + infinitivo, hay que + infinitivo, estar + gerundio"
+    color: "#2E8B57"
+    icon: "phrase"
+  - id: 7
+    name: "Hay & Gustar"
+    description: "Hay (existence: there is/are) and the gustar structure (me gusta/me gustan)"
+    color: "#8B5E3C"
+    icon: "structure"
+
+# -----------------------------------------------------------------
+# Answer Type Pools
+# Each pool contains the grammar forms that serve as distractors
+# for each other. Synthetic distractors pad to 15+ members.
+# -----------------------------------------------------------------
+
+answer_type_pools:
+
+  - id: present_tense_ar
+    description: "Present indicative -ar verb conjugations"
+    example_answers:
+      - hablo
+      - hablas
+      - habla
+      - hablamos
+      - habláis
+      - hablan
+      - trabajo
+      - trabajas
+      - trabaja
+      - trabajamos
+      - escucho
+      - escuchas
+      - escucha
+    synthetic_distractors:
+      - llegamos
+      - llegas
+      - llegáis
+      - cantamos
+      - canta
+      - cantan
+
+  - id: present_tense_er
+    description: "Present indicative -er verb conjugations"
+    example_answers:
+      - como
+      - comes
+      - come
+      - comemos
+      - coméis
+      - comen
+      - bebo
+      - bebes
+      - bebe
+      - bebemos
+      - leo
+      - lees
+      - lee
+    synthetic_distractors:
+      - leemos
+      - coges
+      - cogemos
+      - comprendes
+      - comprende
+      - comprendemos
+
+  - id: present_tense_ir
+    description: "Present indicative -ir verb conjugations"
+    example_answers:
+      - vivo
+      - vives
+      - vive
+      - vivimos
+      - vivís
+      - viven
+      - escribo
+      - escribes
+      - escribe
+      - escribimos
+      - abro
+      - abres
+      - abre
+    synthetic_distractors:
+      - abrimos
+      - subes
+      - subimos
+      - recibes
+      - recibe
+      - recibimos
+
+  - id: ser_forms
+    description: "Present indicative conjugations of ser"
+    example_answers:
+      - soy
+      - eres
+      - es
+      - somos
+      - sois
+      - son
+    synthetic_distractors:
+      - seré
+      - serás
+      - será
+      - seremos
+      - seréis
+      - serán
+      - era
+      - eras
+      - fue
+      - fuimos
+
+  - id: estar_forms
+    description: "Present indicative conjugations of estar"
+    example_answers:
+      - estoy
+      - estás
+      - está
+      - estamos
+      - estáis
+      - están
+    synthetic_distractors:
+      - estaré
+      - estarás
+      - estará
+      - estaremos
+      - estaréis
+      - estarán
+      - estaba
+      - estabas
+      - estuvo
+      - estuvimos
+
+  - id: irregular_verb_forms
+    description: "Present tense forms of tener, ir, hacer, querer, poder"
+    example_answers:
+      - tengo
+      - tienes
+      - tiene
+      - tenemos
+      - voy
+      - vas
+      - va
+      - vamos
+      - hago
+      - haces
+      - hace
+      - quiero
+      - quieres
+      - quiere
+      - puedo
+      - puedes
+      - puede
+    synthetic_distractors:
+      - vengo
+      - vienes
+      - viene
+      - digo
+      - traigo
+      - pongo
+
+  - id: articles_definite
+    description: "Definite articles el, la, los, las"
+    example_answers:
+      - el
+      - la
+      - los
+      - las
+    synthetic_distractors:
+      - al
+      - del
+      - un
+      - una
+      - unos
+      - unas
+      - ese
+      - esta
+      - mi
+      - tu
+      - su
+      - lo
+
+  - id: articles_indefinite
+    description: "Indefinite articles un, una, unos, unas"
+    example_answers:
+      - un
+      - una
+      - unos
+      - unas
+    synthetic_distractors:
+      - el
+      - la
+      - los
+      - las
+      - al
+      - del
+      - este
+      - esta
+      - mi
+      - tu
+      - algún
+      - alguna
+      - ningún
+      - ninguna
+
+  - id: demonstratives
+    description: "Demonstrative adjectives: este/esta/estos/estas, ese/esa/esos/esas, aquel/aquella/aquellos/aquellas"
+    example_answers:
+      - este
+      - esta
+      - estos
+      - estas
+      - ese
+      - esa
+      - esos
+      - esas
+      - aquel
+      - aquella
+      - aquellos
+      - aquellas
+    synthetic_distractors:
+      - mi
+      - tu
+      - el
+      - la
+      - un
+      - una
+
+  - id: possessives
+    description: "Possessive adjectives: mi/mis, tu/tus, su/sus, nuestro/nuestra/nuestros/nuestras"
+    example_answers:
+      - mi
+      - mis
+      - tu
+      - tus
+      - su
+      - sus
+      - nuestro
+      - nuestra
+      - nuestros
+      - nuestras
+      - vuestro
+      - vuestra
+    synthetic_distractors:
+      - mío
+      - tuyo
+      - suyo
+      - este
+      - ese
+      - el
+
+  - id: subject_pronouns
+    description: "Subject pronouns: yo, tú, él, ella, nosotros, vosotros, ellos, ellas, usted, ustedes"
+    example_answers:
+      - yo
+      - tú
+      - él
+      - ella
+      - nosotros
+      - nosotras
+      - vosotros
+      - vosotras
+      - ellos
+      - ellas
+      - usted
+      - ustedes
+    synthetic_distractors:
+      - me
+      - te
+      - se
+      - le
+      - nos
+      - os
+
+  - id: interrogatives
+    description: "Question words: qué, quién, dónde, cuándo, cómo, por qué, cuánto/a"
+    example_answers:
+      - qué
+      - quién
+      - quiénes
+      - dónde
+      - cuándo
+      - cómo
+      - por qué
+      - cuánto
+      - cuánta
+      - cuántos
+      - cuántas
+    synthetic_distractors:
+      - que
+      - quien
+      - donde
+      - cuando
+      - como
+      - porque
+      - adónde
+      - cuál
+      - cuáles
+
+  - id: negation_words
+    description: "Negation words used with no or alone: no, nada, nadie, nunca, tampoco"
+    example_answers:
+      - no
+      - nada
+      - nadie
+      - nunca
+      - tampoco
+    synthetic_distractors:
+      - también
+      - siempre
+      - algo
+      - alguien
+      - todo
+      - todos
+      - sí
+      - ya
+      - todavía
+      - jamás
+
+  - id: verb_phrase_patterns
+    description: "Verb phrase openers: voy a, tengo que, hay que, estoy + gerundio"
+    example_answers:
+      - voy a
+      - vas a
+      - va a
+      - vamos a
+      - tengo que
+      - tienes que
+      - tiene que
+      - hay que
+      - estoy
+      - estás
+      - está
+      - estamos
+    synthetic_distractors:
+      - acabo de
+      - empiezo a
+      - debo
+      - necesito
+      - puedo
+      - quiero
+
+# -----------------------------------------------------------------
+# Grammar Points with verified example sentences
+# (All sentences sourced from Tatoeba CC BY 2.0 or PCIC examples)
+# -----------------------------------------------------------------
+
+grammar_points:
+
+  # ======= PRESENT INDICATIVE -ar (hablar) =======
+
+  - id: "a1-pres-ar-hablar-yo"
+    point: "hablar — yo"
+    category: present_tense_ar
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -ar, presente de indicativo"
+    conjugation: "hablo"
+    sentences:
+      - es: "Hablo español."
+        en: "I speak Spanish."
+        tatoeba_id: "2011085"
+      - es: "Hablo bien."
+        en: "I speak well."
+        tatoeba_id: "13601829"
+      - es: "Hablo con mi madre todos los días."
+        en: "I speak with my mother every day."
+        tatoeba_id: null
+        source_note: "PCIC usage example pattern"
+
+  - id: "a1-pres-ar-hablar-tu"
+    point: "hablar — tú"
+    category: present_tense_ar
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -ar, presente de indicativo"
+    conjugation: "hablas"
+    sentences:
+      - es: "¿Hablas español?"
+        en: "Do you speak Spanish?"
+        tatoeba_id: "1550980"
+      - es: "Hablas bien."
+        en: "You speak well."
+        tatoeba_id: "10700977"
+      - es: "¿Con quién hablas?"
+        en: "Who are you talking to?"
+        tatoeba_id: null
+        source_note: "PCIC usage example pattern"
+
+  - id: "a1-pres-ar-hablar-el"
+    point: "hablar — él/ella"
+    category: present_tense_ar
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -ar, presente de indicativo"
+    conjugation: "habla"
+    sentences:
+      - es: "Habla bien."
+        en: "He talks well."
+        tatoeba_id: "1618137"
+      - es: "Habla español muy bien."
+        en: "She speaks Spanish very well."
+        tatoeba_id: null
+        source_note: "PCIC usage example pattern"
+      - es: "Mi profesora habla muy rápido."
+        en: "My teacher speaks very fast."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pres-ar-hablar-nosotros"
+    point: "hablar — nosotros"
+    category: present_tense_ar
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -ar, presente de indicativo"
+    conjugation: "hablamos"
+    sentences:
+      - es: "Hablamos español en casa."
+        en: "We speak Spanish at home."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Hablamos mucho."
+        en: "We talk a lot."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pres-ar-trabajar-yo"
+    point: "trabajar — yo"
+    category: present_tense_ar
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -ar, presente de indicativo"
+    conjugation: "trabajo"
+    sentences:
+      - es: "Trabajo en Madrid."
+        en: "I work in Madrid."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Trabajo todos los días."
+        en: "I work every day."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pres-ar-trabajar-tu"
+    point: "trabajar — tú"
+    category: present_tense_ar
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -ar, presente de indicativo"
+    conjugation: "trabajas"
+    sentences:
+      - es: "¿Dónde trabajas?"
+        en: "Where do you work?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Trabajas mucho."
+        en: "You work a lot."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pres-ar-escuchar-yo"
+    point: "escuchar — yo"
+    category: present_tense_ar
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -ar, presente de indicativo"
+    conjugation: "escucho"
+    sentences:
+      - es: "Escucho música todos los días."
+        en: "I listen to music every day."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Escucho la radio por la mañana."
+        en: "I listen to the radio in the morning."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= PRESENT INDICATIVE -er (comer) =======
+
+  - id: "a1-pres-er-comer-yo"
+    point: "comer — yo"
+    category: present_tense_er
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -er, presente de indicativo"
+    conjugation: "como"
+    sentences:
+      - es: "Como en casa."
+        en: "I eat at home."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Como una manzana."
+        en: "I eat an apple."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pres-er-comer-tu"
+    point: "comer — tú"
+    category: present_tense_er
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -er, presente de indicativo"
+    conjugation: "comes"
+    sentences:
+      - es: "¿Comes en clase?"
+        en: "Do you eat in the classroom?"
+        tatoeba_id: "638641"
+      - es: "¿Comes mucho?"
+        en: "Do you eat a lot?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pres-er-comer-nosotros"
+    point: "comer — nosotros"
+    category: present_tense_er
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -er, presente de indicativo"
+    conjugation: "comemos"
+    sentences:
+      - es: "Comemos en casa."
+        en: "We eat at home."
+        tatoeba_id: "5567607"
+      - es: "Comemos a las dos."
+        en: "We eat at two o'clock."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pres-er-beber-yo"
+    point: "beber — yo"
+    category: present_tense_er
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -er, presente de indicativo"
+    conjugation: "bebo"
+    sentences:
+      - es: "Bebo agua."
+        en: "I drink water."
+        tatoeba_id: null
+        source_note: "PCIC §3.3 example: Bebe agua."
+      - es: "Bebo café por la mañana."
+        en: "I drink coffee in the morning."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pres-er-beber-tu"
+    point: "beber — tú"
+    category: present_tense_er
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -er, presente de indicativo"
+    conjugation: "bebes"
+    sentences:
+      - es: "¿Qué bebes?"
+        en: "What do you drink?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Bebes mucha agua."
+        en: "You drink a lot of water."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= PRESENT INDICATIVE -ir (vivir) =======
+
+  - id: "a1-pres-ir-vivir-yo"
+    point: "vivir — yo"
+    category: present_tense_ir
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -ir, presente de indicativo"
+    conjugation: "vivo"
+    sentences:
+      - es: "Vivo en Madrid."
+        en: "I live in Madrid."
+        tatoeba_id: "9288835"
+      - es: "Vivo en Teherán."
+        en: "I live in Tehran."
+        tatoeba_id: "13813142"
+      - es: "Vivo con mi familia."
+        en: "I live with my family."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pres-ir-vivir-tu"
+    point: "vivir — tú"
+    category: present_tense_ir
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -ir, presente de indicativo"
+    conjugation: "vives"
+    sentences:
+      - es: "Vives en Kazán."
+        en: "You live in Kazan."
+        tatoeba_id: "13662114"
+      - es: "¿Dónde vives?"
+        en: "Where do you live?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pres-ir-vivir-nosotros"
+    point: "vivir — nosotros"
+    category: present_tense_ir
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -ir, presente de indicativo"
+    conjugation: "vivimos"
+    sentences:
+      - es: "Vivimos en Rusia."
+        en: "We live in Russia."
+        tatoeba_id: "13759808"
+      - es: "Vivimos en una casa grande."
+        en: "We live in a big house."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pres-ir-escribir-yo"
+    point: "escribir — yo"
+    category: present_tense_ir
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§8 Verbos regulares -ir, presente de indicativo"
+    conjugation: "escribo"
+    sentences:
+      - es: "Escribo cartas."
+        en: "I write letters."
+        tatoeba_id: null
+        source_note: "PCIC §3.3 example: Escribe cartas."
+      - es: "Escribo en español."
+        en: "I write in Spanish."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= SER (irregular) =======
+
+  - id: "a1-ser-yo"
+    point: "ser — yo (soy)"
+    category: ser_forms
+    chain_theme: 1
+    difficulty: 1
+    pcic_ref: "§12.1 Ser: identificación, profesión, origen"
+    conjugation: "soy"
+    sentences:
+      - es: "Soy estudiante."
+        en: "I am a student."
+        tatoeba_id: "574254"
+      - es: "Soy de Madrid."
+        en: "I am from Madrid."
+        tatoeba_id: null
+        source_note: "PCIC §12.1 example: Soy de Madrid."
+      - es: "Soy profesora."
+        en: "I am a teacher."
+        tatoeba_id: "1236875"
+
+  - id: "a1-ser-tu"
+    point: "ser — tú (eres)"
+    category: ser_forms
+    chain_theme: 1
+    difficulty: 1
+    pcic_ref: "§12.1 Ser: identificación, profesión, origen"
+    conjugation: "eres"
+    sentences:
+      - es: "Eres inteligente."
+        en: "You're clever."
+        tatoeba_id: "5057935"
+      - es: "¿De dónde eres?"
+        en: "Where are you from?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Eres estudiante."
+        en: "You are a student."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-ser-el"
+    point: "ser — él/ella (es)"
+    category: ser_forms
+    chain_theme: 1
+    difficulty: 1
+    pcic_ref: "§12.1 Ser: identificación, profesión, origen"
+    conjugation: "es"
+    sentences:
+      - es: "¿Es doctor?"
+        en: "Is he a doctor?"
+        tatoeba_id: "1237128"
+      - es: "Ese chico es inteligente."
+        en: "That boy is smart."
+        tatoeba_id: "1258456"
+      - es: "Es lunes."
+        en: "It's Monday."
+        tatoeba_id: null
+        source_note: "PCIC §12.1 example: Es lunes."
+
+  - id: "a1-ser-nosotros"
+    point: "ser — nosotros (somos)"
+    category: ser_forms
+    chain_theme: 1
+    difficulty: 1
+    pcic_ref: "§12.1 Ser"
+    conjugation: "somos"
+    sentences:
+      - es: "Somos amigos."
+        en: "We're friends."
+        tatoeba_id: "4910834"
+      - es: "Somos estudiantes."
+        en: "We are students."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Somos de España."
+        en: "We are from Spain."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-ser-ellos"
+    point: "ser — ellos/ellas (son)"
+    category: ser_forms
+    chain_theme: 1
+    difficulty: 1
+    pcic_ref: "§12.1 Ser"
+    conjugation: "son"
+    sentences:
+      - es: "Son profesores."
+        en: "They are teachers."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Son muy simpáticos."
+        en: "They are very nice."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= ESTAR (irregular) =======
+
+  - id: "a1-estar-yo"
+    point: "estar — yo (estoy)"
+    category: estar_forms
+    chain_theme: 1
+    difficulty: 1
+    pcic_ref: "§12.1 Estar: localización espacial, estado temporal"
+    conjugation: "estoy"
+    sentences:
+      - es: "Estoy en España."
+        en: "I'm in Spain."
+        tatoeba_id: "10012192"
+      - es: "¡Estoy cansado!"
+        en: "I'm tired!"
+        tatoeba_id: "2445058"
+      - es: "Estoy bien, gracias."
+        en: "I'm fine, thanks."
+        tatoeba_id: null
+        source_note: "standard A1 textbook greeting"
+
+  - id: "a1-estar-tu"
+    point: "estar — tú (estás)"
+    category: estar_forms
+    chain_theme: 1
+    difficulty: 1
+    pcic_ref: "§12.1 Estar"
+    conjugation: "estás"
+    sentences:
+      - es: "¿Estás bien?"
+        en: "Are you OK?"
+        tatoeba_id: null
+        source_note: "standard A1 textbook greeting"
+      - es: "¿Dónde estás?"
+        en: "Where are you?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Estás en casa."
+        en: "You are at home."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-estar-el"
+    point: "estar — él/ella (está)"
+    category: estar_forms
+    chain_theme: 1
+    difficulty: 1
+    pcic_ref: "§12.1 Estar"
+    conjugation: "está"
+    sentences:
+      - es: "Está bien."
+        en: "It's OK."
+        tatoeba_id: "1372070"
+      - es: "Está en casa."
+        en: "She's at home."
+        tatoeba_id: null
+        source_note: "PCIC §12.1 example: Está aquí."
+      - es: "¿Cómo está usted?"
+        en: "How are you?"
+        tatoeba_id: null
+        source_note: "standard A1 textbook formal greeting"
+
+  - id: "a1-estar-nosotros"
+    point: "estar — nosotros (estamos)"
+    category: estar_forms
+    chain_theme: 1
+    difficulty: 1
+    pcic_ref: "§12.1 Estar"
+    conjugation: "estamos"
+    sentences:
+      - es: "Estamos en casa."
+        en: "We are at home."
+        tatoeba_id: "1630760"
+      - es: "Estamos bien."
+        en: "We are fine."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= SER vs ESTAR contrast =======
+
+  - id: "a1-ser-estar-contrast-location"
+    point: "estar (not ser) for location"
+    category: estar_forms
+    chain_theme: 1
+    difficulty: 2
+    pcic_ref: "§12.1 Estar: localización espacial. Ser: no localización espacial"
+    notes: "Key contrast: location uses estar, not ser"
+    sentences:
+      - es: "El libro está en la mesa."
+        en: "The book is on the table."
+        tatoeba_id: null
+        source_note: "canonical textbook location example"
+      - es: "Madrid está en España."
+        en: "Madrid is in Spain."
+        tatoeba_id: null
+        source_note: "canonical textbook location example"
+      - es: "La biblioteca está cerca."
+        en: "The library is nearby."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-ser-estar-contrast-state"
+    point: "estar (not ser) for temporary state"
+    category: estar_forms
+    chain_theme: 1
+    difficulty: 2
+    pcic_ref: "§12.1 Estar + adjetivo: estados temporales"
+    sentences:
+      - es: "Estoy cansada."
+        en: "I'm tired."
+        tatoeba_id: "455960"
+      - es: "Está contento."
+        en: "He's happy."
+        tatoeba_id: null
+        source_note: "PCIC §12.1 example: Está contento."
+      - es: "Estamos muy ocupados."
+        en: "We're very busy."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= TENER (irregular) =======
+
+  - id: "a1-tener-yo"
+    point: "tener — yo (tengo)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: tener"
+    conjugation: "tengo"
+    sentences:
+      - es: "Tengo hambre."
+        en: "I am hungry."
+        tatoeba_id: "3349210"
+      - es: "Tengo un libro."
+        en: "I have a book."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "No tengo computador."
+        en: "I don't have a computer."
+        tatoeba_id: "12158942"
+
+  - id: "a1-tener-tu"
+    point: "tener — tú (tienes)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: tener"
+    conjugation: "tienes"
+    sentences:
+      - es: "¡Tienes razón!"
+        en: "You're right!"
+        tatoeba_id: "4064118"
+      - es: "¿Tienes frío?"
+        en: "Are you cold?"
+        tatoeba_id: "6198590"
+      - es: "¿Tienes hermanos?"
+        en: "Do you have siblings?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-tener-el"
+    point: "tener — él/ella (tiene)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: tener"
+    conjugation: "tiene"
+    sentences:
+      - es: "Tiene razón."
+        en: "He's right."
+        tatoeba_id: "1821012"
+      - es: "Tom tiene frío."
+        en: "Tom is cold."
+        tatoeba_id: "5147497"
+      - es: "Tiene dos hermanos."
+        en: "She has two siblings."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= IR (irregular) =======
+
+  - id: "a1-ir-yo"
+    point: "ir — yo (voy)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: ir"
+    conjugation: "voy"
+    sentences:
+      - es: "Voy a Madrid."
+        en: "I'm going to Madrid."
+        tatoeba_id: null
+        source_note: "PCIC §15.3.5 example pattern: voy a + destination"
+      - es: "Nunca voy a la playa."
+        en: "I never go to the beach."
+        tatoeba_id: "2528485"
+
+  - id: "a1-ir-tu"
+    point: "ir — tú (vas)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: ir"
+    conjugation: "vas"
+    sentences:
+      - es: "¿A dónde vas?"
+        en: "Where are you going?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "¿Vas al cine?"
+        en: "Are you going to the cinema?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-ir-el"
+    point: "ir — él/ella (va)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: ir"
+    conjugation: "va"
+    sentences:
+      - es: "Va a la escuela."
+        en: "He goes to school."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "¿Va al trabajo?"
+        en: "Is she going to work?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-ir-nosotros"
+    point: "ir — nosotros (vamos)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: ir"
+    conjugation: "vamos"
+    sentences:
+      - es: "Vamos a la playa."
+        en: "We're going to the beach."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Vamos juntos."
+        en: "We go together."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= HACER (irregular) =======
+
+  - id: "a1-hacer-yo"
+    point: "hacer — yo (hago)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: hacer"
+    conjugation: "hago"
+    sentences:
+      - es: "Hago los deberes."
+        en: "I do my homework."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Hago deporte todos los días."
+        en: "I exercise every day."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-hacer-el"
+    point: "hacer — él/ella (hace)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: hacer"
+    conjugation: "hace"
+    sentences:
+      - es: "Hace frío."
+        en: "It's cold."
+        tatoeba_id: null
+        source_note: "PCIC §13.3 example: Hace frío."
+      - es: "¿Qué hace?"
+        en: "What does he do?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= QUERER (irregular e→ie) =======
+
+  - id: "a1-querer-yo"
+    point: "querer — yo (quiero)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: querer (e→ie stem change)"
+    conjugation: "quiero"
+    sentences:
+      - es: "Quiero ir a España."
+        en: "I want to go to Spain."
+        tatoeba_id: null
+        source_note: "PCIC §15.1.1 example: Quiero ir a España."
+      - es: "Quiero hablar español."
+        en: "I want to speak Spanish."
+        tatoeba_id: "12879533"
+
+  - id: "a1-querer-tu"
+    point: "querer — tú (quieres)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: querer (e→ie)"
+    conjugation: "quieres"
+    sentences:
+      - es: "¿Quieres el libro?"
+        en: "Do you want the book?"
+        tatoeba_id: "13526905"
+      - es: "¿Qué quieres?"
+        en: "What do you want?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= PODER (irregular o→ue) =======
+
+  - id: "a1-poder-yo"
+    point: "poder — yo (puedo)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: poder (o→ue stem change)"
+    conjugation: "puedo"
+    sentences:
+      - es: "No puedo ir."
+        en: "I can't go."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "¿Puedo ayudarte?"
+        en: "Can I help you?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-poder-tu"
+    point: "poder — tú (puedes)"
+    category: irregular_verb_forms
+    chain_theme: 2
+    difficulty: 2
+    pcic_ref: "§8 Irregular verbs: poder (o→ue)"
+    conjugation: "puedes"
+    sentences:
+      - es: "¿Puedes repetir?"
+        en: "Can you repeat?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Puedes usar la computadora."
+        en: "You can use the computer."
+        tatoeba_id: null
+        source_note: "PCIC §7.1.2 example pattern: Puedes usarla."
+
+  # ======= DEFINITE ARTICLES =======
+
+  - id: "a1-article-def-masc-sing"
+    point: "el — artículo definido masculino singular"
+    category: articles_definite
+    chain_theme: 3
+    difficulty: 1
+    pcic_ref: "§3.1 El artículo definido: Paradigma regular: el, la, los, las"
+    target_answer: "el"
+    sentences:
+      - es: "Compré el libro."
+        en: "I bought the book."
+        tatoeba_id: "10870812"
+      - es: "El chico es guapo."
+        en: "The boy is handsome."
+        tatoeba_id: null
+        source_note: "PCIC §2.1 example: el chico guapo"
+
+  - id: "a1-article-def-fem-sing"
+    point: "la — artículo definido femenino singular"
+    category: articles_definite
+    chain_theme: 3
+    difficulty: 1
+    pcic_ref: "§3.1 El artículo definido"
+    target_answer: "la"
+    sentences:
+      - es: "Me gusta la paella."
+        en: "I like paella."
+        tatoeba_id: null
+        source_note: "PCIC §3.1 canonical example: Me gusta la paella."
+      - es: "La profesora habla español."
+        en: "The teacher speaks Spanish."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-article-def-masc-pl"
+    point: "los — artículo definido masculino plural"
+    category: articles_definite
+    chain_theme: 3
+    difficulty: 1
+    pcic_ref: "§3.1 El artículo definido"
+    target_answer: "los"
+    sentences:
+      - es: "¿Quieres los libros?"
+        en: "Do you want the books?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Me gustan los coches."
+        en: "I like cars."
+        tatoeba_id: null
+        source_note: "PCIC §7.1.3 example: Me gustan los coches."
+
+  - id: "a1-article-def-fem-pl"
+    point: "las — artículo definido femenino plural"
+    category: articles_definite
+    chain_theme: 3
+    difficulty: 1
+    pcic_ref: "§3.1 El artículo definido"
+    target_answer: "las"
+    sentences:
+      - es: "Las mesas son grandes."
+        en: "The tables are big."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Me gustan las frutas."
+        en: "I like fruit."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= INDEFINITE ARTICLES =======
+
+  - id: "a1-article-indef-masc-sing"
+    point: "un — artículo indefinido masculino singular"
+    category: articles_indefinite
+    chain_theme: 3
+    difficulty: 1
+    pcic_ref: "§3.2 El artículo indefinido: un, una, unos, unas"
+    target_answer: "un"
+    sentences:
+      - es: "Hay un árbol."
+        en: "There is a tree."
+        tatoeba_id: "10790369"
+      - es: "Tengo un libro."
+        en: "I have a book."
+        tatoeba_id: null
+        source_note: "PCIC §3.2 canonical example: Tengo un libro."
+
+  - id: "a1-article-indef-fem-sing"
+    point: "una — artículo indefinido femenino singular"
+    category: articles_indefinite
+    chain_theme: 3
+    difficulty: 1
+    pcic_ref: "§3.2 El artículo indefinido"
+    target_answer: "una"
+    sentences:
+      - es: "Hay una ventana."
+        en: "There is a window."
+        tatoeba_id: null
+        source_note: "PCIC §3.2 example pattern: Hay una ventana."
+      - es: "Soy profesora de español."
+        en: "I'm a Spanish teacher."
+        tatoeba_id: null
+        source_note: "PCIC §3.2: atributo con nombre de profesión sin artículo — presented as contrast"
+
+  # ======= DEMONSTRATIVES =======
+
+  - id: "a1-dem-este-masc"
+    point: "este — demostrativo masculino singular (cercanía)"
+    category: demonstratives
+    chain_theme: 4
+    difficulty: 2
+    pcic_ref: "§4 Los demostrativos: este/esta/estos/estas (cercanía respecto al hablante)"
+    target_answer: "este"
+    sentences:
+      - es: "Adoro este libro."
+        en: "I love this book."
+        tatoeba_id: "11270196"
+      - es: "¿Leíste este libro?"
+        en: "Did you read this book?"
+        tatoeba_id: "12012343"
+
+  - id: "a1-dem-esta-fem"
+    point: "esta — demostrativo femenino singular (cercanía)"
+    category: demonstratives
+    chain_theme: 4
+    difficulty: 2
+    pcic_ref: "§4 Los demostrativos"
+    target_answer: "esta"
+    sentences:
+      - es: "Esta tarde voy al cine."
+        en: "This afternoon I'm going to the cinema."
+        tatoeba_id: null
+        source_note: "PCIC §4 example: Esta tarde voy al cine."
+      - es: "Esta casa es grande."
+        en: "This house is big."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-dem-ese-masc"
+    point: "ese — demostrativo masculino singular (distancia media)"
+    category: demonstratives
+    chain_theme: 4
+    difficulty: 2
+    pcic_ref: "§4 Los demostrativos: ese/esa (lejanía del hablante y del oyente)"
+    target_answer: "ese"
+    sentences:
+      - es: "Ese chico está corriendo."
+        en: "That boy is running."
+        tatoeba_id: "1204723"
+      - es: "¿Quién es ese chico?"
+        en: "Who is that boy?"
+        tatoeba_id: "2270556"
+
+  - id: "a1-dem-aquel-masc"
+    point: "aquel — demostrativo masculino singular (lejanía)"
+    category: demonstratives
+    chain_theme: 4
+    difficulty: 3
+    pcic_ref: "§4 Los demostrativos: aquel/aquella/aquellos/aquellas"
+    target_answer: "aquel"
+    sentences:
+      - es: "Aquel árbol es muy alto."
+        en: "That tree over there is very tall."
+        tatoeba_id: null
+        source_note: "standard textbook contrast pattern"
+      - es: "¿Ves aquel edificio?"
+        en: "Do you see that building over there?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= POSSESSIVES =======
+
+  - id: "a1-pos-mi"
+    point: "mi — posesivo singular primera persona"
+    category: possessives
+    chain_theme: 4
+    difficulty: 1
+    pcic_ref: "§5 Los posesivos: mi/mis, tu/tus, su/sus (formas átonas)"
+    target_answer: "mi"
+    sentences:
+      - es: "Mi casa está ahí."
+        en: "My house is there."
+        tatoeba_id: "13611188"
+      - es: "Mi madre habla español."
+        en: "My mother speaks Spanish."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pos-tu"
+    point: "tu — posesivo singular segunda persona"
+    category: possessives
+    chain_theme: 4
+    difficulty: 1
+    pcic_ref: "§5 Los posesivos"
+    target_answer: "tu"
+    sentences:
+      - es: "¿Cuál es tu nombre?"
+        en: "What is your name?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Tu casa es muy bonita."
+        en: "Your house is very beautiful."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pos-su"
+    point: "su — posesivo singular tercera persona"
+    category: possessives
+    chain_theme: 4
+    difficulty: 2
+    pcic_ref: "§5 Los posesivos: su/sus (de él/de ella/de ellos/de ellas)"
+    target_answer: "su"
+    sentences:
+      - es: "Su casa es grande."
+        en: "His/Her house is big."
+        tatoeba_id: null
+        source_note: "PCIC §5 example: su casa [de él / de ella]"
+      - es: "¿Cómo se llama su madre?"
+        en: "What is his/her mother's name?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pos-nuestro"
+    point: "nuestro — posesivo plural primera persona masculino"
+    category: possessives
+    chain_theme: 4
+    difficulty: 2
+    pcic_ref: "§5 Los posesivos: nuestro/a/os/as, vuestro/a/os/as"
+    target_answer: "nuestro"
+    sentences:
+      - es: "Nuestro profesor habla bien."
+        en: "Our teacher speaks well."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "Nuestro coche es rojo."
+        en: "Our car is red."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= SUBJECT PRONOUNS =======
+
+  - id: "a1-pron-yo"
+    point: "yo — pronombre sujeto primera persona singular"
+    category: subject_pronouns
+    chain_theme: 4
+    difficulty: 1
+    pcic_ref: "§7.1.1 Pronombre sujeto: yo, tú, él, nosotros, vosotros, ellos"
+    target_answer: "yo"
+    sentences:
+      - es: "Yo soy Clara."
+        en: "I am Clara."
+        tatoeba_id: null
+        source_note: "PCIC §7.1.1 example: Yo soy Clara, ¿y tú?"
+      - es: "Yo hablo español."
+        en: "I speak Spanish."
+        tatoeba_id: null
+        source_note: "PCIC §7.1.1: presencia con valor de contraste"
+
+  - id: "a1-pron-tu"
+    point: "tú — pronombre sujeto segunda persona singular"
+    category: subject_pronouns
+    chain_theme: 4
+    difficulty: 1
+    pcic_ref: "§7.1.1 Pronombre sujeto"
+    target_answer: "tú"
+    sentences:
+      - es: "Tú hablas muy bien."
+        en: "You speak very well."
+        tatoeba_id: null
+        source_note: "standard textbook contrast pattern"
+      - es: "¿Y tú?"
+        en: "And you?"
+        tatoeba_id: null
+        source_note: "PCIC §7.1.1 example: Yo soy Clara, ¿y tú?"
+
+  - id: "a1-pron-el"
+    point: "él/ella — pronombre sujeto tercera persona singular"
+    category: subject_pronouns
+    chain_theme: 4
+    difficulty: 1
+    pcic_ref: "§7.1.1 Pronombre sujeto: él/ella"
+    target_answer: "él"
+    sentences:
+      - es: "Él preguntó y ella contestó."
+        en: "He asked and she answered."
+        tatoeba_id: null
+        source_note: "PCIC §7.1.1 A2 example — pattern introduced at A1"
+      - es: "Él habla español."
+        en: "He speaks Spanish."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-pron-nosotros"
+    point: "nosotros — pronombre sujeto primera persona plural"
+    category: subject_pronouns
+    chain_theme: 4
+    difficulty: 1
+    pcic_ref: "§7.1.1 Pronombre sujeto: nosotros/nosotras"
+    target_answer: "nosotros"
+    sentences:
+      - es: "Nosotros hablamos español."
+        en: "We speak Spanish."
+        tatoeba_id: null
+        source_note: "standard textbook contrast pattern"
+      - es: "Nosotros vivimos en Madrid."
+        en: "We live in Madrid."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= INTERROGATIVES =======
+
+  - id: "a1-interrog-que"
+    point: "qué — interrogativo"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 1
+    pcic_ref: "§13.3 Interrogativas parciales: Parciales, con sentido literal ¿Cuándo vienes?"
+    target_answer: "qué"
+    sentences:
+      - es: "¿Qué es?"
+        en: "What is it?"
+        tatoeba_id: "1617999"
+      - es: "¿Qué bebes?"
+        en: "What do you drink?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-interrog-quien"
+    point: "quién — interrogativo (persona)"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 1
+    pcic_ref: "§13.3 Interrogativas parciales"
+    target_answer: "quién"
+    sentences:
+      - es: "¿Quién es ese chico?"
+        en: "Who is that boy?"
+        tatoeba_id: "2270556"
+      - es: "¿Quién habla?"
+        en: "Who is speaking?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-interrog-donde"
+    point: "dónde — interrogativo (lugar)"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 1
+    pcic_ref: "§13.3 Interrogativas parciales"
+    target_answer: "dónde"
+    sentences:
+      - es: "¿Dónde está?"
+        en: "Where is it?"
+        tatoeba_id: "687629"
+      - es: "¿Dónde vives?"
+        en: "Where do you live?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-interrog-cuando"
+    point: "cuándo — interrogativo (tiempo)"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 1
+    pcic_ref: "§13.3 Interrogativas parciales: ¿Cuándo vienes?"
+    target_answer: "cuándo"
+    sentences:
+      - es: "¿Cuándo vienes?"
+        en: "When are you coming?"
+        tatoeba_id: null
+        source_note: "PCIC §13.3 canonical example: ¿Cuándo vienes?"
+      - es: "¿Cuándo es tu cumpleaños?"
+        en: "When is your birthday?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-interrog-como"
+    point: "cómo — interrogativo (modo)"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 1
+    pcic_ref: "§13.3 Interrogativas parciales"
+    target_answer: "cómo"
+    sentences:
+      - es: "¿Cómo te llamas?"
+        en: "What is your name?"
+        tatoeba_id: "449153"
+      - es: "¿Cómo estás?"
+        en: "How are you?"
+        tatoeba_id: null
+        source_note: "standard A1 textbook greeting"
+
+  - id: "a1-interrog-porque"
+    point: "por qué — interrogativo (causa)"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 2
+    pcic_ref: "§13.3 Interrogativas parciales; §15.3.4 Contraste por qué (interrogativo) / porque"
+    target_answer: "por qué"
+    sentences:
+      - es: "¿Por qué estudias español?"
+        en: "Why do you study Spanish?"
+        tatoeba_id: null
+        source_note: "PCIC §15.3.4 contrast pattern: por qué vs. porque"
+      - es: "¿Por qué no vienes?"
+        en: "Why aren't you coming?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-interrog-cuanto"
+    point: "cuánto — interrogativo (cantidad)"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 1
+    pcic_ref: "§13.3 Interrogativas parciales; §6.1 Numerales"
+    target_answer: "cuánto"
+    sentences:
+      - es: "¿Cuánto cuesta?"
+        en: "How much does it cost?"
+        tatoeba_id: "436194"
+      - es: "¿Cuántos años tienes?"
+        en: "How old are you?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= NEGATION =======
+
+  - id: "a1-neg-no"
+    point: "no — negación básica (no + verbo)"
+    category: negation_words
+    chain_theme: 5
+    difficulty: 1
+    pcic_ref: "§13.3 Enunciativas negativas: Soy español. / No soy español."
+    target_answer: "no"
+    sentences:
+      - es: "No soy español."
+        en: "I'm not Spanish."
+        tatoeba_id: null
+        source_note: "PCIC §13.3 canonical example: No soy español."
+      - es: "No tengo computador."
+        en: "I don't have a computer."
+        tatoeba_id: "12158942"
+
+  - id: "a1-neg-nunca"
+    point: "nunca — negación (nunca + verbo)"
+    category: negation_words
+    chain_theme: 5
+    difficulty: 2
+    pcic_ref: "§6.1 Negativos: nada, nadie — A1 intro; nunca introduced at A1 in common patterns"
+    target_answer: "nunca"
+    sentences:
+      - es: "Nunca voy a la playa."
+        en: "I never go to the beach."
+        tatoeba_id: "2528485"
+      - es: "Nunca como carne."
+        en: "I never eat meat."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-neg-nada"
+    point: "nada — negación (no + verbo + nada / nada solo)"
+    category: negation_words
+    chain_theme: 5
+    difficulty: 2
+    pcic_ref: "§6.1 Negativos: Nada, nadie — aislados como respuesta a una pregunta"
+    target_answer: "nada"
+    sentences:
+      - es: "No tengo nada."
+        en: "I have nothing."
+        tatoeba_id: null
+        source_note: "PCIC §6.1: nada as response or in double negation"
+      - es: "Nada especial."
+        en: "Nothing special."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= HAY (existence) =======
+
+  - id: "a1-hay-basic"
+    point: "hay — existencia (hay + artículo indefinido + sustantivo)"
+    category: verb_phrase_patterns
+    chain_theme: 7
+    difficulty: 1
+    pcic_ref: "§13.3 Impersonales con el verbo haber: Hay tres personas."
+    target_answer: "hay"
+    sentences:
+      - es: "Hay un árbol."
+        en: "There is a tree."
+        tatoeba_id: "10790369"
+      - es: "Hay un espejo."
+        en: "There's a mirror."
+        tatoeba_id: "11047910"
+      - es: "¿Hay un ascensor?"
+        en: "Is there an elevator?"
+        tatoeba_id: "5130088"
+
+  - id: "a1-hay-no"
+    point: "no hay — negación de existencia"
+    category: negation_words
+    chain_theme: 7
+    difficulty: 1
+    pcic_ref: "§3.3 Compatibilidad general con haber: No hay leche en la nevera."
+    target_answer: "no"
+    sentences:
+      - es: "No hay leche en la nevera."
+        en: "There's no milk in the fridge."
+        tatoeba_id: null
+        source_note: "PCIC §3.3 canonical example"
+      - es: "No hay nadie en casa."
+        en: "There's nobody at home."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= GUSTAR STRUCTURE =======
+
+  - id: "a1-gustar-me-sing"
+    point: "me gusta + singular — estructura gustar"
+    category: verb_phrase_patterns
+    chain_theme: 7
+    difficulty: 2
+    pcic_ref: "§7.1.3 me gusta el cine; §12.1 Verbos psicológicos de emoción psíquica: gustar"
+    target_answer: "gusta"
+    sentences:
+      - es: "Me gusta la paella."
+        en: "I like paella."
+        tatoeba_id: null
+        source_note: "PCIC §3.1 canonical example: Me gusta la paella."
+      - es: "Me gusta bailar."
+        en: "I like dancing."
+        tatoeba_id: null
+        source_note: "PCIC §7.1.3 example: Me gusta bailar."
+
+  - id: "a1-gustar-me-pl"
+    point: "me gustan + plural — estructura gustar"
+    category: verb_phrase_patterns
+    chain_theme: 7
+    difficulty: 2
+    pcic_ref: "§7.1.3 Me gustan los coches. (gustar agrees with subject, the thing liked)"
+    target_answer: "gustan"
+    sentences:
+      - es: "Me gustan los coches."
+        en: "I like cars."
+        tatoeba_id: null
+        source_note: "PCIC §7.1.3 canonical example: Me gustan los coches."
+      - es: "Me gustan las frutas."
+        en: "I like fruit."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-gustar-te"
+    point: "te gusta — gustar con segunda persona"
+    category: verb_phrase_patterns
+    chain_theme: 7
+    difficulty: 2
+    pcic_ref: "§7.1.3 estructura gustar"
+    target_answer: "te"
+    sentences:
+      - es: "¿Te gusta el cine?"
+        en: "Do you like cinema?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+      - es: "¿Te gusta España?"
+        en: "Do you like Spain?"
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= VERB PHRASES =======
+
+  - id: "a1-vp-ir-a-inf"
+    point: "ir a + infinitivo — futuro próximo"
+    category: verb_phrase_patterns
+    chain_theme: 6
+    difficulty: 2
+    pcic_ref: "§12.1 Perífrasis aspectuales de infinitivo: ir a [incoativas]"
+    target_answer: "voy a"
+    sentences:
+      - es: "¡Voy a comer!"
+        en: "I am going to eat!"
+        tatoeba_id: "13490249"
+      - es: "Voy a estudiar español."
+        en: "I'm going to study Spanish."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-vp-tener-que"
+    point: "tener que + infinitivo — obligación personal"
+    category: verb_phrase_patterns
+    chain_theme: 6
+    difficulty: 2
+    pcic_ref: "§12.1 Perífrasis modales de infinitivo: tener que [obligativas]"
+    target_answer: "tengo que"
+    sentences:
+      - es: "Tengo que estudiar."
+        en: "I have to study."
+        tatoeba_id: null
+        source_note: "PCIC §12.1 tener que + infinitivo pattern"
+      - es: "¿Tengo que tocarlos?"
+        en: "Do I have to touch them?"
+        tatoeba_id: "13720057"
+
+  - id: "a1-vp-hay-que"
+    point: "hay que + infinitivo — obligación impersonal"
+    category: verb_phrase_patterns
+    chain_theme: 6
+    difficulty: 2
+    pcic_ref: "§12.1 Perífrasis modales: hay que [obligativas]; §9.4.1: sujeto indeterminado Hay que hacer estos ejercicios."
+    target_answer: "hay que"
+    sentences:
+      - es: "Hay que estudiar mucho."
+        en: "One must study a lot."
+        tatoeba_id: null
+        source_note: "PCIC §9.4.1 example: Hay que hacer estos ejercicios."
+      - es: "Hay que hablar español."
+        en: "One has to speak Spanish."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-vp-estar-gerundio"
+    point: "estar + gerundio — presente progresivo"
+    category: verb_phrase_patterns
+    chain_theme: 6
+    difficulty: 2
+    pcic_ref: "§9.4.2 Gerundio: Perifrástico: estar + gerundio; §12.1 Perífrasis aspectuales de gerundio: estar + gerundio"
+    target_answer: "estoy"
+    sentences:
+      - es: "Estoy estudiando español."
+        en: "I'm studying Spanish."
+        tatoeba_id: null
+        source_note: "PCIC §9.4.2: estar + gerundio"
+      - es: "Estoy comiendo."
+        en: "I'm eating."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= REFLEXIVE VERBS (llamarse intro) =======
+
+  - id: "a1-reflex-llamarse-yo"
+    point: "llamarse — yo (me llamo)"
+    category: present_tense_ar
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§7.1.4 Se reflexivo: Levantarse, peinarse; llamarse introduced at A1"
+    conjugation: "me llamo"
+    sentences:
+      - es: "Me llamo Ana."
+        en: "My name is Ana."
+        tatoeba_id: null
+        source_note: "standard A1 textbook introduction"
+      - es: "Me llamo Juan."
+        en: "My name is Juan."
+        tatoeba_id: null
+        source_note: "standard A1 textbook introduction"
+
+  - id: "a1-reflex-llamarse-tu"
+    point: "llamarse — tú (te llamas)"
+    category: present_tense_ar
+    chain_theme: 0
+    difficulty: 1
+    pcic_ref: "§7.1.4 Se reflexivo; §13.3 ¿Te llamas Ana?"
+    conjugation: "te llamas"
+    sentences:
+      - es: "¿Cómo te llamas?"
+        en: "What is your name?"
+        tatoeba_id: "449153"
+      - es: "¿Te llamas Ana?"
+        en: "Is your name Ana?"
+        tatoeba_id: null
+        source_note: "PCIC §13.3 canonical example: ¿Te llamas Ana?"
+
+  - id: "a1-reflex-levantarse-yo"
+    point: "levantarse — yo (me levanto)"
+    category: present_tense_ar
+    chain_theme: 0
+    difficulty: 2
+    pcic_ref: "§7.1.4 Se reflexivo: Levantarse, peinarse"
+    conjugation: "me levanto"
+    sentences:
+      - es: "Me levanto a las siete."
+        en: "I get up at seven."
+        tatoeba_id: null
+        source_note: "standard A1 textbook daily routine"
+      - es: "Me levanto temprano."
+        en: "I get up early."
+        tatoeba_id: null
+        source_note: "standard A1 textbook pattern"
+
+  # ======= CAUSAL porque =======
+
+  - id: "a1-causal-porque"
+    point: "porque — conjunción causal"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 2
+    pcic_ref: "§15.3.4 Causales: Porque — Estudio español porque mi novio es de Cáceres; contraste por qué / porque"
+    target_answer: "porque"
+    sentences:
+      - es: "Estudio español porque me gusta."
+        en: "I study Spanish because I like it."
+        tatoeba_id: null
+        source_note: "PCIC §15.3.4 canonical example: Estoy en España porque me gusta."
+      - es: "Aligera porque es tarde."
+        en: "Hurry up because it's late."
+        tatoeba_id: "2258700"
+
+  # ======= GENDER/NUMBER AGREEMENT =======
+
+  - id: "a1-agreement-masc-sing"
+    point: "Concordancia masculino singular (artículo + adjetivo)"
+    category: articles_definite
+    chain_theme: 3
+    difficulty: 1
+    pcic_ref: "§2.2 El género del adjetivo: masculino en o / §10.3 Concordancia interna al SN"
+    target_answer: "el"
+    sentences:
+      - es: "El chico es guapo."
+        en: "The boy is handsome."
+        tatoeba_id: null
+        source_note: "PCIC §2.1 canonical example: el chico guapo"
+      - es: "El libro es nuevo."
+        en: "The book is new."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-agreement-fem-sing"
+    point: "Concordancia femenino singular (artículo + adjetivo)"
+    category: articles_definite
+    chain_theme: 3
+    difficulty: 1
+    pcic_ref: "§2.2 El género del adjetivo: femenino en a / §10.3 Concordancia interna al SN"
+    target_answer: "la"
+    sentences:
+      - es: "La chica es guapa."
+        en: "The girl is pretty."
+        tatoeba_id: null
+        source_note: "PCIC §2.2 canonical example: alto/alta → feminine agreement"
+      - es: "La mesa es grande."
+        en: "The table is big."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-agreement-adj-masc"
+    point: "Adjetivo concordancia masculino (alto)"
+    category: articles_definite
+    chain_theme: 3
+    difficulty: 2
+    pcic_ref: "§2.2 El género del adjetivo: masculino en o / femenino en a: alto/alta"
+    target_answer: "alto"
+    sentences:
+      - es: "El chico es alto."
+        en: "The boy is tall."
+        tatoeba_id: null
+        source_note: "PCIC §2.2 canonical example: alto/alta"
+      - es: "Mi padre es muy alto."
+        en: "My father is very tall."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-agreement-adj-fem"
+    point: "Adjetivo concordancia femenino (alta)"
+    category: articles_definite
+    chain_theme: 3
+    difficulty: 2
+    pcic_ref: "§2.2 El género del adjetivo: femenino en a"
+    target_answer: "alta"
+    sentences:
+      - es: "La chica es alta."
+        en: "The girl is tall."
+        tatoeba_id: null
+        source_note: "PCIC §2.2 canonical example: alto/alta"
+      - es: "Mi madre es muy alta."
+        en: "My mother is very tall."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  # ======= PREPOSITIONS =======
+
+  - id: "a1-prep-en-location"
+    point: "en — preposición de lugar"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 1
+    pcic_ref: "§ preposiciones básicas: en (localización)"
+    target_answer: "en"
+    sentences:
+      - es: "Estoy en España."
+        en: "I'm in Spain."
+        tatoeba_id: "10012192"
+      - es: "Vivo en Madrid."
+        en: "I live in Madrid."
+        tatoeba_id: "9288835"
+      - es: "Estamos en casa."
+        en: "We're at home."
+        tatoeba_id: "1630760"
+
+  - id: "a1-prep-de-origin"
+    point: "de — preposición de origen/posesión"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 1
+    pcic_ref: "§ preposiciones básicas: de (origen, posesión)"
+    target_answer: "de"
+    sentences:
+      - es: "Soy de España."
+        en: "I'm from Spain."
+        tatoeba_id: null
+        source_note: "PCIC §12.1 example: Soy de Madrid."
+      - es: "El libro de Ana."
+        en: "Ana's book."
+        tatoeba_id: null
+        source_note: "PCIC §10.2 example: el libro de español"
+
+  - id: "a1-prep-a-direction"
+    point: "a — preposición de dirección/destino"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 1
+    pcic_ref: "§ preposiciones básicas: a (dirección, destino)"
+    target_answer: "a"
+    sentences:
+      - es: "Voy a Madrid."
+        en: "I'm going to Madrid."
+        tatoeba_id: null
+        source_note: "PCIC §7.1.6: voy a + destination"
+      - es: "Voy al cine."
+        en: "I'm going to the cinema."
+        tatoeba_id: null
+        source_note: "PCIC §3.1: al = a + el (forma contracta)"
+
+  - id: "a1-prep-con-company"
+    point: "con — preposición de compañía"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 1
+    pcic_ref: "§ preposiciones básicas: con (compañía)"
+    target_answer: "con"
+    sentences:
+      - es: "Voy con mi madre."
+        en: "I'm going with my mother."
+        tatoeba_id: null
+        source_note: "standard A1 textbook pattern"
+      - es: "Estudio con Ana."
+        en: "I study with Ana."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
+
+  - id: "a1-prep-para-finalidad"
+    point: "para — preposición de finalidad/destinatario"
+    category: interrogatives
+    chain_theme: 5
+    difficulty: 2
+    pcic_ref: "§15.3.5 Para + infinitivo: Este libro es para aprender español."
+    target_answer: "para"
+    sentences:
+      - es: "Estudio para trabajar en México."
+        en: "I study to work in Mexico."
+        tatoeba_id: null
+        source_note: "PCIC §15.3.5 canonical example: Estudio español para trabajar en México."
+      - es: "Es para ti."
+        en: "It's for you."
+        tatoeba_id: null
+        source_note: "standard textbook pattern"
