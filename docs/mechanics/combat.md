@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-09 (Pass 4 balance: fizzle 0.25→0.40, CC 1.75→1.50, enemy HP base 5.25→5.75, Canary thresholds tightened, L0 QP buffs)
+> **Last verified:** 2026-04-09 (Passes 4–6: fizzle 0.25→0.50, CC 1.75→1.50, enemy HP base 4.75, GLOBAL_ENEMY_DAMAGE_MULTIPLIER 1.60, Canary linear interpolation with Pass 5/6 thresholds)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`, `src/services/enemyDamageScaling.ts`, `src/services/intentDisplay.ts`, `src/services/multiplayerCoopSync.ts`
 
 ---
@@ -144,7 +144,7 @@ If `apCurrent < apCost`, card is blocked (`blocked: true`, no AP deducted).
 
 Computed in `resolveCardEffect()` (`cardEffectResolver.ts`):
 
-1. **Mechanic base** — `getMasteryStats(mechanicId, masteryLevel).qpValue` (QP) or `qpValue × CHARGE_CORRECT_MULTIPLIER` (CC = 1.50×) or `FIZZLE_EFFECT_RATIO × baseEffectValue` (CW = 0.40×)
+1. **Mechanic base** — `getMasteryStats(mechanicId, masteryLevel).qpValue` (QP) or `qpValue × CHARGE_CORRECT_MULTIPLIER` (CC = 1.50×) or `FIZZLE_EFFECT_RATIO × baseEffectValue` (CW = 0.50×)
    - Note: stat table `qpValue` at L0 may be LOWER than `mechanic.quickPlayValue` — stat tables override the mechanic definition
    - `chargeCorrectValue` field on `MechanicDefinition` is dead data — never read by the resolver
    - CW has `Math.max(0, ...)` floor to prevent negative values
@@ -186,8 +186,8 @@ Chains now **decay by 1** per turn end (`CHAIN_DECAY_PER_TURN=1`) instead of ful
 - Clears fact from review queue
 
 **Charge Wrong (`playMode = 'charge'`, `answeredCorrectly = false`)**
-- Partial effect at `FIZZLE_EFFECT_RATIO = 0.40×` of base effect — always resolves, never zero
-- Raised from 0.25 to 0.40 (Pass 4): wrong charges are tempo costs not punishment. At CC=1.50×, 0.40× fizzle is well below QP (1.0×)
+- Partial effect at `FIZZLE_EFFECT_RATIO = 0.50×` of base effect — always resolves, never zero
+- Raised from 0.25→0.40 (Pass 4) then 0.40→0.50 (Pass 6): wrong charges are tempo costs not punishment. At CC=1.50×, 0.50× fizzle is still below QP (1.0×)
 
 ### Charge Wrong Values
 
@@ -196,7 +196,7 @@ Each mechanic defines explicit `chargeWrongValue` — typically 60-75% of `quick
 - Block: QP=3, CW=2 (67%)
 - Heavy Strike: QP=10, CW=7 (70%)
 
-The `FIZZLE_EFFECT_RATIO` (0.40×) is a FALLBACK for cards without explicit CW values, not the default.
+The `FIZZLE_EFFECT_RATIO` (0.50×) is a FALLBACK for cards without explicit CW values, not the default.
 Additionally, the first Charge of any fact in a run uses 1.0× multiplier on wrong (same as QP) — see Discovery System.
 - Breaks Knowledge Chain, loses Chain Momentum
 - Mastery downgrade (skipped on first attempt at a fact, `isFirstAttempt` flag)
@@ -238,7 +238,7 @@ Enemy attack damage passes through two layers before `takeDamage()` is called:
 4. Segment damage cap (`ENEMY_TURN_DAMAGE_CAP[segment]` — floored to cap value, bypassed if `intent.bypassDamageCap`)
 
 **Current tuned values (pass 2, 2026-04-09):**
-- `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.5` (tuned from 2.0→1.5: 25% damage reduction, post-16% win-rate playtest)
+- `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.60` (tuned 2.0→1.5→1.60: raised back in Pass 4d — 1.40 was too easy base; run-level Canary provides asymmetric adjustment)
 - `ENEMY_TURN_DAMAGE_CAP = { 1: 16, 2: 22, 3: 32, 4: 56, endless: null }` (Act 2 capped 28→22, Act 3 capped 40→32)
 
 **Layer 2 — `turnManager.ts` §3094-3130 (applied to `intentResult.damage`):**
@@ -719,13 +719,18 @@ A second layer stacks **multiplicatively** on top of encounter-level scaling, tr
 
 **Minimum data gate:** run-level multipliers only activate after ≥10 answers are in the window. Before that both run-level multipliers are 1.0.
 
-| Run Accuracy | `runDamageMultiplier` | `runHpMultiplier` |
-|---|---|---|
-| < 0.60 (strong assist) | 0.75 | 0.80 |
-| 0.60–0.70 (mild assist) | 0.85 | 0.90 |
-| 0.70–0.80 (neutral) | 1.0 | 1.0 |
-| 0.80–0.85 (mild challenge) | 1.15 | 1.10 |
-| > 0.85 (strong challenge) | 1.25 | 1.20 |
+Multipliers are **linearly interpolated** between anchor points — not discrete tiers. There is no neutral zone: the 0.70 threshold is shared between mild assist and mild challenge, and accuracy above 0.70 scales continuously toward the challenge ceiling.
+
+| Accuracy Anchor | `runDamageMultiplier` | `runHpMultiplier` | Notes |
+|---|---|---|---|
+| ≤ 0.60 (strong assist) | 0.88 | 0.90 | -12% enemy damage, -10% enemy HP |
+| 0.70 (mild assist / challenge crossing) | 0.86 | 0.90 | Interpolated; also the challenge floor |
+| 0.70 (mild challenge, crossing point) | 1.0 | 1.0 | Neutral — no assist, no challenge |
+| ≥ 0.85 (strong challenge) | 1.20 | 1.12 | +20% enemy damage, +12% enemy HP |
+
+**Between anchors**, values interpolate linearly. For example, at 0.65 accuracy (midway between 0.60 and 0.70) the damage multiplier is lerp(0.88, 0.86, 0.5) = 0.87. At 0.775 accuracy (midway between 0.70 and 0.85), damage multiplier is lerp(1.0, 1.20, 0.5) = 1.10.
+
+**Pass 5** removed the neutral zone (0.70–0.80), making everyone receive either assist or challenge. **Pass 6b/6c** retuned the assist values (strong assist 0.82→0.88; mild assist 0.93→0.86) after `first_timer` hit 39.5% and `competent` hit only 25.7% win rates.
 
 The final `enemyDamageMultiplier` and `enemyHpMultiplier` on `CanaryState` are the **product** of both layers. All callers read only these combined values — no changes needed in encounterBridge, turnManager, or simulator.
 
