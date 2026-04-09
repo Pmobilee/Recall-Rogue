@@ -183,6 +183,34 @@ When `prefersReducedMotion()` returns `true`:
 
 Tier detection via existing `getDeviceTier()` utility (or equivalent in `CombatAtmosphereSystem` — match whichever pattern is already used). Pass result into `ForegroundParallaxSystem` constructor.
 
+## Placeholder Removal — 2026-04-09
+
+**Procedural placeholder textures were removed** from `ForegroundParallaxSystem.ts` to fix a visual bug: the 'lines' shape placeholders (4 horizontal rects + 1 vertical rect in grey) were appearing as grey grid artifacts at the top-left and top-right corners of every combat background.
+
+**What was removed:**
+- `PLACEHOLDER_SPECS` constant (palette of shapes/colors per texture key)
+- `createPlaceholderTextures()` public method (created all placeholders in Phaser texture cache)
+- `_createPlaceholder()` private method (drew individual procedural textures via Phaser Graphics)
+- The `this.foregroundParallax.createPlaceholderTextures()` call in `CombatScene.ts`
+
+**Current behavior (no real assets):** The system is fully dormant — `start()` silently skips all elements because no textures exist in the cache. Zero sprites are created. Combat backgrounds are unobstructed.
+
+**Behaviour change in `start()`:** Previously fell back to `__DEFAULT` texture if config key wasn't found. Now does a hard `continue` — if the texture doesn't exist, the element is skipped entirely.
+
+## Adding Real Assets
+
+When foreground sprite PNGs are ready:
+
+1. Place `fg_[name].png` files in `src/assets/sprites/foreground/`
+2. Load them in `CombatScene.preload()`:
+   ```typescript
+   this.load.image('fg_cobweb', 'assets/sprites/foreground/fg_cobweb.png')
+   this.load.image('fg_chain_hang', 'assets/sprites/foreground/fg_chain_hang.png')
+   // ... etc. for each key in foregroundElements.ts
+   ```
+3. The `ForegroundParallaxSystem.start()` loop will automatically pick them up — no other changes needed.
+4. Test all 5 biome themes (dust/embers/ice/arcane/void) to confirm correct elements appear per biome.
+
 ## Verification
 
 1. Visual inspection across all 5 biome themes (dust/embers/ice/arcane/void) — verify element set matches biome, sprites don't clip into center of screen, alpha renders correctly.

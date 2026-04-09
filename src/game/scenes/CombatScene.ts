@@ -907,7 +907,6 @@ export class CombatScene extends Phaser.Scene {
 
     // ── Foreground parallax system (Spec 07) ─────────────
     this.foregroundParallax = new ForegroundParallaxSystem(this)
-    this.foregroundParallax.createPlaceholderTextures()
 
     // ── Combat atmosphere system ────────────────────
     this.atmosphereSystem = new CombatAtmosphereSystem(this)

@@ -10,10 +10,9 @@
  *  - React to screen shake (shift 1.5× the shake offset via tween)
  *  - Drift 1px on turn transitions (gentle sinusoidal yoyo tween)
  *
- * Placeholder textures are generated procedurally via Phaser Graphics so the
- * system functions without real PNG assets. Real assets placed at
- * src/assets/sprites/foreground/fg_[name].png override placeholders because
- * `createPlaceholderTextures()` checks `textures.exists()` before creating.
+ * Real assets must be placed at src/assets/sprites/foreground/fg_[name].png and
+ * loaded in CombatScene.preload() via this.load.image(). Until real PNG assets
+ * exist, the system runs but creates zero sprites (fully dormant).
  *
  * Reduce-motion: sprites display statically; all tweens/breathing suppressed.
  * Device tier: low=1 element (no breathing/reactive shift), mid=2, flagship=3.
@@ -47,9 +46,6 @@ const SHAKE_PARALLAX_FACTOR = 1.5
 /** Turn transition drift in pixels (1px rightward yoyo). */
 const TURN_DRIFT_PX = 1
 
-/** Procedural placeholder texture size (square). */
-const PLACEHOLDER_SIZE = 64
-
 /** Internal representation of a live foreground element. */
 interface ForegroundElement {
   sprite: Phaser.GameObjects.Image
@@ -57,29 +53,6 @@ interface ForegroundElement {
   /** Resolved base position in viewport pixels (recomputed on resize). */
   baseX: number
   baseY: number
-}
-
-/**
- * Palette of procedural placeholder color per texture key.
- * These are generated once and reused across encounters.
- * Real PNG assets override these when present in the texture cache.
- */
-const PLACEHOLDER_SPECS: Record<string, { color: number; shape: 'triangle' | 'lines' | 'diamond' | 'blob' | 'circle' }> = {
-  fg_cobweb:        { color: 0xcccccc, shape: 'lines' },
-  fg_chain_hang:    { color: 0x888888, shape: 'lines' },
-  fg_rock_crack:    { color: 0x664433, shape: 'diamond' },
-  fg_moss_drip:     { color: 0x336622, shape: 'blob' },
-  fg_ash_edge:      { color: 0x998877, shape: 'blob' },
-  fg_cracked_stone: { color: 0x665544, shape: 'diamond' },
-  fg_icicle_top:    { color: 0x88ccff, shape: 'triangle' },
-  fg_frost_edge:    { color: 0xaaddff, shape: 'blob' },
-  fg_crystal_shard: { color: 0x66aacc, shape: 'diamond' },
-  fg_rune_edge:     { color: 0x9966cc, shape: 'circle' },
-  fg_magic_residue: { color: 0xaa44ff, shape: 'blob' },
-  fg_arcane_tendril: { color: 0x8833cc, shape: 'lines' },
-  fg_void_tendril:  { color: 0x330066, shape: 'lines' },
-  fg_reality_crack: { color: 0x440033, shape: 'diamond' },
-  fg_dark_seep:     { color: 0x220044, shape: 'blob' },
 }
 
 /** Checks whether the prefers-reduced-motion media query is active. */
@@ -113,81 +86,6 @@ export class ForegroundParallaxSystem {
   }
 
   // ─────────────────────────────────────────────────────────
-  // Placeholder texture creation
-  // ─────────────────────────────────────────────────────────
-
-  /**
-   * Create procedural placeholder textures for all known foreground keys.
-   *
-   * Must be called once during `CombatScene.create()` (not preload).
-   * Only creates textures that don't already exist in the cache — so real
-   * PNG assets loaded via `this.load.image()` in preload take precedence.
-   */
-  createPlaceholderTextures(): void {
-    for (const [key, spec] of Object.entries(PLACEHOLDER_SPECS)) {
-      if (this.scene.textures.exists(key)) continue
-      this._createPlaceholder(key, spec.color, spec.shape)
-    }
-  }
-
-  /**
-   * Draw a single procedural placeholder texture into the Phaser texture cache.
-   */
-  private _createPlaceholder(
-    key: string,
-    color: number,
-    shape: 'triangle' | 'lines' | 'diamond' | 'blob' | 'circle',
-  ): void {
-    const gfx = this.scene.make.graphics({ x: 0, y: 0 })
-    const s = PLACEHOLDER_SIZE
-    const alpha = 0.6
-
-    gfx.fillStyle(color, alpha)
-
-    switch (shape) {
-      case 'triangle':
-        // Downward-pointing triangle (icicle)
-        gfx.fillTriangle(s / 2, s - 4, 4, 4, s - 4, 4)
-        break
-
-      case 'diamond':
-        // Diamond / crack shape
-        gfx.fillTriangle(s / 2, 4, 4, s / 2, s / 2, s - 4)
-        gfx.fillTriangle(s / 2, 4, s - 4, s / 2, s / 2, s - 4)
-        break
-
-      case 'blob':
-        // Rounded blob approximated by overlapping rects
-        gfx.fillRect(s * 0.2, s * 0.1, s * 0.6, s * 0.8)
-        gfx.fillRect(s * 0.1, s * 0.2, s * 0.8, s * 0.6)
-        break
-
-      case 'circle':
-        // Filled circle
-        gfx.fillCircle(s / 2, s / 2, s / 2 - 4)
-        // Inner cross for rune feel
-        gfx.fillStyle(0x000000, 0.3)
-        gfx.fillRect(s / 2 - 2, s * 0.1, 4, s * 0.8)
-        gfx.fillRect(s * 0.1, s / 2 - 2, s * 0.8, 4)
-        break
-
-      case 'lines':
-      default:
-        // Diagonal lines (cobweb / chain / tendril approximation)
-        for (let i = 0; i < 4; i++) {
-          const y0 = (s / 4) * i + s / 8
-          gfx.fillRect(4, y0, s - 8, 2)
-        }
-        // Vertical center line
-        gfx.fillRect(s / 2 - 1, 4, 2, s - 8)
-        break
-    }
-
-    gfx.generateTexture(key, s, s)
-    gfx.destroy()
-  }
-
-  // ─────────────────────────────────────────────────────────
   // Lifecycle
   // ─────────────────────────────────────────────────────────
 
@@ -196,6 +94,10 @@ export class ForegroundParallaxSystem {
    *
    * Call after `atmosphereSystem.start()` and `setEnemy()` so the theme is known.
    * Stops any existing elements before creating new ones.
+   *
+   * Elements whose texture key is not present in the Phaser cache are silently
+   * skipped — this keeps the system dormant until real fg_*.png assets are
+   * loaded in CombatScene.preload(). No fallback to __DEFAULT.
    *
    * @param theme - The biome theme for this encounter
    * @param viewportW - Current viewport width (pixels)
@@ -209,12 +111,15 @@ export class ForegroundParallaxSystem {
     const configs = selectForegroundElements(theme)
 
     for (const config of configs) {
+      // Skip elements whose texture hasn't been loaded yet.
+      // Do NOT fall back to __DEFAULT — that would render a coloured block.
+      // Once real fg_*.png assets are added to src/assets/sprites/foreground/
+      // and loaded in CombatScene.preload(), they will automatically appear here.
+      if (!this.scene.textures.exists(config.key)) continue
+
       const { x, y } = resolveAnchorPosition(config.anchorSlot, viewportW, viewportH)
 
-      // Validate texture exists (placeholder or real)
-      const texKey = this.scene.textures.exists(config.key) ? config.key : '__DEFAULT'
-
-      const sprite = this.scene.add.image(x, y, texKey)
+      const sprite = this.scene.add.image(x, y, config.key)
         .setAlpha(config.alpha)
         .setScale(config.scale)
         .setFlipX(config.flipX ?? false)
