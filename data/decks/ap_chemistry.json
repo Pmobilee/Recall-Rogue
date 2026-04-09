@@ -2035,7 +2035,7 @@
       "answerTypePoolId": "chemistry_concepts_long",
       "difficulty": 1,
       "funScore": 6,
-      "quizQuestion": "Sodium (Na⁺) and chloride (Cl⁻) ions combine in a 1:1 ratio to form an electrically neutral ionic compound. What is the chemical formula of this compound?",
+      "quizQuestion": "Sodium (Na⁺) and chloride (Cl⁻) ions combine in a 1:1 ratio to form an electrically neutral ionic compound. What is the chemical formula of sodium chloride?",
       "explanation": "Ionic compounds are electrically neutral overall. Na⁺ has a charge of +1 and Cl⁻ has a charge of −1. The charges cancel in a 1:1 ratio: one Na⁺ per one Cl⁻ gives a net charge of zero. The formula NaCl is written with the cation (Na) first. In the solid crystal, each Na⁺ is surrounded by 6 Cl⁻ neighbors and vice versa in a face-centered cubic lattice. NaCl melts at 801°C — evidence of strong ionic electrostatic attractions.",
       "distractors": [
         "Na₂Cl",
@@ -8253,7 +8253,7 @@
         "the stoichiometric coefficient in the overall equation",
         "the number of intermediates in the mechanism"
       ],
-      "quizQuestion": "In chemical kinetics, what does the term 'molecularity' describe for an value reaction step?",
+      "quizQuestion": "In chemical kinetics, what does the term 'molecularity' describe for an elementary reaction step?",
       "explanation": "Molecularity refers to the number of reactant particles (molecules, atoms, or ions) that must collide in a single elementary step. Unimolecular = 1 particle (e.g., isomerization or decomposition). Bimolecular = 2 particles colliding (the most common). Termolecular = 3 particles colliding simultaneously (rare, because simultaneous three-body collisions are statistically unlikely). Molecularity applies ONLY to elementary steps, not to overall reactions.",
       "statement": "Molecularity is the number of reactant particles that collide in a single elementary step: unimolecular (1), bimolecular (2), or termolecular (3).",
       "wowFactor": "Termolecular steps are so rare that most three-body apparent reactions actually proceed through two sequential bimolecular steps — nature prefers two-particle collisions.",
