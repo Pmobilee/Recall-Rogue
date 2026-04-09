@@ -22,7 +22,7 @@ import {
   shouldOfferEvent,
 } from './floorManager';
 import type { Card, FactDomain } from '../data/card-types';
-import { DEATH_PENALTY, POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, SHOP_HAGGLE_DISCOUNT, RELIC_SELL_REFUND_PCT, RELIC_REROLL_COST, RELIC_REROLL_MAX, RELIC_BOSS_CHOICES, RELIC_PITY_THRESHOLD, RELIC_RARITY_WEIGHTS, RELIC_BONUS_CHANCE_REWARD_ROOM } from '../data/balance';
+import { DEATH_PENALTY, POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, SHOP_HAGGLE_DISCOUNT, RELIC_SELL_REFUND_PCT, RELIC_REROLL_COST, RELIC_REROLL_MAX, RELIC_BOSS_CHOICES, RELIC_PITY_THRESHOLD, RELIC_RARITY_WEIGHTS, RELIC_BONUS_CHANCE_REWARD_ROOM, HEALTH_VIAL_DROP_CHANCE } from '../data/balance';
 import { generateCardRewardOptionsByType, rerollRewardCardInType } from './rewardGenerator';
 import {
   addRewardCardToActiveDeck,
@@ -268,6 +268,11 @@ let pendingPostCombatAction: (() => void) | null = null;
  * completion in the rare case where it fires after a new encounter has started.
  */
 let isProcessingEncounterResult = false;
+/**
+ * Set to true when the current reward is for an elite, mini-boss, or boss encounter.
+ * Elite/boss rewards always include a health vial; normal combat uses HEALTH_VIAL_DROP_CHANCE.
+ */
+let pendingRewardIsEliteOrBoss = false;
 let pendingDomainSelection: { primary: FactDomain; secondary: FactDomain } | null = null;
 type ActiveRunMode = 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race'
 let activeRunMode: ActiveRunMode = 'standard'
@@ -1250,9 +1255,13 @@ function openCardReward(): void {
     // Always include gold (minimum 5 from encounter)
     const displayGold = totalGold > 0 ? totalGold : 5;
     rewards.push({ type: 'gold', amount: displayGold });
-    // Always include a health vial
-    const displayHeal = healAmount > 0 ? healAmount : 8;
-    rewards.push({ type: 'health_vial', size: displayHeal > 15 ? 'large' : 'small', healAmount: displayHeal });
+    // Include health vial: always for elite/boss, 10% chance for normal combat
+    const isElevatedReward = pendingRewardIsEliteOrBoss;
+    pendingRewardIsEliteOrBoss = false; // consume the flag
+    if (isElevatedReward || Math.random() < HEALTH_VIAL_DROP_CHANCE) {
+      const displayHeal = healAmount > 0 ? healAmount : 8;
+      rewards.push({ type: 'health_vial', size: displayHeal > 15 ? 'large' : 'small', healAmount: displayHeal });
+    }
     for (const card of options) {
       rewards.push({ type: 'card', card });
     }
@@ -1718,6 +1727,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     if (choices.length > 0) {
       pendingPostCombatAction = () => {
         resetRelicSelectionRerolls();
+        pendingRewardIsEliteOrBoss = true;
         openRelicChoiceRewardRoom(choices, false);
       };
       combatExitRequested.set(true);
@@ -1728,6 +1738,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     if (choices.length > 0) {
       pendingPostCombatAction = () => {
         resetRelicSelectionRerolls();
+        pendingRewardIsEliteOrBoss = true;
         openRelicChoiceRewardRoom(choices, false);
       };
       combatExitRequested.set(true);
@@ -1740,6 +1751,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     if (choices.length > 0) {
       pendingPostCombatAction = () => {
         resetRelicSelectionRerolls();
+        pendingRewardIsEliteOrBoss = true;
         openRelicChoiceRewardRoom(choices, false);
       };
       combatExitRequested.set(true);
