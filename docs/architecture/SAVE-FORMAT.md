@@ -169,3 +169,14 @@ There is no external migration framework; compatibility is code-based inside `lo
 ## Related split-doc helpers
 
 `src/services/saveSubDocs.ts` can split/merge a `PlayerSave` into five logical docs (`core`, `knowledge`, `inventory`, `dome`, `analytics`) for sync optimization. The primary local persistence path remains single-key JSON in `saveService`.
+
+## Chess Tactics Elo (2026-04-10)
+
+Two optional fields added to `PlayerSave`:
+
+| Field | Type | Purpose |
+|-------|------|---------|
+| `chessEloRating` | `number?` | Current tactical Elo (defaults to `CHESS_ELO_START = 1000` at runtime) |
+| `chessEloHistory` | `Array<{rating,puzzleRating,correct,timestamp}>?` | Last 100 rating changes for chart display |
+
+No save migration required — both are optional with runtime defaults. See `src/services/chessEloService.ts`.

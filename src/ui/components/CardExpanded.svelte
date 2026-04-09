@@ -27,6 +27,9 @@
   import DeckOptionsPanel from '../DeckOptionsPanel.svelte'
   import { getLanguageConfig } from '../../types/vocabulary'
   import { displayAnswer, isNumericalAnswer } from '../../services/numericalDistractorService'
+  import ChessBoard from './ChessBoard.svelte'
+  import { getPlayerContext, gradeChessMove, isInCheck as chessIsInCheck } from '../../services/chessGrader'
+  import { updateChessElo } from '../../services/chessEloService'
 
   interface Props {
     card: Card
@@ -46,8 +49,8 @@
     factLanguage?: string
     /** Pronunciation/reading string from the fact. Used to parse furigana from the question. */
     factPronunciation?: string
-    /** Quiz presentation mode: 'text' (default), 'image_question', 'image_answers'. */
-    quizMode?: 'text' | 'image_question' | 'image_answers'
+    /** Quiz presentation mode: 'text' (default), 'image_question', 'image_answers', 'chess_tactic'. */
+    quizMode?: 'text' | 'image_question' | 'image_answers' | 'chess_tactic'
     /** Path to the image shown above the question in image_question mode. */
     imageAssetPath?: string
     /** Parallel image paths for each answer choice in image_answers mode. */
@@ -62,8 +65,14 @@
     grammarNote?: string
     /** Bold header extracted from the explanation (e.g. "さえ (even; only; just)"). */
     grammarPointHeader?: string
-    /** Quiz response mode: 'choice' (default multiple choice) or 'typing' (text input with romaji→hiragana). */
-    quizResponseMode?: 'choice' | 'typing'
+    /** Quiz response mode: 'choice' (default multiple choice), 'typing' (text input), or 'chess_move' (interactive board). */
+    quizResponseMode?: 'choice' | 'typing' | 'chess_move'
+    /** FEN string for chess puzzle positions. Required when quizResponseMode is 'chess_move'. */
+    fenPosition?: string
+    /** Solution move sequence in UCI notation. Required when quizResponseMode is 'chess_move'. */
+    solutionMoves?: string[]
+    /** Lichess puzzle rating for Elo calculation after a chess quiz attempt. */
+    lichessRating?: number
     /** Pre-baked furigana segments for Japanese grammar sentences. When present, replaces runtime tokenization. */
     sentenceFurigana?: Array<{ t: string; r?: string; g?: string }>
     /** Pre-baked whole-sentence romaji for Japanese grammar sentences. */
@@ -105,6 +114,9 @@
     sentenceRomaji,
     sentenceTranslation,
     grammarPointLabel,
+    fenPosition,
+    solutionMoves,
+    lichessRating,
     onanswer,
     onskip,
     oncancel,
@@ -150,6 +162,31 @@
   let selectedAnswerIndex = $state<number | null>(null)
   let answerRevealed = $state(false)
   let answersDisabled = $state(false)
+
+  // --- Chess puzzle state ---
+  const chessContext = $derived.by(() => {
+    if (quizResponseMode !== 'chess_move' || !fenPosition || !solutionMoves || solutionMoves.length < 2) return null
+    try {
+      return getPlayerContext(fenPosition, solutionMoves)
+    } catch {
+      return null
+    }
+  })
+  let chessLastMove = $state<{ from: string; to: string } | undefined>(undefined)
+  let chessDisabled = $state(false)
+  let chessCheckState = $state(false)
+  let chessMoveTimeoutId: ReturnType<typeof setTimeout> | undefined
+  /** Elo rating change after the last chess puzzle attempt (+N or -N). */
+  let eloChange = $state<number | null>(null)
+
+  $effect(() => {
+    if (chessContext) {
+      chessLastMove = chessContext.setupMove
+      chessDisabled = false
+      chessCheckState = chessIsInCheck(chessContext.playerFen)
+    }
+  })
+
   /** Landscape-only: shows CORRECT/WRONG flash overlay for 500ms after answering. */
   let quizResultState = $state<'correct' | 'wrong' | null>(null)
   let showSpeedBonus = $state(false)
@@ -203,14 +240,15 @@
     return opts?.[quizLanguageCode ?? '']?.alwaysWrite ?? false
   })
 
-  /** Effective response mode: 'typing' if alwaysWrite is on OR quizResponseMode is 'typing'. */
+  /** Effective response mode: 'chess_move', 'typing', or 'choice'. */
   const effectiveResponseMode = $derived(
+    quizResponseMode === 'chess_move' ? 'chess_move' :
     alwaysWriteEnabled || quizResponseMode === 'typing' ? 'typing' : 'choice'
   )
 
   /** Whether this fact should be excluded from typing mode (fall back to multiple choice). */
   const isTypingExcluded = $derived.by(() => {
-    if (quizMode === 'image_question' || quizMode === 'image_answers') return true
+    if (quizMode === 'image_question' || quizMode === 'image_answers' || quizMode === 'chess_tactic') return true
     if (isNumericalAnswer(correctAnswer)) return true
     if (displayAnswer(correctAnswer).length > 80) return true
     return false
@@ -482,6 +520,33 @@
     return unsub
   })
 
+  /**
+   * Handle a move from the ChessBoard component.
+   * Grades the move against the solution, disables the board, then fires handleAnswer.
+   */
+  function handleChessMove(uci: string): void {
+    if (!chessContext || chessDisabled) return
+    const isCorrect = gradeChessMove(uci, chessContext.solutionUCI)
+    chessDisabled = true
+
+    const from = uci.substring(0, 2)
+    const to = uci.substring(2, 4)
+    chessLastMove = { from, to }
+
+    // Update Elo rating if puzzle has a Lichess rating
+    if (lichessRating) {
+      const result = updateChessElo(lichessRating, isCorrect)
+      eloChange = result.ratingChange
+    }
+
+    const correctIdx = answers.indexOf(correctAnswer)
+    const wrongIdx = answers.findIndex((a) => a !== correctAnswer)
+
+    chessMoveTimeoutId = setTimeout(() => {
+      handleAnswer(isCorrect ? (correctIdx >= 0 ? correctIdx : 0) : (wrongIdx >= 0 ? wrongIdx : 0))
+    }, isCorrect ? 400 : 800)
+  }
+
   onDestroy(() => {
     if (rafId !== undefined) cancelAnimationFrame(rafId)
     if (feedbackTimeoutId !== undefined) clearTimeout(feedbackTimeoutId)
@@ -491,6 +556,7 @@
     if (quizResultTimeoutId !== undefined) clearTimeout(quizResultTimeoutId)
     if (timerExpiredLabelTimeoutId !== undefined) clearTimeout(timerExpiredLabelTimeoutId)
     if (autoResumeTimeoutId !== undefined) clearTimeout(autoResumeTimeoutId)
+    if (chessMoveTimeoutId !== undefined) clearTimeout(chessMoveTimeoutId)
   })
 </script>
 
@@ -608,7 +674,33 @@
     {/if}
   {/if}
 
-  {#if effectiveResponseMode === 'typing' && !isTypingExcluded && !answersDisabled}
+  {#if effectiveResponseMode === 'chess_move' && chessContext}
+    <div class="chess-puzzle-container">
+      <ChessBoard
+        fen={chessContext.playerFen}
+        orientation={chessContext.orientation}
+        onmove={handleChessMove}
+        disabled={chessDisabled || answersDisabled}
+        lastMove={chessLastMove}
+        isInCheck={chessCheckState}
+      />
+      {#if chessDisabled && selectedAnswerIndex !== null}
+        <div class="chess-solution-display">
+          <span class="chess-solution-label">
+            {getAnswerClass(selectedAnswerIndex).includes('correct') ? 'Correct!' : 'Solution:'}
+          </span>
+          <span class="chess-solution-move">
+            {correctAnswer}
+          </span>
+        </div>
+        {#if eloChange !== null}
+          <div class="elo-change-badge" class:elo-positive={eloChange > 0} class:elo-negative={eloChange < 0}>
+            {eloChange > 0 ? '+' : ''}{eloChange}
+          </div>
+        {/if}
+      {/if}
+    </div>
+  {:else if effectiveResponseMode === 'typing' && !isTypingExcluded && !answersDisabled}
     {#if quizLanguageCode === 'ja'}
       {#if grammarPointLabel || sentenceTranslation}
         <div class="grammar-typing-hints">
@@ -1447,4 +1539,58 @@
     pointer-events: none;
     z-index: 1;
   }
+  /* --- Chess puzzle container --- */
+  .chess-puzzle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    width: 100%;
+    padding: calc(4px * var(--layout-scale, 1));
+  }
+
+  .chess-solution-display {
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    font-size: calc(16px * var(--text-scale, 1));
+    font-weight: 600;
+  }
+
+  .chess-solution-label {
+    color: var(--text-muted, #94a3b8);
+  }
+
+  .chess-solution-move {
+    color: var(--text-primary, #e2e8f0);
+    font-family: monospace;
+    font-size: calc(18px * var(--text-scale, 1));
+  }
+
+  /* Elo rating change badge shown after chess puzzle answer */
+  .elo-change-badge {
+    font-size: calc(18px * var(--text-scale, 1));
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    border-radius: calc(12px * var(--layout-scale, 1));
+    margin-top: calc(6px * var(--layout-scale, 1));
+    animation: elo-float 1.5s ease-out forwards;
+  }
+
+  .elo-positive {
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.15);
+  }
+
+  .elo-negative {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.15);
+  }
+
+  @keyframes elo-float {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(calc(-20px * var(--layout-scale, 1))); }
+  }
+
 </style>

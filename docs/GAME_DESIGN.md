@@ -3664,6 +3664,18 @@ Phase 1.5 adds free-text typed input. Later phases add Algebra, CS/Logic, Geomet
 For full implementation details, see `docs/mechanics/procedural-math.md`.
 
 
+
+## 23.545. Interactive Puzzle Quiz Modes (Study Temple)
+
+Beyond multiple-choice and typing, Study Temple supports **interactive puzzle modes** where the player manipulates a visual interface to answer rather than selecting from text options.
+
+The first interactive mode is **Chess Tactics** (`chess_tactic` quiz mode, `chess_move` response mode). The quiz overlay renders a live chessboard from a FEN position; the player taps a piece then taps a destination to make their move. Grading is immediate — the chosen move is checked against the Lichess-supplied solution in UCI notation.
+
+The player earns a personal **Tactical Elo** (starting 1000, K=32 standard formula) that adjusts after every puzzle attempt. Puzzle selection adapts to keep difficulty near the player's current Elo. The chess tactics deck contains 300 puzzles from the Lichess CC0 database, organized into 10 chain themes (forks, pins, back-rank mates, sacrifices, etc.).
+
+For implementation details, see `docs/mechanics/quiz.md` (Chess Move Response Mode) and `docs/content/deck-system.md` (Chess Tactics Deck).
+
+
 ## 23.55. Anki Import/Export (Study Temple)
 
 Players can import their existing Anki flashcard decks into Recall Rogue and export any deck back to Anki format — enabling seamless cross-tool study continuity.

@@ -6,7 +6,8 @@
   import { getDeckTags, getTagFactIds } from '../../data/deckFactIndex';
   import DeckOptionsPanel from '../DeckOptionsPanel.svelte';
   import { getLanguageCodeForDeck } from '../../services/deckOptionsService';
-  import { getLanguageConfig } from '../../types/vocabulary';
+  import { getLanguageConfig } from '../../types/vocabulary'
+  import { getChessElo, getEloLabel } from '../../services/chessEloService';
 
   /** Human-readable display labels for known exam tags. */
   const TAG_DISPLAY: Record<string, string> = {
@@ -51,6 +52,9 @@
   const hasLanguageOptions = $derived(
     deckLanguageCode ? (getLanguageConfig(deckLanguageCode)?.options?.length ?? 0) > 0 : false
   );
+
+  /** Current chess Elo rating — shown only for chess_tactics deck. */
+  const chessElo = $derived(deck.id === 'chess_tactics' ? getChessElo() : null);
 
   /**
    * Count of facts matching the selected tags (union).
@@ -137,6 +141,14 @@
           <div class="mastered-count">
             {deck.procedural ? progress.totalFacts : progress.factsMastered} / {progress.totalFacts} {deck.procedural ? "skills" : "facts mastered"}
           </div>
+
+          {#if chessElo !== null}
+            <div class="chess-elo-display">
+              <span class="chess-elo-icon">♟</span>
+              <span class="chess-elo-rating">{chessElo}</span>
+              <span class="chess-elo-label">{getEloLabel(chessElo)}</span>
+            </div>
+          {/if}
         </div>
 
         <!-- Sub-Decks Section -->
@@ -657,6 +669,33 @@
     background: rgba(139, 92, 246, 0.2);
     border-color: rgba(139, 92, 246, 0.4);
     color: #c4b5fd;
+  }
+
+  /* Chess Elo rating display (chess_tactics deck only) */
+  .chess-elo-display {
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    margin-top: calc(8px * var(--layout-scale, 1));
+  }
+
+  .chess-elo-icon {
+    font-size: calc(20px * var(--text-scale, 1));
+  }
+
+  .chess-elo-rating {
+    font-size: calc(24px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #ffd700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .chess-elo-label {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: var(--text-muted, #94a3b8);
   }
 
   /* Deck language options — retheme DeckOptionsPanel for modal context */

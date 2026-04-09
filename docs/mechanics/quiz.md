@@ -1,8 +1,8 @@
 # Quiz Engine Mechanics
 
 > **Purpose:** Documents how quiz questions are selected, formatted, graded, and how the FSRS spaced repetition algorithm schedules fact reviews.
-> **Last verified:** 2026-04-07
-> **Source files:** `src/services/quizService.ts`, `src/services/fsrsScheduler.ts`, `src/services/questionFormatter.ts`, `src/services/questionTemplateSelector.ts`, `src/services/curatedFactSelector.ts`, `src/services/accuracyGradeSystem.ts`, `src/services/curatedDistractorSelector.ts`, `src/services/typedAnswerChecker.ts`, `src/services/synonymService.ts`
+> **Last verified:** 2026-04-10
+> **Source files:** `src/services/quizService.ts`, `src/services/fsrsScheduler.ts`, `src/services/questionFormatter.ts`, `src/services/questionTemplateSelector.ts`, `src/services/curatedFactSelector.ts`, `src/services/accuracyGradeSystem.ts`, `src/services/curatedDistractorSelector.ts`, `src/services/typedAnswerChecker.ts`, `src/services/synonymService.ts`, `src/services/chessGrader.ts`, `src/services/chessEloService.ts`
 
 ---
 
@@ -473,3 +473,105 @@ isAlwaysWriteEnabled(languageCode)  setAlwaysWriteEnabled(languageCode, enabled)
 ```
 
 `isAlwaysWriteEnabled(languageCode)` accepts any ISO 639-1 language code. The `alwaysWrite` option is configured in `SUPPORTED_LANGUAGES` (`src/types/vocabulary.ts`) for all 8 language decks: `ja`, `es`, `fr`, `de`, `nl`, `cs`, `ko`, `zh`.
+
+---
+
+## Chess Move Response Mode (2026-04-10)
+
+### Overview
+
+The `chess_tactic` quiz mode renders an interactive chessboard instead of a text question. The player responds by moving pieces rather than selecting from multiple choice options. This is a new `quizResponseMode` value: `'chess_move'`.
+
+**Source files:**
+- `src/ui/ChessBoard.svelte` — Interactive 8x8 board rendered in Svelte DOM
+- `src/services/chessGrader.ts` — FEN parsing, move grading, legal move enumeration, UCI→SAN conversion
+- `src/services/chessEloService.ts` — Elo rating tracking for puzzle performance
+
+### How It Works
+
+1. The quiz overlay detects `fact.quizMode === 'chess_tactic'` and renders `ChessBoard.svelte` instead of answer buttons
+2. The board is initialized from `fact.fenPosition` (FEN string) and auto-oriented to show the side to move at bottom
+3. The player taps a piece to select it — legal destination squares highlight on the board
+4. The player taps a destination square to commit the move (tap-tap interface)
+5. `chessGrader.ts` converts the chosen move to UCI notation and checks it against `fact.solutionMoves` (array of acceptable first moves)
+6. Correct: first move matches solution — card charges with correct multiplier
+7. Wrong: move is legal but not the solution — card fizzles at `FIZZLE_EFFECT_RATIO (0.25×)`
+8. Illegal move attempts are rejected silently — the piece returns to its origin square
+
+### DeckFact Fields (chess puzzles)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `fenPosition` | `string` | FEN position string for the puzzle starting state |
+| `solutionMoves` | `string[]` | Acceptable first moves in UCI notation (e.g. `[e2e4, d2d4]`). Only the first move is graded — puzzles with one solution are typical |
+| `tacticTheme` | `string` | Tactic category from Lichess (e.g. `fork`, `pin`, `mateIn2`). Maps to `chainThemeId` |
+| `lichessRating` | `number` | Lichess Elo rating for the puzzle (600–3000). Used for adaptive selection and Elo updates |
+| `quizMode` | `'chess_tactic'` | Triggers board rendering path in quiz overlay |
+
+### Grading (`chessGrader.ts`)
+
+- `parseFEN(fen)` — extracts board position, side to move, castling rights
+- `getLegalMoves(fen)` — enumerates all legal moves for the side to move (used for highlighting)
+- `gradeChessMove(selectedUCI, fact)` — returns `correct: boolean` by comparing against `fact.solutionMoves`
+- `uciToSAN(uci, fen)` — converts UCI notation to Standard Algebraic Notation for display in result feedback
+
+### Timer
+
+Chess puzzles use a `CHESS_TIMER_MULTIPLIER = 2.0×` — the base floor timer is doubled to give players adequate time for tactical calculation. The timer is a speed-bonus timer only, not a hard deadline.
+
+### Piece Assets
+
+Piece sprites are at `/assets/chess/pieces/` — one PNG per piece type and color (e.g. `wp.png` for white pawn, `bk.png` for black king).
+
+---
+
+## Chess Tactics Elo Rating (2026-04-10)
+
+### Overview
+
+The chess tactics deck (`chess_tactics`) uses Lichess-assigned Elo ratings per puzzle (600–3000). After each charge attempt on a chess puzzle, the player's tactical Elo is updated using the standard Elo formula.
+
+**Service:** `src/services/chessEloService.ts`
+
+### Elo Formula
+
+```
+expectedScore = 1 / (1 + 10^((puzzleRating - playerRating) / 400))
+newRating = clamp(oldRating + round(K * (actualScore - expectedScore)), 400, 3200)
+```
+
+- `actualScore = 1` for correct, `0` for wrong
+- `K = 32` (aggressive learning K-factor)
+- Starting Elo: **1000** (`CHESS_ELO_START`)
+- Floor: **400** (`CHESS_ELO_MIN`), Ceiling: **3200** (`CHESS_ELO_MAX`)
+
+### Rating Labels
+
+| Range | Label |
+|-------|-------|
+| < 800 | Novice |
+| 800–999 | Beginner |
+| 1000–1199 | Intermediate |
+| 1200–1399 | Advanced |
+| 1400–1599 | Expert |
+| 1600–1799 | Master |
+| 1800–1999 | Grandmaster |
+| 2000+ | Super GM |
+
+### Update Flow
+
+The Elo update fires in `CardCombatOverlay.svelte → handleAnswer()` when:
+1. `deckMode.type === 'study'`
+2. The answered fact has a `lichessRating` field (from `DeckFact.lichessRating`)
+
+`updateChessElo(puzzleRating, isCorrect)` is called after FSRS/confusion-matrix recording.
+
+### Persistence
+
+Stored in `PlayerSave`:
+- `chessEloRating?: number` — current rating (default `CHESS_ELO_START = 1000`)
+- `chessEloHistory?: Array<{ rating, puzzleRating, correct, timestamp }>` — last 100 entries for chart display
+
+### Adaptive Puzzle Selection
+
+`filterPuzzlesByElo(puzzles, playerRating, targetCount)` sorts puzzles by proximity to the player's current Elo, enabling adaptive difficulty selection. Puzzles without a `lichessRating` are excluded.

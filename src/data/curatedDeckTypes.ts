@@ -70,10 +70,18 @@ export interface DeckFact {
   categoryL2?: string;
   /** Path to image asset (relative to /public/). For image-based quiz modes. */
   imageAssetPath?: string;
-  /** Quiz presentation: 'text' (default), 'image_question' (image shown, text answers), 'image_answers' (text shown, image answer grid). */
-  quizMode?: 'text' | 'image_question' | 'image_answers';
-  /** Quiz response mode: 'choice' (default multiple choice) or 'typing' (text input with romaji→hiragana). */
-  quizResponseMode?: 'choice' | 'typing';
+  /** Quiz presentation: 'text' (default), 'image_question' (image shown, text answers), 'image_answers' (text shown, image answer grid), 'chess_tactic' (interactive board puzzle). */
+  quizMode?: 'text' | 'image_question' | 'image_answers' | 'chess_tactic';
+  /** Quiz response mode: 'choice' (default multiple choice), 'typing' (text input with romaji→hiragana), or 'chess_move' (interactive board). */
+  quizResponseMode?: 'choice' | 'typing' | 'chess_move';
+  /** FEN string for chess puzzle positions. First field is the board state after the opponent's setup move. */
+  fenPosition?: string;
+  /** Full solution move sequence in UCI notation. Index 0 = opponent's setup move, index 1 = player's correct response. */
+  solutionMoves?: string[];
+  /** Lichess tactic theme tag (e.g., 'fork', 'pin', 'mateIn1'). */
+  tacticTheme?: string;
+  /** Original Lichess puzzle Elo rating. */
+  lichessRating?: number;
 }
 
 export interface AnswerTypePool {

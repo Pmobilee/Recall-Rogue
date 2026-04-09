@@ -26,7 +26,7 @@ export interface QuizQuestion {
   correctAnswer: string;
   categoryL2?: string;
   /** Quiz presentation mode: 'text' (default), 'image_question', 'image_answers'. */
-  quizMode?: 'text' | 'image_question' | 'image_answers';
+  quizMode?: 'text' | 'image_question' | 'image_answers' | 'chess_tactic';
   /** Path to the question image asset (image_question mode). */
   imageAssetPath?: string;
   /** Parallel image paths for each answer choice (image_answers mode). */

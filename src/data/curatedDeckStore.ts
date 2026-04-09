@@ -318,6 +318,10 @@ function rowToDeckFact(row: Record<string, unknown>): DeckFact {
     grammarPointLabel: row['grammar_point_label'] ? String(row['grammar_point_label']) : undefined,
     categoryL1: row['category_l1'] ? String(row['category_l1']) : undefined,
     categoryL2: row['category_l2'] ? String(row['category_l2']) : undefined,
+    fenPosition: row['fen_position'] ? String(row['fen_position']) : undefined,
+    solutionMoves: row['solution_moves'] ? (JSON.parse(String(row['solution_moves'])) as string[]) : undefined,
+    tacticTheme: row['tactic_theme'] ? String(row['tactic_theme']) : undefined,
+    lichessRating: row['lichess_rating'] ? Number(row['lichess_rating']) : undefined,
   };
 }
 

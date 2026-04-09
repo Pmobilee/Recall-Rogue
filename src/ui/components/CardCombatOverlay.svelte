@@ -140,7 +140,7 @@
     /** Pronunciation/reading string of the source fact. Used for furigana parsing. */
     pronunciation?: string
     /** Quiz presentation mode: 'text' (default), 'image_question', 'image_answers'. */
-    quizMode?: 'text' | 'image_question' | 'image_answers'
+    quizMode?: 'text' | 'image_question' | 'image_answers' | 'chess_tactic'
     /** Path to the question image asset (image_question mode). */
     imageAssetPath?: string
     /** Parallel image paths for each answer choice (image_answers mode). */
@@ -151,8 +151,8 @@
     grammarNote?: string
     /** Bold header extracted from the explanation (e.g. "さえ (even; only; just)"). */
     grammarPointHeader?: string
-    /** Quiz response mode: 'choice' (default) or 'typing' (text input with romaji→hiragana). */
-    quizResponseMode?: 'choice' | 'typing'
+    /** Quiz response mode: 'choice' (default), 'typing' (text input), or 'chess_move' (interactive board). */
+    quizResponseMode?: 'choice' | 'typing' | 'chess_move'
     /** Pre-baked furigana segments for Japanese grammar sentences. */
     sentenceFurigana?: Array<{ t: string; r?: string; g?: string }>
     /** Pre-baked whole-sentence romaji for Japanese grammar sentences. */
@@ -161,6 +161,12 @@
     sentenceTranslation?: string
     /** Short grammar-point label shown as hint above typing input. */
     grammarPointLabel?: string
+    /** FEN string for chess puzzle positions. */
+    fenPosition?: string
+    /** Solution move sequence in UCI notation. */
+    solutionMoves?: string[]
+    /** Lichess puzzle rating (for Elo update after chess quiz). */
+    lichessRating?: number
   }
 
   let { turnState, onplaycard, onskipcard, onendturn, onusehint, onreturnhub }: Props = $props()
@@ -1317,7 +1323,7 @@
     //    for variety. The `useReverse` param from tier logic is superseded by the roller
     //    for these facts — tier 1 is no longer excluded from reverse mode.
     //    Non-flag image facts fall through to the original behavior.
-    let quizMode: 'text' | 'image_question' | 'image_answers' | undefined
+    let quizMode: 'text' | 'image_question' | 'image_answers' | 'chess_tactic' | undefined
     let imageAssetPath: string | undefined
     let answerImagePaths: string[] | undefined
     // Start with the template's rendered question; may be overridden per question type.
@@ -1430,6 +1436,9 @@
       sentenceRomaji: fact.sentenceRomaji,
       sentenceTranslation: fact.sentenceTranslation,
       grammarPointLabel: fact.grammarPointLabel,
+      fenPosition: fact.fenPosition,
+      solutionMoves: fact.solutionMoves,
+      lichessRating: fact.lichessRating,
     }
   }
 
@@ -2774,6 +2783,9 @@
           sentenceRomaji={committedQuizData.sentenceRomaji}
           sentenceTranslation={committedQuizData.sentenceTranslation}
           grammarPointLabel={committedQuizData.grammarPointLabel}
+          fenPosition={committedQuizData.fenPosition}
+          solutionMoves={committedQuizData.solutionMoves}
+          lichessRating={committedQuizData.lichessRating}
           onanswer={handleAnswer}
           onskip={handleSkip}
           oncancel={() => {}}

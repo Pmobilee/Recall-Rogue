@@ -35,7 +35,7 @@ export interface NonCombatQuizQuestion {
   /** The distractor fact IDs (for confusion matrix recording on wrong answer) */
   distractorFactIds?: string[];
   /** Quiz presentation mode: 'text' (default), 'image_question', 'image_answers'. */
-  quizMode?: 'text' | 'image_question' | 'image_answers';
+  quizMode?: 'text' | 'image_question' | 'image_answers' | 'chess_tactic';
   /** Path to the question image asset (image_question mode). */
   imageAssetPath?: string;
   /** Parallel image paths for each answer choice, in same order as choices (image_answers mode). */
@@ -159,7 +159,7 @@ export function selectNonCombatStudyQuestion(
   // Build image quiz fields if this fact uses an image-based quiz mode.
   // For flag facts (image_question + imageAssetPath), roll among 5 question types
   // for variety. Non-flag image facts fall through to the original behavior.
-  let quizMode: 'text' | 'image_question' | 'image_answers' | undefined;
+  let quizMode: 'text' | 'image_question' | 'image_answers' | 'chess_tactic' | undefined;
   let imageAssetPath: string | undefined;
   let answerImagePaths: string[] | undefined;
   // Start with the template question; may be overridden per question type.
@@ -363,7 +363,7 @@ export function selectNonCombatCustomDeckQuestion(
   }
 
   // Build image quiz fields
-  let quizMode: 'text' | 'image_question' | 'image_answers' | undefined;
+  let quizMode: 'text' | 'image_question' | 'image_answers' | 'chess_tactic' | undefined;
   let imageAssetPath: string | undefined;
   let answerImagePaths: string[] | undefined;
   let displayQuestion = templateResult.renderedQuestion;

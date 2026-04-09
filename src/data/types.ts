@@ -126,8 +126,12 @@ export interface Fact {
   imageUrl?: string
   /** Path to image asset for image-based quiz modes (e.g. flags). */
   imageAssetPath?: string
-  /** Quiz presentation mode: 'text' (default), 'image_question', 'image_answers'. */
-  quizMode?: 'text' | 'image_question' | 'image_answers'
+  /** Quiz presentation mode: 'text' (default), 'image_question', 'image_answers', 'chess_tactic'. */
+  quizMode?: 'text' | 'image_question' | 'image_answers' | 'chess_tactic'
+  /** FEN string for chess puzzle positions. */
+  fenPosition?: string
+  /** Solution move sequence in UCI notation. */
+  solutionMoves?: string[]
   mnemonic?: string
 
   // Phase 11 extended fields
@@ -726,6 +730,12 @@ export interface PlayerSave {
   runHistory?: RunSummary[]
   /** Lifetime kill counts per enemy template ID. Used for bestiary. */
   lifetimeEnemyKillCounts?: Record<string, number>
+
+  // Chess Tactics Elo Rating
+  /** Player's current chess tactics Elo rating (default 1000). */
+  chessEloRating?: number
+  /** History of Elo changes for chart display (last 100 entries). */
+  chessEloHistory?: Array<{ rating: number; puzzleRating: number; correct: boolean; timestamp: number }>
 }
 
 /** Player statistics */

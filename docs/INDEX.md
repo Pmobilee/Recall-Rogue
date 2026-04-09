@@ -3,7 +3,7 @@
 > Navigation hub for all modular documentation. Each file is independently useful —
 > an agent reading just that file should understand that system.
 >
-> **Last rebuilt:** 2026-04-08
+> **Last rebuilt:** 2026-04-10
 
 ---
 
@@ -35,7 +35,7 @@
 | [enemies](mechanics/enemies.md) | Full enemy roster, categories, HP/damage scaling formulas, special behaviors, and encounter selection |
 | [relics](mechanics/relics.md) | Relic catalog, rarities, trigger system, slot rules, and acquisition mechanics |
 | [status-effects](mechanics/status-effects.md) | All status effects, stacking rules, tick timing, and application behavior |
-| [quiz](mechanics/quiz.md) | Quiz question lifecycle, fact selection, FSRS spaced repetition scheduling, and answer grading |
+| [quiz](mechanics/quiz.md) | Quiz question lifecycle, fact selection, FSRS spaced repetition scheduling, answer grading, typing mode, chess move response mode (`chess_tactic`/`chess_move`), and chess Elo system |
 | [progression](mechanics/progression.md) | Run lifecycle, floor/room generation, map layout, room types, ascension system, and shop mechanics |
 | [narrative](mechanics/narrative.md) | Woven Narrative Architecture: 4 concurrent threads (Descent/Echo/Seeker/Inhabitants), archetypes, domain lenses, fact-reactive echo system, NPC dialogue, gravity scoring |
 | [procedural-math](mechanics/procedural-math.md) | Runtime math problem generation: skill nodes, 6 generators, algorithmic distractors, FSRS skill tracking, Anki-model selection, tier-based difficulty scaling |
@@ -79,7 +79,7 @@
 
 | Doc | Summary |
 |-----|---------|
-| [deck-system](content/deck-system.md) | Curated deck structure, JSON format, runtime loading, deck registry, player progression tracking, and kanji deck architecture (3-fact-per-kanji model, 5 JLPT levels, 6,633 facts) |
+| [deck-system](content/deck-system.md) | Curated deck structure, JSON format, runtime loading, deck registry, player progression tracking, kanji deck architecture (3-fact-per-kanji model, 5 JLPT levels, 6,633 facts), procedural math decks, and chess tactics deck (300 Lichess puzzles, `chess_tactic` quiz mode) |
 | [trivia-bridge](content/trivia-bridge.md) | Curated deck → trivia bridge: entity selection, scoring, field mapping, CLI usage, provenance tracking |
 | [fact-pipeline](content/fact-pipeline.md) | `Fact` data format, `facts.db` SQLite build pipeline, `factsDB` runtime service, and content production workflow |
 | [domains](content/domains.md) | All knowledge domains, subcategory taxonomy, domain resolution logic, and language vs. knowledge domain distinction |
