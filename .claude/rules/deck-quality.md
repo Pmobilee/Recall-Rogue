@@ -154,8 +154,15 @@ npm run build:curated
 **Fix script:** `node scripts/add-synthetic-distractors.mjs`
 
 ### Anti-Pattern 4: Self-Answering Questions
-**What:** The correctAnswer appears verbatim in the quizQuestion stem (>5 chars). Example: "What is the **deltoid** muscle that..." with answer "deltoid".
+**What:** The correctAnswer (or a distinguishing word from it) appears in the quizQuestion stem. Two levels:
+- **Verbatim:** full answer substring in question (>5 chars) — always a bug
+- **Word-level:** a distinguishing answer word (≥4 chars, not a stopword, not a domain-frequent term) appears in the question — makes distractors eliminable
+
+**Example (verbatim):** "What is the **deltoid** muscle that..." with answer "deltoid".
+**Example (word-level):** "Who invented the **Scoville** scale?" with answer "Wilbur Scoville" — "scoville" leaks.
+**NOT a leak:** "Which **valve** controls blood flow?" with answer "Tricuspid valve" — "valve" is a domain term (appears in 3+ facts), excluded by corpus-frequency filter.
+
 **Why it happens:** Questions are written in a form that names the answer. Common in anatomy and terminology decks.
-**Impact:** Questions are trivially easy — no knowledge required, just match the bolded/obvious term.
-**Prevention:** After writing questions, check: `quizQuestion.toLowerCase().includes(correctAnswer.toLowerCase())`. If true, rewrite using generic placeholders ("this muscle", "this term", "which structure").
+**Impact:** Questions are trivially easy — no knowledge required, just match the leaked word against distractors.
+**Prevention:** `verify-all-decks.mjs` Check #22 detects both levels with corpus-frequency filtering (words appearing in 3+ facts as leaks are excluded as domain terms). After writing questions, run the check and fix any warnings.
 **Fix script:** `node scripts/fix-self-answering.mjs`

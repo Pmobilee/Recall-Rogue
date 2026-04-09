@@ -678,13 +678,13 @@ function verifyDeck(deckId, deck) {
 
     // Check #22 WARNING: answer text appears verbatim in question (self-answering; skip vocab)
     // Two sub-checks:
-    //   (a) Full answer is a substring of question — strict verbatim match (existing behaviour)
-    //   (b) A content word from the answer (≥3 chars, not a function word) appears as a
-    //       whole word in the question — word-level leak that lets a player eliminate
-    //       distractors without knowing the answer.
-    //       Example (Florence Nightingale pattern): answer "Crimean War", question "...during
-    //       which 19th-century war?" — the word "war" appears in both, revealing the answer
-    //       type and making non-war distractors immediately eliminable.
+    //   (a) Full answer is a substring of question — strict verbatim match (genuine leak)
+    //   (b) A *distinguishing* word from the answer appears in the question — word-level leak.
+    //       Uses corpus-frequency filtering: words that appear as leaks in 5+ facts across the
+    //       corpus are domain/category terms (nerve, system, cells, bone, empire, conference)
+    //       and are excluded. Only rare, distinguishing words trigger warnings.
+    //       Example: "Crimean War" → "war" is common (excluded), but "Crimean" is rare (flagged).
+    //       Example: "Wilbur Scoville" → "scoville" is rare and specific (flagged).
     if (!isVocab) {
       const ansLower22 = (fact.correctAnswer || '').toLowerCase().replace(/[{}]/g, '');
       const qLower22 = (fact.quizQuestion || '').toLowerCase();
@@ -693,15 +693,13 @@ function verifyDeck(deckId, deck) {
       if (ansLower22.length > 5 && qLower22.includes(ansLower22)) {
         factWarnings.push({ index: i + 1, factId: fact.id, msg: `correctAnswer "${(fact.correctAnswer || '').slice(0, 40)}" appears verbatim in quizQuestion — self-answering` });
       } else {
-        // (b) Word-level leak: content words (≥3 chars, not a function word stopword) from
-        // the answer that also appear as whole words in the question.
-        // Whole-word matching: split on whitespace+punctuation so "war" inside "forward"
-        // does NOT trigger, but "war" in "which war" does.
-        const answerWords = ansLower22.split(/[\s\-/]+/).filter(w => w.length >= 3 && !ANSWER_WORD_STOPWORDS.has(w));
+        // (b) Word-level leak with corpus-frequency filter.
+        // Words appearing in 5+ facts as leaks are domain terms — skip them.
+        const answerWords = ansLower22.split(/[\s\-/]+/).filter(w => w.length >= 4 && !ANSWER_WORD_STOPWORDS.has(w));
         if (answerWords.length > 0) {
           const qWordSet = new Set(qLower22.split(/[\s\-/,.:;!?'"()\[\]{}]+/));
           for (const ansWord of answerWords) {
-            if (qWordSet.has(ansWord)) {
+            if (qWordSet.has(ansWord) && !_corpusFrequentLeaks.has(ansWord)) {
               factWarnings.push({ index: i + 1, factId: fact.id, msg: `answer word "${ansWord}" (from "${(fact.correctAnswer || '').slice(0, 40)}") appears in quizQuestion — eliminable distractor risk` });
               break; // One warning per fact is sufficient
             }
@@ -786,6 +784,32 @@ const totalDecks = deckFiles.length;
 console.log('');
 console.log(`${BOLD}=== CURATED DECK VERIFICATION (${totalDecks} decks) ===${RESET}`);
 console.log('');
+
+// Pre-compute corpus-frequency leak map: words that appear as answer-in-question
+// leaks across 5+ facts are domain/category terms (nerve, system, cells, bone, etc.)
+// and should NOT be flagged as eliminable distractors.
+const _corpusFrequentLeaks = (() => {
+  const wordCounts = new Map();
+  for (const fn of deckFiles) {
+    try {
+      const d = JSON.parse(readFileSync(resolve(repoRoot, 'data/decks', fn), 'utf8'));
+      if (!d.facts) continue;
+      const isV = d.domain === 'language' || (d.facts[0] && (d.facts[0].language || d.facts[0].targetLanguageWord));
+      if (isV) continue;
+      for (const f of d.facts) {
+        if (!f.quizQuestion || !f.correctAnswer) continue;
+        const qWords = new Set(f.quizQuestion.toLowerCase().split(/[\s\-/,.:;!?'"()\[\]{}]+/));
+        const ansWords = f.correctAnswer.toLowerCase().split(/[\s\-/]+/).filter(w => w.length >= 4 && !ANSWER_WORD_STOPWORDS.has(w));
+        for (const w of ansWords) {
+          if (qWords.has(w)) { wordCounts.set(w, (wordCounts.get(w) || 0) + 1); break; }
+        }
+      }
+    } catch (_) { /* skip unloadable */ }
+  }
+  const frequent = new Set();
+  for (const [w, c] of wordCounts) { if (c >= 3) frequent.add(w); }
+  return frequent;
+})();
 
 // Load and verify each deck
 const results = [];

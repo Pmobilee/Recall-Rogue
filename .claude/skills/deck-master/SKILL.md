@@ -1278,8 +1278,11 @@ The final deck JSON file is NOT a flat array of facts. It MUST be wrapped in the
 **After assembly and before committing, run the FULL automated quality pipeline:**
 
 ```bash
-# 1. Structural validation (already in existing checklist)
+# 1. Structural validation (22 checks + word-level self-answering detection)
 node scripts/verify-all-decks.mjs
+# Target: 0 FAIL. Check #22 word-leak warnings use corpus-frequency filtering
+# (words appearing in 3+ facts are treated as domain terms and excluded).
+# Remaining warnings are genuine — answer's distinguishing word appears in question.
 
 # 2. Quiz engine audit — catches length tells, distractor collisions
 node scripts/quiz-audit.mjs --full --deck <deck_id>
