@@ -1,22 +1,25 @@
 /**
  * Co-op turn synchronization for Recall Rogue.
  *
- * In co-op mode, players share an enemy fight but each has their own HP.
+ * In co-op mode, players fight ONE shared enemy (host-authoritative HP).
  * Turn flow:
- *   1. Each player ends their turn locally (encounterBridge.handleEndTurn)
- *   2. encounterBridge sends `mp:coop:turn_end` and awaits consensus
- *   3. Once every player has signaled, BOTH clients run the enemy phase locally
- *      against their own enemy copy (deterministic via shared seed + enemyVariance fork)
- *   4. After the enemy applies damage to the local player, each client broadcasts
- *      its current HP via `mp:coop:partner_state` so the other player's HUD updates
+ *   1. At encounter start: host broadcasts initial enemy snapshot; non-host awaits it.
+ *   2. Each player plays cards locally against their local enemy copy (optimistic).
+ *   3. Each player ends their turn: sends `mp:coop:turn_end_with_delta` (delta = what they did
+ *      to the enemy this turn) and awaits consensus.
+ *   4. Once every player has signaled, HOST merges all deltas → produces authoritative
+ *      enemy state → broadcasts `mp:coop:enemy_state`.
+ *   5. Non-host awaits `mp:coop:enemy_state` and overwrites local enemy state.
+ *   6. BOTH clients run the enemy phase locally against their own player HP (full damage, no split).
+ *   7. After the enemy phase, each client broadcasts its HP via `mp:coop:partner_state`.
  *
- * This module is intentionally tiny and stateless beyond the turn-end barrier.
- * It does NOT try to be host-authoritative for combat — each client runs its
- * own enemy locally. Determinism comes from the shared run seed.
+ * Canary is DISABLED in coop — enemy damage multiplier is always 1.0×.
+ * See encounterBridge.ts for the canary gate.
  */
 
 import { getMultiplayerTransport } from './multiplayerTransport';
 import { getCurrentLobby, onLobbyUpdate } from './multiplayerLobbyService';
+import type { SharedEnemySnapshot, EnemyTurnDelta } from '../data/multiplayerTypes';
 
 // ── Debug flag ────────────────────────────────────────────────────────────────
 
@@ -59,6 +62,18 @@ let _partnerStates: Record<string, PartnerState> = {};
  */
 const _partnerStateSubs = new Set<(states: Readonly<Record<string, PartnerState>>) => void>();
 
+/**
+ * Set of callbacks subscribed to shared enemy state broadcasts.
+ * Multi-subscriber pattern mirroring _partnerStateSubs.
+ */
+const _sharedEnemySubs = new Set<(snapshot: SharedEnemySnapshot) => void>();
+
+/**
+ * Deltas collected during the current turn-end barrier.
+ * Keyed by playerId. Cleared when awaitCoopTurnEndWithDelta is called (new turn).
+ */
+let _collectedDeltas: Map<string, EnemyTurnDelta> = new Map();
+
 export interface PartnerState {
   playerId: string;
   hp: number;
@@ -73,18 +88,20 @@ export interface PartnerState {
 // ── Lifecycle ────────────────────────────────────────────────────────────────
 
 /**
- * Activate co-op sync for the current run. Subscribes to `mp:coop:turn_end`,
- * `mp:coop:turn_end_cancel`, and `mp:coop:partner_state` messages.
+ * Activate co-op sync for the current run. Subscribes to all coop transport messages.
  */
 export function initCoopSync(localPlayerId: string): void {
   destroyCoopSync();
   _localPlayerId = localPlayerId;
   _turnEndSignals = new Set();
   _partnerStates = {};
+  _collectedDeltas = new Map();
 
   coopLog('initCoopSync, localPlayerId=%s', localPlayerId);
 
   const transport = getMultiplayerTransport();
+
+  // Legacy turn_end barrier signals (kept alive — internal to the barrier)
   const offTurnEnd = transport.on('mp:coop:turn_end', (msg) => {
     const { playerId } = msg.payload as { playerId: string };
     if (!playerId) return;
@@ -92,6 +109,19 @@ export function initCoopSync(localPlayerId: string): void {
     _turnEndSignals.add(playerId);
     _maybeReleaseBarrier();
   });
+
+  // New delta-carrying turn_end signal
+  const offTurnEndWithDelta = transport.on('mp:coop:turn_end_with_delta', (msg) => {
+    const payload = msg.payload as { playerId: string; delta: EnemyTurnDelta };
+    if (!payload?.playerId) return;
+    coopLog('received turn_end_with_delta from %s, damage=%d', payload.playerId, payload.delta?.damageDealt);
+    _turnEndSignals.add(payload.playerId);
+    if (payload.delta) {
+      _collectedDeltas.set(payload.playerId, { ...payload.delta, playerId: payload.playerId });
+    }
+    _maybeReleaseBarrier();
+  });
+
   const offTurnEndCancel = transport.on('mp:coop:turn_end_cancel', (msg) => {
     const { playerId } = msg.payload as { playerId: string };
     if (!playerId) return;
@@ -99,7 +129,9 @@ export function initCoopSync(localPlayerId: string): void {
     // Remote player cancelled their turn-end signal — remove them from the set.
     // The barrier will not release until they re-signal.
     _turnEndSignals.delete(playerId);
+    _collectedDeltas.delete(playerId);
   });
+
   const offPartner = transport.on('mp:coop:partner_state', (msg) => {
     const state = msg.payload as unknown as PartnerState;
     coopLog('received partner_state from %s', state?.playerId);
@@ -111,10 +143,23 @@ export function initCoopSync(localPlayerId: string): void {
       cb(snapshot);
     }
   });
+
+  // Shared enemy state broadcast from host
+  const offEnemyState = transport.on('mp:coop:enemy_state', (msg) => {
+    const snapshot = msg.payload as unknown as SharedEnemySnapshot;
+    coopLog('received coop enemy_state, hp=%d/%d', snapshot?.currentHP, snapshot?.maxHP);
+    if (!snapshot?.currentHP === undefined || !snapshot?.maxHP === undefined) return;
+    for (const cb of _sharedEnemySubs) {
+      cb(snapshot);
+    }
+  });
+
   _cleanupListener = () => {
     offTurnEnd();
+    offTurnEndWithDelta();
     offTurnEndCancel();
     offPartner();
+    offEnemyState();
   };
 }
 
@@ -136,9 +181,10 @@ export function destroyCoopSync(): void {
   _turnEndSignals = new Set();
   _localPlayerId = '';
   _partnerStates = {};
+  _collectedDeltas = new Map();
   _barrierExpectedPlayerCount = 0;
-  // NOTE: _partnerStateSubs is NOT cleared here — consumer-owned subscriptions
-  // have their own lifetime (callers hold the returned unsub function).
+  // NOTE: _partnerStateSubs and _sharedEnemySubs are NOT cleared here —
+  // consumer-owned subscriptions have their own lifetime (callers hold the returned unsub).
 }
 
 // ── Public API ───────────────────────────────────────────────────────────────
@@ -192,9 +238,7 @@ export function awaitCoopTurnEnd(): Promise<'completed' | 'cancelled'> {
       resolve(result);
     };
 
-    // Watch for partner leaving the lobby mid-barrier. If the lobby now has
-    // fewer players than when the barrier started, cancel so the local player
-    // isn't stranded waiting for a partner who will never signal.
+    // Watch for partner leaving the lobby mid-barrier.
     _cleanupLobbyListener = onLobbyUpdate((updatedLobby) => {
       if (!_pendingBarrierResolve) return;
       if (updatedLobby.players.length < _barrierExpectedPlayerCount) {
@@ -206,15 +250,92 @@ export function awaitCoopTurnEnd(): Promise<'completed' | 'cancelled'> {
 }
 
 /**
+ * Signal "I have ended my turn" and attach a damage delta payload, then await consensus.
+ * Replaces awaitCoopTurnEnd() in the coop enemy-sync flow.
+ *
+ * At consensus, the host can call getCollectedDeltas() to retrieve all player deltas.
+ * Non-host should then call awaitCoopEnemyReconcile() to get the merged state.
+ *
+ * Resolves `'completed'` when every player has signaled.
+ * Resolves `'cancelled'` if a partner leaves mid-barrier.
+ *
+ * The delta accumulator is cleared at the START of this call (fresh per turn).
+ */
+export function awaitCoopTurnEndWithDelta(delta: EnemyTurnDelta): Promise<'completed' | 'cancelled'> {
+  const lobby = getCurrentLobby();
+  const players = lobby?.players ?? [];
+
+  // Clear previous turn's deltas for a fresh collection
+  _collectedDeltas = new Map();
+
+  // Solo or no lobby → no barrier needed.
+  if (players.length <= 1 || !_localPlayerId) {
+    // Store own delta even for solo (host merge path reads it)
+    _collectedDeltas.set(_localPlayerId, { ...delta, playerId: _localPlayerId });
+    return Promise.resolve('completed');
+  }
+
+  // Mark self, store own delta, and broadcast.
+  _turnEndSignals.add(_localPlayerId);
+  _collectedDeltas.set(_localPlayerId, { ...delta, playerId: _localPlayerId });
+  _barrierExpectedPlayerCount = players.length;
+  const transport = getMultiplayerTransport();
+  coopLog('broadcasting turn_end_with_delta, localId=%s, damage=%d', _localPlayerId, delta.damageDealt);
+  transport.send('mp:coop:turn_end_with_delta', {
+    playerId: _localPlayerId,
+    delta: delta as unknown as Record<string, unknown>,
+  });
+
+  // If we already have everyone (e.g. partner finished first), resolve fast.
+  if (_allPlayersSignaled()) {
+    _turnEndSignals = new Set();
+    return Promise.resolve('completed');
+  }
+
+  // Otherwise wait for the barrier.
+  return new Promise<'completed' | 'cancelled'>((resolve) => {
+    _pendingBarrierResolve = (result: 'completed' | 'cancelled') => {
+      _pendingBarrierResolve = null;
+      _turnEndSignals = new Set();
+      _barrierExpectedPlayerCount = 0;
+      if (_cleanupLobbyListener) {
+        _cleanupLobbyListener();
+        _cleanupLobbyListener = null;
+      }
+      coopLog('delta barrier resolved: %s', result);
+      resolve(result);
+    };
+
+    _cleanupLobbyListener = onLobbyUpdate((updatedLobby) => {
+      if (!_pendingBarrierResolve) return;
+      if (updatedLobby.players.length < _barrierExpectedPlayerCount) {
+        coopLog('partner left lobby mid-delta-barrier, cancelling');
+        _pendingBarrierResolve('cancelled');
+      }
+    });
+  });
+}
+
+/**
+ * Returns the deltas accumulated during the most recent awaitCoopTurnEndWithDelta() call.
+ * Sorted by playerId for deterministic merge order.
+ * Host calls this after the barrier completes to merge deltas.
+ */
+export function getCollectedDeltas(): EnemyTurnDelta[] {
+  return [..._collectedDeltas.values()].sort((a, b) => a.playerId.localeCompare(b.playerId));
+}
+
+/**
  * Cancel a pending turn-end signal. Removes local signal, broadcasts cancellation,
- * and resolves the in-flight `awaitCoopTurnEnd()` promise with `'cancelled'` so
- * the caller can restore turn control to the player.
+ * and resolves the in-flight `awaitCoopTurnEnd()` / `awaitCoopTurnEndWithDelta()`
+ * promise with `'cancelled'` so the caller can restore turn control to the player.
  *
  * No-op if no barrier is in flight or no local player is set.
  */
 export function cancelCoopTurnEnd(): void {
   if (!_localPlayerId) return;
   _turnEndSignals.delete(_localPlayerId);
+  _collectedDeltas.delete(_localPlayerId);
   const transport = getMultiplayerTransport();
   transport.send('mp:coop:turn_end_cancel', { playerId: _localPlayerId });
   if (_pendingBarrierResolve) {
@@ -253,6 +374,58 @@ export function broadcastPartnerState(state: { hp: number; maxHp: number; block:
   });
 }
 
+/**
+ * Broadcast the authoritative shared enemy state (host-only in practice).
+ * Sends `mp:coop:enemy_state` with the snapshot payload.
+ * All subscribed non-host clients receive it via `onSharedEnemyState`.
+ */
+export function broadcastSharedEnemyState(snapshot: SharedEnemySnapshot): void {
+  if (!_localPlayerId) {
+    coopLog('broadcastSharedEnemyState called before initCoopSync — dropped');
+    return;
+  }
+  coopLog('broadcastSharedEnemyState hp=%d/%d', snapshot.currentHP, snapshot.maxHP);
+  const transport = getMultiplayerTransport();
+  transport.send('mp:coop:enemy_state', snapshot as unknown as Record<string, unknown>);
+}
+
+/**
+ * Subscribe to shared enemy state broadcasts from the host.
+ * Returns an unsubscribe function the caller must invoke on cleanup.
+ *
+ * The callback fires whenever `mp:coop:enemy_state` is received —
+ * both at encounter start (initial anchor) and after each turn reconcile.
+ */
+export function onSharedEnemyState(
+  cb: (snapshot: SharedEnemySnapshot) => void,
+): () => void {
+  _sharedEnemySubs.add(cb);
+  coopLog('onSharedEnemyState subscribed, total=%d', _sharedEnemySubs.size);
+  return () => {
+    _sharedEnemySubs.delete(cb);
+    coopLog('onSharedEnemyState unsubscribed, total=%d', _sharedEnemySubs.size);
+  };
+}
+
+/**
+ * Returns a Promise that resolves with the next `mp:coop:enemy_state` snapshot received.
+ * Non-host clients use this to wait for the host's authoritative merged state after barriers.
+ *
+ * The Promise resolves on the NEXT message — it does NOT use a cached value.
+ * If the lobby becomes empty (partner left), the Promise never resolves — the caller
+ * should guard with the barrier cancel path instead.
+ */
+export function awaitCoopEnemyReconcile(): Promise<SharedEnemySnapshot> {
+  coopLog('awaitCoopEnemyReconcile: waiting for next mp:coop:enemy_state');
+  return new Promise<SharedEnemySnapshot>((resolve) => {
+    const unsub = onSharedEnemyState((snapshot) => {
+      unsub(); // one-shot
+      coopLog('awaitCoopEnemyReconcile: received, hp=%d/%d', snapshot.currentHP, snapshot.maxHP);
+      resolve(snapshot);
+    });
+  });
+}
+
 /** Snapshot of all known partner states (excluding self). */
 export function getPartnerStates(): Readonly<Record<string, PartnerState>> {
   return { ..._partnerStates };
@@ -261,9 +434,6 @@ export function getPartnerStates(): Readonly<Record<string, PartnerState>> {
 /**
  * Subscribe to partner state changes.
  * Returns an unsubscribe function the caller must invoke on cleanup.
- *
- * Multi-subscriber: multiple callers can coexist; each gets an independent
- * unsubscribe without affecting other subscribers.
  */
 export function onPartnerStateUpdate(
   cb: (states: Readonly<Record<string, PartnerState>>) => void,

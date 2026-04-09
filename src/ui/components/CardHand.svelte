@@ -4,21 +4,22 @@
   import { getDomainMetadata } from '../../data/domainMetadata'
   import { getCardbackUrl, onCardbackReady } from '../utils/cardbackManifest'
   import { type CardAnimPhase } from '../utils/mechanicAnimations'
-  import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl, getMasteryIconFilter, hasMasteryGlow, GUIDE_STYLES } from '../utils/cardFrameV2'
-  import { getCardArtUrl } from '../utils/cardArtManifest'
+  // Frame V2 utilities are imported by CardVisual.svelte
+  // getCardArtUrl moved to CardVisual.svelte
   import { getShortCardDescription } from '../../services/cardDescriptionService'
-  import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
+  // getCardDescriptionParts moved to CardVisual.svelte
   import { BASE_WIDTH, GAME_ASPECT_RATIO } from '../../data/layout'
   import { audioManager } from '../../services/audioService'
   import { isFirstChargeFree } from '../../services/discoverySystem'
   import { getMechanicDefinition } from '../../data/mechanics'
-  import { stretchText } from '../utils/stretchText'
+  // stretchText moved to CardVisual.svelte
   import { CHARGE_CORRECT_MULTIPLIER } from '../../data/balance'
   import { getMasteryStats } from '../../services/cardUpgradeService'
   import { activeRunState } from '../../services/runStateStore'
   import { getChainColor, getChainColorGroups } from '../../services/chainVisuals'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
   import ChainIcon from './ChainIcon.svelte'
+  import CardVisual from './CardVisual.svelte'
   import { isLandscape } from '../../stores/layoutStore'
   import { inputService } from '../../services/inputService'
   import { factsDB } from '../../services/factsDB'
@@ -87,6 +88,34 @@
     activeChainColor = null,
   }: Props = $props()
 
+  // ─── Draw animation tracking ─────────────────────────────────────────────
+  /** Set of card IDs that were just added to the hand — triggers card-drawn-in animation. */
+  let drawnInCardIds = $state<Set<string>>(new Set())
+  let prevCardIds = $state<Set<string> | null>(null)
+
+  $effect(() => {
+    const currentIds = new Set(cards.map(c => c.id))
+    // Use untrack for state reads that shouldn't trigger re-runs
+    const prev = untrack(() => prevCardIds)
+    // Skip first render — all initial cards should appear without animation
+    if (prev === null) {
+      untrack(() => { prevCardIds = currentIds })
+      return
+    }
+    const newIds: string[] = []
+    for (const id of currentIds) {
+      if (!prev.has(id)) newIds.push(id)
+    }
+    if (newIds.length > 0) {
+      untrack(() => {
+        drawnInCardIds = new Set(newIds)
+        setTimeout(() => {
+          drawnInCardIds = new Set()
+        }, 450)
+      })
+    }
+    untrack(() => { prevCardIds = currentIds })
+  })
 
   function getRotation(index: number, total: number): number {
     if (total <= 1) return 0
@@ -165,31 +194,7 @@
     return (35 * vh / 100) * 0.88 * handScaleFactor / 1.42
   })
 
-  function effectTextSizeClass(card: Card): string {
-    const parts = getCardDescriptionParts(card)
-    const desc = parts.map(function(p) { return p.value }).join('')
-    if (desc.length > 35) return 'effect-text-xs'
-    if (desc.length > 25) return 'effect-text-sm'
-    if (desc.length > 15) return 'effect-text-md'
-    return ''
-  }
-
-  /** Split a flat CardDescPart[] into lines wherever a text part contains '\n'. */
-  function groupIntoLines(parts: CardDescPart[]): CardDescPart[][] {
-    const lines: CardDescPart[][] = [[]]
-    for (const p of parts) {
-      if (p.type === 'text' && p.value.includes('\n')) {
-        const segs = p.value.split('\n')
-        for (let i = 0; i < segs.length; i++) {
-          if (segs[i]) lines[lines.length - 1].push({ type: 'text', value: segs[i] })
-          if (i < segs.length - 1) lines.push([])
-        }
-      } else {
-        lines[lines.length - 1].push(p)
-      }
-    }
-    return lines.filter(l => l.length > 0)
-  }
+  // effectTextSizeClass and groupIntoLines moved to CardVisual.svelte
 
   /**
    * Returns the display value for a card's primary effect.
@@ -232,9 +237,20 @@
     return Math.max(0, (card.apCost ?? 1) - focusDiscount) <= apCurrent
   }
 
-  /** Returns the displayed AP cost accounting for Focus discount. */
+  /** Returns the displayed AP cost accounting for Focus discount (Quick Play cost). */
   function getDisplayedApCost(card: Card): number {
     return Math.max(0, (card.apCost ?? 1) - focusDiscount)
+  }
+
+  /**
+   * Returns the real charge AP cost for a card, factoring in all waivers:
+   * surge, chain momentum match, first-free-charge, and active chain color match.
+   * Used to show live cost on the card badge when the card is in charge-preview state.
+   */
+  function getDisplayedChargeApCost(card: Card, isMomentumMatch: boolean, isActiveChainMatch: boolean, isFreeCharge: boolean): number {
+    const base = Math.max(0, (card.apCost ?? 1) - focusDiscount)
+    const surchargeWaived = isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch
+    return base + (surchargeWaived ? 0 : 1)
   }
 
   /** Returns color for the AP gem based on cost change. Green if reduced, red if increased, off-white otherwise. */
@@ -243,6 +259,13 @@
     const displayed = getDisplayedApCost(card)
     if (displayed < base) return '#22c55e'
     if (displayed > base) return '#ef4444'
+    return '#fbbf24'
+  }
+
+  /** Returns AP gem color for charge mode — green if waiver applies, red if surcharge, amber otherwise. */
+  function getChargeApGemColor(chargeApCost: number, baseApCost: number): string {
+    if (chargeApCost < baseApCost) return '#22c55e'
+    if (chargeApCost > baseApCost) return '#ef4444'
     return '#fbbf24'
   }
 
@@ -786,8 +809,6 @@
     {@const showFrontValue = shouldShowFrontValue(card)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
     {@const apCost = card.apCost ?? 1}
-    {@const displayedApCost = getDisplayedApCost(card)}
-    {@const apGemColor = getApGemColor(card)}
     {@const insufficientAp = !hasEnoughAp(card)}
     {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
     {@const isRevealing = cardAnim === 'reveal'}
@@ -820,6 +841,8 @@
     })() : 0}
     {@const isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered}
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
+    {@const displayedApCost = isChargePreview ? getDisplayedChargeApCost(card, isMomentumMatch, isActiveChainMatch, isFreeCharge) : getDisplayedApCost(card)}
+    {@const apGemColor = isChargePreview ? getChargeApGemColor(displayedApCost, card.apCost ?? 1) : getApGemColor(card)}
     {@const preview = damagePreviews[card.id]}
     {@const effectVal = preview ? (isChargePreview ? preview.ccValue : preview.qpValue) : getEffectValue(card, isChargePreview)}
     {@const modState = preview ? (isChargePreview ? preview.ccModified : preview.qpModified) : 'neutral'}
@@ -852,6 +875,7 @@
       class:card--curing={cureFlashes[card.id]}
       class:card--locked={card.isLocked}
       class:card--active-chain={isActiveChainMatch && !isSelected && selectedIndex === null}
+      class:card-drawn-in={drawnInCardIds.has(card.id)}
       style="
         {isAnimating ? '' : isDraggingThis
           ? `transform: translate3d(${lsXOffset + cardDragX}px, ${(isSelected ? -riseAmount : -lsArcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});`
@@ -875,60 +899,18 @@
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
-          <!-- V2 layered frame system -->
-          <div class="card-v2-frame">
-            <!-- Layer 1: Border (by card type) -->
-            <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
-            <!-- Layer 1.5: Card art in pentagon window (behind base frame mask) -->
-            {#if card.mechanicId}
-              {@const artUrl = getCardArtUrl(card.mechanicId)}
-              {#if artUrl}
-                <img class="frame-card-art" src={artUrl} alt="" />
-              {/if}
-            {/if}
-            <!-- Layer 2: Base frame (constant) -->
-            <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
-            <!-- Layer 3: Banner (by chain type) -->
-            <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
-            <!-- Layer 4: Upgrade icon (conditional, float animation) -->
-            {#if (card.masteryLevel ?? 0) > 0}
-              <img
-                class="frame-layer upgrade-icon mastery-bob"
-                class:mastery-glow={hasMasteryGlow(card.masteryLevel ?? 0)}
-                src={getUpgradeIconUrl()}
-                alt=""
-                style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
-              />
-            {/if}
-            <!-- Mechanic name overlay -->
-            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName} use:stretchText>{card.mechanicName ?? ''}</div>
-            <!-- Chain color pill — on top, sized to match frame's card-type cutout -->
-            <div class="frame-text v2-card-type" class:pill-chain-active={isActiveChainMatch && !isSelected && selectedIndex === null} style="{GUIDE_STYLES.cardTypePill} background-color: {getChainColor(card.chainType)}; --pill-color: {getChainColor(card.chainType)};"></div>
-            <!-- Effect description text -->
-            <div class="frame-text v2-effect-text {effectTextSizeClass(card)}" style={GUIDE_STYLES.effectText}>
-              <span class="parchment-inner">
-                {#each groupIntoLines(getCardDescriptionParts(card, undefined, effectVal)) as line}
-                  <div class="desc-line">
-                    {#each line as part}
-                      {#if part.type === 'number'}
-                        <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} class:damage-buffed={modState === 'buffed'} class:damage-nerfed={modState === 'nerfed'}>{part.value}</span>
-                      {:else if part.type === 'keyword'}
-                        <span class="desc-keyword">{part.value}</span>
-                      {:else if part.type === 'conditional-number'}
-                        <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
-                      {:else if part.type === 'mastery-bonus'}
-                        <span class="desc-mastery-bonus">{part.value}</span>
-                      {:else}
-                        {part.value}
-                      {/if}
-                    {/each}
-                  </div>
-                {/each}
-              </span>
-            </div>
-          </div>
-          <!-- AP cost OUTSIDE card-v2-frame so it can overflow -->
-          <div class="frame-text v2-ap-cost" class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} style={GUIDE_STYLES.apCost} style:color={apGemColor}>{displayedApCost}</div>
+          <!-- V2 layered frame — shared CardVisual component -->
+          <CardVisual
+            {card}
+            effectValue={effectVal}
+            {isChargePreview}
+            {isBtnChargePreview}
+            {modState}
+            masteryFlash={masteryFlashes[card.id] ?? null}
+            {displayedApCost}
+            {apGemColor}
+            chainPillActive={isActiveChainMatch && !isSelected && selectedIndex === null}
+          />
           {#if card.isMasteryTrial}
             <div class="trial-badge">TRIAL</div>
           {/if}
@@ -1044,32 +1026,8 @@
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
-          <!-- V2 layered frame system -->
-          <div class="card-v2-frame">
-            <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
-            {#if card.mechanicId}
-              {@const artUrl = getCardArtUrl(card.mechanicId)}
-              {#if artUrl}
-                <img class="frame-card-art" src={artUrl} alt="" />
-              {/if}
-            {/if}
-            <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
-            <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
-            {#if (card.masteryLevel ?? 0) > 0}
-              <img
-                class="frame-layer upgrade-icon mastery-bob"
-                class:mastery-glow={hasMasteryGlow(card.masteryLevel ?? 0)}
-                src={getUpgradeIconUrl()}
-                alt=""
-                style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
-              />
-            {/if}
-            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName} use:stretchText>{card.mechanicName ?? ''}</div>
-            <!-- Chain color pill — on top, sized to match frame's card-type cutout -->
-            <div class="frame-text v2-card-type" style="{GUIDE_STYLES.cardTypePill} background-color: {getChainColor(card.chainType)};"></div>
-          </div>
-          <!-- AP cost OUTSIDE card-v2-frame so it can overflow -->
-          <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
+          <!-- V2 layered frame — shared CardVisual component -->
+          <CardVisual {card} />
         </div>
         {#if cardbackUrl}
           <div class="card-back">
@@ -1134,8 +1092,6 @@
     {@const showFrontValue = shouldShowFrontValue(card)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
     {@const apCost = card.apCost ?? 1}
-    {@const displayedApCost = getDisplayedApCost(card)}
-    {@const apGemColor = getApGemColor(card)}
     {@const insufficientAp = !hasEnoughAp(card)}
     {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
     {@const isRevealing = cardAnim === 'reveal'}
@@ -1170,6 +1126,8 @@
     })() : 0}
     {@const isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered}
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
+    {@const displayedApCost = isChargePreview ? getDisplayedChargeApCost(card, isMomentumMatch, isActiveChainMatch, isFreeCharge) : getDisplayedApCost(card)}
+    {@const apGemColor = isChargePreview ? getChargeApGemColor(displayedApCost, card.apCost ?? 1) : getApGemColor(card)}
     {@const preview = damagePreviews[card.id]}
     {@const effectVal = preview ? (isChargePreview ? preview.ccValue : preview.qpValue) : getEffectValue(card, isChargePreview)}
     {@const modState = preview ? (isChargePreview ? preview.ccModified : preview.qpModified) : 'neutral'}
@@ -1206,6 +1164,7 @@
       class:card--curing={cureFlashes[card.id]}
       class:card--locked={card.isLocked}
       class:card--active-chain={isActiveChainMatch && !isSelected && selectedIndex === null}
+      class:card-drawn-in={drawnInCardIds.has(card.id)}
       style="
         {isAnimating ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -riseAmount : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -riseAmount : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
         animation-delay: {i * 80}ms;
@@ -1226,60 +1185,17 @@
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
-          <!-- V2 layered frame system -->
-          <div class="card-v2-frame">
-            <!-- Layer 1: Border (by card type) -->
-            <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
-            <!-- Layer 1.5: Card art in pentagon window (behind base frame mask) -->
-            {#if card.mechanicId}
-              {@const artUrl = getCardArtUrl(card.mechanicId)}
-              {#if artUrl}
-                <img class="frame-card-art" src={artUrl} alt="" />
-              {/if}
-            {/if}
-            <!-- Layer 2: Base frame (constant) -->
-            <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
-            <!-- Layer 3: Banner (by chain type) -->
-            <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
-            <!-- Layer 4: Upgrade icon (conditional, float animation) -->
-            {#if (card.masteryLevel ?? 0) > 0}
-              <img
-                class="frame-layer upgrade-icon mastery-bob"
-                class:mastery-glow={hasMasteryGlow(card.masteryLevel ?? 0)}
-                src={getUpgradeIconUrl()}
-                alt=""
-                style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
-              />
-            {/if}
-            <!-- Mechanic name overlay -->
-            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName} use:stretchText>{card.mechanicName ?? ''}</div>
-            <!-- Chain color pill — on top, sized to match frame's card-type cutout -->
-            <div class="frame-text v2-card-type" style="{GUIDE_STYLES.cardTypePill} background-color: {getChainColor(card.chainType)};"></div>
-            <!-- Effect description text -->
-            <div class="frame-text v2-effect-text {effectTextSizeClass(card)}" style={GUIDE_STYLES.effectText}>
-              <span class="parchment-inner">
-                {#each groupIntoLines(getCardDescriptionParts(card, undefined, descPower)) as line}
-                  <div class="desc-line">
-                    {#each line as part}
-                      {#if part.type === 'number'}
-                        <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} class:damage-buffed={modState === 'buffed'} class:damage-nerfed={modState === 'nerfed'}>{part.value}</span>
-                      {:else if part.type === 'keyword'}
-                        <span class="desc-keyword">{part.value}</span>
-                      {:else if part.type === 'conditional-number'}
-                        <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
-                      {:else if part.type === 'mastery-bonus'}
-                        <span class="desc-mastery-bonus">{part.value}</span>
-                      {:else}
-                        {part.value}
-                      {/if}
-                    {/each}
-                  </div>
-                {/each}
-              </span>
-            </div>
-          </div>
-          <!-- AP cost OUTSIDE card-v2-frame so it can overflow -->
-          <div class="frame-text v2-ap-cost" class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} style={GUIDE_STYLES.apCost} style:color={apGemColor}>{displayedApCost}</div>
+          <!-- V2 layered frame — shared CardVisual component -->
+          <CardVisual
+            {card}
+            effectValue={descPower}
+            {isChargePreview}
+            {isBtnChargePreview}
+            {modState}
+            masteryFlash={masteryFlashes[card.id] ?? null}
+            {displayedApCost}
+            {apGemColor}
+          />
           {#if card.isMasteryTrial}
             <div class="trial-badge">TRIAL</div>
           {/if}
@@ -1419,32 +1335,8 @@
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
-          <!-- V2 layered frame system -->
-          <div class="card-v2-frame">
-            <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
-            {#if card.mechanicId}
-              {@const artUrl = getCardArtUrl(card.mechanicId)}
-              {#if artUrl}
-                <img class="frame-card-art" src={artUrl} alt="" />
-              {/if}
-            {/if}
-            <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
-            <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
-            {#if (card.masteryLevel ?? 0) > 0}
-              <img
-                class="frame-layer upgrade-icon mastery-bob"
-                class:mastery-glow={hasMasteryGlow(card.masteryLevel ?? 0)}
-                src={getUpgradeIconUrl()}
-                alt=""
-                style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
-              />
-            {/if}
-            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName} use:stretchText>{card.mechanicName ?? ''}</div>
-            <!-- Chain color pill — on top, sized to match frame's card-type cutout -->
-            <div class="frame-text v2-card-type" style="{GUIDE_STYLES.cardTypePill} background-color: {getChainColor(card.chainType)};"></div>
-          </div>
-          <!-- AP cost OUTSIDE card-v2-frame so it can overflow -->
-          <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
+          <!-- V2 layered frame — shared CardVisual component -->
+          <CardVisual {card} />
         </div>
         {#if cardbackUrl}
           <div class="card-back">
@@ -1637,245 +1529,41 @@
     border-radius: 0;
   }
 
+  /* Draw animation — plays when a card is newly added to the hand (e.g. after Transmute pick) */
+  .card-drawn-in {
+    animation: cardDrawnIn 450ms cubic-bezier(0.22, 1, 0.36, 1) both !important;
+  }
+
+  @keyframes cardDrawnIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.65) translateY(calc(30px * var(--layout-scale, 1)));
+      filter: brightness(1.8);
+    }
+    60% {
+      opacity: 1;
+      filter: brightness(1.3);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: brightness(1);
+    }
+  }
+
   .card-has-frame.card-selected {
     box-shadow: none;
   }
 
+  /* chain-match glow only — .card-has-frame.card-playable no longer adds unconditional green drop-shadow */
   .card-has-frame.card-playable {
-    filter: drop-shadow(0 0 2px rgba(22, 163, 74, 0.9));
+    /* glow is applied via inline style only when isActiveChainMatch */
   }
 
-  /* ── Card Frame V2 — layered system ──────────────────────── */
-  .card-v2-frame {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* clips art to frame boundaries */
-  }
-
-  /* When card is selected/popped, let clicks pass through the frame to the charge button */
-  .card-selected .card-v2-frame {
+  /* ── Card Frame V2 — rendered by CardVisual.svelte ──────── */
+  /* When card is selected/popped, let clicks pass through the CardVisual component */
+  :global(.card-selected .card-v2-frame) {
     pointer-events: none;
-  }
-
-  .frame-layer {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    pointer-events: none;
-    image-rendering: pixelated; /* crisp pixel art rendering */
-  }
-
-  .frame-card-art {
-    position: absolute;
-    /* Exact position from PSD layer "PLACE WHERE ARTWORK GOES" bbox(176,186,719,609) on 886x1142 */
-    left: 19.9%;
-    top: 16.3%;
-    width: 61.3%;
-    height: 37.0%;
-    object-fit: cover;
-    image-rendering: auto;
-    pointer-events: none;
-    border-radius: 4px;
-  }
-
-  .upgrade-icon {
-    animation: upgradeFloat 1.5s ease-in-out infinite;
-  }
-
-  @keyframes upgradeFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-3px); }
-  }
-
-  /* Mastery float bob — gentle hover animation for upgraded cards */
-  .mastery-bob {
-    animation: masteryBob 2.2s ease-in-out infinite !important;
-  }
-
-  @keyframes masteryBob {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-3px); }
-  }
-
-  /* Gold glow for fully mastered (level 5) cards */
-  .mastery-glow {
-    filter: hue-rotate(60deg) saturate(2) brightness(1.3) drop-shadow(0 0 6px rgba(234, 179, 8, 0.8)) drop-shadow(0 0 12px rgba(234, 179, 8, 0.4)) !important;
-  }
-
-  /* Mastery upgrade flash — green pulse on numbers that went up */
-  .desc-number.mastery-flash-up {
-    animation: masteryFlashUp 800ms ease-out;
-  }
-
-  @keyframes masteryFlashUp {
-    0% { color: #22c55e; text-shadow: 0 0 12px rgba(34, 197, 94, 0.9), 0 0 24px rgba(34, 197, 94, 0.5); transform: scale(1.3); }
-    50% { color: #4ade80; text-shadow: 0 0 8px rgba(74, 222, 128, 0.6); transform: scale(1.1); }
-    100% { color: inherit; text-shadow: inherit; transform: scale(1); }
-  }
-
-  /* Mastery downgrade flash — red pulse on numbers that went down */
-  .desc-number.mastery-flash-down {
-    animation: masteryFlashDown 800ms ease-out;
-  }
-
-  @keyframes masteryFlashDown {
-    0% { color: #ef4444; text-shadow: 0 0 12px rgba(239, 68, 68, 0.9), 0 0 24px rgba(239, 68, 68, 0.5); transform: scale(1.3); }
-    50% { color: #f87171; text-shadow: 0 0 8px rgba(248, 113, 113, 0.6); transform: scale(1.1); }
-    100% { color: inherit; text-shadow: inherit; transform: scale(1); }
-  }
-
-  /* AP cost flash */
-  .v2-ap-cost.mastery-flash-up {
-    animation: masteryFlashUp 800ms ease-out;
-  }
-  .v2-ap-cost.mastery-flash-down {
-    animation: masteryFlashDown 800ms ease-out;
-  }
-
-  .frame-text {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    z-index: 5;
-    overflow: hidden;
-  }
-
-  .v2-ap-cost {
-    font-family: 'Cinzel', 'Georgia', serif;
-    font-weight: 900;
-    font-size: calc(var(--card-w) * 0.14);
-    color: #ffffff;
-    -webkit-text-stroke: 1.5px #000;
-    text-shadow:
-      1px 1px 0 #000, -1px -1px 0 #000,
-      1px -1px 0 #000, -1px 1px 0 #000,
-      0 2px 4px rgba(0,0,0,0.7);
-    line-height: 1;
-    overflow: visible;
-  }
-
-  .v2-mechanic-name {
-    font-family: 'Kreon', 'Georgia', serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: #1a0a00;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    text-shadow:
-      0 1px 0 rgba(255,220,180,0.4);
-    white-space: nowrap;
-    overflow: visible;
-    text-align: center;
-  }
-
-  .v2-card-type {
-    display: block;
-    font-size: 0;
-    border-radius: 999px;
-    z-index: 1;
-  }
-
-  .card-type-icon {
-    font-size: 1.1em;
-    margin-right: 2px;
-  }
-
-  .v2-effect-text {
-    font-family: 'Kreon', 'Georgia', serif;
-    font-size: calc(var(--card-w) * 0.095);
-    font-weight: 600;
-    color: #ffffff;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 1.3;
-    overflow: hidden;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    /* AR-220 sub-step 7: padding to prevent text touching frame edges */
-    padding: calc(4px * var(--layout-scale, 1));
-    box-sizing: border-box;
-  }
-
-  .v2-effect-text.effect-text-md {
-    font-size: calc(var(--card-w) * 0.076);
-  }
-
-  .v2-effect-text.effect-text-sm {
-    font-size: calc(var(--card-w) * 0.062);
-    line-height: 1.2;
-  }
-
-  .v2-effect-text.effect-text-xs {
-    font-size: calc(var(--card-w) * 0.052);
-    line-height: 1.15;
-  }
-
-  .desc-number {
-    font-family: inherit;
-    font-weight: inherit;
-    color: inherit;
-  }
-
-  .desc-keyword {
-    font-weight: 700;
-  }
-
-  .parchment-inner {
-    display: block;
-    width: 100%;
-    text-align: center;
-  }
-
-  .desc-line {
-    display: block;
-    width: 100%;
-  }
-
-  .desc-conditional {
-    color: #9ca3af;
-    font-weight: 700;
-  }
-
-  .desc-conditional.active {
-    color: #22c55e;
-    font-weight: 900;
-  }
-
-  .desc-mastery-bonus {
-    font-family: 'Cinzel', 'Georgia', serif;
-    font-weight: 900;
-    color: #4ade80;
-    text-shadow: 0 0 4px rgba(74, 222, 128, 0.4), 0 1px 2px rgba(0,0,0,0.6);
-  }
-
-  /* Damage modifier coloring — buffed (relics/buffs raise effective value above base) */
-  .desc-number.damage-buffed {
-    color: #4ade80;
-    text-shadow: 0 0 calc(4px * var(--layout-scale, 1)) rgba(74, 222, 128, 0.4);
-  }
-
-  /* Damage modifier coloring — nerfed (enemy resistances lower effective value below base) */
-  .desc-number.damage-nerfed {
-    color: #f87171;
-    text-shadow: 0 0 calc(4px * var(--layout-scale, 1)) rgba(248, 113, 113, 0.4);
-  }
-
-  .desc-conditional-number.damage-buffed {
-    color: #4ade80;
-  }
-
-  .desc-conditional-number.damage-nerfed {
-    color: #f87171;
   }
 
   .card-animating {
@@ -1896,11 +1584,12 @@
   }
 
   .card-playable {
-    filter: drop-shadow(0 0 2px rgba(22, 163, 74, 0.9));
+    /* glow removed — chain-match glow applied via inline style only when isActiveChainMatch */
   }
 
   .drag-ready {
-    filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.9)) !important;
+    /* neutral drag-readiness glow — no green, not chain-specific */
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4)) !important;
   }
 
   /* AR-62: Card in the Charge zone (above screen-position threshold) */
@@ -2008,7 +1697,8 @@
     transition: filter 200ms ease, opacity 200ms ease;
   }
 
-  .card-in-hand.insufficient-ap .v2-ap-cost {
+  /* .v2-ap-cost is inside CardVisual (child component) — use :global for the child part */
+  .card-in-hand.insufficient-ap :global(.v2-ap-cost) {
     color: #ef4444 !important;
     animation: ap-pulse-red 1.5s ease-in-out infinite;
   }
@@ -2576,19 +2266,7 @@
     50%       { box-shadow: 0 4px 28px rgba(245, 158, 11, 0.9), 0 2px 8px rgba(0, 0, 0, 0.5); }
   }
 
-  /* === CHARGE PREVIEW — golden number tint when dragging toward charge zone === */
-  .charge-preview {
-    color: #facc15 !important;
-    text-shadow: 0 0 6px rgba(250, 204, 21, 0.6), -1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000;
-    transition: color 150ms ease;
-  }
-
-  /* === CHARGE PREVIEW (button hover) — green number tint when hovering the CHARGE button === */
-  .charge-preview-btn {
-    color: #4ade80 !important;
-    text-shadow: 0 0 6px rgba(74, 222, 128, 0.6), -1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000;
-    transition: color 150ms ease;
-  }
+  /* .charge-preview and .charge-preview-btn CSS moved to CardVisual.svelte */
 
   /* === AR-74: Mouse hover tooltip (landscape only) === */
   .card-hover-tooltip {
@@ -2751,13 +2429,6 @@
     color: #fff;
   }
 
-  @keyframes chainPillPulse {
-    0%, 100% { transform: scale(1); box-shadow: none; }
-    50% { transform: scale(1.35); box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) var(--pill-color), 0 0 calc(16px * var(--layout-scale, 1)) var(--pill-color); }
-  }
-
-  .v2-card-type.pill-chain-active {
-    animation: chainPillPulse 1.5s ease-in-out infinite;
-  }
+  /* chainPillPulse keyframe moved to CardVisual.svelte */
 
 </style>

@@ -56,6 +56,7 @@ export type MultiplayerMessageType =
   | 'mp:coop:partner_state'
   | 'mp:coop:turn_end'
   | 'mp:coop:turn_end_cancel'
+  | 'mp:coop:turn_end_with_delta'
   // Map node consensus (all multiplayer modes that share a map)
   | 'mp:map:node_pick'
   // Trivia Night

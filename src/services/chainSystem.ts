@@ -12,6 +12,12 @@
 // with more cards in the deck, improving distribution fairness.
 //
 // 7.8: Wrong off-colour charges reduce the chain (×0.5) rather than fully resetting.
+//
+// Mid-turn active color switch (2026-04-09):
+// When a player correctly Charges an off-colour card, the active chain color switches
+// to that card's color for the remainder of the turn. This rewards strategic pivots —
+// the new color becomes surcharge-free, and the chain length is preserved (the pivot
+// was earned by answering correctly). The turn-boundary rotation is unchanged.
 
 import { CHAIN_MULTIPLIERS, MAX_CHAIN_LENGTH, CHAIN_DECAY_PER_TURN } from '../data/balance';
 
@@ -171,6 +177,34 @@ export function rotateActiveChainColorWeighted(turnNumber: number, deckCompositi
  */
 export function getActiveChainColor(): number | null {
   return _activeChainColor;
+}
+
+/**
+ * Switches the active chain color mid-turn to `newChainType`.
+ *
+ * Called by turnManager when a player correctly Charges an off-colour card.
+ * The new color becomes the surcharge-free color for the rest of the turn, and
+ * `_chain.chainType` is updated so subsequent extends apply to the new color.
+ * Chain **length** is deliberately preserved — answering correctly earned the pivot.
+ *
+ * This is a no-op when:
+ * - `newChainType` is not one of the current run's chain types (invalid).
+ * - `_runChainTypes` is empty (legacy/trivia mode — no rotating color system).
+ *
+ * Do NOT call this at turn boundaries — use `rotateActiveChainColor` for that.
+ *
+ * @param newChainType - The chain type index to switch to (must be a run chain type).
+ */
+export function switchActiveChainColor(newChainType: number): void {
+  // Guard: only valid in rotation mode with a known run chain type.
+  if (_runChainTypes.length === 0 || !_runChainTypes.includes(newChainType)) {
+    return;
+  }
+  _activeChainColor = newChainType;
+  // Mirror onto _chain.chainType so subsequent extendOrResetChain calls see the new
+  // color as the active color and extend the chain correctly.
+  // Chain length is preserved — the player earned the pivot by answering correctly.
+  _chain = { ..._chain, chainType: newChainType };
 }
 
 /**

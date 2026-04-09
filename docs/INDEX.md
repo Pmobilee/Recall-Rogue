@@ -20,6 +20,7 @@
 | [services/index](architecture/services/index.md) | Lookup table mapping every service file to its domain sub-doc |
 | [event-bus](architecture/EVENT-BUS-REFERENCE.md) | Typed event contract and event bus reference |
 | [save-format](architecture/SAVE-FORMAT.md) | Save/load persistence schema and format |
+| [multiplayer](architecture/multiplayer.md) | Coop shared-enemy architecture, host-authoritative reconciliation, delta merge flow, message types |
 
 ---
 
@@ -47,6 +48,7 @@
 | Doc | Summary |
 |-----|---------|
 | [AR-MULTIPLAYER](roadmap/AR-MULTIPLAYER.md) | Master tracking doc: 4 phases, 7 modes, co-op scaling, networking architecture, implementation status |
+| [multiplayer architecture](architecture/multiplayer.md) | Coop shared-enemy flow, host-authoritative HP, delta reconciliation, message types, helper functions |
 
 ---
 

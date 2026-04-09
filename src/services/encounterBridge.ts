@@ -9,12 +9,13 @@ import { initChainSystem } from './chainSystem';
 import { selectRunChainTypes } from '../data/chainTypes';
 import { buildRunPool, recordRunFacts } from './runPoolBuilder';
 import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard } from './deckManager';
-import { createEnemy } from './enemyManager';
+import { createEnemy, snapshotEnemy, hydrateEnemyFromSnapshot, applyEnemyDeltaToState, rollNextIntent } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState } from './runStateStore';
 import { getBossForFloor, pickCombatEnemy, isBossFloor, isMiniBossEncounter, getMiniBossForFloor, getRegionForFloor, getEnemiesForFloorNode, getActForFloor } from './floorManager';
 import type { Card, CardRunState } from '../data/card-types';
 import { recordCardPlay } from './runManager';
+import type { RunState } from './runManager';
 import {
   applyMasteryTrialOutcome,
   awardMasteryCoin,
@@ -45,12 +46,20 @@ import {
   resolveBaseDrawCount,
 } from './relicEffectResolver';
 import { buildPresetRunPool, buildGeneralRunPool, buildLanguageRunPool } from './presetPoolBuilder'
-import { getCuratedDeck } from '../data/curatedDeckStore'
+import { getCuratedDeck, getCuratedDeckFact } from '../data/curatedDeckStore'
 import type { FactDomain } from '../data/card-types'
 import { turboDelay } from '../utils/turboMode'
 import { getRunRng, isRunRngActive } from './seededRng'
-import { awaitCoopTurnEnd, broadcastPartnerState } from './multiplayerCoopSync'
+import {
+  awaitCoopTurnEnd,
+  awaitCoopTurnEndWithDelta,
+  awaitCoopEnemyReconcile,
+  broadcastPartnerState,
+  broadcastSharedEnemyState,
+  getCollectedDeltas,
+} from './multiplayerCoopSync'
 import { computeRaceScore } from './multiplayerScoring'
+import { isHost as mpIsHost } from './multiplayerLobbyService'
 import { calculateFunnessBoostFactor } from './funnessBoost';
 import { calculateAccuracyGrade } from './accuracyGradeSystem';
 import {
@@ -85,6 +94,90 @@ export interface NarrativeEncounterSnapshot {
   enemyId?: string;
   /** Consecutive correct streak at encounter end. */
   streakAtEnd: number;
+  /**
+   * Narrative: completed chain sequences for this encounter.
+   * Each inner array contains factIds for a chain that reached 3+ consecutive correct answers.
+   * Resolved to answer strings by gameFlowController before passing to recordEncounterResults().
+   */
+  chainCompletions: string[][];
+}
+
+/**
+ * Unified fact metadata for narrative echo text generation.
+ * Populated from either factsDB (trivia runs) or curatedDeckStore (study / custom_deck runs).
+ */
+export interface NarrativeFactInfo {
+  factId: string;
+  answer: string;
+  quizQuestion: string;
+  partOfSpeech?: string;
+  targetLanguageWord?: string;
+  pronunciation?: string;
+  categoryL1?: string;
+  categoryL2?: string;
+  language?: string;
+}
+
+/**
+ * Resolve a fact ID to full narrative metadata.
+ * Checks factsDB first (trivia runs); falls back to curatedDeckStore using run.deckMode.
+ * Returns null if neither source finds the fact.
+ */
+export function resolveNarrativeFact(factId: string, run: RunState): NarrativeFactInfo | null {
+  // 1. Try trivia factsDB (works for general trivia runs)
+  const triviaFact = factsDB.getById(factId);
+  if (triviaFact) {
+    return {
+      factId: triviaFact.id,
+      answer: triviaFact.correctAnswer,
+      quizQuestion: triviaFact.quizQuestion,
+      categoryL1: triviaFact.categoryL1,
+      categoryL2: triviaFact.categoryL2,
+      language: triviaFact.language,
+      pronunciation: triviaFact.pronunciation,
+      // partOfSpeech and targetLanguageWord are not on base Fact — left undefined
+    };
+  }
+
+  // 2. Fall back to curated deck store using run.deckMode
+  const deckMode = run.deckMode;
+  if (!deckMode) return null;
+
+  if (deckMode.type === 'study') {
+    const cur = getCuratedDeckFact(deckMode.deckId, factId);
+    if (cur) {
+      return {
+        factId: cur.id,
+        answer: cur.correctAnswer,
+        quizQuestion: cur.quizQuestion,
+        partOfSpeech: cur.partOfSpeech,
+        targetLanguageWord: cur.targetLanguageWord,
+        pronunciation: cur.pronunciation,
+        categoryL1: cur.categoryL1,
+        categoryL2: cur.categoryL2,
+        language: cur.language,
+      };
+    }
+  } else if (deckMode.type === 'custom_deck') {
+    for (const item of deckMode.items) {
+      const cur = getCuratedDeckFact(item.deckId, factId);
+      if (cur) {
+        return {
+          factId: cur.id,
+          answer: cur.correctAnswer,
+          quizQuestion: cur.quizQuestion,
+          partOfSpeech: cur.partOfSpeech,
+          targetLanguageWord: cur.targetLanguageWord,
+          pronunciation: cur.pronunciation,
+          categoryL1: cur.categoryL1,
+          categoryL2: cur.categoryL2,
+          language: cur.language,
+        };
+      }
+    }
+  }
+
+  return null;
 }
 
 /** Module-level storage: snapshot from the most recent victory, cleared after consumption. */
@@ -141,6 +234,14 @@ export const enemyDamageEvent = writable<EnemyDamageEvent | null>(null);
 /** True while the local player has ended their turn but is waiting for co-op partners
  *  to do the same. UI uses this to dim the End Turn button and show a "Waiting…" hint. */
 export const coopWaitingForPartner = writable<boolean>(false);
+
+/**
+ * Pre-turn enemy snapshot for coop delta computation.
+ * Captured at the start of each new turn (after the enemy phase resolves) so
+ * handleEndTurn can compute EnemyTurnDelta = (preTurnHP - postCardsHP).
+ * Null in solo/race modes.
+ */
+let _coopPreTurnEnemySnapshot: import('../data/multiplayerTypes').SharedEnemySnapshot | null = null;
 
 // ── Boss rotation helpers (AR-98) ──
 const LAST_BOSS_KEY = 'recall-rogue-last-boss';
@@ -614,10 +715,13 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     run.floor.currentFloor,
     ascensionModifiers,
   );
+  // Canary HP multiplier is disabled in coop — shared enemy already uses getCoopHpMultiplier().
+  // canary.enemyHpMultiplier would unfairly double-scale for no per-player benefit.
+  const isCoopRun = run.multiplayerMode === 'coop';
   let enemyHpMultiplier = (
     ascensionModifiers.enemyHpMultiplier *
     (ascensionTemplate.category === 'boss' ? ascensionModifiers.bossHpMultiplier : 1) *
-    run.canary.enemyHpMultiplier
+    (isCoopRun ? 1.0 : run.canary.enemyHpMultiplier)
   );
   // Roll difficulty variance for common and elite enemies (0.85-1.15x HP and damage)
   // Uses a dedicated seeded RNG fork ('enemyVariance') so co-op players see identical
@@ -654,7 +758,11 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     const extraCards = turnState.baseDrawCount - 5;
     drawHand(activeDeck, extraCards);
   }
-  turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier * (run.endlessEnemyDamageMultiplier ?? 1);
+  // Canary damage multiplier is disabled in coop — enemy targets both players directly.
+  // Solo and race retain canary scaling as normal.
+  turnState.canaryEnemyDamageMultiplier = isCoopRun
+    ? 1.0
+    : run.canary.enemyDamageMultiplier * (run.endlessEnemyDamageMultiplier ?? 1);
   turnState.canaryQuestionBias = run.canary.questionBias;
   turnState.ascensionLevel = run.ascensionLevel ?? 0;
   turnState.ascensionEnemyDamageMultiplier = ascensionModifiers.enemyDamageMultiplier;
@@ -726,6 +834,36 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
 
   activeTurnState.set(freshTurnState(turnState));
   syncCombatScene(turnState);
+
+  // Coop: synchronize initial enemy state before the encounter becomes visible.
+  // Host broadcasts the authoritative snapshot as an anchor (guards against any
+  // seed/variance drift). Non-host awaits and overwrites local enemy state.
+  if (isCoopRun) {
+    if (mpIsHost()) {
+      // Broadcast the enemy we just created as the canonical starting state.
+      broadcastSharedEnemyState(snapshotEnemy(enemy));
+    } else {
+      // Await the host's initial snapshot, then hydrate our local enemy.
+      try {
+        const initialSnapshot = await awaitCoopEnemyReconcile();
+        hydrateEnemyFromSnapshot(enemy, initialSnapshot);
+        // Reflect the hydrated state in turnState and the store.
+        turnState.enemy = enemy;
+        activeTurnState.set(freshTurnState(turnState));
+        syncCombatScene(turnState);
+      } catch (err) {
+        console.warn('[encounterBridge] coop: failed to receive initial enemy snapshot, using local', err);
+      }
+    }
+  }
+
+  // Coop: capture the initial pre-turn enemy snapshot for delta computation on turn 1.
+  // This is either the hydrated (non-host) or just-created (host) enemy state.
+  if (isCoopRun) {
+    _coopPreTurnEnemySnapshot = snapshotEnemy(enemy);
+  } else {
+    _coopPreTurnEnemySnapshot = null;
+  }
 
   // Encounter start sound + draw swooshes.
   // Determine encounter type audio
@@ -881,7 +1019,7 @@ export function handlePlayCard(
     }
 
     run.playerHp = result.turnState.playerState.hp;
-    result.turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier * (run.endlessEnemyDamageMultiplier ?? 1);
+    result.turnState.canaryEnemyDamageMultiplier = run.multiplayerMode === 'coop' ? 1.0 : run.canary.enemyDamageMultiplier * (run.endlessEnemyDamageMultiplier ?? 1);
     result.turnState.canaryQuestionBias = run.canary.questionBias;
     activeRunState.set(run);
   }
@@ -1080,6 +1218,11 @@ export function handlePlayCard(
           .filter(Boolean);
         const run = get(activeRunState);
         const currentNode = run?.floor?.actMap?.nodes[run?.floor?.actMap?.currentNodeId ?? ''];
+        // Narrative: flush any remaining chain buffer (final chain that was still active at encounter end)
+        if (ts.currentChainAnswerFactIds.length >= 3) {
+          ts.completedChainSequences.push([...ts.currentChainAnswerFactIds]);
+          ts.currentChainAnswerFactIds = [];
+        }
         _lastNarrativeSnapshot = {
           answeredFactIds: [...ts.encounterQuizzedFacts],
           fizzledFactIds,
@@ -1090,6 +1233,7 @@ export function handlePlayCard(
           isElite: currentNode?.type === 'elite',
           enemyId: ts.enemy?.template?.id,
           streakAtEnd: ts.consecutiveCorrectThisEncounter,
+          chainCompletions: ts.completedChainSequences.map(seq => [...seq]),
         };
       }
       activeTurnState.set(null);
@@ -1189,25 +1333,78 @@ export async function handleEndTurn(): Promise<void> {
   // Capture pre-turn HP so the UI stays at the old value during the animation delay
   const previousHp = turnState.playerState.hp;
 
-  // Co-op turn barrier: in co-op multiplayer the enemy phase must wait until
-  // every player has ended their turn. awaitCoopTurnEnd resolves immediately
-  // for single-player and resolves once all peers signal in co-op.
-  // We set a "waiting for partner" flag on the turn state so the UI can dim
-  // the End Turn button while we wait.
+  // Co-op turn barrier + shared enemy reconciliation:
+  // In coop, both players fight ONE shared enemy (host-authoritative HP).
+  // Flow:
+  //   1. Snapshot the enemy at the start of this handleEndTurn call.
+  //   2. Compute delta = what THIS player did to the enemy during their card plays.
+  //   3. Send delta + wait for all players to signal via awaitCoopTurnEndWithDelta.
+  //   4. Host: collect all deltas, merge onto pre-turn snapshot, broadcast authoritative state.
+  //   5. Non-host: await the host's merged broadcast, overwrite local enemy state.
+  //   6. Both: run enemy phase locally against their own player.
   const runForMode = get(activeRunState);
   const isCoop = runForMode?.multiplayerMode === 'coop';
   if (isCoop) {
     coopWaitingForPartner.set(true);
     let coopResult: 'completed' | 'cancelled' = 'completed';
+
+    // The pre-turn snapshot was captured at the end of the PREVIOUS turn (see below).
+    // On turn 1 it is captured at encounter start by startEncounterForRoom.
+    // Compute how much HP the enemy lost due to this player's cards this turn.
+    const preTurnSnapshot = _coopPreTurnEnemySnapshot ?? snapshotEnemy(turnState.enemy);
+    const postCardHP = turnState.enemy.currentHP;
+    const postCardBlock = turnState.enemy.block;
+    const damageDealt = Math.max(0, preTurnSnapshot.currentHP - postCardHP);
+    const blockDealt = Math.max(0, preTurnSnapshot.block - postCardBlock);
+    // Simple status diff: any effects not in the pre-turn set are "added"
+    const preTurnEffectTypes = new Set(preTurnSnapshot.statusEffects.map(s => s.type));
+    const statusEffectsAdded = turnState.enemy.statusEffects.filter(s => !preTurnEffectTypes.has(s.type));
+    const delta = {
+      playerId: '',  // filled in by awaitCoopTurnEndWithDelta via _localPlayerId
+      damageDealt,
+      blockDealt,
+      statusEffectsAdded: statusEffectsAdded.map(s => ({ ...s })),
+    };
+
     try {
-      coopResult = await awaitCoopTurnEnd();
+      coopResult = await awaitCoopTurnEndWithDelta(delta);
     } finally {
       coopWaitingForPartner.set(false);
     }
+
     if (coopResult === 'cancelled') {
       // Partner (or local player) cancelled the turn-end barrier.
       // Restore turn control without running the enemy phase.
       return;
+    }
+
+    // Barrier complete — now reconcile the shared enemy state.
+    if (mpIsHost()) {
+      // Host: collect all deltas, apply to pre-turn snapshot, broadcast.
+      const allDeltas = getCollectedDeltas();
+      const mergedSnapshot = applyEnemyDeltaToState(
+        preTurnSnapshot,
+        allDeltas,
+        turnState.enemy.template.phaseTransitionAt,
+      );
+      // Roll next intent on the hydrated enemy (mutates enemy in place for phase 2 awareness)
+      hydrateEnemyFromSnapshot(turnState.enemy, mergedSnapshot);
+      rollNextIntent(turnState.enemy);
+      // Snapshot again with the new intent, then broadcast
+      const broadcastSnapshot = snapshotEnemy(turnState.enemy);
+      broadcastSharedEnemyState(broadcastSnapshot);
+      // Update the pre-turn snapshot for the next turn
+      _coopPreTurnEnemySnapshot = snapshotEnemy(turnState.enemy);
+    } else {
+      // Non-host: await the host's authoritative state
+      try {
+        const reconciledSnapshot = await awaitCoopEnemyReconcile();
+        hydrateEnemyFromSnapshot(turnState.enemy, reconciledSnapshot);
+        // Update the pre-turn snapshot for the next turn
+        _coopPreTurnEnemySnapshot = snapshotEnemy(turnState.enemy);
+      } catch (err) {
+        console.warn('[encounterBridge] coop: failed to receive reconciled enemy state, using local', err);
+      }
     }
   }
 
@@ -1492,6 +1689,10 @@ export function devForceEncounterVictory(): void {
   // Build minimal narrative snapshot
   const run = get(activeRunState);
   const currentNode = run?.floor?.actMap?.nodes[run?.floor?.actMap?.currentNodeId ?? ''];
+  // Flush any remaining chain buffer before snapshot
+  if (ts.currentChainAnswerFactIds.length >= 3) {
+    ts.completedChainSequences.push([...ts.currentChainAnswerFactIds]);
+  }
   _lastNarrativeSnapshot = {
     answeredFactIds: [...ts.encounterQuizzedFacts],
     fizzledFactIds: [],
@@ -1502,6 +1703,7 @@ export function devForceEncounterVictory(): void {
     isElite: currentNode?.type === 'elite',
     enemyId: ts.enemy?.template?.id,
     streakAtEnd: ts.consecutiveCorrectThisEncounter,
+    chainCompletions: ts.completedChainSequences.map(seq => [...seq]),
   };
   // Clear turn state BEFORE notifying (matches normal victory flow)
   activeTurnState.set(null);

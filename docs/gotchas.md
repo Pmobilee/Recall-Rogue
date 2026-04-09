@@ -1,3 +1,20 @@
+### 2026-04-09 — Svelte template `{@const}` order matters for charge-preview AP badge
+
+**What:** When computing `displayedApCost` in the `{#each cards}` block, the original code placed the `{@const displayedApCost = getDisplayedApCost(card)}` declaration BEFORE `isChargePreview`, `isMomentumMatch`, `isActiveChainMatch`, and `isFreeCharge` were computed. This meant the charge-aware version could not reference those values — forward references in Svelte template `{@const}` are not allowed.
+
+**Fix:** Move `displayedApCost` and `apGemColor` declarations to AFTER `isChargePreview` is computed. The block:
+```
+{@const isChargePreview = ...}
+{@const isBtnChargePreview = ...}
+{@const displayedApCost = isChargePreview ? getDisplayedChargeApCost(...) : getDisplayedApCost(card)}
+{@const apGemColor = isChargePreview ? getChargeApGemColor(...) : getApGemColor(card)}
+```
+This pattern is safe because Svelte `{@const}` bindings are computed top-to-bottom, and later `{@const}` can reference earlier ones within the same block.
+
+**Lesson:** In Svelte `{#each}` blocks, `{@const}` declarations depend on order. If a derived value (like `displayedApCost`) needs to be charge-aware, it MUST appear AFTER the state variables it depends on (`isChargePreview`, `isMomentumMatch`, etc.). Placing it early for "readability" breaks reactivity.
+
+---
+
 ### 2026-04-09 — Map-generation RNG must not depend on the global `getRunRng('enemies')` fork
 
 **What:** In co-op mode, both peers call `assignEnemyIds()` locally from the same `runSeed`. If either peer had consumed the global `'enemies'` fork before map generation (e.g. via UI hover previews, `generateCombatRoomOptions()` for floor option display, or any other pre-run call to `pickCombatEnemy()`), the baked `node.enemyId` values diverged between peers even though both had the same seed.
@@ -1155,3 +1172,80 @@ Win rates dropped slightly vs Ch12.2 numbers — the previous inflated health vi
 **Intentionally excluded from display:** enrage bonus (HP-dependent), glass cannon penalty (player-HP-dependent), self-burn (burn-stack-dependent). These are runtime-variable and showing them in the intent preview would be misleading.
 
 **Lesson:** Whenever a UI displays a computed value and the game also computes "the same thing" separately in the pipeline, they WILL drift. Extract a shared pure function. Both consumers call the function. No exceptions.
+
+### 2026-04-09 — chain.length intentionally persists across mid-turn color switches
+
+**What:** When `switchActiveChainColor(newChainType)` is called (on a correct off-colour Charge), `_chain.length` is **preserved**, not reset. This is intentional — the player earned the pivot by answering correctly, so they keep their chain momentum.
+
+**Why it matters:** The first instinct when switching chain color is to reset the chain (start fresh at the new color). Do NOT do this. Resetting would punish the player for making a correct strategic pivot, which is exactly the opposite of the design intent. The chain length represents accumulated knowledge momentum — a correct answer deserves to maintain it regardless of color.
+
+**Implementation detail:** `switchActiveChainColor` calls `_chain = { ..._chain, chainType: newChainType }` — spread preserves `length` while updating only `chainType`. The subsequent `extendOrResetChain(card.chainType)` then sees the new color as `_activeChainColor` and extends (not resets) from the preserved length.
+
+**Wrong mental model:** "Off-colour = chain break." The chain break only applies to WRONG answers. Correct off-colour charges are pivots, not breaks. Off-colour WRONG answers halve the chain (AR-7.8). On-colour WRONG answers reset it fully.
+
+---
+
+### 2026-04-09 — Narration silently dropped curated-deck facts (3 compounding bugs)
+
+**What:** The Echo thread of the Woven Narrative never referenced facts from study/language runs (Japanese, FIFA, etc.). Post-encounter narration showed only ambient/structural lines even after answering quizzed facts.
+
+**Bug 1 (curated facts never resolved):** `gameFlowController.ts:onEncounterComplete()` called `factsDB.getById(factId)` to look up quizzed facts. For study/language runs, fact IDs originate from `curatedDeckStore` — NOT from `factsDB`. `getById()` returned null, the `if (!fact) continue` skipped silently, and the narrative engine received zero facts.
+
+**Bug 2 (metadata dropped even for trivia runs):** Even when `factsDB.getById()` succeeded, only `{ factId, answer, quizQuestion }` was passed. The adapter registry needs `partOfSpeech`, `targetLanguageWord`, `pronunciation`, `categoryL1`, `categoryL2`, `language` to pick the right echo variant. Without them, `buildAdaptedEchoText()` fell through to a weak generic branch.
+
+**Bug 3 (chain completions hardcoded to []):** `gameFlowController.ts` always passed `chainCompletions: []`. The chain-referencing echo templates (`{a1}`–`{a5}`) never fired. `TurnState` never tracked the answer sequence for completed chains.
+
+**Fix:** `resolveNarrativeFact(factId, run)` helper in `encounterBridge.ts` — checks factsDB first, then curatedDeckStore using `run.deckMode` (handles both `study` and `custom_deck` modes). `TurnState` now tracks `currentChainAnswerFactIds: string[]` (working buffer) and `completedChainSequences: string[][]` (sealed chains ≥3). Chain breaks flush the buffer; encounter end flushes any remaining buffer. The snapshot carries factIds; gameFlowController resolves to answer strings before calling `recordEncounterResults()`.
+
+**Lesson:** When multiple data sources exist for game entities (factsDB for trivia, curatedDeckStore for curated decks), every consumer must use a unified resolver that checks both. Using only one source causes silent failures with no visible errors at the call site.
+
+
+---
+
+### 2026-04-09 — Coop enemy HP drifts mid-turn, resolves at end-of-turn
+
+**What:** In coop mode, each client applies card damage to its own local enemy copy during the player's turn. If P1 deals 10 damage and P2 deals 8, P1's client shows the enemy at (startHP - 10) while P2's client shows it at (startHP - 8). The two clients show different HP values until end-of-turn.
+
+**Why:** This is intentional ("optimistic-local + end-of-turn reconciliation"). Mid-turn sync of every card play would require a round-trip per card, adding latency and complexity. The cosmetic drift is acceptable because: (a) it resolves at end-of-turn, (b) mid-turn effects like execute and HP-threshold triggers still work correctly against local state, and (c) at turn boundary both clients receive the host-authoritative merged HP.
+
+**Fix / resolution:** No fix needed — this is the designed behavior. At end-of-turn, `handleEndTurn()` sends an `EnemyTurnDelta` via `awaitCoopTurnEndWithDelta()`. The host merges all deltas via `applyEnemyDeltaToState()` and broadcasts `mp:coop:enemy_state`. Both clients hydrate from the authoritative snapshot before running the enemy phase.
+
+**Lesson:** Do not attempt to "fix" the mid-turn HP difference by adding mid-turn sync — it would add latency without meaningfully improving the player experience. The convergence at turn end is sufficient.
+
+---
+
+### 2026-04-09 — Never copy Svelte scoped CSS across components — extract a shared component instead
+
+**What:** `CardPickerOverlay.svelte` was copy-pasted the entire V2 card frame CSS block from `CardHand.svelte` in Phase 3 (2026-04-09). This led to 6 immediate CSS discrepancies between the two rendering paths — wrong `object-fit`, wrong mechanic name color, wrong AP cost gem styling, missing `z-index: 5` on text overlay, wrong mastery glow filter, and missing `use:stretchText` action. Every subsequent tweak to CardHand required a matching tweak in CardPickerOverlay, which was never caught.
+
+**Why:** Svelte scopes CSS to the component that declares it. A rule written in `CardPickerOverlay.svelte` applies ONLY to elements rendered inside that component's own template. It does NOT affect elements in imported child components, and it does NOT "leak" to sibling component instances. Copy-pasting CSS that targets the same visual element in two places creates two diverging codebases.
+
+**Fix:** Extract a single `CardVisual.svelte` component that owns the V2 frame template AND its CSS. Both `CardHand.svelte` and `CardPickerOverlay.svelte` import and render `<CardVisual />`. The CSS exists in exactly one place. When CardHand needs to override a child element in a cross-boundary interaction state (e.g., insufficient AP red pulse), use `:global()` for that specific rule only.
+
+**Lesson:** If two Svelte components render the same visual widget, that widget MUST be its own component. "I'll just copy the CSS for now" is never acceptable — Svelte's scoping means it will drift immediately. Use `:global()` sparingly and only for interaction states that must cross component boundaries. All frame CSS lives in `CardVisual.svelte`; callers must not duplicate it.
+
+---
+
+### 2026-04-09 — Svelte $effect reactive loop: writing state inside an effect that reads it
+
+**What:** `CardHand.svelte` added a `$effect` to detect newly drawn cards (new IDs in the hand) and apply a draw-in animation. The effect read `prevCardIds` (state) and also wrote to `prevCardIds` to update it. Svelte 5's reactivity system detected the write as a dependency of the same effect and re-ran it, triggering "updated at $effect" console errors.
+
+**Why:** In Svelte 5, any `$state` variable that is both read AND written inside an `$effect` creates a cycle. The read makes the effect reactive to that value; the write triggers reactivity, causing the effect to re-run indefinitely.
+
+**Fix:** Wrap ALL state writes inside the effect with `untrack(() => { ... })` from `svelte`. `untrack()` executes its callback without registering any reactive dependencies. This means Svelte does not treat the write as something the effect depends on, breaking the cycle.
+
+```typescript
+import { untrack } from 'svelte'
+
+$effect(() => {
+  const currentIds = new Set(cards.map(c => c.id))  // reactive read of `cards` prop
+  const prev = untrack(() => prevCardIds)             // non-reactive read of state
+  // ... compute diff ...
+  untrack(() => {
+    prevCardIds = currentIds  // write does NOT re-trigger this effect
+    drawnInCardIds = new Set(newIds)
+  })
+})
+```
+
+**Lesson:** When an `$effect` must track a previous value of some state by storing it, always use `untrack()` for both the read of the stored value and the write to update it. Only the reactive inputs that SHOULD trigger the effect (e.g., `cards` prop changes) should be read without `untrack()`.

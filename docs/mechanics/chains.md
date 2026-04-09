@@ -1,7 +1,7 @@
 # Chain System
 
 > **Purpose:** How the Knowledge Chain system works — consecutive correct answers, multiplier scaling, chain types, break conditions, rotating chain color, and themed chain distribution.
-> **Last verified:** 2026-04-08 (7.7 weighted rotation, 7.8 off-colour partial reset)
+> **Last verified:** 2026-04-09 (7.7 weighted rotation, 7.8 off-colour partial reset, mid-turn active color switch)
 > **Source files:** `src/services/chainSystem.ts`, `src/data/chainTypes.ts`, `src/services/chainVisuals.ts`, `src/data/balance.ts`, `src/services/chainDistribution.ts`, `src/services/presetPoolBuilder.ts`, `src/services/gameFlowController.ts`, `src/services/encounterBridge.ts`, `src/ui/components/StudyTempleScreen.svelte`
 
 ---
@@ -21,17 +21,38 @@ Each turn, one of the 3 run chain types is deterministically selected as the **a
 This forces variety — players cannot hoard a single color to build chains indefinitely.
 
 - **Active color rotates** every turn via `rotateActiveChainColor(turnNumber)`
+- **Active color can switch mid-turn** via a correct off-colour Charge — see Mid-Turn Switch section below
 - **Chain multiplier persists** across turns regardless of which color is active
 - **Rotation is deterministic** — seeded from `RunState.runSeed` + turn number so it is predictable and reproducible
 - `getActiveChainColor()` — returns the active chain type index for the current turn (used by `CardHand.svelte` to highlight matching cards)
 
-### `initChainSystem(runChainTypes, seed)`
+### 
 
 Must be called from `encounterBridge.ts` before `startEncounter()` for each new combat encounter. Stores the run chain types and rotation seed so `rotateActiveChainColor()` can compute the active color for each turn. For curated runs, uses `run.chainDistribution.runChainTypes`; for trivia runs uses `selectRunChainTypes(run.runSeed)`.
 
-### `rotateActiveChainColor(turnNumber)`
+### 
 
 Called at encounter start and at the end of each player turn (in `endPlayerTurn()` after `turnState.turnNumber += 1`). Returns the active chain type index for the next turn and sets `_activeChainColor`. Returns `null` if no run chain types are configured.
+
+### Mid-Turn Active Color Switch (2026-04-09)
+
+When a player correctly Charges a card whose `chainType` differs from the current active chain color, the active color **switches** to the new card's color for the remainder of the turn. This is a strategic pivot lever:
+
+- **Trigger**: `playMode === 'charge'` AND `answeredCorrectly === true` AND `card.chainType !== getActiveChainColor()`
+- **Effect**: `switchActiveChainColor(card.chainType)` is called before `extendOrResetChain()`
+- **Chain length is preserved**: answering correctly earned the pivot — the player keeps their chain momentum
+- **New color is immediately surcharge-free**: the on-colour waiver in `playCardAction` uses `getActiveChainColor()` which now returns the new color
+- **Turn-boundary rotation is unchanged**: `rotateActiveChainColor` fires at end-of-turn as before; the mid-turn switch only lasts the current turn
+- **Quick Play and wrong Charge do NOT trigger the switch**
+
+```typescript
+// switchActiveChainColor(newChainType) in chainSystem.ts:
+// - Sets _activeChainColor = newChainType
+// - Sets _chain.chainType = newChainType (preserves _chain.length)
+// - No-op if newChainType is not in _runChainTypes or if legacy mode
+```
+
+After a switch, `turnState.activeChainColor` is also updated so the Svelte UI (ChainCounter, CardHand glow) re-renders reactively via the existing `` prop chain.
 
 ---
 

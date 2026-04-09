@@ -697,3 +697,17 @@ let enemyHpMultiplier = (
 ```
 
 Enemy damage multiplier is threaded through `TurnState.canaryEnemyDamageMultiplier` (unchanged from v1) — applied per incoming attack in `takeDamage()`.
+
+---
+
+## Co-op Combat
+
+> **See also:** `docs/architecture/multiplayer.md` for the full sync flow.
+
+In co-op mode:
+
+- **Shared enemy**: both players fight one enemy with HP scaled by `getCoopHpMultiplier(playerCount)` (1.6× at 2P). Each client maintains a local copy; clients converge to the host-authoritative state at end-of-turn.
+- **Full damage to all players**: the enemy's attack intent is executed locally on EACH client against EACH player's own HP. Damage is not split or halved — both players take the full hit.
+- **Canary disabled**: `canaryEnemyDamageMultiplier` is forced to `1.0` and `canary.enemyHpMultiplier` is excluded from the enemy HP calculation. The canary adaptive-difficulty system does not apply in coop.
+- **Turn sync**: players end turns simultaneously. At end-of-turn, each client sends a `EnemyTurnDelta` (damage dealt this turn) to the host, which merges all deltas and broadcasts the authoritative new enemy state. Non-host clients await the broadcast before running the enemy phase.
+- **Mid-turn drift**: during a turn, clients may show different enemy HP (each sees only their own damage). This is expected and resolves at end-of-turn when both clients receive the host-merged state.

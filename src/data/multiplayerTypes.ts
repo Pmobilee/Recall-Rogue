@@ -3,6 +3,9 @@
  * Used by lobby service, transport layer, game sync, and UI components.
  */
 
+import type { EnemyIntent, EnemyInstance } from './enemies';
+import type { StatusEffect } from './statusEffects';
+
 /** Multiplayer game modes */
 export type MultiplayerMode =
   | 'race'           // Same seed, independent play, compare scores
@@ -102,6 +105,48 @@ export interface RaceResults {
   winnerId: string;
   seed: number;
 }
+
+/**
+ * Authoritative snapshot of the shared enemy state broadcast by the host.
+ * Used for coop enemy synchronization (initial anchor + end-of-turn reconcile).
+ * Contains only the mutable fields that can change during combat —
+ * template, maxHP, floor, and difficultyVariance are established at creation
+ * and never change, so they are not included.
+ */
+export interface SharedEnemySnapshot {
+  /** Current hit points (clamped 0..maxHP). */
+  currentHP: number;
+  /** Maximum hit points (after floor/coop scaling). Included so receivers can compute % correctly. */
+  maxHP: number;
+  /** Current block value. */
+  block: number;
+  /** Current combat phase (1 or 2). */
+  phase: 1 | 2;
+  /** Next action the enemy will take, as decided by the host. */
+  nextIntent: EnemyIntent;
+  /** Active status effects on the enemy. */
+  statusEffects: StatusEffect[];
+}
+
+/**
+ * Per-player damage delta sent at end-of-turn during coop.
+ * Describes what a single player did to the enemy during their turn,
+ * computed as (preTurnState − postTurnState). Host accumulates all deltas
+ * and applies them to the pre-turn snapshot to produce the authoritative state.
+ */
+export interface EnemyTurnDelta {
+  /** Player ID who generated this delta. Used by host for deterministic sort order. */
+  playerId: string;
+  /** Net HP damage dealt to the enemy this turn (post-block absorption, pre-clamp). */
+  damageDealt: number;
+  /** Amount of block stripped from the enemy this turn. */
+  blockDealt: number;
+  /** Status effects applied to the enemy by this player this turn. */
+  statusEffectsAdded: StatusEffect[];
+}
+
+// Re-export imported types so callers that import from multiplayerTypes get them
+export type { EnemyIntent, EnemyInstance, StatusEffect };
 
 /** Default house rules */
 export const DEFAULT_HOUSE_RULES: HouseRules = {

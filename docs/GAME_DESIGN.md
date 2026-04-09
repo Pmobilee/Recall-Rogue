@@ -392,6 +392,22 @@ The 63-damage Surge chain is the "holy shit" peak at early mastery. Rare. Player
 - Wrong Charge: chain is reset before fizzle resolution — no bonus on the fizzled card
 - Chain state stored on `TurnState` as `chainMultiplier`, `chainLength`, `chainType` for UI consumption
 
+### Mid-Turn Color Switch — Strategic Pivot (2026-04-09)
+
+When a player correctly Charges a card whose color does NOT match the current active chain color, the **active chain color switches** to the played card's color for the remainder of the turn.
+
+**Why this exists:** Without this rule, a player who Charges an off-colour card is locked out: the surcharge still applies to the new color, and subsequent same-color cards stay surcharged even though the player clearly pivoted their strategy. This made cross-color plays feel punishing rather than strategic.
+
+**With the switch:**
+- The new color becomes surcharge-free immediately (via the on-colour waiver in `playCardAction`)
+- The chain length is **preserved** — the correct answer earned the pivot
+- The old active color reverts to surcharged status for the rest of the turn
+- At turn end, `rotateActiveChainColor` selects a new color as normal — mid-turn switches don't affect turn-boundary rotation
+
+**Player experience:** A player can pivot mid-turn by answering an off-colour card correctly, then chain additional cards of the new color without surcharge. This is an intentional strategic lever — read the room and pivot when you have better cards available.
+
+**Implementation:** `switchActiveChainColor(newChainType)` in `chainSystem.ts` sets both `_activeChainColor` and `_chain.chainType` (preserving `_chain.length`). Called in `turnManager.ts` in the correct-charge branch, before `extendOrResetChain`.
+
 ### Chain Visual System (AR-59.17 / AR-93)
 
 **Card border + glow (primary identity):** Chain type color is the PRIMARY visual identity of every card. ALL card borders and outer glow use `getChainColor(card.chainType)` / `getChainGlowColor(card.chainType)` from `src/services/chainVisuals.ts`. This applies universally: in-hand cards (portrait and landscape), animating cards, reward screen altar options, shop buy/sell cards, and the expanded quiz card (CardExpanded). The chain border makes it immediately clear which cards can chain together across all game contexts.

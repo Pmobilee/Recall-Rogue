@@ -9,6 +9,7 @@ import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCA
 import { resolvePoisonTickBonus } from './relicEffectResolver';
 import { getAuraState } from './knowledgeAuraSystem';
 import { getRunRng, isRunRngActive } from './seededRng';
+import type { SharedEnemySnapshot, EnemyTurnDelta } from '../data/multiplayerTypes';
 
 /**
  * Computes HP scaling factor for a given floor using segment-based scaling.
@@ -424,5 +425,133 @@ export function tickEnemyStatusEffects(enemy: EnemyInstance, relicIds?: Set<stri
   return {
     poisonDamage: result.poisonDamage,
     regenHeal: result.regenHeal,
+  };
+}
+
+
+// ── Coop Shared-Enemy Helpers ─────────────────────────────────────────────────
+// These helpers support the optimistic-local + end-of-turn reconciliation model
+// used in coop multiplayer. See docs/architecture/multiplayer.md for the full flow.
+
+/**
+ * Extract a serializable snapshot from a live EnemyInstance.
+ * Captures only the mutable combat fields — template, floor, difficultyVariance
+ * are established at creation and not included.
+ *
+ * @param enemy - The live enemy instance to snapshot.
+ * @returns A SharedEnemySnapshot ready for broadcast.
+ */
+export function snapshotEnemy(enemy: EnemyInstance): SharedEnemySnapshot {
+  return {
+    currentHP: enemy.currentHP,
+    maxHP: enemy.maxHP,
+    block: enemy.block,
+    phase: enemy.phase,
+    nextIntent: { ...enemy.nextIntent },
+    statusEffects: enemy.statusEffects.map(s => ({ ...s })),
+  };
+}
+
+/**
+ * Overwrite a live EnemyInstance's mutable fields from a host-authoritative snapshot.
+ * Does NOT touch template, floor, difficultyVariance, enrageBonusDamage, or isCharging/chargedDamage
+ * since those are established at creation or managed by the local combat system.
+ *
+ * @param enemy    - The live enemy instance to hydrate (mutated in place).
+ * @param snapshot - The authoritative snapshot from the host.
+ */
+export function hydrateEnemyFromSnapshot(enemy: EnemyInstance, snapshot: SharedEnemySnapshot): void {
+  enemy.currentHP = snapshot.currentHP;
+  enemy.maxHP = snapshot.maxHP;
+  enemy.block = snapshot.block;
+  enemy.phase = snapshot.phase;
+  enemy.nextIntent = { ...snapshot.nextIntent };
+  enemy.statusEffects = snapshot.statusEffects.map(s => ({ ...s }));
+}
+
+/**
+ * Pure function: merge an array of per-player turn deltas onto a pre-turn snapshot.
+ * Used by the host to produce the authoritative end-of-turn enemy state.
+ *
+ * Merge order: deltas are sorted by playerId before application so the result
+ * is deterministic regardless of message arrival order. Caller may pre-sort;
+ * this function sorts defensively.
+ *
+ * Logic per delta:
+ *   1. Apply blockDealt (reduce remaining block, remainder carries to HP).
+ *   2. Apply damageDealt to HP (post-block).
+ *   3. Clamp HP at 0.
+ *   4. Check phase transition at the phaseTransitionAt threshold.
+ *   5. Concat statusEffectsAdded (simple concat; dedup is best-effort by type).
+ *
+ * @param snapshot        - The enemy state at the START of the turn (not mutated).
+ * @param deltas          - Per-player damage reports for this turn.
+ * @param phaseTransitionAt - Optional HP-fraction threshold for phase 2 (0-1).
+ * @param maxHP           - Used for phase transition percentage check.
+ * @returns The new authoritative SharedEnemySnapshot after all deltas applied.
+ */
+export function applyEnemyDeltaToState(
+  snapshot: SharedEnemySnapshot,
+  deltas: EnemyTurnDelta[],
+  phaseTransitionAt?: number,
+): SharedEnemySnapshot {
+  // Defensive sort by playerId for deterministic merge order
+  const sorted = [...deltas].sort((a, b) => a.playerId.localeCompare(b.playerId));
+
+  let currentHP = snapshot.currentHP;
+  let block = snapshot.block;
+  let phase = snapshot.phase;
+  const statusEffects = snapshot.statusEffects.map(s => ({ ...s }));
+
+  for (const delta of sorted) {
+    // Strip block first, then apply remaining damage to HP
+    let remainingDamage = delta.damageDealt;
+    if (block > 0 && delta.blockDealt > 0) {
+      const blockStripped = Math.min(block, delta.blockDealt);
+      block -= blockStripped;
+    }
+    if (remainingDamage > 0) {
+      // Block was already accounted for in the delta computation on the client
+      // (damageDealt is the post-block damage as seen by the local enemy state).
+      // Re-apply block stripping here only if block was still up when we process
+      // this delta (another player's delta may have stripped it). This approach
+      // is a simplification — true mid-turn interactions are accepted as minor
+      // optimistic drift per the design.
+      currentHP = Math.max(0, currentHP - remainingDamage);
+    }
+
+    // Merge status effects — concat, then dedupe by type (sum magnitudes)
+    for (const effect of delta.statusEffectsAdded) {
+      const existing = statusEffects.find(s => s.type === effect.type);
+      if (existing) {
+        existing.value += effect.value;
+        // Extend duration to the max of the two
+        if (effect.turnsRemaining != null && existing.turnsRemaining != null) {
+          existing.turnsRemaining = Math.max(existing.turnsRemaining, effect.turnsRemaining);
+        }
+      } else {
+        statusEffects.push({ ...effect });
+      }
+    }
+  }
+
+  // Phase transition check (phase 1 → 2 only)
+  if (
+    phase === 1 &&
+    phaseTransitionAt != null &&
+    currentHP > 0 &&
+    currentHP / snapshot.maxHP <= phaseTransitionAt
+  ) {
+    phase = 2;
+  }
+
+  return {
+    currentHP,
+    maxHP: snapshot.maxHP,
+    block,
+    phase,
+    // nextIntent is set by the host after rolling via rollNextIntent — preserve current for now
+    nextIntent: snapshot.nextIntent,
+    statusEffects,
   };
 }

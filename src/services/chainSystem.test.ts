@@ -16,6 +16,7 @@ import {
   rotateActiveChainColor,
   rotateActiveChainColorWeighted,
   getActiveChainColor,
+  switchActiveChainColor,
 } from './chainSystem';
 
 // ---------------------------------------------------------------------------
@@ -417,5 +418,120 @@ describe('extendOrResetChain – isOffColourWrong partial reset (AR-7.8)', () =>
     extendOrResetChain(null, undefined, true); // off-colour wrong
     // chain type should be preserved (chain reduced, not destroyed)
     expect(getChainState().chainType).toBe(originalType);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 9. Mid-turn active chain color switch (2026-04-09)
+// ---------------------------------------------------------------------------
+
+describe('switchActiveChainColor – mid-turn pivot (2026-04-09)', () => {
+  const RUN_CHAINS = [0, 2, 4];
+  const SEED = 77;
+
+  beforeEach(() => {
+    initChainSystem(RUN_CHAINS, SEED);
+    resetChain();
+  });
+
+  it('switches _activeChainColor and _chain.chainType to the new color', () => {
+    const activeColor = rotateActiveChainColor(1)!;
+    // Build some chain on the active color first
+    extendOrResetChain(activeColor);
+    extendOrResetChain(activeColor); // length 2
+
+    // Pick a different run chain type
+    const otherColor = RUN_CHAINS.find(c => c !== activeColor)!;
+    switchActiveChainColor(otherColor);
+
+    // Active color is now the new one
+    expect(getActiveChainColor()).toBe(otherColor);
+    // Chain type on _chain updated
+    expect(getChainState().chainType).toBe(otherColor);
+    // Chain length is PRESERVED (pivot reward — answering correctly earned this)
+    expect(getCurrentChainLength()).toBe(2);
+  });
+
+  it('after switch, playing the new color extends chain (on-colour)', () => {
+    const activeColor = rotateActiveChainColor(1)!;
+    extendOrResetChain(activeColor); // length 1
+
+    const otherColor = RUN_CHAINS.find(c => c !== activeColor)!;
+    switchActiveChainColor(otherColor);
+
+    // Now extend with the new active color
+    extendOrResetChain(otherColor); // should extend from 1 → 2
+    expect(getCurrentChainLength()).toBe(2);
+  });
+
+  it('after switch, playing the OLD color no longer extends chain', () => {
+    const activeColor = rotateActiveChainColor(1)!;
+    extendOrResetChain(activeColor); // length 1
+
+    const otherColor = RUN_CHAINS.find(c => c !== activeColor)!;
+    switchActiveChainColor(otherColor);
+
+    // Playing the OLD active color should not extend (it's no longer active)
+    extendOrResetChain(activeColor);
+    // Still at length 1 (preserved, not extended)
+    expect(getCurrentChainLength()).toBe(1);
+  });
+
+  it('on-colour correct charge (same color as active) does NOT trigger a switch — no-op', () => {
+    const activeColor = rotateActiveChainColor(1)!;
+    extendOrResetChain(activeColor); // length 1
+
+    // Calling switchActiveChainColor with the already-active color is a no-op effectively
+    switchActiveChainColor(activeColor);
+
+    // Active color unchanged
+    expect(getActiveChainColor()).toBe(activeColor);
+    // Chain unchanged
+    expect(getCurrentChainLength()).toBe(1);
+  });
+
+  it('is a no-op when newChainType is NOT one of the run chain types', () => {
+    const activeColor = rotateActiveChainColor(1)!;
+    extendOrResetChain(activeColor); // length 2
+    extendOrResetChain(activeColor);
+
+    // 99 is not a run chain type
+    switchActiveChainColor(99);
+
+    // Nothing changed
+    expect(getActiveChainColor()).toBe(activeColor);
+    expect(getCurrentChainLength()).toBe(2);
+  });
+
+  it('is a no-op in legacy mode (no run chain types configured)', () => {
+    initChainSystem([], 0);
+    resetChain();
+    // In legacy mode, rotateActiveChainColor returns null and clears _activeChainColor.
+    rotateActiveChainColor(1); // clears active color since no run chain types exist
+
+    extendOrResetChain(0);
+    extendOrResetChain(0); // legacy mode, length 2
+
+    // switchActiveChainColor with any type is a no-op when _runChainTypes is empty
+    switchActiveChainColor(0);
+
+    // Active color remains null (legacy mode — no rotating system)
+    expect(getActiveChainColor()).toBeNull();
+    // Chain length is unchanged by the no-op
+    expect(getCurrentChainLength()).toBe(2);
+  });
+
+  it('chain length preserved across the switch regardless of previous length', () => {
+    const activeColor = rotateActiveChainColor(1)!;
+    // Build to max chain
+    for (let i = 0; i < 5; i++) extendOrResetChain(activeColor);
+    expect(getCurrentChainLength()).toBe(5);
+
+    const otherColor = RUN_CHAINS.find(c => c !== activeColor)!;
+    switchActiveChainColor(otherColor);
+
+    // Length preserved at 5 even after pivot
+    expect(getCurrentChainLength()).toBe(5);
+    expect(getActiveChainColor()).toBe(otherColor);
   });
 });

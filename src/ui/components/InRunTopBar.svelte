@@ -125,13 +125,15 @@
   // ============================================================
   let activeStatusType = $state<string | null>(null)
 
+  // High-res icon availability (sprites-hires): poison, weakness, vulnerable, strength, regen, immunity
+  // Low-res fallback for: burn, bleed (not yet in sprites-hires)
   const STATUS_EFFECT_INFO: Record<string, { name: string; icon: string; spriteIcon?: string; color: string; desc: (v: number, t: number) => string }> = {
-    poison:        { name: 'Poison',        icon: '☠️', spriteIcon: '/assets/sprites/icons/icon_status_poison.png',     color: '#22c55e', desc: (v, t) => `${v} poison damage/turn (${t} left)` },
-    weakness:      { name: 'Weakness',      icon: '⬇',  spriteIcon: '/assets/sprites/icons/icon_status_weakness.png',   color: '#a78bfa', desc: (_, t) => `Attacks deal 25% less damage (${t} left)` },
-    vulnerable:    { name: 'Vulnerable',    icon: '🎯', spriteIcon: '/assets/sprites/icons/icon_status_vulnerable.png', color: '#f87171', desc: (_, t) => `Takes 50% more damage (${t} left)` },
-    strength:      { name: 'Strength',      icon: '💪', spriteIcon: '/assets/sprites/icons/icon_status_strength.png',   color: '#fbbf24', desc: (v) => `Attacks deal +25% per stack (${v} stacks)` },
-    regen:         { name: 'Regen',         icon: '💚', spriteIcon: '/assets/sprites/icons/icon_status_regen.png',      color: '#4ade80', desc: (v, t) => `Heals ${v} HP/turn (${t} left)` },
-    immunity:      { name: 'Immunity',      icon: '✨', spriteIcon: '/assets/sprites/icons/icon_status_immunity.png',   color: '#60a5fa', desc: () => `Absorbs next poison instance` },
+    poison:        { name: 'Poison',        icon: '☠️', spriteIcon: '/assets/sprites-hires/icons/icon_status_poison.png',     color: '#22c55e', desc: (v, t) => `${v} poison damage/turn (${t} left)` },
+    weakness:      { name: 'Weakness',      icon: '⬇',  spriteIcon: '/assets/sprites-hires/icons/icon_status_weakness.png',   color: '#a78bfa', desc: (_, t) => `Attacks deal 25% less damage (${t} left)` },
+    vulnerable:    { name: 'Vulnerable',    icon: '🎯', spriteIcon: '/assets/sprites-hires/icons/icon_status_vulnerable.png', color: '#f87171', desc: (_, t) => `Takes 50% more damage (${t} left)` },
+    strength:      { name: 'Strength',      icon: '💪', spriteIcon: '/assets/sprites-hires/icons/icon_status_strength.png',   color: '#fbbf24', desc: (v) => `Attacks deal +25% per stack (${v} stacks)` },
+    regen:         { name: 'Regen',         icon: '💚', spriteIcon: '/assets/sprites-hires/icons/icon_status_regen.png',      color: '#4ade80', desc: (v, t) => `Heals ${v} HP/turn (${t} left)` },
+    immunity:      { name: 'Immunity',      icon: '✨', spriteIcon: '/assets/sprites-hires/icons/icon_status_immunity.png',   color: '#60a5fa', desc: () => `Absorbs next poison instance` },
     thorns:        { name: 'Thorns',        icon: '🌿', color: '#86efac', desc: (v) => `Deals ${v} damage back when hit` },
     empower:       { name: 'Empower',       icon: '⚡', color: '#fcd34d', desc: (v) => `Next card gets +${v}% effect` },
     double_strike: { name: 'Double Strike', icon: '⚔️', color: '#fb923c', desc: (v) => `Next attack hits twice at ${v}%` },
@@ -206,10 +208,9 @@
               {:else}
                 <span class="topbar-status-emoji">{info.icon}</span>
               {/if}
-              {#if effect.value > 1}
+              {#if effect.value >= 1}
                 <span class="topbar-status-stack" style="background: {info.color};">{effect.value}</span>
               {/if}
-              <span class="topbar-status-turns">{effect.turnsRemaining}</span>
             </button>
             {#if activeStatusType === effect.type}
               <div class="topbar-status-popup">
@@ -538,7 +539,7 @@
     cursor: pointer;
     padding: 0;
     flex-shrink: 0;
-    filter: drop-shadow(0 0 calc(1px * var(--layout-scale, 1)) rgba(255, 255, 255, 0.7)) drop-shadow(0 0 calc(1px * var(--layout-scale, 1)) rgba(255, 255, 255, 0.5));
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.9));
     transition: transform 120ms ease;
   }
 
@@ -557,12 +558,13 @@
     line-height: 1;
   }
 
+  /* Single stack-count badge — bottom-right, always visible when value >= 1. Turns detail in hover popup only. */
   .topbar-status-stack {
     position: absolute;
-    top: calc(-3px * var(--layout-scale, 1));
+    bottom: calc(-3px * var(--layout-scale, 1));
     right: calc(-3px * var(--layout-scale, 1));
-    min-width: calc(13px * var(--layout-scale, 1));
-    height: calc(13px * var(--layout-scale, 1));
+    min-width: calc(14px * var(--layout-scale, 1));
+    height: calc(14px * var(--layout-scale, 1));
     border-radius: 50%;
     font-size: calc(8px * var(--text-scale, 1));
     font-weight: 800;
@@ -572,16 +574,8 @@
     justify-content: center;
     padding: 0 calc(2px * var(--layout-scale, 1));
     line-height: 1;
-  }
-
-  .topbar-status-turns {
-    position: absolute;
-    bottom: calc(-2px * var(--layout-scale, 1));
-    right: calc(1px * var(--layout-scale, 1));
-    font-size: calc(8px * var(--text-scale, 1));
-    font-weight: 700;
-    color: #94a3b8;
-    line-height: 1;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
   }
 
   /* Popup — positioned below each icon wrapper */
