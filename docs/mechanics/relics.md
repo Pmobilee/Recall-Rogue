@@ -166,10 +166,15 @@ All have `isStarter: false`, `startsUnlocked: false`. Eligible once `playerLevel
 Effects are resolved via pure functions from a `Set<string>` of held relic IDs. No side effects.
 
 Key resolved contexts:
-- `resolveTurnStartEffects()` — block grants, AP bonuses, draw bonuses, Capacitor release, Deja Vu spawn
-- `resolveDamageTakenEffects()` — flat damage reduction (steel_skin), thorns, pity counter
-- `resolveChargeCorrectEffects()` — multiplier bonuses, draw bonuses, speed bonuses
+- `resolveTurnStartEffects()` — block grants (iron_shield: 2 + shieldsPlayedLastTurn), AP bonuses, draw bonuses, poison to all enemies (herbal_pouch), Capacitor release, Deja Vu spawn. Context field `shieldsPlayedLastTurn` required for iron_shield dynamic block.
+- `resolveDamageTakenEffects()` — flat damage reduction (steel_skin), flat increase (thick_skin: +2), thorns, pity counter
+- `resolveChargeCorrectEffects()` — multiplier bonuses, draw bonuses, speed bonuses. Note: tattered_notebook gold removed (v3: exhaust effect).
 - `resolveChargeWrongEffects()` — safety nets (lucky_coin), self-damage (volatile_core, scholars_gambit)
+- `resolveAttackModifiers()` — returns `strengthGain` field: brass_knuckles grants +1 permanent Strength (9999 turns) on every 3rd attack. Caller must apply to playerState.statusEffects.
+- `resolveDebuffAppliedModifiers()` — returns `reflectToEnemy: boolean`; thick_skin v3 reflects ALL debuffs to enemy instead of player.
+- `resolveExhaustEffects()` — returns `bonusCardDraw` (exhaustion_engine +2, scavengers_eye +1) and `tempStrengthGain` (tattered_notebook +1 for 1 turn). Caller must apply strength status effect.
+- `resolveEncounterEndEffects()` — herbal_pouch heals 3 HP post-combat (was 8 in v2).
+- `resolveCardRewardOptionCountV2()` — scavengers_eye no longer grants +1 card reward option (v3 rework).
 - `resolvePoisonTickBonus()` — plague_flask extra damage per stack
 - `getMaxRelicSlots()` — returns 5, or 6 if scholars_gambit held
 

@@ -108,51 +108,45 @@ describe('quick_study (common)', () => {
 });
 
 describe('thick_skin (common)', () => {
-  it('reduces first debuff duration by 1', () => {
+  it('reflects debuff to enemy (reflectToEnemy = true)', () => {
     const result = resolveDebuffAppliedModifiers(
       new Set(['thick_skin']),
       { isFirstDebuffThisEncounter: true },
     );
-    expect(result.durationReduction).toBe(1);
+    expect(result.reflectToEnemy).toBe(true);
   });
 
-  it('does NOT fire on 2nd debuff (isFirstDebuffThisEncounter = false)', () => {
+  it('still reflects on any debuff, not just first (reflectToEnemy = true)', () => {
     const result = resolveDebuffAppliedModifiers(
       new Set(['thick_skin']),
       { isFirstDebuffThisEncounter: false },
     );
-    expect(result.durationReduction).toBe(0);
+    expect(result.reflectToEnemy).toBe(true);
   });
 
-  it('does NOT fire when relic not held', () => {
+  it('does NOT reflect when relic not held', () => {
     const result = resolveDebuffAppliedModifiers(
       new Set(),
       { isFirstDebuffThisEncounter: true },
     );
-    expect(result.durationReduction).toBe(0);
+    expect(result.reflectToEnemy).toBe(false);
   });
 });
 
-describe('tattered_notebook (common)', () => {
-  it('grants +5 gold on first correct Charge', () => {
-    const result = resolveChargeCorrectEffects(
-      new Set(['tattered_notebook']),
-      makeChargeCorrectCtx({ isFirstChargeCorrectThisEncounter: true }),
-    );
-    expect(result.goldBonus).toBe(5);
+describe('tattered_notebook (common, v3 rework)', () => {
+  it('grants +1 tempStrengthGain when card exhausted', () => {
+    const result = resolveExhaustEffects(new Set(['tattered_notebook']));
+    expect(result.tempStrengthGain).toBe(1);
   });
 
-  it('does NOT grant gold on subsequent correct Charges', () => {
-    const result = resolveChargeCorrectEffects(
-      new Set(['tattered_notebook']),
-      makeChargeCorrectCtx({ isFirstChargeCorrectThisEncounter: false }),
-    );
-    expect(result.goldBonus).toBe(0);
+  it('does NOT grant strength when relic not held', () => {
+    const result = resolveExhaustEffects(new Set());
+    expect(result.tempStrengthGain).toBe(0);
   });
 
-  it('does NOT grant gold when relic not held', () => {
+  it('no longer grants gold on correct Charge (v3 rework)', () => {
     const result = resolveChargeCorrectEffects(
-      new Set(),
+      new Set(['tattered_notebook']),
       makeChargeCorrectCtx({ isFirstChargeCorrectThisEncounter: true }),
     );
     expect(result.goldBonus).toBe(0);
@@ -194,35 +188,43 @@ describe('battle_scars (common)', () => {
   });
 });
 
-describe('brass_knuckles (common)', () => {
-  it('grants +6 on 3rd attack', () => {
+describe('brass_knuckles (common, v3 rework)', () => {
+  it('grants +1 strengthGain on 3rd attack', () => {
     const result = resolveAttackModifiers(
       new Set(['brass_knuckles']),
       makeAttackCtx({ attackCountThisEncounter: 3 }),
     );
-    expect(result.flatDamageBonus).toBe(6);
+    expect(result.strengthGain).toBe(1);
   });
 
-  it('grants +6 on 6th attack', () => {
+  it('grants +1 strengthGain on 6th attack', () => {
     const result = resolveAttackModifiers(
       new Set(['brass_knuckles']),
       makeAttackCtx({ attackCountThisEncounter: 6 }),
     );
-    expect(result.flatDamageBonus).toBe(6);
+    expect(result.strengthGain).toBe(1);
   });
 
-  it('does NOT grant bonus on 1st attack', () => {
+  it('does NOT grant strength on 1st attack', () => {
     const result = resolveAttackModifiers(
       new Set(['brass_knuckles']),
       makeAttackCtx({ attackCountThisEncounter: 1 }),
     );
-    expect(result.flatDamageBonus).toBe(0);
+    expect(result.strengthGain).toBe(0);
   });
 
-  it('does NOT grant bonus on 2nd attack', () => {
+  it('does NOT grant strength on 2nd attack', () => {
     const result = resolveAttackModifiers(
       new Set(['brass_knuckles']),
       makeAttackCtx({ attackCountThisEncounter: 2 }),
+    );
+    expect(result.strengthGain).toBe(0);
+  });
+
+  it('no longer grants flatDamageBonus on 3rd attack', () => {
+    const result = resolveAttackModifiers(
+      new Set(['brass_knuckles']),
+      makeAttackCtx({ attackCountThisEncounter: 3 }),
     );
     expect(result.flatDamageBonus).toBe(0);
   });
@@ -969,10 +971,26 @@ describe('whetstone (reworked)', () => {
   });
 });
 
-describe('iron_shield (reworked)', () => {
-  it('grants 5 block at turn start', () => {
-    const result = resolveTurnStartEffects(new Set(['iron_shield']));
+describe('iron_shield (reworked, v3)', () => {
+  it('grants 2 block when 0 shields played last turn', () => {
+    const result = resolveTurnStartEffects(new Set(['iron_shield']), 0, {
+      turnNumberThisEncounter: 1, characterLevel: 1, dejaVuUsedThisEncounter: false,
+      shieldsPlayedLastTurn: 0,
+    });
+    expect(result.bonusBlock).toBe(2);
+  });
+
+  it('grants 5 block when 3 shields played last turn', () => {
+    const result = resolveTurnStartEffects(new Set(['iron_shield']), 0, {
+      turnNumberThisEncounter: 2, characterLevel: 1, dejaVuUsedThisEncounter: false,
+      shieldsPlayedLastTurn: 3,
+    });
     expect(result.bonusBlock).toBe(5);
+  });
+
+  it('grants 2 block by default (no context)', () => {
+    const result = resolveTurnStartEffects(new Set(['iron_shield']));
+    expect(result.bonusBlock).toBe(2);
   });
 });
 

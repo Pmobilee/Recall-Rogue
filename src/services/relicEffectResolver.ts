@@ -79,6 +79,11 @@ export interface TurnStartEffects {
    * Applied in addition to bonusAP; caller enforces AP min/max caps.
    */
   auraApModifier?: number;
+  /**
+   * Poison stacks to apply to all enemies at turn start (herbal_pouch v3: 1 stack/turn).
+   * 0 if herbal_pouch not held.
+   */
+  poisonToAllEnemies?: number;
 }
 
 /**
@@ -96,6 +101,11 @@ export interface TurnStartContext {
    * 'brain_fog' | 'neutral' | 'flow_state'. Optional; ignored if domain_mastery_sigil not held.
    */
   auraState?: 'brain_fog' | 'neutral' | 'flow_state';
+  /**
+   * Number of shield cards played on the PREVIOUS turn (iron_shield v3: bonusBlock = 2 + this value).
+   * Undefined on first turn of encounter (treated as 0).
+   */
+  shieldsPlayedLastTurn?: number;
 }
 
 /**
@@ -111,9 +121,10 @@ export function resolveTurnStartEffects(
   capacitorStored: number = 0,
   context?: TurnStartContext,
 ): TurnStartEffects {
-  // iron_shield (v2, +5) replaces iron_buckler (v1, +5)
+  // iron_shield (v3, 2 + shieldsPlayedLastTurn) replaces iron_buckler (v1, +5)
+  const shieldsLastTurn = context?.shieldsPlayedLastTurn ?? 0;
   const bonusBlock =
-    relicIds.has('iron_shield') ? 5 :
+    relicIds.has('iron_shield') ? 2 + shieldsLastTurn :
     relicIds.has('iron_buckler') ? 5 : // v1 legacy fallback
     0;
 
@@ -161,6 +172,9 @@ export function resolveTurnStartEffects(
     maxApReduction = 1;
   }
 
+  // herbal_pouch (v3) — apply 1 Poison to all enemies at turn start
+  const poisonToAllEnemies = relicIds.has('herbal_pouch') ? 1 : 0;
+
   // domain_mastery_sigil (v3) — +1 AP in Flow State, -1 AP in Brain Fog
   let auraApModifier: number | undefined;
   if (relicIds.has('domain_mastery_sigil') && context?.auraState) {
@@ -178,7 +192,7 @@ export function resolveTurnStartEffects(
   if (relicFired) playCardAudio('relic-trigger');
   if (dejaVuCardSpawn) playCardAudio('relic-card-spawn');
 
-  return { bonusBlock, capacitorReleasedAP, bonusAP, pocketWatchDrawBonus, dejaVuCardSpawn, bonusCardDraw, maxApReduction, auraApModifier };
+  return { bonusBlock, capacitorReleasedAP, bonusAP, pocketWatchDrawBonus, dejaVuCardSpawn, bonusCardDraw, maxApReduction, auraApModifier, poisonToAllEnemies };
 }
 
 // ─── Encounter Start ────────────────────────────────────────────────
@@ -304,6 +318,11 @@ export interface AttackModifiers {
   multiHitBonus: number;
   /** Override for execute threshold if executioners_axe is held (0.5 instead of default 0.3). */
   executeThresholdOverride: number | null;
+  /**
+   * Permanent Strength gain (encounter-scoped) from brass_knuckles on every 3rd attack.
+   * 1 if triggered, 0 otherwise. Caller applies this as a strength status effect with turnsRemaining=9999.
+   */
+  strengthGain: number;
 }
 
 /** Context required to resolve attack modifiers. */
@@ -481,11 +500,10 @@ export function resolveAttackModifiers(
     flatDamageBonus += 3;
   }
 
-  // brass_knuckles — every 3rd attack +6 damage
+  // brass_knuckles — every 3rd attack grants +1 permanent Strength (encounter-scoped)
   const attackCount = context.attackCountThisEncounter ?? 0;
-  if (relicIds.has('brass_knuckles') && attackCount > 0 && attackCount % 3 === 0) {
-    flatDamageBonus += 6;
-  }
+  const strengthGain =
+    relicIds.has('brass_knuckles') && attackCount > 0 && attackCount % 3 === 0 ? 1 : 0;
 
   // null_shard — all attacks +25% damage (chain mult override handled in resolveChainModifiers)
   if (relicIds.has('null_shard')) {
@@ -548,6 +566,7 @@ export function resolveAttackModifiers(
     applyPoison,
     multiHitBonus,
     executeThresholdOverride,
+    strengthGain,
   };
 }
 
@@ -1373,8 +1392,8 @@ export function resolveEncounterEndEffects(
   relicIds: Set<string>,
   context?: EncounterEndContext,
 ): EncounterEndEffects {
-  // herbal_pouch v2: always heal 8 HP post-combat (v1 healed on encounter start with condition)
-  const healHp = relicIds.has('herbal_pouch') ? 8 : 0;
+  // herbal_pouch v3: heal 3 HP post-combat (v1: encounter-start conditional heal; v2: 8 HP; v3: 3 HP)
+  const healHp = relicIds.has('herbal_pouch') ? 3 : 0;
 
   const chargesCorrect = context?.chargesCorrectThisEncounter ?? 0;
 
@@ -1427,7 +1446,7 @@ export interface ChargeCorrectEffects {
    * and player may activate it. Caller decides whether to consume the use.
    */
   mirrorAvailable: boolean;
-  /** Gold bonus: +5 on first correct Charge per encounter (tattered_notebook); +10 per Charge from knowledge_tax. */
+  /** Gold bonus: +10 per Charge from knowledge_tax. (tattered_notebook v3 reworked to on_exhaust) */
   goldBonus: number;
   /**
    * Percentage bonus to charge-correct effect (glass_lens: +50%).
@@ -1593,9 +1612,9 @@ export function resolveChargeCorrectEffects(
   // mirror_of_knowledge — available if not yet used this encounter
   const mirrorAvailable = relicIds.has('mirror_of_knowledge') && !context.mirrorUsedThisEncounter;
 
-  // tattered_notebook — +5 gold on first correct Charge per encounter
-  const goldBonus =
-    relicIds.has('tattered_notebook') && context.isFirstChargeCorrectThisEncounter ? 5 : 0;
+  // tattered_notebook (v3) — reworked to on_exhaust (tempStrengthGain in resolveExhaustEffects)
+  // goldBonus only from knowledge_tax now
+  const goldBonus = 0;
 
   // soul_jar — 1 charge per 5th cumulative correct Charge in encounter
   const soulJarChargeGained =
@@ -2164,8 +2183,9 @@ export function resolveCurrencyBonusV2(relicIds: Set<string>): number {
  * @returns Number of card reward options to display.
  */
 export function resolveCardRewardOptionCountV2(relicIds: Set<string>): number {
-  // scavengers_eye (v2) or prospectors_pick (v1 legacy) both give +1 option
-  if (relicIds.has('scavengers_eye') || relicIds.has('prospectors_pick')) return 4;
+  // prospectors_pick (v1 legacy) gives +1 option
+  // scavengers_eye (v3) reworked to on_exhaust draw — no longer affects card reward count
+  if (relicIds.has('prospectors_pick')) return 4;
   return 3;
 }
 
@@ -2250,10 +2270,10 @@ export function resolveBurnModifiers(relicIds: Set<string>): BurnModifiers {
 /** Modifiers applied when a debuff is applied to the player. */
 export interface DebuffAppliedModifiers {
   /**
-   * Reduction in debuff duration (thick_skin: -1 turn on first debuff per encounter).
-   * 0 if not applicable.
+   * Whether the debuff should be reflected to the enemy instead of applied to the player (thick_skin v3).
+   * When true, caller applies the debuff to the enemy, not the player.
    */
-  durationReduction: number;
+  reflectToEnemy: boolean;
 }
 
 /** Context for resolveDebuffAppliedModifiers. */
@@ -2273,12 +2293,11 @@ export function resolveDebuffAppliedModifiers(
   relicIds: Set<string>,
   context: DebuffAppliedContext,
 ): DebuffAppliedModifiers {
-  // thick_skin v2 rework: debuff duration reduction REMOVED.
-  // thick_skin now increases damage taken (+2) — see resolveDamageTakenEffects.
-  // Legacy v1 behaviour (duration -1 on first debuff) is preserved below for save compatibility only.
-  const durationReduction =
-    relicIds.has('thick_skin') && context.isFirstDebuffThisEncounter ? 1 : 0;
-  return { durationReduction };
+  // thick_skin v3 rework: debuffs are reflected to the enemy instead of reducing duration.
+  // v2: +2 damage taken (still in resolveDamageTakenEffects).
+  // v1 legacy (duration -1 on first debuff) is superseded by this reflect mechanic.
+  const reflectToEnemy = relicIds.has('thick_skin');
+  return { reflectToEnemy };
 }
 
 // ─── Expansion: Perfect Turn Effects ────────────────────────────────
@@ -2497,10 +2516,15 @@ export function resolveHpLossEffects(
 /** Effects that trigger when a card is exhausted. */
 export interface ExhaustEffects {
   /**
-   * Bonus cards to draw when a card is exhausted (exhaustion_engine: +2 draw).
-   * 0 if exhaustion_engine not held.
+   * Bonus cards to draw when a card is exhausted (exhaustion_engine: +2 draw; scavengers_eye v3: +1 draw).
+   * 0 if neither relic held.
    */
   bonusCardDraw: number;
+  /**
+   * Temporary Strength gain this turn from tattered_notebook v3 (+1 Strength when a card is exhausted).
+   * Caller applies as a Strength status effect for 1 turn. 0 if relic not held.
+   */
+  tempStrengthGain: number;
 }
 
 /**
@@ -2513,6 +2537,7 @@ export function resolveExhaustEffects(
   relicIds: Set<string>,
 ): ExhaustEffects {
   let bonusCardDraw = 0;
+  let tempStrengthGain = 0;
 
   // exhaustion_engine — draw 2 when a card is exhausted
   if (relicIds.has('exhaustion_engine')) {
@@ -2520,7 +2545,19 @@ export function resolveExhaustEffects(
     playCardAudio('relic-trigger');
   }
 
-  return { bonusCardDraw };
+  // scavengers_eye (v3) — draw 1 from draw pile when a card is exhausted
+  if (relicIds.has('scavengers_eye')) {
+    bonusCardDraw += 1;
+    playCardAudio('relic-trigger');
+  }
+
+  // tattered_notebook (v3) — gain +1 temporary Strength this turn when a card is exhausted
+  if (relicIds.has('tattered_notebook')) {
+    tempStrengthGain += 1;
+    playCardAudio('relic-trigger');
+  }
+
+  return { bonusCardDraw, tempStrengthGain };
 }
 
 // ─── Chain Break Effects ─────────────────────────────────────────────
