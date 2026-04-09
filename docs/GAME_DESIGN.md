@@ -253,9 +253,11 @@ The floor-based timer table below describes an **invisible internal timer** only
 | 25+ | 4s | Endless |
 
 **Purpose of the invisible timer:**
-1. **Relic triggers:** Relics like Quicksilver Quill ("answered in under 2 seconds") and Adrenaline Shard ("under 3 seconds") check against it.
+1. **Relic triggers:** Relics like Quicksilver Quill ("answered in under 2 seconds") and Adrenaline Shard ("under 3 seconds") check against it. The Quicksilver Quill relic grants ×1.5 additional multiplier on fast correct answers — this is the ONLY source of speed-based damage bonus in the game.
 2. **Leaderboard scoring:** Daily Expedition and competitive runs use response time as a scoring component — faster correct answers score higher.
 3. **Auto-fizzle:** Cards auto-fizzle if no answer is given before the timer expires (prevents AFK stalling). This timeout is generous and not communicated as time pressure.
+
+**Speed bonus is disabled by default (2026-04-09):** The base `SPEED_BONUS_MULTIPLIER = 1.0×` — no inherent bonus for answering fast. Speed bonuses are relic-only (Quicksilver Quill). The timer still exists for relic triggers, leaderboard scoring, and auto-fizzle, but fast answers have no inherent damage bonus without the Quicksilver Quill equipped.
 
 **Question length modifier:** Add +1s per 12 words beyond 10 words in total text (question + all answer options). Applied to the invisible timer threshold.
 
@@ -1092,11 +1094,11 @@ Cards unlock as character level increases. New players start at level 0 with 36 
 |------|-------|----|------------|---------------------|---------------|
 | Strike | 5 | 1 | 4 dmg | 6 dmg | 2.8 dmg |
 | Block | 4 | 1 | 3 block | 4.5 block | 2.1 block |
-| Surge | 1 | 0 | Draw 2 cards | Draw 3 cards | Draw 1 card |
+| Transmute | 1 | 1 | Pick 1 of 3 cards to permanently replace in deck | Expanded choice pool | Weaker pick |
 
 **10 cards = cycle every 2 turns** (draw 5 per turn). Each card reward is a 10% deck change — immediately impactful. Boring by design; interesting mechanics come from rewards.
 
-**One Surge (0 AP, draw 2):** The single interesting starter card. Charging Surge costs 1 AP (the +1 surcharge) for draw 3 — introduces the Charge value proposition naturally.
+**One Transmute (1 AP):** The single interesting starter card. Immediately introduces deck-building within the run — players permanently replace a deck card with one of 3 offered options. Replaces the old Surge (draw 2) that was removed from the starter in 2026-04-09.
 
 ### Card Unlock Progression (Level 0–13)
 
@@ -1192,14 +1194,23 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0�
 
 ### Encounter-Scoped Transform System
 
-Cards can be temporarily transformed for the duration of a single encounter and then revert:
+Some cards are temporarily transformed for the duration of a single encounter and then revert:
 
 - A transformed card has `isTransmuted: true` and an `originalCard` reference stored on it
 - At the end of every encounter, `revertTransmutedCards()` in `turnManager.ts` restores all such cards to their original state
-- **Transmute** uses this to self-transform into a player-chosen card type for one encounter
 - **Conjure** creates temporary cards added to hand (also `isTransmuted: true`) that are removed at encounter end
 - **Mimic** copies a discard card for the current turn only (per-turn variant of the same pattern)
 - Mastery level of the temporary form can differ from the source card's mastery level
+
+### Transmute — Permanent Deck Building (2026-04-09)
+
+**Transmute permanently replaces a card in the run deck** (not encounter-scoped). When Transmute resolves, `resolveTransmutePick()` in `turnManager.ts` removes the source card and inserts the chosen card permanently:
+
+- The new card keeps the original card's `factId` (fact binding preserved)
+- Catch-up mastery via `computeCatchUpMastery()` — same as reward cards
+- `isTransmuted` flag is NOT set on permanently replaced cards
+- `revertTransmutedCards()` does NOT undo permanent Transmute replacements
+- This makes Transmute a deck-building mechanic: players refine their deck throughout the run, not just at reward rooms
 
 ### New Mechanic Summary by Type
 
@@ -1682,34 +1693,41 @@ Intents: Heal 8 (wt 2), Multi-attack 2×3 (wt 2), Debuff Poison 2/3t (wt 1), Att
 *The source of all those roots. Old, vast, and furious.*
 
 **The Headmistress** (`headmistress`) — Mini-Boss | Medium tier
-Intents: Defend 2 (wt 3), Charge 5 (wt 1), Buff +1 Strength 2t (wt 1), Attack 2 (wt 1)
+Intents: Defend 9 (wt 2), Charge 10 (wt 1), Attack 6 (wt 2)
+**Unique mechanic — Detention:** At encounter start, exhausts the player's 2 highest-mastery cards. Players must fight with a weakened hand.
 *A colony of iron beetles, stacked and coordinated. Doesn't yield.*
 
 **The Tutor** (`tutor`) — Mini-Boss | Light tier
-Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Heal 6 (wt 1), Attack 2 (wt 1)
+Intents: Attack 8 (wt 3), Debuff Weakness 1/2t (wt 1), Debuff Vulnerable 1/2t (wt 1), Heal 6 (wt 1)
+**Unique mechanic — Pop Quiz:** When the player answers a Charge wrong, the Tutor's next attack is doubled.
 *Swamp hag. Curses and weakens before she bothers to hit.*
 
 **The Study Group** (`study_group`) — Mini-Boss | Medium tier
-Intents: Debuff Poison 3/3t (wt 2), Buff +2 Strength 2t (wt 1), Defend 2 (wt 1), Attack 2 (wt 1)
+Phase transition at 33% HP (last member stands alone, Phase 2: Attack 11).
+Intents: Attack 8 (wt 2), Multi-attack 5×3 (wt 1), Defend 8 (wt 1)
+**Unique mechanic — Multi-phase:** Simulates 3 group members; group synergy Strength buff removed when last member is isolated.
 *Crowned fungus. Rules its colony through poison.*
 
 #### Elite Enemies
 
 **The Librarian** (`librarian`) — Elite
-Phase 1: Attack 2 (wt 2), Defend 2 (wt 1), Charge 5 (wt 1), Buff +2 Strength 2t (wt 1)
-Phase transition at 40% HP → Phase 2: Attack 3 (wt 2), Multi-attack 2×3 (wt 2), Charge 5 (wt 1)
+Phase 1: Attack 6 (wt 2), Defend 7 (wt 1), Charge 10 (wt 1)
+Phase transition at 40% HP → Phase 2: Attack 8 (wt 2), Multi-attack 5×3 (wt 2), Charge 10 (wt 1)
+**Unique mechanic — Silence:** Each enemy turn, locks a random card type in the player's hand (`lockedCardType`). Locked cards cannot be played until the next player turn start.
 *Thick hide, slow temper. Wound it and it stops being slow.*
 
 #### Boss Enemies
 
 **The Final Exam** (`final_exam`) — Boss
-Phase 1: Attack 2 (wt 2), Multi-attack 2×4 (wt 1), Defend 2 (wt 1), Debuff Weakness 1/2t (wt 1)
-Phase transition at 40% HP → Phase 2: Attack 4 (wt 2), Multi-attack 2×3 (wt 2), Defend 2 (wt 1), Charge 6 bypass-cap (wt 1)
+Phase 1: Attack 5 (wt 2), Multi-attack 6×4 (wt 1), Defend 8 (wt 1)
+Phase transition at 40% HP → Phase 2: Attack 8 (wt 2), Multi-attack 6×3 (wt 2), Defend 8, Charge 12 bypass-cap
+**Quiz Gauntlet at 50% HP (Comprehensive Review):** Boss stops all attacks and fires 8 rapid-fire quiz questions from the player's weakest knowledge domain. Correct → deals 5% of boss maxHP as damage. Wrong → deals 10 damage to player (blockable). Timer starts at 12s decreasing by 0.5s per question (floor 5s). After 8 questions, boss resumes normal Phase 2.
 *An old mining rig, still running. Nobody told it to stop.*
 
 **The Burning Deadline** (`burning_deadline`) — Boss
-Phase 1: Attack 2 (wt 1), Attack 2 (wt 1), Debuff Poison 3/3t (wt 1), Buff +2 Strength 3t (wt 1)
-Phase transition at 40% HP → Phase 2: Attack 4 (wt 2), Multi-attack 2×4 (wt 1), Debuff Poison 4/3t (wt 1)
+Phase 1: Attack 5 (wt 2), Attack 6 (wt 2)
+Phase transition at 40% HP → Phase 2: Attack 8, Multi-attack 6×4, Volcanic blast + Poison 4/3t
+**Quiz Gauntlet at 50% HP (Comprehensive Review):** Same as Final Exam — 8-question gauntlet from weakest domain, decreasing timer, wrong answers deal 10 player damage.
 *Molten rock, given shape. The heat alone is a threat.*
 
 ---
@@ -2114,16 +2132,16 @@ See §3 for full detail. Summary for quick reference:
 
 ### Canary System (Invisible Adaptive Difficulty)
 
-Graduated assist tiers based on performance within a floor:
+Graduated assist tiers based on performance within a floor. Canary v2 (2026-04-09) modulates **both enemy HP and enemy damage**:
 
-| Canary State | Trigger | Enemy Damage | Timer |
-|-------------|---------|--------------|-------|
-| **Deep Assist** | 5+ wrong answers on floor | 0.65× | −2s |
-| **Assist** | 3+ wrong answers on floor | 0.80× | −1s |
-| **Neutral** | Baseline | 1.0× | Standard |
-| **Challenge** | 5+ correct answer streak | 1.1× | Standard |
+| Canary State | Trigger | Enemy Damage | Enemy HP | Timer |
+|-------------|---------|--------------|----------|-------|
+| **Deep Assist** | 5+ wrong answers on floor | 0.65× | 0.8× | −2s |
+| **Assist** | 3+ wrong answers on floor | 0.80× | 0.9× | −1s |
+| **Neutral** | Baseline | 1.0× | 1.0× | Standard |
+| **Challenge** | 5+ correct answer streak | 1.1× | 1.2× | Standard |
 
-Canary is completely invisible. Never announced. Never reduces educational rigor (answer count, question format unchanged). Only game difficulty flexes.
+Canary is completely invisible. Never announced. Never reduces educational rigor (answer count, question format unchanged). Only game difficulty flexes. HP scaling applies at enemy creation time; damage scaling is per-hit during combat.
 
 Constants: `CANARY_DEEP_ASSIST_ENEMY_DMG_MULT = 0.65`, `CANARY_ASSIST_ENEMY_DMG_MULT = 0.80`, `CANARY_CHALLENGE_ENEMY_DMG_MULT = 1.1`, `CANARY_DEEP_ASSIST_WRONG_THRESHOLD = 5`, `CANARY_ASSIST_WRONG_THRESHOLD = 3`, `CANARY_CHALLENGE_STREAK_THRESHOLD = 5`
 
@@ -2606,15 +2624,18 @@ The archetype selection screen exists in code but is currently disabled. All run
 
 ### Build Archetypes
 
+8 recognized combat archetypes define how players build synergies across cards, relics, and chain types:
+
 | Archetype | Fantasy | Core Relics | Playstyle |
 |-----------|---------|-------------|-----------|
-| Chain Master | Long chains, exponential damage | Chain Reactor, Resonance Crystal, Prismatic Shard | Plan chains, seek tag matches |
-| Speed Scholar | Fast answers, massive bonuses | Quicksilver Quill, Adrenaline Shard, Time Warp | Charge fast, get bonus multipliers |
-| Glass Cannon | High risk, one-shot kills | Volatile Core, Reckless Resolve, Crit Lens | Low HP = high damage, risk everything |
-| Iron Fortress | Unkillable, attrition wins | Aegis Stone, Thorn Crown, Regeneration Orb | Stack block, enemy kills itself |
-| Poison Alchemist | DoT stacking, indirect damage | Plague Flask, Festering Wound, Toxic Bloom | Apply poison, then burst |
-| Burst Master | Save AP, one massive turn | Capacitor, Overflow Gem, Double Down | Defend → Defend → NUKE |
-| Knowledge Engine | Quiz mastery = combat mastery | Scholar's Crown, Memory Nexus, Insight Prism | Charge everything, learn everything |
+| **Power** | Raw damage output | Volatile Core, Reckless Resolve, Crit Lens | Maximize single-hit damage; Charge for raw numbers |
+| **Poison** | DoT stacking, indirect damage | Plague Flask, Festering Wound, Toxic Bloom | Apply poison, then burst; outlast enemies |
+| **Fortress** | Unkillable attrition | Aegis Stone, Thorn Crown, Regeneration Orb | Stack block, let enemies die on Thorns |
+| **Tempo** | AP efficiency and board control | Blood Price, Overflow Gem, Domain Mastery Sigil | Play more cards per turn; cycle and chain consistently |
+| **Chain** | Long chains, exponential damage | Chain Reactor, Resonance Crystal, Prismatic Shard | Plan chains, seek tag matches for 3.5× multipliers |
+| **Berserker** | Low HP = high power | Berserker's Oath, Reckless Resolve, Volatile Core | Accept self-damage; fight at low HP for bonuses |
+| **Control** | Debuff and deny | Plague Flask, Lucky Coin, Quick Study | Stack enemy weakness/vulnerable; quiz on weakened foes |
+| **Scholar** | Quiz mastery = combat mastery | Scholar's Crown, Memory Nexus, Insight Prism | Charge everything, level up fast, learn everything |
 
 ### Complete Relic Catalogue (90 Relics — 40 Starter + 50 Unlockable)
 

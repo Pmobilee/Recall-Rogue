@@ -9,9 +9,10 @@
 ## Card Play Values
 - Quick Play = `getMasteryStats(mechanicId, level).qpValue` (explicit per-level value)
 - Charge Correct = `qpValue × CHARGE_CORRECT_MULTIPLIER (1.75)`
-- Charge Wrong = `Math.max(0, mechanic.chargeWrongValue + masteryBonus)` — floored at 0
+- Charge Wrong = `FIZZLE_EFFECT_RATIO (0.25×)` of base effect — always resolves, never zero (`Math.max(0, ...)` floor applied)
 - CHARGE_AP_SURCHARGE = 1 (charging costs +1 AP over Quick Play)
 - Surge turns and Chain Momentum waive surcharge — surge is the strategic burst window for free charging
+- SPEED_BONUS_MULTIPLIER = 1.0× (disabled by default, 2026-04-09) — speed bonuses are relic-only via Quicksilver Quill
 
 ## Mastery Stat Tables (2026-04-03 overhaul, replaces perLevelDelta)
 - `MASTERY_STAT_TABLES` in `cardUpgradeService.ts` — 96 mechanics with full L0-L5 stat tables

@@ -185,7 +185,7 @@ Also reduced Act 1 boss phase 1 attack values to 3–4 (from 5) and phase 2 to 5
 
 Root cause: starter deck L0 cards (QP=3) deal only 9 dmg/turn vs old 12 dmg/turn. Scholar dropped 89→42%, dedicated 56→10%. Act 1 HP must come down ~30% to restore 3–4 turn fights; Act 2/3 non-commons also reduced ~15% to compensate for weaker max-mastery ceiling.
 
-**Player damage model (L0 starter deck: 5 strike, 4 block, 1 foresight):**
+**Player damage model (L0 starter deck: 5 strike, 4 block, 1 transmute — foresight replaced 2026-04-09):**
 - 3 QP strikes = 9 dmg/turn
 - 3 CC strikes = ~16 dmg/turn
 - Mixed (1CC + 2QP) = 11 dmg/turn

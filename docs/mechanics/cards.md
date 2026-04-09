@@ -359,6 +359,20 @@ catchUpLevel = clamp(floor(rand(0.5–1.5) × avgMastery), 0, mechanic.maxLevel)
 
 ---
 
+## Starter Deck Composition (2026-04-09)
+
+The run starts with 10 cards: **5 Strike + 4 Block + 1 Transmute**. Transmute replaced Foresight (draw 2 utility) to immediately introduce deck-building as a mechanic. The starter deck is intentionally weak — interesting power comes from rewards and mastery.
+
+| Card | Count | L0 QP value |
+|------|-------|-------------|
+| Strike | 5 | 3 dmg |
+| Block | 4 | 3 block |
+| Transmute | 1 | Permanently replaces 1 deck card with 1 of 3 options |
+
+**Transmute as a starter card:** Transmute's `resolveTransmutePick()` permanently replaces a source card in the run deck (not encounter-scoped revert). Each Transmute play is a mini-deck-builder moment — use it to shape the deck before reward rooms hit.
+
+---
+
 ## Card Creation (`createCard`)
 
 `cardFactory.ts` builds cards via `createCard(fact, reviewState, cardTypeOverride?)`:
