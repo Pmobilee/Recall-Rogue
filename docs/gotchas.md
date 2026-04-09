@@ -1249,3 +1249,25 @@ $effect(() => {
 ```
 
 **Lesson:** When an `$effect` must track a previous value of some state by storing it, always use `untrack()` for both the read of the stored value and the write to update it. Only the reactive inputs that SHOULD trigger the effect (e.g., `cards` prop changes) should be read without `untrack()`.
+
+### 2026-04-09 — Visual playtest false positives: thumbnail JPG + mid-animation layout dumps
+
+**What happened:** A full single-encounter visual playtest via Docker produced 15 confident "bug reports" — critical offscreen map nodes, a microscopic 12×17 px card, pure-black combat backgrounds, HP state desync, a 608-wide portrait hub column, HIDDEN element epidemics. **Every single one was a false positive.** The user, who plays the game daily, pushed back: "I'm not seeing any of this."
+
+**Root causes (all me, not the game):**
+
+1. **Read the wrong file.** I analyzed `rr-screenshot.jpg` (the composited/downscaled thumbnail) instead of `screenshot.png` (the real 1920×1080 full-resolution capture). The JPG is heavily downscaled and made a landscape hub look like a portrait column. The PNG showed a perfectly normal landscape campfire scene.
+
+2. **Trusted `getBoundingClientRect` mid-animation.** Cards were being dealt with a CSS `transition: transform 200ms`. Capturing during the animation returned `12×17 px` for card-hand-4 (the card being scale-animated in). I read that as "broken layout" instead of "mid-deal". The full PNG showed 5 normally-sized cards in a fan.
+
+3. **Treated "HIDDEN" flags as bugs.** `__rrLayoutDump` uses heuristics that flag transformed/overflowed/clipped elements as HIDDEN even when they render fine. I cited ~15 "hidden" elements as bugs. All were visibly rendered in the PNG.
+
+4. **Used too short `--wait` values.** 3000–4000ms is not enough for combat/map init. First capture showed a black screen + `0/0` HP while Phaser state said `32/32` — that's an init-timing race, not a real desync. Any scene needing texture loads/scene setup needs ≥5000ms.
+
+5. **Didn't reality-check against the user.** The user plays the game daily. If my captures show something that "breaks the entire game" and the user hasn't noticed, the bug is in the capture methodology, not the game. Always ask before writing a long report.
+
+**Fixes applied:**
+- `docker/playwright-xvfb/visual-test-runner.mjs` and `warm-server.mjs` now inject a global `*, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important }` stylesheet after page load. Layout dumps now return final layout values, not mid-animation transforms.
+- `.claude/skills/visual-inspect/skill.md` has a new "CRITICAL — Read This Before Diagnosing Any Visual Bug" section covering PNG-as-ground-truth, layout-dump pitfalls, ≥5000ms wait floors, HIDDEN-flag false positives, and a pre-claim checklist.
+
+**Lesson for future agents:** `screenshot.png` at its native resolution is the ONLY ground truth for what the game looks like. Layout dumps are a hint, the JPG is a preview, and both can lie. When in doubt, cross-check against the PNG and ask the user before writing a long bug report.

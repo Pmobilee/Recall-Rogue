@@ -80,6 +80,20 @@ async function boot() {
   );
   console.log(`[${AGENT_ID}]   ⏱ dev tools ready: ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 
+  // Kill ALL CSS transitions/animations so layout dumps return final values,
+  // never mid-animation transforms (prevents "card at 12x17 px" false positives).
+  await page.addStyleTag({
+    content: `
+      *, *::before, *::after {
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+      }
+    `,
+  });
+
   ready = true;
   console.log(`[${AGENT_ID}] ✓ Warm container ready in ${((Date.now() - t0) / 1000).toFixed(1)}s — listening on port ${PORT}`);
 }

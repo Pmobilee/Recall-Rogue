@@ -47,6 +47,11 @@ scripts/docker-visual-test.sh --scenario <preset> --agent-id <task-id>
 - ALWAYS use `__rrScenario.load()` to jump to game states — NEVER click through menus manually
 - ALWAYS capture BOTH screenshot AND layout dump — one without the other is incomplete
 - ALWAYS reference `/tmp/rr-docker-visual/...` artifact paths in commit messages
+- **ALWAYS read `screenshot.png` (the full 1920×1080 PNG) as the source of truth** — never diagnose from `rr-screenshot.jpg` alone (it's a downscaled thumbnail that can make landscape look portrait and hide details). Cross-check the PNG before making any visual claim. See `docs/gotchas.md` 2026-04-09 "Visual playtest false positives" for a full case study.
+- **Layout dump is NOT ground truth.** `getBoundingClientRect` returns mid-animation transforms (a deal-animated card reports 12×17 px during its scale transition). Docker runners now inject a global `transition-duration: 0s !important` stylesheet to prevent this, but the rule stands: if the layout dump says something is broken and the PNG looks fine, the PNG wins.
+- **"HIDDEN" flags in layout dump are NOT bugs without PNG confirmation.** The dump flags many transformed/clipped elements as HIDDEN even when they render normally (`card-app`, `topbar`, `enemy-name-header`, `btn-end-turn`, `card-combat-overlay`, etc.).
+- **Minimum `--wait` for combat/map/shop scenarios is 5000ms.** 3–4 s captures show black scenes and stale HP values that look like bugs but are just init-timing artifacts. If a scene looks black/empty, recapture with 7–8 s before reporting anything.
+- **Reality-check against the user.** If your capture shows something "broken" that the user (who plays the game daily) hasn't mentioned, the bug is almost always in your capture methodology, not the game. Ask before writing a long report.
 - Docker containers use system Chromium + SwiftShader — full WebGL 2.0, no GPU needed
 - Chrome-lock only needed for `claude-in-chrome` MCP tools (shared browser session)
 - Native Playwright: use `channel: 'chrome'` — bundled Chromium has no WebGL on macOS ARM64

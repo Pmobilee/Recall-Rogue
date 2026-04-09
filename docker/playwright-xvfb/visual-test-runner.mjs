@@ -104,6 +104,21 @@ async function main() {
     await page.goto(GAME_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
     t('page loaded');
 
+    // Kill ALL CSS transitions and animations so getBoundingClientRect returns
+    // final layout values, never mid-animation transforms. Prevents false positives
+    // like "card-hand-4 is 12x17 px" (mid-deal scale transition).
+    await page.addStyleTag({
+      content: `
+        *, *::before, *::after {
+          transition-duration: 0s !important;
+          transition-delay: 0s !important;
+          animation-duration: 0s !important;
+          animation-delay: 0s !important;
+          animation-iteration-count: 1 !important;
+        }
+      `,
+    });
+
     // Wait for Phaser canvas (longer timeout for parallel Docker runs)
     await page.waitForFunction(
       () => {

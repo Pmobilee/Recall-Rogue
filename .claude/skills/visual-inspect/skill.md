@@ -9,6 +9,44 @@ model: sonnet
 
 Jump to ANY game state instantly via Playwright MCP + `window.__rrScenario`. This is the ONLY way to visually verify the game. Never navigate through menus manually.
 
+## ⚠️ CRITICAL — Read This Before Diagnosing Any Visual Bug
+
+These rules exist because a full playtest produced 15 confident "bug reports" that were all false positives (2026-04-09). Do not repeat those mistakes.
+
+### Source of truth for screenshots
+
+- **`screenshot.png`** (1920×1080 full-resolution PNG) is **the ONLY valid source of truth** for what the game actually looks like. Always read this first.
+- **`rr-screenshot.jpg`** is a composited/downscaled thumbnail. It is useful for size/network economy but it can make landscape layouts look portrait and crunch details. **Never diagnose a visual bug from the JPG alone** — always cross-check against the PNG.
+- The `Read` tool renders PNG/JPG downscaled in the display; the *file dimensions* are what matter. Run `file <path>` if unsure.
+
+### Layout-dump pitfalls — do NOT treat as ground truth
+
+`__rrLayoutDump()` returns `getBoundingClientRect()` values. These have two major failure modes:
+
+1. **Mid-animation capture**. If a CSS `transition` or WAAPI animation is running when the dump fires, `getBoundingClientRect` returns the *current transformed* size. Example real false positive: card-hand-4 reported as 12×17 px because the card-deal scale transition was mid-frame. The Docker runners now inject a global `transition-duration: 0s !important` stylesheet to prevent this, but if you're running outside Docker, you must inject the same style or wait for animations to complete.
+2. **"HIDDEN" false positives**. The dump's hidden-detection flags elements with specific opacity/transform/clip states as HIDDEN even when they render perfectly. Examples that almost always false-flag: `card-app`, `topbar`, `dungeon-map` wrapper, `enemy-name-header`, `btn-end-turn`, `player-hp-track`, `card-combat-overlay`. **Never report a HIDDEN flag as a bug** without confirming in the PNG that the element is actually invisible.
+
+**Rule: if a claim comes from the layout dump but is contradicted by the PNG, the PNG wins.**
+
+### Wait-time floors
+
+Combat, dungeon map, and shop scenes can take **>4 seconds** to fully initialize (background art, sprites, HP init, card deal). Capturing too early produces "pure black" screens and mismatched HP values that look like bugs but are just init-timing artifacts.
+
+- **Minimum `--wait` for combat/map/shop scenarios: 5000ms**
+- If a capture shows a black/empty scene, try again with 7000–8000ms before reporting it as a bug
+- Combat HP desync (Phaser dump says `32/32`, screenshot shows `0/0`): always an init-timing issue, never a real bug
+
+### Pre-claim checklist (run mentally before every "bug" you report)
+
+1. Did I read `screenshot.png`, not just `rr-screenshot.jpg`?
+2. Is my layout-dump claim consistent with the PNG? If not, drop the claim.
+3. Was the wait ≥5000ms? If the scene is black, re-capture with 8000ms.
+4. Is the element I'm flagging "broken size" possibly mid-animation? (Docker runners now kill transitions — but confirm.)
+5. Am I interpreting a HIDDEN flag without verifying the PNG?
+6. Have I actually played this part of the game manually? If the user says "I don't see this bug in normal play", the bug is almost certainly in my capture methodology.
+
+**When in doubt, ask the user before writing a long report.** A wrong report wastes more time than an unanswered question.
+
 ## Prerequisites
 
 - Dev server running: `npm run dev` (port 5173)
