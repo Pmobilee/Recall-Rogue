@@ -843,3 +843,21 @@ Compare against the current `data/decks/manifest.json` deck list. Any mismatch =
 **Fix:** Created 4 fix scripts (fix-pool-heterogeneity.mjs, add-synthetic-distractors.mjs, fix-self-answering.mjs, fix-empty-subdecks.mjs) and a prevention pipeline. Pre-commit hook now runs quiz audit alongside structural verification. All 4 issues documented as anti-patterns in .claude/rules/deck-quality.md.
 
 **Prevention:** Every new deck must pass `npm run deck:quality` (structural + quiz audit, 0 failures). The deck-master skill now includes a mandatory post-assembly quality pipeline with all 6 check scripts.
+
+### 2026-04-08 — Generic placeholder rewrites can create duplicate questions across pools
+
+**What:** When fixing self-answering questions, using generic placeholders like "this" or "This capital" to replace leaked words caused multiple distinct questions to collapse into the same string. For example, "What is the capital of Luxembourg?" and "What is the capital of Kuwait?" both became "What is the capital of This capital?" — identical strings that then fail the duplicate-question check in `verify-all-decks.mjs`.
+
+**Root cause:** The pass-1 rewrite script used a domain-level default placeholder ("this capital") for `world_capitals` facts where the country name leaked into the question. When the leaked word IS the distinguishing identifier in an otherwise templated question, replacing it with a generic placeholder removes all distinguishing content.
+
+**Fix:** For questions where the leaked word is the sole distinguishing element (e.g., "capital of X?" where answer is "X City"), rephrase the question around geographic or contextual clues unique to that country rather than substituting a generic placeholder.
+
+**Rule:** After any bulk self-answering rewrite pass, always check for new duplicate questions with:
+```python
+questions_seen = {}
+for fact in deck['facts']:
+    q = fact['quizQuestion']
+    questions_seen.setdefault(q, []).append(fact['id'])
+dups = {q: ids for q, ids in questions_seen.items() if len(ids) > 1}
+```
+Or just run `node scripts/verify-all-decks.mjs` which catches duplicates in check #12.
