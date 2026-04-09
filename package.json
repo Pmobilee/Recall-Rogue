@@ -116,7 +116,8 @@
     "deck:fix-synthetics": "node scripts/add-synthetic-distractors.mjs",
     "deck:fix-self-answering": "node scripts/fix-self-answering.mjs",
     "deck:fix-subdecks": "node scripts/fix-empty-subdecks.mjs",
-    "deck:quality": "node scripts/verify-all-decks.mjs && node scripts/quiz-audit.mjs --full"
+    "deck:quality": "node scripts/verify-all-decks.mjs && node scripts/quiz-audit.mjs --full",
+    "sim:analytics": "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200 --analytics"
   },
   "devDependencies": {
     "@napi-rs/canvas": "^0.1.97",

@@ -28,7 +28,7 @@ import {
 import type { Card, CardType, FactDomain, CardTier } from '../../../src/data/card-types.js';
 import type { EnemyTemplate } from '../../../src/data/enemies.js';
 import { selectRunChainTypes } from '../../../src/data/chainTypes.js';
-import { BotBrain, type BotSkills } from './bot-brain.js';
+import { BotBrain, type BotSkills, type BuildPreferences } from './bot-brain.js';
 import {
   PLAYER_START_HP,
   PLAYER_MAX_HP,
@@ -64,12 +64,26 @@ import {
 } from '../../../src/services/mapGenerator.js';
 import { generateMysteryEvent } from '../../../src/services/floorManager.js';
 
-// Re-export types used by run-batch.ts so it can import from one place
+// Import and re-export types used by run-batch.ts so it can import from one place
+import type { CardPlayRecord } from './simulator.js';
 export type { CardPlayRecord, EncounterSummary } from './simulator.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Types
 // ──────────────────────────────────────────────────────────────────────────────
+
+export interface EncounterDetail {
+  enemyId: string;
+  enemyName: string;
+  enemyCategory: string;
+  floor: number;
+  result: 'victory' | 'defeat' | 'timeout';
+  turns: number;
+  damageDealt: number;
+  damageTaken: number;
+  playerHpAfter: number;
+  cardPlays: CardPlayRecord[];
+}
 
 export interface FullRunOptions {
   /** Probability of answering correctly (0-1). Default: 0.75 */
@@ -90,6 +104,8 @@ export interface FullRunOptions {
   botSkills?: BotSkills;
   /** Force specific relics at run start (for causal relic testing). These are added IN ADDITION to normal starter relics. */
   forceRelics?: string[];
+  /** Build preferences for bot (preferred mechanics, relic categories, relic IDs). */
+  buildPrefs?: BuildPreferences;
 }
 
 export interface NodeVisitRecord {
@@ -104,7 +120,7 @@ export interface NodeVisitRecord {
 
 export interface FullRunResult {
   runId: string;
-  options: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics'>> & { botSkills?: BotSkills; forceRelics?: string[] };
+  options: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics' | 'buildPrefs'>> & { botSkills?: BotSkills; forceRelics?: string[]; buildPrefs?: BuildPreferences };
   survived: boolean;
   actsCompleted: number;
   finalHP: number;
@@ -147,6 +163,12 @@ export interface FullRunResult {
   minHpSeen: number;                // lowest HP reached during run
   isComeback: boolean;              // survived && minHpSeen < maxHp * 0.3
   avgTurnsPerEncounter: number;
+  // Detailed encounter data
+  encounters: EncounterDetail[];
+  finalDeckMechanics: Record<string, number>;
+  finalDeckTypeDistribution: Record<string, number>;
+  deckEvolution: { floor: number; deckSize: number; types: Record<string, number> }[];
+  masteryAtEnd: Record<string, number>;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -334,6 +356,8 @@ interface EncounterResult {
   finalPlayerHp: number;
   /** Bug 3: updated Canary state after this encounter */
   canaryState: CanaryState;
+  /** Card-level detail for analytics */
+  cardPlays: CardPlayRecord[];
 }
 
 function simulateSingleEncounter(
@@ -363,6 +387,7 @@ function simulateSingleEncounter(
   let damageFromCharges = 0;
   let damageFromQuickPlays = 0;
   let masteryUpgradesEarned = 0;
+  const cardPlays: CardPlayRecord[] = [];
 
   const { correctRate, chargeRate, maxTurns, brain } = opts;
   // Bug 3: use proper Canary state (reset per floor by caller, persists streak across answers)
@@ -450,6 +475,15 @@ function simulateSingleEncounter(
             damageFromQuickPlays += res.effect.damageDealt > 0 ? res.effect.damageDealt : 0;
           }
 
+          // Record card play for analytics
+          cardPlays.push({
+            mechanic: card.mechanicId ?? card.cardType ?? 'unknown',
+            wasCharged: play.mode === 'charge',
+            answeredCorrectly,
+            damageDealt: res.effect.damageDealt > 0 ? res.effect.damageDealt : 0,
+            wasMomentumFree: play.mode === 'charge' && (turnState.nextChargeFreeForChainType !== null),
+          });
+
           if (answeredCorrectly) {
             correctAnswers++;
             if (ascMods.correctAnswerHeal > 0) {
@@ -475,7 +509,7 @@ function simulateSingleEncounter(
           const midCheckResult = checkEncounterEnd(turnState);
           if (midCheckResult !== null) {
             const enemyHpPctMid = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
-            return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState };
+            return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState, cardPlays };
           }
 
           break; // Only execute first valid play, then re-plan
@@ -548,6 +582,15 @@ function simulateSingleEncounter(
           damageFromQuickPlays += res.effect.damageDealt > 0 ? res.effect.damageDealt : 0;
         }
 
+        // Record card play for analytics
+        cardPlays.push({
+          mechanic: card.mechanicId ?? card.cardType ?? 'unknown',
+          wasCharged: isCharge,
+          answeredCorrectly,
+          damageDealt: res.effect.damageDealt > 0 ? res.effect.damageDealt : 0,
+          wasMomentumFree: false,
+        });
+
         if (answeredCorrectly) {
           correctAnswers++;
           if (ascMods.correctAnswerHeal > 0) {
@@ -573,7 +616,7 @@ function simulateSingleEncounter(
         const midCheckResult = checkEncounterEnd(turnState);
         if (midCheckResult !== null) {
           const enemyHpPctMid = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
-          return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState };
+          return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctMid, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState, cardPlays };
         }
       }
     }
@@ -598,12 +641,12 @@ function simulateSingleEncounter(
     const afterEnemyResult = checkEncounterEnd(turnState);
     if (afterEnemyResult !== null) {
       const enemyHpPctEnd = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
-      return { result: afterEnemyResult, turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctEnd, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState };
+      return { result: afterEnemyResult, turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctEnd, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState, cardPlays };
     }
   }
 
   const enemyHpPctTimeout = Math.max(0, Math.min(1, turnState.enemy.currentHP / (turnState.enemy.maxHP || 1)));
-  return { result: 'timeout', turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctTimeout, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState };
+  return { result: 'timeout', turnsUsed, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, enemyHpPct: enemyHpPctTimeout, chargedPlays, quickPlays, correctWhenCharged, damageFromCharges, damageFromQuickPlays, masteryUpgradesEarned, finalPlayerHp: turnState.playerState.hp, canaryState, cardPlays };
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -681,14 +724,14 @@ function handleCombatNode(
   nodeType: MapNodeType,
   floor: number,
   act: 1 | 2 | 3,
-  opts: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics'>> & { botSkills?: BotSkills; forceRelics?: string[] },
+  opts: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics' | 'buildPrefs'>> & { botSkills?: BotSkills; forceRelics?: string[]; buildPrefs?: BuildPreferences },
   ascMods: ReturnType<typeof getAscensionModifiers>,
   relicPool: string[],
   verbose: boolean,
   runChainTypes: number[],
   brain?: BotBrain,
   canaryState: CanaryState = createCanaryState(),
-): EncounterResult & { goldAwarded: number } {
+): EncounterResult & { goldAwarded: number; enemyId: string; enemyName: string; enemyCategory: string } {
   // Map MapNodeType to enemy pool type
   let enemyPoolType: 'combat' | 'elite' | 'mini_boss' | 'boss';
   if (nodeType === 'boss') enemyPoolType = 'boss';
@@ -703,7 +746,7 @@ function handleCombatNode(
     try {
       enemyTemplate = pickEnemyForNode(act, 'combat');
     } catch {
-      return { result: 'victory', turnsUsed: 0, damageDealt: 0, damageTaken: 0, cardsPlayed: 0, correctAnswers: 0, wrongAnswers: 0, maxCombo: 0, enemyHpPct: 0, chargedPlays: 0, quickPlays: 0, correctWhenCharged: 0, damageFromCharges: 0, damageFromQuickPlays: 0, masteryUpgradesEarned: 0, finalPlayerHp: runState.hp, canaryState, goldAwarded: 0 };
+      return { result: 'victory', turnsUsed: 0, damageDealt: 0, damageTaken: 0, cardsPlayed: 0, correctAnswers: 0, wrongAnswers: 0, maxCombo: 0, enemyHpPct: 0, chargedPlays: 0, quickPlays: 0, correctWhenCharged: 0, damageFromCharges: 0, damageFromQuickPlays: 0, masteryUpgradesEarned: 0, finalPlayerHp: runState.hp, canaryState, cardPlays: [], goldAwarded: 0, enemyId: 'unknown', enemyName: 'Unknown', enemyCategory: 'unknown' };
     }
   }
 
@@ -864,10 +907,10 @@ function handleCombatNode(
       }
     }
 
-    return { ...result, canaryState: result.canaryState, goldAwarded };
+    return { ...result, canaryState: result.canaryState, goldAwarded, enemyId: enemyTemplate.id, enemyName: enemyTemplate.name, enemyCategory: enemyTemplate.category };
   }
 
-  return { ...result, goldAwarded: 0 };
+  return { ...result, goldAwarded: 0, enemyId: enemyTemplate.id, enemyName: enemyTemplate.name, enemyCategory: enemyTemplate.category };
 }
 
 function handleShopNode(
@@ -1101,7 +1144,7 @@ function handleMysteryNode(
   runState: SimRunState,
   floor: number,
   act: 1 | 2 | 3,
-  opts: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics'>> & { botSkills?: BotSkills; forceRelics?: string[] },
+  opts: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics' | 'buildPrefs'>> & { botSkills?: BotSkills; forceRelics?: string[]; buildPrefs?: BuildPreferences },
   ascMods: ReturnType<typeof getAscensionModifiers>,
   relicPool: string[],
   verbose: boolean,
@@ -1249,7 +1292,7 @@ function walkMapPath(actMap: ActMap): MapNode[] {
 export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   const startTime = Date.now();
 
-  const options: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics'>> & { botSkills?: BotSkills; forceRelics?: string[] } = {
+  const options: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics' | 'buildPrefs'>> & { botSkills?: BotSkills; forceRelics?: string[]; buildPrefs?: BuildPreferences } = {
     correctRate: opts.correctRate ?? 0.75,
     chargeRate: opts.chargeRate ?? 0.7,
     seed: opts.seed ?? Math.floor(Math.random() * 1_000_000),
@@ -1259,6 +1302,7 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     acts: opts.acts ?? 3,
     botSkills: opts.botSkills,
     forceRelics: opts.forceRelics,
+    buildPrefs: opts.buildPrefs,
   };
 
   const { verbose } = options;
@@ -1267,7 +1311,7 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   const runId = `fullrun_${options.seed}_${Date.now()}`;
 
   // Create BotBrain if botSkills provided — used for intelligent play decisions
-  const brain = options.botSkills ? new BotBrain(options.botSkills) : undefined;
+  const brain = options.botSkills ? new BotBrain(options.botSkills, options.buildPrefs) : undefined;
 
   // Chain types selected for this run — used round-robin for all cards added during the run
   const runChainTypes = selectRunChainTypes(options.seed);
@@ -1367,6 +1411,8 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   let minHpSeen = baseMaxHp;
   let deathFloor = 0;
   let lastEnemyHpPct: number | undefined = undefined;
+  const encounters: EncounterDetail[] = [];
+  const deckEvolution: { floor: number; deckSize: number; types: Record<string, number> }[] = [];
 
   // Bug 3: Canary state persists across encounters for streak tracking
   let canaryState: CanaryState = createCanaryState();
@@ -1430,6 +1476,20 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
           totalDamageFromQuickPlays += combatResult.damageFromQuickPlays;
           totalMasteryUpgrades += combatResult.masteryUpgradesEarned;
           minHpSeen = Math.min(minHpSeen, runState.hp);
+
+          // Record encounter detail for analytics
+          encounters.push({
+            enemyId: combatResult.enemyId,
+            enemyName: combatResult.enemyName,
+            enemyCategory: combatResult.enemyCategory,
+            floor,
+            result: combatResult.result,
+            turns: combatResult.turnsUsed,
+            damageDealt: combatResult.damageDealt,
+            damageTaken: combatResult.damageTaken,
+            playerHpAfter: runState.hp,
+            cardPlays: combatResult.cardPlays,
+          });
 
           if (combatResult.result === 'victory' || combatResult.result === 'timeout') {
             encountersWon++;
@@ -1502,6 +1562,13 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
       visitRecord.goldChange = runState.gold - goldBefore;
       visitRecord.deckSizeChange = runState.deck.length - deckSizeBefore;
       nodeVisits.push(visitRecord);
+
+      // Record deck evolution snapshot
+      {
+        const types: Record<string, number> = {};
+        for (const c of runState.deck) types[c.cardType] = (types[c.cardType] ?? 0) + 1;
+        deckEvolution.push({ floor, deckSize: runState.deck.length, types });
+      }
 
       // Track minimum HP seen across the run
       minHpSeen = Math.min(minHpSeen, runState.hp);
@@ -1580,6 +1647,17 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   }
   const avgMasteryLevel = runState.deck.length > 0 ? masterySum / runState.deck.length : 0;
 
+  // Final deck analytics
+  const finalDeckMechanics: Record<string, number> = {};
+  const finalDeckTypeDistribution: Record<string, number> = {};
+  const masteryAtEnd: Record<string, number> = {};
+  for (const c of runState.deck) {
+    const mech = c.mechanicId ?? c.cardType;
+    finalDeckMechanics[mech] = (finalDeckMechanics[mech] ?? 0) + 1;
+    finalDeckTypeDistribution[c.cardType] = (finalDeckTypeDistribution[c.cardType] ?? 0) + 1;
+    if (c.mechanicId) masteryAtEnd[c.mechanicId] = Math.max(masteryAtEnd[c.mechanicId] ?? 0, c.masteryLevel ?? 0);
+  }
+
   // Near-miss: died AND (reached act 3+ OR final enemy was nearly dead)
   const isNearMiss = !survived && (actsCompleted >= 2 || (lastEnemyHpPct !== undefined && lastEnemyHpPct < 0.25));
   // Comeback: survived but was in dire straits
@@ -1627,6 +1705,12 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     minHpSeen,
     isComeback,
     avgTurnsPerEncounter,
+    // Phase 2 new fields
+    encounters,
+    finalDeckMechanics,
+    finalDeckTypeDistribution,
+    deckEvolution,
+    masteryAtEnd,
   };
 }
 

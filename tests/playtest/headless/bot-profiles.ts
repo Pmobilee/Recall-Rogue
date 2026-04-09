@@ -15,7 +15,7 @@
  *   const brain  = new BotBrain(skills);
  */
 
-import type { BotSkills } from './bot-brain.js';
+import type { BotSkills, BuildPreferences } from './bot-brain.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Skill axis registry (all axes except accuracy, which is special)
@@ -407,11 +407,63 @@ export const PROGRESSION_PROFILES: Record<string, BotSkills> = {
 };
 
 // ──────────────────────────────────────────────────────────────────────────────
+// Build profiles — mechanics-focused bots with BuildPreferences
+// ──────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Build-specific profiles that guide the bot to prefer particular mechanics
+ * and relics to simulate archetype-focused play strategies.
+ * All use 0.76 accuracy (experienced baseline) unless noted.
+ */
+export const BUILD_PROFILES: Record<string, { label: string; skills: BotSkills; buildPrefs: BuildPreferences }> = {
+  build_poison: {
+    label: 'Build: Poison/DoT',
+    skills: { accuracy: 0.76, cardSelection: 0.65, chargeSkill: 0.65, chainSkill: 0.5, blockSkill: 0.4, apEfficiency: 0.6, surgeAwareness: 0.5, masteryHunting: 0.8, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.6, relicSkill: 0.7 },
+    buildPrefs: { preferredMechanics: ['hex', 'lacerate', 'kindle', 'corroding_touch', 'corrode'], preferredRelicCategories: ['poison'], preferredRelicIds: ['herbal_pouch', 'plague_flask'] },
+  },
+  build_fortress: {
+    label: 'Build: Fortress/Block',
+    skills: { accuracy: 0.76, cardSelection: 0.7, chargeSkill: 0.6, chainSkill: 0.4, blockSkill: 1.0, apEfficiency: 0.7, surgeAwareness: 0.4, masteryHunting: 0.6, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.6, relicSkill: 0.7 },
+    buildPrefs: { preferredMechanics: ['block', 'fortify', 'reinforce', 'absorb', 'thorns', 'bulwark', 'brace', 'guard'], preferredRelicCategories: ['defensive'], preferredRelicIds: ['iron_shield', 'aegis_stone', 'stone_wall'] },
+  },
+  build_strength: {
+    label: 'Build: Strength/Power',
+    skills: { accuracy: 0.76, cardSelection: 0.7, chargeSkill: 0.85, chainSkill: 0.5, blockSkill: 0.3, apEfficiency: 0.6, surgeAwareness: 0.6, masteryHunting: 0.7, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.5, relicSkill: 0.7 },
+    buildPrefs: { preferredMechanics: ['power_strike', 'empower', 'iron_wave', 'reckless', 'heavy_strike', 'bash'], preferredRelicCategories: ['offensive'], preferredRelicIds: ['brass_knuckles', 'whetstone', 'volatile_core', 'berserker_band'] },
+  },
+  build_chain: {
+    label: 'Build: Chain Master',
+    skills: { accuracy: 0.76, cardSelection: 0.7, chargeSkill: 0.9, chainSkill: 1.0, blockSkill: 0.4, apEfficiency: 0.7, surgeAwareness: 0.9, masteryHunting: 0.6, rewardSkill: 0.6, shopSkill: 0.5, restSkill: 0.5, relicSkill: 0.7 },
+    buildPrefs: { preferredMechanics: ['chain_anchor', 'strike', 'twin_strike'], preferredRelicCategories: ['chain'], preferredRelicIds: ['chain_addict', 'obsidian_dice'] },
+  },
+  build_exhaust: {
+    label: 'Build: Exhaust',
+    skills: { accuracy: 0.76, cardSelection: 0.8, chargeSkill: 0.7, chainSkill: 0.4, blockSkill: 0.5, apEfficiency: 0.7, surgeAwareness: 0.5, masteryHunting: 0.6, rewardSkill: 0.8, shopSkill: 0.6, restSkill: 0.6, relicSkill: 0.8 },
+    buildPrefs: { preferredMechanics: ['sacrifice', 'volatile_slash', 'bulwark', 'catalyst'], preferredRelicCategories: ['tactical', 'knowledge'], preferredRelicIds: ['scavengers_eye', 'tattered_notebook'] },
+  },
+  build_tempo: {
+    label: 'Build: Tempo/Draw',
+    skills: { accuracy: 0.76, cardSelection: 0.7, chargeSkill: 0.5, chainSkill: 0.5, blockSkill: 0.4, apEfficiency: 0.95, surgeAwareness: 0.8, masteryHunting: 0.5, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.5, relicSkill: 0.6 },
+    buildPrefs: { preferredMechanics: ['swap', 'scout', 'quicken', 'foresight', 'sift', 'reflex'], preferredRelicCategories: ['speed', 'tactical'], preferredRelicIds: ['swift_boots', 'quicksilver_quill'] },
+  },
+  build_control: {
+    label: 'Build: Control',
+    skills: { accuracy: 0.76, cardSelection: 0.85, chargeSkill: 0.7, chainSkill: 0.4, blockSkill: 0.6, apEfficiency: 0.7, surgeAwareness: 0.5, masteryHunting: 0.6, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.6, relicSkill: 0.7 },
+    buildPrefs: { preferredMechanics: ['weaken', 'expose', 'slow', 'stagger', 'hex', 'sap'], preferredRelicCategories: ['tactical', 'poison'], preferredRelicIds: ['plague_flask', 'null_shard'] },
+  },
+  build_berserker: {
+    label: 'Build: Berserker',
+    skills: { accuracy: 0.80, cardSelection: 0.6, chargeSkill: 0.9, chainSkill: 0.5, blockSkill: 0.0, apEfficiency: 0.5, surgeAwareness: 0.6, masteryHunting: 0.7, rewardSkill: 0.6, shopSkill: 0.4, restSkill: 0.4, relicSkill: 0.6 },
+    buildPrefs: { preferredMechanics: ['reckless', 'lifetap', 'execute', 'volatile_slash', 'heavy_strike'], preferredRelicCategories: ['glass_cannon', 'offensive'], preferredRelicIds: ['blood_price', 'berserker_band'] },
+  },
+};
+
+// ──────────────────────────────────────────────────────────────────────────────
 // Combined lookup
 // ──────────────────────────────────────────────────────────────────────────────
 
 /**
- * All named profiles merged (legacy + archetype + progression).
+ * All named profiles merged (legacy + archetype + progression + build).
  * Use with `--profile <name>` flag in run-batch.ts.
  */
 export const ALL_PROFILES: Record<string, BotSkills> = {
@@ -419,6 +471,11 @@ export const ALL_PROFILES: Record<string, BotSkills> = {
   ...ARCHETYPE_PROFILES,
   ...PROGRESSION_PROFILES,
 };
+
+// Merge build profile skills into ALL_PROFILES
+for (const [key, bp] of Object.entries(BUILD_PROFILES)) {
+  ALL_PROFILES[key] = bp.skills;
+}
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Sweep profile generator
@@ -511,3 +568,25 @@ function skillsEqual(a: BotSkills, b: BotSkills): boolean {
     Math.abs(a.relicSkill     - b.relicSkill)      < eps
   );
 }
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Archetype build profiles — 8 strategically distinct archetypes for analytics mode
+// ──────────────────────────────────────────────────────────────────────────────
+
+/**
+ * 8 strategically distinct build archetypes used in --analytics mode.
+ * Each represents a different playstyle hypothesis for archetype win-rate analysis.
+ * Keys match ARCHETYPE_PROFILES entries (turtle, chain_god, speedrunner,
+ * mastery_farmer, quick_player, glass_cannon, balanced_pro, complete_noob).
+ * @deprecated Use BUILD_PROFILES for mechanics-focused build simulation.
+ */
+export const ARCHETYPE_BUILD_PROFILES: Record<string, BotSkills> = {
+  turtle:        ARCHETYPE_PROFILES['turtle'],
+  chain_god:     ARCHETYPE_PROFILES['chain_god'],
+  speedrunner:   ARCHETYPE_PROFILES['speedrunner'],
+  mastery_farmer: ARCHETYPE_PROFILES['mastery_farmer'],
+  quick_player:  ARCHETYPE_PROFILES['quick_player'],
+  glass_cannon:  ARCHETYPE_PROFILES['glass_cannon'],
+  balanced_pro:  ARCHETYPE_PROFILES['balanced_pro'],
+  complete_noob: ARCHETYPE_PROFILES['complete_noob'],
+};

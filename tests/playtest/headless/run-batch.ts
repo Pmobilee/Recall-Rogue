@@ -42,6 +42,7 @@ import { PLAYER_START_HP } from '../../../src/data/balance.js';
 import type { BotSkills } from './bot-brain.js';
 import {
   ALL_PROFILES,
+  BUILD_PROFILES,
   LEGACY_PROFILES,
   PROGRESSION_PROFILES,
   SKILL_AXES,
@@ -51,6 +52,7 @@ import {
   makeSkills,
   profileLabel,
 } from './bot-profiles.js';
+import { generateAnalyticsReports, type AnalyticsRun } from './analytics-report.js';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
@@ -218,12 +220,13 @@ async function runAllProfilesParallel(
   const allTasks: PoolTask[] = [];
 
   for (const profile of profiles) {
+    const profileAscension = profile.ascensionOverride ?? ascensionLevel;
     const fullRunOpts: Omit<FullRunOptions, 'verbose'> = {
       ...(profile.skills
         ? { botSkills: profile.skills }
         : { correctRate: profile.correctRate!, chargeRate: profile.chargeRate! }),
       maxTurnsPerEncounter: 50,
-      ascensionLevel,
+      ascensionLevel: profileAscension,
       acts: 3,
       forceRelics: forceRelicArg ? [forceRelicArg] : undefined,
     };
@@ -332,6 +335,8 @@ interface ProfileRun {
   // Legacy fallback — only used when skills is undefined
   correctRate?: number;
   chargeRate?: number;
+  /** Override global ascension level for this specific profile run (used in analytics mode). */
+  ascensionOverride?: number;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -363,6 +368,7 @@ const sweepAxis       = getArg('--sweep');          // axis name or 'all'
 const isIsolation     = args.includes('--isolation');
 const customSkillsJson = getArg('--skills');
 const forceRelicArg   = getArg('--force-relic');
+const isAnalyticsMode = args.includes('--analytics');
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Determine which profiles to run
@@ -418,6 +424,30 @@ if (sweepAxis) {
   // Default: run all progression profiles (learning curve model)
   for (const [id, skills] of Object.entries(PROGRESSION_PROFILES)) {
     profilesToRun.push({ label: id, skills });
+  }
+}
+
+// ── Analytics mode: override profilesToRun with full profile suite ──
+if (isAnalyticsMode) {
+  // Clear any profiles that were built above — analytics mode defines its own set
+  profilesToRun.length = 0;
+
+  // All 6 PROGRESSION_PROFILES at ascension 0
+  for (const [id, skills] of Object.entries(PROGRESSION_PROFILES)) {
+    profilesToRun.push({ label: id, skills, ascensionOverride: 0 });
+  }
+
+  // All 8 BUILD_PROFILES at ascension 0
+  for (const [id, bp] of Object.entries(BUILD_PROFILES)) {
+    profilesToRun.push({ label: id, skills: bp.skills, ascensionOverride: 0 });
+  }
+
+  // experienced + master at ascension 0, 5, 10, 15, 20
+  for (const [id, skills] of [['experienced', PROGRESSION_PROFILES['experienced']], ['master', PROGRESSION_PROFILES['master']]] as [string, BotSkills][]) {
+    for (const asc of [0, 5, 10, 15, 20]) {
+      const label = asc === 0 ? id : `${id}@asc${asc}`;
+      profilesToRun.push({ label, skills, ascensionOverride: asc });
+    }
   }
 }
 
@@ -478,12 +508,13 @@ async function runProfileParallel(
 
 
   // Build shared options for this profile
+  const profileAscensionSingle = profile.ascensionOverride ?? ascensionLevel;
   const fullRunOpts: Omit<FullRunOptions, 'verbose'> = {
     ...(profile.skills
       ? { botSkills: profile.skills }
       : { correctRate: profile.correctRate!, chargeRate: profile.chargeRate! }),
     maxTurnsPerEncounter: 50,
-    ascensionLevel,
+    ascensionLevel: profileAscensionSingle,
     acts: 3,
     forceRelics: forceRelicArg ? [forceRelicArg] : undefined,
   };
@@ -601,7 +632,7 @@ for (const profile of profilesToRun) {
             : { correctRate: profile.correctRate!, chargeRate: profile.chargeRate! }),
           maxTurnsPerEncounter: 50,
           verbose:              false,
-          ascensionLevel:       ascensionLevel,
+          ascensionLevel:       profile.ascensionOverride ?? ascensionLevel,
           acts:                 3,
           forceRelics:          forceRelicArg ? [forceRelicArg] : undefined,
         } satisfies FullRunOptions);
@@ -796,6 +827,73 @@ const combined = {
   ...(sweepResults.length > 0 ? { sweepResults } : {}),
 };
 fs.writeFileSync(path.join(outputDir, 'combined.json'), JSON.stringify(combined, null, 2));
+
+// ── Analytics mode: generate detailed analytics reports ──────────────────────
+if (isAnalyticsMode && simMode === 'full' && allFullResults.length > 0) {
+  const analyticsRuns: AnalyticsRun[] = allFullResults.map(r => {
+    // Determine ascension for this run from profilesToRun
+    const profileDef = profilesToRun.find(p => p.label === r.profile);
+    const runAscension = profileDef?.ascensionOverride ?? ascensionLevel;
+
+    // Map encounters: the other agent adds these fields to FullRunResult.
+    // Cast through unknown to handle the extended fields gracefully.
+    const fullResult = r as unknown as Record<string, unknown>;
+
+    const encounters: AnalyticsRun['encounters'] = Array.isArray(fullResult['encounters'])
+      ? (fullResult['encounters'] as Array<Record<string, unknown>>).map(enc => ({
+          enemyId:      String(enc['enemyId'] ?? enc['enemyName'] ?? 'unknown'),
+          enemyName:    String(enc['enemyName'] ?? 'unknown'),
+          enemyCategory: String(enc['enemyCategory'] ?? 'unknown'),
+          floor:        Number(enc['floor'] ?? 0),
+          result:       String(enc['result'] ?? 'unknown'),
+          turns:        Number(enc['turns'] ?? enc['turnsUsed'] ?? 0),
+          damageDealt:  Number(enc['damageDealt'] ?? enc['damageDealtTotal'] ?? 0),
+          damageTaken:  Number(enc['damageTaken'] ?? enc['damageTakenTotal'] ?? 0),
+          playerHpAfter: Number(enc['playerHpAfter'] ?? enc['playerHpEnd'] ?? 0),
+          cardPlays:    Array.isArray(enc['cardPlays'])
+            ? (enc['cardPlays'] as Array<Record<string, unknown>>).map(p => ({
+                mechanic:          String(p['mechanic'] ?? ''),
+                wasCharged:        Boolean(p['wasCharged']),
+                answeredCorrectly: Boolean(p['answeredCorrectly']),
+                damageDealt:       Number(p['damageDealt'] ?? 0),
+              }))
+            : [],
+        }))
+      : [];
+
+    const finalDeckMechanics = (fullResult['finalDeckMechanics'] as Record<string, number> | undefined) ?? {};
+    const finalDeckTypeDistribution = (fullResult['finalDeckTypeDistribution'] as Record<string, number> | undefined) ?? {};
+    const masteryAtEnd = (fullResult['masteryAtEnd'] as Record<string, number> | undefined) ?? {};
+
+    return {
+      profile:     r.profile,
+      ascension:   runAscension,
+      survived:    r.survived,
+      actsCompleted: r.actsCompleted,
+      finalHP:     r.finalHP,
+      maxHp:       80, // PLAYER_MAX_HP approximation (real value is in balance.ts)
+      totalTurns:  r.totalTurns,
+      totalDamageDealt: r.totalDamageDealt,
+      totalDamageTaken: r.totalDamageTaken,
+      totalCardsPlayed: r.totalCardsPlayed,
+      totalCorrect: r.totalCorrect,
+      totalWrong:   r.totalWrong,
+      accuracy:     r.accuracy,
+      totalChargedPlays: r.totalChargedPlays,
+      totalQuickPlays:   r.totalQuickPlays,
+      avgMasteryLevel:   r.avgMasteryLevel,
+      relicsAcquired:    r.relicsAcquired,
+      encounters,
+      finalDeckMechanics,
+      finalDeckTypeDistribution,
+      masteryAtEnd,
+      deathFloor: r.deathFloor || undefined,
+    };
+  });
+
+  const analyticsOutputDir = path.join(outputDir, 'analytics');
+  generateAnalyticsReports(analyticsRuns, analyticsOutputDir);
+}
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Generate README.md

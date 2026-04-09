@@ -35,12 +35,20 @@ import {
   MASTERY_UPGRADE_DEFS,
   getMasteryBaseBonus,
 } from '../../../src/services/cardUpgradeService.js';
+import { RELIC_BY_ID } from '../../../src/data/relics/index.js';
 
 export { CHARGE_CORRECT_MULTIPLIER, FIZZLE_EFFECT_RATIO, CHAIN_MULTIPLIERS, SURGE_INTERVAL };
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Types
 // ──────────────────────────────────────────────────────────────────────────────
+
+/** Preferred mechanics and relics for build-focused bots. */
+export interface BuildPreferences {
+  preferredMechanics: string[];
+  preferredRelicCategories: string[];
+  preferredRelicIds: string[];
+}
 
 /** All skill axes that govern bot decision quality (0 = worst, 1 = optimal). */
 export interface BotSkills {
@@ -165,7 +173,11 @@ function isBuffOrUtility(type: CardType): boolean {
  * whether the charge succeeds is determined by Math.random() < skills.accuracy.
  */
 export class BotBrain {
-  constructor(public readonly skills: BotSkills) {}
+  private buildPrefs?: BuildPreferences;
+
+  constructor(public readonly skills: BotSkills, buildPrefs?: BuildPreferences) {
+    this.buildPrefs = buildPrefs;
+  }
 
   // ── planTurn ──────────────────────────────────────────────────────────────
 
@@ -536,7 +548,12 @@ export class BotBrain {
         const perLevelDelta = MASTERY_UPGRADE_DEFS[opt.id]?.perLevelDelta ?? 0;
         const apCost = opt.apCost ?? 1;
         // Delta-aware: value mastery scaling for ALL card types, gap-fill bonus, penalize high AP cost
-        const score = (perLevelDelta * 10) + (1.0 - currentPct) * 5 - (apCost - 1) * 3;
+        let score = (perLevelDelta * 10) + (1.0 - currentPct) * 5 - (apCost - 1) * 3;
+        // Build preference bonus
+        if (this.buildPrefs && this.buildPrefs.preferredMechanics.includes(opt.id)) {
+          score += 50;
+        }
+
         if (score > bestScore) {
           bestScore = score;
           bestOption = opt;
@@ -577,6 +594,11 @@ export class BotBrain {
       // when the deck already has enough block cards to make them useful
       if ((opt.id === 'fortify' || opt.id === 'conversion') && shieldCount >= 3) {
         score += 15; // Synergy bonus with existing shield cards
+      }
+
+      // Build preference bonus: prefer mechanics the bot is trying to build around
+      if (this.buildPrefs && this.buildPrefs.preferredMechanics.includes(opt.id)) {
+        score += 50;
       }
 
       if (score > bestScore) {
@@ -644,6 +666,17 @@ export class BotBrain {
         if (deckAttackPct > 0.6) {
           // Attack-heavy deck: prefer damage relics
           if (['whetstone', 'volatile_core', 'crit_lens', 'red_fang', 'berserker_s_oath'].includes(id)) score += 20;
+        }
+      }
+
+      // Build preference bonuses
+      if (this.buildPrefs) {
+        if (this.buildPrefs.preferredRelicIds.includes(id)) {
+          score += 40;
+        }
+        const relicDef = RELIC_BY_ID[id];
+        if (relicDef && this.buildPrefs.preferredRelicCategories.includes(relicDef.category)) {
+          score += 25;
         }
       }
 
