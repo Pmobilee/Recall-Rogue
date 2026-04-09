@@ -1,3 +1,27 @@
+### 2026-04-09 — Coop custom-deck sync + mixed-deck trivia filter
+
+**What:** Two compounding bugs in multiplayer coop caused host and guest to end up with different card pools when a custom deck mixed language/grammar items with knowledge items.
+
+**Bug 1 — mp:lobby:start omitted contentSelection:**
+`startGame()` sent only `seed`, `mode`, `deckId`, and `houseRules` in the `mp:lobby:start` payload. `contentSelection` was only sent via `mp:lobby:settings` (broadcast on every settings change). If `mp:lobby:settings` arrived late or was lost due to packet drop, the guest client's lobby started the run with `contentSelection === undefined`, silently falling back to general-trivia mode — a completely different pool from the host's custom deck selection.
+
+**Bug 2 — factIsTrivia stripped grammar from mixed custom decks:**
+`buildPresetRunPool` uses `isTriviaRun = domains.some(d => !d.startsWith('language:'))` to decide whether to apply the `factIsTrivia` filter. For a custom deck with both Japanese vocab and World History items, the knowledge domain item caused `isTriviaRun = true`, which stripped ALL language/grammar/vocabulary facts from the pool — including the ones the player explicitly chose.
+
+**Why this was subtle:**
+- The lobby service already sent `contentSelection` in `mp:lobby:settings` — but that's insufficient because `mp:lobby:start` is the authoritative game-start event and must be self-contained.
+- The `isTriviaRun` heuristic was correct for pure trivia runs but wrong for intentionally mixed custom decks.
+
+**Fix:**
+1. `startGame()` now includes `contentSelection` in the `mp:lobby:start` payload.
+2. The `mp:lobby:start` handler on guests reads `contentSelection` from the payload and applies it to `_currentLobby` BEFORE invoking `_onGameStart`.
+3. Added `allowLanguageFacts?: boolean` to `buildPresetRunPool` and `buildGeneralRunPool` options. When true, the `isTriviaRun` gate is skipped entirely.
+4. `encounterBridge.ts` custom_deck branch computes `hasLanguageItem` by scanning `run.deckMode.items` prefixes and passes `allowLanguageFacts: hasLanguageItem` to `buildGeneralRunPool`.
+
+**Files changed:** `src/services/multiplayerLobbyService.ts`, `src/services/presetPoolBuilder.ts`, `src/services/encounterBridge.ts`
+
+**Tests:** `src/services/multiplayerLobbyService.test.ts` (7 tests), `src/services/presetPoolBuilder.test.ts` (5 tests)
+
 ### 2026-04-08 — Check #22 self-answering detection: full-string vs word-level
 
 **What:** `verify-all-decks.mjs` Check #22 only compared the full `correctAnswer` as a verbatim substring of `quizQuestion`. This missed cases where a single content word from the answer appeared in the question stem and made non-matching distractors immediately eliminable.
@@ -903,3 +927,40 @@ These are accepted as false positives in the detection.
 **Detection pitfall:** Japanese questions contain "この" which transliterates as "kono" (= "this") — the script filters these via Unicode range check to avoid false positives.
 
 **Scale:** 748 facts fixed across 38 files (43 unique decks detected initially, but some were false positives). 0 failures on `verify-all-decks.mjs` post-fix.
+
+### 2026-04-08 — Second pass: 41 residual broken placeholder questions fixed across 3 decks
+
+**What:** After the previous `fix-broken-rewrites.py` pass fixed 748 questions, 41 additional broken placeholder questions remained in `dinosaurs.json` (1), `ap_world_history.json` (23), and `world_war_ii.json` (17). These were missed because they used different patterns — "Soviet this", "Chinese this", "King this VI", "form of this", "blending of this", "Coast of this", "in this [year-range]", "combat this", "civilian this" etc.
+
+**Root cause:** The detection regex was too conservative, only catching explicit "the this", "a this", "an this". The broken questions had more varied placeholder patterns (national adjective + this, preposition + this + year, noun + this).
+
+**Fix:** Manual case-by-case inspection and rewrite for each broken question using verified fact context (explanation field, correct answer). Each "this" was replaced with the specific noun it was substituting for:
+- "Soviet this" → "Soviet tank"
+- "King this VI" → "King George VI"  
+- "form of this" → "form of Buddhism"
+- "North African this" → "North African campaign"
+- "held in this from 1933-1938" → "held in Nuremberg from 1933-1938"
+- etc.
+
+**ap_physics_1.json status:** The 18 broken facts claimed in the task spec were not found — all 326 physics facts passed all broken-pattern checks. The deck appears to have been fixed in a prior pass.
+
+**Result:** 0 failures on `verify-all-decks.mjs` post-fix. All 3 decks fully clean.
+
+### 2026-04-09 — Mass batch content rewrites produce ~20% broken grammar
+
+**What:** A mass rewrite of 1,561 self-answering quiz questions used word replacement to remove leaked answer terms. The replacement was naive — swapping words with "this [category]" placeholders without considering grammar context. Result: ~262 questions shipped with broken English ("the this", "Soviet this", "in a who mistake shadows", "anatomical this anatomical structure").
+
+**Root cause:** Sub-agents and batch scripts don't understand grammar context. Replacing "valve" with "this structure" in "Which valve opens..." produces "Which this structure opens..." — grammatically wrong. Proper nouns are worse: replacing "Alexandria" with "this" in "established in Alexandria" produces "established in this that became...".
+
+**Three cleanup passes were needed:**
+1. Agent pass 1: fixed 267 with regex patterns
+2. Capitalization fix: lowercased 141 mid-sentence "This"
+3. Agent pass 2 (3 parallel): fixed 358 with individual rewrites
+
+**Prevention:**
+1. ALWAYS sample 10+ items from any batch content operation before committing
+2. Grep for known broken patterns: `/\b(the|a|an|which|in|of) this\b/i`
+3. If >5% of samples are broken, reject the batch — individual rephrasing needed
+4. Never use naive find-and-replace for natural language rewrites — always rephrase the whole clause
+
+**Rule:** Added to `content-pipeline.md`, all agent definitions, `agent-mindset.md`, and `testing.md` as mandatory verification step.

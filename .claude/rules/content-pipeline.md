@@ -1,5 +1,15 @@
 # Content Pipeline Rules
 
+## Batch Output Verification — MANDATORY (added 2026-04-09)
+
+**After ANY batch content operation (mass question rewrite, distractor generation, fact assembly), SAMPLE 10+ items and READ them back.** Naive word replacement produces broken grammar ~20% of the time ("the this", "Soviet this", "in a who"). Three cleanup passes were needed after 1,561 question rewrites shipped with broken grammar.
+
+**Rules:**
+- Never trust batch output without sampling — sub-agents produce broken content ~15-20% of the time
+- Grep for known broken patterns: "the this", "a this", "which this", "[Adjective] this", standalone "this" as noun
+- Verify grammar reads naturally as proper English
+- If >5% of samples are broken, reject the batch and rephrase individually
+
 ## Curriculum-Sourced Scope — For Educational Decks
 
 **For ANY deck where students depend on completeness (medical, language, certifications, exam prep), the SCOPE must come from an authoritative curriculum source — NEVER from LLM compilation.**
