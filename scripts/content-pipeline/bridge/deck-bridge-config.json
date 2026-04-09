@@ -1,8 +1,8 @@
 {
-  "_comment": "Per-deck configuration for the Curated Deck \u2192 Trivia Bridge extraction script.",
+  "_comment": "Per-deck configuration for the Curated Deck → Trivia Bridge extraction script.",
   "_comment2": "prefixSegments: how many leading underscore-separated ID segments to skip (deck prefix + chain abbreviation).",
   "_comment3": "entitySegments: how many segments after the prefix form the entity key (default 1).",
-  "_comment4": "Last updated: 2026-04-08",
+  "_comment4": "Last updated: 2026-04-10",
   "ancient_greece": {
     "domain": "history",
     "prefixSegments": 2,
@@ -139,6 +139,13 @@
     "ageRating": "kid",
     "categoryL2": "chemistry_elements"
   },
+  "pop_culture": {
+    "domain": "general_knowledge",
+    "prefixSegments": 2,
+    "entitySegments": 2,
+    "ageRating": "teen",
+    "categoryL2": "pop_culture"
+  },
   "solar_system": {
     "domain": "space_astronomy",
     "prefixSegments": 2,
@@ -188,7 +195,7 @@
     "entitySegments": 1,
     "ageRating": "kid",
     "categoryL2": "landforms_water",
-    "_skipReason": "image-only deck \u2014 all facts use quizMode=image_question and cannot be used as trivia"
+    "_skipReason": "image-only deck — all facts use quizMode=image_question and cannot be used as trivia"
   },
   "world_war_ii": {
     "domain": "history",

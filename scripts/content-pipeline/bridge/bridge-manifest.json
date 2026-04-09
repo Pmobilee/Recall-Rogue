@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-04-09T08:41:29.373Z",
-  "totalBridgedFacts": 5219,
+  "lastRun": "2026-04-09T16:24:12.322Z",
+  "totalBridgedFacts": 5406,
   "decks": {
     "ancient_greece": {
       "totalFacts": 246,
@@ -114,6 +114,12 @@
       "totalFacts": 90,
       "entities": 71,
       "bridged": 71,
+      "skipped": 0
+    },
+    "pop_culture": {
+      "totalFacts": 202,
+      "entities": 168,
+      "bridged": 168,
       "skipped": 0
     },
     "solar_system": {
@@ -244,9 +250,9 @@
       "skipped": 0
     },
     "fifa_world_cup": {
-      "totalFacts": 181,
-      "entities": 50,
-      "bridged": 50,
+      "totalFacts": 214,
+      "entities": 69,
+      "bridged": 69,
       "skipped": 0
     }
   }

@@ -1,0 +1,2227 @@
+deck_id: pop_culture
+deck_name: "Pop Culture"
+domain: general_knowledge
+sub_domain: pop_culture
+description: "From binge-worthy TV to viral memes — master the shows, games, heroes, and moments that define modern entertainment culture."
+status: discover_complete
+discovered: 2026-04-10
+target_facts: 200
+minimum_facts: 150
+
+# ============================================================
+# SOURCES
+# ============================================================
+sources:
+  - name: Wikipedia (I Love Lucy)
+    url: https://en.wikipedia.org/wiki/I_Love_Lucy
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1951 CBS premiere, 6 seasons, creators Lucille Ball/Desi Arnaz, "Lucy Goes to the Hospital" 44M viewers]
+
+  - name: Wikipedia (Seinfeld)
+    url: https://en.wikipedia.org/wiki/Seinfeld
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1989 NBC, 9 seasons, creators Jerry Seinfeld/Larry David, finale 76.3M viewers, $1M/min ad cost]
+
+  - name: Wikipedia (Friends)
+    url: https://en.wikipedia.org/wiki/Friends
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1994 NBC, 10 seasons, creators David Crane/Marta Kauffman, finale 52.5M viewers]
+
+  - name: Wikipedia (The Fresh Prince of Bel-Air)
+    url: https://en.wikipedia.org/wiki/The_Fresh_Prince_of_Bel-Air
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1990 NBC, 6 seasons, creators Andy/Susan Borowitz, launched Will Smith's career]
+
+  - name: Wikipedia (Cheers)
+    url: https://en.wikipedia.org/wiki/Cheers
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1982 NBC, 11 seasons, creators Glen/Les Charles/James Burrows, finale 93M viewers, 28 Emmys]
+
+  - name: Wikipedia (M*A*S*H TV series)
+    url: https://en.wikipedia.org/wiki/M*A*S*H_(TV_series)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1972 CBS, 11 seasons, finale ~125M viewers (most-watched broadcast until 2010)]
+
+  - name: Wikipedia (The Simpsons)
+    url: https://en.wikipedia.org/wiki/The_Simpsons
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1989 Fox, creator Matt Groening, 37+ seasons, longest-running animated series, "D'oh!" in Oxford English Dictionary]
+
+  - name: Wikipedia (The Sopranos)
+    url: https://en.wikipedia.org/wiki/The_Sopranos
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1999 HBO, creator David Chase, 6 seasons, 21 Emmys, "Second Golden Age of Television"]
+
+  - name: Wikipedia (Breaking Bad)
+    url: https://en.wikipedia.org/wiki/Breaking_Bad
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2008 AMC, creator Vince Gilligan, 5 seasons, 16 Emmys, Guinness record most critically acclaimed]
+
+  - name: Wikipedia (The Wire)
+    url: https://en.wikipedia.org/wiki/The_Wire
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2002 HBO, creator David Simon, 5 seasons, low initial ratings, now considered greatest ever]
+
+  - name: Wikipedia (Mad Men)
+    url: https://en.wikipedia.org/wiki/Mad_Men
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2007 AMC, creator Matthew Weiner, 7 seasons, Outstanding Drama 4 consecutive years 2008-2011]
+
+  - name: Wikipedia (Game of Thrones)
+    url: https://en.wikipedia.org/wiki/Game_of_Thrones
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2011 HBO, creators Benioff/Weiss, 8 seasons, 59 Emmys most by drama, final season 11.99M avg]
+
+  - name: Wikipedia (South Park)
+    url: https://en.wikipedia.org/wiki/South_Park
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1997 Comedy Central, creators Trey Parker/Matt Stone, 28+ seasons, episodes produced in ~1 week]
+
+  - name: Wikipedia (Family Guy)
+    url: https://en.wikipedia.org/wiki/Family_Guy
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1999 Fox, creator Seth MacFarlane, 24+ seasons, premiered after Super Bowl XXXIII]
+
+  - name: Wikipedia (Rick and Morty)
+    url: https://en.wikipedia.org/wiki/Rick_and_Morty
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2013 Adult Swim, creators Justin Roiland/Dan Harmon, McDonald's Szechuan Sauce reintroduced]
+
+  - name: Wikipedia (Avatar The Last Airbender)
+    url: https://en.wikipedia.org/wiki/Avatar:_The_Last_Airbender
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2005 Nickelodeon, creators DiMartino/Konietzko, 3 seasons, Netflix debut reached #1]
+
+  - name: Wikipedia (SpongeBob SquarePants)
+    url: https://en.wikipedia.org/wiki/SpongeBob_SquarePants
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1999 Nickelodeon, creator Stephen Hillenburg, $16B+ merchandising]
+
+  - name: Wikipedia (Survivor TV series)
+    url: https://en.wikipedia.org/wiki/Survivor_(American_TV_series)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2000 CBS, concept Charlie Parsons, 50+ seasons, Australian Outback premiere 45.37M viewers]
+
+  - name: Wikipedia (American Idol)
+    url: https://en.wikipedia.org/wiki/American_Idol
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2002 Fox then ABC, creator Simon Fuller, #1 show 7 consecutive seasons from 2004]
+
+  - name: Wikipedia (RuPaul's Drag Race)
+    url: https://en.wikipedia.org/wiki/RuPaul%27s_Drag_Race
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2009 Logo/VH1, by World of Wonder, RuPaul won 8 consecutive Emmy Awards for hosting]
+
+  - name: Wikipedia (Stranger Things)
+    url: https://en.wikipedia.org/wiki/Stranger_Things
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2016 Netflix, creators Duffer Brothers, "Running Up That Hill" chart resurgence]
+
+  - name: Wikipedia (Squid Game)
+    url: https://en.wikipedia.org/wiki/Squid_Game
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2021 Netflix, creator Hwang Dong-hyuk, Netflix's most-watched series, 6 Emmys]
+
+  - name: Wikipedia (Wednesday TV series)
+    url: https://en.wikipedia.org/wiki/Wednesday_(TV_series)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2022 Netflix, creators Gough/Millar, 341M hours first week, #1 in 91 countries]
+
+  - name: Wikipedia (The Mandalorian)
+    url: https://en.wikipedia.org/wiki/The_Mandalorian
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2019 Disney+, creator Jon Favreau, StageCraft technology, "Baby Yoda" phenomenon]
+
+  - name: Wikipedia (Tiger King)
+    url: https://en.wikipedia.org/wiki/Tiger_King
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2020 Netflix, 34.3M viewers in 10 days, COVID lockdown phenomenon]
+
+  - name: Wikipedia (Lost TV series)
+    url: https://en.wikipedia.org/wiki/Lost_(TV_series)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2004 ABC, creators Lieber/Abrams/Lindelof, 6 seasons, Emmy Outstanding Drama 2005]
+
+  - name: Wikipedia (The Office US)
+    url: https://en.wikipedia.org/wiki/The_Office_(American_TV_series)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2005 NBC, adapted by Greg Daniels, 9 seasons, Emmy Outstanding Comedy 2006]
+
+  - name: Wikipedia (Parks and Recreation)
+    url: https://en.wikipedia.org/wiki/Parks_and_Recreation
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2009 NBC, creators Daniels/Schur, 7 seasons, Time magazine #1 TV 2012]
+
+  - name: Wikipedia (Arrested Development)
+    url: https://en.wikipedia.org/wiki/Arrested_Development_(TV_series)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2003 Fox then Netflix, creator Mitchell Hurwitz, 5 seasons, 5 Emmys including Outstanding Comedy]
+
+  - name: Wikipedia (Pac-Man)
+    url: https://en.wikipedia.org/wiki/Pac-Man
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1980 Namco, designer Toru Iwatani, 43M units, $12B cumulative revenue]
+
+  - name: Wikipedia (Tetris)
+    url: https://en.wikipedia.org/wiki/Tetris
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1988 commercial, creator Alexey Pajitnov, 520M+ copies, second-best-selling series ever]
+
+  - name: Wikipedia (Super Mario Bros.)
+    url: https://en.wikipedia.org/wiki/Super_Mario_Bros.
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1985 Nintendo, designer Shigeru Miyamoto, 58M+ copies, Mario more recognized than Mickey Mouse]
+
+  - name: Wikipedia (The Legend of Zelda)
+    url: https://en.wikipedia.org/wiki/The_Legend_of_Zelda_(video_game)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1986 Nintendo, Miyamoto/Tezuka, 6.51M units, first cartridge with battery-backed saving]
+
+  - name: Wikipedia (Sonic the Hedgehog)
+    url: https://en.wikipedia.org/wiki/Sonic_the_Hedgehog_(video_game)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1991 Sega/Sonic Team, designers Yasuhara/Naka, 40M+ copies, Genesis outsold SNES 2:1 1991-92]
+
+  - name: Wikipedia (PlayStation)
+    url: https://en.wikipedia.org/wiki/PlayStation_(console)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1994 Japan Sony, architect Ken Kutaragi, 102.49M units, first console to exceed 100M]
+
+  - name: Wikipedia (PlayStation 2)
+    url: https://en.wikipedia.org/wiki/PlayStation_2
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2000 Sony, 160M units best-selling console ever, 4000+ titles]
+
+  - name: Wikipedia (Nintendo Switch)
+    url: https://en.wikipedia.org/wiki/Nintendo_Switch
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2017 Nintendo, 155M+ shipped, second-best-selling console]
+
+  - name: Wikipedia (Wii Sports)
+    url: https://en.wikipedia.org/wiki/Wii_Sports
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2006 Nintendo, 82.90M copies, third best-selling game ever, revolutionary motion controls]
+
+  - name: Wikipedia (Game Boy)
+    url: https://en.wikipedia.org/wiki/Game_Boy
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1989 Nintendo, 118.69M units with Color, Tetris bundle strategy]
+
+  - name: Wikipedia (Donkey Kong arcade)
+    url: https://en.wikipedia.org/wiki/Donkey_Kong_(video_game)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1981 Nintendo, designer Miyamoto, Mario's debut as "Jumpman", $180M by June 1982]
+
+  - name: Wikipedia (World of Warcraft)
+    url: https://en.wikipedia.org/wiki/World_of_Warcraft
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2004 Blizzard, 12M peak subscribers 2010, $9.23B+ revenue, 100M+ accounts]
+
+  - name: Wikipedia (Minecraft)
+    url: https://en.wikipedia.org/wiki/Minecraft
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2011 Mojang, creator Markus "Notch" Persson, 350M+ copies, best-selling game in history]
+
+  - name: Wikipedia (League of Legends)
+    url: https://en.wikipedia.org/wiki/League_of_Legends
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2009 Riot Games, 2019 Worlds 100M+ viewers, $150M monthly revenue 2016]
+
+  - name: Wikipedia (Fortnite)
+    url: https://en.wikipedia.org/wiki/Fortnite
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2017 Epic Games, 125M+ players first year, $9B+ revenue through 2019, Drake/Ninja stream]
+
+  - name: Wikipedia (Among Us)
+    url: https://en.wikipedia.org/wiki/Among_Us
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2018 Innersloth, 500M+ players by Nov 2020, COVID-19 social phenomenon]
+
+  - name: Wikipedia (Pokémon GO)
+    url: https://en.wikipedia.org/wiki/Pok%C3%A9mon_Go
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2016 Niantic, 100M downloads in 33 days, $6B+ revenue, AR gaming pioneer]
+
+  - name: Wikipedia (Elden Ring)
+    url: https://en.wikipedia.org/wiki/Elden_Ring
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2022 FromSoftware, director Miyazaki + George R.R. Martin worldbuilding, 30M copies, 300+ GOTY awards]
+
+  - name: Wikipedia (Baldur's Gate 3)
+    url: https://en.wikipedia.org/wiki/Baldur%27s_Gate_3
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2023 Larian Studios, 20M+ copies, first game to win GOTY at all 5 major ceremonies]
+
+  - name: Wikipedia (Grand Theft Auto V)
+    url: https://en.wikipedia.org/wiki/Grand_Theft_Auto_V
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2013 Rockstar North, 225M copies, $1B in 3 days fastest entertainment product]
+
+  - name: Wikipedia (The Last of Us video game)
+    url: https://en.wikipedia.org/wiki/The_Last_of_Us
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2013 Naughty Dog, director Neil Druckmann, 17M copies, 95/100 Metacritic]
+
+  - name: Wikipedia (Guitar Hero)
+    url: https://en.wikipedia.org/wiki/Guitar_Hero
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2005 Harmonix, $1B franchise, sparked rhythm game boom]
+
+  - name: Wikipedia (Angry Birds)
+    url: https://en.wikipedia.org/wiki/Angry_Birds
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2009 Rovio, 50M+ downloads, saved company from bankruptcy, spawned films/theme parks]
+
+  - name: Wikipedia (Video game crash of 1983)
+    url: https://en.wikipedia.org/wiki/Video_game_crash_of_1983
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Revenue collapsed $3.2B to $100M (97% decline), NES recovery]
+
+  - name: Wikipedia (Spider-Man in comics)
+    url: https://en.wikipedia.org/wiki/Spider-Man
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Amazing Fantasy #15 1962, Stan Lee/Steve Ditko, teenager with powers = instant youth connection]
+
+  - name: Wikipedia (X-Men)
+    url: https://en.wikipedia.org/wiki/X-Men
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [The X-Men #1 1963, Lee/Kirby, born mutants — no separate origin stories needed]
+
+  - name: Wikipedia (Avengers comics)
+    url: https://en.wikipedia.org/wiki/Avengers_(comics)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [The Avengers #1 1963, Lee/Kirby, response to DC's Justice League, original members Iron Man/Ant-Man/Hulk/Thor/Wasp]
+
+  - name: Wikipedia (Black Panther comics)
+    url: https://en.wikipedia.org/wiki/Black_Panther_(character)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Fantastic Four #52 1966, Lee/Kirby, first Black superhero in American mainstream comics, predates Black Panther Party]
+
+  - name: Wikipedia (Captain America)
+    url: https://en.wikipedia.org/wiki/Captain_America
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Captain America Comics #1 1941, Joe Simon/Jack Kirby, sold ~1M copies, punched Hitler before Pearl Harbor]
+
+  - name: Wikipedia (Superman)
+    url: https://en.wikipedia.org/wiki/Superman
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Action Comics #1 1938, Jerry Siegel/Joe Shuster, sold for $130, established superhero genre]
+
+  - name: Wikipedia (Batman)
+    url: https://en.wikipedia.org/wiki/Batman
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Detective Comics #27 1939, Bill Finger/Bob Kane, Finger designed cowl/cape but not officially credited until 2015]
+
+  - name: Wikipedia (Wonder Woman)
+    url: https://en.wikipedia.org/wiki/Wonder_Woman
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [All Star Comics #8 1941, William Moulton Marston, created by psychologist, triumph through love]
+
+  - name: Wikipedia (Watchmen)
+    url: https://en.wikipedia.org/wiki/Watchmen
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1986-87 12-issue limited series, Alan Moore/Dave Gibbons, groundbreaking deconstruction of superheroes]
+
+  - name: Wikipedia (The Walking Dead comics)
+    url: https://en.wikipedia.org/wiki/The_Walking_Dead_(comic_series)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2003 Image Comics, Robert Kirkman/Tony Moore, 193 issues, Kirkman ended unexpectedly in 2019]
+
+  - name: Wikipedia (Spawn comics)
+    url: https://en.wikipedia.org/wiki/Spawn_(comics)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1992 Image Comics, Todd McFarlane, 1.7M copies #1 record for independent comic]
+
+  - name: Wikipedia (Teenage Mutant Ninja Turtles comics)
+    url: https://en.wikipedia.org/wiki/Teenage_Mutant_Ninja_Turtles_(comics)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1984 Mirage Studios, Kevin Eastman/Peter Laird, initial print run 3275, parody of Daredevil/X-Men]
+
+  - name: Wikipedia (Comics Code Authority)
+    url: https://en.wikipedia.org/wiki/Comics_Code_Authority
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1954-2011, 41 content restrictions, Senate hearings triggered, EC Comics went out of business]
+
+  - name: Wikipedia (Stan Lee)
+    url: https://en.wikipedia.org/wiki/Stan_Lee
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1922-2018, co-created Spider-Man/X-Men/Iron Man/Thor/Hulk/Fantastic Four, National Medal of Arts]
+
+  - name: Wikipedia (Jack Kirby)
+    url: https://en.wikipedia.org/wiki/Jack_Kirby
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1917-1994, co-created Captain America/Fantastic Four/X-Men/Black Panther, "King of Comics"]
+
+  - name: Wikipedia (Rickrolling)
+    url: https://en.wikipedia.org/wiki/Rickrolling
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [May 2007, originated on 4chan by Shawn Cotter, bait-and-switch with Rick Astley video, still active 18+ years]
+
+  - name: Wikipedia (Nyan Cat)
+    url: https://en.wikipedia.org/wiki/Nyan_Cat
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [April 2011, Christopher Torres, Pop-Tart cat in space, 5th most viewed YouTube video of 2011]
+
+  - name: Wikipedia (Keyboard Cat)
+    url: https://en.wikipedia.org/wiki/Keyboard_Cat
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Original 1984 VHS of cat "Fatso", uploaded 2007, viral 2009, cat died 1987]
+
+  - name: Wikipedia (Doge meme)
+    url: https://en.wikipedia.org/wiki/Doge_(meme)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Feb 2010, Kabosu the Shiba Inu, Comic Sans captions, inspired Dogecoin Dec 2013, Kabosu died May 2024]
+
+  - name: Wikipedia (Pepe the Frog)
+    url: https://en.wikipedia.org/wiki/Pepe_the_Frog
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2005 Matt Furie webcomic "Boy's Club", "Feels good man", viral on 4chan from 2008]
+
+  - name: Wikipedia (Charlie Bit My Finger)
+    url: https://en.wikipedia.org/wiki/Charlie_Bit_My_Finger
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [May 2007, 888M+ views, TIME #1 in YouTube's 50 greatest viral videos, sold as NFT for $760999]
+
+  - name: Wikipedia (Gangnam Style)
+    url: https://en.wikipedia.org/wiki/Gangnam_Style
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [July 2012, PSY, first video to reach 1B YouTube views Dec 2012, now 5B+, K-pop turning point]
+
+  - name: Wikipedia (Baby Shark)
+    url: https://en.wikipedia.org/wiki/Baby_Shark
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [June 2016 Pinkfong, first video to reach 10B views Jan 2022, now 16B+, Guinness record]
+
+  - name: Wikipedia (Numa Numa)
+    url: https://en.wikipedia.org/wiki/Numa_Numa
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Dec 2004 Gary Brolsma on Newgrounds, song "Dragostea din tei" by O-Zone, 700M+ views BBC]
+
+  - name: Wikipedia (Facebook)
+    url: https://en.wikipedia.org/wiki/Facebook
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Feb 4 2004 Mark Zuckerberg at Harvard, 1M users by end of 2004, Peter Thiel $500K angel investment]
+
+  - name: Wikipedia (History of Twitter)
+    url: https://en.wikipedia.org/wiki/Twitter
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [First tweet March 21 2006 Jack Dorsey "just setting up my twttr", public launch July 15 2006]
+
+  - name: Wikipedia (TikTok)
+    url: https://en.wikipedia.org/wiki/TikTok
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Douyin China Sept 2016, TikTok global Sept 2017, ByteDance acquired Musical.ly ~$1B Nov 2017]
+
+  - name: Wikipedia (Instagram)
+    url: https://en.wikipedia.org/wiki/Instagram
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Oct 6 2010, Kevin Systrom/Mike Krieger, 25K users day 1, 1M in <3 months, Facebook acquired for $1B 2012]
+
+  - name: Wikipedia (Me at the zoo)
+    url: https://en.wikipedia.org/wiki/Me_at_the_zoo
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [First YouTube video "Me at the zoo", Jawed Karim, April 23 2005, 19 seconds at San Diego Zoo, 385M+ views]
+
+  - name: Wikipedia (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Wikipedia
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Jan 15 2001, Jimmy Wales/Larry Sanger, preceded by Nupedia March 2000]
+
+  - name: Wikipedia (Reddit)
+    url: https://en.wikipedia.org/wiki/Reddit
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [June 2005, Steve Huffman/Alexis Ohanian, sold to Condé Nast Oct 2006 for $10-20M]
+
+  - name: Wikipedia (Discord)
+    url: https://en.wikipedia.org/wiki/Discord
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [May 2015, Jason Citron/Stanislav Vishnevskiy, built for gamers]
+
+  - name: Wikipedia (The Dress meme)
+    url: https://en.wikipedia.org/wiki/The_dress_(viral_phenomenon)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Feb 25 2015, "blue and black" vs "white and gold", actual color blue and black, 2.2M+ tweets]
+
+  - name: Wikipedia (Ice Bucket Challenge)
+    url: https://en.wikipedia.org/wiki/Ice_Bucket_Challenge
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [July-Aug 2014, Pete Frates/Pat Quinn, $115M+ raised for ALS, 1.2M Facebook videos]
+
+  - name: Wikipedia (Wordle game)
+    url: https://en.wikipedia.org/wiki/Wordle
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Oct 2021 public, Josh Wardle, 90 players to 2M+ in 2 months, NYT acquired Jan 2022 "seven-figure sum"]
+
+  - name: Wikipedia (Flappy Bird)
+    url: https://en.wikipedia.org/wiki/Flappy_Bird
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [May 2013 Dong Nguyen, 50M+ downloads, $50K/day revenue, creator removed it Feb 2014]
+
+  - name: Wikipedia (Pokémon franchise)
+    url: https://en.wikipedia.org/wiki/Pok%C3%A9mon
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [$147B+ total, created 1996 Satoshi Tajiri/Ken Sugimori Game Freak, highest-grossing media franchise ever]
+
+  - name: Wikipedia (Hello Kitty)
+    url: https://en.wikipedia.org/wiki/Hello_Kitty
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [$80B+, created 1974 Yuko Shimizu Sanrio, 50K products in 130+ countries]
+
+  - name: Wikipedia (Star Wars)
+    url: https://en.wikipedia.org/wiki/Star_Wars
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [$65B+, created 1977 George Lucas, most successful movie franchise]
+
+  - name: Wikipedia (Harry Potter)
+    url: https://en.wikipedia.org/wiki/Harry_Potter
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [$25-43B, created 1997 J.K. Rowling, 500M+ books sold, 8 films grossed $8.5B]
+
+  - name: Wikipedia (Marvel Cinematic Universe)
+    url: https://en.wikipedia.org/wiki/Marvel_Cinematic_Universe
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [$29B+ box office, started 2008 with Iron Man, 30+ films]
+
+  - name: Wikipedia (Call of Duty)
+    url: https://en.wikipedia.org/wiki/Call_of_Duty
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2003 Infinity Ward/Activision, $30B+ lifetime revenue, 500M+ units]
+
+  - name: Wikipedia (LEGO)
+    url: https://en.wikipedia.org/wiki/Lego
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Founded 1932, Ole Kirk Christiansen, Denmark, "Leg Godt" = "Play Well", 6B+ bricks since 1968, revenue 83.5B DKK 2025]
+
+  - name: Wikipedia (Hot Wheels)
+    url: https://en.wikipedia.org/wiki/Hot_Wheels
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1968 Mattel, Elliot Handler, 6B+ cars manufactured, $1.43B revenue 2023]
+
+  - name: Wikipedia (Barbie)
+    url: https://en.wikipedia.org/wiki/Barbie
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1959 Mattel, $1.54B revenue 2023, Barbie movie boosted sales]
+
+  - name: Wikipedia (Transformers)
+    url: https://en.wikipedia.org/wiki/Transformers
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1984 Hasbro, $25B total franchise revenue]
+
+  - name: Wikipedia (MrBeast)
+    url: https://en.wikipedia.org/wiki/MrBeast
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Jimmy Donaldson, joined YouTube 2012, most-subscribed individual, expensive stunts and philanthropy]
+
+  - name: Wikipedia (PewDiePie)
+    url: https://en.wikipedia.org/wiki/PewDiePie
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Felix Kjellberg, first individual to reach 100M YouTube subscribers Aug 2019, Swedish gaming commentator]
+
+  - name: Wikipedia (The Oprah Winfrey Show)
+    url: https://en.wikipedia.org/wiki/The_Oprah_Winfrey_Show
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1986-2011, 25 seasons, highest-rated daytime talk show, "Oprah's Book Club" instant bestsellers]
+
+  - name: Wikipedia (San Diego Comic-Con)
+    url: https://en.wikipedia.org/wiki/San_Diego_Comic-Con
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Founded 1970, 130K+ attendees, evolved from comic convention to all pop culture]
+
+  - name: Wikipedia (Cosplay)
+    url: https://en.wikipedia.org/wiki/Cosplay
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Term coined 1984 by Nobuyuki Takahashi, from Japanese "costume play", now global subculture]
+
+  - name: Wikipedia (Netflix)
+    url: https://en.wikipedia.org/wiki/Netflix
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Streaming launch 2007, binge model pioneered with House of Cards Feb 2013, surpassed cable subscribers 2017]
+
+  - name: Wikipedia (Disney+)
+    url: https://en.wikipedia.org/wiki/Disney%2B
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [10M subscribers day 1 Nov 2019, streaming wars milestone]
+
+  - name: Wikipedia (E3 gaming expo)
+    url: https://en.wikipedia.org/wiki/E3
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [Founded 1995, biggest gaming event, permanently canceled 2023]
+
+  - name: Wikipedia (GamerGate)
+    url: https://en.wikipedia.org/wiki/Gamergate_(harassment_campaign)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2014 online harassment campaign, sparked broader debate about gaming culture and online toxicity]
+
+  - name: Wikipedia (Serial podcast)
+    url: https://en.wikipedia.org/wiki/Serial_(podcast)
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [2014, downloaded 80M+ times, sparked true crime podcast boom]
+
+  - name: Wikipedia (The Blair Witch Project)
+    url: https://en.wikipedia.org/wiki/The_Blair_Witch_Project
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1999, pioneered viral internet marketing for film]
+
+  - name: Wikipedia (Catan board game)
+    url: https://en.wikipedia.org/wiki/Catan
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1995, global board game market $15B+ 2023, board game renaissance]
+
+  - name: Wikipedia (Nintendo 64)
+    url: https://en.wikipedia.org/wiki/Nintendo_64
+    license: CC-BY-SA 4.0
+    accessed: 2026-04-10
+    used_for: [1996 Nintendo, 32.93M units, Time "Machine of the Year", first standard analog stick]
+
+# ============================================================
+# CHAIN THEMES (sub-decks)
+# ============================================================
+chain_themes:
+  - id: binge_worthy
+    chain_theme_id: 0
+    name: "Binge-Worthy"
+    description: "Iconic TV shows: sitcoms, dramas, animation, reality, streaming originals"
+    target_facts: 35
+    sub_categories:
+      - classic_sitcoms
+      - prestige_dramas
+      - animation
+      - reality_competition
+      - streaming_originals
+
+  - id: game_on
+    chain_theme_id: 1
+    name: "Game On"
+    description: "Video game history: landmark titles, studios, characters, records, consoles"
+    target_facts: 35
+    sub_categories:
+      - all_time_classics
+      - console_milestones
+      - pc_online_gaming
+      - modern_phenomena
+      - industry_milestones
+
+  - id: hero_complex
+    chain_theme_id: 2
+    name: "Hero Complex"
+    description: "Comics, graphic novels, superhero franchises — Marvel, DC, and beyond"
+    target_facts: 30
+    sub_categories:
+      - marvel_origins
+      - dc_origins
+      - indie_publishers
+      - industry_facts
+
+  - id: gone_viral
+    chain_theme_id: 3
+    name: "Gone Viral"
+    description: "Internet culture: memes, viral videos, social media milestones, digital phenomena"
+    target_facts: 30
+    sub_categories:
+      - early_memes
+      - viral_videos
+      - social_media_milestones
+      - digital_phenomena
+
+  - id: franchise_empires
+    chain_theme_id: 4
+    name: "Franchise Empires"
+    description: "Mega-franchises spanning film/TV/games/merch — Star Wars, Pokémon, Harry Potter, MCU"
+    target_facts: 35
+    sub_categories:
+      - top_media_franchises
+      - gaming_franchises
+      - theme_parks
+      - merchandise_kings
+
+  - id: pop_icons
+    chain_theme_id: 5
+    name: "Pop Icons"
+    description: "Cultural moments, catchphrases, records, firsts, and the personalities behind them"
+    target_facts: 35
+    sub_categories:
+      - digital_creators
+      - cultural_moments
+      - industry_records
+      - streaming_era
+
+# ============================================================
+# ANSWER TYPE POOLS
+# ============================================================
+answer_type_pools:
+
+  - id: tv_show_names
+    description: "TV series titles — sitcoms, dramas, animation, reality, streaming"
+    format: name
+    homogeneityExempt: false
+    member_examples:
+      - "Seinfeld"
+      - "Game of Thrones"
+      - "The Simpsons"
+      - "Squid Game"
+      - "Breaking Bad"
+      - "Stranger Things"
+      - "Friends"
+      - "The Wire"
+    design_notes: >
+      All members are TV series title strings. Lengths range from 4 to ~25 chars.
+      Check max/min ratio; may need split into short_titles (≤12 chars) vs long_titles (>12 chars)
+      if length tells appear after pool population.
+
+  - id: game_titles
+    description: "Video game titles — arcade, console, PC, mobile"
+    format: name
+    homogeneityExempt: false
+    member_examples:
+      - "Minecraft"
+      - "Pac-Man"
+      - "Tetris"
+      - "Fortnite"
+      - "Elden Ring"
+      - "Wii Sports"
+      - "Among Us"
+      - "Grand Theft Auto V"
+    design_notes: >
+      All members are game title strings. Verify length distribution; "Pac-Man" (6) vs
+      "Grand Theft Auto V" (18) may trigger homogeneity flag — consider splitting
+      classic_arcade_titles (short) vs modern_game_titles (longer) if ratio >3x.
+
+  - id: character_names
+    description: "Fictional characters across TV, games, comics"
+    format: name
+    homogeneityExempt: false
+    member_examples:
+      - "Spider-Man"
+      - "Batman"
+      - "Homer Simpson"
+      - "Baby Yoda"
+      - "Master Chief"
+      - "Pikachu"
+    design_notes: >
+      Character names only, not real people. May need split: superhero_names vs
+      animated_character_names vs game_character_names depending on pool size after population.
+
+  - id: person_names_creators
+    description: "Real people — creators, designers, showrunners, streamers, platform founders"
+    format: name
+    homogeneityExempt: false
+    member_examples:
+      - "Shigeru Miyamoto"
+      - "Stan Lee"
+      - "Matt Groening"
+      - "Mark Zuckerberg"
+      - "MrBeast"
+      - "Vince Gilligan"
+      - "J.K. Rowling"
+    design_notes: >
+      Real human names only. May need split: game_designers, comic_creators, tv_creators,
+      platform_founders, digital_creators if pool grows large enough (>30 facts).
+
+  - id: company_studio_names
+    description: "Studios, networks, publishers, developers"
+    format: name
+    homogeneityExempt: false
+    member_examples:
+      - "Nintendo"
+      - "HBO"
+      - "Namco"
+      - "Blizzard"
+      - "Image Comics"
+      - "Naughty Dog"
+      - "Larian Studios"
+    design_notes: >
+      Organization names. Short (Nintendo/HBO) vs long (Larian Studios) should be fine
+      as distractor set is plausible regardless of length in this pool.
+
+  - id: franchise_ip_names
+    description: "Major franchise and IP names"
+    format: name
+    homogeneityExempt: false
+    member_examples:
+      - "Pokémon"
+      - "Star Wars"
+      - "Harry Potter"
+      - "Marvel Cinematic Universe"
+      - "Hello Kitty"
+      - "Transformers"
+      - "Call of Duty"
+    design_notes: >
+      Franchise/IP strings. "MCU" / "Marvel Cinematic Universe" — use full name for consistency.
+      Check max/min; single-word vs multi-word franchises may trigger flag.
+
+  - id: platform_console_names
+    description: "Consoles, networks, streaming platforms"
+    format: name
+    homogeneityExempt: false
+    member_examples:
+      - "PlayStation 2"
+      - "Nintendo Switch"
+      - "Netflix"
+      - "Disney+"
+      - "Game Boy"
+      - "Nintendo 64"
+      - "TikTok"
+    design_notes: >
+      Mixed platform types (consoles + streaming services). Consider splitting
+      gaming_consoles vs streaming_platforms if used in separate question templates.
+
+  - id: meme_viral_names
+    description: "Meme names and viral content identifiers"
+    format: name
+    homogeneityExempt: false
+    member_examples:
+      - "Rickroll"
+      - "Doge"
+      - "Nyan Cat"
+      - "Keyboard Cat"
+      - "Pepe the Frog"
+      - "Baby Shark"
+      - "Gangnam Style"
+    design_notes: >
+      Short identifiers for memes/viral content. Pool is semantically coherent.
+      Add synthetic distractors (other well-known memes) to reach 15+ easily.
+
+  - id: genre_format_names
+    description: "Genre and format terms across media"
+    format: term
+    homogeneityExempt: false
+    member_examples:
+      - "sitcom"
+      - "prestige drama"
+      - "battle royale"
+      - "MMORPG"
+      - "graphic novel"
+      - "reality TV"
+      - "streaming original"
+    design_notes: >
+      Short genre/format terms. Use for questions like "What genre is X?" or
+      "What format pioneered Y?". Synthetic distractors easy to generate.
+
+  - id: bracket_numbers
+    description: "Years, sales figures, view counts, episode counts, revenue figures"
+    format: bracket
+    homogeneityExempt: true
+    homogeneityExemptNote: >
+      Bracket pool contains inherently variable numeric types: years (4 digits),
+      view counts (in billions), sales figures (in millions), and revenue (in dollars).
+      The numeric format varies by question type — each question only surfaces
+      contextually appropriate distractors drawn from the same numeric register.
+    member_examples:
+      - "1989"
+      - "2004"
+      - "350 million"
+      - "$1 billion"
+      - "76.3 million"
+      - "59"
+    design_notes: >
+      Bracket pools are exempt from homogeneity as the question context disambiguates
+      the numeric register. Worker must tag each number with its type
+      (year / count_millions / count_billions / revenue_dollars / award_count)
+      so the quiz engine can generate same-register distractors.
+
+# ============================================================
+# VERIFIED SOURCE DATA BY CHAIN THEME
+# ============================================================
+
+source_data:
+
+  # ─── THEME 0: BINGE-WORTHY (TV Shows) ────────────────────────────────────────
+
+  binge_worthy:
+
+    classic_sitcoms:
+
+      i_love_lucy:
+        title: "I Love Lucy"
+        network: CBS
+        premiere_year: 1951
+        seasons: 6
+        creators: ["Lucille Ball", "Desi Arnaz"]
+        notable_episode: "Lucy Goes to the Hospital"
+        notable_stat: "71.7% rating, ~44M viewers for baby birth episode (1953)"
+        source_url: https://en.wikipedia.org/wiki/I_Love_Lucy
+        difficulty: medium
+        chain_theme_id: 0
+
+      seinfeld:
+        title: "Seinfeld"
+        network: NBC
+        premiere_year: 1989
+        seasons: 9
+        creators: ["Jerry Seinfeld", "Larry David"]
+        notable_stat: "Finale drew 76.3M viewers (1998); ads cost $1M/min"
+        source_url: https://en.wikipedia.org/wiki/Seinfeld
+        difficulty: easy
+        chain_theme_id: 0
+
+      friends:
+        title: "Friends"
+        network: NBC
+        premiere_year: 1994
+        seasons: 10
+        creators: ["David Crane", "Marta Kauffman"]
+        notable_stat: "Finale drew 52.5M viewers; ads cost $2M/30sec"
+        source_url: https://en.wikipedia.org/wiki/Friends
+        difficulty: easy
+        chain_theme_id: 0
+
+      fresh_prince:
+        title: "The Fresh Prince of Bel-Air"
+        network: NBC
+        premiere_year: 1990
+        seasons: 6
+        creators: ["Andy Borowitz", "Susan Borowitz"]
+        notable_stat: "Launched Will Smith's acting career"
+        source_url: https://en.wikipedia.org/wiki/The_Fresh_Prince_of_Bel-Air
+        difficulty: easy
+        chain_theme_id: 0
+
+      cheers:
+        title: "Cheers"
+        network: NBC
+        premiere_year: 1982
+        seasons: 11
+        creators: ["Glen Charles", "Les Charles", "James Burrows"]
+        notable_stat: "Finale drew 93M viewers; won 28 Emmy Awards"
+        source_url: https://en.wikipedia.org/wiki/Cheers
+        difficulty: medium
+        chain_theme_id: 0
+
+      mash:
+        title: "M*A*S*H"
+        network: CBS
+        premiere_year: 1972
+        seasons: 11
+        developer: "Larry Gelbart"
+        notable_stat: "Finale drew ~125M viewers — most-watched broadcast until 2010"
+        source_url: https://en.wikipedia.org/wiki/M*A*S*H_(TV_series)
+        difficulty: medium
+        chain_theme_id: 0
+
+      the_simpsons:
+        title: "The Simpsons"
+        network: Fox
+        premiere_year: 1989
+        seasons: "37+"
+        creator: "Matt Groening"
+        notable_stat: "Longest-running animated series; 'D'oh!' added to Oxford English Dictionary"
+        source_url: https://en.wikipedia.org/wiki/The_Simpsons
+        difficulty: easy
+        chain_theme_id: 0
+
+    prestige_dramas:
+
+      the_sopranos:
+        title: "The Sopranos"
+        network: HBO
+        premiere_year: 1999
+        seasons: 6
+        creator: "David Chase"
+        notable_stat: "21 Emmy Awards; credited with launching 'Second Golden Age of Television'"
+        source_url: https://en.wikipedia.org/wiki/The_Sopranos
+        difficulty: easy
+        chain_theme_id: 0
+
+      breaking_bad:
+        title: "Breaking Bad"
+        network: AMC
+        premiere_year: 2008
+        seasons: 5
+        creator: "Vince Gilligan"
+        notable_stat: "16 Emmys; Guinness World Record for most critically acclaimed TV show"
+        source_url: https://en.wikipedia.org/wiki/Breaking_Bad
+        difficulty: easy
+        chain_theme_id: 0
+
+      the_wire:
+        title: "The Wire"
+        network: HBO
+        premiere_year: 2002
+        seasons: 5
+        creator: "David Simon"
+        notable_stat: "Low initial ratings; now considered one of the greatest TV shows ever made"
+        source_url: https://en.wikipedia.org/wiki/The_Wire
+        difficulty: medium
+        chain_theme_id: 0
+
+      mad_men:
+        title: "Mad Men"
+        network: AMC
+        premiere_year: 2007
+        seasons: 7
+        creator: "Matthew Weiner"
+        notable_stat: "Won Outstanding Drama Series Emmy 4 consecutive years (2008-2011)"
+        source_url: https://en.wikipedia.org/wiki/Mad_Men
+        difficulty: medium
+        chain_theme_id: 0
+
+      game_of_thrones:
+        title: "Game of Thrones"
+        network: HBO
+        premiere_year: 2011
+        seasons: 8
+        creators: ["David Benioff", "D.B. Weiss"]
+        notable_stat: "59 Emmy Awards (most for a drama series); final season averaged 11.99M viewers"
+        source_url: https://en.wikipedia.org/wiki/Game_of_Thrones
+        difficulty: easy
+        chain_theme_id: 0
+
+    animation:
+
+      south_park:
+        title: "South Park"
+        network: Comedy Central
+        premiere_year: 1997
+        seasons: "28+"
+        creators: ["Trey Parker", "Matt Stone"]
+        notable_stat: "Episodes are written and produced in approximately one week"
+        source_url: https://en.wikipedia.org/wiki/South_Park
+        difficulty: easy
+        chain_theme_id: 0
+
+      family_guy:
+        title: "Family Guy"
+        network: Fox
+        premiere_year: 1999
+        seasons: "24+"
+        creator: "Seth MacFarlane"
+        notable_stat: "Premiered in the time slot following Super Bowl XXXIII"
+        source_url: https://en.wikipedia.org/wiki/Family_Guy
+        difficulty: easy
+        chain_theme_id: 0
+
+      rick_and_morty:
+        title: "Rick and Morty"
+        network: Adult Swim
+        premiere_year: 2013
+        creators: ["Justin Roiland", "Dan Harmon"]
+        notable_stat: "Fan frenzy led McDonald's to reintroduce Szechuan Sauce"
+        source_url: https://en.wikipedia.org/wiki/Rick_and_Morty
+        difficulty: easy
+        chain_theme_id: 0
+
+      avatar_atla:
+        title: "Avatar: The Last Airbender"
+        network: Nickelodeon
+        premiere_year: 2005
+        seasons: 3
+        creators: ["Michael DiMartino", "Bryan Konietzko"]
+        notable_stat: "Netflix debut reached #1 globally in 2020"
+        source_url: https://en.wikipedia.org/wiki/Avatar:_The_Last_Airbender
+        difficulty: easy
+        chain_theme_id: 0
+
+      spongebob:
+        title: "SpongeBob SquarePants"
+        network: Nickelodeon
+        premiere_year: 1999
+        creator: "Stephen Hillenburg"
+        notable_stat: "$16 billion+ in merchandising revenue"
+        source_url: https://en.wikipedia.org/wiki/SpongeBob_SquarePants
+        difficulty: easy
+        chain_theme_id: 0
+
+    reality_competition:
+
+      survivor:
+        title: "Survivor"
+        network: CBS
+        premiere_year: 2000
+        concept_creator: "Charlie Parsons"
+        seasons: "50+"
+        notable_stat: "Australian Outback season premiere drew 45.37M viewers"
+        source_url: https://en.wikipedia.org/wiki/Survivor_(American_TV_series)
+        difficulty: easy
+        chain_theme_id: 0
+
+      american_idol:
+        title: "American Idol"
+        network: "Fox (then ABC)"
+        premiere_year: 2002
+        creator: "Simon Fuller"
+        notable_stat: "#1 show for 7 consecutive seasons starting from 2004"
+        source_url: https://en.wikipedia.org/wiki/American_Idol
+        difficulty: easy
+        chain_theme_id: 0
+
+      rupauls_drag_race:
+        title: "RuPaul's Drag Race"
+        network: "Logo (then VH1)"
+        premiere_year: 2009
+        producer: "World of Wonder"
+        notable_stat: "RuPaul won 8 consecutive Emmy Awards for Outstanding Host for a Reality Program"
+        source_url: https://en.wikipedia.org/wiki/RuPaul%27s_Drag_Race
+        difficulty: medium
+        chain_theme_id: 0
+
+    streaming_originals:
+
+      stranger_things:
+        title: "Stranger Things"
+        network: Netflix
+        premiere_year: 2016
+        creators: ["Matt Duffer", "Ross Duffer"]
+        notable_stat: "Season 4 caused Kate Bush's 'Running Up That Hill' to chart 37 years after release"
+        source_url: https://en.wikipedia.org/wiki/Stranger_Things
+        difficulty: easy
+        chain_theme_id: 0
+
+      squid_game:
+        title: "Squid Game"
+        network: Netflix
+        premiere_year: 2021
+        creator: "Hwang Dong-hyuk"
+        notable_stat: "Netflix's most-watched series of all time; won 6 Emmy Awards"
+        source_url: https://en.wikipedia.org/wiki/Squid_Game
+        difficulty: easy
+        chain_theme_id: 0
+
+      wednesday:
+        title: "Wednesday"
+        network: Netflix
+        premiere_year: 2022
+        creators: ["Alfred Gough", "Miles Millar"]
+        notable_stat: "341 million hours watched in first week; #1 in 91 countries"
+        source_url: https://en.wikipedia.org/wiki/Wednesday_(TV_series)
+        difficulty: easy
+        chain_theme_id: 0
+
+      the_mandalorian:
+        title: "The Mandalorian"
+        network: "Disney+"
+        premiere_year: 2019
+        creator: "Jon Favreau"
+        notable_stat: "Pioneered StageCraft LED volume technology; 'Baby Yoda' became a cultural phenomenon"
+        source_url: https://en.wikipedia.org/wiki/The_Mandalorian
+        difficulty: easy
+        chain_theme_id: 0
+
+      tiger_king:
+        title: "Tiger King"
+        network: Netflix
+        premiere_year: 2020
+        directors: ["Eric Goode", "Rebecca Chaiklin"]
+        notable_stat: "34.3M viewers in first 10 days; became a COVID-19 lockdown cultural phenomenon"
+        source_url: https://en.wikipedia.org/wiki/Tiger_King
+        difficulty: easy
+        chain_theme_id: 0
+
+    other_cult_favorites:
+
+      lost:
+        title: "Lost"
+        network: ABC
+        premiere_year: 2004
+        creators: ["Jeffrey Lieber", "J.J. Abrams", "Damon Lindelof"]
+        seasons: 6
+        notable_stat: "Won Emmy for Outstanding Drama Series in 2005"
+        source_url: https://en.wikipedia.org/wiki/Lost_(TV_series)
+        difficulty: easy
+        chain_theme_id: 0
+
+      the_office_us:
+        title: "The Office"
+        network: NBC
+        premiere_year: 2005
+        showrunner: "Greg Daniels"
+        seasons: 9
+        notable_stat: "Won Emmy for Outstanding Comedy Series in 2006; adapted from UK original"
+        source_url: https://en.wikipedia.org/wiki/The_Office_(American_TV_series)
+        difficulty: easy
+        chain_theme_id: 0
+
+      parks_and_rec:
+        title: "Parks and Recreation"
+        network: NBC
+        premiere_year: 2009
+        creators: ["Greg Daniels", "Michael Schur"]
+        seasons: 7
+        notable_stat: "Named Time magazine's #1 TV show of 2012"
+        source_url: https://en.wikipedia.org/wiki/Parks_and_Recreation
+        difficulty: medium
+        chain_theme_id: 0
+
+      arrested_development:
+        title: "Arrested Development"
+        network: "Fox (then Netflix)"
+        premiere_year: 2003
+        creator: "Mitchell Hurwitz"
+        seasons: 5
+        notable_stat: "Won 5 Emmys including Outstanding Comedy Series despite low ratings on Fox"
+        source_url: https://en.wikipedia.org/wiki/Arrested_Development_(TV_series)
+        difficulty: medium
+        chain_theme_id: 0
+
+  # ─── THEME 1: GAME ON (Video Games) ──────────────────────────────────────────
+
+  game_on:
+
+    all_time_classics:
+
+      pac_man:
+        title: "Pac-Man"
+        developer: Namco
+        designer: "Toru Iwatani"
+        release_year: 1980
+        units_sold: "43 million"
+        revenue: "$12 billion cumulative"
+        source_url: https://en.wikipedia.org/wiki/Pac-Man
+        difficulty: easy
+        chain_theme_id: 1
+
+      tetris:
+        title: "Tetris"
+        creator: "Alexey Pajitnov"
+        commercial_release_year: 1988
+        copies_sold: "520 million+"
+        rank: "Second best-selling video game series ever"
+        source_url: https://en.wikipedia.org/wiki/Tetris
+        difficulty: easy
+        chain_theme_id: 1
+
+      super_mario_bros:
+        title: "Super Mario Bros."
+        developer: Nintendo
+        designer: "Shigeru Miyamoto"
+        release_year: 1985
+        copies_sold: "58 million+"
+        notable_stat: "1990 study found Mario more recognized than Mickey Mouse among US children"
+        source_url: https://en.wikipedia.org/wiki/Super_Mario_Bros.
+        difficulty: easy
+        chain_theme_id: 1
+
+      legend_of_zelda:
+        title: "The Legend of Zelda"
+        developer: Nintendo
+        designers: ["Shigeru Miyamoto", "Takashi Tezuka"]
+        release_year: 1986
+        copies_sold: "6.51 million"
+        notable_stat: "First cartridge to use battery-backed saving, allowing players to save progress"
+        source_url: https://en.wikipedia.org/wiki/The_Legend_of_Zelda_(video_game)
+        difficulty: easy
+        chain_theme_id: 1
+
+      sonic_the_hedgehog:
+        title: "Sonic the Hedgehog"
+        developer: "Sega/Sonic Team"
+        designers: ["Hirokazu Yasuhara", "Yuji Naka"]
+        release_year: 1991
+        copies_sold: "40 million+"
+        notable_stat: "Sega Genesis outsold Super Nintendo 2:1 in 1991-1992 largely due to Sonic"
+        source_url: https://en.wikipedia.org/wiki/Sonic_the_Hedgehog_(video_game)
+        difficulty: easy
+        chain_theme_id: 1
+
+      donkey_kong:
+        title: "Donkey Kong"
+        developer: Nintendo
+        designer: "Shigeru Miyamoto"
+        release_year: 1981
+        notable_stat: "Mario's debut — he appeared as 'Jumpman'; generated $180M by June 1982"
+        source_url: https://en.wikipedia.org/wiki/Donkey_Kong_(video_game)
+        difficulty: medium
+        chain_theme_id: 1
+
+    console_milestones:
+
+      playstation:
+        title: "PlayStation"
+        manufacturer: Sony
+        architect: "Ken Kutaragi"
+        release_year: 1994
+        units_sold: "102.49 million"
+        notable_stat: "First console to exceed 100 million units sold"
+        source_url: https://en.wikipedia.org/wiki/PlayStation_(console)
+        difficulty: medium
+        chain_theme_id: 1
+
+      playstation_2:
+        title: "PlayStation 2"
+        manufacturer: Sony
+        release_year: 2000
+        units_sold: "160 million"
+        notable_stat: "Best-selling console of all time; over 4,000 titles released"
+        source_url: https://en.wikipedia.org/wiki/PlayStation_2
+        difficulty: easy
+        chain_theme_id: 1
+
+      nintendo_switch:
+        title: "Nintendo Switch"
+        manufacturer: Nintendo
+        release_year: 2017
+        units_shipped: "155 million+"
+        notable_stat: "Second-best-selling video game console of all time"
+        source_url: https://en.wikipedia.org/wiki/Nintendo_Switch
+        difficulty: easy
+        chain_theme_id: 1
+
+      wii_sports:
+        title: "Wii Sports"
+        developer: Nintendo
+        release_year: 2006
+        copies_sold: "82.90 million"
+        notable_stat: "Third best-selling game ever; motion controls revolutionized casual gaming"
+        source_url: https://en.wikipedia.org/wiki/Wii_Sports
+        difficulty: easy
+        chain_theme_id: 1
+
+      game_boy:
+        title: "Game Boy"
+        manufacturer: Nintendo
+        release_year: 1989
+        units_sold: "118.69 million (including Color)"
+        notable_stat: "Tetris bundle strategy drove sales; dominated handheld market for a decade"
+        source_url: https://en.wikipedia.org/wiki/Game_Boy
+        difficulty: easy
+        chain_theme_id: 1
+
+      nintendo_64:
+        title: "Nintendo 64"
+        manufacturer: Nintendo
+        release_year: 1996
+        units_sold: "32.93 million"
+        notable_stat: "Time magazine named it 'Machine of the Year'; first console with a standard analog stick"
+        source_url: https://en.wikipedia.org/wiki/Nintendo_64
+        difficulty: medium
+        chain_theme_id: 1
+
+    pc_online_gaming:
+
+      world_of_warcraft:
+        title: "World of Warcraft"
+        developer: Blizzard
+        release_year: 2004
+        peak_subscribers: "12 million (2010)"
+        revenue: "$9.23 billion+"
+        notable_stat: "100 million accounts created since launch"
+        source_url: https://en.wikipedia.org/wiki/World_of_Warcraft
+        difficulty: easy
+        chain_theme_id: 1
+
+      minecraft:
+        title: "Minecraft"
+        developer: Mojang
+        creator: "Markus 'Notch' Persson"
+        release_year: 2011
+        copies_sold: "350 million+"
+        notable_stat: "Best-selling video game in history"
+        source_url: https://en.wikipedia.org/wiki/Minecraft
+        difficulty: easy
+        chain_theme_id: 1
+
+      league_of_legends:
+        title: "League of Legends"
+        developer: "Riot Games"
+        release_year: 2009
+        notable_stat: "2019 World Championship drew 100M+ concurrent viewers; $150M monthly revenue in 2016"
+        source_url: https://en.wikipedia.org/wiki/League_of_Legends
+        difficulty: easy
+        chain_theme_id: 1
+
+    modern_phenomena:
+
+      fortnite:
+        title: "Fortnite"
+        developer: "Epic Games"
+        release_year: 2017
+        players: "125 million+ in first year"
+        revenue: "$9 billion+ through 2019"
+        notable_stat: "Drake and Ninja stream became most-watched gaming broadcast at the time"
+        source_url: https://en.wikipedia.org/wiki/Fortnite
+        difficulty: easy
+        chain_theme_id: 1
+
+      among_us:
+        title: "Among Us"
+        developer: Innersloth
+        release_year: 2018
+        players: "500 million+ by November 2020"
+        notable_stat: "2018 release went undiscovered until COVID-19 pandemic made it a social phenomenon"
+        source_url: https://en.wikipedia.org/wiki/Among_Us
+        difficulty: easy
+        chain_theme_id: 1
+
+      pokemon_go:
+        title: "Pokémon GO"
+        developer: Niantic
+        release_year: 2016
+        downloads: "100 million in 33 days"
+        revenue: "$6 billion+"
+        notable_stat: "Pioneered mass-market augmented reality gaming"
+        source_url: https://en.wikipedia.org/wiki/Pok%C3%A9mon_Go
+        difficulty: easy
+        chain_theme_id: 1
+
+      elden_ring:
+        title: "Elden Ring"
+        developer: FromSoftware
+        director: "Hidetaka Miyazaki"
+        worldbuilding: "George R.R. Martin"
+        release_year: 2022
+        copies_sold: "30 million"
+        notable_stat: "Won 300+ Game of the Year awards from various publications"
+        source_url: https://en.wikipedia.org/wiki/Elden_Ring
+        difficulty: medium
+        chain_theme_id: 1
+
+      baldurs_gate_3:
+        title: "Baldur's Gate 3"
+        developer: "Larian Studios"
+        release_year: 2023
+        copies_sold: "20 million+"
+        notable_stat: "First game ever to win Game of the Year at all 5 major gaming ceremonies"
+        source_url: https://en.wikipedia.org/wiki/Baldur%27s_Gate_3
+        difficulty: medium
+        chain_theme_id: 1
+
+    industry_milestones:
+
+      gta_v:
+        title: "Grand Theft Auto V"
+        developer: "Rockstar North"
+        release_year: 2013
+        copies_sold: "225 million"
+        notable_stat: "Earned $1 billion in 3 days — fastest entertainment product to reach that milestone"
+        source_url: https://en.wikipedia.org/wiki/Grand_Theft_Auto_V
+        difficulty: easy
+        chain_theme_id: 1
+
+      the_last_of_us:
+        title: "The Last of Us"
+        developer: "Naughty Dog"
+        director: "Neil Druckmann"
+        release_year: 2013
+        copies_sold: "17 million"
+        metacritic: 95
+        notable_stat: "Adapted into HBO series which became one of the highest-rated shows of 2023"
+        source_url: https://en.wikipedia.org/wiki/The_Last_of_Us
+        difficulty: easy
+        chain_theme_id: 1
+
+      guitar_hero:
+        title: "Guitar Hero"
+        developer: Harmonix
+        release_year: 2005
+        revenue: "$1 billion franchise"
+        notable_stat: "Sparked the rhythm game boom of the mid-2000s"
+        source_url: https://en.wikipedia.org/wiki/Guitar_Hero
+        difficulty: easy
+        chain_theme_id: 1
+
+      angry_birds:
+        title: "Angry Birds"
+        developer: Rovio
+        release_year: 2009
+        downloads: "50 million+"
+        notable_stat: "Saved Rovio from bankruptcy; spawned films, theme parks, and merchandise"
+        source_url: https://en.wikipedia.org/wiki/Angry_Birds
+        difficulty: easy
+        chain_theme_id: 1
+
+      video_game_crash_1983:
+        event: "Video Game Crash of 1983"
+        revenue_before: "$3.2 billion"
+        revenue_after: "$100 million"
+        decline_percent: "97%"
+        recovery: "Nintendo Entertainment System rescued the North American market"
+        source_url: https://en.wikipedia.org/wiki/Video_game_crash_of_1983
+        difficulty: hard
+        chain_theme_id: 1
+
+  # ─── THEME 2: HERO COMPLEX (Comics & Superheroes) ────────────────────────────
+
+  hero_complex:
+
+    marvel_origins:
+
+      spider_man:
+        character: "Spider-Man"
+        debut: "Amazing Fantasy #15"
+        debut_year: 1962
+        creators: ["Stan Lee", "Steve Ditko"]
+        notable_stat: "Teenage protagonist with personal problems made him uniquely relatable to young readers"
+        source_url: https://en.wikipedia.org/wiki/Spider-Man
+        difficulty: easy
+        chain_theme_id: 2
+
+      x_men:
+        character: "X-Men"
+        debut: "The X-Men #1"
+        debut_year: 1963
+        creators: ["Stan Lee", "Jack Kirby"]
+        notable_stat: "Born as mutants — unlike other heroes, no individual origin story required"
+        source_url: https://en.wikipedia.org/wiki/X-Men
+        difficulty: easy
+        chain_theme_id: 2
+
+      avengers:
+        character: "Avengers"
+        debut: "The Avengers #1"
+        debut_year: 1963
+        creators: ["Stan Lee", "Jack Kirby"]
+        original_members: ["Iron Man", "Ant-Man", "Hulk", "Thor", "Wasp"]
+        notable_stat: "Created as a response to DC's Justice League of America"
+        source_url: https://en.wikipedia.org/wiki/Avengers_(comics)
+        difficulty: easy
+        chain_theme_id: 2
+
+      black_panther:
+        character: "Black Panther"
+        debut: "Fantastic Four #52"
+        debut_year: 1966
+        creators: ["Stan Lee", "Jack Kirby"]
+        notable_stat: "First Black superhero in American mainstream comics; debuted before Black Panther Party"
+        source_url: https://en.wikipedia.org/wiki/Black_Panther_(character)
+        difficulty: medium
+        chain_theme_id: 2
+
+      captain_america:
+        character: "Captain America"
+        debut: "Captain America Comics #1"
+        debut_year: 1941
+        creators: ["Joe Simon", "Jack Kirby"]
+        notable_stat: "Sold ~1 million copies; cover showed him punching Hitler before US entered WWII"
+        source_url: https://en.wikipedia.org/wiki/Captain_America
+        difficulty: easy
+        chain_theme_id: 2
+
+    dc_origins:
+
+      superman:
+        character: "Superman"
+        debut: "Action Comics #1"
+        debut_year: 1938
+        creators: ["Jerry Siegel", "Joe Shuster"]
+        notable_stat: "Creators sold the copyright for $130; established the entire superhero genre"
+        source_url: https://en.wikipedia.org/wiki/Superman
+        difficulty: easy
+        chain_theme_id: 2
+
+      batman:
+        character: "Batman"
+        debut: "Detective Comics #27"
+        debut_year: 1939
+        creators: ["Bill Finger", "Bob Kane"]
+        notable_stat: "Bill Finger designed the costume (cowl/cape/gloves) but was not officially credited until 2015"
+        source_url: https://en.wikipedia.org/wiki/Batman
+        difficulty: easy
+        chain_theme_id: 2
+
+      wonder_woman:
+        character: "Wonder Woman"
+        debut: "All Star Comics #8"
+        debut_year: 1941
+        creator: "William Moulton Marston"
+        notable_stat: "Created by a psychologist; concept was triumph through love rather than violence"
+        source_url: https://en.wikipedia.org/wiki/Wonder_Woman
+        difficulty: easy
+        chain_theme_id: 2
+
+    indie_publishers:
+
+      watchmen:
+        title: "Watchmen"
+        publisher: DC Comics
+        format: "12-issue limited series"
+        publication_years: "1986-1987"
+        creators: ["Alan Moore", "Dave Gibbons"]
+        notable_stat: "Groundbreaking deconstruction of the superhero genre; Time magazine's 100 best novels"
+        source_url: https://en.wikipedia.org/wiki/Watchmen
+        difficulty: medium
+        chain_theme_id: 2
+
+      the_walking_dead:
+        title: "The Walking Dead"
+        publisher: "Image Comics"
+        debut_year: 2003
+        creators: ["Robert Kirkman", "Tony Moore"]
+        total_issues: 193
+        notable_stat: "Kirkman ended the series without warning in 2019 to preserve its integrity"
+        source_url: https://en.wikipedia.org/wiki/The_Walking_Dead_(comic_series)
+        difficulty: easy
+        chain_theme_id: 2
+
+      spawn:
+        title: "Spawn"
+        publisher: "Image Comics"
+        debut_year: 1992
+        creator: "Todd McFarlane"
+        notable_stat: "Issue #1 sold 1.7 million copies — a record for an independent comic"
+        source_url: https://en.wikipedia.org/wiki/Spawn_(comics)
+        difficulty: medium
+        chain_theme_id: 2
+
+      tmnt:
+        title: "Teenage Mutant Ninja Turtles"
+        publisher: "Mirage Studios"
+        debut_year: 1984
+        creators: ["Kevin Eastman", "Peter Laird"]
+        initial_print_run: 3275
+        notable_stat: "Created as a parody of Daredevil and X-Men; initial print run was only 3,275 copies"
+        source_url: https://en.wikipedia.org/wiki/Teenage_Mutant_Ninja_Turtles_(comics)
+        difficulty: medium
+        chain_theme_id: 2
+
+    industry_facts:
+
+      comics_code_authority:
+        name: "Comics Code Authority"
+        active_years: "1954-2011"
+        total_restrictions: 41
+        notable_stat: "Created after Senate hearings on comics' effect on youth; drove EC Comics out of business"
+        source_url: https://en.wikipedia.org/wiki/Comics_Code_Authority
+        difficulty: hard
+        chain_theme_id: 2
+
+      stan_lee:
+        name: "Stan Lee"
+        birth_year: 1922
+        death_year: 2018
+        characters_co_created: ["Spider-Man", "X-Men", "Iron Man", "Thor", "Hulk", "Fantastic Four"]
+        notable_stat: "Received National Medal of Arts; made cameo appearances in dozens of Marvel films"
+        source_url: https://en.wikipedia.org/wiki/Stan_Lee
+        difficulty: easy
+        chain_theme_id: 2
+
+      jack_kirby:
+        name: "Jack Kirby"
+        birth_year: 1917
+        death_year: 1994
+        characters_co_created: ["Captain America", "Fantastic Four", "X-Men", "Black Panther"]
+        nickname: "King of Comics"
+        notable_stat: "Co-created Captain America in 1941 and continued defining superhero comics for 50+ years"
+        source_url: https://en.wikipedia.org/wiki/Jack_Kirby
+        difficulty: medium
+        chain_theme_id: 2
+
+      bill_finger:
+        name: "Bill Finger"
+        role: "Batman co-creator"
+        notable_stat: "Designed Batman's cowl, cape, and gloves; wrote many early Batman stories; not officially credited until 2015"
+        source_url: https://en.wikipedia.org/wiki/Batman
+        difficulty: hard
+        chain_theme_id: 2
+
+  # ─── THEME 3: GONE VIRAL (Internet Culture) ──────────────────────────────────
+
+  gone_viral:
+
+    early_memes:
+
+      rickroll:
+        name: "Rickroll"
+        origin_year: 2007
+        origin_month: May
+        originator: "Shawn Cotter (4chan)"
+        mechanism: "Bait-and-switch hyperlink to Rick Astley's 'Never Gonna Give You Up'"
+        notable_stat: "Still actively used 18+ years after creation"
+        source_url: https://en.wikipedia.org/wiki/Rickrolling
+        difficulty: easy
+        chain_theme_id: 3
+
+      nyan_cat:
+        name: "Nyan Cat"
+        origin_year: 2011
+        origin_month: April
+        creator: "Christopher Torres"
+        description: "Pop-Tart-bodied cat flying through space trailing a rainbow"
+        notable_stat: "5th most-viewed YouTube video of 2011"
+        source_url: https://en.wikipedia.org/wiki/Nyan_Cat
+        difficulty: easy
+        chain_theme_id: 3
+
+      keyboard_cat:
+        name: "Keyboard Cat"
+        cat_name: "Fatso"
+        original_footage_year: 1984
+        uploaded_year: 2007
+        went_viral_year: 2009
+        notable_stat: "The cat in the video (Fatso) had died in 1987, more than 20 years before it went viral"
+        source_url: https://en.wikipedia.org/wiki/Keyboard_Cat
+        difficulty: medium
+        chain_theme_id: 3
+
+      doge:
+        name: "Doge"
+        subject: "Kabosu (Shiba Inu dog)"
+        origin_year: 2010
+        origin_month: February
+        format: "Comic Sans captions expressing thoughts in broken English"
+        notable_stat: "Inspired Dogecoin (launched December 2013); Kabosu died May 2024"
+        source_url: https://en.wikipedia.org/wiki/Doge_(meme)
+        difficulty: easy
+        chain_theme_id: 3
+
+      pepe_the_frog:
+        name: "Pepe the Frog"
+        origin_year: 2005
+        creator: "Matt Furie"
+        original_comic: "Boy's Club"
+        catchphrase: "Feels good man"
+        notable_stat: "Appeared on 4chan from 2008; later controversially adopted by various groups"
+        source_url: https://en.wikipedia.org/wiki/Pepe_the_Frog
+        difficulty: easy
+        chain_theme_id: 3
+
+    viral_videos:
+
+      charlie_bit_my_finger:
+        title: "Charlie Bit My Finger"
+        upload_year: 2007
+        upload_month: May
+        views: "888 million+"
+        notable_stat: "TIME ranked it #1 in YouTube's 50 greatest viral videos; sold as NFT for $760,999"
+        source_url: https://en.wikipedia.org/wiki/Charlie_Bit_My_Finger
+        difficulty: easy
+        chain_theme_id: 3
+
+      gangnam_style:
+        title: "Gangnam Style"
+        artist: "PSY"
+        upload_year: 2012
+        upload_month: July
+        notable_stat: "First YouTube video to reach 1 billion views (December 2012); now has 5 billion+"
+        cultural_impact: "Marked K-pop's breakthrough into Western mainstream"
+        source_url: https://en.wikipedia.org/wiki/Gangnam_Style
+        difficulty: easy
+        chain_theme_id: 3
+
+      baby_shark:
+        title: "Baby Shark"
+        creator: "Pinkfong"
+        upload_year: 2016
+        upload_month: June
+        notable_stat: "First video to reach 10 billion views (January 2022); Guinness World Record holder"
+        source_url: https://en.wikipedia.org/wiki/Baby_Shark
+        difficulty: easy
+        chain_theme_id: 3
+
+      numa_numa:
+        title: "Numa Numa"
+        creator: "Gary Brolsma"
+        platform: Newgrounds
+        upload_year: 2004
+        upload_month: December
+        song: "Dragostea din tei by O-Zone"
+        views: "700 million+ (BBC estimate)"
+        notable_stat: "One of the earliest major viral video phenomena before YouTube existed"
+        source_url: https://en.wikipedia.org/wiki/Numa_Numa
+        difficulty: hard
+        chain_theme_id: 3
+
+    social_media_milestones:
+
+      facebook_founding:
+        platform: Facebook
+        founder: "Mark Zuckerberg"
+        founded_date: "February 4, 2004"
+        location: "Harvard University"
+        notable_stat: "Reached 1 million users by end of 2004; Peter Thiel invested $500K as angel investor"
+        source_url: https://en.wikipedia.org/wiki/Facebook
+        difficulty: easy
+        chain_theme_id: 3
+
+      twitter_first_tweet:
+        platform: Twitter
+        founder: "Jack Dorsey"
+        first_tweet: "just setting up my twttr"
+        first_tweet_date: "March 21, 2006"
+        public_launch: "July 15, 2006"
+        source_url: https://en.wikipedia.org/wiki/Twitter
+        difficulty: medium
+        chain_theme_id: 3
+
+      tiktok_origins:
+        platform: TikTok
+        parent_company: ByteDance
+        douyin_launch: "September 2016 (China)"
+        tiktok_launch: "September 2017 (global)"
+        notable_stat: "ByteDance acquired Musical.ly for approximately $1 billion in November 2017"
+        source_url: https://en.wikipedia.org/wiki/TikTok
+        difficulty: medium
+        chain_theme_id: 3
+
+      instagram_founding:
+        platform: Instagram
+        founders: ["Kevin Systrom", "Mike Krieger"]
+        launch_date: "October 6, 2010"
+        day_one_users: "25,000"
+        notable_stat: "Reached 1 million users in under 3 months; Facebook acquired it for $1 billion in 2012"
+        source_url: https://en.wikipedia.org/wiki/Instagram
+        difficulty: easy
+        chain_theme_id: 3
+
+      youtube_first_video:
+        platform: YouTube
+        first_video: "Me at the zoo"
+        uploader: "Jawed Karim"
+        upload_date: "April 23, 2005"
+        duration_seconds: 19
+        location: "San Diego Zoo"
+        current_views: "385 million+"
+        source_url: https://en.wikipedia.org/wiki/Me_at_the_zoo
+        difficulty: medium
+        chain_theme_id: 3
+
+      wikipedia_founding:
+        platform: Wikipedia
+        founders: ["Jimmy Wales", "Larry Sanger"]
+        launch_date: "January 15, 2001"
+        predecessor: "Nupedia (launched March 2000)"
+        notable_stat: "Preceded by Nupedia, an expert-written encyclopedia that published only 25 articles in 3.5 years"
+        source_url: https://en.wikipedia.org/wiki/Wikipedia
+        difficulty: medium
+        chain_theme_id: 3
+
+      reddit_founding:
+        platform: Reddit
+        founders: ["Steve Huffman", "Alexis Ohanian"]
+        founded_year: 2005
+        founded_month: June
+        notable_stat: "Sold to Condé Nast in October 2006 for an estimated $10-20 million"
+        source_url: https://en.wikipedia.org/wiki/Reddit
+        difficulty: medium
+        chain_theme_id: 3
+
+    digital_phenomena:
+
+      the_dress:
+        event: "The Dress"
+        date: "February 25, 2015"
+        debate: "'Blue and black' vs 'white and gold'"
+        actual_color: "Blue and black"
+        notable_stat: "Generated 2.2 million+ tweets in 24 hours; caused mainstream debate about color perception"
+        source_url: https://en.wikipedia.org/wiki/The_dress_(viral_phenomenon)
+        difficulty: easy
+        chain_theme_id: 3
+
+      ice_bucket_challenge:
+        event: "Ice Bucket Challenge"
+        year: 2014
+        months: "July-August"
+        organizers: ["Pete Frates", "Pat Quinn"]
+        cause: "ALS research"
+        money_raised: "$115 million+"
+        videos_created: "1.2 million Facebook videos"
+        source_url: https://en.wikipedia.org/wiki/Ice_Bucket_Challenge
+        difficulty: easy
+        chain_theme_id: 3
+
+      wordle:
+        name: "Wordle"
+        creator: "Josh Wardle"
+        public_launch: "October 2021"
+        notable_stat: "Grew from 90 players to 2 million+ in 2 months; New York Times acquired it for a seven-figure sum in January 2022"
+        source_url: https://en.wikipedia.org/wiki/Wordle
+        difficulty: easy
+        chain_theme_id: 3
+
+      flappy_bird:
+        name: "Flappy Bird"
+        creator: "Dong Nguyen"
+        release_year: 2013
+        downloads: "50 million+"
+        revenue_per_day: "$50,000"
+        notable_stat: "Creator voluntarily removed it from app stores in February 2014 citing the game's addictive effect"
+        source_url: https://en.wikipedia.org/wiki/Flappy_Bird
+        difficulty: medium
+        chain_theme_id: 3
+
+  # ─── THEME 4: FRANCHISE EMPIRES ──────────────────────────────────────────────
+
+  franchise_empires:
+
+    top_media_franchises:
+
+      pokemon_franchise:
+        franchise: "Pokémon"
+        total_revenue: "$147 billion+"
+        rank: "Highest-grossing media franchise of all time"
+        created_year: 1996
+        creators: ["Satoshi Tajiri", "Ken Sugimori"]
+        company: "Game Freak / Nintendo"
+        source_url: https://en.wikipedia.org/wiki/Pok%C3%A9mon
+        difficulty: easy
+        chain_theme_id: 4
+
+      hello_kitty_franchise:
+        franchise: "Hello Kitty"
+        total_revenue: "$80 billion+"
+        created_year: 1974
+        creator: "Yuko Shimizu"
+        company: Sanrio
+        notable_stat: "50,000+ products in 130+ countries"
+        source_url: https://en.wikipedia.org/wiki/Hello_Kitty
+        difficulty: medium
+        chain_theme_id: 4
+
+      star_wars_franchise:
+        franchise: "Star Wars"
+        total_revenue: "$65 billion+"
+        created_year: 1977
+        creator: "George Lucas"
+        notable_stat: "Most financially successful movie franchise"
+        source_url: https://en.wikipedia.org/wiki/Star_Wars
+        difficulty: easy
+        chain_theme_id: 4
+
+      harry_potter_franchise:
+        franchise: "Harry Potter"
+        total_revenue: "$25-43 billion"
+        debut_year: 1997
+        creator: "J.K. Rowling"
+        books_sold: "500 million+"
+        film_gross: "$8.5 billion (8 films)"
+        source_url: https://en.wikipedia.org/wiki/Harry_Potter
+        difficulty: easy
+        chain_theme_id: 4
+
+      mcu:
+        franchise: "Marvel Cinematic Universe"
+        box_office: "$29 billion+"
+        started_year: 2008
+        first_film: "Iron Man"
+        films_count: "30+"
+        notable_stat: "Highest-grossing film franchise of all time"
+        source_url: https://en.wikipedia.org/wiki/Marvel_Cinematic_Universe
+        difficulty: easy
+        chain_theme_id: 4
+
+    gaming_franchises:
+
+      mario_franchise:
+        franchise: "Mario"
+        creator: "Shigeru Miyamoto"
+        notable_stat: "Best-selling video game franchise ever; Mario created because Nintendo couldn't license Popeye"
+        source_url: https://en.wikipedia.org/wiki/Mario
+        difficulty: easy
+        chain_theme_id: 4
+
+      call_of_duty_franchise:
+        franchise: "Call of Duty"
+        debut_year: 2003
+        developers: ["Infinity Ward", "Activision"]
+        lifetime_revenue: "$30 billion+"
+        units_sold: "500 million+"
+        source_url: https://en.wikipedia.org/wiki/Call_of_Duty
+        difficulty: easy
+        chain_theme_id: 4
+
+      gta_franchise:
+        franchise: "Grand Theft Auto"
+        debut_year: 1997
+        developer: Rockstar
+        lifetime_revenue: "$10.22 billion+ (since GTA V)"
+        franchise_copies: "460 million+"
+        source_url: https://en.wikipedia.org/wiki/Grand_Theft_Auto
+        difficulty: easy
+        chain_theme_id: 4
+
+    merchandise_kings:
+
+      lego:
+        company: LEGO
+        founded_year: 1932
+        founder: "Ole Kirk Christiansen"
+        country: Denmark
+        name_meaning: '"Leg Godt" = "Play Well" in Danish'
+        bricks_produced: "6 billion+ since 1968"
+        revenue_2025: "83.5 billion DKK"
+        source_url: https://en.wikipedia.org/wiki/Lego
+        difficulty: medium
+        chain_theme_id: 4
+
+      hot_wheels:
+        brand: "Hot Wheels"
+        company: Mattel
+        debut_year: 1968
+        creator: "Elliot Handler"
+        cars_manufactured: "6 billion+"
+        revenue_2023: "$1.43 billion"
+        source_url: https://en.wikipedia.org/wiki/Hot_Wheels
+        difficulty: medium
+        chain_theme_id: 4
+
+      barbie:
+        brand: Barbie
+        company: Mattel
+        debut_year: 1959
+        revenue_2023: "$1.54 billion"
+        notable_stat: "2023 Barbie film boosted toy sales significantly"
+        source_url: https://en.wikipedia.org/wiki/Barbie
+        difficulty: easy
+        chain_theme_id: 4
+
+      transformers:
+        franchise: Transformers
+        debut_year: 1984
+        company: Hasbro
+        total_franchise_revenue: "$25 billion"
+        source_url: https://en.wikipedia.org/wiki/Transformers
+        difficulty: easy
+        chain_theme_id: 4
+
+  # ─── THEME 5: POP ICONS (Cultural Moments & Personalities) ───────────────────
+
+  pop_icons:
+
+    digital_creators:
+
+      mrbeast:
+        name: "MrBeast"
+        real_name: "Jimmy Donaldson"
+        youtube_start_year: 2012
+        notable_stat: "Most-subscribed individual YouTube creator; known for expensive stunts and large-scale philanthropy"
+        source_url: https://en.wikipedia.org/wiki/MrBeast
+        difficulty: easy
+        chain_theme_id: 5
+
+      pewdiepie:
+        name: "PewDiePie"
+        real_name: "Felix Kjellberg"
+        nationality: Swedish
+        notable_stat: "First individual to reach 100 million YouTube subscribers (August 2019)"
+        source_url: https://en.wikipedia.org/wiki/PewDiePie
+        difficulty: easy
+        chain_theme_id: 5
+
+    cultural_moments:
+
+      oprah_winfrey_show:
+        show: "The Oprah Winfrey Show"
+        run: "1986-2011"
+        seasons: 25
+        notable_stat: "Highest-rated daytime talk show in history; 'Oprah's Book Club' could propel any title to bestseller status instantly"
+        source_url: https://en.wikipedia.org/wiki/The_Oprah_Winfrey_Show
+        difficulty: easy
+        chain_theme_id: 5
+
+      san_diego_comic_con:
+        name: "San Diego Comic-Con"
+        founded_year: 1970
+        annual_attendance: "130,000+"
+        notable_stat: "Evolved from a comic book convention into the world's premier pop culture event"
+        source_url: https://en.wikipedia.org/wiki/San_Diego_Comic-Con
+        difficulty: medium
+        chain_theme_id: 5
+
+      cosplay:
+        term: "cosplay"
+        term_coined_year: 1984
+        coined_by: "Nobuyuki Takahashi"
+        etymology: "Portmanteau of Japanese 'costume play'"
+        notable_stat: "Now a global subculture with multi-billion dollar convention and merchandise economies"
+        source_url: https://en.wikipedia.org/wiki/Cosplay
+        difficulty: medium
+        chain_theme_id: 5
+
+      the_dress:
+        event: "The Dress viral phenomenon"
+        date: "February 25, 2015"
+        notable_stat: "2.2 million tweets in 24 hours; sparked mainstream media discussion about human color perception"
+        actual_colors: "blue and black"
+        source_url: https://en.wikipedia.org/wiki/The_dress_(viral_phenomenon)
+        difficulty: easy
+        chain_theme_id: 5
+
+    industry_records:
+
+      netflix_binge_model:
+        event: "Netflix binge-watching model"
+        pioneered_with: "House of Cards"
+        date: "February 2013"
+        notable_stat: "First major studio to release an entire season at once; surpassed cable TV subscribers in 2017"
+        source_url: https://en.wikipedia.org/wiki/Netflix
+        difficulty: medium
+        chain_theme_id: 5
+
+      disney_plus_launch:
+        platform: "Disney+"
+        launch_date: "November 12, 2019"
+        day_one_subscribers: "10 million"
+        notable_stat: "Reached 10 million subscribers in a single day — faster than any prior streaming service"
+        source_url: https://en.wikipedia.org/wiki/Disney%2B
+        difficulty: medium
+        chain_theme_id: 5
+
+      e3_cancellation:
+        event: "E3 (Electronic Entertainment Expo)"
+        founded_year: 1995
+        canceled_year: 2023
+        notable_stat: "Considered the world's biggest gaming event for nearly 30 years before permanently shutting down"
+        source_url: https://en.wikipedia.org/wiki/E3
+        difficulty: medium
+        chain_theme_id: 5
+
+      serial_podcast:
+        title: "Serial"
+        format: podcast
+        debut_year: 2014
+        downloads: "80 million+"
+        notable_stat: "Sparked the true crime podcast boom and helped establish podcasting as a mainstream medium"
+        source_url: https://en.wikipedia.org/wiki/Serial_(podcast)
+        difficulty: medium
+        chain_theme_id: 5
+
+      blair_witch_viral_marketing:
+        title: "The Blair Witch Project"
+        year: 1999
+        notable_stat: "Pioneered viral internet marketing for films by presenting itself as real found footage"
+        source_url: https://en.wikipedia.org/wiki/The_Blair_Witch_Project
+        difficulty: hard
+        chain_theme_id: 5
+
+      board_game_renaissance:
+        title: "Board Game Renaissance"
+        catalyst: "Settlers of Catan (1995)"
+        market_size: "$15 billion+ globally (2023)"
+        notable_stat: "Modern board game market grew from a niche hobby into a $15B+ global industry"
+        source_url: https://en.wikipedia.org/wiki/Catan
+        difficulty: hard
+        chain_theme_id: 5
+
+      gamergate:
+        event: "GamerGate"
+        year: 2014
+        notable_stat: "2014 online harassment campaign that sparked a broader cultural debate about diversity and toxicity in gaming"
+        source_url: https://en.wikipedia.org/wiki/Gamergate_(harassment_campaign)
+        difficulty: hard
+        chain_theme_id: 5
+
+# ============================================================
+# POOL DESIGN NOTES
+# ============================================================
+pool_design_notes: >
+  After fact generation, run node scripts/verify-all-decks.mjs to check pool homogeneity (check #20).
+  Key pools to watch for length tells:
+  - game_titles: "Pac-Man" (6) vs "Grand Theft Auto V" (18) — may need game_short_titles + game_long_titles split
+  - tv_show_names: "Lost" (4) vs "The Fresh Prince of Bel-Air" (29) — likely needs split
+  - franchise_ip_names: "LEGO" (4) vs "Marvel Cinematic Universe" (24) — likely needs split
+  Run node scripts/pool-homogeneity-analysis.mjs --deck pop_culture after build to confirm.
+  All pools need syntheticDistractors padded to 15+ after initial fact population.
+  bracket_numbers pool is homogeneityExempt due to inherent numeric type variation.
+
+# ============================================================
+# GENERATION NOTES FOR WORKERS
+# ============================================================
+generation_notes: >
+  - Maximum 30 facts per Sonnet worker batch (32K token limit)
+  - Each fact MUST include: id, quizQuestion, correctAnswer, explanation, difficulty (1-5),
+    funScore (1-10), answerTypePoolId, chainThemeId
+  - correctAnswer must be concise — core answer only, no parenthetical elaborations
+  - NEVER include em-dashes in correctAnswer — put elaboration in explanation field
+  - ALL distractors must be LLM-generated from the specific question context
+  - NEVER pull distractors from other facts' correctAnswer values
+  - Workers FORMAT the verified source data above — they do NOT invent new facts
+  - After assembly, run the full quality pipeline per .claude/rules/deck-quality.md
