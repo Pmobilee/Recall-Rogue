@@ -17,9 +17,10 @@
  * that would make the map visually unreadable.
  */
 
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, afterEach } from 'vitest'
 import { generateActMap } from './mapGenerator'
 import type { ActMap } from './mapGenerator'
+import { initRunRng, destroyRunRng, getRunRng } from './seededRng'
 
 // ============================================================
 // Helpers
@@ -93,6 +94,10 @@ function hasOrphanNode(map: ActMap): boolean {
 // ============================================================
 
 describe('mapGenerator', () => {
+  afterEach(() => {
+    destroyRunRng()
+  })
+
   it('produces identical maps from the same seed (determinism)', () => {
     const seed = 42
     const mapA = generateActMap(1, seed)
@@ -159,5 +164,37 @@ describe('mapGenerator', () => {
 
     // The gap between left and right should be small (within 10 percentage points)
     expect(Math.abs(leftPct - rightPct)).toBeLessThan(0.10)
+  })
+
+  it('enemy IDs are identical when generated with the same seed regardless of global fork consumption (Bug 6)', () => {
+    // Bug 6 root cause: assignEnemyIds previously ignored its local rng param
+    // and consumed getRunRng('enemies') instead. If the global fork was consumed
+    // asymmetrically between peers, node.enemyId values would diverge.
+    // Fix: pickCombatEnemy/getMiniBossForFloor now accept an optional rngFn.
+
+    const SEED = 12345
+
+    // First generation — with a fresh global fork
+    initRunRng(SEED)
+    const mapA = generateActMap(1, SEED)
+    const enemyIdsA = Object.values(mapA.nodes)
+      .filter(n => n.enemyId)
+      .map(n => ({ id: n.id, enemyId: n.enemyId }))
+      .sort((a, b) => a.id.localeCompare(b.id))
+
+    // Consume the global enemies fork 5 times to simulate asymmetric state (e.g. UI hovers)
+    const fork = getRunRng('enemies')
+    for (let i = 0; i < 5; i++) fork.next()
+
+    // Second generation — with the same map seed, but after consuming the global fork
+    initRunRng(SEED)
+    const mapB = generateActMap(1, SEED)
+    const enemyIdsB = Object.values(mapB.nodes)
+      .filter(n => n.enemyId)
+      .map(n => ({ id: n.id, enemyId: n.enemyId }))
+      .sort((a, b) => a.id.localeCompare(b.id))
+
+    // Both maps must have identical enemy assignments
+    expect(enemyIdsB).toEqual(enemyIdsA)
   })
 })

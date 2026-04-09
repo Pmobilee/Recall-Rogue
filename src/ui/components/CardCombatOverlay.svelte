@@ -3419,7 +3419,7 @@
     font-size: calc(14px * var(--layout-scale, 1));
     font-weight: 700;
     cursor: pointer;
-    z-index: 5;
+    z-index: 26;
     -webkit-tap-highlight-color: transparent;
     font-family: inherit;
     letter-spacing: 1.5px;
@@ -3493,7 +3493,7 @@
     background: rgba(180, 100, 40, 0.85);
     color: #f8fafc;
     font-weight: 700;
-    z-index: 6;
+    z-index: 26;
     pointer-events: none;
   }
 
@@ -3503,7 +3503,7 @@
     left: calc(208px * var(--layout-scale, 1));
     right: auto;
     bottom: calc(16px * var(--layout-scale, 1));
-    z-index: 20;
+    z-index: 26;
     background: rgba(150, 50, 20, 0.88);
     box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) rgba(255, 100, 0, 0.55);
     border-color: rgba(255, 100, 0, 0.85);
@@ -4146,7 +4146,7 @@
     height: calc(46px * var(--layout-scale, 1));
     font-size: calc(15px * var(--layout-scale, 1));
     min-width: calc(120px * var(--layout-scale, 1));
-    z-index: 20; /* must be above enemy-hover-zone (z-index: 8) */
+    z-index: 26; /* above .quiz-backdrop (25) so End Turn stays visible during quiz */
   }
 
   /* Combo counter: stacked above End Turn on the right side of arena */

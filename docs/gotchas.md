@@ -1,3 +1,15 @@
+### 2026-04-09 — Map-generation RNG must not depend on the global `getRunRng('enemies')` fork
+
+**What:** In co-op mode, both peers call `assignEnemyIds()` locally from the same `runSeed`. If either peer had consumed the global `'enemies'` fork before map generation (e.g. via UI hover previews, `generateCombatRoomOptions()` for floor option display, or any other pre-run call to `pickCombatEnemy()`), the baked `node.enemyId` values diverged between peers even though both had the same seed.
+
+**Why:** `assignEnemyIds(nodes, startFloor, rng)` accepts a local `rng` parameter but its callees (`pickCombatEnemy()`, `getMiniBossForFloor()`, `weightedEnemyPick()`) ignored the param and consumed `getRunRng('enemies')` internally. The boss path via `pickBossForFloor(floor, rng())` correctly used the local rng, but common and elite did not.
+
+**Fix:** Added an optional `rngFn?: () => number` parameter to `pickCombatEnemy()`, `getMiniBossForFloor()`, and `weightedEnemyPick()`. `assignEnemyIds()` now passes the local `rng` through for all three node types. Existing call sites that pass no `rngFn` are unaffected — they still use the global fork at runtime.
+
+**Lesson:** Any function used during seeded map generation must accept a local RNG or be a pure function. If it reaches for `getRunRng()` internally, it will silently break co-op determinism whenever the global fork state diverges between peers. The fix is to thread the local RNG through — not to restructure the global fork.
+
+---
+
 ### 2026-04-09 — Math.random() broke co-op determinism for enemy intents and pool picks
 
 **What:** In co-op mode, two clients with the same run seed could produce different enemy intents and different enemy pool selections (boss/mini-boss/elite/common) on the same encounter. Replays were also non-deterministic.
@@ -1047,3 +1059,47 @@ But this is INSIDE the block `if (correctStreak >= CANARY_CHALLENGE_STREAK_THRES
 2. Remove the dead inner ternary and just use `CANARY_CHALLENGE_ENEMY_HP_MULT_5` directly
 
 **Discovered by:** Code review during writing of `tests/unit/canary.test.ts`.
+
+---
+
+### 2026-04-09 — ForegroundParallaxSystem placeholders shipped as grey grids on every background
+
+**What:** On every combat background, grey grid artifacts appeared at the top-left and top-right corners (and elsewhere). The pattern was 4 horizontal rectangular stripes plus 1 vertical stripe, rendered at 0.3-0.6 alpha in grey/white — matching exactly the 'lines' shape from the `PLACEHOLDER_SPECS` constant in `ForegroundParallaxSystem.ts`.
+
+**Why:** `ForegroundParallaxSystem` had a `createPlaceholderTextures()` method that procedurally generated foreground textures via Phaser Graphics so the system would "show something" without real PNG assets. The 'lines' case in `_createPlaceholder()` drew 4 horizontal rects (`for (let i = 0; i < 4; i++)`) plus a vertical center rect — producing exactly the grey grid pattern. `CombatScene.ts` called `this.foregroundParallax.createPlaceholderTextures()` on every scene create, and `start()` placed these placeholder sprites on every encounter background. No real assets ever existed in `src/assets/sprites/foreground/`, so placeholders were always shown.
+
+**Fix:** Removed `PLACEHOLDER_SPECS`, `createPlaceholderTextures()`, and `_createPlaceholder()` entirely from `ForegroundParallaxSystem.ts`. Changed `start()` to skip any element whose texture key doesn't exist in the Phaser cache (hard `continue`) instead of falling back to `__DEFAULT`. Removed the `createPlaceholderTextures()` call from `CombatScene.ts`. With no real assets loaded, the system is now fully dormant — zero sprites created, backgrounds unobstructed. Real assets activate automatically once `fg_*.png` files are placed in `src/assets/sprites/foreground/` and loaded in `CombatScene.preload()`.
+
+**Lesson:** Procedural placeholder textures in a visual system are a visual regression waiting to happen. If a system cannot show anything without real assets, make it dormant (no-op) rather than showing placeholder geometry. The `__DEFAULT` texture fallback in Phaser is also dangerous — it shows a bright green/magenta block, which is equally unwanted.
+
+---
+
+### 2026-04-09 — 8 headless sim fidelity bugs found and fixed
+
+**What:** Eight correctness bugs caused the headless simulator to produce results that diverged from real gameplay. The bugs collectively over-stated player survival odds and under-stated the impact of systems like Canary, mastery accumulation, and health economy.
+
+**The 8 bugs:**
+
+1. **HP tracking approximation** (`simulator.ts`, `full-run-simulator.ts`): Post-encounter HP was computed as `startHP - damageTaken` instead of reading `turnState.playerState.hp` directly. This missed relic heals, poison ticks, and lethal-save effects.
+
+2. **Health vial drop rate** (`full-run-simulator.ts`): Hardcoded at 25% instead of using `HEALTH_VIAL_DROP_CHANCE = 0.10` from `balance.ts`. The sim was healing players at 2.5× the real rate, inflating win rates for high-health-deficit profiles.
+
+3. **Canary reimplementation drift** (both): Both simulators hand-rolled Canary logic (`wrongsThisEncounter` counter) instead of importing `canaryService.ts`. This missed HP multipliers, damage multipliers, and streak tracking — systems that materially affect encounter difficulty at challenge streaks.
+
+4. **Bot abandons turn on blocked card** (both): When a card was blocked (e.g. Librarian Silence), the bot used `break` and abandoned the rest of its hand. Fix: `blockedCardIds.add(card.id); continue` — bot now skips the blocked card and tries others.
+
+5. **Transmute as dead weight** (both): The starter deck contained Transmute, which requires a UI card-selection interaction the headless sim cannot perform. It was a wasted slot every run. Fix: replaced with `strike` in `buildSimDeck()` and `buildStarterDeck()`.
+
+6. **Mastery lost after each encounter** (`full-run-simulator.ts`): `createDeck()` built fresh card objects for each encounter. Any mastery upgrades earned were stored on those temporary objects and discarded when the encounter ended. Fix: after each encounter, sync `encounterCard.masteryLevel` back to the matching card in `runState.deck`.
+
+7. **No catch-up mastery on reward cards** (`full-run-simulator.ts`): Cards picked at reward rooms always started at mastery 0, meaning mid-run reward picks were permanently underpowered vs the player's existing deck. Fix: new reward cards start at `floor(avgMastery * 0.75)`, matching `catchUpMasteryService.ts` behavior.
+
+8. **Stale CHARGE_AP_SURCHARGE comments** (`simulator.ts`): Comments stated "CHARGE_AP_SURCHARGE = 0" which had been wrong since the surcharge was re-enabled. Fixed to read "CHARGE_AP_SURCHARGE applied below".
+
+**Impact on results (3000-run post-fix baseline):**
+- `experienced` (76% acc): 10% win rate, 3.0 avg mastery
+- `master` (85% acc): 20% win rate, 3.2 avg mastery
+
+Win rates dropped slightly vs Ch12.2 numbers — the previous inflated health vial rate was masking real difficulty. The post-fix numbers are the correct baseline for balance work going forward.
+
+**Lesson:** Sim fidelity degrades silently. Any time the sim reimplements game logic rather than importing it, it will drift. Rule: if a game service exists, import it — never reimplement. The right test is: "does this sim path import the same code the game runs?" If not, it will diverge. Add `canaryService.ts`, `catchUpMasteryService.ts`, and `balance.ts` constants to the list of things that MUST be imported rather than approximated.

@@ -700,12 +700,16 @@ export function isMiniBossEncounter(floor: number, encounter: number): boolean {
 /**
  * Get the mini-boss enemy template ID for a given floor.
  * Picks from the region-appropriate mini-boss pool for variety.
+ *
+ * @param rngFn - Optional deterministic RNG function. When provided (e.g. from map
+ *   generation), uses it instead of the global `getRunRng('enemies')` fork so that
+ *   both peers in a co-op run produce identical mini-boss assignments.
  */
-export function getMiniBossForFloor(floor: number): string {
+export function getMiniBossForFloor(floor: number, rngFn?: () => number): string {
   const region = getRegionForFloor(floor)
   const pool = MINI_BOSS_POOL_BY_REGION[region]
-  const rng = isRunRngActive() ? getRunRng('enemies') : null
-  const idx = Math.floor((rng ? rng.next() : Math.random()) * pool.length)
+  const rngNext = rngFn ?? (isRunRngActive() ? () => getRunRng('enemies').next() : Math.random)
+  const idx = Math.floor(rngNext() * pool.length)
   return pool[idx]
 }
 
@@ -783,22 +787,33 @@ export function generateEventRoomOptions(floor: number): RoomOption[] {
  * Uses weighted selection based on spawnWeight (rarity system).
  * NOTE: Only call for encounters 1 and 2 (regular encounters).
  * Encounter 3 is always a mini-boss (via getMiniBossForFloor) or boss (via getBossForFloor).
+ *
+ * @param rngFn - Optional deterministic RNG function. When provided (e.g. from map
+ *   generation), uses it instead of the global `getRunRng('enemies')` fork. This
+ *   guarantees that peers who share a run seed produce identical enemy assignments
+ *   even if the global fork has been consumed asymmetrically.
  */
-export function pickCombatEnemy(floor: number): string {
+export function pickCombatEnemy(floor: number, rngFn?: () => number): string {
   const region = getRegionForFloor(floor)
   const regionEnemies = ENEMY_TEMPLATES.filter(e => e.category === 'common' && e.region === region)
   if (regionEnemies.length === 0) {
     const allCommon = ENEMY_TEMPLATES.filter(e => e.category === 'common')
-    return weightedEnemyPick(allCommon)
+    return weightedEnemyPick(allCommon, rngFn)
   }
-  return weightedEnemyPick(regionEnemies)
+  return weightedEnemyPick(regionEnemies, rngFn)
 }
 
-/** Weighted random selection from an enemy pool using spawnWeight (default 10). */
-function weightedEnemyPick(pool: typeof ENEMY_TEMPLATES): string {
+/**
+ * Weighted random selection from an enemy pool using spawnWeight (default 10).
+ *
+ * @param rngFn - Optional deterministic RNG function. When provided, uses it
+ *   instead of the global `getRunRng('enemies')` fork so callers (e.g. map
+ *   generation) can pass their own seeded RNG and get reproducible results.
+ */
+function weightedEnemyPick(pool: typeof ENEMY_TEMPLATES, rngFn?: () => number): string {
   const totalWeight = pool.reduce((sum, e) => sum + (e.spawnWeight ?? 10), 0)
-  const rng = isRunRngActive() ? getRunRng('enemies') : null
-  let roll = (rng ? rng.next() : Math.random()) * totalWeight
+  const rngNext = rngFn ?? (isRunRngActive() ? () => getRunRng('enemies').next() : Math.random)
+  let roll = rngNext() * totalWeight
   for (const e of pool) {
     roll -= (e.spawnWeight ?? 10)
     if (roll <= 0) return e.id

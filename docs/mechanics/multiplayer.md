@@ -208,6 +208,63 @@ Host-authoritative model prevents desync. Both players submit actions each turn;
 
 Source: `src/services/multiplayerGameService.ts`.
 
+## Co-op Partner State Broadcasting
+
+**Source:** `src/services/multiplayerCoopSync.ts`, `src/CardApp.svelte`
+
+Partner HP, block, score, and accuracy are broadcast to the other player's HUD via `mp:coop:partner_state`.
+
+### Broadcast sources
+
+| Source | Timing | What triggers it |
+|--------|--------|------------------|
+| `CardApp.svelte $effect` | Any change to `$activeRunState` or `$activeTurnState` | Live mid-turn (card plays, damage, block changes) |
+| `encounterBridge.handleEndTurn()` | Mid-beat-2 (after HP commit) | Turn end, damage confirmed |
+
+The `$effect` in `CardApp.svelte` is the primary broadcast path for live updates. It fires whenever `activeRunState.playerHp`, `activeTurnState.playerState.shield`, or any scoring field changes:
+
+```typescript
+$effect(() => {
+  if (currentLobby?.mode !== 'coop') return
+  const run = $activeRunState
+  if (!run) return
+  const turn = $activeTurnState
+  const block = turn?.playerState?.shield ?? 0
+  broadcastPartnerState({ hp: run.playerHp, maxHp: run.playerMaxHp, block, score, accuracy })
+})
+```
+
+The turn-end broadcast (in `encounterBridge`) is retained as a supplemental broadcast — it fires specifically when HP commits at Beat 2 and is the authoritative post-damage value.
+
+### PartnerState vs RaceProgress
+
+- `PartnerState` (from `multiplayerCoopSync`) — live wire from the transport layer: `{ playerId, hp, maxHp, block, score?, accuracy? }`
+- `RaceProgress` (from `multiplayerTypes`) — UI-facing state in `CardApp`: includes `playerBlock?: number` (added 2026-04-09) for the MultiplayerHUD shield display
+- The `onPartnerStateUpdate` callback in `CardApp` maps `PartnerState` → `RaceProgress` including `playerBlock: partner.block`
+
+## Deterministic Enemy Assignment (Map Generation RNG Purity)
+
+**Source:** `src/services/mapGenerator.ts`, `src/services/floorManager.ts`
+
+Both co-op peers must produce identical `node.enemyId` assignments from the same `runSeed`. This requires map generation to use a **purely local RNG** — not the global `getRunRng('enemies')` fork.
+
+### Fix (2026-04-09)
+
+`pickCombatEnemy(floor, rngFn?)` and `getMiniBossForFloor(floor, rngFn?)` accept an optional `rngFn: () => number` parameter. When provided, it is used instead of `getRunRng('enemies')`. Existing call sites that pass no `rngFn` keep their current runtime behavior.
+
+`assignEnemyIds()` in `mapGenerator.ts` passes the local `mulberry32(seed)` RNG through:
+
+```typescript
+// mapGenerator.ts — assignEnemyIds
+case 'combat': node.enemyId = pickCombatEnemy(derivedFloor, rng); break
+case 'elite':  node.enemyId = getMiniBossForFloor(derivedFloor, rng); break
+case 'boss':   node.enemyId = pickBossForFloor(bossFloor, rng()); break
+```
+
+**Result:** identical `runSeed` → identical map → identical `node.enemyId` on both peers, regardless of any asymmetric global fork consumption (UI hovers, tooltip previews, etc.).
+
+**Test coverage:** `src/services/mapGenerator.test.ts` — `'enemy IDs are identical when generated with the same seed regardless of global fork consumption'`; `src/services/floorManager.test.ts` — isolation tests for `pickCombatEnemy` and `getMiniBossForFloor`.
+
 ## ELO System
 
 Starting rating 1000. Standard ELO formula: `E = 1 / (1 + 10^((Rb - Ra) / 400))`.

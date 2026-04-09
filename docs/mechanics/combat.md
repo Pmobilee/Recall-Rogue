@@ -60,39 +60,55 @@ When a new encounter begins, the enemy emerges from shadow rather than popping i
 
 ## Turn Transition Breathing Room
 
-A brief visual beat fires at each turn boundary to signal the phase change and give the player a moment to register what just happened. All effects run concurrently and add no wall-clock time — they fire during the existing 1 second delay already present in `encounterBridge.handleEndTurn()`.
+`encounterBridge.handleEndTurn()` uses a **two-beat timing structure** so the enemy attack visually lands at the correct moment (not at the same instant the player turn begins):
 
-**Player → Enemy transition (`CombatScene.playTurnTransitionToEnemy()`):**
-- Transient `Rectangle` overlay (depth 2, black, alpha 0 → 0.12 over 250ms) darkens the arena without touching `vignetteGfx`
-- Enemy container scales to 1.02× and back over 200ms (awakening pulse)
-- `atmosphereSystem.spikeParticleRate(400)` doubles front emitter rate for 400ms
-- Call site: `encounterBridge.handleEndTurn()` immediately after `endPlayerTurn()` + `enemy-turn-start` audio
+**Beat 1 — Enemy turn begins (1s):**
+- Cards hidden immediately via a `preAnimTurnState` with `deck.hand = []` — stale hand cannot be interacted with during the enemy phase
+- `playCardAudio('enemy-turn-start')` fires
+- `CombatScene.playTurnTransitionToEnemy()` runs concurrently:
+  - Transient `Rectangle` overlay (depth 2, black, alpha 0 → 0.12 over 250ms) darkens the arena
+  - Enemy container scales to 1.02× and back over 200ms (awakening pulse)
+  - `atmosphereSystem.spikeParticleRate(400)` doubles front emitter rate for 400ms
+- `await sleep(turboDelay(1000))` — player registers that the enemy turn has begun
 
-**Enemy → Player transition (`CombatScene.playTurnTransitionToPlayer()`):**
-- Fades and destroys the overlay from the previous beat (always runs, even in reduce-motion mode)
-- `pulseFlash(0xFFEEAA, 0.06, 200)` — subtle warm flash signals player agency returning
-- Dispatches `rr:player-turn-start` CustomEvent on `window` for `CardHand.svelte` to animate card hand in
-- Call site: `encounterBridge.handleEndTurn()` where `turn-chime` audio fires
+**Beat 2 — Enemy attack resolves (1s):**
+- `endPlayerTurn(turnState)` executes all enemy logic (damage, status ticks, draw)
+- `activeRunState` updated with post-damage `playerHp` immediately — HP commit and attack animation fire at the same visible moment
+- Enemy VFX/SFX dispatched based on `result.executedIntentType`
+- Chain visuals updated for post-turn chain state
+- Co-op: `broadcastPartnerState()` called with post-damage values
+- `await sleep(turboDelay(1000))` — damage settles visually
 
-**Reduce-motion / turbo-mode:** All tweens and the DOM event are suppressed. The overlay is still destroyed if it exists.
+**Player turn begins:**
+- `activeTurnState.set(freshTurnState(result.turnState))` — real hand restored, player regains control
+- `playCardAudio('turn-chime')` + `CombatScene.playTurnTransitionToPlayer()`:
+  - Fades and destroys the overlay from Beat 1
+  - `pulseFlash(0xFFEEAA, 0.06, 200)` — warm flash signals player agency returning
+  - Dispatches `rr:player-turn-start` CustomEvent for `CardHand.svelte` to animate cards in
+
+**Timing totals:** 2s normal (1s + 1s), both beats shortened by `turboDelay()` in turbo mode.
+
+**Reduce-motion / turbo-mode:** All Phaser tweens suppressed. The overlay is still destroyed if present.
 
 **State:** The transient overlay is held in `CombatScene._turnOverlay` (private field, cleaned up in `onShutdown()`).
 
+> **Updated 2026-04-09:** Previously used a single 2s dead-air delay with `endPlayerTurn` called before the pause, causing the enemy attack VFX to fire at the same instant as the new player turn. The two-beat structure ensures each phase has a clear 1s window.
+
 ## Turn-End Hand Hiding
 
-During the enemy-turn animation delay, `encounterBridge.handleEndTurn()` publishes a modified `preAnimTurnState` where `deck.hand` is set to `[]`. This hides the player's cards visually while enemy animations play, preventing interaction with stale hand state. The real hand is restored when `activeTurnState` is updated after the delay completes.
+`encounterBridge.handleEndTurn()` immediately publishes a `preAnimTurnState` with `deck.hand = []` when the player ends their turn. This hides the player's cards before the enemy phase plays out, preventing interaction with stale hand state. The real hand is restored when `activeTurnState` is updated at the start of the next player turn.
 
 ```typescript
-// encounterBridge.ts
-const preAnimTurnState = freshTurnState(result.turnState);
-preAnimTurnState.playerState = { ...preAnimTurnState.playerState, hp: previousHp };
-preAnimTurnState.deck = { ...preAnimTurnState.deck, hand: [] }; // hide cards during enemy anim
+// encounterBridge.ts — Beat 1 setup
+const preAnimTurnState = { ...freshTurnState(turnState), deck: { ...turnState.deck, hand: [] } };
 activeTurnState.set(preAnimTurnState);
-// ... 2s animation delay ...
-activeTurnState.set(freshTurnState(result.turnState)); // restore real state with real hand
+// ... 1s beat 1 ...
+const result = endPlayerTurn(turnState);
+// ... enemy VFX, 1s beat 2 ...
+activeTurnState.set(freshTurnState(result.turnState)); // restore real hand
 ```
 
-The empty-hand trick is applied ONLY to the pre-animation state snapshot. It does not affect the draw pile, discard pile, or any other deck state — only the `hand` array shown in the UI.
+The empty-hand trick uses the current (pre-damage) `turnState` — it does not require `endPlayerTurn` to have run yet, which is why Beat 1 can safely hide cards before the enemy phase executes.
 
 
 ---

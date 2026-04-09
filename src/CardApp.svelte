@@ -203,9 +203,11 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     initCoopSync,
     destroyCoopSync,
     onPartnerStateUpdate,
+    broadcastPartnerState,
     type PartnerState,
   } from './services/multiplayerCoopSync'
   import type { LobbyState, RaceProgress, MultiplayerMode, LobbyContentSelection } from './data/multiplayerTypes'
+  import { computeRaceScore } from './services/multiplayerScoring'
 
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
@@ -504,6 +506,26 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     return out
   })
 
+  // Live co-op partner state broadcast: whenever activeRunState or activeTurnState changes
+  // while in co-op mode, broadcast our current HP/block/score/accuracy to the partner so
+  // their HUD reflects mid-turn changes (not just at turn-end).
+  $effect(() => {
+    if (currentLobby?.mode !== 'coop') return
+    const run = $activeRunState
+    if (!run) return
+    const turn = $activeTurnState
+    const block = turn?.playerState?.shield ?? 0
+    const score = computeRaceScore(run)
+    const accuracy = run.factsAnswered > 0 ? run.factsCorrect / run.factsAnswered : 1
+    broadcastPartnerState({
+      hp: run.playerHp,
+      maxHp: run.playerMaxHp,
+      block,
+      score,
+      accuracy,
+    })
+  })
+
   function handleOpenMultiplayer(): void {
     // Navigate to the multiplayer menu for mode selection before creating a lobby.
     transitionScreen('multiplayerMenu')
@@ -615,6 +637,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         playerId: partner.playerId,
         playerHp: partner.hp,
         playerMaxHp: partner.maxHp,
+        playerBlock: partner.block,
         score: partner.score ?? opponentProgress.score,
         accuracy: partner.accuracy ?? opponentProgress.accuracy,
       }

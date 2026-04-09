@@ -1211,51 +1211,50 @@ export async function handleEndTurn(): Promise<void> {
     }
   }
 
-  const result = endPlayerTurn(turnState);
-  playCardAudio('enemy-turn-start');
+  // ── Beat 1: Enemy turn begins ────────────────────────────────────────────
+  // Hide the player's cards while the enemy phase plays out.
+  // Use the current (pre-damage) turn state with an empty hand so the UI
+  // doesn't show stale cards. HP stays at the pre-damage value.
+  const preAnimTurnState = { ...freshTurnState(turnState), deck: { ...turnState.deck, hand: [] } };
+  activeTurnState.set(preAnimTurnState);
 
+  // Announce enemy turn start with audio + visual transition.
+  playCardAudio('enemy-turn-start');
   // Visual beat: transient vignette darken + enemy sprite pulse + particle spike.
-  // Fires immediately during the existing 1s delay — adds no wall-clock time.
   getCombatScene()?.playTurnTransitionToEnemy();
 
-  // Sync only the turn counter now; defer HP update until after the animation.
+  // Pause 1s so the player can register the enemy turn beginning before damage lands.
+  await new Promise<void>((r) => setTimeout(r, turboDelay(1000)));
+
+  // ── Beat 2: Enemy attack resolves ────────────────────────────────────────
+  // Now run the enemy phase. This resolves all damage, status ticks, and draw.
+  const result = endPlayerTurn(turnState);
+
+  // Commit the global turn counter immediately so surge tracking is correct.
   const run = get(activeRunState);
   if (run) {
-    // Sync the global turn counter back to run state so it persists across encounters.
     run.globalTurnCounter = result.turnState.turnNumber;
     activeRunState.set(run);
   }
 
-  // Keep the HP store at the pre-damage value so the UI does not jump before the animation.
-  // Publish a modified turn state where playerState.hp is still the old value.
-  const preAnimTurnState = freshTurnState(result.turnState);
-  preAnimTurnState.playerState = { ...preAnimTurnState.playerState, hp: previousHp };
-  preAnimTurnState.deck = { ...preAnimTurnState.deck, hand: [] };
-  activeTurnState.set(preAnimTurnState);
-
-  // AR-222: Delay before enemy animations so the player can register their
-  // turn ending before the enemy immediately acts. 2 seconds normal, shorter in turbo.
-  await new Promise<void>((r) => setTimeout(r, turboDelay(2000)));
-
-  // Now update HP in run state and the active turn state with the real post-turn values.
-  // This runs after the animation delay so the UI shows the damage at the same moment
-  // as the enemy attack animation plays, not before it.
-  const runAfterDelay = get(activeRunState);
-  if (runAfterDelay) {
-    runAfterDelay.playerHp = result.turnState.playerState.hp;
-    activeRunState.set(runAfterDelay);
+  // Commit post-damage HP to run state now — the enemy attack animation fires below
+  // at the same moment so the UI shows damage landing visibly during this beat.
+  const runAfterTurn = get(activeRunState);
+  if (runAfterTurn) {
+    runAfterTurn.playerHp = result.turnState.playerState.hp;
+    activeRunState.set(runAfterTurn);
   }
-  activeTurnState.set(freshTurnState(result.turnState));
 
-  // Co-op: broadcast our post-turn HP/block/score/accuracy so the partner's HUD reflects damage taken.
-  if (isCoop && runAfterDelay) {
-    const coopScore = computeRaceScore(runAfterDelay);
-    const coopAccuracy = runAfterDelay.factsAnswered > 0
-      ? runAfterDelay.factsCorrect / runAfterDelay.factsAnswered
+  // Co-op: broadcast updated HP/block/score/accuracy immediately after the HP commit
+  // so the partner's HUD reflects the damage taken during this beat (not at beat end).
+  if (isCoop && runAfterTurn) {
+    const coopScore = computeRaceScore(runAfterTurn);
+    const coopAccuracy = runAfterTurn.factsAnswered > 0
+      ? runAfterTurn.factsCorrect / runAfterTurn.factsAnswered
       : 1;
     broadcastPartnerState({
-      hp: runAfterDelay.playerHp,
-      maxHp: runAfterDelay.playerMaxHp,
+      hp: runAfterTurn.playerHp,
+      maxHp: runAfterTurn.playerMaxHp,
       block: result.turnState.playerState.shield ?? 0,
       score: coopScore,
       accuracy: coopAccuracy,
@@ -1276,7 +1275,8 @@ export async function handleEndTurn(): Promise<void> {
 
   const scene = getCombatScene();
   if (scene) {
-    // Animate based on executed enemy intent type
+    // Animate based on executed enemy intent type — fires NOW (mid-beat-2) so the
+    // attack animation and the HP commit land at the same visible moment.
     switch (result.executedIntentType) {
       case 'attack':
         playCardAudio('enemy-attack');
@@ -1339,6 +1339,14 @@ export async function handleEndTurn(): Promise<void> {
     // Reset so the store can fire again next turn
     setTimeout(() => enemyDamageEvent.set(null), 50);
   }
+
+  // Pause 1s so the damage visually settles before the player turn begins.
+  await new Promise<void>((r) => setTimeout(r, turboDelay(1000)));
+
+  // ── Player turn begins ────────────────────────────────────────────────────
+  // Restore the real post-turn state with the full new hand — this is the
+  // moment the player regains control.
+  activeTurnState.set(freshTurnState(result.turnState));
 
   if (!result.playerDefeated) {
     playCardAudio('turn-chime');

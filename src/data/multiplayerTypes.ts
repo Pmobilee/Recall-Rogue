@@ -77,6 +77,8 @@ export interface RaceProgress {
   floor: number;
   playerHp: number;
   playerMaxHp: number;
+  /** Current block/shield value — populated in co-op mode for the partner HUD. */
+  playerBlock?: number;
   score: number;
   accuracy: number;             // 0-1
   encountersWon: number;

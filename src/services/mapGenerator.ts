@@ -590,10 +590,13 @@ function assignEnemyIds(
 
     switch (node.type) {
       case 'combat':
-        node.enemyId = pickCombatEnemy(derivedFloor)
+        // Pass the local rng directly so both co-op peers produce identical enemyIds
+        // from the same seed, regardless of global getRunRng('enemies') fork state.
+        node.enemyId = pickCombatEnemy(derivedFloor, rng)
         break
       case 'elite':
-        node.enemyId = getMiniBossForFloor(derivedFloor)
+        // Same: use local rng so mini-boss assignment is purely seed-driven.
+        node.enemyId = getMiniBossForFloor(derivedFloor, rng)
         break
       case 'boss': {
         const bossFloor = startFloor + 5

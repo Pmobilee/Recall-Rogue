@@ -27,7 +27,17 @@
 
   /** HP bar colour: green above 50%, amber 25-50%, red below 25% */
   let hpColor = $derived(
-    hpPercent > 50 ? '#e74c3c' : hpPercent > 25 ? '#e67e22' : '#c0392b'
+    hpPercent > 50 ? '#2ecc71' : hpPercent > 25 ? '#e67e22' : '#e74c3c'
+  )
+
+  /** Block value from partner state (Bug 5: blue bar + badge) */
+  let blockValue = $derived(progress.playerBlock ?? 0)
+
+  /** Block as percentage of max HP, clamped 0–100 */
+  let blockPercent = $derived(
+    progress.playerMaxHp > 0
+      ? Math.max(0, Math.min(100, (blockValue / progress.playerMaxHp) * 100))
+      : 0
   )
 
   /** Human-readable accuracy */
@@ -77,6 +87,13 @@
         class="mini-hp-fill"
         style="width: {hpPercent}%; background: {hpColor};"
       ></div>
+      {#if blockValue > 0}
+        <div
+          class="mini-block-fill"
+          style="width: {blockPercent}%;"
+          aria-label="Block {blockValue}"
+        ></div>
+      {/if}
     </div>
     <span class="expand-icon" aria-hidden="true">{expanded ? '▲' : '▼'}</span>
   </button>
@@ -99,10 +116,20 @@
             class="hp-fill"
             style="width: {hpPercent}%; background: linear-gradient(to right, {hpColor}cc, {hpColor});"
           ></div>
+          {#if blockValue > 0}
+            <div
+              class="block-fill"
+              style="width: {blockPercent}%;"
+              aria-label="Block {blockValue}"
+            ></div>
+          {/if}
         </div>
         <span class="hp-numbers" aria-live="polite">
           {progress.playerHp}<span class="hp-slash">/</span>{progress.playerMaxHp}
         </span>
+        {#if blockValue > 0}
+          <span class="block-badge" aria-label="Block {blockValue}">({blockValue})</span>
+        {/if}
       </div>
 
       <!-- Score -->
@@ -153,8 +180,8 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: calc(10px * var(--layout-scale, 1));
     backdrop-filter: blur(8px);
-    /* Above topbar (200) and fog meter (199) so it's not occluded. */
-    z-index: 205;
+    /* z-index 20: below .quiz-backdrop (25) so HUD dims during quiz moments and reappears after. */
+    z-index: 20;
     font-family: var(--font-body, 'Lora', serif);
     color: #e0e0e0;
     overflow: hidden;
@@ -212,12 +239,26 @@
     border-radius: calc(3px * var(--layout-scale, 1));
     overflow: hidden;
     min-width: calc(40px * var(--layout-scale, 1));
+    /* position: relative required for absolute block overlay */
+    position: relative;
   }
 
   .mini-hp-fill {
     height: 100%;
     border-radius: calc(3px * var(--layout-scale, 1));
     transition: width 0.4s ease;
+  }
+
+  /* Blue block overlay on the mini HP bar (Bug 5) */
+  .mini-block-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(to right, #4aa3ff, #1e5799);
+    border-radius: inherit;
+    transition: width 0.3s ease;
+    pointer-events: none;
   }
 
   .expand-icon {
@@ -275,12 +316,26 @@
     background: rgba(255, 255, 255, 0.08);
     border-radius: calc(4px * var(--layout-scale, 1));
     overflow: hidden;
+    /* position: relative required for absolute block overlay */
+    position: relative;
   }
 
   .hp-fill {
     height: 100%;
     border-radius: calc(4px * var(--layout-scale, 1));
     transition: width 0.4s ease;
+  }
+
+  /* Blue block overlay on the expanded HP bar (Bug 5) */
+  .block-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(to right, #4aa3ff, #1e5799);
+    border-radius: inherit;
+    transition: width 0.3s ease;
+    pointer-events: none;
   }
 
   .hp-numbers {
@@ -293,6 +348,16 @@
   .hp-slash {
     color: #555;
     margin: 0 calc(2px * var(--layout-scale, 1));
+  }
+
+  /* Block badge: "(X)" shown next to HP numbers when partner has block (Bug 5) */
+  .block-badge {
+    margin-left: calc(6px * var(--layout-scale, 1));
+    color: #4aa3ff;
+    font-weight: 600;
+    font-size: calc(12px * var(--text-scale, 1));
+    flex-shrink: 0;
+    white-space: nowrap;
   }
 
   /* Status pill */
