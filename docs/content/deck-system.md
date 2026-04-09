@@ -152,6 +152,7 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | `spanish_a2_grammar_arch.yaml` | `spanish_a2_grammar` | complete — live | 177 | PCIC A2-scoped; 8 named chain themes, 25 answer pools, 8 sub-decks; 94.4% Tatoeba sentences; 2nd Spanish grammar deck. 2026-04-09. |
 | `spanish_b1_grammar_arch.yaml` | `spanish_b1_grammar` | complete — live | 175 | PCIC B1-scoped; 8 named chain themes, 24 answer pools, 8 sub-decks; 82.3% Tatoeba sentences; 3rd Spanish grammar deck; assembled from 9 batch files. 2026-04-09. |
 | `spanish_b2_grammar_arch.yaml` | `spanish_b2_grammar` | complete — live | 176 | PCIC B2-scoped; 8 named chain themes, 25 answer pools, 8 sub-decks; 90.9% Tatoeba sentences; 4th Spanish grammar deck (completes A1–B2 suite). Topics: imperfect subjunctive (-ra/-se), compound subjunctive, si-clauses types 2/3/mixed, future/conditional perfect, passive voice, reported speech, advanced connectors, full por/para system. 2026-04-10. |
+| `*(inline generation)*` | `anime_manga` | complete — live | 204 | art_architecture / anime_manga domain; 8 chain themes, 15 answer pools (short/long splits for length-tell prevention), 3 sub-decks; 116 trivia facts bridged. 2026-04-10. |
 
 The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
 
@@ -2226,3 +2227,69 @@ The `spanish_a1_grammar` deck establishes these conventions for A1–B2 Spanish 
 - `scripts/assemble-b2-deck.mjs` — assembly script (reads all b2_batch*.json from data/decks/_wip/)
 
 **Language coverage note:** As of 2026-04-10, all 4 planned Spanish grammar decks (A1–B2) are complete. Spanish grammar suite totals: A1 (134) + A2 (177) + B1 (175) + B2 (176) = **662 facts**. C1/C2 grammar decks are future work.
+---
+
+## anime_manga Deck
+
+`data/decks/anime_manga.json` — assembled 2026-04-10. Covers Japanese animation and manga: flagship shonen series, shojo/josei romance narratives, seinen mature works, Studio Ghibli films and anime film canon, the classic pioneer era (Tezuka through 1980s), manga craft and publishing industry, animation craft and studio history, and the global cultural impact of anime.
+
+| Field | Value |
+|---|---|
+| `id` | `anime_manga` |
+| `domain` | `art_architecture` |
+| `subDomain` | `anime_manga` |
+| `facts` | 204 |
+| `minimumFacts` | 150 |
+| `targetFacts` | 210 |
+
+**Chain Themes (8):**
+
+| chainThemeId | Name |
+|---|---|
+| 0 | Shonen Legends |
+| 1 | Shojo & Josei |
+| 2 | Seinen & Mature |
+| 3 | Ghibli & Anime Film |
+| 4 | Classic & Pioneer Era |
+| 5 | Manga Craft & Publishing |
+| 6 | Animation Craft & Studios |
+| 7 | Culture & Global Impact |
+
+**SubDecks (3):**
+
+| SubDeck ID | Name | Facts |
+|---|---|---|
+| `sd_series_stories` | Series & Stories | 91 |
+| `sd_film_classics` | Film & Classics | 47 |
+| `sd_craft_culture` | Craft & Culture | 66 |
+
+**Answer Type Pools (15):**
+
+| Pool ID | Format | Facts | Notes |
+|---|---|---|---|
+| `anime_series_titles_short` | title | 7 | Short anime series titles (≤15 chars) |
+| `anime_series_titles_long` | title | 16 | Long anime series titles (>15 chars) |
+| `manga_series_titles` | title | 5 | Manga-specific series titles |
+| `creator_names_short` | name | 5 | Short creator/director names (≤15 chars) |
+| `creator_names_long` | name | 38 | Long creator/director names (>15 chars) |
+| `character_names_short` | name | 10 | Short character names |
+| `character_names_long` | name | 13 | Long character names |
+| `studio_names_short` | name | 18 | Short studio names (≤15 chars) |
+| `studio_names_long` | name | 13 | Long studio names (>15 chars) |
+| `bracket_years` | bracket_year | 25 | Numeric year values (bracket notation) |
+| `genre_demographic_terms` | term | 12 | Genre/demographic category labels |
+| `technique_terms_short` | term | 10 | Short animation/manga technique terms |
+| `technique_terms_long` | term | 5 | Long animation/manga technique descriptions |
+| `publisher_magazine_names` | name | 8 | Publisher and magazine names |
+| `count_values` | bracket_number | 19 | Numeric counts (episodes, volumes, box-office) |
+
+**Pool homogeneity:** Title, name, and term pools each split into short/long tiers (length-tell prevention). 15 pools total after splits, up from initial broader design.
+
+**Difficulty:**
+- easy (1-2): 99 facts
+- medium (3): 75 facts
+- hard (4-5): 30 facts
+
+**Trivia bridge:** 116 facts extracted to bridge database. Domain: `art_architecture`, sub-domain: `anime_manga`.
+
+**Architecture:** Inline generation (no separate YAML architecture file).
