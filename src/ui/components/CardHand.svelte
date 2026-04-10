@@ -10,7 +10,6 @@
   // getCardDescriptionParts moved to CardVisual.svelte
   import { BASE_WIDTH, GAME_ASPECT_RATIO } from '../../data/layout'
   import { audioManager } from '../../services/audioService'
-  import { isFirstChargeFree } from '../../services/discoverySystem'
   import { getMechanicDefinition } from '../../data/mechanics'
   // stretchText moved to CardVisual.svelte
   import { CHARGE_CORRECT_MULTIPLIER } from '../../data/balance'
@@ -247,9 +246,11 @@
    * surge, chain momentum match, first-free-charge, and active chain color match.
    * Used to show live cost on the card badge when the card is in charge-preview state.
    */
-  function getDisplayedChargeApCost(card: Card, isMomentumMatch: boolean, isActiveChainMatch: boolean, isFreeCharge: boolean): number {
+  function getDisplayedChargeApCost(card: Card, isMomentumMatch: boolean, isActiveChainMatch: boolean): number {
     const base = Math.max(0, getEffectiveApCost(card) - focusDiscount)
-    const surchargeWaived = isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch
+    // Surcharge is waived by: surge, chain momentum match, on-colour match.
+    // Free First Charge was removed in Pass 8.
+    const surchargeWaived = isSurgeActive || isMomentumMatch || isActiveChainMatch
     return base + (surchargeWaived ? 0 : 1)
   }
 
@@ -823,7 +824,6 @@
     {@const cardDragScale = isDraggingThis ? dragScale : 1}
     {@const runState = $activeRunState}
     {@const isMastered = card.tier === '3'}
-    {@const isFreeCharge = (runState !== null && card.factId) ? isFirstChargeFree(card.factId, runState.firstChargeFreeFactIds) : false}
     {@const isMomentumMatch = chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType}
     {@const isActiveChainMatch = activeChainColor !== null && card.chainType === activeChainColor}
     {@const chargeApCostForDrag = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
@@ -841,7 +841,7 @@
     })() : 0}
     {@const isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered}
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
-    {@const displayedApCost = isChargePreview ? getDisplayedChargeApCost(card, isMomentumMatch, isActiveChainMatch, isFreeCharge) : getDisplayedApCost(card)}
+    {@const displayedApCost = isChargePreview ? getDisplayedChargeApCost(card, isMomentumMatch, isActiveChainMatch) : getDisplayedApCost(card)}
     {@const apGemColor = isChargePreview ? getChargeApGemColor(displayedApCost, getEffectiveApCost(card)) : getApGemColor(card)}
     {@const preview = damagePreviews[card.id]}
     {@const effectVal = preview ? (isChargePreview ? preview.ccValue : preview.qpValue) : getEffectValue(card, isChargePreview)}
@@ -957,7 +957,7 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
       {@const chargeApDisplay = String(chargeApCost)}
       {@const apBadgeColor = chargeAffordable ? '#4ADE80' : '#EF4444'}
@@ -1106,7 +1106,6 @@
     {@const cardDragRawY = isDraggingThis ? dragRawDeltaY : 0}
     {@const cardDragScale = isDraggingThis ? dragScale : 1}
     {@const runState = $activeRunState}
-    {@const isFreeCharge = (runState !== null && card.factId) ? isFirstChargeFree(card.factId, runState.firstChargeFreeFactIds) : false}
     {@const isMastered = card.tier === '3'}
     {@const isMomentumMatch = chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType}
     {@const isActiveChainMatch = activeChainColor !== null && card.chainType === activeChainColor}
@@ -1125,7 +1124,7 @@
     })() : 0}
     {@const isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered}
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
-    {@const displayedApCost = isChargePreview ? getDisplayedChargeApCost(card, isMomentumMatch, isActiveChainMatch, isFreeCharge) : getDisplayedApCost(card)}
+    {@const displayedApCost = isChargePreview ? getDisplayedChargeApCost(card, isMomentumMatch, isActiveChainMatch) : getDisplayedApCost(card)}
     {@const apGemColor = isChargePreview ? getChargeApGemColor(displayedApCost, getEffectiveApCost(card)) : getApGemColor(card)}
     {@const preview = damagePreviews[card.id]}
     {@const effectVal = preview ? (isChargePreview ? preview.ccValue : preview.qpValue) : getEffectValue(card, isChargePreview)}
@@ -1246,7 +1245,7 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
       {@const chargeApDisplay = String(chargeApCost)}
       {@const apBadgeColor = chargeAffordable ? '#4ADE80' : '#EF4444'}

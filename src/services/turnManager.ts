@@ -3,13 +3,14 @@
 
 import { get } from 'svelte/store';
 import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
-import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier } from './discoverySystem';
+// discoverySystem.ts — isFirstChargeFree/markFirstChargeUsed removed (Pass 8: free first charge disabled).
+// getFirstChargeWrongMultiplier retained in discoverySystem.ts for historical reference.
 import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags, getMasteryBaseBonus, getMasteryStats, getEffectiveApCost } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
 import { resetChain, decayChain, extendOrResetChain, getChainState, getCurrentChainLength, initChainSystem, rotateActiveChainColor, getActiveChainColor, getChainMultiplier, switchActiveChainColor } from './chainSystem';
 import { resetAura, adjustAura, getAuraState } from './knowledgeAuraSystem';
 import { resetReviewQueue, addToReviewQueue, clearReviewQueueFact, isReviewQueueFact } from './reviewQueueSystem';
-import { CHAIN_MOMENTUM_ENABLED, CHARGE_AP_SURCHARGE, FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
+import { CHAIN_MOMENTUM_ENABLED, CHARGE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
 import { activeRunState } from './runStateStore';
 import type { EnemyInstance } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
@@ -497,8 +498,6 @@ export interface PlayCardResult {
   blocked: boolean;
   isPerfectTurn: boolean;
   turnState: TurnState;
-  /** Whether the free first Charge was used on this play. */
-  usedFreeCharge: boolean;
   /** Whether this card play triggered a mastery level change. */
   masteryChange: 'upgrade' | 'downgrade' | null;
   /** The card ID that was mastery-changed (for animation targeting). */
@@ -839,7 +838,6 @@ export function playCardAction(
       blocked: true,
       isPerfectTurn: turnState.isPerfectTurn,
       turnState,
-      usedFreeCharge: false,
       masteryChange: null,
       masteryChangedCardId: null,
     };
@@ -868,7 +866,6 @@ export function playCardAction(
       blocked: true,
       isPerfectTurn: turnState.isPerfectTurn,
       turnState,
-      usedFreeCharge: false,
       masteryChange: null,
       masteryChangedCardId: null,
     };
@@ -893,7 +890,6 @@ export function playCardAction(
       blocked: true,
       isPerfectTurn: turnState.isPerfectTurn,
       turnState,
-      usedFreeCharge: false,
       masteryChange: null,
       masteryChangedCardId: null,
     };
@@ -914,7 +910,6 @@ export function playCardAction(
       blocked: true,
       isPerfectTurn: turnState.isPerfectTurn,
       turnState,
-      usedFreeCharge: false,
       masteryChange: null,
       masteryChangedCardId: null,
     };
@@ -929,13 +924,9 @@ export function playCardAction(
   let apCost = getEffectiveApCost(cardInHand);
 
   // Charge AP surcharge: charging costs base AP + CHARGE_AP_SURCHARGE (1) on normal turns.
-  // Priority order (7.6): Surge → Warcry → Chain Momentum → On-Colour → Free First Charge → surcharge.
-  // On-Colour is checked before Free First Charge so an on-colour first charge does NOT consume
-  // the free-first-charge slot — player keeps that slot for future off-colour charges.
-  let usedFreeCharge = false;
+  // Priority order (7.6): Surge → Warcry → Chain Momentum → On-Colour → surcharge.
+  // Free First Charge was removed in Pass 8 — chain color matching is the intended free-charge mechanism.
   if (playMode === 'charge') {
-    const runStateForCharge = get(activeRunState);
-    const isSurge = isSurgeTurn(turnState.turnNumber);
     // Surge turns no longer waive surcharge — they grant +1 AP at turn-start (SURGE_BONUS_AP).
     // Normal waiver priority applies on all turns including surge.
     if (turnState.warcryFreeChargeActive) {
@@ -946,11 +937,7 @@ export function playCardAction(
       turnState.nextChargeFreeForChainType = null; // consume the flag
     } else if (cardInHand.chainType != null && cardInHand.chainType === getActiveChainColor()) {
       // On-Colour charge: waive surcharge — charging into the active chain is free.
-      // Rewards focused chain-building play. Does NOT consume free-first-charge slot.
-    } else if (cardInHand.factId && runStateForCharge && isFirstChargeFree(cardInHand.factId, runStateForCharge.firstChargeFreeFactIds)) {
-      // Free first Charge: surcharge is FIRST_CHARGE_FREE_AP_SURCHARGE (0) — first attempt is always free
-      apCost += FIRST_CHARGE_FREE_AP_SURCHARGE;
-      usedFreeCharge = true;
+      // Rewards focused chain-building play.
     } else {
       // Normal Charge: apply CHARGE_AP_SURCHARGE (+1 AP over Quick Play)
       apCost += CHARGE_AP_SURCHARGE;
@@ -986,7 +973,6 @@ export function playCardAction(
       blocked: true,
       isPerfectTurn: turnState.isPerfectTurn,
       turnState,
-      usedFreeCharge: false,
       masteryChange: null,
       masteryChangedCardId: null,
     };
@@ -1039,7 +1025,6 @@ export function playCardAction(
       blocked: true,
       isPerfectTurn: false,
       turnState,
-      usedFreeCharge: false,
       masteryChange: null,
       masteryChangedCardId: null,
     };
@@ -1132,19 +1117,10 @@ export function playCardAction(
         }
       }
 
-      // Free First Charge: mark as used after resolution (win or lose)
-      if (usedFreeCharge && card.factId) {
-        const runState = get(activeRunState);
-        if (runState) {
-          markFirstChargeUsed(card.factId, runState.firstChargeFreeFactIds);
-          activeRunState.set(runState);
-        }
-      }
-
       // AR-202: Curse logic — relaxed mode wrong Charge on mastery 0 card.
-      // Free First Charge wrongs are EXEMPT. Mastery 1+ wrongs only downgrade.
+      // Mastery 1+ wrongs only downgrade.
       // AR-223: Also exempt on first attempt at this fact (new-fact protection).
-      if (playMode === 'charge' && !usedFreeCharge && !isFirstAttempt && preMasteryLevel === 0 && card.factId) {
+      if (playMode === 'charge' && !isFirstAttempt && preMasteryLevel === 0 && card.factId) {
         const runState = get(activeRunState);
         if (runState) {
           runState.cursedFactIds.add(card.factId);
@@ -1180,8 +1156,7 @@ export function playCardAction(
         blocked: false,
         isPerfectTurn: false,
         turnState,
-        usedFreeCharge,
-        masteryChange: masteryChangeRelaxed,
+          masteryChange: masteryChangeRelaxed,
         masteryChangedCardId: masteryChangedCardIdRelaxed,
       };
     }
@@ -1209,12 +1184,9 @@ export function playCardAction(
       }
     }
 
-    // Partial fizzle: wrong answers still apply a fraction of the base effect.
-    // Exception: Free First Charge on wrong answer uses 0.0× (FIRST_CHARGE_FREE_WRONG_MULTIPLIER),
-    // card fizzles entirely — the cost of guessing wrong on an unknown fact.
-    const wrongMultiplier = (usedFreeCharge && playMode === 'charge')
-      ? getFirstChargeWrongMultiplier()  // 0.0× — total fizzle
-      : getBalanceValue('fizzleEffectRatio', FIZZLE_EFFECT_RATIO);  // 0.25× normally
+    // Partial fizzle: wrong answers still apply FIZZLE_EFFECT_RATIO (0.50×) of the base effect.
+    // Free First Charge special multiplier was removed in Pass 8 (always use standard fizzle ratio now).
+    const wrongMultiplier = getBalanceValue('fizzleEffectRatio', FIZZLE_EFFECT_RATIO);
     const fizzleBase = Math.round(card.baseEffectValue * wrongMultiplier);
     const fizzledEffect: CardEffectResult = {
       ...createNoEffect(card),
@@ -1313,19 +1285,10 @@ export function playCardAction(
       }
     }
 
-    // Free First Charge: mark as used after resolution (win or lose)
-    if (usedFreeCharge && card.factId) {
-      const runState = get(activeRunState);
-      if (runState) {
-        markFirstChargeUsed(card.factId, runState.firstChargeFreeFactIds);
-        activeRunState.set(runState);
-      }
-    }
-
     // AR-202: Curse logic — normal mode wrong Charge on mastery 0 card.
-    // Free First Charge wrongs are EXEMPT. Mastery 1+ wrongs only downgrade (curse on next wrong at 0).
+    // Mastery 1+ wrongs only downgrade (curse on next wrong at 0).
     // AR-223: Also exempt on first attempt at this fact (new-fact protection).
-    if (playMode === 'charge' && !usedFreeCharge && !isFirstAttempt && preMasteryLevel === 0 && card.factId) {
+    if (playMode === 'charge' && !isFirstAttempt && preMasteryLevel === 0 && card.factId) {
       const runState = get(activeRunState);
       if (runState) {
         runState.cursedFactIds.add(card.factId);
@@ -1349,9 +1312,7 @@ export function playCardAction(
     const wrongPct = Math.round(wrongMultiplier * 100);
     turnState.turnLog.push({
       type: 'fizzle',
-      message: usedFreeCharge
-        ? `Free Charge: wrong answer (${wrongPct}% effect — no penalty for trying)`
-        : `Card fizzled — wrong answer (${wrongPct}% effect applied)`,
+      message: `Card fizzled — wrong answer (${wrongPct}% effect applied)`,
       cardId,
     });
 
@@ -1364,7 +1325,6 @@ export function playCardAction(
       blocked: false,
       isPerfectTurn: false,
       turnState,
-      usedFreeCharge,
       masteryChange: masteryChangeWrong,
       masteryChangedCardId: masteryChangedCardIdWrong,
     };
@@ -1622,7 +1582,6 @@ export function playCardAction(
       blocked: false,
       isPerfectTurn: turnState.isPerfectTurn,
       turnState,
-      usedFreeCharge,
       masteryChange: null,
       masteryChangedCardId: null,
       pendingChoice: {
@@ -1684,7 +1643,6 @@ export function playCardAction(
       blocked: false,
       isPerfectTurn: turnState.isPerfectTurn,
       turnState,
-      usedFreeCharge,
       masteryChange: null,
       masteryChangedCardId: null,
       pendingCardPick: effect.pendingCardPick,
@@ -3038,16 +2996,6 @@ export function playCardAction(
     });
   }
 
-  // Free First Charge: mark as used after successful Charge resolution.
-  // Tier 3 auto-Charge does NOT consume the free Charge (player didn't consciously Charge it).
-  if (usedFreeCharge && card.factId && card.tier !== '3') {
-    const runState = get(activeRunState);
-    if (runState) {
-      markFirstChargeUsed(card.factId, runState.firstChargeFreeFactIds);
-      activeRunState.set(runState);
-    }
-  }
-
   // AR-241: Per-fact variant progression — correct Charge advances the variant level.
   if (playMode === 'charge' && card.factId) {
     const runState = get(activeRunState);
@@ -3069,7 +3017,6 @@ export function playCardAction(
     blocked: false,
     isPerfectTurn: turnState.isPerfectTurn,
     turnState,
-    usedFreeCharge,
     masteryChange,
     masteryChangedCardId,
     curedCursedFact,
@@ -3897,11 +3844,15 @@ function applyTransmuteSwap(
   // Gather current deck for catch-up mastery calculation (before mutation)
   const allDeckCards = [...drawPile, ...hand, ...discardPile, ...exhaustPile];
 
-  // Transform first selection in-place (preserving id + factId)
+  // Transform first selection in-place (factId preserved; id gets new unique value so
+  // CardHand's $effect ID-tracking detects it as a new card and fires card-drawn-in animation
+  // when drawn into hand. originalCard preserves the old id for revert dedup.)
   const primary = selectedCards[0];
   const primaryMastery = computeCatchUpMastery(primary, allDeckCards);
   sourcePile[sourceIdx] = {
     ...sourceCard,
+    // New unique id so CardHand's $effect sees this as a newly drawn card
+    id: `${sourceCard.id}-tx-${Date.now()}`,
     // Mechanic fields overwritten
     mechanicId: primary.mechanicId,
     mechanicName: primary.mechanicName,
@@ -3912,7 +3863,7 @@ function applyTransmuteSwap(
     chainType: primary.chainType,
     masteryLevel: primaryMastery,
     isUpgraded: primaryMastery > 0,
-    // Encounter-only: remember original for revert
+    // Encounter-only: remember original for revert (originalCard.id = old id for dedup)
     isTransmuted: true,
     originalCard: originalCardSnapshot,
   };

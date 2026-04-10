@@ -69,6 +69,12 @@ const _partnerStateSubs = new Set<(states: Readonly<Record<string, PartnerState>
 const _sharedEnemySubs = new Set<(snapshot: SharedEnemySnapshot) => void>();
 
 /**
+ * Set of callbacks subscribed to real-time enemy HP updates (per-card-play, co-op only).
+ * Lightweight complement to the full SharedEnemySnapshot turn-end reconcile.
+ */
+const _enemyHpSubs = new Set<(currentHP: number, maxHP: number) => void>();
+
+/**
  * Deltas collected during the current turn-end barrier.
  * Keyed by playerId. Cleared when awaitCoopTurnEndWithDelta is called (new turn).
  */
@@ -154,12 +160,23 @@ export function initCoopSync(localPlayerId: string): void {
     }
   });
 
+  // Real-time enemy HP update — lightweight per-card-play broadcast from the active partner.
+  const offEnemyHpUpdate = transport.on('mp:coop:enemy_hp_update', (msg) => {
+    const { currentHP, maxHP } = msg.payload as { currentHP: number; maxHP: number };
+    coopLog('received enemy_hp_update, hp=%d/%d', currentHP, maxHP);
+    if (typeof currentHP !== 'number' || typeof maxHP !== 'number') return;
+    for (const cb of _enemyHpSubs) {
+      cb(currentHP, maxHP);
+    }
+  });
+
   _cleanupListener = () => {
     offTurnEnd();
     offTurnEndWithDelta();
     offTurnEndCancel();
     offPartner();
     offEnemyState();
+    offEnemyHpUpdate();
   };
 }
 
@@ -387,6 +404,41 @@ export function broadcastSharedEnemyState(snapshot: SharedEnemySnapshot): void {
   coopLog('broadcastSharedEnemyState hp=%d/%d', snapshot.currentHP, snapshot.maxHP);
   const transport = getMultiplayerTransport();
   transport.send('mp:coop:enemy_state', snapshot as unknown as Record<string, unknown>);
+}
+
+/**
+ * Broadcast a real-time lightweight enemy HP update to all peers.
+ * Call after each card play so the partner's scene reflects damage in real time
+ * without waiting for the full turn-end reconcile.
+ *
+ * Sends `mp:coop:enemy_hp_update` — parsed by `onEnemyHpUpdate` subscribers.
+ */
+export function broadcastEnemyHpUpdate(currentHP: number, maxHP: number): void {
+  if (!_localPlayerId) {
+    coopLog('broadcastEnemyHpUpdate called before initCoopSync — dropped');
+    return;
+  }
+  coopLog('broadcastEnemyHpUpdate hp=%d/%d', currentHP, maxHP);
+  const transport = getMultiplayerTransport();
+  transport.send('mp:coop:enemy_hp_update', { currentHP, maxHP });
+}
+
+/**
+ * Subscribe to real-time enemy HP updates from the partner.
+ * Returns an unsubscribe function the caller must invoke on cleanup.
+ *
+ * Fires for every `mp:coop:enemy_hp_update` — use to update the local scene's
+ * enemy HP display without waiting for turn-end reconciliation.
+ */
+export function onEnemyHpUpdate(
+  cb: (currentHP: number, maxHP: number) => void,
+): () => void {
+  _enemyHpSubs.add(cb);
+  coopLog('onEnemyHpUpdate subscribed, total=%d', _enemyHpSubs.size);
+  return () => {
+    _enemyHpSubs.delete(cb);
+    coopLog('onEnemyHpUpdate unsubscribed, total=%d', _enemyHpSubs.size);
+  };
 }
 
 /**

@@ -362,8 +362,8 @@ Several mechanics have designed creative milestones at key mastery levels that c
 - `stagger` L5: qpValue was 0 (< L4=1) — fixed to 1
 
 **New mastery tables added (`src/services/cardUpgradeService.ts`):**
-- `burnout_shield`: full L0–L5 table (qpValue 5→13). L5 gains `burnout_no_exhaust` tag (design intent — NOT yet wired in `cardEffectResolver.ts`)
-- `knowledge_ward`: full L0–L5 table (qpValue 6→12). L3+ gains `knowledge_ward_cleanse` tag (design intent — NOT yet wired)
+- `burnout_shield`: full L0–L5 table (qpValue 5→13). L5 gains `burnout_no_exhaust` tag (wired as of 2026-04-10: L5 CC no longer exhausts)
+- `knowledge_ward`: full L0–L5 table (qpValue 6→12). L3+ gains `knowledge_ward_cleanse` tag (wired as of 2026-04-10: cleanses 1 debuff from player on any play mode at L3+)
 - Both previously used legacy `getMasteryBaseBonus()` bridge; now have explicit `MASTERY_STAT_TABLES` entries
 
 **Regression tests (`tests/unit/cardUpgradeService-apCost.test.ts`, 34 tests):**
@@ -427,7 +427,8 @@ Transmute transforms a source card into a new card for the current encounter onl
 
 **Implementation details:**
 - Source card is located across all four piles (hand/drawPile/discardPile/exhaustPile) by `applyTransmuteSwap()` helper in `turnManager.ts`.
-- Source card is mutated in-place (id and factId preserved). Original fields saved to `originalCard` snapshot. `isTransmuted=true` set.
+- Source card is mutated in-place (factId preserved; **id gets a new unique value** `${oldId}-tx-${Date.now()}`). This lets CardHand's `$effect` ID-tracking detect the card as a newly drawn card when it enters the hand, firing the `card-drawn-in` animation. Original id is preserved in `originalCard.id` for encounter-end revert dedup.
+- Original fields saved to `originalCard` snapshot. `isTransmuted=true` set.
 - Mastery 3+ CC with 2 picks: first selection replaces the source card; second is added to hand with a sentinel `originalCard.id` (`transmute_extra_remove_*`) so `revertTransmutedCards()` removes it entirely.
 - `revertTransmutedCards(deck)` walks hand/draw/discard piles. Cards with `isTransmuted && originalCard` are restored; those with sentinel ids are dropped.
 

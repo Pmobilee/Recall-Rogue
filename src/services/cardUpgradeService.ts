@@ -561,8 +561,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 8, apCost: 1, extras: { str: 2, strPerm: 1 } },  // L5: 1 AP! bumped 7→8
     ],
   },
-  /** burnout_shield: CC exhausts at L0-L2; L5 removes exhaust. ap=1. Block scales strongly.
-   * Tags: burnout_no_exhaust (not yet wired in cardEffectResolver — future pass). */
+  /** burnout_shield: CC exhausts at L0-L4; L5 CC no longer exhausts (burnout_no_exhaust tag). ap=1. Block scales strongly. */
   burnout_shield: {
     maxLevel: 5,
     levels: [
@@ -571,19 +570,18 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 7 },                                              // L2
       { qpValue: 9 },                                              // L3
       { qpValue: 11 },                                             // L4
-      { qpValue: 13, tags: ['burnout_no_exhaust'] },               // L5: no longer exhausts (tag not yet wired)
+      { qpValue: 13, tags: ['burnout_no_exhaust'] },               // L5: no longer exhausts (wired 2026-04-10)
     ],
   },
 
-  /** knowledge_ward: knowledge-scaling block shield. ap=1.
-   * L3+ cleanses 1 debuff via knowledge_ward_cleanse tag (not yet wired in cardEffectResolver — future pass). */
+  /** knowledge_ward: knowledge-scaling block shield. ap=1. L3+ cleanses 1 debuff (knowledge_ward_cleanse tag). */
   knowledge_ward: {
     maxLevel: 5,
     levels: [
       { qpValue: 6 },                                              // L0
       { qpValue: 7 },                                              // L1
       { qpValue: 8 },                                              // L2
-      { qpValue: 9,  tags: ['knowledge_ward_cleanse'] },           // L3: cleanses 1 debuff (tag not yet wired)
+      { qpValue: 9,  tags: ['knowledge_ward_cleanse'] },           // L3: cleanses 1 debuff (wired 2026-04-10)
       { qpValue: 10, tags: ['knowledge_ward_cleanse'] },           // L4
       { qpValue: 12, tags: ['knowledge_ward_cleanse'] },           // L5
     ],

@@ -1433,10 +1433,11 @@ export function resolveCardEffect(
       return result;
     }
 
-    // Burnout Shield — exhaust on CC
+    // Burnout Shield — exhaust on CC unless burnout_no_exhaust tag (L5) is active
     case 'burnout_shield': {
       result.shieldApplied = applyShieldRelics(finalValue);
-      if (isChargeCorrect) {
+      // L5: burnout_no_exhaust — card no longer exhausts on CC.
+      if (isChargeCorrect && !hasTag('burnout_no_exhaust')) {
         result.exhaustOnResolve = true;
       }
       return result;
@@ -1458,6 +1459,9 @@ export function resolveCardEffect(
         // CW: 4 flat
         result.shieldApplied = applyShieldRelics(4);
       }
+      // L3+: knowledge_ward_cleanse — cleanse 1 debuff from player on any play mode.
+      // Mirrors shrug_cleanse1 pattern: fires unconditionally when tag is active.
+      if (hasTag('knowledge_ward_cleanse')) result.removeDebuffCount = 1;
       return result;
     }
 

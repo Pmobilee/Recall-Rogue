@@ -122,7 +122,7 @@ The empty-hand trick uses the current (pre-damage) `turnState` — it does not r
 | `AP_PER_ACT` | `{ 1: 3, 2: 4, 3: 4 }` — Act 2+ gives 4 AP/turn |
 | Normal card cost | `getEffectiveApCost(card)` — prefers `MASTERY_STAT_TABLES[id].levels[N].apCost`, falls back to seeded `card.apCost` (`src/services/cardUpgradeService.ts`) |
 | Charge surcharge | +1 AP added to `apCost` |
-| `FIRST_CHARGE_FREE_AP_SURCHARGE` | 1 (disabled Pass 8 — free first charge removed to preserve QP-vs-charge decision) |
+| `FIRST_CHARGE_FREE_AP_SURCHARGE` | 1 (constant kept for save-format compatibility; the free-charge branch was removed from `playCardAction` on 2026-04-10) |
 | `SURGE_BONUS_AP` | 1 — bonus AP at the start of Surge turns |
 
 **Act-aware AP:** Floors 1-6 = Act 1 (3 AP), floors 7-12 = Act 2 (4 AP), floors 13+ = Act 3 (4 AP). More AP in later acts gives players room to charge and combo under heavier enemy pressure.
@@ -133,7 +133,7 @@ Charge plays add +1 AP surcharge. Surcharge waivers (checked in priority order i
 1. **Warcry buff** — `warcryFreeChargeActive` flag (consumed on use)
 2. **Chain Momentum** — `CHAIN_MOMENTUM_ENABLED = true`; previous correct Charge waives surcharge for next same chain-type Charge
 3. **Active Chain Color Match** (7.6 fix) — `card.chainType === getActiveChainColor()`; charging a card that matches the current active chain color waives the surcharge. After a mid-turn color switch (see chains.md), `getActiveChainColor()` returns the newly pivoted color — so the switched-to color immediately benefits from this waiver.
-4. **Free First Charge** (DISABLED, Pass 8) — `isFirstChargeFree(factId, ...)` — function still exists for wrong-answer multiplier logic, but `FIRST_CHARGE_FREE_AP_SURCHARGE = 1` means no AP discount is granted. Discovery system retained for future re-enable.
+4. **Free First Charge** (REMOVED, 2026-04-10) — The `else if (isFirstChargeFree(...))` branch was deleted from `playCardAction`. `FIRST_CHARGE_FREE_AP_SURCHARGE` constant and `firstChargeFreeFactIds` RunState field are kept for save-format compatibility but no longer written or read during charge resolution. Chain color matching is the intended free-charge mechanism.
 5. **Free Play Charges** — `turnState.freePlayCharges > 0` — set by frenzy mechanic or `focus_next2free` tag; reduces AP cost to 0 (highest priority — checked AFTER Focus discount)
 
 If `apCurrent < apCost`, card is blocked (`blocked: true`, no AP deducted). AP cost is resolved via `getEffectiveApCost(card)` which reads the mastery-level override before falling back to the seeded `card.apCost`.
@@ -316,7 +316,7 @@ The reward screen (`CardRewardScreen.svelte`) skips the heal UI step when `healA
 `resolveCardEffect()` now checks cumulative mastery tags via `hasTag('tag_name')`. Tags are set in `MASTERY_STAT_TABLES` and read via `getMasteryStats().tags`.
 
 Key behavioral changes driven by tags:
-- **Shield mechanics**: `fortify_carry` (blockCarries), `brace_exceed2/brace_draw1`, `overheal_heal2/pct5`, `parry_counter3`, `reinforce_draw1`, `shrug_cleanse1`, `guard_taunt1t`, `absorb_draw2cc/absorb_heal1cc`, `reactive_thorns_persist`, `bulwark_no_exhaust`, `conversion_bonus_50pct/keep_block`
+- **Shield mechanics**: `fortify_carry` (blockCarries), `brace_exceed2/brace_draw1`, `overheal_heal2/pct5`, `parry_counter3`, `reinforce_draw1`, `shrug_cleanse1`, `guard_taunt1t`, `absorb_draw2cc/absorb_heal1cc`, `reactive_thorns_persist`, `bulwark_no_exhaust`, `conversion_bonus_50pct/keep_block`, `burnout_no_exhaust` (burnout_shield L5: CC no longer exhausts), `knowledge_ward_cleanse` (knowledge_ward L3+: cleanse 1 debuff on any play)
 - **Buff mechanics**: `empower_2cards`, `quicken_draw1/draw2/ap2`, `focus_draw1/next2free`, `insc_fury_cc_bonus2`, `insc_iron_thorns1`
 - **Debuff mechanics**: `hex_vuln1t`, `slow_any_action/slow_weak1t`, `sap_weak2t/strip3block`, `corrode_vuln1t/strip_all`, `expose_dmg3`, `corrtouch_vuln1t`, `bash_vuln2t`, `stagger_weak1t`
 
@@ -344,7 +344,7 @@ All new `CardEffectResult` fields are now wired in `playCardAction()` and `endPl
 | `apRefund` | eruption_refund1 | Refunds N AP after card resolution |
 | `apGain` | trance_cc_ap1 | Grants N additional AP this turn |
 | `healPctApplied` | overheal_heal_pct5 | Heals N% of maxHP immediately |
-| `removeDebuffCount` | shrug_cleanse1 | Removes N player debuffs (shortest duration first) |
+| `removeDebuffCount` | shrug_cleanse1, knowledge_ward_cleanse | Removes N player debuffs (shortest duration first) |
 | `bleedPermanent` | rupture_bleed_perm | Sets bleed `turnsRemaining = 99999` sentinel; bleed decay skips this status |
 | `freePlayCount` | focus_next2free | Added to `freePlayCharges` pool |
 | `frenzyChargesGranted` | frenzy | Added to `freePlayCharges` pool |

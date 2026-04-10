@@ -492,3 +492,61 @@ describe('shield mechanics — cross-mechanic sanity checks', () => {
     }
   });
 });
+
+// ── Mastery tag wiring: burnout_no_exhaust (burnout_shield L5) ────────────────
+
+describe('burnout_shield — burnout_no_exhaust tag (L5)', () => {
+  it('L4 CC: exhausts normally (no burnout_no_exhaust tag yet)', () => {
+    const result = resolve('burnout_shield', 'charge_correct', undefined, undefined, { masteryLevel: 4 });
+    expect(result.exhaustOnResolve).toBe(true);
+  });
+
+  it('L5 CC: does NOT exhaust (burnout_no_exhaust tag active)', () => {
+    const result = resolve('burnout_shield', 'charge_correct', undefined, undefined, { masteryLevel: 5 });
+    expect(result.exhaustOnResolve).toBeFalsy();
+  });
+
+  it('L5 QP: still does not exhaust (tag only suppresses existing CC exhaust)', () => {
+    const result = resolve('burnout_shield', 'quick', undefined, undefined, { masteryLevel: 5 });
+    expect(result.exhaustOnResolve).toBeFalsy();
+  });
+
+  it('L5 CW: still does not exhaust', () => {
+    const result = resolve('burnout_shield', 'charge_wrong', undefined, undefined, { masteryLevel: 5 });
+    expect(result.exhaustOnResolve).toBeFalsy();
+  });
+
+  it('L5 CC: still applies shield (tag only removes exhaust, not the shield)', () => {
+    const result = resolve('burnout_shield', 'charge_correct', undefined, undefined, { masteryLevel: 5 });
+    expect(result.shieldApplied).toBeGreaterThan(0);
+  });
+});
+
+// ── Mastery tag wiring: knowledge_ward_cleanse (knowledge_ward L3+) ───────────
+
+describe('knowledge_ward — knowledge_ward_cleanse tag (L3+)', () => {
+  it('L2 CC: does NOT cleanse (no knowledge_ward_cleanse tag)', () => {
+    const result = resolve('knowledge_ward', 'charge_correct', undefined, undefined, { masteryLevel: 2 });
+    expect(result.removeDebuffCount).toBeFalsy();
+  });
+
+  it('L3 CC: cleanses 1 debuff (knowledge_ward_cleanse tag active)', () => {
+    const result = resolve('knowledge_ward', 'charge_correct', undefined, undefined, { masteryLevel: 3 });
+    expect(result.removeDebuffCount).toBe(1);
+  });
+
+  it('L3 QP: cleanses 1 debuff (tag fires on all play modes)', () => {
+    const result = resolve('knowledge_ward', 'quick', undefined, undefined, { masteryLevel: 3 });
+    expect(result.removeDebuffCount).toBe(1);
+  });
+
+  it('L5 CC: cleanses 1 debuff (tag persists at max level)', () => {
+    const result = resolve('knowledge_ward', 'charge_correct', undefined, undefined, { masteryLevel: 5 });
+    expect(result.removeDebuffCount).toBe(1);
+  });
+
+  it('L5 CC: still applies shield (cleanse is additive, does not replace block)', () => {
+    const result = resolve('knowledge_ward', 'charge_correct', undefined, undefined, { masteryLevel: 5 });
+    expect(result.shieldApplied).toBeGreaterThan(0);
+  });
+});
