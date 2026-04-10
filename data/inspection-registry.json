@@ -11333,14 +11333,14 @@
         "strategyDate": "not_checked",
         "neuralDate": "not_checked",
         "playtestDate": "not_checked",
-        "lastStructuralVerify": "not_checked",
-        "lastQuizAudit": "not_checked",
+        "lastStructuralVerify": "2026-04-10",
+        "lastQuizAudit": "2026-04-10",
         "lastLLMPlaytest": "not_checked",
-        "lastTriviaBridge": "not_checked",
-        "inProgress": "orchestrator",
-        "lastInspected": "not_checked",
-        "confidenceLevel": "not_checked",
-        "notes": ""
+        "lastTriviaBridge": "2026-04-10",
+        "inProgress": null,
+        "lastInspected": "2026-04-10",
+        "confidenceLevel": "Trustworthy \u26a0",
+        "notes": "Re-checked 2026-04-10: split year_dates mega-pool (159) into 6 chainTheme-based sub-pools; split number_stats mega-pool (108) into 4 semantic sub-pools (casualties/durations/money/distances). Fixed wwii_nw_bomber_crew_casualty_rate placeholder leak (bomber this \u2192 bomber crews). Moved 3 altitude facts from casualties to distances pool. 0 failures; 49 warnings (small sub-pool size flags, acceptable)."
       },
       {
         "id": "world_wonders",
