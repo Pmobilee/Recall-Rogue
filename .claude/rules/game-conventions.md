@@ -8,8 +8,8 @@
 
 ## Card Play Values
 - Quick Play = `getMasteryStats(mechanicId, level).qpValue` (explicit per-level value)
-- Charge Correct = `qpValue × CHARGE_CORRECT_MULTIPLIER (1.75)`
-- Charge Wrong = `FIZZLE_EFFECT_RATIO (0.25×)` of base effect — always resolves, never zero (`Math.max(0, ...)` floor applied)
+- Charge Correct = `qpValue × CHARGE_CORRECT_MULTIPLIER (1.50)` (reduced from 1.75 in Balance Pass 4, 2026-04-09: narrows CC/QP ratio, makes Quick Play more viable)
+- Charge Wrong = `FIZZLE_EFFECT_RATIO (0.50×)` of base effect — always resolves, never zero (`Math.max(0, ...)` floor applied). Raised 0.25→0.40→0.50 in Pass 4/4b: wrong charges are tempo costs, not punishment
 - CHARGE_AP_SURCHARGE = 1 (charging costs +1 AP over Quick Play)
 - FIRST_CHARGE_FREE_AP_SURCHARGE = 1 (disabled Pass 8 — free first charge removed; discovery system retained for wrong-answer multiplier only)
 - Surcharge waivers: Warcry buff, Chain Momentum (same chain type), On-Colour match (active chain color) — surge is NOT a waiver; it grants +1 bonus AP instead
