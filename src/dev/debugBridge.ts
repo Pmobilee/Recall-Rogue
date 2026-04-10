@@ -15,6 +15,36 @@ export interface FpsStats {
   avg: number;
 }
 
+/**
+ * Phaser performance telemetry snapshot.
+ * Added HIGH-4 (2026-04-10): extend __rrDebug with per-frame renderer metrics
+ * so agents can profile CombatScene FPS regressions without a Chrome extension.
+ */
+export interface PhaserPerfSnapshot {
+  /** Phaser game.loop.actualFps — live per-frame FPS from Phaser's TimeStep. */
+  fps: number;
+  /** 'Canvas' | 'WebGL' — which renderer is active. */
+  renderer: 'Canvas' | 'WebGL' | 'unknown';
+  /**
+   * Number of WebGL draw calls in the last frame (game.renderer.drawCount).
+   * Only meaningful when renderer === 'WebGL'. -1 if Canvas or unavailable.
+   */
+  drawCalls: number;
+  /** Number of active tweens in the global tween manager. */
+  activeTweens: number;
+  /** Number of GameObjects in the active scene's display list. */
+  gameObjectCount: number;
+  /** Total number of texture keys loaded in the texture manager. */
+  textureCount: number;
+  /** Canvas pixel dimensions as 'WxH' string. */
+  canvasSize: string;
+  /**
+   * JavaScript heap usage in MB (Chrome only via performance.memory).
+   * -1 if the API is unavailable.
+   */
+  memoryMB: number;
+}
+
 export interface RRDebugSnapshot {
   currentScreen: string;
   timestamp: number;
@@ -25,6 +55,8 @@ export interface RRDebugSnapshot {
     lastPointerPosition: { x: number; y: number } | null;
   } | null;
   fps: FpsStats;
+  /** Extended Phaser performance telemetry (HIGH-4). null when Phaser is not running. */
+  phaserPerf: PhaserPerfSnapshot | null;
   stores: Record<string, unknown>;
   interactiveElements: Array<{
     testId: string;
@@ -172,6 +204,88 @@ function getPhaserState(): RRDebugSnapshot['phaser'] {
   }
 }
 
+/**
+ * Gather extended Phaser performance telemetry from the live game instance.
+ * Reads draw calls, tween count, game object count, texture count, canvas size,
+ * and memory usage. Returns null if the game instance is not accessible.
+ *
+ * HIGH-4 (2026-04-10): added to enable profiling combat FPS regressions.
+ */
+function getPhaserPerf(): PhaserPerfSnapshot | null {
+  const gm = readSymbolStore('rr:gameManagerStore') as Record<string, unknown> | undefined;
+  if (!gm) return null;
+  try {
+    const game = (gm as { game?: Phaser.Game }).game;
+    if (!game) return null;
+
+    // Renderer type: Phaser.CANVAS = 1, Phaser.WEBGL = 2
+    const renderType = (game.config as { renderType?: number }).renderType;
+    let renderer: PhaserPerfSnapshot['renderer'] = 'unknown';
+    if (renderType === 1) renderer = 'Canvas';
+    else if (renderType === 2) renderer = 'WebGL';
+
+    // Draw calls: only available on WebGL renderer
+    // game.renderer is typed as Phaser.Renderer.WebGL.WebGLRenderer | Phaser.Renderer.Canvas.CanvasRenderer
+    const webglRenderer = game.renderer as { drawCount?: number } | undefined;
+    const drawCalls = (renderer === 'WebGL' && typeof webglRenderer?.drawCount === 'number')
+      ? webglRenderer.drawCount
+      : -1;
+
+    // Active tweens and game object count — both live on scenes, not on game directly.
+    // Tween managers are per-scene in Phaser 3: scene.tweens.getTweens().
+    type SceneWithTweens = {
+      sys?: { settings?: { key?: string } };
+      children?: { list?: unknown[] };
+      tweens?: { getTweens?: () => unknown[] };
+    };
+    let activeTweens = -1;
+    let gameObjectCount = -1;
+    try {
+      const scenePlugin = game.scene as { getScenes?: (active: boolean) => SceneWithTweens[] } | undefined;
+      const activeScenes = scenePlugin?.getScenes?.(true) ?? [];
+      if (activeScenes.length > 0) {
+        // Find the CombatScene specifically, or fall back to any active scene
+        const combatOrFirst = activeScenes.find(s => s.sys?.settings?.key === 'CombatScene') ?? activeScenes[0];
+        gameObjectCount = combatOrFirst?.children?.list?.length ?? -1;
+        // Aggregate tweens across all active scenes (combat + UI)
+        activeTweens = activeScenes.reduce((total, s) => {
+          const count = s.tweens?.getTweens?.()?.length ?? 0;
+          return total + count;
+        }, 0);
+      }
+    } catch {
+      activeTweens = -1;
+      gameObjectCount = -1;
+    }
+
+    // Texture count
+    let textureCount = -1;
+    try {
+      const textures = game.textures as { getTextureKeys?: () => string[] } | undefined;
+      textureCount = textures?.getTextureKeys?.()?.length ?? -1;
+    } catch {
+      textureCount = -1;
+    }
+
+    // Canvas dimensions
+    const canvas = game.canvas;
+    const canvasSize = canvas ? `${canvas.width}x${canvas.height}` : 'unknown';
+
+    // Memory (Chrome only)
+    const mem = (performance as { memory?: { usedJSHeapSize?: number } }).memory;
+    const memoryMB = mem?.usedJSHeapSize != null
+      ? Math.round(mem.usedJSHeapSize / 1024 / 1024 * 10) / 10
+      : -1;
+
+    // Live FPS directly from Phaser's game loop
+    const fps = Math.round(game.loop.actualFps);
+
+    return { fps, renderer, drawCalls, activeTweens, gameObjectCount, textureCount, canvasSize, memoryMB };
+  } catch {
+    return null;
+  }
+}
+
 function getInteractiveElements(): RRDebugSnapshot['interactiveElements'] {
   const els = document.querySelectorAll('[data-testid]');
   const result: RRDebugSnapshot['interactiveElements'] = [];
@@ -212,6 +326,7 @@ function buildSnapshot(): RRDebugSnapshot {
     currentScreen: typeof screen === 'string' ? screen : 'unknown',
     timestamp: Date.now(),
     phaser: getPhaserState(),
+    phaserPerf: getPhaserPerf(),
     fps: getFpsStats(),
     stores,
     interactiveElements: getInteractiveElements(),
