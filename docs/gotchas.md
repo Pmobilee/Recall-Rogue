@@ -1701,3 +1701,30 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **Fix:** Added `getEffectiveApCost(card)` helper in `src/services/cardUpgradeService.ts` that prefers `getMasteryStats(id, level).apCost` and falls back to `card.apCost`. All readers (turnManager, cardDescriptionService, playtest dev tools) now use the helper. `card.apCost` remains as the seeded baseline for save compatibility — effective cost is layered on read, not on mutation.
 
 **Lesson:** When adding a new unified stat system that parallels an old field, grep for every callsite reading that field (e.g. `\.apCost`) and verify they all use the new accessor. A field that looks correct in the stat table but isn't wired is invisible in code review — no TypeScript error, no test failure, just silent wrong behavior.
+
+### 2026-04-10 — Worktree QA: node_modules and generated files not present in new worktrees
+
+**What:** When a new worktree is created from main, it has no `node_modules/` directory and no locally-generated build artifacts (e.g., `tests/playtest/headless/tsx-worker-bootstrap.mjs`). Both `npm run build` and the headless sim fail immediately.
+
+**Why:** `node_modules/` is gitignored — expected. `tsx-worker-bootstrap.mjs` is auto-generated locally but also gitignored; it exists in the main checkout's working directory but not in fresh worktrees.
+
+**Fix for worktrees:**
+1. Symlink node_modules: `ln -s /Users/damion/CODE/Recall_Rogue/node_modules <worktree>/node_modules`
+2. Copy generated files: `cp /Users/damion/CODE/Recall_Rogue/tests/playtest/headless/tsx-worker-bootstrap.mjs <worktree>/tests/playtest/headless/`
+
+**Lesson:** QA agents operating in isolated worktrees need to check for these two files before running build or headless sim. Add to worktree setup checklist.
+
+### 2026-04-10 — L0 Balance Overhaul QA: all checks pass, balance delta within expected range
+
+**What:** Final QA pass on the L0 Balance Overhaul (Phases 1–6 + UI merge). Verified typecheck, build, 4,654 unit tests, 34 new regression tests, headless sim, Docker visual, and docs/code consistency.
+
+**Results:**
+- Typecheck: 0 errors (18 pre-existing a11y warnings)
+- Build: pass
+- Unit tests: 4,643 pass, 11 fail (all 11 pre-existing, 0 new failures introduced)
+- New regression tests: 34/34 pass
+- Headless sim delta: developing +8%, competent +8%, master +2%, experienced +1%, new_player +1%, language_learner 0% — all within expected range, no profile exceeded +15%, no regressions
+- Docker visual: combat scene renders correctly, card hand shows 5 cards, AP pip system intact
+- Docs: no stale Bulwark references, no direct card.apCost reads in UI, registry updated (Bulwark: 18→9 block)
+
+**No issues found.** Overhaul is clean and ready to merge to main.
