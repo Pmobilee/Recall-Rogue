@@ -2167,3 +2167,15 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 - N3: 8,114 → 990 (template_rendering_fallback 1835→0, reverse_distractor_language_mismatch 2336→4)
 - N4: 2,862 → 535 (template_rendering_fallback 830→0, reverse_distractor_language_mismatch 641→3)
 - N5: 2,552 → 511 (template_rendering_fallback 395→0, reverse_distractor_language_mismatch 714→2)
+
+---
+
+### 2026-04-10 — Blanket registry stamps hid real runtime warnings
+
+**What:** The inspection registry (`data/inspection-registry.json`) `lastQuizAudit` date was bulk-stamped to `2026-04-10` after structural verification (`verify-all-decks.mjs` 22 checks) passed. This implied decks were fully verified when only the structural gate had been run. Rechecking 4 decks with `quiz-audit-engine.ts` at mastery 0/2/4 found real runtime issues in 3 of 4 — issues the structural verifier cannot detect (empty `chainThemes` at runtime, mega-pool cross-contamination at quiz render time, template fallback paths silently producing sub-optimal quizzes).
+
+**Why:** Structural verification checks JSON schema validity, field presence, pool membership, and homogeneity ratios — all static properties. Runtime issues (template selection, distractor rendering, chain theme resolution, POOL-CONTAM at mastery levels) only surface when the engine renders actual quizzes with `quiz-audit-engine.ts`. The two gates are orthogonal.
+
+**Fix:** Treat structural pass and quiz-engine audit as independent gates. Never stamp `lastQuizAudit` based on a structural pass alone. The registry field `lastQuizAudit` means "quiz-engine audit ran and passed at all three mastery levels (0, 2, 4)." `lastVerified` covers structural passes.
+
+**Lesson:** "Structural ✓" does not imply "deck ✓". A deck that passes `verify-all-decks.mjs` can still have 300+ runtime warnings in the quiz engine. Both gates must pass independently before a deck is considered production-ready.

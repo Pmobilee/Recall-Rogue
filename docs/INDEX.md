@@ -155,7 +155,7 @@
 
 | Doc | Summary |
 |-----|---------|
-| [gotchas](gotchas.md) | Append-only mistake log: Playwright pitfalls, visual regression incidents, Phaser canvas gotchas, deck quality bugs, mastery system wiring issues, and lessons learned. Last entry: 2026-04-10 Mastery apCost dead data fix. |
+| [gotchas](gotchas.md) | Append-only mistake log: Playwright pitfalls, visual regression incidents, Phaser canvas gotchas, deck quality bugs, mastery system wiring issues, and lessons learned. Last entry: 2026-04-10 Blanket registry stamps hid runtime warnings. |
 | [SECURITY](SECURITY.md) | Security considerations, CSP, input sanitization, and credential rules |
 
 ---
