@@ -1288,7 +1288,7 @@ Some cards are temporarily transformed for the duration of a single encounter an
 |---|------|----|----|-----|--------|-------|
 | S1 | Absorb | 1 | 5 block | 5 block + draw 1 | 4 | Defensive cantrip |
 | S2 | Reactive Shield | 1 | 4 block + 2 Thorns (1t) | 12 block + 5 Thorns (2t) | 5 | Thorns-based |
-| S3 | Bulwark | 3 | 18 block | 36 block, EXHAUST | 9 | Emergency mega-block |
+| S3 | Bulwark | 2 | 9 block | 16 block, EXHAUST | 9 | Emergency mega-block (2026-04-10: 3AP→2AP, 18→9 block — L0 balance fix) |
 | S4 | Knowledge Ward | 1 | 4 block per unique domain in hand | Same × 1.5 | 6 | Domain diversity reward |
 | S5 | Burnout Shield | 1 | 8 block | 24 block, EXHAUST | 7 | Mirror of Volatile Slash |
 | S6 | Conversion | 1 | Convert up to 10 block → damage | Convert up to 15 block | 10 | Lose converted block |

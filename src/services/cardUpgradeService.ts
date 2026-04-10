@@ -79,8 +79,8 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Multi-hit: low per-hit, scales by adding hits. L1 = 3rd hit, L4 = 4th hit. */
   multi_hit: {
     levels: [
-      { qpValue: 1, hitCount: 2 },                                           // L0 — Plinks
-      { qpValue: 1, hitCount: 3 },                                           // L1 — Extra hit!
+      { qpValue: 2, hitCount: 2 },                                           // L0 — Plinks (was 1, bumped for L0 viability)
+      { qpValue: 2, hitCount: 3 },                                           // L1 — Extra hit! (bumped to match L0)
       { qpValue: 2, hitCount: 3 },                                           // L2
       { qpValue: 2, hitCount: 3, tags: ['multi_bleed1'] },                  // L3 — +1 Bleed per hit
       { qpValue: 2, hitCount: 4 },                                           // L4 — Four hits!
@@ -139,8 +139,8 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Lifetap: heals % of damage dealt. L2 improves heal rate, L5 reduces AP cost. */
   lifetap: {
     levels: [
-      { qpValue: 3 },                                                         // L0 — Low base for a 2AP card
-      { qpValue: 4 },                                                         // L1
+      { qpValue: 5 },                                                         // L0 — bumped 3→5 for L0 viability (was too weak at 2AP)
+      { qpValue: 5 },                                                         // L1 — bumped 4→5 to keep monotonic (L2 was already 5)
       { qpValue: 5, tags: ['lifetap_heal30'] },                             // L2 — heals 30% instead of 20%
       { qpValue: 6 },                                                         // L3
       { qpValue: 7 },                                                         // L4
@@ -189,7 +189,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Bash: applies Vulnerable. L3 extends to 2 turns, L5 adds Weak. ap=2 at L0 only; L1+ inherits mechanic default. */
   bash: {
     levels: [
-      { qpValue: 3, apCost: 2 },                                            // L0 — 3 dmg + Vuln 1t
+      { qpValue: 4, apCost: 2 },                                            // L0 — 4 dmg + Vuln 1t (was 3, bumped for L0 viability)
       { qpValue: 4 },                                                         // L1
       { qpValue: 5 },                                                         // L2
       { qpValue: 5, tags: ['bash_vuln2t'] },                                // L3 — Vuln lasts 2 turns!
@@ -263,9 +263,9 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Chain Lightning: CC scales with chain length. L3 min chain = 2, L5 costs 1 AP. */
   chain_lightning: {
     levels: [
-      { qpValue: 3, apCost: 2 },                                            // L0 — Weak without chains
-      { qpValue: 4 },                                                         // L1
-      { qpValue: 4 },                                                         // L2
+      { qpValue: 4, apCost: 2 },                                            // L0 — bumped 3→4 for L0 viability
+      { qpValue: 5 },                                                         // L1 — bumped 4→5 to keep delta
+      { qpValue: 5 },                                                         // L2 — bumped 4→5 to keep monotonic with L1
       { qpValue: 5, tags: ['chain_lightning_min2'] },                      // L3 — minimum chain count = 2
       { qpValue: 5 },                                                         // L4
       { qpValue: 6, apCost: 1, tags: ['chain_lightning_min2'] },          // L5 — 1 AP! Chain nuke
@@ -304,7 +304,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 3, secondaryValue: 4 },                                     // L2
       { qpValue: 4, secondaryValue: 5 },                                     // L3
       { qpValue: 4, secondaryValue: 6 },                                     // L4
-      { qpValue: 3, secondaryValue: 5, tags: ['riposte_block_dmg40'] },    // L5 — deals bonus dmg = 40% of block
+      { qpValue: 4, secondaryValue: 5, tags: ['riposte_block_dmg40'] },    // L5 — deals bonus dmg = 40% of block; qpValue kept at 4 (not 3) for monotonic invariant
     ],
   },
 
@@ -313,12 +313,12 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Smite: scales with Aura. L3 doubles Aura scaling, L5 costs 1 AP. */
   smite: {
     levels: [
-      { qpValue: 6,  apCost: 2 },                                           // L0 — CC + Aura bonus
-      { qpValue: 7  },                                                        // L1
-      { qpValue: 8  },                                                        // L2
-      { qpValue: 9,  tags: ['smite_aura_x2'] },                            // L3 — Aura scaling x2
-      { qpValue: 10 },                                                        // L4
-      { qpValue: 12, apCost: 1, tags: ['smite_aura_x2'] },                // L5 — 1 AP! Knowledge smash
+      { qpValue: 7,  apCost: 2 },                                           // L0 — bumped 6→7 for L0 viability
+      { qpValue: 8  },                                                        // L1 — bumped 7→8 (keep monotonic)
+      { qpValue: 9  },                                                        // L2 — bumped 8→9 (keep monotonic)
+      { qpValue: 10, tags: ['smite_aura_x2'] },                            // L3 — Aura scaling x2; bumped 9→10
+      { qpValue: 11 },                                                        // L4 — bumped 10→11
+      { qpValue: 12, apCost: 1, tags: ['smite_aura_x2'] },                // L5 — 1 AP! Keep cap at 12
     ],
   },
 
@@ -349,12 +349,12 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Hemorrhage: consumes all enemy Bleed stacks (damage = bleedMult × stacks). L5 costs 1 AP. */
   hemorrhage: {
     levels: [
-      { qpValue: 2, apCost: 2, extras: { bleedMult: 3 } },                 // L0 — 3x Bleed stacks
-      { qpValue: 2, apCost: 2, extras: { bleedMult: 4 } },                 // L1
-      { qpValue: 2, apCost: 2, extras: { bleedMult: 4 } },                 // L2
-      { qpValue: 3, apCost: 2, extras: { bleedMult: 5 } },                 // L3 — 5x Bleed!
-      { qpValue: 3, apCost: 2, extras: { bleedMult: 6 } },                 // L4
-      { qpValue: 4, apCost: 1, extras: { bleedMult: 7 } },                 // L5 — 1 AP! 7x Bleed finisher
+      { qpValue: 4, apCost: 2, extras: { bleedMult: 3 } },                 // L0 — bumped 2→4 (was too weak at 2AP; bleedMult is the value)
+      { qpValue: 4, apCost: 2, extras: { bleedMult: 4 } },                 // L1 — bumped 2→4
+      { qpValue: 4, apCost: 2, extras: { bleedMult: 4 } },                 // L2 — bumped 2→4
+      { qpValue: 5, apCost: 2, extras: { bleedMult: 5 } },                 // L3 — bumped 3→5; 5x Bleed!
+      { qpValue: 5, apCost: 2, extras: { bleedMult: 6 } },                 // L4 — bumped 3→5
+      { qpValue: 6, apCost: 1, extras: { bleedMult: 7 } },                 // L5 — bumped 4→6; 1 AP! 7x Bleed finisher
     ],
   },
 
@@ -414,12 +414,12 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** fortify: ap=2, doubles current block — big block potential */
   fortify: {
     levels: [
-      { qpValue: 4, apCost: 2 },                               // L0
-      { qpValue: 5 },                                          // L1
-      { qpValue: 6 },                                          // L2
-      { qpValue: 7 },                                          // L3
-      { qpValue: 8 },                                          // L4
-      { qpValue: 10, apCost: 1, tags: ['fortify_carry'] },      // L5: block persists next turn! AP cost reduced to 1
+      { qpValue: 5, apCost: 2 },                               // L0 — bumped 4→5 for L0 viability
+      { qpValue: 6 },                                          // L1 — bumped 5→6
+      { qpValue: 7 },                                          // L2 — bumped 6→7
+      { qpValue: 8 },                                          // L3 — bumped 7→8
+      { qpValue: 9 },                                          // L4 — bumped 8→9
+      { qpValue: 10, apCost: 1, tags: ['fortify_carry'] },      // L5: block persists next turn! AP cost reduced to 1 (unchanged)
     ],
   },
 
@@ -438,12 +438,12 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** overheal: ap=2, doubles below 60% HP (was 50%) — hybrid offensive/defensive */
   overheal: {
     levels: [
-      { qpValue: 5, apCost: 2 },                               // L0: 5 block, doubles below 60% HP
-      { qpValue: 6 },                                          // L1: 6 block
-      { qpValue: 7 },                                          // L2
-      { qpValue: 6, apCost: 1, tags: ['overheal_heal2'] },      // L3: also heals 2 HP! AP cost reduced to 1
-      { qpValue: 7 },                                          // L4
-      { qpValue: 8, apCost: 1, tags: ['overheal_heal2', 'overheal_heal_pct5'] }, // L5: also heals 5% max HP. AP=1
+      { qpValue: 6, apCost: 2 },                               // L0 — bumped 5→6 for L0 viability
+      { qpValue: 7 },                                          // L1 — bumped 6→7
+      { qpValue: 8 },                                          // L2 — bumped 7→8
+      { qpValue: 8, apCost: 1, tags: ['overheal_heal2'] },      // L3: also heals 2 HP! AP cost reduced to 1 (bumped 6→8 for monotonic after L2=8)
+      { qpValue: 8, apCost: 1 },                               // L4 — was missing apCost:1 (bug: AP reverted to 2); fixed + keep monotonic L3=8
+      { qpValue: 9, apCost: 1, tags: ['overheal_heal2', 'overheal_heal_pct5'] }, // L5 — bumped 8→9; also heals 5% max HP. AP=1
     ],
   },
 
@@ -553,14 +553,42 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   ironhide: {
     maxLevel: 5,
     levels: [
-      { qpValue: 5, apCost: 2, extras: { str: 1, strPerm: 1 } },  // L0: 5 block + 1 Str (perm on CC, temp on QP)
-      { qpValue: 6,            extras: { str: 1, strPerm: 1 } },  // L1
-      { qpValue: 6,            extras: { str: 1, strPerm: 1 } },  // L2
-      { qpValue: 5,            extras: { str: 1, strPerm: 1 } },  // L3: Strength is PERMANENT on CC!
-      { qpValue: 6,            extras: { str: 2, strPerm: 1 } },  // L4: +2 Str!
-      { qpValue: 7, apCost: 1, extras: { str: 2, strPerm: 1 } },  // L5: 1 AP!
+      { qpValue: 6, apCost: 2, extras: { str: 1, strPerm: 1 } },  // L0 — bumped 5→6 for L0 viability
+      { qpValue: 7,            extras: { str: 1, strPerm: 1 } },  // L1 — bumped 6→7
+      { qpValue: 7,            extras: { str: 1, strPerm: 1 } },  // L2 — bumped 6→7
+      { qpValue: 7,            extras: { str: 1, strPerm: 1 } },  // L3: Strength is PERMANENT on CC! Fixed drop 5→7 (was non-monotonic)
+      { qpValue: 7,            extras: { str: 2, strPerm: 1 } },  // L4: +2 Str! (was 6, fixed non-monotonic after L3 fix)
+      { qpValue: 8, apCost: 1, extras: { str: 2, strPerm: 1 } },  // L5: 1 AP! bumped 7→8
     ],
   },
+  /** burnout_shield: CC exhausts at L0-L2; L5 removes exhaust. ap=1. Block scales strongly.
+   * Tags: burnout_no_exhaust (not yet wired in cardEffectResolver — future pass). */
+  burnout_shield: {
+    maxLevel: 5,
+    levels: [
+      { qpValue: 5 },                                              // L0: 5 block (CC exhausts)
+      { qpValue: 6 },                                              // L1
+      { qpValue: 7 },                                              // L2
+      { qpValue: 9 },                                              // L3
+      { qpValue: 11 },                                             // L4
+      { qpValue: 13, tags: ['burnout_no_exhaust'] },               // L5: no longer exhausts (tag not yet wired)
+    ],
+  },
+
+  /** knowledge_ward: knowledge-scaling block shield. ap=1.
+   * L3+ cleanses 1 debuff via knowledge_ward_cleanse tag (not yet wired in cardEffectResolver — future pass). */
+  knowledge_ward: {
+    maxLevel: 5,
+    levels: [
+      { qpValue: 6 },                                              // L0
+      { qpValue: 7 },                                              // L1
+      { qpValue: 8 },                                              // L2
+      { qpValue: 9,  tags: ['knowledge_ward_cleanse'] },           // L3: cleanses 1 debuff (tag not yet wired)
+      { qpValue: 10, tags: ['knowledge_ward_cleanse'] },           // L4
+      { qpValue: 12, tags: ['knowledge_ward_cleanse'] },           // L5
+    ],
+  },
+
   // ── Buff Cards ──
 
   /** empower: percentage buff to next card(s). L5: 60% to next 2 cards + applies Weakness 2 to enemy (empower_weak2). */
@@ -1185,7 +1213,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 1, tags: ['stagger_weak1t'] },                  // L2: also Weakness 1t
       { qpValue: 1, tags: ['stagger_weak1t', 'stagger_draw1'] }, // L3: also draws 1
       { qpValue: 1, tags: ['stagger_weak1t', 'stagger_draw1'] }, // L4
-      { qpValue: 0, apCost: 0, tags: ['stagger_weak1t', 'stagger_draw1'] }, // L5: costs 0 AP!
+      { qpValue: 1, apCost: 0, tags: ['stagger_weak1t', 'stagger_draw1'] }, // L5: costs 0 AP! qpValue kept at 1 (not 0) for monotonic invariant — stagger's primary value is action skip, not damage
     ],
   },
 
