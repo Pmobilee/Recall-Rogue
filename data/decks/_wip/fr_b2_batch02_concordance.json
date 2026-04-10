@@ -1,0 +1,682 @@
+[
+  {
+    "id": "fr-gram-b2-concord-001",
+    "correctAnswer": "subjonctif présent",
+    "acceptableAlternatives": [
+      "subjonctif présent"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Je doute qu'il {___}.\n(I doubt he will come.)\nContext: He hasn't come yet — the coming is still in the future.",
+    "sentenceTranslation": "I doubt he will come.",
+    "grammarPointLabel": "Concordance des temps — subjonctif présent (futur/en cours)",
+    "explanation": "\"vienne\" (subjonctif présent) is correct because the doubted action is still pending/future. Subjonctif présent follows a present-tense main clause when the subordinate action is simultaneous or future.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "vienne",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-002",
+    "correctAnswer": "subjonctif passé",
+    "acceptableAlternatives": [
+      "subjonctif passé"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Je doute qu'il {___}.\n(I doubt he has come / came.)\nContext: The event (his arrival) is already in the past — you're doubting whether it happened.",
+    "sentenceTranslation": "I doubt that he came.",
+    "grammarPointLabel": "Concordance des temps — subjonctif passé (accompli)",
+    "explanation": "\"soit venu\" (subjonctif passé) is required because the doubted action is already completed. Subjonctif passé = que + auxiliaire au subjonctif présent + participe passé.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "soit venu",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-003",
+    "correctAnswer": "qu'il vienne demain (présent",
+    "acceptableAlternatives": [
+      "subjonctif présent"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Il est important que … (choose the correct concordance form)\nContext: You want him to come tomorrow — the action is future and not yet done.",
+    "sentenceTranslation": "It is important that he come tomorrow.",
+    "grammarPointLabel": "Concordance des temps — subjonctif présent after impersonal expression",
+    "explanation": "After impersonal expressions like \"il est important que\", use subjonctif présent when the desired action is future or ongoing. \"qu'il vienne demain\" is the correct form.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "vienne",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-004",
+    "correctAnswer": "qu'il soit arrivé avant 9h (passé",
+    "acceptableAlternatives": [
+      "subjonctif passé"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Je suis surpris(e) que … (choose the correct concordance form)\nContext: It is now past 9 a.m. and you are surprised he already arrived.",
+    "sentenceTranslation": "I am astonished that he arrived before 9 a.m.",
+    "grammarPointLabel": "Concordance des temps — subjonctif passé after emotion verb",
+    "explanation": "The arrival is a completed past event. After emotion verbs (être surpris, être content, regretter), use subjonctif passé when the subordinate action happened before the main clause moment.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "soit arrivé",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-005",
+    "correctAnswer": "subjonctif présent",
+    "acceptableAlternatives": [
+      "subjonctif présent"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Je veux qu'elle {___} la vérité.\n(I want her to tell the truth.)\nContext: The telling is desired but hasn't happened yet.",
+    "sentenceTranslation": "I want her to tell the truth.",
+    "grammarPointLabel": "Concordance des temps — subjonctif présent after vouloir que",
+    "explanation": "\"dise\" (subjonctif présent) follows \"vouloir que\" when the desired action is future or anticipated. Never use subjonctif passé here — the action hasn't happened yet.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "dise",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-006",
+    "correctAnswer": "subjonctif passé",
+    "acceptableAlternatives": [
+      "subjonctif passé"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Je regrette qu'il {___} sans me dire au revoir.\n(I regret that he left without saying goodbye.)\nContext: He has already left — the departure is finished.",
+    "sentenceTranslation": "I regret that he left without saying goodbye.",
+    "grammarPointLabel": "Concordance des temps — subjonctif passé after regretter que",
+    "explanation": "\"soit parti\" (subjonctif passé) is required: the departure is a completed past action. \"regretter que\" + subj passé when the regretted event preceded the moment of regret.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "soit parti",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-007",
+    "correctAnswer": "qu'elle parte maintenant (présent)",
+    "acceptableAlternatives": [
+      "subjonctif présent"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Il faut … (choose the correct concordance form)\nContext: You are telling someone she must leave right now — the leaving is imminent, not yet done.",
+    "sentenceTranslation": "She must leave now.",
+    "grammarPointLabel": "Concordance des temps — subjonctif présent (simultané/immédiat)",
+    "explanation": "When the subordinate action is simultaneous with or immediately following the main clause, use subjonctif présent. \"qu'elle parte maintenant\" is correct — she hasn't left yet.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "parte",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-008",
+    "correctAnswer": "qu'elle soit partie avant moi (passé",
+    "acceptableAlternatives": [
+      "subjonctif passé"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Je suis étonné(e) … (choose the correct concordance form)\nContext: You arrived and discovered she had already left before you.",
+    "sentenceTranslation": "I am astonished that she left before me.",
+    "grammarPointLabel": "Concordance des temps — subjonctif passé (antériorité)",
+    "explanation": "The departure happened before the moment of astonishment — it is an anterior completed action. \"qu'elle soit partie avant moi\" uses subjonctif passé (être verb: soit + partie with feminine agreement).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "soit partie",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-009",
+    "correctAnswer": "qu'il fasse ses devoirs (présent",
+    "acceptableAlternatives": [
+      "subjonctif présent"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Sa mère exige … (choose the correct concordance form)\nContext: The homework is not done — the mother demands it be done.",
+    "sentenceTranslation": "His mother demands that he do his homework.",
+    "grammarPointLabel": "Concordance des temps — subjonctif présent after exiger que",
+    "explanation": "The demanded action (doing homework) is pending/ongoing. \"qu'il fasse ses devoirs\" uses subjonctif présent of faire. Exiger que always takes the subjunctive for desired future action.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "fasse",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-010",
+    "correctAnswer": "qu'il ait fait ses devoirs (passé",
+    "acceptableAlternatives": [
+      "subjonctif passé"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Sa mère est contente … (choose the correct concordance form)\nContext: The mother is happy now because he already finished his homework earlier.",
+    "sentenceTranslation": "His mother is happy that he has done his homework.",
+    "grammarPointLabel": "Concordance des temps — subjonctif passé after être content(e) que",
+    "explanation": "The homework was completed before the mother's happiness — a completed prior action. \"qu'il ait fait ses devoirs\" uses subjonctif passé of faire (avoir verb: ait + fait).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "ait fait",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-011",
+    "correctAnswer": "subjonctif présent",
+    "acceptableAlternatives": [
+      "subjonctif présent"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Il est dommage qu'elle ne {___} pas à la fête.\n(It's a shame she won't come to the party.)\nContext: The party is tonight — she hasn't come yet.",
+    "sentenceTranslation": "It's a shame she isn't coming to the party.",
+    "grammarPointLabel": "Concordance des temps — subjonctif présent after il est dommage que",
+    "explanation": "\"vienne\" (subjonctif présent de venir) is correct. The regretted action is future/anticipated. Subjonctif présent follows impersonal expressions when the subordinate action is simultaneous or future.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "vienne",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-012",
+    "correctAnswer": "subjonctif passé",
+    "acceptableAlternatives": [
+      "subjonctif passé"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Il est dommage qu'elle {___} sans nous prévenir.\n(It's a shame she left without warning us.)\nContext: She has already left.",
+    "sentenceTranslation": "It's a shame she left without warning us.",
+    "grammarPointLabel": "Concordance des temps — subjonctif passé after il est dommage que (antériorité)",
+    "explanation": "\"soit partie\" (subjonctif passé de partir) expresses a completed anterior action. The departure happened before the moment of regret. Partir takes être as auxiliary, so agreement applies: partie (f.).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "soit partie",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-013",
+    "correctAnswer": "subjonctif présent",
+    "acceptableAlternatives": [
+      "subjonctif présent"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Bien qu'il {___} fatigué, il continue à travailler.\n(Although he is tired, he keeps working.)\nContext: He is tired right now, at this moment.",
+    "sentenceTranslation": "Although he is tired, he keeps working.",
+    "grammarPointLabel": "Concordance des temps — subjonctif présent after bien que (simultané)",
+    "explanation": "\"soit\" (subjonctif présent d'être) is correct. The tiredness is simultaneous with the working. \"Bien que\" always triggers the subjunctive; the present form covers simultaneous or ongoing states.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "soit",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-014",
+    "correctAnswer": "subjonctif passé",
+    "acceptableAlternatives": [
+      "subjonctif passé"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Bien qu'il {___} toute la nuit, il ne comprend toujours pas.\n(Although he studied all night, he still doesn't understand.)\nContext: The studying is finished — it happened last night.",
+    "sentenceTranslation": "Although he studied all night, he still doesn't understand.",
+    "grammarPointLabel": "Concordance des temps — subjonctif passé after bien que (antériorité)",
+    "explanation": "\"ait étudié\" (subjonctif passé d'étudier) expresses a completed anterior action. When the bien que clause describes something that finished before the main clause, use subjonctif passé.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "ait étudié",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-015",
+    "correctAnswer": "subjonctif présent",
+    "acceptableAlternatives": [
+      "subjonctif présent"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "In modern spoken French, which subjunctive tense replaces the subjonctif imparfait after a past-tense main verb?\n(e.g., Il voulait que tu… — what follows in modern usage?)",
+    "sentenceTranslation": "He wanted you to come. → Il voulait que tu viennes. (modern rule)",
+    "grammarPointLabel": "Concordance des temps — modern rule: subj présent replaces subj imparfait",
+    "explanation": "In modern French (spoken and written), the subjonctif imparfait (e.g., vinsses, fût) has been replaced by subjonctif présent even after a past-tense main verb. Only literary texts still use subj imparfait.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "viennes",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-016",
+    "correctAnswer": "fût",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "subjonctif_imparfait_recognition",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Identify the literary subjonctif imparfait form of être (3rd person singular) found in 19th-century French texts.\nModern equivalent: soit",
+    "sentenceTranslation": "...that it were / that it might be (literary)",
+    "grammarPointLabel": "Subjonctif imparfait — fût (être, 3sg) — recognition",
+    "explanation": "\"fût\" is the subjonctif imparfait of être (3rd person singular). Formed from passé simple stem fus- + -t (with circumflex accent). Modern French replaces this with \"soit\" (subj présent).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "fût",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar literary form recognition card"
+  },
+  {
+    "id": "fr-gram-b2-concord-017",
+    "correctAnswer": "eût",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "subjonctif_imparfait_recognition",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Identify the literary subjonctif imparfait form of avoir (3rd person singular) found in 19th-century French texts.\nModern equivalent: ait",
+    "sentenceTranslation": "...that he/she might have (literary)",
+    "grammarPointLabel": "Subjonctif imparfait — eût (avoir, 3sg) — recognition",
+    "explanation": "\"eût\" is the subjonctif imparfait of avoir (3rd person singular). Stem eu- from passé simple + -t (with circumflex accent). In modern French this is replaced by \"ait\" (subj présent).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "eût",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar literary form recognition card"
+  },
+  {
+    "id": "fr-gram-b2-concord-018",
+    "correctAnswer": "fussent",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "subjonctif_imparfait_recognition",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Identify the literary subjonctif imparfait form of être (3rd person plural) found in 19th-century French texts.\nModern equivalent: soient",
+    "sentenceTranslation": "...that they might be (literary)",
+    "grammarPointLabel": "Subjonctif imparfait — fussent (être, 3pl) — recognition",
+    "explanation": "\"fussent\" is the subjonctif imparfait of être (3rd person plural). Stem fuss- + -ent. Modern spoken French uses \"soient\" (subj présent) in all registers except formal literary writing.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "fussent",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar literary form recognition card"
+  },
+  {
+    "id": "fr-gram-b2-concord-019",
+    "correctAnswer": "eussent",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "subjonctif_imparfait_recognition",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Identify the literary subjonctif imparfait form of avoir (3rd person plural) found in 19th-century French texts.\nModern equivalent: aient",
+    "sentenceTranslation": "...that they might have (literary)",
+    "grammarPointLabel": "Subjonctif imparfait — eussent (avoir, 3pl) — recognition",
+    "explanation": "\"eussent\" is the subjonctif imparfait of avoir (3rd person plural). Stem euss- + -ent. In modern French, \"aient\" (subj présent) replaces this in all non-literary contexts.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "eussent",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar literary form recognition card"
+  },
+  {
+    "id": "fr-gram-b2-concord-020",
+    "correctAnswer": "fît",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "subjonctif_imparfait_recognition",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Identify the literary subjonctif imparfait form of faire (3rd person singular) found in classical French prose.\nModern equivalent: fasse",
+    "sentenceTranslation": "...that he/she might do/make (literary)",
+    "grammarPointLabel": "Subjonctif imparfait — fît (faire, 3sg) — recognition",
+    "explanation": "\"fît\" is the subjonctif imparfait of faire (3rd person singular). Passé simple stem fi- + -t (with circumflex accent). Modern French replaces this with \"fasse\" (subj présent).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "fît",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar literary form recognition card"
+  },
+  {
+    "id": "fr-gram-b2-concord-021",
+    "correctAnswer": "vînt",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "subjonctif_imparfait_recognition",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Identify the literary subjonctif imparfait form of venir (3rd person singular) found in 19th-century French texts.\nModern equivalent: vienne",
+    "sentenceTranslation": "...that he/she might come (literary)",
+    "grammarPointLabel": "Subjonctif imparfait — vînt (venir, 3sg) — recognition",
+    "explanation": "\"vînt\" is the subjonctif imparfait of venir (3rd person singular). Passé simple stem vin- + -t (with circumflex accent). Modern French uses \"vienne\" (subj présent) outside literary registers.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "vînt",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar literary form recognition card"
+  },
+  {
+    "id": "fr-gram-b2-concord-022",
+    "correctAnswer": "pût",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "subjonctif_imparfait_recognition",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Identify the literary subjonctif imparfait form of pouvoir (3rd person singular) found in classical French prose.\nModern equivalent: puisse",
+    "sentenceTranslation": "...that he/she might be able to (literary)",
+    "grammarPointLabel": "Subjonctif imparfait — pût (pouvoir, 3sg) — recognition",
+    "explanation": "\"pût\" is the subjonctif imparfait of pouvoir (3rd person singular). Passé simple stem pu- + -t (with circumflex accent). In modern spoken French, \"puisse\" (subj présent) is always used instead.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "pût",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar literary form recognition card"
+  },
+  {
+    "id": "fr-gram-b2-concord-023",
+    "correctAnswer": "voulût",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "subjonctif_imparfait_recognition",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Identify the literary subjonctif imparfait form of vouloir (3rd person singular) found in 19th-century French texts.\nModern equivalent: veuille",
+    "sentenceTranslation": "...that he/she might want / be willing to (literary)",
+    "grammarPointLabel": "Subjonctif imparfait — voulût (vouloir, 3sg) — recognition",
+    "explanation": "\"voulût\" is the subjonctif imparfait of vouloir (3rd person singular). Passé simple stem voul- + -ût. Modern French uses \"veuille\" (subj présent) in all everyday registers.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "voulût",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar literary form recognition card"
+  },
+  {
+    "id": "fr-gram-b2-concord-024",
+    "correctAnswer": "fût",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "subjonctif_imparfait_recognition",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Read this 19th-century sentence and identify the literary subjunctive form:\n\"Il cherchait un endroit où il {___} seul.\"\n(He was looking for a place where he might be alone.)",
+    "sentenceTranslation": "He was looking for a place where he might be alone.",
+    "grammarPointLabel": "Subjonctif imparfait — fût in literary context (recognition)",
+    "explanation": "\"fût\" (subj imparfait d'être, 3sg) is the literary form. The past-tense main verb \"cherchait\" triggered a past subjunctive under classical concordance rules. Modern French uses \"soit\" (subj présent) instead.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "fût",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar literary form recognition card"
+  },
+  {
+    "id": "fr-gram-b2-concord-025",
+    "correctAnswer": "eût",
+    "acceptableAlternatives": [],
+    "chainThemeId": 0,
+    "answerTypePoolId": "subjonctif_imparfait_recognition",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Read this literary sentence and identify the subjonctif imparfait form:\n\"Elle doutait qu'il {___} la force de continuer.\"\n(She doubted that he might have the strength to go on.)",
+    "sentenceTranslation": "She doubted that he might have the strength to go on.",
+    "grammarPointLabel": "Subjonctif imparfait — eût in literary context (recognition)",
+    "explanation": "\"eût\" (subj imparfait d'avoir, 3sg) is the literary form triggered by the past-tense \"doutait\". In modern French, the rule is to use subjonctif présent (\"ait\") even after past-tense verbs.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "eût",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar literary form recognition card"
+  },
+  {
+    "id": "fr-gram-b2-concord-026",
+    "correctAnswer": "subjonctif présent",
+    "acceptableAlternatives": [
+      "subjonctif présent"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Il craignait que tu {___} en retard.\n(He feared you would be late.)\nContext: Modern spoken French rule — which subjunctive form follows \"il craignait que\"?",
+    "sentenceTranslation": "He feared you would be late.",
+    "grammarPointLabel": "Concordance des temps — modern rule: subj présent after past verb (spoken French)",
+    "explanation": "In modern spoken French, \"sois\" (subjonctif présent) is used even after a past-tense trigger like \"craignait\". The old literary rule required subj imparfait (\"fusses\"), but this is archaic in everyday use.",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "sois",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-027",
+    "correctAnswer": "subjonctif passé",
+    "acceptableAlternatives": [
+      "subjonctif passé"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Je suis content(e) qu'elle {___} le prix.\n(I am happy that she won the prize.)\nContext: The prize was awarded yesterday — the winning is a completed past fact.",
+    "sentenceTranslation": "I am happy that she won the prize.",
+    "grammarPointLabel": "Concordance des temps — subjonctif passé after être content(e) que (antériorité)",
+    "explanation": "\"ait gagné\" (subjonctif passé de gagner) is required because the winning happened before the moment of happiness. Subjonctif passé = ait + participe passé (avoir verb, no agreement needed here).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "ait gagné",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "llm_authored",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar concordance fill-in card"
+  },
+  {
+    "id": "fr-gram-b2-concord-028",
+    "correctAnswer": "subjonctif imparfait",
+    "acceptableAlternatives": [
+      "subjonctif imparfait"
+    ],
+    "chainThemeId": 0,
+    "answerTypePoolId": "concordance_subj_present_passe",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "In the Tatoeba sentence \"Bien qu'il plût, je devais sortir\", what tense is \"plût\" and in which register is it used?",
+    "sentenceTranslation": "Although it was raining, I had to go out.",
+    "grammarPointLabel": "Subjonctif imparfait — plût (pleuvoir) — literary register identification",
+    "explanation": "\"plût\" is the subjonctif imparfait of pleuvoir (to rain). The circumflex distinguishes it from \"plut\" (passé simple indicatif). This form appears only in literary/formal written French; modern speech uses \"pleuve\" (subj présent).",
+    "partOfSpeech": "grammar",
+    "targetLanguageWord": "plût",
+    "language": "fr",
+    "examTags": [
+      "CEFR_B2"
+    ],
+    "sourceRef": "tatoeba:11001",
+    "volatile": false,
+    "distractors": [],
+    "visualDescription": "French grammar literary form recognition card"
+  }
+]

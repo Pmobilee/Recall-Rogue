@@ -1,0 +1,2062 @@
+deck_id: french_b2_grammar
+name: "French B2 Grammar"
+domain: vocabulary
+sub_domain: french_grammar
+target_facts: 550
+minimum_facts: 330
+language: fr
+
+data_sources:
+  - name: Référentiel B2 pour le français (Beacco et al., Didier)
+    url: https://www.didier.fr/livre/referentiel-pour-le-cadre-europeen-commun-b2.html
+    license: Reference only — scope/structure. Conseil de l'Europe / Didier, 2011.
+    usage: Authoritative B2 grammar scope. Determines which grammar points are included and their canonical descriptions. Cross-referenced against DELF B2 scope (France Éducation International / CIEP) and Grammaire progressive du français — niveau avancé (CLE International).
+  - name: Tatoeba
+    url: https://tatoeba.org/
+    license: CC BY 2.0
+    usage: Verified example sentences with French text + English translation + sentence ID. All sentence IDs documented in data/deck-architectures/_research/french/tatoeba_b2_sentences.tsv (45 verified rows, 24 labels).
+
+# -----------------------------------------------------------------
+# Chain Themes (8 grammar areas):
+#   0 — subjonctif_passe_concordance : subjonctif passé (aie/ait + PP, sois/soit + PP) + concordance des temps
+#   1 — conditionnel_passe_si_type3  : conditionnel passé (aurais + PP, serais + PP) + si-clauses type 3 + mixed conditionals
+#   2 — discours_rapporte_passe      : full tense backshift + time marker shifts + reporting verbs (past form)
+#   3 — passif_avance_causatif       : passif pronominal (se), passif aux temps composés, faire/laisser causatif
+#   4 — accord_participe_passe       : accord PP avec avoir (COD préposé), avec être (pronominal complet)
+#   5 — connecteurs_logiques_avances : concession, opposition, reformulation, addition (formal registers)
+#   6 — nominalisation_mise_en_relief : verbe→nom transformation + c'est…qui/que + ce qui…c'est
+#   7 — futur_anterieur_subordonnees : futur antérieur (aurai+PP, serai+PP) + subordonnées à subj avancées + opinion négative + au cas où
+#
+# Answer Type Pools (22 pools, each targeting factIds + syntheticDistractors >= 15):
+#   subjonctif_passe_avoir            : que j'aie parlé, qu'il ait fini, qu'ils aient vu
+#   subjonctif_passe_etre             : que je sois parti(e), qu'elle soit arrivée, qu'ils soient venus
+#   subjonctif_passe_pronominal       : qu'elle se soit levée, qu'ils se soient couchés
+#   subjonctif_imparfait_recognition  : fût, fussent, eût, eussent, fît — recognition forms only
+#   concordance_subj_present_passe    : choice between subjonctif présent (ongoing) and passé (completed)
+#   conditionnel_passe_avoir          : j'aurais parlé, il aurait fini, nous aurions vu
+#   conditionnel_passe_etre           : je serais parti(e), elle serait venue, ils seraient arrivés
+#   conditionnel_passe_modaux         : j'aurais dû, j'aurais pu, j'aurais voulu, j'aurais aimé
+#   si_plus_que_parfait               : si j'avais su, si elle avait étudié — si-clause fragment
+#   mixed_conditionals                : si + PQP → conditionnel présent (past/present mixed)
+#   discours_rapporte_present_imparfait : présent→imparfait backshift constructions
+#   discours_rapporte_pc_pqp          : passé composé→plus-que-parfait backshift
+#   discours_rapporte_futur_cond      : futur→conditionnel backshift
+#   discours_rapporte_temps_markers   : aujourd'hui→ce jour-là, hier→la veille, demain→le lendemain
+#   passif_avec_se                    : se vendent, se parle, ça se fait, se mange, s'explique
+#   passif_temps_composes             : a été élu, ont été abattus, avait été approuvé
+#   causatif_faire_laisser            : fait réparer, fait venir, laissé entrer, laissé parler
+#   accord_pp_avoir_cod_prepose       : les livres que j'ai lus, je les ai achetées, la lettre qu'il a écrite
+#   accord_pp_pronominal_complet      : elle s'est levée, ils se sont couchés vs elle s'est lavé les mains
+#   connecteurs_concession            : bien que + subj, quoique, malgré, en dépit de, certes…mais, néanmoins, toutefois
+#   connecteurs_opposition            : tandis que, alors que, en revanche, par contre
+#   connecteurs_reformulation         : autrement dit, en d'autres termes, c'est-à-dire
+#   connecteurs_addition              : de plus, en outre, par ailleurs, qui plus est
+#   nominalisation_verbe_nom          : décider→décision, arriver→arrivée, construire→construction
+#   mise_en_relief_cest_qui_que       : c'est…qui (subject), c'est…que (object/adverb) structures
+#   mise_en_relief_ce_qui_cest        : ce qui…c'est, ce que…c'est, ce dont…c'est pseudo-cleft
+#   futur_anterieur_avoir             : j'aurai fini, tu auras fait, il aura vu, nous aurons pris
+#   futur_anterieur_etre              : je serai parti(e), tu seras arrivé(e), il sera allé
+#   subordonnees_subj_avancees        : de peur que, à condition que, pourvu que, à supposer que
+#   opinion_negative_subj             : je ne pense pas que + subj, je ne crois pas que + subj, je doute que
+#   hypothese_attenuee                : au cas où + conditionnel, si jamais + conditionnel
+# -----------------------------------------------------------------
+
+chain_themes:
+  - id: 0
+    name: "Subjonctif Passé & Concordance"
+    description: "Subjonctif passé — que j'aie parlé (avoir), que je sois parti(e) (être), que je me sois levé(e) (pronominal) — for past/completed actions after past triggers. Concordance des temps: présent → subj présent (ongoing) vs subj passé (completed); passé → subj présent (modern rule). Literary imparfait/plus-que-parfait recognition (fût, eût)."
+    color: "#8E44AD"
+    icon: "verb"
+  - id: 1
+    name: "Conditionnel Passé & Si Type 3"
+    description: "Conditionnel passé full mastery — j'aurais parlé (avoir), je serais parti(e) (être), j'aurais dû/pu/voulu (modal regret), j'aurais aimé (wish). Si-clauses type 3 (si + plus-que-parfait → conditionnel passé) and mixed conditionals (past hypothesis → present consequence)."
+    color: "#9B59B6"
+    icon: "verb"
+  - id: 2
+    name: "Discours Rapporté au Passé"
+    description: "Full tense backshift with past reporting verb: présent→imparfait, passé composé→plus-que-parfait, futur→conditionnel, futur antérieur→conditionnel passé, impératif→de+infinitif. Time marker shifts: aujourd'hui→ce jour-là, hier→la veille, demain→le lendemain, maintenant→alors, ici→là."
+    color: "#E74C3C"
+    icon: "phrase"
+  - id: 3
+    name: "Passif Avancé & Causatif"
+    description: "Passif pronominal (se + verb): ces livres se vendent, le français se parle, ça ne se fait pas. Passif aux temps composés: a été élu, avait été approuvé, sera pris. Faire causatif (cause to happen): faire réparer, faire venir. Laisser causatif (allow): laisser entrer, laisser parler."
+    color: "#1ABC9C"
+    icon: "structure"
+  - id: 4
+    name: "Accord du Participe Passé"
+    description: "Full accord rules. Avoir: no accord when COD follows (j'ai lu des livres), accord when COD precedes (les livres que j'ai lus, je les ai achetées). Être: always agrees with subject. Pronominaux: réfléchi COD → agree (elle s'est levée); réfléchi COI → no agree (elle s'est lavé les mains). Exception verbs: se souvenir, se méfier (never agree)."
+    color: "#3498DB"
+    icon: "structure"
+  - id: 5
+    name: "Connecteurs Logiques Avancés"
+    description: "Concession: bien que + subj, quoique + subj, malgré + nom, en dépit de + nom, certes…mais, néanmoins, toutefois. Opposition: tandis que, alors que, en revanche, par contre. Reformulation: autrement dit, en d'autres termes, c'est-à-dire. Addition: de plus, en outre, par ailleurs, qui plus est."
+    color: "#27AE60"
+    icon: "connector"
+  - id: 6
+    name: "Nominalisation & Mise en Relief"
+    description: "Nominalisation: verb→noun transformations used in formal French (décider→décision, arriver→arrivée, construire→construction, partir→départ, développer→développement). Mise en relief: c'est…qui (subject cleft), c'est…que (object/adverbial cleft), ce qui…c'est / ce que…c'est (pseudo-cleft). Quant à, pour ce qui est de."
+    color: "#F39C12"
+    icon: "phrase"
+  - id: 7
+    name: "Futur Antérieur & Subordonnées Avancées"
+    description: "Futur antérieur: j'aurai fini (avant que), je serai parti(e) — completed future action, probability speculation (il aura oublié). Advanced subjunctive subordinates: de peur que … ne, à condition que, pourvu que, à supposer que, sous réserve que. Opinion négative + subj: je ne pense pas que, je ne crois pas que. Au cas où + conditionnel, si jamais."
+    color: "#E67E22"
+    icon: "verb"
+
+# -----------------------------------------------------------------
+# Answer Type Pools — grammar form groupings for distractor selection
+# All pools target factIds.length + syntheticDistractors.length >= 15
+# factIds populated by scanning facts during deck generation (not hand-crafted here)
+# -----------------------------------------------------------------
+
+answer_type_pools:
+
+  subjonctif_passe_avoir:
+    description: "Subjonctif passé with avoir: que j'aie parlé, qu'il ait fini, qu'ils aient dit — completed actions after past/emotion triggers"
+    homogeneityExempt: false
+    example_answers:
+      - "que j'aie parlé"
+      - "qu'il ait fini"
+      - "que tu aies compris"
+      - "qu'elle ait réussi"
+      - "que nous ayons vu"
+      - "qu'ils aient dit"
+      - "que j'aie pu venir"
+      - "que vous ayez fait"
+    syntheticDistractors:
+      - "que j'avais parlé"
+      - "que j'ai parlé"
+      - "que j'aurais parlé"
+      - "que j'aurai parlé"
+      - "qu'il avait fini"
+      - "qu'il a fini"
+      - "que nous avons vu"
+
+  subjonctif_passe_etre:
+    description: "Subjonctif passé with être: que je sois parti(e), qu'elle soit arrivée, qu'ils soient venus — movement/change verbs"
+    homogeneityExempt: false
+    example_answers:
+      - "que je sois parti(e)"
+      - "que tu sois arrivé(e)"
+      - "qu'il soit allé"
+      - "qu'elle soit venue"
+      - "que nous soyons rentrés"
+      - "qu'ils soient sortis"
+      - "qu'elle soit restée"
+      - "que vous soyez partis"
+    syntheticDistractors:
+      - "que j'étais parti(e)"
+      - "que je suis parti(e)"
+      - "que je serais parti(e)"
+      - "que je serai parti(e)"
+      - "qu'elle était venue"
+      - "qu'elle est venue"
+      - "qu'ils soient allez"
+
+  subjonctif_passe_pronominal:
+    description: "Subjonctif passé with pronominal verbs: qu'elle se soit levée, qu'ils se soient couchés, qu'elle se soit habillée"
+    homogeneityExempt: false
+    example_answers:
+      - "qu'elle se soit levée"
+      - "qu'ils se soient couchés"
+      - "qu'elle se soit habillée"
+      - "que nous nous soyons habitués"
+      - "qu'il se soit trompé"
+      - "qu'elle se soit souvenue"
+      - "que tu te sois reposé(e)"
+      - "qu'ils se soient retrouvés"
+    syntheticDistractors:
+      - "qu'elle s'était levée"
+      - "qu'elle s'est levée"
+      - "qu'elle se serait levée"
+      - "qu'elle se soit lever"
+      - "qu'ils se soient couché"
+      - "qu'ils s'étaient couchés"
+      - "que tu te sois reposée — non"
+
+  subjonctif_imparfait_recognition:
+    description: "Subjonctif imparfait literary forms — RECOGNITION ONLY: fût, eût, fît, vînt, fussent, eussent — encountered in 19th-century literature"
+    homogeneityExempt: false
+    example_answers:
+      - "fût"
+      - "fussent"
+      - "eût"
+      - "eussent"
+      - "fît"
+      - "vînt"
+      - "pût"
+      - "voulût"
+    syntheticDistractors:
+      - "soit"
+      - "ait"
+      - "fasse"
+      - "vienne"
+      - "puisse"
+      - "fut"
+      - "eut"
+
+  concordance_subj_present_passe:
+    description: "Concordance des temps: choice questions — use subjonctif présent (ongoing/future action) vs subjonctif passé (completed action)"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Choice constructions are phrase-level and inherently variable in length depending on verb and complement"
+    example_answers:
+      - "subjonctif présent — action future ou en cours"
+      - "subjonctif passé — action déjà accomplie"
+      - "qu'il vienne demain (présent — futur)"
+      - "qu'il soit arrivé avant 9h (passé — complété)"
+      - "qu'elle parte maintenant (présent)"
+      - "qu'elle soit partie avant moi (passé — accompli)"
+      - "qu'il fasse ses devoirs (présent — en cours)"
+      - "qu'il ait fait ses devoirs (passé — accompli)"
+    syntheticDistractors:
+      - "qu'il venait — incorrect (indicatif imparfait)"
+      - "qu'il est venu — incorrect (indicatif passé composé)"
+      - "qu'il viendra — incorrect (indicatif futur)"
+      - "qu'il aurait fait — incorrect (conditionnel passé)"
+      - "qu'il avait fait — incorrect (indicatif plus-que-parfait)"
+      - "subjonctif imparfait — uniquement littéraire en français moderne"
+      - "indicatif — utilisé avec les verbes d'opinion à la forme affirmative"
+
+  conditionnel_passe_avoir:
+    description: "Conditionnel passé with avoir: j'aurais parlé, il aurait fini, nous aurions vu — counterfactual past result"
+    homogeneityExempt: false
+    example_answers:
+      - "j'aurais parlé"
+      - "tu aurais fini"
+      - "il aurait fait"
+      - "nous aurions vu"
+      - "vous auriez dit"
+      - "ils auraient pris"
+      - "elle aurait compris"
+      - "j'aurais réussi"
+    syntheticDistractors:
+      - "j'avais parlé"
+      - "j'aurais parler"
+      - "j'aurai parlé"
+      - "j'avais fini"
+      - "il a fini"
+      - "nous avons vu"
+      - "vous aviez dit"
+
+  conditionnel_passe_etre:
+    description: "Conditionnel passé with être: je serais parti(e), elle serait venue, ils seraient arrivés — counterfactual past with être verbs"
+    homogeneityExempt: false
+    example_answers:
+      - "je serais parti(e)"
+      - "tu serais arrivé(e)"
+      - "il serait allé"
+      - "elle serait venue"
+      - "nous serions restés"
+      - "vous seriez sortis"
+      - "ils seraient arrivés"
+      - "elle serait retournée"
+    syntheticDistractors:
+      - "j'étais parti(e)"
+      - "je suis parti(e)"
+      - "j'aurais parti"
+      - "je serai parti(e)"
+      - "elle était venue"
+      - "elle aurait venue"
+      - "ils auraient arrivés"
+
+  conditionnel_passe_modaux:
+    description: "Conditionnel passé with modal/wish verbs: j'aurais dû, j'aurais pu, j'aurais voulu, j'aurais aimé, j'aurais préféré — regret and wish about past"
+    homogeneityExempt: false
+    example_answers:
+      - "j'aurais dû partir plus tôt"
+      - "tu aurais pu m'appeler"
+      - "j'aurais voulu être là"
+      - "j'aurais aimé voir ce film"
+      - "elle aurait préféré rester"
+      - "nous aurions pu éviter ça"
+      - "vous auriez dû me le dire"
+      - "ils auraient voulu venir"
+    syntheticDistractors:
+      - "j'avais dû partir plus tôt"
+      - "j'ai dû partir plus tôt"
+      - "j'aurais dû partis"
+      - "je devrais partir plus tôt"
+      - "j'aurais aimer voir ce film"
+      - "elle aurait préféré resté"
+      - "vous auriez dû me dire — non"
+
+  si_plus_que_parfait:
+    description: "Si-clause type 3 — the si-clause fragment with plus-que-parfait: si j'avais su, si elle avait étudié, si nous avions pris le train"
+    homogeneityExempt: false
+    example_answers:
+      - "si j'avais su"
+      - "si elle avait étudié"
+      - "si nous avions pris le train"
+      - "si tu m'avais demandé"
+      - "si j'avais mieux dormi"
+      - "si elle n'avait pas quitté Paris"
+      - "si vous aviez téléphoné"
+      - "s'il avait fait attention"
+    syntheticDistractors:
+      - "si je savais"
+      - "si j'aurais su"
+      - "si j'avais su — non"
+      - "si elle étudiait"
+      - "si elle aurait étudié"
+      - "si nous prendrions le train"
+      - "si vous téléphoniez"
+
+  mixed_conditionals:
+    description: "Mixed conditionals: si + plus-que-parfait → conditionnel présent (past hypothesis, present consequence)"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Full mixed conditional sentences have inherent length variation between subjects and verb phrases"
+    example_answers:
+      - "Si j'avais étudié la médecine, je serais médecin maintenant."
+      - "Si elle n'avait pas quitté Paris, elle habiterait encore là-bas."
+      - "Si j'avais mieux dormi hier, je serais moins fatigué aujourd'hui."
+      - "Si tu avais suivi les cours, tu parlerais mieux français."
+      - "Si nous avions économisé, nous pourrions voyager maintenant."
+      - "S'il avait pris soin de sa santé, il se sentirait mieux."
+      - "Si elle avait accepté le poste, elle travaillerait à Lyon."
+    syntheticDistractors:
+      - "Si j'avais étudié la médecine, j'aurais été médecin."
+      - "Si elle n'avait pas quitté Paris, elle aurait habité là-bas."
+      - "Si j'aurais mieux dormi, je serais moins fatigué."
+      - "Si tu étudieras, tu parleras mieux français."
+      - "Si nous économisions, nous pourrions voyager — type 2 pas mixte"
+
+  discours_rapporte_present_imparfait:
+    description: "Discours rapporté au passé: présent → imparfait backshift — il a dit qu'il était fatigué, elle a affirmé qu'elle travaillait"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Reported speech constructions vary in length due to different reporting verbs and clause content"
+    example_answers:
+      - "Il a dit qu'il était fatigué."
+      - "Elle a expliqué qu'elle travaillait à Lyon."
+      - "Il a affirmé qu'il comprenait la situation."
+      - "Elle a déclaré qu'elle préférait partir."
+      - "Il a répondu qu'il ne savait pas."
+      - "Elle a précisé qu'elle habitait là depuis dix ans."
+      - "Il a avoué qu'il ne voulait pas y aller."
+    syntheticDistractors:
+      - "Il a dit qu'il est fatigué. — (erreur: présent conservé)"
+      - "Elle a expliqué qu'elle a travaillé. — (erreur: PC non backshifté)"
+      - "Il a affirmé qu'il avait compris. — (erreur: trop backshifté — PQP)"
+      - "Il a dit qu'il sera fatigué. — (erreur: futur conservé)"
+      - "Elle dit qu'elle travaillait. — (verbe de rapport au présent → pas de backshift)"
+      - "Il a dit qu'il serait fatigué. — (erreur: conditionnel plutôt qu'imparfait)"
+
+  discours_rapporte_pc_pqp:
+    description: "Discours rapporté au passé: passé composé → plus-que-parfait backshift — il a dit qu'il avait fini, elle a avoué qu'elle était arrivée en retard"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Reported speech constructions vary in length"
+    example_answers:
+      - "Il a dit qu'il avait fini."
+      - "Elle a avoué qu'elle était arrivée en retard."
+      - "Il a expliqué qu'il avait oublié son passeport."
+      - "Elle a affirmé qu'elle avait déjà vu ce film."
+      - "Il a reconnu qu'il s'était trompé."
+      - "Elle a admis qu'elle n'avait pas compris."
+      - "Il a précisé qu'il était parti à midi."
+    syntheticDistractors:
+      - "Il a dit qu'il a fini. — (erreur: PC non backshifté)"
+      - "Elle a avoué qu'elle arrivait en retard. — (erreur: imparfait — backshift trop court)"
+      - "Il a expliqué qu'il oubliait son passeport. — (erreur: imparfait)"
+      - "Elle a affirmé qu'elle aurait déjà vu ce film. — (erreur: conditionnel passé)"
+      - "Il a reconnu qu'il se trompait. — (erreur: imparfait pour une action achevée)"
+      - "Elle dit qu'elle n'a pas compris. — (présent de rapport → pas de backshift requis)"
+
+  discours_rapporte_futur_cond:
+    description: "Discours rapporté au passé: futur → conditionnel présent, futur antérieur → conditionnel passé backshift"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Reported speech constructions vary in length"
+    example_answers:
+      - "Il a dit qu'il viendrait demain."
+      - "Elle a promis qu'elle téléphonerait."
+      - "Il a annoncé que la réunion aurait lieu le lundi."
+      - "Elle a prédit qu'il ferait beau le lendemain."
+      - "Il a assuré qu'il aurait fini avant le soir."
+      - "Elle a affirmé que le projet serait terminé à temps."
+      - "Il a dit qu'il aurait réparé la voiture avant leur retour."
+    syntheticDistractors:
+      - "Il a dit qu'il viendra demain. — (erreur: futur conservé)"
+      - "Elle a promis qu'elle a téléphoné. — (erreur: PC non backshifté)"
+      - "Il a annoncé que la réunion a lieu. — (erreur: présent conservé)"
+      - "Il a assuré qu'il avait fini. — (erreur: PQP — trop backshifté)"
+      - "Elle a dit qu'elle aurait finit — (erreur: accord PP)"
+
+  discours_rapporte_temps_markers:
+    description: "Time marker shifts in reported speech au passé: aujourd'hui→ce jour-là, hier→la veille, demain→le lendemain, maintenant→alors, ici→là"
+    homogeneityExempt: false
+    example_answers:
+      - "ce jour-là"
+      - "la veille"
+      - "le lendemain"
+      - "alors / à ce moment-là"
+      - "là / là-bas"
+      - "la semaine suivante / cette semaine-là"
+      - "le mois suivant"
+      - "l'année suivante"
+    syntheticDistractors:
+      - "aujourd'hui — (forme directe, pas rapportée)"
+      - "hier — (forme directe, pas rapportée)"
+      - "demain — (forme directe, pas rapportée)"
+      - "maintenant — (forme directe, pas rapportée)"
+      - "ici — (forme directe, pas rapportée)"
+      - "avant-hier"
+      - "après-demain"
+
+  passif_avec_se:
+    description: "Passif pronominal (se + verb, 3rd person): ces livres se vendent, le français se parle, ça ne se fait pas, ce plat se mange chaud"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Pronominal passive constructions vary in length due to different subject nouns and adverbial complements"
+    example_answers:
+      - "Ces livres se vendent bien."
+      - "Le français se parle dans 29 pays."
+      - "Ça ne se fait pas."
+      - "Ce plat se mange chaud."
+      - "Cela s'explique facilement."
+      - "Les crayons se vendent par douzaines."
+      - "Le vin rouge se boit chambré."
+      - "Ce mot ne s'emploie plus."
+    syntheticDistractors:
+      - "Ces livres sont vendus bien. — (passif avec être, style différent)"
+      - "Le français est parlé. — (passif avec être)"
+      - "Ça ne fait pas. — (actif sans se)"
+      - "Ce plat mange chaud. — (manque le pronom se)"
+      - "Les crayons se vende par douzaines. — (accord sujet-verbe incorrect)"
+      - "Cela s'est expliqué facilement. — (passé composé, pas présent)"
+      - "Ce vin se boit chambrés. — (accord incorrect)"
+
+  passif_temps_composes:
+    description: "Passif aux temps composés: passé composé (a été élu), plus-que-parfait (avait été approuvé), futur (sera pris), conditionnel (serait lu)"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Compound passive constructions vary in length due to different tenses and past participles"
+    example_answers:
+      - "Le parlement a été dissous."
+      - "Mike a été élu président."
+      - "Beaucoup d'arbres ont été abattus."
+      - "Ma bicyclette a été réparée hier."
+      - "Cookie a été élevé par Kate."
+      - "Le projet avait été approuvé avant la réunion."
+      - "La décision sera prise demain."
+      - "Ce livre serait lu par des millions de lecteurs."
+    syntheticDistractors:
+      - "Le parlement a dissous. — (actif sans être)"
+      - "Mike était élu président. — (imparfait, sens différent)"
+      - "La décision était prise. — (imparfait résultatif, pas futur)"
+      - "Le projet a approuvé. — (actif incorrect)"
+      - "Ce livre était lu — (état, pas passif d'action)"
+      - "La lettre avait envoyée. — (manque être)"
+      - "Il a été élu — ¡correcto! — (filtre: non)"
+
+  causatif_faire_laisser:
+    description: "Faire causatif (cause to happen) + laisser causatif (allow to happen): J'ai fait réparer ma bicyclette. / Elle a laissé entrer les visiteurs."
+    homogeneityExempt: true
+    homogeneityExemptNote: "Causative constructions vary in length due to different infinitives and objects"
+    example_answers:
+      - "J'ai fait réparer ma bicyclette."
+      - "Elle a fait venir le médecin."
+      - "Il a fait apprendre la leçon aux élèves."
+      - "Elle a laissé entrer les visiteurs."
+      - "Il a laissé parler tout le monde."
+      - "Elle a laissé tomber les clés."
+      - "Il a fait construire une maison."
+      - "Nous avons laissé partir les enfants."
+    syntheticDistractors:
+      - "J'ai réparé ma bicyclette. — (actif: je l'ai fait moi-même)"
+      - "Elle a permis venir le médecin. — (permettre + à + infinitif, structure différente)"
+      - "Il a laissé apprendre la leçon — (laissé: permission, not fait: causatif)"
+      - "Elle a fait entrer les visiteurs — (faire: causatif fort, pas permission)"
+      - "Il a fait parler tout le monde. — (causer vs laisser: sens différent)"
+      - "J'ai eu ma bicyclette réparée. — (anglicisme — construction incorrecte)"
+
+  accord_pp_avoir_cod_prepose:
+    description: "Accord du participe passé avec avoir quand le COD est préposé: les livres que j'ai lus, je les ai achetées, la lettre qu'il a écrite"
+    homogeneityExempt: false
+    example_answers:
+      - "les livres que j'ai lus"
+      - "la lettre qu'il a écrite"
+      - "je les ai achetées"
+      - "les pommes que j'ai mangées"
+      - "la chanson qu'elle a chantée"
+      - "les enfants que nous avons vus"
+      - "je l'ai vue partir"
+      - "les robes qu'il a cousues"
+    syntheticDistractors:
+      - "les livres que j'ai lu — (sans accord: COD after verb manqué)"
+      - "la lettre qu'il a écrit — (pas d'accord: erreur fréquente)"
+      - "je les ai acheté — (pas d'accord avec pronom préposé)"
+      - "les pommes que j'ai mangé — (pas d'accord)"
+      - "je lui ai donné les livres — (COI: pas d'accord)"
+      - "il leur a acheté les robes — (COI leur: pas d'accord)"
+      - "j'ai achetées les livres — (COD postposé: pas d'accord)"
+
+  accord_pp_pronominal_complet:
+    description: "Accord du participe passé pronominal complet: réfléchi COD → accord (elle s'est levée) vs réfléchi COI → pas d'accord (elle s'est lavé les mains)"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Pronominal PP constructions vary in length depending on presence of second object"
+    example_answers:
+      - "elle s'est levée (se = COD → accord)"
+      - "ils se sont couchés (se = COD → accord)"
+      - "elles se sont regardées (se = COD mutuel → accord)"
+      - "elle s'est lavé les mains (les mains = COD postposé → pas d'accord)"
+      - "il s'est cassé la jambe (la jambe = COD → pas d'accord)"
+      - "ils se sont écrit des lettres (des lettres = COD → pas d'accord)"
+      - "elle s'est souvenue de tout (se souvenir: toujours accord)"
+      - "nous nous sommes bien amusés (se = COD → accord)"
+    syntheticDistractors:
+      - "elle s'est lavée les mains — (erreur: accord malgré COD postposé)"
+      - "ils se sont couché — (pas d'accord: erreur)"
+      - "elles se sont regardé — (pas d'accord: erreur)"
+      - "il s'est cassée la jambe — (féminin incorrect)"
+      - "ils se sont écrit — toujours sans accord — (pas toujours vrai)"
+      - "elle s'est souvenu — (erreur: se souvenir prend accord)"
+
+  connecteurs_concession:
+    description: "Connecteurs de concession: bien que + subj, quoique + subj, malgré + nom, en dépit de + nom, certes…mais, néanmoins, toutefois"
+    homogeneityExempt: false
+    example_answers:
+      - "bien que"
+      - "quoique"
+      - "malgré"
+      - "en dépit de"
+      - "certes…mais"
+      - "néanmoins"
+      - "toutefois"
+      - "même si"
+    syntheticDistractors:
+      - "parce que"
+      - "puisque"
+      - "donc"
+      - "ainsi"
+      - "alors que"
+      - "tandis que"
+      - "en revanche"
+
+  connecteurs_opposition:
+    description: "Connecteurs d'opposition: tandis que (simultaneous contrast), alors que (contrast/temporal), en revanche (formal), par contre (spoken)"
+    homogeneityExempt: false
+    example_answers:
+      - "tandis que"
+      - "alors que"
+      - "en revanche"
+      - "par contre"
+      - "au contraire"
+      - "à l'inverse"
+      - "d'un autre côté"
+      - "en contrepartie"
+    syntheticDistractors:
+      - "bien que"
+      - "quoique"
+      - "malgré"
+      - "néanmoins"
+      - "donc"
+      - "ainsi"
+      - "puisque"
+
+  connecteurs_reformulation:
+    description: "Connecteurs de reformulation et précision: autrement dit, en d'autres termes, c'est-à-dire (que)"
+    homogeneityExempt: false
+    example_answers:
+      - "autrement dit"
+      - "en d'autres termes"
+      - "c'est-à-dire"
+      - "c'est-à-dire que"
+      - "soit"
+      - "en clair"
+      - "pour ainsi dire"
+      - "en un mot"
+    syntheticDistractors:
+      - "bien que"
+      - "tandis que"
+      - "de plus"
+      - "en outre"
+      - "par contre"
+      - "en revanche"
+      - "donc"
+
+  connecteurs_addition:
+    description: "Connecteurs d'addition et renforcement: de plus, en outre (formal), par ailleurs (separate point), qui plus est (furthermore, even more)"
+    homogeneityExempt: false
+    example_answers:
+      - "de plus"
+      - "en outre"
+      - "par ailleurs"
+      - "qui plus est"
+      - "de surcroît"
+      - "également"
+      - "en sus"
+      - "voire"
+    syntheticDistractors:
+      - "autrement dit"
+      - "c'est-à-dire"
+      - "en revanche"
+      - "par contre"
+      - "bien que"
+      - "néanmoins"
+      - "pourtant"
+
+  nominalisation_verbe_nom:
+    description: "Nominalisation: verb → noun transformations used in formal French — décider→décision, arriver→arrivée, construire→construction"
+    homogeneityExempt: false
+    example_answers:
+      - "la décision"
+      - "l'arrivée"
+      - "la construction"
+      - "le départ"
+      - "la formation"
+      - "la connaissance"
+      - "la réflexion"
+      - "l'augmentation"
+      - "la réduction"
+      - "l'utilisation"
+      - "la gestion"
+      - "le développement"
+    syntheticDistractors:
+      - "le décidement — (non-standard)"
+      - "l'arriver — (infinitif, pas nom)"
+      - "la construite — (forme incorrecte)"
+
+  mise_en_relief_cest_qui_que:
+    description: "Mise en relief: c'est…qui (subject cleft, emphatise sujet) + c'est…que (object/adverbial cleft, emphatise COD/lieu/temps)"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Cleft constructions vary in length depending on the emphasized element and clause type"
+    example_answers:
+      - "C'est elle qui me l'a dit."
+      - "C'est Tom qui a gagné."
+      - "C'est moi qui ai raison."
+      - "Ce sont eux qui sont partis."
+      - "C'est le printemps que je préfère."
+      - "C'est là que réside le problème."
+      - "C'est toi que j'aimerai toujours."
+      - "C'est lui que nous avons vu."
+    syntheticDistractors:
+      - "C'est elle que me l'a dit. — (que avec sujet: incorrect)"
+      - "C'est Tom qui a gagné que. — (doublé: incorrect)"
+      - "C'est moi qui ait raison. — (accord: je → ai, pas ait)"
+      - "Ce sont eux que sont partis. — (que avec sujet intransitif: incorrect)"
+      - "C'est le printemps qui je préfère. — (qui avec COD: incorrect)"
+      - "Elle me l'a dit. — (pas de mise en relief)"
+
+  mise_en_relief_ce_qui_cest:
+    description: "Mise en relief pseudo-cleft: ce qui…c'est, ce que…c'est, ce dont…c'est — emphasises the complement after c'est"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Pseudo-cleft constructions vary in length depending on the emphasized element"
+    example_answers:
+      - "Ce qui me plaît, c'est la musique."
+      - "Ce que je veux, c'est du repos."
+      - "Ce dont j'ai besoin, c'est du temps."
+      - "Ce qui m'énerve, c'est le bruit."
+      - "Ce que j'aime, c'est voyager."
+      - "Ce dont elle rêve, c'est un voyage au Japon."
+      - "Ce qui l'intéresse, c'est la politique."
+    syntheticDistractors:
+      - "Ce qui me plaît, c'est les musiques. — (accord article: la musique)"
+      - "Ce que je veux, c'est du repose. — (forme nominale incorrecte)"
+      - "Ce dont j'ai besoin, ce que du temps. — (ce que au lieu de c'est)"
+      - "Ce qui m'énerve c'est le bruyant. — (adjectif au lieu de nom)"
+      - "Ce que l'intéresse, c'est la politique. — (ce que avec sujet: incorrect)"
+      - "Quant à la musique, ce qui me plaît. — (ordre inversé non idiomatique)"
+
+  futur_anterieur_avoir:
+    description: "Futur antérieur with avoir: j'aurai fini, tu auras fait, il aura vu, nous aurons pris — action completed before a future moment"
+    homogeneityExempt: false
+    example_answers:
+      - "j'aurai fini"
+      - "tu auras fait"
+      - "il aura vu"
+      - "nous aurons pris"
+      - "vous aurez dit"
+      - "ils auront compris"
+      - "elle aura écrit"
+      - "j'aurai réparé"
+    syntheticDistractors:
+      - "j'avais fini"
+      - "j'ai fini"
+      - "j'aurais fini"
+      - "j'aurai finit — (PP incorrect)"
+      - "tu auras faisais — (forme incorrecte)"
+      - "nous aurons prit — (PP incorrect)"
+      - "ils auront comprit — (PP incorrect)"
+
+  futur_anterieur_etre:
+    description: "Futur antérieur with être: je serai parti(e), tu seras arrivé(e), il sera allé, elle sera venue — avec accord du participe"
+    homogeneityExempt: false
+    example_answers:
+      - "je serai parti(e)"
+      - "tu seras arrivé(e)"
+      - "il sera allé"
+      - "elle sera venue"
+      - "nous serons rentrés"
+      - "vous serez sortis"
+      - "ils seront partis"
+      - "je serai parti avant votre retour"
+    syntheticDistractors:
+      - "j'étais parti(e)"
+      - "je suis parti(e)"
+      - "je serais parti(e)"
+      - "j'aurai parti — (avoir avec être-verb: incorrect)"
+      - "tu seras arrivée — toujours masc. — (accord dépend du sujet)"
+      - "nous serons rentré — (pas d'accord au pluriel)"
+      - "ils seront partis — ¡correcto! — (filtre: non)"
+
+  subordonnees_subj_avancees:
+    description: "Subordonnées de but/condition prenant le subjonctif: de peur que…ne, à condition que, pourvu que, à supposer que, sous réserve que"
+    homogeneityExempt: false
+    example_answers:
+      - "de peur que … ne"
+      - "à condition que"
+      - "pourvu que"
+      - "à supposer que"
+      - "sous réserve que"
+      - "de crainte que … ne"
+      - "en admettant que"
+      - "pour peu que"
+    syntheticDistractors:
+      - "parce que"
+      - "puisque"
+      - "au cas où — (+ conditionnel, pas subjonctif)"
+      - "si — (+ indicatif, pas subjonctif)"
+      - "quand — (+ futur avec indicatif)"
+      - "lorsque — (+ futur avec indicatif)"
+      - "dès que — (+ futur avec indicatif)"
+
+  opinion_negative_subj:
+    description: "Verbes d'opinion à la forme négative déclenchant le subjonctif: je ne pense pas que, je ne crois pas que, je ne trouve pas que, je doute que"
+    homogeneityExempt: false
+    example_answers:
+      - "je ne pense pas que"
+      - "je ne crois pas que"
+      - "je ne trouve pas que"
+      - "je doute que"
+      - "je ne suis pas sûr(e) que"
+      - "il ne croit pas que"
+      - "je ne suis pas certain(e) que"
+      - "il n'est pas évident que"
+    syntheticDistractors:
+      - "je pense que — (affirmatif → indicatif)"
+      - "je crois que — (affirmatif → indicatif)"
+      - "je trouve que — (affirmatif → indicatif)"
+      - "il est sûr que — (certitude → indicatif)"
+      - "il est certain que — (certitude → indicatif)"
+      - "il est vrai que — (fait → indicatif)"
+      - "je ne pense pas que — toujours indicatif — (incorrect: c'est subjonctif)"
+
+  hypothese_attenuee:
+    description: "Hypothèse atténuée: au cas où + conditionnel (in case), si jamais + conditionnel/indicatif (if ever)"
+    homogeneityExempt: false
+    example_answers:
+      - "au cas où il pleuvrait"
+      - "au cas où j'arriverais en retard"
+      - "au cas où tu changerais d'avis"
+      - "au cas où il y aurait un problème"
+      - "si jamais tu changes d'avis"
+      - "si jamais il revenait"
+      - "si jamais vous avez besoin"
+      - "au cas où elle ne pourrait pas venir"
+    syntheticDistractors:
+      - "au cas où il pleuve — (subjonctif: incorrect avec au cas où)"
+      - "au cas où il pleuverait — (variante orthographique acceptable en réalité — distractor invalide)"
+      - "si jamais il revient — (indicatif présent: acceptable mais moins fort)"
+      - "à condition qu'il pleuve — (subjonctif: correct mais structure différente)"
+      - "pourvu qu'il ne pleuve pas — (subjonctif: différent sens)"
+      - "au cas où il pleuverait — (doublé)"
+
+# -----------------------------------------------------------------
+# Grammar Points — 80-130 items, one per identifiable sub-rule
+# Tatoeba citations: ONLY from tatoeba_b2_sentences.tsv (45 verified rows)
+# All other examples use sourceRef: "Referentiel-pattern" or "llm_authored"
+# -----------------------------------------------------------------
+
+grammar_points:
+
+  # ======================================================
+  # CHAIN THEME 0: Subjonctif Passé & Concordance
+  # ======================================================
+
+  - id: gp_b2_001
+    point: "Subjonctif passé avec avoir — formation: que + subj présent de avoir + participe passé"
+    category: subjonctif_passe_concordance
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §1 — Subjonctif passé formation"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "Referentiel-pattern"
+        french: "que j'aie parlé, que tu aies fini, qu'il ait fait, que nous ayons vu, qu'ils aient dit"
+        english: "that I have spoken, that you have finished, that he has done, that we have seen, that they have said"
+        note: "Paradigm drill — no Tatoeba sentence available for full paradigm"
+
+  - id: gp_b2_002
+    point: "Subjonctif passé avec être — formation: que + subj présent de être + participe passé (avec accord)"
+    category: subjonctif_passe_concordance
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §1 — Subjonctif passé avec être"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "Referentiel-pattern"
+        french: "que je sois parti(e), que tu sois arrivé(e), qu'il soit allé, qu'elle soit venue, que nous soyons rentrés"
+        english: "that I have left, that you have arrived, that he has gone, that she has come, that we have returned"
+        note: "Paradigm drill — no Tatoeba sentence available for être paradigm"
+
+  - id: gp_b2_003
+    point: "Subjonctif passé: usage après doute/émotion sur action passée accomplie — Je doute qu'il ait dit cela."
+    category: subjonctif_passe_concordance
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §1 — Uses of subjonctif passé"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je doute qu'il ait dit cela."
+        english: "I doubt he said that."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je suis content qu'elle soit arrivée à temps."
+        english: "I'm glad she arrived on time."
+
+  - id: gp_b2_004
+    point: "Subjonctif passé: usage avec ne pas croire/penser sur action accomplie — Je ne crois pas qu'il ait terminé."
+    category: subjonctif_passe_concordance
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §1 — Subjonctif passé after negative opinion verbs"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je ne crois pas qu'il ait terminé son travail."
+        english: "I don't think he has finished his work."
+
+  - id: gp_b2_005
+    point: "Subjonctif passé avec verbes pronominaux — accord du participe: qu'elle se soit levée, qu'ils se soient couchés"
+    category: subjonctif_passe_concordance
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 §1 + §8 — Pronominal verbs in subjonctif passé"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je suis surpris qu'elle se soit levée si tôt."
+        english: "I'm surprised she got up so early."
+
+  - id: gp_b2_006
+    point: "Subjonctif imparfait (reconnaissance littéraire): fût, fussent, eût, eussent — formes de être et avoir"
+    category: subjonctif_passe_concordance
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 §2 — Subjonctif imparfait recognition"
+    examples:
+      - tatoeba_id: 11001
+        sourceRef: "tatoeba:11001"
+        french: "Bien qu'il plût, je devais sortir."
+        english: "Although it was raining, I had to go out."
+        note: "Literary subjonctif imparfait of pleuvoir (plût)"
+
+  - id: gp_b2_007
+    point: "Subjonctif imparfait (reconnaissance): formes de faire (fît), venir (vînt), pouvoir (pût), vouloir (voulût)"
+    category: subjonctif_passe_concordance
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 §2 — Subjonctif imparfait recognition"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il fallait qu'elle partît. (littéraire)"
+        english: "It was necessary that she leave. (literary form)"
+        note: "Recognition only — partît = subjonctif imparfait de partir"
+
+  - id: gp_b2_008
+    point: "Subjonctif plus-que-parfait (reconnaissance littéraire): eût fait, fût parti — alternative littéraire au subjonctif passé"
+    category: subjonctif_passe_concordance
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 §2 — Subjonctif plus-que-parfait recognition"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il aurait voulu qu'elle fût là. (littéraire)"
+        english: "He would have wanted her to be there. (literary)"
+        note: "Recognition only — encountered in Flaubert, Balzac, legal texts"
+
+  - id: gp_b2_009
+    point: "Concordance des temps — règle moderne: verbe principal au présent → subjonctif présent (action future ou en cours)"
+    category: subjonctif_passe_concordance
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §3 — Concordance des temps moderne"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je veux qu'il vienne demain."
+        english: "I want him to come tomorrow."
+        note: "Présent → subjonctif présent: future/ongoing action"
+
+  - id: gp_b2_010
+    point: "Concordance des temps — règle moderne: verbe principal au présent + action accomplie → subjonctif passé"
+    category: subjonctif_passe_concordance
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §3 — Concordance: subjonctif passé for completed action"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je veux qu'il soit arrivé avant 9h."
+        english: "I want him to have arrived before 9 am."
+        note: "Présent → subjonctif passé: required completion before a deadline"
+
+  - id: gp_b2_011
+    point: "Concordance des temps — règle moderne: verbe principal au passé → subjonctif présent (règle moderne, imparfait littéraire évité)"
+    category: subjonctif_passe_concordance
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §3 — Concordance: past main verb + modern subj present"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il fallait qu'elle parte. (règle moderne)"
+        english: "It was necessary that she leave. (modern rule)"
+        note: "Past main verb → subjonctif présent in modern French (not literary imparfait)"
+
+  # ======================================================
+  # CHAIN THEME 1: Conditionnel Passé & Si Type 3
+  # ======================================================
+
+  - id: gp_b2_012
+    point: "Conditionnel passé avec avoir — formation: conditionnel présent de avoir + participe passé"
+    category: conditionnel_passe_si_type3
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §4 — Conditionnel passé formation"
+    examples:
+      - tatoeba_id: 3162
+        sourceRef: "tatoeba:3162"
+        french: "C'est ce que j'aurais dit."
+        english: "This is what I would have said."
+      - tatoeba_id: 10302
+        sourceRef: "tatoeba:10302"
+        french: "Sans ton aide j'aurais échoué."
+        english: "But for your help, I would have failed."
+
+  - id: gp_b2_013
+    point: "Conditionnel passé avec être — formation: conditionnel présent de être + participe passé (avec accord)"
+    category: conditionnel_passe_si_type3
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §4 — Conditionnel passé avec être"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "Referentiel-pattern"
+        french: "je serais parti(e), tu serais arrivé(e), il serait allé, elle serait venue, nous serions restés"
+        english: "I would have left, you would have arrived, he would have gone, she would have come, we would have stayed"
+        note: "Paradigm drill — no single Tatoeba sentence covers full être paradigm"
+
+  - id: gp_b2_014
+    point: "Conditionnel passé: regret avec devoir — j'aurais dû partir plus tôt / tu aurais dû te présenter"
+    category: conditionnel_passe_si_type3
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §4 — Conditionnel passé: regret"
+    examples:
+      - tatoeba_id: 10152
+        sourceRef: "tatoeba:10152"
+        french: "Il aurait dû travailler plus."
+        english: "He should have worked harder."
+      - tatoeba_id: 2061650
+        sourceRef: "tatoeba:2061650"
+        french: "Tu aurais dû te présenter."
+        english: "You should have introduced yourself."
+      - tatoeba_id: 474105
+        sourceRef: "tatoeba:474105"
+        french: "Tu aurais dû voir l'exposition."
+        english: "You ought to have seen the exhibition."
+      - tatoeba_id: 563254
+        sourceRef: "tatoeba:563254"
+        french: "Tu aurais dû le voir."
+        english: "You ought to have seen it."
+
+  - id: gp_b2_015
+    point: "Conditionnel passé: regret négatif avec devoir — je n'aurais pas dû (I shouldn't have)"
+    category: conditionnel_passe_si_type3
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §4 — Conditionnel passé: negative regret"
+    examples:
+      - tatoeba_id: 3258
+        sourceRef: "tatoeba:3258"
+        french: "Je n'aurais pas dû me déconnecter."
+        english: "I shouldn't have logged off."
+
+  - id: gp_b2_016
+    point: "Conditionnel passé: regret avec pouvoir — tu aurais pu le faire / nous aurions pu éviter ça"
+    category: conditionnel_passe_si_type3
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §4 — Conditionnel passé avec pouvoir"
+    examples:
+      - tatoeba_id: 429507
+        sourceRef: "tatoeba:429507"
+        french: "Tu aurais pu le faire."
+        english: "You could have done it."
+
+  - id: gp_b2_017
+    point: "Conditionnel passé: souhait irréalisé sur passé avec aimer — j'aurais aimé voir ce film / être un oiseau"
+    category: conditionnel_passe_si_type3
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §4 — Conditionnel passé: wish"
+    examples:
+      - tatoeba_id: 8049
+        sourceRef: "tatoeba:8049"
+        french: "J'aurais aimé être un oiseau."
+        english: "I wish I were a bird."
+      - tatoeba_id: 12077
+        sourceRef: "tatoeba:12077"
+        french: "J'aurais aimé voir le film."
+        english: "I wish I had seen the film."
+      - tatoeba_id: 13626
+        sourceRef: "tatoeba:13626"
+        french: "J'aurais aimé avoir meilleure mémoire."
+        english: "I wish I had a better memory."
+      - tatoeba_id: 14178
+        sourceRef: "tatoeba:14178"
+        french: "J'aurais aimé être plus grand."
+        english: "I wish I were taller."
+
+  - id: gp_b2_018
+    point: "Conditionnel passé: usage journalistique (information non vérifiée) — l'accident aurait causé deux blessés"
+    category: conditionnel_passe_si_type3
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §4 — Conditionnel passé journalistique"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "L'incendie aurait fait plusieurs victimes selon les premières informations."
+        english: "The fire reportedly caused several casualties according to initial reports."
+        note: "Journalistic/unverified past conditional — common in French press"
+
+  - id: gp_b2_019
+    point: "Si-clause type 3: si + plus-que-parfait → conditionnel passé (counterfactual past)"
+    category: conditionnel_passe_si_type3
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §5 — Si-clauses type 3"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Si j'avais su, je serais venu."
+        english: "If I had known, I would have come."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Si elle avait étudié, elle aurait réussi."
+        english: "If she had studied, she would have succeeded."
+
+  - id: gp_b2_020
+    point: "Si-clause type 3: si + plus-que-parfait → conditionnel passé — variantes de sujets et verbes"
+    category: conditionnel_passe_si_type3
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §5 — Si-clauses type 3 variants"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Si nous avions pris le train, nous serions arrivés à l'heure."
+        english: "If we had taken the train, we would have arrived on time."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Si tu m'avais demandé, je t'aurais aidé."
+        english: "If you had asked me, I would have helped you."
+
+  - id: gp_b2_021
+    point: "Conditionnel mixte: si + plus-que-parfait (passé) → conditionnel présent (conséquence présente)"
+    category: conditionnel_passe_si_type3
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 §5 — Mixed conditionals"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Si j'avais étudié la médecine, je serais médecin maintenant."
+        english: "If I had studied medicine, I would be a doctor now."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Si elle n'avait pas quitté Paris, elle habiterait encore là-bas."
+        english: "If she hadn't left Paris, she would still be living there."
+
+  - id: gp_b2_022
+    point: "Conditionnel mixte: si + plus-que-parfait → conditionnel présent — identification de la structure mixte"
+    category: conditionnel_passe_si_type3
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 §5 — Mixed conditionals identification"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Si j'avais mieux dormi hier, je serais moins fatigué aujourd'hui."
+        english: "If I had slept better yesterday, I would be less tired today."
+
+  # ======================================================
+  # CHAIN THEME 2: Discours Rapporté au Passé
+  # ======================================================
+
+  - id: gp_b2_023
+    point: "Discours rapporté au passé: présent → imparfait (backshift règle de base)"
+    category: discours_rapporte_passe
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §6 — Discours rapporté: présent → imparfait"
+    examples:
+      - tatoeba_id: 7540
+        sourceRef: "tatoeba:7540"
+        french: "Je pensais qu'elle était mignonne."
+        english: "I thought she was pretty."
+        note: "Present 'est' backshifted to imparfait 'était'"
+
+  - id: gp_b2_024
+    point: "Discours rapporté au passé: futur simple → conditionnel présent backshift"
+    category: discours_rapporte_passe
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §6 — Discours rapporté: futur → conditionnel"
+    examples:
+      - tatoeba_id: 3875
+        sourceRef: "tatoeba:3875"
+        french: "Je savais qu'aujourd'hui serait amusant."
+        english: "I knew that today would be fun."
+        note: "Futur 'sera' backshifted to conditionnel 'serait'"
+
+  - id: gp_b2_025
+    point: "Discours rapporté au passé: passé composé → plus-que-parfait backshift — il a dit qu'il avait fini"
+    category: discours_rapporte_passe
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §6 — Discours rapporté: PC → PQP"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il a dit qu'il avait terminé son travail."
+        english: "He said he had finished his work."
+        note: "Passé composé 'a terminé' backshifted to PQP 'avait terminé'"
+
+  - id: gp_b2_026
+    point: "Discours rapporté au passé: futur antérieur → conditionnel passé backshift"
+    category: discours_rapporte_passe
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §6 — Discours rapporté: futur antérieur → conditionnel passé"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il a assuré qu'il aurait fini avant le soir."
+        english: "He assured us he would have finished before evening."
+        note: "Futur antérieur 'aura fini' backshifted to conditionnel passé 'aurait fini'"
+
+  - id: gp_b2_027
+    point: "Discours rapporté au passé: impératif → de + infinitif (ordre indirect) — il m'a dit de venir"
+    category: discours_rapporte_passe
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §6 — Discours rapporté: impératif → de + infinitif"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il m'a dit de venir immédiatement."
+        english: "He told me to come immediately."
+        note: "'Viens!' → 'Il m'a dit de venir'"
+
+  - id: gp_b2_028
+    point: "Discours rapporté au passé: marqueur temporel aujourd'hui → ce jour-là"
+    category: discours_rapporte_passe
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §6 — Time marker shifts"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "Referentiel-pattern"
+        french: "Direct: 'Aujourd'hui, je suis fatigué.' → Rapporté: Il a dit que ce jour-là, il était fatigué."
+        english: "Direct: 'Today I am tired.' → Reported: He said that that day he was tired."
+
+  - id: gp_b2_029
+    point: "Discours rapporté au passé: hier → la veille, demain → le lendemain"
+    category: discours_rapporte_passe
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §6 — Time marker shifts: hier/demain"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "Referentiel-pattern"
+        french: "Direct: 'Hier j'ai vu Marie.' → Rapporté: Il a dit que la veille il avait vu Marie."
+        english: "Direct: 'Yesterday I saw Marie.' → Reported: He said that the day before he had seen Marie."
+
+  - id: gp_b2_030
+    point: "Discours rapporté au passé: maintenant → alors / à ce moment-là, ici → là"
+    category: discours_rapporte_passe
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §6 — Time/place marker shifts"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "Referentiel-pattern"
+        french: "Direct: 'Maintenant, je comprends.' → Rapporté: Elle a dit qu'alors elle comprenait."
+        english: "Direct: 'Now I understand.' → Reported: She said that at that moment she understood."
+
+  - id: gp_b2_031
+    point: "Discours rapporté au passé: verbes introducteurs au passé — il a dit que, elle a expliqué que, il a affirmé que"
+    category: discours_rapporte_passe
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §6 — Reporting verbs"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Elle a expliqué qu'elle préférait partir tôt."
+        english: "She explained that she preferred to leave early."
+
+  - id: gp_b2_032
+    point: "Discours rapporté au passé: questions indirectes — il a demandé si, elle a voulu savoir quand/où/comment"
+    category: discours_rapporte_passe
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §6 — Indirect questions with past reporting verb"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il a demandé si je pouvais l'aider."
+        english: "He asked if I could help him."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Elle a voulu savoir où il était allé."
+        english: "She wanted to know where he had gone."
+
+  # ======================================================
+  # CHAIN THEME 3: Passif Avancé & Causatif
+  # ======================================================
+
+  - id: gp_b2_033
+    point: "Passif pronominal (se): formation se + verbe 3e personne — les livres se vendent bien"
+    category: passif_avance_causatif
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §7 — Passif pronominal"
+    examples:
+      - tatoeba_id: 9757
+        sourceRef: "tatoeba:9757"
+        french: "Les crayons se vendent par douzaines."
+        english: "Pencils are sold by the dozen."
+
+  - id: gp_b2_034
+    point: "Passif pronominal: le français se parle dans 29 pays — langue/usage culturel"
+    category: passif_avance_causatif
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §7 — Passif pronominal: cultural/language use"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Le français se parle dans 29 pays."
+        english: "French is spoken in 29 countries."
+
+  - id: gp_b2_035
+    point: "Passif pronominal: ça ne se fait pas — usage idiomatique (social norms)"
+    category: passif_avance_causatif
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §7 — Passif pronominal: idioms"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Ça ne se fait pas de parler la bouche pleine."
+        english: "It isn't done to speak with your mouth full."
+
+  - id: gp_b2_036
+    point: "Passif pronominal: ce plat se mange chaud / cela s'explique facilement — manière d'utiliser"
+    category: passif_avance_causatif
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §7 — Passif pronominal with manner adverbs"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Ce plat se mange chaud."
+        english: "This dish is eaten hot."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Cela s'explique facilement."
+        english: "That is easily explained."
+
+  - id: gp_b2_037
+    point: "Passif simple au présent: l'anglais est parlé en Australie — passif avec être au présent"
+    category: passif_avance_causatif
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §7 — Passif aux temps composés: présent"
+    examples:
+      - tatoeba_id: 14105
+        sourceRef: "tatoeba:14105"
+        french: "L'anglais est parlé en Australie."
+        english: "English is spoken in Australia."
+
+  - id: gp_b2_038
+    point: "Passif au passé composé: Mike a été élu président — passé composé passif"
+    category: passif_avance_causatif
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §7 — Passif: passé composé"
+    examples:
+      - tatoeba_id: 8565
+        sourceRef: "tatoeba:8565"
+        french: "Le parlement a été dissous."
+        english: "The Diet has been dissolved."
+      - tatoeba_id: 13404
+        sourceRef: "tatoeba:13404"
+        french: "Mike a été élu président."
+        english: "Mike was elected chairperson."
+      - tatoeba_id: 15142
+        sourceRef: "tatoeba:15142"
+        french: "Beaucoup d'arbres ont été abattus."
+        english: "A lot of trees were cut down."
+      - tatoeba_id: 15474
+        sourceRef: "tatoeba:15474"
+        french: "Il a été élu président."
+        english: "He was elected chairman."
+
+  - id: gp_b2_039
+    point: "Passif au passé composé: ma bicyclette a été réparée — passif avec objet féminin"
+    category: passif_avance_causatif
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §7 — Passif: accord du participe avec sujet"
+    examples:
+      - tatoeba_id: 6478
+        sourceRef: "tatoeba:6478"
+        french: "Ma bicyclette a été réparée hier."
+        english: "I had my bicycle fixed yesterday."
+      - tatoeba_id: 6245
+        sourceRef: "tatoeba:6245"
+        french: "J'ai été grondé par mon professeur."
+        english: "I was scolded by my teacher."
+      - tatoeba_id: 11053
+        sourceRef: "tatoeba:11053"
+        french: "Cookie a été élevé par Kate."
+        english: "Cookie was raised by Kate."
+
+  - id: gp_b2_040
+    point: "Passif au plus-que-parfait: le projet avait été approuvé avant la réunion"
+    category: passif_avance_causatif
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §7 — Passif: plus-que-parfait"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Le projet avait été approuvé avant la réunion."
+        english: "The project had been approved before the meeting."
+
+  - id: gp_b2_041
+    point: "Passif au futur: la décision sera prise demain — passif avec être au futur"
+    category: passif_avance_causatif
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §7 — Passif: futur simple"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "La décision sera prise demain."
+        english: "The decision will be made tomorrow."
+
+  - id: gp_b2_042
+    point: "Passif avec on: on dit qu'Anne est leur chef / on l'a averti — alternative au passif avec être"
+    category: passif_avance_causatif
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §7 — Passif avec on"
+    examples:
+      - tatoeba_id: 10640
+        sourceRef: "tatoeba:10640"
+        french: "On dit qu'Anne est leur chef."
+        english: "Ann is said to be their leader."
+      - tatoeba_id: 4281
+        sourceRef: "tatoeba:4281"
+        french: "On l'a averti à plusieurs reprises."
+        english: "He has been warned on several occasions."
+
+  - id: gp_b2_043
+    point: "Faire causatif: faire + infinitif — J'ai fait réparer ma bicyclette. (causer que quelqu'un d'autre fasse)"
+    category: passif_avance_causatif
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §7 — Faire causatif"
+    examples:
+      - tatoeba_id: 6398
+        sourceRef: "tatoeba:6398"
+        french: "J'ai fait réparer ma bicyclette."
+        english: "I got my bicycle repaired."
+
+  - id: gp_b2_044
+    point: "Faire causatif: faire venir quelqu'un — faire + infinitif de déplacement"
+    category: passif_avance_causatif
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §7 — Faire causatif: movement verbs"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Elle a fait venir le médecin."
+        english: "She had the doctor come."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il a fait apprendre la leçon aux élèves."
+        english: "He had the students learn the lesson."
+
+  - id: gp_b2_045
+    point: "Laisser causatif: laisser + infinitif — permettre que l'action se produise (vs faire = causer)"
+    category: passif_avance_causatif
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §7 — Laisser causatif"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Elle a laissé entrer les visiteurs."
+        english: "She let the visitors in."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il a laissé parler tout le monde."
+        english: "He let everyone speak."
+
+  - id: gp_b2_046
+    point: "Distinction faire vs laisser causatif: faire = provoquer activement, laisser = permettre/ne pas empêcher"
+    category: passif_avance_causatif
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §7 — Faire vs laisser: semantic distinction"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "J'ai fait travailler les enfants. (je les ai obligés) / J'ai laissé travailler les enfants. (je ne les ai pas empêchés)"
+        english: "I made the children work (I obliged them) / I let the children work (I didn't stop them)"
+
+  # ======================================================
+  # CHAIN THEME 4: Accord du Participe Passé
+  # ======================================================
+
+  - id: gp_b2_047
+    point: "Accord PP avec avoir: pas d'accord si le COD suit le verbe — J'ai lu des livres. (no accord)"
+    category: accord_participe_passe
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §8 — Accord PP avoir: COD après le verbe"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "J'ai lu des livres. (pas d'accord — COD 'des livres' après le verbe)"
+        english: "I read some books. (no agreement — COD follows verb)"
+
+  - id: gp_b2_048
+    point: "Accord PP avec avoir: accord si le COD précède le verbe (pronom COD) — Je les ai lus. / Je l'ai vue."
+    category: accord_participe_passe
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §8 — Accord PP avoir: COD précède avec pronom"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je les ai lus. (accord: les = masc. plur. = COD précédant)"
+        english: "I read them. (agreement: les is masculine plural preceding COD)"
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je l'ai vue partir. (accord: l' = féminin singulier)"
+        english: "I saw her leave. (agreement: l' is feminine singular)"
+
+  - id: gp_b2_049
+    point: "Accord PP avec avoir: accord avec pronom relatif que précédant — les livres que j'ai lus / la lettre qu'il a écrite"
+    category: accord_participe_passe
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §8 — Accord PP avec que relatif"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Les livres que j'ai lus étaient intéressants."
+        english: "The books (that) I read were interesting."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "La lettre qu'il a écrite est longue."
+        english: "The letter he wrote is long."
+
+  - id: gp_b2_050
+    point: "Accord PP avec avoir: pas d'accord avec COI (lui, leur) — Je lui ai parlé. / Il leur a donné les livres."
+    category: accord_participe_passe
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §8 — Accord PP: no agreement with indirect object"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je lui ai parlé. (pas d'accord — 'lui' est COI, pas COD)"
+        english: "I spoke to him. (no agreement — 'lui' is indirect object)"
+
+  - id: gp_b2_051
+    point: "Accord PP avec être: toujours accord avec le sujet — Elle est partie. / Ils sont arrivés."
+    category: accord_participe_passe
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §8 — Accord PP avec être"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Elle est partie. (accord féminin) / Ils sont arrivés. (accord masculin pluriel)"
+        english: "She left. / They arrived."
+
+  - id: gp_b2_052
+    point: "Accord PP pronominal réfléchi COD: se = COD → accord — elle s'est levée / ils se sont couchés"
+    category: accord_participe_passe
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §8 — Accord PP pronominal: se as COD"
+    examples:
+      - tatoeba_id: 4288
+        sourceRef: "tatoeba:4288"
+        french: "Hier, nous nous sommes bien amusés."
+        english: "Yesterday we had fun."
+
+  - id: gp_b2_053
+    point: "Accord PP pronominal réfléchi COI: se = COI → pas d'accord si COD suit — elle s'est lavé les mains"
+    category: accord_participe_passe
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 §8 — Accord PP pronominal: se as COI"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Elle s'est lavé les mains. (les mains = COD postposé → se est COI → pas d'accord)"
+        english: "She washed her hands. (les mains is the COD after verb — se is COI — no agreement)"
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il s'est cassé la jambe. (la jambe = COD postposé → pas d'accord)"
+        english: "He broke his leg. (la jambe is COD — no agreement on cassé)"
+
+  - id: gp_b2_054
+    point: "Accord PP pronominal action réciproque: ils se sont regardés / elles se sont saluées"
+    category: accord_participe_passe
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §8 — Accord PP: mutual action"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Ils se sont regardés. (accord: se = COD mutuel)"
+        english: "They looked at each other. (agreement: se is mutual COD)"
+
+  - id: gp_b2_055
+    point: "Verbes pronominaux sans accord PP: se souvenir de, se méfier de, se douter de, se rire de — jamais d'accord"
+    category: accord_participe_passe
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 §8 — PP pronominal: exception verbs"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Elle s'est souvenu de tout. (se souvenir de: pas d'accord — règle d'exception)"
+        english: "She remembered everything. (se souvenir de: no agreement — exception verb)"
+
+  # ======================================================
+  # CHAIN THEME 5: Connecteurs Logiques Avancés
+  # ======================================================
+
+  - id: gp_b2_056
+    point: "Connecteur de concession: bien que + subjonctif — Bien qu'il fasse froid, nous sortirons."
+    category: connecteurs_logiques_avances
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs concession: bien que"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Bien qu'il fasse froid, nous sortirons."
+        english: "Although it's cold, we will go out."
+
+  - id: gp_b2_057
+    point: "Connecteur de concession: quoique + subjonctif — Quoiqu'il soit riche, il vit simplement."
+    category: connecteurs_logiques_avances
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs concession: quoique"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Quoiqu'il soit riche, il vit simplement."
+        english: "Although he is rich, he lives simply."
+
+  - id: gp_b2_058
+    point: "Connecteur de concession: malgré + nom — Je suis sorti malgré la pluie."
+    category: connecteurs_logiques_avances
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs concession: malgré"
+    examples:
+      - tatoeba_id: 6814
+        sourceRef: "tatoeba:6814"
+        french: "Je suis sorti malgré la pluie."
+        english: "In spite of the rain, I went out."
+
+  - id: gp_b2_059
+    point: "Connecteur de concession: en dépit de + nom — En dépit de ses efforts, il a échoué."
+    category: connecteurs_logiques_avances
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs concession: en dépit de"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "En dépit de ses efforts, il a échoué."
+        english: "Despite his efforts, he failed."
+
+  - id: gp_b2_060
+    point: "Connecteur de concession: certes…mais / certes…néanmoins — concession formelle suivie de nuance"
+    category: connecteurs_logiques_avances
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs concession: certes…mais"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Certes, il travaille bien, mais il est souvent absent."
+        english: "Granted, he works well, but he is often absent."
+
+  - id: gp_b2_061
+    point: "Connecteur de concession (registre formel): néanmoins — La quantité est incorrecte ; néanmoins, le produit est bon."
+    category: connecteurs_logiques_avances
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs concession: néanmoins"
+    examples:
+      - tatoeba_id: 11691
+        sourceRef: "tatoeba:11691"
+        french: "Néanmoins, la quantité est incorrecte."
+        english: "However, the quantity is not correct."
+
+  - id: gp_b2_062
+    point: "Connecteur de concession (registre formel): toutefois — synonyme formel de néanmoins/cependant"
+    category: connecteurs_logiques_avances
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs concession: toutefois"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il a réussi l'examen ; toutefois, ses résultats sont en dessous de la moyenne."
+        english: "He passed the exam; however, his results are below average."
+
+  - id: gp_b2_063
+    point: "Connecteur d'opposition: tandis que — contraste simultané (Il travaille tandis qu'elle se repose.)"
+    category: connecteurs_logiques_avances
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs opposition: tandis que"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il travaille tandis qu'elle se repose."
+        english: "He works while she rests."
+
+  - id: gp_b2_064
+    point: "Connecteur d'opposition: alors que — contraste (Elle réussit alors qu'il échoue.)"
+    category: connecteurs_logiques_avances
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs opposition: alors que"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Elle réussit alors qu'il échoue."
+        english: "She succeeds while he fails."
+
+  - id: gp_b2_065
+    point: "Connecteur d'opposition: en revanche (registre formel) — Il parle bien français ; en revanche, son anglais est limité."
+    category: connecteurs_logiques_avances
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs opposition: en revanche"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il parle bien français ; en revanche, son anglais est limité."
+        english: "He speaks French well; on the other hand, his English is limited."
+
+  - id: gp_b2_066
+    point: "Connecteur d'opposition: par contre (registre courant oral) — alternative parlée à en revanche"
+    category: connecteurs_logiques_avances
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs opposition: par contre"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je n'aime pas le sport ; par contre, j'adore la lecture."
+        english: "I don't like sport; on the other hand, I love reading."
+
+  - id: gp_b2_067
+    point: "Connecteur de reformulation: autrement dit — Il est parti ; autrement dit, il ne reviendra plus."
+    category: connecteurs_logiques_avances
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs reformulation: autrement dit"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il est parti ; autrement dit, il ne reviendra plus."
+        english: "He left; in other words, he won't come back."
+
+  - id: gp_b2_068
+    point: "Connecteur de reformulation: en d'autres termes / c'est-à-dire (que) — reformulation explicative"
+    category: connecteurs_logiques_avances
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs reformulation: en d'autres termes / c'est-à-dire"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il est bilingue, c'est-à-dire qu'il parle deux langues couramment."
+        english: "He is bilingual, meaning he speaks two languages fluently."
+
+  - id: gp_b2_069
+    point: "Connecteur d'addition: de plus / en outre (formel) — Il est compétent ; de plus, il est motivé."
+    category: connecteurs_logiques_avances
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs addition: de plus / en outre"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Ce produit est économique ; en outre, il est écologique."
+        english: "This product is economical; furthermore, it is ecological."
+
+  - id: gp_b2_070
+    point: "Connecteur d'addition: par ailleurs (introduce additional separate point) / qui plus est (even more so)"
+    category: connecteurs_logiques_avances
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §9 — Connecteurs addition: par ailleurs / qui plus est"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "C'est faux, et qui plus est, dangereux."
+        english: "It is false, and what's more, dangerous."
+
+  # ======================================================
+  # CHAIN THEME 6: Nominalisation & Mise en Relief
+  # ======================================================
+
+  - id: gp_b2_071
+    point: "Nominalisation: décider → la décision — transformation verbe → nom dans le registre formel"
+    category: nominalisation_mise_en_relief
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §10 — Nominalisation"
+    examples:
+      - tatoeba_id: 8853
+        sourceRef: "tatoeba:8853"
+        french: "Je vous laisserai la décision."
+        english: "I'll leave the decision to you."
+
+  - id: gp_b2_072
+    point: "Nominalisation: arriver → l'arrivée — noms d'action féminins en -ée"
+    category: nominalisation_mise_en_relief
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §10 — Nominalisation: -ée nouns"
+    examples:
+      - tatoeba_id: 6957
+        sourceRef: "tatoeba:6957"
+        french: "J'ai attendu l'arrivée du bus."
+        english: "I waited for a bus to come."
+
+  - id: gp_b2_073
+    point: "Nominalisation: construire → la construction, partir → le départ, développer → le développement"
+    category: nominalisation_mise_en_relief
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §10 — Nominalisation: common pairs"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "Referentiel-pattern"
+        french: "construire → la construction / partir → le départ / développer → le développement / réfléchir → la réflexion / augmenter → l'augmentation"
+        english: "to build → construction / to leave → departure / to develop → development / to reflect → reflection / to increase → increase"
+
+  - id: gp_b2_074
+    point: "Nominalisation: utiliser → l'utilisation, gérer → la gestion, former → la formation — registre administratif"
+    category: nominalisation_mise_en_relief
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §10 — Nominalisation: administrative register"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "L'utilisation des ressources naturelles doit être limitée."
+        english: "The use of natural resources must be limited."
+
+  - id: gp_b2_075
+    point: "Nominalisation: connaître → la connaissance, réduire → la réduction — transformations moins régulières"
+    category: nominalisation_mise_en_relief
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §10 — Nominalisation: irregular pairs"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il faut approfondir ses connaissances en chimie."
+        english: "You need to deepen your knowledge of chemistry."
+
+  - id: gp_b2_076
+    point: "Mise en relief: c'est…qui — emphase sur le sujet (subject cleft) — C'est elle qui me l'a dit."
+    category: nominalisation_mise_en_relief
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §11 — Mise en relief: c'est…qui"
+    examples:
+      - tatoeba_id: 7879
+        sourceRef: "tatoeba:7879"
+        french: "C'est elle qui me l'a dit."
+        english: "It was she who has told me."
+
+  - id: gp_b2_077
+    point: "Mise en relief: c'est…que — emphase sur le COD/lieu/temps (object/adverbial cleft)"
+    category: nominalisation_mise_en_relief
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §11 — Mise en relief: c'est…que"
+    examples:
+      - tatoeba_id: 9733
+        sourceRef: "tatoeba:9733"
+        french: "C'est toi que j'aimerai toujours."
+        english: "You're the one I'll always love."
+      - tatoeba_id: 7562
+        sourceRef: "tatoeba:7562"
+        french: "C'est le printemps que je préfère."
+        english: "I like spring the best."
+      - tatoeba_id: 3281
+        sourceRef: "tatoeba:3281"
+        french: "C'est là que réside le problème."
+        english: "Therein lies the problem."
+
+  - id: gp_b2_078
+    point: "Mise en relief: accord de c'est vs ce sont — Ce sont eux qui sont partis."
+    category: nominalisation_mise_en_relief
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §11 — Mise en relief: c'est vs ce sont"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Ce sont eux qui sont partis en premier."
+        english: "They are the ones who left first."
+
+  - id: gp_b2_079
+    point: "Mise en relief pseudo-cleft: ce qui…c'est — emphase sur le complément — Ce qui me plaît, c'est la musique."
+    category: nominalisation_mise_en_relief
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §11 — Mise en relief: ce qui…c'est"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Ce qui me plaît, c'est la musique."
+        english: "What I like is music."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Ce qui m'énerve, c'est le bruit constant."
+        english: "What annoys me is the constant noise."
+
+  - id: gp_b2_080
+    point: "Mise en relief pseudo-cleft: ce que…c'est / ce dont…c'est — Ce que je veux, c'est du repos."
+    category: nominalisation_mise_en_relief
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §11 — Mise en relief: ce que / ce dont"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Ce que je veux, c'est du repos."
+        english: "What I want is rest."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Ce dont j'ai besoin, c'est du temps."
+        english: "What I need is time."
+
+  - id: gp_b2_081
+    point: "Mise en relief: quant à + sujet — introduction formelle d'un thème contrasté — Quant à moi, je préfère rester."
+    category: nominalisation_mise_en_relief
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §11 — Mise en relief: quant à"
+    examples:
+      - tatoeba_id: 7969
+        sourceRef: "tatoeba:7969"
+        french: "Quant à moi, je préfère celui-ci."
+        english: "For me, I like this better."
+
+  # ======================================================
+  # CHAIN THEME 7: Futur Antérieur & Subordonnées Avancées
+  # ======================================================
+
+  - id: gp_b2_082
+    point: "Futur antérieur avec avoir: formation aurai/auras/aura/aurons/aurez/auront + participe passé"
+    category: futur_anterieur_subordonnees
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §13 — Futur antérieur formation"
+    examples:
+      - tatoeba_id: 10294
+        sourceRef: "tatoeba:10294"
+        french: "J'aurai réparé votre montre d'ici demain."
+        english: "I will have repaired your watch by tomorrow."
+
+  - id: gp_b2_083
+    point: "Futur antérieur avec être: serai/seras/sera/serons/serez/seront + participe passé (avec accord)"
+    category: futur_anterieur_subordonnees
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §13 — Futur antérieur avec être"
+    examples:
+      - tatoeba_id: 9056
+        sourceRef: "tatoeba:9056"
+        french: "Je serai parti avant votre retour."
+        english: "I will have left when you return."
+
+  - id: gp_b2_084
+    point: "Futur antérieur: action achevée avant un moment futur — J'aurai fini avant que tu arrives."
+    category: futur_anterieur_subordonnees
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §13 — Futur antérieur: completed future action"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "J'aurai fini le rapport avant que tu arrives."
+        english: "I will have finished the report before you arrive."
+
+  - id: gp_b2_085
+    point: "Futur antérieur dans subordonnées temporelles: quand/dès que/aussitôt que + futur antérieur"
+    category: futur_anterieur_subordonnees
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §13 — Futur antérieur: temporal clauses"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Quand tu auras fini, tu pourras sortir."
+        english: "When you have finished, you can go out."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Dès qu'il sera arrivé, nous commencerons la réunion."
+        english: "As soon as he has arrived, we will start the meeting."
+
+  - id: gp_b2_086
+    point: "Futur antérieur: probabilité sur le passé (spéculation) — Il aura oublié. / Elle aura raté le bus."
+    category: futur_anterieur_subordonnees
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §13 — Futur antérieur: probability/speculation"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il n'est pas encore là ? Il aura raté le bus."
+        english: "He's not here yet? He must have missed the bus."
+
+  - id: gp_b2_087
+    point: "Subordonnée de but avec de peur que … ne + subjonctif — Il murmure de peur qu'on ne l'entende."
+    category: futur_anterieur_subordonnees
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 §12 — Subordonnées: de peur que … ne"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il murmure de peur qu'on ne l'entende."
+        english: "He whispers for fear that someone might hear him."
+        note: "de peur que + ne expletif + subjonctif — ne is not negation here"
+
+  - id: gp_b2_088
+    point: "Subordonnée de but avec de crainte que … ne + subjonctif — Elle a tout vérifié de crainte qu'il y ait une erreur."
+    category: futur_anterieur_subordonnees
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 §12 — Subordonnées: de crainte que … ne"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Elle a tout vérifié de crainte qu'il y ait une erreur."
+        english: "She checked everything for fear that there might be a mistake."
+
+  - id: gp_b2_089
+    point: "Subordonnée de condition avec à condition que + subjonctif — Tu peux partir à condition que tu reviennes avant minuit."
+    category: futur_anterieur_subordonnees
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §12 — Subordonnées: à condition que"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Tu peux partir à condition que tu reviennes avant minuit."
+        english: "You can leave provided you come back before midnight."
+
+  - id: gp_b2_090
+    point: "Subordonnée de condition avec pourvu que + subjonctif — Je l'aiderai pourvu qu'il fasse un effort."
+    category: futur_anterieur_subordonnees
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §12 — Subordonnées: pourvu que"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je l'aiderai pourvu qu'il fasse un effort."
+        english: "I will help him provided he makes an effort."
+
+  - id: gp_b2_091
+    point: "Subordonnée hypothétique avec à supposer que + subjonctif — À supposer que vous ayez le temps, feriez-vous ce voyage ?"
+    category: futur_anterieur_subordonnees
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 §12 — Subordonnées: à supposer que"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "À supposer que vous ayez le temps, feriez-vous ce voyage ?"
+        english: "Supposing you had the time, would you make this trip?"
+
+  - id: gp_b2_092
+    point: "Opinion négative + subjonctif: je ne pense pas que + subj (vs affirmatif + indicatif)"
+    category: futur_anterieur_subordonnees
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §14 — Opinion négative + subjonctif"
+    examples:
+      - tatoeba_id: 8385
+        sourceRef: "tatoeba:8385"
+        french: "J'ai peur qu'il pleuve ce soir."
+        english: "I'm afraid it'll rain tonight."
+        note: "avoir peur que = emotion trigger → subjonctif (related structure)"
+
+  - id: gp_b2_093
+    point: "Opinion négative + subjonctif: je ne crois pas que ce soit vrai / je ne trouve pas que ce soit juste"
+    category: futur_anterieur_subordonnees
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §14 — Opinion négative: ne croire/trouver pas que"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je ne crois pas qu'il puisse venir ce soir."
+        english: "I don't believe he can come this evening."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Je ne trouve pas que ce soit juste."
+        english: "I don't think that's fair."
+
+  - id: gp_b2_094
+    point: "Opinion interrogative + subjonctif: Penses-tu qu'il vienne ? — doute impliqué → subjonctif"
+    category: futur_anterieur_subordonnees
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §14 — Opinion interrogative + subjonctif"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Crois-tu qu'elle soit déjà arrivée ?"
+        english: "Do you think she has already arrived?"
+
+  - id: gp_b2_095
+    point: "Hypothèse atténuée: au cas où + conditionnel — Prends un parapluie au cas où il pleuvrait."
+    category: futur_anterieur_subordonnees
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §15 — Hypothèse atténuée: au cas où"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Prends un parapluie au cas où il pleuvrait."
+        english: "Take an umbrella in case it rains."
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Laisse la clé sous le pot au cas où j'arriverais en retard."
+        english: "Leave the key under the pot in case I arrive late."
+
+  - id: gp_b2_096
+    point: "Hypothèse atténuée: si jamais + conditionnel — Si jamais tu changes d'avis, appelle-moi."
+    category: futur_anterieur_subordonnees
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 §15 — Hypothèse atténuée: si jamais"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Si jamais tu changes d'avis, n'hésite pas à m'appeler."
+        english: "If you ever change your mind, don't hesitate to call me."
+
+  - id: gp_b2_097
+    point: "Subordonnée de concession avec infinitif même sujet: avoir beau + infinitif — no matter how (subject same)"
+    category: futur_anterieur_subordonnees
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 §12 — Concession avec infinitif: avoir beau"
+    examples:
+      - tatoeba_id: null
+        sourceRef: "llm_authored"
+        french: "Il a beau travailler, il n'y arrive pas."
+        english: "No matter how hard he works, he can't manage it."
+
+  - id: gp_b2_098
+    point: "Comme si + imparfait/plus-que-parfait — comparaison hypothétique — Ken parle comme s'il savait tout."
+    category: futur_anterieur_subordonnees
+    difficulty: 4
+    referentiel_ref: "Référentiel B2 §15 — Comme si hypothétique"
+    examples:
+      - tatoeba_id: 11119
+        sourceRef: "tatoeba:11119"
+        french: "Ken parle comme s'il savait tout."
+        english: "Ken talks as if he knew everything."
+
+  - id: gp_b2_099
+    point: "Gérondif de simultanéité: en + participe présent — J'ai lu un livre en mangeant."
+    category: futur_anterieur_subordonnees
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 — Gérondif: review for B2 reading texts"
+    examples:
+      - tatoeba_id: 3705
+        sourceRef: "tatoeba:3705"
+        french: "J'ai lu un livre en mangeant."
+        english: "I read a book while eating."
+
+  - id: gp_b2_100
+    point: "Gérondif de manière: en + participe présent exprimant la manière — Affronte la vie en souriant !"
+    category: futur_anterieur_subordonnees
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 — Gérondif: manner use"
+    examples:
+      - tatoeba_id: 3626
+        sourceRef: "tatoeba:3626"
+        french: "Affronte la vie en souriant !"
+        english: "Face life with a smile!"
+
+  - id: gp_b2_101
+    point: "Pronom relatif où — lieu et temps: C'est la maison où il réside. / Le jour où je suis arrivé..."
+    category: futur_anterieur_subordonnees
+    difficulty: 3
+    referentiel_ref: "Référentiel B2 — Pronoms relatifs: où (lieu et temps)"
+    examples:
+      - tatoeba_id: 10619
+        sourceRef: "tatoeba:10619"
+        french: "C'est la maison où il réside."
+        english: "That is the house where he lives."
+
+  - id: gp_b2_102
+    point: "Passif au passé simple (littéraire): Heureusement, personne ne fut blessé."
+    category: futur_anterieur_subordonnees
+    difficulty: 5
+    referentiel_ref: "Référentiel B2 — Passif: passé simple (lecture littéraire)"
+    examples:
+      - tatoeba_id: 8616
+        sourceRef: "tatoeba:8616"
+        french: "Heureusement, personne ne fut blessé."
+        english: "Fortunately, no one was hurt."
+        note: "Passé simple passif — encountered in literary and journalistic French"

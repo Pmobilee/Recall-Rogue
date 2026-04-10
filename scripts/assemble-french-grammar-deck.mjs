@@ -78,7 +78,12 @@ for (const fact of allFacts) {
   poolMap[pid].push(fact.id);
 }
 
-const answerTypePools = arch.answer_type_pools
+// Support both array-of-objects and id-keyed object formats for answer_type_pools.
+const poolList = Array.isArray(arch.answer_type_pools)
+  ? arch.answer_type_pools
+  : Object.entries(arch.answer_type_pools).map(([id, p]) => ({ id, ...p }));
+
+const answerTypePools = poolList
   .map((p) => {
     const factIds = poolMap[p.id] || [];
     const synth = p.synthetic_distractors || [];
