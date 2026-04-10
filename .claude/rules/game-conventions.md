@@ -11,7 +11,8 @@
 - Charge Correct = `qpValue × CHARGE_CORRECT_MULTIPLIER (1.75)`
 - Charge Wrong = `FIZZLE_EFFECT_RATIO (0.25×)` of base effect — always resolves, never zero (`Math.max(0, ...)` floor applied)
 - CHARGE_AP_SURCHARGE = 1 (charging costs +1 AP over Quick Play)
-- Surge turns and Chain Momentum waive surcharge — surge is the strategic burst window for free charging
+- FIRST_CHARGE_FREE_AP_SURCHARGE = 1 (disabled Pass 8 — free first charge removed; discovery system retained for wrong-answer multiplier only)
+- Surcharge waivers: Warcry buff, Chain Momentum (same chain type), On-Colour match (active chain color) — surge is NOT a waiver; it grants +1 bonus AP instead
 - SPEED_BONUS_MULTIPLIER = 1.0× (disabled by default, 2026-04-09) — speed bonuses are relic-only via Quicksilver Quill
 
 ## Mastery Stat Tables (2026-04-03 overhaul, replaces perLevelDelta)
@@ -29,7 +30,7 @@
 - Surge every 4th global turn (turns 2, 6, 10, 14...)
 - Counter persists across encounters — uses `RunState.globalTurnCounter`
 - Do NOT reset per encounter
-- Surge turns waive the CHARGE_AP_SURCHARGE (+1 → 0) — this is the primary strategic payoff of surge
+- Surge turns grant +SURGE_BONUS_AP (+1 bonus AP) at turn start — NOT a surcharge waiver; changed to AP-grant in Pass 3 (2026-04-09). The extra AP is a flexible resource players spend freely.
 
 ## Facts & Cards
 - Facts assigned at charge-commit time, NOT draw time

@@ -122,7 +122,7 @@ The empty-hand trick uses the current (pre-damage) `turnState` — it does not r
 | `AP_PER_ACT` | `{ 1: 3, 2: 4, 3: 4 }` — Act 2+ gives 4 AP/turn |
 | Normal card cost | `card.apCost` |
 | Charge surcharge | +1 AP added to `apCost` |
-| `FIRST_CHARGE_FREE_AP_SURCHARGE` | 0 (first attempt at a fact is free) |
+| `FIRST_CHARGE_FREE_AP_SURCHARGE` | 1 (disabled Pass 8 — free first charge removed to preserve QP-vs-charge decision) |
 | `SURGE_BONUS_AP` | 1 — bonus AP at the start of Surge turns |
 
 **Act-aware AP:** Floors 1-6 = Act 1 (3 AP), floors 7-12 = Act 2 (4 AP), floors 13+ = Act 3 (4 AP). More AP in later acts gives players room to charge and combo under heavier enemy pressure.
@@ -132,8 +132,8 @@ The empty-hand trick uses the current (pre-damage) `turnState` — it does not r
 Charge plays add +1 AP surcharge. Surcharge waivers (checked in priority order in `playCardAction`):
 1. **Warcry buff** — `warcryFreeChargeActive` flag (consumed on use)
 2. **Chain Momentum** — `CHAIN_MOMENTUM_ENABLED = true`; previous correct Charge waives surcharge for next same chain-type Charge
-3. **Active Chain Color Match** (7.6 fix) — `card.chainType === getActiveChainColor()`; charging a card that matches the current active chain color waives the surcharge. Comes BEFORE free-first-charge so an on-colour first charge does NOT consume the free-first-charge slot. After a mid-turn color switch (see chains.md), `getActiveChainColor()` returns the newly pivoted color — so the switched-to color immediately benefits from this waiver.
-4. **Free First Charge** — `isFirstChargeFree(factId, ...)` — first attempt at any fact in the run costs +0 surcharge
+3. **Active Chain Color Match** (7.6 fix) — `card.chainType === getActiveChainColor()`; charging a card that matches the current active chain color waives the surcharge. After a mid-turn color switch (see chains.md), `getActiveChainColor()` returns the newly pivoted color — so the switched-to color immediately benefits from this waiver.
+4. **Free First Charge** (DISABLED, Pass 8) — `isFirstChargeFree(factId, ...)` — function still exists for wrong-answer multiplier logic, but `FIRST_CHARGE_FREE_AP_SURCHARGE = 1` means no AP discount is granted. Discovery system retained for future re-enable.
 5. **Free Play Charges** — `turnState.freePlayCharges > 0` — set by frenzy mechanic or `focus_next2free` tag; reduces AP cost to 0 (highest priority — checked AFTER Focus discount)
 
 If `apCurrent < apCost`, card is blocked (`blocked: true`, no AP deducted).
@@ -674,6 +674,39 @@ Tag implementations in `cardEffectResolver.ts` and `turnManager.ts`. All tags ar
 
 `triggerBurn(effects: StatusEffect[], skipHalving = false)` — new optional second parameter. When `true` (set by `twin_burn_chain`), Burn stacks are not halved after the tick. All existing callers pass no second argument and retain default behavior (halving).
 
+
+---
+
+## Adaptive Difficulty Design Philosophy
+
+**The Canary system intentionally makes the game harder for extremely well-performing players.** This is not a bug — it is a core design principle.
+
+### Why Expert Players Face Harder Enemies
+
+Recall Rogue is a **knowledge game**, not a pure combat game. The goal is to keep players in their **optimal learning range** — the zone where questions are challenging enough to produce genuine retrieval practice but not so easy that answers are automatic. This aligns with Bjork's Desirable Difficulties framework (GDD §1).
+
+When a player answers 85%+ of questions correctly over a sustained window, the Canary system increases enemy HP (+12%) and damage (+20%). This serves three purposes:
+
+1. **Learning incentive:** Higher difficulty makes charging riskier, pushing players to engage more carefully with questions rather than autopiloting through familiar material.
+2. **Mastery validation:** If you truly know the material, you can handle tougher enemies. The challenge confirms mastery rather than punishing it.
+3. **Preventing trivial runs:** A player who knows every answer shouldn't steamroll every run — that's boring. The difficulty scaling keeps even expert runs engaging.
+
+### Why "Master" Players May Have Lower Win Rates Than "Experienced"
+
+In headless simulation data, the `master` profile (85% accuracy) sometimes shows a lower win rate than `experienced` (76% accuracy). **This is intentional and correct.** The master profile triggers the challenge tier (1.15–1.20× enemy damage, 1.12–1.25× enemy HP), while the experienced profile sits in the mild assist/neutral zone. The result is that experienced players get a slight tailwind while masters face a headwind.
+
+This mirrors real roguelite design: the best players should be pushed toward harder content (ascension levels, challenge modifiers) rather than coasting. In Recall Rogue, the Canary system applies this automatically based on quiz performance — no manual difficulty selection needed.
+
+### The Optimal Learning Range
+
+| Accuracy Range | Canary Response | Design Intent |
+|----------------|-----------------|---------------|
+| < 60% | Strong assist (−12% dmg, −10% HP) | Player is struggling — reduce pressure so they can focus on learning |
+| 60–70% | Mild assist | Player is in the learning zone — gentle support |
+| 70–85% | Mild challenge to moderate challenge | Player is performing well — increase engagement |
+| > 85% | Strong challenge (+20% dmg, +12% HP) | Player is coasting — push them toward harder material or accept harder combat |
+
+The system rewards players who are **actively learning** (60–80% accuracy range) with the most favorable difficulty curve, while both extremes (too easy, too hard) receive corrective pressure.
 
 ---
 
