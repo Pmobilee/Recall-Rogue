@@ -1692,6 +1692,13 @@ function snapshot(label?: string): StateSnapshot {
 
 /**
  * Restore a previously captured snapshot.
+ *
+ * CRITICAL-3 fix (2026-04-10): When restoring to 'combat', the prior code set
+ * store state but did not re-mount the Phaser CombatScene. The canvas would
+ * remain black because the scene needs explicit rendering calls via
+ * encounterBridge.syncCombatDisplayFromCurrentState(). This is now triggered
+ * asynchronously after the stores are written, mirroring the route that
+ * natural Resume Run takes via CardApp.handleResumeActiveRun.
  */
 function restore(snap: StateSnapshot): ScenarioResult {
   if (!snap || !snap.timestamp) {
@@ -1704,6 +1711,34 @@ function restore(snap: StateSnapshot): ScenarioResult {
   if (ts) writeStore('rr:activeTurnState', ts);
   if (rs) writeStore('rr:activeRunState', rs);
   if (snap.screen) writeStore('rr:currentScreen', snap.screen);
+
+  // CRITICAL-3: When restoring to 'combat', ensure the Phaser CombatScene
+  // is booted and displaying the restored state. Without this, the canvas
+  // stays black — the Svelte overlay shows correct card state, but Phaser
+  // (enemy sprites, HP bars, background) is never told to re-render.
+  //
+  // Fire-and-forget: restore() must stay sync (callers don't await it).
+  // The scene boot + sync happens asynchronously, completing within ~100ms.
+  if (snap.screen === 'combat') {
+    void (async () => {
+      try {
+        // Boot Phaser if it hasn't been started yet (e.g. page was fresh).
+        const { CardGameManager } = await import('../game/CardGameManager');
+        const mgr = CardGameManager.getInstance();
+        mgr.boot(); // No-op if already booted.
+        mgr.startCombat(); // No-op if CombatScene is already active.
+        // Give the scene one frame to initialize before syncing.
+        await new Promise<void>(resolve => setTimeout(resolve, 50));
+        // Push enemy/HP/background display state to the now-active CombatScene.
+        const { syncCombatDisplayFromCurrentState } = await import('../services/encounterBridge');
+        syncCombatDisplayFromCurrentState();
+      } catch (err) {
+        if (import.meta.env.DEV) {
+          console.warn('[restore] Could not sync CombatScene after restore:', err);
+        }
+      }
+    })();
+  }
 
   return { ok: true, message: `Restored snapshot '${snap.label}' (screen: ${snap.screen})` };
 }
