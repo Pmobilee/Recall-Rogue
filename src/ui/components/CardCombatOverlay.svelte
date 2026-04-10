@@ -59,7 +59,7 @@
   import { getShortCardDescription } from '../../services/cardDescriptionService'
   import SurgeBorderOverlay from './SurgeBorderOverlay.svelte'
   import { ENEMY_DIALOGUE } from '../../data/enemyDialogue'
-  import { getMasteryStats } from '../../services/cardUpgradeService'
+  import { getMasteryStats, getEffectiveApCost } from '../../services/cardUpgradeService'
   import { getMechanicDefinition } from '../../data/mechanics'
   import ExhaustPileViewer from './ExhaustPileViewer.svelte'
   import MultiChoicePopup from './MultiChoicePopup.svelte'
@@ -873,7 +873,7 @@
   )
 
   let castDisabled = $derived(
-    !selectedCard || !turnState || (selectedCard.apCost ?? 1) > turnState.apCurrent,
+    !selectedCard || !turnState || getEffectiveApCost(selectedCard) > turnState.apCurrent,
   )
 
   /** True on Surge turns — Charge Play costs +0 AP instead of +1. */
@@ -1685,7 +1685,7 @@
 
   let hasPlayableCards = $derived.by(() => {
     if (!turnState || turnState.phase !== 'player_action') return false
-    return handCards.some((c) => Math.max(0, (c.apCost ?? 1) - focusDiscount) <= turnState!.apCurrent)
+    return handCards.some((c) => Math.max(0, getEffectiveApCost(c) - focusDiscount) <= turnState!.apCurrent)
   })
 
   /** V2 Echo: Show "Must Charge!" tooltip for ~1500ms, then auto-dismiss. */
@@ -1750,7 +1750,7 @@
     if (!card) return
 
     // Check AP: Charge costs +1 (or +0 on Surge / Chain Momentum for matching chain type)
-    const chargeCost = (card.apCost ?? 1) + (isSurgeActive || (chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType) ? 0 : 1)
+    const chargeCost = getEffectiveApCost(card) + (isSurgeActive || (chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType) ? 0 : 1)
     if (chargeCost > (turnState?.apCurrent ?? 0)) return
 
     selectedIndex = index
@@ -1769,7 +1769,7 @@
     if (!card) return
 
     // M-19: Show "Not enough AP" tooltip when tapping an unaffordable card
-    if ((card.apCost ?? 1) > (turnState?.apCurrent ?? 0)) {
+    if (getEffectiveApCost(card) > (turnState?.apCurrent ?? 0)) {
       showNotEnoughAp = true
       if (notEnoughApTimer !== null) clearTimeout(notEnoughApTimer)
       notEnoughApTimer = setTimeout(() => {
@@ -1808,7 +1808,7 @@
 
     const card = handCards[index]
     if (!card) return
-    if ((card.apCost ?? 1) > (turnState?.apCurrent ?? 0)) return
+    if (getEffectiveApCost(card) > (turnState?.apCurrent ?? 0)) return
 
     // Quick Play: bypass quiz entirely — play card immediately as correct (no quiz shown)
     const cardId = card.id

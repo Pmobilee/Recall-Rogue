@@ -12,6 +12,7 @@ import { readStore } from './storeBridge'
 import { turboDelay } from '../utils/turboMode'
 import { factsDB } from '../services/factsDB'
 import { RELIC_BY_ID } from '../data/relics'
+import { getEffectiveApCost } from '../services/cardUpgradeService';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -186,7 +187,7 @@ function getCombatState(): Record<string, unknown> | null {
         mechanic: c.mechanicId ?? null,
         mechanicName: c.mechanicName ?? null,
         tier: c.tier,
-        apCost: c.apCost ?? 1,
+        apCost: getEffectiveApCost(c),
         baseEffectValue: c.baseEffectValue,
         domain: c.domain ?? null,
         factId: c.factId ?? null,
@@ -235,8 +236,8 @@ async function quickPlayCard(index: number): Promise<PlayResult> {
 
     const card = hand[index];
     if (!card) return { ok: false, message: `No card at index ${index}` };
-    if ((card.apCost ?? 1) > (turnState.apCurrent ?? 0)) {
-      return { ok: false, message: `Not enough AP to play card ${index} (needs ${card.apCost ?? 1}, have ${turnState.apCurrent ?? 0})` };
+    if (getEffectiveApCost(card) > (turnState.apCurrent ?? 0)) {
+      return { ok: false, message: `Not enough AP to play card ${index} (needs ${getEffectiveApCost(card)}, have ${turnState.apCurrent ?? 0})` };
     }
 
     const prevHandSize = hand.length;
@@ -275,7 +276,7 @@ async function chargePlayCard(index: number, answerCorrectly: boolean): Promise<
     if (!card) return { ok: false, message: `No card at index ${index}` };
 
     // Charge play costs +1 AP compared to quick play
-    const chargeCost = (card.apCost ?? 1) + 1;
+    const chargeCost = getEffectiveApCost(card) + 1;
     if (chargeCost > (turnState.apCurrent ?? 0)) {
       return { ok: false, message: `Not enough AP to charge-play card ${index} (needs ${chargeCost}, have ${turnState.apCurrent ?? 0})` };
     }

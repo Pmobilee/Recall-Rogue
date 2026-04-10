@@ -1,7 +1,7 @@
 # Card System Mechanics
 
 > **Purpose:** Card entity, card types, tier system, damage formula, mastery system, and card creation pipeline.
-> **Last verified:** 2026-04-10 (Pass 8 balance: eruption X-cost wired, fortify cap 30, precision_strike 8→6 mult, feedback_loop CC 40→28 +12 flow)
+> **Last verified:** 2026-04-10 (Pass 8 + L0 Balance Overhaul: Bulwark 3AP→2AP/18 block→9 block; 9 card L0 bumps; getEffectiveApCost wired; 2 new mastery tables; monotonic invariants enforced)
 > **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/services/catchUpMasteryService.ts`, `src/data/balance.ts`
 
 > **See also:** [`card-mechanics.md`](card-mechanics.md) — Complete table of all 50+ mechanics (attack, shield, buff, debuff, utility, wild).
@@ -194,7 +194,7 @@ The old helpers (`getMasteryBaseBonus`, `getMasterySecondaryBonus`, `getMasteryA
 | Field | Type | Notes |
 |-------|------|-------|
 | `qpValue` | number | Quick Play base value at this level. CC = qpValue × 1.50 |
-| `apCost` | number? | Override AP cost; omit to inherit from MechanicDefinition |
+| `apCost` | number? | Override AP cost at this level; omit to inherit from `MechanicDefinition`. Read at runtime via `getEffectiveApCost(card)` in `cardUpgradeService.ts` — never read `card.apCost` directly |
 | `secondaryValue` | number? | Secondary stat (block, bleed stacks, reflect, etc.) |
 | `drawCount` | number? | Draw count override for draw/scry cards |
 | `hitCount` | number? | Hit count override for multi-hit cards |
@@ -336,6 +336,42 @@ Several mechanics have designed creative milestones at key mastery levels that c
 | `fortify` | Block scaling capped at 30 to prevent exponential snowball | `currentBlock × 0.75` unlimited | `min(currentBlock, 30) × 0.75` (max ~22 from shield scaling + baseValue) |
 | `precision_strike` | CC difficulty multiplier reduced | base=8, L5=16 | base=6, L5=12 — new CC at 2 distractors: 18, at 4: 30 |
 | `feedback_loop` | CC base damage and flow state bonus reduced | 40 base, +16 flow (max 56) | 28 base, +12 flow (max 40) |
+
+### L0 Balance Overhaul (2026-04-10)
+
+**Root cause fixed:** `MASTERY_STAT_TABLES` per-level `apCost` overrides (e.g. Heavy Strike L5→1 AP, Smite L5→1 AP) were dead data — `card.apCost` was seeded once at build time and never refreshed on mastery-up. Added `getEffectiveApCost(card)` helper in `src/services/cardUpgradeService.ts` that prefers `getMasteryStats(id, level).apCost` and falls back to `card.apCost`. All AP readers in `turnManager.ts`, `cardDescriptionService.ts`, and playtest tools now use this helper.
+
+**Bulwark fix (`src/data/mechanics.ts`):** baseValue 18→9, apCost 3→2. Was a trap card at L0 (3 AP = entire turn budget). Now matches the MASTERY_STAT_TABLES L0 entry.
+
+**9-card L0 qpValue bumps** (target: ≥2.0 damage/AP floor for 2-AP cards):
+
+| Mechanic | L0 Before | L0 After | Key notes |
+|---|---|---|---|
+| `multi_hit` | qpValue=1, hitCount=2 | qpValue=2, hitCount=2 | L1 also bumped 1→2 for monotonic |
+| `lifetap` | qpValue=3 | qpValue=5 | L1 bumped 4→5 for monotonic |
+| `bash` | qpValue=3, apCost=2 | qpValue=4, apCost=2 | Unchanged L1+ |
+| `chain_lightning` | qpValue=3, apCost=2 | qpValue=4, apCost=2 | L1+L2 bumped 4→5 for monotonic |
+| `smite` | qpValue=6, apCost=2 | qpValue=7, apCost=2 | L1-L4 shifted +1; L5 kept at 12 |
+| `hemorrhage` | qpValue=2 (L0-L2) | qpValue=4 (L0-L2) | L3-L5 also shifted up |
+| `fortify` | qpValue=4, apCost=2 | qpValue=5, apCost=2 | L1-L4 shifted +1 |
+| `overheal` | qpValue=5, apCost=2 | qpValue=6, apCost=2 | L1-L5 shifted; bug fix: L4 missing apCost:1 added |
+| `ironhide` | qpValue=5, apCost=2 | qpValue=6, apCost=2 | Bug fix: L3 was non-monotonic (6→5); fixed L3-L4 to 7 |
+
+**Latent monotonic bugs fixed (caught by regression tests):**
+- `riposte` L5: qpValue was 3 (< L4=4) — fixed to 4
+- `stagger` L5: qpValue was 0 (< L4=1) — fixed to 1
+
+**New mastery tables added (`src/services/cardUpgradeService.ts`):**
+- `burnout_shield`: full L0–L5 table (qpValue 5→13). L5 gains `burnout_no_exhaust` tag (design intent — NOT yet wired in `cardEffectResolver.ts`)
+- `knowledge_ward`: full L0–L5 table (qpValue 6→12). L3+ gains `knowledge_ward_cleanse` tag (design intent — NOT yet wired)
+- Both previously used legacy `getMasteryBaseBonus()` bridge; now have explicit `MASTERY_STAT_TABLES` entries
+
+**Regression tests (`tests/unit/cardUpgradeService-apCost.test.ts`, 34 tests):**
+- `mechanic.apCost` vs MASTERY_STAT_TABLES L0 entry agreement
+- AP cost monotonically non-increasing with mastery
+- qpValue monotonically non-decreasing with mastery
+- Per-mechanic `getEffectiveApCost` checks for all mechanics with AP reductions
+- Spot-checks for all 9 bumped cards and 2 new tables
 
 ### Tag System — How Tags Work in the Resolver
 

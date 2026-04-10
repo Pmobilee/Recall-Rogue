@@ -618,12 +618,12 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
 
   // ── Shields (3) ──────────────────────────────────────────────────────────
 
-  // Bulwark — mega block, exhausts on CC
+  // Bulwark — mega block, exhausts on CC (L0: 2 AP / 9 block; L3+ no exhaust; L5: 1 AP)
   {
     id: 'bulwark', name: 'Bulwark', type: 'shield',
-    description: 'QP: 18 block. CC: 36 block then EXHAUST. CW: 10 block.',
-    baseValue: 18, apCost: 3, maxPerPool: 1, tags: ['block'], launchPhase: 2, unlockLevel: 9,
-    quickPlayValue: 9, chargeCorrectValue: 36, chargeWrongValue: 5,
+    description: 'QP: 9 block. CC: 16 block then EXHAUST. CW: 5 block.',
+    baseValue: 9, apCost: 2, maxPerPool: 1, tags: ['block'], launchPhase: 2, unlockLevel: 9,
+    quickPlayValue: 9, chargeCorrectValue: 16, chargeWrongValue: 5,
   },
 
   // Conversion — convert block to damage (1:1)
