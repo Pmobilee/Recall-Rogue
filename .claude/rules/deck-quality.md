@@ -130,7 +130,7 @@ npm run build:curated
 
 **If ANY step finds issues, fix them BEFORE committing. Never ship a deck with known quality issues.**
 
-## 4 Deck Quality Anti-Patterns — Lessons from 2026-04-08 Audit
+## 12 Deck Quality Anti-Patterns — Lessons from 2026-04-08 and 2026-04-10 Audits
 
 ### Anti-Pattern 1: Empty Sub-Deck factIds
 **What:** Sub-decks defined in deck JSON with `factIds: []` even though facts have valid `chainThemeId` values.
