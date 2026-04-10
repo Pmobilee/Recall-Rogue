@@ -100,6 +100,7 @@
 | [strategy](testing/strategy.md) | Overview of all four testing layers (unit, headless sim, Playwright visual, LLM playtest) and when to use each |
 | [headless-sim](testing/headless-sim.md) | Running the headless combat simulator — profiles, output format, key commands, and internal module wiring |
 | [playwright](testing/playwright.md) | Visual testing with Playwright MCP and E2E scripts — screenshots, scenario loading, debug tools, and gotchas |
+| [inspection-registry](testing/inspection-registry.md) | Inspection registry structure, deck-specific date fields, agent lock protocol, and CLI reference for parallel agent coordination |
 | [dev-presets](testing/DEVPRESET-REFERENCE.md) | Dev scenario presets and query parameters |
 | [playtest-dashboard](testing/PLAYTEST-DASHBOARD.md) | Playtest dashboard server and data locations |
 

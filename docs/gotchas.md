@@ -1331,3 +1331,15 @@ The `interrogatives` pool in `spanish_a1_grammar` contains both interrogative wo
 **Deduplication required:** 44 words appeared in both the C1 (CEFRLex) and C2 (PCIC) source lists. The merge step keeps them in C1 (lower level wins), strips them from C2. Always run a dedup pass when combining adjacent CEFR levels from different sources.
 
 **Prevention:** For any language where CEFRLex/equivalent stops before C2, use the official national language authority's curriculum document (PCIC for Spanish, DELF/DALF for French, Goethe-Zertifikat for German) as the C2 word source.
+
+---
+
+### 2026-04-10 — Agents stomping on decks mid-playtest
+
+**What:** Before the lock protocol was added to `data/inspection-registry.json`, two parallel agents could simultaneously run structural verification, quiz audits, or LLM playtests against the same deck. Results from the faster agent would be partially overwritten by the slower one. Date stamps like `lastStructuralVerify` could be set to "complete" by agent A while agent B was still mid-run on the same deck — producing a timestamp that claimed success on a run that hadn't finished or had been disrupted.
+
+**Why it happens:** Multiple content-agent and qa-agent instances are routinely spawned in parallel for batch deck work. Without a coordination mechanism, any two agents that pick the same deck from the stale list will step on each other.
+
+**Fix:** Added an `inProgress` lock object to every registry element. The lock protocol: (1) `npm run registry:check-lock -- --ids <deckId>` before touching any deck — exit if locked; (2) `npm run registry:lock` with your agent id and test type; (3) set a shell `trap` to guarantee `npm run registry:unlock` fires on exit (including crashes); (4) on success, stamp the appropriate date field. Locks have a TTL (default 4h) so a crashed agent can't permanently block a deck. `npm run registry:stale` now shows an "IN PROGRESS" section listing all locked elements so agents know what to skip.
+
+**Prevention:** Full agent collaboration flow documented in `docs/testing/inspection-registry.md`. Always use `registry:check-lock` as the first step when picking a deck from the stale list.

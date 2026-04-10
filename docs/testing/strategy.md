@@ -1,7 +1,7 @@
 # Testing Strategy
 
 > **Purpose:** Overview of all testing layers in Recall Rogue — when to use each method, where tests live, and how to run them.
-> **Last verified:** 2026-04-06
+> **Last verified:** 2026-04-10
 > **Source files:** `vitest.config.ts`, `tests/unit/*.test.ts`, `src/services/__tests__/`, `CLAUDE.md`
 
 ## Four Testing Layers
@@ -130,6 +130,14 @@ npm run registry:stale   # Show stale or never-inspected elements
 Skills that auto-stamp the registry after running: `/inspect`, `/visual-inspect`, `/ux-review`, `/balance-sim`, `/strategy-analysis`, `/rogue-brain`, `/llm-playtest`, `/quick-verify`, `/smart-test`.
 
 Use `/inspect` as the master orchestrator — it fires all applicable methods in parallel.
+
+### Deck Tracking + Agent Locks
+
+The registry includes a `decks` table (~99 entries, one per `data/decks/*.json` file) with four quality-pipeline date fields that are automatically stamped when the corresponding tool completes successfully: `lastStructuralVerify`, `lastQuizAudit`, `lastLLMPlaytest`, and `lastTriviaBridge`.
+
+Each registry element also carries an `inProgress` lock so parallel agents do not stomp on each other. Before touching any deck, check for a lock, acquire one, and use a shell `trap` to guarantee unlock on exit. Locks have a default TTL of 4 hours; abandoned locks are shown separately in `registry:stale` output and are safe to override.
+
+**Full reference:** `docs/testing/inspection-registry.md` — covers field schemas, staleness thresholds, CLI reference (`registry:lock`, `registry:unlock`, `registry:check-lock`), and the canonical agent collaboration flow.
 
 ## Deck Structural Validation
 
