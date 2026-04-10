@@ -1476,3 +1476,38 @@ needs to be registered with Phaser before `syncCombatScene` can update its state
 test helper that needs to put the game in a specific combat state MUST also call
 `syncCombatDisplayFromCurrentState()` after setting the store. The canvas is owned by Phaser,
 not by Svelte.
+
+### 2026-04-10 — CombatScene regressed to <20 fps — SwiftShader classified as flagship (HIGH-4)
+
+**What:** 3 independent LLM testers in Docker CI reported CombatScene at 12-14 fps during
+animation load (endTurn button). Idle was 39-43 fps. Profiling revealed `DepthLightingSystem`
+was enabled — running the expensive DepthLightingFX fragment shader (Sobel + 8 lights +
+ray-march shadow) on SwiftShader, a CPU-only software renderer.
+
+**Why:** Device tier detection in `deviceTierService.ts` classified Docker/headless Chrome as
+`flagship` through the following path:
+1. No `navigator.deviceMemory` in Docker → skips memory detection
+2. SwiftShader GPU string (`"ANGLE (Google, Vulkan 1.1.0 (SwiftShader Device ...))"`) was
+   unmatched by the existing GPU pattern regexes in `probeGPU()`
+3. Falls through to CPU core count fallback: 14 Docker cores ≥ 8 → `flagship`
+4. `flagship` → `DepthLightingSystem.enabled = true` → DepthLightingFX PostFX pipeline active
+5. On SwiftShader 1920x1080: ~55ms/frame → 12-14 fps
+
+**Fix:** Added software renderer detection at the TOP of `probeGPU()`, BEFORE any other check:
+```typescript
+if (/swiftshader|llvmpipe|softpipe|microsoft basic render driver/.test(r)) return 'low-end'
+```
+This short-circuits the CPU core count fallback. SwiftShader/llvmpipe/softpipe → always `low-end`
+→ `DepthLightingSystem.enabled = false` → PostFX pipeline skipped.
+
+**After fix:** SwiftShader sustained fps: ~22 fps ceiling (software renderer hardware limit).
+Docker CI cannot reach 45 fps regardless — do NOT assert FPS targets in Docker CI tests.
+
+**Regression guard:** `tests/playtest/headless/perf-smoke.ts` (24 assertions) and
+`tests/unit/deviceTierService.test.ts` (23 tests) prevent re-introduction.
+
+**Also discovered:** `src/dev/debugBridge.ts` was reading `Symbol.for('rr:gameManagerStore')`
+which doesn't exist — CardGameManager registers as `Symbol.for('rr:cardGameManager')`. This
+made `__rrDebug().phaserPerf` always return null. Also, `game.tweens` does not exist in
+Phaser 3 — tweens are per-scene. Must aggregate via `scene.tweens.getTweens()` across all
+active scenes. Both bugs were fixed alongside the HIGH-4 fix.

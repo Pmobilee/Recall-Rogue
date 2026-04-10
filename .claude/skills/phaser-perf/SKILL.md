@@ -9,11 +9,60 @@ user_invocable: true
 
 ## When to Use
 
-- FPS drops below 30 on any target device
+- FPS drops below 45 on any real-hardware target device (see FPS warning below)
 - Visual glitches, flickering, or rendering artifacts
 - Memory warnings or crashes on mobile
 - Adding many new sprites or animations
 - **PROACTIVE TRIGGER**: Any discussion of performance, rendering issues, or mobile optimization
+
+## FPS Warning — Check `__rrDebug().phaserPerf` First
+
+When FPS is reported as low, **always check the renderer before investigating**:
+
+```javascript
+// In browser DevTools console (dev build only):
+const perf = await __rrDebug().phaserPerf
+console.log(perf)
+// { fps, renderer, drawCalls, activeTweens, gameObjectCount, textureCount, canvasSize, memoryMB }
+```
+
+**If `fps < 45` and the renderer string contains `swiftshader`, `llvmpipe`, or `softpipe`:**
+- This is a Docker/CI software renderer — ~22 fps is the hardware ceiling, NOT a bug
+- Check `deviceTierService.getDeviceTier()` returns `'low-end'`
+- If it returns `'mid'` or `'flagship'`, the software renderer detection is broken — file a HIGH-priority bug
+- See HIGH-4 case study below
+
+**If `fps < 45` on a real GPU:**
+- Proceed with profiling below
+
+## HIGH-4 Case Study — SwiftShader Misclassified as Flagship (2026-04-10)
+
+**Symptom:** CombatScene reported 12-14 fps in Docker CI during animation load.
+
+**Diagnosis steps taken:**
+1. Extended `__rrDebug()` with `phaserPerf` (fps, drawCalls, activeTweens, etc.)
+2. Booted Docker warm container, loaded combat-basic scenario
+3. Sampled `phaserPerf` at idle and under animation load
+4. Idle: 39-43 fps. During endTurn animation: 12-14 fps
+5. Identified 36 game objects in CombatScene, 110 textures loaded
+6. Checked `depthEnabled` via eval: was `true` (wrong — should be false on software renderer)
+
+**Root cause:**
+- SwiftShader GPU string unmatched by `probeGPU()` patterns
+- Fell through to CPU core count fallback: 14 cores → `flagship`
+- `flagship` → `DepthLightingSystem.enabled = true`
+- DepthLightingFX runs Sobel filter + 8 point lights + 6-step ray-march shadow per fragment
+- On SwiftShader 1920x1080: ~55ms/frame → 12-14 fps during animation load
+
+**Fix:** Added to `probeGPU()` BEFORE other pattern checks:
+```typescript
+if (/swiftshader|llvmpipe|softpipe|microsoft basic render driver/.test(r)) return 'low-end'
+```
+
+**Lesson:** NEVER add new GPU pattern checks after the software renderer check.
+The software renderer check MUST fire before CPU core count is consulted.
+
+**Profile data:** `data/playtests/llm-batches/BATCH-2026-04-10-003-fullsweep/HIGH-4-PROFILE.md`
 
 ## Phaser Debugger Chrome Extension
 
@@ -77,34 +126,46 @@ const renderer = Capacitor.isNativePlatform() ? Phaser.CANVAS : Phaser.AUTO;
 - Background micro-animation: 3 extra sin() calls per fragment in DepthLightingFX shader — negligible on any GPU running existing PostFX
 - Chain escalation overlays: max 2 additional Rectangle objects (vignette pulse + tint overlay)
 
-## Extending __rrDebug
+## Extending __rrDebug (current implementation)
 
-Add these to the existing `window.__rrDebug()` output:
+The `phaserPerf` field is already wired in `src/dev/debugBridge.ts`:
 ```typescript
 {
-  fps: game.loop.actualFps,
-  renderer: game.config.renderType === 1 ? 'Canvas' : 'WebGL',
-  drawCalls: game.renderer.drawCount, // WebGL only
-  textureCount: game.textures.getTextureKeys().length,
-  activeTweens: game.tweens.getTweens().length,
-  gameObjectCount: scene.children.list.length,
-  canvasSize: `${game.canvas.width}x${game.canvas.height}`,
-  memoryMB: performance.memory?.usedJSHeapSize / 1024 / 1024, // Chrome only
+  fps: number,          // game.loop.actualFps
+  renderer: string,     // 'Canvas' | 'WebGL' | 'unknown'
+  drawCalls: number,    // renderer.gl?.drawCount (WebGL only)
+  activeTweens: number, // total tweens across all active scenes (NOT game.tweens — tweens are per-scene in Phaser 3)
+  gameObjectCount: number, // children.list.length in CombatScene
+  textureCount: number, // textures.getTextureKeys().length
+  canvasSize: string,   // e.g. "1920x1080"
+  memoryMB: number,     // performance.memory?.usedJSHeapSize / 1024 / 1024 (Chromium only)
 }
 ```
+
+**IMPORTANT:** Tweens in Phaser 3 are per-scene, not on `game.tweens`. To get all active tweens:
+```typescript
+let activeTweens = 0
+for (const scene of game.scene.getScenes(true)) {
+  activeTweens += (scene as SceneWithTweens).tweens?.getTweens?.()?.length ?? 0
+}
+```
+Do NOT use `game.tweens.getTweens()` — `game.tweens` does not exist. This was the stale pattern
+in the old SKILL.md note (the bridge used `rr:gameManagerStore` symbol which also doesn't exist).
 
 ## Performance Budget
 
 | Metric | Target | Action if exceeded |
 |--------|--------|-------------------|
-| FPS | >30 on all devices | Profile, reduce draw calls |
+| FPS (real GPU) | >45 on all real devices | Profile, reduce draw calls |
+| FPS (Docker SwiftShader) | ~22fps ceiling | Normal — do NOT optimize for this |
 | Load time | <3s on 4G | Lazy-load non-critical assets |
-| Memory | <150MB heap | Audit texture sizes, destroy unused |
+| Memory | <300MB heap | Audit texture sizes, destroy unused |
 | Active tweens | <20 simultaneous | Queue animations, use callbacks |
 | Canvas pixels | <500K on mobile | Reduce resolution, CSS scale |
 
 ## References
 
+- `docs/testing/perf-baselines.md` — frame-time targets, HIGH-4 post-mortem, tier breakdown
 - [Phaser 3 Optimization Guide (2025)](https://franzeus.medium.com/how-i-optimized-my-phaser-3-action-game-in-2025-5a648753f62b)
 - [Phaser 3.60 Mobile Performance Notes](https://github.com/phaserjs/phaser/blob/v3.60.0/changelog/3.60/MobilePerformance.md)
 - [Phaser Debugger Extension](https://chromewebstore.google.com/detail/phaser-debugger/aigiefhkiaiihlploginlonehdafjljd)

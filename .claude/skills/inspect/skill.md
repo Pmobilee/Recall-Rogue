@@ -294,6 +294,13 @@ npm run audit:quiz-engine -- --deck ancient_rome --verbose  # Single deck
 - Turn transition breathing (300ms vignette darken between turns, released on player turn start)
 - Foreground parallax elements (should be present in combat, absent in shop/rest/reward rooms)
 - Mood vignette alpha (should increase as player HP decreases)
+- **FPS/rendering performance** — if any tester reports low FPS in combat, run this check first:
+  ```javascript
+  const perf = await __rrDebug().phaserPerf  // { fps, renderer, drawCalls, activeTweens, ... }
+  ```
+  If `renderer` contains `swiftshader`/`llvmpipe`/`softpipe` and `fps < 30`: expected (software renderer ceiling ~22fps, not a bug).
+  If `fps < 45` on real GPU OR `deviceTier !== 'low-end'` on software renderer: file HIGH priority bug.
+  See `docs/testing/perf-baselines.md` and HIGH-4 case study in phaser-perf skill.
 **How:** Playwright + `__rrScenario` — loads specific game states, takes screenshots, checks DOM + canvas
 **Speed:** ~10 seconds per screen
 **Blind spots:** Cannot assess design quality or UX best practices. Only catches errors, not improvements.
