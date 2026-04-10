@@ -1,0 +1,31 @@
+{
+  "batchId": "BATCH-2026-04-10-003-fullsweep",
+  "createdAt": "2026-04-10T00:00:00Z",
+  "orchestration": "docker-warm-containers",
+  "testers": ["quiz-quality", "balance-curve", "fun-engagement", "study-temple", "full-run"],
+  "args": {
+    "runs": 5,
+    "domain": "general_knowledge",
+    "floors": 3,
+    "specialFocus": [
+      "chess_tactics (new 2026-04-10)",
+      "map_pin_drop quiz mode",
+      "7 new deck-front art",
+      "InRunFactTracker save/load rebuild"
+    ]
+  },
+  "status": "complete-with-gaps",
+  "smokeTestPassed": true,
+  "reports": {
+    "quiz-quality": { "status": "complete", "verdict": "FAIL", "criticalCount": 1, "highCount": 5, "mediumCount": 3, "lowCount": 2 },
+    "balance-curve": { "status": "complete", "verdict": "FAIL", "criticalCount": 2, "highCount": 1, "mediumCount": 2, "lowCount": 1 },
+    "fun-engagement": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 2, "mediumCount": 5, "lowCount": 0 },
+    "study-temple": { "status": "complete", "verdict": "PASS", "criticalCount": 0, "highCount": 1, "mediumCount": 1, "lowCount": 2 },
+    "full-run": { "status": "INCOMPLETE", "reason": "Sonnet rate limit hit ~90% through; no report written", "verdict": null }
+  },
+  "overallVerdict": "FAIL",
+  "totalCritical": 3,
+  "totalHigh": 9,
+  "totalMedium": 11,
+  "totalLow": 5
+}
