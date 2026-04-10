@@ -1616,3 +1616,18 @@ Both return early WITHOUT mutating the screen store.
 
 **Prevention:** Already covered by HIGH-6-P (pool contamination prevention rules). The specific gap: `homogeneityExempt` pools can still produce length-tells when pool members have heterogeneous answer types (not just heterogeneous lengths). A future improvement to Check #20 could still flag length-tells even in exempt pools, treating length ratio as a separate signal from semantic homogeneity.
 
+### 2026-04-10 — Zero-HP death skipped runEnd screen and jumped to hub
+
+**What:** When the player reached 0 HP in combat, the game called `finishRunAndReturnToHub()` which ended with `currentScreen.set('hub')`. The `RunEndScreen` component only renders when `currentScreen === 'runEnd'`. Players never saw the run summary, XP earned, facts reviewed, accuracy, or the "Play Again" / "Return to Hub" buttons. The game silently jumped to hub as if nothing happened.
+
+**Why:** `finishRunAndReturnToHub()` was named for its effect (returning to hub) but the run-end screen is a mandatory pit-stop between combat death and hub. The function's final line was never updated when `RunEndScreen` was added. The pattern of navigating directly to hub was copy-pasted from early prototype code.
+
+**All three termination paths were affected:** death (playerHp <= 0), retreat, and the victory path all call `finishRunAndReturnToHub()`.
+
+**Fix:** Changed the last line of `finishRunAndReturnToHub()` from `currentScreen.set('hub')` to `currentScreen.set('runEnd')`. The RunEndScreen's `onplayagain` and `onhome` callbacks already call `playAgain()` / `returnToMenu()` which navigate to hub — no changes needed there. (One-line fix in `src/services/gameFlowController.ts`.)
+
+**Prevention:**
+- `.claude/rules/save-load.md` §"Run Lifecycle Termination Invariants" — documents the mandatory runEnd pit-stop with the full state machine diagram
+- `src/services/gameFlowController.termination.test.ts` (MEDIUM-10) — 6 regression tests, including source-level invariant checks that parse the production source and assert `finishRunAndReturnToHub` never calls `currentScreen.set('hub')`
+- `docs/mechanics/combat.md` §"Run Termination State Machine" — documents all termination paths and the convergence invariant
+

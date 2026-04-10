@@ -75,6 +75,21 @@ Added in v3 to enable per-run knowledge delta tracking. All in-memory only — n
 | **Key exports** | `startRun`, `handleCombatVictory`, `handlePlayerDeath`, `handleRoomChoice`, `handleCardRewardChoice`, `handleRelicChoice`, `handleShopAction`, `handleMysteryChoice`, `handleRestAction` |
 | **Key dependencies** | runManager, floorManager, encounterBridge, rewardGenerator, relicAcquisitionService, shopService, deckManager, gameState store |
 
+### Run termination contract (MEDIUM-10, 2026-04-10)
+
+`finishRunAndReturnToHub()` is the single convergence point for all run-ending events. It MUST:
+1. Call `endRun(run, reason)` to build `RunEndData`
+2. Set `activeRunEndData` so `RunEndScreen` has data to display
+3. Set `currentScreen` to `'runEnd'` — **never directly to `'hub'`**
+
+The `returnToMenu()` and `playAgain()` exports handle the `runEnd → hub` transition when the player clicks a button in `RunEndScreen`.
+
+Functions that legitimately bypass `finishRunAndReturnToHub` (and jump direct to hub):
+- `abandonActiveRun()` — emergency dev abandon, no run summary
+- `returnToHubFromCampfire()` — campfire exit preserves the run state for resume
+
+See `docs/mechanics/combat.md` §"Run Termination State Machine" for the full flow diagram.
+
 ## shopService
 
 | | |
