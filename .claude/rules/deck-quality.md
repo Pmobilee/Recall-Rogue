@@ -240,3 +240,19 @@ npm run build:curated
 4. **Verify after the split:** every fact's `answerTypePoolId` must reference an existing pool (no orphans). Run `node scripts/verify-all-decks.mjs` and re-run `audit-dump-samples.ts --deck <id>` to confirm POOL-CONTAM rate drops.
 5. **Detection:** `verify-all-decks.mjs` should warn whenever a knowledge-deck pool has >100 real facts. (Future Phase 5 task.)
 6. **Exception:** language-vocab pools with thousands of words are intentional — POS-separated pools are the right fix there (Anti-Pattern 5 / Anti-Pattern 6 territory), not unit-splitting.
+
+### Anti-Pattern 10: Mixed-POS vocabulary pools
+
+**Rule:** Vocabulary deck `english_meanings` pools (and any pool used by a forward/reverse template for vocab facts) MUST be split by `partOfSpeech` before deployment. A pool mixing verbs ("to swim"), nouns ("table"), adjectives ("empty"), and adverbs ("quickly") lets players eliminate distractors by part-of-speech recognition without any vocabulary knowledge (POS-TELL).
+
+**Why:** At mastery=0 (3-option quizzes), when a question asks the meaning of a verb but one distractor is a noun, the answer is narrowed to 2 choices without knowing the word. Confirmed across 14 Spanish, French, and German vocabulary decks (2026-04-10 audit, Pattern #6). 15,947 facts were reassigned.
+
+**How to apply:**
+1. After assembling a vocabulary deck, inspect the `english_meanings` pool's `factIds`. Check the `partOfSpeech` field distribution.
+2. Pre-validate POS tags BEFORE splitting: look for facts tagged "verb" whose `correctAnswer` has no "to " prefix — they may be nouns or adjectives. Common Spanish errors: `difunto` ("deceased"), `pendiente` ("pending") were both tagged "verb" but are adjectives.
+3. Split into up to 5 sub-pools: `_verbs`, `_nouns`, `_adjectives`, `_adverbs`, `_other`. Sub-pools with <5 real facts merge into `_nouns` (or the largest available).
+4. Pad each sub-pool to 15+ total (factIds + syntheticDistractors) with POS-appropriate wrong answers: verbs → "to swim", "to refuse", ...; nouns → "table", "decision", ...; adjectives → "empty", "rapid", ...; adverbs → "quickly", "rarely", ...
+5. Update each fact's `answerTypePoolId` to its new POS-specific pool ID.
+6. Remove the original `english_meanings` pool.
+7. **CRITICAL:** In the POS routing function, check `adverb` BEFORE `verb` — `'verb' in 'adverb'` is `True` in Python, so naive ordering routes adverbs into the verbs pool.
+8. Run `node scripts/verify-all-decks.mjs` — 0 failures required.
