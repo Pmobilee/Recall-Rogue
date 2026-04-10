@@ -111,3 +111,29 @@ npx vitest run src/services/runSaveService.test.ts  # CRITICAL-2: Set/Map round-
 ```
 
 Both test files mock all browser/Phaser dependencies and run in Node (no DOM needed).
+
+---
+
+## Dev Tooling API Completeness Invariants
+
+Every method registered on `window.__rrPlay` MUST satisfy all three of:
+
+1. **A unit test** in `tests/dev/playtestAPI.test.ts` (or a sibling file)
+2. **An entry in this doc** (below) describing its contract
+3. **A mention in `.claude/skills/llm-playtest/`** describing when testers should use it
+
+Any new `__rrPlay` method that ships without all three is incomplete.
+
+### API Contract Reference
+
+| Method | Contract | Notes |
+|---|---|---|
+| `startStudy(size?)` | Returns `{ ok: false, reason: 'no active run' }` when no runState; returns `{ ok: false, reason: 'empty study pool' }` when no upgradeable cards. NEVER mutates the screen store on failure. | HIGH-8 fix 2026-04-10 |
+| `getRelicDetails()` | Returns `Array<{ id, name, description, rarity, trigger, acquiredAtFloor, triggerCount }>` from `runState.runRelics`. Returns `[]` when no run or no relics. Unknown IDs fall back to `{ name: definitionId, description: '' }`. | Phase 5 fix 2026-04-10 |
+| `getRewardChoices()` | Returns current `activeCardRewardOptions` as `Array<{ index, id, cardType, mechanicId, mechanicName, domain, tier, apCost, baseEffectValue, masteryLevel, chainType, factId, factQuestion, factAnswer }>` WITHOUT accepting. Returns `[]` when no reward is pending. | Phase 5 new 2026-04-10 |
+| `getStudyPoolSize()` | Returns count of cards eligible for mastery upgrade from the active deck (falls back to run pool between encounters). Returns `0` when no active run or no upgradeable cards. Read-only, no side effects. | Phase 5 new 2026-04-10 |
+
+### Enforcement Lint Script
+
+`scripts/lint/check-rrplay-api-coverage.mjs` — greps `__rrPlay` method definitions and
+cross-checks each against the API Contract Reference table above. Run via `npm run check`.
