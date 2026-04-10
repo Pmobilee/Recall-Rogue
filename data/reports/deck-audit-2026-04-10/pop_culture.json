@@ -1,0 +1,5601 @@
+{
+  "timestamp": "2026-04-10T13:40:34.657Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 187,
+  "totalFails": 0,
+  "totalWarns": 64,
+  "decks": [
+    {
+      "deckId": "pop_culture",
+      "deckName": "Pop Culture",
+      "deckClass": "knowledge",
+      "totalFacts": 202,
+      "totalChecks": 187,
+      "failCount": 0,
+      "warnCount": 64,
+      "issuesByType": {
+        "min_pool_facts": {
+          "fail": 0,
+          "warn": 3
+        },
+        "empty_chain_themes_runtime": {
+          "fail": 0,
+          "warn": 1
+        },
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 25
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 32
+        },
+        "all_pool_fill": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_pool_game_innovations",
+          "masteryLevel": -1,
+          "poolId": "game_innovations",
+          "renderedQuestion": "(pool-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_pool_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "min_pool_facts",
+              "detail": "Pool \"game_innovations\" has only 2 real factIds (min: 5)"
+            }
+          ]
+        },
+        {
+          "factId": "_pool_comic_debut_issues",
+          "masteryLevel": -1,
+          "poolId": "comic_debut_issues",
+          "renderedQuestion": "(pool-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_pool_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "min_pool_facts",
+              "detail": "Pool \"comic_debut_issues\" has only 2 real factIds (min: 5)"
+            }
+          ]
+        },
+        {
+          "factId": "_pool_media_format_names",
+          "masteryLevel": -1,
+          "poolId": "media_format_names",
+          "renderedQuestion": "(pool-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_pool_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "min_pool_facts",
+              "detail": "Pool \"media_format_names\" has only 2 real factIds (min: 5)"
+            }
+          ]
+        },
+        {
+          "factId": "_deck_chain_themes",
+          "masteryLevel": -1,
+          "poolId": "_deck",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "empty_chain_themes_runtime",
+              "detail": "Knowledge deck \"pop_culture\" has no chainThemes — Study Temple mode will not work correctly"
+            }
+          ]
+        },
+        {
+          "factId": "pc_0_ilovelucy_network",
+          "masteryLevel": 0,
+          "poolId": "network_channel_names",
+          "renderedQuestion": "I Love Lucy, the groundbreaking 1951 sitcom starring Lucille Ball, originally aired on which network?",
+          "correctAnswer": "CBS",
+          "distractors": [
+            {
+              "answer": "AMC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_breakingbad_network"
+            },
+            {
+              "answer": "Fox",
+              "source": "similar_difficulty",
+              "factId": "pc_0_simpsons_network"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_ilovelucy_network",
+          "masteryLevel": 2,
+          "poolId": "network_channel_names",
+          "renderedQuestion": "I Love Lucy, the groundbreaking 1951 sitcom starring Lucille Ball, originally aired on which network?",
+          "correctAnswer": "CBS",
+          "distractors": [
+            {
+              "answer": "AMC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_breakingbad_network"
+            },
+            {
+              "answer": "Fox",
+              "source": "similar_difficulty",
+              "factId": "pc_0_simpsons_network"
+            },
+            {
+              "answer": "NBC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_freshprince_network"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_ilovelucy_network",
+          "masteryLevel": 4,
+          "poolId": "network_channel_names",
+          "renderedQuestion": "I Love Lucy, the groundbreaking 1951 sitcom starring Lucille Ball, originally aired on which network?",
+          "correctAnswer": "CBS",
+          "distractors": [
+            {
+              "answer": "AMC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_breakingbad_network"
+            },
+            {
+              "answer": "Fox",
+              "source": "similar_difficulty",
+              "factId": "pc_0_simpsons_network"
+            },
+            {
+              "answer": "NBC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_freshprince_network"
+            },
+            {
+              "answer": "Showtime",
+              "source": "pool_fill",
+              "factId": "_synthetic_Showtime"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_freshprince_network",
+          "masteryLevel": 0,
+          "poolId": "network_channel_names",
+          "renderedQuestion": "The Fresh Prince of Bel-Air, which launched Will Smith's acting career, originally aired on which network starting in 1990?",
+          "correctAnswer": "NBC",
+          "distractors": [
+            {
+              "answer": "AMC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_breakingbad_network"
+            },
+            {
+              "answer": "Fox",
+              "source": "similar_difficulty",
+              "factId": "pc_0_simpsons_network"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_freshprince_network",
+          "masteryLevel": 2,
+          "poolId": "network_channel_names",
+          "renderedQuestion": "The Fresh Prince of Bel-Air, which launched Will Smith's acting career, originally aired on which network starting in 1990?",
+          "correctAnswer": "NBC",
+          "distractors": [
+            {
+              "answer": "AMC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_breakingbad_network"
+            },
+            {
+              "answer": "Fox",
+              "source": "similar_difficulty",
+              "factId": "pc_0_simpsons_network"
+            },
+            {
+              "answer": "CBS",
+              "source": "similar_difficulty",
+              "factId": "pc_0_ilovelucy_network"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_freshprince_network",
+          "masteryLevel": 4,
+          "poolId": "network_channel_names",
+          "renderedQuestion": "The Fresh Prince of Bel-Air, which launched Will Smith's acting career, originally aired on which network starting in 1990?",
+          "correctAnswer": "NBC",
+          "distractors": [
+            {
+              "answer": "AMC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_breakingbad_network"
+            },
+            {
+              "answer": "Fox",
+              "source": "similar_difficulty",
+              "factId": "pc_0_simpsons_network"
+            },
+            {
+              "answer": "CBS",
+              "source": "similar_difficulty",
+              "factId": "pc_0_ilovelucy_network"
+            },
+            {
+              "answer": "HBO",
+              "source": "pool_fill",
+              "factId": "_synthetic_HBO"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_simpsons_network",
+          "masteryLevel": 0,
+          "poolId": "network_channel_names",
+          "renderedQuestion": "The Simpsons has aired on which network since its 1989 premiere?",
+          "correctAnswer": "Fox",
+          "distractors": [
+            {
+              "answer": "NBC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_freshprince_network"
+            },
+            {
+              "answer": "CBS",
+              "source": "similar_difficulty",
+              "factId": "pc_0_ilovelucy_network"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_simpsons_network",
+          "masteryLevel": 2,
+          "poolId": "network_channel_names",
+          "renderedQuestion": "The Simpsons has aired on which network since its 1989 premiere?",
+          "correctAnswer": "Fox",
+          "distractors": [
+            {
+              "answer": "NBC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_freshprince_network"
+            },
+            {
+              "answer": "CBS",
+              "source": "similar_difficulty",
+              "factId": "pc_0_ilovelucy_network"
+            },
+            {
+              "answer": "AMC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_breakingbad_network"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_simpsons_network",
+          "masteryLevel": 4,
+          "poolId": "network_channel_names",
+          "renderedQuestion": "The Simpsons has aired on which network since its 1989 premiere?",
+          "correctAnswer": "Fox",
+          "distractors": [
+            {
+              "answer": "NBC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_freshprince_network"
+            },
+            {
+              "answer": "CBS",
+              "source": "similar_difficulty",
+              "factId": "pc_0_ilovelucy_network"
+            },
+            {
+              "answer": "AMC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_breakingbad_network"
+            },
+            {
+              "answer": "Peacock",
+              "source": "pool_fill",
+              "factId": "_synthetic_Peacock"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_breakingbad_network",
+          "masteryLevel": 0,
+          "poolId": "network_channel_names",
+          "renderedQuestion": "Breaking Bad, creator Vince Gilligan's story of a chemistry teacher turned drug manufacturer, aired on which cable network?",
+          "correctAnswer": "AMC",
+          "distractors": [
+            {
+              "answer": "NBC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_freshprince_network"
+            },
+            {
+              "answer": "Fox",
+              "source": "similar_difficulty",
+              "factId": "pc_0_simpsons_network"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_breakingbad_network",
+          "masteryLevel": 2,
+          "poolId": "network_channel_names",
+          "renderedQuestion": "Breaking Bad, creator Vince Gilligan's story of a chemistry teacher turned drug manufacturer, aired on which cable network?",
+          "correctAnswer": "AMC",
+          "distractors": [
+            {
+              "answer": "NBC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_freshprince_network"
+            },
+            {
+              "answer": "Fox",
+              "source": "similar_difficulty",
+              "factId": "pc_0_simpsons_network"
+            },
+            {
+              "answer": "CBS",
+              "source": "similar_difficulty",
+              "factId": "pc_0_ilovelucy_network"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_breakingbad_network",
+          "masteryLevel": 4,
+          "poolId": "network_channel_names",
+          "renderedQuestion": "Breaking Bad, creator Vince Gilligan's story of a chemistry teacher turned drug manufacturer, aired on which cable network?",
+          "correctAnswer": "AMC",
+          "distractors": [
+            {
+              "answer": "NBC",
+              "source": "similar_difficulty",
+              "factId": "pc_0_freshprince_network"
+            },
+            {
+              "answer": "Fox",
+              "source": "similar_difficulty",
+              "factId": "pc_0_simpsons_network"
+            },
+            {
+              "answer": "CBS",
+              "source": "similar_difficulty",
+              "factId": "pc_0_ilovelucy_network"
+            },
+            {
+              "answer": "Showtime",
+              "source": "pool_fill",
+              "factId": "_synthetic_Showtime"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_ilovelucy_viewers",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many million Americans watched the I Love Lucy episode 'Lucy Goes to the Hospital' in 1953?",
+          "correctAnswer": "44",
+          "distractors": [
+            {
+              "answer": "51",
+              "source": "numerical",
+              "factId": "_numerical_51"
+            },
+            {
+              "answer": "26",
+              "source": "numerical",
+              "factId": "_numerical_26"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_ilovelucy_viewers",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many million Americans watched the I Love Lucy episode 'Lucy Goes to the Hospital' in 1953?",
+          "correctAnswer": "44",
+          "distractors": [
+            {
+              "answer": "51",
+              "source": "numerical",
+              "factId": "_numerical_51"
+            },
+            {
+              "answer": "26",
+              "source": "numerical",
+              "factId": "_numerical_26"
+            },
+            {
+              "answer": "53",
+              "source": "numerical",
+              "factId": "_numerical_53"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_ilovelucy_viewers",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many million Americans watched the I Love Lucy episode 'Lucy Goes to the Hospital' in 1953?",
+          "correctAnswer": "44",
+          "distractors": [
+            {
+              "answer": "51",
+              "source": "numerical",
+              "factId": "_numerical_51"
+            },
+            {
+              "answer": "26",
+              "source": "numerical",
+              "factId": "_numerical_26"
+            },
+            {
+              "answer": "53",
+              "source": "numerical",
+              "factId": "_numerical_53"
+            },
+            {
+              "answer": "27",
+              "source": "numerical",
+              "factId": "_numerical_27"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_seinfeld_finale_viewers",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many million viewers tuned in to watch the Seinfeld series finale in 1998?",
+          "correctAnswer": "76.3",
+          "distractors": [
+            {
+              "answer": "106.0",
+              "source": "numerical",
+              "factId": "_numerical_106.0"
+            },
+            {
+              "answer": "41.5",
+              "source": "numerical",
+              "factId": "_numerical_41.5"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_seinfeld_finale_viewers",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many million viewers tuned in to watch the Seinfeld series finale in 1998?",
+          "correctAnswer": "76.3",
+          "distractors": [
+            {
+              "answer": "106.0",
+              "source": "numerical",
+              "factId": "_numerical_106.0"
+            },
+            {
+              "answer": "41.5",
+              "source": "numerical",
+              "factId": "_numerical_41.5"
+            },
+            {
+              "answer": "94.3",
+              "source": "numerical",
+              "factId": "_numerical_94.3"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_seinfeld_finale_viewers",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many million viewers tuned in to watch the Seinfeld series finale in 1998?",
+          "correctAnswer": "76.3",
+          "distractors": [
+            {
+              "answer": "106.0",
+              "source": "numerical",
+              "factId": "_numerical_106.0"
+            },
+            {
+              "answer": "41.5",
+              "source": "numerical",
+              "factId": "_numerical_41.5"
+            },
+            {
+              "answer": "94.3",
+              "source": "numerical",
+              "factId": "_numerical_94.3"
+            },
+            {
+              "answer": "102.0",
+              "source": "numerical",
+              "factId": "_numerical_102.0"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_friends_seasons",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many seasons did Friends run on NBC?",
+          "correctAnswer": "10",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "numerical",
+              "factId": "_numerical_6"
+            },
+            {
+              "answer": "21",
+              "source": "numerical",
+              "factId": "_numerical_21"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_friends_seasons",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many seasons did Friends run on NBC?",
+          "correctAnswer": "10",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "numerical",
+              "factId": "_numerical_6"
+            },
+            {
+              "answer": "21",
+              "source": "numerical",
+              "factId": "_numerical_21"
+            },
+            {
+              "answer": "17",
+              "source": "numerical",
+              "factId": "_numerical_17"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_friends_seasons",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many seasons did Friends run on NBC?",
+          "correctAnswer": "10",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "numerical",
+              "factId": "_numerical_6"
+            },
+            {
+              "answer": "21",
+              "source": "numerical",
+              "factId": "_numerical_21"
+            },
+            {
+              "answer": "17",
+              "source": "numerical",
+              "factId": "_numerical_17"
+            },
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_cheers_emmys",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many Emmy Awards did Cheers win across its 11-season run on NBC, a record for a comedy series at the time?",
+          "correctAnswer": "28",
+          "distractors": [
+            {
+              "answer": "39",
+              "source": "numerical",
+              "factId": "_numerical_39"
+            },
+            {
+              "answer": "20",
+              "source": "numerical",
+              "factId": "_numerical_20"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_cheers_emmys",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many Emmy Awards did Cheers win across its 11-season run on NBC, a record for a comedy series at the time?",
+          "correctAnswer": "28",
+          "distractors": [
+            {
+              "answer": "39",
+              "source": "numerical",
+              "factId": "_numerical_39"
+            },
+            {
+              "answer": "20",
+              "source": "numerical",
+              "factId": "_numerical_20"
+            },
+            {
+              "answer": "38",
+              "source": "numerical",
+              "factId": "_numerical_38"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_cheers_emmys",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many Emmy Awards did Cheers win across its 11-season run on NBC, a record for a comedy series at the time?",
+          "correctAnswer": "28",
+          "distractors": [
+            {
+              "answer": "39",
+              "source": "numerical",
+              "factId": "_numerical_39"
+            },
+            {
+              "answer": "20",
+              "source": "numerical",
+              "factId": "_numerical_20"
+            },
+            {
+              "answer": "38",
+              "source": "numerical",
+              "factId": "_numerical_38"
+            },
+            {
+              "answer": "21",
+              "source": "numerical",
+              "factId": "_numerical_21"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_cheers_finale_viewers",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many million viewers watched the Cheers series finale in 1993?",
+          "correctAnswer": "93",
+          "distractors": [
+            {
+              "answer": "113",
+              "source": "numerical",
+              "factId": "_numerical_113"
+            },
+            {
+              "answer": "78",
+              "source": "numerical",
+              "factId": "_numerical_78"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_cheers_finale_viewers",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many million viewers watched the Cheers series finale in 1993?",
+          "correctAnswer": "93",
+          "distractors": [
+            {
+              "answer": "113",
+              "source": "numerical",
+              "factId": "_numerical_113"
+            },
+            {
+              "answer": "78",
+              "source": "numerical",
+              "factId": "_numerical_78"
+            },
+            {
+              "answer": "108",
+              "source": "numerical",
+              "factId": "_numerical_108"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_cheers_finale_viewers",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many million viewers watched the Cheers series finale in 1993?",
+          "correctAnswer": "93",
+          "distractors": [
+            {
+              "answer": "113",
+              "source": "numerical",
+              "factId": "_numerical_113"
+            },
+            {
+              "answer": "78",
+              "source": "numerical",
+              "factId": "_numerical_78"
+            },
+            {
+              "answer": "108",
+              "source": "numerical",
+              "factId": "_numerical_108"
+            },
+            {
+              "answer": "79",
+              "source": "numerical",
+              "factId": "_numerical_79"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_seinfeld_creator",
+          "masteryLevel": 0,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Who co-created the NBC sitcom Seinfeld alongside Larry David?",
+          "correctAnswer": "Jerry Seinfeld",
+          "distractors": [
+            {
+              "answer": "Jimmy Donaldson",
+              "source": "similar_difficulty",
+              "factId": "pc_5_mrbeast_real_name"
+            },
+            {
+              "answer": "Seth MacFarlane",
+              "source": "similar_difficulty",
+              "factId": "pc_0_familyguy_creator"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_seinfeld_creator",
+          "masteryLevel": 2,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Who co-created the NBC sitcom Seinfeld alongside Larry David?",
+          "correctAnswer": "Jerry Seinfeld",
+          "distractors": [
+            {
+              "answer": "Jimmy Donaldson",
+              "source": "similar_difficulty",
+              "factId": "pc_5_mrbeast_real_name"
+            },
+            {
+              "answer": "Seth MacFarlane",
+              "source": "similar_difficulty",
+              "factId": "pc_0_familyguy_creator"
+            },
+            {
+              "answer": "George Lucas",
+              "source": "similar_difficulty",
+              "factId": "pc_4_starwars_creator"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_seinfeld_creator",
+          "masteryLevel": 4,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Who co-created the NBC sitcom Seinfeld alongside Larry David?",
+          "correctAnswer": "Jerry Seinfeld",
+          "distractors": [
+            {
+              "answer": "Jimmy Donaldson",
+              "source": "similar_difficulty",
+              "factId": "pc_5_mrbeast_real_name"
+            },
+            {
+              "answer": "Seth MacFarlane",
+              "source": "similar_difficulty",
+              "factId": "pc_0_familyguy_creator"
+            },
+            {
+              "answer": "George Lucas",
+              "source": "similar_difficulty",
+              "factId": "pc_4_starwars_creator"
+            },
+            {
+              "answer": "Steve Huffman",
+              "source": "similar_difficulty",
+              "factId": "pc_3_reddit_founders"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_friends_creators",
+          "masteryLevel": 0,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Marta Kauffman co-created Friends with which other television writer?",
+          "correctAnswer": "David Crane",
+          "distractors": [
+            {
+              "answer": "Felix Kjellberg",
+              "source": "similar_difficulty",
+              "factId": "pc_5_pewdiepie_real_name"
+            },
+            {
+              "answer": "Satoshi Tajiri",
+              "source": "similar_difficulty",
+              "factId": "pc_4_pokemon_creators"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_friends_creators",
+          "masteryLevel": 2,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Marta Kauffman co-created Friends with which other television writer?",
+          "correctAnswer": "David Crane",
+          "distractors": [
+            {
+              "answer": "Felix Kjellberg",
+              "source": "similar_difficulty",
+              "factId": "pc_5_pewdiepie_real_name"
+            },
+            {
+              "answer": "Satoshi Tajiri",
+              "source": "similar_difficulty",
+              "factId": "pc_4_pokemon_creators"
+            },
+            {
+              "answer": "Toru Iwatani",
+              "source": "similar_difficulty",
+              "factId": "pc_1_pacman_designer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_friends_creators",
+          "masteryLevel": 4,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Marta Kauffman co-created Friends with which other television writer?",
+          "correctAnswer": "David Crane",
+          "distractors": [
+            {
+              "answer": "Felix Kjellberg",
+              "source": "similar_difficulty",
+              "factId": "pc_5_pewdiepie_real_name"
+            },
+            {
+              "answer": "Satoshi Tajiri",
+              "source": "similar_difficulty",
+              "factId": "pc_4_pokemon_creators"
+            },
+            {
+              "answer": "Toru Iwatani",
+              "source": "similar_difficulty",
+              "factId": "pc_1_pacman_designer"
+            },
+            {
+              "answer": "Elliot Handler",
+              "source": "similar_difficulty",
+              "factId": "pc_4_hot_wheels_creator"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_simpsons_creator",
+          "masteryLevel": 0,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Which cartoonist created The Simpsons, the longest-running animated series in American TV history?",
+          "correctAnswer": "Matt Groening",
+          "distractors": [
+            {
+              "answer": "George R.R. Martin",
+              "source": "similar_difficulty",
+              "factId": "pc_1_elden_ring_worldbuilder"
+            },
+            {
+              "answer": "George Lucas",
+              "source": "similar_difficulty",
+              "factId": "pc_4_starwars_creator"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_simpsons_creator",
+          "masteryLevel": 2,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Which cartoonist created The Simpsons, the longest-running animated series in American TV history?",
+          "correctAnswer": "Matt Groening",
+          "distractors": [
+            {
+              "answer": "George R.R. Martin",
+              "source": "similar_difficulty",
+              "factId": "pc_1_elden_ring_worldbuilder"
+            },
+            {
+              "answer": "George Lucas",
+              "source": "similar_difficulty",
+              "factId": "pc_4_starwars_creator"
+            },
+            {
+              "answer": "Stephen Hillenburg",
+              "source": "similar_difficulty",
+              "factId": "pc_0_spongebob_creator"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_simpsons_creator",
+          "masteryLevel": 4,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Which cartoonist created The Simpsons, the longest-running animated series in American TV history?",
+          "correctAnswer": "Matt Groening",
+          "distractors": [
+            {
+              "answer": "George R.R. Martin",
+              "source": "similar_difficulty",
+              "factId": "pc_1_elden_ring_worldbuilder"
+            },
+            {
+              "answer": "George Lucas",
+              "source": "similar_difficulty",
+              "factId": "pc_4_starwars_creator"
+            },
+            {
+              "answer": "Stephen Hillenburg",
+              "source": "similar_difficulty",
+              "factId": "pc_0_spongebob_creator"
+            },
+            {
+              "answer": "Jack Kirby",
+              "source": "similar_difficulty",
+              "factId": "pc_2_xmen_creators"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_sopranos_creator",
+          "masteryLevel": 0,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Which showrunner created The Sopranos, the HBO drama credited with launching the 'Second Golden Age of Television'?",
+          "correctAnswer": "David Chase",
+          "distractors": [
+            {
+              "answer": "Seth MacFarlane",
+              "source": "similar_difficulty",
+              "factId": "pc_0_familyguy_creator"
+            },
+            {
+              "answer": "David Simon",
+              "source": "similar_difficulty",
+              "factId": "pc_0_thewire_creator"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_sopranos_creator",
+          "masteryLevel": 2,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Which showrunner created The Sopranos, the HBO drama credited with launching the 'Second Golden Age of Television'?",
+          "correctAnswer": "David Chase",
+          "distractors": [
+            {
+              "answer": "Seth MacFarlane",
+              "source": "similar_difficulty",
+              "factId": "pc_0_familyguy_creator"
+            },
+            {
+              "answer": "David Simon",
+              "source": "similar_difficulty",
+              "factId": "pc_0_thewire_creator"
+            },
+            {
+              "answer": "Matt Groening",
+              "source": "similar_difficulty",
+              "factId": "pc_0_simpsons_creator"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_sopranos_creator",
+          "masteryLevel": 4,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Which showrunner created The Sopranos, the HBO drama credited with launching the 'Second Golden Age of Television'?",
+          "correctAnswer": "David Chase",
+          "distractors": [
+            {
+              "answer": "Seth MacFarlane",
+              "source": "similar_difficulty",
+              "factId": "pc_0_familyguy_creator"
+            },
+            {
+              "answer": "David Simon",
+              "source": "similar_difficulty",
+              "factId": "pc_0_thewire_creator"
+            },
+            {
+              "answer": "Matt Groening",
+              "source": "similar_difficulty",
+              "factId": "pc_0_simpsons_creator"
+            },
+            {
+              "answer": "Trey Parker",
+              "source": "similar_difficulty",
+              "factId": "pc_0_southpark_creators"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_breakingbad_creator",
+          "masteryLevel": 0,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Which writer created Breaking Bad, which holds a Guinness World Record as the most critically acclaimed TV show ever?",
+          "correctAnswer": "Vince Gilligan",
+          "distractors": [
+            {
+              "answer": "David Crane",
+              "source": "similar_difficulty",
+              "factId": "pc_0_friends_creators"
+            },
+            {
+              "answer": "Kevin Eastman",
+              "source": "similar_difficulty",
+              "factId": "pc_2_tmnt_creators"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_breakingbad_creator",
+          "masteryLevel": 2,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Which writer created Breaking Bad, which holds a Guinness World Record as the most critically acclaimed TV show ever?",
+          "correctAnswer": "Vince Gilligan",
+          "distractors": [
+            {
+              "answer": "David Crane",
+              "source": "similar_difficulty",
+              "factId": "pc_0_friends_creators"
+            },
+            {
+              "answer": "Kevin Eastman",
+              "source": "similar_difficulty",
+              "factId": "pc_2_tmnt_creators"
+            },
+            {
+              "answer": "Kevin Systrom",
+              "source": "similar_difficulty",
+              "factId": "pc_3_instagram_creators"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_breakingbad_creator",
+          "masteryLevel": 4,
+          "poolId": "person_names_creators",
+          "renderedQuestion": "Which writer created Breaking Bad, which holds a Guinness World Record as the most critically acclaimed TV show ever?",
+          "correctAnswer": "Vince Gilligan",
+          "distractors": [
+            {
+              "answer": "David Crane",
+              "source": "similar_difficulty",
+              "factId": "pc_0_friends_creators"
+            },
+            {
+              "answer": "Kevin Eastman",
+              "source": "similar_difficulty",
+              "factId": "pc_2_tmnt_creators"
+            },
+            {
+              "answer": "Kevin Systrom",
+              "source": "similar_difficulty",
+              "factId": "pc_3_instagram_creators"
+            },
+            {
+              "answer": "Jerry Seinfeld",
+              "source": "similar_difficulty",
+              "factId": "pc_0_seinfeld_creator"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_rickandmorty_network",
+          "masteryLevel": 0,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Rick and Morty, created by Justin Roiland and Dan Harmon, originally premiered on which late-night animation block in 2013?",
+          "correctAnswer": "Adult Swim",
+          "distractors": [
+            {
+              "answer": "Larian Studios",
+              "source": "similar_difficulty",
+              "factId": "pc_1_baldurs_gate_3_record"
+            },
+            {
+              "answer": "Blizzard",
+              "source": "similar_difficulty",
+              "factId": "pc_1_wow_developer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_rickandmorty_network",
+          "masteryLevel": 2,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Rick and Morty, created by Justin Roiland and Dan Harmon, originally premiered on which late-night animation block in 2013?",
+          "correctAnswer": "Adult Swim",
+          "distractors": [
+            {
+              "answer": "Larian Studios",
+              "source": "similar_difficulty",
+              "factId": "pc_1_baldurs_gate_3_record"
+            },
+            {
+              "answer": "Blizzard",
+              "source": "similar_difficulty",
+              "factId": "pc_1_wow_developer"
+            },
+            {
+              "answer": "Hasbro",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_company"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_rickandmorty_network",
+          "masteryLevel": 4,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Rick and Morty, created by Justin Roiland and Dan Harmon, originally premiered on which late-night animation block in 2013?",
+          "correctAnswer": "Adult Swim",
+          "distractors": [
+            {
+              "answer": "Larian Studios",
+              "source": "similar_difficulty",
+              "factId": "pc_1_baldurs_gate_3_record"
+            },
+            {
+              "answer": "Blizzard",
+              "source": "similar_difficulty",
+              "factId": "pc_1_wow_developer"
+            },
+            {
+              "answer": "Hasbro",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_company"
+            },
+            {
+              "answer": "Game Freak",
+              "source": "similar_difficulty",
+              "factId": "pc_4_pokemon_company"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_avatar_network",
+          "masteryLevel": 0,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Avatar: The Last Airbender, created by DiMartino and Konietzko, originally aired on which children's network starting in 2005?",
+          "correctAnswer": "Nickelodeon",
+          "distractors": [
+            {
+              "answer": "Sanrio",
+              "source": "similar_difficulty",
+              "factId": "pc_4_hello_kitty_company"
+            },
+            {
+              "answer": "Rovio",
+              "source": "similar_difficulty",
+              "factId": "pc_1_angry_birds_developer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_avatar_network",
+          "masteryLevel": 2,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Avatar: The Last Airbender, created by DiMartino and Konietzko, originally aired on which children's network starting in 2005?",
+          "correctAnswer": "Nickelodeon",
+          "distractors": [
+            {
+              "answer": "Sanrio",
+              "source": "similar_difficulty",
+              "factId": "pc_4_hello_kitty_company"
+            },
+            {
+              "answer": "Rovio",
+              "source": "similar_difficulty",
+              "factId": "pc_1_angry_birds_developer"
+            },
+            {
+              "answer": "Rockstar",
+              "source": "similar_difficulty",
+              "factId": "pc_4_gta_developer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_avatar_network",
+          "masteryLevel": 4,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Avatar: The Last Airbender, created by DiMartino and Konietzko, originally aired on which children's network starting in 2005?",
+          "correctAnswer": "Nickelodeon",
+          "distractors": [
+            {
+              "answer": "Sanrio",
+              "source": "similar_difficulty",
+              "factId": "pc_4_hello_kitty_company"
+            },
+            {
+              "answer": "Rovio",
+              "source": "similar_difficulty",
+              "factId": "pc_1_angry_birds_developer"
+            },
+            {
+              "answer": "Rockstar",
+              "source": "similar_difficulty",
+              "factId": "pc_4_gta_developer"
+            },
+            {
+              "answer": "Mattel",
+              "source": "similar_difficulty",
+              "factId": "pc_4_barbie_company"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_wow_developer",
+          "masteryLevel": 0,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Which studio, known for real-time strategy games, released World of Warcraft in 2004?",
+          "correctAnswer": "Blizzard",
+          "distractors": [
+            {
+              "answer": "Image Comics",
+              "source": "similar_difficulty",
+              "factId": "pc_2_walking_dead_publisher"
+            },
+            {
+              "answer": "Epic Games",
+              "source": "similar_difficulty",
+              "factId": "pc_1_fortnite_developer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_wow_developer",
+          "masteryLevel": 2,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Which studio, known for real-time strategy games, released World of Warcraft in 2004?",
+          "correctAnswer": "Blizzard",
+          "distractors": [
+            {
+              "answer": "Image Comics",
+              "source": "similar_difficulty",
+              "factId": "pc_2_walking_dead_publisher"
+            },
+            {
+              "answer": "Epic Games",
+              "source": "similar_difficulty",
+              "factId": "pc_1_fortnite_developer"
+            },
+            {
+              "answer": "Rovio",
+              "source": "similar_difficulty",
+              "factId": "pc_1_angry_birds_developer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_wow_developer",
+          "masteryLevel": 4,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Which studio, known for real-time strategy games, released World of Warcraft in 2004?",
+          "correctAnswer": "Blizzard",
+          "distractors": [
+            {
+              "answer": "Image Comics",
+              "source": "similar_difficulty",
+              "factId": "pc_2_walking_dead_publisher"
+            },
+            {
+              "answer": "Epic Games",
+              "source": "similar_difficulty",
+              "factId": "pc_1_fortnite_developer"
+            },
+            {
+              "answer": "Rovio",
+              "source": "similar_difficulty",
+              "factId": "pc_1_angry_birds_developer"
+            },
+            {
+              "answer": "Sanrio",
+              "source": "similar_difficulty",
+              "factId": "pc_4_hello_kitty_company"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_fortnite_developer",
+          "masteryLevel": 0,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Which American studio, also known for the Unreal Engine, developed Fortnite?",
+          "correctAnswer": "Epic Games",
+          "distractors": [
+            {
+              "answer": "Sanrio",
+              "source": "similar_difficulty",
+              "factId": "pc_4_hello_kitty_company"
+            },
+            {
+              "answer": "Hasbro",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_company"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_fortnite_developer",
+          "masteryLevel": 2,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Which American studio, also known for the Unreal Engine, developed Fortnite?",
+          "correctAnswer": "Epic Games",
+          "distractors": [
+            {
+              "answer": "Sanrio",
+              "source": "similar_difficulty",
+              "factId": "pc_4_hello_kitty_company"
+            },
+            {
+              "answer": "Hasbro",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_company"
+            },
+            {
+              "answer": "Blizzard",
+              "source": "similar_difficulty",
+              "factId": "pc_1_wow_developer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_fortnite_developer",
+          "masteryLevel": 4,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Which American studio, also known for the Unreal Engine, developed Fortnite?",
+          "correctAnswer": "Epic Games",
+          "distractors": [
+            {
+              "answer": "Sanrio",
+              "source": "similar_difficulty",
+              "factId": "pc_4_hello_kitty_company"
+            },
+            {
+              "answer": "Hasbro",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_company"
+            },
+            {
+              "answer": "Blizzard",
+              "source": "similar_difficulty",
+              "factId": "pc_1_wow_developer"
+            },
+            {
+              "answer": "Harmonix",
+              "source": "similar_difficulty",
+              "factId": "pc_1_guitar_hero_developer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_pokemon_go_developer",
+          "masteryLevel": 0,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Which augmented reality company, spun out of Google, developed Pokémon GO?",
+          "correctAnswer": "Niantic",
+          "distractors": [
+            {
+              "answer": "Sanrio",
+              "source": "similar_difficulty",
+              "factId": "pc_4_hello_kitty_company"
+            },
+            {
+              "answer": "Epic Games",
+              "source": "similar_difficulty",
+              "factId": "pc_1_fortnite_developer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_pokemon_go_developer",
+          "masteryLevel": 2,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Which augmented reality company, spun out of Google, developed Pokémon GO?",
+          "correctAnswer": "Niantic",
+          "distractors": [
+            {
+              "answer": "Sanrio",
+              "source": "similar_difficulty",
+              "factId": "pc_4_hello_kitty_company"
+            },
+            {
+              "answer": "Epic Games",
+              "source": "similar_difficulty",
+              "factId": "pc_1_fortnite_developer"
+            },
+            {
+              "answer": "Game Freak",
+              "source": "similar_difficulty",
+              "factId": "pc_4_pokemon_company"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_pokemon_go_developer",
+          "masteryLevel": 4,
+          "poolId": "company_studio_names",
+          "renderedQuestion": "Which augmented reality company, spun out of Google, developed Pokémon GO?",
+          "correctAnswer": "Niantic",
+          "distractors": [
+            {
+              "answer": "Sanrio",
+              "source": "similar_difficulty",
+              "factId": "pc_4_hello_kitty_company"
+            },
+            {
+              "answer": "Epic Games",
+              "source": "similar_difficulty",
+              "factId": "pc_1_fortnite_developer"
+            },
+            {
+              "answer": "Game Freak",
+              "source": "similar_difficulty",
+              "factId": "pc_4_pokemon_company"
+            },
+            {
+              "answer": "Pinkfong",
+              "source": "similar_difficulty",
+              "factId": "pc_3_baby_shark_creator"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_strangerthings_platform",
+          "masteryLevel": 0,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "Stranger Things, created by the Duffer Brothers and set in 1980s Indiana, is an original series exclusive to which streaming platform?",
+          "correctAnswer": "Netflix",
+          "distractors": [
+            {
+              "answer": "Disney+",
+              "source": "similar_difficulty",
+              "factId": "pc_0_mandalorian_platform"
+            },
+            {
+              "answer": "YouTube",
+              "source": "similar_difficulty",
+              "factId": "pc_5_mrbeast_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_strangerthings_platform",
+          "masteryLevel": 2,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "Stranger Things, created by the Duffer Brothers and set in 1980s Indiana, is an original series exclusive to which streaming platform?",
+          "correctAnswer": "Netflix",
+          "distractors": [
+            {
+              "answer": "Disney+",
+              "source": "similar_difficulty",
+              "factId": "pc_0_mandalorian_platform"
+            },
+            {
+              "answer": "YouTube",
+              "source": "similar_difficulty",
+              "factId": "pc_5_mrbeast_platform"
+            },
+            {
+              "answer": "4chan",
+              "source": "pool_fill",
+              "factId": "pc_3_rickroll_origin_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"4chan\" has 3 format features different from correct \"Netflix\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_0_strangerthings_platform",
+          "masteryLevel": 4,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "Stranger Things, created by the Duffer Brothers and set in 1980s Indiana, is an original series exclusive to which streaming platform?",
+          "correctAnswer": "Netflix",
+          "distractors": [
+            {
+              "answer": "Disney+",
+              "source": "similar_difficulty",
+              "factId": "pc_0_mandalorian_platform"
+            },
+            {
+              "answer": "YouTube",
+              "source": "similar_difficulty",
+              "factId": "pc_5_mrbeast_platform"
+            },
+            {
+              "answer": "4chan",
+              "source": "pool_fill",
+              "factId": "pc_3_rickroll_origin_platform"
+            },
+            {
+              "answer": "Newgrounds",
+              "source": "pool_fill",
+              "factId": "pc_3_numa_numa_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"4chan\" has 3 format features different from correct \"Netflix\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_0_mandalorian_platform",
+          "masteryLevel": 0,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "The Mandalorian, created by Jon Favreau and featuring 'Baby Yoda', is a streaming original exclusive to which platform?",
+          "correctAnswer": "Disney+",
+          "distractors": [
+            {
+              "answer": "Netflix",
+              "source": "similar_difficulty",
+              "factId": "pc_0_strangerthings_platform"
+            },
+            {
+              "answer": "YouTube",
+              "source": "similar_difficulty",
+              "factId": "pc_5_mrbeast_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_mandalorian_platform",
+          "masteryLevel": 2,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "The Mandalorian, created by Jon Favreau and featuring 'Baby Yoda', is a streaming original exclusive to which platform?",
+          "correctAnswer": "Disney+",
+          "distractors": [
+            {
+              "answer": "Netflix",
+              "source": "similar_difficulty",
+              "factId": "pc_0_strangerthings_platform"
+            },
+            {
+              "answer": "YouTube",
+              "source": "similar_difficulty",
+              "factId": "pc_5_mrbeast_platform"
+            },
+            {
+              "answer": "Newgrounds",
+              "source": "pool_fill",
+              "factId": "pc_3_numa_numa_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_0_mandalorian_platform",
+          "masteryLevel": 4,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "The Mandalorian, created by Jon Favreau and featuring 'Baby Yoda', is a streaming original exclusive to which platform?",
+          "correctAnswer": "Disney+",
+          "distractors": [
+            {
+              "answer": "Netflix",
+              "source": "similar_difficulty",
+              "factId": "pc_0_strangerthings_platform"
+            },
+            {
+              "answer": "YouTube",
+              "source": "similar_difficulty",
+              "factId": "pc_5_mrbeast_platform"
+            },
+            {
+              "answer": "Newgrounds",
+              "source": "pool_fill",
+              "factId": "pc_3_numa_numa_platform"
+            },
+            {
+              "answer": "4chan",
+              "source": "pool_fill",
+              "factId": "pc_3_rickroll_origin_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"4chan\" has 3 format features different from correct \"Disney+\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_rickroll_origin_platform",
+          "masteryLevel": 0,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "On which website did the Rickroll meme originate in May 2007?",
+          "correctAnswer": "4chan",
+          "distractors": [
+            {
+              "answer": "Newgrounds",
+              "source": "similar_difficulty",
+              "factId": "pc_3_numa_numa_platform"
+            },
+            {
+              "answer": "YouTube",
+              "source": "pool_fill",
+              "factId": "pc_5_mrbeast_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Newgrounds\" has 3 format features different from correct \"4chan\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_rickroll_origin_platform",
+          "masteryLevel": 2,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "On which website did the Rickroll meme originate in May 2007?",
+          "correctAnswer": "4chan",
+          "distractors": [
+            {
+              "answer": "Newgrounds",
+              "source": "similar_difficulty",
+              "factId": "pc_3_numa_numa_platform"
+            },
+            {
+              "answer": "YouTube",
+              "source": "pool_fill",
+              "factId": "pc_5_mrbeast_platform"
+            },
+            {
+              "answer": "Disney+",
+              "source": "pool_fill",
+              "factId": "pc_0_mandalorian_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Newgrounds\" has 3 format features different from correct \"4chan\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_rickroll_origin_platform",
+          "masteryLevel": 4,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "On which website did the Rickroll meme originate in May 2007?",
+          "correctAnswer": "4chan",
+          "distractors": [
+            {
+              "answer": "Newgrounds",
+              "source": "similar_difficulty",
+              "factId": "pc_3_numa_numa_platform"
+            },
+            {
+              "answer": "YouTube",
+              "source": "pool_fill",
+              "factId": "pc_5_mrbeast_platform"
+            },
+            {
+              "answer": "Disney+",
+              "source": "pool_fill",
+              "factId": "pc_0_mandalorian_platform"
+            },
+            {
+              "answer": "Netflix",
+              "source": "pool_fill",
+              "factId": "pc_5_netflix_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Newgrounds\" has 3 format features different from correct \"4chan\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_numa_numa_platform",
+          "masteryLevel": 0,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "On which platform did Gary Brolsma originally post his Numa Numa lip-sync video in December 2004?",
+          "correctAnswer": "Newgrounds",
+          "distractors": [
+            {
+              "answer": "4chan",
+              "source": "similar_difficulty",
+              "factId": "pc_3_rickroll_origin_platform"
+            },
+            {
+              "answer": "Disney+",
+              "source": "pool_fill",
+              "factId": "pc_0_mandalorian_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"4chan\" has 3 format features different from correct \"Newgrounds\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_numa_numa_platform",
+          "masteryLevel": 2,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "On which platform did Gary Brolsma originally post his Numa Numa lip-sync video in December 2004?",
+          "correctAnswer": "Newgrounds",
+          "distractors": [
+            {
+              "answer": "4chan",
+              "source": "similar_difficulty",
+              "factId": "pc_3_rickroll_origin_platform"
+            },
+            {
+              "answer": "Disney+",
+              "source": "pool_fill",
+              "factId": "pc_0_mandalorian_platform"
+            },
+            {
+              "answer": "Netflix",
+              "source": "pool_fill",
+              "factId": "pc_5_netflix_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"4chan\" has 3 format features different from correct \"Newgrounds\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_numa_numa_platform",
+          "masteryLevel": 4,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "On which platform did Gary Brolsma originally post his Numa Numa lip-sync video in December 2004?",
+          "correctAnswer": "Newgrounds",
+          "distractors": [
+            {
+              "answer": "4chan",
+              "source": "similar_difficulty",
+              "factId": "pc_3_rickroll_origin_platform"
+            },
+            {
+              "answer": "Disney+",
+              "source": "pool_fill",
+              "factId": "pc_0_mandalorian_platform"
+            },
+            {
+              "answer": "Netflix",
+              "source": "pool_fill",
+              "factId": "pc_5_netflix_platform"
+            },
+            {
+              "answer": "YouTube",
+              "source": "pool_fill",
+              "factId": "pc_5_mrbeast_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"4chan\" has 3 format features different from correct \"Newgrounds\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_mrbeast_platform",
+          "masteryLevel": 0,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "On which platform did MrBeast become the most-subscribed individual creator?",
+          "correctAnswer": "YouTube",
+          "distractors": [
+            {
+              "answer": "Netflix",
+              "source": "similar_difficulty",
+              "factId": "pc_0_strangerthings_platform"
+            },
+            {
+              "answer": "Disney+",
+              "source": "similar_difficulty",
+              "factId": "pc_0_mandalorian_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_5_mrbeast_platform",
+          "masteryLevel": 2,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "On which platform did MrBeast become the most-subscribed individual creator?",
+          "correctAnswer": "YouTube",
+          "distractors": [
+            {
+              "answer": "Netflix",
+              "source": "similar_difficulty",
+              "factId": "pc_0_strangerthings_platform"
+            },
+            {
+              "answer": "Disney+",
+              "source": "similar_difficulty",
+              "factId": "pc_0_mandalorian_platform"
+            },
+            {
+              "answer": "Newgrounds",
+              "source": "pool_fill",
+              "factId": "pc_3_numa_numa_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_5_mrbeast_platform",
+          "masteryLevel": 4,
+          "poolId": "streaming_social_platform_names",
+          "renderedQuestion": "On which platform did MrBeast become the most-subscribed individual creator?",
+          "correctAnswer": "YouTube",
+          "distractors": [
+            {
+              "answer": "Netflix",
+              "source": "similar_difficulty",
+              "factId": "pc_0_strangerthings_platform"
+            },
+            {
+              "answer": "Disney+",
+              "source": "similar_difficulty",
+              "factId": "pc_0_mandalorian_platform"
+            },
+            {
+              "answer": "Newgrounds",
+              "source": "pool_fill",
+              "factId": "pc_3_numa_numa_platform"
+            },
+            {
+              "answer": "4chan",
+              "source": "pool_fill",
+              "factId": "pc_3_rickroll_origin_platform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"4chan\" has 3 format features different from correct \"YouTube\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_1_mario_recognition",
+          "masteryLevel": 0,
+          "poolId": "character_names",
+          "renderedQuestion": "A 1990 study found that Mario was more recognizable to American children than which iconic Disney character?",
+          "correctAnswer": "Mickey Mouse",
+          "distractors": [
+            {
+              "answer": "Fantastic Four",
+              "source": "similar_difficulty",
+              "factId": "pc_2_stan_lee_characters"
+            },
+            {
+              "answer": "The Wasp",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_original_members"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_mario_recognition",
+          "masteryLevel": 2,
+          "poolId": "character_names",
+          "renderedQuestion": "A 1990 study found that Mario was more recognizable to American children than which iconic Disney character?",
+          "correctAnswer": "Mickey Mouse",
+          "distractors": [
+            {
+              "answer": "Fantastic Four",
+              "source": "similar_difficulty",
+              "factId": "pc_2_stan_lee_characters"
+            },
+            {
+              "answer": "The Wasp",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_original_members"
+            },
+            {
+              "answer": "Jumpman",
+              "source": "similar_difficulty",
+              "factId": "pc_1_donkey_kong_debut"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_mario_recognition",
+          "masteryLevel": 4,
+          "poolId": "character_names",
+          "renderedQuestion": "A 1990 study found that Mario was more recognizable to American children than which iconic Disney character?",
+          "correctAnswer": "Mickey Mouse",
+          "distractors": [
+            {
+              "answer": "Fantastic Four",
+              "source": "similar_difficulty",
+              "factId": "pc_2_stan_lee_characters"
+            },
+            {
+              "answer": "The Wasp",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_original_members"
+            },
+            {
+              "answer": "Jumpman",
+              "source": "similar_difficulty",
+              "factId": "pc_1_donkey_kong_debut"
+            },
+            {
+              "answer": "Justice League of America",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_inspiration"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_donkey_kong_debut",
+          "masteryLevel": 0,
+          "poolId": "character_names",
+          "renderedQuestion": "In the 1981 arcade game Donkey Kong, Mario made his debut under what original name?",
+          "correctAnswer": "Jumpman",
+          "distractors": [
+            {
+              "answer": "Fantastic Four",
+              "source": "similar_difficulty",
+              "factId": "pc_2_stan_lee_characters"
+            },
+            {
+              "answer": "The Wasp",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_original_members"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_donkey_kong_debut",
+          "masteryLevel": 2,
+          "poolId": "character_names",
+          "renderedQuestion": "In the 1981 arcade game Donkey Kong, Mario made his debut under what original name?",
+          "correctAnswer": "Jumpman",
+          "distractors": [
+            {
+              "answer": "Fantastic Four",
+              "source": "similar_difficulty",
+              "factId": "pc_2_stan_lee_characters"
+            },
+            {
+              "answer": "The Wasp",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_original_members"
+            },
+            {
+              "answer": "Mickey Mouse",
+              "source": "similar_difficulty",
+              "factId": "pc_1_mario_recognition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_donkey_kong_debut",
+          "masteryLevel": 4,
+          "poolId": "character_names",
+          "renderedQuestion": "In the 1981 arcade game Donkey Kong, Mario made his debut under what original name?",
+          "correctAnswer": "Jumpman",
+          "distractors": [
+            {
+              "answer": "Fantastic Four",
+              "source": "similar_difficulty",
+              "factId": "pc_2_stan_lee_characters"
+            },
+            {
+              "answer": "The Wasp",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_original_members"
+            },
+            {
+              "answer": "Mickey Mouse",
+              "source": "similar_difficulty",
+              "factId": "pc_1_mario_recognition"
+            },
+            {
+              "answer": "Justice League of America",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_inspiration"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 7 vs avg distractor 14.8 — ratio 0.47×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_2_avengers_original_members",
+          "masteryLevel": 0,
+          "poolId": "character_names",
+          "renderedQuestion": "Iron Man, Thor, Hulk, and Ant-Man were four of the five original Avengers — who was the fifth founding member?",
+          "correctAnswer": "The Wasp",
+          "distractors": [
+            {
+              "answer": "Justice League of America",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_inspiration"
+            },
+            {
+              "answer": "Fantastic Four",
+              "source": "similar_difficulty",
+              "factId": "pc_2_stan_lee_characters"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 8 vs avg distractor 19.5 — ratio 0.41×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_2_avengers_original_members",
+          "masteryLevel": 2,
+          "poolId": "character_names",
+          "renderedQuestion": "Iron Man, Thor, Hulk, and Ant-Man were four of the five original Avengers — who was the fifth founding member?",
+          "correctAnswer": "The Wasp",
+          "distractors": [
+            {
+              "answer": "Justice League of America",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_inspiration"
+            },
+            {
+              "answer": "Fantastic Four",
+              "source": "similar_difficulty",
+              "factId": "pc_2_stan_lee_characters"
+            },
+            {
+              "answer": "Jumpman",
+              "source": "similar_difficulty",
+              "factId": "pc_1_donkey_kong_debut"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_avengers_original_members",
+          "masteryLevel": 4,
+          "poolId": "character_names",
+          "renderedQuestion": "Iron Man, Thor, Hulk, and Ant-Man were four of the five original Avengers — who was the fifth founding member?",
+          "correctAnswer": "The Wasp",
+          "distractors": [
+            {
+              "answer": "Justice League of America",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_inspiration"
+            },
+            {
+              "answer": "Fantastic Four",
+              "source": "similar_difficulty",
+              "factId": "pc_2_stan_lee_characters"
+            },
+            {
+              "answer": "Jumpman",
+              "source": "similar_difficulty",
+              "factId": "pc_1_donkey_kong_debut"
+            },
+            {
+              "answer": "Mickey Mouse",
+              "source": "similar_difficulty",
+              "factId": "pc_1_mario_recognition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_avengers_inspiration",
+          "masteryLevel": 0,
+          "poolId": "character_names",
+          "renderedQuestion": "The Avengers were created in 1963 partly as Marvel's response to which rival DC superhero team?",
+          "correctAnswer": "Justice League of America",
+          "distractors": [
+            {
+              "answer": "Fantastic Four",
+              "source": "similar_difficulty",
+              "factId": "pc_2_stan_lee_characters"
+            },
+            {
+              "answer": "Jumpman",
+              "source": "similar_difficulty",
+              "factId": "pc_1_donkey_kong_debut"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 25 vs avg distractor 10.5 — ratio 2.38×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_2_avengers_inspiration",
+          "masteryLevel": 2,
+          "poolId": "character_names",
+          "renderedQuestion": "The Avengers were created in 1963 partly as Marvel's response to which rival DC superhero team?",
+          "correctAnswer": "Justice League of America",
+          "distractors": [
+            {
+              "answer": "Fantastic Four",
+              "source": "similar_difficulty",
+              "factId": "pc_2_stan_lee_characters"
+            },
+            {
+              "answer": "Jumpman",
+              "source": "similar_difficulty",
+              "factId": "pc_1_donkey_kong_debut"
+            },
+            {
+              "answer": "The Wasp",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_original_members"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 25 vs avg distractor 9.7 — ratio 2.59×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_2_avengers_inspiration",
+          "masteryLevel": 4,
+          "poolId": "character_names",
+          "renderedQuestion": "The Avengers were created in 1963 partly as Marvel's response to which rival DC superhero team?",
+          "correctAnswer": "Justice League of America",
+          "distractors": [
+            {
+              "answer": "Fantastic Four",
+              "source": "similar_difficulty",
+              "factId": "pc_2_stan_lee_characters"
+            },
+            {
+              "answer": "Jumpman",
+              "source": "similar_difficulty",
+              "factId": "pc_1_donkey_kong_debut"
+            },
+            {
+              "answer": "The Wasp",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_original_members"
+            },
+            {
+              "answer": "Mickey Mouse",
+              "source": "similar_difficulty",
+              "factId": "pc_1_mario_recognition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 25 vs avg distractor 10.3 — ratio 2.44×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_2_stan_lee_characters",
+          "masteryLevel": 0,
+          "poolId": "character_names",
+          "renderedQuestion": "Stan Lee co-created Spider-Man, X-Men, Iron Man, Thor, and Hulk — which superhero team also belongs to his creations?",
+          "correctAnswer": "Fantastic Four",
+          "distractors": [
+            {
+              "answer": "Mickey Mouse",
+              "source": "similar_difficulty",
+              "factId": "pc_1_mario_recognition"
+            },
+            {
+              "answer": "Justice League of America",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_inspiration"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_stan_lee_characters",
+          "masteryLevel": 2,
+          "poolId": "character_names",
+          "renderedQuestion": "Stan Lee co-created Spider-Man, X-Men, Iron Man, Thor, and Hulk — which superhero team also belongs to his creations?",
+          "correctAnswer": "Fantastic Four",
+          "distractors": [
+            {
+              "answer": "Mickey Mouse",
+              "source": "similar_difficulty",
+              "factId": "pc_1_mario_recognition"
+            },
+            {
+              "answer": "Justice League of America",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_inspiration"
+            },
+            {
+              "answer": "Jumpman",
+              "source": "similar_difficulty",
+              "factId": "pc_1_donkey_kong_debut"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_stan_lee_characters",
+          "masteryLevel": 4,
+          "poolId": "character_names",
+          "renderedQuestion": "Stan Lee co-created Spider-Man, X-Men, Iron Man, Thor, and Hulk — which superhero team also belongs to his creations?",
+          "correctAnswer": "Fantastic Four",
+          "distractors": [
+            {
+              "answer": "Mickey Mouse",
+              "source": "similar_difficulty",
+              "factId": "pc_1_mario_recognition"
+            },
+            {
+              "answer": "Justice League of America",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_inspiration"
+            },
+            {
+              "answer": "Jumpman",
+              "source": "similar_difficulty",
+              "factId": "pc_1_donkey_kong_debut"
+            },
+            {
+              "answer": "The Wasp",
+              "source": "similar_difficulty",
+              "factId": "pc_2_avengers_original_members"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_zelda_innovation",
+          "masteryLevel": 0,
+          "poolId": "game_innovations",
+          "renderedQuestion": "The Legend of Zelda (1986) was the first NES cartridge to feature what technology that let players save their progress?",
+          "correctAnswer": "battery-backed saving",
+          "distractors": [
+            {
+              "answer": "analog stick",
+              "source": "similar_difficulty",
+              "factId": "pc_1_n64_innovation"
+            },
+            {
+              "answer": "directional pad",
+              "source": "pool_fill",
+              "factId": "_synthetic_directional pad"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_zelda_innovation",
+          "masteryLevel": 2,
+          "poolId": "game_innovations",
+          "renderedQuestion": "The Legend of Zelda (1986) was the first NES cartridge to feature what technology that let players save their progress?",
+          "correctAnswer": "battery-backed saving",
+          "distractors": [
+            {
+              "answer": "analog stick",
+              "source": "similar_difficulty",
+              "factId": "pc_1_n64_innovation"
+            },
+            {
+              "answer": "directional pad",
+              "source": "pool_fill",
+              "factId": "_synthetic_directional pad"
+            },
+            {
+              "answer": "pressure-sensitive buttons",
+              "source": "pool_fill",
+              "factId": "_synthetic_pressure-sensitive buttons"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_zelda_innovation",
+          "masteryLevel": 4,
+          "poolId": "game_innovations",
+          "renderedQuestion": "The Legend of Zelda (1986) was the first NES cartridge to feature what technology that let players save their progress?",
+          "correctAnswer": "battery-backed saving",
+          "distractors": [
+            {
+              "answer": "analog stick",
+              "source": "similar_difficulty",
+              "factId": "pc_1_n64_innovation"
+            },
+            {
+              "answer": "directional pad",
+              "source": "pool_fill",
+              "factId": "_synthetic_directional pad"
+            },
+            {
+              "answer": "pressure-sensitive buttons",
+              "source": "pool_fill",
+              "factId": "_synthetic_pressure-sensitive buttons"
+            },
+            {
+              "answer": "force feedback",
+              "source": "pool_fill",
+              "factId": "_synthetic_force feedback"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_n64_innovation",
+          "masteryLevel": 0,
+          "poolId": "game_innovations",
+          "renderedQuestion": "The Nintendo 64 controller (1996) was the first game controller to include a standard what, enabling true 3D movement in games?",
+          "correctAnswer": "analog stick",
+          "distractors": [
+            {
+              "answer": "battery-backed saving",
+              "source": "similar_difficulty",
+              "factId": "pc_1_zelda_innovation"
+            },
+            {
+              "answer": "directional pad",
+              "source": "pool_fill",
+              "factId": "_synthetic_directional pad"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_n64_innovation",
+          "masteryLevel": 2,
+          "poolId": "game_innovations",
+          "renderedQuestion": "The Nintendo 64 controller (1996) was the first game controller to include a standard what, enabling true 3D movement in games?",
+          "correctAnswer": "analog stick",
+          "distractors": [
+            {
+              "answer": "battery-backed saving",
+              "source": "similar_difficulty",
+              "factId": "pc_1_zelda_innovation"
+            },
+            {
+              "answer": "directional pad",
+              "source": "pool_fill",
+              "factId": "_synthetic_directional pad"
+            },
+            {
+              "answer": "touchpad",
+              "source": "pool_fill",
+              "factId": "_synthetic_touchpad"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_n64_innovation",
+          "masteryLevel": 4,
+          "poolId": "game_innovations",
+          "renderedQuestion": "The Nintendo 64 controller (1996) was the first game controller to include a standard what, enabling true 3D movement in games?",
+          "correctAnswer": "analog stick",
+          "distractors": [
+            {
+              "answer": "battery-backed saving",
+              "source": "similar_difficulty",
+              "factId": "pc_1_zelda_innovation"
+            },
+            {
+              "answer": "directional pad",
+              "source": "pool_fill",
+              "factId": "_synthetic_directional pad"
+            },
+            {
+              "answer": "touchpad",
+              "source": "pool_fill",
+              "factId": "_synthetic_touchpad"
+            },
+            {
+              "answer": "dual triggers",
+              "source": "pool_fill",
+              "factId": "_synthetic_dual triggers"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_sonic_platform_impact",
+          "masteryLevel": 0,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "Sonic the Hedgehog helped which Sega console outsell the Super Nintendo 2:1 in 1991-1992?",
+          "correctAnswer": "Sega Genesis",
+          "distractors": [
+            {
+              "answer": "Nintendo Entertainment System",
+              "source": "similar_difficulty",
+              "factId": "pc_1_game_crash_recovery"
+            },
+            {
+              "answer": "Nintendo Switch",
+              "source": "similar_difficulty",
+              "factId": "pc_1_switch_rank"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_sonic_platform_impact",
+          "masteryLevel": 2,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "Sonic the Hedgehog helped which Sega console outsell the Super Nintendo 2:1 in 1991-1992?",
+          "correctAnswer": "Sega Genesis",
+          "distractors": [
+            {
+              "answer": "Nintendo Entertainment System",
+              "source": "similar_difficulty",
+              "factId": "pc_1_game_crash_recovery"
+            },
+            {
+              "answer": "Nintendo Switch",
+              "source": "similar_difficulty",
+              "factId": "pc_1_switch_rank"
+            },
+            {
+              "answer": "PlayStation 2",
+              "source": "similar_difficulty",
+              "factId": "pc_1_ps2_bestseller"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_sonic_platform_impact",
+          "masteryLevel": 4,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "Sonic the Hedgehog helped which Sega console outsell the Super Nintendo 2:1 in 1991-1992?",
+          "correctAnswer": "Sega Genesis",
+          "distractors": [
+            {
+              "answer": "Nintendo Entertainment System",
+              "source": "similar_difficulty",
+              "factId": "pc_1_game_crash_recovery"
+            },
+            {
+              "answer": "Nintendo Switch",
+              "source": "similar_difficulty",
+              "factId": "pc_1_switch_rank"
+            },
+            {
+              "answer": "PlayStation 2",
+              "source": "similar_difficulty",
+              "factId": "pc_1_ps2_bestseller"
+            },
+            {
+              "answer": "Game Boy",
+              "source": "similar_difficulty",
+              "factId": "pc_1_gameboy_units"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_ps2_bestseller",
+          "masteryLevel": 0,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "Which Sony console, with 160 million units sold, remains the best-selling video game console of all time?",
+          "correctAnswer": "PlayStation 2",
+          "distractors": [
+            {
+              "answer": "Game Boy",
+              "source": "similar_difficulty",
+              "factId": "pc_1_gameboy_units"
+            },
+            {
+              "answer": "Sega Genesis",
+              "source": "similar_difficulty",
+              "factId": "pc_1_sonic_platform_impact"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_ps2_bestseller",
+          "masteryLevel": 2,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "Which Sony console, with 160 million units sold, remains the best-selling video game console of all time?",
+          "correctAnswer": "PlayStation 2",
+          "distractors": [
+            {
+              "answer": "Game Boy",
+              "source": "similar_difficulty",
+              "factId": "pc_1_gameboy_units"
+            },
+            {
+              "answer": "Sega Genesis",
+              "source": "similar_difficulty",
+              "factId": "pc_1_sonic_platform_impact"
+            },
+            {
+              "answer": "Nintendo Switch",
+              "source": "similar_difficulty",
+              "factId": "pc_1_switch_rank"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_ps2_bestseller",
+          "masteryLevel": 4,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "Which Sony console, with 160 million units sold, remains the best-selling video game console of all time?",
+          "correctAnswer": "PlayStation 2",
+          "distractors": [
+            {
+              "answer": "Game Boy",
+              "source": "similar_difficulty",
+              "factId": "pc_1_gameboy_units"
+            },
+            {
+              "answer": "Sega Genesis",
+              "source": "similar_difficulty",
+              "factId": "pc_1_sonic_platform_impact"
+            },
+            {
+              "answer": "Nintendo Switch",
+              "source": "similar_difficulty",
+              "factId": "pc_1_switch_rank"
+            },
+            {
+              "answer": "Nintendo Entertainment System",
+              "source": "similar_difficulty",
+              "factId": "pc_1_game_crash_recovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_switch_rank",
+          "masteryLevel": 0,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "With 155 million units shipped, which 2017 Nintendo console is the second-best-selling video game console ever?",
+          "correctAnswer": "Nintendo Switch",
+          "distractors": [
+            {
+              "answer": "Sega Genesis",
+              "source": "similar_difficulty",
+              "factId": "pc_1_sonic_platform_impact"
+            },
+            {
+              "answer": "Game Boy",
+              "source": "similar_difficulty",
+              "factId": "pc_1_gameboy_units"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_switch_rank",
+          "masteryLevel": 2,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "With 155 million units shipped, which 2017 Nintendo console is the second-best-selling video game console ever?",
+          "correctAnswer": "Nintendo Switch",
+          "distractors": [
+            {
+              "answer": "Sega Genesis",
+              "source": "similar_difficulty",
+              "factId": "pc_1_sonic_platform_impact"
+            },
+            {
+              "answer": "Game Boy",
+              "source": "similar_difficulty",
+              "factId": "pc_1_gameboy_units"
+            },
+            {
+              "answer": "PlayStation 2",
+              "source": "similar_difficulty",
+              "factId": "pc_1_ps2_bestseller"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_switch_rank",
+          "masteryLevel": 4,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "With 155 million units shipped, which 2017 Nintendo console is the second-best-selling video game console ever?",
+          "correctAnswer": "Nintendo Switch",
+          "distractors": [
+            {
+              "answer": "Sega Genesis",
+              "source": "similar_difficulty",
+              "factId": "pc_1_sonic_platform_impact"
+            },
+            {
+              "answer": "Game Boy",
+              "source": "similar_difficulty",
+              "factId": "pc_1_gameboy_units"
+            },
+            {
+              "answer": "PlayStation 2",
+              "source": "similar_difficulty",
+              "factId": "pc_1_ps2_bestseller"
+            },
+            {
+              "answer": "Nintendo Entertainment System",
+              "source": "similar_difficulty",
+              "factId": "pc_1_game_crash_recovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_gameboy_units",
+          "masteryLevel": 0,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "Which 1989 Nintendo handheld, bundled with Tetris, sold 118.69 million units including the Color variant?",
+          "correctAnswer": "Game Boy",
+          "distractors": [
+            {
+              "answer": "Nintendo Switch",
+              "source": "similar_difficulty",
+              "factId": "pc_1_switch_rank"
+            },
+            {
+              "answer": "Nintendo Entertainment System",
+              "source": "similar_difficulty",
+              "factId": "pc_1_game_crash_recovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 8 vs avg distractor 22.0 — ratio 0.36×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_1_gameboy_units",
+          "masteryLevel": 2,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "Which 1989 Nintendo handheld, bundled with Tetris, sold 118.69 million units including the Color variant?",
+          "correctAnswer": "Game Boy",
+          "distractors": [
+            {
+              "answer": "Nintendo Switch",
+              "source": "similar_difficulty",
+              "factId": "pc_1_switch_rank"
+            },
+            {
+              "answer": "Nintendo Entertainment System",
+              "source": "similar_difficulty",
+              "factId": "pc_1_game_crash_recovery"
+            },
+            {
+              "answer": "Sega Genesis",
+              "source": "similar_difficulty",
+              "factId": "pc_1_sonic_platform_impact"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 8 vs avg distractor 18.7 — ratio 0.43×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_1_gameboy_units",
+          "masteryLevel": 4,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "Which 1989 Nintendo handheld, bundled with Tetris, sold 118.69 million units including the Color variant?",
+          "correctAnswer": "Game Boy",
+          "distractors": [
+            {
+              "answer": "Nintendo Switch",
+              "source": "similar_difficulty",
+              "factId": "pc_1_switch_rank"
+            },
+            {
+              "answer": "Nintendo Entertainment System",
+              "source": "similar_difficulty",
+              "factId": "pc_1_game_crash_recovery"
+            },
+            {
+              "answer": "Sega Genesis",
+              "source": "similar_difficulty",
+              "factId": "pc_1_sonic_platform_impact"
+            },
+            {
+              "answer": "PlayStation 2",
+              "source": "similar_difficulty",
+              "factId": "pc_1_ps2_bestseller"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 8 vs avg distractor 17.3 — ratio 0.46×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_1_game_crash_recovery",
+          "masteryLevel": 0,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "Which console, released in North America in 1985, rescued the video game industry after the catastrophic 1983 market crash?",
+          "correctAnswer": "Nintendo Entertainment System",
+          "distractors": [
+            {
+              "answer": "Sega Genesis",
+              "source": "similar_difficulty",
+              "factId": "pc_1_sonic_platform_impact"
+            },
+            {
+              "answer": "PlayStation 2",
+              "source": "similar_difficulty",
+              "factId": "pc_1_ps2_bestseller"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 29 vs avg distractor 12.5 — ratio 2.32×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_1_game_crash_recovery",
+          "masteryLevel": 2,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "Which console, released in North America in 1985, rescued the video game industry after the catastrophic 1983 market crash?",
+          "correctAnswer": "Nintendo Entertainment System",
+          "distractors": [
+            {
+              "answer": "Sega Genesis",
+              "source": "similar_difficulty",
+              "factId": "pc_1_sonic_platform_impact"
+            },
+            {
+              "answer": "PlayStation 2",
+              "source": "similar_difficulty",
+              "factId": "pc_1_ps2_bestseller"
+            },
+            {
+              "answer": "Nintendo Switch",
+              "source": "similar_difficulty",
+              "factId": "pc_1_switch_rank"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 29 vs avg distractor 13.3 — ratio 2.17×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_1_game_crash_recovery",
+          "masteryLevel": 4,
+          "poolId": "console_platform_names",
+          "renderedQuestion": "Which console, released in North America in 1985, rescued the video game industry after the catastrophic 1983 market crash?",
+          "correctAnswer": "Nintendo Entertainment System",
+          "distractors": [
+            {
+              "answer": "Sega Genesis",
+              "source": "similar_difficulty",
+              "factId": "pc_1_sonic_platform_impact"
+            },
+            {
+              "answer": "PlayStation 2",
+              "source": "similar_difficulty",
+              "factId": "pc_1_ps2_bestseller"
+            },
+            {
+              "answer": "Nintendo Switch",
+              "source": "similar_difficulty",
+              "factId": "pc_1_switch_rank"
+            },
+            {
+              "answer": "Game Boy",
+              "source": "similar_difficulty",
+              "factId": "pc_1_gameboy_units"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 29 vs avg distractor 12.0 — ratio 2.42×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_1_wii_sports_copies",
+          "masteryLevel": 0,
+          "poolId": "game_titles",
+          "renderedQuestion": "Which bundled Nintendo game with motion controls sold 82.90 million copies, making it the third-best-selling game ever?",
+          "correctAnswer": "Wii Sports",
+          "distractors": [
+            {
+              "answer": "Mario",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mario_bestselling"
+            },
+            {
+              "answer": "Settlers of Catan",
+              "source": "similar_difficulty",
+              "factId": "pc_5_catan_game_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_wii_sports_copies",
+          "masteryLevel": 2,
+          "poolId": "game_titles",
+          "renderedQuestion": "Which bundled Nintendo game with motion controls sold 82.90 million copies, making it the third-best-selling game ever?",
+          "correctAnswer": "Wii Sports",
+          "distractors": [
+            {
+              "answer": "Mario",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mario_bestselling"
+            },
+            {
+              "answer": "Settlers of Catan",
+              "source": "similar_difficulty",
+              "factId": "pc_5_catan_game_name"
+            },
+            {
+              "answer": "Among Us",
+              "source": "similar_difficulty",
+              "factId": "pc_1_among_us_players"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_wii_sports_copies",
+          "masteryLevel": 4,
+          "poolId": "game_titles",
+          "renderedQuestion": "Which bundled Nintendo game with motion controls sold 82.90 million copies, making it the third-best-selling game ever?",
+          "correctAnswer": "Wii Sports",
+          "distractors": [
+            {
+              "answer": "Mario",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mario_bestselling"
+            },
+            {
+              "answer": "Settlers of Catan",
+              "source": "similar_difficulty",
+              "factId": "pc_5_catan_game_name"
+            },
+            {
+              "answer": "Among Us",
+              "source": "similar_difficulty",
+              "factId": "pc_1_among_us_players"
+            },
+            {
+              "answer": "Donkey Kong",
+              "source": "pool_fill",
+              "factId": "_synthetic_Donkey Kong"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_among_us_players",
+          "masteryLevel": 0,
+          "poolId": "game_titles",
+          "renderedQuestion": "Which 2018 social deduction game by Innersloth became a COVID-19 pandemic phenomenon with 500 million players by November 2020?",
+          "correctAnswer": "Among Us",
+          "distractors": [
+            {
+              "answer": "Settlers of Catan",
+              "source": "similar_difficulty",
+              "factId": "pc_5_catan_game_name"
+            },
+            {
+              "answer": "Mario",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mario_bestselling"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_among_us_players",
+          "masteryLevel": 2,
+          "poolId": "game_titles",
+          "renderedQuestion": "Which 2018 social deduction game by Innersloth became a COVID-19 pandemic phenomenon with 500 million players by November 2020?",
+          "correctAnswer": "Among Us",
+          "distractors": [
+            {
+              "answer": "Settlers of Catan",
+              "source": "similar_difficulty",
+              "factId": "pc_5_catan_game_name"
+            },
+            {
+              "answer": "Mario",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mario_bestselling"
+            },
+            {
+              "answer": "Wii Sports",
+              "source": "similar_difficulty",
+              "factId": "pc_1_wii_sports_copies"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_1_among_us_players",
+          "masteryLevel": 4,
+          "poolId": "game_titles",
+          "renderedQuestion": "Which 2018 social deduction game by Innersloth became a COVID-19 pandemic phenomenon with 500 million players by November 2020?",
+          "correctAnswer": "Among Us",
+          "distractors": [
+            {
+              "answer": "Settlers of Catan",
+              "source": "similar_difficulty",
+              "factId": "pc_5_catan_game_name"
+            },
+            {
+              "answer": "Mario",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mario_bestselling"
+            },
+            {
+              "answer": "Wii Sports",
+              "source": "similar_difficulty",
+              "factId": "pc_1_wii_sports_copies"
+            },
+            {
+              "answer": "Elden Ring",
+              "source": "pool_fill",
+              "factId": "_synthetic_Elden Ring"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_4_mario_bestselling",
+          "masteryLevel": 0,
+          "poolId": "game_titles",
+          "renderedQuestion": "Which Nintendo franchise holds the title of the best-selling video game series of all time?",
+          "correctAnswer": "Mario",
+          "distractors": [
+            {
+              "answer": "Among Us",
+              "source": "similar_difficulty",
+              "factId": "pc_1_among_us_players"
+            },
+            {
+              "answer": "Settlers of Catan",
+              "source": "similar_difficulty",
+              "factId": "pc_5_catan_game_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 5 vs avg distractor 12.5 — ratio 0.40×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_4_mario_bestselling",
+          "masteryLevel": 2,
+          "poolId": "game_titles",
+          "renderedQuestion": "Which Nintendo franchise holds the title of the best-selling video game series of all time?",
+          "correctAnswer": "Mario",
+          "distractors": [
+            {
+              "answer": "Among Us",
+              "source": "similar_difficulty",
+              "factId": "pc_1_among_us_players"
+            },
+            {
+              "answer": "Settlers of Catan",
+              "source": "similar_difficulty",
+              "factId": "pc_5_catan_game_name"
+            },
+            {
+              "answer": "Wii Sports",
+              "source": "similar_difficulty",
+              "factId": "pc_1_wii_sports_copies"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 5 vs avg distractor 11.7 — ratio 0.43×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_4_mario_bestselling",
+          "masteryLevel": 4,
+          "poolId": "game_titles",
+          "renderedQuestion": "Which Nintendo franchise holds the title of the best-selling video game series of all time?",
+          "correctAnswer": "Mario",
+          "distractors": [
+            {
+              "answer": "Among Us",
+              "source": "similar_difficulty",
+              "factId": "pc_1_among_us_players"
+            },
+            {
+              "answer": "Settlers of Catan",
+              "source": "similar_difficulty",
+              "factId": "pc_5_catan_game_name"
+            },
+            {
+              "answer": "Wii Sports",
+              "source": "similar_difficulty",
+              "factId": "pc_1_wii_sports_copies"
+            },
+            {
+              "answer": "Minecraft",
+              "source": "pool_fill",
+              "factId": "_synthetic_Minecraft"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 5 vs avg distractor 11.0 — ratio 0.45×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_catan_game_name",
+          "masteryLevel": 0,
+          "poolId": "game_titles",
+          "renderedQuestion": "Which 1995 German strategy board game is widely credited as the catalyst for the modern board game renaissance?",
+          "correctAnswer": "Settlers of Catan",
+          "distractors": [
+            {
+              "answer": "Among Us",
+              "source": "similar_difficulty",
+              "factId": "pc_1_among_us_players"
+            },
+            {
+              "answer": "Mario",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mario_bestselling"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 17 vs avg distractor 6.5 — ratio 2.62×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_catan_game_name",
+          "masteryLevel": 2,
+          "poolId": "game_titles",
+          "renderedQuestion": "Which 1995 German strategy board game is widely credited as the catalyst for the modern board game renaissance?",
+          "correctAnswer": "Settlers of Catan",
+          "distractors": [
+            {
+              "answer": "Among Us",
+              "source": "similar_difficulty",
+              "factId": "pc_1_among_us_players"
+            },
+            {
+              "answer": "Mario",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mario_bestselling"
+            },
+            {
+              "answer": "Wii Sports",
+              "source": "similar_difficulty",
+              "factId": "pc_1_wii_sports_copies"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 17 vs avg distractor 7.7 — ratio 2.22×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_catan_game_name",
+          "masteryLevel": 4,
+          "poolId": "game_titles",
+          "renderedQuestion": "Which 1995 German strategy board game is widely credited as the catalyst for the modern board game renaissance?",
+          "correctAnswer": "Settlers of Catan",
+          "distractors": [
+            {
+              "answer": "Among Us",
+              "source": "similar_difficulty",
+              "factId": "pc_1_among_us_players"
+            },
+            {
+              "answer": "Mario",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mario_bestselling"
+            },
+            {
+              "answer": "Wii Sports",
+              "source": "similar_difficulty",
+              "factId": "pc_1_wii_sports_copies"
+            },
+            {
+              "answer": "Super Mario Bros.",
+              "source": "pool_fill",
+              "factId": "_synthetic_Super Mario Bros."
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_black_panther_debut",
+          "masteryLevel": 0,
+          "poolId": "comic_debut_issues",
+          "renderedQuestion": "In which 1966 comic book issue did Black Panther make his debut as the first Black superhero in American mainstream comics?",
+          "correctAnswer": "Fantastic Four #52",
+          "distractors": [
+            {
+              "answer": "Detective Comics #27",
+              "source": "similar_difficulty",
+              "factId": "pc_2_batman_debut_issue"
+            },
+            {
+              "answer": "Daredevil #1",
+              "source": "pool_fill",
+              "factId": "_synthetic_Daredevil #1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_black_panther_debut",
+          "masteryLevel": 2,
+          "poolId": "comic_debut_issues",
+          "renderedQuestion": "In which 1966 comic book issue did Black Panther make his debut as the first Black superhero in American mainstream comics?",
+          "correctAnswer": "Fantastic Four #52",
+          "distractors": [
+            {
+              "answer": "Detective Comics #27",
+              "source": "similar_difficulty",
+              "factId": "pc_2_batman_debut_issue"
+            },
+            {
+              "answer": "Daredevil #1",
+              "source": "pool_fill",
+              "factId": "_synthetic_Daredevil #1"
+            },
+            {
+              "answer": "Avengers #1",
+              "source": "pool_fill",
+              "factId": "_synthetic_Avengers #1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_black_panther_debut",
+          "masteryLevel": 4,
+          "poolId": "comic_debut_issues",
+          "renderedQuestion": "In which 1966 comic book issue did Black Panther make his debut as the first Black superhero in American mainstream comics?",
+          "correctAnswer": "Fantastic Four #52",
+          "distractors": [
+            {
+              "answer": "Detective Comics #27",
+              "source": "similar_difficulty",
+              "factId": "pc_2_batman_debut_issue"
+            },
+            {
+              "answer": "Daredevil #1",
+              "source": "pool_fill",
+              "factId": "_synthetic_Daredevil #1"
+            },
+            {
+              "answer": "Avengers #1",
+              "source": "pool_fill",
+              "factId": "_synthetic_Avengers #1"
+            },
+            {
+              "answer": "Silver Surfer #1",
+              "source": "pool_fill",
+              "factId": "_synthetic_Silver Surfer #1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_batman_debut_issue",
+          "masteryLevel": 0,
+          "poolId": "comic_debut_issues",
+          "renderedQuestion": "In which comic book issue did Batman make his first appearance in 1939?",
+          "correctAnswer": "Detective Comics #27",
+          "distractors": [
+            {
+              "answer": "Fantastic Four #52",
+              "source": "similar_difficulty",
+              "factId": "pc_2_black_panther_debut"
+            },
+            {
+              "answer": "Silver Surfer #1",
+              "source": "pool_fill",
+              "factId": "_synthetic_Silver Surfer #1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_batman_debut_issue",
+          "masteryLevel": 2,
+          "poolId": "comic_debut_issues",
+          "renderedQuestion": "In which comic book issue did Batman make his first appearance in 1939?",
+          "correctAnswer": "Detective Comics #27",
+          "distractors": [
+            {
+              "answer": "Fantastic Four #52",
+              "source": "similar_difficulty",
+              "factId": "pc_2_black_panther_debut"
+            },
+            {
+              "answer": "Silver Surfer #1",
+              "source": "pool_fill",
+              "factId": "_synthetic_Silver Surfer #1"
+            },
+            {
+              "answer": "X-Men #1",
+              "source": "pool_fill",
+              "factId": "_synthetic_X-Men #1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_batman_debut_issue",
+          "masteryLevel": 4,
+          "poolId": "comic_debut_issues",
+          "renderedQuestion": "In which comic book issue did Batman make his first appearance in 1939?",
+          "correctAnswer": "Detective Comics #27",
+          "distractors": [
+            {
+              "answer": "Fantastic Four #52",
+              "source": "similar_difficulty",
+              "factId": "pc_2_black_panther_debut"
+            },
+            {
+              "answer": "Silver Surfer #1",
+              "source": "pool_fill",
+              "factId": "_synthetic_Silver Surfer #1"
+            },
+            {
+              "answer": "X-Men #1",
+              "source": "pool_fill",
+              "factId": "_synthetic_X-Men #1"
+            },
+            {
+              "answer": "Journey into Mystery #83",
+              "source": "pool_fill",
+              "factId": "_synthetic_Journey into Mystery #83"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_watchmen_format",
+          "masteryLevel": 0,
+          "poolId": "media_format_names",
+          "renderedQuestion": "Watchmen by Alan Moore and Dave Gibbons helped popularize what term for a self-contained book-length comic narrative?",
+          "correctAnswer": "graphic novel",
+          "distractors": [
+            {
+              "answer": "podcast",
+              "source": "similar_difficulty",
+              "factId": "pc_5_serial_podcast_format"
+            },
+            {
+              "answer": "documentary film",
+              "source": "pool_fill",
+              "factId": "_synthetic_documentary film"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_watchmen_format",
+          "masteryLevel": 2,
+          "poolId": "media_format_names",
+          "renderedQuestion": "Watchmen by Alan Moore and Dave Gibbons helped popularize what term for a self-contained book-length comic narrative?",
+          "correctAnswer": "graphic novel",
+          "distractors": [
+            {
+              "answer": "podcast",
+              "source": "similar_difficulty",
+              "factId": "pc_5_serial_podcast_format"
+            },
+            {
+              "answer": "documentary film",
+              "source": "pool_fill",
+              "factId": "_synthetic_documentary film"
+            },
+            {
+              "answer": "mockumentary",
+              "source": "pool_fill",
+              "factId": "_synthetic_mockumentary"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_watchmen_format",
+          "masteryLevel": 4,
+          "poolId": "media_format_names",
+          "renderedQuestion": "Watchmen by Alan Moore and Dave Gibbons helped popularize what term for a self-contained book-length comic narrative?",
+          "correctAnswer": "graphic novel",
+          "distractors": [
+            {
+              "answer": "podcast",
+              "source": "similar_difficulty",
+              "factId": "pc_5_serial_podcast_format"
+            },
+            {
+              "answer": "documentary film",
+              "source": "pool_fill",
+              "factId": "_synthetic_documentary film"
+            },
+            {
+              "answer": "mockumentary",
+              "source": "pool_fill",
+              "factId": "_synthetic_mockumentary"
+            },
+            {
+              "answer": "audio drama",
+              "source": "pool_fill",
+              "factId": "_synthetic_audio drama"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_5_serial_podcast_format",
+          "masteryLevel": 0,
+          "poolId": "media_format_names",
+          "renderedQuestion": "What audio format did 'Serial' help push into the mainstream when it debuted in 2014 with over 80 million downloads?",
+          "correctAnswer": "podcast",
+          "distractors": [
+            {
+              "answer": "graphic novel",
+              "source": "similar_difficulty",
+              "factId": "pc_2_watchmen_format"
+            },
+            {
+              "answer": "miniseries",
+              "source": "pool_fill",
+              "factId": "_synthetic_miniseries"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_5_serial_podcast_format",
+          "masteryLevel": 2,
+          "poolId": "media_format_names",
+          "renderedQuestion": "What audio format did 'Serial' help push into the mainstream when it debuted in 2014 with over 80 million downloads?",
+          "correctAnswer": "podcast",
+          "distractors": [
+            {
+              "answer": "graphic novel",
+              "source": "similar_difficulty",
+              "factId": "pc_2_watchmen_format"
+            },
+            {
+              "answer": "miniseries",
+              "source": "pool_fill",
+              "factId": "_synthetic_miniseries"
+            },
+            {
+              "answer": "limited series",
+              "source": "pool_fill",
+              "factId": "_synthetic_limited series"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_5_serial_podcast_format",
+          "masteryLevel": 4,
+          "poolId": "media_format_names",
+          "renderedQuestion": "What audio format did 'Serial' help push into the mainstream when it debuted in 2014 with over 80 million downloads?",
+          "correctAnswer": "podcast",
+          "distractors": [
+            {
+              "answer": "graphic novel",
+              "source": "similar_difficulty",
+              "factId": "pc_2_watchmen_format"
+            },
+            {
+              "answer": "miniseries",
+              "source": "pool_fill",
+              "factId": "_synthetic_miniseries"
+            },
+            {
+              "answer": "limited series",
+              "source": "pool_fill",
+              "factId": "_synthetic_limited series"
+            },
+            {
+              "answer": "anthology series",
+              "source": "pool_fill",
+              "factId": "_synthetic_anthology series"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_2_jack_kirby_nickname",
+          "masteryLevel": 0,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "Jack Kirby co-created Captain America, the Fantastic Four, the X-Men, and Black Panther — what celebrated nickname did he earn?",
+          "correctAnswer": "King of Comics",
+          "distractors": [
+            {
+              "answer": "blue and black",
+              "source": "similar_difficulty",
+              "factId": "pc_3_the_dress_actual_color"
+            },
+            {
+              "answer": "costume play",
+              "source": "similar_difficulty",
+              "factId": "pc_5_cosplay_etymology"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"blue and black\" has 2 format features different from correct \"King of Comics\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_2_jack_kirby_nickname",
+          "masteryLevel": 2,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "Jack Kirby co-created Captain America, the Fantastic Four, the X-Men, and Black Panther — what celebrated nickname did he earn?",
+          "correctAnswer": "King of Comics",
+          "distractors": [
+            {
+              "answer": "blue and black",
+              "source": "similar_difficulty",
+              "factId": "pc_3_the_dress_actual_color"
+            },
+            {
+              "answer": "costume play",
+              "source": "similar_difficulty",
+              "factId": "pc_5_cosplay_etymology"
+            },
+            {
+              "answer": "10 million",
+              "source": "similar_difficulty",
+              "factId": "pc_5_disney_plus_day_one_subs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"blue and black\" has 2 format features different from correct \"King of Comics\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_2_jack_kirby_nickname",
+          "masteryLevel": 4,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "Jack Kirby co-created Captain America, the Fantastic Four, the X-Men, and Black Panther — what celebrated nickname did he earn?",
+          "correctAnswer": "King of Comics",
+          "distractors": [
+            {
+              "answer": "blue and black",
+              "source": "similar_difficulty",
+              "factId": "pc_3_the_dress_actual_color"
+            },
+            {
+              "answer": "costume play",
+              "source": "similar_difficulty",
+              "factId": "pc_5_cosplay_etymology"
+            },
+            {
+              "answer": "10 million",
+              "source": "similar_difficulty",
+              "factId": "pc_5_disney_plus_day_one_subs"
+            },
+            {
+              "answer": "San Diego",
+              "source": "similar_difficulty",
+              "factId": "pc_5_comic_con_attendance"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"blue and black\" has 2 format features different from correct \"King of Comics\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_the_dress_actual_color",
+          "masteryLevel": 0,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "What were the actual colors of the dress at the center of the viral 2015 'The Dress' debate?",
+          "correctAnswer": "blue and black",
+          "distractors": [
+            {
+              "answer": "Swedish",
+              "source": "similar_difficulty",
+              "factId": "pc_5_pewdiepie_nationality"
+            },
+            {
+              "answer": "costume play",
+              "source": "similar_difficulty",
+              "factId": "pc_5_cosplay_etymology"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Swedish\" has 3 format features different from correct \"blue and black\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_the_dress_actual_color",
+          "masteryLevel": 2,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "What were the actual colors of the dress at the center of the viral 2015 'The Dress' debate?",
+          "correctAnswer": "blue and black",
+          "distractors": [
+            {
+              "answer": "Swedish",
+              "source": "similar_difficulty",
+              "factId": "pc_5_pewdiepie_nationality"
+            },
+            {
+              "answer": "costume play",
+              "source": "similar_difficulty",
+              "factId": "pc_5_cosplay_etymology"
+            },
+            {
+              "answer": "King of Comics",
+              "source": "similar_difficulty",
+              "factId": "pc_2_jack_kirby_nickname"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Swedish\" has 3 format features different from correct \"blue and black\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_the_dress_actual_color",
+          "masteryLevel": 4,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "What were the actual colors of the dress at the center of the viral 2015 'The Dress' debate?",
+          "correctAnswer": "blue and black",
+          "distractors": [
+            {
+              "answer": "Swedish",
+              "source": "similar_difficulty",
+              "factId": "pc_5_pewdiepie_nationality"
+            },
+            {
+              "answer": "costume play",
+              "source": "similar_difficulty",
+              "factId": "pc_5_cosplay_etymology"
+            },
+            {
+              "answer": "King of Comics",
+              "source": "similar_difficulty",
+              "factId": "pc_2_jack_kirby_nickname"
+            },
+            {
+              "answer": "San Diego",
+              "source": "similar_difficulty",
+              "factId": "pc_5_comic_con_attendance"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Swedish\" has 3 format features different from correct \"blue and black\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_pewdiepie_nationality",
+          "masteryLevel": 0,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "What nationality is Felix Kjellberg, better known as PewDiePie?",
+          "correctAnswer": "Swedish",
+          "distractors": [
+            {
+              "answer": "costume play",
+              "source": "similar_difficulty",
+              "factId": "pc_5_cosplay_etymology"
+            },
+            {
+              "answer": "San Diego",
+              "source": "similar_difficulty",
+              "factId": "pc_5_comic_con_attendance"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"costume play\" has 3 format features different from correct \"Swedish\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_pewdiepie_nationality",
+          "masteryLevel": 2,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "What nationality is Felix Kjellberg, better known as PewDiePie?",
+          "correctAnswer": "Swedish",
+          "distractors": [
+            {
+              "answer": "costume play",
+              "source": "similar_difficulty",
+              "factId": "pc_5_cosplay_etymology"
+            },
+            {
+              "answer": "San Diego",
+              "source": "similar_difficulty",
+              "factId": "pc_5_comic_con_attendance"
+            },
+            {
+              "answer": "blue and black",
+              "source": "similar_difficulty",
+              "factId": "pc_3_the_dress_actual_color"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"costume play\" has 3 format features different from correct \"Swedish\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_pewdiepie_nationality",
+          "masteryLevel": 4,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "What nationality is Felix Kjellberg, better known as PewDiePie?",
+          "correctAnswer": "Swedish",
+          "distractors": [
+            {
+              "answer": "costume play",
+              "source": "similar_difficulty",
+              "factId": "pc_5_cosplay_etymology"
+            },
+            {
+              "answer": "San Diego",
+              "source": "similar_difficulty",
+              "factId": "pc_5_comic_con_attendance"
+            },
+            {
+              "answer": "blue and black",
+              "source": "similar_difficulty",
+              "factId": "pc_3_the_dress_actual_color"
+            },
+            {
+              "answer": "10 million",
+              "source": "similar_difficulty",
+              "factId": "pc_5_disney_plus_day_one_subs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"costume play\" has 3 format features different from correct \"Swedish\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_comic_con_attendance",
+          "masteryLevel": 0,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "In which California city is the world's most famous Comic-Con convention held annually?",
+          "correctAnswer": "San Diego",
+          "distractors": [
+            {
+              "answer": "Swedish",
+              "source": "similar_difficulty",
+              "factId": "pc_5_pewdiepie_nationality"
+            },
+            {
+              "answer": "blue and black",
+              "source": "similar_difficulty",
+              "factId": "pc_3_the_dress_actual_color"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"blue and black\" has 2 format features different from correct \"San Diego\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_comic_con_attendance",
+          "masteryLevel": 2,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "In which California city is the world's most famous Comic-Con convention held annually?",
+          "correctAnswer": "San Diego",
+          "distractors": [
+            {
+              "answer": "Swedish",
+              "source": "similar_difficulty",
+              "factId": "pc_5_pewdiepie_nationality"
+            },
+            {
+              "answer": "blue and black",
+              "source": "similar_difficulty",
+              "factId": "pc_3_the_dress_actual_color"
+            },
+            {
+              "answer": "10 million",
+              "source": "similar_difficulty",
+              "factId": "pc_5_disney_plus_day_one_subs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"blue and black\" has 2 format features different from correct \"San Diego\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_comic_con_attendance",
+          "masteryLevel": 4,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "In which California city is the world's most famous Comic-Con convention held annually?",
+          "correctAnswer": "San Diego",
+          "distractors": [
+            {
+              "answer": "Swedish",
+              "source": "similar_difficulty",
+              "factId": "pc_5_pewdiepie_nationality"
+            },
+            {
+              "answer": "blue and black",
+              "source": "similar_difficulty",
+              "factId": "pc_3_the_dress_actual_color"
+            },
+            {
+              "answer": "10 million",
+              "source": "similar_difficulty",
+              "factId": "pc_5_disney_plus_day_one_subs"
+            },
+            {
+              "answer": "King of Comics",
+              "source": "similar_difficulty",
+              "factId": "pc_2_jack_kirby_nickname"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"blue and black\" has 2 format features different from correct \"San Diego\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_the_dress_actual_colors",
+          "masteryLevel": 0,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "What were the actual colors of 'The Dress,' the 2015 viral photo that divided the internet over its appearance?",
+          "correctAnswer": "blue and black",
+          "distractors": [
+            {
+              "answer": "costume play",
+              "source": "similar_difficulty",
+              "factId": "pc_5_cosplay_etymology"
+            },
+            {
+              "answer": "Swedish",
+              "source": "similar_difficulty",
+              "factId": "pc_5_pewdiepie_nationality"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Swedish\" has 3 format features different from correct \"blue and black\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_the_dress_actual_colors",
+          "masteryLevel": 2,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "What were the actual colors of 'The Dress,' the 2015 viral photo that divided the internet over its appearance?",
+          "correctAnswer": "blue and black",
+          "distractors": [
+            {
+              "answer": "costume play",
+              "source": "similar_difficulty",
+              "factId": "pc_5_cosplay_etymology"
+            },
+            {
+              "answer": "Swedish",
+              "source": "similar_difficulty",
+              "factId": "pc_5_pewdiepie_nationality"
+            },
+            {
+              "answer": "King of Comics",
+              "source": "similar_difficulty",
+              "factId": "pc_2_jack_kirby_nickname"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Swedish\" has 3 format features different from correct \"blue and black\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_the_dress_actual_colors",
+          "masteryLevel": 4,
+          "poolId": "genre_format_names",
+          "renderedQuestion": "What were the actual colors of 'The Dress,' the 2015 viral photo that divided the internet over its appearance?",
+          "correctAnswer": "blue and black",
+          "distractors": [
+            {
+              "answer": "costume play",
+              "source": "similar_difficulty",
+              "factId": "pc_5_cosplay_etymology"
+            },
+            {
+              "answer": "Swedish",
+              "source": "similar_difficulty",
+              "factId": "pc_5_pewdiepie_nationality"
+            },
+            {
+              "answer": "King of Comics",
+              "source": "similar_difficulty",
+              "factId": "pc_2_jack_kirby_nickname"
+            },
+            {
+              "answer": "10 million",
+              "source": "similar_difficulty",
+              "factId": "pc_5_disney_plus_day_one_subs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Swedish\" has 3 format features different from correct \"blue and black\""
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_keyboard_cat_cat_name",
+          "masteryLevel": 0,
+          "poolId": "meme_viral_names",
+          "renderedQuestion": "What was the name of the cat in the original Keyboard Cat footage filmed in 1984?",
+          "correctAnswer": "Fatso",
+          "distractors": [
+            {
+              "answer": "Kabosu",
+              "source": "similar_difficulty",
+              "factId": "pc_3_doge_dog_name"
+            },
+            {
+              "answer": "Boy's Club",
+              "source": "similar_difficulty",
+              "factId": "pc_3_pepe_origin_comic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_3_keyboard_cat_cat_name",
+          "masteryLevel": 2,
+          "poolId": "meme_viral_names",
+          "renderedQuestion": "What was the name of the cat in the original Keyboard Cat footage filmed in 1984?",
+          "correctAnswer": "Fatso",
+          "distractors": [
+            {
+              "answer": "Kabosu",
+              "source": "similar_difficulty",
+              "factId": "pc_3_doge_dog_name"
+            },
+            {
+              "answer": "Boy's Club",
+              "source": "similar_difficulty",
+              "factId": "pc_3_pepe_origin_comic"
+            },
+            {
+              "answer": "PSY",
+              "source": "pool_fill",
+              "factId": "pc_3_gangnam_artist"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_3_keyboard_cat_cat_name",
+          "masteryLevel": 4,
+          "poolId": "meme_viral_names",
+          "renderedQuestion": "What was the name of the cat in the original Keyboard Cat footage filmed in 1984?",
+          "correctAnswer": "Fatso",
+          "distractors": [
+            {
+              "answer": "Kabosu",
+              "source": "similar_difficulty",
+              "factId": "pc_3_doge_dog_name"
+            },
+            {
+              "answer": "Boy's Club",
+              "source": "similar_difficulty",
+              "factId": "pc_3_pepe_origin_comic"
+            },
+            {
+              "answer": "PSY",
+              "source": "pool_fill",
+              "factId": "pc_3_gangnam_artist"
+            },
+            {
+              "answer": "Nyan Cat",
+              "source": "pool_fill",
+              "factId": "_synthetic_Nyan Cat"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_3_doge_dog_name",
+          "masteryLevel": 0,
+          "poolId": "meme_viral_names",
+          "renderedQuestion": "What was the name of the Shiba Inu whose photo became the Doge meme?",
+          "correctAnswer": "Kabosu",
+          "distractors": [
+            {
+              "answer": "Fatso",
+              "source": "similar_difficulty",
+              "factId": "pc_3_keyboard_cat_cat_name"
+            },
+            {
+              "answer": "Boy's Club",
+              "source": "similar_difficulty",
+              "factId": "pc_3_pepe_origin_comic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_3_doge_dog_name",
+          "masteryLevel": 2,
+          "poolId": "meme_viral_names",
+          "renderedQuestion": "What was the name of the Shiba Inu whose photo became the Doge meme?",
+          "correctAnswer": "Kabosu",
+          "distractors": [
+            {
+              "answer": "Fatso",
+              "source": "similar_difficulty",
+              "factId": "pc_3_keyboard_cat_cat_name"
+            },
+            {
+              "answer": "Boy's Club",
+              "source": "similar_difficulty",
+              "factId": "pc_3_pepe_origin_comic"
+            },
+            {
+              "answer": "PSY",
+              "source": "pool_fill",
+              "factId": "pc_3_gangnam_artist"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_3_doge_dog_name",
+          "masteryLevel": 4,
+          "poolId": "meme_viral_names",
+          "renderedQuestion": "What was the name of the Shiba Inu whose photo became the Doge meme?",
+          "correctAnswer": "Kabosu",
+          "distractors": [
+            {
+              "answer": "Fatso",
+              "source": "similar_difficulty",
+              "factId": "pc_3_keyboard_cat_cat_name"
+            },
+            {
+              "answer": "Boy's Club",
+              "source": "similar_difficulty",
+              "factId": "pc_3_pepe_origin_comic"
+            },
+            {
+              "answer": "PSY",
+              "source": "pool_fill",
+              "factId": "pc_3_gangnam_artist"
+            },
+            {
+              "answer": "Grumpy Cat",
+              "source": "pool_fill",
+              "factId": "_synthetic_Grumpy Cat"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_3_pepe_origin_comic",
+          "masteryLevel": 0,
+          "poolId": "meme_viral_names",
+          "renderedQuestion": "What was the name of Matt Furie's webcomic where Pepe the Frog first appeared in 2005?",
+          "correctAnswer": "Boy's Club",
+          "distractors": [
+            {
+              "answer": "Fatso",
+              "source": "similar_difficulty",
+              "factId": "pc_3_keyboard_cat_cat_name"
+            },
+            {
+              "answer": "Kabosu",
+              "source": "similar_difficulty",
+              "factId": "pc_3_doge_dog_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_3_pepe_origin_comic",
+          "masteryLevel": 2,
+          "poolId": "meme_viral_names",
+          "renderedQuestion": "What was the name of Matt Furie's webcomic where Pepe the Frog first appeared in 2005?",
+          "correctAnswer": "Boy's Club",
+          "distractors": [
+            {
+              "answer": "Fatso",
+              "source": "similar_difficulty",
+              "factId": "pc_3_keyboard_cat_cat_name"
+            },
+            {
+              "answer": "Kabosu",
+              "source": "similar_difficulty",
+              "factId": "pc_3_doge_dog_name"
+            },
+            {
+              "answer": "PSY",
+              "source": "pool_fill",
+              "factId": "pc_3_gangnam_artist"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 10 vs avg distractor 4.7 — ratio 2.14×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_pepe_origin_comic",
+          "masteryLevel": 4,
+          "poolId": "meme_viral_names",
+          "renderedQuestion": "What was the name of Matt Furie's webcomic where Pepe the Frog first appeared in 2005?",
+          "correctAnswer": "Boy's Club",
+          "distractors": [
+            {
+              "answer": "Fatso",
+              "source": "similar_difficulty",
+              "factId": "pc_3_keyboard_cat_cat_name"
+            },
+            {
+              "answer": "Kabosu",
+              "source": "similar_difficulty",
+              "factId": "pc_3_doge_dog_name"
+            },
+            {
+              "answer": "PSY",
+              "source": "pool_fill",
+              "factId": "pc_3_gangnam_artist"
+            },
+            {
+              "answer": "Rickroll",
+              "source": "pool_fill",
+              "factId": "_synthetic_Rickroll"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_3_gangnam_artist",
+          "masteryLevel": 0,
+          "poolId": "meme_viral_names",
+          "renderedQuestion": "Which South Korean rapper performed the globally viral Gangnam Style music video in 2012?",
+          "correctAnswer": "PSY",
+          "distractors": [
+            {
+              "answer": "Kabosu",
+              "source": "pool_fill",
+              "factId": "pc_3_doge_dog_name"
+            },
+            {
+              "answer": "Boy's Club",
+              "source": "pool_fill",
+              "factId": "pc_3_pepe_origin_comic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 3 vs avg distractor 8.0 — ratio 0.38×"
+            },
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_gangnam_artist",
+          "masteryLevel": 2,
+          "poolId": "meme_viral_names",
+          "renderedQuestion": "Which South Korean rapper performed the globally viral Gangnam Style music video in 2012?",
+          "correctAnswer": "PSY",
+          "distractors": [
+            {
+              "answer": "Kabosu",
+              "source": "pool_fill",
+              "factId": "pc_3_doge_dog_name"
+            },
+            {
+              "answer": "Boy's Club",
+              "source": "pool_fill",
+              "factId": "pc_3_pepe_origin_comic"
+            },
+            {
+              "answer": "Fatso",
+              "source": "pool_fill",
+              "factId": "pc_3_keyboard_cat_cat_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 3 vs avg distractor 7.0 — ratio 0.43×"
+            },
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "pc_3_gangnam_artist",
+          "masteryLevel": 4,
+          "poolId": "meme_viral_names",
+          "renderedQuestion": "Which South Korean rapper performed the globally viral Gangnam Style music video in 2012?",
+          "correctAnswer": "PSY",
+          "distractors": [
+            {
+              "answer": "Kabosu",
+              "source": "pool_fill",
+              "factId": "pc_3_doge_dog_name"
+            },
+            {
+              "answer": "Boy's Club",
+              "source": "pool_fill",
+              "factId": "pc_3_pepe_origin_comic"
+            },
+            {
+              "answer": "Fatso",
+              "source": "pool_fill",
+              "factId": "pc_3_keyboard_cat_cat_name"
+            },
+            {
+              "answer": "Doge",
+              "source": "pool_fill",
+              "factId": "_synthetic_Doge"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 3 vs avg distractor 6.3 — ratio 0.48×"
+            },
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "pc_4_pokemon_revenue",
+          "masteryLevel": 0,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "Which media franchise is the highest-grossing of all time with over $147 billion in total revenue?",
+          "correctAnswer": "Pokémon",
+          "distractors": [
+            {
+              "answer": "Transformers",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_revenue"
+            },
+            {
+              "answer": "Iron Man",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mcu_first_film"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_4_pokemon_revenue",
+          "masteryLevel": 2,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "Which media franchise is the highest-grossing of all time with over $147 billion in total revenue?",
+          "correctAnswer": "Pokémon",
+          "distractors": [
+            {
+              "answer": "Transformers",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_revenue"
+            },
+            {
+              "answer": "Iron Man",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mcu_first_film"
+            },
+            {
+              "answer": "The Blair Witch Project",
+              "source": "similar_difficulty",
+              "factId": "pc_5_blair_witch_title"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 7 vs avg distractor 14.3 — ratio 0.49×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_4_pokemon_revenue",
+          "masteryLevel": 4,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "Which media franchise is the highest-grossing of all time with over $147 billion in total revenue?",
+          "correctAnswer": "Pokémon",
+          "distractors": [
+            {
+              "answer": "Transformers",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_revenue"
+            },
+            {
+              "answer": "Iron Man",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mcu_first_film"
+            },
+            {
+              "answer": "The Blair Witch Project",
+              "source": "similar_difficulty",
+              "factId": "pc_5_blair_witch_title"
+            },
+            {
+              "answer": "Electronic Entertainment Expo",
+              "source": "similar_difficulty",
+              "factId": "pc_5_e3_full_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 7 vs avg distractor 18.0 — ratio 0.39×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_4_mcu_first_film",
+          "masteryLevel": 0,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "Which 2008 superhero film launched the Marvel Cinematic Universe franchise?",
+          "correctAnswer": "Iron Man",
+          "distractors": [
+            {
+              "answer": "Pokémon",
+              "source": "similar_difficulty",
+              "factId": "pc_4_pokemon_revenue"
+            },
+            {
+              "answer": "Transformers",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_revenue"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_4_mcu_first_film",
+          "masteryLevel": 2,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "Which 2008 superhero film launched the Marvel Cinematic Universe franchise?",
+          "correctAnswer": "Iron Man",
+          "distractors": [
+            {
+              "answer": "Pokémon",
+              "source": "similar_difficulty",
+              "factId": "pc_4_pokemon_revenue"
+            },
+            {
+              "answer": "Transformers",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_revenue"
+            },
+            {
+              "answer": "San Diego Comic-Con",
+              "source": "similar_difficulty",
+              "factId": "pc_5_comic_con_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_4_mcu_first_film",
+          "masteryLevel": 4,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "Which 2008 superhero film launched the Marvel Cinematic Universe franchise?",
+          "correctAnswer": "Iron Man",
+          "distractors": [
+            {
+              "answer": "Pokémon",
+              "source": "similar_difficulty",
+              "factId": "pc_4_pokemon_revenue"
+            },
+            {
+              "answer": "Transformers",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_revenue"
+            },
+            {
+              "answer": "San Diego Comic-Con",
+              "source": "similar_difficulty",
+              "factId": "pc_5_comic_con_name"
+            },
+            {
+              "answer": "The Blair Witch Project",
+              "source": "similar_difficulty",
+              "factId": "pc_5_blair_witch_title"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_4_mcu_box_office",
+          "masteryLevel": 0,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "Which film franchise holds the record as the highest-grossing of all time with over $29 billion at the box office?",
+          "correctAnswer": "Marvel Cinematic Universe",
+          "distractors": [
+            {
+              "answer": "Transformers",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_revenue"
+            },
+            {
+              "answer": "Electronic Entertainment Expo",
+              "source": "similar_difficulty",
+              "factId": "pc_5_e3_full_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_4_mcu_box_office",
+          "masteryLevel": 2,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "Which film franchise holds the record as the highest-grossing of all time with over $29 billion at the box office?",
+          "correctAnswer": "Marvel Cinematic Universe",
+          "distractors": [
+            {
+              "answer": "Transformers",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_revenue"
+            },
+            {
+              "answer": "Electronic Entertainment Expo",
+              "source": "similar_difficulty",
+              "factId": "pc_5_e3_full_name"
+            },
+            {
+              "answer": "San Diego Comic-Con",
+              "source": "similar_difficulty",
+              "factId": "pc_5_comic_con_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_4_mcu_box_office",
+          "masteryLevel": 4,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "Which film franchise holds the record as the highest-grossing of all time with over $29 billion at the box office?",
+          "correctAnswer": "Marvel Cinematic Universe",
+          "distractors": [
+            {
+              "answer": "Transformers",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_revenue"
+            },
+            {
+              "answer": "Electronic Entertainment Expo",
+              "source": "similar_difficulty",
+              "factId": "pc_5_e3_full_name"
+            },
+            {
+              "answer": "San Diego Comic-Con",
+              "source": "similar_difficulty",
+              "factId": "pc_5_comic_con_name"
+            },
+            {
+              "answer": "The Blair Witch Project",
+              "source": "similar_difficulty",
+              "factId": "pc_5_blair_witch_title"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_4_lego_name_meaning",
+          "masteryLevel": 0,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "The name LEGO comes from which Danish phrase meaning 'play well'?",
+          "correctAnswer": "Leg Godt",
+          "distractors": [
+            {
+              "answer": "Transformers",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_revenue"
+            },
+            {
+              "answer": "The Blair Witch Project",
+              "source": "similar_difficulty",
+              "factId": "pc_5_blair_witch_title"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 8 vs avg distractor 17.5 — ratio 0.46×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_4_lego_name_meaning",
+          "masteryLevel": 2,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "The name LEGO comes from which Danish phrase meaning 'play well'?",
+          "correctAnswer": "Leg Godt",
+          "distractors": [
+            {
+              "answer": "Transformers",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_revenue"
+            },
+            {
+              "answer": "The Blair Witch Project",
+              "source": "similar_difficulty",
+              "factId": "pc_5_blair_witch_title"
+            },
+            {
+              "answer": "Electronic Entertainment Expo",
+              "source": "pool_fill",
+              "factId": "pc_5_e3_full_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 8 vs avg distractor 21.3 — ratio 0.38×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_4_lego_name_meaning",
+          "masteryLevel": 4,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "The name LEGO comes from which Danish phrase meaning 'play well'?",
+          "correctAnswer": "Leg Godt",
+          "distractors": [
+            {
+              "answer": "Transformers",
+              "source": "similar_difficulty",
+              "factId": "pc_4_transformers_revenue"
+            },
+            {
+              "answer": "The Blair Witch Project",
+              "source": "similar_difficulty",
+              "factId": "pc_5_blair_witch_title"
+            },
+            {
+              "answer": "Electronic Entertainment Expo",
+              "source": "pool_fill",
+              "factId": "pc_5_e3_full_name"
+            },
+            {
+              "answer": "Iron Man",
+              "source": "pool_fill",
+              "factId": "pc_4_mcu_first_film"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 8 vs avg distractor 18.0 — ratio 0.44×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_4_transformers_revenue",
+          "masteryLevel": 0,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "Which Hasbro franchise, featuring robots that disguise themselves as vehicles, has generated over $25 billion since launching in 1984?",
+          "correctAnswer": "Transformers",
+          "distractors": [
+            {
+              "answer": "Electronic Entertainment Expo",
+              "source": "similar_difficulty",
+              "factId": "pc_5_e3_full_name"
+            },
+            {
+              "answer": "Marvel Cinematic Universe",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mcu_box_office"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 12 vs avg distractor 27.0 — ratio 0.44×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_4_transformers_revenue",
+          "masteryLevel": 2,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "Which Hasbro franchise, featuring robots that disguise themselves as vehicles, has generated over $25 billion since launching in 1984?",
+          "correctAnswer": "Transformers",
+          "distractors": [
+            {
+              "answer": "Electronic Entertainment Expo",
+              "source": "similar_difficulty",
+              "factId": "pc_5_e3_full_name"
+            },
+            {
+              "answer": "Marvel Cinematic Universe",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mcu_box_office"
+            },
+            {
+              "answer": "Iron Man",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mcu_first_film"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_4_transformers_revenue",
+          "masteryLevel": 4,
+          "poolId": "franchise_ip_names",
+          "renderedQuestion": "Which Hasbro franchise, featuring robots that disguise themselves as vehicles, has generated over $25 billion since launching in 1984?",
+          "correctAnswer": "Transformers",
+          "distractors": [
+            {
+              "answer": "Electronic Entertainment Expo",
+              "source": "similar_difficulty",
+              "factId": "pc_5_e3_full_name"
+            },
+            {
+              "answer": "Marvel Cinematic Universe",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mcu_box_office"
+            },
+            {
+              "answer": "Iron Man",
+              "source": "similar_difficulty",
+              "factId": "pc_4_mcu_first_film"
+            },
+            {
+              "answer": "The Blair Witch Project",
+              "source": "similar_difficulty",
+              "factId": "pc_5_blair_witch_title"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_5_oprah_show_name",
+          "masteryLevel": 0,
+          "poolId": "tv_show_names",
+          "renderedQuestion": "Which daytime talk show, running 25 seasons from 1986 to 2011, is considered the highest-rated in its genre's history?",
+          "correctAnswer": "The Oprah Winfrey Show",
+          "distractors": [
+            {
+              "answer": "Serial",
+              "source": "similar_difficulty",
+              "factId": "pc_5_serial_podcast_title"
+            },
+            {
+              "answer": "House of Cards",
+              "source": "similar_difficulty",
+              "factId": "pc_5_netflix_binge_pioneer_show"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 22 vs avg distractor 10.0 — ratio 2.20×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_oprah_show_name",
+          "masteryLevel": 2,
+          "poolId": "tv_show_names",
+          "renderedQuestion": "Which daytime talk show, running 25 seasons from 1986 to 2011, is considered the highest-rated in its genre's history?",
+          "correctAnswer": "The Oprah Winfrey Show",
+          "distractors": [
+            {
+              "answer": "Serial",
+              "source": "similar_difficulty",
+              "factId": "pc_5_serial_podcast_title"
+            },
+            {
+              "answer": "House of Cards",
+              "source": "similar_difficulty",
+              "factId": "pc_5_netflix_binge_pioneer_show"
+            },
+            {
+              "answer": "Ozark",
+              "source": "pool_fill",
+              "factId": "_synthetic_Ozark"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 22 vs avg distractor 8.3 — ratio 2.64×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_oprah_show_name",
+          "masteryLevel": 4,
+          "poolId": "tv_show_names",
+          "renderedQuestion": "Which daytime talk show, running 25 seasons from 1986 to 2011, is considered the highest-rated in its genre's history?",
+          "correctAnswer": "The Oprah Winfrey Show",
+          "distractors": [
+            {
+              "answer": "Serial",
+              "source": "similar_difficulty",
+              "factId": "pc_5_serial_podcast_title"
+            },
+            {
+              "answer": "House of Cards",
+              "source": "similar_difficulty",
+              "factId": "pc_5_netflix_binge_pioneer_show"
+            },
+            {
+              "answer": "Ozark",
+              "source": "pool_fill",
+              "factId": "_synthetic_Ozark"
+            },
+            {
+              "answer": "Cheers",
+              "source": "pool_fill",
+              "factId": "_synthetic_Cheers"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 22 vs avg distractor 7.8 — ratio 2.84×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_netflix_binge_pioneer_show",
+          "masteryLevel": 0,
+          "poolId": "tv_show_names",
+          "renderedQuestion": "Which 2013 Netflix original series pioneered the binge-watching model by dropping an entire season at once?",
+          "correctAnswer": "House of Cards",
+          "distractors": [
+            {
+              "answer": "Serial",
+              "source": "similar_difficulty",
+              "factId": "pc_5_serial_podcast_title"
+            },
+            {
+              "answer": "The Oprah Winfrey Show",
+              "source": "similar_difficulty",
+              "factId": "pc_5_oprah_show_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pc_5_netflix_binge_pioneer_show",
+          "masteryLevel": 2,
+          "poolId": "tv_show_names",
+          "renderedQuestion": "Which 2013 Netflix original series pioneered the binge-watching model by dropping an entire season at once?",
+          "correctAnswer": "House of Cards",
+          "distractors": [
+            {
+              "answer": "Serial",
+              "source": "similar_difficulty",
+              "factId": "pc_5_serial_podcast_title"
+            },
+            {
+              "answer": "The Oprah Winfrey Show",
+              "source": "similar_difficulty",
+              "factId": "pc_5_oprah_show_name"
+            },
+            {
+              "answer": "Seinfeld",
+              "source": "pool_fill",
+              "factId": "_synthetic_Seinfeld"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pc_5_netflix_binge_pioneer_show",
+          "masteryLevel": 4,
+          "poolId": "tv_show_names",
+          "renderedQuestion": "Which 2013 Netflix original series pioneered the binge-watching model by dropping an entire season at once?",
+          "correctAnswer": "House of Cards",
+          "distractors": [
+            {
+              "answer": "Serial",
+              "source": "similar_difficulty",
+              "factId": "pc_5_serial_podcast_title"
+            },
+            {
+              "answer": "The Oprah Winfrey Show",
+              "source": "similar_difficulty",
+              "factId": "pc_5_oprah_show_name"
+            },
+            {
+              "answer": "Seinfeld",
+              "source": "pool_fill",
+              "factId": "_synthetic_Seinfeld"
+            },
+            {
+              "answer": "Fargo",
+              "source": "pool_fill",
+              "factId": "_synthetic_Fargo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pc_5_serial_podcast_title",
+          "masteryLevel": 0,
+          "poolId": "tv_show_names",
+          "renderedQuestion": "Which 2014 podcast amassed over 80 million downloads and is credited with sparking the true crime podcast boom?",
+          "correctAnswer": "Serial",
+          "distractors": [
+            {
+              "answer": "The Oprah Winfrey Show",
+              "source": "similar_difficulty",
+              "factId": "pc_5_oprah_show_name"
+            },
+            {
+              "answer": "House of Cards",
+              "source": "similar_difficulty",
+              "factId": "pc_5_netflix_binge_pioneer_show"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 6 vs avg distractor 18.0 — ratio 0.33×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_serial_podcast_title",
+          "masteryLevel": 2,
+          "poolId": "tv_show_names",
+          "renderedQuestion": "Which 2014 podcast amassed over 80 million downloads and is credited with sparking the true crime podcast boom?",
+          "correctAnswer": "Serial",
+          "distractors": [
+            {
+              "answer": "The Oprah Winfrey Show",
+              "source": "similar_difficulty",
+              "factId": "pc_5_oprah_show_name"
+            },
+            {
+              "answer": "House of Cards",
+              "source": "similar_difficulty",
+              "factId": "pc_5_netflix_binge_pioneer_show"
+            },
+            {
+              "answer": "Justified",
+              "source": "pool_fill",
+              "factId": "_synthetic_Justified"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 6 vs avg distractor 15.0 — ratio 0.40×"
+            }
+          ]
+        },
+        {
+          "factId": "pc_5_serial_podcast_title",
+          "masteryLevel": 4,
+          "poolId": "tv_show_names",
+          "renderedQuestion": "Which 2014 podcast amassed over 80 million downloads and is credited with sparking the true crime podcast boom?",
+          "correctAnswer": "Serial",
+          "distractors": [
+            {
+              "answer": "The Oprah Winfrey Show",
+              "source": "similar_difficulty",
+              "factId": "pc_5_oprah_show_name"
+            },
+            {
+              "answer": "House of Cards",
+              "source": "similar_difficulty",
+              "factId": "pc_5_netflix_binge_pioneer_show"
+            },
+            {
+              "answer": "Justified",
+              "source": "pool_fill",
+              "factId": "_synthetic_Justified"
+            },
+            {
+              "answer": "Narcos",
+              "source": "pool_fill",
+              "factId": "_synthetic_Narcos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 6 vs avg distractor 12.8 — ratio 0.47×"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

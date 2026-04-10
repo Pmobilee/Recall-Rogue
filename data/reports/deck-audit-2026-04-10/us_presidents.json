@@ -1,0 +1,1762 @@
+{
+  "timestamp": "2026-04-10T13:40:39.569Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 62,
+  "totalFails": 0,
+  "totalWarns": 3,
+  "decks": [
+    {
+      "deckId": "us_presidents",
+      "deckName": "US Presidents",
+      "deckClass": "knowledge",
+      "totalFacts": 126,
+      "totalChecks": 62,
+      "failCount": 0,
+      "warnCount": 3,
+      "issuesByType": {
+        "empty_chain_themes_runtime": {
+          "fail": 0,
+          "warn": 1
+        },
+        "mega_pool_runtime_warning": {
+          "fail": 0,
+          "warn": 1
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 1
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_deck_chain_themes",
+          "masteryLevel": -1,
+          "poolId": "_deck",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "empty_chain_themes_runtime",
+              "detail": "Knowledge deck \"us_presidents\" has no chainThemes — Study Temple mode will not work correctly"
+            }
+          ]
+        },
+        {
+          "factId": "_mega_pool_president_names",
+          "masteryLevel": -1,
+          "poolId": "president_names",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "mega_pool_runtime_warning",
+              "detail": "Pool \"president_names\" has 104 factIds (>100) — consider splitting by sub-topic"
+            }
+          ]
+        },
+        {
+          "factId": "pres_washington_unanimous",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president is the ONLY one ever elected unanimously by the Electoral College — twice?",
+          "correctAnswer": "George Washington",
+          "distractors": [
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_china"
+            },
+            {
+              "answer": "Ulysses S. Grant",
+              "source": "similar_difficulty",
+              "factId": "pres_grant_general"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_washington_unanimous",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president is the ONLY one ever elected unanimously by the Electoral College — twice?",
+          "correctAnswer": "George Washington",
+          "distractors": [
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_china"
+            },
+            {
+              "answer": "Ulysses S. Grant",
+              "source": "similar_difficulty",
+              "factId": "pres_grant_general"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_teddy_youngest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_washington_unanimous",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president is the ONLY one ever elected unanimously by the Electoral College — twice?",
+          "correctAnswer": "George Washington",
+          "distractors": [
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_china"
+            },
+            {
+              "answer": "Ulysses S. Grant",
+              "source": "similar_difficulty",
+              "factId": "pres_grant_general"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_teddy_youngest"
+            },
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_self_taught"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_washington_noparty",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president is the only one who never belonged to a political party?",
+          "correctAnswer": "George Washington",
+          "distractors": [
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_troosevelt_youngest"
+            },
+            {
+              "answer": "Warren G. Harding",
+              "source": "similar_difficulty",
+              "factId": "pres_harding_teapot"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_washington_noparty",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president is the only one who never belonged to a political party?",
+          "correctAnswer": "George Washington",
+          "distractors": [
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_troosevelt_youngest"
+            },
+            {
+              "answer": "Warren G. Harding",
+              "source": "similar_difficulty",
+              "factId": "pres_harding_teapot"
+            },
+            {
+              "answer": "Grover Cleveland",
+              "source": "similar_difficulty",
+              "factId": "pres_cleveland_nonconsecutive"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_washington_noparty",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president is the only one who never belonged to a political party?",
+          "correctAnswer": "George Washington",
+          "distractors": [
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_troosevelt_youngest"
+            },
+            {
+              "answer": "Warren G. Harding",
+              "source": "similar_difficulty",
+              "factId": "pres_harding_teapot"
+            },
+            {
+              "answer": "Grover Cleveland",
+              "source": "similar_difficulty",
+              "factId": "pres_cleveland_nonconsecutive"
+            },
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_opened_china"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_adams_j_oneterm",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which Founding Father president lost his re-election bid and became the first president to be voted out of office?",
+          "correctAnswer": "John Adams",
+          "distractors": [
+            {
+              "answer": "Woodrow Wilson",
+              "source": "similar_difficulty",
+              "factId": "pres_wilson_league"
+            },
+            {
+              "answer": "Martin Van Buren",
+              "source": "similar_difficulty",
+              "factId": "pres_vanburenborn_us"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_adams_j_oneterm",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which Founding Father president lost his re-election bid and became the first president to be voted out of office?",
+          "correctAnswer": "John Adams",
+          "distractors": [
+            {
+              "answer": "Woodrow Wilson",
+              "source": "similar_difficulty",
+              "factId": "pres_wilson_league"
+            },
+            {
+              "answer": "Martin Van Buren",
+              "source": "similar_difficulty",
+              "factId": "pres_vanburenborn_us"
+            },
+            {
+              "answer": "James Buchanan",
+              "source": "similar_difficulty",
+              "factId": "pres_buchanan_bachelor"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_adams_j_oneterm",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which Founding Father president lost his re-election bid and became the first president to be voted out of office?",
+          "correctAnswer": "John Adams",
+          "distractors": [
+            {
+              "answer": "Woodrow Wilson",
+              "source": "similar_difficulty",
+              "factId": "pres_wilson_league"
+            },
+            {
+              "answer": "Martin Van Buren",
+              "source": "similar_difficulty",
+              "factId": "pres_vanburenborn_us"
+            },
+            {
+              "answer": "James Buchanan",
+              "source": "similar_difficulty",
+              "factId": "pres_buchanan_bachelor"
+            },
+            {
+              "answer": "Ulysses S. Grant",
+              "source": "similar_difficulty",
+              "factId": "pres_grant_general"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_jefferson_louisiana",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president doubled the size of the United States with the Louisiana Purchase?",
+          "correctAnswer": "Thomas Jefferson",
+          "distractors": [
+            {
+              "answer": "Franklin D. Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_fdr_pearl_harbor"
+            },
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_assassination"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_jefferson_louisiana",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president doubled the size of the United States with the Louisiana Purchase?",
+          "correctAnswer": "Thomas Jefferson",
+          "distractors": [
+            {
+              "answer": "Franklin D. Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_fdr_pearl_harbor"
+            },
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_assassination"
+            },
+            {
+              "answer": "Jimmy Carter",
+              "source": "similar_difficulty",
+              "factId": "pres_carter_habitat"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_jefferson_louisiana",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president doubled the size of the United States with the Louisiana Purchase?",
+          "correctAnswer": "Thomas Jefferson",
+          "distractors": [
+            {
+              "answer": "Franklin D. Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_fdr_pearl_harbor"
+            },
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_assassination"
+            },
+            {
+              "answer": "Jimmy Carter",
+              "source": "similar_difficulty",
+              "factId": "pres_carter_habitat"
+            },
+            {
+              "answer": "James A. Garfield",
+              "source": "similar_difficulty",
+              "factId": "pres_garfield_assassination"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_jefferson_died_july4",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president died on July 4th, 1826 — the exact 50th anniversary of American independence — on the same day as John Adams?",
+          "correctAnswer": "Thomas Jefferson",
+          "distractors": [
+            {
+              "answer": "Millard Fillmore",
+              "source": "similar_difficulty",
+              "factId": "pres_fillmore_last_whig"
+            },
+            {
+              "answer": "Franklin D. Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_fdr_polio"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_jefferson_died_july4",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president died on July 4th, 1826 — the exact 50th anniversary of American independence — on the same day as John Adams?",
+          "correctAnswer": "Thomas Jefferson",
+          "distractors": [
+            {
+              "answer": "Millard Fillmore",
+              "source": "similar_difficulty",
+              "factId": "pres_fillmore_last_whig"
+            },
+            {
+              "answer": "Franklin D. Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_fdr_polio"
+            },
+            {
+              "answer": "Joe Biden",
+              "source": "similar_difficulty",
+              "factId": "pres_biden_infrastructure"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_jefferson_died_july4",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president died on July 4th, 1826 — the exact 50th anniversary of American independence — on the same day as John Adams?",
+          "correctAnswer": "Thomas Jefferson",
+          "distractors": [
+            {
+              "answer": "Millard Fillmore",
+              "source": "similar_difficulty",
+              "factId": "pres_fillmore_last_whig"
+            },
+            {
+              "answer": "Franklin D. Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_fdr_polio"
+            },
+            {
+              "answer": "Joe Biden",
+              "source": "similar_difficulty",
+              "factId": "pres_biden_infrastructure"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_aca"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_lincoln",
+          "masteryLevel": 0,
+          "poolId": "party_names",
+          "renderedQuestion": "What political party did Abraham Lincoln belong to?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_lincoln",
+          "masteryLevel": 2,
+          "poolId": "party_names",
+          "renderedQuestion": "What political party did Abraham Lincoln belong to?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "pool_fill",
+              "factId": "pres_party_virginia_dynasty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_lincoln",
+          "masteryLevel": 4,
+          "poolId": "party_names",
+          "renderedQuestion": "What political party did Abraham Lincoln belong to?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "pool_fill",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "National Union",
+              "source": "pool_fill",
+              "factId": "pres_party_johnson_andrew"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_first",
+          "masteryLevel": 0,
+          "poolId": "party_names",
+          "renderedQuestion": "What party did John Adams belong to — making him the FIRST president to represent a political party?",
+          "correctAnswer": "Federalist Party",
+          "distractors": [
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_first",
+          "masteryLevel": 2,
+          "poolId": "party_names",
+          "renderedQuestion": "What party did John Adams belong to — making him the FIRST president to represent a political party?",
+          "correctAnswer": "Federalist Party",
+          "distractors": [
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_first",
+          "masteryLevel": 4,
+          "poolId": "party_names",
+          "renderedQuestion": "What party did John Adams belong to — making him the FIRST president to represent a political party?",
+          "correctAnswer": "Federalist Party",
+          "distractors": [
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_tr_bullmoose",
+          "masteryLevel": 0,
+          "poolId": "party_names",
+          "renderedQuestion": "Theodore Roosevelt served as president as a member of which party — BEFORE he split off and ran against his own successor?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_tr_bullmoose",
+          "masteryLevel": 2,
+          "poolId": "party_names",
+          "renderedQuestion": "Theodore Roosevelt served as president as a member of which party — BEFORE he split off and ran against his own successor?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_tr_bullmoose",
+          "masteryLevel": 4,
+          "poolId": "party_names",
+          "renderedQuestion": "Theodore Roosevelt served as president as a member of which party — BEFORE he split off and ran against his own successor?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_whig_presidents",
+          "masteryLevel": 0,
+          "poolId": "party_names",
+          "renderedQuestion": "William Henry Harrison, John Tyler, Zachary Taylor, and Millard Fillmore all belonged to which now-defunct party?",
+          "correctAnswer": "Whig Party",
+          "distractors": [
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_whig_presidents",
+          "masteryLevel": 2,
+          "poolId": "party_names",
+          "renderedQuestion": "William Henry Harrison, John Tyler, Zachary Taylor, and Millard Fillmore all belonged to which now-defunct party?",
+          "correctAnswer": "Whig Party",
+          "distractors": [
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_whig_presidents",
+          "masteryLevel": 4,
+          "poolId": "party_names",
+          "renderedQuestion": "William Henry Harrison, John Tyler, Zachary Taylor, and Millard Fillmore all belonged to which now-defunct party?",
+          "correctAnswer": "Whig Party",
+          "distractors": [
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_virginia_dynasty",
+          "masteryLevel": 0,
+          "poolId": "party_names",
+          "renderedQuestion": "Jefferson, Madison, Monroe, and John Quincy Adams all belonged to which party — the dominant force in the 'Era of Good Feelings'?",
+          "correctAnswer": "Democratic-Republican",
+          "distractors": [
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_virginia_dynasty",
+          "masteryLevel": 2,
+          "poolId": "party_names",
+          "renderedQuestion": "Jefferson, Madison, Monroe, and John Quincy Adams all belonged to which party — the dominant force in the 'Era of Good Feelings'?",
+          "correctAnswer": "Democratic-Republican",
+          "distractors": [
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_virginia_dynasty",
+          "masteryLevel": 4,
+          "poolId": "party_names",
+          "renderedQuestion": "Jefferson, Madison, Monroe, and John Quincy Adams all belonged to which party — the dominant force in the 'Era of Good Feelings'?",
+          "correctAnswer": "Democratic-Republican",
+          "distractors": [
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_most_presidents",
+          "masteryLevel": 0,
+          "poolId": "home_states",
+          "renderedQuestion": "Which state has produced more US presidents than any other — earning it the informal title 'Mother of Presidents'?",
+          "correctAnswer": "Virginia",
+          "distractors": [
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_most_presidents",
+          "masteryLevel": 2,
+          "poolId": "home_states",
+          "renderedQuestion": "Which state has produced more US presidents than any other — earning it the informal title 'Mother of Presidents'?",
+          "correctAnswer": "Virginia",
+          "distractors": [
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_most_presidents",
+          "masteryLevel": 4,
+          "poolId": "home_states",
+          "renderedQuestion": "Which state has produced more US presidents than any other — earning it the informal title 'Mother of Presidents'?",
+          "correctAnswer": "Virginia",
+          "distractors": [
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Illinois",
+              "source": "similar_difficulty",
+              "factId": "pres_state_lincoln"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_lincoln",
+          "masteryLevel": 0,
+          "poolId": "home_states",
+          "renderedQuestion": "Abraham Lincoln is known as the president from which state — where he practiced law and launched his political career?",
+          "correctAnswer": "Illinois",
+          "distractors": [
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_lincoln",
+          "masteryLevel": 2,
+          "poolId": "home_states",
+          "renderedQuestion": "Abraham Lincoln is known as the president from which state — where he practiced law and launched his political career?",
+          "correctAnswer": "Illinois",
+          "distractors": [
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_virginia_dynasty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_lincoln",
+          "masteryLevel": 4,
+          "poolId": "home_states",
+          "renderedQuestion": "Abraham Lincoln is known as the president from which state — where he practiced law and launched his political career?",
+          "correctAnswer": "Illinois",
+          "distractors": [
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_virginia_dynasty"
+            },
+            {
+              "answer": "Massachusetts",
+              "source": "similar_difficulty",
+              "factId": "pres_state_massachusetts"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_ohio_record",
+          "masteryLevel": 0,
+          "poolId": "home_states",
+          "renderedQuestion": "Seven presidents — Grant, Hayes, Garfield, Harrison, McKinley, Taft, and Harding — all came from which state, earning it the nickname 'Mother of Presidents'?",
+          "correctAnswer": "Ohio (8 presidents)",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_most_presidents"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 19 vs avg distractor 8.0 — ratio 2.38×"
+            }
+          ]
+        },
+        {
+          "factId": "pres_state_ohio_record",
+          "masteryLevel": 2,
+          "poolId": "home_states",
+          "renderedQuestion": "Seven presidents — Grant, Hayes, Garfield, Harrison, McKinley, Taft, and Harding — all came from which state, earning it the nickname 'Mother of Presidents'?",
+          "correctAnswer": "Ohio (8 presidents)",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_most_presidents"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Massachusetts",
+              "source": "similar_difficulty",
+              "factId": "pres_state_massachusetts"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_ohio_record",
+          "masteryLevel": 4,
+          "poolId": "home_states",
+          "renderedQuestion": "Seven presidents — Grant, Hayes, Garfield, Harrison, McKinley, Taft, and Harding — all came from which state, earning it the nickname 'Mother of Presidents'?",
+          "correctAnswer": "Ohio (8 presidents)",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_most_presidents"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Massachusetts",
+              "source": "similar_difficulty",
+              "factId": "pres_state_massachusetts"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_virginia_dynasty",
+          "masteryLevel": 0,
+          "poolId": "home_states",
+          "renderedQuestion": "The first five presidents included four from the same state — Washington, Jefferson, Madison, and Monroe. What was this dominance nicknamed, and which state did it refer to?",
+          "correctAnswer": "Virginia",
+          "distractors": [
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_virginia_dynasty",
+          "masteryLevel": 2,
+          "poolId": "home_states",
+          "renderedQuestion": "The first five presidents included four from the same state — Washington, Jefferson, Madison, and Monroe. What was this dominance nicknamed, and which state did it refer to?",
+          "correctAnswer": "Virginia",
+          "distractors": [
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_virginia_dynasty",
+          "masteryLevel": 4,
+          "poolId": "home_states",
+          "renderedQuestion": "The first five presidents included four from the same state — Washington, Jefferson, Madison, and Monroe. What was this dominance nicknamed, and which state did it refer to?",
+          "correctAnswer": "Virginia",
+          "distractors": [
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            },
+            {
+              "answer": "Massachusetts",
+              "source": "similar_difficulty",
+              "factId": "pres_state_massachusetts"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_new_york",
+          "masteryLevel": 0,
+          "poolId": "home_states",
+          "renderedQuestion": "Theodore Roosevelt, FDR, and which other five presidents all claimed which state as their home — the second or third most presidential state?",
+          "correctAnswer": "New York",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_virginia_dynasty"
+            },
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_new_york",
+          "masteryLevel": 2,
+          "poolId": "home_states",
+          "renderedQuestion": "Theodore Roosevelt, FDR, and which other five presidents all claimed which state as their home — the second or third most presidential state?",
+          "correctAnswer": "New York",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_virginia_dynasty"
+            },
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            },
+            {
+              "answer": "Illinois",
+              "source": "similar_difficulty",
+              "factId": "pres_state_lincoln"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_new_york",
+          "masteryLevel": 4,
+          "poolId": "home_states",
+          "renderedQuestion": "Theodore Roosevelt, FDR, and which other five presidents all claimed which state as their home — the second or third most presidential state?",
+          "correctAnswer": "New York",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_virginia_dynasty"
+            },
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            },
+            {
+              "answer": "Illinois",
+              "source": "similar_difficulty",
+              "factId": "pres_state_lincoln"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_washington",
+          "masteryLevel": 0,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was George Washington first inaugurated as president?",
+          "correctAnswer": "1789",
+          "distractors": [
+            {
+              "answer": "1816",
+              "source": "numerical",
+              "factId": "_numerical_1816"
+            },
+            {
+              "answer": "1762",
+              "source": "numerical",
+              "factId": "_numerical_1762"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_washington",
+          "masteryLevel": 2,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was George Washington first inaugurated as president?",
+          "correctAnswer": "1789",
+          "distractors": [
+            {
+              "answer": "1816",
+              "source": "numerical",
+              "factId": "_numerical_1816"
+            },
+            {
+              "answer": "1762",
+              "source": "numerical",
+              "factId": "_numerical_1762"
+            },
+            {
+              "answer": "1829",
+              "source": "numerical",
+              "factId": "_numerical_1829"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_washington",
+          "masteryLevel": 4,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was George Washington first inaugurated as president?",
+          "correctAnswer": "1789",
+          "distractors": [
+            {
+              "answer": "1816",
+              "source": "numerical",
+              "factId": "_numerical_1816"
+            },
+            {
+              "answer": "1762",
+              "source": "numerical",
+              "factId": "_numerical_1762"
+            },
+            {
+              "answer": "1829",
+              "source": "numerical",
+              "factId": "_numerical_1829"
+            },
+            {
+              "answer": "1758",
+              "source": "numerical",
+              "factId": "_numerical_1758"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_lincoln",
+          "masteryLevel": 0,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Abraham Lincoln inaugurated, just weeks before the American Civil War began?",
+          "correctAnswer": "1861",
+          "distractors": [
+            {
+              "answer": "1877",
+              "source": "numerical",
+              "factId": "_numerical_1877"
+            },
+            {
+              "answer": "1836",
+              "source": "numerical",
+              "factId": "_numerical_1836"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_lincoln",
+          "masteryLevel": 2,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Abraham Lincoln inaugurated, just weeks before the American Civil War began?",
+          "correctAnswer": "1861",
+          "distractors": [
+            {
+              "answer": "1877",
+              "source": "numerical",
+              "factId": "_numerical_1877"
+            },
+            {
+              "answer": "1836",
+              "source": "numerical",
+              "factId": "_numerical_1836"
+            },
+            {
+              "answer": "1920",
+              "source": "numerical",
+              "factId": "_numerical_1920"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_lincoln",
+          "masteryLevel": 4,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Abraham Lincoln inaugurated, just weeks before the American Civil War began?",
+          "correctAnswer": "1861",
+          "distractors": [
+            {
+              "answer": "1877",
+              "source": "numerical",
+              "factId": "_numerical_1877"
+            },
+            {
+              "answer": "1836",
+              "source": "numerical",
+              "factId": "_numerical_1836"
+            },
+            {
+              "answer": "1920",
+              "source": "numerical",
+              "factId": "_numerical_1920"
+            },
+            {
+              "answer": "1806",
+              "source": "numerical",
+              "factId": "_numerical_1806"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_fdr",
+          "masteryLevel": 0,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Franklin D. Roosevelt first inaugurated, during the depths of the Great Depression?",
+          "correctAnswer": "1933",
+          "distractors": [
+            {
+              "answer": "1942",
+              "source": "numerical",
+              "factId": "_numerical_1942"
+            },
+            {
+              "answer": "1910",
+              "source": "numerical",
+              "factId": "_numerical_1910"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_fdr",
+          "masteryLevel": 2,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Franklin D. Roosevelt first inaugurated, during the depths of the Great Depression?",
+          "correctAnswer": "1933",
+          "distractors": [
+            {
+              "answer": "1942",
+              "source": "numerical",
+              "factId": "_numerical_1942"
+            },
+            {
+              "answer": "1910",
+              "source": "numerical",
+              "factId": "_numerical_1910"
+            },
+            {
+              "answer": "1961",
+              "source": "numerical",
+              "factId": "_numerical_1961"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_fdr",
+          "masteryLevel": 4,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Franklin D. Roosevelt first inaugurated, during the depths of the Great Depression?",
+          "correctAnswer": "1933",
+          "distractors": [
+            {
+              "answer": "1942",
+              "source": "numerical",
+              "factId": "_numerical_1942"
+            },
+            {
+              "answer": "1910",
+              "source": "numerical",
+              "factId": "_numerical_1910"
+            },
+            {
+              "answer": "1961",
+              "source": "numerical",
+              "factId": "_numerical_1961"
+            },
+            {
+              "answer": "1911",
+              "source": "numerical",
+              "factId": "_numerical_1911"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_jfk",
+          "masteryLevel": 0,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year did John F. Kennedy deliver his famous 'Ask not what your country can do for you' inaugural address?",
+          "correctAnswer": "1961",
+          "distractors": [
+            {
+              "answer": "1980",
+              "source": "numerical",
+              "factId": "_numerical_1980"
+            },
+            {
+              "answer": "1933",
+              "source": "numerical",
+              "factId": "_numerical_1933"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_jfk",
+          "masteryLevel": 2,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year did John F. Kennedy deliver his famous 'Ask not what your country can do for you' inaugural address?",
+          "correctAnswer": "1961",
+          "distractors": [
+            {
+              "answer": "1980",
+              "source": "numerical",
+              "factId": "_numerical_1980"
+            },
+            {
+              "answer": "1933",
+              "source": "numerical",
+              "factId": "_numerical_1933"
+            },
+            {
+              "answer": "1956",
+              "source": "numerical",
+              "factId": "_numerical_1956"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_jfk",
+          "masteryLevel": 4,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year did John F. Kennedy deliver his famous 'Ask not what your country can do for you' inaugural address?",
+          "correctAnswer": "1961",
+          "distractors": [
+            {
+              "answer": "1980",
+              "source": "numerical",
+              "factId": "_numerical_1980"
+            },
+            {
+              "answer": "1933",
+              "source": "numerical",
+              "factId": "_numerical_1933"
+            },
+            {
+              "answer": "1956",
+              "source": "numerical",
+              "factId": "_numerical_1956"
+            },
+            {
+              "answer": "1985",
+              "source": "numerical",
+              "factId": "_numerical_1985"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_jefferson",
+          "masteryLevel": 0,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Thomas Jefferson inaugurated after the first peaceful transfer of power between political rivals?",
+          "correctAnswer": "1801",
+          "distractors": [
+            {
+              "answer": "1840",
+              "source": "numerical",
+              "factId": "_numerical_1840"
+            },
+            {
+              "answer": "1746",
+              "source": "numerical",
+              "factId": "_numerical_1746"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_jefferson",
+          "masteryLevel": 2,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Thomas Jefferson inaugurated after the first peaceful transfer of power between political rivals?",
+          "correctAnswer": "1801",
+          "distractors": [
+            {
+              "answer": "1840",
+              "source": "numerical",
+              "factId": "_numerical_1840"
+            },
+            {
+              "answer": "1746",
+              "source": "numerical",
+              "factId": "_numerical_1746"
+            },
+            {
+              "answer": "1842",
+              "source": "numerical",
+              "factId": "_numerical_1842"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_jefferson",
+          "masteryLevel": 4,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Thomas Jefferson inaugurated after the first peaceful transfer of power between political rivals?",
+          "correctAnswer": "1801",
+          "distractors": [
+            {
+              "answer": "1840",
+              "source": "numerical",
+              "factId": "_numerical_1840"
+            },
+            {
+              "answer": "1746",
+              "source": "numerical",
+              "factId": "_numerical_1746"
+            },
+            {
+              "answer": "1842",
+              "source": "numerical",
+              "factId": "_numerical_1842"
+            },
+            {
+              "answer": "1760",
+              "source": "numerical",
+              "factId": "_numerical_1760"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

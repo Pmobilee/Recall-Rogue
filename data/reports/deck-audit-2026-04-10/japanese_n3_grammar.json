@@ -1,0 +1,3830 @@
+{
+  "timestamp": "2026-04-10T13:40:28.257Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 135,
+  "totalFails": 0,
+  "totalWarns": 3,
+  "decks": [
+    {
+      "deckId": "japanese_n3_grammar",
+      "deckName": "Japanese N3 Grammar",
+      "deckClass": "vocab",
+      "totalFacts": 670,
+      "totalChecks": 135,
+      "failCount": 0,
+      "warnCount": 3,
+      "issuesByType": {
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "ja-gram-n3-1304-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "食べ過ぎて、イチゴ{___}食べられない。\n(I am so full I could not [even] eat a strawberry.)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "がち",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1238-fill-0"
+            },
+            {
+              "answer": "に限",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-143-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "食べ過ぎて、イチゴ{___}食べられない。\n(I am so full I could not [even] eat a strawberry.)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "がち",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1238-fill-0"
+            },
+            {
+              "answer": "に限",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-143-fill-4"
+            },
+            {
+              "answer": "こんな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-988-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "食べ過ぎて、イチゴ{___}食べられない。\n(I am so full I could not [even] eat a strawberry.)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "がち",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1238-fill-0"
+            },
+            {
+              "answer": "に限",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-143-fill-4"
+            },
+            {
+              "answer": "こんな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-988-fill-0"
+            },
+            {
+              "answer": "の様",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1713-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "食べ物がなくなれば、人間はネズミ{___}食べる。\n(If there is no food, humans would [even] eat a mouse.)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "せい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1583-fill-4"
+            },
+            {
+              "answer": "を聞いた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1138-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "食べ物がなくなれば、人間はネズミ{___}食べる。\n(If there is no food, humans would [even] eat a mouse.)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "せい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1583-fill-4"
+            },
+            {
+              "answer": "を聞いた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1138-fill-4"
+            },
+            {
+              "answer": "だい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-714-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "食べ物がなくなれば、人間はネズミ{___}食べる。\n(If there is no food, humans would [even] eat a mouse.)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "せい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1583-fill-4"
+            },
+            {
+              "answer": "を聞いた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1138-fill-4"
+            },
+            {
+              "answer": "だい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-714-fill-0"
+            },
+            {
+              "answer": "為",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1130-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "ほとんどの人がその存在{___}知らないようなこと\n(thing which most people don't [even] know exists)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "もしかして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1722-fill-1"
+            },
+            {
+              "answer": "によ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-974-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "ほとんどの人がその存在{___}知らないようなこと\n(thing which most people don't [even] know exists)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "もしかして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1722-fill-1"
+            },
+            {
+              "answer": "によ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-974-fill-1"
+            },
+            {
+              "answer": "て",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-609-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "ほとんどの人がその存在{___}知らないようなこと\n(thing which most people don't [even] know exists)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "もしかして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1722-fill-1"
+            },
+            {
+              "answer": "によ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-974-fill-1"
+            },
+            {
+              "answer": "て",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-609-fill-3"
+            },
+            {
+              "answer": "とす",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-541-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-3",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "ソースコードを見つけられ{___}しないのに、開発するなんてもってのほかだ。\n(they can't [even] -find- the source code, let alone finish developing it!)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "わ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-776-fill-1"
+            },
+            {
+              "answer": "かどうか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-893-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-3",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "ソースコードを見つけられ{___}しないのに、開発するなんてもってのほかだ。\n(they can't [even] -find- the source code, let alone finish developing it!)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "わ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-776-fill-1"
+            },
+            {
+              "answer": "かどうか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-893-fill-4"
+            },
+            {
+              "answer": "させる",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1302-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-3",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "ソースコードを見つけられ{___}しないのに、開発するなんてもってのほかだ。\n(they can't [even] -find- the source code, let alone finish developing it!)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "わ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-776-fill-1"
+            },
+            {
+              "answer": "かどうか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-893-fill-4"
+            },
+            {
+              "answer": "させる",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1302-fill-4"
+            },
+            {
+              "answer": "もしかして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1722-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-4",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "定規を使って{___}、まっすぐに線が引けない。\n([Even] using a ruler, he cannot draw a straight line.)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "せねばならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1519-fill-3"
+            },
+            {
+              "answer": "にくい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1408-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-4",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "定規を使って{___}、まっすぐに線が引けない。\n([Even] using a ruler, he cannot draw a straight line.)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "せねばならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1519-fill-3"
+            },
+            {
+              "answer": "にくい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1408-fill-3"
+            },
+            {
+              "answer": "について",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1305-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1304-fill-4",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "定規を使って{___}、まっすぐに線が引けない。\n([Even] using a ruler, he cannot draw a straight line.)",
+          "correctAnswer": "さえ",
+          "distractors": [
+            {
+              "answer": "せねばならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1519-fill-3"
+            },
+            {
+              "answer": "にくい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1408-fill-3"
+            },
+            {
+              "answer": "について",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1305-fill-4"
+            },
+            {
+              "answer": "放題",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1651-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-509-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私は日本に行った{___}日本語を勉強した\n([When] I was in Japan, I studied Japanese.)",
+          "correctAnswer": "時",
+          "distractors": [
+            {
+              "answer": "うと",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1145-fill-2"
+            },
+            {
+              "answer": "として",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-585-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-509-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私は日本に行った{___}日本語を勉強した\n([When] I was in Japan, I studied Japanese.)",
+          "correctAnswer": "時",
+          "distractors": [
+            {
+              "answer": "うと",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1145-fill-2"
+            },
+            {
+              "answer": "として",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-585-fill-4"
+            },
+            {
+              "answer": "とする",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-541-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-509-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私は日本に行った{___}日本語を勉強した\n([When] I was in Japan, I studied Japanese.)",
+          "correctAnswer": "時",
+          "distractors": [
+            {
+              "answer": "うと",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1145-fill-2"
+            },
+            {
+              "answer": "として",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-585-fill-4"
+            },
+            {
+              "answer": "とする",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-541-fill-1"
+            },
+            {
+              "answer": "やすい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1645-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-509-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "いつでも都合のいい{___}にお金を返してください。\n(Pay me back [when] it's convenient.)",
+          "correctAnswer": "時",
+          "distractors": [
+            {
+              "answer": "らしい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-854-fill-2"
+            },
+            {
+              "answer": "できるだけ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1473-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-509-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "いつでも都合のいい{___}にお金を返してください。\n(Pay me back [when] it's convenient.)",
+          "correctAnswer": "時",
+          "distractors": [
+            {
+              "answer": "らしい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-854-fill-2"
+            },
+            {
+              "answer": "できるだけ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1473-fill-4"
+            },
+            {
+              "answer": "にくい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1408-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-509-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "いつでも都合のいい{___}にお金を返してください。\n(Pay me back [when] it's convenient.)",
+          "correctAnswer": "時",
+          "distractors": [
+            {
+              "answer": "らしい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-854-fill-2"
+            },
+            {
+              "answer": "できるだけ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1473-fill-4"
+            },
+            {
+              "answer": "にくい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1408-fill-2"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-749-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1493-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "このコンピューター１年前に買ったばかり{___}、もうすっかり時代遅れだわ。\n([Even though] I bought this computer one year ago, it's already old fashioned.)",
+          "correctAnswer": "なのに",
+          "distractors": [
+            {
+              "answer": "それで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1486-fill-2"
+            },
+            {
+              "answer": "にしては",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1289-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1493-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "このコンピューター１年前に買ったばかり{___}、もうすっかり時代遅れだわ。\n([Even though] I bought this computer one year ago, it's already old fashioned.)",
+          "correctAnswer": "なのに",
+          "distractors": [
+            {
+              "answer": "それで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1486-fill-2"
+            },
+            {
+              "answer": "にしては",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1289-fill-3"
+            },
+            {
+              "answer": "ようにな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1504-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1493-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "このコンピューター１年前に買ったばかり{___}、もうすっかり時代遅れだわ。\n([Even though] I bought this computer one year ago, it's already old fashioned.)",
+          "correctAnswer": "なのに",
+          "distractors": [
+            {
+              "answer": "それで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1486-fill-2"
+            },
+            {
+              "answer": "にしては",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1289-fill-3"
+            },
+            {
+              "answer": "ようにな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1504-fill-3"
+            },
+            {
+              "answer": "べき",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-779-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1493-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この情報は当然最新であるべき{___}、実際はそうでない。\n(This information is not as up-to-date [as it should be].)",
+          "correctAnswer": "なのに",
+          "distractors": [
+            {
+              "answer": "として",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-585-fill-2"
+            },
+            {
+              "answer": "ところ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-589-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1493-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この情報は当然最新であるべき{___}、実際はそうでない。\n(This information is not as up-to-date [as it should be].)",
+          "correctAnswer": "なのに",
+          "distractors": [
+            {
+              "answer": "として",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-585-fill-2"
+            },
+            {
+              "answer": "ところ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-589-fill-0"
+            },
+            {
+              "answer": "こそ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-253-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1493-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この情報は当然最新であるべき{___}、実際はそうでない。\n(This information is not as up-to-date [as it should be].)",
+          "correctAnswer": "なのに",
+          "distractors": [
+            {
+              "answer": "として",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-585-fill-2"
+            },
+            {
+              "answer": "ところ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-589-fill-0"
+            },
+            {
+              "answer": "こそ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-253-fill-2"
+            },
+            {
+              "answer": "そうもない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1721-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1493-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "これは新しい靴{___}もう修理する必要がある。\n(These new shoes [already] want mending.)",
+          "correctAnswer": "なのに",
+          "distractors": [
+            {
+              "answer": "どうぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1717-fill-4"
+            },
+            {
+              "answer": "とは限らない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-516-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1493-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "これは新しい靴{___}もう修理する必要がある。\n(These new shoes [already] want mending.)",
+          "correctAnswer": "なのに",
+          "distractors": [
+            {
+              "answer": "どうぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1717-fill-4"
+            },
+            {
+              "answer": "とは限らない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-516-fill-1"
+            },
+            {
+              "answer": "ほど",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1760-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1493-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "これは新しい靴{___}もう修理する必要がある。\n(These new shoes [already] want mending.)",
+          "correctAnswer": "なのに",
+          "distractors": [
+            {
+              "answer": "どうぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1717-fill-4"
+            },
+            {
+              "answer": "とは限らない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-516-fill-1"
+            },
+            {
+              "answer": "ほど",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1760-fill-0"
+            },
+            {
+              "answer": "の",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-737-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "朝寝坊した。{___}仕事に遅れたんだ。\n(I overslept. [Due to that], I was late for work.)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "とする",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-541-fill-2"
+            },
+            {
+              "answer": "たい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-757-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "朝寝坊した。{___}仕事に遅れたんだ。\n(I overslept. [Due to that], I was late for work.)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "とする",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-541-fill-2"
+            },
+            {
+              "answer": "たい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-757-fill-0"
+            },
+            {
+              "answer": "よう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-861-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "朝寝坊した。{___}仕事に遅れたんだ。\n(I overslept. [Due to that], I was late for work.)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "とする",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-541-fill-2"
+            },
+            {
+              "answer": "たい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-757-fill-0"
+            },
+            {
+              "answer": "よう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-861-fill-1"
+            },
+            {
+              "answer": "に従い",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-972-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "３時のバスで行こうよ。{___}いいかい？\n(I say we catch the 3 o'clock bus. [Is that alright] with you?)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "について",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1305-fill-3"
+            },
+            {
+              "answer": "せっかく",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-852-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "３時のバスで行こうよ。{___}いいかい？\n(I say we catch the 3 o'clock bus. [Is that alright] with you?)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "について",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1305-fill-3"
+            },
+            {
+              "answer": "せっかく",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-852-fill-0"
+            },
+            {
+              "answer": "せいで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1583-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "３時のバスで行こうよ。{___}いいかい？\n(I say we catch the 3 o'clock bus. [Is that alright] with you?)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "について",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1305-fill-3"
+            },
+            {
+              "answer": "せっかく",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-852-fill-0"
+            },
+            {
+              "answer": "せいで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1583-fill-0"
+            },
+            {
+              "answer": "下さいませんか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1720-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}どうなりましたか？\n([And then] what happened?)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "できるだけ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1473-fill-4"
+            },
+            {
+              "answer": "気が",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1117-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}どうなりましたか？\n([And then] what happened?)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "できるだけ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1473-fill-4"
+            },
+            {
+              "answer": "気が",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1117-fill-0"
+            },
+            {
+              "answer": "から",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1163-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}どうなりましたか？\n([And then] what happened?)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "できるだけ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1473-fill-4"
+            },
+            {
+              "answer": "気が",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1117-fill-0"
+            },
+            {
+              "answer": "から",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1163-fill-3"
+            },
+            {
+              "answer": "さもないと",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1706-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-3",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}このカードに記入してください。\n([Then] you just have to fill out this card.)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-705-fill-3"
+            },
+            {
+              "answer": "どうせ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1175-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-3",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}このカードに記入してください。\n([Then] you just have to fill out this card.)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-705-fill-3"
+            },
+            {
+              "answer": "どうせ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1175-fill-2"
+            },
+            {
+              "answer": "ってば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1516-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-3",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}このカードに記入してください。\n([Then] you just have to fill out this card.)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-705-fill-3"
+            },
+            {
+              "answer": "どうせ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1175-fill-2"
+            },
+            {
+              "answer": "ってば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1516-fill-0"
+            },
+            {
+              "answer": "そうもない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1721-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-4",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}これ以上の義務を負わなくてよくなる。\n([That] absolves me from further responsibility.)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "わざとらしい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1657-fill-0"
+            },
+            {
+              "answer": "によって",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1249-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-4",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}これ以上の義務を負わなくてよくなる。\n([That] absolves me from further responsibility.)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "わざとらしい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1657-fill-0"
+            },
+            {
+              "answer": "によって",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1249-fill-4"
+            },
+            {
+              "answer": "としても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-410-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1486-fill-4",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}これ以上の義務を負わなくてよくなる。\n([That] absolves me from further responsibility.)",
+          "correctAnswer": "それで",
+          "distractors": [
+            {
+              "answer": "わざとらしい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1657-fill-0"
+            },
+            {
+              "answer": "によって",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1249-fill-4"
+            },
+            {
+              "answer": "としても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-410-fill-2"
+            },
+            {
+              "answer": "に反して",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-100-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私のボスは、短気で怒り{___}。　　　（怒りっぽい is conventional.）\n(My boss is short-tempered and [tends to] get angry easily.)",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1499-fill-1"
+            },
+            {
+              "answer": "に比べて",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1300-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私のボスは、短気で怒り{___}。　　　（怒りっぽい is conventional.）\n(My boss is short-tempered and [tends to] get angry easily.)",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1499-fill-1"
+            },
+            {
+              "answer": "に比べて",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1300-fill-4"
+            },
+            {
+              "answer": "たっけ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1710-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私のボスは、短気で怒り{___}。　　　（怒りっぽい is conventional.）\n(My boss is short-tempered and [tends to] get angry easily.)",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1499-fill-1"
+            },
+            {
+              "answer": "に比べて",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1300-fill-4"
+            },
+            {
+              "answer": "たっけ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1710-fill-0"
+            },
+            {
+              "answer": "できるだけ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1473-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "担当者の好き嫌いによる誤解も場合によっては起こり{___}。\n(In some cases, misunderstanding [tends to] occur due to the likes and dislikes of the person in charge.)",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "に従い",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-972-fill-0"
+            },
+            {
+              "answer": "せねばならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1519-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "担当者の好き嫌いによる誤解も場合によっては起こり{___}。\n(In some cases, misunderstanding [tends to] occur due to the likes and dislikes of the person in charge.)",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "に従い",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-972-fill-0"
+            },
+            {
+              "answer": "せねばならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1519-fill-1"
+            },
+            {
+              "answer": "放題",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1651-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "担当者の好き嫌いによる誤解も場合によっては起こり{___}。\n(In some cases, misunderstanding [tends to] occur due to the likes and dislikes of the person in charge.)",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "に従い",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-972-fill-0"
+            },
+            {
+              "answer": "せねばならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1519-fill-1"
+            },
+            {
+              "answer": "放題",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1651-fill-2"
+            },
+            {
+              "answer": "う間",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1652-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "曇り{___}\n(mainly [cloudy])",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "べき",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-779-fill-2"
+            },
+            {
+              "answer": "について",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1305-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "曇り{___}\n(mainly [cloudy])",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "べき",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-779-fill-2"
+            },
+            {
+              "answer": "について",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1305-fill-3"
+            },
+            {
+              "answer": "がする",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-556-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "曇り{___}\n(mainly [cloudy])",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "べき",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-779-fill-2"
+            },
+            {
+              "answer": "について",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1305-fill-3"
+            },
+            {
+              "answer": "がする",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-556-fill-0"
+            },
+            {
+              "answer": "もりだった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1632-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-3",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "遠慮{___}\n([Tends to be] reserved/timid)",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "くれ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1596-fill-1"
+            },
+            {
+              "answer": "あまり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1627-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-3",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "遠慮{___}\n([Tends to be] reserved/timid)",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "くれ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1596-fill-1"
+            },
+            {
+              "answer": "あまり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1627-fill-2"
+            },
+            {
+              "answer": "それで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1486-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-3",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "遠慮{___}\n([Tends to be] reserved/timid)",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "くれ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1596-fill-1"
+            },
+            {
+              "answer": "あまり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1627-fill-2"
+            },
+            {
+              "answer": "それで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1486-fill-4"
+            },
+            {
+              "answer": "ついでに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-917-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-4",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "お金持ちは貧乏人を見下し{___}である。\n(The rich are [apt to] look down upon the poor.)",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "にな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-687-fill-1"
+            },
+            {
+              "answer": "とする",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-541-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-4",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "お金持ちは貧乏人を見下し{___}である。\n(The rich are [apt to] look down upon the poor.)",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "にな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-687-fill-1"
+            },
+            {
+              "answer": "とする",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-541-fill-2"
+            },
+            {
+              "answer": "もしかして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1722-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1238-fill-4",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "お金持ちは貧乏人を見下し{___}である。\n(The rich are [apt to] look down upon the poor.)",
+          "correctAnswer": "がち",
+          "distractors": [
+            {
+              "answer": "にな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-687-fill-1"
+            },
+            {
+              "answer": "とする",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-541-fill-2"
+            },
+            {
+              "answer": "もしかして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1722-fill-3"
+            },
+            {
+              "answer": "反面",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1481-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "全然見込みがないわけ{___}が、あまり期待はしない方がいいでしょう\n(it [does not mean] that there is no hope, but you'd better not expect too much)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "うと",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1145-fill-0"
+            },
+            {
+              "answer": "がち",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1238-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "全然見込みがないわけ{___}が、あまり期待はしない方がいいでしょう\n(it [does not mean] that there is no hope, but you'd better not expect too much)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "うと",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1145-fill-0"
+            },
+            {
+              "answer": "がち",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1238-fill-1"
+            },
+            {
+              "answer": "の",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-641-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "全然見込みがないわけ{___}が、あまり期待はしない方がいいでしょう\n(it [does not mean] that there is no hope, but you'd better not expect too much)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "うと",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1145-fill-0"
+            },
+            {
+              "answer": "がち",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1238-fill-1"
+            },
+            {
+              "answer": "の",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-641-fill-1"
+            },
+            {
+              "answer": "しま",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-718-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あいつは馬鹿というわけ{___}がそれにしても、やってることはどうかなあ。\n(While I am [not saying] he is stupid, I have my doubts when I look at what he is actually doing.)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "みたい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-633-fill-0"
+            },
+            {
+              "answer": "下さいませんか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1720-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あいつは馬鹿というわけ{___}がそれにしても、やってることはどうかなあ。\n(While I am [not saying] he is stupid, I have my doubts when I look at what he is actually doing.)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "みたい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-633-fill-0"
+            },
+            {
+              "answer": "下さいませんか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1720-fill-3"
+            },
+            {
+              "answer": "ひいては",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1681-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あいつは馬鹿というわけ{___}がそれにしても、やってることはどうかなあ。\n(While I am [not saying] he is stupid, I have my doubts when I look at what he is actually doing.)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "みたい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-633-fill-0"
+            },
+            {
+              "answer": "下さいませんか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1720-fill-3"
+            },
+            {
+              "answer": "ひいては",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1681-fill-0"
+            },
+            {
+              "answer": "ない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1478-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "世界中の人が同じ言語を話すわけ{___}ので、現在、翻訳に多くの努力が費やされている。\n(Because people in the world [don't] speak the same language, much effort is now devoted to translation.)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "てしまう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1400-fill-3"
+            },
+            {
+              "answer": "よ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-752-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "世界中の人が同じ言語を話すわけ{___}ので、現在、翻訳に多くの努力が費やされている。\n(Because people in the world [don't] speak the same language, much effort is now devoted to translation.)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "てしまう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1400-fill-3"
+            },
+            {
+              "answer": "よ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-752-fill-0"
+            },
+            {
+              "answer": "ようになる",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1504-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "世界中の人が同じ言語を話すわけ{___}ので、現在、翻訳に多くの努力が費やされている。\n(Because people in the world [don't] speak the same language, much effort is now devoted to translation.)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "てしまう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1400-fill-3"
+            },
+            {
+              "answer": "よ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-752-fill-0"
+            },
+            {
+              "answer": "ようになる",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1504-fill-2"
+            },
+            {
+              "answer": "やすい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1645-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-3",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あの男しかいないわけ{___}よ。\n(He is [not] the only pebble on the beach.)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "こんな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-988-fill-3"
+            },
+            {
+              "answer": "ちゅう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-739-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-3",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あの男しかいないわけ{___}よ。\n(He is [not] the only pebble on the beach.)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "こんな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-988-fill-3"
+            },
+            {
+              "answer": "ちゅう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-739-fill-2"
+            },
+            {
+              "answer": "ばかり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1502-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-3",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あの男しかいないわけ{___}よ。\n(He is [not] the only pebble on the beach.)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "こんな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-988-fill-3"
+            },
+            {
+              "answer": "ちゅう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-739-fill-2"
+            },
+            {
+              "answer": "ばかり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1502-fill-0"
+            },
+            {
+              "answer": "だろう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-856-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-4",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あれは全く誤りというわけ{___}。\n(That is [not altogether] false.)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "からして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-502-fill-2"
+            },
+            {
+              "answer": "それで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1486-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-4",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あれは全く誤りというわけ{___}。\n(That is [not altogether] false.)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "からして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-502-fill-2"
+            },
+            {
+              "answer": "それで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1486-fill-0"
+            },
+            {
+              "answer": "なあ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-652-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-544-fill-4",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あれは全く誤りというわけ{___}。\n(That is [not altogether] false.)",
+          "correctAnswer": "ではない",
+          "distractors": [
+            {
+              "answer": "からして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-502-fill-2"
+            },
+            {
+              "answer": "それで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1486-fill-0"
+            },
+            {
+              "answer": "なあ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-652-fill-0"
+            },
+            {
+              "answer": "ようになる",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1504-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1596-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼女は、「これを　洗って　{___}ないか　い」と　いった。\n(She said, \"Please wash this [for me].\")",
+          "correctAnswer": "くれ",
+          "distractors": [
+            {
+              "answer": "を中心に",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1295-fill-1"
+            },
+            {
+              "answer": "である",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-733-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1596-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼女は、「これを　洗って　{___}ないか　い」と　いった。\n(She said, \"Please wash this [for me].\")",
+          "correctAnswer": "くれ",
+          "distractors": [
+            {
+              "answer": "を中心に",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1295-fill-1"
+            },
+            {
+              "answer": "である",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-733-fill-1"
+            },
+            {
+              "answer": "ところを",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1162-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1596-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼女は、「これを　洗って　{___}ないか　い」と　いった。\n(She said, \"Please wash this [for me].\")",
+          "correctAnswer": "くれ",
+          "distractors": [
+            {
+              "answer": "を中心に",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1295-fill-1"
+            },
+            {
+              "answer": "である",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-733-fill-1"
+            },
+            {
+              "answer": "ところを",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1162-fill-0"
+            },
+            {
+              "answer": "について",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1305-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1596-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "先生は私に本を{___}ました。\n(My teacher [gave me] a book.)",
+          "correctAnswer": "くれ",
+          "distractors": [
+            {
+              "answer": "でも",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1771-fill-0"
+            },
+            {
+              "answer": "あまり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1627-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1596-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "先生は私に本を{___}ました。\n(My teacher [gave me] a book.)",
+          "correctAnswer": "くれ",
+          "distractors": [
+            {
+              "answer": "でも",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1771-fill-0"
+            },
+            {
+              "answer": "あまり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1627-fill-0"
+            },
+            {
+              "answer": "っぽい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1530-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1596-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "先生は私に本を{___}ました。\n(My teacher [gave me] a book.)",
+          "correctAnswer": "くれ",
+          "distractors": [
+            {
+              "answer": "でも",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1771-fill-0"
+            },
+            {
+              "answer": "あまり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1627-fill-0"
+            },
+            {
+              "answer": "っぽい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1530-fill-2"
+            },
+            {
+              "answer": "ことから",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1320-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1596-fill-3",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "友達は私に本を買って{___}ました。\n(My friend bought (and) [gave me] a book.)",
+          "correctAnswer": "くれ",
+          "distractors": [
+            {
+              "answer": "どうせ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1175-fill-4"
+            },
+            {
+              "answer": "てもいいですか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1723-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1596-fill-3",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "友達は私に本を買って{___}ました。\n(My friend bought (and) [gave me] a book.)",
+          "correctAnswer": "くれ",
+          "distractors": [
+            {
+              "answer": "どうせ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1175-fill-4"
+            },
+            {
+              "answer": "てもいいですか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1723-fill-3"
+            },
+            {
+              "answer": "なら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-780-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1596-fill-3",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "友達は私に本を買って{___}ました。\n(My friend bought (and) [gave me] a book.)",
+          "correctAnswer": "くれ",
+          "distractors": [
+            {
+              "answer": "どうせ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1175-fill-4"
+            },
+            {
+              "answer": "てもいいですか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1723-fill-3"
+            },
+            {
+              "answer": "なら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-780-fill-4"
+            },
+            {
+              "answer": "それで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1486-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1596-fill-4",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "今日、来て{___}てありがとうございます。\n(Thankyou for coming today. (more formal)",
+          "correctAnswer": "くれ",
+          "distractors": [
+            {
+              "answer": "為",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1130-fill-3"
+            },
+            {
+              "answer": "こそ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-253-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1596-fill-4",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "今日、来て{___}てありがとうございます。\n(Thankyou for coming today. (more formal)",
+          "correctAnswer": "くれ",
+          "distractors": [
+            {
+              "answer": "為",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1130-fill-3"
+            },
+            {
+              "answer": "こそ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-253-fill-0"
+            },
+            {
+              "answer": "積もりだった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1632-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-1596-fill-4",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "今日、来て{___}てありがとうございます。\n(Thankyou for coming today. (more formal)",
+          "correctAnswer": "くれ",
+          "distractors": [
+            {
+              "answer": "為",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1130-fill-3"
+            },
+            {
+              "answer": "こそ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-253-fill-0"
+            },
+            {
+              "answer": "積もりだった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1632-fill-0"
+            },
+            {
+              "answer": "向き",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-308-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-609-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "茶碗を口のところまで持っ{___}くるのは行儀が悪い。\n([Bringing] the bowl up to your mouth is bad manners.)",
+          "correctAnswer": "て",
+          "distractors": [
+            {
+              "answer": "だからこそ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1494-fill-0"
+            },
+            {
+              "answer": "おかげで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-55-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-609-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "茶碗を口のところまで持っ{___}くるのは行儀が悪い。\n([Bringing] the bowl up to your mouth is bad manners.)",
+          "correctAnswer": "て",
+          "distractors": [
+            {
+              "answer": "だからこそ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1494-fill-0"
+            },
+            {
+              "answer": "おかげで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-55-fill-4"
+            },
+            {
+              "answer": "に対して",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-522-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-609-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "茶碗を口のところまで持っ{___}くるのは行儀が悪い。\n([Bringing] the bowl up to your mouth is bad manners.)",
+          "correctAnswer": "て",
+          "distractors": [
+            {
+              "answer": "だからこそ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1494-fill-0"
+            },
+            {
+              "answer": "おかげで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-55-fill-4"
+            },
+            {
+              "answer": "に対して",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-522-fill-3"
+            },
+            {
+              "answer": "みたい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-633-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "外から{___}撮ってもいいよ と言われたので，外に出て撮影しました。\n(I was told that [if] you're taking it from outside I don't mind so I went out and took the shot.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "とは限らない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-516-fill-3"
+            },
+            {
+              "answer": "ではない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-544-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "外から{___}撮ってもいいよ と言われたので，外に出て撮影しました。\n(I was told that [if] you're taking it from outside I don't mind so I went out and took the shot.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "とは限らない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-516-fill-3"
+            },
+            {
+              "answer": "ではない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-544-fill-1"
+            },
+            {
+              "answer": "にしては",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1289-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "外から{___}撮ってもいいよ と言われたので，外に出て撮影しました。\n(I was told that [if] you're taking it from outside I don't mind so I went out and took the shot.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "とは限らない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-516-fill-3"
+            },
+            {
+              "answer": "ではない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-544-fill-1"
+            },
+            {
+              "answer": "にしては",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1289-fill-3"
+            },
+            {
+              "answer": "訳",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-781-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "乗る{___}飲むな。\n([If] you drive, don't drink.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "今では",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1585-fill-0"
+            },
+            {
+              "answer": "こそ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-253-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "乗る{___}飲むな。\n([If] you drive, don't drink.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "今では",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1585-fill-0"
+            },
+            {
+              "answer": "こそ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-253-fill-2"
+            },
+            {
+              "answer": "ところで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-868-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "乗る{___}飲むな。\n([If] you drive, don't drink.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "今では",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1585-fill-0"
+            },
+            {
+              "answer": "こそ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-253-fill-2"
+            },
+            {
+              "answer": "ところで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-868-fill-1"
+            },
+            {
+              "answer": "に限",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-143-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "自分の信念を隠すくらい{___}死んだほうがましだ。\n(I would rather die than conceal my belief.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "方が",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-786-fill-2"
+            },
+            {
+              "answer": "為",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1130-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "自分の信念を隠すくらい{___}死んだほうがましだ。\n(I would rather die than conceal my belief.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "方が",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-786-fill-2"
+            },
+            {
+              "answer": "為",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1130-fill-1"
+            },
+            {
+              "answer": "どうせ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1175-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "自分の信念を隠すくらい{___}死んだほうがましだ。\n(I would rather die than conceal my belief.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "方が",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-786-fill-2"
+            },
+            {
+              "answer": "為",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1130-fill-1"
+            },
+            {
+              "answer": "どうせ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1175-fill-2"
+            },
+            {
+              "answer": "たっけ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1710-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-3",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "よんどころない理由で参加されないの{___}前払い金はお返しします。\n([If] you cannot attend for unavoidable reasons, we will refund your advance payment.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "ついでに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-917-fill-1"
+            },
+            {
+              "answer": "そうもない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1721-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-3",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "よんどころない理由で参加されないの{___}前払い金はお返しします。\n([If] you cannot attend for unavoidable reasons, we will refund your advance payment.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "ついでに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-917-fill-1"
+            },
+            {
+              "answer": "そうもない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1721-fill-4"
+            },
+            {
+              "answer": "できるだけ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1473-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-3",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "よんどころない理由で参加されないの{___}前払い金はお返しします。\n([If] you cannot attend for unavoidable reasons, we will refund your advance payment.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "ついでに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-917-fill-1"
+            },
+            {
+              "answer": "そうもない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1721-fill-4"
+            },
+            {
+              "answer": "できるだけ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1473-fill-1"
+            },
+            {
+              "answer": "あまり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-476-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-4",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "ご都合により参加されないの{___}前払い金はお返ししません。\n([If] you cannot attend for reasons of your own, the advance payment will not be refunded.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "どうぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1717-fill-3"
+            },
+            {
+              "answer": "の様",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1713-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-4",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "ご都合により参加されないの{___}前払い金はお返ししません。\n([If] you cannot attend for reasons of your own, the advance payment will not be refunded.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "どうぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1717-fill-3"
+            },
+            {
+              "answer": "の様",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1713-fill-0"
+            },
+            {
+              "answer": "訳",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-781-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-780-fill-4",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "ご都合により参加されないの{___}前払い金はお返ししません。\n([If] you cannot attend for reasons of your own, the advance payment will not be refunded.)",
+          "correctAnswer": "なら",
+          "distractors": [
+            {
+              "answer": "どうぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1717-fill-3"
+            },
+            {
+              "answer": "の様",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1713-fill-0"
+            },
+            {
+              "answer": "訳",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-781-fill-1"
+            },
+            {
+              "answer": "であろう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1501-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "結婚する{___}は大変だ。\n([Getting married] is such an effort!)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "に対して",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-522-fill-2"
+            },
+            {
+              "answer": "もしかして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1722-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "結婚する{___}は大変だ。\n([Getting married] is such an effort!)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "に対して",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-522-fill-2"
+            },
+            {
+              "answer": "もしかして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1722-fill-4"
+            },
+            {
+              "answer": "聞いた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1138-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "結婚する{___}は大変だ。\n([Getting married] is such an effort!)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "に対して",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-522-fill-2"
+            },
+            {
+              "answer": "もしかして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1722-fill-4"
+            },
+            {
+              "answer": "聞いた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1138-fill-1"
+            },
+            {
+              "answer": "がち",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1238-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "「さあ、皆さん、正々堂々戦いましょう」全選手が周りに集まる{___}を待って先生が言った。\n(\"Well, everyone, let's play fair and square.\" the teacher said after waiting for all the players to assemble[+].)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "だい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-714-fill-0"
+            },
+            {
+              "answer": "に比べて",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1300-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "「さあ、皆さん、正々堂々戦いましょう」全選手が周りに集まる{___}を待って先生が言った。\n(\"Well, everyone, let's play fair and square.\" the teacher said after waiting for all the players to assemble[+].)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "だい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-714-fill-0"
+            },
+            {
+              "answer": "に比べて",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1300-fill-1"
+            },
+            {
+              "answer": "によって",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1249-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "「さあ、皆さん、正々堂々戦いましょう」全選手が周りに集まる{___}を待って先生が言った。\n(\"Well, everyone, let's play fair and square.\" the teacher said after waiting for all the players to assemble[+].)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "だい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-714-fill-0"
+            },
+            {
+              "answer": "に比べて",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1300-fill-1"
+            },
+            {
+              "answer": "によって",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1249-fill-0"
+            },
+            {
+              "answer": "やす",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1645-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "夢に耽ったり、生きることを忘れてしまう{___}はよくない。\n([Becoming absorbed in a dream, forgetting to live] is no good.)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1499-fill-4"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-638-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "夢に耽ったり、生きることを忘れてしまう{___}はよくない。\n([Becoming absorbed in a dream, forgetting to live] is no good.)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1499-fill-4"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-638-fill-2"
+            },
+            {
+              "answer": "に限",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-143-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "夢に耽ったり、生きることを忘れてしまう{___}はよくない。\n([Becoming absorbed in a dream, forgetting to live] is no good.)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1499-fill-4"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-638-fill-2"
+            },
+            {
+              "answer": "に限",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-143-fill-4"
+            },
+            {
+              "answer": "を",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-767-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-3",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私も買い物に行く{___}が好きです。\n(I also like [to go shopping].)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "であろう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1501-fill-1"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-749-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-3",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私も買い物に行く{___}が好きです。\n(I also like [to go shopping].)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "であろう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1501-fill-1"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-749-fill-2"
+            },
+            {
+              "answer": "について",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1305-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-3",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私も買い物に行く{___}が好きです。\n(I also like [to go shopping].)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "であろう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1501-fill-1"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-749-fill-2"
+            },
+            {
+              "answer": "について",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1305-fill-4"
+            },
+            {
+              "answer": "あまり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1627-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-4",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "アルバイトをしながら学校に行く{___}は大変ですね。\n([Having a part time job while going to school] is hard, right?)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1499-fill-4"
+            },
+            {
+              "answer": "あまり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-476-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-4",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "アルバイトをしながら学校に行く{___}は大変ですね。\n([Having a part time job while going to school] is hard, right?)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1499-fill-4"
+            },
+            {
+              "answer": "あまり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-476-fill-1"
+            },
+            {
+              "answer": "ましてや",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1520-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-641-fill-4",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "アルバイトをしながら学校に行く{___}は大変ですね。\n([Having a part time job while going to school] is hard, right?)",
+          "correctAnswer": "の",
+          "distractors": [
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1499-fill-4"
+            },
+            {
+              "answer": "あまり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-476-fill-1"
+            },
+            {
+              "answer": "ましてや",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1520-fill-1"
+            },
+            {
+              "answer": "くれ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1596-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-733-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "医者{___}田中さん\n(The Tanaka san who [is] a doctor.)",
+          "correctAnswer": "である",
+          "distractors": [
+            {
+              "answer": "それで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1486-fill-0"
+            },
+            {
+              "answer": "てもいいですか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1723-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies person name answers but 3 options don't match: \"である\", \"それで\", \"てもいいですか\""
+            }
+          ]
+        },
+        {
+          "factId": "ja-gram-n3-733-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "医者{___}田中さん\n(The Tanaka san who [is] a doctor.)",
+          "correctAnswer": "である",
+          "distractors": [
+            {
+              "answer": "それで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1486-fill-0"
+            },
+            {
+              "answer": "てもいいですか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1723-fill-4"
+            },
+            {
+              "answer": "からして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1778-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies person name answers but 4 options don't match: \"である\", \"それで\", \"てもいいですか\", \"からして\""
+            }
+          ]
+        },
+        {
+          "factId": "ja-gram-n3-733-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "医者{___}田中さん\n(The Tanaka san who [is] a doctor.)",
+          "correctAnswer": "である",
+          "distractors": [
+            {
+              "answer": "それで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1486-fill-0"
+            },
+            {
+              "answer": "てもいいですか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1723-fill-4"
+            },
+            {
+              "answer": "からして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1778-fill-1"
+            },
+            {
+              "answer": "くらい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1595-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies person name answers but 5 options don't match: \"である\", \"それで\", \"てもいいですか\", \"からして\", \"くらい\""
+            }
+          ]
+        },
+        {
+          "factId": "ja-gram-n3-733-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "そう{___}としても、この場合は別でしょう。\n(Even if that [is] correct, would it not have to be different in this case?)",
+          "correctAnswer": "である",
+          "distractors": [
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-693-fill-0"
+            },
+            {
+              "answer": "べき",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-779-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-733-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "そう{___}としても、この場合は別でしょう。\n(Even if that [is] correct, would it not have to be different in this case?)",
+          "correctAnswer": "である",
+          "distractors": [
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-693-fill-0"
+            },
+            {
+              "answer": "べき",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-779-fill-1"
+            },
+            {
+              "answer": "そうもない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1721-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-733-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "そう{___}としても、この場合は別でしょう。\n(Even if that [is] correct, would it not have to be different in this case?)",
+          "correctAnswer": "である",
+          "distractors": [
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-693-fill-0"
+            },
+            {
+              "answer": "べき",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-779-fill-1"
+            },
+            {
+              "answer": "そうもない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1721-fill-3"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-638-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-733-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "いつも正直{___}ということは、容易なことではない。\n(To [be] always honest is not easy.)",
+          "correctAnswer": "である",
+          "distractors": [
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1593-fill-0"
+            },
+            {
+              "answer": "だろう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-856-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-733-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "いつも正直{___}ということは、容易なことではない。\n(To [be] always honest is not easy.)",
+          "correctAnswer": "である",
+          "distractors": [
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1593-fill-0"
+            },
+            {
+              "answer": "だろう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-856-fill-3"
+            },
+            {
+              "answer": "を聞いた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1138-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-733-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "いつも正直{___}ということは、容易なことではない。\n(To [be] always honest is not easy.)",
+          "correctAnswer": "である",
+          "distractors": [
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1593-fill-0"
+            },
+            {
+              "answer": "だろう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-856-fill-3"
+            },
+            {
+              "answer": "を聞いた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1138-fill-3"
+            },
+            {
+              "answer": "くれ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1596-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-638-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私はきっと変{___}人だと思われてる。\n(I'm sure I'm thought of as an [odd] person.)",
+          "correctAnswer": "な",
+          "distractors": [
+            {
+              "answer": "そうもない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1721-fill-2"
+            },
+            {
+              "answer": "より",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-789-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-638-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私はきっと変{___}人だと思われてる。\n(I'm sure I'm thought of as an [odd] person.)",
+          "correctAnswer": "な",
+          "distractors": [
+            {
+              "answer": "そうもない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1721-fill-2"
+            },
+            {
+              "answer": "より",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-789-fill-3"
+            },
+            {
+              "answer": "ところを",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1162-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-638-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私はきっと変{___}人だと思われてる。\n(I'm sure I'm thought of as an [odd] person.)",
+          "correctAnswer": "な",
+          "distractors": [
+            {
+              "answer": "そうもない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1721-fill-2"
+            },
+            {
+              "answer": "より",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-789-fill-3"
+            },
+            {
+              "answer": "ところを",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1162-fill-0"
+            },
+            {
+              "answer": "に比べて",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1300-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-638-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼女はきれい{___}足をしている。\n(She has [beautiful] legs.)",
+          "correctAnswer": "な",
+          "distractors": [
+            {
+              "answer": "どうぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1717-fill-3"
+            },
+            {
+              "answer": "聞いた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1138-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-638-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼女はきれい{___}足をしている。\n(She has [beautiful] legs.)",
+          "correctAnswer": "な",
+          "distractors": [
+            {
+              "answer": "どうぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1717-fill-3"
+            },
+            {
+              "answer": "聞いた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1138-fill-1"
+            },
+            {
+              "answer": "ほど",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1760-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n3-638-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼女はきれい{___}足をしている。\n(She has [beautiful] legs.)",
+          "correctAnswer": "な",
+          "distractors": [
+            {
+              "answer": "どうぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1717-fill-3"
+            },
+            {
+              "answer": "聞いた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1138-fill-1"
+            },
+            {
+              "answer": "ほど",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1760-fill-2"
+            },
+            {
+              "answer": "であろう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n3-1501-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

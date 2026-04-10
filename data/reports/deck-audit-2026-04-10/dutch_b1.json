@@ -1,0 +1,447 @@
+{
+  "timestamp": "2026-04-10T13:40:17.870Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 0,
+  "decks": [
+    {
+      "deckId": "dutch_b1",
+      "deckName": "Dutch B1 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 232,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 0,
+      "issuesByType": {},
+      "factResults": [
+        {
+          "factId": "nl-cefr-947",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aandacht' mean?",
+          "correctAnswer": "attention",
+          "distractors": [
+            {
+              "answer": "space, room",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1111"
+            },
+            {
+              "answer": "reason",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1099"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-947",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aandacht' mean?",
+          "correctAnswer": "attention",
+          "distractors": [
+            {
+              "answer": "space, room",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1111"
+            },
+            {
+              "answer": "reason",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1099"
+            },
+            {
+              "answer": "society",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1112"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-947",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aandacht' mean?",
+          "correctAnswer": "attention",
+          "distractors": [
+            {
+              "answer": "space, room",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1111"
+            },
+            {
+              "answer": "reason",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1099"
+            },
+            {
+              "answer": "society",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1112"
+            },
+            {
+              "answer": "handy, convenient",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1025"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-948",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'absoluut' mean?",
+          "correctAnswer": "absolute, complete",
+          "distractors": [
+            {
+              "answer": "cause",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1075"
+            },
+            {
+              "answer": "accident",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1071"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-948",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'absoluut' mean?",
+          "correctAnswer": "absolute, complete",
+          "distractors": [
+            {
+              "answer": "cause",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1075"
+            },
+            {
+              "answer": "accident",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1071"
+            },
+            {
+              "answer": "society",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1057"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-948",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'absoluut' mean?",
+          "correctAnswer": "absolute, complete",
+          "distractors": [
+            {
+              "answer": "cause",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1075"
+            },
+            {
+              "answer": "accident",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1071"
+            },
+            {
+              "answer": "society",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1057"
+            },
+            {
+              "answer": "result",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1106"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-949",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'actie' mean?",
+          "correctAnswer": "action, activity",
+          "distractors": [
+            {
+              "answer": "artist",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1046"
+            },
+            {
+              "answer": "judge",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1097"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-949",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'actie' mean?",
+          "correctAnswer": "action, activity",
+          "distractors": [
+            {
+              "answer": "artist",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1046"
+            },
+            {
+              "answer": "judge",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1097"
+            },
+            {
+              "answer": "desk",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-975"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-949",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'actie' mean?",
+          "correctAnswer": "action, activity",
+          "distractors": [
+            {
+              "answer": "artist",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1046"
+            },
+            {
+              "answer": "judge",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1097"
+            },
+            {
+              "answer": "desk",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-975"
+            },
+            {
+              "answer": "period",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1086"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-950",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'activiteit' mean?",
+          "correctAnswer": "activity",
+          "distractors": [
+            {
+              "answer": "program",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1093"
+            },
+            {
+              "answer": "space, room",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1111"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-950",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'activity' in Dutch?",
+          "correctAnswer": "activiteit",
+          "distractors": [
+            {
+              "answer": "programma",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1093"
+            },
+            {
+              "answer": "ruimte",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1111"
+            },
+            {
+              "answer": "actie",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-949"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-950",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'activity' in Dutch?",
+          "correctAnswer": "activiteit",
+          "distractors": [
+            {
+              "answer": "programma",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1093"
+            },
+            {
+              "answer": "ruimte",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1111"
+            },
+            {
+              "answer": "actie",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-949"
+            },
+            {
+              "answer": "cd",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-979"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-951",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'ambtenaar' mean?",
+          "correctAnswer": "civil servant",
+          "distractors": [
+            {
+              "answer": "government",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1102"
+            },
+            {
+              "answer": "building, structure",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1009"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-951",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'civil servant' in Dutch?",
+          "correctAnswer": "ambtenaar",
+          "distractors": [
+            {
+              "answer": "regering",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1102"
+            },
+            {
+              "answer": "gebouw",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1009"
+            },
+            {
+              "answer": "werkgever",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1171"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-951",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'civil servant' in Dutch?",
+          "correctAnswer": "ambtenaar",
+          "distractors": [
+            {
+              "answer": "regering",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1102"
+            },
+            {
+              "answer": "gebouw",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1009"
+            },
+            {
+              "answer": "werkgever",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1171"
+            },
+            {
+              "answer": "thema",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1138"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

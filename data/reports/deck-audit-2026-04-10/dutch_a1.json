@@ -1,0 +1,488 @@
+{
+  "timestamp": "2026-04-10T13:40:17.082Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 6,
+  "decks": [
+    {
+      "deckId": "dutch_a1",
+      "deckName": "Dutch A1 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 161,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 6,
+      "issuesByType": {
+        "pos_mismatch": {
+          "fail": 0,
+          "warn": 6
+        }
+      },
+      "factResults": [
+        {
+          "factId": "nl-cefr-1",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aardig' mean?",
+          "correctAnswer": "friendly, nice",
+          "distractors": [
+            {
+              "answer": "late",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-67"
+            },
+            {
+              "answer": "tasty, nice",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-71"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"tasty, nice\" POS \"noun\" != correct \"adverb\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-1",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'friendly, nice' in Dutch?",
+          "correctAnswer": "aardig",
+          "distractors": [
+            {
+              "answer": "laat",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-67"
+            },
+            {
+              "answer": "lekker",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-71"
+            },
+            {
+              "answer": "soms",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-117"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"lekker\" POS \"noun\" != correct \"adverb\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-1",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'aardig'?",
+          "correctAnswer": "friendly, nice",
+          "distractors": [
+            {
+              "answer": "tasty, nice",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-71"
+            },
+            {
+              "answer": "late",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-67"
+            },
+            {
+              "answer": "sometimes",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-117"
+            },
+            {
+              "answer": "together",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-110"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"tasty, nice\" POS \"noun\" != correct \"adverb\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-2",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'alleen' mean?",
+          "correctAnswer": "alone",
+          "distractors": [
+            {
+              "answer": "soft",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            },
+            {
+              "answer": "beach, strand",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-121"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-2",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'alone' in Dutch?",
+          "correctAnswer": "alleen",
+          "distractors": [
+            {
+              "answer": "zacht",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            },
+            {
+              "answer": "strand",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-121"
+            },
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-44"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-2",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'alleen'?",
+          "correctAnswer": "alone",
+          "distractors": [
+            {
+              "answer": "soft",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            },
+            {
+              "answer": "beach, strand",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-121"
+            },
+            {
+              "answer": "whole, complete",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-44"
+            },
+            {
+              "answer": "old",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-102"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-3",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'altijd' mean?",
+          "correctAnswer": "always",
+          "distractors": [
+            {
+              "answer": "still, yet",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-95"
+            },
+            {
+              "answer": "backwards, back",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-122"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-3",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'always' in Dutch?",
+          "correctAnswer": "altijd",
+          "distractors": [
+            {
+              "answer": "nog",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-95"
+            },
+            {
+              "answer": "terug",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-122"
+            },
+            {
+              "answer": "graag",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-40"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-3",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'altijd'?",
+          "correctAnswer": "always",
+          "distractors": [
+            {
+              "answer": "still, yet",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-95"
+            },
+            {
+              "answer": "backwards, back",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-122"
+            },
+            {
+              "answer": "gladly, willingly",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-40"
+            },
+            {
+              "answer": "early",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-139"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-4",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'ander' mean?",
+          "correctAnswer": "other",
+          "distractors": [
+            {
+              "answer": "much",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-129"
+            },
+            {
+              "answer": "to come",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-63"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"to come\" POS \"verb\" != correct \"determiner\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-4",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'other' in Dutch?",
+          "correctAnswer": "ander",
+          "distractors": [
+            {
+              "answer": "veel",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-129"
+            },
+            {
+              "answer": "komen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-63"
+            },
+            {
+              "answer": "hoe",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-47"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"komen\" POS \"verb\" != correct \"determiner\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-4",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'ander'?",
+          "correctAnswer": "other",
+          "distractors": [
+            {
+              "answer": "much",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-129"
+            },
+            {
+              "answer": "to come",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-63"
+            },
+            {
+              "answer": "how",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-47"
+            },
+            {
+              "answer": "eye",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-100"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"to come\" POS \"verb\" != correct \"determiner\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-5",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'auto' mean?",
+          "correctAnswer": "car, automobile",
+          "distractors": [
+            {
+              "answer": "name",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-91"
+            },
+            {
+              "answer": "year",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-53"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-5",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'car, automobile' in Dutch?",
+          "correctAnswer": "auto",
+          "distractors": [
+            {
+              "answer": "naam",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-91"
+            },
+            {
+              "answer": "jaar",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-53"
+            },
+            {
+              "answer": "hond",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-48"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-5",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'auto'?",
+          "correctAnswer": "car, automobile",
+          "distractors": [
+            {
+              "answer": "name",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-91"
+            },
+            {
+              "answer": "year",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-53"
+            },
+            {
+              "answer": "dog",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-48"
+            },
+            {
+              "answer": "thing",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-26"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

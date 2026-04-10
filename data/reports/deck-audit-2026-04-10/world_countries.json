@@ -1,0 +1,72 @@
+{
+  "timestamp": "2026-04-10T13:40:40.731Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 2,
+  "totalFails": 0,
+  "totalWarns": 2,
+  "decks": [
+    {
+      "deckId": "world_countries",
+      "deckName": "World Countries",
+      "deckClass": "knowledge",
+      "totalFacts": 168,
+      "totalChecks": 2,
+      "failCount": 0,
+      "warnCount": 2,
+      "issuesByType": {
+        "empty_chain_themes_runtime": {
+          "fail": 0,
+          "warn": 1
+        },
+        "mega_pool_runtime_warning": {
+          "fail": 0,
+          "warn": 1
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_deck_chain_themes",
+          "masteryLevel": -1,
+          "poolId": "_deck",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "empty_chain_themes_runtime",
+              "detail": "Knowledge deck \"world_countries\" has no chainThemes — Study Temple mode will not work correctly"
+            }
+          ]
+        },
+        {
+          "factId": "_mega_pool_country_names_short",
+          "masteryLevel": -1,
+          "poolId": "country_names_short",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "mega_pool_runtime_warning",
+              "detail": "Pool \"country_names_short\" has 136 factIds (>100) — consider splitting by sub-topic"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

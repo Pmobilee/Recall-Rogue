@@ -1,0 +1,550 @@
+{
+  "timestamp": "2026-04-10T13:40:13.867Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 16,
+  "decks": [
+    {
+      "deckId": "chinese_hsk6",
+      "deckName": "Chinese HSK 6 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 2666,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 16,
+      "issuesByType": {
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 2
+        },
+        "chinese_sense_mismatch_runtime": {
+          "fail": 0,
+          "warn": 9
+        },
+        "pos_mismatch": {
+          "fail": 0,
+          "warn": 5
+        }
+      },
+      "factResults": [
+        {
+          "factId": "zh-hsk-4436",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '哦' mean?",
+          "correctAnswer": "oh; I see",
+          "distractors": [
+            {
+              "answer": "hey",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5254"
+            },
+            {
+              "answer": "hi; hey",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4555"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"hey\" has 2 format features different from correct \"oh; I see\""
+            },
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-4436\" correctAnswer senses [I see] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-4436",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '哦'?",
+          "correctAnswer": "oh; I see",
+          "distractors": [
+            {
+              "answer": "āi yō",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5254"
+            },
+            {
+              "answer": "hāi",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4555"
+            },
+            {
+              "answer": "hēi",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4560"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"hāi\" has 2 format features different from correct \"oh; I see\""
+            },
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-4436\" correctAnswer senses [I see] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-4436",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'oh; I see' in Chinese?",
+          "correctAnswer": "哦",
+          "distractors": [
+            {
+              "answer": "哎哟",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5254"
+            },
+            {
+              "answer": "嗨",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4555"
+            },
+            {
+              "answer": "嘿",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4560"
+            },
+            {
+              "answer": "亲热",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5920"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"亲热\" POS \"noun\" != correct \"interjection\""
+            },
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-4436\" correctAnswer senses [I see] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-4437",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '啦' mean?",
+          "correctAnswer": "exclamatory particle",
+          "distractors": [
+            {
+              "answer": "aspect",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5237"
+            },
+            {
+              "answer": "pointing at",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-7156"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"pointing at\" POS \"noun\" != correct \"particle\""
+            },
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-4437\" correctAnswer senses [exclamatory particle] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-4437",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '啦'?",
+          "correctAnswer": "exclamatory particle",
+          "distractors": [
+            {
+              "answer": "céng miàn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5237"
+            },
+            {
+              "answer": "zhǐzhe",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-7156"
+            },
+            {
+              "answer": "jiāo qì",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-7078"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"zhǐzhe\" POS \"noun\" != correct \"particle\""
+            },
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-4437\" correctAnswer senses [exclamatory particle] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-4437",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'exclamatory particle' in Chinese?",
+          "correctAnswer": "啦",
+          "distractors": [
+            {
+              "answer": "层面",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5237"
+            },
+            {
+              "answer": "指着",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-7156"
+            },
+            {
+              "answer": "娇气",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-7078"
+            },
+            {
+              "answer": "驻",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4969"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"指着\" POS \"noun\" != correct \"particle\""
+            },
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-4437\" correctAnswer senses [exclamatory particle] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-4438",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '如' mean?",
+          "correctAnswer": "as",
+          "distractors": [
+            {
+              "answer": "curio",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5801"
+            },
+            {
+              "answer": "deficit",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6332"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-4438",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '如'?",
+          "correctAnswer": "as",
+          "distractors": [
+            {
+              "answer": "gǔ dǒng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5801"
+            },
+            {
+              "answer": "kuī sǔn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6332"
+            },
+            {
+              "answer": "rén cí",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6278"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-4438",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '如'?",
+          "correctAnswer": "as",
+          "distractors": [
+            {
+              "answer": "gǔ dǒng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5801"
+            },
+            {
+              "answer": "kuī sǔn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6332"
+            },
+            {
+              "answer": "rén cí",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6278"
+            },
+            {
+              "answer": "zhōng jiū",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5359"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-4439",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '同' mean?",
+          "correctAnswer": "like",
+          "distractors": [
+            {
+              "answer": "along",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4877"
+            },
+            {
+              "answer": "outside",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6505"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-4439",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '同'?",
+          "correctAnswer": "like",
+          "distractors": [
+            {
+              "answer": "yán",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4877"
+            },
+            {
+              "answer": "wài tou",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6505"
+            },
+            {
+              "answer": "āi zhe",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5911"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-4439",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '同'?",
+          "correctAnswer": "like",
+          "distractors": [
+            {
+              "answer": "yán",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4877"
+            },
+            {
+              "answer": "wài tou",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6505"
+            },
+            {
+              "answer": "āi zhe",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5911"
+            },
+            {
+              "answer": "shèng chǎn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6934"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"shèng chǎn\" POS \"verb\" != correct \"preposition\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-4440",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '作' mean?",
+          "correctAnswer": "to do; to make",
+          "distractors": [
+            {
+              "answer": "to accumulate",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5915"
+            },
+            {
+              "answer": "to explore",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6746"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-4440\" correctAnswer senses [to do, to make] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-4440",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '作'?",
+          "correctAnswer": "to do; to make",
+          "distractors": [
+            {
+              "answer": "cuán",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5915"
+            },
+            {
+              "answer": "kān tàn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6746"
+            },
+            {
+              "answer": "dǎ dòng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5160"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-4440\" correctAnswer senses [to do, to make] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-4440",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to do; to make' in Chinese?",
+          "correctAnswer": "作",
+          "distractors": [
+            {
+              "answer": "攒",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5915"
+            },
+            {
+              "answer": "勘探",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6746"
+            },
+            {
+              "answer": "打动",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-5160"
+            },
+            {
+              "answer": "转达",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-6340"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-4440\" correctAnswer senses [to do, to make] not found in explanation"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

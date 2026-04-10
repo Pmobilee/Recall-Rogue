@@ -1,0 +1,2692 @@
+{
+  "timestamp": "2026-04-10T13:40:32.647Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 94,
+  "totalFails": 0,
+  "totalWarns": 6,
+  "decks": [
+    {
+      "deckId": "norse_mythology",
+      "deckName": "Norse Mythology",
+      "deckClass": "knowledge",
+      "totalFacts": 223,
+      "totalChecks": 94,
+      "failCount": 0,
+      "warnCount": 6,
+      "issuesByType": {
+        "min_pool_facts": {
+          "fail": 0,
+          "warn": 1
+        },
+        "near_duplicate_options": {
+          "fail": 0,
+          "warn": 2
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_pool_bracket_numbers",
+          "masteryLevel": -1,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "(pool-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_pool_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "min_pool_facts",
+              "detail": "Pool \"bracket_numbers\" has only 1 real factIds (min: 5)"
+            }
+          ]
+        },
+        {
+          "factId": "myth_norse_odin_king_aesir",
+          "masteryLevel": 0,
+          "poolId": "god_names",
+          "renderedQuestion": "Which god stands at the head of the Æsir pantheon in Norse mythology?",
+          "correctAnswer": "Odin",
+          "distractors": [
+            {
+              "answer": "Freyr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frey_fertility_kingship"
+            },
+            {
+              "answer": "Loki",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sif_loki_hair_mjolnir"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_king_aesir",
+          "masteryLevel": 2,
+          "poolId": "god_names",
+          "renderedQuestion": "Which god stands at the head of the Æsir pantheon in Norse mythology?",
+          "correctAnswer": "Odin",
+          "distractors": [
+            {
+              "answer": "Freyr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frey_fertility_kingship"
+            },
+            {
+              "answer": "Loki",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sif_loki_hair_mjolnir"
+            },
+            {
+              "answer": "Freyja",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_thrym_demands_freyja"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_king_aesir",
+          "masteryLevel": 4,
+          "poolId": "god_names",
+          "renderedQuestion": "Which god stands at the head of the Æsir pantheon in Norse mythology?",
+          "correctAnswer": "Odin",
+          "distractors": [
+            {
+              "answer": "Freyr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frey_fertility_kingship"
+            },
+            {
+              "answer": "Loki",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sif_loki_hair_mjolnir"
+            },
+            {
+              "answer": "Freyja",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_thrym_demands_freyja"
+            },
+            {
+              "answer": "Thor",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_goats_resurrect_bone"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_one_eye_wisdom",
+          "masteryLevel": 0,
+          "poolId": "god_names",
+          "renderedQuestion": "Which Norse god sacrificed one of his eyes in exchange for wisdom?",
+          "correctAnswer": "Odin",
+          "distractors": [
+            {
+              "answer": "Heimdall",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_heimdall_loki"
+            },
+            {
+              "answer": "Frigg",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frigg_wife_prophecy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_one_eye_wisdom",
+          "masteryLevel": 2,
+          "poolId": "god_names",
+          "renderedQuestion": "Which Norse god sacrificed one of his eyes in exchange for wisdom?",
+          "correctAnswer": "Odin",
+          "distractors": [
+            {
+              "answer": "Heimdall",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_heimdall_loki"
+            },
+            {
+              "answer": "Frigg",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frigg_wife_prophecy"
+            },
+            {
+              "answer": "Freyr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_freyr_surtr"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_one_eye_wisdom",
+          "masteryLevel": 4,
+          "poolId": "god_names",
+          "renderedQuestion": "Which Norse god sacrificed one of his eyes in exchange for wisdom?",
+          "correctAnswer": "Odin",
+          "distractors": [
+            {
+              "answer": "Heimdall",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_heimdall_loki"
+            },
+            {
+              "answer": "Frigg",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frigg_wife_prophecy"
+            },
+            {
+              "answer": "Freyr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_freyr_surtr"
+            },
+            {
+              "answer": "Thor",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_son_odin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_son_odin",
+          "masteryLevel": 0,
+          "poolId": "god_names",
+          "renderedQuestion": "Which Norse god is the son of Odin and the earth-goddess Jörð?",
+          "correctAnswer": "Thor",
+          "distractors": [
+            {
+              "answer": "Loki",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fenrir_parentage"
+            },
+            {
+              "answer": "Tyr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fenrir_tyr_hand"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_son_odin",
+          "masteryLevel": 2,
+          "poolId": "god_names",
+          "renderedQuestion": "Which Norse god is the son of Odin and the earth-goddess Jörð?",
+          "correctAnswer": "Thor",
+          "distractors": [
+            {
+              "answer": "Loki",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fenrir_parentage"
+            },
+            {
+              "answer": "Tyr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fenrir_tyr_hand"
+            },
+            {
+              "answer": "Frigg",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frigg_baldur_mother"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_son_odin",
+          "masteryLevel": 4,
+          "poolId": "god_names",
+          "renderedQuestion": "Which Norse god is the son of Odin and the earth-goddess Jörð?",
+          "correctAnswer": "Thor",
+          "distractors": [
+            {
+              "answer": "Loki",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fenrir_parentage"
+            },
+            {
+              "answer": "Tyr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fenrir_tyr_hand"
+            },
+            {
+              "answer": "Frigg",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frigg_baldur_mother"
+            },
+            {
+              "answer": "Freyja",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_freyja_friday"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_loki_shapeshifter",
+          "masteryLevel": 0,
+          "poolId": "god_names",
+          "renderedQuestion": "Which Norse trickster god is renowned for his ability to change shape into animals and even change sex?",
+          "correctAnswer": "Loki",
+          "distractors": [
+            {
+              "answer": "Heimdall",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_heimdall_loki"
+            },
+            {
+              "answer": "Odin",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_odin_havamal_sacrifice"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_loki_shapeshifter",
+          "masteryLevel": 2,
+          "poolId": "god_names",
+          "renderedQuestion": "Which Norse trickster god is renowned for his ability to change shape into animals and even change sex?",
+          "correctAnswer": "Loki",
+          "distractors": [
+            {
+              "answer": "Heimdall",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_heimdall_loki"
+            },
+            {
+              "answer": "Odin",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_odin_havamal_sacrifice"
+            },
+            {
+              "answer": "Baldur",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_baldur_ragnarok_harbinger"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_loki_shapeshifter",
+          "masteryLevel": 4,
+          "poolId": "god_names",
+          "renderedQuestion": "Which Norse trickster god is renowned for his ability to change shape into animals and even change sex?",
+          "correctAnswer": "Loki",
+          "distractors": [
+            {
+              "answer": "Heimdall",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_heimdall_loki"
+            },
+            {
+              "answer": "Odin",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_odin_havamal_sacrifice"
+            },
+            {
+              "answer": "Baldur",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_baldur_ragnarok_harbinger"
+            },
+            {
+              "answer": "Thor",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_son_odin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_loki_baldur_death",
+          "masteryLevel": 0,
+          "poolId": "god_names",
+          "renderedQuestion": "Which Norse god engineered the death of the beloved Baldur?",
+          "correctAnswer": "Loki",
+          "distractors": [
+            {
+              "answer": "Buri",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_buri"
+            },
+            {
+              "answer": "Thor",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_protector_midgard"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_loki_baldur_death",
+          "masteryLevel": 2,
+          "poolId": "god_names",
+          "renderedQuestion": "Which Norse god engineered the death of the beloved Baldur?",
+          "correctAnswer": "Loki",
+          "distractors": [
+            {
+              "answer": "Buri",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_buri"
+            },
+            {
+              "answer": "Thor",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_protector_midgard"
+            },
+            {
+              "answer": "Magni",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_magni_lifts"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_loki_baldur_death",
+          "masteryLevel": 4,
+          "poolId": "god_names",
+          "renderedQuestion": "Which Norse god engineered the death of the beloved Baldur?",
+          "correctAnswer": "Loki",
+          "distractors": [
+            {
+              "answer": "Buri",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_buri"
+            },
+            {
+              "answer": "Thor",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_protector_midgard"
+            },
+            {
+              "answer": "Magni",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_magni_lifts"
+            },
+            {
+              "answer": "Odin",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_odin_one_eye_wisdom"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_ravens",
+          "masteryLevel": 0,
+          "poolId": "creature_names",
+          "renderedQuestion": "Which of Odin's two ravens is the one whose name means 'Thought'?",
+          "correctAnswer": "Huginn",
+          "distractors": [
+            {
+              "answer": "Jormungandr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing"
+            },
+            {
+              "answer": "Fafnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fafnir_dwarf_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_ravens",
+          "masteryLevel": 2,
+          "poolId": "creature_names",
+          "renderedQuestion": "Which of Odin's two ravens is the one whose name means 'Thought'?",
+          "correctAnswer": "Huginn",
+          "distractors": [
+            {
+              "answer": "Jormungandr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing"
+            },
+            {
+              "answer": "Fafnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fafnir_dwarf_origin"
+            },
+            {
+              "answer": "Fenrir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_vidar_avenge_odin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_ravens",
+          "masteryLevel": 4,
+          "poolId": "creature_names",
+          "renderedQuestion": "Which of Odin's two ravens is the one whose name means 'Thought'?",
+          "correctAnswer": "Huginn",
+          "distractors": [
+            {
+              "answer": "Jormungandr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing"
+            },
+            {
+              "answer": "Fafnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fafnir_dwarf_origin"
+            },
+            {
+              "answer": "Fenrir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_vidar_avenge_odin"
+            },
+            {
+              "answer": "Audhumla",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_audhumla"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_ragnarok_fenrir",
+          "masteryLevel": 0,
+          "poolId": "creature_names",
+          "renderedQuestion": "At Ragnarök, which monstrous creature is foretold to kill Odin?",
+          "correctAnswer": "Fenrir",
+          "distractors": [
+            {
+              "answer": "Fafnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_dragon"
+            },
+            {
+              "answer": "Nidhogg",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_nidhogg_ragnarok"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_ragnarok_fenrir",
+          "masteryLevel": 2,
+          "poolId": "creature_names",
+          "renderedQuestion": "At Ragnarök, which monstrous creature is foretold to kill Odin?",
+          "correctAnswer": "Fenrir",
+          "distractors": [
+            {
+              "answer": "Fafnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_dragon"
+            },
+            {
+              "answer": "Nidhogg",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_nidhogg_ragnarok"
+            },
+            {
+              "answer": "The Norns",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_norns_newborn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_ragnarok_fenrir",
+          "masteryLevel": 4,
+          "poolId": "creature_names",
+          "renderedQuestion": "At Ragnarök, which monstrous creature is foretold to kill Odin?",
+          "correctAnswer": "Fenrir",
+          "distractors": [
+            {
+              "answer": "Fafnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_dragon"
+            },
+            {
+              "answer": "Nidhogg",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_nidhogg_ragnarok"
+            },
+            {
+              "answer": "The Norns",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_norns_newborn"
+            },
+            {
+              "answer": "Jormungandr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_ragnarok_jormungandr",
+          "masteryLevel": 0,
+          "poolId": "creature_names",
+          "renderedQuestion": "Which great serpent is foretold to kill Thor at Ragnarök, with both dying in mutual combat?",
+          "correctAnswer": "Jörmungandr",
+          "distractors": [
+            {
+              "answer": "Fenrir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_loki_children"
+            },
+            {
+              "answer": "Dwarves",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_dwarves_mjolnir"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_ragnarok_jormungandr",
+          "masteryLevel": 2,
+          "poolId": "creature_names",
+          "renderedQuestion": "Which great serpent is foretold to kill Thor at Ragnarök, with both dying in mutual combat?",
+          "correctAnswer": "Jörmungandr",
+          "distractors": [
+            {
+              "answer": "Fenrir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_loki_children"
+            },
+            {
+              "answer": "Dwarves",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_dwarves_mjolnir"
+            },
+            {
+              "answer": "Draugr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_draugr_burial"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_ragnarok_jormungandr",
+          "masteryLevel": 4,
+          "poolId": "creature_names",
+          "renderedQuestion": "Which great serpent is foretold to kill Thor at Ragnarök, with both dying in mutual combat?",
+          "correctAnswer": "Jörmungandr",
+          "distractors": [
+            {
+              "answer": "Fenrir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_loki_children"
+            },
+            {
+              "answer": "Dwarves",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_dwarves_mjolnir"
+            },
+            {
+              "answer": "Draugr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_draugr_burial"
+            },
+            {
+              "answer": "Sun and moon",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_hati_skoll_chase"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_loki_children",
+          "masteryLevel": 0,
+          "poolId": "creature_names",
+          "renderedQuestion": "By the giantess Angrboða, Loki fathered three monsters. Which was the great wolf?",
+          "correctAnswer": "Fenrir",
+          "distractors": [
+            {
+              "answer": "Jormungandr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_utgard_cat"
+            },
+            {
+              "answer": "Fafnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_dragon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_loki_children",
+          "masteryLevel": 2,
+          "poolId": "creature_names",
+          "renderedQuestion": "By the giantess Angrboða, Loki fathered three monsters. Which was the great wolf?",
+          "correctAnswer": "Fenrir",
+          "distractors": [
+            {
+              "answer": "Jormungandr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_utgard_cat"
+            },
+            {
+              "answer": "Fafnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_dragon"
+            },
+            {
+              "answer": "Draugr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_draugr_undead"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_loki_children",
+          "masteryLevel": 4,
+          "poolId": "creature_names",
+          "renderedQuestion": "By the giantess Angrboða, Loki fathered three monsters. Which was the great wolf?",
+          "correctAnswer": "Fenrir",
+          "distractors": [
+            {
+              "answer": "Jormungandr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_utgard_cat"
+            },
+            {
+              "answer": "Fafnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_dragon"
+            },
+            {
+              "answer": "Draugr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_draugr_undead"
+            },
+            {
+              "answer": "Audhumla",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_audhumla"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_loki_sleipnir",
+          "masteryLevel": 0,
+          "poolId": "creature_names",
+          "renderedQuestion": "What is the name of Odin's eight-legged horse that Loki gave birth to after transforming into a mare?",
+          "correctAnswer": "Sleipnir",
+          "distractors": [
+            {
+              "answer": "Jormungandr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing"
+            },
+            {
+              "answer": "Fenrir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_tyr_hand_fenrir"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_loki_sleipnir",
+          "masteryLevel": 2,
+          "poolId": "creature_names",
+          "renderedQuestion": "What is the name of Odin's eight-legged horse that Loki gave birth to after transforming into a mare?",
+          "correctAnswer": "Sleipnir",
+          "distractors": [
+            {
+              "answer": "Jormungandr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing"
+            },
+            {
+              "answer": "Fenrir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_tyr_hand_fenrir"
+            },
+            {
+              "answer": "Draugr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_draugr_undead"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_loki_sleipnir",
+          "masteryLevel": 4,
+          "poolId": "creature_names",
+          "renderedQuestion": "What is the name of Odin's eight-legged horse that Loki gave birth to after transforming into a mare?",
+          "correctAnswer": "Sleipnir",
+          "distractors": [
+            {
+              "answer": "Jormungandr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing"
+            },
+            {
+              "answer": "Fenrir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_tyr_hand_fenrir"
+            },
+            {
+              "answer": "Draugr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_draugr_undead"
+            },
+            {
+              "answer": "Fafnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fafnir_dwarf_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_valhalla",
+          "masteryLevel": 0,
+          "poolId": "realm_names",
+          "renderedQuestion": "What is the name of Odin's great hall in Asgard where slain warriors feast until Ragnarök?",
+          "correctAnswer": "Valhöll",
+          "distractors": [
+            {
+              "answer": "Midgard",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_midgard_eyebrows"
+            },
+            {
+              "answer": "Helheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_helheim"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_valhalla",
+          "masteryLevel": 2,
+          "poolId": "realm_names",
+          "renderedQuestion": "What is the name of Odin's great hall in Asgard where slain warriors feast until Ragnarök?",
+          "correctAnswer": "Valhöll",
+          "distractors": [
+            {
+              "answer": "Midgard",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_midgard_eyebrows"
+            },
+            {
+              "answer": "Helheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_helheim"
+            },
+            {
+              "answer": "Jotunheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_jotunheim_utgard"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_valhalla",
+          "masteryLevel": 4,
+          "poolId": "realm_names",
+          "renderedQuestion": "What is the name of Odin's great hall in Asgard where slain warriors feast until Ragnarök?",
+          "correctAnswer": "Valhöll",
+          "distractors": [
+            {
+              "answer": "Midgard",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_midgard_eyebrows"
+            },
+            {
+              "answer": "Helheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_helheim"
+            },
+            {
+              "answer": "Jotunheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_jotunheim_utgard"
+            },
+            {
+              "answer": "Svartalfheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_svartalfheim_forge"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_freyja_folkvangr",
+          "masteryLevel": 0,
+          "poolId": "realm_names",
+          "renderedQuestion": "What is the name of Freyja's field where she receives half of all warriors slain in battle?",
+          "correctAnswer": "Fólkvangr",
+          "distractors": [
+            {
+              "answer": "Helheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_helheim_eljudnir"
+            },
+            {
+              "answer": "Svartalfheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_svartalfheim"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_freyja_folkvangr",
+          "masteryLevel": 2,
+          "poolId": "realm_names",
+          "renderedQuestion": "What is the name of Freyja's field where she receives half of all warriors slain in battle?",
+          "correctAnswer": "Fólkvangr",
+          "distractors": [
+            {
+              "answer": "Helheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_helheim_eljudnir"
+            },
+            {
+              "answer": "Svartalfheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_svartalfheim"
+            },
+            {
+              "answer": "Alfheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_alfheim"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"Alfheim\" is a substring of \"Svartalfheim\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_norse_freyja_folkvangr",
+          "masteryLevel": 4,
+          "poolId": "realm_names",
+          "renderedQuestion": "What is the name of Freyja's field where she receives half of all warriors slain in battle?",
+          "correctAnswer": "Fólkvangr",
+          "distractors": [
+            {
+              "answer": "Helheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_helheim_eljudnir"
+            },
+            {
+              "answer": "Svartalfheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_svartalfheim"
+            },
+            {
+              "answer": "Alfheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_alfheim"
+            },
+            {
+              "answer": "Vanaheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_vanaheim"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"Alfheim\" is a substring of \"Svartalfheim\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_norse_realm_asgard",
+          "masteryLevel": 0,
+          "poolId": "realm_names",
+          "renderedQuestion": "Which of the nine Norse realms is the home of the Aesir gods, connected to Midgard by the rainbow bridge Bifrost?",
+          "correctAnswer": "Asgard",
+          "distractors": [
+            {
+              "answer": "Jotunheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_jotunheim"
+            },
+            {
+              "answer": "Muspelheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_muspelheim_surtr"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_realm_asgard",
+          "masteryLevel": 2,
+          "poolId": "realm_names",
+          "renderedQuestion": "Which of the nine Norse realms is the home of the Aesir gods, connected to Midgard by the rainbow bridge Bifrost?",
+          "correctAnswer": "Asgard",
+          "distractors": [
+            {
+              "answer": "Jotunheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_jotunheim"
+            },
+            {
+              "answer": "Muspelheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_muspelheim_surtr"
+            },
+            {
+              "answer": "Mimir's Well",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_odin_eye"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_realm_asgard",
+          "masteryLevel": 4,
+          "poolId": "realm_names",
+          "renderedQuestion": "Which of the nine Norse realms is the home of the Aesir gods, connected to Midgard by the rainbow bridge Bifrost?",
+          "correctAnswer": "Asgard",
+          "distractors": [
+            {
+              "answer": "Jotunheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_jotunheim"
+            },
+            {
+              "answer": "Muspelheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_muspelheim_surtr"
+            },
+            {
+              "answer": "Mimir's Well",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_odin_eye"
+            },
+            {
+              "answer": "Niflheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_niflheim"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_realm_midgard",
+          "masteryLevel": 0,
+          "poolId": "realm_names",
+          "renderedQuestion": "Which of the nine Norse realms is the world of humans, created by Odin and his brothers from the eyebrows of the giant Ymir?",
+          "correctAnswer": "Midgard",
+          "distractors": [
+            {
+              "answer": "Helheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_helheim"
+            },
+            {
+              "answer": "Svartalfheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_svartalfheim_forge"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_realm_midgard",
+          "masteryLevel": 2,
+          "poolId": "realm_names",
+          "renderedQuestion": "Which of the nine Norse realms is the world of humans, created by Odin and his brothers from the eyebrows of the giant Ymir?",
+          "correctAnswer": "Midgard",
+          "distractors": [
+            {
+              "answer": "Helheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_helheim"
+            },
+            {
+              "answer": "Svartalfheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_svartalfheim_forge"
+            },
+            {
+              "answer": "Asgard",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_asgard"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_realm_midgard",
+          "masteryLevel": 4,
+          "poolId": "realm_names",
+          "renderedQuestion": "Which of the nine Norse realms is the world of humans, created by Odin and his brothers from the eyebrows of the giant Ymir?",
+          "correctAnswer": "Midgard",
+          "distractors": [
+            {
+              "answer": "Helheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_helheim"
+            },
+            {
+              "answer": "Svartalfheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_svartalfheim_forge"
+            },
+            {
+              "answer": "Asgard",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_asgard"
+            },
+            {
+              "answer": "Niflheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_niflheim"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_realm_jotunheim",
+          "masteryLevel": 0,
+          "poolId": "realm_names",
+          "renderedQuestion": "Which of the nine Norse realms is the land of the giants (jotnar), separated from Midgard by a great ocean?",
+          "correctAnswer": "Jotunheim",
+          "distractors": [
+            {
+              "answer": "Niflheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_niflheim"
+            },
+            {
+              "answer": "Svartalfheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_svartalfheim_forge"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_realm_jotunheim",
+          "masteryLevel": 2,
+          "poolId": "realm_names",
+          "renderedQuestion": "Which of the nine Norse realms is the land of the giants (jotnar), separated from Midgard by a great ocean?",
+          "correctAnswer": "Jotunheim",
+          "distractors": [
+            {
+              "answer": "Niflheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_niflheim"
+            },
+            {
+              "answer": "Svartalfheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_svartalfheim_forge"
+            },
+            {
+              "answer": "Asgard",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_asgard_halls"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_realm_jotunheim",
+          "masteryLevel": 4,
+          "poolId": "realm_names",
+          "renderedQuestion": "Which of the nine Norse realms is the land of the giants (jotnar), separated from Midgard by a great ocean?",
+          "correctAnswer": "Jotunheim",
+          "distractors": [
+            {
+              "answer": "Niflheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_niflheim"
+            },
+            {
+              "answer": "Svartalfheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_svartalfheim_forge"
+            },
+            {
+              "answer": "Asgard",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_asgard_halls"
+            },
+            {
+              "answer": "Helheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_helheim"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_creation_ymir",
+          "masteryLevel": 0,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which primordial giant did Odin and his brothers slay to create the world?",
+          "correctAnswer": "Ymir",
+          "distractors": [
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_bait"
+            },
+            {
+              "answer": "Mokkurkalfi",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_mokkurkalfi"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_creation_ymir",
+          "masteryLevel": 2,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which primordial giant did Odin and his brothers slay to create the world?",
+          "correctAnswer": "Ymir",
+          "distractors": [
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_bait"
+            },
+            {
+              "answer": "Mokkurkalfi",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_mokkurkalfi"
+            },
+            {
+              "answer": "Surtr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_surtr_fire"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_odin_creation_ymir",
+          "masteryLevel": 4,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which primordial giant did Odin and his brothers slay to create the world?",
+          "correctAnswer": "Ymir",
+          "distractors": [
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_bait"
+            },
+            {
+              "answer": "Mokkurkalfi",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_mokkurkalfi"
+            },
+            {
+              "answer": "Surtr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_surtr_fire"
+            },
+            {
+              "answer": "Utgard-Loki",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_utgard"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_frey_ragnarok_surtr",
+          "masteryLevel": 0,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which fire jötunn killed Freyr at Ragnarök, made possible because Freyr had traded away his sword?",
+          "correctAnswer": "Surtr",
+          "distractors": [
+            {
+              "answer": "Ymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_ymir"
+            },
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_bait"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_frey_ragnarok_surtr",
+          "masteryLevel": 2,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which fire jötunn killed Freyr at Ragnarök, made possible because Freyr had traded away his sword?",
+          "correctAnswer": "Surtr",
+          "distractors": [
+            {
+              "answer": "Ymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_ymir"
+            },
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_bait"
+            },
+            {
+              "answer": "Elli",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_utgard_elli"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_frey_ragnarok_surtr",
+          "masteryLevel": 4,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which fire jötunn killed Freyr at Ragnarök, made possible because Freyr had traded away his sword?",
+          "correctAnswer": "Surtr",
+          "distractors": [
+            {
+              "answer": "Ymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_ymir"
+            },
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_bait"
+            },
+            {
+              "answer": "Elli",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_utgard_elli"
+            },
+            {
+              "answer": "Muspelheim",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_surtr_realm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_njord_skadi_marriage",
+          "masteryLevel": 0,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which jötunn goddess had a famously failed marriage with Njord because she wanted to live in the mountains and he needed the sea?",
+          "correctAnswer": "Skaði",
+          "distractors": [
+            {
+              "answer": "Þjazi",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_idunn_abduction_thiazi"
+            },
+            {
+              "answer": "Surtr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frey_ragnarok_surtr"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_njord_skadi_marriage",
+          "masteryLevel": 2,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which jötunn goddess had a famously failed marriage with Njord because she wanted to live in the mountains and he needed the sea?",
+          "correctAnswer": "Skaði",
+          "distractors": [
+            {
+              "answer": "Þjazi",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_idunn_abduction_thiazi"
+            },
+            {
+              "answer": "Surtr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frey_ragnarok_surtr"
+            },
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_cut"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_njord_skadi_marriage",
+          "masteryLevel": 4,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which jötunn goddess had a famously failed marriage with Njord because she wanted to live in the mountains and he needed the sea?",
+          "correctAnswer": "Skaði",
+          "distractors": [
+            {
+              "answer": "Þjazi",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_idunn_abduction_thiazi"
+            },
+            {
+              "answer": "Surtr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frey_ragnarok_surtr"
+            },
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_cut"
+            },
+            {
+              "answer": "Skrymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_skrymir"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_idunn_abduction_thiazi",
+          "masteryLevel": 0,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which jötunn, flying in eagle form, abducted Iðunn from Asgard after Loki lured her out?",
+          "correctAnswer": "Þjazi",
+          "distractors": [
+            {
+              "answer": "Ymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_audhumla_primordial"
+            },
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_cut"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_idunn_abduction_thiazi",
+          "masteryLevel": 2,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which jötunn, flying in eagle form, abducted Iðunn from Asgard after Loki lured her out?",
+          "correctAnswer": "Þjazi",
+          "distractors": [
+            {
+              "answer": "Ymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_audhumla_primordial"
+            },
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_cut"
+            },
+            {
+              "answer": "Utgard-Loki",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_utgard"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_idunn_abduction_thiazi",
+          "masteryLevel": 4,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which jötunn, flying in eagle form, abducted Iðunn from Asgard after Loki lured her out?",
+          "correctAnswer": "Þjazi",
+          "distractors": [
+            {
+              "answer": "Ymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_audhumla_primordial"
+            },
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_cut"
+            },
+            {
+              "answer": "Utgard-Loki",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_utgard"
+            },
+            {
+              "answer": "Skrymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_skrymir"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_creation_ymir",
+          "masteryLevel": 0,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which primordial frost giant was formed when ice from Niflheim met fire from Muspelheim in Ginnungagap, and whose body was used to create the world?",
+          "correctAnswer": "Ymir",
+          "distractors": [
+            {
+              "answer": "Utgard-Loki",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_utgard_reveal"
+            },
+            {
+              "answer": "Hrungnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_hrungnir_duel"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 4 vs avg distractor 9.5 — ratio 0.42×"
+            }
+          ]
+        },
+        {
+          "factId": "myth_norse_creation_ymir",
+          "masteryLevel": 2,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which primordial frost giant was formed when ice from Niflheim met fire from Muspelheim in Ginnungagap, and whose body was used to create the world?",
+          "correctAnswer": "Ymir",
+          "distractors": [
+            {
+              "answer": "Utgard-Loki",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_utgard_reveal"
+            },
+            {
+              "answer": "Hrungnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_hrungnir_duel"
+            },
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_bait"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_creation_ymir",
+          "masteryLevel": 4,
+          "poolId": "giant_names",
+          "renderedQuestion": "Which primordial frost giant was formed when ice from Niflheim met fire from Muspelheim in Ginnungagap, and whose body was used to create the world?",
+          "correctAnswer": "Ymir",
+          "distractors": [
+            {
+              "answer": "Utgard-Loki",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_utgard_reveal"
+            },
+            {
+              "answer": "Hrungnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_hrungnir_duel"
+            },
+            {
+              "answer": "Hymir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_fishing_bait"
+            },
+            {
+              "answer": "Thiazi",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_loki_thiazi_idunn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_thunder_hammer",
+          "masteryLevel": 0,
+          "poolId": "object_names",
+          "renderedQuestion": "What is the name of Thor's hammer in Norse mythology?",
+          "correctAnswer": "Mjölnir",
+          "distractors": [
+            {
+              "answer": "Into the sea",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fenrir_siblings_exile"
+            },
+            {
+              "answer": "Ragnarok",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_overview"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_thunder_hammer",
+          "masteryLevel": 2,
+          "poolId": "object_names",
+          "renderedQuestion": "What is the name of Thor's hammer in Norse mythology?",
+          "correctAnswer": "Mjölnir",
+          "distractors": [
+            {
+              "answer": "Into the sea",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fenrir_siblings_exile"
+            },
+            {
+              "answer": "Ragnarok",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_overview"
+            },
+            {
+              "answer": "Gjallarhorn",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_gjallarhorn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_thunder_hammer",
+          "masteryLevel": 4,
+          "poolId": "object_names",
+          "renderedQuestion": "What is the name of Thor's hammer in Norse mythology?",
+          "correctAnswer": "Mjölnir",
+          "distractors": [
+            {
+              "answer": "Into the sea",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_fenrir_siblings_exile"
+            },
+            {
+              "answer": "Ragnarok",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_overview"
+            },
+            {
+              "answer": "Gjallarhorn",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_gjallarhorn"
+            },
+            {
+              "answer": "Magic, runes",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_runes_magic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_goats",
+          "masteryLevel": 0,
+          "poolId": "object_names",
+          "renderedQuestion": "What is the name of the first of Thor's two magical resurrection goats?",
+          "correctAnswer": "Tanngrisnir",
+          "distractors": [
+            {
+              "answer": "Skidbladnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_dwarves_artifacts"
+            },
+            {
+              "answer": "Aesir-Vanir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_aesir_vanir_war"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_goats",
+          "masteryLevel": 2,
+          "poolId": "object_names",
+          "renderedQuestion": "What is the name of the first of Thor's two magical resurrection goats?",
+          "correctAnswer": "Tanngrisnir",
+          "distractors": [
+            {
+              "answer": "Skidbladnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_dwarves_artifacts"
+            },
+            {
+              "answer": "Aesir-Vanir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_aesir_vanir_war"
+            },
+            {
+              "answer": "Black",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_surtr_name_meaning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_goats",
+          "masteryLevel": 4,
+          "poolId": "object_names",
+          "renderedQuestion": "What is the name of the first of Thor's two magical resurrection goats?",
+          "correctAnswer": "Tanngrisnir",
+          "distractors": [
+            {
+              "answer": "Skidbladnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_dwarves_artifacts"
+            },
+            {
+              "answer": "Aesir-Vanir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_aesir_vanir_war"
+            },
+            {
+              "answer": "Black",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_surtr_name_meaning"
+            },
+            {
+              "answer": "Old and grey",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_idunn_gods_aged"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_belt_gloves",
+          "masteryLevel": 0,
+          "poolId": "object_names",
+          "renderedQuestion": "What is the name of Thor's belt of strength that doubles his already divine power?",
+          "correctAnswer": "Megingjörð",
+          "distractors": [
+            {
+              "answer": "Skoll, Hati",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_skoll_hati"
+            },
+            {
+              "answer": "Gullinbursti",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frey_possessions"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_belt_gloves",
+          "masteryLevel": 2,
+          "poolId": "object_names",
+          "renderedQuestion": "What is the name of Thor's belt of strength that doubles his already divine power?",
+          "correctAnswer": "Megingjörð",
+          "distractors": [
+            {
+              "answer": "Skoll, Hati",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_skoll_hati"
+            },
+            {
+              "answer": "Gullinbursti",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frey_possessions"
+            },
+            {
+              "answer": "Seidr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_seidr"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_thor_belt_gloves",
+          "masteryLevel": 4,
+          "poolId": "object_names",
+          "renderedQuestion": "What is the name of Thor's belt of strength that doubles his already divine power?",
+          "correctAnswer": "Megingjörð",
+          "distractors": [
+            {
+              "answer": "Skoll, Hati",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_skoll_hati"
+            },
+            {
+              "answer": "Gullinbursti",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_frey_possessions"
+            },
+            {
+              "answer": "Seidr",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_seidr"
+            },
+            {
+              "answer": "Andvaranaut",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_andvaranaut_owners"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_freyja_brisingamen",
+          "masteryLevel": 0,
+          "poolId": "object_names",
+          "renderedQuestion": "What is the name of Freyja's famous necklace, one of the greatest treasures of the Norse gods?",
+          "correctAnswer": "Brísingamen",
+          "distractors": [
+            {
+              "answer": "Andvaranaut",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_andvaranaut_curse"
+            },
+            {
+              "answer": "Lokasenna",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_lokasenna"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_freyja_brisingamen",
+          "masteryLevel": 2,
+          "poolId": "object_names",
+          "renderedQuestion": "What is the name of Freyja's famous necklace, one of the greatest treasures of the Norse gods?",
+          "correctAnswer": "Brísingamen",
+          "distractors": [
+            {
+              "answer": "Andvaranaut",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_andvaranaut_curse"
+            },
+            {
+              "answer": "Lokasenna",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_lokasenna"
+            },
+            {
+              "answer": "Ragnarok",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_cycle"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_freyja_brisingamen",
+          "masteryLevel": 4,
+          "poolId": "object_names",
+          "renderedQuestion": "What is the name of Freyja's famous necklace, one of the greatest treasures of the Norse gods?",
+          "correctAnswer": "Brísingamen",
+          "distractors": [
+            {
+              "answer": "Andvaranaut",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_andvaranaut_curse"
+            },
+            {
+              "answer": "Lokasenna",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_lokasenna"
+            },
+            {
+              "answer": "Ragnarok",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_cycle"
+            },
+            {
+              "answer": "Its own tail",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_jormungandr_size"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_tyr_tuesday",
+          "masteryLevel": 0,
+          "poolId": "object_names",
+          "renderedQuestion": "Which day of the week is named after Tyr, the Norse god of war and justice?",
+          "correctAnswer": "Tuesday",
+          "distractors": [
+            {
+              "answer": "Well of Urd",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_well_urd_council"
+            },
+            {
+              "answer": "Petrifies it",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_troll_sunlight"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_tyr_tuesday",
+          "masteryLevel": 2,
+          "poolId": "object_names",
+          "renderedQuestion": "Which day of the week is named after Tyr, the Norse god of war and justice?",
+          "correctAnswer": "Tuesday",
+          "distractors": [
+            {
+              "answer": "Well of Urd",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_well_urd_council"
+            },
+            {
+              "answer": "Petrifies it",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_troll_sunlight"
+            },
+            {
+              "answer": "Ask, Embla",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_ask_embla"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_tyr_tuesday",
+          "masteryLevel": 4,
+          "poolId": "object_names",
+          "renderedQuestion": "Which day of the week is named after Tyr, the Norse god of war and justice?",
+          "correctAnswer": "Tuesday",
+          "distractors": [
+            {
+              "answer": "Well of Urd",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_realm_well_urd_council"
+            },
+            {
+              "answer": "Petrifies it",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_troll_sunlight"
+            },
+            {
+              "answer": "Ask, Embla",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_creation_ask_embla"
+            },
+            {
+              "answer": "Mjolnir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_thor_goats_resurrect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_ragnarok_lif_lifthrasir",
+          "masteryLevel": 0,
+          "poolId": "hero_names",
+          "renderedQuestion": "What are the names of the two human survivors of Ragnarok who hide within Yggdrasil and emerge to repopulate the new world?",
+          "correctAnswer": "Lif, Lifthrasir",
+          "distractors": [
+            {
+              "answer": "Ragnar Lothbrok",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnar_sons_revenge"
+            },
+            {
+              "answer": "Sigurd",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_pit_kill"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_ragnarok_lif_lifthrasir",
+          "masteryLevel": 2,
+          "poolId": "hero_names",
+          "renderedQuestion": "What are the names of the two human survivors of Ragnarok who hide within Yggdrasil and emerge to repopulate the new world?",
+          "correctAnswer": "Lif, Lifthrasir",
+          "distractors": [
+            {
+              "answer": "Ragnar Lothbrok",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnar_sons_revenge"
+            },
+            {
+              "answer": "Sigurd",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_pit_kill"
+            },
+            {
+              "answer": "Hervor",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_hervor_tyrfing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_ragnarok_lif_lifthrasir",
+          "masteryLevel": 4,
+          "poolId": "hero_names",
+          "renderedQuestion": "What are the names of the two human survivors of Ragnarok who hide within Yggdrasil and emerge to repopulate the new world?",
+          "correctAnswer": "Lif, Lifthrasir",
+          "distractors": [
+            {
+              "answer": "Ragnar Lothbrok",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnar_sons_revenge"
+            },
+            {
+              "answer": "Sigurd",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_pit_kill"
+            },
+            {
+              "answer": "Hervor",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_hervor_tyrfing"
+            },
+            {
+              "answer": "Siegfried",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_german"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_sigurd_regin",
+          "masteryLevel": 0,
+          "poolId": "hero_names",
+          "renderedQuestion": "Who was Sigurd's dwarf foster father who reforged the sword Gram and guided him to kill Fafnir?",
+          "correctAnswer": "Regin",
+          "distractors": [
+            {
+              "answer": "Ragnar Lothbrok",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnar_sons_revenge"
+            },
+            {
+              "answer": "Signy",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_signy_revenge"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_sigurd_regin",
+          "masteryLevel": 2,
+          "poolId": "hero_names",
+          "renderedQuestion": "Who was Sigurd's dwarf foster father who reforged the sword Gram and guided him to kill Fafnir?",
+          "correctAnswer": "Regin",
+          "distractors": [
+            {
+              "answer": "Ragnar Lothbrok",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnar_sons_revenge"
+            },
+            {
+              "answer": "Signy",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_signy_revenge"
+            },
+            {
+              "answer": "Lif, Lifthrasir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_lif_lifthrasir"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 5 vs avg distractor 11.7 — ratio 0.43×"
+            }
+          ]
+        },
+        {
+          "factId": "myth_norse_sigurd_regin",
+          "masteryLevel": 4,
+          "poolId": "hero_names",
+          "renderedQuestion": "Who was Sigurd's dwarf foster father who reforged the sword Gram and guided him to kill Fafnir?",
+          "correctAnswer": "Regin",
+          "distractors": [
+            {
+              "answer": "Ragnar Lothbrok",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnar_sons_revenge"
+            },
+            {
+              "answer": "Signy",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_signy_revenge"
+            },
+            {
+              "answer": "Lif, Lifthrasir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_lif_lifthrasir"
+            },
+            {
+              "answer": "Hervor",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_hervor_tyrfing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 5 vs avg distractor 10.3 — ratio 0.49×"
+            }
+          ]
+        },
+        {
+          "factId": "myth_norse_sigurd_brynhild",
+          "masteryLevel": 0,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which Valkyrie did Sigurd awaken from a magical sleep on a mountain surrounded by fire?",
+          "correctAnswer": "Brynhild",
+          "distractors": [
+            {
+              "answer": "Leif Erikson",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_leif_erikson_vinland"
+            },
+            {
+              "answer": "Einherjar",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_einherjar"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_sigurd_brynhild",
+          "masteryLevel": 2,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which Valkyrie did Sigurd awaken from a magical sleep on a mountain surrounded by fire?",
+          "correctAnswer": "Brynhild",
+          "distractors": [
+            {
+              "answer": "Leif Erikson",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_leif_erikson_vinland"
+            },
+            {
+              "answer": "Einherjar",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_einherjar"
+            },
+            {
+              "answer": "Lif, Lifthrasir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_lif_lifthrasir"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_sigurd_brynhild",
+          "masteryLevel": 4,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which Valkyrie did Sigurd awaken from a magical sleep on a mountain surrounded by fire?",
+          "correctAnswer": "Brynhild",
+          "distractors": [
+            {
+              "answer": "Leif Erikson",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_leif_erikson_vinland"
+            },
+            {
+              "answer": "Einherjar",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_einherjar"
+            },
+            {
+              "answer": "Lif, Lifthrasir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_lif_lifthrasir"
+            },
+            {
+              "answer": "Shieldmaidens",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_shieldmaiden_debate"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_sigurd_german",
+          "masteryLevel": 0,
+          "poolId": "hero_names",
+          "renderedQuestion": "What is the German equivalent of the Norse hero Sigurd, who appears in the Nibelungenlied?",
+          "correctAnswer": "Siegfried",
+          "distractors": [
+            {
+              "answer": "Berserkers",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_berserker_warriors"
+            },
+            {
+              "answer": "Brynhild",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_brynhild"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_sigurd_german",
+          "masteryLevel": 2,
+          "poolId": "hero_names",
+          "renderedQuestion": "What is the German equivalent of the Norse hero Sigurd, who appears in the Nibelungenlied?",
+          "correctAnswer": "Siegfried",
+          "distractors": [
+            {
+              "answer": "Berserkers",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_berserker_warriors"
+            },
+            {
+              "answer": "Brynhild",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_brynhild"
+            },
+            {
+              "answer": "Lif, Lifthrasir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_lif_lifthrasir"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_sigurd_german",
+          "masteryLevel": 4,
+          "poolId": "hero_names",
+          "renderedQuestion": "What is the German equivalent of the Norse hero Sigurd, who appears in the Nibelungenlied?",
+          "correctAnswer": "Siegfried",
+          "distractors": [
+            {
+              "answer": "Berserkers",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_berserker_warriors"
+            },
+            {
+              "answer": "Brynhild",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_brynhild"
+            },
+            {
+              "answer": "Lif, Lifthrasir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_lif_lifthrasir"
+            },
+            {
+              "answer": "Signy",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_signy_revenge"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_berserker",
+          "masteryLevel": 0,
+          "poolId": "hero_names",
+          "renderedQuestion": "What were Norse warriors who wore bear or wolf skins and fought in a trance-like fury called?",
+          "correctAnswer": "Berserkers",
+          "distractors": [
+            {
+              "answer": "Regin",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_regin"
+            },
+            {
+              "answer": "Sigurd",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_brynhild_tragic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_berserker",
+          "masteryLevel": 2,
+          "poolId": "hero_names",
+          "renderedQuestion": "What were Norse warriors who wore bear or wolf skins and fought in a trance-like fury called?",
+          "correctAnswer": "Berserkers",
+          "distractors": [
+            {
+              "answer": "Regin",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_regin"
+            },
+            {
+              "answer": "Sigurd",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_brynhild_tragic"
+            },
+            {
+              "answer": "Lif, Lifthrasir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_lif_lifthrasir"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_berserker",
+          "masteryLevel": 4,
+          "poolId": "hero_names",
+          "renderedQuestion": "What were Norse warriors who wore bear or wolf skins and fought in a trance-like fury called?",
+          "correctAnswer": "Berserkers",
+          "distractors": [
+            {
+              "answer": "Regin",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_regin"
+            },
+            {
+              "answer": "Sigurd",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sigurd_brynhild_tragic"
+            },
+            {
+              "answer": "Lif, Lifthrasir",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_ragnarok_lif_lifthrasir"
+            },
+            {
+              "answer": "Sigmund",
+              "source": "similar_difficulty",
+              "factId": "myth_norse_sword_cycle"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_sleipnir_legs",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many legs does Sleipnir, Odin's magical horse, have?",
+          "correctAnswer": "8",
+          "distractors": [
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            },
+            {
+              "answer": "10",
+              "source": "numerical",
+              "factId": "_numerical_10"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_sleipnir_legs",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many legs does Sleipnir, Odin's magical horse, have?",
+          "correctAnswer": "8",
+          "distractors": [
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            },
+            {
+              "answer": "10",
+              "source": "numerical",
+              "factId": "_numerical_10"
+            },
+            {
+              "answer": "19",
+              "source": "numerical",
+              "factId": "_numerical_19"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_norse_sleipnir_legs",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many legs does Sleipnir, Odin's magical horse, have?",
+          "correctAnswer": "8",
+          "distractors": [
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            },
+            {
+              "answer": "10",
+              "source": "numerical",
+              "factId": "_numerical_10"
+            },
+            {
+              "answer": "19",
+              "source": "numerical",
+              "factId": "_numerical_19"
+            },
+            {
+              "answer": "9",
+              "source": "numerical",
+              "factId": "_numerical_9"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

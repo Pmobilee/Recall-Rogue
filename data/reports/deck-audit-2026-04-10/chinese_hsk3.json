@@ -1,0 +1,480 @@
+{
+  "timestamp": "2026-04-10T13:40:12.647Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 4,
+  "decks": [
+    {
+      "deckId": "chinese_hsk3",
+      "deckName": "Chinese HSK 3 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 915,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 4,
+      "issuesByType": {
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 2
+        },
+        "pos_mismatch": {
+          "fail": 0,
+          "warn": 2
+        }
+      },
+      "factResults": [
+        {
+          "factId": "zh-hsk-1194",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '把' mean?",
+          "correctAnswer": "to hold; to grasp",
+          "distractors": [
+            {
+              "answer": "to lead; leader",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1453"
+            },
+            {
+              "answer": "to prepare a lesson",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2129"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1194",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '把' mean?",
+          "correctAnswer": "to hold; to grasp",
+          "distractors": [
+            {
+              "answer": "to lead; leader",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1453"
+            },
+            {
+              "answer": "to prepare a lesson",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2129"
+            },
+            {
+              "answer": "to have; to possess",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1527"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1194",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '把' mean?",
+          "correctAnswer": "to hold; to grasp",
+          "distractors": [
+            {
+              "answer": "to lead; leader",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1453"
+            },
+            {
+              "answer": "to prepare a lesson",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2129"
+            },
+            {
+              "answer": "to have; to possess",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1527"
+            },
+            {
+              "answer": "to adjust",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1575"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1195",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '被' mean?",
+          "correctAnswer": "quilt",
+          "distractors": [
+            {
+              "answer": "gold medal",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1958"
+            },
+            {
+              "answer": "victory",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1508"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1195",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '被' mean?",
+          "correctAnswer": "quilt",
+          "distractors": [
+            {
+              "answer": "gold medal",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1958"
+            },
+            {
+              "answer": "victory",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1508"
+            },
+            {
+              "answer": "Internet",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1919"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Internet\" has 2 format features different from correct \"quilt\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-1195",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '被' mean?",
+          "correctAnswer": "quilt",
+          "distractors": [
+            {
+              "answer": "gold medal",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1958"
+            },
+            {
+              "answer": "victory",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1508"
+            },
+            {
+              "answer": "Internet",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1919"
+            },
+            {
+              "answer": "ache",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1400"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Internet\" has 2 format features different from correct \"quilt\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-1196",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '就是' mean?",
+          "correctAnswer": "exactly; precisely",
+          "distractors": [
+            {
+              "answer": "not only",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1460"
+            },
+            {
+              "answer": "indeed",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1306"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1196",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '就是' mean?",
+          "correctAnswer": "exactly; precisely",
+          "distractors": [
+            {
+              "answer": "not only",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1460"
+            },
+            {
+              "answer": "indeed",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1306"
+            },
+            {
+              "answer": "still; yet",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1353"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1196",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '就是' mean?",
+          "correctAnswer": "exactly; precisely",
+          "distractors": [
+            {
+              "answer": "not only",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1460"
+            },
+            {
+              "answer": "indeed",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1306"
+            },
+            {
+              "answer": "still; yet",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1353"
+            },
+            {
+              "answer": "seemingly",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1748"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1197",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '需要' mean?",
+          "correctAnswer": "to need",
+          "distractors": [
+            {
+              "answer": "to push",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1949"
+            },
+            {
+              "answer": "to record sound",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1947"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1197",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '需要' mean?",
+          "correctAnswer": "to need",
+          "distractors": [
+            {
+              "answer": "to push",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1949"
+            },
+            {
+              "answer": "to record sound",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1947"
+            },
+            {
+              "answer": "to shake hands",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2005"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1197",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '需要' mean?",
+          "correctAnswer": "to need",
+          "distractors": [
+            {
+              "answer": "to push",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1949"
+            },
+            {
+              "answer": "to record sound",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1947"
+            },
+            {
+              "answer": "to shake hands",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2005"
+            },
+            {
+              "answer": "to worry",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1897"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1198",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '并' mean?",
+          "correctAnswer": "and",
+          "distractors": [
+            {
+              "answer": "therefore",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1272"
+            },
+            {
+              "answer": "if",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1446"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1198",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '并' mean?",
+          "correctAnswer": "and",
+          "distractors": [
+            {
+              "answer": "therefore",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1272"
+            },
+            {
+              "answer": "if",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1446"
+            },
+            {
+              "answer": "to sing",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1842"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"to sing\" POS \"verb\" != correct \"conjunction\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-1198",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '并' mean?",
+          "correctAnswer": "and",
+          "distractors": [
+            {
+              "answer": "therefore",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1272"
+            },
+            {
+              "answer": "if",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1446"
+            },
+            {
+              "answer": "to sing",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1842"
+            },
+            {
+              "answer": "to adopt",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1774"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"to sing\" POS \"verb\" != correct \"conjunction\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

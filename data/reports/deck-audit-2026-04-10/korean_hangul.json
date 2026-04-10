@@ -1,0 +1,464 @@
+{
+  "timestamp": "2026-04-10T13:40:29.472Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 2,
+  "decks": [
+    {
+      "deckId": "korean_hangul",
+      "deckName": "Korean Hangul",
+      "deckClass": "vocab",
+      "totalFacts": 108,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 2,
+      "issuesByType": {
+        "reverse_distractor_language_mismatch": {
+          "fail": 0,
+          "warn": 2
+        }
+      },
+      "factResults": [
+        {
+          "factId": "ko-hangul-gk-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the Hangul ㄱ represent?",
+          "correctAnswer": "g/k",
+          "distractors": [
+            {
+              "answer": "we",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-we-forward"
+            },
+            {
+              "answer": "jj",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-jj-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-hangul-gk-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the Hangul ㄱ represent?",
+          "correctAnswer": "g/k",
+          "distractors": [
+            {
+              "answer": "we",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-we-forward"
+            },
+            {
+              "answer": "jj",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-jj-forward"
+            },
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-ma-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-hangul-gk-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the Hangul ㄱ represent?",
+          "correctAnswer": "g/k",
+          "distractors": [
+            {
+              "answer": "we",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-we-forward"
+            },
+            {
+              "answer": "jj",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-jj-forward"
+            },
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-ma-forward"
+            },
+            {
+              "answer": "ㅂ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-bp-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-hangul-gk-reverse",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which Hangul basic consonant represents 'g/k'?",
+          "correctAnswer": "ㄱ",
+          "distractors": [
+            {
+              "answer": "ha",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-ha-forward"
+            },
+            {
+              "answer": "ㅝ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-wo-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-hangul-gk-reverse",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which Hangul basic consonant represents 'g/k'?",
+          "correctAnswer": "ㄱ",
+          "distractors": [
+            {
+              "answer": "ha",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-ha-forward"
+            },
+            {
+              "answer": "ㅝ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-wo-reverse"
+            },
+            {
+              "answer": "h",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-h-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-hangul-gk-reverse",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which Hangul basic consonant represents 'g/k'?",
+          "correctAnswer": "ㄱ",
+          "distractors": [
+            {
+              "answer": "ha",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-ha-forward"
+            },
+            {
+              "answer": "ㅝ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-wo-reverse"
+            },
+            {
+              "answer": "h",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-h-forward"
+            },
+            {
+              "answer": "pp",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-pp-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-hangul-n-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the Hangul ㄴ represent?",
+          "correctAnswer": "n",
+          "distractors": [
+            {
+              "answer": "ㅝ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-wo-reverse"
+            },
+            {
+              "answer": "ka",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-ka-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-hangul-n-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the Hangul ㄴ represent?",
+          "correctAnswer": "n",
+          "distractors": [
+            {
+              "answer": "ㅝ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-wo-reverse"
+            },
+            {
+              "answer": "ka",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-ka-forward"
+            },
+            {
+              "answer": "가",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-ga-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"가\" script type (CJK=true) differs from correct \"n\" (CJK=false)"
+            }
+          ]
+        },
+        {
+          "factId": "ko-hangul-n-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the Hangul ㄴ represent?",
+          "correctAnswer": "n",
+          "distractors": [
+            {
+              "answer": "ㅝ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-wo-reverse"
+            },
+            {
+              "answer": "ka",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-ka-forward"
+            },
+            {
+              "answer": "가",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-ga-reverse"
+            },
+            {
+              "answer": "k",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-k-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"가\" script type (CJK=true) differs from correct \"n\" (CJK=false)"
+            }
+          ]
+        },
+        {
+          "factId": "ko-hangul-n-reverse",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which Hangul basic consonant represents 'n'?",
+          "correctAnswer": "ㄴ",
+          "distractors": [
+            {
+              "answer": "wa",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-wa-forward"
+            },
+            {
+              "answer": "ㄸ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-tt-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-hangul-n-reverse",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which Hangul basic consonant represents 'n'?",
+          "correctAnswer": "ㄴ",
+          "distractors": [
+            {
+              "answer": "wa",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-wa-forward"
+            },
+            {
+              "answer": "ㄸ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-tt-reverse"
+            },
+            {
+              "answer": "ㅓ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-eo-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-hangul-n-reverse",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which Hangul basic consonant represents 'n'?",
+          "correctAnswer": "ㄴ",
+          "distractors": [
+            {
+              "answer": "wa",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-wa-forward"
+            },
+            {
+              "answer": "ㄸ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-tt-reverse"
+            },
+            {
+              "answer": "ㅓ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-eo-reverse"
+            },
+            {
+              "answer": "ya",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-ya-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-hangul-dt-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the Hangul ㄷ represent?",
+          "correctAnswer": "d/t",
+          "distractors": [
+            {
+              "answer": "wo",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-wo-forward"
+            },
+            {
+              "answer": "ㅣ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-i-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-hangul-dt-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the Hangul ㄷ represent?",
+          "correctAnswer": "d/t",
+          "distractors": [
+            {
+              "answer": "wo",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-wo-forward"
+            },
+            {
+              "answer": "ㅣ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-i-reverse"
+            },
+            {
+              "answer": "ㄹ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-rl-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-hangul-dt-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the Hangul ㄷ represent?",
+          "correctAnswer": "d/t",
+          "distractors": [
+            {
+              "answer": "wo",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-wo-forward"
+            },
+            {
+              "answer": "ㅣ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-i-reverse"
+            },
+            {
+              "answer": "ㄹ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-rl-reverse"
+            },
+            {
+              "answer": "ㄷ",
+              "source": "similar_difficulty",
+              "factId": "ko-hangul-dt-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

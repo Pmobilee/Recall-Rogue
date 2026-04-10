@@ -1,0 +1,447 @@
+{
+  "timestamp": "2026-04-10T13:40:13.433Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 0,
+  "decks": [
+    {
+      "deckId": "chinese_hsk5",
+      "deckName": "Chinese HSK 5 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 1263,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 0,
+      "issuesByType": {},
+      "factResults": [
+        {
+          "factId": "zh-hsk-3138",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '可' mean?",
+          "correctAnswer": "can; may",
+          "distractors": [
+            {
+              "answer": "publicly recognized",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4172"
+            },
+            {
+              "answer": "club; organization",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3181"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3138",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '可'?",
+          "correctAnswer": "can; may",
+          "distractors": [
+            {
+              "answer": "gōng rèn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4172"
+            },
+            {
+              "answer": "jù lè bù",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3181"
+            },
+            {
+              "answer": "jiān",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3616"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3138",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'can; may' in Chinese?",
+          "correctAnswer": "可",
+          "distractors": [
+            {
+              "answer": "公认",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4172"
+            },
+            {
+              "answer": "俱乐部",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3181"
+            },
+            {
+              "answer": "肩",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3616"
+            },
+            {
+              "answer": "总算",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3656"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3139",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '将' mean?",
+          "correctAnswer": "will",
+          "distractors": [
+            {
+              "answer": "test",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4122"
+            },
+            {
+              "answer": "slim",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4274"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3139",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '将'?",
+          "correctAnswer": "will",
+          "distractors": [
+            {
+              "answer": "cè yàn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4122"
+            },
+            {
+              "answer": "miáo tiao",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4274"
+            },
+            {
+              "answer": "bù yì",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4331"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3139",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'will' in Chinese?",
+          "correctAnswer": "将",
+          "distractors": [
+            {
+              "answer": "测验",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4122"
+            },
+            {
+              "answer": "苗条",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4274"
+            },
+            {
+              "answer": "不易",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4331"
+            },
+            {
+              "answer": "沟",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3820"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3140",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '搞' mean?",
+          "correctAnswer": "to do",
+          "distractors": [
+            {
+              "answer": "to set about a task",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3398"
+            },
+            {
+              "answer": "to wrap; to pack",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3955"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3140",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to do' in Chinese?",
+          "correctAnswer": "搞",
+          "distractors": [
+            {
+              "answer": "动手",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3398"
+            },
+            {
+              "answer": "打包",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3955"
+            },
+            {
+              "answer": "检验",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3435"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3140",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '搞'?",
+          "correctAnswer": "to do",
+          "distractors": [
+            {
+              "answer": "to set about a task",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3398"
+            },
+            {
+              "answer": "to wrap; to pack",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3955"
+            },
+            {
+              "answer": "to inspect",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3435"
+            },
+            {
+              "answer": "to regard; to view",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3722"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3141",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '唯一' mean?",
+          "correctAnswer": "only; sole",
+          "distractors": [
+            {
+              "answer": "unexpectedly",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3155"
+            },
+            {
+              "answer": "incidentally",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3712"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3141",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'only; sole' in Chinese?",
+          "correctAnswer": "唯一",
+          "distractors": [
+            {
+              "answer": "居然",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3155"
+            },
+            {
+              "answer": "偶然",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3712"
+            },
+            {
+              "answer": "一向",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3571"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3141",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '唯一'?",
+          "correctAnswer": "only; sole",
+          "distractors": [
+            {
+              "answer": "unexpectedly",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3155"
+            },
+            {
+              "answer": "incidentally",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3712"
+            },
+            {
+              "answer": "always; consistently",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3571"
+            },
+            {
+              "answer": "just; fair",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3488"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3142",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '如此' mean?",
+          "correctAnswer": "like this; so; such",
+          "distractors": [
+            {
+              "answer": "mountain area",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4151"
+            },
+            {
+              "answer": "swimming pool",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4148"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3142",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'like this; so; such' in Chinese?",
+          "correctAnswer": "如此",
+          "distractors": [
+            {
+              "answer": "山区",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4151"
+            },
+            {
+              "answer": "游泳池",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4148"
+            },
+            {
+              "answer": "竞赛",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3650"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-3142",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '如此'?",
+          "correctAnswer": "like this; so; such",
+          "distractors": [
+            {
+              "answer": "mountain area",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4151"
+            },
+            {
+              "answer": "swimming pool",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-4148"
+            },
+            {
+              "answer": "competition; race",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3650"
+            },
+            {
+              "answer": "bullet",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-3532"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

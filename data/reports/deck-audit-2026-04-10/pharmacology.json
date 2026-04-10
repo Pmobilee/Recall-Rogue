@@ -1,0 +1,5346 @@
+{
+  "timestamp": "2026-04-10T13:40:33.854Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 188,
+  "totalFails": 0,
+  "totalWarns": 11,
+  "decks": [
+    {
+      "deckId": "pharmacology",
+      "deckName": "Nursing Pharmacology",
+      "deckClass": "knowledge",
+      "totalFacts": 405,
+      "totalChecks": 188,
+      "failCount": 0,
+      "warnCount": 11,
+      "issuesByType": {
+        "min_pool_facts": {
+          "fail": 0,
+          "warn": 1
+        },
+        "empty_chain_themes_runtime": {
+          "fail": 0,
+          "warn": 1
+        },
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 3
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 3
+        },
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_pool_drug_class_abbrev",
+          "masteryLevel": -1,
+          "poolId": "drug_class_abbrev",
+          "renderedQuestion": "(pool-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_pool_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "min_pool_facts",
+              "detail": "Pool \"drug_class_abbrev\" has only 2 real factIds (min: 5)"
+            }
+          ]
+        },
+        {
+          "factId": "_deck_chain_themes",
+          "masteryLevel": -1,
+          "poolId": "_deck",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "empty_chain_themes_runtime",
+              "detail": "Knowledge deck \"pharmacology\" has no chainThemes — Study Temple mode will not work correctly"
+            }
+          ]
+        },
+        {
+          "factId": "pharm-cv-lisinopril-class",
+          "masteryLevel": 0,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does lisinopril belong to?",
+          "correctAnswer": "ACE inhibitor",
+          "distractors": [
+            {
+              "answer": "Bisphosphonate",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-alendronate-class"
+            },
+            {
+              "answer": "Opioid agonist analgesic",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-hydromorphone-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-lisinopril-class",
+          "masteryLevel": 2,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does lisinopril belong to?",
+          "correctAnswer": "ACE inhibitor",
+          "distractors": [
+            {
+              "answer": "Bisphosphonate",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-alendronate-class"
+            },
+            {
+              "answer": "Opioid agonist analgesic",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-hydromorphone-class"
+            },
+            {
+              "answer": "Mood stabilizer",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lithium-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-lisinopril-class",
+          "masteryLevel": 4,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does lisinopril belong to?",
+          "correctAnswer": "ACE inhibitor",
+          "distractors": [
+            {
+              "answer": "Bisphosphonate",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-alendronate-class"
+            },
+            {
+              "answer": "Opioid agonist analgesic",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-hydromorphone-class"
+            },
+            {
+              "answer": "Mood stabilizer",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lithium-class"
+            },
+            {
+              "answer": "Cardiac glycoside",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-digoxin-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-metoprolol-class",
+          "masteryLevel": 0,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does metoprolol belong to?",
+          "correctAnswer": "Beta-1 selective blocker",
+          "distractors": [
+            {
+              "answer": "Hyperglycemic agent",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-glucagon-class"
+            },
+            {
+              "answer": "Aminosalicylate",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-sulfasalazine-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Aminosalicylate\" has 2 format features different from correct \"Beta-1 selective blocker\""
+            }
+          ]
+        },
+        {
+          "factId": "pharm-cv-metoprolol-class",
+          "masteryLevel": 2,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does metoprolol belong to?",
+          "correctAnswer": "Beta-1 selective blocker",
+          "distractors": [
+            {
+              "answer": "Hyperglycemic agent",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-glucagon-class"
+            },
+            {
+              "answer": "Aminosalicylate",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-sulfasalazine-class"
+            },
+            {
+              "answer": "Osmotic diuretic",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-mannitol-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Aminosalicylate\" has 2 format features different from correct \"Beta-1 selective blocker\""
+            }
+          ]
+        },
+        {
+          "factId": "pharm-cv-metoprolol-class",
+          "masteryLevel": 4,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does metoprolol belong to?",
+          "correctAnswer": "Beta-1 selective blocker",
+          "distractors": [
+            {
+              "answer": "Hyperglycemic agent",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-glucagon-class"
+            },
+            {
+              "answer": "Aminosalicylate",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-sulfasalazine-class"
+            },
+            {
+              "answer": "Osmotic diuretic",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-mannitol-class"
+            },
+            {
+              "answer": "Benzodiazepine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lorazepam-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Aminosalicylate\" has 2 format features different from correct \"Beta-1 selective blocker\""
+            }
+          ]
+        },
+        {
+          "factId": "pharm-cv-diltiazem-class",
+          "masteryLevel": 0,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does diltiazem belong to?",
+          "correctAnswer": "Non-dihydropyridine CCB",
+          "distractors": [
+            {
+              "answer": "P2Y12 platelet inhibitor",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-class"
+            },
+            {
+              "answer": "Nitrate vasodilator",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroglycerin-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-diltiazem-class",
+          "masteryLevel": 2,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does diltiazem belong to?",
+          "correctAnswer": "Non-dihydropyridine CCB",
+          "distractors": [
+            {
+              "answer": "P2Y12 platelet inhibitor",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-class"
+            },
+            {
+              "answer": "Nitrate vasodilator",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroglycerin-class"
+            },
+            {
+              "answer": "Long-acting insulin",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-glargine-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-diltiazem-class",
+          "masteryLevel": 4,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does diltiazem belong to?",
+          "correctAnswer": "Non-dihydropyridine CCB",
+          "distractors": [
+            {
+              "answer": "P2Y12 platelet inhibitor",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-class"
+            },
+            {
+              "answer": "Nitrate vasodilator",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroglycerin-class"
+            },
+            {
+              "answer": "Long-acting insulin",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-glargine-class"
+            },
+            {
+              "answer": "Beta-1 selective blocker",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-nitroprusside-class",
+          "masteryLevel": 0,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does nitroprusside belong to?",
+          "correctAnswer": "Direct vasodilator",
+          "distractors": [
+            {
+              "answer": "Immunoglobulin",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-rho-d-class"
+            },
+            {
+              "answer": "Aminoglycoside antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-gentamicin-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-nitroprusside-class",
+          "masteryLevel": 2,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does nitroprusside belong to?",
+          "correctAnswer": "Direct vasodilator",
+          "distractors": [
+            {
+              "answer": "Immunoglobulin",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-rho-d-class"
+            },
+            {
+              "answer": "Aminoglycoside antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-gentamicin-class"
+            },
+            {
+              "answer": "Hyperglycemic agent",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-glucagon-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-nitroprusside-class",
+          "masteryLevel": 4,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does nitroprusside belong to?",
+          "correctAnswer": "Direct vasodilator",
+          "distractors": [
+            {
+              "answer": "Immunoglobulin",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-rho-d-class"
+            },
+            {
+              "answer": "Aminoglycoside antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-gentamicin-class"
+            },
+            {
+              "answer": "Hyperglycemic agent",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-glucagon-class"
+            },
+            {
+              "answer": "Non-dihydropyridine CCB",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-diltiazem-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-digoxin-class",
+          "masteryLevel": 0,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does digoxin belong to?",
+          "correctAnswer": "Cardiac glycoside",
+          "distractors": [
+            {
+              "answer": "Glycopeptide antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-vancomycin-class"
+            },
+            {
+              "answer": "Nitroimidazole antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-digoxin-class",
+          "masteryLevel": 2,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does digoxin belong to?",
+          "correctAnswer": "Cardiac glycoside",
+          "distractors": [
+            {
+              "answer": "Glycopeptide antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-vancomycin-class"
+            },
+            {
+              "answer": "Nitroimidazole antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-class"
+            },
+            {
+              "answer": "AV node blocker",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-adenosine-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-digoxin-class",
+          "masteryLevel": 4,
+          "poolId": "drug_classes_short",
+          "renderedQuestion": "What drug class does digoxin belong to?",
+          "correctAnswer": "Cardiac glycoside",
+          "distractors": [
+            {
+              "answer": "Glycopeptide antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-vancomycin-class"
+            },
+            {
+              "answer": "Nitroimidazole antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-class"
+            },
+            {
+              "answer": "AV node blocker",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-adenosine-class"
+            },
+            {
+              "answer": "Class III antiarrhythmic",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-amiodarone-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-lisinopril-mechanism",
+          "masteryLevel": 0,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of lisinopril?",
+          "correctAnswer": "Blocks angiotensin-converting enzyme",
+          "distractors": [
+            {
+              "answer": "Blocks angiotensin II at AT1 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-losartan-mechanism"
+            },
+            {
+              "answer": "Selectively blocks beta-1 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-mechanism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-lisinopril-mechanism",
+          "masteryLevel": 2,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of lisinopril?",
+          "correctAnswer": "Blocks angiotensin-converting enzyme",
+          "distractors": [
+            {
+              "answer": "Blocks angiotensin II at AT1 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-losartan-mechanism"
+            },
+            {
+              "answer": "Selectively blocks beta-1 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-mechanism"
+            },
+            {
+              "answer": "Blocks aldosterone receptors in tubule",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-spironolactone-mechanism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-lisinopril-mechanism",
+          "masteryLevel": 4,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of lisinopril?",
+          "correctAnswer": "Blocks angiotensin-converting enzyme",
+          "distractors": [
+            {
+              "answer": "Blocks angiotensin II at AT1 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-losartan-mechanism"
+            },
+            {
+              "answer": "Selectively blocks beta-1 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-mechanism"
+            },
+            {
+              "answer": "Blocks aldosterone receptors in tubule",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-spironolactone-mechanism"
+            },
+            {
+              "answer": "Blocks muscarinic M3 receptors in bronchial smooth muscle",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-ipratropium-mech"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-losartan-mechanism",
+          "masteryLevel": 0,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of losartan?",
+          "correctAnswer": "Blocks angiotensin II at AT1 receptors",
+          "distractors": [
+            {
+              "answer": "Irreversibly blocks ADP P2Y12 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-mechanism"
+            },
+            {
+              "answer": "Blocks dopamine D2 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-mechanism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-losartan-mechanism",
+          "masteryLevel": 2,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of losartan?",
+          "correctAnswer": "Blocks angiotensin II at AT1 receptors",
+          "distractors": [
+            {
+              "answer": "Irreversibly blocks ADP P2Y12 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-mechanism"
+            },
+            {
+              "answer": "Blocks dopamine D2 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-mechanism"
+            },
+            {
+              "answer": "Selectively blocks beta-1 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-mechanism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-losartan-mechanism",
+          "masteryLevel": 4,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of losartan?",
+          "correctAnswer": "Blocks angiotensin II at AT1 receptors",
+          "distractors": [
+            {
+              "answer": "Irreversibly blocks ADP P2Y12 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-mechanism"
+            },
+            {
+              "answer": "Blocks dopamine D2 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-mechanism"
+            },
+            {
+              "answer": "Selectively blocks beta-1 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-mechanism"
+            },
+            {
+              "answer": "Decreases hepatic glucose production; increases insulin sensitivity",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-metformin-mech"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-metoprolol-mechanism",
+          "masteryLevel": 0,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of metoprolol?",
+          "correctAnswer": "Selectively blocks beta-1 receptors",
+          "distractors": [
+            {
+              "answer": "Irreversibly blocks ADP P2Y12 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-mechanism"
+            },
+            {
+              "answer": "Blocks angiotensin II at AT1 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-losartan-mechanism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-metoprolol-mechanism",
+          "masteryLevel": 2,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of metoprolol?",
+          "correctAnswer": "Selectively blocks beta-1 receptors",
+          "distractors": [
+            {
+              "answer": "Irreversibly blocks ADP P2Y12 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-mechanism"
+            },
+            {
+              "answer": "Blocks angiotensin II at AT1 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-losartan-mechanism"
+            },
+            {
+              "answer": "Blocks dopamine D2 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-mechanism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-metoprolol-mechanism",
+          "masteryLevel": 4,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of metoprolol?",
+          "correctAnswer": "Selectively blocks beta-1 receptors",
+          "distractors": [
+            {
+              "answer": "Irreversibly blocks ADP P2Y12 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-mechanism"
+            },
+            {
+              "answer": "Blocks angiotensin II at AT1 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-losartan-mechanism"
+            },
+            {
+              "answer": "Blocks dopamine D2 receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-mechanism"
+            },
+            {
+              "answer": "Disrupts DNA synthesis in anaerobes",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-mechanism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amlodipine-mechanism",
+          "masteryLevel": 0,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of amlodipine?",
+          "correctAnswer": "Blocks L-type Ca channels in vessels",
+          "distractors": [
+            {
+              "answer": "Blocks muscarinic (M2/M3) receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atropine-mechanism"
+            },
+            {
+              "answer": "Blocks H1 receptors; crosses blood-brain barrier (sedating)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-diphenhydramine-mech"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amlodipine-mechanism",
+          "masteryLevel": 2,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of amlodipine?",
+          "correctAnswer": "Blocks L-type Ca channels in vessels",
+          "distractors": [
+            {
+              "answer": "Blocks muscarinic (M2/M3) receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atropine-mechanism"
+            },
+            {
+              "answer": "Blocks H1 receptors; crosses blood-brain barrier (sedating)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-diphenhydramine-mech"
+            },
+            {
+              "answer": "Inhibits Na+/K+ ATPase pump",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-digoxin-mechanism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amlodipine-mechanism",
+          "masteryLevel": 4,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of amlodipine?",
+          "correctAnswer": "Blocks L-type Ca channels in vessels",
+          "distractors": [
+            {
+              "answer": "Blocks muscarinic (M2/M3) receptors",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atropine-mechanism"
+            },
+            {
+              "answer": "Blocks H1 receptors; crosses blood-brain barrier (sedating)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-diphenhydramine-mech"
+            },
+            {
+              "answer": "Inhibits Na+/K+ ATPase pump",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-digoxin-mechanism"
+            },
+            {
+              "answer": "Inhibits thyroid peroxidase; blocks T4 to T3 conversion",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-propylthiouracil-mech"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-diltiazem-mechanism",
+          "masteryLevel": 0,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of diltiazem?",
+          "correctAnswer": "Blocks Ca channels in heart and vessels",
+          "distractors": [
+            {
+              "answer": "Potent alpha-1 agonist; increases SVR",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-norepinephrine-mechanism"
+            },
+            {
+              "answer": "Blocks serotonin 5-HT3 receptors in CTZ and vagal nerve",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-ondansetron-mech"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-diltiazem-mechanism",
+          "masteryLevel": 2,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of diltiazem?",
+          "correctAnswer": "Blocks Ca channels in heart and vessels",
+          "distractors": [
+            {
+              "answer": "Potent alpha-1 agonist; increases SVR",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-norepinephrine-mechanism"
+            },
+            {
+              "answer": "Blocks serotonin 5-HT3 receptors in CTZ and vagal nerve",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-ondansetron-mech"
+            },
+            {
+              "answer": "Inhibits Na+/K+ ATPase pump",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-digoxin-mechanism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-diltiazem-mechanism",
+          "masteryLevel": 4,
+          "poolId": "mechanisms",
+          "renderedQuestion": "What is the mechanism of action of diltiazem?",
+          "correctAnswer": "Blocks Ca channels in heart and vessels",
+          "distractors": [
+            {
+              "answer": "Potent alpha-1 agonist; increases SVR",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-norepinephrine-mechanism"
+            },
+            {
+              "answer": "Blocks serotonin 5-HT3 receptors in CTZ and vagal nerve",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-ondansetron-mech"
+            },
+            {
+              "answer": "Inhibits Na+/K+ ATPase pump",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-digoxin-mechanism"
+            },
+            {
+              "answer": "Blocks voltage-gated sodium channels",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-phenytoin-mechanism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-lisinopril-side-effect",
+          "masteryLevel": 0,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "What is the classic adverse effect that distinguishes ACE inhibitors like lisinopril from ARBs?",
+          "correctAnswer": "Dry cough",
+          "distractors": [
+            {
+              "answer": "Peripheral edema",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-amlodipine-side-effect"
+            },
+            {
+              "answer": "Sexual dysfunction",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-sideeffect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-lisinopril-side-effect",
+          "masteryLevel": 2,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "What is the classic adverse effect that distinguishes ACE inhibitors like lisinopril from ARBs?",
+          "correctAnswer": "Dry cough",
+          "distractors": [
+            {
+              "answer": "Peripheral edema",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-amlodipine-side-effect"
+            },
+            {
+              "answer": "Sexual dysfunction",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-sideeffect"
+            },
+            {
+              "answer": "Urinary retention",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atropine-side-effect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-lisinopril-side-effect",
+          "masteryLevel": 4,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "What is the classic adverse effect that distinguishes ACE inhibitors like lisinopril from ARBs?",
+          "correctAnswer": "Dry cough",
+          "distractors": [
+            {
+              "answer": "Peripheral edema",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-amlodipine-side-effect"
+            },
+            {
+              "answer": "Sexual dysfunction",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-sideeffect"
+            },
+            {
+              "answer": "Urinary retention",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atropine-side-effect"
+            },
+            {
+              "answer": "Red Man Syndrome",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-vancomycin-sideeffect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amlodipine-side-effect",
+          "masteryLevel": 0,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "What is the most common adverse effect of amlodipine?",
+          "correctAnswer": "Peripheral edema",
+          "distractors": [
+            {
+              "answer": "Dry cough",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-lisinopril-side-effect"
+            },
+            {
+              "answer": "Hypoglycemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-nph-side"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amlodipine-side-effect",
+          "masteryLevel": 2,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "What is the most common adverse effect of amlodipine?",
+          "correctAnswer": "Peripheral edema",
+          "distractors": [
+            {
+              "answer": "Dry cough",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-lisinopril-side-effect"
+            },
+            {
+              "answer": "Hypoglycemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-nph-side"
+            },
+            {
+              "answer": "Constipation",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-ferrous-sulfate-side-effect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amlodipine-side-effect",
+          "masteryLevel": 4,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "What is the most common adverse effect of amlodipine?",
+          "correctAnswer": "Peripheral edema",
+          "distractors": [
+            {
+              "answer": "Dry cough",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-lisinopril-side-effect"
+            },
+            {
+              "answer": "Hypoglycemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-nph-side"
+            },
+            {
+              "answer": "Constipation",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-ferrous-sulfate-side-effect"
+            },
+            {
+              "answer": "Hyperkalemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-spironolactone-side-effect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-diltiazem-side-effect",
+          "masteryLevel": 0,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "What cardiac adverse effect must be monitored when a patient is on diltiazem?",
+          "correctAnswer": "Bradycardia",
+          "distractors": [
+            {
+              "answer": "Hepatotoxicity",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-fluconazole-sideeffect"
+            },
+            {
+              "answer": "Urinary retention",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atropine-side-effect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-diltiazem-side-effect",
+          "masteryLevel": 2,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "What cardiac adverse effect must be monitored when a patient is on diltiazem?",
+          "correctAnswer": "Bradycardia",
+          "distractors": [
+            {
+              "answer": "Hepatotoxicity",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-fluconazole-sideeffect"
+            },
+            {
+              "answer": "Urinary retention",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atropine-side-effect"
+            },
+            {
+              "answer": "Tremor",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lithium-sideeffect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-diltiazem-side-effect",
+          "masteryLevel": 4,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "What cardiac adverse effect must be monitored when a patient is on diltiazem?",
+          "correctAnswer": "Bradycardia",
+          "distractors": [
+            {
+              "answer": "Hepatotoxicity",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-fluconazole-sideeffect"
+            },
+            {
+              "answer": "Urinary retention",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atropine-side-effect"
+            },
+            {
+              "answer": "Tremor",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lithium-sideeffect"
+            },
+            {
+              "answer": "Pulmonary toxicity",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-amiodarone-side-effect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amiodarone-side-effect",
+          "masteryLevel": 0,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "What serious pulmonary adverse effect requires monitoring in patients on long-term amiodarone?",
+          "correctAnswer": "Pulmonary toxicity",
+          "distractors": [
+            {
+              "answer": "Ototoxicity",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-furosemide-side-effect"
+            },
+            {
+              "answer": "Hepatotoxicity",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-valproic_acid-sideeffect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amiodarone-side-effect",
+          "masteryLevel": 2,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "What serious pulmonary adverse effect requires monitoring in patients on long-term amiodarone?",
+          "correctAnswer": "Pulmonary toxicity",
+          "distractors": [
+            {
+              "answer": "Ototoxicity",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-furosemide-side-effect"
+            },
+            {
+              "answer": "Hepatotoxicity",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-valproic_acid-sideeffect"
+            },
+            {
+              "answer": "Sexual dysfunction",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-sideeffect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amiodarone-side-effect",
+          "masteryLevel": 4,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "What serious pulmonary adverse effect requires monitoring in patients on long-term amiodarone?",
+          "correctAnswer": "Pulmonary toxicity",
+          "distractors": [
+            {
+              "answer": "Ototoxicity",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-furosemide-side-effect"
+            },
+            {
+              "answer": "Hepatotoxicity",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-valproic_acid-sideeffect"
+            },
+            {
+              "answer": "Sexual dysfunction",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-sideeffect"
+            },
+            {
+              "answer": "Hyperglycemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-hydrochlorothiazide-side-effect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-atropine-side-effect",
+          "masteryLevel": 0,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "Which adverse effect of atropine requires monitoring, especially in elderly male patients?",
+          "correctAnswer": "Urinary retention",
+          "distractors": [
+            {
+              "answer": "Bradycardia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-diltiazem-side-effect"
+            },
+            {
+              "answer": "Fluid overload",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-mannitol-side-effect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-atropine-side-effect",
+          "masteryLevel": 2,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "Which adverse effect of atropine requires monitoring, especially in elderly male patients?",
+          "correctAnswer": "Urinary retention",
+          "distractors": [
+            {
+              "answer": "Bradycardia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-diltiazem-side-effect"
+            },
+            {
+              "answer": "Fluid overload",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-mannitol-side-effect"
+            },
+            {
+              "answer": "Red Man Syndrome",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-vancomycin-sideeffect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-atropine-side-effect",
+          "masteryLevel": 4,
+          "poolId": "side_effects_short",
+          "renderedQuestion": "Which adverse effect of atropine requires monitoring, especially in elderly male patients?",
+          "correctAnswer": "Urinary retention",
+          "distractors": [
+            {
+              "answer": "Bradycardia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-diltiazem-side-effect"
+            },
+            {
+              "answer": "Fluid overload",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-mannitol-side-effect"
+            },
+            {
+              "answer": "Red Man Syndrome",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-vancomycin-sideeffect"
+            },
+            {
+              "answer": "Hyperglycemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-hydrochlorothiazide-side-effect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-lisinopril-indication",
+          "masteryLevel": 0,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for lisinopril?",
+          "correctAnswer": "Hypertension",
+          "distractors": [
+            {
+              "answer": "Angina",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroglycerin-indication"
+            },
+            {
+              "answer": "Septic shock",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-norepinephrine-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-lisinopril-indication",
+          "masteryLevel": 2,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for lisinopril?",
+          "correctAnswer": "Hypertension",
+          "distractors": [
+            {
+              "answer": "Angina",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroglycerin-indication"
+            },
+            {
+              "answer": "Septic shock",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-norepinephrine-indication"
+            },
+            {
+              "answer": "Anaphylaxis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-epinephrine-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-lisinopril-indication",
+          "masteryLevel": 4,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for lisinopril?",
+          "correctAnswer": "Hypertension",
+          "distractors": [
+            {
+              "answer": "Angina",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroglycerin-indication"
+            },
+            {
+              "answer": "Septic shock",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-norepinephrine-indication"
+            },
+            {
+              "answer": "Anaphylaxis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-epinephrine-indication"
+            },
+            {
+              "answer": "Hyperlipidemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atorvastatin-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amlodipine-indication",
+          "masteryLevel": 0,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for amlodipine?",
+          "correctAnswer": "Hypertension",
+          "distractors": [
+            {
+              "answer": "Hyperlipidemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atorvastatin-indication"
+            },
+            {
+              "answer": "Shock",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-dopamine-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amlodipine-indication",
+          "masteryLevel": 2,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for amlodipine?",
+          "correctAnswer": "Hypertension",
+          "distractors": [
+            {
+              "answer": "Hyperlipidemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atorvastatin-indication"
+            },
+            {
+              "answer": "Shock",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-dopamine-indication"
+            },
+            {
+              "answer": "Septic shock",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-norepinephrine-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amlodipine-indication",
+          "masteryLevel": 4,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for amlodipine?",
+          "correctAnswer": "Hypertension",
+          "distractors": [
+            {
+              "answer": "Hyperlipidemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atorvastatin-indication"
+            },
+            {
+              "answer": "Shock",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-dopamine-indication"
+            },
+            {
+              "answer": "Septic shock",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-norepinephrine-indication"
+            },
+            {
+              "answer": "Anaphylaxis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-epinephrine-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-clonidine-indication",
+          "masteryLevel": 0,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for clonidine?",
+          "correctAnswer": "Hypertension",
+          "distractors": [
+            {
+              "answer": "Anaphylaxis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-epinephrine-indication"
+            },
+            {
+              "answer": "Septic shock",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-norepinephrine-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-clonidine-indication",
+          "masteryLevel": 2,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for clonidine?",
+          "correctAnswer": "Hypertension",
+          "distractors": [
+            {
+              "answer": "Anaphylaxis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-epinephrine-indication"
+            },
+            {
+              "answer": "Septic shock",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-norepinephrine-indication"
+            },
+            {
+              "answer": "Cerebral edema",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-mannitol-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-clonidine-indication",
+          "masteryLevel": 4,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for clonidine?",
+          "correctAnswer": "Hypertension",
+          "distractors": [
+            {
+              "answer": "Anaphylaxis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-epinephrine-indication"
+            },
+            {
+              "answer": "Septic shock",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-norepinephrine-indication"
+            },
+            {
+              "answer": "Cerebral edema",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-mannitol-indication"
+            },
+            {
+              "answer": "Angina",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroglycerin-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-epinephrine-indication",
+          "masteryLevel": 0,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for epinephrine?",
+          "correctAnswer": "Anaphylaxis",
+          "distractors": [
+            {
+              "answer": "Hypertension",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-lisinopril-indication"
+            },
+            {
+              "answer": "Angina",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroglycerin-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-epinephrine-indication",
+          "masteryLevel": 2,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for epinephrine?",
+          "correctAnswer": "Anaphylaxis",
+          "distractors": [
+            {
+              "answer": "Hypertension",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-lisinopril-indication"
+            },
+            {
+              "answer": "Angina",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroglycerin-indication"
+            },
+            {
+              "answer": "Hyperlipidemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atorvastatin-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-epinephrine-indication",
+          "masteryLevel": 4,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for epinephrine?",
+          "correctAnswer": "Anaphylaxis",
+          "distractors": [
+            {
+              "answer": "Hypertension",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-lisinopril-indication"
+            },
+            {
+              "answer": "Angina",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroglycerin-indication"
+            },
+            {
+              "answer": "Hyperlipidemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atorvastatin-indication"
+            },
+            {
+              "answer": "Cerebral edema",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-mannitol-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-norepinephrine-indication",
+          "masteryLevel": 0,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for norepinephrine?",
+          "correctAnswer": "Septic shock",
+          "distractors": [
+            {
+              "answer": "Hypertension",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-amlodipine-indication"
+            },
+            {
+              "answer": "Hyperlipidemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atorvastatin-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-norepinephrine-indication",
+          "masteryLevel": 2,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for norepinephrine?",
+          "correctAnswer": "Septic shock",
+          "distractors": [
+            {
+              "answer": "Hypertension",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-amlodipine-indication"
+            },
+            {
+              "answer": "Hyperlipidemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atorvastatin-indication"
+            },
+            {
+              "answer": "Anaphylaxis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-epinephrine-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-norepinephrine-indication",
+          "masteryLevel": 4,
+          "poolId": "indications_short",
+          "renderedQuestion": "What is the primary indication for norepinephrine?",
+          "correctAnswer": "Septic shock",
+          "distractors": [
+            {
+              "answer": "Hypertension",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-amlodipine-indication"
+            },
+            {
+              "answer": "Hyperlipidemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atorvastatin-indication"
+            },
+            {
+              "answer": "Anaphylaxis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-epinephrine-indication"
+            },
+            {
+              "answer": "Angina",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroglycerin-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-losartan-class",
+          "masteryLevel": 0,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does losartan belong to?",
+          "correctAnswer": "Angiotensin II receptor blocker (ARB)",
+          "distractors": [
+            {
+              "answer": "Methylxanthine bronchodilator",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-theophylline-class"
+            },
+            {
+              "answer": "First-generation (typical) antipsychotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-losartan-class",
+          "masteryLevel": 2,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does losartan belong to?",
+          "correctAnswer": "Angiotensin II receptor blocker (ARB)",
+          "distractors": [
+            {
+              "answer": "Methylxanthine bronchodilator",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-theophylline-class"
+            },
+            {
+              "answer": "First-generation (typical) antipsychotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-class"
+            },
+            {
+              "answer": "Anticholinergic bronchodilator",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-ipratropium-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-losartan-class",
+          "masteryLevel": 4,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does losartan belong to?",
+          "correctAnswer": "Angiotensin II receptor blocker (ARB)",
+          "distractors": [
+            {
+              "answer": "Methylxanthine bronchodilator",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-theophylline-class"
+            },
+            {
+              "answer": "First-generation (typical) antipsychotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-class"
+            },
+            {
+              "answer": "Anticholinergic bronchodilator",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-ipratropium-class"
+            },
+            {
+              "answer": "Short-acting beta-2 agonist (SABA)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-albuterol-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amlodipine-class",
+          "masteryLevel": 0,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does amlodipine belong to?",
+          "correctAnswer": "Dihydropyridine calcium channel blocker",
+          "distractors": [
+            {
+              "answer": "Alpha-2 adrenergic agonist",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clonidine-class"
+            },
+            {
+              "answer": "Anticholinergic (muscarinic antagonist)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atropine-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amlodipine-class",
+          "masteryLevel": 2,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does amlodipine belong to?",
+          "correctAnswer": "Dihydropyridine calcium channel blocker",
+          "distractors": [
+            {
+              "answer": "Alpha-2 adrenergic agonist",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clonidine-class"
+            },
+            {
+              "answer": "Anticholinergic (muscarinic antagonist)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atropine-class"
+            },
+            {
+              "answer": "Low-molecular-weight heparin",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-enoxaparin-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amlodipine-class",
+          "masteryLevel": 4,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does amlodipine belong to?",
+          "correctAnswer": "Dihydropyridine calcium channel blocker",
+          "distractors": [
+            {
+              "answer": "Alpha-2 adrenergic agonist",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clonidine-class"
+            },
+            {
+              "answer": "Anticholinergic (muscarinic antagonist)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atropine-class"
+            },
+            {
+              "answer": "Low-molecular-weight heparin",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-enoxaparin-class"
+            },
+            {
+              "answer": "Depolarizing neuromuscular blocker",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-succinylcholine-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-clonidine-class",
+          "masteryLevel": 0,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does clonidine belong to?",
+          "correctAnswer": "Alpha-2 adrenergic agonist",
+          "distractors": [
+            {
+              "answer": "Thyroid hormone replacement",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-levothyroxine-class"
+            },
+            {
+              "answer": "Proton pump inhibitor (PPI)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-omeprazole-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-clonidine-class",
+          "masteryLevel": 2,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does clonidine belong to?",
+          "correctAnswer": "Alpha-2 adrenergic agonist",
+          "distractors": [
+            {
+              "answer": "Thyroid hormone replacement",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-levothyroxine-class"
+            },
+            {
+              "answer": "Proton pump inhibitor (PPI)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-omeprazole-class"
+            },
+            {
+              "answer": "Platelet aggregation inhibitor / NSAID",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-aspirin-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-clonidine-class",
+          "masteryLevel": 4,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does clonidine belong to?",
+          "correctAnswer": "Alpha-2 adrenergic agonist",
+          "distractors": [
+            {
+              "answer": "Thyroid hormone replacement",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-levothyroxine-class"
+            },
+            {
+              "answer": "Proton pump inhibitor (PPI)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-omeprazole-class"
+            },
+            {
+              "answer": "Platelet aggregation inhibitor / NSAID",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-aspirin-class"
+            },
+            {
+              "answer": "Anticholinergic bronchodilator",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-ipratropium-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-atropine-class",
+          "masteryLevel": 0,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does atropine belong to?",
+          "correctAnswer": "Anticholinergic (muscarinic antagonist)",
+          "distractors": [
+            {
+              "answer": "Antithyroid agent (thioamide)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-propylthiouracil-class"
+            },
+            {
+              "answer": "Fluoroquinolone antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-ciprofloxacin-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-atropine-class",
+          "masteryLevel": 2,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does atropine belong to?",
+          "correctAnswer": "Anticholinergic (muscarinic antagonist)",
+          "distractors": [
+            {
+              "answer": "Antithyroid agent (thioamide)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-propylthiouracil-class"
+            },
+            {
+              "answer": "Fluoroquinolone antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-ciprofloxacin-class"
+            },
+            {
+              "answer": "Third-generation cephalosporin",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-ceftriaxone-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-atropine-class",
+          "masteryLevel": 4,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does atropine belong to?",
+          "correctAnswer": "Anticholinergic (muscarinic antagonist)",
+          "distractors": [
+            {
+              "answer": "Antithyroid agent (thioamide)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-propylthiouracil-class"
+            },
+            {
+              "answer": "Fluoroquinolone antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-ciprofloxacin-class"
+            },
+            {
+              "answer": "Third-generation cephalosporin",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-ceftriaxone-class"
+            },
+            {
+              "answer": "Potassium-sparing diuretic",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-spironolactone-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-norepinephrine-class",
+          "masteryLevel": 0,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does norepinephrine belong to?",
+          "correctAnswer": "Alpha-1 dominant sympathomimetic",
+          "distractors": [
+            {
+              "answer": "Anticholinergic (antiparkinson)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-benztropine-class"
+            },
+            {
+              "answer": "Sulfonamide combination antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-tmp-smx-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-norepinephrine-class",
+          "masteryLevel": 2,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does norepinephrine belong to?",
+          "correctAnswer": "Alpha-1 dominant sympathomimetic",
+          "distractors": [
+            {
+              "answer": "Anticholinergic (antiparkinson)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-benztropine-class"
+            },
+            {
+              "answer": "Sulfonamide combination antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-tmp-smx-class"
+            },
+            {
+              "answer": "Monoamine oxidase inhibitor (MAOI)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-phenelzine-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-norepinephrine-class",
+          "masteryLevel": 4,
+          "poolId": "drug_classes_long",
+          "renderedQuestion": "What drug class does norepinephrine belong to?",
+          "correctAnswer": "Alpha-1 dominant sympathomimetic",
+          "distractors": [
+            {
+              "answer": "Anticholinergic (antiparkinson)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-benztropine-class"
+            },
+            {
+              "answer": "Sulfonamide combination antibiotic",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-tmp-smx-class"
+            },
+            {
+              "answer": "Monoamine oxidase inhibitor (MAOI)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-phenelzine-class"
+            },
+            {
+              "answer": "Osmotic laxative / ammonia reducer",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-lactulose-class"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-losartan-nursing",
+          "masteryLevel": 0,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What should the nurse monitor for a patient on losartan?",
+          "correctAnswer": "Monitor potassium and renal function",
+          "distractors": [
+            {
+              "answer": "Do not use in C. diff or bacterial dysentery",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-loperamide-nursing"
+            },
+            {
+              "answer": "Do not crush extended-release tablets",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-oxycodone-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-losartan-nursing",
+          "masteryLevel": 2,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What should the nurse monitor for a patient on losartan?",
+          "correctAnswer": "Monitor potassium and renal function",
+          "distractors": [
+            {
+              "answer": "Do not use in C. diff or bacterial dysentery",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-loperamide-nursing"
+            },
+            {
+              "answer": "Do not crush extended-release tablets",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-oxycodone-nursing"
+            },
+            {
+              "answer": "Empty stomach 30-60 min before breakfast; monitor TSH",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-levothyroxine-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-losartan-nursing",
+          "masteryLevel": 4,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What should the nurse monitor for a patient on losartan?",
+          "correctAnswer": "Monitor potassium and renal function",
+          "distractors": [
+            {
+              "answer": "Do not use in C. diff or bacterial dysentery",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-loperamide-nursing"
+            },
+            {
+              "answer": "Do not crush extended-release tablets",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-oxycodone-nursing"
+            },
+            {
+              "answer": "Empty stomach 30-60 min before breakfast; monitor TSH",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-levothyroxine-nursing"
+            },
+            {
+              "answer": "Central line; monitor urine output",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-dopamine-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-nitroprusside-nursing",
+          "masteryLevel": 0,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What critical nursing action is required when administering nitroprusside?",
+          "correctAnswer": "Protect from light; monitor thiocyanate",
+          "distractors": [
+            {
+              "answer": "Take on empty stomach; avoid protein",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-carbidopa_levodopa-nursing"
+            },
+            {
+              "answer": "Keep available when succinylcholine is used",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-dantrolene-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-nitroprusside-nursing",
+          "masteryLevel": 2,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What critical nursing action is required when administering nitroprusside?",
+          "correctAnswer": "Protect from light; monitor thiocyanate",
+          "distractors": [
+            {
+              "answer": "Take on empty stomach; avoid protein",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-carbidopa_levodopa-nursing"
+            },
+            {
+              "answer": "Keep available when succinylcholine is used",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-dantrolene-nursing"
+            },
+            {
+              "answer": "Take in evening; not for acute attacks; monitor mood",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-montelukast-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-nitroprusside-nursing",
+          "masteryLevel": 4,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What critical nursing action is required when administering nitroprusside?",
+          "correctAnswer": "Protect from light; monitor thiocyanate",
+          "distractors": [
+            {
+              "answer": "Take on empty stomach; avoid protein",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-carbidopa_levodopa-nursing"
+            },
+            {
+              "answer": "Keep available when succinylcholine is used",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-dantrolene-nursing"
+            },
+            {
+              "answer": "Take in evening; not for acute attacks; monitor mood",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-montelukast-nursing"
+            },
+            {
+              "answer": "Titrate to 2-3 soft stools/day; monitor ammonia",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-lactulose-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-adenosine-nursing",
+          "masteryLevel": 0,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What is the critical nursing technique for administering adenosine?",
+          "correctAnswer": "Give rapid IV push; follow with NS flush",
+          "distractors": [
+            {
+              "answer": "Avoid potassium and salt substitutes",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-spironolactone-nursing"
+            },
+            {
+              "answer": "Do not use in C. diff or bacterial dysentery",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-loperamide-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-adenosine-nursing",
+          "masteryLevel": 2,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What is the critical nursing technique for administering adenosine?",
+          "correctAnswer": "Give rapid IV push; follow with NS flush",
+          "distractors": [
+            {
+              "answer": "Avoid potassium and salt substitutes",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-spironolactone-nursing"
+            },
+            {
+              "answer": "Do not use in C. diff or bacterial dysentery",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-loperamide-nursing"
+            },
+            {
+              "answer": "Titrate to 2-3 soft stools/day; monitor ammonia",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-lactulose-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-adenosine-nursing",
+          "masteryLevel": 4,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What is the critical nursing technique for administering adenosine?",
+          "correctAnswer": "Give rapid IV push; follow with NS flush",
+          "distractors": [
+            {
+              "answer": "Avoid potassium and salt substitutes",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-spironolactone-nursing"
+            },
+            {
+              "answer": "Do not use in C. diff or bacterial dysentery",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-loperamide-nursing"
+            },
+            {
+              "answer": "Titrate to 2-3 soft stools/day; monitor ammonia",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-lactulose-nursing"
+            },
+            {
+              "answer": "Position on side; follow with carbohydrate when alert",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-glucagon-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-epinephrine-nursing",
+          "masteryLevel": 0,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What is the correct route of administration for epinephrine in anaphylaxis?",
+          "correctAnswer": "IM into anterolateral thigh; anaphylaxis",
+          "distractors": [
+            {
+              "answer": "Monitor trough levels (15-20 mcg/mL)",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-vancomycin-nursing"
+            },
+            {
+              "answer": "Monitor BP, weight, and potassium levels",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-fludrocortisone-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-epinephrine-nursing",
+          "masteryLevel": 2,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What is the correct route of administration for epinephrine in anaphylaxis?",
+          "correctAnswer": "IM into anterolateral thigh; anaphylaxis",
+          "distractors": [
+            {
+              "answer": "Monitor trough levels (15-20 mcg/mL)",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-vancomycin-nursing"
+            },
+            {
+              "answer": "Monitor BP, weight, and potassium levels",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-fludrocortisone-nursing"
+            },
+            {
+              "answer": "Give with vitamin B6 (pyridoxine)",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-isoniazid-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-epinephrine-nursing",
+          "masteryLevel": 4,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What is the correct route of administration for epinephrine in anaphylaxis?",
+          "correctAnswer": "IM into anterolateral thigh; anaphylaxis",
+          "distractors": [
+            {
+              "answer": "Monitor trough levels (15-20 mcg/mL)",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-vancomycin-nursing"
+            },
+            {
+              "answer": "Monitor BP, weight, and potassium levels",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-fludrocortisone-nursing"
+            },
+            {
+              "answer": "Give with vitamin B6 (pyridoxine)",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-isoniazid-nursing"
+            },
+            {
+              "answer": "Take 30 min before meals; monitor blood glucose",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-glipizide-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-norepinephrine-nursing",
+          "masteryLevel": 0,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What is the critical nursing requirement for administering norepinephrine?",
+          "correctAnswer": "Central line; monitor for extravasation",
+          "distractors": [
+            {
+              "answer": "Protect from light; monitor thiocyanate",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroprusside-nursing"
+            },
+            {
+              "answer": "Give SubQ abdomen; retain air bubble",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-enoxaparin-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-norepinephrine-nursing",
+          "masteryLevel": 2,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What is the critical nursing requirement for administering norepinephrine?",
+          "correctAnswer": "Central line; monitor for extravasation",
+          "distractors": [
+            {
+              "answer": "Protect from light; monitor thiocyanate",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroprusside-nursing"
+            },
+            {
+              "answer": "Give SubQ abdomen; retain air bubble",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-enoxaparin-nursing"
+            },
+            {
+              "answer": "Monitor potassium and renal function",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-losartan-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-norepinephrine-nursing",
+          "masteryLevel": 4,
+          "poolId": "nursing_interventions_long",
+          "renderedQuestion": "What is the critical nursing requirement for administering norepinephrine?",
+          "correctAnswer": "Central line; monitor for extravasation",
+          "distractors": [
+            {
+              "answer": "Protect from light; monitor thiocyanate",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroprusside-nursing"
+            },
+            {
+              "answer": "Give SubQ abdomen; retain air bubble",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-enoxaparin-nursing"
+            },
+            {
+              "answer": "Monitor potassium and renal function",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-losartan-nursing"
+            },
+            {
+              "answer": "Monitor lithium levels (0.6-1.2 mEq/L)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lithium-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-losartan-indication",
+          "masteryLevel": 0,
+          "poolId": "indications_long",
+          "renderedQuestion": "Which condition is losartan specifically indicated to treat in diabetic patients?",
+          "correctAnswer": "Diabetic nephropathy",
+          "distractors": [
+            {
+              "answer": "Supraventricular tachycardia (SVT)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-adenosine-indication"
+            },
+            {
+              "answer": "Anemia from CKD or chemotherapy",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-epoetin-alfa-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-losartan-indication",
+          "masteryLevel": 2,
+          "poolId": "indications_long",
+          "renderedQuestion": "Which condition is losartan specifically indicated to treat in diabetic patients?",
+          "correctAnswer": "Diabetic nephropathy",
+          "distractors": [
+            {
+              "answer": "Supraventricular tachycardia (SVT)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-adenosine-indication"
+            },
+            {
+              "answer": "Anemia from CKD or chemotherapy",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-epoetin-alfa-indication"
+            },
+            {
+              "answer": "Rh-negative mother with Rh+ exposure",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-rho-d-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-losartan-indication",
+          "masteryLevel": 4,
+          "poolId": "indications_long",
+          "renderedQuestion": "Which condition is losartan specifically indicated to treat in diabetic patients?",
+          "correctAnswer": "Diabetic nephropathy",
+          "distractors": [
+            {
+              "answer": "Supraventricular tachycardia (SVT)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-adenosine-indication"
+            },
+            {
+              "answer": "Anemia from CKD or chemotherapy",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-epoetin-alfa-indication"
+            },
+            {
+              "answer": "Rh-negative mother with Rh+ exposure",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-rho-d-indication"
+            },
+            {
+              "answer": "Meningitis, pneumonia, gonorrhea",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-ceftriaxone-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-diltiazem-indication",
+          "masteryLevel": 0,
+          "poolId": "indications_long",
+          "renderedQuestion": "For what arrhythmia is diltiazem commonly used for rate control?",
+          "correctAnswer": "Atrial fibrillation",
+          "distractors": [
+            {
+              "answer": "Smoking cessation",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-bupropion-indication"
+            },
+            {
+              "answer": "Diabetes, DKA, hyperkalemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-regular-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-diltiazem-indication",
+          "masteryLevel": 2,
+          "poolId": "indications_long",
+          "renderedQuestion": "For what arrhythmia is diltiazem commonly used for rate control?",
+          "correctAnswer": "Atrial fibrillation",
+          "distractors": [
+            {
+              "answer": "Smoking cessation",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-bupropion-indication"
+            },
+            {
+              "answer": "Diabetes, DKA, hyperkalemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-regular-indication"
+            },
+            {
+              "answer": "Otitis media, UTI, H. pylori",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-amoxicillin-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-diltiazem-indication",
+          "masteryLevel": 4,
+          "poolId": "indications_long",
+          "renderedQuestion": "For what arrhythmia is diltiazem commonly used for rate control?",
+          "correctAnswer": "Atrial fibrillation",
+          "distractors": [
+            {
+              "answer": "Smoking cessation",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-bupropion-indication"
+            },
+            {
+              "answer": "Diabetes, DKA, hyperkalemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-regular-indication"
+            },
+            {
+              "answer": "Otitis media, UTI, H. pylori",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-amoxicillin-indication"
+            },
+            {
+              "answer": "Symptomatic bradycardia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-atropine-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amiodarone-indication",
+          "masteryLevel": 0,
+          "poolId": "indications_long",
+          "renderedQuestion": "What is the primary indication for amiodarone in cardiac emergencies?",
+          "correctAnswer": "Ventricular arrhythmias",
+          "distractors": [
+            {
+              "answer": "Supraventricular tachycardia (SVT)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-adenosine-indication"
+            },
+            {
+              "answer": "Allergic reactions; insomnia; EPS treatment",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-diphenhydramine-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amiodarone-indication",
+          "masteryLevel": 2,
+          "poolId": "indications_long",
+          "renderedQuestion": "What is the primary indication for amiodarone in cardiac emergencies?",
+          "correctAnswer": "Ventricular arrhythmias",
+          "distractors": [
+            {
+              "answer": "Supraventricular tachycardia (SVT)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-adenosine-indication"
+            },
+            {
+              "answer": "Allergic reactions; insomnia; EPS treatment",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-diphenhydramine-indication"
+            },
+            {
+              "answer": "Constipation; hepatic encephalopathy",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-lactulose-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-amiodarone-indication",
+          "masteryLevel": 4,
+          "poolId": "indications_long",
+          "renderedQuestion": "What is the primary indication for amiodarone in cardiac emergencies?",
+          "correctAnswer": "Ventricular arrhythmias",
+          "distractors": [
+            {
+              "answer": "Supraventricular tachycardia (SVT)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-adenosine-indication"
+            },
+            {
+              "answer": "Allergic reactions; insomnia; EPS treatment",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-diphenhydramine-indication"
+            },
+            {
+              "answer": "Constipation; hepatic encephalopathy",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-lactulose-indication"
+            },
+            {
+              "answer": "Severe hypoglycemia; beta-blocker/CCB overdose",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-glucagon-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-adenosine-indication",
+          "masteryLevel": 0,
+          "poolId": "indications_long",
+          "renderedQuestion": "What is the primary indication for adenosine?",
+          "correctAnswer": "Supraventricular tachycardia (SVT)",
+          "distractors": [
+            {
+              "answer": "Ulcerative colitis; Crohn disease",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-sulfasalazine-indication"
+            },
+            {
+              "answer": "Gastroparesis, GERD, nausea",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-metoclopramide-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-adenosine-indication",
+          "masteryLevel": 2,
+          "poolId": "indications_long",
+          "renderedQuestion": "What is the primary indication for adenosine?",
+          "correctAnswer": "Supraventricular tachycardia (SVT)",
+          "distractors": [
+            {
+              "answer": "Ulcerative colitis; Crohn disease",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-sulfasalazine-indication"
+            },
+            {
+              "answer": "Gastroparesis, GERD, nausea",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-metoclopramide-indication"
+            },
+            {
+              "answer": "Generalized anxiety disorder",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-buspirone-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-adenosine-indication",
+          "masteryLevel": 4,
+          "poolId": "indications_long",
+          "renderedQuestion": "What is the primary indication for adenosine?",
+          "correctAnswer": "Supraventricular tachycardia (SVT)",
+          "distractors": [
+            {
+              "answer": "Ulcerative colitis; Crohn disease",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-sulfasalazine-indication"
+            },
+            {
+              "answer": "Gastroparesis, GERD, nausea",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-metoclopramide-indication"
+            },
+            {
+              "answer": "Generalized anxiety disorder",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-buspirone-indication"
+            },
+            {
+              "answer": "Asthma prophylaxis; allergic rhinitis",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-montelukast-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-atropine-indication",
+          "masteryLevel": 0,
+          "poolId": "indications_long",
+          "renderedQuestion": "What is the primary cardiac indication for atropine in ACLS?",
+          "correctAnswer": "Symptomatic bradycardia",
+          "distractors": [
+            {
+              "answer": "Asthma prophylaxis; allergic rhinitis",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-montelukast-indication"
+            },
+            {
+              "answer": "GERD, peptic ulcers, heartburn",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-famotidine-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-atropine-indication",
+          "masteryLevel": 2,
+          "poolId": "indications_long",
+          "renderedQuestion": "What is the primary cardiac indication for atropine in ACLS?",
+          "correctAnswer": "Symptomatic bradycardia",
+          "distractors": [
+            {
+              "answer": "Asthma prophylaxis; allergic rhinitis",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-montelukast-indication"
+            },
+            {
+              "answer": "GERD, peptic ulcers, heartburn",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-famotidine-indication"
+            },
+            {
+              "answer": "Diabetic nephropathy",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-losartan-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-atropine-indication",
+          "masteryLevel": 4,
+          "poolId": "indications_long",
+          "renderedQuestion": "What is the primary cardiac indication for atropine in ACLS?",
+          "correctAnswer": "Symptomatic bradycardia",
+          "distractors": [
+            {
+              "answer": "Asthma prophylaxis; allergic rhinitis",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-montelukast-indication"
+            },
+            {
+              "answer": "GERD, peptic ulcers, heartburn",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-famotidine-indication"
+            },
+            {
+              "answer": "Diabetic nephropathy",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-losartan-indication"
+            },
+            {
+              "answer": "Diabetes (basal coverage)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-glargine-indication"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-metoprolol-nursing",
+          "masteryLevel": 0,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "What is the critical nursing action before administering metoprolol?",
+          "correctAnswer": "Hold if HR < 60 or BP < 90/60",
+          "distractors": [
+            {
+              "answer": "Monitor CBC and liver function",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-carbamazepine-nursing"
+            },
+            {
+              "answer": "Mandatory ANC monitoring (REMS)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-clozapine-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-metoprolol-nursing",
+          "masteryLevel": 2,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "What is the critical nursing action before administering metoprolol?",
+          "correctAnswer": "Hold if HR < 60 or BP < 90/60",
+          "distractors": [
+            {
+              "answer": "Monitor CBC and liver function",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-carbamazepine-nursing"
+            },
+            {
+              "answer": "Mandatory ANC monitoring (REMS)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-clozapine-nursing"
+            },
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-metoprolol-nursing",
+          "masteryLevel": 4,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "What is the critical nursing action before administering metoprolol?",
+          "correctAnswer": "Hold if HR < 60 or BP < 90/60",
+          "distractors": [
+            {
+              "answer": "Monitor CBC and liver function",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-carbamazepine-nursing"
+            },
+            {
+              "answer": "Mandatory ANC monitoring (REMS)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-clozapine-nursing"
+            },
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            },
+            {
+              "answer": "Monitor INR",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-warfarin-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-furosemide-nursing",
+          "masteryLevel": 0,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "What electrolyte should the nurse closely monitor in a patient taking furosemide?",
+          "correctAnswer": "Monitor potassium levels",
+          "distractors": [
+            {
+              "answer": "Hold if HR < 60 or BP < 90/60",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-nursing"
+            },
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-furosemide-nursing",
+          "masteryLevel": 2,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "What electrolyte should the nurse closely monitor in a patient taking furosemide?",
+          "correctAnswer": "Monitor potassium levels",
+          "distractors": [
+            {
+              "answer": "Hold if HR < 60 or BP < 90/60",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-nursing"
+            },
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            },
+            {
+              "answer": "Hold 5-7 days before surgery",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-furosemide-nursing",
+          "masteryLevel": 4,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "What electrolyte should the nurse closely monitor in a patient taking furosemide?",
+          "correctAnswer": "Monitor potassium levels",
+          "distractors": [
+            {
+              "answer": "Hold if HR < 60 or BP < 90/60",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-nursing"
+            },
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            },
+            {
+              "answer": "Hold 5-7 days before surgery",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-nursing"
+            },
+            {
+              "answer": "Monitor peak and trough levels",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-gentamicin-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-warfarin-nursing",
+          "masteryLevel": 0,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "What laboratory test does the nurse use to monitor warfarin therapy?",
+          "correctAnswer": "Monitor INR",
+          "distractors": [
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            },
+            {
+              "answer": "Hold if HR < 60 or BP < 90/60",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 11 vs avg distractor 30.0 — ratio 0.37×"
+            }
+          ]
+        },
+        {
+          "factId": "pharm-cv-warfarin-nursing",
+          "masteryLevel": 2,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "What laboratory test does the nurse use to monitor warfarin therapy?",
+          "correctAnswer": "Monitor INR",
+          "distractors": [
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            },
+            {
+              "answer": "Hold if HR < 60 or BP < 90/60",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-nursing"
+            },
+            {
+              "answer": "Monitor peak and trough levels",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-gentamicin-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 11 vs avg distractor 30.0 — ratio 0.37×"
+            }
+          ]
+        },
+        {
+          "factId": "pharm-cv-warfarin-nursing",
+          "masteryLevel": 4,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "What laboratory test does the nurse use to monitor warfarin therapy?",
+          "correctAnswer": "Monitor INR",
+          "distractors": [
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            },
+            {
+              "answer": "Hold if HR < 60 or BP < 90/60",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-nursing"
+            },
+            {
+              "answer": "Monitor peak and trough levels",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-gentamicin-nursing"
+            },
+            {
+              "answer": "Monitor potassium levels",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-furosemide-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 11 vs avg distractor 28.5 — ratio 0.39×"
+            }
+          ]
+        },
+        {
+          "factId": "pharm-cv-clopidogrel-nursing",
+          "masteryLevel": 0,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "How far in advance should clopidogrel be held before an elective surgical procedure?",
+          "correctAnswer": "Hold 5-7 days before surgery",
+          "distractors": [
+            {
+              "answer": "Mandatory ANC monitoring (REMS)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-clozapine-nursing"
+            },
+            {
+              "answer": "Monitor potassium levels",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-furosemide-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 2 options don't match: \"Mandatory ANC monitoring (REMS\", \"Monitor potassium levels\""
+            }
+          ]
+        },
+        {
+          "factId": "pharm-cv-clopidogrel-nursing",
+          "masteryLevel": 2,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "How far in advance should clopidogrel be held before an elective surgical procedure?",
+          "correctAnswer": "Hold 5-7 days before surgery",
+          "distractors": [
+            {
+              "answer": "Mandatory ANC monitoring (REMS)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-clozapine-nursing"
+            },
+            {
+              "answer": "Monitor potassium levels",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-furosemide-nursing"
+            },
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 3 options don't match: \"Mandatory ANC monitoring (REMS\", \"Monitor potassium levels\", \"Take immediately before bedtim\""
+            }
+          ]
+        },
+        {
+          "factId": "pharm-cv-clopidogrel-nursing",
+          "masteryLevel": 4,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "How far in advance should clopidogrel be held before an elective surgical procedure?",
+          "correctAnswer": "Hold 5-7 days before surgery",
+          "distractors": [
+            {
+              "answer": "Mandatory ANC monitoring (REMS)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-clozapine-nursing"
+            },
+            {
+              "answer": "Monitor potassium levels",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-furosemide-nursing"
+            },
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            },
+            {
+              "answer": "Monitor CBC and liver function",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-carbamazepine-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 4 options don't match: \"Mandatory ANC monitoring (REMS\", \"Monitor potassium levels\", \"Take immediately before bedtim\", \"Monitor CBC and liver function\""
+            }
+          ]
+        },
+        {
+          "factId": "pharm-inf-gentamicin-nursing",
+          "masteryLevel": 0,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "What is the priority nursing intervention when administering gentamicin?",
+          "correctAnswer": "Monitor peak and trough levels",
+          "distractors": [
+            {
+              "answer": "Monitor CBC and liver function",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-carbamazepine-nursing"
+            },
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-gentamicin-nursing",
+          "masteryLevel": 2,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "What is the priority nursing intervention when administering gentamicin?",
+          "correctAnswer": "Monitor peak and trough levels",
+          "distractors": [
+            {
+              "answer": "Monitor CBC and liver function",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-carbamazepine-nursing"
+            },
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            },
+            {
+              "answer": "Hold 5-7 days before surgery",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-gentamicin-nursing",
+          "masteryLevel": 4,
+          "poolId": "nursing_interventions_short",
+          "renderedQuestion": "What is the priority nursing intervention when administering gentamicin?",
+          "correctAnswer": "Monitor peak and trough levels",
+          "distractors": [
+            {
+              "answer": "Monitor CBC and liver function",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-carbamazepine-nursing"
+            },
+            {
+              "answer": "Take immediately before bedtime",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-nursing"
+            },
+            {
+              "answer": "Hold 5-7 days before surgery",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-clopidogrel-nursing"
+            },
+            {
+              "answer": "Hold if HR < 60 or BP < 90/60",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-nursing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-metoprolol-antidote",
+          "masteryLevel": 0,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is the antidote for metoprolol (beta-blocker) toxicity?",
+          "correctAnswer": "Glucagon",
+          "distractors": [
+            {
+              "answer": "Phentolamine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-phenelzine-antidote"
+            },
+            {
+              "answer": "Benztropine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-metoprolol-antidote",
+          "masteryLevel": 2,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is the antidote for metoprolol (beta-blocker) toxicity?",
+          "correctAnswer": "Glucagon",
+          "distractors": [
+            {
+              "answer": "Phentolamine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-phenelzine-antidote"
+            },
+            {
+              "answer": "Benztropine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-antidote"
+            },
+            {
+              "answer": "Dantrolene",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-succinylcholine-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-metoprolol-antidote",
+          "masteryLevel": 4,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is the antidote for metoprolol (beta-blocker) toxicity?",
+          "correctAnswer": "Glucagon",
+          "distractors": [
+            {
+              "answer": "Phentolamine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-phenelzine-antidote"
+            },
+            {
+              "answer": "Benztropine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-antidote"
+            },
+            {
+              "answer": "Dantrolene",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-succinylcholine-antidote"
+            },
+            {
+              "answer": "Flumazenil",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lorazepam-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-ferrous-sulfate-antidote",
+          "masteryLevel": 0,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is the antidote for ferrous sulfate (iron) toxicity?",
+          "correctAnswer": "Deferoxamine",
+          "distractors": [
+            {
+              "answer": "Benztropine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-antidote"
+            },
+            {
+              "answer": "Glucagon",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-ferrous-sulfate-antidote",
+          "masteryLevel": 2,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is the antidote for ferrous sulfate (iron) toxicity?",
+          "correctAnswer": "Deferoxamine",
+          "distractors": [
+            {
+              "answer": "Benztropine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-antidote"
+            },
+            {
+              "answer": "Glucagon",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-antidote"
+            },
+            {
+              "answer": "Dantrolene",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-succinylcholine-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-ferrous-sulfate-antidote",
+          "masteryLevel": 4,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is the antidote for ferrous sulfate (iron) toxicity?",
+          "correctAnswer": "Deferoxamine",
+          "distractors": [
+            {
+              "answer": "Benztropine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-antidote"
+            },
+            {
+              "answer": "Glucagon",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-metoprolol-antidote"
+            },
+            {
+              "answer": "Dantrolene",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-succinylcholine-antidote"
+            },
+            {
+              "answer": "Phentolamine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-phenelzine-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cns-phenelzine-antidote",
+          "masteryLevel": 0,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is used to treat hypertensive crisis from phenelzine toxicity?",
+          "correctAnswer": "Phentolamine",
+          "distractors": [
+            {
+              "answer": "Hemodialysis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lithium-antidote"
+            },
+            {
+              "answer": "Dantrolene",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-succinylcholine-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cns-phenelzine-antidote",
+          "masteryLevel": 2,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is used to treat hypertensive crisis from phenelzine toxicity?",
+          "correctAnswer": "Phentolamine",
+          "distractors": [
+            {
+              "answer": "Hemodialysis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lithium-antidote"
+            },
+            {
+              "answer": "Dantrolene",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-succinylcholine-antidote"
+            },
+            {
+              "answer": "Benztropine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cns-phenelzine-antidote",
+          "masteryLevel": 4,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is used to treat hypertensive crisis from phenelzine toxicity?",
+          "correctAnswer": "Phentolamine",
+          "distractors": [
+            {
+              "answer": "Hemodialysis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lithium-antidote"
+            },
+            {
+              "answer": "Dantrolene",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-succinylcholine-antidote"
+            },
+            {
+              "answer": "Benztropine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-antidote"
+            },
+            {
+              "answer": "L-carnitine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-valproic_acid-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cns-lithium-antidote",
+          "masteryLevel": 0,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is the treatment for severe lithium toxicity?",
+          "correctAnswer": "Hemodialysis",
+          "distractors": [
+            {
+              "answer": "Deferoxamine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-ferrous-sulfate-antidote"
+            },
+            {
+              "answer": "Benztropine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cns-lithium-antidote",
+          "masteryLevel": 2,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is the treatment for severe lithium toxicity?",
+          "correctAnswer": "Hemodialysis",
+          "distractors": [
+            {
+              "answer": "Deferoxamine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-ferrous-sulfate-antidote"
+            },
+            {
+              "answer": "Benztropine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-antidote"
+            },
+            {
+              "answer": "Flumazenil",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cns-lithium-antidote",
+          "masteryLevel": 4,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is the treatment for severe lithium toxicity?",
+          "correctAnswer": "Hemodialysis",
+          "distractors": [
+            {
+              "answer": "Deferoxamine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-ferrous-sulfate-antidote"
+            },
+            {
+              "answer": "Benztropine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-haloperidol-antidote"
+            },
+            {
+              "answer": "Flumazenil",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-zolpidem-antidote"
+            },
+            {
+              "answer": "Phentolamine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-phenelzine-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cns-haloperidol-antidote",
+          "masteryLevel": 0,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is used to treat extrapyramidal symptoms caused by haloperidol?",
+          "correctAnswer": "Benztropine",
+          "distractors": [
+            {
+              "answer": "Hemodialysis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lithium-antidote"
+            },
+            {
+              "answer": "Flumazenil",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lorazepam-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cns-haloperidol-antidote",
+          "masteryLevel": 2,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is used to treat extrapyramidal symptoms caused by haloperidol?",
+          "correctAnswer": "Benztropine",
+          "distractors": [
+            {
+              "answer": "Hemodialysis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lithium-antidote"
+            },
+            {
+              "answer": "Flumazenil",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lorazepam-antidote"
+            },
+            {
+              "answer": "L-carnitine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-valproic_acid-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cns-haloperidol-antidote",
+          "masteryLevel": 4,
+          "poolId": "antidotes_short",
+          "renderedQuestion": "What is used to treat extrapyramidal symptoms caused by haloperidol?",
+          "correctAnswer": "Benztropine",
+          "distractors": [
+            {
+              "answer": "Hemodialysis",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lithium-antidote"
+            },
+            {
+              "answer": "Flumazenil",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-lorazepam-antidote"
+            },
+            {
+              "answer": "L-carnitine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-valproic_acid-antidote"
+            },
+            {
+              "answer": "Dantrolene",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-succinylcholine-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-clonidine-side-effect",
+          "masteryLevel": 0,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What serious adverse effect occurs when clonidine is stopped abruptly?",
+          "correctAnswer": "Rebound hypertension if stopped abruptly",
+          "distractors": [
+            {
+              "answer": "Orange urine; blood dyscrasias",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-sulfasalazine-side"
+            },
+            {
+              "answer": "Lactic acidosis (rare, serious)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-metformin-side"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-clonidine-side-effect",
+          "masteryLevel": 2,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What serious adverse effect occurs when clonidine is stopped abruptly?",
+          "correctAnswer": "Rebound hypertension if stopped abruptly",
+          "distractors": [
+            {
+              "answer": "Orange urine; blood dyscrasias",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-sulfasalazine-side"
+            },
+            {
+              "answer": "Lactic acidosis (rare, serious)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-metformin-side"
+            },
+            {
+              "answer": "Malignant hyperthermia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-succinylcholine-sideeffect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-clonidine-side-effect",
+          "masteryLevel": 4,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What serious adverse effect occurs when clonidine is stopped abruptly?",
+          "correctAnswer": "Rebound hypertension if stopped abruptly",
+          "distractors": [
+            {
+              "answer": "Orange urine; blood dyscrasias",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-sulfasalazine-side"
+            },
+            {
+              "answer": "Lactic acidosis (rare, serious)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-metformin-side"
+            },
+            {
+              "answer": "Malignant hyperthermia",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-succinylcholine-sideeffect"
+            },
+            {
+              "answer": "Nephrotoxicity (crystalluria)",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-acyclovir-sideeffect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-digoxin-side-effect",
+          "masteryLevel": 0,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What classic visual symptom indicates digoxin toxicity?",
+          "correctAnswer": "Visual disturbances (yellow/green halos)",
+          "distractors": [
+            {
+              "answer": "Stevens-Johnson syndrome",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-tmp-smx-sideeffect"
+            },
+            {
+              "answer": "Water intoxication and hyponatremia",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-desmopressin-side"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-digoxin-side-effect",
+          "masteryLevel": 2,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What classic visual symptom indicates digoxin toxicity?",
+          "correctAnswer": "Visual disturbances (yellow/green halos)",
+          "distractors": [
+            {
+              "answer": "Stevens-Johnson syndrome",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-tmp-smx-sideeffect"
+            },
+            {
+              "answer": "Water intoxication and hyponatremia",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-desmopressin-side"
+            },
+            {
+              "answer": "Orange urine; blood dyscrasias",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-sulfasalazine-side"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-digoxin-side-effect",
+          "masteryLevel": 4,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What classic visual symptom indicates digoxin toxicity?",
+          "correctAnswer": "Visual disturbances (yellow/green halos)",
+          "distractors": [
+            {
+              "answer": "Stevens-Johnson syndrome",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-tmp-smx-sideeffect"
+            },
+            {
+              "answer": "Water intoxication and hyponatremia",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-desmopressin-side"
+            },
+            {
+              "answer": "Orange urine; blood dyscrasias",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-sulfasalazine-side"
+            },
+            {
+              "answer": "C. difficile risk; hypomagnesemia; B12 deficiency",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-omeprazole-side"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-atorvastatin-side-effect",
+          "masteryLevel": 0,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What is the most serious muscle-related side effect of atorvastatin?",
+          "correctAnswer": "Myopathy/rhabdomyolysis",
+          "distractors": [
+            {
+              "answer": "Water intoxication and hyponatremia",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-desmopressin-side"
+            },
+            {
+              "answer": "Headache, constipation, QT prolongation",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-ondansetron-side"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-atorvastatin-side-effect",
+          "masteryLevel": 2,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What is the most serious muscle-related side effect of atorvastatin?",
+          "correctAnswer": "Myopathy/rhabdomyolysis",
+          "distractors": [
+            {
+              "answer": "Water intoxication and hyponatremia",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-desmopressin-side"
+            },
+            {
+              "answer": "Headache, constipation, QT prolongation",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-ondansetron-side"
+            },
+            {
+              "answer": "Sedation; anticholinergic effects",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-diphenhydramine-side"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-atorvastatin-side-effect",
+          "masteryLevel": 4,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What is the most serious muscle-related side effect of atorvastatin?",
+          "correctAnswer": "Myopathy/rhabdomyolysis",
+          "distractors": [
+            {
+              "answer": "Water intoxication and hyponatremia",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-desmopressin-side"
+            },
+            {
+              "answer": "Headache, constipation, QT prolongation",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-ondansetron-side"
+            },
+            {
+              "answer": "Sedation; anticholinergic effects",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-diphenhydramine-side"
+            },
+            {
+              "answer": "Esophageal ulceration; osteonecrosis of the jaw",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-alendronate-side"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-heparin-side-effect",
+          "masteryLevel": 0,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What paradoxical and dangerous immune complication can heparin cause?",
+          "correctAnswer": "Heparin-induced thrombocytopenia",
+          "distractors": [
+            {
+              "answer": "Acute opioid withdrawal",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-naloxone-sideeffect"
+            },
+            {
+              "answer": "Chest wall rigidity",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fentanyl-sideeffect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-heparin-side-effect",
+          "masteryLevel": 2,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What paradoxical and dangerous immune complication can heparin cause?",
+          "correctAnswer": "Heparin-induced thrombocytopenia",
+          "distractors": [
+            {
+              "answer": "Acute opioid withdrawal",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-naloxone-sideeffect"
+            },
+            {
+              "answer": "Chest wall rigidity",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fentanyl-sideeffect"
+            },
+            {
+              "answer": "Uterine hyperstimulation; water intoxication",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-oxytocin-side"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-heparin-side-effect",
+          "masteryLevel": 4,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What paradoxical and dangerous immune complication can heparin cause?",
+          "correctAnswer": "Heparin-induced thrombocytopenia",
+          "distractors": [
+            {
+              "answer": "Acute opioid withdrawal",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-naloxone-sideeffect"
+            },
+            {
+              "answer": "Chest wall rigidity",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fentanyl-sideeffect"
+            },
+            {
+              "answer": "Uterine hyperstimulation; water intoxication",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-oxytocin-side"
+            },
+            {
+              "answer": "Orange urine; blood dyscrasias",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-sulfasalazine-side"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-aspirin-side-effect",
+          "masteryLevel": 0,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What rare but serious pediatric complication is associated with aspirin use in children with viral illness?",
+          "correctAnswer": "Reye syndrome in children",
+          "distractors": [
+            {
+              "answer": "Hypertension, hypokalemia, edema",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-fludrocortisone-side"
+            },
+            {
+              "answer": "Rash (may progress to Stevens-Johnson syndrome)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-allopurinol-side"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-aspirin-side-effect",
+          "masteryLevel": 2,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What rare but serious pediatric complication is associated with aspirin use in children with viral illness?",
+          "correctAnswer": "Reye syndrome in children",
+          "distractors": [
+            {
+              "answer": "Hypertension, hypokalemia, edema",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-fludrocortisone-side"
+            },
+            {
+              "answer": "Rash (may progress to Stevens-Johnson syndrome)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-allopurinol-side"
+            },
+            {
+              "answer": "Respiratory depression",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-hydromorphone-sideeffect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-aspirin-side-effect",
+          "masteryLevel": 4,
+          "poolId": "side_effects_long",
+          "renderedQuestion": "What rare but serious pediatric complication is associated with aspirin use in children with viral illness?",
+          "correctAnswer": "Reye syndrome in children",
+          "distractors": [
+            {
+              "answer": "Hypertension, hypokalemia, edema",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-fludrocortisone-side"
+            },
+            {
+              "answer": "Rash (may progress to Stevens-Johnson syndrome)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-allopurinol-side"
+            },
+            {
+              "answer": "Respiratory depression",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-hydromorphone-sideeffect"
+            },
+            {
+              "answer": "Tachycardia; tremor; hyperglycemia",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-terbutaline-side"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-nitroprusside-antidote",
+          "masteryLevel": 0,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What is the antidote for nitroprusside-induced cyanide toxicity?",
+          "correctAnswer": "Sodium thiosulfate",
+          "distractors": [
+            {
+              "answer": "Aminocaproic acid",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-alteplase-antidote"
+            },
+            {
+              "answer": "Cyproheptadine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-nitroprusside-antidote",
+          "masteryLevel": 2,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What is the antidote for nitroprusside-induced cyanide toxicity?",
+          "correctAnswer": "Sodium thiosulfate",
+          "distractors": [
+            {
+              "answer": "Aminocaproic acid",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-alteplase-antidote"
+            },
+            {
+              "answer": "Cyproheptadine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-antidote"
+            },
+            {
+              "answer": "Protamine sulfate",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-enoxaparin-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-nitroprusside-antidote",
+          "masteryLevel": 4,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What is the antidote for nitroprusside-induced cyanide toxicity?",
+          "correctAnswer": "Sodium thiosulfate",
+          "distractors": [
+            {
+              "answer": "Aminocaproic acid",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-alteplase-antidote"
+            },
+            {
+              "answer": "Cyproheptadine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-antidote"
+            },
+            {
+              "answer": "Protamine sulfate",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-enoxaparin-antidote"
+            },
+            {
+              "answer": "Calcium gluconate",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-magnesium-sulfate-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-digoxin-antidote",
+          "masteryLevel": 0,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What is the antidote for digoxin toxicity?",
+          "correctAnswer": "Digoxin immune Fab",
+          "distractors": [
+            {
+              "answer": "Sodium thiosulfate",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroprusside-antidote"
+            },
+            {
+              "answer": "Glucagon or D50",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-lispro-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-digoxin-antidote",
+          "masteryLevel": 2,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What is the antidote for digoxin toxicity?",
+          "correctAnswer": "Digoxin immune Fab",
+          "distractors": [
+            {
+              "answer": "Sodium thiosulfate",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroprusside-antidote"
+            },
+            {
+              "answer": "Glucagon or D50",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-lispro-antidote"
+            },
+            {
+              "answer": "Diphenhydramine",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-metoclopramide-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-digoxin-antidote",
+          "masteryLevel": 4,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What is the antidote for digoxin toxicity?",
+          "correctAnswer": "Digoxin immune Fab",
+          "distractors": [
+            {
+              "answer": "Sodium thiosulfate",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-nitroprusside-antidote"
+            },
+            {
+              "answer": "Glucagon or D50",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-lispro-antidote"
+            },
+            {
+              "answer": "Diphenhydramine",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-metoclopramide-antidote"
+            },
+            {
+              "answer": "Protamine sulfate",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-heparin-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-warfarin-antidote",
+          "masteryLevel": 0,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What is the antidote for warfarin overdose or supratherapeutic anticoagulation?",
+          "correctAnswer": "Vitamin K (phytonadione)",
+          "distractors": [
+            {
+              "answer": "Digoxin immune Fab",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-digoxin-antidote"
+            },
+            {
+              "answer": "Glucagon or D50",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-lispro-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-warfarin-antidote",
+          "masteryLevel": 2,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What is the antidote for warfarin overdose or supratherapeutic anticoagulation?",
+          "correctAnswer": "Vitamin K (phytonadione)",
+          "distractors": [
+            {
+              "answer": "Digoxin immune Fab",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-digoxin-antidote"
+            },
+            {
+              "answer": "Glucagon or D50",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-lispro-antidote"
+            },
+            {
+              "answer": "Naloxone (repeat doses may be needed)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fentanyl-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-warfarin-antidote",
+          "masteryLevel": 4,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What is the antidote for warfarin overdose or supratherapeutic anticoagulation?",
+          "correctAnswer": "Vitamin K (phytonadione)",
+          "distractors": [
+            {
+              "answer": "Digoxin immune Fab",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-digoxin-antidote"
+            },
+            {
+              "answer": "Glucagon or D50",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-lispro-antidote"
+            },
+            {
+              "answer": "Naloxone (repeat doses may be needed)",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fentanyl-antidote"
+            },
+            {
+              "answer": "Cyproheptadine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-heparin-antidote",
+          "masteryLevel": 0,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What is the antidote for heparin overdose?",
+          "correctAnswer": "Protamine sulfate",
+          "distractors": [
+            {
+              "answer": "Cyproheptadine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-antidote"
+            },
+            {
+              "answer": "Sodium bicarbonate",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-amitriptyline-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-heparin-antidote",
+          "masteryLevel": 2,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What is the antidote for heparin overdose?",
+          "correctAnswer": "Protamine sulfate",
+          "distractors": [
+            {
+              "answer": "Cyproheptadine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-antidote"
+            },
+            {
+              "answer": "Sodium bicarbonate",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-amitriptyline-antidote"
+            },
+            {
+              "answer": "Glucagon or D50",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-lispro-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-heparin-antidote",
+          "masteryLevel": 4,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What is the antidote for heparin overdose?",
+          "correctAnswer": "Protamine sulfate",
+          "distractors": [
+            {
+              "answer": "Cyproheptadine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-antidote"
+            },
+            {
+              "answer": "Sodium bicarbonate",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-amitriptyline-antidote"
+            },
+            {
+              "answer": "Glucagon or D50",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-insulin-lispro-antidote"
+            },
+            {
+              "answer": "Diphenhydramine",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-metoclopramide-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-enoxaparin-antidote",
+          "masteryLevel": 0,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What agent partially reverses enoxaparin anticoagulation?",
+          "correctAnswer": "Protamine sulfate",
+          "distractors": [
+            {
+              "answer": "Digoxin immune Fab",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-digoxin-antidote"
+            },
+            {
+              "answer": "Aminocaproic acid",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-alteplase-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-enoxaparin-antidote",
+          "masteryLevel": 2,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What agent partially reverses enoxaparin anticoagulation?",
+          "correctAnswer": "Protamine sulfate",
+          "distractors": [
+            {
+              "answer": "Digoxin immune Fab",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-digoxin-antidote"
+            },
+            {
+              "answer": "Aminocaproic acid",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-alteplase-antidote"
+            },
+            {
+              "answer": "Diphenhydramine",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-metoclopramide-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cv-enoxaparin-antidote",
+          "masteryLevel": 4,
+          "poolId": "antidotes_long",
+          "renderedQuestion": "What agent partially reverses enoxaparin anticoagulation?",
+          "correctAnswer": "Protamine sulfate",
+          "distractors": [
+            {
+              "answer": "Digoxin immune Fab",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-digoxin-antidote"
+            },
+            {
+              "answer": "Aminocaproic acid",
+              "source": "similar_difficulty",
+              "factId": "pharm-cv-alteplase-antidote"
+            },
+            {
+              "answer": "Diphenhydramine",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-metoclopramide-antidote"
+            },
+            {
+              "answer": "Cyproheptadine",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-antidote"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-doxycycline-interaction",
+          "masteryLevel": 0,
+          "poolId": "interactions",
+          "renderedQuestion": "What foods and medications should be avoided when taking doxycycline?",
+          "correctAnswer": "Dairy and antacids reduce absorption",
+          "distractors": [
+            {
+              "answer": "Calcium, iron, antacids, soy (reduce absorption)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-levothyroxine-interaction"
+            },
+            {
+              "answer": "Alcohol causes disulfiram-like reaction",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-doxycycline-interaction",
+          "masteryLevel": 2,
+          "poolId": "interactions",
+          "renderedQuestion": "What foods and medications should be avoided when taking doxycycline?",
+          "correctAnswer": "Dairy and antacids reduce absorption",
+          "distractors": [
+            {
+              "answer": "Calcium, iron, antacids, soy (reduce absorption)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-levothyroxine-interaction"
+            },
+            {
+              "answer": "Alcohol causes disulfiram-like reaction",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-interaction"
+            },
+            {
+              "answer": "Rifampin reduces OC effectiveness",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-oral-contraceptive-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-doxycycline-interaction",
+          "masteryLevel": 4,
+          "poolId": "interactions",
+          "renderedQuestion": "What foods and medications should be avoided when taking doxycycline?",
+          "correctAnswer": "Dairy and antacids reduce absorption",
+          "distractors": [
+            {
+              "answer": "Calcium, iron, antacids, soy (reduce absorption)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-levothyroxine-interaction"
+            },
+            {
+              "answer": "Alcohol causes disulfiram-like reaction",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-interaction"
+            },
+            {
+              "answer": "Rifampin reduces OC effectiveness",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-oral-contraceptive-interaction"
+            },
+            {
+              "answer": "Iodinated contrast dye",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-metformin-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-ciprofloxacin-interaction",
+          "masteryLevel": 0,
+          "poolId": "interactions",
+          "renderedQuestion": "Which substances significantly reduce ciprofloxacin absorption and must be timed carefully?",
+          "correctAnswer": "Antacids reduce ciprofloxacin absorption",
+          "distractors": [
+            {
+              "answer": "Alcohol causes disulfiram-like reaction",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-interaction"
+            },
+            {
+              "answer": "Clopidogrel (reduces platelet activation)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-omeprazole-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-ciprofloxacin-interaction",
+          "masteryLevel": 2,
+          "poolId": "interactions",
+          "renderedQuestion": "Which substances significantly reduce ciprofloxacin absorption and must be timed carefully?",
+          "correctAnswer": "Antacids reduce ciprofloxacin absorption",
+          "distractors": [
+            {
+              "answer": "Alcohol causes disulfiram-like reaction",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-interaction"
+            },
+            {
+              "answer": "Clopidogrel (reduces platelet activation)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-omeprazole-interaction"
+            },
+            {
+              "answer": "Dairy and antacids reduce absorption",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-doxycycline-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-ciprofloxacin-interaction",
+          "masteryLevel": 4,
+          "poolId": "interactions",
+          "renderedQuestion": "Which substances significantly reduce ciprofloxacin absorption and must be timed carefully?",
+          "correctAnswer": "Antacids reduce ciprofloxacin absorption",
+          "distractors": [
+            {
+              "answer": "Alcohol causes disulfiram-like reaction",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-interaction"
+            },
+            {
+              "answer": "Clopidogrel (reduces platelet activation)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-omeprazole-interaction"
+            },
+            {
+              "answer": "Dairy and antacids reduce absorption",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-doxycycline-interaction"
+            },
+            {
+              "answer": "Calcium, iron, antacids, soy (reduce absorption)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-levothyroxine-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-metronidazole-interaction",
+          "masteryLevel": 0,
+          "poolId": "interactions",
+          "renderedQuestion": "What substance must be strictly avoided when taking metronidazole and for 72 hours after?",
+          "correctAnswer": "Alcohol causes disulfiram-like reaction",
+          "distractors": [
+            {
+              "answer": "Rifampin reduces OC effectiveness",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-oral-contraceptive-interaction"
+            },
+            {
+              "answer": "Antacids reduce ciprofloxacin absorption",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-ciprofloxacin-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-metronidazole-interaction",
+          "masteryLevel": 2,
+          "poolId": "interactions",
+          "renderedQuestion": "What substance must be strictly avoided when taking metronidazole and for 72 hours after?",
+          "correctAnswer": "Alcohol causes disulfiram-like reaction",
+          "distractors": [
+            {
+              "answer": "Rifampin reduces OC effectiveness",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-oral-contraceptive-interaction"
+            },
+            {
+              "answer": "Antacids reduce ciprofloxacin absorption",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-ciprofloxacin-interaction"
+            },
+            {
+              "answer": "Iodinated contrast dye",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-metformin-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-metronidazole-interaction",
+          "masteryLevel": 4,
+          "poolId": "interactions",
+          "renderedQuestion": "What substance must be strictly avoided when taking metronidazole and for 72 hours after?",
+          "correctAnswer": "Alcohol causes disulfiram-like reaction",
+          "distractors": [
+            {
+              "answer": "Rifampin reduces OC effectiveness",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-oral-contraceptive-interaction"
+            },
+            {
+              "answer": "Antacids reduce ciprofloxacin absorption",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-ciprofloxacin-interaction"
+            },
+            {
+              "answer": "Iodinated contrast dye",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-metformin-interaction"
+            },
+            {
+              "answer": "Calcium, iron, antacids, soy (reduce absorption)",
+              "source": "similar_difficulty",
+              "factId": "pharm-endo-levothyroxine-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-rifampin-interaction",
+          "masteryLevel": 0,
+          "poolId": "interactions",
+          "renderedQuestion": "Why must women on rifampin use additional contraception beyond oral contraceptives?",
+          "correctAnswer": "Reduces oral contraceptive effectiveness",
+          "distractors": [
+            {
+              "answer": "Rifampin reduces OC effectiveness",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-oral-contraceptive-interaction"
+            },
+            {
+              "answer": "Dairy and antacids reduce absorption",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-doxycycline-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-rifampin-interaction",
+          "masteryLevel": 2,
+          "poolId": "interactions",
+          "renderedQuestion": "Why must women on rifampin use additional contraception beyond oral contraceptives?",
+          "correctAnswer": "Reduces oral contraceptive effectiveness",
+          "distractors": [
+            {
+              "answer": "Rifampin reduces OC effectiveness",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-oral-contraceptive-interaction"
+            },
+            {
+              "answer": "Dairy and antacids reduce absorption",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-doxycycline-interaction"
+            },
+            {
+              "answer": "Clopidogrel (reduces platelet activation)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-omeprazole-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-inf-rifampin-interaction",
+          "masteryLevel": 4,
+          "poolId": "interactions",
+          "renderedQuestion": "Why must women on rifampin use additional contraception beyond oral contraceptives?",
+          "correctAnswer": "Reduces oral contraceptive effectiveness",
+          "distractors": [
+            {
+              "answer": "Rifampin reduces OC effectiveness",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-oral-contraceptive-interaction"
+            },
+            {
+              "answer": "Dairy and antacids reduce absorption",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-doxycycline-interaction"
+            },
+            {
+              "answer": "Clopidogrel (reduces platelet activation)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-omeprazole-interaction"
+            },
+            {
+              "answer": "Antacids reduce ciprofloxacin absorption",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-ciprofloxacin-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-endo-metformin-interaction",
+          "masteryLevel": 0,
+          "poolId": "interactions",
+          "renderedQuestion": "Which substance should be avoided when taking metformin due to risk of lactic acidosis?",
+          "correctAnswer": "Iodinated contrast dye",
+          "distractors": [
+            {
+              "answer": "Alcohol causes disulfiram-like reaction",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-interaction"
+            },
+            {
+              "answer": "Clopidogrel (reduces platelet activation)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-omeprazole-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-endo-metformin-interaction",
+          "masteryLevel": 2,
+          "poolId": "interactions",
+          "renderedQuestion": "Which substance should be avoided when taking metformin due to risk of lactic acidosis?",
+          "correctAnswer": "Iodinated contrast dye",
+          "distractors": [
+            {
+              "answer": "Alcohol causes disulfiram-like reaction",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-interaction"
+            },
+            {
+              "answer": "Clopidogrel (reduces platelet activation)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-omeprazole-interaction"
+            },
+            {
+              "answer": "Reduces oral contraceptive effectiveness",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-rifampin-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-endo-metformin-interaction",
+          "masteryLevel": 4,
+          "poolId": "interactions",
+          "renderedQuestion": "Which substance should be avoided when taking metformin due to risk of lactic acidosis?",
+          "correctAnswer": "Iodinated contrast dye",
+          "distractors": [
+            {
+              "answer": "Alcohol causes disulfiram-like reaction",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-metronidazole-interaction"
+            },
+            {
+              "answer": "Clopidogrel (reduces platelet activation)",
+              "source": "similar_difficulty",
+              "factId": "pharm-gir-omeprazole-interaction"
+            },
+            {
+              "answer": "Reduces oral contraceptive effectiveness",
+              "source": "similar_difficulty",
+              "factId": "pharm-inf-rifampin-interaction"
+            },
+            {
+              "answer": "Rifampin reduces OC effectiveness",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-oral-contraceptive-interaction"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cns-fluoxetine-class",
+          "masteryLevel": 0,
+          "poolId": "drug_class_abbrev",
+          "renderedQuestion": "What drug class does fluoxetine belong to?",
+          "correctAnswer": "SSRI",
+          "distractors": [
+            {
+              "answer": "SERM",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-tamoxifen-class"
+            },
+            {
+              "answer": "LABA",
+              "source": "pool_fill",
+              "factId": "_synthetic_LABA"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cns-fluoxetine-class",
+          "masteryLevel": 2,
+          "poolId": "drug_class_abbrev",
+          "renderedQuestion": "What drug class does fluoxetine belong to?",
+          "correctAnswer": "SSRI",
+          "distractors": [
+            {
+              "answer": "SERM",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-tamoxifen-class"
+            },
+            {
+              "answer": "LABA",
+              "source": "pool_fill",
+              "factId": "_synthetic_LABA"
+            },
+            {
+              "answer": "ARB",
+              "source": "pool_fill",
+              "factId": "_synthetic_ARB"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-cns-fluoxetine-class",
+          "masteryLevel": 4,
+          "poolId": "drug_class_abbrev",
+          "renderedQuestion": "What drug class does fluoxetine belong to?",
+          "correctAnswer": "SSRI",
+          "distractors": [
+            {
+              "answer": "SERM",
+              "source": "similar_difficulty",
+              "factId": "pharm-ob-tamoxifen-class"
+            },
+            {
+              "answer": "LABA",
+              "source": "pool_fill",
+              "factId": "_synthetic_LABA"
+            },
+            {
+              "answer": "ARB",
+              "source": "pool_fill",
+              "factId": "_synthetic_ARB"
+            },
+            {
+              "answer": "PPI",
+              "source": "pool_fill",
+              "factId": "_synthetic_PPI"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pharm-ob-tamoxifen-class",
+          "masteryLevel": 0,
+          "poolId": "drug_class_abbrev",
+          "renderedQuestion": "What drug class does tamoxifen belong to?",
+          "correctAnswer": "SERM",
+          "distractors": [
+            {
+              "answer": "SSRI",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-class"
+            },
+            {
+              "answer": "PPI",
+              "source": "pool_fill",
+              "factId": "_synthetic_PPI"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pharm-ob-tamoxifen-class",
+          "masteryLevel": 2,
+          "poolId": "drug_class_abbrev",
+          "renderedQuestion": "What drug class does tamoxifen belong to?",
+          "correctAnswer": "SERM",
+          "distractors": [
+            {
+              "answer": "SSRI",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-class"
+            },
+            {
+              "answer": "PPI",
+              "source": "pool_fill",
+              "factId": "_synthetic_PPI"
+            },
+            {
+              "answer": "DMARD",
+              "source": "pool_fill",
+              "factId": "_synthetic_DMARD"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pharm-ob-tamoxifen-class",
+          "masteryLevel": 4,
+          "poolId": "drug_class_abbrev",
+          "renderedQuestion": "What drug class does tamoxifen belong to?",
+          "correctAnswer": "SERM",
+          "distractors": [
+            {
+              "answer": "SSRI",
+              "source": "similar_difficulty",
+              "factId": "pharm-cns-fluoxetine-class"
+            },
+            {
+              "answer": "PPI",
+              "source": "pool_fill",
+              "factId": "_synthetic_PPI"
+            },
+            {
+              "answer": "DMARD",
+              "source": "pool_fill",
+              "factId": "_synthetic_DMARD"
+            },
+            {
+              "answer": "ACE",
+              "source": "pool_fill",
+              "factId": "_synthetic_ACE"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

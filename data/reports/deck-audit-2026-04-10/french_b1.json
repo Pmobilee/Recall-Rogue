@@ -1,0 +1,2150 @@
+{
+  "timestamp": "2026-04-10T13:40:21.897Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 75,
+  "totalFails": 0,
+  "totalWarns": 3,
+  "decks": [
+    {
+      "deckId": "french_b1",
+      "deckName": "French B1 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 1412,
+      "totalChecks": 75,
+      "failCount": 0,
+      "warnCount": 3,
+      "issuesByType": {
+        "pos_mismatch": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "fr-cefr-1471",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"abbaye\" mean?",
+          "correctAnswer": "abbey",
+          "distractors": [
+            {
+              "answer": "touch",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2731"
+            },
+            {
+              "answer": "rooster",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1777"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1471",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'abbey' in French?",
+          "correctAnswer": "abbaye",
+          "distractors": [
+            {
+              "answer": "linge",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2189"
+            },
+            {
+              "answer": "baccalauréat",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1579"
+            },
+            {
+              "answer": "bourgade",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1618"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1471",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'abbey' in French?",
+          "correctAnswer": "abbaye",
+          "distractors": [
+            {
+              "answer": "linge",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2189"
+            },
+            {
+              "answer": "baccalauréat",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1579"
+            },
+            {
+              "answer": "bourgade",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1618"
+            },
+            {
+              "answer": "savoureux",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2614"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1472",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"abbé\" mean?",
+          "correctAnswer": "abbot",
+          "distractors": [
+            {
+              "answer": "in practice",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2418"
+            },
+            {
+              "answer": "car",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1563"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1472",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'abbot' in French?",
+          "correctAnswer": "abbé",
+          "distractors": [
+            {
+              "answer": "frissonner",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2026"
+            },
+            {
+              "answer": "amande",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1517"
+            },
+            {
+              "answer": "poing",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2401"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1472",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'abbot' in French?",
+          "correctAnswer": "abbé",
+          "distractors": [
+            {
+              "answer": "frissonner",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2026"
+            },
+            {
+              "answer": "amande",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1517"
+            },
+            {
+              "answer": "poing",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2401"
+            },
+            {
+              "answer": "disposition",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1840"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1473",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"abondant\" mean?",
+          "correctAnswer": "abundant",
+          "distractors": [
+            {
+              "answer": "modest, humble",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2257"
+            },
+            {
+              "answer": "thunderstorm",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2323"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1473",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'abundant' in French?",
+          "correctAnswer": "abondant",
+          "distractors": [
+            {
+              "answer": "employé",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1920"
+            },
+            {
+              "answer": "excès",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1957"
+            },
+            {
+              "answer": "nucléaire",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2309"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1473",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'abundant' in French?",
+          "correctAnswer": "abondant",
+          "distractors": [
+            {
+              "answer": "employé",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1920"
+            },
+            {
+              "answer": "excès",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1957"
+            },
+            {
+              "answer": "nucléaire",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2309"
+            },
+            {
+              "answer": "curiosité",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1812"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1475",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"abri\" mean?",
+          "correctAnswer": "shelter",
+          "distractors": [
+            {
+              "answer": "testimony",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2767"
+            },
+            {
+              "answer": "task",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2763"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1475",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'shelter' in French?",
+          "correctAnswer": "abri",
+          "distractors": [
+            {
+              "answer": "magicien",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2208"
+            },
+            {
+              "answer": "ordonnance",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2324"
+            },
+            {
+              "answer": "tombe",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2725"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1475",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'shelter' in French?",
+          "correctAnswer": "abri",
+          "distractors": [
+            {
+              "answer": "magicien",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2208"
+            },
+            {
+              "answer": "ordonnance",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2324"
+            },
+            {
+              "answer": "tombe",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2725"
+            },
+            {
+              "answer": "lèvre",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2204"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1476",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"absolu\" mean?",
+          "correctAnswer": "absolute",
+          "distractors": [
+            {
+              "answer": "spouse",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2859"
+            },
+            {
+              "answer": "small box",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1718"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1476",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'absolute' in French?",
+          "correctAnswer": "absolu",
+          "distractors": [
+            {
+              "answer": "monte",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2263"
+            },
+            {
+              "answer": "branche",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1620"
+            },
+            {
+              "answer": "faute",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1983"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1476",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'absolute' in French?",
+          "correctAnswer": "absolu",
+          "distractors": [
+            {
+              "answer": "monte",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2263"
+            },
+            {
+              "answer": "branche",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1620"
+            },
+            {
+              "answer": "faute",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1983"
+            },
+            {
+              "answer": "fourchette",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2018"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1474",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"aboyer\" mean?",
+          "correctAnswer": "to bark",
+          "distractors": [
+            {
+              "answer": "to facilitate",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1972"
+            },
+            {
+              "answer": "to reconsider",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2525"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1474",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to bark' in French?",
+          "correctAnswer": "aboyer",
+          "distractors": [
+            {
+              "answer": "voter",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2815"
+            },
+            {
+              "answer": "gagnant",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2047"
+            },
+            {
+              "answer": "grandir",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2068"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1474",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to bark' in French?",
+          "correctAnswer": "aboyer",
+          "distractors": [
+            {
+              "answer": "voter",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2815"
+            },
+            {
+              "answer": "gagnant",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2047"
+            },
+            {
+              "answer": "grandir",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2068"
+            },
+            {
+              "answer": "désarmer",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1898"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1479",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"accorder\" mean?",
+          "correctAnswer": "to grant",
+          "distractors": [
+            {
+              "answer": "to kiss",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1583"
+            },
+            {
+              "answer": "to wax",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1705"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1479",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to grant' in French?",
+          "correctAnswer": "accorder",
+          "distractors": [
+            {
+              "answer": "agrandir",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1505"
+            },
+            {
+              "answer": "atteindre",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1553"
+            },
+            {
+              "answer": "éveiller",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2876"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1479",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to grant' in French?",
+          "correctAnswer": "accorder",
+          "distractors": [
+            {
+              "answer": "agrandir",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1505"
+            },
+            {
+              "answer": "atteindre",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1553"
+            },
+            {
+              "answer": "éveiller",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2876"
+            },
+            {
+              "answer": "augmenter",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1562"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1480",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"accrocher\" mean?",
+          "correctAnswer": "to hook",
+          "distractors": [
+            {
+              "answer": "to motivate",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2266"
+            },
+            {
+              "answer": "to escape",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2035"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1480",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to hook' in French?",
+          "correctAnswer": "accrocher",
+          "distractors": [
+            {
+              "answer": "emprunter",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1923"
+            },
+            {
+              "answer": "siffler",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2635"
+            },
+            {
+              "answer": "classement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1711"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1480",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to hook' in French?",
+          "correctAnswer": "accrocher",
+          "distractors": [
+            {
+              "answer": "emprunter",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1923"
+            },
+            {
+              "answer": "siffler",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2635"
+            },
+            {
+              "answer": "classement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1711"
+            },
+            {
+              "answer": "user",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2777"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1481",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"accuser\" mean?",
+          "correctAnswer": "to accuse",
+          "distractors": [
+            {
+              "answer": "to cough",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2737"
+            },
+            {
+              "answer": "outgoing",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2654"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1481",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to accuse' in French?",
+          "correctAnswer": "accuser",
+          "distractors": [
+            {
+              "answer": "dorer",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1852"
+            },
+            {
+              "answer": "toucher",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2732"
+            },
+            {
+              "answer": "deviner",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1829"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1481",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to accuse' in French?",
+          "correctAnswer": "accuser",
+          "distractors": [
+            {
+              "answer": "dorer",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1852"
+            },
+            {
+              "answer": "toucher",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2732"
+            },
+            {
+              "answer": "deviner",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1829"
+            },
+            {
+              "answer": "serrer",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2627"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1483",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"accéder\" mean?",
+          "correctAnswer": "to reach",
+          "distractors": [
+            {
+              "answer": "to associate",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1549"
+            },
+            {
+              "answer": "to heat",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1691"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1483",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to reach' in French?",
+          "correctAnswer": "accéder",
+          "distractors": [
+            {
+              "answer": "adresser",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1497"
+            },
+            {
+              "answer": "présider",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2459"
+            },
+            {
+              "answer": "guider",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2077"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1483",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to reach' in French?",
+          "correctAnswer": "accéder",
+          "distractors": [
+            {
+              "answer": "adresser",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1497"
+            },
+            {
+              "answer": "présider",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2459"
+            },
+            {
+              "answer": "guider",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2077"
+            },
+            {
+              "answer": "arranger",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1536"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1477",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"absolument\" mean?",
+          "correctAnswer": "absolutely",
+          "distractors": [
+            {
+              "answer": "yesterday",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2100"
+            },
+            {
+              "answer": "desperately",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1902"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1477",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'absolutely' in French?",
+          "correctAnswer": "absolument",
+          "distractors": [
+            {
+              "answer": "légèrement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2206"
+            },
+            {
+              "answer": "physiquement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2376"
+            },
+            {
+              "answer": "autrement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1571"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1477",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'absolutely' in French?",
+          "correctAnswer": "absolument",
+          "distractors": [
+            {
+              "answer": "légèrement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2206"
+            },
+            {
+              "answer": "physiquement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2376"
+            },
+            {
+              "answer": "autrement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1571"
+            },
+            {
+              "answer": "hier",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2100"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1525",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"annuel\" mean?",
+          "correctAnswer": "annual, yearly",
+          "distractors": [
+            {
+              "answer": "willingly",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2813"
+            },
+            {
+              "answer": "mainly",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2177"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1525",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'annual, yearly' in French?",
+          "correctAnswer": "annuel",
+          "distractors": [
+            {
+              "answer": "terriblement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2716"
+            },
+            {
+              "answer": "avance",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1572"
+            },
+            {
+              "answer": "courageusement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1788"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1525",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'annual, yearly' in French?",
+          "correctAnswer": "annuel",
+          "distractors": [
+            {
+              "answer": "terriblement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2716"
+            },
+            {
+              "answer": "avance",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1572"
+            },
+            {
+              "answer": "courageusement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1788"
+            },
+            {
+              "answer": "assemblée",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1547"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1527",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"apparemment\" mean?",
+          "correctAnswer": "apparently",
+          "distractors": [
+            {
+              "answer": "annual, yearly",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1525"
+            },
+            {
+              "answer": "lightly",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2206"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1527",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'apparently' in French?",
+          "correctAnswer": "apparemment",
+          "distractors": [
+            {
+              "answer": "sacré",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2608"
+            },
+            {
+              "answer": "dur",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1867"
+            },
+            {
+              "answer": "sérieusement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2693"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1527",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'apparently' in French?",
+          "correctAnswer": "apparemment",
+          "distractors": [
+            {
+              "answer": "sacré",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2608"
+            },
+            {
+              "answer": "dur",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1867"
+            },
+            {
+              "answer": "sérieusement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2693"
+            },
+            {
+              "answer": "silencieusement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2639"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1547",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"assemblée\" mean?",
+          "correctAnswer": "assembly",
+          "distractors": [
+            {
+              "answer": "rarely, seldom",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2485"
+            },
+            {
+              "answer": "seriously",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2693"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1547",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'assembly' in French?",
+          "correctAnswer": "assemblée",
+          "distractors": [
+            {
+              "answer": "patiemment",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2356"
+            },
+            {
+              "answer": "largement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2177"
+            },
+            {
+              "answer": "autrement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1571"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1547",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'assembly' in French?",
+          "correctAnswer": "assemblée",
+          "distractors": [
+            {
+              "answer": "patiemment",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2356"
+            },
+            {
+              "answer": "largement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2177"
+            },
+            {
+              "answer": "autrement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1571"
+            },
+            {
+              "answer": "désespérément",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1902"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1556",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"attentivement\" mean?",
+          "correctAnswer": "attentively",
+          "distractors": [
+            {
+              "answer": "generally",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2081"
+            },
+            {
+              "answer": "differently",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1571"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1556",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'attentively' in French?",
+          "correctAnswer": "attentivement",
+          "distractors": [
+            {
+              "answer": "absolument",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1477"
+            },
+            {
+              "answer": "précisément",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2452"
+            },
+            {
+              "answer": "brusquement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1628"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1556",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'attentively' in French?",
+          "correctAnswer": "attentivement",
+          "distractors": [
+            {
+              "answer": "absolument",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1477"
+            },
+            {
+              "answer": "précisément",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2452"
+            },
+            {
+              "answer": "brusquement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1628"
+            },
+            {
+              "answer": "fièrement",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2000"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1496",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"adoptif\" mean?",
+          "correctAnswer": "adoptive",
+          "distractors": [
+            {
+              "answer": "awful",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1501"
+            },
+            {
+              "answer": "successive",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2671"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1496",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'adoptive' in French?",
+          "correctAnswer": "adoptif",
+          "distractors": [
+            {
+              "answer": "banal",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1585"
+            },
+            {
+              "answer": "dramatique",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1860"
+            },
+            {
+              "answer": "insolite",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2142"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1496",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'adoptive' in French?",
+          "correctAnswer": "adoptif",
+          "distractors": [
+            {
+              "answer": "banal",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1585"
+            },
+            {
+              "answer": "dramatique",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1860"
+            },
+            {
+              "answer": "insolite",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2142"
+            },
+            {
+              "answer": "tissu",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2722"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1498",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"adroit\" mean?",
+          "correctAnswer": "skillful",
+          "distractors": [
+            {
+              "answer": "illegal",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2112"
+            },
+            {
+              "answer": "respectful",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2531"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1498",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'skillful' in French?",
+          "correctAnswer": "adroit",
+          "distractors": [
+            {
+              "answer": "agricole",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1507"
+            },
+            {
+              "answer": "objectif",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2313"
+            },
+            {
+              "answer": "interactif",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2147"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1498",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'skillful' in French?",
+          "correctAnswer": "adroit",
+          "distractors": [
+            {
+              "answer": "agricole",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1507"
+            },
+            {
+              "answer": "objectif",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2313"
+            },
+            {
+              "answer": "interactif",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2147"
+            },
+            {
+              "answer": "gênant",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2083"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1501",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"affreux\" mean?",
+          "correctAnswer": "awful",
+          "distractors": [
+            {
+              "answer": "relic",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2511"
+            },
+            {
+              "answer": "idiotic",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2111"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1501",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'awful' in French?",
+          "correctAnswer": "affreux",
+          "distractors": [
+            {
+              "answer": "gênant",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2083"
+            },
+            {
+              "answer": "agricole",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1507"
+            },
+            {
+              "answer": "personnel",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2369"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1501",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'awful' in French?",
+          "correctAnswer": "affreux",
+          "distractors": [
+            {
+              "answer": "gênant",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2083"
+            },
+            {
+              "answer": "agricole",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1507"
+            },
+            {
+              "answer": "personnel",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2369"
+            },
+            {
+              "answer": "déchet",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1877"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1507",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"agricole\" mean?",
+          "correctAnswer": "agricultural",
+          "distractors": [
+            {
+              "answer": "useless",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2156"
+            },
+            {
+              "answer": "ironic",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2157"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1507",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'agricultural' in French?",
+          "correctAnswer": "agricole",
+          "distractors": [
+            {
+              "answer": "médaille",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2282"
+            },
+            {
+              "answer": "récit",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2574"
+            },
+            {
+              "answer": "objectif",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2313"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1507",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'agricultural' in French?",
+          "correctAnswer": "agricole",
+          "distractors": [
+            {
+              "answer": "médaille",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2282"
+            },
+            {
+              "answer": "récit",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2574"
+            },
+            {
+              "answer": "objectif",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2313"
+            },
+            {
+              "answer": "égal",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2841"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1512",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"aimable\" mean?",
+          "correctAnswer": "likeable",
+          "distractors": [
+            {
+              "answer": "robotic",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2552"
+            },
+            {
+              "answer": "sexual",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2633"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1512",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'likeable' in French?",
+          "correctAnswer": "aimable",
+          "distractors": [
+            {
+              "answer": "gouvernemental",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2065"
+            },
+            {
+              "answer": "médaille",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2282"
+            },
+            {
+              "answer": "gai",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2048"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1512",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'likeable' in French?",
+          "correctAnswer": "aimable",
+          "distractors": [
+            {
+              "answer": "gouvernemental",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2065"
+            },
+            {
+              "answer": "médaille",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2282"
+            },
+            {
+              "answer": "gai",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2048"
+            },
+            {
+              "answer": "interactif",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2147"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1514",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"alentour\" mean?",
+          "correctAnswer": "around",
+          "distractors": [
+            {
+              "answer": "outside",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2748"
+            },
+            {
+              "answer": "behind",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1823"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1514",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'around' in French?",
+          "correctAnswer": "alentour",
+          "distractors": [
+            {
+              "answer": "travers",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2748"
+            },
+            {
+              "answer": "avec",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1573"
+            },
+            {
+              "answer": "dedans",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1818"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1514",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'around' in French?",
+          "correctAnswer": "alentour",
+          "distractors": [
+            {
+              "answer": "travers",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2748"
+            },
+            {
+              "answer": "avec",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1573"
+            },
+            {
+              "answer": "dedans",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1818"
+            },
+            {
+              "answer": "derrière",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1823"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1573",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"avec\" mean?",
+          "correctAnswer": "with",
+          "distractors": [
+            {
+              "answer": "inside",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1818"
+            },
+            {
+              "answer": "besides, moreover",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1815"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1573",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'with' in French?",
+          "correctAnswer": "avec",
+          "distractors": [
+            {
+              "answer": "derrière",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1823"
+            },
+            {
+              "answer": "d'ailleurs",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1815"
+            },
+            {
+              "answer": "travers",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2748"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1573",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'with' in French?",
+          "correctAnswer": "avec",
+          "distractors": [
+            {
+              "answer": "derrière",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1823"
+            },
+            {
+              "answer": "d'ailleurs",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1815"
+            },
+            {
+              "answer": "travers",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2748"
+            },
+            {
+              "answer": "dessus",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1824"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1597",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"bienvenu\" mean?",
+          "correctAnswer": "welcome",
+          "distractors": [
+            {
+              "answer": "zero",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2819"
+            },
+            {
+              "answer": "on",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1824"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"zero\" POS \"number\" != correct \"interjection\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-cefr-1597",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'welcome' in French?",
+          "correctAnswer": "bienvenu",
+          "distractors": [
+            {
+              "answer": "col",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1719"
+            },
+            {
+              "answer": "minuit",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2250"
+            },
+            {
+              "answer": "réalisation",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2570"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"col\" POS \"noun\" != correct \"interjection\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-cefr-1597",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'welcome' in French?",
+          "correctAnswer": "bienvenu",
+          "distractors": [
+            {
+              "answer": "col",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1719"
+            },
+            {
+              "answer": "minuit",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2250"
+            },
+            {
+              "answer": "réalisation",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2570"
+            },
+            {
+              "answer": "vague",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2780"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"col\" POS \"noun\" != correct \"interjection\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-cefr-1701",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"cinquième\" mean?",
+          "correctAnswer": "fifth",
+          "distractors": [
+            {
+              "answer": "thousand",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2246"
+            },
+            {
+              "answer": "zero",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2819"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1701",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'fifth' in French?",
+          "correctAnswer": "cinquième",
+          "distractors": [
+            {
+              "answer": "zéro",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2819"
+            },
+            {
+              "answer": "tiers",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2719"
+            },
+            {
+              "answer": "millier",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2246"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1701",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'fifth' in French?",
+          "correctAnswer": "cinquième",
+          "distractors": [
+            {
+              "answer": "zéro",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2819"
+            },
+            {
+              "answer": "tiers",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2719"
+            },
+            {
+              "answer": "millier",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2246"
+            },
+            {
+              "answer": "dizaine",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1845"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1815",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"d'ailleurs\" mean?",
+          "correctAnswer": "besides, moreover",
+          "distractors": [
+            {
+              "answer": "around",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1514"
+            },
+            {
+              "answer": "outside",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2748"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1815",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'besides, moreover' in French?",
+          "correctAnswer": "d'ailleurs",
+          "distractors": [
+            {
+              "answer": "alentour",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1514"
+            },
+            {
+              "answer": "avec",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1573"
+            },
+            {
+              "answer": "dedans",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1818"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-cefr-1815",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'besides, moreover' in French?",
+          "correctAnswer": "d'ailleurs",
+          "distractors": [
+            {
+              "answer": "alentour",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1514"
+            },
+            {
+              "answer": "avec",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1573"
+            },
+            {
+              "answer": "dedans",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-1818"
+            },
+            {
+              "answer": "travers",
+              "source": "similar_difficulty",
+              "factId": "fr-cefr-2748"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

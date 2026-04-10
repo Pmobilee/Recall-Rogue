@@ -1,0 +1,3023 @@
+{
+  "timestamp": "2026-04-10T13:40:19.422Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 103,
+  "totalFails": 0,
+  "totalWarns": 19,
+  "decks": [
+    {
+      "deckId": "famous_paintings",
+      "deckName": "Famous Paintings & Artists",
+      "deckClass": "knowledge",
+      "totalFacts": 104,
+      "totalChecks": 103,
+      "failCount": 0,
+      "warnCount": 19,
+      "issuesByType": {
+        "empty_chain_themes_runtime": {
+          "fail": 0,
+          "warn": 1
+        },
+        "near_duplicate_options": {
+          "fail": 0,
+          "warn": 8
+        },
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 9
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 1
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_deck_chain_themes",
+          "masteryLevel": -1,
+          "poolId": "_deck",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "empty_chain_themes_runtime",
+              "detail": "Knowledge deck \"famous_paintings\" has no chainThemes — Study Temple mode will not work correctly"
+            }
+          ]
+        },
+        {
+          "factId": "paint_ren_mona_lisa_location",
+          "masteryLevel": 0,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "In which museum is the Mona Lisa permanently displayed?",
+          "correctAnswer": "The Louvre",
+          "distractors": [
+            {
+              "answer": "Giverny",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_monet_giverny"
+            },
+            {
+              "answer": "Florence",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_uffizi_gallery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_mona_lisa_location",
+          "masteryLevel": 2,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "In which museum is the Mona Lisa permanently displayed?",
+          "correctAnswer": "The Louvre",
+          "distractors": [
+            {
+              "answer": "Giverny",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_monet_giverny"
+            },
+            {
+              "answer": "Florence",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_uffizi_gallery"
+            },
+            {
+              "answer": "Louvre",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_louvre_most_visited"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"Louvre\" is a substring of \"The Louvre\""
+            }
+          ]
+        },
+        {
+          "factId": "paint_ren_mona_lisa_location",
+          "masteryLevel": 4,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "In which museum is the Mona Lisa permanently displayed?",
+          "correctAnswer": "The Louvre",
+          "distractors": [
+            {
+              "answer": "Giverny",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_monet_giverny"
+            },
+            {
+              "answer": "Florence",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_uffizi_gallery"
+            },
+            {
+              "answer": "Louvre",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_louvre_most_visited"
+            },
+            {
+              "answer": "Prado",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_bosch_prado_location"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"Louvre\" is a substring of \"The Louvre\""
+            }
+          ]
+        },
+        {
+          "factId": "paint_ren_bosch_prado_location",
+          "masteryLevel": 0,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "In which Madrid museum is Bosch's Garden of Earthly Delights — and Velázquez's Las Meninas — both permanently displayed?",
+          "correctAnswer": "Prado",
+          "distractors": [
+            {
+              "answer": "Giverny",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_monet_giverny"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_rijksmuseum_nightwatch"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_bosch_prado_location",
+          "masteryLevel": 2,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "In which Madrid museum is Bosch's Garden of Earthly Delights — and Velázquez's Las Meninas — both permanently displayed?",
+          "correctAnswer": "Prado",
+          "distractors": [
+            {
+              "answer": "Giverny",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_monet_giverny"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_rijksmuseum_nightwatch"
+            },
+            {
+              "answer": "The Louvre",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_mona_lisa_location"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_bosch_prado_location",
+          "masteryLevel": 4,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "In which Madrid museum is Bosch's Garden of Earthly Delights — and Velázquez's Las Meninas — both permanently displayed?",
+          "correctAnswer": "Prado",
+          "distractors": [
+            {
+              "answer": "Giverny",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_monet_giverny"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_rijksmuseum_nightwatch"
+            },
+            {
+              "answer": "The Louvre",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_mona_lisa_location"
+            },
+            {
+              "answer": "Florence",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_uffizi_gallery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_monet_giverny",
+          "masteryLevel": 0,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "In which French village did Monet spend the last 43 years of his life, creating the water lily garden that inspired his most famous paintings?",
+          "correctAnswer": "Giverny",
+          "distractors": [
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_rijksmuseum_nightwatch"
+            },
+            {
+              "answer": "Florence",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_uffizi_gallery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_monet_giverny",
+          "masteryLevel": 2,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "In which French village did Monet spend the last 43 years of his life, creating the water lily garden that inspired his most famous paintings?",
+          "correctAnswer": "Giverny",
+          "distractors": [
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_rijksmuseum_nightwatch"
+            },
+            {
+              "answer": "Florence",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_uffizi_gallery"
+            },
+            {
+              "answer": "Prado",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_bosch_prado_location"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_monet_giverny",
+          "masteryLevel": 4,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "In which French village did Monet spend the last 43 years of his life, creating the water lily garden that inspired his most famous paintings?",
+          "correctAnswer": "Giverny",
+          "distractors": [
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_rijksmuseum_nightwatch"
+            },
+            {
+              "answer": "Florence",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_uffizi_gallery"
+            },
+            {
+              "answer": "Prado",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_bosch_prado_location"
+            },
+            {
+              "answer": "Madrid",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_prado_madrid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_louvre_most_visited",
+          "masteryLevel": 0,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "The Winged Victory of Samothrace and the Venus de Milo are both housed in which museum?",
+          "correctAnswer": "Louvre",
+          "distractors": [
+            {
+              "answer": "Madrid",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_prado_madrid"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_rijksmuseum_nightwatch"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_louvre_most_visited",
+          "masteryLevel": 2,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "The Winged Victory of Samothrace and the Venus de Milo are both housed in which museum?",
+          "correctAnswer": "Louvre",
+          "distractors": [
+            {
+              "answer": "Madrid",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_prado_madrid"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_rijksmuseum_nightwatch"
+            },
+            {
+              "answer": "The Louvre",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_mona_lisa_location"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"The Louvre\" is a substring of \"Louvre\""
+            }
+          ]
+        },
+        {
+          "factId": "paint_mov_louvre_most_visited",
+          "masteryLevel": 4,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "The Winged Victory of Samothrace and the Venus de Milo are both housed in which museum?",
+          "correctAnswer": "Louvre",
+          "distractors": [
+            {
+              "answer": "Madrid",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_prado_madrid"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_rijksmuseum_nightwatch"
+            },
+            {
+              "answer": "The Louvre",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_mona_lisa_location"
+            },
+            {
+              "answer": "Giverny",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_monet_giverny"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"The Louvre\" is a substring of \"Louvre\""
+            }
+          ]
+        },
+        {
+          "factId": "paint_mov_uffizi_gallery",
+          "masteryLevel": 0,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "In which Italian city is the Uffizi Gallery — home to Botticelli's Birth of Venus and Primavera?",
+          "correctAnswer": "Florence",
+          "distractors": [
+            {
+              "answer": "Prado",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_bosch_prado_location"
+            },
+            {
+              "answer": "Giverny",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_monet_giverny"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_uffizi_gallery",
+          "masteryLevel": 2,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "In which Italian city is the Uffizi Gallery — home to Botticelli's Birth of Venus and Primavera?",
+          "correctAnswer": "Florence",
+          "distractors": [
+            {
+              "answer": "Prado",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_bosch_prado_location"
+            },
+            {
+              "answer": "Giverny",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_monet_giverny"
+            },
+            {
+              "answer": "Madrid",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_prado_madrid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_uffizi_gallery",
+          "masteryLevel": 4,
+          "poolId": "museum_names_short",
+          "renderedQuestion": "In which Italian city is the Uffizi Gallery — home to Botticelli's Birth of Venus and Primavera?",
+          "correctAnswer": "Florence",
+          "distractors": [
+            {
+              "answer": "Prado",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_bosch_prado_location"
+            },
+            {
+              "answer": "Giverny",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_monet_giverny"
+            },
+            {
+              "answer": "Madrid",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_prado_madrid"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_rijksmuseum_nightwatch"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_mona_lisa_technique",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "What painting technique — creating soft, smoky transitions without sharp outlines — did Leonardo use extensively in the Mona Lisa?",
+          "correctAnswer": "Sfumato",
+          "distractors": [
+            {
+              "answer": "Smoke",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_sfumato_meaning"
+            },
+            {
+              "answer": "Impasto",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impasto_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_mona_lisa_technique",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "What painting technique — creating soft, smoky transitions without sharp outlines — did Leonardo use extensively in the Mona Lisa?",
+          "correctAnswer": "Sfumato",
+          "distractors": [
+            {
+              "answer": "Smoke",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_sfumato_meaning"
+            },
+            {
+              "answer": "Impasto",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impasto_technique"
+            },
+            {
+              "answer": "Pastel",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_degas_preferred_medium"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_mona_lisa_technique",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "What painting technique — creating soft, smoky transitions without sharp outlines — did Leonardo use extensively in the Mona Lisa?",
+          "correctAnswer": "Sfumato",
+          "distractors": [
+            {
+              "answer": "Smoke",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_sfumato_meaning"
+            },
+            {
+              "answer": "Impasto",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impasto_technique"
+            },
+            {
+              "answer": "Pastel",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_degas_preferred_medium"
+            },
+            {
+              "answer": "Outdoors",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impressionism_plein_air"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_impasto_technique",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "Which painting technique involves applying paint so thickly that the brush or knife strokes are clearly visible in the finished work — creating actual physical texture?",
+          "correctAnswer": "Impasto",
+          "distractors": [
+            {
+              "answer": "Sfumato",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_mona_lisa_technique"
+            },
+            {
+              "answer": "Smoke",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_sfumato_meaning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_impasto_technique",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "Which painting technique involves applying paint so thickly that the brush or knife strokes are clearly visible in the finished work — creating actual physical texture?",
+          "correctAnswer": "Impasto",
+          "distractors": [
+            {
+              "answer": "Sfumato",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_mona_lisa_technique"
+            },
+            {
+              "answer": "Smoke",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_sfumato_meaning"
+            },
+            {
+              "answer": "Pastel",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_degas_preferred_medium"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_impasto_technique",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "Which painting technique involves applying paint so thickly that the brush or knife strokes are clearly visible in the finished work — creating actual physical texture?",
+          "correctAnswer": "Impasto",
+          "distractors": [
+            {
+              "answer": "Sfumato",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_mona_lisa_technique"
+            },
+            {
+              "answer": "Smoke",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_sfumato_meaning"
+            },
+            {
+              "answer": "Pastel",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_degas_preferred_medium"
+            },
+            {
+              "answer": "Outdoors",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impressionism_plein_air"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_sfumato_meaning",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "The Italian painting technique 'sfumato' gets its name from the Italian word for what?",
+          "correctAnswer": "Smoke",
+          "distractors": [
+            {
+              "answer": "Impasto",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impasto_technique"
+            },
+            {
+              "answer": "Pastel",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_degas_preferred_medium"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_sfumato_meaning",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "The Italian painting technique 'sfumato' gets its name from the Italian word for what?",
+          "correctAnswer": "Smoke",
+          "distractors": [
+            {
+              "answer": "Impasto",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impasto_technique"
+            },
+            {
+              "answer": "Pastel",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_degas_preferred_medium"
+            },
+            {
+              "answer": "Outdoors",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impressionism_plein_air"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_sfumato_meaning",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "The Italian painting technique 'sfumato' gets its name from the Italian word for what?",
+          "correctAnswer": "Smoke",
+          "distractors": [
+            {
+              "answer": "Impasto",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impasto_technique"
+            },
+            {
+              "answer": "Pastel",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_degas_preferred_medium"
+            },
+            {
+              "answer": "Outdoors",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impressionism_plein_air"
+            },
+            {
+              "answer": "Sgrafito",
+              "source": "pool_fill",
+              "factId": "_synthetic_Sgrafito"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_impressionism_plein_air",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "The Impressionist technique 'en plein air' means painting where?",
+          "correctAnswer": "Outdoors",
+          "distractors": [
+            {
+              "answer": "Smoke",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_sfumato_meaning"
+            },
+            {
+              "answer": "Sfumato",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_mona_lisa_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_impressionism_plein_air",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "The Impressionist technique 'en plein air' means painting where?",
+          "correctAnswer": "Outdoors",
+          "distractors": [
+            {
+              "answer": "Smoke",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_sfumato_meaning"
+            },
+            {
+              "answer": "Sfumato",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_mona_lisa_technique"
+            },
+            {
+              "answer": "Pastel",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_degas_preferred_medium"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_impressionism_plein_air",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "The Impressionist technique 'en plein air' means painting where?",
+          "correctAnswer": "Outdoors",
+          "distractors": [
+            {
+              "answer": "Smoke",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_sfumato_meaning"
+            },
+            {
+              "answer": "Sfumato",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_mona_lisa_technique"
+            },
+            {
+              "answer": "Pastel",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_degas_preferred_medium"
+            },
+            {
+              "answer": "Impasto",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impasto_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_degas_preferred_medium",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "Degas is famous for his oil paintings, but in his later career — as his eyesight failed — which drawing medium did he increasingly rely on?",
+          "correctAnswer": "Pastel",
+          "distractors": [
+            {
+              "answer": "Smoke",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_sfumato_meaning"
+            },
+            {
+              "answer": "Outdoors",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impressionism_plein_air"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_degas_preferred_medium",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "Degas is famous for his oil paintings, but in his later career — as his eyesight failed — which drawing medium did he increasingly rely on?",
+          "correctAnswer": "Pastel",
+          "distractors": [
+            {
+              "answer": "Smoke",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_sfumato_meaning"
+            },
+            {
+              "answer": "Outdoors",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impressionism_plein_air"
+            },
+            {
+              "answer": "Impasto",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impasto_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_degas_preferred_medium",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "Degas is famous for his oil paintings, but in his later career — as his eyesight failed — which drawing medium did he increasingly rely on?",
+          "correctAnswer": "Pastel",
+          "distractors": [
+            {
+              "answer": "Smoke",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_sfumato_meaning"
+            },
+            {
+              "answer": "Outdoors",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impressionism_plein_air"
+            },
+            {
+              "answer": "Impasto",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_impasto_technique"
+            },
+            {
+              "answer": "Sfumato",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_mona_lisa_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_bar_caravaggio_technique",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "Caravaggio revolutionized Baroque painting with his extreme use of which technique — strong contrasts between light and dark?",
+          "correctAnswer": "Chiaroscuro",
+          "distractors": [
+            {
+              "answer": "Drip painting",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_pollock_technique"
+            },
+            {
+              "answer": "Action painting and Color field",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_abstract_expressionism_two_types"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_bar_caravaggio_technique",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "Caravaggio revolutionized Baroque painting with his extreme use of which technique — strong contrasts between light and dark?",
+          "correctAnswer": "Chiaroscuro",
+          "distractors": [
+            {
+              "answer": "Drip painting",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_pollock_technique"
+            },
+            {
+              "answer": "Action painting and Color field",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_abstract_expressionism_two_types"
+            },
+            {
+              "answer": "Deceives the eye",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_trompe_loeil_meaning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_bar_caravaggio_technique",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "Caravaggio revolutionized Baroque painting with his extreme use of which technique — strong contrasts between light and dark?",
+          "correctAnswer": "Chiaroscuro",
+          "distractors": [
+            {
+              "answer": "Drip painting",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_pollock_technique"
+            },
+            {
+              "answer": "Action painting and Color field",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_abstract_expressionism_two_types"
+            },
+            {
+              "answer": "Deceives the eye",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_trompe_loeil_meaning"
+            },
+            {
+              "answer": "Wet plaster",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_fresco_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mod_pollock_technique",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "Jackson Pollock's revolutionary technique of pouring and dripping liquid paint onto horizontal canvas is known as what?",
+          "correctAnswer": "Drip painting",
+          "distractors": [
+            {
+              "answer": "Wet plaster",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_fresco_technique"
+            },
+            {
+              "answer": "Deceives the eye",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_trompe_loeil_meaning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mod_pollock_technique",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "Jackson Pollock's revolutionary technique of pouring and dripping liquid paint onto horizontal canvas is known as what?",
+          "correctAnswer": "Drip painting",
+          "distractors": [
+            {
+              "answer": "Wet plaster",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_fresco_technique"
+            },
+            {
+              "answer": "Deceives the eye",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_trompe_loeil_meaning"
+            },
+            {
+              "answer": "Pointillism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_grande_jatte_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mod_pollock_technique",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "Jackson Pollock's revolutionary technique of pouring and dripping liquid paint onto horizontal canvas is known as what?",
+          "correctAnswer": "Drip painting",
+          "distractors": [
+            {
+              "answer": "Wet plaster",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_fresco_technique"
+            },
+            {
+              "answer": "Deceives the eye",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_trompe_loeil_meaning"
+            },
+            {
+              "answer": "Pointillism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_grande_jatte_technique"
+            },
+            {
+              "answer": "Camera obscura",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_camera_obscura_vermeer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_trompe_loeil_meaning",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "What does the French term 'trompe-l'oeil' literally mean in English?",
+          "correctAnswer": "Deceives the eye",
+          "distractors": [
+            {
+              "answer": "Pointillism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_grande_jatte_technique"
+            },
+            {
+              "answer": "Camera obscura",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_camera_obscura_vermeer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_trompe_loeil_meaning",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "What does the French term 'trompe-l'oeil' literally mean in English?",
+          "correctAnswer": "Deceives the eye",
+          "distractors": [
+            {
+              "answer": "Pointillism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_grande_jatte_technique"
+            },
+            {
+              "answer": "Camera obscura",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_camera_obscura_vermeer"
+            },
+            {
+              "answer": "Chiaroscuro",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_caravaggio_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_trompe_loeil_meaning",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "What does the French term 'trompe-l'oeil' literally mean in English?",
+          "correctAnswer": "Deceives the eye",
+          "distractors": [
+            {
+              "answer": "Pointillism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_grande_jatte_technique"
+            },
+            {
+              "answer": "Camera obscura",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_camera_obscura_vermeer"
+            },
+            {
+              "answer": "Chiaroscuro",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_caravaggio_technique"
+            },
+            {
+              "answer": "Action painting and Color field",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_abstract_expressionism_two_types"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_fresco_technique",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "True fresco (buon fresco) involves painting on what surface while it is still fresh — bonding pigment permanently as it dries?",
+          "correctAnswer": "Wet plaster",
+          "distractors": [
+            {
+              "answer": "Deceives the eye",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_trompe_loeil_meaning"
+            },
+            {
+              "answer": "The unconscious mind",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_surrealism_unconscious"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_fresco_technique",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "True fresco (buon fresco) involves painting on what surface while it is still fresh — bonding pigment permanently as it dries?",
+          "correctAnswer": "Wet plaster",
+          "distractors": [
+            {
+              "answer": "Deceives the eye",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_trompe_loeil_meaning"
+            },
+            {
+              "answer": "The unconscious mind",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_surrealism_unconscious"
+            },
+            {
+              "answer": "Pointillism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_grande_jatte_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_fresco_technique",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "True fresco (buon fresco) involves painting on what surface while it is still fresh — bonding pigment permanently as it dries?",
+          "correctAnswer": "Wet plaster",
+          "distractors": [
+            {
+              "answer": "Deceives the eye",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_trompe_loeil_meaning"
+            },
+            {
+              "answer": "The unconscious mind",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_surrealism_unconscious"
+            },
+            {
+              "answer": "Pointillism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_grande_jatte_technique"
+            },
+            {
+              "answer": "Drip painting",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_pollock_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_davinci_notebooks",
+          "masteryLevel": 0,
+          "poolId": "counts_amounts",
+          "renderedQuestion": "Approximately how many pages of notebooks did Leonardo da Vinci leave behind, containing designs for flying machines, armored vehicles, and anatomical studies?",
+          "correctAnswer": "Over 13,000",
+          "distractors": [
+            {
+              "answer": "Fewer than 20",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_leonardo_completed_paintings"
+            },
+            {
+              "answer": "Over 40",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_rembrandt_self_portraits"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_davinci_notebooks",
+          "masteryLevel": 2,
+          "poolId": "counts_amounts",
+          "renderedQuestion": "Approximately how many pages of notebooks did Leonardo da Vinci leave behind, containing designs for flying machines, armored vehicles, and anatomical studies?",
+          "correctAnswer": "Over 13,000",
+          "distractors": [
+            {
+              "answer": "Fewer than 20",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_leonardo_completed_paintings"
+            },
+            {
+              "answer": "Over 40",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_rembrandt_self_portraits"
+            },
+            {
+              "answer": "About 20,000",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_picasso_total_works"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_davinci_notebooks",
+          "masteryLevel": 4,
+          "poolId": "counts_amounts",
+          "renderedQuestion": "Approximately how many pages of notebooks did Leonardo da Vinci leave behind, containing designs for flying machines, armored vehicles, and anatomical studies?",
+          "correctAnswer": "Over 13,000",
+          "distractors": [
+            {
+              "answer": "Fewer than 20",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_leonardo_completed_paintings"
+            },
+            {
+              "answer": "Over 40",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_rembrandt_self_portraits"
+            },
+            {
+              "answer": "About 20,000",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_picasso_total_works"
+            },
+            {
+              "answer": "About 2,100",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_van_gogh_total_works"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"About 20,000\" and \"About 2,100\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "paint_bar_rembrandt_self_portraits",
+          "masteryLevel": 0,
+          "poolId": "counts_amounts",
+          "renderedQuestion": "Rembrandt painted more self-portraits than almost any artist before the 19th century — approximately how many painted self-portraits did he make?",
+          "correctAnswer": "Over 40",
+          "distractors": [
+            {
+              "answer": "34–36",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_vermeer_total_works"
+            },
+            {
+              "answer": "~$250 million",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_card_players_price"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"34–36\" has 2 format features different from correct \"Over 40\""
+            }
+          ]
+        },
+        {
+          "factId": "paint_bar_rembrandt_self_portraits",
+          "masteryLevel": 2,
+          "poolId": "counts_amounts",
+          "renderedQuestion": "Rembrandt painted more self-portraits than almost any artist before the 19th century — approximately how many painted self-portraits did he make?",
+          "correctAnswer": "Over 40",
+          "distractors": [
+            {
+              "answer": "34–36",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_vermeer_total_works"
+            },
+            {
+              "answer": "~$250 million",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_card_players_price"
+            },
+            {
+              "answer": "About 2,100",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_van_gogh_total_works"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"34–36\" has 2 format features different from correct \"Over 40\""
+            }
+          ]
+        },
+        {
+          "factId": "paint_bar_rembrandt_self_portraits",
+          "masteryLevel": 4,
+          "poolId": "counts_amounts",
+          "renderedQuestion": "Rembrandt painted more self-portraits than almost any artist before the 19th century — approximately how many painted self-portraits did he make?",
+          "correctAnswer": "Over 40",
+          "distractors": [
+            {
+              "answer": "34–36",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_vermeer_total_works"
+            },
+            {
+              "answer": "~$250 million",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_card_players_price"
+            },
+            {
+              "answer": "About 2,100",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_van_gogh_total_works"
+            },
+            {
+              "answer": "Over 13,000",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_davinci_notebooks"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"34–36\" has 2 format features different from correct \"Over 40\""
+            }
+          ]
+        },
+        {
+          "factId": "paint_bar_vermeer_total_works",
+          "masteryLevel": 0,
+          "poolId": "counts_amounts",
+          "renderedQuestion": "Vermeer is celebrated as one of the greatest Dutch masters, yet he left only a tiny body of work. How many paintings are confidently attributed to him?",
+          "correctAnswer": "34–36",
+          "distractors": [
+            {
+              "answer": "Over 40",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_rembrandt_self_portraits"
+            },
+            {
+              "answer": "About 20,000",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_picasso_total_works"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Over 40\" has 2 format features different from correct \"34–36\""
+            }
+          ]
+        },
+        {
+          "factId": "paint_bar_vermeer_total_works",
+          "masteryLevel": 2,
+          "poolId": "counts_amounts",
+          "renderedQuestion": "Vermeer is celebrated as one of the greatest Dutch masters, yet he left only a tiny body of work. How many paintings are confidently attributed to him?",
+          "correctAnswer": "34–36",
+          "distractors": [
+            {
+              "answer": "Over 40",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_rembrandt_self_portraits"
+            },
+            {
+              "answer": "About 20,000",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_picasso_total_works"
+            },
+            {
+              "answer": "4 years",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_michelangelo_sistine_years"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Over 40\" has 2 format features different from correct \"34–36\""
+            }
+          ]
+        },
+        {
+          "factId": "paint_bar_vermeer_total_works",
+          "masteryLevel": 4,
+          "poolId": "counts_amounts",
+          "renderedQuestion": "Vermeer is celebrated as one of the greatest Dutch masters, yet he left only a tiny body of work. How many paintings are confidently attributed to him?",
+          "correctAnswer": "34–36",
+          "distractors": [
+            {
+              "answer": "Over 40",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_rembrandt_self_portraits"
+            },
+            {
+              "answer": "About 20,000",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_picasso_total_works"
+            },
+            {
+              "answer": "4 years",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_michelangelo_sistine_years"
+            },
+            {
+              "answer": "~$250 million",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_card_players_price"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Over 40\" has 2 format features different from correct \"34–36\""
+            }
+          ]
+        },
+        {
+          "factId": "paint_ren_michelangelo_sistine_years",
+          "masteryLevel": 0,
+          "poolId": "counts_amounts",
+          "renderedQuestion": "Approximately how long did Michelangelo take to paint the entire Sistine Chapel ceiling (1,100 m²)?",
+          "correctAnswer": "4 years",
+          "distractors": [
+            {
+              "answer": "About 20,000",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_picasso_total_works"
+            },
+            {
+              "answer": "About 2,100",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_van_gogh_total_works"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"About 20,000\" has 3 format features different from correct \"4 years\""
+            },
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"About 20,000\" and \"About 2,100\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "paint_ren_michelangelo_sistine_years",
+          "masteryLevel": 2,
+          "poolId": "counts_amounts",
+          "renderedQuestion": "Approximately how long did Michelangelo take to paint the entire Sistine Chapel ceiling (1,100 m²)?",
+          "correctAnswer": "4 years",
+          "distractors": [
+            {
+              "answer": "About 20,000",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_picasso_total_works"
+            },
+            {
+              "answer": "About 2,100",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_van_gogh_total_works"
+            },
+            {
+              "answer": "Over 40",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_rembrandt_self_portraits"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"About 20,000\" has 3 format features different from correct \"4 years\""
+            },
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"About 20,000\" and \"About 2,100\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "paint_ren_michelangelo_sistine_years",
+          "masteryLevel": 4,
+          "poolId": "counts_amounts",
+          "renderedQuestion": "Approximately how long did Michelangelo take to paint the entire Sistine Chapel ceiling (1,100 m²)?",
+          "correctAnswer": "4 years",
+          "distractors": [
+            {
+              "answer": "About 20,000",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_picasso_total_works"
+            },
+            {
+              "answer": "About 2,100",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_van_gogh_total_works"
+            },
+            {
+              "answer": "Over 40",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_rembrandt_self_portraits"
+            },
+            {
+              "answer": "Fewer than 20",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_leonardo_completed_paintings"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"About 20,000\" has 3 format features different from correct \"4 years\""
+            },
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"About 20,000\" and \"About 2,100\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "paint_bar_baroque_movement",
+          "masteryLevel": 0,
+          "poolId": "movement_names",
+          "renderedQuestion": "Which art movement (early 17th–c. 1750), associated with the Catholic Counter-Reformation, is characterized by grandeur, drama, and chiaroscuro?",
+          "correctAnswer": "Baroque",
+          "distractors": [
+            {
+              "answer": "Renaissance",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_renaissance_movement"
+            },
+            {
+              "answer": "Romanticism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_romanticism_movement"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_bar_baroque_movement",
+          "masteryLevel": 2,
+          "poolId": "movement_names",
+          "renderedQuestion": "Which art movement (early 17th–c. 1750), associated with the Catholic Counter-Reformation, is characterized by grandeur, drama, and chiaroscuro?",
+          "correctAnswer": "Baroque",
+          "distractors": [
+            {
+              "answer": "Renaissance",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_renaissance_movement"
+            },
+            {
+              "answer": "Romanticism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_romanticism_movement"
+            },
+            {
+              "answer": "Art Nouveau",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_art_nouveau_period"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_bar_baroque_movement",
+          "masteryLevel": 4,
+          "poolId": "movement_names",
+          "renderedQuestion": "Which art movement (early 17th–c. 1750), associated with the Catholic Counter-Reformation, is characterized by grandeur, drama, and chiaroscuro?",
+          "correctAnswer": "Baroque",
+          "distractors": [
+            {
+              "answer": "Renaissance",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_renaissance_movement"
+            },
+            {
+              "answer": "Romanticism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_romanticism_movement"
+            },
+            {
+              "answer": "Art Nouveau",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_art_nouveau_period"
+            },
+            {
+              "answer": "Realism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_realism_movement"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_renaissance_movement",
+          "masteryLevel": 0,
+          "poolId": "movement_names",
+          "renderedQuestion": "What art movement (14th–17th century), originating in Italy, revived classical Greek and Roman ideals and pioneered linear perspective?",
+          "correctAnswer": "Renaissance",
+          "distractors": [
+            {
+              "answer": "Impressionism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_impressionism_movement"
+            },
+            {
+              "answer": "Pop Art",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_pop_art_movement"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_renaissance_movement",
+          "masteryLevel": 2,
+          "poolId": "movement_names",
+          "renderedQuestion": "What art movement (14th–17th century), originating in Italy, revived classical Greek and Roman ideals and pioneered linear perspective?",
+          "correctAnswer": "Renaissance",
+          "distractors": [
+            {
+              "answer": "Impressionism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_impressionism_movement"
+            },
+            {
+              "answer": "Pop Art",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_pop_art_movement"
+            },
+            {
+              "answer": "Realism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_realism_movement"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_renaissance_movement",
+          "masteryLevel": 4,
+          "poolId": "movement_names",
+          "renderedQuestion": "What art movement (14th–17th century), originating in Italy, revived classical Greek and Roman ideals and pioneered linear perspective?",
+          "correctAnswer": "Renaissance",
+          "distractors": [
+            {
+              "answer": "Impressionism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_impressionism_movement"
+            },
+            {
+              "answer": "Pop Art",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_pop_art_movement"
+            },
+            {
+              "answer": "Realism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_realism_movement"
+            },
+            {
+              "answer": "Romanticism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_romanticism_movement"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_rom_romanticism_movement",
+          "masteryLevel": 0,
+          "poolId": "movement_names",
+          "renderedQuestion": "Which art movement (c. 1780–1850), born as a reaction against Enlightenment rationalism, emphasized emotion, imagination, and the Sublime in nature?",
+          "correctAnswer": "Romanticism",
+          "distractors": [
+            {
+              "answer": "Art Nouveau",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_art_nouveau_period"
+            },
+            {
+              "answer": "Renaissance",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_renaissance_movement"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_rom_romanticism_movement",
+          "masteryLevel": 2,
+          "poolId": "movement_names",
+          "renderedQuestion": "Which art movement (c. 1780–1850), born as a reaction against Enlightenment rationalism, emphasized emotion, imagination, and the Sublime in nature?",
+          "correctAnswer": "Romanticism",
+          "distractors": [
+            {
+              "answer": "Art Nouveau",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_art_nouveau_period"
+            },
+            {
+              "answer": "Renaissance",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_renaissance_movement"
+            },
+            {
+              "answer": "Baroque",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_baroque_movement"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_rom_romanticism_movement",
+          "masteryLevel": 4,
+          "poolId": "movement_names",
+          "renderedQuestion": "Which art movement (c. 1780–1850), born as a reaction against Enlightenment rationalism, emphasized emotion, imagination, and the Sublime in nature?",
+          "correctAnswer": "Romanticism",
+          "distractors": [
+            {
+              "answer": "Art Nouveau",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_art_nouveau_period"
+            },
+            {
+              "answer": "Renaissance",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_renaissance_movement"
+            },
+            {
+              "answer": "Baroque",
+              "source": "similar_difficulty",
+              "factId": "paint_bar_baroque_movement"
+            },
+            {
+              "answer": "Realism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_realism_movement"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_impressionism_movement",
+          "masteryLevel": 0,
+          "poolId": "movement_names",
+          "renderedQuestion": "Which French art movement (1860s–1880s) rejected official Salon norms in favor of visible brushstrokes, natural light, and everyday subjects?",
+          "correctAnswer": "Impressionism",
+          "distractors": [
+            {
+              "answer": "Realism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_realism_movement"
+            },
+            {
+              "answer": "Romanticism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_romanticism_movement"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_impressionism_movement",
+          "masteryLevel": 2,
+          "poolId": "movement_names",
+          "renderedQuestion": "Which French art movement (1860s–1880s) rejected official Salon norms in favor of visible brushstrokes, natural light, and everyday subjects?",
+          "correctAnswer": "Impressionism",
+          "distractors": [
+            {
+              "answer": "Realism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_realism_movement"
+            },
+            {
+              "answer": "Romanticism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_romanticism_movement"
+            },
+            {
+              "answer": "Art Nouveau",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_art_nouveau_period"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_impressionism_movement",
+          "masteryLevel": 4,
+          "poolId": "movement_names",
+          "renderedQuestion": "Which French art movement (1860s–1880s) rejected official Salon norms in favor of visible brushstrokes, natural light, and everyday subjects?",
+          "correctAnswer": "Impressionism",
+          "distractors": [
+            {
+              "answer": "Realism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_realism_movement"
+            },
+            {
+              "answer": "Romanticism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_romanticism_movement"
+            },
+            {
+              "answer": "Art Nouveau",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_art_nouveau_period"
+            },
+            {
+              "answer": "Cubism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_post_impressionism_cezanne_bridge"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mod_les_demoiselles_movement",
+          "masteryLevel": 0,
+          "poolId": "movement_names",
+          "renderedQuestion": "Picasso's Les Demoiselles d'Avignon (1907) is considered the proto-founding work of which movement?",
+          "correctAnswer": "Cubism",
+          "distractors": [
+            {
+              "answer": "Impressionism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_impressionism_movement"
+            },
+            {
+              "answer": "Renaissance",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_renaissance_movement"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mod_les_demoiselles_movement",
+          "masteryLevel": 2,
+          "poolId": "movement_names",
+          "renderedQuestion": "Picasso's Les Demoiselles d'Avignon (1907) is considered the proto-founding work of which movement?",
+          "correctAnswer": "Cubism",
+          "distractors": [
+            {
+              "answer": "Impressionism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_impressionism_movement"
+            },
+            {
+              "answer": "Renaissance",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_renaissance_movement"
+            },
+            {
+              "answer": "Realism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_realism_movement"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mod_les_demoiselles_movement",
+          "masteryLevel": 4,
+          "poolId": "movement_names",
+          "renderedQuestion": "Picasso's Les Demoiselles d'Avignon (1907) is considered the proto-founding work of which movement?",
+          "correctAnswer": "Cubism",
+          "distractors": [
+            {
+              "answer": "Impressionism",
+              "source": "similar_difficulty",
+              "factId": "paint_imp_impressionism_movement"
+            },
+            {
+              "answer": "Renaissance",
+              "source": "similar_difficulty",
+              "factId": "paint_ren_renaissance_movement"
+            },
+            {
+              "answer": "Realism",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_realism_movement"
+            },
+            {
+              "answer": "Art Nouveau",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_art_nouveau_period"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_vangogh_solo_painting_sold",
+          "masteryLevel": 0,
+          "poolId": "painting_names",
+          "renderedQuestion": "Van Gogh only ever sold one painting during his lifetime — which one?",
+          "correctAnswer": "The Red Vineyard",
+          "distractors": [
+            {
+              "answer": "Love is in the Bin",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_banksy_shredded"
+            },
+            {
+              "answer": "Her divorce from Diego Rivera",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_frida_kahlo_two_fridas"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_vangogh_solo_painting_sold",
+          "masteryLevel": 2,
+          "poolId": "painting_names",
+          "renderedQuestion": "Van Gogh only ever sold one painting during his lifetime — which one?",
+          "correctAnswer": "The Red Vineyard",
+          "distractors": [
+            {
+              "answer": "Love is in the Bin",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_banksy_shredded"
+            },
+            {
+              "answer": "Her divorce from Diego Rivera",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_frida_kahlo_two_fridas"
+            },
+            {
+              "answer": "Broadway Boogie Woogie",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_mondrian_broadway"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_vangogh_solo_painting_sold",
+          "masteryLevel": 4,
+          "poolId": "painting_names",
+          "renderedQuestion": "Van Gogh only ever sold one painting during his lifetime — which one?",
+          "correctAnswer": "The Red Vineyard",
+          "distractors": [
+            {
+              "answer": "Love is in the Bin",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_banksy_shredded"
+            },
+            {
+              "answer": "Her divorce from Diego Rivera",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_frida_kahlo_two_fridas"
+            },
+            {
+              "answer": "Broadway Boogie Woogie",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_mondrian_broadway"
+            },
+            {
+              "answer": "Arrangement in Grey and Black No. 1",
+              "source": "similar_difficulty",
+              "factId": "paint_real_whistlers_mother_real_title"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mod_guernica_subject",
+          "masteryLevel": 0,
+          "poolId": "painting_names",
+          "renderedQuestion": "Picasso's Guernica (1937) was painted in response to which atrocity?",
+          "correctAnswer": "The Nazi bombing of Guernica",
+          "distractors": [
+            {
+              "answer": "Love is in the Bin",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_banksy_shredded"
+            },
+            {
+              "answer": "Arrangement in Grey and Black No. 1",
+              "source": "similar_difficulty",
+              "factId": "paint_real_whistlers_mother_real_title"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mod_guernica_subject",
+          "masteryLevel": 2,
+          "poolId": "painting_names",
+          "renderedQuestion": "Picasso's Guernica (1937) was painted in response to which atrocity?",
+          "correctAnswer": "The Nazi bombing of Guernica",
+          "distractors": [
+            {
+              "answer": "Love is in the Bin",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_banksy_shredded"
+            },
+            {
+              "answer": "Arrangement in Grey and Black No. 1",
+              "source": "similar_difficulty",
+              "factId": "paint_real_whistlers_mother_real_title"
+            },
+            {
+              "answer": "Ceci n'est pas une pipe",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_treachery_images_phrase"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mod_guernica_subject",
+          "masteryLevel": 4,
+          "poolId": "painting_names",
+          "renderedQuestion": "Picasso's Guernica (1937) was painted in response to which atrocity?",
+          "correctAnswer": "The Nazi bombing of Guernica",
+          "distractors": [
+            {
+              "answer": "Love is in the Bin",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_banksy_shredded"
+            },
+            {
+              "answer": "Arrangement in Grey and Black No. 1",
+              "source": "similar_difficulty",
+              "factId": "paint_real_whistlers_mother_real_title"
+            },
+            {
+              "answer": "Ceci n'est pas une pipe",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_treachery_images_phrase"
+            },
+            {
+              "answer": "Her divorce from Diego Rivera",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_frida_kahlo_two_fridas"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mod_treachery_images_phrase",
+          "masteryLevel": 0,
+          "poolId": "painting_names",
+          "renderedQuestion": "What French phrase is inscribed inscribed below the painted pipe in Magritte's The Treachery of Images — making a philosophical point about representation?",
+          "correctAnswer": "Ceci n'est pas une pipe",
+          "distractors": [
+            {
+              "answer": "Her divorce from Diego Rivera",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_frida_kahlo_two_fridas"
+            },
+            {
+              "answer": "Arrangement in Grey and Black No. 1",
+              "source": "similar_difficulty",
+              "factId": "paint_real_whistlers_mother_real_title"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mod_treachery_images_phrase",
+          "masteryLevel": 2,
+          "poolId": "painting_names",
+          "renderedQuestion": "What French phrase is inscribed inscribed below the painted pipe in Magritte's The Treachery of Images — making a philosophical point about representation?",
+          "correctAnswer": "Ceci n'est pas une pipe",
+          "distractors": [
+            {
+              "answer": "Her divorce from Diego Rivera",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_frida_kahlo_two_fridas"
+            },
+            {
+              "answer": "Arrangement in Grey and Black No. 1",
+              "source": "similar_difficulty",
+              "factId": "paint_real_whistlers_mother_real_title"
+            },
+            {
+              "answer": "The Nazi bombing of Guernica",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_guernica_subject"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mod_treachery_images_phrase",
+          "masteryLevel": 4,
+          "poolId": "painting_names",
+          "renderedQuestion": "What French phrase is inscribed inscribed below the painted pipe in Magritte's The Treachery of Images — making a philosophical point about representation?",
+          "correctAnswer": "Ceci n'est pas une pipe",
+          "distractors": [
+            {
+              "answer": "Her divorce from Diego Rivera",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_frida_kahlo_two_fridas"
+            },
+            {
+              "answer": "Arrangement in Grey and Black No. 1",
+              "source": "similar_difficulty",
+              "factId": "paint_real_whistlers_mother_real_title"
+            },
+            {
+              "answer": "The Nazi bombing of Guernica",
+              "source": "similar_difficulty",
+              "factId": "paint_mod_guernica_subject"
+            },
+            {
+              "answer": "Thirty-six Views of Mount Fuji",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_hokusai_series_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_abstract_expressionism_origin",
+          "masteryLevel": 0,
+          "poolId": "country_names",
+          "renderedQuestion": "Abstract Expressionism was the first major art movement to originate in which country, shifting the global center of modern art after WWII?",
+          "correctAnswer": "United States",
+          "distractors": [
+            {
+              "answer": "Netherlands",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_dutch_golden_age"
+            },
+            {
+              "answer": "Britain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_turner_country"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_abstract_expressionism_origin",
+          "masteryLevel": 2,
+          "poolId": "country_names",
+          "renderedQuestion": "Abstract Expressionism was the first major art movement to originate in which country, shifting the global center of modern art after WWII?",
+          "correctAnswer": "United States",
+          "distractors": [
+            {
+              "answer": "Netherlands",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_dutch_golden_age"
+            },
+            {
+              "answer": "Britain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_turner_country"
+            },
+            {
+              "answer": "Spain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_goya_country"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_abstract_expressionism_origin",
+          "masteryLevel": 4,
+          "poolId": "country_names",
+          "renderedQuestion": "Abstract Expressionism was the first major art movement to originate in which country, shifting the global center of modern art after WWII?",
+          "correctAnswer": "United States",
+          "distractors": [
+            {
+              "answer": "Netherlands",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_dutch_golden_age"
+            },
+            {
+              "answer": "Britain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_turner_country"
+            },
+            {
+              "answer": "Spain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_goya_country"
+            },
+            {
+              "answer": "Germany",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_expressionism_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_expressionism_origin",
+          "masteryLevel": 0,
+          "poolId": "country_names",
+          "renderedQuestion": "Expressionism — presenting the world from a subjective perspective, distorting reality for emotional effect — primarily originated in which country?",
+          "correctAnswer": "Germany",
+          "distractors": [
+            {
+              "answer": "Spain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_goya_country"
+            },
+            {
+              "answer": "Britain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_turner_country"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_expressionism_origin",
+          "masteryLevel": 2,
+          "poolId": "country_names",
+          "renderedQuestion": "Expressionism — presenting the world from a subjective perspective, distorting reality for emotional effect — primarily originated in which country?",
+          "correctAnswer": "Germany",
+          "distractors": [
+            {
+              "answer": "Spain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_goya_country"
+            },
+            {
+              "answer": "Britain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_turner_country"
+            },
+            {
+              "answer": "Netherlands",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_dutch_golden_age"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_expressionism_origin",
+          "masteryLevel": 4,
+          "poolId": "country_names",
+          "renderedQuestion": "Expressionism — presenting the world from a subjective perspective, distorting reality for emotional effect — primarily originated in which country?",
+          "correctAnswer": "Germany",
+          "distractors": [
+            {
+              "answer": "Spain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_goya_country"
+            },
+            {
+              "answer": "Britain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_turner_country"
+            },
+            {
+              "answer": "Netherlands",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_dutch_golden_age"
+            },
+            {
+              "answer": "United States",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_abstract_expressionism_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_dutch_golden_age",
+          "masteryLevel": 0,
+          "poolId": "country_names",
+          "renderedQuestion": "The Dutch Golden Age of painting (17th century) — producing Rembrandt, Vermeer, and Hals — took place in which country?",
+          "correctAnswer": "Netherlands",
+          "distractors": [
+            {
+              "answer": "Spain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_goya_country"
+            },
+            {
+              "answer": "Britain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_turner_country"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_dutch_golden_age",
+          "masteryLevel": 2,
+          "poolId": "country_names",
+          "renderedQuestion": "The Dutch Golden Age of painting (17th century) — producing Rembrandt, Vermeer, and Hals — took place in which country?",
+          "correctAnswer": "Netherlands",
+          "distractors": [
+            {
+              "answer": "Spain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_goya_country"
+            },
+            {
+              "answer": "Britain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_turner_country"
+            },
+            {
+              "answer": "United States",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_abstract_expressionism_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_dutch_golden_age",
+          "masteryLevel": 4,
+          "poolId": "country_names",
+          "renderedQuestion": "The Dutch Golden Age of painting (17th century) — producing Rembrandt, Vermeer, and Hals — took place in which country?",
+          "correctAnswer": "Netherlands",
+          "distractors": [
+            {
+              "answer": "Spain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_goya_country"
+            },
+            {
+              "answer": "Britain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_turner_country"
+            },
+            {
+              "answer": "United States",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_abstract_expressionism_origin"
+            },
+            {
+              "answer": "Germany",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_expressionism_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_rom_goya_country",
+          "masteryLevel": 0,
+          "poolId": "country_names",
+          "renderedQuestion": "Francisco Goya — who painted The Third of May 1808 — was a court painter for which country's royal family?",
+          "correctAnswer": "Spain",
+          "distractors": [
+            {
+              "answer": "United States",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_abstract_expressionism_origin"
+            },
+            {
+              "answer": "Britain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_turner_country"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_rom_goya_country",
+          "masteryLevel": 2,
+          "poolId": "country_names",
+          "renderedQuestion": "Francisco Goya — who painted The Third of May 1808 — was a court painter for which country's royal family?",
+          "correctAnswer": "Spain",
+          "distractors": [
+            {
+              "answer": "United States",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_abstract_expressionism_origin"
+            },
+            {
+              "answer": "Britain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_turner_country"
+            },
+            {
+              "answer": "Netherlands",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_dutch_golden_age"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 5 vs avg distractor 10.3 — ratio 0.48×"
+            }
+          ]
+        },
+        {
+          "factId": "paint_rom_goya_country",
+          "masteryLevel": 4,
+          "poolId": "country_names",
+          "renderedQuestion": "Francisco Goya — who painted The Third of May 1808 — was a court painter for which country's royal family?",
+          "correctAnswer": "Spain",
+          "distractors": [
+            {
+              "answer": "United States",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_abstract_expressionism_origin"
+            },
+            {
+              "answer": "Britain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_turner_country"
+            },
+            {
+              "answer": "Netherlands",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_dutch_golden_age"
+            },
+            {
+              "answer": "Germany",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_expressionism_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_rom_turner_country",
+          "masteryLevel": 0,
+          "poolId": "country_names",
+          "renderedQuestion": "J. M. W. Turner — often cited as a precursor to Impressionism for his atmospheric landscapes — was from which country?",
+          "correctAnswer": "Britain",
+          "distractors": [
+            {
+              "answer": "Spain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_goya_country"
+            },
+            {
+              "answer": "United States",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_abstract_expressionism_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_rom_turner_country",
+          "masteryLevel": 2,
+          "poolId": "country_names",
+          "renderedQuestion": "J. M. W. Turner — often cited as a precursor to Impressionism for his atmospheric landscapes — was from which country?",
+          "correctAnswer": "Britain",
+          "distractors": [
+            {
+              "answer": "Spain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_goya_country"
+            },
+            {
+              "answer": "United States",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_abstract_expressionism_origin"
+            },
+            {
+              "answer": "Netherlands",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_dutch_golden_age"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_rom_turner_country",
+          "masteryLevel": 4,
+          "poolId": "country_names",
+          "renderedQuestion": "J. M. W. Turner — often cited as a precursor to Impressionism for his atmospheric landscapes — was from which country?",
+          "correctAnswer": "Britain",
+          "distractors": [
+            {
+              "answer": "Spain",
+              "source": "similar_difficulty",
+              "factId": "paint_rom_goya_country"
+            },
+            {
+              "answer": "United States",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_abstract_expressionism_origin"
+            },
+            {
+              "answer": "Netherlands",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_dutch_golden_age"
+            },
+            {
+              "answer": "Germany",
+              "source": "similar_difficulty",
+              "factId": "paint_mov_expressionism_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_raphael_age_death",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "At what age did Raphael die — the same age as Van Gogh — leaving an enormous legacy after just 20 productive years?",
+          "correctAnswer": "37",
+          "distractors": [
+            {
+              "answer": "46",
+              "source": "numerical",
+              "factId": "_numerical_46"
+            },
+            {
+              "answer": "26",
+              "source": "numerical",
+              "factId": "_numerical_26"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_raphael_age_death",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "At what age did Raphael die — the same age as Van Gogh — leaving an enormous legacy after just 20 productive years?",
+          "correctAnswer": "37",
+          "distractors": [
+            {
+              "answer": "46",
+              "source": "numerical",
+              "factId": "_numerical_46"
+            },
+            {
+              "answer": "26",
+              "source": "numerical",
+              "factId": "_numerical_26"
+            },
+            {
+              "answer": "25",
+              "source": "numerical",
+              "factId": "_numerical_25"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_ren_raphael_age_death",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "At what age did Raphael die — the same age as Van Gogh — leaving an enormous legacy after just 20 productive years?",
+          "correctAnswer": "37",
+          "distractors": [
+            {
+              "answer": "46",
+              "source": "numerical",
+              "factId": "_numerical_46"
+            },
+            {
+              "answer": "26",
+              "source": "numerical",
+              "factId": "_numerical_26"
+            },
+            {
+              "answer": "25",
+              "source": "numerical",
+              "factId": "_numerical_25"
+            },
+            {
+              "answer": "51",
+              "source": "numerical",
+              "factId": "_numerical_51"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_moma_new_york",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year was the Museum of Modern Art (MoMA) in New York — home to Van Gogh's Starry Night and Dalí's Persistence of Memory — founded?",
+          "correctAnswer": "1929",
+          "distractors": [
+            {
+              "answer": "1952",
+              "source": "numerical",
+              "factId": "_numerical_1952"
+            },
+            {
+              "answer": "1909",
+              "source": "numerical",
+              "factId": "_numerical_1909"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_moma_new_york",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year was the Museum of Modern Art (MoMA) in New York — home to Van Gogh's Starry Night and Dalí's Persistence of Memory — founded?",
+          "correctAnswer": "1929",
+          "distractors": [
+            {
+              "answer": "1952",
+              "source": "numerical",
+              "factId": "_numerical_1952"
+            },
+            {
+              "answer": "1909",
+              "source": "numerical",
+              "factId": "_numerical_1909"
+            },
+            {
+              "answer": "1953",
+              "source": "numerical",
+              "factId": "_numerical_1953"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_mov_moma_new_york",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year was the Museum of Modern Art (MoMA) in New York — home to Van Gogh's Starry Night and Dalí's Persistence of Memory — founded?",
+          "correctAnswer": "1929",
+          "distractors": [
+            {
+              "answer": "1952",
+              "source": "numerical",
+              "factId": "_numerical_1952"
+            },
+            {
+              "answer": "1909",
+              "source": "numerical",
+              "factId": "_numerical_1909"
+            },
+            {
+              "answer": "1953",
+              "source": "numerical",
+              "factId": "_numerical_1953"
+            },
+            {
+              "answer": "1921",
+              "source": "numerical",
+              "factId": "_numerical_1921"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_scream_versions",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Edvard Munch created how many versions of The Scream?",
+          "correctAnswer": "4",
+          "distractors": [
+            {
+              "answer": "14",
+              "source": "numerical",
+              "factId": "_numerical_14"
+            },
+            {
+              "answer": "12",
+              "source": "numerical",
+              "factId": "_numerical_12"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_scream_versions",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Edvard Munch created how many versions of The Scream?",
+          "correctAnswer": "4",
+          "distractors": [
+            {
+              "answer": "14",
+              "source": "numerical",
+              "factId": "_numerical_14"
+            },
+            {
+              "answer": "12",
+              "source": "numerical",
+              "factId": "_numerical_12"
+            },
+            {
+              "answer": "11",
+              "source": "numerical",
+              "factId": "_numerical_11"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "paint_imp_scream_versions",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Edvard Munch created how many versions of The Scream?",
+          "correctAnswer": "4",
+          "distractors": [
+            {
+              "answer": "14",
+              "source": "numerical",
+              "factId": "_numerical_14"
+            },
+            {
+              "answer": "12",
+              "source": "numerical",
+              "factId": "_numerical_12"
+            },
+            {
+              "answer": "11",
+              "source": "numerical",
+              "factId": "_numerical_11"
+            },
+            {
+              "answer": "9",
+              "source": "numerical",
+              "factId": "_numerical_9"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

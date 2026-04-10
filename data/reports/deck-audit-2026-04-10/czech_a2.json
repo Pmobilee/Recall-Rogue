@@ -1,0 +1,470 @@
+{
+  "timestamp": "2026-04-10T13:40:15.509Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 3,
+  "decks": [
+    {
+      "deckId": "czech_a2",
+      "deckName": "Czech A2 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 475,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 3,
+      "issuesByType": {
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "cs-freq-501",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'nástroj' mean?",
+          "correctAnswer": "tool",
+          "distractors": [
+            {
+              "answer": "perfect",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-922"
+            },
+            {
+              "answer": "sunset",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-884"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-501",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'tool' in Czech?",
+          "correctAnswer": "nástroj",
+          "distractors": [
+            {
+              "answer": "dokonalý",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-922"
+            },
+            {
+              "answer": "západ slunce",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-884"
+            },
+            {
+              "answer": "muzeum",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-784"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-501",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'nástroj'?",
+          "correctAnswer": "tool",
+          "distractors": [
+            {
+              "answer": "perfect",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-922"
+            },
+            {
+              "answer": "sunset",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-884"
+            },
+            {
+              "answer": "museum",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-784"
+            },
+            {
+              "answer": "scene",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-657"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-502",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'novinka' mean?",
+          "correctAnswer": "news",
+          "distractors": [
+            {
+              "answer": "scene",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-657"
+            },
+            {
+              "answer": "comment",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-941"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-502",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'news' in Czech?",
+          "correctAnswer": "novinka",
+          "distractors": [
+            {
+              "answer": "scéna",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-657"
+            },
+            {
+              "answer": "komentář",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-941"
+            },
+            {
+              "answer": "francouzský",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-737"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-502",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'novinka'?",
+          "correctAnswer": "news",
+          "distractors": [
+            {
+              "answer": "scene",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-657"
+            },
+            {
+              "answer": "comment",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-941"
+            },
+            {
+              "answer": "French",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-737"
+            },
+            {
+              "answer": "client",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-757"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"French\" has 2 format features different from correct \"news\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-503",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'oblast' mean?",
+          "correctAnswer": "area",
+          "distractors": [
+            {
+              "answer": "street",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-860"
+            },
+            {
+              "answer": "airport",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-950"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-503",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'area' in Czech?",
+          "correctAnswer": "oblast",
+          "distractors": [
+            {
+              "answer": "ulice",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-860"
+            },
+            {
+              "answer": "letiště",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-950"
+            },
+            {
+              "answer": "odkud",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-792"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-503",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'oblast'?",
+          "correctAnswer": "area",
+          "distractors": [
+            {
+              "answer": "street",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-860"
+            },
+            {
+              "answer": "airport",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-950"
+            },
+            {
+              "answer": "from where",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-792"
+            },
+            {
+              "answer": "dress",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-676"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-504",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'obličej' mean?",
+          "correctAnswer": "face",
+          "distractors": [
+            {
+              "answer": "level",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-687"
+            },
+            {
+              "answer": "Slovak",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-839"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Slovak\" has 2 format features different from correct \"face\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-504",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'face' in Czech?",
+          "correctAnswer": "obličej",
+          "distractors": [
+            {
+              "answer": "úroveň",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-687"
+            },
+            {
+              "answer": "slovenský",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-839"
+            },
+            {
+              "answer": "mozek",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-631"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-504",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'obličej'?",
+          "correctAnswer": "face",
+          "distractors": [
+            {
+              "answer": "level",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-687"
+            },
+            {
+              "answer": "Slovak",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-839"
+            },
+            {
+              "answer": "brain",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-631"
+            },
+            {
+              "answer": "quarter",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-915"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Slovak\" has 2 format features different from correct \"face\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-505",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'osud' mean?",
+          "correctAnswer": "fate",
+          "distractors": [
+            {
+              "answer": "ratio",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-645"
+            },
+            {
+              "answer": "garden",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-882"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-505",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'fate' in Czech?",
+          "correctAnswer": "osud",
+          "distractors": [
+            {
+              "answer": "poměr",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-645"
+            },
+            {
+              "answer": "zahrada",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-882"
+            },
+            {
+              "answer": "člen",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-914"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-505",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'osud'?",
+          "correctAnswer": "fate",
+          "distractors": [
+            {
+              "answer": "ratio",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-645"
+            },
+            {
+              "answer": "garden",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-882"
+            },
+            {
+              "answer": "member",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-914"
+            },
+            {
+              "answer": "giant",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-638"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

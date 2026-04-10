@@ -1,0 +1,470 @@
+{
+  "timestamp": "2026-04-10T13:40:16.301Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 3,
+  "decks": [
+    {
+      "deckId": "czech_b2",
+      "deckName": "Czech B2 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 1382,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 3,
+      "issuesByType": {
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "cs-freq-2001",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'špičkový' mean?",
+          "correctAnswer": "top",
+          "distractors": [
+            {
+              "answer": "mana",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2500"
+            },
+            {
+              "answer": "time",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2045"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2001",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'top' in Czech?",
+          "correctAnswer": "špičkový",
+          "distractors": [
+            {
+              "answer": "mana",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2500"
+            },
+            {
+              "answer": "časový",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2045"
+            },
+            {
+              "answer": "polární",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2587"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2001",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'špičkový'?",
+          "correctAnswer": "top",
+          "distractors": [
+            {
+              "answer": "mana",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2500"
+            },
+            {
+              "answer": "time",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2045"
+            },
+            {
+              "answer": "polar",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2587"
+            },
+            {
+              "answer": "track",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2394"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2002",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'taška' mean?",
+          "correctAnswer": "bag",
+          "distractors": [
+            {
+              "answer": "insect",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2837"
+            },
+            {
+              "answer": "chain",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2625"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2002",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'bag' in Czech?",
+          "correctAnswer": "taška",
+          "distractors": [
+            {
+              "answer": "hmyz",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2837"
+            },
+            {
+              "answer": "řetěz",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2625"
+            },
+            {
+              "answer": "devátý",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2386"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2002",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'taška'?",
+          "correctAnswer": "bag",
+          "distractors": [
+            {
+              "answer": "insect",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2837"
+            },
+            {
+              "answer": "chain",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2625"
+            },
+            {
+              "answer": "ninth",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2386"
+            },
+            {
+              "answer": "sharp",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2557"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2003",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'tati' mean?",
+          "correctAnswer": "dad",
+          "distractors": [
+            {
+              "answer": "girl",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2057"
+            },
+            {
+              "answer": "surgeon",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-3298"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2003",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'dad' in Czech?",
+          "correctAnswer": "tati",
+          "distractors": [
+            {
+              "answer": "děvče",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2057"
+            },
+            {
+              "answer": "chirurg",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-3298"
+            },
+            {
+              "answer": "přistávací dráha",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-3029"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2003",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'tati'?",
+          "correctAnswer": "dad",
+          "distractors": [
+            {
+              "answer": "girl",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2057"
+            },
+            {
+              "answer": "surgeon",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-3298"
+            },
+            {
+              "answer": "runway",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-3029"
+            },
+            {
+              "answer": "otter",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2727"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2004",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'taťka' mean?",
+          "correctAnswer": "dad",
+          "distractors": [
+            {
+              "answer": "axle",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2184"
+            },
+            {
+              "answer": "Asia",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2022"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Asia\" has 2 format features different from correct \"dad\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-2004",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'dad' in Czech?",
+          "correctAnswer": "taťka",
+          "distractors": [
+            {
+              "answer": "náprava",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2184"
+            },
+            {
+              "answer": "Asie",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2022"
+            },
+            {
+              "answer": "drát",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2799"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Asie\" has 2 format features different from correct \"taťka\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-2004",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'taťka'?",
+          "correctAnswer": "dad",
+          "distractors": [
+            {
+              "answer": "axle",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2184"
+            },
+            {
+              "answer": "Asia",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2022"
+            },
+            {
+              "answer": "wire",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2799"
+            },
+            {
+              "answer": "massage",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-3376"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Asia\" has 2 format features different from correct \"dad\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-2005",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'teďka' mean?",
+          "correctAnswer": "now",
+          "distractors": [
+            {
+              "answer": "rarely",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2921"
+            },
+            {
+              "answer": "first",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2529"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2005",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'now' in Czech?",
+          "correctAnswer": "teďka",
+          "distractors": [
+            {
+              "answer": "málokdy",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2921"
+            },
+            {
+              "answer": "napřed",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2529"
+            },
+            {
+              "answer": "laskavě",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2900"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2005",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'teďka'?",
+          "correctAnswer": "now",
+          "distractors": [
+            {
+              "answer": "rarely",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2921"
+            },
+            {
+              "answer": "first",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2529"
+            },
+            {
+              "answer": "kindly",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-2900"
+            },
+            {
+              "answer": "usually",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-3425"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

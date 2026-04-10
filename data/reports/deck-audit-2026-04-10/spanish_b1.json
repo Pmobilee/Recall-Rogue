@@ -1,0 +1,1718 @@
+{
+  "timestamp": "2026-04-10T13:40:37.163Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 60,
+  "totalFails": 0,
+  "totalWarns": 1,
+  "decks": [
+    {
+      "deckId": "spanish_b1",
+      "deckName": "Spanish B1 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 596,
+      "totalChecks": 60,
+      "failCount": 0,
+      "warnCount": 1,
+      "issuesByType": {
+        "pos_mismatch": {
+          "fail": 0,
+          "warn": 1
+        }
+      },
+      "factResults": [
+        {
+          "factId": "es-cefr-2420",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"abrigo\" mean?",
+          "correctAnswer": "overcoat",
+          "distractors": [
+            {
+              "answer": "ball",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2483"
+            },
+            {
+              "answer": "decade",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2627"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2420",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'overcoat' in Spanish?",
+          "correctAnswer": "abrigo",
+          "distractors": [
+            {
+              "answer": "comunista",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2546"
+            },
+            {
+              "answer": "relato",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2918"
+            },
+            {
+              "answer": "guardia",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2712"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2420",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'overcoat' in Spanish?",
+          "correctAnswer": "abrigo",
+          "distractors": [
+            {
+              "answer": "comunista",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2546"
+            },
+            {
+              "answer": "relato",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2918"
+            },
+            {
+              "answer": "guardia",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2712"
+            },
+            {
+              "answer": "delantero",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2597"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2421",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"absoluto\" mean?",
+          "correctAnswer": "absolute",
+          "distractors": [
+            {
+              "answer": "delivery",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2923"
+            },
+            {
+              "answer": "ripe",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2782"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2421",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'absolute' in Spanish?",
+          "correctAnswer": "absoluto",
+          "distractors": [
+            {
+              "answer": "ilusión",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2729"
+            },
+            {
+              "answer": "encima",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2641"
+            },
+            {
+              "answer": "intención",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2753"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2421",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'absolute' in Spanish?",
+          "correctAnswer": "absoluto",
+          "distractors": [
+            {
+              "answer": "ilusión",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2729"
+            },
+            {
+              "answer": "encima",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2641"
+            },
+            {
+              "answer": "intención",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2753"
+            },
+            {
+              "answer": "toalla",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2974"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2422",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"absurdo\" mean?",
+          "correctAnswer": "absurd",
+          "distractors": [
+            {
+              "answer": "scene",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2654"
+            },
+            {
+              "answer": "illusion",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2729"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2422",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'absurd' in Spanish?",
+          "correctAnswer": "absurdo",
+          "distractors": [
+            {
+              "answer": "continuación",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2559"
+            },
+            {
+              "answer": "desfile",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2608"
+            },
+            {
+              "answer": "rollo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2938"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2422",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'absurd' in Spanish?",
+          "correctAnswer": "absurdo",
+          "distractors": [
+            {
+              "answer": "continuación",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2559"
+            },
+            {
+              "answer": "desfile",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2608"
+            },
+            {
+              "answer": "rollo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2938"
+            },
+            {
+              "answer": "triunfo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2984"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2423",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"abundancia\" mean?",
+          "correctAnswer": "abundance",
+          "distractors": [
+            {
+              "answer": "criticism",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2572"
+            },
+            {
+              "answer": "trick",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2987"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2423",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'abundance' in Spanish?",
+          "correctAnswer": "abundancia",
+          "distractors": [
+            {
+              "answer": "calavera",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2510"
+            },
+            {
+              "answer": "muelle",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2805"
+            },
+            {
+              "answer": "impresión",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2734"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2423",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'abundance' in Spanish?",
+          "correctAnswer": "abundancia",
+          "distractors": [
+            {
+              "answer": "calavera",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2510"
+            },
+            {
+              "answer": "muelle",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2805"
+            },
+            {
+              "answer": "impresión",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2734"
+            },
+            {
+              "answer": "década",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2627"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2427",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"acordeón\" mean?",
+          "correctAnswer": "accordion",
+          "distractors": [
+            {
+              "answer": "disguise",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2618"
+            },
+            {
+              "answer": "testimony",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2973"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2427",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'accordion' in Spanish?",
+          "correctAnswer": "acordeón",
+          "distractors": [
+            {
+              "answer": "jeta",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2761"
+            },
+            {
+              "answer": "precolombino",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2869"
+            },
+            {
+              "answer": "odio",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2825"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2427",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'accordion' in Spanish?",
+          "correctAnswer": "acordeón",
+          "distractors": [
+            {
+              "answer": "jeta",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2761"
+            },
+            {
+              "answer": "precolombino",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2869"
+            },
+            {
+              "answer": "odio",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2825"
+            },
+            {
+              "answer": "grano",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2709"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2424",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"acampar\" mean?",
+          "correctAnswer": "to camp",
+          "distractors": [
+            {
+              "answer": "to compensate",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2543"
+            },
+            {
+              "answer": "to transmit, broadcast",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2981"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2424",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to camp' in Spanish?",
+          "correctAnswer": "acampar",
+          "distractors": [
+            {
+              "answer": "iniciar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2743"
+            },
+            {
+              "answer": "difundir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2616"
+            },
+            {
+              "answer": "cuelga",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2579"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2424",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to camp' in Spanish?",
+          "correctAnswer": "acampar",
+          "distractors": [
+            {
+              "answer": "iniciar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2743"
+            },
+            {
+              "answer": "difundir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2616"
+            },
+            {
+              "answer": "cuelga",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2579"
+            },
+            {
+              "answer": "surgir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2962"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2425",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"acceder\" mean?",
+          "correctAnswer": "to access, to agree",
+          "distractors": [
+            {
+              "answer": "embroidered",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2493"
+            },
+            {
+              "answer": "to save",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2442"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2425",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to access, to agree' in Spanish?",
+          "correctAnswer": "acceder",
+          "distractors": [
+            {
+              "answer": "reflexionar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2915"
+            },
+            {
+              "answer": "rechazar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2906"
+            },
+            {
+              "answer": "reutilizar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2933"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2425",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to access, to agree' in Spanish?",
+          "correctAnswer": "acceder",
+          "distractors": [
+            {
+              "answer": "reflexionar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2915"
+            },
+            {
+              "answer": "rechazar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2906"
+            },
+            {
+              "answer": "reutilizar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2933"
+            },
+            {
+              "answer": "maquillar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2787"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2426",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"aclarar\" mean?",
+          "correctAnswer": "to clarify",
+          "distractors": [
+            {
+              "answer": "to embark, to board",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2635"
+            },
+            {
+              "answer": "to imply, to involve",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2731"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2426",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to clarify' in Spanish?",
+          "correctAnswer": "aclarar",
+          "distractors": [
+            {
+              "answer": "explorar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2675"
+            },
+            {
+              "answer": "sumar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2961"
+            },
+            {
+              "answer": "sobrevivir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2954"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2426",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to clarify' in Spanish?",
+          "correctAnswer": "aclarar",
+          "distractors": [
+            {
+              "answer": "explorar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2675"
+            },
+            {
+              "answer": "sumar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2961"
+            },
+            {
+              "answer": "sobrevivir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2954"
+            },
+            {
+              "answer": "ubicar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2989"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2429",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"acumular\" mean?",
+          "correctAnswer": "to accumulate",
+          "distractors": [
+            {
+              "answer": "to cause",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2524"
+            },
+            {
+              "answer": "to denounce",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2601"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2429",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to accumulate' in Spanish?",
+          "correctAnswer": "acumular",
+          "distractors": [
+            {
+              "answer": "remontar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2920"
+            },
+            {
+              "answer": "asociar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2472"
+            },
+            {
+              "answer": "embarazar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2634"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2429",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to accumulate' in Spanish?",
+          "correctAnswer": "acumular",
+          "distractors": [
+            {
+              "answer": "remontar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2920"
+            },
+            {
+              "answer": "asociar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2472"
+            },
+            {
+              "answer": "embarazar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2634"
+            },
+            {
+              "answer": "equivocar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2651"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2430",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"acusar\" mean?",
+          "correctAnswer": "to accuse",
+          "distractors": [
+            {
+              "answer": "to yield, surrender",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2921"
+            },
+            {
+              "answer": "to transmit, broadcast",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2981"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2430",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to accuse' in Spanish?",
+          "correctAnswer": "acusar",
+          "distractors": [
+            {
+              "answer": "iluminar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2728"
+            },
+            {
+              "answer": "contribuir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2560"
+            },
+            {
+              "answer": "difundir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2616"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2430",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to accuse' in Spanish?",
+          "correctAnswer": "acusar",
+          "distractors": [
+            {
+              "answer": "iluminar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2728"
+            },
+            {
+              "answer": "contribuir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2560"
+            },
+            {
+              "answer": "difundir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2616"
+            },
+            {
+              "answer": "desconfiar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2606"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2431",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"acuático\" mean?",
+          "correctAnswer": "aquatic",
+          "distractors": [
+            {
+              "answer": "delicious, tasty",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2941"
+            },
+            {
+              "answer": "alternative, option",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2449"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2431",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'aquatic' in Spanish?",
+          "correctAnswer": "acuático",
+          "distractors": [
+            {
+              "answer": "ilegal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2727"
+            },
+            {
+              "answer": "genético",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2701"
+            },
+            {
+              "answer": "químico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2894"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2431",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'aquatic' in Spanish?",
+          "correctAnswer": "acuático",
+          "distractors": [
+            {
+              "answer": "ilegal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2727"
+            },
+            {
+              "answer": "genético",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2701"
+            },
+            {
+              "answer": "químico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2894"
+            },
+            {
+              "answer": "matemático",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2791"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2433",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"adelante\" mean?",
+          "correctAnswer": "forward",
+          "distractors": [
+            {
+              "answer": "spatial",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2659"
+            },
+            {
+              "answer": "illegal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2727"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2433",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'forward' in Spanish?",
+          "correctAnswer": "adelante",
+          "distractors": [
+            {
+              "answer": "ilegal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2727"
+            },
+            {
+              "answer": "primitivo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2877"
+            },
+            {
+              "answer": "climático",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2535"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2433",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'forward' in Spanish?",
+          "correctAnswer": "adelante",
+          "distractors": [
+            {
+              "answer": "ilegal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2727"
+            },
+            {
+              "answer": "primitivo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2877"
+            },
+            {
+              "answer": "climático",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2535"
+            },
+            {
+              "answer": "iniciativa",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2744"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2436",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"adoptivo\" mean?",
+          "correctAnswer": "adoptive, foster",
+          "distractors": [
+            {
+              "answer": "aerial",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2482"
+            },
+            {
+              "answer": "climatic",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2535"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2436",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'adoptive, foster' in Spanish?",
+          "correctAnswer": "adoptivo",
+          "distractors": [
+            {
+              "answer": "poderoso",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2865"
+            },
+            {
+              "answer": "lingüístico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2774"
+            },
+            {
+              "answer": "profesional",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2883"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2436",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'adoptive, foster' in Spanish?",
+          "correctAnswer": "adoptivo",
+          "distractors": [
+            {
+              "answer": "poderoso",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2865"
+            },
+            {
+              "answer": "lingüístico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2774"
+            },
+            {
+              "answer": "profesional",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2883"
+            },
+            {
+              "answer": "simbólico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2952"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2449",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"alternativa\" mean?",
+          "correctAnswer": "alternative, option",
+          "distractors": [
+            {
+              "answer": "attentive",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2476"
+            },
+            {
+              "answer": "decorative",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2592"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2449",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'alternative, option' in Spanish?",
+          "correctAnswer": "alternativa",
+          "distractors": [
+            {
+              "answer": "profesional",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2883"
+            },
+            {
+              "answer": "definitivo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2594"
+            },
+            {
+              "answer": "primitivo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2877"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2449",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'alternative, option' in Spanish?",
+          "correctAnswer": "alternativa",
+          "distractors": [
+            {
+              "answer": "profesional",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2883"
+            },
+            {
+              "answer": "definitivo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2594"
+            },
+            {
+              "answer": "primitivo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2877"
+            },
+            {
+              "answer": "volcánico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3006"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2455",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"anónimo\" mean?",
+          "correctAnswer": "anonymous",
+          "distractors": [
+            {
+              "answer": "volcanic",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3006"
+            },
+            {
+              "answer": "reasonable",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2901"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2455",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'anonymous' in Spanish?",
+          "correctAnswer": "anónimo",
+          "distractors": [
+            {
+              "answer": "mecánico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2793"
+            },
+            {
+              "answer": "luminoso",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2779"
+            },
+            {
+              "answer": "gigantesco",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2702"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2455",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'anonymous' in Spanish?",
+          "correctAnswer": "anónimo",
+          "distractors": [
+            {
+              "answer": "mecánico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2793"
+            },
+            {
+              "answer": "luminoso",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2779"
+            },
+            {
+              "answer": "gigantesco",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2702"
+            },
+            {
+              "answer": "decorativo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2592"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2452",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"anciano\" mean?",
+          "correctAnswer": "elderly",
+          "distractors": [
+            {
+              "answer": "only, just",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2820"
+            },
+            {
+              "answer": "barely, scarcely",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2457"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2452",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'elderly' in Spanish?",
+          "correctAnswer": "anciano",
+          "distractors": [
+            {
+              "answer": "nomás",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2820"
+            },
+            {
+              "answer": "probable",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2879"
+            },
+            {
+              "answer": "jamás",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2760"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2452",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'elderly' in Spanish?",
+          "correctAnswer": "anciano",
+          "distractors": [
+            {
+              "answer": "nomás",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2820"
+            },
+            {
+              "answer": "probable",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2879"
+            },
+            {
+              "answer": "jamás",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2760"
+            },
+            {
+              "answer": "vaya",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2997"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2457",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"apenas\" mean?",
+          "correctAnswer": "barely, scarcely",
+          "distractors": [
+            {
+              "answer": "elderly",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2452"
+            },
+            {
+              "answer": "never",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2760"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2457",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'barely, scarcely' in Spanish?",
+          "correctAnswer": "apenas",
+          "distractors": [
+            {
+              "answer": "anciano",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2452"
+            },
+            {
+              "answer": "jamás",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2760"
+            },
+            {
+              "answer": "vaya",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2997"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2457",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'barely, scarcely' in Spanish?",
+          "correctAnswer": "apenas",
+          "distractors": [
+            {
+              "answer": "anciano",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2452"
+            },
+            {
+              "answer": "jamás",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2760"
+            },
+            {
+              "answer": "vaya",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2997"
+            },
+            {
+              "answer": "nomás",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2820"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2760",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"jamás\" mean?",
+          "correctAnswer": "never",
+          "distractors": [
+            {
+              "answer": "well, wow",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2997"
+            },
+            {
+              "answer": "probable, likely",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2879"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2760",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'never' in Spanish?",
+          "correctAnswer": "jamás",
+          "distractors": [
+            {
+              "answer": "vaya",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2997"
+            },
+            {
+              "answer": "probable",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2879"
+            },
+            {
+              "answer": "apenas",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2457"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2760",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'never' in Spanish?",
+          "correctAnswer": "jamás",
+          "distractors": [
+            {
+              "answer": "vaya",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2997"
+            },
+            {
+              "answer": "probable",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2879"
+            },
+            {
+              "answer": "apenas",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2457"
+            },
+            {
+              "answer": "nomás",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2820"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2820",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"nomás\" mean?",
+          "correctAnswer": "only, just",
+          "distractors": [
+            {
+              "answer": "never",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2760"
+            },
+            {
+              "answer": "elderly",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2452"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2820",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'only, just' in Spanish?",
+          "correctAnswer": "nomás",
+          "distractors": [
+            {
+              "answer": "jamás",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2760"
+            },
+            {
+              "answer": "anciano",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2452"
+            },
+            {
+              "answer": "vaya",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2997"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2820",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'only, just' in Spanish?",
+          "correctAnswer": "nomás",
+          "distractors": [
+            {
+              "answer": "jamás",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2760"
+            },
+            {
+              "answer": "anciano",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2452"
+            },
+            {
+              "answer": "vaya",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2997"
+            },
+            {
+              "answer": "apenas",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2457"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2879",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"probable\" mean?",
+          "correctAnswer": "probable, likely",
+          "distractors": [
+            {
+              "answer": "elderly",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2452"
+            },
+            {
+              "answer": "never",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2760"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2879",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'probable, likely' in Spanish?",
+          "correctAnswer": "probable",
+          "distractors": [
+            {
+              "answer": "jamás",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2760"
+            },
+            {
+              "answer": "anciano",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2452"
+            },
+            {
+              "answer": "apenas",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2457"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-2879",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'probable, likely' in Spanish?",
+          "correctAnswer": "probable",
+          "distractors": [
+            {
+              "answer": "jamás",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2760"
+            },
+            {
+              "answer": "anciano",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2452"
+            },
+            {
+              "answer": "apenas",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2457"
+            },
+            {
+              "answer": "lápiz",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-2781"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"lápiz\" POS \"noun\" != correct \"adverb\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

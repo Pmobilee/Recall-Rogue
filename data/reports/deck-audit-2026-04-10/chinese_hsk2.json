@@ -1,0 +1,447 @@
+{
+  "timestamp": "2026-04-10T13:40:12.253Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 0,
+  "decks": [
+    {
+      "deckId": "chinese_hsk2",
+      "deckName": "Chinese HSK 2 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 705,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 0,
+      "issuesByType": {},
+      "factResults": [
+        {
+          "factId": "zh-hsk-475",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '啊' mean?",
+          "correctAnswer": "interjection",
+          "distractors": [
+            {
+              "answer": "flavor; taste",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-796"
+            },
+            {
+              "answer": "nature",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1092"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-475",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '啊'?",
+          "correctAnswer": "interjection",
+          "distractors": [
+            {
+              "answer": "wèi dao",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-796"
+            },
+            {
+              "answer": "dà zì rán",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1092"
+            },
+            {
+              "answer": "bù xíng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-768"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-475",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '啊'?",
+          "correctAnswer": "interjection",
+          "distractors": [
+            {
+              "answer": "wèi dao",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-796"
+            },
+            {
+              "answer": "dà zì rán",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1092"
+            },
+            {
+              "answer": "bù xíng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-768"
+            },
+            {
+              "answer": "lǎo péng you",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1084"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-476",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '让' mean?",
+          "correctAnswer": "to yield",
+          "distractors": [
+            {
+              "answer": "to discuss",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-695"
+            },
+            {
+              "answer": "to be careful",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-762"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-476",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '让'?",
+          "correctAnswer": "to yield",
+          "distractors": [
+            {
+              "answer": "tǎo lùn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-695"
+            },
+            {
+              "answer": "xiǎo xīn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-762"
+            },
+            {
+              "answer": "qí chē",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1077"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-476",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '让'?",
+          "correctAnswer": "to yield",
+          "distractors": [
+            {
+              "answer": "tǎo lùn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-695"
+            },
+            {
+              "answer": "xiǎo xīn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-762"
+            },
+            {
+              "answer": "qí chē",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1077"
+            },
+            {
+              "answer": "xiāng xìn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-555"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-477",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '但' mean?",
+          "correctAnswer": "but",
+          "distractors": [
+            {
+              "answer": "or, maybe",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-530"
+            },
+            {
+              "answer": "moreover",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-517"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-477",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '但'?",
+          "correctAnswer": "but",
+          "distractors": [
+            {
+              "answer": "huò",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-530"
+            },
+            {
+              "answer": "ér qiě",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-517"
+            },
+            {
+              "answer": "hǎo xiàng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-633"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-477",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '但'?",
+          "correctAnswer": "but",
+          "distractors": [
+            {
+              "answer": "huò",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-530"
+            },
+            {
+              "answer": "ér qiě",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-517"
+            },
+            {
+              "answer": "hǎo xiàng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-633"
+            },
+            {
+              "answer": "suī rán",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-557"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-478",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '自己' mean?",
+          "correctAnswer": "oneself",
+          "distractors": [
+            {
+              "answer": "everyone",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-506"
+            },
+            {
+              "answer": "someone",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-562"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-478",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '自己'?",
+          "correctAnswer": "oneself",
+          "distractors": [
+            {
+              "answer": "dà jiā",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-506"
+            },
+            {
+              "answer": "yǒu rén",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-562"
+            },
+            {
+              "answer": "tā",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-489"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-478",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '自己'?",
+          "correctAnswer": "oneself",
+          "distractors": [
+            {
+              "answer": "dà jiā",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-506"
+            },
+            {
+              "answer": "yǒu rén",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-562"
+            },
+            {
+              "answer": "tā",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-489"
+            },
+            {
+              "answer": "tā men",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-653"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-479",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '得' mean?",
+          "correctAnswer": "to obtain",
+          "distractors": [
+            {
+              "answer": "to repeat",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-890"
+            },
+            {
+              "answer": "to feel relieved",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-878"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-479",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '得'?",
+          "correctAnswer": "to obtain",
+          "distractors": [
+            {
+              "answer": "chóng fù",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-890"
+            },
+            {
+              "answer": "fàng xīn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-878"
+            },
+            {
+              "answer": "jiào zuò",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1160"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-479",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '得'?",
+          "correctAnswer": "to obtain",
+          "distractors": [
+            {
+              "answer": "chóng fù",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-890"
+            },
+            {
+              "answer": "fàng xīn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-878"
+            },
+            {
+              "answer": "jiào zuò",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1160"
+            },
+            {
+              "answer": "huí guó",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1101"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

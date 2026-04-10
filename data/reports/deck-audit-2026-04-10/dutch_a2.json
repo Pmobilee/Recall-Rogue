@@ -1,0 +1,458 @@
+{
+  "timestamp": "2026-04-10T13:40:17.481Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 1,
+  "decks": [
+    {
+      "deckId": "dutch_a2",
+      "deckName": "Dutch A2 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 785,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 1,
+      "issuesByType": {
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 1
+        }
+      },
+      "factResults": [
+        {
+          "factId": "nl-cefr-162",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aankomen' mean?",
+          "correctAnswer": "to arrive",
+          "distractors": [
+            {
+              "answer": "to grin",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-402"
+            },
+            {
+              "answer": "to celebrate",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-853"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-162",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aankomen' mean?",
+          "correctAnswer": "to arrive",
+          "distractors": [
+            {
+              "answer": "to grin",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-402"
+            },
+            {
+              "answer": "to celebrate",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-853"
+            },
+            {
+              "answer": "to mean, to signify",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-220"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-162",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aankomen' mean?",
+          "correctAnswer": "to arrive",
+          "distractors": [
+            {
+              "answer": "to grin",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-402"
+            },
+            {
+              "answer": "to celebrate",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-853"
+            },
+            {
+              "answer": "to mean, to signify",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-220"
+            },
+            {
+              "answer": "to enjoy",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-366"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-163",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aanlopen' mean?",
+          "correctAnswer": "to drop by, to visit",
+          "distractors": [
+            {
+              "answer": "to hope",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-445"
+            },
+            {
+              "answer": "to carry",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-303"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-163",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aanlopen' mean?",
+          "correctAnswer": "to drop by, to visit",
+          "distractors": [
+            {
+              "answer": "to hope",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-445"
+            },
+            {
+              "answer": "to carry",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-303"
+            },
+            {
+              "answer": "to recognize",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-434"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-163",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aanlopen' mean?",
+          "correctAnswer": "to drop by, to visit",
+          "distractors": [
+            {
+              "answer": "to hope",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-445"
+            },
+            {
+              "answer": "to carry",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-303"
+            },
+            {
+              "answer": "to recognize",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-434"
+            },
+            {
+              "answer": "to climb",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-503"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-164",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aantal' mean?",
+          "correctAnswer": "number, amount",
+          "distractors": [
+            {
+              "answer": "potato",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-166"
+            },
+            {
+              "answer": "wood",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-446"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-164",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aantal' mean?",
+          "correctAnswer": "number, amount",
+          "distractors": [
+            {
+              "answer": "potato",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-166"
+            },
+            {
+              "answer": "wood",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-446"
+            },
+            {
+              "answer": "university",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-811"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-164",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aantal' mean?",
+          "correctAnswer": "number, amount",
+          "distractors": [
+            {
+              "answer": "potato",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-166"
+            },
+            {
+              "answer": "wood",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-446"
+            },
+            {
+              "answer": "university",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-811"
+            },
+            {
+              "answer": "merchant",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-517"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-165",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aanvallen' mean?",
+          "correctAnswer": "to attack",
+          "distractors": [
+            {
+              "answer": "to calculate",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-688"
+            },
+            {
+              "answer": "to sigh",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-939"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-165",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aanvallen' mean?",
+          "correctAnswer": "to attack",
+          "distractors": [
+            {
+              "answer": "to calculate",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-688"
+            },
+            {
+              "answer": "to sigh",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-939"
+            },
+            {
+              "answer": "to cough",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-437"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-165",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aanvallen' mean?",
+          "correctAnswer": "to attack",
+          "distractors": [
+            {
+              "answer": "to calculate",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-688"
+            },
+            {
+              "answer": "to sigh",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-939"
+            },
+            {
+              "answer": "to cough",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-437"
+            },
+            {
+              "answer": "to die",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-298"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-166",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aardappel' mean?",
+          "correctAnswer": "potato",
+          "distractors": [
+            {
+              "answer": "university",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-811"
+            },
+            {
+              "answer": "strange, foreign",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-880"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-166",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aardappel' mean?",
+          "correctAnswer": "potato",
+          "distractors": [
+            {
+              "answer": "university",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-811"
+            },
+            {
+              "answer": "strange, foreign",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-880"
+            },
+            {
+              "answer": "thick",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-290"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-166",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'aardappel' mean?",
+          "correctAnswer": "potato",
+          "distractors": [
+            {
+              "answer": "university",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-811"
+            },
+            {
+              "answer": "strange, foreign",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-880"
+            },
+            {
+              "answer": "thick",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-290"
+            },
+            {
+              "answer": "Christmas",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-493"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Christmas\" has 2 format features different from correct \"potato\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

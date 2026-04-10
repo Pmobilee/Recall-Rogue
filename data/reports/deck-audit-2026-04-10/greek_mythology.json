@@ -1,0 +1,5182 @@
+{
+  "timestamp": "2026-04-10T13:40:25.426Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 177,
+  "totalFails": 0,
+  "totalWarns": 32,
+  "decks": [
+    {
+      "deckId": "greek_mythology",
+      "deckName": "Greek Mythology",
+      "deckClass": "knowledge",
+      "totalFacts": 272,
+      "totalChecks": 177,
+      "failCount": 0,
+      "warnCount": 32,
+      "issuesByType": {
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 25
+        },
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 6
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 1
+        }
+      },
+      "factResults": [
+        {
+          "factId": "myth_zeus_king_gods",
+          "masteryLevel": 0,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which Greek god was king of the Olympians and ruler of the sky?",
+          "correctAnswer": "Zeus",
+          "distractors": [
+            {
+              "answer": "Circe",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_circe_pigs"
+            },
+            {
+              "answer": "Hera",
+              "source": "similar_difficulty",
+              "factId": "myth_hera_queen_gods"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_king_gods",
+          "masteryLevel": 2,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which Greek god was king of the Olympians and ruler of the sky?",
+          "correctAnswer": "Zeus",
+          "distractors": [
+            {
+              "answer": "Circe",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_circe_pigs"
+            },
+            {
+              "answer": "Hera",
+              "source": "similar_difficulty",
+              "factId": "myth_hera_queen_gods"
+            },
+            {
+              "answer": "Athena",
+              "source": "similar_difficulty",
+              "factId": "myth_athena_wisdom_war"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_king_gods",
+          "masteryLevel": 4,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which Greek god was king of the Olympians and ruler of the sky?",
+          "correctAnswer": "Zeus",
+          "distractors": [
+            {
+              "answer": "Circe",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_circe_pigs"
+            },
+            {
+              "answer": "Hera",
+              "source": "similar_difficulty",
+              "factId": "myth_hera_queen_gods"
+            },
+            {
+              "answer": "Athena",
+              "source": "similar_difficulty",
+              "factId": "myth_athena_wisdom_war"
+            },
+            {
+              "answer": "Medea",
+              "source": "similar_difficulty",
+              "factId": "myth_jason_medea_tasks"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_overthrew_kronos",
+          "masteryLevel": 0,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Zeus led the Olympians in overthrowing which Titan ruler in the ten-year Titanomachy?",
+          "correctAnswer": "Kronos",
+          "distractors": [
+            {
+              "answer": "Ares",
+              "source": "similar_difficulty",
+              "factId": "myth_ares_aphrodite_affair"
+            },
+            {
+              "answer": "Athena",
+              "source": "similar_difficulty",
+              "factId": "myth_athena_born_zeus_head"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_overthrew_kronos",
+          "masteryLevel": 2,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Zeus led the Olympians in overthrowing which Titan ruler in the ten-year Titanomachy?",
+          "correctAnswer": "Kronos",
+          "distractors": [
+            {
+              "answer": "Ares",
+              "source": "similar_difficulty",
+              "factId": "myth_ares_aphrodite_affair"
+            },
+            {
+              "answer": "Athena",
+              "source": "similar_difficulty",
+              "factId": "myth_athena_born_zeus_head"
+            },
+            {
+              "answer": "Leto",
+              "source": "similar_difficulty",
+              "factId": "myth_artemis_twin_apollo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_overthrew_kronos",
+          "masteryLevel": 4,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Zeus led the Olympians in overthrowing which Titan ruler in the ten-year Titanomachy?",
+          "correctAnswer": "Kronos",
+          "distractors": [
+            {
+              "answer": "Ares",
+              "source": "similar_difficulty",
+              "factId": "myth_ares_aphrodite_affair"
+            },
+            {
+              "answer": "Athena",
+              "source": "similar_difficulty",
+              "factId": "myth_athena_born_zeus_head"
+            },
+            {
+              "answer": "Leto",
+              "source": "similar_difficulty",
+              "factId": "myth_artemis_twin_apollo"
+            },
+            {
+              "answer": "Pan",
+              "source": "similar_difficulty",
+              "factId": "myth_pan_panic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_queen_gods",
+          "masteryLevel": 0,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which goddess was both the queen of the Olympians and the goddess of marriage?",
+          "correctAnswer": "Hera",
+          "distractors": [
+            {
+              "answer": "Zeus",
+              "source": "similar_difficulty",
+              "factId": "myth_titanomachy_war"
+            },
+            {
+              "answer": "Apollo",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_roman_same_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_queen_gods",
+          "masteryLevel": 2,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which goddess was both the queen of the Olympians and the goddess of marriage?",
+          "correctAnswer": "Hera",
+          "distractors": [
+            {
+              "answer": "Zeus",
+              "source": "similar_difficulty",
+              "factId": "myth_titanomachy_war"
+            },
+            {
+              "answer": "Apollo",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_roman_same_name"
+            },
+            {
+              "answer": "Hades",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_ruler_underworld"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_queen_gods",
+          "masteryLevel": 4,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which goddess was both the queen of the Olympians and the goddess of marriage?",
+          "correctAnswer": "Hera",
+          "distractors": [
+            {
+              "answer": "Zeus",
+              "source": "similar_difficulty",
+              "factId": "myth_titanomachy_war"
+            },
+            {
+              "answer": "Apollo",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_roman_same_name"
+            },
+            {
+              "answer": "Hades",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_ruler_underworld"
+            },
+            {
+              "answer": "Athena",
+              "source": "similar_difficulty",
+              "factId": "myth_poseidon_athens_rivalry"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_punished_lovers",
+          "masteryLevel": 0,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which goddess transformed Io into a cow and sent a gadfly to torment her — as punishment for being loved by Zeus?",
+          "correctAnswer": "Hera",
+          "distractors": [
+            {
+              "answer": "Athena",
+              "source": "similar_difficulty",
+              "factId": "myth_athena_born_zeus_head"
+            },
+            {
+              "answer": "Iris",
+              "source": "similar_difficulty",
+              "factId": "myth_iris_rainbow"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_punished_lovers",
+          "masteryLevel": 2,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which goddess transformed Io into a cow and sent a gadfly to torment her — as punishment for being loved by Zeus?",
+          "correctAnswer": "Hera",
+          "distractors": [
+            {
+              "answer": "Athena",
+              "source": "similar_difficulty",
+              "factId": "myth_athena_born_zeus_head"
+            },
+            {
+              "answer": "Iris",
+              "source": "similar_difficulty",
+              "factId": "myth_iris_rainbow"
+            },
+            {
+              "answer": "Apollo",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_killed_python"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_punished_lovers",
+          "masteryLevel": 4,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which goddess transformed Io into a cow and sent a gadfly to torment her — as punishment for being loved by Zeus?",
+          "correctAnswer": "Hera",
+          "distractors": [
+            {
+              "answer": "Athena",
+              "source": "similar_difficulty",
+              "factId": "myth_athena_born_zeus_head"
+            },
+            {
+              "answer": "Iris",
+              "source": "similar_difficulty",
+              "factId": "myth_iris_rainbow"
+            },
+            {
+              "answer": "Apollo",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_killed_python"
+            },
+            {
+              "answer": "Hypnos",
+              "source": "similar_difficulty",
+              "factId": "myth_hypnos_thanatos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_heracles_torment",
+          "masteryLevel": 0,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which goddess drove Heracles mad, causing him to kill his own family — leading to the famous Twelve Labors as penance?",
+          "correctAnswer": "Hera",
+          "distractors": [
+            {
+              "answer": "Athena",
+              "source": "similar_difficulty",
+              "factId": "myth_medusa_curse"
+            },
+            {
+              "answer": "Apollo",
+              "source": "similar_difficulty",
+              "factId": "myth_cassandra_prophecy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_heracles_torment",
+          "masteryLevel": 2,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which goddess drove Heracles mad, causing him to kill his own family — leading to the famous Twelve Labors as penance?",
+          "correctAnswer": "Hera",
+          "distractors": [
+            {
+              "answer": "Athena",
+              "source": "similar_difficulty",
+              "factId": "myth_medusa_curse"
+            },
+            {
+              "answer": "Apollo",
+              "source": "similar_difficulty",
+              "factId": "myth_cassandra_prophecy"
+            },
+            {
+              "answer": "Semele",
+              "source": "similar_difficulty",
+              "factId": "myth_dionysus_zeus_thigh"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_heracles_torment",
+          "masteryLevel": 4,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which goddess drove Heracles mad, causing him to kill his own family — leading to the famous Twelve Labors as penance?",
+          "correctAnswer": "Hera",
+          "distractors": [
+            {
+              "answer": "Athena",
+              "source": "similar_difficulty",
+              "factId": "myth_medusa_curse"
+            },
+            {
+              "answer": "Apollo",
+              "source": "similar_difficulty",
+              "factId": "myth_cassandra_prophecy"
+            },
+            {
+              "answer": "Semele",
+              "source": "similar_difficulty",
+              "factId": "myth_dionysus_zeus_thigh"
+            },
+            {
+              "answer": "Zeus",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_apotheosis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_lightning_bolt",
+          "masteryLevel": 0,
+          "poolId": "object_names_long",
+          "renderedQuestion": "What was the signature weapon of Zeus, forged for him by the Cyclopes?",
+          "correctAnswer": "Lightning bolt",
+          "distractors": [
+            {
+              "answer": "Golden Fleece",
+              "source": "similar_difficulty",
+              "factId": "myth_object_golden_fleece"
+            },
+            {
+              "answer": "Peacock",
+              "source": "similar_difficulty",
+              "factId": "myth_hera_peacock_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_lightning_bolt",
+          "masteryLevel": 2,
+          "poolId": "object_names_long",
+          "renderedQuestion": "What was the signature weapon of Zeus, forged for him by the Cyclopes?",
+          "correctAnswer": "Lightning bolt",
+          "distractors": [
+            {
+              "answer": "Golden Fleece",
+              "source": "similar_difficulty",
+              "factId": "myth_object_golden_fleece"
+            },
+            {
+              "answer": "Peacock",
+              "source": "similar_difficulty",
+              "factId": "myth_hera_peacock_symbol"
+            },
+            {
+              "answer": "Ambrosia",
+              "source": "similar_difficulty",
+              "factId": "myth_object_ambrosia"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_lightning_bolt",
+          "masteryLevel": 4,
+          "poolId": "object_names_long",
+          "renderedQuestion": "What was the signature weapon of Zeus, forged for him by the Cyclopes?",
+          "correctAnswer": "Lightning bolt",
+          "distractors": [
+            {
+              "answer": "Golden Fleece",
+              "source": "similar_difficulty",
+              "factId": "myth_object_golden_fleece"
+            },
+            {
+              "answer": "Peacock",
+              "source": "similar_difficulty",
+              "factId": "myth_hera_peacock_symbol"
+            },
+            {
+              "answer": "Ambrosia",
+              "source": "similar_difficulty",
+              "factId": "myth_object_ambrosia"
+            },
+            {
+              "answer": "Trident",
+              "source": "similar_difficulty",
+              "factId": "myth_poseidon_trident"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_peacock_symbol",
+          "masteryLevel": 0,
+          "poolId": "object_names_long",
+          "renderedQuestion": "Which bird was the sacred symbol of Hera, its tail feathers said to contain the eyes of the slain giant Argus?",
+          "correctAnswer": "Peacock",
+          "distractors": [
+            {
+              "answer": "Strangled",
+              "source": "similar_difficulty",
+              "factId": "myth_nemean_lion_heracles"
+            },
+            {
+              "answer": "golden apples",
+              "source": "similar_difficulty",
+              "factId": "myth_atalanta_golden_apples"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"golden apples\" has 3 format features different from correct \"Peacock\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_hera_peacock_symbol",
+          "masteryLevel": 2,
+          "poolId": "object_names_long",
+          "renderedQuestion": "Which bird was the sacred symbol of Hera, its tail feathers said to contain the eyes of the slain giant Argus?",
+          "correctAnswer": "Peacock",
+          "distractors": [
+            {
+              "answer": "Strangled",
+              "source": "similar_difficulty",
+              "factId": "myth_nemean_lion_heracles"
+            },
+            {
+              "answer": "golden apples",
+              "source": "similar_difficulty",
+              "factId": "myth_atalanta_golden_apples"
+            },
+            {
+              "answer": "Actaeon",
+              "source": "similar_difficulty",
+              "factId": "myth_artemis_actaeon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"golden apples\" has 3 format features different from correct \"Peacock\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_hera_peacock_symbol",
+          "masteryLevel": 4,
+          "poolId": "object_names_long",
+          "renderedQuestion": "Which bird was the sacred symbol of Hera, its tail feathers said to contain the eyes of the slain giant Argus?",
+          "correctAnswer": "Peacock",
+          "distractors": [
+            {
+              "answer": "Strangled",
+              "source": "similar_difficulty",
+              "factId": "myth_nemean_lion_heracles"
+            },
+            {
+              "answer": "golden apples",
+              "source": "similar_difficulty",
+              "factId": "myth_atalanta_golden_apples"
+            },
+            {
+              "answer": "Actaeon",
+              "source": "similar_difficulty",
+              "factId": "myth_artemis_actaeon"
+            },
+            {
+              "answer": "Cornucopia",
+              "source": "similar_difficulty",
+              "factId": "myth_object_cornucopia"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"golden apples\" has 3 format features different from correct \"Peacock\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_poseidon_trident",
+          "masteryLevel": 0,
+          "poolId": "object_names_long",
+          "renderedQuestion": "What three-pronged weapon did Poseidon carry, forged by the Cyclopes, and used to shake the earth and control the seas?",
+          "correctAnswer": "Trident",
+          "distractors": [
+            {
+              "answer": "Golden Fleece",
+              "source": "similar_difficulty",
+              "factId": "myth_object_golden_fleece"
+            },
+            {
+              "answer": "Lightning bolt",
+              "source": "similar_difficulty",
+              "factId": "myth_zeus_lightning_bolt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_poseidon_trident",
+          "masteryLevel": 2,
+          "poolId": "object_names_long",
+          "renderedQuestion": "What three-pronged weapon did Poseidon carry, forged by the Cyclopes, and used to shake the earth and control the seas?",
+          "correctAnswer": "Trident",
+          "distractors": [
+            {
+              "answer": "Golden Fleece",
+              "source": "similar_difficulty",
+              "factId": "myth_object_golden_fleece"
+            },
+            {
+              "answer": "Lightning bolt",
+              "source": "similar_difficulty",
+              "factId": "myth_zeus_lightning_bolt"
+            },
+            {
+              "answer": "Peacock",
+              "source": "similar_difficulty",
+              "factId": "myth_hera_peacock_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_poseidon_trident",
+          "masteryLevel": 4,
+          "poolId": "object_names_long",
+          "renderedQuestion": "What three-pronged weapon did Poseidon carry, forged by the Cyclopes, and used to shake the earth and control the seas?",
+          "correctAnswer": "Trident",
+          "distractors": [
+            {
+              "answer": "Golden Fleece",
+              "source": "similar_difficulty",
+              "factId": "myth_object_golden_fleece"
+            },
+            {
+              "answer": "Lightning bolt",
+              "source": "similar_difficulty",
+              "factId": "myth_zeus_lightning_bolt"
+            },
+            {
+              "answer": "Peacock",
+              "source": "similar_difficulty",
+              "factId": "myth_hera_peacock_symbol"
+            },
+            {
+              "answer": "Ambrosia",
+              "source": "similar_difficulty",
+              "factId": "myth_object_ambrosia"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_artemis_actaeon",
+          "masteryLevel": 0,
+          "poolId": "object_names_long",
+          "renderedQuestion": "Which hunter did Artemis transform into a stag after he accidentally saw her bathing?",
+          "correctAnswer": "Actaeon",
+          "distractors": [
+            {
+              "answer": "Strangled",
+              "source": "similar_difficulty",
+              "factId": "myth_nemean_lion_heracles"
+            },
+            {
+              "answer": "Golden Fleece",
+              "source": "similar_difficulty",
+              "factId": "myth_object_golden_fleece"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_artemis_actaeon",
+          "masteryLevel": 2,
+          "poolId": "object_names_long",
+          "renderedQuestion": "Which hunter did Artemis transform into a stag after he accidentally saw her bathing?",
+          "correctAnswer": "Actaeon",
+          "distractors": [
+            {
+              "answer": "Strangled",
+              "source": "similar_difficulty",
+              "factId": "myth_nemean_lion_heracles"
+            },
+            {
+              "answer": "Golden Fleece",
+              "source": "similar_difficulty",
+              "factId": "myth_object_golden_fleece"
+            },
+            {
+              "answer": "Peacock",
+              "source": "similar_difficulty",
+              "factId": "myth_hera_peacock_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_artemis_actaeon",
+          "masteryLevel": 4,
+          "poolId": "object_names_long",
+          "renderedQuestion": "Which hunter did Artemis transform into a stag after he accidentally saw her bathing?",
+          "correctAnswer": "Actaeon",
+          "distractors": [
+            {
+              "answer": "Strangled",
+              "source": "similar_difficulty",
+              "factId": "myth_nemean_lion_heracles"
+            },
+            {
+              "answer": "Golden Fleece",
+              "source": "similar_difficulty",
+              "factId": "myth_object_golden_fleece"
+            },
+            {
+              "answer": "Peacock",
+              "source": "similar_difficulty",
+              "factId": "myth_hera_peacock_symbol"
+            },
+            {
+              "answer": "dragon's teeth",
+              "source": "similar_difficulty",
+              "factId": "myth_jason_spartoi"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"dragon's teeth\" has 3 format features different from correct \"Actaeon\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_dionysus_maenads",
+          "masteryLevel": 0,
+          "poolId": "object_names_long",
+          "renderedQuestion": "What were the frenzied female followers of Dionysus called, known for ecstatic worship and ferocious strength?",
+          "correctAnswer": "Maenads",
+          "distractors": [
+            {
+              "answer": "Actaeon",
+              "source": "similar_difficulty",
+              "factId": "myth_artemis_actaeon"
+            },
+            {
+              "answer": "Bronze castanets",
+              "source": "similar_difficulty",
+              "factId": "myth_stymphalian_birds"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_dionysus_maenads",
+          "masteryLevel": 2,
+          "poolId": "object_names_long",
+          "renderedQuestion": "What were the frenzied female followers of Dionysus called, known for ecstatic worship and ferocious strength?",
+          "correctAnswer": "Maenads",
+          "distractors": [
+            {
+              "answer": "Actaeon",
+              "source": "similar_difficulty",
+              "factId": "myth_artemis_actaeon"
+            },
+            {
+              "answer": "Bronze castanets",
+              "source": "similar_difficulty",
+              "factId": "myth_stymphalian_birds"
+            },
+            {
+              "answer": "olive tree",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_olive_tree_bed"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"olive tree\" has 3 format features different from correct \"Maenads\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_dionysus_maenads",
+          "masteryLevel": 4,
+          "poolId": "object_names_long",
+          "renderedQuestion": "What were the frenzied female followers of Dionysus called, known for ecstatic worship and ferocious strength?",
+          "correctAnswer": "Maenads",
+          "distractors": [
+            {
+              "answer": "Actaeon",
+              "source": "similar_difficulty",
+              "factId": "myth_artemis_actaeon"
+            },
+            {
+              "answer": "Bronze castanets",
+              "source": "similar_difficulty",
+              "factId": "myth_stymphalian_birds"
+            },
+            {
+              "answer": "olive tree",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_olive_tree_bed"
+            },
+            {
+              "answer": "dragon's teeth",
+              "source": "similar_difficulty",
+              "factId": "myth_jason_spartoi"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"olive tree\" has 3 format features different from correct \"Maenads\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_zeus_cosmos_division",
+          "masteryLevel": 0,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "After defeating the Titans, Zeus divided the cosmos by lot with his brothers. Who received the seas?",
+          "correctAnswer": "Poseidon",
+          "distractors": [
+            {
+              "answer": "Persephone",
+              "source": "similar_difficulty",
+              "factId": "myth_persephone_kidnap_pomegranate"
+            },
+            {
+              "answer": "Aphrodite",
+              "source": "similar_difficulty",
+              "factId": "myth_psyche_beauty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_cosmos_division",
+          "masteryLevel": 2,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "After defeating the Titans, Zeus divided the cosmos by lot with his brothers. Who received the seas?",
+          "correctAnswer": "Poseidon",
+          "distractors": [
+            {
+              "answer": "Persephone",
+              "source": "similar_difficulty",
+              "factId": "myth_persephone_kidnap_pomegranate"
+            },
+            {
+              "answer": "Aphrodite",
+              "source": "similar_difficulty",
+              "factId": "myth_psyche_beauty"
+            },
+            {
+              "answer": "Calliope",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_calliope"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_cosmos_division",
+          "masteryLevel": 4,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "After defeating the Titans, Zeus divided the cosmos by lot with his brothers. Who received the seas?",
+          "correctAnswer": "Poseidon",
+          "distractors": [
+            {
+              "answer": "Persephone",
+              "source": "similar_difficulty",
+              "factId": "myth_persephone_kidnap_pomegranate"
+            },
+            {
+              "answer": "Aphrodite",
+              "source": "similar_difficulty",
+              "factId": "myth_psyche_beauty"
+            },
+            {
+              "answer": "Calliope",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_calliope"
+            },
+            {
+              "answer": "Atropos",
+              "source": "similar_difficulty",
+              "factId": "myth_fates_atropos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_poseidon_god_seas",
+          "masteryLevel": 0,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "Which Olympian god ruled the seas and caused earthquakes, earning him the title 'Earth-Shaker'?",
+          "correctAnswer": "Poseidon",
+          "distractors": [
+            {
+              "answer": "Cerberus",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_cerberus"
+            },
+            {
+              "answer": "Demeter",
+              "source": "similar_difficulty",
+              "factId": "myth_demeter_harvest_seasons"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_poseidon_god_seas",
+          "masteryLevel": 2,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "Which Olympian god ruled the seas and caused earthquakes, earning him the title 'Earth-Shaker'?",
+          "correctAnswer": "Poseidon",
+          "distractors": [
+            {
+              "answer": "Cerberus",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_cerberus"
+            },
+            {
+              "answer": "Demeter",
+              "source": "similar_difficulty",
+              "factId": "myth_demeter_harvest_seasons"
+            },
+            {
+              "answer": "Persephone",
+              "source": "similar_difficulty",
+              "factId": "myth_persephone_queen_underworld"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_poseidon_god_seas",
+          "masteryLevel": 4,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "Which Olympian god ruled the seas and caused earthquakes, earning him the title 'Earth-Shaker'?",
+          "correctAnswer": "Poseidon",
+          "distractors": [
+            {
+              "answer": "Cerberus",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_cerberus"
+            },
+            {
+              "answer": "Demeter",
+              "source": "similar_difficulty",
+              "factId": "myth_demeter_harvest_seasons"
+            },
+            {
+              "answer": "Persephone",
+              "source": "similar_difficulty",
+              "factId": "myth_persephone_queen_underworld"
+            },
+            {
+              "answer": "Aphrodite",
+              "source": "similar_difficulty",
+              "factId": "myth_aphrodite_love_beauty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_poseidon_created_horses",
+          "masteryLevel": 0,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "Which god was said to have created the first horse by striking the earth with his trident?",
+          "correctAnswer": "Poseidon",
+          "distractors": [
+            {
+              "answer": "Hephaestus",
+              "source": "similar_difficulty",
+              "factId": "myth_hephaestus_forge_lame"
+            },
+            {
+              "answer": "Persephone",
+              "source": "similar_difficulty",
+              "factId": "myth_persephone_queen_underworld"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_poseidon_created_horses",
+          "masteryLevel": 2,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "Which god was said to have created the first horse by striking the earth with his trident?",
+          "correctAnswer": "Poseidon",
+          "distractors": [
+            {
+              "answer": "Hephaestus",
+              "source": "similar_difficulty",
+              "factId": "myth_hephaestus_forge_lame"
+            },
+            {
+              "answer": "Persephone",
+              "source": "similar_difficulty",
+              "factId": "myth_persephone_queen_underworld"
+            },
+            {
+              "answer": "Cerberus",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_cerberus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_poseidon_created_horses",
+          "masteryLevel": 4,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "Which god was said to have created the first horse by striking the earth with his trident?",
+          "correctAnswer": "Poseidon",
+          "distractors": [
+            {
+              "answer": "Hephaestus",
+              "source": "similar_difficulty",
+              "factId": "myth_hephaestus_forge_lame"
+            },
+            {
+              "answer": "Persephone",
+              "source": "similar_difficulty",
+              "factId": "myth_persephone_queen_underworld"
+            },
+            {
+              "answer": "Cerberus",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_cerberus"
+            },
+            {
+              "answer": "Pasiphae",
+              "source": "similar_difficulty",
+              "factId": "myth_minotaur_parents"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_athena_helped_heroes",
+          "masteryLevel": 0,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "Athena gave a mirrored shield to which hero, allowing him to defeat Medusa without being turned to stone by her gaze?",
+          "correctAnswer": "Perseus",
+          "distractors": [
+            {
+              "answer": "Poseidon",
+              "source": "similar_difficulty",
+              "factId": "myth_poseidon_created_horses"
+            },
+            {
+              "answer": "Melpomene",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_tragedy_comedy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_athena_helped_heroes",
+          "masteryLevel": 2,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "Athena gave a mirrored shield to which hero, allowing him to defeat Medusa without being turned to stone by her gaze?",
+          "correctAnswer": "Perseus",
+          "distractors": [
+            {
+              "answer": "Poseidon",
+              "source": "similar_difficulty",
+              "factId": "myth_poseidon_created_horses"
+            },
+            {
+              "answer": "Melpomene",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_tragedy_comedy"
+            },
+            {
+              "answer": "Demeter",
+              "source": "similar_difficulty",
+              "factId": "myth_demeter_agriculture_teacher"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_athena_helped_heroes",
+          "masteryLevel": 4,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "Athena gave a mirrored shield to which hero, allowing him to defeat Medusa without being turned to stone by her gaze?",
+          "correctAnswer": "Perseus",
+          "distractors": [
+            {
+              "answer": "Poseidon",
+              "source": "similar_difficulty",
+              "factId": "myth_poseidon_created_horses"
+            },
+            {
+              "answer": "Melpomene",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_tragedy_comedy"
+            },
+            {
+              "answer": "Demeter",
+              "source": "similar_difficulty",
+              "factId": "myth_demeter_agriculture_teacher"
+            },
+            {
+              "answer": "Aphrodite",
+              "source": "similar_difficulty",
+              "factId": "myth_aphrodite_judgment_paris"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_aphrodite_love_beauty",
+          "masteryLevel": 0,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "Which goddess was born from sea foam off the coast of Cyprus and became the Olympian deity of love and beauty?",
+          "correctAnswer": "Aphrodite",
+          "distractors": [
+            {
+              "answer": "Persephone",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_persephone"
+            },
+            {
+              "answer": "Demeter",
+              "source": "similar_difficulty",
+              "factId": "myth_demeter_harvest_seasons"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_aphrodite_love_beauty",
+          "masteryLevel": 2,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "Which goddess was born from sea foam off the coast of Cyprus and became the Olympian deity of love and beauty?",
+          "correctAnswer": "Aphrodite",
+          "distractors": [
+            {
+              "answer": "Persephone",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_persephone"
+            },
+            {
+              "answer": "Demeter",
+              "source": "similar_difficulty",
+              "factId": "myth_demeter_harvest_seasons"
+            },
+            {
+              "answer": "Cerberus",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_cerberus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_aphrodite_love_beauty",
+          "masteryLevel": 4,
+          "poolId": "deity_names_long",
+          "renderedQuestion": "Which goddess was born from sea foam off the coast of Cyprus and became the Olympian deity of love and beauty?",
+          "correctAnswer": "Aphrodite",
+          "distractors": [
+            {
+              "answer": "Persephone",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_persephone"
+            },
+            {
+              "answer": "Demeter",
+              "source": "similar_difficulty",
+              "factId": "myth_demeter_harvest_seasons"
+            },
+            {
+              "answer": "Cerberus",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_cerberus"
+            },
+            {
+              "answer": "Hephaestus",
+              "source": "similar_difficulty",
+              "factId": "myth_hephaestus_forge_lame"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_eagle_symbol",
+          "masteryLevel": 0,
+          "poolId": "object_names_short",
+          "renderedQuestion": "Which bird was the sacred symbol and companion of Zeus, king of the gods?",
+          "correctAnswer": "Eagle",
+          "distractors": [
+            {
+              "answer": "Nine",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_arts"
+            },
+            {
+              "answer": "bow",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_bow_contest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"bow\" has 2 format features different from correct \"Eagle\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_zeus_eagle_symbol",
+          "masteryLevel": 2,
+          "poolId": "object_names_short",
+          "renderedQuestion": "Which bird was the sacred symbol and companion of Zeus, king of the gods?",
+          "correctAnswer": "Eagle",
+          "distractors": [
+            {
+              "answer": "Nine",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_arts"
+            },
+            {
+              "answer": "bow",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_bow_contest"
+            },
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_achilles_styx"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"bow\" has 2 format features different from correct \"Eagle\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_zeus_eagle_symbol",
+          "masteryLevel": 4,
+          "poolId": "object_names_short",
+          "renderedQuestion": "Which bird was the sacred symbol and companion of Zeus, king of the gods?",
+          "correctAnswer": "Eagle",
+          "distractors": [
+            {
+              "answer": "Nine",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_arts"
+            },
+            {
+              "answer": "bow",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_bow_contest"
+            },
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_achilles_styx"
+            },
+            {
+              "answer": "Man",
+              "source": "similar_difficulty",
+              "factId": "myth_sphinx_riddle"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"bow\" has 2 format features different from correct \"Eagle\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_athena_owl_symbol",
+          "masteryLevel": 0,
+          "poolId": "object_names_short",
+          "renderedQuestion": "Which bird was the sacred symbol of Athena, representing wisdom and clear sight in darkness?",
+          "correctAnswer": "Owl",
+          "distractors": [
+            {
+              "answer": "Nine",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_arts"
+            },
+            {
+              "answer": "mast",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_sirens_mast"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"mast\" has 2 format features different from correct \"Owl\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_athena_owl_symbol",
+          "masteryLevel": 2,
+          "poolId": "object_names_short",
+          "renderedQuestion": "Which bird was the sacred symbol of Athena, representing wisdom and clear sight in darkness?",
+          "correctAnswer": "Owl",
+          "distractors": [
+            {
+              "answer": "Nine",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_arts"
+            },
+            {
+              "answer": "mast",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_sirens_mast"
+            },
+            {
+              "answer": "Two",
+              "source": "similar_difficulty",
+              "factId": "myth_hydra_regrowth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"mast\" has 2 format features different from correct \"Owl\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_athena_owl_symbol",
+          "masteryLevel": 4,
+          "poolId": "object_names_short",
+          "renderedQuestion": "Which bird was the sacred symbol of Athena, representing wisdom and clear sight in darkness?",
+          "correctAnswer": "Owl",
+          "distractors": [
+            {
+              "answer": "Nine",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_arts"
+            },
+            {
+              "answer": "mast",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_sirens_mast"
+            },
+            {
+              "answer": "Two",
+              "source": "similar_difficulty",
+              "factId": "myth_hydra_regrowth"
+            },
+            {
+              "answer": "Lyre",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_lyre"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"mast\" has 2 format features different from correct \"Owl\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_apollo_lyre",
+          "masteryLevel": 0,
+          "poolId": "object_names_short",
+          "renderedQuestion": "What stringed instrument was Apollo's sacred symbol, said to have been invented by the infant god Hermes who gave it as a peace offering?",
+          "correctAnswer": "Lyre",
+          "distractors": [
+            {
+              "answer": "bow",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_bow_contest"
+            },
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_achilles_styx"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies person name answers but 2 options don't match: \"bow\", \"heel\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"bow\" has 2 format features different from correct \"Lyre\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_apollo_lyre",
+          "masteryLevel": 2,
+          "poolId": "object_names_short",
+          "renderedQuestion": "What stringed instrument was Apollo's sacred symbol, said to have been invented by the infant god Hermes who gave it as a peace offering?",
+          "correctAnswer": "Lyre",
+          "distractors": [
+            {
+              "answer": "bow",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_bow_contest"
+            },
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_achilles_styx"
+            },
+            {
+              "answer": "Two",
+              "source": "similar_difficulty",
+              "factId": "myth_hydra_regrowth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies person name answers but 2 options don't match: \"bow\", \"heel\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"bow\" has 2 format features different from correct \"Lyre\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_apollo_lyre",
+          "masteryLevel": 4,
+          "poolId": "object_names_short",
+          "renderedQuestion": "What stringed instrument was Apollo's sacred symbol, said to have been invented by the infant god Hermes who gave it as a peace offering?",
+          "correctAnswer": "Lyre",
+          "distractors": [
+            {
+              "answer": "bow",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_bow_contest"
+            },
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_achilles_styx"
+            },
+            {
+              "answer": "Two",
+              "source": "similar_difficulty",
+              "factId": "myth_hydra_regrowth"
+            },
+            {
+              "answer": "Man",
+              "source": "similar_difficulty",
+              "factId": "myth_sphinx_riddle"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies person name answers but 2 options don't match: \"bow\", \"heel\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"bow\" has 2 format features different from correct \"Lyre\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_persephone_seasons_half_year",
+          "masteryLevel": 0,
+          "poolId": "object_names_short",
+          "renderedQuestion": "How many pomegranate seeds did Persephone eat in the Underworld, determining how many months she must return each year?",
+          "correctAnswer": "Six",
+          "distractors": [
+            {
+              "answer": "Nobody",
+              "source": "similar_difficulty",
+              "factId": "myth_polyphemus_nobody"
+            },
+            {
+              "answer": "rivers",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_augean_stables"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 3 options don't match: \"Six\", \"Nobody\", \"rivers\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"rivers\" has 2 format features different from correct \"Six\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_persephone_seasons_half_year",
+          "masteryLevel": 2,
+          "poolId": "object_names_short",
+          "renderedQuestion": "How many pomegranate seeds did Persephone eat in the Underworld, determining how many months she must return each year?",
+          "correctAnswer": "Six",
+          "distractors": [
+            {
+              "answer": "Nobody",
+              "source": "similar_difficulty",
+              "factId": "myth_polyphemus_nobody"
+            },
+            {
+              "answer": "rivers",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_augean_stables"
+            },
+            {
+              "answer": "nostos",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_nostos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 4 options don't match: \"Six\", \"Nobody\", \"rivers\", \"nostos\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"rivers\" has 2 format features different from correct \"Six\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_persephone_seasons_half_year",
+          "masteryLevel": 4,
+          "poolId": "object_names_short",
+          "renderedQuestion": "How many pomegranate seeds did Persephone eat in the Underworld, determining how many months she must return each year?",
+          "correctAnswer": "Six",
+          "distractors": [
+            {
+              "answer": "Nobody",
+              "source": "similar_difficulty",
+              "factId": "myth_polyphemus_nobody"
+            },
+            {
+              "answer": "rivers",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_augean_stables"
+            },
+            {
+              "answer": "nostos",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_nostos"
+            },
+            {
+              "answer": "Second",
+              "source": "similar_difficulty",
+              "factId": "myth_hydra_labor"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 5 options don't match: \"Six\", \"Nobody\", \"rivers\", \"nostos\", \"Second\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"rivers\" has 2 format features different from correct \"Six\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_heracles_augean_stables",
+          "masteryLevel": 0,
+          "poolId": "object_names_short",
+          "renderedQuestion": "In his fifth labor, how did Heracles clean the Augean Stables — 30 years of accumulated filth from 3,000 divine cattle — in a single day?",
+          "correctAnswer": "rivers",
+          "distractors": [
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_achilles_styx"
+            },
+            {
+              "answer": "mast",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_sirens_mast"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_augean_stables",
+          "masteryLevel": 2,
+          "poolId": "object_names_short",
+          "renderedQuestion": "In his fifth labor, how did Heracles clean the Augean Stables — 30 years of accumulated filth from 3,000 divine cattle — in a single day?",
+          "correctAnswer": "rivers",
+          "distractors": [
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_achilles_styx"
+            },
+            {
+              "answer": "mast",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_sirens_mast"
+            },
+            {
+              "answer": "Nine",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_arts"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Nine\" has 2 format features different from correct \"rivers\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_heracles_augean_stables",
+          "masteryLevel": 4,
+          "poolId": "object_names_short",
+          "renderedQuestion": "In his fifth labor, how did Heracles clean the Augean Stables — 30 years of accumulated filth from 3,000 divine cattle — in a single day?",
+          "correctAnswer": "rivers",
+          "distractors": [
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_achilles_styx"
+            },
+            {
+              "answer": "mast",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_sirens_mast"
+            },
+            {
+              "answer": "Nine",
+              "source": "similar_difficulty",
+              "factId": "myth_muses_arts"
+            },
+            {
+              "answer": "Aegis",
+              "source": "similar_difficulty",
+              "factId": "myth_object_aegis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Nine\" has 2 format features different from correct \"rivers\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_zeus_roman_jupiter",
+          "masteryLevel": 0,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Zeus, king of the Greek gods, was known by what name in Roman mythology?",
+          "correctAnswer": "Jupiter",
+          "distractors": [
+            {
+              "answer": "Vulcan",
+              "source": "similar_difficulty",
+              "factId": "myth_hephaestus_vulcan_roman"
+            },
+            {
+              "answer": "Bacchus",
+              "source": "similar_difficulty",
+              "factId": "myth_dionysus_bacchus_roman"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_roman_jupiter",
+          "masteryLevel": 2,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Zeus, king of the Greek gods, was known by what name in Roman mythology?",
+          "correctAnswer": "Jupiter",
+          "distractors": [
+            {
+              "answer": "Vulcan",
+              "source": "similar_difficulty",
+              "factId": "myth_hephaestus_vulcan_roman"
+            },
+            {
+              "answer": "Bacchus",
+              "source": "similar_difficulty",
+              "factId": "myth_dionysus_bacchus_roman"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "myth_hermes_mercury_roman"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_zeus_roman_jupiter",
+          "masteryLevel": 4,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Zeus, king of the Greek gods, was known by what name in Roman mythology?",
+          "correctAnswer": "Jupiter",
+          "distractors": [
+            {
+              "answer": "Vulcan",
+              "source": "similar_difficulty",
+              "factId": "myth_hephaestus_vulcan_roman"
+            },
+            {
+              "answer": "Bacchus",
+              "source": "similar_difficulty",
+              "factId": "myth_dionysus_bacchus_roman"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "myth_hermes_mercury_roman"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "myth_ares_roman_mars"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_roman_juno",
+          "masteryLevel": 0,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Hera, queen of the Greek gods and goddess of marriage, was known by what name in Roman mythology?",
+          "correctAnswer": "Juno",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "myth_hermes_mercury_roman"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "myth_zeus_roman_jupiter"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_roman_juno",
+          "masteryLevel": 2,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Hera, queen of the Greek gods and goddess of marriage, was known by what name in Roman mythology?",
+          "correctAnswer": "Juno",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "myth_hermes_mercury_roman"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "myth_zeus_roman_jupiter"
+            },
+            {
+              "answer": "Vesta",
+              "source": "similar_difficulty",
+              "factId": "myth_hestia_vestal_virgins"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_hera_roman_juno",
+          "masteryLevel": 4,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Hera, queen of the Greek gods and goddess of marriage, was known by what name in Roman mythology?",
+          "correctAnswer": "Juno",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "myth_hermes_mercury_roman"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "myth_zeus_roman_jupiter"
+            },
+            {
+              "answer": "Vesta",
+              "source": "similar_difficulty",
+              "factId": "myth_hestia_vestal_virgins"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "myth_aphrodite_roman_venus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_poseidon_roman_neptune",
+          "masteryLevel": 0,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Poseidon, Greek god of the seas, was known by what name in Roman mythology?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Diana",
+              "source": "similar_difficulty",
+              "factId": "myth_artemis_diana_roman"
+            },
+            {
+              "answer": "Vesta",
+              "source": "similar_difficulty",
+              "factId": "myth_hestia_vestal_virgins"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_poseidon_roman_neptune",
+          "masteryLevel": 2,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Poseidon, Greek god of the seas, was known by what name in Roman mythology?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Diana",
+              "source": "similar_difficulty",
+              "factId": "myth_artemis_diana_roman"
+            },
+            {
+              "answer": "Vesta",
+              "source": "similar_difficulty",
+              "factId": "myth_hestia_vestal_virgins"
+            },
+            {
+              "answer": "Bacchus",
+              "source": "similar_difficulty",
+              "factId": "myth_dionysus_bacchus_roman"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_poseidon_roman_neptune",
+          "masteryLevel": 4,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Poseidon, Greek god of the seas, was known by what name in Roman mythology?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Diana",
+              "source": "similar_difficulty",
+              "factId": "myth_artemis_diana_roman"
+            },
+            {
+              "answer": "Vesta",
+              "source": "similar_difficulty",
+              "factId": "myth_hestia_vestal_virgins"
+            },
+            {
+              "answer": "Bacchus",
+              "source": "similar_difficulty",
+              "factId": "myth_dionysus_bacchus_roman"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_roman_pluto"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_athena_roman_minerva",
+          "masteryLevel": 0,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Athena, Greek goddess of wisdom and strategy, was known by what name in Roman mythology?",
+          "correctAnswer": "Minerva",
+          "distractors": [
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "myth_ares_roman_mars"
+            },
+            {
+              "answer": "Vesta",
+              "source": "similar_difficulty",
+              "factId": "myth_hestia_vestal_virgins"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_athena_roman_minerva",
+          "masteryLevel": 2,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Athena, Greek goddess of wisdom and strategy, was known by what name in Roman mythology?",
+          "correctAnswer": "Minerva",
+          "distractors": [
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "myth_ares_roman_mars"
+            },
+            {
+              "answer": "Vesta",
+              "source": "similar_difficulty",
+              "factId": "myth_hestia_vestal_virgins"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_roman_pluto"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_athena_roman_minerva",
+          "masteryLevel": 4,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Athena, Greek goddess of wisdom and strategy, was known by what name in Roman mythology?",
+          "correctAnswer": "Minerva",
+          "distractors": [
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "myth_ares_roman_mars"
+            },
+            {
+              "answer": "Vesta",
+              "source": "similar_difficulty",
+              "factId": "myth_hestia_vestal_virgins"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "myth_hades_roman_pluto"
+            },
+            {
+              "answer": "Bacchus",
+              "source": "similar_difficulty",
+              "factId": "myth_dionysus_bacchus_roman"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_aphrodite_roman_venus",
+          "masteryLevel": 0,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Aphrodite, Greek goddess of love and beauty, was known by what name in Roman mythology?",
+          "correctAnswer": "Venus",
+          "distractors": [
+            {
+              "answer": "Minerva",
+              "source": "similar_difficulty",
+              "factId": "myth_athena_roman_minerva"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "myth_ares_roman_mars"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_aphrodite_roman_venus",
+          "masteryLevel": 2,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Aphrodite, Greek goddess of love and beauty, was known by what name in Roman mythology?",
+          "correctAnswer": "Venus",
+          "distractors": [
+            {
+              "answer": "Minerva",
+              "source": "similar_difficulty",
+              "factId": "myth_athena_roman_minerva"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "myth_ares_roman_mars"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "myth_zeus_roman_jupiter"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_aphrodite_roman_venus",
+          "masteryLevel": 4,
+          "poolId": "roman_equivalents",
+          "renderedQuestion": "Aphrodite, Greek goddess of love and beauty, was known by what name in Roman mythology?",
+          "correctAnswer": "Venus",
+          "distractors": [
+            {
+              "answer": "Minerva",
+              "source": "similar_difficulty",
+              "factId": "myth_athena_roman_minerva"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "myth_ares_roman_mars"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "myth_zeus_roman_jupiter"
+            },
+            {
+              "answer": "Diana",
+              "source": "similar_difficulty",
+              "factId": "myth_artemis_diana_roman"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_apollo_oracle_delphi",
+          "masteryLevel": 0,
+          "poolId": "location_names_short",
+          "renderedQuestion": "Apollo's most important sanctuary held the most powerful oracle in the ancient world — at which location?",
+          "correctAnswer": "Delphi",
+          "distractors": [
+            {
+              "answer": "Elysium",
+              "source": "similar_difficulty",
+              "factId": "myth_elysium_paradise"
+            },
+            {
+              "answer": "Sparta",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_paris_abducts_helen"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_apollo_oracle_delphi",
+          "masteryLevel": 2,
+          "poolId": "location_names_short",
+          "renderedQuestion": "Apollo's most important sanctuary held the most powerful oracle in the ancient world — at which location?",
+          "correctAnswer": "Delphi",
+          "distractors": [
+            {
+              "answer": "Elysium",
+              "source": "similar_difficulty",
+              "factId": "myth_elysium_paradise"
+            },
+            {
+              "answer": "Sparta",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_paris_abducts_helen"
+            },
+            {
+              "answer": "Troy",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_fall_sack"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_apollo_oracle_delphi",
+          "masteryLevel": 4,
+          "poolId": "location_names_short",
+          "renderedQuestion": "Apollo's most important sanctuary held the most powerful oracle in the ancient world — at which location?",
+          "correctAnswer": "Delphi",
+          "distractors": [
+            {
+              "answer": "Elysium",
+              "source": "similar_difficulty",
+              "factId": "myth_elysium_paradise"
+            },
+            {
+              "answer": "Sparta",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_paris_abducts_helen"
+            },
+            {
+              "answer": "Troy",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_fall_sack"
+            },
+            {
+              "answer": "Iron Age",
+              "source": "similar_difficulty",
+              "factId": "myth_iron_age_hesiod"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_iron_age_hesiod",
+          "masteryLevel": 0,
+          "poolId": "location_names_short",
+          "renderedQuestion": "In Hesiod's Five Ages of Man, what is the final and worst age, characterized by toil, injustice, and constant suffering?",
+          "correctAnswer": "Iron Age",
+          "distractors": [
+            {
+              "answer": "Delphi",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_oracle_delphi"
+            },
+            {
+              "answer": "home",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_lotus_eaters"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"home\" has 3 format features different from correct \"Iron Age\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_iron_age_hesiod",
+          "masteryLevel": 2,
+          "poolId": "location_names_short",
+          "renderedQuestion": "In Hesiod's Five Ages of Man, what is the final and worst age, characterized by toil, injustice, and constant suffering?",
+          "correctAnswer": "Iron Age",
+          "distractors": [
+            {
+              "answer": "Delphi",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_oracle_delphi"
+            },
+            {
+              "answer": "home",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_lotus_eaters"
+            },
+            {
+              "answer": "Troy",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_fall_sack"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"home\" has 3 format features different from correct \"Iron Age\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_iron_age_hesiod",
+          "masteryLevel": 4,
+          "poolId": "location_names_short",
+          "renderedQuestion": "In Hesiod's Five Ages of Man, what is the final and worst age, characterized by toil, injustice, and constant suffering?",
+          "correctAnswer": "Iron Age",
+          "distractors": [
+            {
+              "answer": "Delphi",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_oracle_delphi"
+            },
+            {
+              "answer": "home",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_lotus_eaters"
+            },
+            {
+              "answer": "Troy",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_fall_sack"
+            },
+            {
+              "answer": "Sparta",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_paris_abducts_helen"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"home\" has 3 format features different from correct \"Iron Age\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_elysium_paradise",
+          "masteryLevel": 0,
+          "poolId": "location_names_short",
+          "renderedQuestion": "What was the paradise region of the Greek Underworld reserved for heroes and the virtuous?",
+          "correctAnswer": "Elysium",
+          "distractors": [
+            {
+              "answer": "Delphi",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_oracle_delphi"
+            },
+            {
+              "answer": "Tartarus",
+              "source": "similar_difficulty",
+              "factId": "myth_tartarus_pit"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_elysium_paradise",
+          "masteryLevel": 2,
+          "poolId": "location_names_short",
+          "renderedQuestion": "What was the paradise region of the Greek Underworld reserved for heroes and the virtuous?",
+          "correctAnswer": "Elysium",
+          "distractors": [
+            {
+              "answer": "Delphi",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_oracle_delphi"
+            },
+            {
+              "answer": "Tartarus",
+              "source": "similar_difficulty",
+              "factId": "myth_tartarus_pit"
+            },
+            {
+              "answer": "Troy",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_fall_sack"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_elysium_paradise",
+          "masteryLevel": 4,
+          "poolId": "location_names_short",
+          "renderedQuestion": "What was the paradise region of the Greek Underworld reserved for heroes and the virtuous?",
+          "correctAnswer": "Elysium",
+          "distractors": [
+            {
+              "answer": "Delphi",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_oracle_delphi"
+            },
+            {
+              "answer": "Tartarus",
+              "source": "similar_difficulty",
+              "factId": "myth_tartarus_pit"
+            },
+            {
+              "answer": "Troy",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_fall_sack"
+            },
+            {
+              "answer": "Iron Age",
+              "source": "pool_fill",
+              "factId": "myth_iron_age_hesiod"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_tartarus_pit",
+          "masteryLevel": 0,
+          "poolId": "location_names_short",
+          "renderedQuestion": "What was the deepest abyss of the Greek Underworld, used to imprison the defeated Titans and the worst sinners?",
+          "correctAnswer": "Tartarus",
+          "distractors": [
+            {
+              "answer": "Sparta",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_paris_abducts_helen"
+            },
+            {
+              "answer": "Delphi",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_oracle_delphi"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_tartarus_pit",
+          "masteryLevel": 2,
+          "poolId": "location_names_short",
+          "renderedQuestion": "What was the deepest abyss of the Greek Underworld, used to imprison the defeated Titans and the worst sinners?",
+          "correctAnswer": "Tartarus",
+          "distractors": [
+            {
+              "answer": "Sparta",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_paris_abducts_helen"
+            },
+            {
+              "answer": "Delphi",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_oracle_delphi"
+            },
+            {
+              "answer": "Iron Age",
+              "source": "similar_difficulty",
+              "factId": "myth_iron_age_hesiod"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_tartarus_pit",
+          "masteryLevel": 4,
+          "poolId": "location_names_short",
+          "renderedQuestion": "What was the deepest abyss of the Greek Underworld, used to imprison the defeated Titans and the worst sinners?",
+          "correctAnswer": "Tartarus",
+          "distractors": [
+            {
+              "answer": "Sparta",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_paris_abducts_helen"
+            },
+            {
+              "answer": "Delphi",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_oracle_delphi"
+            },
+            {
+              "answer": "Iron Age",
+              "source": "similar_difficulty",
+              "factId": "myth_iron_age_hesiod"
+            },
+            {
+              "answer": "Troy",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_fall_sack"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_jason_colchis",
+          "masteryLevel": 0,
+          "poolId": "location_names_short",
+          "renderedQuestion": "Jason sailed the Argo to which distant kingdom at the edge of the world to claim the Golden Fleece?",
+          "correctAnswer": "Colchis",
+          "distractors": [
+            {
+              "answer": "Tartarus",
+              "source": "similar_difficulty",
+              "factId": "myth_tartarus_pit"
+            },
+            {
+              "answer": "Iron Age",
+              "source": "similar_difficulty",
+              "factId": "myth_iron_age_hesiod"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_jason_colchis",
+          "masteryLevel": 2,
+          "poolId": "location_names_short",
+          "renderedQuestion": "Jason sailed the Argo to which distant kingdom at the edge of the world to claim the Golden Fleece?",
+          "correctAnswer": "Colchis",
+          "distractors": [
+            {
+              "answer": "Tartarus",
+              "source": "similar_difficulty",
+              "factId": "myth_tartarus_pit"
+            },
+            {
+              "answer": "Iron Age",
+              "source": "similar_difficulty",
+              "factId": "myth_iron_age_hesiod"
+            },
+            {
+              "answer": "home",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_lotus_eaters"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"home\" has 2 format features different from correct \"Colchis\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_jason_colchis",
+          "masteryLevel": 4,
+          "poolId": "location_names_short",
+          "renderedQuestion": "Jason sailed the Argo to which distant kingdom at the edge of the world to claim the Golden Fleece?",
+          "correctAnswer": "Colchis",
+          "distractors": [
+            {
+              "answer": "Tartarus",
+              "source": "similar_difficulty",
+              "factId": "myth_tartarus_pit"
+            },
+            {
+              "answer": "Iron Age",
+              "source": "similar_difficulty",
+              "factId": "myth_iron_age_hesiod"
+            },
+            {
+              "answer": "home",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_lotus_eaters"
+            },
+            {
+              "answer": "Delphi",
+              "source": "similar_difficulty",
+              "factId": "myth_apollo_oracle_delphi"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"home\" has 2 format features different from correct \"Colchis\""
+            }
+          ]
+        },
+        {
+          "factId": "myth_kronos_swallow",
+          "masteryLevel": 0,
+          "poolId": "titan_names",
+          "renderedQuestion": "Which Titan swallowed his own children to prevent a prophecy?",
+          "correctAnswer": "Kronos",
+          "distractors": [
+            {
+              "answer": "Epimetheus",
+              "source": "similar_difficulty",
+              "factId": "myth_epimetheus_afterthought"
+            },
+            {
+              "answer": "Hyperion",
+              "source": "similar_difficulty",
+              "factId": "myth_hyperion_sun"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_kronos_swallow",
+          "masteryLevel": 2,
+          "poolId": "titan_names",
+          "renderedQuestion": "Which Titan swallowed his own children to prevent a prophecy?",
+          "correctAnswer": "Kronos",
+          "distractors": [
+            {
+              "answer": "Epimetheus",
+              "source": "similar_difficulty",
+              "factId": "myth_epimetheus_afterthought"
+            },
+            {
+              "answer": "Hyperion",
+              "source": "similar_difficulty",
+              "factId": "myth_hyperion_sun"
+            },
+            {
+              "answer": "Chaos",
+              "source": "similar_difficulty",
+              "factId": "myth_chaos_creation"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_kronos_swallow",
+          "masteryLevel": 4,
+          "poolId": "titan_names",
+          "renderedQuestion": "Which Titan swallowed his own children to prevent a prophecy?",
+          "correctAnswer": "Kronos",
+          "distractors": [
+            {
+              "answer": "Epimetheus",
+              "source": "similar_difficulty",
+              "factId": "myth_epimetheus_afterthought"
+            },
+            {
+              "answer": "Hyperion",
+              "source": "similar_difficulty",
+              "factId": "myth_hyperion_sun"
+            },
+            {
+              "answer": "Chaos",
+              "source": "similar_difficulty",
+              "factId": "myth_chaos_creation"
+            },
+            {
+              "answer": "Atlas",
+              "source": "similar_difficulty",
+              "factId": "myth_atlas_sky"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_rhea_stone_trick",
+          "masteryLevel": 0,
+          "poolId": "titan_names",
+          "renderedQuestion": "Which Titaness wrapped a stone in cloth and gave it to Kronos instead of baby Zeus?",
+          "correctAnswer": "Rhea",
+          "distractors": [
+            {
+              "answer": "Prometheus",
+              "source": "similar_difficulty",
+              "factId": "myth_prometheus_fire"
+            },
+            {
+              "answer": "Atlas",
+              "source": "similar_difficulty",
+              "factId": "myth_atlas_sky"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_rhea_stone_trick",
+          "masteryLevel": 2,
+          "poolId": "titan_names",
+          "renderedQuestion": "Which Titaness wrapped a stone in cloth and gave it to Kronos instead of baby Zeus?",
+          "correctAnswer": "Rhea",
+          "distractors": [
+            {
+              "answer": "Prometheus",
+              "source": "similar_difficulty",
+              "factId": "myth_prometheus_fire"
+            },
+            {
+              "answer": "Atlas",
+              "source": "similar_difficulty",
+              "factId": "myth_atlas_sky"
+            },
+            {
+              "answer": "Epimetheus",
+              "source": "similar_difficulty",
+              "factId": "myth_epimetheus_afterthought"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 4 vs avg distractor 8.3 — ratio 0.48×"
+            }
+          ]
+        },
+        {
+          "factId": "myth_rhea_stone_trick",
+          "masteryLevel": 4,
+          "poolId": "titan_names",
+          "renderedQuestion": "Which Titaness wrapped a stone in cloth and gave it to Kronos instead of baby Zeus?",
+          "correctAnswer": "Rhea",
+          "distractors": [
+            {
+              "answer": "Prometheus",
+              "source": "similar_difficulty",
+              "factId": "myth_prometheus_fire"
+            },
+            {
+              "answer": "Atlas",
+              "source": "similar_difficulty",
+              "factId": "myth_atlas_sky"
+            },
+            {
+              "answer": "Epimetheus",
+              "source": "similar_difficulty",
+              "factId": "myth_epimetheus_afterthought"
+            },
+            {
+              "answer": "Themis",
+              "source": "similar_difficulty",
+              "factId": "myth_themis_justice"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_chaos_creation",
+          "masteryLevel": 0,
+          "poolId": "titan_names",
+          "renderedQuestion": "In Greek creation mythology, what was the primordial void that existed before all things?",
+          "correctAnswer": "Chaos",
+          "distractors": [
+            {
+              "answer": "Prometheus",
+              "source": "similar_difficulty",
+              "factId": "myth_prometheus_fire"
+            },
+            {
+              "answer": "Kronos",
+              "source": "similar_difficulty",
+              "factId": "myth_kronos_swallow"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_chaos_creation",
+          "masteryLevel": 2,
+          "poolId": "titan_names",
+          "renderedQuestion": "In Greek creation mythology, what was the primordial void that existed before all things?",
+          "correctAnswer": "Chaos",
+          "distractors": [
+            {
+              "answer": "Prometheus",
+              "source": "similar_difficulty",
+              "factId": "myth_prometheus_fire"
+            },
+            {
+              "answer": "Kronos",
+              "source": "similar_difficulty",
+              "factId": "myth_kronos_swallow"
+            },
+            {
+              "answer": "Epimetheus",
+              "source": "similar_difficulty",
+              "factId": "myth_epimetheus_afterthought"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_chaos_creation",
+          "masteryLevel": 4,
+          "poolId": "titan_names",
+          "renderedQuestion": "In Greek creation mythology, what was the primordial void that existed before all things?",
+          "correctAnswer": "Chaos",
+          "distractors": [
+            {
+              "answer": "Prometheus",
+              "source": "similar_difficulty",
+              "factId": "myth_prometheus_fire"
+            },
+            {
+              "answer": "Kronos",
+              "source": "similar_difficulty",
+              "factId": "myth_kronos_swallow"
+            },
+            {
+              "answer": "Epimetheus",
+              "source": "similar_difficulty",
+              "factId": "myth_epimetheus_afterthought"
+            },
+            {
+              "answer": "Gaia",
+              "source": "similar_difficulty",
+              "factId": "myth_gaia_uranus_titans"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_gaia_uranus_titans",
+          "masteryLevel": 0,
+          "poolId": "titan_names",
+          "renderedQuestion": "Which primordial goddess gave birth to the Titans after mating with Uranus (the Sky)?",
+          "correctAnswer": "Gaia",
+          "distractors": [
+            {
+              "answer": "Kronos",
+              "source": "similar_difficulty",
+              "factId": "myth_uranus_castration"
+            },
+            {
+              "answer": "Rhea",
+              "source": "similar_difficulty",
+              "factId": "myth_rhea_stone_trick"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_gaia_uranus_titans",
+          "masteryLevel": 2,
+          "poolId": "titan_names",
+          "renderedQuestion": "Which primordial goddess gave birth to the Titans after mating with Uranus (the Sky)?",
+          "correctAnswer": "Gaia",
+          "distractors": [
+            {
+              "answer": "Kronos",
+              "source": "similar_difficulty",
+              "factId": "myth_uranus_castration"
+            },
+            {
+              "answer": "Rhea",
+              "source": "similar_difficulty",
+              "factId": "myth_rhea_stone_trick"
+            },
+            {
+              "answer": "Hyperion",
+              "source": "similar_difficulty",
+              "factId": "myth_hyperion_sun"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_gaia_uranus_titans",
+          "masteryLevel": 4,
+          "poolId": "titan_names",
+          "renderedQuestion": "Which primordial goddess gave birth to the Titans after mating with Uranus (the Sky)?",
+          "correctAnswer": "Gaia",
+          "distractors": [
+            {
+              "answer": "Kronos",
+              "source": "similar_difficulty",
+              "factId": "myth_uranus_castration"
+            },
+            {
+              "answer": "Rhea",
+              "source": "similar_difficulty",
+              "factId": "myth_rhea_stone_trick"
+            },
+            {
+              "answer": "Hyperion",
+              "source": "similar_difficulty",
+              "factId": "myth_hyperion_sun"
+            },
+            {
+              "answer": "Atlas",
+              "source": "similar_difficulty",
+              "factId": "myth_atlas_sky"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_uranus_castration",
+          "masteryLevel": 0,
+          "poolId": "titan_names",
+          "renderedQuestion": "Which Titan castrated his father Uranus with an adamantine sickle, freeing the imprisoned Titans?",
+          "correctAnswer": "Kronos",
+          "distractors": [
+            {
+              "answer": "Chaos",
+              "source": "similar_difficulty",
+              "factId": "myth_chaos_creation"
+            },
+            {
+              "answer": "Rhea",
+              "source": "similar_difficulty",
+              "factId": "myth_rhea_stone_trick"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_uranus_castration",
+          "masteryLevel": 2,
+          "poolId": "titan_names",
+          "renderedQuestion": "Which Titan castrated his father Uranus with an adamantine sickle, freeing the imprisoned Titans?",
+          "correctAnswer": "Kronos",
+          "distractors": [
+            {
+              "answer": "Chaos",
+              "source": "similar_difficulty",
+              "factId": "myth_chaos_creation"
+            },
+            {
+              "answer": "Rhea",
+              "source": "similar_difficulty",
+              "factId": "myth_rhea_stone_trick"
+            },
+            {
+              "answer": "Epimetheus",
+              "source": "similar_difficulty",
+              "factId": "myth_epimetheus_afterthought"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_uranus_castration",
+          "masteryLevel": 4,
+          "poolId": "titan_names",
+          "renderedQuestion": "Which Titan castrated his father Uranus with an adamantine sickle, freeing the imprisoned Titans?",
+          "correctAnswer": "Kronos",
+          "distractors": [
+            {
+              "answer": "Chaos",
+              "source": "similar_difficulty",
+              "factId": "myth_chaos_creation"
+            },
+            {
+              "answer": "Rhea",
+              "source": "similar_difficulty",
+              "factId": "myth_rhea_stone_trick"
+            },
+            {
+              "answer": "Epimetheus",
+              "source": "similar_difficulty",
+              "factId": "myth_epimetheus_afterthought"
+            },
+            {
+              "answer": "Themis",
+              "source": "similar_difficulty",
+              "factId": "myth_themis_justice"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_prometheus_heracles_freed",
+          "masteryLevel": 0,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which hero freed Prometheus from his eternal punishment by killing the eagle?",
+          "correctAnswer": "Heracles",
+          "distractors": [
+            {
+              "answer": "Aegeus",
+              "source": "similar_difficulty",
+              "factId": "myth_theseus_black_sails_aegeus"
+            },
+            {
+              "answer": "Orpheus",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_looked_back"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_prometheus_heracles_freed",
+          "masteryLevel": 2,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which hero freed Prometheus from his eternal punishment by killing the eagle?",
+          "correctAnswer": "Heracles",
+          "distractors": [
+            {
+              "answer": "Aegeus",
+              "source": "similar_difficulty",
+              "factId": "myth_theseus_black_sails_aegeus"
+            },
+            {
+              "answer": "Orpheus",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_looked_back"
+            },
+            {
+              "answer": "Penelope",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_penelope_shroud"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_prometheus_heracles_freed",
+          "masteryLevel": 4,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which hero freed Prometheus from his eternal punishment by killing the eagle?",
+          "correctAnswer": "Heracles",
+          "distractors": [
+            {
+              "answer": "Aegeus",
+              "source": "similar_difficulty",
+              "factId": "myth_theseus_black_sails_aegeus"
+            },
+            {
+              "answer": "Orpheus",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_looked_back"
+            },
+            {
+              "answer": "Penelope",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_penelope_shroud"
+            },
+            {
+              "answer": "Andromeda",
+              "source": "similar_difficulty",
+              "factId": "myth_perseus_andromeda"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_deucalion_flood",
+          "masteryLevel": 0,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which son of Prometheus survived a great flood sent by Zeus by building a chest, repopulating humanity by throwing stones?",
+          "correctAnswer": "Deucalion",
+          "distractors": [
+            {
+              "answer": "Paris",
+              "source": "similar_difficulty",
+              "factId": "myth_achilles_death"
+            },
+            {
+              "answer": "Helen",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_aphrodite_reward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_deucalion_flood",
+          "masteryLevel": 2,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which son of Prometheus survived a great flood sent by Zeus by building a chest, repopulating humanity by throwing stones?",
+          "correctAnswer": "Deucalion",
+          "distractors": [
+            {
+              "answer": "Paris",
+              "source": "similar_difficulty",
+              "factId": "myth_achilles_death"
+            },
+            {
+              "answer": "Helen",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_aphrodite_reward"
+            },
+            {
+              "answer": "Orpheus",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_musician"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_deucalion_flood",
+          "masteryLevel": 4,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which son of Prometheus survived a great flood sent by Zeus by building a chest, repopulating humanity by throwing stones?",
+          "correctAnswer": "Deucalion",
+          "distractors": [
+            {
+              "answer": "Paris",
+              "source": "similar_difficulty",
+              "factId": "myth_achilles_death"
+            },
+            {
+              "answer": "Helen",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_aphrodite_reward"
+            },
+            {
+              "answer": "Orpheus",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_musician"
+            },
+            {
+              "answer": "Hector",
+              "source": "similar_difficulty",
+              "factId": "myth_hector_patroclus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_charon_ferryman",
+          "masteryLevel": 0,
+          "poolId": "hero_names",
+          "renderedQuestion": "Who was the skeletal ferryman who transported souls of the dead across the rivers of the Underworld?",
+          "correctAnswer": "Charon",
+          "distractors": [
+            {
+              "answer": "Psyche",
+              "source": "similar_difficulty",
+              "factId": "myth_psyche_lamp_wax"
+            },
+            {
+              "answer": "Orpheus",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_musician"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_charon_ferryman",
+          "masteryLevel": 2,
+          "poolId": "hero_names",
+          "renderedQuestion": "Who was the skeletal ferryman who transported souls of the dead across the rivers of the Underworld?",
+          "correctAnswer": "Charon",
+          "distractors": [
+            {
+              "answer": "Psyche",
+              "source": "similar_difficulty",
+              "factId": "myth_psyche_lamp_wax"
+            },
+            {
+              "answer": "Orpheus",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_musician"
+            },
+            {
+              "answer": "Heracles",
+              "source": "similar_difficulty",
+              "factId": "myth_cerberus_heracles"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_charon_ferryman",
+          "masteryLevel": 4,
+          "poolId": "hero_names",
+          "renderedQuestion": "Who was the skeletal ferryman who transported souls of the dead across the rivers of the Underworld?",
+          "correctAnswer": "Charon",
+          "distractors": [
+            {
+              "answer": "Psyche",
+              "source": "similar_difficulty",
+              "factId": "myth_psyche_lamp_wax"
+            },
+            {
+              "answer": "Orpheus",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_musician"
+            },
+            {
+              "answer": "Heracles",
+              "source": "similar_difficulty",
+              "factId": "myth_cerberus_heracles"
+            },
+            {
+              "answer": "Narcissus",
+              "source": "similar_difficulty",
+              "factId": "myth_narcissus_reflection"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_judges_minos",
+          "masteryLevel": 0,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which former king of Crete became the chief judge of the dead in the Underworld, casting the final deciding vote?",
+          "correctAnswer": "Minos",
+          "distractors": [
+            {
+              "answer": "Priam",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_priam_death"
+            },
+            {
+              "answer": "Aeneas",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_aeneas_escapes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_judges_minos",
+          "masteryLevel": 2,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which former king of Crete became the chief judge of the dead in the Underworld, casting the final deciding vote?",
+          "correctAnswer": "Minos",
+          "distractors": [
+            {
+              "answer": "Priam",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_priam_death"
+            },
+            {
+              "answer": "Aeneas",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_aeneas_escapes"
+            },
+            {
+              "answer": "Cassandra",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_cassandra_curse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_judges_minos",
+          "masteryLevel": 4,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which former king of Crete became the chief judge of the dead in the Underworld, casting the final deciding vote?",
+          "correctAnswer": "Minos",
+          "distractors": [
+            {
+              "answer": "Priam",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_priam_death"
+            },
+            {
+              "answer": "Aeneas",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_aeneas_escapes"
+            },
+            {
+              "answer": "Cassandra",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_cassandra_curse"
+            },
+            {
+              "answer": "Argonauts",
+              "source": "similar_difficulty",
+              "factId": "myth_jason_argonauts"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_sisyphus_boulder",
+          "masteryLevel": 0,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which cunning king was condemned in Tartarus to roll a boulder up a hill for eternity, only to watch it roll back down each time?",
+          "correctAnswer": "Sisyphus",
+          "distractors": [
+            {
+              "answer": "Daedalus",
+              "source": "similar_difficulty",
+              "factId": "myth_minotaur_labyrinth"
+            },
+            {
+              "answer": "Patroclus",
+              "source": "similar_difficulty",
+              "factId": "myth_achilles_patroclus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_sisyphus_boulder",
+          "masteryLevel": 2,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which cunning king was condemned in Tartarus to roll a boulder up a hill for eternity, only to watch it roll back down each time?",
+          "correctAnswer": "Sisyphus",
+          "distractors": [
+            {
+              "answer": "Daedalus",
+              "source": "similar_difficulty",
+              "factId": "myth_minotaur_labyrinth"
+            },
+            {
+              "answer": "Patroclus",
+              "source": "similar_difficulty",
+              "factId": "myth_achilles_patroclus"
+            },
+            {
+              "answer": "Argonauts",
+              "source": "similar_difficulty",
+              "factId": "myth_jason_argonauts"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_sisyphus_boulder",
+          "masteryLevel": 4,
+          "poolId": "hero_names",
+          "renderedQuestion": "Which cunning king was condemned in Tartarus to roll a boulder up a hill for eternity, only to watch it roll back down each time?",
+          "correctAnswer": "Sisyphus",
+          "distractors": [
+            {
+              "answer": "Daedalus",
+              "source": "similar_difficulty",
+              "factId": "myth_minotaur_labyrinth"
+            },
+            {
+              "answer": "Patroclus",
+              "source": "similar_difficulty",
+              "factId": "myth_achilles_patroclus"
+            },
+            {
+              "answer": "Argonauts",
+              "source": "similar_difficulty",
+              "factId": "myth_jason_argonauts"
+            },
+            {
+              "answer": "Paris",
+              "source": "similar_difficulty",
+              "factId": "myth_troy_paris_kills_achilles"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_hundred_handers",
+          "masteryLevel": 0,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "Which creatures with one hundred arms and fifty heads helped Zeus defeat the Titans in the Titanomachy?",
+          "correctAnswer": "Hundred-Handers",
+          "distractors": [
+            {
+              "answer": "Maenads",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_maenads"
+            },
+            {
+              "answer": "Minotaur",
+              "source": "similar_difficulty",
+              "factId": "myth_theseus_minotaur_volunteer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_hundred_handers",
+          "masteryLevel": 2,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "Which creatures with one hundred arms and fifty heads helped Zeus defeat the Titans in the Titanomachy?",
+          "correctAnswer": "Hundred-Handers",
+          "distractors": [
+            {
+              "answer": "Maenads",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_maenads"
+            },
+            {
+              "answer": "Minotaur",
+              "source": "similar_difficulty",
+              "factId": "myth_theseus_minotaur_volunteer"
+            },
+            {
+              "answer": "Stymphalian Birds",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_stymphalian_birds"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_hundred_handers",
+          "masteryLevel": 4,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "Which creatures with one hundred arms and fifty heads helped Zeus defeat the Titans in the Titanomachy?",
+          "correctAnswer": "Hundred-Handers",
+          "distractors": [
+            {
+              "answer": "Maenads",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_maenads"
+            },
+            {
+              "answer": "Minotaur",
+              "source": "similar_difficulty",
+              "factId": "myth_theseus_minotaur_volunteer"
+            },
+            {
+              "answer": "Stymphalian Birds",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_stymphalian_birds"
+            },
+            {
+              "answer": "Nemean Lion",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_nemean_lion"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_cerberus_guard",
+          "masteryLevel": 0,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "What three-headed dog guarded the entrance to the Greek Underworld, preventing the living from entering and the dead from leaving?",
+          "correctAnswer": "Cerberus",
+          "distractors": [
+            {
+              "answer": "Nemean Lion",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_nemean_lion"
+            },
+            {
+              "answer": "Griffin",
+              "source": "similar_difficulty",
+              "factId": "myth_griffin_gold"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_cerberus_guard",
+          "masteryLevel": 2,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "What three-headed dog guarded the entrance to the Greek Underworld, preventing the living from entering and the dead from leaving?",
+          "correctAnswer": "Cerberus",
+          "distractors": [
+            {
+              "answer": "Nemean Lion",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_nemean_lion"
+            },
+            {
+              "answer": "Griffin",
+              "source": "similar_difficulty",
+              "factId": "myth_griffin_gold"
+            },
+            {
+              "answer": "Chimera",
+              "source": "similar_difficulty",
+              "factId": "myth_chimera_description"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_cerberus_guard",
+          "masteryLevel": 4,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "What three-headed dog guarded the entrance to the Greek Underworld, preventing the living from entering and the dead from leaving?",
+          "correctAnswer": "Cerberus",
+          "distractors": [
+            {
+              "answer": "Nemean Lion",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_nemean_lion"
+            },
+            {
+              "answer": "Griffin",
+              "source": "similar_difficulty",
+              "factId": "myth_griffin_gold"
+            },
+            {
+              "answer": "Chimera",
+              "source": "similar_difficulty",
+              "factId": "myth_chimera_description"
+            },
+            {
+              "answer": "Pegasus",
+              "source": "similar_difficulty",
+              "factId": "myth_bellerophon_pegasus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_nemean_lion",
+          "masteryLevel": 0,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "What was the first labor of Heracles — a beast with impenetrable golden fur that he strangled with his bare hands?",
+          "correctAnswer": "Nemean Lion",
+          "distractors": [
+            {
+              "answer": "Pegasus",
+              "source": "similar_difficulty",
+              "factId": "myth_medusa_pegasus_birth"
+            },
+            {
+              "answer": "Echidna",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_father"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_nemean_lion",
+          "masteryLevel": 2,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "What was the first labor of Heracles — a beast with impenetrable golden fur that he strangled with his bare hands?",
+          "correctAnswer": "Nemean Lion",
+          "distractors": [
+            {
+              "answer": "Pegasus",
+              "source": "similar_difficulty",
+              "factId": "myth_medusa_pegasus_birth"
+            },
+            {
+              "answer": "Echidna",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_father"
+            },
+            {
+              "answer": "Chimera",
+              "source": "similar_difficulty",
+              "factId": "myth_bellerophon_chimera"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_nemean_lion",
+          "masteryLevel": 4,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "What was the first labor of Heracles — a beast with impenetrable golden fur that he strangled with his bare hands?",
+          "correctAnswer": "Nemean Lion",
+          "distractors": [
+            {
+              "answer": "Pegasus",
+              "source": "similar_difficulty",
+              "factId": "myth_medusa_pegasus_birth"
+            },
+            {
+              "answer": "Echidna",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_father"
+            },
+            {
+              "answer": "Chimera",
+              "source": "similar_difficulty",
+              "factId": "myth_bellerophon_chimera"
+            },
+            {
+              "answer": "Cerberus",
+              "source": "similar_difficulty",
+              "factId": "myth_cerberus_guard"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_stymphalian_birds",
+          "masteryLevel": 0,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "Which man-eating bronze-feathered birds did Heracles drive away for his sixth labor using noise-making instruments given by Athena?",
+          "correctAnswer": "Stymphalian Birds",
+          "distractors": [
+            {
+              "answer": "Hundred-Handers",
+              "source": "similar_difficulty",
+              "factId": "myth_hundred_handers"
+            },
+            {
+              "answer": "Harpies",
+              "source": "similar_difficulty",
+              "factId": "myth_harpies_phineus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_stymphalian_birds",
+          "masteryLevel": 2,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "Which man-eating bronze-feathered birds did Heracles drive away for his sixth labor using noise-making instruments given by Athena?",
+          "correctAnswer": "Stymphalian Birds",
+          "distractors": [
+            {
+              "answer": "Hundred-Handers",
+              "source": "similar_difficulty",
+              "factId": "myth_hundred_handers"
+            },
+            {
+              "answer": "Harpies",
+              "source": "similar_difficulty",
+              "factId": "myth_harpies_phineus"
+            },
+            {
+              "answer": "Maenads",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_maenads"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_stymphalian_birds",
+          "masteryLevel": 4,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "Which man-eating bronze-feathered birds did Heracles drive away for his sixth labor using noise-making instruments given by Athena?",
+          "correctAnswer": "Stymphalian Birds",
+          "distractors": [
+            {
+              "answer": "Hundred-Handers",
+              "source": "similar_difficulty",
+              "factId": "myth_hundred_handers"
+            },
+            {
+              "answer": "Harpies",
+              "source": "similar_difficulty",
+              "factId": "myth_harpies_phineus"
+            },
+            {
+              "answer": "Maenads",
+              "source": "similar_difficulty",
+              "factId": "myth_orpheus_maenads"
+            },
+            {
+              "answer": "Minotaur",
+              "source": "similar_difficulty",
+              "factId": "myth_theseus_minotaur_volunteer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_cerberus",
+          "masteryLevel": 0,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "What three-headed dog guarding the Underworld did Heracles capture for his twelfth and final labor, returning it to Eurystheus before releasing it?",
+          "correctAnswer": "Cerberus",
+          "distractors": [
+            {
+              "answer": "Echidna",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_father"
+            },
+            {
+              "answer": "Nemean Lion",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_nemean_lion"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_cerberus",
+          "masteryLevel": 2,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "What three-headed dog guarding the Underworld did Heracles capture for his twelfth and final labor, returning it to Eurystheus before releasing it?",
+          "correctAnswer": "Cerberus",
+          "distractors": [
+            {
+              "answer": "Echidna",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_father"
+            },
+            {
+              "answer": "Nemean Lion",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_nemean_lion"
+            },
+            {
+              "answer": "Griffin",
+              "source": "similar_difficulty",
+              "factId": "myth_griffin_gold"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_cerberus",
+          "masteryLevel": 4,
+          "poolId": "creature_names_long",
+          "renderedQuestion": "What three-headed dog guarding the Underworld did Heracles capture for his twelfth and final labor, returning it to Eurystheus before releasing it?",
+          "correctAnswer": "Cerberus",
+          "distractors": [
+            {
+              "answer": "Echidna",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_father"
+            },
+            {
+              "answer": "Nemean Lion",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_nemean_lion"
+            },
+            {
+              "answer": "Griffin",
+              "source": "similar_difficulty",
+              "factId": "myth_griffin_gold"
+            },
+            {
+              "answer": "Pegasus",
+              "source": "similar_difficulty",
+              "factId": "myth_medusa_pegasus_birth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_golden_age",
+          "masteryLevel": 0,
+          "poolId": "location_names_long",
+          "renderedQuestion": "In Hesiod's Five Ages of Man, what was the first and most perfect age, when humans lived like gods?",
+          "correctAnswer": "Golden Age",
+          "distractors": [
+            {
+              "answer": "River Lethe",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_lethe_forget"
+            },
+            {
+              "answer": "River Acheron",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_acheron_cocytus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_golden_age",
+          "masteryLevel": 2,
+          "poolId": "location_names_long",
+          "renderedQuestion": "In Hesiod's Five Ages of Man, what was the first and most perfect age, when humans lived like gods?",
+          "correctAnswer": "Golden Age",
+          "distractors": [
+            {
+              "answer": "River Lethe",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_lethe_forget"
+            },
+            {
+              "answer": "River Acheron",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_acheron_cocytus"
+            },
+            {
+              "answer": "River Styx",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_styx_oath"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_golden_age",
+          "masteryLevel": 4,
+          "poolId": "location_names_long",
+          "renderedQuestion": "In Hesiod's Five Ages of Man, what was the first and most perfect age, when humans lived like gods?",
+          "correctAnswer": "Golden Age",
+          "distractors": [
+            {
+              "answer": "River Lethe",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_lethe_forget"
+            },
+            {
+              "answer": "River Acheron",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_acheron_cocytus"
+            },
+            {
+              "answer": "River Styx",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_styx_oath"
+            },
+            {
+              "answer": "Asphodel Meadows",
+              "source": "similar_difficulty",
+              "factId": "myth_asphodel_neutral"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_underworld_styx_oath",
+          "masteryLevel": 0,
+          "poolId": "location_names_long",
+          "renderedQuestion": "Which river in the Greek Underworld was so sacred that even the gods swore unbreakable oaths by it?",
+          "correctAnswer": "River Styx",
+          "distractors": [
+            {
+              "answer": "Golden Age",
+              "source": "similar_difficulty",
+              "factId": "myth_golden_age"
+            },
+            {
+              "answer": "Asphodel Meadows",
+              "source": "similar_difficulty",
+              "factId": "myth_asphodel_neutral"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_underworld_styx_oath",
+          "masteryLevel": 2,
+          "poolId": "location_names_long",
+          "renderedQuestion": "Which river in the Greek Underworld was so sacred that even the gods swore unbreakable oaths by it?",
+          "correctAnswer": "River Styx",
+          "distractors": [
+            {
+              "answer": "Golden Age",
+              "source": "similar_difficulty",
+              "factId": "myth_golden_age"
+            },
+            {
+              "answer": "Asphodel Meadows",
+              "source": "similar_difficulty",
+              "factId": "myth_asphodel_neutral"
+            },
+            {
+              "answer": "River Acheron",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_acheron_cocytus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_underworld_styx_oath",
+          "masteryLevel": 4,
+          "poolId": "location_names_long",
+          "renderedQuestion": "Which river in the Greek Underworld was so sacred that even the gods swore unbreakable oaths by it?",
+          "correctAnswer": "River Styx",
+          "distractors": [
+            {
+              "answer": "Golden Age",
+              "source": "similar_difficulty",
+              "factId": "myth_golden_age"
+            },
+            {
+              "answer": "Asphodel Meadows",
+              "source": "similar_difficulty",
+              "factId": "myth_asphodel_neutral"
+            },
+            {
+              "answer": "River Acheron",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_acheron_cocytus"
+            },
+            {
+              "answer": "River Lethe",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_lethe_forget"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_underworld_lethe_forget",
+          "masteryLevel": 0,
+          "poolId": "location_names_long",
+          "renderedQuestion": "Which Underworld river, whose name means 'oblivion,' caused souls to forget their past lives when they drank from it?",
+          "correctAnswer": "River Lethe",
+          "distractors": [
+            {
+              "answer": "River Styx",
+              "source": "similar_difficulty",
+              "factId": "myth_achilles_styx"
+            },
+            {
+              "answer": "River Acheron",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_acheron_cocytus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_underworld_lethe_forget",
+          "masteryLevel": 2,
+          "poolId": "location_names_long",
+          "renderedQuestion": "Which Underworld river, whose name means 'oblivion,' caused souls to forget their past lives when they drank from it?",
+          "correctAnswer": "River Lethe",
+          "distractors": [
+            {
+              "answer": "River Styx",
+              "source": "similar_difficulty",
+              "factId": "myth_achilles_styx"
+            },
+            {
+              "answer": "River Acheron",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_acheron_cocytus"
+            },
+            {
+              "answer": "Asphodel Meadows",
+              "source": "similar_difficulty",
+              "factId": "myth_asphodel_neutral"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_underworld_lethe_forget",
+          "masteryLevel": 4,
+          "poolId": "location_names_long",
+          "renderedQuestion": "Which Underworld river, whose name means 'oblivion,' caused souls to forget their past lives when they drank from it?",
+          "correctAnswer": "River Lethe",
+          "distractors": [
+            {
+              "answer": "River Styx",
+              "source": "similar_difficulty",
+              "factId": "myth_achilles_styx"
+            },
+            {
+              "answer": "River Acheron",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_acheron_cocytus"
+            },
+            {
+              "answer": "Asphodel Meadows",
+              "source": "similar_difficulty",
+              "factId": "myth_asphodel_neutral"
+            },
+            {
+              "answer": "Golden Age",
+              "source": "similar_difficulty",
+              "factId": "myth_golden_age"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_underworld_rivers",
+          "masteryLevel": 0,
+          "poolId": "location_names_long",
+          "renderedQuestion": "Which Underworld river was a river of fire that led into the depths of Tartarus?",
+          "correctAnswer": "River Phlegethon",
+          "distractors": [
+            {
+              "answer": "Phaeacians",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_phaeacians"
+            },
+            {
+              "answer": "River Acheron",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_acheron_cocytus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_underworld_rivers",
+          "masteryLevel": 2,
+          "poolId": "location_names_long",
+          "renderedQuestion": "Which Underworld river was a river of fire that led into the depths of Tartarus?",
+          "correctAnswer": "River Phlegethon",
+          "distractors": [
+            {
+              "answer": "Phaeacians",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_phaeacians"
+            },
+            {
+              "answer": "River Acheron",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_acheron_cocytus"
+            },
+            {
+              "answer": "Asphodel Meadows",
+              "source": "similar_difficulty",
+              "factId": "myth_asphodel_neutral"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_underworld_rivers",
+          "masteryLevel": 4,
+          "poolId": "location_names_long",
+          "renderedQuestion": "Which Underworld river was a river of fire that led into the depths of Tartarus?",
+          "correctAnswer": "River Phlegethon",
+          "distractors": [
+            {
+              "answer": "Phaeacians",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_phaeacians"
+            },
+            {
+              "answer": "River Acheron",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_acheron_cocytus"
+            },
+            {
+              "answer": "Asphodel Meadows",
+              "source": "similar_difficulty",
+              "factId": "myth_asphodel_neutral"
+            },
+            {
+              "answer": "Golden Age",
+              "source": "pool_fill",
+              "factId": "myth_golden_age"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_underworld_acheron_cocytus",
+          "masteryLevel": 0,
+          "poolId": "location_names_long",
+          "renderedQuestion": "Which Underworld river, called the 'river of woe,' was the one Charon most commonly ferried souls across?",
+          "correctAnswer": "River Acheron",
+          "distractors": [
+            {
+              "answer": "River Lethe",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_lethe_forget"
+            },
+            {
+              "answer": "River Styx",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_styx_oath"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_underworld_acheron_cocytus",
+          "masteryLevel": 2,
+          "poolId": "location_names_long",
+          "renderedQuestion": "Which Underworld river, called the 'river of woe,' was the one Charon most commonly ferried souls across?",
+          "correctAnswer": "River Acheron",
+          "distractors": [
+            {
+              "answer": "River Lethe",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_lethe_forget"
+            },
+            {
+              "answer": "River Styx",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_styx_oath"
+            },
+            {
+              "answer": "Asphodel Meadows",
+              "source": "similar_difficulty",
+              "factId": "myth_asphodel_neutral"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_underworld_acheron_cocytus",
+          "masteryLevel": 4,
+          "poolId": "location_names_long",
+          "renderedQuestion": "Which Underworld river, called the 'river of woe,' was the one Charon most commonly ferried souls across?",
+          "correctAnswer": "River Acheron",
+          "distractors": [
+            {
+              "answer": "River Lethe",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_lethe_forget"
+            },
+            {
+              "answer": "River Styx",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_styx_oath"
+            },
+            {
+              "answer": "Asphodel Meadows",
+              "source": "similar_difficulty",
+              "factId": "myth_asphodel_neutral"
+            },
+            {
+              "answer": "River Phlegethon",
+              "source": "similar_difficulty",
+              "factId": "myth_underworld_rivers"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_hydra",
+          "masteryLevel": 0,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "In Heracles' second labor, which multi-headed serpent regrew two heads every time one was cut off?",
+          "correctAnswer": "Hydra",
+          "distractors": [
+            {
+              "answer": "Scylla",
+              "source": "similar_difficulty",
+              "factId": "myth_scylla_charybdis"
+            },
+            {
+              "answer": "Medusa",
+              "source": "similar_difficulty",
+              "factId": "myth_medusa_gorgon_sisters"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_hydra",
+          "masteryLevel": 2,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "In Heracles' second labor, which multi-headed serpent regrew two heads every time one was cut off?",
+          "correctAnswer": "Hydra",
+          "distractors": [
+            {
+              "answer": "Scylla",
+              "source": "similar_difficulty",
+              "factId": "myth_scylla_charybdis"
+            },
+            {
+              "answer": "Medusa",
+              "source": "similar_difficulty",
+              "factId": "myth_medusa_gorgon_sisters"
+            },
+            {
+              "answer": "Typhon",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_zeus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_hydra",
+          "masteryLevel": 4,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "In Heracles' second labor, which multi-headed serpent regrew two heads every time one was cut off?",
+          "correctAnswer": "Hydra",
+          "distractors": [
+            {
+              "answer": "Scylla",
+              "source": "similar_difficulty",
+              "factId": "myth_scylla_charybdis"
+            },
+            {
+              "answer": "Medusa",
+              "source": "similar_difficulty",
+              "factId": "myth_medusa_gorgon_sisters"
+            },
+            {
+              "answer": "Typhon",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_zeus"
+            },
+            {
+              "answer": "Sphinx",
+              "source": "similar_difficulty",
+              "factId": "myth_oedipus_sphinx"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_nessus_shirt",
+          "masteryLevel": 0,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "Which centaur's poisoned blood, smeared on a robe by a deceived wife, caused the death of Heracles?",
+          "correctAnswer": "Nessus",
+          "distractors": [
+            {
+              "answer": "Scylla",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_scylla_charybdis"
+            },
+            {
+              "answer": "Ladon",
+              "source": "similar_difficulty",
+              "factId": "myth_ladon_golden_apples"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_nessus_shirt",
+          "masteryLevel": 2,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "Which centaur's poisoned blood, smeared on a robe by a deceived wife, caused the death of Heracles?",
+          "correctAnswer": "Nessus",
+          "distractors": [
+            {
+              "answer": "Scylla",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_scylla_charybdis"
+            },
+            {
+              "answer": "Ladon",
+              "source": "similar_difficulty",
+              "factId": "myth_ladon_golden_apples"
+            },
+            {
+              "answer": "Furies",
+              "source": "similar_difficulty",
+              "factId": "myth_furies_punishment"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_heracles_nessus_shirt",
+          "masteryLevel": 4,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "Which centaur's poisoned blood, smeared on a robe by a deceived wife, caused the death of Heracles?",
+          "correctAnswer": "Nessus",
+          "distractors": [
+            {
+              "answer": "Scylla",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_scylla_charybdis"
+            },
+            {
+              "answer": "Ladon",
+              "source": "similar_difficulty",
+              "factId": "myth_ladon_golden_apples"
+            },
+            {
+              "answer": "Furies",
+              "source": "similar_difficulty",
+              "factId": "myth_furies_punishment"
+            },
+            {
+              "answer": "Sphinx",
+              "source": "similar_difficulty",
+              "factId": "myth_oedipus_sphinx"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_perseus_kills_medusa",
+          "masteryLevel": 0,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "Which Gorgon did Perseus behead while looking only at her reflection — and from whose blood sprang the winged horse Pegasus?",
+          "correctAnswer": "Medusa",
+          "distractors": [
+            {
+              "answer": "Hydra",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_hydra"
+            },
+            {
+              "answer": "Typhon",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_zeus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_perseus_kills_medusa",
+          "masteryLevel": 2,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "Which Gorgon did Perseus behead while looking only at her reflection — and from whose blood sprang the winged horse Pegasus?",
+          "correctAnswer": "Medusa",
+          "distractors": [
+            {
+              "answer": "Hydra",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_hydra"
+            },
+            {
+              "answer": "Typhon",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_zeus"
+            },
+            {
+              "answer": "Scylla",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_scylla_charybdis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_perseus_kills_medusa",
+          "masteryLevel": 4,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "Which Gorgon did Perseus behead while looking only at her reflection — and from whose blood sprang the winged horse Pegasus?",
+          "correctAnswer": "Medusa",
+          "distractors": [
+            {
+              "answer": "Hydra",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_hydra"
+            },
+            {
+              "answer": "Typhon",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_zeus"
+            },
+            {
+              "answer": "Scylla",
+              "source": "similar_difficulty",
+              "factId": "myth_odyssey_scylla_charybdis"
+            },
+            {
+              "answer": "Sphinx",
+              "source": "similar_difficulty",
+              "factId": "myth_oedipus_sphinx"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_odyssey_scylla_charybdis",
+          "masteryLevel": 0,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "In Homer's Odyssey, Odysseus must navigate between two deadly sea monsters. One was Charybdis — a whirlpool monster. The other was a six-headed creature that devoured six of his men. What was that monster called?",
+          "correctAnswer": "Scylla",
+          "distractors": [
+            {
+              "answer": "Typhon",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_zeus"
+            },
+            {
+              "answer": "Chiron",
+              "source": "similar_difficulty",
+              "factId": "myth_centaurs_chiron"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_odyssey_scylla_charybdis",
+          "masteryLevel": 2,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "In Homer's Odyssey, Odysseus must navigate between two deadly sea monsters. One was Charybdis — a whirlpool monster. The other was a six-headed creature that devoured six of his men. What was that monster called?",
+          "correctAnswer": "Scylla",
+          "distractors": [
+            {
+              "answer": "Typhon",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_zeus"
+            },
+            {
+              "answer": "Chiron",
+              "source": "similar_difficulty",
+              "factId": "myth_centaurs_chiron"
+            },
+            {
+              "answer": "Medusa",
+              "source": "similar_difficulty",
+              "factId": "myth_perseus_kills_medusa"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_odyssey_scylla_charybdis",
+          "masteryLevel": 4,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "In Homer's Odyssey, Odysseus must navigate between two deadly sea monsters. One was Charybdis — a whirlpool monster. The other was a six-headed creature that devoured six of his men. What was that monster called?",
+          "correctAnswer": "Scylla",
+          "distractors": [
+            {
+              "answer": "Typhon",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_zeus"
+            },
+            {
+              "answer": "Chiron",
+              "source": "similar_difficulty",
+              "factId": "myth_centaurs_chiron"
+            },
+            {
+              "answer": "Medusa",
+              "source": "similar_difficulty",
+              "factId": "myth_perseus_kills_medusa"
+            },
+            {
+              "answer": "Hydra",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_hydra"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_medusa_gorgon_sisters",
+          "masteryLevel": 0,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "Among the three Gorgon sisters, which was the only mortal one — and therefore the only one Perseus could kill?",
+          "correctAnswer": "Medusa",
+          "distractors": [
+            {
+              "answer": "Typhon",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_zeus"
+            },
+            {
+              "answer": "Scylla",
+              "source": "similar_difficulty",
+              "factId": "myth_scylla_charybdis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_medusa_gorgon_sisters",
+          "masteryLevel": 2,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "Among the three Gorgon sisters, which was the only mortal one — and therefore the only one Perseus could kill?",
+          "correctAnswer": "Medusa",
+          "distractors": [
+            {
+              "answer": "Typhon",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_zeus"
+            },
+            {
+              "answer": "Scylla",
+              "source": "similar_difficulty",
+              "factId": "myth_scylla_charybdis"
+            },
+            {
+              "answer": "Sphinx",
+              "source": "similar_difficulty",
+              "factId": "myth_oedipus_sphinx"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_medusa_gorgon_sisters",
+          "masteryLevel": 4,
+          "poolId": "creature_names_short",
+          "renderedQuestion": "Among the three Gorgon sisters, which was the only mortal one — and therefore the only one Perseus could kill?",
+          "correctAnswer": "Medusa",
+          "distractors": [
+            {
+              "answer": "Typhon",
+              "source": "similar_difficulty",
+              "factId": "myth_typhon_zeus"
+            },
+            {
+              "answer": "Scylla",
+              "source": "similar_difficulty",
+              "factId": "myth_scylla_charybdis"
+            },
+            {
+              "answer": "Sphinx",
+              "source": "similar_difficulty",
+              "factId": "myth_oedipus_sphinx"
+            },
+            {
+              "answer": "Nessus",
+              "source": "similar_difficulty",
+              "factId": "myth_heracles_nessus_shirt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_troy_ten_year_siege",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many years did the Greeks besiege Troy before the city fell?",
+          "correctAnswer": "10",
+          "distractors": [
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            },
+            {
+              "answer": "2",
+              "source": "numerical",
+              "factId": "_numerical_2"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_troy_ten_year_siege",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many years did the Greeks besiege Troy before the city fell?",
+          "correctAnswer": "10",
+          "distractors": [
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            },
+            {
+              "answer": "2",
+              "source": "numerical",
+              "factId": "_numerical_2"
+            },
+            {
+              "answer": "15",
+              "source": "numerical",
+              "factId": "_numerical_15"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_troy_ten_year_siege",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many years did the Greeks besiege Troy before the city fell?",
+          "correctAnswer": "10",
+          "distractors": [
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            },
+            {
+              "answer": "2",
+              "source": "numerical",
+              "factId": "_numerical_2"
+            },
+            {
+              "answer": "15",
+              "source": "numerical",
+              "factId": "_numerical_15"
+            },
+            {
+              "answer": "27",
+              "source": "numerical",
+              "factId": "_numerical_27"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_odyssey_twenty_years",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many total years was Odysseus away from his home in Ithaca — including both the Trojan War and his journey home?",
+          "correctAnswer": "20",
+          "distractors": [
+            {
+              "answer": "23",
+              "source": "numerical",
+              "factId": "_numerical_23"
+            },
+            {
+              "answer": "14",
+              "source": "numerical",
+              "factId": "_numerical_14"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_odyssey_twenty_years",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many total years was Odysseus away from his home in Ithaca — including both the Trojan War and his journey home?",
+          "correctAnswer": "20",
+          "distractors": [
+            {
+              "answer": "23",
+              "source": "numerical",
+              "factId": "_numerical_23"
+            },
+            {
+              "answer": "14",
+              "source": "numerical",
+              "factId": "_numerical_14"
+            },
+            {
+              "answer": "27",
+              "source": "numerical",
+              "factId": "_numerical_27"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_odyssey_twenty_years",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many total years was Odysseus away from his home in Ithaca — including both the Trojan War and his journey home?",
+          "correctAnswer": "20",
+          "distractors": [
+            {
+              "answer": "23",
+              "source": "numerical",
+              "factId": "_numerical_23"
+            },
+            {
+              "answer": "14",
+              "source": "numerical",
+              "factId": "_numerical_14"
+            },
+            {
+              "answer": "27",
+              "source": "numerical",
+              "factId": "_numerical_27"
+            },
+            {
+              "answer": "15",
+              "source": "numerical",
+              "factId": "_numerical_15"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_odyssey_penelope_suitors",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many suitors were eating Odysseus's food and competing for Penelope's hand during his 20-year absence?",
+          "correctAnswer": "108",
+          "distractors": [
+            {
+              "answer": "160",
+              "source": "numerical",
+              "factId": "_numerical_160"
+            },
+            {
+              "answer": "60",
+              "source": "numerical",
+              "factId": "_numerical_60"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_odyssey_penelope_suitors",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many suitors were eating Odysseus's food and competing for Penelope's hand during his 20-year absence?",
+          "correctAnswer": "108",
+          "distractors": [
+            {
+              "answer": "160",
+              "source": "numerical",
+              "factId": "_numerical_160"
+            },
+            {
+              "answer": "60",
+              "source": "numerical",
+              "factId": "_numerical_60"
+            },
+            {
+              "answer": "130",
+              "source": "numerical",
+              "factId": "_numerical_130"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_odyssey_penelope_suitors",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many suitors were eating Odysseus's food and competing for Penelope's hand during his 20-year absence?",
+          "correctAnswer": "108",
+          "distractors": [
+            {
+              "answer": "160",
+              "source": "numerical",
+              "factId": "_numerical_160"
+            },
+            {
+              "answer": "60",
+              "source": "numerical",
+              "factId": "_numerical_60"
+            },
+            {
+              "answer": "130",
+              "source": "numerical",
+              "factId": "_numerical_130"
+            },
+            {
+              "answer": "80",
+              "source": "numerical",
+              "factId": "_numerical_80"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "myth_phoenix_rebirth",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "According to myth, the Phoenix lived for how many years before bursting into flame and being reborn from its own ashes?",
+          "correctAnswer": "500",
+          "distractors": [
+            {
+              "answer": "670",
+              "source": "numerical",
+              "factId": "_numerical_670"
+            },
+            {
+              "answer": "280",
+              "source": "numerical",
+              "factId": "_numerical_280"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "myth_phoenix_rebirth",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "According to myth, the Phoenix lived for how many years before bursting into flame and being reborn from its own ashes?",
+          "correctAnswer": "500",
+          "distractors": [
+            {
+              "answer": "670",
+              "source": "numerical",
+              "factId": "_numerical_670"
+            },
+            {
+              "answer": "280",
+              "source": "numerical",
+              "factId": "_numerical_280"
+            },
+            {
+              "answer": "700",
+              "source": "numerical",
+              "factId": "_numerical_700"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "myth_phoenix_rebirth",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "According to myth, the Phoenix lived for how many years before bursting into flame and being reborn from its own ashes?",
+          "correctAnswer": "500",
+          "distractors": [
+            {
+              "answer": "670",
+              "source": "numerical",
+              "factId": "_numerical_670"
+            },
+            {
+              "answer": "280",
+              "source": "numerical",
+              "factId": "_numerical_280"
+            },
+            {
+              "answer": "700",
+              "source": "numerical",
+              "factId": "_numerical_700"
+            },
+            {
+              "answer": "370",
+              "source": "numerical",
+              "factId": "_numerical_370"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

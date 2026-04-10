@@ -1,0 +1,5510 @@
+{
+  "timestamp": "2026-04-10T13:40:28.673Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 195,
+  "totalFails": 0,
+  "totalWarns": 3,
+  "decks": [
+    {
+      "deckId": "japanese_n4_grammar",
+      "deckName": "Japanese N4 Grammar",
+      "deckClass": "vocab",
+      "totalFacts": 400,
+      "totalChecks": 195,
+      "failCount": 0,
+      "warnCount": 3,
+      "issuesByType": {
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "ja-gram-n4-n4-cond-ba-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "もっと早く起き{___}、電車に間に合ったのに。\n(If I had woken up earlier, I would have made the train.)",
+          "correctAnswer": "れば",
+          "distractors": [
+            {
+              "answer": "みたいに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-ni-fill-1"
+            },
+            {
+              "answer": "なさい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-nasai-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-ba-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "もっと早く起き{___}、電車に間に合ったのに。\n(If I had woken up earlier, I would have made the train.)",
+          "correctAnswer": "れば",
+          "distractors": [
+            {
+              "answer": "みたいに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-ni-fill-1"
+            },
+            {
+              "answer": "なさい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-nasai-fill-2"
+            },
+            {
+              "answer": "どうして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-q-doushite-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-ba-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "もっと早く起き{___}、電車に間に合ったのに。\n(If I had woken up earlier, I would have made the train.)",
+          "correctAnswer": "れば",
+          "distractors": [
+            {
+              "answer": "みたいに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-ni-fill-1"
+            },
+            {
+              "answer": "なさい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-nasai-fill-2"
+            },
+            {
+              "answer": "どうして",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-q-doushite-fill-3"
+            },
+            {
+              "answer": "じゃないか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-q-janai-ka-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-ba-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "お金があ{___}、新しいパソコンを買うのに。\n(If I had money, I would buy a new computer.)",
+          "correctAnswer": "れば",
+          "distractors": [
+            {
+              "answer": "てよかったです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-yokatta-fill-0"
+            },
+            {
+              "answer": "なければなりません",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-ba-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "お金があ{___}、新しいパソコンを買うのに。\n(If I had money, I would buy a new computer.)",
+          "correctAnswer": "れば",
+          "distractors": [
+            {
+              "answer": "てよかったです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-yokatta-fill-0"
+            },
+            {
+              "answer": "なければなりません",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-0"
+            },
+            {
+              "answer": "より",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-yori-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-ba-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "お金があ{___}、新しいパソコンを買うのに。\n(If I had money, I would buy a new computer.)",
+          "correctAnswer": "れば",
+          "distractors": [
+            {
+              "answer": "てよかったです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-yokatta-fill-0"
+            },
+            {
+              "answer": "なければなりません",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-0"
+            },
+            {
+              "answer": "より",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-yori-fill-2"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ni-naru-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-ba-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "天気がよけ{___}、公園でピクニックをしましょう。\n(If the weather is good, let's have a picnic in the park.)",
+          "correctAnswer": "れば",
+          "distractors": [
+            {
+              "answer": "だけで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-dake-de-fill-2"
+            },
+            {
+              "answer": "ても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-temo-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-ba-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "天気がよけ{___}、公園でピクニックをしましょう。\n(If the weather is good, let's have a picnic in the park.)",
+          "correctAnswer": "れば",
+          "distractors": [
+            {
+              "answer": "だけで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-dake-de-fill-2"
+            },
+            {
+              "answer": "ても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-temo-fill-1"
+            },
+            {
+              "answer": "頃",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-goro-koro-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-ba-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "天気がよけ{___}、公園でピクニックをしましょう。\n(If the weather is good, let's have a picnic in the park.)",
+          "correctAnswer": "れば",
+          "distractors": [
+            {
+              "answer": "だけで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-dake-de-fill-2"
+            },
+            {
+              "answer": "ても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-temo-fill-1"
+            },
+            {
+              "answer": "頃",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-goro-koro-fill-2"
+            },
+            {
+              "answer": "かもしれない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kamoshirenai-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-ba-fill-3",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "勉強す{___}、試験に合格できると思います。\n(I think if you study, you can pass the exam.)",
+          "correctAnswer": "れば",
+          "distractors": [
+            {
+              "answer": "も",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-mo-fill-2"
+            },
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-although-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-ba-fill-3",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "勉強す{___}、試験に合格できると思います。\n(I think if you study, you can pass the exam.)",
+          "correctAnswer": "れば",
+          "distractors": [
+            {
+              "answer": "も",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-mo-fill-2"
+            },
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-although-fill-1"
+            },
+            {
+              "answer": "すぎ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-sugiru-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-ba-fill-3",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "勉強す{___}、試験に合格できると思います。\n(I think if you study, you can pass the exam.)",
+          "correctAnswer": "れば",
+          "distractors": [
+            {
+              "answer": "も",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-mo-fill-2"
+            },
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-although-fill-1"
+            },
+            {
+              "answer": "すぎ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-sugiru-fill-0"
+            },
+            {
+              "answer": "きっと",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-kitto-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-baai-wa-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "火事の{___}、すぐに非常口から逃げてください。\n(In the event of a fire, please escape immediately through the emergency exit.)",
+          "correctAnswer": "場合は",
+          "distractors": [
+            {
+              "answer": "ございます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-gozaimasu-fill-2"
+            },
+            {
+              "answer": "そうです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-baai-wa-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "火事の{___}、すぐに非常口から逃げてください。\n(In the event of a fire, please escape immediately through the emergency exit.)",
+          "correctAnswer": "場合は",
+          "distractors": [
+            {
+              "answer": "ございます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-gozaimasu-fill-2"
+            },
+            {
+              "answer": "そうです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-4"
+            },
+            {
+              "answer": "がる",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-garu-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-cond-baai-wa-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "火事の{___}、すぐに非常口から逃げてください。\n(In the event of a fire, please escape immediately through the emergency exit.)",
+          "correctAnswer": "場合は",
+          "distractors": [
+            {
+              "answer": "ございます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-gozaimasu-fill-2"
+            },
+            {
+              "answer": "そうです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-4"
+            },
+            {
+              "answer": "がる",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-garu-fill-0"
+            },
+            {
+              "answer": "やすかった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-yasui-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-ageru-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "友達に本を貸し{___}ました。\n(I lent a book to my friend.)",
+          "correctAnswer": "てあげ",
+          "distractors": [
+            {
+              "answer": "てみ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-miru-fill-0"
+            },
+            {
+              "answer": "たら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-tara-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-ageru-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "友達に本を貸し{___}ました。\n(I lent a book to my friend.)",
+          "correctAnswer": "てあげ",
+          "distractors": [
+            {
+              "answer": "てみ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-miru-fill-0"
+            },
+            {
+              "answer": "たら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-tara-fill-1"
+            },
+            {
+              "answer": "がほしい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-hoshii-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-ageru-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "友達に本を貸し{___}ました。\n(I lent a book to my friend.)",
+          "correctAnswer": "てあげ",
+          "distractors": [
+            {
+              "answer": "てみ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-miru-fill-0"
+            },
+            {
+              "answer": "たら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-tara-fill-1"
+            },
+            {
+              "answer": "がほしい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-hoshii-fill-0"
+            },
+            {
+              "answer": "ことができます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ga-dekiru-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-ageru-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "子供に宿題を手伝っ{___}ました。\n(I helped the child with their homework.)",
+          "correctAnswer": "てあげ",
+          "distractors": [
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-0"
+            },
+            {
+              "answer": "なければなりません",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-ageru-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "子供に宿題を手伝っ{___}ました。\n(I helped the child with their homework.)",
+          "correctAnswer": "てあげ",
+          "distractors": [
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-0"
+            },
+            {
+              "answer": "なければなりません",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-0"
+            },
+            {
+              "answer": "でも",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-demo-or-something-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-ageru-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "子供に宿題を手伝っ{___}ました。\n(I helped the child with their homework.)",
+          "correctAnswer": "てあげ",
+          "distractors": [
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-0"
+            },
+            {
+              "answer": "なければなりません",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-0"
+            },
+            {
+              "answer": "でも",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-demo-or-something-fill-1"
+            },
+            {
+              "answer": "みたいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-da-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-ageru-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "道に迷っ{___}人に道を教えてあげました。\n(I gave directions to a person who was lost.)",
+          "correctAnswer": "ている",
+          "distractors": [
+            {
+              "answer": "ぜひ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-zehi-fill-0"
+            },
+            {
+              "answer": "頃",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-goro-koro-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies person name answers but 3 options don't match: \"ている\", \"ぜひ\", \"頃\""
+            }
+          ]
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-ageru-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "道に迷っ{___}人に道を教えてあげました。\n(I gave directions to a person who was lost.)",
+          "correctAnswer": "ている",
+          "distractors": [
+            {
+              "answer": "ぜひ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-zehi-fill-0"
+            },
+            {
+              "answer": "頃",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-goro-koro-fill-0"
+            },
+            {
+              "answer": "ように",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-you-ni-na-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies person name answers but 4 options don't match: \"ている\", \"ぜひ\", \"頃\", \"ように\""
+            }
+          ]
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-ageru-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "道に迷っ{___}人に道を教えてあげました。\n(I gave directions to a person who was lost.)",
+          "correctAnswer": "ている",
+          "distractors": [
+            {
+              "answer": "ぜひ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-zehi-fill-0"
+            },
+            {
+              "answer": "頃",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-goro-koro-fill-0"
+            },
+            {
+              "answer": "ように",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-you-ni-na-fill-2"
+            },
+            {
+              "answer": "あまり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-amari-nai-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies person name answers but 5 options don't match: \"ている\", \"ぜひ\", \"頃\", \"ように\", \"あまり\""
+            }
+          ]
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-morau-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "先生に日本語を教え{___}いました。\n(I had the teacher teach me Japanese.)",
+          "correctAnswer": "てもら",
+          "distractors": [
+            {
+              "answer": "らしいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-rashii-fill-0"
+            },
+            {
+              "answer": "なので",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-nanode-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-morau-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "先生に日本語を教え{___}いました。\n(I had the teacher teach me Japanese.)",
+          "correctAnswer": "てもら",
+          "distractors": [
+            {
+              "answer": "らしいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-rashii-fill-0"
+            },
+            {
+              "answer": "なので",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-nanode-fill-1"
+            },
+            {
+              "answer": "の中で",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-no-naka-de-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-morau-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "先生に日本語を教え{___}いました。\n(I had the teacher teach me Japanese.)",
+          "correctAnswer": "てもら",
+          "distractors": [
+            {
+              "answer": "らしいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-rashii-fill-0"
+            },
+            {
+              "answer": "なので",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-nanode-fill-1"
+            },
+            {
+              "answer": "の中で",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-no-naka-de-fill-2"
+            },
+            {
+              "answer": "ので",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-node-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-morau-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "母に料理を作っ{___}いたいです。\n(I want my mother to cook for me.)",
+          "correctAnswer": "てもら",
+          "distractors": [
+            {
+              "answer": "みたいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-da-fill-0"
+            },
+            {
+              "answer": "すぎ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-sugiru-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-morau-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "母に料理を作っ{___}いたいです。\n(I want my mother to cook for me.)",
+          "correctAnswer": "てもら",
+          "distractors": [
+            {
+              "answer": "みたいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-da-fill-0"
+            },
+            {
+              "answer": "すぎ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-sugiru-fill-1"
+            },
+            {
+              "answer": "らしいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-rashii-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-morau-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "母に料理を作っ{___}いたいです。\n(I want my mother to cook for me.)",
+          "correctAnswer": "てもら",
+          "distractors": [
+            {
+              "answer": "みたいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-da-fill-0"
+            },
+            {
+              "answer": "すぎ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-sugiru-fill-1"
+            },
+            {
+              "answer": "らしいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-rashii-fill-2"
+            },
+            {
+              "answer": "ていきます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-iku-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-miru-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "新しいレストランで食べ{___}ました。\n(I tried eating at the new restaurant.)",
+          "correctAnswer": "てみ",
+          "distractors": [
+            {
+              "answer": "らしいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-rashii-fill-2"
+            },
+            {
+              "answer": "やすい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-yasui-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-miru-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "新しいレストランで食べ{___}ました。\n(I tried eating at the new restaurant.)",
+          "correctAnswer": "てみ",
+          "distractors": [
+            {
+              "answer": "らしいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-rashii-fill-2"
+            },
+            {
+              "answer": "やすい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-yasui-fill-2"
+            },
+            {
+              "answer": "以上",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-ijou-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-miru-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "新しいレストランで食べ{___}ました。\n(I tried eating at the new restaurant.)",
+          "correctAnswer": "てみ",
+          "distractors": [
+            {
+              "answer": "らしいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-rashii-fill-2"
+            },
+            {
+              "answer": "やすい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-yasui-fill-2"
+            },
+            {
+              "answer": "以上",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-ijou-fill-2"
+            },
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-purpose-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-miru-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "その映画を見{___}いです。\n(I want to try watching that movie.)",
+          "correctAnswer": "てみた",
+          "distractors": [
+            {
+              "answer": "ているところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-teiru-tokoro-fill-0"
+            },
+            {
+              "answer": "ないで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-naide-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-miru-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "その映画を見{___}いです。\n(I want to try watching that movie.)",
+          "correctAnswer": "てみた",
+          "distractors": [
+            {
+              "answer": "ているところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-teiru-tokoro-fill-0"
+            },
+            {
+              "answer": "ないで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-naide-fill-1"
+            },
+            {
+              "answer": "ばかり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-bakari-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-miru-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "その映画を見{___}いです。\n(I want to try watching that movie.)",
+          "correctAnswer": "てみた",
+          "distractors": [
+            {
+              "answer": "ているところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-teiru-tokoro-fill-0"
+            },
+            {
+              "answer": "ないで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-naide-fill-1"
+            },
+            {
+              "answer": "ばかり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-bakari-fill-3"
+            },
+            {
+              "answer": "の中で",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-no-naka-de-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-miru-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "日本語で手紙を書い{___}ました。\n(I tried writing a letter in Japanese.)",
+          "correctAnswer": "てみ",
+          "distractors": [
+            {
+              "answer": "しかし",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-shikashi-fill-1"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-na-prohibit-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-miru-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "日本語で手紙を書い{___}ました。\n(I tried writing a letter in Japanese.)",
+          "correctAnswer": "てみ",
+          "distractors": [
+            {
+              "answer": "しかし",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-shikashi-fill-1"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-na-prohibit-fill-2"
+            },
+            {
+              "answer": "てほしかった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-hoshii-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-miru-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "日本語で手紙を書い{___}ました。\n(I tried writing a letter in Japanese.)",
+          "correctAnswer": "てみ",
+          "distractors": [
+            {
+              "answer": "しかし",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-shikashi-fill-1"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-na-prohibit-fill-2"
+            },
+            {
+              "answer": "てほしかった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-hoshii-fill-1"
+            },
+            {
+              "answer": "ないで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-naide-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-oku-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "旅行の前に、ホテルを予約し{___}ました。\n(I reserved a hotel in advance before the trip.)",
+          "correctAnswer": "ておき",
+          "distractors": [
+            {
+              "answer": "づらいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-zurai-fill-1"
+            },
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-oku-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "旅行の前に、ホテルを予約し{___}ました。\n(I reserved a hotel in advance before the trip.)",
+          "correctAnswer": "ておき",
+          "distractors": [
+            {
+              "answer": "づらいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-zurai-fill-1"
+            },
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-2"
+            },
+            {
+              "answer": "さっき",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-sakki-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-oku-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "旅行の前に、ホテルを予約し{___}ました。\n(I reserved a hotel in advance before the trip.)",
+          "correctAnswer": "ておき",
+          "distractors": [
+            {
+              "answer": "づらいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-zurai-fill-1"
+            },
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-2"
+            },
+            {
+              "answer": "さっき",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-sakki-fill-0"
+            },
+            {
+              "answer": "けれども",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-keredomo-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-oku-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "明日の会議のために、資料を準備し{___}ください。\n(Please prepare the materials in advance for tomorrow's meeting.)",
+          "correctAnswer": "ておいて",
+          "distractors": [
+            {
+              "answer": "そうに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-ni-na-fill-0"
+            },
+            {
+              "answer": "たところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-ta-tokoro-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-oku-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "明日の会議のために、資料を準備し{___}ください。\n(Please prepare the materials in advance for tomorrow's meeting.)",
+          "correctAnswer": "ておいて",
+          "distractors": [
+            {
+              "answer": "そうに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-ni-na-fill-0"
+            },
+            {
+              "answer": "たところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-ta-tokoro-fill-0"
+            },
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-te-oku-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "明日の会議のために、資料を準備し{___}ください。\n(Please prepare the materials in advance for tomorrow's meeting.)",
+          "correctAnswer": "ておいて",
+          "distractors": [
+            {
+              "answer": "そうに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-ni-na-fill-0"
+            },
+            {
+              "answer": "たところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-ta-tokoro-fill-0"
+            },
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-1"
+            },
+            {
+              "answer": "がほしい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-hoshii-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "これは、食べられ{___}ではありません。\n(This doesn't look like it's edible.)",
+          "correctAnswer": "そう",
+          "distractors": [
+            {
+              "answer": "または",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-matawa-fill-1"
+            },
+            {
+              "answer": "ばかり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-bakari-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "これは、食べられ{___}ではありません。\n(This doesn't look like it's edible.)",
+          "correctAnswer": "そう",
+          "distractors": [
+            {
+              "answer": "または",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-matawa-fill-1"
+            },
+            {
+              "answer": "ばかり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-bakari-fill-0"
+            },
+            {
+              "answer": "ていました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-you-da-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "これは、食べられ{___}ではありません。\n(This doesn't look like it's edible.)",
+          "correctAnswer": "そう",
+          "distractors": [
+            {
+              "answer": "または",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-matawa-fill-1"
+            },
+            {
+              "answer": "ばかり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-bakari-fill-0"
+            },
+            {
+              "answer": "ていました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-you-da-fill-2"
+            },
+            {
+              "answer": "すぎる",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-sugiru-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "雪が降り{___}ね。\n(Looks like it's going to snow, doesn't it?)",
+          "correctAnswer": "そうです",
+          "distractors": [
+            {
+              "answer": "など",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-nado-fill-2"
+            },
+            {
+              "answer": "てしまった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-shimau-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "雪が降り{___}ね。\n(Looks like it's going to snow, doesn't it?)",
+          "correctAnswer": "そうです",
+          "distractors": [
+            {
+              "answer": "など",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-nado-fill-2"
+            },
+            {
+              "answer": "てしまった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-shimau-fill-1"
+            },
+            {
+              "answer": "たら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-tara-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "雪が降り{___}ね。\n(Looks like it's going to snow, doesn't it?)",
+          "correctAnswer": "そうです",
+          "distractors": [
+            {
+              "answer": "など",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-nado-fill-2"
+            },
+            {
+              "answer": "てしまった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-shimau-fill-1"
+            },
+            {
+              "answer": "たら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-tara-fill-4"
+            },
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "美味し{___}なデザートですね。\n(That looks like a delicious dessert!)",
+          "correctAnswer": "そう",
+          "distractors": [
+            {
+              "answer": "づらいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-zurai-fill-2"
+            },
+            {
+              "answer": "ということ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "美味し{___}なデザートですね。\n(That looks like a delicious dessert!)",
+          "correctAnswer": "そう",
+          "distractors": [
+            {
+              "answer": "づらいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-zurai-fill-2"
+            },
+            {
+              "answer": "ということ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-2"
+            },
+            {
+              "answer": "間に",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-aida-ni-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "美味し{___}なデザートですね。\n(That looks like a delicious dessert!)",
+          "correctAnswer": "そう",
+          "distractors": [
+            {
+              "answer": "づらいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-zurai-fill-2"
+            },
+            {
+              "answer": "ということ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-2"
+            },
+            {
+              "answer": "間に",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-aida-ni-fill-1"
+            },
+            {
+              "answer": "も",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-mo-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-3",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "「起こしてくれればよかったのに」翌朝ロンが不機嫌{___}にいった。\n(\"You could have woken me up...\" Ron said the following morning in a grumpy seeming way.)",
+          "correctAnswer": "そう",
+          "distractors": [
+            {
+              "answer": "頂きます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-itadakimasu-fill-2"
+            },
+            {
+              "answer": "じゃないか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-q-janai-ka-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-3",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "「起こしてくれればよかったのに」翌朝ロンが不機嫌{___}にいった。\n(\"You could have woken me up...\" Ron said the following morning in a grumpy seeming way.)",
+          "correctAnswer": "そう",
+          "distractors": [
+            {
+              "answer": "頂きます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-itadakimasu-fill-2"
+            },
+            {
+              "answer": "じゃないか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-q-janai-ka-fill-0"
+            },
+            {
+              "answer": "と",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-to-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-3",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "「起こしてくれればよかったのに」翌朝ロンが不機嫌{___}にいった。\n(\"You could have woken me up...\" Ron said the following morning in a grumpy seeming way.)",
+          "correctAnswer": "そう",
+          "distractors": [
+            {
+              "answer": "頂きます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-itadakimasu-fill-2"
+            },
+            {
+              "answer": "じゃないか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-q-janai-ka-fill-0"
+            },
+            {
+              "answer": "と",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-to-fill-0"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kana-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-4",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この本は高{___}。\n(This book looks expensive.)",
+          "correctAnswer": "そうです",
+          "distractors": [
+            {
+              "answer": "少し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-sukoshi-fill-0"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-na-prohibit-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-4",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この本は高{___}。\n(This book looks expensive.)",
+          "correctAnswer": "そうです",
+          "distractors": [
+            {
+              "answer": "少し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-sukoshi-fill-0"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-na-prohibit-fill-2"
+            },
+            {
+              "answer": "始め",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-hajimeru-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-4",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この本は高{___}。\n(This book looks expensive.)",
+          "correctAnswer": "そうです",
+          "distractors": [
+            {
+              "answer": "少し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-sukoshi-fill-0"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-na-prohibit-fill-2"
+            },
+            {
+              "answer": "始め",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-hajimeru-fill-2"
+            },
+            {
+              "answer": "づらいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-zurai-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-saseru-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "先生は生徒に宿題を{___}。\n(The teacher made the students do homework.)",
+          "correctAnswer": "させました",
+          "distractors": [
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-sa-nominalizer-fill-0"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-you-ni-suru-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-saseru-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "先生は生徒に宿題を{___}。\n(The teacher made the students do homework.)",
+          "correctAnswer": "させました",
+          "distractors": [
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-sa-nominalizer-fill-0"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-you-ni-suru-fill-2"
+            },
+            {
+              "answer": "ことにしました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ni-suru-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-saseru-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "先生は生徒に宿題を{___}。\n(The teacher made the students do homework.)",
+          "correctAnswer": "させました",
+          "distractors": [
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-sa-nominalizer-fill-0"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-you-ni-suru-fill-2"
+            },
+            {
+              "answer": "ことにしました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ni-suru-fill-2"
+            },
+            {
+              "answer": "いらっしゃいます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-irassharu-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-saseru-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "親は子供に野菜を食べ{___}。\n(Parents make their children eat vegetables.)",
+          "correctAnswer": "させます",
+          "distractors": [
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-1"
+            },
+            {
+              "answer": "いらっしゃいます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-irassharu-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-saseru-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "親は子供に野菜を食べ{___}。\n(Parents make their children eat vegetables.)",
+          "correctAnswer": "させます",
+          "distractors": [
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-1"
+            },
+            {
+              "answer": "いらっしゃいます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-irassharu-fill-1"
+            },
+            {
+              "answer": "ということ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-saseru-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "親は子供に野菜を食べ{___}。\n(Parents make their children eat vegetables.)",
+          "correctAnswer": "させます",
+          "distractors": [
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-1"
+            },
+            {
+              "answer": "いらっしゃいます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-irassharu-fill-1"
+            },
+            {
+              "answer": "ということ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-1"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ni-suru-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-saseru-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼女を泣かせ{___}。\n(I ended up making her cry.)",
+          "correctAnswer": "てしまいました",
+          "distractors": [
+            {
+              "answer": "と言っても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-ittemo-ii-fill-1"
+            },
+            {
+              "answer": "てほしいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-hoshii-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-saseru-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼女を泣かせ{___}。\n(I ended up making her cry.)",
+          "correctAnswer": "てしまいました",
+          "distractors": [
+            {
+              "answer": "と言っても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-ittemo-ii-fill-1"
+            },
+            {
+              "answer": "てほしいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-hoshii-fill-0"
+            },
+            {
+              "answer": "少し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-sukoshi-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-saseru-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼女を泣かせ{___}。\n(I ended up making her cry.)",
+          "correctAnswer": "てしまいました",
+          "distractors": [
+            {
+              "answer": "と言っても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-ittemo-ii-fill-1"
+            },
+            {
+              "answer": "てほしいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-hoshii-fill-0"
+            },
+            {
+              "answer": "少し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-sukoshi-fill-3"
+            },
+            {
+              "answer": "なければなりません",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-saseru-fill-3",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "部長は部下に残業{___}。\n(The manager made his subordinates work overtime.)",
+          "correctAnswer": "させました",
+          "distractors": [
+            {
+              "answer": "ところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-tokoro-fill-2"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kana-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-saseru-fill-3",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "部長は部下に残業{___}。\n(The manager made his subordinates work overtime.)",
+          "correctAnswer": "させました",
+          "distractors": [
+            {
+              "answer": "ところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-tokoro-fill-2"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kana-fill-2"
+            },
+            {
+              "answer": "ていない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-garu-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-saseru-fill-3",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "部長は部下に残業{___}。\n(The manager made his subordinates work overtime.)",
+          "correctAnswer": "させました",
+          "distractors": [
+            {
+              "answer": "ところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-tokoro-fill-2"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kana-fill-2"
+            },
+            {
+              "answer": "ていない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-garu-fill-2"
+            },
+            {
+              "answer": "と言われています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iwarete-iru-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-rareru-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "このホテルからは富士山が見{___}。\n(You can see Mt. Fuji from this hotel.)",
+          "correctAnswer": "られます",
+          "distractors": [
+            {
+              "answer": "かどうか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ka-dou-ka-fill-0"
+            },
+            {
+              "answer": "じゃないか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-q-janai-ka-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-rareru-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "このホテルからは富士山が見{___}。\n(You can see Mt. Fuji from this hotel.)",
+          "correctAnswer": "られます",
+          "distractors": [
+            {
+              "answer": "かどうか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ka-dou-ka-fill-0"
+            },
+            {
+              "answer": "じゃないか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-q-janai-ka-fill-0"
+            },
+            {
+              "answer": "ございます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-gozaimasu-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-caus-rareru-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "このホテルからは富士山が見{___}。\n(You can see Mt. Fuji from this hotel.)",
+          "correctAnswer": "られます",
+          "distractors": [
+            {
+              "answer": "かどうか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ka-dou-ka-fill-0"
+            },
+            {
+              "answer": "じゃないか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-q-janai-ka-fill-0"
+            },
+            {
+              "answer": "ございます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-gozaimasu-fill-1"
+            },
+            {
+              "answer": "なかなか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-de-gozaimasu-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私どもの担当者はただいま席を外しております。担当の山田{___}。\n(Our person in charge is currently away from their seat. I am Yamada, the person in charge.)",
+          "correctAnswer": "でございます",
+          "distractors": [
+            {
+              "answer": "ところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-tokoro-fill-2"
+            },
+            {
+              "answer": "だけで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-dake-de-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-de-gozaimasu-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私どもの担当者はただいま席を外しております。担当の山田{___}。\n(Our person in charge is currently away from their seat. I am Yamada, the person in charge.)",
+          "correctAnswer": "でございます",
+          "distractors": [
+            {
+              "answer": "ところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-tokoro-fill-2"
+            },
+            {
+              "answer": "だけで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-dake-de-fill-0"
+            },
+            {
+              "answer": "までに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-made-ni-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-de-gozaimasu-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私どもの担当者はただいま席を外しております。担当の山田{___}。\n(Our person in charge is currently away from their seat. I am Yamada, the person in charge.)",
+          "correctAnswer": "でございます",
+          "distractors": [
+            {
+              "answer": "ところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-tokoro-fill-2"
+            },
+            {
+              "answer": "だけで",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-dake-de-fill-0"
+            },
+            {
+              "answer": "までに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-made-ni-fill-0"
+            },
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ka-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-de-gozaimasu-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "こちらが本日のメニュー{___}。\n(This is today's menu.)",
+          "correctAnswer": "でございます",
+          "distractors": [
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-nasaru-fill-0"
+            },
+            {
+              "answer": "に見えます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-ni-mieru-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-de-gozaimasu-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "こちらが本日のメニュー{___}。\n(This is today's menu.)",
+          "correctAnswer": "でございます",
+          "distractors": [
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-nasaru-fill-0"
+            },
+            {
+              "answer": "に見えます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-ni-mieru-fill-0"
+            },
+            {
+              "answer": "づらかった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-zurai-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-de-gozaimasu-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "こちらが本日のメニュー{___}。\n(This is today's menu.)",
+          "correctAnswer": "でございます",
+          "distractors": [
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-nasaru-fill-0"
+            },
+            {
+              "answer": "に見えます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-ni-mieru-fill-0"
+            },
+            {
+              "answer": "づらかった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-zurai-fill-0"
+            },
+            {
+              "answer": "ていない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-garu-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-de-gozaimasu-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "お客様のご予約はこちら{___}。\n(Your reservation is here.)",
+          "correctAnswer": "でございます",
+          "distractors": [
+            {
+              "answer": "ところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-tokoro-fill-1"
+            },
+            {
+              "answer": "いただきました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-itadakimasu-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-de-gozaimasu-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "お客様のご予約はこちら{___}。\n(Your reservation is here.)",
+          "correctAnswer": "でございます",
+          "distractors": [
+            {
+              "answer": "ところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-tokoro-fill-1"
+            },
+            {
+              "answer": "いただきました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-itadakimasu-fill-3"
+            },
+            {
+              "answer": "みたいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-da-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-de-gozaimasu-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "お客様のご予約はこちら{___}。\n(Your reservation is here.)",
+          "correctAnswer": "でございます",
+          "distractors": [
+            {
+              "answer": "ところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-tokoro-fill-1"
+            },
+            {
+              "answer": "いただきました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-itadakimasu-fill-3"
+            },
+            {
+              "answer": "みたいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-da-fill-0"
+            },
+            {
+              "answer": "いたします",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-itashimasu-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-gozaimasu-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "ご質問が{___}ら、お気軽にどうぞ。\n(If you have any questions, please feel free to ask.)",
+          "correctAnswer": "ございました",
+          "distractors": [
+            {
+              "answer": "いらっしゃいます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-irassharu-fill-1"
+            },
+            {
+              "answer": "おきに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-oki-ni-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-gozaimasu-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "ご質問が{___}ら、お気軽にどうぞ。\n(If you have any questions, please feel free to ask.)",
+          "correctAnswer": "ございました",
+          "distractors": [
+            {
+              "answer": "いらっしゃいます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-irassharu-fill-1"
+            },
+            {
+              "answer": "おきに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-oki-ni-fill-2"
+            },
+            {
+              "answer": "または",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-matawa-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-gozaimasu-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "ご質問が{___}ら、お気軽にどうぞ。\n(If you have any questions, please feel free to ask.)",
+          "correctAnswer": "ございました",
+          "distractors": [
+            {
+              "answer": "いらっしゃいます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-irassharu-fill-1"
+            },
+            {
+              "answer": "おきに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-oki-ni-fill-2"
+            },
+            {
+              "answer": "または",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-matawa-fill-1"
+            },
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-purpose-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-gozaimasu-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "こちらに空き席が{___}。\n(There is a vacant seat here.)",
+          "correctAnswer": "ございます",
+          "distractors": [
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-sa-nominalizer-fill-2"
+            },
+            {
+              "answer": "らいいですか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-tara-ii-desu-ka-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-gozaimasu-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "こちらに空き席が{___}。\n(There is a vacant seat here.)",
+          "correctAnswer": "ございます",
+          "distractors": [
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-sa-nominalizer-fill-2"
+            },
+            {
+              "answer": "らいいですか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-tara-ii-desu-ka-fill-1"
+            },
+            {
+              "answer": "みたいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-da-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-hon-gozaimasu-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "こちらに空き席が{___}。\n(There is a vacant seat here.)",
+          "correctAnswer": "ございます",
+          "distractors": [
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-sa-nominalizer-fill-2"
+            },
+            {
+              "answer": "らいいですか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-tara-ii-desu-ka-fill-1"
+            },
+            {
+              "answer": "みたいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-da-fill-1"
+            },
+            {
+              "answer": "すぎ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-sugiru-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-ikenai-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "毎日薬を飲ま{___}。\n(I must take medicine every day.)",
+          "correctAnswer": "なければいけません",
+          "distractors": [
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-0"
+            },
+            {
+              "answer": "ばかり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-bakari-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-ikenai-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "毎日薬を飲ま{___}。\n(I must take medicine every day.)",
+          "correctAnswer": "なければいけません",
+          "distractors": [
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-0"
+            },
+            {
+              "answer": "ばかり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-bakari-fill-3"
+            },
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ka-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-ikenai-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "毎日薬を飲ま{___}。\n(I must take medicine every day.)",
+          "correctAnswer": "なければいけません",
+          "distractors": [
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-0"
+            },
+            {
+              "answer": "ばかり",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-bakari-fill-3"
+            },
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ka-fill-2"
+            },
+            {
+              "answer": "始め",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-hajimeru-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-ikenai-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "明日までにレポートを出さ{___}。\n(I have to submit the report by tomorrow.)",
+          "correctAnswer": "なければいけない",
+          "distractors": [
+            {
+              "answer": "なら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-nara-fill-1"
+            },
+            {
+              "answer": "予定です",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-yotei-da-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-ikenai-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "明日までにレポートを出さ{___}。\n(I have to submit the report by tomorrow.)",
+          "correctAnswer": "なければいけない",
+          "distractors": [
+            {
+              "answer": "なら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-nara-fill-1"
+            },
+            {
+              "answer": "予定です",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-yotei-da-fill-0"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-nasaru-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-ikenai-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "明日までにレポートを出さ{___}。\n(I have to submit the report by tomorrow.)",
+          "correctAnswer": "なければいけない",
+          "distractors": [
+            {
+              "answer": "なら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-nara-fill-1"
+            },
+            {
+              "answer": "予定です",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-yotei-da-fill-0"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-nasaru-fill-0"
+            },
+            {
+              "answer": "てしまった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-shimau-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "法律を守ら{___}。\n(We must obey the law.)",
+          "correctAnswer": "なければなりません",
+          "distractors": [
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-na-prohibit-fill-0"
+            },
+            {
+              "answer": "間に",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-aida-ni-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "法律を守ら{___}。\n(We must obey the law.)",
+          "correctAnswer": "なければなりません",
+          "distractors": [
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-na-prohibit-fill-0"
+            },
+            {
+              "answer": "間に",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-aida-ni-fill-2"
+            },
+            {
+              "answer": "ということ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "法律を守ら{___}。\n(We must obey the law.)",
+          "correctAnswer": "なければなりません",
+          "distractors": [
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-na-prohibit-fill-0"
+            },
+            {
+              "answer": "間に",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-aida-ni-fill-2"
+            },
+            {
+              "answer": "ということ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-2"
+            },
+            {
+              "answer": "て",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-de-conjunctive-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "パスポートを取得し{___}。\n(I must obtain a passport.)",
+          "correctAnswer": "なければならない",
+          "distractors": [
+            {
+              "answer": "てくれ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-kureru-fill-1"
+            },
+            {
+              "answer": "でも",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-demo-or-something-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "パスポートを取得し{___}。\n(I must obtain a passport.)",
+          "correctAnswer": "なければならない",
+          "distractors": [
+            {
+              "answer": "てくれ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-kureru-fill-1"
+            },
+            {
+              "answer": "でも",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-demo-or-something-fill-1"
+            },
+            {
+              "answer": "場合は",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-baai-wa-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "パスポートを取得し{___}。\n(I must obtain a passport.)",
+          "correctAnswer": "なければならない",
+          "distractors": [
+            {
+              "answer": "てくれ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-kureru-fill-1"
+            },
+            {
+              "answer": "でも",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-demo-or-something-fill-1"
+            },
+            {
+              "answer": "場合は",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-baai-wa-fill-0"
+            },
+            {
+              "answer": "と",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-to-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "学生は一生懸命勉強し{___}。\n(Students must study hard.)",
+          "correctAnswer": "なければならない",
+          "distractors": [
+            {
+              "answer": "ようになりました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-you-ni-naru-fill-1"
+            },
+            {
+              "answer": "より",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-yori-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "学生は一生懸命勉強し{___}。\n(Students must study hard.)",
+          "correctAnswer": "なければならない",
+          "distractors": [
+            {
+              "answer": "ようになりました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-you-ni-naru-fill-1"
+            },
+            {
+              "answer": "より",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-yori-fill-2"
+            },
+            {
+              "answer": "ていきます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-iku-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "学生は一生懸命勉強し{___}。\n(Students must study hard.)",
+          "correctAnswer": "なければならない",
+          "distractors": [
+            {
+              "answer": "ようになりました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-you-ni-naru-fill-1"
+            },
+            {
+              "answer": "より",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-yori-fill-2"
+            },
+            {
+              "answer": "ていきます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-iku-fill-1"
+            },
+            {
+              "answer": "頃",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-goro-koro-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "夏休みの{___}、毎日海で泳ぎました。\n(During summer vacation, I swam in the sea every day.)",
+          "correctAnswer": "間",
+          "distractors": [
+            {
+              "answer": "てみた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-miru-fill-1"
+            },
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "夏休みの{___}、毎日海で泳ぎました。\n(During summer vacation, I swam in the sea every day.)",
+          "correctAnswer": "間",
+          "distractors": [
+            {
+              "answer": "てみた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-miru-fill-1"
+            },
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-2"
+            },
+            {
+              "answer": "など",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-nado-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "夏休みの{___}、毎日海で泳ぎました。\n(During summer vacation, I swam in the sea every day.)",
+          "correctAnswer": "間",
+          "distractors": [
+            {
+              "answer": "てみた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-miru-fill-1"
+            },
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-2"
+            },
+            {
+              "answer": "など",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-nado-fill-3"
+            },
+            {
+              "answer": "始め",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-hajimeru-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "授業の{___}、スマホを使ってはいけません。\n(You must not use your smartphone during class.)",
+          "correctAnswer": "間",
+          "distractors": [
+            {
+              "answer": "ことがあります",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ga-aru-fill-2"
+            },
+            {
+              "answer": "終わ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-owaru-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "授業の{___}、スマホを使ってはいけません。\n(You must not use your smartphone during class.)",
+          "correctAnswer": "間",
+          "distractors": [
+            {
+              "answer": "ことがあります",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ga-aru-fill-2"
+            },
+            {
+              "answer": "終わ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-owaru-fill-1"
+            },
+            {
+              "answer": "しかし",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-shikashi-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "授業の{___}、スマホを使ってはいけません。\n(You must not use your smartphone during class.)",
+          "correctAnswer": "間",
+          "distractors": [
+            {
+              "answer": "ことがあります",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ga-aru-fill-2"
+            },
+            {
+              "answer": "終わ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-owaru-fill-1"
+            },
+            {
+              "answer": "しかし",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-shikashi-fill-1"
+            },
+            {
+              "answer": "ても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-temo-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼が寝ている{___}、静かにしてください。\n(Please be quiet while he is sleeping.)",
+          "correctAnswer": "間",
+          "distractors": [
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-1"
+            },
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼が寝ている{___}、静かにしてください。\n(Please be quiet while he is sleeping.)",
+          "correctAnswer": "間",
+          "distractors": [
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-1"
+            },
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-1"
+            },
+            {
+              "answer": "そう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼が寝ている{___}、静かにしてください。\n(Please be quiet while he is sleeping.)",
+          "correctAnswer": "間",
+          "distractors": [
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-1"
+            },
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-1"
+            },
+            {
+              "answer": "そう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-3"
+            },
+            {
+              "answer": "なければならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-ni-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私が出かけている{___}、荷物が届きました。\n(While I was out, the package arrived.)",
+          "correctAnswer": "間に",
+          "distractors": [
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-although-fill-0"
+            },
+            {
+              "answer": "ても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-temo-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-ni-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私が出かけている{___}、荷物が届きました。\n(While I was out, the package arrived.)",
+          "correctAnswer": "間に",
+          "distractors": [
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-although-fill-0"
+            },
+            {
+              "answer": "ても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-temo-fill-0"
+            },
+            {
+              "answer": "と言っても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-ittemo-ii-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-ni-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "私が出かけている{___}、荷物が届きました。\n(While I was out, the package arrived.)",
+          "correctAnswer": "間に",
+          "distractors": [
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-although-fill-0"
+            },
+            {
+              "answer": "ても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-temo-fill-0"
+            },
+            {
+              "answer": "と言っても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-ittemo-ii-fill-2"
+            },
+            {
+              "answer": "以上",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-ijou-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-ni-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "眠っている{___}財布を盗まれました。\n(My wallet was stolen while I was sleeping.)",
+          "correctAnswer": "間に",
+          "distractors": [
+            {
+              "answer": "ても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-temo-fill-1"
+            },
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-ni-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "眠っている{___}財布を盗まれました。\n(My wallet was stolen while I was sleeping.)",
+          "correctAnswer": "間に",
+          "distractors": [
+            {
+              "answer": "ても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-temo-fill-1"
+            },
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-1"
+            },
+            {
+              "answer": "みたいに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-ni-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-temp-aida-ni-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "眠っている{___}財布を盗まれました。\n(My wallet was stolen while I was sleeping.)",
+          "correctAnswer": "間に",
+          "distractors": [
+            {
+              "answer": "ても",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-temo-fill-1"
+            },
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-1"
+            },
+            {
+              "answer": "みたいに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-ni-fill-1"
+            },
+            {
+              "answer": "たら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-tara-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yori-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}いい方法知りませんか。\n(Don't you know a better method?)",
+          "correctAnswer": "より",
+          "distractors": [
+            {
+              "answer": "ことができます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ga-dekiru-fill-1"
+            },
+            {
+              "answer": "いらっしゃいます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-irassharu-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yori-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}いい方法知りませんか。\n(Don't you know a better method?)",
+          "correctAnswer": "より",
+          "distractors": [
+            {
+              "answer": "ことができます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ga-dekiru-fill-1"
+            },
+            {
+              "answer": "いらっしゃいます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-irassharu-fill-1"
+            },
+            {
+              "answer": "なければならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yori-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}いい方法知りませんか。\n(Don't you know a better method?)",
+          "correctAnswer": "より",
+          "distractors": [
+            {
+              "answer": "ことができます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ga-dekiru-fill-1"
+            },
+            {
+              "answer": "いらっしゃいます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-irassharu-fill-1"
+            },
+            {
+              "answer": "なければならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-1"
+            },
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yori-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あなたと会って、{___}一層あなたのことが好きになりました。\n(I liked you even more when I met you.)",
+          "correctAnswer": "より",
+          "distractors": [
+            {
+              "answer": "ことができます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ga-dekiru-fill-2"
+            },
+            {
+              "answer": "て",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-de-conjunctive-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yori-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あなたと会って、{___}一層あなたのことが好きになりました。\n(I liked you even more when I met you.)",
+          "correctAnswer": "より",
+          "distractors": [
+            {
+              "answer": "ことができます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ga-dekiru-fill-2"
+            },
+            {
+              "answer": "て",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-de-conjunctive-fill-0"
+            },
+            {
+              "answer": "なさいます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-nasaru-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yori-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あなたと会って、{___}一層あなたのことが好きになりました。\n(I liked you even more when I met you.)",
+          "correctAnswer": "より",
+          "distractors": [
+            {
+              "answer": "ことができます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ga-dekiru-fill-2"
+            },
+            {
+              "answer": "て",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-de-conjunctive-fill-0"
+            },
+            {
+              "answer": "なさいます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-hon-nasaru-fill-2"
+            },
+            {
+              "answer": "たまま",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-mama-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yori-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}早く着く電車はないのですか？\n(Isn't there a train that gets there earlier?)",
+          "correctAnswer": "より",
+          "distractors": [
+            {
+              "answer": "場合は",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-baai-wa-fill-0"
+            },
+            {
+              "answer": "さっき",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-sakki-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yori-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}早く着く電車はないのですか？\n(Isn't there a train that gets there earlier?)",
+          "correctAnswer": "より",
+          "distractors": [
+            {
+              "answer": "場合は",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-baai-wa-fill-0"
+            },
+            {
+              "answer": "さっき",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-sakki-fill-1"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-you-to-omou-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yori-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "{___}早く着く電車はないのですか？\n(Isn't there a train that gets there earlier?)",
+          "correctAnswer": "より",
+          "distractors": [
+            {
+              "answer": "場合は",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-baai-wa-fill-0"
+            },
+            {
+              "answer": "さっき",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-sakki-fill-1"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-you-to-omou-fill-0"
+            },
+            {
+              "answer": "しかし",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-shikashi-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-part-noni-although-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あんなに勉強した{___}、試験に落ちてしまいました。\n(Even though I studied so hard, I failed the exam.)",
+          "correctAnswer": "のに",
+          "distractors": [
+            {
+              "answer": "ていました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-you-da-fill-2"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kana-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-part-noni-although-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あんなに勉強した{___}、試験に落ちてしまいました。\n(Even though I studied so hard, I failed the exam.)",
+          "correctAnswer": "のに",
+          "distractors": [
+            {
+              "answer": "ていました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-you-da-fill-2"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kana-fill-0"
+            },
+            {
+              "answer": "ぜひ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-zehi-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-part-noni-although-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "あんなに勉強した{___}、試験に落ちてしまいました。\n(Even though I studied so hard, I failed the exam.)",
+          "correctAnswer": "のに",
+          "distractors": [
+            {
+              "answer": "ていました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-you-da-fill-2"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kana-fill-0"
+            },
+            {
+              "answer": "ぜひ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-zehi-fill-1"
+            },
+            {
+              "answer": "がほしい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-hoshii-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-part-noni-although-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "頑張っている{___}、全然うまくいきません。\n(Even though I'm trying hard, nothing is going well at all.)",
+          "correctAnswer": "のに",
+          "distractors": [
+            {
+              "answer": "はずがない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-hazu-ga-nai-fill-1"
+            },
+            {
+              "answer": "すぎる",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-sugiru-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-part-noni-although-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "頑張っている{___}、全然うまくいきません。\n(Even though I'm trying hard, nothing is going well at all.)",
+          "correctAnswer": "のに",
+          "distractors": [
+            {
+              "answer": "はずがない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-hazu-ga-nai-fill-1"
+            },
+            {
+              "answer": "すぎる",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-sugiru-fill-2"
+            },
+            {
+              "answer": "てすみません",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-sumimasen-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-part-noni-although-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "頑張っている{___}、全然うまくいきません。\n(Even though I'm trying hard, nothing is going well at all.)",
+          "correctAnswer": "のに",
+          "distractors": [
+            {
+              "answer": "はずがない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-hazu-ga-nai-fill-1"
+            },
+            {
+              "answer": "すぎる",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-sugiru-fill-2"
+            },
+            {
+              "answer": "てすみません",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-sumimasen-fill-0"
+            },
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yasui-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この辞書は使い{___}。\n(This dictionary is easy to use.)",
+          "correctAnswer": "やすいです",
+          "distractors": [
+            {
+              "answer": "かもしれない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kamoshirenai-fill-1"
+            },
+            {
+              "answer": "ということ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yasui-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この辞書は使い{___}。\n(This dictionary is easy to use.)",
+          "correctAnswer": "やすいです",
+          "distractors": [
+            {
+              "answer": "かもしれない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kamoshirenai-fill-1"
+            },
+            {
+              "answer": "ということ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-fill-2"
+            },
+            {
+              "answer": "はずです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-hazu-da-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yasui-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この辞書は使い{___}。\n(This dictionary is easy to use.)",
+          "correctAnswer": "やすいです",
+          "distractors": [
+            {
+              "answer": "かもしれない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kamoshirenai-fill-1"
+            },
+            {
+              "answer": "ということ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-fill-2"
+            },
+            {
+              "answer": "はずです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-hazu-da-fill-0"
+            },
+            {
+              "answer": "でも",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-demo-or-something-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yasui-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼の説明は分かり{___}です。\n(His explanation was easy to understand.)",
+          "correctAnswer": "やすかった",
+          "distractors": [
+            {
+              "answer": "てい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-iku-fill-2"
+            },
+            {
+              "answer": "始め",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-hajimeru-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yasui-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼の説明は分かり{___}です。\n(His explanation was easy to understand.)",
+          "correctAnswer": "やすかった",
+          "distractors": [
+            {
+              "answer": "てい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-iku-fill-2"
+            },
+            {
+              "answer": "始め",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-hajimeru-fill-0"
+            },
+            {
+              "answer": "など",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-nado-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yasui-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼の説明は分かり{___}です。\n(His explanation was easy to understand.)",
+          "correctAnswer": "やすかった",
+          "distractors": [
+            {
+              "answer": "てい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-iku-fill-2"
+            },
+            {
+              "answer": "始め",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-hajimeru-fill-0"
+            },
+            {
+              "answer": "など",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-nado-fill-3"
+            },
+            {
+              "answer": "間",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-aida-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yasui-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この道は滑り{___}ので、気をつけてください。\n(This road is slippery, so please be careful.)",
+          "correctAnswer": "やすい",
+          "distractors": [
+            {
+              "answer": "ているところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-teiru-tokoro-fill-0"
+            },
+            {
+              "answer": "そうに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-ni-na-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yasui-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この道は滑り{___}ので、気をつけてください。\n(This road is slippery, so please be careful.)",
+          "correctAnswer": "やすい",
+          "distractors": [
+            {
+              "answer": "ているところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-teiru-tokoro-fill-0"
+            },
+            {
+              "answer": "そうに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-ni-na-fill-2"
+            },
+            {
+              "answer": "頂きます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-itadakimasu-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-yasui-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この道は滑り{___}ので、気をつけてください。\n(This road is slippery, so please be careful.)",
+          "correctAnswer": "やすい",
+          "distractors": [
+            {
+              "answer": "ているところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-teiru-tokoro-fill-0"
+            },
+            {
+              "answer": "そうに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-ni-na-fill-2"
+            },
+            {
+              "answer": "頂きます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-itadakimasu-fill-1"
+            },
+            {
+              "answer": "ていない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-garu-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-nikui-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この漢字は書き{___}。\n(This kanji is hard to write.)",
+          "correctAnswer": "にくいです",
+          "distractors": [
+            {
+              "answer": "みたい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-da-fill-2"
+            },
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-although-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-nikui-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この漢字は書き{___}。\n(This kanji is hard to write.)",
+          "correctAnswer": "にくいです",
+          "distractors": [
+            {
+              "answer": "みたい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-da-fill-2"
+            },
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-although-fill-2"
+            },
+            {
+              "answer": "はずがない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-hazu-ga-nai-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-nikui-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この漢字は書き{___}。\n(This kanji is hard to write.)",
+          "correctAnswer": "にくいです",
+          "distractors": [
+            {
+              "answer": "みたい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-da-fill-2"
+            },
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-although-fill-2"
+            },
+            {
+              "answer": "はずがない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-hazu-ga-nai-fill-1"
+            },
+            {
+              "answer": "みたいに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-ni-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-nikui-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "暗い場所では本が読み{___}。\n(Books are hard to read in dark places.)",
+          "correctAnswer": "にくいです",
+          "distractors": [
+            {
+              "answer": "なければならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-1"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kana-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-nikui-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "暗い場所では本が読み{___}。\n(Books are hard to read in dark places.)",
+          "correctAnswer": "にくいです",
+          "distractors": [
+            {
+              "answer": "なければならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-1"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kana-fill-0"
+            },
+            {
+              "answer": "または",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-matawa-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-comp-nikui-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "暗い場所では本が読み{___}。\n(Books are hard to read in dark places.)",
+          "correctAnswer": "にくいです",
+          "distractors": [
+            {
+              "answer": "なければならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-1"
+            },
+            {
+              "answer": "かな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kana-fill-0"
+            },
+            {
+              "answer": "または",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-matawa-fill-2"
+            },
+            {
+              "answer": "そう",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "「桜」{___}漢字はどう書きますか。\n(How do you write the kanji called 'sakura'?)",
+          "correctAnswer": "という",
+          "distractors": [
+            {
+              "answer": "ていました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-you-da-fill-2"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-na-prohibit-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "「桜」{___}漢字はどう書きますか。\n(How do you write the kanji called 'sakura'?)",
+          "correctAnswer": "という",
+          "distractors": [
+            {
+              "answer": "ていました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-you-da-fill-2"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-na-prohibit-fill-1"
+            },
+            {
+              "answer": "なさい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-nasai-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "「桜」{___}漢字はどう書きますか。\n(How do you write the kanji called 'sakura'?)",
+          "correctAnswer": "という",
+          "distractors": [
+            {
+              "answer": "ていました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-you-da-fill-2"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-na-prohibit-fill-1"
+            },
+            {
+              "answer": "なさい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-nasai-fill-1"
+            },
+            {
+              "answer": "やすいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-yasui-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "田中{___}人から電話がありました。\n(There was a phone call from a person called Tanaka.)",
+          "correctAnswer": "という",
+          "distractors": [
+            {
+              "answer": "または",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-matawa-fill-1"
+            },
+            {
+              "answer": "なかなか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "田中{___}人から電話がありました。\n(There was a phone call from a person called Tanaka.)",
+          "correctAnswer": "という",
+          "distractors": [
+            {
+              "answer": "または",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-matawa-fill-1"
+            },
+            {
+              "answer": "なかなか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-0"
+            },
+            {
+              "answer": "ではないか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-q-dewa-nai-ka-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "田中{___}人から電話がありました。\n(There was a phone call from a person called Tanaka.)",
+          "correctAnswer": "という",
+          "distractors": [
+            {
+              "answer": "または",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-matawa-fill-1"
+            },
+            {
+              "answer": "なかなか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-0"
+            },
+            {
+              "answer": "ではないか",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-q-dewa-nai-ka-fill-2"
+            },
+            {
+              "answer": "全然",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-zenzen-nai-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼は来られない{___}を聞きました。\n(I heard that he cannot come.)",
+          "correctAnswer": "ということ",
+          "distractors": [
+            {
+              "answer": "ないように",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-nai-you-ni-fill-0"
+            },
+            {
+              "answer": "そうに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-ni-na-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼は来られない{___}を聞きました。\n(I heard that he cannot come.)",
+          "correctAnswer": "ということ",
+          "distractors": [
+            {
+              "answer": "ないように",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-nai-you-ni-fill-0"
+            },
+            {
+              "answer": "そうに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-ni-na-fill-2"
+            },
+            {
+              "answer": "終わ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-owaru-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼は来られない{___}を聞きました。\n(I heard that he cannot come.)",
+          "correctAnswer": "ということ",
+          "distractors": [
+            {
+              "answer": "ないように",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-nai-you-ni-fill-0"
+            },
+            {
+              "answer": "そうに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-ni-na-fill-2"
+            },
+            {
+              "answer": "終わ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-owaru-fill-0"
+            },
+            {
+              "answer": "かい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-kai-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "電車が遅れている{___}は、何か問題があったのでしょう。\n(The fact that the train is late means something must have happened.)",
+          "correctAnswer": "ということ",
+          "distractors": [
+            {
+              "answer": "てやった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-yaru-fill-1"
+            },
+            {
+              "answer": "てしまった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-shimau-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "電車が遅れている{___}は、何か問題があったのでしょう。\n(The fact that the train is late means something must have happened.)",
+          "correctAnswer": "ということ",
+          "distractors": [
+            {
+              "answer": "てやった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-yaru-fill-1"
+            },
+            {
+              "answer": "てしまった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-shimau-fill-1"
+            },
+            {
+              "answer": "そうです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "電車が遅れている{___}は、何か問題があったのでしょう。\n(The fact that the train is late means something must have happened.)",
+          "correctAnswer": "ということ",
+          "distractors": [
+            {
+              "answer": "てやった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-yaru-fill-1"
+            },
+            {
+              "answer": "てしまった",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-shimau-fill-1"
+            },
+            {
+              "answer": "そうです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-da-visual-fill-4"
+            },
+            {
+              "answer": "少し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-sukoshi-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼が合格した{___}を聞いて、とても嬉しかったです。\n(I was very happy to hear the fact that he had passed.)",
+          "correctAnswer": "ということ",
+          "distractors": [
+            {
+              "answer": "なければならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-1"
+            },
+            {
+              "answer": "てよかったです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-yokatta-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼が合格した{___}を聞いて、とても嬉しかったです。\n(I was very happy to hear the fact that he had passed.)",
+          "correctAnswer": "ということ",
+          "distractors": [
+            {
+              "answer": "なければならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-1"
+            },
+            {
+              "answer": "てよかったです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-yokatta-fill-0"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ni-naru-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-quot-to-iu-koto-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼が合格した{___}を聞いて、とても嬉しかったです。\n(I was very happy to hear the fact that he had passed.)",
+          "correctAnswer": "ということ",
+          "distractors": [
+            {
+              "answer": "なければならない",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-obl-nakereba-naranai-fill-1"
+            },
+            {
+              "answer": "てよかったです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-yokatta-fill-0"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ni-naru-fill-1"
+            },
+            {
+              "answer": "または",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-matawa-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-naru-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "練習を続けて、ギターが弾ける{___}。\n(I kept practicing and came to be able to play guitar.)",
+          "correctAnswer": "ようになりました",
+          "distractors": [
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-2"
+            },
+            {
+              "answer": "など",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-nado-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-naru-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "練習を続けて、ギターが弾ける{___}。\n(I kept practicing and came to be able to play guitar.)",
+          "correctAnswer": "ようになりました",
+          "distractors": [
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-2"
+            },
+            {
+              "answer": "など",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-nado-fill-0"
+            },
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-naru-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "練習を続けて、ギターが弾ける{___}。\n(I kept practicing and came to be able to play guitar.)",
+          "correctAnswer": "ようになりました",
+          "distractors": [
+            {
+              "answer": "ください",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-kudasai-fill-2"
+            },
+            {
+              "answer": "など",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-nado-fill-0"
+            },
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-3"
+            },
+            {
+              "answer": "ので",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-node-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-naru-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "日本に来てから、納豆が食べられる{___}。\n(Since coming to Japan, I've come to be able to eat natto.)",
+          "correctAnswer": "ようになりました",
+          "distractors": [
+            {
+              "answer": "までに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-made-ni-fill-0"
+            },
+            {
+              "answer": "ね",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ne-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-naru-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "日本に来てから、納豆が食べられる{___}。\n(Since coming to Japan, I've come to be able to eat natto.)",
+          "correctAnswer": "ようになりました",
+          "distractors": [
+            {
+              "answer": "までに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-made-ni-fill-0"
+            },
+            {
+              "answer": "ね",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ne-fill-0"
+            },
+            {
+              "answer": "ことができます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ga-dekiru-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-naru-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "日本に来てから、納豆が食べられる{___}。\n(Since coming to Japan, I've come to be able to eat natto.)",
+          "correctAnswer": "ようになりました",
+          "distractors": [
+            {
+              "answer": "までに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-made-ni-fill-0"
+            },
+            {
+              "answer": "ね",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ne-fill-0"
+            },
+            {
+              "answer": "ことができます",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ga-dekiru-fill-0"
+            },
+            {
+              "answer": "たところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-ta-tokoro-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-naru-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "最近、早起きができる{___}。\n(Recently I've come to be able to wake up early.)",
+          "correctAnswer": "ようになりました",
+          "distractors": [
+            {
+              "answer": "しかし",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-shikashi-fill-2"
+            },
+            {
+              "answer": "でも",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-demo-but-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-naru-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "最近、早起きができる{___}。\n(Recently I've come to be able to wake up early.)",
+          "correctAnswer": "ようになりました",
+          "distractors": [
+            {
+              "answer": "しかし",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-shikashi-fill-2"
+            },
+            {
+              "answer": "でも",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-demo-but-fill-2"
+            },
+            {
+              "answer": "たら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-tara-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-naru-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "最近、早起きができる{___}。\n(Recently I've come to be able to wake up early.)",
+          "correctAnswer": "ようになりました",
+          "distractors": [
+            {
+              "answer": "しかし",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-shikashi-fill-2"
+            },
+            {
+              "answer": "でも",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-demo-but-fill-2"
+            },
+            {
+              "answer": "たら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-tara-fill-3"
+            },
+            {
+              "answer": "ないように",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-nai-you-ni-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-suru-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "毎日30分は歩くようにし{___}。\n(I make sure to walk for 30 minutes every day.)",
+          "correctAnswer": "ています",
+          "distractors": [
+            {
+              "answer": "たがっています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-tagaru-fill-2"
+            },
+            {
+              "answer": "なら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-nara-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-suru-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "毎日30分は歩くようにし{___}。\n(I make sure to walk for 30 minutes every day.)",
+          "correctAnswer": "ています",
+          "distractors": [
+            {
+              "answer": "たがっています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-tagaru-fill-2"
+            },
+            {
+              "answer": "なら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-nara-fill-1"
+            },
+            {
+              "answer": "たところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-ta-tokoro-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-suru-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "毎日30分は歩くようにし{___}。\n(I make sure to walk for 30 minutes every day.)",
+          "correctAnswer": "ています",
+          "distractors": [
+            {
+              "answer": "たがっています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-vm-tagaru-fill-2"
+            },
+            {
+              "answer": "なら",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-nara-fill-1"
+            },
+            {
+              "answer": "たところです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-ta-tokoro-fill-0"
+            },
+            {
+              "answer": "全然",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-neg-zenzen-nai-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-suru-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "夜遅く食べない{___}してください。\n(Please make an effort not to eat late at night.)",
+          "correctAnswer": "ように",
+          "distractors": [
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ka-fill-2"
+            },
+            {
+              "answer": "そうです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-da-hearsay-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-suru-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "夜遅く食べない{___}してください。\n(Please make an effort not to eat late at night.)",
+          "correctAnswer": "ように",
+          "distractors": [
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ka-fill-2"
+            },
+            {
+              "answer": "そうです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-da-hearsay-fill-1"
+            },
+            {
+              "answer": "てくれ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-kureru-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-purp-you-ni-suru-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "夜遅く食べない{___}してください。\n(Please make an effort not to eat late at night.)",
+          "correctAnswer": "ように",
+          "distractors": [
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ka-fill-2"
+            },
+            {
+              "answer": "そうです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-sou-da-hearsay-fill-1"
+            },
+            {
+              "answer": "てくれ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-kureru-fill-1"
+            },
+            {
+              "answer": "させられました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-caus-saserareru-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "バスが{___}来ない。\n(The bus just won't come.)",
+          "correctAnswer": "なかなか",
+          "distractors": [
+            {
+              "answer": "にくいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-nikui-fill-2"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ni-naru-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "バスが{___}来ない。\n(The bus just won't come.)",
+          "correctAnswer": "なかなか",
+          "distractors": [
+            {
+              "answer": "にくいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-nikui-fill-2"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ni-naru-fill-1"
+            },
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "バスが{___}来ない。\n(The bus just won't come.)",
+          "correctAnswer": "なかなか",
+          "distractors": [
+            {
+              "answer": "にくいです",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-nikui-fill-2"
+            },
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-koto-ni-naru-fill-1"
+            },
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-0"
+            },
+            {
+              "answer": "という",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この問題は{___}解けません。\n(This problem is not easy to solve.)",
+          "correctAnswer": "なかなか",
+          "distractors": [
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ka-fill-3"
+            },
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この問題は{___}解けません。\n(This problem is not easy to solve.)",
+          "correctAnswer": "なかなか",
+          "distractors": [
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ka-fill-3"
+            },
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-0"
+            },
+            {
+              "answer": "ということ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "この問題は{___}解けません。\n(This problem is not easy to solve.)",
+          "correctAnswer": "なかなか",
+          "distractors": [
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-ka-fill-3"
+            },
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-0"
+            },
+            {
+              "answer": "ということ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-fill-2"
+            },
+            {
+              "answer": "やすい",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-comp-yasui-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-2",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "最近、{___}眠れません。\n(Lately I'm struggling to fall asleep.)",
+          "correctAnswer": "なかなか",
+          "distractors": [
+            {
+              "answer": "という",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-fill-1"
+            },
+            {
+              "answer": "が必要です",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-ga-hitsuyou-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-2",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "最近、{___}眠れません。\n(Lately I'm struggling to fall asleep.)",
+          "correctAnswer": "なかなか",
+          "distractors": [
+            {
+              "answer": "という",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-fill-1"
+            },
+            {
+              "answer": "が必要です",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-ga-hitsuyou-fill-2"
+            },
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-nakanaka-nai-fill-2",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "最近、{___}眠れません。\n(Lately I'm struggling to fall asleep.)",
+          "correctAnswer": "なかなか",
+          "distractors": [
+            {
+              "answer": "という",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-quot-to-iu-fill-1"
+            },
+            {
+              "answer": "が必要です",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-ga-hitsuyou-fill-2"
+            },
+            {
+              "answer": "みたいな",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-app-mitai-na-fill-2"
+            },
+            {
+              "answer": "れば",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-cond-ba-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-zenzen-nai-fill-0",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "日本語が{___}分かりません。\n(I don't understand Japanese at all.)",
+          "correctAnswer": "全然",
+          "distractors": [
+            {
+              "answer": "いただきました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-itadakimasu-fill-3"
+            },
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-although-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-zenzen-nai-fill-0",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "日本語が{___}分かりません。\n(I don't understand Japanese at all.)",
+          "correctAnswer": "全然",
+          "distractors": [
+            {
+              "answer": "いただきました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-itadakimasu-fill-3"
+            },
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-although-fill-0"
+            },
+            {
+              "answer": "ているところ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-teiru-tokoro-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-zenzen-nai-fill-0",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "日本語が{___}分かりません。\n(I don't understand Japanese at all.)",
+          "correctAnswer": "全然",
+          "distractors": [
+            {
+              "answer": "いただきました",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-itadakimasu-fill-3"
+            },
+            {
+              "answer": "のに",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-part-noni-although-fill-0"
+            },
+            {
+              "answer": "ているところ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-temp-teiru-tokoro-fill-1"
+            },
+            {
+              "answer": "少し",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-adv-sukoshi-fill-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-zenzen-nai-fill-1",
+          "masteryLevel": 0,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼のことが{___}好きじゃない。\n(I don't like him at all.)",
+          "correctAnswer": "全然",
+          "distractors": [
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-you-to-omou-fill-0"
+            },
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-sa-nominalizer-fill-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-zenzen-nai-fill-1",
+          "masteryLevel": 2,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼のことが{___}好きじゃない。\n(I don't like him at all.)",
+          "correctAnswer": "全然",
+          "distractors": [
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-you-to-omou-fill-0"
+            },
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-sa-nominalizer-fill-0"
+            },
+            {
+              "answer": "てみた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-miru-fill-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-gram-n4-n4-neg-zenzen-nai-fill-1",
+          "masteryLevel": 4,
+          "poolId": "grammar_all",
+          "renderedQuestion": "彼のことが{___}好きじゃない。\n(I don't like him at all.)",
+          "correctAnswer": "全然",
+          "distractors": [
+            {
+              "answer": "ています",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-purp-you-to-omou-fill-0"
+            },
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-sa-nominalizer-fill-0"
+            },
+            {
+              "answer": "てみた",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-te-miru-fill-1"
+            },
+            {
+              "answer": "以上",
+              "source": "similar_difficulty",
+              "factId": "ja-gram-n4-n4-other-ijou-fill-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "fill_blank_grammar",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

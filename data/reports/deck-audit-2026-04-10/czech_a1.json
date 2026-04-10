@@ -1,0 +1,511 @@
+{
+  "timestamp": "2026-04-10T13:40:15.137Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 9,
+  "decks": [
+    {
+      "deckId": "czech_a1",
+      "deckName": "Czech A1 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 476,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 9,
+      "issuesByType": {
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 4
+        },
+        "pos_mismatch": {
+          "fail": 0,
+          "warn": 4
+        },
+        "trivially_eliminatable": {
+          "fail": 0,
+          "warn": 1
+        }
+      },
+      "factResults": [
+        {
+          "factId": "cs-freq-1",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'jako' mean?",
+          "correctAnswer": "as",
+          "distractors": [
+            {
+              "answer": "god",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-397"
+            },
+            {
+              "answer": "place",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-82"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'jako' mean?",
+          "correctAnswer": "as",
+          "distractors": [
+            {
+              "answer": "god",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-397"
+            },
+            {
+              "answer": "place",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-82"
+            },
+            {
+              "answer": "once in a while",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-320"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'jako' mean?",
+          "correctAnswer": "as",
+          "distractors": [
+            {
+              "answer": "god",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-397"
+            },
+            {
+              "answer": "place",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-82"
+            },
+            {
+              "answer": "once in a while",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-320"
+            },
+            {
+              "answer": "gas",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-418"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'tak' mean?",
+          "correctAnswer": "so",
+          "distractors": [
+            {
+              "answer": "but",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-438"
+            },
+            {
+              "answer": "meanwhile",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-326"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'tak' mean?",
+          "correctAnswer": "so",
+          "distractors": [
+            {
+              "answer": "but",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-438"
+            },
+            {
+              "answer": "meanwhile",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-326"
+            },
+            {
+              "answer": "when",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-36"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-2",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'tak' mean?",
+          "correctAnswer": "so",
+          "distractors": [
+            {
+              "answer": "but",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-438"
+            },
+            {
+              "answer": "meanwhile",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-326"
+            },
+            {
+              "answer": "when",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-36"
+            },
+            {
+              "answer": "therefore",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-329"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-3",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'ono' mean?",
+          "correctAnswer": "it",
+          "distractors": [
+            {
+              "answer": "that, the",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-11"
+            },
+            {
+              "answer": "I",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-5"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"I\" has 2 format features different from correct \"it\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-3",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'ono' mean?",
+          "correctAnswer": "it",
+          "distractors": [
+            {
+              "answer": "that, the",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-11"
+            },
+            {
+              "answer": "I",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-5"
+            },
+            {
+              "answer": "air",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-436"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"air\" POS \"noun\" != correct \"pronoun\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"I\" has 2 format features different from correct \"it\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-3",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'it' in Czech?",
+          "correctAnswer": "ono",
+          "distractors": [
+            {
+              "answer": "té",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-11"
+            },
+            {
+              "answer": "já",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-5"
+            },
+            {
+              "answer": "vzduch",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-436"
+            },
+            {
+              "answer": "nahoře",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-392"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"vzduch\" POS \"noun\" != correct \"pronoun\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-4",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'den' mean?",
+          "correctAnswer": "day",
+          "distractors": [
+            {
+              "answer": "how long",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-213"
+            },
+            {
+              "answer": "earth",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-123"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-4",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'den' mean?",
+          "correctAnswer": "day",
+          "distractors": [
+            {
+              "answer": "how long",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-213"
+            },
+            {
+              "answer": "earth",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-123"
+            },
+            {
+              "answer": "law",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-26"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-4",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'den' mean?",
+          "correctAnswer": "day",
+          "distractors": [
+            {
+              "answer": "how long",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-213"
+            },
+            {
+              "answer": "earth",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-123"
+            },
+            {
+              "answer": "law",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-26"
+            },
+            {
+              "answer": "cup",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-419"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-5",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'já' mean?",
+          "correctAnswer": "I",
+          "distractors": [
+            {
+              "answer": "it",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-3"
+            },
+            {
+              "answer": "that, the",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-11"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"it\" has 2 format features different from correct \"I\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-5",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'já' mean?",
+          "correctAnswer": "I",
+          "distractors": [
+            {
+              "answer": "it",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-3"
+            },
+            {
+              "answer": "that, the",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-11"
+            },
+            {
+              "answer": "gradually",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-241"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "trivially_eliminatable",
+              "detail": "Option \"I\" (len 1) is outlier vs avg 5.3"
+            },
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"gradually\" POS \"adverb\" != correct \"pronoun\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"it\" has 2 format features different from correct \"I\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-5",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'I' in Czech?",
+          "correctAnswer": "já",
+          "distractors": [
+            {
+              "answer": "ono",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-3"
+            },
+            {
+              "answer": "té",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-11"
+            },
+            {
+              "answer": "postupně",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-241"
+            },
+            {
+              "answer": "bolest",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-447"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"postupně\" POS \"adverb\" != correct \"pronoun\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

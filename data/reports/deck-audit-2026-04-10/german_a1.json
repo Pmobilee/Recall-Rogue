@@ -1,0 +1,2336 @@
+{
+  "timestamp": "2026-04-10T13:40:23.725Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 75,
+  "totalFails": 0,
+  "totalWarns": 34,
+  "decks": [
+    {
+      "deckId": "german_a1",
+      "deckName": "German A1 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 1420,
+      "totalChecks": 75,
+      "failCount": 0,
+      "warnCount": 34,
+      "issuesByType": {
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 34
+        }
+      },
+      "factResults": [
+        {
+          "factId": "de-cefr-1",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"Abend\" mean?",
+          "correctAnswer": "evening",
+          "distractors": [
+            {
+              "answer": "beginning",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-16"
+            },
+            {
+              "answer": "opera",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-568"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-1",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'evening' in German?",
+          "correctAnswer": "Abend",
+          "distractors": [
+            {
+              "answer": "Altbau",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-14"
+            },
+            {
+              "answer": "nett",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1209"
+            },
+            {
+              "answer": "Mund",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-522"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"nett\" has 2 format features different from correct \"Abend\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-1",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'evening' in German?",
+          "correctAnswer": "Abend",
+          "distractors": [
+            {
+              "answer": "Altbau",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-14"
+            },
+            {
+              "answer": "nett",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1209"
+            },
+            {
+              "answer": "Mund",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-522"
+            },
+            {
+              "answer": "Koffer",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-411"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"nett\" has 2 format features different from correct \"Abend\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-3",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"Abfahrt\" mean?",
+          "correctAnswer": "departure",
+          "distractors": [
+            {
+              "answer": "ticket",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-193"
+            },
+            {
+              "answer": "congratulation",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-282"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-3",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'departure' in German?",
+          "correctAnswer": "Abfahrt",
+          "distractors": [
+            {
+              "answer": "mittags",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1192"
+            },
+            {
+              "answer": "toll",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1312"
+            },
+            {
+              "answer": "Geld",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-260"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"mittags\" has 2 format features different from correct \"Abfahrt\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-3",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'departure' in German?",
+          "correctAnswer": "Abfahrt",
+          "distractors": [
+            {
+              "answer": "mittags",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1192"
+            },
+            {
+              "answer": "toll",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1312"
+            },
+            {
+              "answer": "Geld",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-260"
+            },
+            {
+              "answer": "Teddybär",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-788"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"mittags\" has 2 format features different from correct \"Abfahrt\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-4",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"Absicht\" mean?",
+          "correctAnswer": "intention",
+          "distractors": [
+            {
+              "answer": "on Sundays",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1293"
+            },
+            {
+              "answer": "pain",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-686"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"on Sundays\" has 2 format features different from correct \"intention\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-4",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'intention' in German?",
+          "correctAnswer": "Absicht",
+          "distractors": [
+            {
+              "answer": "morgens",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1194"
+            },
+            {
+              "answer": "Rechnung",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-632"
+            },
+            {
+              "answer": "Arbeitnehmer",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-35"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"morgens\" has 2 format features different from correct \"Absicht\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-4",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'intention' in German?",
+          "correctAnswer": "Absicht",
+          "distractors": [
+            {
+              "answer": "morgens",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1194"
+            },
+            {
+              "answer": "Rechnung",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-632"
+            },
+            {
+              "answer": "Arbeitnehmer",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-35"
+            },
+            {
+              "answer": "Schwimmbad",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-702"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"morgens\" has 2 format features different from correct \"Absicht\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-5",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"Achtung\" mean?",
+          "correctAnswer": "attention",
+          "distractors": [
+            {
+              "answer": "pot",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-811"
+            },
+            {
+              "answer": "camera",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-378"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-5",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'attention' in German?",
+          "correctAnswer": "Achtung",
+          "distractors": [
+            {
+              "answer": "Stadt",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-741"
+            },
+            {
+              "answer": "Nachtdienst",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-541"
+            },
+            {
+              "answer": "Silvester",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-717"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-5",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'attention' in German?",
+          "correctAnswer": "Achtung",
+          "distractors": [
+            {
+              "answer": "Stadt",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-741"
+            },
+            {
+              "answer": "Nachtdienst",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-541"
+            },
+            {
+              "answer": "Silvester",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-717"
+            },
+            {
+              "answer": "Geschäftsreise",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-272"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-6",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"Adresse\" mean?",
+          "correctAnswer": "address",
+          "distractors": [
+            {
+              "answer": "on the way",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1336"
+            },
+            {
+              "answer": "merry",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1080"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-6",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'address' in German?",
+          "correctAnswer": "Adresse",
+          "distractors": [
+            {
+              "answer": "Weihnachten",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-873"
+            },
+            {
+              "answer": "Kuli",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-437"
+            },
+            {
+              "answer": "Schreibtisch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-694"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-6",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'address' in German?",
+          "correctAnswer": "Adresse",
+          "distractors": [
+            {
+              "answer": "Weihnachten",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-873"
+            },
+            {
+              "answer": "Kuli",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-437"
+            },
+            {
+              "answer": "Schreibtisch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-694"
+            },
+            {
+              "answer": "Kuss",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-442"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-2",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"abendessen\" mean?",
+          "correctAnswer": "to have dinner",
+          "distractors": [
+            {
+              "answer": "to turn off",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-960"
+            },
+            {
+              "answer": "to sit",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1286"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-2",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to have dinner' in German?",
+          "correctAnswer": "abendessen",
+          "distractors": [
+            {
+              "answer": "helfen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1121"
+            },
+            {
+              "answer": "benutzen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-978"
+            },
+            {
+              "answer": "aufräumen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-954"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-2",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to have dinner' in German?",
+          "correctAnswer": "abendessen",
+          "distractors": [
+            {
+              "answer": "helfen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1121"
+            },
+            {
+              "answer": "benutzen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-978"
+            },
+            {
+              "answer": "aufräumen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-954"
+            },
+            {
+              "answer": "wissen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-883"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-8",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"Ahnung\" mean?",
+          "correctAnswer": "inkling",
+          "distractors": [
+            {
+              "answer": "to paint",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-976"
+            },
+            {
+              "answer": "to symbolise",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1309"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-8",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'inkling' in German?",
+          "correctAnswer": "Ahnung",
+          "distractors": [
+            {
+              "answer": "mischen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1189"
+            },
+            {
+              "answer": "tauschen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1311"
+            },
+            {
+              "answer": "nennen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1206"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"mischen\" has 2 format features different from correct \"Ahnung\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-8",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'inkling' in German?",
+          "correctAnswer": "Ahnung",
+          "distractors": [
+            {
+              "answer": "mischen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1189"
+            },
+            {
+              "answer": "tauschen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1311"
+            },
+            {
+              "answer": "nennen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1206"
+            },
+            {
+              "answer": "wollen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1387"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"mischen\" has 2 format features different from correct \"Ahnung\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-82",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"befinden\" mean?",
+          "correctAnswer": "to be located",
+          "distractors": [
+            {
+              "answer": "to kiss",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1159"
+            },
+            {
+              "answer": "to shut",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1269"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-82",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to be located' in German?",
+          "correctAnswer": "befinden",
+          "distractors": [
+            {
+              "answer": "hören",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-349"
+            },
+            {
+              "answer": "kochen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-410"
+            },
+            {
+              "answer": "zumachen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1399"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-82",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to be located' in German?",
+          "correctAnswer": "befinden",
+          "distractors": [
+            {
+              "answer": "hören",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-349"
+            },
+            {
+              "answer": "kochen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-410"
+            },
+            {
+              "answer": "zumachen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1399"
+            },
+            {
+              "answer": "malen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1177"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-179",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"entschuldigen\" mean?",
+          "correctAnswer": "to excuse",
+          "distractors": [
+            {
+              "answer": "to gather",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1258"
+            },
+            {
+              "answer": "to fill",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1086"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-179",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to excuse' in German?",
+          "correctAnswer": "entschuldigen",
+          "distractors": [
+            {
+              "answer": "umtauschen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1326"
+            },
+            {
+              "answer": "laufen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1163"
+            },
+            {
+              "answer": "klappen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1143"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-179",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to excuse' in German?",
+          "correctAnswer": "entschuldigen",
+          "distractors": [
+            {
+              "answer": "umtauschen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1326"
+            },
+            {
+              "answer": "laufen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1163"
+            },
+            {
+              "answer": "klappen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1143"
+            },
+            {
+              "answer": "malen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1177"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-187",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"essen\" mean?",
+          "correctAnswer": "to eat",
+          "distractors": [
+            {
+              "answer": "to cook",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-410"
+            },
+            {
+              "answer": "to shower",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1033"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-187",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to eat' in German?",
+          "correctAnswer": "essen",
+          "distractors": [
+            {
+              "answer": "benutzen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-978"
+            },
+            {
+              "answer": "springen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1299"
+            },
+            {
+              "answer": "antworten",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-946"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-187",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to eat' in German?",
+          "correctAnswer": "essen",
+          "distractors": [
+            {
+              "answer": "benutzen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-978"
+            },
+            {
+              "answer": "springen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1299"
+            },
+            {
+              "answer": "antworten",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-946"
+            },
+            {
+              "answer": "schließen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1269"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-20",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"Ankunft\" mean?",
+          "correctAnswer": "arrival",
+          "distractors": [
+            {
+              "answer": "creative",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1156"
+            },
+            {
+              "answer": "topic",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-274"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-20",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'arrival' in German?",
+          "correctAnswer": "Ankunft",
+          "distractors": [
+            {
+              "answer": "praktisch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1237"
+            },
+            {
+              "answer": "Karneval",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-380"
+            },
+            {
+              "answer": "herrlich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1123"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"praktisch\" has 2 format features different from correct \"Ankunft\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-20",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'arrival' in German?",
+          "correctAnswer": "Ankunft",
+          "distractors": [
+            {
+              "answer": "praktisch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1237"
+            },
+            {
+              "answer": "Karneval",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-380"
+            },
+            {
+              "answer": "herrlich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1123"
+            },
+            {
+              "answer": "elektronisch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1044"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"praktisch\" has 2 format features different from correct \"Ankunft\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-89",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"besondere\" mean?",
+          "correctAnswer": "special",
+          "distractors": [
+            {
+              "answer": "English",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-177"
+            },
+            {
+              "answer": "nevertheless",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1319"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"English\" has 2 format features different from correct \"special\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-89",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'special' in German?",
+          "correctAnswer": "besondere",
+          "distractors": [
+            {
+              "answer": "trotzdem",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1319"
+            },
+            {
+              "answer": "Geschnetzeltes",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-268"
+            },
+            {
+              "answer": "Fahrt",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-198"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Geschnetzeltes\" has 2 format features different from correct \"besondere\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-89",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'special' in German?",
+          "correctAnswer": "besondere",
+          "distractors": [
+            {
+              "answer": "trotzdem",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1319"
+            },
+            {
+              "answer": "Geschnetzeltes",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-268"
+            },
+            {
+              "answer": "Fahrt",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-198"
+            },
+            {
+              "answer": "Karneval",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-380"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Geschnetzeltes\" has 2 format features different from correct \"besondere\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-138",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"Dativ\" mean?",
+          "correctAnswer": "dative",
+          "distractors": [
+            {
+              "answer": "plural",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-594"
+            },
+            {
+              "answer": "music",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-523"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-138",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'dative' in German?",
+          "correctAnswer": "Dativ",
+          "distractors": [
+            {
+              "answer": "bunt",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1006"
+            },
+            {
+              "answer": "Tabelle",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-774"
+            },
+            {
+              "answer": "schrecklich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1275"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"bunt\" has 2 format features different from correct \"Dativ\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-138",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'dative' in German?",
+          "correctAnswer": "Dativ",
+          "distractors": [
+            {
+              "answer": "bunt",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1006"
+            },
+            {
+              "answer": "Tabelle",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-774"
+            },
+            {
+              "answer": "schrecklich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1275"
+            },
+            {
+              "answer": "normal",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1216"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"bunt\" has 2 format features different from correct \"Dativ\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-153",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"Dom\" mean?",
+          "correctAnswer": "cathedral",
+          "distractors": [
+            {
+              "answer": "paramedic",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-666"
+            },
+            {
+              "answer": "geographical",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1097"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-153",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'cathedral' in German?",
+          "correctAnswer": "Dom",
+          "distractors": [
+            {
+              "answer": "Ankunft",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-20"
+            },
+            {
+              "answer": "englisch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-177"
+            },
+            {
+              "answer": "elektronisch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1044"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"englisch\" has 2 format features different from correct \"Dom\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-153",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'cathedral' in German?",
+          "correctAnswer": "Dom",
+          "distractors": [
+            {
+              "answer": "Ankunft",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-20"
+            },
+            {
+              "answer": "englisch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-177"
+            },
+            {
+              "answer": "elektronisch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1044"
+            },
+            {
+              "answer": "Müll",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-532"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"englisch\" has 2 format features different from correct \"Dom\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-177",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"englisch\" mean?",
+          "correctAnswer": "English",
+          "distractors": [
+            {
+              "answer": "the beautiful",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-703"
+            },
+            {
+              "answer": "Jewish",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1139"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"the beautiful\" has 3 format features different from correct \"English\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-177",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'English' in German?",
+          "correctAnswer": "englisch",
+          "distractors": [
+            {
+              "answer": "praktisch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1237"
+            },
+            {
+              "answer": "offiziell",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1224"
+            },
+            {
+              "answer": "schrecklich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1275"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-177",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'English' in German?",
+          "correctAnswer": "englisch",
+          "distractors": [
+            {
+              "answer": "praktisch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1237"
+            },
+            {
+              "answer": "offiziell",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1224"
+            },
+            {
+              "answer": "schrecklich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1275"
+            },
+            {
+              "answer": "normal",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1216"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-58",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"Ausland\" mean?",
+          "correctAnswer": "abroad",
+          "distractors": [
+            {
+              "answer": "first",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1400"
+            },
+            {
+              "answer": "right",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-633"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-58",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'abroad' in German?",
+          "correctAnswer": "Ausland",
+          "distractors": [
+            {
+              "answer": "gestern",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1101"
+            },
+            {
+              "answer": "immer",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1130"
+            },
+            {
+              "answer": "hart",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1116"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"gestern\" has 2 format features different from correct \"Ausland\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-58",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'abroad' in German?",
+          "correctAnswer": "Ausland",
+          "distractors": [
+            {
+              "answer": "gestern",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1101"
+            },
+            {
+              "answer": "immer",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1130"
+            },
+            {
+              "answer": "hart",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1116"
+            },
+            {
+              "answer": "vielleicht",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1359"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"gestern\" has 2 format features different from correct \"Ausland\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-78",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"Bauch\" mean?",
+          "correctAnswer": "abdomen, belly",
+          "distractors": [
+            {
+              "answer": "first",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1057"
+            },
+            {
+              "answer": "normally",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1217"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-78",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'abdomen, belly' in German?",
+          "correctAnswer": "Bauch",
+          "distractors": [
+            {
+              "answer": "sofort",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1288"
+            },
+            {
+              "answer": "überall",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1416"
+            },
+            {
+              "answer": "Juli",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-372"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"sofort\" has 2 format features different from correct \"Bauch\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-78",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'abdomen, belly' in German?",
+          "correctAnswer": "Bauch",
+          "distractors": [
+            {
+              "answer": "sofort",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1288"
+            },
+            {
+              "answer": "überall",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1416"
+            },
+            {
+              "answer": "Juli",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-372"
+            },
+            {
+              "answer": "gern",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1100"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"sofort\" has 2 format features different from correct \"Bauch\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-185",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"erste\" mean?",
+          "correctAnswer": "first",
+          "distractors": [
+            {
+              "answer": "where",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1385"
+            },
+            {
+              "answer": "early",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1081"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-185",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'first' in German?",
+          "correctAnswer": "erste",
+          "distractors": [
+            {
+              "answer": "vielleicht",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1359"
+            },
+            {
+              "answer": "nämlich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1222"
+            },
+            {
+              "answer": "gerade",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1098"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-185",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'first' in German?",
+          "correctAnswer": "erste",
+          "distractors": [
+            {
+              "answer": "vielleicht",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1359"
+            },
+            {
+              "answer": "nämlich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1222"
+            },
+            {
+              "answer": "gerade",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1098"
+            },
+            {
+              "answer": "dort",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1024"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-332",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"heute\" mean?",
+          "correctAnswer": "today",
+          "distractors": [
+            {
+              "answer": "only",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1220"
+            },
+            {
+              "answer": "mostly",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1183"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-332",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'today' in German?",
+          "correctAnswer": "heute",
+          "distractors": [
+            {
+              "answer": "endlich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1046"
+            },
+            {
+              "answer": "natürlich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1204"
+            },
+            {
+              "answer": "oft",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1225"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-332",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'today' in German?",
+          "correctAnswer": "heute",
+          "distractors": [
+            {
+              "answer": "endlich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1046"
+            },
+            {
+              "answer": "natürlich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1204"
+            },
+            {
+              "answer": "oft",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1225"
+            },
+            {
+              "answer": "gestern",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1101"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-333",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"hier\" mean?",
+          "correctAnswer": "here",
+          "distractors": [
+            {
+              "answer": "today",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-332"
+            },
+            {
+              "answer": "together",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1404"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-333",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'here' in German?",
+          "correctAnswer": "hier",
+          "distractors": [
+            {
+              "answer": "oft",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1225"
+            },
+            {
+              "answer": "noch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1214"
+            },
+            {
+              "answer": "monatlich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1193"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-333",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'here' in German?",
+          "correctAnswer": "hier",
+          "distractors": [
+            {
+              "answer": "oft",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1225"
+            },
+            {
+              "answer": "noch",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1214"
+            },
+            {
+              "answer": "monatlich",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1193"
+            },
+            {
+              "answer": "zuerst",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1397"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-108",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"bitte\" mean?",
+          "correctAnswer": "please",
+          "distractors": [
+            {
+              "answer": "welcome",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-882"
+            },
+            {
+              "answer": "OK",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-561"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"OK\" has 2 format features different from correct \"please\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-108",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'please' in German?",
+          "correctAnswer": "bitte",
+          "distractors": [
+            {
+              "answer": "okay",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-561"
+            },
+            {
+              "answer": "Ach",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-930"
+            },
+            {
+              "answer": "Hallo",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-299"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Ach\" has 2 format features different from correct \"bitte\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-108",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'please' in German?",
+          "correctAnswer": "bitte",
+          "distractors": [
+            {
+              "answer": "okay",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-561"
+            },
+            {
+              "answer": "Ach",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-930"
+            },
+            {
+              "answer": "Hallo",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-299"
+            },
+            {
+              "answer": "willkommen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-882"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Ach\" has 2 format features different from correct \"bitte\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-299",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"Hallo\" mean?",
+          "correctAnswer": "hello",
+          "distractors": [
+            {
+              "answer": "welcome",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-882"
+            },
+            {
+              "answer": "OK",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-561"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"OK\" has 2 format features different from correct \"hello\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-299",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'hello' in German?",
+          "correctAnswer": "Hallo",
+          "distractors": [
+            {
+              "answer": "Ach",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-930"
+            },
+            {
+              "answer": "willkommen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-882"
+            },
+            {
+              "answer": "bitte",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-108"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"willkommen\" has 2 format features different from correct \"Hallo\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-299",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'hello' in German?",
+          "correctAnswer": "Hallo",
+          "distractors": [
+            {
+              "answer": "Ach",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-930"
+            },
+            {
+              "answer": "willkommen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-882"
+            },
+            {
+              "answer": "bitte",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-108"
+            },
+            {
+              "answer": "okay",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-561"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"willkommen\" has 2 format features different from correct \"Hallo\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-352",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"in\" mean?",
+          "correctAnswer": "in, popular",
+          "distractors": [
+            {
+              "answer": "near",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1203"
+            },
+            {
+              "answer": "outside",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1025"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-352",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'in, popular' in German?",
+          "correctAnswer": "in",
+          "distractors": [
+            {
+              "answer": "draußen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1025"
+            },
+            {
+              "answer": "über",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1415"
+            },
+            {
+              "answer": "unten",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1331"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-352",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'in, popular' in German?",
+          "correctAnswer": "in",
+          "distractors": [
+            {
+              "answer": "draußen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1025"
+            },
+            {
+              "answer": "über",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1415"
+            },
+            {
+              "answer": "unten",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1331"
+            },
+            {
+              "answer": "hinten",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1125"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-561",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"okay\" mean?",
+          "correctAnswer": "OK",
+          "distractors": [
+            {
+              "answer": "welcome",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-882"
+            },
+            {
+              "answer": "hello",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-299"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"welcome\" has 2 format features different from correct \"OK\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-561",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'OK' in German?",
+          "correctAnswer": "okay",
+          "distractors": [
+            {
+              "answer": "Hallo",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-299"
+            },
+            {
+              "answer": "bitte",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-108"
+            },
+            {
+              "answer": "willkommen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-882"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Hallo\" has 2 format features different from correct \"okay\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-561",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'OK' in German?",
+          "correctAnswer": "okay",
+          "distractors": [
+            {
+              "answer": "Hallo",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-299"
+            },
+            {
+              "answer": "bitte",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-108"
+            },
+            {
+              "answer": "willkommen",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-882"
+            },
+            {
+              "answer": "Ach",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-930"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Hallo\" has 2 format features different from correct \"okay\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-712",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"Sekunde\" mean?",
+          "correctAnswer": "second",
+          "distractors": [
+            {
+              "answer": "thousand",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-783"
+            },
+            {
+              "answer": "seven",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1284"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "de-cefr-712",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'second' in German?",
+          "correctAnswer": "Sekunde",
+          "distractors": [
+            {
+              "answer": "vierte",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-848"
+            },
+            {
+              "answer": "Sechs",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1281"
+            },
+            {
+              "answer": "Zehn",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1391"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"vierte\" has 2 format features different from correct \"Sekunde\""
+            }
+          ]
+        },
+        {
+          "factId": "de-cefr-712",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'second' in German?",
+          "correctAnswer": "Sekunde",
+          "distractors": [
+            {
+              "answer": "vierte",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-848"
+            },
+            {
+              "answer": "Sechs",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1281"
+            },
+            {
+              "answer": "Zehn",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-1391"
+            },
+            {
+              "answer": "Tausend",
+              "source": "similar_difficulty",
+              "factId": "de-cefr-783"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"vierte\" has 2 format features different from correct \"Sekunde\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

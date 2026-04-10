@@ -1,0 +1,447 @@
+{
+  "timestamp": "2026-04-10T13:40:18.246Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 0,
+  "decks": [
+    {
+      "deckId": "dutch_b2",
+      "deckName": "Dutch B2 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 71,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 0,
+      "issuesByType": {},
+      "factResults": [
+        {
+          "factId": "nl-cefr-1179",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'academisch' mean?",
+          "correctAnswer": "academic",
+          "distractors": [
+            {
+              "answer": "active",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1180"
+            },
+            {
+              "answer": "local",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1217"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1179",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'academisch' mean?",
+          "correctAnswer": "academic",
+          "distractors": [
+            {
+              "answer": "active",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1180"
+            },
+            {
+              "answer": "local",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1217"
+            },
+            {
+              "answer": "available",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1190"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1179",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'academisch' mean?",
+          "correctAnswer": "academic",
+          "distractors": [
+            {
+              "answer": "active",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1180"
+            },
+            {
+              "answer": "local",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1217"
+            },
+            {
+              "answer": "available",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1190"
+            },
+            {
+              "answer": "material",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1219"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1180",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'actief' mean?",
+          "correctAnswer": "active",
+          "distractors": [
+            {
+              "answer": "characteristic",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1214"
+            },
+            {
+              "answer": "academic",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1179"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1180",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'active' in Dutch?",
+          "correctAnswer": "actief",
+          "distractors": [
+            {
+              "answer": "kenmerk",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1214"
+            },
+            {
+              "answer": "academisch",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1179"
+            },
+            {
+              "answer": "centraal",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1193"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1180",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'actief'?",
+          "correctAnswer": "active",
+          "distractors": [
+            {
+              "answer": "characteristic",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1214"
+            },
+            {
+              "answer": "academic",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1179"
+            },
+            {
+              "answer": "central",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1193"
+            },
+            {
+              "answer": "general",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1181"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1181",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'algemeen' mean?",
+          "correctAnswer": "general",
+          "distractors": [
+            {
+              "answer": "scientific",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1249"
+            },
+            {
+              "answer": "academic",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1179"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1181",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'general' in Dutch?",
+          "correctAnswer": "algemeen",
+          "distractors": [
+            {
+              "answer": "wetenschappelijk",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1249"
+            },
+            {
+              "answer": "academisch",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1179"
+            },
+            {
+              "answer": "actief",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1180"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1181",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'algemeen'?",
+          "correctAnswer": "general",
+          "distractors": [
+            {
+              "answer": "scientific",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1249"
+            },
+            {
+              "answer": "academic",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1179"
+            },
+            {
+              "answer": "active",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1180"
+            },
+            {
+              "answer": "religious",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1227"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1182",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'angst' mean?",
+          "correctAnswer": "fear, anxiety",
+          "distractors": [
+            {
+              "answer": "easy",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1207"
+            },
+            {
+              "answer": "language use",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1231"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1182",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'fear, anxiety' in Dutch?",
+          "correctAnswer": "angst",
+          "distractors": [
+            {
+              "answer": "gemakkelijk",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1207"
+            },
+            {
+              "answer": "taalgebruik",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1231"
+            },
+            {
+              "answer": "identiteit",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1211"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1182",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "angst — fear, fright, anxiety.",
+          "correctAnswer": "fear, anxiety",
+          "distractors": [
+            {
+              "answer": "easy",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1207"
+            },
+            {
+              "answer": "language use",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1231"
+            },
+            {
+              "answer": "identity",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1211"
+            },
+            {
+              "answer": "preference",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1243"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1183",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'apart' mean?",
+          "correctAnswer": "separate",
+          "distractors": [
+            {
+              "answer": "image",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1185"
+            },
+            {
+              "answer": "director, manager",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1199"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1183",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'separate' in Dutch?",
+          "correctAnswer": "apart",
+          "distractors": [
+            {
+              "answer": "beeld",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1185"
+            },
+            {
+              "answer": "directeur",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1199"
+            },
+            {
+              "answer": "ontwikkeling",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1224"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-1183",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'apart'?",
+          "correctAnswer": "separate",
+          "distractors": [
+            {
+              "answer": "image",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1185"
+            },
+            {
+              "answer": "director, manager",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1199"
+            },
+            {
+              "answer": "development",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1224"
+            },
+            {
+              "answer": "language use",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1231"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

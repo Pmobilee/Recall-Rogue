@@ -1,0 +1,470 @@
+{
+  "timestamp": "2026-04-10T13:40:15.898Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 3,
+  "decks": [
+    {
+      "deckId": "czech_b1",
+      "deckName": "Czech B1 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 976,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 3,
+      "issuesByType": {
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "cs-freq-1001",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'působit' mean?",
+          "correctAnswer": "to work",
+          "distractors": [
+            {
+              "answer": "to lead",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1041"
+            },
+            {
+              "answer": "to withdraw",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1455"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1001",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'působit' mean?",
+          "correctAnswer": "to work",
+          "distractors": [
+            {
+              "answer": "to lead",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1041"
+            },
+            {
+              "answer": "to withdraw",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1455"
+            },
+            {
+              "answer": "to prefer",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1230"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1001",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'působit' mean?",
+          "correctAnswer": "to work",
+          "distractors": [
+            {
+              "answer": "to lead",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1041"
+            },
+            {
+              "answer": "to withdraw",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1455"
+            },
+            {
+              "answer": "to prefer",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1230"
+            },
+            {
+              "answer": "to misunderstand",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1718"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1002",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'pustit' mean?",
+          "correctAnswer": "to drop",
+          "distractors": [
+            {
+              "answer": "to look, to appear",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1830"
+            },
+            {
+              "answer": "to create",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1314"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1002",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'pustit' mean?",
+          "correctAnswer": "to drop",
+          "distractors": [
+            {
+              "answer": "to look, to appear",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1830"
+            },
+            {
+              "answer": "to create",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1314"
+            },
+            {
+              "answer": "to take",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1047"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1002",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'pustit' mean?",
+          "correctAnswer": "to drop",
+          "distractors": [
+            {
+              "answer": "to look, to appear",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1830"
+            },
+            {
+              "answer": "to create",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1314"
+            },
+            {
+              "answer": "to take",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1047"
+            },
+            {
+              "answer": "to pay attention",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1719"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1003",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'Rakousko' mean?",
+          "correctAnswer": "Austria",
+          "distractors": [
+            {
+              "answer": "United States",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1895"
+            },
+            {
+              "answer": "correct",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1018"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"correct\" has 2 format features different from correct \"Austria\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1003",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'Rakousko' mean?",
+          "correctAnswer": "Austria",
+          "distractors": [
+            {
+              "answer": "United States",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1895"
+            },
+            {
+              "answer": "correct",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1018"
+            },
+            {
+              "answer": "basic research",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1640"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"correct\" has 2 format features different from correct \"Austria\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1003",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'Rakousko' mean?",
+          "correctAnswer": "Austria",
+          "distractors": [
+            {
+              "answer": "United States",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1895"
+            },
+            {
+              "answer": "correct",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1018"
+            },
+            {
+              "answer": "basic research",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1640"
+            },
+            {
+              "answer": "institution",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1422"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"correct\" has 2 format features different from correct \"Austria\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1004",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'rezervace' mean?",
+          "correctAnswer": "booking",
+          "distractors": [
+            {
+              "answer": "white wine",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1326"
+            },
+            {
+              "answer": "pretty as a picture",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1788"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1004",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'rezervace' mean?",
+          "correctAnswer": "booking",
+          "distractors": [
+            {
+              "answer": "white wine",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1326"
+            },
+            {
+              "answer": "pretty as a picture",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1788"
+            },
+            {
+              "answer": "dry",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1998"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1004",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'rezervace' mean?",
+          "correctAnswer": "booking",
+          "distractors": [
+            {
+              "answer": "white wine",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1326"
+            },
+            {
+              "answer": "pretty as a picture",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1788"
+            },
+            {
+              "answer": "dry",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1998"
+            },
+            {
+              "answer": "parliament",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1366"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1005",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'rozhodčí' mean?",
+          "correctAnswer": "referee",
+          "distractors": [
+            {
+              "answer": "leaf",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1110"
+            },
+            {
+              "answer": "meaning, sense",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1637"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1005",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'rozhodčí' mean?",
+          "correctAnswer": "referee",
+          "distractors": [
+            {
+              "answer": "leaf",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1110"
+            },
+            {
+              "answer": "meaning, sense",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1637"
+            },
+            {
+              "answer": "match",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1219"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1005",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'rozhodčí' mean?",
+          "correctAnswer": "referee",
+          "distractors": [
+            {
+              "answer": "leaf",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1110"
+            },
+            {
+              "answer": "meaning, sense",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1637"
+            },
+            {
+              "answer": "match",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1219"
+            },
+            {
+              "answer": "week",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1201"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

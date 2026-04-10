@@ -1,0 +1,510 @@
+{
+  "timestamp": "2026-04-10T13:40:11.846Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 9,
+  "decks": [
+    {
+      "deckId": "chinese_hsk1",
+      "deckName": "Chinese HSK 1 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 466,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 9,
+      "issuesByType": {
+        "chinese_sense_mismatch_runtime": {
+          "fail": 0,
+          "warn": 6
+        },
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "zh-hsk-2",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '了' mean?",
+          "correctAnswer": "completion marker",
+          "distractors": [
+            {
+              "answer": "sentence particle",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-52"
+            },
+            {
+              "answer": "question particle",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-47"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-2\" correctAnswer senses [completion marker] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-2",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '了' mean?",
+          "correctAnswer": "completion marker",
+          "distractors": [
+            {
+              "answer": "sentence particle",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-52"
+            },
+            {
+              "answer": "question particle",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-47"
+            },
+            {
+              "answer": "plural marker",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-139"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-2\" correctAnswer senses [completion marker] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-2",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '了' mean?",
+          "correctAnswer": "completion marker",
+          "distractors": [
+            {
+              "answer": "sentence particle",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-52"
+            },
+            {
+              "answer": "question particle",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-47"
+            },
+            {
+              "answer": "plural marker",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-139"
+            },
+            {
+              "answer": "ordinal prefix",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-229"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-2\" correctAnswer senses [completion marker] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-3",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '我' mean?",
+          "correctAnswer": "I",
+          "distractors": [
+            {
+              "answer": "you",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-123"
+            },
+            {
+              "answer": "this",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-10"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"you\" has 2 format features different from correct \"I\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-3",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '我' mean?",
+          "correctAnswer": "I",
+          "distractors": [
+            {
+              "answer": "you",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-123"
+            },
+            {
+              "answer": "this",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-10"
+            },
+            {
+              "answer": "those",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-118"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"you\" has 2 format features different from correct \"I\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-3",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '我' mean?",
+          "correctAnswer": "I",
+          "distractors": [
+            {
+              "answer": "you",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-123"
+            },
+            {
+              "answer": "this",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-10"
+            },
+            {
+              "answer": "those",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-118"
+            },
+            {
+              "answer": "these",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-67"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"you\" has 2 format features different from correct \"I\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-4",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '是' mean?",
+          "correctAnswer": "to be",
+          "distractors": [
+            {
+              "answer": "to go in",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-282"
+            },
+            {
+              "answer": "to buy",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-101"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-4",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '是' mean?",
+          "correctAnswer": "to be",
+          "distractors": [
+            {
+              "answer": "to go in",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-282"
+            },
+            {
+              "answer": "to buy",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-101"
+            },
+            {
+              "answer": "to speak",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-214"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-4",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '是' mean?",
+          "correctAnswer": "to be",
+          "distractors": [
+            {
+              "answer": "to go in",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-282"
+            },
+            {
+              "answer": "to buy",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-101"
+            },
+            {
+              "answer": "to speak",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-214"
+            },
+            {
+              "answer": "to fly",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-193"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-5",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '你' mean?",
+          "correctAnswer": "you",
+          "distractors": [
+            {
+              "answer": "this",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-10"
+            },
+            {
+              "answer": "she",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-26"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-5",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '你' mean?",
+          "correctAnswer": "you",
+          "distractors": [
+            {
+              "answer": "this",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-10"
+            },
+            {
+              "answer": "she",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-26"
+            },
+            {
+              "answer": "they",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-31"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-5",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '你' mean?",
+          "correctAnswer": "you",
+          "distractors": [
+            {
+              "answer": "this",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-10"
+            },
+            {
+              "answer": "she",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-26"
+            },
+            {
+              "answer": "they",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-31"
+            },
+            {
+              "answer": "he",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-9"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-6",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '在' mean?",
+          "correctAnswer": "to be at",
+          "distractors": [
+            {
+              "answer": "to see",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-211"
+            },
+            {
+              "answer": "to learn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-153"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-6\" correctAnswer senses [to be at] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-6",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '在' mean?",
+          "correctAnswer": "to be at",
+          "distractors": [
+            {
+              "answer": "to see",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-211"
+            },
+            {
+              "answer": "to learn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-153"
+            },
+            {
+              "answer": "amusing",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-462"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-6\" correctAnswer senses [to be at] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-6",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '在' mean?",
+          "correctAnswer": "to be at",
+          "distractors": [
+            {
+              "answer": "to see",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-211"
+            },
+            {
+              "answer": "to learn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-153"
+            },
+            {
+              "answer": "amusing",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-462"
+            },
+            {
+              "answer": "to eat",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-70"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-6\" correctAnswer senses [to be at] not found in explanation"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

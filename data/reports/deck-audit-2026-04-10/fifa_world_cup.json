@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-04-10T13:42:32.247Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 0,
+  "totalFails": 1,
+  "totalWarns": 0,
+  "decks": [
+    {
+      "deckId": "fifa_world_cup",
+      "deckName": "FIFA World Cup",
+      "deckClass": "knowledge",
+      "totalFacts": null,
+      "totalChecks": 0,
+      "failCount": 1,
+      "warnCount": 0,
+      "issuesByType": {
+        "audit_engine_crash": {
+          "fail": 1,
+          "warn": 0
+        }
+      },
+      "crashDetail": {
+        "error": "TypeError: synAnswer.toLowerCase is not a function",
+        "location": "src/services/curatedDistractorSelector.ts:306",
+        "rootCause": "Pools mens_wc_years and womens_wc_years contain numeric (integer) syntheticDistractors — e.g. 1926, 1942, 1993 — instead of strings. Runtime selectDistractors assumes string type and calls .toLowerCase() on them, crashing immediately.",
+        "offendingPools": [
+          "mens_wc_years",
+          "womens_wc_years"
+        ],
+        "offendingCount": 15,
+        "recommendedFix": "Coerce all syntheticDistractors entries in data/decks/fifa_world_cup.json to strings. Also add a verify-all-decks check: every syntheticDistractors entry must be typeof === \"string\"."
+      },
+      "factResults": []
+    }
+  ]
+}

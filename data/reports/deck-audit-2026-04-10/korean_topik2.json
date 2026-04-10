@@ -1,0 +1,458 @@
+{
+  "timestamp": "2026-04-10T13:42:18.874Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 1,
+  "totalWarns": 0,
+  "decks": [
+    {
+      "deckId": "korean_topik2",
+      "deckName": "Korean TOPIK 2 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 2207,
+      "totalChecks": 15,
+      "failCount": 1,
+      "warnCount": 0,
+      "issuesByType": {
+        "question_too_long": {
+          "fail": 1,
+          "warn": 0
+        }
+      },
+      "factResults": [
+        {
+          "factId": "ko-nikl-1003",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '어린아이' mean?",
+          "correctAnswer": "children",
+          "distractors": [
+            {
+              "answer": "disregard, neglect",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2804"
+            },
+            {
+              "answer": "noun",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-6621"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1003",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '어린아이' mean?",
+          "correctAnswer": "children",
+          "distractors": [
+            {
+              "answer": "disregard, neglect",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2804"
+            },
+            {
+              "answer": "noun",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-6621"
+            },
+            {
+              "answer": "ordinary",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4225"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1003",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '어린아이' mean?",
+          "correctAnswer": "children",
+          "distractors": [
+            {
+              "answer": "disregard, neglect",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2804"
+            },
+            {
+              "answer": "noun",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-6621"
+            },
+            {
+              "answer": "ordinary",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4225"
+            },
+            {
+              "answer": "cost of living",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3347"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1012",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '언어' mean?",
+          "correctAnswer": "language",
+          "distractors": [
+            {
+              "answer": "hands and legs",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3468"
+            },
+            {
+              "answer": "word",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-5033"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1012",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'language' in Korean?",
+          "correctAnswer": "언어",
+          "distractors": [
+            {
+              "answer": "손발",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3468"
+            },
+            {
+              "answer": "한마디",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-5033"
+            },
+            {
+              "answer": "지옥",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4615"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1012",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "언어 — \"The means of communication, such as sounds, letters, etc. for expressing or conveying one's thoughts or feelings; or the system of such means. \". Part of speech: noun.",
+          "correctAnswer": "language",
+          "distractors": [
+            {
+              "answer": "hands and legs",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3468"
+            },
+            {
+              "answer": "word",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-5033"
+            },
+            {
+              "answer": "hell",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4615"
+            },
+            {
+              "answer": "robot",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2636"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1015",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '얻다' mean?",
+          "correctAnswer": "to obtain",
+          "distractors": [
+            {
+              "answer": "to search around",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4721"
+            },
+            {
+              "answer": "to get collided",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3084"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1015",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to obtain' in Korean?",
+          "correctAnswer": "얻다",
+          "distractors": [
+            {
+              "answer": "찾아다니다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4721"
+            },
+            {
+              "answer": "부딪히다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3084"
+            },
+            {
+              "answer": "꾸미다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2154"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1015",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "얻다 — To take and have something without special efforts or without paying for it. Part of speech: verb. Also: To come to have or enjoy a positive attitude, response, state, etc, To seek or look for something and then have it, To get a loan, To lease a house, room, etc, To secure or get a right, result, property, etc, To come to find and use a worker.', \"To take someone into one's family.\", 'To become ill",
+          "correctAnswer": "to obtain",
+          "distractors": [
+            {
+              "answer": "to search around",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4721"
+            },
+            {
+              "answer": "to get collided",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3084"
+            },
+            {
+              "answer": "to decorate",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2154"
+            },
+            {
+              "answer": "to turn",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-404"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "FAIL",
+              "type": "question_too_long",
+              "detail": "Question length 407 > 400"
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-1017",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '얼다' mean?",
+          "correctAnswer": "to freeze",
+          "distractors": [
+            {
+              "answer": "to move on",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2191"
+            },
+            {
+              "answer": "to pick up",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1354"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1017",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to freeze' in Korean?",
+          "correctAnswer": "얼다",
+          "distractors": [
+            {
+              "answer": "나아가다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2191"
+            },
+            {
+              "answer": "줍다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1354"
+            },
+            {
+              "answer": "둘러보다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2539"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1017",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "얼다 — For a liquid or moist material to become solidified by a cold energy. Part of speech: verb. Also: For a part or all of the body to become extremely cold and numb because of chilly conditions, To be overly nervous because one is intimidated by the mood or the presence of someone else",
+          "correctAnswer": "to freeze",
+          "distractors": [
+            {
+              "answer": "to move on",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2191"
+            },
+            {
+              "answer": "to pick up",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1354"
+            },
+            {
+              "answer": "to look around",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2539"
+            },
+            {
+              "answer": "to scold",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-7773"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1023",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '엉덩이' mean?",
+          "correctAnswer": "butt",
+          "distractors": [
+            {
+              "answer": "after-party",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-6431"
+            },
+            {
+              "answer": "means, method",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3490"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1023",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'butt' in Korean?",
+          "correctAnswer": "엉덩이",
+          "distractors": [
+            {
+              "answer": "뒤풀이",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-6431"
+            },
+            {
+              "answer": "수단",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3490"
+            },
+            {
+              "answer": "작가",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4302"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1023",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "엉덩이 — The fleshy part between the waist and thigh that touches the floor when one is sitting. Part of speech: noun.",
+          "correctAnswer": "butt",
+          "distractors": [
+            {
+              "answer": "after-party",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-6431"
+            },
+            {
+              "answer": "means, method",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3490"
+            },
+            {
+              "answer": "writer",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4302"
+            },
+            {
+              "answer": "shame, embarrassment",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4719"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

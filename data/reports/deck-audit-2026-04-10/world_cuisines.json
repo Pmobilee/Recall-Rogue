@@ -1,0 +1,5337 @@
+{
+  "timestamp": "2026-04-10T13:40:41.141Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 176,
+  "totalFails": 0,
+  "totalWarns": 66,
+  "decks": [
+    {
+      "deckId": "world_cuisines",
+      "deckName": "World Cuisines & Spices",
+      "deckClass": "knowledge",
+      "totalFacts": 141,
+      "totalChecks": 176,
+      "failCount": 0,
+      "warnCount": 66,
+      "issuesByType": {
+        "min_pool_facts": {
+          "fail": 0,
+          "warn": 1
+        },
+        "empty_chain_themes_runtime": {
+          "fail": 0,
+          "warn": 1
+        },
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 35
+        },
+        "near_duplicate_options": {
+          "fail": 0,
+          "warn": 21
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 5
+        },
+        "unit_contamination": {
+          "fail": 0,
+          "warn": 1
+        },
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 2
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_pool_cultural_references",
+          "masteryLevel": -1,
+          "poolId": "cultural_references",
+          "renderedQuestion": "(pool-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_pool_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "min_pool_facts",
+              "detail": "Pool \"cultural_references\" has only 3 real factIds (min: 5)"
+            }
+          ]
+        },
+        {
+          "factId": "_deck_chain_themes",
+          "masteryLevel": -1,
+          "poolId": "_deck",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "empty_chain_themes_runtime",
+              "detail": "Knowledge deck \"world_cuisines\" has no chainThemes — Study Temple mode will not work correctly"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_sushi_origin",
+          "masteryLevel": 0,
+          "poolId": "country_region_names",
+          "renderedQuestion": "In which country was modern nigiri-zushi invented around 1824?",
+          "correctAnswer": "Japan",
+          "distractors": [
+            {
+              "answer": "Andalusia",
+              "source": "similar_difficulty",
+              "factId": "food_dish_gazpacho_peasant"
+            },
+            {
+              "answer": "Naples",
+              "source": "similar_difficulty",
+              "factId": "food_dish_pizza_margherita"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_sushi_origin",
+          "masteryLevel": 2,
+          "poolId": "country_region_names",
+          "renderedQuestion": "In which country was modern nigiri-zushi invented around 1824?",
+          "correctAnswer": "Japan",
+          "distractors": [
+            {
+              "answer": "Andalusia",
+              "source": "similar_difficulty",
+              "factId": "food_dish_gazpacho_peasant"
+            },
+            {
+              "answer": "Naples",
+              "source": "similar_difficulty",
+              "factId": "food_dish_pizza_margherita"
+            },
+            {
+              "answer": "Morocco",
+              "source": "similar_difficulty",
+              "factId": "food_tech_tagine_design"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_sushi_origin",
+          "masteryLevel": 4,
+          "poolId": "country_region_names",
+          "renderedQuestion": "In which country was modern nigiri-zushi invented around 1824?",
+          "correctAnswer": "Japan",
+          "distractors": [
+            {
+              "answer": "Andalusia",
+              "source": "similar_difficulty",
+              "factId": "food_dish_gazpacho_peasant"
+            },
+            {
+              "answer": "Naples",
+              "source": "similar_difficulty",
+              "factId": "food_dish_pizza_margherita"
+            },
+            {
+              "answer": "Morocco",
+              "source": "similar_difficulty",
+              "factId": "food_tech_tagine_design"
+            },
+            {
+              "answer": "Los Angeles",
+              "source": "similar_difficulty",
+              "factId": "food_dish_california_roll"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_tempura_origin",
+          "masteryLevel": 0,
+          "poolId": "country_region_names",
+          "renderedQuestion": "Tempura was introduced to Japan by missionaries from which European country in the 16th century?",
+          "correctAnswer": "Portugal",
+          "distractors": [
+            {
+              "answer": "Valencia",
+              "source": "similar_difficulty",
+              "factId": "food_dish_paella_origin"
+            },
+            {
+              "answer": "Vietnam",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_vietnam"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_tempura_origin",
+          "masteryLevel": 2,
+          "poolId": "country_region_names",
+          "renderedQuestion": "Tempura was introduced to Japan by missionaries from which European country in the 16th century?",
+          "correctAnswer": "Portugal",
+          "distractors": [
+            {
+              "answer": "Valencia",
+              "source": "similar_difficulty",
+              "factId": "food_dish_paella_origin"
+            },
+            {
+              "answer": "Vietnam",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_vietnam"
+            },
+            {
+              "answer": "Andalusia",
+              "source": "similar_difficulty",
+              "factId": "food_dish_gazpacho_peasant"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_tempura_origin",
+          "masteryLevel": 4,
+          "poolId": "country_region_names",
+          "renderedQuestion": "Tempura was introduced to Japan by missionaries from which European country in the 16th century?",
+          "correctAnswer": "Portugal",
+          "distractors": [
+            {
+              "answer": "Valencia",
+              "source": "similar_difficulty",
+              "factId": "food_dish_paella_origin"
+            },
+            {
+              "answer": "Vietnam",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_vietnam"
+            },
+            {
+              "answer": "Andalusia",
+              "source": "similar_difficulty",
+              "factId": "food_dish_gazpacho_peasant"
+            },
+            {
+              "answer": "Iran",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_iran"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_pizza_margherita",
+          "masteryLevel": 0,
+          "poolId": "country_region_names",
+          "renderedQuestion": "Pizza Margherita was created in which Italian city, reportedly for Queen Margherita in 1889?",
+          "correctAnswer": "Naples",
+          "distractors": [
+            {
+              "answer": "Caribbean",
+              "source": "similar_difficulty",
+              "factId": "food_hist_sugar_slavery"
+            },
+            {
+              "answer": "Austria",
+              "source": "similar_difficulty",
+              "factId": "food_dish_croissant_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_pizza_margherita",
+          "masteryLevel": 2,
+          "poolId": "country_region_names",
+          "renderedQuestion": "Pizza Margherita was created in which Italian city, reportedly for Queen Margherita in 1889?",
+          "correctAnswer": "Naples",
+          "distractors": [
+            {
+              "answer": "Caribbean",
+              "source": "similar_difficulty",
+              "factId": "food_hist_sugar_slavery"
+            },
+            {
+              "answer": "Austria",
+              "source": "similar_difficulty",
+              "factId": "food_dish_croissant_origin"
+            },
+            {
+              "answer": "India",
+              "source": "similar_difficulty",
+              "factId": "food_spice_ghee_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_pizza_margherita",
+          "masteryLevel": 4,
+          "poolId": "country_region_names",
+          "renderedQuestion": "Pizza Margherita was created in which Italian city, reportedly for Queen Margherita in 1889?",
+          "correctAnswer": "Naples",
+          "distractors": [
+            {
+              "answer": "Caribbean",
+              "source": "similar_difficulty",
+              "factId": "food_hist_sugar_slavery"
+            },
+            {
+              "answer": "Austria",
+              "source": "similar_difficulty",
+              "factId": "food_dish_croissant_origin"
+            },
+            {
+              "answer": "India",
+              "source": "similar_difficulty",
+              "factId": "food_spice_ghee_origin"
+            },
+            {
+              "answer": "Morocco",
+              "source": "similar_difficulty",
+              "factId": "food_tech_tagine_design"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_croissant_origin",
+          "masteryLevel": 0,
+          "poolId": "country_region_names",
+          "renderedQuestion": "The croissant traces its ancestry to the kipferl, a crescent pastry from which country?",
+          "correctAnswer": "Austria",
+          "distractors": [
+            {
+              "answer": "Valencia",
+              "source": "similar_difficulty",
+              "factId": "food_dish_paella_origin"
+            },
+            {
+              "answer": "Caribbean",
+              "source": "similar_difficulty",
+              "factId": "food_hist_sugar_slavery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_croissant_origin",
+          "masteryLevel": 2,
+          "poolId": "country_region_names",
+          "renderedQuestion": "The croissant traces its ancestry to the kipferl, a crescent pastry from which country?",
+          "correctAnswer": "Austria",
+          "distractors": [
+            {
+              "answer": "Valencia",
+              "source": "similar_difficulty",
+              "factId": "food_dish_paella_origin"
+            },
+            {
+              "answer": "Caribbean",
+              "source": "similar_difficulty",
+              "factId": "food_hist_sugar_slavery"
+            },
+            {
+              "answer": "Egypt",
+              "source": "similar_difficulty",
+              "factId": "food_hist_falafel_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_croissant_origin",
+          "masteryLevel": 4,
+          "poolId": "country_region_names",
+          "renderedQuestion": "The croissant traces its ancestry to the kipferl, a crescent pastry from which country?",
+          "correctAnswer": "Austria",
+          "distractors": [
+            {
+              "answer": "Valencia",
+              "source": "similar_difficulty",
+              "factId": "food_dish_paella_origin"
+            },
+            {
+              "answer": "Caribbean",
+              "source": "similar_difficulty",
+              "factId": "food_hist_sugar_slavery"
+            },
+            {
+              "answer": "Egypt",
+              "source": "similar_difficulty",
+              "factId": "food_hist_falafel_origin"
+            },
+            {
+              "answer": "Lebanon",
+              "source": "similar_difficulty",
+              "factId": "food_dish_tacos_al_pastor_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_chicken_tikka_masala_origin",
+          "masteryLevel": 0,
+          "poolId": "country_region_names",
+          "renderedQuestion": "Chicken tikka masala was almost certainly invented in which country, likely by Bangladeshi immigrant chefs in the 1960s?",
+          "correctAnswer": "Britain",
+          "distractors": [
+            {
+              "answer": "India",
+              "source": "similar_difficulty",
+              "factId": "food_hist_sugar_india"
+            },
+            {
+              "answer": "China",
+              "source": "similar_difficulty",
+              "factId": "food_tech_kombucha_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_chicken_tikka_masala_origin",
+          "masteryLevel": 2,
+          "poolId": "country_region_names",
+          "renderedQuestion": "Chicken tikka masala was almost certainly invented in which country, likely by Bangladeshi immigrant chefs in the 1960s?",
+          "correctAnswer": "Britain",
+          "distractors": [
+            {
+              "answer": "India",
+              "source": "similar_difficulty",
+              "factId": "food_hist_sugar_india"
+            },
+            {
+              "answer": "China",
+              "source": "similar_difficulty",
+              "factId": "food_tech_kombucha_origin"
+            },
+            {
+              "answer": "Austria",
+              "source": "similar_difficulty",
+              "factId": "food_dish_croissant_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_chicken_tikka_masala_origin",
+          "masteryLevel": 4,
+          "poolId": "country_region_names",
+          "renderedQuestion": "Chicken tikka masala was almost certainly invented in which country, likely by Bangladeshi immigrant chefs in the 1960s?",
+          "correctAnswer": "Britain",
+          "distractors": [
+            {
+              "answer": "India",
+              "source": "similar_difficulty",
+              "factId": "food_hist_sugar_india"
+            },
+            {
+              "answer": "China",
+              "source": "similar_difficulty",
+              "factId": "food_tech_kombucha_origin"
+            },
+            {
+              "answer": "Austria",
+              "source": "similar_difficulty",
+              "factId": "food_dish_croissant_origin"
+            },
+            {
+              "answer": "Mexico",
+              "source": "similar_difficulty",
+              "factId": "food_spice_vanilla_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_sushi_conveyor",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did the first conveyor belt sushi (kaiten-zushi) restaurant open in Japan?",
+          "correctAnswer": "1958",
+          "distractors": [
+            {
+              "answer": "1972",
+              "source": "numerical",
+              "factId": "_numerical_1972"
+            },
+            {
+              "answer": "1950",
+              "source": "numerical",
+              "factId": "_numerical_1950"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_sushi_conveyor",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did the first conveyor belt sushi (kaiten-zushi) restaurant open in Japan?",
+          "correctAnswer": "1958",
+          "distractors": [
+            {
+              "answer": "1972",
+              "source": "numerical",
+              "factId": "_numerical_1972"
+            },
+            {
+              "answer": "1950",
+              "source": "numerical",
+              "factId": "_numerical_1950"
+            },
+            {
+              "answer": "1975",
+              "source": "numerical",
+              "factId": "_numerical_1975"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_sushi_conveyor",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did the first conveyor belt sushi (kaiten-zushi) restaurant open in Japan?",
+          "correctAnswer": "1958",
+          "distractors": [
+            {
+              "answer": "1972",
+              "source": "numerical",
+              "factId": "_numerical_1972"
+            },
+            {
+              "answer": "1950",
+              "source": "numerical",
+              "factId": "_numerical_1950"
+            },
+            {
+              "answer": "1975",
+              "source": "numerical",
+              "factId": "_numerical_1975"
+            },
+            {
+              "answer": "1948",
+              "source": "numerical",
+              "factId": "_numerical_1948"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_peking_duck_restaurant",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Bianyifang, the world's first specialized Peking duck restaurant, opened in Beijing in what year?",
+          "correctAnswer": "1416",
+          "distractors": [
+            {
+              "answer": "1464",
+              "source": "numerical",
+              "factId": "_numerical_1464"
+            },
+            {
+              "answer": "1356",
+              "source": "numerical",
+              "factId": "_numerical_1356"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_peking_duck_restaurant",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Bianyifang, the world's first specialized Peking duck restaurant, opened in Beijing in what year?",
+          "correctAnswer": "1416",
+          "distractors": [
+            {
+              "answer": "1464",
+              "source": "numerical",
+              "factId": "_numerical_1464"
+            },
+            {
+              "answer": "1356",
+              "source": "numerical",
+              "factId": "_numerical_1356"
+            },
+            {
+              "answer": "1446",
+              "source": "numerical",
+              "factId": "_numerical_1446"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_peking_duck_restaurant",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Bianyifang, the world's first specialized Peking duck restaurant, opened in Beijing in what year?",
+          "correctAnswer": "1416",
+          "distractors": [
+            {
+              "answer": "1464",
+              "source": "numerical",
+              "factId": "_numerical_1464"
+            },
+            {
+              "answer": "1356",
+              "source": "numerical",
+              "factId": "_numerical_1356"
+            },
+            {
+              "answer": "1446",
+              "source": "numerical",
+              "factId": "_numerical_1446"
+            },
+            {
+              "answer": "1399",
+              "source": "numerical",
+              "factId": "_numerical_1399"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_chocolate_industrial",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In which year did Coenraad van Houten patent Dutch cocoa processing, enabling mass-produced chocolate?",
+          "correctAnswer": "1828",
+          "distractors": [
+            {
+              "answer": "1846",
+              "source": "numerical",
+              "factId": "_numerical_1846"
+            },
+            {
+              "answer": "1817",
+              "source": "numerical",
+              "factId": "_numerical_1817"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_chocolate_industrial",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In which year did Coenraad van Houten patent Dutch cocoa processing, enabling mass-produced chocolate?",
+          "correctAnswer": "1828",
+          "distractors": [
+            {
+              "answer": "1846",
+              "source": "numerical",
+              "factId": "_numerical_1846"
+            },
+            {
+              "answer": "1817",
+              "source": "numerical",
+              "factId": "_numerical_1817"
+            },
+            {
+              "answer": "1877",
+              "source": "numerical",
+              "factId": "_numerical_1877"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_chocolate_industrial",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In which year did Coenraad van Houten patent Dutch cocoa processing, enabling mass-produced chocolate?",
+          "correctAnswer": "1828",
+          "distractors": [
+            {
+              "answer": "1846",
+              "source": "numerical",
+              "factId": "_numerical_1846"
+            },
+            {
+              "answer": "1817",
+              "source": "numerical",
+              "factId": "_numerical_1817"
+            },
+            {
+              "answer": "1877",
+              "source": "numerical",
+              "factId": "_numerical_1877"
+            },
+            {
+              "answer": "1787",
+              "source": "numerical",
+              "factId": "_numerical_1787"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_crème_brûlée",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "The earliest known recipe called 'crème brûlée' appears in François Massialot's cookbook from which year?",
+          "correctAnswer": "1691",
+          "distractors": [
+            {
+              "answer": "1725",
+              "source": "numerical",
+              "factId": "_numerical_1725"
+            },
+            {
+              "answer": "1663",
+              "source": "numerical",
+              "factId": "_numerical_1663"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_crème_brûlée",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "The earliest known recipe called 'crème brûlée' appears in François Massialot's cookbook from which year?",
+          "correctAnswer": "1691",
+          "distractors": [
+            {
+              "answer": "1725",
+              "source": "numerical",
+              "factId": "_numerical_1725"
+            },
+            {
+              "answer": "1663",
+              "source": "numerical",
+              "factId": "_numerical_1663"
+            },
+            {
+              "answer": "1708",
+              "source": "numerical",
+              "factId": "_numerical_1708"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_crème_brûlée",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "The earliest known recipe called 'crème brûlée' appears in François Massialot's cookbook from which year?",
+          "correctAnswer": "1691",
+          "distractors": [
+            {
+              "answer": "1725",
+              "source": "numerical",
+              "factId": "_numerical_1725"
+            },
+            {
+              "answer": "1663",
+              "source": "numerical",
+              "factId": "_numerical_1663"
+            },
+            {
+              "answer": "1708",
+              "source": "numerical",
+              "factId": "_numerical_1708"
+            },
+            {
+              "answer": "1679",
+              "source": "numerical",
+              "factId": "_numerical_1679"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_coffee_istanbul",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In which year did the first Ottoman coffeehouse open in Istanbul, spreading coffee culture through the Middle East?",
+          "correctAnswer": "1555",
+          "distractors": [
+            {
+              "answer": "1594",
+              "source": "numerical",
+              "factId": "_numerical_1594"
+            },
+            {
+              "answer": "1514",
+              "source": "numerical",
+              "factId": "_numerical_1514"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_coffee_istanbul",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In which year did the first Ottoman coffeehouse open in Istanbul, spreading coffee culture through the Middle East?",
+          "correctAnswer": "1555",
+          "distractors": [
+            {
+              "answer": "1594",
+              "source": "numerical",
+              "factId": "_numerical_1594"
+            },
+            {
+              "answer": "1514",
+              "source": "numerical",
+              "factId": "_numerical_1514"
+            },
+            {
+              "answer": "1615",
+              "source": "numerical",
+              "factId": "_numerical_1615"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_coffee_istanbul",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In which year did the first Ottoman coffeehouse open in Istanbul, spreading coffee culture through the Middle East?",
+          "correctAnswer": "1555",
+          "distractors": [
+            {
+              "answer": "1594",
+              "source": "numerical",
+              "factId": "_numerical_1594"
+            },
+            {
+              "answer": "1514",
+              "source": "numerical",
+              "factId": "_numerical_1514"
+            },
+            {
+              "answer": "1615",
+              "source": "numerical",
+              "factId": "_numerical_1615"
+            },
+            {
+              "answer": "1504",
+              "source": "numerical",
+              "factId": "_numerical_1504"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_ramen_instant",
+          "masteryLevel": 0,
+          "poolId": "person_names_food",
+          "renderedQuestion": "Who invented instant ramen noodles in 1958?",
+          "correctAnswer": "Momofuku Ando",
+          "distractors": [
+            {
+              "answer": "Kikunae Ikeda",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_discovery"
+            },
+            {
+              "answer": "Catherine of Braganza",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_britain"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_ramen_instant",
+          "masteryLevel": 2,
+          "poolId": "person_names_food",
+          "renderedQuestion": "Who invented instant ramen noodles in 1958?",
+          "correctAnswer": "Momofuku Ando",
+          "distractors": [
+            {
+              "answer": "Kikunae Ikeda",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_discovery"
+            },
+            {
+              "answer": "Catherine of Braganza",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_britain"
+            },
+            {
+              "answer": "Nikolaos Tselementes",
+              "source": "similar_difficulty",
+              "factId": "food_dish_moussaka_creator"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_ramen_instant",
+          "masteryLevel": 4,
+          "poolId": "person_names_food",
+          "renderedQuestion": "Who invented instant ramen noodles in 1958?",
+          "correctAnswer": "Momofuku Ando",
+          "distractors": [
+            {
+              "answer": "Kikunae Ikeda",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_discovery"
+            },
+            {
+              "answer": "Catherine of Braganza",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_britain"
+            },
+            {
+              "answer": "Nikolaos Tselementes",
+              "source": "similar_difficulty",
+              "factId": "food_dish_moussaka_creator"
+            },
+            {
+              "answer": "Wilbur Scoville",
+              "source": "similar_difficulty",
+              "factId": "food_spice_scoville_inventor"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_moussaka_creator",
+          "masteryLevel": 0,
+          "poolId": "person_names_food",
+          "renderedQuestion": "The modern layered Greek moussaka with béchamel was created in the 1920s by which Greek chef?",
+          "correctAnswer": "Nikolaos Tselementes",
+          "distractors": [
+            {
+              "answer": "Catherine of Braganza",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_britain"
+            },
+            {
+              "answer": "Julia Child",
+              "source": "similar_difficulty",
+              "factId": "food_dish_coq_au_vin_julia"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_moussaka_creator",
+          "masteryLevel": 2,
+          "poolId": "person_names_food",
+          "renderedQuestion": "The modern layered Greek moussaka with béchamel was created in the 1920s by which Greek chef?",
+          "correctAnswer": "Nikolaos Tselementes",
+          "distractors": [
+            {
+              "answer": "Catherine of Braganza",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_britain"
+            },
+            {
+              "answer": "Julia Child",
+              "source": "similar_difficulty",
+              "factId": "food_dish_coq_au_vin_julia"
+            },
+            {
+              "answer": "Louis Camille Maillard",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_discoverer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_moussaka_creator",
+          "masteryLevel": 4,
+          "poolId": "person_names_food",
+          "renderedQuestion": "The modern layered Greek moussaka with béchamel was created in the 1920s by which Greek chef?",
+          "correctAnswer": "Nikolaos Tselementes",
+          "distractors": [
+            {
+              "answer": "Catherine of Braganza",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_britain"
+            },
+            {
+              "answer": "Julia Child",
+              "source": "similar_difficulty",
+              "factId": "food_dish_coq_au_vin_julia"
+            },
+            {
+              "answer": "Louis Camille Maillard",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_discoverer"
+            },
+            {
+              "answer": "Edmond Albius",
+              "source": "similar_difficulty",
+              "factId": "food_spice_vanilla_albius"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_vanilla_albius",
+          "masteryLevel": 0,
+          "poolId": "person_names_food",
+          "renderedQuestion": "Who discovered the hand-pollination method for vanilla in 1841, enabling global cultivation — as a 12-year-old enslaved child?",
+          "correctAnswer": "Edmond Albius",
+          "distractors": [
+            {
+              "answer": "Catherine of Braganza",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_britain"
+            },
+            {
+              "answer": "Momofuku Ando",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ramen_instant"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_vanilla_albius",
+          "masteryLevel": 2,
+          "poolId": "person_names_food",
+          "renderedQuestion": "Who discovered the hand-pollination method for vanilla in 1841, enabling global cultivation — as a 12-year-old enslaved child?",
+          "correctAnswer": "Edmond Albius",
+          "distractors": [
+            {
+              "answer": "Catherine of Braganza",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_britain"
+            },
+            {
+              "answer": "Momofuku Ando",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ramen_instant"
+            },
+            {
+              "answer": "Vasco da Gama",
+              "source": "similar_difficulty",
+              "factId": "food_spice_spice_trade_route"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_vanilla_albius",
+          "masteryLevel": 4,
+          "poolId": "person_names_food",
+          "renderedQuestion": "Who discovered the hand-pollination method for vanilla in 1841, enabling global cultivation — as a 12-year-old enslaved child?",
+          "correctAnswer": "Edmond Albius",
+          "distractors": [
+            {
+              "answer": "Catherine of Braganza",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_britain"
+            },
+            {
+              "answer": "Momofuku Ando",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ramen_instant"
+            },
+            {
+              "answer": "Vasco da Gama",
+              "source": "similar_difficulty",
+              "factId": "food_spice_spice_trade_route"
+            },
+            {
+              "answer": "Coenraad van Houten",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_dutch_process"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_scoville_inventor",
+          "masteryLevel": 0,
+          "poolId": "person_names_food",
+          "renderedQuestion": "Who invented the heat scale for measuring chili pungency in 1912?",
+          "correctAnswer": "Wilbur Scoville",
+          "distractors": [
+            {
+              "answer": "Eduard Buchner",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_nobel"
+            },
+            {
+              "answer": "Momofuku Ando",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ramen_instant"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_scoville_inventor",
+          "masteryLevel": 2,
+          "poolId": "person_names_food",
+          "renderedQuestion": "Who invented the heat scale for measuring chili pungency in 1912?",
+          "correctAnswer": "Wilbur Scoville",
+          "distractors": [
+            {
+              "answer": "Eduard Buchner",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_nobel"
+            },
+            {
+              "answer": "Momofuku Ando",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ramen_instant"
+            },
+            {
+              "answer": "Coenraad van Houten",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_dutch_process"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_scoville_inventor",
+          "masteryLevel": 4,
+          "poolId": "person_names_food",
+          "renderedQuestion": "Who invented the heat scale for measuring chili pungency in 1912?",
+          "correctAnswer": "Wilbur Scoville",
+          "distractors": [
+            {
+              "answer": "Eduard Buchner",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_nobel"
+            },
+            {
+              "answer": "Momofuku Ando",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ramen_instant"
+            },
+            {
+              "answer": "Coenraad van Houten",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_dutch_process"
+            },
+            {
+              "answer": "Julia Child",
+              "source": "similar_difficulty",
+              "factId": "food_dish_coq_au_vin_julia"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_spice_trade_route",
+          "masteryLevel": 0,
+          "poolId": "person_names_food",
+          "renderedQuestion": "Who pioneered the Cape Route around Africa to India in 1498, bypassing Venice's spice trade monopoly?",
+          "correctAnswer": "Vasco da Gama",
+          "distractors": [
+            {
+              "answer": "Momofuku Ando",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ramen_instant"
+            },
+            {
+              "answer": "Eduard Buchner",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_nobel"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_spice_trade_route",
+          "masteryLevel": 2,
+          "poolId": "person_names_food",
+          "renderedQuestion": "Who pioneered the Cape Route around Africa to India in 1498, bypassing Venice's spice trade monopoly?",
+          "correctAnswer": "Vasco da Gama",
+          "distractors": [
+            {
+              "answer": "Momofuku Ando",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ramen_instant"
+            },
+            {
+              "answer": "Eduard Buchner",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_nobel"
+            },
+            {
+              "answer": "Pope Clement VIII",
+              "source": "similar_difficulty",
+              "factId": "food_hist_coffee_pope"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_spice_trade_route",
+          "masteryLevel": 4,
+          "poolId": "person_names_food",
+          "renderedQuestion": "Who pioneered the Cape Route around Africa to India in 1498, bypassing Venice's spice trade monopoly?",
+          "correctAnswer": "Vasco da Gama",
+          "distractors": [
+            {
+              "answer": "Momofuku Ando",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ramen_instant"
+            },
+            {
+              "answer": "Eduard Buchner",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_nobel"
+            },
+            {
+              "answer": "Pope Clement VIII",
+              "source": "similar_difficulty",
+              "factId": "food_hist_coffee_pope"
+            },
+            {
+              "answer": "Nicolas Appert",
+              "source": "similar_difficulty",
+              "factId": "food_tech_canning_inventor"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_carbonara_origin",
+          "masteryLevel": 0,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "When did carbonara take its modern form — making it a surprisingly recent Roman dish?",
+          "correctAnswer": "Mid-20th century",
+          "distractors": [
+            {
+              "answer": "9,000 years",
+              "source": "similar_difficulty",
+              "factId": "food_dish_guacamole_ancient"
+            },
+            {
+              "answer": "13,000 years",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_age"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"9,000 years\" has 2 format features different from correct \"Mid-20th century\""
+            },
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"9,000 years\" and \"13,000 years\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_carbonara_origin",
+          "masteryLevel": 2,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "When did carbonara take its modern form — making it a surprisingly recent Roman dish?",
+          "correctAnswer": "Mid-20th century",
+          "distractors": [
+            {
+              "answer": "9,000 years",
+              "source": "similar_difficulty",
+              "factId": "food_dish_guacamole_ancient"
+            },
+            {
+              "answer": "13,000 years",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_age"
+            },
+            {
+              "answer": "Ming Dynasty",
+              "source": "similar_difficulty",
+              "factId": "food_tech_wok_history"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"9,000 years\" has 2 format features different from correct \"Mid-20th century\""
+            },
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"9,000 years\" and \"13,000 years\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_carbonara_origin",
+          "masteryLevel": 4,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "When did carbonara take its modern form — making it a surprisingly recent Roman dish?",
+          "correctAnswer": "Mid-20th century",
+          "distractors": [
+            {
+              "answer": "9,000 years",
+              "source": "similar_difficulty",
+              "factId": "food_dish_guacamole_ancient"
+            },
+            {
+              "answer": "13,000 years",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_age"
+            },
+            {
+              "answer": "Ming Dynasty",
+              "source": "similar_difficulty",
+              "factId": "food_tech_wok_history"
+            },
+            {
+              "answer": "13th century",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hummus_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"9,000 years\" has 2 format features different from correct \"Mid-20th century\""
+            },
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"9,000 years\" and \"13,000 years\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_kimchi_chili",
+          "masteryLevel": 0,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "When did chili peppers arrive in Korea, enabling kimchi to become spicy for the first time?",
+          "correctAnswer": "17th century",
+          "distractors": [
+            {
+              "answer": "8th century BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_sugar_china_doc"
+            },
+            {
+              "answer": "15th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_baklava_first"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"17th century\" and \"15th century\" are 92% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_kimchi_chili",
+          "masteryLevel": 2,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "When did chili peppers arrive in Korea, enabling kimchi to become spicy for the first time?",
+          "correctAnswer": "17th century",
+          "distractors": [
+            {
+              "answer": "8th century BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_sugar_china_doc"
+            },
+            {
+              "answer": "15th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_baklava_first"
+            },
+            {
+              "answer": "10th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_kebab_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"17th century\" and \"15th century\" are 92% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_kimchi_chili",
+          "masteryLevel": 4,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "When did chili peppers arrive in Korea, enabling kimchi to become spicy for the first time?",
+          "correctAnswer": "17th century",
+          "distractors": [
+            {
+              "answer": "8th century BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_sugar_china_doc"
+            },
+            {
+              "answer": "15th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_baklava_first"
+            },
+            {
+              "answer": "10th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_kebab_origin"
+            },
+            {
+              "answer": "16th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chili_spread"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"17th century\" and \"15th century\" are 92% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_dim_sum_origin",
+          "masteryLevel": 0,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "Dim sum evolved alongside yum cha tea culture in Guangzhou during which century, when commercial travelers stopped at teahouses?",
+          "correctAnswer": "10th century",
+          "distractors": [
+            {
+              "answer": "15th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_baklava_first"
+            },
+            {
+              "answer": "13th century",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hummus_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"10th century\" and \"15th century\" are 92% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_dim_sum_origin",
+          "masteryLevel": 2,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "Dim sum evolved alongside yum cha tea culture in Guangzhou during which century, when commercial travelers stopped at teahouses?",
+          "correctAnswer": "10th century",
+          "distractors": [
+            {
+              "answer": "15th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_baklava_first"
+            },
+            {
+              "answer": "13th century",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hummus_origin"
+            },
+            {
+              "answer": "19th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_gas_gazpacho"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"10th century\" and \"15th century\" are 92% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_dim_sum_origin",
+          "masteryLevel": 4,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "Dim sum evolved alongside yum cha tea culture in Guangzhou during which century, when commercial travelers stopped at teahouses?",
+          "correctAnswer": "10th century",
+          "distractors": [
+            {
+              "answer": "15th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_baklava_first"
+            },
+            {
+              "answer": "13th century",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hummus_origin"
+            },
+            {
+              "answer": "19th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_gas_gazpacho"
+            },
+            {
+              "answer": "9,000 years",
+              "source": "similar_difficulty",
+              "factId": "food_dish_guacamole_ancient"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"10th century\" and \"15th century\" are 92% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_hummus_origin",
+          "masteryLevel": 0,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "The earliest documented recipe for hummus appears in a Syrian cookbook from which century?",
+          "correctAnswer": "13th century",
+          "distractors": [
+            {
+              "answer": "7th century",
+              "source": "similar_difficulty",
+              "factId": "food_dish_soy_sauce_japan"
+            },
+            {
+              "answer": "14,500 years",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bread_oldest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"13th century\" and \"7th century\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_hummus_origin",
+          "masteryLevel": 2,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "The earliest documented recipe for hummus appears in a Syrian cookbook from which century?",
+          "correctAnswer": "13th century",
+          "distractors": [
+            {
+              "answer": "7th century",
+              "source": "similar_difficulty",
+              "factId": "food_dish_soy_sauce_japan"
+            },
+            {
+              "answer": "14,500 years",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bread_oldest"
+            },
+            {
+              "answer": "Ming Dynasty",
+              "source": "similar_difficulty",
+              "factId": "food_tech_wok_history"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Ming Dynasty\" has 3 format features different from correct \"13th century\""
+            },
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"13th century\" and \"7th century\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_hummus_origin",
+          "masteryLevel": 4,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "The earliest documented recipe for hummus appears in a Syrian cookbook from which century?",
+          "correctAnswer": "13th century",
+          "distractors": [
+            {
+              "answer": "7th century",
+              "source": "similar_difficulty",
+              "factId": "food_dish_soy_sauce_japan"
+            },
+            {
+              "answer": "14,500 years",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bread_oldest"
+            },
+            {
+              "answer": "Ming Dynasty",
+              "source": "similar_difficulty",
+              "factId": "food_tech_wok_history"
+            },
+            {
+              "answer": "3,000 years ago",
+              "source": "similar_difficulty",
+              "factId": "food_hist_rice_africa"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Ming Dynasty\" has 3 format features different from correct \"13th century\""
+            },
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"13th century\" and \"7th century\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_guacamole_ancient",
+          "masteryLevel": 0,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "Avocado seeds found in Mexico's Tehuacan Valley date back approximately how many years — showing guacamole's ancient roots?",
+          "correctAnswer": "9,000 years",
+          "distractors": [
+            {
+              "answer": "14,500 years",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bread_oldest"
+            },
+            {
+              "answer": "13,000 years",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_age"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"9,000 years\" and \"13,000 years\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_guacamole_ancient",
+          "masteryLevel": 2,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "Avocado seeds found in Mexico's Tehuacan Valley date back approximately how many years — showing guacamole's ancient roots?",
+          "correctAnswer": "9,000 years",
+          "distractors": [
+            {
+              "answer": "14,500 years",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bread_oldest"
+            },
+            {
+              "answer": "13,000 years",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_age"
+            },
+            {
+              "answer": "16th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chili_spread"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"9,000 years\" and \"13,000 years\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_guacamole_ancient",
+          "masteryLevel": 4,
+          "poolId": "date_facts_long",
+          "renderedQuestion": "Avocado seeds found in Mexico's Tehuacan Valley date back approximately how many years — showing guacamole's ancient roots?",
+          "correctAnswer": "9,000 years",
+          "distractors": [
+            {
+              "answer": "14,500 years",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bread_oldest"
+            },
+            {
+              "answer": "13,000 years",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_age"
+            },
+            {
+              "answer": "16th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chili_spread"
+            },
+            {
+              "answer": "19th century",
+              "source": "similar_difficulty",
+              "factId": "food_hist_bibimbap_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"9,000 years\" and \"13,000 years\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_biryani_origin",
+          "masteryLevel": 0,
+          "poolId": "civilization_names",
+          "renderedQuestion": "Biryani developed during which empire's reign in South Asia, with recipes documented from 1589?",
+          "correctAnswer": "Mughal Empire",
+          "distractors": [
+            {
+              "answer": "Delhi Sultanate",
+              "source": "similar_difficulty",
+              "factId": "food_hist_kebab_delhi"
+            },
+            {
+              "answer": "Ottoman Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_shawarma_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_biryani_origin",
+          "masteryLevel": 2,
+          "poolId": "civilization_names",
+          "renderedQuestion": "Biryani developed during which empire's reign in South Asia, with recipes documented from 1589?",
+          "correctAnswer": "Mughal Empire",
+          "distractors": [
+            {
+              "answer": "Delhi Sultanate",
+              "source": "similar_difficulty",
+              "factId": "food_hist_kebab_delhi"
+            },
+            {
+              "answer": "Ottoman Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_shawarma_origin"
+            },
+            {
+              "answer": "Persian",
+              "source": "similar_difficulty",
+              "factId": "food_hist_biryani_word"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_biryani_origin",
+          "masteryLevel": 4,
+          "poolId": "civilization_names",
+          "renderedQuestion": "Biryani developed during which empire's reign in South Asia, with recipes documented from 1589?",
+          "correctAnswer": "Mughal Empire",
+          "distractors": [
+            {
+              "answer": "Delhi Sultanate",
+              "source": "similar_difficulty",
+              "factId": "food_hist_kebab_delhi"
+            },
+            {
+              "answer": "Ottoman Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_shawarma_origin"
+            },
+            {
+              "answer": "Persian",
+              "source": "similar_difficulty",
+              "factId": "food_hist_biryani_word"
+            },
+            {
+              "answer": "Sumer",
+              "source": "similar_difficulty",
+              "factId": "food_spice_cardamom_ancient"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_shawarma_origin",
+          "masteryLevel": 0,
+          "poolId": "civilization_names",
+          "renderedQuestion": "Shawarma's signature vertical rotating spit was innovated in 1830s Bursa — a city now in Turkey. In which historical empire was Bursa located at that time?",
+          "correctAnswer": "Ottoman Empire",
+          "distractors": [
+            {
+              "answer": "Mughal Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_biryani_origin"
+            },
+            {
+              "answer": "Turkish",
+              "source": "similar_difficulty",
+              "factId": "food_hist_shawarma_word"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_shawarma_origin",
+          "masteryLevel": 2,
+          "poolId": "civilization_names",
+          "renderedQuestion": "Shawarma's signature vertical rotating spit was innovated in 1830s Bursa — a city now in Turkey. In which historical empire was Bursa located at that time?",
+          "correctAnswer": "Ottoman Empire",
+          "distractors": [
+            {
+              "answer": "Mughal Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_biryani_origin"
+            },
+            {
+              "answer": "Turkish",
+              "source": "similar_difficulty",
+              "factId": "food_hist_shawarma_word"
+            },
+            {
+              "answer": "Arabic",
+              "source": "similar_difficulty",
+              "factId": "food_hist_moussaka_arabic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_shawarma_origin",
+          "masteryLevel": 4,
+          "poolId": "civilization_names",
+          "renderedQuestion": "Shawarma's signature vertical rotating spit was innovated in 1830s Bursa — a city now in Turkey. In which historical empire was Bursa located at that time?",
+          "correctAnswer": "Ottoman Empire",
+          "distractors": [
+            {
+              "answer": "Mughal Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_biryani_origin"
+            },
+            {
+              "answer": "Turkish",
+              "source": "similar_difficulty",
+              "factId": "food_hist_shawarma_word"
+            },
+            {
+              "answer": "Arabic",
+              "source": "similar_difficulty",
+              "factId": "food_hist_moussaka_arabic"
+            },
+            {
+              "answer": "Persian",
+              "source": "similar_difficulty",
+              "factId": "food_hist_biryani_word"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_baklava_ottoman",
+          "masteryLevel": 0,
+          "poolId": "civilization_names",
+          "renderedQuestion": "Baklava is closely associated with which empire's imperial palace kitchens, where it was presented to Janissaries during Ramadan?",
+          "correctAnswer": "Ottoman Empire",
+          "distractors": [
+            {
+              "answer": "Delhi Sultanate",
+              "source": "similar_difficulty",
+              "factId": "food_hist_kebab_delhi"
+            },
+            {
+              "answer": "Aztecs and Maya",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_aztec"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_baklava_ottoman",
+          "masteryLevel": 2,
+          "poolId": "civilization_names",
+          "renderedQuestion": "Baklava is closely associated with which empire's imperial palace kitchens, where it was presented to Janissaries during Ramadan?",
+          "correctAnswer": "Ottoman Empire",
+          "distractors": [
+            {
+              "answer": "Delhi Sultanate",
+              "source": "similar_difficulty",
+              "factId": "food_hist_kebab_delhi"
+            },
+            {
+              "answer": "Aztecs and Maya",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_aztec"
+            },
+            {
+              "answer": "Mughal Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_biryani_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_baklava_ottoman",
+          "masteryLevel": 4,
+          "poolId": "civilization_names",
+          "renderedQuestion": "Baklava is closely associated with which empire's imperial palace kitchens, where it was presented to Janissaries during Ramadan?",
+          "correctAnswer": "Ottoman Empire",
+          "distractors": [
+            {
+              "answer": "Delhi Sultanate",
+              "source": "similar_difficulty",
+              "factId": "food_hist_kebab_delhi"
+            },
+            {
+              "answer": "Aztecs and Maya",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_aztec"
+            },
+            {
+              "answer": "Mughal Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_biryani_origin"
+            },
+            {
+              "answer": "Sumer",
+              "source": "similar_difficulty",
+              "factId": "food_spice_cardamom_ancient"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_chocolate_aztec",
+          "masteryLevel": 0,
+          "poolId": "civilization_names",
+          "renderedQuestion": "Which ancient civilizations first consumed cacao as a bitter ceremonial beverage mixed with chili and vanilla?",
+          "correctAnswer": "Aztecs and Maya",
+          "distractors": [
+            {
+              "answer": "Persian",
+              "source": "similar_difficulty",
+              "factId": "food_hist_biryani_word"
+            },
+            {
+              "answer": "Mughal Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_biryani_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_chocolate_aztec",
+          "masteryLevel": 2,
+          "poolId": "civilization_names",
+          "renderedQuestion": "Which ancient civilizations first consumed cacao as a bitter ceremonial beverage mixed with chili and vanilla?",
+          "correctAnswer": "Aztecs and Maya",
+          "distractors": [
+            {
+              "answer": "Persian",
+              "source": "similar_difficulty",
+              "factId": "food_hist_biryani_word"
+            },
+            {
+              "answer": "Mughal Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_biryani_origin"
+            },
+            {
+              "answer": "Ottoman Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_shawarma_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_chocolate_aztec",
+          "masteryLevel": 4,
+          "poolId": "civilization_names",
+          "renderedQuestion": "Which ancient civilizations first consumed cacao as a bitter ceremonial beverage mixed with chili and vanilla?",
+          "correctAnswer": "Aztecs and Maya",
+          "distractors": [
+            {
+              "answer": "Persian",
+              "source": "similar_difficulty",
+              "factId": "food_hist_biryani_word"
+            },
+            {
+              "answer": "Mughal Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_biryani_origin"
+            },
+            {
+              "answer": "Ottoman Empire",
+              "source": "similar_difficulty",
+              "factId": "food_dish_shawarma_origin"
+            },
+            {
+              "answer": "Arabic",
+              "source": "pool_fill",
+              "factId": "food_hist_moussaka_arabic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_cardamom_ancient",
+          "masteryLevel": 0,
+          "poolId": "civilization_names",
+          "renderedQuestion": "References to cardamom were found in records from which ancient civilization, alongside Ayurveda texts?",
+          "correctAnswer": "Sumer",
+          "distractors": [
+            {
+              "answer": "Arabic",
+              "source": "similar_difficulty",
+              "factId": "food_hist_moussaka_arabic"
+            },
+            {
+              "answer": "Delhi Sultanate",
+              "source": "similar_difficulty",
+              "factId": "food_hist_kebab_delhi"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 5 vs avg distractor 10.5 — ratio 0.48×"
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_cardamom_ancient",
+          "masteryLevel": 2,
+          "poolId": "civilization_names",
+          "renderedQuestion": "References to cardamom were found in records from which ancient civilization, alongside Ayurveda texts?",
+          "correctAnswer": "Sumer",
+          "distractors": [
+            {
+              "answer": "Arabic",
+              "source": "similar_difficulty",
+              "factId": "food_hist_moussaka_arabic"
+            },
+            {
+              "answer": "Delhi Sultanate",
+              "source": "similar_difficulty",
+              "factId": "food_hist_kebab_delhi"
+            },
+            {
+              "answer": "Persian",
+              "source": "similar_difficulty",
+              "factId": "food_hist_biryani_word"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_cardamom_ancient",
+          "masteryLevel": 4,
+          "poolId": "civilization_names",
+          "renderedQuestion": "References to cardamom were found in records from which ancient civilization, alongside Ayurveda texts?",
+          "correctAnswer": "Sumer",
+          "distractors": [
+            {
+              "answer": "Arabic",
+              "source": "similar_difficulty",
+              "factId": "food_hist_moussaka_arabic"
+            },
+            {
+              "answer": "Delhi Sultanate",
+              "source": "similar_difficulty",
+              "factId": "food_hist_kebab_delhi"
+            },
+            {
+              "answer": "Persian",
+              "source": "similar_difficulty",
+              "factId": "food_hist_biryani_word"
+            },
+            {
+              "answer": "Turkish",
+              "source": "similar_difficulty",
+              "factId": "food_hist_shawarma_word"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_pad_thai_origin",
+          "masteryLevel": 0,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "Pad Thai was invented in which decade as a deliberate nation-building project — NOT as an ancient dish?",
+          "correctAnswer": "1930s",
+          "distractors": [
+            {
+              "answer": "2737 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_shennong"
+            },
+            {
+              "answer": "October",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_harvest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"2737 BC\" has 2 format features different from correct \"1930s\""
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_pad_thai_origin",
+          "masteryLevel": 2,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "Pad Thai was invented in which decade as a deliberate nation-building project — NOT as an ancient dish?",
+          "correctAnswer": "1930s",
+          "distractors": [
+            {
+              "answer": "2737 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_shennong"
+            },
+            {
+              "answer": "October",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_harvest"
+            },
+            {
+              "answer": "3700 BC",
+              "source": "similar_difficulty",
+              "factId": "food_tech_sourdough_age"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"2737 BC\" has 2 format features different from correct \"1930s\""
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_pad_thai_origin",
+          "masteryLevel": 4,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "Pad Thai was invented in which decade as a deliberate nation-building project — NOT as an ancient dish?",
+          "correctAnswer": "1930s",
+          "distractors": [
+            {
+              "answer": "2737 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_shennong"
+            },
+            {
+              "answer": "October",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_harvest"
+            },
+            {
+              "answer": "3700 BC",
+              "source": "similar_difficulty",
+              "factId": "food_tech_sourdough_age"
+            },
+            {
+              "answer": "2500 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_inca"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"2737 BC\" has 2 format features different from correct \"1930s\""
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_saffron_harvest",
+          "masteryLevel": 0,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "Saffron crocus flowers bloom only once per year for 1–2 weeks — in which month must they be harvested?",
+          "correctAnswer": "October",
+          "distractors": [
+            {
+              "answer": "6000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bread_mesopotamia"
+            },
+            {
+              "answer": "8000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_spice_olive_oil_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"6000 BC\" has 3 format features different from correct \"October\""
+            },
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"6000 BC\" and \"8000 BC\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_saffron_harvest",
+          "masteryLevel": 2,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "Saffron crocus flowers bloom only once per year for 1–2 weeks — in which month must they be harvested?",
+          "correctAnswer": "October",
+          "distractors": [
+            {
+              "answer": "6000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bread_mesopotamia"
+            },
+            {
+              "answer": "8000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_spice_olive_oil_origin"
+            },
+            {
+              "answer": "2500 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_inca"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"6000 BC\" has 3 format features different from correct \"October\""
+            },
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"6000 BC\" and \"8000 BC\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_saffron_harvest",
+          "masteryLevel": 4,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "Saffron crocus flowers bloom only once per year for 1–2 weeks — in which month must they be harvested?",
+          "correctAnswer": "October",
+          "distractors": [
+            {
+              "answer": "6000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bread_mesopotamia"
+            },
+            {
+              "answer": "8000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_spice_olive_oil_origin"
+            },
+            {
+              "answer": "2500 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_inca"
+            },
+            {
+              "answer": "2737 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_shennong"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"6000 BC\" has 3 format features different from correct \"October\""
+            },
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"6000 BC\" and \"8000 BC\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_olive_oil_origin",
+          "masteryLevel": 0,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "Olive trees have been cultivated around the Mediterranean since approximately which time?",
+          "correctAnswer": "8000 BC",
+          "distractors": [
+            {
+              "answer": "2500 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_inca"
+            },
+            {
+              "answer": "12,000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_tech_preservation_drying"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_olive_oil_origin",
+          "masteryLevel": 2,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "Olive trees have been cultivated around the Mediterranean since approximately which time?",
+          "correctAnswer": "8000 BC",
+          "distractors": [
+            {
+              "answer": "2500 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_inca"
+            },
+            {
+              "answer": "12,000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_tech_preservation_drying"
+            },
+            {
+              "answer": "2737 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_shennong"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_olive_oil_origin",
+          "masteryLevel": 4,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "Olive trees have been cultivated around the Mediterranean since approximately which time?",
+          "correctAnswer": "8000 BC",
+          "distractors": [
+            {
+              "answer": "2500 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_inca"
+            },
+            {
+              "answer": "12,000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_tech_preservation_drying"
+            },
+            {
+              "answer": "2737 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_shennong"
+            },
+            {
+              "answer": "6000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bread_mesopotamia"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"8000 BC\" and \"6000 BC\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_tech_sourdough_age",
+          "masteryLevel": 0,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "The oldest known sourdough bread dates from which time, excavated in Switzerland?",
+          "correctAnswer": "3700 BC",
+          "distractors": [
+            {
+              "answer": "2500 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_inca"
+            },
+            {
+              "answer": "8000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_spice_olive_oil_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_tech_sourdough_age",
+          "masteryLevel": 2,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "The oldest known sourdough bread dates from which time, excavated in Switzerland?",
+          "correctAnswer": "3700 BC",
+          "distractors": [
+            {
+              "answer": "2500 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_inca"
+            },
+            {
+              "answer": "8000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_spice_olive_oil_origin"
+            },
+            {
+              "answer": "3000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_bread_egypt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"3700 BC\" and \"3000 BC\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_tech_sourdough_age",
+          "masteryLevel": 4,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "The oldest known sourdough bread dates from which time, excavated in Switzerland?",
+          "correctAnswer": "3700 BC",
+          "distractors": [
+            {
+              "answer": "2500 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_inca"
+            },
+            {
+              "answer": "8000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_spice_olive_oil_origin"
+            },
+            {
+              "answer": "3000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_bread_egypt"
+            },
+            {
+              "answer": "2737 BC",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_shennong"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"3700 BC\" and \"3000 BC\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_wat_doro",
+          "masteryLevel": 0,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "Doro wat (Ethiopian chicken stew) is a national dish reserved for special occasions — approximately how long does it take to prepare?",
+          "correctAnswer": "10 hours",
+          "distractors": [
+            {
+              "answer": "1300s",
+              "source": "similar_difficulty",
+              "factId": "food_dish_naan_history"
+            },
+            {
+              "answer": "October",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_harvest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"October\" has 4 format features different from correct \"10 hours\""
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_wat_doro",
+          "masteryLevel": 2,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "Doro wat (Ethiopian chicken stew) is a national dish reserved for special occasions — approximately how long does it take to prepare?",
+          "correctAnswer": "10 hours",
+          "distractors": [
+            {
+              "answer": "1300s",
+              "source": "similar_difficulty",
+              "factId": "food_dish_naan_history"
+            },
+            {
+              "answer": "October",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_harvest"
+            },
+            {
+              "answer": "1930s",
+              "source": "similar_difficulty",
+              "factId": "food_dish_pad_thai_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"October\" has 4 format features different from correct \"10 hours\""
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_wat_doro",
+          "masteryLevel": 4,
+          "poolId": "date_facts_short",
+          "renderedQuestion": "Doro wat (Ethiopian chicken stew) is a national dish reserved for special occasions — approximately how long does it take to prepare?",
+          "correctAnswer": "10 hours",
+          "distractors": [
+            {
+              "answer": "1300s",
+              "source": "similar_difficulty",
+              "factId": "food_dish_naan_history"
+            },
+            {
+              "answer": "October",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_harvest"
+            },
+            {
+              "answer": "1930s",
+              "source": "similar_difficulty",
+              "factId": "food_dish_pad_thai_origin"
+            },
+            {
+              "answer": "6000 BC",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bread_mesopotamia"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "unit_contamination",
+              "detail": "Distractor \"6000 BC\" has unit \"bc\" but correct is \"hours\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"October\" has 4 format features different from correct \"10 hours\""
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_injera_teff",
+          "masteryLevel": 0,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "Ethiopian injera flatbread is made from which gluten-free grain native to the Ethiopian Highlands?",
+          "correctAnswer": "Teff",
+          "distractors": [
+            {
+              "answer": "Capsaicin",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_capsaicin_name"
+            },
+            {
+              "answer": "Cacao",
+              "source": "similar_difficulty",
+              "factId": "food_spice_vanilla_aztec"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_injera_teff",
+          "masteryLevel": 2,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "Ethiopian injera flatbread is made from which gluten-free grain native to the Ethiopian Highlands?",
+          "correctAnswer": "Teff",
+          "distractors": [
+            {
+              "answer": "Capsaicin",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_capsaicin_name"
+            },
+            {
+              "answer": "Cacao",
+              "source": "similar_difficulty",
+              "factId": "food_spice_vanilla_aztec"
+            },
+            {
+              "answer": "Tomatoes",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_foods_rich"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_injera_teff",
+          "masteryLevel": 4,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "Ethiopian injera flatbread is made from which gluten-free grain native to the Ethiopian Highlands?",
+          "correctAnswer": "Teff",
+          "distractors": [
+            {
+              "answer": "Capsaicin",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_capsaicin_name"
+            },
+            {
+              "answer": "Cacao",
+              "source": "similar_difficulty",
+              "factId": "food_spice_vanilla_aztec"
+            },
+            {
+              "answer": "Tomatoes",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_foods_rich"
+            },
+            {
+              "answer": "Saffron",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_price"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_black_pepper_value",
+          "masteryLevel": 0,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "Black pepper accounts for approximately what fraction of the entire world's spice trade today?",
+          "correctAnswer": "20%",
+          "distractors": [
+            {
+              "answer": "Saffron",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_price"
+            },
+            {
+              "answer": "Capsaicin",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_capsaicin_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 3 vs avg distractor 8.0 — ratio 0.38×"
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_black_pepper_value",
+          "masteryLevel": 2,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "Black pepper accounts for approximately what fraction of the entire world's spice trade today?",
+          "correctAnswer": "20%",
+          "distractors": [
+            {
+              "answer": "Saffron",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_price"
+            },
+            {
+              "answer": "Capsaicin",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_capsaicin_name"
+            },
+            {
+              "answer": "Cacao",
+              "source": "similar_difficulty",
+              "factId": "food_spice_vanilla_aztec"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 3 vs avg distractor 7.0 — ratio 0.43×"
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_black_pepper_value",
+          "masteryLevel": 4,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "Black pepper accounts for approximately what fraction of the entire world's spice trade today?",
+          "correctAnswer": "20%",
+          "distractors": [
+            {
+              "answer": "Saffron",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_price"
+            },
+            {
+              "answer": "Capsaicin",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_capsaicin_name"
+            },
+            {
+              "answer": "Cacao",
+              "source": "similar_difficulty",
+              "factId": "food_spice_vanilla_aztec"
+            },
+            {
+              "answer": "Arborio",
+              "source": "similar_difficulty",
+              "factId": "food_tech_risotto_rice"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 3 vs avg distractor 7.0 — ratio 0.43×"
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_saffron_price",
+          "masteryLevel": 0,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "Which spice is the most expensive in the world by weight, requiring 440,000 hand-picked stigmas per kilogram?",
+          "correctAnswer": "Saffron",
+          "distractors": [
+            {
+              "answer": "Teff",
+              "source": "similar_difficulty",
+              "factId": "food_dish_injera_teff"
+            },
+            {
+              "answer": "Dye",
+              "source": "similar_difficulty",
+              "factId": "food_spice_turmeric_history"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_saffron_price",
+          "masteryLevel": 2,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "Which spice is the most expensive in the world by weight, requiring 440,000 hand-picked stigmas per kilogram?",
+          "correctAnswer": "Saffron",
+          "distractors": [
+            {
+              "answer": "Teff",
+              "source": "similar_difficulty",
+              "factId": "food_dish_injera_teff"
+            },
+            {
+              "answer": "Dye",
+              "source": "similar_difficulty",
+              "factId": "food_spice_turmeric_history"
+            },
+            {
+              "answer": "Curcumin",
+              "source": "similar_difficulty",
+              "factId": "food_spice_turmeric_compound"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_saffron_price",
+          "masteryLevel": 4,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "Which spice is the most expensive in the world by weight, requiring 440,000 hand-picked stigmas per kilogram?",
+          "correctAnswer": "Saffron",
+          "distractors": [
+            {
+              "answer": "Teff",
+              "source": "similar_difficulty",
+              "factId": "food_dish_injera_teff"
+            },
+            {
+              "answer": "Dye",
+              "source": "similar_difficulty",
+              "factId": "food_spice_turmeric_history"
+            },
+            {
+              "answer": "Curcumin",
+              "source": "similar_difficulty",
+              "factId": "food_spice_turmeric_compound"
+            },
+            {
+              "answer": "Capsaicin",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_capsaicin_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_turmeric_compound",
+          "masteryLevel": 0,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "What is the active compound in turmeric that gives it its yellow color, averaging 3.14% by weight?",
+          "correctAnswer": "Curcumin",
+          "distractors": [
+            {
+              "answer": "20%",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_value"
+            },
+            {
+              "answer": "Arborio",
+              "source": "similar_difficulty",
+              "factId": "food_tech_risotto_rice"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_turmeric_compound",
+          "masteryLevel": 2,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "What is the active compound in turmeric that gives it its yellow color, averaging 3.14% by weight?",
+          "correctAnswer": "Curcumin",
+          "distractors": [
+            {
+              "answer": "20%",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_value"
+            },
+            {
+              "answer": "Arborio",
+              "source": "similar_difficulty",
+              "factId": "food_tech_risotto_rice"
+            },
+            {
+              "answer": "Saffron",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_price"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_turmeric_compound",
+          "masteryLevel": 4,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "What is the active compound in turmeric that gives it its yellow color, averaging 3.14% by weight?",
+          "correctAnswer": "Curcumin",
+          "distractors": [
+            {
+              "answer": "20%",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_value"
+            },
+            {
+              "answer": "Arborio",
+              "source": "similar_difficulty",
+              "factId": "food_tech_risotto_rice"
+            },
+            {
+              "answer": "Saffron",
+              "source": "similar_difficulty",
+              "factId": "food_spice_saffron_price"
+            },
+            {
+              "answer": "Tomatoes",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_foods_rich"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_chili_capsaicin_name",
+          "masteryLevel": 0,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "What is the specific compound in chili peppers responsible for their heat sensation?",
+          "correctAnswer": "Capsaicin",
+          "distractors": [
+            {
+              "answer": "Tomatoes",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_foods_rich"
+            },
+            {
+              "answer": "Teff",
+              "source": "similar_difficulty",
+              "factId": "food_dish_injera_teff"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_chili_capsaicin_name",
+          "masteryLevel": 2,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "What is the specific compound in chili peppers responsible for their heat sensation?",
+          "correctAnswer": "Capsaicin",
+          "distractors": [
+            {
+              "answer": "Tomatoes",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_foods_rich"
+            },
+            {
+              "answer": "Teff",
+              "source": "similar_difficulty",
+              "factId": "food_dish_injera_teff"
+            },
+            {
+              "answer": "Arborio",
+              "source": "similar_difficulty",
+              "factId": "food_tech_risotto_rice"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_chili_capsaicin_name",
+          "masteryLevel": 4,
+          "poolId": "ingredient_names_short",
+          "renderedQuestion": "What is the specific compound in chili peppers responsible for their heat sensation?",
+          "correctAnswer": "Capsaicin",
+          "distractors": [
+            {
+              "answer": "Tomatoes",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_foods_rich"
+            },
+            {
+              "answer": "Teff",
+              "source": "similar_difficulty",
+              "factId": "food_dish_injera_teff"
+            },
+            {
+              "answer": "Arborio",
+              "source": "similar_difficulty",
+              "factId": "food_tech_risotto_rice"
+            },
+            {
+              "answer": "Dye",
+              "source": "similar_difficulty",
+              "factId": "food_spice_turmeric_history"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_ceviche_technique",
+          "masteryLevel": 0,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "In ceviche, what causes raw fish to appear 'cooked' without any heat?",
+          "correctAnswer": "Citric acid",
+          "distractors": [
+            {
+              "answer": "Ceylon cinnamon",
+              "source": "similar_difficulty",
+              "factId": "food_spice_cinnamon_types"
+            },
+            {
+              "answer": "Chili peppers",
+              "source": "similar_difficulty",
+              "factId": "food_dish_mole_chocolate"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_ceviche_technique",
+          "masteryLevel": 2,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "In ceviche, what causes raw fish to appear 'cooked' without any heat?",
+          "correctAnswer": "Citric acid",
+          "distractors": [
+            {
+              "answer": "Ceylon cinnamon",
+              "source": "similar_difficulty",
+              "factId": "food_spice_cinnamon_types"
+            },
+            {
+              "answer": "Chili peppers",
+              "source": "similar_difficulty",
+              "factId": "food_dish_mole_chocolate"
+            },
+            {
+              "answer": "Green chilies",
+              "source": "similar_difficulty",
+              "factId": "food_dish_green_curry_color"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_ceviche_technique",
+          "masteryLevel": 4,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "In ceviche, what causes raw fish to appear 'cooked' without any heat?",
+          "correctAnswer": "Citric acid",
+          "distractors": [
+            {
+              "answer": "Ceylon cinnamon",
+              "source": "similar_difficulty",
+              "factId": "food_spice_cinnamon_types"
+            },
+            {
+              "answer": "Chili peppers",
+              "source": "similar_difficulty",
+              "factId": "food_dish_mole_chocolate"
+            },
+            {
+              "answer": "Green chilies",
+              "source": "similar_difficulty",
+              "factId": "food_dish_green_curry_color"
+            },
+            {
+              "answer": "Kombu seaweed",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_foods"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_mole_chocolate",
+          "masteryLevel": 0,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "Despite popular belief, which ingredient is foundational to mole sauce — NOT chocolate, which was only added much later?",
+          "correctAnswer": "Chili peppers",
+          "distractors": [
+            {
+              "answer": "Citric acid",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ceviche_technique"
+            },
+            {
+              "answer": "Green chilies",
+              "source": "similar_difficulty",
+              "factId": "food_dish_green_curry_color"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_mole_chocolate",
+          "masteryLevel": 2,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "Despite popular belief, which ingredient is foundational to mole sauce — NOT chocolate, which was only added much later?",
+          "correctAnswer": "Chili peppers",
+          "distractors": [
+            {
+              "answer": "Citric acid",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ceviche_technique"
+            },
+            {
+              "answer": "Green chilies",
+              "source": "similar_difficulty",
+              "factId": "food_dish_green_curry_color"
+            },
+            {
+              "answer": "Ceylon cinnamon",
+              "source": "similar_difficulty",
+              "factId": "food_spice_cinnamon_types"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_mole_chocolate",
+          "masteryLevel": 4,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "Despite popular belief, which ingredient is foundational to mole sauce — NOT chocolate, which was only added much later?",
+          "correctAnswer": "Chili peppers",
+          "distractors": [
+            {
+              "answer": "Citric acid",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ceviche_technique"
+            },
+            {
+              "answer": "Green chilies",
+              "source": "similar_difficulty",
+              "factId": "food_dish_green_curry_color"
+            },
+            {
+              "answer": "Ceylon cinnamon",
+              "source": "similar_difficulty",
+              "factId": "food_spice_cinnamon_types"
+            },
+            {
+              "answer": "Kombu seaweed",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_foods"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_cinnamon_types",
+          "masteryLevel": 0,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "Which variety is considered 'true cinnamon' — from Sri Lanka with a lighter, more delicate flavor?",
+          "correctAnswer": "Ceylon cinnamon",
+          "distractors": [
+            {
+              "answer": "Green chilies",
+              "source": "similar_difficulty",
+              "factId": "food_dish_green_curry_color"
+            },
+            {
+              "answer": "Chili peppers",
+              "source": "similar_difficulty",
+              "factId": "food_dish_mole_chocolate"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_cinnamon_types",
+          "masteryLevel": 2,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "Which variety is considered 'true cinnamon' — from Sri Lanka with a lighter, more delicate flavor?",
+          "correctAnswer": "Ceylon cinnamon",
+          "distractors": [
+            {
+              "answer": "Green chilies",
+              "source": "similar_difficulty",
+              "factId": "food_dish_green_curry_color"
+            },
+            {
+              "answer": "Chili peppers",
+              "source": "similar_difficulty",
+              "factId": "food_dish_mole_chocolate"
+            },
+            {
+              "answer": "Citric acid",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ceviche_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_cinnamon_types",
+          "masteryLevel": 4,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "Which variety is considered 'true cinnamon' — from Sri Lanka with a lighter, more delicate flavor?",
+          "correctAnswer": "Ceylon cinnamon",
+          "distractors": [
+            {
+              "answer": "Green chilies",
+              "source": "similar_difficulty",
+              "factId": "food_dish_green_curry_color"
+            },
+            {
+              "answer": "Chili peppers",
+              "source": "similar_difficulty",
+              "factId": "food_dish_mole_chocolate"
+            },
+            {
+              "answer": "Citric acid",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ceviche_technique"
+            },
+            {
+              "answer": "Kombu seaweed",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_foods"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_tech_umami_foods",
+          "masteryLevel": 0,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "Which Japanese ingredient led Kikunae Ikeda to discover umami when he identified its distinctive savory broth flavor?",
+          "correctAnswer": "Kombu seaweed",
+          "distractors": [
+            {
+              "answer": "Green chilies",
+              "source": "similar_difficulty",
+              "factId": "food_dish_green_curry_color"
+            },
+            {
+              "answer": "Citric acid",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ceviche_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_tech_umami_foods",
+          "masteryLevel": 2,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "Which Japanese ingredient led Kikunae Ikeda to discover umami when he identified its distinctive savory broth flavor?",
+          "correctAnswer": "Kombu seaweed",
+          "distractors": [
+            {
+              "answer": "Green chilies",
+              "source": "similar_difficulty",
+              "factId": "food_dish_green_curry_color"
+            },
+            {
+              "answer": "Citric acid",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ceviche_technique"
+            },
+            {
+              "answer": "Ceylon cinnamon",
+              "source": "similar_difficulty",
+              "factId": "food_spice_cinnamon_types"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_tech_umami_foods",
+          "masteryLevel": 4,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "Which Japanese ingredient led Kikunae Ikeda to discover umami when he identified its distinctive savory broth flavor?",
+          "correctAnswer": "Kombu seaweed",
+          "distractors": [
+            {
+              "answer": "Green chilies",
+              "source": "similar_difficulty",
+              "factId": "food_dish_green_curry_color"
+            },
+            {
+              "answer": "Citric acid",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ceviche_technique"
+            },
+            {
+              "answer": "Ceylon cinnamon",
+              "source": "similar_difficulty",
+              "factId": "food_spice_cinnamon_types"
+            },
+            {
+              "answer": "Chili peppers",
+              "source": "similar_difficulty",
+              "factId": "food_dish_mole_chocolate"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_green_curry_color",
+          "masteryLevel": 0,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "What ingredient gives Thai curry its distinctive verdant color — and what does \"sweet\" refer to in its Thai name?",
+          "correctAnswer": "Green chilies",
+          "distractors": [
+            {
+              "answer": "Citric acid",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ceviche_technique"
+            },
+            {
+              "answer": "Ceylon cinnamon",
+              "source": "similar_difficulty",
+              "factId": "food_spice_cinnamon_types"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_green_curry_color",
+          "masteryLevel": 2,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "What ingredient gives Thai curry its distinctive verdant color — and what does \"sweet\" refer to in its Thai name?",
+          "correctAnswer": "Green chilies",
+          "distractors": [
+            {
+              "answer": "Citric acid",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ceviche_technique"
+            },
+            {
+              "answer": "Ceylon cinnamon",
+              "source": "similar_difficulty",
+              "factId": "food_spice_cinnamon_types"
+            },
+            {
+              "answer": "Kombu seaweed",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_foods"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_green_curry_color",
+          "masteryLevel": 4,
+          "poolId": "ingredient_names_long",
+          "renderedQuestion": "What ingredient gives Thai curry its distinctive verdant color — and what does \"sweet\" refer to in its Thai name?",
+          "correctAnswer": "Green chilies",
+          "distractors": [
+            {
+              "answer": "Citric acid",
+              "source": "similar_difficulty",
+              "factId": "food_dish_ceviche_technique"
+            },
+            {
+              "answer": "Ceylon cinnamon",
+              "source": "similar_difficulty",
+              "factId": "food_spice_cinnamon_types"
+            },
+            {
+              "answer": "Kombu seaweed",
+              "source": "similar_difficulty",
+              "factId": "food_tech_umami_foods"
+            },
+            {
+              "answer": "Chili peppers",
+              "source": "similar_difficulty",
+              "factId": "food_dish_mole_chocolate"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_hamburger_origin",
+          "masteryLevel": 0,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "The hamburger's name derives from which German city, though its exact American origin remains disputed?",
+          "correctAnswer": "Hamburg, Germany",
+          "distractors": [
+            {
+              "answer": "Frankfurt, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hot_dog_origin"
+            },
+            {
+              "answer": "Lake Titicaca",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_hamburger_origin",
+          "masteryLevel": 2,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "The hamburger's name derives from which German city, though its exact American origin remains disputed?",
+          "correctAnswer": "Hamburg, Germany",
+          "distractors": [
+            {
+              "answer": "Frankfurt, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hot_dog_origin"
+            },
+            {
+              "answer": "Lake Titicaca",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_origin"
+            },
+            {
+              "answer": "Southeast Asia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_coconut_uses"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_hamburger_origin",
+          "masteryLevel": 4,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "The hamburger's name derives from which German city, though its exact American origin remains disputed?",
+          "correctAnswer": "Hamburg, Germany",
+          "distractors": [
+            {
+              "answer": "Frankfurt, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hot_dog_origin"
+            },
+            {
+              "answer": "Lake Titicaca",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_origin"
+            },
+            {
+              "answer": "Southeast Asia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_coconut_uses"
+            },
+            {
+              "answer": "Peru and Bolivia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_chili_origin",
+          "masteryLevel": 0,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "Chili peppers were part of human diets for thousands of years before reaching the rest of the world. In which two modern South American countries did they originate?",
+          "correctAnswer": "Peru and Bolivia",
+          "distractors": [
+            {
+              "answer": "Central Thailand",
+              "source": "similar_difficulty",
+              "factId": "food_dish_tom_yum_origin"
+            },
+            {
+              "answer": "Hamburg, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hamburger_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_chili_origin",
+          "masteryLevel": 2,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "Chili peppers were part of human diets for thousands of years before reaching the rest of the world. In which two modern South American countries did they originate?",
+          "correctAnswer": "Peru and Bolivia",
+          "distractors": [
+            {
+              "answer": "Central Thailand",
+              "source": "similar_difficulty",
+              "factId": "food_dish_tom_yum_origin"
+            },
+            {
+              "answer": "Hamburg, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hamburger_origin"
+            },
+            {
+              "answer": "Lake Titicaca",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_chili_origin",
+          "masteryLevel": 4,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "Chili peppers were part of human diets for thousands of years before reaching the rest of the world. In which two modern South American countries did they originate?",
+          "correctAnswer": "Peru and Bolivia",
+          "distractors": [
+            {
+              "answer": "Central Thailand",
+              "source": "similar_difficulty",
+              "factId": "food_dish_tom_yum_origin"
+            },
+            {
+              "answer": "Hamburg, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hamburger_origin"
+            },
+            {
+              "answer": "Lake Titicaca",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_origin"
+            },
+            {
+              "answer": "Frankfurt, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hot_dog_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_rice_origin",
+          "masteryLevel": 0,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "Rice was first domesticated approximately 9,000 years ago by Neolithic cultures in which river valley region of China?",
+          "correctAnswer": "Yangtze River",
+          "distractors": [
+            {
+              "answer": "Peru and Bolivia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_origin"
+            },
+            {
+              "answer": "Lake Titicaca",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_rice_origin",
+          "masteryLevel": 2,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "Rice was first domesticated approximately 9,000 years ago by Neolithic cultures in which river valley region of China?",
+          "correctAnswer": "Yangtze River",
+          "distractors": [
+            {
+              "answer": "Peru and Bolivia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_origin"
+            },
+            {
+              "answer": "Lake Titicaca",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_origin"
+            },
+            {
+              "answer": "Southeast Asia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_coconut_uses"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_rice_origin",
+          "masteryLevel": 4,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "Rice was first domesticated approximately 9,000 years ago by Neolithic cultures in which river valley region of China?",
+          "correctAnswer": "Yangtze River",
+          "distractors": [
+            {
+              "answer": "Peru and Bolivia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_origin"
+            },
+            {
+              "answer": "Lake Titicaca",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_origin"
+            },
+            {
+              "answer": "Southeast Asia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_coconut_uses"
+            },
+            {
+              "answer": "Central Thailand",
+              "source": "similar_difficulty",
+              "factId": "food_dish_tom_yum_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_potato_origin",
+          "masteryLevel": 0,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "The potato was first domesticated near which South American lake, approximately 7,000–10,000 years ago?",
+          "correctAnswer": "Lake Titicaca",
+          "distractors": [
+            {
+              "answer": "Peru and Bolivia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_origin"
+            },
+            {
+              "answer": "Frankfurt, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hot_dog_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_potato_origin",
+          "masteryLevel": 2,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "The potato was first domesticated near which South American lake, approximately 7,000–10,000 years ago?",
+          "correctAnswer": "Lake Titicaca",
+          "distractors": [
+            {
+              "answer": "Peru and Bolivia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_origin"
+            },
+            {
+              "answer": "Frankfurt, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hot_dog_origin"
+            },
+            {
+              "answer": "Yangtze River",
+              "source": "similar_difficulty",
+              "factId": "food_hist_rice_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_potato_origin",
+          "masteryLevel": 4,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "The potato was first domesticated near which South American lake, approximately 7,000–10,000 years ago?",
+          "correctAnswer": "Lake Titicaca",
+          "distractors": [
+            {
+              "answer": "Peru and Bolivia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_origin"
+            },
+            {
+              "answer": "Frankfurt, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hot_dog_origin"
+            },
+            {
+              "answer": "Yangtze River",
+              "source": "similar_difficulty",
+              "factId": "food_hist_rice_origin"
+            },
+            {
+              "answer": "Hamburg, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hamburger_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_tom_yum_origin",
+          "masteryLevel": 0,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "Tom yum soup originated in which part of Thailand, during the Rattanakosin Kingdom period?",
+          "correctAnswer": "Central Thailand",
+          "distractors": [
+            {
+              "answer": "Frankfurt, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hot_dog_origin"
+            },
+            {
+              "answer": "Peru and Bolivia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_tom_yum_origin",
+          "masteryLevel": 2,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "Tom yum soup originated in which part of Thailand, during the Rattanakosin Kingdom period?",
+          "correctAnswer": "Central Thailand",
+          "distractors": [
+            {
+              "answer": "Frankfurt, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hot_dog_origin"
+            },
+            {
+              "answer": "Peru and Bolivia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_origin"
+            },
+            {
+              "answer": "Lake Titicaca",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_tom_yum_origin",
+          "masteryLevel": 4,
+          "poolId": "compound_location_names",
+          "renderedQuestion": "Tom yum soup originated in which part of Thailand, during the Rattanakosin Kingdom period?",
+          "correctAnswer": "Central Thailand",
+          "distractors": [
+            {
+              "answer": "Frankfurt, Germany",
+              "source": "similar_difficulty",
+              "factId": "food_dish_hot_dog_origin"
+            },
+            {
+              "answer": "Peru and Bolivia",
+              "source": "similar_difficulty",
+              "factId": "food_spice_chili_origin"
+            },
+            {
+              "answer": "Lake Titicaca",
+              "source": "similar_difficulty",
+              "factId": "food_hist_potato_origin"
+            },
+            {
+              "answer": "Yangtze River",
+              "source": "similar_difficulty",
+              "factId": "food_hist_rice_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_naan_tandoor",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "At approximately what temperature does a traditional tandoor oven reach, baking naan in minutes?",
+          "correctAnswer": "480°C",
+          "distractors": [
+            {
+              "answer": "Osmosis",
+              "source": "similar_difficulty",
+              "factId": "food_tech_salting_osmosis"
+            },
+            {
+              "answer": "Bitter drink",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_xocolatl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Osmosis\" has 2 format features different from correct \"480°C\""
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_naan_tandoor",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "At approximately what temperature does a traditional tandoor oven reach, baking naan in minutes?",
+          "correctAnswer": "480°C",
+          "distractors": [
+            {
+              "answer": "Osmosis",
+              "source": "similar_difficulty",
+              "factId": "food_tech_salting_osmosis"
+            },
+            {
+              "answer": "Bitter drink",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_xocolatl"
+            },
+            {
+              "answer": "Wok hei",
+              "source": "similar_difficulty",
+              "factId": "food_tech_wok_hei"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Osmosis\" has 2 format features different from correct \"480°C\""
+            }
+          ]
+        },
+        {
+          "factId": "food_dish_naan_tandoor",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "At approximately what temperature does a traditional tandoor oven reach, baking naan in minutes?",
+          "correctAnswer": "480°C",
+          "distractors": [
+            {
+              "answer": "Osmosis",
+              "source": "similar_difficulty",
+              "factId": "food_tech_salting_osmosis"
+            },
+            {
+              "answer": "Bitter drink",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_xocolatl"
+            },
+            {
+              "answer": "Wok hei",
+              "source": "similar_difficulty",
+              "factId": "food_tech_wok_hei"
+            },
+            {
+              "answer": "Air pumping",
+              "source": "similar_difficulty",
+              "factId": "food_dish_peking_duck_skin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Osmosis\" has 2 format features different from correct \"480°C\""
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_capsaicin_science",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "Capsaicin causes the sensation of heat in chili peppers by binding to which type of sensory receptor?",
+          "correctAnswer": "Pain receptors",
+          "distractors": [
+            {
+              "answer": "Air pumping",
+              "source": "similar_difficulty",
+              "factId": "food_dish_peking_duck_skin"
+            },
+            {
+              "answer": "Spherification",
+              "source": "similar_difficulty",
+              "factId": "food_tech_molecular_techniques"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_capsaicin_science",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "Capsaicin causes the sensation of heat in chili peppers by binding to which type of sensory receptor?",
+          "correctAnswer": "Pain receptors",
+          "distractors": [
+            {
+              "answer": "Air pumping",
+              "source": "similar_difficulty",
+              "factId": "food_dish_peking_duck_skin"
+            },
+            {
+              "answer": "Spherification",
+              "source": "similar_difficulty",
+              "factId": "food_tech_molecular_techniques"
+            },
+            {
+              "answer": "2,000",
+              "source": "similar_difficulty",
+              "factId": "food_hist_dim_sum_2000_types"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"2,000\" has 3 format features different from correct \"Pain receptors\""
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_capsaicin_science",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "Capsaicin causes the sensation of heat in chili peppers by binding to which type of sensory receptor?",
+          "correctAnswer": "Pain receptors",
+          "distractors": [
+            {
+              "answer": "Air pumping",
+              "source": "similar_difficulty",
+              "factId": "food_dish_peking_duck_skin"
+            },
+            {
+              "answer": "Spherification",
+              "source": "similar_difficulty",
+              "factId": "food_tech_molecular_techniques"
+            },
+            {
+              "answer": "2,000",
+              "source": "similar_difficulty",
+              "factId": "food_hist_dim_sum_2000_types"
+            },
+            {
+              "answer": "Amino acids",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_vs_caramelization"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"2,000\" has 3 format features different from correct \"Pain receptors\""
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_voc_nutmeg",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "The Dutch East India Company (VOC) sold nutmeg, mace, and cloves across Europe at how many times the price paid to Indonesian producers?",
+          "correctAnswer": "14–17 times",
+          "distractors": [
+            {
+              "answer": "20–50%",
+              "source": "similar_difficulty",
+              "factId": "food_spice_coconut_milk_fat"
+            },
+            {
+              "answer": "Pain receptors",
+              "source": "similar_difficulty",
+              "factId": "food_spice_capsaicin_science"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"20–50%\" has 3 format features different from correct \"14–17 times\""
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_voc_nutmeg",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "The Dutch East India Company (VOC) sold nutmeg, mace, and cloves across Europe at how many times the price paid to Indonesian producers?",
+          "correctAnswer": "14–17 times",
+          "distractors": [
+            {
+              "answer": "20–50%",
+              "source": "similar_difficulty",
+              "factId": "food_spice_coconut_milk_fat"
+            },
+            {
+              "answer": "Pain receptors",
+              "source": "similar_difficulty",
+              "factId": "food_spice_capsaicin_science"
+            },
+            {
+              "answer": "Amino acids",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_vs_caramelization"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 2 options don't match: \"Pain receptors\", \"Amino acids\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"20–50%\" has 3 format features different from correct \"14–17 times\""
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_voc_nutmeg",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "The Dutch East India Company (VOC) sold nutmeg, mace, and cloves across Europe at how many times the price paid to Indonesian producers?",
+          "correctAnswer": "14–17 times",
+          "distractors": [
+            {
+              "answer": "20–50%",
+              "source": "similar_difficulty",
+              "factId": "food_spice_coconut_milk_fat"
+            },
+            {
+              "answer": "Pain receptors",
+              "source": "similar_difficulty",
+              "factId": "food_spice_capsaicin_science"
+            },
+            {
+              "answer": "Amino acids",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_vs_caramelization"
+            },
+            {
+              "answer": "Spherification",
+              "source": "similar_difficulty",
+              "factId": "food_tech_molecular_techniques"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 3 options don't match: \"Pain receptors\", \"Amino acids\", \"Spherification\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"20–50%\" has 3 format features different from correct \"14–17 times\""
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_coconut_milk_fat",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "Coconut cream from the first pressing of grated coconut contains what percentage of fat?",
+          "correctAnswer": "20–50%",
+          "distractors": [
+            {
+              "answer": "Zymology",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_foods"
+            },
+            {
+              "answer": "Amino acids",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_vs_caramelization"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Amino acids\" has 2 format features different from correct \"20–50%\""
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_coconut_milk_fat",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "Coconut cream from the first pressing of grated coconut contains what percentage of fat?",
+          "correctAnswer": "20–50%",
+          "distractors": [
+            {
+              "answer": "Zymology",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_foods"
+            },
+            {
+              "answer": "Amino acids",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_vs_caramelization"
+            },
+            {
+              "answer": "Bitter drink",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_xocolatl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Amino acids\" has 2 format features different from correct \"20–50%\""
+            }
+          ]
+        },
+        {
+          "factId": "food_spice_coconut_milk_fat",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "Coconut cream from the first pressing of grated coconut contains what percentage of fat?",
+          "correctAnswer": "20–50%",
+          "distractors": [
+            {
+              "answer": "Zymology",
+              "source": "similar_difficulty",
+              "factId": "food_tech_fermentation_foods"
+            },
+            {
+              "answer": "Amino acids",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_vs_caramelization"
+            },
+            {
+              "answer": "Bitter drink",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_xocolatl"
+            },
+            {
+              "answer": "Pain receptors",
+              "source": "similar_difficulty",
+              "factId": "food_spice_capsaicin_science"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Amino acids\" has 2 format features different from correct \"20–50%\""
+            }
+          ]
+        },
+        {
+          "factId": "food_tech_maillard_vs_caramelization",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "The Maillard reaction differs from caramelization because it requires both reducing sugars AND which other ingredient?",
+          "correctAnswer": "Amino acids",
+          "distractors": [
+            {
+              "answer": "480°C",
+              "source": "similar_difficulty",
+              "factId": "food_dish_naan_tandoor"
+            },
+            {
+              "answer": "Bitter drink",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_xocolatl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"480°C\" has 3 format features different from correct \"Amino acids\""
+            }
+          ]
+        },
+        {
+          "factId": "food_tech_maillard_vs_caramelization",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "The Maillard reaction differs from caramelization because it requires both reducing sugars AND which other ingredient?",
+          "correctAnswer": "Amino acids",
+          "distractors": [
+            {
+              "answer": "480°C",
+              "source": "similar_difficulty",
+              "factId": "food_dish_naan_tandoor"
+            },
+            {
+              "answer": "Bitter drink",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_xocolatl"
+            },
+            {
+              "answer": "Wok hei",
+              "source": "similar_difficulty",
+              "factId": "food_tech_wok_hei"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"480°C\" has 3 format features different from correct \"Amino acids\""
+            }
+          ]
+        },
+        {
+          "factId": "food_tech_maillard_vs_caramelization",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_short",
+          "renderedQuestion": "The Maillard reaction differs from caramelization because it requires both reducing sugars AND which other ingredient?",
+          "correctAnswer": "Amino acids",
+          "distractors": [
+            {
+              "answer": "480°C",
+              "source": "similar_difficulty",
+              "factId": "food_dish_naan_tandoor"
+            },
+            {
+              "answer": "Bitter drink",
+              "source": "similar_difficulty",
+              "factId": "food_hist_chocolate_xocolatl"
+            },
+            {
+              "answer": "Wok hei",
+              "source": "similar_difficulty",
+              "factId": "food_tech_wok_hei"
+            },
+            {
+              "answer": "Osmosis",
+              "source": "similar_difficulty",
+              "factId": "food_tech_salting_osmosis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"480°C\" has 3 format features different from correct \"Amino acids\""
+            }
+          ]
+        },
+        {
+          "factId": "food_tech_risotto_technique",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "What technique creates risotto's creamy texture without any added cream?",
+          "correctAnswer": "Constant stirring",
+          "distractors": [
+            {
+              "answer": "Raw (soaked overnight)",
+              "source": "similar_difficulty",
+              "factId": "food_hist_falafel_raw"
+            },
+            {
+              "answer": "800 million tonnes",
+              "source": "similar_difficulty",
+              "factId": "food_hist_rice_production"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"800 million tonnes\" has 3 format features different from correct \"Constant stirring\""
+            }
+          ]
+        },
+        {
+          "factId": "food_tech_risotto_technique",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "What technique creates risotto's creamy texture without any added cream?",
+          "correctAnswer": "Constant stirring",
+          "distractors": [
+            {
+              "answer": "Raw (soaked overnight)",
+              "source": "similar_difficulty",
+              "factId": "food_hist_falafel_raw"
+            },
+            {
+              "answer": "800 million tonnes",
+              "source": "similar_difficulty",
+              "factId": "food_hist_rice_production"
+            },
+            {
+              "answer": "Collateral or currency",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_currency"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"800 million tonnes\" has 3 format features different from correct \"Constant stirring\""
+            }
+          ]
+        },
+        {
+          "factId": "food_tech_risotto_technique",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "What technique creates risotto's creamy texture without any added cream?",
+          "correctAnswer": "Constant stirring",
+          "distractors": [
+            {
+              "answer": "Raw (soaked overnight)",
+              "source": "similar_difficulty",
+              "factId": "food_hist_falafel_raw"
+            },
+            {
+              "answer": "800 million tonnes",
+              "source": "similar_difficulty",
+              "factId": "food_hist_rice_production"
+            },
+            {
+              "answer": "Collateral or currency",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_currency"
+            },
+            {
+              "answer": "Sourdough starter",
+              "source": "similar_difficulty",
+              "factId": "food_hist_bread_pliny"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"800 million tonnes\" has 3 format features different from correct \"Constant stirring\""
+            }
+          ]
+        },
+        {
+          "factId": "food_tech_bbq_temperature",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "True barbecue (BBQ) uses what low temperature range — distinct from high-heat grilling?",
+          "correctAnswer": "116–138°C (240–280°F)",
+          "distractors": [
+            {
+              "answer": "Collateral or currency",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_currency"
+            },
+            {
+              "answer": "140–165°C (280–330°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_temperature"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_tech_bbq_temperature",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "True barbecue (BBQ) uses what low temperature range — distinct from high-heat grilling?",
+          "correctAnswer": "116–138°C (240–280°F)",
+          "distractors": [
+            {
+              "answer": "Collateral or currency",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_currency"
+            },
+            {
+              "answer": "140–165°C (280–330°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_temperature"
+            },
+            {
+              "answer": "Raw (soaked overnight)",
+              "source": "similar_difficulty",
+              "factId": "food_hist_falafel_raw"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_tech_bbq_temperature",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "True barbecue (BBQ) uses what low temperature range — distinct from high-heat grilling?",
+          "correctAnswer": "116–138°C (240–280°F)",
+          "distractors": [
+            {
+              "answer": "Collateral or currency",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_currency"
+            },
+            {
+              "answer": "140–165°C (280–330°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_temperature"
+            },
+            {
+              "answer": "Raw (soaked overnight)",
+              "source": "similar_difficulty",
+              "factId": "food_hist_falafel_raw"
+            },
+            {
+              "answer": "Sourdough starter",
+              "source": "similar_difficulty",
+              "factId": "food_hist_bread_pliny"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_rice_production",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "What was the approximate global rice production in 2023 — making it the world's third-largest crop?",
+          "correctAnswer": "800 million tonnes",
+          "distractors": [
+            {
+              "answer": "Collateral or currency",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_currency"
+            },
+            {
+              "answer": "116–138°C (240–280°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bbq_temperature"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Collateral or currency\" has 3 format features different from correct \"800 million tonnes\""
+            }
+          ]
+        },
+        {
+          "factId": "food_hist_rice_production",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "What was the approximate global rice production in 2023 — making it the world's third-largest crop?",
+          "correctAnswer": "800 million tonnes",
+          "distractors": [
+            {
+              "answer": "Collateral or currency",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_currency"
+            },
+            {
+              "answer": "116–138°C (240–280°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bbq_temperature"
+            },
+            {
+              "answer": "Raw (soaked overnight)",
+              "source": "similar_difficulty",
+              "factId": "food_hist_falafel_raw"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Collateral or currency\" has 3 format features different from correct \"800 million tonnes\""
+            }
+          ]
+        },
+        {
+          "factId": "food_hist_rice_production",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "What was the approximate global rice production in 2023 — making it the world's third-largest crop?",
+          "correctAnswer": "800 million tonnes",
+          "distractors": [
+            {
+              "answer": "Collateral or currency",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_currency"
+            },
+            {
+              "answer": "116–138°C (240–280°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bbq_temperature"
+            },
+            {
+              "answer": "Raw (soaked overnight)",
+              "source": "similar_difficulty",
+              "factId": "food_hist_falafel_raw"
+            },
+            {
+              "answer": "140–165°C (280–330°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_temperature"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Collateral or currency\" has 3 format features different from correct \"800 million tonnes\""
+            }
+          ]
+        },
+        {
+          "factId": "food_hist_falafel_raw",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "A key technique in authentic falafel: chickpeas or fava beans must be in what state when ground — NOT pre-cooked?",
+          "correctAnswer": "Raw (soaked overnight)",
+          "distractors": [
+            {
+              "answer": "116–138°C (240–280°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bbq_temperature"
+            },
+            {
+              "answer": "Sourdough starter",
+              "source": "similar_difficulty",
+              "factId": "food_hist_bread_pliny"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_falafel_raw",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "A key technique in authentic falafel: chickpeas or fava beans must be in what state when ground — NOT pre-cooked?",
+          "correctAnswer": "Raw (soaked overnight)",
+          "distractors": [
+            {
+              "answer": "116–138°C (240–280°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bbq_temperature"
+            },
+            {
+              "answer": "Sourdough starter",
+              "source": "similar_difficulty",
+              "factId": "food_hist_bread_pliny"
+            },
+            {
+              "answer": "140–165°C (280–330°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_temperature"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_falafel_raw",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "A key technique in authentic falafel: chickpeas or fava beans must be in what state when ground — NOT pre-cooked?",
+          "correctAnswer": "Raw (soaked overnight)",
+          "distractors": [
+            {
+              "answer": "116–138°C (240–280°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bbq_temperature"
+            },
+            {
+              "answer": "Sourdough starter",
+              "source": "similar_difficulty",
+              "factId": "food_hist_bread_pliny"
+            },
+            {
+              "answer": "140–165°C (280–330°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_maillard_temperature"
+            },
+            {
+              "answer": "Collateral or currency",
+              "source": "similar_difficulty",
+              "factId": "food_spice_black_pepper_currency"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_black_pepper_currency",
+          "masteryLevel": 0,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "Black pepper was historically so valuable it was often used as what, beyond just a cooking spice?",
+          "correctAnswer": "Collateral or currency",
+          "distractors": [
+            {
+              "answer": "Raw (soaked overnight)",
+              "source": "similar_difficulty",
+              "factId": "food_hist_falafel_raw"
+            },
+            {
+              "answer": "Constant stirring",
+              "source": "similar_difficulty",
+              "factId": "food_tech_risotto_technique"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_black_pepper_currency",
+          "masteryLevel": 2,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "Black pepper was historically so valuable it was often used as what, beyond just a cooking spice?",
+          "correctAnswer": "Collateral or currency",
+          "distractors": [
+            {
+              "answer": "Raw (soaked overnight)",
+              "source": "similar_difficulty",
+              "factId": "food_hist_falafel_raw"
+            },
+            {
+              "answer": "Constant stirring",
+              "source": "similar_difficulty",
+              "factId": "food_tech_risotto_technique"
+            },
+            {
+              "answer": "116–138°C (240–280°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bbq_temperature"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_spice_black_pepper_currency",
+          "masteryLevel": 4,
+          "poolId": "technique_terms_long",
+          "renderedQuestion": "Black pepper was historically so valuable it was often used as what, beyond just a cooking spice?",
+          "correctAnswer": "Collateral or currency",
+          "distractors": [
+            {
+              "answer": "Raw (soaked overnight)",
+              "source": "similar_difficulty",
+              "factId": "food_hist_falafel_raw"
+            },
+            {
+              "answer": "Constant stirring",
+              "source": "similar_difficulty",
+              "factId": "food_tech_risotto_technique"
+            },
+            {
+              "answer": "116–138°C (240–280°F)",
+              "source": "similar_difficulty",
+              "factId": "food_tech_bbq_temperature"
+            },
+            {
+              "answer": "800 million tonnes",
+              "source": "similar_difficulty",
+              "factId": "food_hist_rice_production"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"800 million tonnes\" has 3 format features different from correct \"Collateral or currency\""
+            }
+          ]
+        },
+        {
+          "factId": "food_hist_tea_act",
+          "masteryLevel": 0,
+          "poolId": "cultural_references",
+          "renderedQuestion": "The British Tea Act of 1773 provoked which event that escalated into the American Revolution?",
+          "correctAnswer": "Boston Tea Party",
+          "distractors": [
+            {
+              "answer": "The Lion, the Witch and the Wardrobe",
+              "source": "similar_difficulty",
+              "factId": "food_dish_turkish_delight_narnia"
+            },
+            {
+              "answer": "One Thousand and One Nights",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tagine_1001_nights"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_tea_act",
+          "masteryLevel": 2,
+          "poolId": "cultural_references",
+          "renderedQuestion": "The British Tea Act of 1773 provoked which event that escalated into the American Revolution?",
+          "correctAnswer": "Boston Tea Party",
+          "distractors": [
+            {
+              "answer": "The Lion, the Witch and the Wardrobe",
+              "source": "similar_difficulty",
+              "factId": "food_dish_turkish_delight_narnia"
+            },
+            {
+              "answer": "One Thousand and One Nights",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tagine_1001_nights"
+            },
+            {
+              "answer": "The Odyssey",
+              "source": "pool_fill",
+              "factId": "_synthetic_The Odyssey"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_tea_act",
+          "masteryLevel": 4,
+          "poolId": "cultural_references",
+          "renderedQuestion": "The British Tea Act of 1773 provoked which event that escalated into the American Revolution?",
+          "correctAnswer": "Boston Tea Party",
+          "distractors": [
+            {
+              "answer": "The Lion, the Witch and the Wardrobe",
+              "source": "similar_difficulty",
+              "factId": "food_dish_turkish_delight_narnia"
+            },
+            {
+              "answer": "One Thousand and One Nights",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tagine_1001_nights"
+            },
+            {
+              "answer": "The Odyssey",
+              "source": "pool_fill",
+              "factId": "_synthetic_The Odyssey"
+            },
+            {
+              "answer": "American Civil War",
+              "source": "pool_fill",
+              "factId": "_synthetic_American Civil War"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_turkish_delight_narnia",
+          "masteryLevel": 0,
+          "poolId": "cultural_references",
+          "renderedQuestion": "Which 1950 novel by C.S. Lewis featured Turkish delight (lokum) so prominently it boosted sales of the confection?",
+          "correctAnswer": "The Lion, the Witch and the Wardrobe",
+          "distractors": [
+            {
+              "answer": "Boston Tea Party",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_act"
+            },
+            {
+              "answer": "One Thousand and One Nights",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tagine_1001_nights"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_turkish_delight_narnia",
+          "masteryLevel": 2,
+          "poolId": "cultural_references",
+          "renderedQuestion": "Which 1950 novel by C.S. Lewis featured Turkish delight (lokum) so prominently it boosted sales of the confection?",
+          "correctAnswer": "The Lion, the Witch and the Wardrobe",
+          "distractors": [
+            {
+              "answer": "Boston Tea Party",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_act"
+            },
+            {
+              "answer": "One Thousand and One Nights",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tagine_1001_nights"
+            },
+            {
+              "answer": "The Odyssey",
+              "source": "pool_fill",
+              "factId": "_synthetic_The Odyssey"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_dish_turkish_delight_narnia",
+          "masteryLevel": 4,
+          "poolId": "cultural_references",
+          "renderedQuestion": "Which 1950 novel by C.S. Lewis featured Turkish delight (lokum) so prominently it boosted sales of the confection?",
+          "correctAnswer": "The Lion, the Witch and the Wardrobe",
+          "distractors": [
+            {
+              "answer": "Boston Tea Party",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_act"
+            },
+            {
+              "answer": "One Thousand and One Nights",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tagine_1001_nights"
+            },
+            {
+              "answer": "The Odyssey",
+              "source": "pool_fill",
+              "factId": "_synthetic_The Odyssey"
+            },
+            {
+              "answer": "Epic of Gilgamesh",
+              "source": "pool_fill",
+              "factId": "_synthetic_Epic of Gilgamesh"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 36 vs avg distractor 17.8 — ratio 2.03×"
+            }
+          ]
+        },
+        {
+          "factId": "food_hist_tagine_1001_nights",
+          "masteryLevel": 0,
+          "poolId": "cultural_references",
+          "renderedQuestion": "The clay tagine pot appears in which famous 9th-century Arabic story collection?",
+          "correctAnswer": "One Thousand and One Nights",
+          "distractors": [
+            {
+              "answer": "The Lion, the Witch and the Wardrobe",
+              "source": "similar_difficulty",
+              "factId": "food_dish_turkish_delight_narnia"
+            },
+            {
+              "answer": "Boston Tea Party",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_act"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_tagine_1001_nights",
+          "masteryLevel": 2,
+          "poolId": "cultural_references",
+          "renderedQuestion": "The clay tagine pot appears in which famous 9th-century Arabic story collection?",
+          "correctAnswer": "One Thousand and One Nights",
+          "distractors": [
+            {
+              "answer": "The Lion, the Witch and the Wardrobe",
+              "source": "similar_difficulty",
+              "factId": "food_dish_turkish_delight_narnia"
+            },
+            {
+              "answer": "Boston Tea Party",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_act"
+            },
+            {
+              "answer": "Stamp Act protests",
+              "source": "pool_fill",
+              "factId": "_synthetic_Stamp Act protests"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "food_hist_tagine_1001_nights",
+          "masteryLevel": 4,
+          "poolId": "cultural_references",
+          "renderedQuestion": "The clay tagine pot appears in which famous 9th-century Arabic story collection?",
+          "correctAnswer": "One Thousand and One Nights",
+          "distractors": [
+            {
+              "answer": "The Lion, the Witch and the Wardrobe",
+              "source": "similar_difficulty",
+              "factId": "food_dish_turkish_delight_narnia"
+            },
+            {
+              "answer": "Boston Tea Party",
+              "source": "similar_difficulty",
+              "factId": "food_hist_tea_act"
+            },
+            {
+              "answer": "Stamp Act protests",
+              "source": "pool_fill",
+              "factId": "_synthetic_Stamp Act protests"
+            },
+            {
+              "answer": "Beowulf",
+              "source": "pool_fill",
+              "factId": "_synthetic_Beowulf"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

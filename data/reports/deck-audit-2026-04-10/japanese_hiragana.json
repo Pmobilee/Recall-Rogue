@@ -1,0 +1,530 @@
+{
+  "timestamp": "2026-04-10T13:40:26.348Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 15,
+  "totalFails": 0,
+  "totalWarns": 13,
+  "decks": [
+    {
+      "deckId": "japanese_hiragana",
+      "deckName": "Japanese Hiragana",
+      "deckClass": "vocab",
+      "totalFacts": 208,
+      "totalChecks": 15,
+      "failCount": 0,
+      "warnCount": 13,
+      "issuesByType": {
+        "reverse_distractor_language_mismatch": {
+          "fail": 0,
+          "warn": 13
+        }
+      },
+      "factResults": [
+        {
+          "factId": "ja-hiragana-a-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the hiragana あ represent?",
+          "correctAnswer": "a",
+          "distractors": [
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-na-reverse"
+            },
+            {
+              "answer": "ke",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ke-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"な\" script type (CJK=true) differs from correct \"a\" (CJK=false)"
+            }
+          ]
+        },
+        {
+          "factId": "ja-hiragana-a-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the hiragana あ represent?",
+          "correctAnswer": "a",
+          "distractors": [
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-na-reverse"
+            },
+            {
+              "answer": "ke",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ke-forward"
+            },
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"な\" script type (CJK=true) differs from correct \"a\" (CJK=false)"
+            }
+          ]
+        },
+        {
+          "factId": "ja-hiragana-a-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the hiragana あ represent?",
+          "correctAnswer": "a",
+          "distractors": [
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-na-reverse"
+            },
+            {
+              "answer": "ke",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ke-forward"
+            },
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-forward"
+            },
+            {
+              "answer": "shi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-shi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"な\" script type (CJK=true) differs from correct \"a\" (CJK=false)"
+            }
+          ]
+        },
+        {
+          "factId": "ja-hiragana-a-reverse",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which hiragana character represents 'a'?",
+          "correctAnswer": "あ",
+          "distractors": [
+            {
+              "answer": "to",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-to-forward"
+            },
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"to\" script type (CJK=false) differs from correct \"あ\" (CJK=true)"
+            }
+          ]
+        },
+        {
+          "factId": "ja-hiragana-a-reverse",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which hiragana character represents 'a'?",
+          "correctAnswer": "あ",
+          "distractors": [
+            {
+              "answer": "to",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-to-forward"
+            },
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-reverse"
+            },
+            {
+              "answer": "ぬ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"to\" script type (CJK=false) differs from correct \"あ\" (CJK=true)"
+            }
+          ]
+        },
+        {
+          "factId": "ja-hiragana-a-reverse",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which hiragana character represents 'a'?",
+          "correctAnswer": "あ",
+          "distractors": [
+            {
+              "answer": "to",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-to-forward"
+            },
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-reverse"
+            },
+            {
+              "answer": "ぬ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nu-reverse"
+            },
+            {
+              "answer": "o",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-o-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"to\" script type (CJK=false) differs from correct \"あ\" (CJK=true)"
+            }
+          ]
+        },
+        {
+          "factId": "ja-hiragana-i-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the hiragana い represent?",
+          "correctAnswer": "i",
+          "distractors": [
+            {
+              "answer": "て",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-te-reverse"
+            },
+            {
+              "answer": "to",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-to-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"て\" script type (CJK=true) differs from correct \"i\" (CJK=false)"
+            }
+          ]
+        },
+        {
+          "factId": "ja-hiragana-i-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the hiragana い represent?",
+          "correctAnswer": "i",
+          "distractors": [
+            {
+              "answer": "て",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-te-reverse"
+            },
+            {
+              "answer": "to",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-to-forward"
+            },
+            {
+              "answer": "の",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-no-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"て\" script type (CJK=true) differs from correct \"i\" (CJK=false)"
+            }
+          ]
+        },
+        {
+          "factId": "ja-hiragana-i-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the hiragana い represent?",
+          "correctAnswer": "i",
+          "distractors": [
+            {
+              "answer": "て",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-te-reverse"
+            },
+            {
+              "answer": "to",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-to-forward"
+            },
+            {
+              "answer": "の",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-no-reverse"
+            },
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-shi-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"て\" script type (CJK=true) differs from correct \"i\" (CJK=false)"
+            }
+          ]
+        },
+        {
+          "factId": "ja-hiragana-i-reverse",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which hiragana character represents 'i'?",
+          "correctAnswer": "い",
+          "distractors": [
+            {
+              "answer": "せ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-reverse"
+            },
+            {
+              "answer": "き",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ki-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-i-reverse",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which hiragana character represents 'i'?",
+          "correctAnswer": "い",
+          "distractors": [
+            {
+              "answer": "せ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-reverse"
+            },
+            {
+              "answer": "き",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ki-reverse"
+            },
+            {
+              "answer": "そ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-so-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-i-reverse",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which hiragana character represents 'i'?",
+          "correctAnswer": "い",
+          "distractors": [
+            {
+              "answer": "せ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-reverse"
+            },
+            {
+              "answer": "き",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ki-reverse"
+            },
+            {
+              "answer": "そ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-so-reverse"
+            },
+            {
+              "answer": "chi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-chi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"chi\" script type (CJK=false) differs from correct \"い\" (CJK=true)"
+            }
+          ]
+        },
+        {
+          "factId": "ja-hiragana-u-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the hiragana う represent?",
+          "correctAnswer": "u",
+          "distractors": [
+            {
+              "answer": "ni",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ni-forward"
+            },
+            {
+              "answer": "ぬ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"ぬ\" script type (CJK=true) differs from correct \"u\" (CJK=false)"
+            }
+          ]
+        },
+        {
+          "factId": "ja-hiragana-u-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the hiragana う represent?",
+          "correctAnswer": "u",
+          "distractors": [
+            {
+              "answer": "ni",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ni-forward"
+            },
+            {
+              "answer": "ぬ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nu-reverse"
+            },
+            {
+              "answer": "せ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"ぬ\" script type (CJK=true) differs from correct \"u\" (CJK=false)"
+            }
+          ]
+        },
+        {
+          "factId": "ja-hiragana-u-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What sound does the hiragana う represent?",
+          "correctAnswer": "u",
+          "distractors": [
+            {
+              "answer": "ni",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ni-forward"
+            },
+            {
+              "answer": "ぬ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nu-reverse"
+            },
+            {
+              "answer": "せ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-reverse"
+            },
+            {
+              "answer": "つ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-tsu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "reverse_distractor_language_mismatch",
+              "detail": "Distractor \"ぬ\" script type (CJK=true) differs from correct \"u\" (CJK=false)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

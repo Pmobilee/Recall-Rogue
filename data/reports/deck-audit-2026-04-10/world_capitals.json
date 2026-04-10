@@ -1,0 +1,930 @@
+{
+  "timestamp": "2026-04-10T13:40:40.363Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 33,
+  "totalFails": 0,
+  "totalWarns": 3,
+  "decks": [
+    {
+      "deckId": "world_capitals",
+      "deckName": "World Capitals",
+      "deckClass": "knowledge",
+      "totalFacts": 168,
+      "totalChecks": 33,
+      "failCount": 0,
+      "warnCount": 3,
+      "issuesByType": {
+        "empty_chain_themes_runtime": {
+          "fail": 0,
+          "warn": 1
+        },
+        "mega_pool_runtime_warning": {
+          "fail": 0,
+          "warn": 2
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_deck_chain_themes",
+          "masteryLevel": -1,
+          "poolId": "_deck",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "empty_chain_themes_runtime",
+              "detail": "Knowledge deck \"world_capitals\" has no chainThemes — Study Temple mode will not work correctly"
+            }
+          ]
+        },
+        {
+          "factId": "_mega_pool_capital_names_short",
+          "masteryLevel": -1,
+          "poolId": "capital_names_short",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "mega_pool_runtime_warning",
+              "detail": "Pool \"capital_names_short\" has 118 factIds (>100) — consider splitting by sub-topic"
+            }
+          ]
+        },
+        {
+          "factId": "_mega_pool_country_names_caps_short",
+          "masteryLevel": -1,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "mega_pool_runtime_warning",
+              "detail": "Pool \"country_names_caps_short\" has 118 factIds (>100) — consider splitting by sub-topic"
+            }
+          ]
+        },
+        {
+          "factId": "capital_fr",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of France?",
+          "correctAnswer": "Paris",
+          "distractors": [
+            {
+              "answer": "Canberra",
+              "source": "similar_difficulty",
+              "factId": "capital_au"
+            },
+            {
+              "answer": "Beijing",
+              "source": "similar_difficulty",
+              "factId": "capital_cn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_fr",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of France?",
+          "correctAnswer": "Paris",
+          "distractors": [
+            {
+              "answer": "Canberra",
+              "source": "similar_difficulty",
+              "factId": "capital_au"
+            },
+            {
+              "answer": "Beijing",
+              "source": "similar_difficulty",
+              "factId": "capital_cn"
+            },
+            {
+              "answer": "Rabat",
+              "source": "similar_difficulty",
+              "factId": "capital_ma"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_fr",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of France?",
+          "correctAnswer": "Paris",
+          "distractors": [
+            {
+              "answer": "Canberra",
+              "source": "similar_difficulty",
+              "factId": "capital_au"
+            },
+            {
+              "answer": "Beijing",
+              "source": "similar_difficulty",
+              "factId": "capital_cn"
+            },
+            {
+              "answer": "Rabat",
+              "source": "similar_difficulty",
+              "factId": "capital_ma"
+            },
+            {
+              "answer": "Kingston",
+              "source": "similar_difficulty",
+              "factId": "capital_jm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_de",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Germany?",
+          "correctAnswer": "Berlin",
+          "distractors": [
+            {
+              "answer": "Kyiv",
+              "source": "similar_difficulty",
+              "factId": "capital_ua"
+            },
+            {
+              "answer": "Hanoi",
+              "source": "similar_difficulty",
+              "factId": "capital_vn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_de",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Germany?",
+          "correctAnswer": "Berlin",
+          "distractors": [
+            {
+              "answer": "Kyiv",
+              "source": "similar_difficulty",
+              "factId": "capital_ua"
+            },
+            {
+              "answer": "Hanoi",
+              "source": "similar_difficulty",
+              "factId": "capital_vn"
+            },
+            {
+              "answer": "Havana",
+              "source": "similar_difficulty",
+              "factId": "capital_cu"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_de",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Germany?",
+          "correctAnswer": "Berlin",
+          "distractors": [
+            {
+              "answer": "Kyiv",
+              "source": "similar_difficulty",
+              "factId": "capital_ua"
+            },
+            {
+              "answer": "Hanoi",
+              "source": "similar_difficulty",
+              "factId": "capital_vn"
+            },
+            {
+              "answer": "Havana",
+              "source": "similar_difficulty",
+              "factId": "capital_cu"
+            },
+            {
+              "answer": "Rome",
+              "source": "similar_difficulty",
+              "factId": "capital_it"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_gb",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of United Kingdom?",
+          "correctAnswer": "London",
+          "distractors": [
+            {
+              "answer": "Kingston",
+              "source": "similar_difficulty",
+              "factId": "capital_jm"
+            },
+            {
+              "answer": "Ankara",
+              "source": "similar_difficulty",
+              "factId": "capital_tr"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_gb",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of United Kingdom?",
+          "correctAnswer": "London",
+          "distractors": [
+            {
+              "answer": "Kingston",
+              "source": "similar_difficulty",
+              "factId": "capital_jm"
+            },
+            {
+              "answer": "Ankara",
+              "source": "similar_difficulty",
+              "factId": "capital_tr"
+            },
+            {
+              "answer": "Bangkok",
+              "source": "similar_difficulty",
+              "factId": "capital_th"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_gb",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of United Kingdom?",
+          "correctAnswer": "London",
+          "distractors": [
+            {
+              "answer": "Kingston",
+              "source": "similar_difficulty",
+              "factId": "capital_jm"
+            },
+            {
+              "answer": "Ankara",
+              "source": "similar_difficulty",
+              "factId": "capital_tr"
+            },
+            {
+              "answer": "Bangkok",
+              "source": "similar_difficulty",
+              "factId": "capital_th"
+            },
+            {
+              "answer": "Paris",
+              "source": "similar_difficulty",
+              "factId": "capital_fr"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_es",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Spain?",
+          "correctAnswer": "Madrid",
+          "distractors": [
+            {
+              "answer": "Manila",
+              "source": "similar_difficulty",
+              "factId": "capital_ph"
+            },
+            {
+              "answer": "Berlin",
+              "source": "similar_difficulty",
+              "factId": "capital_de"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_es",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Spain?",
+          "correctAnswer": "Madrid",
+          "distractors": [
+            {
+              "answer": "Manila",
+              "source": "similar_difficulty",
+              "factId": "capital_ph"
+            },
+            {
+              "answer": "Berlin",
+              "source": "similar_difficulty",
+              "factId": "capital_de"
+            },
+            {
+              "answer": "Nairobi",
+              "source": "similar_difficulty",
+              "factId": "capital_ke"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_es",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Spain?",
+          "correctAnswer": "Madrid",
+          "distractors": [
+            {
+              "answer": "Manila",
+              "source": "similar_difficulty",
+              "factId": "capital_ph"
+            },
+            {
+              "answer": "Berlin",
+              "source": "similar_difficulty",
+              "factId": "capital_de"
+            },
+            {
+              "answer": "Nairobi",
+              "source": "similar_difficulty",
+              "factId": "capital_ke"
+            },
+            {
+              "answer": "Rome",
+              "source": "similar_difficulty",
+              "factId": "capital_it"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_it",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Italy?",
+          "correctAnswer": "Rome",
+          "distractors": [
+            {
+              "answer": "Seoul",
+              "source": "similar_difficulty",
+              "factId": "capital_kr"
+            },
+            {
+              "answer": "Madrid",
+              "source": "similar_difficulty",
+              "factId": "capital_es"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_it",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Italy?",
+          "correctAnswer": "Rome",
+          "distractors": [
+            {
+              "answer": "Seoul",
+              "source": "similar_difficulty",
+              "factId": "capital_kr"
+            },
+            {
+              "answer": "Madrid",
+              "source": "similar_difficulty",
+              "factId": "capital_es"
+            },
+            {
+              "answer": "Lisbon",
+              "source": "similar_difficulty",
+              "factId": "capital_pt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_it",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Italy?",
+          "correctAnswer": "Rome",
+          "distractors": [
+            {
+              "answer": "Seoul",
+              "source": "similar_difficulty",
+              "factId": "capital_kr"
+            },
+            {
+              "answer": "Madrid",
+              "source": "similar_difficulty",
+              "factId": "capital_es"
+            },
+            {
+              "answer": "Lisbon",
+              "source": "similar_difficulty",
+              "factId": "capital_pt"
+            },
+            {
+              "answer": "Santiago",
+              "source": "similar_difficulty",
+              "factId": "capital_cl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_nl",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Netherlands?",
+          "correctAnswer": "Amsterdam",
+          "distractors": [
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            },
+            {
+              "answer": "Kuwait City",
+              "source": "similar_difficulty",
+              "factId": "capital_kw"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_nl",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Netherlands?",
+          "correctAnswer": "Amsterdam",
+          "distractors": [
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            },
+            {
+              "answer": "Kuwait City",
+              "source": "similar_difficulty",
+              "factId": "capital_kw"
+            },
+            {
+              "answer": "Copenhagen",
+              "source": "similar_difficulty",
+              "factId": "capital_dk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_nl",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Netherlands?",
+          "correctAnswer": "Amsterdam",
+          "distractors": [
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            },
+            {
+              "answer": "Kuwait City",
+              "source": "similar_difficulty",
+              "factId": "capital_kw"
+            },
+            {
+              "answer": "Copenhagen",
+              "source": "similar_difficulty",
+              "factId": "capital_dk"
+            },
+            {
+              "answer": "Guatemala City",
+              "source": "similar_difficulty",
+              "factId": "capital_gt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_lu",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "Which small European grand duchy, sandwiched between Belgium, France, and Germany, has a capital that shares its name with the country?",
+          "correctAnswer": "Luxembourg City",
+          "distractors": [
+            {
+              "answer": "Libreville",
+              "source": "similar_difficulty",
+              "factId": "capital_ga"
+            },
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_lu",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "Which small European grand duchy, sandwiched between Belgium, France, and Germany, has a capital that shares its name with the country?",
+          "correctAnswer": "Luxembourg City",
+          "distractors": [
+            {
+              "answer": "Libreville",
+              "source": "similar_difficulty",
+              "factId": "capital_ga"
+            },
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            },
+            {
+              "answer": "Guatemala City",
+              "source": "similar_difficulty",
+              "factId": "capital_gt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_lu",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "Which small European grand duchy, sandwiched between Belgium, France, and Germany, has a capital that shares its name with the country?",
+          "correctAnswer": "Luxembourg City",
+          "distractors": [
+            {
+              "answer": "Libreville",
+              "source": "similar_difficulty",
+              "factId": "capital_ga"
+            },
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            },
+            {
+              "answer": "Guatemala City",
+              "source": "similar_difficulty",
+              "factId": "capital_gt"
+            },
+            {
+              "answer": "Mogadishu",
+              "source": "similar_difficulty",
+              "factId": "capital_so"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_sk",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Slovakia?",
+          "correctAnswer": "Bratislava",
+          "distractors": [
+            {
+              "answer": "Sri Jayawardenepura Kotte",
+              "source": "similar_difficulty",
+              "factId": "capital_lk"
+            },
+            {
+              "answer": "Port Vila",
+              "source": "similar_difficulty",
+              "factId": "capital_vu"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_sk",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Slovakia?",
+          "correctAnswer": "Bratislava",
+          "distractors": [
+            {
+              "answer": "Sri Jayawardenepura Kotte",
+              "source": "similar_difficulty",
+              "factId": "capital_lk"
+            },
+            {
+              "answer": "Port Vila",
+              "source": "similar_difficulty",
+              "factId": "capital_vu"
+            },
+            {
+              "answer": "Wellington",
+              "source": "similar_difficulty",
+              "factId": "capital_nz"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_sk",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Slovakia?",
+          "correctAnswer": "Bratislava",
+          "distractors": [
+            {
+              "answer": "Sri Jayawardenepura Kotte",
+              "source": "similar_difficulty",
+              "factId": "capital_lk"
+            },
+            {
+              "answer": "Port Vila",
+              "source": "similar_difficulty",
+              "factId": "capital_vu"
+            },
+            {
+              "answer": "Wellington",
+              "source": "similar_difficulty",
+              "factId": "capital_nz"
+            },
+            {
+              "answer": "Ouagadougou",
+              "source": "similar_difficulty",
+              "factId": "capital_bf"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_ro",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Romania?",
+          "correctAnswer": "Bucharest",
+          "distractors": [
+            {
+              "answer": "Port Moresby",
+              "source": "similar_difficulty",
+              "factId": "capital_pg"
+            },
+            {
+              "answer": "Kuala Lumpur",
+              "source": "similar_difficulty",
+              "factId": "capital_my"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_ro",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Romania?",
+          "correctAnswer": "Bucharest",
+          "distractors": [
+            {
+              "answer": "Port Moresby",
+              "source": "similar_difficulty",
+              "factId": "capital_pg"
+            },
+            {
+              "answer": "Kuala Lumpur",
+              "source": "similar_difficulty",
+              "factId": "capital_my"
+            },
+            {
+              "answer": "Washington, D.C.",
+              "source": "similar_difficulty",
+              "factId": "capital_us"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_ro",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Romania?",
+          "correctAnswer": "Bucharest",
+          "distractors": [
+            {
+              "answer": "Port Moresby",
+              "source": "similar_difficulty",
+              "factId": "capital_pg"
+            },
+            {
+              "answer": "Kuala Lumpur",
+              "source": "similar_difficulty",
+              "factId": "capital_my"
+            },
+            {
+              "answer": "Washington, D.C.",
+              "source": "similar_difficulty",
+              "factId": "capital_us"
+            },
+            {
+              "answer": "Antananarivo",
+              "source": "similar_difficulty",
+              "factId": "capital_mg"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_si",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Slovenia?",
+          "correctAnswer": "Ljubljana",
+          "distractors": [
+            {
+              "answer": "Ulaanbaatar",
+              "source": "similar_difficulty",
+              "factId": "capital_mn"
+            },
+            {
+              "answer": "Port-au-Prince",
+              "source": "similar_difficulty",
+              "factId": "capital_ht"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_si",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Slovenia?",
+          "correctAnswer": "Ljubljana",
+          "distractors": [
+            {
+              "answer": "Ulaanbaatar",
+              "source": "similar_difficulty",
+              "factId": "capital_mn"
+            },
+            {
+              "answer": "Port-au-Prince",
+              "source": "similar_difficulty",
+              "factId": "capital_ht"
+            },
+            {
+              "answer": "Djibouti City",
+              "source": "similar_difficulty",
+              "factId": "capital_dj"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_si",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Slovenia?",
+          "correctAnswer": "Ljubljana",
+          "distractors": [
+            {
+              "answer": "Ulaanbaatar",
+              "source": "similar_difficulty",
+              "factId": "capital_mn"
+            },
+            {
+              "answer": "Port-au-Prince",
+              "source": "similar_difficulty",
+              "factId": "capital_ht"
+            },
+            {
+              "answer": "Djibouti City",
+              "source": "similar_difficulty",
+              "factId": "capital_dj"
+            },
+            {
+              "answer": "San Salvador",
+              "source": "similar_difficulty",
+              "factId": "capital_sv"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

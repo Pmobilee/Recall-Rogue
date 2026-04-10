@@ -1,0 +1,2632 @@
+{
+  "timestamp": "2026-04-10T13:40:18.638Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 85,
+  "totalFails": 0,
+  "totalWarns": 38,
+  "decks": [
+    {
+      "deckId": "egyptian_mythology",
+      "deckName": "Egyptian Mythology",
+      "deckClass": "knowledge",
+      "totalFacts": 171,
+      "totalChecks": 85,
+      "failCount": 0,
+      "warnCount": 38,
+      "issuesByType": {
+        "min_pool_facts": {
+          "fail": 0,
+          "warn": 1
+        },
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 30
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 4
+        },
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_pool_deity_names_short",
+          "masteryLevel": -1,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "(pool-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_pool_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "min_pool_facts",
+              "detail": "Pool \"deity_names_short\" has only 3 real factIds (min: 5)"
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_ra_head",
+          "masteryLevel": 0,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "How was Ra, the Egyptian sun god, typically depicted?",
+          "correctAnswer": "falcon-headed man with solar disk",
+          "distractors": [
+            {
+              "answer": "a throne (the hieroglyph for her name)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_headdress"
+            },
+            {
+              "answer": "an ostrich feather",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_maat_feather"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_head",
+          "masteryLevel": 2,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "How was Ra, the Egyptian sun god, typically depicted?",
+          "correctAnswer": "falcon-headed man with solar disk",
+          "distractors": [
+            {
+              "answer": "a throne (the hieroglyph for her name)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_headdress"
+            },
+            {
+              "answer": "an ostrich feather",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_maat_feather"
+            },
+            {
+              "answer": "The shen symbol (eternal encircling protection)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_nekhbet_shen"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"The shen symbol (eternal encircling prot\" has 2 format features different from correct \"falcon-headed man with solar disk\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_ra_head",
+          "masteryLevel": 4,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "How was Ra, the Egyptian sun god, typically depicted?",
+          "correctAnswer": "falcon-headed man with solar disk",
+          "distractors": [
+            {
+              "answer": "a throne (the hieroglyph for her name)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_headdress"
+            },
+            {
+              "answer": "an ostrich feather",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_maat_feather"
+            },
+            {
+              "answer": "The shen symbol (eternal encircling protection)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_nekhbet_shen"
+            },
+            {
+              "answer": "pschent (double crown)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_crown"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"The shen symbol (eternal encircling prot\" has 2 format features different from correct \"falcon-headed man with solar disk\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_isis_headdress",
+          "masteryLevel": 0,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "What symbol originally formed Isis's headdress?",
+          "correctAnswer": "a throne (the hieroglyph for her name)",
+          "distractors": [
+            {
+              "answer": "falcon-headed man with solar disk",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_head"
+            },
+            {
+              "answer": "pschent (double crown)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_crown"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_isis_headdress",
+          "masteryLevel": 2,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "What symbol originally formed Isis's headdress?",
+          "correctAnswer": "a throne (the hieroglyph for her name)",
+          "distractors": [
+            {
+              "answer": "falcon-headed man with solar disk",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_head"
+            },
+            {
+              "answer": "pschent (double crown)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_crown"
+            },
+            {
+              "answer": "an ostrich feather",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_maat_feather"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_isis_headdress",
+          "masteryLevel": 4,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "What symbol originally formed Isis's headdress?",
+          "correctAnswer": "a throne (the hieroglyph for her name)",
+          "distractors": [
+            {
+              "answer": "falcon-headed man with solar disk",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_head"
+            },
+            {
+              "answer": "pschent (double crown)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_crown"
+            },
+            {
+              "answer": "an ostrich feather",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_maat_feather"
+            },
+            {
+              "answer": "The shen symbol (eternal encircling protection)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_nekhbet_shen"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"The shen symbol (eternal encircling prot\" has 2 format features different from correct \"a throne (the hieroglyph for her name)\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_horus_crown",
+          "masteryLevel": 0,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "What crown did Horus wear to symbolize his rulership over unified Egypt?",
+          "correctAnswer": "pschent (double crown)",
+          "distractors": [
+            {
+              "answer": "The shen symbol (eternal encircling protection)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_nekhbet_shen"
+            },
+            {
+              "answer": "falcon-headed man with solar disk",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_head"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"The shen symbol (eternal encircling prot\" has 2 format features different from correct \"pschent (double crown)\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_horus_crown",
+          "masteryLevel": 2,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "What crown did Horus wear to symbolize his rulership over unified Egypt?",
+          "correctAnswer": "pschent (double crown)",
+          "distractors": [
+            {
+              "answer": "The shen symbol (eternal encircling protection)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_nekhbet_shen"
+            },
+            {
+              "answer": "falcon-headed man with solar disk",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_head"
+            },
+            {
+              "answer": "a throne (the hieroglyph for her name)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_headdress"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"The shen symbol (eternal encircling prot\" has 2 format features different from correct \"pschent (double crown)\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_horus_crown",
+          "masteryLevel": 4,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "What crown did Horus wear to symbolize his rulership over unified Egypt?",
+          "correctAnswer": "pschent (double crown)",
+          "distractors": [
+            {
+              "answer": "The shen symbol (eternal encircling protection)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_nekhbet_shen"
+            },
+            {
+              "answer": "falcon-headed man with solar disk",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_head"
+            },
+            {
+              "answer": "a throne (the hieroglyph for her name)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_headdress"
+            },
+            {
+              "answer": "an ostrich feather",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_maat_feather"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"The shen symbol (eternal encircling prot\" has 2 format features different from correct \"pschent (double crown)\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_maat_feather",
+          "masteryLevel": 0,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "What object represented Ma'at's concept of truth in the Weighing of the Heart?",
+          "correctAnswer": "an ostrich feather",
+          "distractors": [
+            {
+              "answer": "pschent (double crown)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_crown"
+            },
+            {
+              "answer": "The shen symbol (eternal encircling protection)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_nekhbet_shen"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"The shen symbol (eternal encircling prot\" has 2 format features different from correct \"an ostrich feather\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_maat_feather",
+          "masteryLevel": 2,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "What object represented Ma'at's concept of truth in the Weighing of the Heart?",
+          "correctAnswer": "an ostrich feather",
+          "distractors": [
+            {
+              "answer": "pschent (double crown)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_crown"
+            },
+            {
+              "answer": "The shen symbol (eternal encircling protection)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_nekhbet_shen"
+            },
+            {
+              "answer": "a throne (the hieroglyph for her name)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_headdress"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"The shen symbol (eternal encircling prot\" has 2 format features different from correct \"an ostrich feather\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_maat_feather",
+          "masteryLevel": 4,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "What object represented Ma'at's concept of truth in the Weighing of the Heart?",
+          "correctAnswer": "an ostrich feather",
+          "distractors": [
+            {
+              "answer": "pschent (double crown)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_crown"
+            },
+            {
+              "answer": "The shen symbol (eternal encircling protection)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_nekhbet_shen"
+            },
+            {
+              "answer": "a throne (the hieroglyph for her name)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_headdress"
+            },
+            {
+              "answer": "falcon-headed man with solar disk",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_head"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"The shen symbol (eternal encircling prot\" has 2 format features different from correct \"an ostrich feather\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_sym_nekhbet_shen",
+          "masteryLevel": 0,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "In New Kingdom art, Nekhbet was depicted hovering with wings spread above the pharaoh, clutching what symbol?",
+          "correctAnswer": "The shen symbol (eternal encircling protection)",
+          "distractors": [
+            {
+              "answer": "a throne (the hieroglyph for her name)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_headdress"
+            },
+            {
+              "answer": "an ostrich feather",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_maat_feather"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"a throne (the hieroglyph for her name)\" has 2 format features different from correct \"The shen symbol (eternal encircling prot\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_sym_nekhbet_shen",
+          "masteryLevel": 2,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "In New Kingdom art, Nekhbet was depicted hovering with wings spread above the pharaoh, clutching what symbol?",
+          "correctAnswer": "The shen symbol (eternal encircling protection)",
+          "distractors": [
+            {
+              "answer": "a throne (the hieroglyph for her name)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_headdress"
+            },
+            {
+              "answer": "an ostrich feather",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_maat_feather"
+            },
+            {
+              "answer": "pschent (double crown)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_crown"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"a throne (the hieroglyph for her name)\" has 2 format features different from correct \"The shen symbol (eternal encircling prot\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_sym_nekhbet_shen",
+          "masteryLevel": 4,
+          "poolId": "symbols_objects",
+          "renderedQuestion": "In New Kingdom art, Nekhbet was depicted hovering with wings spread above the pharaoh, clutching what symbol?",
+          "correctAnswer": "The shen symbol (eternal encircling protection)",
+          "distractors": [
+            {
+              "answer": "a throne (the hieroglyph for her name)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_headdress"
+            },
+            {
+              "answer": "an ostrich feather",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_maat_feather"
+            },
+            {
+              "answer": "pschent (double crown)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_crown"
+            },
+            {
+              "answer": "falcon-headed man with solar disk",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_head"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"a throne (the hieroglyph for her name)\" has 2 format features different from correct \"The shen symbol (eternal encircling prot\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_ra_boats",
+          "masteryLevel": 0,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "What was the name of Ra's daytime solar boat?",
+          "correctAnswer": "Mandjet (daytime boat)",
+          "distractors": [
+            {
+              "answer": "Becoming an akh spirit",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_pyramid_texts_akh"
+            },
+            {
+              "answer": "Mummification and Nile silt",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_anubis_color"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_boats",
+          "masteryLevel": 2,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "What was the name of Ra's daytime solar boat?",
+          "correctAnswer": "Mandjet (daytime boat)",
+          "distractors": [
+            {
+              "answer": "Becoming an akh spirit",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_pyramid_texts_akh"
+            },
+            {
+              "answer": "Mummification and Nile silt",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_anubis_color"
+            },
+            {
+              "answer": "A blue lotus flower",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_nefertum_lotus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_boats",
+          "masteryLevel": 4,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "What was the name of Ra's daytime solar boat?",
+          "correctAnswer": "Mandjet (daytime boat)",
+          "distractors": [
+            {
+              "answer": "Becoming an akh spirit",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_pyramid_texts_akh"
+            },
+            {
+              "answer": "Mummification and Nile silt",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_anubis_color"
+            },
+            {
+              "answer": "A blue lotus flower",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_nefertum_lotus"
+            },
+            {
+              "answer": "Sun would not rise; chaos wins",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_apophis_role"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_daughters",
+          "masteryLevel": 0,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "Which three goddesses were considered Ra's daughters and instruments of his vengeance?",
+          "correctAnswer": "Sekhmet, Hathor, and Bastet",
+          "distractors": [
+            {
+              "answer": "Red jasper stone",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_symbol"
+            },
+            {
+              "answer": "Greek logos philosophy",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_memphite_logos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_daughters",
+          "masteryLevel": 2,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "Which three goddesses were considered Ra's daughters and instruments of his vengeance?",
+          "correctAnswer": "Sekhmet, Hathor, and Bastet",
+          "distractors": [
+            {
+              "answer": "Red jasper stone",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_symbol"
+            },
+            {
+              "answer": "Greek logos philosophy",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_memphite_logos"
+            },
+            {
+              "answer": "Set destroyed it; Thoth healed",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_eye_horus_myth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_daughters",
+          "masteryLevel": 4,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "Which three goddesses were considered Ra's daughters and instruments of his vengeance?",
+          "correctAnswer": "Sekhmet, Hathor, and Bastet",
+          "distractors": [
+            {
+              "answer": "Red jasper stone",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_isis_symbol"
+            },
+            {
+              "answer": "Greek logos philosophy",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_memphite_logos"
+            },
+            {
+              "answer": "Set destroyed it; Thoth healed",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_eye_horus_myth"
+            },
+            {
+              "answer": "wind or air",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_amun_hidden"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"wind or air\" has 2 format features different from correct \"Sekhmet, Hathor, and Bastet\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_osiris_title",
+          "masteryLevel": 0,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "What title meaning 'Foremost of the Westerners' did Osiris hold?",
+          "correctAnswer": "Khenti-Amentiu",
+          "distractors": [
+            {
+              "answer": "A blue lotus flower",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_nefertum_lotus"
+            },
+            {
+              "answer": "Beetles roll balls like sun",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_khepri_scarab"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_osiris_title",
+          "masteryLevel": 2,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "What title meaning 'Foremost of the Westerners' did Osiris hold?",
+          "correctAnswer": "Khenti-Amentiu",
+          "distractors": [
+            {
+              "answer": "A blue lotus flower",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_nefertum_lotus"
+            },
+            {
+              "answer": "Beetles roll balls like sun",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_khepri_scarab"
+            },
+            {
+              "answer": "Drank beer dyed red as blood",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_sekhmet_beer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_osiris_title",
+          "masteryLevel": 4,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "What title meaning 'Foremost of the Westerners' did Osiris hold?",
+          "correctAnswer": "Khenti-Amentiu",
+          "distractors": [
+            {
+              "answer": "A blue lotus flower",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_nefertum_lotus"
+            },
+            {
+              "answer": "Beetles roll balls like sun",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_khepri_scarab"
+            },
+            {
+              "answer": "Drank beer dyed red as blood",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_sekhmet_beer"
+            },
+            {
+              "answer": "If won, sun would not rise",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_apophis_nightly"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_osiris_crown",
+          "masteryLevel": 0,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "What distinctive crown did Osiris wear?",
+          "correctAnswer": "Atef crown",
+          "distractors": [
+            {
+              "answer": "White triangle and vulture",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_apis_bull_marks"
+            },
+            {
+              "answer": "Pharaoh identified as Horus",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_falcon_horus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 10 vs avg distractor 26.5 — ratio 0.38×"
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_osiris_crown",
+          "masteryLevel": 2,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "What distinctive crown did Osiris wear?",
+          "correctAnswer": "Atef crown",
+          "distractors": [
+            {
+              "answer": "White triangle and vulture",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_apis_bull_marks"
+            },
+            {
+              "answer": "Pharaoh identified as Horus",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_falcon_horus"
+            },
+            {
+              "answer": "Shaped on a potter wheel",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_khnum_creation"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 10 vs avg distractor 25.7 — ratio 0.39×"
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_osiris_crown",
+          "masteryLevel": 4,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "What distinctive crown did Osiris wear?",
+          "correctAnswer": "Atef crown",
+          "distractors": [
+            {
+              "answer": "White triangle and vulture",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_apis_bull_marks"
+            },
+            {
+              "answer": "Pharaoh identified as Horus",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_falcon_horus"
+            },
+            {
+              "answer": "Shaped on a potter wheel",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_khnum_creation"
+            },
+            {
+              "answer": "the Two Ladies (Nebty name)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_wadjet_nekhbet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 10 vs avg distractor 26.0 — ratio 0.38×"
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_osiris_worship",
+          "masteryLevel": 0,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "When does the first evidence of Osiris worship date to?",
+          "correctAnswer": "Fifth Dynasty (~2400 BCE)",
+          "distractors": [
+            {
+              "answer": "Egypt First Dynasty (3000 BCE)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_ankh_first_dynasty"
+            },
+            {
+              "answer": "Senusret I (1971–1926 BCE)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_karnak_first"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_osiris_worship",
+          "masteryLevel": 2,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "When does the first evidence of Osiris worship date to?",
+          "correctAnswer": "Fifth Dynasty (~2400 BCE)",
+          "distractors": [
+            {
+              "answer": "Egypt First Dynasty (3000 BCE)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_ankh_first_dynasty"
+            },
+            {
+              "answer": "Senusret I (1971–1926 BCE)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_karnak_first"
+            },
+            {
+              "answer": "Set gave Horus the throne",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_osiris_myth_throne"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_osiris_worship",
+          "masteryLevel": 4,
+          "poolId": "concepts_terms",
+          "renderedQuestion": "When does the first evidence of Osiris worship date to?",
+          "correctAnswer": "Fifth Dynasty (~2400 BCE)",
+          "distractors": [
+            {
+              "answer": "Egypt First Dynasty (3000 BCE)",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_ankh_first_dynasty"
+            },
+            {
+              "answer": "Senusret I (1971–1926 BCE)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_karnak_first"
+            },
+            {
+              "answer": "Set gave Horus the throne",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_osiris_myth_throne"
+            },
+            {
+              "answer": "A blue lotus flower",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_nefertum_lotus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_cult",
+          "masteryLevel": 0,
+          "poolId": "places_locations",
+          "renderedQuestion": "What was Ra's primary cult center in ancient Egypt?",
+          "correctAnswer": "Heliopolis",
+          "distractors": [
+            {
+              "answer": "Dendera",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_hathor_temple"
+            },
+            {
+              "answer": "Near Luxor (Thebes)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_amun_karnak_location"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_cult",
+          "masteryLevel": 2,
+          "poolId": "places_locations",
+          "renderedQuestion": "What was Ra's primary cult center in ancient Egypt?",
+          "correctAnswer": "Heliopolis",
+          "distractors": [
+            {
+              "answer": "Dendera",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_hathor_temple"
+            },
+            {
+              "answer": "Near Luxor (Thebes)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_amun_karnak_location"
+            },
+            {
+              "answer": "Lake Nasser",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_abu_simbel_relocation"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_cult",
+          "masteryLevel": 4,
+          "poolId": "places_locations",
+          "renderedQuestion": "What was Ra's primary cult center in ancient Egypt?",
+          "correctAnswer": "Heliopolis",
+          "distractors": [
+            {
+              "answer": "Dendera",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_hathor_temple"
+            },
+            {
+              "answer": "Near Luxor (Thebes)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_amun_karnak_location"
+            },
+            {
+              "answer": "Lake Nasser",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_abu_simbel_relocation"
+            },
+            {
+              "answer": "city of dogs",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_anubis_cynopolis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"city of dogs\" has 3 format features different from correct \"Heliopolis\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_horus_centers",
+          "masteryLevel": 0,
+          "poolId": "places_locations",
+          "renderedQuestion": "What were Horus's major cult centers?",
+          "correctAnswer": "Nekhen and Edfu",
+          "distractors": [
+            {
+              "answer": "city of dogs",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_anubis_cynopolis"
+            },
+            {
+              "answer": "the Faiyum",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_sobek_location"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"city of dogs\" has 2 format features different from correct \"Nekhen and Edfu\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_horus_centers",
+          "masteryLevel": 2,
+          "poolId": "places_locations",
+          "renderedQuestion": "What were Horus's major cult centers?",
+          "correctAnswer": "Nekhen and Edfu",
+          "distractors": [
+            {
+              "answer": "city of dogs",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_anubis_cynopolis"
+            },
+            {
+              "answer": "the Faiyum",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_sobek_location"
+            },
+            {
+              "answer": "Khemenu (Eight City)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_thoth_hermopolis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"city of dogs\" has 2 format features different from correct \"Nekhen and Edfu\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_horus_centers",
+          "masteryLevel": 4,
+          "poolId": "places_locations",
+          "renderedQuestion": "What were Horus's major cult centers?",
+          "correctAnswer": "Nekhen and Edfu",
+          "distractors": [
+            {
+              "answer": "city of dogs",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_anubis_cynopolis"
+            },
+            {
+              "answer": "the Faiyum",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_sobek_location"
+            },
+            {
+              "answer": "Khemenu (Eight City)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_thoth_hermopolis"
+            },
+            {
+              "answer": "Dendera",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_hathor_temple"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"city of dogs\" has 2 format features different from correct \"Nekhen and Edfu\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_thoth_hermopolis",
+          "masteryLevel": 0,
+          "poolId": "places_locations",
+          "renderedQuestion": "What was the ancient Egyptian name of Hermopolis, Thoth's cult center?",
+          "correctAnswer": "Khemenu (Eight City)",
+          "distractors": [
+            {
+              "answer": "Near Luxor (Thebes)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_amun_karnak_location"
+            },
+            {
+              "answer": "Nekhen and Edfu",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_centers"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_thoth_hermopolis",
+          "masteryLevel": 2,
+          "poolId": "places_locations",
+          "renderedQuestion": "What was the ancient Egyptian name of Hermopolis, Thoth's cult center?",
+          "correctAnswer": "Khemenu (Eight City)",
+          "distractors": [
+            {
+              "answer": "Near Luxor (Thebes)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_amun_karnak_location"
+            },
+            {
+              "answer": "Nekhen and Edfu",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_centers"
+            },
+            {
+              "answer": "city of dogs",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_anubis_cynopolis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"city of dogs\" has 2 format features different from correct \"Khemenu (Eight City)\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_thoth_hermopolis",
+          "masteryLevel": 4,
+          "poolId": "places_locations",
+          "renderedQuestion": "What was the ancient Egyptian name of Hermopolis, Thoth's cult center?",
+          "correctAnswer": "Khemenu (Eight City)",
+          "distractors": [
+            {
+              "answer": "Near Luxor (Thebes)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_amun_karnak_location"
+            },
+            {
+              "answer": "Nekhen and Edfu",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_centers"
+            },
+            {
+              "answer": "city of dogs",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_anubis_cynopolis"
+            },
+            {
+              "answer": "Dendera",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_hathor_temple"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"city of dogs\" has 2 format features different from correct \"Khemenu (Eight City)\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_hathor_temple",
+          "masteryLevel": 0,
+          "poolId": "places_locations",
+          "renderedQuestion": "More temples were dedicated to Hathor than to any other goddess. Where was her primary temple?",
+          "correctAnswer": "Dendera",
+          "distractors": [
+            {
+              "answer": "city of dogs",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_anubis_cynopolis"
+            },
+            {
+              "answer": "the Faiyum",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_sobek_location"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies place name answers but 2 options don't match: \"city of dogs\", \"the Faiyum\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"city of dogs\" has 3 format features different from correct \"Dendera\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_hathor_temple",
+          "masteryLevel": 2,
+          "poolId": "places_locations",
+          "renderedQuestion": "More temples were dedicated to Hathor than to any other goddess. Where was her primary temple?",
+          "correctAnswer": "Dendera",
+          "distractors": [
+            {
+              "answer": "city of dogs",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_anubis_cynopolis"
+            },
+            {
+              "answer": "the Faiyum",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_sobek_location"
+            },
+            {
+              "answer": "Khemenu (Eight City)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_thoth_hermopolis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies place name answers but 2 options don't match: \"city of dogs\", \"the Faiyum\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"city of dogs\" has 3 format features different from correct \"Dendera\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_hathor_temple",
+          "masteryLevel": 4,
+          "poolId": "places_locations",
+          "renderedQuestion": "More temples were dedicated to Hathor than to any other goddess. Where was her primary temple?",
+          "correctAnswer": "Dendera",
+          "distractors": [
+            {
+              "answer": "city of dogs",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_anubis_cynopolis"
+            },
+            {
+              "answer": "the Faiyum",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_sobek_location"
+            },
+            {
+              "answer": "Khemenu (Eight City)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_thoth_hermopolis"
+            },
+            {
+              "answer": "Near Luxor (Thebes)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_amun_karnak_location"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 7 vs avg distractor 15.3 — ratio 0.46×"
+            },
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies place name answers but 2 options don't match: \"city of dogs\", \"the Faiyum\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"city of dogs\" has 3 format features different from correct \"Dendera\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_sobek_location",
+          "masteryLevel": 0,
+          "poolId": "places_locations",
+          "renderedQuestion": "In what region of Egypt was Sobek's primary cult centered?",
+          "correctAnswer": "the Faiyum",
+          "distractors": [
+            {
+              "answer": "Khemenu (Eight City)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_thoth_hermopolis"
+            },
+            {
+              "answer": "Near Luxor (Thebes)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_amun_karnak_location"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_sobek_location",
+          "masteryLevel": 2,
+          "poolId": "places_locations",
+          "renderedQuestion": "In what region of Egypt was Sobek's primary cult centered?",
+          "correctAnswer": "the Faiyum",
+          "distractors": [
+            {
+              "answer": "Khemenu (Eight City)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_thoth_hermopolis"
+            },
+            {
+              "answer": "Near Luxor (Thebes)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_amun_karnak_location"
+            },
+            {
+              "answer": "city of dogs",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_anubis_cynopolis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_sobek_location",
+          "masteryLevel": 4,
+          "poolId": "places_locations",
+          "renderedQuestion": "In what region of Egypt was Sobek's primary cult centered?",
+          "correctAnswer": "the Faiyum",
+          "distractors": [
+            {
+              "answer": "Khemenu (Eight City)",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_thoth_hermopolis"
+            },
+            {
+              "answer": "Near Luxor (Thebes)",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_amun_karnak_location"
+            },
+            {
+              "answer": "city of dogs",
+              "source": "similar_difficulty",
+              "factId": "egypt_death_anubis_cynopolis"
+            },
+            {
+              "answer": "Dendera",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_hathor_temple"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Dendera\" has 2 format features different from correct \"the Faiyum\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_ra_humans",
+          "masteryLevel": 0,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "According to Egyptian myth, what did Ra create humans from?",
+          "correctAnswer": "his tears and sweat",
+          "distractors": [
+            {
+              "answer": "to come into existence or to be born",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_khepri_meaning"
+            },
+            {
+              "answer": "well-being, healing, and protection",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_eye_horus_meaning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_humans",
+          "masteryLevel": 2,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "According to Egyptian myth, what did Ra create humans from?",
+          "correctAnswer": "his tears and sweat",
+          "distractors": [
+            {
+              "answer": "to come into existence or to be born",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_khepri_meaning"
+            },
+            {
+              "answer": "well-being, healing, and protection",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_eye_horus_meaning"
+            },
+            {
+              "answer": "the primordial waters",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_ogdoad_pairs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_humans",
+          "masteryLevel": 4,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "According to Egyptian myth, what did Ra create humans from?",
+          "correctAnswer": "his tears and sweat",
+          "distractors": [
+            {
+              "answer": "to come into existence or to be born",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_khepri_meaning"
+            },
+            {
+              "answer": "well-being, healing, and protection",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_eye_horus_meaning"
+            },
+            {
+              "answer": "the primordial waters",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_ogdoad_pairs"
+            },
+            {
+              "answer": "the Predynastic Period, c. 3200–3100 BCE",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_vulture_nekhbet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"the Predynastic Period, c. 3200–3100 BCE\" has 2 format features different from correct \"his tears and sweat\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_osiris_skin",
+          "masteryLevel": 0,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "What two colors was Osiris's skin depicted in Egyptian art, and what did each symbolize?",
+          "correctAnswer": "green for regeneration, black for fertile Nile soil",
+          "distractors": [
+            {
+              "answer": "to ward off disease and heal the sick",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_sekhmet_healing"
+            },
+            {
+              "answer": "the hidden one or invisible",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_amun_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_osiris_skin",
+          "masteryLevel": 2,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "What two colors was Osiris's skin depicted in Egyptian art, and what did each symbolize?",
+          "correctAnswer": "green for regeneration, black for fertile Nile soil",
+          "distractors": [
+            {
+              "answer": "to ward off disease and heal the sick",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_sekhmet_healing"
+            },
+            {
+              "answer": "the hidden one or invisible",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_amun_name"
+            },
+            {
+              "answer": "Flew over Nun and called out",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_bennu_creation"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_osiris_skin",
+          "masteryLevel": 4,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "What two colors was Osiris's skin depicted in Egyptian art, and what did each symbolize?",
+          "correctAnswer": "green for regeneration, black for fertile Nile soil",
+          "distractors": [
+            {
+              "answer": "to ward off disease and heal the sick",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_sekhmet_healing"
+            },
+            {
+              "answer": "the hidden one or invisible",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_amun_name"
+            },
+            {
+              "answer": "Flew over Nun and called out",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_bennu_creation"
+            },
+            {
+              "answer": "weighed the deceased's heart against Ma'at's feather",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_anubis_scales"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_horus_pharaohs",
+          "masteryLevel": 0,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "How were living pharaohs theologically identified in ancient Egypt?",
+          "correctAnswer": "as living incarnations of Horus",
+          "distractors": [
+            {
+              "answer": "Personification of primordial chaos",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_nun_nature"
+            },
+            {
+              "answer": "the primordial mound that arose from the waters of Nun",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_benben_stone"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_horus_pharaohs",
+          "masteryLevel": 2,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "How were living pharaohs theologically identified in ancient Egypt?",
+          "correctAnswer": "as living incarnations of Horus",
+          "distractors": [
+            {
+              "answer": "Personification of primordial chaos",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_nun_nature"
+            },
+            {
+              "answer": "the primordial mound that arose from the waters of Nun",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_benben_stone"
+            },
+            {
+              "answer": "Ra who is Horus of the Two Horizons",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_ra_horakhty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_horus_pharaohs",
+          "masteryLevel": 4,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "How were living pharaohs theologically identified in ancient Egypt?",
+          "correctAnswer": "as living incarnations of Horus",
+          "distractors": [
+            {
+              "answer": "Personification of primordial chaos",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_nun_nature"
+            },
+            {
+              "answer": "the primordial mound that arose from the waters of Nun",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_benben_stone"
+            },
+            {
+              "answer": "Ra who is Horus of the Two Horizons",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_ra_horakhty"
+            },
+            {
+              "answer": "Desert and wastelands",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_set_land"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_set_land",
+          "masteryLevel": 0,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "Set was lord of the 'Red Land.' What did this refer to?",
+          "correctAnswer": "Desert and wastelands",
+          "distractors": [
+            {
+              "answer": "the hindquarters and lower body",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_hippo_ammit"
+            },
+            {
+              "answer": "as living incarnations of Horus",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_pharaohs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"the hindquarters and lower body\" has 2 format features different from correct \"Desert and wastelands\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_set_land",
+          "masteryLevel": 2,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "Set was lord of the 'Red Land.' What did this refer to?",
+          "correctAnswer": "Desert and wastelands",
+          "distractors": [
+            {
+              "answer": "the hindquarters and lower body",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_hippo_ammit"
+            },
+            {
+              "answer": "as living incarnations of Horus",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_pharaohs"
+            },
+            {
+              "answer": "Khnum, Satis, Anuket",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_khnum_elephantine"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"the hindquarters and lower body\" has 2 format features different from correct \"Desert and wastelands\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_set_land",
+          "masteryLevel": 4,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "Set was lord of the 'Red Land.' What did this refer to?",
+          "correctAnswer": "Desert and wastelands",
+          "distractors": [
+            {
+              "answer": "the hindquarters and lower body",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_hippo_ammit"
+            },
+            {
+              "answer": "as living incarnations of Horus",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_horus_pharaohs"
+            },
+            {
+              "answer": "Khnum, Satis, Anuket",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_khnum_elephantine"
+            },
+            {
+              "answer": "stability, commonly understood as Osiris's spine",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_djed_meaning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"the hindquarters and lower body\" has 2 format features different from correct \"Desert and wastelands\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_anubis_scales",
+          "masteryLevel": 0,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "What role did Anubis play in the Weighing of the Heart ceremony?",
+          "correctAnswer": "weighed the deceased's heart against Ma'at's feather",
+          "distractors": [
+            {
+              "answer": "Life and immortality",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_ankh_meaning"
+            },
+            {
+              "answer": "the primordial mound that arose from the waters of Nun",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_benben_stone"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_anubis_scales",
+          "masteryLevel": 2,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "What role did Anubis play in the Weighing of the Heart ceremony?",
+          "correctAnswer": "weighed the deceased's heart against Ma'at's feather",
+          "distractors": [
+            {
+              "answer": "Life and immortality",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_ankh_meaning"
+            },
+            {
+              "answer": "the primordial mound that arose from the waters of Nun",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_benben_stone"
+            },
+            {
+              "answer": "the hindquarters and lower body",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_hippo_ammit"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_anubis_scales",
+          "masteryLevel": 4,
+          "poolId": "descriptions_roles",
+          "renderedQuestion": "What role did Anubis play in the Weighing of the Heart ceremony?",
+          "correctAnswer": "weighed the deceased's heart against Ma'at's feather",
+          "distractors": [
+            {
+              "answer": "Life and immortality",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_ankh_meaning"
+            },
+            {
+              "answer": "the primordial mound that arose from the waters of Nun",
+              "source": "similar_difficulty",
+              "factId": "egypt_cosm_benben_stone"
+            },
+            {
+              "answer": "the hindquarters and lower body",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_hippo_ammit"
+            },
+            {
+              "answer": "the hidden one or invisible",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_amun_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_amun",
+          "masteryLevel": 0,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "What merged deity did Ra become during the New Kingdom as Amun worship rose to prominence?",
+          "correctAnswer": "Amun-Ra",
+          "distractors": [
+            {
+              "answer": "Thoth",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_eye_ra_distant"
+            },
+            {
+              "answer": "Isis",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_philae_deity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_amun",
+          "masteryLevel": 2,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "What merged deity did Ra become during the New Kingdom as Amun worship rose to prominence?",
+          "correctAnswer": "Amun-Ra",
+          "distractors": [
+            {
+              "answer": "Thoth",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_eye_ra_distant"
+            },
+            {
+              "answer": "Isis",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_philae_deity"
+            },
+            {
+              "answer": "Horus",
+              "source": "pool_fill",
+              "factId": "_synthetic_Horus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_ra_amun",
+          "masteryLevel": 4,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "What merged deity did Ra become during the New Kingdom as Amun worship rose to prominence?",
+          "correctAnswer": "Amun-Ra",
+          "distractors": [
+            {
+              "answer": "Thoth",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_eye_ra_distant"
+            },
+            {
+              "answer": "Isis",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_philae_deity"
+            },
+            {
+              "answer": "Horus",
+              "source": "pool_fill",
+              "factId": "_synthetic_Horus"
+            },
+            {
+              "answer": "Geb",
+              "source": "pool_fill",
+              "factId": "_synthetic_Geb"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "egypt_sym_eye_ra_distant",
+          "masteryLevel": 0,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "In the Distant Goddess myth, which god was sent to retrieve the angry Eye of Ra from Nubia?",
+          "correctAnswer": "Thoth",
+          "distractors": [
+            {
+              "answer": "Isis",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_philae_deity"
+            },
+            {
+              "answer": "Amun-Ra",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_amun"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_sym_eye_ra_distant",
+          "masteryLevel": 2,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "In the Distant Goddess myth, which god was sent to retrieve the angry Eye of Ra from Nubia?",
+          "correctAnswer": "Thoth",
+          "distractors": [
+            {
+              "answer": "Isis",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_philae_deity"
+            },
+            {
+              "answer": "Amun-Ra",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_amun"
+            },
+            {
+              "answer": "Osiris",
+              "source": "pool_fill",
+              "factId": "_synthetic_Osiris"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_sym_eye_ra_distant",
+          "masteryLevel": 4,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "In the Distant Goddess myth, which god was sent to retrieve the angry Eye of Ra from Nubia?",
+          "correctAnswer": "Thoth",
+          "distractors": [
+            {
+              "answer": "Isis",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_philae_deity"
+            },
+            {
+              "answer": "Amun-Ra",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_amun"
+            },
+            {
+              "answer": "Osiris",
+              "source": "pool_fill",
+              "factId": "_synthetic_Osiris"
+            },
+            {
+              "answer": "Hathor",
+              "source": "pool_fill",
+              "factId": "_synthetic_Hathor"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "egypt_temp_philae_deity",
+          "masteryLevel": 0,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which goddess was primarily worshipped at the Temple of Philae?",
+          "correctAnswer": "Isis",
+          "distractors": [
+            {
+              "answer": "Amun-Ra",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_amun"
+            },
+            {
+              "answer": "Thoth",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_eye_ra_distant"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_temp_philae_deity",
+          "masteryLevel": 2,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which goddess was primarily worshipped at the Temple of Philae?",
+          "correctAnswer": "Isis",
+          "distractors": [
+            {
+              "answer": "Amun-Ra",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_amun"
+            },
+            {
+              "answer": "Thoth",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_eye_ra_distant"
+            },
+            {
+              "answer": "Geb",
+              "source": "pool_fill",
+              "factId": "_synthetic_Geb"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_temp_philae_deity",
+          "masteryLevel": 4,
+          "poolId": "deity_names_short",
+          "renderedQuestion": "Which goddess was primarily worshipped at the Temple of Philae?",
+          "correctAnswer": "Isis",
+          "distractors": [
+            {
+              "answer": "Amun-Ra",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_ra_amun"
+            },
+            {
+              "answer": "Thoth",
+              "source": "similar_difficulty",
+              "factId": "egypt_sym_eye_ra_distant"
+            },
+            {
+              "answer": "Geb",
+              "source": "pool_fill",
+              "factId": "_synthetic_Geb"
+            },
+            {
+              "answer": "Anubis",
+              "source": "pool_fill",
+              "factId": "_synthetic_Anubis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_horus_set_contest",
+          "masteryLevel": 0,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "How long did the mythological contest between Horus and Set last according to Egyptian texts?",
+          "correctAnswer": "eighty years",
+          "distractors": [
+            {
+              "answer": "11 to 27 days",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_opet_duration"
+            },
+            {
+              "answer": "700,000",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_bastet_festival"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"700,000\" has 3 format features different from correct \"eighty years\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_horus_set_contest",
+          "masteryLevel": 2,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "How long did the mythological contest between Horus and Set last according to Egyptian texts?",
+          "correctAnswer": "eighty years",
+          "distractors": [
+            {
+              "answer": "11 to 27 days",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_opet_duration"
+            },
+            {
+              "answer": "700,000",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_bastet_festival"
+            },
+            {
+              "answer": "134 columns",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_karnak_columns"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"700,000\" has 3 format features different from correct \"eighty years\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_horus_set_contest",
+          "masteryLevel": 4,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "How long did the mythological contest between Horus and Set last according to Egyptian texts?",
+          "correctAnswer": "eighty years",
+          "distractors": [
+            {
+              "answer": "11 to 27 days",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_opet_duration"
+            },
+            {
+              "answer": "700,000",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_bastet_festival"
+            },
+            {
+              "answer": "134 columns",
+              "source": "similar_difficulty",
+              "factId": "egypt_temp_karnak_columns"
+            },
+            {
+              "answer": "42",
+              "source": "similar_difficulty",
+              "factId": "egypt_god_maat_confessions"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"700,000\" has 3 format features different from correct \"eighty years\""
+            }
+          ]
+        },
+        {
+          "factId": "egypt_god_bastet_festival",
+          "masteryLevel": 0,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "Approximately how many visitors attended the annual festival at Bastet's temple in Bubastis, per Herodotus?",
+          "correctAnswer": "700,000",
+          "distractors": [
+            {
+              "answer": "845,000",
+              "source": "numerical",
+              "factId": "_numerical_845,000"
+            },
+            {
+              "answer": "558,000",
+              "source": "numerical",
+              "factId": "_numerical_558,000"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_bastet_festival",
+          "masteryLevel": 2,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "Approximately how many visitors attended the annual festival at Bastet's temple in Bubastis, per Herodotus?",
+          "correctAnswer": "700,000",
+          "distractors": [
+            {
+              "answer": "845,000",
+              "source": "numerical",
+              "factId": "_numerical_845,000"
+            },
+            {
+              "answer": "558,000",
+              "source": "numerical",
+              "factId": "_numerical_558,000"
+            },
+            {
+              "answer": "956,000",
+              "source": "numerical",
+              "factId": "_numerical_956,000"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_bastet_festival",
+          "masteryLevel": 4,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "Approximately how many visitors attended the annual festival at Bastet's temple in Bubastis, per Herodotus?",
+          "correctAnswer": "700,000",
+          "distractors": [
+            {
+              "answer": "845,000",
+              "source": "numerical",
+              "factId": "_numerical_845,000"
+            },
+            {
+              "answer": "558,000",
+              "source": "numerical",
+              "factId": "_numerical_558,000"
+            },
+            {
+              "answer": "956,000",
+              "source": "numerical",
+              "factId": "_numerical_956,000"
+            },
+            {
+              "answer": "440,000",
+              "source": "numerical",
+              "factId": "_numerical_440,000"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_maat_confessions",
+          "masteryLevel": 0,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "How many Negative Confessions did the deceased recite in the Hall of Two Truths?",
+          "correctAnswer": "42",
+          "distractors": [
+            {
+              "answer": "58",
+              "source": "numerical",
+              "factId": "_numerical_58"
+            },
+            {
+              "answer": "38",
+              "source": "numerical",
+              "factId": "_numerical_38"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_maat_confessions",
+          "masteryLevel": 2,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "How many Negative Confessions did the deceased recite in the Hall of Two Truths?",
+          "correctAnswer": "42",
+          "distractors": [
+            {
+              "answer": "58",
+              "source": "numerical",
+              "factId": "_numerical_58"
+            },
+            {
+              "answer": "38",
+              "source": "numerical",
+              "factId": "_numerical_38"
+            },
+            {
+              "answer": "51",
+              "source": "numerical",
+              "factId": "_numerical_51"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_god_maat_confessions",
+          "masteryLevel": 4,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "How many Negative Confessions did the deceased recite in the Hall of Two Truths?",
+          "correctAnswer": "42",
+          "distractors": [
+            {
+              "answer": "58",
+              "source": "numerical",
+              "factId": "_numerical_58"
+            },
+            {
+              "answer": "38",
+              "source": "numerical",
+              "factId": "_numerical_38"
+            },
+            {
+              "answer": "51",
+              "source": "numerical",
+              "factId": "_numerical_51"
+            },
+            {
+              "answer": "29",
+              "source": "numerical",
+              "factId": "_numerical_29"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "egypt_cosm_duat_regions",
+          "masteryLevel": 0,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "How many regions or gates did the Duat underworld consist of?",
+          "correctAnswer": "12",
+          "distractors": [
+            {
+              "answer": "28",
+              "source": "numerical",
+              "factId": "_numerical_28"
+            },
+            {
+              "answer": "7",
+              "source": "numerical",
+              "factId": "_numerical_7"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_cosm_duat_regions",
+          "masteryLevel": 2,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "How many regions or gates did the Duat underworld consist of?",
+          "correctAnswer": "12",
+          "distractors": [
+            {
+              "answer": "28",
+              "source": "numerical",
+              "factId": "_numerical_28"
+            },
+            {
+              "answer": "7",
+              "source": "numerical",
+              "factId": "_numerical_7"
+            },
+            {
+              "answer": "21",
+              "source": "numerical",
+              "factId": "_numerical_21"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_cosm_duat_regions",
+          "masteryLevel": 4,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "How many regions or gates did the Duat underworld consist of?",
+          "correctAnswer": "12",
+          "distractors": [
+            {
+              "answer": "28",
+              "source": "numerical",
+              "factId": "_numerical_28"
+            },
+            {
+              "answer": "7",
+              "source": "numerical",
+              "factId": "_numerical_7"
+            },
+            {
+              "answer": "21",
+              "source": "numerical",
+              "factId": "_numerical_21"
+            },
+            {
+              "answer": "4",
+              "source": "numerical",
+              "factId": "_numerical_4"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "egypt_cosm_osiris_myth_pieces",
+          "masteryLevel": 0,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "Into how many pieces did Set scatter Osiris's body, equated with Egypt's provinces?",
+          "correctAnswer": "42",
+          "distractors": [
+            {
+              "answer": "50",
+              "source": "numerical",
+              "factId": "_numerical_50"
+            },
+            {
+              "answer": "27",
+              "source": "numerical",
+              "factId": "_numerical_27"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "egypt_cosm_osiris_myth_pieces",
+          "masteryLevel": 2,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "Into how many pieces did Set scatter Osiris's body, equated with Egypt's provinces?",
+          "correctAnswer": "42",
+          "distractors": [
+            {
+              "answer": "50",
+              "source": "numerical",
+              "factId": "_numerical_50"
+            },
+            {
+              "answer": "27",
+              "source": "numerical",
+              "factId": "_numerical_27"
+            },
+            {
+              "answer": "52",
+              "source": "numerical",
+              "factId": "_numerical_52"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "egypt_cosm_osiris_myth_pieces",
+          "masteryLevel": 4,
+          "poolId": "numbers_dates",
+          "renderedQuestion": "Into how many pieces did Set scatter Osiris's body, equated with Egypt's provinces?",
+          "correctAnswer": "42",
+          "distractors": [
+            {
+              "answer": "50",
+              "source": "numerical",
+              "factId": "_numerical_50"
+            },
+            {
+              "answer": "27",
+              "source": "numerical",
+              "factId": "_numerical_27"
+            },
+            {
+              "answer": "52",
+              "source": "numerical",
+              "factId": "_numerical_52"
+            },
+            {
+              "answer": "35",
+              "source": "numerical",
+              "factId": "_numerical_35"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4948 @@
+{
+  "timestamp": "2026-04-10T13:40:31.876Z",
+  "mode": "sample:5",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 166,
+  "totalFails": 0,
+  "totalWarns": 46,
+  "decks": [
+    {
+      "deckId": "music_history",
+      "deckName": "Music History",
+      "deckClass": "knowledge",
+      "totalFacts": 230,
+      "totalChecks": 166,
+      "failCount": 0,
+      "warnCount": 46,
+      "issuesByType": {
+        "empty_chain_themes_runtime": {
+          "fail": 0,
+          "warn": 1
+        },
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 3
+        },
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 37
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 5
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_deck_chain_themes",
+          "masteryLevel": -1,
+          "poolId": "_deck",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "empty_chain_themes_runtime",
+              "detail": "Knowledge deck \"music_history\" has no chainThemes — Study Temple mode will not work correctly"
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_bach_birth_year",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year was Johann Sebastian Bach born?",
+          "correctAnswer": "1685",
+          "distractors": [
+            {
+              "answer": "1722",
+              "source": "numerical",
+              "factId": "_numerical_1722"
+            },
+            {
+              "answer": "1673",
+              "source": "numerical",
+              "factId": "_numerical_1673"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_bach_birth_year",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year was Johann Sebastian Bach born?",
+          "correctAnswer": "1685",
+          "distractors": [
+            {
+              "answer": "1722",
+              "source": "numerical",
+              "factId": "_numerical_1722"
+            },
+            {
+              "answer": "1673",
+              "source": "numerical",
+              "factId": "_numerical_1673"
+            },
+            {
+              "answer": "1742",
+              "source": "numerical",
+              "factId": "_numerical_1742"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_bach_birth_year",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year was Johann Sebastian Bach born?",
+          "correctAnswer": "1685",
+          "distractors": [
+            {
+              "answer": "1722",
+              "source": "numerical",
+              "factId": "_numerical_1722"
+            },
+            {
+              "answer": "1673",
+              "source": "numerical",
+              "factId": "_numerical_1673"
+            },
+            {
+              "answer": "1742",
+              "source": "numerical",
+              "factId": "_numerical_1742"
+            },
+            {
+              "answer": "1638",
+              "source": "numerical",
+              "factId": "_numerical_1638"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_haydn_symphony_count",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many symphonies did Haydn compose in his lifetime?",
+          "correctAnswer": "104",
+          "distractors": [
+            {
+              "answer": "120",
+              "source": "numerical",
+              "factId": "_numerical_120"
+            },
+            {
+              "answer": "70",
+              "source": "numerical",
+              "factId": "_numerical_70"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_haydn_symphony_count",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many symphonies did Haydn compose in his lifetime?",
+          "correctAnswer": "104",
+          "distractors": [
+            {
+              "answer": "120",
+              "source": "numerical",
+              "factId": "_numerical_120"
+            },
+            {
+              "answer": "70",
+              "source": "numerical",
+              "factId": "_numerical_70"
+            },
+            {
+              "answer": "130",
+              "source": "numerical",
+              "factId": "_numerical_130"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_haydn_symphony_count",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many symphonies did Haydn compose in his lifetime?",
+          "correctAnswer": "104",
+          "distractors": [
+            {
+              "answer": "120",
+              "source": "numerical",
+              "factId": "_numerical_120"
+            },
+            {
+              "answer": "70",
+              "source": "numerical",
+              "factId": "_numerical_70"
+            },
+            {
+              "answer": "130",
+              "source": "numerical",
+              "factId": "_numerical_130"
+            },
+            {
+              "answer": "60",
+              "source": "numerical",
+              "factId": "_numerical_60"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_death_age",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "At what age did Mozart die in Vienna in 1791?",
+          "correctAnswer": "35",
+          "distractors": [
+            {
+              "answer": "45",
+              "source": "numerical",
+              "factId": "_numerical_45"
+            },
+            {
+              "answer": "27",
+              "source": "numerical",
+              "factId": "_numerical_27"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_death_age",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "At what age did Mozart die in Vienna in 1791?",
+          "correctAnswer": "35",
+          "distractors": [
+            {
+              "answer": "45",
+              "source": "numerical",
+              "factId": "_numerical_45"
+            },
+            {
+              "answer": "27",
+              "source": "numerical",
+              "factId": "_numerical_27"
+            },
+            {
+              "answer": "46",
+              "source": "numerical",
+              "factId": "_numerical_46"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_death_age",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "At what age did Mozart die in Vienna in 1791?",
+          "correctAnswer": "35",
+          "distractors": [
+            {
+              "answer": "45",
+              "source": "numerical",
+              "factId": "_numerical_45"
+            },
+            {
+              "answer": "27",
+              "source": "numerical",
+              "factId": "_numerical_27"
+            },
+            {
+              "answer": "46",
+              "source": "numerical",
+              "factId": "_numerical_46"
+            },
+            {
+              "answer": "23",
+              "source": "numerical",
+              "factId": "_numerical_23"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_symphonies_count",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many symphonies did Mozart compose, with his last titled 'Jupiter'?",
+          "correctAnswer": "41",
+          "distractors": [
+            {
+              "answer": "52",
+              "source": "numerical",
+              "factId": "_numerical_52"
+            },
+            {
+              "answer": "25",
+              "source": "numerical",
+              "factId": "_numerical_25"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_symphonies_count",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many symphonies did Mozart compose, with his last titled 'Jupiter'?",
+          "correctAnswer": "41",
+          "distractors": [
+            {
+              "answer": "52",
+              "source": "numerical",
+              "factId": "_numerical_52"
+            },
+            {
+              "answer": "25",
+              "source": "numerical",
+              "factId": "_numerical_25"
+            },
+            {
+              "answer": "50",
+              "source": "numerical",
+              "factId": "_numerical_50"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_symphonies_count",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many symphonies did Mozart compose, with his last titled 'Jupiter'?",
+          "correctAnswer": "41",
+          "distractors": [
+            {
+              "answer": "52",
+              "source": "numerical",
+              "factId": "_numerical_52"
+            },
+            {
+              "answer": "25",
+              "source": "numerical",
+              "factId": "_numerical_25"
+            },
+            {
+              "answer": "50",
+              "source": "numerical",
+              "factId": "_numerical_50"
+            },
+            {
+              "answer": "34",
+              "source": "numerical",
+              "factId": "_numerical_34"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_brahms_four_symphonies",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many symphonies did Brahms compose in his lifetime?",
+          "correctAnswer": "4",
+          "distractors": [
+            {
+              "answer": "11",
+              "source": "numerical",
+              "factId": "_numerical_11"
+            },
+            {
+              "answer": "3",
+              "source": "numerical",
+              "factId": "_numerical_3"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_brahms_four_symphonies",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many symphonies did Brahms compose in his lifetime?",
+          "correctAnswer": "4",
+          "distractors": [
+            {
+              "answer": "11",
+              "source": "numerical",
+              "factId": "_numerical_11"
+            },
+            {
+              "answer": "3",
+              "source": "numerical",
+              "factId": "_numerical_3"
+            },
+            {
+              "answer": "1",
+              "source": "numerical",
+              "factId": "_numerical_1"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_brahms_four_symphonies",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many symphonies did Brahms compose in his lifetime?",
+          "correctAnswer": "4",
+          "distractors": [
+            {
+              "answer": "11",
+              "source": "numerical",
+              "factId": "_numerical_11"
+            },
+            {
+              "answer": "3",
+              "source": "numerical",
+              "factId": "_numerical_3"
+            },
+            {
+              "answer": "1",
+              "source": "numerical",
+              "factId": "_numerical_1"
+            },
+            {
+              "answer": "14",
+              "source": "numerical",
+              "factId": "_numerical_14"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_bach_well_tempered",
+          "masteryLevel": 0,
+          "poolId": "work_names",
+          "renderedQuestion": "What Bach keyboard masterwork explored all 24 major and minor keys?",
+          "correctAnswer": "Well-Tempered Clavier",
+          "distractors": [
+            {
+              "answer": "Swan Lake",
+              "source": "similar_difficulty",
+              "factId": "mh_0_tchaikovsky_swan_lake"
+            },
+            {
+              "answer": "Four Seasons",
+              "source": "similar_difficulty",
+              "factId": "mh_0_vivaldi_four_seasons"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_bach_well_tempered",
+          "masteryLevel": 2,
+          "poolId": "work_names",
+          "renderedQuestion": "What Bach keyboard masterwork explored all 24 major and minor keys?",
+          "correctAnswer": "Well-Tempered Clavier",
+          "distractors": [
+            {
+              "answer": "Swan Lake",
+              "source": "similar_difficulty",
+              "factId": "mh_0_tchaikovsky_swan_lake"
+            },
+            {
+              "answer": "Four Seasons",
+              "source": "similar_difficulty",
+              "factId": "mh_0_vivaldi_four_seasons"
+            },
+            {
+              "answer": "New World Symphony",
+              "source": "similar_difficulty",
+              "factId": "mh_0_dvorak_new_world"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_bach_well_tempered",
+          "masteryLevel": 4,
+          "poolId": "work_names",
+          "renderedQuestion": "What Bach keyboard masterwork explored all 24 major and minor keys?",
+          "correctAnswer": "Well-Tempered Clavier",
+          "distractors": [
+            {
+              "answer": "Swan Lake",
+              "source": "similar_difficulty",
+              "factId": "mh_0_tchaikovsky_swan_lake"
+            },
+            {
+              "answer": "Four Seasons",
+              "source": "similar_difficulty",
+              "factId": "mh_0_vivaldi_four_seasons"
+            },
+            {
+              "answer": "New World Symphony",
+              "source": "similar_difficulty",
+              "factId": "mh_0_dvorak_new_world"
+            },
+            {
+              "answer": "Sleeping Beauty",
+              "source": "similar_difficulty",
+              "factId": "mh_0_tchaikovsky_ballet_trilogy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_vivaldi_four_seasons",
+          "masteryLevel": 0,
+          "poolId": "work_names",
+          "renderedQuestion": "What Vivaldi concerto set depicts Spring, Summer, Autumn, and Winter?",
+          "correctAnswer": "Four Seasons",
+          "distractors": [
+            {
+              "answer": "Carmen (Bizet)",
+              "source": "similar_difficulty",
+              "factId": "mh_0_bizet_carmen"
+            },
+            {
+              "answer": "Rite of Spring",
+              "source": "similar_difficulty",
+              "factId": "mh_0_stravinsky_rite_of_spring"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_vivaldi_four_seasons",
+          "masteryLevel": 2,
+          "poolId": "work_names",
+          "renderedQuestion": "What Vivaldi concerto set depicts Spring, Summer, Autumn, and Winter?",
+          "correctAnswer": "Four Seasons",
+          "distractors": [
+            {
+              "answer": "Carmen (Bizet)",
+              "source": "similar_difficulty",
+              "factId": "mh_0_bizet_carmen"
+            },
+            {
+              "answer": "Rite of Spring",
+              "source": "similar_difficulty",
+              "factId": "mh_0_stravinsky_rite_of_spring"
+            },
+            {
+              "answer": "Unfinished Symphony",
+              "source": "similar_difficulty",
+              "factId": "mh_0_schubert_unfinished"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_vivaldi_four_seasons",
+          "masteryLevel": 4,
+          "poolId": "work_names",
+          "renderedQuestion": "What Vivaldi concerto set depicts Spring, Summer, Autumn, and Winter?",
+          "correctAnswer": "Four Seasons",
+          "distractors": [
+            {
+              "answer": "Carmen (Bizet)",
+              "source": "similar_difficulty",
+              "factId": "mh_0_bizet_carmen"
+            },
+            {
+              "answer": "Rite of Spring",
+              "source": "similar_difficulty",
+              "factId": "mh_0_stravinsky_rite_of_spring"
+            },
+            {
+              "answer": "Unfinished Symphony",
+              "source": "similar_difficulty",
+              "factId": "mh_0_schubert_unfinished"
+            },
+            {
+              "answer": "Magic Flute",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mozart_magic_flute"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_handel_messiah",
+          "masteryLevel": 0,
+          "poolId": "work_names",
+          "renderedQuestion": "What Handel oratorio features the famous 'Hallelujah' chorus?",
+          "correctAnswer": "Messiah (Handel)",
+          "distractors": [
+            {
+              "answer": "Ring of the Nibelung",
+              "source": "similar_difficulty",
+              "factId": "mh_0_wagner_ring_cycle"
+            },
+            {
+              "answer": "Swan Lake",
+              "source": "similar_difficulty",
+              "factId": "mh_0_tchaikovsky_swan_lake"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_handel_messiah",
+          "masteryLevel": 2,
+          "poolId": "work_names",
+          "renderedQuestion": "What Handel oratorio features the famous 'Hallelujah' chorus?",
+          "correctAnswer": "Messiah (Handel)",
+          "distractors": [
+            {
+              "answer": "Ring of the Nibelung",
+              "source": "similar_difficulty",
+              "factId": "mh_0_wagner_ring_cycle"
+            },
+            {
+              "answer": "Swan Lake",
+              "source": "similar_difficulty",
+              "factId": "mh_0_tchaikovsky_swan_lake"
+            },
+            {
+              "answer": "Moonlight Sonata",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_moonlight_sonata"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_handel_messiah",
+          "masteryLevel": 4,
+          "poolId": "work_names",
+          "renderedQuestion": "What Handel oratorio features the famous 'Hallelujah' chorus?",
+          "correctAnswer": "Messiah (Handel)",
+          "distractors": [
+            {
+              "answer": "Ring of the Nibelung",
+              "source": "similar_difficulty",
+              "factId": "mh_0_wagner_ring_cycle"
+            },
+            {
+              "answer": "Swan Lake",
+              "source": "similar_difficulty",
+              "factId": "mh_0_tchaikovsky_swan_lake"
+            },
+            {
+              "answer": "Moonlight Sonata",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_moonlight_sonata"
+            },
+            {
+              "answer": "Magic Flute",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mozart_magic_flute"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_magic_flute",
+          "masteryLevel": 0,
+          "poolId": "work_names",
+          "renderedQuestion": "What Mozart opera features the Queen of the Night aria?",
+          "correctAnswer": "Magic Flute",
+          "distractors": [
+            {
+              "answer": "Midsummer Night's Dream",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mendelssohn_midsummer"
+            },
+            {
+              "answer": "Porgy and Bess",
+              "source": "similar_difficulty",
+              "factId": "mh_0_gershwin_porgy_bess"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_magic_flute",
+          "masteryLevel": 2,
+          "poolId": "work_names",
+          "renderedQuestion": "What Mozart opera features the Queen of the Night aria?",
+          "correctAnswer": "Magic Flute",
+          "distractors": [
+            {
+              "answer": "Midsummer Night's Dream",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mendelssohn_midsummer"
+            },
+            {
+              "answer": "Porgy and Bess",
+              "source": "similar_difficulty",
+              "factId": "mh_0_gershwin_porgy_bess"
+            },
+            {
+              "answer": "Piano Concerto No. 2",
+              "source": "similar_difficulty",
+              "factId": "mh_0_rachmaninoff_piano_concerto_2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_magic_flute",
+          "masteryLevel": 4,
+          "poolId": "work_names",
+          "renderedQuestion": "What Mozart opera features the Queen of the Night aria?",
+          "correctAnswer": "Magic Flute",
+          "distractors": [
+            {
+              "answer": "Midsummer Night's Dream",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mendelssohn_midsummer"
+            },
+            {
+              "answer": "Porgy and Bess",
+              "source": "similar_difficulty",
+              "factId": "mh_0_gershwin_porgy_bess"
+            },
+            {
+              "answer": "Piano Concerto No. 2",
+              "source": "similar_difficulty",
+              "factId": "mh_0_rachmaninoff_piano_concerto_2"
+            },
+            {
+              "answer": "Aida (opera)",
+              "source": "similar_difficulty",
+              "factId": "mh_0_verdi_aida"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_beethoven_symphony_9",
+          "masteryLevel": 0,
+          "poolId": "work_names",
+          "renderedQuestion": "Which Beethoven symphony features the choral finale 'Ode to Joy'?",
+          "correctAnswer": "Symphony No. 9",
+          "distractors": [
+            {
+              "answer": "Messiah (Handel)",
+              "source": "similar_difficulty",
+              "factId": "mh_0_handel_messiah"
+            },
+            {
+              "answer": "Midsummer Night's Dream",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mendelssohn_midsummer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_beethoven_symphony_9",
+          "masteryLevel": 2,
+          "poolId": "work_names",
+          "renderedQuestion": "Which Beethoven symphony features the choral finale 'Ode to Joy'?",
+          "correctAnswer": "Symphony No. 9",
+          "distractors": [
+            {
+              "answer": "Messiah (Handel)",
+              "source": "similar_difficulty",
+              "factId": "mh_0_handel_messiah"
+            },
+            {
+              "answer": "Midsummer Night's Dream",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mendelssohn_midsummer"
+            },
+            {
+              "answer": "Porgy and Bess",
+              "source": "similar_difficulty",
+              "factId": "mh_0_gershwin_porgy_bess"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_beethoven_symphony_9",
+          "masteryLevel": 4,
+          "poolId": "work_names",
+          "renderedQuestion": "Which Beethoven symphony features the choral finale 'Ode to Joy'?",
+          "correctAnswer": "Symphony No. 9",
+          "distractors": [
+            {
+              "answer": "Messiah (Handel)",
+              "source": "similar_difficulty",
+              "factId": "mh_0_handel_messiah"
+            },
+            {
+              "answer": "Midsummer Night's Dream",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mendelssohn_midsummer"
+            },
+            {
+              "answer": "Porgy and Bess",
+              "source": "similar_difficulty",
+              "factId": "mh_0_gershwin_porgy_bess"
+            },
+            {
+              "answer": "Peter and the Wolf",
+              "source": "similar_difficulty",
+              "factId": "mh_0_prokofiev_peter_wolf"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_bach_cantatas_count",
+          "masteryLevel": 0,
+          "poolId": "description_terms",
+          "renderedQuestion": "Approximately how many cantatas did Bach compose for the Lutheran church?",
+          "correctAnswer": "over 200",
+          "distractors": [
+            {
+              "answer": "Non-orchestral",
+              "source": "similar_difficulty",
+              "factId": "mh_1_saxophone_orchestra"
+            },
+            {
+              "answer": "Plucks the strings",
+              "source": "similar_difficulty",
+              "factId": "mh_1_harpsichord_vs_piano"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 2 options don't match: \"Non-orchestral\", \"Plucks the strings\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Non-orchestral\" has 3 format features different from correct \"over 200\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_bach_cantatas_count",
+          "masteryLevel": 2,
+          "poolId": "description_terms",
+          "renderedQuestion": "Approximately how many cantatas did Bach compose for the Lutheran church?",
+          "correctAnswer": "over 200",
+          "distractors": [
+            {
+              "answer": "Non-orchestral",
+              "source": "similar_difficulty",
+              "factId": "mh_1_saxophone_orchestra"
+            },
+            {
+              "answer": "Plucks the strings",
+              "source": "similar_difficulty",
+              "factId": "mh_1_harpsichord_vs_piano"
+            },
+            {
+              "answer": "Sun Records",
+              "source": "similar_difficulty",
+              "factId": "mh_3_elvis_sun_records"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 3 options don't match: \"Non-orchestral\", \"Plucks the strings\", \"Sun Records\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Non-orchestral\" has 3 format features different from correct \"over 200\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_bach_cantatas_count",
+          "masteryLevel": 4,
+          "poolId": "description_terms",
+          "renderedQuestion": "Approximately how many cantatas did Bach compose for the Lutheran church?",
+          "correctAnswer": "over 200",
+          "distractors": [
+            {
+              "answer": "Non-orchestral",
+              "source": "similar_difficulty",
+              "factId": "mh_1_saxophone_orchestra"
+            },
+            {
+              "answer": "Plucks the strings",
+              "source": "similar_difficulty",
+              "factId": "mh_1_harpsichord_vs_piano"
+            },
+            {
+              "answer": "Sun Records",
+              "source": "similar_difficulty",
+              "factId": "mh_3_elvis_sun_records"
+            },
+            {
+              "answer": "Napster",
+              "source": "similar_difficulty",
+              "factId": "mh_4_napster_1999"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 4 options don't match: \"Non-orchestral\", \"Plucks the strings\", \"Sun Records\", \"Napster\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Non-orchestral\" has 3 format features different from correct \"over 200\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_beethoven_deafness",
+          "masteryLevel": 0,
+          "poolId": "description_terms",
+          "renderedQuestion": "What physical condition did Beethoven suffer from, worsening throughout his career?",
+          "correctAnswer": "Became deaf",
+          "distractors": [
+            {
+              "answer": "Single reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_clarinet_reed"
+            },
+            {
+              "answer": "Polish",
+              "source": "similar_difficulty",
+              "factId": "mh_0_chopin_nationality"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_beethoven_deafness",
+          "masteryLevel": 2,
+          "poolId": "description_terms",
+          "renderedQuestion": "What physical condition did Beethoven suffer from, worsening throughout his career?",
+          "correctAnswer": "Became deaf",
+          "distractors": [
+            {
+              "answer": "Single reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_clarinet_reed"
+            },
+            {
+              "answer": "Polish",
+              "source": "similar_difficulty",
+              "factId": "mh_0_chopin_nationality"
+            },
+            {
+              "answer": "Short and detached",
+              "source": "similar_difficulty",
+              "factId": "mh_1_staccato_meaning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_beethoven_deafness",
+          "masteryLevel": 4,
+          "poolId": "description_terms",
+          "renderedQuestion": "What physical condition did Beethoven suffer from, worsening throughout his career?",
+          "correctAnswer": "Became deaf",
+          "distractors": [
+            {
+              "answer": "Single reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_clarinet_reed"
+            },
+            {
+              "answer": "Polish",
+              "source": "similar_difficulty",
+              "factId": "mh_0_chopin_nationality"
+            },
+            {
+              "answer": "Short and detached",
+              "source": "similar_difficulty",
+              "factId": "mh_1_staccato_meaning"
+            },
+            {
+              "answer": "Slide mechanism",
+              "source": "similar_difficulty",
+              "factId": "mh_1_trombone_slide"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_chopin_nationality",
+          "masteryLevel": 0,
+          "poolId": "description_terms",
+          "renderedQuestion": "What nationality was Romantic composer Frédéric Chopin?",
+          "correctAnswer": "Polish",
+          "distractors": [
+            {
+              "answer": "Became deaf",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_deafness"
+            },
+            {
+              "answer": "Double reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_oboe_double_reed"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_chopin_nationality",
+          "masteryLevel": 2,
+          "poolId": "description_terms",
+          "renderedQuestion": "What nationality was Romantic composer Frédéric Chopin?",
+          "correctAnswer": "Polish",
+          "distractors": [
+            {
+              "answer": "Became deaf",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_deafness"
+            },
+            {
+              "answer": "Double reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_oboe_double_reed"
+            },
+            {
+              "answer": "Slide mechanism",
+              "source": "similar_difficulty",
+              "factId": "mh_1_trombone_slide"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 6 vs avg distractor 12.3 — ratio 0.49×"
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_chopin_nationality",
+          "masteryLevel": 4,
+          "poolId": "description_terms",
+          "renderedQuestion": "What nationality was Romantic composer Frédéric Chopin?",
+          "correctAnswer": "Polish",
+          "distractors": [
+            {
+              "answer": "Became deaf",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_deafness"
+            },
+            {
+              "answer": "Double reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_oboe_double_reed"
+            },
+            {
+              "answer": "Slide mechanism",
+              "source": "similar_difficulty",
+              "factId": "mh_1_trombone_slide"
+            },
+            {
+              "answer": "Single reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_clarinet_reed"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_saxophone_orchestra",
+          "masteryLevel": 0,
+          "poolId": "description_terms",
+          "renderedQuestion": "Why is the saxophone rarely found in a standard orchestra?",
+          "correctAnswer": "Non-orchestral",
+          "distractors": [
+            {
+              "answer": "Spotify",
+              "source": "similar_difficulty",
+              "factId": "mh_4_streaming_revolution"
+            },
+            {
+              "answer": "Single reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_clarinet_reed"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_saxophone_orchestra",
+          "masteryLevel": 2,
+          "poolId": "description_terms",
+          "renderedQuestion": "Why is the saxophone rarely found in a standard orchestra?",
+          "correctAnswer": "Non-orchestral",
+          "distractors": [
+            {
+              "answer": "Spotify",
+              "source": "similar_difficulty",
+              "factId": "mh_4_streaming_revolution"
+            },
+            {
+              "answer": "Single reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_clarinet_reed"
+            },
+            {
+              "answer": "Plucks the strings",
+              "source": "similar_difficulty",
+              "factId": "mh_1_harpsichord_vs_piano"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_saxophone_orchestra",
+          "masteryLevel": 4,
+          "poolId": "description_terms",
+          "renderedQuestion": "Why is the saxophone rarely found in a standard orchestra?",
+          "correctAnswer": "Non-orchestral",
+          "distractors": [
+            {
+              "answer": "Spotify",
+              "source": "similar_difficulty",
+              "factId": "mh_4_streaming_revolution"
+            },
+            {
+              "answer": "Single reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_clarinet_reed"
+            },
+            {
+              "answer": "Plucks the strings",
+              "source": "similar_difficulty",
+              "factId": "mh_1_harpsichord_vs_piano"
+            },
+            {
+              "answer": "over 200",
+              "source": "similar_difficulty",
+              "factId": "mh_0_bach_cantatas_count"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"over 200\" has 3 format features different from correct \"Non-orchestral\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_harpsichord_vs_piano",
+          "masteryLevel": 0,
+          "poolId": "description_terms",
+          "renderedQuestion": "How does a harpsichord produce sound, unlike a piano?",
+          "correctAnswer": "Plucks the strings",
+          "distractors": [
+            {
+              "answer": "Double reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_oboe_double_reed"
+            },
+            {
+              "answer": "Short and detached",
+              "source": "similar_difficulty",
+              "factId": "mh_1_staccato_meaning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_harpsichord_vs_piano",
+          "masteryLevel": 2,
+          "poolId": "description_terms",
+          "renderedQuestion": "How does a harpsichord produce sound, unlike a piano?",
+          "correctAnswer": "Plucks the strings",
+          "distractors": [
+            {
+              "answer": "Double reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_oboe_double_reed"
+            },
+            {
+              "answer": "Short and detached",
+              "source": "similar_difficulty",
+              "factId": "mh_1_staccato_meaning"
+            },
+            {
+              "answer": "Non-orchestral",
+              "source": "similar_difficulty",
+              "factId": "mh_1_saxophone_orchestra"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_harpsichord_vs_piano",
+          "masteryLevel": 4,
+          "poolId": "description_terms",
+          "renderedQuestion": "How does a harpsichord produce sound, unlike a piano?",
+          "correctAnswer": "Plucks the strings",
+          "distractors": [
+            {
+              "answer": "Double reed",
+              "source": "similar_difficulty",
+              "factId": "mh_1_oboe_double_reed"
+            },
+            {
+              "answer": "Short and detached",
+              "source": "similar_difficulty",
+              "factId": "mh_1_staccato_meaning"
+            },
+            {
+              "answer": "Non-orchestral",
+              "source": "similar_difficulty",
+              "factId": "mh_1_saxophone_orchestra"
+            },
+            {
+              "answer": "Slide mechanism",
+              "source": "similar_difficulty",
+              "factId": "mh_1_trombone_slide"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_bach_employer_leipzig",
+          "masteryLevel": 0,
+          "poolId": "place_names",
+          "renderedQuestion": "Which Leipzig church employed Bach as Cantor from 1723 until his death?",
+          "correctAnswer": "St. Thomas Church",
+          "distractors": [
+            {
+              "answer": "England",
+              "source": "similar_difficulty",
+              "factId": "mh_0_handel_nationality"
+            },
+            {
+              "answer": "Bayreuth",
+              "source": "similar_difficulty",
+              "factId": "mh_0_wagner_bayreuth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 17 vs avg distractor 7.5 — ratio 2.27×"
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_bach_employer_leipzig",
+          "masteryLevel": 2,
+          "poolId": "place_names",
+          "renderedQuestion": "Which Leipzig church employed Bach as Cantor from 1723 until his death?",
+          "correctAnswer": "St. Thomas Church",
+          "distractors": [
+            {
+              "answer": "England",
+              "source": "similar_difficulty",
+              "factId": "mh_0_handel_nationality"
+            },
+            {
+              "answer": "Bayreuth",
+              "source": "similar_difficulty",
+              "factId": "mh_0_wagner_bayreuth"
+            },
+            {
+              "answer": "Cotton Club",
+              "source": "similar_difficulty",
+              "factId": "mh_2_ellington_cotton_club"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_bach_employer_leipzig",
+          "masteryLevel": 4,
+          "poolId": "place_names",
+          "renderedQuestion": "Which Leipzig church employed Bach as Cantor from 1723 until his death?",
+          "correctAnswer": "St. Thomas Church",
+          "distractors": [
+            {
+              "answer": "England",
+              "source": "similar_difficulty",
+              "factId": "mh_0_handel_nationality"
+            },
+            {
+              "answer": "Bayreuth",
+              "source": "similar_difficulty",
+              "factId": "mh_0_wagner_bayreuth"
+            },
+            {
+              "answer": "Cotton Club",
+              "source": "similar_difficulty",
+              "factId": "mh_2_ellington_cotton_club"
+            },
+            {
+              "answer": "Mississippi Delta",
+              "source": "similar_difficulty",
+              "factId": "mh_2_blues_origins"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_handel_nationality",
+          "masteryLevel": 0,
+          "poolId": "place_names",
+          "renderedQuestion": "Handel was born in Germany but spent most of his career in which country?",
+          "correctAnswer": "England",
+          "distractors": [
+            {
+              "answer": "Mississippi Delta",
+              "source": "similar_difficulty",
+              "factId": "mh_2_blues_origins"
+            },
+            {
+              "answer": "Bonn, Germany",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_birth_city"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 7 vs avg distractor 15.0 — ratio 0.47×"
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_handel_nationality",
+          "masteryLevel": 2,
+          "poolId": "place_names",
+          "renderedQuestion": "Handel was born in Germany but spent most of his career in which country?",
+          "correctAnswer": "England",
+          "distractors": [
+            {
+              "answer": "Mississippi Delta",
+              "source": "similar_difficulty",
+              "factId": "mh_2_blues_origins"
+            },
+            {
+              "answer": "Bonn, Germany",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_birth_city"
+            },
+            {
+              "answer": "St. Thomas Church",
+              "source": "similar_difficulty",
+              "factId": "mh_0_bach_employer_leipzig"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 7 vs avg distractor 15.7 — ratio 0.45×"
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_handel_nationality",
+          "masteryLevel": 4,
+          "poolId": "place_names",
+          "renderedQuestion": "Handel was born in Germany but spent most of his career in which country?",
+          "correctAnswer": "England",
+          "distractors": [
+            {
+              "answer": "Mississippi Delta",
+              "source": "similar_difficulty",
+              "factId": "mh_2_blues_origins"
+            },
+            {
+              "answer": "Bonn, Germany",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_birth_city"
+            },
+            {
+              "answer": "St. Thomas Church",
+              "source": "similar_difficulty",
+              "factId": "mh_0_bach_employer_leipzig"
+            },
+            {
+              "answer": "Salzburg",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mozart_birth_city"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_birth_city",
+          "masteryLevel": 0,
+          "poolId": "place_names",
+          "renderedQuestion": "In which Austrian city was Mozart born in 1756?",
+          "correctAnswer": "Salzburg",
+          "distractors": [
+            {
+              "answer": "England",
+              "source": "similar_difficulty",
+              "factId": "mh_0_handel_nationality"
+            },
+            {
+              "answer": "Bonn, Germany",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_birth_city"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_birth_city",
+          "masteryLevel": 2,
+          "poolId": "place_names",
+          "renderedQuestion": "In which Austrian city was Mozart born in 1756?",
+          "correctAnswer": "Salzburg",
+          "distractors": [
+            {
+              "answer": "England",
+              "source": "similar_difficulty",
+              "factId": "mh_0_handel_nationality"
+            },
+            {
+              "answer": "Bonn, Germany",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_birth_city"
+            },
+            {
+              "answer": "Cotton Club",
+              "source": "similar_difficulty",
+              "factId": "mh_2_ellington_cotton_club"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_birth_city",
+          "masteryLevel": 4,
+          "poolId": "place_names",
+          "renderedQuestion": "In which Austrian city was Mozart born in 1756?",
+          "correctAnswer": "Salzburg",
+          "distractors": [
+            {
+              "answer": "England",
+              "source": "similar_difficulty",
+              "factId": "mh_0_handel_nationality"
+            },
+            {
+              "answer": "Bonn, Germany",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_birth_city"
+            },
+            {
+              "answer": "Cotton Club",
+              "source": "similar_difficulty",
+              "factId": "mh_2_ellington_cotton_club"
+            },
+            {
+              "answer": "New Orleans",
+              "source": "similar_difficulty",
+              "factId": "mh_2_jazz_new_orleans"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_beethoven_birth_city",
+          "masteryLevel": 0,
+          "poolId": "place_names",
+          "renderedQuestion": "In which German city was Beethoven born in 1770?",
+          "correctAnswer": "Bonn, Germany",
+          "distractors": [
+            {
+              "answer": "New Orleans",
+              "source": "similar_difficulty",
+              "factId": "mh_2_jazz_new_orleans"
+            },
+            {
+              "answer": "Salzburg",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mozart_birth_city"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_beethoven_birth_city",
+          "masteryLevel": 2,
+          "poolId": "place_names",
+          "renderedQuestion": "In which German city was Beethoven born in 1770?",
+          "correctAnswer": "Bonn, Germany",
+          "distractors": [
+            {
+              "answer": "New Orleans",
+              "source": "similar_difficulty",
+              "factId": "mh_2_jazz_new_orleans"
+            },
+            {
+              "answer": "Salzburg",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mozart_birth_city"
+            },
+            {
+              "answer": "Mississippi Delta",
+              "source": "similar_difficulty",
+              "factId": "mh_2_blues_origins"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_beethoven_birth_city",
+          "masteryLevel": 4,
+          "poolId": "place_names",
+          "renderedQuestion": "In which German city was Beethoven born in 1770?",
+          "correctAnswer": "Bonn, Germany",
+          "distractors": [
+            {
+              "answer": "New Orleans",
+              "source": "similar_difficulty",
+              "factId": "mh_2_jazz_new_orleans"
+            },
+            {
+              "answer": "Salzburg",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mozart_birth_city"
+            },
+            {
+              "answer": "Mississippi Delta",
+              "source": "similar_difficulty",
+              "factId": "mh_2_blues_origins"
+            },
+            {
+              "answer": "Cotton Club",
+              "source": "similar_difficulty",
+              "factId": "mh_2_ellington_cotton_club"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_wagner_bayreuth",
+          "masteryLevel": 0,
+          "poolId": "place_names",
+          "renderedQuestion": "Wagner built a dedicated opera house in which German city to stage his epic works?",
+          "correctAnswer": "Bayreuth",
+          "distractors": [
+            {
+              "answer": "Mississippi Delta",
+              "source": "similar_difficulty",
+              "factId": "mh_2_blues_origins"
+            },
+            {
+              "answer": "England",
+              "source": "similar_difficulty",
+              "factId": "mh_0_handel_nationality"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_wagner_bayreuth",
+          "masteryLevel": 2,
+          "poolId": "place_names",
+          "renderedQuestion": "Wagner built a dedicated opera house in which German city to stage his epic works?",
+          "correctAnswer": "Bayreuth",
+          "distractors": [
+            {
+              "answer": "Mississippi Delta",
+              "source": "similar_difficulty",
+              "factId": "mh_2_blues_origins"
+            },
+            {
+              "answer": "England",
+              "source": "similar_difficulty",
+              "factId": "mh_0_handel_nationality"
+            },
+            {
+              "answer": "Bonn, Germany",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_birth_city"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_wagner_bayreuth",
+          "masteryLevel": 4,
+          "poolId": "place_names",
+          "renderedQuestion": "Wagner built a dedicated opera house in which German city to stage his epic works?",
+          "correctAnswer": "Bayreuth",
+          "distractors": [
+            {
+              "answer": "Mississippi Delta",
+              "source": "similar_difficulty",
+              "factId": "mh_2_blues_origins"
+            },
+            {
+              "answer": "England",
+              "source": "similar_difficulty",
+              "factId": "mh_0_handel_nationality"
+            },
+            {
+              "answer": "Bonn, Germany",
+              "source": "similar_difficulty",
+              "factId": "mh_0_beethoven_birth_city"
+            },
+            {
+              "answer": "Cotton Club",
+              "source": "similar_difficulty",
+              "factId": "mh_2_ellington_cotton_club"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_vivaldi_red_priest",
+          "masteryLevel": 0,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What colorful nickname was given to the red-haired Vivaldi?",
+          "correctAnswer": "The Red Priest",
+          "distractors": [
+            {
+              "answer": "Satchmo",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_nickname"
+            },
+            {
+              "answer": "Lady Day",
+              "source": "similar_difficulty",
+              "factId": "mh_2_billie_holiday_nickname"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_vivaldi_red_priest",
+          "masteryLevel": 2,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What colorful nickname was given to the red-haired Vivaldi?",
+          "correctAnswer": "The Red Priest",
+          "distractors": [
+            {
+              "answer": "Satchmo",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_nickname"
+            },
+            {
+              "answer": "Lady Day",
+              "source": "similar_difficulty",
+              "factId": "mh_2_billie_holiday_nickname"
+            },
+            {
+              "answer": "Papa Haydn",
+              "source": "similar_difficulty",
+              "factId": "mh_0_haydn_papa_nickname"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_vivaldi_red_priest",
+          "masteryLevel": 4,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What colorful nickname was given to the red-haired Vivaldi?",
+          "correctAnswer": "The Red Priest",
+          "distractors": [
+            {
+              "answer": "Satchmo",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_nickname"
+            },
+            {
+              "answer": "Lady Day",
+              "source": "similar_difficulty",
+              "factId": "mh_2_billie_holiday_nickname"
+            },
+            {
+              "answer": "Papa Haydn",
+              "source": "similar_difficulty",
+              "factId": "mh_0_haydn_papa_nickname"
+            },
+            {
+              "answer": "Ziggy Stardust",
+              "source": "similar_difficulty",
+              "factId": "mh_3_bowie_ziggy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_haydn_papa_nickname",
+          "masteryLevel": 0,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What affectionate nickname did musicians give to Joseph Haydn?",
+          "correctAnswer": "Papa Haydn",
+          "distractors": [
+            {
+              "answer": "Satchmo",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_nickname"
+            },
+            {
+              "answer": "Ziggy Stardust",
+              "source": "similar_difficulty",
+              "factId": "mh_3_bowie_ziggy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_haydn_papa_nickname",
+          "masteryLevel": 2,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What affectionate nickname did musicians give to Joseph Haydn?",
+          "correctAnswer": "Papa Haydn",
+          "distractors": [
+            {
+              "answer": "Satchmo",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_nickname"
+            },
+            {
+              "answer": "Ziggy Stardust",
+              "source": "similar_difficulty",
+              "factId": "mh_3_bowie_ziggy"
+            },
+            {
+              "answer": "King of Pop",
+              "source": "similar_difficulty",
+              "factId": "mh_4_mj_king_of_pop"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_haydn_papa_nickname",
+          "masteryLevel": 4,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What affectionate nickname did musicians give to Joseph Haydn?",
+          "correctAnswer": "Papa Haydn",
+          "distractors": [
+            {
+              "answer": "Satchmo",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_nickname"
+            },
+            {
+              "answer": "Ziggy Stardust",
+              "source": "similar_difficulty",
+              "factId": "mh_3_bowie_ziggy"
+            },
+            {
+              "answer": "King of Pop",
+              "source": "similar_difficulty",
+              "factId": "mh_4_mj_king_of_pop"
+            },
+            {
+              "answer": "The Red Priest",
+              "source": "similar_difficulty",
+              "factId": "mh_0_vivaldi_red_priest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_armstrong_nickname",
+          "masteryLevel": 0,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What was Louis Armstrong's most famous nickname?",
+          "correctAnswer": "Satchmo",
+          "distractors": [
+            {
+              "answer": "Papa Haydn",
+              "source": "similar_difficulty",
+              "factId": "mh_0_haydn_papa_nickname"
+            },
+            {
+              "answer": "King of Pop",
+              "source": "similar_difficulty",
+              "factId": "mh_4_mj_king_of_pop"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_armstrong_nickname",
+          "masteryLevel": 2,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What was Louis Armstrong's most famous nickname?",
+          "correctAnswer": "Satchmo",
+          "distractors": [
+            {
+              "answer": "Papa Haydn",
+              "source": "similar_difficulty",
+              "factId": "mh_0_haydn_papa_nickname"
+            },
+            {
+              "answer": "King of Pop",
+              "source": "similar_difficulty",
+              "factId": "mh_4_mj_king_of_pop"
+            },
+            {
+              "answer": "Lady Day",
+              "source": "similar_difficulty",
+              "factId": "mh_2_billie_holiday_nickname"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_armstrong_nickname",
+          "masteryLevel": 4,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What was Louis Armstrong's most famous nickname?",
+          "correctAnswer": "Satchmo",
+          "distractors": [
+            {
+              "answer": "Papa Haydn",
+              "source": "similar_difficulty",
+              "factId": "mh_0_haydn_papa_nickname"
+            },
+            {
+              "answer": "King of Pop",
+              "source": "similar_difficulty",
+              "factId": "mh_4_mj_king_of_pop"
+            },
+            {
+              "answer": "Lady Day",
+              "source": "similar_difficulty",
+              "factId": "mh_2_billie_holiday_nickname"
+            },
+            {
+              "answer": "The Red Priest",
+              "source": "similar_difficulty",
+              "factId": "mh_0_vivaldi_red_priest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_billie_holiday_nickname",
+          "masteryLevel": 0,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What was Billie Holiday's famous nickname, given to her by Lester Young?",
+          "correctAnswer": "Lady Day",
+          "distractors": [
+            {
+              "answer": "Satchmo",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_nickname"
+            },
+            {
+              "answer": "Papa Haydn",
+              "source": "similar_difficulty",
+              "factId": "mh_0_haydn_papa_nickname"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_billie_holiday_nickname",
+          "masteryLevel": 2,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What was Billie Holiday's famous nickname, given to her by Lester Young?",
+          "correctAnswer": "Lady Day",
+          "distractors": [
+            {
+              "answer": "Satchmo",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_nickname"
+            },
+            {
+              "answer": "Papa Haydn",
+              "source": "similar_difficulty",
+              "factId": "mh_0_haydn_papa_nickname"
+            },
+            {
+              "answer": "The Red Priest",
+              "source": "similar_difficulty",
+              "factId": "mh_0_vivaldi_red_priest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_billie_holiday_nickname",
+          "masteryLevel": 4,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What was Billie Holiday's famous nickname, given to her by Lester Young?",
+          "correctAnswer": "Lady Day",
+          "distractors": [
+            {
+              "answer": "Satchmo",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_nickname"
+            },
+            {
+              "answer": "Papa Haydn",
+              "source": "similar_difficulty",
+              "factId": "mh_0_haydn_papa_nickname"
+            },
+            {
+              "answer": "The Red Priest",
+              "source": "similar_difficulty",
+              "factId": "mh_0_vivaldi_red_priest"
+            },
+            {
+              "answer": "Ziggy Stardust",
+              "source": "similar_difficulty",
+              "factId": "mh_3_bowie_ziggy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_3_bowie_ziggy",
+          "masteryLevel": 0,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What was the name of David Bowie's androgynous alien rock star alter ego introduced in 1972?",
+          "correctAnswer": "Ziggy Stardust",
+          "distractors": [
+            {
+              "answer": "Papa Haydn",
+              "source": "similar_difficulty",
+              "factId": "mh_0_haydn_papa_nickname"
+            },
+            {
+              "answer": "Satchmo",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_nickname"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_3_bowie_ziggy",
+          "masteryLevel": 2,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What was the name of David Bowie's androgynous alien rock star alter ego introduced in 1972?",
+          "correctAnswer": "Ziggy Stardust",
+          "distractors": [
+            {
+              "answer": "Papa Haydn",
+              "source": "similar_difficulty",
+              "factId": "mh_0_haydn_papa_nickname"
+            },
+            {
+              "answer": "Satchmo",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_nickname"
+            },
+            {
+              "answer": "The Red Priest",
+              "source": "similar_difficulty",
+              "factId": "mh_0_vivaldi_red_priest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_3_bowie_ziggy",
+          "masteryLevel": 4,
+          "poolId": "nickname_terms",
+          "renderedQuestion": "What was the name of David Bowie's androgynous alien rock star alter ego introduced in 1972?",
+          "correctAnswer": "Ziggy Stardust",
+          "distractors": [
+            {
+              "answer": "Papa Haydn",
+              "source": "similar_difficulty",
+              "factId": "mh_0_haydn_papa_nickname"
+            },
+            {
+              "answer": "Satchmo",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_nickname"
+            },
+            {
+              "answer": "The Red Priest",
+              "source": "similar_difficulty",
+              "factId": "mh_0_vivaldi_red_priest"
+            },
+            {
+              "answer": "Lady Day",
+              "source": "similar_difficulty",
+              "factId": "mh_2_billie_holiday_nickname"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_chopin_instrument",
+          "masteryLevel": 0,
+          "poolId": "instrument_names",
+          "renderedQuestion": "Chopin composed almost exclusively for which instrument?",
+          "correctAnswer": "piano",
+          "distractors": [
+            {
+              "answer": "Organ",
+              "source": "similar_difficulty",
+              "factId": "mh_1_organ_largest"
+            },
+            {
+              "answer": "Double bass",
+              "source": "similar_difficulty",
+              "factId": "mh_1_double_bass_largest_string"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Organ\" has 2 format features different from correct \"piano\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_chopin_instrument",
+          "masteryLevel": 2,
+          "poolId": "instrument_names",
+          "renderedQuestion": "Chopin composed almost exclusively for which instrument?",
+          "correctAnswer": "piano",
+          "distractors": [
+            {
+              "answer": "Organ",
+              "source": "similar_difficulty",
+              "factId": "mh_1_organ_largest"
+            },
+            {
+              "answer": "Double bass",
+              "source": "similar_difficulty",
+              "factId": "mh_1_double_bass_largest_string"
+            },
+            {
+              "answer": "Trumpet",
+              "source": "similar_difficulty",
+              "factId": "mh_1_trumpet_brass"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Organ\" has 2 format features different from correct \"piano\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_chopin_instrument",
+          "masteryLevel": 4,
+          "poolId": "instrument_names",
+          "renderedQuestion": "Chopin composed almost exclusively for which instrument?",
+          "correctAnswer": "piano",
+          "distractors": [
+            {
+              "answer": "Organ",
+              "source": "similar_difficulty",
+              "factId": "mh_1_organ_largest"
+            },
+            {
+              "answer": "Double bass",
+              "source": "similar_difficulty",
+              "factId": "mh_1_double_bass_largest_string"
+            },
+            {
+              "answer": "Trumpet",
+              "source": "similar_difficulty",
+              "factId": "mh_1_trumpet_brass"
+            },
+            {
+              "answer": "Tuba",
+              "source": "similar_difficulty",
+              "factId": "mh_1_tuba_lowest_brass"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Organ\" has 2 format features different from correct \"piano\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_guitar_popular",
+          "masteryLevel": 0,
+          "poolId": "instrument_names",
+          "renderedQuestion": "What is the world's most widely played instrument?",
+          "correctAnswer": "Guitar",
+          "distractors": [
+            {
+              "answer": "Double bass",
+              "source": "similar_difficulty",
+              "factId": "mh_1_double_bass_largest_string"
+            },
+            {
+              "answer": "piano",
+              "source": "similar_difficulty",
+              "factId": "mh_0_chopin_instrument"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"piano\" has 2 format features different from correct \"Guitar\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_guitar_popular",
+          "masteryLevel": 2,
+          "poolId": "instrument_names",
+          "renderedQuestion": "What is the world's most widely played instrument?",
+          "correctAnswer": "Guitar",
+          "distractors": [
+            {
+              "answer": "Double bass",
+              "source": "similar_difficulty",
+              "factId": "mh_1_double_bass_largest_string"
+            },
+            {
+              "answer": "piano",
+              "source": "similar_difficulty",
+              "factId": "mh_0_chopin_instrument"
+            },
+            {
+              "answer": "Drums",
+              "source": "similar_difficulty",
+              "factId": "mh_1_drums_oldest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"piano\" has 2 format features different from correct \"Guitar\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_guitar_popular",
+          "masteryLevel": 4,
+          "poolId": "instrument_names",
+          "renderedQuestion": "What is the world's most widely played instrument?",
+          "correctAnswer": "Guitar",
+          "distractors": [
+            {
+              "answer": "Double bass",
+              "source": "similar_difficulty",
+              "factId": "mh_1_double_bass_largest_string"
+            },
+            {
+              "answer": "piano",
+              "source": "similar_difficulty",
+              "factId": "mh_0_chopin_instrument"
+            },
+            {
+              "answer": "Drums",
+              "source": "similar_difficulty",
+              "factId": "mh_1_drums_oldest"
+            },
+            {
+              "answer": "Cello",
+              "source": "similar_difficulty",
+              "factId": "mh_1_cello_family"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"piano\" has 2 format features different from correct \"Guitar\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_trumpet_brass",
+          "masteryLevel": 0,
+          "poolId": "instrument_names",
+          "renderedQuestion": "Which brass instrument plays the highest notes in an orchestra?",
+          "correctAnswer": "Trumpet",
+          "distractors": [
+            {
+              "answer": "Oboe",
+              "source": "similar_difficulty",
+              "factId": "mh_1_oboe_tunes_orchestra"
+            },
+            {
+              "answer": "Cello",
+              "source": "similar_difficulty",
+              "factId": "mh_1_cello_family"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_trumpet_brass",
+          "masteryLevel": 2,
+          "poolId": "instrument_names",
+          "renderedQuestion": "Which brass instrument plays the highest notes in an orchestra?",
+          "correctAnswer": "Trumpet",
+          "distractors": [
+            {
+              "answer": "Oboe",
+              "source": "similar_difficulty",
+              "factId": "mh_1_oboe_tunes_orchestra"
+            },
+            {
+              "answer": "Cello",
+              "source": "similar_difficulty",
+              "factId": "mh_1_cello_family"
+            },
+            {
+              "answer": "Tuba",
+              "source": "similar_difficulty",
+              "factId": "mh_1_tuba_lowest_brass"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_trumpet_brass",
+          "masteryLevel": 4,
+          "poolId": "instrument_names",
+          "renderedQuestion": "Which brass instrument plays the highest notes in an orchestra?",
+          "correctAnswer": "Trumpet",
+          "distractors": [
+            {
+              "answer": "Oboe",
+              "source": "similar_difficulty",
+              "factId": "mh_1_oboe_tunes_orchestra"
+            },
+            {
+              "answer": "Cello",
+              "source": "similar_difficulty",
+              "factId": "mh_1_cello_family"
+            },
+            {
+              "answer": "Tuba",
+              "source": "similar_difficulty",
+              "factId": "mh_1_tuba_lowest_brass"
+            },
+            {
+              "answer": "Drums",
+              "source": "similar_difficulty",
+              "factId": "mh_1_drums_oldest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_organ_largest",
+          "masteryLevel": 0,
+          "poolId": "instrument_names",
+          "renderedQuestion": "What is generally considered the largest musical instrument?",
+          "correctAnswer": "Organ",
+          "distractors": [
+            {
+              "answer": "piano",
+              "source": "similar_difficulty",
+              "factId": "mh_0_chopin_instrument"
+            },
+            {
+              "answer": "Cello",
+              "source": "similar_difficulty",
+              "factId": "mh_1_cello_family"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"piano\" has 2 format features different from correct \"Organ\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_organ_largest",
+          "masteryLevel": 2,
+          "poolId": "instrument_names",
+          "renderedQuestion": "What is generally considered the largest musical instrument?",
+          "correctAnswer": "Organ",
+          "distractors": [
+            {
+              "answer": "piano",
+              "source": "similar_difficulty",
+              "factId": "mh_0_chopin_instrument"
+            },
+            {
+              "answer": "Cello",
+              "source": "similar_difficulty",
+              "factId": "mh_1_cello_family"
+            },
+            {
+              "answer": "Drums",
+              "source": "similar_difficulty",
+              "factId": "mh_1_drums_oldest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"piano\" has 2 format features different from correct \"Organ\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_organ_largest",
+          "masteryLevel": 4,
+          "poolId": "instrument_names",
+          "renderedQuestion": "What is generally considered the largest musical instrument?",
+          "correctAnswer": "Organ",
+          "distractors": [
+            {
+              "answer": "piano",
+              "source": "similar_difficulty",
+              "factId": "mh_0_chopin_instrument"
+            },
+            {
+              "answer": "Cello",
+              "source": "similar_difficulty",
+              "factId": "mh_1_cello_family"
+            },
+            {
+              "answer": "Drums",
+              "source": "similar_difficulty",
+              "factId": "mh_1_drums_oldest"
+            },
+            {
+              "answer": "Guitar",
+              "source": "similar_difficulty",
+              "factId": "mh_1_guitar_popular"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"piano\" has 2 format features different from correct \"Organ\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_cello_family",
+          "masteryLevel": 0,
+          "poolId": "instrument_names",
+          "renderedQuestion": "Which string instrument is larger than a viola but smaller than a double bass?",
+          "correctAnswer": "Cello",
+          "distractors": [
+            {
+              "answer": "Tuba",
+              "source": "similar_difficulty",
+              "factId": "mh_1_tuba_lowest_brass"
+            },
+            {
+              "answer": "Organ",
+              "source": "similar_difficulty",
+              "factId": "mh_1_organ_largest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_cello_family",
+          "masteryLevel": 2,
+          "poolId": "instrument_names",
+          "renderedQuestion": "Which string instrument is larger than a viola but smaller than a double bass?",
+          "correctAnswer": "Cello",
+          "distractors": [
+            {
+              "answer": "Tuba",
+              "source": "similar_difficulty",
+              "factId": "mh_1_tuba_lowest_brass"
+            },
+            {
+              "answer": "Organ",
+              "source": "similar_difficulty",
+              "factId": "mh_1_organ_largest"
+            },
+            {
+              "answer": "Oboe",
+              "source": "similar_difficulty",
+              "factId": "mh_1_oboe_tunes_orchestra"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_cello_family",
+          "masteryLevel": 4,
+          "poolId": "instrument_names",
+          "renderedQuestion": "Which string instrument is larger than a viola but smaller than a double bass?",
+          "correctAnswer": "Cello",
+          "distractors": [
+            {
+              "answer": "Tuba",
+              "source": "similar_difficulty",
+              "factId": "mh_1_tuba_lowest_brass"
+            },
+            {
+              "answer": "Organ",
+              "source": "similar_difficulty",
+              "factId": "mh_1_organ_largest"
+            },
+            {
+              "answer": "Oboe",
+              "source": "similar_difficulty",
+              "factId": "mh_1_oboe_tunes_orchestra"
+            },
+            {
+              "answer": "Alto sax",
+              "source": "similar_difficulty",
+              "factId": "mh_2_charlie_parker_instrument"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_liszt_piano_virtuoso",
+          "masteryLevel": 0,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Which Romantic composer was famous for piano virtuosity and 'Lisztomania' fan frenzy?",
+          "correctAnswer": "Franz Liszt",
+          "distractors": [
+            {
+              "answer": "Chuck Berry",
+              "source": "similar_difficulty",
+              "factId": "mh_3_chuck_berry_guitar"
+            },
+            {
+              "answer": "Kraftwerk",
+              "source": "similar_difficulty",
+              "factId": "mh_4_kraftwerk_electronic_pioneers"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_liszt_piano_virtuoso",
+          "masteryLevel": 2,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Which Romantic composer was famous for piano virtuosity and 'Lisztomania' fan frenzy?",
+          "correctAnswer": "Franz Liszt",
+          "distractors": [
+            {
+              "answer": "Chuck Berry",
+              "source": "similar_difficulty",
+              "factId": "mh_3_chuck_berry_guitar"
+            },
+            {
+              "answer": "Kraftwerk",
+              "source": "similar_difficulty",
+              "factId": "mh_4_kraftwerk_electronic_pioneers"
+            },
+            {
+              "answer": "Jimi Hendrix",
+              "source": "similar_difficulty",
+              "factId": "mh_3_hendrix_greatest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_liszt_piano_virtuoso",
+          "masteryLevel": 4,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Which Romantic composer was famous for piano virtuosity and 'Lisztomania' fan frenzy?",
+          "correctAnswer": "Franz Liszt",
+          "distractors": [
+            {
+              "answer": "Chuck Berry",
+              "source": "similar_difficulty",
+              "factId": "mh_3_chuck_berry_guitar"
+            },
+            {
+              "answer": "Kraftwerk",
+              "source": "similar_difficulty",
+              "factId": "mh_4_kraftwerk_electronic_pioneers"
+            },
+            {
+              "answer": "Jimi Hendrix",
+              "source": "similar_difficulty",
+              "factId": "mh_3_hendrix_greatest"
+            },
+            {
+              "answer": "B.B. King",
+              "source": "similar_difficulty",
+              "factId": "mh_2_bb_king_lucille"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_child_prodigy",
+          "masteryLevel": 0,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Which Classical composer performed for European royalty as a child prodigy at age five?",
+          "correctAnswer": "Mozart",
+          "distractors": [
+            {
+              "answer": "Muddy Waters",
+              "source": "similar_difficulty",
+              "factId": "mh_2_muddy_waters_chicago"
+            },
+            {
+              "answer": "Prince",
+              "source": "similar_difficulty",
+              "factId": "mh_4_prince_multi_instrumentalist"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_child_prodigy",
+          "masteryLevel": 2,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Which Classical composer performed for European royalty as a child prodigy at age five?",
+          "correctAnswer": "Mozart",
+          "distractors": [
+            {
+              "answer": "Muddy Waters",
+              "source": "similar_difficulty",
+              "factId": "mh_2_muddy_waters_chicago"
+            },
+            {
+              "answer": "Prince",
+              "source": "similar_difficulty",
+              "factId": "mh_4_prince_multi_instrumentalist"
+            },
+            {
+              "answer": "Chuck Berry",
+              "source": "similar_difficulty",
+              "factId": "mh_3_chuck_berry_guitar"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_mozart_child_prodigy",
+          "masteryLevel": 4,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Which Classical composer performed for European royalty as a child prodigy at age five?",
+          "correctAnswer": "Mozart",
+          "distractors": [
+            {
+              "answer": "Muddy Waters",
+              "source": "similar_difficulty",
+              "factId": "mh_2_muddy_waters_chicago"
+            },
+            {
+              "answer": "Prince",
+              "source": "similar_difficulty",
+              "factId": "mh_4_prince_multi_instrumentalist"
+            },
+            {
+              "answer": "Chuck Berry",
+              "source": "similar_difficulty",
+              "factId": "mh_3_chuck_berry_guitar"
+            },
+            {
+              "answer": "Nirvana",
+              "source": "similar_difficulty",
+              "factId": "mh_3_nirvana_cobain"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_saxophone_inventor",
+          "masteryLevel": 0,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Who invented the saxophone in 1846?",
+          "correctAnswer": "Adolphe Sax",
+          "distractors": [
+            {
+              "answer": "Nirvana",
+              "source": "similar_difficulty",
+              "factId": "mh_3_nirvana_cobain"
+            },
+            {
+              "answer": "Mozart",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mozart_child_prodigy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_saxophone_inventor",
+          "masteryLevel": 2,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Who invented the saxophone in 1846?",
+          "correctAnswer": "Adolphe Sax",
+          "distractors": [
+            {
+              "answer": "Nirvana",
+              "source": "similar_difficulty",
+              "factId": "mh_3_nirvana_cobain"
+            },
+            {
+              "answer": "Mozart",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mozart_child_prodigy"
+            },
+            {
+              "answer": "Bessie Smith",
+              "source": "similar_difficulty",
+              "factId": "mh_2_bessie_smith"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_saxophone_inventor",
+          "masteryLevel": 4,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Who invented the saxophone in 1846?",
+          "correctAnswer": "Adolphe Sax",
+          "distractors": [
+            {
+              "answer": "Nirvana",
+              "source": "similar_difficulty",
+              "factId": "mh_3_nirvana_cobain"
+            },
+            {
+              "answer": "Mozart",
+              "source": "similar_difficulty",
+              "factId": "mh_0_mozart_child_prodigy"
+            },
+            {
+              "answer": "Bessie Smith",
+              "source": "similar_difficulty",
+              "factId": "mh_2_bessie_smith"
+            },
+            {
+              "answer": "David Bowie",
+              "source": "similar_difficulty",
+              "factId": "mh_3_bowie_changes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_miles_davis_cool_jazz",
+          "masteryLevel": 0,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Who led the 'Birth of the Cool' sessions that defined cool jazz?",
+          "correctAnswer": "Miles Davis",
+          "distractors": [
+            {
+              "answer": "Pink Floyd",
+              "source": "similar_difficulty",
+              "factId": "mh_3_pink_floyd_wall"
+            },
+            {
+              "answer": "DJ Kool Herc",
+              "source": "similar_difficulty",
+              "factId": "mh_4_hiphop_birth_1973"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_miles_davis_cool_jazz",
+          "masteryLevel": 2,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Who led the 'Birth of the Cool' sessions that defined cool jazz?",
+          "correctAnswer": "Miles Davis",
+          "distractors": [
+            {
+              "answer": "Pink Floyd",
+              "source": "similar_difficulty",
+              "factId": "mh_3_pink_floyd_wall"
+            },
+            {
+              "answer": "DJ Kool Herc",
+              "source": "similar_difficulty",
+              "factId": "mh_4_hiphop_birth_1973"
+            },
+            {
+              "answer": "Prince",
+              "source": "similar_difficulty",
+              "factId": "mh_4_prince_multi_instrumentalist"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_miles_davis_cool_jazz",
+          "masteryLevel": 4,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Who led the 'Birth of the Cool' sessions that defined cool jazz?",
+          "correctAnswer": "Miles Davis",
+          "distractors": [
+            {
+              "answer": "Pink Floyd",
+              "source": "similar_difficulty",
+              "factId": "mh_3_pink_floyd_wall"
+            },
+            {
+              "answer": "DJ Kool Herc",
+              "source": "similar_difficulty",
+              "factId": "mh_4_hiphop_birth_1973"
+            },
+            {
+              "answer": "Prince",
+              "source": "similar_difficulty",
+              "factId": "mh_4_prince_multi_instrumentalist"
+            },
+            {
+              "answer": "Bessie Smith",
+              "source": "similar_difficulty",
+              "factId": "mh_2_bessie_smith"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_miles_davis_reinvention",
+          "masteryLevel": 0,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Which jazz musician reinvented his style across bebop, cool jazz, modal jazz, and fusion?",
+          "correctAnswer": "Miles Davis",
+          "distractors": [
+            {
+              "answer": "Chuck Berry",
+              "source": "similar_difficulty",
+              "factId": "mh_3_chuck_berry_guitar"
+            },
+            {
+              "answer": "Run-DMC",
+              "source": "similar_difficulty",
+              "factId": "mh_4_run_dmc_first_hiphop_mtv"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_miles_davis_reinvention",
+          "masteryLevel": 2,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Which jazz musician reinvented his style across bebop, cool jazz, modal jazz, and fusion?",
+          "correctAnswer": "Miles Davis",
+          "distractors": [
+            {
+              "answer": "Chuck Berry",
+              "source": "similar_difficulty",
+              "factId": "mh_3_chuck_berry_guitar"
+            },
+            {
+              "answer": "Run-DMC",
+              "source": "similar_difficulty",
+              "factId": "mh_4_run_dmc_first_hiphop_mtv"
+            },
+            {
+              "answer": "Muddy Waters",
+              "source": "similar_difficulty",
+              "factId": "mh_2_muddy_waters_chicago"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_miles_davis_reinvention",
+          "masteryLevel": 4,
+          "poolId": "artist_names_short",
+          "renderedQuestion": "Which jazz musician reinvented his style across bebop, cool jazz, modal jazz, and fusion?",
+          "correctAnswer": "Miles Davis",
+          "distractors": [
+            {
+              "answer": "Chuck Berry",
+              "source": "similar_difficulty",
+              "factId": "mh_3_chuck_berry_guitar"
+            },
+            {
+              "answer": "Run-DMC",
+              "source": "similar_difficulty",
+              "factId": "mh_4_run_dmc_first_hiphop_mtv"
+            },
+            {
+              "answer": "Muddy Waters",
+              "source": "similar_difficulty",
+              "factId": "mh_2_muddy_waters_chicago"
+            },
+            {
+              "answer": "Pink Floyd",
+              "source": "similar_difficulty",
+              "factId": "mh_3_pink_floyd_wall"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_wagner_leitmotif",
+          "masteryLevel": 0,
+          "poolId": "music_terms",
+          "renderedQuestion": "What musical technique, pioneered by Wagner, assigns recurring themes to characters or ideas?",
+          "correctAnswer": "leitmotif",
+          "distractors": [
+            {
+              "answer": "Allegro",
+              "source": "similar_difficulty",
+              "factId": "mh_1_allegro_tempo"
+            },
+            {
+              "answer": "Legato (smooth)",
+              "source": "similar_difficulty",
+              "factId": "mh_1_legato_meaning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Allegro\" has 2 format features different from correct \"leitmotif\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_wagner_leitmotif",
+          "masteryLevel": 2,
+          "poolId": "music_terms",
+          "renderedQuestion": "What musical technique, pioneered by Wagner, assigns recurring themes to characters or ideas?",
+          "correctAnswer": "leitmotif",
+          "distractors": [
+            {
+              "answer": "Allegro",
+              "source": "similar_difficulty",
+              "factId": "mh_1_allegro_tempo"
+            },
+            {
+              "answer": "Legato (smooth)",
+              "source": "similar_difficulty",
+              "factId": "mh_1_legato_meaning"
+            },
+            {
+              "answer": "Pianissimo",
+              "source": "similar_difficulty",
+              "factId": "mh_1_pianissimo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Allegro\" has 2 format features different from correct \"leitmotif\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_wagner_leitmotif",
+          "masteryLevel": 4,
+          "poolId": "music_terms",
+          "renderedQuestion": "What musical technique, pioneered by Wagner, assigns recurring themes to characters or ideas?",
+          "correctAnswer": "leitmotif",
+          "distractors": [
+            {
+              "answer": "Allegro",
+              "source": "similar_difficulty",
+              "factId": "mh_1_allegro_tempo"
+            },
+            {
+              "answer": "Legato (smooth)",
+              "source": "similar_difficulty",
+              "factId": "mh_1_legato_meaning"
+            },
+            {
+              "answer": "Pianissimo",
+              "source": "similar_difficulty",
+              "factId": "mh_1_pianissimo"
+            },
+            {
+              "answer": "Crescendo",
+              "source": "similar_difficulty",
+              "factId": "mh_1_crescendo_dynamics"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Allegro\" has 2 format features different from correct \"leitmotif\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_schubert_lieder",
+          "masteryLevel": 0,
+          "poolId": "music_terms",
+          "renderedQuestion": "What German art-song form did Schubert master with over 600 works?",
+          "correctAnswer": "Lieder (art songs)",
+          "distractors": [
+            {
+              "answer": "Concerto",
+              "source": "similar_difficulty",
+              "factId": "mh_1_concerto_solo"
+            },
+            {
+              "answer": "leitmotif",
+              "source": "similar_difficulty",
+              "factId": "mh_0_wagner_leitmotif"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 18 vs avg distractor 8.5 — ratio 2.12×"
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"leitmotif\" has 3 format features different from correct \"Lieder (art songs)\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_schubert_lieder",
+          "masteryLevel": 2,
+          "poolId": "music_terms",
+          "renderedQuestion": "What German art-song form did Schubert master with over 600 works?",
+          "correctAnswer": "Lieder (art songs)",
+          "distractors": [
+            {
+              "answer": "Concerto",
+              "source": "similar_difficulty",
+              "factId": "mh_1_concerto_solo"
+            },
+            {
+              "answer": "leitmotif",
+              "source": "similar_difficulty",
+              "factId": "mh_0_wagner_leitmotif"
+            },
+            {
+              "answer": "Sonata form",
+              "source": "similar_difficulty",
+              "factId": "mh_1_sonata_form"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"leitmotif\" has 3 format features different from correct \"Lieder (art songs)\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_schubert_lieder",
+          "masteryLevel": 4,
+          "poolId": "music_terms",
+          "renderedQuestion": "What German art-song form did Schubert master with over 600 works?",
+          "correctAnswer": "Lieder (art songs)",
+          "distractors": [
+            {
+              "answer": "Concerto",
+              "source": "similar_difficulty",
+              "factId": "mh_1_concerto_solo"
+            },
+            {
+              "answer": "leitmotif",
+              "source": "similar_difficulty",
+              "factId": "mh_0_wagner_leitmotif"
+            },
+            {
+              "answer": "Sonata form",
+              "source": "similar_difficulty",
+              "factId": "mh_1_sonata_form"
+            },
+            {
+              "answer": "Aria (solo song)",
+              "source": "similar_difficulty",
+              "factId": "mh_1_aria_opera"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"leitmotif\" has 3 format features different from correct \"Lieder (art songs)\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_concerto_solo",
+          "masteryLevel": 0,
+          "poolId": "music_terms",
+          "renderedQuestion": "What form features a solo instrument with orchestral accompaniment?",
+          "correctAnswer": "Concerto",
+          "distractors": [
+            {
+              "answer": "leitmotif",
+              "source": "similar_difficulty",
+              "factId": "mh_0_wagner_leitmotif"
+            },
+            {
+              "answer": "4/4 time",
+              "source": "similar_difficulty",
+              "factId": "mh_1_time_signature_4_4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"leitmotif\" has 2 format features different from correct \"Concerto\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_concerto_solo",
+          "masteryLevel": 2,
+          "poolId": "music_terms",
+          "renderedQuestion": "What form features a solo instrument with orchestral accompaniment?",
+          "correctAnswer": "Concerto",
+          "distractors": [
+            {
+              "answer": "leitmotif",
+              "source": "similar_difficulty",
+              "factId": "mh_0_wagner_leitmotif"
+            },
+            {
+              "answer": "4/4 time",
+              "source": "similar_difficulty",
+              "factId": "mh_1_time_signature_4_4"
+            },
+            {
+              "answer": "Opera (staged)",
+              "source": "similar_difficulty",
+              "factId": "mh_1_opera_definition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"leitmotif\" has 2 format features different from correct \"Concerto\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_concerto_solo",
+          "masteryLevel": 4,
+          "poolId": "music_terms",
+          "renderedQuestion": "What form features a solo instrument with orchestral accompaniment?",
+          "correctAnswer": "Concerto",
+          "distractors": [
+            {
+              "answer": "leitmotif",
+              "source": "similar_difficulty",
+              "factId": "mh_0_wagner_leitmotif"
+            },
+            {
+              "answer": "4/4 time",
+              "source": "similar_difficulty",
+              "factId": "mh_1_time_signature_4_4"
+            },
+            {
+              "answer": "Opera (staged)",
+              "source": "similar_difficulty",
+              "factId": "mh_1_opera_definition"
+            },
+            {
+              "answer": "Tempo (speed)",
+              "source": "similar_difficulty",
+              "factId": "mh_1_tempo_definition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"leitmotif\" has 2 format features different from correct \"Concerto\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_sonata_form",
+          "masteryLevel": 0,
+          "poolId": "music_terms",
+          "renderedQuestion": "What is the term for a composition for one or two instruments in multiple movements?",
+          "correctAnswer": "Sonata form",
+          "distractors": [
+            {
+              "answer": "Octave interval",
+              "source": "similar_difficulty",
+              "factId": "mh_1_octave_interval"
+            },
+            {
+              "answer": "Cadence",
+              "source": "similar_difficulty",
+              "factId": "mh_1_cadence_definition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_sonata_form",
+          "masteryLevel": 2,
+          "poolId": "music_terms",
+          "renderedQuestion": "What is the term for a composition for one or two instruments in multiple movements?",
+          "correctAnswer": "Sonata form",
+          "distractors": [
+            {
+              "answer": "Octave interval",
+              "source": "similar_difficulty",
+              "factId": "mh_1_octave_interval"
+            },
+            {
+              "answer": "Cadence",
+              "source": "similar_difficulty",
+              "factId": "mh_1_cadence_definition"
+            },
+            {
+              "answer": "Concerto",
+              "source": "similar_difficulty",
+              "factId": "mh_1_concerto_solo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_sonata_form",
+          "masteryLevel": 4,
+          "poolId": "music_terms",
+          "renderedQuestion": "What is the term for a composition for one or two instruments in multiple movements?",
+          "correctAnswer": "Sonata form",
+          "distractors": [
+            {
+              "answer": "Octave interval",
+              "source": "similar_difficulty",
+              "factId": "mh_1_octave_interval"
+            },
+            {
+              "answer": "Cadence",
+              "source": "similar_difficulty",
+              "factId": "mh_1_cadence_definition"
+            },
+            {
+              "answer": "Concerto",
+              "source": "similar_difficulty",
+              "factId": "mh_1_concerto_solo"
+            },
+            {
+              "answer": "Legato (smooth)",
+              "source": "similar_difficulty",
+              "factId": "mh_1_legato_meaning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_aria_opera",
+          "masteryLevel": 0,
+          "poolId": "music_terms",
+          "renderedQuestion": "What is the term for a solo vocal piece within an opera?",
+          "correctAnswer": "Aria (solo song)",
+          "distractors": [
+            {
+              "answer": "Opus number",
+              "source": "similar_difficulty",
+              "factId": "mh_1_opus_meaning"
+            },
+            {
+              "answer": "Opera (staged)",
+              "source": "similar_difficulty",
+              "factId": "mh_1_opera_definition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_aria_opera",
+          "masteryLevel": 2,
+          "poolId": "music_terms",
+          "renderedQuestion": "What is the term for a solo vocal piece within an opera?",
+          "correctAnswer": "Aria (solo song)",
+          "distractors": [
+            {
+              "answer": "Opus number",
+              "source": "similar_difficulty",
+              "factId": "mh_1_opus_meaning"
+            },
+            {
+              "answer": "Opera (staged)",
+              "source": "similar_difficulty",
+              "factId": "mh_1_opera_definition"
+            },
+            {
+              "answer": "4/4 time",
+              "source": "similar_difficulty",
+              "factId": "mh_1_time_signature_4_4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"4/4 time\" has 3 format features different from correct \"Aria (solo song)\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_1_aria_opera",
+          "masteryLevel": 4,
+          "poolId": "music_terms",
+          "renderedQuestion": "What is the term for a solo vocal piece within an opera?",
+          "correctAnswer": "Aria (solo song)",
+          "distractors": [
+            {
+              "answer": "Opus number",
+              "source": "similar_difficulty",
+              "factId": "mh_1_opus_meaning"
+            },
+            {
+              "answer": "Opera (staged)",
+              "source": "similar_difficulty",
+              "factId": "mh_1_opera_definition"
+            },
+            {
+              "answer": "4/4 time",
+              "source": "similar_difficulty",
+              "factId": "mh_1_time_signature_4_4"
+            },
+            {
+              "answer": "Pianissimo",
+              "source": "similar_difficulty",
+              "factId": "mh_1_pianissimo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"4/4 time\" has 3 format features different from correct \"Aria (solo song)\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_verdi_risorgimento",
+          "masteryLevel": 0,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Which Italian opera composer became a symbol of the Risorgimento movement for Italian unification?",
+          "correctAnswer": "Giuseppe Verdi",
+          "distractors": [
+            {
+              "answer": "Notorious B.I.G.",
+              "source": "similar_difficulty",
+              "factId": "mh_4_notorious_big"
+            },
+            {
+              "answer": "Grandmaster Flash",
+              "source": "similar_difficulty",
+              "factId": "mh_4_grandmaster_flash_the_message"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_verdi_risorgimento",
+          "masteryLevel": 2,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Which Italian opera composer became a symbol of the Risorgimento movement for Italian unification?",
+          "correctAnswer": "Giuseppe Verdi",
+          "distractors": [
+            {
+              "answer": "Notorious B.I.G.",
+              "source": "similar_difficulty",
+              "factId": "mh_4_notorious_big"
+            },
+            {
+              "answer": "Grandmaster Flash",
+              "source": "similar_difficulty",
+              "factId": "mh_4_grandmaster_flash_the_message"
+            },
+            {
+              "answer": "Ella Fitzgerald",
+              "source": "similar_difficulty",
+              "factId": "mh_2_ella_fitzgerald_scat"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_verdi_risorgimento",
+          "masteryLevel": 4,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Which Italian opera composer became a symbol of the Risorgimento movement for Italian unification?",
+          "correctAnswer": "Giuseppe Verdi",
+          "distractors": [
+            {
+              "answer": "Notorious B.I.G.",
+              "source": "similar_difficulty",
+              "factId": "mh_4_notorious_big"
+            },
+            {
+              "answer": "Grandmaster Flash",
+              "source": "similar_difficulty",
+              "factId": "mh_4_grandmaster_flash_the_message"
+            },
+            {
+              "answer": "Ella Fitzgerald",
+              "source": "similar_difficulty",
+              "factId": "mh_2_ella_fitzgerald_scat"
+            },
+            {
+              "answer": "Louis Armstrong",
+              "source": "similar_difficulty",
+              "factId": "mh_2_armstrong_scat"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_piano_inventor",
+          "masteryLevel": 0,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Who invented the piano around 1700?",
+          "correctAnswer": "Bartolomeo Cristofori",
+          "distractors": [
+            {
+              "answer": "Giuseppe Verdi",
+              "source": "similar_difficulty",
+              "factId": "mh_0_verdi_risorgimento"
+            },
+            {
+              "answer": "Notorious B.I.G.",
+              "source": "similar_difficulty",
+              "factId": "mh_4_notorious_big"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_piano_inventor",
+          "masteryLevel": 2,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Who invented the piano around 1700?",
+          "correctAnswer": "Bartolomeo Cristofori",
+          "distractors": [
+            {
+              "answer": "Giuseppe Verdi",
+              "source": "similar_difficulty",
+              "factId": "mh_0_verdi_risorgimento"
+            },
+            {
+              "answer": "Notorious B.I.G.",
+              "source": "similar_difficulty",
+              "factId": "mh_4_notorious_big"
+            },
+            {
+              "answer": "Pete Townshend",
+              "source": "similar_difficulty",
+              "factId": "mh_3_who_windmill"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_piano_inventor",
+          "masteryLevel": 4,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Who invented the piano around 1700?",
+          "correctAnswer": "Bartolomeo Cristofori",
+          "distractors": [
+            {
+              "answer": "Giuseppe Verdi",
+              "source": "similar_difficulty",
+              "factId": "mh_0_verdi_risorgimento"
+            },
+            {
+              "answer": "Notorious B.I.G.",
+              "source": "similar_difficulty",
+              "factId": "mh_4_notorious_big"
+            },
+            {
+              "answer": "Pete Townshend",
+              "source": "similar_difficulty",
+              "factId": "mh_3_who_windmill"
+            },
+            {
+              "answer": "Billie Holiday",
+              "source": "similar_difficulty",
+              "factId": "mh_2_billie_holiday_strange_fruit"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_violin_stradivari",
+          "masteryLevel": 0,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Which luthier made the world's most prized violins?",
+          "correctAnswer": "Antonio Stradivari",
+          "distractors": [
+            {
+              "answer": "Giuseppe Verdi",
+              "source": "similar_difficulty",
+              "factId": "mh_0_verdi_risorgimento"
+            },
+            {
+              "answer": "Stevie Wonder",
+              "source": "similar_difficulty",
+              "factId": "mh_4_stevie_wonder_child_prodigy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_violin_stradivari",
+          "masteryLevel": 2,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Which luthier made the world's most prized violins?",
+          "correctAnswer": "Antonio Stradivari",
+          "distractors": [
+            {
+              "answer": "Giuseppe Verdi",
+              "source": "similar_difficulty",
+              "factId": "mh_0_verdi_risorgimento"
+            },
+            {
+              "answer": "Stevie Wonder",
+              "source": "similar_difficulty",
+              "factId": "mh_4_stevie_wonder_child_prodigy"
+            },
+            {
+              "answer": "Grandmaster Flash",
+              "source": "similar_difficulty",
+              "factId": "mh_4_grandmaster_flash_the_message"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_1_violin_stradivari",
+          "masteryLevel": 4,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Which luthier made the world's most prized violins?",
+          "correctAnswer": "Antonio Stradivari",
+          "distractors": [
+            {
+              "answer": "Giuseppe Verdi",
+              "source": "similar_difficulty",
+              "factId": "mh_0_verdi_risorgimento"
+            },
+            {
+              "answer": "Stevie Wonder",
+              "source": "similar_difficulty",
+              "factId": "mh_4_stevie_wonder_child_prodigy"
+            },
+            {
+              "answer": "Grandmaster Flash",
+              "source": "similar_difficulty",
+              "factId": "mh_4_grandmaster_flash_the_message"
+            },
+            {
+              "answer": "Dizzy Gillespie",
+              "source": "similar_difficulty",
+              "factId": "mh_2_dizzy_bent_trumpet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_armstrong_wonderful_world",
+          "masteryLevel": 0,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Who recorded 'What a Wonderful World' in 1967?",
+          "correctAnswer": "Louis Armstrong",
+          "distractors": [
+            {
+              "answer": "Billie Holiday",
+              "source": "similar_difficulty",
+              "factId": "mh_2_billie_holiday_strange_fruit"
+            },
+            {
+              "answer": "Queen (rock band)",
+              "source": "similar_difficulty",
+              "factId": "mh_3_queen_bohemian"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_armstrong_wonderful_world",
+          "masteryLevel": 2,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Who recorded 'What a Wonderful World' in 1967?",
+          "correctAnswer": "Louis Armstrong",
+          "distractors": [
+            {
+              "answer": "Billie Holiday",
+              "source": "similar_difficulty",
+              "factId": "mh_2_billie_holiday_strange_fruit"
+            },
+            {
+              "answer": "Queen (rock band)",
+              "source": "similar_difficulty",
+              "factId": "mh_3_queen_bohemian"
+            },
+            {
+              "answer": "Stevie Wonder",
+              "source": "similar_difficulty",
+              "factId": "mh_4_stevie_wonder_child_prodigy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_armstrong_wonderful_world",
+          "masteryLevel": 4,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Who recorded 'What a Wonderful World' in 1967?",
+          "correctAnswer": "Louis Armstrong",
+          "distractors": [
+            {
+              "answer": "Billie Holiday",
+              "source": "similar_difficulty",
+              "factId": "mh_2_billie_holiday_strange_fruit"
+            },
+            {
+              "answer": "Queen (rock band)",
+              "source": "similar_difficulty",
+              "factId": "mh_3_queen_bohemian"
+            },
+            {
+              "answer": "Stevie Wonder",
+              "source": "similar_difficulty",
+              "factId": "mh_4_stevie_wonder_child_prodigy"
+            },
+            {
+              "answer": "Elvis Presley",
+              "source": "similar_difficulty",
+              "factId": "mh_3_elvis_hip_swivel"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_armstrong_solo_art",
+          "masteryLevel": 0,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Who transformed jazz from ensemble music into a vehicle for solo improvisation?",
+          "correctAnswer": "Louis Armstrong",
+          "distractors": [
+            {
+              "answer": "John Coltrane",
+              "source": "similar_difficulty",
+              "factId": "mh_2_coltrane_soprano_sax"
+            },
+            {
+              "answer": "Charlie Parker",
+              "source": "similar_difficulty",
+              "factId": "mh_2_charlie_parker_bebop"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_armstrong_solo_art",
+          "masteryLevel": 2,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Who transformed jazz from ensemble music into a vehicle for solo improvisation?",
+          "correctAnswer": "Louis Armstrong",
+          "distractors": [
+            {
+              "answer": "John Coltrane",
+              "source": "similar_difficulty",
+              "factId": "mh_2_coltrane_soprano_sax"
+            },
+            {
+              "answer": "Charlie Parker",
+              "source": "similar_difficulty",
+              "factId": "mh_2_charlie_parker_bebop"
+            },
+            {
+              "answer": "Robert Johnson",
+              "source": "similar_difficulty",
+              "factId": "mh_2_robert_johnson_crossroads"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_armstrong_solo_art",
+          "masteryLevel": 4,
+          "poolId": "artist_names_long",
+          "renderedQuestion": "Who transformed jazz from ensemble music into a vehicle for solo improvisation?",
+          "correctAnswer": "Louis Armstrong",
+          "distractors": [
+            {
+              "answer": "John Coltrane",
+              "source": "similar_difficulty",
+              "factId": "mh_2_coltrane_soprano_sax"
+            },
+            {
+              "answer": "Charlie Parker",
+              "source": "similar_difficulty",
+              "factId": "mh_2_charlie_parker_bebop"
+            },
+            {
+              "answer": "Robert Johnson",
+              "source": "similar_difficulty",
+              "factId": "mh_2_robert_johnson_crossroads"
+            },
+            {
+              "answer": "Grandmaster Flash",
+              "source": "similar_difficulty",
+              "factId": "mh_4_grandmaster_flash_the_message"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_0_debussy_impressionism",
+          "masteryLevel": 0,
+          "poolId": "genre_names",
+          "renderedQuestion": "What artistic movement in music did Debussy pioneer, evoking atmosphere over narrative?",
+          "correctAnswer": "Impressionism",
+          "distractors": [
+            {
+              "answer": "rock and roll",
+              "source": "similar_difficulty",
+              "factId": "mh_3_beatles_british_invasion"
+            },
+            {
+              "answer": "Soul music",
+              "source": "similar_difficulty",
+              "factId": "mh_4_motown_soul"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"rock and roll\" has 3 format features different from correct \"Impressionism\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_debussy_impressionism",
+          "masteryLevel": 2,
+          "poolId": "genre_names",
+          "renderedQuestion": "What artistic movement in music did Debussy pioneer, evoking atmosphere over narrative?",
+          "correctAnswer": "Impressionism",
+          "distractors": [
+            {
+              "answer": "rock and roll",
+              "source": "similar_difficulty",
+              "factId": "mh_3_beatles_british_invasion"
+            },
+            {
+              "answer": "Soul music",
+              "source": "similar_difficulty",
+              "factId": "mh_4_motown_soul"
+            },
+            {
+              "answer": "R&B / Soul",
+              "source": "similar_difficulty",
+              "factId": "mh_4_rb_genre"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"rock and roll\" has 3 format features different from correct \"Impressionism\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_0_debussy_impressionism",
+          "masteryLevel": 4,
+          "poolId": "genre_names",
+          "renderedQuestion": "What artistic movement in music did Debussy pioneer, evoking atmosphere over narrative?",
+          "correctAnswer": "Impressionism",
+          "distractors": [
+            {
+              "answer": "rock and roll",
+              "source": "similar_difficulty",
+              "factId": "mh_3_beatles_british_invasion"
+            },
+            {
+              "answer": "Soul music",
+              "source": "similar_difficulty",
+              "factId": "mh_4_motown_soul"
+            },
+            {
+              "answer": "R&B / Soul",
+              "source": "similar_difficulty",
+              "factId": "mh_4_rb_genre"
+            },
+            {
+              "answer": "electronic",
+              "source": "similar_difficulty",
+              "factId": "mh_4_electronic_genre"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"rock and roll\" has 3 format features different from correct \"Impressionism\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_2_bebop_revolution",
+          "masteryLevel": 0,
+          "poolId": "genre_names",
+          "renderedQuestion": "Which jazz style emerged in the 1940s with faster tempos, complex harmonies, and virtuosic technique?",
+          "correctAnswer": "Bebop",
+          "distractors": [
+            {
+              "answer": "Punk music",
+              "source": "similar_difficulty",
+              "factId": "mh_4_punk_genre"
+            },
+            {
+              "answer": "reggae",
+              "source": "similar_difficulty",
+              "factId": "mh_4_reggae_jamaica_origins"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"reggae\" has 2 format features different from correct \"Bebop\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_2_bebop_revolution",
+          "masteryLevel": 2,
+          "poolId": "genre_names",
+          "renderedQuestion": "Which jazz style emerged in the 1940s with faster tempos, complex harmonies, and virtuosic technique?",
+          "correctAnswer": "Bebop",
+          "distractors": [
+            {
+              "answer": "Punk music",
+              "source": "similar_difficulty",
+              "factId": "mh_4_punk_genre"
+            },
+            {
+              "answer": "reggae",
+              "source": "similar_difficulty",
+              "factId": "mh_4_reggae_jamaica_origins"
+            },
+            {
+              "answer": "Impressionism",
+              "source": "similar_difficulty",
+              "factId": "mh_0_debussy_impressionism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"reggae\" has 2 format features different from correct \"Bebop\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_2_bebop_revolution",
+          "masteryLevel": 4,
+          "poolId": "genre_names",
+          "renderedQuestion": "Which jazz style emerged in the 1940s with faster tempos, complex harmonies, and virtuosic technique?",
+          "correctAnswer": "Bebop",
+          "distractors": [
+            {
+              "answer": "Punk music",
+              "source": "similar_difficulty",
+              "factId": "mh_4_punk_genre"
+            },
+            {
+              "answer": "reggae",
+              "source": "similar_difficulty",
+              "factId": "mh_4_reggae_jamaica_origins"
+            },
+            {
+              "answer": "Impressionism",
+              "source": "similar_difficulty",
+              "factId": "mh_0_debussy_impressionism"
+            },
+            {
+              "answer": "Punk rock",
+              "source": "similar_difficulty",
+              "factId": "mh_3_punk_1976"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"reggae\" has 2 format features different from correct \"Bebop\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_2_cool_jazz",
+          "masteryLevel": 0,
+          "poolId": "genre_names",
+          "renderedQuestion": "Which 1950s jazz style reacted to bebop's intensity with a more restrained, soft-toned approach?",
+          "correctAnswer": "Cool jazz",
+          "distractors": [
+            {
+              "answer": "Modal jazz",
+              "source": "similar_difficulty",
+              "factId": "mh_2_kind_of_blue_modal"
+            },
+            {
+              "answer": "Soul music",
+              "source": "similar_difficulty",
+              "factId": "mh_4_motown_soul"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_cool_jazz",
+          "masteryLevel": 2,
+          "poolId": "genre_names",
+          "renderedQuestion": "Which 1950s jazz style reacted to bebop's intensity with a more restrained, soft-toned approach?",
+          "correctAnswer": "Cool jazz",
+          "distractors": [
+            {
+              "answer": "Modal jazz",
+              "source": "similar_difficulty",
+              "factId": "mh_2_kind_of_blue_modal"
+            },
+            {
+              "answer": "Soul music",
+              "source": "similar_difficulty",
+              "factId": "mh_4_motown_soul"
+            },
+            {
+              "answer": "reggae",
+              "source": "similar_difficulty",
+              "factId": "mh_4_reggae_jamaica_origins"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"reggae\" has 3 format features different from correct \"Cool jazz\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_2_cool_jazz",
+          "masteryLevel": 4,
+          "poolId": "genre_names",
+          "renderedQuestion": "Which 1950s jazz style reacted to bebop's intensity with a more restrained, soft-toned approach?",
+          "correctAnswer": "Cool jazz",
+          "distractors": [
+            {
+              "answer": "Modal jazz",
+              "source": "similar_difficulty",
+              "factId": "mh_2_kind_of_blue_modal"
+            },
+            {
+              "answer": "Soul music",
+              "source": "similar_difficulty",
+              "factId": "mh_4_motown_soul"
+            },
+            {
+              "answer": "reggae",
+              "source": "similar_difficulty",
+              "factId": "mh_4_reggae_jamaica_origins"
+            },
+            {
+              "answer": "rock and roll",
+              "source": "similar_difficulty",
+              "factId": "mh_3_beatles_british_invasion"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"reggae\" has 3 format features different from correct \"Cool jazz\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_2_jazz_fusion",
+          "masteryLevel": 0,
+          "poolId": "genre_names",
+          "renderedQuestion": "Which genre combined jazz improvisation with rock rhythms and electric instruments in the late 1960s?",
+          "correctAnswer": "Jazz fusion",
+          "distractors": [
+            {
+              "answer": "Cool jazz",
+              "source": "similar_difficulty",
+              "factId": "mh_2_cool_jazz"
+            },
+            {
+              "answer": "blues",
+              "source": "similar_difficulty",
+              "factId": "mh_3_stones_exile_genre"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"blues\" has 3 format features different from correct \"Jazz fusion\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_2_jazz_fusion",
+          "masteryLevel": 2,
+          "poolId": "genre_names",
+          "renderedQuestion": "Which genre combined jazz improvisation with rock rhythms and electric instruments in the late 1960s?",
+          "correctAnswer": "Jazz fusion",
+          "distractors": [
+            {
+              "answer": "Cool jazz",
+              "source": "similar_difficulty",
+              "factId": "mh_2_cool_jazz"
+            },
+            {
+              "answer": "blues",
+              "source": "similar_difficulty",
+              "factId": "mh_3_stones_exile_genre"
+            },
+            {
+              "answer": "Punk music",
+              "source": "similar_difficulty",
+              "factId": "mh_4_punk_genre"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"blues\" has 3 format features different from correct \"Jazz fusion\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_2_jazz_fusion",
+          "masteryLevel": 4,
+          "poolId": "genre_names",
+          "renderedQuestion": "Which genre combined jazz improvisation with rock rhythms and electric instruments in the late 1960s?",
+          "correctAnswer": "Jazz fusion",
+          "distractors": [
+            {
+              "answer": "Cool jazz",
+              "source": "similar_difficulty",
+              "factId": "mh_2_cool_jazz"
+            },
+            {
+              "answer": "blues",
+              "source": "similar_difficulty",
+              "factId": "mh_3_stones_exile_genre"
+            },
+            {
+              "answer": "Punk music",
+              "source": "similar_difficulty",
+              "factId": "mh_4_punk_genre"
+            },
+            {
+              "answer": "rock and roll",
+              "source": "similar_difficulty",
+              "factId": "mh_3_beatles_british_invasion"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"blues\" has 3 format features different from correct \"Jazz fusion\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_2_kind_of_blue_modal",
+          "masteryLevel": 0,
+          "poolId": "genre_names",
+          "renderedQuestion": "Which jazz approach, used on Kind of Blue, replaces rapid chord changes with improvisation over scales called modes?",
+          "correctAnswer": "Modal jazz",
+          "distractors": [
+            {
+              "answer": "Free jazz",
+              "source": "similar_difficulty",
+              "factId": "mh_2_free_jazz"
+            },
+            {
+              "answer": "Cool jazz",
+              "source": "similar_difficulty",
+              "factId": "mh_2_cool_jazz"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_kind_of_blue_modal",
+          "masteryLevel": 2,
+          "poolId": "genre_names",
+          "renderedQuestion": "Which jazz approach, used on Kind of Blue, replaces rapid chord changes with improvisation over scales called modes?",
+          "correctAnswer": "Modal jazz",
+          "distractors": [
+            {
+              "answer": "Free jazz",
+              "source": "similar_difficulty",
+              "factId": "mh_2_free_jazz"
+            },
+            {
+              "answer": "Cool jazz",
+              "source": "similar_difficulty",
+              "factId": "mh_2_cool_jazz"
+            },
+            {
+              "answer": "blues",
+              "source": "similar_difficulty",
+              "factId": "mh_3_stones_exile_genre"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"blues\" has 3 format features different from correct \"Modal jazz\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_2_kind_of_blue_modal",
+          "masteryLevel": 4,
+          "poolId": "genre_names",
+          "renderedQuestion": "Which jazz approach, used on Kind of Blue, replaces rapid chord changes with improvisation over scales called modes?",
+          "correctAnswer": "Modal jazz",
+          "distractors": [
+            {
+              "answer": "Free jazz",
+              "source": "similar_difficulty",
+              "factId": "mh_2_free_jazz"
+            },
+            {
+              "answer": "Cool jazz",
+              "source": "similar_difficulty",
+              "factId": "mh_2_cool_jazz"
+            },
+            {
+              "answer": "blues",
+              "source": "similar_difficulty",
+              "factId": "mh_3_stones_exile_genre"
+            },
+            {
+              "answer": "Blue notes",
+              "source": "similar_difficulty",
+              "factId": "mh_2_blue_notes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"blues\" has 3 format features different from correct \"Modal jazz\""
+            }
+          ]
+        },
+        {
+          "factId": "mh_2_kind_of_blue",
+          "masteryLevel": 0,
+          "poolId": "album_names",
+          "renderedQuestion": "Which Miles Davis album is the best-selling jazz album of all time?",
+          "correctAnswer": "Kind of Blue",
+          "distractors": [
+            {
+              "answer": "Abbey Road",
+              "source": "similar_difficulty",
+              "factId": "mh_3_abbey_road_crossing"
+            },
+            {
+              "answer": "Billie Jean",
+              "source": "similar_difficulty",
+              "factId": "mh_4_mj_mtv_billie_jean"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_kind_of_blue",
+          "masteryLevel": 2,
+          "poolId": "album_names",
+          "renderedQuestion": "Which Miles Davis album is the best-selling jazz album of all time?",
+          "correctAnswer": "Kind of Blue",
+          "distractors": [
+            {
+              "answer": "Abbey Road",
+              "source": "similar_difficulty",
+              "factId": "mh_3_abbey_road_crossing"
+            },
+            {
+              "answer": "Billie Jean",
+              "source": "similar_difficulty",
+              "factId": "mh_4_mj_mtv_billie_jean"
+            },
+            {
+              "answer": "Revolver",
+              "source": "similar_difficulty",
+              "factId": "mh_3_revolver_innovation"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_kind_of_blue",
+          "masteryLevel": 4,
+          "poolId": "album_names",
+          "renderedQuestion": "Which Miles Davis album is the best-selling jazz album of all time?",
+          "correctAnswer": "Kind of Blue",
+          "distractors": [
+            {
+              "answer": "Abbey Road",
+              "source": "similar_difficulty",
+              "factId": "mh_3_abbey_road_crossing"
+            },
+            {
+              "answer": "Billie Jean",
+              "source": "similar_difficulty",
+              "factId": "mh_4_mj_mtv_billie_jean"
+            },
+            {
+              "answer": "Revolver",
+              "source": "similar_difficulty",
+              "factId": "mh_3_revolver_innovation"
+            },
+            {
+              "answer": "Straight Outta Compton",
+              "source": "similar_difficulty",
+              "factId": "mh_4_nwa_straight_outta_compton"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_bitches_brew",
+          "masteryLevel": 0,
+          "poolId": "album_names",
+          "renderedQuestion": "Which 1970 Miles Davis album launched jazz fusion?",
+          "correctAnswer": "Bitches Brew",
+          "distractors": [
+            {
+              "answer": "Billie Jean",
+              "source": "similar_difficulty",
+              "factId": "mh_4_mj_mtv_billie_jean"
+            },
+            {
+              "answer": "Respect (Aretha)",
+              "source": "similar_difficulty",
+              "factId": "mh_4_aretha_respect"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_bitches_brew",
+          "masteryLevel": 2,
+          "poolId": "album_names",
+          "renderedQuestion": "Which 1970 Miles Davis album launched jazz fusion?",
+          "correctAnswer": "Bitches Brew",
+          "distractors": [
+            {
+              "answer": "Billie Jean",
+              "source": "similar_difficulty",
+              "factId": "mh_4_mj_mtv_billie_jean"
+            },
+            {
+              "answer": "Respect (Aretha)",
+              "source": "similar_difficulty",
+              "factId": "mh_4_aretha_respect"
+            },
+            {
+              "answer": "Nevermind",
+              "source": "similar_difficulty",
+              "factId": "mh_3_nirvana_nevermind"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_bitches_brew",
+          "masteryLevel": 4,
+          "poolId": "album_names",
+          "renderedQuestion": "Which 1970 Miles Davis album launched jazz fusion?",
+          "correctAnswer": "Bitches Brew",
+          "distractors": [
+            {
+              "answer": "Billie Jean",
+              "source": "similar_difficulty",
+              "factId": "mh_4_mj_mtv_billie_jean"
+            },
+            {
+              "answer": "Respect (Aretha)",
+              "source": "similar_difficulty",
+              "factId": "mh_4_aretha_respect"
+            },
+            {
+              "answer": "Nevermind",
+              "source": "similar_difficulty",
+              "factId": "mh_3_nirvana_nevermind"
+            },
+            {
+              "answer": "Purple Rain",
+              "source": "similar_difficulty",
+              "factId": "mh_4_prince_purple_rain"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_coltrane_love_supreme",
+          "masteryLevel": 0,
+          "poolId": "album_names",
+          "renderedQuestion": "Which 1964 John Coltrane album is considered his spiritual masterpiece?",
+          "correctAnswer": "A Love Supreme",
+          "distractors": [
+            {
+              "answer": "Rumours (1977)",
+              "source": "similar_difficulty",
+              "factId": "mh_3_fleetwood_mac_rumours"
+            },
+            {
+              "answer": "OK Computer",
+              "source": "similar_difficulty",
+              "factId": "mh_3_radiohead_ok_computer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_coltrane_love_supreme",
+          "masteryLevel": 2,
+          "poolId": "album_names",
+          "renderedQuestion": "Which 1964 John Coltrane album is considered his spiritual masterpiece?",
+          "correctAnswer": "A Love Supreme",
+          "distractors": [
+            {
+              "answer": "Rumours (1977)",
+              "source": "similar_difficulty",
+              "factId": "mh_3_fleetwood_mac_rumours"
+            },
+            {
+              "answer": "OK Computer",
+              "source": "similar_difficulty",
+              "factId": "mh_3_radiohead_ok_computer"
+            },
+            {
+              "answer": "Time Out",
+              "source": "similar_difficulty",
+              "factId": "mh_2_brubeck_time_out"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_coltrane_love_supreme",
+          "masteryLevel": 4,
+          "poolId": "album_names",
+          "renderedQuestion": "Which 1964 John Coltrane album is considered his spiritual masterpiece?",
+          "correctAnswer": "A Love Supreme",
+          "distractors": [
+            {
+              "answer": "Rumours (1977)",
+              "source": "similar_difficulty",
+              "factId": "mh_3_fleetwood_mac_rumours"
+            },
+            {
+              "answer": "OK Computer",
+              "source": "similar_difficulty",
+              "factId": "mh_3_radiohead_ok_computer"
+            },
+            {
+              "answer": "Time Out",
+              "source": "similar_difficulty",
+              "factId": "mh_2_brubeck_time_out"
+            },
+            {
+              "answer": "Pet Sounds",
+              "source": "similar_difficulty",
+              "factId": "mh_3_beach_boys_pet_sounds"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_coltrane_giant_steps",
+          "masteryLevel": 0,
+          "poolId": "album_names",
+          "renderedQuestion": "Which John Coltrane album introduced the revolutionary chord progression called 'Coltrane changes'?",
+          "correctAnswer": "Giant Steps",
+          "distractors": [
+            {
+              "answer": "Mingus Ah Um",
+              "source": "similar_difficulty",
+              "factId": "mh_2_mingus_ah_um"
+            },
+            {
+              "answer": "OK Computer",
+              "source": "similar_difficulty",
+              "factId": "mh_3_radiohead_ok_computer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_coltrane_giant_steps",
+          "masteryLevel": 2,
+          "poolId": "album_names",
+          "renderedQuestion": "Which John Coltrane album introduced the revolutionary chord progression called 'Coltrane changes'?",
+          "correctAnswer": "Giant Steps",
+          "distractors": [
+            {
+              "answer": "Mingus Ah Um",
+              "source": "similar_difficulty",
+              "factId": "mh_2_mingus_ah_um"
+            },
+            {
+              "answer": "OK Computer",
+              "source": "similar_difficulty",
+              "factId": "mh_3_radiohead_ok_computer"
+            },
+            {
+              "answer": "What's Going On",
+              "source": "similar_difficulty",
+              "factId": "mh_4_marvin_gaye_whats_going_on"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_coltrane_giant_steps",
+          "masteryLevel": 4,
+          "poolId": "album_names",
+          "renderedQuestion": "Which John Coltrane album introduced the revolutionary chord progression called 'Coltrane changes'?",
+          "correctAnswer": "Giant Steps",
+          "distractors": [
+            {
+              "answer": "Mingus Ah Um",
+              "source": "similar_difficulty",
+              "factId": "mh_2_mingus_ah_um"
+            },
+            {
+              "answer": "OK Computer",
+              "source": "similar_difficulty",
+              "factId": "mh_3_radiohead_ok_computer"
+            },
+            {
+              "answer": "What's Going On",
+              "source": "similar_difficulty",
+              "factId": "mh_4_marvin_gaye_whats_going_on"
+            },
+            {
+              "answer": "Straight Outta Compton",
+              "source": "similar_difficulty",
+              "factId": "mh_4_nwa_straight_outta_compton"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_brubeck_time_out",
+          "masteryLevel": 0,
+          "poolId": "album_names",
+          "renderedQuestion": "Which 1959 Dave Brubeck album was the first jazz album to sell one million copies?",
+          "correctAnswer": "Time Out",
+          "distractors": [
+            {
+              "answer": "Revolver",
+              "source": "similar_difficulty",
+              "factId": "mh_3_revolver_innovation"
+            },
+            {
+              "answer": "Exile on Main St.",
+              "source": "similar_difficulty",
+              "factId": "mh_3_rolling_stones_exile"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_brubeck_time_out",
+          "masteryLevel": 2,
+          "poolId": "album_names",
+          "renderedQuestion": "Which 1959 Dave Brubeck album was the first jazz album to sell one million copies?",
+          "correctAnswer": "Time Out",
+          "distractors": [
+            {
+              "answer": "Revolver",
+              "source": "similar_difficulty",
+              "factId": "mh_3_revolver_innovation"
+            },
+            {
+              "answer": "Exile on Main St.",
+              "source": "similar_difficulty",
+              "factId": "mh_3_rolling_stones_exile"
+            },
+            {
+              "answer": "Pet Sounds",
+              "source": "similar_difficulty",
+              "factId": "mh_3_beach_boys_pet_sounds"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mh_2_brubeck_time_out",
+          "masteryLevel": 4,
+          "poolId": "album_names",
+          "renderedQuestion": "Which 1959 Dave Brubeck album was the first jazz album to sell one million copies?",
+          "correctAnswer": "Time Out",
+          "distractors": [
+            {
+              "answer": "Revolver",
+              "source": "similar_difficulty",
+              "factId": "mh_3_revolver_innovation"
+            },
+            {
+              "answer": "Exile on Main St.",
+              "source": "similar_difficulty",
+              "factId": "mh_3_rolling_stones_exile"
+            },
+            {
+              "answer": "Pet Sounds",
+              "source": "similar_difficulty",
+              "factId": "mh_3_beach_boys_pet_sounds"
+            },
+            {
+              "answer": "Nevermind",
+              "source": "similar_difficulty",
+              "factId": "mh_3_nirvana_nevermind"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}
