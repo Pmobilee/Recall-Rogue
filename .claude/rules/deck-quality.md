@@ -251,6 +251,7 @@ npm run build:curated
 4. **Verify after the split:** every fact's `answerTypePoolId` must reference an existing pool (no orphans). Run `node scripts/verify-all-decks.mjs` and re-run `audit-dump-samples.ts --deck <id>` to confirm POOL-CONTAM rate drops.
 5. **Detection:** `verify-all-decks.mjs` should warn whenever a knowledge-deck pool has >100 real facts. (Future Phase 5 task.)
 6. **Exception:** language-vocab pools with thousands of words are intentional — POS-separated pools are the right fix there (Anti-Pattern 5 / Anti-Pattern 6 territory), not unit-splitting.
+7. **For medical/science decks with root word pools:** split by body system. `medical_terminology` had a `root_meanings_mid` pool (138 facts) with roots spanning cardiovascular, respiratory, digestive, nervous, musculoskeletal, integumentary, reproductive, urinary, sensory, and general domains — causing cardiovascular terms ("Vein", "Clot") to appear as distractors for respiratory questions. Split into 10 sub-pools named `root_meanings_{system}` (e.g. `root_meanings_cardiovascular`, `root_meanings_nervous`). 2026-04-10.
 
 ### Anti-Pattern 10: Mixed-POS vocabulary pools
 

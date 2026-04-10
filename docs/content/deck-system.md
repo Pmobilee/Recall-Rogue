@@ -619,7 +619,36 @@ film_titles 55/55 OK, director_names 39/28 OK, actor_names 35/35 OK, character_n
 
 **Coverage note (2026-04-03):** Gap-fill added obstetrics terms (25 facts), anatomical position/directional terms (15 facts), lab abbreviation meanings (15 facts), and 10 missing word parts identified via NCBI 17-chapter curriculum comparison. Deck is now aligned with NCBI Bookshelf Medical Terminology curriculum scope.
 
-**Answer Type Pools (8):** prefix_meanings (83), suffix_meanings (62), root_meanings (335), organ_names, combining_forms, body_systems, condition_names (159), procedure_names (61)
+**Chain Themes (5):**
+
+| chainThemeId | Name | Color |
+|---|---|---|
+| 0 | Prefixes | #4A90D9 |
+| 1 | Suffixes | #E74C3C |
+| 2 | Body Roots & Combining Forms | #27AE60 |
+| 3 | Medical Conditions | #F39C12 |
+| 4 | Procedures & Diagnostics | #8E44AD |
+
+**Answer Type Pools (25):** prefix_meanings_short (30), prefix_meanings_long (51), suffix_meanings_short (20), suffix_meanings_long (42), root_meanings_short (10), root_meanings_long (57), organ_names_short (19), organ_names_long (31), combining_forms (50), body_systems (20), condition_names_short (82), condition_names_long (87), procedure_names_short (38), procedure_names_long (23), bracket_numbers (2), plus 10 body-system root sub-pools (see below).
+
+**Root Meanings Pool Split (2026-04-10):** The former `root_meanings_mid` mega-pool (138 facts, anti-pattern #9) was split into 10 body-system sub-pools to prevent cross-system distractors:
+
+| Pool ID | Facts | Body System |
+|---|---|---|
+| `root_meanings_cardiovascular` | 14 | Heart, blood vessels, aorta, valves, pulse, clotting |
+| `root_meanings_respiratory` | 13 | Lungs, bronchi, trachea, larynx, pharynx, breathing |
+| `root_meanings_digestive` | 25 | Stomach, intestine, liver, gallbladder, colon, mouth |
+| `root_meanings_nervous` | 10 | Nerve, brain, cerebrum, meninges, glial, speech |
+| `root_meanings_musculoskeletal` | 28 | Bone, joint, muscle, cartilage, tendon, spine, limb bones |
+| `root_meanings_integumentary` | 8 | Skin, nail, hair, sweat, sebum |
+| `root_meanings_reproductive` | 12 | Ovary, uterus, testis, breast, sperm, lacto |
+| `root_meanings_urinary` | 7 | Kidney, bladder, ureter, urethra, glomerulus |
+| `root_meanings_sensory` | 8 | Eye (tear, eyelid, retina), ear (cochlea, eardrum, labyrinth) |
+| `root_meanings_general` | 13 | Disease, tumor, cell, tissue, cancer, poison, endocrine, electricity |
+
+Each pool padded to ≥15 total with domain-appropriate syntheticDistractors.
+
+**Pool naming convention for body-system root splits:** `root_meanings_{system}` where `{system}` is the lowercase body system name (cardiovascular, respiratory, digestive, nervous, musculoskeletal, integumentary, reproductive, urinary, sensory, general).
 
 **Synonym groups:** phleb/o–ven/o (vein), hem/o–hemat/o (blood), pulmon/o–pneumon/o (lung), nas/o–rhin/o (nose) — plus additional pairs across Anatomical Roots & Body Systems sub-deck
 
