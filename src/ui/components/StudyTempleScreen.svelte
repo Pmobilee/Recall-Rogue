@@ -20,6 +20,11 @@
   import { registerPersonalDecks } from '../../services/personalDeckStore';
   import type { CustomDeck, CustomDeckItem, CustomDeckRunItem } from '../../data/studyPreset';
 
+  // Anki integration temporarily disabled (2026-04-10). Flip to true to re-enable
+  // the Import Anki button in the Library header and the Export to Anki option in
+  // DeckDetailModal. All underlying services/components remain intact.
+  const ANKI_INTEGRATION_ENABLED = false;
+
   interface Props {
     onback: () => void;
     onStartRun: (config:
@@ -489,9 +494,11 @@
     <DeckSortDropdown value={sortOption} onsortchange={handleSortChange} />
     <div class="header-spacer"></div>
     <DeckFilterChips {activeFilters} onFiltersChange={(f) => { activeFilters = f; }} />
-    <button class="anki-import-btn" onclick={() => { showAnkiImport = true; }} type="button">
-      Import Anki
-    </button>
+    {#if ANKI_INTEGRATION_ENABLED}
+      <button class="anki-import-btn" onclick={() => { showAnkiImport = true; }} type="button">
+        Import Anki
+      </button>
+    {/if}
   </header>
 
   <div class="body-layout">
@@ -596,7 +603,7 @@
     onStartRun={handleStartStudyRun}
     onClose={handleModalClose}
     onAddToCustom={handleAddToCustom}
-    onExportAnki={handleExportDeck}
+    onExportAnki={ANKI_INTEGRATION_ENABLED ? handleExportDeck : undefined}
   />
 {/if}
 

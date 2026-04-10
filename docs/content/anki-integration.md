@@ -1,5 +1,7 @@
 # Anki Integration (Import/Export)
 
+> **Status (2026-04-10):** UI entry points are gated behind `ANKI_INTEGRATION_ENABLED` in `src/ui/components/StudyTempleScreen.svelte` and currently disabled. All services, wizards, and tests remain in place — flip the constant to `true` to re-enable the Library header "Import Anki" button and DeckDetailModal "Export to Anki" option.
+
 > Bidirectional Anki deck exchange with full FSRS scheduling preservation.
 > Source files: `src/services/ankiService.ts`, `src/services/personalDeckStore.ts`, `src/services/ankiMediaStore.ts`
 > UI: `src/ui/components/AnkiImportWizard.svelte`, `src/ui/components/AnkiExportWizard.svelte`

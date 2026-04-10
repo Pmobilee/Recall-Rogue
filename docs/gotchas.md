@@ -1365,3 +1365,13 @@ The `interrogatives` pool in `spanish_a1_grammar` contains both interrogative wo
 **Fix:** Added an `inProgress` lock object to every registry element. The lock protocol: (1) `npm run registry:check-lock -- --ids <deckId>` before touching any deck — exit if locked; (2) `npm run registry:lock` with your agent id and test type; (3) set a shell `trap` to guarantee `npm run registry:unlock` fires on exit (including crashes); (4) on success, stamp the appropriate date field. Locks have a TTL (default 4h) so a crashed agent can't permanently block a deck. `npm run registry:stale` now shows an "IN PROGRESS" section listing all locked elements so agents know what to skip.
 
 **Prevention:** Full agent collaboration flow documented in `docs/testing/inspection-registry.md`. Always use `registry:check-lock` as the first step when picking a deck from the stale list.
+
+---
+
+### 2026-04-10 — Anki integration is intentionally present but UI-gated
+
+**What:** The entire Anki import/export system (`src/services/ankiService.ts`, `src/services/ankiMediaStore.ts`, `src/services/ankiDistractorGenerator.ts`, `src/ui/components/AnkiImportWizard.svelte`, `src/ui/components/AnkiExportWizard.svelte`, tests, and personal deck plumbing) is still fully wired and compiled, but the two user-facing entry points are hidden behind `const ANKI_INTEGRATION_ENABLED = false` in `src/ui/components/StudyTempleScreen.svelte`.
+
+**Why it matters:** A future agent reading the codebase may notice "dead" Anki code that isn't reachable from the UI and attempt to "clean it up" by deleting services/components. **Do not.** The integration is intentionally disabled for now and will be turned back on — flipping the flag to `true` is the only change needed to restore it.
+
+**Fix / how to re-enable:** Set `ANKI_INTEGRATION_ENABLED = true` in `StudyTempleScreen.svelte`. No other changes required.
