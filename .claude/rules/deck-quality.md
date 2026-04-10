@@ -23,6 +23,7 @@
 - Question type keywords must match answer format (who→name, when→date, how many→number)
 - No duplicate or near-duplicate facts within the same pool
 - Image-quiz facts MUST be in separate `visual_*` pools — never mixed with text facts
+- No raw brace characters in `syntheticDistractors` — bracket-notation tokens like `{7}` or `{1990}` must never appear in distractor arrays (verify-all-decks Check #24 catches this with HARD FAIL — 2026-04-10)
 
 ## Answer Pool Homogeneity — CRITICAL
 

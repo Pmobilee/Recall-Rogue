@@ -10,6 +10,40 @@
 - Verify grammar reads naturally as proper English
 - If >5% of samples are broken, reject the batch and rephrase individually
 
+## Template-literal Audit for Programmatic Distractors (added 2026-04-10)
+
+**After ANY programmatic distractor generation (scripts, LLM batch, manual entry), grep the output for raw brace characters before committing.**
+
+On 2026-04-10, 89 synthetic distractors shipped in `{N}` bracket-notation format (e.g. `{7}`, `{1990}`, `{2} bya`) across 7 curated decks. These displayed literally in the quiz UI instead of rendering as plain numbers, because the bracket system expects `{N}` to appear only in `correctAnswer` fields — not in distractor arrays.
+
+**Root cause pattern:** A generator builds numeric synthetic distractors using a format like `'{' + value + '}'` or `` `{${value}}` `` instead of just `String(value)`. The resulting string is bracket-notation, not a plain number.
+
+**Mandatory post-generation check:**
+```bash
+# Detects any {N} bracket tokens in syntheticDistractors arrays
+# Replace data/decks/*.json with your target deck path
+python3 -c "
+import json, os, glob
+for path in glob.glob('data/decks/*.json'):
+    deck = json.load(open(path))
+    for pool in deck.get('answerTypePools', []):
+        for d in pool.get('syntheticDistractors', []):
+            if isinstance(d, str) and ('{' in d or '}' in d) and '{___}' not in d:
+                print(f'BRACE LEAK {path}/{pool[\"id\"]}: {repr(d)}')
+"
+```
+
+**Correct pattern:**
+```js
+// BAD — produces '{7}' (bracket-notation token, not a number)
+const distractor = `{${numericValue}}`
+
+// GOOD — produces '7' (plain number string)
+const distractor = String(numericValue)
+```
+
+**Detection is also enforced by `verify-all-decks.mjs` Check #24** — any `syntheticDistractor` containing `{` or `}` causes a HARD FAIL with the pool ID and offending string.
+
 ## Curriculum-Sourced Scope — For Educational Decks
 
 **For ANY deck where students depend on completeness (medical, language, certifications, exam prep), the SCOPE must come from an authoritative curriculum source — NEVER from LLM compilation.**

@@ -1375,3 +1375,38 @@ The `interrogatives` pool in `spanish_a1_grammar` contains both interrogative wo
 **Why it matters:** A future agent reading the codebase may notice "dead" Anki code that isn't reachable from the UI and attempt to "clean it up" by deleting services/components. **Do not.** The integration is intentionally disabled for now and will be turned back on — flipping the flag to `true` is the only change needed to restore it.
 
 **Fix / how to re-enable:** Set `ANKI_INTEGRATION_ENABLED = true` in `StudyTempleScreen.svelte`. No other changes required.
+
+---
+
+### 2026-04-10 — {N} template tokens leaked into quiz options
+
+**What:** 89 synthetic distractors across 7 curated decks were formatted as bracket-notation tokens (e.g. `{7}`, `{1990}`, `{2} bya`, `{1958}`) instead of plain values. Players saw literally `{7}` as a quiz choice instead of the number 7.
+
+Affected pools:
+- `ancient_rome` / `bracket_numbers` (6 distractors)
+- `ap_biology` / `geological_timescale` (10 distractors)
+- `ap_psychology` / `bracket_numbers` (12 distractors)
+- `medieval_world` / `bracket_numbers` (15 distractors)
+- `movies_cinema` / `bracket_counts` (6 distractors)
+- `nasa_missions` / `launch_years` (20 distractors)
+- `us_presidents` / `inauguration_years` (20 distractors)
+
+**Why it happened:** The bracket-notation system uses `{N}` as a special syntax in `correctAnswer` fields for numeric questions (e.g. `{7}` means "the number 7, generate numeric distractors at runtime"). Some prior content pipeline pass (or manual edit) incorrectly formatted synthetic distractors using the same `{N}` syntax instead of plain string values.
+
+The `isBracketPool()` guard in `scripts/add-synthetic-distractors.mjs` was supposed to detect and skip these pools — but it only detected pools via correctAnswer format sampling, which fails if the pool's factIds are temporarily empty during a script run, or if the synthetic values are added directly to the JSON without running through the script.
+
+The values were not caught before shipment because `scripts/verify-all-decks.mjs` had no check for raw brace characters in `syntheticDistractors` arrays.
+
+**Fix:**
+1. Stripped all 89 leaked distractors from the 7 affected deck JSON files
+2. Rebuilt `public/curated.db`
+3. Strengthened `isBracketPool()` with a dual detection strategy: pool ID name regex (`BRACKET_POOL_ID_PATTERNS`) AND correctAnswer format sampling — either match skips the pool
+4. Added an explicit brace safety filter in the candidate loop: any candidate string containing `{` or `}` is rejected before being appended
+5. Added `verify-all-decks.mjs` Check #24: HARD FAIL if any `syntheticDistractor` contains raw braces
+6. Added vitest regression suite in `tests/content/synthetic-distractors.test.ts` (38 tests)
+
+**Prevention:**
+- Check #24 in `verify-all-decks.mjs` now catches this at pre-commit hook time
+- `.claude/rules/content-pipeline.md` has a new "Template-literal Audit for Programmatic Distractors" section with the correct vs. bad pattern
+- `.claude/rules/deck-quality.md` checklist includes the brace check
+- When writing any numeric distractor generator: use `String(value)` not `` `{${value}}` ``
