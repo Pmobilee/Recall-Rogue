@@ -1,8 +1,8 @@
 # Curated Deck System
 
 > **Purpose:** Explains what curated decks are, how they are structured, loaded, registered, and how player progression is tracked against them.
-> **Last verified:** 2026-04-09
-> **Source files:** `src/data/curatedDeckStore.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `src/services/dbDecoder.ts`, `public/curated.db`
+> **Last verified:** 2026-04-10
+> **Source files:** `src/data/curatedDeckStore.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `src/services/dbDecoder.ts`, `src/services/chessPuzzleService.ts`, `public/curated.db`, `public/chess-puzzles.db`
 
 ---
 
@@ -123,7 +123,7 @@ Two backfill scripts produced full coverage:
 `data/decks/manifest.json` lists all active deck filenames. As of 2026-04-10 it contains **94 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar/N1–N5 Kanji, Korean Hangul/TOPIK 1–2, Spanish A1–C2 (vocab), Spanish A1–B2 (grammar)
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**, **AP Human Geography**, **Philosophy**, **Chess Tactics** (300 Lichess CC0 puzzles)
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**, **AP Human Geography**, **Philosophy**, **Chess Tactics** (300 baked fallback facts + 620K+ runtime puzzles from `chess-puzzles.db`)
 
 ### Deck Architecture Files
 
@@ -983,9 +983,9 @@ Each skill's `tierParams` maps FSRS tiers `1 → 2a → 2b → 3` to progressive
 
 ## Chess Tactics Deck (`chess_tactics`)
 
-**Source:** 300 curated puzzles from the Lichess puzzle database (CC0 license)
+**Source:** 620,000+ puzzles from the Lichess puzzle database (CC0 license) via runtime DB; 300 baked facts as static fallback
 **Domain:** `games`, **subDomain:** `chess_tactics`
-**Facts:** 300 — each fact is one puzzle position
+**Baked facts:** 300 — used only when `public/chess-puzzles.db` is unavailable
 
 ### Deck Structure
 
@@ -994,9 +994,10 @@ Each skill's `tierParams` maps FSRS tiers `1 → 2a → 2b → 3` to progressive
 | Chain themes | 10 (see below) |
 | Difficulty range | 1–5 (mapped from Lichess Elo: 600–3000) |
 | Quiz mode | `chess_tactic` — board rendered by `ChessBoard.svelte` |
-| Response mode | `chess_move` — player moves pieces instead of choosing from a list |
+| Response mode | `chess_move` — player moves pieces; NO multiple choice fallback |
 | Distractors | None — the board position is the answer space |
 | Pool structure | One pool per chain theme, `answerFormat: 'move'` |
+| Question text | "{Color} to move." only — tactic type not revealed |
 
 ### Chain Themes
 
@@ -1028,9 +1029,23 @@ Beyond standard `DeckFact` fields, chess puzzle facts carry:
 
 Each chain theme has one `AnswerTypePool` with `answerFormat: 'move'`. Because the answer space is the board itself, no `syntheticDistractors` are needed and the pool sizing rules (minimum 15) do not apply — move legality and position uniqueness replace distractor variety.
 
+### Runtime Puzzle Database
+
+All 620,000+ filtered Lichess CC0 puzzles live in `public/chess-puzzles.db` (124 MB SQLite). This is separate from `curated.db` and is loaded lazily at runtime by `src/services/chessPuzzleService.ts`.
+
+**Puzzle selection:** Elo-targeted (±200 of player rating), optional theme filter, excludes already-seen IDs. Falls back to the 300 baked facts if the DB fetch fails.
+
+**Build command:** `npm run build:chess` — runs `scripts/build-chess-db.mjs`, reading from `data/sources/lichess/puzzles-filtered.json`.
+
+**DB schema:** `puzzles(id, fen, moves, rating, themes, game_url)` — `rating` column is indexed.
+
 ### Production Pipeline
 
 ```
+# Runtime puzzle DB (620K puzzles)
+npm run build:chess                          # puzzles-filtered.json → public/chess-puzzles.db
+
+# Baked fallback facts (300 puzzles in curated.db)
 scripts/chess/fetch-lichess-puzzles.mjs      # Pull puzzles from Lichess DB dump
 scripts/chess/select-puzzles.mjs             # Filter and theme-label 300 puzzles
 scripts/chess/assemble-facts.mjs             # Convert to DeckFact JSON
@@ -1040,7 +1055,7 @@ npm run build:curated                        # Compile to public/curated.db
 
 ### DB Schema Extension
 
-`curated.db` has four additional columns for chess facts (added 2026-04-10):
+`curated.db` has four additional columns for the 300 baked chess fallback facts (added 2026-04-10):
 `fen_position`, `solution_moves` (JSON array), `tactic_theme`, `lichess_rating`
 
 ### PlayerSave Fields

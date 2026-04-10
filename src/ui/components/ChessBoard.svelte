@@ -617,7 +617,7 @@
 <style>
   .chess-board-container {
     width: 100%;
-    max-width: calc(400px * var(--layout-scale, 1));
+    /* max-width removed — board fills parent panel */
     aspect-ratio: unset;
     margin: 0 auto;
     display: flex;
@@ -628,7 +628,7 @@
 
   .chess-board {
     width: 100%;
-    max-width: calc(400px * var(--layout-scale, 1));
+    /* max-width removed — board fills parent panel */
     aspect-ratio: 1;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -743,7 +743,7 @@
     align-items: center;
     gap: calc(8px * var(--layout-scale, 1));
     width: 100%;
-    max-width: calc(400px * var(--layout-scale, 1));
+    /* max-width removed — board fills parent panel */
     margin-top: calc(4px * var(--layout-scale, 1));
   }
 

@@ -303,7 +303,7 @@ When `segments` is empty (un-baked fact or CardExpanded), `fallbackText` is spli
 - Builds `chessContext` via `getPlayerContext(fenPosition, solutionMoves)` in a `$effect` (reacts to question changes)
 - Renders `<ChessBoard>` instead of answer buttons when `chessContext !== null`
 - `handleChessMove(uci)` grades via `gradeChessMove()`, updates Elo via `updateChessElo()` if `lichessRating` set, then calls `selectAnswer()` after delay
-- Falls back to standard MCQ if `getPlayerContext()` throws (invalid puzzle data)
+- Shows an error state (not MCQ) if `getPlayerContext()` throws — chess facts NEVER fall back to multiple choice
 - `showNotationInput={$isLandscape}` passed to ChessBoard — desktop-only notation input
 
 **Chess data pipeline for study mode:**
@@ -497,10 +497,17 @@ isAlwaysWriteEnabled(languageCode)  setAlwaysWriteEnabled(languageCode, enabled)
 
 The `chess_tactic` quiz mode renders an interactive chessboard instead of a text question. The player responds by moving pieces rather than selecting from multiple choice options. This is a new `quizResponseMode` value: `'chess_move'`.
 
+**Question text:** Always just "{Color} to move." — the tactic type is never revealed. The player must identify the winning idea from the board alone.
+
+**No multiple choice fallback:** Chess facts always render the board. If puzzle data is invalid (e.g. unparseable FEN), an error state is shown instead of falling back to MCQ buttons.
+
+**Board sizing:** `ChessBoard.svelte` fills the available quiz panel space. The previous `max-width: 400px` constraint was removed — the board is full-panel.
+
 **Source files:**
 - `src/ui/ChessBoard.svelte` — Interactive 8x8 board rendered in Svelte DOM
 - `src/services/chessGrader.ts` — FEN parsing, move grading, legal move enumeration, UCI→SAN conversion
 - `src/services/chessEloService.ts` — Elo rating tracking for puzzle performance
+- `src/services/chessPuzzleService.ts` — Runtime puzzle DB loader and Elo-targeted selector
 
 ### How It Works
 
@@ -557,6 +564,27 @@ The UI wires through `moveSequence` to present each board state in turn. After t
 ### Timer
 
 Chess puzzles use `BALANCE.CHESS_TIMER_MULTIPLIER = 2.0` (defined in `src/data/balance.ts`). The base floor timer is multiplied by this constant in `effectiveTimerSeconds` inside `CardCombatOverlay.svelte`, applied whenever `committedQuizData.quizResponseMode === 'chess_move'`. This gives 2x the normal time for board reading + tactical analysis. The timer is a speed-bonus timer only, not a hard deadline.
+
+### Runtime Puzzle Database
+
+All 620,000+ filtered Lichess CC0 puzzles are compiled into `public/chess-puzzles.db` (124 MB SQLite). The 300 baked facts in `curated.db` are a static fallback only.
+
+**Service:** `src/services/chessPuzzleService.ts`
+
+**Build:** `npm run build:chess` — runs `scripts/build-chess-db.mjs` which reads `data/sources/lichess/puzzles-filtered.json` and writes `public/chess-puzzles.db`.
+
+**Selection API (`ChessPuzzleQuery`):**
+
+| Field | Description |
+|---|---|
+| `targetRating` | Target Elo — queries within ±200 of this value |
+| `theme?` | Optional Lichess theme tag filter (e.g. `"fork"`) |
+| `excludeIds?` | Set of already-seen puzzle IDs, excluded client-side |
+| `count?` | Number of puzzles to return (default 10) |
+
+The DB is lazy-loaded on first call to `getNextPuzzles()`. If the fetch fails, the caller falls back to the baked 300 facts from `curated.db`.
+
+**DB schema:** `puzzles(id, fen, moves, rating, themes, game_url)` — `rating` is indexed for fast range queries.
 
 ### Piece Assets
 

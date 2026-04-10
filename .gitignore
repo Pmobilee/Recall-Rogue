@@ -65,6 +65,12 @@ public/facts.db
 # Generated curated deck database (build artifact from data/decks/)
 public/curated.db
 
+# Generated chess puzzle database (build artifact from data/sources/lichess/)
+public/chess-puzzles.db
+
+# Large source data files (Lichess CSV, etc.)
+data/sources/
+
 # Generated seed-pack (build artifact written by build-facts-db.mjs)
 data/seed-pack.json
 

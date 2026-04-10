@@ -79,7 +79,7 @@
 
 | Doc | Summary |
 |-----|---------|
-| [deck-system](content/deck-system.md) | Curated deck structure, JSON format, runtime loading, deck registry, player progression tracking, kanji deck architecture (3-fact-per-kanji model, 5 JLPT levels, 6,633 facts), procedural math decks, and chess tactics deck (300 Lichess puzzles, `chess_tactic` quiz mode) |
+| [deck-system](content/deck-system.md) | Curated deck structure, JSON format, runtime loading, deck registry, player progression tracking, kanji deck architecture (3-fact-per-kanji model, 5 JLPT levels, 6,633 facts), procedural math decks, and chess tactics deck (620K+ runtime puzzles via `chess-puzzles.db`, `chess_tactic` quiz mode, `chessPuzzleService.ts`) |
 | [trivia-bridge](content/trivia-bridge.md) | Curated deck → trivia bridge: entity selection, scoring, field mapping, CLI usage, provenance tracking |
 | [fact-pipeline](content/fact-pipeline.md) | `Fact` data format, `facts.db` SQLite build pipeline, `factsDB` runtime service, and content production workflow |
 | [domains](content/domains.md) | All knowledge domains, subcategory taxonomy, domain resolution logic, and language vs. knowledge domain distinction |

@@ -836,44 +836,50 @@
         </div>
       {/if}
     </div>
-  {:else if effectiveResponseMode === 'chess_move' && chessContext}
+  {:else if effectiveResponseMode === 'chess_move'}
     <div class="chess-puzzle-container">
-      {#if chessSetupPhase === 'pre-move' || chessSetupPhase === 'animating'}
-        <div class="chess-setup-label">Opponent plays...</div>
-      {/if}
-      {#if chessContext.totalPlayerMoves > 1 && chessSetupPhase === 'ready'}
-        <div class="chess-move-progress">
-          Move {chessCurrentMoveIndex + 1} / {chessContext.totalPlayerMoves}
-        </div>
-      {/if}
-      <ChessBoard
-        fen={chessBoardFen ?? chessContext.playerFen}
-        orientation={chessContext.orientation}
-        onmove={handleChessMove}
-        disabled={chessDisabled || answersDisabled || chessAnimatingOpponent}
-        lastMove={chessLastMove}
-        isInCheck={chessCheckState}
-        highlightSquares={chessHighlightSquares}
-        showNotationInput={$isLandscape}
-        onSoundEvent={(event) => {
-          if (event === 'capture') audioManager.playSound('chess_capture')
-          // move sounds handled in handleChessMove for player moves; setup handled in init effect
-        }}
-      />
-      {#if chessDisabled && selectedAnswerIndex !== null}
-        <div class="chess-solution-display">
-          <span class="chess-solution-label">
-            {getAnswerClass(selectedAnswerIndex).includes('correct') ? 'Correct!' : 'Solution:'}
-          </span>
-          <span class="chess-solution-move">
-            {correctAnswer}
-          </span>
-        </div>
-        {#if eloChange !== null}
-          <div class="elo-change-badge" class:elo-positive={eloChange > 0} class:elo-negative={eloChange < 0}>
-            {eloChange > 0 ? '+' : ''}{eloChange}
+      {#if chessContext}
+        {#if chessSetupPhase === 'pre-move' || chessSetupPhase === 'animating'}
+          <div class="chess-setup-label">Opponent plays...</div>
+        {/if}
+        {#if chessContext.totalPlayerMoves > 1 && chessSetupPhase === 'ready'}
+          <div class="chess-move-progress">
+            Move {chessCurrentMoveIndex + 1} / {chessContext.totalPlayerMoves}
           </div>
         {/if}
+        <ChessBoard
+          fen={chessBoardFen ?? chessContext.playerFen}
+          orientation={chessContext.orientation}
+          onmove={handleChessMove}
+          disabled={chessDisabled || answersDisabled || chessAnimatingOpponent}
+          lastMove={chessLastMove}
+          isInCheck={chessCheckState}
+          highlightSquares={chessHighlightSquares}
+          showNotationInput={$isLandscape}
+          onSoundEvent={(event) => {
+            if (event === 'capture') audioManager.playSound('chess_capture')
+            // move sounds handled in handleChessMove for player moves; setup handled in init effect
+          }}
+        />
+        {#if chessDisabled && selectedAnswerIndex !== null}
+          <div class="chess-solution-display">
+            <span class="chess-solution-label">
+              {getAnswerClass(selectedAnswerIndex).includes('correct') ? 'Correct!' : 'Solution:'}
+            </span>
+            <span class="chess-solution-move">
+              {correctAnswer}
+            </span>
+          </div>
+          {#if eloChange !== null}
+            <div class="elo-change-badge" class:elo-positive={eloChange > 0} class:elo-negative={eloChange < 0}>
+              {eloChange > 0 ? '+' : ''}{eloChange}
+            </div>
+          {/if}
+        {/if}
+      {:else}
+        <div class="chess-puzzle-error">
+          <span>Invalid puzzle position</span>
+        </div>
       {/if}
     </div>
   {:else if effectiveResponseMode === 'typing' && !isTypingExcluded && !answersDisabled}
@@ -1723,6 +1729,20 @@
     gap: calc(8px * var(--layout-scale, 1));
     width: 100%;
     padding: calc(4px * var(--layout-scale, 1));
+  }
+
+  .chess-puzzle-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 1;
+    background: rgba(220, 38, 38, 0.1);
+    border: calc(2px * var(--layout-scale, 1)) solid rgba(220, 38, 38, 0.3);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    color: #ef4444;
+    font-size: calc(16px * var(--text-scale, 1));
+    font-weight: 600;
   }
 
   .chess-solution-display {

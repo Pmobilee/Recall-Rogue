@@ -3673,7 +3673,9 @@ Beyond multiple-choice and typing, Study Temple supports **interactive puzzle mo
 
 The first interactive mode is **Chess Tactics** (`chess_tactic` quiz mode, `chess_move` response mode). The quiz overlay renders a live chessboard from a FEN position; the player taps a piece then taps a destination to make their move. Grading is immediate — the chosen move is checked against the Lichess-supplied solution in UCI notation.
 
-The player earns a personal **Tactical Elo** (starting 1000, K=32 standard formula) that adjusts after every puzzle attempt. Puzzle selection adapts to keep difficulty near the player's current Elo. The chess tactics deck contains 300 puzzles from the Lichess CC0 database, organized into 10 chain themes (forks, pins, back-rank mates, sacrifices, etc.).
+The quiz question displays only **"{Color} to move."** — the tactic type is never revealed in the question text. The player must identify the winning idea from the board position alone. The board fills the full quiz panel (no width cap). Chess facts **never fall back to multiple choice**; if puzzle data is invalid, an error state is shown instead.
+
+The player earns a personal **Tactical Elo** (starting 1000, K=32 standard formula) that adjusts after every puzzle attempt. Puzzle selection is adaptive: `chessPuzzleService.ts` loads all **620,000+ Lichess CC0 puzzles** from `public/chess-puzzles.db` (124 MB SQLite) on demand and queries within ±200 Elo of the player's current rating, with optional theme filter and seen-puzzle exclusion. The 300 baked facts in the curated deck remain as a fallback if the puzzle DB is unavailable. Puzzles are organized into 10 chain themes (forks, pins, back-rank mates, sacrifices, etc.).
 
 For implementation details, see `docs/mechanics/quiz.md` (Chess Move Response Mode) and `docs/content/deck-system.md` (Chess Tactics Deck).
 

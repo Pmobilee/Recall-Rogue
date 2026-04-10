@@ -15,6 +15,16 @@ import type { DeckRegistryEntry } from './deckRegistry';
 import type { CanonicalFactDomain } from './card-types';
 import { getDomainMetadata } from './domainMetadata';
 import { decodeDbBuffer } from '../services/dbDecoder';
+import {
+  loadDatabase as loadChessDatabase,
+  getNextPuzzles,
+  puzzleToDeckFact,
+  isChessDbLoaded,
+} from '../services/chessPuzzleService';
+import type { ChessPuzzleQuery } from '../services/chessPuzzleService';
+
+/** ID of the chess tactics curated deck — used for runtime puzzle injection. */
+const CHESS_TACTICS_DECK_ID = 'chess_tactics';
 
 // ---------------------------------------------------------------------------
 // sql.js lazy loader (mirrors the pattern in factsDB.ts)
@@ -464,6 +474,13 @@ export async function initializeCuratedDecks(): Promise<void> {
 
     db.close();
     console.log(`[CuratedDecks] Loaded ${loaded} curated deck(s) with ${totalFacts} total facts`);
+
+    // Start background load of chess puzzle DB if chess deck is present
+    if (loadedDecks.has(CHESS_TACTICS_DECK_ID)) {
+      loadChessDatabase().catch((err) =>
+        console.warn('[CuratedDecks] Chess puzzle DB prefetch failed:', err)
+      );
+    }
   } catch (err) {
     console.warn('[CuratedDecks] Failed to initialize:', err);
   }
@@ -475,4 +492,36 @@ export async function initializeCuratedDecks(): Promise<void> {
  */
 export function registerPersonalDeckInStore(deck: CuratedDeck): void {
   loadedDecks.set(deck.id, deck);
+}
+
+/**
+ * Replace the chess_tactics deck's baked facts with live Elo-targeted puzzles
+ * from chess-puzzles.db. Returns the number of facts injected (0 if DB unavailable).
+ */
+export async function refreshChessTacticsFacts(
+  query: ChessPuzzleQuery
+): Promise<number> {
+  if (!loadedDecks.has(CHESS_TACTICS_DECK_ID)) return 0;
+  if (!isChessDbLoaded()) return 0;
+
+  const puzzles = await getNextPuzzles(query);
+  if (puzzles.length === 0) return 0;
+
+  const deck = loadedDecks.get(CHESS_TACTICS_DECK_ID)!;
+
+  // Use chainThemeId 0 as default — runtime puzzles don't need chain grouping
+  const newFacts = puzzles.map((p) => puzzleToDeckFact(p, 0));
+
+  const updatedDeck: CuratedDeck = { ...deck, facts: newFacts };
+  loadedDecks.set(CHESS_TACTICS_DECK_ID, updatedDeck);
+  registerDeckFacts(CHESS_TACTICS_DECK_ID, {
+    allFacts: newFacts.map((f) => f.id),
+  });
+
+  return newFacts.length;
+}
+
+/** Check whether the runtime chess puzzle DB is loaded and ready. */
+export function isChessPuzzleDbReady(): boolean {
+  return isChessDbLoaded();
 }
