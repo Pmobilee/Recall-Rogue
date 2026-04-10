@@ -213,7 +213,7 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'C1', name: 'CEFR C1', wordCount: 4400, order: 5 }
     ],
     voiceId: 'nl-NL-ColetteNeural',
-    subdecks: ['dutch_a1', 'dutch_a2', 'dutch_b1', 'dutch_b2', 'dutch_c1'],
+    subdecks: ['dutch_a1', 'dutch_a2', 'dutch_c1'],
     options: [
       { id: 'alwaysWrite', label: 'Always Write Answers', description: 'Type answers instead of multiple choice', type: 'toggle' as const, default: false }
     ]

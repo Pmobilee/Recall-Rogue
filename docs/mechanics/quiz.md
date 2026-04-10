@@ -70,8 +70,10 @@ elements (expected value is positive for small indices), compounding the FIFO pr
 
 1. Filter by `template.availableFromMastery <= cardMasteryLevel`
 2. Filter to templates whose `answerPoolId` contains the fact
-3. Weight: difficulty match ±1 vs mastery band (+3.0), variety penalty for recently used (×0.2), fresh bonus (+2.0), reverse-capable at mastery ≥ 2 (+1.5)
-4. Weighted random pick; falls back to `fact.quizQuestion` if no templates match
+3. Reject `{explanation}`-based templates when the explanation leaks the answer (see §Explanation-based templates and answer leakage)
+4. Reject reading templates (id matching `/^reading(_|$)/`) when `fact.reading === fact.targetLanguageWord` after normalisation (see §Reading templates and phonetic-form facts)
+5. Weight: difficulty match ±1 vs mastery band (+3.0), variety penalty for recently used (×0.2), fresh bonus (+2.0), reverse-capable at mastery ≥ 2 (+1.5)
+6. Weighted random pick; falls back to `fact.quizQuestion` if no templates match
 
 Template placeholders in `questionFormat` are replaced via `renderTemplate`: `{targetLanguageWord}`, `{correctAnswer}`, `{language}`, `{reading}`, `{explanation}`, `{quizQuestion}`, and any other fact field key.
 
@@ -82,6 +84,63 @@ Template placeholders in `questionFormat` are replaced via `renderTemplate`: `{t
 Special template IDs: `reverse` (answer = `targetLanguageWord`), `reading` (answer = `fact.reading`), default (answer = `fact.correctAnswer`).
 
 **Note:** Different question templates can reference different `answerPoolId` values for the same fact. A vocabulary fact might use the `english_meanings` pool for forward questions and the `target_language_words` pool for reverse questions. The pool used is always determined by the selected template, not the fact itself.
+
+#### Reverse templates and target-language distractor pools
+
+When the template's question is in the source language and the answer is in the target language (template `id: 'reverse'`), distractors must come from the **target-language field** (`targetLanguageWord`) — not from the English-meaning field (`correctAnswer`). Without this, all distractors are English words while the single correct option is a target-language string, making it identifiable by script alone without any vocabulary knowledge.
+
+`selectQuestionTemplate` returns a `distractorAnswerField: keyof DeckFact` alongside `answerPoolId`. Callers pass this to `selectDistractors` as its optional 9th parameter. `selectDistractors` uses `resolveDisplayAnswer(fact, distractorAnswerField)` throughout — for uniqueness checking, scoring, and the final returned `DeckFact.correctAnswer` (which is overwritten to the resolved value so callers uniformly read `d.correctAnswer`).
+
+| Template ID        | `distractorAnswerField` | Correct answer field    |
+|--------------------|------------------------|-------------------------|
+| `forward`          | `'correctAnswer'`      | `fact.correctAnswer`    |
+| `reverse`          | `'targetLanguageWord'` | `fact.targetLanguageWord` |
+| `reading_pinyin`   | `'reading'`            | `fact.reading`          |
+| `reading`          | `'reading'`            | `fact.reading`          |
+| `definition_match` | `'correctAnswer'`      | `fact.correctAnswer`    |
+| `synonym_pick`     | `'correctAnswer'`      | `fact.correctAnswer`    |
+
+Deck JSON does not need to declare this mapping — it is resolved in `getDistractorAnswerFieldForTemplate()` in `questionTemplateSelector.ts` based on the template `id`. Callers that do not use templates (e.g. `getBridgedDistractors` in trivia mode) retain the default `'correctAnswer'` behavior.
+
+**Audit reference:** This bug was confirmed as BLOCKER across ~25 language decks in the 2026-04-10 quiz audit (Pattern 3). korean_topik2 had 49/49 reverse-template rows contaminated (100%). See `docs/reports/quiz-audit-2026-04-10.md §Pattern 3`.
+
+
+#### Explanation-based templates and answer leakage
+
+Any template whose `questionFormat` contains the `{explanation}` placeholder renders the fact's explanation text verbatim as the question stem. Wiktionary-sourced vocabulary explanations follow the format `"word — English meaning"` (e.g., `"abbaye — abbey."`), which means the correct answer appears in the rendered question — making it trivially self-answering.
+
+**The rule:** A template is INELIGIBLE for a fact when BOTH conditions hold:
+1. The template's `questionFormat` contains `{explanation}`.
+2. The fact's `explanation` contains the `correctAnswer` as a whole word (word-boundary, case-insensitive).
+
+**Implementation:** `explanationLeaksAnswer(fact: DeckFact): boolean` in `questionTemplateSelector.ts`. Called once per fact selection, O(L) where L is explanation length. The eligibility filter in `selectQuestionTemplate()` step 3 rejects any `{explanation}`-based template when this returns true.
+
+**Word-boundary matching:** Uses `\b` anchors — "schools" does NOT match answer "school". This is intentional: false negatives (allowing a mildly suggestive explanation) are preferred over false positives (suppressing a perfectly valid question). Multi-word answers (e.g., "to picnic") are matched as a single phrase with `\b` at both ends.
+
+**Affected templates:** `definition_match` (the only `{explanation}` template in the default vocabulary template set). Knowledge-deck templates that use `{explanation}` as a hint or secondary display are not affected because they don't render explanation-as-question.
+
+**When the template is blocked:** The selector falls through to other eligible templates (e.g., `synonym_pick`, `forward`, `reverse`). If no other templates are eligible, the selector falls back to `_fallback` (the fact's `quizQuestion` field).
+
+**Audit reference:** Confirmed as BLOCKER in 2026-04-10 quiz audit (Pattern 4). french_b1 had 19% hit rate at mastery=4; czech_b2 had 23%. See `docs/reports/quiz-audit-2026-04-10.md §Pattern 4`. Fix commit: `fix(quiz): definition_match template ineligible when explanation contains the answer`.
+
+
+#### Reading templates and phonetic-form facts
+
+Reading templates (template `id` matching `/^reading(_|$)/`) ask "What is the reading of 'X'?" where the answer is `fact.reading`. This is meaningful for kanji words, Chinese hanzi, or any word whose written form differs from its pronunciation. However, **katakana loanwords and hiragana-only words** have identical `targetLanguageWord` and `reading` fields — both are already in phonetic script. Applying a reading template to such facts produces a self-answering question:
+
+> "What is the reading of 'スーパー'?" → correct answer: "スーパー"
+
+The question literally contains its own answer.
+
+**The rule:** A template whose `id` matches `/^reading(_|$)/` is INELIGIBLE for a fact when BOTH `fact.reading` and `fact.targetLanguageWord` are present AND equal after normalisation (lowercase, strip surrounding whitespace).
+
+**Implementation:** `readingMatchesTargetWord(fact: DeckFact): boolean` in `questionTemplateSelector.ts`. Returns `false` if either field is absent (no block applied). The eligibility filter in `selectQuestionTemplate()` step 4 rejects any reading template when this returns `true`. The constant `READING_TEMPLATE_PATTERN = /^reading(_|$)/` covers all current variants: `reading`, `reading_pinyin`, `reading_hiragana`.
+
+**When the template is blocked:** The selector falls through to other eligible templates (e.g., `forward`, `definition_match`). If no other templates are eligible, the selector falls back to `_fallback` (the fact's `quizQuestion` field).
+
+**Affected decks:** `japanese_n1`, `japanese_n4`, `japanese_n5` (katakana loanwords and hiragana words). Any vocabulary deck with entries where the surface form is already phonetic is susceptible.
+
+**Audit reference:** Confirmed as BLOCKER in 2026-04-10 quiz audit (Patterns 5 & 12). Confirmed cases: `japanese_n5` (レコード), `japanese_n4` (スーパー), `japanese_n1` (しかしながら, はらはら, アプローチ). Fix commit: `fix(quiz): reading templates ineligible when word already in phonetic form`.
 
 ### 3. Question Formatting (`questionFormatter.ts`)
 
@@ -737,3 +796,62 @@ Continuous-accuracy Elo (unlike chess binary correct/wrong):
 
 Map quizzes are excluded from typing mode (`isTypingExcluded` returns true when `quizResponseMode === 'map_pin'`).
 
+
+---
+
+## Numeric Distractor Domain Detection (`numericalDistractorService.ts`)
+
+Bracket-notation facts (e.g., `correctAnswer: "{99.86}"`) generate their distractors at runtime via `getNumericalDistractors`. Without domain awareness, the ±20-50% variation strategy can produce physically impossible values — for example, a mass-percentage answer of 99.86% generated variants of 138.52 and 120.24 (impossible percentages players eliminate instantly).
+
+### Three-Layer Defence
+
+The system applies three complementary layers to keep distractors in-domain:
+
+**Layer 1: Answer-format hints** — The most precise layer, checked first.
+- `%` suffix in the answer string → `percentage` domain (clamp 0–100)
+- 4-digit number shape with value in [1000, 2100] → `year` domain (clamp 1–2100)
+- Unit suffix in answer (km, kg, days, etc.) → `measurement` domain (clamp > 0)
+
+**Layer 2: Question-text hints** — Catches bare-number answers where the unit/domain is only expressed in the question.
+- "percent" / "percentage" / "%" / "fraction of" / "proportion of" in question → `percentage` (clamp 0–100)
+- "year" / "century" / "decade" / "when was" / "in what year" → `year` (clamp 1–2100)
+- "how many" / "number of" / "count of" / "total of" → `count` (clamp ≥ 0, no upper bound)
+- Unit keywords (kilometers, metres, seconds, grams, etc.) in question → `measurement` (clamp > 0)
+
+**Layer 3: Hard clamps** — Post-generation safety net. Every candidate value is passed through `applyClamp()` before being returned. A clamped value that equals the correct answer (collapsed by the clamp) is discarded rather than returned as a wrong answer.
+
+### Public API
+
+```typescript
+// Domain descriptor
+interface AnswerDomain {
+  kind: 'percentage' | 'year' | 'count' | 'measurement' | 'unknown'
+  clamp: { min: number; max: number } | null
+}
+
+// Detect domain from answer + question text
+detectAnswerDomain(answerStr: string, questionText?: string): AnswerDomain
+
+// Generate distractors (auto-detects domain via quizQuestion field if present)
+getNumericalDistractors(
+  fact: Fact,
+  count?: number,
+  questionText?: string,  // optional: pass rendered question stem for best detection
+): string[]
+```
+
+Callers that have the rendered question text available should pass it as the third argument. When omitted, `getNumericalDistractors` auto-reads `fact.quizQuestion` (available on `DeckFact` but not the base `Fact` type — accessed via safe dynamic lookup).
+
+### Example
+
+| Fact | correctAnswer | quizQuestion contains | Domain detected | Clamp |
+|------|--------------|----------------------|-----------------|-------|
+| `solar_system_sun_mass_percentage` | `{99.86}` | "percentage" | `percentage` | 0–100 |
+| `apollo11_landing_year` | `{1969}` | "what year" | `year` | 1–2100 |
+| `solar_system_planet_count` | `{8}` | "how many planets" | `count` | ≥ 0 |
+| `moon_distance_km` | `{384400} km` | — | `measurement` (answer format) | > 0 |
+| `napoleon_height` | `{169}` | "height in cm" | `measurement` | > 0 |
+
+### Affected Decks
+
+solar_system (percentage mass facts), AP Physics (measurement quantities), AP Chemistry (molar mass, concentration), any deck with facts where the answer is a bare number but the question clarifies the unit or domain.

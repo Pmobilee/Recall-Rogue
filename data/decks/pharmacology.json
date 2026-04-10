@@ -12,7 +12,7 @@
       "correctAnswer": "ACE inhibitor",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -133,7 +133,7 @@
         "ARB"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -257,7 +257,7 @@
         "Cardioselective beta-blocker"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -377,7 +377,7 @@
         "Calcium channel blocker"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -499,7 +499,7 @@
         "Non-dihydropyridine CCB"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -622,7 +622,7 @@
         "Centrally acting antihypertensive"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -695,7 +695,7 @@
         "Gynecomastia",
         "Visual disturbances (yellow/green halos)"
       ],
-      "quizQuestion": "What serious adverse effect occurs when clonidine is this abruptly?",
+      "quizQuestion": "What serious adverse effect occurs when clonidine is stopped abruptly?",
       "explanation": "Abrupt discontinuation of clonidine causes rebound hypertension — a sudden and severe spike in blood pressure due to sympathetic nervous system rebound. Patients must taper clonidine gradually over several days to weeks when discontinuing.",
       "wowFactor": "Stopping clonidine suddenly can cause blood pressure to spike dangerously higher than before treatment started — the sympathetic system 'bounces back' with a vengeance.",
       "statement": "Abrupt discontinuation of clonidine causes rebound hypertension due to sympathetic nervous system rebound.",
@@ -743,7 +743,7 @@
         "Vasodilator"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -862,7 +862,7 @@
       "correctAnswer": "Cardiac glycoside",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -967,7 +967,7 @@
         "Sodium thiosulfate",
         "Deferoxamine"
       ],
-      "quizQuestion": "What is the antidote for this toxicity?",
+      "quizQuestion": "What is the antidote for digoxin toxicity?",
       "explanation": "Digoxin immune Fab (Digibind/DigiFab) consists of antibody fragments that bind digoxin molecules, rapidly reversing toxicity. It is indicated for life-threatening digoxin overdose with severe dysrhythmias or hyperkalemia.",
       "wowFactor": "Digoxin immune Fab is literally an antibody that hunts down digoxin in the bloodstream and binds it — like sending tiny molecular handcuffs to neutralize the drug.",
       "statement": "Digoxin immune Fab (Digibind) is the antidote for digoxin toxicity, using antibody fragments to neutralize the drug.",
@@ -985,7 +985,7 @@
         "Antiarrhythmic"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -1108,7 +1108,7 @@
         "Antiarrhythmic"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -1231,7 +1231,7 @@
         "Muscarinic antagonist"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -1354,7 +1354,7 @@
         "Adrenergic agonist"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -1428,7 +1428,7 @@
         "Monitor serum potassium every 6 hours",
         "Administer subcutaneously only"
       ],
-      "quizQuestion": "What is the correct route of administration for epinephrine in this?",
+      "quizQuestion": "What is the correct route of administration for epinephrine in anaphylaxis?",
       "explanation": "Epinephrine for anaphylaxis is given IM into the anterolateral thigh (vastus lateralis) — NOT the deltoid, which has slower absorption. IV epinephrine is reserved for cardiac arrest. The EpiPen can be given through clothing for emergencies.",
       "wowFactor": "The thigh muscle absorbs epinephrine faster than any other IM site because it has a superior blood supply — crucial in anaphylaxis where every second counts.",
       "statement": "Epinephrine for anaphylaxis is administered IM into the anterolateral thigh for fastest absorption; IV only for cardiac arrest.",
@@ -1478,7 +1478,7 @@
         "Catecholamine"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -1600,7 +1600,7 @@
         "Vasopressor/inotrope"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -1722,7 +1722,7 @@
         "Vasodilator"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -1845,7 +1845,7 @@
         "Statin"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -1966,7 +1966,7 @@
       "correctAnswer": "Loop diuretic",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -2087,7 +2087,7 @@
         "Aldosterone antagonist"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -2209,7 +2209,7 @@
         "Thiazide"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -2329,7 +2329,7 @@
       "correctAnswer": "Osmotic diuretic",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -2452,7 +2452,7 @@
         "Recombinant erythropoietin"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -2575,7 +2575,7 @@
         "Mineral supplement"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -2618,7 +2618,7 @@
         "Stimulates RBC maturation factors",
         "Blocks iron excretion in urine"
       ],
-      "quizQuestion": "How does ferrous sulfate treat this deficiency anemia?",
+      "quizQuestion": "How does ferrous sulfate treat iron deficiency anemia?",
       "explanation": "Ferrous sulfate provides elemental iron that is absorbed in the duodenum and used by the bone marrow to synthesize hemoglobin. Without adequate iron, the bone marrow produces small, pale (microcytic hypochromic) red blood cells.",
       "wowFactor": "Vitamin C triples iron absorption — a glass of orange juice with an iron pill turns a modest dose into a therapeutic powerhouse.",
       "statement": "Ferrous sulfate provides elemental iron absorbed in the duodenum, enabling hemoglobin synthesis for red blood cell production.",
@@ -2697,7 +2697,7 @@
         "Oral anticoagulant"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -2820,7 +2820,7 @@
         "IV anticoagulant"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -2939,7 +2939,7 @@
         "LMWH"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -3061,7 +3061,7 @@
         "Direct oral anticoagulant"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -3135,7 +3135,7 @@
         "Photosensitivity",
         "Dry cough"
       ],
-      "quizQuestion": "What is the primary this complication nurses must monitor for in patients on rivaroxaban?",
+      "quizQuestion": "What is the primary bleeding complication nurses must monitor for in patients on rivaroxaban?",
       "explanation": "Rivaroxaban increases risk of bleeding, with GI bleeding being particularly common. Unlike warfarin, there was no reliable reversal agent for years — andexanet alfa (Andexxa) is now available but expensive and with limited availability.",
       "wowFactor": "For years after its approval, rivaroxaban had no antidote — a concerning situation for trauma patients on anticoagulation. Andexanet alfa changed this in 2018.",
       "statement": "Rivaroxaban's primary risk is bleeding, especially GI bleeding; andexanet alfa is the reversal agent with limited availability.",
@@ -3184,7 +3184,7 @@
         "ADP receptor antagonist"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -3308,7 +3308,7 @@
         "Salicylate"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -3432,7 +3432,7 @@
         "Fibrinolytic agent"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -3554,7 +3554,7 @@
         "Beta-lactam antibiotic"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -3680,7 +3680,7 @@
         "Beta-lactam antibiotic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -3804,7 +3804,7 @@
         "Glycopeptide"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -3927,7 +3927,7 @@
         "Tetracycline"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -4051,7 +4051,7 @@
         "Macrolide"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -4175,7 +4175,7 @@
         "Aminoglycoside"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -4301,7 +4301,7 @@
         "Sulfa antibiotic"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -4426,7 +4426,7 @@
         "Quinolone antibiotic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -4533,7 +4533,7 @@
         "Potassium supplements cause hyperkalemia",
         "NSAIDs reduce drug absorption significantly"
       ],
-      "quizQuestion": "Which substances significantly this ciprofloxacin absorption and must be timed carefully?",
+      "quizQuestion": "Which substances significantly reduce ciprofloxacin absorption and must be timed carefully?",
       "explanation": "Antacids, calcium, iron, zinc, and magnesium-containing products chelate ciprofloxacin and reduce its absorption by up to 90%. Ciprofloxacin must be taken at least 2 hours before or 6 hours after these substances. Ciprofloxacin also increases theophylline toxicity by inhibiting its metabolism.",
       "wowFactor": "Taking ciprofloxacin with an antacid can cut the absorbed dose by 90% — the antibiotic literally sticks to the minerals and passes right through without entering the bloodstream.",
       "statement": "Antacids, calcium, iron, and zinc chelate ciprofloxacin and drastically reduce its absorption.",
@@ -4551,7 +4551,7 @@
         "Antiprotozoal antibiotic"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -4676,7 +4676,7 @@
         "Antimycobacterial"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -4783,7 +4783,7 @@
         "Avoid antacids within 2 hours of administration",
         "Use inline filter for all IV infusions"
       ],
-      "quizQuestion": "What this should always be co-administered with isoniazid to prevent a common adverse effect?",
+      "quizQuestion": "What supplement should always be co-administered with isoniazid to prevent a common adverse effect?",
       "explanation": "Vitamin B6 (pyridoxine) must be given with isoniazid because INH interferes with pyridoxine metabolism, leading to peripheral neuropathy. High-risk patients (malnourished, elderly, diabetic, pregnant) especially need B6 supplementation. Liver enzymes and alcohol intake should also be assessed.",
       "wowFactor": "Isoniazid and vitamin B6 are inseparable partners — one causes neuropathy, the other prevents it. Never prescribe INH without its B6 companion.",
       "statement": "Vitamin B6 (pyridoxine) must be given with isoniazid to prevent peripheral neuropathy caused by B6 depletion.",
@@ -4801,7 +4801,7 @@
         "Rifamycin antibiotic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -4925,7 +4925,7 @@
         "Antifungal"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -5050,7 +5050,7 @@
         "Nucleoside analog"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -5296,7 +5296,7 @@
         "Tricyclic antidepressant"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -5417,7 +5417,7 @@
         "MAOI"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -5537,7 +5537,7 @@
         "Norepinephrine-dopamine reuptake inhibitor"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -5657,7 +5657,7 @@
       "correctAnswer": "Mood stabilizer",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -5701,7 +5701,7 @@
         "Assess for gingival hyperplasia",
         "Protect from light"
       ],
-      "quizQuestion": "What is the most critical nursing intervention for a patient on this?",
+      "quizQuestion": "What is the most critical nursing intervention for a patient on lithium?",
       "explanation": "Lithium has a very narrow therapeutic index (0.6-1.2 mEq/L). Levels above 1.5 mEq/L cause toxicity (nausea, vomiting, ataxia, tremor) and above 2.0 mEq/L can cause seizures, coma, and death. Adequate fluid and sodium intake must be maintained.",
       "wowFactor": "Dehydration and low sodium both increase lithium levels — a patient who sweats heavily during summer can develop lithium toxicity without changing their dose.",
       "statement": "Lithium requires close monitoring of serum levels (therapeutic range 0.6-1.2 mEq/L) and adequate fluid and sodium intake.",
@@ -5781,7 +5781,7 @@
         "First-generation antipsychotic"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -5905,7 +5905,7 @@
         "Second-generation antipsychotic"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -6007,7 +6007,7 @@
         "Monitor serum lithium levels",
         "Protect from light"
       ],
-      "quizQuestion": "What this monitoring is required for all patients on clozapine?",
+      "quizQuestion": "What blood monitoring is required for all patients on clozapine?",
       "explanation": "All patients on clozapine must be enrolled in the Clozapine REMS (Risk Evaluation and Mitigation Strategy) program, requiring regular ANC monitoring. Frequency varies: weekly for 6 months, then biweekly, then monthly.",
       "wowFactor": "Pharmacies cannot dispense clozapine without confirming the ANC has been checked — it is the most strictly controlled non-controlled substance in the US pharmacy system.",
       "statement": "Clozapine requires mandatory enrollment in the REMS program with regular ANC blood monitoring to detect agranulocytosis early.",
@@ -6024,7 +6024,7 @@
         "Benzodiazepine anxiolytic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -6144,7 +6144,7 @@
         "Non-benzodiazepine anxiolytic"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -6265,7 +6265,7 @@
         "Sedative-hypnotic"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -6387,7 +6387,7 @@
         "Antiepileptic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -6492,7 +6492,7 @@
         "Give with vitamin B6",
         "Monitor ANC for agranulocytosis"
       ],
-      "quizQuestion": "What is the critical nursing monitoring parameter for this?",
+      "quizQuestion": "What is the critical nursing monitoring parameter for phenytoin?",
       "explanation": "Phenytoin has a narrow therapeutic index (10-20 mcg/mL). Levels below 10 result in seizure breakthrough; levels above 20 cause toxicity (nystagmus, ataxia, diplopia). IV phenytoin must be given at no faster than 50 mg/min.",
       "wowFactor": "Purple glove syndrome is a rare but alarming phenytoin-specific complication — the IV site turns purple-blue from extravasation and drug precipitation. The limb may require amputation in severe cases.",
       "statement": "Phenytoin requires serum level monitoring (therapeutic range 10-20 mcg/mL) and IV infusion at no faster than 50 mg/min.",
@@ -6510,7 +6510,7 @@
         "Antiepileptic"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -6633,7 +6633,7 @@
         "Valproate"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -6757,7 +6757,7 @@
         "Antiepileptic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -6880,7 +6880,7 @@
         "Dopamine precursor"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -6923,7 +6923,7 @@
         "Stimulates serotonin receptors",
         "Blocks norepinephrine reuptake"
       ],
-      "quizQuestion": "What is the mechanism of carbidopa-this in treating Parkinson disease?",
+      "quizQuestion": "What is the mechanism of carbidopa-levodopa in treating Parkinson disease?",
       "explanation": "Levodopa is converted to dopamine by DOPA decarboxylase both peripherally and in the brain. Carbidopa inhibits peripheral DOPA decarboxylase, preventing nausea and allowing more levodopa to reach the brain where it restores dopamine levels in the striatum.",
       "wowFactor": "Before carbidopa was combined with levodopa, patients needed 10x the dose of levodopa alone — causing severe nausea and vomiting. Carbidopa allows a 75% dose reduction while improving efficacy.",
       "statement": "Levodopa crosses the BBB and converts to dopamine; carbidopa blocks peripheral decarboxylase, reducing side effects and improving brain delivery.",
@@ -7003,7 +7003,7 @@
         "Anticholinergic"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -7077,7 +7077,7 @@
         "Hyperkalemia",
         "Respiratory depression"
       ],
-      "quizQuestion": "What are the expected side this of benztropine?",
+      "quizQuestion": "What are the expected side effects of benztropine?",
       "explanation": "Benztropine's anticholinergic mechanism causes predictable side effects: dry mouth, blurred vision, constipation, urinary retention, and tachycardia. In elderly patients, it can cause confusion and worsening cognitive impairment.",
       "wowFactor": "Benztropine is on the Beers Criteria list of drugs to avoid in the elderly — its anticholinergic burden can cause acute confusion that looks like dementia, and it may actually worsen underlying dementia.",
       "statement": "Benztropine causes anticholinergic side effects (dry mouth, urinary retention, constipation) and should be avoided in elderly patients with dementia.",
@@ -7127,7 +7127,7 @@
         "AChE inhibitor"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -7249,7 +7249,7 @@
         "Opioid agonist"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -7373,7 +7373,7 @@
         "Hydromorphone"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -7495,7 +7495,7 @@
         "Semi-synthetic opioid"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -7539,7 +7539,7 @@
         "Give with vitamin B6",
         "Monitor serum drug levels"
       ],
-      "quizQuestion": "What is the critical administration instruction for this-release oxycodone?",
+      "quizQuestion": "What is the critical administration instruction for extended-release oxycodone?",
       "explanation": "Extended-release oxycodone tablets must be swallowed whole — crushing, chewing, or dissolving releases the full dose immediately, causing potentially fatal respiratory depression. Nurses must also monitor for respiratory depression and abuse potential.",
       "wowFactor": "Extended-release opioid tablets that can be abused by crushing were so dangerous that the FDA mandated tamper-resistant formulations — OxyContin's current formulation forms a gel when wet, making injection difficult.",
       "statement": "Extended-release oxycodone must never be crushed or chewed — this releases the full dose at once and can cause fatal respiratory depression.",
@@ -7619,7 +7619,7 @@
         "Opioid agonist"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -7724,7 +7724,7 @@
         "Phentolamine",
         "Glucagon"
       ],
-      "quizQuestion": "What reverses fentanyl overdose, and why may multiple this be needed?",
+      "quizQuestion": "What reverses fentanyl overdose, and why may multiple doses be needed?",
       "explanation": "Naloxone reverses fentanyl overdose by blocking opioid receptors. Multiple doses or a continuous infusion are often needed because naloxone has a shorter half-life (30-90 min) than fentanyl, especially with patches or large IV doses.",
       "wowFactor": "With illicit fentanyl-laced drugs, standard naloxone doses may not work — the extreme potency and quantity can overwhelm typical antidote doses, requiring multiple 2 mg intranasal doses in rapid succession.",
       "statement": "Naloxone reverses fentanyl overdose but may require multiple doses or infusion because naloxone's shorter duration cannot outlast high-potency fentanyl.",
@@ -7741,7 +7741,7 @@
         "Opioid receptor antagonist"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 6,
       "distractors": [
@@ -7815,7 +7815,7 @@
         "Stevens-Johnson syndrome",
         "Hepatotoxicity"
       ],
-      "quizQuestion": "What is the main adverse effect of naloxone in this-dependent patients?",
+      "quizQuestion": "What is the main adverse effect of naloxone in opioid-dependent patients?",
       "explanation": "In opioid-dependent patients, naloxone precipitates acute withdrawal: tachycardia, hypertension, agitation, nausea, vomiting, pain, and diaphoresis. The withdrawal is rapidly reversed if naloxone is discontinued, unlike physiologic withdrawal which takes days.",
       "wowFactor": "Naloxone-precipitated withdrawal in a dependent patient is sudden and severe — a patient can go from an opioid overdose with pinpoint pupils to screaming, vomiting agitation within 60 seconds of IV naloxone.",
       "statement": "In opioid-dependent patients, naloxone precipitates acute withdrawal (tachycardia, agitation, vomiting) that reverses when naloxone wears off.",
@@ -7863,7 +7863,7 @@
         "Depolarizing paralytic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -7984,7 +7984,7 @@
         "Muscle relaxant"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -8103,7 +8103,7 @@
       "correctAnswer": "Rapid-acting insulin",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -8217,7 +8217,7 @@
       "correctAnswer": "Short-acting insulin",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -8331,7 +8331,7 @@
       "correctAnswer": "Intermediate-acting insulin",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -8445,7 +8445,7 @@
       "correctAnswer": "Long-acting insulin",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -8561,7 +8561,7 @@
         "biguanide"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -8682,7 +8682,7 @@
         "sulfonylurea"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -8794,7 +8794,7 @@
       "correctAnswer": "Hyperglycemic agent",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -8912,7 +8912,7 @@
         "synthetic thyroid hormone"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -9029,7 +9029,7 @@
         "thioamide antithyroid"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -9148,7 +9148,7 @@
         "antidiuretic hormone analog"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -9268,7 +9268,7 @@
         "corticosteroid"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -9385,7 +9385,7 @@
       "correctAnswer": "Mineralocorticoid",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -9501,7 +9501,7 @@
       "correctAnswer": "Bisphosphonate",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -9618,7 +9618,7 @@
       "correctAnswer": "Xanthine oxidase inhibitor",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -9737,7 +9737,7 @@
         "PPI"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -9857,7 +9857,7 @@
         "H2 blocker"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -9975,7 +9975,7 @@
         "surfactant laxative"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -10064,7 +10064,7 @@
         "hyperammonemia treatment"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -10182,7 +10182,7 @@
         "antidiarrheal"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -10271,7 +10271,7 @@
         "antiemetic"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -10391,7 +10391,7 @@
         "dopamine D2 antagonist"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -10513,7 +10513,7 @@
         "digestive enzyme supplement"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -10602,7 +10602,7 @@
         "5-ASA agent"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -10693,7 +10693,7 @@
         "beta-2 agonist bronchodilator"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -10811,7 +10811,7 @@
         "muscarinic antagonist bronchodilator"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -10900,7 +10900,7 @@
         "ICS"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -11020,7 +11020,7 @@
         "LTRA"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -11141,7 +11141,7 @@
         "sedating antihistamine"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -11213,7 +11213,7 @@
         "Water intoxication and hyponatremia",
         "Tardive dyskinesia with chronic use"
       ],
-      "quizQuestion": "What are the major adverse this of diphenhydramine?",
+      "quizQuestion": "What are the major adverse effects of diphenhydramine?",
       "explanation": "Sedation is the primary adverse effect. Anticholinergic effects include dry mouth, urinary retention, constipation, and blurred vision. Paradoxical excitation occurs in children. Diphenhydramine is on the Beers list for older adults — avoid due to fall risk, cognitive impairment, and urinary retention.",
       "wowFactor": "Benadryl is one of the most dangerous drugs for the elderly — it causes confusion, falls, and urinary retention, yet is still OTC and taken by many seniors for sleep.",
       "statement": "Diphenhydramine causes sedation, anticholinergic effects, and is on the Beers list — avoid in elderly patients.",
@@ -11261,7 +11261,7 @@
         "xanthine bronchodilator"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -11379,7 +11379,7 @@
         "oxytocic"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -11498,7 +11498,7 @@
         "magnesium sulfate anticonvulsant"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -11618,7 +11618,7 @@
         "beta-2 agonist"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -11738,7 +11738,7 @@
         "Rh immunoglobulin"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -11975,7 +11975,7 @@
         "combined OCP"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -12077,7 +12077,7 @@
         "NSAIDs (increase drug toxicity)",
         "Caffeine (antagonizes contraceptive effect)"
       ],
-      "quizQuestion": "Which drug most significantly this the effectiveness of combined oral contraceptives?",
+      "quizQuestion": "Which drug most significantly reduce the effectiveness of combined oral contraceptives?",
       "explanation": "Rifampin is a potent CYP3A4 inducer — it dramatically accelerates the metabolism of ethinyl estradiol and progestin, reducing their plasma concentrations and contraceptive effectiveness. Patients must use backup contraception. Anticonvulsants (phenytoin, carbamazepine) also reduce OC efficacy.",
       "wowFactor": "A tuberculosis drug (rifampin) can cause an unintended pregnancy — nurses must counsel any woman on rifampin to use a backup contraceptive method immediately.",
       "statement": "Rifampin induces CYP3A4, accelerating OC metabolism and reducing contraceptive effectiveness; backup method required.",
@@ -12290,112 +12290,119 @@
       ]
     },
     {
-      "id": "drug_classes",
-      "label": "Drug Classes",
+      "id": "drug_classes_short",
+      "label": "Drug Classes (short)",
       "answerFormat": "term",
       "factIds": [
         "pharm-cv-lisinopril-class",
-        "pharm-cv-losartan-class",
-        "pharm-cv-metoprolol-class",
-        "pharm-cv-amlodipine-class",
-        "pharm-cv-diltiazem-class",
-        "pharm-cv-clonidine-class",
-        "pharm-cv-nitroprusside-class",
-        "pharm-cv-digoxin-class",
-        "pharm-cv-amiodarone-class",
-        "pharm-cv-adenosine-class",
-        "pharm-cv-atropine-class",
-        "pharm-cv-epinephrine-class",
-        "pharm-cv-norepinephrine-class",
-        "pharm-cv-dopamine-class",
-        "pharm-cv-nitroglycerin-class",
-        "pharm-cv-atorvastatin-class",
         "pharm-cv-furosemide-class",
-        "pharm-cv-spironolactone-class",
-        "pharm-cv-hydrochlorothiazide-class",
-        "pharm-cv-mannitol-class",
-        "pharm-cv-epoetin-alfa-class",
+        "pharm-cns-lorazepam-class",
+        "pharm-cns-levetiracetam-class",
+        "pharm-endo-alendronate-class",
+        "pharm-gir-docusate-class",
+        "pharm-ob-rho-d-class",
+        "pharm-cv-adenosine-class",
+        "pharm-cv-epinephrine-class",
         "pharm-cv-ferrous-sulfate-class",
-        "pharm-cv-warfarin-class",
-        "pharm-cv-heparin-class",
-        "pharm-cv-enoxaparin-class",
-        "pharm-cv-rivaroxaban-class",
-        "pharm-cv-clopidogrel-class",
-        "pharm-cv-aspirin-class",
-        "pharm-cv-alteplase-class",
-        "pharm-inf-amoxicillin-class",
-        "pharm-inf-ceftriaxone-class",
-        "pharm-inf-vancomycin-class",
-        "pharm-inf-doxycycline-class",
+        "pharm-cns-lithium-class",
+        "pharm-gir-sulfasalazine-class",
+        "pharm-cv-mannitol-class",
+        "pharm-inf-fluconazole-class",
+        "pharm-cv-digoxin-class",
+        "pharm-cv-hydrochlorothiazide-class",
+        "pharm-cns-naloxone-class",
+        "pharm-endo-fludrocortisone-class",
+        "pharm-cv-nitroprusside-class",
+        "pharm-cv-nitroglycerin-class",
+        "pharm-endo-insulin-glargine-class",
+        "pharm-endo-glucagon-class",
+        "pharm-gir-loperamide-class",
         "pharm-inf-azithromycin-class",
-        "pharm-inf-gentamicin-class",
-        "pharm-inf-tmp-smx-class",
-        "pharm-inf-ciprofloxacin-class",
-        "pharm-inf-metronidazole-class",
         "pharm-inf-isoniazid-class",
         "pharm-inf-rifampin-class",
-        "pharm-inf-fluconazole-class",
-        "pharm-inf-acyclovir-class",
-        "pharm-cns-amitriptyline-class",
-        "pharm-cns-phenelzine-class",
-        "pharm-cns-bupropion-class",
-        "pharm-cns-lithium-class",
-        "pharm-cns-haloperidol-class",
-        "pharm-cns-clozapine-class",
-        "pharm-cns-lorazepam-class",
         "pharm-cns-buspirone-class",
-        "pharm-cns-zolpidem-class",
+        "pharm-endo-insulin-lispro-class",
+        "pharm-endo-insulin-regular-class",
+        "pharm-inf-amoxicillin-class",
+        "pharm-gir-metoclopramide-class",
+        "pharm-ob-oxytocin-class",
+        "pharm-cns-clozapine-class",
+        "pharm-gir-famotidine-class",
+        "pharm-cv-diltiazem-class",
+        "pharm-inf-vancomycin-class",
+        "pharm-inf-doxycycline-class",
+        "pharm-cv-metoprolol-class",
+        "pharm-cv-amiodarone-class",
+        "pharm-cv-heparin-class",
+        "pharm-cv-clopidogrel-class",
         "pharm-cns-phenytoin-class",
-        "pharm-cns-carbamazepine-class",
-        "pharm-cns-valproic_acid-class",
-        "pharm-cns-levetiracetam-class",
-        "pharm-cns-carbidopa_levodopa-class",
-        "pharm-cns-benztropine-class",
-        "pharm-cns-donepezil-class",
         "pharm-cns-morphine-class",
         "pharm-cns-hydromorphone-class",
         "pharm-cns-oxycodone-class",
         "pharm-cns-fentanyl-class",
-        "pharm-cns-naloxone-class",
-        "pharm-cns-succinylcholine-class",
         "pharm-cns-dantrolene-class",
-        "pharm-endo-insulin-lispro-class",
-        "pharm-endo-insulin-regular-class",
-        "pharm-endo-insulin-nph-class",
-        "pharm-endo-insulin-glargine-class",
-        "pharm-endo-metformin-class",
-        "pharm-endo-glipizide-class",
-        "pharm-endo-glucagon-class",
-        "pharm-endo-levothyroxine-class",
-        "pharm-endo-propylthiouracil-class",
         "pharm-endo-desmopressin-class",
-        "pharm-endo-prednisone-class",
-        "pharm-endo-fludrocortisone-class",
-        "pharm-endo-alendronate-class",
-        "pharm-endo-allopurinol-class",
-        "pharm-gir-omeprazole-class",
-        "pharm-gir-famotidine-class",
-        "pharm-gir-docusate-class",
-        "pharm-gir-lactulose-class",
-        "pharm-gir-loperamide-class",
-        "pharm-gir-ondansetron-class",
-        "pharm-gir-metoclopramide-class",
-        "pharm-gir-pancrelipase-class",
-        "pharm-gir-sulfasalazine-class",
-        "pharm-gir-albuterol-class",
-        "pharm-gir-ipratropium-class",
-        "pharm-gir-fluticasone-class",
-        "pharm-gir-montelukast-class",
-        "pharm-gir-diphenhydramine-class",
-        "pharm-gir-theophylline-class",
-        "pharm-ob-oxytocin-class",
-        "pharm-ob-magnesium-sulfate-class",
-        "pharm-ob-terbutaline-class",
-        "pharm-ob-rho-d-class",
-        "pharm-ob-oral-contraceptive-class"
+        "pharm-inf-gentamicin-class",
+        "pharm-inf-metronidazole-class"
       ],
-      "minimumSize": 5,
-      "homogeneityExempt": true
+      "minimumSize": 5
+    },
+    {
+      "id": "drug_classes_long",
+      "label": "Drug Classes (long)",
+      "answerFormat": "term",
+      "factIds": [
+        "pharm-cv-clonidine-class",
+        "pharm-cv-spironolactone-class",
+        "pharm-cv-rivaroxaban-class",
+        "pharm-inf-ciprofloxacin-class",
+        "pharm-endo-allopurinol-class",
+        "pharm-ob-magnesium-sulfate-class",
+        "pharm-cv-atorvastatin-class",
+        "pharm-cv-alteplase-class",
+        "pharm-inf-acyclovir-class",
+        "pharm-endo-insulin-nph-class",
+        "pharm-endo-metformin-class",
+        "pharm-endo-levothyroxine-class",
+        "pharm-gir-omeprazole-class",
+        "pharm-ob-oral-contraceptive-class",
+        "pharm-cv-enoxaparin-class",
+        "pharm-gir-fluticasone-class",
+        "pharm-endo-propylthiouracil-class",
+        "pharm-gir-pancrelipase-class",
+        "pharm-gir-theophylline-class",
+        "pharm-inf-ceftriaxone-class",
+        "pharm-cns-amitriptyline-class",
+        "pharm-cns-bupropion-class",
+        "pharm-cns-donepezil-class",
+        "pharm-endo-glipizide-class",
+        "pharm-gir-ipratropium-class",
+        "pharm-gir-diphenhydramine-class",
+        "pharm-cns-benztropine-class",
+        "pharm-gir-montelukast-class",
+        "pharm-cv-norepinephrine-class",
+        "pharm-cv-epoetin-alfa-class",
+        "pharm-cns-carbamazepine-class",
+        "pharm-cns-valproic_acid-class",
+        "pharm-cv-warfarin-class",
+        "pharm-inf-tmp-smx-class",
+        "pharm-cns-phenelzine-class",
+        "pharm-cns-succinylcholine-class",
+        "pharm-gir-lactulose-class",
+        "pharm-gir-albuterol-class",
+        "pharm-cns-zolpidem-class",
+        "pharm-gir-ondansetron-class",
+        "pharm-cv-losartan-class",
+        "pharm-ob-terbutaline-class",
+        "pharm-cv-aspirin-class",
+        "pharm-cns-carbidopa_levodopa-class",
+        "pharm-cv-amlodipine-class",
+        "pharm-cv-atropine-class",
+        "pharm-cv-dopamine-class",
+        "pharm-cns-haloperidol-class",
+        "pharm-endo-prednisone-class"
+      ],
+      "minimumSize": 5
     },
     {
       "id": "mechanisms",

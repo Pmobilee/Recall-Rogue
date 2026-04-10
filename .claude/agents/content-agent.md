@@ -75,3 +75,37 @@ When spawning this agent, the orchestrator MUST include in the prompt:
 3. "After changes, update those same doc files."
 4. The specific task description
 5. "Break work into granular TaskCreate tasks BEFORE starting."
+
+## Post-Generation Quality Gate — MANDATORY (Phase 5, 2026-04-10)
+
+After EVERY deck generation or modification, run this complete pipeline before committing.
+References the 12 anti-patterns catalogued in `.claude/rules/deck-quality.md`.
+
+```bash
+# Step 1: Structural validation (30 checks, 0 failures required)
+node scripts/verify-all-decks.mjs
+
+# Step 2: Runtime quiz audit (35 checks, 0 failures required)
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts --deck <id>
+
+# Step 3: Human-readable sample inspection (5 facts minimum)
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/audit-dump-samples.ts --deck <id>
+# Read the output — check each rendered question and 4 distractors for:
+# - "Capital-word this" or "anatomical structure" placeholders (#26/#32)
+# - CJK/ASCII distractor language mismatch in vocab decks (#27/#28)
+# - Explanation that gives away the answer (#25/#29)
+# - Percentage distractors > 100 (#29/#31)
+# - Sense mismatch in HSK decks (#30/#35)
+# - Empty chainThemes in knowledge decks (#24/#34)
+# - Pools > 100 factIds (#23/#33)
+```
+
+### Anti-pattern reference (verify-all-decks.mjs checks #23-30)
+- #23 `mega_pool_size` — knowledge pool with >100 factIds (should be split)
+- #24 `empty_chain_themes` — knowledge deck missing chainThemes array
+- #25 `definition_match_explanation_leak` — explanation leaks correctAnswer when {explanation} template active
+- #26 `placeholder_leak` — "Capital-word this" or "anatomical structure" in quizQuestion
+- #27 `reverse_template_pool_contam` — reverse template using English-meanings pool
+- #28 `reading_on_phonetic` — reading === targetLanguageWord (trivial quiz)
+- #29 `numeric_domain_violation` — percentage pre-generated distractor > 100
+- #30 `chinese_sense_mismatch` — HSK correctAnswer sense not found in explanation

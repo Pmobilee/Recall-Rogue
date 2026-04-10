@@ -2,7 +2,7 @@
  * Real-Engine Quiz Audit Script
  *
  * Imports and exercises the REAL game engine quiz functions against all curated
- * deck JSON files. Detects 27 categories of quiz quality issues including
+ * deck JSON files. Detects 35 categories of quiz quality issues including
  * engine-enabled checks that the static quiz-audit.mjs cannot perform.
  *
  * Usage:
@@ -574,6 +574,117 @@ function runChecks(
     }
   }
 
+  // Check 28: reverse_distractor_language_mismatch (Phase 5 — runtime mirror of #27)
+  // At render time, verify distractors use the same script/language as the correct answer.
+  // Heuristic: if correctDisplay is all-ASCII but some distractor contains CJK/kana/hangul → mismatch.
+  // And vice-versa: if correctDisplay has CJK/kana and distractor is all-ASCII → mismatch.
+  if (distractorFacts.length > 0) {
+    const hasCJK = (s: string): boolean => /[　-鿿가-힯]/.test(s);
+    const correctHasCJK = hasCJK(correctDisplay);
+    for (const d of distractorFacts) {
+      if (d.id.startsWith('_fallback_') || d.id.startsWith('_synthetic_') || d.id.startsWith('_numerical_')) continue;
+      const dDisplay = displayAnswer(d.correctAnswer);
+      const dHasCJK = hasCJK(dDisplay);
+      if (correctHasCJK !== dHasCJK) {
+        issues.push({
+          severity: 'WARN',
+          type: 'reverse_distractor_language_mismatch',
+          detail: `Distractor "${dDisplay.slice(0, 30)}" script type (CJK=${dHasCJK}) differs from correct "${correctDisplay.slice(0, 30)}" (CJK=${correctHasCJK})`,
+        });
+        break;
+      }
+    }
+  }
+
+  // Check 29: definition_match_runtime_leak (Phase 5 — runtime mirror of #25)
+  // Though the engine prevents this at runtime, add a regression assertion.
+  // If templateId contains 'definition' or 'explain' and the rendered question contains
+  // the correct answer text verbatim, flag it.
+  if (templateId.toLowerCase().includes('definition') || templateId.toLowerCase().includes('explain')) {
+    const ansLower = correctDisplay.toLowerCase().trim();
+    const qLower = renderedQuestion.toLowerCase();
+    if (ansLower.length >= 3 && qLower.includes(ansLower)) {
+      issues.push({
+        severity: 'WARN',
+        type: 'definition_match_runtime_leak',
+        detail: `Definition template "${templateId}" rendered question contains correct answer "${correctDisplay.slice(0, 40)}" — answer leaked into question`,
+      });
+    }
+  }
+
+  // Check 30: reading_on_phonetic_runtime (Phase 5 — runtime mirror of #28)
+  // If the reading template was selected and the correct answer equals the targetLanguageWord,
+  // the quiz is trivial (the player just sees the word and is asked what it reads as — same thing).
+  if (templateId === 'reading' && fact.targetLanguageWord && fact.reading) {
+    const norm = (s: string): string => s.trim().replace(/\s+/g, '');
+    if (norm(fact.reading) === norm(fact.targetLanguageWord)) {
+      issues.push({
+        severity: 'WARN',
+        type: 'reading_on_phonetic_runtime',
+        detail: `Reading template applied but reading "${fact.reading.slice(0, 20)}" === targetLanguageWord — trivial question`,
+      });
+    }
+  }
+
+  // Check 31: numeric_distractor_out_of_domain (Phase 5 — runtime mirror of #29)
+  // For percentage questions (question has "percent" or answer ends in "%"),
+  // flag numerical distractors > 100.
+  if (isNumerical) {
+    const qLower31 = renderedQuestion.toLowerCase();
+    const isPercentQ = qLower31.includes('percent') || qLower31.includes('%') || correctDisplay.endsWith('%');
+    if (isPercentQ) {
+      for (const d of distractorFacts) {
+        const dNum = parseFloat(displayAnswer(d.correctAnswer).replace(/%$/, ''));
+        if (!isNaN(dNum) && dNum > 100) {
+          issues.push({
+            severity: 'WARN',
+            type: 'numeric_distractor_out_of_domain',
+            detail: `Percentage question has distractor ${dNum} > 100%`,
+          });
+          break;
+        }
+      }
+    }
+  }
+
+  // Check 32: placeholder_leak_runtime (Phase 5 — runtime mirror of #26)
+  // Flag any rendered question containing the classic placeholder leak patterns.
+  {
+    const capitalWordThisRe = /[A-Z][a-z]+\s+this/;
+    if (capitalWordThisRe.test(renderedQuestion)) {
+      issues.push({
+        severity: 'WARN',
+        type: 'placeholder_leak_runtime',
+        detail: `Rendered question contains "capital-word this" placeholder leak: "${renderedQuestion.slice(0, 80)}"`,
+      });
+    }
+    if (/anatomical structure\s+\w+/.test(renderedQuestion)) {
+      issues.push({
+        severity: 'WARN',
+        type: 'placeholder_leak_runtime',
+        detail: `Rendered question contains "anatomical structure" template leak: "${renderedQuestion.slice(0, 80)}"`,
+      });
+    }
+  }
+
+  // Check 35: chinese_sense_mismatch_runtime (Phase 5 — runtime mirror of #30)
+  // For HSK decks, validate that correctAnswer matches a sense in the explanation.
+  if (deck.id && deck.id.startsWith('chinese_hsk') && fact.explanation && fact.correctAnswer) {
+    const senses35 = fact.correctAnswer.split(/[;,/]/).map((s: string) => s.trim()).filter((s: string) => s.length >= 3);
+    if (senses35.length > 0) {
+      const expl35 = fact.explanation.toLowerCase();
+      const anyMatch = senses35.some((sense: string) => expl35.includes(sense.toLowerCase()));
+      if (!anyMatch) {
+        issues.push({
+          severity: 'WARN',
+          type: 'chinese_sense_mismatch_runtime',
+          detail: `HSK fact "${fact.id}" correctAnswer senses [${senses35.slice(0, 3).join(', ')}] not found in explanation`,
+        });
+      }
+    }
+  }
+
+
   return issues;
 }
 
@@ -779,6 +890,64 @@ function auditDeck(
       }
     }
   }
+
+  // Deck-level Phase 5 checks:
+
+  // Phase 5 — empty_chain_themes_runtime (check 34 moved to deck level)
+  // Knowledge decks must define chainThemes. Fires once per deck.
+  if (deckClass !== 'vocab' && deckClass !== 'image') {
+    const themes = (deck as unknown as { chainThemes?: unknown[] }).chainThemes;
+    if (!Array.isArray(themes) || themes.length === 0) {
+      const key = 'empty_chain_themes_runtime';
+      if (!issuesByType[key]) issuesByType[key] = { fail: 0, warn: 0 };
+      issuesByType[key].warn++;
+      factResults.push({
+        factId: '_deck_chain_themes',
+        masteryLevel: -1,
+        poolId: '_deck',
+        renderedQuestion: '(deck-level check)',
+        correctAnswer: '',
+        distractors: [],
+        isNumerical: false,
+        templateId: '_deck_check',
+        requestedCount: 0,
+        issues: [{
+          severity: 'WARN',
+          type: 'empty_chain_themes_runtime',
+          detail: `Knowledge deck "${deck.id}" has no chainThemes — Study Temple mode will not work correctly`,
+        }],
+      });
+    }
+  }
+
+  // Phase 5 — mega_pool_runtime_warning (check 33 moved to deck level)
+  // Pools with >100 factIds in knowledge decks should be split. Fires once per pool.
+  if (deckClass !== 'vocab') {
+    for (const pool of deck.answerTypePools) {
+      if (pool.factIds.length > 100) {
+        const key = 'mega_pool_runtime_warning';
+        if (!issuesByType[key]) issuesByType[key] = { fail: 0, warn: 0 };
+        issuesByType[key].warn++;
+        factResults.push({
+          factId: `_mega_pool_${pool.id}`,
+          masteryLevel: -1,
+          poolId: pool.id,
+          renderedQuestion: '(deck-level check)',
+          correctAnswer: '',
+          distractors: [],
+          isNumerical: false,
+          templateId: '_deck_check',
+          requestedCount: 0,
+          issues: [{
+            severity: 'WARN',
+            type: 'mega_pool_runtime_warning',
+            detail: `Pool "${pool.id}" has ${pool.factIds.length} factIds (>100) — consider splitting by sub-topic`,
+          }],
+        });
+      }
+    }
+  }
+
 
   // Determine facts to audit (optionally sampled per pool)
   let factsToAudit: DeckFact[];

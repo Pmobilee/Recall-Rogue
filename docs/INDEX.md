@@ -136,6 +136,7 @@
 | Doc | Summary |
 |-----|---------|
 | [quiz-audit-2026-04-10](reports/quiz-audit-2026-04-10.md) | Master roll-up of 98-deck quiz quality audit — 115 BLOCKER / 256 MAJOR / 210 MINOR / 67 NIT across 10,212 rendered instances; 15 cross-deck patterns; top-20 worst facts; full per-deck scoreboard. Per-deck details in `data/audits/findings/`. |
+| [quiz-audit-2026-04-10-postfix](reports/quiz-audit-2026-04-10-postfix.md) | Post-fix re-audit. 36 commits across 7 phases resolved all targeted patterns: this/anatomical placeholders → 0, reverse-template POOL-CONTAM → 0, definition_match self-answers → 0, reading-template phonetic → 0, AP mega-pools → 56 sub-pools, vocab POS-split (15,947 facts), JLPT kanji templates (6,633 facts), HSK6 sense-aligned (356 facts), chainThemes for 9 knowledge decks, 12 anti-patterns in `.claude/rules/deck-quality.md`. Verify-all-decks 22→30 checks, quiz-audit-engine 27→35 checks, 229-assertion vitest gate. |
 
 ---
 

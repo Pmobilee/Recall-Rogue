@@ -301,7 +301,10 @@ function getPoolDistractors(fact, deck, count = 3) {
 }
 
 // ---------------------------------------------------------------------------
-// Issue checking — 22 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks + 1 pool-homogeneity + 2 new answer-quality checks)
+// Issue checking — 30 checks total (22 original + 8 new Phase 5 structural checks)
+// New checks: #23 mega_pool_size, #24 empty_chain_themes, #25 definition_match_explanation_leak,
+// #26 placeholder_leak, #27 reverse_template_pool_contam, #28 reading_on_phonetic,
+// #29 numeric_domain_violation, #30 chinese_sense_mismatch
 // ---------------------------------------------------------------------------
 
 /**
@@ -595,6 +598,29 @@ function verifyDeck(deckId, deck) {
     }
   }
 
+
+  // Check #23 WARNING: mega_pool_size — knowledge deck pools with >100 factIds
+  // Large pools exceed the "7±2 mental bandwidth" design principle and likely indicate
+  // a pool that should be split by sub-topic. Vocab pools are exempt (they are supposed to be large).
+  if (!isVocab) {
+    for (const pool23 of (deck.answerTypePools || [])) {
+      const ids23 = poolFactIds(pool23);
+      if (ids23.length > 100) {
+        factWarnings.push({ index: 0, factId: pool23.id, msg: `mega_pool_size: pool "${pool23.id}" has ${ids23.length} factIds (>100) — consider splitting by sub-topic` });
+      }
+    }
+  }
+
+  // Check #24 WARNING: empty_chain_themes — knowledge decks must define chainThemes
+  // Decks without chain themes can't drive the themed chain gameplay that is central to
+  // the Study Temple mode. Vocab and image decks are exempt.
+  if (!isVocab && !(deck.id === 'world_flags')) {
+    const themes24 = deck.chainThemes;
+    if (!Array.isArray(themes24) || themes24.length === 0) {
+      factWarnings.push({ index: 0, factId: '_deck', msg: `empty_chain_themes: knowledge deck "${deck.id || deckId}" has no chainThemes defined` });
+    }
+  }
+
   // Build a set of factIds that have duplicate questions (for per-fact flagging)
   const dupeFactIdSet = new Set();
   for (const [, ids] of dupeQuestions) {
@@ -723,6 +749,112 @@ function verifyDeck(deckId, deck) {
         const variantType = classifyAnswerType(variantAnswer);
         if (parentType !== 'other' && parentType !== 'unknown' && variantType !== 'other' && variantType !== 'unknown' && parentType !== variantType) {
           factWarnings.push({ index: i + 1, factId: fact.id, msg: `variant #${vi} answer type mismatch: parent="${(fact.correctAnswer || '').slice(0, 30)}" (${parentType}) vs variant="${variantAnswer.slice(0, 30)}" (${variantType}) — needs own distractors` });
+        }
+      }
+    }
+
+    // Check #25 WARNING: definition_match_explanation_leak
+    // If a template's questionFormat uses {explanation}, and explanation contains the correctAnswer,
+    // the question would give away the answer. Structural heuristic (engine fix is already in place).
+    if (!isVocab && fact.explanation && fact.correctAnswer) {
+      const hasExplanationTemplate = (deck.questionTemplates || []).some(t =>
+        t.answerPoolId === fact.answerTypePoolId && /\{explanation\}/i.test(t.questionFormat || '')
+      );
+      if (hasExplanationTemplate) {
+        const expl25 = fact.explanation.toLowerCase();
+        const ans25 = (fact.correctAnswer || '').toLowerCase().replace(/[{}]/g, '').trim();
+        // word-boundary check: does the answer text appear as a word in the explanation?
+        if (ans25.length >= 3) {
+          const re25 = new RegExp('\\b' + ans25.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
+          if (re25.test(fact.explanation)) {
+            factWarnings.push({ index: i + 1, factId: fact.id, msg: `definition_match_explanation_leak: explanation for fact "${fact.id}" contains correctAnswer "${fact.correctAnswer.slice(0, 40)}" — explanation-template would reveal the answer` });
+          }
+        }
+      }
+    }
+
+    // Check #26 WARNING: placeholder_leak — rendered question contains "this" after a capital word
+    // Pattern: "Joseph this" / "Federal this" — a distractor placeholder that wasn't resolved.
+    // Heuristic: (?<=[A-Z][a-z]+ )this\b captures "Joseph this" but not "this is..."
+    if (!isVocab) {
+      const q26 = fact.quizQuestion || '';
+      // Detect the precise anti-pattern: capital-started word immediately followed by "this"
+      const capitalWordThisRe = /[A-Z][a-z]+\s+this/;
+      if (capitalWordThisRe.test(q26)) {
+        factWarnings.push({ index: i + 1, factId: fact.id, msg: `placeholder_leak: quizQuestion contains "capital-word this" pattern in "${q26.slice(0, 80)}" — unreplaced placeholder` });
+      }
+      // Also catch "anatomical structure \w+" — common in anatomy deck template leaks
+      if (/anatomical structure\s+\w+/.test(q26)) {
+        factWarnings.push({ index: i + 1, factId: fact.id, msg: `placeholder_leak: quizQuestion contains "anatomical structure" template leak in "${q26.slice(0, 80)}"` });
+      }
+    }
+
+    // Check #27 WARNING: reverse_template_pool_contam
+    // A reverse template (showing target-language word, asking for English meaning) should NOT
+    // use the english_meanings pool for distractors — that would show English words as distractors
+    // when the correct answer is ALSO an English word (double English leak).
+    // Heuristic: if the fact's pool matches "english_meanings" and a template with "reverse" id
+    // exists that uses this pool, warn.
+    if (isVocab) {
+      const poolId27 = fact.answerTypePoolId || '';
+      if (poolId27.includes('english') || poolId27.includes('meaning')) {
+        const reverseTemplate = (deck.questionTemplates || []).find(t =>
+          (t.id || '').toLowerCase().includes('reverse') &&
+          (t.answerPoolId === poolId27)
+        );
+        if (reverseTemplate) {
+          factWarnings.push({ index: i + 1, factId: fact.id, msg: `reverse_template_pool_contam: reverse template "${reverseTemplate.id}" uses english pool "${poolId27}" — distractors will be English when correct answer is also English` });
+        }
+      }
+    }
+
+    // Check #28 WARNING: reading_on_phonetic
+    // If a fact's targetLanguageWord and reading are identical (e.g., hiragana word has
+    // reading = itself), applying a reading quiz template is pointless — it just asks
+    // "what's the reading?" with the answer being the word itself.
+    // Only applies to Japanese decks (reading field meaningful there).
+    if (fact.targetLanguageWord && fact.reading) {
+      const norm28 = (s) => s.trim().replace(/\s+/g, '');
+      if (norm28(fact.reading) === norm28(fact.targetLanguageWord)) {
+        const readingTemplate = (deck.questionTemplates || []).some(t =>
+          (t.id || '').toLowerCase().includes('reading') &&
+          t.answerPoolId === fact.answerTypePoolId
+        );
+        if (readingTemplate) {
+          factWarnings.push({ index: i + 1, factId: fact.id, msg: `reading_on_phonetic: fact "${fact.id}" has reading === targetLanguageWord ("${fact.reading.slice(0, 20)}") — reading template is trivial` });
+        }
+      }
+    }
+
+    // Check #29 WARNING: numeric_domain_violation
+    // For percentage-type questions (question mentions "percent" or answer ends in "%"),
+    // flag if any pre-generated distractor is > 100 (impossible percentage).
+    if (!isVocab) {
+      const q29 = (fact.quizQuestion || '').toLowerCase();
+      const ans29 = fact.correctAnswer || '';
+      const isPercentQ = q29.includes('percent') || q29.includes('%') || ans29.endsWith('%');
+      if (isPercentQ && Array.isArray(fact.distractors)) {
+        for (const d29 of fact.distractors) {
+          const dNum = parseFloat(String(d29).replace(/%$/, ''));
+          if (!isNaN(dNum) && dNum > 100) {
+            factWarnings.push({ index: i + 1, factId: fact.id, msg: `numeric_domain_violation: percentage fact "${fact.id}" has distractor "${d29}" > 100%` });
+            break;
+          }
+        }
+      }
+    }
+
+    // Check #30 WARNING: chinese_sense_mismatch (HSK decks)
+    // For chinese_hsk* decks, validate that the correctAnswer is one of the senses
+    // listed in the explanation. Heuristic: tokenize correctAnswer on [;,/], check
+    // if any token (len ≥ 3) is a substring of explanation. If NO match → suspect mismatch.
+    if (!isVocab && deckId.startsWith('chinese_hsk') && fact.explanation && fact.correctAnswer) {
+      const senses30 = fact.correctAnswer.split(/[;,/]/).map(s => s.trim()).filter(s => s.length >= 3);
+      if (senses30.length > 0) {
+        const expl30 = fact.explanation.toLowerCase();
+        const anyMatch = senses30.some(sense => expl30.includes(sense.toLowerCase()));
+        if (!anyMatch) {
+          factWarnings.push({ index: i + 1, factId: fact.id, msg: `chinese_sense_mismatch: correctAnswer senses [${senses30.slice(0, 3).join(', ')}] not found in explanation — possible wrong sense` });
         }
       }
     }

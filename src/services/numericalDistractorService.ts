@@ -106,6 +106,98 @@ function formatLike(n: number, origStr: string): string {
 }
 
 // ---------------------------------------------------------------------------
+// Answer domain detection
+// ---------------------------------------------------------------------------
+
+/** The semantic domain of a numerical answer, plus optional hard clamps. */
+export interface AnswerDomain {
+  kind: 'percentage' | 'year' | 'count' | 'measurement' | 'unknown'
+  clamp: { min: number; max: number } | null
+}
+
+/**
+ * Detects the semantic domain of a numerical answer by examining:
+ * 1. The answer string itself (suffix hints: %, " years", " km", etc.)
+ * 2. The surrounding question text (keyword hints: "percent", "year", "how many", etc.)
+ *
+ * Returns a domain descriptor with an optional hard clamp. The clamp is applied
+ * to every generated variant as a safety net so distractors never exceed the
+ * physically possible range for the domain.
+ *
+ * Three-layer defence:
+ *   (a) answer-format hints  — most precise, always checked first
+ *   (b) question-text hints  — catches bare-number answers like "{99.86}" where
+ *                              the percentage is expressed only in the question
+ *   (c) hard clamps          — post-generation safety net applied even when
+ *                              layer (a)/(b) produce a clamp of their own
+ *
+ * @param answerStr    - The full correctAnswer string (may contain braces).
+ * @param questionText - Optional rendered question stem or quizQuestion field.
+ */
+export function detectAnswerDomain(
+  answerStr: string,
+  questionText: string = '',
+): AnswerDomain {
+  const lowerAnswer = answerStr.toLowerCase()
+  const lowerQuestion = questionText.toLowerCase()
+  const combined = lowerAnswer + ' ' + lowerQuestion
+
+  // --- 1. Percentage: answer contains "%" or question contains percentage keywords ---
+  const hasPctSuffix = lowerAnswer.includes('%')
+  const hasPctKeyword =
+    /\bpercent(age)?\b/.test(lowerQuestion) ||
+    lowerQuestion.includes('%') ||
+    /\bfraction of\b/.test(lowerQuestion) ||
+    /\bproportion of\b/.test(lowerQuestion) ||
+    /\bshare of\b/.test(lowerQuestion)
+  if (hasPctSuffix || hasPctKeyword) {
+    return { kind: 'percentage', clamp: { min: 0, max: 100 } }
+  }
+
+  // --- 2. Year: answer is a 4-digit number or question uses year/century keywords ---
+  const hasYearKeyword =
+    /\b(in what year|which year|what year)\b/.test(lowerQuestion) ||
+    /\bwhen (was|did|were|is)\b/.test(lowerQuestion) ||
+    /\byear\b/.test(combined) ||
+    /\bcentury\b/.test(combined) ||
+    /\bdecade\b/.test(combined)
+  // Answer-format year hint: exactly 4 digits, no decimals, no commas, value in plausible year range
+  const numStr = (answerStr.match(BRACE_NUMBER_RE) ?? [])[1] ?? ''
+  const numVal = parseNum(numStr)
+  const isYearShaped = numStr.length === 4 && !numStr.includes(',') && numVal >= 1000 && numVal <= 2100
+  if (hasYearKeyword || isYearShaped) {
+    return { kind: 'year', clamp: { min: 1, max: 2100 } }
+  }
+
+  // --- 3. Count: question asks "how many" or uses counting keywords ---
+  const hasCountKeyword =
+    /\bhow many\b/.test(lowerQuestion) ||
+    /\bnumber of\b/.test(lowerQuestion) ||
+    /\bcount of\b/.test(lowerQuestion) ||
+    /\btotal (of|number)\b/.test(lowerQuestion)
+  if (hasCountKeyword) {
+    // Non-negative integers only; no upper bound assumed
+    return { kind: 'count', clamp: { min: 0, max: Infinity } }
+  }
+
+  // --- 4. Measurement: question or answer contains common unit keywords ---
+  // Note: plural forms (kilometers, metres, etc.) are included via optional 's'.
+  const hasMeasurementKeyword =
+    /\b(kilometers?|kilometres?|km|meters?|metres?|miles?|light.?years?|parsecs?|astronomical units?)\b/.test(combined) ||
+    /\b(kilograms?|grams?|kg|pounds?|tons?|tonnes?)\b/.test(combined) ||
+    /\b(celsius|fahrenheit|kelvin|temperature)\b/.test(combined) ||
+    /\b(watts?|joules?|newtons?|pascals?|volts?|amperes?)\b/.test(combined) ||
+    /\b(seconds?|minutes?|hours?|days?|weeks?|months?)\b/.test(lowerAnswer) ||
+    /\b(seconds?|minutes?|hours?|days?|weeks?|months?)\b/.test(lowerQuestion)
+  if (hasMeasurementKeyword) {
+    // Measurements must be positive; no upper bound assumed
+    return { kind: 'measurement', clamp: { min: 0.001, max: Infinity } }
+  }
+
+  return { kind: 'unknown', clamp: null }
+}
+
+// ---------------------------------------------------------------------------
 // Variation strategy
 // ---------------------------------------------------------------------------
 
@@ -119,10 +211,31 @@ type RandFn = () => number
  * @param origStr  - The original number string (used for format detection).
  * @param rand     - Seeded PRNG function.
  * @param count    - Number of candidates to attempt to generate.
+ * @param domain   - Detected answer domain (used for clamping).
  */
-function generateVariations(base: number, origStr: string, rand: RandFn, count: number): string[] {
+function generateVariations(
+  base: number,
+  origStr: string,
+  rand: RandFn,
+  count: number,
+  domain: AnswerDomain,
+): string[] {
   const places = decimalPlaces(origStr)
   const isDecimal = places > 0
+
+  /**
+   * Apply domain clamp to a candidate value. Returns null if the value would
+   * equal the base after clamping (clamp collapsed it to the correct answer).
+   */
+  const applyClamp = (candidate: number): number | null => {
+    if (!domain.clamp) return candidate
+    const { min, max } = domain.clamp
+    const clamped = Math.max(min, Math.min(max, candidate))
+    // If clamped equals base (rounded to same precision), skip — not a useful distractor
+    if (places > 0 && parseFloat(clamped.toFixed(places)) === base) return null
+    if (places === 0 && Math.round(clamped) === Math.round(base)) return null
+    return clamped
+  }
 
   // --- Decimal numbers: match precision, ±20-50% ---
   if (isDecimal) {
@@ -130,9 +243,11 @@ function generateVariations(base: number, origStr: string, rand: RandFn, count: 
     for (let i = 0; i < count * 4; i++) {
       const pct = 0.2 + rand() * 0.3
       const sign = i % 2 === 0 ? 1 : -1
-      const candidate = base + sign * base * pct
-      if (candidate <= 0) continue
-      const formatted = candidate.toFixed(places)
+      const raw = base + sign * base * pct
+      if (raw <= 0) continue
+      const clamped = applyClamp(raw)
+      if (clamped === null) continue
+      const formatted = clamped.toFixed(places)
       if (parseFloat(formatted) !== base) results.push(formatted)
     }
     return results
@@ -142,8 +257,14 @@ function generateVariations(base: number, origStr: string, rand: RandFn, count: 
   if (base >= 1 && base <= 12) {
     const pool: number[] = []
     for (let delta = 1; delta <= Math.max(10, Math.ceil(base * 2)); delta++) {
-      pool.push(base + delta)
-      if (base - delta > 0) pool.push(base - delta)
+      const up = base + delta
+      const down = base - delta
+      const cu = applyClamp(up)
+      if (cu !== null && cu > 0) pool.push(cu)
+      if (down > 0) {
+        const cd = applyClamp(down)
+        if (cd !== null && cd > 0) pool.push(cd)
+      }
     }
     // Shuffle deterministically
     for (let i = pool.length - 1; i > 0; i--) {
@@ -164,8 +285,9 @@ function generateVariations(base: number, origStr: string, rand: RandFn, count: 
       const delta = Math.round(minDelta + rand() * (maxDelta - minDelta))
       const sign = i % 2 === 0 ? 1 : -1
       const year = base + sign * delta
-      if (year > 0 && year <= currentYear && year !== base) {
-        results.push(String(Math.round(year)))
+      const clamped = applyClamp(year)
+      if (clamped !== null && clamped > 0 && clamped <= currentYear && clamped !== base) {
+        results.push(String(Math.round(clamped)))
       }
     }
     return results
@@ -189,8 +311,9 @@ function generateVariations(base: number, origStr: string, rand: RandFn, count: 
     const sign = i % 2 === 0 ? 1 : -1
     const raw = base + sign * base * pct
     const candidate = Math.round(raw / roundTo) * roundTo
-    if (candidate > 0 && candidate !== base) {
-      results.push(formatLike(candidate, origStr))
+    const clamped = applyClamp(candidate)
+    if (clamped !== null && clamped > 0 && clamped !== base) {
+      results.push(formatLike(clamped, origStr))
     }
   }
   return results
@@ -209,16 +332,25 @@ function generateVariations(base: number, origStr: string, rand: RandFn, count: 
  * - Preserve the formatting (commas, decimal places) of the original number
  * - Never equal the correct answer (after stripping braces)
  * - Are seeded from fact.id so the same fact always yields the same distractors
+ * - Are clamped to a sensible domain (percentage ≤ 100, year ≤ 2100, etc.)
+ *
+ * Domain detection uses three complementary layers:
+ *   1. answer-format hints — "%" suffix, 4-digit year shape, unit words in answer
+ *   2. question-text hints — "percent/percentage/how many/year/km" in questionText
+ *   3. hard clamps         — post-generation safety net applied to every variant
  *
  * Returns an empty array when the answer contains no brace-marked number.
  *
- * @param fact  - Knowledge fact whose correctAnswer contains a braced number.
- * @param count - Number of distractors to return (default: BALANCE.QUIZ_DISTRACTORS_SHOWN).
+ * @param fact         - Knowledge fact whose correctAnswer contains a braced number.
+ * @param count        - Number of distractors to return (default: BALANCE.QUIZ_DISTRACTORS_SHOWN).
+ * @param questionText - Optional rendered question stem used for domain detection.
+ *                       Falls back to fact.quizQuestion if the fact has that field.
  * @returns Array of distractor strings (display-ready, no braces); may be shorter than count.
  */
 export function getNumericalDistractors(
   fact: Fact,
   count: number = BALANCE.QUIZ_DISTRACTORS_SHOWN,
+  questionText?: string,
 ): string[] {
   const answer = fact.correctAnswer
   const match = answer.match(BRACE_NUMBER_RE)
@@ -228,13 +360,23 @@ export function getNumericalDistractors(
   const base = parseNum(numStr)
   if (base === 0) return []
 
+  // Resolve question text for domain detection.
+  // Prefer explicitly passed questionText; fall back to fact.quizQuestion if present
+  // (DeckFact has quizQuestion but the base Fact type may not — safe optional access).
+  const resolvedQuestion =
+    questionText ??
+    ((fact as unknown as Record<string, unknown>)['quizQuestion'] as string | undefined) ??
+    ''
+
+  const domain = detectAnswerDomain(answer, resolvedQuestion)
+
   const rand = makePrng(seedFromId(fact.id))
 
   // Build template: "{107} days" → "{{PLACEHOLDER}} days"
   const template = answer.replace(BRACE_NUMBER_RE, '{{PLACEHOLDER}}')
 
-  // Generate candidate number strings
-  const candidates = generateVariations(base, numStr, rand, count * 3)
+  // Generate candidate number strings with domain clamping applied
+  const candidates = generateVariations(base, numStr, rand, count * 3, domain)
 
   // Deduplicate, filter out correct answer, substitute into template
   const correctDisplay = displayAnswer(answer)

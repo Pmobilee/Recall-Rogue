@@ -1375,3 +1375,305 @@ The `interrogatives` pool in `spanish_a1_grammar` contains both interrogative wo
 **Why it matters:** A future agent reading the codebase may notice "dead" Anki code that isn't reachable from the UI and attempt to "clean it up" by deleting services/components. **Do not.** The integration is intentionally disabled for now and will be turned back on — flipping the flag to `true` is the only change needed to restore it.
 
 **Fix / how to re-enable:** Set `ANKI_INTEGRATION_ENABLED = true` in `StudyTempleScreen.svelte`. No other changes required.
+
+---
+
+### 2026-04-10 — Reverse template POOL-CONTAM: selectDistractors used wrong answer field
+
+**What:** Vocab decks with a `reverse` template ("How do you say X in [language]?") were serving English-meaning words as distractors even though the correct answer was a target-language word. The player could identify the correct answer by script recognition alone — zero vocabulary knowledge required. This was a BLOCKER in the 2026-04-10 quiz audit (Pattern 3), confirmed across ~25 language decks simultaneously. korean_topik2 had 100% contamination (49/49 reverse rows). Example render:
+
+```
+Q: "How do you say 'even number' in Korean?"
+ A) 짝수  ✓         ← Korean
+ B) schedule         ← English (should be Korean!)
+ C) headache medicine ← English
+ D) developed country ← English
+```
+
+**Root cause:** `selectDistractors()` always read `fact.correctAnswer` when iterating pool candidates — but for a vocabulary fact, `correctAnswer` is the English meaning while `targetLanguageWord` is the Korean/Chinese/Japanese/Spanish word. The deck JSON was correct (the `reverse` template's `answerPoolId` pointed to `target_language_words`), but the distractor selector didn't know it should use a different field than `correctAnswer`.
+
+**Fix (2026-04-10):** Added `distractorAnswerField: keyof DeckFact = 'correctAnswer'` as an optional 9th parameter to `selectDistractors`. Added `getDistractorAnswerFieldForTemplate()` to `questionTemplateSelector.ts` which returns `'targetLanguageWord'` for `reverse`, `'reading'` for `reading`/`reading_pinyin`, and `'correctAnswer'` for all other template IDs. `TemplateSelectionResult` now includes `distractorAnswerField`. All template-aware callers (`nonCombatQuizSelector.ts` ×2 call sites, `CardCombatOverlay.svelte` ×1 call site) were updated to pass `templateResult.distractorAnswerField`. When the field differs from `'correctAnswer'`, a shallow copy of the distractor fact is returned with `correctAnswer` overwritten to the resolved value so callers can uniformly read `d.correctAnswer`. Original fact objects are never mutated.
+
+**Prevention:** When defining a reverse template (question in source language, answer in target language), the `selectDistractors` call must pass `distractorAnswerField: 'targetLanguageWord'`. This comes automatically via `getDistractorAnswerFieldForTemplate(template)` when using `selectQuestionTemplate`. For any caller that bypasses the template selector (trivia bridge path in `getBridgedDistractors`), the default `'correctAnswer'` is appropriate since that path only uses the forward direction.
+
+**Affected decks (all fixed by engine change, no deck JSON edits needed):** chinese_hsk1–6, japanese_n1–n5, japanese_hiragana/katakana, korean_hangul, korean_topik1/topik2, spanish_a1–c2, german_a1–b1.
+
+### 2026-04-10 — definition_match self-answer leak via explanation field
+
+**What:** The `definition_match` vocabulary template uses `questionFormat: '{explanation}'` — meaning the rendered question IS the `fact.explanation` string verbatim. Wiktionary-sourced explanations follow the format "word — English meaning" (e.g., `"abbaye — abbey."`, `"pique-niquer — to picnic."`). At mastery=3+, the quiz displayed the explanation as the question stem and then asked the player to pick the correct answer from a pool — but the correct answer was already readable in the question. Zero knowledge required: just read and click.
+
+**Confirmed 2026-04-10 quiz audit (Pattern 4):** french_b1 had 19% hit rate at mastery=4 (17 of 60 sampled rows self-answering); czech_b2 had 23%. All CEFR vocabulary decks (french_a1–b2, german_a1–b2, czech_a1–b2, dutch_a1–b2, plus grammar decks) were affected to varying degrees — ~15 decks total.
+
+**Example (BEFORE fix):**
+```
+Q: "pique-niquer — to picnic."    ← the explanation IS the question
+ A) to picnic  ✓                  ← correct answer already in the question!
+ B) to include
+ C) to fit
+ D) to doubt
+```
+
+**Example (AFTER fix, same fact fr-cefr-2380, mastery=4):**
+```
+Q: "Which word is closest in meaning to 'pique-niquer'?"  ← synonym_pick template instead
+ A) to picnic  ✓
+ B) to include
+ C) to fit
+ D) to doubt
+```
+
+**Root cause:** The eligibility filter for templates only checked mastery level (step 1) and pool membership (step 2). There was no check for whether rendering a template would produce a self-answering question. The `definition_match` template with Wiktionary-style explanations is the canonical failure mode.
+
+**Fix (2026-04-10):** Added `explanationLeaksAnswer(fact: DeckFact): boolean` to `questionTemplateSelector.ts`. Uses word-boundary regex (`\b<answer>\b`, case-insensitive) so that "schools" does not spuriously match answer "school". The eligibility loop in `selectQuestionTemplate()` now rejects any template whose `questionFormat` contains `{explanation}` when `explanationLeaksAnswer(fact)` returns true. The selector falls through to the next eligible template (`synonym_pick`, `forward`, `reverse`). If no templates remain, it falls back to `_fallback` using `fact.quizQuestion`. O(L) per fact, O(1) regex compilation.
+
+**Why word-boundary instead of substring:** Short answers like "in" would spuriously match "indicating", "winter", "painting", etc. via substring. Word-boundary anchors limit false positives. False negatives (a slightly suggestive explanation where the answer only partially matches) are less harmful than false positives (blocking a valid question).
+
+**No deck JSON changes needed.** The fix is entirely engine-side. All ~15 affected CEFR vocabulary decks are fixed without touching their data files.
+
+### 2026-04-10 — Reading template applied to phonetic-form words (JLPT decks)
+
+**What went wrong:** The `reading` template family (`reading`, `reading_pinyin`, `reading_hiragana`) was applied to vocabulary facts where `fact.targetLanguageWord === fact.reading` — i.e. the target word is already written in its phonetic form (katakana loanwords, hiragana-only words). This produced self-answering questions: "What is the reading of 'スーパー'?" with correct answer "スーパー". The question contains its own answer.
+
+**Affected decks:** `japanese_n5` (レコード), `japanese_n4` (スーパー), `japanese_n1` (しかしながら, はらはら, アプローチ). Any JLPT deck with katakana loanwords is susceptible.
+
+**Why it happened:** The template eligibility filter had no check for whether the reading equals the target word. For kanji words (記録 → きろく), reading templates are valid and useful. For katakana words, the reading is the word itself — so asking for it is trivial.
+
+**Fix (2026-04-10):** Added `readingMatchesTargetWord(fact: DeckFact): boolean` to `questionTemplateSelector.ts`. Uses `normalize()` (lowercase + strip punctuation) on both fields and compares. Returns `false` if either field is absent (no block applied). The eligibility loop in `selectQuestionTemplate()` step 4 rejects any template whose `id` matches `READING_TEMPLATE_PATTERN = /^reading(_|$)/` when this returns `true`. The block covers all current reading template variants without needing individual case entries. O(1) per fact.
+
+**No deck JSON changes needed.** The fix is entirely engine-side.
+
+---
+
+### 2026-04-10 — "anatomical structure" placeholder leak in human_anatomy (47 facts)
+
+**What:** 47 facts in `data/decks/human_anatomy.json` had the literal string "anatomical structure" appearing in the `quizQuestion` field where a specific anatomical name should have been substituted during batch generation. Examples:
+
+- "the anatomical structure venosus shunts blood..." should read "the Ductus venosus shunts blood..."
+- "Why is the anatomical structure nervous system called the 'second brain'..." should read "the enteric nervous system..."
+- "a anatomical structure that affects only the epidermis..." should read "A burn that affects only the epidermis..."
+
+**Root cause:** The same pattern as the "this" cluster — a batch rewrite script that was supposed to substitute structure names into question templates left the placeholder tag in place. The correct name was always stored in `correctAnswer`; the substitution step failed silently.
+
+**Fix:** Python script loaded the JSON, identified 47 broken facts (using case-insensitive pattern matching against known substitution patterns), and replaced each broken phrase with the medically accurate term derived from `correctAnswer`. Additionally identified 7 facts where "which anatomical structure" appeared in "which/what X type/approach" context — also fixed. Left 17 intentional uses of "anatomical structure" intact (genuine "which anatomical structure..." question forms and image_question prompts).
+
+**Lesson:** This is the third incident of batch-rewrite placeholder leaks (after the "this" cluster and the Tatoeba ID fabrication). The rule in `.claude/rules/content-pipeline.md` ("Sample 5-10 items after ANY batch operation") would have caught this immediately. It is not optional.
+
+---
+
+### 2026-04-10 — "this" placeholder artifacts in 8 decks (post-batch-rewrite cleanup)
+
+**What:** 27+ facts across 8 curated decks had unresolved "this" tokens in their `quizQuestion` fields — relics of a prior batch noun-replacement script that failed to substitute the correct noun in all cases. A parallel "device" artifact also appeared in `famous_inventions` (one fact). Affected decks: `music_history` (10 facts), `movies_cinema` (10 facts), `famous_inventions` (2 facts), `medieval_world` (10 facts), `ap_macroeconomics` (35 facts), `egyptian_mythology` (24 facts). `pharmacology` was locked by another agent and skipped. `famous_paintings` had 28 apparent "this" instances that were intentional — all are `image_question` facts where "this" correctly refers to the displayed painting.
+
+**Why:** A batch replacement script substituted nouns in question templates but left `this` as a placeholder when the target noun was unclear or ambiguous. Downstream, questions like "Joseph This" (should be "Joseph Haydn"), "Federal this" (should be "Federal Reserve"), and "Irving This" (should be "Irving Fisher") shipped undetected.
+
+**Fix:** Per-deck grep + targeted string replacement. Where "this" appeared in valid English usage (demonstrative pronoun referring to a prior noun), it was left unchanged. Only true placeholder artifacts were fixed.
+
+**Lesson:** Batch noun-replacement scripts must be audited by sampling at least 10+ outputs before merge. Simple grep for isolated `\bthis\b` in quizQuestion fields catches placeholder artifacts quickly. The `content-pipeline.md` "Batch Output Verification" rule must be consulted before accepting any batch rewrite result.
+
+---
+
+### 2026-04-10 — Numeric distractors exceeding answer domain (138% etc.)
+
+**What:** `solar_system_sun_mass_percentage` had `correctAnswer: "{99.86}"` (bare number, no % suffix). `getNumericalDistractors()` applied ±20–50% variation and generated distractors of 138.52 and 120.24 — physically impossible percentage values (percentages must be ≤ 100). Players eliminate impossible options instantly without any knowledge.
+
+**Why:** The answer domain was not detected because the percentage context was only in the question text ("What percentage of the solar system mass..."), not in the answer string. The answer string `{99.86}` has no `%` suffix, so the pre-fix algorithm treated it as a generic decimal and applied uncapped variation.
+
+**Fix:** Added `detectAnswerDomain(answerStr, questionText)` to `numericalDistractorService.ts`. Three-layer detection: (1) answer-format hints (suffix: `%`, 4-digit year shape, unit word); (2) question-text hints ("percent", "percentage", "how many", "year", unit keywords); (3) hard clamps post-generation. `getNumericalDistractors()` now accepts optional `questionText` parameter and auto-reads `fact.quizQuestion` as fallback. All distractors pass through `applyClamp()` before being returned.
+
+**Affected decks:** solar_system (mass percentage facts), AP Physics, AP Chemistry (measurement quantities without unit suffix in answer). Any deck where `correctAnswer` is a bare brace-number but the domain is only expressed in the question text.
+
+**Lesson:** When `correctAnswer` uses `{N}` syntax, the answer domain must be derivable from EITHER the answer format OR the question text. Deck authors: if the answer is a bare number (no unit or % suffix), ensure the question contains the domain hint word ("percent", "kilometers", "how many", "year"). The engine now catches it — but explicit suffix is still the most robust approach.
+
+---
+
+### 2026-04-10 — Reagan/Bush USSR-dissolution factual error in us_presidents deck
+
+**What:** The fact `pres_reagan_end_cold_war` in `data/decks/us_presidents.json` had `correctAnswer: "Ronald Reagan"` for the question "Which president presided over the end of the Cold War as the Soviet Union dissolved in 1991?" This is factually wrong: Reagan left office January 20, 1989; the Soviet Union dissolved December 25, 1991 — under George H.W. Bush (fact `pres_ghwbush_soviet` in the same deck correctly attributes this). The deck was shipping two contradictory facts: one correctly crediting Bush, one incorrectly crediting Reagan.
+
+**Why:** LLM training data conflates Reagan's Cold War PRESSURE (SDI, "evil empire" rhetoric, defense buildup) with the USSR's ACTUAL dissolution under his successor. The same error appeared in the ap_us_history audit but on inspection that deck had no such fact — the finding was a cross-reference note only.
+
+**Fix:** Rewrote `pres_reagan_end_cold_war` to ask about Reagan's actual Cold War strategy — the Strategic Defense Initiative and "evil empire" rhetoric. Reagan remains the correct answer for that reframed question. The 1991 dissolution is now exclusively covered by `pres_ghwbush_soviet` (George H.W. Bush). The true/false variant was updated to correctly answer "False" to "Reagan was president when the USSR dissolved in 1991." Regression tests added in `src/services/__tests__/factCorrectness.test.ts`.
+
+**Lesson:** Any deck fact that assigns a historical event to a president must be cross-checked against presidential term dates. Reagan (1981–1989), Bush 41 (1989–1993), Clinton (1993–2001) are frequently confused in Cold War context. The curriculum-source rule in `content-pipeline.md` already requires sourcing facts from verified data — this error was caught by the quiz audit, not by initial authoring.
+
+---
+
+### 2026-04-10 — pharmacology this-placeholder follow-up (17 facts fixed, deferred from main cluster batch)
+
+Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-replacement left bare "this" tokens (e.g., "this-release", "this-dependent", "side this of", "primary this complication"). Deferred from the main cluster fix (`3aa31709d`, 91 facts across 6 decks) due to a stale registry lock. Correct nouns derived from each fact's `correctAnswer`, `explanation`, and `statement` fields.
+
+---
+
+### 2026-04-10 — Spanish C1 row-alignment translation errors (donde, habitual, sino)
+
+**What:** Three facts in `data/decks/spanish_c1.json` had wrong `correctAnswer` values due to a data assembly error. The affected facts: `es-cefr-3990` (`donde` = "because" instead of "where"), `es-cefr-4014` (`habitual` = "beans" instead of "habitual"), `es-cefr-4002` (`sino` = "destiny, fate, lot" instead of "but rather"). Teaching learners that `donde` means "because" is an active miseducation — a student memorizing this will fail real communication.
+
+**Root cause investigation:** The source vocab data (`data/curated/vocab/es/vocab-es-all.json`) is correct — it shows `habitual` = "habitual" (correct) and `atentado` = "violent attack" (correct). The corruption happened during C1 deck assembly when an intermediate TSV or sorted list was row-misaligned, assigning translations from adjacent words to the wrong target words. The assembly script that produced this was not found in the current scripts directory — it may have been a one-off manual assembly or an earlier version of the pipeline.
+
+**Fix:** Manually corrected the three BLOCKER facts. `donde` → "where" (with example). `habitual` → "habitual" (cognate, with acceptableAlternatives: "customary", "usual"). `sino` → "but rather" (conjunction sense, with example and note about the homograph noun sense). Regression tests added in `factCorrectness.test.ts`.
+
+**Potential additional errors:** During a 20-fact spot-check, `es-cefr-4456` (`atentado`) showed "moderate, prudent" (should be "violent attack, bombing") — confirmed wrong by comparing against the source vocab. This was out of scope for this fix session but should be investigated in a follow-up sweep of the C1 deck.
+
+**Lesson:** After any batch-assembly of vocabulary decks, a spot-check of 20+ random facts against the source vocab data is mandatory. Checking `correctAnswer` against `data/curated/vocab/es/vocab-es-all.json` by `targetWord` key takes under 5 minutes and would catch any row-alignment errors immediately.
+
+---
+
+### 2026-04-10 — Chess setup-move corruption (2 puzzles removed: AHPUU, KZU69)
+
+**What:** `chess_tac_AHPUU` and `chess_tac_KZU69` in `data/decks/chess_tactics.json` had corrupt `solutionMoves[0]` values referencing empty squares (g6 and d2 respectively). The game engine (`chessGrader.ts` `setupPuzzlePosition()`) applies this move to the baseFEN and throws: `Illegal setup move "${setupMoveUCI}" in position "${baseFEN}"` — crashing the puzzle. The player-facing answer data (`solutionMoves[1]`, `correctAnswer`) was valid for both puzzles.
+
+**Root cause:** The Lichess puzzle CSV stores the FEN as the base position (before the opponent's last "setup" move). `solutionMoves[0]` must be a legal move FROM that baseFEN. The stored moves `g6g5` and `d2d3` referenced empty squares in their respective FENs — this is either a CSV parsing error or a data entry error in the original ingestion pass.
+
+**Fix:** Removed both facts from the deck entirely (298 facts remain from 300). Also removed from `chess_moves_back_rank_mating_nets` pool (28 factIds from 30) and `chain_9` subDeck (28 from 30). The pool still meets the minimum 5-fact threshold.
+
+**Source data not available:** The Lichess puzzle CSV (`data/sources/lichess/lichess_db_puzzle.csv.zst`) is not present in the repo (gitignored). Re-extraction would require re-downloading the ~1GB Lichess puzzle database. Both puzzles are available at: `https://lichess.org/HpYvj2ho/black#96` (AHPUU) and `https://lichess.org/vrnBfloP#49` (KZU69). To re-add them, download the CSV, run `scripts/content-pipeline/chess/fetch-lichess-puzzles.mjs` to filter, verify the `solutionMoves[0]` is a legal move in the stored FEN, then re-insert.
+
+**Lesson:** Any deck fact that uses `solutionMoves` requires validation that `solutionMoves[0]` is a legal move FROM the stored `fenPosition`. The chess ingest script should run `chess.js` validation on all moves at generation time, not just at quiz runtime.
+### 2026-04-10 — fix-self-answering.mjs word_boundary_replacement produces broken grammar
+
+**What:** Running `node scripts/fix-self-answering.mjs` applies 14 auto-fixes. 4 of them use a `word_boundary_replacement` strategy that naively replaces the answer text with a placeholder like "this concept" or "this structure" without considering the surrounding article ("an this", "the this", "famous this"). The manual_fix strategy produces clean results.
+
+**Fix:** After running the script, grep for `an this`, `the this`, and `famous this` patterns in affected decks and hand-rewrite those questions to use natural phrasing. Script fixed 14 facts across 9 decks.
+
+---
+### 2026-04-10 — fix-pool-heterogeneity.mjs split 6 pools across 4 decks
+
+**What:** Running `node scripts/fix-pool-heterogeneity.mjs` found 6 pools with answer-length ratio >3x. Split drug_classes(3.1x), bop_account_terms(3.4x), ancient_philosopher_names(4.5x), early_modern_philosopher_names(4.5x), school_names(4.7x), platform_console_names(5.8x) into short/long sub-pools. 0 failures after splitting.
+
+---
+### 2026-04-10 — add-synthetic-distractors.mjs found 0 pools needing padding
+
+**What:** Running `node scripts/add-synthetic-distractors.mjs --dry-run` returned 0 decks modified / 0 synthetics added. All pools already had factIds.length + syntheticDistractors.length >= 15, or were bracket_number pools (exempted). Note: newly-split sub-pools from fix-pool-heterogeneity.mjs (e.g., ancient_philosopher_names_long with 5 facts) are not yet padded — they need domain-specific synthetic additions in a future pass.
+
+---
+### 2026-04-10 — fix-empty-subdecks.mjs found 0 empty sub-deck factIds
+
+**What:** Running `node scripts/fix-empty-subdecks.mjs --dry-run` on all 7 target decks (ancient_greece, ap_world_history, constellations, egyptian_mythology, famous_inventions, mammals_world, medieval_world) found no empty factIds arrays. All sub-decks were already populated, likely fixed in a prior session.
+
+---
+### 2026-04-10 — JLPT decks missing kanji templates (fixed)
+
+**What:** All 5 JLPT decks (japanese_n5 through japanese_n1) shipped with 4 dedicated kanji answer pools (`kanji_meanings`, `kanji_onyomi`, `kanji_kunyomi`, `kanji_characters`) but ZERO `questionTemplates` entries that targeted those pools. As a result, all kanji facts fell through to `_fallback` template during quiz generation.
+
+**Fallback rates before fix:** N5=33%, N4=47%, N3=40%, N2=42%, N1=62%.
+
+**Fix:** Added 3 kanji-specific `questionTemplates` entries to each deck:
+- `kanji_meaning` (pool: `kanji_meanings`, mastery 0, difficulty 1): "What does {targetLanguageWord} mean?"
+- `kanji_onyomi` (pool: `kanji_onyomi`, mastery 1, difficulty 2): "What is the on'yomi of {targetLanguageWord}?"
+- `kanji_kunyomi` (pool: `kanji_kunyomi`, mastery 1, difficulty 2): "What is the kun'yomi of {targetLanguageWord}?"
+
+**Fallback rates after fix:** N5=14.4%, N4=20.6%, N3=17.8%, N2=18.6%, N1=27.2%.
+
+**Lesson:** If a deck has dedicated kanji pools, it MUST also have templates that target them. A pool without a referencing template is dead weight — those facts silently fall through to `_fallback`. The `audit-dump-samples.ts` script is the fastest way to surface this issue: look for high `_fallback` percentages and cross-check against the pool list.
+
+---
+
+### 2026-04-10 — AP mega-pool splits by CED unit
+
+**What:** 9 AP decks had single catch-all pools containing 89–297 facts spanning entire subject domains. A Unit 1 Cell Communication question could get a Unit 4 Photosynthesis distractor — players eliminate by topic without knowing the answer. This is Pattern #2 from the 2026-04-10 quiz audit (docs/reports/quiz-audit-2026-04-10.md).
+
+**Root cause:** Deck generators created one pool per semantic answer type (e.g., `concept_terms`) without considering that a >100-fact pool is never coherent — the distractor draw range spans the entire subject rather than staying within the tested unit.
+
+**Fix:** Automated Python script split each mega-pool by `examTags.unit` (or `examTags` list string `Unit_N`/`Period_N`). Each unit bucket ≥5 facts got its own sub-pool (`{old_id}_u{N}`). Buckets <5 were merged into the nearest viable unit. Facts had `answerTypePoolId` updated to the new pool.
+
+**Decks fixed (8 commits):**
+- `ap_biology`: `term_definitions_long` (214→7 pools) + `term_definitions_mid` (169→8 pools)
+- `ap_world_history`: `concept_terms` (297→9 pools)
+- `ap_chemistry`: `chemistry_concepts_long` (89→9 pools) + `unique_answers` (46→5 pools)
+- `ap_physics_1`: `concept_statements` (123→8 pools) + `equation_explanations` (44→5 pools)
+- `ap_psychology`: `psych_concept_terms` (149→5 pools)
+- `ap_macroeconomics`: `macro_concept_terms_mid` (130→6 pools)
+- `ap_microeconomics`: `econ_concept_terms_mid` (120→6 pools)
+- `ap_us_history`: `concept_terms` (142→9 pools, used Period_N)
+
+**Skipped:** `ap_european_history` (already split, no pool >93 facts).
+
+**Total:** 9 mega-pools eliminated, 56 unit-coherent sub-pools created, 1,369 fact references reassigned.
+
+**Lesson:** Any pool with >100 facts in a CED-structured AP deck is almost certainly a contamination risk. Split by unit as part of initial deck assembly, not post-audit.
+
+---
+
+### 2026-04-10 — Dutch B1/B2 delisted from shipping (95% below CEFR scope)
+
+**What:** `dutch_b1` (232 facts) and `dutch_b2` (71 facts) were present in `data/decks/` and the Dutch `subdecks` array in `src/types/vocabulary.ts`. At those fact counts they are 95%+ below expected scope for their CEFR levels. Czech B1 has ~2,500 words and Spanish B1 has a similar range; Dutch B1/B2 should be ~2,500 and ~3,600 respectively.
+
+**Root cause:** The NT2Lex pipeline (CEFRLex data from `cental.uclouvain.be/cefrlex/`) ingested only a fraction of the available wordlist for the B1/B2 levels. The A1 and A2 decks have reasonable coverage; B1 and B2 were never fully ingested.
+
+**Fix:** Set `"hidden": true` on `dutch_b1.json` and `dutch_b2.json`. Removed `dutch_b1` and `dutch_b2` from the `subdecks` array in `src/types/vocabulary.ts`. Deck files preserved in full — no content deleted. Deferred re-ingest as a future project (see `docs/roadmap/known-issues-post-fix.md`).
+
+**Re-ingest path:** Use `scripts/content-pipeline/vocab/` pipeline with the NT2Lex B1/B2 wordlist segments. Target: ≥800 facts for B1 and ≥1,200 for B2. See known-issues doc for acceptance criteria and scripts.
+
+---
+
+### 2026-04-10 — HSK6 CC-CEDICT sense mismatch (356 facts)
+
+**What:** `chinese_hsk6.json` had 356 facts (13% of 2,666) where the `explanation` field described a different lexical sense than the `correctAnswer`. Examples:
+- `作`: answer="to do; to make", explanation described the sense "worker"
+- `哦`: answer="oh; I see", explanation described the sense "to chant"
+- `清`: answer="clear; clean", explanation described the Qing Dynasty sense
+- `藏`: answer="to hide; to store", explanation described the geographic sense "Tibet"
+
+**Root cause:** The CC-CEDICT import pipeline (`rebuild-chinese-from-hsk.py`) uses `get_usable_meaning()` to select the quiz answer — which picks the first non-bad sense. The `build_explanation()` function independently selects the same entry's `all_meanings[1:5]` for its "Also:" suffix. When CC-CEDICT lists multiple characters with the same simplified form (different pinyin/tones), the pipeline can pick an answer from one headword and an explanation from another headword's position in the array. The `build_explanation` format `"{char} ({pinyin}) — {first_meaning}. Also: ..."` uses `first_meaning` correctly but the pinyin can reference a different reading's sense cluster.
+
+**Detection heuristic:** Tokenize `correctAnswer` on `[;,/]`, keep tokens ≥4 chars, check if ANY token appears as substring in `explanation`. Misses are suspect sense mismatches. Run: see `scripts/content-pipeline/vocab/rebuild-chinese-from-hsk.py` for the pipeline; the heuristic is in the fix scripts.
+
+**Fix:** For each of the 356 suspect facts, set `explanation` to `"Multiple meanings exist; see dictionary entry for \"<char>\"."` This is honest — the answer IS correct, the old explanation was just wrong-sense text. Suspect count before: 356. After: 356 (the generic placeholder intentionally doesn't match the heuristic either — which is fine; the heuristic is for detecting WRONG explanations, not correct ones).
+
+**Future fix:** Fix `build_explanation()` to ensure it always uses the same headword/sense cluster as `get_usable_meaning()`. When CC-CEDICT has multiple entries for a simplified character, group by (simplified, pinyin) and pick explanation meanings from the same group.
+
+---
+
+### 2026-04-10 — Vocab english_meanings pool POS-split (14 decks) — adverb routing bug
+
+**What:** 14 Spanish/French/German vocabulary decks (A1-C2) had a single `english_meanings` pool mixing verbs, nouns, adjectives, and adverbs. At 3-option mastery=0 quizzes, a question about a verb could show a noun as a distractor — eliminable without any vocabulary knowledge (POS-TELL).
+
+**Fix:** Split `english_meanings` into per-POS sub-pools: `english_meanings_verbs`, `english_meanings_nouns`, `english_meanings_adjectives`, `english_meanings_adverbs`, `english_meanings_other`. Each fact's `answerTypePoolId` updated to its POS-specific pool. Small pools (<5 real facts) merged into `_nouns` (largest). Pools with few real facts padded with `syntheticDistractors` to reach 15 total. Spanish B1 `difunto` and `pendiente` had incorrect `partOfSpeech: "verb"` — corrected to `"adjective"` before splitting.
+
+**Critical bug discovered during implementation:** In the `pos_key()` routing function, the check `'verb' in p` evaluated `True` for `p = 'adverb'` (since "verb" is a substring of "adverb"). This routed ALL adverbs into the `_verbs` pool on the first pass. The fix: check `'adverb'` BEFORE `'verb'` in the if-chain. Always use substring checks in order from most-specific to least-specific.
+
+**Lesson:** `'verb' in 'adverb'` is `True` in Python. POS routing functions must check `adverb` before `verb`. The same issue applies to any pair where one POS string is a substring of another.
+
+**Totals:** 14 decks, 15,947 facts reassigned, 2 POS tag corrections (es-cefr-2617 difunto, es-cefr-2847 pendiente), 0 failures in `verify-all-decks.mjs` after fix.
+
+---
+
+---
+
+### 2026-04-10 — History catch-all pool splits
+
+**What:** History decks (`ancient_greece`, `ancient_rome`, `world_war_ii`) had single mega-pools spanning entire historical scopes — `historical_phrases_long` (87 facts), `historical_phrases` (80 facts), `historical_events` (167 facts). These caused POOL-CONTAM where distractors from completely different eras/topics competed: "Scientific history", "Died in prison from gangrene", and "The Macedonian phalanx" as co-distractors for a single question.
+
+**Fix:** Split by `chainThemeId` (for ancient_greece/rome where sub-decks already had theme assignments) and by sub-deck grouping (for WWII where 16 sub-decks were consolidated into 5 thematic pools). Total: 87+80+167 = 334 facts reassigned across 7+7+5 = 19 new pools.
+
+**Lesson:** Any knowledge-deck pool with >30 facts that spans multiple sub-decks is a POOL-CONTAM source. Use `chainThemeId` or sub-deck membership as the split axis — facts already carry this metadata if sub-decks are defined.
+
+---
+
+### 2026-04-10 — Numeric pool misclassification cleanup
+
+**What:** Count-type answers ("8" for Sleipnir's legs, "12" for Apollo moonwalkers) were placed in non-numeric pools (`object_names`, `launch_years`). This caused them to bleed as nonsensical distractors into unrelated questions: "8" appeared as an option for "What object did Thrym place on Freyja's lap?" and "12" appeared in year-format distractor sets.
+
+**Fix:** Moved both facts to `bracket_numbers` pools in their respective decks (`norse_mythology`, `nasa_missions`). Also moved the "Approximately six months" duration answer from `invention_names_long` to a new `duration_answers` pool in `famous_inventions`.
+
+**Lesson:** Any `correctAnswer` that is a bare number (integer or simple count) belongs in a `bracket_numbers` pool. Duration strings ("X weeks", "X months") belong in a `duration_answers` pool. Never put numerics in name/label pools.
+
+---
+
+### 2026-04-10 — chainThemes added to 9 knowledge decks
+
+**What:** Eight knowledge decks (`ancient_greece`, `ancient_rome`, `world_war_ii`, `greek_mythology`, `norse_mythology`, `egyptian_mythology`, `mammals_world`, `dinosaurs`) had `chainThemes: []` even though their sub-decks or facts already carried `chainThemeId` values. Without a populated `chainThemes` array, the Study Temple chain mechanic cannot activate — the engine has no theme definitions to display or track. Medieval_world was also fixed.
+
+**Fix:** Added `chainThemes` arrays (4–8 themes per deck) derived from existing sub-deck structure. Sub-deck `chainThemeId` fields were also set where missing. No fact data was changed.
+
+**Lesson:** When authoring a knowledge deck with sub-decks, always populate `chainThemes` in the same pass. Sub-decks without a corresponding `chainThemes` entry silently disable the chain mechanic. Run `jq '.chainThemes | length' data/decks/<name>.json` to quickly check.
+
+### 2026-04-10 — Phase 5: New structural checks may fire warnings on valid decks
+
+**What:** After adding 8 new structural checks (#23-30) to `verify-all-decks.mjs`, existing decks gained new warnings. The `empty_chain_themes_runtime` check in `quiz-audit-engine.ts` initially fired for every fact×mastery combination (228 times for solar_system instead of once), making output unreadable.
+
+**Why:** Per-fact checks in `runChecks()` create a fresh `issues` array per call — deduplication within the array doesn't work across calls. Only deck-level checks in `auditDeck()` can deduplicate to once-per-deck.
+
+**Fix:** Moved `empty_chain_themes_runtime` and `mega_pool_runtime_warning` from `runChecks()` to `auditDeck()`, using the existing `factResults.push(synthetic_pool_level_result)` pattern from the existing `min_pool_facts` check.
+
+**Rule:** Any check that is conceptually deck-level (not per-fact) MUST be placed in `auditDeck()`, not in `runChecks()`. The pattern in `auditDeck()` around line 900 shows how to emit a synthetic FactAuditResult for deck-level issues.
