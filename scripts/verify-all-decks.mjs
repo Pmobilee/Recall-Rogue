@@ -18,6 +18,23 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, '..');
 
+// ---------------------------------------------------------------------------
+// Grammar scar patterns — loaded from catalog file
+// ---------------------------------------------------------------------------
+let GRAMMAR_SCAR_PATTERNS = [];
+try {
+  const scarCatalog = JSON.parse(readFileSync(resolve(repoRoot, 'scripts/content-pipeline/grammar-scar-patterns.json'), 'utf8'));
+  GRAMMAR_SCAR_PATTERNS = (scarCatalog.patterns || []).map(p => ({
+    id: p.id,
+    pattern: p.pattern,
+    description: p.description,
+  }));
+} catch (e) {
+  // Catalog not found — grammar scar check will be skipped
+  console.warn('[verify-all-decks] Warning: grammar-scar-patterns.json not found — Check #25 disabled');
+}
+
+
 const VERBOSE = process.argv.includes('--verbose');
 
 // ---------------------------------------------------------------------------
@@ -301,7 +318,7 @@ function getPoolDistractors(fact, deck, count = 3) {
 }
 
 // ---------------------------------------------------------------------------
-// Issue checking — 23 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks + 1 pool-homogeneity + 2 new answer-quality checks + 1 brace-leak check)
+// Issue checking — 25 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks + 1 pool-homogeneity + 2 new answer-quality checks + 1 brace-leak check + 1 grammar-scar check + 1 semantic-category heuristic check)
 // ---------------------------------------------------------------------------
 
 /**
@@ -606,12 +623,26 @@ function verifyDeck(deckId, deck) {
       if (typeof synth !== 'string') continue;
       if (synth === '{___}') continue; // fill-in-blank token — not a real distractor
       if (/[{}]/.test(synth)) {
-        failCount++;
-        factFailures.push({
-          index: 0,
-          factId: pool24.id,
-          msg: 'Check #24 FAIL: pool  + pool24.id +  syntheticDistractor contains raw brace — bracket-notation leak: ' + JSON.stringify(synth) + ' — strip this distractor and fix the generator',
-        });
+        addDeckIssue('Check #24 FAIL: pool "' + pool24.id + '" syntheticDistractor contains raw brace — bracket-notation leak: ' + JSON.stringify(synth) + ' — strip this distractor and fix the generator');
+      }
+    }
+  }
+
+  // Check #25: grammar scar patterns in quizQuestion fields (HARD FAIL)
+  // Detects broken English patterns produced by naive batch word-replacement.
+  // Patterns are maintained in scripts/content-pipeline/grammar-scar-patterns.json.
+  // 2026-04-10: Added after "a the concept", "a the reactant" scars found in 6 facts across 3 decks.
+  // This is the SECOND occurrence — first was 2026-04-09. The catalog ensures future patterns
+  // are machine-checkable rather than relying on manual grep.
+  if (GRAMMAR_SCAR_PATTERNS.length > 0) {
+    for (const fact25 of facts) {
+      const q = fact25.quizQuestion || '';
+      if (!q) continue;
+      for (const scar of GRAMMAR_SCAR_PATTERNS) {
+        if (q.includes(scar.pattern)) {
+          addDeckIssue('Check #25 FAIL: grammar scar "' + scar.id + '" in fact "' + fact25.id + '" quizQuestion — pattern "' + scar.pattern + '" — ' + scar.description + ' — rewrite the question stem instead of using naive replacement');
+          break; // one error per fact is sufficient
+        }
       }
     }
   }
