@@ -959,9 +959,8 @@
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
       {@const chargeApCost = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
-      {@const isFreeAp = isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch}
       {@const chargeApDisplay = String(chargeApCost)}
-      {@const apBadgeColor = isFreeAp ? '#4ADE80' : chargeApCost > 1 ? '#EF4444' : undefined}
+      {@const apBadgeColor = chargeAffordable ? '#4ADE80' : '#EF4444'}
       <button
         class="charge-play-btn charge-play-btn-landscape"
         class:charge-btn-disabled={!chargeAffordable}
@@ -1249,9 +1248,8 @@
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
       {@const chargeApCost = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
-      {@const isFreeAp = isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch}
       {@const chargeApDisplay = String(chargeApCost)}
-      {@const apBadgeColor = isFreeAp ? '#4ADE80' : chargeApCost > 1 ? '#EF4444' : undefined}
+      {@const apBadgeColor = chargeAffordable ? '#4ADE80' : '#EF4444'}
       <button
         class="charge-play-btn"
         class:charge-btn-disabled={!chargeAffordable}

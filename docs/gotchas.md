@@ -1728,3 +1728,23 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 - Docs: no stale Bulwark references, no direct card.apCost reads in UI, registry updated (Bulwark: 18→9 block)
 
 **No issues found.** Overhaul is clean and ready to merge to main.
+
+### 2026-04-10 — CardPickerOverlay used hardcoded 160px card width instead of matching CardHand
+
+**What:** `CardPickerOverlay.svelte` had `.card-visual-wrapper { width: calc(160px * var(--layout-scale, 1)) }`. At 1920×1080 with layout-scale ≈ 1.71, this renders ~274px wide. But CardHand's `landscapeCardW = (35vh * 0.88) / 1.42` renders ~234px. Cards in the picker looked noticeably larger than hand cards.
+
+**Fix:** Removed hardcoded CSS width/height from `.card-visual-wrapper`. Added reactive `pickerCardW` using the same `(35 * vh / 100) * 0.88 / 1.42` formula as CardHand. Applied as inline `style` on the wrapper so `--card-w` CSS var (required by CardVisual for typography scaling) is also set dynamically.
+
+**Lesson:** Any component that renders `CardVisual` must set `--card-w` to match what it intends for the card width. If this var doesn't match the container width, CardVisual's internal font sizing is wrong.
+
+### 2026-04-10 — Charge button AP badge color used wrong predicate
+
+**What:** The AP badge on the CHARGE button used `isFreeAp ? green : chargeApCost > 1 ? red : undefined`. This made 1-AP charges show no color (neither green nor red), and made the color dependent on absolute AP cost rather than affordability. A player with 0 AP sees a neutral badge on a 1-AP charge even though they can't afford it.
+
+**Fix:** Replaced with `chargeAffordable ? '#4ADE80' : '#EF4444'`. The badge is now always green (affordable) or red (not affordable). The unused `isFreeAp` `@const` declaration was also removed from both landscape and portrait charge button blocks.
+
+### 2026-04-10 — MusicWidget mute button bypassed musicService
+
+**What:** Mute button called `musicEnabled.update(v => !v)` directly on the store. This skips `musicService.init()` — if init hadn't run yet, the store subscription that applies volume to `currentAudio` was never set up, so clicking mute had no audible effect.
+
+**Fix:** Changed mute button onclick to call `musicService.toggleMute()`. Updated `toggleMute()` to call `this.init()` first, then update the store, then immediately apply to `currentAudio` as belt-and-suspenders (in case the subscription fired before `currentAudio` was set). New tracks already correctly respect mute via `crossfadeIn()` which reads `get(musicEnabled)`.
