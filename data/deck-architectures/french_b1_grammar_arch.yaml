@@ -1,0 +1,1796 @@
+deck_id: french_b1_grammar
+name: "French B1 Grammar"
+domain: vocabulary
+sub_domain: french_grammar
+target_facts: 450
+minimum_facts: 270
+language: fr
+
+data_sources:
+  - name: Référentiel B1 pour le français (Beacco et al., Didier)
+    url: https://www.didier.fr/livre/referentiel-pour-le-cadre-europeen-commun-b1.html
+    license: Reference only — scope/structure. Conseil de l'Europe / Didier, 2011.
+    usage: Authoritative B1 grammar scope. Determines which grammar points are included and their canonical descriptions. Cross-referenced against DELF B1 scope (France Éducation International) and Grammaire progressive du français — niveau intermédiaire (CLE International).
+  - name: Tatoeba
+    url: https://tatoeba.org/
+    license: CC BY 2.0
+    usage: Verified example sentences with French text + English translation + sentence ID. All sentence IDs documented in data/deck-architectures/_research/french/tatoeba_b1_sentences.tsv.
+
+# -----------------------------------------------------------------
+# Chain Themes (by grammar area):
+#   0 — subjonctif_present       : subjonctif présent — regular and irregular forms + trigger expressions
+#   1 — conditionnel_si_clauses  : conditionnel présent (regular + irregular stems) + si+imparfait→conditionnel + conditionnel passé intro
+#   2 — plus_que_parfait         : plus-que-parfait (avais/étais + PP) + temporal sequence
+#   3 — pronoms_relatifs_avances : dont / où / ce qui / ce que / ce dont / celui qui / celle que
+#   4 — double_pronominalization : me-te-se-nous-vous < le-la-les < lui-leur < y < en order + imperative placement
+#   5 — gerondif_participe       : gérondif (en + -ant) uses + participe présent (bare -ant) adjectival/verbal uses
+#   6 — passif_discours_rapporte : passif (être + PP + par) + discours rapporté au présent (dire que, demander si, etc.)
+#   7 — peripherastiques_connect : verbes périphrastiques (commencer à, finir de, être en train de, venir de) + connecteurs causaux/consécutifs + temps futur avec quand/dès que
+#
+# Answer Type Pools:
+#   subj_er_regular               : subjonctif présent -er verbs (parle, parles, parle, parlions, parliez, parlent)
+#   subj_ir_regular               : subjonctif présent -ir verbs (finisse, finisses, finisse, finissions, finissiez, finissent)
+#   subj_re_regular               : subjonctif présent -re verbs (vende, vendes, vende, vendions, vendiez, vendent)
+#   subj_etre_avoir               : subjonctif présent être (sois/soit/soyons/soyez/soient) + avoir (aie/aies/ait/ayons/ayez/aient)
+#   subj_irregulier               : other irregular subjonctifs (aille, fasse, veuille, puisse, sache, faille, vaille)
+#   subj_triggers_necessite       : necessity trigger phrases (il faut que, il est nécessaire que, il vaut mieux que, il est important que)
+#   subj_triggers_desir_emotion   : desire/emotion trigger phrases (je veux que, j'aimerais que, j'ai peur que, c'est dommage que, bien que)
+#   subj_triggers_conjonctions    : purpose/time/condition conjunctions (pour que, avant que, à condition que, à moins que, jusqu'à ce que)
+#   conditionnel_present_forms    : conditionnel présent forms — regular and irregular (parlerais, serais, aurais, ferais, irais, viendrais, etc.)
+#   conditionnel_passe_forms      : conditionnel passé forms (j'aurais parlé, je serais parti(e), j'aurais dû, tu aurais pu, etc.)
+#   si_imparfait_patterns         : full si + imparfait → conditionnel constructions (homogeneityExempt — phrase-level)
+#   plus_que_parfait_avoir        : plus-que-parfait with avoir (avais/avait/avions/avaient + PP)
+#   plus_que_parfait_etre         : plus-que-parfait with être + agreement (étais parti(e), était arrivé(e), s'étaient couchés)
+#   pronoms_relatifs_dont_ou      : dont and où as relative pronouns (short single-word answers for identification)
+#   pronoms_ce_qui_ce_que         : ce qui (subject) / ce que (object) / ce dont (de + complement)
+#   pronoms_demonstratifs         : celui qui / celui que / celle qui / celle que / ceux qui / celles que
+#   double_pronoms_me_te_le       : me/te/nous/vous + le/la/les combinations (me le, te la, nous les, je te le donne)
+#   double_pronoms_le_lui_leur    : le/la/les + lui/leur combinations (le lui, la leur, les leur — correct order)
+#   double_pronoms_en_y           : m'en, t'en, nous en / il y en a constructions
+#   double_pronoms_imperatif      : imperative double pronoun constructions (donne-le-lui, montre-la-leur, ne me le dis pas)
+#   gerondif_forms                : en + -ant gerondif forms (en parlant, en faisant, en sortant, en souriant, en travaillant)
+#   participe_present_forms       : bare -ant participe présent forms used adjectivally (souriant, vivant, travaillant, obéissant)
+#   passif_etre_pp                : passif forms — être (various tenses) + past participle + par (est écrit par, a été élu par, sera envoyé par)
+#   discours_rapporte_verbs       : reporting verb structures (dit que, demande si, se demande pourquoi, demande ce que, explique que)
+#   peripherastiques_debut_fin    : beginning/end periphrases (commencer à, se mettre à, finir de, arrêter de, cesser de + infinitive)
+#   peripherastiques_continuite   : ongoing/recent periphrases (être en train de, venir de, continuer à/de + infinitive)
+#   connecteurs_causals           : causal connectors (parce que, puisque, comme, à cause de, grâce à, en raison de, faute de)
+#   connecteurs_consecutifs       : consecutive connectors (donc, alors, c'est pourquoi, si bien que, de sorte que, tellement…que)
+#   temps_futur_conjonctions      : temporal conjunctions + futur (quand + futur, dès que + futur, une fois que + futur, aussitôt que)
+# -----------------------------------------------------------------
+
+chain_themes:
+  - id: 0
+    name: "Subjonctif Présent"
+    description: "Subjonctif présent — regular -er/-ir/-re forms + all irregular paradigms (être, avoir, aller, faire, vouloir, pouvoir, savoir) + trigger expressions (necessity, desire, emotion, purpose, concession, time, condition)"
+    color: "#9B59B6"
+    icon: "verb"
+  - id: 1
+    name: "Conditionnel & Si-Clauses"
+    description: "Conditionnel présent (regular + irregular stems) + si + imparfait → conditionnel (hypothesis) + conditionnel passé intro (j'aurais dû, tu aurais pu, j'aurais aimé)"
+    color: "#E67E22"
+    icon: "verb"
+  - id: 2
+    name: "Plus-que-parfait & Temps Composés"
+    description: "Plus-que-parfait with avoir (j'avais parlé, il avait pris) and être (j'étais parti(e), elle était arrivée) + temporal sequence (quand j'ai appelé, il était déjà parti)"
+    color: "#1ABC9C"
+    icon: "phrase"
+  - id: 3
+    name: "Pronoms Relatifs Avancés"
+    description: "Dont (replaces de + noun) / où (place and time) / ce qui (subject) / ce que (object) / ce dont (de + complement) / celui qui / celle que — indefinite and demonstrative relative forms"
+    color: "#27AE60"
+    icon: "pronoun"
+  - id: 4
+    name: "Double Pronominalization"
+    description: "Pronoun order: me-te-se-nous-vous < le-la-les < lui-leur < y < en — combinations me le, te la, le lui, les leur, m'en, il y en a + placement with imperatives (donne-le-lui, ne me le dis pas)"
+    color: "#F39C12"
+    icon: "pronoun"
+  - id: 5
+    name: "Gérondif & Participe Présent"
+    description: "Gérondif (en + -ant): simultaneity, manner, condition, cause — subject must match main clause / Participe présent (bare -ant): adjectival agreement (souriant, vivant, travaillant) + verbal/literary uses"
+    color: "#3498DB"
+    icon: "verb"
+  - id: 6
+    name: "Passif & Discours Rapporté"
+    description: "Passif: être (any tense) + PP (agreement with subject) + par + agent / Discours rapporté au présent: dire que, demander si, demander ce que/ce qui, se demander pourquoi (tense unchanged with present reporting verb)"
+    color: "#E74C3C"
+    icon: "structure"
+  - id: 7
+    name: "Verbes Périphrastiques & Connecteurs Avancés"
+    description: "Aspect periphrases: commencer à, se mettre à, finir de, arrêter de, être en train de, venir de + causal connectors (puisque, grâce à, en raison de) + consecutive connectors (si bien que, tellement…que) + quand/dès que + futur"
+    color: "#8E44AD"
+    icon: "phrase"
+
+# -----------------------------------------------------------------
+# Answer Type Pools — grammar form groupings for distractor selection
+# All pools target: example_answers.length + synthetic_distractors.length >= 15
+# Max/min answer length ratio must be < 3x within each pool
+# -----------------------------------------------------------------
+
+answer_type_pools:
+
+  - id: subj_er_regular
+    description: "Subjonctif présent regular -er verb conjugations (que je parle, que tu parles, etc.)"
+    example_answers:
+      - parle
+      - parles
+      - parle
+      - parlions
+      - parliez
+      - parlent
+      - parte
+      - partes
+      - partions
+      - travaille
+      - travailles
+      - travaillions
+      - reste
+      - restes
+      - restions
+    synthetic_distractors:
+      - chante
+      - chantes
+      - trouvions
+      - écoutes
+      - appelle
+
+  - id: subj_ir_regular
+    description: "Subjonctif présent regular -ir verb conjugations (que je finisse, que tu finisses, etc.)"
+    example_answers:
+      - finisse
+      - finisses
+      - finisse
+      - finissions
+      - finissiez
+      - finissent
+      - choisisse
+      - choisissent
+      - réussisse
+      - réussissent
+      - obéisse
+      - obéissent
+      - remplisse
+      - remplissent
+      - grandisse
+    synthetic_distractors:
+      - réfléchisse
+      - agisse
+      - punisse
+      - rougisse
+      - guérisse
+
+  - id: subj_re_regular
+    description: "Subjonctif présent regular -re verb conjugations (que je vende, que tu vendes, etc.)"
+    example_answers:
+      - vende
+      - vendes
+      - vende
+      - vendions
+      - vendiez
+      - vendent
+      - attende
+      - attendes
+      - attendions
+      - réponde
+      - répondes
+      - entende
+      - entendions
+      - prenne
+      - prennes
+    synthetic_distractors:
+      - perde
+      - perdes
+      - défende
+      - descende
+      - rende
+
+  - id: subj_etre_avoir
+    description: "Subjonctif présent irregular: être (sois, soit, soyons, soyez, soient) and avoir (aie, aies, ait, ayons, ayez, aient)"
+    example_answers:
+      - sois
+      - soit
+      - soyons
+      - soyez
+      - soient
+      - aie
+      - aies
+      - ait
+      - ayons
+      - ayez
+      - aient
+    synthetic_distractors:
+      - es
+      - est
+      - avez
+      - avait
+      - suis
+      - était
+      - avons
+      - êtes
+
+  - id: subj_irregulier
+    description: "Subjonctif présent other irregular verbs: aller (aille), faire (fasse), vouloir (veuille), pouvoir (puisse), savoir (sache), falloir (faille), valoir (vaille)"
+    example_answers:
+      - aille
+      - ailles
+      - aillent
+      - fasse
+      - fasses
+      - fassent
+      - veuille
+      - veuilles
+      - veuillent
+      - puisse
+      - puisses
+      - puissent
+      - sache
+      - sachent
+      - faille
+    synthetic_distractors:
+      - vais
+      - vas
+      - fais
+      - veux
+      - peux
+
+  - id: subj_triggers_necessite
+    description: "Subjonctif trigger phrases expressing necessity/obligation (followed by que + subjonctif)"
+    example_answers:
+      - il faut que
+      - il est nécessaire que
+      - il est important que
+      - il vaut mieux que
+      - il est indispensable que
+      - il est essentiel que
+      - il est obligatoire que
+      - il convient que
+    synthetic_distractors:
+      - il est possible que
+      - il est probable que
+      - il est certain que
+      - il est sûr que
+      - il est évident que
+      - il est clair que
+      - il est vrai que
+
+  - id: subj_triggers_desir_emotion
+    description: "Subjonctif trigger phrases expressing desire, emotion, doubt, or concession (followed by que + subjonctif)"
+    example_answers:
+      - je veux que
+      - je voudrais que
+      - j'aimerais que
+      - je souhaite que
+      - j'ai peur que
+      - je suis content(e) que
+      - c'est dommage que
+      - je doute que
+      - je ne crois pas que
+      - bien que
+      - quoique
+    synthetic_distractors:
+      - je pense que
+      - je crois que
+      - il est certain que
+      - je sais que
+      - il est évident que
+
+  - id: subj_triggers_conjonctions
+    description: "Purpose, time, and condition conjunctions requiring subjonctif (pour que, avant que, à condition que, etc.)"
+    example_answers:
+      - pour que
+      - afin que
+      - avant que
+      - jusqu'à ce que
+      - à condition que
+      - pourvu que
+      - à moins que
+      - de peur que
+      - sans que
+    synthetic_distractors:
+      - parce que
+      - puisque
+      - pendant que
+      - quand
+      - dès que
+      - après que
+      - depuis que
+
+  - id: conditionnel_present_forms
+    description: "Conditionnel présent forms — regular and high-frequency irregular verb forms"
+    example_answers:
+      - parlerais
+      - parlerait
+      - parlerions
+      - finirais
+      - finirait
+      - vendrais
+      - vendrait
+      - serais
+      - serait
+      - aurais
+      - aurait
+      - ferais
+      - ferait
+      - irais
+      - irait
+    synthetic_distractors:
+      - viendrais
+      - viendrait
+      - pourrais
+      - pourrait
+      - voudrais
+      - voudrais
+      - saurais
+      - saurait
+      - devrais
+      - devrait
+
+  - id: conditionnel_passe_forms
+    description: "Conditionnel passé forms with avoir and être (j'aurais parlé, je serais parti(e), j'aurais dû, tu aurais pu)"
+    example_answers:
+      - j'aurais parlé
+      - j'aurais fini
+      - j'aurais fait
+      - j'aurais vu
+      - tu aurais dû
+      - tu aurais pu
+      - il aurait fallu
+      - j'aurais aimé
+      - j'aurais voulu
+      - je serais parti(e)
+      - elle serait arrivée
+      - ils seraient venus
+    synthetic_distractors:
+      - j'aurais dit
+      - tu aurais su
+      - il aurait pris
+      - nous aurions eu
+      - elle serait tombée
+
+  - id: si_imparfait_patterns
+    description: "Full si + imparfait → conditionnel présent hypothetical constructions (homogeneityExempt — phrase-level variation is inherent)"
+    homogeneityExempt: true
+    homogeneityExemptNote: "Si-clause constructions vary inherently in length: si-clause + result clause; this is a phrase-level pool by design."
+    example_answers:
+      - Si j'avais le temps, je viendrais.
+      - Si tu venais, nous irions au restaurant.
+      - Si elle pouvait partir, elle voyagerait.
+      - Si nous avions plus d'argent, nous achèterions une maison.
+      - Si vous étiez libre, viendriez-vous ?
+      - S'ils travaillaient plus, ils réussiraient.
+      - Si j'étais riche, je voyagerais.
+      - Si tu étudiais, tu réussirais.
+    synthetic_distractors:
+      - Si j'avais su, je serais venu.
+      - Si elle voulait, elle pourrait.
+      - Si nous partions maintenant, nous arriverions à temps.
+      - Si vous m'écoutiez, vous comprendriez.
+      - Si le temps le permettait, nous sortirions.
+      - Si tu avais de la patience, tu réussirais.
+      - Si on travaillait ensemble, ce serait plus facile.
+
+  - id: plus_que_parfait_avoir
+    description: "Plus-que-parfait with avoir auxiliary (avais/avait/avions/avaient + past participle)"
+    example_answers:
+      - j'avais parlé
+      - j'avais fini
+      - j'avais pris
+      - j'avais vu
+      - j'avais dit
+      - j'avais fait
+      - il avait réparé
+      - elle avait compris
+      - nous avions mangé
+      - ils avaient attendu
+      - tu avais étudié
+      - vous aviez lu
+    synthetic_distractors:
+      - j'avais voulu
+      - j'avais pu
+      - il avait écrit
+      - elle avait mis
+      - nous avions couru
+
+  - id: plus_que_parfait_etre
+    description: "Plus-que-parfait with être auxiliary + agreement (j'étais parti(e), elle était arrivée, ils s'étaient couchés)"
+    example_answers:
+      - j'étais parti(e)
+      - j'étais arrivé(e)
+      - il était allé
+      - elle était venue
+      - elle était née
+      - nous étions restés
+      - ils s'étaient endormis
+      - tu t'étais levé(e)
+      - elle s'était couchée
+      - je m'étais levé(e)
+      - il était sorti
+      - elles étaient tombées
+    synthetic_distractors:
+      - tu étais entré(e)
+      - il était monté
+      - elle était descendue
+      - nous étions partis
+      - ils étaient retournés
+
+  - id: pronoms_relatifs_dont_ou
+    description: "Relative pronouns dont (replacing de + noun) and où (place or time antecedent) — single-word identification"
+    example_answers:
+      - dont
+      - où
+    synthetic_distractors:
+      - que
+      - qui
+      - lequel
+      - laquelle
+      - auquel
+      - duquel
+      - lesquels
+      - lesquelles
+      - auxquelles
+      - de qui
+      - à qui
+      - ce que
+      - ce qui
+
+  - id: pronoms_ce_qui_ce_que
+    description: "Indefinite relative pronouns with unspecified antecedent: ce qui (subject), ce que (object), ce dont (de + complement)"
+    example_answers:
+      - ce qui
+      - ce que
+      - ce dont
+      - ce qu'
+    synthetic_distractors:
+      - ce que j'aime
+      - que
+      - qui
+      - dont
+      - lequel
+      - laquelle
+      - ce à quoi
+      - là où
+      - quoi
+      - à quoi
+      - de quoi
+      - pour quoi
+
+  - id: pronoms_demonstratifs
+    description: "Demonstrative relative pronouns: celui qui / celui que / celle qui / celle que / ceux qui / celles que"
+    example_answers:
+      - celui qui
+      - celui que
+      - celle qui
+      - celle que
+      - ceux qui
+      - ceux que
+      - celles qui
+      - celles que
+    synthetic_distractors:
+      - celui dont
+      - celle dont
+      - ceux dont
+      - celui où
+      - celle où
+      - ce qui
+      - ce que
+      - ce dont
+
+  - id: double_pronoms_me_te_le
+    description: "Double pronoun combinations: me/te/nous/vous + le/la/les (me le donne, te la prête, nous les explique)"
+    example_answers:
+      - me le
+      - me la
+      - me les
+      - te le
+      - te la
+      - te les
+      - nous le
+      - nous la
+      - nous les
+      - vous le
+      - vous la
+      - vous les
+    synthetic_distractors:
+      - le me
+      - la te
+      - les nous
+      - me lui
+      - te leur
+
+  - id: double_pronoms_le_lui_leur
+    description: "Double pronoun combinations: le/la/les + lui/leur — correct order (le lui donne, la leur montre, les leur envoie)"
+    example_answers:
+      - le lui
+      - la lui
+      - les lui
+      - le leur
+      - la leur
+      - les leur
+    synthetic_distractors:
+      - lui le
+      - leur la
+      - leur les
+      - lui la
+      - lui les
+      - leur le
+      - le te
+      - la me
+      - les vous
+
+  - id: double_pronoms_en_y
+    description: "Double pronoun constructions with en and y: m'en, t'en, nous en, y en — (Il m'en a parlé. Il y en a beaucoup.)"
+    example_answers:
+      - m'en
+      - t'en
+      - nous en
+      - vous en
+      - il y en a
+      - y en a-t-il
+      - il m'en a parlé
+      - je t'en parlerai
+    synthetic_distractors:
+      - en y
+      - y me
+      - en lui
+      - en leur
+      - m'y
+      - t'y
+      - nous y
+      - vous y
+
+  - id: double_pronoms_imperatif
+    description: "Double pronoun placement with affirmative and negative imperatives (Donne-le-lui! / Ne me le dis pas.)"
+    example_answers:
+      - Donne-le-lui !
+      - Montre-la-leur !
+      - Prête-le-moi !
+      - Dis-le-lui !
+      - Envoie-les-leur !
+      - Ne le lui donne pas.
+      - Ne me le dis pas.
+      - Ne la leur montre pas.
+    synthetic_distractors:
+      - Donne-lui-le !
+      - Montre-leur-la !
+      - Ne lui le donne pas.
+      - Ne leur les envoie pas.
+      - Prête-moi-le !
+      - Explique-leur-le !
+      - Ne te le rappelle pas.
+
+  - id: gerondif_forms
+    description: "Gérondif forms: en + present participle (en parlant, en faisant, en sortant, en souriant)"
+    example_answers:
+      - en parlant
+      - en faisant
+      - en sortant
+      - en travaillant
+      - en mangeant
+      - en lisant
+      - en écoutant
+      - en marchant
+      - en souriant
+      - en courant
+      - en rentrant
+      - en arrivant
+      - en partant
+      - en finissant
+      - en ayant
+    synthetic_distractors:
+      - en chantant
+      - en répondant
+      - en dormant
+      - en sachant
+      - en étant
+
+  - id: participe_present_forms
+    description: "Bare participe présent forms used adjectivally (souriant, vivant, obéissant, travaillant) — without en"
+    example_answers:
+      - souriant
+      - souriante
+      - vivant
+      - vivante
+      - travaillant
+      - travaillante
+      - obéissant
+      - obéissante
+      - gagnant
+      - gagnants
+      - perdant
+      - perdants
+      - suivant
+      - suivante
+      - charmant
+    synthetic_distractors:
+      - brillant
+      - brillante
+      - intéressant
+      - intéressante
+      - étonnant
+
+  - id: passif_etre_pp
+    description: "Passif constructions: être (various tenses) + past participle (agreement with subject) + par + agent"
+    example_answers:
+      - est écrit par
+      - est écrite par
+      - sont publiés par
+      - a été élu par
+      - a été rejetée par
+      - ont été abattus par
+      - a été dissous par
+      - sera envoyé par
+      - était construit par
+      - serait publié par
+    synthetic_distractors:
+      - est aimé de
+      - est entouré de
+      - a été fait par
+      - sera vendue par
+      - avait été réparé par
+
+  - id: discours_rapporte_verbs
+    description: "Reporting verb structures for discours rapporté au présent: dire que, demander si, demander ce que, se demander pourquoi, expliquer que"
+    example_answers:
+      - dit que
+      - demande si
+      - demande ce que
+      - demande ce qui
+      - se demande si
+      - se demande pourquoi
+      - explique que
+      - affirme que
+      - répond que
+      - demande comment
+    synthetic_distractors:
+      - pense que
+      - croit que
+      - sait que
+      - sait si
+      - comprend que
+      - assure que
+      - ajoute que
+
+  - id: peripherastiques_debut_fin
+    description: "Beginning and end aspect periphrases: commencer à, se mettre à, finir de, arrêter de, cesser de + infinitive"
+    example_answers:
+      - commencer à
+      - se mettre à
+      - finir de
+      - arrêter de
+      - cesser de
+      - commencer à comprendre
+      - se mettre à rire
+      - finir de manger
+      - arrêter de fumer
+      - commencer à pleuvoir
+    synthetic_distractors:
+      - commencer de
+      - finir à
+      - arrêter à
+      - cesser à
+      - se mettre de
+      - essayer de
+      - décider de
+      - refuser de
+      - oublier de
+      - réussir à
+
+  - id: peripherastiques_continuite
+    description: "Ongoing and recent past aspect periphrases: être en train de, venir de, continuer à/de + infinitive"
+    example_answers:
+      - être en train de
+      - venir de
+      - continuer à
+      - continuer de
+      - être en train de lire
+      - être en train de dormir
+      - venir de finir
+      - venir d'arriver
+      - continuer à étudier
+      - continuer de courir
+    synthetic_distractors:
+      - être sur le point de
+      - aller + inf
+      - être en mesure de
+      - être capable de
+      - être prêt à
+      - commencer à
+      - finir de
+
+  - id: connecteurs_causals
+    description: "Causal connectors: parce que, puisque, comme, à cause de, grâce à, en raison de, faute de — nuance distinctions"
+    example_answers:
+      - parce que
+      - puisque
+      - comme
+      - à cause de
+      - grâce à
+      - en raison de
+      - faute de
+    synthetic_distractors:
+      - donc
+      - alors
+      - c'est pourquoi
+      - si bien que
+      - par conséquent
+      - pourtant
+      - cependant
+      - néanmoins
+      - or
+
+  - id: connecteurs_consecutifs
+    description: "Consecutive/result connectors: donc, alors, c'est pourquoi, si bien que, de sorte que, tellement…que, par conséquent"
+    example_answers:
+      - donc
+      - alors
+      - c'est pourquoi
+      - si bien que
+      - de sorte que
+      - tellement…que
+      - par conséquent
+      - ainsi
+    synthetic_distractors:
+      - parce que
+      - puisque
+      - à cause de
+      - grâce à
+      - bien que
+      - pourtant
+      - cependant
+      - mais
+      - or
+
+  - id: temps_futur_conjonctions
+    description: "Temporal conjunctions that require futur simple in French (not present tense as in English): quand, dès que, une fois que, aussitôt que, lorsque"
+    example_answers:
+      - quand tu seras prêt
+      - quand il arrivera
+      - dès qu'il aura fini
+      - dès que je pourrai
+      - une fois que tu auras compris
+      - aussitôt qu'elle sera rentrée
+      - lorsque vous arriverez
+      - tant qu'il fera froid
+    synthetic_distractors:
+      - quand tu es prêt
+      - quand il arrive
+      - dès qu'il a fini
+      - une fois que tu comprends
+      - aussitôt qu'elle rentre
+      - lorsque vous arrivez
+      - tant qu'il fait froid
+
+# -----------------------------------------------------------------
+# Grammar Points — mapped to chain themes (0-7) with Tatoeba citations
+# All tatoeba IDs verified against tatoeba_b1_sentences.tsv
+# -----------------------------------------------------------------
+
+grammar_points:
+
+  # ---------------------------------------------------------------
+  # Theme 0: Subjonctif Présent
+  # ---------------------------------------------------------------
+
+  - id: gp_subj_er_formation
+    point: "Subjonctif présent -er verbs: stem from ils/elles present + endings -e/-es/-e/-ions/-iez/-ent (que je parle, que tu parles, qu'ils partent)"
+    category: 0
+    difficulty: 2
+    referentiel_ref: "B1 §1 — Subjonctif présent régulier -er"
+    examples:
+      - tatoeba_id: 9033
+        french: "Je veux que vous partiez."
+        english: "I want you to go."
+      - tatoeba_id: 15036
+        french: "J'aimerais que la pluie cesse."
+        english: "I wish the rain would stop."
+
+  - id: gp_subj_ir_formation
+    point: "Subjonctif présent -ir verbs (regular group): stem from ils/elles + -isse/-isses/-isse/-issions/-issiez/-issent (que je finisse, que tu choisissent)"
+    category: 0
+    difficulty: 2
+    referentiel_ref: "B1 §1 — Subjonctif présent régulier -ir"
+    examples: []
+    note: "No TSV coverage for -ir subjonctif"
+
+  - id: gp_subj_re_formation
+    point: "Subjonctif présent -re verbs: stem from ils/elles + -e/-es/-e/-ions/-iez/-ent (que je vende, que tu attendes, qu'il prenne)"
+    category: 0
+    difficulty: 2
+    referentiel_ref: "B1 §1 — Subjonctif présent régulier -re"
+    examples: []
+    note: "No TSV coverage for -re subjonctif"
+
+  - id: gp_subj_nous_vous_endings
+    point: "Subjonctif nous/vous endings (-ions/-iez) are identical to present indicative for regular verbs: nous parlions, vous parliez — context distinguishes"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §1 — note on nous/vous forms"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_subj_etre_forms
+    point: "Subjonctif présent être (irregular): que je sois, que tu sois, qu'il soit, que nous soyons, que vous soyez, qu'ils soient"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §2 — Subjonctif irrégulier être"
+    examples:
+      - tatoeba_id: 8623
+        french: "Bénis soient les pauvres d'esprit."
+        english: "Blessed are the poor in spirit."
+      - tatoeba_id: 15189
+        french: "Que ce soit fait immédiatement."
+        english: "Let it be done at once."
+
+  - id: gp_subj_avoir_forms
+    point: "Subjonctif présent avoir (irregular): que j'aie, que tu aies, qu'il ait, que nous ayons, que vous ayez, qu'ils aient"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §2 — Subjonctif irrégulier avoir"
+    examples: []
+    note: "No TSV coverage for avoir subjonctif"
+
+  - id: gp_subj_aller_forms
+    point: "Subjonctif présent aller (irregular): que j'aille, que tu ailles, qu'il aille, que nous allions, que vous alliez, qu'ils aillent"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §2 — Subjonctif irrégulier aller"
+    examples:
+      - tatoeba_id: 7306705
+        french: "Il faut que j'aille dormir."
+        english: "I have to go to sleep."
+      - tatoeba_id: 10253
+        french: "J'aimerais que vous y alliez."
+        english: "I'd like for you to go."
+
+  - id: gp_subj_faire_forms
+    point: "Subjonctif présent faire (irregular): que je fasse, que tu fasses, qu'il fasse, que nous fassions, que vous fassiez, qu'ils fassent"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §2 — Subjonctif irrégulier faire"
+    examples: []
+    note: "No TSV coverage for faire subjonctif"
+
+  - id: gp_subj_vouloir_forms
+    point: "Subjonctif présent vouloir (irregular): que je veuille, que tu veuilles, qu'il veuille, que nous voulions, que vous vouliez, qu'ils veuillent"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §2 — Subjonctif irrégulier vouloir"
+    examples: []
+    note: "No TSV coverage for vouloir subjonctif"
+
+  - id: gp_subj_pouvoir_forms
+    point: "Subjonctif présent pouvoir (irregular): que je puisse, que tu puisses, qu'il puisse, que nous puissions, que vous puissiez, qu'ils puissent"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §2 — Subjonctif irrégulier pouvoir"
+    examples: []
+    note: "No TSV coverage for pouvoir subjonctif"
+
+  - id: gp_subj_savoir_forms
+    point: "Subjonctif présent savoir (irregular): que je sache, que tu saches, qu'il sache, que nous sachions, que vous sachiez, qu'ils sachent"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §2 — Subjonctif irrégulier savoir"
+    examples:
+      - tatoeba_id: 14279
+        french: "Pas autant que je sache."
+        english: "Not that I know of."
+
+  - id: gp_subj_falloir_valoir
+    point: "Subjonctif présent falloir and valoir (impersonal only): qu'il faille (from falloir) / qu'il vaille mieux (from valoir)"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §2 — Subjonctif irrégulier falloir/valoir"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_subj_trigger_necessity
+    point: "Subjonctif trigger — necessity: il faut que, il est nécessaire que, il est important que, il vaut mieux que → all require que + subjonctif"
+    category: 0
+    difficulty: 2
+    referentiel_ref: "B1 §1 — Triggers nécessité"
+    examples:
+      - tatoeba_id: 7306705
+        french: "Il faut que j'aille dormir."
+        english: "I have to go to sleep."
+
+  - id: gp_subj_trigger_desire
+    point: "Subjonctif trigger — desire/wish: je veux que, je voudrais que, j'aimerais que, je souhaite que, je désire que → que + subjonctif"
+    category: 0
+    difficulty: 2
+    referentiel_ref: "B1 §1 — Triggers désir/souhait"
+    examples:
+      - tatoeba_id: 9033
+        french: "Je veux que vous partiez."
+        english: "I want you to go."
+      - tatoeba_id: 15036
+        french: "J'aimerais que la pluie cesse."
+        english: "I wish the rain would stop."
+
+  - id: gp_subj_trigger_emotion
+    point: "Subjonctif trigger — emotion: j'ai peur que, je suis content(e) que, je suis triste que, c'est dommage que, il est dommage que → que + subjonctif"
+    category: 0
+    difficulty: 2
+    referentiel_ref: "B1 §1 — Triggers émotion"
+    examples:
+      - tatoeba_id: 12842
+        french: "J'ai peur qu'il pleuve."
+        english: "I'm afraid it's going to rain."
+
+  - id: gp_subj_trigger_doubt
+    point: "Subjonctif trigger — doubt/negated belief: je doute que, je ne crois pas que, je ne pense pas que, il est peu probable que → que + subjonctif"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §1 — Triggers doute"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_subj_trigger_concession
+    point: "Subjonctif trigger — concession: bien que + subjonctif (although), quoique + subjonctif (even though) — always requires subjonctif"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §1 — Conjonctions concessives"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_subj_trigger_purpose
+    point: "Subjonctif trigger — purpose: pour que (so that), afin que (in order that) → que + subjonctif"
+    category: 0
+    difficulty: 2
+    referentiel_ref: "B1 §1 — Conjonctions de but"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_subj_trigger_avant_jusqua
+    point: "Subjonctif trigger — time conjunctions: avant que (before) and jusqu'à ce que (until) require subjonctif; après que takes indicatif"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §1 — Conjonctions temporelles"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_subj_trigger_condition
+    point: "Subjonctif trigger — condition conjunctions: à condition que (provided that), pourvu que (as long as), à moins que (unless) → que + subjonctif"
+    category: 0
+    difficulty: 3
+    referentiel_ref: "B1 §1 — Conjonctions conditionnelles"
+    examples: []
+    note: "No TSV coverage"
+
+  # ---------------------------------------------------------------
+  # Theme 1: Conditionnel & Si-Clauses
+  # ---------------------------------------------------------------
+
+  - id: gp_cond_pres_regular_formation
+    point: "Conditionnel présent regular formation: futur stem + imparfait endings (-ais/-ais/-ait/-ions/-iez/-aient) — e.g. parler → je parlerais, finir → je finirais"
+    category: 1
+    difficulty: 2
+    referentiel_ref: "B1 §3 — Conditionnel présent formation"
+    examples: []
+    note: "No TSV coverage for formation drill"
+
+  - id: gp_cond_pres_irregular_stems
+    point: "Conditionnel présent irregular stems (same as futur): être→ser-, avoir→aur-, aller→ir-, faire→fer-, vouloir→voudr-, pouvoir→pourr-, savoir→saur-, venir→viendr-, tenir→tiendr-"
+    category: 1
+    difficulty: 3
+    referentiel_ref: "B1 §3 — Conditionnel irrégulier"
+    examples: []
+    note: "No TSV coverage for stem identification"
+
+  - id: gp_cond_pres_politesse
+    point: "Conditionnel présent — politeness use (A2 review extended): je voudrais, je pourrais, j'aimerais, je désirerais — more formal/polite than present"
+    category: 1
+    difficulty: 2
+    referentiel_ref: "B1 §3 — Conditionnel de politesse"
+    examples:
+      - tatoeba_id: 6837
+        french: "J'aimerais aller à Londres."
+        english: "I'd like to go to London."
+      - tatoeba_id: 11932
+        french: "Je voudrais voir M. Serrurier."
+        english: "I would like to see Mr Smith."
+      - tatoeba_id: 11953
+        french: "Pardon, pourriez-vous répéter ?"
+        english: "I beg your pardon?"
+
+  - id: gp_cond_pres_conseil_devoir
+    point: "Conditionnel présent — advice with devoir: tu devrais (you should), vous devriez (you should) — conditionnel of devoir expresses advice/recommendation"
+    category: 1
+    difficulty: 2
+    referentiel_ref: "B1 §3 — Devoir au conditionnel"
+    examples:
+      - tatoeba_id: 417434
+        french: "Tu devrais le remercier."
+        english: "You ought to thank him."
+      - tatoeba_id: 417442
+        french: "Tu devrais travailler fort."
+        english: "You should work hard."
+      - tatoeba_id: 480483
+        french: "Tu devrais étudier davantage."
+        english: "You should study harder."
+      - tatoeba_id: 135843
+        french: "Tu devrais lui demander conseil."
+        english: "You ought to ask him for advice."
+      - tatoeba_id: 427079
+        french: "Tu devrais arrêter de boire."
+        english: "You should give up drinking."
+
+  - id: gp_cond_pres_hypothese
+    point: "Conditionnel présent — hypothesis: il serait, il ferait, il pourrait — unverified or hypothetical information (journalistic conditionnel)"
+    category: 1
+    difficulty: 3
+    referentiel_ref: "B1 §3 — Conditionnel de conjecture"
+    examples:
+      - tatoeba_id: 3556
+        french: "Il serait ravi d'entendre ça."
+        english: "He would be glad to hear that."
+      - tatoeba_id: 13929
+        french: "Il ferait un bon mari."
+        english: "He'll make a good husband."
+      - tatoeba_id: 10925
+        french: "Il pourrait pleuvoir vers midi."
+        english: "It may rain around noon."
+
+  - id: gp_cond_pres_futur_passe
+    point: "Conditionnel présent — future-in-the-past in reported speech: Il a dit qu'il viendrait. / Elle savait que ce serait amusant."
+    category: 1
+    difficulty: 3
+    referentiel_ref: "B1 §3 — Futur dans le passé"
+    examples:
+      - tatoeba_id: 13851
+        french: "Je savais que tu viendrais."
+        english: "I knew you'd come."
+      - tatoeba_id: 3875
+        french: "Je savais qu'aujourd'hui serait amusant."
+        english: "I knew that today would be fun."
+
+  - id: gp_si_imparfait_conditionnel
+    point: "Si + imparfait → conditionnel présent — the primary B1 hypothetical structure: Si j'avais le temps, je viendrais. The conditionnel NEVER appears in the si-clause."
+    category: 1
+    difficulty: 3
+    referentiel_ref: "B1 §11 — Hypothèse si + imparfait"
+    examples: []
+    note: "No TSV coverage for full si-clause constructions (si_condition_reel 12541 is real condition, not hypothetical)"
+
+  - id: gp_si_imparfait_contrast
+    point: "Contrast: real condition (si + présent → futur: Si il fait beau, nous sortirons) vs. hypothetical (si + imparfait → conditionnel: Si il faisait beau, nous sortirions)"
+    category: 1
+    difficulty: 3
+    referentiel_ref: "B1 §11 — Contrast si-clauses"
+    examples:
+      - tatoeba_id: 12541
+        french: "J'irai, même s'il pleut demain."
+        english: "I will go even if it rains tomorrow."
+
+  - id: gp_cond_passe_avoir_formation
+    point: "Conditionnel passé formation with avoir: avoir au conditionnel présent + past participle — j'aurais parlé, tu aurais fini, il aurait fait"
+    category: 1
+    difficulty: 3
+    referentiel_ref: "B1 §15 — Conditionnel passé avoir"
+    examples:
+      - tatoeba_id: 3162
+        french: "C'est ce que j'aurais dit."
+        english: "This is what I would have said."
+
+  - id: gp_cond_passe_etre_formation
+    point: "Conditionnel passé formation with être: être au conditionnel présent + past participle (agreement with subject) — je serais parti(e), elle serait arrivée"
+    category: 1
+    difficulty: 3
+    referentiel_ref: "B1 §15 — Conditionnel passé être"
+    examples: []
+    note: "No TSV coverage for être conditionnel passé"
+
+  - id: gp_cond_passe_regret_du
+    point: "Conditionnel passé — regret: j'aurais dû (I should have), j'aurais pu (I could have), il aurait fallu (it would have been necessary to)"
+    category: 1
+    difficulty: 3
+    referentiel_ref: "B1 §15 — Conditionnel passé regret devoir/pouvoir"
+    examples:
+      - tatoeba_id: 3546
+        french: "Tu aurais dû m'écouter."
+        english: "You should have listened to me."
+      - tatoeba_id: 10152
+        french: "Il aurait dû travailler plus."
+        english: "He should have worked harder."
+      - tatoeba_id: 429507
+        french: "Tu aurais pu le faire."
+        english: "You could have done it."
+      - tatoeba_id: 2061650
+        french: "Tu aurais dû te présenter."
+        english: "You should have introduced yourself."
+      - tatoeba_id: 474105
+        french: "Tu aurais dû voir l'exposition."
+        english: "You ought to have seen the exhibition."
+      - tatoeba_id: 3258
+        french: "Je n'aurais pas dû me déconnecter."
+        english: "I shouldn't have logged off."
+
+  - id: gp_cond_passe_regret_aime
+    point: "Conditionnel passé — wish about past: j'aurais aimé (I would have liked), j'aurais voulu (I would have wanted) + infinitive"
+    category: 1
+    difficulty: 3
+    referentiel_ref: "B1 §15 — Conditionnel passé regret aimer/vouloir"
+    examples:
+      - tatoeba_id: 8049
+        french: "J'aurais aimé être un oiseau."
+        english: "I wish I were a bird."
+      - tatoeba_id: 12077
+        french: "J'aurais aimé voir le film."
+        english: "I wish I had seen the film."
+      - tatoeba_id: 13626
+        french: "J'aurais aimé avoir meilleure mémoire."
+        english: "I wish I had a better memory."
+
+  - id: gp_cond_passe_hypothetique
+    point: "Conditionnel passé — hypothetical past result: Sans ton aide, j'aurais échoué. / Si j'avais étudié, j'aurais réussi. (B1/B2 boundary)"
+    category: 1
+    difficulty: 4
+    referentiel_ref: "B1 §15 — Conditionnel passé hypothèse"
+    examples:
+      - tatoeba_id: 10302
+        french: "Sans ton aide j'aurais échoué."
+        english: "But for your help, I would have failed."
+
+  # ---------------------------------------------------------------
+  # Theme 2: Plus-que-parfait & Temps Composés
+  # ---------------------------------------------------------------
+
+  - id: gp_pqp_avoir_formation
+    point: "Plus-que-parfait with avoir: imparfait of avoir (avais/avait/avions/avaient) + past participle — j'avais parlé, il avait fini, nous avions vu"
+    category: 2
+    difficulty: 2
+    referentiel_ref: "B1 §4 — Plus-que-parfait avoir"
+    examples:
+      - tatoeba_id: 6410
+        french: "J'avais réparé ma montre."
+        english: "I had repaired my watch."
+      - tatoeba_id: 13463
+        french: "Maman ne l'avait pas mentionné."
+        english: "Mom didn't mention it."
+
+  - id: gp_pqp_etre_formation
+    point: "Plus-que-parfait with être: imparfait of être (étais/était/étions/étaient) + past participle with agreement — j'étais parti(e), elle était venue"
+    category: 2
+    difficulty: 3
+    referentiel_ref: "B1 §4 — Plus-que-parfait être"
+    examples: []
+    note: "No TSV coverage for être plus-que-parfait"
+
+  - id: gp_pqp_mouvement_verbs
+    point: "Plus-que-parfait être verbs (mouvement): aller, venir, partir, arriver, entrer, sortir, naître, mourir, tomber, rester, monter, descendre → use être"
+    category: 2
+    difficulty: 3
+    referentiel_ref: "B1 §4 — Verbes de mouvement avec être"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_pqp_pronominaux
+    point: "Plus-que-parfait pronominaux: se lever → je m'étais levé(e); se coucher → elle s'était couchée — always use être, participle agrees with subject"
+    category: 2
+    difficulty: 3
+    referentiel_ref: "B1 §4 — Pronominaux au plus-que-parfait"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_pqp_past_before_past
+    point: "Plus-que-parfait — past before past: Quand je suis arrivé, il était déjà parti. / Elle avait fini quand j'ai appelé. (PQP establishes the earlier event)"
+    category: 2
+    difficulty: 3
+    referentiel_ref: "B1 §4 — Antériorité dans le passé"
+    examples: []
+    note: "No TSV coverage for temporal sequence"
+
+  - id: gp_pqp_deja_jamais
+    point: "Plus-que-parfait with déjà and jamais: J'avais déjà vu ce film. / Je n'avais jamais mangé de sushi. — expressing prior experience"
+    category: 2
+    difficulty: 2
+    referentiel_ref: "B1 §4 — PQP avec déjà/jamais"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_pqp_quand_sequence
+    point: "Plus-que-parfait with quand + passé composé: Quand il est rentré, les enfants s'étaient endormis. — the PQP action happened before the passé composé action"
+    category: 2
+    difficulty: 3
+    referentiel_ref: "B1 §4 — Quand + passé composé + PQP"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_pqp_reported_speech
+    point: "Plus-que-parfait in reported speech (past reporting verb): Il m'a dit qu'il était parti. — passé composé of direct speech shifts to PQP in past indirect speech"
+    category: 2
+    difficulty: 4
+    referentiel_ref: "B1 §4 — PQP en discours indirect passé"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_pqp_agreement_pp
+    point: "Past participle agreement in plus-que-parfait (same rules as passé composé): with être — agrees with subject; with avoir — agrees with preceding direct object"
+    category: 2
+    difficulty: 3
+    referentiel_ref: "B1 §4 — Accord du participe passé"
+    examples: []
+    note: "No TSV coverage"
+
+  # ---------------------------------------------------------------
+  # Theme 3: Pronoms Relatifs Avancés
+  # ---------------------------------------------------------------
+
+  - id: gp_rel_dont_de_noun
+    point: "Pronom relatif dont — replaces de + noun complement: verb + de (j'ai besoin de → dont j'ai besoin), adjective + de (fier de → dont il est fier)"
+    category: 3
+    difficulty: 3
+    referentiel_ref: "B1 §6 — Dont"
+    examples: []
+    note: "No TSV coverage for dont"
+
+  - id: gp_rel_dont_possession
+    point: "Pronom relatif dont — possession (noun + de): Le livre dont la couverture est rouge. — dont never follows a preposition"
+    category: 3
+    difficulty: 4
+    referentiel_ref: "B1 §6 — Dont possessif"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_rel_ou_place
+    point: "Pronom relatif où — place antecedent: La ville où je vis est grande. / C'est la maison où je suis né. — où replaces a location expression"
+    category: 3
+    difficulty: 2
+    referentiel_ref: "B1 §6 — Où lieu"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_rel_ou_time
+    point: "Pronom relatif où — time antecedent: Le jour où il est arrivé, il pleuvait. / À l'époque où j'étudiais... — où can replace a time expression"
+    category: 3
+    difficulty: 3
+    referentiel_ref: "B1 §6 — Où temps"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_rel_ce_qui
+    point: "Ce qui — indefinite relative pronoun (subject function, no specific antecedent): Ce qui me plaît, c'est la musique. / Dis-moi ce qui s'est passé."
+    category: 3
+    difficulty: 3
+    referentiel_ref: "B1 §6 — Ce qui"
+    examples:
+      - tatoeba_id: 4326
+        french: "Dis-moi ce qui est arrivé."
+        english: "Tell me what happened."
+      - tatoeba_id: 474087
+        french: "Qu'est-ce qui t'a réveillé ?"
+        english: "What woke you up?"
+
+  - id: gp_rel_ce_que
+    point: "Ce que — indefinite relative pronoun (object function, no specific antecedent): Ce que tu dis est intéressant. / Je ne comprends pas ce qu'il fait."
+    category: 3
+    difficulty: 3
+    referentiel_ref: "B1 §6 — Ce que"
+    examples:
+      - tatoeba_id: 14157
+        french: "C'est ce que je pensais."
+        english: "Actually, that's what I thought."
+      - tatoeba_id: 8636
+        french: "Mangez ce que vous voulez."
+        english: "Eat whatever food you like."
+      - tatoeba_id: 8641
+        french: "Fais ce que tu aimes."
+        english: "Do what you like."
+
+  - id: gp_rel_ce_dont
+    point: "Ce dont — indefinite relative pronoun replacing de + complement (no specific antecedent): Ce dont j'ai besoin, c'est du repos. / Il m'a expliqué ce dont il avait besoin."
+    category: 3
+    difficulty: 4
+    referentiel_ref: "B1 §6 — Ce dont"
+    examples: []
+    note: "No TSV coverage for ce dont"
+
+  - id: gp_rel_celui_qui
+    point: "Pronoms démonstratifs relatifs: celui qui (subject) / celui que (object) / celle qui / celle que — referring back to specific noun with article"
+    category: 3
+    difficulty: 3
+    referentiel_ref: "B1 §6 — Celui qui / celui que"
+    examples:
+      - tatoeba_id: 12565
+        french: "Celui qui hésite est perdu."
+        english: "He who hesitates is lost."
+      - tatoeba_id: 12881
+        french: "Mangez celui qui vous plaît."
+        english: "Eat whichever one you like."
+
+  - id: gp_rel_ceux_celles
+    point: "Plural demonstrative relative pronouns: ceux qui / ceux que / celles qui / celles que — plural of celui/celle forms"
+    category: 3
+    difficulty: 3
+    referentiel_ref: "B1 §6 — Ceux qui / celles que"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_rel_dont_vs_qui_que
+    point: "Distinguishing qui / que / dont: qui = subject pronoun; que = direct object pronoun; dont = replaces de + complement — The man who called (qui) / The man I called (que) / The man I'm proud of (dont)"
+    category: 3
+    difficulty: 4
+    referentiel_ref: "B1 §6 — Distinction qui/que/dont"
+    examples: []
+    note: "No TSV coverage"
+
+  # ---------------------------------------------------------------
+  # Theme 4: Double Pronominalization
+  # ---------------------------------------------------------------
+
+  - id: gp_double_pron_order_rule
+    point: "French pronoun order before verb: me/te/se/nous/vous THEN le/la/les THEN lui/leur THEN y THEN en — key rule: lui/leur NEVER precede le/la/les"
+    category: 4
+    difficulty: 4
+    referentiel_ref: "B1 §7 — Ordre des pronoms doubles"
+    examples: []
+    note: "No TSV coverage for the rule itself"
+
+  - id: gp_double_pron_me_te_le
+    point: "Double pronoun: me/te/nous/vous + le/la/les — il me le donne, je te la prêterai, elle nous les explique — me/te come before le/la/les"
+    category: 4
+    difficulty: 3
+    referentiel_ref: "B1 §7 — Me/te + le/la/les"
+    examples:
+      - tatoeba_id: 12413
+        french: "Je te le donnerai."
+        english: "I will give it to you."
+      - tatoeba_id: 492320
+        french: "Je te la prêterai."
+        english: "I'll lend it to you."
+      - tatoeba_id: 477142
+        french: "Je te le laisse."
+        english: "I'm leaving it to you."
+      - tatoeba_id: 563219
+        french: "Je voulais te le montrer."
+        english: "I wanted to show it to you."
+
+  - id: gp_double_pron_le_lui
+    point: "Double pronoun: le/la/les + lui/leur — je le lui donne, elle la leur montre, il les leur envoie — NOT lui/leur + le/la/les"
+    category: 4
+    difficulty: 4
+    referentiel_ref: "B1 §7 — Le/la/les + lui/leur"
+    examples:
+      - tatoeba_id: 4926556
+        french: "Oses-tu le lui demander ?"
+        english: "Dare you ask him about it?"
+      - tatoeba_id: 11889
+        french: "Je vous l'ai déjà dit."
+        english: "I already told you."
+
+  - id: gp_double_pron_wrong_order
+    point: "Double pronoun error: WRONG × Je lui le donne / × Il leur les explique — CORRECT: Je le lui donne / Il les leur explique — lui/leur always follow le/la/les"
+    category: 4
+    difficulty: 4
+    referentiel_ref: "B1 §7 — Erreur ordre lui/leur"
+    examples: []
+    note: "No TSV coverage for error correction"
+
+  - id: gp_double_pron_m_en
+    point: "Double pronoun with en: m'en, t'en, nous en, vous en — Il m'en a parlé. / Je t'en parlerai. / Elle nous en a donné. — me/te/nous/vous come before en"
+    category: 4
+    difficulty: 3
+    referentiel_ref: "B1 §7 — M'en / t'en / nous en"
+    examples:
+      - tatoeba_id: 15088
+        french: "Donnez-m'en juste un peu."
+        english: "Give me just a little."
+
+  - id: gp_double_pron_y_en
+    point: "Double pronoun y + en: il y en a (there is/are some) — this is the only y+en combination; y always comes before en"
+    category: 4
+    difficulty: 3
+    referentiel_ref: "B1 §7 — Y + en"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_double_pron_imperatif_affirm
+    point: "Double pronouns in affirmative imperative: Donne-le-lui ! / Montre-la-leur ! / Prête-le-moi ! — pronouns follow verb with hyphens, me/te become moi/toi"
+    category: 4
+    difficulty: 4
+    referentiel_ref: "B1 §7 — Impératif affirmatif double pronom"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_double_pron_imperatif_neg
+    point: "Double pronouns in negative imperative: Ne le lui donne pas. / Ne me le dis pas. — pronouns remain before verb (same order as declarative sentence)"
+    category: 4
+    difficulty: 4
+    referentiel_ref: "B1 §7 — Impératif négatif double pronom"
+    examples: []
+    note: "No TSV coverage"
+
+  # ---------------------------------------------------------------
+  # Theme 5: Gérondif & Participe Présent
+  # ---------------------------------------------------------------
+
+  - id: gp_gerondif_formation
+    point: "Gérondif formation: en + present participle — nous-form of present → drop -ons → add -ant: parlons → en parlant / faisons → en faisant"
+    category: 5
+    difficulty: 2
+    referentiel_ref: "B1 §8 — Gérondif formation"
+    examples:
+      - tatoeba_id: 3721
+        french: "Ferme la porte en sortant."
+        english: "Close the door when you leave."
+
+  - id: gp_gerondif_irregular
+    point: "Gérondif irregular forms: avoir → en ayant / être → en étant / savoir → en sachant (based on irregular participe présent stems)"
+    category: 5
+    difficulty: 3
+    referentiel_ref: "B1 §8 — Gérondif irrégulier"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_gerondif_simultaneity
+    point: "Gérondif — simultaneity (while doing): J'écoute de la musique en faisant mes devoirs. / J'ai lu un livre en mangeant. — both actions happen at the same time"
+    category: 5
+    difficulty: 2
+    referentiel_ref: "B1 §8 — Gérondif simultanéité"
+    examples:
+      - tatoeba_id: 3705
+        french: "J'ai lu un livre en mangeant."
+        english: "I read a book while eating."
+
+  - id: gp_gerondif_manner
+    point: "Gérondif — manner (how): Il répond en souriant. / Elle part en courant. / Affronte la vie en souriant ! — expresses how the action is performed"
+    category: 5
+    difficulty: 2
+    referentiel_ref: "B1 §8 — Gérondif manière"
+    examples:
+      - tatoeba_id: 3626
+        french: "Affronte la vie en souriant !"
+        english: "Face life with a smile!"
+
+  - id: gp_gerondif_condition
+    point: "Gérondif — condition (by doing / if you do): En travaillant plus, tu réussirais. — equivalent to si + imparfait in some contexts"
+    category: 5
+    difficulty: 3
+    referentiel_ref: "B1 §8 — Gérondif condition"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_gerondif_subject_rule
+    point: "Gérondif — subject constraint: the subject of the gérondif MUST be the same as the subject of the main clause — Elle est partie en pleurant (same subject); × En étudiant, les résultats seront meilleurs (different subjects — incorrect)"
+    category: 5
+    difficulty: 3
+    referentiel_ref: "B1 §8 — Contrainte sujet"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_part_pres_formation
+    point: "Participe présent formation: same base as gérondif (nous-stem + -ant) but WITHOUT en: parlant, finissant, vendant, faisant, sachant"
+    category: 5
+    difficulty: 2
+    referentiel_ref: "B1 §9 — Participe présent formation"
+    examples: []
+    note: "No TSV coverage for bare formation"
+
+  - id: gp_part_pres_adjectival
+    point: "Participe présent — adjectival use: modifies a noun and agrees in gender/number: un enfant souriant / une femme souriante / des élèves obéissants"
+    category: 5
+    difficulty: 2
+    referentiel_ref: "B1 §9 — Participe présent adjectival"
+    examples:
+      - tatoeba_id: 13483
+        french: "C'est un fossile vivant !"
+        english: "He is a living fossil!"
+
+  - id: gp_part_pres_substantive
+    point: "Participe présent — as noun (substantivised): les gagnants (the winners), les perdants (the losers), les suivants (the following ones)"
+    category: 5
+    difficulty: 3
+    referentiel_ref: "B1 §9 — Participe présent substantivé"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_gerondif_vs_part_pres
+    point: "Gérondif (en + -ant) vs. participe présent (bare -ant): Gérondif expresses action by subject — J'ai lu en mangeant. Participe présent modifies noun — C'est un homme vivant seul."
+    category: 5
+    difficulty: 3
+    referentiel_ref: "B1 §9 — Distinction gérondif/participe"
+    examples: []
+    note: "No TSV coverage for the contrast"
+
+  - id: gp_tout_en_gerondif
+    point: "Tout en + gérondif — emphasises simultaneous contrast: Tout en travaillant, il pensait à elle. (even while working, he was thinking of her)"
+    category: 5
+    difficulty: 3
+    referentiel_ref: "B1 §8 — Tout en + gérondif"
+    examples: []
+    note: "No TSV coverage"
+
+  # ---------------------------------------------------------------
+  # Theme 6: Passif & Discours Rapporté
+  # ---------------------------------------------------------------
+
+  - id: gp_passif_formation
+    point: "Passif formation: être (any tense) + past participle — past participle agrees with subject (the receiver): La lettre est écrite. / Les voitures sont vendues."
+    category: 6
+    difficulty: 3
+    referentiel_ref: "B1 §10 — Passif formation"
+    examples:
+      - tatoeba_id: 13404
+        french: "Mike a été élu président."
+        english: "Mike was elected chairperson."
+      - tatoeba_id: 14902
+        french: "Mon projet a été rejeté."
+        english: "My plan was rejected."
+
+  - id: gp_passif_present
+    point: "Passif présent: est + PP (masc sg) / est + PP (fem sg) / sont + PP (pl) — La lettre est écrite par Marie. / Les livres sont publiés chaque année."
+    category: 6
+    difficulty: 2
+    referentiel_ref: "B1 §10 — Passif présent"
+    examples: []
+    note: "No TSV coverage for passif présent specifically"
+
+  - id: gp_passif_passe_compose
+    point: "Passif passé composé: a été + PP / ont été + PP — La lettre a été écrite par Marie. / Beaucoup d'arbres ont été abattus."
+    category: 6
+    difficulty: 3
+    referentiel_ref: "B1 §10 — Passif passé composé"
+    examples:
+      - tatoeba_id: 15142
+        french: "Beaucoup d'arbres ont été abattus."
+        english: "A lot of trees were cut down."
+      - tatoeba_id: 8565
+        french: "Le parlement a été dissous."
+        english: "The Diet has been dissolved."
+
+  - id: gp_passif_par_vs_de
+    point: "Passif agent — par vs. de: par + agent of active verb (Le chat est chassé par le chien.) / de + agent of state/feeling (Il est aimé de tout le monde.)"
+    category: 6
+    difficulty: 4
+    referentiel_ref: "B1 §10 — Par vs de au passif"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_passif_avoid_on
+    point: "Avoiding passive in French — on construction: On a réparé la voiture. (= La voiture a été réparée.) — on is often preferred over passive in spoken French"
+    category: 6
+    difficulty: 3
+    referentiel_ref: "B1 §10 — On construction vs passif"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_passif_pronominal
+    point: "Passive-like pronominal: Le français se parle au Québec. / Ça ne se fait pas. — pronominal verbs can replace passive in describing cultural practices"
+    category: 6
+    difficulty: 3
+    referentiel_ref: "B1 §10 — Pronominal de sens passif"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_dr_present_dire_que
+    point: "Discours rapporté au présent — dire que: Il dit qu'il est fatigué. / Elle dit qu'elle viendra. — tense unchanged when reporting verb is present"
+    category: 6
+    difficulty: 2
+    referentiel_ref: "B1 §5 — Dire que présent"
+    examples:
+      - tatoeba_id: 15569
+        french: "Elle dit qu'elle viendra."
+        english: "She says she will come."
+      - tatoeba_id: 3395
+        french: "On dit que l'amour est aveugle."
+        english: "They say love is blind."
+      - tatoeba_id: 7622
+        french: "Ma mère m'a dit d'étudier."
+        english: "My mother said to me, 'Study.'"
+
+  - id: gp_dr_present_demander_si
+    point: "Discours rapporté au présent — questions: demander si (yes/no): Il demande si je viens. / demander ce que (what): Il demande ce que je fais. / demander pourquoi: Elle demande pourquoi je pars."
+    category: 6
+    difficulty: 3
+    referentiel_ref: "B1 §5 — Demander si / ce que"
+    examples:
+      - tatoeba_id: 3203
+        french: "Elle demande comment c'est possible."
+        english: "She's asking how that's possible."
+
+  - id: gp_dr_present_tense_no_shift
+    point: "Discours rapporté au présent — key rule: tense does NOT shift when reporting verb is present — only shifts with past reporting verb (B2): Il dit qu'il travaille. (present→present)"
+    category: 6
+    difficulty: 3
+    referentiel_ref: "B1 §5 — Concordance temps présent"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_dr_present_se_demander
+    point: "Discours rapporté — se demander si/pourquoi/ce que: Je me demande si c'est vrai. / Il se demande pourquoi elle est partie. — reflexive reporting verb"
+    category: 6
+    difficulty: 3
+    referentiel_ref: "B1 §5 — Se demander"
+    examples: []
+    note: "No TSV coverage"
+
+  # ---------------------------------------------------------------
+  # Theme 7: Verbes Périphrastiques & Connecteurs Avancés
+  # ---------------------------------------------------------------
+
+  - id: gp_peri_commencer_a
+    point: "Aspect périphrastique — début: commencer à + infinitif (begin to): Il commence à pleuvoir. / Elle a commencé à comprendre. — à not de"
+    category: 7
+    difficulty: 2
+    referentiel_ref: "B1 §14 — Commencer à"
+    examples:
+      - tatoeba_id: 13832
+        french: "Je commence à comprendre."
+        english: "I am beginning to understand."
+      - tatoeba_id: 6537
+        french: "Je commence à peine."
+        english: "I'm just beginning."
+      - tatoeba_id: 474843
+        french: "Tu commences à t'échauffer maintenant."
+        english: "You're starting to warm up now."
+
+  - id: gp_peri_se_mettre_a
+    point: "Aspect périphrastique — début soudain: se mettre à + infinitif (to suddenly start): Il s'est mis à rire. / Elle s'est mise à pleurer. — implies sudden or unexpected onset"
+    category: 7
+    difficulty: 2
+    referentiel_ref: "B1 §14 — Se mettre à"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_peri_finir_de
+    point: "Aspect périphrastique — fin: finir de + infinitif (to finish doing): J'ai fini de manger. / Tu as fini de travailler ? — de not à"
+    category: 7
+    difficulty: 2
+    referentiel_ref: "B1 §14 — Finir de"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_peri_arreter_de
+    point: "Aspect périphrastique — arrêt: arrêter de + infinitif (to stop doing): Il a arrêté de fumer. / Elle a arrêté de crier. — de not à"
+    category: 7
+    difficulty: 2
+    referentiel_ref: "B1 §14 — Arrêter de"
+    examples:
+      - tatoeba_id: 12555
+        french: "J'aimerais pouvoir arrêter de fumer."
+        english: "I wish I could give up smoking."
+
+  - id: gp_peri_cesser_de
+    point: "Aspect périphrastique — cessation: cesser de + infinitif (formal/literary register): Le bruit a cessé de troubler les voisins. — synonymous with arrêter de but more formal"
+    category: 7
+    difficulty: 3
+    referentiel_ref: "B1 §14 — Cesser de"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_peri_continuer_a_de
+    point: "Aspect périphrastique — continuation: continuer à + inf OR continuer de + inf — both correct: Je continue à étudier. / Elle continue de courir."
+    category: 7
+    difficulty: 2
+    referentiel_ref: "B1 §14 — Continuer à/de"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_peri_venir_de
+    point: "Aspect périphrastique — passé récent: venir de + infinitif (to have just done): Je viens de finir. / Elle vient d'arriver. / Il venait de partir. (imparfait of venir = just had)"
+    category: 7
+    difficulty: 2
+    referentiel_ref: "B1 §14 — Venir de"
+    examples:
+      - tatoeba_id: 12603
+        french: "Je viens de le rencontrer."
+        english: "I met him just now."
+
+  - id: gp_peri_etre_en_train_de
+    point: "Aspect périphrastique — en cours: être en train de + infinitif (to be in the process of doing): Je suis en train de lire. / Il était en train de dormir. (emphasises ongoing nature)"
+    category: 7
+    difficulty: 2
+    referentiel_ref: "B1 §14 — Être en train de"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_connect_parce_que_puisque
+    point: "Causal connectors — nuance: parce que (because — answers pourquoi, neutral) vs. puisque (since — known/given reason, logical deduction): Puisque tu es là, aide-moi."
+    category: 7
+    difficulty: 3
+    referentiel_ref: "B1 §13 — Parce que vs puisque"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_connect_comme_cause
+    point: "Causal connector — comme (as/since — sentence-initial position only): Comme il pleuvait, nous sommes restés. — comme cannot appear mid-sentence as a causal"
+    category: 7
+    difficulty: 3
+    referentiel_ref: "B1 §13 — Comme causal"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_connect_a_cause_grace_a
+    point: "Causal prepositions: à cause de + noun (negative/neutral cause: À cause de la pluie...) vs. grâce à + noun (positive cause: Grâce à toi, j'ai réussi.) — contrast required"
+    category: 7
+    difficulty: 3
+    referentiel_ref: "B1 §13 — À cause de vs grâce à"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_connect_en_raison_faute
+    point: "Formal causal prepositions: en raison de + noun (due to — neutral/formal: En raison des travaux...) / faute de + noun (for lack of: Faute de temps, il n'a pas pu finir.)"
+    category: 7
+    difficulty: 4
+    referentiel_ref: "B1 §13 — En raison de / faute de"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_connect_donc_alors
+    point: "Consecutive connectors: donc (therefore — logical consequence: Il était fatigué, donc il s'est couché.) vs. alors (then/so — temporal or logical): Il n'était pas là, alors je suis parti."
+    category: 7
+    difficulty: 2
+    referentiel_ref: "B1 §13 — Donc vs alors"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_connect_si_bien_que
+    point: "Consecutive connector: si bien que + indicatif (so that / with the result that): Il a travaillé si bien qu'il a réussi. — always indicatif (not subjonctif)"
+    category: 7
+    difficulty: 3
+    referentiel_ref: "B1 §13 — Si bien que"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_connect_tellement_que
+    point: "Consecutive connector of degree: tellement + adj + que (so + adj + that): Elle est tellement intelligente qu'elle comprend tout. / Il est tellement grand qu'il touche le plafond."
+    category: 7
+    difficulty: 3
+    referentiel_ref: "B1 §13 — Tellement…que"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_connect_c_est_pourquoi
+    point: "Consecutive connector — formal: c'est pourquoi (that is why): Il a raté son train, c'est pourquoi il est en retard. — more formal than donc"
+    category: 7
+    difficulty: 3
+    referentiel_ref: "B1 §13 — C'est pourquoi"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_temps_futur_quand
+    point: "Futur after temporal conjunctions: quand + futur simple (NOT present as in English): Quand tu seras prêt, nous partirons. / Quand il arrivera, appelle-moi."
+    category: 7
+    difficulty: 3
+    referentiel_ref: "B1 §12 — Quand + futur"
+    examples:
+      - tatoeba_id: 10301
+        french: "Partons quand vous serez prêt."
+        english: "Let's leave when you are ready."
+      - tatoeba_id: 11791
+        french: "Je partirai quand John viendra."
+        english: "I will leave when John comes."
+
+  - id: gp_temps_futur_des_que
+    point: "Futur after temporal conjunctions: dès que + futur simple (as soon as): Dès qu'il aura fini, il partira. / Je t'appellerai dès que je pourrai."
+    category: 7
+    difficulty: 3
+    referentiel_ref: "B1 §12 — Dès que + futur"
+    examples:
+      - tatoeba_id: 12692
+        french: "Descendez dès que possible."
+        english: "Come downstairs as soon as possible."
+
+  - id: gp_temps_futur_une_fois_que
+    point: "Futur after temporal conjunctions: une fois que + futur simple (once): Une fois que tu auras compris, tout sera plus simple. — often triggers futur antérieur"
+    category: 7
+    difficulty: 4
+    referentiel_ref: "B1 §12 — Une fois que + futur"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_temps_futur_aussitot_lorsque
+    point: "Other temporal conjunctions + futur: aussitôt que, lorsque, tant que — all require futur simple (not present) when referring to a future event"
+    category: 7
+    difficulty: 3
+    referentiel_ref: "B1 §12 — Aussitôt que / lorsque / tant que + futur"
+    examples: []
+    note: "No TSV coverage"
+
+  - id: gp_temps_futur_vs_past
+    point: "Contrast — temporal conjunctions: quand + futur (future event) vs. quand + imparfait (habitual past) vs. quand + passé composé (past event) — the verb tense determines the time frame"
+    category: 7
+    difficulty: 3
+    referentiel_ref: "B1 §12 — Quand: futur vs passé"
+    examples: []
+    note: "No TSV coverage"

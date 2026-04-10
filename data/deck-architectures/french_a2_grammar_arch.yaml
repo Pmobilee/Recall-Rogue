@@ -1,0 +1,1760 @@
+deck_id: french_a2_grammar
+name: "French A2 Grammar"
+domain: vocabulary
+sub_domain: french_grammar
+target_facts: 400
+minimum_facts: 240
+language: fr
+
+data_sources:
+  - name: Référentiel A2 pour le français (Beacco et al., Didier)
+    url: https://www.didier.fr/livre/referentiel-pour-le-cadre-europeen-commun-a2.html
+    license: Reference only — scope/structure. Conseil de l'Europe / Didier, 2008.
+    usage: Authoritative A2 grammar scope. Determines which grammar points are included and their canonical descriptions. Cross-referenced against DELF A2 scope (France Éducation International) and Grammaire progressive du français — niveau intermédiaire (CLE International).
+  - name: Tatoeba
+    url: https://tatoeba.org/
+    license: CC BY 2.0
+    usage: Verified example sentences with French text + English translation + sentence ID. All sentence IDs documented in data/deck-architectures/_research/french/tatoeba_a2_sentences.tsv.
+
+# -----------------------------------------------------------------
+# Chain Themes (by grammar area):
+#   0 — passe_compose      : passé composé avec avoir + être, past participles
+#   1 — imparfait          : imparfait formation, valeurs (descriptive, habitual, contrast)
+#   2 — futur_simple       : futur simple (regular + irregular stems) + futur proche review
+#   3 — pronoms_cod_coi    : COD pronouns (le/la/les/me/te) + COI pronouns (lui/leur/me/te)
+#   4 — pronoms_y_en       : pronom y (location/à+thing) + pronom en (de+noun/partitive)
+#   5 — pronominaux_passe  : verbes pronominaux au passé composé + agreement
+#   6 — comparatifs_superlatifs : comparatif (plus/moins/aussi…que) + superlatif + irregular forms
+#   7 — imperatif_structures : impératif + conditionnel de politesse + si+présent + connecteurs
+#
+# Answer Type Pools:
+#   passe_compose_avoir_forms   : compound forms with avoir (ai mangé, as fini, a pris…)
+#   passe_compose_etre_forms    : compound forms with être + agreement (suis allé(e), est parti(e)…)
+#   past_participles_regular    : -é/-i/-u past participles (parlé, fini, vendu)
+#   past_participles_irregular  : irregular past participles (fait, eu, été, vu, pris, mis, dit…)
+#   etre_forms_avoir_pres       : auxiliary forms (ai/as/a/avons/avez/ont + suis/es/est/sommes/êtes/sont)
+#   imparfait_regular           : regular imparfait conjugations (-ais/-ait/-ions/-aient)
+#   imparfait_etre              : être imparfait forms (étais, était, étions, étaient)
+#   imparfait_faire_aller       : faire/aller imparfait forms (faisais, allais, etc.)
+#   futur_simple_regular        : regular futur simple forms (parlerai, finirai, vendrai…)
+#   futur_simple_irregular_stems: irregular futur stems (ser-, aur-, ir-, fer-, viendr-, pourr-, voudr-, saur-, verr-, devr-)
+#   futur_simple_forms          : full futur simple conjugated forms (serai, aurai, irai…)
+#   cod_pronouns                : COD pronoun forms (me, te, le, la, l', nous, vous, les)
+#   coi_pronouns                : COI pronoun forms (me, te, lui, nous, vous, leur)
+#   y_pronoun_uses              : y-pronoun replacement structures (J'y vais, Vas-y, Tu peux y aller)
+#   en_pronoun_uses             : en-pronoun replacement structures (J'en ai, J'en veux plus, j'en ai trois)
+#   reflexive_passe_forms       : reflexive past tense forms (me suis levé(e), s'est habillé(e)…)
+#   comparatif_plus_moins_aussi : plus…que / moins…que / aussi…que structures
+#   superlatif_forms            : le/la/les plus + adj, le/la/les moins + adj
+#   comparatif_irregular        : meilleur(e), pire, mieux, le/la meilleur(e), le/la pire
+#   imperatif_tu_forms          : tu imperative forms (parle, finis, prends, mange, viens, va, sois, aie)
+#   imperatif_nous_vous_forms   : nous/vous imperative forms (parlons, parlez, finissons, finissez…)
+#   imperatif_pronominal        : pronominal imperative forms (Lève-toi, Asseyez-vous, Dépêchons-nous)
+#   conditionnel_politesse_forms: polite conditional forms (voudrais, pourrais, aimerais, devrait…)
+#   si_present_structures       : si + présent + futur/impératif patterns
+#   connecteurs_logiques        : coordination/cause/consequence connectors (mais, donc, parce que, quand, pendant que…)
+#   time_expressions_passe      : time expressions (hier, avant-hier, la semaine dernière, il y a…)
+#   depuis_pendant_ilya         : depuis vs. pendant vs. il y a structures
+#   adverbes_ment               : adverbs in -ment (vraiment, lentement, rapidement, heureusement…)
+#   relatif_qui_que             : relative pronouns qui (subject) and que (object)
+# -----------------------------------------------------------------
+
+chain_themes:
+  - id: 0
+    name: "Passé Composé"
+    description: "Passé composé avec avoir et être — regular and irregular past participles, agreement with être"
+    color: "#C44B4B"
+    icon: "verb"
+  - id: 1
+    name: "Imparfait"
+    description: "Imparfait formation and values — descriptive past, habitual past, contrast with passé composé"
+    color: "#7B4EA6"
+    icon: "verb"
+  - id: 2
+    name: "Futur Simple"
+    description: "Futur simple — regular stems and irregular stems; futur proche (aller + inf) review"
+    color: "#3A7BD5"
+    icon: "verb"
+  - id: 3
+    name: "Pronoms COD & COI"
+    description: "Direct object pronouns (le/la/les/me/te/nous/vous) and indirect object pronouns (lui/leur/me/te/nous/vous)"
+    color: "#E87E2E"
+    icon: "pronoun"
+  - id: 4
+    name: "Pronoms Y & En"
+    description: "Pronom y — replacing location or à + thing; pronom en — replacing de + noun or partitive"
+    color: "#4A9E6B"
+    icon: "pronoun"
+  - id: 5
+    name: "Verbes Pronominaux au Passé"
+    description: "Pronominal verbs in passé composé with être: se lever, s'habiller, se coucher + participle agreement"
+    color: "#D4A017"
+    icon: "verb"
+  - id: 6
+    name: "Comparatifs & Superlatifs"
+    description: "Comparatifs (plus/moins/aussi…que), superlatifs (le/la plus), and irregular forms (meilleur, pire, mieux)"
+    color: "#2E8B57"
+    icon: "contrast"
+  - id: 7
+    name: "Impératif & Structures"
+    description: "Impératif (tu/nous/vous), conditionnel de politesse (voudrais, aimerais), si + présent, connecteurs logiques"
+    color: "#8B5E3C"
+    icon: "command"
+
+# -----------------------------------------------------------------
+# Answer Type Pools — grammar form groupings for distractor selection
+# All pools target: example_answers.length + synthetic_distractors.length >= 15
+# Max/min answer length ratio must be < 3x within each pool
+# -----------------------------------------------------------------
+
+answer_type_pools:
+
+  - id: passe_compose_avoir_forms
+    description: "Passé composé forms with avoir auxiliary (ai/as/a/avons/avez/ont + past participle)"
+    example_answers:
+      - j'ai mangé
+      - j'ai fini
+      - j'ai vendu
+      - j'ai fait
+      - j'ai vu
+      - j'ai pris
+      - j'ai dit
+      - il a écrit
+      - nous avons eu
+      - elles ont bu
+      - tu as parlé
+      - vous avez lu
+    synthetic_distractors:
+      - j'ai voulu
+      - j'ai pu
+      - tu as su
+      - il a mis
+      - nous avons couru
+
+  - id: passe_compose_etre_forms
+    description: "Passé composé forms with être auxiliary + subject agreement"
+    example_answers:
+      - je suis allé(e)
+      - il est parti
+      - elle est partie
+      - ils sont venus
+      - elles sont venues
+      - nous sommes arrivés
+      - tu es entré(e)
+      - elle est née
+      - il est mort
+      - je suis resté(e)
+      - elle est tombée
+      - ils sont montés
+    synthetic_distractors:
+      - tu es sorti(e)
+      - nous sommes rentrés
+      - ils sont descendus
+
+  - id: past_participles_regular
+    description: "Regular past participles: -é (from -er), -i (from -ir), -u (from -re)"
+    example_answers:
+      - parlé
+      - mangé
+      - fini
+      - choisi
+      - vendu
+      - attendu
+      - travaillé
+      - aimé
+      - rempli
+      - entendu
+      - joué
+      - rendu
+    synthetic_distractors:
+      - habité
+      - grandi
+      - perdu
+      - regardé
+      - répondu
+
+  - id: past_participles_irregular
+    description: "Irregular past participles (all from the DELF A2 mandatory list)"
+    example_answers:
+      - fait
+      - eu
+      - été
+      - vu
+      - pris
+      - mis
+      - dit
+      - écrit
+      - bu
+      - lu
+      - voulu
+      - pu
+    synthetic_distractors:
+      - su
+      - ouvert
+      - couru
+      - reçu
+      - né
+
+  - id: etre_forms_avoir_pres
+    description: "Present tense of être and avoir (used as auxiliaries in passé composé)"
+    example_answers:
+      - suis
+      - es
+      - est
+      - sommes
+      - êtes
+      - sont
+      - ai
+      - as
+      - a
+      - avons
+      - avez
+      - ont
+    synthetic_distractors:
+      - serai
+      - aurai
+      - étais
+      - avais
+      - aient
+
+  - id: imparfait_regular
+    description: "Regular imparfait conjugations for -er/-ir/-re verbs (-ais/-ait/-ions/-iez/-aient)"
+    example_answers:
+      - parlais
+      - parlait
+      - parlions
+      - parliez
+      - parlaient
+      - finissais
+      - finissait
+      - vendais
+      - vendait
+      - regardais
+      - habitais
+      - travaillait
+    synthetic_distractors:
+      - mangeais
+      - choisissais
+      - attendions
+      - répondaient
+      - jouais
+
+  - id: imparfait_etre
+    description: "Imparfait of être (irregular stem ét-)"
+    example_answers:
+      - j'étais
+      - tu étais
+      - il était
+      - elle était
+      - nous étions
+      - vous étiez
+      - ils étaient
+      - elles étaient
+    synthetic_distractors:
+      - je suis
+      - il est
+      - nous sommes
+      - je serai
+      - il sera
+      - j'aurais été
+      - je serais
+      - nous serions
+
+  - id: imparfait_faire_aller
+    description: "Imparfait forms of faire and aller"
+    example_answers:
+      - je faisais
+      - tu faisais
+      - il faisait
+      - nous faisions
+      - ils faisaient
+      - j'allais
+      - tu allais
+      - il allait
+      - nous allions
+      - ils allaient
+    synthetic_distractors:
+      - je ferai
+      - il fera
+      - j'irai
+      - il ira
+      - nous ferons
+      - vous alliez
+
+  - id: futur_simple_regular
+    description: "Regular futur simple forms: infinitive stem + -ai/-as/-a/-ons/-ez/-ont"
+    example_answers:
+      - parlerai
+      - parleras
+      - parlera
+      - parlerons
+      - parlerez
+      - parleront
+      - finirai
+      - finiras
+      - finira
+      - vendrai
+      - mangera
+      - habiteras
+    synthetic_distractors:
+      - choisira
+      - attendrons
+      - répondrez
+      - joueront
+      - travaillerai
+
+  - id: futur_simple_irregular_stems
+    description: "Irregular futur simple stems (used before -ai/-as/-a endings)"
+    example_answers:
+      - ser-
+      - aur-
+      - ir-
+      - fer-
+      - viendr-
+      - pourr-
+      - voudr-
+      - saur-
+      - verr-
+      - devr-
+    synthetic_distractors:
+      - prendr-
+      - dir-
+      - écrir-
+      - ouvr-
+      - mouvr-
+      - recevr-
+      - craigdr-
+
+  - id: futur_simple_forms
+    description: "Full conjugated futur simple forms of key irregular verbs"
+    example_answers:
+      - je serai
+      - tu seras
+      - il sera
+      - j'aurai
+      - tu auras
+      - j'irai
+      - tu iras
+      - je ferai
+      - tu feras
+      - je viendrai
+      - je pourrai
+      - je voudrai
+    synthetic_distractors:
+      - je saurai
+      - je verrai
+      - je devrai
+      - nous irons
+      - ils seront
+
+  - id: cod_pronouns
+    description: "Direct object pronoun forms (COD)"
+    example_answers:
+      - me
+      - te
+      - le
+      - la
+      - l'
+      - nous
+      - vous
+      - les
+    synthetic_distractors:
+      - lui
+      - leur
+      - y
+      - en
+      - se
+      - moi
+      - toi
+      - eux
+      - elles
+      - on
+
+  - id: coi_pronouns
+    description: "Indirect object pronoun forms (COI)"
+    example_answers:
+      - me
+      - te
+      - lui
+      - nous
+      - vous
+      - leur
+    synthetic_distractors:
+      - le
+      - la
+      - les
+      - y
+      - en
+      - se
+      - moi
+      - toi
+      - eux
+      - elles
+
+  - id: y_pronoun_uses
+    description: "Pronom y replacing location or à + thing"
+    example_answers:
+      - J'y vais.
+      - J'y suis allé.
+      - Tu peux y aller.
+      - Vas-y !
+      - Il y habite.
+      - Je pense à Paris → j'y pense.
+      - Elle y est restée.
+      - Nous y sommes arrivés.
+    synthetic_distractors:
+      - J'en vais.
+      - Je le vais.
+      - J'y parle.
+      - Tu peux en aller.
+      - J'en habite.
+      - On lui va.
+      - Vas-en !
+      - Ils lui sont allés.
+
+  - id: en_pronoun_uses
+    description: "Pronom en replacing de + noun, partitive, or de + place"
+    example_answers:
+      - J'en ai assez.
+      - Je n'en veux plus.
+      - J'en ai trois.
+      - Il en vient.
+      - Tu en as ?
+      - J'en ai acheté.
+      - Elle n'en veut pas.
+      - Prenez-en !
+    synthetic_distractors:
+      - J'y ai assez.
+      - Je n'y veux plus.
+      - J'y ai trois.
+      - Je le viens.
+      - Prenez-y !
+      - J'en suis allé.
+      - Tu y as ?
+      - Il lui vient.
+
+  - id: reflexive_passe_forms
+    description: "Pronominal verbs in passé composé with être + agreement"
+    example_answers:
+      - je me suis levé(e)
+      - tu t'es levé(e)
+      - il s'est levé
+      - elle s'est levée
+      - nous nous sommes levés
+      - je me suis habillé(e)
+      - elle s'est couchée
+      - ils se sont réveillés
+      - je me suis lavé(e)
+      - elle s'est habillée
+    synthetic_distractors:
+      - je me lève
+      - tu t'habilles
+      - il se réveille
+      - nous nous couchons
+      - ils se lavent
+      - je me serai levé
+
+  - id: comparatif_plus_moins_aussi
+    description: "Comparative structures: plus…que / moins…que / aussi…que"
+    example_answers:
+      - plus grand que
+      - moins cher que
+      - aussi intelligent que
+      - plus rapide que
+      - moins difficile que
+      - aussi vite que possible
+      - plus de livres que
+      - moins de temps que
+      - autant de travail que
+      - plus souvent que
+      - aussi bien que
+      - moins loin que
+    synthetic_distractors:
+      - aussi que plus
+      - moins que
+      - très que
+      - bien plus que
+      - tellement que
+
+  - id: superlatif_forms
+    description: "Superlative structures: le/la/les plus/moins + adjective/adverb"
+    example_answers:
+      - le plus grand
+      - la plus belle
+      - les plus rapides
+      - le moins cher
+      - la moins difficile
+      - les plus intelligents
+      - le plus souvent
+      - la plus grande ville
+      - le moins connu
+      - les plus beaux films
+    synthetic_distractors:
+      - le très grand
+      - la beaucoup belle
+      - les trop rapides
+      - le plus que grand
+      - la mieux belle
+      - très le grand
+      - le aussi grand
+      - les fort rapides
+
+  - id: comparatif_irregular
+    description: "Irregular comparative and superlative forms"
+    example_answers:
+      - meilleur
+      - meilleure
+      - meilleurs
+      - meilleures
+      - pire
+      - pires
+      - mieux
+      - le meilleur
+      - la meilleure
+      - le pire
+      - la pire
+      - le mieux
+    synthetic_distractors:
+      - plus bon
+      - plus mauvais
+      - plus bien
+      - très meilleur
+      - très pire
+      - plus mieux
+
+  - id: imperatif_tu_forms
+    description: "Tu-form imperative (2nd sg present, final -s dropped for -er verbs)"
+    example_answers:
+      - parle
+      - mange
+      - finis
+      - prends
+      - viens
+      - va
+      - sois
+      - aie
+      - écoute
+      - écris
+      - bois
+      - lis
+    synthetic_distractors:
+      - parles
+      - manges
+      - finit
+      - prendes
+      - allons
+      - seras
+      - auras
+      - écoutez
+      - écrivent
+
+  - id: imperatif_nous_vous_forms
+    description: "Nous and vous imperative forms"
+    example_answers:
+      - parlons
+      - parlez
+      - mangeons
+      - mangez
+      - finissons
+      - finissez
+      - allons
+      - allez
+      - prenons
+      - prenez
+      - écoutons
+      - écoutez
+    synthetic_distractors:
+      - parlé
+      - mangé
+      - finissait
+      - aller
+      - prendre
+      - écoute
+      - ils parlent
+      - ils mangent
+
+  - id: imperatif_pronominal
+    description: "Pronominal imperative forms (affirmative and negative)"
+    example_answers:
+      - Lève-toi !
+      - Asseyez-vous !
+      - Dépêchons-nous !
+      - Couche-toi !
+      - Réveillez-vous !
+      - Habille-toi !
+      - Levons-nous !
+      - Ne te lève pas.
+      - Ne vous asseyez pas.
+      - Calme-toi !
+    synthetic_distractors:
+      - Lève-vous !
+      - Asseyez-toi !
+      - Ne lève toi pas.
+      - Toi lève !
+      - Habille-lui !
+      - Ne vous levez toi.
+      - Vous levez !
+      - Ne lui asseyez pas.
+
+  - id: conditionnel_politesse_forms
+    description: "Polite conditional forms used for requests and desires at A2"
+    example_answers:
+      - je voudrais
+      - tu voudrais
+      - il voudrait
+      - je pourrais
+      - tu pourrais
+      - il pourrait
+      - j'aimerais
+      - tu aimerais
+      - il aimerait
+      - je devrais
+      - vous voudriez
+      - vous pourriez
+    synthetic_distractors:
+      - je veux
+      - tu peux
+      - il aime
+      - je dois
+      - vous voudrez
+      - vous pourrez
+      - je voudrais bien voulu
+      - j'aimais
+
+  - id: si_present_structures
+    description: "Si + présent → futur/impératif structures (real condition)"
+    example_answers:
+      - Si tu viens, nous mangerons.
+      - Si il fait beau, je sortirai.
+      - Si vous avez des questions, appelez-moi.
+      - Si tu es fatigué, repose-toi.
+      - Si elle arrive tôt, nous partirons.
+      - Si je peux, j'irai.
+      - Si tu veux, viens avec moi.
+      - Si vous avez le temps, lisez ce livre.
+    synthetic_distractors:
+      - Si tu venais, nous mangeons.
+      - Si il faisait beau, je sors.
+      - Si vous aviez des questions, appelez.
+      - Si tu seras fatigué, repose-toi.
+      - Si elle est arrivée, nous partons.
+      - Quand tu viens, nous aurions mangé.
+      - Si tu avais faim, mange quelque chose.
+
+  - id: connecteurs_logiques
+    description: "Logical connectors: coordination, cause, consequence, time"
+    example_answers:
+      - mais
+      - donc
+      - parce que
+      - pendant que
+      - quand
+      - comme
+      - alors
+      - c'est pourquoi
+      - avant de
+      - après
+      - ou
+      - et
+    synthetic_distractors:
+      - pour que
+      - bien que
+      - à condition que
+      - afin que
+      - sauf que
+      - lorsque
+      - pourtant
+      - cependant
+
+  - id: time_expressions_passe
+    description: "Time expressions associated with passé composé (completed actions)"
+    example_answers:
+      - hier
+      - avant-hier
+      - ce matin
+      - ce soir
+      - la semaine dernière
+      - le mois dernier
+      - l'année dernière
+      - il y a deux ans
+      - il y a une semaine
+      - aujourd'hui
+    synthetic_distractors:
+      - il y a un mois
+      - il y a trois jours
+      - la nuit dernière
+      - ce week-end
+      - il y a dix ans
+      - lundi dernier
+      - le matin précédent
+      - l'autre jour
+
+  - id: depuis_pendant_ilya
+    description: "Depuis (continuing duration) vs. pendant (completed duration) vs. il y a (elapsed time)"
+    example_answers:
+      - depuis des heures
+      - depuis trois ans
+      - depuis longtemps
+      - pendant une heure
+      - pendant neuf heures
+      - pendant deux semaines
+      - il y a deux ans
+      - il y a une semaine
+      - il y a longtemps
+      - depuis ce matin
+    synthetic_distractors:
+      - pendant des heures depuis
+      - pour trois ans
+      - il y a pendant
+      - ça fait une heure que
+      - pour longtemps
+      - dans deux semaines
+      - dès deux ans
+      - par une heure
+
+  - id: adverbes_ment
+    description: "French adverbs in -ment formed from adjectives"
+    example_answers:
+      - vraiment
+      - seulement
+      - facilement
+      - rapidement
+      - lentement
+      - heureusement
+      - malheureusement
+      - complètement
+      - immédiatement
+      - doucement
+      - surtout
+      - récemment
+    synthetic_distractors:
+      - vitement
+      - difficilement
+      - normallement
+      - courantement
+      - brillantement
+      - fréquentement
+      - lentement vite
+
+  - id: relatif_qui_que
+    description: "Relative pronouns qui (subject) and que/qu' (direct object)"
+    example_answers:
+      - qui
+      - que
+      - qu'
+      - l'homme qui parle
+      - le livre que je lis
+      - la fille qui arrive
+      - l'ami qu'elle a rencontré
+      - les films que j'ai vus
+      - ceux qui le connaissent
+      - ce qui est arrivé
+    synthetic_distractors:
+      - dont
+      - où
+      - lequel
+      - laquelle
+      - duquel
+      - auquel
+      - ce que
+      - celui que
+      - ceux dont
+
+# -----------------------------------------------------------------
+# Grammar Point Inventory with verified example sentences
+# All Tatoeba IDs verified against tatoeba_a2_sentences.tsv
+# -----------------------------------------------------------------
+
+grammar_points:
+
+  # ---- PASSÉ COMPOSÉ AVEC AVOIR — REGULAR ----
+  - id: gp_pc_avoir_regular_e
+    point: "Passé composé avec avoir: regular -ER participles (-é)"
+    category: passe_compose
+    difficulty: 2
+    referentiel_ref: "A2 — Passé composé, participes passés réguliers en -é"
+    examples:
+      - id: tatoeba:6763
+        fr: "J'ai parlé de musique."
+        en: "I talked about music."
+      - id: tatoeba:4290
+        fr: "J'ai mangé du caviar."
+        en: "I ate caviar."
+      - id: tatoeba:6422
+        fr: "J'ai raté l'examen."
+        en: "I failed the exam."
+
+  - id: gp_pc_avoir_regular_i
+    point: "Passé composé avec avoir: regular -IR participles (-i)"
+    category: passe_compose
+    difficulty: 2
+    referentiel_ref: "A2 — Passé composé, participes passés réguliers en -i"
+    examples:
+      - id: tatoeba:14768
+        fr: "J'ai bien dormi."
+        en: "I've had a good sleep."
+
+  - id: gp_pc_avoir_regular_u
+    point: "Passé composé avec avoir: regular -RE participles (-u)"
+    category: passe_compose
+    difficulty: 2
+    referentiel_ref: "A2 — Passé composé, participes passés réguliers en -u"
+    examples:
+      - id: tatoeba:6303
+        fr: "J'ai essayé l'équitation."
+        en: "I experienced horse riding."
+
+  - id: gp_pc_avoir_voir_prendre
+    point: "Passé composé avec avoir: irregular vu/pris"
+    category: passe_compose
+    difficulty: 3
+    referentiel_ref: "A2 — Passé composé, participes passés irréguliers: voir, prendre"
+    examples:
+      - id: tatoeba:6818
+        fr: "J'ai vu un chien."
+        en: "I saw a dog."
+      - id: tatoeba:3606
+        fr: "J'ai pris ma décision."
+        en: "I made my decision."
+      - id: tatoeba:6467
+        fr: "J'ai pris froid hier."
+        en: "I caught a cold yesterday."
+
+  - id: gp_pc_avoir_faire_dire
+    point: "Passé composé avec avoir: irregular fait/dit/mis/écrit"
+    category: passe_compose
+    difficulty: 3
+    referentiel_ref: "A2 — Passé composé, participes passés irréguliers: faire, dire, mettre, écrire"
+    examples:
+      - id: tatoeba:6763
+        fr: "J'ai parlé de musique."
+        en: "I talked about music."
+      - id: tatoeba:4319
+        fr: "J'ai parlé à des amis."
+        en: "I talked to friends."
+
+  - id: gp_pc_avoir_cod_position
+    point: "Passé composé avec avoir + COD en tête (J'ai vu → Je l'ai vu)"
+    category: passe_compose
+    difficulty: 3
+    referentiel_ref: "A2 — Passé composé, pronom COD antéposé"
+    examples:
+      - id: tatoeba:7070
+        fr: "Je l'ai acheté."
+        en: "I bought it."
+      - id: tatoeba:7073
+        fr: "Je l'ai oublié."
+        en: "I forgot it."
+      - id: tatoeba:9442
+        fr: "Je l'ai vu."
+        en: "I did see him."
+
+  - id: gp_pc_avoir_time_expressions
+    point: "Passé composé avec avoir + time expressions (hier, la semaine dernière, il y a…)"
+    category: passe_compose
+    difficulty: 2
+    referentiel_ref: "A2 — Passé composé, marqueurs temporels"
+    examples:
+      - id: tatoeba:6467
+        fr: "J'ai pris froid hier."
+        en: "I caught a cold yesterday."
+      - id: tatoeba:6422
+        fr: "J'ai raté l'examen."
+        en: "I failed the exam."
+
+  # ---- PASSÉ COMPOSÉ AVEC ÊTRE ----
+  - id: gp_pc_etre_movement
+    point: "Passé composé avec être: verbes de mouvement (aller, partir, arriver, entrer…)"
+    category: passe_compose
+    difficulty: 3
+    referentiel_ref: "A2 — Passé composé avec être, verbes de mouvement"
+    examples:
+      - id: tatoeba:11113
+        fr: "Ken est arrivé à Kyoto."
+        en: "Ken has arrived in Kyoto."
+      - id: tatoeba:15506
+        fr: "Il est allé à Hokkaïdo."
+        en: "He has gone to Hokkaido."
+      - id: tatoeba:15527
+        fr: "Elle est venue de là."
+        en: "She came out of there."
+
+  - id: gp_pc_etre_naitre_mourir
+    point: "Passé composé avec être: naître et mourir"
+    category: passe_compose
+    difficulty: 3
+    referentiel_ref: "A2 — Passé composé avec être: naître, mourir"
+    examples:
+      - id: tatoeba:15355
+        fr: "Il est né dans l'Ohio."
+        en: "He was born in Ohio."
+      - id: tatoeba:15056
+        fr: "Lincoln est mort en 1865."
+        en: "Lincoln died in 1865."
+
+  - id: gp_pc_etre_tomber_rester
+    point: "Passé composé avec être: tomber, rester, monter, descendre"
+    category: passe_compose
+    difficulty: 3
+    referentiel_ref: "A2 — Passé composé avec être: tomber, rester, monter, descendre"
+    examples:
+      - id: tatoeba:14508
+        fr: "Il est tombé par terre."
+        en: "He fell down on the floor."
+      - id: tatoeba:13122
+        fr: "Paris est tombée en 1940."
+        en: "Paris fell in 1940."
+
+  - id: gp_pc_etre_accord
+    point: "Accord du participe passé avec être (gender/number)"
+    category: passe_compose
+    difficulty: 3
+    referentiel_ref: "A2 — Accord du participe passé avec être"
+    examples:
+      - id: tatoeba:15527
+        fr: "Elle est venue de là."
+        en: "She came out of there."
+      - id: tatoeba:11113
+        fr: "Ken est arrivé à Kyoto."
+        en: "Ken has arrived in Kyoto."
+
+  # ---- IMPARFAIT ----
+  - id: gp_imp_formation_stem
+    point: "Imparfait: formation from nous-stem (parlons → parlais)"
+    category: imparfait
+    difficulty: 2
+    referentiel_ref: "A2 — Imparfait, formation régulière depuis le radical de nous"
+    examples:
+      - id: tatoeba:6468
+        fr: "J'étais occupé hier."
+        en: "I was busy yesterday."
+      - id: tatoeba:7136
+        fr: "Il regardait l'image."
+        en: "He looked at the picture."
+
+  - id: gp_imp_endings
+    point: "Imparfait: endings -ais/-ais/-ait/-ions/-iez/-aient"
+    category: imparfait
+    difficulty: 2
+    referentiel_ref: "A2 — Imparfait, terminaisons"
+    examples:
+      - id: tatoeba:8288
+        fr: "Il faisait chaud hier."
+        en: "It was hot yesterday."
+      - id: tatoeba:8293
+        fr: "Il faisait froid hier."
+        en: "It was cold yesterday."
+      - id: tatoeba:8617
+        fr: "Heureusement il faisait beau."
+        en: "Fortunately, the weather was good."
+
+  - id: gp_imp_etre_irregular
+    point: "Imparfait: irregular stem être → ét- (j'étais, il était…)"
+    category: imparfait
+    difficulty: 3
+    referentiel_ref: "A2 — Imparfait, seul irrégulier: être → ét-"
+    examples:
+      - id: tatoeba:6468
+        fr: "J'étais occupé hier."
+        en: "I was busy yesterday."
+      - id: tatoeba:6472
+        fr: "Hier, j'étais malade."
+        en: "I was ill yesterday."
+      - id: tatoeba:3105
+        fr: "J'étais dans les montagnes."
+        en: "I was in the mountains."
+
+  - id: gp_imp_valeur_descriptive
+    point: "Imparfait: valeur descriptive (Il était grand. Il faisait beau.)"
+    category: imparfait
+    difficulty: 2
+    referentiel_ref: "A2 — Imparfait, valeur descriptive dans le passé"
+    examples:
+      - id: tatoeba:6477
+        fr: "Hier, j'étais heureux."
+        en: "I was happy yesterday."
+      - id: tatoeba:6318
+        fr: "J'étais un peu surpris."
+        en: "I was a little surprised."
+      - id: tatoeba:12352
+        fr: "C'était un cauchemar."
+        en: "It was a nightmare."
+
+  - id: gp_imp_valeur_habituelle
+    point: "Imparfait: valeur habituelle (Tous les jours, il travaillait.)"
+    category: imparfait
+    difficulty: 2
+    referentiel_ref: "A2 — Imparfait, valeur habituelle dans le passé"
+    examples:
+      - id: tatoeba:7136
+        fr: "Il regardait l'image."
+        en: "He looked at the picture."
+      - id: tatoeba:3104
+        fr: "C'était un méchant lapin."
+        en: "That was an evil bunny."
+
+  - id: gp_imp_contraste_pc
+    point: "Imparfait vs. passé composé: arrière-plan (imparfait) vs. événement (passé composé)"
+    category: imparfait
+    difficulty: 3
+    referentiel_ref: "A2 — Opposition imparfait/passé composé"
+    examples:
+      - id: tatoeba:7136
+        fr: "Il regardait l'image."
+        en: "He looked at the picture."
+      - id: tatoeba:8288
+        fr: "Il faisait chaud hier."
+        en: "It was hot yesterday."
+
+  - id: gp_imp_faire_weather
+    point: "Imparfait: météo avec faire (il faisait beau/chaud/froid)"
+    category: imparfait
+    difficulty: 1
+    referentiel_ref: "A2 — Imparfait, expressions météorologiques"
+    examples:
+      - id: tatoeba:8288
+        fr: "Il faisait chaud hier."
+        en: "It was hot yesterday."
+      - id: tatoeba:8293
+        fr: "Il faisait froid hier."
+        en: "It was cold yesterday."
+      - id: tatoeba:8617
+        fr: "Heureusement il faisait beau."
+        en: "Fortunately, the weather was good."
+
+  # ---- FUTUR SIMPLE ----
+  - id: gp_fut_regular_formation
+    point: "Futur simple: formation régulière (infinitif + -ai/-as/-a/-ons/-ez/-ont)"
+    category: futur_simple
+    difficulty: 2
+    referentiel_ref: "A2 — Futur simple, formation régulière"
+    examples:
+      - id: tatoeba:15793
+        fr: "Il neigera demain."
+        en: "It'll snow tomorrow."
+      - id: tatoeba:11791
+        fr: "Je partirai quand John viendra."
+        en: "I will leave when John comes."
+
+  - id: gp_fut_etre_irregular
+    point: "Futur simple irrégulier: être → ser- (je serai, tu seras…)"
+    category: futur_simple
+    difficulty: 3
+    referentiel_ref: "A2 — Futur simple, radical irrégulier être"
+    examples:
+      - id: tatoeba:3099
+        fr: "Je serai bientôt de retour."
+        en: "I will be back soon."
+      - id: tatoeba:8396
+        fr: "Je serai libre ce soir."
+        en: "I'll be free this evening."
+
+  - id: gp_fut_avoir_irregular
+    point: "Futur simple irrégulier: avoir → aur- (j'aurai, tu auras…)"
+    category: futur_simple
+    difficulty: 3
+    referentiel_ref: "A2 — Futur simple, radical irrégulier avoir"
+    examples:
+      - id: tatoeba:11791
+        fr: "Je partirai quand John viendra."
+        en: "I will leave when John comes."
+
+  - id: gp_fut_faire_irregular
+    point: "Futur simple irrégulier: faire → fer- (je ferai, il fera…)"
+    category: futur_simple
+    difficulty: 3
+    referentiel_ref: "A2 — Futur simple, radical irrégulier faire"
+    examples:
+      - id: tatoeba:8471
+        fr: "Il fera beau cet après-midi."
+        en: "It will be fine this afternoon."
+
+  - id: gp_fut_aller_irregular
+    point: "Futur simple irrégulier: aller → ir- (j'irai, tu iras…)"
+    category: futur_simple
+    difficulty: 3
+    referentiel_ref: "A2 — Futur simple, radical irrégulier aller"
+    examples:
+      - id: tatoeba:11791
+        fr: "Je partirai quand John viendra."
+        en: "I will leave when John comes."
+
+  - id: gp_fut_venir_irregular
+    point: "Futur simple irrégulier: venir → viendr- (je viendrai…)"
+    category: futur_simple
+    difficulty: 3
+    referentiel_ref: "A2 — Futur simple, radical irrégulier venir"
+    examples:
+      - id: tatoeba:11791
+        fr: "Je partirai quand John viendra."
+        en: "I will leave when John comes."
+
+  - id: gp_fut_pouvoir_vouloir
+    point: "Futur simple irrégulier: pouvoir → pourr- / vouloir → voudr-"
+    category: futur_simple
+    difficulty: 3
+    referentiel_ref: "A2 — Futur simple, radicaux irréguliers pouvoir/vouloir"
+    examples: []
+    note: "no A2 pool coverage"
+
+  - id: gp_fut_savoir_voir_devoir
+    point: "Futur simple irrégulier: savoir → saur- / voir → verr- / devoir → devr-"
+    category: futur_simple
+    difficulty: 3
+    referentiel_ref: "A2 — Futur simple, radicaux irréguliers savoir/voir/devoir"
+    examples:
+      - id: tatoeba:6878
+        fr: "Je ne le verrai jamais."
+        en: "I will never see him."
+
+  - id: gp_fut_proche_review
+    point: "Futur proche (review): aller + infinitif (je vais partir, elle va finir…)"
+    category: futur_simple
+    difficulty: 1
+    referentiel_ref: "A2 — Futur proche, révision de l'A1"
+    examples:
+      - id: tatoeba:11791
+        fr: "Je partirai quand John viendra."
+        en: "I will leave when John comes."
+
+  - id: gp_fut_time_adverbs
+    point: "Futur simple + time expressions (demain, bientôt, la semaine prochaine, dans X)"
+    category: futur_simple
+    difficulty: 2
+    referentiel_ref: "A2 — Futur simple, marqueurs temporels"
+    examples:
+      - id: tatoeba:15793
+        fr: "Il neigera demain."
+        en: "It'll snow tomorrow."
+      - id: tatoeba:3099
+        fr: "Je serai bientôt de retour."
+        en: "I will be back soon."
+
+  # ---- PRONOMS COD & COI ----
+  - id: gp_cod_le_la_les
+    point: "Pronoms COD: le/la/les — position avant le verbe conjugué"
+    category: pronoms_cod_coi
+    difficulty: 2
+    referentiel_ref: "A2 — Pronoms COD le/la/les, position proclitique"
+    examples:
+      - id: tatoeba:3383
+        fr: "Je le prends."
+        en: "I'll take him."
+      - id: tatoeba:3580
+        fr: "Je le vois rarement."
+        en: "I see it rarely."
+      - id: tatoeba:559131
+        fr: "Je l'aime beaucoup."
+        en: "I like it very much."
+
+  - id: gp_cod_me_te_nous_vous
+    point: "Pronoms COD: me/te/nous/vous"
+    category: pronoms_cod_coi
+    difficulty: 2
+    referentiel_ref: "A2 — Pronoms COD me/te/nous/vous"
+    examples:
+      - id: tatoeba:7410
+        fr: "Je te connais."
+        en: "I know you."
+      - id: tatoeba:7451
+        fr: "Je te remercie."
+        en: "I thank you."
+      - id: tatoeba:135185
+        fr: "Je te crois."
+        en: "I believe you."
+
+  - id: gp_cod_passe_compose_position
+    point: "Pronoms COD au passé composé: position + accord du participe (Je l'ai vu)"
+    category: pronoms_cod_coi
+    difficulty: 3
+    referentiel_ref: "A2 — Pronoms COD dans le passé composé, accord"
+    examples:
+      - id: tatoeba:7070
+        fr: "Je l'ai acheté."
+        en: "I bought it."
+      - id: tatoeba:7073
+        fr: "Je l'ai oublié."
+        en: "I forgot it."
+      - id: tatoeba:9442
+        fr: "Je l'ai vu."
+        en: "I did see him."
+
+  - id: gp_cod_infinitive_construction
+    point: "Pronoms COD avec infinitif (Je veux le voir. Elle va les acheter.)"
+    category: pronoms_cod_coi
+    difficulty: 3
+    referentiel_ref: "A2 — Pronoms COD avant l'infinitif"
+    examples:
+      - id: tatoeba:3383
+        fr: "Je le prends."
+        en: "I'll take him."
+
+  - id: gp_coi_lui_leur
+    point: "Pronoms COI: lui/leur — contraste avec COD"
+    category: pronoms_cod_coi
+    difficulty: 3
+    referentiel_ref: "A2 — Pronoms COI lui/leur, distinction avec COD"
+    examples:
+      - id: tatoeba:6434
+        fr: "Je n'ose pas lui parler."
+        en: "I dare not speak to her."
+      - id: tatoeba:11634
+        fr: "Sam aide quiconque lui demande."
+        en: "Sam helps whoever asks him to."
+
+  - id: gp_coi_me_te_nous_vous_indirect
+    point: "Pronoms COI: me/te/nous/vous avec verbes indirects (parler à, écrire à, donner à)"
+    category: pronoms_cod_coi
+    difficulty: 2
+    referentiel_ref: "A2 — Pronoms COI me/te/nous/vous"
+    examples:
+      - id: tatoeba:12413
+        fr: "Je te le donnerai."
+        en: "I will give it to you."
+      - id: tatoeba:492321
+        fr: "Je te le prêterai."
+        en: "I'll lend it to you."
+      - id: tatoeba:492323
+        fr: "Je vous le prêterai."
+        en: "I'll lend it to you."
+
+  - id: gp_cod_coi_double_pronoun
+    point: "Double pronom: COD + COI ensemble (Je te le donne, Je lui en parle)"
+    category: pronoms_cod_coi
+    difficulty: 4
+    referentiel_ref: "A2 — Double pronom (introduction)"
+    examples:
+      - id: tatoeba:12413
+        fr: "Je te le donnerai."
+        en: "I will give it to you."
+      - id: tatoeba:492321
+        fr: "Je te le prêterai."
+        en: "I'll lend it to you."
+
+  # ---- PRONOMS Y & EN ----
+  - id: gp_y_location
+    point: "Pronom y: remplace un lieu ou à + chose (J'y vais. Il y habite.)"
+    category: pronoms_y_en
+    difficulty: 2
+    referentiel_ref: "A2 — Pronom y, lieu et à + chose"
+    examples:
+      - id: tatoeba:7231
+        fr: "J'y suis souvent allé."
+        en: "I have often been there."
+      - id: tatoeba:14703
+        fr: "J'y suis également allé."
+        en: "I also went there."
+      - id: tatoeba:474834
+        fr: "Tu peux y aller."
+        en: "You may go there."
+
+  - id: gp_y_pouvoir_aller
+    point: "Pronom y avec verbes de mouvement et pouvoir (Tu peux y aller. Vas-y !)"
+    category: pronoms_y_en
+    difficulty: 2
+    referentiel_ref: "A2 — Pronom y avec aller, pouvoir"
+    examples:
+      - id: tatoeba:126643
+        fr: "Tu peux y arriver."
+        en: "You can do it."
+      - id: tatoeba:11705
+        fr: "Vas-y et gagne !"
+        en: "Go in and win!"
+
+  - id: gp_en_partitive
+    point: "Pronom en: remplace de + nom / partitif (J'en ai. J'en veux. J'en ai trois.)"
+    category: pronoms_y_en
+    difficulty: 2
+    referentiel_ref: "A2 — Pronom en, partitif et quantité"
+    examples:
+      - id: tatoeba:4266
+        fr: "Je n'en veux plus."
+        en: "I don't want it anymore."
+      - id: tatoeba:13565
+        fr: "Je n'en veux pas plus."
+        en: "I don't want any more."
+      - id: tatoeba:6779
+        fr: "J'en ai assez de l'anglais."
+        en: "I'm fed up with English."
+
+  - id: gp_en_negation
+    point: "Pronom en en construction négative (Je n'en veux plus. Je n'en aime aucun.)"
+    category: pronoms_y_en
+    difficulty: 3
+    referentiel_ref: "A2 — Pronom en, formes négatives"
+    examples:
+      - id: tatoeba:4266
+        fr: "Je n'en veux plus."
+        en: "I don't want it anymore."
+      - id: tatoeba:13504
+        fr: "Je n'en aime aucun."
+        en: "I don't like any of them."
+
+  - id: gp_y_en_contrast
+    point: "Contraste pronom y vs. pronom en: lieu vs. de+nom"
+    category: pronoms_y_en
+    difficulty: 3
+    referentiel_ref: "A2 — Distinction pronom y / pronom en"
+    examples:
+      - id: tatoeba:7231
+        fr: "J'y suis souvent allé."
+        en: "I have often been there."
+      - id: tatoeba:4266
+        fr: "Je n'en veux plus."
+        en: "I don't want it anymore."
+
+  # ---- VERBES PRONOMINAUX AU PASSÉ ----
+  - id: gp_pron_passe_lever_coucher
+    point: "Pronominaux au passé composé: se lever, se coucher, se réveiller (+ accord)"
+    category: pronominaux_passe
+    difficulty: 3
+    referentiel_ref: "A2 — Verbes pronominaux au passé composé"
+    examples:
+      - id: tatoeba:6664
+        fr: "Je me suis habillé précipitamment."
+        en: "I hurried my clothes on."
+
+  - id: gp_pron_passe_reflexive_pronoun
+    point: "Pronominaux au passé: pronom réfléchi avant être (Je ME suis levé)"
+    category: pronominaux_passe
+    difficulty: 3
+    referentiel_ref: "A2 — Pronominaux au passé, place du pronom réfléchi"
+    examples:
+      - id: tatoeba:6664
+        fr: "Je me suis habillé précipitamment."
+        en: "I hurried my clothes on."
+
+  - id: gp_pron_passe_accord
+    point: "Accord du participe passé pronominal: genre et nombre du sujet"
+    category: pronominaux_passe
+    difficulty: 3
+    referentiel_ref: "A2 — Accord du participe passé pronominal"
+    examples:
+      - id: tatoeba:6664
+        fr: "Je me suis habillé précipitamment."
+        en: "I hurried my clothes on."
+
+  - id: gp_pron_passe_negation
+    point: "Pronominaux au passé: forme négative (Je ne me suis pas levé tôt.)"
+    category: pronominaux_passe
+    difficulty: 3
+    referentiel_ref: "A2 — Pronominaux au passé, négation"
+    examples: []
+    note: "no A2 pool coverage"
+
+  - id: gp_pron_passe_habiller_laver
+    point: "Pronominaux au passé: s'habiller, se laver, se raser, se maquiller"
+    category: pronominaux_passe
+    difficulty: 3
+    referentiel_ref: "A2 — Verbes d'hygiène pronominaux au passé composé"
+    examples:
+      - id: tatoeba:6664
+        fr: "Je me suis habillé précipitamment."
+        en: "I hurried my clothes on."
+
+  # ---- COMPARATIFS & SUPERLATIFS ----
+  - id: gp_comp_superiorite
+    point: "Comparatif de supériorité: plus + adj + que"
+    category: comparatifs_superlatifs
+    difficulty: 2
+    referentiel_ref: "A2 — Comparatif de supériorité"
+    examples:
+      - id: tatoeba:4205
+        fr: "Mieux vaut tard que jamais."
+        en: "Better late than never."
+
+  - id: gp_comp_inferiorite
+    point: "Comparatif d'infériorité: moins + adj + que"
+    category: comparatifs_superlatifs
+    difficulty: 2
+    referentiel_ref: "A2 — Comparatif d'infériorité"
+    examples:
+      - id: tatoeba:4205
+        fr: "Mieux vaut tard que jamais."
+        en: "Better late than never."
+
+  - id: gp_comp_egalite
+    point: "Comparatif d'égalité: aussi + adj/adv + que"
+    category: comparatifs_superlatifs
+    difficulty: 2
+    referentiel_ref: "A2 — Comparatif d'égalité"
+    examples:
+      - id: tatoeba:7418
+        fr: "Il t'aime autant que moi."
+        en: "He loves you as much as I do."
+      - id: tatoeba:12694
+        fr: "Viens aussi vite que possible."
+        en: "Come as soon as possible."
+
+  - id: gp_comp_nouns
+    point: "Comparatif avec noms: plus de / moins de / autant de + nom + que"
+    category: comparatifs_superlatifs
+    difficulty: 3
+    referentiel_ref: "A2 — Comparatif avec noms"
+    examples: []
+    note: "no A2 pool coverage"
+
+  - id: gp_superlatif_adj
+    point: "Superlatif: le/la/les + plus/moins + adj (+ de + groupe)"
+    category: comparatifs_superlatifs
+    difficulty: 3
+    referentiel_ref: "A2 — Superlatif avec adjectif"
+    examples:
+      - id: tatoeba:11817
+        fr: "Jean est mon meilleur ami."
+        en: "John is my best friend."
+      - id: tatoeba:8324
+        fr: "Espérons le meilleur."
+        en: "Let's hope for the best."
+      - id: tatoeba:13684
+        fr: "Montrez-m'en un meilleur."
+        en: "Show me a better one."
+
+  - id: gp_comp_meilleur
+    point: "Forme irrégulière: bon → meilleur(e) / le/la meilleur(e)"
+    category: comparatifs_superlatifs
+    difficulty: 3
+    referentiel_ref: "A2 — Comparatif irrégulier: bon → meilleur"
+    examples:
+      - id: tatoeba:11817
+        fr: "Jean est mon meilleur ami."
+        en: "John is my best friend."
+      - id: tatoeba:8324
+        fr: "Espérons le meilleur."
+        en: "Let's hope for the best."
+
+  - id: gp_comp_pire_mieux
+    point: "Formes irrégulières: mauvais → pire / bien → mieux"
+    category: comparatifs_superlatifs
+    difficulty: 3
+    referentiel_ref: "A2 — Comparatifs irréguliers: pire, mieux"
+    examples:
+      - id: tatoeba:4205
+        fr: "Mieux vaut tard que jamais."
+        en: "Better late than never."
+
+  # ---- IMPÉRATIF & STRUCTURES ----
+  - id: gp_imp_tu_er_verbs
+    point: "Impératif tu — verbes en -er (final -s supprimé: parle ! mange !)"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Impératif, forme tu, verbes en -er"
+    examples:
+      - id: tatoeba:13493
+        fr: "Bois ton lait."
+        en: "Drink up your milk."
+      - id: tatoeba:9698
+        fr: "Donne-moi à boire."
+        en: "Give me something to drink."
+      - id: tatoeba:11228
+        fr: "Viens ici, John."
+        en: "Come here, John."
+
+  - id: gp_imp_tu_ir_re_verbs
+    point: "Impératif tu — verbes en -ir/-re (finis ! prends ! viens !)"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Impératif, forme tu, verbes en -ir/-re"
+    examples:
+      - id: tatoeba:3847
+        fr: "Prends l'autre chaise !"
+        en: "Take the other chair!"
+      - id: tatoeba:11228
+        fr: "Viens ici, John."
+        en: "Come here, John."
+
+  - id: gp_imp_vous_form
+    point: "Impératif vous (parlez ! finissez ! allez !)"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Impératif, forme vous"
+    examples:
+      - id: tatoeba:15734
+        fr: "Levez-vous, s'il vous plaît."
+        en: "Stand up, please."
+
+  - id: gp_imp_nous_form
+    point: "Impératif nous / suggestions (parlons ! allons ! finissons !)"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Impératif, forme nous"
+    examples: []
+    note: "no A2 pool coverage"
+
+  - id: gp_imp_irregular_etre_avoir
+    point: "Impératif irrégulier: être → sois/soyons/soyez; avoir → aie/ayons/ayez"
+    category: imperatif_structures
+    difficulty: 3
+    referentiel_ref: "A2 — Impératif, formes irrégulières être et avoir"
+    examples: []
+    note: "no A2 pool coverage"
+
+  - id: gp_imp_pronoun_after
+    point: "Impératif affirmatif + pronom après (Mange-le ! Écoute-moi ! Donne-lui !)"
+    category: imperatif_structures
+    difficulty: 3
+    referentiel_ref: "A2 — Impératif affirmatif avec pronom postposé"
+    examples:
+      - id: tatoeba:9698
+        fr: "Donne-moi à boire."
+        en: "Give me something to drink."
+      - id: tatoeba:11712
+        fr: "Assieds-toi et détends-toi."
+        en: "Sit down and take it easy for a while."
+
+  - id: gp_imp_pronominal_affirmatif
+    point: "Impératif affirmatif des pronominaux: Lève-toi ! Asseyez-vous !"
+    category: imperatif_structures
+    difficulty: 3
+    referentiel_ref: "A2 — Impératif pronominal affirmatif"
+    examples:
+      - id: tatoeba:11712
+        fr: "Assieds-toi et détends-toi."
+        en: "Sit down and take it easy for a while."
+      - id: tatoeba:15734
+        fr: "Levez-vous, s'il vous plaît."
+        en: "Stand up, please."
+
+  - id: gp_imp_pronominal_negatif
+    point: "Impératif négatif des pronominaux: Ne te lève pas. Ne vous asseyez pas."
+    category: imperatif_structures
+    difficulty: 3
+    referentiel_ref: "A2 — Impératif pronominal négatif"
+    examples: []
+    note: "no A2 pool coverage"
+
+  - id: gp_cond_voudrais
+    point: "Conditionnel de politesse: je voudrais / je pourrais (requêtes polies)"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Conditionnel présent, emploi de politesse"
+    examples:
+      - id: tatoeba:9857
+        fr: "Je voudrais aller nager."
+        en: "I should like to go for a swim."
+      - id: tatoeba:14370
+        fr: "Je voudrais la rencontrer."
+        en: "I'd like to see her."
+
+  - id: gp_cond_aimerais
+    point: "Conditionnel de politesse: j'aimerais / il aimerait (désir poli)"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Conditionnel, désir poli avec aimer"
+    examples:
+      - id: tatoeba:7326
+        fr: "J'aimerais être guitariste."
+        en: "I'd like to be a guitarist."
+      - id: tatoeba:6837
+        fr: "J'aimerais aller à Londres."
+        en: "I'd like to go to London."
+      - id: tatoeba:7012
+        fr: "J'aimerais regarder la télévision."
+        en: "I'd like to watch TV."
+
+  - id: gp_cond_ce_serait
+    point: "Conditionnel de politesse: ce serait + adj / il vaudrait mieux"
+    category: imperatif_structures
+    difficulty: 3
+    referentiel_ref: "A2 — Conditionnel, suggestion polie"
+    examples:
+      - id: tatoeba:12349
+        fr: "Ce serait mieux d'essayer."
+        en: "It would be better to try."
+
+  - id: gp_si_present_future
+    point: "Si + présent → futur simple (condition réelle)"
+    category: imperatif_structures
+    difficulty: 3
+    referentiel_ref: "A2 — Hypothèse réelle: si + présent + futur"
+    examples:
+      - id: tatoeba:11791
+        fr: "Je partirai quand John viendra."
+        en: "I will leave when John comes."
+
+  - id: gp_si_present_imperatif
+    point: "Si + présent → impératif (Si tu es fatigué, repose-toi.)"
+    category: imperatif_structures
+    difficulty: 3
+    referentiel_ref: "A2 — Hypothèse réelle: si + présent + impératif"
+    examples: []
+    note: "no A2 pool coverage"
+
+  - id: gp_connecteurs_coordination
+    point: "Connecteurs de coordination: mais, et, ou, donc, alors"
+    category: imperatif_structures
+    difficulty: 1
+    referentiel_ref: "A2 — Connecteurs logiques, coordination"
+    examples:
+      - id: tatoeba:9258
+        fr: "Dépêchez-vous, c'est urgent."
+        en: "Please hurry, it's urgent."
+
+  - id: gp_connecteurs_cause
+    point: "Connecteurs de cause: parce que, comme (since)"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Connecteurs de cause: parce que, comme"
+    examples: []
+    note: "no A2 pool coverage"
+
+  - id: gp_connecteurs_temps
+    point: "Connecteurs de temps: quand, pendant que, avant de + inf., après + inf. passé"
+    category: imperatif_structures
+    difficulty: 3
+    referentiel_ref: "A2 — Connecteurs temporels"
+    examples: []
+    note: "no A2 pool coverage"
+
+  # ---- EXPRESSIONS DE TEMPS ----
+  - id: gp_time_hier_avant_hier
+    point: "Expressions de temps passé: hier, avant-hier, ce matin, ce soir"
+    category: passe_compose
+    difficulty: 1
+    referentiel_ref: "A2 — Marqueurs temporels du passé"
+    examples:
+      - id: tatoeba:6467
+        fr: "J'ai pris froid hier."
+        en: "I caught a cold yesterday."
+      - id: tatoeba:8288
+        fr: "Il faisait chaud hier."
+        en: "It was hot yesterday."
+
+  - id: gp_time_semaine_mois_annee
+    point: "Expressions de temps passé: la semaine dernière, le mois dernier, l'année dernière"
+    category: passe_compose
+    difficulty: 1
+    referentiel_ref: "A2 — Marqueurs temporels du passé"
+    examples:
+      - id: tatoeba:6472
+        fr: "Hier, j'étais malade."
+        en: "I was ill yesterday."
+
+  - id: gp_time_il_y_a
+    point: "Il y a + expression de temps (il y a deux ans, il y a une semaine)"
+    category: passe_compose
+    difficulty: 2
+    referentiel_ref: "A2 — Expression il y a + temps écoulé"
+    examples: []
+    note: "no A2 pool coverage"
+
+  - id: gp_depuis_continuing
+    point: "Depuis + durée continuant jusqu'à présent (J'attends depuis des heures.)"
+    category: imperatif_structures
+    difficulty: 3
+    referentiel_ref: "A2 — Depuis + présent, durée continue"
+    examples:
+      - id: tatoeba:4169
+        fr: "J'attends depuis des heures."
+        en: "I've been waiting for hours."
+      - id: tatoeba:7305
+        fr: "J'habite ici depuis trois ans."
+        en: "I have been living here for three years."
+
+  - id: gp_pendant_completed
+    point: "Pendant + durée d'une action complète (J'ai lu pendant une heure.)"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Pendant + durée d'une action terminée"
+    examples:
+      - id: tatoeba:7518
+        fr: "J'ai lu pendant 1 heure."
+        en: "I had been reading for an hour."
+      - id: tatoeba:14865
+        fr: "J'ai dormi pendant 9 heures."
+        en: "I slept nine hours."
+
+  - id: gp_depuis_vs_pendant_ilya
+    point: "Contraste depuis vs. pendant vs. il y a"
+    category: imperatif_structures
+    difficulty: 3
+    referentiel_ref: "A2 — Opposition depuis / pendant / il y a"
+    examples:
+      - id: tatoeba:4169
+        fr: "J'attends depuis des heures."
+        en: "I've been waiting for hours."
+      - id: tatoeba:7518
+        fr: "J'ai lu pendant 1 heure."
+        en: "I had been reading for an hour."
+
+  # ---- ADVERBES EN -MENT ----
+  - id: gp_adv_ment_formation
+    point: "Adverbes en -ment: formation (fém. adj. + -ment: lent→lente→lentement)"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Formation des adverbes en -ment"
+    examples:
+      - id: tatoeba:6800
+        fr: "J'aime vraiment nager."
+        en: "I like swimming very much."
+      - id: tatoeba:13459
+        fr: "C'est vraiment horrible."
+        en: "It's really horrible."
+
+  - id: gp_adv_ment_amment_emment
+    point: "Adverbes en -ment: -amment (brillamment) et -emment (fréquemment)"
+    category: imperatif_structures
+    difficulty: 3
+    referentiel_ref: "A2 — Adverbes en -amment / -emment"
+    examples:
+      - id: tatoeba:3136
+        fr: "C'est malheureusement vrai."
+        en: "It is unfortunately true."
+      - id: tatoeba:15154
+        fr: "C'est complètement faux."
+        en: "That's altogether wrong."
+
+  - id: gp_adv_ment_high_frequency
+    point: "Adverbes en -ment haute fréquence A2: vraiment, seulement, heureusement, immédiatement"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Adverbes en -ment haute fréquence"
+    examples:
+      - id: tatoeba:14142
+        fr: "Fais-le immédiatement !"
+        en: "Do it at once."
+      - id: tatoeba:3136
+        fr: "C'est malheureusement vrai."
+        en: "It is unfortunately true."
+
+  # ---- PRONOMS RELATIFS ----
+  - id: gp_relatif_qui_subject
+    point: "Pronom relatif qui — sujet de la relative (L'homme qui parle est mon ami.)"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Pronom relatif qui, fonction sujet"
+    examples:
+      - id: tatoeba:4325
+        fr: "Ceux qui le connaissent l'apprécient."
+        en: "Those who know him like him."
+      - id: tatoeba:4326
+        fr: "Dis-moi ce qui est arrivé."
+        en: "Tell me what happened."
+
+  - id: gp_relatif_que_object
+    point: "Pronom relatif que — COD de la relative (Le livre que je lis est intéressant.)"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Pronom relatif que, fonction objet direct"
+    examples:
+      - id: tatoeba:4325
+        fr: "Ceux qui le connaissent l'apprécient."
+        en: "Those who know him like him."
+
+  - id: gp_relatif_accord_passe
+    point: "Relatif + passé composé: accord du participe avec que-COD (les films que j'ai vus)"
+    category: imperatif_structures
+    difficulty: 4
+    referentiel_ref: "A2 — Accord du participe passé avec pronom relatif COD"
+    examples:
+      - id: tatoeba:4325
+        fr: "Ceux qui le connaissent l'apprécient."
+        en: "Those who know him like him."
+
+  - id: gp_relatif_que_elision
+    point: "Pronom relatif qu' devant voyelle (L'ami qu'elle a rencontré.)"
+    category: imperatif_structures
+    difficulty: 2
+    referentiel_ref: "A2 — Élision de que → qu' devant voyelle"
+    examples: []
+    note: "no A2 pool coverage"
