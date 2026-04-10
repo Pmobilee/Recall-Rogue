@@ -304,3 +304,15 @@ npm run build:curated
 - `pc_1_n64_innovation` ("What did N64 controller include?") in pool with "King of Comics", "$15 billion+" → hardware innovation not in same category as nickname or market size
 **Prevention:** After defining every pool, apply the semantic homogeneity test: "Would a student with NO knowledge of the subject still be able to eliminate some distractors purely by category type?" If yes, split the pool. Check #33 in `verify-all-decks.mjs` provides digit-pattern and ALL-CAPS heuristics as signals.
 **Fix script:** `node scripts/fix-pool-heterogeneity.mjs` (splits on length ratio); manual semantic splits required for cross-category contamination
+
+### Anti-Pattern 14: Kanji reading facts must store kana in correctAnswer
+
+**Rule:** Facts in `kanji_onyomi` and `kanji_kunyomi` pools MUST store the kana reading in `correctAnswer` (e.g., "ニチ", "くに"), NOT the kanji character (e.g., "日", "国"). The kanji character belongs only in `targetLanguageWord`. The `reading` field and `correctAnswer` must be identical for these facts.
+
+**Why:** The game engine's `getDistractorAnswerFieldForTemplate()` returns `'reading'` for `kanji_onyomi`/`kanji_kunyomi` templates — distractors are drawn by comparing `fact.reading` across pool members. If `correctAnswer` holds the kanji character instead of kana, the displayed correct answer and all kana distractors are in different scripts, making the answer trivially identifiable. Additionally, `getCorrectAnswerForTemplate()` now explicitly routes these templates through `fact.reading`, so any `correctAnswer` divergence is caught at render time.
+
+**Verification:** Run `node scripts/fix-kanji-correct-answer.mjs --deck <id> --dry-run` — it should report "No changes needed. Data is already correct." for all JLPT decks.
+
+**Fix script:** `node scripts/fix-kanji-correct-answer.mjs --deck <id>` (applies `correctAnswer = reading` for all kanji_onyomi/kanji_kunyomi facts where they diverge)
+
+**Audit engine note (quiz-audit-engine.ts Check 14):** The `template_rendering_fallback` check in the audit engine fires when a selected template renders to the same string as `fact.quizQuestion`. For kanji facts (whose quizQuestion was authored to match the template format), this was a false positive. Fixed 2026-04-10: Check 14 now verifies that at least one template placeholder resolved to an empty/missing value before firing. If all placeholders resolve to non-empty strings, the identical render is intentional and no warning is emitted.

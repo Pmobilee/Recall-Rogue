@@ -226,6 +226,7 @@ function runChecks(
   isNumerical: boolean,
   confusionTestMode: boolean,
   confusedFactId?: string,
+  templateQuestionFormat: string = '',
 ): Issue[] {
   const issues: Issue[] = [];
 
@@ -359,9 +360,21 @@ function runChecks(
   }
 
   // Check 14: template_rendering_fallback
+  // A genuine fallback occurs when renderTemplate returns fact.quizQuestion because a
+  // placeholder resolved to empty or was unresolved. However, if the template renders
+  // correctly to a string that happens to equal fact.quizQuestion (e.g. kanji facts whose
+  // quizQuestion was authored to match the template format exactly), this is NOT a fallback.
+  // Distinguish by checking whether all placeholders in the template format resolved
+  // to non-empty values — if they did, the identical render is intentional.
   if (templateId !== '_fallback' && renderedQuestion === fact.quizQuestion) {
-    // A real template was selected but rendered question matches raw quizQuestion — fallback occurred
-    issues.push({ severity: 'WARN', type: 'template_rendering_fallback', detail: `Template "${templateId}" fell back to fact.quizQuestion — likely empty placeholder` });
+    const placeholderKeys = [...(templateQuestionFormat.match(/\{(\w+)\}/g) ?? [])].map(p => p.slice(1, -1));
+    const genuineFallback = placeholderKeys.length === 0 || placeholderKeys.some(key => {
+      const val = (fact as Record<string, unknown>)[key];
+      return val === undefined || val === null || (typeof val === 'string' && val.trim() === '');
+    });
+    if (genuineFallback) {
+      issues.push({ severity: 'WARN', type: 'template_rendering_fallback', detail: `Template "${templateId}" fell back to fact.quizQuestion — likely empty placeholder` });
+    }
   }
 
   // Check 15: unresolved_placeholder
@@ -792,6 +805,7 @@ function auditFactWithEngine(
         null, // no in-run tracker for audit
         requestedCount,
         masteryLevel,
+        templateResult.distractorAnswerField,
       );
       distractorFacts = result.distractors;
       distractorSources = result.sources;
@@ -813,6 +827,7 @@ function auditFactWithEngine(
     isNumerical,
     opts.confusionTestMode,
     opts.confusedFactId,
+    template.questionFormat,
   );
 
   return {
@@ -1278,6 +1293,7 @@ function renderFactAsQuiz(
         null,
         requestedCount,
         masteryLevel,
+        templateResult.distractorAnswerField,
       );
       distractorDisplays = result.distractors.map(d => displayAnswer(d.correctAnswer));
       distractorSources = result.sources;

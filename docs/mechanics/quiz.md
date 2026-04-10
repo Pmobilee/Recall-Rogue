@@ -81,7 +81,7 @@ Template placeholders in `questionFormat` are replaced via `renderTemplate`: `{t
 - Any `{placeholder}` pattern remains unresolved after substitution (key not found on fact)
 - Any placeholder resolves to an empty or whitespace-only string (e.g. a non-language fact with no `targetLanguageWord` or `language` field matched a language-specific template via a shared answer pool — this would otherwise produce nonsensical questions like "Who created the  programming language?")
 
-Special template IDs: `reverse` (answer = `targetLanguageWord`), `reading` (answer = `fact.reading`), default (answer = `fact.correctAnswer`).
+Special template IDs: `reverse` (answer = `targetLanguageWord`), `reading` / `kanji_onyomi` / `kanji_kunyomi` (answer = `fact.reading`), default (answer = `fact.correctAnswer`). Kanji facts in `kanji_onyomi` / `kanji_kunyomi` pools MUST have `correctAnswer === reading` (kana) — `getCorrectAnswerForTemplate` routes these templates through `fact.reading` regardless of what `correctAnswer` holds, but data divergence would make the correct answer field display the wrong value. Run `scripts/fix-kanji-correct-answer.mjs --deck <id> --dry-run` to verify.
 
 **Note:** Different question templates can reference different `answerPoolId` values for the same fact. A vocabulary fact might use the `english_meanings` pool for forward questions and the `target_language_words` pool for reverse questions. The pool used is always determined by the selected template, not the fact itself.
 

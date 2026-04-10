@@ -355,7 +355,7 @@ export function renderTemplate(
  * Determine the correct answer for a given template.
  * For most templates, it's fact.correctAnswer.
  * For reverse templates, it's the target language word.
- * For reading templates, it's the reading.
+ * For reading/kanji templates, it's the reading.
  */
 function getCorrectAnswerForTemplate(template: QuestionTemplate, fact: DeckFact): string {
   // Reverse template: answer is the target language word
@@ -364,6 +364,12 @@ function getCorrectAnswerForTemplate(template: QuestionTemplate, fact: DeckFact)
   }
   // Reading template: answer is the reading
   if (template.id === 'reading' && fact.reading) {
+    return fact.reading;
+  }
+  // Kanji reading templates: answer is the kana reading (on'yomi or kun'yomi)
+  // Kanji facts store reading in fact.reading; correctAnswer should equal reading but
+  // explicit routing here ensures correctness even if data diverges.
+  if ((template.id === 'kanji_onyomi' || template.id === 'kanji_kunyomi') && fact.reading) {
     return fact.reading;
   }
   // Default: the fact's correctAnswer

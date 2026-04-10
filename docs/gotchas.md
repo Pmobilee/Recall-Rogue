@@ -2147,3 +2147,23 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **Fix:** Replaced the regex with `/(?:^|\s)\d[\d,.]*\s+([a-zA-Z%°µ/]{1,6})\s*$/` — requires a true digit-starting numeric literal (`\d[\d,.]*`) preceded by start-of-string or whitespace, followed by whitespace and a short unit token (1–6 chars: letters, %, °, µ, /). Multi-word English definitions now return null. Note: "99.86%" (no whitespace before %) also returns null — acceptable because percentage answers use the numerical distractors path, not the unit_contamination check.
 
 **Also fixed:** The `min_pool_facts` deck-level check now skips pools with `homogeneityExempt: true`. These are algorithmic/synthetic pools (e.g. `bracket_numbers` in `medical_terminology` which has 2 real facts but generates distractors algorithmically) — the 5-fact floor is not relevant for them.
+
+### 2026-04-10 — Kanji facts must store reading in correctAnswer; quiz-audit-engine Check 14 false positive
+
+**What:** JLPT N1-N5 kanji facts in `kanji_onyomi` and `kanji_kunyomi` pools had the risk of storing the kanji character in `correctAnswer` (duplicating `targetLanguageWord`) instead of the kana reading. The engine's `getCorrectAnswerForTemplate()` did not explicitly handle `kanji_onyomi`/`kanji_kunyomi` templates, relying on data equality between `correctAnswer` and `reading`. Additionally, the quiz-audit-engine's Check 14 (`template_rendering_fallback`) was a systematic false positive: it fired whenever a template rendered to the same string as `fact.quizQuestion`, which is expected for kanji facts whose quizQuestion was authored to match the template format exactly (e.g., `"What is the on'yomi of {targetLanguageWord}?"` renders to `"What is the on'yomi of 日?"` which equals `fact.quizQuestion`). This produced ~395 false-positive warnings on N5 alone, and over 6,000 on N1.
+
+**Why (false positives):** Check 14's original logic `templateId !== '_fallback' && renderedQuestion === fact.quizQuestion` could not distinguish between two cases: (a) a genuine fallback where `renderTemplate` returned `fact.quizQuestion` because a placeholder resolved to empty, and (b) a correct rendering that happened to produce the same string as the hand-authored `quizQuestion`. Kanji facts are case (b) by design.
+
+**Also:** The audit engine was not passing `distractorAnswerField` to `selectDistractors`, so reverse-template and kanji-template distractor selection defaulted to `'correctAnswer'` instead of the correct field (`'targetLanguageWord'` or `'reading'`). This caused `reverse_distractor_language_mismatch` to fire prolifically (714 on N5 alone) because English-language distractors were shown for Japanese-answer quizzes.
+
+**Fix:**
+1. `scripts/quiz-audit-engine.ts` Check 14: Before emitting the warning, verify whether any template placeholder resolves to an empty/missing value. If all placeholders are filled, the identical render is intentional — no warning. Also passes `templateResult.distractorAnswerField` to both `selectDistractors` calls (programmatic audit mode and render mode).
+2. `src/services/questionTemplateSelector.ts` `getCorrectAnswerForTemplate`: Now explicitly handles `kanji_onyomi`/`kanji_kunyomi` by returning `fact.reading` (not `fact.correctAnswer`), matching the intent documented in `getDistractorAnswerFieldForTemplate`.
+3. `scripts/fix-kanji-correct-answer.mjs` created: Idempotent tool that applies `correctAnswer = reading` for all kanji_onyomi/kunyomi facts where they diverge. Confirmed no divergence exists in N1-N5 as of 2026-04-10.
+
+**Audit delta (warnings):**
+- N1: 15,248 → 2,099 (template_rendering_fallback 6160→0, reverse_distractor_language_mismatch 2835→0)
+- N2: 8,001 → 1,261 (template_rendering_fallback 1835→0, reverse_distractor_language_mismatch 1973→0)
+- N3: 8,114 → 990 (template_rendering_fallback 1835→0, reverse_distractor_language_mismatch 2336→4)
+- N4: 2,862 → 535 (template_rendering_fallback 830→0, reverse_distractor_language_mismatch 641→3)
+- N5: 2,552 → 511 (template_rendering_fallback 395→0, reverse_distractor_language_mismatch 714→2)
