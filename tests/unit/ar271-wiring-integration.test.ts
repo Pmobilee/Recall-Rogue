@@ -303,7 +303,7 @@ describe('AR-271 Card Mechanic: Precision Strike + Distractor Count', () => {
    * CC formula: 8 × (distractorCount + 1).
    * With 2 distractors: 8 × 3 = 24.
    */
-  it('Precision Strike CC damage = 24 with 2 distractors', () => {
+  it('Precision Strike CC damage = 18 with 2 distractors [Pass 8 balance]', () => {
     const psCard = makeCard({
       id: 'ps_card',
       factId: 'ps_fact',
@@ -318,14 +318,14 @@ describe('AR-271 Card Mechanic: Precision Strike + Distractor Count', () => {
     const result = playCardAction(turnState, 'ps_card', true, false, 'charge', 2);
 
     expect(result.fizzled).toBe(false);
-    expect(result.effect.damageDealt).toBe(24); // 8 × (2 + 1)
+    expect(result.effect.damageDealt).toBe(18); // 6 × (2 + 1) [Pass 8 balance]
   });
 
   /**
    * Test 3b: Precision Strike CC damage scales higher with 4 distractors.
    * With 4 distractors: 8 × 5 = 40.
    */
-  it('Precision Strike CC damage = 40 with 4 distractors (scales correctly)', () => {
+  it('Precision Strike CC damage = 30 with 4 distractors (scales correctly) [Pass 8 balance]', () => {
     const psCard4 = makeCard({
       id: 'ps_4dist',
       factId: 'ps_4_fact',
@@ -340,7 +340,7 @@ describe('AR-271 Card Mechanic: Precision Strike + Distractor Count', () => {
     const result = playCardAction(turnState, 'ps_4dist', true, false, 'charge', 4);
 
     expect(result.fizzled).toBe(false);
-    expect(result.effect.damageDealt).toBe(40); // 8 × (4 + 1)
+    expect(result.effect.damageDealt).toBe(30); // 6 × (4 + 1) [Pass 8 balance]
   });
 
   /**
@@ -364,8 +364,8 @@ describe('AR-271 Card Mechanic: Precision Strike + Distractor Count', () => {
 
     expect(result.fizzled).toBe(false);
     expect(result.effect.damageDealt).toBeGreaterThan(0);
-    // Fallback = masteryLevel 0 → 2 distractors → 8 × 3 = 24
-    expect(result.effect.damageDealt).toBe(24);
+    // Fallback = masteryLevel 0 → 2 distractors → 6 × 3 = 18 [Pass 8 balance]
+    expect(result.effect.damageDealt).toBe(18);
   });
 });
 

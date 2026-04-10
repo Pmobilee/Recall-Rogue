@@ -1,7 +1,7 @@
 # Card System Mechanics
 
 > **Purpose:** Card entity, card types, tier system, damage formula, mastery system, and card creation pipeline.
-> **Last verified:** 2026-04-09 (Pass 4 balance: CC 1.75→1.50, fizzle 0.25→0.40, L0 QP buffs)
+> **Last verified:** 2026-04-10 (Pass 8 balance: eruption X-cost wired, fortify cap 30, precision_strike 8→6 mult, feedback_loop CC 40→28 +12 flow)
 > **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/services/catchUpMasteryService.ts`, `src/data/balance.ts`
 
 > **See also:** [`card-mechanics.md`](card-mechanics.md) — Complete table of all 50+ mechanics (attack, shield, buff, debuff, utility, wild).
@@ -304,7 +304,7 @@ Several mechanics have designed creative milestones at key mastery levels that c
 | `overcharge` | L5 | Scaling doubled + **draw 1** (`overcharge_bonus_x2`, `overcharge_draw1` tags) |
 | `twin_strike` | L5 | Each hit applies **2 Burn** (`twin_burn2` tag) |
 | `precision_strike` | L3 | +**50% quiz timer** extension (`precision_timer_ext50` tag) |
-| `precision_strike` | L5 | +50% timer + **difficulty bonus ×2** (`precision_timer_ext50`, `precision_bonus_x2` tags) |
+| `precision_strike` | L5 | +50% timer + **difficulty bonus ×2** (`precision_timer_ext50`, `precision_bonus_x2` tags) — L5 multiplier 12 vs base 6 |
 | `riposte` | L5 | qp=3, sec=5; deals **40% of block as bonus damage** (`riposte_block_dmg40` tag) |
 | `smite` | L3 | Aura scaling **doubled** (`smite_aura_x2` tag) |
 | `smite` | L5 | Aura scaling doubled (persists at L5) |
@@ -326,6 +326,16 @@ Several mechanics have designed creative milestones at key mastery levels that c
 | `mastery_surge` | L5 | +2 mastery to 3 cards + **refunds 1 AP** (`msurge_choose`, `msurge_plus2`, `msurge_ap_on_l5`) |
 | `weaken` | L5 | 3 stacks 3 turns + player gains **30 block** (`weaken_shield30`) |
 | `expose` | L5 | 2 stacks 3 turns + 3 damage + **75% Vuln amplification** (`expose_dmg3`, `expose_vuln75`) |
+
+
+### Pass 8 Balance Changes (2026-04-10)
+
+| Mechanic | Change | Before | After |
+|---|---|---|---|
+| `eruption` | X-cost AP wiring: `eruptionXAp` now passed from `turnManager` to resolver. Card correctly drains all remaining AP on play. | Always dealt 0 damage (bug) | Deals `perAp × remainingAP` |
+| `fortify` | Block scaling capped at 30 to prevent exponential snowball | `currentBlock × 0.75` unlimited | `min(currentBlock, 30) × 0.75` (max ~22 from shield scaling + baseValue) |
+| `precision_strike` | CC difficulty multiplier reduced | base=8, L5=16 | base=6, L5=12 — new CC at 2 distractors: 18, at 4: 30 |
+| `feedback_loop` | CC base damage and flow state bonus reduced | 40 base, +16 flow (max 56) | 28 base, +12 flow (max 40) |
 
 ### Tag System — How Tags Work in the Resolver
 

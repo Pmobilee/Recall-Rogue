@@ -767,15 +767,17 @@ export function resolveCardEffect(
     case 'fortify': {
       // Entrench: gain block based on current block amount
       const currentBlock = playerState.shield ?? 0;
+      // Cap at 30 to prevent exponential snowball (fortify cap, Pass 8 balance)
+      const cappedBlock = Math.min(currentBlock, 30);
       if (isChargeCorrect) {
-        // CC: gain 75% of current block + card value (strong reward for correct answer)
-        result.shieldApplied = Math.floor(currentBlock * 0.75) + applyShieldRelics(finalValue);
+        // CC: gain 75% of capped block + card value (strong reward for correct answer)
+        result.shieldApplied = Math.floor(cappedBlock * 0.75) + applyShieldRelics(finalValue);
       } else if (isChargeWrong) {
-        // CW: gain 25% of current block (minimal)
-        result.shieldApplied = Math.floor(currentBlock * 0.25);
+        // CW: gain 25% of capped block (minimal)
+        result.shieldApplied = Math.floor(cappedBlock * 0.25);
       } else {
-        // QP: gain 50% of current block
-        result.shieldApplied = Math.floor(currentBlock * 0.5);
+        // QP: gain 50% of capped block
+        result.shieldApplied = Math.floor(cappedBlock * 0.5);
       }
       // L5: fortify_carry — block persists to next turn (blockCarries flag)
       if (hasTag('fortify_carry')) result.blockCarries = true;
@@ -1280,7 +1282,7 @@ export function resolveCardEffect(
         const distractorCount = advanced.distractorCount ?? 2;
         const psBaseMult = 8;
         // Tag: precision_bonus_x2 — double the difficulty bonus multiplier.
-        const psBonusMult = hasTag('precision_bonus_x2') ? 16 : psBaseMult;
+        const psBonusMult = hasTag('precision_bonus_x2') ? 12 : 6;  // Pass 8: reduced from 16/8 to 12/6
         mechanicBaseValue = psBonusMult * (distractorCount + 1);
         applyAttackDamage(mechanicBaseValue);
       } else {
@@ -1719,10 +1721,10 @@ export function resolveCardEffect(
         return result;
       }
       if (isChargeCorrect) {
-        // CC: 40 damage base. Flow State bonus: +16 if Aura >= 7 (flow_state threshold).
-        mechanicBaseValue = 40;
+        // CC: 28 damage base. Flow State bonus: +12 if Aura >= 7 (flow_state threshold). Pass 8: reduced from 40/+16 to 28/+12.
+        mechanicBaseValue = 28;
         if (getAuraState() === 'flow_state') {
-          mechanicBaseValue += 16; // Total: 56 in Flow State
+          mechanicBaseValue += 12; // Total: 40 in Flow State (was 56)
         }
         applyAttackDamage(mechanicBaseValue);
         // L3 mastery: QP applies 1 Weakness (preserved from original — L3 check on QP, not CC)

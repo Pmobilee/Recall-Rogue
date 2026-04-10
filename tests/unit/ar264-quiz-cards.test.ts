@@ -149,31 +149,31 @@ describe('Precision Strike (AR-264)', () => {
     expect(result.damageDealt).toBe(5);
   });
 
-  it('CC at 2 distractors (mastery 0): deals 24 damage (8 × 3)', () => {
+  it('CC at 2 distractors (mastery 0): deals 18 damage (6 × 3) [Pass 8 balance]', () => {
     const card = makeCard({ mechanicId: 'precision_strike' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_correct',
       distractorCount: 2,
     });
-    expect(result.damageDealt).toBe(24);
+    expect(result.damageDealt).toBe(18);
   });
 
-  it('CC at 3 distractors: deals 32 damage (8 × 4)', () => {
+  it('CC at 3 distractors: deals 24 damage (6 × 4) [Pass 8 balance]', () => {
     const card = makeCard({ mechanicId: 'precision_strike' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_correct',
       distractorCount: 3,
     });
-    expect(result.damageDealt).toBe(32);
+    expect(result.damageDealt).toBe(24);
   });
 
-  it('CC at 4 distractors (mastery 3+): deals 40 damage (8 × 5)', () => {
+  it('CC at 4 distractors (mastery 3+): deals 30 damage (6 × 5) [Pass 8 balance]', () => {
     const card = makeCard({ mechanicId: 'precision_strike' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_correct',
       distractorCount: 4,
     });
-    expect(result.damageDealt).toBe(40);
+    expect(result.damageDealt).toBe(30);
   });
 
   it('CC defaults to 2 distractors when distractorCount absent', () => {
@@ -181,7 +181,7 @@ describe('Precision Strike (AR-264)', () => {
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_correct',
     });
-    expect(result.damageDealt).toBe(24);
+    expect(result.damageDealt).toBe(18);
   });
 
   it('CW: deals 1 damage (chargeWrongValue=4 + masteryBonus=-3 = 1, stat table L0 QP=5 vs mechanic QP=8)', () => {
@@ -378,40 +378,40 @@ describe('Feedback Loop (AR-264)', () => {
     expect(result.damageDealt).toBe(3);
   });
 
-  it('CC at fog 0 (flow_state, start): deals 56 damage (40 + 16 bonus)', () => {
-    // fog=0 → flow_state; CC grants +16 bonus
+  it('CC at fog 0 (flow_state, start): deals 40 damage (28 + 12 bonus) [Pass 8 balance]', () => {
+    // fog=0 → flow_state; CC grants +12 bonus
     const card = makeCard({ mechanicId: 'feedback_loop' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_correct',
     });
-    expect(result.damageDealt).toBe(56);
+    expect(result.damageDealt).toBe(40);
   });
 
-  it('CC in brain_fog state (fog ≥ 7): deals 40 damage (no bonus)', () => {
+  it('CC in brain_fog state (fog ≥ 7): deals 28 damage (no bonus) [Pass 8 balance]', () => {
     adjustAura(7); // 0 → 7 (brain_fog threshold)
     const card = makeCard({ mechanicId: 'feedback_loop' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_correct',
     });
-    expect(result.damageDealt).toBe(40);
+    expect(result.damageDealt).toBe(28);
   });
 
-  it('CC in flow_state (fog ≤ 2): deals 56 damage (40 + 16)', () => {
+  it('CC in flow_state (fog ≤ 2): deals 40 damage (28 + 12) [Pass 8 balance]', () => {
     // fog=0 is already flow_state; no adjustment needed
     const card = makeCard({ mechanicId: 'feedback_loop' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_correct',
     });
-    expect(result.damageDealt).toBe(56);
+    expect(result.damageDealt).toBe(40);
   });
 
-  it('CC at fog 10 (max brain_fog): deals 40 damage (no bonus)', () => {
+  it('CC at fog 10 (max brain_fog): deals 28 damage (no bonus) [Pass 8 balance]', () => {
     adjustAura(10); // 0 → 10
     const card = makeCard({ mechanicId: 'feedback_loop' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_correct',
     });
-    expect(result.damageDealt).toBe(40);
+    expect(result.damageDealt).toBe(28);
   });
 
   it('CW: deals 0 damage', () => {

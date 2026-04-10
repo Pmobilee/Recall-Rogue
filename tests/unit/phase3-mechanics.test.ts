@@ -177,16 +177,16 @@ describe('feedback_loop mechanic', () => {
     expect(result.damageDealt).toBe(3);
   });
 
-  it('CC (neutral fog): 40 base damage', () => {
+  it('CC (neutral fog): 28 base damage [Pass 8 balance]', () => {
     adjustAura(5); // neutral fog
     const result = resolve('feedback_loop', 'charge_correct');
-    expect(result.damageDealt).toBe(40);
+    expect(result.damageDealt).toBe(28);
   });
 
-  it('CC in flow state (fog=0): 40 + 16 = 56 damage', () => {
+  it('CC in flow state (fog=0): 28 + 12 = 40 damage [Pass 8 balance]', () => {
     // fog=0 → flow state
     const result = resolve('feedback_loop', 'charge_correct');
-    expect(result.damageDealt).toBe(56);
+    expect(result.damageDealt).toBe(40);
   });
 
   it('CW: 0 damage (complete fizzle without feedback_cw_nonzero tag)', () => {

@@ -614,28 +614,28 @@ describe('precision_strike mechanic', () => {
     expect(resolve('precision_strike', 'charge_wrong').damageDealt).toBe(1);
   });
 
-  it('CC with default distractorCount=2: 24 damage (8 * (2+1))', () => {
+  it('CC with default distractorCount=2: 18 damage (6 * (2+1)) [Pass 8 balance]', () => {
     const result = resolveCardEffect(
       makeCard('precision_strike'), makePlayer(), makeEnemy(), 1.0, 0, undefined, undefined,
       { playMode: 'charge_correct', distractorCount: 2 },
     );
-    expect(result.damageDealt).toBe(24);
+    expect(result.damageDealt).toBe(18);
   });
 
-  it('CC with distractorCount=3: 32 damage (8 * (3+1))', () => {
+  it('CC with distractorCount=3: 24 damage (6 * (3+1)) [Pass 8 balance]', () => {
     const result = resolveCardEffect(
       makeCard('precision_strike'), makePlayer(), makeEnemy(), 1.0, 0, undefined, undefined,
       { playMode: 'charge_correct', distractorCount: 3 },
     );
-    expect(result.damageDealt).toBe(32);
+    expect(result.damageDealt).toBe(24);
   });
 
-  it('CC with distractorCount=4: 40 damage (8 * (4+1))', () => {
+  it('CC with distractorCount=4: 30 damage (6 * (4+1)) [Pass 8 balance]', () => {
     const result = resolveCardEffect(
       makeCard('precision_strike'), makePlayer(), makeEnemy(), 1.0, 0, undefined, undefined,
       { playMode: 'charge_correct', distractorCount: 4 },
     );
-    expect(result.damageDealt).toBe(40);
+    expect(result.damageDealt).toBe(30);
   });
 
   it('CC damage scales with difficulty: more distractors = more damage', () => {

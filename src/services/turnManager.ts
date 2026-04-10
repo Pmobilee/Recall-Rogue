@@ -1534,6 +1534,13 @@ export function playCardAction(
     ? turnState.chargesCorrectThisEncounter + 1
     : turnState.chargesCorrectThisEncounter;
 
+  // AR-208: Eruption X-cost — capture remaining AP before resolve so the resolver can compute damage.
+  // apCurrent has already been reduced by the card's base AP cost (0 for eruption) at this point.
+  // Eruption has apCost=0, so apCurrent here equals exactly the AP available to consume.
+  const eruption_mechDef = card.mechanicId ? getMechanicDefinition(card.mechanicId) : null;
+  const isXCostCard = eruption_mechDef?.tags?.includes('x_cost') ?? false;
+  const eruptionXAp = isXCostCard ? turnState.apCurrent : undefined;
+
   const effect = resolveCardEffect(
     card,
     playerState,
@@ -1567,8 +1574,15 @@ export function playCardAction(
       selfDamageTakenThisEncounter: turnState.selfDamageTakenThisEncounter,
       lastTurnPlayedShield: turnState.lastTurnPlayedShield,
       reinforcePermanentBonus: turnState.reinforcePermanentBonus,
+      eruptionXAp,
     },
   );
+
+  // AR-208: X-cost AP drain — consume all remaining AP after eruption resolves.
+  // apRefund (eruption_refund1 tag) is handled below and will partially restore AP if active.
+  if ((effect.xCostApConsumed ?? 0) > 0) {
+    turnState.apCurrent = 0;
+  }
 
   if (card.cardType === 'attack') turnState.firstAttackUsed = true;
   if (useDoubleStrike && card.cardType === 'attack') turnState.doubleStrikeReady = false;
