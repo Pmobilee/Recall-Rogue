@@ -1546,3 +1546,8 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **What:** Running `node scripts/add-synthetic-distractors.mjs --dry-run` returned 0 decks modified / 0 synthetics added. All pools already had factIds.length + syntheticDistractors.length >= 15, or were bracket_number pools (exempted). Note: newly-split sub-pools from fix-pool-heterogeneity.mjs (e.g., ancient_philosopher_names_long with 5 facts) are not yet padded — they need domain-specific synthetic additions in a future pass.
 
 ---
+### 2026-04-10 — fix-empty-subdecks.mjs found 0 empty sub-deck factIds
+
+**What:** Running `node scripts/fix-empty-subdecks.mjs --dry-run` on all 7 target decks (ancient_greece, ap_world_history, constellations, egyptian_mythology, famous_inventions, mammals_world, medieval_world) found no empty factIds arrays. All sub-decks were already populated, likely fixed in a prior session.
+
+---
