@@ -177,6 +177,25 @@ In co-op mode, enemy attacks hit **ALL players simultaneously** for the full (1.
 
 **Why 1.0× damage per player:** The co-op HP multiplier (1.6× for 2P) already accounts for two players hitting the same enemy. Reducing per-player attack damage would make the enemy feel weak against survivors once one player is low. Full damage keeps combat tension consistent across both players throughout the encounter.
 
+## Co-op Real-Time Enemy HP Broadcast (2026-04-10)
+
+In co-op mode, the partner's enemy HP display was previously only updated at turn-end reconciliation. During the active player's turn, the passive partner saw stale enemy HP values until the full `mp:coop:enemy_state` snapshot arrived at barrier completion.
+
+**Fix:** After each card play in `handlePlayCard` (`encounterBridge.ts`), a lightweight `mp:coop:enemy_hp_update` message is sent when `run.multiplayerMode === 'coop'`. The passive partner receives it and immediately updates their Phaser scene and TurnState.
+
+**Message type:** `mp:coop:enemy_hp_update` — payload `{ currentHP: number; maxHP: number }`
+
+**Functions added to `multiplayerCoopSync.ts`:**
+- `broadcastEnemyHpUpdate(currentHP, maxHP)` — sends the lightweight message; called from `handlePlayCard`
+- `onEnemyHpUpdate(cb)` — subscribe to incoming updates; returns unsubscribe function
+
+**Subscriber wiring in `encounterBridge.ts`:**
+- `startEncounterForRoom` subscribes at encounter start, stores unsub in `_unsubCoopEnemyHpUpdate`
+- The subscriber updates `activeTurnState` and calls `liveScene.updateEnemyHP()` immediately
+- Old subscriber is cleaned up on each new encounter start
+
+**Message ordering:** The lightweight per-play HP update and the full `mp:coop:enemy_state` turn-end reconcile coexist. The turn-end reconcile is authoritative — it overwrites any optimistic HP state from the per-play updates. This maintains host-authoritative correctness while providing real-time visual feedback.
+
 ## Co-op Exclusive Effects
 
 All multipliers are **additive** — max combined bonus is +1.25x over base. This prevents excessive
