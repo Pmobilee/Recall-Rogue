@@ -221,3 +221,91 @@ describe('filterPuzzlesByElo', () => {
     expect(puzzles).toEqual(original);
   });
 });
+
+// ---------------------------------------------------------------------------
+// Rating convergence simulation
+// ---------------------------------------------------------------------------
+
+describe('calculateNewRating — convergence simulation', () => {
+  it('rating climbs from 1000 after 20 correct answers against equal-rated puzzles', () => {
+    // Start at 1000, win 20 puzzles all rated 1000.
+    // Each win at equal rating gives +16 points (K=32, expected=0.5, change=round(32*0.5)=16).
+    // After 20 wins: theoretical ~1320 (but expected score rises as rating climbs, slowing gains).
+    // We just verify the rating is in a reasonable upward range.
+    let rating = 1000;
+    for (let i = 0; i < 20; i++) {
+      const { newRating } = calculateNewRating(rating, 1000, true);
+      rating = newRating;
+    }
+    expect(rating).toBeGreaterThan(1100);
+    expect(rating).toBeLessThan(1400);
+  });
+
+  it('rating drops from 1000 after 20 wrong answers against equal-rated puzzles', () => {
+    // Symmetrically, losing 20 times against equal-rated puzzles should drop the rating.
+    let rating = 1000;
+    for (let i = 0; i < 20; i++) {
+      const { newRating } = calculateNewRating(rating, 1000, false);
+      rating = newRating;
+    }
+    expect(rating).toBeLessThan(900);
+    expect(rating).toBeGreaterThanOrEqual(CHESS_ELO_MIN);
+  });
+
+  it('rating stays clamped at CHESS_ELO_MIN when losing repeatedly from floor', () => {
+    // Player starts at floor (400) and loses 10 puzzles — should never go below 400.
+    let rating = CHESS_ELO_MIN;
+    for (let i = 0; i < 10; i++) {
+      const { newRating } = calculateNewRating(rating, 1000, false);
+      rating = newRating;
+    }
+    expect(rating).toBe(CHESS_ELO_MIN);
+  });
+
+  it('rating stays clamped at CHESS_ELO_MAX when winning repeatedly at ceiling', () => {
+    // Player starts at ceiling (3200) and wins 10 easy puzzles — should never go above 3200.
+    let rating = CHESS_ELO_MAX;
+    for (let i = 0; i < 10; i++) {
+      const { newRating } = calculateNewRating(rating, 400, true);
+      rating = newRating;
+    }
+    expect(rating).toBe(CHESS_ELO_MAX);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Rating floor boundary behavior
+// ---------------------------------------------------------------------------
+
+describe('calculateNewRating — floor boundary', () => {
+  it('calculateNewRating(400, 2000, false) stays at 400 (floor clamp)', () => {
+    // Player at floor (400), fails a very hard puzzle (2000).
+    // Without clamping: unclamped change = round(32 * (0 - expectedScore(400,2000)))
+    // expectedScore(400, 2000) ≈ 0 → change ≈ 0 → newRating ≈ 400. Even so, must not go below floor.
+    const { newRating } = calculateNewRating(400, 2000, false);
+    expect(newRating).toBe(CHESS_ELO_MIN);
+  });
+
+  it('calculateNewRating(400, 400, true) rises above 400 (floor allows positive gains)', () => {
+    // Player at floor (400), solves an equal-rated puzzle (400).
+    // Win at equal rating: change = round(32 * 0.5) = 16 → newRating = 416.
+    const { newRating } = calculateNewRating(400, 400, true);
+    expect(newRating).toBeGreaterThan(CHESS_ELO_MIN);
+  });
+
+  it('calculateNewRating(400, 400, false) stays at floor (400)', () => {
+    // Player at floor (400), fails an equal-rated puzzle (400).
+    // Loss at equal rating: change = round(32 * (0 - 0.5)) = -16 → unclamped 384 → clamped to 400.
+    const { newRating } = calculateNewRating(400, 400, false);
+    expect(newRating).toBe(CHESS_ELO_MIN);
+  });
+
+  it('ratingChange is 0 when already at floor and would go lower', () => {
+    // The clamped ratingChange must reflect actual delta, not the theoretical unclamped delta.
+    const { ratingChange } = calculateNewRating(400, 400, false);
+    expect(ratingChange).toBe(0);
+  });
+
+  // Note: history truncation at 100 entries is tested only via integration (updateChessElo
+  // persists to PlayerSave, which requires the Svelte store — not unit-testable in isolation).
+});

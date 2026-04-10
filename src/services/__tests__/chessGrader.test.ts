@@ -385,3 +385,195 @@ describe('multi-move puzzles', () => {
     expect(getOpponentResponse(moves, 2)).toBeNull();    // no response after player move 3 (last)
   });
 });
+
+// ---------------------------------------------------------------------------
+// Edge cases: promotion grading strictness
+// ---------------------------------------------------------------------------
+
+describe('gradeChessMove — promotion edge cases', () => {
+  it('returns false when player omits promotion piece (e7e8 vs e7e8q)', () => {
+    // Phase 1 is a strict UCI match: "e7e8" (4 chars) does not equal "e7e8q" (5 chars)
+    expect(gradeChessMove('e7e8', 'e7e8q')).toBe(false);
+  });
+
+  it('returns false when player promotes to wrong piece (e7e8r vs e7e8q)', () => {
+    expect(gradeChessMove('e7e8r', 'e7e8q')).toBe(false);
+  });
+
+  it('returns false when player promotes to bishop instead of queen (e7e8b vs e7e8q)', () => {
+    expect(gradeChessMove('e7e8b', 'e7e8q')).toBe(false);
+  });
+
+  it('returns true for exact promotion match (e7e8q vs e7e8q)', () => {
+    expect(gradeChessMove('e7e8q', 'e7e8q')).toBe(true);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// getPlayerContext — 4-move puzzle matching real deck structure
+// ---------------------------------------------------------------------------
+
+describe('getPlayerContext — 4-move puzzle matching real deck structure', () => {
+  // Simulates a real Lichess-style 4-move puzzle (2 player moves).
+  // The structure matches puzzles in chess-puzzles.db where the opponent plays
+  // a setup move and the player must find two consecutive correct responses.
+  // Using Italian Game opening moves as a known-legal 4-move sequence.
+  //
+  // solutionMoves[0]: e2e4  — white setup (creates the position)
+  // solutionMoves[1]: e7e5  — player (black) first response
+  // solutionMoves[2]: g1f3  — opponent (white) response
+  // solutionMoves[3]: b8c6  — player (black) second move
+  const FOUR_MOVE_PUZZLE = ['e2e4', 'e7e5', 'g1f3', 'b8c6'];
+
+  it('returns totalPlayerMoves === 2', () => {
+    const ctx = getPlayerContext(STARTING_FEN, FOUR_MOVE_PUZZLE);
+    expect(ctx.totalPlayerMoves).toBe(2);
+  });
+
+  it('returns moveSequence of length 2', () => {
+    const ctx = getPlayerContext(STARTING_FEN, FOUR_MOVE_PUZZLE);
+    expect(ctx.moveSequence).toHaveLength(2);
+  });
+
+  it('has correct player move at moveSequence[0]', () => {
+    const ctx = getPlayerContext(STARTING_FEN, FOUR_MOVE_PUZZLE);
+    expect(ctx.moveSequence[0].solutionUCI).toBe('e7e5');
+  });
+
+  it('has correct player move at moveSequence[1]', () => {
+    const ctx = getPlayerContext(STARTING_FEN, FOUR_MOVE_PUZZLE);
+    expect(ctx.moveSequence[1].solutionUCI).toBe('b8c6');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// getPlayerContext — 10-move puzzle (5 player moves)
+// ---------------------------------------------------------------------------
+
+describe('getPlayerContext — 10-move puzzle (5 player moves)', () => {
+  // 10-element solutionMoves array: 1 setup + 4 opponent responses + 5 player moves = 10 total
+  // Layout: [setup, p1, o1, p2, o2, p3, o3, p4, o4, p5]
+  // Using an Italian Game / Giuoco Piano opening sequence — all legal consecutive moves.
+  //
+  // solutionMoves[0]: e2e4  — white setup
+  // solutionMoves[1]: e7e5  — player (black) move 1
+  // solutionMoves[2]: g1f3  — opponent (white) response 1
+  // solutionMoves[3]: b8c6  — player (black) move 2
+  // solutionMoves[4]: f1c4  — opponent (white) response 2
+  // solutionMoves[5]: g8f6  — player (black) move 3
+  // solutionMoves[6]: b1c3  — opponent (white) response 3
+  // solutionMoves[7]: f8c5  — player (black) move 4
+  // solutionMoves[8]: d2d3  — opponent (white) response 4
+  // solutionMoves[9]: d7d6  — player (black) move 5
+  const TEN_MOVE_SEQUENCE = [
+    'e2e4', 'e7e5', 'g1f3', 'b8c6', 'f1c4',
+    'g8f6', 'b1c3', 'f8c5', 'd2d3', 'd7d6',
+  ];
+
+  it('returns totalPlayerMoves === 5', () => {
+    const ctx = getPlayerContext(STARTING_FEN, TEN_MOVE_SEQUENCE);
+    expect(ctx.totalPlayerMoves).toBe(5);
+  });
+
+  it('returns moveSequence of length 5', () => {
+    const ctx = getPlayerContext(STARTING_FEN, TEN_MOVE_SEQUENCE);
+    expect(ctx.moveSequence).toHaveLength(5);
+  });
+
+  it('has correct solution UCI at each step', () => {
+    const ctx = getPlayerContext(STARTING_FEN, TEN_MOVE_SEQUENCE);
+    expect(ctx.moveSequence[0].solutionUCI).toBe('e7e5');
+    expect(ctx.moveSequence[1].solutionUCI).toBe('b8c6');
+    expect(ctx.moveSequence[2].solutionUCI).toBe('g8f6');
+    expect(ctx.moveSequence[3].solutionUCI).toBe('f8c5');
+    expect(ctx.moveSequence[4].solutionUCI).toBe('d7d6');
+  });
+
+  it('preserves baseFen through the full sequence', () => {
+    const ctx = getPlayerContext(STARTING_FEN, TEN_MOVE_SEQUENCE);
+    expect(ctx.baseFen).toBe(STARTING_FEN);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// getOpponentResponse — boundary conditions with specific 4-move index mapping
+// ---------------------------------------------------------------------------
+
+describe('getOpponentResponse — boundary conditions', () => {
+  // For solutionMoves of length 4 (['a1a2', 'b1b2', 'c1c2', 'd1d2']):
+  //   oppIndex for playerMoveIndex=0 → 2 + 0*2 = 2 → solutionMoves[2] = 'c1c2'
+  //   oppIndex for playerMoveIndex=1 → 2 + 1*2 = 4 → index 4 >= length 4 → null
+  const FOUR_MOVES = ['a1a2', 'b1b2', 'c1c2', 'd1d2'];
+
+  it('returns solutionMoves[2] ("c1c2") when playerMoveIndex=0', () => {
+    expect(getOpponentResponse(FOUR_MOVES, 0)).toBe('c1c2');
+  });
+
+  it('returns null when playerMoveIndex=1 (index 4 is out of bounds for 4-element array)', () => {
+    expect(getOpponentResponse(FOUR_MOVES, 1)).toBeNull();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// uciToSan — castling via standard chess position with full castling rights
+// ---------------------------------------------------------------------------
+
+describe('uciToSan — castling', () => {
+  // FEN with clear paths and full castling rights: kings and rooks in starting positions
+  // r3k2r/pppppppp/8/8/8/8/PPPPPPPP/R3K2R w KQkq - 0 1
+  const CASTLING_FEN = 'r3k2r/pppppppp/8/8/8/8/PPPPPPPP/R3K2R w KQkq - 0 1';
+
+  it('converts kingside castling e1g1 to O-O', () => {
+    expect(uciToSan(CASTLING_FEN, 'e1g1')).toBe('O-O');
+  });
+
+  it('converts queenside castling e1c1 to O-O-O', () => {
+    expect(uciToSan(CASTLING_FEN, 'e1c1')).toBe('O-O-O');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// applyMove — pawn promotion
+// ---------------------------------------------------------------------------
+
+describe('applyMove — pawn promotion', () => {
+  // White pawn on e7, kings away from promotion square.
+  // FEN: 7k/4P3/8/8/8/8/8/4K3 w - - 0 1
+  // White king e1, black king h8, white pawn e7.
+  const PROMOTION_FEN = '7k/4P3/8/8/8/8/8/4K3 w - - 0 1';
+
+  it('applyMove with queen promotion places queen on e8', () => {
+    const resultFen = applyMove(PROMOTION_FEN, 'e7e8q');
+    // FEN board part: rank 8 is the first segment before the first '/'
+    const rank8 = resultFen.split(' ')[0].split('/')[0];
+    // Rank 8 should contain a white queen ('Q') where the pawn promoted
+    expect(rank8).toContain('Q');
+  });
+
+  it('applyMove with rook promotion places rook on e8', () => {
+    const resultFen = applyMove(PROMOTION_FEN, 'e7e8r');
+    const rank8 = resultFen.split(' ')[0].split('/')[0];
+    expect(rank8).toContain('R');
+  });
+
+  it('applyMove with knight promotion places knight on e8', () => {
+    const resultFen = applyMove(PROMOTION_FEN, 'e7e8n');
+    const rank8 = resultFen.split(' ')[0].split('/')[0];
+    expect(rank8).toContain('N');
+  });
+
+  it('applyMove pawn no longer on e7 after promotion', () => {
+    const resultFen = applyMove(PROMOTION_FEN, 'e7e8q');
+    // rank 7 is the second segment (index 1) of the FEN board part
+    const rank7 = resultFen.split(' ')[0].split('/')[1];
+    // e7 was the only pawn; rank 7 should now be all empty (8 empty squares)
+    expect(rank7).toBe('8');
+  });
+
+  it('applyMove promotion changes the active side to black', () => {
+    const resultFen = applyMove(PROMOTION_FEN, 'e7e8q');
+    // After white moves, it is black's turn
+    const activeColor = resultFen.split(' ')[1];
+    expect(activeColor).toBe('b');
+  });
+});

@@ -521,6 +521,10 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     screen: 'restStudy',
     deckId: 'ap_human_geography',
   },
+  'study-deck-chess': {
+    screen: 'restStudy',
+    deckId: 'chess_tactics',
+  },
   'mastery-challenge': {
     screen: 'masteryChallenge',
   },
@@ -718,6 +722,18 @@ async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResu
   if (!enemyTemplate) {
     const validIds = ENEMY_TEMPLATES.map(t => t.id).join(', ');
     return { ok: false, message: `Unknown enemy ID: '${enemyId}'. Valid IDs: ${validIds}` };
+  }
+
+  // If a deckId was specified, set deckMode so the encounter pool uses the curated deck
+  if (config.deckId) {
+    const run = readStore('rr:activeRunState') as any;
+    if (run) {
+      run.deckMode = {
+        type: 'study' as const,
+        deckId: config.deckId,
+        subDeckId: config.subDeckId,
+      };
+    }
   }
 
   const started = await startEncounterForRoom(enemyId);
@@ -1779,7 +1795,7 @@ function printHelp(): void {
     '  onboarding, domain-selection, archetype-selection, relic-sanctum',
     '  library, profile, journal, settings',
     '  study-quiz  (restStudy screen)',
-    '  study-deck-rome / study-deck-greece / study-deck-paintings / etc.',
+    '  study-deck-rome / study-deck-greece / study-deck-paintings / study-deck-chess / etc.',
     '  mastery-challenge  (masteryChallenge screen)',
     '',
     'SCENARIO CONFIG SHAPE',
