@@ -1567,3 +1567,29 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **Lesson:** If a deck has dedicated kanji pools, it MUST also have templates that target them. A pool without a referencing template is dead weight — those facts silently fall through to `_fallback`. The `audit-dump-samples.ts` script is the fastest way to surface this issue: look for high `_fallback` percentages and cross-check against the pool list.
 
 ---
+
+### 2026-04-10 — AP mega-pool splits by CED unit
+
+**What:** 9 AP decks had single catch-all pools containing 89–297 facts spanning entire subject domains. A Unit 1 Cell Communication question could get a Unit 4 Photosynthesis distractor — players eliminate by topic without knowing the answer. This is Pattern #2 from the 2026-04-10 quiz audit (docs/reports/quiz-audit-2026-04-10.md).
+
+**Root cause:** Deck generators created one pool per semantic answer type (e.g., `concept_terms`) without considering that a >100-fact pool is never coherent — the distractor draw range spans the entire subject rather than staying within the tested unit.
+
+**Fix:** Automated Python script split each mega-pool by `examTags.unit` (or `examTags` list string `Unit_N`/`Period_N`). Each unit bucket ≥5 facts got its own sub-pool (`{old_id}_u{N}`). Buckets <5 were merged into the nearest viable unit. Facts had `answerTypePoolId` updated to the new pool.
+
+**Decks fixed (8 commits):**
+- `ap_biology`: `term_definitions_long` (214→7 pools) + `term_definitions_mid` (169→8 pools)
+- `ap_world_history`: `concept_terms` (297→9 pools)
+- `ap_chemistry`: `chemistry_concepts_long` (89→9 pools) + `unique_answers` (46→5 pools)
+- `ap_physics_1`: `concept_statements` (123→8 pools) + `equation_explanations` (44→5 pools)
+- `ap_psychology`: `psych_concept_terms` (149→5 pools)
+- `ap_macroeconomics`: `macro_concept_terms_mid` (130→6 pools)
+- `ap_microeconomics`: `econ_concept_terms_mid` (120→6 pools)
+- `ap_us_history`: `concept_terms` (142→9 pools, used Period_N)
+
+**Skipped:** `ap_european_history` (already split, no pool >93 facts).
+
+**Total:** 9 mega-pools eliminated, 56 unit-coherent sub-pools created, 1,369 fact references reassigned.
+
+**Lesson:** Any pool with >100 facts in a CED-structured AP deck is almost certainly a contamination risk. Split by unit as part of initial deck assembly, not post-audit.
+
+---
