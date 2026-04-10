@@ -212,10 +212,13 @@ function getPhaserState(): RRDebugSnapshot['phaser'] {
  * HIGH-4 (2026-04-10): added to enable profiling combat FPS regressions.
  */
 function getPhaserPerf(): PhaserPerfSnapshot | null {
-  const gm = readSymbolStore('rr:gameManagerStore') as Record<string, unknown> | undefined;
-  if (!gm) return null;
+  // CardGameManager is registered at Symbol.for('rr:cardGameManager'), not 'rr:gameManagerStore'.
+  // It exposes getGame() returning Phaser.Game | null.
+  const cardGM = (globalThis as Record<symbol, unknown>)[Symbol.for('rr:cardGameManager')] as
+    { getGame?: () => Phaser.Game | null } | undefined;
+  if (!cardGM) return null;
   try {
-    const game = (gm as { game?: Phaser.Game }).game;
+    const game = cardGM.getGame?.() ?? null;
     if (!game) return null;
 
     // Renderer type: Phaser.CANVAS = 1, Phaser.WEBGL = 2
