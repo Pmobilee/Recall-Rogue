@@ -2681,6 +2681,15 @@ export function generateStudyQuestions(): QuizQuestion[] {
           sentenceRomaji: q.sentenceRomaji,
           sentenceTranslation: q.sentenceTranslation,
           grammarPointLabel: q.grammarPointLabel,
+          // Chess puzzle fields — must be forwarded so chess_move mode renders correctly
+          fenPosition: q.fenPosition,
+          solutionMoves: q.solutionMoves,
+          lichessRating: q.lichessRating,
+          quizResponseMode: q.quizResponseMode,
+          // Map pin fields
+          mapCoordinates: q.mapCoordinates,
+          mapRegion: q.mapRegion,
+          mapDifficultyTier: q.mapDifficultyTier,
         });
       }
     }
@@ -2721,6 +2730,15 @@ export function generateStudyQuestions(): QuizQuestion[] {
           sentenceRomaji: q.sentenceRomaji,
           sentenceTranslation: q.sentenceTranslation,
           grammarPointLabel: q.grammarPointLabel,
+          // Chess puzzle fields — must be forwarded so chess_move mode renders correctly
+          fenPosition: q.fenPosition,
+          solutionMoves: q.solutionMoves,
+          lichessRating: q.lichessRating,
+          quizResponseMode: q.quizResponseMode,
+          // Map pin fields
+          mapCoordinates: q.mapCoordinates,
+          mapRegion: q.mapRegion,
+          mapDifficultyTier: q.mapDifficultyTier,
         });
       }
     }

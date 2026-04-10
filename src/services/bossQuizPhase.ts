@@ -47,6 +47,12 @@ export interface QuizQuestion {
   lichessRating?: number;
   /** Response mode override for this question. 'chess_move' renders ChessBoard instead of answer buttons. */
   quizResponseMode?: 'choice' | 'typing' | 'chess_move' | 'map_pin';
+  /** Map pin coordinates [lat, lng] (map_pin response mode). */
+  mapCoordinates?: [number, number];
+  /** Map region / continent label for scoring (map_pin mode). */
+  mapRegion?: string;
+  /** Map difficulty tier (1-5) for partial credit calculation (map_pin mode). */
+  mapDifficultyTier?: number;
 }
 
 export interface QuizPhaseOutcome {
