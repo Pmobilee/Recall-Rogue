@@ -1469,3 +1469,29 @@ Q: "Which word is closest in meaning to 'pique-niquer'?"  ← synonym_pick templ
 **Fix:** Per-deck grep + targeted string replacement. Where "this" appeared in valid English usage (demonstrative pronoun referring to a prior noun), it was left unchanged. Only true placeholder artifacts were fixed.
 
 **Lesson:** Batch noun-replacement scripts must be audited by sampling at least 10+ outputs before merge. Simple grep for isolated `\bthis\b` in quizQuestion fields catches placeholder artifacts quickly. The `content-pipeline.md` "Batch Output Verification" rule must be consulted before accepting any batch rewrite result.
+
+---
+
+### 2026-04-10 — Numeric distractors exceeding answer domain (138% etc.)
+
+**What:** `solar_system_sun_mass_percentage` had `correctAnswer: "{99.86}"` (bare number, no % suffix). `getNumericalDistractors()` applied ±20–50% variation and generated distractors of 138.52 and 120.24 — physically impossible percentage values (percentages must be ≤ 100). Players eliminate impossible options instantly without any knowledge.
+
+**Why:** The answer domain was not detected because the percentage context was only in the question text ("What percentage of the solar system mass..."), not in the answer string. The answer string `{99.86}` has no `%` suffix, so the pre-fix algorithm treated it as a generic decimal and applied uncapped variation.
+
+**Fix:** Added `detectAnswerDomain(answerStr, questionText)` to `numericalDistractorService.ts`. Three-layer detection: (1) answer-format hints (suffix: `%`, 4-digit year shape, unit word); (2) question-text hints ("percent", "percentage", "how many", "year", unit keywords); (3) hard clamps post-generation. `getNumericalDistractors()` now accepts optional `questionText` parameter and auto-reads `fact.quizQuestion` as fallback. All distractors pass through `applyClamp()` before being returned.
+
+**Affected decks:** solar_system (mass percentage facts), AP Physics, AP Chemistry (measurement quantities without unit suffix in answer). Any deck where `correctAnswer` is a bare brace-number but the domain is only expressed in the question text.
+
+**Lesson:** When `correctAnswer` uses `{N}` syntax, the answer domain must be derivable from EITHER the answer format OR the question text. Deck authors: if the answer is a bare number (no unit or % suffix), ensure the question contains the domain hint word ("percent", "kilometers", "how many", "year"). The engine now catches it — but explicit suffix is still the most robust approach.
+
+---
+
+### 2026-04-10 — Reagan/Bush USSR-dissolution factual error in us_presidents deck
+
+**What:** The fact `pres_reagan_end_cold_war` in `data/decks/us_presidents.json` had `correctAnswer: "Ronald Reagan"` for the question "Which president presided over the end of the Cold War as the Soviet Union dissolved in 1991?" This is factually wrong: Reagan left office January 20, 1989; the Soviet Union dissolved December 25, 1991 — under George H.W. Bush (fact `pres_ghwbush_soviet` in the same deck correctly attributes this). The deck was shipping two contradictory facts: one correctly crediting Bush, one incorrectly crediting Reagan.
+
+**Why:** LLM training data conflates Reagan's Cold War PRESSURE (SDI, "evil empire" rhetoric, defense buildup) with the USSR's ACTUAL dissolution under his successor. The same error appeared in the ap_us_history audit but on inspection that deck had no such fact — the finding was a cross-reference note only.
+
+**Fix:** Rewrote `pres_reagan_end_cold_war` to ask about Reagan's actual Cold War strategy — the Strategic Defense Initiative and "evil empire" rhetoric. Reagan remains the correct answer for that reframed question. The 1991 dissolution is now exclusively covered by `pres_ghwbush_soviet` (George H.W. Bush). The true/false variant was updated to correctly answer "False" to "Reagan was president when the USSR dissolved in 1991." Regression tests added in `src/services/__tests__/factCorrectness.test.ts`.
+
+**Lesson:** Any deck fact that assigns a historical event to a president must be cross-checked against presidential term dates. Reagan (1981–1989), Bush 41 (1989–1993), Clinton (1993–2001) are frequently confused in Cold War context. The curriculum-source rule in `content-pipeline.md` already requires sourcing facts from verified data — this error was caught by the quiz audit, not by initial authoring.

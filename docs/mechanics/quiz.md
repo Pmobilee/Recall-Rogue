@@ -796,3 +796,62 @@ Continuous-accuracy Elo (unlike chess binary correct/wrong):
 
 Map quizzes are excluded from typing mode (`isTypingExcluded` returns true when `quizResponseMode === 'map_pin'`).
 
+
+---
+
+## Numeric Distractor Domain Detection (`numericalDistractorService.ts`)
+
+Bracket-notation facts (e.g., `correctAnswer: "{99.86}"`) generate their distractors at runtime via `getNumericalDistractors`. Without domain awareness, the ±20-50% variation strategy can produce physically impossible values — for example, a mass-percentage answer of 99.86% generated variants of 138.52 and 120.24 (impossible percentages players eliminate instantly).
+
+### Three-Layer Defence
+
+The system applies three complementary layers to keep distractors in-domain:
+
+**Layer 1: Answer-format hints** — The most precise layer, checked first.
+- `%` suffix in the answer string → `percentage` domain (clamp 0–100)
+- 4-digit number shape with value in [1000, 2100] → `year` domain (clamp 1–2100)
+- Unit suffix in answer (km, kg, days, etc.) → `measurement` domain (clamp > 0)
+
+**Layer 2: Question-text hints** — Catches bare-number answers where the unit/domain is only expressed in the question.
+- "percent" / "percentage" / "%" / "fraction of" / "proportion of" in question → `percentage` (clamp 0–100)
+- "year" / "century" / "decade" / "when was" / "in what year" → `year` (clamp 1–2100)
+- "how many" / "number of" / "count of" / "total of" → `count` (clamp ≥ 0, no upper bound)
+- Unit keywords (kilometers, metres, seconds, grams, etc.) in question → `measurement` (clamp > 0)
+
+**Layer 3: Hard clamps** — Post-generation safety net. Every candidate value is passed through `applyClamp()` before being returned. A clamped value that equals the correct answer (collapsed by the clamp) is discarded rather than returned as a wrong answer.
+
+### Public API
+
+```typescript
+// Domain descriptor
+interface AnswerDomain {
+  kind: 'percentage' | 'year' | 'count' | 'measurement' | 'unknown'
+  clamp: { min: number; max: number } | null
+}
+
+// Detect domain from answer + question text
+detectAnswerDomain(answerStr: string, questionText?: string): AnswerDomain
+
+// Generate distractors (auto-detects domain via quizQuestion field if present)
+getNumericalDistractors(
+  fact: Fact,
+  count?: number,
+  questionText?: string,  // optional: pass rendered question stem for best detection
+): string[]
+```
+
+Callers that have the rendered question text available should pass it as the third argument. When omitted, `getNumericalDistractors` auto-reads `fact.quizQuestion` (available on `DeckFact` but not the base `Fact` type — accessed via safe dynamic lookup).
+
+### Example
+
+| Fact | correctAnswer | quizQuestion contains | Domain detected | Clamp |
+|------|--------------|----------------------|-----------------|-------|
+| `solar_system_sun_mass_percentage` | `{99.86}` | "percentage" | `percentage` | 0–100 |
+| `apollo11_landing_year` | `{1969}` | "what year" | `year` | 1–2100 |
+| `solar_system_planet_count` | `{8}` | "how many planets" | `count` | ≥ 0 |
+| `moon_distance_km` | `{384400} km` | — | `measurement` (answer format) | > 0 |
+| `napoleon_height` | `{169}` | "height in cm" | `measurement` | > 0 |
+
+### Affected Decks
+
+solar_system (percentage mass facts), AP Physics (measurement quantities), AP Chemistry (molar mass, concentration), any deck with facts where the answer is a bare number but the question clarifies the unit or domain.
