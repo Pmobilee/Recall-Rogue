@@ -59,6 +59,8 @@ After defining pools, for each pool ask: "If I showed a player the 4 quiz option
 - Netflix test: "Which streaming service?" options = ["Netflix", "Game Boy", "Nintendo Switch", "Sega Genesis"] → FAIL — consoles are obviously not streaming services
 - N64 test: "What innovation did N64 controller include?" options = ["analog stick", "King of Comics", "$15 billion+", "San Diego"] → FAIL — categories mixed
 
+**Kanji pools require kanji templates:** If a deck defines kanji-specific pools (`kanji_meanings`, `kanji_onyomi`, `kanji_kunyomi`, `kanji_characters`), it MUST also have `questionTemplates` entries that target each pool. A pool with no referencing template is dead weight — facts assigned to it silently fall through to `_fallback` and the templating system has no effect. Run `audit-dump-samples.ts` and check for high `_fallback` percentages to detect this issue.
+
 ## Batch Deck Verification — MANDATORY
 
 After modifying ANY curated deck:
@@ -139,7 +141,7 @@ npm run build:curated
 
 **If ANY step finds issues, fix them BEFORE committing. Never ship a deck with known quality issues.**
 
-## 4 Deck Quality Anti-Patterns — Lessons from 2026-04-08 Audit
+## 12 Deck Quality Anti-Patterns — Lessons from 2026-04-08 and 2026-04-10 Audits
 
 ### Anti-Pattern 1: Empty Sub-Deck factIds
 **What:** Sub-decks defined in deck JSON with `factIds: []` even though facts have valid `chainThemeId` values.
@@ -178,7 +180,120 @@ npm run build:curated
 **Prevention:** `verify-all-decks.mjs` Check #22 detects both levels with corpus-frequency filtering (words appearing in 3+ facts as leaks are excluded as domain terms). After writing questions, run the check and fix any warnings.
 **Fix script:** `node scripts/fix-self-answering.mjs`
 
-### Anti-Pattern 5: Cross-Category Pool Contamination
+### Anti-Pattern 5: Reverse Template POOL-CONTAM — never draw cross-language distractors
+
+**Rule:** When a vocabulary deck defines a `reverse` template ("How do you say X in [language]?"), the distractor pool's facts must be displayed using the **target-language field** (`targetLanguageWord`), not the English-meaning field (`correctAnswer`). Distractors must be target-language words so that all options are in the same language as the correct answer.
+
+**Why:** Without this, the correct answer is the ONLY target-language option — any player can identify it by visual script recognition without knowing any vocabulary. This was confirmed as a BLOCKER across ~25 language decks in the 2026-04-10 quiz audit (Pattern 3, `docs/reports/quiz-audit-2026-04-10.md`). korean_topik2 had 100% contamination (49/49 reverse rows).
+
+**Engine behavior (as of 2026-04-10 fix):** `selectQuestionTemplate` now returns `distractorAnswerField: keyof DeckFact` alongside `answerPoolId`. For `reverse` templates this is `'targetLanguageWord'`; for `reading`/`reading_pinyin` it is `'reading'`; for all others it is `'correctAnswer'`. All template-aware callers pass this to `selectDistractors`. No deck JSON changes are needed — the mapping is resolved engine-side.
+
+**How to apply:**
+1. When defining a reverse template in a vocab deck, ensure the `target_language_words` pool exists and has the same `factIds` as `english_meanings`.
+2. Verify that each fact has a non-empty `targetLanguageWord` field — if it is missing, `resolveDisplayAnswer` falls back to `correctAnswer` (English), producing cross-language contamination again.
+3. Run `npm run audit:quiz-engine -- --deck <id>` after deck assembly — POOL-CONTAM on reverse rows indicates `targetLanguageWord` is missing or the pool is misconfigured.
+4. For `reading_pinyin` / `reading` templates, same rule applies: ensure `fact.reading` is populated and a `readings` or `target_readings` pool exists.
+
+### Anti-Pattern 6: definition_match self-answering via explanation
+
+**Rule:** The `definition_match` template renders `fact.explanation` as the question stem (`questionFormat: '{explanation}'`). Wiktionary-sourced explanations follow the format "word — English meaning" (e.g., "abbaye — abbey."). If the explanation contains the correct answer, the quiz is trivially self-answering — the player reads the answer in the question and clicks it. The engine now auto-blocks this template when the explanation leaks the answer; deck authors should understand why it fires.
+
+**Why:** Wiktionary's canonical explanation format names the word and its meaning in the same sentence. Up to 23% of mastery=4 questions in CEFR language decks were self-answering due to this leak (confirmed 2026-04-10 quiz audit, Pattern 4). The hit rate is highest in cognate-heavy decks (French, Czech) where the answer appears almost verbatim in the explanation.
+
+**Engine behavior (as of 2026-04-10 fix):** `explanationLeaksAnswer(fact)` checks whether `fact.explanation` contains `fact.correctAnswer` as a whole word (word-boundary, case-insensitive). If true, any template with `{explanation}` in its `questionFormat` is removed from the eligible set for that fact. The selector falls through to `synonym_pick`, `forward`, `reverse`, or `_fallback`. No deck JSON changes are needed.
+
+**How to apply:**
+1. Vocabulary deck authors: explanations in Wiktionary format ("word — meaning") are fine — the engine handles them. No rewriting needed.
+2. If authoring a custom explanation-based template that uses `{explanation}` in `questionFormat`, be aware that facts whose explanation contains the answer will never use it (they fall back). This is correct behavior.
+3. When adding a NEW template type with `{explanation}`, no code changes are needed — the eligibility check gates on `questionFormat.includes('{explanation}')` generically.
+4. If you observe unexpectedly low `definition_match` frequency in an audit dump, check the deck's explanation style. Wiktionary-format explanations will suppress it for cognates; non-leaking explanations ("a building for education") remain eligible.
+5. Run `npm run audit:quiz-engine -- --deck <id>` after assembly. Zero SELF-ANSWERING findings at mastery=4 is the target.
+
+### Anti-Pattern 7: `reading` template on already-phonetic words
+
+**Rule:** Templates whose `id` matches `/^reading(_|$)/` (currently: `reading`, `reading_pinyin`, `reading_hiragana`) ask "What is the reading of 'X'?" and use `fact.reading` as the correct answer. This is only meaningful when the target word's written form *differs* from its reading. Katakana loanwords (e.g., スーパー, レコード, アプローチ) and hiragana-only words (e.g., しかしながら, はらはら) have `fact.reading === fact.targetLanguageWord` — both fields are the same phonetic string. The reading template then produces: "What is the reading of 'スーパー'?" → correct answer: "スーパー". The answer is present in the question.
+
+**Why:** JLPT decks contain a large proportion of katakana loanwords (especially N4/N5) whose reading is identical to their written form. The 2026-04-10 quiz audit (Patterns 5 & 12) identified this as a BLOCKER. Confirmed cases: `japanese_n5` (レコード), `japanese_n4` (スーパー), `japanese_n1` (しかしながら, はらはら, アプローチ).
+
+**Engine behavior (as of 2026-04-10 fix):** `readingMatchesTargetWord(fact)` checks whether `normalize(fact.reading) === normalize(fact.targetLanguageWord)`. If true, any template whose `id` matches `/^reading(_|$)/` is removed from the eligible set for that fact. The constant `READING_TEMPLATE_PATTERN` in `questionTemplateSelector.ts` covers all current reading template ID variants. Returns `false` if either field is absent — facts without `reading` or `targetLanguageWord` are never blocked. No deck JSON changes are needed.
+
+**How to apply:**
+1. Vocabulary deck authors: no action required. The engine suppresses reading templates automatically for phonetic-form words.
+2. When authoring a new reading-type template (id starting with `reading_`), the block is automatic. No engine code changes needed.
+3. If you observe that a reading template is never selected for a given fact, verify whether `fact.reading === fact.targetLanguageWord`. If so, the suppression is intentional.
+4. For Chinese (Mandarin) pinyin templates (`reading_pinyin`), the same rule applies — hanzi words have different pinyin readings; pinyin-only entries (rare) would be blocked.
+
+### Anti-Pattern 8: Numeric distractors outside the answer domain
+
+**Rule:** Numeric distractors generated by `getNumericalDistractors()` MUST stay within the semantic domain of the correct answer. Percentages must be in `[0, 100]`. Years must be in a plausible historical range. Counts must be non-negative integers. Measurements must be positive. Producing a 138% distractor for a "what fraction of solar system mass" question is a BLOCKER — players eliminate it instantly without any knowledge.
+
+**Why:** The 2026-04-10 quiz audit found `solar_system_sun_mass_percentage` (correctAnswer `{99.86}`) producing distractors `138.52`, `120.24`, `79.89` — two of three exceed 100, impossible for a percentage. Similar issues seen in AP physics / chem decks where numeric variants ignored unit constraints.
+
+**Engine behavior (as of 2026-04-10 fix):** `detectAnswerDomain(correctAnswerStr, questionText)` in `numericalDistractorService.ts` returns `{kind: 'percentage' | 'year' | 'count' | 'measurement' | 'unknown', clamp: {min, max} | null}`. Detection signals: trailing `%` on the answer, the words "percent"/"percentage" in the question, 4-digit year shape (1000–2100), "how many" / "how much" / "count" in the question, unit suffixes (km, kg, etc.). `getNumericalDistractors()` accepts an optional `questionText` parameter (defaults to `fact.quizQuestion`) and applies the domain clamp via `applyClamp()` to every candidate variant. Out-of-range candidates are rejected and the seeded PRNG re-rolls.
+
+**How to apply:**
+1. Deck authors using `{N}` bracket numerical answers: phrase the question with a domain hint ("how many...", "what percentage of...", "in what year...") so the detector can clamp correctly.
+2. If your fact has a unit-bound answer (e.g., `{384400} km`), include the unit in the answer string — the detector recognizes common units.
+3. If you observe a numeric distractor that exceeds the domain (e.g. 138% for a percentage question), check whether the question text contains the domain keyword. If not, rephrase the question to include it.
+4. Edge case: ratios that legitimately exceed 1.0 (e.g., "ratio of A to B = 2.4") are NOT percentages — the detector requires `%` or "percent"/"percentage" wording. Bare decimals fall through to the unknown domain (no clamp).
+5. Run `npm run audit:quiz-engine -- --deck <id>` after assembly — zero NUMERIC-WEAK findings is the target.
+
+### Anti-Pattern 9: Mega-pool POOL-CONTAM (>100 facts in one pool)
+
+**Rule:** Any pool with more than 100 real facts is a mega-pool and a strong POOL-CONTAM source. Distractors drawn from such a pool cross topic/unit/period boundaries freely, letting players eliminate options by sub-field rather than by knowledge of the correct answer. **Split mega-pools by exam unit (for AP/IB/JLPT/HSK), time period (for history), or topic axis (for general knowledge).**
+
+**Why:** The 2026-04-10 quiz audit (Pattern 2) found that all 7 AP decks shipped with one or two catch-all "concept" pools spanning the entire CED scope. Examples: `ap_biology.term_definitions_long` (214 facts across all 8 units), `ap_world_history.concept_terms` (297 facts across 9 units), `ap_us_history.concept_terms` (142 facts across 9 periods). A Unit 1 question could draw distractors from Unit 8, making sub-field elimination trivial. The same pattern appears in `ancient_greece.historical_phrases_long` (87), `ancient_rome.historical_phrases` (80), and `world_war_ii.historical_events` (167). The fix landed 2026-04-10: 9 mega-pools were split into 56 unit-coherent sub-pools, reassigning 1,523 fact references.
+
+**How to apply:**
+1. **For AP / standardized-exam decks:** split by `examTags.unit` (or `Period_N` for AP US History). Use the helper script pattern: group facts by unit, create one sub-pool per unit named `<old_id>_u<N>`, merge units with <5 facts into the nearest viable bucket, point each fact's `answerTypePoolId` at its new sub-pool, remove the original mega-pool.
+2. **For history / general knowledge decks** without exam tags: split by century, region, or topical axis. Pick whichever produces the most semantically coherent buckets.
+3. **Minimum sub-pool size:** ≥5 real facts. Pad to ≥15 total with `syntheticDistractors`.
+4. **Verify after the split:** every fact's `answerTypePoolId` must reference an existing pool (no orphans). Run `node scripts/verify-all-decks.mjs` and re-run `audit-dump-samples.ts --deck <id>` to confirm POOL-CONTAM rate drops.
+5. **Detection:** `verify-all-decks.mjs` should warn whenever a knowledge-deck pool has >100 real facts. (Future Phase 5 task.)
+6. **Exception:** language-vocab pools with thousands of words are intentional — POS-separated pools are the right fix there (Anti-Pattern 5 / Anti-Pattern 6 territory), not unit-splitting.
+
+### Anti-Pattern 10: Mixed-POS vocabulary pools
+
+**Rule:** Vocabulary deck `english_meanings` pools (and any pool used by a forward/reverse template for vocab facts) MUST be split by `partOfSpeech` before deployment. A pool mixing verbs ("to swim"), nouns ("table"), adjectives ("empty"), and adverbs ("quickly") lets players eliminate distractors by part-of-speech recognition without any vocabulary knowledge (POS-TELL).
+
+**Why:** At mastery=0 (3-option quizzes), when a question asks the meaning of a verb but one distractor is a noun, the answer is narrowed to 2 choices without knowing the word. Confirmed across 14 Spanish, French, and German vocabulary decks (2026-04-10 audit, Pattern #6). 15,947 facts were reassigned.
+
+**How to apply:**
+1. After assembling a vocabulary deck, inspect the `english_meanings` pool's `factIds`. Check the `partOfSpeech` field distribution.
+2. Pre-validate POS tags BEFORE splitting: look for facts tagged "verb" whose `correctAnswer` has no "to " prefix — they may be nouns or adjectives. Common Spanish errors: `difunto` ("deceased"), `pendiente` ("pending") were both tagged "verb" but are adjectives.
+3. Split into up to 5 sub-pools: `_verbs`, `_nouns`, `_adjectives`, `_adverbs`, `_other`. Sub-pools with <5 real facts merge into `_nouns` (or the largest available).
+4. Pad each sub-pool to 15+ total (factIds + syntheticDistractors) with POS-appropriate wrong answers: verbs → "to swim", "to refuse", ...; nouns → "table", "decision", ...; adjectives → "empty", "rapid", ...; adverbs → "quickly", "rarely", ...
+5. Update each fact's `answerTypePoolId` to its new POS-specific pool ID.
+6. Remove the original `english_meanings` pool.
+7. **CRITICAL:** In the POS routing function, check `adverb` BEFORE `verb` — `'verb' in 'adverb'` is `True` in Python, so naive ordering routes adverbs into the verbs pool.
+8. Run `node scripts/verify-all-decks.mjs` — 0 failures required.
+
+### Anti-Pattern 11: Numeric facts in non-numeric pools
+
+**Rule:** Any fact whose `correctAnswer` is a bare number (integer, count, or percentage without additional text) MUST be placed in a `bracket_numbers` pool, NOT in name or label pools.
+
+**Why:** The 2026-04-10 audit found `myth_norse_sleipnir_legs` (answer "8") in `object_names` and `nasa_moonwalkers_total` (answer "12") in `launch_years`. At mastery 4, "8" appeared as a distractor for "What object did Thrym place on Freyja's lap?" — trivially eliminable because a bare number is not an object name. Similarly, duration answers ("Approximately six months") must not live in device-name pools.
+
+**How to apply:**
+1. After any pool design, grep for facts whose `correctAnswer` matches `^\d+$` or is a bare number string. Confirm they're in a `bracket_numbers` pool.
+2. Duration strings ("X weeks", "X months", "X years") belong in a `duration_answers` pool with duration-shaped synthetics.
+3. Percentage values ("75%", "~45%") belong in a `percentage_values` pool, not in year or count pools.
+4. Run `verify-all-decks.mjs` — homogeneity check #20 will flag pools mixing 1-digit numbers with multi-word names.
+
+### Anti-Pattern 12: Knowledge decks without chainThemes
+
+**Rule:** Every knowledge deck (non-vocabulary, non-grammar) MUST have a populated `chainThemes` array with ≥3 entries before deployment. Every sub-deck in the deck MUST have a `chainThemeId` field pointing to one of those themes.
+
+**Why:** The 2026-04-10 audit found 8+ knowledge decks with `chainThemes: []` despite having sub-decks with `chainThemeId` values on facts. Without `chainThemes`, the Study Temple chain mechanic has no theme definitions — the chain system falls back and players never experience the knowledge chain progression mechanic. Confirmed across `ancient_greece`, `ancient_rome`, `world_war_ii`, `greek_mythology`, `norse_mythology`, `egyptian_mythology`, `mammals_world`, `dinosaurs`, `medieval_world`.
+
+**How to apply:**
+1. When authoring a knowledge deck with sub-decks: define `chainThemes` in the same authoring pass, not after the fact.
+2. Derive themes from sub-deck names — each sub-deck maps to its most relevant chain theme.
+3. Assign `chainThemeId` on each sub-deck object (not just on individual facts).
+4. Verify: `jq '.chainThemes | length' data/decks/<name>.json` — must be ≥3.
+5. Facts already carry `chainThemeId` via their sub-deck membership; the `chainThemes` array is the lookup table that makes those IDs meaningful at runtime.
+
+### Anti-Pattern 13: Cross-Category Pool Contamination
 **What:** Facts from completely different semantic categories placed in the same answer pool. Players can instantly eliminate wrong answers not because they know the answer, but because the distractors are from a different *type* of thing.
 **Why it happens:** Pool names are too broad ("invention_details_long", "genre_format_names", "platform_console_names") and any fact vaguely matching the broad name gets added without checking semantic compatibility with existing pool members.
 **Impact:** Quiz becomes trivially easy — "analog stick" is obviously not "King of Comics" or "$15 billion+". The educational value is zero because no knowledge is required to eliminate distractors.
@@ -186,5 +301,5 @@ npm run build:curated
 - `inv_3_barcode_patent` ("Who patented barcode?") in pool with descriptions like "Intake, Compression, Power/Combustion, Exhaust" → name questions and description answers are always eliminable from each other
 - `pc_5_netflix_platform` ("Which streaming service?") in pool with game consoles like "Game Boy", "PlayStation 2" → consoles are obviously not streaming services
 - `pc_1_n64_innovation` ("What did N64 controller include?") in pool with "King of Comics", "$15 billion+" → hardware innovation not in same category as nickname or market size
-**Prevention:** After defining every pool, apply the semantic homogeneity test: "Would a student with NO knowledge of the subject still be able to eliminate some distractors purely by category type?" If yes, split the pool. Check #26 in `verify-all-decks.mjs` provides digit-pattern and ALL-CAPS heuristics as signals.
+**Prevention:** After defining every pool, apply the semantic homogeneity test: "Would a student with NO knowledge of the subject still be able to eliminate some distractors purely by category type?" If yes, split the pool. Check #33 in `verify-all-decks.mjs` provides digit-pattern and ALL-CAPS heuristics as signals.
 **Fix script:** `node scripts/fix-pool-heterogeneity.mjs` (splits on length ratio); manual semantic splits required for cross-category contamination

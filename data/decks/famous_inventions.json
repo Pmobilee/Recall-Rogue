@@ -498,7 +498,7 @@
       "answerTypePoolId": "person_inventor_names",
       "difficulty": 1,
       "funScore": 6,
-      "quizQuestion": "Who introduced the device process for mass-producing cheap steel in 1855?",
+      "quizQuestion": "Who introduced the Bessemer process for mass-producing cheap steel in 1855?",
       "explanation": "Henry Bessemer introduced the Bessemer process in 1855, making mass production of cheap steel possible and replacing wrought iron for most purposes.",
       "visualDescription": "",
       "sourceName": "Wikipedia — Steel",
@@ -1516,7 +1516,7 @@
       "answerTypePoolId": "invention_names_short",
       "difficulty": 2,
       "funScore": 6,
-      "quizQuestion": "Which London this invention was the first to be lit entirely by electricity in 1881, using Swan bulbs?",
+      "quizQuestion": "Which London theatre was the first to be lit entirely by electricity in 1881, using Swan bulbs?",
       "explanation": "The Savoy Theatre in London (1881) was the first theatre lit entirely by electricity, using Swan bulbs. Edison's real breakthrough was developing not just the bulb but an entire integrated electrical system.",
       "visualDescription": "",
       "sourceName": "Wikipedia — Incandescent light bulb",
@@ -6112,7 +6112,7 @@
       "correctAnswer": "Approximately six months",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "invention_names_long",
+      "answerTypePoolId": "duration_answers",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "How long after Jack Kilby's first IC demonstration did Robert Noyce develop his practical monolithic IC chip?",
@@ -6365,7 +6365,6 @@
         "inv_3_gps_accuracy",
         "inv_4_pat_wiper_patent",
         "inv_0_wheel_oldest",
-        "inv_3_ic_months",
         "inv_2_nylon_toothbrush"
       ],
       "label": "invention_names (long)"
@@ -6617,6 +6616,29 @@
         "Thomas Edison and Joseph Wilson Swan",
         "James Prescott Joule and Lord Kelvin"
       ]
+    },
+    {
+      "id": "duration_answers",
+      "factIds": [
+        "inv_3_ic_months"
+      ],
+      "syntheticDistractors": [
+        "Several months",
+        "About one year",
+        "Two to three years",
+        "Three months",
+        "Less than a month",
+        "Over five years",
+        "About two weeks",
+        "Nearly a decade",
+        "Approximately one year",
+        "Several years",
+        "About six weeks",
+        "Just under a year",
+        "More than two years",
+        "Roughly three months"
+      ],
+      "minimumSize": 1
     }
   ],
   "synonymGroups": [],

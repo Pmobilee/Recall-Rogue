@@ -5689,5 +5689,37 @@
         "mamm_4_cons_chimp_pop"
       ]
     }
+  ],
+  "chainThemes": [
+    {
+      "id": 0,
+      "name": "Remarkable Mammals",
+      "color": "#4682B4",
+      "description": "Fascinating facts about iconic mammal species worldwide"
+    },
+    {
+      "id": 1,
+      "name": "Record Breakers",
+      "color": "#FFD700",
+      "description": "Extremes of size, speed, strength, and longevity in mammals"
+    },
+    {
+      "id": 2,
+      "name": "Taxonomy & Biology",
+      "color": "#228B22",
+      "description": "Mammal classification, anatomy, and biological adaptations"
+    },
+    {
+      "id": 3,
+      "name": "Behavior & Intelligence",
+      "color": "#8B0000",
+      "description": "Social structures, tool use, communication, and cognition"
+    },
+    {
+      "id": 4,
+      "name": "Conservation & Endangered Species",
+      "color": "#FF4500",
+      "description": "Threatened species, extinction causes, and conservation efforts"
+    }
   ]
 }

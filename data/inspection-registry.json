@@ -1824,7 +1824,7 @@
         "id": "bulwark",
         "name": "Bulwark",
         "category": "shield",
-        "description": "QP: 18 block. CC: 36 block then EXHAUST. CW: 10 block.",
+        "description": "QP: 9 block. CC: 16 block then EXHAUST. CW: 5 block.",
         "sourceFile": "src/data/mechanics.ts",
         "status": "active",
         "mechanicDate": "not_checked",
@@ -10642,7 +10642,12 @@
         "lastQuizAudit": "2026-04-10",
         "lastLLMPlaytest": "not_checked",
         "lastTriviaBridge": "2026-04-10",
-        "inProgress": null,
+        "inProgress": {
+          "agentId": "fix-this-cluster",
+          "testType": "lastStructuralVerify",
+          "startedAt": "2026-04-10T07:21:17.658Z",
+          "expectedCompleteBy": "2026-04-10T11:21:17.658Z"
+        },
         "lastInspected": "2026-04-10",
         "confidenceLevel": "not_checked",
         "notes": ""
@@ -10803,13 +10808,7 @@
         "lastQuizAudit": "2026-04-10",
         "lastLLMPlaytest": "not_checked",
         "lastTriviaBridge": "2026-04-10",
-        "inProgress": {
-          "agentId": "llm-playtest",
-          "testType": "llm-playtest",
-          "startedAt": "2026-04-10T02:42:12.113Z",
-          "expectedCompleteBy": "2026-04-10T04:42:12.113Z",
-          "batchId": "BATCH-2026-04-10-002-docker"
-        },
+        "inProgress": null,
         "lastInspected": "2026-04-10",
         "confidenceLevel": "not_checked",
         "notes": ""

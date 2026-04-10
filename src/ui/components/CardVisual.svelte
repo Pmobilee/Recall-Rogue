@@ -27,7 +27,7 @@
   import { getCardArtUrl } from '../utils/cardArtManifest'
   import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
   import { getChainColor } from '../../services/chainVisuals'
-  import { getMasteryStats } from '../../services/cardUpgradeService'
+  import { getMasteryStats, getEffectiveApCost } from '../../services/cardUpgradeService'
   import { stretchText } from '../utils/stretchText'
   import { CHARGE_CORRECT_MULTIPLIER } from '../../data/balance'
   import { getMechanicDefinition } from '../../data/mechanics'
@@ -69,7 +69,7 @@
 
   /** Compute the AP cost to display (caller may override). */
   let apDisplay = $derived(
-    displayedApCost !== undefined ? displayedApCost : (card.apCost ?? 1)
+    displayedApCost !== undefined ? displayedApCost : getEffectiveApCost(card)
   )
 
   /** Compute effect value from mastery stats when not overridden by caller. */

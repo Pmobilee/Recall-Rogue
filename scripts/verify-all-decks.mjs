@@ -318,7 +318,15 @@ function getPoolDistractors(fact, deck, count = 3) {
 }
 
 // ---------------------------------------------------------------------------
-// Issue checking — 26 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks + 1 pool-homogeneity + 2 new answer-quality checks + 1 brace-leak check + 1 grammar-scar check + 2 semantic-category heuristic checks)
+// Issue checking — 33 checks total
+// Checks #1-#22: original structural + quality + answer-quality
+// Checks #23-#30 (Phase 5, merged from main): mega_pool_size, empty_chain_themes,
+//   definition_match_explanation_leak, placeholder_leak, reverse_template_pool_contam,
+//   reading_on_phonetic, numeric_domain_violation, chinese_sense_mismatch
+// Checks #31-#33 (BATCH-2026-04-10-003-fullsweep additions):
+//   #31 brace-leak in syntheticDistractors (HARD FAIL)
+//   #32 grammar-scar pattern catalog (HARD FAIL)
+//   #33 semantic-category heuristics (WARN)
 // ---------------------------------------------------------------------------
 
 /**
@@ -612,43 +620,66 @@ function verifyDeck(deckId, deck) {
     }
   }
 
-  // Check #24: raw brace characters in syntheticDistractors (HARD FAIL — bracket-notation leak)
-  // Detects distractors formatted as {N} bracket-notation tokens (e.g. '{7}', '{1990}') that
-  // would display literally in the quiz UI instead of rendering as a number.
-  // Fill-in-blank {___} tokens are excluded (legitimate quiz syntax in quizQuestion stems only).
-  // This check fires even if the pool has homogeneityExempt: true.
-  // 2026-04-10: Added after 89 {N} distractors leaked into 7 decks.
-  for (const pool24 of (deck.answerTypePools || [])) {
-    for (const synth of (pool24.syntheticDistractors || [])) {
-      if (typeof synth !== 'string') continue;
-      if (synth === '{___}') continue; // fill-in-blank token — not a real distractor
-      if (/[{}]/.test(synth)) {
-        addDeckIssue('Check #24 FAIL: pool "' + pool24.id + '" syntheticDistractor contains raw brace — bracket-notation leak: ' + JSON.stringify(synth) + ' — strip this distractor and fix the generator');
+
+  // Check #23 WARNING: mega_pool_size — knowledge deck pools with >100 factIds
+  // Large pools exceed the "7±2 mental bandwidth" design principle and likely indicate
+  // a pool that should be split by sub-topic. Vocab pools are exempt (they are supposed to be large).
+  if (!isVocab) {
+    for (const pool23 of (deck.answerTypePools || [])) {
+      const ids23 = poolFactIds(pool23);
+      if (ids23.length > 100) {
+        factWarnings.push({ index: 0, factId: pool23.id, msg: `mega_pool_size: pool "${pool23.id}" has ${ids23.length} factIds (>100) — consider splitting by sub-topic` });
       }
     }
   }
 
-  // Check #25: grammar scar patterns in quizQuestion fields (HARD FAIL)
+  // Check #24 WARNING: empty_chain_themes — knowledge decks must define chainThemes
+  // Decks without chain themes can't drive the themed chain gameplay that is central to
+  // the Study Temple mode. Vocab and image decks are exempt.
+  if (!isVocab && !(deck.id === 'world_flags')) {
+    const themes24 = deck.chainThemes;
+    if (!Array.isArray(themes24) || themes24.length === 0) {
+      factWarnings.push({ index: 0, factId: '_deck', msg: `empty_chain_themes: knowledge deck "${deck.id || deckId}" has no chainThemes defined` });
+    }
+  }
+
+  // Check #31: raw brace characters in syntheticDistractors (HARD FAIL — bracket-notation leak)
+  // Detects distractors formatted as {N} bracket-notation tokens (e.g. '{7}', '{1990}') that
+  // would display literally in the quiz UI instead of rendering as a number.
+  // Fill-in-blank {___} tokens are excluded (legitimate quiz syntax in quizQuestion stems only).
+  // This check fires even if the pool has homogeneityExempt: true.
+  // 2026-04-10: Added after 89 {N} distractors leaked into 7 decks (originally Check #24 in the
+  //             sweep branch; renumbered to #31 on merge with main's Phase 5 checks).
+  for (const pool31 of (deck.answerTypePools || [])) {
+    for (const synth of (pool31.syntheticDistractors || [])) {
+      if (typeof synth !== 'string') continue;
+      if (synth === '{___}') continue; // fill-in-blank token — not a real distractor
+      if (/[{}]/.test(synth)) {
+        addDeckIssue('Check #31 FAIL: pool "' + pool31.id + '" syntheticDistractor contains raw brace — bracket-notation leak: ' + JSON.stringify(synth) + ' — strip this distractor and fix the generator');
+      }
+    }
+  }
+
+  // Check #32: grammar scar patterns in quizQuestion fields (HARD FAIL)
   // Detects broken English patterns produced by naive batch word-replacement.
   // Patterns are maintained in scripts/content-pipeline/grammar-scar-patterns.json.
   // 2026-04-10: Added after "a the concept", "a the reactant" scars found in 6 facts across 3 decks.
   // This is the SECOND occurrence — first was 2026-04-09. The catalog ensures future patterns
-  // are machine-checkable rather than relying on manual grep.
+  // are machine-checkable rather than relying on manual grep. (originally Check #25; renumbered to #32)
   if (GRAMMAR_SCAR_PATTERNS.length > 0) {
-    for (const fact25 of facts) {
-      const q = fact25.quizQuestion || '';
+    for (const fact32 of facts) {
+      const q = fact32.quizQuestion || '';
       if (!q) continue;
       for (const scar of GRAMMAR_SCAR_PATTERNS) {
         if (q.includes(scar.pattern)) {
-          addDeckIssue('Check #25 FAIL: grammar scar "' + scar.id + '" in fact "' + fact25.id + '" quizQuestion — pattern "' + scar.pattern + '" — ' + scar.description + ' — rewrite the question stem instead of using naive replacement');
+          addDeckIssue('Check #32 FAIL: grammar scar "' + scar.id + '" in fact "' + fact32.id + '" quizQuestion — pattern "' + scar.pattern + '" — ' + scar.description + ' — rewrite the question stem instead of using naive replacement');
           break; // one error per fact is sufficient
         }
       }
     }
   }
 
-
-  // Check #26: semantic-category heuristics — capitalization mismatch + digits-in-some-but-not-others
+  // Check #33: semantic-category heuristics — capitalization mismatch + digits-in-some-but-not-others
   // These are additional pool-homogeneity signals that detect cross-category contamination.
   // Pattern 1: Capitalization mismatch — some answers are ALL_CAPS or Title_Case while others are lowercase.
   //            Detects pools mixing product names, abbreviations, and descriptions.
@@ -656,17 +687,18 @@ function verifyDeck(deckId, deck) {
   //            Detects pools mixing "Who" answers (names) with "When" answers (years/dates).
   // 2026-04-10: Added after barcode (name in description pool), netflix (streaming in console pool),
   //             and n64 (hardware innovation in mixed category pool) were found in wrong pools.
+  //             (originally Check #26; renumbered to #33 on merge with main's Phase 5 checks)
   // Reference: .claude/rules/deck-quality.md §"Pool Design Rules — MANDATORY"
   if (!isVocab) {
-    const factById26 = new Map((deck.facts || []).map(f => [f.id, f]));
-    const FULL_BRACKET_RE26 = /^\{(\d[\d,]*\.?\d*)\}$/;
-    for (const pool26 of (deck.answerTypePools || [])) {
-      if (pool26.homogeneityExempt === true) continue;
+    const factById33 = new Map((deck.facts || []).map(f => [f.id, f]));
+    const FULL_BRACKET_RE33 = /^\{(\d[\d,]*\.?\d*)\}$/;
+    for (const pool33 of (deck.answerTypePools || [])) {
+      if (pool33.homogeneityExempt === true) continue;
       const answers = [];
-      for (const fid of poolFactIds(pool26)) {
-        const f = factById26.get(fid);
+      for (const fid of poolFactIds(pool33)) {
+        const f = factById33.get(fid);
         if (!f || !f.correctAnswer) continue;
-        if (FULL_BRACKET_RE26.test(f.correctAnswer)) continue;
+        if (FULL_BRACKET_RE33.test(f.correctAnswer)) continue;
         answers.push(f.correctAnswer);
       }
       if (answers.length < 3) continue; // too few to detect patterns meaningfully
@@ -678,8 +710,8 @@ function verifyDeck(deckId, deck) {
       if (digitRatio > 0.1 && digitRatio < 0.9 && hasDigits.length >= 1 && noDigits.length >= 1) {
         factWarnings.push({
           index: 0,
-          factId: pool26.id,
-          msg: 'pool-semantic WARN: pool "' + pool26.id + '" mixes digit-containing answers (' + hasDigits.length + ', e.g. "' + hasDigits[0].slice(0,30) + '") with non-digit answers (' + noDigits.length + ', e.g. "' + noDigits[0].slice(0,30) + '") — possible date/name contamination. Split pool by answer category.',
+          factId: pool33.id,
+          msg: 'pool-semantic WARN: pool "' + pool33.id + '" mixes digit-containing answers (' + hasDigits.length + ', e.g. "' + hasDigits[0].slice(0,30) + '") with non-digit answers (' + noDigits.length + ', e.g. "' + noDigits[0].slice(0,30) + '") — possible date/name contamination. Split pool by answer category.',
         });
       }
 
@@ -690,8 +722,8 @@ function verifyDeck(deckId, deck) {
       if (capsRatio > 0.1 && capsRatio < 0.9 && allCaps.length >= 1 && notAllCaps.length >= 1) {
         factWarnings.push({
           index: 0,
-          factId: pool26.id,
-          msg: 'pool-semantic WARN: pool "' + pool26.id + '" mixes ALL_CAPS abbreviations (' + allCaps.length + ', e.g. "' + allCaps[0].slice(0,30) + '") with regular answers — possible acronym/term contamination. Consider splitting into abbreviation pool and full-name pool.',
+          factId: pool33.id,
+          msg: 'pool-semantic WARN: pool "' + pool33.id + '" mixes ALL_CAPS abbreviations (' + allCaps.length + ', e.g. "' + allCaps[0].slice(0,30) + '") with regular answers — possible acronym/term contamination. Consider splitting into abbreviation pool and full-name pool.',
         });
       }
     }
@@ -825,6 +857,112 @@ function verifyDeck(deckId, deck) {
         const variantType = classifyAnswerType(variantAnswer);
         if (parentType !== 'other' && parentType !== 'unknown' && variantType !== 'other' && variantType !== 'unknown' && parentType !== variantType) {
           factWarnings.push({ index: i + 1, factId: fact.id, msg: `variant #${vi} answer type mismatch: parent="${(fact.correctAnswer || '').slice(0, 30)}" (${parentType}) vs variant="${variantAnswer.slice(0, 30)}" (${variantType}) — needs own distractors` });
+        }
+      }
+    }
+
+    // Check #25 WARNING: definition_match_explanation_leak
+    // If a template's questionFormat uses {explanation}, and explanation contains the correctAnswer,
+    // the question would give away the answer. Structural heuristic (engine fix is already in place).
+    if (!isVocab && fact.explanation && fact.correctAnswer) {
+      const hasExplanationTemplate = (deck.questionTemplates || []).some(t =>
+        t.answerPoolId === fact.answerTypePoolId && /\{explanation\}/i.test(t.questionFormat || '')
+      );
+      if (hasExplanationTemplate) {
+        const expl25 = fact.explanation.toLowerCase();
+        const ans25 = (fact.correctAnswer || '').toLowerCase().replace(/[{}]/g, '').trim();
+        // word-boundary check: does the answer text appear as a word in the explanation?
+        if (ans25.length >= 3) {
+          const re25 = new RegExp('\\b' + ans25.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
+          if (re25.test(fact.explanation)) {
+            factWarnings.push({ index: i + 1, factId: fact.id, msg: `definition_match_explanation_leak: explanation for fact "${fact.id}" contains correctAnswer "${fact.correctAnswer.slice(0, 40)}" — explanation-template would reveal the answer` });
+          }
+        }
+      }
+    }
+
+    // Check #26 WARNING: placeholder_leak — rendered question contains "this" after a capital word
+    // Pattern: "Joseph this" / "Federal this" — a distractor placeholder that wasn't resolved.
+    // Heuristic: (?<=[A-Z][a-z]+ )this\b captures "Joseph this" but not "this is..."
+    if (!isVocab) {
+      const q26 = fact.quizQuestion || '';
+      // Detect the precise anti-pattern: capital-started word immediately followed by "this"
+      const capitalWordThisRe = /[A-Z][a-z]+\s+this/;
+      if (capitalWordThisRe.test(q26)) {
+        factWarnings.push({ index: i + 1, factId: fact.id, msg: `placeholder_leak: quizQuestion contains "capital-word this" pattern in "${q26.slice(0, 80)}" — unreplaced placeholder` });
+      }
+      // Also catch "anatomical structure \w+" — common in anatomy deck template leaks
+      if (/anatomical structure\s+\w+/.test(q26)) {
+        factWarnings.push({ index: i + 1, factId: fact.id, msg: `placeholder_leak: quizQuestion contains "anatomical structure" template leak in "${q26.slice(0, 80)}"` });
+      }
+    }
+
+    // Check #27 WARNING: reverse_template_pool_contam
+    // A reverse template (showing target-language word, asking for English meaning) should NOT
+    // use the english_meanings pool for distractors — that would show English words as distractors
+    // when the correct answer is ALSO an English word (double English leak).
+    // Heuristic: if the fact's pool matches "english_meanings" and a template with "reverse" id
+    // exists that uses this pool, warn.
+    if (isVocab) {
+      const poolId27 = fact.answerTypePoolId || '';
+      if (poolId27.includes('english') || poolId27.includes('meaning')) {
+        const reverseTemplate = (deck.questionTemplates || []).find(t =>
+          (t.id || '').toLowerCase().includes('reverse') &&
+          (t.answerPoolId === poolId27)
+        );
+        if (reverseTemplate) {
+          factWarnings.push({ index: i + 1, factId: fact.id, msg: `reverse_template_pool_contam: reverse template "${reverseTemplate.id}" uses english pool "${poolId27}" — distractors will be English when correct answer is also English` });
+        }
+      }
+    }
+
+    // Check #28 WARNING: reading_on_phonetic
+    // If a fact's targetLanguageWord and reading are identical (e.g., hiragana word has
+    // reading = itself), applying a reading quiz template is pointless — it just asks
+    // "what's the reading?" with the answer being the word itself.
+    // Only applies to Japanese decks (reading field meaningful there).
+    if (fact.targetLanguageWord && fact.reading) {
+      const norm28 = (s) => s.trim().replace(/\s+/g, '');
+      if (norm28(fact.reading) === norm28(fact.targetLanguageWord)) {
+        const readingTemplate = (deck.questionTemplates || []).some(t =>
+          (t.id || '').toLowerCase().includes('reading') &&
+          t.answerPoolId === fact.answerTypePoolId
+        );
+        if (readingTemplate) {
+          factWarnings.push({ index: i + 1, factId: fact.id, msg: `reading_on_phonetic: fact "${fact.id}" has reading === targetLanguageWord ("${fact.reading.slice(0, 20)}") — reading template is trivial` });
+        }
+      }
+    }
+
+    // Check #29 WARNING: numeric_domain_violation
+    // For percentage-type questions (question mentions "percent" or answer ends in "%"),
+    // flag if any pre-generated distractor is > 100 (impossible percentage).
+    if (!isVocab) {
+      const q29 = (fact.quizQuestion || '').toLowerCase();
+      const ans29 = fact.correctAnswer || '';
+      const isPercentQ = q29.includes('percent') || q29.includes('%') || ans29.endsWith('%');
+      if (isPercentQ && Array.isArray(fact.distractors)) {
+        for (const d29 of fact.distractors) {
+          const dNum = parseFloat(String(d29).replace(/%$/, ''));
+          if (!isNaN(dNum) && dNum > 100) {
+            factWarnings.push({ index: i + 1, factId: fact.id, msg: `numeric_domain_violation: percentage fact "${fact.id}" has distractor "${d29}" > 100%` });
+            break;
+          }
+        }
+      }
+    }
+
+    // Check #30 WARNING: chinese_sense_mismatch (HSK decks)
+    // For chinese_hsk* decks, validate that the correctAnswer is one of the senses
+    // listed in the explanation. Heuristic: tokenize correctAnswer on [;,/], check
+    // if any token (len ≥ 3) is a substring of explanation. If NO match → suspect mismatch.
+    if (!isVocab && deckId.startsWith('chinese_hsk') && fact.explanation && fact.correctAnswer) {
+      const senses30 = fact.correctAnswer.split(/[;,/]/).map(s => s.trim()).filter(s => s.length >= 3);
+      if (senses30.length > 0) {
+        const expl30 = fact.explanation.toLowerCase();
+        const anyMatch = senses30.some(sense => expl30.includes(sense.toLowerCase()));
+        if (!anyMatch) {
+          factWarnings.push({ index: i + 1, factId: fact.id, msg: `chinese_sense_mismatch: correctAnswer senses [${senses30.slice(0, 3).join(', ')}] not found in explanation — possible wrong sense` });
         }
       }
     }

@@ -9,8 +9,9 @@
 - Grep for known broken patterns: "the this", "a this", "which this", "[Adjective] this", standalone "this" as noun
 - Verify grammar reads naturally as proper English
 - If >5% of samples are broken, reject the batch and rephrase individually
-- **After committing any batch rewrite, run `node scripts/verify-all-decks.mjs`** — Check #25 is a HARD FAIL on grammar scar patterns from `scripts/content-pipeline/grammar-scar-patterns.json`. This catches double articles ("a the", "the the"), hyphenated placeholders ("-the concept"), and other specific broken forms that manual sampling can miss. Manual sampling + automated check are BOTH required.
+- **After committing any batch rewrite, run `node scripts/verify-all-decks.mjs`** — Check #32 is a HARD FAIL on grammar scar patterns from `scripts/content-pipeline/grammar-scar-patterns.json`. This catches double articles ("a the", "the the"), hyphenated placeholders ("-the concept"), and other specific broken forms that manual sampling can miss. Manual sampling + automated check are BOTH required.
 - To add a new grammar scar pattern: append to `scripts/content-pipeline/grammar-scar-patterns.json`. Patterns must be specific enough to avoid false positives — see the `_note` field in that file for guidance.
+- Examples of placeholder leaks caught by sampling: "Joseph This" → should be "Joseph Haydn", "Federal this" → should be "Federal Reserve", "device process" → should be "Bessemer process".
 
 ## Template-literal Audit for Programmatic Distractors (added 2026-04-10)
 
@@ -44,7 +45,7 @@ const distractor = `{${numericValue}}`
 const distractor = String(numericValue)
 ```
 
-**Detection is also enforced by `verify-all-decks.mjs` Check #24** — any `syntheticDistractor` containing `{` or `}` causes a HARD FAIL with the pool ID and offending string.
+**Detection is also enforced by `verify-all-decks.mjs` Check #31** — any `syntheticDistractor` containing `{` or `}` causes a HARD FAIL with the pool ID and offending string.
 
 ## Curriculum-Sourced Scope — For Educational Decks
 
@@ -168,3 +169,27 @@ npm run build            # Production build (includes both steps above)
 Key scripts: `scripts/build-curated-db.mjs` (JSON→SQLite), `scripts/obfuscate-db.mjs` (XOR obfuscation). Runtime decode: `src/services/dbDecoder.ts`.
 
 **What is NOT shipped:** `data/decks/*.json` (repo only), `data/seed-pack.json` (repo only).
+
+## CC-CEDICT Sense Alignment — MANDATORY for Chinese Decks
+
+**When ingesting from CC-CEDICT, the `explanation` field MUST come from the SAME sense cluster as the `correctAnswer`.**
+
+CC-CEDICT has multiple headwords per simplified character (different tones/readings). The answer pipeline (`get_usable_meaning()`) picks the quiz answer from one sense; the explanation builder MUST reference that same sense — not a different reading's meaning cluster.
+
+### Validation step (run after every CC-CEDICT ingest):
+```python
+import json, re
+d = json.load(open('data/decks/chinese_hsk6.json'))
+suspects = []
+for f in d['facts']:
+    ans = f.get('correctAnswer', '').lower()
+    exp = f.get('explanation', '').lower()
+    tokens = [t.strip() for t in re.split(r'[;,/]', ans) if len(t.strip()) >= 4]
+    if tokens and not any(t in exp for t in tokens):
+        suspects.append(f['id'])
+print(f'{len(suspects)} suspects')  # Target: <20
+```
+
+If >50 suspects: pipeline bug — fix before shipping. If pipeline fix is deferred: set `explanation` to `"Multiple meanings exist; see dictionary entry for \"<char>\"."` as honest placeholder. **Never ship wrong-sense explanations** — they actively teach incorrect information.
+
+**Root cause of 2026-04-10 HSK6 incident:** 356 facts had mismatched sense (e.g., 作 answer="to do; to make" but explanation described "worker"). Full post-mortem in `docs/gotchas.md`.

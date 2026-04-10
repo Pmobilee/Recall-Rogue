@@ -1109,7 +1109,7 @@
         "12"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "launch_years",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -7260,7 +7260,6 @@
       "label": "Launch Years",
       "answerFormat": "number",
       "factIds": [
-        "nasa_moonwalkers_total",
         "nasa_voyager2_interstellar",
         "nasa_hubble_launch_year",
         "nasa_apollo11_year",
@@ -7294,6 +7293,13 @@
         "Saturn V",
         "Titan II"
       ]
+    },
+    {
+      "id": "bracket_numbers",
+      "factIds": [
+        "nasa_moonwalkers_total"
+      ],
+      "syntheticDistractors": []
     }
   ],
   "synonymGroups": [

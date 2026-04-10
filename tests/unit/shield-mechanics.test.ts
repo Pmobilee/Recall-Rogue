@@ -186,8 +186,8 @@ describe('emergency mechanic (Phase 1 shield)', () => {
 });
 
 // ── 4. fortify (Entrench) — gain block based on current block ─────────────────
-// MASTERY_STAT_TABLES L0: qpValue=4; mechanic.quickPlayValue=6 → masteryBonus=-2
-// QP finalValue=4, CC finalValue=round((6+(-2))*1.50)=round(6)=6, CW finalValue=max(0,4+(-2))=2
+// MASTERY_STAT_TABLES L0: qpValue=5; mechanic.quickPlayValue=6 → masteryBonus=-1 — bumped 4→5 (L0 balance overhaul 2026-04-10)
+// QP finalValue=5, CC finalValue=round((6+(-1))*1.50)=round(7.5)=8, CW finalValue=max(0,4+(-1))=3
 // Resolver: QP shieldApplied=floor(currentBlock*0.5) — finalValue NOT added on QP
 //           CC shieldApplied=floor(currentBlock*0.75)+finalValue — finalValue added only on CC
 //           CW shieldApplied=floor(currentBlock*0.25) — finalValue NOT added on CW
@@ -199,9 +199,9 @@ describe('fortify mechanic (Entrench, Phase 1 shield)', () => {
       expect(result.shieldApplied).toBe(0);
     });
 
-    it('charge_correct: 6 shield (0.75×0 + finalValue=6)', () => {
+    it('charge_correct: 8 shield (0.75×0 + finalValue=8)', () => {
       const result = resolve('fortify', 'charge_correct', { shield: 0 });
-      expect(result.shieldApplied).toBe(6);
+      expect(result.shieldApplied).toBe(8);
     });
 
     it('charge_wrong: 0 shield (0.25×0 — no finalValue added on CW)', () => {
@@ -216,9 +216,9 @@ describe('fortify mechanic (Entrench, Phase 1 shield)', () => {
       expect(result.shieldApplied).toBe(10);
     });
 
-    it('charge_correct: 21 shield (floor(20*0.75)=15 + finalValue=6)', () => {
+    it('charge_correct: 23 shield (floor(20*0.75)=15 + finalValue=8)', () => {
       const result = resolve('fortify', 'charge_correct', { shield: 20 });
-      expect(result.shieldApplied).toBe(21);
+      expect(result.shieldApplied).toBe(23);
     });
 
     it('charge_wrong: 5 shield (floor(20*0.25)=5)', () => {
@@ -273,45 +273,45 @@ describe('brace mechanic (Phase 1 shield)', () => {
 });
 
 // ── 6. overheal — double block below 60% HP ───────────────────────────────────
-// MASTERY_STAT_TABLES L0: qpValue=5; mechanic.quickPlayValue=5 → masteryBonus=0
-// QP finalValue=5, CC finalValue=round(5*1.50)=8 (round(7.5)=8), CW finalValue=max(0,4+0)=4
+// MASTERY_STAT_TABLES L0: qpValue=6; mechanic.quickPlayValue=5 → masteryBonus=+1 — bumped 5→6 (L0 balance overhaul 2026-04-10)
+// QP finalValue=6, CC finalValue=round(6*1.50)=9, CW finalValue=max(0,4+1)=5
 // Resolver: bonusMultiplier = hpPercent < 0.6 ? 2.0 : 1.0; shieldApplied=round(finalValue*bonusMult)
 
 describe('overheal mechanic (Phase 1 shield)', () => {
-  it('quick: 5 shield at full HP (no bonus)', () => {
+  it('quick: 6 shield at full HP (no bonus)', () => {
     const result = resolve('overheal', 'quick', { hp: 80, maxHP: 80 });
+    expect(result.shieldApplied).toBe(6);
+  });
+
+  it('quick: 12 shield below 60% HP (doubles)', () => {
+    const result = resolve('overheal', 'quick', { hp: 40, maxHP: 100 });
+    expect(result.shieldApplied).toBe(12);
+  });
+
+  it('charge_correct: 9 shield at full HP', () => {
+    const result = resolve('overheal', 'charge_correct', { hp: 80, maxHP: 80 });
+    expect(result.shieldApplied).toBe(9);
+  });
+
+  it('charge_correct: 18 shield below 60% HP (doubles CC value)', () => {
+    const result = resolve('overheal', 'charge_correct', { hp: 40, maxHP: 100 });
+    expect(result.shieldApplied).toBe(18);
+  });
+
+  it('charge_wrong: 5 shield at full HP (chargeWrongValue=4 + masteryBonus=+1 = 5)', () => {
+    const result = resolve('overheal', 'charge_wrong', { hp: 80, maxHP: 80 });
     expect(result.shieldApplied).toBe(5);
   });
 
-  it('quick: 10 shield below 60% HP (doubles)', () => {
-    const result = resolve('overheal', 'quick', { hp: 40, maxHP: 100 });
-    expect(result.shieldApplied).toBe(10);
-  });
-
-  it('charge_correct: 8 shield at full HP', () => {
-    const result = resolve('overheal', 'charge_correct', { hp: 80, maxHP: 80 });
-    expect(result.shieldApplied).toBe(8);
-  });
-
-  it('charge_correct: 16 shield below 60% HP (doubles CC value)', () => {
-    const result = resolve('overheal', 'charge_correct', { hp: 40, maxHP: 100 });
-    expect(result.shieldApplied).toBe(16);
-  });
-
-  it('charge_wrong: 4 shield at full HP (chargeWrongValue=4)', () => {
-    const result = resolve('overheal', 'charge_wrong', { hp: 80, maxHP: 80 });
-    expect(result.shieldApplied).toBe(4);
-  });
-
-  it('charge_wrong: 8 shield below 60% HP (doubles CW value)', () => {
+  it('charge_wrong: 10 shield below 60% HP (doubles CW value)', () => {
     const result = resolve('overheal', 'charge_wrong', { hp: 40, maxHP: 100 });
-    expect(result.shieldApplied).toBe(8);
+    expect(result.shieldApplied).toBe(10);
   });
 
   it('at exactly 60% HP: does NOT double (threshold is strictly <0.6)', () => {
     // 60 HP / 100 maxHP = 0.60 — not < 0.6
     const result = resolve('overheal', 'quick', { hp: 60, maxHP: 100 });
-    expect(result.shieldApplied).toBe(5);
+    expect(result.shieldApplied).toBe(6);
   });
 });
 
@@ -490,5 +490,63 @@ describe('shield mechanics — cross-mechanic sanity checks', () => {
       expect(mechanic, `mechanic '${id}' not found`).toBeDefined();
       expect(mechanic!.type).toBe('shield');
     }
+  });
+});
+
+// ── Mastery tag wiring: burnout_no_exhaust (burnout_shield L5) ────────────────
+
+describe('burnout_shield — burnout_no_exhaust tag (L5)', () => {
+  it('L4 CC: exhausts normally (no burnout_no_exhaust tag yet)', () => {
+    const result = resolve('burnout_shield', 'charge_correct', undefined, undefined, { masteryLevel: 4 });
+    expect(result.exhaustOnResolve).toBe(true);
+  });
+
+  it('L5 CC: does NOT exhaust (burnout_no_exhaust tag active)', () => {
+    const result = resolve('burnout_shield', 'charge_correct', undefined, undefined, { masteryLevel: 5 });
+    expect(result.exhaustOnResolve).toBeFalsy();
+  });
+
+  it('L5 QP: still does not exhaust (tag only suppresses existing CC exhaust)', () => {
+    const result = resolve('burnout_shield', 'quick', undefined, undefined, { masteryLevel: 5 });
+    expect(result.exhaustOnResolve).toBeFalsy();
+  });
+
+  it('L5 CW: still does not exhaust', () => {
+    const result = resolve('burnout_shield', 'charge_wrong', undefined, undefined, { masteryLevel: 5 });
+    expect(result.exhaustOnResolve).toBeFalsy();
+  });
+
+  it('L5 CC: still applies shield (tag only removes exhaust, not the shield)', () => {
+    const result = resolve('burnout_shield', 'charge_correct', undefined, undefined, { masteryLevel: 5 });
+    expect(result.shieldApplied).toBeGreaterThan(0);
+  });
+});
+
+// ── Mastery tag wiring: knowledge_ward_cleanse (knowledge_ward L3+) ───────────
+
+describe('knowledge_ward — knowledge_ward_cleanse tag (L3+)', () => {
+  it('L2 CC: does NOT cleanse (no knowledge_ward_cleanse tag)', () => {
+    const result = resolve('knowledge_ward', 'charge_correct', undefined, undefined, { masteryLevel: 2 });
+    expect(result.removeDebuffCount).toBeFalsy();
+  });
+
+  it('L3 CC: cleanses 1 debuff (knowledge_ward_cleanse tag active)', () => {
+    const result = resolve('knowledge_ward', 'charge_correct', undefined, undefined, { masteryLevel: 3 });
+    expect(result.removeDebuffCount).toBe(1);
+  });
+
+  it('L3 QP: cleanses 1 debuff (tag fires on all play modes)', () => {
+    const result = resolve('knowledge_ward', 'quick', undefined, undefined, { masteryLevel: 3 });
+    expect(result.removeDebuffCount).toBe(1);
+  });
+
+  it('L5 CC: cleanses 1 debuff (tag persists at max level)', () => {
+    const result = resolve('knowledge_ward', 'charge_correct', undefined, undefined, { masteryLevel: 5 });
+    expect(result.removeDebuffCount).toBe(1);
+  });
+
+  it('L5 CC: still applies shield (cleanse is additive, does not replace block)', () => {
+    const result = resolve('knowledge_ward', 'charge_correct', undefined, undefined, { masteryLevel: 5 });
+    expect(result.shieldApplied).toBeGreaterThan(0);
   });
 });

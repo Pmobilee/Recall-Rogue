@@ -52,7 +52,7 @@ After `resolveCardEffect` returns, `playCardAction` applies the result:
 - Status effects applied via `applyStatusEffect()`
 - Mastery upgrade/downgrade checked via `canMasteryUpgrade()` / `canMasteryDowngrade()`
 - Chain state updated via `extendOrResetChain()` if card has a chain type
-- `turnState.apCurrent` decremented by `card.apCost`
+- `turnState.apCurrent` decremented by `getEffectiveApCost(card)` (mastery-aware; falls back to `card.apCost`)
 - `turnState.cardsPlayedThisTurn++`, `cardsCorrectThisTurn++` if correct
 
 Returns `PlayCardResult { effect, enemyDefeated, fizzled, blocked, turnState, masteryChange, ... }`.

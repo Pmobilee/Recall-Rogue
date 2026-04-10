@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Card } from '../../data/card-types';
+  import { getEffectiveApCost } from '../../services/cardUpgradeService';
   import { isLandscape } from '../../stores/layoutStore';
 
   interface Props {
@@ -128,7 +129,7 @@
                 {card.mechanicName ?? card.factId ?? 'Unknown'}
                 {#if card.isRemovedFromGame}<span class="removed-badge">INSCRIBED</span>{/if}
               </span>
-              <span class="card-mechanic">{card.cardType} · AP {card.apCost ?? '?'}</span>
+              <span class="card-mechanic">{card.cardType} · AP {getEffectiveApCost(card)}</span>
               {#if showAnswers}
                 {@const fact = card as Card & { factQuestion?: string; factAnswer?: string }}
                 {#if fact.factQuestion}
@@ -180,7 +181,7 @@
                   {card.mechanicName ?? card.factId ?? 'Unknown'}
                   {#if card.isRemovedFromGame}<span class="removed-badge">INSCRIBED</span>{/if}
                 </span>
-                <span class="card-mechanic">{card.cardType} · AP {card.apCost ?? '?'}</span>
+                <span class="card-mechanic">{card.cardType} · AP {getEffectiveApCost(card)}</span>
                 {#if showAnswers}
                   {@const fact = card as Card & { factQuestion?: string; factAnswer?: string }}
                   {#if fact.factQuestion}

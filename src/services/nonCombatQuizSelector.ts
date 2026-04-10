@@ -156,6 +156,7 @@ export function selectNonCombatStudyQuestion(
       tracker,
       distractorCount,
       cardMasteryLevel,
+      templateResult.distractorAnswerField,
     );
     choices = [templateResult.correctAnswer, ...distractors.map((d: DeckFact) => d.correctAnswer)];
     distractorFactIds = distractors.map((d: DeckFact) => d.id);
@@ -370,6 +371,7 @@ export function selectNonCombatCustomDeckQuestion(
       tracker,
       distractorCount,
       cardMasteryLevel,
+      templateResult.distractorAnswerField,
     );
     choices = [templateResult.correctAnswer, ...distractors.map((d: DeckFact) => d.correctAnswer)];
     distractorFactIds = distractors.map((d: DeckFact) => d.id);

@@ -79,6 +79,25 @@ function extractUnit(answer: string): string | null {
 }
 
 /**
+ * Resolve the display answer for a fact given the requested answer field.
+ *
+ * For forward templates this is simply fact.correctAnswer.
+ * For reverse templates (distractorAnswerField = 'targetLanguageWord'), the distractor
+ * answer should be the target-language word so that all options are in the same
+ * language as the correct answer — preventing script-based elimination.
+ *
+ * Falls back to fact.correctAnswer when the requested field is absent or empty.
+ */
+function resolveDisplayAnswer(fact: DeckFact, field: keyof DeckFact): string {
+  if (field === 'correctAnswer') return fact.correctAnswer;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const val = (fact as any)[field];
+  if (typeof val === 'string' && val.trim() !== '') return val;
+  // Field absent or empty — fall back to correctAnswer so we always have a string.
+  return fact.correctAnswer;
+}
+
+/**
  * Select distractors from the deck's answer type pool, weighted by confusion matrix.
  *
  * Priority order (§4.4):
@@ -93,6 +112,11 @@ function extractUnit(answer: string): string | null {
  * even after counting synthetic members.
  *
  * @param inRunTracker - In-run fact tracker, or null when called from trivia mode (no active run).
+ * @param distractorAnswerField - Which field on DeckFact to use as the displayed distractor
+ *   answer text. Defaults to 'correctAnswer'. Pass 'targetLanguageWord' for reverse templates
+ *   (English→target-language) so that distractors are drawn from the target-language field,
+ *   not the English meaning — preventing script-based option elimination.
+ *   See docs/mechanics/quiz.md §"Reverse templates and target-language distractor pools".
  */
 export function selectDistractors(
   correctFact: DeckFact,
@@ -103,7 +127,12 @@ export function selectDistractors(
   inRunTracker: InRunFactTracker | null,
   count: number,
   cardMasteryLevel: number,
+  distractorAnswerField: keyof DeckFact = 'correctAnswer',
 ): DistractorSelectionResult {
+  // Resolve the correct answer's display string using the active field.
+  // This is the value we must exclude from distractors.
+  const correctDisplayAnswer = resolveDisplayAnswer(correctFact, distractorAnswerField);
+
   // Step 0: Build synonym exclusion set (MANDATORY)
   const synonymExcludeIds = new Set<string>();
   synonymExcludeIds.add(correctFact.id);  // Always exclude the correct fact itself
@@ -137,15 +166,15 @@ export function selectDistractors(
 
   // Early exit: if pool has too few unique answers for sensible distractors,
   // use the fact's pre-generated distractors[] directly.
-  // A pool needs at least (count + 1) unique correctAnswer values to provide
-  // `count` distractors after excluding the correct answer.
+  // A pool needs at least (count + 1) unique answer values (using the active field)
+  // to provide `count` distractors after excluding the correct answer.
   const uniquePoolAnswers = new Set<string>();
   for (const factId of answerPool.factIds) {
     if (synonymExcludeIds.has(factId)) continue;
     const f = factById.get(factId);
-    if (f) uniquePoolAnswers.add(f.correctAnswer.toLowerCase());
+    if (f) uniquePoolAnswers.add(resolveDisplayAnswer(f, distractorAnswerField).toLowerCase());
   }
-  uniquePoolAnswers.delete(correctFact.correctAnswer.toLowerCase());
+  uniquePoolAnswers.delete(correctDisplayAnswer.toLowerCase());
 
   // Count synthetic members toward pool viability.
   // They are valid distractors even though they have no quiz questions of their own.
@@ -159,7 +188,7 @@ export function selectDistractors(
     // Pool too small — fall back to pre-generated distractors
     const fallbackDistractors: DeckFact[] = [];
     const fallbackSources: DistractorSelectionResult['sources'] = [];
-    const seen = new Set<string>([correctFact.correctAnswer.toLowerCase()]);
+    const seen = new Set<string>([correctDisplayAnswer.toLowerCase()]);
 
     for (const d of correctFact.distractors) {
       if (fallbackDistractors.length >= count) break;
@@ -273,8 +302,8 @@ export function selectDistractors(
   if (answerPool.syntheticDistractors) {
     for (const synAnswer of answerPool.syntheticDistractors) {
       const synId = `_synthetic_${synAnswer}`;
-      // Skip if this synthetic answer is identical to the correct answer
-      if (synAnswer.toLowerCase() === correctFact.correctAnswer.toLowerCase()) continue;
+      // Skip if this synthetic answer is identical to the correct display answer
+      if (synAnswer.toLowerCase() === correctDisplayAnswer.toLowerCase()) continue;
       // Skip if the synthetic ID is in the synonym exclusion set (defensive)
       if (synonymExcludeIds.has(synId)) continue;
 
@@ -318,14 +347,14 @@ export function selectDistractors(
     c.score += jitter();
   }
 
-  // Sort by score descending, then deduplicate by correctAnswer before slicing to count
+  // Sort by score descending, then deduplicate by display answer before slicing to count
   candidates.sort((a, b) => b.score - a.score);
 
-  // Deduplicate: skip candidates whose correctAnswer matches one already selected,
+  // Deduplicate: skip candidates whose display answer matches one already selected,
   // matches the quiz's correct answer, or is mentioned in the question text
   const selected: ScoredCandidate[] = [];
   const seenAnswers = new Set<string>();
-  seenAnswers.add(correctFact.correctAnswer.toLowerCase()); // Never show correct answer as distractor
+  seenAnswers.add(correctDisplayAnswer.toLowerCase()); // Never show correct answer as distractor
 
   // Exclude any entity mentioned by name in the question text
   // e.g., "Besides Saturn, which..." → Saturn must not appear as distractor
@@ -335,7 +364,7 @@ export function selectDistractors(
     if (selected.length >= count) break;
     const candidateFact = factById.get(c.factId);
     if (!candidateFact) continue;
-    const answerKey = candidateFact.correctAnswer.toLowerCase();
+    const answerKey = resolveDisplayAnswer(candidateFact, distractorAnswerField).toLowerCase();
     if (seenAnswers.has(answerKey)) continue;
     // Skip if this distractor's answer is mentioned in the question
     if (answerKey.length > 2 && questionLower.includes(answerKey)) continue;
@@ -349,7 +378,16 @@ export function selectDistractors(
   for (const c of selected) {
     const fact = factById.get(c.factId);
     if (fact) {
-      distractors.push(fact);
+      // When distractorAnswerField differs from 'correctAnswer', return a shallow copy
+      // of the fact with correctAnswer overwritten to the resolved display answer.
+      // Callers consistently read d.correctAnswer for display — this keeps the interface
+      // uniform without requiring caller changes or mutating shared fact objects.
+      const displayAnswer = resolveDisplayAnswer(fact, distractorAnswerField);
+      if (displayAnswer !== fact.correctAnswer) {
+        distractors.push({ ...fact, correctAnswer: displayAnswer });
+      } else {
+        distractors.push(fact);
+      }
       sources.push(c.source);
     }
   }
@@ -358,7 +396,7 @@ export function selectDistractors(
   // use the fact's pre-generated distractors[] array
   if (distractors.length < count && correctFact.distractors.length > 0) {
     const existingAnswers = new Set([
-      correctFact.correctAnswer.toLowerCase(),
+      correctDisplayAnswer.toLowerCase(),
       ...distractors.map(d => d.correctAnswer.toLowerCase()),
     ]);
 

@@ -20595,7 +20595,8 @@
         "myth_persephone_seasons_half_year",
         "myth_hestia_hearth_eldest",
         "myth_hestia_vestal_virgins"
-      ]
+      ],
+      "chainThemeId": 0
     },
     {
       "id": "titans_origins",
@@ -20618,7 +20619,8 @@
         "myth_golden_age",
         "myth_deucalion_flood",
         "myth_iron_age_hesiod"
-      ]
+      ],
+      "chainThemeId": 4
     },
     {
       "id": "heroes_quests",
@@ -20672,7 +20674,8 @@
         "myth_patroclus_armor",
         "myth_aeneas_rome",
         "myth_paris_achilles_heel"
-      ]
+      ],
+      "chainThemeId": 2
     },
     {
       "id": "trojan_war",
@@ -20709,7 +20712,8 @@
         "myth_troy_helen_returned",
         "myth_troy_agamemnon_return",
         "myth_troy_nostos"
-      ]
+      ],
+      "chainThemeId": 3
     },
     {
       "id": "the_odyssey",
@@ -20738,7 +20742,8 @@
         "myth_odyssey_bow_contest",
         "myth_odyssey_slaughter_suitors",
         "myth_odyssey_olive_tree_bed"
-      ]
+      ],
+      "chainThemeId": 5
     },
     {
       "id": "underworld",
@@ -20764,7 +20769,8 @@
         "myth_persephone_queen",
         "myth_orpheus_eurydice",
         "myth_odysseus_underworld"
-      ]
+      ],
+      "chainThemeId": 1
     },
     {
       "id": "monsters_creatures",
@@ -20801,7 +20807,8 @@
         "myth_ladon_golden_apples",
         "myth_sirens_odysseus",
         "myth_centaurs_chiron"
-      ]
+      ],
+      "chainThemeId": 3
     },
     {
       "id": "love_tragedy_fate",
@@ -20857,7 +20864,8 @@
         "myth_narcissus_echo_love",
         "myth_pygmalion_disgust",
         "myth_medea_jason_fleece"
-      ]
+      ],
+      "chainThemeId": 5
     }
   ],
   "answerTypePools": [
@@ -21588,6 +21596,44 @@
         "myth_fates_atropos",
         "myth_oedipus_antigone_exile"
       ]
+    }
+  ],
+  "chainThemes": [
+    {
+      "id": 0,
+      "name": "The Olympians",
+      "color": "#FFD700",
+      "description": "Zeus, Hera, Athena, Apollo, and the twelve Olympian gods"
+    },
+    {
+      "id": 1,
+      "name": "Underworld & Monsters",
+      "color": "#2C3E50",
+      "description": "Hades, Persephone, and the terrifying creatures of myth"
+    },
+    {
+      "id": 2,
+      "name": "Heroes & Quests",
+      "color": "#E67E22",
+      "description": "Perseus, Heracles, Jason, and legendary heroes"
+    },
+    {
+      "id": 3,
+      "name": "The Trojan War",
+      "color": "#C0392B",
+      "description": "Helen, Achilles, Hector, and the fall of Troy"
+    },
+    {
+      "id": 4,
+      "name": "Titans & Origins",
+      "color": "#6C3483",
+      "description": "Cronus, Prometheus, and the origin myths of the cosmos"
+    },
+    {
+      "id": 5,
+      "name": "Love, Tragedy & the Odyssey",
+      "color": "#1A8FAA",
+      "description": "Orpheus, Odysseus, and myths of love and fate"
     }
   ]
 }

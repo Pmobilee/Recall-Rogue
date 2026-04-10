@@ -7961,20 +7961,20 @@
         "Dwight Eisenhower",
         "John F. Kennedy"
       ],
-      "quizQuestion": "Which president presided over the end of the Cold War as the Soviet Union dissolved in 1991?",
-      "explanation": "Ronald Reagan was president during the end of the Cold War and the collapse of the Soviet Union in 1991. Reagan's aggressive defense spending, confrontational rhetoric toward the USSR, and support for anti-communist movements in Afghanistan and Central America put pressure on the Soviet economy. When Mikhail Gorbachev took power in 1985 and introduced reforms like glasnost (openness) and perestroika (restructuring), the Soviet system unraveled. By December 1991, the Soviet Union officially dissolved, marking the end of the Cold War.",
-      "statement": "Ronald Reagan presided over the end of the Cold War and the Soviet Union's dissolution.",
-      "wowFactor": "Historians debate whether Reagan 'won' the Cold War or whether Gorbachev's reforms simply collapsed the Soviet system. But Reagan's military buildup and tough stance definitely accelerated the USSR's decline. When the Soviet Union dissolved in 1991, Reagan could claim victory—the communist threat was gone.",
-      "visualDescription": "Ronald Reagan looking triumphant as the Berlin Wall falls, Soviet hammer and sickle flag coming down, 1991",
-      "sourceName": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union",
+      "quizQuestion": "Which Cold War president announced the Strategic Defense Initiative ('Star Wars') and declared the Soviet Union an 'evil empire'?",
+      "explanation": "Ronald Reagan launched an aggressive anti-Soviet strategy: he increased defense spending, announced the Strategic Defense Initiative (SDI) missile defense program in 1983, and labeled the USSR an 'evil empire.' These pressures accelerated Soviet economic strain alongside Gorbachev's internal reforms. Reagan left office in January 1989; the Soviet Union formally dissolved in December 1991 under President George H.W. Bush.",
+      "statement": "Ronald Reagan escalated Cold War pressure on the Soviet Union through the Strategic Defense Initiative, a massive defense buildup, and confrontational rhetoric.",
+      "wowFactor": "Reagan called the USSR an 'evil empire' in 1983 — diplomats were horrified, but Soviet leaders later admitted the speech rattled them. His SDI proposal alarmed the Kremlin because they feared the US could achieve a first-strike capability and defend against retaliation.",
+      "visualDescription": "Ronald Reagan at podium with 'Star Wars' missile defense graphic, Cold War era, 1983",
+      "sourceName": "Wikipedia — Strategic Defense Initiative",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Strategic_Defense_Initiative",
       "volatile": false,
       "categoryL1": "history",
       "categoryL2": "american_government",
       "variants": [
         {
           "type": "reverse",
-          "question": "Which president presided over the end of the Cold War and the Soviet Union's dissolution?",
+          "question": "Reagan's 'Star Wars' program was the nickname for which missile defense initiative?",
           "correctAnswer": "Ronald Reagan",
           "distractors": [
             "George H.W. Bush",
@@ -7985,7 +7985,7 @@
         },
         {
           "type": "context",
-          "question": "Which president's military buildup and tough stance contributed to the Soviet Union's collapse?",
+          "question": "Which president's military buildup and 'evil empire' rhetoric put maximum pressure on the Soviet economy during the Cold War?",
           "correctAnswer": "Ronald Reagan",
           "distractors": [
             "George H.W. Bush",
@@ -7996,15 +7996,15 @@
         },
         {
           "type": "true_false",
-          "question": "True or false: Ronald Reagan presided over the end of the Cold War.",
-          "correctAnswer": "True",
+          "question": "True or false: Ronald Reagan was president when the Soviet Union officially dissolved in 1991.",
+          "correctAnswer": "False",
           "distractors": [
-            "False"
+            "True"
           ]
         },
         {
           "type": "fill_blank",
-          "question": "___ presided over the end of the Cold War as the Soviet Union dissolved in 1991.",
+          "question": "President ___ announced the Strategic Defense Initiative ('Star Wars') in 1983 as part of his Cold War pressure campaign against the Soviet Union.",
           "correctAnswer": "Ronald Reagan",
           "distractors": [
             "George H.W. Bush",
@@ -8017,10 +8017,11 @@
       "tags": [
         "reagan",
         "cold war",
-        "soviet union",
-        "1991",
-        "dissolution",
-        "gorbachev"
+        "strategic defense initiative",
+        "SDI",
+        "evil empire",
+        "nuclear",
+        "arms race"
       ]
     },
     {

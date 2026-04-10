@@ -5,6 +5,7 @@
   import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
   import { stretchText } from '../utils/stretchText'
   import { getChainColor } from '../../services/chainVisuals'
+  import { getEffectiveApCost } from '../../services/cardUpgradeService'
 
   interface Props {
     card: Card
@@ -14,7 +15,7 @@
 
   let { card, onaccept, onreject }: Props = $props()
 
-  let apCost = $derived(card.apCost ?? 1)
+  let apCost = $derived(getEffectiveApCost(card))
 
   function effectTextSizeClass(card: Card): string {
     const parts = getCardDescriptionParts(card)

@@ -43,8 +43,13 @@ Quiz serving splits into two pipelines: the **legacy facts DB** path (sql.js SQL
 |---|---|
 | **File** | src/services/questionTemplateSelector.ts |
 | **Purpose** | Selects and renders a question template for a charge-time fact; filters by mastery level and tracks variety |
-| **Key exports** | `selectQuestionTemplate`, `TemplateSelectionResult` (interface) |
+| **Key exports** | `selectQuestionTemplate`, `TemplateSelectionResult` (interface), `explanationLeaksAnswer`, `readingMatchesTargetWord`, `renderTemplate` |
 | **Key dependencies** | curatedDeckTypes (injected deck data) |
+
+**Phase 1 additions (2026-04-10):**
+- `explanationLeaksAnswer(fact)` — returns true if the fact's explanation contains the correctAnswer; used to suppress definition templates that would give away the answer.
+- `readingMatchesTargetWord(fact)` — returns true if the reading field equals the targetLanguageWord (normalized); used to suppress reading templates for phonetic words.
+- `TemplateSelectionResult.distractorAnswerField` — new field on the result object specifying which `DeckFact` field to use for distractor answers (`'correctAnswer'` for forward templates, `'targetLanguageWord'` for reverse, `'reading'` for reading templates). Prevents English distractors appearing with CJK correct answers.
 
 ## curatedDistractorSelector
 
