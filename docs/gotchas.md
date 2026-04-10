@@ -1551,3 +1551,19 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **What:** Running `node scripts/fix-empty-subdecks.mjs --dry-run` on all 7 target decks (ancient_greece, ap_world_history, constellations, egyptian_mythology, famous_inventions, mammals_world, medieval_world) found no empty factIds arrays. All sub-decks were already populated, likely fixed in a prior session.
 
 ---
+### 2026-04-10 — JLPT decks missing kanji templates (fixed)
+
+**What:** All 5 JLPT decks (japanese_n5 through japanese_n1) shipped with 4 dedicated kanji answer pools (`kanji_meanings`, `kanji_onyomi`, `kanji_kunyomi`, `kanji_characters`) but ZERO `questionTemplates` entries that targeted those pools. As a result, all kanji facts fell through to `_fallback` template during quiz generation.
+
+**Fallback rates before fix:** N5=33%, N4=47%, N3=40%, N2=42%, N1=62%.
+
+**Fix:** Added 3 kanji-specific `questionTemplates` entries to each deck:
+- `kanji_meaning` (pool: `kanji_meanings`, mastery 0, difficulty 1): "What does {targetLanguageWord} mean?"
+- `kanji_onyomi` (pool: `kanji_onyomi`, mastery 1, difficulty 2): "What is the on'yomi of {targetLanguageWord}?"
+- `kanji_kunyomi` (pool: `kanji_kunyomi`, mastery 1, difficulty 2): "What is the kun'yomi of {targetLanguageWord}?"
+
+**Fallback rates after fix:** N5=14.4%, N4=20.6%, N3=17.8%, N2=18.6%, N1=27.2%.
+
+**Lesson:** If a deck has dedicated kanji pools, it MUST also have templates that target them. A pool without a referencing template is dead weight — those facts silently fall through to `_fallback`. The `audit-dump-samples.ts` script is the fastest way to surface this issue: look for high `_fallback` percentages and cross-check against the pool list.
+
+---

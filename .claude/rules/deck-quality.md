@@ -48,6 +48,8 @@
 - `term_definitions` → `short_terms` (≤20c) + `long_definitions` (>20c)
 - `number` → `count_values` + `percentage_values` + `year_values`
 
+**Kanji pools require kanji templates:** If a deck defines kanji-specific pools (`kanji_meanings`, `kanji_onyomi`, `kanji_kunyomi`, `kanji_characters`), it MUST also have `questionTemplates` entries that target each pool. A pool with no referencing template is dead weight — facts assigned to it silently fall through to `_fallback` and the templating system has no effect. Run `audit-dump-samples.ts` and check for high `_fallback` percentages to detect this issue.
+
 ## Batch Deck Verification — MANDATORY
 
 After modifying ANY curated deck:

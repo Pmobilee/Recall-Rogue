@@ -28429,6 +28429,30 @@
       "availableFromMastery": 3,
       "difficulty": 4,
       "reverseCapable": false
+    },
+    {
+      "id": "kanji_meaning",
+      "answerPoolId": "kanji_meanings",
+      "questionFormat": "What does {targetLanguageWord} mean?",
+      "availableFromMastery": 0,
+      "difficulty": 1,
+      "reverseCapable": false
+    },
+    {
+      "id": "kanji_onyomi",
+      "answerPoolId": "kanji_onyomi",
+      "questionFormat": "What is the on'yomi of {targetLanguageWord}?",
+      "availableFromMastery": 1,
+      "difficulty": 2,
+      "reverseCapable": false
+    },
+    {
+      "id": "kanji_kunyomi",
+      "answerPoolId": "kanji_kunyomi",
+      "questionFormat": "What is the kun'yomi of {targetLanguageWord}?",
+      "availableFromMastery": 1,
+      "difficulty": 2,
+      "reverseCapable": false
     }
   ],
   "difficultyTiers": [
