@@ -1683,7 +1683,7 @@ Mystery rooms are narrative encounters that add unpredictability without breakin
 
 **Effect types:** healPercent, damage, currency, maxHpChange, upgradeRandomCard, removeRandomCard, curseRandomCards, transformCard, freeCard, combat, cardReward, study, reviewMuseum, meditation, doubleOrNothing, speedRound, knowledgeShop, cardRoulette, factOrFiction, rivalDuel, choice, random, compound
 
-30 unique events across 4 tiers. Event data in `src/services/floorManager.ts`. Effect resolution in `src/services/gameFlowController.ts`. UI in `src/ui/components/MysteryEventOverlay.svelte`.
+34 unique events across 4 tiers. Event data in `src/services/floorManager.ts`. Effect resolution in `src/services/gameFlowController.ts`. UI in `src/ui/components/MysteryEventOverlay.svelte`.
 
 ### Gold Economy
 
