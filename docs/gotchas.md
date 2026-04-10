@@ -1536,3 +1536,8 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **Fix:** After running the script, grep for `an this`, `the this`, and `famous this` patterns in affected decks and hand-rewrite those questions to use natural phrasing. Script fixed 14 facts across 9 decks.
 
 ---
+### 2026-04-10 — fix-pool-heterogeneity.mjs split 6 pools across 4 decks
+
+**What:** Running `node scripts/fix-pool-heterogeneity.mjs` found 6 pools with answer-length ratio >3x. Split drug_classes(3.1x), bop_account_terms(3.4x), ancient_philosopher_names(4.5x), early_modern_philosopher_names(4.5x), school_names(4.7x), platform_console_names(5.8x) into short/long sub-pools. 0 failures after splitting.
+
+---

@@ -686,7 +686,7 @@
       "correctAnswer": "Netflix",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "platform_console_names",
+      "answerTypePoolId": "platform_console_names_short",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "Stranger Things, created by the Duffer Brothers and set in 1980s Indiana, is an original series exclusive to which streaming platform?",
@@ -764,7 +764,7 @@
         "Disney Plus"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "platform_console_names",
+      "answerTypePoolId": "platform_console_names_short",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "The Mandalorian, created by Jon Favreau and featuring 'Baby Yoda', is a streaming original exclusive to which platform?",
@@ -1106,7 +1106,7 @@
         "Mega Drive"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "platform_console_names",
+      "answerTypePoolId": "platform_console_names_long",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "Sonic the Hedgehog helped which Sega console outsell the Super Nintendo 2:1 in 1991-1992?",
@@ -1207,7 +1207,7 @@
         "PS2"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "platform_console_names",
+      "answerTypePoolId": "platform_console_names_long",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "Which Sony console, with 160 million units sold, remains the best-selling video game console of all time?",
@@ -1233,7 +1233,7 @@
         "Switch"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "platform_console_names",
+      "answerTypePoolId": "platform_console_names_long",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "With 155 million units shipped, which 2017 Nintendo console is the second-best-selling video game console ever?",
@@ -1283,7 +1283,7 @@
         "Nintendo Game Boy"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "platform_console_names",
+      "answerTypePoolId": "platform_console_names_short",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Which 1989 Nintendo handheld, bundled with Tetris, sold 118.69 million units including the Color variant?",
@@ -1825,7 +1825,7 @@
         "Nintendo NES"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "platform_console_names",
+      "answerTypePoolId": "platform_console_names_long",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "Which console, released in North America in 1985, rescued the video game industry after the catastrophic 1983 market crash?",
@@ -2612,7 +2612,7 @@
       "correctAnswer": "4chan",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "platform_console_names",
+      "answerTypePoolId": "platform_console_names_short",
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "On which website did the Rickroll meme originate in May 2007?",
@@ -3000,7 +3000,7 @@
       "correctAnswer": "Newgrounds",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "platform_console_names",
+      "answerTypePoolId": "platform_console_names_long",
       "difficulty": 4,
       "funScore": 8,
       "quizQuestion": "On which platform did Gary Brolsma originally post his Numa Numa lip-sync video in December 2004?",
@@ -4238,7 +4238,7 @@
       "correctAnswer": "YouTube",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "platform_console_names",
+      "answerTypePoolId": "platform_console_names_short",
       "difficulty": 1,
       "funScore": 8,
       "quizQuestion": "On which platform did MrBeast become the most-subscribed individual creator?",
@@ -4632,7 +4632,7 @@
       "correctAnswer": "Netflix",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "platform_console_names",
+      "answerTypePoolId": "platform_console_names_short",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "Which streaming service pioneered the binge-release model in 2013 with House of Cards?",
@@ -4708,7 +4708,7 @@
         "Disney Plus"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "platform_console_names",
+      "answerTypePoolId": "platform_console_names_short",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "Which streaming platform launched in 2019 and signed up 10 million subscribers on its very first day?",
@@ -5359,22 +5359,17 @@
       "homogeneityExemptNote": "Franchise IP names vary inherently — single-word brands (Mario, LEGO) vs full titles (Marvel Cinematic Universe). All are recognizable franchise names suitable as distractors."
     },
     {
-      "id": "platform_console_names",
-      "label": "Consoles, Platforms & Services",
+      "id": "platform_console_names_short",
+      "label": "Consoles, Platforms & Services (short)",
       "answerFormat": "name",
       "factIds": [
+        "pc_3_rickroll_origin_platform",
         "pc_0_strangerthings_platform",
         "pc_0_mandalorian_platform",
-        "pc_1_sonic_platform_impact",
-        "pc_1_ps2_bestseller",
-        "pc_1_switch_rank",
-        "pc_1_gameboy_units",
-        "pc_1_game_crash_recovery",
-        "pc_3_rickroll_origin_platform",
-        "pc_3_numa_numa_platform",
         "pc_5_mrbeast_platform",
         "pc_5_netflix_platform",
-        "pc_5_disney_plus_platform"
+        "pc_5_disney_plus_platform",
+        "pc_1_gameboy_units"
       ],
       "syntheticDistractors": [
         "Atari 2600",
@@ -5387,7 +5382,30 @@
         "Twitter",
         "Discord"
       ],
-      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Platform and console names vary inherently — short names (Wii, Xbox) vs full names (Nintendo Entertainment System). All are recognizable platform names suitable as distractors."
+    },
+    {
+      "id": "platform_console_names_long",
+      "label": "Consoles, Platforms & Services (long)",
+      "answerFormat": "name",
+      "factIds": [
+        "pc_3_numa_numa_platform",
+        "pc_1_sonic_platform_impact",
+        "pc_1_ps2_bestseller",
+        "pc_1_switch_rank",
+        "pc_1_game_crash_recovery"
+      ],
+      "syntheticDistractors": [
+        "Atari 2600",
+        "Xbox",
+        "Hulu",
+        "Amazon Prime Video",
+        "Apple TV+",
+        "TikTok",
+        "Instagram",
+        "Twitter",
+        "Discord"
+      ],
       "homogeneityExemptNote": "Platform and console names vary inherently — short names (Wii, Xbox) vs full names (Nintendo Entertainment System). All are recognizable platform names suitable as distractors."
     },
     {

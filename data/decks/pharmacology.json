@@ -12,7 +12,7 @@
       "correctAnswer": "ACE inhibitor",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -133,7 +133,7 @@
         "ARB"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -257,7 +257,7 @@
         "Cardioselective beta-blocker"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -377,7 +377,7 @@
         "Calcium channel blocker"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -499,7 +499,7 @@
         "Non-dihydropyridine CCB"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -622,7 +622,7 @@
         "Centrally acting antihypertensive"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -743,7 +743,7 @@
         "Vasodilator"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -862,7 +862,7 @@
       "correctAnswer": "Cardiac glycoside",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -985,7 +985,7 @@
         "Antiarrhythmic"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -1108,7 +1108,7 @@
         "Antiarrhythmic"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -1231,7 +1231,7 @@
         "Muscarinic antagonist"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -1354,7 +1354,7 @@
         "Adrenergic agonist"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -1478,7 +1478,7 @@
         "Catecholamine"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -1600,7 +1600,7 @@
         "Vasopressor/inotrope"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -1722,7 +1722,7 @@
         "Vasodilator"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -1845,7 +1845,7 @@
         "Statin"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -1966,7 +1966,7 @@
       "correctAnswer": "Loop diuretic",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -2087,7 +2087,7 @@
         "Aldosterone antagonist"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -2209,7 +2209,7 @@
         "Thiazide"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -2329,7 +2329,7 @@
       "correctAnswer": "Osmotic diuretic",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -2452,7 +2452,7 @@
         "Recombinant erythropoietin"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -2575,7 +2575,7 @@
         "Mineral supplement"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -2697,7 +2697,7 @@
         "Oral anticoagulant"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -2820,7 +2820,7 @@
         "IV anticoagulant"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -2939,7 +2939,7 @@
         "LMWH"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -3061,7 +3061,7 @@
         "Direct oral anticoagulant"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -3184,7 +3184,7 @@
         "ADP receptor antagonist"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -3308,7 +3308,7 @@
         "Salicylate"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -3432,7 +3432,7 @@
         "Fibrinolytic agent"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -3554,7 +3554,7 @@
         "Beta-lactam antibiotic"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -3680,7 +3680,7 @@
         "Beta-lactam antibiotic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -3804,7 +3804,7 @@
         "Glycopeptide"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -3927,7 +3927,7 @@
         "Tetracycline"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -4051,7 +4051,7 @@
         "Macrolide"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -4175,7 +4175,7 @@
         "Aminoglycoside"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -4301,7 +4301,7 @@
         "Sulfa antibiotic"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -4426,7 +4426,7 @@
         "Quinolone antibiotic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -4551,7 +4551,7 @@
         "Antiprotozoal antibiotic"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -4676,7 +4676,7 @@
         "Antimycobacterial"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -4801,7 +4801,7 @@
         "Rifamycin antibiotic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -4925,7 +4925,7 @@
         "Antifungal"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -5050,7 +5050,7 @@
         "Nucleoside analog"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -5296,7 +5296,7 @@
         "Tricyclic antidepressant"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -5417,7 +5417,7 @@
         "MAOI"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -5537,7 +5537,7 @@
         "Norepinephrine-dopamine reuptake inhibitor"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -5657,7 +5657,7 @@
       "correctAnswer": "Mood stabilizer",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -5781,7 +5781,7 @@
         "First-generation antipsychotic"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -5905,7 +5905,7 @@
         "Second-generation antipsychotic"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -6024,7 +6024,7 @@
         "Benzodiazepine anxiolytic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -6144,7 +6144,7 @@
         "Non-benzodiazepine anxiolytic"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -6265,7 +6265,7 @@
         "Sedative-hypnotic"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -6387,7 +6387,7 @@
         "Antiepileptic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -6510,7 +6510,7 @@
         "Antiepileptic"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -6633,7 +6633,7 @@
         "Valproate"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -6757,7 +6757,7 @@
         "Antiepileptic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -6880,7 +6880,7 @@
         "Dopamine precursor"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -7003,7 +7003,7 @@
         "Anticholinergic"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -7127,7 +7127,7 @@
         "AChE inhibitor"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -7249,7 +7249,7 @@
         "Opioid agonist"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -7373,7 +7373,7 @@
         "Hydromorphone"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -7495,7 +7495,7 @@
         "Semi-synthetic opioid"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -7619,7 +7619,7 @@
         "Opioid agonist"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -7741,7 +7741,7 @@
         "Opioid receptor antagonist"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 6,
       "distractors": [
@@ -7863,7 +7863,7 @@
         "Depolarizing paralytic"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 3,
       "funScore": 6,
       "distractors": [
@@ -7984,7 +7984,7 @@
         "Muscle relaxant"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -8103,7 +8103,7 @@
       "correctAnswer": "Rapid-acting insulin",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -8217,7 +8217,7 @@
       "correctAnswer": "Short-acting insulin",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -8331,7 +8331,7 @@
       "correctAnswer": "Intermediate-acting insulin",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -8445,7 +8445,7 @@
       "correctAnswer": "Long-acting insulin",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -8561,7 +8561,7 @@
         "biguanide"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -8682,7 +8682,7 @@
         "sulfonylurea"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -8794,7 +8794,7 @@
       "correctAnswer": "Hyperglycemic agent",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -8912,7 +8912,7 @@
         "synthetic thyroid hormone"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -9029,7 +9029,7 @@
         "thioamide antithyroid"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -9148,7 +9148,7 @@
         "antidiuretic hormone analog"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -9268,7 +9268,7 @@
         "corticosteroid"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -9385,7 +9385,7 @@
       "correctAnswer": "Mineralocorticoid",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -9501,7 +9501,7 @@
       "correctAnswer": "Bisphosphonate",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -9618,7 +9618,7 @@
       "correctAnswer": "Xanthine oxidase inhibitor",
       "acceptableAlternatives": [],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -9737,7 +9737,7 @@
         "PPI"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -9857,7 +9857,7 @@
         "H2 blocker"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -9975,7 +9975,7 @@
         "surfactant laxative"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 1,
       "funScore": 3,
       "distractors": [
@@ -10064,7 +10064,7 @@
         "hyperammonemia treatment"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -10182,7 +10182,7 @@
         "antidiarrheal"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -10271,7 +10271,7 @@
         "antiemetic"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -10391,7 +10391,7 @@
         "dopamine D2 antagonist"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -10513,7 +10513,7 @@
         "digestive enzyme supplement"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -10602,7 +10602,7 @@
         "5-ASA agent"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -10693,7 +10693,7 @@
         "beta-2 agonist bronchodilator"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -10811,7 +10811,7 @@
         "muscarinic antagonist bronchodilator"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 4,
       "distractors": [
@@ -10900,7 +10900,7 @@
         "ICS"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -11020,7 +11020,7 @@
         "LTRA"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -11141,7 +11141,7 @@
         "sedating antihistamine"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 5,
       "distractors": [
@@ -11261,7 +11261,7 @@
         "xanthine bronchodilator"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -11379,7 +11379,7 @@
         "oxytocic"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -11498,7 +11498,7 @@
         "magnesium sulfate anticonvulsant"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -11618,7 +11618,7 @@
         "beta-2 agonist"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 2,
       "funScore": 5,
       "distractors": [
@@ -11738,7 +11738,7 @@
         "Rh immunoglobulin"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_short",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -11975,7 +11975,7 @@
         "combined OCP"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "drug_classes",
+      "answerTypePoolId": "drug_classes_long",
       "difficulty": 1,
       "funScore": 4,
       "distractors": [
@@ -12290,112 +12290,119 @@
       ]
     },
     {
-      "id": "drug_classes",
-      "label": "Drug Classes",
+      "id": "drug_classes_short",
+      "label": "Drug Classes (short)",
       "answerFormat": "term",
       "factIds": [
         "pharm-cv-lisinopril-class",
-        "pharm-cv-losartan-class",
-        "pharm-cv-metoprolol-class",
-        "pharm-cv-amlodipine-class",
-        "pharm-cv-diltiazem-class",
-        "pharm-cv-clonidine-class",
-        "pharm-cv-nitroprusside-class",
-        "pharm-cv-digoxin-class",
-        "pharm-cv-amiodarone-class",
-        "pharm-cv-adenosine-class",
-        "pharm-cv-atropine-class",
-        "pharm-cv-epinephrine-class",
-        "pharm-cv-norepinephrine-class",
-        "pharm-cv-dopamine-class",
-        "pharm-cv-nitroglycerin-class",
-        "pharm-cv-atorvastatin-class",
         "pharm-cv-furosemide-class",
-        "pharm-cv-spironolactone-class",
-        "pharm-cv-hydrochlorothiazide-class",
-        "pharm-cv-mannitol-class",
-        "pharm-cv-epoetin-alfa-class",
+        "pharm-cns-lorazepam-class",
+        "pharm-cns-levetiracetam-class",
+        "pharm-endo-alendronate-class",
+        "pharm-gir-docusate-class",
+        "pharm-ob-rho-d-class",
+        "pharm-cv-adenosine-class",
+        "pharm-cv-epinephrine-class",
         "pharm-cv-ferrous-sulfate-class",
-        "pharm-cv-warfarin-class",
-        "pharm-cv-heparin-class",
-        "pharm-cv-enoxaparin-class",
-        "pharm-cv-rivaroxaban-class",
-        "pharm-cv-clopidogrel-class",
-        "pharm-cv-aspirin-class",
-        "pharm-cv-alteplase-class",
-        "pharm-inf-amoxicillin-class",
-        "pharm-inf-ceftriaxone-class",
-        "pharm-inf-vancomycin-class",
-        "pharm-inf-doxycycline-class",
+        "pharm-cns-lithium-class",
+        "pharm-gir-sulfasalazine-class",
+        "pharm-cv-mannitol-class",
+        "pharm-inf-fluconazole-class",
+        "pharm-cv-digoxin-class",
+        "pharm-cv-hydrochlorothiazide-class",
+        "pharm-cns-naloxone-class",
+        "pharm-endo-fludrocortisone-class",
+        "pharm-cv-nitroprusside-class",
+        "pharm-cv-nitroglycerin-class",
+        "pharm-endo-insulin-glargine-class",
+        "pharm-endo-glucagon-class",
+        "pharm-gir-loperamide-class",
         "pharm-inf-azithromycin-class",
-        "pharm-inf-gentamicin-class",
-        "pharm-inf-tmp-smx-class",
-        "pharm-inf-ciprofloxacin-class",
-        "pharm-inf-metronidazole-class",
         "pharm-inf-isoniazid-class",
         "pharm-inf-rifampin-class",
-        "pharm-inf-fluconazole-class",
-        "pharm-inf-acyclovir-class",
-        "pharm-cns-amitriptyline-class",
-        "pharm-cns-phenelzine-class",
-        "pharm-cns-bupropion-class",
-        "pharm-cns-lithium-class",
-        "pharm-cns-haloperidol-class",
-        "pharm-cns-clozapine-class",
-        "pharm-cns-lorazepam-class",
         "pharm-cns-buspirone-class",
-        "pharm-cns-zolpidem-class",
+        "pharm-endo-insulin-lispro-class",
+        "pharm-endo-insulin-regular-class",
+        "pharm-inf-amoxicillin-class",
+        "pharm-gir-metoclopramide-class",
+        "pharm-ob-oxytocin-class",
+        "pharm-cns-clozapine-class",
+        "pharm-gir-famotidine-class",
+        "pharm-cv-diltiazem-class",
+        "pharm-inf-vancomycin-class",
+        "pharm-inf-doxycycline-class",
+        "pharm-cv-metoprolol-class",
+        "pharm-cv-amiodarone-class",
+        "pharm-cv-heparin-class",
+        "pharm-cv-clopidogrel-class",
         "pharm-cns-phenytoin-class",
-        "pharm-cns-carbamazepine-class",
-        "pharm-cns-valproic_acid-class",
-        "pharm-cns-levetiracetam-class",
-        "pharm-cns-carbidopa_levodopa-class",
-        "pharm-cns-benztropine-class",
-        "pharm-cns-donepezil-class",
         "pharm-cns-morphine-class",
         "pharm-cns-hydromorphone-class",
         "pharm-cns-oxycodone-class",
         "pharm-cns-fentanyl-class",
-        "pharm-cns-naloxone-class",
-        "pharm-cns-succinylcholine-class",
         "pharm-cns-dantrolene-class",
-        "pharm-endo-insulin-lispro-class",
-        "pharm-endo-insulin-regular-class",
-        "pharm-endo-insulin-nph-class",
-        "pharm-endo-insulin-glargine-class",
-        "pharm-endo-metformin-class",
-        "pharm-endo-glipizide-class",
-        "pharm-endo-glucagon-class",
-        "pharm-endo-levothyroxine-class",
-        "pharm-endo-propylthiouracil-class",
         "pharm-endo-desmopressin-class",
-        "pharm-endo-prednisone-class",
-        "pharm-endo-fludrocortisone-class",
-        "pharm-endo-alendronate-class",
-        "pharm-endo-allopurinol-class",
-        "pharm-gir-omeprazole-class",
-        "pharm-gir-famotidine-class",
-        "pharm-gir-docusate-class",
-        "pharm-gir-lactulose-class",
-        "pharm-gir-loperamide-class",
-        "pharm-gir-ondansetron-class",
-        "pharm-gir-metoclopramide-class",
-        "pharm-gir-pancrelipase-class",
-        "pharm-gir-sulfasalazine-class",
-        "pharm-gir-albuterol-class",
-        "pharm-gir-ipratropium-class",
-        "pharm-gir-fluticasone-class",
-        "pharm-gir-montelukast-class",
-        "pharm-gir-diphenhydramine-class",
-        "pharm-gir-theophylline-class",
-        "pharm-ob-oxytocin-class",
-        "pharm-ob-magnesium-sulfate-class",
-        "pharm-ob-terbutaline-class",
-        "pharm-ob-rho-d-class",
-        "pharm-ob-oral-contraceptive-class"
+        "pharm-inf-gentamicin-class",
+        "pharm-inf-metronidazole-class"
       ],
-      "minimumSize": 5,
-      "homogeneityExempt": true
+      "minimumSize": 5
+    },
+    {
+      "id": "drug_classes_long",
+      "label": "Drug Classes (long)",
+      "answerFormat": "term",
+      "factIds": [
+        "pharm-cv-clonidine-class",
+        "pharm-cv-spironolactone-class",
+        "pharm-cv-rivaroxaban-class",
+        "pharm-inf-ciprofloxacin-class",
+        "pharm-endo-allopurinol-class",
+        "pharm-ob-magnesium-sulfate-class",
+        "pharm-cv-atorvastatin-class",
+        "pharm-cv-alteplase-class",
+        "pharm-inf-acyclovir-class",
+        "pharm-endo-insulin-nph-class",
+        "pharm-endo-metformin-class",
+        "pharm-endo-levothyroxine-class",
+        "pharm-gir-omeprazole-class",
+        "pharm-ob-oral-contraceptive-class",
+        "pharm-cv-enoxaparin-class",
+        "pharm-gir-fluticasone-class",
+        "pharm-endo-propylthiouracil-class",
+        "pharm-gir-pancrelipase-class",
+        "pharm-gir-theophylline-class",
+        "pharm-inf-ceftriaxone-class",
+        "pharm-cns-amitriptyline-class",
+        "pharm-cns-bupropion-class",
+        "pharm-cns-donepezil-class",
+        "pharm-endo-glipizide-class",
+        "pharm-gir-ipratropium-class",
+        "pharm-gir-diphenhydramine-class",
+        "pharm-cns-benztropine-class",
+        "pharm-gir-montelukast-class",
+        "pharm-cv-norepinephrine-class",
+        "pharm-cv-epoetin-alfa-class",
+        "pharm-cns-carbamazepine-class",
+        "pharm-cns-valproic_acid-class",
+        "pharm-cv-warfarin-class",
+        "pharm-inf-tmp-smx-class",
+        "pharm-cns-phenelzine-class",
+        "pharm-cns-succinylcholine-class",
+        "pharm-gir-lactulose-class",
+        "pharm-gir-albuterol-class",
+        "pharm-cns-zolpidem-class",
+        "pharm-gir-ondansetron-class",
+        "pharm-cv-losartan-class",
+        "pharm-ob-terbutaline-class",
+        "pharm-cv-aspirin-class",
+        "pharm-cns-carbidopa_levodopa-class",
+        "pharm-cv-amlodipine-class",
+        "pharm-cv-atropine-class",
+        "pharm-cv-dopamine-class",
+        "pharm-cns-haloperidol-class",
+        "pharm-endo-prednisone-class"
+      ],
+      "minimumSize": 5
     },
     {
       "id": "mechanisms",

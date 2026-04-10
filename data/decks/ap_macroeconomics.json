@@ -2822,7 +2822,7 @@
         "Twin deficit hypothesis"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_short",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -3194,7 +3194,7 @@
         "Net foreign investment"
       ],
       "chainThemeId": 10,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_short",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -15592,7 +15592,7 @@
         "BOP"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_short",
       "difficulty": 1,
       "funScore": 5,
       "ageGroup": "all",
@@ -15629,7 +15629,7 @@
         "CA"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_short",
       "difficulty": 1,
       "funScore": 5,
       "ageGroup": "all",
@@ -15668,7 +15668,7 @@
         "CFA"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_long",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -15744,7 +15744,7 @@
         "Net capital inflow"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_long",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -16162,7 +16162,7 @@
         "Trade balance"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_short",
       "difficulty": 1,
       "funScore": 4,
       "ageGroup": "all",
@@ -16199,7 +16199,7 @@
         "FDI"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_long",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -16236,7 +16236,7 @@
         "Foreign portfolio investment"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_short",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -16274,7 +16274,7 @@
         "One-way transfers"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_short",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -16388,7 +16388,7 @@
         "Central bank reserves"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_short",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -16464,7 +16464,7 @@
         "Balance of trade in goods"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_long",
       "difficulty": 2,
       "funScore": 4,
       "ageGroup": "all",
@@ -16690,7 +16690,7 @@
         "Invisibles trade balance"
       ],
       "chainThemeId": 9,
-      "answerTypePoolId": "bop_account_terms",
+      "answerTypePoolId": "bop_account_terms_long",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -16723,26 +16723,41 @@
   ],
   "answerTypePools": [
     {
-      "id": "bop_account_terms",
-      "label": "Balance of Payments Terms",
+      "id": "bop_account_terms_short",
+      "label": "Balance of Payments Terms (short)",
       "answerFormat": "term",
       "factIds": [
-        "ap_macro_6a_bop_definition",
-        "ap_macro_6a_ca_deficit_cfa_surplus",
-        "ap_macro_6a_capital_financial_account",
-        "ap_macro_6a_current_account_components",
-        "ap_macro_6a_fdi_definition",
-        "ap_macro_6a_merchandise_trade_balance",
         "ap_macro_6a_net_exports_current_account",
+        "ap_macro_6b_twin_deficits",
+        "ap_macro_6a_current_account_components",
         "ap_macro_6a_official_reserves",
-        "ap_macro_6a_portfolio_investment",
-        "ap_macro_6a_services_trade_balance",
-        "ap_macro_6a_unilateral_transfers",
+        "ap_macro_6a_bop_definition",
         "ap_macro_6b_nco_definition",
-        "ap_macro_6b_twin_deficits"
+        "ap_macro_6a_portfolio_investment",
+        "ap_macro_6a_unilateral_transfers"
       ],
       "minimumSize": 5,
-      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Economic terms naturally vary in length",
+      "syntheticDistractors": [
+        "merchandise trade balance",
+        "services balance",
+        "unilateral transfers",
+        "statistical discrepancy",
+        "net investment income"
+      ]
+    },
+    {
+      "id": "bop_account_terms_long",
+      "label": "Balance of Payments Terms (long)",
+      "answerFormat": "term",
+      "factIds": [
+        "ap_macro_6a_services_trade_balance",
+        "ap_macro_6a_fdi_definition",
+        "ap_macro_6a_merchandise_trade_balance",
+        "ap_macro_6a_capital_financial_account",
+        "ap_macro_6a_ca_deficit_cfa_surplus"
+      ],
+      "minimumSize": 5,
       "homogeneityExemptNote": "Economic terms naturally vary in length",
       "syntheticDistractors": [
         "merchandise trade balance",
