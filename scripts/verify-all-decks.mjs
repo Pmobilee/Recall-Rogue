@@ -318,7 +318,7 @@ function getPoolDistractors(fact, deck, count = 3) {
 }
 
 // ---------------------------------------------------------------------------
-// Issue checking — 25 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks + 1 pool-homogeneity + 2 new answer-quality checks + 1 brace-leak check + 1 grammar-scar check + 1 semantic-category heuristic check)
+// Issue checking — 26 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks + 1 pool-homogeneity + 2 new answer-quality checks + 1 brace-leak check + 1 grammar-scar check + 2 semantic-category heuristic checks)
 // ---------------------------------------------------------------------------
 
 /**
@@ -643,6 +643,56 @@ function verifyDeck(deckId, deck) {
           addDeckIssue('Check #25 FAIL: grammar scar "' + scar.id + '" in fact "' + fact25.id + '" quizQuestion — pattern "' + scar.pattern + '" — ' + scar.description + ' — rewrite the question stem instead of using naive replacement');
           break; // one error per fact is sufficient
         }
+      }
+    }
+  }
+
+
+  // Check #26: semantic-category heuristics — capitalization mismatch + digits-in-some-but-not-others
+  // These are additional pool-homogeneity signals that detect cross-category contamination.
+  // Pattern 1: Capitalization mismatch — some answers are ALL_CAPS or Title_Case while others are lowercase.
+  //            Detects pools mixing product names, abbreviations, and descriptions.
+  // Pattern 2: Digits-some-not-others — some answers contain digits (dates, quantities) while others don't.
+  //            Detects pools mixing "Who" answers (names) with "When" answers (years/dates).
+  // 2026-04-10: Added after barcode (name in description pool), netflix (streaming in console pool),
+  //             and n64 (hardware innovation in mixed category pool) were found in wrong pools.
+  // Reference: .claude/rules/deck-quality.md §"Pool Design Rules — MANDATORY"
+  if (!isVocab) {
+    const factById26 = new Map((deck.facts || []).map(f => [f.id, f]));
+    const FULL_BRACKET_RE26 = /^\{(\d[\d,]*\.?\d*)\}$/;
+    for (const pool26 of (deck.answerTypePools || [])) {
+      if (pool26.homogeneityExempt === true) continue;
+      const answers = [];
+      for (const fid of poolFactIds(pool26)) {
+        const f = factById26.get(fid);
+        if (!f || !f.correctAnswer) continue;
+        if (FULL_BRACKET_RE26.test(f.correctAnswer)) continue;
+        answers.push(f.correctAnswer);
+      }
+      if (answers.length < 3) continue; // too few to detect patterns meaningfully
+
+      // Pattern 2: digits-some-not-others (indicates date/number mixed with names/descriptions)
+      const hasDigits = answers.filter(a => /\d/.test(a));
+      const noDigits = answers.filter(a => !/\d/.test(a));
+      const digitRatio = hasDigits.length / answers.length;
+      if (digitRatio > 0.1 && digitRatio < 0.9 && hasDigits.length >= 1 && noDigits.length >= 1) {
+        factWarnings.push({
+          index: 0,
+          factId: pool26.id,
+          msg: 'pool-semantic WARN: pool "' + pool26.id + '" mixes digit-containing answers (' + hasDigits.length + ', e.g. "' + hasDigits[0].slice(0,30) + '") with non-digit answers (' + noDigits.length + ', e.g. "' + noDigits[0].slice(0,30) + '") — possible date/name contamination. Split pool by answer category.',
+        });
+      }
+
+      // Pattern 1: all-caps abbreviations mixed with regular answers
+      const allCaps = answers.filter(a => a.length >= 2 && /^[A-Z0-9][A-Z0-9\s\-/()]{1,}$/.test(a) && a === a.toUpperCase() && /[A-Z]{2}/.test(a));
+      const notAllCaps = answers.filter(a => !/^[A-Z0-9\s\-/()]+$/.test(a) || a !== a.toUpperCase());
+      const capsRatio = allCaps.length / answers.length;
+      if (capsRatio > 0.1 && capsRatio < 0.9 && allCaps.length >= 1 && notAllCaps.length >= 1) {
+        factWarnings.push({
+          index: 0,
+          factId: pool26.id,
+          msg: 'pool-semantic WARN: pool "' + pool26.id + '" mixes ALL_CAPS abbreviations (' + allCaps.length + ', e.g. "' + allCaps[0].slice(0,30) + '") with regular answers — possible acronym/term contamination. Consider splitting into abbreviation pool and full-name pool.',
+        });
       }
     }
   }
