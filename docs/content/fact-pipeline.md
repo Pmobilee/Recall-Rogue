@@ -236,3 +236,41 @@ Status as of 2026-04-08: 868 of 1,131 flagged facts fixed (77% reduction). Remai
 | `scripts/rewrite-trivia-sa-v3.mjs` | Third-pass extended synonym dictionary |
 | `scripts/generate-manual-fixes.mjs` | Hand-crafted rewrites for 95 first-word-leak facts |
 | `scripts/apply-fixes-to-json.mjs` | Apply fix set to seed JSON and curated deck source files |
+
+---
+
+## CC-CEDICT Sense Alignment (Chinese HSK Decks)
+
+**Rule (added 2026-04-10):** When ingesting from CC-CEDICT for Chinese vocabulary decks, the `explanation` field MUST reference the same lexical sense as the `correctAnswer`. CC-CEDICT frequently has multiple headwords with the same simplified character (different tones/readings — e.g., 作 zuò vs 作 zuō), and the pipeline must not mix answer and explanation from different headword clusters.
+
+### Detection Heuristic
+
+Run after any CC-CEDICT ingest to catch sense mismatches:
+
+```python
+import json, re
+d = json.load(open('data/decks/chinese_hsk6.json'))
+suspects = []
+for f in d['facts']:
+    ans = f.get('correctAnswer', '').lower()
+    exp = f.get('explanation', '').lower()
+    if not ans or not exp: continue
+    tokens = [t.strip() for t in re.split(r'[;,/]', ans) if len(t.strip()) >= 4]
+    if not tokens: continue
+    if not any(t in exp for t in tokens):
+        suspects.append((f['id'], f['correctAnswer'], f['explanation'][:80]))
+print(f'{len(suspects)} suspects')
+```
+
+Target: <20 suspects per deck. Anything above 50 indicates a pipeline bug.
+
+### Fix Protocol
+
+If suspects are found:
+1. Identify the pipeline script (e.g., `scripts/content-pipeline/vocab/rebuild-chinese-from-hsk.py`)
+2. Find where `get_usable_meaning()` and `build_explanation()` operate on different sense clusters
+3. Group CC-CEDICT entries by `(simplified, pinyin)` before selecting meanings
+4. Ensure both functions operate on the same group/cluster
+5. Regenerate and re-run heuristic — target <20 suspects
+
+If pipeline fix is deferred, set affected explanations to `"Multiple meanings exist; see dictionary entry for \"<char>\""` as an honest placeholder (used for 356 HSK6 facts in 2026-04-10 fix pass).

@@ -1593,3 +1593,47 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **Lesson:** Any pool with >100 facts in a CED-structured AP deck is almost certainly a contamination risk. Split by unit as part of initial deck assembly, not post-audit.
 
 ---
+
+### 2026-04-10 — Dutch B1/B2 delisted from shipping (95% below CEFR scope)
+
+**What:** `dutch_b1` (232 facts) and `dutch_b2` (71 facts) were present in `data/decks/` and the Dutch `subdecks` array in `src/types/vocabulary.ts`. At those fact counts they are 95%+ below expected scope for their CEFR levels. Czech B1 has ~2,500 words and Spanish B1 has a similar range; Dutch B1/B2 should be ~2,500 and ~3,600 respectively.
+
+**Root cause:** The NT2Lex pipeline (CEFRLex data from `cental.uclouvain.be/cefrlex/`) ingested only a fraction of the available wordlist for the B1/B2 levels. The A1 and A2 decks have reasonable coverage; B1 and B2 were never fully ingested.
+
+**Fix:** Set `"hidden": true` on `dutch_b1.json` and `dutch_b2.json`. Removed `dutch_b1` and `dutch_b2` from the `subdecks` array in `src/types/vocabulary.ts`. Deck files preserved in full — no content deleted. Deferred re-ingest as a future project (see `docs/roadmap/known-issues-post-fix.md`).
+
+**Re-ingest path:** Use `scripts/content-pipeline/vocab/` pipeline with the NT2Lex B1/B2 wordlist segments. Target: ≥800 facts for B1 and ≥1,200 for B2. See known-issues doc for acceptance criteria and scripts.
+
+---
+
+### 2026-04-10 — HSK6 CC-CEDICT sense mismatch (356 facts)
+
+**What:** `chinese_hsk6.json` had 356 facts (13% of 2,666) where the `explanation` field described a different lexical sense than the `correctAnswer`. Examples:
+- `作`: answer="to do; to make", explanation described the sense "worker"
+- `哦`: answer="oh; I see", explanation described the sense "to chant"
+- `清`: answer="clear; clean", explanation described the Qing Dynasty sense
+- `藏`: answer="to hide; to store", explanation described the geographic sense "Tibet"
+
+**Root cause:** The CC-CEDICT import pipeline (`rebuild-chinese-from-hsk.py`) uses `get_usable_meaning()` to select the quiz answer — which picks the first non-bad sense. The `build_explanation()` function independently selects the same entry's `all_meanings[1:5]` for its "Also:" suffix. When CC-CEDICT lists multiple characters with the same simplified form (different pinyin/tones), the pipeline can pick an answer from one headword and an explanation from another headword's position in the array. The `build_explanation` format `"{char} ({pinyin}) — {first_meaning}. Also: ..."` uses `first_meaning` correctly but the pinyin can reference a different reading's sense cluster.
+
+**Detection heuristic:** Tokenize `correctAnswer` on `[;,/]`, keep tokens ≥4 chars, check if ANY token appears as substring in `explanation`. Misses are suspect sense mismatches. Run: see `scripts/content-pipeline/vocab/rebuild-chinese-from-hsk.py` for the pipeline; the heuristic is in the fix scripts.
+
+**Fix:** For each of the 356 suspect facts, set `explanation` to `"Multiple meanings exist; see dictionary entry for \"<char>\"."` This is honest — the answer IS correct, the old explanation was just wrong-sense text. Suspect count before: 356. After: 356 (the generic placeholder intentionally doesn't match the heuristic either — which is fine; the heuristic is for detecting WRONG explanations, not correct ones).
+
+**Future fix:** Fix `build_explanation()` to ensure it always uses the same headword/sense cluster as `get_usable_meaning()`. When CC-CEDICT has multiple entries for a simplified character, group by (simplified, pinyin) and pick explanation meanings from the same group.
+
+---
+
+### 2026-04-10 — Vocab english_meanings pool POS-split (14 decks) — adverb routing bug
+
+**What:** 14 Spanish/French/German vocabulary decks (A1-C2) had a single `english_meanings` pool mixing verbs, nouns, adjectives, and adverbs. At 3-option mastery=0 quizzes, a question about a verb could show a noun as a distractor — eliminable without any vocabulary knowledge (POS-TELL).
+
+**Fix:** Split `english_meanings` into per-POS sub-pools: `english_meanings_verbs`, `english_meanings_nouns`, `english_meanings_adjectives`, `english_meanings_adverbs`, `english_meanings_other`. Each fact's `answerTypePoolId` updated to its POS-specific pool. Small pools (<5 real facts) merged into `_nouns` (largest). Pools with few real facts padded with `syntheticDistractors` to reach 15 total. Spanish B1 `difunto` and `pendiente` had incorrect `partOfSpeech: "verb"` — corrected to `"adjective"` before splitting.
+
+**Critical bug discovered during implementation:** In the `pos_key()` routing function, the check `'verb' in p` evaluated `True` for `p = 'adverb'` (since "verb" is a substring of "adverb"). This routed ALL adverbs into the `_verbs` pool on the first pass. The fix: check `'adverb'` BEFORE `'verb'` in the if-chain. Always use substring checks in order from most-specific to least-specific.
+
+**Lesson:** `'verb' in 'adverb'` is `True` in Python. POS routing functions must check `adverb` before `verb`. The same issue applies to any pair where one POS string is a substring of another.
+
+**Totals:** 14 decks, 15,947 facts reassigned, 2 POS tag corrections (es-cefr-2617 difunto, es-cefr-2847 pendiente), 0 failures in `verify-all-decks.mjs` after fix.
+
+---

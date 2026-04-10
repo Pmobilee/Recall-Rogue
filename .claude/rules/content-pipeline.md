@@ -133,3 +133,27 @@ npm run build            # Production build (includes both steps above)
 Key scripts: `scripts/build-curated-db.mjs` (JSON→SQLite), `scripts/obfuscate-db.mjs` (XOR obfuscation). Runtime decode: `src/services/dbDecoder.ts`.
 
 **What is NOT shipped:** `data/decks/*.json` (repo only), `data/seed-pack.json` (repo only).
+
+## CC-CEDICT Sense Alignment — MANDATORY for Chinese Decks
+
+**When ingesting from CC-CEDICT, the `explanation` field MUST come from the SAME sense cluster as the `correctAnswer`.**
+
+CC-CEDICT has multiple headwords per simplified character (different tones/readings). The answer pipeline (`get_usable_meaning()`) picks the quiz answer from one sense; the explanation builder MUST reference that same sense — not a different reading's meaning cluster.
+
+### Validation step (run after every CC-CEDICT ingest):
+```python
+import json, re
+d = json.load(open('data/decks/chinese_hsk6.json'))
+suspects = []
+for f in d['facts']:
+    ans = f.get('correctAnswer', '').lower()
+    exp = f.get('explanation', '').lower()
+    tokens = [t.strip() for t in re.split(r'[;,/]', ans) if len(t.strip()) >= 4]
+    if tokens and not any(t in exp for t in tokens):
+        suspects.append(f['id'])
+print(f'{len(suspects)} suspects')  # Target: <20
+```
+
+If >50 suspects: pipeline bug — fix before shipping. If pipeline fix is deferred: set `explanation` to `"Multiple meanings exist; see dictionary entry for \"<char>\"."` as honest placeholder. **Never ship wrong-sense explanations** — they actively teach incorrect information.
+
+**Root cause of 2026-04-10 HSK6 incident:** 356 facts had mismatched sense (e.g., 作 answer="to do; to make" but explanation described "worker"). Full post-mortem in `docs/gotchas.md`.
