@@ -101,9 +101,12 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 | `examTags` | no | Filtering tags (e.g. `"USMLE_Step1"`, `"high_yield"`) |
 | `categoryL1` | no | Top-level domain category (e.g. `'history'`, `'science'`, `'language'`). Persisted to curated.db — read at runtime by `domainResolver.ts` to resolve card domain. Fixes category bleed (2026-04-08). |
 | `categoryL2` | no | Sub-domain category (e.g. `'ancient_rome'`, `'mammals'`). Persisted to curated.db alongside `categoryL1`. |
-| `quizResponseMode` | no | `'choice'` (default) or `'typing'` (text input) |
+| `quizResponseMode` | no | `'choice'` (default), `'typing'` (text input), or `'map_pin'` (player taps a map location) |
 | `quizMode` | no | `'text'`, `'image_question'`, or `'image_answers'` |
 | `volatile` | no | `true` if the answer may become outdated |
+| `mapCoordinates` | no | `[lat, lng]` decimal degrees — used with `quizResponseMode: 'map_pin'`. Set on all 168 world_capitals facts (2026-04-10). |
+| `mapRegion` | no | Broad geographic region for the map_pin quiz: `'europe'`, `'asia'`, `'middle_east'`, `'africa'`, `'north_america'`, `'south_america'`, `'oceania'` |
+| `mapDifficultyTier` | no | 1–5 map difficulty tier (1 = G7/iconic, 5 = obscure). Used to scale map accuracy thresholds in the map_pin quiz. |
 
 **partOfSpeech coverage:** As of 2026-04-03 all vocabulary decks (Japanese N1–5, Korean TOPIK 1–2, Chinese HSK 1–6, Spanish A1–B2, French A1–B2, German A1–B2, Dutch A1–B2, Czech A1–B2) have `partOfSpeech` on every fact. Values are lowercase: noun, verb, adjective, adverb, pronoun, preposition, conjunction, interjection, determiner, particle, number, phrase, expression. Note: japanese_n4 had 49 facts missing the field (facts with POS "word" in explanation) — backfilled 2026-04-03 using the same regex as `backfill-pos-field.mjs`.
 
