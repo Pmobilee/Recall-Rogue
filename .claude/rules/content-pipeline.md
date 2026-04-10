@@ -9,6 +9,7 @@
 - Grep for known broken patterns: "the this", "a this", "which this", "[Adjective] this", standalone "this" as noun
 - Verify grammar reads naturally as proper English
 - If >5% of samples are broken, reject the batch and rephrase individually
+- Examples of placeholder leaks caught by sampling: "Joseph This" → should be "Joseph Haydn", "Federal this" → should be "Federal Reserve", "device process" → should be "Bessemer process".
 
 ## Curriculum-Sourced Scope — For Educational Decks
 

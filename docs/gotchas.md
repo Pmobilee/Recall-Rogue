@@ -1457,3 +1457,15 @@ Q: "Which word is closest in meaning to 'pique-niquer'?"  ← synonym_pick templ
 **Fix:** Python script loaded the JSON, identified 47 broken facts (using case-insensitive pattern matching against known substitution patterns), and replaced each broken phrase with the medically accurate term derived from `correctAnswer`. Additionally identified 7 facts where "which anatomical structure" appeared in "which/what X type/approach" context — also fixed. Left 17 intentional uses of "anatomical structure" intact (genuine "which anatomical structure..." question forms and image_question prompts).
 
 **Lesson:** This is the third incident of batch-rewrite placeholder leaks (after the "this" cluster and the Tatoeba ID fabrication). The rule in `.claude/rules/content-pipeline.md` ("Sample 5-10 items after ANY batch operation") would have caught this immediately. It is not optional.
+
+---
+
+### 2026-04-10 — "this" placeholder artifacts in 8 decks (post-batch-rewrite cleanup)
+
+**What:** 27+ facts across 8 curated decks had unresolved "this" tokens in their `quizQuestion` fields — relics of a prior batch noun-replacement script that failed to substitute the correct noun in all cases. A parallel "device" artifact also appeared in `famous_inventions` (one fact). Affected decks: `music_history` (10 facts), `movies_cinema` (10 facts), `famous_inventions` (2 facts), `medieval_world` (10 facts), `ap_macroeconomics` (35 facts), `egyptian_mythology` (24 facts). `pharmacology` was locked by another agent and skipped. `famous_paintings` had 28 apparent "this" instances that were intentional — all are `image_question` facts where "this" correctly refers to the displayed painting.
+
+**Why:** A batch replacement script substituted nouns in question templates but left `this` as a placeholder when the target noun was unclear or ambiguous. Downstream, questions like "Joseph This" (should be "Joseph Haydn"), "Federal this" (should be "Federal Reserve"), and "Irving This" (should be "Irving Fisher") shipped undetected.
+
+**Fix:** Per-deck grep + targeted string replacement. Where "this" appeared in valid English usage (demonstrative pronoun referring to a prior noun), it was left unchanged. Only true placeholder artifacts were fixed.
+
+**Lesson:** Batch noun-replacement scripts must be audited by sampling at least 10+ outputs before merge. Simple grep for isolated `\bthis\b` in quizQuestion fields catches placeholder artifacts quickly. The `content-pipeline.md` "Batch Output Verification" rule must be consulted before accepting any batch rewrite result.
