@@ -277,6 +277,76 @@ For every new deck or major modification, run these steps in order:
 
 **Do not skip steps 4-5.** Passing all programmatic checks does not mean the deck plays well.
 
+## Quiz Sample Dump (`audit-dump-samples.ts`)
+
+The **quiz sample dump** (`scripts/audit-dump-samples.ts`) produces a JSONL file per deck at `data/audits/quiz-dumps/<deckId>.jsonl`. Each line is a fully rendered quiz question exactly as a player would see it — with shuffled answer options, correct index, distractor sources, and all fact metadata — rendered at mastery levels 0, 2, and 4.
+
+**Purpose:** Feeds downstream LLM content quality audits. Unlike `quiz-audit-engine.ts --render` which prints human-readable text for manual review, this script emits structured JSONL for programmatic processing (automated quality scoring, batch LLM review, CI regression).
+
+**Key behaviors:**
+- Stratified sampling across pools — every non-empty pool gets at least 1 fact, remaining quota distributed proportionally
+- Default sample: 30 facts per deck (auto-bumped to 60 for decks with 1000+ facts)
+- Each sampled fact rendered at 3 mastery levels → 3 / 4 / 5 answer options respectively
+- Reproducible: seeded by `djb2(deckId + seed)` — same seed = same output
+- Image/chess/map facts emitted as passthrough rows with all special fields preserved
+- Per-fact errors are logged to stderr and skipped — partial output is always written
+
+```bash
+# Single deck
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/audit-dump-samples.ts --deck solar_system
+
+# All decks (writes one .jsonl file per deck)
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/audit-dump-samples.ts
+
+# All decks, skip vocab and image decks, custom output dir
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/audit-dump-samples.ts --exclude-vocab --exclude-image --out /tmp/quiz-dumps
+```
+
+**Options:**
+
+| Option | Description |
+|--------|-------------|
+| `--deck <id>` | Single deck by ID (default: all decks) |
+| `--exclude-vocab` | Skip vocab-classified decks (chinese_hsk, japanese_, korean_, french_, etc.) |
+| `--exclude-image` | Skip image decks (world_flags and IMAGE_EXACT set) |
+| `--sample <N>` | Override sample quota per deck (default: 30 or 60 for large decks) |
+| `--out <dir>` | Output directory (default: `data/audits/quiz-dumps`) |
+| `--seed <N>` | Master seed for reproducible sampling (default: 20260410) |
+
+**Output schema** — each JSONL line:
+
+```jsonc
+{
+  "deckId": "solar_system",
+  "deckName": "Solar System",
+  "factId": "solar_system_neptune_strongest_winds",
+  "poolId": "planet_names",
+  "subDeckName": "The Planets & the Sun",  // null if no subDecks
+  "masteryLevel": 0,                        // 0, 2, or 4
+  "requestedDistractorCount": 2,            // 2 (m=0), 3 (m=2), 4 (m=4)
+  "templateId": "_fallback",
+  "renderedQuestion": "Which planet has the strongest winds...",
+  "correctAnswer": "Neptune",
+  "options": ["Uranus", "Venus", "Neptune"],  // shuffled
+  "correctIndex": 2,                           // options[correctIndex] === correctAnswer
+  "distractorSources": ["similar_difficulty", "similar_difficulty"],
+  "isNumerical": false,
+  "difficulty": 3,
+  "funScore": 9,
+  "explanation": "...",
+  "sourceName": "Wikipedia",
+  "sourceUrl": "...",                          // optional
+  "categoryL1": "space_astronomy",             // optional
+  "categoryL2": "planets_moons",               // optional
+  // Chess/map/image passthrough fields present when set on the fact:
+  // fenPosition, solutionMoves, tacticTheme, lichessRating,
+  // mapCoordinates, mapRegion, mapDifficultyTier,
+  // sentenceFurigana, sentenceRomaji, sentenceTranslation, grammarPointLabel
+}
+```
+
+**Read-only harness** — does NOT modify any deck JSON, `quiz-audit-engine.ts`, or `src/services/` files. Output directory `data/audits/quiz-dumps/` is gitignored (build artifact).
+
 ## Standard Verification Sequence
 
 After any code change, run in order:

@@ -131,6 +131,14 @@
 
 ---
 
+## Reports
+
+| Doc | Summary |
+|-----|---------|
+| [quiz-audit-2026-04-10](reports/quiz-audit-2026-04-10.md) | Master roll-up of 98-deck quiz quality audit — 115 BLOCKER / 256 MAJOR / 210 MINOR / 67 NIT across 10,212 rendered instances; 15 cross-deck patterns; top-20 worst facts; full per-deck scoreboard. Per-deck details in `data/audits/findings/`. |
+
+---
+
 ## Release & Operations
 
 | Doc | Summary |
