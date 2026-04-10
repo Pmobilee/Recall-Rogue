@@ -381,8 +381,11 @@ export const CHAIN_MOMENTUM_ENABLED = true;
 export const CHARGE_AP_SURCHARGE = 1;
 
 // Free First Charge system (AR-59.23)
-/** AP surcharge for the first Charge of a fact in a run. 0 = free. */
-export const FIRST_CHARGE_FREE_AP_SURCHARGE = 0;
+/** AP surcharge for the first Charge of a fact in a run. 1 = same as normal (disabled).
+ * Was 0 (free first charge) — removed Pass 8: undermined the QP-vs-charge decision
+ * by making nearly all Act 1 charges free. Chain color matching is the intended
+ * way to get free charges. */
+export const FIRST_CHARGE_FREE_AP_SURCHARGE = 1;
 /**
  * Damage multiplier for a wrong answer on the first free Charge.
  * 0.0× — card fizzles completely. The cost of guessing wrong on an unknown fact.
