@@ -1441,3 +1441,19 @@ Q: "Which word is closest in meaning to 'pique-niquer'?"  ← synonym_pick templ
 **Fix (2026-04-10):** Added `readingMatchesTargetWord(fact: DeckFact): boolean` to `questionTemplateSelector.ts`. Uses `normalize()` (lowercase + strip punctuation) on both fields and compares. Returns `false` if either field is absent (no block applied). The eligibility loop in `selectQuestionTemplate()` step 4 rejects any template whose `id` matches `READING_TEMPLATE_PATTERN = /^reading(_|$)/` when this returns `true`. The block covers all current reading template variants without needing individual case entries. O(1) per fact.
 
 **No deck JSON changes needed.** The fix is entirely engine-side.
+
+---
+
+### 2026-04-10 — "anatomical structure" placeholder leak in human_anatomy (47 facts)
+
+**What:** 47 facts in `data/decks/human_anatomy.json` had the literal string "anatomical structure" appearing in the `quizQuestion` field where a specific anatomical name should have been substituted during batch generation. Examples:
+
+- "the anatomical structure venosus shunts blood..." should read "the Ductus venosus shunts blood..."
+- "Why is the anatomical structure nervous system called the 'second brain'..." should read "the enteric nervous system..."
+- "a anatomical structure that affects only the epidermis..." should read "A burn that affects only the epidermis..."
+
+**Root cause:** The same pattern as the "this" cluster — a batch rewrite script that was supposed to substitute structure names into question templates left the placeholder tag in place. The correct name was always stored in `correctAnswer`; the substitution step failed silently.
+
+**Fix:** Python script loaded the JSON, identified 47 broken facts (using case-insensitive pattern matching against known substitution patterns), and replaced each broken phrase with the medically accurate term derived from `correctAnswer`. Additionally identified 7 facts where "which anatomical structure" appeared in "which/what X type/approach" context — also fixed. Left 17 intentional uses of "anatomical structure" intact (genuine "which anatomical structure..." question forms and image_question prompts).
+
+**Lesson:** This is the third incident of batch-rewrite placeholder leaks (after the "this" cluster and the Tatoeba ID fabrication). The rule in `.claude/rules/content-pipeline.md` ("Sample 5-10 items after ANY batch operation") would have caught this immediately. It is not optional.
