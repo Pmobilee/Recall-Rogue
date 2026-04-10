@@ -17,6 +17,13 @@
     "ageRating": "teen",
     "categoryL2": "ancient_classical"
   },
+  "anime_manga": {
+    "domain": "art_architecture",
+    "prefixSegments": 1,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "anime_manga"
+  },
   "ap_us_history": {
     "domain": "history",
     "prefixSegments": 2,
@@ -138,6 +145,21 @@
     "entitySegments": 1,
     "ageRating": "kid",
     "categoryL2": "chemistry_elements"
+  },
+  "pharmacology": {
+    "domain": "human_body_health",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "separator": "-",
+    "ageRating": "teen",
+    "categoryL2": "pharmacology"
+  },
+  "philosophy": {
+    "domain": "social_sciences",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "philosophy"
   },
   "pop_culture": {
     "domain": "general_knowledge",

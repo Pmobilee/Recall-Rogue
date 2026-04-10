@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-04-09T17:01:49.922Z",
-  "totalBridgedFacts": 5406,
+  "lastRun": "2026-04-10T01:42:28.641Z",
+  "totalBridgedFacts": 5872,
   "decks": {
     "ancient_greece": {
       "totalFacts": 246,
@@ -12,6 +12,12 @@
       "totalFacts": 275,
       "entities": 169,
       "bridged": 169,
+      "skipped": 0
+    },
+    "anime_manga": {
+      "totalFacts": 204,
+      "entities": 116,
+      "bridged": 116,
       "skipped": 0
     },
     "ap_us_history": {
@@ -114,6 +120,18 @@
       "totalFacts": 90,
       "entities": 71,
       "bridged": 71,
+      "skipped": 0
+    },
+    "pharmacology": {
+      "totalFacts": 405,
+      "entities": 98,
+      "bridged": 98,
+      "skipped": 0
+    },
+    "philosophy": {
+      "totalFacts": 425,
+      "entities": 252,
+      "bridged": 252,
       "skipped": 0
     },
     "pop_culture": {

@@ -89,8 +89,8 @@ const DOMAIN_NAMES = {
  * @param {number} entitySegments
  * @returns {string}
  */
-function getEntityKey(factId, prefixSegments, entitySegments) {
-  const parts = factId.split('_')
+function getEntityKey(factId, prefixSegments, entitySegments, separator = '_') {
+  const parts = factId.split(separator)
   const afterPrefix = parts.slice(prefixSegments)
   const entityParts = afterPrefix.slice(0, entitySegments)
   return entityParts.join('_')
@@ -433,7 +433,7 @@ function run() {
       continue
     }
 
-    const { prefixSegments, entitySegments = 1, skipChainThemes = [] } = deckConfig
+    const { prefixSegments, entitySegments = 1, skipChainThemes = [], separator = '_' } = deckConfig
     const skipThemeSet = new Set(skipChainThemes)
 
     // 5. Group facts by entity key
@@ -450,7 +450,7 @@ function run() {
       // Filter: skip image-dependent questions that reference the visual directly
       if (/this image|shown above|pictured/i.test(fact.quizQuestion ?? '')) continue
 
-      const entityKey = getEntityKey(fact.id, prefixSegments, entitySegments)
+      const entityKey = getEntityKey(fact.id, prefixSegments, entitySegments, separator)
       if (!entityKey) continue
 
       if (!entityGroups.has(entityKey)) entityGroups.set(entityKey, [])

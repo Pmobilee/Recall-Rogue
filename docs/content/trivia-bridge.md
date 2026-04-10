@@ -6,7 +6,7 @@
 
 ---
 
-> **MANDATORY:** This bridge is a required step in the deck publishing pipeline for ALL knowledge decks. Every knowledge deck commit must include updated `bridge-curated.json` and `bridge-manifest.json`. Language/vocab decks are exempt. See `/deck-master` Step 7 and `.claude/rules/content-pipeline.md`.
+> **MANDATORY:** This bridge is a required step in the deck publishing pipeline for ALL knowledge decks. Every knowledge deck commit must include updated `bridge-curated.json` and `bridge-manifest.json`. Language/vocabulary decks and grammar decks are exempt. See `/deck-master` Step 7 and `.claude/rules/content-pipeline.md`.
 
 ---
 
@@ -21,7 +21,7 @@ The isolation meant a player could master T-Rex facts in Study Temple (dinosaurs
 
 The **trivia bridge** fixes this. It is a build-time script that reads curated knowledge deck JSONs, selects the single best trivia question per entity, maps `DeckFact` fields to the `Fact` schema, and outputs a seed file (`bridge-curated.json`) that is ingested into `facts.db` alongside regular trivia.
 
-**Impact:** ~2,300+ new trivia facts across 24 knowledge decks (including `chess_tactics`, added 2026-04-10) — a 38%+ increase in the trivia pool — with shared FSRS states.
+**Impact:** ~2,800+ new trivia facts across 27+ knowledge decks — a 45%+ increase in the trivia pool — with shared FSRS states.
 
 ---
 
@@ -51,6 +51,7 @@ Config fields per deck:
 |---|---|
 | `prefixSegments` | Number of leading ID segments to skip (deck prefix + domain) |
 | `entitySegments` | Number of segments after the skip that form the entity name |
+| `separator` | Character used to split fact IDs (default `_`). Set to `"-"` for hyphen-separated IDs |
 
 **Examples:**
 
@@ -176,9 +177,12 @@ node scripts/build-facts-db.mjs
   "prefixSegments": 1,
   "entitySegments": 1,
   "ageRating": "all",
-  "categoryL2": "history_events"
+  "categoryL2": "history_events",
+  "separator": "-"
 }
 ```
+
+The `separator` field is optional (defaults to `_`). Only needed for decks with non-underscore ID separators (e.g. pharmacology uses `-`).
 
 2. Run the bridge: `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs --deck my_new_deck --dry-run`
 3. Verify entity grouping looks correct (each group should be a single named subject)
@@ -205,4 +209,4 @@ The `chess_tactics` deck (300 Lichess puzzles) is bridged to Trivia Dungeon with
 - Every bridged fact has a tag `"bridge:{deckId}"` (e.g. `"bridge:dinosaurs"`)
 - A summary manifest at `bridge-manifest.json` records per-deck counts, entity groups processed, and facts selected
 - Bridge facts can be queried from `facts.db` by filtering `tags LIKE '%bridge:%'`
-- Language decks are excluded — vocabulary facts only appear in Study Temple, never Trivia Dungeon
+- Language decks (vocabulary and grammar) are excluded — vocabulary facts and grammar drill facts only appear in Study Temple, never Trivia Dungeon
