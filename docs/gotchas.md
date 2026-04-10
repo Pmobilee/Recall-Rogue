@@ -1728,3 +1728,13 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 - Docs: no stale Bulwark references, no direct card.apCost reads in UI, registry updated (Bulwark: 18→9 block)
 
 **No issues found.** Overhaul is clean and ready to merge to main.
+
+### 2026-04-10 — Free First Charge branch removed from playCardAction
+
+**What:** The `else if (cardInHand.factId && runStateForCharge && isFirstChargeFree(...))` branch was fully deleted from `playCardAction` in `turnManager.ts`. `usedFreeCharge` local variable and all downstream references (interface field, guard conditions, `markFirstChargeUsed` calls, wrong-multiplier special case, fizzle log message) were removed. `isFirstChargeFree` import removed from `turnManager.ts` and `CardHand.svelte`. `getDisplayedChargeApCost` in `CardHand.svelte` had its `isFreeCharge` parameter removed.
+
+**Why:** The branch was already effectively disabled (Pass 8 set `FIRST_CHARGE_FREE_AP_SURCHARGE = 1`, same as the normal surcharge), but still ran `isFirstChargeFree()` and set `usedFreeCharge = true` when conditions matched. This caused wrong-answer first charges to use `getFirstChargeWrongMultiplier()` (0.0×) instead of the normal `FIZZLE_EFFECT_RATIO (0.50×)`, meaning completely free first charges for wrong answers despite the AP surcharge "fix". Cleaner to remove the branch entirely.
+
+**What was kept:** `FIRST_CHARGE_FREE_AP_SURCHARGE` and `FIRST_CHARGE_FREE_WRONG_MULTIPLIER` constants in `balance.ts`, `firstChargeFreeFactIds` field in `RunState`/`SerializedRunState`/save-load — preserved for save-format backward compatibility. `isFirstChargeFree`, `markFirstChargeUsed`, `getFirstChargeWrongMultiplier` functions remain in `discoverySystem.ts` for historical reference.
+
+**Lesson:** When disabling a mechanic by setting its constant to a no-op value, also remove the branch that calls it. A "disabled via constant = 1" mechanic that still runs its guard conditions and sets state variables can have subtle side effects.
