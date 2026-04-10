@@ -1697,3 +1697,17 @@ Both return early WITHOUT mutating the screen store.
 **Fix:** Updated all assertions and descriptions to match current production behavior. Threshold bumped to 1920 (50 above current count) with inline baseline history.
 
 **Lesson:** Any balance pass that changes constants in `src/data/balance.ts` or `src/services/cardUpgradeService.ts` MUST include a same-commit scan for tests that hardcode the old values. The test descriptions often encode the old value (e.g., "qpValue=6", "0.55", "5.75") making them easy to grep. Add this to the balance-pass checklist: `grep -rn "<old_value>" tests/unit/` after every constant change.
+
+---
+
+### 2026-04-10 — LOW-18 investigation: Philosophy NEW badge — low contrast, not clipping
+
+**What:** Playtest testers reported the NEW badge on the Philosophy deck card was "not visible or clipped." Investigation via Docker visual verification confirmed the badge IS rendering correctly in the DOM — `getBoundingClientRect` shows `(626, 181) 56x25` within viewport, NOT marked HIDDEN in layout dump. The badge was not clipped by `overflow: hidden` on `.art-area`.
+
+**Root cause:** Low visual contrast. The `badge-new` background was `rgba(99, 102, 241, 0.85)` — a purple/indigo color — which blends with the Philosophy deck's dark purple/indigo library bookshelf art. Other decks with contrasting art colors (Pop Culture pink, Solar System dark blue) had clearly visible badges. There was no `box-shadow` or `text-shadow` to separate the badge from any background.
+
+**Fix:** Added `box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.25)` to `.badge` base class in `DeckTileV2.svelte` — gives all badges a dark shadow outline that works against any background color. Increased badge opacity from 0.85→0.95. Added `text-shadow: 0 1px 2px rgba(0,0,0,0.4)` to white-text badges (NEW, CONTINUE).
+
+**Lesson:** When badge/overlay colors are chosen to match the app's color palette (indigo), they can accidentally blend with deck art of the same hue. Always add a `box-shadow` dark outline to badges that appear over arbitrary image backgrounds. Layout dump "not HIDDEN" does not mean "visually readable."
+
+**Screenshot ref:** Before: `/tmp/rr-docker-visual/low18-verify_none_1775816795022/screenshot.png` — After: `/tmp/rr-docker-visual/low18-after_none_1775817147034/screenshot.png`
