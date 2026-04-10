@@ -22,7 +22,8 @@
 - Cards start WEAKER at L0 (strike QP=3, block QP=3) and grow through mastery
 - Creative milestones at L3/L5: new effects, AP cost reductions, hit count changes
 - Old `getMasteryBaseBonus()` / `perLevelDelta` is @deprecated — fallback bridge still works
-- CC is ALWAYS computed as `qpValue × 1.75`, never stored in stat tables
+- CC is ALWAYS computed as `qpValue × CHARGE_CORRECT_MULTIPLIER (1.50)`, never stored in stat tables
+- AP cost at runtime: ALWAYS use `getEffectiveApCost(card)` from `cardUpgradeService.ts` — reads stat table `apCost` override, falls back to seeded `card.apCost`. Direct `card.apCost` reads are stale.
 - Tier-based damage multipliers REMOVED — all active tiers = 1.0×
 - Catch-up mastery: newly acquired cards start at 0.5-1.5× deck avg mastery (see catchUpMasteryService.ts)
 

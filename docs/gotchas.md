@@ -1677,3 +1677,15 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **Fix:** Moved `empty_chain_themes_runtime` and `mega_pool_runtime_warning` from `runChecks()` to `auditDeck()`, using the existing `factResults.push(synthetic_pool_level_result)` pattern from the existing `min_pool_facts` check.
 
 **Rule:** Any check that is conceptually deck-level (not per-fact) MUST be placed in `auditDeck()`, not in `runChecks()`. The pattern in `auditDeck()` around line 900 shows how to emit a synthetic FactAuditResult for deck-level issues.
+
+---
+
+### 2026-04-10 — Mastery apCost reductions were dead data
+
+**What:** `MASTERY_STAT_TABLES` levels have per-level `apCost` overrides meant to make chase cards cheaper at L3/L5 (e.g. Heavy Strike L5→1 AP, Smite L5→1 AP, Bulwark L5→1 AP). But nothing read them at runtime — `card.apCost` was seeded once from `mechanic.apCost` and never refreshed on mastery-up. Players never got the promised discounts.
+
+**Why:** `runPoolBuilder.applyMechanics()` sets `card.apCost = mechanic.apCost` at card-build time. `masteryUpgrade()` only bumps `masteryLevel`. `turnManager` charged `cardInHand.apCost` directly.
+
+**Fix:** Added `getEffectiveApCost(card)` helper in `src/services/cardUpgradeService.ts` that prefers `getMasteryStats(id, level).apCost` and falls back to `card.apCost`. All readers (turnManager, cardDescriptionService, playtest dev tools) now use the helper. `card.apCost` remains as the seeded baseline for save compatibility — effective cost is layered on read, not on mutation.
+
+**Lesson:** When adding a new unified stat system that parallels an old field, grep for every callsite reading that field (e.g. `\.apCost`) and verify they all use the new accessor. A field that looks correct in the stat table but isn't wired is invisible in code review — no TypeScript error, no test failure, just silent wrong behavior.
