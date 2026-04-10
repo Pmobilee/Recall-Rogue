@@ -93,8 +93,11 @@ const TEMPLATES_ONLY_DEFINITION: QuestionTemplate[] = [
 function makeDeck(facts: DeckFact[], templates: QuestionTemplate[] = TEMPLATES_BOTH): CuratedDeck {
   const pool: AnswerTypePool = {
     id: 'english_meanings',
+    label: 'English meanings',
+    answerFormat: 'word',
     factIds: facts.map(f => f.id),
     syntheticDistractors: [],
+    minimumSize: 5,
   };
 
   return {

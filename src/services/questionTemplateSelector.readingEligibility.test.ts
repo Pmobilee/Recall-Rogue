@@ -112,8 +112,11 @@ const TEMPLATES_ONLY_READING_HIRAGANA: QuestionTemplate[] = [
 function makeDeck(facts: DeckFact[], templates: QuestionTemplate[] = TEMPLATES_BOTH): CuratedDeck {
   const pool: AnswerTypePool = {
     id: 'readings',
+    label: 'Readings',
+    answerFormat: 'word',
     factIds: facts.map(f => f.id),
     syntheticDistractors: [],
+    minimumSize: 5,
   };
 
   return {
