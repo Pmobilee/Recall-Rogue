@@ -1,7 +1,7 @@
 # Card System Mechanics
 
 > **Purpose:** Card entity, card types, tier system, damage formula, mastery system, and card creation pipeline.
-> **Last verified:** 2026-04-10 (Pass 8 balance: eruption X-cost wired, fortify cap 30, precision_strike 8→6 mult, feedback_loop CC 40→28 +12 flow)
+> **Last verified:** 2026-04-10 (Pass 8 + L0 Balance Overhaul: Bulwark 3AP→2AP/18 block→9 block; 9 card L0 bumps; 2 new mastery tables; monotonic invariants enforced)
 > **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/services/catchUpMasteryService.ts`, `src/data/balance.ts`
 
 > **See also:** [`card-mechanics.md`](card-mechanics.md) — Complete table of all 50+ mechanics (attack, shield, buff, debuff, utility, wild).
@@ -336,6 +336,43 @@ Several mechanics have designed creative milestones at key mastery levels that c
 | `fortify` | Block scaling capped at 30 to prevent exponential snowball | `currentBlock × 0.75` unlimited | `min(currentBlock, 30) × 0.75` (max ~22 from shield scaling + baseValue) |
 | `precision_strike` | CC difficulty multiplier reduced | base=8, L5=16 | base=6, L5=12 — new CC at 2 distractors: 18, at 4: 30 |
 | `feedback_loop` | CC base damage and flow state bonus reduced | 40 base, +16 flow (max 56) | 28 base, +12 flow (max 40) |
+
+### L0 Balance Overhaul (2026-04-10)
+
+Motivated by new player experience: too many 2-AP cards are unplayable at L0. Nine mechanics buffed at L0; mastery tables now strictly enforce monotonic invariants.
+
+**Bulwark fix (src/data/mechanics.ts):** baseValue 18→9, apCost 3→2, chargeCorrectValue 36→16, chargeWrongValue 5 (unchanged). Now matches the mastery stat table L0 entry. Description updated.
+
+**9-card L0 bumps in src/services/cardUpgradeService.ts (MASTERY_STAT_TABLES):**
+
+| Mechanic | L0 Before | L0 After | Notes |
+|---|---|---|---|
+| multi_hit | qpValue=1, hitCount=2 | qpValue=2, hitCount=2 | L1 also bumped 1→2 to preserve monotonic |
+| lifetap | qpValue=3 | qpValue=5 | L1 bumped 4→5 to preserve monotonic |
+| bash | qpValue=3, apCost=2 | qpValue=4, apCost=2 | Unchanged L1+ |
+| chain_lightning | qpValue=3, apCost=2 | qpValue=4, apCost=2 | L1+L2 bumped 4→5 to preserve monotonic |
+| smite | qpValue=6, apCost=2 | qpValue=7, apCost=2 | L1-L4 shifted +1 to preserve monotonic; L5 kept at 12 |
+| hemorrhage | qpValue=2 (all L0-L2) | qpValue=4 (all L0-L2) | L3: 3→5, L4: 3→5, L5: 4→6 |
+| fortify | qpValue=4, apCost=2 | qpValue=5, apCost=2 | L1-L4 shifted +1; L5 unchanged |
+| overheal | qpValue=5, apCost=2 | qpValue=6, apCost=2 | L1-L5 shifted +1; **Bug fix**: L4 now has apCost:1 (was missing — AP reverted to 2 at L4) |
+| ironhide | qpValue=5, apCost=2 | qpValue=6, apCost=2 | **Bug fix**: L3 dropped from 6→5 (non-monotonic); fixed L3-L4 to 7; L5 bumped 7→8 |
+
+**Latent monotonic bugs fixed (caught by regression tests):**
+- riposte L5: qpValue was 3 (< L4=4) — fixed to 4. The riposte_shield_apply tag is still the wow moment.
+- stagger L5: qpValue was 0 (< L4=1, apCost=0 free card) — fixed to 1. Primary value is the action-skip, not qpValue.
+
+**Phase 4 — New mastery tables added:**
+- burnout_shield: 6-level table (qpValue 5→13). L5 gains burnout_no_exhaust tag (design intent — not yet wired in cardEffectResolver.ts).
+- knowledge_ward: 6-level table (qpValue 6→12). L3+ gains knowledge_ward_cleanse tag (design intent — not yet wired).
+- Both mechanics previously used legacy getMasteryBaseBonus() bridge; now have explicit MASTERY_STAT_TABLES entries.
+
+**Phase 5 — Regression tests added:**
+- tests/unit/cardUpgradeService-apCost.test.ts (34 tests) — enforces:
+  - mechanic.apCost vs MASTERY_STAT_TABLES L0 apCost agreement
+  - AP cost monotonically non-increasing with mastery
+  - qpValue monotonically non-decreasing with mastery
+  - Per-mechanic getEffectiveApCost checks for all mechanics with AP reductions
+  - Spot-checks for all 9 bumped cards and 2 new tables
 
 ### Tag System — How Tags Work in the Resolver
 

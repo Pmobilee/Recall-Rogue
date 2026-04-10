@@ -295,12 +295,12 @@ describe('Smite (AR-264)', () => {
     resetReviewQueue();
   });
 
-  it('QP: deals 6 damage (stat table L0 QP=6; flat, independent of fog)', () => {
+  it('QP: deals 7 damage (stat table L0 QP=7; flat, independent of fog — bumped 6→7 L0 overhaul 2026-04-10)', () => {
     const card = makeCard({ mechanicId: 'smite' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'quick',
     });
-    expect(result.damageDealt).toBe(6);
+    expect(result.damageDealt).toBe(7);
   });
 
   it('CC at fog 0 (flow_state, start): deals 70 damage (10 + 6×(10-0))', () => {

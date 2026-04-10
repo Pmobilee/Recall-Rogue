@@ -128,11 +128,11 @@ describe('smite mechanic', () => {
     resetAura(); // fog 0 = flow state
   });
 
-  it('QP: deals 6 damage at L0 (stat table qpValue=6 overrides quickPlayValue=10)', () => {
-    // MASTERY_STAT_TABLES.smite[0].qpValue=6; masteryBonus = 6-10 = -4; finalValue = 10-4 = 6.
+  it('QP: deals 7 damage at L0 (stat table qpValue=7 overrides quickPlayValue=10) — bumped 6→7 (L0 balance overhaul 2026-04-10)', () => {
+    // MASTERY_STAT_TABLES.smite[0].qpValue=7; masteryBonus = 7-10 = -3; finalValue = 10-3 = 7.
     // Mechanic def quickPlayValue=10 is the L5 target, not the L0 starting value.
     const result = resolve('smite', 'quick');
-    expect(result.damageDealt).toBe(6);
+    expect(result.damageDealt).toBe(7);
   });
 
   it('CC at fog=0 (flow state): 10 + 6*(10-0) = 70 damage', () => {
