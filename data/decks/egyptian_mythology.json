@@ -6558,5 +6558,37 @@
         "egypt_temp_opet_route"
       ]
     }
+  ],
+  "chainThemes": [
+    {
+      "id": 0,
+      "name": "The Major Gods",
+      "color": "#D4AF37",
+      "description": "Ra, Isis, Osiris, Horus, Seth, and the Egyptian pantheon"
+    },
+    {
+      "id": 1,
+      "name": "Creation & Cosmology",
+      "color": "#1E90FF",
+      "description": "Egyptian creation myths, the Ennead, and cosmic order"
+    },
+    {
+      "id": 2,
+      "name": "Death & the Afterlife",
+      "color": "#2F2F2F",
+      "description": "The Book of the Dead, judgment, mummification, and Osiris"
+    },
+    {
+      "id": 3,
+      "name": "Sacred Animals & Symbols",
+      "color": "#228B22",
+      "description": "Cats, ibis, scarabs, the ankh, and sacred symbolism"
+    },
+    {
+      "id": 4,
+      "name": "Temples & Rituals",
+      "color": "#8B4513",
+      "description": "Priesthood, offerings, festivals, and religious practice"
+    }
   ]
 }

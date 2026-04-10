@@ -6058,7 +6058,7 @@
         "8"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "object_names",
+      "answerTypePoolId": "bracket_numbers",
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
@@ -14722,7 +14722,8 @@
         "myth_norse_hel_baldur_resurrection",
         "myth_norse_vidar_avenge_odin",
         "myth_norse_vidar_survives_ragnarok"
-      ]
+      ],
+      "chainThemeId": 0
     },
     {
       "id": "nine_realms",
@@ -14753,7 +14754,8 @@
         "myth_norse_realm_mimir_well_eye",
         "myth_norse_realm_well_urd_council",
         "myth_norse_realm_bifrost_shatter"
-      ]
+      ],
+      "chainThemeId": 1
     },
     {
       "id": "creation_ragnarok",
@@ -14789,7 +14791,8 @@
         "myth_norse_ragnarok_naglfar_nails",
         "myth_norse_ragnarok_stars_vanish",
         "myth_norse_ragnarok_golden_pieces"
-      ]
+      ],
+      "chainThemeId": 2
     },
     {
       "id": "heroes_sagas",
@@ -14830,7 +14833,8 @@
         "myth_norse_shieldmaiden_debate",
         "myth_norse_einherjar_training",
         "myth_norse_andvaranaut_owners"
-      ]
+      ],
+      "chainThemeId": 3
     },
     {
       "id": "thor_adventures",
@@ -14861,7 +14865,8 @@
         "myth_norse_thor_mokkurkalfi",
         "myth_norse_thor_harbard",
         "myth_norse_thor_protector_midgard"
-      ]
+      ],
+      "chainThemeId": 0
     },
     {
       "id": "creatures_monsters",
@@ -14902,7 +14907,8 @@
         "myth_norse_draugr_burial",
         "myth_norse_kraken_origin",
         "myth_norse_jormungandr_ouroboros"
-      ]
+      ],
+      "chainThemeId": 4
     },
     {
       "id": "trickery_fate_runes",
@@ -14933,7 +14939,8 @@
         "myth_norse_seidr_volva",
         "myth_norse_norns_newborn",
         "myth_norse_ragnarok_cycle"
-      ]
+      ],
+      "chainThemeId": 5
     }
   ],
   "answerTypePools": [
@@ -15138,7 +15145,6 @@
         "myth_norse_fenrir_binding",
         "myth_norse_jormungandr_size",
         "myth_norse_jormungandr_ragnarok",
-        "myth_norse_sleipnir_legs",
         "myth_norse_surtr_name_meaning",
         "myth_norse_nidhogg_gnaws",
         "myth_norse_garm_helheim",
@@ -15207,6 +15213,13 @@
         "myth_norse_loki_thiazi_idunn"
       ],
       "minimumSize": 5
+    },
+    {
+      "id": "bracket_numbers",
+      "factIds": [
+        "myth_norse_sleipnir_legs"
+      ],
+      "syntheticDistractors": []
     }
   ],
   "synonymGroups": [
@@ -15530,6 +15543,44 @@
         "myth_norse_realm_alfheim"
       ],
       "reason": "Both peaceful realms"
+    }
+  ],
+  "chainThemes": [
+    {
+      "id": 0,
+      "name": "The Aesir & Vanir",
+      "color": "#4169E1",
+      "description": "Odin, Thor, Freya, and the Norse pantheon"
+    },
+    {
+      "id": 1,
+      "name": "The Nine Realms",
+      "color": "#228B22",
+      "description": "Asgard, Midgard, Jotunheim, and the world tree Yggdrasil"
+    },
+    {
+      "id": 2,
+      "name": "Ragnarok & Creation",
+      "color": "#8B0000",
+      "description": "The creation of the world and the prophesied end of days"
+    },
+    {
+      "id": 3,
+      "name": "Heroes & Sagas",
+      "color": "#B8860B",
+      "description": "Sigurd, the Volsunga Saga, and legendary Norse heroes"
+    },
+    {
+      "id": 4,
+      "name": "Creatures & Monsters",
+      "color": "#2F4F4F",
+      "description": "Fenrir, Jormungandr, Sleipnir, and Norse mythical beasts"
+    },
+    {
+      "id": 5,
+      "name": "Trickery, Fate & Runes",
+      "color": "#6C3483",
+      "description": "Loki's mischief, the Norns, and the power of runes"
     }
   ]
 }

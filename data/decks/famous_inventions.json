@@ -6112,7 +6112,7 @@
       "correctAnswer": "Approximately six months",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "invention_names_long",
+      "answerTypePoolId": "duration_answers",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "How long after Jack Kilby's first IC demonstration did Robert Noyce develop his practical monolithic IC chip?",
@@ -6365,7 +6365,6 @@
         "inv_3_gps_accuracy",
         "inv_4_pat_wiper_patent",
         "inv_0_wheel_oldest",
-        "inv_3_ic_months",
         "inv_2_nylon_toothbrush"
       ],
       "label": "invention_names (long)"
@@ -6588,6 +6587,29 @@
         "45 kg (99 lb)",
         "300,000"
       ]
+    },
+    {
+      "id": "duration_answers",
+      "factIds": [
+        "inv_3_ic_months"
+      ],
+      "syntheticDistractors": [
+        "Several months",
+        "About one year",
+        "Two to three years",
+        "Three months",
+        "Less than a month",
+        "Over five years",
+        "About two weeks",
+        "Nearly a decade",
+        "Approximately one year",
+        "Several years",
+        "About six weeks",
+        "Just under a year",
+        "More than two years",
+        "Roughly three months"
+      ],
+      "minimumSize": 1
     }
   ],
   "synonymGroups": [],

@@ -5296,5 +5296,37 @@
         "dino_img_therizinosaurus"
       ]
     }
+  ],
+  "chainThemes": [
+    {
+      "id": 0,
+      "name": "Species & Classification",
+      "color": "#228B22",
+      "description": "Major dinosaur species, types, and taxonomic groups"
+    },
+    {
+      "id": 1,
+      "name": "Geological Periods",
+      "color": "#8B4513",
+      "description": "Triassic, Jurassic, and Cretaceous periods and timelines"
+    },
+    {
+      "id": 2,
+      "name": "Paleontology & Discovery",
+      "color": "#4682B4",
+      "description": "Famous fossils, paleontologists, and the science of discovery"
+    },
+    {
+      "id": 3,
+      "name": "Biology & Behavior",
+      "color": "#2E8B57",
+      "description": "Dinosaur anatomy, feeding, locomotion, and social behavior"
+    },
+    {
+      "id": 4,
+      "name": "Extinction & Legacy",
+      "color": "#8B0000",
+      "description": "K-Pg extinction, surviving lineages, and cultural impact"
+    }
   ]
 }

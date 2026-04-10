@@ -256,3 +256,28 @@ npm run build:curated
 6. Remove the original `english_meanings` pool.
 7. **CRITICAL:** In the POS routing function, check `adverb` BEFORE `verb` — `'verb' in 'adverb'` is `True` in Python, so naive ordering routes adverbs into the verbs pool.
 8. Run `node scripts/verify-all-decks.mjs` — 0 failures required.
+
+### Anti-Pattern 11: Numeric facts in non-numeric pools
+
+**Rule:** Any fact whose `correctAnswer` is a bare number (integer, count, or percentage without additional text) MUST be placed in a `bracket_numbers` pool, NOT in name or label pools.
+
+**Why:** The 2026-04-10 audit found `myth_norse_sleipnir_legs` (answer "8") in `object_names` and `nasa_moonwalkers_total` (answer "12") in `launch_years`. At mastery 4, "8" appeared as a distractor for "What object did Thrym place on Freyja's lap?" — trivially eliminable because a bare number is not an object name. Similarly, duration answers ("Approximately six months") must not live in device-name pools.
+
+**How to apply:**
+1. After any pool design, grep for facts whose `correctAnswer` matches `^\d+$` or is a bare number string. Confirm they're in a `bracket_numbers` pool.
+2. Duration strings ("X weeks", "X months", "X years") belong in a `duration_answers` pool with duration-shaped synthetics.
+3. Percentage values ("75%", "~45%") belong in a `percentage_values` pool, not in year or count pools.
+4. Run `verify-all-decks.mjs` — homogeneity check #20 will flag pools mixing 1-digit numbers with multi-word names.
+
+### Anti-Pattern 12: Knowledge decks without chainThemes
+
+**Rule:** Every knowledge deck (non-vocabulary, non-grammar) MUST have a populated `chainThemes` array with ≥3 entries before deployment. Every sub-deck in the deck MUST have a `chainThemeId` field pointing to one of those themes.
+
+**Why:** The 2026-04-10 audit found 8+ knowledge decks with `chainThemes: []` despite having sub-decks with `chainThemeId` values on facts. Without `chainThemes`, the Study Temple chain mechanic has no theme definitions — the chain system falls back and players never experience the knowledge chain progression mechanic. Confirmed across `ancient_greece`, `ancient_rome`, `world_war_ii`, `greek_mythology`, `norse_mythology`, `egyptian_mythology`, `mammals_world`, `dinosaurs`, `medieval_world`.
+
+**How to apply:**
+1. When authoring a knowledge deck with sub-decks: define `chainThemes` in the same authoring pass, not after the fact.
+2. Derive themes from sub-deck names — each sub-deck maps to its most relevant chain theme.
+3. Assign `chainThemeId` on each sub-deck object (not just on individual facts).
+4. Verify: `jq '.chainThemes | length' data/decks/<name>.json` — must be ≥3.
+5. Facts already carry `chainThemeId` via their sub-deck membership; the `chainThemes` array is the lookup table that makes those IDs meaningful at runtime.

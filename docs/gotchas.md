@@ -1637,3 +1637,33 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **Totals:** 14 decks, 15,947 facts reassigned, 2 POS tag corrections (es-cefr-2617 difunto, es-cefr-2847 pendiente), 0 failures in `verify-all-decks.mjs` after fix.
 
 ---
+
+---
+
+### 2026-04-10 — History catch-all pool splits
+
+**What:** History decks (`ancient_greece`, `ancient_rome`, `world_war_ii`) had single mega-pools spanning entire historical scopes — `historical_phrases_long` (87 facts), `historical_phrases` (80 facts), `historical_events` (167 facts). These caused POOL-CONTAM where distractors from completely different eras/topics competed: "Scientific history", "Died in prison from gangrene", and "The Macedonian phalanx" as co-distractors for a single question.
+
+**Fix:** Split by `chainThemeId` (for ancient_greece/rome where sub-decks already had theme assignments) and by sub-deck grouping (for WWII where 16 sub-decks were consolidated into 5 thematic pools). Total: 87+80+167 = 334 facts reassigned across 7+7+5 = 19 new pools.
+
+**Lesson:** Any knowledge-deck pool with >30 facts that spans multiple sub-decks is a POOL-CONTAM source. Use `chainThemeId` or sub-deck membership as the split axis — facts already carry this metadata if sub-decks are defined.
+
+---
+
+### 2026-04-10 — Numeric pool misclassification cleanup
+
+**What:** Count-type answers ("8" for Sleipnir's legs, "12" for Apollo moonwalkers) were placed in non-numeric pools (`object_names`, `launch_years`). This caused them to bleed as nonsensical distractors into unrelated questions: "8" appeared as an option for "What object did Thrym place on Freyja's lap?" and "12" appeared in year-format distractor sets.
+
+**Fix:** Moved both facts to `bracket_numbers` pools in their respective decks (`norse_mythology`, `nasa_missions`). Also moved the "Approximately six months" duration answer from `invention_names_long` to a new `duration_answers` pool in `famous_inventions`.
+
+**Lesson:** Any `correctAnswer` that is a bare number (integer or simple count) belongs in a `bracket_numbers` pool. Duration strings ("X weeks", "X months") belong in a `duration_answers` pool. Never put numerics in name/label pools.
+
+---
+
+### 2026-04-10 — chainThemes added to 9 knowledge decks
+
+**What:** Eight knowledge decks (`ancient_greece`, `ancient_rome`, `world_war_ii`, `greek_mythology`, `norse_mythology`, `egyptian_mythology`, `mammals_world`, `dinosaurs`) had `chainThemes: []` even though their sub-decks or facts already carried `chainThemeId` values. Without a populated `chainThemes` array, the Study Temple chain mechanic cannot activate — the engine has no theme definitions to display or track. Medieval_world was also fixed.
+
+**Fix:** Added `chainThemes` arrays (4–8 themes per deck) derived from existing sub-deck structure. Sub-deck `chainThemeId` fields were also set where missing. No fact data was changed.
+
+**Lesson:** When authoring a knowledge deck with sub-decks, always populate `chainThemes` in the same pass. Sub-decks without a corresponding `chainThemes` entry silently disable the chain mechanic. Run `jq '.chainThemes | length' data/decks/<name>.json` to quickly check.

@@ -5013,7 +5013,7 @@
         "Zhang Heng",
         "Zu Chongzhi"
       ],
-      "quizQuestion": "which dynasty polymath engineer built the 40-foot astronomical clock tower in Kaifeng between 1088–1094?",
+      "quizQuestion": "Which dynasty polymath engineer built the 40-foot astronomical clock tower in Kaifeng between 1088–1094?",
       "explanation": "Su Song (1020–1101) built the astronomical clock tower in Kaifeng, with the wooden model completed in 1088 and the final bronze version by 1094. Emperor Zhezong sponsored the project in 1086 to compete with the Liao for 'scientific and national superiority.' The Jurchen army dismantled the clock in 1127 when they captured Kaifeng. Source: Wikipedia, Su Song.",
       "wowFactor": "Su Song built his clock because the Song Emperor wanted to outclass a rival state in scientific prestige. 'National superiority' through technology is not a modern invention.",
       "visualDescription": "Pixel art of Su Song in scholar's robes examining engineering drawings for his clock tower, craftsmen casting bronze components in a workshop around him.",
@@ -6169,7 +6169,7 @@
         "Mappa Mundi of Hereford",
         "Al-Idrisi Map"
       ],
-      "quizQuestion": "which European cartographic work described Mansa Musa as 'the richest man in the region' and depicted him holding a gold nugget?",
+      "quizQuestion": "Which European cartographic work described Mansa Musa as 'the richest man in the region' and depicted him holding a gold nugget?",
       "explanation": "The Catalan Atlas of 1375 describes Mansa Musa as 'the richest man in the region' and depicts him on the map holding a golden orb. Modern claims that he was 'the richest person in history' are unverifiable — Time magazine states 'There's really no way to put an accurate number on his wealth.' Source: Wikipedia, Mansa Musa.",
       "wowFactor": "The Catalan Atlas was a European map made 50 years after Mansa Musa's hajj — and his fame had spread so far that European cartographers drew him on their world maps holding a golden nugget.",
       "visualDescription": "Pixel art of a detail from a medieval European map: a crowned African king sitting on a throne, holding a golden orb, labeled as the ruler of Mali.",
@@ -7592,7 +7592,7 @@
     {
       "id": "islamic_golden_age",
       "name": "Islamic Golden Age",
-      "chainThemeId": 1,
+      "chainThemeId": 0,
       "factIds": [
         "med_isl_muhammad_hijra",
         "med_isl_rashidun_caliphate",
@@ -7614,7 +7614,7 @@
     {
       "id": "vikings",
       "name": "The Viking Age",
-      "chainThemeId": 2,
+      "chainThemeId": 1,
       "factIds": [
         "med_vik_age_timeline",
         "med_vik_lindisfarne",
@@ -7636,7 +7636,7 @@
     {
       "id": "feudal_europe",
       "name": "Feudal Europe & Charlemagne",
-      "chainThemeId": 3,
+      "chainThemeId": 1,
       "factIds": [
         "med_feu_charlemagne_coronation",
         "med_feu_charlemagne_saxons",
@@ -7658,7 +7658,7 @@
     {
       "id": "crusades",
       "name": "The Crusades",
-      "chainThemeId": 4,
+      "chainThemeId": 2,
       "factIds": [
         "med_4_cru_clermont_date",
         "med_4_cru_deus_vult",
@@ -7715,7 +7715,7 @@
     {
       "id": "tang_song_east_asia",
       "name": "Tang & Song China",
-      "chainThemeId": 5,
+      "chainThemeId": 3,
       "factIds": [
         "med_5_tang_dynasty_dates",
         "med_5_tang_capital_changan",
@@ -7757,7 +7757,7 @@
     {
       "id": "african_kingdoms",
       "name": "African Kingdoms & Trade",
-      "chainThemeId": 6,
+      "chainThemeId": 3,
       "factIds": [
         "med_6_afr_ghana_location",
         "med_6_afr_ghana_trade",
@@ -7793,6 +7793,32 @@
         "med_6_afr_mali_duration",
         "med_6_afr_mansa_musa_cairo"
       ]
+    }
+  ],
+  "chainThemes": [
+    {
+      "id": 0,
+      "name": "Byzantine & Islamic World",
+      "color": "#4169E1",
+      "description": "The Byzantine Empire and the Islamic Golden Age"
+    },
+    {
+      "id": 1,
+      "name": "Vikings & Feudal Europe",
+      "color": "#8B0000",
+      "description": "Viking Age, Charlemagne, and feudal European society"
+    },
+    {
+      "id": 2,
+      "name": "The Crusades",
+      "color": "#DAA520",
+      "description": "Holy Wars, crusader kingdoms, and Christian-Muslim conflict"
+    },
+    {
+      "id": 3,
+      "name": "East Asia & Africa",
+      "color": "#228B22",
+      "description": "Tang & Song China, African kingdoms, and global medieval trade"
     }
   ]
 }
