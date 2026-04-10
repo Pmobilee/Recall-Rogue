@@ -2132,3 +2132,15 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **Revert safety:** `revertTransmutedCards()` uses `card.originalCard.id` as the dedup key and restores `{ ...card.originalCard }` — which carries the old id. The revert path is unchanged. Unit tests updated to search by `c.isTransmuted === true` rather than `c.id === 'old-id'` during the transmuted state, while post-revert checks still use `c.id === 'original-id'`.
 
 **Tests affected:** `tests/unit/transmute.test.ts` — 5 test blocks updated.
+
+---
+
+### 2026-04-10 — extractUnit() false positives on multi-word English definitions
+
+**What:** `quiz-audit-engine.ts`'s `extractUnit()` function fired 459 `unit_contamination` WARNs on `medical_terminology` because its regex `/[\d,.]+\s+(.+)$/` had two flaws: (1) the `[\d,.]+` prefix was a character class, not anchored — so any string containing a digit anywhere (including multi-word definitions like "Before, in front of" where the comma matches `[,]`) would trigger a match, and (2) the capture group `(.+)` grabbed everything after the first whitespace following any matched chars, so single English words at the end of definitions ("of", "great", "fake", "backward") were extracted as "units". This produced thousands of false positives across all knowledge decks with phrase-style answers.
+
+**Why:** The original regex was written to detect patterns like "5 mg" but was not strict about requiring a real numeric literal. The character class `[\d,.]+` matches commas and dots too, so "Before, in front of" matched because "," + " " + "in front of" satisfied `[,]+\s+(.+)`.
+
+**Fix:** Replaced the regex with `/(?:^|\s)\d[\d,.]*\s+([a-zA-Z%°µ/]{1,6})\s*$/` — requires a true digit-starting numeric literal (`\d[\d,.]*`) preceded by start-of-string or whitespace, followed by whitespace and a short unit token (1–6 chars: letters, %, °, µ, /). Multi-word English definitions now return null. Note: "99.86%" (no whitespace before %) also returns null — acceptable because percentage answers use the numerical distractors path, not the unit_contamination check.
+
+**Also fixed:** The `min_pool_facts` deck-level check now skips pools with `homogeneityExempt: true`. These are algorithmic/synthetic pools (e.g. `bracket_numbers` in `medical_terminology` which has 2 real facts but generates distractors algorithmically) — the 5-fact floor is not relevant for them.

@@ -52,9 +52,15 @@ function djb2(s: string): number {
 }
 
 function extractUnit(answer: string): string | null {
+  if (!answer) return null;
   const clean = answer.replace(/[{}]/g, '').trim();
-  const match = clean.match(/[\d,.]+\s+(.+)$/);
-  return match ? match[1].toLowerCase().trim() : null;
+  // Require a real numeric literal followed by a short unit token (1–6 chars: letters, %, °, µ, /).
+  // Anchored to end of string with optional trailing whitespace.
+  // "5 mg" → "mg", "10 mL" → "ml", "1998" → null, "Before, in front of" → null
+  // Note: "99.86%" has no whitespace before "%" so returns null — acceptable, documented below.
+  // Percentage answers use the NumericalDistractors path; unit_contamination is not relevant there.
+  const match = clean.match(/(?:^|\s)\d[\d,.]*\s+([a-zA-Z%°µ/]{1,6})\s*$/);
+  return match ? match[1].toLowerCase() : null;
 }
 
 /** Seeded pseudo-random number generator (LCG). Returns values in [0, 1). */
@@ -865,6 +871,9 @@ function auditDeck(
     for (const pool of deck.answerTypePools) {
       const isBracketPool = pool.factIds.length === 0 && (pool.syntheticDistractors?.length ?? 0) > 0;
       if (isBracketPool) continue;
+      // Pools flagged homogeneityExempt are algorithmic/synthetic by design (e.g. bracket_numbers).
+      // They don't need a 5-fact floor — numeric distractors are synthesized, not drawn from facts.
+      if ((pool as unknown as { homogeneityExempt?: boolean }).homogeneityExempt === true) continue;
       const realFactCount = pool.factIds.length;
       if (realFactCount < opts.minPoolFacts) {
         const key = 'min_pool_facts';
