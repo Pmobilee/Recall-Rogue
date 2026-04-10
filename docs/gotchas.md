@@ -1541,3 +1541,8 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **What:** Running `node scripts/fix-pool-heterogeneity.mjs` found 6 pools with answer-length ratio >3x. Split drug_classes(3.1x), bop_account_terms(3.4x), ancient_philosopher_names(4.5x), early_modern_philosopher_names(4.5x), school_names(4.7x), platform_console_names(5.8x) into short/long sub-pools. 0 failures after splitting.
 
 ---
+### 2026-04-10 — add-synthetic-distractors.mjs found 0 pools needing padding
+
+**What:** Running `node scripts/add-synthetic-distractors.mjs --dry-run` returned 0 decks modified / 0 synthetics added. All pools already had factIds.length + syntheticDistractors.length >= 15, or were bracket_number pools (exempted). Note: newly-split sub-pools from fix-pool-heterogeneity.mjs (e.g., ancient_philosopher_names_long with 5 facts) are not yet padded — they need domain-specific synthetic additions in a future pass.
+
+---
