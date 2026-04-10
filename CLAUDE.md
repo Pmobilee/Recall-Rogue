@@ -134,6 +134,17 @@ Agent roles and file ownership in `.claude/agents/`:
 - Run `git worktree list` at natural breakpoints and flag orphaned worktrees
 - Every commit should leave the repo so a fresh agent can pick up seamlessly
 
+## 🚨 MANDATORY WORKTREE ISOLATION — READ THIS 🚨
+
+**EVERY agent — the orchestrator (you) AND every sub-agent you spawn — MUST work inside its OWN dedicated git worktree on its OWN branch. Nobody edits the primary `main` checkout directly. Nobody shares a worktree with another agent.**
+
+- Orchestrator: if you are in `/Users/damion/CODE/Recall_Rogue` on `main` and the task requires edits, create your own worktree FIRST: `git worktree add ../rr-<slug> -b <type>/<slug> && cd ../rr-<slug>`.
+- Every `Agent` tool invocation that edits files MUST pass `isolation: "worktree"`. Read-only Explore agents may skip it.
+- Parallel sub-agents each get their OWN worktree. Never shared.
+- At end of task, you MUST emit the "WORK IS IN A WORKTREE — NOT YET IN MAIN" reminder block (see `.claude/rules/git-workflow.md` → "END-OF-TASK RITUAL") and explicitly ASK the user whether to merge/commit/push. Do not auto-merge. Do not assume the user remembers the worktree exists.
+
+Full spec: `.claude/rules/git-workflow.md`. This is non-negotiable and applies to every single task in every single session.
+
 ## Chrome Browser Locking
 
 **Chrome-lock is only needed for `claude-in-chrome` MCP tools** (shared browser session).
