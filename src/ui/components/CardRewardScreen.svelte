@@ -20,6 +20,7 @@
   import { getSynergyLabel } from '../../data/synergies'
   import { getActiveDeckCards } from '../../services/encounterBridge'
   import { staggerPopIn } from '../utils/roomPopIn'
+  import { getEffectiveApCost } from '../../services/cardUpgradeService'
   import { tick } from 'svelte'
 
   interface Props {
@@ -400,7 +401,7 @@
                   <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" style="z-index:4;" />
                 {/if}
               </div>
-              <div class="mini-card-ap">{option.apCost ?? 1}</div>
+              <div class="mini-card-ap">{getEffectiveApCost(option)}</div>
               {#if option.isUpgraded}
                 <div class="mini-card-upgrade">+</div>
               {/if}
