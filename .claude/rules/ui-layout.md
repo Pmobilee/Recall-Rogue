@@ -1,3 +1,12 @@
+---
+paths:
+  - "src/ui/**"
+  - "src/CardApp.svelte"
+  - "src/stores/**"
+  - "src/**/*.svelte"
+  - "src/**/*.css"
+---
+
 # UI & Layout Rules
 
 ## Target Platform

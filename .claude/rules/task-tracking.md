@@ -1,29 +1,31 @@
-# Task Tracking — MANDATORY
+# Task Tracking — Canonical Rule
 
-## Core Rule
+**Every piece of work uses CLI tasks (`TaskCreate`, `TaskUpdate`, `TaskList`). No exceptions. No "too small." No "just a quick fix."**
 
-EVERY task MUST use CLI tasks (TaskCreate, TaskUpdate, TaskList). **No exceptions. No "too small." No "just a quick fix."** Even a one-line change gets: a task for the fix, a task for verification. The user's #1 process requirement.
+This is the canonical source. All other rules, skills, and agent definitions reference this file — they MUST NOT re-state the discipline.
 
-## Before Starting Work
-- Break ALL work into granular TaskCreate tasks BEFORE writing any code
-- One task per discrete step — not high-level phases
-- Every pool, every batch, every assembly step, every validation check gets its own task
-- Mark `in_progress` when beginning each task
+## Why
 
-## During Work
-- Mark `completed` immediately when done — not batched
-- Failed tasks stay `in_progress` as visible reminders — never delete failed work
-- If new sub-tasks are discovered, create them immediately
+Three entire answer pools were skipped in the Medical Terminology deck on 2026-04-03 because they weren't tracked as tasks. **If it's not a task, it will be forgotten.** Mental tracking fails at scale. Tasks don't.
 
-## Before Committing
-- Run TaskList and verify ZERO pending tasks
-- If anything is pending, that work hasn't been done and the deliverable is incomplete
+## Rules
 
-## Why This Exists
-Three entire answer pools were skipped in the Medical Terminology deck (2026-04-03) because they weren't tracked as tasks. This is the #1 cause of incomplete deliverables. Tasks are the only reliable way to ensure nothing is forgotten.
+**Before starting work:**
+- Break ALL work into granular `TaskCreate` tasks BEFORE writing any code.
+- One task per discrete step — not high-level phases.
+- Every pool, every batch, every assembly step, every validation check, every doc update gets its own task.
+- Even "trivial" work gets tasks: reading docs, one-line fixes, verification, doc sync. The overhead is near-zero; the cost of forgetting is high.
 
-## Every Agent Must Follow This
-This rule applies to ALL agents — content-agent, game-logic, ui-agent, qa-agent, docs-agent. No agent is exempt. The orchestrator must also track its own coordination tasks.
+**During work:**
+- Mark `in_progress` when beginning each task.
+- Mark `completed` immediately when done — not batched "for the end."
+- Failed tasks stay `in_progress` as visible reminders — never delete failed work.
+- If new sub-tasks are discovered, create them immediately.
 
-## Even "Trivial" Work Gets Tasks
-The user explicitly requires tasks for EVERYTHING — reading docs, one-line fixes, verification steps, doc updates. If you think "this is too small for a task," you are wrong. Create the task. The overhead is near-zero; the cost of forgetting is high.
+**Before committing:**
+- Run `TaskList` and verify ZERO pending or in-progress tasks.
+- If anything is open, that work hasn't been done — the deliverable is incomplete, not done.
+
+## Applies To Everyone
+
+Every agent — orchestrator, game-logic, ui-agent, content-agent, qa-agent, docs-agent. No role is exempt.

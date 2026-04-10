@@ -1,3 +1,15 @@
+---
+paths:
+  - "data/decks/**"
+  - "data/deck-architectures/**"
+  - "scripts/content-pipeline/**"
+  - "scripts/verify-all-decks.mjs"
+  - "scripts/quiz-audit*.*"
+  - "scripts/audit-dump-samples.ts"
+  - "scripts/fix-*.mjs"
+  - "scripts/fix-*.ts"
+---
+
 # Deck Quality & Verification Rules
 
 ## Deck Quality Checklist

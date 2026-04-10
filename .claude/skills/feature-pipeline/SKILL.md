@@ -1,351 +1,216 @@
 ---
 name: feature-pipeline
 description: |
-  Enforces a rigorous 7-phase workflow for ALL non-trivial tasks: Clarify, Research, Propose, Plan, Implement, Verify, Complete. Always active — triggers for any feature, refactor, content pipeline, balance change, UI modification, or system change that is not a single-line bugfix. Prevents blind implementation by requiring intent verification, proactive research, alternative proposals, a finalized plan (via /plan + TaskCreate), visual testing, and doc sync. This is the master workflow skill that governs how work gets done.
+  Enforces a rigorous 8-phase workflow for ALL non-trivial tasks: Clarify, Research, Propose, Plan, Implement, Verify, Complete, Creative Pass. Always active. Governs how work gets done. Inherits the Employee Mindset from .claude/rules/autonomy-charter.md — defaults to action, never defers, only ships finished work.
 user_invocable: false
----
-
-# STOP — Pre-Response Self-Check
-
-Before EVERY response in a non-trivial task, ask yourself these 3 questions:
-
-1. **Am I about to implement without clarifying?** If the user's request has ANY ambiguity, ask first. Don't guess.
-2. **Am I about to end a response without next steps?** Every milestone completion MUST end with "Recommended Next Steps" — prioritized, with reasoning. A summary without next steps is INCOMPLETE.
-3. **Am I being a task executor or a partner?** A task executor does exactly what's asked. A partner questions whether it's the right thing, offers alternatives, and flags risks. Be a partner.
-
-These are the three most common failure modes. Check them EVERY time.
-
 ---
 
 # Feature Pipeline — Full Lifecycle Workflow
 
+This skill is the outer workflow wrapper. It governs **what** work happens and in **what order**. It inherits (does not restate) the following rules:
+
+- `.claude/rules/autonomy-charter.md` — Employee Mindset, Autonomy Ladder, Never Defer, Only Finished Work, Clarification Bar, Keep Going.
+- `.claude/rules/player-experience-lens.md` — five mandatory checks on player-visible changes.
+- `.claude/rules/creative-pass.md` — three-item Creative Pass at the end of every non-trivial task.
+- `.claude/rules/agent-mindset.md` — What's Next forcing function, proactive skill triggers.
+- `.claude/rules/task-tracking.md` — granular `TaskCreate` discipline.
+
+If anything in this skill appears to conflict with the rules above, the rules win.
+
+---
+
+## STOP — Pre-Response Self-Check
+
+Before EVERY response in a non-trivial task, ask:
+
+1. **Am I about to ask a question the Clarification Bar says not to ask?** Per `autonomy-charter.md`, only ask if (a) two interpretations would produce materially different implementations, (b) a Red-zone action is required, or (c) the request contradicts a documented invariant. Otherwise: decide, state what you decided, move on.
+2. **Am I about to deliver partial work and call it "done"?** Run the Finished-Work Checklist from `autonomy-charter.md`. If any item is incomplete, the deliverable is "in progress," not "done."
+3. **Am I skipping the Creative Pass and `## What's Next`?** Both are mandatory on every non-trivial response. Missing them = incomplete deliverable.
+
+---
+
 ## When This Skill Applies
 
-EVERY task that is NOT a trivial single-line bugfix or config tweak. This includes:
-- New features or mechanics
-- Multi-file changes of any kind
-- Content pipeline work (fact generation, ingestion, etc.)
-- Balance adjustments
-- UI/UX modifications
-- Refactors
-- System integrations
-- Any task with more than 2-3 discrete steps
+Every task that is NOT a trivial single-line bugfix or config tweak: new features or mechanics, multi-file changes, content pipeline work, balance adjustments, UI/UX modifications, refactors, system integrations, any task with 2+ discrete steps.
 
-**Bug fixes**: If the fix touches more than 3 files or requires design decisions, use the full pipeline. If it's a clear, isolated fix, start at Phase 4 (finalize a minimal plan) and skip Phases 1-3.
-
-If in doubt, use this pipeline. The cost of following it for a simple task is low. The cost of NOT following it for a complex task is enormous.
-
-## Skip Criteria — When to Short-Circuit Phases
-
-These are the ONLY conditions under which phases may be skipped. When in doubt, don't skip.
-
-**Skip Phase 1 (Clarify) ONLY when:**
-- The user gave an unambiguous, specific request with clear acceptance criteria (e.g., "add a `maxHp` field to the Enemy type"), AND
-- You have worked with this user before on similar tasks and understand their preferences
-
-**Skip Phase 3 (Propose) ONLY when:**
-- There is genuinely only one reasonable approach — no meaningful architectural alternatives exist (e.g., "add a field to this type")
-
-**Never skip Phases 4, 5, 6, or 7** — these are mandatory for all non-trivial work regardless of how simple the task seems.
+**Bug fixes:** if the fix touches >3 files or requires design decisions, use the full pipeline. Clear, isolated fix: start at Phase 4 and skip 1–3.
 
 ## Parallel Task Handling
 
-If a new request arrives while you are mid-implementation:
-1. **Finish the current task** and commit that progress.
-2. **Assess urgency**: If the new request is blocking or urgent, pause by noting progress via TaskUpdate and switch. If it's not urgent, finish the current work first.
-3. **Never interleave two separate workstreams** in the same session without explicit user approval — context switching mid-implementation produces sloppy, inconsistent work.
+If a new request arrives while you are mid-implementation: finish the current unit, commit it, assess urgency of the new request, and either switch (with TaskUpdate) or finish the current plan first. Never interleave two separate workstreams in the same session without explicit user approval.
 
-## The 7 Phases
+## The 8 Phases
 
-### Phase 1: CLARIFY — Understand Intent, Not Just Words
+### Phase 1: CLARIFY — Only If Seriously Unclear
 
-**Before touching any code or finalizing any plan, interrogate the request.**
+**Default: skip this phase and proceed to Phase 2.** Per the Clarification Bar in `autonomy-charter.md`, ask a question only if one of three triggers fires:
 
-1. Restate the user's request in your own words — what is the GOAL, not just the action?
-2. Identify ambiguities, unstated assumptions, and missing context
-3. Ask targeted questions, but ALWAYS include your best guess so the user can answer yes/no:
-   - "I think you want X — is that right, or did you mean Y?"
-   - "This could be done as A or B. I'd recommend A because [reason]. Sound good?"
-4. **INTENT CHECK**: Ask yourself — "If I build exactly what was literally asked for, would the user actually be satisfied?" If no, say so:
-   - "You asked for X, but I think what you actually need is Y, because [reason]. Should I do Y instead?"
-5. Check for completeness: "Does this cover everything, or are there related pieces I should handle too?"
+1. Two interpretations would produce materially different implementations.
+2. A Red-zone action is required (see Autonomy Ladder).
+3. The request contradicts a documented invariant.
 
-**The Wikipedia Pipeline Test**: Before proceeding, imagine you built the feature and showed it to the user. Would they say "yes, that's exactly what I wanted" or "no, you missed the whole point"? If the latter is even possible, you haven't clarified enough.
+If none fire:
+- Silently restate the goal to yourself in one sentence.
+- Pick the most reasonable interpretation.
+- State your interpretation in ONE sentence at the top of your response: *"Interpreting this as X — will proceed unless you stop me."*
+- Continue straight to Phase 2.
 
-**GATE**: Do NOT proceed to Phase 2 until the user confirms understanding.
+If one does fire:
+- Ask ONE question via `AskUserQuestion` with the best-guess default pre-filled, so the user can answer yes/no.
+- Do not list five questions. Do not "interrogate."
+- Wait for the answer, then continue.
+
+**GATE:** either the interpretation has been stated in one sentence, or a single clarifying question has been answered.
 
 ---
 
 ### Phase 2: RESEARCH — Gather Context Before Planning
 
-> **Anti-pattern warning — "Phantom Foundation"**: Before building on top of any existing system, pipeline step, or data source, verify it actually exists and works correctly. Don't assume a service is functional just because its code file exists.
+> **Anti-pattern: "Phantom Foundation"** — before building on top of any existing system, verify it exists and works. Don't assume a service is functional just because its code file exists.
 
-1. **Codebase exploration**: Use Explore agents to understand existing patterns, related systems, and potential conflicts
-2. **Online research** (when useful): Search for best practices, library docs, design patterns relevant to the task. Use WebSearch and WebFetch proactively — don't guess when you can know.
-3. **Check existing work**: Check git log for recent changes in affected areas, and check auto-memory for related prior sessions or patterns discovered previously
-4. **Read related docs**: `docs/GAME_DESIGN.md`, `docs/ARCHITECTURE.md`, and any referenced specs
-5. **Identify risks**: What could go wrong? What are the edge cases? What existing systems might break?
+1. Use Explore agents to understand existing patterns, related systems, and conflicts.
+2. Online research when useful — WebSearch / WebFetch / context7. Don't guess when you can know.
+3. Check git log for recent changes in affected areas; check auto-memory for related prior sessions.
+4. Read related docs (`docs/INDEX.md` entry point, then the specific sub-files).
+5. Identify risks: what could go wrong, what edge cases, what existing systems might break.
 
-**GATE**: Have enough context to make informed architectural decisions.
+**GATE:** you have enough context to make informed architectural decisions.
 
 ---
 
 ### Phase 3: PROPOSE — Present Approach WITH Alternatives
 
-**Never just do the first thing that comes to mind. Always think about whether there's a better way.**
+**Never just do the first thing that comes to mind. Always think about whether there's a better way.** Skip ONLY if there is genuinely one reasonable approach (e.g., "add a field to this type").
 
-1. Present your recommended approach with clear reasoning
-2. Present at least ONE alternative approach with tradeoffs
-3. Explain WHY your recommendation is best (not just what it is)
-4. Flag any concerns: "This approach has a risk of X. We could mitigate by Y."
-5. If the task seems like it might be solving the wrong problem, say so: "Instead of X, have you considered Y? It would solve the root cause rather than the symptom."
-6. Estimate scope: "This touches N files and involves M discrete changes."
+1. Present your recommended approach with clear reasoning.
+2. Present at least ONE alternative with tradeoffs.
+3. Explain WHY your recommendation is best.
+4. Flag concerns and mitigations.
+5. If the task seems to be solving the wrong problem, say so: *"Instead of X, have you considered Y? It would solve the root cause."*
+6. Estimate scope: "This touches N files and M discrete changes."
 
-**If the user rejects the proposal**: Ask what they dislike specifically. Revise the proposal and re-present. Don't just accept a vague "do it differently" — understand WHY before changing course.
+If the user rejects the proposal: ask what specifically they dislike, understand the WHY, revise, re-present.
 
-**GATE**: Get user approval on the approach before finalizing the plan.
-
----
-
-### Phase 4: PLAN — Finalize the Plan
-
-1. **Use `/plan` (Claude planning mode) to produce the implementation plan.** The plan IS the spec. Workers receive it directly. It must be complete enough that a worker can implement a task without reading other docs.
-2. The plan MUST contain:
-   - Overview with goal and reasoning
-   - Numbered task list with atomic items and acceptance criteria per item
-   - Files affected (created / modified / deleted)
-   - **Verification tests** — specific tests (unit, visual, or behavioral) that MUST pass before completion
-   - Verification gate with exact commands
-3. **Use TaskCreate to break the plan into trackable tasks.** Each task should map to one or a few items from the plan, with clear acceptance criteria. Tasks are the execution engine — they track what's in progress, what's done, and what's left.
-4. Include a "Testing Plan" section in the plan that specifies:
-   - Which unit tests to create or update
-   - Which visual inspections to perform (specific screens/states)
-   - Which edge cases to verify
-   - What the user should see when it's working correctly
-
-**GATE**: Plan exists (via `/plan`), tasks are created (via TaskCreate), and the full scope is covered. If anything was missed from Phase 1, catch it here.
+**GATE:** user approves the approach before finalizing the plan.
 
 ---
 
-### Phase 5: IMPLEMENT — Execute the Plan
+### Phase 4: PLAN — Finalize
 
-> **Anti-pattern warning — "Entity Names Without Data"**: Verify you are building the real thing, not just a skeleton. If you're implementing a pipeline step, confirm data actually flows through it end-to-end.
+1. Use `/plan` (Claude planning mode) to produce the implementation plan. The plan IS the spec.
+2. The plan must contain:
+   - Overview with goal and reasoning.
+   - Numbered task list with atomic items and acceptance criteria.
+   - Files affected (created / modified / deleted).
+   - Verification tests — specific tests (unit, visual, behavioral) that MUST pass.
+   - Verification gate with exact commands.
+3. Use `TaskCreate` to break the plan into trackable tasks per `.claude/rules/task-tracking.md`.
+4. Testing Plan section: which unit tests, which visual inspections, which edge cases.
 
-> **Anti-pattern warning — "Silent Incompleteness"**: Explicitly state what IS and IS NOT done after each task. If you can't complete something, say so immediately — don't let it silently disappear.
+**GATE:** plan file exists, tasks are created, full scope covered.
 
-1. Use TaskUpdate to mark each task `in_progress` when you start it and `completed` when it passes verification — one task at a time
-2. **Delegate to Sonnet 4.5 workers** (`model: "sonnet"`) for all implementation tasks. Haiku may be used for trivial/mechanical subtasks (formatting, boilerplate) but Sonnet 4.5 is the default executor for all implementation work.
-3. **Every worker prompt MUST include**:
-   - "Update docs/GAME_DESIGN.md and docs/ARCHITECTURE.md if your changes affect gameplay, balance, systems, or file structure"
-   - "After implementation, run npm run typecheck and npm run build"
-   - The specific acceptance criteria from the plan
-4. After each worker completes: commit if the task passes verification (see Git Strategy below)
-5. After each worker completes: visually inspect with Playwright if UI/visual
-6. If a worker's output doesn't meet acceptance criteria: iterate (see Failure Escalation below)
-7. **Scope creep guard**: If during implementation you discover the task is significantly bigger than planned, STOP and tell the user: "This is bigger than we planned. Here's what I found: [details]. Should I update the plan scope, split into follow-up tasks, or descope?"
-8. **Mid-implementation check-in**: For large plans (10+ tasks), pause after ~50% completion and give the user a brief progress update: what's done, what's remaining, any surprises.
+---
 
-**GATE**: All plan tasks marked completed, all acceptance criteria met.
+### Phase 5: IMPLEMENT — Execute
 
-### Git Strategy During Implementation
+> **Anti-patterns:** *Entity Names Without Data* (building a skeleton, not the real thing), *Silent Incompleteness* (shipping 80% without mentioning the missing 20%).
 
-**When to commit**: After each worker task completes and passes verification (typecheck clean, tests pass, visual OK). Don't batch multiple tasks into one commit — granular commits make rollback surgical.
+1. Mark tasks `in_progress` one at a time. Mark `completed` as you finish.
+2. Delegate via `.claude/rules/agent-routing.md`. Use the canonical Sub-Agent Prompt Template from that file. Never spawn a generic worker.
+3. After each sub-agent: verify against ground truth (`git status` + `git diff` + sample read-back). Never trust a summary blindly.
+4. Commit after each task that passes verification. Granular commits make rollback surgical.
+5. Visual inspect after every sub-agent batch if UI/visual changed.
+6. **Scope creep guard:** if you discover the task is significantly bigger than planned, stop and tell the user. Give options: expand scope, split into follow-ups, or descope.
 
-**Commit message format**: Use conventional commits.
-```
-feat: add relic tooltip system
-fix: correct tooltip positioning on mobile viewport
-docs: update GAME_DESIGN.md with tooltip mechanic
-refactor: extract tooltip logic into shared helper
-```
+**GATE:** all plan tasks `completed`, all acceptance criteria met.
 
-**Feature branches**: For large implementations (5+ tasks) or changes that touch core systems (combat, save/load, floor generation), create a feature branch:
-```
-git checkout -b feat/relic-tooltip
-# ... implement ...
-git checkout main && git merge feat/relic-tooltip
-```
+### Git Strategy
 
-For small changes (1-4 tasks) on non-critical systems, committing directly to main is acceptable.
+Conventional commits (`feat:`, `fix:`, `docs:`, `refactor:`). Direct commits on `main` for small changes; feature branches only if user explicitly asks or the change is large and risky.
 
 ### Worker Failure Escalation
 
-When a worker's output fails verification:
-1. **First attempt**: Give the same worker more context — share the error, the exact acceptance criteria, and what you expected vs. what you got. Iterate.
-2. **Second attempt**: Spawn a fresh worker. Include the lessons from the first attempt: "The previous implementation failed because X. Avoid Y. Make sure Z."
-3. **Third attempt**: Escalate to the user. "I've tried two approaches to implement [task]. Here's what's failing: [specific problem]. I need guidance before continuing."
+1. Iterate with more context — share the error and expected-vs-actual.
+2. Fresh worker with lessons learned: "The previous attempt failed because X. Avoid Y. Make sure Z."
+3. Escalate to user with specific failure details.
 
-Never silently move on from a failing task. Never tell the user something is done when it isn't.
+Never silently move on from a failing task.
 
-### Rollback Plan
+### Rollback
 
-If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug, but a wrong architecture:
-1. **Stop immediately.** Don't keep patching a broken foundation.
-2. Identify the last good commit: `git log --oneline` to find it.
-3. Roll back: `git stash` to preserve current work for reference, or `git reset --hard <sha>` to the last good commit.
-4. Return to Phase 3 with new knowledge. Re-propose with the insight gained.
-5. Tell the user what happened and why: "The approach we chose doesn't work because [reason]. I've rolled back to [commit]. Here's what I'd propose instead."
+If Phase 5 or 6 reveals the approach is fundamentally wrong: stop, find the last good commit, `git reset --hard <sha>` (with user confirmation per Autonomy Charter Red zone), return to Phase 3 with new knowledge.
 
 ---
 
-### Phase 6: VERIFY — Test Everything Before Declaring Done
+### Phase 6: VERIFY — Test Everything Before "Done"
 
-**This is where most failures happen. Do NOT skip or rush this phase.**
+**This is where most failures happen. Do not rush.**
 
-> **Anti-pattern warning — "Should Work"**: Never report a feature as done without confirming it works in the running game. Either say "I confirmed it works" or "I cannot verify this runtime behavior." Never say "this should work."
+> **Anti-patterns:** *Should Work* (saying "this should work" without verifying), *Test Screen Only* (feature works via `__rrScenario` but not via normal gameplay).
 
-> **Anti-pattern warning — "Test Screen Only"**: A feature that works via `__rrScenario` but can't be reached by a real user is not done. Always verify via the real user path.
+1. Full gate: `npm run typecheck`, `npm run build`, `npx vitest run`.
+2. Balance sim gate (if gameplay/balance touched): run headless sim per `.claude/rules/testing.md`, compare to baseline.
+3. Docker visual inspect EVERY affected screen per `.claude/rules/testing.md` — screenshot + layout dump, not one without the other. After every sub-agent batch, not just at the end.
+4. Specific tests from the plan's Testing Plan.
+5. Registry freshness: `lastChangedDate` on every touched element in `data/inspection-registry.json`.
+6. Edge-case verification: boundary, empty, error states.
+7. **Intent re-check:** does this actually solve what the user asked for? Any gap? Fix now.
+8. **Activation verification:** is the feature reachable via normal gameplay, not just a test scenario?
+9. **End-to-end wiring audit:** for every new function/resolver/service method, grep for consumers. If nothing calls it, it's dead code — feature not done.
+10. **Player-Experience Lens** per `.claude/rules/player-experience-lens.md` — five checks on any player-visible change.
 
-1. Run full verification gate: `npm run typecheck`, `npm run build`, `npx vitest run`
-2. **Balance simulation gate** (mandatory if the change touches gameplay/balance — enemies, cards, relics, damage, HP, costs, turn economy):
-   ```
-   npm run sim:analytics
-   ```
-   Review the analytics reports in `data/playtests/runs/{latest}/analytics/` for card, relic, enemy, and archetype balance. Compare results against the pre-change baseline. If win rates, clear rates, or economy metrics shift significantly, investigate before declaring done.
-3. **Visual inspection** of EVERY affected screen — MANDATORY, NO EXCEPTIONS:
-   - Navigate to each affected screen using `__rrScenario.load()`
-   - Take screenshot AND layout dump (ALWAYS use both — required, not optional):
-     - Screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, returns path. Use `Read("/tmp/rr-screenshot.jpg")` to view. Captures Phaser canvas + DOM overlays. NEVER use raw `__rrScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs)
-     - Layout dump: `browser_evaluate(() => window.__rrLayoutDump())` — returns text with exact pixel coordinates of ALL Phaser + DOM elements (structured coordinate data to complement the visual)
-   - Check console for errors via `browser_console_messages`
-   - Verify the feature works as a user would experience it
-   - **THIS MUST HAPPEN AFTER EVERY SUB-AGENT BATCH** — not just at the end. If 3 agents run in parallel and return, inspect ALL 3 results before committing ANY of them
-   - **NEVER commit visual/UI changes without seeing them first** — sub-agents making CSS/layout changes are the HIGHEST RISK for regressions
-   - If a screenshot or snapshot tool fails, **STOP AND FIX IT** — diagnose why it failed (server not running? Chrome port conflict? missing deps?), resolve the root cause, and retry. NEVER skip visual verification or accept "couldn't verify"
-4. **Run or create specific tests** from the plan's Testing Plan:
-   - If unit tests were specified, run them and confirm they pass
-   - If visual tests were specified, perform them with Playwright
-   - If behavioral tests were specified, use browser_evaluate to check state
-5. **Registry freshness check**: Verify all elements touched by this change have `lastChangedDate` set to today in `data/inspection-registry.json`. If not, update them before declaring verification complete.
-6. **Edge case verification**: Test boundary conditions, empty states, error states
-7. **Intent re-check**: Look at the result and ask — "Does this actually solve what the user asked for in Phase 1?" If there's ANY gap, fix it now.
-8. **Activation verification**: Is this feature actually reachable by the user through normal gameplay? Can they trigger it? Is it wired into the game flow, not just working on a test screen? Navigate to it the way a real user would — from the hub, through menus, into gameplay.
-9. **Existence verification**: Before building on top of any existing system, verify it actually exists and works as expected. Don't assume a service, endpoint, data source, or pipeline step is functional — check it first.
-10. **End-to-end wiring audit**: For every new function, resolver, service method, or data structure created during implementation, ask: "Who calls this? Is the call actually there?" Grep for each new export. If it's not called by a consumer, it's dead code and the feature is NOT done.
-11. **Self-review pass**: After all tests pass, re-read the original user request from Phase 1. Walk through the implementation mentally as if you were the user. Ask: "If I play the game right now, will this feature actually fire? Can I trigger every path?"
-
-**If Phase 6 reveals a fundamental flaw**: Don't patch — see Rollback Plan in Phase 5.
-
-**GATE**: Everything passes. The feature works correctly in the actual game, not just in theory. A real user can reach it. Every new function has at least one caller. Balance metrics are acceptable (if applicable).
+**GATE:** everything passes, feature works in the real game, real user can reach it, every new function has a caller, balance is acceptable.
 
 ---
 
 ### Phase 7: COMPLETE — Document, Close, Confirm
 
-> **Anti-pattern warning — "Doc Drift"**: Docs must match code. If you added a mechanic, it must appear in GAME_DESIGN.md. If you restructured a system, ARCHITECTURE.md must reflect it. Stale docs are bugs.
+1. Update `docs/GAME_DESIGN.md` for any player-facing change.
+2. Update `docs/architecture/`, `docs/mechanics/`, `docs/ui/`, `docs/content/`, etc. per domain.
+3. Update inspection registry (`data/inspection-registry.json`) — `lastChangedDate`, new entries, deprecated entries.
+4. Mark all TaskList tasks `completed`.
+5. Commit with a conventional-commit message.
 
-1. **Update documentation**:
-   - `docs/GAME_DESIGN.md` — if any player-facing behavior changed
-   - `docs/ARCHITECTURE.md` — if any systems or file structure changed
-   - Any other referenced docs
-2. **Update inspection registry** (`data/inspection-registry.json`):
-   - If any game element was added, modified, or removed (card, relic, enemy, room, screen, system, quiz system, domain, mystery event, status effect): update `lastChangedDate` to today's date
-   - If a new element was created: add it to the appropriate table
-   - If an element was removed: set status to `"deprecated"`
-   - Consult `testingRecommendations` table to identify what testing is now needed
-   - This is NON-NEGOTIABLE — a change without a registry update is incomplete
-3. **Mark all tasks as completed** via TaskUpdate — every task created in Phase 4 should be in `completed` state
-4. **Confirm with user**: Brief summary of what was done, with screenshot if visual
-5. **Recommend next steps** (MANDATORY — never skip this):
-   After every completed task set, present **carefully considered next steps**. These are not throwaway suggestions — think deeply about what the user should do next based on:
-   - What you learned during implementation (new risks, opportunities, rough edges discovered)
-   - What adjacent systems were affected or exposed as fragile
-   - What the user's likely next priority is given the project's current state
-   - What would compound the value of the work just completed
+---
 
-   Format as a prioritized list with reasoning:
-   ```
-   ## Recommended Next Steps
-   1. **[Highest priority]** — [why this matters now]
-   2. **[Second priority]** — [why this matters now]
-   3. **[Optional/nice-to-have]** — [why this could wait but is worth noting]
-   ```
+### Phase 8: CREATIVE PASS & WHAT'S NEXT
 
-   Bad example: "You could also improve the UI." (vague, no reasoning)
-   Good example: "The new relic tooltip system exposed that 3 relics have empty `description` fields — these will render as blank tooltips. I'd recommend fixing those before the next playtest."
+**Mandatory for every non-trivial response.** Per `.claude/rules/creative-pass.md` and `.claude/rules/agent-mindset.md`.
 
-6. **Save learnings to memory**: If this work revealed a non-obvious pattern, anti-pattern, or surprise — save it to auto-memory. Ask: "What would have saved me time if I knew it at the start? Would a future session benefit from knowing this?" Only save things that are genuinely non-obvious. Skip routine implementation notes.
-7. **Post-ship check flag**: Note this work as needing a spot-check at the start of the next session. At the beginning of the next conversation, if there are recently completed tasks (last 1-2 sessions), do a quick smoke test: load the affected screen, check the console, confirm the feature still works. This catches silent regressions from unrelated changes.
+1. Write the three-item Creative Pass:
+   - "While I was in there…" — adjacent improvement (ship Green-zone, log Yellow/Red)
+   - "A senior dev would…" — one concrete design insight
+   - "Player would want…" — one concrete player-experience improvement
+2. Write the `## What's Next` block — 3–5 prioritized next steps with reasoning, OR the single-line `✅ Done. No further work recommended. Rationale: …` closer.
+3. Save any non-obvious lessons to auto-memory per `memory` docs.
+
+A response without both is incomplete, same severity as an untested change.
 
 ---
 
 ## When Things Go Wrong
 
-### User rejects proposal (Phase 3)
-Don't just accept and pivot. Ask what specifically they dislike. Understand the WHY. Revise the proposal with that knowledge and re-present. A revised proposal that misses the real concern wastes another round-trip.
+**User rejects proposal (Phase 3):** ask what specifically, revise, re-present.
+**Worker output fails verification (Phase 5):** follow the escalation ladder — more context → fresh worker → escalate.
+**Phase 6 reveals a fundamental flaw:** stop, roll back, return to Phase 3.
+**Scope explodes mid-implementation:** stop immediately, tell the user, give options.
 
-### Worker output fails verification (Phase 5)
-Follow the escalation ladder: iterate with more context → fresh worker with lessons learned → escalate to user with specific failure details. Never silently move on.
+## Anti-Patterns Reference
 
-### Phase 6 reveals a fundamental flaw
-Don't patch. Stop, roll back to the last good commit, return to Phase 3 with new knowledge. Tell the user exactly what happened and why.
-
-### Scope explodes mid-implementation
-STOP immediately. Tell the user exactly what happened: "While implementing [task], I discovered [unexpected complexity]. The scope is now [N times] larger than planned." Give clear options: expand the current plan, split into follow-up tasks, or descope. Never silently absorb scope explosion and deliver a surprise.
-
----
-
-## Critical Anti-Patterns (Things That Have Gone Wrong Before)
-
-These are consolidated here as a "lessons learned" reference. Inline warnings at each phase point to the most relevant ones.
-
-### The "Entity Names Without Data" Anti-Pattern
-Building the scaffolding of a feature without the actual substance. Example: creating a list of Wikipedia entity names but never fetching the actual Wikipedia articles. **Always ask: "Am I building the real thing, or just a skeleton?"**
-
-### The "Should Work" Anti-Pattern
-Reporting a feature as done without actually verifying it works in the running game. **Never say "this should work" — confirm it works. If a verification tool is broken, fix the tool first, then verify.**
-
-### The "Silent Incompleteness" Anti-Pattern
-Implementing 80% of what was asked without mentioning the missing 20%. **Always explicitly state what IS and IS NOT included in your implementation.** If you can't do something, say so upfront.
-
-### The "Junior Colleague" Anti-Pattern
-Blindly executing instructions without thinking about whether they make sense. **You are a partner, not a task executor.** If something seems wrong, suboptimal, or incomplete — speak up.
-
-### The "Resolver Without Consumer" Anti-Pattern
-Creating a function that computes a value but never wiring it into the code that uses that value. Example: `resolveDrawBias()` existed but `drawHand()` never called it — the relic was dead code. **After creating any resolver/helper/service function, ALWAYS grep for the consumer and wire it in. A function nobody calls is a function that doesn't exist.**
-
-### The "Doc Drift" Anti-Pattern
-Making code changes without updating the documentation that describes the system. **Doc updates are part of the implementation, not optional cleanup.**
-
-### The "Phantom Foundation" Anti-Pattern
-Building on top of something that doesn't actually exist or work. Before integrating with any existing system, pipeline step, or data source — **verify it exists and functions correctly first.** Don't assume the previous step in a chain is working just because its code file exists.
-
-### The "Test Screen Only" Anti-Pattern
-A feature works when you navigate directly to it via dev tools or test scenarios, but a real user can never reach it through normal gameplay flow. **Always verify the feature is accessible via the actual user path** — hub → menus → gameplay → feature.
-
----
-
-## Relationship to Other Skills
-
-This skill is the **outer workflow wrapper**. It governs WHAT work happens and in what order. The other skills fit into it like this:
-- `feature-pipeline` (this skill) — governs the full lifecycle: when to plan, when to implement, when it's truly done
-- `work-tracking` — enforces plan-before-code; ensures every session has a finalized plan and tasks before any code is touched
-- `game-design-sync` — automatically enforced during Phases 5 and 7; ensures docs stay in sync with every gameplay change
-- `quick-verify` — the toolset used during Phase 6; typecheck, build, tests, and Playwright visual verification
+- **Entity Names Without Data** — skeletons without substance.
+- **Should Work** — declaring done without verifying.
+- **Silent Incompleteness** — shipping 80% without mentioning the missing 20%.
+- **Junior Colleague** — blindly executing without questioning (Autonomy Charter explicitly fights this).
+- **Resolver Without Consumer** — creating a function nothing calls.
+- **Doc Drift** — changing code without updating docs same-commit.
+- **Phantom Foundation** — building on top of something that doesn't actually work.
+- **Test Screen Only** — works in dev scenarios, unreachable in real gameplay.
 
 ## Quick Reference: When to Start at Each Phase
 
-**Phase 1 (Clarify)** — mandatory when:
-- Request is vague, ambiguous, or could be interpreted multiple ways
-- You're not confident what "done" looks like
-- User says "do what you think is best"
-
-**Phase 2 (Research)** — start here when:
-- User gave a clear, specific request — but still do a quick internal intent check
-- Continuing from a previous conversation where Phase 1 already happened
-
-**Phase 3 (Propose)** — start here when:
-- Research is complete and you have a strong recommendation but want approval before finalizing the plan
-
-**Phase 4 (Plan)** — start here when:
-- For isolated bug fixes that don't require design decisions — jump straight to a minimal plan and tasks
-- Approach is already agreed upon from a prior conversation
-
-**Phase 5 (Implement)** — start here when:
-- Continuing work from a previous session with an existing plan — use TaskList to review outstanding tasks first
-
-**Phases 4, 5, 6, 7 are never skipped for non-trivial work.**
-
-## Reference
-
-For detailed per-phase checklists, see [references/phase-checklist.md](references/phase-checklist.md).
+- **Phase 1 (Clarify)** — ONLY when Clarification Bar fires. Otherwise skip.
+- **Phase 2 (Research)** — the real default entry for most tasks.
+- **Phase 3 (Propose)** — when you have research and want approval.
+- **Phase 4 (Plan)** — isolated bug fixes that need no design discussion.
+- **Phase 5 (Implement)** — resuming a session with an existing plan.
+- **Phases 6, 7, 8 are never skipped for non-trivial work.**

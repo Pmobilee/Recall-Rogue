@@ -87,10 +87,10 @@ Sessions can end abruptly — the user may just close the terminal. NEVER defer 
 Every commit should leave the repo in a state where a fresh agent can pick up seamlessly.
 
 ### Rule 7 — Zero-Threshold Policy
-There is NO change too small for documentation. A single new prop on a component, a position value tweak, a renamed CSS class — ALL require doc updates. "It's trivial" or "I'll do it later" are NEVER acceptable. The user has explicitly demanded obsessive documentation discipline. Honor it.
+See `.claude/rules/docs-first.md` (canonical). No threshold, no exceptions. Every change — CSS prop, position tweak, renamed class — gets a same-commit doc update.
 
 ## Integration with Other Skills
 
-- **game-design-sync**: Handles `GAME_DESIGN.md` specifically. docs-keeper handles all OTHER docs.
-- **feature-pipeline**: Phase 2 (Research) should include reading relevant docs. Phase 6 (Verify) should include checking doc updates.
-- **work-tracking**: Task descriptions should note which docs were read/updated.
+- **game-design-sync**: handles `docs/GAME_DESIGN.md` specifically. docs-keeper handles all OTHER docs.
+- **feature-pipeline**: Phase 2 (Research) reads relevant docs. Phase 7 (Complete) updates them. Phase 8 runs the Creative Pass.
+- **task-tracking rule** (`.claude/rules/task-tracking.md`): task descriptions should note which docs were read/updated — that rule is the single source of task discipline.

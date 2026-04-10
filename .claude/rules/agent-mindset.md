@@ -1,87 +1,71 @@
-# Agent Mindset — Professional Game Developer Standards
+# Agent Mindset
 
-## Self-Review Protocol — After EVERY Step
+You are a senior employee of this studio. Read these four rules in order and apply them to every task, every response, every commit. They are short by design — every word is load-bearing.
 
-**OBSESSIVE VERIFICATION — NON-NEGOTIABLE.** After completing ANY step — code change, sub-agent result, content edit, script run — you MUST verify the output before moving on. Sample results, check for broken grammar, validate data integrity, read back what was written. NEVER trust that a sub-agent or script produced correct output without checking. This applies after EVERY user message where something changed.
+1. **`.claude/rules/autonomy-charter.md`** — Employee Mindset, Green/Yellow/Red Autonomy Ladder, Never Defer rule, Only Finished Work checklist, Clarification Bar, Keep Going rule, Final Report Format. This is your primary operating contract.
+2. **`.claude/rules/player-experience-lens.md`** — Before shipping anything player-visible, run the five checks. Fix what fails in the same commit.
+3. **`.claude/rules/creative-pass.md`** — Every non-trivial response includes a three-item Creative Pass. No exceptions, no pads, no platitudes.
+4. **`.claude/rules/task-tracking.md`** — Every piece of work is tracked as a granular CLI task. `TaskList` must be empty before you commit.
 
-After completing any step (code change, research, sub-agent result, verification), pause and ask:
+## The `## What's Next` Forcing Function
 
-1. **Did I CHECK the output?** — Read back samples. Grep for broken patterns. Validate at least 5-10 items from any batch operation. Sub-agents produce broken output ~15-20% of the time. Catch it NOW, not after commit.
-2. **Docker visual verify done?** — MANDATORY. Run `scripts/docker-visual-test.sh` with `__rrScreenshotFile()` + `__rrLayoutDump()` after EVERY code change. No exceptions. Do not wait for user to ask. This is automatic and silent.
-3. **What's missing?** — Did I forget a related system, edge case, or integration point?
-4. **What tests?** — Does this need a unit test, visual test, balance sim, or /inspect run?
-5. **What should I ask the user?** — Am I making assumptions about intent, scope, or priority?
-4. **What's affected?** — What other systems does this touch? Save/load? Audio catalog? Inspection registry? Docs?
-5. **What would a player experience?** — Walk through the player's perspective. Is there feedback? Sound? Polish? Confusion?
-6. **What should be researched?** — Is there a better pattern in the codebase? A skill I should suggest? A doc I haven't read?
+**Every non-trivial response ends with a `## What's Next` block.** A response without it is incomplete — same severity as an untested change.
 
-## Running Scratchpad
+Two legal forms:
 
-During complex tasks, maintain a temporary scratchpad (via task comments, inline notes, or a temp doc) tracking:
-- Ideas and improvements noticed along the way
-- Gaps and concerns to raise with the user
-- Things that seem off but aren't part of the current task
-- Suggestions a senior game developer would make
+**Form A — more work recommended (the default):**
 
-Surface these to the user at natural checkpoints — don't silently move on.
+```
+## What's Next
+1. [Highest-priority next action] — [1-line reasoning]
+2. [Next action] — [reasoning]
+3. [Next action] — [reasoning]
+…up to 5 items
+```
 
-## Production-Ready Standard
+**Form B — genuinely done (rare and must be justified):**
 
-Every deliverable must meet this bar:
+```
+## What's Next
+✅ Done. No further work recommended. Rationale: [1-2 sentence justification of why there is genuinely nothing left to do — cite the Finished Work Checklist items satisfied and explain why no follow-ups surfaced.]
+```
 
-- **End-to-end wired**: Connected to game loop, screen flow, save system, and player experience. "The code exists" is NOT "it's in the game."
-- **Player-facing polish**: Visual feedback, SFX wiring (check audio catalog), appropriate animations, loading states
-- **Edge cases handled**: First run, empty state, max state, error state, rapid input, screen resize
-- **Save/load compatible**: New state persisted correctly, migration if schema changed
-- **Documented**: Docs updated in same commit, gotchas appended if applicable
-- **Tested**: Appropriate test level — unit, visual, balance sim, or /inspect
+The rationale clause on Form B is mandatory. It prevents lazy sign-off. If you cannot write a rationale, you are not actually done — use Form A.
 
-If ANY of these are missing, the task is NOT complete. Flag what's remaining rather than delivering incomplete work silently.
+## Proactive Skill Triggers
 
-## Proactive Suggestions — Mandatory
+When the conversation context matches any row below, proactively suggest or invoke the listed skill. Most of these skills say "proactively suggest" in their own docs with no enforcement — this table is the enforcement.
 
-Do not just execute instructions. Actively think about:
-- "While implementing X, I noticed Y could benefit from Z"
-- "Players might expect W here — should we add it?"
-- "This interacts with [system] in a way we should discuss"
-- "A Steam reviewer would notice [issue] — we should address it"
-- "This needs SFX/audio wiring per the audio catalog"
-- "The inspection registry should be updated for this new element"
-
-The user explicitly wants a collaborator who thinks about things they would never imagine. Over-communicate rather than under-communicate.
-
-## Proactive Skill Triggers — Check Every Conversation
-
-These skills say "proactively suggest" but have no enforcement. YOU must remember to offer them:
-
-| When This Happens | Suggest These Skills |
+| When This Happens | Suggest / Invoke |
 |---|---|
-| Balance, cards, enemies, relics, shop prices discussed | `/rogue-brain`, `/strategy-analysis`, `/advanced-balance` |
+| Balance, cards, enemies, relics, shop prices discussed | `/rogue-brain`, `/strategy-analysis`, `/advanced-balance`, `/balance-sim` |
+| New card / enemy / relic added | `/inspect`, `/validate-data`, `/audio-manager` |
 | UI changed, new screen, layout modified | `/visual-inspect`, `/ux-review` |
-| New game element added (enemy, relic, card, room) | `/inspect`, `/validate-data`, `/audio-manager` |
-| Game feel, juice, polish, player engagement discussed | `/audio-manager` |
-| New room backgrounds added | `/depth-transitions` |
-| Any testing or verification question | `/inspect` (master orchestrator — always suggest this first) |
-| Gameplay change committed | Check `/game-design-sync` (is GAME_DESIGN.md still accurate?) |
-| New curated deck completed | `/curated-trivia-bridge` (bridge to trivia DB) |
+| Card visual or frame modified | `/card-frames`, `/card-design` |
+| Game feel, juice, polish, engagement discussed | `/audio-manager` |
+| New curated deck completed | `/deck-master`, `/curated-trivia-bridge`, `/validate-data` |
+| Japanese / language content work | `/japanese-decks`, `/answer-checking` |
+| New room background added | `/depth-transitions`, `/light-mapping` |
+| New enemy sprite added | `/sprite-animate` |
+| Any testing or verification question | `/inspect` (master orchestrator — suggest first) |
+| Gameplay change committed | `/game-design-sync` (is GAME_DESIGN.md still accurate?) |
+| Mobile bug / perf issue | `/mobile-debug`, `/phaser-perf` |
+| Deploy to Steam | `/steam-deploy` |
+| Performance drop / render issue | `/phaser-perf` |
 
-## Anti-Patterns — What "Monkey's Paw" Looks Like
+## Anti-Patterns — Do Not Do These
 
-These are FAILURES even if the code compiles:
-- Feature exists in code but isn't reachable from any screen or menu
-- New mechanic with no visual/audio feedback
-- Service created but not registered or imported anywhere
-- UI component built but not added to any screen flow
-- Data added but not loaded by the runtime
-- Test passing but not actually testing the right thing
-- "It works in dev" but breaks in production build
+These are failures even if the code compiles:
 
-## Research Before Implementation
-
-For ANY task beyond a trivial fix:
-1. Read docs first (docs/INDEX.md → relevant sub-file)
-2. Read relevant skill definitions if one exists
-3. Check if similar patterns exist in the codebase — reuse, don't reinvent
-4. Consider the /feature-pipeline phases: Clarify, Research, Propose, Plan, Implement, Verify, Complete
-5. If the task touches balance: suggest /strategy-analysis, /rogue-brain, or /balance-sim
-6. If the task touches UI: suggest /visual-inspect and /ux-review after implementation
+- Feature exists in code but isn't reachable from any screen or menu.
+- New mechanic with no visual / audio feedback.
+- Service created but not registered or imported anywhere.
+- UI component built but not added to any screen flow.
+- Data added but not loaded by the runtime.
+- Test passing but not actually testing the right thing.
+- "It works in dev" but breaks in production build.
+- Partial work reported as "done".
+- Response without `## What's Next`.
+- Response without `## Creative Pass` on a non-trivial task.
+- Asking the user a question that the Clarification Bar says not to ask.
+- Using any of the banned "deferred" phrases from the Autonomy Charter.

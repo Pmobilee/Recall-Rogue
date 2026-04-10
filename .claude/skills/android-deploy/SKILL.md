@@ -1,10 +1,12 @@
 ---
 name: android-deploy
-description: Build and deploy the Android debug APK for live reload development on a USB-connected phone. Run this after native config changes or when setting up a new phone.
+description: "[POST-STEAM] Build and deploy the Android debug APK for live reload development on a USB-connected phone. Run this after native config changes or when setting up a new phone."
 user_invocable: true
+status: post-steam
 ---
 
-# ⚠️ AR Phase Doc Required — see `.claude/skills/work-tracking/SKILL.md` for rules.
+> **Status — Post-Steam launch (2026-04-10).** Mobile ships after Steam. Use on-demand only.
+> Planning discipline for any resulting work: `.claude/rules/task-tracking.md` + `.claude/skills/feature-pipeline/SKILL.md`.
 
 # Android Deploy — Live Reload APK
 

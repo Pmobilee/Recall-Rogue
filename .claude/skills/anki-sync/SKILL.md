@@ -1,6 +1,8 @@
 ---
 name: anki-sync
-description: Manage Anki .apkg import/export — import decks, export with FSRS stats, debug personal deck issues
+description: "[DORMANT] Manage Anki .apkg import/export — import decks, export with FSRS stats, debug personal deck issues. Not on the Steam launch path; use only on explicit user request."
+user_invocable: true
+status: dormant
 triggers:
   - anki
   - .apkg
@@ -8,6 +10,8 @@ triggers:
   - export deck
   - personal deck
 ---
+
+> **Status — Dormant (2026-04-10).** Anki interop is not part of the Steam launch path. Preserved for on-demand use; the orchestrator must NOT proactively suggest it.
 
 # /anki-sync — Anki Import/Export Manager
 

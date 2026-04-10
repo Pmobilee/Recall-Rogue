@@ -1,3 +1,12 @@
+---
+paths:
+  - "src/game/**"
+  - "src/ui/**"
+  - "src/services/deviceTierService.ts"
+  - "src/services/phaserPerf*.ts"
+  - "vite.config.ts"
+---
+
 # Performance Rules
 
 ## Target Metrics

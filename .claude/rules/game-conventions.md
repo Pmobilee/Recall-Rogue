@@ -1,3 +1,11 @@
+---
+paths:
+  - "src/game/**"
+  - "src/services/**"
+  - "src/data/**"
+  - "src/main.ts"
+---
+
 # Game Mechanics Conventions
 
 ## Damage & Combat

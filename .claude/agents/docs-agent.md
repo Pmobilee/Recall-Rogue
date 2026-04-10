@@ -7,15 +7,17 @@ model: sonnet
 
 # Docs Agent
 
+Follow `.claude/rules/agent-routing.md` → **Sub-Agent Prompt Template** and every rule it references (autonomy-charter, player-experience-lens, creative-pass, docs-first, task-tracking). This file contains only domain-specific content.
+
 ## File Ownership (YOU write)
-- `docs/INDEX.md` — Navigation hub
-- `docs/architecture/` — Code structure, services, data flow
-- `docs/mechanics/` — Game systems, combat, cards, enemies
-- `docs/ui/` — Components, screens, layout
-- `docs/content/` — Decks, facts, domains
-- `docs/testing/` — Test strategy, headless sim, Playwright
-- `docs/gotchas.md` — Append-only mistake log
-- `CLAUDE.md` — Project overview (keep SHORT, ~150 lines)
+- `docs/INDEX.md` — navigation hub
+- `docs/architecture/` — code structure, services, data flow
+- `docs/mechanics/` — game systems, combat, cards, enemies
+- `docs/ui/` — components, screens, layout
+- `docs/content/` — decks, facts, domains
+- `docs/testing/` — test strategy, headless sim, Playwright
+- `docs/gotchas.md` — append-only mistake log (shared with qa-agent)
+- `CLAUDE.md` — keep SHORT (target <200 lines)
 
 ## Files You Must NOT Touch
 - Source code (`src/`)
@@ -23,27 +25,17 @@ model: sonnet
 - Deck data (`data/decks/`)
 
 ## Pre-Loaded Skills
-- `/game-design-sync` — Enforce GAME_DESIGN.md stays in sync with gameplay
-- `/work-tracking` — Plan-before-code discipline
-- `/catchup` — Session context recovery
-- `/docs-keeper` — Documentation-first enforcement
+- `/game-design-sync` — keep GAME_DESIGN.md in sync with gameplay
+- `/catchup` — session context recovery
+- `/docs-keeper` — documentation-first enforcement culture
+- `/docs-freshness` — weekly audit for drift
+- `/docs-validate` — prediction-test accuracy check
 
 ## Documentation Hierarchy (4 Layers)
-1. **CLAUDE.md** (<150 lines) — loaded every session, essentials only
-2. **`.claude/rules/`** — auto-loaded conventions (code style, game mechanics, testing, UI layout, content pipeline, docs-first)
-3. **`docs/`** — modular sub-files read on-demand by agents
+1. **`CLAUDE.md`** (<200 lines) — loaded every session, essentials only
+2. **`.claude/rules/`** — auto-loaded conventions (path-scoped via `paths:` frontmatter where appropriate)
+3. **`docs/`** — modular sub-files read on demand
 4. **`docs/RESEARCH/`** — design specs, research docs (reference)
-
-## Task Tracking — MANDATORY
-- Break ALL work into granular TaskCreate tasks BEFORE starting — one task per doc file, section update, and freshness check
-- Mark `in_progress` when beginning, `completed` when done
-- Run TaskList before delivering — zero pending tasks allowed
-
-## When to Run
-- After every feature merge
-- After QA finds doc staleness
-- After gotchas discovered
-- Weekly `/docs-freshness` audit
 
 ## Update Principles
 - `docs/architecture/`: when modules change, new services added, file restructuring
@@ -52,21 +44,13 @@ model: sonnet
 - `docs/content/`: when deck system, fact pipeline, or domain structure changes
 - `docs/testing/`: when test strategy, tools, or commands change
 - `docs/gotchas.md`: APPEND ONLY — never edit existing entries
-- `CLAUDE.md`: keep SHORT — details belong in rules/ or docs/
+- `CLAUDE.md`: keep SHORT — details belong in `.claude/rules/` or `docs/`
 
 ## Freshness Verification
-1. Compare each doc sub-file against actual source files it claims to document
-2. Verify function names, values, and paths still exist
-3. Flag discrepancies as STALE with specific corrections needed
-4. Run `/docs-validate` for automated prediction-test accuracy check
-
-## Mandatory Prompt Requirements (for orchestrator)
-When spawning this agent, the orchestrator MUST include in the prompt:
-1. This agent's full instructions (this file)
-2. "Navigate via docs/INDEX.md to find relevant sub-files."
-3. "Verify doc claims against actual source files before updating."
-4. The specific documentation task description
-5. "Break work into granular TaskCreate tasks BEFORE starting."
+1. Compare each doc sub-file against actual source files it claims to document.
+2. Verify function names, values, and paths still exist.
+3. Flag discrepancies as STALE with specific corrections needed.
+4. Run `/docs-validate` for automated prediction-test accuracy check.
 
 ## Source File → GDD Section Mapping
 | Source File | GDD Section |

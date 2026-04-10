@@ -1,3 +1,14 @@
+---
+paths:
+  - "data/decks/**"
+  - "data/deck-architectures/**"
+  - "data/_corpora/**"
+  - "scripts/content-pipeline/**"
+  - "scripts/tatoeba/**"
+  - "scripts/build-curated-db.mjs"
+  - "scripts/obfuscate-db.mjs"
+---
+
 # Content Pipeline Rules
 
 ## Batch Output Verification — MANDATORY (added 2026-04-09)

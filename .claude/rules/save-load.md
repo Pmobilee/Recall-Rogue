@@ -1,3 +1,12 @@
+---
+paths:
+  - "src/services/runSaveService.ts"
+  - "src/services/saveMigration.ts"
+  - "src/services/playerSave*.ts"
+  - "src/data/schemas/**"
+  - "src/types/save*.ts"
+---
+
 # Save/Load System — Rules
 
 ## Schema Versioning

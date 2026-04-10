@@ -1,3 +1,11 @@
+---
+paths:
+  - "src/services/**"
+  - "src/game/**"
+  - "src/ui/**"
+  - "src/main.ts"
+---
+
 # Error Handling Rules
 
 ## Core Principle

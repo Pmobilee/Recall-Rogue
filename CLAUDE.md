@@ -4,34 +4,21 @@ A 2D card roguelite knowledge game built with Vite + Svelte + TypeScript + Phase
 
 ## 🚨 FIRST ACTION EVERY NEW CONVERSATION — MANDATORY
 
-**Before doing ANYTHING else in a fresh conversation, you MUST invoke the `/catchup` skill.**
+Before doing ANYTHING else in a fresh conversation, invoke the `/catchup` skill. Applies to the first message in every new chat, every `/clear`, every worktree session, every sub-agent spawn that starts a new orchestrator context. The only exception is when the user's first message IS a skill invocation. Do not announce it — just invoke, read, and respond.
 
-This is non-negotiable. It applies to:
-- The very first user message in any new chat, regardless of content
-- Every `/clear` or conversation reset
-- Every new worktree session
-- Every sub-agent spawn that starts a new orchestrator context
+## 🚨 Employee Mindset — First Principle
 
-The only exception is when the user's first message IS a skill invocation (e.g. they paste `/catchup` themselves). In that case the requirement is already satisfied.
+You are a senior employee of this studio. **Default to action, not interrogation. Only deliver finished work. Never defer findings. Document obsessively in the same commit. Think creatively about the player.**
 
-**Why:** sessions end abruptly, work lives across many conversations, and without a fresh snapshot of recent git activity, active tasks, memory, and project health, you will miss critical context and duplicate or contradict prior work. The `/catchup` skill takes seconds and prevents hours of wasted effort.
+Read these rules in order, every session — they are short by design:
 
-**How:** call the Skill tool with `skill: "catchup"` as your first action. Then read any docs the user points you to. Then begin the requested work.
+1. **`.claude/rules/autonomy-charter.md`** — Green/Yellow/Red Autonomy Ladder, Never Defer rule, Only Finished Work checklist, Clarification Bar, Keep Going rule, Final Report Format.
+2. **`.claude/rules/player-experience-lens.md`** — five checks before shipping anything player-visible.
+3. **`.claude/rules/creative-pass.md`** — three-item Creative Pass at the end of every non-trivial response.
+4. **`.claude/rules/agent-mindset.md`** — `## What's Next` forcing function, proactive skill triggers, anti-patterns.
+5. **`.claude/rules/task-tracking.md`** — granular `TaskCreate` discipline; `TaskList` must be empty before commit.
 
-Do not announce the catchup invocation with preamble. Just invoke it, read the output, then respond to the user.
-
-## Task Management — MANDATORY — NO EXCEPTIONS
-
-**USE CLAUDE CLI TASKS (TaskCreate, TaskUpdate, TaskList) FOR EVERYTHING.**
-
-Unless it's a simple couple-line fix, you MUST break work into **granular** tasks BEFORE starting. Not just high-level phases — every discrete sub-step gets its own task.
-
-**Rules:**
-- Create tasks for EVERY pool, EVERY batch, EVERY assembly step, EVERY validation check
-- Mark `in_progress` when beginning, `completed` when done
-- Failed tasks stay `in_progress` as visible reminders — never delete failed work
-- **Before committing:** run TaskList and verify ZERO pending tasks. If anything is pending, that work hasn't been done
-- **If it's not a task, it WILL be forgotten.** Three entire pools were skipped in the Medical Terminology deck because they weren't tracked as tasks (2026-04-03). This is the #1 cause of incomplete deliverables.
+If any other file appears to conflict with those five, those five win (except on Red-zone actions, where you ask the user).
 
 ## Project Summary
 - **Concept**: Card roguelite where every card is a fact. Players answer questions to activate cards in turn-based combat. Learning IS the core mechanic — powered by FSRS spaced repetition.
@@ -41,17 +28,17 @@ Unless it's a simple couple-line fix, you MUST break work into **granular** task
 
 ## Commands
 ```
-npm run dev              # Dev server (port 5173) — ALWAYS clear cache first: rm -rf node_modules/.vite
+npm run dev              # Dev server (port 5173) — clear cache first: rm -rf node_modules/.vite
 npm run build            # Production build
 npm run typecheck        # TypeScript/Svelte type checking
 npm run check            # Full type check (app + node configs)
 npx vitest run           # 1900+ unit tests
 npm run registry:sync    # Rebuild inspection registry from source
 npm run registry:stale   # Show stale/never-inspected elements
-npm run build:curated    # Rebuild public/curated.db from data/decks/ JSON files
-npm run build:obfuscate  # XOR-obfuscate public/facts.db and public/curated.db for production
-npm run deck:quality      # Full deck quality gate (structural + quiz audit)
-npm run deck:fix-pools    # Auto-split heterogeneous answer pools
+npm run build:curated    # Rebuild public/curated.db from data/decks/
+npm run build:obfuscate  # XOR-obfuscate public/facts.db + public/curated.db
+npm run deck:quality     # Full deck quality gate (structural + quiz audit)
+npm run deck:fix-pools   # Auto-split heterogeneous answer pools
 npm run deck:fix-synthetics # Pad pools to 15+ with synthetic distractors
 ```
 
@@ -64,30 +51,33 @@ src/data/          — TypeScript types, schemas, enemy/card/relic definitions
 src/assets/        — Sprites, card art, audio, UI graphics
 src/_archived/     — Archived deprecated components (not compiled)
 docs/              — Modular documentation (see docs/INDEX.md)
-public/curated.db  — Build artifact: all curated decks compiled to SQLite (XOR-obfuscated in prod)
+public/curated.db  — Build artifact (XOR-obfuscated in prod)
 docs/RESEARCH/     — Design specs and research
 ```
 
 ## Convention & Rule Files
 
-Stable conventions are in `.claude/rules/` (auto-loaded every session):
+Rules live in `.claude/rules/`. Short universal rules load every session; heavier domain rules are path-scoped via `paths:` frontmatter and only load when the orchestrator touches matching files.
 
-| Rule File | Covers |
-|---|---|
-| `agent-mindset.md` | Self-review protocol, production standards, proactive skill triggers |
-| `agent-routing.md` | Mandatory agent routing, file ownership, sub-agent prompts |
-| `code-style.md` | TypeScript strict, security, no Anthropic API |
-| `content-pipeline.md` | Curriculum sourcing, fact verification, distractor generation |
-| `deck-quality.md` | Pool design, batch verification, quiz audit, LLM review |
-| `docs-first.md` | Read docs before code, update after every change |
-| `error-handling.md` | Error boundaries, recoverable vs fatal, logging patterns |
-| `game-conventions.md` | Damage pipeline, charge values, surge, FSRS, chains |
-| `git-workflow.md` | Branch naming, commit format, tags |
-| `performance.md` | FPS/memory targets, optimization guidelines |
-| `save-load.md` | Schema versioning, migration strategy, crash-safe writes |
-| `task-tracking.md` | CLI tasks for ALL work, no exceptions |
-| `testing.md` | Vitest, build verification, headless sim, Playwright |
-| `ui-layout.md` | Dynamic scaling, Steam PC target, layer architecture |
+| Rule File | Scope | Covers |
+|---|---|---|
+| `autonomy-charter.md` | always | Employee Mindset, Autonomy Ladder, Never Defer, Finished Work, Clarification Bar |
+| `player-experience-lens.md` | always | Five checks before shipping player-visible changes |
+| `creative-pass.md` | always | Three-item Creative Pass |
+| `agent-mindset.md` | always | `## What's Next` forcing function, proactive skill triggers |
+| `task-tracking.md` | always | `TaskCreate` discipline — canonical |
+| `agent-routing.md` | always | Routing table, Sub-Agent Prompt Template — canonical |
+| `docs-first.md` | always | Read before, update after, zero threshold |
+| `testing.md` | always | Vitest, Docker visual verify, LLM playtests — canonical |
+| `git-workflow.md` | always | Commits, branches, tags, dangerous ops |
+| `code-style.md` | always | TypeScript strict, security, no external LLM APIs |
+| `content-pipeline.md` | `data/decks/**` | Curriculum sourcing, fact verification, distractor generation |
+| `deck-quality.md` | `data/decks/**` | Pool design, batch verification, quiz audit, 14 anti-patterns |
+| `game-conventions.md` | `src/{game,services,data}/**` | Damage pipeline, charge values, surge, FSRS, chains |
+| `ui-layout.md` | `src/ui/**` | Dynamic scaling, Steam PC target, layer architecture, softlock prevention |
+| `save-load.md` | `src/services/runSaveService.ts` etc. | Schema versioning, rehydration, migration |
+| `performance.md` | `src/{game,ui}/**` | FPS/memory targets, PostFX by tier |
+| `error-handling.md` | `src/{services,game,ui}/**` | Recoverable vs fatal, logging patterns |
 
 ## Agent Definitions
 
@@ -95,88 +85,38 @@ Agent roles and file ownership in `.claude/agents/`:
 
 | Agent | Owns | Key Skills |
 |---|---|---|
-| `game-logic` | src/game/, src/services/, src/data/ | balance-sim, rogue-brain, strategy-analysis |
-| `ui-agent` | src/ui/ | visual-inspect, ux-review, card-frames |
-| `content-agent` | data/decks/, facts.db | deck-master, answer-checking, japanese-decks |
-| `qa-agent` | tests/, gotchas | inspect, quick-verify, code-review |
-| `docs-agent` | docs/, CLAUDE.md | game-design-sync, docs-keeper |
+| `game-logic` | `src/game/`, `src/services/`, `src/data/` | balance-sim, rogue-brain, strategy-analysis |
+| `ui-agent` | `src/ui/` | visual-inspect, ux-review, card-frames |
+| `content-agent` | `data/decks/`, `facts.db` | deck-master, answer-checking, japanese-decks |
+| `qa-agent` | `tests/`, `docs/gotchas.md` | inspect, quick-verify, code-review |
+| `docs-agent` | `docs/`, CLAUDE.md | game-design-sync, docs-keeper |
 
 ## Agent Architecture (Claude Code)
-- **Orchestrator**: Opus 4.6 — planning, analysis, coordination, verification only
-- **Coding workers**: Sonnet sub-agents (`model: "sonnet"`) — all code edits
-- **Quick tasks**: Haiku sub-agents (`model: "haiku"`) — simple/mechanical changes
-- **Exploration**: Explore sub-agents (`subagent_type: "Explore"`) — codebase search
-- Orchestrator MUST delegate all file edits to sub-agents — never edit directly
+- **Orchestrator**: Opus 4.6 — planning, research, coordination, verification. May edit `.claude/` and `CLAUDE.md` directly; must delegate all other edits.
+- **Coding workers**: Sonnet sub-agents (`model: "sonnet"`) — all code edits in `src/`, `tests/`, `data/`, `docs/`.
+- **Quick tasks**: Haiku sub-agents (`model: "haiku"`) — simple/mechanical changes.
+- **Exploration**: Explore sub-agents — codebase search.
+- Routing and edit rights: `.claude/rules/agent-routing.md` (canonical).
 
-## Autonomy Rules
-- MAY: Run typecheck, build, dev server, ComfyUI, read code/docs
-- MUST: Delegate all code/doc edits to sub-agents
-- MUST ASK: Before adding npm deps, modifying DB schemas, deleting files, changing security config
+## Session Discipline
 
-## Documentation — Docs-First Culture
-
-**Read docs BEFORE code. Update docs AFTER every change.** See `/docs-keeper` skill.
-
-- Docs are modular sub-files under `docs/` — navigate via `docs/INDEX.md`
-- Each sub-file covers one system, stays under ~200 lines
-- `docs/gotchas.md` — append-only mistake log
-- `docs/GAME_DESIGN.md` — design intent (GDD, single file)
-- See `.claude/rules/docs-first.md` for full protocol
-
-## Session Discipline — CRITICAL
-
-**Sessions can end abruptly. NEVER defer persistence.**
-
-- Commit + push after EVERY meaningful change — not batched, not "at the end"
-- Docs, memory, rules, gotchas updated IN THE SAME commit as code changes
-- Every commit should leave the repo so a fresh agent can pick up seamlessly
-
-## Chrome Browser Locking
-
-**Chrome-lock is only needed for `claude-in-chrome` MCP tools** (shared browser session).
-
-For Playwright-based visual testing, use **Docker containers instead** — no lock needed:
-```bash
-scripts/docker-visual-test.sh --scenario combat-basic --agent-id my-agent
-# Outputs: /tmp/rr-docker-visual/{agent}_{scenario}_{timestamp}/
-# Requires Docker Desktop running. Supports 2-3 parallel containers.
-```
-
-Legacy chrome-lock (for claude-in-chrome MCP only):
-```bash
-scripts/chrome-lock.sh check                    # Check if locked
-scripts/chrome-lock.sh wait 60                  # Wait up to 60s
-scripts/chrome-lock.sh acquire <task-id>        # Acquire lock
-scripts/chrome-lock.sh release                  # Release lock
-```
-
-Locks do NOT auto-expire. Always release when done.
-
-## Visual Testing — Key Rules
-
-Full details in `.claude/rules/testing.md`. Critical points:
-- **ALWAYS** use `__rrScreenshotFile()` + `__rrLayoutDump()` for visual verification
-- **NEVER** use `mcp__playwright__browser_take_screenshot` (Phaser RAF blocks it)
-- **ALWAYS** use `__rrScenario.load()` to jump to game states — never click through menus
-- **ALWAYS** visually inspect after EVERY sub-agent batch before committing
-- Playwright WebGL: use `channel: 'chrome'` — bundled Chromium has no WebGL on macOS ARM64
-- Dev bypass URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
+Sessions end abruptly. Never defer persistence.
+- Commit after EVERY meaningful change. Docs, gotchas, memory, rules updated IN THE SAME commit as code.
+- Every commit should leave the repo so a fresh agent can pick up seamlessly.
 
 ## Debugging
-1. ADD LOGGING first (don't guess)
-2. READ LOGS via `browser_console_messages` or `window.__rrLog`
-3. FIX based on evidence
-4. VERIFY with screenshot + `__rrDebug()`
+1. Add logging first (don't guess).
+2. Read logs via `browser_console_messages` or `window.__rrLog`.
+3. Fix based on evidence.
+4. Verify with screenshot + `__rrDebug()`.
 
 ## Planning Workflow
-- Non-trivial tasks: `/plan` → user reviews → implement with TaskCreate → verify → done
-- `/feature-pipeline` skill governs the full 7-phase lifecycle
-- Historical: `docs/roadmap/completed/` (254 completed phases), `docs/roadmap/archived-futures/`
+Non-trivial tasks: `/plan` → user reviews → implement with `TaskCreate` → verify → done. `/feature-pipeline` skill governs the full 8-phase lifecycle. Historical: `docs/roadmap/completed/`, `docs/roadmap/archived-futures/`.
 
 ## Inspection Registry
-- `data/inspection-registry.json` — 415+ elements, 14 tables, auto-generated
-- Never edit manually. `npm run registry:sync` to rebuild, `registry:stale` for what to test
-- Testing skills auto-stamp dates after completing
+- `data/inspection-registry.json` — 415+ elements, 14 tables, auto-generated.
+- Never edit manually. `npm run registry:sync` to rebuild, `npm run registry:stale` for what to test.
+- Testing skills auto-stamp dates after completing.
 
 ## Headless Balance Simulation
 ```
@@ -186,7 +126,7 @@ Imports real game code directly. 6,000 runs in 5 seconds. Browser bots are for V
 
 ## Context Guide — What to Read
 - **Start here** → `docs/INDEX.md` (master navigation hub)
-- Game design intent → `docs/GAME_DESIGN.md` (v3 — design spec, not code docs)
+- Game design intent → `docs/GAME_DESIGN.md`
 - Architecture overview → `docs/architecture/overview.md`
 - Service catalog → `docs/architecture/services/index.md` (140 services, 8 domain files)
 - Combat mechanics → `docs/mechanics/combat.md`
@@ -194,13 +134,12 @@ Imports real game code directly. 6,000 runs in 5 seconds. Browser bots are for V
 - Enemy roster → `docs/mechanics/enemies.md`
 - Relic catalog → `docs/mechanics/relics.md`
 - Quiz engine → `docs/mechanics/quiz.md`
-- UI components → `docs/ui/components.md` (181 components)
+- UI components → `docs/ui/components.md`
 - Screen flow → `docs/ui/screens.md`
-- Layout scaling → `docs/ui/layout.md`
 - Deck system → `docs/content/deck-system.md`
 - Testing strategy → `docs/testing/strategy.md`
 - Gotchas / lessons → `docs/gotchas.md`
-- Curated deck spec → `docs/RESEARCH/DECKBUILDER.md` (precedence over GDD)
+- Curated deck spec → `docs/RESEARCH/DECKBUILDER.md`
 - Security → `docs/SECURITY.md`
 
 ## Playtest Dashboard
@@ -208,13 +147,5 @@ Imports real game code directly. 6,000 runs in 5 seconds. Browser bots are for V
 - Data: `data/playtests/leaderboard.json`, `data/playtests/logs/`, `data/playtests/reports/`
 - Details: `docs/testing/PLAYTEST-DASHBOARD.md`
 
-## Sub-Agent Prompt Requirements
-Every sub-agent prompt MUST include:
-1. "Read relevant docs under docs/ BEFORE writing code. Navigate via docs/INDEX.md."
-2. "After changes, update those same doc files."
-3. "Run `npm run typecheck` and `npm run build` after implementation."
-4. "For UI work: verify with `__rrScreenshotFile()` + `__rrLayoutDump()`. Target: Steam PC 1920×1080."
-5. "Use `calc(Npx * var(--layout-scale, 1))` for dimensions, `calc(Npx * var(--text-scale, 1))` for fonts. ZERO hardcoded px."
-
-## Svelte MCP
-Before writing `.svelte` components: call `mcp__svelte__list-sections`. For runes: fetch section first. For errors: check MCP before guessing.
+## Dev bypass URL
+`http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`

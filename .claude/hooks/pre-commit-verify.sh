@@ -64,5 +64,47 @@ if [ -n "$STAGED_DECKS" ]; then
   fi
 fi
 
+# Docker visual verify: block if observable source files are staged.
+# Per .claude/rules/testing.md → "Docker Visual Verification — MANDATORY".
+# This is the enforcement that used to live only in prose.
+# Escape hatch: RR_SKIP_DOCKER_VERIFY=1 to bypass (loud warning).
+STAGED_OBSERVABLE=$(git diff --cached --name-only --diff-filter=AM \
+  | grep -E '^(src/game/|src/services/|src/ui/|src/CardApp\.svelte|data/decks/.*\.json)' || true)
+if [ -n "$STAGED_OBSERVABLE" ]; then
+  if [ "${RR_SKIP_DOCKER_VERIFY:-0}" = "1" ]; then
+    echo "" >&2
+    echo "⚠️  WARNING: RR_SKIP_DOCKER_VERIFY=1 is set — skipping Docker visual verify." >&2
+    echo "   This bypass should only be used in genuine emergencies." >&2
+    echo "   The staged change touches observable files:" >&2
+    echo "$STAGED_OBSERVABLE" | sed 's/^/     /' >&2
+    echo "" >&2
+  elif [ -f "scripts/docker-visual-test.sh" ]; then
+    # Check Docker is actually available before blocking on it.
+    if ! command -v docker >/dev/null 2>&1 || ! docker info >/dev/null 2>&1; then
+      echo "" >&2
+      echo "⚠️  WARNING: Docker is not running — cannot run visual verification." >&2
+      echo "   Per .claude/rules/testing.md this is MANDATORY for observable changes." >&2
+      echo "   Start Docker Desktop and retry, or set RR_SKIP_DOCKER_VERIFY=1 to bypass." >&2
+      echo "   Staged observable files:" >&2
+      echo "$STAGED_OBSERVABLE" | sed 's/^/     /' >&2
+      echo "" >&2
+      echo "BLOCKED: Docker unavailable — cannot verify observable change." >&2
+      exit 2
+    fi
+
+    echo "Running Docker visual verification..." >&2
+    AGENT_ID="precommit-$$"
+    SCENARIO="${RR_PRECOMMIT_SCENARIO:-combat-basic}"
+    if ! scripts/docker-visual-test.sh --scenario "$SCENARIO" --agent-id "$AGENT_ID" 2>&1 >&2; then
+      echo "" >&2
+      echo "BLOCKED: Docker visual verification failed." >&2
+      echo "   Review the artifacts under /tmp/rr-docker-visual/${AGENT_ID}_*" >&2
+      echo "   Fix the visual regression or set RR_SKIP_DOCKER_VERIFY=1 to bypass." >&2
+      exit 2
+    fi
+    echo "Docker visual verification passed." >&2
+  fi
+fi
+
 echo "All checks passed." >&2
 exit 0

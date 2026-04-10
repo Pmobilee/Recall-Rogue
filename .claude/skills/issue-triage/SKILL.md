@@ -1,10 +1,12 @@
 ---
+name: issue-triage
 description: "Triage playtest reports: deduplicate, score, and rank issues on a leaderboard"
+user_invocable: true
 ---
 
 # Issue Triage
 
-This is a read-only analysis skill. It produces findings; implementation work from those findings requires a separate AR doc — see `.claude/skills/work-tracking/SKILL.md`.
+This is a read-only analysis skill. It produces findings; implementation work from those findings is planned and tracked per `.claude/rules/task-tracking.md` and `.claude/skills/feature-pipeline/SKILL.md`.
 
 Review all analysis reports, deduplicate issues, score them, and maintain a ranked leaderboard.
 

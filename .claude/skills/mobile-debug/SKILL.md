@@ -1,9 +1,12 @@
 ---
 name: mobile-debug
 description: |
-  Capacitor mobile debugging guide. Chrome remote inspection, Inspect.dev, WebDebugX, native profiler workflows, and dev diagnostics panel spec. PROACTIVELY SUGGEST when mobile bugs, performance issues, or device-specific rendering problems arise.
+  [POST-STEAM] Capacitor mobile debugging guide. Chrome remote inspection, Inspect.dev, WebDebugX, native profiler workflows, and dev diagnostics panel spec. Suggest only after mobile work resumes post-Steam launch.
 user_invocable: true
+status: post-steam
 ---
+
+> **Status — Post-Steam launch (2026-04-10).** Mobile ships after Steam. The orchestrator must NOT proactively suggest this skill until mobile work resumes; keep it on-demand only.
 
 # Mobile Debugging — Capacitor + Phaser
 
