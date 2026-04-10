@@ -81,3 +81,29 @@ Fields documented as "in-memory only — not persisted" on `RunState` MUST:
 3. Be explicitly reset in `deserializeRunState()` (to `undefined`, empty Set, or empty Map)
 
 See `docs/architecture/services/learning.md` for the full field-by-field contract.
+
+## Run Lifecycle Termination Invariants — CRITICAL RULE (added 2026-04-10)
+
+**All run-termination paths MUST converge on the `runEnd` scene before returning to the hub.** No direct hub jumps on death, retreat, or victory.
+
+### Why this rule exists
+
+On 2026-04-10 (MEDIUM-10), `finishRunAndReturnToHub()` in `gameFlowController.ts` ended with `currentScreen.set('hub')`, skipping `RunEndScreen` entirely. Players never saw their run summary, XP, or Play Again / Return to Menu choices. The fix was a one-line change to `currentScreen.set('runEnd')`, but the regression shipped because there was no enforced invariant.
+
+### The mandatory contract
+
+Every run-termination path — defeat (HP ≤ 0), retreat, boss victory, manual quit — MUST:
+
+1. Call a single shared function (e.g. `finishRunAndReturnToHub()`) that writes `currentScreen.set('runEnd')`
+2. Let the `RunEndScreen` component's `onplayagain` / `onhome` callbacks handle the subsequent hub transition
+3. Never bypass `runEnd` via a direct `currentScreen.set('hub')` from a combat / encounter scene
+
+### Enforcement
+
+- `src/services/gameFlowController.termination.test.ts` — source-level invariant tests that parse `gameFlowController.ts` and assert: `finishRunAndReturnToHub` contains `currentScreen.set('runEnd')`, does NOT contain `currentScreen.set('hub')`, and at least 2 call sites exist (defeat + retreat)
+- Headless sim forces a zero-HP run at high ascension and asserts `survived === false` + `deathFloor > 0`
+- See `docs/mechanics/combat.md` § "Run Termination State Machine" for the full state diagram
+
+### Applies to
+
+Any future termination path additions (e.g. time-out, ragequit, multiplayer forfeit) MUST be routed through the same convergence point. Never add a new termination path that writes `'hub'` directly.
