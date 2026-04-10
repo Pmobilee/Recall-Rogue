@@ -35,15 +35,9 @@ Every sub-agent prompt MUST include:
 The user may stop a session at ANY time without warning. You cannot rely on a clean shutdown.
 
 **After EVERY meaningful change (not batched, not "at the end"):**
-1. Commit and push your work to your branch immediately
+1. Commit your work immediately (directly on `main` unless a branch was explicitly requested)
 2. Update the relevant docs, memory, gotchas, and rules IN THE SAME commit
-3. If working in a worktree, push the branch — lingering unpushed worktrees get lost
-
-**At natural breakpoints (task completion, phase transition, or when asked):**
-1. Push all changes to your branch
-2. ASK THE USER: "Should I merge this into main?" — they may forget about lingering branches
-3. If the user says yes, merge and clean up the worktree
-4. If they say not yet, remind them the branch name so they can find it later
+3. Push if the user has asked for remote sync
 
 **Never defer persistence.** Don't plan to "update docs at the end" or "push when done." Every commit should leave the repo in a state where another agent can pick up where you left off.
 
