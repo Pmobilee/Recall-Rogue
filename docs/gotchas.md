@@ -2179,3 +2179,24 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **Fix:** Treat structural pass and quiz-engine audit as independent gates. Never stamp `lastQuizAudit` based on a structural pass alone. The registry field `lastQuizAudit` means "quiz-engine audit ran and passed at all three mastery levels (0, 2, 4)." `lastVerified` covers structural passes.
 
 **Lesson:** "Structural ✓" does not imply "deck ✓". A deck that passes `verify-all-decks.mjs` can still have 300+ runtime warnings in the quiz engine. Both gates must pass independently before a deck is considered production-ready.
+
+### 2026-04-10 — Verification scripts silently auto-stamp the inspection registry
+
+**Symptom:** After running a 2026-04-10 "honest registry reset" that cleared 95 stale deck stamps, subsequent invocations of `node scripts/verify-all-decks.mjs` and `npm run build:curated` immediately re-stamped 89 decks without any agent explicitly requesting it. Three rounds of resets were required during a single session.
+
+**Root cause:** Three scripts auto-stamp the inspection registry as a silent side effect of running verification:
+- `scripts/verify-all-decks.mjs` — stamps `lastStructuralVerify` on every deck that passes the 22-check structural gate
+- `scripts/quiz-audit.mjs` — stamps `lastQuizAudit` on every deck that passes the runtime quiz audit
+- `scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs` — stamps `lastTriviaBridge` on every deck bridged by `build:curated`
+
+Each script calls `execSync('npx tsx scripts/registry/updater.ts ...')` in a "best-effort, never blocks" try/catch. The side effect is invisible unless you diff the registry after running.
+
+**Fix:** Stamping is now opt-in via `--stamp-registry`. Default behavior is NO stamping. To stamp after a verification pass, explicitly add the flag:
+```
+node scripts/verify-all-decks.mjs --stamp-registry
+node scripts/quiz-audit.mjs --stamp-registry
+node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs --stamp-registry
+```
+`npm run build:curated` no longer stamps the bridge by default.
+
+**Lesson:** Verification scripts should never have hidden side effects on truth-source data. Making stamping opt-in aligns intent with action — an agent stamping a deck now has to explicitly say so.

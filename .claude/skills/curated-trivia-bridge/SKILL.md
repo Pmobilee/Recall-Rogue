@@ -87,6 +87,8 @@ node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs
 
 Output: `src/data/seed/bridge-curated.json` + `scripts/content-pipeline/bridge/bridge-manifest.json`
 
+> **Note (2026-04-10):** Bridging no longer stamps the inspection registry by default. Pass `--stamp-registry` explicitly to mark bridged decks as lastTriviaBridge in the registry after a successful pass.
+
 ### 4. Rebuild Database
 
 ```bash

@@ -315,8 +315,11 @@ VALIDATE
 The per-deck validation script above checks ONE deck. After building or modifying any deck, also run the batch verifier to catch cross-deck issues and ensure no regressions:
 
 ```bash
-node scripts/verify-all-decks.mjs           # Summary: all 63 decks
+node scripts/verify-all-decks.mjs           # Summary: all 63 decks (no registry stamp)
 node scripts/verify-all-decks.mjs --verbose  # Per-fact failure details
+node scripts/verify-all-decks.mjs --stamp-registry  # Structural + stamp registry on pass
+# (Note: pass --stamp-registry to update inspection-registry.json as part of the verification pass.
+# Default behavior no longer stamps — this is intentional, per 2026-04-10 gotcha.)
 ```
 
 20 checks per fact/deck — 13 structural + 6 content quality + 1 pool homogeneity. Check #20: per pool, max/min answer length ratio > 3× = FAIL, > 2× = WARN (skips bracket-number and homogeneityExempt pools).
@@ -330,6 +333,8 @@ After assembly, run these two additional checks:
 ```bash
 node scripts/pool-homogeneity-analysis.mjs --deck <id>   # Per-pool length stats — 0 FAIL required
 node scripts/quiz-audit.mjs --deck <id> --full            # Every fact's quiz presentation — 0 FAIL required
+node scripts/quiz-audit.mjs --deck <id> --full --stamp-registry  # + stamp registry on pass
+# (Note: pass --stamp-registry to update inspection-registry.json. Default behavior no longer stamps — per 2026-04-10 gotcha.)
 ```
 
 Pool homogeneity ensures answer lengths within each pool are comparable (ratio < 3×). If a pool inherently mixes formats (e.g., geographic names "Chad" vs "Democratic Republic of the Congo"), add `"homogeneityExempt": true` and `"homogeneityExemptNote": "reason"` to the pool.
@@ -574,6 +579,7 @@ Decks serve TWO distinct game modes. Workers building decks must understand both
 1. Add the new deck to `scripts/content-pipeline/bridge/deck-bridge-config.json` with correct `prefixSegments`, `entitySegments`, `categoryL2`, and `domain`
 2. Dry run: `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs --dry-run`
 3. Generate: `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`
+   (Note: pass --stamp-registry to update inspection-registry.json as part of the bridge pass. Default behavior no longer stamps — this is intentional, per 2026-04-10 gotcha.)
 4. Rebuild DB: `node scripts/build-facts-db.mjs`
 5. Verify: `npx vitest run` — check for ID collisions or distractor warnings
 
@@ -1322,10 +1328,12 @@ node scripts/verify-all-decks.mjs
 # Target: 0 FAIL. Check #22 word-leak warnings use corpus-frequency filtering
 # (words appearing in 3+ facts are treated as domain terms and excluded).
 # Remaining warnings are genuine — answer's distinguishing word appears in question.
+# (Note: pass --stamp-registry to update inspection-registry.json on pass. Default no longer stamps — per 2026-04-10 gotcha.)
 
 # 2. Quiz engine audit — catches length tells, distractor collisions
 node scripts/quiz-audit.mjs --full --deck <deck_id>
 # Target: 0 FAIL. Warnings are informational.
+# (Note: pass --stamp-registry to update inspection-registry.json on pass. Default no longer stamps — per 2026-04-10 gotcha.)
 
 # 3. Pool heterogeneity auto-fix — splits pools where answer lengths vary >3x
 node scripts/fix-pool-heterogeneity.mjs

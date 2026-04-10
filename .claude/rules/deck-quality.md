@@ -70,7 +70,7 @@ node scripts/verify-all-decks.mjs           # Summary table (all decks)
 node scripts/verify-all-decks.mjs --verbose  # Per-fact details on failures
 ```
 
-26 checks per fact/deck. Target: **0 failures**. Warnings are informational. (Check #24: brace-leak; Check #25: grammar-scar catalog; Check #26: semantic-category heuristics)
+26 checks per fact/deck. Target: **0 failures**. Warnings are informational. (Check #24: brace-leak; Check #25: grammar-scar catalog; Check #26: semantic-category heuristics) Stamping is opt-in via `--stamp-registry`; a plain verify run no longer updates the registry (2026-04-10).
 
 ## Trivia Bridge — MANDATORY (Knowledge Decks)
 

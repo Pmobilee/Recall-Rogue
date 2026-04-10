@@ -1217,17 +1217,25 @@ console.log('');
 // because educational content inherently varies: 'Pons' vs 'Visceral and parietal pleura' in same pool
 const totalBlockingFailures = totalFailures - results.reduce((s, r) => s + (r.homogeneityFailCount || 0), 0);
 
-// Auto-stamp lastStructuralVerify in inspection registry for decks that passed (best-effort, never blocks)
-try {
-  const passedIds = results.filter(r => r.failCount === 0).map(r => r.deckId).join(',');
-  if (passedIds) {
-    execSync(
-      `npx tsx scripts/registry/updater.ts --ids "${passedIds}" --type lastStructuralVerify`,
-      { stdio: 'pipe' }
-    );
+// Opt-in: only stamp when --stamp-registry flag is present
+const shouldStampRegistry = process.argv.includes('--stamp-registry');
+if (shouldStampRegistry) {
+  // Stamp lastStructuralVerify in inspection registry for decks that passed (best-effort, never blocks)
+  try {
+    const passedIds = results.filter(r => r.failCount === 0).map(r => r.deckId).join(',');
+    if (passedIds) {
+      execSync(
+        `npx tsx scripts/registry/updater.ts --ids "${passedIds}" --type lastStructuralVerify`,
+        { stdio: 'pipe' }
+      );
+      const count = passedIds.split(',').length;
+      console.log(`Registry stamped: ${count} decks marked with lastStructuralVerify=${new Date().toISOString().slice(0,10)}`);
+    }
+  } catch (_) {
+    // Registry stamp failure never blocks verification output
   }
-} catch (_) {
-  // Registry stamp failure never blocks verification output
+} else {
+  console.log('(Registry stamping skipped — pass --stamp-registry to enable.)');
 }
 
 process.exit(totalBlockingFailures > 0 ? 1 : 0);

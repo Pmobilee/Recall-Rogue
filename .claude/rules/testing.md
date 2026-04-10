@@ -117,3 +117,17 @@ scripts/docker-visual-test.sh --warm stop --agent-id <session-id>
 - Structural: `node scripts/verify-all-decks.mjs` — 19 checks, 0 failures required
 - In-game audit: 20+ random facts displayed as quiz (Q + 4 options) — catches distractor quality issues the structural verifier misses
 - See `.claude/rules/content-pipeline.md` "In-Game Quiz Audit" for full protocol
+
+## Registry Stamping — Opt-In Only (added 2026-04-10)
+
+**Running `verify-all-decks.mjs`, `quiz-audit.mjs`, or `extract-trivia-from-decks.mjs` does NOT automatically stamp `data/inspection-registry.json`.** This was previously a silent side effect that caused three reset rounds in one session.
+
+To mark decks as verified in the registry, explicitly pass `--stamp-registry`:
+```
+node scripts/verify-all-decks.mjs --stamp-registry
+node scripts/quiz-audit.mjs --deck <id> --stamp-registry
+node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs --stamp-registry
+```
+
+Agents running verification in a CI/iteration loop (no intent to stamp) should OMIT the flag.
+Agents that genuinely want to update registry truth after a verified pass should INCLUDE the flag.

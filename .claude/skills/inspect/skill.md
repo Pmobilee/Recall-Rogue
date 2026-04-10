@@ -93,6 +93,8 @@ npm run registry:stale
 | `lastStructuralVerify` | Passed `verify-all-decks.mjs` (22 checks) | `npm run deck:quality` or manual stamp |
 | `lastQuizAudit` | Passed `quiz-audit.mjs` (24 checks) | `npm run audit:quiz-engine` or manual stamp |
 | `lastTriviaBridge` | Bridged to trivia DB | `extract-trivia-from-decks.mjs` or manual stamp |
+
+> **Note (2026-04-10):** Running these scripts does NOT auto-stamp the registry by default. Pass `--stamp-registry` explicitly to update the registry after a verification pass.
 | `lastLLMPlaytest` | LLM played through deck content | `/llm-playtest` or manual stamp |
 
 ### Stamping the Registry — During & After Inspection
@@ -255,7 +257,8 @@ This discovers new decks from `data/decks/*.json` and adds them with all fields 
 
 ```bash
 npm run deck:quality                          # Full pipeline: struct + quiz audit + all fix scripts
-node scripts/verify-all-decks.mjs             # Structural only (22 checks)
+node scripts/verify-all-decks.mjs             # Structural only (22 checks, no registry stamp)
+node scripts/verify-all-decks.mjs --stamp-registry  # Structural + stamp registry on pass
 npm run audit:quiz-engine                     # Quiz engine audit only (24 checks)
 npm run audit:quiz-engine -- --deck ancient_rome --verbose  # Single deck
 ```

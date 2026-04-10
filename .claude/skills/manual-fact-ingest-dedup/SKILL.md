@@ -598,7 +598,7 @@ Before marking any batch as done:
 - [ ] Sampled 10+ output items and read them back as raw text
 - [ ] Ran the brace-leak grep (zero matches required)
 - [ ] Ran the grammar-scar grep (zero matches required)
-- [ ] Ran `node scripts/verify-all-decks.mjs` — 0 failures required
+- [ ] Ran `node scripts/verify-all-decks.mjs` — 0 failures required (pass `--stamp-registry` to update registry; omit for CI/iteration loops — per 2026-04-10 gotcha)
 - [ ] No `undefined`, `null`, or empty string values in distractor arrays
 
 ---

@@ -385,15 +385,23 @@ if (JSON_MODE) {
   }
 }
 
-// Auto-stamp lastQuizAudit in inspection registry for decks that passed (best-effort, never blocks)
-try {
-  const passedIds = allResults.filter(r => !r.skipped && r.failCount === 0).map(r => r.deckId).join(',');
-  if (passedIds) {
-    execSync(
-      `npx tsx scripts/registry/updater.ts --ids "${passedIds}" --type lastQuizAudit`,
-      { stdio: 'pipe' }
-    );
+// Opt-in: only stamp when --stamp-registry flag is present
+const shouldStampRegistry = process.argv.includes('--stamp-registry');
+if (shouldStampRegistry) {
+  // Stamp lastQuizAudit in inspection registry for decks that passed (best-effort, never blocks)
+  try {
+    const passedIds = allResults.filter(r => !r.skipped && r.failCount === 0).map(r => r.deckId).join(',');
+    if (passedIds) {
+      execSync(
+        `npx tsx scripts/registry/updater.ts --ids "${passedIds}" --type lastQuizAudit`,
+        { stdio: 'pipe' }
+      );
+      const count = passedIds.split(',').length;
+      console.log(`Registry stamped: ${count} decks marked with lastQuizAudit=${new Date().toISOString().slice(0,10)}`);
+    }
+  } catch (_) {
+    // Registry stamp failure never blocks audit output
   }
-} catch (_) {
-  // Registry stamp failure never blocks audit output
+} else {
+  console.log('(Registry stamping skipped — pass --stamp-registry to enable.)');
 }

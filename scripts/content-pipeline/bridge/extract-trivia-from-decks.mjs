@@ -550,20 +550,28 @@ function run() {
     process.exit(1)
   }
 
-  // Auto-stamp lastTriviaBridge in inspection registry for successfully bridged decks (best-effort)
-  try {
-    const bridgedIds = Object.entries(manifestStats)
-      .filter(([, s]) => !s.skipReason && s.bridged > 0)
-      .map(([id]) => id)
-      .join(',')
-    if (bridgedIds) {
-      execSync(
-        `npx tsx scripts/registry/updater.ts --ids "${bridgedIds}" --type lastTriviaBridge`,
-        { stdio: 'pipe' }
-      )
+  // Opt-in: only stamp when --stamp-registry flag is present
+  const shouldStampRegistry = process.argv.includes('--stamp-registry')
+  if (shouldStampRegistry) {
+    // Stamp lastTriviaBridge in inspection registry for successfully bridged decks (best-effort)
+    try {
+      const bridgedIds = Object.entries(manifestStats)
+        .filter(([, s]) => !s.skipReason && s.bridged > 0)
+        .map(([id]) => id)
+        .join(',')
+      if (bridgedIds) {
+        execSync(
+          `npx tsx scripts/registry/updater.ts --ids "${bridgedIds}" --type lastTriviaBridge`,
+          { stdio: 'pipe' }
+        )
+        const count = bridgedIds.split(',').length
+        console.log(`Registry stamped: ${count} decks marked with lastTriviaBridge=${new Date().toISOString().slice(0,10)}`)
+      }
+    } catch (_) {
+      // Registry stamp failure never blocks bridge output
     }
-  } catch (_) {
-    // Registry stamp failure never blocks bridge output
+  } else {
+    console.log('(Registry stamping skipped — pass --stamp-registry to enable.)')
   }
 }
 
