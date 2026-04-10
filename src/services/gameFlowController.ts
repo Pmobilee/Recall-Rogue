@@ -846,7 +846,9 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData, prebuiltSum
   pendingClearedFloor = 0;
   pendingDomainSelection = null;
   gameFlowState.set('idle');
-  currentScreen.set('hub');
+  // Navigate to runEnd screen first — player must see run summary before returning to hub.
+  // Hub navigation happens when player clicks 'Play Again' or 'Return to Hub' on RunEndScreen.
+  currentScreen.set('runEnd');
 }
 
 function applyRunCompletionBonuses(run: RunState): void {
