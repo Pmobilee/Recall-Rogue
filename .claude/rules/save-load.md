@@ -36,3 +36,48 @@ When adding any new persistent field to PlayerSave:
 - Steamworks Auto-Cloud enabled for save directory
 - If conflict detected (played on two machines): prefer the save with more total playtime
 - Document save file location per platform in player-facing settings
+
+## Rehydrating Typed Collections — CRITICAL RULE (added 2026-04-10)
+
+**NEVER use a bare `...spread` on a RunState/PlayerSave object that contains Set/Map/class-instance fields.**
+
+`JSON.stringify` converts `Set` and `Map` instances to `{}` (empty object). After `JSON.parse`,
+calling `.has()` or `.get()` on the result throws `"has is not a function"`.
+
+### The mandatory pattern for any Serialize/Deserialize pair
+
+```typescript
+// serializeX(): destructure out ALL Set/Map/class fields, spread the rest
+const { setField: _s, mapField: _m, classField: _c, ...rest } = state;
+return {
+  ...rest,
+  setField: [...state.setField],           // Set → array
+  mapField: Object.fromEntries(state.mapField), // Map → plain object (if persisted)
+  classField: state.classField?.toJSON(),  // class instance → snapshot
+};
+
+// deserializeX(): explicitly re-wrap each field
+return {
+  ...saved,
+  setField: new Set(saved.setField),
+  mapField: new Map(Object.entries(saved.mapField ?? {})),
+  classField: saved.classField ? MyClass.fromJSON(saved.classField) : undefined,
+  // In-memory-only fields always reset to a clean state:
+  transientMap: undefined,
+  transientSet: new Set(),
+};
+```
+
+### Lint enforcement
+
+Run `npm run lint:rehydration` (or `node scripts/lint/check-set-map-rehydration.mjs`) to verify
+`runSaveService.ts` stays safe. This script is also wired into `npm run check`.
+
+### In-memory fields vs persisted fields
+
+Fields documented as "in-memory only — not persisted" on `RunState` MUST:
+1. Be listed in the `Omit<>` union of `SerializedRunState`
+2. Be explicitly excluded via destructuring in `serializeRunState()`
+3. Be explicitly reset in `deserializeRunState()` (to `undefined`, empty Set, or empty Map)
+
+See `docs/architecture/services/learning.md` for the full field-by-field contract.

@@ -117,3 +117,41 @@ Learning analytics is the knowledge engine of Recall Rogue — it determines wha
 | **Purpose** | Maps SM-2 review state to a 1–5 star Kid Mode display (wow level + encouraging label + CSS color class) |
 | **Key exports** | `getWowScore`, `WowScore` (interface), `WowLevel` (type) |
 | **Key dependencies** | None (pure math on ReviewState) |
+
+---
+
+## Save/Resume Contract — InRunFactTracker (CRITICAL-2, 2026-04-10)
+
+`InRunFactTracker` is a class with internal `Map` fields. JSON.stringify converts Maps to `{}`,
+losing all data. Calling `.has()` or `.get()` on the result throws `"has is not a function"`.
+
+**Rule:** Any class with `Map` or `Set` fields that must survive a save/load round-trip MUST
+implement `toJSON()` / `fromJSON()` and be handled explicitly in `serializeRunState` /
+`deserializeRunState`.
+
+### Current contract
+
+| RunState field | Type | Persistence | Reason |
+|---|---|---|---|
+| `inRunFactTracker` | `InRunFactTracker` (class) | Serialized via `toJSON()` / `fromJSON()` | Active per-run study tracker |
+| `consumedRewardFactIds` | `Set<string>` | Array→Set round-trip | Which facts were offered as rewards |
+| `factsAnsweredCorrectly` | `Set<string>` | Array→Set round-trip | For run-end stats |
+| `factsAnsweredIncorrectly` | `Set<string>` | Array→Set round-trip | For run-end stats |
+| `firstChargeFreeFactIds` | `Set<string>` | Array→Set round-trip | First-charge-free tracking |
+| `offeredRelicIds` | `Set<string>` | Array→Set round-trip | Relic dedup |
+| `cursedFactIds` | `Set<string>` | Array→Set round-trip | Curse state |
+| `attemptedFactIds` | `Set<string>` | Array→Set round-trip | New-fact protection (AR-223) |
+| `reviewStateSnapshot` | `Map<string, ...>` | **NOT persisted** — `undefined` after resume | Rebuilt at `startRun()` |
+| `firstTimeFactIds` | `Set<string>` | **NOT persisted** — empty Set after resume | Rebuilt at `startRun()` |
+| `tierAdvancedFactIds` | `Set<string>` | **NOT persisted** — empty Set after resume | Rebuilt at `startRun()` |
+| `masteredThisRunFactIds` | `Set<string>` | **NOT persisted** — empty Set after resume | Rebuilt at `startRun()` |
+
+### Adding new Set/Map fields to RunState
+
+When adding a new `Set` or `Map` field to `RunState`:
+1. Add the field name to the `Omit<>` union in `SerializedRunState` (runSaveService.ts)
+2. Add explicit destructuring exclusion in `serializeRunState()`
+3. Decide: persist as array? → add to serialized interface + deserialization. In-memory only? → set to `undefined` or empty Set in `deserializeRunState()`
+4. Run `npm run lint:rehydration` — will catch missing entries
+
+The lint script `scripts/lint/check-set-map-rehydration.mjs` enforces these rules automatically.

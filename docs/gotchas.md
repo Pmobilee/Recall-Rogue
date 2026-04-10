@@ -1410,3 +1410,69 @@ The values were not caught before shipment because `scripts/verify-all-decks.mjs
 - `.claude/rules/content-pipeline.md` has a new "Template-literal Audit for Programmatic Distractors" section with the correct vs. bad pattern
 - `.claude/rules/deck-quality.md` checklist includes the brace check
 - When writing any numeric distractor generator: use `String(value)` not `` `{${value}}` ``
+
+---
+
+### 2026-04-10 — CRITICAL-2: RunState Set/Map fields silently became `{}` after JSON round-trip
+
+**What:** After resuming any run, code calling `.has()` or `.get()` on RunState fields like
+`reviewStateSnapshot`, `firstTimeFactIds`, `tierAdvancedFactIds`, or `masteredThisRunFactIds`
+threw `"has is not a function"`. The fields came back as plain `{}` objects.
+
+**Why:** `serializeRunState()` used `...run` to spread the full `RunState` object into the
+serialized form. `JSON.stringify` silently converts `Set` instances to `{}` and drops `Map`
+contents entirely. The `SerializedRunState` interface's `Omit<>` union did NOT include these
+four in-memory-only fields — they were typed as Set/Map on RunState, leaked through the spread,
+and were emitted as `{}` into the JSON.
+
+The prior fix (commit `0aeff3bfe`) fixed `InRunFactTracker`'s own Map fields via `toJSON()`/
+`fromJSON()`, but missed that RunState-level Set fields were also leaking.
+
+**Fix:** Rewrote `serializeRunState()` to use explicit destructuring that excludes every
+Set/Map/class field first, then spreads only `...rest`. Added the four fields to `Omit<>`.
+Added explicit reset in `deserializeRunState()`: `reviewStateSnapshot: undefined` and
+`firstTimeFactIds: new Set<string>()` etc.
+
+**Added regression coverage:**
+- `src/services/runSaveService.test.ts` — 11 tests verify full round-trip
+- `scripts/lint/check-set-map-rehydration.mjs` — lint script catches new violations
+- `npm run lint:rehydration` / wired into `npm run check`
+
+**Lesson:** The comment "in-memory only — not persisted" on a RunState field is NOT enforced by
+TypeScript or the serializer — it's just documentation. If `serializeRunState` uses `...run`,
+that comment is meaningless. The ONLY way to enforce it is explicit destructuring exclusion.
+See `.claude/rules/save-load.md` §"Rehydrating Typed Collections".
+
+---
+
+### 2026-04-10 — CRITICAL-3: `__rrPlay.restore()` left Phaser canvas black for combat snapshots
+
+**What:** Calling `__rrPlay.restore(snap)` with a `screen === 'combat'` snapshot correctly
+updated all Svelte stores (HP, enemy, card hand, turn state), but the Phaser canvas stayed black.
+Enemy sprites, HP bars, and combat backgrounds were not visible.
+
+**Why:** Phaser scenes do NOT subscribe to Svelte stores reactively. `restore()` wrote to the
+`activeTurnState` store, but the live `CombatScene` was not re-mounted or updated. The scene's
+enemy sprite and HP bar state only changes when `syncCombatScene(turnState)` is called explicitly
+from `encounterBridge`. Without that call, the canvas showed whatever it last rendered (or black
+if not yet initialized).
+
+**Fix:**
+1. Added `syncCombatDisplayFromCurrentState()` as a new named export from `encounterBridge.ts`.
+   It reads `activeTurnState` from the store and calls the internal `syncCombatScene(ts)`.
+2. Updated `scenarioSimulator.restore()` to fire-and-forget a Phaser boot + sync IIFE when
+   `snap.screen === 'combat'`: boots `CardGameManager`, starts `CombatScene`, waits 50 ms,
+   then calls `syncCombatDisplayFromCurrentState()`.
+
+**The 50 ms wait** is necessary because `startCombat()` is asynchronous — the CombatScene
+needs to be registered with Phaser before `syncCombatScene` can update its state.
+
+**Added regression coverage:**
+- `src/dev/scenarioSimulator.test.ts` — 5 tests verify the contract without needing Phaser/DOM
+- `docs/testing/dev-tooling-restore-invariants.md` — invariants + pre-flight checklist for all
+  restore-dependent scenarios
+
+**Lesson:** Svelte store writes are NOT sufficient to update Phaser scenes. Any dev tool or
+test helper that needs to put the game in a specific combat state MUST also call
+`syncCombatDisplayFromCurrentState()` after setting the store. The canvas is owned by Phaser,
+not by Svelte.
