@@ -166,7 +166,7 @@ When enabled: a correct Charge answer waives the +1 AP surcharge on the **next**
 The chain multiplier is passed into `cardEffectResolver.ts` as `options.chainMultiplier`. The full attack formula:
 
 ```
-CC damage = getMasteryStats(mechanicId, level).qpValue × 1.75 × chainMult × relicMods + inscriptionBonus
+CC damage = getMasteryStats(mechanicId, level).qpValue × 1.50 × chainMult × relicMods + inscriptionBonus
 ```
 
 Tier multipliers are all 1.0 for active tiers and do not appear in the formula. The chain multiplier applies to the **full resolved damage** after base + mastery scaling, before relic flat bonuses. Chain Lightning (`chain_lightning` mechanic) is the only card that reads `chainLightningChainLength` directly — its CC damage is `baseValue × chain length` rather than using the standard multiplier.
