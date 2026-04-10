@@ -25,6 +25,7 @@
   import { playCardAudio } from '../../services/cardAudioManager'
   import { ambientAudio } from '../../services/ambientAudioService'
   import { LIGHT_SOURCE_MANIFEST } from '../../data/lightSourceManifest'
+  import { devMode } from '../stores/devMode'
 
   interface Props {
     streak: number
@@ -543,7 +544,8 @@
         <CampUpgradeModal onClose={() => { showUpgradeModal = false }} />
       {/if}
 
-      <div class="dev-btn-row">
+{#if $devMode}
+      <div class="dev-btn-row" data-dev-only="true">
         {#if onReplayBootAnim}
           <button class="dev-btn" onclick={onReplayBootAnim}>Intro</button>
         {/if}
@@ -554,6 +556,7 @@
         <button class="dev-btn" onclick={testBrightIdea}>BrightIdea</button>
         <button class="dev-btn" onclick={testInkSlug}>InkSlug</button>
       </div>
+      {/if}
 
       {#if transitionActive}
         <ParallaxTransition
@@ -770,7 +773,8 @@
       <CampUpgradeModal onClose={() => { showUpgradeModal = false }} />
     {/if}
 
-    <div class="dev-btn-row">
+{#if $devMode}
+    <div class="dev-btn-row" data-dev-only="true">
       {#if onReplayBootAnim}
         <button class="dev-btn" onclick={onReplayBootAnim}>Intro</button>
       {/if}
@@ -778,6 +782,7 @@
       <button class="dev-btn" onclick={previewExit}>Exit</button>
       <button class="dev-btn" onclick={fakeRunEnd}>RunEnd</button>
     </div>
+    {/if}
 
     {#if transitionActive}
       <ParallaxTransition
