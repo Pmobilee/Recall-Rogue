@@ -85,15 +85,52 @@ export function explanationLeaksAnswer(fact: DeckFact): boolean {
 }
 
 /**
+ * The set of template IDs whose question asks for the *reading* of the target
+ * word (e.g. "What is the reading of 'X'?").
+ *
+ * These templates are ineligible for facts where the target word is already
+ * in its phonetic/reading form — i.e. when fact.reading === fact.targetLanguageWord
+ * after normalisation. Applying a reading template in that case produces a
+ * self-answering question: "What is the reading of 'スーパー'?" with answer "スーパー".
+ *
+ * Any template whose id matches /^reading(_|$)/ (starts with "reading" followed
+ * by underscore or end-of-string) belongs to this family. Current members:
+ *   reading, reading_pinyin, reading_hiragana
+ *
+ * See docs/mechanics/quiz.md §"Reading templates and phonetic-form facts".
+ */
+const READING_TEMPLATE_PATTERN = /^reading(_|$)/;
+
+/**
+ * Returns true when the fact's target word is already in its phonetic/reading
+ * form — i.e. the reading template would produce a self-answering question.
+ *
+ * Returns false (never blocks) if either field is absent, so facts without an
+ * explicit reading or targetLanguageWord are not affected.
+ *
+ * Examples:
+ *   { targetLanguageWord: 'スーパー', reading: 'スーパー' } → true  (BLOCK)
+ *   { targetLanguageWord: '記録',    reading: 'きろく' }   → false (allow)
+ *   { targetLanguageWord: '記録',    reading: undefined }  → false (allow)
+ *
+ * See docs/mechanics/quiz.md §"Reading templates and phonetic-form facts".
+ */
+export function readingMatchesTargetWord(fact: DeckFact): boolean {
+  if (!fact.reading || !fact.targetLanguageWord) return false;
+  return normalize(fact.reading) === normalize(fact.targetLanguageWord);
+}
+
+/**
  * Select and render a question template for a charge-time fact.
  *
  * Selection algorithm (§5.3):
  * 1. Filter templates available at current card mastery level
  * 2. Filter templates whose answer pool contains the selected fact
  * 3. Filter out explanation-based templates when the explanation leaks the answer
- * 4. Weight by: difficulty appropriate to mastery, variety (no consecutive repeat), in-run template history
- * 5. Select weighted random (seeded)
- * 6. Render the template with fact data
+ * 4. Filter out reading templates when the target word is already in phonetic form
+ * 5. Weight by: difficulty appropriate to mastery, variety (no consecutive repeat), in-run template history
+ * 6. Select weighted random (seeded)
+ * 7. Render the template with fact data
  */
 export function selectQuestionTemplate(
   fact: DeckFact,
@@ -125,14 +162,33 @@ export function selectQuestionTemplate(
   //
   // See docs/mechanics/quiz.md §"Explanation-based templates and answer leakage".
   const leaks = explanationLeaksAnswer(fact);
+
+  // Step 4: Detect phonetic-form facts for reading template eligibility.
+  //
+  // Katakana loanwords and hiragana-only words have identical targetLanguageWord
+  // and reading fields (e.g. スーパー / スーパー, レコード / レコード). Applying a
+  // reading template to such facts produces "What is the reading of 'スーパー'?"
+  // with correct answer "スーパー" — the question contains its own answer.
+  //
+  // readingMatchesTargetWord() is O(1) (two string normalisations + comparison).
+  // It returns false when either field is absent, so non-vocabulary facts are unaffected.
+  //
+  // See docs/mechanics/quiz.md §"Reading templates and phonetic-form facts".
+  const wordIsPhonetic = readingMatchesTargetWord(fact);
+
   const eligibleTemplates = poolFiltered.filter(t => {
+    // Explanation-based template + leaking explanation → ineligible
     if (t.questionFormat.includes('{explanation}') && leaks) {
-      return false; // ineligible: explanation would reveal the answer
+      return false;
+    }
+    // Reading template + already-phonetic target word → ineligible
+    if (READING_TEMPLATE_PATTERN.test(t.id) && wordIsPhonetic) {
+      return false;
     }
     return true;
   });
 
-  // If no templates remain after leak-filtering, fall back to using the fact's quizQuestion directly
+  // If no templates remain after eligibility filtering, fall back to using the fact's quizQuestion directly
   if (eligibleTemplates.length === 0) {
     return {
       template: {
@@ -150,7 +206,7 @@ export function selectQuestionTemplate(
     };
   }
 
-  // Step 4: Weight candidates
+  // Step 5: Weight candidates
   const rand = seededRandom(runSeed);
   const recentSet = new Set(recentTemplateIds);
 
@@ -188,7 +244,7 @@ export function selectQuestionTemplate(
     }
   }
 
-  // Step 6: Render the template
+  // Step 7: Render the template
   const rendered = renderTemplate(selected, fact, deck);
 
   // Determine the correct answer based on the template's answer pool

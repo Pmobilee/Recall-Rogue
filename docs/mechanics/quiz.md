@@ -70,8 +70,10 @@ elements (expected value is positive for small indices), compounding the FIFO pr
 
 1. Filter by `template.availableFromMastery <= cardMasteryLevel`
 2. Filter to templates whose `answerPoolId` contains the fact
-3. Weight: difficulty match ±1 vs mastery band (+3.0), variety penalty for recently used (×0.2), fresh bonus (+2.0), reverse-capable at mastery ≥ 2 (+1.5)
-4. Weighted random pick; falls back to `fact.quizQuestion` if no templates match
+3. Reject `{explanation}`-based templates when the explanation leaks the answer (see §Explanation-based templates and answer leakage)
+4. Reject reading templates (id matching `/^reading(_|$)/`) when `fact.reading === fact.targetLanguageWord` after normalisation (see §Reading templates and phonetic-form facts)
+5. Weight: difficulty match ±1 vs mastery band (+3.0), variety penalty for recently used (×0.2), fresh bonus (+2.0), reverse-capable at mastery ≥ 2 (+1.5)
+6. Weighted random pick; falls back to `fact.quizQuestion` if no templates match
 
 Template placeholders in `questionFormat` are replaced via `renderTemplate`: `{targetLanguageWord}`, `{correctAnswer}`, `{language}`, `{reading}`, `{explanation}`, `{quizQuestion}`, and any other fact field key.
 
@@ -120,6 +122,25 @@ Any template whose `questionFormat` contains the `{explanation}` placeholder ren
 **When the template is blocked:** The selector falls through to other eligible templates (e.g., `synonym_pick`, `forward`, `reverse`). If no other templates are eligible, the selector falls back to `_fallback` (the fact's `quizQuestion` field).
 
 **Audit reference:** Confirmed as BLOCKER in 2026-04-10 quiz audit (Pattern 4). french_b1 had 19% hit rate at mastery=4; czech_b2 had 23%. See `docs/reports/quiz-audit-2026-04-10.md §Pattern 4`. Fix commit: `fix(quiz): definition_match template ineligible when explanation contains the answer`.
+
+
+#### Reading templates and phonetic-form facts
+
+Reading templates (template `id` matching `/^reading(_|$)/`) ask "What is the reading of 'X'?" where the answer is `fact.reading`. This is meaningful for kanji words, Chinese hanzi, or any word whose written form differs from its pronunciation. However, **katakana loanwords and hiragana-only words** have identical `targetLanguageWord` and `reading` fields — both are already in phonetic script. Applying a reading template to such facts produces a self-answering question:
+
+> "What is the reading of 'スーパー'?" → correct answer: "スーパー"
+
+The question literally contains its own answer.
+
+**The rule:** A template whose `id` matches `/^reading(_|$)/` is INELIGIBLE for a fact when BOTH `fact.reading` and `fact.targetLanguageWord` are present AND equal after normalisation (lowercase, strip surrounding whitespace).
+
+**Implementation:** `readingMatchesTargetWord(fact: DeckFact): boolean` in `questionTemplateSelector.ts`. Returns `false` if either field is absent (no block applied). The eligibility filter in `selectQuestionTemplate()` step 4 rejects any reading template when this returns `true`. The constant `READING_TEMPLATE_PATTERN = /^reading(_|$)/` covers all current variants: `reading`, `reading_pinyin`, `reading_hiragana`.
+
+**When the template is blocked:** The selector falls through to other eligible templates (e.g., `forward`, `definition_match`). If no other templates are eligible, the selector falls back to `_fallback` (the fact's `quizQuestion` field).
+
+**Affected decks:** `japanese_n1`, `japanese_n4`, `japanese_n5` (katakana loanwords and hiragana words). Any vocabulary deck with entries where the surface form is already phonetic is susceptible.
+
+**Audit reference:** Confirmed as BLOCKER in 2026-04-10 quiz audit (Patterns 5 & 12). Confirmed cases: `japanese_n5` (レコード), `japanese_n4` (スーパー), `japanese_n1` (しかしながら, はらはら, アプローチ). Fix commit: `fix(quiz): reading templates ineligible when word already in phonetic form`.
 
 ### 3. Question Formatting (`questionFormatter.ts`)
 

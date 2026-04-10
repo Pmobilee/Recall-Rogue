@@ -195,3 +195,17 @@ npm run build:curated
 3. When adding a NEW template type with `{explanation}`, no code changes are needed — the eligibility check gates on `questionFormat.includes('{explanation}')` generically.
 4. If you observe unexpectedly low `definition_match` frequency in an audit dump, check the deck's explanation style. Wiktionary-format explanations will suppress it for cognates; non-leaking explanations ("a building for education") remain eligible.
 5. Run `npm run audit:quiz-engine -- --deck <id>` after assembly. Zero SELF-ANSWERING findings at mastery=4 is the target.
+
+### Anti-Pattern 7: `reading` template on already-phonetic words
+
+**Rule:** Templates whose `id` matches `/^reading(_|$)/` (currently: `reading`, `reading_pinyin`, `reading_hiragana`) ask "What is the reading of 'X'?" and use `fact.reading` as the correct answer. This is only meaningful when the target word's written form *differs* from its reading. Katakana loanwords (e.g., スーパー, レコード, アプローチ) and hiragana-only words (e.g., しかしながら, はらはら) have `fact.reading === fact.targetLanguageWord` — both fields are the same phonetic string. The reading template then produces: "What is the reading of 'スーパー'?" → correct answer: "スーパー". The answer is present in the question.
+
+**Why:** JLPT decks contain a large proportion of katakana loanwords (especially N4/N5) whose reading is identical to their written form. The 2026-04-10 quiz audit (Patterns 5 & 12) identified this as a BLOCKER. Confirmed cases: `japanese_n5` (レコード), `japanese_n4` (スーパー), `japanese_n1` (しかしながら, はらはら, アプローチ).
+
+**Engine behavior (as of 2026-04-10 fix):** `readingMatchesTargetWord(fact)` checks whether `normalize(fact.reading) === normalize(fact.targetLanguageWord)`. If true, any template whose `id` matches `/^reading(_|$)/` is removed from the eligible set for that fact. The constant `READING_TEMPLATE_PATTERN` in `questionTemplateSelector.ts` covers all current reading template ID variants. Returns `false` if either field is absent — facts without `reading` or `targetLanguageWord` are never blocked. No deck JSON changes are needed.
+
+**How to apply:**
+1. Vocabulary deck authors: no action required. The engine suppresses reading templates automatically for phonetic-form words.
+2. When authoring a new reading-type template (id starting with `reading_`), the block is automatic. No engine code changes needed.
+3. If you observe that a reading template is never selected for a given fact, verify whether `fact.reading === fact.targetLanguageWord`. If so, the suppression is intentional.
+4. For Chinese (Mandarin) pinyin templates (`reading_pinyin`), the same rule applies — hanzi words have different pinyin readings; pinyin-only entries (rare) would be blocked.

@@ -1429,3 +1429,15 @@ Q: "Which word is closest in meaning to 'pique-niquer'?"  ← synonym_pick templ
 **Why word-boundary instead of substring:** Short answers like "in" would spuriously match "indicating", "winter", "painting", etc. via substring. Word-boundary anchors limit false positives. False negatives (a slightly suggestive explanation where the answer only partially matches) are less harmful than false positives (blocking a valid question).
 
 **No deck JSON changes needed.** The fix is entirely engine-side. All ~15 affected CEFR vocabulary decks are fixed without touching their data files.
+
+### 2026-04-10 — Reading template applied to phonetic-form words (JLPT decks)
+
+**What went wrong:** The `reading` template family (`reading`, `reading_pinyin`, `reading_hiragana`) was applied to vocabulary facts where `fact.targetLanguageWord === fact.reading` — i.e. the target word is already written in its phonetic form (katakana loanwords, hiragana-only words). This produced self-answering questions: "What is the reading of 'スーパー'?" with correct answer "スーパー". The question contains its own answer.
+
+**Affected decks:** `japanese_n5` (レコード), `japanese_n4` (スーパー), `japanese_n1` (しかしながら, はらはら, アプローチ). Any JLPT deck with katakana loanwords is susceptible.
+
+**Why it happened:** The template eligibility filter had no check for whether the reading equals the target word. For kanji words (記録 → きろく), reading templates are valid and useful. For katakana words, the reading is the word itself — so asking for it is trivial.
+
+**Fix (2026-04-10):** Added `readingMatchesTargetWord(fact: DeckFact): boolean` to `questionTemplateSelector.ts`. Uses `normalize()` (lowercase + strip punctuation) on both fields and compares. Returns `false` if either field is absent (no block applied). The eligibility loop in `selectQuestionTemplate()` step 4 rejects any template whose `id` matches `READING_TEMPLATE_PATTERN = /^reading(_|$)/` when this returns `true`. The block covers all current reading template variants without needing individual case entries. O(1) per fact.
+
+**No deck JSON changes needed.** The fix is entirely engine-side.
