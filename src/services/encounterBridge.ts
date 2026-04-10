@@ -1749,3 +1749,29 @@ export function devForceEncounterVictory(): void {
   activeTurnState.set(null);
   notifyEncounterComplete('victory');
 }
+
+/**
+ * DEV / SCENARIO TOOL — Sync the Phaser CombatScene display state from the
+ * current `activeTurnState` store value.
+ *
+ * Call this after restoring a snapshot to 'combat' screen so the CombatScene
+ * re-renders the correct enemy sprite, HP bars, and background. Without this,
+ * the Phaser canvas shows whatever was last rendered (or a black frame) even
+ * though the Svelte overlay has the correct card state.
+ *
+ * Also ensures the CombatScene is started (Phaser engine must already be
+ * booted — caller is responsible for calling `CardGameManager.boot()` first).
+ *
+ * CRITICAL-3 fix (2026-04-10): `__rrScenario.restore()` was writing stores
+ * but not triggering this sync, leaving the Phaser canvas black.
+ */
+export function syncCombatDisplayFromCurrentState(): void {
+  const ts = get(activeTurnState);
+  if (!ts) {
+    if (import.meta.env.DEV) {
+      console.warn('[encounterBridge] syncCombatDisplayFromCurrentState: no active turn state');
+    }
+    return;
+  }
+  syncCombatScene(ts);
+}
