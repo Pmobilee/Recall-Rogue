@@ -1721,3 +1721,25 @@ Both return early WITHOUT mutating the screen store.
 **Why:** Three root causes repeat across all findings: (1) manual "sample and grep" steps that existed in rules but were not automated in CI checks — grammar-scar grep, brace-leak grep, Set/Map audit; (2) fixes scoped to the reported class without a broader integration test — `0aeff3bfe` fixed `InRunFactTracker` but not RunState-level Sets; (3) long mean-time-to-discovery for UI bugs with no assertion-based test — dev buttons lived undetected for 488 commits.
 
 **Fix:** Every manual step above is now automated: Check #24 (brace leak), Check #25 (grammar scars), `check-set-map-rehydration.mjs` lint script, and `devMode` store unit tests. See full retrospective at `data/playtests/llm-batches/BATCH-2026-04-10-003-fullsweep/RETROSPECTIVE.md`.
+
+---
+
+### 2026-04-10 — Headless simulator type drift: comboCount / maxHp / ascensionComboResetsOnTurnEnd
+
+**What:** `npm run check` exits 1 due to 26 type errors in `tests/playtest/headless/simulator.ts`, `full-run-simulator.ts`, and `browser-shim.ts`. Properties `comboCount` (on `PlayCardResult`), `maxHp` (should be `maxHP`) on `PlayerCombatState`, and `ascensionComboResetsOnTurnEnd` on `TurnState` no longer exist after balance/mechanic refactors.
+
+**Why:** The headless simulator was last updated in balance pass 6 (`52b6f0a5a`). Subsequent refactors that removed or renamed these fields on the production types did not include a paired simulator update.
+
+**Impact:** Production build and vitest (which uses its own tsconfig) are unaffected. The `svelte-check` step in `npm run check` picks up the headless files even though `tsconfig.app.json` explicitly includes only `src/**`.
+
+**Fix:** Next balance pass should grep `tests/playtest/headless/simulator.ts` and `full-run-simulator.ts` for the stale properties and align them with current types. Rule: any production type refactor (`PlayCardResult`, `TurnState`, `PlayerCombatState`) MUST include a grep of the headless sim files for the old property name.
+
+---
+
+### 2026-04-10 — check-escape-hatches.mjs not wired into npm run check
+
+**What:** Commit `59df13680` added `scripts/lint/check-escape-hatches.mjs` and its message states "Wires into npm run check via check-escape-hatches," but `package.json` was not modified. The script is NOT part of `npm run check`.
+
+**Why:** The sub-agent wrote the lint script and tested it standalone but forgot to update the `check` script in `package.json`.
+
+**Fix:** Add `&& node scripts/lint/check-escape-hatches.mjs` to the `"check"` script in `package.json`. Until then, run `node scripts/lint/check-escape-hatches.mjs` manually after UI component changes.
