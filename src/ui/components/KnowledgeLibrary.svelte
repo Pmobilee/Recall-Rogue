@@ -41,6 +41,58 @@
   let sidebarCollapsed = $state(false)
   let factScrollEl = $state<HTMLElement | null>(null)
 
+  // MEDIUM-16: Virtual scroll state — only render visible fact rows + buffer.
+  // Target: DOM node count <= 500 at any scroll position regardless of fact count.
+  const ITEM_HEIGHT = 90  // px — fact-row: 56px min-height + 24px padding + 10px gap = 90px
+  const VIRTUAL_BUFFER = 8  // extra items above/below visible area
+  let virtualScrollTop = $state(0)
+  let virtualContainerHeight = $state(600) // will be updated from ResizeObserver
+
+  /** Visible slice of filteredDomainEntries to render. */
+  const virtualVisible = $derived.by(() => {
+    const total = filteredDomainEntries.length
+    if (total === 0) return { startIdx: 0, endIdx: 0, paddingTop: 0, paddingBottom: 0 }
+
+    const visibleCount = Math.ceil(virtualContainerHeight / ITEM_HEIGHT)
+    const startIdx = Math.max(0, Math.floor(virtualScrollTop / ITEM_HEIGHT) - VIRTUAL_BUFFER)
+    const endIdx = Math.min(total, startIdx + visibleCount + VIRTUAL_BUFFER * 2)
+
+    return {
+      startIdx,
+      endIdx,
+      paddingTop: startIdx * ITEM_HEIGHT,
+      paddingBottom: (total - endIdx) * ITEM_HEIGHT,
+    }
+  })
+
+  let _resizeObserver: ResizeObserver | null = null
+
+  function handleFactScroll(e: Event): void {
+    virtualScrollTop = (e.currentTarget as HTMLElement).scrollTop
+  }
+
+  // Watch container resize to keep virtualContainerHeight accurate
+  $effect(() => {
+    const el = factScrollEl
+    if (!el) return
+    _resizeObserver?.disconnect()
+    _resizeObserver = new ResizeObserver(entries => {
+      virtualContainerHeight = entries[0]?.contentRect.height ?? 600
+    })
+    _resizeObserver.observe(el)
+    return () => {
+      _resizeObserver?.disconnect()
+      _resizeObserver = null
+    }
+  })
+
+  // Reset scroll when domain/filter/search changes
+  $effect(() => {
+    void filteredDomainEntries  // depend on this
+    virtualScrollTop = 0
+    if (factScrollEl) factScrollEl.scrollTop = 0
+  })
+
   const reviewStates = $derived($playerSave?.reviewStates ?? [])
   const masteredCount = $derived(getMasteredFactCount(reviewStates))
 
@@ -347,15 +399,26 @@
           {/if}
         </div>
 
-        <!-- Scrollable fact grid -->
-        <div class="fact-scroll" bind:this={factScrollEl}>
+        <!-- Scrollable fact grid — MEDIUM-16: virtualized to keep DOM ≤500 nodes -->
+        <div class="fact-scroll" bind:this={factScrollEl} onscroll={handleFactScroll}>
           <div class="fact-grid">
-            {#each filteredDomainEntries as entry (entry.fact.id)}
+            <!-- Top spacer: pushes rendered rows to their correct scroll position -->
+            {#if virtualVisible.paddingTop > 0}
+              <div class="virtual-spacer-top" style="height: {virtualVisible.paddingTop}px;" aria-hidden="true"></div>
+            {/if}
+
+            {#each filteredDomainEntries.slice(virtualVisible.startIdx, virtualVisible.endIdx) as entry (entry.fact.id)}
               <button class="fact-row" onclick={() => (selectedEntry = entry)} type="button">
                 <div class="fact-title">{entry.fact.statement}</div>
                 <div class="fact-meta">{accuracyText(entry)}</div>
               </button>
             {/each}
+
+            <!-- Bottom spacer: reserves scroll space for unrendered rows below -->
+            {#if virtualVisible.paddingBottom > 0}
+              <div class="virtual-spacer-bottom" style="height: {virtualVisible.paddingBottom}px;" aria-hidden="true"></div>
+            {/if}
+
             {#if !loading && filteredDomainEntries.length === 0}
               <div class="empty-state">
                 <p class="empty-title">{searchQuery ? 'No matching facts' : 'No facts yet'}</p>
@@ -800,6 +863,14 @@
     .fact-grid {
       grid-template-columns: 1fr;
     }
+  }
+
+  /* MEDIUM-16: Virtual scroll spacers */
+  .virtual-spacer-top,
+  .virtual-spacer-bottom {
+    width: 100%;
+    flex-shrink: 0;
+    pointer-events: none;
   }
 
   .fact-row {
