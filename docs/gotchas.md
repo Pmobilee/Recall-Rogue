@@ -1667,3 +1667,13 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **Fix:** Added `chainThemes` arrays (4–8 themes per deck) derived from existing sub-deck structure. Sub-deck `chainThemeId` fields were also set where missing. No fact data was changed.
 
 **Lesson:** When authoring a knowledge deck with sub-decks, always populate `chainThemes` in the same pass. Sub-decks without a corresponding `chainThemes` entry silently disable the chain mechanic. Run `jq '.chainThemes | length' data/decks/<name>.json` to quickly check.
+
+### 2026-04-10 — Phase 5: New structural checks may fire warnings on valid decks
+
+**What:** After adding 8 new structural checks (#23-30) to `verify-all-decks.mjs`, existing decks gained new warnings. The `empty_chain_themes_runtime` check in `quiz-audit-engine.ts` initially fired for every fact×mastery combination (228 times for solar_system instead of once), making output unreadable.
+
+**Why:** Per-fact checks in `runChecks()` create a fresh `issues` array per call — deduplication within the array doesn't work across calls. Only deck-level checks in `auditDeck()` can deduplicate to once-per-deck.
+
+**Fix:** Moved `empty_chain_themes_runtime` and `mega_pool_runtime_warning` from `runChecks()` to `auditDeck()`, using the existing `factResults.push(synthetic_pool_level_result)` pattern from the existing `min_pool_facts` check.
+
+**Rule:** Any check that is conceptually deck-level (not per-fact) MUST be placed in `auditDeck()`, not in `runChecks()`. The pattern in `auditDeck()` around line 900 shows how to emit a synthetic FactAuditResult for deck-level issues.

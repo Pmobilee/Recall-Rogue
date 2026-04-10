@@ -136,6 +136,7 @@
 | Doc | Summary |
 |-----|---------|
 | [quiz-audit-2026-04-10](reports/quiz-audit-2026-04-10.md) | Master roll-up of 98-deck quiz quality audit — 115 BLOCKER / 256 MAJOR / 210 MINOR / 67 NIT across 10,212 rendered instances; 15 cross-deck patterns; top-20 worst facts; full per-deck scoreboard. Per-deck details in `data/audits/findings/`. |
+| _(TODO Phase 6 — orchestrator: link post-fix report here once Phase 6 report is committed)_ | Phase 5 preventative infrastructure: 8 new structural checks in `verify-all-decks.mjs` (22→30 total), 8 new runtime checks in `quiz-audit-engine.ts` (27→35 total), audit integration vitest gate (229 assertions). |
 
 ---
 
