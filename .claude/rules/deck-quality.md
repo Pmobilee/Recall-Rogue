@@ -116,6 +116,12 @@ npm run audit:quiz-engine -- --render --deck <id>   # Render for LLM review
 
 24 checks (10 structural + 14 engine-enabled). Run `node scripts/quiz-audit.mjs --deck <id> --full` for structural-only.
 
+**Audit engine false-positive guards (as of 2026-04-10):** Three check types have explicit suppression logic to avoid noise:
+
+- **Check 4 (`length_mismatch`)**: Skipped entirely for vocab decks (`classifyDeck === 'vocab'`). Japanese/Korean/Chinese/French/etc. words naturally vary in character length (kanji 1–4 chars, kana 2–10, loanwords longer). The real game engine uses confusion-matrix scoring, not length matching. Non-vocab decks (medical, history, AP subjects) retain the check.
+- **Check 26 (`distractor_format_inconsistency`)**: Skipped when BOTH correct answer and distractor look like math/physics formulas (new `looksLikeFormula()` helper). Formulas differ in format features (capitalization, word count) by nature. Only skips formula-vs-formula pairs; mixed formula/prose pairs still fire as genuine issues.
+- **Check 28 (`reverse_distractor_language_mismatch`)**: `hasCJK()` regex covers all Japanese script ranges: hiragana (U+3040-309F), katakana (U+30A0-30FF), kanji (U+4E00-9FFF), Hangul (U+AC00-D7AF), and fullwidth/halfwidth forms (U+FF00-FFEF). This prevents fullwidth-ASCII loanwords like ＦＡＸ, ＯＵＴ from being misclassified as non-Japanese.
+
 ## LLM Content Review — MANDATORY
 
 **After structural checks AND engine audit pass, run LLM content review.** Programmatic checks catch FORMAT issues. LLM review catches SEMANTIC issues. Both required.

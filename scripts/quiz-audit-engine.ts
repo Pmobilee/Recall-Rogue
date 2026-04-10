@@ -248,8 +248,12 @@ function runChecks(
     issues.push({ severity: 'FAIL', type: 'too_few_distractors', detail: `Only ${distractorFacts.length} distractors (need ≥2)` });
   }
 
-  // Check 4: length_mismatch (skip numerical)
-  if (!isNumerical && distractorFacts.length > 0) {
+  // Check 4: length_mismatch (skip numerical, skip vocab decks)
+  // Vocab decks have inherent length variance (kanji vs kana vs loanwords)
+  // and the check is not meaningful for them. Confusion-matrix scoring
+  // handles distractor selection in the real game.
+  const deckClass = classifyDeck(deck.id);
+  if (!isNumerical && deckClass !== 'vocab' && distractorFacts.length > 0) {
     const distractorDisplays = distractorFacts.map(d => displayAnswer(d.correctAnswer));
     const avgDistractorLen = distractorDisplays.reduce((s, d) => s + d.length, 0) / distractorDisplays.length;
     if (avgDistractorLen > 0) {
@@ -485,9 +489,37 @@ function runChecks(
     }
   }
 
+  /**
+   * Detects whether a string looks like a math/physics formula.
+   * True if it contains an equals sign AND at least one mathematical marker:
+   * Greek letters, subscripts (_), superscripts (², ³, etc.), math operators,
+   * or bracket/fraction symbols. Formulas naturally vary in format features
+   * (capitalization, word count, symbols) so the format-inconsistency check
+   * is not meaningful for them.
+   */
+  const looksLikeFormula = (s: string): boolean => {
+    if (!s.includes('=')) return false;
+    // Detect Unicode math markers (subscripts, superscripts, Greek, operators, fractions)
+    if (/[_\u00B2\u00B3\u2070-\u209F\u0370-\u03FF\u2200-\u22FF\u2190-\u21FF\u2150-\u218F\u00BD\u2153\u00BC\u2154\u2155\u221A\u2202\u2207\u2211\u222B]/.test(s)) return true;
+    // ASCII formula patterns:
+    //   * operator:           "L = I*omega", "P = Fv*cos"
+    //   ^ exponent:           "g = 10 m/s^2"
+    //   _subscript:           "a_c = ...", "F_s = ..."
+    //   N/letter fraction:    "Period T = 1/f", "frequency f = 1/T"
+    //   implicit product:     "P = Fv", "p = mv", "F = ma" (1-2 char variable names, no spaces)
+    //   Note: constrained to 1-2 char var names to avoid matching prose like "angle = impact angle"
+    if (/[=].*[*^]/.test(s)) return true;
+    if (/[a-zA-Z][_][a-zA-Z]/.test(s)) return true;
+    if (/=\s*\d+\/[a-zA-Z]/.test(s)) return true;                           // = 1/f, = 1/T
+    if (/=\s*[0-9]*[a-zA-Z]{1,2}[a-zA-Z]{1,2}(?:\b|\s|\()/.test(s)) return true; // = mv, = Fv, = ma
+    return false;
+  };
+
   // Check 26: distractor_format_inconsistency
   // Flag when a distractor has ≥2 format features different from the correct answer.
   // Catches cases like: correct="15 days" (has units, has digit, multi-word) but distractor="7" (numeric only).
+  // Math/physics formulas are excluded: equations like "U_s = ½kx²" and "v = v₀ + at" differ in
+  // format features naturally but are both valid answers from the same semantic pool.
   if (!isNumerical && distractorFacts.length > 0) {
     const getFormatFeatures = (s: string): Record<string, boolean> => {
       const stripped = displayAnswer(s);
@@ -503,6 +535,8 @@ function runChecks(
     for (const d of distractorFacts) {
       if (d.id.startsWith('_numerical_') || d.id.startsWith('_fallback_') || d.id.startsWith('_synthetic_')) continue;
       const dDisplay = displayAnswer(d.correctAnswer);
+      const correctIsFormula = looksLikeFormula(correctDisplay);
+      if (correctIsFormula && looksLikeFormula(dDisplay)) continue; // skip format check for formulas
       const dFeatures = getFormatFeatures(dDisplay);
       let diffCount = 0;
       for (const key of Object.keys(correctFeatures) as Array<keyof typeof correctFeatures>) {
@@ -598,7 +632,8 @@ function runChecks(
   // Heuristic: if correctDisplay is all-ASCII but some distractor contains CJK/kana/hangul → mismatch.
   // And vice-versa: if correctDisplay has CJK/kana and distractor is all-ASCII → mismatch.
   if (distractorFacts.length > 0) {
-    const hasCJK = (s: string): boolean => /[　-鿿가-힯]/.test(s);
+    const hasCJK = (s: string): boolean =>
+      /[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF\uAC00-\uD7AF\uFF00-\uFFEF]/.test(s);
     const correctHasCJK = hasCJK(correctDisplay);
     for (const d of distractorFacts) {
       if (d.id.startsWith('_fallback_') || d.id.startsWith('_synthetic_') || d.id.startsWith('_numerical_')) continue;
