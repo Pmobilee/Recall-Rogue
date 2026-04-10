@@ -16,6 +16,7 @@
  */
 
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs'
+import { execSync } from 'child_process'
 import { resolve, join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -547,6 +548,22 @@ function run() {
       `\nERROR: ${collisionCount} ID collision(s) detected. Fix before ingesting into facts.db.`,
     )
     process.exit(1)
+  }
+
+  // Auto-stamp lastTriviaBridge in inspection registry for successfully bridged decks (best-effort)
+  try {
+    const bridgedIds = Object.entries(manifestStats)
+      .filter(([, s]) => !s.skipReason && s.bridged > 0)
+      .map(([id]) => id)
+      .join(',')
+    if (bridgedIds) {
+      execSync(
+        `npx tsx scripts/registry/updater.ts --ids "${bridgedIds}" --type lastTriviaBridge`,
+        { stdio: 'pipe' }
+      )
+    }
+  } catch (_) {
+    // Registry stamp failure never blocks bridge output
   }
 }
 

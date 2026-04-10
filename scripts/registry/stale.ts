@@ -3,7 +3,8 @@
  *
  * Cross-references each registry element's lastInspectedDate against
  * when its source file was last modified in git. Outputs a prioritized
- * report of what to test next.
+ * report of what to test next. Also shows IN PROGRESS locks so parallel
+ * agents know what NOT to touch.
  *
  * Usage:
  *   npx tsx scripts/registry/stale.ts
@@ -17,12 +18,26 @@ import { SOURCE_MAPPINGS, type SourceMapping } from './sources';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
+interface InProgressLock {
+  agentId: string;
+  batchId?: string;
+  testType: string;
+  startedAt: string;
+  expectedCompleteBy?: string;
+}
+
 interface RegistryElement {
   id?: string | number;
   name?: string;
   status?: string;
   lastInspectedDate?: string;
-  lastChangedDate?: string;
+  lastInspected?: string;
+  sourceFile?: string;
+  lastStructuralVerify?: string;
+  lastQuizAudit?: string;
+  lastLLMPlaytest?: string;
+  lastTriviaBridge?: string;
+  inProgress?: InProgressLock | null;
   [key: string]: unknown;
 }
 
@@ -44,7 +59,14 @@ interface AnalyzedElement {
   category: ElementCategory;
   lastInspected: Date | null;
   sourceModified: Date | null;
-  daysStale: number; // 0 if not stale
+  daysStale: number;
+  inProgress?: InProgressLock | null;
+  deckDates?: {
+    lastStructuralVerify: string;
+    lastQuizAudit: string;
+    lastLLMPlaytest: string;
+    lastTriviaBridge: string;
+  };
 }
 
 interface GroupedBySource {
@@ -53,43 +75,6 @@ interface GroupedBySource {
   table: string;
   sourceModified: Date | null;
   elements: AnalyzedElement[];
-}
-
-interface JsonOutput {
-  generatedAt: string;
-  summary: {
-    stale: number;
-    neverInspected: number;
-    fresh: number;
-    deprecated: number;
-    total: number;
-  };
-  stale: Array<{
-    id: string;
-    name: string;
-    table: string;
-    riskTier: number;
-    sourceFile: string;
-    lastInspected: string | null;
-    sourceModified: string | null;
-    daysStale: number;
-  }>;
-  neverInspected: Array<{
-    id: string;
-    name: string;
-    table: string;
-    riskTier: number;
-    sourceFile: string;
-  }>;
-  fresh: Array<{
-    id: string;
-    name: string;
-    table: string;
-    riskTier: number;
-    sourceFile: string;
-    lastInspected: string;
-  }>;
-  recommendation: string;
 }
 
 // ─── ANSI Colors ──────────────────────────────────────────────────────────────
@@ -101,6 +86,7 @@ const GREEN = '\x1b[32m';
 const DIM = '\x1b[2m';
 const BOLD = '\x1b[1m';
 const CYAN = '\x1b[36m';
+const MAGENTA = '\x1b[35m';
 
 function color(text: string, ...codes: string[]): string {
   if (process.env.NO_COLOR || !process.stdout.isTTY) return text;
@@ -111,7 +97,6 @@ function color(text: string, ...codes: string[]): string {
 
 const REPO_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
 
-/** Files with uncommitted changes (working tree or index) */
 function getUncommittedFiles(): Set<string> {
   try {
     const worktree = execSync('git diff --name-only', { cwd: REPO_ROOT, encoding: 'utf8' });
@@ -127,7 +112,6 @@ function getUncommittedFiles(): Set<string> {
   }
 }
 
-/** Get the last git commit date for a file (returns null if file has no history) */
 function getGitModDate(relPath: string): Date | null {
   try {
     const iso = execSync(
@@ -175,26 +159,27 @@ interface SourceInfo {
   riskTier: 1 | 2 | 3;
   table: string;
   modDate: Date | null;
+  isGlob: boolean;
 }
 
 function buildSourceCache(uncommitted: Set<string>): Map<string, SourceInfo> {
   const today = new Date();
-  // Normalise today to midnight UTC so date comparisons are clean
   today.setUTCHours(0, 0, 0, 0);
 
   const cache = new Map<string, SourceInfo>();
   for (const mapping of SOURCE_MAPPINGS) {
     const { sourceFile, riskTier, table } = mapping;
-    if (cache.has(sourceFile)) continue; // already computed
+    if (cache.has(sourceFile)) continue;
 
-    let modDate = getGitModDate(sourceFile);
+    const isGlob = mapping.mode === 'json_glob';
+    let modDate: Date | null = null;
 
-    // If there are uncommitted changes, treat the file as modified today
-    if (uncommitted.has(sourceFile)) {
-      modDate = today;
+    if (!isGlob) {
+      modDate = getGitModDate(sourceFile);
+      if (uncommitted.has(sourceFile)) modDate = today;
     }
 
-    cache.set(sourceFile, { sourceFile, riskTier, table, modDate });
+    cache.set(sourceFile, { sourceFile, riskTier, table, modDate, isGlob });
   }
   return cache;
 }
@@ -204,10 +189,7 @@ function buildSourceCache(uncommitted: Set<string>): Map<string, SourceInfo> {
 function buildTableToMapping(): Map<string, SourceMapping> {
   const map = new Map<string, SourceMapping>();
   for (const m of SOURCE_MAPPINGS) {
-    // Last one wins if duplicates — SOURCE_MAPPINGS has one entry per table
-    if (!map.has(m.table)) {
-      map.set(m.table, m);
-    }
+    if (!map.has(m.table)) map.set(m.table, m);
   }
   return map;
 }
@@ -217,7 +199,8 @@ function buildTableToMapping(): Map<string, SourceMapping> {
 function analyzeElements(
   registry: RegistryData,
   sourceCache: Map<string, SourceInfo>,
-  tableToMapping: Map<string, SourceMapping>
+  tableToMapping: Map<string, SourceMapping>,
+  uncommitted: Set<string>
 ): AnalyzedElement[] {
   const results: AnalyzedElement[] = [];
   const today = new Date();
@@ -227,30 +210,37 @@ function analyzeElements(
     if (!Array.isArray(items)) continue;
 
     const mapping = tableToMapping.get(table);
-    if (!mapping) continue; // table not in SOURCE_MAPPINGS — skip
+    if (!mapping) continue;
 
     const sourceInfo = sourceCache.get(mapping.sourceFile);
     if (!sourceInfo) continue;
 
+    const isDeckTable = table === 'decks';
+
     for (const item of items) {
-      // Skip deprecated
+      // For json_glob mode, each element has its own sourceFile
+      const elementSourceFile = String(item['sourceFile'] ?? mapping.sourceFile);
+      let elementModDate = sourceInfo.modDate;
+
+      if (sourceInfo.isGlob && elementSourceFile) {
+        elementModDate = getGitModDate(elementSourceFile);
+        if (uncommitted.has(elementSourceFile)) elementModDate = today;
+      }
+
       if (item.status === 'deprecated') {
         results.push({
           id: String(item.id ?? item.name ?? 'unknown'),
           name: String(item.name ?? item.id ?? 'unknown'),
-          table,
-          riskTier: mapping.riskTier,
-          sourceFile: mapping.sourceFile,
-          category: 'DEPRECATED',
-          lastInspected: null,
-          sourceModified: sourceInfo.modDate,
-          daysStale: 0,
+          table, riskTier: mapping.riskTier, sourceFile: elementSourceFile,
+          category: 'DEPRECATED', lastInspected: null,
+          sourceModified: elementModDate, daysStale: 0,
+          inProgress: item.inProgress ?? null,
         });
         continue;
       }
 
-      const lastInspected = parseDate(item.lastInspected ?? item.lastInspectedDate);
-      const sourceModified = sourceInfo.modDate;
+      const lastInspected = parseDate(String(item.lastInspected ?? item.lastInspectedDate ?? 'not_checked'));
+      const sourceModified = elementModDate;
 
       let category: ElementCategory;
       let daysStale = 0;
@@ -264,17 +254,24 @@ function analyzeElements(
         category = 'FRESH';
       }
 
-      results.push({
+      const analyzed: AnalyzedElement = {
         id: String(item.id ?? item.name ?? 'unknown'),
         name: String(item.name ?? item.id ?? 'unknown'),
-        table,
-        riskTier: mapping.riskTier,
-        sourceFile: mapping.sourceFile,
-        category,
-        lastInspected,
-        sourceModified,
-        daysStale,
-      });
+        table, riskTier: mapping.riskTier, sourceFile: elementSourceFile,
+        category, lastInspected, sourceModified, daysStale,
+        inProgress: item.inProgress ?? null,
+      };
+
+      if (isDeckTable) {
+        analyzed.deckDates = {
+          lastStructuralVerify: String(item.lastStructuralVerify ?? 'not_checked'),
+          lastQuizAudit: String(item.lastQuizAudit ?? 'not_checked'),
+          lastLLMPlaytest: String(item.lastLLMPlaytest ?? 'not_checked'),
+          lastTriviaBridge: String(item.lastTriviaBridge ?? 'not_checked'),
+        };
+      }
+
+      results.push(analyzed);
     }
   }
 
@@ -285,9 +282,7 @@ function analyzeElements(
 
 function sortElements(elements: AnalyzedElement[]): AnalyzedElement[] {
   return [...elements].sort((a, b) => {
-    // 1. Risk tier ascending
     if (a.riskTier !== b.riskTier) return a.riskTier - b.riskTier;
-    // 2. Staleness: oldest inspection first (null = never, treat as epoch 0)
     const aTime = a.lastInspected?.getTime() ?? 0;
     const bTime = b.lastInspected?.getTime() ?? 0;
     return aTime - bTime;
@@ -300,25 +295,27 @@ function groupBySource(elements: AnalyzedElement[]): GroupedBySource[] {
   const grouped = new Map<string, GroupedBySource>();
 
   for (const el of elements) {
-    const key = el.sourceFile;
+    // Group decks by table (each has unique sourceFile), others by sourceFile
+    const key = el.table === 'decks' ? `__table:${el.table}` : el.sourceFile;
     if (!grouped.has(key)) {
       grouped.set(key, {
-        sourceFile: el.sourceFile,
-        riskTier: el.riskTier,
-        table: el.table,
-        sourceModified: el.sourceModified,
-        elements: [],
+        sourceFile: el.table === 'decks' ? 'data/decks/*.json' : el.sourceFile,
+        riskTier: el.riskTier, table: el.table,
+        sourceModified: el.sourceModified, elements: [],
       });
     }
-    grouped.get(key)!.elements.push(el);
+    const g = grouped.get(key)!;
+    if (el.sourceModified && (!g.sourceModified || el.sourceModified > g.sourceModified)) {
+      g.sourceModified = el.sourceModified;
+    }
+    g.elements.push(el);
   }
 
-  // Sort groups: tier asc, then source-mod-date desc (most recently changed first within tier)
   return [...grouped.values()].sort((a, b) => {
     if (a.riskTier !== b.riskTier) return a.riskTier - b.riskTier;
     const aTime = a.sourceModified?.getTime() ?? 0;
     const bTime = b.sourceModified?.getTime() ?? 0;
-    return bTime - aTime; // most recently modified first
+    return bTime - aTime;
   });
 }
 
@@ -333,19 +330,11 @@ interface NeverGroup {
 }
 
 function groupNeverByTable(elements: AnalyzedElement[]): NeverGroup[] {
-  // We need total counts per table to report "X/Y never inspected"
-  // elements here are only NEVER_INSPECTED — we'll compute totals separately
   const grouped = new Map<string, NeverGroup>();
 
   for (const el of elements) {
     if (!grouped.has(el.table)) {
-      grouped.set(el.table, {
-        table: el.table,
-        riskTier: el.riskTier,
-        total: 0,
-        neverCount: 0,
-        elements: [],
-      });
+      grouped.set(el.table, { table: el.table, riskTier: el.riskTier, total: 0, neverCount: 0, elements: [] });
     }
     const g = grouped.get(el.table)!;
     g.neverCount++;
@@ -357,10 +346,7 @@ function groupNeverByTable(elements: AnalyzedElement[]): NeverGroup[] {
 
 // ─── Build recommendation ────────────────────────────────────────────────────
 
-function buildRecommendation(
-  staleGroups: GroupedBySource[],
-  neverGroups: NeverGroup[]
-): string {
+function buildRecommendation(staleGroups: GroupedBySource[], neverGroups: NeverGroup[]): string {
   if (staleGroups.length > 0) {
     const top = staleGroups[0];
     const count = top.elements.length;
@@ -372,9 +358,7 @@ function buildRecommendation(
   }
   if (neverGroups.length > 0) {
     const top = neverGroups[0];
-    return (
-      `Run \`/inspect ${top.table}\` first — ${top.neverCount} element${top.neverCount === 1 ? '' : 's'} never inspected (Tier ${top.riskTier})`
-    );
+    return `Run \`/inspect ${top.table}\` first — ${top.neverCount} element${top.neverCount === 1 ? '' : 's'} never inspected (Tier ${top.riskTier})`;
   }
   return 'All elements are fresh. No action needed.';
 }
@@ -388,23 +372,40 @@ function renderTerminal(
   neverInspected: AnalyzedElement[],
   fresh: AnalyzedElement[],
   deprecated: AnalyzedElement[],
+  inProgressElements: AnalyzedElement[],
   totalByTable: Map<string, number>
 ): void {
   const staleGroups = groupBySource(stale);
   const neverGroups = groupNeverByTable(neverInspected);
-  // Attach total counts to never groups
   for (const g of neverGroups) {
     g.total = totalByTable.get(g.table) ?? g.neverCount;
   }
 
   const recommendation = buildRecommendation(staleGroups, neverGroups);
 
-  // Header
   console.log('');
   console.log(color('═══════════════════════════════════════════════', BOLD));
   console.log(color('  INSPECTION REGISTRY — STALE ELEMENT REPORT  ', BOLD));
   console.log(color('═══════════════════════════════════════════════', BOLD));
   console.log('');
+
+  // ── IN PROGRESS section ───────────────────────────────────────────────────
+  if (inProgressElements.length > 0) {
+    console.log(color('IN PROGRESS — locked by agents (do NOT start parallel work on these):', BOLD, MAGENTA));
+    console.log('');
+
+    for (const el of inProgressElements) {
+      const lock = el.inProgress!;
+      const lockAge = Date.now() - new Date(lock.startedAt).getTime();
+      const lockAgeMin = Math.floor(lockAge / 60000);
+      const ageStr = lockAgeMin < 60 ? `${lockAgeMin}m ago` : `${Math.floor(lockAgeMin / 60)}h ${lockAgeMin % 60}m ago`;
+      const batchStr = lock.batchId ? ` batch=${lock.batchId}` : '';
+      const doneStr = lock.expectedCompleteBy ? ` expectedDone=${lock.expectedCompleteBy.slice(0, 16)}` : '';
+      console.log(color(`  [${el.table}] ${el.id} (${el.name})`, MAGENTA, BOLD));
+      console.log(color(`    agent='${lock.agentId}' testType='${lock.testType}'${batchStr} startedAt=${ageStr}${doneStr}`, MAGENTA));
+    }
+    console.log('');
+  }
 
   // ── STALE section ────────────────────────────────────────────────────────
   if (staleGroups.length > 0) {
@@ -421,13 +422,16 @@ function renderTerminal(
       for (const el of shown) {
         const staleDays = el.daysStale > 0 ? ` (${el.daysStale} day${el.daysStale === 1 ? '' : 's'} stale)` : '';
         const lastStr = el.lastInspected ? `last inspected ${formatDate(el.lastInspected)}` : 'never inspected';
-        console.log(color(`    • ${el.name} — ${lastStr}${staleDays}`, tierColor));
+        let deckLine = '';
+        if (el.deckDates) {
+          const dd = el.deckDates;
+          deckLine = ` [struct=${dd.lastStructuralVerify.slice(0, 10)} quiz=${dd.lastQuizAudit.slice(0, 10)} playtest=${dd.lastLLMPlaytest.slice(0, 10)} bridge=${dd.lastTriviaBridge.slice(0, 10)}]`;
+        }
+        console.log(color(`    • ${el.name} — ${lastStr}${staleDays}${deckLine}`, tierColor));
       }
 
       const remainder = group.elements.length - shown.length;
-      if (remainder > 0) {
-        console.log(color(`    ... (${remainder} more)`, tierColor, DIM));
-      }
+      if (remainder > 0) console.log(color(`    ... (${remainder} more)`, tierColor, DIM));
       console.log('');
     }
   } else {
@@ -445,12 +449,21 @@ function renderTerminal(
       const label = `  [Tier ${group.riskTier}] ${group.table}: ${group.neverCount}/${group.total} never inspected`;
       console.log(color(label, tierColor, BOLD));
 
-      const names = group.elements.map(e => e.name);
-      const shownNames = names.slice(0, INLINE_PREVIEW_LIMIT * 2);
-      const remainderNames = names.length - shownNames.length;
-      let nameLine = `    ${shownNames.join(', ')}`;
-      if (remainderNames > 0) nameLine += `, ... (${remainderNames} more)`;
-      console.log(color(nameLine, tierColor));
+      if (group.table === 'decks') {
+        const names = group.elements.slice(0, INLINE_PREVIEW_LIMIT * 2).map(e => e.name);
+        const remainder = group.elements.length - names.length;
+        let nameLine = `    ${names.join(', ')}`;
+        if (remainder > 0) nameLine += `, ... (${remainder} more)`;
+        console.log(color(nameLine, tierColor));
+        console.log(color(`    Tip: run "npm run audit:quiz-engine" to stamp lastQuizAudit for these decks`, DIM));
+      } else {
+        const names = group.elements.map(e => e.name);
+        const shownNames = names.slice(0, INLINE_PREVIEW_LIMIT * 2);
+        const remainderNames = names.length - shownNames.length;
+        let nameLine = `    ${shownNames.join(', ')}`;
+        if (remainderNames > 0) nameLine += `, ... (${remainderNames} more)`;
+        console.log(color(nameLine, tierColor));
+      }
       console.log('');
     }
   } else {
@@ -480,12 +493,11 @@ function renderTerminal(
     color(`${neverInspected.length} never-inspected`, neverInspected.length > 0 ? YELLOW : DIM),
     color(`${fresh.length} fresh`, GREEN),
     color(`${deprecated.length} deprecated`, DIM),
+    color(`${inProgressElements.length} in-progress`, inProgressElements.length > 0 ? MAGENTA : DIM),
   ];
-  console.log(`SUMMARY: ${summaryParts.join(color(' │ ', DIM))}`);
+  console.log(`SUMMARY: ${summaryParts.join(color(' | ', DIM))}`);
   console.log(color('───────────────────────────────────────────────', DIM));
   console.log('');
-
-  // ── Recommendation ────────────────────────────────────────────────────────
   console.log(color(`RECOMMENDATION: ${recommendation}`, CYAN));
   console.log('');
 }
@@ -497,43 +509,41 @@ function renderJson(
   neverInspected: AnalyzedElement[],
   fresh: AnalyzedElement[],
   deprecated: AnalyzedElement[],
+  inProgressElements: AnalyzedElement[],
   neverGroups: NeverGroup[],
   staleGroups: GroupedBySource[]
 ): void {
   const recommendation = buildRecommendation(staleGroups, neverGroups);
 
-  const output: JsonOutput = {
+  const output = {
     generatedAt: new Date().toISOString(),
     summary: {
       stale: stale.length,
       neverInspected: neverInspected.length,
       fresh: fresh.length,
       deprecated: deprecated.length,
+      inProgress: inProgressElements.length,
       total: stale.length + neverInspected.length + fresh.length + deprecated.length,
     },
+    inProgress: inProgressElements.map(el => ({
+      id: el.id, name: el.name, table: el.table,
+      agentId: el.inProgress!.agentId,
+      testType: el.inProgress!.testType,
+      startedAt: el.inProgress!.startedAt,
+      ...(el.inProgress!.batchId ? { batchId: el.inProgress!.batchId } : {}),
+      ...(el.inProgress!.expectedCompleteBy ? { expectedCompleteBy: el.inProgress!.expectedCompleteBy } : {}),
+    })),
     stale: stale.map(el => ({
-      id: el.id,
-      name: el.name,
-      table: el.table,
-      riskTier: el.riskTier,
-      sourceFile: el.sourceFile,
+      id: el.id, name: el.name, table: el.table, riskTier: el.riskTier, sourceFile: el.sourceFile,
       lastInspected: el.lastInspected ? formatDate(el.lastInspected) : null,
       sourceModified: el.sourceModified ? formatDate(el.sourceModified) : null,
       daysStale: el.daysStale,
     })),
     neverInspected: neverInspected.map(el => ({
-      id: el.id,
-      name: el.name,
-      table: el.table,
-      riskTier: el.riskTier,
-      sourceFile: el.sourceFile,
+      id: el.id, name: el.name, table: el.table, riskTier: el.riskTier, sourceFile: el.sourceFile,
     })),
     fresh: fresh.map(el => ({
-      id: el.id,
-      name: el.name,
-      table: el.table,
-      riskTier: el.riskTier,
-      sourceFile: el.sourceFile,
+      id: el.id, name: el.name, table: el.table, riskTier: el.riskTier, sourceFile: el.sourceFile,
       lastInspected: formatDate(el.lastInspected),
     })),
     recommendation,
@@ -548,24 +558,21 @@ function main(): void {
   const args = process.argv.slice(2);
   const jsonMode = args.includes('--json');
 
-  if (!jsonMode) {
-    process.stdout.write('Loading registry...\r');
-  }
+  if (!jsonMode) process.stdout.write('Loading registry...\r');
 
   const registry = loadRegistry();
   const uncommitted = getUncommittedFiles();
   const sourceCache = buildSourceCache(uncommitted);
   const tableToMapping = buildTableToMapping();
 
-  const allElements = analyzeElements(registry, sourceCache, tableToMapping);
+  const allElements = analyzeElements(registry, sourceCache, tableToMapping, uncommitted);
 
-  // Split into categories
   const stale = sortElements(allElements.filter(e => e.category === 'STALE'));
   const neverInspected = sortElements(allElements.filter(e => e.category === 'NEVER_INSPECTED'));
   const fresh = allElements.filter(e => e.category === 'FRESH');
   const deprecated = allElements.filter(e => e.category === 'DEPRECATED');
+  const inProgressElements = allElements.filter(e => e.category !== 'DEPRECATED' && e.inProgress != null);
 
-  // Build totals per table (all non-deprecated elements)
   const totalByTable = new Map<string, number>();
   for (const el of allElements) {
     if (el.category !== 'DEPRECATED') {
@@ -576,9 +583,9 @@ function main(): void {
   if (jsonMode) {
     const staleGroups = groupBySource(stale);
     const neverGroups = groupNeverByTable(neverInspected);
-    renderJson(stale, neverInspected, fresh, deprecated, neverGroups, staleGroups);
+    renderJson(stale, neverInspected, fresh, deprecated, inProgressElements, neverGroups, staleGroups);
   } else {
-    renderTerminal(stale, neverInspected, fresh, deprecated, totalByTable);
+    renderTerminal(stale, neverInspected, fresh, deprecated, inProgressElements, totalByTable);
   }
 }
 

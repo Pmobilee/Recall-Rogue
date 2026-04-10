@@ -5,9 +5,10 @@
 
 export interface SourceMapping {
   table: string;
+  /** For json_glob mode this is a glob pattern (e.g. 'data/decks/*.json'). */
   sourceFile: string;
   exportName: string;
-  mode: 'array' | 'record' | 'type_union';
+  mode: 'array' | 'record' | 'type_union' | 'json_glob';
   idField?: string;       // default 'id'
   nameField?: string;     // default 'name'
   categoryField?: string;
@@ -86,6 +87,14 @@ export const SOURCE_MAPPINGS: SourceMapping[] = [
     exportName: 'CHAIN_TYPES',
     mode: 'array',
     idField: 'index', nameField: 'name', categoryField: 'name', descriptionField: 'hexColor',
+    riskTier: 2,
+  },
+  // Tier 2 — curated decks (json_glob)
+  {
+    table: 'decks',
+    sourceFile: 'data/decks/*.json',
+    exportName: '',
+    mode: 'json_glob',
     riskTier: 2,
   },
   // Tier 3 — low risk

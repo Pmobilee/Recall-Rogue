@@ -99,6 +99,40 @@ Before each tester runs, the orchestrator mutes audio via Svelte stores (`sfxEna
 
 ---
 
+## Pre-Flight: Registry Lock Check (MANDATORY — Runs Before Phase 0)
+
+Before any tester is launched, the orchestrator MUST check and acquire a registry lock. This prevents two parallel agents from playtesting the same deck simultaneously.
+
+```bash
+# 1. Determine the deck ID being tested (from domain argument or default)
+DECK_ID="<deckId>"   # e.g. ancient_rome, japanese_n1_grammar
+BATCH_ID="<batchId>" # generate tentative ID now (BATCH-{DATE}-{NNN})
+
+# 2. Check if already locked — exit 0 = free, exit 1 = locked
+npm run registry:check-lock -- --ids "${DECK_ID}"
+# If LOCKED: abort with message:
+#   "Deck ${DECK_ID} is locked by agent <agentId> (testType=<type>).
+#    Wait for unlock or use --force if the lock is stale (> TTL hours old)."
+
+# 3. Acquire lock (only if free)
+npm run registry:lock -- --ids "${DECK_ID}" --agent llm-playtest --batch "${BATCH_ID}" --test-type llm-playtest --ttl-hours 2
+
+# 4. After ALL testers complete (success OR failure) — ALWAYS unlock:
+npm run registry:unlock -- --ids "${DECK_ID}"
+# Use a try/finally pattern so unlock runs even if testers crash or are killed
+
+# 5. On SUCCESS only — stamp the registry:
+npx tsx scripts/registry/updater.ts --ids "${DECK_ID}" --type lastLLMPlaytest --notes "batch:${BATCH_ID}"
+```
+
+**Rules:**
+- If `registry:check-lock` exits 1 (locked), ABORT — do not proceed to Phase 0
+- The lock is held for the entire duration of all tester runs
+- Unlock runs unconditionally as the LAST step, even on crash or partial failure
+- For `general_knowledge` or domain-only runs with no specific deck ID, skip the lock check
+
+---
+
 ## Phase 0: Smoke Test (Orchestrator Runs Directly — NOT Sub-Agent)
 
 Before spawning any testers, the orchestrator MUST verify the game is running and APIs are accessible. Run these 6 checks via Playwright MCP directly:

@@ -16,6 +16,7 @@
  */
 
 import { readFileSync, readdirSync } from 'fs';
+import { execSync } from 'child_process';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -382,4 +383,17 @@ if (JSON_MODE) {
   } else {
     console.log(`${GREEN}${BOLD}All decks pass in-game quiz audit!${RESET}`);
   }
+}
+
+// Auto-stamp lastQuizAudit in inspection registry for decks that passed (best-effort, never blocks)
+try {
+  const passedIds = allResults.filter(r => !r.skipped && r.failCount === 0).map(r => r.deckId).join(',');
+  if (passedIds) {
+    execSync(
+      `npx tsx scripts/registry/updater.ts --ids "${passedIds}" --type lastQuizAudit`,
+      { stdio: 'pipe' }
+    );
+  }
+} catch (_) {
+  // Registry stamp failure never blocks audit output
 }

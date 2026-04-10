@@ -4,20 +4,28 @@
  * Usage:
  *   npx tsx scripts/registry/sync.ts
  *
- * Algorithm:
- *   1. Import each source file and extract game elements
- *   2. Load existing registry (if any) and migrate old field names
- *   3. Merge: preserve existing inspection dates; mark missing elements deprecated
- *   4. Write updated registry with version bump
+ * Version 5 adds:
+ *   - decks table via json_glob source mode (reads data/decks/*.json, skips _wip/)
+ *   - Deck-specific audit date fields: lastStructuralVerify, lastQuizAudit, lastLLMPlaytest, lastTriviaBridge
+ *   - inProgress lock field for parallel-agent coordination
  */
 
 import fs from 'fs';
 import path from 'path';
+import { glob } from 'glob';
 import { SOURCE_MAPPINGS, type SourceMapping } from './sources.ts';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type ConfidenceLevel = 'clean' | 'confirmed' | 'likely' | 'possible' | 'not_checked';
+
+interface InProgressLock {
+  agentId: string;
+  batchId?: string;
+  testType: string;
+  startedAt: string;
+  expectedCompleteBy?: string;
+}
 
 interface RegistryElement {
   id: string;
@@ -33,6 +41,13 @@ interface RegistryElement {
   strategyDate: string;
   neuralDate: string;
   playtestDate: string;
+  // Deck-specific audit date fields (only populated for 'decks' table)
+  lastStructuralVerify?: string;
+  lastQuizAudit?: string;
+  lastLLMPlaytest?: string;
+  lastTriviaBridge?: string;
+  // Parallel-agent coordination lock (null = free)
+  inProgress?: InProgressLock | null;
   lastInspected: string;
   confidenceLevel: ConfidenceLevel;
   notes: string;
@@ -46,9 +61,6 @@ interface Registry {
 
 // ─── Old registry migration ───────────────────────────────────────────────────
 
-// Tables that existed in the old registry but are NOT in SOURCE_MAPPINGS —
-// they were manually curated (rooms, systems, quiz-related, etc.) and should
-// be dropped during migration rather than carried forward as empty shells.
 const OLD_TABLES_TO_DROP = new Set([
   'testingRecommendations',
   'domainTestMatrix',
@@ -63,63 +75,78 @@ const OLD_TABLES_TO_DROP = new Set([
   'rooms',
 ]);
 
-// Tables in old registry that ARE kept but may have name mismatches
 const OLD_TABLE_RENAMES: Record<string, string> = {
   cardSynergies: 'synergies',
   cardKeywords: 'keywords',
   mysteryEvents: 'mysteryEffects',
 };
 
-/** Pick the most recent non-"not_checked" date from a list. */
 function mostRecent(dates: string[]): string {
   const valid = dates.filter((d) => d && d !== 'not_checked').sort();
   return valid.length > 0 ? valid[valid.length - 1] : 'not_checked';
 }
 
-/** Map an old registry element to the new RegistryElement schema. */
-function migrateOldElement(old: Record<string, string>): RegistryElement {
+function migrateOldElement(old: Record<string, unknown>): RegistryElement {
   const visualDate = mostRecent([
-    old['visualInspectionDate_portraitMobile'] ?? 'not_checked',
-    old['visualInspectionDate_landscapeMobile'] ?? 'not_checked',
-    old['visualInspectionDate_landscapePC'] ?? 'not_checked',
-    old['visualDate'] ?? 'not_checked',
+    String(old['visualInspectionDate_portraitMobile'] ?? 'not_checked'),
+    String(old['visualInspectionDate_landscapeMobile'] ?? 'not_checked'),
+    String(old['visualInspectionDate_landscapePC'] ?? 'not_checked'),
+    String(old['visualDate'] ?? 'not_checked'),
   ]);
 
   const el: RegistryElement = {
-    id: old['id'] ?? '',
-    name: old['name'] ?? '',
-    category: old['category'] ?? '',
-    description: old['description'] ?? '',
-    sourceFile: old['sourceFile'] ?? '',
+    id: String(old['id'] ?? ''),
+    name: String(old['name'] ?? ''),
+    category: String(old['category'] ?? ''),
+    description: String(old['description'] ?? ''),
+    sourceFile: String(old['sourceFile'] ?? ''),
     status: (old['status'] === 'deprecated' ? 'deprecated' : 'active'),
-    // Check both v3 (old) and v4 (new) field names so re-runs are idempotent
-    mechanicDate: old['mechanicInspectionDate'] ?? old['mechanicDate'] ?? 'not_checked',
+    mechanicDate: String(old['mechanicInspectionDate'] ?? old['mechanicDate'] ?? 'not_checked'),
     visualDate,
-    uxDate: old['uxReviewDate'] ?? old['uxDate'] ?? 'not_checked',
-    balanceDate: old['balanceCheckDate'] ?? old['balanceDate'] ?? 'not_checked',
-    strategyDate: old['strategicAnalysisDate'] ?? old['strategyDate'] ?? 'not_checked',
-    neuralDate: old['neuralAgentDate'] ?? old['neuralDate'] ?? 'not_checked',
-    playtestDate: old['llmPlaytestDate'] ?? old['playtestDate'] ?? 'not_checked',
-    lastInspected: old['lastInspectedDate'] ?? old['lastInspected'] ?? 'not_checked',
+    uxDate: String(old['uxReviewDate'] ?? old['uxDate'] ?? 'not_checked'),
+    balanceDate: String(old['balanceCheckDate'] ?? old['balanceDate'] ?? 'not_checked'),
+    strategyDate: String(old['strategicAnalysisDate'] ?? old['strategyDate'] ?? 'not_checked'),
+    neuralDate: String(old['neuralAgentDate'] ?? old['neuralDate'] ?? 'not_checked'),
+    playtestDate: String(old['llmPlaytestDate'] ?? old['playtestDate'] ?? 'not_checked'),
+    lastStructuralVerify: String(old['lastStructuralVerify'] ?? 'not_checked'),
+    lastQuizAudit: String(old['lastQuizAudit'] ?? 'not_checked'),
+    lastLLMPlaytest: String(old['lastLLMPlaytest'] ?? 'not_checked'),
+    lastTriviaBridge: String(old['lastTriviaBridge'] ?? 'not_checked'),
+    inProgress: (old['inProgress'] as InProgressLock | null | undefined) ?? null,
+    lastInspected: String(old['lastInspectedDate'] ?? old['lastInspected'] ?? 'not_checked'),
     confidenceLevel: (old['confidenceLevel'] as ConfidenceLevel) ?? 'not_checked',
-    notes: old['notes'] ?? '',
+    notes: String(old['notes'] ?? ''),
   };
 
-  // Recompute confidence from migrated fields (old value may be stale)
   el.confidenceLevel = computeConfidence(el);
   el.lastInspected = computeLastInspected(el);
-
   return el;
 }
 
 // ─── Confidence / date helpers ────────────────────────────────────────────────
 
+/** Core date fields used for confidence scoring (all tables). */
 const DATE_FIELDS: (keyof RegistryElement)[] = [
   'mechanicDate', 'visualDate', 'uxDate', 'balanceDate', 'strategyDate', 'neuralDate', 'playtestDate',
 ];
 
+/** Deck-specific audit date fields. */
+export const DECK_DATE_FIELDS: (keyof RegistryElement)[] = [
+  'lastStructuralVerify', 'lastQuizAudit', 'lastLLMPlaytest', 'lastTriviaBridge',
+];
+
+/** All valid date-stampable fields (exported for updater.ts). */
+export const ALL_DATE_FIELDS: (keyof RegistryElement)[] = [
+  ...DATE_FIELDS,
+  ...DECK_DATE_FIELDS,
+];
+
 function computeLastInspected(el: RegistryElement): string {
-  return mostRecent(DATE_FIELDS.map((f) => el[f] as string));
+  const allDates = [
+    ...DATE_FIELDS.map((f) => el[f] as string),
+    ...DECK_DATE_FIELDS.map((f) => (el[f] as string | undefined) ?? 'not_checked'),
+  ];
+  return mostRecent(allDates);
 }
 
 function computeConfidence(el: RegistryElement): ConfidenceLevel {
@@ -134,37 +161,32 @@ function computeConfidence(el: RegistryElement): ConfidenceLevel {
   return 'clean';
 }
 
-function blankElement(id: string, name: string, category: string, description: string, sourceFile: string): RegistryElement {
-  return {
-    id,
-    name,
-    category,
-    description,
-    sourceFile,
+function blankElement(
+  id: string, name: string, category: string, description: string,
+  sourceFile: string, isDeck = false
+): RegistryElement {
+  const el: RegistryElement = {
+    id, name, category, description, sourceFile,
     status: 'active',
-    mechanicDate: 'not_checked',
-    visualDate: 'not_checked',
-    uxDate: 'not_checked',
-    balanceDate: 'not_checked',
-    strategyDate: 'not_checked',
-    neuralDate: 'not_checked',
+    mechanicDate: 'not_checked', visualDate: 'not_checked', uxDate: 'not_checked',
+    balanceDate: 'not_checked', strategyDate: 'not_checked', neuralDate: 'not_checked',
     playtestDate: 'not_checked',
-    lastInspected: 'not_checked',
-    confidenceLevel: 'not_checked',
-    notes: '',
+    lastInspected: 'not_checked', confidenceLevel: 'not_checked', notes: '',
+    inProgress: null,
   };
+  if (isDeck) {
+    el.lastStructuralVerify = 'not_checked';
+    el.lastQuizAudit = 'not_checked';
+    el.lastLLMPlaytest = 'not_checked';
+    el.lastTriviaBridge = 'not_checked';
+  }
+  return el;
 }
 
 // ─── Type union extraction ─────────────────────────────────────────────────────
 
-/**
- * Read a TypeScript file as text and extract all string-literal members from
- * a named `export type Foo = 'a' | 'b' | ...` union declaration.
- */
 function extractTypeUnion(filePath: string, exportName: string): string[] {
   const text = fs.readFileSync(filePath, 'utf-8');
-
-  // Match the type declaration body (handles multi-line and inline declarations)
   const pattern = new RegExp(
     `export\\s+type\\s+${exportName}\\s*=\\s*([\\s\\S]*?)(?=\\n\\n|\\n\\/\\*|\\nexport|$)`,
   );
@@ -173,8 +195,6 @@ function extractTypeUnion(filePath: string, exportName: string): string[] {
     console.warn(`  [warn] Could not find 'export type ${exportName}' in ${filePath}`);
     return [];
   }
-
-  // Extract all 'value' string literals from the union body
   const body = match[1];
   const members: string[] = [];
   const literalRe = /'([^']+)'/g;
@@ -192,9 +212,44 @@ interface ExtractedElement {
   name: string;
   category: string;
   description: string;
+  sourceFile?: string;
 }
 
 async function extractFromMapping(mapping: SourceMapping): Promise<ExtractedElement[]> {
+  // ── json_glob mode ──────────────────────────────────────────────────────────
+  if (mapping.mode === 'json_glob') {
+    const repoRoot = process.cwd();
+    const files = await glob(mapping.sourceFile, { cwd: repoRoot, absolute: true });
+    const elements: ExtractedElement[] = [];
+
+    for (const filePath of files.sort()) {
+      // Skip files inside _wip subdirectory
+      if (filePath.includes('/_wip/') || filePath.includes('\\_wip\\')) continue;
+
+      let data: Record<string, unknown>;
+      try {
+        data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+      } catch (err) {
+        console.warn(`  [warn] Failed to parse ${filePath}: ${(err as Error).message}`);
+        continue;
+      }
+
+      const stem = path.basename(filePath, '.json');
+      const id = String(data['id'] ?? stem);
+      const name = String(data['name'] ?? id);
+      const domain = data['domain'] ?? data['deckType'] ?? null;
+      const subDomain = data['subDomain'] ?? null;
+      const category = domain ? (subDomain ? `${domain}/${subDomain}` : String(domain)) : 'knowledge';
+      const description = String(data['description'] ?? '').slice(0, 200);
+      const relPath = path.relative(repoRoot, filePath);
+
+      elements.push({ id, name, category, description, sourceFile: relPath });
+    }
+
+    return elements;
+  }
+
+  // ── Standard modes ──────────────────────────────────────────────────────────
   const absPath = path.resolve(process.cwd(), mapping.sourceFile);
 
   if (!fs.existsSync(absPath)) {
@@ -207,32 +262,19 @@ async function extractFromMapping(mapping: SourceMapping): Promise<ExtractedElem
   const categoryField = mapping.categoryField ?? '';
   const descriptionField = mapping.descriptionField ?? '';
 
-  // ── type_union ──────────────────────────────────────────────────────────────
   if (mapping.mode === 'type_union') {
     const members = extractTypeUnion(absPath, mapping.exportName);
-    return members.map((val) => ({
-      id: val,
-      name: val,
-      category: mapping.table,
-      description: '',
-    }));
+    return members.map((val) => ({ id: val, name: val, category: mapping.table, description: '' }));
   }
 
-  // ── array / record — attempt dynamic import ──────────────────────────────────
   let mod: Record<string, unknown>;
   try {
     mod = await import(absPath);
   } catch (err) {
     console.warn(`  [warn] Failed to import ${mapping.sourceFile} (${(err as Error).message})`);
     console.warn(`         Falling back to type_union regex for table '${mapping.table}'`);
-    // Last-resort: try extracting the export as a type union (useful for enums)
     const members = extractTypeUnion(absPath, mapping.exportName);
-    return members.map((val) => ({
-      id: val,
-      name: val,
-      category: mapping.table,
-      description: '',
-    }));
+    return members.map((val) => ({ id: val, name: val, category: mapping.table, description: '' }));
   }
 
   const exported = mod[mapping.exportName];
@@ -241,7 +283,6 @@ async function extractFromMapping(mapping: SourceMapping): Promise<ExtractedElem
     return [];
   }
 
-  // ── array mode ───────────────────────────────────────────────────────────────
   if (mapping.mode === 'array') {
     if (!Array.isArray(exported)) {
       console.warn(`  [warn] '${mapping.exportName}' is not an array in ${mapping.sourceFile}`);
@@ -256,28 +297,19 @@ async function extractFromMapping(mapping: SourceMapping): Promise<ExtractedElem
     }).filter((e) => e.id !== '');
   }
 
-  // ── record mode ───────────────────────────────────────────────────────────────
   if (mapping.mode === 'record') {
     const rec = exported as Record<string, unknown>;
     return Object.entries(rec).map(([key, val]) => {
       const obj = (val && typeof val === 'object' ? val : {}) as Record<string, unknown>;
       const name = nameField && obj[nameField] ? String(obj[nameField]) : key;
       const category = categoryField && obj[categoryField] ? String(obj[categoryField]) : '';
-
       let description = '';
       if (descriptionField && obj[descriptionField]) {
         const raw = obj[descriptionField];
-        if (Array.isArray(raw)) {
-          // e.g. MECHANIC_SYNERGIES: value is string[]
-          description = (raw as string[]).join(', ');
-        } else {
-          description = String(raw);
-        }
+        description = Array.isArray(raw) ? (raw as string[]).join(', ') : String(raw);
       } else if (Array.isArray(val)) {
-        // Record<string, string[]> — join the array as description
         description = (val as string[]).join(', ');
       }
-
       return { id: key, name, category, description };
     });
   }
@@ -288,7 +320,6 @@ async function extractFromMapping(mapping: SourceMapping): Promise<ExtractedElem
 // ─── Load & migrate old registry ─────────────────────────────────────────────
 
 function loadOldRegistry(registryPath: string): Map<string, Map<string, RegistryElement>> {
-  // Returns: Map<tableName, Map<elementId, element>>
   const result = new Map<string, Map<string, RegistryElement>>();
   if (!fs.existsSync(registryPath)) return result;
 
@@ -297,14 +328,11 @@ function loadOldRegistry(registryPath: string): Map<string, Map<string, Registry
 
   for (const [rawTableName, items] of Object.entries(tables)) {
     if (OLD_TABLES_TO_DROP.has(rawTableName)) continue;
-
-    // Rename tables that changed name in v4
     const tableName = OLD_TABLE_RENAMES[rawTableName] ?? rawTableName;
-
     if (!Array.isArray(items)) continue;
 
     const map = new Map<string, RegistryElement>();
-    for (const item of items as Record<string, string>[]) {
+    for (const item of items as Record<string, unknown>[]) {
       const el = migrateOldElement(item);
       if (el.id) map.set(el.id, el);
     }
@@ -313,8 +341,6 @@ function loadOldRegistry(registryPath: string): Map<string, Map<string, Registry
 
   return result;
 }
-
-// ─── Atomic write ─────────────────────────────────────────────────────────────
 
 function writeAtomic(filePath: string, content: string): void {
   const tmp = filePath + '.tmp';
@@ -331,12 +357,9 @@ async function main(): Promise<void> {
   console.log('Loading existing registry...');
   const oldRegistry = loadOldRegistry(registryPath);
 
-  // Count stats for summary
   const stats: Record<string, { total: number; newCount: number; deprecated: number }> = {};
-
   const newTables: Record<string, RegistryElement[]> = {};
 
-  // Process each source mapping
   for (const mapping of SOURCE_MAPPINGS) {
     process.stdout.write(`  Extracting ${mapping.table} from ${mapping.sourceFile}... `);
     const extracted = await extractFromMapping(mapping);
@@ -346,36 +369,42 @@ async function main(): Promise<void> {
     const seenIds = new Set<string>();
     const elements: RegistryElement[] = [];
     let newCount = 0;
+    const isDeckTable = mapping.table === 'decks';
 
     for (const ex of extracted) {
       seenIds.add(ex.id);
       const existing = oldTableMap.get(ex.id);
+      const elementSourceFile = ex.sourceFile ?? mapping.sourceFile;
 
       if (existing) {
-        // Preserve inspection history; update metadata from source
         const merged: RegistryElement = {
           ...existing,
           name: ex.name || existing.name,
           category: ex.category || existing.category,
           description: ex.description || existing.description,
-          sourceFile: mapping.sourceFile,
-          status: 'active', // re-activate if it was deprecated
+          sourceFile: elementSourceFile,
+          status: 'active',
         };
+        if (isDeckTable) {
+          if (!merged.lastStructuralVerify) merged.lastStructuralVerify = 'not_checked';
+          if (!merged.lastQuizAudit) merged.lastQuizAudit = 'not_checked';
+          if (!merged.lastLLMPlaytest) merged.lastLLMPlaytest = 'not_checked';
+          if (!merged.lastTriviaBridge) merged.lastTriviaBridge = 'not_checked';
+          if (merged.inProgress === undefined) merged.inProgress = null;
+        }
         merged.lastInspected = computeLastInspected(merged);
         merged.confidenceLevel = computeConfidence(merged);
         elements.push(merged);
       } else {
-        // New element — blank inspection slate
-        elements.push(blankElement(ex.id, ex.name, ex.category, ex.description, mapping.sourceFile));
+        elements.push(blankElement(ex.id, ex.name, ex.category, ex.description, elementSourceFile, isDeckTable));
         newCount++;
       }
     }
 
-    // Elements in old registry that are no longer in source → deprecated
     let deprecatedCount = 0;
     for (const [oldId, oldEl] of oldTableMap.entries()) {
       if (!seenIds.has(oldId)) {
-        elements.push({ ...oldEl, status: 'deprecated', sourceFile: mapping.sourceFile });
+        elements.push({ ...oldEl, status: 'deprecated', sourceFile: oldEl.sourceFile || mapping.sourceFile });
         deprecatedCount++;
       }
     }
@@ -389,14 +418,13 @@ async function main(): Promise<void> {
   }
 
   const registry: Registry = {
-    version: 4,
+    version: 5,
     lastSynced: today,
     tables: newTables,
   };
 
   writeAtomic(registryPath, JSON.stringify(registry, null, 2));
 
-  // ── Print summary ─────────────────────────────────────────────────────────
   console.log('\nRegistry sync complete:');
   let totalActive = 0;
   let totalDeprecated = 0;

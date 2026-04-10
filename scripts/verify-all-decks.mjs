@@ -11,6 +11,7 @@
  */
 
 import { readFileSync } from 'fs';
+import { execSync } from 'child_process';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -975,4 +976,18 @@ console.log('');
 // Pool-homogeneity failures are informational (shown as FAIL in display but don't block commits)
 // because educational content inherently varies: 'Pons' vs 'Visceral and parietal pleura' in same pool
 const totalBlockingFailures = totalFailures - results.reduce((s, r) => s + (r.homogeneityFailCount || 0), 0);
+
+// Auto-stamp lastStructuralVerify in inspection registry for decks that passed (best-effort, never blocks)
+try {
+  const passedIds = results.filter(r => r.failCount === 0).map(r => r.deckId).join(',');
+  if (passedIds) {
+    execSync(
+      `npx tsx scripts/registry/updater.ts --ids "${passedIds}" --type lastStructuralVerify`,
+      { stdio: 'pipe' }
+    );
+  }
+} catch (_) {
+  // Registry stamp failure never blocks verification output
+}
+
 process.exit(totalBlockingFailures > 0 ? 1 : 0);
