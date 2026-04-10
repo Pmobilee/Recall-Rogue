@@ -385,11 +385,15 @@ function getCorrectAnswerForTemplate(template: QuestionTemplate, fact: DeckFact)
  * - 'reverse'         → 'targetLanguageWord' (target-language word pool)
  * - 'reading_pinyin'  → 'reading'             (romanisation / pinyin pool)
  * - 'reading'         → 'reading'             (romanisation pool)
+ * - 'kanji_onyomi'    → 'reading'             (kana reading pool — on-reading)
+ * - 'kanji_kunyomi'   → 'reading'             (kana reading pool — kun-reading)
  * - all others        → 'correctAnswer'        (standard answer field)
  */
 function getDistractorAnswerFieldForTemplate(template: QuestionTemplate): keyof DeckFact {
   if (template.id === 'reverse') return 'targetLanguageWord';
   if (template.id === 'reading_pinyin') return 'reading';
   if (template.id === 'reading') return 'reading';
+  if (template.id === 'kanji_onyomi') return 'reading';
+  if (template.id === 'kanji_kunyomi') return 'reading';
   return 'correctAnswer';
 }

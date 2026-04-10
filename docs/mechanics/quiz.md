@@ -97,6 +97,8 @@ When the template's question is in the source language and the answer is in the 
 | `reverse`          | `'targetLanguageWord'` | `fact.targetLanguageWord` |
 | `reading_pinyin`   | `'reading'`            | `fact.reading`          |
 | `reading`          | `'reading'`            | `fact.reading`          |
+| `kanji_onyomi`    | `'reading'`            | `fact.reading`          |
+| `kanji_kunyomi`   | `'reading'`            | `fact.reading`          |
 | `definition_match` | `'correctAnswer'`      | `fact.correctAnswer`    |
 | `synonym_pick`     | `'correctAnswer'`      | `fact.correctAnswer`    |
 
