@@ -91,6 +91,21 @@
   const BOB_DURATIONS = ['2.5s', '3s', '3.5s', '2.8s', '3.2s', '2.6s']
   /** Staggered fade-in delays (capped beyond 6 cards). */
   const FADE_DELAYS = ['0ms', '100ms', '200ms', '300ms', '400ms', '500ms']
+
+  /**
+   * Card width matching CardHand landscapeCardW formula exactly:
+   *   (35vh * 0.88) / 1.42
+   * This keeps picker cards the same size as hand cards in landscape mode.
+   * Aspect ratio preserved: 1142 / 886 (same as CardHand).
+   * No handScaleFactor — picker always shows full-size cards.
+   */
+  let viewportHeight = $state(typeof window !== 'undefined' ? window.innerHeight : 1080)
+  $effect(() => {
+    const onResize = () => { viewportHeight = window.innerHeight }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  })
+  const pickerCardW = $derived((35 * viewportHeight / 100) * 0.88 / 1.42)
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -140,8 +155,10 @@
           aria-label={`Select ${card.mechanicName ?? card.cardType} card`}
           aria-pressed={selected}
         >
-          <!-- Sized container required by CardVisual (uses position:absolute inset:0 internally) -->
-          <div class="card-visual-wrapper">
+          <!-- Sized container required by CardVisual (uses position:absolute inset:0 internally).
+               Width matches CardHand landscapeCardW: (35vh * 0.88) / 1.42. --card-w CSS var
+               is required by CardVisual for internal typography scaling. -->
+          <div class="card-visual-wrapper" style="width: {pickerCardW}px; height: {pickerCardW * (1142 / 886)}px; --card-w: {pickerCardW}px;">
             <CardVisual {card} />
           </div>
 
@@ -281,13 +298,10 @@
   }
 
   /* ===== Card visual wrapper — sized container for CardVisual (position:absolute inset:0) ===== */
+  /* width, height, and --card-w are set via inline style (pickerCardW) to match CardHand
+     landscapeCardW formula: (35vh * 0.88) / 1.42. Aspect ratio: 1142/886. */
   .card-visual-wrapper {
     position: relative;
-    /* Card dimensions: 886:1142 aspect ratio, same as CardHand default card width */
-    width: calc(160px * var(--layout-scale, 1));
-    height: calc(calc(160px * var(--layout-scale, 1)) * (1142 / 886));
-    /* Pass card width as CSS var for CardVisual typography scaling */
-    --card-w: calc(160px * var(--layout-scale, 1));
   }
 
   /* ===== Checkmark overlay (multi-pick) ===== */

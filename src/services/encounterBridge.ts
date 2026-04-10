@@ -56,6 +56,8 @@ import {
   awaitCoopEnemyReconcile,
   broadcastPartnerState,
   broadcastSharedEnemyState,
+  broadcastEnemyHpUpdate,
+  onEnemyHpUpdate,
   getCollectedDeltas,
 } from './multiplayerCoopSync'
 import { computeRaceScore } from './multiplayerScoring'
@@ -242,6 +244,12 @@ export const coopWaitingForPartner = writable<boolean>(false);
  * Null in solo/race modes.
  */
 let _coopPreTurnEnemySnapshot: import('../data/multiplayerTypes').SharedEnemySnapshot | null = null;
+
+/**
+ * Cleanup function for the co-op enemy-HP-update subscriber wired at encounter start.
+ * Stored here so startEncounterForRoom can re-wire it on each new encounter without leaking.
+ */
+let _unsubCoopEnemyHpUpdate: (() => void) | null = null;
 
 // ── Boss rotation helpers (AR-98) ──
 const LAST_BOSS_KEY = 'recall-rogue-last-boss';
@@ -865,6 +873,31 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     _coopPreTurnEnemySnapshot = null;
   }
 
+  // Coop: subscribe to real-time enemy HP updates from the partner.
+  // Each card play the partner makes broadcasts `mp:coop:enemy_hp_update`, letting this
+  // player's scene reflect enemy HP changes without waiting for the turn-end reconcile.
+  // Clean up any previous encounter's subscriber before subscribing fresh.
+  if (_unsubCoopEnemyHpUpdate) {
+    _unsubCoopEnemyHpUpdate();
+    _unsubCoopEnemyHpUpdate = null;
+  }
+  if (isCoopRun) {
+    _unsubCoopEnemyHpUpdate = onEnemyHpUpdate((currentHP, maxHP) => {
+      // Update the current TurnState enemy HP so subsequent card-play calculations see it.
+      const currentTurnState = get(activeTurnState);
+      if (currentTurnState?.enemy) {
+        currentTurnState.enemy.currentHP = currentHP;
+        currentTurnState.enemy.maxHP = maxHP;
+        activeTurnState.set(freshTurnState(currentTurnState));
+      }
+      // Update the Phaser scene's visual immediately.
+      const liveScene = getCombatScene();
+      if (liveScene) {
+        liveScene.updateEnemyHP(currentHP, true);
+      }
+    });
+  }
+
   // Encounter start sound + draw swooshes.
   // Determine encounter type audio
   const isBoss = isBossFloor(run.floor.currentFloor) && run.floor.currentEncounter === run.floor.encountersPerFloor;
@@ -1102,6 +1135,13 @@ export function handlePlayCard(
     scene.updateEnemyBlock(result.turnState.enemy?.block ?? 0, true);
     scene.updatePlayerHP(result.turnState.playerState?.hp ?? 0, result.turnState.playerState?.maxHP ?? 0, true);
     scene.updatePlayerBlock(result.turnState.playerState?.shield ?? 0, true);
+
+    // Co-op: broadcast the updated enemy HP to the partner so their scene reflects
+    // damage dealt mid-turn without waiting for the turn-end reconcile.
+    if (run?.multiplayerMode === 'coop' && result.turnState.enemy) {
+      broadcastEnemyHpUpdate(result.turnState.enemy.currentHP, result.turnState.enemy.maxHP);
+    }
+
     if (result.enemyDefeated) {
       const runForVictory = get(activeRunState);
       const isBossVictory = runForVictory && isBossFloor(runForVictory.floor.currentFloor) && runForVictory.floor.currentEncounter === runForVictory.floor.encountersPerFloor;

@@ -2093,3 +2093,42 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 - Docs: no stale Bulwark references, no direct card.apCost reads in UI, registry updated (Bulwark: 18→9 block)
 
 **No issues found.** Overhaul is clean and ready to merge to main.
+
+### 2026-04-10 — CardPickerOverlay used hardcoded 160px card width instead of matching CardHand
+
+**What:** `CardPickerOverlay.svelte` had `.card-visual-wrapper { width: calc(160px * var(--layout-scale, 1)) }`. At 1920×1080 with layout-scale ≈ 1.71, this renders ~274px wide. But CardHand's `landscapeCardW = (35vh * 0.88) / 1.42` renders ~234px. Cards in the picker looked noticeably larger than hand cards.
+
+**Fix:** Removed hardcoded CSS width/height from `.card-visual-wrapper`. Added reactive `pickerCardW` using the same `(35 * vh / 100) * 0.88 / 1.42` formula as CardHand. Applied as inline `style` on the wrapper so `--card-w` CSS var (required by CardVisual for typography scaling) is also set dynamically.
+
+**Lesson:** Any component that renders `CardVisual` must set `--card-w` to match what it intends for the card width. If this var doesn't match the container width, CardVisual's internal font sizing is wrong.
+
+### 2026-04-10 — Charge button AP badge color used wrong predicate
+
+**What:** The AP badge on the CHARGE button used `isFreeAp ? green : chargeApCost > 1 ? red : undefined`. This made 1-AP charges show no color (neither green nor red), and made the color dependent on absolute AP cost rather than affordability. A player with 0 AP sees a neutral badge on a 1-AP charge even though they can't afford it.
+
+**Fix:** Replaced with `chargeAffordable ? '#4ADE80' : '#EF4444'`. The badge is now always green (affordable) or red (not affordable). The unused `isFreeAp` `@const` declaration was also removed from both landscape and portrait charge button blocks.
+
+### 2026-04-10 — MusicWidget mute button bypassed musicService
+
+**What:** Mute button called `musicEnabled.update(v => !v)` directly on the store. This skips `musicService.init()` — if init hadn't run yet, the store subscription that applies volume to `currentAudio` was never set up, so clicking mute had no audible effect.
+
+**Fix:** Changed mute button onclick to call `musicService.toggleMute()`. Updated `toggleMute()` to call `this.init()` first, then update the store, then immediately apply to `currentAudio` as belt-and-suspenders (in case the subscription fired before `currentAudio` was set). New tracks already correctly respect mute via `crossfadeIn()` which reads `get(musicEnabled)`.
+### 2026-04-10 — Free First Charge branch removed from playCardAction
+
+**What:** The `else if (cardInHand.factId && runStateForCharge && isFirstChargeFree(...))` branch was fully deleted from `playCardAction` in `turnManager.ts`. `usedFreeCharge` local variable and all downstream references (interface field, guard conditions, `markFirstChargeUsed` calls, wrong-multiplier special case, fizzle log message) were removed. `isFirstChargeFree` import removed from `turnManager.ts` and `CardHand.svelte`. `getDisplayedChargeApCost` in `CardHand.svelte` had its `isFreeCharge` parameter removed.
+
+**Why:** The branch was already effectively disabled (Pass 8 set `FIRST_CHARGE_FREE_AP_SURCHARGE = 1`, same as the normal surcharge), but still ran `isFirstChargeFree()` and set `usedFreeCharge = true` when conditions matched. This caused wrong-answer first charges to use `getFirstChargeWrongMultiplier()` (0.0×) instead of the normal `FIZZLE_EFFECT_RATIO (0.50×)`, meaning completely free first charges for wrong answers despite the AP surcharge "fix". Cleaner to remove the branch entirely.
+
+**What was kept:** `FIRST_CHARGE_FREE_AP_SURCHARGE` and `FIRST_CHARGE_FREE_WRONG_MULTIPLIER` constants in `balance.ts`, `firstChargeFreeFactIds` field in `RunState`/`SerializedRunState`/save-load — preserved for save-format backward compatibility. `isFirstChargeFree`, `markFirstChargeUsed`, `getFirstChargeWrongMultiplier` functions remain in `discoverySystem.ts` for historical reference.
+
+**Lesson:** When disabling a mechanic by setting its constant to a no-op value, also remove the branch that calls it. A "disabled via constant = 1" mechanic that still runs its guard conditions and sets state variables can have subtle side effects.
+
+### 2026-04-10 — Transmute primary card now gets a new unique ID after swap
+
+**What:** `applyTransmuteSwap()` in `turnManager.ts` previously preserved the source card's `id` after the in-place mechanic swap. Changed to assign a new unique ID (`${sourceCard.id}-tx-${Date.now()}`). The old id is preserved only in `originalCard.id` for encounter-end revert dedup.
+
+**Why:** CardHand's `$effect` draw-animation tracker (lines 95-117) detects new cards by comparing current hand IDs against a prev-set. When a transmuted card is drawn into the hand, the same ID is already known — the `$effect` never fires `card-drawn-in`. With a new unique ID, the card is treated as freshly drawn every time it enters the hand.
+
+**Revert safety:** `revertTransmutedCards()` uses `card.originalCard.id` as the dedup key and restores `{ ...card.originalCard }` — which carries the old id. The revert path is unchanged. Unit tests updated to search by `c.isTransmuted === true` rather than `c.id === 'old-id'` during the transmuted state, while post-revert checks still use `c.id === 'original-id'`.
+
+**Tests affected:** `tests/unit/transmute.test.ts` — 5 test blocks updated.

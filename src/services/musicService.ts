@@ -287,9 +287,19 @@ class MusicService {
     this.notify()
   }
 
-  /** Toggle mute by toggling the shared musicEnabled store. */
+  /** Toggle mute by toggling the shared musicEnabled store.
+   * Calls init() first so subscriptions are active even before the first track plays.
+   * Also immediately applies the new mute state to currentAudio as belt-and-suspenders
+   * (the store subscription handles this too, but only if init() already ran).
+   */
   toggleMute(): void {
+    this.init()
     musicEnabled.update(v => !v)
+    // Immediately apply to currentAudio in case the subscription fires before
+    // currentAudio is set (race condition on init)
+    if (this.currentAudio) {
+      this.currentAudio.volume = get(musicEnabled) ? get(musicVolume) : 0
+    }
     this.notify()
   }
 
