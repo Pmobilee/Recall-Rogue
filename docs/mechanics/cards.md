@@ -69,7 +69,7 @@ The resolver (`cardEffectResolver.ts`) computes CC damage as:
 
 ```
 CC damage = getMasteryStats(mechanicId, level).qpValue
-            × CHARGE_CORRECT_MULTIPLIER (1.75)
+            × CHARGE_CORRECT_MULTIPLIER (1.50)
             × chainMultiplier
             × relicModifiers
             + inscriptionFuryBonus
@@ -77,20 +77,20 @@ CC damage = getMasteryStats(mechanicId, level).qpValue
 
 `getMasteryStats(mechanicId, masteryLevel).qpValue` returns the explicit qpValue at that mastery level from `MASTERY_STAT_TABLES`. This value already encodes the full mastery progression — there is no separate "masteryBonus" added on top.
 
-`chargeCorrectValue` on `MechanicDefinition` is **dead data** — resolver computes CC as `qpValue × 1.75`. Do not read it.
+`chargeCorrectValue` on `MechanicDefinition` is **dead data** — resolver computes CC as `qpValue × 1.50`. Do not read it.
 
 **Play mode multipliers (as of 2026-04-03 stat table system):**
 
 | Mode | Effect |
 |------|--------|
 | Quick Play (`quick`) | Uses `getMasteryStats().qpValue` directly |
-| Charge Correct (`charge_correct`) | `getMasteryStats().qpValue × CHARGE_CORRECT_MULTIPLIER (1.75×)` |
-| Charge Wrong (`charge_wrong`) | `FIZZLE_EFFECT_RATIO = 0.25×` of base effect — always resolves, never zero |
+| Charge Correct (`charge_correct`) | `getMasteryStats().qpValue × CHARGE_CORRECT_MULTIPLIER (1.50×)` |
+| Charge Wrong (`charge_wrong`) | `FIZZLE_EFFECT_RATIO = 0.50×` of base effect — always resolves, never zero |
 | Cursed QP | `CURSED_QP_MULTIPLIER = 0.7×` |
 | Cursed CC | `CURSED_CHARGE_CORRECT_MULTIPLIER = 1.0×` (reward is the cure) |
 | Cursed CW | `CURSED_CHARGE_WRONG_MULTIPLIER = 0.5×` |
 
-**Note:** `FIZZLE_EFFECT_RATIO = 0.25×`. At 0.5× fizzle damage equaled or exceeded quick play, undermining the knowledge-as-power mechanic. The 0.25× floor ensures wrong answers always feel like a setback. CW has a `Math.max(0, ...)` floor to prevent negative values.
+**Note:** `FIZZLE_EFFECT_RATIO = 0.50×`. Raised 0.25→0.40→0.50 in Balance Pass 4/4b (2026-04-09) — wrong charges are tempo costs, not punishment. Fizzle damage is still below Quick Play (1.0×) so wrong answers remain a setback, just a softer one. CW has a `Math.max(0, ...)` floor to prevent negative values.
 
 ---
 
@@ -193,7 +193,7 @@ The old helpers (`getMasteryBaseBonus`, `getMasterySecondaryBonus`, `getMasteryA
 
 | Field | Type | Notes |
 |-------|------|-------|
-| `qpValue` | number | Quick Play base value at this level. CC = qpValue × 1.75 |
+| `qpValue` | number | Quick Play base value at this level. CC = qpValue × 1.50 |
 | `apCost` | number? | Override AP cost; omit to inherit from MechanicDefinition |
 | `secondaryValue` | number? | Secondary stat (block, bleed stacks, reflect, etc.) |
 | `drawCount` | number? | Draw count override for draw/scry cards |

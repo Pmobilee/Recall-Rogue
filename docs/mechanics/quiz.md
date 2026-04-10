@@ -517,7 +517,7 @@ The `chess_tactic` quiz mode renders an interactive chessboard instead of a text
 4. The player taps a destination square to commit the move (tap-tap interface)
 5. `chessGrader.ts` converts the chosen move to UCI notation and checks it against `fact.solutionMoves` (array of acceptable first moves)
 6. Correct: first move matches solution — card charges with correct multiplier
-7. Wrong: move is legal but not the solution — card fizzles at `FIZZLE_EFFECT_RATIO (0.25×)`
+7. Wrong: move is legal but not the solution — card fizzles at `FIZZLE_EFFECT_RATIO (0.50×)`
 8. Illegal move attempts are rejected silently — the piece returns to its origin square
 
 ### DeckFact Fields (chess puzzles)
