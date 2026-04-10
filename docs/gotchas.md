@@ -1,3 +1,25 @@
+### 2026-04-10 — git stash pop can wipe untracked file changes if conflicting tracked files exist
+
+**What:** During registry implementation work, `git stash` was used to check pre-existing typecheck errors on the baseline. When `git stash pop` was run afterward, it failed with "Your local changes to the following files would be overwritten by merge" (for files like `src/CardApp.svelte` that had uncommitted changes in the stash). The stash drop then required running `git checkout -- <our-files>` to restore the untracked-but-modified registry scripts — which wiped all our work from that session.
+
+**Why:** `git stash pop` with `--merge` conflicts requires resolving before the stash can be applied. If you run `git checkout -- <files>` to unblock it, you lose any uncommitted work in those files that overlapped with the stash.
+
+**Fix:** Never use `git stash` as a "peek at baseline" mechanism during active implementation work. Instead: (1) commit WIP work to a branch before checking baseline behavior, OR (2) use `git diff HEAD` to see what changed rather than stashing, OR (3) open a second worktree for the baseline check. If stash was unavoidable, `git stash show stash@{N} --patch` lets you inspect it without popping.
+
+---
+
+### 2026-04-10 — Class instances in `RunState` silently die across `JSON.stringify`
+
+**What:** Resuming a Study Temple / custom_deck run loaded the encounter fine but hung the moment the player tried to play their first card. Root cause: `RunState.inRunFactTracker` is an instance of the `InRunFactTracker` class (`src/services/inRunFactTracker.ts`) which holds three private `Map<>` fields and many methods. `runSaveService.saveActiveRun` calls `JSON.stringify` on the entire run state — Maps serialize to `{}` and class methods are dropped. On reload `runState.inRunFactTracker` was a plain object. `getStudyModeQuiz` → `selectFactForCharge` (`curatedFactSelector.ts:57`) immediately calls `tracker.getTotalCharges()` → `TypeError`. The throw escaped the Svelte event handler after `cardPlayStage` was already set to `'committed'` and `selectedIndex` was cleared, leaving the player with no card, no quiz, no recovery affordance — i.e. a hang.
+
+**Fix:** Added `toJSON()` (auto-invoked by `JSON.stringify`) and `static fromJSON()` to `InRunFactTracker`. Wired both through `runSaveService.serializeRunState` / `deserializeRunState`. Added round-trip unit tests in `inRunFactTracker.test.ts`. Trivia runs (no tracker) and pre-fix saves both stay at `inRunFactTracker: undefined` and the existing study-quiz guard handles that case.
+
+**Also fixed in the same pass:** `CardApp.handleResumeActiveRun` was loading `saved.rngState` but never calling `restoreRunRngState` — the deterministic fork state silently re-seeded to run start on every resume. Added the call (matches the pattern already used in `multiplayerGameService.ts:293`).
+
+**Lesson:** Any field on `RunState` that is a class instance, `Map`, `Set`, or `Date` needs an explicit serialize/deserialize step in `runSaveService`. The existing `Set → array` pairs are good prior art. **Plain `JSON.stringify` is not safe for runtime objects with methods or non-JSON containers.** When adding a new class-typed field to `RunState`, the same-commit checklist is: (1) add `toJSON`/`fromJSON` to the class, (2) add the field to the `Omit` list and re-declare it as the snapshot type in `SerializedRunState`, (3) call `toJSON` in `serializeRunState`, (4) call `fromJSON` in `deserializeRunState`, (5) add a round-trip unit test.
+
+---
+
 ### 2026-04-09 — Svelte template `{@const}` order matters for charge-preview AP badge
 
 **What:** When computing `displayedApCost` in the `{#each cards}` block, the original code placed the `{@const displayedApCost = getDisplayedApCost(card)}` declaration BEFORE `isChargePreview`, `isMomentumMatch`, `isActiveChainMatch`, and `isFreeCharge` were computed. This meant the charge-aware version could not reference those values — forward references in Svelte template `{@const}` are not allowed.

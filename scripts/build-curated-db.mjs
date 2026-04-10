@@ -93,6 +93,10 @@ CREATE TABLE IF NOT EXISTS deck_facts (
   grammar_point_label    TEXT,
   category_l1            TEXT,
   category_l2            TEXT,
+  fen_position           TEXT,
+  solution_moves         TEXT,
+  tactic_theme           TEXT,
+  lichess_rating         INTEGER,
   FOREIGN KEY (deck_id) REFERENCES decks(id)
 );
 
@@ -178,6 +182,10 @@ function factToRow(fact, deckId) {
     fact.grammarPointLabel                           ?? null,
     fact.categoryL1                                  ?? null,
     fact.categoryL2                                  ?? null,
+    fact.fenPosition                                 ?? null,
+    jsonOrNull(fact.solutionMoves                    ?? null),
+    fact.tacticTheme                                 ?? null,
+    fact.lichessRating                               ?? null,
   ];
 }
 
@@ -321,7 +329,8 @@ async function main() {
       target_language_word, reading, language, pronunciation,
       part_of_speech, exam_tags,
       sentence_furigana, sentence_romaji, sentence_translation, grammar_point_label,
-      category_l1, category_l2
+      category_l1, category_l2,
+      fen_position, solution_moves, tactic_theme, lichess_rating
     ) VALUES (
       ?, ?, ?, ?, ?,
       ?, ?, ?,
@@ -333,7 +342,8 @@ async function main() {
       ?, ?, ?, ?,
       ?, ?,
       ?, ?, ?, ?,
-      ?, ?
+      ?, ?,
+      ?, ?, ?, ?
     )
   `);
 

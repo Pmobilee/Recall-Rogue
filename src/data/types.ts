@@ -736,6 +736,14 @@ export interface PlayerSave {
   chessEloRating?: number
   /** History of Elo changes for chart display (last 100 entries). */
   chessEloHistory?: Array<{ rating: number; puzzleRating: number; correct: boolean; timestamp: number }>
+
+  // Geography Map Pin Drop
+  /** Player's geography Elo rating (default 1200). */
+  geoEloRating?: number
+  /** Per-region geography ratings for targeted difficulty. */
+  geoRegionRatings?: Record<string, number>
+  /** History of geography Elo changes (last 100 entries). */
+  geoEloHistory?: Array<{ rating: number; accuracy: number; distanceKm: number; timestamp: number }>
 }
 
 /** Player statistics */

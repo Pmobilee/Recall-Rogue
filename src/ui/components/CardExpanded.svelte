@@ -31,6 +31,8 @@
   import { getPlayerContext, gradeChessMove, isInCheck as chessIsInCheck, applyMove, getOpponentResponse } from '../../services/chessGrader'
   import { updateChessElo } from '../../services/chessEloService'
   import { audioManager } from '../../services/audioService'
+  import MapPinDrop from './MapPinDrop.svelte'
+  import { updateGeoElo, tierToRating } from '../../services/geoEloService'
 
   interface Props {
     card: Card
@@ -66,8 +68,8 @@
     grammarNote?: string
     /** Bold header extracted from the explanation (e.g. "さえ (even; only; just)"). */
     grammarPointHeader?: string
-    /** Quiz response mode: 'choice' (default multiple choice), 'typing' (text input), or 'chess_move' (interactive board). */
-    quizResponseMode?: 'choice' | 'typing' | 'chess_move'
+    /** Quiz response mode: 'choice' (default multiple choice), 'typing' (text input), 'chess_move' (interactive board), or 'map_pin' (geography pin drop). */
+    quizResponseMode?: 'choice' | 'typing' | 'chess_move' | 'map_pin'
     /** FEN string for chess puzzle positions. Required when quizResponseMode is 'chess_move'. */
     fenPosition?: string
     /** Solution move sequence in UCI notation. Required when quizResponseMode is 'chess_move'. */
@@ -84,7 +86,13 @@
     grammarPointLabel?: string
     /** Hint level for chess puzzles: 0 = no hint, 1 = from-square highlighted, 2 = from+to squares highlighted. */
     chessHintLevel?: number
-    onanswer: (answerIndex: number, isCorrect: boolean, speedBonus: boolean) => void
+    /** Lat/lng for map pin drop quiz mode. */
+    mapCoordinates?: [number, number]
+    /** Geographic region for map centering. */
+    mapRegion?: string
+    /** Location difficulty tier 1-5. */
+    mapDifficultyTier?: number
+    onanswer: (answerIndex: number, isCorrect: boolean, speedBonus: boolean, partialAccuracy?: number) => void
     onskip: () => void
     oncancel: () => void
   }
@@ -121,6 +129,9 @@
     fenPosition,
     solutionMoves,
     lichessRating,
+    mapCoordinates,
+    mapRegion,
+    mapDifficultyTier,
     onanswer,
     onskip,
     oncancel,
@@ -200,6 +211,10 @@
 
   /** Elo rating change after the last chess puzzle attempt (+N or -N). */
   let eloChange = $state<number | null>(null)
+
+  // --- Map pin drop state ---
+  let mapDisabled = $state(false)
+  let mapEloChange = $state<number | null>(null)
 
   $effect(() => {
     if (chessContext) {
@@ -285,15 +300,16 @@
     return opts?.[quizLanguageCode ?? '']?.alwaysWrite ?? false
   })
 
-  /** Effective response mode: 'chess_move', 'typing', or 'choice'. */
+  /** Effective response mode: 'map_pin', 'chess_move', 'typing', or 'choice'. */
   const effectiveResponseMode = $derived(
+    quizResponseMode === 'map_pin' ? 'map_pin' :
     quizResponseMode === 'chess_move' ? 'chess_move' :
     alwaysWriteEnabled || quizResponseMode === 'typing' ? 'typing' : 'choice'
   )
 
   /** Whether this fact should be excluded from typing mode (fall back to multiple choice). */
   const isTypingExcluded = $derived.by(() => {
-    if (quizMode === 'image_question' || quizMode === 'image_answers' || quizMode === 'chess_tactic') return true
+    if (quizMode === 'image_question' || quizMode === 'image_answers' || quizMode === 'chess_tactic' || quizResponseMode === 'map_pin') return true
     if (isNumericalAnswer(correctAnswer)) return true
     if (displayAnswer(correctAnswer).length > 80) return true
     return false
@@ -655,6 +671,29 @@
     }
   }
 
+  /**
+   * Handle a pin placement from the MapPinDrop component.
+   * Fires onanswer with partial accuracy so the damage pipeline applies partial credit.
+   */
+  function handleMapPinConfirm(pinCoordinates: [number, number], distanceKm: number, accuracy: number): void {
+    mapDisabled = true
+
+    // Update geography Elo
+    if (mapDifficultyTier) {
+      const locationRating = tierToRating(mapDifficultyTier)
+      const result = updateGeoElo(locationRating, accuracy, distanceKm, mapRegion)
+      mapEloChange = result.ratingChange
+    }
+
+    const isCorrect = accuracy >= 0.5
+    const correctIdx = answers.indexOf(correctAnswer)
+    const wrongIdx = answers.findIndex(a => a !== correctAnswer)
+
+    setTimeout(() => {
+      onanswer(isCorrect ? (correctIdx >= 0 ? correctIdx : 0) : (wrongIdx >= 0 ? wrongIdx : 0), isCorrect, false, accuracy)
+    }, 500)
+  }
+
   onDestroy(() => {
     if (rafId !== undefined) cancelAnimationFrame(rafId)
     if (feedbackTimeoutId !== undefined) clearTimeout(feedbackTimeoutId)
@@ -782,7 +821,22 @@
     {/if}
   {/if}
 
-  {#if effectiveResponseMode === 'chess_move' && chessContext}
+  {#if effectiveResponseMode === 'map_pin' && mapCoordinates}
+    <div class="map-pin-quiz-container">
+      <MapPinDrop
+        targetCoordinates={mapCoordinates}
+        targetRegion={mapRegion}
+        masteryLevel={card.masteryLevel ?? 0}
+        disabled={mapDisabled || answersDisabled}
+        onconfirm={handleMapPinConfirm}
+      />
+      {#if mapEloChange !== null}
+        <div class="elo-change-badge" class:elo-positive={mapEloChange > 0} class:elo-negative={mapEloChange < 0}>
+          {mapEloChange > 0 ? '+' : ''}{mapEloChange}
+        </div>
+      {/if}
+    </div>
+  {:else if effectiveResponseMode === 'chess_move' && chessContext}
     <div class="chess-puzzle-container">
       {#if chessSetupPhase === 'pre-move' || chessSetupPhase === 'animating'}
         <div class="chess-setup-label">Opponent plays...</div>
@@ -1736,6 +1790,16 @@
   @keyframes pulse {
     0%, 100% { opacity: 0.5; }
     50% { opacity: 1; }
+  }
+
+  /* Map pin drop quiz container */
+  .map-pin-quiz-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+    min-height: calc(300px * var(--layout-scale, 1));
+    position: relative;
   }
 
 </style>

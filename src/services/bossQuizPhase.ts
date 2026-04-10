@@ -46,7 +46,7 @@ export interface QuizQuestion {
   /** Lichess puzzle rating for Elo calculation. */
   lichessRating?: number;
   /** Response mode override for this question. 'chess_move' renders ChessBoard instead of answer buttons. */
-  quizResponseMode?: 'choice' | 'typing' | 'chess_move';
+  quizResponseMode?: 'choice' | 'typing' | 'chess_move' | 'map_pin';
 }
 
 export interface QuizPhaseOutcome {

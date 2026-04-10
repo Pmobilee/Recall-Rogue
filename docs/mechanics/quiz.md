@@ -645,3 +645,67 @@ Stored in `PlayerSave`:
 ### Adaptive Puzzle Selection
 
 `filterPuzzlesByElo(puzzles, playerRating, targetCount)` sorts puzzles by proximity to the player's current Elo, enabling adaptive difficulty selection. Puzzles without a `lichessRating` are excluded.
+---
+
+## Map Pin Drop Quiz Mode (2026-04-10)
+
+### Overview
+
+Geography facts use an interactive world map instead of multiple-choice answers. The player places a pin on the map and accuracy is determined by distance from the correct location.
+
+**Key services:**
+- `src/services/geoScoringService.ts` — Haversine distance calculation and accuracy scoring (0.0–1.0)
+- `src/services/geoEloService.ts` — Continuous-accuracy Elo rating for geography performance
+- `src/ui/components/MapPinDrop.svelte` — Canvas-based interactive world map
+
+### Quiz Flow
+
+1. `DeckFact.quizResponseMode === 'map_pin'` triggers the map branch in `CardExpanded.svelte`
+2. `MapPinDrop` renders a d3-geo Mercator projection on an HiDPI canvas
+3. Player places a pin; `onconfirm(pinCoordinates, distanceKm, accuracy)` fires
+4. `handleMapPinConfirm()` in `CardExpanded`:
+   - Updates Geo Elo via `updateGeoElo(locationRating, accuracy, distanceKm, mapRegion)`
+   - Treats accuracy ≥ 0.5 as correct for binary pass/fail
+   - Calls `onanswer(answerIdx, isCorrect, false, accuracy)` after 500ms delay
+5. `accuracy` flows as `partialAccuracy` to `cardEffectResolver.ts` for partial credit damage
+
+### DeckFact Fields
+
+| Field | Type | Description |
+|---|---|---|
+| `mapCoordinates` | `[number, number]` | `[latitude, longitude]` of the target location |
+| `mapRegion` | `string` | Region key for initial map centering (e.g. `'europe'`, `'asia'`) |
+| `mapDifficultyTier` | `number` | Difficulty tier 1–5 for Geo Elo calculation. Mapped via `tierToRating()` |
+| `quizResponseMode` | `'map_pin'` | Activates the map pin drop rendering path |
+
+### Accuracy Scoring
+
+`calculateGeoAccuracy(distanceKm)` in `geoScoringService.ts` maps distance to 0.0–1.0:
+- Perfect (0 km) → 1.0
+- 50 km → ~0.97 (major city accuracy)
+- 500 km → ~0.72
+- 2000 km → ~0.3
+
+The exact formula uses a tuned exponential decay. `accuracy >= 0.5` is treated as a correct answer (pass threshold).
+
+### Geo Elo Rating
+
+Continuous-accuracy Elo (unlike chess binary correct/wrong):
+
+
+
+`tierToRating(tier)` maps difficulty tiers to Elo ratings: tier 1 → 800, tier 2 → 1000, …, tier 5 → 1600.
+
+**Persistence in PlayerSave:**
+- `geoEloRating?: number` — global geography Elo (default 1200)
+- `geoRegionRatings?: Record<string, number>` — per-region ratings for targeted tracking
+- `geoEloHistory?: Array<{ rating, accuracy, distanceKm, timestamp }>` — last 100 entries
+
+### Wiring in CardExpanded and CardCombatOverlay
+
+`CardCombatOverlay` passes `mapCoordinates`, `mapRegion`, and `mapDifficultyTier` from `committedQuizData` to `CardExpanded`. These flow from `DeckFact` via `getStudyModeQuiz()` in the study-mode branch.
+
+`effectiveResponseMode` priority: `'map_pin'` > `'chess_move'` > `'typing'` > `'choice'`.
+
+Map quizzes are excluded from typing mode (`isTypingExcluded` returns true when `quizResponseMode === 'map_pin'`).
+

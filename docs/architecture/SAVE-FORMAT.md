@@ -141,6 +141,7 @@ synchronous on all platforms.
 - Checkpoint written after every combat encounter.
 - Stores current run state: deck, hand, enemy, floor, relic IDs, act map position.
 - On resume, `runManager.ts` loads this checkpoint and restores the run.
+- On resume, `CardApp.handleResumeActiveRun` calls `restoreRunRngState(saved.rngState)` (from `seededRng.ts`) before setting `activeRunState`, ensuring all deterministic RNG forks (enemyPool, enemyVariance, facts, quiz, etc.) are restored to their saved positions. Added 2026-04-10.
 
 ## Migration behavior in `saveService.load()`
 

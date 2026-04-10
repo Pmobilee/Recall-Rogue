@@ -55,7 +55,13 @@ export interface NonCombatQuizQuestion {
   /** Lichess puzzle rating for Elo calculation. */
   lichessRating?: number;
   /** Response mode override: 'choice' | 'typing' | 'chess_move'. */
-  quizResponseMode?: 'choice' | 'typing' | 'chess_move';
+  quizResponseMode?: 'choice' | 'typing' | 'chess_move' | 'map_pin';
+  /** Lat/lng for map pin drop quiz. */
+  mapCoordinates?: [number, number];
+  /** Geographic region for map centering. */
+  mapRegion?: string;
+  /** Location difficulty tier 1-5. */
+  mapDifficultyTier?: number;
 }
 
 /**
@@ -279,6 +285,9 @@ export function selectNonCombatStudyQuestion(
     solutionMoves: fact.solutionMoves,
     lichessRating: fact.lichessRating,
     quizResponseMode: fact.quizResponseMode,
+    mapCoordinates: fact.mapCoordinates,
+    mapRegion: fact.mapRegion,
+    mapDifficultyTier: fact.mapDifficultyTier,
   };
 }
 
@@ -470,6 +479,9 @@ export function selectNonCombatCustomDeckQuestion(
     solutionMoves: fact.solutionMoves,
     lichessRating: fact.lichessRating,
     quizResponseMode: fact.quizResponseMode,
+    mapCoordinates: fact.mapCoordinates,
+    mapRegion: fact.mapRegion,
+    mapDifficultyTier: fact.mapDifficultyTier,
   };
 }
 

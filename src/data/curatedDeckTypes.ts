@@ -73,7 +73,7 @@ export interface DeckFact {
   /** Quiz presentation: 'text' (default), 'image_question' (image shown, text answers), 'image_answers' (text shown, image answer grid), 'chess_tactic' (interactive board puzzle). */
   quizMode?: 'text' | 'image_question' | 'image_answers' | 'chess_tactic';
   /** Quiz response mode: 'choice' (default multiple choice), 'typing' (text input with romaji→hiragana), or 'chess_move' (interactive board). */
-  quizResponseMode?: 'choice' | 'typing' | 'chess_move';
+  quizResponseMode?: 'choice' | 'typing' | 'chess_move' | 'map_pin';
   /** FEN string for chess puzzle positions. First field is the board state after the opponent's setup move. */
   fenPosition?: string;
   /** Full solution move sequence in UCI notation. Index 0 = opponent's setup move, index 1 = player's correct response. */
@@ -82,6 +82,12 @@ export interface DeckFact {
   tacticTheme?: string;
   /** Original Lichess puzzle Elo rating. */
   lichessRating?: number;
+  /** [latitude, longitude] of the target location for map_pin quiz mode. */
+  mapCoordinates?: [number, number];
+  /** Geographic region key for map centering (e.g. 'europe', 'asia'). Used with map_pin mode. */
+  mapRegion?: string;
+  /** Location difficulty tier 1-5 for Geo Elo calculation. tier 1 = easy capitals, tier 5 = obscure cities. */
+  mapDifficultyTier?: number;
 }
 
 export interface AnswerTypePool {

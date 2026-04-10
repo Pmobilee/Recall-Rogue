@@ -151,8 +151,8 @@
     grammarNote?: string
     /** Bold header extracted from the explanation (e.g. "さえ (even; only; just)"). */
     grammarPointHeader?: string
-    /** Quiz response mode: 'choice' (default), 'typing' (text input), or 'chess_move' (interactive board). */
-    quizResponseMode?: 'choice' | 'typing' | 'chess_move'
+    /** Quiz response mode: 'choice' (default), 'typing' (text input), 'chess_move' (interactive board), or 'map_pin' (interactive world map). */
+    quizResponseMode?: 'choice' | 'typing' | 'chess_move' | 'map_pin'
     /** Pre-baked furigana segments for Japanese grammar sentences. */
     sentenceFurigana?: Array<{ t: string; r?: string; g?: string }>
     /** Pre-baked whole-sentence romaji for Japanese grammar sentences. */
@@ -167,6 +167,12 @@
     solutionMoves?: string[]
     /** Lichess puzzle rating (for Elo update after chess quiz). */
     lichessRating?: number
+    /** [latitude, longitude] of the target location for map_pin quiz mode. */
+    mapCoordinates?: [number, number]
+    /** Geographic region key for map centering. */
+    mapRegion?: string
+    /** Location difficulty tier 1-5 for Geo Elo calculation. */
+    mapDifficultyTier?: number
   }
 
   let { turnState, onplaycard, onskipcard, onendturn, onusehint, onreturnhub }: Props = $props()
@@ -1446,6 +1452,9 @@
       fenPosition: fact.fenPosition,
       solutionMoves: fact.solutionMoves,
       lichessRating: fact.lichessRating,
+      mapCoordinates: fact.mapCoordinates,
+      mapRegion: fact.mapRegion,
+      mapDifficultyTier: fact.mapDifficultyTier,
     }
   }
 
@@ -2810,6 +2819,9 @@
           fenPosition={committedQuizData.fenPosition}
           solutionMoves={committedQuizData.solutionMoves}
           lichessRating={committedQuizData.lichessRating}
+          mapCoordinates={committedQuizData.mapCoordinates}
+          mapRegion={committedQuizData.mapRegion}
+          mapDifficultyTier={committedQuizData.mapDifficultyTier}
           chessHintLevel={chessHintLevel}
           onanswer={handleAnswer}
           onskip={handleSkip}

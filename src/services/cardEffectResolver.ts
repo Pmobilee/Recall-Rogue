@@ -446,6 +446,14 @@ export interface AdvancedResolveOptions {
    * Populated by turnManager from turnState.reinforcePermanentBonus.
    */
   reinforcePermanentBonus?: number;
+
+  /**
+   * Continuous accuracy for interactive quiz modes (0.0 = complete miss, 1.0 = perfect).
+   * When set, damage interpolates between charge-wrong and charge-correct values.
+   * Only used by map_pin and future interactive modes.
+   * When undefined, behavior is binary (existing charge_correct/charge_wrong logic).
+   */
+  partialAccuracy?: number;
 }
 
 export function isCardBlocked(card: Card, enemy: EnemyInstance): boolean {
@@ -580,6 +588,15 @@ export function resolveCardEffect(
   } else {
     // No mechanic definition (wild fallback, unknown mechanic).
     mechanicBaseValue = baseEffectValue + masteryBonus;
+  }
+
+  // Partial credit interpolation for interactive quiz modes (map_pin, estimation_arena, etc.)
+  // When partialAccuracy is defined, interpolate between CW and CC values.
+  // When undefined (all existing modes), this block is skipped — zero behavior change.
+  if (advanced.partialAccuracy !== undefined && mechanic && (isChargeCorrect || isChargeWrong)) {
+    const cwValue = Math.max(0, mechanic.chargeWrongValue + masteryBonus);
+    const ccValue = Math.round((mechanic.quickPlayValue + masteryBonus) * CHARGE_CORRECT_MULTIPLIER);
+    mechanicBaseValue = Math.round(cwValue + (ccValue - cwValue) * advanced.partialAccuracy);
   }
 
   // Use stat table secondary value if available; fall back to old perLevelDelta helper.
