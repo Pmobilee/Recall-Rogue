@@ -1495,3 +1495,9 @@ Q: "Which word is closest in meaning to 'pique-niquer'?"  ← synonym_pick templ
 **Fix:** Rewrote `pres_reagan_end_cold_war` to ask about Reagan's actual Cold War strategy — the Strategic Defense Initiative and "evil empire" rhetoric. Reagan remains the correct answer for that reframed question. The 1991 dissolution is now exclusively covered by `pres_ghwbush_soviet` (George H.W. Bush). The true/false variant was updated to correctly answer "False" to "Reagan was president when the USSR dissolved in 1991." Regression tests added in `src/services/__tests__/factCorrectness.test.ts`.
 
 **Lesson:** Any deck fact that assigns a historical event to a president must be cross-checked against presidential term dates. Reagan (1981–1989), Bush 41 (1989–1993), Clinton (1993–2001) are frequently confused in Cold War context. The curriculum-source rule in `content-pipeline.md` already requires sourcing facts from verified data — this error was caught by the quiz audit, not by initial authoring.
+
+---
+
+### 2026-04-10 — pharmacology this-placeholder follow-up (17 facts fixed, deferred from main cluster batch)
+
+Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-replacement left bare "this" tokens (e.g., "this-release", "this-dependent", "side this of", "primary this complication"). Deferred from the main cluster fix (`3aa31709d`, 91 facts across 6 decks) due to a stale registry lock. Correct nouns derived from each fact's `correctAnswer`, `explanation`, and `statement` fields.
