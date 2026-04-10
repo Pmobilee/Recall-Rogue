@@ -226,3 +226,17 @@ npm run build:curated
 3. If you observe a numeric distractor that exceeds the domain (e.g. 138% for a percentage question), check whether the question text contains the domain keyword. If not, rephrase the question to include it.
 4. Edge case: ratios that legitimately exceed 1.0 (e.g., "ratio of A to B = 2.4") are NOT percentages — the detector requires `%` or "percent"/"percentage" wording. Bare decimals fall through to the unknown domain (no clamp).
 5. Run `npm run audit:quiz-engine -- --deck <id>` after assembly — zero NUMERIC-WEAK findings is the target.
+
+### Anti-Pattern 9: Mega-pool POOL-CONTAM (>100 facts in one pool)
+
+**Rule:** Any pool with more than 100 real facts is a mega-pool and a strong POOL-CONTAM source. Distractors drawn from such a pool cross topic/unit/period boundaries freely, letting players eliminate options by sub-field rather than by knowledge of the correct answer. **Split mega-pools by exam unit (for AP/IB/JLPT/HSK), time period (for history), or topic axis (for general knowledge).**
+
+**Why:** The 2026-04-10 quiz audit (Pattern 2) found that all 7 AP decks shipped with one or two catch-all "concept" pools spanning the entire CED scope. Examples: `ap_biology.term_definitions_long` (214 facts across all 8 units), `ap_world_history.concept_terms` (297 facts across 9 units), `ap_us_history.concept_terms` (142 facts across 9 periods). A Unit 1 question could draw distractors from Unit 8, making sub-field elimination trivial. The same pattern appears in `ancient_greece.historical_phrases_long` (87), `ancient_rome.historical_phrases` (80), and `world_war_ii.historical_events` (167). The fix landed 2026-04-10: 9 mega-pools were split into 56 unit-coherent sub-pools, reassigning 1,523 fact references.
+
+**How to apply:**
+1. **For AP / standardized-exam decks:** split by `examTags.unit` (or `Period_N` for AP US History). Use the helper script pattern: group facts by unit, create one sub-pool per unit named `<old_id>_u<N>`, merge units with <5 facts into the nearest viable bucket, point each fact's `answerTypePoolId` at its new sub-pool, remove the original mega-pool.
+2. **For history / general knowledge decks** without exam tags: split by century, region, or topical axis. Pick whichever produces the most semantically coherent buckets.
+3. **Minimum sub-pool size:** ≥5 real facts. Pad to ≥15 total with `syntheticDistractors`.
+4. **Verify after the split:** every fact's `answerTypePoolId` must reference an existing pool (no orphans). Run `node scripts/verify-all-decks.mjs` and re-run `audit-dump-samples.ts --deck <id>` to confirm POOL-CONTAM rate drops.
+5. **Detection:** `verify-all-decks.mjs` should warn whenever a knowledge-deck pool has >100 real facts. (Future Phase 5 task.)
+6. **Exception:** language-vocab pools with thousands of words are intentional — POS-separated pools are the right fix there (Anti-Pattern 5 / Anti-Pattern 6 territory), not unit-splitting.
