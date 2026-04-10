@@ -6,6 +6,10 @@
 
 > **Key v3 changes from v2:** Single curated deck per run (no cross-domain mixing), dynamic fact assignment at charge time (not draw time), pool-based adaptive distractors (not LLM-generated), mastery-driven quiz difficulty (not FSRS tier), no Cursed Card system, no Free First Charge, no visible quiz timer.
 
+> **Changelog:**
+> - 2026-04-10 — Doc sync pass: combat constants corrected (CC 1.75×→1.50×, fizzle 0.25×→0.50×); quiz modes documented (chess_tactic, map_pin, image_*, typing); mystery event roster expanded with complete event list from floorManager.ts; mechanic count 91→98; relic count 24 starter/77 total→40 starter/90 total; feature flags subsection added; save version pinned (v3); Anki integration noted as implemented-but-gated; Surge corrected to +1 AP grant (not free charge).
+
+
 ---
 
 ## 1. Core Philosophy
@@ -53,8 +57,8 @@ PLAYER TURN:
      CHARGE PLAY (drag card into upper screen zone above ~40% from top, or click CHARGE button):
        - Costs card's base AP + 1 additional AP (the "Charge surcharge")
        - Quiz panel appears. Timer starts. No backing out.
-       - CORRECT ANSWER → card plays at getMasteryStats().qpValue × 1.75. 500ms celebration.
-       - WRONG ANSWER → card plays at FIZZLE_EFFECT_RATIO (0.25×). 300ms muted resolve.
+       - CORRECT ANSWER → card plays at getMasteryStats().qpValue × 1.50. 500ms celebration.
+       - WRONG ANSWER → card plays at FIZZLE_EFFECT_RATIO (0.50×). 300ms muted resolve.
        - Card is never wasted — wrong answers still resolve at reduced effect.
        - Contributes to Knowledge Chain if same chainType (0-5) as previous Charge.
        - MASTERED cards (level 5): quiz uses the hardest variant with most confusable distractors, but rewards the highest multiplier.
@@ -74,10 +78,10 @@ ENEMY TURN:
 | Scenario | AP Spent | Damage Dealt | Efficiency |
 |----------|----------|--------------|------------|
 | 3 Quick Strike plays | 3 AP | 3 + 3 + 3 = 9 | 3 dmg/AP |
-| 1 Charged Strike (correct, mastery 0) | 2 AP | 5.25 | 2.6 dmg/AP |
-| 1 Charged Strike (correct, mastery 3) | 2 AP | 10.5 | 5.25 dmg/AP |
-| 1 Charged Strike (wrong, mastery 1+) | 2 AP | 1 | 0.5 dmg/AP |
-| 1 Charged Strike (correct) + 1 Quick Strike | 3 AP | 5.25 + 3 = 8.25 | 2.75 dmg/AP |
+| 1 Charged Strike (correct, mastery 0) | 2 AP | 4.5 | 2.25 dmg/AP |
+| 1 Charged Strike (correct, mastery 3) | 2 AP | 9.0 | 4.5 dmg/AP |
+| 1 Charged Strike (wrong, mastery 1+) | 2 AP | 2.0 | 1.0 dmg/AP |
+| 1 Charged Strike (correct) + 1 Quick Strike | 3 AP | 4.5 + 3 = 7.5 | 2.5 dmg/AP |
 
 **Quick Play is AP-efficient. Charge is power-efficient but expensive.** The +1 AP surcharge prevents "always Charge everything" — with 3 AP, you can Quick Play 3 cards OR Charge 1 + Quick 1. Meaningful tradeoff every turn.
 
@@ -89,14 +93,14 @@ The runtime computes card effect values through this pipeline:
    - Note: L0 qpValue may be LOWER than the mechanic's legacy `quickPlayValue`. Stat tables override.
 2. **Play mode scaling:**
    - Quick Play: `qpValue × 1.0` (no multiplier)
-   - Charge Correct: `qpValue × CHARGE_CORRECT_MULTIPLIER (1.75×)` — mastery already encoded in qpValue
-   - Charge Wrong: `FIZZLE_EFFECT_RATIO (0.25×)` of base effect — always resolves, never zero
+   - Charge Correct: `qpValue × CHARGE_CORRECT_MULTIPLIER (1.50×)` — mastery already encoded in qpValue
+   - Charge Wrong: `FIZZLE_EFFECT_RATIO (0.50×)` of base effect — always resolves, never zero
 3. **Tier multiplier** = T1: 1.0×, T2a: 1.0×, T2b: 1.0× — tier multipliers REMOVED (all active tiers = 1.0×)
 4. **Chain multiplier** = [1.0, 1.2, 1.5, 2.0, 2.5, 3.5] at chain lengths 0–5
 5. **Buff/relic/overclock** multipliers stacked on top
 6. **Vulnerable** (+50% if enemy is vulnerable)
 
-**The 1.75× CC multiplier is the base.** The real power progression comes from:
+**The 1.50× CC multiplier is the base.** The real power progression comes from:
 - Mastery upgrades: Each correct Charge upgrades the card one mastery level, increasing qpValue in the stat table
 - Chain stacking: A 5-chain gives 3.5× on top of everything
 - Relic synergies: Many relics amplify Charge Correct specifically
@@ -105,20 +109,20 @@ The runtime computes card effect values through this pipeline:
 
 Strike uses explicit stat table: L0=3, L1=4, L2=5, L3=6, L4=7, L5=8.
 
-| Mastery | qpValue | × 1.75 CC | Total |
+| Mastery | qpValue | × 1.50 CC | Total |
 |---------|---------|-----------|-------|
-| 0 | 3 | × 1.75 | **5.25** |
-| 2 | 5 | × 1.75 | **8.75** |
-| 5 | 8 | × 1.75 | **14** |
+| 0 | 3 | × 1.50 | **4.5** |
+| 2 | 5 | × 1.50 | **7.5** |
+| 5 | 8 | × 1.50 | **12** |
 
-With a 3-chain (2.0×) on top of mastery 5: 14 × 2.0 = **28 damage** from a single Strike.
+With a 3-chain (2.0×) on top of mastery 5: 12 × 2.0 = **24 damage** from a single Strike.
 
 > **Design intent (2026-04-03):** Mastery stat table system replaces perLevelDelta. Every mechanic
 > has an explicit L0–L5 table. Cards start WEAKER (Strike L0 QP=3, was 4). Max-mastery ceiling
-> compressed (Strike L5=8, was 10). CC multiplier = 1.75× (was 1.5×). All tier multipliers = 1.0×.
+> compressed (Strike L5=8, was 10). CC multiplier = 1.50× (reduced from 1.75× in Balance Pass 4, 2026-04-09: narrows CC/QP ratio so Quick Play is more viable for lower-accuracy players; wrong charges are tempo costs, not punishment). All tier multipliers = 1.0×.
 > Power tiers: Modest (1.5–2×), Solid (2–2.5×), Great (2.5–3×).
 
-> **Implementation note:** The `chargeCorrectValue` field in `mechanics.ts` is **dead data** — the resolver does NOT read it. CC is always computed as `getMasteryStats().qpValue × CHARGE_CORRECT_MULTIPLIER (1.75)`. The field exists for historical reference only.
+> **Implementation note (dead data):** The `chargeCorrectValue` field in `mechanics.ts` is **dead data** — the resolver does NOT read it. CC is always computed as `getMasteryStats().qpValue × CHARGE_CORRECT_MULTIPLIER (1.50)`. The field exists for historical reference only and should be ignored.
 
 ### Mastery Upgrade System (AR-113)
 
@@ -265,6 +269,30 @@ The floor-based timer table below describes an **invisible internal timer** only
 
 Difficulty scaling is achieved through question variant selection and distractor quality (mastery-driven), NOT through visible time pressure.
 
+### Quiz Modes
+
+Each deck fact specifies how the quiz question is presented and how the player responds. Defined in `src/data/curatedDeckTypes.ts`.
+
+**Question presentation modes (`quizMode`):**
+
+| Mode | Description |
+|------|-------------|
+| `text` | Default. Text question stem, text answer options. |
+| `image_question` | Image shown as the question stem (e.g., visual anatomy ID, dinosaur identification); answer options are text. |
+| `image_answers` | Text question stem; answer options are images (e.g., "which flag is X?"). |
+| `chess_tactic` | Full-panel interactive chess board puzzle. No multiple-choice, no hints. Player inputs a move directly. Ships as the `chess_tactics` curated deck (620K+ runtime puzzles from `chess-puzzles.db` via `chessPuzzleService.ts`). Elo-rated. See `build:chess` npm script. |
+| `map_pin` | Geography mode: player drops a pin on a map. Partial credit based on pin distance. |
+
+**Response modes (`quizResponseMode`):**
+
+| Mode | Description |
+|------|-------------|
+| `choice` | Standard multiple-choice (default). 3 distractors + 1 correct = 4 options. |
+| `typing` | Text input. Used by Japanese decks with romaji→hiragana conversion. |
+| `chess_move` | Interactive chess board move input. Paired with `chess_tactic` quiz mode. |
+| `map_pin` | Pin-drop response. Partial-credit damage based on pin distance from correct location. Backed by `geoScoringService.ts` + `geoEloService.ts`. |
+
+
 ### Card Anatomy & Frame System
 
 Cards use a **PSD-based layered V2 frame system** (AR-107). Each card composites 3 layers extracted from a master PSD (`data/generated/camp-art/NEW_CARD.psd`, 886×1142px) with text overlaid via CSS at PSD guide positions.
@@ -380,9 +408,9 @@ Each run uses exactly 3 chain themes, selected from the deck's available themes.
 |----------|-------------|-------|
 | 3-chain Quick Play Strikes | 7 × 2.0 each (M1 QP) | 42.0 |
 | 3-chain Charged (correct, mastery 1) middle card | 7, 10.5×2.0, 7×2.0 | 49.0 |
-| 3-chain all Charged on Surge turn (free Charge surcharge, mastery 1) | 10.5 × 2.0 each | 63.0 |
+| 3-chain all Charged on Surge turn (+1 bonus AP helps fund charges, mastery 1) | 9.0 × 2.0 each | 54.0 |
 
-The 63-damage Surge chain is the "holy shit" peak at early mastery. Rare. Players will chase it — and at M5, a 3-chain CC sits at ~92 damage (see pipeline example above).
+The 54-damage Surge chain is the peak at early mastery. Rare. Players will chase it — and at M5, a 3-chain CC sits at ~72 damage (12 × 2.0 × 3.0 = 72; surge turn bonus AP enables 3 full charges).
 
 ### Chain Rules (Active in Combat)
 
@@ -582,7 +610,7 @@ Surge turns occur every 4th turn, starting on global turn 2 of the run (global t
 
 **The Surge counter persists across encounters within a run.** It does NOT reset between fights. If fight 1 ends on global turn 3, fight 2 starts on global turn 4 — Surge may not arrive until global turn 6 (turn 3 of that fight). Short fights may have no Surge at all. This creates unpredictability and makes Surge feel like a meaningful event rather than a reliable clockwork mechanic.
 
-**On Surge turns:** Charging costs **+0 AP** instead of +1. This is the burst window where Charging everything is viable and encouraged. Chain multipliers and Charge multipliers both apply at full strength.
+**On Surge turns:** Players receive **+1 bonus AP** at turn start (SURGE_BONUS_AP = 1). This is the burst window where the extra AP enables charging cards more freely. Chain multipliers and Charge multipliers both apply at full strength. Note: Surge does NOT waive the charge surcharge — the +1 AP grant is a flexible resource players spend freely (Balance Pass 3, 2026-04-09).
 
 Constants: `SURGE_FIRST_TURN = 2`, `SURGE_INTERVAL = 4`
 
@@ -599,8 +627,8 @@ Implementation: `RunState.globalTurnCounter` (persisted in save state) is passed
 
 ### During Surge Turn (AR-59.18 — Surge Visual System)
 
-- All cards have persistent golden shimmer edge (indicating "free Charge available")
-- CHARGE button displays "+0 AP" / shows free for all cards
+- All cards have persistent golden shimmer edge (indicating Surge bonus AP is active)
+- CHARGE button displays normal cost; the +1 bonus AP is already on the AP counter
 - AP counter shows lightning bolt icon (⚡ AP)
 - Background: subtle golden particle overlay (existing ambient particle system, tinted gold)
 - Fling-up Charge gesture threshold reduced slightly (easier to trigger)
@@ -619,7 +647,7 @@ AP savings, enabling longer chains through skill.
 
 - Correct Charge → next Charge is free (surcharge waived, `nextChargeFree = true`)
 - Wrong Charge, Quick Play, or turn end → momentum lost (`nextChargeFree = false`)
-- Stacks with Surge (no additional effect during Surge since charges are already free, but flag is still consumed)
+- Stacks with Surge (during Surge, chain momentum still waives the next charge surcharge; the +1 AP grant is separate)
 - UI: CHARGE button displays green "+0 AP" badge with green glow when momentum is active
 
 Constants: `CHAIN_MOMENTUM_ENABLED = true`
@@ -861,18 +889,18 @@ function getCardTier(state: PlayerFactState): '1' | '2a' | '2b' | '3' {
 Combat power is driven by **card slot mastery** (0–5, per run), not FSRS tier:
 
 - **Quick Play:** `getMasteryStats(mechanicId, level).qpValue` (1.0× of level's qpValue)
-- **Charge Correct:** `getMasteryStats().qpValue × CHARGE_CORRECT_MULTIPLIER (1.75×)`
-- **Charge Wrong:** `FIZZLE_EFFECT_RATIO (0.25×)` of base effect — always resolves
-- **Charge AP Cost:** +1 AP surcharge (waived during Surge, Chain Momentum, first charge)
+- **Charge Correct:** `getMasteryStats().qpValue × CHARGE_CORRECT_MULTIPLIER (1.50×)`
+- **Charge Wrong:** `FIZZLE_EFFECT_RATIO (0.50×)` of base effect — always resolves
+- **Charge AP Cost:** +1 AP surcharge (waived during Chain Momentum, free first charge; Surge grants +1 AP instead of waiving, free first charge removed in Pass 8)
 
 Power comes from explicit per-level stat tables — not a delta formula. Cards start weaker at L0 and transform through mastery. Some mechanics gain new tags, AP reductions, or hit count increases at milestone levels (see `docs/mechanics/cards.md` — Wow Moment Milestones).
 
-| Card Slot Mastery | Strike stat table qpValue | CC Value (×1.75) |
+| Card Slot Mastery | Strike stat table qpValue | CC Value (×1.50) |
 |-------------------|--------------------------|-----------------|
-| 0 | 3 | 5.25 |
-| 1 | 4 | 7 |
-| 3 | 6 | 10.5 |
-| 5 | 8 | 14 |
+| 0 | 3 | 4.5 |
+| 1 | 4 | 6.0 |
+| 3 | 6 | 9.0 |
+| 5 | 8 | 12.0 |
 
 ### Mastery-Driven Question Difficulty
 
@@ -966,7 +994,7 @@ Enemies are rendered in the Phaser canvas with pixel-art sprites. First-person d
 
 ### Per-Enemy Combat Backgrounds (AR-110)
 
-Each of the 86+ enemies has a unique combat background image that reflects their lore and environment. The system provides:
+Each of the 89 enemies has a unique combat background image that reflects their lore and environment. The system provides:
 
 - **Two orientations per enemy:** Portrait and Landscape versions, auto-selected at runtime based on viewport aspect ratio
 - **Runtime orientation selection:** `getCombatBgForEnemy(enemyId)` in `src/data/backgroundManifest.ts` checks `window.innerWidth / window.innerHeight` and returns the correct path
@@ -977,7 +1005,7 @@ This gives each enemy a distinct visual identity and reinforces the dungeon atmo
 
 #### Per-Enemy Lore-Driven Animations (AR-111)
 
-Each of the 84 enemies has a unique idle behavior, attack style, and hit reaction tailored to its visual form and lore identity. Replaces the old 8 generic animation archetypes with per-enemy overrides.
+Each of the 89 enemies has a unique idle behavior, attack style, and hit reaction tailored to its visual form and lore identity. Replaces the old 8 generic animation archetypes with per-enemy overrides.
 
 **Animation system:**
 - Per-enemy configs in `src/data/enemyAnimationOverrides.ts` (keyed by enemy ID)
@@ -1100,7 +1128,7 @@ No separate cursed visual state is needed. The consequence of failure is built i
 
 ---
 
-## 6. Card Mechanics (91 Active Mechanics)
+## 6. Card Mechanics (98 Active Mechanics)
 
 Cards unlock as character level increases. New players start at level 0 with 36 mechanics (all 31 original + 5 new basics). Exotic mechanics unlock gradually through level 13.
 
@@ -1135,11 +1163,11 @@ Cards unlock as character level increases. New players start at level 0 with 36 
 | 12 | Eruption (X-cost) | 90 | X-cost introduced. |
 | 13 | Knowledge Bomb, Siphon Knowledge | 92 | Final quiz cards. Encounter-scaling spectacular + study-during-combat. |
 
-**Note on total:** 91 unique mechanic IDs total. The table shows 92 unlock slots because Inscription of Fury and Inscription of Iron appear in both the Buff and Inscription categories — they are the same cards, not duplicates.
+**Note on total:** 98 mechanic IDs in source as of 2026-04-10. The level-unlock table cumulative reaches 92; additional mechanics were added without updating this table. Inscription of Fury and Inscription of Iron appear in both the Buff and Inscription categories — they are the same cards, not duplicates.
 
 ### Complete Mechanics Reference (v2 — QP / Charge Correct / Charge Wrong)
 
-All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0× (mastery 0–5, see Mastery Upgrade System). Charged Wrong = 0.6× (mastery 0) / 0.7× (mastery 1+). Values shown at mastery 0 for standard reference unless noted.
+All 98 active mechanics (as of 2026-04-10). Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0× (mastery 0–5, see Mastery Upgrade System). Charged Wrong = 0.6× (mastery 0) / 0.7× (mastery 1+). Values shown at mastery 0 for standard reference unless noted.
 
 #### Attack Mechanics
 
@@ -1587,31 +1615,75 @@ Constant: `UPGRADED_REWARD_CHANCE_BY_FLOOR` in `src/data/balance.ts`
 
 Mystery rooms are narrative encounters that add unpredictability without breaking progression balance. They are **side dishes, not the main course** — never outclassing combat rewards, shops, or rest sites.
 
-**Event distribution per mystery node:**
-| Outcome | Chance | Details |
-|---------|--------|---------|
-| Narrative event | 70% | Drawn from tiered pools based on current floor |
-| Combat ambush | 20% | Floors 1-5: regular enemy. Floors 6-8: 50/50 regular/elite. Floors 9+: elite. NO post-combat card reward. |
-| Card reward | 10% | Standard 3-card choice screen |
+**Event distribution per mystery node (act-weighted):**
+| Outcome | Act 1 | Act 2 | Act 3 | Details |
+|---------|-------|-------|-------|---------|
+| Narrative event | 80% | 65% | 55% | Drawn from tiered pools based on current floor |
+| Combat ambush | 15% | 25% | 30% | Act 1: regular enemy. Act 2: 50/50 regular/elite. Act 3: elite. NO post-combat card reward. |
+| Card reward | 5% | 10% | 15% | Standard 3-card choice screen |
 
-**Event tiers:**
-| Tier | Unlocks At | Examples |
-|------|-----------|----------|
-| Tier 1 | Floor 1+ | Healing Fountain (15% HP), Scattered Coins (25g), Reading Nook (upgrade card), Whispering Shelf (free card) |
-| Tier 2 | Floor 3+ | Strict Librarian (return card or take damage), Knowledge Tax (pay gold/HP), Ambush!, Gambler's Tome |
-| Tier 3 | Floor 6+ | Burning Library (15 HP for upgrade+card), Mirror Scholar (elite combat), Merchant of Memories (trade max HP) |
-| Tier 4 | Floor 9+ | Final Wager (50/50 gamble), The Recursion (meet past self), Eraser Storm (lose 2 cards, heal), Elite Ambush |
+**Full mystery event roster** (from `src/services/floorManager.ts`):
+
+*Tier 1 — Always available (Act 1 focus):*
+| Event | Effect |
+|-------|--------|
+| The Reading Nook | Upgrade 1 random card |
+| The Flashcard Merchant | Study facts (FSRS boost) |
+| The Tutor's Office | 3 quiz questions; per-correct: +5% HP / +10g / upgrade card |
+| The Whispering Shelf | Gain 1 free card |
+| The Inscription | 1 quiz question; correct: +15% HP + 10g; wrong: −10 HP |
+| The Lost Notebook | Choice: upgrade a card OR gain a card |
+| Lost and Found | Gain 15 gold |
+
+*Tier 2 — Act 2 focus:*
+| Event | Effect |
+|-------|--------|
+| The Strict Librarian | Choice: remove card + heal 15%, OR take 12 damage |
+| The Wrong Answer Museum | reviewMuseum — study your worst-recalled facts |
+| The Copyist's Workshop | transformCard — one card randomly mutates into a new mechanic |
+| Strange Mushrooms | Eat: 50/50 heal 25% or take 15 damage; Ignore: 5 gold |
+| Ambush! | Combat encounter (no reward) |
+| The Donation Box | Donate 25g → +5 max HP; Shake: 50/50 +15g or −10 HP |
+| The Rival Student | Rival duel (5 questions, 65% rival accuracy); win: free card + heal 10%; tie: 15g; lose: −15 HP |
+| The Altar of Greed | doubleOrNothing — gamble all gold |
+| The Speed Scholar | speedRound — answer as many questions as possible in 15 seconds |
+| The Knowing Skull | knowledgeShop — spend questions answered to buy upgrades/gold/cards |
+
+*Tier 3 — Act 3 focus:*
+| Event | Effect |
+|-------|--------|
+| The Burning Library | 4 quiz questions; per-correct: 15g / upgrade card / heal 10% / upgrade card; per-wrong: −8 HP |
+| The Doppelganger | Rival duel (75% rival accuracy); win: 2 upgrades + 20g; tie: 10g; lose: curse 2 cards |
+| The Merchant of Memories | Choice: trade −8 or −15 max HP for upgrades/cards |
+| Cache of Contraband | Choice: free card + 10 damage / free card / 30 gold |
+| The Wishing Well | Toss 10g for random reward (30g / heal 20% / upgrade / −8 HP); or save |
+| The Study Group | 2 quiz questions; per-correct: upgrade card |
+| Card Roulette | cardRoulette — flip face-down cards (3 picks, 5 HP each) |
+| Fact or Fiction | factOrFiction — 5 true/false statements |
+| The Forbidden Section | 3 hard quiz questions; per-correct: upgrade card; per-wrong: curse 1 card |
+
+*Tier 4 — Deep floors:*
+| Event | Effect |
+|-------|--------|
+| The Knowledge Gamble | 3 hard questions; per-correct: heal 15% / upgrade / heal 15%; per-wrong: −10 HP |
+| The Purge | Remove 1 random card |
+| The Meditation Chamber | meditation — reflect on knowledge (FSRS study) |
+| The Purification | Remove 2 cards, heal 15% |
+| Ambush! (Elite) | Elite combat encounter (no reward) |
+| The Desperate Bargain | Trade −10 max HP for remove 2 cards + heal 20%; or 3g consolation |
+| The Breakthrough | Upgrade 1 card + heal 10% |
+| The Epiphany | Choice: upgrade ALL cards + 3 curses; OR remove 3 cards + −20% max HP; OR 5 hard questions for massive gold+healing |
 
 **Balance ceilings (hard limits):**
 - No free relics from mystery events
-- Max 1 card upgrade per event
-- Heals capped at 20% max HP (rest site heals 30%)
-- Currency gains capped at 25-40 gold
+- Max 1 card upgrade per single standard event (Epiphany and multi-question events are exceptions)
+- Heals capped at ~20% max HP per single effect (rest site heals 20%)
+- Currency gains capped at 25–40 gold per standard event
 - Combat ambush events give NO post-combat reward
 
-**Effect types:** heal, damage, currency, maxHpChange, upgradeRandomCard, removeRandomCard, combat, cardReward, healPercent, transformCard, freeCard, nothing, choice (multi-option)
+**Effect types:** healPercent, damage, currency, maxHpChange, upgradeRandomCard, removeRandomCard, curseRandomCards, transformCard, freeCard, combat, cardReward, study, reviewMuseum, meditation, doubleOrNothing, speedRound, knowledgeShop, cardRoulette, factOrFiction, rivalDuel, choice, random, compound
 
-27 unique events across 4 tiers. Event data in `src/services/floorManager.ts`. Effect resolution in `src/services/gameFlowController.ts`. UI in `src/ui/components/MysteryEventOverlay.svelte`.
+30 unique events across 4 tiers. Event data in `src/services/floorManager.ts`. Effect resolution in `src/services/gameFlowController.ts`. UI in `src/ui/components/MysteryEventOverlay.svelte`.
 
 ### Gold Economy
 
@@ -2225,7 +2297,7 @@ The educational intent is preserved: the system will present failed facts again 
 | System | Description |
 |--------|-------------|
 | Knowledge Library | All facts cataloged by domain + mastery; lore entries expand on mastery |
-| Relic Archive | 77 relics total: 24 always available (starter pool), rest unlock via character level |
+| Relic Archive | 90 relics total: 40 starter relics (always available), 50 unlockable via character level |
 | Camp Upgrade System | 9 camp elements each with 5–6 upgrade tiers, purchased with Dust |
 | Card Cosmetics | Milestone rewards; monetizable |
 | Domain Unlocking | Master 25 facts → new domain |
@@ -2304,9 +2376,9 @@ Cards are stateless (derived from level). Relics are stateful (persisted in save
 **Service:** `src/services/characterLevel.ts` — `MECHANIC_UNLOCK_SCHEDULE`, `getUnlockedMechanics(level)`, `getMechanicUnlockLevel(id)`
 **Filter applied in:** `src/services/runPoolBuilder.ts` (`applyMechanics`), `src/services/presetPoolBuilder.ts` (`applyMechanics`)
 
-Card mechanics are gated by character level. 91 total mechanics unlock across levels 0–13. This creates a meaningful progression curve: new players learn the game's basic mechanics first; advanced archetypes unlock after sustained play.
+Card mechanics are gated by character level. 98 total mechanics unlock across levels 0–13. This creates a meaningful progression curve: new players learn the game's basic mechanics first; advanced archetypes unlock after sustained play.
 
-**Unlock schedule (91 unique mechanic IDs, levels 0–13):**
+**Unlock schedule (98 mechanic IDs, levels 0–13):**
 
 | Level | Count at Level | Cumulative | Mechanic IDs |
 |-------|---------------|------------|--------------|
@@ -2326,7 +2398,7 @@ Card mechanics are gated by character level. 91 total mechanics unlock across le
 | 13 | 2 | 92 | knowledge_bomb, siphon_knowledge |
 | 14–25 | 0 | 92 | No new mechanics above level 13 |
 
-**Note on total 92 vs 91:** Inscription of Fury/Iron appear in both Buff and Inscription categories in this table — 91 unique mechanic IDs total.
+**Note on total:** The table cumulative count reaches 92; the additional mechanics (98 total in source) include further additions not yet reflected in the level-unlock schedule above. Inscription of Fury/Iron appear in both Buff and Inscription categories — they are not duplicates.
 
 **Backward compatibility:** All 31 existing mechanics have `unlockLevel: 0` in `MechanicDefinition`. The filter is a no-op for existing content at any level.
 
@@ -2360,7 +2432,7 @@ The **Camp** is the persistent home base shown between runs. Players spend **Dus
 
 **Camp Shop:** Two-tab interface accessible from the hub:
 - **Camp Upgrades tab:** Shows all 9 elements with current tier, next upgrade cost, and preview art.
-- **Relics tab:** Shows all 77 relics with unlock status. Level-gated with no per-relic cost (Mastery Coin model removed as of AR-112).
+- **Relics tab:** Shows all 90 relics with unlock status. Level-gated with no per-relic cost (Mastery Coin model removed as of AR-112).
 
 **Dust currency:** Awarded from run results (via `currencyEarned`), level-up rewards, and Mastery Trial completions.
 
@@ -2368,10 +2440,10 @@ The **Camp** is the persistent home base shown between runs. Players spend **Dus
 
 As of AR-112 (extended by expansion), the relic unlock model is **character level gating**:
 
-- **24 starter relics** are always available in every run's drop pool from account creation.
+- **40 starter relics** are always available in every run's drop pool from account creation.
 - Remaining relics unlock progressively as the player gains character levels.
 - No Mastery Coins are required to unlock relics. Mastery Coins section is legacy documentation.
-- The Camp Shop Relics tab displays all 77 relics with their unlock status and the level required.
+- The Camp Shop Relics tab displays all 90 relics with their unlock status and the level required.
 
 ### 13e-ii. Relic Unlock Schedule (Character Level)
 
@@ -2455,7 +2527,7 @@ CHARGE button is visible in Run 1 but tooltipped as optional. First few encounte
 ### Turn 2 of Run 1 (or Run 2): Surge Tutorial
 
 - First Surge turn is highlighted with explicit tooltip
-- "SURGE TURN — Charging costs +0 AP this turn! Try it!"
+- "SURGE TURN — +1 bonus AP this turn! Try charging cards for extra power!"
 - Golden screen pulse draws attention
 - This is the natural moment to try a first Charge with zero downside
 
@@ -2550,7 +2622,7 @@ Wrong Charge resolves at **0.7× multiplier** (mastery 1+) or **0.6×** (mastery
 
 The exact order of damage calculation for all attack cards. **The combo multiplier is NOT in this pipeline** — the combo system has been fully removed.
 
-1. `mechanicBaseValue` — for QP: `getMasteryStats().qpValue`; for CC: `getMasteryStats().qpValue × 1.75`; for CW: `FIZZLE_EFFECT_RATIO (0.25×) × baseEffectValue`
+1. `mechanicBaseValue` — for QP: `getMasteryStats().qpValue`; for CC: `getMasteryStats().qpValue × 1.50`; for CW: `FIZZLE_EFFECT_RATIO (0.50×) × baseEffectValue`
 2. Note: stat table qpValue already encodes the full mastery level — there is no separate masteryBonus step
 3. + Inscription of Fury flat bonus (if active — applied here as flat addition, attack cards only)
 4. + relic flat bonuses (`barbed_edge`, etc.)
@@ -3099,7 +3171,7 @@ Wrong on a previously-correct fact: resolves at CC power. Wrong on a new fact: t
 
 ### Relic Archive (Hub — Meta-Progression)
 
-24 existing starter relics are available from account creation. New relics unlock progressively via character level — see the full Relic Unlock Schedule in §13e-ii below. No Mastery Coins are required to unlock any relic — the unlock model is purely level-gated.
+40 existing starter relics are available from account creation. New relics unlock progressively via character level — see the full Relic Unlock Schedule in §13e-ii below. No Mastery Coins are required to unlock any relic — the unlock model is purely level-gated.
 
 ### Relic Display
 
@@ -3682,6 +3754,8 @@ For implementation details, see `docs/mechanics/quiz.md` (Chess Move Response Mo
 
 ## 23.55. Anki Import/Export (Study Temple)
 
+> **Status:** Implemented but currently disabled behind a feature flag (commit 08d2d04c6, 2026-04-09). The full import/export wizard and `ankiService.ts` are complete; the feature is gated off pending final polish. When enabled, players can import existing Anki flashcard decks and export any deck back to Anki format — enabling seamless cross-tool study continuity.
+
 Players can import their existing Anki flashcard decks into Recall Rogue and export any deck back to Anki format — enabling seamless cross-tool study continuity.
 
 ### Import Flow
@@ -4149,6 +4223,25 @@ All UI uses two CSS custom properties for responsive design across screen sizes:
 - **`--text-scale`**: Applied to all font sizes. Pattern: `calc(Npx * var(--text-scale, 1))`
 
 **ZERO hardcoded px values** are permitted for layout, sizing, spacing, or fonts. The game must scale seamlessly from 720p to 1440p+ without any element appearing too small or too large. Exceptions: `1px` borders, `0` values, percentages, unitless values (opacity, z-index, flex), and Phaser canvas coordinates.
+
+
+### Feature Flags & Gated Systems
+
+Runtime feature flags in `src/data/balance.ts`. When a flag is disabled, its default value produces the neutral/off behavior.
+
+| Flag | Value | Status | Notes |
+|------|-------|--------|-------|
+| `ENABLE_PHASE2_MECHANICS` | `true` | **Active** | All Phase 2 card mechanics in the card pool |
+| `ENABLE_LANGUAGE_DOMAINS` | `true` | **Active** | Language domains appear in domain picker |
+| `CHAIN_MOMENTUM_ENABLED` | `true` | **Active** | Correct charge waives surcharge on the next same-turn charge |
+| `SPEED_BONUS_MULTIPLIER` | `1.0` | **Disabled** | No inherent damage bonus for fast answers; speed bonuses are relic-only via Quicksilver Quill (2026-04-09) |
+| `FIRST_CHARGE_FREE_AP_SURCHARGE` | `1` | **Disabled** | Set to `1` = same cost as normal (free first charge removed in Pass 8; chain color matching is the intended free-charge mechanic) |
+| `MAP_CINEMATIC_ENABLED` | `false` | **Disabled** | Slay the Spire-style cinematic map reveal animation; disabled because progressive path view makes it feel out of place |
+| Anki import/export | — | **Implemented, gated off** | Full .apkg import/export wizard is implemented (`src/services/ankiService.ts`, wizard in UI) but disabled behind a feature flag pending polish (commit 08d2d04c6, 2026-04-09). See §23.55. |
+
+### Save Version
+
+`SAVE_VERSION = 3` (defined in `src/services/saveService.ts`). Migration path: v1 → v2 → v3 via `saveMigration.ts`. All migrations are additive — old saves always load in newer game versions.
 
 ### Boot Animation
 
