@@ -9441,10 +9441,11 @@
     },
     {
       "id": "ap_phys1_g_surface_formula",
-      "correctAnswer": "g = GM/R²",
+      "correctAnswer": "g = GM/R² (g_surface: planet mass M, radius R)",
       "acceptableAlternatives": [
         "g = GM/R^2",
-        "g_surface = GM/R² where M and R are the planet's mass and radius"
+        "g_surface = GM/R² where M and R are the planet's mass and radius",
+        "g = GM/R²"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "equation_explanations_u2",
@@ -12958,10 +12959,11 @@
     },
     {
       "id": "ap_phys1_pressure_depth_formula",
-      "correctAnswer": "P = P₀ + ρgh",
+      "correctAnswer": "P = P₀ + ρgh (absolute pressure at depth h)",
       "acceptableAlternatives": [
         "P = P_surface + rho*g*h",
-        "P = P₀ + ρgh (absolute pressure at depth h = surface pressure plus ρgh)"
+        "P = P₀ + ρgh (absolute pressure at depth h = surface pressure plus ρgh)",
+        "P = P₀ + ρgh"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "equation_explanations_u8",
