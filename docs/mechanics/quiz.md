@@ -102,6 +102,25 @@ Deck JSON does not need to declare this mapping — it is resolved in `getDistra
 
 **Audit reference:** This bug was confirmed as BLOCKER across ~25 language decks in the 2026-04-10 quiz audit (Pattern 3). korean_topik2 had 49/49 reverse-template rows contaminated (100%). See `docs/reports/quiz-audit-2026-04-10.md §Pattern 3`.
 
+
+#### Explanation-based templates and answer leakage
+
+Any template whose `questionFormat` contains the `{explanation}` placeholder renders the fact's explanation text verbatim as the question stem. Wiktionary-sourced vocabulary explanations follow the format `"word — English meaning"` (e.g., `"abbaye — abbey."`), which means the correct answer appears in the rendered question — making it trivially self-answering.
+
+**The rule:** A template is INELIGIBLE for a fact when BOTH conditions hold:
+1. The template's `questionFormat` contains `{explanation}`.
+2. The fact's `explanation` contains the `correctAnswer` as a whole word (word-boundary, case-insensitive).
+
+**Implementation:** `explanationLeaksAnswer(fact: DeckFact): boolean` in `questionTemplateSelector.ts`. Called once per fact selection, O(L) where L is explanation length. The eligibility filter in `selectQuestionTemplate()` step 3 rejects any `{explanation}`-based template when this returns true.
+
+**Word-boundary matching:** Uses `\b` anchors — "schools" does NOT match answer "school". This is intentional: false negatives (allowing a mildly suggestive explanation) are preferred over false positives (suppressing a perfectly valid question). Multi-word answers (e.g., "to picnic") are matched as a single phrase with `\b` at both ends.
+
+**Affected templates:** `definition_match` (the only `{explanation}` template in the default vocabulary template set). Knowledge-deck templates that use `{explanation}` as a hint or secondary display are not affected because they don't render explanation-as-question.
+
+**When the template is blocked:** The selector falls through to other eligible templates (e.g., `synonym_pick`, `forward`, `reverse`). If no other templates are eligible, the selector falls back to `_fallback` (the fact's `quizQuestion` field).
+
+**Audit reference:** Confirmed as BLOCKER in 2026-04-10 quiz audit (Pattern 4). french_b1 had 19% hit rate at mastery=4; czech_b2 had 23%. See `docs/reports/quiz-audit-2026-04-10.md §Pattern 4`. Fix commit: `fix(quiz): definition_match template ineligible when explanation contains the answer`.
+
 ### 3. Question Formatting (`questionFormatter.ts`)
 
 `getQuestionPresentation` controls how a question is rendered based on card tier:

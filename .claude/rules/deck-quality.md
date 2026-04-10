@@ -180,3 +180,18 @@ npm run build:curated
 2. Verify that each fact has a non-empty `targetLanguageWord` field — if it is missing, `resolveDisplayAnswer` falls back to `correctAnswer` (English), producing cross-language contamination again.
 3. Run `npm run audit:quiz-engine -- --deck <id>` after deck assembly — POOL-CONTAM on reverse rows indicates `targetLanguageWord` is missing or the pool is misconfigured.
 4. For `reading_pinyin` / `reading` templates, same rule applies: ensure `fact.reading` is populated and a `readings` or `target_readings` pool exists.
+
+### Anti-Pattern 6: definition_match self-answering via explanation
+
+**Rule:** The `definition_match` template renders `fact.explanation` as the question stem (`questionFormat: '{explanation}'`). Wiktionary-sourced explanations follow the format "word — English meaning" (e.g., "abbaye — abbey."). If the explanation contains the correct answer, the quiz is trivially self-answering — the player reads the answer in the question and clicks it. The engine now auto-blocks this template when the explanation leaks the answer; deck authors should understand why it fires.
+
+**Why:** Wiktionary's canonical explanation format names the word and its meaning in the same sentence. Up to 23% of mastery=4 questions in CEFR language decks were self-answering due to this leak (confirmed 2026-04-10 quiz audit, Pattern 4). The hit rate is highest in cognate-heavy decks (French, Czech) where the answer appears almost verbatim in the explanation.
+
+**Engine behavior (as of 2026-04-10 fix):** `explanationLeaksAnswer(fact)` checks whether `fact.explanation` contains `fact.correctAnswer` as a whole word (word-boundary, case-insensitive). If true, any template with `{explanation}` in its `questionFormat` is removed from the eligible set for that fact. The selector falls through to `synonym_pick`, `forward`, `reverse`, or `_fallback`. No deck JSON changes are needed.
+
+**How to apply:**
+1. Vocabulary deck authors: explanations in Wiktionary format ("word — meaning") are fine — the engine handles them. No rewriting needed.
+2. If authoring a custom explanation-based template that uses `{explanation}` in `questionFormat`, be aware that facts whose explanation contains the answer will never use it (they fall back). This is correct behavior.
+3. When adding a NEW template type with `{explanation}`, no code changes are needed — the eligibility check gates on `questionFormat.includes('{explanation}')` generically.
+4. If you observe unexpectedly low `definition_match` frequency in an audit dump, check the deck's explanation style. Wiktionary-format explanations will suppress it for cognates; non-leaking explanations ("a building for education") remain eligible.
+5. Run `npm run audit:quiz-engine -- --deck <id>` after assembly. Zero SELF-ANSWERING findings at mastery=4 is the target.

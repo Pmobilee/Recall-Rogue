@@ -36,14 +36,64 @@ function seededRandom(seed: number): () => number {
 }
 
 /**
+ * Escape a string so it can be used safely inside a RegExp pattern.
+ * Only the characters that have special meaning in RegExp are escaped.
+ */
+function escapeRegExp(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * Normalize a string for leak-detection comparison: lowercase and strip
+ * leading/trailing punctuation so "abbey." and "abbey" both match "abbey".
+ */
+function normalize(s: string): string {
+  return s.toLowerCase().trim().replace(/[.,;:!?'"()\-–—]+$/, '').replace(/^[.,;:!?'"()\-–—]+/, '');
+}
+
+/**
+ * Returns true when the fact's explanation contains the correct answer as a
+ * whole word (case-insensitive, word-boundary match).
+ *
+ * This is used to gate explanation-based templates such as `definition_match`,
+ * whose questionFormat is literally `{explanation}`. When a Wiktionary-style
+ * explanation reads "pique-niquer — to picnic.", the correct answer "to picnic"
+ * is present verbatim, making the question trivially self-answering.
+ *
+ * Matching strategy:
+ * - Word-boundary (`\b`) anchors are applied around the normalized answer so
+ *   that short answers like "in" do not spuriously match "indicating",
+ *   "winter", etc. This is intentional — we prefer false negatives (showing
+ *   a slightly self-answering question) over false positives (suppressing a
+ *   perfectly valid question).
+ * - Multi-word answers (e.g. "to picnic", "a building") are treated as a
+ *   single token: the leading \b anchors at the start of the first word and
+ *   the trailing \b anchors at the end of the last word. Interior spaces are
+ *   matched literally, which is correct for prose explanations.
+ * - The regex is compiled once per call (O(1)) and tested once against the
+ *   explanation string (O(L) where L = explanation length).
+ *
+ * See docs/mechanics/quiz.md §"Explanation-based templates and answer leakage".
+ */
+export function explanationLeaksAnswer(fact: DeckFact): boolean {
+  if (!fact.explanation || fact.explanation.trim() === '') return false;
+  const answer = normalize(fact.correctAnswer);
+  if (answer === '') return false;
+
+  const pattern = new RegExp(`\\b${escapeRegExp(answer)}\\b`, 'i');
+  return pattern.test(fact.explanation);
+}
+
+/**
  * Select and render a question template for a charge-time fact.
  *
  * Selection algorithm (§5.3):
  * 1. Filter templates available at current card mastery level
  * 2. Filter templates whose answer pool contains the selected fact
- * 3. Weight by: difficulty appropriate to mastery, variety (no consecutive repeat), in-run template history
- * 4. Select weighted random (seeded)
- * 5. Render the template with fact data
+ * 3. Filter out explanation-based templates when the explanation leaks the answer
+ * 4. Weight by: difficulty appropriate to mastery, variety (no consecutive repeat), in-run template history
+ * 5. Select weighted random (seeded)
+ * 6. Render the template with fact data
  */
 export function selectQuestionTemplate(
   fact: DeckFact,
@@ -63,8 +113,27 @@ export function selectQuestionTemplate(
     return pool && pool.factIds.includes(fact.id);
   });
 
-  // If no templates match, fall back to using the fact's quizQuestion directly
-  if (poolFiltered.length === 0) {
+  // Step 3: Filter out explanation-based templates when the explanation leaks the answer.
+  //
+  // A template is "explanation-based" when its questionFormat contains the
+  // {explanation} placeholder — meaning the rendered question IS the explanation text.
+  // If the explanation already contains the correct answer (Wiktionary format:
+  // "word — English meaning"), the quiz is trivially self-answering.
+  //
+  // This check is O(L) per template that uses {explanation}, which in practice
+  // means at most one check per fact (the definition_match template).
+  //
+  // See docs/mechanics/quiz.md §"Explanation-based templates and answer leakage".
+  const leaks = explanationLeaksAnswer(fact);
+  const eligibleTemplates = poolFiltered.filter(t => {
+    if (t.questionFormat.includes('{explanation}') && leaks) {
+      return false; // ineligible: explanation would reveal the answer
+    }
+    return true;
+  });
+
+  // If no templates remain after leak-filtering, fall back to using the fact's quizQuestion directly
+  if (eligibleTemplates.length === 0) {
     return {
       template: {
         id: '_fallback',
@@ -81,11 +150,11 @@ export function selectQuestionTemplate(
     };
   }
 
-  // Step 3: Weight candidates
+  // Step 4: Weight candidates
   const rand = seededRandom(runSeed);
   const recentSet = new Set(recentTemplateIds);
 
-  const weighted = poolFiltered.map(template => {
+  const weighted = eligibleTemplates.map(template => {
     let weight = 1.0;
 
     // Difficulty matches mastery band (±1)
@@ -119,7 +188,7 @@ export function selectQuestionTemplate(
     }
   }
 
-  // Step 5: Render the template
+  // Step 6: Render the template
   const rendered = renderTemplate(selected, fact, deck);
 
   // Determine the correct answer based on the template's answer pool

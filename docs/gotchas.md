@@ -1397,3 +1397,35 @@ Q: "How do you say 'even number' in Korean?"
 **Prevention:** When defining a reverse template (question in source language, answer in target language), the `selectDistractors` call must pass `distractorAnswerField: 'targetLanguageWord'`. This comes automatically via `getDistractorAnswerFieldForTemplate(template)` when using `selectQuestionTemplate`. For any caller that bypasses the template selector (trivia bridge path in `getBridgedDistractors`), the default `'correctAnswer'` is appropriate since that path only uses the forward direction.
 
 **Affected decks (all fixed by engine change, no deck JSON edits needed):** chinese_hsk1–6, japanese_n1–n5, japanese_hiragana/katakana, korean_hangul, korean_topik1/topik2, spanish_a1–c2, german_a1–b1.
+
+### 2026-04-10 — definition_match self-answer leak via explanation field
+
+**What:** The `definition_match` vocabulary template uses `questionFormat: '{explanation}'` — meaning the rendered question IS the `fact.explanation` string verbatim. Wiktionary-sourced explanations follow the format "word — English meaning" (e.g., `"abbaye — abbey."`, `"pique-niquer — to picnic."`). At mastery=3+, the quiz displayed the explanation as the question stem and then asked the player to pick the correct answer from a pool — but the correct answer was already readable in the question. Zero knowledge required: just read and click.
+
+**Confirmed 2026-04-10 quiz audit (Pattern 4):** french_b1 had 19% hit rate at mastery=4 (17 of 60 sampled rows self-answering); czech_b2 had 23%. All CEFR vocabulary decks (french_a1–b2, german_a1–b2, czech_a1–b2, dutch_a1–b2, plus grammar decks) were affected to varying degrees — ~15 decks total.
+
+**Example (BEFORE fix):**
+```
+Q: "pique-niquer — to picnic."    ← the explanation IS the question
+ A) to picnic  ✓                  ← correct answer already in the question!
+ B) to include
+ C) to fit
+ D) to doubt
+```
+
+**Example (AFTER fix, same fact fr-cefr-2380, mastery=4):**
+```
+Q: "Which word is closest in meaning to 'pique-niquer'?"  ← synonym_pick template instead
+ A) to picnic  ✓
+ B) to include
+ C) to fit
+ D) to doubt
+```
+
+**Root cause:** The eligibility filter for templates only checked mastery level (step 1) and pool membership (step 2). There was no check for whether rendering a template would produce a self-answering question. The `definition_match` template with Wiktionary-style explanations is the canonical failure mode.
+
+**Fix (2026-04-10):** Added `explanationLeaksAnswer(fact: DeckFact): boolean` to `questionTemplateSelector.ts`. Uses word-boundary regex (`\b<answer>\b`, case-insensitive) so that "schools" does not spuriously match answer "school". The eligibility loop in `selectQuestionTemplate()` now rejects any template whose `questionFormat` contains `{explanation}` when `explanationLeaksAnswer(fact)` returns true. The selector falls through to the next eligible template (`synonym_pick`, `forward`, `reverse`). If no templates remain, it falls back to `_fallback` using `fact.quizQuestion`. O(L) per fact, O(1) regex compilation.
+
+**Why word-boundary instead of substring:** Short answers like "in" would spuriously match "indicating", "winter", "painting", etc. via substring. Word-boundary anchors limit false positives. False negatives (a slightly suggestive explanation where the answer only partially matches) are less harmful than false positives (blocking a valid question).
+
+**No deck JSON changes needed.** The fix is entirely engine-side. All ~15 affected CEFR vocabulary decks are fixed without touching their data files.
