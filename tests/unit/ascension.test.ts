@@ -93,10 +93,12 @@ describe('ascension modifiers', () => {
   })
 
   it('combo heal fields activate at level 6', () => {
+    // Updated 2026-04-10: pass 7 changed combo heal from threshold=3/amount=5 to threshold=4/amount=3
+    // "High-accuracy players hit 3-combos constantly; 4+ is rarer and 3 HP is less snowbally"
     expect(getAscensionModifiers(5).comboHealThreshold).toBe(0)
     expect(getAscensionModifiers(5).comboHealAmount).toBe(0)
-    expect(getAscensionModifiers(6).comboHealThreshold).toBe(3)
-    expect(getAscensionModifiers(6).comboHealAmount).toBe(5)
+    expect(getAscensionModifiers(6).comboHealThreshold).toBe(4)
+    expect(getAscensionModifiers(6).comboHealAmount).toBe(3)
   })
 
   it('comboResetsOnTurnEnd activates at level 14', () => {
@@ -112,9 +114,10 @@ describe('ascension modifiers', () => {
     expect(getAscensionModifiers(17).wrongAnswerSelfDamage).toBe(5)
   })
 
-  it('reduced buff values', () => {
-    expect(getAscensionModifiers(7).chargeCorrectDamageBonus).toBe(0.10)
-    expect(getAscensionModifiers(6).chargeCorrectDamageBonus).toBe(0)
+  it('reduced buff values (delayed to high ascension levels)', () => {
+    // Updated 2026-04-10: chargeCorrectDamageBonus delayed from A7 to A12 (StS philosophy: buffs are high-level rewards)
+    expect(getAscensionModifiers(12).chargeCorrectDamageBonus).toBe(0.10)
+    expect(getAscensionModifiers(11).chargeCorrectDamageBonus).toBe(0)
     expect(getAscensionModifiers(11).relicTriggerBonus).toBe(0.15)
     expect(getAscensionModifiers(10).relicTriggerBonus).toBe(0)
   })

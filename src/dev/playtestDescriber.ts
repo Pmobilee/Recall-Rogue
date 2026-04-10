@@ -171,7 +171,16 @@ export function look(): string {
       if (enemy?.nextIntent) {
         const intent = enemy.nextIntent;
         const hitStr = intent.hitCount && intent.hitCount > 1 ? ` x${intent.hitCount}` : '';
-        lines.push(`  Intent: ${intent.telegraph ?? intent.type} (${intent.type} ${intent.value}${hitStr})`);
+        // Show both raw value and computed display damage so LLM testers are not misled.
+        // Raw `value` is the template base (e.g. 10). `displayDamage` is what actually
+        // lands after GLOBAL_ENEMY_DAMAGE_MULTIPLIER, floor scaling, strength mods, etc.
+        // (e.g. 16). Always reason from displayDamage, not value.
+        const dmgRaw = intent.value ?? 0;
+        const dmgDisplay = intent.displayDamage ?? dmgRaw;
+        const dmgStr = (intent.type === 'attack' || intent.type === 'multi_attack')
+          ? ` ${dmgRaw} → ${dmgDisplay} after modifiers`
+          : ` ${dmgRaw}`;
+        lines.push(`  Intent: ${intent.telegraph ?? intent.type} (${intent.type}${dmgStr}${hitStr})`);
       }
 
       // Enemy status effects

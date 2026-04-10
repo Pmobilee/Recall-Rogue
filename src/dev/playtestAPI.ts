@@ -12,6 +12,7 @@ import { readStore } from './storeBridge'
 import { turboDelay } from '../utils/turboMode'
 import { factsDB } from '../services/factsDB'
 import { RELIC_BY_ID } from '../data/relics'
+import { computeIntentDisplayDamage } from '../services/intentDisplay'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -169,7 +170,25 @@ function getCombatState(): Record<string, unknown> | null {
     enemyBlock: enemy?.block ?? 0,
     enemyIntent: enemy?.nextIntent ? {
       type: enemy.nextIntent.type,
+      /** Raw intent value from the enemy template (before global multipliers). */
       value: enemy.nextIntent.value,
+      /**
+       * Computed display damage — same scaling the Svelte UI shows.
+       * Applies GLOBAL_ENEMY_DAMAGE_MULTIPLIER, floor scaling, strength mods,
+       * difficulty variance, segment damage cap (first layer only — no runtime
+       * modifiers like enrage or Glass Cannon that change mid-encounter).
+       * Non-attack intents (defend, buff, debuff, heal, charge) return 0.
+       */
+      displayDamage: computeIntentDisplayDamage(
+        enemy.nextIntent,
+        enemy,
+        // Pass minimal scalingCtx from turnState if available for canary/ascension mods
+        turnState ? {
+          canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+          ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+          difficultyMode: turnState.difficultyMode,
+        } : undefined,
+      ),
       telegraph: enemy.nextIntent.telegraph,
       hitCount: enemy.nextIntent.hitCount,
       statusEffect: enemy.nextIntent.statusEffect ?? null,

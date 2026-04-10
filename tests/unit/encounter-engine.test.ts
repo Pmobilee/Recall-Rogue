@@ -403,16 +403,18 @@ describe('Enemy Manager', () => {
     it('creates enemy with scaled HP for floor 1', () => {
       const template = mockEnemyTemplate({ baseHP: 20 });
       const enemy = createEnemy(template, 1);
-      // 20 * 5.75 (ENEMY_BASE_HP_MULTIPLIER) * 1.0 (floor 1) = 115
-      expect(enemy.currentHP).toBe(115);
-      expect(enemy.maxHP).toBe(115);
+      // 20 * 4.75 (ENEMY_BASE_HP_MULTIPLIER) * 1.0 (floor 1, segment 1 scaling) = 95
+      // Updated 2026-04-10: ENEMY_BASE_HP_MULTIPLIER changed from 5.75 to 4.75 in balance pass 4c
+      expect(enemy.currentHP).toBe(95);
+      expect(enemy.maxHP).toBe(95);
     });
 
     it('scales HP for higher floors', () => {
       const template = mockEnemyTemplate({ baseHP: 20 });
       const enemy = createEnemy(template, 5);
-      // 20 * 5.75 * floor scaling (floor 5)
-      expect(enemy.currentHP).toBe(Math.round(20 * 5.75 * getFloorScaling(5)));
+      // 20 * 4.75 * floor scaling (floor 5)
+      // Updated 2026-04-10: ENEMY_BASE_HP_MULTIPLIER changed from 5.75 to 4.75 in balance pass 4c
+      expect(enemy.currentHP).toBe(Math.round(20 * 4.75 * getFloorScaling(5)));
     });
 
     it('starts in phase 1', () => {

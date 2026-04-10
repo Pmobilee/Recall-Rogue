@@ -118,10 +118,11 @@ describe('Assist mode activation (2+ wrong answers on floor)', () => {
     expect(state.enemyHpMultiplier).toBe(0.70);
   });
 
-  it('deep_assist damage multiplier is CANARY_DEEP_ASSIST_ENEMY_DMG_MULT (0.55)', () => {
+  it('deep_assist damage multiplier is CANARY_DEEP_ASSIST_ENEMY_DMG_MULT (0.45)', () => {
+    // Updated 2026-04-10: deep_assist enemy damage mult reduced 0.55→0.45 (balance pass 6)
     const state = getStateWithWrongs(CANARY_DEEP_ASSIST_WRONG_THRESHOLD);
     expect(state.enemyDamageMultiplier).toBe(CANARY_DEEP_ASSIST_ENEMY_DMG_MULT);
-    expect(state.enemyDamageMultiplier).toBe(0.55);
+    expect(state.enemyDamageMultiplier).toBe(0.45);
   });
 });
 
@@ -153,10 +154,11 @@ describe('Challenge mode activation (5+ correct streak)', () => {
     expect(state.mode).toBe('challenge');
   });
 
-  it('challenge mode HP multiplier is CANARY_CHALLENGE_ENEMY_HP_MULT_5 (1.25)', () => {
+  it('challenge mode HP multiplier is CANARY_CHALLENGE_ENEMY_HP_MULT_5 (1.20)', () => {
+    // Updated 2026-04-10: reverted from 1.50 to 1.20 in balance pass (comment in balance.ts)
     const state = getStateWithCorrects(CANARY_CHALLENGE_STREAK_THRESHOLD);
     expect(state.enemyHpMultiplier).toBe(CANARY_CHALLENGE_ENEMY_HP_MULT_5);
-    expect(state.enemyHpMultiplier).toBe(1.25);
+    expect(state.enemyHpMultiplier).toBe(1.20);
   });
 
   it('challenge mode damage multiplier is CANARY_CHALLENGE_ENEMY_DMG_MULT (1.15)', () => {
@@ -411,33 +413,39 @@ describe('Run-level tracking: accuracy tiers', () => {
     expect(state.runHpMultiplier).toBe(CANARY_RUN_STRONG_ASSIST_HP_MULT);
   });
 
-  it('mild assist: accuracy between 0.60 and 0.70 applies mild assist multipliers', () => {
-    // 65% accuracy
-    const state = stateWithRunAccuracy(0.65);
+  it('mild assist: accuracy at 0.70 (upper bound) returns mild assist multipliers', () => {
+    // Updated 2026-04-10: pass 5 introduced linear interpolation between strong and mild assist.
+    // At 0.65, the service interpolates t=0.5 → dmgMult=0.87, not the flat 0.86 endpoint.
+    // Use 0.70 exactly (14/20) to land at t=1.0 and get the pure mild-assist values.
+    const state = stateWithRunAccuracy(0.70); // 14/20 = 0.70
     expect(state.runDamageMultiplier).toBe(CANARY_RUN_MILD_ASSIST_DMG_MULT);
     expect(state.runHpMultiplier).toBe(CANARY_RUN_MILD_ASSIST_HP_MULT);
   });
 
-  it('neutral: accuracy between 0.70 and 0.80 applies no run-level scaling', () => {
-    // 75% accuracy
-    const state = stateWithRunAccuracy(0.75);
-    expect(state.runDamageMultiplier).toBe(1.0);
-    expect(state.runHpMultiplier).toBe(1.0);
+  it('challenge zone: accuracy 0.75 interpolates between mild and strong challenge (no neutral zone)', () => {
+    // Updated 2026-04-10: pass 5 eliminated the neutral zone. MILD_CHALLENGE_THRESHOLD = MILD_ASSIST_THRESHOLD = 0.70.
+    // 0.75 accuracy → falls in mild→strong challenge interpolation:
+    //   t = (0.75 - 0.70) / (0.85 - 0.70) ≈ 0.333
+    //   dmgMult = lerp(1.0, 1.20, 0.333) ≈ 1.067 (NOT 1.0)
+    // The old neutral zone (0.70-0.80) no longer exists.
+    const state = stateWithRunAccuracy(0.75); // 15/20 = 0.75
+    const dmg = state.runDamageMultiplier;
+    // dmg is between mild challenge start (1.0) and strong challenge end (1.20)
+    expect(dmg).toBeGreaterThan(1.0);
+    expect(dmg).toBeLessThan(CANARY_RUN_STRONG_CHALLENGE_DMG_MULT);
   });
 
-  it('mild challenge: accuracy between 0.80 and 0.85 applies mild challenge multipliers', () => {
-    // 82% accuracy = 0.80 < 0.82 <= 0.85, but NOT > 0.85
-    // stateWithRunAccuracy(0.82) → Math.round(0.82 * 20) = 16 correct → 16/20 = 0.80
-    // Need 17/20 = 0.85 exactly → that's the boundary. Use 16.5 rounds to 17... let's use exact values.
-    // 17 correct out of 20 = 0.85 → exactly at strong challenge boundary (> 0.85 is false)
-    // 16 correct out of 20 = 0.80 → exactly at mild challenge boundary (> 0.80 is false)
-    // Use 17 correct → 0.85 → not > 0.85, but > 0.80: mild challenge
+  it('strong challenge: accuracy 0.85 (upper end of interpolation) applies strong challenge multipliers', () => {
+    // Updated 2026-04-10: MILD_CHALLENGE_THRESHOLD is now 0.70 (not 0.80). 0.85 is the STRONG challenge endpoint.
+    // 17/20 = 0.85 → exactly at CANARY_RUN_STRONG_CHALLENGE_THRESHOLD:
+    //   t = (0.85 - 0.70) / (0.85 - 0.70) = 1.0
+    //   dmgMult = lerp(1.0, 1.20, 1.0) = 1.20 = CANARY_RUN_STRONG_CHALLENGE_DMG_MULT
     let state = createCanaryState();
     const answers = Array(17).fill(true).concat(Array(3).fill(false));
     for (const a of answers) state = recordCanaryAnswer(state, a);
-    // 17/20 = 0.85: > 0.80 but NOT > 0.85 → mild challenge
-    expect(state.runDamageMultiplier).toBe(CANARY_RUN_MILD_CHALLENGE_DMG_MULT);
-    expect(state.runHpMultiplier).toBe(CANARY_RUN_MILD_CHALLENGE_HP_MULT);
+    // 17/20 = 0.85: exactly at strong challenge threshold
+    expect(state.runDamageMultiplier).toBe(CANARY_RUN_STRONG_CHALLENGE_DMG_MULT);
+    expect(state.runHpMultiplier).toBe(CANARY_RUN_STRONG_CHALLENGE_HP_MULT);
   });
 
   it('strong challenge: accuracy above CANARY_RUN_STRONG_CHALLENGE_THRESHOLD applies strong challenge multipliers', () => {

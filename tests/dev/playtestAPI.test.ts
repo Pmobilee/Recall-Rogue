@@ -307,3 +307,107 @@ describe('getStudyPoolSize() — Phase 5', () => {
     expect(count).toBe(2)
   })
 })
+
+// ---------------------------------------------------------------------------
+// LOW-19: getCombatState() enemyIntent.displayDamage
+// ---------------------------------------------------------------------------
+
+// Mock computeIntentDisplayDamage so the test is unit-isolated
+vi.mock('../../src/services/intentDisplay', () => ({
+  computeIntentDisplayDamage: vi.fn((_intent: unknown, _enemy: unknown) => 16),
+}))
+
+describe('getCombatState() enemyIntent.displayDamage — LOW-19', () => {
+  const baseEnemy = {
+    template: { name: 'Slime' },
+    currentHP: 30,
+    maxHP: 40,
+    block: 0,
+    statusEffects: [],
+    nextIntent: {
+      type: 'attack',
+      value: 10,
+      telegraph: 'attack',
+      hitCount: 1,
+      statusEffect: null,
+    },
+    floor: 1,
+    difficultyVariance: 1,
+  }
+
+  const basePlayerState = {
+    hp: 60,
+    maxHP: 80,
+    shield: 0,
+    statusEffects: [],
+  }
+
+  function buildTurnState(overrides: Record<string, unknown> = {}) {
+    return {
+      playerState: basePlayerState,
+      playerHP: 60,
+      apCurrent: 3,
+      apMax: 3,
+      turn: 1,
+      cardsPlayedThisTurn: 0,
+      deck: { hand: [] },
+      enemy: baseEnemy,
+      ...overrides,
+    }
+  }
+
+  it('includes displayDamage in enemyIntent when intent is an attack', async () => {
+    setStore('rr:activeTurnState', buildTurnState())
+    setStore('rr:activeRunState', { currentFloor: 1, currentSegment: 1, currency: 0 })
+
+    const api = await getAPI()
+    const state = (api.getCombatState as () => Record<string, unknown> | null)()
+
+    expect(state).not.toBeNull()
+    const intent = state!.enemyIntent as Record<string, unknown>
+    expect(intent).not.toBeNull()
+    // Raw value preserved for backward compatibility
+    expect(intent.value).toBe(10)
+    // displayDamage computed via computeIntentDisplayDamage (mocked to return 16)
+    expect(intent.displayDamage).toBe(16)
+  })
+
+  it('displayDamage is 0 for non-attack intent (defend)', async () => {
+    const { computeIntentDisplayDamage } = await import('../../src/services/intentDisplay')
+    ;(computeIntentDisplayDamage as ReturnType<typeof vi.fn>).mockReturnValueOnce(0)
+
+    const defendEnemy = {
+      ...baseEnemy,
+      nextIntent: { type: 'defend', value: 8, telegraph: 'defend', hitCount: 1, statusEffect: null },
+    }
+    setStore('rr:activeTurnState', buildTurnState({ enemy: defendEnemy }))
+    setStore('rr:activeRunState', { currentFloor: 1 })
+
+    const api = await getAPI()
+    const state = (api.getCombatState as () => Record<string, unknown> | null)()
+    const intent = state!.enemyIntent as Record<string, unknown>
+    expect(intent.displayDamage).toBe(0)
+  })
+
+  it('returns null enemyIntent when enemy has no nextIntent', async () => {
+    const noIntentEnemy = { ...baseEnemy, nextIntent: undefined }
+    setStore('rr:activeTurnState', buildTurnState({ enemy: noIntentEnemy }))
+    setStore('rr:activeRunState', { currentFloor: 1 })
+
+    const api = await getAPI()
+    const state = (api.getCombatState as () => Record<string, unknown> | null)()
+    expect(state!.enemyIntent).toBeNull()
+  })
+
+  it('displayDamage differs from raw value for multiplied attacks', async () => {
+    // Raw: 10, display: 16 (×1.60 multiplier, floor scaling etc.)
+    const api = await getAPI()
+    setStore('rr:activeTurnState', buildTurnState())
+    setStore('rr:activeRunState', { currentFloor: 1 })
+    const state = (api.getCombatState as () => Record<string, unknown> | null)()
+    const intent = state!.enemyIntent as Record<string, unknown>
+    // The mock returns 16 — confirm it differs from the raw 10
+    expect(intent.displayDamage).not.toBe(intent.value)
+    expect(typeof intent.displayDamage).toBe('number')
+  })
+})

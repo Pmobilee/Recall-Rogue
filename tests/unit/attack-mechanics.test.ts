@@ -148,21 +148,22 @@ describe('multi_hit mechanic', () => {
 });
 
 // ── 3. heavy_strike ──────────────────────────────────────────────────────────
-// Stat table L0: qpValue=6 (mechanic quickPlayValue=10, masteryBonus=6-10=-4)
-// QP=6, CC=round(6*1.50)=9, CW=max(0, 7+(-4))=3 (chargeWrongValue=7)
+// Stat table L0: qpValue=7 (mechanic quickPlayValue=10, masteryBonus=7-10=-3)
+// QP=7, CC=round(7*1.50)=round(10.5)=11, CW=max(0, 7+(-3))=4 (chargeWrongValue=7)
 // apCost=2 at L0 (from stat table)
+// Updated 2026-04-10: qpValue bumped from 6→7 in MASTERY_STAT_TABLES balance pass
 
 describe('heavy_strike mechanic', () => {
-  it('QP: deals 6 damage (stat table L0 qpValue=6)', () => {
-    expect(resolve('heavy_strike', 'quick').damageDealt).toBe(6);
+  it('QP: deals 7 damage (stat table L0 qpValue=7)', () => {
+    expect(resolve('heavy_strike', 'quick').damageDealt).toBe(7);
   });
 
-  it('CC: deals 9 damage (round(6*1.50)=9)', () => {
-    expect(resolve('heavy_strike', 'charge_correct').damageDealt).toBe(9);
+  it('CC: deals 11 damage (round(7*1.50)=round(10.5)=11)', () => {
+    expect(resolve('heavy_strike', 'charge_correct').damageDealt).toBe(11);
   });
 
-  it('CW: deals 3 damage (chargeWrongValue=7 + masteryBonus=-4 = 3)', () => {
-    expect(resolve('heavy_strike', 'charge_wrong').damageDealt).toBe(3);
+  it('CW: deals 4 damage (chargeWrongValue=7 + masteryBonus=-3 = 4)', () => {
+    expect(resolve('heavy_strike', 'charge_wrong').damageDealt).toBe(4);
   });
 
   it('apCost is 2 at L0 (expensive heavy attack)', () => {
