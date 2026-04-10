@@ -11,11 +11,11 @@ Generate pixel art RPG scene cover art for curated decks, with a hover parallax 
 ## Architecture
 
 ```
-OpenRouter (google/gemini-2.5-flash-image) → deck front image (768×1024, 3:4)
+scripts/generate-deckfronts.mjs (diff decks vs deployed)
         ↓
-Deploy accepted variant as {id}.webp → public/assets/sprites/deckfronts/
+OpenRouter google/gemini-2.5-flash-image → 768×1024 portrait
         ↓
-DepthAnythingV2 → depth map stored as {id}_depth.webp (future use only)
+sharp → public/assets/sprites/deckfronts/{id}.webp (quality 90, nearest)
         ↓
 DeckTileV2 renders single-image CSS parallax on hover
 ```
@@ -59,48 +59,57 @@ absolutely no readable text no letters no numbers no words no symbols that resem
 5. NEVER include readable text — mandatory anti-text suffix
 6. Avoid painted, illustrated, or grimoire styles — the "painted grimoire cover" aesthetic was tested and rejected by the user as "cringe"
 
-## Workflow
+## Workflow — One-Shot Direct Generation (Canonical, 2026-04-10)
 
-### 1. Add Artstudio Entry
-Add entry to `sprite-gen/cardback-tool/artstudio-items.json` under `"deckfronts"`:
-```json
-{
-  "id": "{deckId}",
-  "name": "{Display Name}",
-  "concept": "{Brief visual concept}",
-  "prompt": "{Subject + style suffix}",
-  "targetWidth": 768,
-  "targetHeight": 1024,
-  "variants": []
-}
-```
+**Per user feedback: skip the artstudio UI review loop. Generate one variant directly via OpenRouter and deploy immediately.** The "queue 3, review, accept, copy" flow was replaced because it was high-friction for bulk generation. When the user says "generate deck fronts", use this script — no questions asked.
 
-### 2. Generate via Artstudio
+### Standard flow
 ```bash
-cd sprite-gen/cardback-tool && node server.mjs
-# Then POST /api/artstudio/generate with { "id": "{deckId}", "category": "deckfronts", "count": 3 }
-# Or use the artstudio UI at http://localhost:5175/artstudio.html
-```
-Deckfronts use OpenRouter (NOT ComfyUI). Portrait dimensions auto-select `google/gemini-2.5-flash-image`.
+# Generate all missing deckfronts (diffs data/decks/ vs public/assets/sprites/deckfronts/)
+node scripts/generate-deckfronts.mjs
 
-### 3. Accept Best Variant
-Review variants in artstudio UI, click Accept on best one.
+# Specific decks
+node scripts/generate-deckfronts.mjs --id anime_manga,chess_tactics
 
-### 4. Deploy
-Copy accepted variant and convert to webp:
-```bash
-mkdir -p public/assets/sprites/deckfronts
-# Use sharp or imagemagick to convert PNG to WebP:
-npx sharp-cli -i sprite-gen/cardback-tool/artstudio-output/deckfronts/{id}/variant-{n}.png -o public/assets/sprites/deckfronts/{id}.webp --format webp --quality 90
+# Regenerate existing
+node scripts/generate-deckfronts.mjs --id philosophy --force
 ```
 
-### 5. Generate Depth Map (stored for future use)
+### How it works
+1. Enumerates `data/decks/*.json`, collapses language families via `PARENT_PREFIXES` (japanese/chinese/korean/spanish/french/german/dutch/czech)
+2. Diffs against `public/assets/sprites/deckfronts/*.webp` to find missing
+3. For each missing deck, builds a prompt from `DECK_PROMPTS` (hand-authored subjects for known decks) or a themed fallback derived from the deck name
+4. Calls OpenRouter `google/gemini-2.5-flash-image` (Nano Banana) at 768×1024 portrait
+5. Writes directly to `public/assets/sprites/deckfronts/{id}.webp` via sharp (quality 90, nearest-neighbor resize to preserve pixel edges)
+6. No review, no accept step, no artstudio entry required
+
+### Adding a new themed deck prompt
+Edit `DECK_PROMPTS` in `scripts/generate-deckfronts.mjs`:
+```js
+my_new_deck: {
+  palette: '2-3 color description (e.g. "deep teal and warm amber")',
+  subject: 'underground/dungeon scene with thematic props...',
+},
+```
+The script assembles: `STYLE_LEAD + subject + STYLE_SUFFIX(palette)`. If you omit the entry, the fallback produces a generic dungeon themed by deck name — fine for quick coverage, better to hand-author for hero decks.
+
+### Studying existing style before authoring prompts
+Before adding to `DECK_PROMPTS`, browse existing entries in both:
+- `scripts/generate-deckfronts.mjs` → `DECK_PROMPTS` (current source of truth)
+- `sprite-gen/cardback-tool/artstudio-items.json` → `deckfronts` (historical reference for the 65 previously-generated decks)
+
+Match the existing vocabulary: "underground", "dungeon", "mossy stone", "dithered shadows", "torchlight", "cavern", "cracked flagstones". Every scene is interior/subterranean — never open sky.
+
+### Legacy artstudio-items.json
+Entries for decks generated before 2026-04-10 remain in `sprite-gen/cardback-tool/artstudio-items.json`. New decks no longer need an entry there — the standalone script is authoritative.
+
+### Optional: depth maps (stored for future use only)
 ```bash
 python3 scripts/generate_depth_maps.py --deckfronts
 ```
-This generates `{id}_depth.webp` alongside each color image. The current parallax CSS does not use it — it is stored in case the two-layer depth parallax approach is revisited in the future.
+Current parallax CSS does not use depth maps — skip unless the two-layer approach is being revisited.
 
-### 6. Verify
+### Verify
 Start dev server and navigate to Study Temple. Verify:
 - Image appears on correct deck tiles (including ALL-tab synthetic IDs like `all:japanese`)
 - Parallax shift works on hover (single image shifts against pointer direction)
