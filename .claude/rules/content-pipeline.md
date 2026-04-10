@@ -9,7 +9,43 @@
 - Grep for known broken patterns: "the this", "a this", "which this", "[Adjective] this", standalone "this" as noun
 - Verify grammar reads naturally as proper English
 - If >5% of samples are broken, reject the batch and rephrase individually
+- **After committing any batch rewrite, run `node scripts/verify-all-decks.mjs`** — Check #32 is a HARD FAIL on grammar scar patterns from `scripts/content-pipeline/grammar-scar-patterns.json`. This catches double articles ("a the", "the the"), hyphenated placeholders ("-the concept"), and other specific broken forms that manual sampling can miss. Manual sampling + automated check are BOTH required.
+- To add a new grammar scar pattern: append to `scripts/content-pipeline/grammar-scar-patterns.json`. Patterns must be specific enough to avoid false positives — see the `_note` field in that file for guidance.
 - Examples of placeholder leaks caught by sampling: "Joseph This" → should be "Joseph Haydn", "Federal this" → should be "Federal Reserve", "device process" → should be "Bessemer process".
+
+## Template-literal Audit for Programmatic Distractors (added 2026-04-10)
+
+**After ANY programmatic distractor generation (scripts, LLM batch, manual entry), grep the output for raw brace characters before committing.**
+
+On 2026-04-10, 89 synthetic distractors shipped in `{N}` bracket-notation format (e.g. `{7}`, `{1990}`, `{2} bya`) across 7 curated decks. These displayed literally in the quiz UI instead of rendering as plain numbers, because the bracket system expects `{N}` to appear only in `correctAnswer` fields — not in distractor arrays.
+
+**Root cause pattern:** A generator builds numeric synthetic distractors using a format like `'{' + value + '}'` or `` `{${value}}` `` instead of just `String(value)`. The resulting string is bracket-notation, not a plain number.
+
+**Mandatory post-generation check:**
+```bash
+# Detects any {N} bracket tokens in syntheticDistractors arrays
+# Replace data/decks/*.json with your target deck path
+python3 -c "
+import json, os, glob
+for path in glob.glob('data/decks/*.json'):
+    deck = json.load(open(path))
+    for pool in deck.get('answerTypePools', []):
+        for d in pool.get('syntheticDistractors', []):
+            if isinstance(d, str) and ('{' in d or '}' in d) and '{___}' not in d:
+                print(f'BRACE LEAK {path}/{pool[\"id\"]}: {repr(d)}')
+"
+```
+
+**Correct pattern:**
+```js
+// BAD — produces '{7}' (bracket-notation token, not a number)
+const distractor = `{${numericValue}}`
+
+// GOOD — produces '7' (plain number string)
+const distractor = String(numericValue)
+```
+
+**Detection is also enforced by `verify-all-decks.mjs` Check #31** — any `syntheticDistractor` containing `{` or `}` causes a HARD FAIL with the pool ID and offending string.
 
 ## Curriculum-Sourced Scope — For Educational Decks
 

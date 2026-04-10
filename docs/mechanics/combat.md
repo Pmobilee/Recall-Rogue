@@ -266,6 +266,41 @@ Applies layer 1 inline (mirrors executeEnemyIntent math without side-effects), t
 
 **Defeat:** `playerState.hp <= 0` after `takeDamage()` or poison ticks. `resolveLethalEffects()` checked first — `last_breath` relic saves to 1 HP (once per encounter); `phoenix_feather` saves to a % of maxHP and grants 1 turn of auto-Charge. If no save: `result = 'defeat'`, `phase = 'encounter_end'`.
 
+## Run Termination State Machine (added 2026-04-10)
+
+When an encounter ends with `result = 'defeat'` or the player retreats, the run must terminate correctly through the RunEndScreen. **No path may jump directly to hub.**
+
+```
+encounter result = 'defeat'  OR  player clicks Retreat
+        |
+gameFlowController.onEncounterComplete('defeat') / onRetreat()
+        |
+finishRunAndReturnToHub(run, endData, summary)
+  - calls endRun(run, 'defeat'|'retreat') -> builds RunEndData
+  - awards XP, currency, achievements
+  - clears activeRunState
+  - sets activeRunEndData (RunEndScreen reads this)
+  - calls currentScreen.set('runEnd')  <- INVARIANT: always runEnd, never hub
+        |
+CardApp renders RunEndScreen (currentScreen === 'runEnd')
+  - shows floor reached, facts, accuracy, XP gained, defeated enemies
+        |
+Player clicks 'Play Again' -> playAgain() -> currentScreen.set('hub')
+Player clicks 'Return to Hub' -> returnToMenu() -> currentScreen.set('hub')
+```
+
+**Termination paths and their handler:**
+
+| Trigger | Handler | Goes through finishRunAndReturnToHub? |
+|---|---|---|
+| playerHp <= 0 (combat death) | `onEncounterComplete('defeat')` | Yes |
+| Player retreats (retreat/delve screen) | `onRetreat()` | Yes |
+| Dev abandon | `abandonActiveRun()` | No — direct hub, no run data shown |
+| Campfire exit (run preserved) | `returnToHubFromCampfire()` | No — run is saved, not ended |
+
+**Regression test:** `src/services/gameFlowController.termination.test.ts` (MEDIUM-10).
+**Rule doc:** `.claude/rules/save-load.md` (Run Lifecycle Termination Invariants subsection).
+
 ---
 
 ## Post-Encounter Healing

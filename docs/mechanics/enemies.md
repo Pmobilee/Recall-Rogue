@@ -30,7 +30,7 @@ damage = round((intent.value + enrageBonusDamage) × strengthModifier × getFloo
 ```
 - Floors 1–6: `FLOOR_DAMAGE_SCALE_MID = 1.0` (reduced from 1.2 in balance pass #2, 2026-04-03)
 - Floors 7+: `1.0 + (floor - 6) × FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.06 per floor above 6)
-- `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 2.0` (added 2026-04-08 Ch12.1 — flat x2 all enemy attacks across all acts)
+- `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.60` (added 2026-04-08 Ch12.1; tuned from 2.0 → 1.60 in subsequent passes — see balance history below)
 
 ### Per-Turn Damage Caps (`ENEMY_TURN_DAMAGE_CAP`)
 Charged attacks with `bypassDamageCap: true` skip these caps.
@@ -39,9 +39,9 @@ Charged attacks with `bypassDamageCap: true` skip these caps.
 
 | Segment | Floors | Cap | Rationale |
 |---|---|---|---|
-| 1 | 1–6 | 22 | Raised from 14 (2026-04-09: Act 1 enemies need scarier damage) |
-| 2 | 7–12 | 28 | Doubled from 14 (2026-04-08 Ch12.1) |
-| 3 | 13–18 | 40 | Doubled from 20 (2026-04-08 Ch12.1) |
+| 1 | 1–6 | 16 | Was 22 (2026-04-09: reduced alongside GLOBAL multiplier tuning) |
+| 2 | 7–12 | 22 | Was 28 (2026-04-09 pass 2: Act 2 cap reduction) |
+| 3 | 13–18 | 32 | Was 40 (2026-04-09 pass 2: Act 3 cap reduction) |
 | 4 | 19–24 | 56 | Doubled from 28 (2026-04-08 Ch12.1) |
 | endless | 25+ | none | — |
 
@@ -594,7 +594,9 @@ Enemies telegraph next action via `EnemyIntent.telegraph`. Selected by `weighted
 
 **Root cause:** Playtest 2026-04-08 revealed all player profiles except master were surviving too easily. Enemy damage felt inconsequential and master-tier was winning too often (93%) for a roguelite. Decision: flat x2 global multiplier to raise pressure across all acts uniformly.
 
-**Change:** Added `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 2.0` in `balance.ts`. Applied in `executeEnemyIntent()` to both `attack` and `multi_attack` intent cases. Damage caps doubled proportionally so cap ratios remain the same relative to base enemy output.
+**Change (original):** Added `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 2.0` in `balance.ts`. Applied in `executeEnemyIntent()` to both `attack` and `multi_attack` intent cases. Damage caps doubled proportionally so cap ratios remain the same relative to base enemy output.
+
+**Subsequent tuning:** Multiplier reduced 2.0 → 1.60 in balance pass 4d (2026-04-09). Damage caps also revised: Seg 1 22→16, Seg 2 28→22, Seg 3 40→32. Current live value: `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.60`.
 
 **Pre-change sim results (500 runs each):**
 | Profile | Win rate |

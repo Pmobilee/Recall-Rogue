@@ -514,6 +514,8 @@ The  plus  centers the title horizontally over the art, independent of its text 
 
 **Badge depth layer** — `.has-image .badge` applies `transform: translateZ(calc(30px * var(--layout-scale, 1)))` — slightly less depth than the title so the badge and title have distinct Z planes.
 
+**Badge contrast** — All `.badge` elements receive `box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.25)` to ensure separation from any deck art background (LOW-18: purple badge was invisible against Philosophy's purple/indigo art). White-text badges (NEW, CONTINUE) also get `text-shadow: 0 1px 2px rgba(0,0,0,0.4)`. Badge opacity increased from 0.85 to 0.95.
+
 **Non-image tiles** — The original centered layout and stacked text-shadow are unchanged when `hasImage` is `false`. Both code paths are fully independent.
 
 

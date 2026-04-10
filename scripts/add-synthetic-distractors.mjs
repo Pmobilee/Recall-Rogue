@@ -838,8 +838,23 @@ const DOMAIN_BANKS = {
 
 // ---------------------------------------------------------------------------
 // Helper: is this a bracket-number pool?
+// Two detection strategies — both must agree before adding synthetics:
+//   (a) Pool ID name matches known bracket-pool naming patterns
+//   (b) At least one sampled fact has correctAnswer wrapped in {N} bracket notation
+// The double-check prevents both false positives and false negatives.
+// 2026-04-10: Strengthened after {N} distractors leaked into bracket pools.
 // ---------------------------------------------------------------------------
+const BRACKET_POOL_ID_PATTERNS = [
+  /bracket/i,
+  /launch_year/i,
+  /inauguration_year/i,
+  /geological_timescale/i,
+];
+
 function isBracketPool(pool, facts) {
+  // Strategy (a): pool ID name matches known bracket pool patterns
+  if (BRACKET_POOL_ID_PATTERNS.some((re) => re.test(pool.id))) return true;
+  // Strategy (b): sampled facts have {N}-format correctAnswer
   const ids = pool.factIds || [];
   if (ids.length === 0) return false;
   const sample = facts.filter((f) => ids.includes(f.id)).slice(0, 3);
@@ -957,6 +972,12 @@ for (const file of deckFiles) {
       const lower = c.toLowerCase().trim();
       if (allCorrectAnswers.has(lower)) continue;
       if (seen.has(lower)) continue;
+      // SAFETY: never emit a distractor containing raw braces (bracket-notation tokens).
+      // A brace in a synthetic distractor means the value was incorrectly formatted
+      // as bracket notation and will display as literal '{N}' in the quiz UI.
+      // Fill-in-blank {___} tokens should never appear in distractors at all.
+      // 2026-04-10: Added after {N} tokens leaked into 7 decks (89 distractors).
+      if (/[{}]/.test(c)) continue;
       seen.add(lower);
       safe.push(c);
     }

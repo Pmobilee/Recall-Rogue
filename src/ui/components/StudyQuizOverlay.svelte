@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { QuizQuestion } from '../../services/bossQuizPhase'
+  import { currentScreen } from '../stores/gameState'
   import { isLandscape } from '../../stores/layoutStore'
   import GrammarSentenceFurigana from './GrammarSentenceFurigana.svelte'
   import { deckOptions } from '../../services/deckOptionsService'
@@ -10,9 +11,22 @@
   interface Props {
     questions: QuizQuestion[]
     oncomplete: (correctFactIds: string[]) => void
+    /** Optional back handler. Called when the user dismisses from the empty state.
+     *  If not provided, navigates to 'hub'. */
+    onback?: () => void
   }
 
-  let { questions, oncomplete }: Props = $props()
+  let { questions, oncomplete, onback }: Props = $props()
+
+  /** Navigate back — used in the empty state and always-visible escape hatch.
+   *  Calls the caller-supplied onback if provided, otherwise returns to hub. */
+  function handleBack(): void {
+    if (onback) {
+      onback()
+    } else {
+      currentScreen.set('hub')
+    }
+  }
 
   /** Returns a short label for a question to use in the upgrade preview. */
   function getUpgradeLabel(factId: string): string {
@@ -134,7 +148,28 @@
 
 <div class="study-overlay" class:landscape={$isLandscape}>
   <div class="study-card">
-    {#if !done}
+    {#if questions.length === 0}
+      <!-- Empty state — no study cards available (e.g. called from hub without an active run) -->
+      <!-- Softlock prevention: always renders a dismiss control. See docs/gotchas.md 2026-04-10 -->
+      <div class="empty-state" data-testid="study-empty-state">
+        <span class="empty-icon" aria-hidden="true">📚</span>
+        <h2 class="empty-title">No Cards to Review</h2>
+        <p class="empty-message">Start a run and visit a rest room to unlock study mode.</p>
+        <button
+          class="back-btn"
+          data-testid="study-back-btn"
+          onclick={handleBack}
+          aria-label="Return to hub"
+        >Return to Hub</button>
+      </div>
+    {:else if !done}
+      <!-- Always-visible escape hatch — softlock prevention rule (ui-layout.md) -->
+      <button
+        class="overlay-back-btn"
+        data-testid="study-back-btn"
+        onclick={handleBack}
+        aria-label="Return to hub"
+      >&#x2190; Back</button>
       <div class="question-header">
         <span class="question-number">Question {currentIndex + 1} / {questions.length}</span>
         <div class="progress-dots">
@@ -631,5 +666,74 @@
 
   .study-overlay.landscape .answer-btn {
     text-align: center;
+  }
+
+  /* === Empty state (no questions available) === */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(16px * var(--layout-scale, 1));
+    padding: calc(24px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    text-align: center;
+  }
+
+  .empty-icon {
+    font-size: calc(48px * var(--layout-scale, 1));
+  }
+
+  .empty-title {
+    font-family: var(--font-pixel, monospace);
+    font-size: calc(18px * var(--text-scale, 1));
+    color: #7C3AED;
+    margin: 0;
+  }
+
+  .empty-message {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #8B949E;
+    margin: 0;
+    max-width: calc(280px * var(--layout-scale, 1));
+    line-height: 1.5;
+  }
+
+  .back-btn {
+    margin-top: calc(8px * var(--layout-scale, 1));
+    background: #484F58;
+    border: 1px solid #7C3AED;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1)) calc(28px * var(--layout-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
+    font-family: var(--font-pixel, monospace);
+    color: #fff;
+    cursor: pointer;
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    transition: background 0.15s;
+  }
+
+  .back-btn:hover {
+    background: #6D28D9;
+    border-color: #8B5CF6;
+  }
+
+  /* Always-visible escape hatch — softlock prevention (ui-layout.md §Softlock prevention) */
+  .overlay-back-btn {
+    align-self: flex-start;
+    background: transparent;
+    border: 1px solid #484F58;
+    border-radius: calc(6px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #8B949E;
+    cursor: pointer;
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .overlay-back-btn:hover {
+    color: #E6EDF3;
+    border-color: #7C3AED;
   }
 </style>

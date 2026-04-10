@@ -25,6 +25,7 @@
   import { playCardAudio } from '../../services/cardAudioManager'
   import { ambientAudio } from '../../services/ambientAudioService'
   import { LIGHT_SOURCE_MANIFEST } from '../../data/lightSourceManifest'
+  import { devMode } from '../stores/devMode'
 
   interface Props {
     streak: number
@@ -387,6 +388,7 @@
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('doorway', forms.doorway)}
         label="Start Run"
+        tooltip="Enter the dungeon and begin a new expedition"
         testId="btn-start-run"
         zIndex={5}
         onclick={handleStartRun}
@@ -399,6 +401,7 @@
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('library', forms.library)}
         label="Library"
+        tooltip="Browse your collected facts and knowledge"
         zIndex={10}
         onclick={onOpenLibrary}
         hitTop="31%" hitLeft="2%" hitWidth="32%" hitHeight="23%"
@@ -410,6 +413,7 @@
       <CampSpriteButton
         spriteUrl={getCampSettingsUrl()}
         label="Settings"
+        tooltip="Adjust game settings and preferences"
         zIndex={10}
         onclick={onOpenSettings}
         hitTop="29%" hitLeft="76%" hitWidth="16%" hitHeight="18%"
@@ -421,6 +425,7 @@
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('questboard', forms.questboard)}
         label="Leaderboards"
+        tooltip="View global rankings and challenge friends"
         zIndex={15}
         onclick={onOpenLeaderboards}
         hitTop="75%" hitLeft="72%" hitWidth="26%" hitHeight="20%"
@@ -432,6 +437,7 @@
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('journal', forms.journal)}
         label="Journal"
+        tooltip="Review your past expedition logs and history"
         zIndex={15}
         onclick={onOpenJournal}
         hitTop="76%" hitLeft="5%" hitWidth="23%" hitHeight="9%"
@@ -443,6 +449,7 @@
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('shop', forms.shop)}
         label="Relic Collection"
+        tooltip="Upgrade your camp and view relic collection"
         zIndex={15}
         onclick={openUpgradeModal}
         hitTop="61%" hitLeft="-21%" hitWidth="19%" hitHeight="11%"
@@ -455,6 +462,7 @@
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('tent', forms.tent)}
         label="Multiplayer"
+        tooltip="Play co-op or competitive modes with others"
         zIndex={20}
         onclick={onOpenMultiplayer}
         hitTop="40%" hitLeft="90%" hitWidth="30%" hitHeight="20%"
@@ -467,6 +475,7 @@
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('campfire', forms.campfire)}
         label="Campfire"
+        tooltip="The heart of your camp — click for luck"
         zIndex={25}
         onclick={handleCampfireClick}
         hitTop="55%" hitLeft="38%" hitWidth="24%" hitHeight="18%"
@@ -492,6 +501,7 @@
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('character', forms.character)}
         label="Profile"
+        tooltip="View your scholar profile, stats, and achievements"
         zIndex={30}
         onclick={onOpenProfile}
         hitTop="58%" hitLeft="54%" hitWidth="21%" hitHeight="11%"
@@ -504,6 +514,7 @@
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('pet', forms.pet)}
         label="Pet"
+        tooltip="Your loyal companion — give them a pat"
         zIndex={35}
         onclick={showPetBubble}
         hitTop="69%" hitLeft="60%" hitWidth="11%" hitHeight="6%"
@@ -543,7 +554,8 @@
         <CampUpgradeModal onClose={() => { showUpgradeModal = false }} />
       {/if}
 
-      <div class="dev-btn-row">
+{#if $devMode}
+      <div class="dev-btn-row" data-dev-only="true">
         {#if onReplayBootAnim}
           <button class="dev-btn" onclick={onReplayBootAnim}>Intro</button>
         {/if}
@@ -554,6 +566,7 @@
         <button class="dev-btn" onclick={testBrightIdea}>BrightIdea</button>
         <button class="dev-btn" onclick={testInkSlug}>InkSlug</button>
       </div>
+      {/if}
 
       {#if transitionActive}
         <ParallaxTransition
@@ -610,6 +623,7 @@
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('doorway', forms.doorway)}
       label="Start Run"
+      tooltip="Enter the dungeon and begin a new expedition"
       testId="btn-start-run"
       zIndex={5}
       onclick={onStartRun}
@@ -623,6 +637,7 @@
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('library', forms.library)}
       label="Library"
+      tooltip="Browse your collected facts and knowledge"
       zIndex={10}
       onclick={onOpenLibrary}
       hitTop="31%" hitLeft="2%" hitWidth="32%" hitHeight="23%"
@@ -634,6 +649,7 @@
     <CampSpriteButton
       spriteUrl={getCampSettingsUrl()}
       label="Settings"
+      tooltip="Adjust game settings and preferences"
       zIndex={10}
       onclick={onOpenSettings}
       hitTop="29%" hitLeft="76%" hitWidth="16%" hitHeight="18%"
@@ -645,6 +661,7 @@
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('questboard', forms.questboard)}
       label="Leaderboards"
+      tooltip="View global rankings and challenge friends"
       zIndex={15}
       onclick={onOpenLeaderboards}
       hitTop="75%" hitLeft="72%" hitWidth="26%" hitHeight="20%"
@@ -656,6 +673,7 @@
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('journal', forms.journal)}
       label="Journal"
+      tooltip="Review your past expedition logs and history"
       zIndex={15}
       onclick={onOpenJournal}
       hitTop="76%" hitLeft="5%" hitWidth="23%" hitHeight="9%"
@@ -667,6 +685,7 @@
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('shop', forms.shop)}
       label="Relic Collection"
+      tooltip="Upgrade your camp and view relic collection"
       zIndex={15}
       onclick={openUpgradeModal}
       hitTop="87%" hitLeft="52%" hitWidth="19%" hitHeight="11%"
@@ -678,6 +697,7 @@
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('tent', forms.tent)}
       label="Multiplayer"
+      tooltip="Play co-op or competitive modes with others"
       zIndex={20}
       onclick={onOpenMultiplayer}
       hitTop="44%" hitLeft="66%" hitWidth="36%" hitHeight="22%"
@@ -689,6 +709,7 @@
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('campfire', forms.campfire)}
       label="Campfire"
+      tooltip="The heart of your camp — click for luck"
       zIndex={25}
       onclick={handleCampfireClick}
       hitTop="55%" hitLeft="38%" hitWidth="24%" hitHeight="18%"
@@ -714,6 +735,7 @@
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('character', forms.character)}
       label="Profile"
+      tooltip="View your scholar profile, stats, and achievements"
       zIndex={30}
       onclick={onOpenProfile}
       hitTop="58%" hitLeft="54%" hitWidth="21%" hitHeight="11%"
@@ -726,6 +748,7 @@
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('pet', forms.pet)}
       label="Pet"
+      tooltip="Your loyal companion -- give them a pat"
       zIndex={35}
       onclick={showPetBubble}
       hitTop="69%" hitLeft="60%" hitWidth="11%" hitHeight="6%"
@@ -770,7 +793,8 @@
       <CampUpgradeModal onClose={() => { showUpgradeModal = false }} />
     {/if}
 
-    <div class="dev-btn-row">
+{#if $devMode}
+    <div class="dev-btn-row" data-dev-only="true">
       {#if onReplayBootAnim}
         <button class="dev-btn" onclick={onReplayBootAnim}>Intro</button>
       {/if}
@@ -778,6 +802,7 @@
       <button class="dev-btn" onclick={previewExit}>Exit</button>
       <button class="dev-btn" onclick={fakeRunEnd}>RunEnd</button>
     </div>
+    {/if}
 
     {#if transitionActive}
       <ParallaxTransition

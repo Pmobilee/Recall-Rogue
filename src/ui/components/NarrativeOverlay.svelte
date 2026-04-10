@@ -2,35 +2,82 @@
   Full-screen atmospheric narrative overlay for room transitions and NPC dialogue.
 
   Auto-reveal: lines appear automatically without requiring a click.
-  After all lines are visible, narration stays until player clicks to continue.
-  Clicking during auto-reveal cancels the timer and jumps to the final settled state.
+  After all lines are visible, narration stays until player clicks to continue
+  OR the auto-dismiss timer expires (default 10s, configurable via AUTO_DISMISS_MS).
 
-  State machine: REVEALING → DISSOLVING → DONE
+  MEDIUM-11 (2026-04-10): Added auto-dismiss timer (10s after last line settles) and
+  improved hint contrast/size so it is unmissable. Persistent skip preference: if user
+  manually dismisses 3+ overlays in a row, a toast offers "Always skip narrative overlays?"
+  and sets setting_skipNarrativeOverlays in localStorage. When the skip preference is set,
+  the overlay jumps immediately to dissolve on mount.
+
+  State machine: REVEALING -> DISSOLVING -> DONE
   - REVEALING: lines appear one at a time via auto-reveal timers (or on click).
-    Clicking during a line's CSS animation (< 0.8s) skips to fully visible.
+    Clicking during a line CSS animation (< 0.8s) skips to fully visible.
     Clicking when fully visible and more lines remain: cancels auto-reveal, settles all.
     Clicking when on the last settled line begins DISSOLVING.
   - DISSOLVING: ash animation plays out, clicks ignored, onDismiss fires after
     all lines finish (0.8s + 0.15s * (numLines - 1) + 0.3s grace).
   - DONE: onDismiss called.
 
-  Design spec: docs/mechanics/narrative.md §Display System
-  Scaling rules: docs/ui/layout.md — calc(Npx * var(--layout-scale|--text-scale, 1))
+  Design spec: docs/mechanics/narrative.md Display System
+  Scaling rules: docs/ui/layout.md - calc(Npx * var(--layout-scale|--text-scale, 1))
 -->
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte'
   import type { NarrativeLine } from '../../services/narrativeTypes'
 
-  // ── Props ──────────────────────────────────────────────────
+  // Props
   interface Props {
     lines: NarrativeLine[];
-    /** Kept for API compatibility — ignored. Always behaves as auto-reveal. */
+    /** Kept for API compatibility -- ignored. Always behaves as auto-reveal. */
     mode?: 'auto-fade' | 'click-through';
     onDismiss: () => void;
   }
   let { lines, onDismiss }: Props = $props()
 
-  // ── State machine ──────────────────────────────────────────
+  // Skip preference (MEDIUM-11)
+  const SKIP_PREF_KEY = 'setting_skipNarrativeOverlays'
+  const CONSECUTIVE_DISMISS_KEY = 'setting_narrativeConsecutiveDismisses'
+  const CONSECUTIVE_THRESHOLD = 3   // suggest always-skip after 3 manual dismissals
+
+  function readSkipPref(): boolean {
+    if (typeof window === 'undefined') return false
+    return window.localStorage.getItem(SKIP_PREF_KEY) === 'true'
+  }
+
+  function readConsecutiveDismisses(): number {
+    if (typeof window === 'undefined') return 0
+    return parseInt(window.localStorage.getItem(CONSECUTIVE_DISMISS_KEY) ?? '0', 10) || 0
+  }
+
+  function writeConsecutiveDismisses(n: number): void {
+    if (typeof window === 'undefined') return
+    window.localStorage.setItem(CONSECUTIVE_DISMISS_KEY, String(n))
+  }
+
+  function setSkipPref(enabled: boolean): void {
+    if (typeof window === 'undefined') return
+    window.localStorage.setItem(SKIP_PREF_KEY, String(enabled))
+    writeConsecutiveDismisses(0)
+  }
+
+  /** Whether always-skip preference is active. */
+  let skipPrefActive = $state(readSkipPref())
+
+  /** Whether the "always skip?" toast is showing. */
+  let showAlwaysSkipToast = $state(false)
+  let alwaysSkipToastTimer: ReturnType<typeof setTimeout> | null = null
+
+  // Auto-dismiss timer (MEDIUM-11)
+  /** ms after last line settles before auto-dismiss fires. Default 10 000ms. */
+  const AUTO_DISMISS_MS = 10_000
+  let autoDismissTimer: ReturnType<typeof setTimeout> | null = null
+  /** Countdown value displayed in the hint (seconds remaining). */
+  let autoDismissCountdown = $state(Math.ceil(AUTO_DISMISS_MS / 1000))
+  let countdownIntervalId: ReturnType<typeof setInterval> | null = null
+
+  // State machine
   type Phase = 'REVEALING' | 'DISSOLVING' | 'DONE'
   let phase = $state<Phase>('REVEALING')
 
@@ -61,7 +108,7 @@
   /** Timer for auto-reveal of successive lines. */
   let autoRevealTimer: ReturnType<typeof setTimeout> | null = null
 
-  const LINE_REVEAL_DURATION = 800  // ms — matches CSS animation duration
+  const LINE_REVEAL_DURATION = 800  // ms -- matches CSS animation duration
   const HINT_DELAY = 800            // ms after line settles before hint appears
   const DISSOLVE_STAGGER = 150      // ms between each line's ash animation
   const DISSOLVE_DURATION = 800     // ms per line dissolve
@@ -72,23 +119,46 @@
   /** Delay between successive auto-revealed lines (ms). */
   const AUTO_REVEAL_DELAY = 400
 
-  // ── Derived ────────────────────────────────────────────────
-  /** Lines to render — only up to visibleUpTo. */
+  // Derived
+  /** Lines to render -- only up to visibleUpTo. */
   let visibleLines = $derived(lines.slice(0, visibleUpTo + 1))
 
   /** Whether we are on the last line. */
   let isLastLine = $derived(visibleUpTo >= lines.length - 1)
 
   /** Hint label changes based on whether more lines exist. */
-  let hintLabel = $derived(isLastLine ? 'click to dismiss' : 'click to continue')
+  let hintLabel = $derived(
+    isLastLine
+      ? `click to dismiss  (${autoDismissCountdown}s)`
+      : 'click to continue'
+  )
 
-  // ── Helpers ────────────────────────────────────────────────
+  // Helpers
 
   function clearTimers(): void {
-    if (hintTimer)       { clearTimeout(hintTimer);       hintTimer = null }
-    if (dissolveTimer)   { clearTimeout(dissolveTimer);   dissolveTimer = null }
-    if (settleTimer)     { clearTimeout(settleTimer);     settleTimer = null }
-    if (autoRevealTimer) { clearTimeout(autoRevealTimer); autoRevealTimer = null }
+    if (hintTimer)            { clearTimeout(hintTimer);             hintTimer = null }
+    if (dissolveTimer)        { clearTimeout(dissolveTimer);         dissolveTimer = null }
+    if (settleTimer)          { clearTimeout(settleTimer);           settleTimer = null }
+    if (autoRevealTimer)      { clearTimeout(autoRevealTimer);       autoRevealTimer = null }
+    if (autoDismissTimer)     { clearTimeout(autoDismissTimer);      autoDismissTimer = null }
+    if (countdownIntervalId)  { clearInterval(countdownIntervalId);  countdownIntervalId = null }
+    if (alwaysSkipToastTimer) { clearTimeout(alwaysSkipToastTimer);  alwaysSkipToastTimer = null }
+  }
+
+  /** Start the auto-dismiss countdown after the last line settles. */
+  function startAutoDismissCountdown(): void {
+    autoDismissCountdown = Math.ceil(AUTO_DISMISS_MS / 1000)
+
+    // Tick every second to update the displayed countdown
+    countdownIntervalId = setInterval(() => {
+      autoDismissCountdown = Math.max(0, autoDismissCountdown - 1)
+    }, 1000)
+
+    autoDismissTimer = setTimeout(() => {
+      if (phase === 'REVEALING') {
+        beginDissolve()
+      }
+    }, AUTO_DISMISS_MS)
   }
 
   /**
@@ -108,8 +178,9 @@
         revealLine(visibleUpTo + 1)
       }, AUTO_REVEAL_DELAY)
     } else {
-      // Last line settled — show the hint to prompt player to dismiss
+      // Last line settled -- show the hint and start auto-dismiss countdown
       showHint = true
+      startAutoDismissCountdown()
     }
   }
 
@@ -139,6 +210,7 @@
     lineRevealStart = 0
     currentLineSettled = true
     showHint = true
+    startAutoDismissCountdown()
   }
 
   /**
@@ -165,8 +237,39 @@
     }, totalMs)
   }
 
-  // ── Lifecycle ──────────────────────────────────────────────
+  /**
+   * Track a manual dismiss for the always-skip preference system.
+   * After CONSECUTIVE_THRESHOLD dismissals, show the toast offer.
+   */
+  function trackManualDismiss(): void {
+    const prev = readConsecutiveDismisses()
+    const next = prev + 1
+    writeConsecutiveDismisses(next)
+    // Toast is shown on the NEXT overlay mount if count >= threshold
+  }
+
+  // Lifecycle
   onMount(() => {
+    // If skip pref is active, jump directly to dissolve
+    if (skipPrefActive) {
+      showAlwaysSkipToast = true
+      alwaysSkipToastTimer = setTimeout(() => {
+        showAlwaysSkipToast = false
+      }, 3500)
+      // Begin dissolve after a tiny delay so the overlay renders first
+      setTimeout(() => beginDissolve(), 150)
+      return
+    }
+
+    // Check if we should prompt the user about always-skip
+    const consecutiveDismisses = readConsecutiveDismisses()
+    if (consecutiveDismisses >= CONSECUTIVE_THRESHOLD) {
+      showAlwaysSkipToast = true
+      alwaysSkipToastTimer = setTimeout(() => {
+        showAlwaysSkipToast = false
+      }, 6000)
+    }
+
     // Schedule first reveal with start delay so overlay fade-in finishes first
     autoRevealTimer = setTimeout(() => {
       autoRevealTimer = null
@@ -178,7 +281,7 @@
     clearTimers()
   })
 
-  // ── Click / keyboard handlers ──────────────────────────────
+  // Click / keyboard handlers
 
   function handleAdvance(): void {
     if (phase === 'DISSOLVING' || phase === 'DONE') return
@@ -199,8 +302,9 @@
       return
     }
 
-    // Last line is settled — dismiss
+    // Last line is settled -- dismiss (manual click)
     if (isLastLine) {
+      trackManualDismiss()
       beginDissolve()
     }
   }
@@ -210,6 +314,17 @@
       e.preventDefault()
       handleAdvance()
     }
+  }
+
+  function handleAlwaysSkip(): void {
+    setSkipPref(true)
+    skipPrefActive = true
+    showAlwaysSkipToast = false
+  }
+
+  function handleNeverSkip(): void {
+    writeConsecutiveDismisses(0)
+    showAlwaysSkipToast = false
   }
 </script>
 
@@ -243,17 +358,46 @@
     {/each}
   </div>
 
-  <!-- Hint prompt — visible only after last line settles (auto-reveal complete) -->
+  <!-- Hint prompt -- visible only after last line settles (auto-reveal complete) -->
   {#if showHint && phase === 'REVEALING'}
     <div class="hint" aria-hidden="true">
-      {hintLabel}
-      <span class="hint-chevron">▾</span>
+      <span class="hint-text">{hintLabel}</span>
+      <span class="hint-chevron">&#9662;</span>
+    </div>
+  {/if}
+
+  <!-- Always-skip toast (MEDIUM-11) -->
+  {#if showAlwaysSkipToast}
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <div
+      class="always-skip-toast"
+      role="alertdialog"
+      aria-label="Always skip narrative overlays?"
+      tabindex="0"
+      onclick={(e) => e.stopPropagation()}
+    >
+      {#if skipPrefActive}
+        <span class="toast-msg">Auto-skipping overlays.</span>
+        <button class="toast-btn toast-btn-secondary" onclick={handleNeverSkip} type="button">
+          Turn off
+        </button>
+      {:else}
+        <span class="toast-msg">Always skip story overlays?</span>
+        <div class="toast-actions">
+          <button class="toast-btn toast-btn-primary" onclick={handleAlwaysSkip} type="button">
+            Yes, always skip
+          </button>
+          <button class="toast-btn toast-btn-secondary" onclick={handleNeverSkip} type="button">
+            No
+          </button>
+        </div>
+      {/if}
     </div>
   {/if}
 </div>
 
 <style>
-  /* ── Overlay base ──────────────────────────────────────────── */
+  /* Overlay base */
   .narrative-overlay {
     position: fixed;
     inset: 0;
@@ -284,7 +428,7 @@
     to   { opacity: 0; }
   }
 
-  /* ── Fog layer ─────────────────────────────────────────────── */
+  /* Fog layer */
   .fog-layer {
     position: absolute;
     inset: 0;
@@ -344,11 +488,11 @@
   }
 
   @keyframes fogDrift3 {
-    from { transform: translate(0, 0)   scale(1);    }
+    from { transform: translate(0, 0)    scale(1);    }
     to   { transform: translate(3%, -4%) scale(1.1); }
   }
 
-  /* ── Text content ──────────────────────────────────────────── */
+  /* Text content */
   .narrative-content {
     position: relative;
     z-index: 1;
@@ -391,7 +535,7 @@
     }
   }
 
-  /* Ash dissolve — applied inline with per-line stagger delays */
+  /* Ash dissolve -- applied inline with per-line stagger delays */
   @keyframes ashDissolve {
     0% {
       opacity: 1;
@@ -418,35 +562,118 @@
     }
   }
 
-  /* ── Hint / continue indicator ─────────────────────────────── */
+  /* Hint / continue indicator (MEDIUM-11: higher contrast + larger) */
   .hint {
     position: absolute;
-    bottom: calc(40px * var(--layout-scale, 1));
+    bottom: calc(48px * var(--layout-scale, 1));
     left: 50%;
     transform: translateX(-50%);
-    font-family: var(--font-rpg, 'Lora', 'Georgia', serif);
-    font-size: calc(12px * var(--text-scale, 1));
-    color: #666;
-    letter-spacing: calc(1px * var(--layout-scale, 1));
-    text-transform: lowercase;
-    animation: hintFadeIn 0.5s ease forwards;
-    pointer-events: none;
     display: flex;
     align-items: center;
-    gap: calc(4px * var(--layout-scale, 1));
+    gap: calc(8px * var(--layout-scale, 1));
+    /* High-contrast frosted pill */
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    border-radius: calc(24px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    animation: hintFadeIn 0.5s ease forwards;
+    pointer-events: none;
     user-select: none;
+    backdrop-filter: blur(8px);
+  }
+
+  .hint-text {
+    font-family: var(--font-rpg, 'Lora', 'Georgia', serif);
+    font-size: calc(15px * var(--text-scale, 1));
+    /* Warm white -- high contrast vs old #666 gray */
+    color: rgba(255, 240, 220, 0.92);
+    letter-spacing: calc(1px * var(--layout-scale, 1));
+    text-transform: lowercase;
+    font-style: italic;
   }
 
   .hint-chevron {
-    font-size: calc(10px * var(--text-scale, 1));
-    opacity: 0.7;
+    font-size: calc(14px * var(--text-scale, 1));
+    color: rgba(255, 210, 150, 0.85);
+    animation: chevronBounce 1.5s ease-in-out infinite;
   }
 
   @keyframes hintFadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from { opacity: 0; transform: translateX(-50%) translateY(calc(8px * var(--layout-scale, 1))); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
 
-  /* ── Playwright animation pause hook ──────────────────────── */
+  @keyframes chevronBounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(calc(4px * var(--layout-scale, 1))); }
+  }
+
+  /* Always-skip toast (MEDIUM-11) */
+  .always-skip-toast {
+    position: absolute;
+    bottom: calc(110px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: calc(10px * var(--layout-scale, 1));
+    background: rgba(20, 20, 35, 0.96);
+    border: 1px solid rgba(140, 120, 255, 0.40);
+    border-radius: calc(12px * var(--layout-scale, 1));
+    padding: calc(14px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    z-index: 2;
+    cursor: default;
+    animation: toastSlideUp 0.35s ease forwards;
+    white-space: nowrap;
+  }
+
+  @keyframes toastSlideUp {
+    from { opacity: 0; transform: translateX(-50%) translateY(calc(16px * var(--layout-scale, 1))); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  .toast-msg {
+    font-family: var(--font-rpg, 'Lora', 'Georgia', serif);
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #c8c8d0;
+    text-align: center;
+  }
+
+  .toast-actions {
+    display: flex;
+    gap: calc(10px * var(--layout-scale, 1));
+  }
+
+  .toast-btn {
+    cursor: pointer;
+    border: none;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    font-family: var(--font-rpg, 'Lora', 'Georgia', serif);
+    font-size: calc(13px * var(--text-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    min-height: calc(36px * var(--layout-scale, 1));
+    transition: background 0.15s;
+  }
+
+  .toast-btn-primary {
+    background: rgba(120, 80, 220, 0.85);
+    color: #fff;
+  }
+
+  .toast-btn-primary:hover {
+    background: rgba(140, 100, 255, 0.95);
+  }
+
+  .toast-btn-secondary {
+    background: rgba(80, 80, 100, 0.6);
+    color: #c8c8d0;
+  }
+
+  .toast-btn-secondary:hover {
+    background: rgba(100, 100, 130, 0.8);
+  }
+
+  /* Playwright animation pause hook */
   /* overlay.css sets [data-pw-animations="disabled"] * { animation-play-state: paused } */
 </style>
