@@ -9,6 +9,8 @@
 - Grep for known broken patterns: "the this", "a this", "which this", "[Adjective] this", standalone "this" as noun
 - Verify grammar reads naturally as proper English
 - If >5% of samples are broken, reject the batch and rephrase individually
+- **After committing any batch rewrite, run `node scripts/verify-all-decks.mjs`** — Check #25 is a HARD FAIL on grammar scar patterns from `scripts/content-pipeline/grammar-scar-patterns.json`. This catches double articles ("a the", "the the"), hyphenated placeholders ("-the concept"), and other specific broken forms that manual sampling can miss. Manual sampling + automated check are BOTH required.
+- To add a new grammar scar pattern: append to `scripts/content-pipeline/grammar-scar-patterns.json`. Patterns must be specific enough to avoid false positives — see the `_note` field in that file for guidance.
 
 ## Template-literal Audit for Programmatic Distractors (added 2026-04-10)
 

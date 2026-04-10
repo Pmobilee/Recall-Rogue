@@ -15,7 +15,8 @@
 - Image-based facts (`imageAssetPath`) must have `quizMode: "image_question"` or `"image_answers"`
 - Fill-in-blank `{___}` in quizQuestion is valid grammar syntax, not a braces error
 - Pool `factIds` populated by scanning facts, never hand-crafted
-- Pool answer length homogeneity: max/min ratio < 3× within each pool (check #20)
+- Pool answer length homogeneity: max/min ratio < 3× within each pool (Check #20)
+- Semantic category homogeneity: no cross-category contamination — names with descriptions, consoles with streaming services, hardware with trivia (Check #26 warns; manual review required)
 - NEVER use em-dashes (—) in `correctAnswer` — explanation text goes in `explanation` field
 - Answers must be concise: core answer only, no parenthetical elaborations
 - No compound questions asking two things with one answer — split into two facts
@@ -48,6 +49,15 @@
 - `person_names` → `person_inventor_names` + `person_politician_names` + `person_scientist_names`
 - `term_definitions` → `short_terms` (≤20c) + `long_definitions` (>20c)
 - `number` → `count_values` + `percentage_values` + `year_values`
+- `platform_console_names` (game consoles + streaming services) → `console_platform_names` + `streaming_social_platform_names` (2026-04-10: Netflix answer appeared in same pool as Game Boy, PlayStation 2 — streaming services are NOT game consoles)
+- `invention_details_long` (inventor names + descriptions + dates) → `inventor_pair_names` + `invention_details_long` (2026-04-10: barcode patent "Who?" question was in same pool as descriptions like "Intake, Compression, Power/Combustion, Exhaust" — names and descriptions have different grammatical form)
+- `genre_format_names` (hardware innovations + comic issues + formats + trivia) → `game_innovations` + `comic_debut_issues` + `media_format_names` + remaining (2026-04-10: N64 "analog stick" answer was in same pool as "King of Comics" and "$15 billion+" — semantic categories were completely unrelated)
+
+**Semantic homogeneity self-review — MANDATORY before marking a deck done:**
+After defining pools, for each pool ask: "If I showed a player the 4 quiz options for question X, could they eliminate wrong answers just by category?" If yes, the pool is contaminated.
+- Barcode test: "Who patented barcode?" options = ["Norman Woodland & Silver", "Intake, Compression, Power, Exhaust", "Wing-warping (roll), front elevator (pitch), rudder (yaw)", "Mulberry fibers, fishnets, old rags"] → FAIL — descriptions eliminate themselves
+- Netflix test: "Which streaming service?" options = ["Netflix", "Game Boy", "Nintendo Switch", "Sega Genesis"] → FAIL — consoles are obviously not streaming services
+- N64 test: "What innovation did N64 controller include?" options = ["analog stick", "King of Comics", "$15 billion+", "San Diego"] → FAIL — categories mixed
 
 ## Batch Deck Verification — MANDATORY
 
@@ -58,7 +68,7 @@ node scripts/verify-all-decks.mjs           # Summary table (all decks)
 node scripts/verify-all-decks.mjs --verbose  # Per-fact details on failures
 ```
 
-22 checks per fact/deck. Target: **0 failures**. Warnings are informational.
+26 checks per fact/deck. Target: **0 failures**. Warnings are informational. (Check #24: brace-leak; Check #25: grammar-scar catalog; Check #26: semantic-category heuristics)
 
 ## Trivia Bridge — MANDATORY (Knowledge Decks)
 
@@ -105,7 +115,7 @@ Required: after initial assembly, after bulk modifications (10+ facts), after po
 **After assembling ANY new deck, run this COMPLETE quality pipeline before committing:**
 
 ```bash
-# Step 1: Structural validation (22 checks, 0 failures required)
+# Step 1: Structural validation (26 checks, 0 failures required)
 node scripts/verify-all-decks.mjs
 
 # Step 2: Quiz engine audit (simulates actual quiz play, 0 failures required)
@@ -167,3 +177,14 @@ npm run build:curated
 **Impact:** Questions are trivially easy — no knowledge required, just match the leaked word against distractors.
 **Prevention:** `verify-all-decks.mjs` Check #22 detects both levels with corpus-frequency filtering (words appearing in 3+ facts as leaks are excluded as domain terms). After writing questions, run the check and fix any warnings.
 **Fix script:** `node scripts/fix-self-answering.mjs`
+
+### Anti-Pattern 5: Cross-Category Pool Contamination
+**What:** Facts from completely different semantic categories placed in the same answer pool. Players can instantly eliminate wrong answers not because they know the answer, but because the distractors are from a different *type* of thing.
+**Why it happens:** Pool names are too broad ("invention_details_long", "genre_format_names", "platform_console_names") and any fact vaguely matching the broad name gets added without checking semantic compatibility with existing pool members.
+**Impact:** Quiz becomes trivially easy — "analog stick" is obviously not "King of Comics" or "$15 billion+". The educational value is zero because no knowledge is required to eliminate distractors.
+**Examples (2026-04-10):**
+- `inv_3_barcode_patent` ("Who patented barcode?") in pool with descriptions like "Intake, Compression, Power/Combustion, Exhaust" → name questions and description answers are always eliminable from each other
+- `pc_5_netflix_platform` ("Which streaming service?") in pool with game consoles like "Game Boy", "PlayStation 2" → consoles are obviously not streaming services
+- `pc_1_n64_innovation` ("What did N64 controller include?") in pool with "King of Comics", "$15 billion+" → hardware innovation not in same category as nickname or market size
+**Prevention:** After defining every pool, apply the semantic homogeneity test: "Would a student with NO knowledge of the subject still be able to eliminate some distractors purely by category type?" If yes, split the pool. Check #26 in `verify-all-decks.mjs` provides digit-pattern and ALL-CAPS heuristics as signals.
+**Fix script:** `node scripts/fix-pool-heterogeneity.mjs` (splits on length ratio); manual semantic splits required for cross-category contamination

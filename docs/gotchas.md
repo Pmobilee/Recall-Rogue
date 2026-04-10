@@ -1537,3 +1537,40 @@ active scenes. Both bugs were fixed alongside the HIGH-4 fix.
 **Note (game-logic territory):** `src/dev/playtestAPI.ts` is owned by game-logic. The underlying `startStudy` precondition (checking for no active run before navigating) should also be fixed in that file by a game-logic agent. The UI-layer fix prevents the softlock regardless of how the screen is entered.
 
 **Prevention:** `.claude/rules/ui-layout.md` §"Softlock Prevention" — hard rule that every data-driven screen must guard the zero-pool case. `scripts/lint/check-escape-hatches.mjs` enforces this in `npm run check`. Unit tests in `tests/unit/restStudyEmptyState.test.ts`.
+
+---
+
+### 2026-04-10 — "the concept" grammar scars (second occurrence — now CI-enforced)
+
+**What:** 68 grammar scars found across 8 decks in the 2026-04-10 playtest sweep: broken English from naive batch word-substitution that replaced category nouns with "the concept" without rewriting surrounding grammar. Examples: "cerebral the concept is dominant" (ap_psychology), "a the reactant molecule binds" (ap_biology), "mathematical the concept states" (ancient_greece). These appeared in a production-ready playtest build.
+
+**Why this is a second occurrence:** A virtually identical batch had produced 262 broken questions on 2026-04-09 (see prior entry). That first occurrence added manual-grep rules to `content-pipeline.md` and `agent-mindset.md`. But manual grep rules are not machine-enforced — they rely on the sub-agent remembering to run the check. The same class of scar appeared again in the next content batch because no automated gate existed.
+
+**Root cause pattern:** When a batch rewrite replaces a specific noun with a placeholder like "the concept" or "this", adjacent articles and adjectives are left in place: "a [noun]" → "a the concept"; "cerebral [noun]" → "cerebral the concept". The substitution worker doesn't check whether the replacement produces valid grammar.
+
+**Fix:**
+1. Manual repair of all 68 scars across 8 decks
+2. `scripts/content-pipeline/grammar-scar-patterns.json` — extensible catalog of broken patterns (9 patterns initially, add new ones as discovered)
+3. Check #25 in `scripts/verify-all-decks.mjs` — HARD FAIL on any catalog pattern match (runs on every deck, every CI check)
+4. `tests/content/grammar-scars.test.ts` — vitest integration test that reads catalog and checks all 97 production decks
+
+**Prevention:** The catalog file + Check #25 means grammar scars now fail CI automatically. To add a new pattern: append to `grammar-scar-patterns.json`. The pattern must be SPECIFIC enough to avoid false positives — "the concept " (with trailing space) catches "proposed the concept of" which is valid English. Use patterns like " a the ", " the the ", "-the concept" (hyphenated form), or fully specific broken substrings.
+
+---
+
+### 2026-04-10 — Pop-culture pools contaminated with cross-category distractors
+
+**What:** Three specific facts were in pools with semantically incompatible members, making quiz answers trivially eliminatable by category type alone (no knowledge required):
+1. `inv_3_barcode_patent` ("Who patented barcode?") was in `invention_details_long` alongside descriptions like "Intake, Compression, Power/Combustion, Exhaust" — a player with zero knowledge can instantly eliminate descriptions as answers to a "who?" question
+2. `pc_5_netflix_platform` ("Which streaming service?") was in `platform_console_names` alongside "Game Boy", "PlayStation 2", "Nintendo Switch" — streaming services are obviously not game consoles
+3. `pc_1_n64_innovation` ("What did N64 controller include?") was in `genre_format_names` alongside "King of Comics", "$15 billion+", "San Diego" — completely unrelated semantic categories
+
+**Why it happens:** Pool names are too broad. When a pool is called "invention_details_long" or "platform_console_names", any fact loosely matching the name gets added without checking semantic compatibility with existing pool members. Cross-category contamination often isn't visible until quiz options are rendered side-by-side.
+
+**Fix:**
+- `pop_culture.json`: split `platform_console_names` → `console_platform_names` (game consoles only) + `streaming_social_platform_names` (streaming/social only); split `genre_format_names` → `game_innovations` + `comic_debut_issues` + `media_format_names` + remainder
+- `famous_inventions.json`: split `invention_details_long` → `inventor_pair_names` (5 "who?" facts) + updated `invention_details_long` (descriptions only)
+- Check #26 in `verify-all-decks.mjs` — WARN heuristics for digits-some-not-others and ALL_CAPS abbreviation mixing (common cross-category signals)
+
+**Prevention:** Deck-quality rule updated with canonical examples and semantic homogeneity self-review step. deck-master SKILL.md now requires the category-type elimination test ("Could a player eliminate wrong answers purely by category type?") at Phase 0.6 plan review AND Phase 2 Architecture step 4 and step 11.
+

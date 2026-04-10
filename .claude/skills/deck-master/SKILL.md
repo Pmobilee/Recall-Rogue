@@ -164,6 +164,11 @@ Also create tasks for:
 - Does each pool have 5+ unique `correctAnswer` values? If not, facts in that pool need pre-generated distractors.
 - Are there any questions where multiple pool members are correct? (e.g., "Which planet has rings?" — Jupiter, Saturn, Uranus, Neptune ALL have rings)
 - Does the correct answer ever appear in the question text? (e.g., "Besides Saturn..." → Saturn must not be a distractor)
+- **Semantic category-type elimination test (MANDATORY):** For each pool, ask: "Could a player eliminate wrong answers purely by category type — without knowing the answer?" If YES, the pool is contaminated.
+  - Barcode FAIL: "Who patented barcode?" options = ["Norman Woodland", "Intake, Compression, Power, Exhaust", "Wing-warping, front elevator, rudder", "Mulberry fibers"] → descriptions obviously not names
+  - Netflix FAIL: "Which streaming service?" options = ["Netflix", "Game Boy", "PlayStation 2", "Nintendo Switch"] → consoles obviously not streaming services
+  - N64 FAIL: "What did N64 controller include?" options = ["analog stick", "King of Comics", " billion+", "San Diego"] → categories completely unrelated
+  - Split any contaminated pool into separate semantic-type pools before generating facts
 
 **Pass 2 — Runtime compatibility review:**
 - Will bracket `{N}` notation work in the curated path? (YES — both `nonCombatQuizSelector.ts` and `CardCombatOverlay.svelte` handle it)
@@ -694,6 +699,11 @@ Include:
 2. **Identify data sources** — Which Wikidata properties? Which Wikipedia categories? Which authoritative databases? Document these in the architecture.
 3. **Identify natural answer types** — names, dates, places, terms, categories, numbers? **THIS IS THE MOST IMPORTANT STEP.** The pools you define here ARE what the deck teaches. A poor pool choice produces disconnected trivia; strong, confusable pools produce genuine learning. See "Curated Deck Design Philosophy" above before proceeding.
 4. **Define answer type pools** — group potential facts by answer format; verify each pool has 5+ members after synonym exclusions. Pools with fewer than 5 must be merged with a related pool or use bracket-number runtime generation. **Pools must contain members that are genuinely confusable with each other** — same-format is not enough. Also design cross-pool question templates that test one pool's knowledge using another pool as context (see "Pool-First Design Process" in the Design Philosophy section above).
+
+   **Semantic homogeneity self-review — MANDATORY before proceeding to step 5:** After naming your pools, apply this test for each pool: "If I showed a player the 4 quiz options, could they eliminate wrong answers just by the *type* of thing they are, without knowing anything about the subject?" If yes, split the pool.
+   - Never mix: person names with descriptions, game consoles with streaming services, hardware specs with pop-culture trivia
+   - Common contamination patterns:  (consoles + streaming),  (inventor names + descriptions),  (hardware + media + trivia)
+   - Only facts of the same semantic category belong together — "Netflix" and "Game Boy" are both 1-2 words but are not confusable answer types
 5. **Design question templates** — for each answer type pool: what question formats make sense? Templates MUST span a mastery-driven difficulty curve: simple recognition at mastery 0 (e.g., "What is the largest planet?"), standard/reverse at mastery 1-2, relational reasoning at mastery 3+ (e.g., "Which planet lies between Venus and Mars?"), and counterintuitive/comparative at mastery 4-5 (e.g., "Which planet has the highest surface temperature?" — tricky because it's Venus, not Mercury). Templates that force reasoning over rote recall are always preferred.
 6. **Identify common confusions** — what do learners typically mix up? These pairs are SEEDED into the confusion matrix at deck build time, telling the distractor system to preferentially pair them before any real player data exists. This is especially valuable for a new deck's initial quality — the adaptive system starts smart instead of cold. Good seeded pairs share a surface similarity (same first letter, same era, same category) that fools learners at low mastery. See examples in the Design Philosophy section above.
 7. **Identify synonym groups** — answers that are semantically interchangeable (e.g., "Civil War" / "War Between the States"). Facts in the same synonym group must NEVER appear as each other's distractors.
@@ -704,7 +714,7 @@ Include:
    - Both deck types: assign `chainThemeId` as a generic slot index (0-5) distributed evenly across facts. Do NOT spend time designing named sub-groupings.
 9. **Set difficulty tiers** — easy (universally known), medium (commonly known), hard (obscure)
 10. **Identify required visual assets** — what images/icons does this deck need? Where will they come from? What license?
-11. **Validate structure** — confirm every pool has 5+ members, total facts meets target, chain slots (0-5) are evenly distributed, no synonym group is so large it starves the distractor pool (flag groups >4 facts)
+11. **Validate structure** — confirm every pool has 5+ members, total facts meets target, chain slots (0-5) are evenly distributed, no synonym group is so large it starves the distractor pool (flag groups >4 facts). **Also run the semantic category-type elimination test from step 4 on the finalized pool list** — pools assembled from real facts sometimes drift from their intended type. Check #26 in `verify-all-decks.mjs` provides automated heuristics, but manual review is required.
 
 ### Output format (YAML spec)
 
