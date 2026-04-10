@@ -14,7 +14,7 @@
   import { getMechanicDefinition } from '../../data/mechanics'
   // stretchText moved to CardVisual.svelte
   import { CHARGE_CORRECT_MULTIPLIER } from '../../data/balance'
-  import { getMasteryStats } from '../../services/cardUpgradeService'
+  import { getMasteryStats, getEffectiveApCost } from '../../services/cardUpgradeService'
   import { activeRunState } from '../../services/runStateStore'
   import { getChainColor, getChainColorGroups } from '../../services/chainVisuals'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
@@ -234,12 +234,12 @@
   }
 
   function hasEnoughAp(card: Card): boolean {
-    return Math.max(0, (card.apCost ?? 1) - focusDiscount) <= apCurrent
+    return Math.max(0, getEffectiveApCost(card) - focusDiscount) <= apCurrent
   }
 
   /** Returns the displayed AP cost accounting for Focus discount (Quick Play cost). */
   function getDisplayedApCost(card: Card): number {
-    return Math.max(0, (card.apCost ?? 1) - focusDiscount)
+    return Math.max(0, getEffectiveApCost(card) - focusDiscount)
   }
 
   /**
@@ -248,14 +248,14 @@
    * Used to show live cost on the card badge when the card is in charge-preview state.
    */
   function getDisplayedChargeApCost(card: Card, isMomentumMatch: boolean, isActiveChainMatch: boolean, isFreeCharge: boolean): number {
-    const base = Math.max(0, (card.apCost ?? 1) - focusDiscount)
+    const base = Math.max(0, getEffectiveApCost(card) - focusDiscount)
     const surchargeWaived = isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch
     return base + (surchargeWaived ? 0 : 1)
   }
 
   /** Returns color for the AP gem based on cost change. Green if reduced, red if increased, off-white otherwise. */
   function getApGemColor(card: Card): string {
-    const base = card.apCost ?? 1
+    const base = getEffectiveApCost(card)
     const displayed = getDisplayedApCost(card)
     if (displayed < base) return '#22c55e'
     if (displayed > base) return '#ef4444'
@@ -630,7 +630,7 @@
       // Check affordability: if charge can't be paid, return card to hand (no silent Quick Play)
       const card = cards[index]
       const isActiveChainMatchForDrag = activeChainColor !== null && card?.chainType === activeChainColor
-      const chargeApCost = (card?.apCost ?? 1) + (isSurgeActive || (chargeMomentumChainType !== null && card?.chainType === chargeMomentumChainType) || isActiveChainMatchForDrag ? 0 : 1)
+      const chargeApCost = getEffectiveApCost(card) + (isSurgeActive || (chargeMomentumChainType !== null && card?.chainType === chargeMomentumChainType) || isActiveChainMatchForDrag ? 0 : 1)
       const canAffordCharge = card && card.tier !== '3' && chargeApCost <= apCurrent
       if (canAffordCharge && onchargeplay) {
         markChargeDragSeen()
@@ -808,7 +808,7 @@
     {@const domainColor = getDomainColor(card.domain)}
     {@const showFrontValue = shouldShowFrontValue(card)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
-    {@const apCost = card.apCost ?? 1}
+    {@const apCost = getEffectiveApCost(card)}
     {@const insufficientAp = !hasEnoughAp(card)}
     {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
     {@const isRevealing = cardAnim === 'reveal'}
@@ -826,7 +826,7 @@
     {@const isFreeCharge = (runState !== null && card.factId) ? isFirstChargeFree(card.factId, runState.firstChargeFreeFactIds) : false}
     {@const isMomentumMatch = chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType}
     {@const isActiveChainMatch = activeChainColor !== null && card.chainType === activeChainColor}
-    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
+    {@const chargeApCostForDrag = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
@@ -842,7 +842,7 @@
     {@const isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered}
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
     {@const displayedApCost = isChargePreview ? getDisplayedChargeApCost(card, isMomentumMatch, isActiveChainMatch, isFreeCharge) : getDisplayedApCost(card)}
-    {@const apGemColor = isChargePreview ? getChargeApGemColor(displayedApCost, card.apCost ?? 1) : getApGemColor(card)}
+    {@const apGemColor = isChargePreview ? getChargeApGemColor(displayedApCost, getEffectiveApCost(card)) : getApGemColor(card)}
     {@const preview = damagePreviews[card.id]}
     {@const effectVal = preview ? (isChargePreview ? preview.ccValue : preview.qpValue) : getEffectValue(card, isChargePreview)}
     {@const modState = preview ? (isChargePreview ? preview.ccModified : preview.qpModified) : 'neutral'}
@@ -886,7 +886,7 @@
         {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : (isActiveChainMatch && !isSelected && !isDraggingThis && selectedIndex === null && activeChainHex ? `filter: drop-shadow(0 0 6px ${activeChainHex}99) drop-shadow(0 0 12px ${activeChainHex}55);` : '')}
       "
       data-testid="card-hand-{i}"
-      aria-label="{card.mechanicName}: costs {card.apCost ?? 1} AP, {getShortCardDescription(card, getEffectValue(card))}. Card {i + 1} of {cards.length}."
+      aria-label="{card.mechanicName}: costs {getEffectiveApCost(card)} AP, {getShortCardDescription(card, getEffectValue(card))}. Card {i + 1} of {cards.length}."
       disabled={disabled || isOther}
       use:initCardAnimOffsets
       onpointerdown={(e) => handlePointerDown(e, i)}
@@ -957,7 +957,7 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
       {@const isFreeAp = isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch}
       {@const chargeApDisplay = String(chargeApCost)}
@@ -995,7 +995,7 @@
         {#if (card.mechanicName ?? card.mechanicId)}
           <span class="tooltip-mechanic">{card.mechanicName ?? card.cardType}</span>
         {/if}
-        <span class="tooltip-cost">{card.apCost ?? 1} AP</span>
+        <span class="tooltip-cost">{getEffectiveApCost(card)} AP</span>
         {#if chainName}
           <span class="tooltip-chain" style="color: {getChainColor(card.chainType)}">
             <ChainIcon chainType={chainTypeVal} size={12} />
@@ -1063,7 +1063,7 @@
         {/if}
       </div>
       <div class="card-detail-tier">
-        <span class="card-detail-ap">{detailCard.apCost ?? 1} AP</span>
+        <span class="card-detail-ap">{getEffectiveApCost(detailCard)} AP</span>
       </div>
       {#if mechanic?.description}
         <div class="card-detail-mechanic">{mechanic.description}</div>
@@ -1091,7 +1091,7 @@
     {@const domainColor = getDomainColor(card.domain)}
     {@const showFrontValue = shouldShowFrontValue(card)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
-    {@const apCost = card.apCost ?? 1}
+    {@const apCost = getEffectiveApCost(card)}
     {@const insufficientAp = !hasEnoughAp(card)}
     {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
     {@const isRevealing = cardAnim === 'reveal'}
@@ -1111,7 +1111,7 @@
     {@const isMastered = card.tier === '3'}
     {@const isMomentumMatch = chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType}
     {@const isActiveChainMatch = activeChainColor !== null && card.chainType === activeChainColor}
-    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
+    {@const chargeApCostForDrag = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
@@ -1127,7 +1127,7 @@
     {@const isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered}
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
     {@const displayedApCost = isChargePreview ? getDisplayedChargeApCost(card, isMomentumMatch, isActiveChainMatch, isFreeCharge) : getDisplayedApCost(card)}
-    {@const apGemColor = isChargePreview ? getChargeApGemColor(displayedApCost, card.apCost ?? 1) : getApGemColor(card)}
+    {@const apGemColor = isChargePreview ? getChargeApGemColor(displayedApCost, getEffectiveApCost(card)) : getApGemColor(card)}
     {@const preview = damagePreviews[card.id]}
     {@const effectVal = preview ? (isChargePreview ? preview.ccValue : preview.qpValue) : getEffectValue(card, isChargePreview)}
     {@const modState = preview ? (isChargePreview ? preview.ccModified : preview.qpModified) : 'neutral'}
@@ -1173,7 +1173,7 @@
         {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : (isActiveChainMatch && !isSelected && !isDraggingThis && selectedIndex === null && activeChainHex ? `filter: drop-shadow(0 0 6px ${activeChainHex}99) drop-shadow(0 0 12px ${activeChainHex}55);` : '')}
       "
       data-testid="card-hand-{i}"
-      aria-label="{card.mechanicName}: costs {card.apCost ?? 1} AP, {getShortCardDescription(card, getEffectValue(card))}. Card {i + 1} of {cards.length}."
+      aria-label="{card.mechanicName}: costs {getEffectiveApCost(card)} AP, {getShortCardDescription(card, getEffectValue(card))}. Card {i + 1} of {cards.length}."
       disabled={disabled || isOther}
       use:initCardAnimOffsets
       onpointerdown={(e) => handlePointerDown(e, i)}
@@ -1247,7 +1247,7 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
       {@const isFreeAp = isSurgeActive || isMomentumMatch || isFreeCharge || isActiveChainMatch}
       {@const chargeApDisplay = String(chargeApCost)}
@@ -1287,7 +1287,7 @@
         {#if mechanic?.name}
           <span class="tooltip-mechanic">{mechanic.name}</span>
         {/if}
-        <span class="tooltip-cost">{card.apCost ?? 1} AP</span>
+        <span class="tooltip-cost">{getEffectiveApCost(card)} AP</span>
         {#if chainName}
           <span class="tooltip-chain" style="color: {getChainColor(card.chainType)}">
             <ChainIcon chainType={chainTypeVal} size={12} />

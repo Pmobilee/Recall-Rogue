@@ -62,6 +62,20 @@ The charge button and drag-charge zone both show the **total AP cost** to charge
 - Drag zone indicator uses same formula (includes `isActiveChainMatch`)
 - Applies to landscape charge button (~line 978), portrait charge button (~line 1369), landscape drag zone (~line 968), portrait drag zone (~line 1354)
 
+### AP pip rendering — effective mastery-adjusted cost (2026-04-10)
+
+All AP pip displays now read from `getEffectiveApCost(card)` (from `cardUpgradeService.ts`) instead of `card.apCost` directly. This ensures the pip shown to the player matches the AP actually charged — e.g., Smite L5 costs 1 AP (reduced via mastery), not 2.
+
+Components updated:
+- **`CardHand.svelte`**: `hasEnoughAp()`, `getDisplayedApCost()`, `getDisplayedChargeApCost()`, `getApGemColor()`, charge drag affordability checks, aria-label, tooltip-cost, card-detail-ap — all use `getEffectiveApCost(card)`.
+- **`CardVisual.svelte`**: `apDisplay` fallback (when caller does not supply `displayedApCost`) uses `getEffectiveApCost(card)`.
+- **`CardCombatOverlay.svelte`**: `castDisabled` check, `hasPlayableCards`, charge-initiation affordability, cast-direct affordability — all use `getEffectiveApCost(card)`.
+- **`CardBrowser.svelte`**: Card row AP label uses `getEffectiveApCost(card)`.
+- **`CardRewardScreen.svelte`**: Mini-card AP pip uses `getEffectiveApCost(option)`.
+- **`RewardCardDetail.svelte`**: `$derived(getEffectiveApCost(card))` replaces `$derived(card.apCost ?? 1)`.
+
+`getEffectiveApCost(card)` checks `getMasteryStats(card.mechanicId, card.masteryLevel)?.apCost` first, falling back to `card.apCost ?? 1`. Card-building paths (object spreads assigning `apCost`) are intentionally left unchanged.
+
 ### CardHand AP badge — live charge cost preview (2026-04-09)
 
 When a card enters **charge-preview state** (dragged into the charge zone or hovering the Charge button), the AP cost badge on the card face updates live to reflect the **real charge cost** (base − focus discount + surcharge, minus any waivers).
