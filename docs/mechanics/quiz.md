@@ -83,6 +83,25 @@ Special template IDs: `reverse` (answer = `targetLanguageWord`), `reading` (answ
 
 **Note:** Different question templates can reference different `answerPoolId` values for the same fact. A vocabulary fact might use the `english_meanings` pool for forward questions and the `target_language_words` pool for reverse questions. The pool used is always determined by the selected template, not the fact itself.
 
+#### Reverse templates and target-language distractor pools
+
+When the template's question is in the source language and the answer is in the target language (template `id: 'reverse'`), distractors must come from the **target-language field** (`targetLanguageWord`) — not from the English-meaning field (`correctAnswer`). Without this, all distractors are English words while the single correct option is a target-language string, making it identifiable by script alone without any vocabulary knowledge.
+
+`selectQuestionTemplate` returns a `distractorAnswerField: keyof DeckFact` alongside `answerPoolId`. Callers pass this to `selectDistractors` as its optional 9th parameter. `selectDistractors` uses `resolveDisplayAnswer(fact, distractorAnswerField)` throughout — for uniqueness checking, scoring, and the final returned `DeckFact.correctAnswer` (which is overwritten to the resolved value so callers uniformly read `d.correctAnswer`).
+
+| Template ID        | `distractorAnswerField` | Correct answer field    |
+|--------------------|------------------------|-------------------------|
+| `forward`          | `'correctAnswer'`      | `fact.correctAnswer`    |
+| `reverse`          | `'targetLanguageWord'` | `fact.targetLanguageWord` |
+| `reading_pinyin`   | `'reading'`            | `fact.reading`          |
+| `reading`          | `'reading'`            | `fact.reading`          |
+| `definition_match` | `'correctAnswer'`      | `fact.correctAnswer`    |
+| `synonym_pick`     | `'correctAnswer'`      | `fact.correctAnswer`    |
+
+Deck JSON does not need to declare this mapping — it is resolved in `getDistractorAnswerFieldForTemplate()` in `questionTemplateSelector.ts` based on the template `id`. Callers that do not use templates (e.g. `getBridgedDistractors` in trivia mode) retain the default `'correctAnswer'` behavior.
+
+**Audit reference:** This bug was confirmed as BLOCKER across ~25 language decks in the 2026-04-10 quiz audit (Pattern 3). korean_topik2 had 49/49 reverse-template rows contaminated (100%). See `docs/reports/quiz-audit-2026-04-10.md §Pattern 3`.
+
 ### 3. Question Formatting (`questionFormatter.ts`)
 
 `getQuestionPresentation` controls how a question is rendered based on card tier:

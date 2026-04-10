@@ -1271,7 +1271,8 @@
       const confusionMatrix = getConfusionMatrix()
       const { distractors } = selectDistractors(
         fact, pool, resolvedDeck.facts, resolvedDeck.synonymGroups,
-        confusionMatrix, tracker, distractorCount, cardMastery
+        confusionMatrix, tracker, distractorCount, cardMastery,
+        templateResult.distractorAnswerField,
       )
       distractorAnswers = distractors.map(d => d.correctAnswer)
       // Build a reverse map: answer text (lowercased) → distractor fact ID

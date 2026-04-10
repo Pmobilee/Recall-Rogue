@@ -6,6 +6,20 @@ export interface TemplateSelectionResult {
   answerPoolId: string;
   /** The correct answer for this specific template (may differ from fact.correctAnswer for reverse templates) */
   correctAnswer: string;
+  /**
+   * The field on DeckFact whose value should be used as the distractor answer text.
+   * Defaults to 'correctAnswer' for forward templates.
+   *
+   * For reverse templates ("How do you say X in [language]?"), distractors must come
+   * from the target-language field ('targetLanguageWord'), not from 'correctAnswer'
+   * (which holds the English meaning). Without this, all distractors are English words
+   * while the correct answer is a target-language string — trivially eliminable by script alone.
+   *
+   * For reading templates ("What is the reading of X?"), distractors come from 'reading'.
+   *
+   * See docs/mechanics/quiz.md §"Reverse templates and target-language distractor pools".
+   */
+  distractorAnswerField: keyof DeckFact;
 }
 
 /**
@@ -63,6 +77,7 @@ export function selectQuestionTemplate(
       renderedQuestion: fact.quizQuestion,
       answerPoolId: fact.answerTypePoolId,
       correctAnswer: fact.correctAnswer,
+      distractorAnswerField: 'correctAnswer',
     };
   }
 
@@ -110,11 +125,18 @@ export function selectQuestionTemplate(
   // Determine the correct answer based on the template's answer pool
   const correctAnswer = getCorrectAnswerForTemplate(selected, fact);
 
+  // Determine which field on DeckFact holds the distractor answer text for this template.
+  // This ensures pool-based distractor selection uses the right field when the template
+  // changes the axis of questioning (e.g. reverse: English→Korean means distractors
+  // must be Korean words from targetLanguageWord, not English from correctAnswer).
+  const distractorAnswerField = getDistractorAnswerFieldForTemplate(selected);
+
   return {
     template: selected,
     renderedQuestion: rendered,
     answerPoolId: selected.answerPoolId,
     correctAnswer,
+    distractorAnswerField,
   };
 }
 
@@ -221,4 +243,28 @@ function getCorrectAnswerForTemplate(template: QuestionTemplate, fact: DeckFact)
   }
   // Default: the fact's correctAnswer
   return fact.correctAnswer;
+}
+
+/**
+ * Determine which field on DeckFact holds the correct distractor answer text
+ * for a given template.
+ *
+ * This mirrors the logic in getCorrectAnswerForTemplate: whichever field is
+ * the "correct answer" is also the field whose pool-mates should serve as
+ * distractors. Mismatching these fields is the root cause of POOL-CONTAM in
+ * reverse templates — the correct answer is Korean (targetLanguageWord) but
+ * distractors come from correctAnswer (English), making the correct answer
+ * identifiable by script alone.
+ *
+ * Template IDs and their distractor fields:
+ * - 'reverse'         → 'targetLanguageWord' (target-language word pool)
+ * - 'reading_pinyin'  → 'reading'             (romanisation / pinyin pool)
+ * - 'reading'         → 'reading'             (romanisation pool)
+ * - all others        → 'correctAnswer'        (standard answer field)
+ */
+function getDistractorAnswerFieldForTemplate(template: QuestionTemplate): keyof DeckFact {
+  if (template.id === 'reverse') return 'targetLanguageWord';
+  if (template.id === 'reading_pinyin') return 'reading';
+  if (template.id === 'reading') return 'reading';
+  return 'correctAnswer';
 }

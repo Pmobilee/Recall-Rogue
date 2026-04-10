@@ -166,3 +166,17 @@ npm run build:curated
 **Impact:** Questions are trivially easy — no knowledge required, just match the leaked word against distractors.
 **Prevention:** `verify-all-decks.mjs` Check #22 detects both levels with corpus-frequency filtering (words appearing in 3+ facts as leaks are excluded as domain terms). After writing questions, run the check and fix any warnings.
 **Fix script:** `node scripts/fix-self-answering.mjs`
+
+### Anti-Pattern 5: Reverse Template POOL-CONTAM — never draw cross-language distractors
+
+**Rule:** When a vocabulary deck defines a `reverse` template ("How do you say X in [language]?"), the distractor pool's facts must be displayed using the **target-language field** (`targetLanguageWord`), not the English-meaning field (`correctAnswer`). Distractors must be target-language words so that all options are in the same language as the correct answer.
+
+**Why:** Without this, the correct answer is the ONLY target-language option — any player can identify it by visual script recognition without knowing any vocabulary. This was confirmed as a BLOCKER across ~25 language decks in the 2026-04-10 quiz audit (Pattern 3, `docs/reports/quiz-audit-2026-04-10.md`). korean_topik2 had 100% contamination (49/49 reverse rows).
+
+**Engine behavior (as of 2026-04-10 fix):** `selectQuestionTemplate` now returns `distractorAnswerField: keyof DeckFact` alongside `answerPoolId`. For `reverse` templates this is `'targetLanguageWord'`; for `reading`/`reading_pinyin` it is `'reading'`; for all others it is `'correctAnswer'`. All template-aware callers pass this to `selectDistractors`. No deck JSON changes are needed — the mapping is resolved engine-side.
+
+**How to apply:**
+1. When defining a reverse template in a vocab deck, ensure the `target_language_words` pool exists and has the same `factIds` as `english_meanings`.
+2. Verify that each fact has a non-empty `targetLanguageWord` field — if it is missing, `resolveDisplayAnswer` falls back to `correctAnswer` (English), producing cross-language contamination again.
+3. Run `npm run audit:quiz-engine -- --deck <id>` after deck assembly — POOL-CONTAM on reverse rows indicates `targetLanguageWord` is missing or the pool is misconfigured.
+4. For `reading_pinyin` / `reading` templates, same rule applies: ensure `fact.reading` is populated and a `readings` or `target_readings` pool exists.

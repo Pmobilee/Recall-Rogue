@@ -1375,3 +1375,25 @@ The `interrogatives` pool in `spanish_a1_grammar` contains both interrogative wo
 **Why it matters:** A future agent reading the codebase may notice "dead" Anki code that isn't reachable from the UI and attempt to "clean it up" by deleting services/components. **Do not.** The integration is intentionally disabled for now and will be turned back on — flipping the flag to `true` is the only change needed to restore it.
 
 **Fix / how to re-enable:** Set `ANKI_INTEGRATION_ENABLED = true` in `StudyTempleScreen.svelte`. No other changes required.
+
+---
+
+### 2026-04-10 — Reverse template POOL-CONTAM: selectDistractors used wrong answer field
+
+**What:** Vocab decks with a `reverse` template ("How do you say X in [language]?") were serving English-meaning words as distractors even though the correct answer was a target-language word. The player could identify the correct answer by script recognition alone — zero vocabulary knowledge required. This was a BLOCKER in the 2026-04-10 quiz audit (Pattern 3), confirmed across ~25 language decks simultaneously. korean_topik2 had 100% contamination (49/49 reverse rows). Example render:
+
+```
+Q: "How do you say 'even number' in Korean?"
+ A) 짝수  ✓         ← Korean
+ B) schedule         ← English (should be Korean!)
+ C) headache medicine ← English
+ D) developed country ← English
+```
+
+**Root cause:** `selectDistractors()` always read `fact.correctAnswer` when iterating pool candidates — but for a vocabulary fact, `correctAnswer` is the English meaning while `targetLanguageWord` is the Korean/Chinese/Japanese/Spanish word. The deck JSON was correct (the `reverse` template's `answerPoolId` pointed to `target_language_words`), but the distractor selector didn't know it should use a different field than `correctAnswer`.
+
+**Fix (2026-04-10):** Added `distractorAnswerField: keyof DeckFact = 'correctAnswer'` as an optional 9th parameter to `selectDistractors`. Added `getDistractorAnswerFieldForTemplate()` to `questionTemplateSelector.ts` which returns `'targetLanguageWord'` for `reverse`, `'reading'` for `reading`/`reading_pinyin`, and `'correctAnswer'` for all other template IDs. `TemplateSelectionResult` now includes `distractorAnswerField`. All template-aware callers (`nonCombatQuizSelector.ts` ×2 call sites, `CardCombatOverlay.svelte` ×1 call site) were updated to pass `templateResult.distractorAnswerField`. When the field differs from `'correctAnswer'`, a shallow copy of the distractor fact is returned with `correctAnswer` overwritten to the resolved value so callers can uniformly read `d.correctAnswer`. Original fact objects are never mutated.
+
+**Prevention:** When defining a reverse template (question in source language, answer in target language), the `selectDistractors` call must pass `distractorAnswerField: 'targetLanguageWord'`. This comes automatically via `getDistractorAnswerFieldForTemplate(template)` when using `selectQuestionTemplate`. For any caller that bypasses the template selector (trivia bridge path in `getBridgedDistractors`), the default `'correctAnswer'` is appropriate since that path only uses the forward direction.
+
+**Affected decks (all fixed by engine change, no deck JSON edits needed):** chinese_hsk1–6, japanese_n1–n5, japanese_hiragana/katakana, korean_hangul, korean_topik1/topik2, spanish_a1–c2, german_a1–b1.
