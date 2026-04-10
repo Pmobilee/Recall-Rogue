@@ -1515,3 +1515,17 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **Potential additional errors:** During a 20-fact spot-check, `es-cefr-4456` (`atentado`) showed "moderate, prudent" (should be "violent attack, bombing") — confirmed wrong by comparing against the source vocab. This was out of scope for this fix session but should be investigated in a follow-up sweep of the C1 deck.
 
 **Lesson:** After any batch-assembly of vocabulary decks, a spot-check of 20+ random facts against the source vocab data is mandatory. Checking `correctAnswer` against `data/curated/vocab/es/vocab-es-all.json` by `targetWord` key takes under 5 minutes and would catch any row-alignment errors immediately.
+
+---
+
+### 2026-04-10 — Chess setup-move corruption (2 puzzles removed: AHPUU, KZU69)
+
+**What:** `chess_tac_AHPUU` and `chess_tac_KZU69` in `data/decks/chess_tactics.json` had corrupt `solutionMoves[0]` values referencing empty squares (g6 and d2 respectively). The game engine (`chessGrader.ts` `setupPuzzlePosition()`) applies this move to the baseFEN and throws: `Illegal setup move "${setupMoveUCI}" in position "${baseFEN}"` — crashing the puzzle. The player-facing answer data (`solutionMoves[1]`, `correctAnswer`) was valid for both puzzles.
+
+**Root cause:** The Lichess puzzle CSV stores the FEN as the base position (before the opponent's last "setup" move). `solutionMoves[0]` must be a legal move FROM that baseFEN. The stored moves `g6g5` and `d2d3` referenced empty squares in their respective FENs — this is either a CSV parsing error or a data entry error in the original ingestion pass.
+
+**Fix:** Removed both facts from the deck entirely (298 facts remain from 300). Also removed from `chess_moves_back_rank_mating_nets` pool (28 factIds from 30) and `chain_9` subDeck (28 from 30). The pool still meets the minimum 5-fact threshold.
+
+**Source data not available:** The Lichess puzzle CSV (`data/sources/lichess/lichess_db_puzzle.csv.zst`) is not present in the repo (gitignored). Re-extraction would require re-downloading the ~1GB Lichess puzzle database. Both puzzles are available at: `https://lichess.org/HpYvj2ho/black#96` (AHPUU) and `https://lichess.org/vrnBfloP#49` (KZU69). To re-add them, download the CSV, run `scripts/content-pipeline/chess/fetch-lichess-puzzles.mjs` to filter, verify the `solutionMoves[0]` is a legal move in the stored FEN, then re-insert.
+
+**Lesson:** Any deck fact that uses `solutionMoves` requires validation that `solutionMoves[0]` is a legal move FROM the stored `fenPosition`. The chess ingest script should run `chess.js` validation on all moves at generation time, not just at quiz runtime.
