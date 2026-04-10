@@ -1711,3 +1711,13 @@ Both return early WITHOUT mutating the screen store.
 **Lesson:** When badge/overlay colors are chosen to match the app's color palette (indigo), they can accidentally blend with deck art of the same hue. Always add a `box-shadow` dark outline to badges that appear over arbitrary image backgrounds. Layout dump "not HIDDEN" does not mean "visually readable."
 
 **Screenshot ref:** Before: `/tmp/rr-docker-visual/low18-verify_none_1775816795022/screenshot.png` — After: `/tmp/rr-docker-visual/low18-after_none_1775817147034/screenshot.png`
+
+---
+
+### 2026-04-10 — Retrospective: what the Apr-10 playtest caught that our process should have
+
+**What:** The BATCH-2026-04-10-003-fullsweep LLM playtest (4 of 5 testers complete) surfaced 3 CRITICAL and 6 HIGH issues that should have been blocked by existing process: a `{N}` template brace leak in 89 synthetic distractors, a partial save-system fix that missed 4 RunState-level Set fields causing `.has()` to throw on resume, dev buttons unconditionally visible in the production hub, grammar scars from batch word replacement, and CombatScene running at 12–14 fps in Docker due to SwiftShader misclassified as `flagship` tier.
+
+**Why:** Three root causes repeat across all findings: (1) manual "sample and grep" steps that existed in rules but were not automated in CI checks — grammar-scar grep, brace-leak grep, Set/Map audit; (2) fixes scoped to the reported class without a broader integration test — `0aeff3bfe` fixed `InRunFactTracker` but not RunState-level Sets; (3) long mean-time-to-discovery for UI bugs with no assertion-based test — dev buttons lived undetected for 488 commits.
+
+**Fix:** Every manual step above is now automated: Check #24 (brace leak), Check #25 (grammar scars), `check-set-map-rehydration.mjs` lint script, and `devMode` store unit tests. See full retrospective at `data/playtests/llm-batches/BATCH-2026-04-10-003-fullsweep/RETROSPECTIVE.md`.
