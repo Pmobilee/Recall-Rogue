@@ -196,6 +196,7 @@
     font-family: var(--font-body, 'Lora', serif);
     color: #e0e0e0;
     overflow: hidden;
+    pointer-events: auto;
     transition: width 0.2s ease, opacity 150ms ease, filter 150ms ease;
   }
 
@@ -219,6 +220,7 @@
     background: none;
     border: none;
     cursor: pointer;
+    pointer-events: auto;
     padding: calc(9px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     color: #e0e0e0;
     min-height: calc(44px * var(--layout-scale, 1));
@@ -235,6 +237,7 @@
     color: #e8e8e8;
     white-space: nowrap;
     overflow: hidden;
+    pointer-events: auto;
     text-overflow: ellipsis;
     max-width: calc(90px * var(--layout-scale, 1));
     flex-shrink: 1;
@@ -256,6 +259,7 @@
     background: rgba(255, 255, 255, 0.08);
     border-radius: calc(3px * var(--layout-scale, 1));
     overflow: hidden;
+    pointer-events: auto;
     min-width: calc(40px * var(--layout-scale, 1));
     /* position: relative required for absolute block overlay */
     position: relative;
@@ -334,6 +338,7 @@
     background: rgba(255, 255, 255, 0.08);
     border-radius: calc(4px * var(--layout-scale, 1));
     overflow: hidden;
+    pointer-events: auto;
     /* position: relative required for absolute block overlay */
     position: relative;
   }

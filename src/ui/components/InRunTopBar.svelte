@@ -874,6 +874,7 @@
     z-index: 199;
     pointer-events: auto;
     cursor: pointer;
+    height: calc(28px * var(--layout-scale, 1));
   }
 
   .fog-wing {
