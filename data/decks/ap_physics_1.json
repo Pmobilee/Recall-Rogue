@@ -289,6 +289,9 @@
         "ap_phys1_velocity_vs_acceleration_direction",
         "ap_phys1_deceleration_misconception",
         "ap_phys1_speed_at_peak_projectile"
+      ],
+      "syntheticDistractors": [
+        "Velocity is the rate of change of position"
       ]
     },
     {
@@ -357,6 +360,9 @@
         "ap_phys1_gravitational_pe_reference",
         "ap_phys1_pe_gravity_path_indep",
         "ap_phys1_total_mechanical_energy"
+      ],
+      "syntheticDistractors": [
+        "Velocity is the rate of change of position"
       ]
     },
     {
@@ -398,6 +404,12 @@
         "ap_phys1_torque_zero_cases",
         "ap_phys1_angular_analog_table",
         "ap_phys1_pivot_choice_strategy"
+      ],
+      "syntheticDistractors": [
+        "Velocity is the rate of change of position",
+        "Acceleration is the rate of change of velocity",
+        "Displacement is a vector; distance is a scalar",
+        "Inertia resists changes to an object's state of motion"
       ]
     },
     {
@@ -410,6 +422,18 @@
         "ap_phys1_kepler3_application",
         "ap_phys1_collapsing_star_angular_momentum",
         "ap_phys1_solid_vs_hollow_rolling"
+      ],
+      "syntheticDistractors": [
+        "Velocity is the rate of change of position",
+        "Acceleration is the rate of change of velocity",
+        "Displacement is a vector; distance is a scalar",
+        "Inertia resists changes to an object's state of motion",
+        "Momentum is conserved in all closed system interactions",
+        "Work equals force times displacement (W = F·d)",
+        "Kinetic energy depends on mass and velocity squared",
+        "Potential energy is stored energy due to position",
+        "Impulse equals the change in momentum",
+        "Action and reaction forces are equal and opposite"
       ]
     },
     {
@@ -427,6 +451,13 @@
         "ap_phys1_resonance",
         "ap_phys1_spring_period_mass_k",
         "ap_phys1_pendulum_length_gravity"
+      ],
+      "syntheticDistractors": [
+        "Velocity is the rate of change of position",
+        "Acceleration is the rate of change of velocity",
+        "Displacement is a vector; distance is a scalar",
+        "Inertia resists changes to an object's state of motion",
+        "Momentum is conserved in all closed system interactions"
       ]
     },
     {
@@ -447,6 +478,10 @@
         "ap_phys1_buoyancy_partial_submerge",
         "ap_phys1_neutral_buoyancy",
         "ap_phys1_flow_rate_units"
+      ],
+      "syntheticDistractors": [
+        "Velocity is the rate of change of position",
+        "Acceleration is the rate of change of velocity"
       ]
     },
     {
@@ -488,6 +523,13 @@
         "ap_phys1_height_to_speed",
         "ap_phys1_work_by_friction_formula",
         "ap_phys1_max_height_from_ke"
+      ],
+      "syntheticDistractors": [
+        "KE = ½mv²",
+        "PE_gravity = mgh",
+        "F = ma (Newton's Second Law)",
+        "W = F·d·cosθ",
+        "p = mv (linear momentum)"
       ]
     },
     {
@@ -501,6 +543,17 @@
         "ap_phys1_moi_common_values",
         "ap_phys1_cross_product_torque",
         "ap_phys1_seesaw_torque_balance"
+      ],
+      "syntheticDistractors": [
+        "KE = ½mv²",
+        "PE_gravity = mgh",
+        "F = ma (Newton's Second Law)",
+        "W = F·d·cosθ",
+        "p = mv (linear momentum)",
+        "F_g = Gm₁m₂/r² (gravity)",
+        "v² = v₀² + 2a·d (kinematics)",
+        "T = 2π√(L/g) (pendulum)",
+        "F_spring = -kx (Hooke's Law)"
       ]
     },
     {
@@ -514,6 +567,17 @@
         "ap_phys1_angular_impulse_formula",
         "ap_phys1_satellite_orbit_speed",
         "ap_phys1_torque_work_rotational"
+      ],
+      "syntheticDistractors": [
+        "KE = ½mv²",
+        "PE_gravity = mgh",
+        "F = ma (Newton's Second Law)",
+        "W = F·d·cosθ",
+        "p = mv (linear momentum)",
+        "F_g = Gm₁m₂/r² (gravity)",
+        "v² = v₀² + 2a·d (kinematics)",
+        "T = 2π√(L/g) (pendulum)",
+        "F_spring = -kx (Hooke's Law)"
       ]
     },
     {
@@ -526,6 +590,18 @@
         "ap_phys1_buoyant_force_formula",
         "ap_phys1_bernoulli_equation_full",
         "ap_phys1_pressure_depth_formula"
+      ],
+      "syntheticDistractors": [
+        "KE = ½mv²",
+        "PE_gravity = mgh",
+        "F = ma (Newton's Second Law)",
+        "W = F·d·cosθ",
+        "p = mv (linear momentum)",
+        "F_g = Gm₁m₂/r² (gravity)",
+        "v² = v₀² + 2a·d (kinematics)",
+        "T = 2π√(L/g) (pendulum)",
+        "F_spring = -kx (Hooke's Law)",
+        "E = KE + PE (mechanical energy)"
       ]
     }
   ],
@@ -2064,9 +2140,10 @@
     },
     {
       "id": "ap_phys1_projectile_independence",
-      "correctAnswer": "Horizontal and vertical motions are independent of each other",
+      "correctAnswer": "Horizontal and vertical motions are independent",
       "acceptableAlternatives": [
-        "independence of horizontal and vertical components"
+        "independence of horizontal and vertical components",
+        "Horizontal and vertical motions are independent of each other"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "concept_statements_u1",
@@ -2138,17 +2215,18 @@
     },
     {
       "id": "ap_phys1_at_rest_zero_accel",
-      "correctAnswer": "At rest and moving at constant velocity both have zero acceleration",
+      "correctAnswer": "Both states have zero acceleration",
       "acceptableAlternatives": [
         "constant velocity means zero acceleration",
-        "acceleration is zero for uniform motion or rest"
+        "acceleration is zero for uniform motion or rest",
+        "At rest and moving at constant velocity both have zero acceleration"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "concept_statements_u1",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What do 'at rest' and 'moving at constant velocity' have in common regarding acceleration?",
-      "explanation": "Both states have zero acceleration (a = 0). 'At rest' is simply the special case where velocity = 0 and a = 0. 'Constant velocity' means v ≠ 0 but a = 0. Newton's First Law covers both: in either case, the net force must be zero. A common misconception is that 'at rest' and 'in motion' are fundamentally different — they are not; both require ΣF = 0.",
+      "explanation": "Both states have zero acceleration (a = 0). 'At rest' is simply the special case where velocity = 0 and a = 0. 'Constant velocity' means v ≠ 0 but a = 0. Newton's First Law covers both: in either case, the net force must be zero. A common misconception is that 'at rest' and 'in motion' are fundamentally different — they are not; both require ΣF = 0. At rest and constant velocity both have zero acceleration.",
       "visualDescription": "Two scenarios side by side: a stationary car (a=0, v=0) and a car moving at constant highway speed (a=0, v=constant)",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/2-4-acceleration",
@@ -2362,9 +2440,10 @@
     },
     {
       "id": "ap_phys1_time_of_flight",
-      "correctAnswer": "Time of flight depends on vertical motion only (not horizontal velocity)",
+      "correctAnswer": "Time of flight depends on vertical motion only",
       "acceptableAlternatives": [
-        "horizontal velocity doesn't affect how long projectile stays in air"
+        "horizontal velocity doesn't affect how long projectile stays in air",
+        "Time of flight depends on vertical motion only (not horizontal velocity)"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "concept_statements_u1",
@@ -2399,16 +2478,17 @@
     },
     {
       "id": "ap_phys1_symmetry_projectile",
-      "correctAnswer": "The projectile returns to the same height with the same speed but opposite vertical velocity",
+      "correctAnswer": "Same speed at same height, but opposite vertical velocity",
       "acceptableAlternatives": [
-        "launch speed equals landing speed for symmetric trajectory"
+        "launch speed equals landing speed for symmetric trajectory",
+        "The projectile returns to the same height with the same speed but opposite vertical velocity"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "concept_statements_u1",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "For a projectile launched and landing at the same height, how do the launch and landing speeds compare?",
-      "explanation": "By conservation of energy (or symmetry of projectile motion), the speed at landing equals the speed at launch when the projectile returns to the same height. The horizontal velocity component is unchanged (v_x constant). The vertical component v_y is equal in magnitude but opposite in direction (up on launch, down on landing). Therefore: v_final = v_initial in magnitude.",
+      "explanation": "By conservation of energy (or symmetry of projectile motion), the speed at landing equals the speed at launch when the projectile returns to the same height. The horizontal velocity component is unchanged (v_x constant). The vertical component v_y is equal in magnitude but opposite in direction (up on launch, down on landing). Therefore: v_final = v_initial in magnitude. The projectile returns to the same height with the same speed but opposite vertical velocity component.",
       "visualDescription": "Symmetric projectile arc showing equal speeds at launch and landing, with horizontal velocity constant and vertical velocity reversed",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/3-4-projectile-motion",
@@ -2662,16 +2742,17 @@
     },
     {
       "id": "ap_phys1_newton3_pairs",
-      "correctAnswer": "They act on DIFFERENT objects (different agents and recipients)",
+      "correctAnswer": "They act on DIFFERENT objects",
       "acceptableAlternatives": [
-        "action and reaction act on different objects"
+        "action and reaction act on different objects",
+        "They act on DIFFERENT objects (different agents and recipients)"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Why do Newton's Third Law action-reaction force pairs never cancel each other out?",
-      "explanation": "Forces cancel when they act on the SAME object (as in Newton's Second Law, where net force = sum of all forces on one object). But action-reaction pairs act on DIFFERENT objects — each force in the pair is on a different body. You can never add them in a single object's free-body diagram because they are on different diagrams.",
+      "explanation": "Forces cancel when they act on the SAME object (as in Newton's Second Law, where net force = sum of all forces on one object). But action-reaction pairs act on DIFFERENT objects — each force in the pair is on a different body. You can never add them in a single object's free-body diagram because they are on different diagrams. Action-reaction pairs act on different agents and recipients, so they never cancel.",
       "visualDescription": "Two separate free-body diagrams: one for object A showing F_BA, one for object B showing F_AB",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/4-4-newtons-third-law-of-motion-symmetry-in-forces",
@@ -3302,9 +3383,10 @@
     },
     {
       "id": "ap_phys1_mass_vs_weight",
-      "correctAnswer": "Mass is amount of matter (kg); weight is gravitational force (N)",
+      "correctAnswer": "Mass = matter (kg); weight = force (N)",
       "acceptableAlternatives": [
-        "mass is scalar in kg; weight is force in newtons"
+        "mass is scalar in kg; weight is force in newtons",
+        "Mass is amount of matter (kg); weight is gravitational force (N)"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -3525,17 +3607,18 @@
     },
     {
       "id": "ap_phys1_net_force_zero",
-      "correctAnswer": "Net force equals zero (object is in translational equilibrium)",
+      "correctAnswer": "Net force equals zero",
       "acceptableAlternatives": [
         "ΣF = 0",
-        "equilibrium: no acceleration"
+        "equilibrium: no acceleration",
+        "Net force equals zero (object is in translational equilibrium)"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
       "difficulty": 1,
       "funScore": 5,
       "quizQuestion": "If an object moves at constant velocity (including being at rest), what must be true about the net force acting on it?",
-      "explanation": "Newton's First Law: constant velocity (Δv = 0) means acceleration = 0, which requires ΣF = 0. This does NOT mean no forces act — it means all forces BALANCE. A book on a desk has gravity down and normal force up, both equal and opposite, summing to zero. The object is in translational equilibrium.",
+      "explanation": "Newton's First Law: constant velocity (Δv = 0) means acceleration = 0, which requires ΣF = 0. This does NOT mean no forces act — it means all forces BALANCE. A book on a desk has gravity down and normal force up, both equal and opposite, summing to zero. The object is in translational equilibrium. When net force = 0, the object is in translational equilibrium.",
       "visualDescription": "A book on a table with weight down and normal force up of equal magnitude, labeled ΣF = 0",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/4-2-newtons-first-law-of-motion-inertia",
@@ -3563,9 +3646,10 @@
     },
     {
       "id": "ap_phys1_friction_direction",
-      "correctAnswer": "Friction always opposes the relative motion (or tendency of motion) between surfaces",
+      "correctAnswer": "Friction always opposes relative motion between surfaces",
       "acceptableAlternatives": [
-        "friction acts opposite to motion or impending motion"
+        "friction acts opposite to motion or impending motion",
+        "Friction always opposes the relative motion (or tendency of motion) between surfaces"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_statements_u2",
@@ -3600,9 +3684,10 @@
     },
     {
       "id": "ap_phys1_spring_restoring",
-      "correctAnswer": "The spring force is a restoring force (always directed toward equilibrium)",
+      "correctAnswer": "The spring force is a restoring force toward equilibrium",
       "acceptableAlternatives": [
-        "spring pulls/pushes back toward equilibrium"
+        "spring pulls/pushes back toward equilibrium",
+        "The spring force is a restoring force (always directed toward equilibrium)"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -4651,10 +4736,11 @@
     },
     {
       "id": "ap_phys1_efficiency",
-      "correctAnswer": "Efficiency = (useful energy output / total energy input) × 100%",
+      "correctAnswer": "Efficiency = (useful output / total input) × 100%",
       "acceptableAlternatives": [
         "e = W_out/W_in × 100%",
-        "useful output divided by total input"
+        "useful output divided by total input",
+        "Efficiency = (useful energy output / total energy input) × 100%"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "equation_explanations_u3",
@@ -4689,16 +4775,17 @@
     },
     {
       "id": "ap_phys1_energy_bar_chart",
-      "correctAnswer": "Energy bar charts (LOL diagrams) show distribution of K, U, and work",
+      "correctAnswer": "LOL diagrams show distribution of K, U, and work",
       "acceptableAlternatives": [
-        "bar charts showing kinetic, potential, and work-energy accounting"
+        "bar charts showing kinetic, potential, and work-energy accounting",
+        "Energy bar charts (LOL diagrams) show distribution of K, U, and work"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_statements_u3",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What tool in AP Physics 1 represents the energy accounting of a system at different moments using bars for K, U_g, U_s, and W?",
-      "explanation": "Energy bar charts (sometimes called LOL diagrams) visually show how energy is distributed at different moments. Each bar represents an energy type: K (kinetic), U_g (gravitational PE), U_s (elastic PE), and a 'W' bar for work done by external forces. The total height of all bars must remain constant for isolated systems. Used heavily on AP free-response questions.",
+      "explanation": "Energy bar charts (sometimes called LOL diagrams) visually show how energy is distributed at different moments. Each bar represents an energy type: K (kinetic), U_g (gravitational PE), U_s (elastic PE), and a 'W' bar for work done by external forces. The total height of all bars must remain constant for isolated systems. Used heavily on AP free-response questions. Energy bar charts (LOL diagrams) represent KE, PE, and work at each stage.",
       "visualDescription": "Two side-by-side bar charts showing energy distribution at two moments, with equal total heights",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/7-6-conservation-of-energy",
@@ -5291,9 +5378,10 @@
     },
     {
       "id": "ap_phys1_ke_loss_inelastic",
-      "correctAnswer": "Some kinetic energy converts to thermal energy, sound, or deformation",
+      "correctAnswer": "KE converts to thermal energy, sound, or deformation",
       "acceptableAlternatives": [
-        "KE lost to heat, deformation, sound in inelastic collisions"
+        "KE lost to heat, deformation, sound in inelastic collisions",
+        "Some kinetic energy converts to thermal energy, sound, or deformation"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
@@ -5328,17 +5416,18 @@
     },
     {
       "id": "ap_phys1_cm_momentum",
-      "correctAnswer": "The center of mass moves at constant velocity (if no external net force)",
+      "correctAnswer": "Center of mass moves at constant velocity",
       "acceptableAlternatives": [
         "CM velocity is constant with no external force",
-        "v_cm = p_total / m_total = constant"
+        "v_cm = p_total / m_total = constant",
+        "The center of mass moves at constant velocity (if no external net force)"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "When two objects collide (with no third-party net force), how does the center of mass of the system move?",
-      "explanation": "The center of mass continues to move at constant velocity v_cm = p_total/m_total throughout the collision, because the total momentum is conserved. Internal forces (the collision forces) do not change the CM velocity. Even in an explosion, the CM of the fragments continues moving at the pre-explosion velocity. This is a powerful constraint for analyzing collisions.",
+      "explanation": "The center of mass continues to move at constant velocity v_cm = p_total/m_total throughout the collision, because the total momentum is conserved. Internal forces (the collision forces) do not change the CM velocity. Even in an explosion, the CM of the fragments continues moving at the pre-explosion velocity. This is a powerful constraint for analyzing collisions. This holds when there is no net external force on the system.",
       "visualDescription": "Two colliding objects with the CM marked as a dot moving in a straight line at constant velocity through the collision",
       "sourceName": "OpenStax University Physics Vol 1",
       "sourceUrl": "https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass",
@@ -6007,9 +6096,10 @@
     },
     {
       "id": "ap_phys1_right_hand_rule_torque",
-      "correctAnswer": "Counterclockwise torques are positive; clockwise are negative (by convention)",
+      "correctAnswer": "CCW torques are positive; CW torques are negative",
       "acceptableAlternatives": [
-        "CCW = positive, CW = negative torque convention"
+        "CCW = positive, CW = negative torque convention",
+        "Counterclockwise torques are positive; clockwise are negative (by convention)"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "concept_statements_u5",
@@ -6155,16 +6245,17 @@
     },
     {
       "id": "ap_phys1_torque_perpendicular",
-      "correctAnswer": "Maximum torque when force is perpendicular to the moment arm (θ = 90°)",
+      "correctAnswer": "Maximum torque when force is perpendicular to moment arm",
       "acceptableAlternatives": [
-        "sin 90° = 1 gives maximum torque"
+        "sin 90° = 1 gives maximum torque",
+        "Maximum torque when force is perpendicular to the moment arm (θ = 90°)"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "concept_statements_u5",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "At what angle between the force and the moment arm is torque maximized?",
-      "explanation": "τ = rF sin θ is maximized when sin θ = 1, i.e., θ = 90°. This is why door handles are positioned perpendicular to the door — and why pushing a door at the hinge (θ → 0°, sin θ → 0) barely opens it. Also: zero torque when force is along the moment arm (θ = 0° or 180°). A wrench is most effective when pulled perpendicular to its handle.",
+      "explanation": "τ = rF sin θ is maximized when sin θ = 1, i.e., θ = 90°. This is why door handles are positioned perpendicular to the door — and why pushing a door at the hinge (θ → 0°, sin θ → 0) barely opens it. Also: zero torque when force is along the moment arm (θ = 0° or 180°). A wrench is most effective when pulled perpendicular to its handle. Torque is maximized at θ = 90°.",
       "visualDescription": "A door with three force arrows at angles 0°, 45°, and 90°, showing torque magnitudes increasing with angle",
       "sourceName": "OpenStax University Physics Vol 1",
       "sourceUrl": "https://openstax.org/books/university-physics-volume-1/pages/10-6-torque",
@@ -6452,9 +6543,10 @@
     },
     {
       "id": "ap_phys1_satellite_orbit",
-      "correctAnswer": "Gravitational force provides centripetal force: Gm₁m₂/r² = mv²/r",
+      "correctAnswer": "Gravity provides centripetal force: Gm₁m₂/r² = mv²/r",
       "acceptableAlternatives": [
-        "gravity = centripetal force for orbiting satellites"
+        "gravity = centripetal force for orbiting satellites",
+        "Gravitational force provides centripetal force: Gm₁m₂/r² = mv²/r"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "equation_explanations_u6",
@@ -7354,9 +7446,10 @@
     },
     {
       "id": "ap_phys1_fluid_newton_third",
-      "correctAnswer": "The fluid pushes back with an equal and opposite force (Newton's Third Law)",
+      "correctAnswer": "The fluid pushes back with an equal and opposite force",
       "acceptableAlternatives": [
-        "object pushes fluid down; fluid pushes object up"
+        "object pushes fluid down; fluid pushes object up",
+        "The fluid pushes back with an equal and opposite force (Newton's Third Law)"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "concept_statements_u8",
@@ -7429,16 +7522,17 @@
     },
     {
       "id": "ap_phys1_coefficient_restitution",
-      "correctAnswer": "Coefficient of restitution (e): e=1 elastic, e=0 perfectly inelastic",
+      "correctAnswer": "e=1 elastic; e=0 perfectly inelastic",
       "acceptableAlternatives": [
-        "e = 1 for elastic, 0 for perfectly inelastic"
+        "e = 1 for elastic, 0 for perfectly inelastic",
+        "Coefficient of restitution (e): e=1 elastic, e=0 perfectly inelastic"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What value of the coefficient of restitution (e = relative speed after/before collision) characterizes an elastic vs. perfectly inelastic collision?",
-      "explanation": "Coefficient of restitution e = (relative speed of separation)/(relative speed of approach). e = 1: elastic collision (no KE lost). e = 0: perfectly inelastic (objects stick, maximum KE loss). 0 < e < 1: partially inelastic. A rubber ball bouncing might have e ≈ 0.7–0.9; a clay ball e ≈ 0. On AP Physics 1, you classify by momentum/KE conservation rather than 'e' directly.",
+      "explanation": "Coefficient of restitution e = (relative speed of separation)/(relative speed of approach). e = 1: elastic collision (no KE lost). e = 0: perfectly inelastic (objects stick, maximum KE loss). 0 < e < 1: partially inelastic. A rubber ball bouncing might have e ≈ 0.7–0.9; a clay ball e ≈ 0. On AP Physics 1, you classify by momentum/KE conservation rather than 'e' directly. Coefficient of restitution (e) measures relative speed after vs before collision.",
       "visualDescription": "A ball bouncing with rebound height showing e² fraction of original height",
       "sourceName": "OpenStax University Physics Vol 1",
       "sourceUrl": "https://openstax.org/books/university-physics-volume-1/pages/9-5-collisions-in-multiple-dimensions",
@@ -7805,9 +7899,10 @@
     },
     {
       "id": "ap_phys1_component_addition",
-      "correctAnswer": "Add x-components together and y-components together separately",
+      "correctAnswer": "Add x-components together; add y-components separately",
       "acceptableAlternatives": [
-        "sum x-components and sum y-components separately"
+        "sum x-components and sum y-components separately",
+        "Add x-components together and y-components together separately"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "concept_statements_u1",
@@ -7911,17 +8006,18 @@
     },
     {
       "id": "ap_phys1_projectile_symmetry",
-      "correctAnswer": "The launch angle above horizontal equals the impact angle below horizontal",
+      "correctAnswer": "Launch angle = impact angle (symmetric about peak)",
       "acceptableAlternatives": [
         "symmetric trajectory",
-        "same angle at landing as at launch"
+        "same angle at landing as at launch",
+        "The launch angle above horizontal equals the impact angle below horizontal"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "concept_statements_u1",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "For a projectile launched and landing at the same height, what symmetry exists in the trajectory?",
-      "explanation": "A projectile's trajectory is symmetric about the peak. The time to rise equals the time to fall. The speed at any height on the way up equals the speed at the same height on the way down. The launch angle equals the impact angle, and the horizontal velocity is constant throughout. This symmetry simplifies many AP exam calculations.",
+      "explanation": "A projectile's trajectory is symmetric about the peak. The time to rise equals the time to fall. The speed at any height on the way up equals the speed at the same height on the way down. The launch angle equals the impact angle, and the horizontal velocity is constant throughout. This symmetry simplifies many AP exam calculations. For equal launch and landing heights, launch angle above horizontal equals impact angle below.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/3-4-projectile-motion",
       "distractors": [
@@ -7983,17 +8079,18 @@
     },
     {
       "id": "ap_phys1_deceleration_misconception",
-      "correctAnswer": "Deceleration means acceleration is opposite to velocity direction (not necessarily negative)",
+      "correctAnswer": "Deceleration: acceleration opposite to velocity direction",
       "acceptableAlternatives": [
         "deceleration means slowing down, not a sign",
-        "negative acceleration does not always mean slowing down"
+        "negative acceleration does not always mean slowing down",
+        "Deceleration means acceleration is opposite to velocity direction (not necessarily negative)"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "concept_statements_u1",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Why is 'deceleration' not the same as 'negative acceleration' in physics?",
-      "explanation": "Deceleration means an object is slowing down — its speed is decreasing. This happens when acceleration is opposite to velocity. A car moving in the negative direction that speeds up has a negative acceleration but is NOT decelerating. True deceleration depends on the relationship between velocity and acceleration directions, not the algebraic sign of acceleration alone.",
+      "explanation": "Deceleration means an object is slowing down — its speed is decreasing. This happens when acceleration is opposite to velocity. A car moving in the negative direction that speeds up has a negative acceleration but is NOT decelerating. True deceleration depends on the relationship between velocity and acceleration directions, not the algebraic sign of acceleration alone. Deceleration is not necessarily negative — it means acceleration opposes the direction of motion.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/2-4-acceleration",
       "distractors": [
@@ -8196,17 +8293,18 @@
     },
     {
       "id": "ap_phys1_speed_at_peak_projectile",
-      "correctAnswer": "The horizontal component of the launch velocity (vx = v₀cosθ)",
+      "correctAnswer": "vx = v₀cosθ (horizontal component only)",
       "acceptableAlternatives": [
         "v0*cos(theta)",
-        "vx only, since vy = 0 at peak"
+        "vx only, since vy = 0 at peak",
+        "The horizontal component of the launch velocity (vx = v₀cosθ)"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "concept_statements_u1",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What is the speed of a projectile at the peak of its trajectory?",
-      "explanation": "At the peak, vy = 0, so the only velocity is the horizontal component vx = v₀cosθ. This is the minimum speed the projectile has during flight (for a launch angle between 0° and 90°). A common mistake is to say speed is zero at the peak — it is only zero if launched straight up (θ = 90°). For any other angle, the projectile still has horizontal velocity at the top.",
+      "explanation": "At the peak, vy = 0, so the only velocity is the horizontal component vx = v₀cosθ. This is the minimum speed the projectile has during flight (for a launch angle between 0° and 90°). A common mistake is to say speed is zero at the peak — it is only zero if launched straight up (θ = 90°). For any other angle, the projectile still has horizontal velocity at the top. At the peak, vertical velocity is zero; only horizontal component v₀cosθ remains.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/3-4-projectile-motion",
       "distractors": [
@@ -8303,9 +8401,10 @@
     },
     {
       "id": "ap_phys1_system_internal_external",
-      "correctAnswer": "Internal forces act between objects within the system; external forces act from outside",
+      "correctAnswer": "Internal forces: within the system; external: from outside",
       "acceptableAlternatives": [
-        "internal forces are within the system, external forces are from outside the system"
+        "internal forces are within the system, external forces are from outside the system",
+        "Internal forces act between objects within the system; external forces act from outside"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -8338,16 +8437,17 @@
     },
     {
       "id": "ap_phys1_cm_symmetry",
-      "correctAnswer": "The center of mass lies at the geometric center for objects with uniform density",
+      "correctAnswer": "Center of mass = geometric center (uniform density)",
       "acceptableAlternatives": [
-        "center of mass is at the center of symmetry for uniform objects"
+        "center of mass is at the center of symmetry for uniform objects",
+        "The center of mass lies at the geometric center for objects with uniform density"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "Where is the center of mass located in an object with uniform density and symmetric shape?",
-      "explanation": "For uniform density objects with geometric symmetry (sphere, uniform rod, cylinder, etc.), the center of mass coincides with the geometric center. For example, the CM of a uniform meter stick is at the 50 cm mark. For non-uniform objects or asymmetric shapes, the CM is pulled toward the heavier region. This symmetry argument is often used on AP free-response problems.",
+      "explanation": "For uniform density objects with geometric symmetry (sphere, uniform rod, cylinder, etc.), the center of mass coincides with the geometric center. For example, the CM of a uniform meter stick is at the 50 cm mark. For non-uniform objects or asymmetric shapes, the CM is pulled toward the heavier region. This symmetry argument is often used on AP free-response problems. For symmetric objects with uniform density, the center of mass lies at the geometric center.",
       "sourceName": "OpenStax University Physics Volume 1",
       "sourceUrl": "https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass",
       "distractors": [
@@ -8409,16 +8509,17 @@
     },
     {
       "id": "ap_phys1_fbd_what_to_include",
-      "correctAnswer": "All forces acting ON the object (not forces the object exerts on others)",
+      "correctAnswer": "All forces acting ON the object only",
       "acceptableAlternatives": [
-        "forces on the object only, not forces it exerts on other objects"
+        "forces on the object only, not forces it exerts on other objects",
+        "All forces acting ON the object (not forces the object exerts on others)"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "What forces should appear on a free-body diagram of a single object?",
-      "explanation": "A free-body diagram shows ALL forces acting ON the chosen object — gravity, normal force, friction, tension, applied forces, etc. You should NEVER include forces that the object exerts on others (Newton's 3rd law reaction forces go on a separate FBD for that other object). Including the wrong forces is one of the most common AP exam errors.",
+      "explanation": "A free-body diagram shows ALL forces acting ON the chosen object — gravity, normal force, friction, tension, applied forces, etc. You should NEVER include forces that the object exerts on others (Newton's 3rd law reaction forces go on a separate FBD for that other object). Including the wrong forces is one of the most common AP exam errors. Free-body diagrams include only forces acting on the object, not forces it exerts on others.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/4-5-normal-tension-and-other-examples-of-forces",
       "distractors": [
@@ -8444,9 +8545,10 @@
     },
     {
       "id": "ap_phys1_normal_force_not_always_weight",
-      "correctAnswer": "Normal force equals weight only on a flat horizontal surface with no vertical acceleration",
+      "correctAnswer": "N = mg only on flat surface with no vertical acceleration",
       "acceptableAlternatives": [
-        "N = mg only when surface is horizontal and object is not accelerating vertically"
+        "N = mg only when surface is horizontal and object is not accelerating vertically",
+        "Normal force equals weight only on a flat horizontal surface with no vertical acceleration"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_statements_u2",
@@ -8479,9 +8581,10 @@
     },
     {
       "id": "ap_phys1_newton3_misconception",
-      "correctAnswer": "Newton's 3rd law pairs are equal in magnitude regardless of mass, speed, or strength",
+      "correctAnswer": "N3L pairs are equal in magnitude regardless of mass or speed",
       "acceptableAlternatives": [
-        "action and reaction forces are always equal even between objects of different mass"
+        "action and reaction forces are always equal even between objects of different mass",
+        "Newton's 3rd law pairs are equal in magnitude regardless of mass, speed, or strength"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -8514,9 +8617,10 @@
     },
     {
       "id": "ap_phys1_net_force_direction_equals_accel",
-      "correctAnswer": "The net force and the acceleration always point in the same direction",
+      "correctAnswer": "Net force and acceleration always point the same direction",
       "acceptableAlternatives": [
-        "acceleration is always in the direction of net force"
+        "acceleration is always in the direction of net force",
+        "The net force and the acceleration always point in the same direction"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -8549,10 +8653,11 @@
     },
     {
       "id": "ap_phys1_gravity_inverse_square_behavior",
-      "correctAnswer": "Doubling the distance reduces gravitational force to one-fourth",
+      "correctAnswer": "Doubling distance reduces gravitational force to one-fourth",
       "acceptableAlternatives": [
         "force decreases by factor of 4 when distance doubles",
-        "F ∝ 1/r²"
+        "F ∝ 1/r²",
+        "Doubling the distance reduces gravitational force to one-fourth"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -8620,9 +8725,10 @@
     },
     {
       "id": "ap_phys1_static_vs_kinetic_friction",
-      "correctAnswer": "Static friction is greater than kinetic friction; static prevents sliding, kinetic opposes sliding",
+      "correctAnswer": "Static > kinetic friction; static prevents, kinetic opposes",
       "acceptableAlternatives": [
-        "μs > μk; static friction acts when not moving, kinetic when moving"
+        "μs > μk; static friction acts when not moving, kinetic when moving",
+        "Static friction is greater than kinetic friction; static prevents sliding, kinetic opposes sliding"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_statements_u2",
@@ -8655,16 +8761,17 @@
     },
     {
       "id": "ap_phys1_friction_coefficient_meaning",
-      "correctAnswer": "The ratio of friction force to normal force; higher μ means more friction for same normal force",
+      "correctAnswer": "μ = friction force / normal force",
       "acceptableAlternatives": [
-        "μ = f/N; dimensionless ratio of friction to normal force"
+        "μ = f/N; dimensionless ratio of friction to normal force",
+        "The ratio of friction force to normal force; higher μ means more friction for same normal force"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_statements_u2",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "What does the coefficient of friction (μ) physically represent?",
-      "explanation": "The coefficient of friction μ = f/N is a dimensionless ratio that characterizes how 'grippy' two surfaces are. Ice on ice: μ ≈ 0.03. Rubber on dry pavement: μ ≈ 0.7. Steel on steel: μ ≈ 0.4. The coefficient depends on both surface materials and conditions (wet/dry) but NOT on area of contact or relative speed (for kinetic friction). It has no units.",
+      "explanation": "The coefficient of friction μ = f/N is a dimensionless ratio that characterizes how 'grippy' two surfaces are. Ice on ice: μ ≈ 0.03. Rubber on dry pavement: μ ≈ 0.7. Steel on steel: μ ≈ 0.4. The coefficient depends on both surface materials and conditions (wet/dry) but NOT on area of contact or relative speed (for kinetic friction). It has no units. Higher μ means more friction for the same normal force.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/5-1-friction",
       "distractors": [
@@ -8690,9 +8797,10 @@
     },
     {
       "id": "ap_phys1_zero_friction_cases",
-      "correctAnswer": "When surfaces are frictionless or when the applied force has no component along the surface",
+      "correctAnswer": "Frictionless, or no applied force component along surface",
       "acceptableAlternatives": [
-        "frictionless surface, or force perpendicular to surface"
+        "frictionless surface, or force perpendicular to surface",
+        "When surfaces are frictionless or when the applied force has no component along the surface"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_statements_u2",
@@ -8725,9 +8833,10 @@
     },
     {
       "id": "ap_phys1_hookes_law_restoring",
-      "correctAnswer": "The spring force is proportional to and opposite the displacement from equilibrium",
+      "correctAnswer": "Spring force proportional and opposite to displacement",
       "acceptableAlternatives": [
-        "F = -kx; restoring force proportional to displacement"
+        "F = -kx; restoring force proportional to displacement",
+        "The spring force is proportional to and opposite the displacement from equilibrium"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -8865,9 +8974,10 @@
     },
     {
       "id": "ap_phys1_banked_curve",
-      "correctAnswer": "The horizontal component of the normal force provides centripetal force",
+      "correctAnswer": "Horizontal component of N provides centripetal force",
       "acceptableAlternatives": [
-        "normal force component (N sin θ) supplies centripetal force on banked curve"
+        "normal force component (N sin θ) supplies centripetal force on banked curve",
+        "The horizontal component of the normal force provides centripetal force"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_statements_u2",
@@ -8900,9 +9010,10 @@
     },
     {
       "id": "ap_phys1_atwood_machine_concept",
-      "correctAnswer": "The tension is the same throughout a massless rope over an ideal pulley",
+      "correctAnswer": "Tension uniform throughout a massless rope over ideal pulley",
       "acceptableAlternatives": [
-        "ideal rope has uniform tension; massless rope over frictionless pulley has equal tension"
+        "ideal rope has uniform tension; massless rope over frictionless pulley has equal tension",
+        "The tension is the same throughout a massless rope over an ideal pulley"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_statements_u2",
@@ -8935,9 +9046,10 @@
     },
     {
       "id": "ap_phys1_elevator_normal_force",
-      "correctAnswer": "Accelerating up: N > mg; accelerating down: N < mg; constant velocity: N = mg",
+      "correctAnswer": "Accel up: N > mg; accel down: N < mg; constant v: N = mg",
       "acceptableAlternatives": [
-        "N = m(g+a) going up, N = m(g-a) going down, N = mg at constant speed"
+        "N = m(g+a) going up, N = m(g-a) going down, N = mg at constant speed",
+        "Accelerating up: N > mg; accelerating down: N < mg; constant velocity: N = mg"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_statements_u2",
@@ -8970,9 +9082,10 @@
     },
     {
       "id": "ap_phys1_incline_component_forces",
-      "correctAnswer": "Component along incline = mg sinθ; component perpendicular = mg cosθ",
+      "correctAnswer": "Along incline: mg sinθ; perpendicular: mg cosθ",
       "acceptableAlternatives": [
-        "mg sin(theta) parallel, mg cos(theta) perpendicular to incline"
+        "mg sin(theta) parallel, mg cos(theta) perpendicular to incline",
+        "Component along incline = mg sinθ; component perpendicular = mg cosθ"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "equation_explanations_u2",
@@ -9005,9 +9118,10 @@
     },
     {
       "id": "ap_phys1_spring_equilibrium",
-      "correctAnswer": "The position where the spring force is zero and net force on the mass is zero",
+      "correctAnswer": "Position where spring force and net force are both zero",
       "acceptableAlternatives": [
-        "equilibrium position: spring is at natural length, no net force"
+        "equilibrium position: spring is at natural length, no net force",
+        "The position where the spring force is zero and net force on the mass is zero"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -9040,9 +9154,10 @@
     },
     {
       "id": "ap_phys1_system_single_object",
-      "correctAnswer": "When all objects have the same acceleration, treat them as one combined mass",
+      "correctAnswer": "Same acceleration for all → treat as one combined mass",
       "acceptableAlternatives": [
-        "treat as single system when objects move together with same acceleration"
+        "treat as single system when objects move together with same acceleration",
+        "When all objects have the same acceleration, treat them as one combined mass"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -9075,9 +9190,10 @@
     },
     {
       "id": "ap_phys1_friction_independent_area",
-      "correctAnswer": "Kinetic friction does not depend on the contact area between surfaces",
+      "correctAnswer": "Kinetic friction is independent of contact area",
       "acceptableAlternatives": [
-        "friction force is independent of area of contact"
+        "friction force is independent of area of contact",
+        "Kinetic friction does not depend on the contact area between surfaces"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_statements_u2",
@@ -9110,16 +9226,17 @@
     },
     {
       "id": "ap_phys1_newton2_rotational_system",
-      "correctAnswer": "F_net,ext = M·a_cm where M is total mass and a_cm is acceleration of center of mass",
+      "correctAnswer": "F_net,ext = M·a_cm",
       "acceptableAlternatives": [
-        "net external force equals total mass times acceleration of center of mass"
+        "net external force equals total mass times acceleration of center of mass",
+        "F_net,ext = M·a_cm where M is total mass and a_cm is acceleration of center of mass"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "equation_explanations_u2",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Newton's 2nd law for a system of objects relates the net external force to what?",
-      "explanation": "For any system of objects (even one that rotates or deforms), the net external force equals the total mass times the acceleration of the center of mass: F_net,ext = Ma_cm. Internal forces don't appear because they cancel in pairs. The center of mass of a system always moves as if it were a point particle experiencing only external forces — a powerful simplification for complex systems.",
+      "explanation": "For any system of objects (even one that rotates or deforms), the net external force equals the total mass times the acceleration of the center of mass: F_net,ext = Ma_cm. Internal forces don't appear because they cancel in pairs. The center of mass of a system always moves as if it were a point particle experiencing only external forces — a powerful simplification for complex systems. M is total system mass; a_cm is acceleration of the center of mass.",
       "sourceName": "OpenStax University Physics Volume 1",
       "sourceUrl": "https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass",
       "distractors": [
@@ -9145,16 +9262,17 @@
     },
     {
       "id": "ap_phys1_tension_rope_mass",
-      "correctAnswer": "Tension varies along a massive rope; it is uniform only in a massless (ideal) rope",
+      "correctAnswer": "Tension is uniform only in a massless (ideal) rope",
       "acceptableAlternatives": [
-        "real ropes with mass have varying tension; massless ropes have constant tension"
+        "real ropes with mass have varying tension; massless ropes have constant tension",
+        "Tension varies along a massive rope; it is uniform only in a massless (ideal) rope"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_statements_u2",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Under what condition is the tension in a rope uniform (the same at every point)?",
-      "explanation": "In a massless rope under the same external forces, tension is the same at every point. For a rope with mass hanging vertically, the upper part must support both the lower part and any attached object — so tension is greatest at the top and least at the bottom. On AP Physics 1, 'rope' or 'string' usually implies massless unless stated otherwise, allowing uniform tension assumption.",
+      "explanation": "In a massless rope under the same external forces, tension is the same at every point. For a rope with mass hanging vertically, the upper part must support both the lower part and any attached object — so tension is greatest at the top and least at the bottom. On AP Physics 1, 'rope' or 'string' usually implies massless unless stated otherwise, allowing uniform tension assumption. Tension varies along a massive rope.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/4-5-normal-tension-and-other-examples-of-forces",
       "distractors": [
@@ -9215,10 +9333,11 @@
     },
     {
       "id": "ap_phys1_gravity_mass_independence",
-      "correctAnswer": "All objects fall with the same acceleration g regardless of mass (in the absence of air resistance)",
+      "correctAnswer": "All objects fall at same g regardless of mass",
       "acceptableAlternatives": [
         "gravitational acceleration is independent of mass",
-        "heavier objects do not fall faster"
+        "heavier objects do not fall faster",
+        "All objects fall with the same acceleration g regardless of mass (in the absence of air resistance)"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -9286,9 +9405,10 @@
     },
     {
       "id": "ap_phys1_spring_force_direction",
-      "correctAnswer": "Opposite to the displacement from the natural length (restoring toward equilibrium)",
+      "correctAnswer": "Opposite to displacement from natural length",
       "acceptableAlternatives": [
-        "opposite to displacement, always toward equilibrium"
+        "opposite to displacement, always toward equilibrium",
+        "Opposite to the displacement from the natural length (restoring toward equilibrium)"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -9321,16 +9441,17 @@
     },
     {
       "id": "ap_phys1_g_surface_formula",
-      "correctAnswer": "g_surface = GM/R² where M and R are the planet's mass and radius",
+      "correctAnswer": "g = GM/R²",
       "acceptableAlternatives": [
-        "g = GM/R^2"
+        "g = GM/R^2",
+        "g_surface = GM/R² where M and R are the planet's mass and radius"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "equation_explanations_u2",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What formula gives the gravitational field strength (g) at the surface of a planet?",
-      "explanation": "Setting the universal gravity formula equal to mg: mg = GMm/R² → g = GM/R². This shows g depends on the planet's mass M and radius R, but NOT on the object's mass m. On Earth: g = (6.67×10⁻¹¹)(5.97×10²⁴)/(6.37×10⁶)² ≈ 9.8 m/s². A more massive planet has stronger g; a larger radius weakens it. Mars has smaller M and R, giving g_Mars ≈ 3.7 m/s².",
+      "explanation": "Setting the universal gravity formula equal to mg: mg = GMm/R² → g = GM/R². This shows g depends on the planet's mass M and radius R, but NOT on the object's mass m. On Earth: g = (6.67×10⁻¹¹)(5.97×10²⁴)/(6.37×10⁶)² ≈ 9.8 m/s². A more massive planet has stronger g; a larger radius weakens it. Mars has smaller M and R, giving g_Mars ≈ 3.7 m/s². M is the planet mass and R is its radius.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/6-5-newtons-universal-law-of-gravitation",
       "distractors": [
@@ -9427,9 +9548,10 @@
     },
     {
       "id": "ap_phys1_weight_vs_mass_planet",
-      "correctAnswer": "Mass stays the same; weight changes depending on the planet's gravitational field",
+      "correctAnswer": "Mass stays the same; weight changes with gravitational field",
       "acceptableAlternatives": [
-        "mass is constant; weight = mg changes with g"
+        "mass is constant; weight = mg changes with g",
+        "Mass stays the same; weight changes depending on the planet's gravitational field"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -9462,9 +9584,10 @@
     },
     {
       "id": "ap_phys1_spring_series_parallel",
-      "correctAnswer": "Springs in series: k_eff = k₁k₂/(k₁+k₂); springs in parallel: k_eff = k₁ + k₂",
+      "correctAnswer": "Series: k_eff = k₁k₂/(k₁+k₂); parallel: k_eff = k₁+k₂",
       "acceptableAlternatives": [
-        "series springs softer, parallel springs stiffer"
+        "series springs softer, parallel springs stiffer",
+        "Springs in series: k_eff = k₁k₂/(k₁+k₂); springs in parallel: k_eff = k₁ + k₂"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "equation_explanations_u2",
@@ -9497,9 +9620,10 @@
     },
     {
       "id": "ap_phys1_friction_direction_rule",
-      "correctAnswer": "Kinetic friction opposes sliding; static friction opposes the tendency to slide",
+      "correctAnswer": "Kinetic opposes sliding; static opposes tendency to slide",
       "acceptableAlternatives": [
-        "friction always opposes relative motion or attempted motion"
+        "friction always opposes relative motion or attempted motion",
+        "Kinetic friction opposes sliding; static friction opposes the tendency to slide"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_statements_u2",
@@ -9567,9 +9691,10 @@
     },
     {
       "id": "ap_phys1_drag_qualitative",
-      "correctAnswer": "Drag increases with speed and opposes motion; terminal velocity when drag equals weight",
+      "correctAnswer": "Drag increases with speed; terminal v when drag = weight",
       "acceptableAlternatives": [
-        "drag opposes motion and grows with speed; terminal velocity when F_drag = mg"
+        "drag opposes motion and grows with speed; terminal velocity when F_drag = mg",
+        "Drag increases with speed and opposes motion; terminal velocity when drag equals weight"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "concept_statements_u2",
@@ -9637,9 +9762,10 @@
     },
     {
       "id": "ap_phys1_circular_speed_radius",
-      "correctAnswer": "At fixed centripetal force: speed increases if radius increases (v² = Fr/m)",
+      "correctAnswer": "At fixed F_c: v² = Fr/m, so v increases with radius",
       "acceptableAlternatives": [
-        "larger radius requires more speed to maintain same centripetal force"
+        "larger radius requires more speed to maintain same centripetal force",
+        "At fixed centripetal force: speed increases if radius increases (v² = Fr/m)"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -9672,9 +9798,10 @@
     },
     {
       "id": "ap_phys1_fbd_contact_vs_field",
-      "correctAnswer": "Contact forces (normal, friction, tension) and field forces (gravity, electric); both appear on FBDs",
+      "correctAnswer": "Contact: normal, friction, tension; field: gravity, electric",
       "acceptableAlternatives": [
-        "contact forces require touching; field forces act at a distance"
+        "contact forces require touching; field forces act at a distance",
+        "Contact forces (normal, friction, tension) and field forces (gravity, electric); both appear on FBDs"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "concept_statements_u2",
@@ -9707,9 +9834,10 @@
     },
     {
       "id": "ap_phys1_work_by_gravity",
-      "correctAnswer": "W_gravity = mgh (positive when moving down, negative when moving up)",
+      "correctAnswer": "W_gravity = mgh (+ downward, − upward)",
       "acceptableAlternatives": [
-        "work done by gravity = mgh downward, -mgh upward"
+        "work done by gravity = mgh downward, -mgh upward",
+        "W_gravity = mgh (positive when moving down, negative when moving up)"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "equation_explanations_u3",
@@ -9742,10 +9870,12 @@
     },
     {
       "id": "ap_phys1_work_by_normal_force",
-      "correctAnswer": "Zero, because the normal force is always perpendicular to displacement",
+      "correctAnswer": "Zero: normal force is always perpendicular to displacement",
       "acceptableAlternatives": [
         "W_normal = 0 because F ⊥ d",
-        "work done by normal force is zero"
+        "work done by normal force is zero",
+        "Zero, because the normal force is always perpendicular to displacement",
+        "Zero — normal force is always perpendicular to displacement"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_statements_u3",
@@ -9778,16 +9908,17 @@
     },
     {
       "id": "ap_phys1_negative_work",
-      "correctAnswer": "When force and displacement are in opposite directions (cos θ < 0)",
+      "correctAnswer": "When force and displacement are in opposite directions",
       "acceptableAlternatives": [
-        "work is negative when angle between F and d is greater than 90°"
+        "work is negative when angle between F and d is greater than 90°",
+        "When force and displacement are in opposite directions (cos θ < 0)"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_statements_u3",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "Under what condition does a force do negative work on an object?",
-      "explanation": "W = Fd cosθ is negative when cosθ < 0, which occurs when 90° < θ ≤ 180°. This means force and displacement have opposite directions. Friction always does negative work on a sliding object (friction opposes motion). Gravity does negative work when you lift an object (force down, displacement up). Negative work removes kinetic energy from an object.",
+      "explanation": "W = Fd cosθ is negative when cosθ < 0, which occurs when 90° < θ ≤ 180°. This means force and displacement have opposite directions. Friction always does negative work on a sliding object (friction opposes motion). Gravity does negative work when you lift an object (force down, displacement up). Negative work removes kinetic energy from an object. This occurs when cos θ < 0.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/7-1-work-the-scientific-definition",
       "distractors": [
@@ -9813,9 +9944,10 @@
     },
     {
       "id": "ap_phys1_work_friction_thermal",
-      "correctAnswer": "Work done by friction = −f_k × d; this energy becomes thermal energy (heat)",
+      "correctAnswer": "W_friction = −f_k·d; energy becomes thermal (heat)",
       "acceptableAlternatives": [
-        "friction work converts to thermal energy: ΔE_thermal = f_k × d"
+        "friction work converts to thermal energy: ΔE_thermal = f_k × d",
+        "Work done by friction = −f_k × d; this energy becomes thermal energy (heat)"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_statements_u3",
@@ -9848,9 +9980,10 @@
     },
     {
       "id": "ap_phys1_conservative_test",
-      "correctAnswer": "Work done is path-independent; or equivalently, work around any closed loop is zero",
+      "correctAnswer": "Work is path-independent; closed-loop work = zero",
       "acceptableAlternatives": [
-        "conservative force: W depends only on start and end points, not path"
+        "conservative force: W depends only on start and end points, not path",
+        "Work done is path-independent; or equivalently, work around any closed loop is zero"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_statements_u3",
@@ -9883,9 +10016,10 @@
     },
     {
       "id": "ap_phys1_pe_diagram_equilibrium",
-      "correctAnswer": "Stable equilibrium at a potential energy minimum; unstable equilibrium at a maximum",
+      "correctAnswer": "PE minimum = stable equilibrium; PE maximum = unstable",
       "acceptableAlternatives": [
-        "PE minimum = stable equilibrium; PE maximum = unstable equilibrium"
+        "PE minimum = stable equilibrium; PE maximum = unstable equilibrium",
+        "Stable equilibrium at a potential energy minimum; unstable equilibrium at a maximum"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_statements_u3",
@@ -9918,9 +10052,10 @@
     },
     {
       "id": "ap_phys1_energy_bar_charts",
-      "correctAnswer": "Bar charts show KE + PE + W_friction = constant total energy at each stage",
+      "correctAnswer": "KE + PE + W_friction = constant total energy at each stage",
       "acceptableAlternatives": [
-        "LOL diagrams: bars for KE, PE, and heat must sum to same total before and after"
+        "LOL diagrams: bars for KE, PE, and heat must sum to same total before and after",
+        "Bar charts show KE + PE + W_friction = constant total energy at each stage"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_statements_u3",
@@ -9953,9 +10088,10 @@
     },
     {
       "id": "ap_phys1_power_watts",
-      "correctAnswer": "Power is the rate of energy transfer: P = W/t = Fv (in Watts = J/s)",
+      "correctAnswer": "Power = rate of energy transfer: P = W/t = Fv (Watts)",
       "acceptableAlternatives": [
-        "P = ΔE/Δt; power in Watts"
+        "P = ΔE/Δt; power in Watts",
+        "Power is the rate of energy transfer: P = W/t = Fv (in Watts = J/s)"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_statements_u3",
@@ -9988,10 +10124,11 @@
     },
     {
       "id": "ap_phys1_efficiency_formula",
-      "correctAnswer": "Efficiency = (useful energy output / total energy input) × 100%",
+      "correctAnswer": "Efficiency = (useful output / total input) × 100%",
       "acceptableAlternatives": [
         "η = W_useful / W_input × 100%",
-        "efficiency = useful output / total input"
+        "efficiency = useful output / total input",
+        "Efficiency = (useful energy output / total energy input) × 100%"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "equation_explanations_u3",
@@ -10024,17 +10161,18 @@
     },
     {
       "id": "ap_phys1_work_spring",
-      "correctAnswer": "W_spring = ½kx² (energy stored equals work done to compress or stretch)",
+      "correctAnswer": "W_spring = ½kx²",
       "acceptableAlternatives": [
         "elastic PE = ½kx²",
-        "work to stretch spring = ½kx²"
+        "work to stretch spring = ½kx²",
+        "W_spring = ½kx² (energy stored equals work done to compress or stretch)"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "equation_explanations_u3",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "How much work is required to compress or stretch a spring by displacement x from its natural length?",
-      "explanation": "Because the spring force varies (F = kx), we cannot use W = Fd directly. The work done is the area under the F-vs-x graph (a triangle): W = ½kx². This equals the elastic potential energy stored: U_e = ½kx². Doubling the stretch quadruples the stored energy. At x = 0 (equilibrium), no energy is stored. This is one of the most-used energy facts in AP Physics 1.",
+      "explanation": "Because the spring force varies (F = kx), we cannot use W = Fd directly. The work done is the area under the F-vs-x graph (a triangle): W = ½kx². This equals the elastic potential energy stored: U_e = ½kx². Doubling the stretch quadruples the stored energy. At x = 0 (equilibrium), no energy is stored. This is one of the most-used energy facts in AP Physics 1. Energy stored in a spring equals the work done to compress or stretch it.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/7-4-power",
       "distractors": [
@@ -10130,9 +10268,10 @@
     },
     {
       "id": "ap_phys1_height_to_speed",
-      "correctAnswer": "v = √(2gh) for an object falling from height h from rest (ignoring friction)",
+      "correctAnswer": "v = √(2gh) (falling from height h from rest)",
       "acceptableAlternatives": [
-        "speed at bottom = sqrt(2gh); from mgh = ½mv²"
+        "speed at bottom = sqrt(2gh); from mgh = ½mv²",
+        "v = √(2gh) for an object falling from height h from rest (ignoring friction)"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "equation_explanations_u3",
@@ -10201,9 +10340,10 @@
     },
     {
       "id": "ap_phys1_energy_forms",
-      "correctAnswer": "Kinetic, gravitational potential, elastic potential, and thermal energy in AP Physics 1",
+      "correctAnswer": "Kinetic, gravitational PE, elastic PE, and thermal energy",
       "acceptableAlternatives": [
-        "KE, gravitational PE, elastic PE, thermal energy"
+        "KE, gravitational PE, elastic PE, thermal energy",
+        "Kinetic, gravitational potential, elastic potential, and thermal energy in AP Physics 1"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_statements_u3",
@@ -10272,9 +10412,10 @@
     },
     {
       "id": "ap_phys1_gravitational_pe_reference",
-      "correctAnswer": "Gravitational PE = mgh; h is measured from any chosen reference level",
+      "correctAnswer": "GPE = mgh; h measured from any chosen reference level",
       "acceptableAlternatives": [
-        "PE = mgh measured from a reference point you choose; only changes in PE matter"
+        "PE = mgh measured from a reference point you choose; only changes in PE matter",
+        "Gravitational PE = mgh; h is measured from any chosen reference level"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_statements_u3",
@@ -10414,16 +10555,17 @@
     },
     {
       "id": "ap_phys1_max_height_from_ke",
-      "correctAnswer": "Set initial KE equal to gained gravitational PE: ½mv² = mgh → h = v²/(2g)",
+      "correctAnswer": "½mv² = mgh → h = v²/(2g)",
       "acceptableAlternatives": [
-        "h = v²/(2g) from energy conservation"
+        "h = v²/(2g) from energy conservation",
+        "Set initial KE equal to gained gravitational PE: ½mv² = mgh → h = v²/(2g)"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "equation_explanations_u3",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Using energy conservation, what maximum height does an object reach if launched straight up at speed v?",
-      "explanation": "At launch: KE = ½mv², PE = 0. At max height: KE = 0, PE = mgh. Conservation of energy: ½mv² = mgh → h = v²/(2g). For v = 10 m/s: h = 100/(19.6) ≈ 5.1 m. Note this is the same result as using v² = v₀² + 2aΔx (kinematics) with v = 0, a = −g. Energy methods and kinematics give identical results when there's no friction.",
+      "explanation": "At launch: KE = ½mv², PE = 0. At max height: KE = 0, PE = mgh. Conservation of energy: ½mv² = mgh → h = v²/(2g). For v = 10 m/s: h = 100/(19.6) ≈ 5.1 m. Note this is the same result as using v² = v₀² + 2aΔx (kinematics) with v = 0, a = −g. Energy methods and kinematics give identical results when there's no friction. Set initial KE equal to gained gravitational PE using energy conservation.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/8-3-conservation-of-energy",
       "distractors": [
@@ -10449,9 +10591,10 @@
     },
     {
       "id": "ap_phys1_total_mechanical_energy",
-      "correctAnswer": "Total mechanical energy E = KE + PE; conserved when only conservative forces do work",
+      "correctAnswer": "E_mech = KE + PE; conserved with only conservative forces",
       "acceptableAlternatives": [
-        "E_mech = KE + PE is constant with no non-conservative forces"
+        "E_mech = KE + PE is constant with no non-conservative forces",
+        "Total mechanical energy E = KE + PE; conserved when only conservative forces do work"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "concept_statements_u3",
@@ -10519,9 +10662,10 @@
     },
     {
       "id": "ap_phys1_impulse_airbag",
-      "correctAnswer": "Longer collision time reduces peak force (same impulse = same Δp means F·Δt constant)",
+      "correctAnswer": "Longer collision time reduces peak force (same Δp)",
       "acceptableAlternatives": [
-        "airbags increase collision time, reducing peak force for same change in momentum"
+        "airbags increase collision time, reducing peak force for same change in momentum",
+        "Longer collision time reduces peak force (same impulse = same Δp means F·Δt constant)"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
@@ -10589,9 +10733,10 @@
     },
     {
       "id": "ap_phys1_2d_momentum_conservation",
-      "correctAnswer": "Momentum is conserved separately in the x and y directions: Σpx conserved AND Σpy conserved",
+      "correctAnswer": "Momentum conserved separately: Σpx = const AND Σpy = const",
       "acceptableAlternatives": [
-        "in 2D: x-components of momentum conserved and y-components conserved independently"
+        "in 2D: x-components of momentum conserved and y-components conserved independently",
+        "Momentum is conserved separately in the x and y directions: Σpx conserved AND Σpy conserved"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
@@ -10624,10 +10769,11 @@
     },
     {
       "id": "ap_phys1_explosion_momentum",
-      "correctAnswer": "Total momentum is zero before and after; parts fly apart with equal and opposite momenta",
+      "correctAnswer": "Parts fly apart with equal and opposite momenta",
       "acceptableAlternatives": [
         "explosion from rest: momenta after are equal and opposite",
-        "p1 + p2 = 0 after explosion from rest"
+        "p1 + p2 = 0 after explosion from rest",
+        "Total momentum is zero before and after; parts fly apart with equal and opposite momenta"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
@@ -10660,9 +10806,10 @@
     },
     {
       "id": "ap_phys1_recoil_gun",
-      "correctAnswer": "The gun recoils backward with the same magnitude momentum as the bullet (but opposite direction)",
+      "correctAnswer": "Gun recoils: equal momentum as bullet, opposite direction",
       "acceptableAlternatives": [
-        "m_gun × v_gun = m_bullet × v_bullet (opposite directions) by momentum conservation"
+        "m_gun × v_gun = m_bullet × v_bullet (opposite directions) by momentum conservation",
+        "The gun recoils backward with the same magnitude momentum as the bullet (but opposite direction)"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
@@ -10695,9 +10842,10 @@
     },
     {
       "id": "ap_phys1_cm_velocity_collision",
-      "correctAnswer": "The center of mass velocity stays constant throughout a collision if no external forces act",
+      "correctAnswer": "Center of mass velocity stays constant (no external forces)",
       "acceptableAlternatives": [
-        "v_cm = constant during collision with no external forces"
+        "v_cm = constant during collision with no external forces",
+        "The center of mass velocity stays constant throughout a collision if no external forces act"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
@@ -10766,9 +10914,10 @@
     },
     {
       "id": "ap_phys1_elastic_momentum_ke_both",
-      "correctAnswer": "Both momentum AND kinetic energy are conserved in elastic collisions",
+      "correctAnswer": "Both momentum and kinetic energy are conserved",
       "acceptableAlternatives": [
-        "elastic: conserves KE and momentum; inelastic: conserves momentum only"
+        "elastic: conserves KE and momentum; inelastic: conserves momentum only",
+        "Both momentum AND kinetic energy are conserved in elastic collisions"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
@@ -10801,16 +10950,17 @@
     },
     {
       "id": "ap_phys1_perfectly_inelastic_max_ke_loss",
-      "correctAnswer": "A perfectly inelastic collision (objects stick together) has maximum kinetic energy loss",
+      "correctAnswer": "Objects stick together; maximum kinetic energy loss",
       "acceptableAlternatives": [
-        "sticking together maximizes KE loss while conserving momentum"
+        "sticking together maximizes KE loss while conserving momentum",
+        "A perfectly inelastic collision (objects stick together) has maximum kinetic energy loss"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Which type of collision results in the greatest loss of kinetic energy?",
-      "explanation": "In a perfectly inelastic collision, objects stick together and move as one — this configuration minimizes post-collision KE. The KE lost goes to deformation, heat, and sound. The fraction of KE lost = m₁/(m₁ + m₂) for a moving object colliding with a stationary one. If equal masses collide and stick, half the original KE is lost. If a very small object hits a very large stationary one and they stick, nearly ALL KE is lost.",
+      "explanation": "In a perfectly inelastic collision, objects stick together and move as one — this configuration minimizes post-collision KE. The KE lost goes to deformation, heat, and sound. The fraction of KE lost = m₁/(m₁ + m₂) for a moving object colliding with a stationary one. If equal masses collide and stick, half the original KE is lost. If a very small object hits a very large stationary one and they stick, nearly ALL KE is lost. A perfectly inelastic collision produces maximum KE loss.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/8-5-inelastic-collisions-in-one-dimension",
       "distractors": [
@@ -10836,9 +10986,10 @@
     },
     {
       "id": "ap_phys1_impulse_batting",
-      "correctAnswer": "Following through increases the contact time, increasing impulse and thus the ball's final speed",
+      "correctAnswer": "Follow-through increases contact time and impulse",
       "acceptableAlternatives": [
-        "follow-through increases Δt, allowing greater impulse J = FΔt"
+        "follow-through increases Δt, allowing greater impulse J = FΔt",
+        "Following through increases the contact time, increasing impulse and thus the ball's final speed"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
@@ -10871,10 +11022,11 @@
     },
     {
       "id": "ap_phys1_momentum_external_only",
-      "correctAnswer": "Total momentum of a system is constant only when the net external force on the system is zero",
+      "correctAnswer": "Momentum is constant only when net external force is zero",
       "acceptableAlternatives": [
         "conservation of momentum requires zero net external force",
-        "F_ext = 0 → Δp_total = 0"
+        "F_ext = 0 → Δp_total = 0",
+        "Total momentum of a system is constant only when the net external force on the system is zero"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
@@ -10907,10 +11059,11 @@
     },
     {
       "id": "ap_phys1_impulse_equals_area_check",
-      "correctAnswer": "J = Δp = p_f − p_i (impulse = change in momentum, both in kg·m/s)",
+      "correctAnswer": "J = Δp = p_f − p_i (in kg·m/s)",
       "acceptableAlternatives": [
         "J = mv_f - mv_i",
-        "impulse-momentum theorem: J = Δ(mv)"
+        "impulse-momentum theorem: J = Δ(mv)",
+        "J = Δp = p_f − p_i (impulse = change in momentum, both in kg·m/s)"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "equation_explanations_u2",
@@ -10943,17 +11096,18 @@
     },
     {
       "id": "ap_phys1_ke_loss_formula_inelastic",
-      "correctAnswer": "ΔKE_lost = ½(m₁m₂/(m₁+m₂)) × (v₁ − v₂)²  for head-on perfectly inelastic collision",
+      "correctAnswer": "ΔKE_lost = ½(m₁m₂/(m₁+m₂))(v₁−v₂)²",
       "acceptableAlternatives": [
         "KE lost = ½μ(Δv)² where μ is reduced mass",
-        "compute KE before and after using momentum conservation to find after"
+        "compute KE before and after using momentum conservation to find after",
+        "ΔKE_lost = ½(m₁m₂/(m₁+m₂)) × (v₁ − v₂)²  for head-on perfectly inelastic collision"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "equation_explanations_u2",
       "difficulty": 5,
       "funScore": 5,
       "quizQuestion": "In a perfectly inelastic collision, what is the easiest method to find kinetic energy lost?",
-      "explanation": "Easiest method: (1) Use momentum conservation to find v_f = (m₁v₁ + m₂v₂)/(m₁+m₂). (2) Compute KE_i = ½m₁v₁² + ½m₂v₂². (3) Compute KE_f = ½(m₁+m₂)v_f². (4) ΔKE_lost = KE_i − KE_f. Always positive. The fraction lost is m₂/(m₁+m₂) when a mass m₁ hits stationary m₂. When m₂ >> m₁ (hitting a wall), virtually all KE is lost. AP exams typically ask students to compute this step by step.",
+      "explanation": "Easiest method: (1) Use momentum conservation to find v_f = (m₁v₁ + m₂v₂)/(m₁+m₂). (2) Compute KE_i = ½m₁v₁² + ½m₂v₂². (3) Compute KE_f = ½(m₁+m₂)v_f². (4) ΔKE_lost = KE_i − KE_f. Always positive. The fraction lost is m₂/(m₁+m₂) when a mass m₁ hits stationary m₂. When m₂ >> m₁ (hitting a wall), virtually all KE is lost. AP exams typically ask students to compute this step by step. This applies to head-on perfectly inelastic collisions.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/8-5-inelastic-collisions-in-one-dimension",
       "distractors": [
@@ -10979,16 +11133,17 @@
     },
     {
       "id": "ap_phys1_equal_mass_elastic",
-      "correctAnswer": "Moving object stops; stationary target moves at the original speed (1D elastic, equal masses)",
+      "correctAnswer": "Moving object stops; target moves at original speed",
       "acceptableAlternatives": [
-        "equal mass elastic: velocities exchange; moving one stops, stationary one moves at v₀"
+        "equal mass elastic: velocities exchange; moving one stops, stationary one moves at v₀",
+        "Moving object stops; stationary target moves at the original speed (1D elastic, equal masses)"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "What happens in a perfectly elastic 1D collision between two equal-mass balls when one is initially stationary?",
-      "explanation": "For equal masses in elastic collision: applying both momentum conservation (mv₁ = mv₁' + mv₂') and energy conservation (½mv₁² = ½mv₁'² + ½mv₂') simultaneously gives v₁' = 0 and v₂' = v₁. The moving ball stops COMPLETELY and the stationary one moves at the original speed. This is the classic Newton's cradle demonstration. For unequal masses in elastic collision, both balls continue to move.",
+      "explanation": "For equal masses in elastic collision: applying both momentum conservation (mv₁ = mv₁' + mv₂') and energy conservation (½mv₁² = ½mv₁'² + ½mv₂') simultaneously gives v₁' = 0 and v₂' = v₁. The moving ball stops COMPLETELY and the stationary one moves at the original speed. This is the classic Newton's cradle demonstration. For unequal masses in elastic collision, both balls continue to move. This occurs in 1D elastic collisions between equal-mass objects.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/8-4-elastic-collisions-in-one-dimension",
       "distractors": [
@@ -11014,16 +11169,17 @@
     },
     {
       "id": "ap_phys1_impulse_approximation",
-      "correctAnswer": "During a brief collision, external forces are negligible compared to the large collision forces",
+      "correctAnswer": "During brief collisions, external forces are negligible",
       "acceptableAlternatives": [
-        "impulse approximation: gravity/friction negligible during short collision time"
+        "impulse approximation: gravity/friction negligible during short collision time",
+        "During a brief collision, external forces are negligible compared to the large collision forces"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "concept_statements_u4",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "Why can we usually ignore third-party forces like gravity or friction during a collision when applying momentum conservation?",
-      "explanation": "The impulse approximation: during a very brief collision (Δt ~ milliseconds), the impulse from external forces (F_ext × Δt) is tiny compared to the impulse from the massive internal collision forces. For a car crash lasting 0.1 s, the collision force might be 10,000 N while gravity is only 800 N — gravity's contribution to impulse is 1% of the collision impulse. So we treat the collision as isolated for that brief moment.",
+      "explanation": "The impulse approximation: during a very brief collision (Δt ~ milliseconds), the impulse from external forces (F_ext × Δt) is tiny compared to the impulse from the massive internal collision forces. For a car crash lasting 0.1 s, the collision force might be 10,000 N while gravity is only 800 N — gravity's contribution to impulse is 1% of the collision impulse. So we treat the collision as isolated for that brief moment. The large collision forces dominate over external forces like gravity or friction.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/8-3-conservation-of-linear-momentum",
       "distractors": [
@@ -11084,16 +11240,17 @@
     },
     {
       "id": "ap_phys1_rotational_kinematic_eqs",
-      "correctAnswer": "Rotational equations mirror linear ones: ω = ω₀ + αt; θ = ω₀t + ½αt²; ω² = ω₀² + 2αθ",
+      "correctAnswer": "ω = ω₀+αt; θ = ω₀t+½αt²; ω² = ω₀²+2αθ",
       "acceptableAlternatives": [
-        "same form as linear kinematics with x→θ, v→ω, a→α"
+        "same form as linear kinematics with x→θ, v→ω, a→α",
+        "Rotational equations mirror linear ones: ω = ω₀ + αt; θ = ω₀t + ½αt²; ω² = ω₀² + 2αθ"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "equation_explanations_u5",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What are the four rotational kinematics formulas for constant angular acceleration, and how do they structurally mirror their translational counterparts?",
-      "explanation": "Rotational kinematics uses the same mathematical structure as linear kinematics, replacing: x→θ (angular position), v→ω (angular velocity), a→α (angular acceleration). The three equations become: ω = ω₀ + αt; θ = ω₀t + ½αt²; ω² = ω₀² + 2αθ. All the same strategies apply — choose the equation with the unknown and given quantities, check units (rad, rad/s, rad/s²).",
+      "explanation": "Rotational kinematics uses the same mathematical structure as linear kinematics, replacing: x→θ (angular position), v→ω (angular velocity), a→α (angular acceleration). The three equations become: ω = ω₀ + αt; θ = ω₀t + ½αt²; ω² = ω₀² + 2αθ. All the same strategies apply — choose the equation with the unknown and given quantities, check units (rad, rad/s, rad/s²). Rotational kinematics equations mirror the linear ones.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/10-2-kinematics-of-rotational-motion",
       "distractors": [
@@ -11154,9 +11311,10 @@
     },
     {
       "id": "ap_phys1_moi_common_values",
-      "correctAnswer": "Solid disk: I = ½MR²; hollow ring: I = MR²; solid sphere: I = (2/5)MR²; rod (center): I = (1/12)ML²",
+      "correctAnswer": "Disk: ½MR²; ring: MR²; sphere: ⅖MR²; rod (center): ¹⁄₁₂ML²",
       "acceptableAlternatives": [
-        "disk = (1/2)MR^2, ring = MR^2, sphere = (2/5)MR^2"
+        "disk = (1/2)MR^2, ring = MR^2, sphere = (2/5)MR^2",
+        "Solid disk: I = ½MR²; hollow ring: I = MR²; solid sphere: I = (2/5)MR²; rod (center): I = (1/12)ML²"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "equation_explanations_u5",
@@ -11189,9 +11347,10 @@
     },
     {
       "id": "ap_phys1_torque_lever_arm",
-      "correctAnswer": "Lever arm is the perpendicular distance from the axis of rotation to the line of action of the force",
+      "correctAnswer": "Perpendicular distance from axis to line of action of force",
       "acceptableAlternatives": [
-        "lever arm = perpendicular distance from pivot to force's line of action"
+        "lever arm = perpendicular distance from pivot to force's line of action",
+        "Lever arm is the perpendicular distance from the axis of rotation to the line of action of the force"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "concept_statements_u5",
@@ -11224,9 +11383,10 @@
     },
     {
       "id": "ap_phys1_static_eq_both_conditions",
-      "correctAnswer": "ΣF = 0 (net force = 0) AND Στ = 0 (net torque = 0 about any point)",
+      "correctAnswer": "ΣF = 0 AND Στ = 0 (about any point)",
       "acceptableAlternatives": [
-        "static equilibrium: both sum of forces = 0 and sum of torques = 0"
+        "static equilibrium: both sum of forces = 0 and sum of torques = 0",
+        "ΣF = 0 (net force = 0) AND Στ = 0 (net torque = 0 about any point)"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "law_principle_names",
@@ -11259,9 +11419,10 @@
     },
     {
       "id": "ap_phys1_torque_direction_right_hand",
-      "correctAnswer": "CCW torques are positive; CW torques are negative (right-hand rule convention)",
+      "correctAnswer": "CCW torques positive; CW torques negative",
       "acceptableAlternatives": [
-        "CCW = +τ, CW = −τ by standard convention"
+        "CCW = +τ, CW = −τ by standard convention",
+        "CCW torques are positive; CW torques are negative (right-hand rule convention)"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "concept_statements_u5",
@@ -11294,9 +11455,10 @@
     },
     {
       "id": "ap_phys1_cross_product_torque",
-      "correctAnswer": "τ = r × F; magnitude = rF sinθ where θ is angle between r and F",
+      "correctAnswer": "τ = r × F; |τ| = rF sinθ",
       "acceptableAlternatives": [
-        "torque = r cross F = rF sinθ"
+        "torque = r cross F = rF sinθ",
+        "τ = r × F; magnitude = rF sinθ where θ is angle between r and F"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "equation_explanations_u5",
@@ -11329,9 +11491,10 @@
     },
     {
       "id": "ap_phys1_seesaw_torque_balance",
-      "correctAnswer": "m₁ × d₁ = m₂ × d₂ (torques balance about the pivot when in equilibrium)",
+      "correctAnswer": "m₁d₁ = m₂d₂ (torques balance about pivot)",
       "acceptableAlternatives": [
-        "F1*d1 = F2*d2 about pivot for balanced seesaw"
+        "F1*d1 = F2*d2 about pivot for balanced seesaw",
+        "m₁ × d₁ = m₂ × d₂ (torques balance about the pivot when in equilibrium)"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "equation_explanations_u5",
@@ -11435,16 +11598,17 @@
     },
     {
       "id": "ap_phys1_disk_vs_ring_faster",
-      "correctAnswer": "Solid disk (I = ½MR²) reaches bottom faster; less rotational inertia than hollow ring (I = MR²)",
+      "correctAnswer": "Solid disk (½MR²) faster than hollow ring (MR²)",
       "acceptableAlternatives": [
-        "disk rolls faster than ring; less I means more linear acceleration for same torque"
+        "disk rolls faster than ring; less I means more linear acceleration for same torque",
+        "Solid disk (I = ½MR²) reaches bottom faster; less rotational inertia than hollow ring (I = MR²)"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "concept_statements_u5",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "A solid disk and a hollow ring of equal mass and radius roll down an incline. Which reaches the bottom first?",
-      "explanation": "Both start with the same gravitational PE = mgh. At the bottom: E = ½mv² + ½Iω². With v = Rω: E = ½mv² + ½(I/R²)v². Disk: total KE factor = ½m + ½(½m) = ¾m → v_disk = √(4gh/3). Ring: factor = ½m + ½m = m → v_ring = √(gh). Disk wins because less energy goes to rotational KE, leaving more for translational KE. Shape wins: solid objects roll faster than hollow ones of the same shape.",
+      "explanation": "Both start with the same gravitational PE = mgh. At the bottom: E = ½mv² + ½Iω². With v = Rω: E = ½mv² + ½(I/R²)v². Disk: total KE factor = ½m + ½(½m) = ¾m → v_disk = √(4gh/3). Ring: factor = ½m + ½m = m → v_ring = √(gh). Disk wins because less energy goes to rotational KE, leaving more for translational KE. Shape wins: solid objects roll faster than hollow ones of the same shape. Solid disk has less rotational inertia than hollow ring.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/10-5-calculating-moments-of-inertia",
       "distractors": [
@@ -11470,9 +11634,10 @@
     },
     {
       "id": "ap_phys1_torque_zero_cases",
-      "correctAnswer": "Torque is zero when force is parallel to position vector r (θ = 0° or 180°) or when r = 0",
+      "correctAnswer": "Torque = 0 when force is parallel to r, or when r = 0",
       "acceptableAlternatives": [
-        "τ = rF sinθ = 0 when force is directed toward or away from pivot"
+        "τ = rF sinθ = 0 when force is directed toward or away from pivot",
+        "Torque is zero when force is parallel to position vector r (θ = 0° or 180°) or when r = 0"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "concept_statements_u5",
@@ -11575,9 +11740,10 @@
     },
     {
       "id": "ap_phys1_rolling_ke_total",
-      "correctAnswer": "Rolling KE = ½mv² + ½Iω² (translation + rotation); for solid disk: = ¾mv²",
+      "correctAnswer": "Rolling KE = ½mv² + ½Iω²; solid disk: ¾mv²",
       "acceptableAlternatives": [
-        "total KE for rolling = translational KE plus rotational KE"
+        "total KE for rolling = translational KE plus rotational KE",
+        "Rolling KE = ½mv² + ½Iω² (translation + rotation); for solid disk: = ¾mv²"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "equation_explanations_u6",
@@ -11610,9 +11776,10 @@
     },
     {
       "id": "ap_phys1_figure_skater_angular_momentum",
-      "correctAnswer": "Pulling arms in reduces I, increasing ω (L = Iω = constant since no external torque)",
+      "correctAnswer": "Pulling arms in reduces I, increasing ω (L = Iω = constant)",
       "acceptableAlternatives": [
-        "arms in → smaller I → faster spin; conservation of angular momentum"
+        "arms in → smaller I → faster spin; conservation of angular momentum",
+        "Pulling arms in reduces I, increasing ω (L = Iω = constant since no external torque)"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "concept_statements_u6",
@@ -11680,16 +11847,17 @@
     },
     {
       "id": "ap_phys1_angular_impulse_formula",
-      "correctAnswer": "Angular impulse = τ × Δt = ΔL (rotational analog of impulse-momentum theorem)",
+      "correctAnswer": "Angular impulse = τ·Δt = ΔL",
       "acceptableAlternatives": [
-        "torque × time = change in angular momentum"
+        "torque × time = change in angular momentum",
+        "Angular impulse = τ × Δt = ΔL (rotational analog of impulse-momentum theorem)"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "equation_explanations_u6",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What is the rotational analog of the impulse-momentum theorem?",
-      "explanation": "Just as linear impulse J = F·Δt = Δp, angular impulse = τ·Δt = ΔL. A torque applied for a time Δt changes the angular momentum by ΔL = Iω_f − Iω_i. The area under a torque-vs-time graph equals ΔL. This applies to spinning up a flywheel (constant torque → L grows linearly) or applying braking torque to stop a rotating wheel.",
+      "explanation": "Just as linear impulse J = F·Δt = Δp, angular impulse = τ·Δt = ΔL. A torque applied for a time Δt changes the angular momentum by ΔL = Iω_f − Iω_i. The area under a torque-vs-time graph equals ΔL. This applies to spinning up a flywheel (constant torque → L grows linearly) or applying braking torque to stop a rotating wheel. This is the rotational analog of the impulse-momentum theorem.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/10-7-angular-momentum-and-its-conservation",
       "distractors": [
@@ -11715,9 +11883,10 @@
     },
     {
       "id": "ap_phys1_satellite_orbit_speed",
-      "correctAnswer": "Orbital speed v = √(GM/r); faster for lower orbits (closer to planet)",
+      "correctAnswer": "v = √(GM/r); faster at lower orbits",
       "acceptableAlternatives": [
-        "v_orbital = sqrt(GM/r); lower altitude means higher speed"
+        "v_orbital = sqrt(GM/r); lower altitude means higher speed",
+        "Orbital speed v = √(GM/r); faster for lower orbits (closer to planet)"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "equation_explanations_u6",
@@ -11750,16 +11919,17 @@
     },
     {
       "id": "ap_phys1_geosynchronous_orbit",
-      "correctAnswer": "A satellite whose orbital period equals 24 hours, appearing stationary above a fixed point on Earth",
+      "correctAnswer": "Period = 24 hours; satellite appears stationary above Earth",
       "acceptableAlternatives": [
-        "geostationary orbit: T = 24 hr, satellite appears fixed over one location"
+        "geostationary orbit: T = 24 hr, satellite appears fixed over one location",
+        "A satellite whose orbital period equals 24 hours, appearing stationary above a fixed point on Earth"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "concept_statements_u6",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "What is a geosynchronous (geostationary) orbit, and why is it useful for communication satellites?",
-      "explanation": "A geosynchronous orbit has period T = 24 hours (same as Earth's rotation), placing the satellite at ~35,786 km altitude. A satellite in this orbit above the equator appears stationary from the ground — a dish antenna can point at it without tracking. GPS satellites are in medium Earth orbit (~20,200 km, T ≈ 12 hours). The ISS is in low Earth orbit (T ≈ 90 min) and moves visibly across the sky.",
+      "explanation": "A geosynchronous orbit has period T = 24 hours (same as Earth's rotation), placing the satellite at ~35,786 km altitude. A satellite in this orbit above the equator appears stationary from the ground — a dish antenna can point at it without tracking. GPS satellites are in medium Earth orbit (~20,200 km, T ≈ 12 hours). The ISS is in low Earth orbit (T ≈ 90 min) and moves visibly across the sky. A geosynchronous (geostationary) orbit is used for communications satellites.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/6-6-satellites-and-keplers-laws-an-argument-for-simplicity",
       "distractors": [
@@ -11785,9 +11955,10 @@
     },
     {
       "id": "ap_phys1_kepler3_application",
-      "correctAnswer": "T² ∝ r³: if orbital radius doubles, period increases by a factor of 2√2 ≈ 2.83",
+      "correctAnswer": "T² ∝ r³: doubling radius increases period by 2√2 ≈ 2.83",
       "acceptableAlternatives": [
-        "T^2/r^3 = constant; doubling r multiplies T by 2^(3/2)"
+        "T^2/r^3 = constant; doubling r multiplies T by 2^(3/2)",
+        "T² ∝ r³: if orbital radius doubles, period increases by a factor of 2√2 ≈ 2.83"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "concept_statements_u6",
@@ -11855,9 +12026,10 @@
     },
     {
       "id": "ap_phys1_collapsing_star_angular_momentum",
-      "correctAnswer": "A collapsing star spins faster as its radius shrinks, conserving angular momentum",
+      "correctAnswer": "Collapsing star spins faster as radius shrinks",
       "acceptableAlternatives": [
-        "neutron star spins rapidly because collapsed radius greatly reduces I, increasing ω"
+        "neutron star spins rapidly because collapsed radius greatly reduces I, increasing ω",
+        "A collapsing star spins faster as its radius shrinks, conserving angular momentum"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "concept_statements_u6",
@@ -11890,9 +12062,10 @@
     },
     {
       "id": "ap_phys1_torque_work_rotational",
-      "correctAnswer": "W = τ × Δθ (rotational work equals torque times angular displacement in radians)",
+      "correctAnswer": "W = τ·Δθ (torque × angular displacement in radians)",
       "acceptableAlternatives": [
-        "work done by torque = τ × θ"
+        "work done by torque = τ × θ",
+        "W = τ × Δθ (rotational work equals torque times angular displacement in radians)"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "equation_explanations_u6",
@@ -11925,16 +12098,17 @@
     },
     {
       "id": "ap_phys1_solid_vs_hollow_rolling",
-      "correctAnswer": "Solid sphere rolls faster than hollow sphere; smaller I means more translational KE",
+      "correctAnswer": "Solid sphere rolls faster than hollow sphere (smaller I)",
       "acceptableAlternatives": [
-        "less moment of inertia (smaller I/mR²) means more goes to translation → faster"
+        "less moment of inertia (smaller I/mR²) means more goes to translation → faster",
+        "Solid sphere rolls faster than hollow sphere; smaller I means more translational KE"
       ],
       "chainThemeId": 7,
       "answerTypePoolId": "concept_statements_u6",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Ranking from fastest to slowest rolling down a ramp: solid ball, hollow ball, solid cylinder, hollow cylinder. What is the order and why?",
-      "explanation": "Speed at bottom depends on I/mR²: solid sphere (2/5) < solid cylinder/disk (1/2) < hollow sphere (2/3) < hollow cylinder/ring (1). Smaller I/mR² → less energy in rotation → more in translation → faster! Order fastest to slowest: solid sphere, solid cylinder, hollow sphere, hollow cylinder. This result is independent of mass, radius, or ramp angle — it depends only on the object's shape (distribution of mass).",
+      "explanation": "Speed at bottom depends on I/mR²: solid sphere (2/5) < solid cylinder/disk (1/2) < hollow sphere (2/3) < hollow cylinder/ring (1). Smaller I/mR² → less energy in rotation → more in translation → faster! Order fastest to slowest: solid sphere, solid cylinder, hollow sphere, hollow cylinder. This result is independent of mass, radius, or ramp angle — it depends only on the object's shape (distribution of mass). Smaller rotational inertia means more translational KE when rolling down a ramp.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/10-4-rotational-kinetic-energy-work-and-energy-revisited",
       "distractors": [
@@ -11960,10 +12134,11 @@
     },
     {
       "id": "ap_phys1_shm_restoring_condition",
-      "correctAnswer": "A restoring force proportional to displacement from equilibrium: F = −kx",
+      "correctAnswer": "Restoring force proportional to displacement: F = −kx",
       "acceptableAlternatives": [
         "SHM requires F proportional to and opposite displacement",
-        "F = -kx is SHM condition"
+        "F = -kx is SHM condition",
+        "A restoring force proportional to displacement from equilibrium: F = −kx"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "concept_statements_u7",
@@ -11996,9 +12171,10 @@
     },
     {
       "id": "ap_phys1_shm_phase_relationships",
-      "correctAnswer": "At max displacement: v = 0, a = max; at equilibrium: v = max, a = 0",
+      "correctAnswer": "At extremes: v=0, a=max; at equilibrium: v=max, a=0",
       "acceptableAlternatives": [
-        "position, velocity, acceleration 90° out of phase; v max at center, a max at extremes"
+        "position, velocity, acceleration 90° out of phase; v max at center, a max at extremes",
+        "At max displacement: v = 0, a = max; at equilibrium: v = max, a = 0"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "concept_statements_u7",
@@ -12066,16 +12242,17 @@
     },
     {
       "id": "ap_phys1_period_indep_amplitude",
-      "correctAnswer": "Period is independent of amplitude for ideal springs and small-angle pendulums",
+      "correctAnswer": "Period is independent of amplitude",
       "acceptableAlternatives": [
-        "T does not change if amplitude changes (for springs and small-angle pendulums)"
+        "T does not change if amplitude changes (for springs and small-angle pendulums)",
+        "Period is independent of amplitude for ideal springs and small-angle pendulums"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "concept_statements_u7",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "A pendulum clock is moved to a location with double the usual swing the measured magnitude. Does it keep accurate time?",
-      "explanation": "Yes — for small-angle pendulums (< ~15°), T = 2π√(L/g) is independent of amplitude A. The same is true for springs: T = 2π√(m/k) — no A appears. However, for large-angle pendulums, the small-angle approximation breaks down and the period increases slightly with amplitude. This amplitude-independence is a defining and remarkable property of SHM — it's why pendulums work as clocks.",
+      "explanation": "Yes — for small-angle pendulums (< ~15°), T = 2π√(L/g) is independent of amplitude A. The same is true for springs: T = 2π√(m/k) — no A appears. However, for large-angle pendulums, the small-angle approximation breaks down and the period increases slightly with amplitude. This amplitude-independence is a defining and remarkable property of SHM — it's why pendulums work as clocks. This holds for ideal springs and small-angle pendulums.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/16-4-the-simple-pendulum",
       "distractors": [
@@ -12101,9 +12278,10 @@
     },
     {
       "id": "ap_phys1_pendulum_mass_independence",
-      "correctAnswer": "Pendulum period T = 2π√(L/g) depends only on length and g, NOT on mass or amplitude",
+      "correctAnswer": "T = 2π√(L/g); depends only on L and g",
       "acceptableAlternatives": [
-        "T = 2π*sqrt(L/g); mass does not affect pendulum period"
+        "T = 2π*sqrt(L/g); mass does not affect pendulum period",
+        "Pendulum period T = 2π√(L/g) depends only on length and g, NOT on mass or amplitude"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "concept_statements_u7",
@@ -12136,9 +12314,10 @@
     },
     {
       "id": "ap_phys1_shm_energy_exchange",
-      "correctAnswer": "KE and PE exchange continuously: KE max at equilibrium, PE max at extremes, total E = ½kA²",
+      "correctAnswer": "KE max at equilibrium, PE max at extremes; total E = ½kA²",
       "acceptableAlternatives": [
-        "total SHM energy = ½kA²; KE + PE = constant throughout cycle"
+        "total SHM energy = ½kA²; KE + PE = constant throughout cycle",
+        "KE and PE exchange continuously: KE max at equilibrium, PE max at extremes, total E = ½kA²"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "concept_statements_u7",
@@ -12171,9 +12350,10 @@
     },
     {
       "id": "ap_phys1_damped_oscillations",
-      "correctAnswer": "Amplitude decreases over time due to friction or air resistance (energy lost to heat)",
+      "correctAnswer": "Amplitude decreases due to friction or air resistance",
       "acceptableAlternatives": [
-        "damping reduces amplitude each cycle; energy converts to thermal"
+        "damping reduces amplitude each cycle; energy converts to thermal",
+        "Amplitude decreases over time due to friction or air resistance (energy lost to heat)"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "concept_statements_u7",
@@ -12206,9 +12386,10 @@
     },
     {
       "id": "ap_phys1_resonance",
-      "correctAnswer": "Driving force at the system natural frequency causes maximum amplitude buildup",
+      "correctAnswer": "Driving at natural frequency → maximum amplitude",
       "acceptableAlternatives": [
-        "resonance: f_drive = f_natural → maximum amplitude buildup"
+        "resonance: f_drive = f_natural → maximum amplitude buildup",
+        "Driving force at the system natural frequency causes maximum amplitude buildup"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "concept_statements_u7",
@@ -12241,9 +12422,10 @@
     },
     {
       "id": "ap_phys1_spring_period_mass_k",
-      "correctAnswer": "Increasing mass increases period; increasing spring constant decreases period (T = 2π√(m/k))",
+      "correctAnswer": "T = 2π√(m/k): larger m → longer T; larger k → shorter T",
       "acceptableAlternatives": [
-        "heavier mass → longer period; stiffer spring → shorter period"
+        "heavier mass → longer period; stiffer spring → shorter period",
+        "Increasing mass increases period; increasing spring constant decreases period (T = 2π√(m/k))"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "concept_statements_u7",
@@ -12276,9 +12458,10 @@
     },
     {
       "id": "ap_phys1_pendulum_length_gravity",
-      "correctAnswer": "Increasing length increases period (T ∝ √L); increasing g decreases period (T ∝ 1/√g)",
+      "correctAnswer": "T ∝ √L (longer → slower); T ∝ 1/√g (stronger g → faster)",
       "acceptableAlternatives": [
-        "longer pendulum → longer T; stronger gravity → shorter T"
+        "longer pendulum → longer T; stronger gravity → shorter T",
+        "Increasing length increases period (T ∝ √L); increasing g decreases period (T ∝ 1/√g)"
       ],
       "chainThemeId": 8,
       "answerTypePoolId": "concept_statements_u7",
@@ -12382,16 +12565,17 @@
     },
     {
       "id": "ap_phys1_gauge_absolute_pressure",
-      "correctAnswer": "Absolute pressure = gauge pressure + atmospheric pressure; gauge is measured relative to atmosphere",
+      "correctAnswer": "Absolute = gauge + atmospheric pressure",
       "acceptableAlternatives": [
-        "P_abs = P_gauge + P_atm"
+        "P_abs = P_gauge + P_atm",
+        "Absolute pressure = gauge pressure + atmospheric pressure; gauge is measured relative to atmosphere"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "concept_statements_u8",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "A tire gauge reads 30 PSI (gauge). What is the actual absolute pressure inside the tire?",
-      "explanation": "Gauge pressure is measured above atmospheric pressure. Absolute pressure = gauge + atmospheric. At sea level, P_atm ≈ 14.7 PSI ≈ 101.3 kPa. So absolute tire pressure ≈ 30 + 14.7 ≈ 44.7 PSI ≈ 308 kPa. A flat tire reads 0 gauge pressure but 14.7 PSI absolute (still has atmospheric pressure inside). Vacuum gauges read negative (below atmospheric). Hydrostatic pressure calculations use absolute pressure.",
+      "explanation": "Gauge pressure is measured above atmospheric pressure. Absolute pressure = gauge + atmospheric. At sea level, P_atm ≈ 14.7 PSI ≈ 101.3 kPa. So absolute tire pressure ≈ 30 + 14.7 ≈ 44.7 PSI ≈ 308 kPa. A flat tire reads 0 gauge pressure but 14.7 PSI absolute (still has atmospheric pressure inside). Vacuum gauges read negative (below atmospheric). Hydrostatic pressure calculations use absolute pressure. Gauge pressure is measured relative to atmospheric pressure.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/11-4-variation-of-pressure-with-depth-in-a-fluid",
       "distractors": [
@@ -12417,16 +12601,17 @@
     },
     {
       "id": "ap_phys1_hydrostatic_shape_independence",
-      "correctAnswer": "Pressure at a given depth depends only on depth and fluid density, not the shape of the container",
+      "correctAnswer": "Pressure at depth depends only on depth and fluid density",
       "acceptableAlternatives": [
-        "P = ρgh; independent of container shape or volume"
+        "P = ρgh; independent of container shape or volume",
+        "Pressure at a given depth depends only on depth and fluid density, not the shape of the container"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "concept_statements_u8",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "A narrow cylinder and a wide tank are both filled with water to the same height. Which has greater pressure at the bottom?",
-      "explanation": "Both have the same pressure at the bottom! P = ρgh depends only on fluid density ρ, g, and depth h — not on the container's shape, cross-sectional area, or total volume of water. This is the hydrostatic paradox: a narrow 10 m tube and a vast ocean both have the same pressure at 10 m depth (assuming same fluid density). The amount of fluid above does not matter — only the height (depth) does.",
+      "explanation": "Both have the same pressure at the bottom! P = ρgh depends only on fluid density ρ, g, and depth h — not on the container's shape, cross-sectional area, or total volume of water. This is the hydrostatic paradox: a narrow 10 m tube and a vast ocean both have the same pressure at 10 m depth (assuming same fluid density). The amount of fluid above does not matter — only the height (depth) does. Container shape does not affect fluid pressure at a given depth.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/11-4-variation-of-pressure-with-depth-in-a-fluid",
       "distractors": [
@@ -12487,9 +12672,10 @@
     },
     {
       "id": "ap_phys1_archimedes_float_sink",
-      "correctAnswer": "Objects float if their average density < fluid density; sink if average density > fluid density",
+      "correctAnswer": "Float: avg density < fluid; sink: avg density > fluid",
       "acceptableAlternatives": [
-        "float when ρ_object < ρ_fluid; sink when ρ_object > ρ_fluid"
+        "float when ρ_object < ρ_fluid; sink when ρ_object > ρ_fluid",
+        "Objects float if their average density < fluid density; sink if average density > fluid density"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "concept_statements_u8",
@@ -12557,9 +12743,10 @@
     },
     {
       "id": "ap_phys1_continuity_narrowing",
-      "correctAnswer": "Where a pipe narrows, flow speed increases (A₁v₁ = A₂v₂); narrower = faster",
+      "correctAnswer": "A₁v₁ = A₂v₂; narrower pipe → faster flow",
       "acceptableAlternatives": [
-        "smaller cross-section = higher speed; A₁v₁ = A₂v₂ = flow rate Q"
+        "smaller cross-section = higher speed; A₁v₁ = A₂v₂ = flow rate Q",
+        "Where a pipe narrows, flow speed increases (A₁v₁ = A₂v₂); narrower = faster"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "concept_statements_u8",
@@ -12592,16 +12779,17 @@
     },
     {
       "id": "ap_phys1_bernoulli_applications",
-      "correctAnswer": "Higher speed flow has lower pressure (Bernoulli): airplane wings, Venturi tubes, curved ball spin",
+      "correctAnswer": "High speed = low pressure: wings, Venturi tubes, ball spin",
       "acceptableAlternatives": [
-        "faster fluid → lower pressure; explains lift, Venturi effect, curveballs"
+        "faster fluid → lower pressure; explains lift, Venturi effect, curveballs",
+        "Higher speed flow has lower pressure (Bernoulli): airplane wings, Venturi tubes, curved ball spin"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "concept_statements_u8",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "What are three real-world applications of the Bernoulli effect (faster fluid speed = lower pressure)?",
-      "explanation": "Bernoulli's principle (energy conservation in fluids): faster flow → lower pressure. Applications: (1) Airplane lift: air flows faster over curved upper wing surface → lower pressure above wing → net upward lift. (2) Venturi tube: fluid speeds up in narrow section → pressure drops → used in carburetors and flow meters. (3) Spinning baseball curves because spin creates faster airflow on one side → pressure difference → ball curves toward the low-pressure side.",
+      "explanation": "Bernoulli's principle (energy conservation in fluids): faster flow → lower pressure. Applications: (1) Airplane lift: air flows faster over curved upper wing surface → lower pressure above wing → net upward lift. (2) Venturi tube: fluid speeds up in narrow section → pressure drops → used in carburetors and flow meters. (3) Spinning baseball curves because spin creates faster airflow on one side → pressure difference → ball curves toward the low-pressure side. This is the Bernoulli effect.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/12-2-bernoullis-equation",
       "distractors": [
@@ -12662,9 +12850,10 @@
     },
     {
       "id": "ap_phys1_viscosity_laminar_turbulent",
-      "correctAnswer": "Viscosity is resistance to flow; laminar = smooth layers; turbulent = chaotic eddies",
+      "correctAnswer": "Viscosity: flow resistance; laminar vs turbulent flow",
       "acceptableAlternatives": [
-        "viscosity = fluid friction; laminar = orderly layers; turbulent = chaotic mixing"
+        "viscosity = fluid friction; laminar = orderly layers; turbulent = chaotic mixing",
+        "Viscosity is resistance to flow; laminar = smooth layers; turbulent = chaotic eddies"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "concept_statements_u8",
@@ -12697,9 +12886,10 @@
     },
     {
       "id": "ap_phys1_manometer_barometer",
-      "correctAnswer": "Barometer measures atmospheric pressure; manometer measures gauge pressure of a gas",
+      "correctAnswer": "Barometer: atmospheric pressure; manometer: gauge pressure",
       "acceptableAlternatives": [
-        "barometer = atmospheric pressure device; manometer = gas pressure measurement device"
+        "barometer = atmospheric pressure device; manometer = gas pressure measurement device",
+        "Barometer measures atmospheric pressure; manometer measures gauge pressure of a gas"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "concept_statements_u8",
@@ -12732,9 +12922,10 @@
     },
     {
       "id": "ap_phys1_buoyancy_partial_submerge",
-      "correctAnswer": "A floating object displaces fluid equal to its weight: F_b = W_object (equilibrium)",
+      "correctAnswer": "Floating object displaces fluid equal to its weight: F_b = W",
       "acceptableAlternatives": [
-        "floating: buoyant force = weight; ρ_fluid × g × V_sub = ρ_obj × g × V_total"
+        "floating: buoyant force = weight; ρ_fluid × g × V_sub = ρ_obj × g × V_total",
+        "A floating object displaces fluid equal to its weight: F_b = W_object (equilibrium)"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "concept_statements_u8",
@@ -12767,16 +12958,17 @@
     },
     {
       "id": "ap_phys1_pressure_depth_formula",
-      "correctAnswer": "P = P₀ + ρgh (absolute pressure at depth h = surface pressure plus ρgh)",
+      "correctAnswer": "P = P₀ + ρgh",
       "acceptableAlternatives": [
-        "P = P_surface + rho*g*h"
+        "P = P_surface + rho*g*h",
+        "P = P₀ + ρgh (absolute pressure at depth h = surface pressure plus ρgh)"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "equation_explanations_u8",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is the pressure at rest h in a fluid of density ρ with surface pressure P₀?",
-      "explanation": "P = P₀ + ρgh where P₀ is pressure at the surface (usually atmospheric ≈ 101,325 Pa), ρ is fluid density, g = 9.8 m/s², h is depth below surface. At 10 m depth in water: P = 101,325 + (1000)(9.8)(10) = 101,325 + 98,000 ≈ 200,000 Pa ≈ 2 atm. Pressure approximately doubles for every 10 m of depth. This is why scuba divers must equalize their ears — pressure changes rapidly with depth.",
+      "explanation": "P = P₀ + ρgh where P₀ is pressure at the surface (usually atmospheric ≈ 101,325 Pa), ρ is fluid density, g = 9.8 m/s², h is depth below surface. At 10 m depth in water: P = 101,325 + (1000)(9.8)(10) = 101,325 + 98,000 ≈ 200,000 Pa ≈ 2 atm. Pressure approximately doubles for every 10 m of depth. This is why scuba divers must equalize their ears — pressure changes rapidly with depth. Absolute pressure at depth h equals surface pressure plus ρgh.",
       "sourceName": "OpenStax College Physics 2e",
       "sourceUrl": "https://openstax.org/books/college-physics-2e/pages/11-4-variation-of-pressure-with-depth-in-a-fluid",
       "distractors": [
@@ -12802,9 +12994,10 @@
     },
     {
       "id": "ap_phys1_neutral_buoyancy",
-      "correctAnswer": "Neutral buoyancy: object's average density exactly equals fluid density; buoyant force equals weight",
+      "correctAnswer": "Average density = fluid density; F_b = weight",
       "acceptableAlternatives": [
-        "neutrally buoyant: ρ_object = ρ_fluid; F_b = mg; object suspended at any depth"
+        "neutrally buoyant: ρ_object = ρ_fluid; F_b = mg; object suspended at any depth",
+        "Neutral buoyancy: object's average density exactly equals fluid density; buoyant force equals weight"
       ],
       "chainThemeId": 9,
       "answerTypePoolId": "concept_statements_u8",
