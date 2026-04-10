@@ -1,0 +1,87 @@
+{
+  "deckId": "dutch_b1",
+  "name": "Dutch B1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "dutch",
+  "category": "vocabulary",
+  "factCount": 232,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "nl-cefr-947",
+      "question": "What does \"aandacht\" mean?",
+      "answer": "attention",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "noun",
+      "targetWord": "aandacht"
+    },
+    {
+      "id": "nl-cefr-948",
+      "question": "What does \"absoluut\" mean?",
+      "answer": "absolute, complete",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "noun",
+      "targetWord": "absoluut"
+    },
+    {
+      "id": "nl-cefr-949",
+      "question": "What does \"actie\" mean?",
+      "answer": "action, activity",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "noun",
+      "targetWord": "actie"
+    },
+    {
+      "id": "nl-cefr-950",
+      "question": "What does \"activiteit\" mean?",
+      "answer": "activity",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "noun",
+      "targetWord": "activiteit"
+    },
+    {
+      "id": "nl-cefr-951",
+      "question": "What does \"ambtenaar\" mean?",
+      "answer": "civil servant",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "noun",
+      "targetWord": "ambtenaar"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 232,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Dutch Words",
+      "factCount": 232,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "nl"
+  }
+}

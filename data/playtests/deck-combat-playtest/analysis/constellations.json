@@ -1,0 +1,168 @@
+{
+  "deckId": "constellations",
+  "name": "Constellations",
+  "domain": "space_astronomy",
+  "subDomain": "constellations",
+  "category": "knowledge",
+  "factCount": 140,
+  "poolCount": 13,
+  "subDeckCount": 4,
+  "subDeckNames": [
+    "Zodiac & Circumpolar Constellations",
+    "Stars & Deep Sky Objects",
+    "Stargazing Science & History",
+    "Mythology & Cultural Stories"
+  ],
+  "samples": [
+    {
+      "id": "const_mc_orion_brightest_star",
+      "question": "What is the brightest star in the constellation Orion?",
+      "answer": "Rigel",
+      "poolId": "star_names_short",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "const_mc_orion_belt_middle",
+      "question": "Which star is the middle and brightest of the three stars in Orion's Belt?",
+      "answer": "Alnilam",
+      "poolId": "star_names_short",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "const_mc_orion_belt_westernmost",
+      "question": "Which star in Orion's Belt is the westernmost?",
+      "answer": "Mintaka",
+      "poolId": "star_names_short",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "const_mc_orion_orionid_parent",
+      "question": "What is the parent body of the Orionid meteor shower?",
+      "answer": "Halley's Comet",
+      "poolId": "concept_terms_mid",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "const_mc_orion_belt_points_to",
+      "question": "Following Orion's Belt southeastward leads you to which bright star?",
+      "answer": "Sirius",
+      "poolId": "star_names_short",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "star_names_short",
+      "label": "Star Names (short)",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "star_names_long",
+      "label": "Star Names (long)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "constellation_names",
+      "label": "Constellation Names",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "god_figure_names_short",
+      "label": "Gods & Mythological Figures (short)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "god_figure_names_mid",
+      "label": "Gods & Mythological Figures (mid)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "god_figure_names_long",
+      "label": "Gods & Mythological Figures (long)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "concept_terms_short",
+      "label": "Concepts & Terms (short)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "concept_terms_mid",
+      "label": "Concepts & Terms (mid)",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "concept_terms_long",
+      "label": "Concepts & Terms (long)",
+      "factCount": 23,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "date_numbers_short",
+      "label": "Numbers & Dates (short)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "date_numbers_mid",
+      "label": "Numbers & Dates (mid)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "date_numbers_long",
+      "label": "Numbers & Dates (long)",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factCount": 10,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about space_astronomy",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

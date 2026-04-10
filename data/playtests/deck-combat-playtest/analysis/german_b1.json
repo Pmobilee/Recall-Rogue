@@ -1,0 +1,87 @@
+{
+  "deckId": "german_b1",
+  "name": "German B1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "german",
+  "category": "vocabulary",
+  "factCount": 867,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "de-cefr-2216",
+      "question": "What does \"Abenteuer\" mean?",
+      "answer": "adventure",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Abenteuer"
+    },
+    {
+      "id": "de-cefr-2217",
+      "question": "What does \"Abfall\" mean?",
+      "answer": "waste",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Abfall"
+    },
+    {
+      "id": "de-cefr-2218",
+      "question": "What does \"abnehmen\" mean?",
+      "answer": "to take off",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "verb",
+      "targetWord": "abnehmen"
+    },
+    {
+      "id": "de-cefr-2219",
+      "question": "What does \"Abonnement\" mean?",
+      "answer": "subscription",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Abonnement"
+    },
+    {
+      "id": "de-cefr-2220",
+      "question": "What does \"Absatz\" mean?",
+      "answer": "paragraph",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Absatz"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 867,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "German Words",
+      "factCount": 867,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "de"
+  }
+}

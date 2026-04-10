@@ -1,0 +1,108 @@
+{
+  "deckId": "anime_manga",
+  "category": "knowledge",
+  "name": "Anime & Manga",
+  "encounters": 2,
+  "totalCardsPlayed": 9,
+  "totalQuizzes": 9,
+  "quizSamples": [
+    {
+      "factId": "lit_19c_tolstoy_ak_opening",
+      "question": "Which novel opens with 'All happy families are alike; each unhappy family is unhappy in its own way'?",
+      "choices": [
+        "Anna Karenina",
+        "Pride and Prejudice",
+        "Romeo and Juliet",
+        "War and Peace"
+      ],
+      "correctAnswer": "Anna Karenina",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "art_architecture",
+      "cardType": "shield"
+    },
+    {
+      "factId": "pharm-cns-carbamazepine-sideeffect",
+      "question": "What serious hematologic side effect carries a Black Box warning for carbamazepine?",
+      "choices": [
+        "Dyskinesia",
+        "Seizures",
+        "Aplastic anemia",
+        "Agranulocytosis"
+      ],
+      "correctAnswer": "Aplastic anemia",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "human_body_health",
+      "cardType": "shield"
+    },
+    {
+      "factId": "world_religions_oth_confucius_founder",
+      "question": "Which Chinese philosopher, born in 551 BCE in Qufu, founded the ethical and social system that bears his name and shaped East Asian civilization for over 2,000 years?",
+      "choices": [
+        "Confucius",
+        "Mahavira",
+        "Laozi",
+        "Muhammad"
+      ],
+      "correctAnswer": "Confucius",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "mythology_folklore",
+      "cardType": "shield"
+    },
+    {
+      "factId": "mamm_0_gorilla_iucn",
+      "question": "What is the IUCN conservation status of the western gorilla?",
+      "choices": [
+        "Cuvier beaked whale",
+        "Southern elephant seal",
+        "Howler monkey (Alouatta)",
+        "Critically Endangered"
+      ],
+      "correctAnswer": "Critically Endangered",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "animals_wildlife",
+      "cardType": "attack"
+    },
+    {
+      "factId": "const_sci_ptolemy_work",
+      "question": "In which ancient work did Ptolemy catalog his 48 constellations?",
+      "choices": [
+        "Variable star",
+        "The Almagest",
+        "White dwarf",
+        "Halley's Comet"
+      ],
+      "correctAnswer": "The Almagest",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "space_astronomy",
+      "cardType": "attack"
+    },
+    {
+      "factId": "nasa_koch_meir_first_all_female_spacewalk",
+      "question": "Who conducted the first all-female spacewalk on October 18, 2019?",
+      "choices": [
+        "Ed White",
+        "Christina Koch",
+        "Frank Borman",
+        "Mae Jemison"
+      ],
+      "correctAnswer": "Christina Koch",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "space_astronomy",
+      "cardType": "attack"
+    }
+  ],
+  "issues": [],
+  "status": "PASS",
+  "rawErrors": [],
+  "screenshotPaths": [
+    "/tmp/rr-test-output/deck-batch-2_none_1775789225829/screenshot.png",
+    "/tmp/rr-test-output/deck-batch-2_none_1775789225829/anime_manga-enc1.png"
+  ],
+  "containerPort": 3227
+}

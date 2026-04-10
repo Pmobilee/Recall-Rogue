@@ -1,0 +1,87 @@
+{
+  "deckId": "czech_b1",
+  "name": "Czech B1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "czech",
+  "category": "vocabulary",
+  "factCount": 976,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "cs-freq-1001",
+      "question": "What does \"působit\" mean?",
+      "answer": "to work",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "verb",
+      "targetWord": "působit"
+    },
+    {
+      "id": "cs-freq-1002",
+      "question": "What does \"pustit\" mean?",
+      "answer": "to drop",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "verb",
+      "targetWord": "pustit"
+    },
+    {
+      "id": "cs-freq-1003",
+      "question": "What does \"Rakousko\" mean?",
+      "answer": "Austria",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "Rakousko"
+    },
+    {
+      "id": "cs-freq-1004",
+      "question": "What does \"rezervace\" mean?",
+      "answer": "booking",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "rezervace"
+    },
+    {
+      "id": "cs-freq-1005",
+      "question": "What does \"rozhodčí\" mean?",
+      "answer": "referee",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "rozhodčí"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 976,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Czech Words",
+      "factCount": 976,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "cs"
+  }
+}

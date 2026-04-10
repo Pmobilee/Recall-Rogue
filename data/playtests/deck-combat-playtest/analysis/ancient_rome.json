@@ -1,0 +1,172 @@
+{
+  "deckId": "ancient_rome",
+  "name": "Ancient Rome",
+  "domain": "history",
+  "subDomain": "ancient_rome",
+  "category": "knowledge",
+  "factCount": 275,
+  "poolCount": 13,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Republic to Empire",
+    "Julius Caesar",
+    "Augustus & the Principate",
+    "The Good Emperors & the Bad",
+    "Punic Wars",
+    "Engineering & Infrastructure",
+    "Rise of Christianity",
+    "Fall of the Western Empire"
+  ],
+  "samples": [
+    {
+      "id": "rome_rep_founding_date",
+      "question": "According to Roman tradition established by Varro's chronology, in what year was Rome founded by Romulus?",
+      "answer": "753 BCE",
+      "poolId": "date_events",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "rome_rep_she_wolf_legend",
+      "question": "In the founding legend of Rome, what animal suckled the infant twins Romulus and Remus at the Lupercal cave?",
+      "answer": "She-wolf",
+      "poolId": "roman_god_names",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "rome_rep_kings_count",
+      "question": "How many kings ruled Rome during the Roman Kingdom period (753–509 BCE)?",
+      "answer": "{7}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "rome_rep_last_king",
+      "question": "Who was the last king of Rome, expelled in 509 BCE after his reign of tyranny?",
+      "answer": "Tarquin the Proud",
+      "poolId": "general_politician_names",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "rome_rep_republic_founded",
+      "question": "In what year was the Roman Republic traditionally founded, after the expulsion of the last king?",
+      "answer": "509 BCE",
+      "poolId": "date_events",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "date_events",
+      "label": "Key Dates in Roman History",
+      "factCount": 71,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "date_range_events",
+      "label": "Date Ranges in Roman History",
+      "factCount": 3,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "city_place_names",
+      "label": "Cities & Places in the Roman World",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "general_politician_names",
+      "label": "Roman Generals & Politicians",
+      "factCount": 36,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "political_terms",
+      "label": "Roman Political & Military Terms",
+      "factCount": 23,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "text_work_names",
+      "label": "Famous Roman Texts & Works",
+      "factCount": 2,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "battle_names",
+      "label": "Famous Roman Battles",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "structure_names",
+      "label": "Roman Buildings & Structures",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Roman Numbers & Counts",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "numeric_measurements",
+      "label": "Roman Measurements & Statistics",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "emperor_names",
+      "label": "Roman Emperors & Rulers",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "roman_god_names",
+      "label": "Roman Gods & Goddesses",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "historical_phrases",
+      "label": "Historical Phrases & Descriptions",
+      "factCount": 80,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about history",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

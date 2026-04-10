@@ -1,0 +1,159 @@
+{
+  "deckId": "ap_chemistry",
+  "name": "AP Chemistry",
+  "domain": "natural_sciences",
+  "subDomain": "chemistry",
+  "category": "knowledge",
+  "factCount": 400,
+  "poolCount": 13,
+  "subDeckCount": 6,
+  "subDeckNames": [
+    "Structure & Bonding",
+    "Intermolecular Forces",
+    "Chemical Reactions",
+    "Kinetics & Energy",
+    "Equilibrium & Acid-Base Chemistry",
+    "Thermodynamics & Electrochemistry"
+  ],
+  "samples": [
+    {
+      "id": "ap_chem_1_1_avogadro_number",
+      "question": "How many particles are in exactly one mole of any substance?",
+      "answer": "{6.022} × 10^23",
+      "poolId": "bracket_numbers",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_chem_1_1_mole_definition",
+      "question": "What physical quantity does the mole (mol) measure in the SI system?",
+      "answer": "amount of substance",
+      "poolId": "chemistry_concepts_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_chem_1_1_molar_mass_carbon",
+      "question": "What is the molar mass of carbon (C) in g/mol?",
+      "answer": "{12.011} g/mol",
+      "poolId": "bracket_numbers",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_chem_1_1_molar_mass_water",
+      "question": "What is the molar mass of water (H₂O) in g/mol?",
+      "answer": "{18.02} g/mol",
+      "poolId": "bracket_numbers",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_chem_1_1_moles_to_grams_conversion",
+      "question": "To convert moles of a substance to grams, what operation do you perform?",
+      "answer": "multiply by molar mass",
+      "poolId": "chemistry_concepts_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "bracket_numbers",
+      "factCount": 30,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "equation_formulas",
+      "factCount": 39,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "named_laws_principles",
+      "factCount": 18,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "chemistry_concepts_short",
+      "label": "chemistry_concepts (short)",
+      "factCount": 81,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "chemistry_concepts_long",
+      "label": "chemistry_concepts (long)",
+      "factCount": 89,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bond_and_imf_types",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "compound_names",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "reaction_types",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "equilibrium_concepts",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    },
+    {
+      "id": "process_types",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "electrochemistry_terms",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "periodic_trend_terms",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unique_answers",
+      "factCount": 46,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about natural_sciences",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

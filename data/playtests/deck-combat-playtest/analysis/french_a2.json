@@ -1,0 +1,87 @@
+{
+  "deckId": "french_a2",
+  "name": "French A2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "french",
+  "category": "vocabulary",
+  "factCount": 538,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "fr-cefr-933",
+      "question": "What does \"abandonner\" mean?",
+      "answer": "to give up",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "verb",
+      "targetWord": "abandonner"
+    },
+    {
+      "id": "fr-cefr-934",
+      "question": "What does \"abricot\" mean?",
+      "answer": "apricot",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "noun",
+      "targetWord": "abricot"
+    },
+    {
+      "id": "fr-cefr-935",
+      "question": "What does \"abriter\" mean?",
+      "answer": "to shelter",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "verb",
+      "targetWord": "abriter"
+    },
+    {
+      "id": "fr-cefr-936",
+      "question": "What does \"accomplir\" mean?",
+      "answer": "to accomplish",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "verb",
+      "targetWord": "accomplir"
+    },
+    {
+      "id": "fr-cefr-937",
+      "question": "What does \"accord\" mean?",
+      "answer": "agreement, chord",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "noun",
+      "targetWord": "accord"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 538,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "French Words",
+      "factCount": 538,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "fr"
+  }
+}

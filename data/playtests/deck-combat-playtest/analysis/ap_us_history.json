@@ -1,0 +1,132 @@
+{
+  "deckId": "ap_us_history",
+  "name": "AP U.S. History",
+  "domain": "history",
+  "subDomain": "us_history",
+  "category": "knowledge",
+  "factCount": 504,
+  "poolCount": 10,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "apush_p1_cahokia_mound_city",
+      "question": "Which Mississippian city near present-day St. Louis reached a peak population of 10,000–20,000 around 1100 CE, making it",
+      "answer": "Cahokia (Mississippian city)",
+      "poolId": "place_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "apush_p1_three_sisters_crops",
+      "question": "What term describes the companion-planting agricultural system used by many Native societies that combined corn (maize),",
+      "answer": "Three Sisters (crops)",
+      "poolId": "concept_terms",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "apush_p1_iroquois_confederacy",
+      "question": "Which alliance of Five Nations (Mohawk, Oneida, Onondaga, Cayuga, and Seneca) formed a sophisticated political union in ",
+      "answer": "Iroquois Confederacy",
+      "poolId": "event_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "apush_p1_ancestral_puebloans_cliff_dwellings",
+      "question": "Which pre-Columbian Southwestern culture built elaborate cliff dwellings and multi-story stone villages in the Four Corn",
+      "answer": "Ancestral Puebloans",
+      "poolId": "concept_terms",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "apush_p1_mississippian_culture",
+      "question": "Which Native American cultural tradition (800–1600 CE), centered in the Mississippi River valley, was characterized by p",
+      "answer": "Mississippian culture",
+      "poolId": "concept_terms",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "person_names",
+      "factCount": 91,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "document_names",
+      "factCount": 18,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "event_names",
+      "factCount": 59,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "year_dates",
+      "factCount": 30,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "concept_terms",
+      "factCount": 142,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "place_names",
+      "factCount": 18,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "legislation_names",
+      "factCount": 57,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "supreme_court_cases",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "movement_names",
+      "factCount": 36,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "factCount": 48,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about history",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

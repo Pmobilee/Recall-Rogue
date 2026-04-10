@@ -1,0 +1,114 @@
+{
+  "deckId": "dinosaurs",
+  "name": "Dinosaurs & Paleontology",
+  "domain": "natural_sciences",
+  "subDomain": "paleontology",
+  "category": "knowledge",
+  "factCount": 187,
+  "poolCount": 6,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "dino_trex_identity",
+      "question": "Which dinosaur is famous for its enormous jaws, tiny arms, and banana-sized teeth?",
+      "answer": "Tyrannosaurus",
+      "poolId": "dinosaur_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "dino_trex_period",
+      "question": "In which geological period did Tyrannosaurus rex live?",
+      "answer": "Late Cretaceous",
+      "poolId": "geological_periods",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "dino_trex_length",
+      "question": "Approximately how many meters long was Tyrannosaurus rex?",
+      "answer": "{12}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "dino_trex_specimen",
+      "question": "What is the name of the famous T. rex specimen on display at the Field Museum in Chicago?",
+      "answer": "Sue",
+      "poolId": "misc_concepts_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "dino_spinosaurus_identity",
+      "question": "Which dinosaur was the largest carnivorous dinosaur known, featuring a massive neural spine sail on its back?",
+      "answer": "Spinosaurus",
+      "poolId": "dinosaur_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "dinosaur_names",
+      "label": "Dinosaur & Prehistoric Creature Names",
+      "factCount": 97,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "geological_periods",
+      "label": "Geological Periods",
+      "factCount": 34,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Numeric Values",
+      "factCount": 33,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "paleontologist_names",
+      "label": "Paleontologist Names",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "misc_concepts_short",
+      "label": "Miscellaneous Concepts & Terms (short)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 17
+    },
+    {
+      "id": "misc_concepts_long",
+      "label": "Miscellaneous Concepts & Terms (long)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 17
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about natural_sciences",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

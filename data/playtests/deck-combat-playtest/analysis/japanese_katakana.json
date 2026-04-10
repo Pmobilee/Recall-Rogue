@@ -1,0 +1,78 @@
+{
+  "deckId": "japanese_katakana",
+  "name": "Japanese Katakana",
+  "domain": "vocabulary",
+  "subDomain": "japanese",
+  "category": "writing_system",
+  "factCount": 208,
+  "poolCount": 1,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "ja-katakana-a-forward",
+      "question": "What sound does the katakana ア represent?",
+      "answer": "a",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": null,
+      "targetWord": "a"
+    },
+    {
+      "id": "ja-katakana-a-reverse",
+      "question": "Which katakana character represents 'a'?",
+      "answer": "ア",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": null,
+      "targetWord": "a"
+    },
+    {
+      "id": "ja-katakana-i-forward",
+      "question": "What sound does the katakana イ represent?",
+      "answer": "i",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": null,
+      "targetWord": "i"
+    },
+    {
+      "id": "ja-katakana-i-reverse",
+      "question": "Which katakana character represents 'i'?",
+      "answer": "イ",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": null,
+      "targetWord": "i"
+    },
+    {
+      "id": "ja-katakana-u-forward",
+      "question": "What sound does the katakana ウ represent?",
+      "answer": "u",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": null,
+      "targetWord": "u"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "factCount": 208,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "character recognition",
+    "answerStyle": "romanization or character",
+    "distractorSource": "visually/phonetically similar characters",
+    "expectedChoices": "3-5"
+  }
+}

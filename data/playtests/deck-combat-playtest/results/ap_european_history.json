@@ -1,0 +1,168 @@
+{
+  "deckId": "ap_european_history",
+  "category": "knowledge",
+  "name": "AP European History",
+  "encounters": 2,
+  "totalCardsPlayed": 19,
+  "totalQuizzes": 19,
+  "quizSamples": [
+    {
+      "factId": "nasa_skylab_space_station",
+      "question": "What was the name of NASA's first space station, which operated from 1973 to 1979?",
+      "choices": [
+        "Skylab",
+        "Gemini",
+        "Artemis",
+        "Apollo"
+      ],
+      "correctAnswer": "Skylab",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "space_astronomy",
+      "cardType": "attack"
+    },
+    {
+      "factId": "ocean_3_arctic_tern_migration",
+      "question": "How far does an Arctic tern migrate annually, making it the longest migration of any known animal?",
+      "choices": [
+        "44,000 miles annually",
+        "4.8-meter arm span",
+        "Less than 4 years",
+        "Up to 2,500 young"
+      ],
+      "correctAnswer": "44,000 miles annually",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "animals_wildlife",
+      "cardType": "shield"
+    },
+    {
+      "factId": "mamm_0_gorilla_iucn",
+      "question": "What is the IUCN conservation status of the western gorilla?",
+      "choices": [
+        "Critically Endangered",
+        "Cuvier beaked whale",
+        "Howler monkey (Alouatta)",
+        "Southern elephant seal"
+      ],
+      "correctAnswer": "Critically Endangered",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "animals_wildlife",
+      "cardType": "attack"
+    },
+    {
+      "factId": "mamm_0_gorilla_iucn",
+      "question": "What is the IUCN conservation status of the western gorilla?",
+      "choices": [
+        "Critically Endangered",
+        "Southern elephant seal",
+        "Howler monkey (Alouatta)",
+        "Cuvier beaked whale"
+      ],
+      "correctAnswer": "Critically Endangered",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "animals_wildlife",
+      "cardType": "attack"
+    },
+    {
+      "factId": "const_mc_pisces_vernal_equinox",
+      "question": "Due to precession of the equinoxes, the vernal equinox point (historically called 'First Point of Aries') is currently located in which constellation?",
+      "choices": [
+        "Ophiuchus",
+        "Cygnus",
+        "Taurus",
+        "Pisces"
+      ],
+      "correctAnswer": "Pisces",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "space_astronomy",
+      "cardType": "shield"
+    },
+    {
+      "factId": "periodic_table_cobalt_goblin_name",
+      "question": "Which element is named after a German word for 'goblin' because miners blamed toxic fumes on evil spirits?",
+      "choices": [
+        "Neon",
+        "Cobalt",
+        "Krypton",
+        "Silicon"
+      ],
+      "correctAnswer": "Cobalt",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "natural_sciences",
+      "cardType": "shield"
+    },
+    {
+      "factId": "world_religions_isl_muhammad_tribe",
+      "question": "Which powerful Arab tribe of Mecca — custodians of the Kaaba before Islam — did Muhammad belong to?",
+      "choices": [
+        "Khadijah",
+        "Mencius",
+        "Quraysh",
+        "Maya"
+      ],
+      "correctAnswer": "Quraysh",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "mythology_folklore",
+      "cardType": "utility"
+    },
+    {
+      "factId": "world_religions_isl_muhammad_tribe",
+      "question": "Which powerful Arab tribe of Mecca — custodians of the Kaaba before Islam — did Muhammad belong to?",
+      "choices": [
+        "Khadijah",
+        "Quraysh",
+        "Maya",
+        "Mencius"
+      ],
+      "correctAnswer": "Quraysh",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "mythology_folklore",
+      "cardType": "shield"
+    },
+    {
+      "factId": "periodic_table_cobalt_goblin_name",
+      "question": "Which element is named after a German word for 'goblin' because miners blamed toxic fumes on evil spirits?",
+      "choices": [
+        "Silicon",
+        "Neon",
+        "Krypton",
+        "Cobalt"
+      ],
+      "correctAnswer": "Cobalt",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "natural_sciences",
+      "cardType": "shield"
+    },
+    {
+      "factId": "pharm-gir-montelukast-side",
+      "question": "What is the Black Box warning for montelukast?",
+      "choices": [
+        "Neuropsychiatric effects (suicidal thinking)",
+        "Uterine hyperstimulation; water intoxication",
+        "Visual disturbances (yellow/green halos)",
+        "Orange urine; blood dyscrasias"
+      ],
+      "correctAnswer": "Neuropsychiatric effects (suicidal thinking)",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "human_body_health",
+      "cardType": "attack"
+    }
+  ],
+  "issues": [],
+  "status": "PASS",
+  "rawErrors": [],
+  "screenshotPaths": [
+    "/tmp/rr-test-output/deck-batch-2_none_1775789332292/screenshot.png",
+    "/tmp/rr-test-output/deck-batch-2_none_1775789332292/ap_european_history-enc1.png"
+  ],
+  "containerPort": 3227
+}

@@ -1,0 +1,170 @@
+{
+  "deckId": "japanese_n4_grammar",
+  "name": "Japanese N4 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "japanese_grammar",
+  "category": "grammar",
+  "factCount": 400,
+  "poolCount": 14,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "ja-gram-n4-n4-cond-ba-fill-0",
+      "question": "もっと早く起き{___}、電車に間に合ったのに。\n(If I had woken up earlier, I would have made the train.)",
+      "answer": "れば",
+      "poolId": "conditional",
+      "distractorCount": 9,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "れば"
+    },
+    {
+      "id": "ja-gram-n4-n4-cond-ba-fill-1",
+      "question": "お金があ{___}、新しいパソコンを買うのに。\n(If I had money, I would buy a new computer.)",
+      "answer": "れば",
+      "poolId": "conditional",
+      "distractorCount": 9,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "れば"
+    },
+    {
+      "id": "ja-gram-n4-n4-cond-ba-fill-2",
+      "question": "天気がよけ{___}、公園でピクニックをしましょう。\n(If the weather is good, let's have a picnic in the park.)",
+      "answer": "れば",
+      "poolId": "conditional",
+      "distractorCount": 9,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "れば"
+    },
+    {
+      "id": "ja-gram-n4-n4-cond-ba-fill-3",
+      "question": "勉強す{___}、試験に合格できると思います。\n(I think if you study, you can pass the exam.)",
+      "answer": "れば",
+      "poolId": "conditional",
+      "distractorCount": 9,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "れば"
+    },
+    {
+      "id": "ja-gram-n4-n4-cond-baai-wa-fill-0",
+      "question": "火事の{___}、すぐに非常口から逃げてください。\n(In the event of a fire, please escape immediately through the emergency exit.)",
+      "answer": "場合は",
+      "poolId": "conditional",
+      "distractorCount": 9,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "場合は"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "grammar_all",
+      "label": "All N4 Grammar Points",
+      "factCount": 400,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "conditional",
+      "label": "Conditional & Hypothetical",
+      "factCount": 26,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "te_form_giving",
+      "label": "Te-Form Giving & Receiving",
+      "factCount": 24,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "te_form_aspect",
+      "label": "Te-Form Aspectual Auxiliaries",
+      "factCount": 23,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "appearance_hearsay",
+      "label": "Appearance, Hearsay & Resemblance",
+      "factCount": 33,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "causative_passive",
+      "label": "Causative, Passive & Combined",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "honorific",
+      "label": "Honorific & Humble Speech",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "obligation",
+      "label": "Obligation, Must & Expectation",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "temporal",
+      "label": "Temporal: While, During & Just Finished",
+      "factCount": 33,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "difficulty_ease",
+      "label": "Ease & Difficulty Suffixes",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "quotation",
+      "label": "Quotation & Naming",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "purpose_intent",
+      "label": "Purpose, Intent & Decision",
+      "factCount": 29,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "negation_degree",
+      "label": "Negation Degree Adverbs",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "grammar_misc",
+      "label": "Miscellaneous Grammar Patterns",
+      "factCount": 144,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

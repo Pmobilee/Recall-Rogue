@@ -1,0 +1,122 @@
+{
+  "deckId": "norse_mythology",
+  "name": "Norse Mythology",
+  "domain": "mythology_folklore",
+  "subDomain": "norse",
+  "category": "knowledge",
+  "factCount": 223,
+  "poolCount": 6,
+  "subDeckCount": 7,
+  "subDeckNames": [
+    "The Aesir & Vanir",
+    "The Nine Realms",
+    "Ragnarok & Creation",
+    "Heroes & Sagas",
+    "Thor's Adventures",
+    "Creatures & Monsters",
+    "Trickery, Fate & Runes"
+  ],
+  "samples": [
+    {
+      "id": "myth_norse_odin_king_aesir",
+      "question": "Which god stands at the head of the Æsir pantheon in Norse mythology?",
+      "answer": "Odin",
+      "poolId": "god_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "myth_norse_odin_one_eye_wisdom",
+      "question": "Which Norse god sacrificed one of his eyes in exchange for wisdom?",
+      "answer": "Odin",
+      "poolId": "god_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "myth_norse_odin_ravens",
+      "question": "Which of Odin's two ravens is the one whose name means 'Thought'?",
+      "answer": "Huginn",
+      "poolId": "creature_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "myth_norse_odin_valhalla",
+      "question": "What is the name of Odin's great hall in Asgard where slain warriors feast until Ragnarök?",
+      "answer": "Valhöll",
+      "poolId": "realm_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "myth_norse_odin_creation_ymir",
+      "question": "Which primordial giant did Odin and his brothers slay to create the world?",
+      "answer": "Ymir",
+      "poolId": "giant_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "god_names",
+      "label": "God Names",
+      "factCount": 63,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "creature_names",
+      "label": "Creature Names",
+      "factCount": 31,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "realm_names",
+      "label": "Realm Names",
+      "factCount": 21,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "hero_names",
+      "label": "Hero Names",
+      "factCount": 23,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "object_names",
+      "label": "Object Names",
+      "factCount": 65,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "giant_names",
+      "label": "Giant Names",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about mythology_folklore",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "deckId": "dutch_a2",
+  "name": "Dutch A2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "dutch",
+  "category": "vocabulary",
+  "factCount": 785,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "nl-cefr-162",
+      "question": "What does \"aankomen\" mean?",
+      "answer": "to arrive",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "verb",
+      "targetWord": "aankomen"
+    },
+    {
+      "id": "nl-cefr-163",
+      "question": "What does \"aanlopen\" mean?",
+      "answer": "to drop by, to visit",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "verb",
+      "targetWord": "aanlopen"
+    },
+    {
+      "id": "nl-cefr-164",
+      "question": "What does \"aantal\" mean?",
+      "answer": "number, amount",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "noun",
+      "targetWord": "aantal"
+    },
+    {
+      "id": "nl-cefr-165",
+      "question": "What does \"aanvallen\" mean?",
+      "answer": "to attack",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "verb",
+      "targetWord": "aanvallen"
+    },
+    {
+      "id": "nl-cefr-166",
+      "question": "What does \"aardappel\" mean?",
+      "answer": "potato",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "noun",
+      "targetWord": "aardappel"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 785,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Dutch Words",
+      "factCount": 785,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "nl"
+  }
+}

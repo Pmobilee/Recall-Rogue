@@ -1,0 +1,87 @@
+{
+  "deckId": "german_a1",
+  "name": "German A1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "german",
+  "category": "vocabulary",
+  "factCount": 1420,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "de-cefr-1",
+      "question": "What does \"Abend\" mean?",
+      "answer": "evening",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Abend"
+    },
+    {
+      "id": "de-cefr-2",
+      "question": "What does \"abendessen\" mean?",
+      "answer": "to have dinner",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "verb",
+      "targetWord": "abendessen"
+    },
+    {
+      "id": "de-cefr-3",
+      "question": "What does \"Abfahrt\" mean?",
+      "answer": "departure",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Abfahrt"
+    },
+    {
+      "id": "de-cefr-4",
+      "question": "What does \"Absicht\" mean?",
+      "answer": "intention",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Absicht"
+    },
+    {
+      "id": "de-cefr-5",
+      "question": "What does \"Achtung\" mean?",
+      "answer": "attention",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Achtung"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 1420,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "German Words",
+      "factCount": 1420,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "de"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "deckId": "korean_topik2",
+  "name": "Korean TOPIK 2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "korean",
+  "category": "vocabulary",
+  "factCount": 2207,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "ko-nikl-1003",
+      "question": "What does \"어린아이\" mean?",
+      "answer": "children",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ko",
+      "partOfSpeech": "noun",
+      "targetWord": "어린아이"
+    },
+    {
+      "id": "ko-nikl-1012",
+      "question": "What does \"언어\" mean?",
+      "answer": "language",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ko",
+      "partOfSpeech": "noun",
+      "targetWord": "언어"
+    },
+    {
+      "id": "ko-nikl-1015",
+      "question": "What does \"얻다\" mean?",
+      "answer": "to obtain",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ko",
+      "partOfSpeech": "verb",
+      "targetWord": "얻다"
+    },
+    {
+      "id": "ko-nikl-1017",
+      "question": "What does \"얼다\" mean?",
+      "answer": "to freeze",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ko",
+      "partOfSpeech": "verb",
+      "targetWord": "얼다"
+    },
+    {
+      "id": "ko-nikl-1023",
+      "question": "What does \"엉덩이\" mean?",
+      "answer": "butt",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ko",
+      "partOfSpeech": "noun",
+      "targetWord": "엉덩이"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 2207,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Korean Words",
+      "factCount": 2207,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "ko"
+  }
+}

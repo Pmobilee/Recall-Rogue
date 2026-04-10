@@ -1,0 +1,155 @@
+{
+  "deckId": "world_cuisines",
+  "name": "World Cuisines & Spices",
+  "domain": "food_cuisine",
+  "subDomain": "world_cuisine",
+  "category": "knowledge",
+  "factCount": 141,
+  "poolCount": 12,
+  "subDeckCount": 4,
+  "subDeckNames": [
+    "National Dishes & Iconic Foods",
+    "Spices, Herbs & Ingredients",
+    "Cooking Techniques & Food Science",
+    "Food History & Origins"
+  ],
+  "samples": [
+    {
+      "id": "food_dish_sushi_origin",
+      "question": "In which country was modern nigiri-zushi invented around 1824?",
+      "answer": "Japan",
+      "poolId": "country_region_names",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "food_dish_sushi_conveyor",
+      "question": "In what year did the first conveyor belt sushi (kaiten-zushi) restaurant open in Japan?",
+      "answer": "{1958}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "food_dish_ramen_instant",
+      "question": "Who invented instant ramen noodles in 1958?",
+      "answer": "Momofuku Ando",
+      "poolId": "person_names_food",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "food_dish_tempura_origin",
+      "question": "Tempura was introduced to Japan by missionaries from which European country in the 16th century?",
+      "answer": "Portugal",
+      "poolId": "country_region_names",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "food_dish_pizza_margherita",
+      "question": "Pizza Margherita was created in which Italian city, reportedly for Queen Margherita in 1889?",
+      "answer": "Naples",
+      "poolId": "country_region_names",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "bracket_numbers",
+      "factCount": 13,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "country_region_names",
+      "factCount": 28,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "compound_location_names",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "civilization_names",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "date_facts_short",
+      "label": "date_facts (short)",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "date_facts_long",
+      "label": "date_facts (long)",
+      "factCount": 18,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "technique_terms_short",
+      "label": "technique_terms (short)",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "technique_terms_long",
+      "label": "technique_terms (long)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "ingredient_names_short",
+      "label": "ingredient_names (short)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "ingredient_names_long",
+      "label": "ingredient_names (long)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "person_names_food",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "cultural_references",
+      "factCount": 3,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about food_cuisine",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

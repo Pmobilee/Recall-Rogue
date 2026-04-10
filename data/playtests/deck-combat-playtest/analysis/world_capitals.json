@@ -1,0 +1,100 @@
+{
+  "deckId": "world_capitals",
+  "name": "World Capitals",
+  "domain": "geography",
+  "subDomain": "capitals",
+  "category": "knowledge",
+  "factCount": 168,
+  "poolCount": 4,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "capital_fr",
+      "question": "What is the capital of France?",
+      "answer": "Paris",
+      "poolId": "country_names_caps_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "capital_de",
+      "question": "What is the capital of Germany?",
+      "answer": "Berlin",
+      "poolId": "country_names_caps_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "capital_gb",
+      "question": "What is the capital of United Kingdom?",
+      "answer": "London",
+      "poolId": "country_names_caps_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "capital_es",
+      "question": "What is the capital of Spain?",
+      "answer": "Madrid",
+      "poolId": "country_names_caps_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "capital_it",
+      "question": "What is the capital of Italy?",
+      "answer": "Rome",
+      "poolId": "country_names_caps_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "capital_names_short",
+      "label": "Capital City Names (short)",
+      "factCount": 118,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "capital_names_long",
+      "label": "Capital City Names (long)",
+      "factCount": 50,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "country_names_caps_short",
+      "label": "Country Names (Capitals) (short)",
+      "factCount": 118,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "country_names_caps_long",
+      "label": "Country Names (Capitals) (long)",
+      "factCount": 50,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about geography",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

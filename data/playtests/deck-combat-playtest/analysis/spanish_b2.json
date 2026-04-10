@@ -1,0 +1,87 @@
+{
+  "deckId": "spanish_b2",
+  "name": "Spanish B2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "spanish",
+  "category": "vocabulary",
+  "factCount": 964,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "es-cefr-3016",
+      "question": "What does \"abanicar\" mean?",
+      "answer": "to fan",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "verb",
+      "targetWord": "abanicar"
+    },
+    {
+      "id": "es-cefr-3017",
+      "question": "What does \"abanico\" mean?",
+      "answer": "fan",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "abanico"
+    },
+    {
+      "id": "es-cefr-3018",
+      "question": "What does \"abrasar\" mean?",
+      "answer": "to burn",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "verb",
+      "targetWord": "abrasar"
+    },
+    {
+      "id": "es-cefr-3019",
+      "question": "What does \"abundar\" mean?",
+      "answer": "to abound",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "verb",
+      "targetWord": "abundar"
+    },
+    {
+      "id": "es-cefr-3020",
+      "question": "What does \"aburrimiento\" mean?",
+      "answer": "boredom",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "aburrimiento"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 964,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Spanish Words",
+      "factCount": 964,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "es"
+  }
+}

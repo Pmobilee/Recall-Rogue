@@ -1,0 +1,247 @@
+{
+  "deckId": "ap_macroeconomics",
+  "name": "AP Macroeconomics",
+  "domain": "social_sciences",
+  "subDomain": "macroeconomics",
+  "category": "knowledge",
+  "factCount": 440,
+  "poolCount": 25,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "ap_macro_1_scarcity_definition",
+      "question": "What is the fundamental economic problem that forces individuals and nations to make choices because wants exceed availa",
+      "answer": "scarcity",
+      "poolId": "macro_concept_terms_mid",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_macro_1_opportunity_cost_definition",
+      "question": "What term describes the value of the next-best alternative forgone when a nation chooses to produce more guns instead of",
+      "answer": "opportunity cost",
+      "poolId": "macro_concept_terms_mid",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_macro_1_ppc_definition",
+      "question": "What graph shows all combinations of two goods — like capital goods and consumer goods — that an economy can produce whe",
+      "answer": "production possibilities curve",
+      "poolId": "curve_and_graph_names_macro_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_macro_1_ppc_concave_reason",
+      "question": "Why is the production possibilities curve bowed outward (concave to the origin) rather than a straight line?",
+      "answer": "increasing opportunity costs",
+      "poolId": "macro_concept_terms_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_macro_1_ppc_capital_vs_consumer",
+      "question": "On a PPC showing the trade-off between two output categories, producing more of which type today — investment items or c",
+      "answer": "capital goods",
+      "poolId": "macro_concept_terms_mid",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "bop_account_terms",
+      "label": "Balance of Payments Terms",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "curve_and_graph_names_macro_short",
+      "label": "Curves & Graph Names (short)",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "curve_and_graph_names_macro_long",
+      "label": "Curves & Graph Names (long)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "equation_symbols",
+      "label": "Single-Letter/Symbol Notations",
+      "factCount": 4,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "equation_short_terms",
+      "label": "Short Economic Terms (3-5 chars)",
+      "factCount": 3,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "equation_formulas_macro_short",
+      "label": "Equation Formulas (Short 7-14 chars)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "equation_formulas_macro_mid",
+      "label": "Equation Formulas (Medium 15-35 chars)",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "equation_formulas_macro_long",
+      "label": "Equation Formulas (Long 36-71 chars)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "exchange_rate_terms",
+      "label": "Exchange Rate Terms",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "fed_tool_names",
+      "label": "Federal Reserve Tools",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "financial_asset_terms",
+      "label": "Financial Assets",
+      "factCount": 5,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "indicator_names_short",
+      "label": "Indicator Names (Short)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "indicator_names_long",
+      "label": "Indicator Names (Long)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "inflation_type_terms",
+      "label": "Inflation Types",
+      "factCount": 14,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "law_and_principle_names_macro_short",
+      "label": "Laws & Principles (short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "law_and_principle_names_macro_long",
+      "label": "Laws & Principles (long)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "macro_concept_terms_short",
+      "label": "Macroeconomic Concept Terms (short)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "macro_concept_terms_mid",
+      "label": "Macroeconomic Concept Terms (mid)",
+      "factCount": 130,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "macro_concept_terms_long",
+      "label": "Macroeconomic Concept Terms (long)",
+      "factCount": 64,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "multiplier_type_terms",
+      "label": "Multiplier Types",
+      "factCount": 4,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "policy_type_terms_short",
+      "label": "Policy Types (short)",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "policy_type_terms_long",
+      "label": "Policy Types (long)",
+      "factCount": 21,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "shift_direction_terms_macro_short",
+      "label": "Shift Direction Terms (short)",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "shift_direction_terms_macro_long",
+      "label": "Shift Direction Terms (long)",
+      "factCount": 28,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unemployment_type_terms",
+      "label": "Unemployment Types",
+      "factCount": 6,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about social_sciences",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

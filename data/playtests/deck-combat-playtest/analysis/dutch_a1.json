@@ -1,0 +1,87 @@
+{
+  "deckId": "dutch_a1",
+  "name": "Dutch A1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "dutch",
+  "category": "vocabulary",
+  "factCount": 161,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "nl-cefr-1",
+      "question": "What does \"aardig\" mean?",
+      "answer": "friendly, nice",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "adverb",
+      "targetWord": "aardig"
+    },
+    {
+      "id": "nl-cefr-2",
+      "question": "What does \"alleen\" mean?",
+      "answer": "alone",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "noun",
+      "targetWord": "alleen"
+    },
+    {
+      "id": "nl-cefr-3",
+      "question": "What does \"altijd\" mean?",
+      "answer": "always",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "adverb",
+      "targetWord": "altijd"
+    },
+    {
+      "id": "nl-cefr-4",
+      "question": "What does \"ander\" mean?",
+      "answer": "other",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "determiner",
+      "targetWord": "ander"
+    },
+    {
+      "id": "nl-cefr-5",
+      "question": "What does \"auto\" mean?",
+      "answer": "car, automobile",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "noun",
+      "targetWord": "auto"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 161,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Dutch Words",
+      "factCount": 161,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "nl"
+  }
+}

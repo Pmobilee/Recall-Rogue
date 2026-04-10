@@ -1,0 +1,87 @@
+{
+  "deckId": "czech_b2",
+  "name": "Czech B2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "czech",
+  "category": "vocabulary",
+  "factCount": 1382,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "cs-freq-2001",
+      "question": "What does \"špičkový\" mean?",
+      "answer": "top",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "špičkový"
+    },
+    {
+      "id": "cs-freq-2002",
+      "question": "What does \"taška\" mean?",
+      "answer": "bag",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "taška"
+    },
+    {
+      "id": "cs-freq-2003",
+      "question": "What does \"tati\" mean?",
+      "answer": "dad",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "tati"
+    },
+    {
+      "id": "cs-freq-2004",
+      "question": "What does \"taťka\" mean?",
+      "answer": "dad",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "taťka"
+    },
+    {
+      "id": "cs-freq-2005",
+      "question": "What does \"teďka\" mean?",
+      "answer": "now",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "adverb",
+      "targetWord": "teďka"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 1382,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Czech Words",
+      "factCount": 1382,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "cs"
+  }
+}

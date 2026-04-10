@@ -1,0 +1,87 @@
+{
+  "deckId": "german_a2",
+  "name": "German A2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "german",
+  "category": "vocabulary",
+  "factCount": 795,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "de-cefr-1421",
+      "question": "What does \"aber\" mean?",
+      "answer": "but",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "conjunction",
+      "targetWord": "aber"
+    },
+    {
+      "id": "de-cefr-1422",
+      "question": "What does \"Abitur\" mean?",
+      "answer": "university entrance exam",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Abitur"
+    },
+    {
+      "id": "de-cefr-1423",
+      "question": "What does \"Abschied\" mean?",
+      "answer": "farewell",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Abschied"
+    },
+    {
+      "id": "de-cefr-1424",
+      "question": "What does \"Abschluss\" mean?",
+      "answer": "completion",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Abschluss"
+    },
+    {
+      "id": "de-cefr-1425",
+      "question": "What does \"Abteilung\" mean?",
+      "answer": "department",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Abteilung"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 795,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "German Words",
+      "factCount": 795,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "de"
+  }
+}

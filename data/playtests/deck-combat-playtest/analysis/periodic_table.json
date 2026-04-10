@@ -1,0 +1,102 @@
+{
+  "deckId": "periodic_table",
+  "name": "Periodic Table of Elements",
+  "domain": "natural_sciences",
+  "subDomain": "chemistry",
+  "category": "knowledge",
+  "factCount": 90,
+  "poolCount": 4,
+  "subDeckCount": 1,
+  "subDeckNames": [
+    "Elements & Their Properties"
+  ],
+  "samples": [
+    {
+      "id": "periodic_table_hydrogen_lightest",
+      "question": "Which element makes up 75% of all normal matter in the universe?",
+      "answer": "Hydrogen",
+      "poolId": "element_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "periodic_table_hydrogen_atomic_number",
+      "question": "What is the atomic number of Hydrogen?",
+      "answer": "1",
+      "poolId": "bracket_numbers",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "periodic_table_carbon_allotropes",
+      "question": "Which element forms both the hardest natural mineral and a soft lubricant?",
+      "answer": "Carbon",
+      "poolId": "element_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "periodic_table_nitrogen_atmosphere",
+      "question": "Which gas makes up 78% of Earth's atmosphere?",
+      "answer": "Nitrogen",
+      "poolId": "element_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "periodic_table_oxygen_crust",
+      "question": "Which element is most abundant in Earth's rocky crust?",
+      "answer": "Oxygen",
+      "poolId": "element_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "element_names",
+      "label": "Element Names",
+      "factCount": 68,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "element_symbols",
+      "label": "Element Symbols",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "element_categories",
+      "label": "Element Categories",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Numeric Values",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about natural_sciences",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

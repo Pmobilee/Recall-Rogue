@@ -1,0 +1,194 @@
+{
+  "deckId": "ap_european_history",
+  "name": "AP European History",
+  "domain": "history",
+  "subDomain": "european_history",
+  "category": "knowledge",
+  "factCount": 572,
+  "poolCount": 16,
+  "subDeckCount": 9,
+  "subDeckNames": [
+    "Renaissance & Exploration",
+    "Age of Reformation",
+    "Absolutism & Constitutionalism",
+    "Scientific Revolution & Enlightenment",
+    "French Revolution & Napoleon",
+    "Industrialization & Its Effects",
+    "19th-Century Nationalism & Imperialism",
+    "20th-Century Global Conflicts",
+    "Cold War & Contemporary Europe"
+  ],
+  "samples": [
+    {
+      "id": "ap_euro_u1_petrarch_title",
+      "question": "What title did Renaissance scholars give Petrarch for his revival of classical learning?",
+      "answer": "Father of Humanism",
+      "poolId": "concept_terms_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_euro_u1_petrarch_dates",
+      "question": "In which year was Petrarch, the 'Father of Humanism', born?",
+      "answer": "1304–1374",
+      "poolId": "date_answers_short",
+      "distractorCount": 0,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_euro_u1_davinci_works",
+      "question": "Which famous portrait, depicting a woman with an enigmatic smile, did Leonardo da Vinci paint?",
+      "answer": "Mona Lisa",
+      "poolId": "document_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_euro_u1_davinci_polymath",
+      "question": "What term describes Leonardo da Vinci's mastery of painting, sculpture, engineering, anatomy, and music combined?",
+      "answer": "polymath",
+      "poolId": "concept_terms_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_euro_u1_sistine_dates",
+      "question": "Between which years did Michelangelo paint the Sistine Chapel ceiling?",
+      "answer": "1508–1512",
+      "poolId": "date_answers_short",
+      "distractorCount": 0,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "concept_terms_short",
+      "label": "Concept Terms (short)",
+      "factCount": 93,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "concept_terms_long",
+      "label": "Concept Terms (long)",
+      "factCount": 92,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "date_answers_short",
+      "label": "Date Answers (short)",
+      "factCount": 26,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "date_answers_long",
+      "label": "Date Answers (long)",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "document_names_short",
+      "label": "Document Names (short)",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "document_names_long",
+      "label": "Document Names (long)",
+      "factCount": 35,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "event_names_short",
+      "label": "Event Names (short)",
+      "factCount": 31,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "event_names_long",
+      "label": "Event Names (long)",
+      "factCount": 32,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "institution_names",
+      "label": "Institution Names",
+      "factCount": 21,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "movement_names",
+      "label": "Movement Names",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "person_names_short",
+      "label": "Person Names (short)",
+      "factCount": 51,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "person_names_long",
+      "label": "Person Names (long)",
+      "factCount": 51,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "place_names_short",
+      "label": "Place Names (short)",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "place_names_long",
+      "label": "Place Names (long)",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    },
+    {
+      "id": "year_dates",
+      "label": "Year Dates",
+      "factCount": 65,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factCount": 5,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about history",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

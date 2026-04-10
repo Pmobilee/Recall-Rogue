@@ -1,0 +1,87 @@
+{
+  "deckId": "czech_a1",
+  "name": "Czech A1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "czech",
+  "category": "vocabulary",
+  "factCount": 476,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "cs-freq-1",
+      "question": "What does \"jako\" mean?",
+      "answer": "as",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "jako"
+    },
+    {
+      "id": "cs-freq-2",
+      "question": "What does \"tak\" mean?",
+      "answer": "so",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "conjunction",
+      "targetWord": "tak"
+    },
+    {
+      "id": "cs-freq-3",
+      "question": "What does \"ono\" mean?",
+      "answer": "it",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "pronoun",
+      "targetWord": "ono"
+    },
+    {
+      "id": "cs-freq-4",
+      "question": "What does \"den\" mean?",
+      "answer": "day",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "den"
+    },
+    {
+      "id": "cs-freq-5",
+      "question": "What does \"já\" mean?",
+      "answer": "I",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "pronoun",
+      "targetWord": "já"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 476,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Czech Words",
+      "factCount": 476,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "cs"
+  }
+}

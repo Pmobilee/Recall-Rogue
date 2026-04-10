@@ -1,0 +1,168 @@
+{
+  "deckId": "spanish_a1",
+  "category": "vocabulary",
+  "name": "Spanish A1 Vocabulary",
+  "encounters": 2,
+  "totalCardsPlayed": 16,
+  "totalQuizzes": 16,
+  "quizSamples": [
+    {
+      "factId": "es-cefr-3150",
+      "question": "What does \"bienvenido\" mean?",
+      "choices": [
+        "complaint, report",
+        "side, face",
+        "to fight",
+        "welcome"
+      ],
+      "correctAnswer": "welcome",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "shield"
+    },
+    {
+      "factId": "es-cefr-365",
+      "question": "What does \"coro\" mean?",
+      "choices": [
+        "to confess",
+        "room",
+        "to analyze",
+        "choir"
+      ],
+      "correctAnswer": "choir",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "attack"
+    },
+    {
+      "factId": "es-cefr-3037",
+      "question": "What does \"adepto\" mean?",
+      "choices": [
+        "to strive",
+        "to park",
+        "destruction",
+        "supporter, follower"
+      ],
+      "correctAnswer": "supporter, follower",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "shield"
+    },
+    {
+      "factId": "es-cefr-3037",
+      "question": "What does \"adepto\" mean?",
+      "choices": [
+        "supporter, follower",
+        "saffron",
+        "drunk, inebriated",
+        "accordion"
+      ],
+      "correctAnswer": "supporter, follower",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "shield"
+    },
+    {
+      "factId": "es-cefr-1892",
+      "question": "What does \"entregar\" mean?",
+      "choices": [
+        "to go down, descend",
+        "conscience",
+        "to deliver, hand over",
+        "to imitate"
+      ],
+      "correctAnswer": "to deliver, hand over",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "attack"
+    },
+    {
+      "factId": "es-cefr-3677",
+      "question": "What does \"pactar\" mean?",
+      "choices": [
+        "clandestine",
+        "to agree upon",
+        "emphasis",
+        "carpenter"
+      ],
+      "correctAnswer": "to agree upon",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "shield"
+    },
+    {
+      "factId": "es-cefr-3677",
+      "question": "What does \"pactar\" mean?",
+      "choices": [
+        "scale, stopover",
+        "to displace",
+        "to agree upon",
+        "to subtract"
+      ],
+      "correctAnswer": "to agree upon",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "attack"
+    },
+    {
+      "factId": "es-cefr-3079",
+      "question": "What does \"amarillento\" mean?",
+      "choices": [
+        "threat, menace",
+        "yellowish",
+        "practitioner",
+        "to manage"
+      ],
+      "correctAnswer": "yellowish",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "shield"
+    },
+    {
+      "factId": "es-cefr-3677",
+      "question": "What does \"pactar\" mean?",
+      "choices": [
+        "to agree upon",
+        "imaginary",
+        "delay",
+        "income, admission"
+      ],
+      "correctAnswer": "to agree upon",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "attack"
+    },
+    {
+      "factId": "es-cefr-3079",
+      "question": "What does \"amarillento\" mean?",
+      "choices": [
+        "to assume, take on",
+        "violence",
+        "organism, body",
+        "yellowish"
+      ],
+      "correctAnswer": "yellowish",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "attack"
+    }
+  ],
+  "issues": [],
+  "status": "PASS",
+  "rawErrors": [],
+  "screenshotPaths": [
+    "/tmp/rr-test-output/deck-batch-0_none_1775789000186/screenshot.png",
+    "/tmp/rr-test-output/deck-batch-0_none_1775789000186/spanish_a1-enc1.png"
+  ],
+  "containerPort": 3204
+}

@@ -1,0 +1,94 @@
+{
+  "deckId": "chinese_hsk2",
+  "name": "Chinese HSK 2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "chinese",
+  "category": "vocabulary",
+  "factCount": 705,
+  "poolCount": 3,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "zh-hsk-475",
+      "question": "What does \"啊\" (ā) mean?",
+      "answer": "interjection",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "noun",
+      "targetWord": "啊"
+    },
+    {
+      "id": "zh-hsk-476",
+      "question": "What does \"让\" (ràng) mean?",
+      "answer": "to yield",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "verb",
+      "targetWord": "让"
+    },
+    {
+      "id": "zh-hsk-477",
+      "question": "What does \"但\" (dàn) mean?",
+      "answer": "but",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "conjunction",
+      "targetWord": "但"
+    },
+    {
+      "id": "zh-hsk-478",
+      "question": "What does \"自己\" (zì jǐ) mean?",
+      "answer": "oneself",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "pronoun",
+      "targetWord": "自己"
+    },
+    {
+      "id": "zh-hsk-479",
+      "question": "What does \"得\" (dé) mean?",
+      "answer": "to obtain",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "verb",
+      "targetWord": "得"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 705,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Chinese Words",
+      "factCount": 705,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "reading_pinyin",
+      "label": "Pinyin Readings",
+      "factCount": 705,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "zh"
+  }
+}

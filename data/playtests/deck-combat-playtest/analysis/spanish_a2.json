@@ -1,0 +1,87 @@
+{
+  "deckId": "spanish_a2",
+  "name": "Spanish A2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "spanish",
+  "category": "vocabulary",
+  "factCount": 873,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "es-cefr-1547",
+      "question": "What does \"abertura\" mean?",
+      "answer": "opening",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "abertura"
+    },
+    {
+      "id": "es-cefr-1548",
+      "question": "What does \"abrazar\" mean?",
+      "answer": "to hug, embrace",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "verb",
+      "targetWord": "abrazar"
+    },
+    {
+      "id": "es-cefr-1549",
+      "question": "What does \"abuela\" mean?",
+      "answer": "grandmother",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "abuela"
+    },
+    {
+      "id": "es-cefr-1550",
+      "question": "What does \"academia\" mean?",
+      "answer": "academy",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "academia"
+    },
+    {
+      "id": "es-cefr-1551",
+      "question": "What does \"acceso\" mean?",
+      "answer": "access",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "acceso"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 873,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Spanish Words",
+      "factCount": 873,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "es"
+  }
+}

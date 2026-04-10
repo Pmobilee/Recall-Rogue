@@ -1,0 +1,193 @@
+{
+  "deckId": "philosophy",
+  "name": "Philosophy",
+  "domain": "general_knowledge",
+  "subDomain": "philosophy",
+  "category": "knowledge",
+  "factCount": 425,
+  "poolCount": 16,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Ancient Western",
+    "Classical Eastern",
+    "Medieval & Scholastic",
+    "Early Modern",
+    "Enlightenment & German Idealism",
+    "19th Century",
+    "20th C. Analytic",
+    "20th C. Continental"
+  ],
+  "samples": [
+    {
+      "id": "philosophy_aw_thales_arche",
+      "question": "According to Thales of Miletus, what is the arche — the fundamental substance underlying all of reality?",
+      "answer": "Water",
+      "poolId": "concept_terms_tiny",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "philosophy_aw_anaximander_arche",
+      "question": "What did Anaximander name as the arche — proposing, unlike Thales, that it is not any particular substance but an indefi",
+      "answer": "The Boundless (apeiron)",
+      "poolId": "concept_terms_long",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "philosophy_aw_anaximenes_arche",
+      "question": "Anaximenes of Miletus named which substance as the arche, arguing it transforms into all other things through rarefactio",
+      "answer": "Air",
+      "poolId": "concept_terms_tiny",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "philosophy_aw_pythagoras_founder",
+      "question": "Which Pre-Socratic philosopher founded a religious community at Croton (Italy) and taught that numbers are the fundament",
+      "answer": "Pythagoras",
+      "poolId": "ancient_philosopher_names",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "philosophy_aw_heraclitus_flux",
+      "question": "Heraclitus of Ephesus is best known for which doctrine, summarized in 'You cannot step twice into the same river'?",
+      "answer": "universal flux",
+      "poolId": "concept_terms_medium",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "ancient_philosopher_names",
+      "label": "Ancient Philosopher Names",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "medieval_philosopher_names",
+      "label": "Medieval & Scholastic Philosopher Names",
+      "factCount": 10,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "early_modern_philosopher_names",
+      "label": "Early Modern Philosopher Names",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "enlightenment_philosopher_names",
+      "label": "Enlightenment Philosopher Names",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "nineteenth_century_philosopher_names",
+      "label": "19th Century Philosopher Names",
+      "factCount": 12,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "twentieth_century_philosopher_names",
+      "label": "20th Century Philosopher Names",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "school_names",
+      "label": "Philosophical Schools & Movements",
+      "factCount": 39,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "concept_terms_tiny",
+      "label": "Philosophical Concepts — Single Words & Short Terms",
+      "factCount": 18,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "concept_terms_medium",
+      "label": "Philosophical Concepts — Medium-Length Terms & Short Phrases",
+      "factCount": 113,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "concept_terms_long",
+      "label": "Philosophical Concepts — Multi-Word Terms & Compound Phrases",
+      "factCount": 40,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "argument_names",
+      "label": "Philosophical Arguments & Doctrines",
+      "factCount": 28,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "famous_works_short",
+      "label": "Famous Philosophical Works (Short Titles)",
+      "factCount": 21,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "famous_works_long",
+      "label": "Famous Philosophical Works (Long Titles)",
+      "factCount": 50,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_dates",
+      "label": "Dates & Years",
+      "factCount": 8,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Numbers & Counts",
+      "factCount": 12,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "place_names",
+      "label": "Philosophical Places",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about general_knowledge",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

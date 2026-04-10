@@ -1,0 +1,168 @@
+{
+  "deckId": "french_a1_grammar",
+  "category": "grammar",
+  "name": "French A1 Grammar",
+  "encounters": 2,
+  "totalCardsPlayed": 20,
+  "totalQuizzes": 20,
+  "quizSamples": [
+    {
+      "factId": "fr-cefr-1468",
+      "question": "What does \"évoluer\" mean?",
+      "choices": [
+        "however",
+        "to revolutionize",
+        "to sit, to seat",
+        "to evolve"
+      ],
+      "correctAnswer": "to evolve",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "attack"
+    },
+    {
+      "factId": "fr-cefr-1644",
+      "question": "What does \"calendrier\" mean?",
+      "choices": [
+        "distinctly",
+        "illegitimate",
+        "calendar",
+        "to restart"
+      ],
+      "correctAnswer": "calendar",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "shield"
+    },
+    {
+      "factId": "fr-cefr-1468",
+      "question": "What does \"évoluer\" mean?",
+      "choices": [
+        "work",
+        "passport",
+        "to put down",
+        "to evolve"
+      ],
+      "correctAnswer": "to evolve",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "shield"
+    },
+    {
+      "factId": "fr-cefr-1442",
+      "question": "What does \"véhicule\" mean?",
+      "choices": [
+        "salad",
+        "to exercise",
+        "vehicle",
+        "earlier, sooner"
+      ],
+      "correctAnswer": "vehicle",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "shield"
+    },
+    {
+      "factId": "fr-cefr-6193",
+      "question": "What does \"réorganisation\" mean?",
+      "choices": [
+        "politely",
+        "stadium",
+        "reorganisation",
+        "anthology"
+      ],
+      "correctAnswer": "reorganisation",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "attack"
+    },
+    {
+      "factId": "fr-cefr-2334",
+      "question": "What does \"pair\" mean?",
+      "choices": [
+        "even",
+        "to roast",
+        "demon",
+        "to imagine"
+      ],
+      "correctAnswer": "even",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "attack"
+    },
+    {
+      "factId": "fr-cefr-4083",
+      "question": "What does \"délice\" mean?",
+      "choices": [
+        "to revolt, appal",
+        "to appear",
+        "paw",
+        "delight"
+      ],
+      "correctAnswer": "delight",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "shield"
+    },
+    {
+      "factId": "fr-cefr-4240",
+      "question": "What does \"endurance\" mean?",
+      "choices": [
+        "eating a lot",
+        "endurance, stamina",
+        "rawness",
+        "electromagnetic"
+      ],
+      "correctAnswer": "endurance, stamina",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "shield"
+    },
+    {
+      "factId": "fr-cefr-5793",
+      "question": "What does \"prospère\" mean?",
+      "choices": [
+        "prosperous",
+        "forehead",
+        "to take off",
+        "barn"
+      ],
+      "correctAnswer": "prosperous",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "attack"
+    },
+    {
+      "factId": "fr-cefr-2494",
+      "question": "What does \"record\" mean?",
+      "choices": [
+        "unpleasant",
+        "record",
+        "arena",
+        "to thwart"
+      ],
+      "correctAnswer": "record",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "language",
+      "cardType": "attack"
+    }
+  ],
+  "issues": [],
+  "status": "PASS",
+  "rawErrors": [],
+  "screenshotPaths": [
+    "/tmp/rr-test-output/deck-batch-0_none_1775788980262/screenshot.png",
+    "/tmp/rr-test-output/deck-batch-0_none_1775788980262/french_a1_grammar-enc1.png"
+  ],
+  "containerPort": 3204
+}

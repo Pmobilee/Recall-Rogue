@@ -1,0 +1,117 @@
+{
+  "deckId": "nasa_missions",
+  "name": "NASA Missions",
+  "domain": "space_astronomy",
+  "subDomain": "nasa_missions",
+  "category": "knowledge",
+  "factCount": 84,
+  "poolCount": 6,
+  "subDeckCount": 2,
+  "subDeckNames": [
+    "Greatest Missions",
+    "The Complete Space Program"
+  ],
+  "samples": [
+    {
+      "id": "nasa_mercury_program",
+      "question": "What was the name of NASA's first crewed spaceflight program, which ran from 1958 to 1963?",
+      "answer": "Mercury",
+      "poolId": "program_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "nasa_freedom_7_alan_shepard",
+      "question": "What was the name of Alan Shepard's suborbital spaceflight on May 5, 1961, making him the first American in space?",
+      "answer": "Freedom 7",
+      "poolId": "mission_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "nasa_friendship_7_john_glenn",
+      "question": "What was the name of John Glenn's spaceflight on February 20, 1962, making him the first American to orbit Earth?",
+      "answer": "Friendship 7",
+      "poolId": "mission_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "nasa_gemini_program",
+      "question": "What was the name of NASA's two-person crewed spaceflight program (1961-1966) that tested spacewalks and docking techniq",
+      "answer": "Gemini",
+      "poolId": "program_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "nasa_gemini_4_ed_white_eva",
+      "question": "Which NASA mission featured Ed White's first American spacewalk on June 3, 1965?",
+      "answer": "Gemini 4",
+      "poolId": "mission_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "mission_names_short",
+      "label": "Mission Names (short)",
+      "factCount": 38,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "mission_names_long",
+      "label": "Mission Names (long)",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "program_names",
+      "label": "Program Names",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "astronaut_names",
+      "label": "Astronaut Names",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "launch_years",
+      "label": "Launch Years",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 20
+    },
+    {
+      "id": "spacecraft_names",
+      "label": "Spacecraft Names",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about space_astronomy",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

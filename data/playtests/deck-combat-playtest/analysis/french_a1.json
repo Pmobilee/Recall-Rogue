@@ -1,0 +1,87 @@
+{
+  "deckId": "french_a1",
+  "name": "French A1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "french",
+  "category": "vocabulary",
+  "factCount": 932,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "fr-cefr-1",
+      "question": "What does \"accepter\" mean?",
+      "answer": "to accept",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "verb",
+      "targetWord": "accepter"
+    },
+    {
+      "id": "fr-cefr-2",
+      "question": "What does \"accompagner\" mean?",
+      "answer": "to accompany",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "verb",
+      "targetWord": "accompagner"
+    },
+    {
+      "id": "fr-cefr-3",
+      "question": "What does \"accueil\" mean?",
+      "answer": "reception",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "noun",
+      "targetWord": "accueil"
+    },
+    {
+      "id": "fr-cefr-4",
+      "question": "What does \"accueillir\" mean?",
+      "answer": "to welcome",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "verb",
+      "targetWord": "accueillir"
+    },
+    {
+      "id": "fr-cefr-5",
+      "question": "What does \"acheter\" mean?",
+      "answer": "to purchase",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "verb",
+      "targetWord": "acheter"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 932,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "French Words",
+      "factCount": 932,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "fr"
+  }
+}

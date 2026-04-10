@@ -1,0 +1,15 @@
+{
+  "batchId": "BATCH-2026-04-10-002-docker",
+  "createdAt": "2026-04-10T00:00:00Z",
+  "orchestration": "docker-warm-containers",
+  "testers": ["quiz-quality", "balance-curve", "fun-engagement", "study-temple", "full-run"],
+  "args": {
+    "runs": 5,
+    "domain": "human_body_health",
+    "targetedDeck": "pharmacology (bridged into human_body_health trivia domain)",
+    "floors": 2
+  },
+  "status": "running",
+  "smokeTestPassed": null,
+  "reports": {}
+}

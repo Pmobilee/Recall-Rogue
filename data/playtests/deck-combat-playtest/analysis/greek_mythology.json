@@ -1,0 +1,165 @@
+{
+  "deckId": "greek_mythology",
+  "name": "Greek Mythology",
+  "domain": "mythology_folklore",
+  "subDomain": "greek",
+  "category": "knowledge",
+  "factCount": 272,
+  "poolCount": 12,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "The Olympians",
+    "Titans & Origins",
+    "Heroes & Quests",
+    "The Trojan War",
+    "The Odyssey",
+    "The Underworld",
+    "Monsters & Creatures",
+    "Love, Tragedy & Fate"
+  ],
+  "samples": [
+    {
+      "id": "myth_zeus_king_gods",
+      "question": "Which Greek god was king of the Olympians and ruler of the sky?",
+      "answer": "Zeus",
+      "poolId": "deity_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "myth_zeus_lightning_bolt",
+      "question": "What was the signature weapon of Zeus, forged for him by the Cyclopes?",
+      "answer": "Lightning bolt",
+      "poolId": "object_names_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "myth_zeus_overthrew_kronos",
+      "question": "Zeus led the Olympians in overthrowing which Titan ruler in the ten-year Titanomachy?",
+      "answer": "Kronos",
+      "poolId": "deity_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "myth_zeus_cosmos_division",
+      "question": "After defeating the Titans, Zeus divided the cosmos by lot with his brothers. Who received the seas?",
+      "answer": "Poseidon",
+      "poolId": "deity_names_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "myth_zeus_eagle_symbol",
+      "question": "Which bird was the sacred symbol and companion of Zeus, king of the gods?",
+      "answer": "Eagle",
+      "poolId": "object_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "deity_names_short",
+      "label": "Deity Names (short)",
+      "factCount": 47,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "deity_names_long",
+      "label": "Deity Names (long)",
+      "factCount": 32,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "creature_names_short",
+      "label": "Creature Names (short)",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "creature_names_long",
+      "label": "Creature Names (long)",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "hero_names",
+      "label": "Hero Names",
+      "factCount": 92,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "roman_equivalents",
+      "label": "Roman Equivalents",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "titan_names",
+      "label": "Titan Names",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "location_names_short",
+      "label": "Location Names (short)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "location_names_long",
+      "label": "Location Names (long)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "object_names_short",
+      "label": "Object Names (short)",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "object_names_long",
+      "label": "Object Names (long)",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factCount": 4,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about mythology_folklore",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

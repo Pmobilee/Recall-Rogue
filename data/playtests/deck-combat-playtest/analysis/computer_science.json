@@ -1,0 +1,193 @@
+{
+  "deckId": "computer_science",
+  "name": "Computer Science & Technology",
+  "domain": "general_knowledge",
+  "subDomain": "computer_science",
+  "category": "knowledge",
+  "factCount": 296,
+  "poolCount": 16,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Pioneers & Visionaries",
+    "Hardware & Architecture",
+    "Programming Languages",
+    "Algorithms & Theory",
+    "Systems, Networks & Security",
+    "Internet & World Wide Web",
+    "Artificial Intelligence & Machine Learning",
+    "Software & Tech Companies"
+  ],
+  "samples": [
+    {
+      "id": "cs_0_ada_lovelace_first_algorithm",
+      "question": "Who wrote what is considered the first published algorithm intended for execution by a machine — and her notes were thre",
+      "answer": "Ada Lovelace",
+      "poolId": "person_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "cs_0_ada_lovelace_birth_year",
+      "question": "In what year was Ada Lovelace — the daughter of poet Lord Byron and pioneer of computing — born?",
+      "answer": "{1815}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 0,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "cs_0_charles_babbage_analytical_engine",
+      "question": "Who designed a general-purpose mechanical computer in the 1830s that borrowed its programming mechanism from the Jacquar",
+      "answer": "Charles Babbage",
+      "poolId": "person_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "cs_0_alan_turing_turing_machine_year",
+      "question": "In what year did Alan Turing publish 'On Computable Numbers', introducing the theoretical computing machine that bears h",
+      "answer": "{1936}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 0,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "cs_0_alan_turing_turing_test",
+      "question": "Who proposed a test for machine intelligence in 1950 by asking whether a computer's conversation could be indistinguisha",
+      "answer": "Alan Turing",
+      "poolId": "person_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "person_names_short",
+      "label": "Person Names (short)",
+      "factCount": 94,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "person_names_long",
+      "label": "Person Names (long)",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "technology_terms_short",
+      "label": "Technology Terms (short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "technology_terms_mid",
+      "label": "Technology Terms (mid)",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "technology_terms_long",
+      "label": "Technology Terms (long)",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "acronym_expansions_short",
+      "label": "Acronym Expansions (short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "acronym_expansions_long",
+      "label": "Acronym Expansions (long)",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "language_names_short",
+      "label": "Programming Language Names (short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "language_names_long",
+      "label": "Programming Language Names (long)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "company_names_short",
+      "label": "Company Names (short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "company_names_mid",
+      "label": "Company Names (mid)",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "company_names_long",
+      "label": "Company Names (long)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "product_names_short",
+      "label": "Product & System Names (short)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "product_names_long",
+      "label": "Product & System Names (long)",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factCount": 58,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "complexity_terms",
+      "label": "Complexity Terms",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about general_knowledge",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

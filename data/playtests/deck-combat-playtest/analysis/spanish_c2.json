@@ -1,0 +1,87 @@
+{
+  "deckId": "spanish_c2",
+  "name": "Spanish C2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "spanish",
+  "category": "vocabulary",
+  "factCount": 794,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "es-cefr-c2-0001",
+      "question": "What does \"abdicar\" mean?",
+      "answer": "to abdicate",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "verb",
+      "targetWord": "abdicar"
+    },
+    {
+      "id": "es-cefr-c2-0002",
+      "question": "What does \"aberración\" mean?",
+      "answer": "aberration",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "aberración"
+    },
+    {
+      "id": "es-cefr-c2-0003",
+      "question": "What does \"abjurar\" mean?",
+      "answer": "to abjure, to recant",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "verb",
+      "targetWord": "abjurar"
+    },
+    {
+      "id": "es-cefr-c2-0004",
+      "question": "What does \"abocado\" mean?",
+      "answer": "destined, headed for",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "adjective",
+      "targetWord": "abocado"
+    },
+    {
+      "id": "es-cefr-c2-0005",
+      "question": "What does \"abominar\" mean?",
+      "answer": "to abominate, to loathe",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "verb",
+      "targetWord": "abominar"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 794,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "spanish_words",
+      "label": "Spanish Words",
+      "factCount": 794,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "es"
+  }
+}

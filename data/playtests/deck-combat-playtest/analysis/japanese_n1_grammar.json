@@ -1,0 +1,233 @@
+{
+  "deckId": "japanese_n1_grammar",
+  "name": "Japanese N1 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "japanese_grammar",
+  "category": "grammar",
+  "factCount": 1183,
+  "poolCount": 23,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "ja-gram-n1-cause-amari-fill-0",
+      "question": "緊張の{___}、声が震えてしまった。\n(Because of too much nervousness, my voice trembled.)",
+      "answer": "あまり",
+      "poolId": "cause_reason",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "あまり"
+    },
+    {
+      "id": "ja-gram-n1-cause-amari-fill-1",
+      "question": "嬉しさの{___}、思わず涙が出てきた。\n(Because of too much joy, tears naturally welled up.)",
+      "answer": "あまり",
+      "poolId": "cause_reason",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "あまり"
+    },
+    {
+      "id": "ja-gram-n1-cause-amari-fill-2",
+      "question": "驚きの{___}、彼は言葉を失った。\n(Because of too much surprise, he was left speechless.)",
+      "answer": "あまり",
+      "poolId": "cause_reason",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "あまり"
+    },
+    {
+      "id": "ja-gram-n1-cause-amari-fill-3",
+      "question": "心配する{___}、夜も眠れなくなってしまった。\n(Because of worrying too much, I became unable to sleep at night.)",
+      "answer": "あまり",
+      "poolId": "cause_reason",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "あまり"
+    },
+    {
+      "id": "ja-gram-n1-cause-amarina-fill-0",
+      "question": "{___}暑さに、外出する気にもなれなかった。\n(Because of the excessive heat, I couldn't even bring myself to go outside.)",
+      "answer": "あまりの",
+      "poolId": "cause_reason",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "あまりの"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "grammar_all",
+      "label": "All N1 Grammar Points",
+      "factCount": 1183,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "advanced_particles",
+      "label": "Advanced Particles",
+      "factCount": 40,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "appearance",
+      "label": "Appearance & Resemblance",
+      "factCount": 40,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "cause_reason",
+      "label": "Cause & Reason",
+      "factCount": 44,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "concession_contrast",
+      "label": "Concession & Contrast",
+      "factCount": 111,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "conditional",
+      "label": "Conditional & Hypothetical",
+      "factCount": 76,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "conjunctions",
+      "label": "Conjunctions",
+      "factCount": 32,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "degree_extent",
+      "label": "Degree & Extent",
+      "factCount": 56,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "emphasis",
+      "label": "Emphasis & Strong Assertion",
+      "factCount": 108,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "formal_written",
+      "label": "Formal & Written Expressions",
+      "factCount": 64,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "judgment",
+      "label": "Judgment & Evaluation",
+      "factCount": 56,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "method_means",
+      "label": "Method & Means",
+      "factCount": 56,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "negative_forms",
+      "label": "Negative Forms",
+      "factCount": 76,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "obligation_emotion",
+      "label": "Obligation & Emotion",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "opinions_stance",
+      "label": "Opinions & Stance",
+      "factCount": 44,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "probability",
+      "label": "Probability & Possibility",
+      "factCount": 36,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "purpose",
+      "label": "Purpose & Intention",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "result_outcome",
+      "label": "Result & Outcome",
+      "factCount": 28,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "scope_selection",
+      "label": "Scope & Selection",
+      "factCount": 112,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "set_expressions",
+      "label": "Set Expressions",
+      "factCount": 40,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "simultaneous",
+      "label": "Simultaneous",
+      "factCount": 48,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "temporal",
+      "label": "Temporal & Sequential",
+      "factCount": 68,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unexpected",
+      "label": "Unexpected & Contrary",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

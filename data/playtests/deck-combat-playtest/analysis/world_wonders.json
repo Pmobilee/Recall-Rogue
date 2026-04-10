@@ -1,0 +1,165 @@
+{
+  "deckId": "world_wonders",
+  "name": "World Wonders & Landmarks",
+  "domain": "geography",
+  "subDomain": "wonders_landmarks",
+  "category": "knowledge",
+  "factCount": 195,
+  "poolCount": 12,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Ancient Wonders",
+    "Temples & Sacred Sites",
+    "Towers & Skyscrapers",
+    "Bridges & Dams",
+    "Palaces & Castles",
+    "Monuments & Memorials",
+    "Natural Wonders",
+    "Modern Marvels"
+  ],
+  "samples": [
+    {
+      "id": "ww_anc_pyramid_giza_height",
+      "question": "What was the original height of the Great Pyramid of Giza when it was first completed?",
+      "answer": "146.6 metres",
+      "poolId": "measurement_number_long",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ww_anc_pyramid_giza_pharaoh",
+      "question": "For which Egyptian pharaoh was the Great Pyramid of Giza built?",
+      "answer": "Khufu",
+      "poolId": "person_historical_short",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ww_anc_pyramid_giza_blocks",
+      "question": "Approximately how many stone blocks make up the Great Pyramid of Giza?",
+      "answer": "2.3 million",
+      "poolId": "measurement_number_long",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ww_anc_colosseum_date",
+      "question": "In what period was the Colosseum in Rome constructed?",
+      "answer": "72–80 AD",
+      "poolId": "year_date",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ww_anc_colosseum_capacity",
+      "question": "What was the seating capacity of the ancient Roman Colosseum?",
+      "answer": "50,000–80,000",
+      "poolId": "measurement_number_long",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "landmark_names",
+      "label": "Landmark Names",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "location_country",
+      "label": "Countries & Regions",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "architect_designer_short",
+      "label": "Architects & Designers (short)",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    },
+    {
+      "id": "architect_designer_long",
+      "label": "Architects & Designers (long)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "year_date",
+      "label": "Years & Dates",
+      "factCount": 10,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "measurement_number_short",
+      "label": "Measurements & Numbers (short)",
+      "factCount": 47,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "measurement_number_long",
+      "label": "Measurements & Numbers (long)",
+      "factCount": 34,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "material_feature_short",
+      "label": "Materials & Features (short)",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "material_feature_long",
+      "label": "Materials & Features (long)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "person_historical_short",
+      "label": "Historical Figures (short)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "person_historical_long",
+      "label": "Historical Figures (long)",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factCount": 29,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about geography",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "deckId": "us_states",
+  "name": "US States",
+  "domain": "geography",
+  "subDomain": "united_states",
+  "category": "knowledge",
+  "factCount": 75,
+  "poolCount": 4,
+  "subDeckCount": 4,
+  "subDeckNames": [
+    "Northeast",
+    "South",
+    "Midwest",
+    "West"
+  ],
+  "samples": [
+    {
+      "id": "us_states_maine_one_syllable",
+      "question": "Which US state has the only one-syllable name?",
+      "answer": "Maine",
+      "poolId": "state_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "us_states_new_hampshire_wind_speed",
+      "question": "What wind speed in mph was recorded atop New Hampshire's Mount Washington in 1934?",
+      "answer": "{231}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 0,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "us_states_vermont_slavery",
+      "question": "In what year did Vermont become the first US territory to abolish slavery?",
+      "answer": "{1777}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 0,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "us_states_massachusetts_harvard",
+      "question": "In what year was Harvard University founded, making it the oldest in the US?",
+      "answer": "{1636}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 0,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "us_states_massachusetts_capital",
+      "question": "What is the capital city of Massachusetts?",
+      "answer": "Boston",
+      "poolId": "state_capitals",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "state_names_short",
+      "label": "State Names (short)",
+      "factCount": 21,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "state_names_long",
+      "label": "State Names (long)",
+      "factCount": 34,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "state_capitals",
+      "label": "State Capitals",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Numeric Values",
+      "factCount": 8,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about geography",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

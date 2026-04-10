@@ -1,0 +1,94 @@
+{
+  "deckId": "chinese_hsk6",
+  "name": "Chinese HSK 6 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "chinese",
+  "category": "vocabulary",
+  "factCount": 2666,
+  "poolCount": 3,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "zh-hsk-4436",
+      "question": "What does \"哦\" (é) mean?",
+      "answer": "oh; I see",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "interjection",
+      "targetWord": "哦"
+    },
+    {
+      "id": "zh-hsk-4437",
+      "question": "What does \"啦\" (lā) mean?",
+      "answer": "exclamatory particle",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "particle",
+      "targetWord": "啦"
+    },
+    {
+      "id": "zh-hsk-4438",
+      "question": "What does \"如\" (rú) mean?",
+      "answer": "as",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "noun",
+      "targetWord": "如"
+    },
+    {
+      "id": "zh-hsk-4439",
+      "question": "What does \"同\" (tóng) mean?",
+      "answer": "like",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "preposition",
+      "targetWord": "同"
+    },
+    {
+      "id": "zh-hsk-4440",
+      "question": "What does \"作\" (zuō) mean?",
+      "answer": "to do; to make",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "verb",
+      "targetWord": "作"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 2666,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Chinese Words",
+      "factCount": 2666,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "reading_pinyin",
+      "label": "Pinyin Readings",
+      "factCount": 2666,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "zh"
+  }
+}

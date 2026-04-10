@@ -1,0 +1,94 @@
+{
+  "deckId": "chinese_hsk4",
+  "name": "Chinese HSK 4 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "chinese",
+  "category": "vocabulary",
+  "factCount": 980,
+  "poolCount": 3,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "zh-hsk-2135",
+      "question": "What does \"而\" (ér) mean?",
+      "answer": "and",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "conjunction",
+      "targetWord": "而"
+    },
+    {
+      "id": "zh-hsk-2136",
+      "question": "What does \"之\" (zhī) mean?",
+      "answer": "of",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "preposition",
+      "targetWord": "之"
+    },
+    {
+      "id": "zh-hsk-2137",
+      "question": "What does \"之后\" (zhī hòu) mean?",
+      "answer": "after; behind",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "preposition",
+      "targetWord": "之后"
+    },
+    {
+      "id": "zh-hsk-2138",
+      "question": "What does \"无\" (wú) mean?",
+      "answer": "not to have",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "noun",
+      "targetWord": "无"
+    },
+    {
+      "id": "zh-hsk-2139",
+      "question": "What does \"此\" (cǐ) mean?",
+      "answer": "this",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "pronoun",
+      "targetWord": "此"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 980,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Chinese Words",
+      "factCount": 980,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "reading_pinyin",
+      "label": "Pinyin Readings",
+      "factCount": 980,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "zh"
+  }
+}

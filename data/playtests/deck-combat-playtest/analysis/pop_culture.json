@@ -1,0 +1,156 @@
+{
+  "deckId": "pop_culture",
+  "name": "Pop Culture",
+  "domain": "general_knowledge",
+  "subDomain": "pop_culture",
+  "category": "knowledge",
+  "factCount": 202,
+  "poolCount": 11,
+  "subDeckCount": 6,
+  "subDeckNames": [
+    "Binge-Worthy",
+    "Game On",
+    "Hero Complex",
+    "Gone Viral",
+    "Franchise Empires",
+    "Pop Icons"
+  ],
+  "samples": [
+    {
+      "id": "pc_0_ilovelucy_network",
+      "question": "I Love Lucy, the groundbreaking 1951 sitcom starring Lucille Ball, originally aired on which network?",
+      "answer": "CBS",
+      "poolId": "network_channel_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "pc_0_ilovelucy_viewers",
+      "question": "Approximately how many million Americans watched the I Love Lucy episode 'Lucy Goes to the Hospital' in 1953?",
+      "answer": "{44}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "pc_0_seinfeld_creator",
+      "question": "Who co-created the NBC sitcom Seinfeld alongside Larry David?",
+      "answer": "Jerry Seinfeld",
+      "poolId": "person_names_creators",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "pc_0_seinfeld_finale_viewers",
+      "question": "How many million viewers tuned in to watch the Seinfeld series finale in 1998?",
+      "answer": "{76.3}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "pc_0_friends_creators",
+      "question": "Marta Kauffman co-created Friends with which other television writer?",
+      "answer": "David Crane",
+      "poolId": "person_names_creators",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "tv_show_names",
+      "label": "TV Show Names",
+      "factCount": 3,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "game_titles",
+      "label": "Video Game Titles",
+      "factCount": 4,
+      "hasSynthetics": true,
+      "syntheticCount": 15
+    },
+    {
+      "id": "character_names",
+      "label": "Fictional Character Names",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "person_names_creators",
+      "label": "Creators & Real People",
+      "factCount": 45,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "company_studio_names",
+      "label": "Companies, Studios & Networks",
+      "factCount": 17,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "network_channel_names",
+      "label": "TV Networks & Channels",
+      "factCount": 4,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "franchise_ip_names",
+      "label": "Franchise & IP Names",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "platform_console_names",
+      "label": "Consoles, Platforms & Services",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "meme_viral_names",
+      "label": "Meme & Viral Content Names",
+      "factCount": 4,
+      "hasSynthetics": true,
+      "syntheticCount": 15
+    },
+    {
+      "id": "genre_format_names",
+      "label": "Genres & Formats",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Numbers (Years, Counts, Revenue)",
+      "factCount": 86,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about general_knowledge",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

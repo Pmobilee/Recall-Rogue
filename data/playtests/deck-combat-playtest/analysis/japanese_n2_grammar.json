@@ -1,0 +1,254 @@
+{
+  "deckId": "japanese_n2_grammar",
+  "name": "Japanese N2 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "japanese_grammar",
+  "category": "grammar",
+  "factCount": 820,
+  "poolCount": 26,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "ja-gram-n2-ability-eru-fill-0",
+      "question": "そのような事故は十分起こり{___}。\n(Such an accident is entirely possible.)",
+      "answer": "得る",
+      "poolId": "ability",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "得る"
+    },
+    {
+      "id": "ja-gram-n2-ability-eru-fill-1",
+      "question": "努力すれば何でも成し{___}。\n(If you make an effort, you can achieve anything.)",
+      "answer": "得る",
+      "poolId": "ability",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "得る"
+    },
+    {
+      "id": "ja-gram-n2-ability-eru-fill-2",
+      "question": "こんな話はあり{___}ことだ。\n(Such a story is entirely possible.)",
+      "answer": "得る",
+      "poolId": "ability",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "得る"
+    },
+    {
+      "id": "ja-gram-n2-ability-eru-fill-3",
+      "question": "この技術は多くの問題を解決し{___}可能性がある。\n(This technology has the possibility of being able to solve many problems.)",
+      "answer": "得る",
+      "poolId": "ability",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "得る"
+    },
+    {
+      "id": "ja-gram-n2-ability-yougainai-fill-0",
+      "question": "連絡先を知らないから知らせ{___}。\n(I don't know their contact information so there is no way to notify them.)",
+      "answer": "ようがない",
+      "poolId": "ability",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "ようがない"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "grammar_all",
+      "label": "All N2 Grammar Points",
+      "factCount": 820,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "ability",
+      "label": "Ability & Potential",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "addition",
+      "label": "Addition & Cumulation",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "appearance_state",
+      "label": "Appearance & State",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "assertion",
+      "label": "Assertion",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "basis_standard",
+      "label": "Basis & Standard",
+      "factCount": 40,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "completion",
+      "label": "Completion",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "concession_contrast",
+      "label": "Concession & Contrast",
+      "factCount": 68,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "conditional",
+      "label": "Conditional Patterns",
+      "factCount": 40,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "conjunction",
+      "label": "Conjunctions",
+      "factCount": 56,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "degree_extent",
+      "label": "Degree & Extent",
+      "factCount": 56,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "emphasis",
+      "label": "Emphasis Patterns",
+      "factCount": 44,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "feelings",
+      "label": "Feelings",
+      "factCount": 32,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "impossibility",
+      "label": "Impossibility & Prohibition",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "limitation",
+      "label": "Limitation & Scope",
+      "factCount": 48,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "obligation",
+      "label": "Obligation & Compulsion",
+      "factCount": 52,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "purpose",
+      "label": "Purpose & Reason",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "reported_formal",
+      "label": "Reported Formal",
+      "factCount": 32,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "result_consequence",
+      "label": "Result & Consequence",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "scope_range",
+      "label": "Scope & Range",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "supposition",
+      "label": "Supposition & Conjecture",
+      "factCount": 44,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "surprise",
+      "label": "Surprise & Unexpectedness",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "temporal",
+      "label": "Temporal Patterns",
+      "factCount": 84,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "tendency",
+      "label": "Tendency & Habit",
+      "factCount": 28,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "trigger",
+      "label": "Trigger",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "viewpoint",
+      "label": "Viewpoint & Perspective",
+      "factCount": 28,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

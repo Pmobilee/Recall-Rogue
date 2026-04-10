@@ -1,0 +1,155 @@
+{
+  "deckId": "music_history",
+  "name": "Music History",
+  "domain": "art_architecture",
+  "subDomain": "music_history",
+  "category": "knowledge",
+  "factCount": 230,
+  "poolCount": 11,
+  "subDeckCount": 5,
+  "subDeckNames": [
+    "Classical Composers & Eras",
+    "Instruments & Theory",
+    "Jazz & Blues",
+    "Rock & Pop Revolution",
+    "World Music & Modern Era"
+  ],
+  "samples": [
+    {
+      "id": "mh_0_bach_birth_year",
+      "question": "In what year was Johann Sebastian Bach born?",
+      "answer": "{1685}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 0,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "mh_0_bach_well_tempered",
+      "question": "What Bach keyboard masterwork explored all 24 major and minor keys?",
+      "answer": "Well-Tempered Clavier",
+      "poolId": "work_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "mh_0_bach_cantatas_count",
+      "question": "Approximately how many cantatas did Bach compose for the Lutheran church?",
+      "answer": "over 200",
+      "poolId": "description_terms",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "mh_0_bach_employer_leipzig",
+      "question": "Which Leipzig this employed Bach as Cantor from 1723 until his death?",
+      "answer": "St. Thomas Church",
+      "poolId": "place_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "mh_0_vivaldi_four_seasons",
+      "question": "What Vivaldi concerto set depicts Spring, Summer, Autumn, and Winter?",
+      "answer": "Four Seasons",
+      "poolId": "work_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "work_names",
+      "label": "Musical Works & Compositions",
+      "factCount": 32,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "artist_names_short",
+      "label": "Artists & Composers (short)",
+      "factCount": 40,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "artist_names_long",
+      "label": "Artists & Composers (long)",
+      "factCount": 35,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "instrument_names",
+      "label": "Musical Instruments",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "music_terms",
+      "label": "Music Terms & Concepts",
+      "factCount": 21,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "album_names",
+      "label": "Albums & Recordings",
+      "factCount": 25,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "genre_names",
+      "label": "Music Genres & Styles",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Numbers & Counts",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "place_names",
+      "label": "Cities, Countries & Places",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "nickname_terms",
+      "label": "Nicknames & Personal Epithets",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "description_terms",
+      "label": "Mechanism & Technique Descriptions",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about art_architecture",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

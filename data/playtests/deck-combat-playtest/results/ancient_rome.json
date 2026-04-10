@@ -1,0 +1,108 @@
+{
+  "deckId": "ancient_rome",
+  "category": "knowledge",
+  "name": "Ancient Rome",
+  "encounters": 2,
+  "totalCardsPlayed": 8,
+  "totalQuizzes": 8,
+  "quizSamples": [
+    {
+      "factId": "nasa_lovell_apollo_13_commander",
+      "question": "Who was the Commander of Apollo 13, the famous mission with the words 'Houston, we've had a problem'?",
+      "choices": [
+        "Ed White",
+        "Jim Lovell",
+        "Alan Shepard",
+        "Buzz Aldrin"
+      ],
+      "correctAnswer": "Jim Lovell",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "space_astronomy",
+      "cardType": "shield"
+    },
+    {
+      "factId": "const_myth_polynesian_sirius",
+      "question": "For Polynesian navigators in the Southern Hemisphere, Sirius marked which season?",
+      "choices": [
+        "Hours",
+        "Winter",
+        "Praesepe",
+        "Smallest"
+      ],
+      "correctAnswer": "Winter",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "space_astronomy",
+      "cardType": "attack"
+    },
+    {
+      "factId": "egypt_death_weighing_confessions",
+      "question": "How many divine assessors did the deceased address by name in the Hall of Two Truths?",
+      "choices": [
+        "11 to 27 days",
+        "forty-two",
+        "{12}",
+        "~1,400 years"
+      ],
+      "correctAnswer": "forty-two",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "mythology_folklore",
+      "cardType": "attack"
+    },
+    {
+      "factId": "world_religions_chr_council_trent",
+      "question": "What was the major Catholic council held from 1545 to 1563 that responded to the Reformation by reaffirming Catholic doctrine and launching the Counter-Reformation?",
+      "choices": [
+        "Craving (tanha)",
+        "Dashavatara",
+        "Bodhicitta",
+        "Council of Trent"
+      ],
+      "correctAnswer": "Council of Trent",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "mythology_folklore",
+      "cardType": "shield"
+    },
+    {
+      "factId": "mh_4_grandmaster_flash_the_message",
+      "question": "Who recorded 'The Message,' hip-hop's first socially conscious landmark?",
+      "choices": [
+        "Antonio Stradivari",
+        "Dizzy Gillespie",
+        "John Coltrane",
+        "Grandmaster Flash"
+      ],
+      "correctAnswer": "Grandmaster Flash",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "art_architecture",
+      "cardType": "attack"
+    },
+    {
+      "factId": "cs_3_dijkstra_inventor",
+      "question": "Who invented the shortest-path algorithm in 1956 that powers GPS navigation and internet routing protocols to this day?",
+      "choices": [
+        "Edsger Dijkstra",
+        "Douglas Engelbart",
+        "Paul Mockapetris",
+        "Tim Berners-Lee"
+      ],
+      "correctAnswer": "Edsger Dijkstra",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "general_knowledge",
+      "cardType": "attack"
+    }
+  ],
+  "issues": [],
+  "status": "PASS",
+  "rawErrors": [],
+  "screenshotPaths": [
+    "/tmp/rr-test-output/deck-batch-1_none_1775789180376/screenshot.png",
+    "/tmp/rr-test-output/deck-batch-1_none_1775789180376/ancient_rome-enc1.png"
+  ],
+  "containerPort": 3268
+}

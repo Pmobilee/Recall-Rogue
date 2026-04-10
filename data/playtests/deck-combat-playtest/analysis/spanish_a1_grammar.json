@@ -1,0 +1,165 @@
+{
+  "deckId": "spanish_a1_grammar",
+  "name": "Spanish A1 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "spanish_grammar",
+  "category": "grammar",
+  "factCount": 134,
+  "poolCount": 14,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Present Tense",
+    "Ser vs. Estar",
+    "Irregular Verbs",
+    "Articles & Agreement",
+    "Pronouns & Possessives",
+    "Questions & Negation",
+    "Verb Phrases",
+    "Hay & Gustar"
+  ],
+  "samples": [
+    {
+      "id": "es-gram-a1-pres-hablar-yo-0",
+      "question": "Yo {___} español todos los días.\n(I speak Spanish every day.)",
+      "answer": "hablo",
+      "poolId": "present_tense_ar",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "hablo"
+    },
+    {
+      "id": "es-gram-a1-pres-hablar-tu-0",
+      "question": "¿{___} español?\n(Do you speak Spanish?)",
+      "answer": "hablas",
+      "poolId": "present_tense_ar",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "hablas"
+    },
+    {
+      "id": "es-gram-a1-pres-hablar-el-0",
+      "question": "Mi profesora {___} muy rápido.\n(My teacher speaks very fast.)",
+      "answer": "habla",
+      "poolId": "present_tense_ar",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "habla"
+    },
+    {
+      "id": "es-gram-a1-pres-hablar-nosotros-0",
+      "question": "Nosotros {___} español en casa.\n(We speak Spanish at home.)",
+      "answer": "hablamos",
+      "poolId": "present_tense_ar",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "hablamos"
+    },
+    {
+      "id": "es-gram-a1-pres-hablar-ellos-0",
+      "question": "Ellos {___} muy bien.\n(They speak very well.)",
+      "answer": "hablan",
+      "poolId": "present_tense_ar",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "hablan"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "present_tense_ar",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "present_tense_er",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "present_tense_ir",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "ser_forms",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "estar_forms",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "irregular_verb_forms",
+      "factCount": 19,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "articles_definite",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "articles_indefinite",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "demonstratives",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "possessives",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "subject_pronouns",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "interrogatives",
+      "factCount": 18,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "negation_words",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 14
+    },
+    {
+      "id": "verb_phrase_patterns",
+      "factCount": 19,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

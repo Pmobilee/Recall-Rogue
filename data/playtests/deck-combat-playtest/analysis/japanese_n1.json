@@ -1,0 +1,125 @@
+{
+  "deckId": "japanese_n1",
+  "name": "Japanese N1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "japanese",
+  "category": "vocabulary",
+  "factCount": 6269,
+  "poolCount": 7,
+  "subDeckCount": 2,
+  "subDeckNames": [
+    "Vocabulary",
+    "Kanji"
+  ],
+  "samples": [
+    {
+      "id": "ja-jlpt-5094",
+      "question": "What does \"(花を〜) 生ける, 活ける\" ((はなを～) いける) mean?",
+      "answer": "to arrange",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "phrase",
+      "targetWord": "(花を〜) 生ける, 活ける"
+    },
+    {
+      "id": "ja-jlpt-5095",
+      "question": "What does \"～きり\" (～きり) mean?",
+      "answer": "only",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "phrase",
+      "targetWord": "～きり"
+    },
+    {
+      "id": "ja-jlpt-5097",
+      "question": "What does \"～なんか\" (～なんか) mean?",
+      "answer": "or something",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "phrase",
+      "targetWord": "～なんか"
+    },
+    {
+      "id": "ja-jlpt-5099",
+      "question": "What does \"～宛\" (～あて) mean?",
+      "answer": "for…",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "phrase",
+      "targetWord": "～宛"
+    },
+    {
+      "id": "ja-jlpt-5100",
+      "question": "What does \"～営\" (～えい) mean?",
+      "answer": "run",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "phrase",
+      "targetWord": "～営"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 2573,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Japanese Words",
+      "factCount": 2573,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "reading_hiragana",
+      "label": "Hiragana Readings",
+      "factCount": 2573,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "kanji_meanings",
+      "label": "English meanings of kanji",
+      "factCount": 1232,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "kanji_onyomi",
+      "label": "On'yomi readings (katakana)",
+      "factCount": 820,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "kanji_kunyomi",
+      "label": "Kun'yomi readings (hiragana)",
+      "factCount": 412,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "kanji_characters",
+      "label": "Kanji characters",
+      "factCount": 1232,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "ja"
+  }
+}

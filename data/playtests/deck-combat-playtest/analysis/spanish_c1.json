@@ -1,0 +1,87 @@
+{
+  "deckId": "spanish_c1",
+  "name": "Spanish C1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "spanish",
+  "category": "vocabulary",
+  "factCount": 1500,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "es-cefr-3980",
+      "question": "What does \"uno\" mean?",
+      "answer": "one",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "num",
+      "targetWord": "uno"
+    },
+    {
+      "id": "es-cefr-3981",
+      "question": "What does \"no\" mean?",
+      "answer": "no",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "adverb",
+      "targetWord": "no"
+    },
+    {
+      "id": "es-cefr-3982",
+      "question": "What does \"con\" mean?",
+      "answer": "with",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "preposition",
+      "targetWord": "con"
+    },
+    {
+      "id": "es-cefr-3983",
+      "question": "What does \"todo\" mean?",
+      "answer": "all; every",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "det",
+      "targetWord": "todo"
+    },
+    {
+      "id": "es-cefr-3984",
+      "question": "What does \"entre\" mean?",
+      "answer": "between",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "preposition",
+      "targetWord": "entre"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 1500,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Spanish Words",
+      "factCount": 300,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "es"
+  }
+}

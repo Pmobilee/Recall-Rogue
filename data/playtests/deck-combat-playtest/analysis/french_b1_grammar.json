@@ -1,0 +1,255 @@
+{
+  "deckId": "french_b1_grammar",
+  "name": "French B1 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "french_grammar",
+  "category": "grammar",
+  "factCount": 348,
+  "poolCount": 29,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Subjonctif Présent",
+    "Conditionnel & Si-Clauses",
+    "Plus-que-parfait & Temps Composés",
+    "Pronoms Relatifs Avancés",
+    "Double Pronominalization",
+    "Gérondif & Participe Présent",
+    "Passif & Discours Rapporté",
+    "Verbes Périphrastiques & Connecteurs Avancés"
+  ],
+  "samples": [
+    {
+      "id": "fr-gram-b1-subj-parler-je-0",
+      "question": "Il faut que je {___} plus lentement.\n(I need to speak more slowly.)",
+      "answer": "parle",
+      "poolId": "subj_er_regular",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "parle"
+    },
+    {
+      "id": "fr-gram-b1-subj-parler-tu-0",
+      "question": "Je veux que tu {___} avec le professeur.\n(I want you to speak with the teacher.)",
+      "answer": "parles",
+      "poolId": "subj_er_regular",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "parles"
+    },
+    {
+      "id": "fr-gram-b1-subj-parler-nous-0",
+      "question": "Il est important que nous {___} français en classe.\n(It's important that we speak French in class.)",
+      "answer": "parlions",
+      "poolId": "subj_er_regular",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "parlions"
+    },
+    {
+      "id": "fr-gram-b1-subj-parler-vous-0",
+      "question": "Je préfère que vous {___} plus fort.\n(I prefer that you speak louder.)",
+      "answer": "parliez",
+      "poolId": "subj_er_regular",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "parliez"
+    },
+    {
+      "id": "fr-gram-b1-subj-parler-ils-0",
+      "question": "C'est dommage qu'ils ne {___} pas anglais.\n(It's a shame that they don't speak English.)",
+      "answer": "parlent",
+      "poolId": "subj_er_regular",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "parlent"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "subj_er_regular",
+      "factCount": 15,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "subj_ir_regular",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "subj_re_regular",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "subj_etre_avoir",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "subj_irregulier",
+      "factCount": 24,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "subj_triggers_necessite",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "subj_triggers_desir_emotion",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "subj_triggers_conjonctions",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "conditionnel_present_forms",
+      "factCount": 49,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "conditionnel_passe_forms",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "si_imparfait_patterns",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "plus_que_parfait_avoir",
+      "factCount": 16,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "plus_que_parfait_etre",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "pronoms_relatifs_dont_ou",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "pronoms_ce_qui_ce_que",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "pronoms_demonstratifs",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "double_pronoms_me_te_le",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "double_pronoms_le_lui_leur",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "double_pronoms_en_y",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "double_pronoms_imperatif",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "gerondif_forms",
+      "factCount": 20,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "participe_present_forms",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "passif_etre_pp",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "discours_rapporte_verbs",
+      "factCount": 18,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "peripherastiques_debut_fin",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "peripherastiques_continuite",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "connecteurs_causals",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "connecteurs_consecutifs",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "temps_futur_conjonctions",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

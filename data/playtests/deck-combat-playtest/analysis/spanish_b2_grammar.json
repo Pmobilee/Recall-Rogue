@@ -1,0 +1,231 @@
+{
+  "deckId": "spanish_b2_grammar",
+  "name": "Spanish B2 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "spanish_grammar",
+  "category": "grammar",
+  "factCount": 176,
+  "poolCount": 25,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Imperfect Subjunctive",
+    "Compound Subjunctive",
+    "Si-Clauses: Full System",
+    "Compound Tenses",
+    "Passive Voice",
+    "Reported Speech",
+    "Advanced Connectors",
+    "Por vs. Para: Advanced"
+  ],
+  "samples": [
+    {
+      "id": "es-gram-b2-imp-subj-ra-ar-descansar-el-0",
+      "question": "El médico le recomendó que {___} más.\n(The doctor recommended that he rest more.)",
+      "answer": "descansara",
+      "poolId": "imp_subj_ra_ar",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "descansara"
+    },
+    {
+      "id": "es-gram-b2-imp-subj-ra-er-beber-nosotros-0",
+      "question": "Era mejor que {___} menos café.\n(It was better that we drink less coffee.)",
+      "answer": "bebiéramos",
+      "poolId": "imp_subj_ra_er_ir",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "bebiéramos"
+    },
+    {
+      "id": "es-gram-b2-imp-subj-ra-irreg-ser-tu-0",
+      "question": "Si {___} más cuidadoso, no habrías tenido el accidente.\n(If you were more careful, you wouldn't have had the accident.)",
+      "answer": "fueras",
+      "poolId": "imp_subj_ra_irregulars",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "fueras"
+    },
+    {
+      "id": "es-gram-b2-imp-subj-ra-irreg-tener-nosotros-0",
+      "question": "Si {___} más tiempo, haríamos más.\n(If we had more time, we would do more.)",
+      "answer": "tuviéramos",
+      "poolId": "imp_subj_ra_irregulars",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "tuviéramos"
+    },
+    {
+      "id": "es-gram-b2-imp-subj-ra-irreg-hacer-ejercicio-0",
+      "question": "Si {___} más ejercicio, te sentirías mejor.\n(If you exercised more, you would feel better.)",
+      "answer": "hicieras",
+      "poolId": "imp_subj_ra_irregulars",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "hicieras"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "imp_subj_ra_ar",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "imp_subj_ra_er_ir",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "imp_subj_ra_irregulars",
+      "factCount": 17,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "imp_subj_se_ar",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "imp_subj_se_er_ir",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "imp_subj_se_irregulars",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "haber_subj_present",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "haber_subj_pluperfect",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "si_clause_type2",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "si_clause_type3",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "si_clause_mixed",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "haber_future",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "haber_conditional",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "passive_ser_pp",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "passive_se_pattern",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "passive_estar_pp",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "reported_speech_tense",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "reported_speech_imperative",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "concessive_connectors",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "causal_connectors",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "consecutive_connectors",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "temporal_subj_connectors",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "conditional_connectors",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "por_advanced",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "para_advanced",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

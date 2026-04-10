@@ -1,0 +1,78 @@
+{
+  "deckId": "korean_hangul",
+  "name": "Korean Hangul",
+  "domain": "vocabulary",
+  "subDomain": "korean",
+  "category": "writing_system",
+  "factCount": 108,
+  "poolCount": 1,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "ko-hangul-gk-forward",
+      "question": "What sound does the Hangul ㄱ represent?",
+      "answer": "g/k",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ko",
+      "partOfSpeech": null,
+      "targetWord": "g/k"
+    },
+    {
+      "id": "ko-hangul-gk-reverse",
+      "question": "Which Hangul basic consonant represents 'g/k'?",
+      "answer": "ㄱ",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ko",
+      "partOfSpeech": null,
+      "targetWord": "g/k"
+    },
+    {
+      "id": "ko-hangul-n-forward",
+      "question": "What sound does the Hangul ㄴ represent?",
+      "answer": "n",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ko",
+      "partOfSpeech": null,
+      "targetWord": "n"
+    },
+    {
+      "id": "ko-hangul-n-reverse",
+      "question": "Which Hangul basic consonant represents 'n'?",
+      "answer": "ㄴ",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ko",
+      "partOfSpeech": null,
+      "targetWord": "n"
+    },
+    {
+      "id": "ko-hangul-dt-forward",
+      "question": "What sound does the Hangul ㄷ represent?",
+      "answer": "d/t",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ko",
+      "partOfSpeech": null,
+      "targetWord": "d/t"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "factCount": 108,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "character recognition",
+    "answerStyle": "romanization or character",
+    "distractorSource": "visually/phonetically similar characters",
+    "expectedChoices": "3-5"
+  }
+}

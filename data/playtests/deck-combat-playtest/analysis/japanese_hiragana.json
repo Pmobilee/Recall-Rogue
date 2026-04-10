@@ -1,0 +1,78 @@
+{
+  "deckId": "japanese_hiragana",
+  "name": "Japanese Hiragana",
+  "domain": "vocabulary",
+  "subDomain": "japanese",
+  "category": "writing_system",
+  "factCount": 208,
+  "poolCount": 1,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "ja-hiragana-a-forward",
+      "question": "What sound does the hiragana あ represent?",
+      "answer": "a",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": null,
+      "targetWord": "a"
+    },
+    {
+      "id": "ja-hiragana-a-reverse",
+      "question": "Which hiragana character represents 'a'?",
+      "answer": "あ",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": null,
+      "targetWord": "a"
+    },
+    {
+      "id": "ja-hiragana-i-forward",
+      "question": "What sound does the hiragana い represent?",
+      "answer": "i",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": null,
+      "targetWord": "i"
+    },
+    {
+      "id": "ja-hiragana-i-reverse",
+      "question": "Which hiragana character represents 'i'?",
+      "answer": "い",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": null,
+      "targetWord": "i"
+    },
+    {
+      "id": "ja-hiragana-u-forward",
+      "question": "What sound does the hiragana う represent?",
+      "answer": "u",
+      "poolId": "english_meanings",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": null,
+      "targetWord": "u"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "factCount": 208,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "character recognition",
+    "answerStyle": "romanization or character",
+    "distractorSource": "visually/phonetically similar characters",
+    "expectedChoices": "3-5"
+  }
+}

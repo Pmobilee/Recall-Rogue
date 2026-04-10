@@ -1,0 +1,170 @@
+{
+  "deckId": "medieval_world",
+  "name": "Medieval World",
+  "domain": "history",
+  "subDomain": "medieval",
+  "category": "knowledge",
+  "factCount": 178,
+  "poolCount": 13,
+  "subDeckCount": 7,
+  "subDeckNames": [
+    "Byzantine Empire",
+    "Islamic Golden Age",
+    "The Viking Age",
+    "Feudal Europe & Charlemagne",
+    "The Crusades",
+    "Tang & Song China",
+    "African Kingdoms & Trade"
+  ],
+  "samples": [
+    {
+      "id": "med_byz_empire_overview",
+      "question": "How long did the Byzantine Empire last, from Constantinople's founding to its fall?",
+      "answer": "Over 1,100 years",
+      "poolId": "date_named",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "med_byz_justinian_reign",
+      "question": "Which Byzantine emperor's reign (527–565 CE) is considered the peak of territorial expansion?",
+      "answer": "Justinian I",
+      "poolId": "ruler_leader_names",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "med_byz_corpus_juris",
+      "question": "What massive legal codification did Justinian I complete between 529–534 CE, still foundational to civil law today?",
+      "answer": "Corpus Juris Civilis",
+      "poolId": "work_text_names",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "med_byz_hagia_sophia_build",
+      "question": "How long did it take to build the Hagia Sophia in Constantinople under Justinian I?",
+      "answer": "5 years, 10 months",
+      "poolId": "date_named",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "med_byz_hagia_sophia_record",
+      "question": "For how many years did the Hagia Sophia serve as a Christian church before the Ottoman conquest?",
+      "answer": "916 years",
+      "poolId": "date_named",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "date_events",
+      "label": "Dates & Years",
+      "factCount": 23,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "ruler_leader_names",
+      "label": "Rulers & Leaders",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "work_text_names",
+      "label": "Works & Texts",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "battle_event_names",
+      "label": "Battles & Events",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "concept_terms",
+      "label": "Concepts & Terms",
+      "factCount": 26,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "place_names",
+      "label": "Places & Cities",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    },
+    {
+      "id": "structure_names",
+      "label": "Structures & Monuments",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "scholar_names",
+      "label": "Scholars & Thinkers",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "person_group_names",
+      "label": "People & Groups",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "description_phrases",
+      "label": "Event Descriptions",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "date_named",
+      "label": "Named Dates & Durations",
+      "factCount": 27,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Counts & Numbers",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 15
+    },
+    {
+      "id": "quantities_measures",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about history",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

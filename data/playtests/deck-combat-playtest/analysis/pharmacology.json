@@ -1,0 +1,163 @@
+{
+  "deckId": "pharmacology",
+  "name": "Nursing Pharmacology",
+  "domain": "human_body_health",
+  "subDomain": "pharmacology",
+  "category": "knowledge",
+  "factCount": 405,
+  "poolCount": 12,
+  "subDeckCount": 6,
+  "subDeckNames": [
+    "Cardiovascular Drugs",
+    "Anti-Infective Drugs",
+    "CNS & Psychiatric Drugs",
+    "Endocrine & Metabolic Drugs",
+    "GI & Respiratory Drugs",
+    "OB & Women's Health Drugs"
+  ],
+  "samples": [
+    {
+      "id": "pharm-cv-lisinopril-class",
+      "question": "What drug class does lisinopril belong to?",
+      "answer": "ACE inhibitor",
+      "poolId": "drug_classes",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "pharm-cv-lisinopril-mechanism",
+      "question": "What is the mechanism of action of lisinopril?",
+      "answer": "Blocks angiotensin-converting enzyme",
+      "poolId": "mechanisms",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "pharm-cv-lisinopril-side-effect",
+      "question": "What is the classic adverse effect that distinguishes ACE inhibitors like lisinopril from ARBs?",
+      "answer": "Dry cough",
+      "poolId": "side_effects_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "pharm-cv-lisinopril-indication",
+      "question": "What is the primary indication for lisinopril?",
+      "answer": "Hypertension",
+      "poolId": "indications_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "pharm-cv-losartan-class",
+      "question": "What drug class does losartan belong to?",
+      "answer": "Angiotensin II receptor blocker (ARB)",
+      "poolId": "drug_classes",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "drug_class_abbrev",
+      "label": "Drug Class Abbreviations (3-5 chars)",
+      "factCount": 2,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "drug_classes",
+      "label": "Drug Classes",
+      "factCount": 99,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "mechanisms",
+      "label": "Mechanisms of Action",
+      "factCount": 89,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "side_effects_short",
+      "label": "Side Effects (short)",
+      "factCount": 30,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "side_effects_long",
+      "label": "Side Effects (long)",
+      "factCount": 47,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "indications_short",
+      "label": "Indications (short)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "indications_long",
+      "label": "Indications (long)",
+      "factCount": 36,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "nursing_interventions_short",
+      "label": "Nursing Interventions (short)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "nursing_interventions_long",
+      "label": "Nursing Interventions (long)",
+      "factCount": 51,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "antidotes_short",
+      "label": "Antidotes & Reversal Agents (short)",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "antidotes_long",
+      "label": "Antidotes & Reversal Agents (long)",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "interactions",
+      "label": "Drug Interactions",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about human_body_health",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

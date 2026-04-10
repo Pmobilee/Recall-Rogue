@@ -1,0 +1,148 @@
+{
+  "deckId": "mammals_world",
+  "name": "Mammals of the World",
+  "domain": "animals_wildlife",
+  "subDomain": "mammals",
+  "category": "knowledge",
+  "factCount": 170,
+  "poolCount": 10,
+  "subDeckCount": 5,
+  "subDeckNames": [
+    "Remarkable Mammals",
+    "Record Breakers & Extremes",
+    "Taxonomy & Biology",
+    "Behavior & Intelligence",
+    "Conservation & Endangered Species"
+  ],
+  "samples": [
+    {
+      "id": "mamm_0_elephant_weight",
+      "question": "What is the record weight of the heaviest African bush elephant ever documented?",
+      "answer": "10,400 kg",
+      "poolId": "stats_medium",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "mamm_0_elephant_gestation",
+      "question": "The African bush elephant has the longest gestation period of any land mammal. How long is it?",
+      "answer": "22 months",
+      "poolId": "stats_medium",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "mamm_0_elephant_sleep",
+      "question": "How many hours of sleep per day does an African bush elephant typically get?",
+      "answer": "2 hours",
+      "poolId": "stats_short",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "mamm_0_elephant_ivory_ban",
+      "question": "In what year did CITES enact its international ivory trade ban to protect African elephants?",
+      "answer": "{1990}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "mamm_0_elephant_infrasound",
+      "question": "How far can elephant seismic signals transmitted through the ground via their feet travel?",
+      "answer": "Up to 32 km",
+      "poolId": "stats_medium",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "term",
+      "label": "Terms & Concepts",
+      "factCount": 25,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "name_short",
+      "label": "Names & People (short)",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "name_long",
+      "label": "Names & People (long)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factCount": 13,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "behavior_descriptions_short",
+      "label": "Behavior Descriptions (short)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "behavior_descriptions_long",
+      "label": "Behavior Descriptions (long)",
+      "factCount": 16,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "conservation_terms",
+      "label": "Conservation & Status",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "stats_medium",
+      "label": "Statistics & Measurements (medium)",
+      "factCount": 31,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "stats_short",
+      "label": "Statistics (short)",
+      "factCount": 25,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "stats_long",
+      "label": "Statistics (long descriptions)",
+      "factCount": 21,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about animals_wildlife",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "deckId": "egyptian_mythology",
+  "name": "Egyptian Mythology",
+  "domain": "mythology_folklore",
+  "subDomain": "egyptian",
+  "category": "knowledge",
+  "factCount": 171,
+  "poolCount": 6,
+  "subDeckCount": 5,
+  "subDeckNames": [
+    "The Major Gods & Goddesses",
+    "Creation Myths & Cosmology",
+    "Death, Afterlife & Judgment",
+    "Sacred Animals & Symbols",
+    "Temples, Priests & Rituals"
+  ],
+  "samples": [
+    {
+      "id": "egypt_god_ra_head",
+      "question": "How was Ra, the Egyptian sun god, typically depicted?",
+      "answer": "falcon-headed man with solar disk",
+      "poolId": "symbols_objects",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "egypt_god_ra_boats",
+      "question": "What was the name of Ra's daytime solar boat?",
+      "answer": "Mandjet (daytime boat)",
+      "poolId": "concepts_terms",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "egypt_god_ra_cult",
+      "question": "What was Ra's primary cult center in ancient Egypt?",
+      "answer": "Heliopolis",
+      "poolId": "places_locations",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "egypt_god_ra_humans",
+      "question": "According to Egyptian myth, what did Ra create humans from?",
+      "answer": "his tears and sweat",
+      "poolId": "descriptions_roles",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "egypt_god_ra_amun",
+      "question": "What merged deity did Ra become during the New Kingdom as this worship rose to prominence?",
+      "answer": "Amun-Ra",
+      "poolId": "deity_names_short",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "numbers_dates",
+      "label": "Numbers & Dates",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "places_locations",
+      "label": "Places & Locations",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "symbols_objects",
+      "label": "Symbols & Sacred Objects",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "deity_names_short",
+      "label": "Short Egyptian Deity Names",
+      "factCount": 3,
+      "hasSynthetics": true,
+      "syntheticCount": 15
+    },
+    {
+      "id": "descriptions_roles",
+      "label": "Descriptions & Roles",
+      "factCount": 38,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "concepts_terms",
+      "label": "Concepts & Mythology Terms",
+      "factCount": 96,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about mythology_folklore",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

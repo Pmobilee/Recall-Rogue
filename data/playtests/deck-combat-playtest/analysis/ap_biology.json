@@ -1,0 +1,292 @@
+{
+  "deckId": "ap_biology",
+  "name": "AP Biology",
+  "domain": "natural_sciences",
+  "subDomain": "biology",
+  "category": "knowledge",
+  "factCount": 1123,
+  "poolCount": 32,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Chemistry of Life",
+    "Cell Structure",
+    "Cellular Energetics",
+    "Cell Communication",
+    "Heredity",
+    "Gene Expression",
+    "Natural Selection & Evolution",
+    "Ecology"
+  ],
+  "samples": [
+    {
+      "id": "ap_bio_water_polarity",
+      "question": "What is water polarity?",
+      "answer": "Polar due to O electronegativity",
+      "poolId": "term_definitions_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_bio_hydrogen_bond",
+      "question": "What type of weak bond forms between water molecules due to partial charges on H, N, O, or F atoms?",
+      "answer": "Hydrogen bond",
+      "poolId": "term_definitions_mid",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_bio_cohesion",
+      "question": "What property causes water molecules to be attracted to each other via hydrogen bonds, producing surface tension?",
+      "answer": "Cohesion",
+      "poolId": "term_definitions_mid",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_bio_adhesion",
+      "question": "What property describes water molecules being attracted to other polar or charged surfaces, enabling capillary action?",
+      "answer": "Adhesion",
+      "poolId": "term_definitions_mid",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_bio_surface_tension",
+      "question": "What emergent property of water, arising from cohesive hydrogen bonds at the water-air interface, allows insects to walk",
+      "answer": "Surface tension",
+      "poolId": "function_terms",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "bio_concept_terms",
+      "factCount": 141,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "factCount": 45,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bio_ratios_measurements",
+      "label": "Biology Ratios and Measurements",
+      "factCount": 15,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "geological_timescale",
+      "label": "Geological Timescale",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "comparison_terms",
+      "factCount": 55,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "cycle_phase_names",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "disease_syndrome_names",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "ecology_terms_short",
+      "label": "ecology_terms (short)",
+      "factCount": 41,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "ecology_terms_long",
+      "label": "ecology_terms (long)",
+      "factCount": 35,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "enzyme_names",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "equation_terms_short",
+      "label": "equation_terms (short)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "equation_terms_long",
+      "label": "equation_terms (long)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "evolution_terms_short",
+      "label": "evolution_terms (short)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "evolution_terms_long",
+      "label": "evolution_terms (long)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "experiment_terms_short",
+      "label": "experiment_terms (short)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "experiment_terms_long",
+      "label": "experiment_terms (long)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "function_terms",
+      "factCount": 36,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "genetics_terms",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "location_terms",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "molecule_names_short",
+      "label": "molecule_names (short)",
+      "factCount": 33,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "molecule_names_long",
+      "label": "molecule_names (long)",
+      "factCount": 59,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "organelle_names_short",
+      "label": "organelle_names (short)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "organelle_names_long",
+      "label": "organelle_names (long)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "organelle_structures",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "organism_names",
+      "factCount": 28,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "process_names_short",
+      "label": "process_names (short)",
+      "factCount": 55,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "process_names_long",
+      "label": "process_names (long)",
+      "factCount": 56,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "signal_molecule_names",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "structure_function_terms",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "term_definitions_short",
+      "label": "term_definitions (short)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "term_definitions_mid",
+      "label": "term_definitions (mid)",
+      "factCount": 169,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "term_definitions_long",
+      "label": "term_definitions (long)",
+      "factCount": 214,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about natural_sciences",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

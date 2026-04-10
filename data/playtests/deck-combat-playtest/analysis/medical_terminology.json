@@ -1,0 +1,188 @@
+{
+  "deckId": "medical_terminology",
+  "name": "Medical Terminology",
+  "domain": "human_body_health",
+  "subDomain": "medical_terminology",
+  "category": "knowledge",
+  "factCount": 700,
+  "poolCount": 16,
+  "subDeckCount": 5,
+  "subDeckNames": [
+    "Medical Prefixes",
+    "Medical Suffixes",
+    "Anatomical Roots & Body Systems",
+    "Medical Conditions",
+    "Procedures & Diagnostics"
+  ],
+  "samples": [
+    {
+      "id": "medterm_pre_ab",
+      "question": "What does the prefix ab- mean in medical terminology?",
+      "answer": "Away from",
+      "poolId": "prefix_meanings_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "medterm_pre_ad",
+      "question": "What does the prefix ad- mean in medical terminology?",
+      "answer": "Toward",
+      "poolId": "prefix_meanings_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "medterm_pre_ante",
+      "question": "What does the prefix ante- mean in medical terminology?",
+      "answer": "Before, in front of",
+      "poolId": "prefix_meanings_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "medterm_pre_circum",
+      "question": "What does the prefix circum- mean in medical terminology?",
+      "answer": "Around",
+      "poolId": "prefix_meanings_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "medterm_pre_de",
+      "question": "What does the prefix de- mean in medical terminology?",
+      "answer": "Down, away from",
+      "poolId": "prefix_meanings_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "prefix_meanings_short",
+      "label": "prefix_meanings (short)",
+      "factCount": 30,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "prefix_meanings_long",
+      "label": "prefix_meanings (long)",
+      "factCount": 51,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "suffix_meanings_short",
+      "label": "suffix_meanings (short)",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "suffix_meanings_long",
+      "label": "suffix_meanings (long)",
+      "factCount": 42,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "root_meanings_short",
+      "label": "root_meanings (short)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "root_meanings_mid",
+      "label": "root_meanings (mid)",
+      "factCount": 138,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "root_meanings_long",
+      "label": "root_meanings (long)",
+      "factCount": 57,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "organ_names_short",
+      "label": "organ_names (short)",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "organ_names_long",
+      "label": "organ_names (long)",
+      "factCount": 31,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "combining_forms",
+      "factCount": 50,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "body_systems",
+      "factCount": 20,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "condition_names_short",
+      "label": "condition_names (short)",
+      "factCount": 82,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "condition_names_long",
+      "label": "condition_names (long)",
+      "factCount": 87,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "procedure_names_short",
+      "label": "procedure_names (short)",
+      "factCount": 38,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "procedure_names_long",
+      "label": "procedure_names (long)",
+      "factCount": 23,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factCount": 2,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about human_body_health",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

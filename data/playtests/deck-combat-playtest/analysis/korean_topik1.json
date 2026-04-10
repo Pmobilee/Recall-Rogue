@@ -1,0 +1,87 @@
+{
+  "deckId": "korean_topik1",
+  "name": "Korean TOPIK 1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "korean",
+  "category": "vocabulary",
+  "factCount": 1368,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "ko-nikl-1",
+      "question": "What does \"가게\" mean?",
+      "answer": "store, shop",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ko",
+      "partOfSpeech": "noun",
+      "targetWord": "가게"
+    },
+    {
+      "id": "ko-nikl-10",
+      "question": "What does \"가르치다\" mean?",
+      "answer": "teach",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ko",
+      "partOfSpeech": "verb",
+      "targetWord": "가르치다"
+    },
+    {
+      "id": "ko-nikl-100",
+      "question": "What does \"고기\" mean?",
+      "answer": "meat",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ko",
+      "partOfSpeech": "noun",
+      "targetWord": "고기"
+    },
+    {
+      "id": "ko-nikl-1000",
+      "question": "What does \"어렵다\" mean?",
+      "answer": "difficult",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ko",
+      "partOfSpeech": "adjective",
+      "targetWord": "어렵다"
+    },
+    {
+      "id": "ko-nikl-1001",
+      "question": "What does \"어른\" mean?",
+      "answer": "adult",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ko",
+      "partOfSpeech": "noun",
+      "targetWord": "어른"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 1368,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Korean Words",
+      "factCount": 1368,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "ko"
+  }
+}

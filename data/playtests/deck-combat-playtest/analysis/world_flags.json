@@ -1,0 +1,86 @@
+{
+  "deckId": "world_flags",
+  "name": "World Flags",
+  "domain": "geography",
+  "subDomain": "flags",
+  "category": "knowledge",
+  "factCount": 197,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "flag_afghanistan",
+      "question": "Which country does this flag belong to?",
+      "answer": "Afghanistan",
+      "poolId": "country_names_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "flag_albania",
+      "question": "Which country does this flag belong to?",
+      "answer": "Albania",
+      "poolId": "country_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "flag_algeria",
+      "question": "Which country does this flag belong to?",
+      "answer": "Algeria",
+      "poolId": "country_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "flag_andorra",
+      "question": "Which country does this flag belong to?",
+      "answer": "Andorra",
+      "poolId": "country_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "flag_angola",
+      "question": "Which country does this flag belong to?",
+      "answer": "Angola",
+      "poolId": "country_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "country_names_short",
+      "label": "Country Names (short)",
+      "factCount": 156,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "country_names_long",
+      "label": "Country Names (long)",
+      "factCount": 41,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about geography",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "deckId": "famous_paintings",
+  "name": "Famous Paintings & Artists",
+  "domain": "art_architecture",
+  "subDomain": "painting_visual",
+  "category": "knowledge",
+  "factCount": 104,
+  "poolCount": 11,
+  "subDeckCount": 5,
+  "subDeckNames": [
+    "Renaissance & Baroque (1400–1750)",
+    "Romanticism & Realism (1750–1870)",
+    "Impressionism & Post-Impressionism (1860–1910)",
+    "Modern & Contemporary (1900–Present)",
+    "Art Movements & Techniques"
+  ],
+  "samples": [
+    {
+      "id": "paint_ren_mona_lisa_artist",
+      "question": "Who painted this iconic portrait, the most visited artwork in the world?",
+      "answer": "Leonardo da Vinci",
+      "poolId": "artist_names_long",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "paint_ren_mona_lisa_location",
+      "question": "In which museum is the Mona Lisa permanently displayed?",
+      "answer": "The Louvre",
+      "poolId": "museum_names_short",
+      "distractorCount": 5,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "paint_ren_mona_lisa_technique",
+      "question": "What painting technique — creating soft, smoky transitions without sharp outlines — did Leonardo use extensively in the ",
+      "answer": "Sfumato",
+      "poolId": "technique_terms_short",
+      "distractorCount": 5,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "paint_ren_last_supper_artist",
+      "question": "Who painted this famous mural depicting the moment Jesus announces his betrayal?",
+      "answer": "Leonardo da Vinci",
+      "poolId": "artist_names_long",
+      "distractorCount": 5,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "paint_ren_creation_adam_location",
+      "question": "Where is this iconic fresco by Michelangelo located?",
+      "answer": "Sistine Chapel",
+      "poolId": "museum_names_long",
+      "distractorCount": 5,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "artist_names_short",
+      "label": "artist_names (short)",
+      "factCount": 18,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "artist_names_long",
+      "label": "artist_names (long)",
+      "factCount": 23,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "painting_names",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "movement_names",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "museum_names_short",
+      "label": "museum_names (short)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "museum_names_long",
+      "label": "museum_names (long)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "counts_amounts",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "technique_terms_short",
+      "label": "technique_terms (short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "technique_terms_long",
+      "label": "technique_terms (long)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "country_names",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Years & Numbers",
+      "factCount": 3,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about art_architecture",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

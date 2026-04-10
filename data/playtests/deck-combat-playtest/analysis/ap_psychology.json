@@ -1,0 +1,173 @@
+{
+  "deckId": "ap_psychology",
+  "name": "AP Psychology",
+  "domain": "social_sciences",
+  "subDomain": "psychology",
+  "category": "knowledge",
+  "factCount": 393,
+  "poolCount": 13,
+  "subDeckCount": 9,
+  "subDeckNames": [
+    "The Neural Forge",
+    "The Mind Palace",
+    "The Sensory Labyrinth",
+    "The Reasoning Chamber",
+    "The Growth Spiral",
+    "The Conditioning Pit",
+    "The Social Nexus",
+    "The Mask Gallery",
+    "The Shadow Ward"
+  ],
+  "samples": [
+    {
+      "id": "ap_psych_twin_identical_dna",
+      "question": "Which type of these siblings develop from a single fertilized egg and share virtually all their DNA, making them the gol",
+      "answer": "Identical twins (same DNA)",
+      "poolId": "psych_concept_terms",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_psych_twin_concordance",
+      "question": "In twin research, what term describes the probability that both twins share the same trait or disorder if one twin has i",
+      "answer": "Concordance rate (twin match)",
+      "poolId": "psych_concept_terms",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_psych_heritability_def",
+      "question": "What statistic estimates the proportion of variation in a trait within a population that is attributable to genetic diff",
+      "answer": "Heritability (genetic variance)",
+      "poolId": "psych_concept_terms",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_psych_epigenetics_def",
+      "question": "What field studies changes in gene expression that occur WITHOUT altering the underlying DNA sequence, often triggered b",
+      "answer": "Epigenetics (gene expression)",
+      "poolId": "psych_concept_terms",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_psych_behavioural_genetics",
+      "question": "What scientific field uses genetic methods — including twin, adoption, and family studies — to investigate the origins o",
+      "answer": "Behavioral genetics",
+      "poolId": "psych_concept_terms",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "researcher_names",
+      "label": "Researcher / Theorist",
+      "factCount": 48,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "brain_structures",
+      "label": "Brain Structure",
+      "factCount": 37,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "neurotransmitter_names",
+      "label": "Neurotransmitter",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "psych_concept_terms",
+      "label": "Psychology Concept",
+      "factCount": 149,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "disorder_names",
+      "label": "Psychological Disorder",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "therapy_types",
+      "label": "Therapy / Treatment Type",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "dev_stage_names",
+      "label": "Developmental Stage",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "sleep_stage_terms",
+      "label": "Sleep Stage",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "sensation_terms",
+      "label": "Sensation / Perception Term",
+      "factCount": 21,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "memory_terms",
+      "label": "Memory Concept",
+      "factCount": 36,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "social_psych_terms",
+      "label": "Social Psychology Term",
+      "factCount": 21,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "personality_terms",
+      "label": "Personality Theory Term",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Number / Statistic",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about social_sciences",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

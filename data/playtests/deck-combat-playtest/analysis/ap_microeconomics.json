@@ -1,0 +1,247 @@
+{
+  "deckId": "ap_microeconomics",
+  "name": "AP Microeconomics",
+  "domain": "social_sciences",
+  "subDomain": "microeconomics",
+  "category": "knowledge",
+  "factCount": 430,
+  "poolCount": 25,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "ap_micro_1_scarcity_definition",
+      "question": "What fundamental economic concept describes the condition where unlimited human wants exceed the limited resources avail",
+      "answer": "Scarcity",
+      "poolId": "econ_concept_terms_short",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_micro_1_factors_of_production",
+      "question": "What is the collective term for the four categories of resources — land, labor, capital, and entrepreneurship — used to ",
+      "answer": "Factors of production",
+      "poolId": "econ_concept_terms_mid",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_micro_1_human_capital_definition",
+      "question": "What type of intangible investment refers to the skills, knowledge, experience, and education embodied in workers that i",
+      "answer": "Human capital",
+      "poolId": "econ_concept_terms_mid",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_micro_1_trade_off_definition",
+      "question": "Because resources are scarce, every economic decision involves giving up one thing to obtain another. What is the genera",
+      "answer": "Trade-off",
+      "poolId": "econ_concept_terms_mid",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_micro_1_opportunity_cost_definition",
+      "question": "What economic concept refers to the value of the next-best alternative that must be forgone when making any choice?",
+      "answer": "Opportunity cost",
+      "poolId": "econ_concept_terms_mid",
+      "distractorCount": 7,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "cost_type_names",
+      "label": "Cost Type Names",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "curve_and_graph_names_short",
+      "label": "Curves & Graph Names (short)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "curve_and_graph_names_mid",
+      "label": "Curves & Graph Names (mid)",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "curve_and_graph_names_long",
+      "label": "Curves & Graph Names (long)",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "econ_concept_terms_short",
+      "label": "Economic Concept Terms (short)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "econ_concept_terms_mid",
+      "label": "Economic Concept Terms (mid)",
+      "factCount": 120,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "econ_concept_terms_long",
+      "label": "Economic Concept Terms (long)",
+      "factCount": 64,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "efficiency_type_terms",
+      "label": "Efficiency Types",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "elasticity_type_terms",
+      "label": "Elasticity Types",
+      "factCount": 14,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "equation_formulas_micro_short",
+      "label": "Equations & Formulas (short)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "equation_formulas_micro_mid",
+      "label": "Equations & Formulas (mid)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "equation_formulas_micro_long",
+      "label": "Equations & Formulas (long)",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "game_theory_terms",
+      "label": "Game Theory Terms",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "law_and_principle_names",
+      "label": "Laws & Principles",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "market_outcome_descriptions_short",
+      "label": "Market Outcome Descriptions (short)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "market_outcome_descriptions_mid",
+      "label": "Market Outcome Descriptions (mid)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "market_outcome_descriptions_long",
+      "label": "Market Outcome Descriptions (long)",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "market_structure_names_short",
+      "label": "Market Structure Names (short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "market_structure_names_long",
+      "label": "Market Structure Names (long)",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "policy_instrument_names_short",
+      "label": "Policy Instruments (short)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "policy_instrument_names_long",
+      "label": "Policy Instruments (long)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "shift_direction_terms_short",
+      "label": "Shift Direction Terms (short)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "shift_direction_terms_long",
+      "label": "Shift Direction Terms (long)",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "surplus_welfare_terms_short",
+      "label": "Surplus & Welfare Terms (short)",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    },
+    {
+      "id": "surplus_welfare_terms_long",
+      "label": "Surplus & Welfare Terms (long)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about social_sciences",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

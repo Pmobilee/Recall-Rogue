@@ -1,0 +1,87 @@
+{
+  "deckId": "german_b2",
+  "name": "German B2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "german",
+  "category": "vocabulary",
+  "factCount": 843,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "de-cefr-3083",
+      "question": "What does \"Abhängigkeit\" mean?",
+      "answer": "dependence",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Abhängigkeit"
+    },
+    {
+      "id": "de-cefr-3084",
+      "question": "What does \"Ablauf\" mean?",
+      "answer": "process",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Ablauf"
+    },
+    {
+      "id": "de-cefr-3085",
+      "question": "What does \"Abreise\" mean?",
+      "answer": "departure",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Abreise"
+    },
+    {
+      "id": "de-cefr-3086",
+      "question": "What does \"Absage\" mean?",
+      "answer": "rejection",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Absage"
+    },
+    {
+      "id": "de-cefr-3087",
+      "question": "What does \"Abschnitt\" mean?",
+      "answer": "section",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "de",
+      "partOfSpeech": "noun",
+      "targetWord": "Abschnitt"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 843,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "German Words",
+      "factCount": 843,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "de"
+  }
+}

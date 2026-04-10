@@ -1,0 +1,136 @@
+{
+  "deckId": "movies_cinema",
+  "name": "Movies & Cinema",
+  "domain": "art_architecture",
+  "subDomain": "film",
+  "category": "knowledge",
+  "factCount": 277,
+  "poolCount": 10,
+  "subDeckCount": 3,
+  "subDeckNames": [
+    "Classic & Legendary Films",
+    "Directors, Actors & Legends",
+    "Film History & Technique"
+  ],
+  "samples": [
+    {
+      "id": "cinema_citizenkane_director",
+      "question": "Who directed Citizen Kane in 1941?",
+      "answer": "Orson Welles",
+      "poolId": "director_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "cinema_citizenkane_quote",
+      "question": "Which 1941 film opens with the dying word 'Rosebud'?",
+      "answer": "Citizen Kane",
+      "poolId": "film_titles",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "cinema_casablanca_quote",
+      "question": "Which 1942 film features the line 'Here's looking at you, kid'?",
+      "answer": "Casablanca",
+      "poolId": "film_titles",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "cinema_casablanca_director",
+      "question": "Who directed the 1942 classic film Casablanca?",
+      "answer": "Michael Curtiz",
+      "poolId": "director_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "cinema_gwtw_oscars",
+      "question": "Which 1939 film won a record-setting eight Academy Awards at the time?",
+      "answer": "Gone with the Wind",
+      "poolId": "film_titles",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "director_names",
+      "factCount": 59,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "film_titles",
+      "factCount": 69,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "actor_names",
+      "factCount": 44,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "film_trivia",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "bracket_years",
+      "factCount": 32,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "cinema_terms",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "character_names",
+      "factCount": 23,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_counts",
+      "factCount": 4,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "country_names",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "film_quotes",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about art_architecture",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

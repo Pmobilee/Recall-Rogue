@@ -1,0 +1,94 @@
+{
+  "deckId": "chinese_hsk5",
+  "name": "Chinese HSK 5 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "chinese",
+  "category": "vocabulary",
+  "factCount": 1263,
+  "poolCount": 3,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "zh-hsk-3138",
+      "question": "What does \"可\" (kě) mean?",
+      "answer": "can; may",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "noun",
+      "targetWord": "可"
+    },
+    {
+      "id": "zh-hsk-3139",
+      "question": "What does \"将\" (jiāng) mean?",
+      "answer": "will",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "noun",
+      "targetWord": "将"
+    },
+    {
+      "id": "zh-hsk-3140",
+      "question": "What does \"搞\" (gǎo) mean?",
+      "answer": "to do",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "verb",
+      "targetWord": "搞"
+    },
+    {
+      "id": "zh-hsk-3141",
+      "question": "What does \"唯一\" (wéi yī) mean?",
+      "answer": "only; sole",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "adverb",
+      "targetWord": "唯一"
+    },
+    {
+      "id": "zh-hsk-3142",
+      "question": "What does \"如此\" (rú cǐ) mean?",
+      "answer": "like this; so; such",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "noun",
+      "targetWord": "如此"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 1263,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Chinese Words",
+      "factCount": 1263,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "reading_pinyin",
+      "label": "Pinyin Readings",
+      "factCount": 1263,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "zh"
+  }
+}

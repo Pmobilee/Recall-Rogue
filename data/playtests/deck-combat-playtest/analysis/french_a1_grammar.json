@@ -1,0 +1,201 @@
+{
+  "deckId": "french_a1_grammar",
+  "name": "French A1 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "french_grammar",
+  "category": "grammar",
+  "factCount": 194,
+  "poolCount": 20,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Present: -er Verbs",
+    "Être & Avoir",
+    "Articles & Genre",
+    "Pronoms & Possessifs",
+    "Questions & Négation",
+    "Present: -ir et -re",
+    "Temps Périphrastiques",
+    "Prépositions & Structure"
+  ],
+  "samples": [
+    {
+      "id": "fr-gram-a1-pres-etudier-je-0",
+      "question": "J'{___} l'anglais.\n(I'm studying English.)",
+      "answer": "étudie",
+      "poolId": "present_er_forms",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "étudie"
+    },
+    {
+      "id": "fr-gram-a1-pres-parler-il-0",
+      "question": "Il {___} anglais.\n(He is speaking English.)",
+      "answer": "parle",
+      "poolId": "present_er_forms",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "parle"
+    },
+    {
+      "id": "fr-gram-a1-pres-parler-tu-0",
+      "question": "{___}-tu italien ?\n(Do you speak Italian?)",
+      "answer": "Parles",
+      "poolId": "present_er_forms",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "parles"
+    },
+    {
+      "id": "fr-gram-a1-pres-parler-nous-0",
+      "question": "{___} anglais.\n(Let's speak English.)",
+      "answer": "Parlons",
+      "poolId": "present_er_forms",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "parlons"
+    },
+    {
+      "id": "fr-gram-a1-pres-parler-vous-0",
+      "question": "{___}-vous anglais ?\n(Do you speak English?)",
+      "answer": "Parlez",
+      "poolId": "present_er_forms",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "parlez"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "present_er_forms",
+      "factCount": 24,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "etre_forms",
+      "factCount": 15,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "avoir_forms",
+      "factCount": 17,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "aller_forms",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "present_ir_forms",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "present_re_forms",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "reflexive_forms",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "articles_definis",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "articles_indefinis",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 16
+    },
+    {
+      "id": "articles_partitifs",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 15
+    },
+    {
+      "id": "possessifs_sg",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "possessifs_pl",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "demonstratifs",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 15
+    },
+    {
+      "id": "pronoms_sujets",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "pronoms_toniques",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "mots_interrogatifs",
+      "factCount": 16,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "negation_ne_pas",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "futur_proche_forms",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "passe_recent_forms",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "prepositions_lieu",
+      "factCount": 15,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

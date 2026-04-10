@@ -1,0 +1,87 @@
+{
+  "deckId": "dutch_b2",
+  "name": "Dutch B2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "dutch",
+  "category": "vocabulary",
+  "factCount": 71,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "nl-cefr-1179",
+      "question": "What does \"academisch\" mean?",
+      "answer": "academic",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "adjective",
+      "targetWord": "academisch"
+    },
+    {
+      "id": "nl-cefr-1180",
+      "question": "What does \"actief\" mean?",
+      "answer": "active",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "adjective",
+      "targetWord": "actief"
+    },
+    {
+      "id": "nl-cefr-1181",
+      "question": "What does \"algemeen\" mean?",
+      "answer": "general",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "adjective",
+      "targetWord": "algemeen"
+    },
+    {
+      "id": "nl-cefr-1182",
+      "question": "What does \"angst\" mean?",
+      "answer": "fear, anxiety",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "noun",
+      "targetWord": "angst"
+    },
+    {
+      "id": "nl-cefr-1183",
+      "question": "What does \"apart\" mean?",
+      "answer": "separate",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "nl",
+      "partOfSpeech": "noun",
+      "targetWord": "apart"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 71,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Dutch Words",
+      "factCount": 71,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "nl"
+  }
+}

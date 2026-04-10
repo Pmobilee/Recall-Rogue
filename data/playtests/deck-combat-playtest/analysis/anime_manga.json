@@ -1,0 +1,181 @@
+{
+  "deckId": "anime_manga",
+  "name": "Anime & Manga",
+  "domain": "art_architecture",
+  "subDomain": "anime_manga",
+  "category": "knowledge",
+  "factCount": 204,
+  "poolCount": 15,
+  "subDeckCount": 3,
+  "subDeckNames": [
+    "Series & Stories",
+    "Film & Classics",
+    "Craft & Culture"
+  ],
+  "samples": [
+    {
+      "id": "am_dragonball_creator",
+      "question": "Which mangaka created Dragon Ball?",
+      "answer": "Akira Toriyama",
+      "poolId": "creator_names_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "am_onepiece_bestselling",
+      "question": "Which manga holds the Guinness World Record as the best-selling manga series of all time, with over 500 million copies s",
+      "answer": "One Piece",
+      "poolId": "manga_series_titles",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "am_naruto_creator",
+      "question": "Which mangaka created Naruto?",
+      "answer": "Masashi Kishimoto",
+      "poolId": "creator_names_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "am_dragonball_anime_year",
+      "question": "In what year did Dragon Ball Z first air in Japan?",
+      "answer": "{1989}",
+      "poolId": "bracket_years",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "am_onepiece_creator",
+      "question": "Which mangaka created One Piece?",
+      "answer": "Eiichiro Oda",
+      "poolId": "creator_names_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "anime_series_titles_short",
+      "label": "Anime Series Titles (short)",
+      "factCount": 7,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "anime_series_titles_long",
+      "label": "Anime Series Titles (long)",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "manga_series_titles",
+      "label": "Manga Series Titles",
+      "factCount": 5,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "creator_names_short",
+      "label": "Mangaka, Directors & Creators (short)",
+      "factCount": 5,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "creator_names_long",
+      "label": "Mangaka, Directors & Creators (long)",
+      "factCount": 38,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "character_names_short",
+      "label": "Iconic Characters (short)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "character_names_long",
+      "label": "Iconic Characters (long)",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "studio_names_short",
+      "label": "Animation Studios (short)",
+      "factCount": 18,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "studio_names_long",
+      "label": "Animation Studios (long)",
+      "factCount": 13,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_years",
+      "label": "Key Years (Bracket Notation)",
+      "factCount": 25,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "genre_demographic_terms",
+      "label": "Genres & Demographics",
+      "factCount": 12,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "technique_terms_short",
+      "label": "Animation & Manga Techniques (short)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "technique_terms_long",
+      "label": "Animation & Manga Techniques (long)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "publisher_magazine_names",
+      "label": "Publishers & Magazines",
+      "factCount": 8,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "count_values",
+      "label": "Counts & Numbers (Bracket Notation)",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about art_architecture",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "deckId": "french_b2",
+  "name": "French B2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "french",
+  "category": "vocabulary",
+  "factCount": 4115,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "fr-cefr-2883",
+      "question": "What does \"abaisser\" mean?",
+      "answer": "to lower",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "verb",
+      "targetWord": "abaisser"
+    },
+    {
+      "id": "fr-cefr-2884",
+      "question": "What does \"abandon\" mean?",
+      "answer": "surrender",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "noun",
+      "targetWord": "abandon"
+    },
+    {
+      "id": "fr-cefr-2885",
+      "question": "What does \"abasourdir\" mean?",
+      "answer": "to dumbfound",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "verb",
+      "targetWord": "abasourdir"
+    },
+    {
+      "id": "fr-cefr-2886",
+      "question": "What does \"abattage\" mean?",
+      "answer": "slaughter",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "noun",
+      "targetWord": "abattage"
+    },
+    {
+      "id": "fr-cefr-2887",
+      "question": "What does \"abattoir\" mean?",
+      "answer": "slaughterhouse",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "noun",
+      "targetWord": "abattoir"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 4115,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "French Words",
+      "factCount": 4115,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "fr"
+  }
+}

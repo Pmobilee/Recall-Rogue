@@ -44,6 +44,224 @@ No single testing method is sufficient. Unit tests miss visual bugs. Screenshots
 
 ---
 
+## Curated Deck Inspection — Quick Reference
+
+### List All Untested Decks (copy-paste ready)
+
+```bash
+# Full breakdown: never-inspected, partial (bridge-only), fully tested
+node -e "
+const r = JSON.parse(require('fs').readFileSync('./data/inspection-registry.json','utf8'));
+const decks = Object.values(r.tables.decks);
+const never = [], partial = [], full = [];
+for (const d of decks) {
+  if (d.status === 'deprecated') continue;
+  const struct = d.lastStructuralVerify && d.lastStructuralVerify !== 'not_checked';
+  const quiz = d.lastQuizAudit && d.lastQuizAudit !== 'not_checked';
+  const bridge = d.lastTriviaBridge && d.lastTriviaBridge !== 'not_checked';
+  const playtest = d.lastLLMPlaytest && d.lastLLMPlaytest !== 'not_checked';
+  const anyCheck = struct || quiz || bridge || playtest;
+  if (!anyCheck) never.push(d);
+  else if (!struct || !quiz) partial.push(d);
+  else full.push(d);
+}
+console.log('NEVER INSPECTED (' + never.length + '/' + (never.length+partial.length+full.length) + '):');
+never.sort((a,b)=>a.name.localeCompare(b.name)).forEach(d => console.log('  ' + d.name.padEnd(45) + d.id));
+console.log('\nPARTIAL — bridge only, no struct/quiz (' + partial.length + '):');
+partial.sort((a,b)=>a.name.localeCompare(b.name)).forEach(d => {
+  const checks = [];
+  if (d.lastStructuralVerify !== 'not_checked') checks.push('struct:' + d.lastStructuralVerify);
+  if (d.lastQuizAudit !== 'not_checked') checks.push('quiz:' + d.lastQuizAudit);
+  if (d.lastTriviaBridge !== 'not_checked') checks.push('bridge:' + d.lastTriviaBridge);
+  if (d.lastLLMPlaytest !== 'not_checked') checks.push('playtest:' + d.lastLLMPlaytest);
+  console.log('  ' + d.name.padEnd(45) + checks.join(', '));
+});
+console.log('\nFULLY TESTED — struct+quiz (' + full.length + '):');
+full.sort((a,b)=>a.name.localeCompare(b.name)).forEach(d => console.log('  ' + d.name));
+"
+```
+
+Also available via the stale report (truncated to 10 per table):
+```bash
+npm run registry:stale
+```
+
+### Deck-Specific Registry Fields
+
+| Field | What It Means | Stamped By |
+|---|---|---|
+| `lastStructuralVerify` | Passed `verify-all-decks.mjs` (22 checks) | `npm run deck:quality` or manual stamp |
+| `lastQuizAudit` | Passed `quiz-audit.mjs` (24 checks) | `npm run audit:quiz-engine` or manual stamp |
+| `lastTriviaBridge` | Bridged to trivia DB | `extract-trivia-from-decks.mjs` or manual stamp |
+| `lastLLMPlaytest` | LLM played through deck content | `/llm-playtest` or manual stamp |
+
+### Stamping the Registry — During & After Inspection
+
+**Stamp individual decks after a check passes:**
+```bash
+# After structural verification passes for specific decks
+npx tsx scripts/registry/updater.ts --ids "ancient_rome,greek_mythology" --type lastStructuralVerify
+
+# After quiz audit passes
+npx tsx scripts/registry/updater.ts --ids "ancient_rome" --type lastQuizAudit
+
+# After trivia bridge
+npx tsx scripts/registry/updater.ts --ids "ancient_rome" --type lastTriviaBridge
+
+# After LLM playtest
+npx tsx scripts/registry/updater.ts --ids "ancient_rome" --type lastLLMPlaytest
+```
+
+**Stamp an entire table (all active decks) at once:**
+```bash
+npx tsx scripts/registry/updater.ts --table decks --type lastStructuralVerify
+npx tsx scripts/registry/updater.ts --table decks --type lastQuizAudit
+```
+
+**Stamp with a specific date and notes:**
+```bash
+npx tsx scripts/registry/updater.ts --ids "ancient_rome" --type lastQuizAudit --date 2026-04-10 --notes "24/24 checks passed"
+```
+
+**Stamp generic inspection fields (shared with all element types):**
+```bash
+npx tsx scripts/registry/updater.ts --ids "ancient_rome" --type mechanicDate    # unit tests passed
+npx tsx scripts/registry/updater.ts --ids "ancient_rome" --type visualDate      # visual inspect passed
+npx tsx scripts/registry/updater.ts --ids "ancient_rome" --type balanceDate     # headless sim passed
+npx tsx scripts/registry/updater.ts --ids "ancient_rome" --type playtestDate    # LLM playtest passed
+```
+
+### Force-Update During Inspection (Lock Management)
+
+**Lock a deck before starting inspection (prevents parallel agent conflicts):**
+```bash
+npx tsx scripts/registry/updater.ts --lock --ids ancient_rome --agent my-inspect-run --test-type full-inspect
+```
+
+**Check if a deck is locked:**
+```bash
+npx tsx scripts/registry/updater.ts --check-lock --ids ancient_rome
+# Exit 0 = free, Exit 1 = locked (prints lock info)
+```
+
+**Force-override an active lock (stale agent, crashed session):**
+```bash
+npx tsx scripts/registry/updater.ts --lock --ids ancient_rome --agent new-agent --test-type full-inspect --force
+```
+
+**Unlock after inspection completes:**
+```bash
+npx tsx scripts/registry/updater.ts --unlock --ids ancient_rome
+```
+
+### Complete Curated Deck Catalog (99 active decks)
+
+**Knowledge Decks (47):**
+
+| ID | Name | Category |
+|---|---|---|
+| `ancient_greece` | Ancient Greece | history |
+| `ancient_rome` | Ancient Rome | history |
+| `anime_manga` | Anime & Manga | art_architecture |
+| `ap_biology` | AP Biology | natural_sciences |
+| `ap_chemistry` | AP Chemistry | natural_sciences |
+| `ap_european_history` | AP European History | history |
+| `ap_human_geography` | AP Human Geography | geography |
+| `ap_macroeconomics` | AP Macroeconomics | social_sciences |
+| `ap_microeconomics` | AP Microeconomics | social_sciences |
+| `ap_physics_1` | AP Physics 1: Algebra-Based | natural_sciences |
+| `ap_psychology` | AP Psychology | social_sciences |
+| `ap_us_history` | AP U.S. History | history |
+| `ap_world_history` | AP World History: Modern | history |
+| `chess_tactics` | Chess Tactics | games |
+| `computer_science` | Computer Science & Technology | general_knowledge |
+| `constellations` | Constellations | space_astronomy |
+| `dinosaurs` | Dinosaurs & Paleontology | natural_sciences |
+| `egyptian_mythology` | Egyptian Mythology | mythology_folklore |
+| `famous_inventions` | Famous Inventions & Inventors | general_knowledge |
+| `famous_paintings` | Famous Paintings & Artists | art_architecture |
+| `fifa_world_cup` | FIFA World Cup | sports_entertainment |
+| `greek_mythology` | Greek Mythology | mythology_folklore |
+| `human_anatomy` | Human Anatomy | human_body_health |
+| `mammals_world` | Mammals of the World | animals_wildlife |
+| `medical_terminology` | Medical Terminology | human_body_health |
+| `medieval_world` | Medieval World | history |
+| `movies_cinema` | Movies & Cinema | art_architecture |
+| `music_history` | Music History | art_architecture |
+| `nasa_missions` | NASA Missions | space_astronomy |
+| `norse_mythology` | Norse Mythology | mythology_folklore |
+| `ocean_life` | Ocean Life | animals_wildlife |
+| `periodic_table` | Periodic Table of Elements | natural_sciences |
+| `pharmacology` | Nursing Pharmacology | human_body_health |
+| `philosophy` | Philosophy | general_knowledge |
+| `pop_culture` | Pop Culture | general_knowledge |
+| `solar_system` | Solar System | space_astronomy |
+| `us_presidents` | US Presidents | history |
+| `us_states` | US States | geography |
+| `world_capitals` | World Capitals | geography |
+| `world_countries` | World Countries | geography |
+| `world_cuisines` | World Cuisines & Spices | food_cuisine |
+| `world_flags` | World Flags | geography |
+| `world_literature` | World Literature | art_architecture |
+| `world_religions` | World Religions | mythology_folklore |
+| `world_war_ii` | World War II | history |
+| `world_wonders` | World Wonders & Landmarks | geography |
+
+**Language — Vocabulary Decks (31):**
+
+| ID | Name |
+|---|---|
+| `chinese_hsk1` — `chinese_hsk6` | Chinese HSK 1-6 Vocabulary (6 decks) |
+| `czech_a1` — `czech_b2` | Czech A1-B2 Vocabulary (4 decks) |
+| `dutch_a1` — `dutch_b2` | Dutch A1-B2 Vocabulary (4 decks) |
+| `french_a1` — `french_b2` | French A1-B2 Vocabulary (4 decks) |
+| `german_a1` — `german_b2` | German A1-B2 Vocabulary (4 decks) |
+| `japanese_n1` — `japanese_n5` | Japanese N1-N5 Vocabulary (5 decks) |
+| `korean_topik1` — `korean_topik2` | Korean TOPIK 1-2 Vocabulary (2 decks) |
+| `spanish_a1` — `spanish_c2` | Spanish A1-C2 Vocabulary (6 decks) |
+
+**Language — Grammar Decks (10):**
+
+| ID | Name |
+|---|---|
+| `french_a1_grammar` — `french_b2_grammar` | French A1-B2 Grammar (4 decks) |
+| `japanese_n1_grammar` — `japanese_n5_grammar` | Japanese N1-N5 Grammar (5 decks) |
+| `spanish_a1_grammar` — `spanish_b2_grammar` | Spanish A1-B2 Grammar (4 decks, partially overlap with vocab count) |
+
+**Language — Writing System Decks (3):**
+
+| ID | Name |
+|---|---|
+| `japanese_hiragana` | Japanese Hiragana |
+| `japanese_katakana` | Japanese Katakana |
+| `korean_hangul` | Korean Hangul |
+
+**Other (2):**
+
+| ID | Name | Notes |
+|---|---|---|
+| `manifest` | manifest | Internal registry, not a player deck |
+| `test_world_capitals` | World Capitals (Test) | QA test deck |
+
+### Rebuild Registry From Source (after adding/removing decks)
+
+```bash
+npm run registry:sync    # Scans source files, rebuilds data/inspection-registry.json
+```
+
+This discovers new decks from `data/decks/*.json` and adds them with all fields set to `not_checked`. Never edit the registry JSON manually.
+
+### Batch Quality Pipeline (stamps struct + quiz on success)
+
+```bash
+npm run deck:quality                          # Full pipeline: struct + quiz audit + all fix scripts
+node scripts/verify-all-decks.mjs             # Structural only (22 checks)
+npm run audit:quiz-engine                     # Quiz engine audit only (24 checks)
+npm run audit:quiz-engine -- --deck ancient_rome --verbose  # Single deck
+```
+
+---
+
 ## The Seven Testing Methods
 
 ### 1. Unit Tests (vitest)

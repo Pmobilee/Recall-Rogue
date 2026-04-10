@@ -1,0 +1,219 @@
+{
+  "deckId": "spanish_b1_grammar",
+  "name": "Spanish B1 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "spanish_grammar",
+  "category": "grammar",
+  "factCount": 175,
+  "poolCount": 23,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Present Subjunctive",
+    "Imperative: All Persons",
+    "Simple Conditional",
+    "Future Simple",
+    "Pluperfect & Past Participles",
+    "Double Object Pronouns",
+    "Relative Clauses",
+    "Verbal Periphrases"
+  ],
+  "samples": [
+    {
+      "id": "es-gram-b1-subj-ar-llegar-yo-0",
+      "question": "Espero que {___} pronto.\n(I hope you arrive soon.)",
+      "answer": "llegue",
+      "poolId": "subj_ar_regular",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "llegues"
+    },
+    {
+      "id": "es-gram-b1-subj-ar-llegar-el-0",
+      "question": "Espera hasta que {___} Juan.\n(Wait until Juan arrives.)",
+      "answer": "llegue",
+      "poolId": "subj_ar_regular",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "llegue"
+    },
+    {
+      "id": "es-gram-b1-subj-ar-hablar-tu-0",
+      "question": "Quiero que {___} con él.\n(I want you to talk to him.)",
+      "answer": "hables",
+      "poolId": "subj_ar_regular",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "hables"
+    },
+    {
+      "id": "es-gram-b1-subj-ar-hablar-nosotros-0",
+      "question": "Es importante que {___} claramente.\n(It's important that we speak clearly.)",
+      "answer": "hablemos",
+      "poolId": "subj_ar_regular",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "hablemos"
+    },
+    {
+      "id": "es-gram-b1-subj-ar-hablar-ellos-0",
+      "question": "No quiero que {___} tan alto.\n(I don't want them to speak so loudly.)",
+      "answer": "hablen",
+      "poolId": "subj_ar_regular",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "hablen"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "subj_ar_regular",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "subj_er_ir_regular",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "subj_irregulars_ser_estar",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "subj_irregulars_tener_hacer",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "subj_irregulars_ir_querer",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "subj_trigger_phrases",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "neg_imp_tu",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "neg_imp_formal",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "imp_formal_affirm",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "imp_formal_ustedes",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "imp_nosotros",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "conditional_regular",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "conditional_irregular",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "future_regular",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "future_irregular",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "haber_imperfect",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 14
+    },
+    {
+      "id": "irregular_pp_b1",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "double_obj_se_combo",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 15
+    },
+    {
+      "id": "double_obj_me_te_nos",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "pronoun_placement_full",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "relative_pronouns",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "si_clause_patterns",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "periphrasis_forms",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

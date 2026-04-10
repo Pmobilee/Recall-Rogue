@@ -1,0 +1,576 @@
+{
+  "deckId": "human_anatomy",
+  "name": "Human Anatomy",
+  "domain": "human_body_health",
+  "subDomain": "human_anatomy",
+  "category": "knowledge",
+  "factCount": 2009,
+  "poolCount": 70,
+  "subDeckCount": 17,
+  "subDeckNames": [
+    "Skeletal System",
+    "Muscular System",
+    "Cardiovascular System",
+    "Nervous System",
+    "Digestive System",
+    "Respiratory System",
+    "Urinary System",
+    "Reproductive System",
+    "Endocrine System",
+    "Lymphatic & Immune System",
+    "Vision, Hearing & Senses",
+    "Integumentary System",
+    "Anatomy Image Recognition",
+    "Surface Landmarks & Clinical Signs",
+    "Embryology",
+    "Regional Anatomy",
+    "Histology"
+  ],
+  "samples": [
+    {
+      "id": "ha_cardio_001",
+      "question": "How many chambers does the human heart have?",
+      "answer": "{4}",
+      "poolId": "number_stats",
+      "distractorCount": 3,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ha_cardio_002",
+      "question": "Which heart chamber has the thickest muscular wall?",
+      "answer": "Left ventricle",
+      "poolId": "structure_cardiac_short",
+      "distractorCount": 3,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ha_cardio_003",
+      "question": "Which heart chamber receives deoxygenated blood from the superior and inferior vena cava?",
+      "answer": "Right atrium",
+      "poolId": "structure_cardiac_short",
+      "distractorCount": 3,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ha_cardio_004",
+      "question": "Which heart chamber receives oxygenated blood from the four pulmonary veins?",
+      "answer": "Left atrium",
+      "poolId": "structure_cardiac_short",
+      "distractorCount": 3,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ha_cardio_005",
+      "question": "Which valve with three cusps controls blood flow from the right atrium to the right ventricle?",
+      "answer": "Tricuspid valve",
+      "poolId": "structure_cardiac_short",
+      "distractorCount": 3,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "bone_names_short",
+      "label": "bone_names (short)",
+      "factCount": 27,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bone_names_long",
+      "label": "bone_names (long)",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "muscle_names_short",
+      "label": "muscle_names (short)",
+      "factCount": 35,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "muscle_names_long",
+      "label": "muscle_names (long)",
+      "factCount": 33,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_cardiac_short",
+      "label": "Structure Cardiac (short)",
+      "factCount": 27,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_cardiac_long",
+      "label": "Structure Cardiac (long)",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_respiratory_short",
+      "label": "Structure Respiratory (short)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "structure_respiratory_long",
+      "label": "Structure Respiratory (long)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "structure_digestive_short",
+      "label": "Structure Digestive (short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "structure_digestive_long",
+      "label": "Structure Digestive (long)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "structure_skeletal",
+      "label": "Structure Skeletal",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_muscular_short",
+      "label": "Structure Muscular (short)",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "structure_muscular_long",
+      "label": "Structure Muscular (long)",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "structure_nervous_short",
+      "label": "Structure Nervous (short)",
+      "factCount": 31,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_nervous_long",
+      "label": "Structure Nervous (long)",
+      "factCount": 32,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_endocrine_short",
+      "label": "Structure Endocrine (short)",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_endocrine_long",
+      "label": "Structure Endocrine (long)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "structure_reproductive_short",
+      "label": "Structure Reproductive (short)",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "structure_reproductive_long",
+      "label": "Structure Reproductive (long)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "structure_urinary_short",
+      "label": "Structure Urinary (short)",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_urinary_long",
+      "label": "Structure Urinary (long)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "structure_lymphatic",
+      "label": "Structure Lymphatic",
+      "factCount": 9,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_histological_short",
+      "label": "Structure Histological (short)",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_histological_long",
+      "label": "Structure Histological (long)",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_embryological_short",
+      "label": "Structure Embryological (short)",
+      "factCount": 21,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_embryological_long",
+      "label": "Structure Embryological (long)",
+      "factCount": 21,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_integumentary_short",
+      "label": "Structure Integumentary (short)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "structure_integumentary_long",
+      "label": "Structure Integumentary (long)",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    },
+    {
+      "id": "structure_general_short",
+      "label": "Structure General (short)",
+      "factCount": 33,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_general_long",
+      "label": "Structure General (long)",
+      "factCount": 36,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "nerve_names",
+      "factCount": 59,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "vessel_names",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "organ_names",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "function_terms_short",
+      "label": "function_terms (short)",
+      "factCount": 70,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "function_terms_long",
+      "label": "function_terms (long)",
+      "factCount": 149,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "location_terms_mid",
+      "label": "Location Terms (Medium)",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "location_terms",
+      "label": "Location Terms (Long)",
+      "factCount": 31,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "number_stats_short",
+      "label": "number_stats (short)",
+      "factCount": 33,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "number_stats_long",
+      "label": "number_stats (long)",
+      "factCount": 41,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "number_stats",
+      "label": "number_stats (numeric)",
+      "factCount": 24,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "clinical_terms_short",
+      "label": "clinical_terms (short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "clinical_terms_mid",
+      "label": "clinical_terms (mid)",
+      "factCount": 34,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "clinical_terms_long",
+      "label": "clinical_terms (long)",
+      "factCount": 93,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "tissue_types_short",
+      "label": "tissue_types (short)",
+      "factCount": 35,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "tissue_types_long",
+      "label": "tissue_types (long)",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "immune_terms",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "spinal_levels",
+      "label": "Spinal Level Codes",
+      "factCount": 10,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_skeletal_short",
+      "label": "Visual Skeletal (short)",
+      "factCount": 98,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_skeletal_long",
+      "label": "Visual Skeletal (long)",
+      "factCount": 102,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_cardiac_short",
+      "label": "Visual Cardiac (short)",
+      "factCount": 24,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_cardiac_long",
+      "label": "Visual Cardiac (long)",
+      "factCount": 98,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_urinary_short",
+      "label": "Visual Urinary (short)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "visual_urinary_long",
+      "label": "Visual Urinary (long)",
+      "factCount": 24,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_digestive_short",
+      "label": "Visual Digestive (short)",
+      "factCount": 32,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_digestive_long",
+      "label": "Visual Digestive (long)",
+      "factCount": 54,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_respiratory_short",
+      "label": "Structure Respiratory (Visual) (short)",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_respiratory_long",
+      "label": "Structure Respiratory (Visual) (long)",
+      "factCount": 26,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_muscular_short",
+      "label": "Structure Muscular (Visual) (short)",
+      "factCount": 30,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_muscular_long",
+      "label": "Structure Muscular (Visual) (long)",
+      "factCount": 30,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_nervous_short",
+      "label": "Structure Nervous (Visual) (short)",
+      "factCount": 42,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_nervous_long",
+      "label": "Structure Nervous (Visual) (long)",
+      "factCount": 46,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_reproductive_short",
+      "label": "Structure Reproductive (Visual) (short)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "visual_reproductive_long",
+      "label": "Structure Reproductive (Visual) (long)",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_lymphatic_short",
+      "label": "Structure Lymphatic (Visual) (short)",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_lymphatic_long",
+      "label": "Structure Lymphatic (Visual) (long)",
+      "factCount": 28,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_integumentary",
+      "label": "Structure Integumentary (Visual)",
+      "factCount": 32,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "visual_general_short",
+      "label": "Structure General (Visual) (short)",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    },
+    {
+      "id": "visual_general_long",
+      "label": "Structure General (Visual) (long)",
+      "factCount": 38,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "location_terms_short",
+      "label": "Location Terms (Short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "spine_notation",
+      "label": "Spine/Foramen Notation",
+      "factCount": 2,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about human_body_health",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

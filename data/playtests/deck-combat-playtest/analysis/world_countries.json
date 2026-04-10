@@ -1,0 +1,86 @@
+{
+  "deckId": "world_countries",
+  "name": "World Countries",
+  "domain": "geography",
+  "subDomain": "countries",
+  "category": "knowledge",
+  "factCount": 168,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "country_fj",
+      "question": "Which country is highlighted on this map?",
+      "answer": "Fiji",
+      "poolId": "country_names_short",
+      "distractorCount": 5,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "country_tz",
+      "question": "Which country is highlighted on this map?",
+      "answer": "United Republic of Tanzania",
+      "poolId": "country_names_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "country_ca",
+      "question": "Which country is highlighted on this map?",
+      "answer": "Canada",
+      "poolId": "country_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "country_us",
+      "question": "Which country is highlighted on this map?",
+      "answer": "United States of America",
+      "poolId": "country_names_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "country_kz",
+      "question": "Which country is highlighted on this map?",
+      "answer": "Kazakhstan",
+      "poolId": "country_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "country_names_short",
+      "label": "Country Names (short)",
+      "factCount": 136,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "country_names_long",
+      "label": "Country Names (long)",
+      "factCount": 32,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about geography",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

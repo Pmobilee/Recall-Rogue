@@ -1,0 +1,168 @@
+{
+  "deckId": "ap_chemistry",
+  "category": "knowledge",
+  "name": "AP Chemistry",
+  "encounters": 2,
+  "totalCardsPlayed": 17,
+  "totalQuizzes": 17,
+  "quizSamples": [
+    {
+      "factId": "food-cholesterol-absent-bacteria",
+      "question": "Which unusual bacteria actually requires cholesterol to survive?",
+      "choices": [
+        "Lactobacillus",
+        "Clostridium",
+        "Mycoplasma",
+        "Bacillus"
+      ],
+      "correctAnswer": "Mycoplasma",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "food_cuisine",
+      "cardType": "attack"
+    },
+    {
+      "factId": "food-cholesterol-absent-bacteria",
+      "question": "Which unusual bacteria actually requires cholesterol to survive?",
+      "choices": [
+        "Salmonella",
+        "Mycoplasma",
+        "Helicobacter pylori",
+        "Staphylococcus"
+      ],
+      "correctAnswer": "Mycoplasma",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "food_cuisine",
+      "cardType": "shield"
+    },
+    {
+      "factId": "ap_bio_niche_partitioning",
+      "question": "Warblers of several species live in the same spruce trees but each feeds at a different height within the canopy, reducing direct competition. What process allows coexisting species to divide up resources and occupy different ecological roles?",
+      "choices": [
+        "Learned behavior",
+        "Circadian rhythms",
+        "Eutrophication",
+        "Niche partitioning"
+      ],
+      "correctAnswer": "Niche partitioning",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "natural_sciences",
+      "cardType": "shield"
+    },
+    {
+      "factId": "cs_2_smalltalk_oop_pioneer",
+      "question": "What language, created at Xerox PARC by Alan Kay, Dan Ingalls, and Adele Goldberg, pioneered object-oriented programming and also introduced the model-view-controller (MVC) architectural pattern?",
+      "choices": [
+        "Plankalkül",
+        "LiveScript",
+        "Smalltalk",
+        "Assembly"
+      ],
+      "correctAnswer": "Smalltalk",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "general_knowledge",
+      "cardType": "attack"
+    },
+    {
+      "factId": "nasa_freedom_7_alan_shepard",
+      "question": "What was the name of Alan Shepard's suborbital spaceflight on May 5, 1961, making him the first American in space?",
+      "choices": [
+        "Friendship 7",
+        "OSIRIS-REx",
+        "Freedom 7",
+        "Perseverance"
+      ],
+      "correctAnswer": "Freedom 7",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "space_astronomy",
+      "cardType": "attack"
+    },
+    {
+      "factId": "apush_p4_david_walker_appeal",
+      "question": "Which free Black Bostonian published 'Appeal to the Coloured Citizens of the World' in 1829, calling on enslaved people to violently resist their oppression — the most radical antislavery document of the era?",
+      "choices": [
+        "La Malinche (Nahua guide)",
+        "Preston Brooks",
+        "Thurgood Marshall",
+        "David Walker"
+      ],
+      "correctAnswer": "David Walker",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "history",
+      "cardType": "utility"
+    },
+    {
+      "factId": "apush_p4_david_walker_appeal",
+      "question": "Which free Black Bostonian published 'Appeal to the Coloured Citizens of the World' in 1829, calling on enslaved people to violently resist their oppression — the most radical antislavery document of the era?",
+      "choices": [
+        "David Walker",
+        "Thurgood Marshall",
+        "Preston Brooks",
+        "La Malinche (Nahua guide)"
+      ],
+      "correctAnswer": "David Walker",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "history",
+      "cardType": "attack"
+    },
+    {
+      "factId": "cs_7_tesla_real_founders",
+      "question": "Elon Musk is Tesla's CEO but NOT a founder — who actually founded Tesla on July 1, 2003, with Musk only joining the board in 2004?",
+      "choices": [
+        "Preston-Werner, Wanstrath, Hyett, and Chacon",
+        "Martin Eberhard and Marc Tarpenning",
+        "Thomas Knoll and John Knoll",
+        "Steve Huffman and Alexis Ohanian"
+      ],
+      "correctAnswer": "Martin Eberhard and Marc Tarpenning",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "general_knowledge",
+      "cardType": "attack"
+    },
+    {
+      "factId": "const_myth_polynesian_sirius",
+      "question": "For Polynesian navigators in the Southern Hemisphere, Sirius marked which season?",
+      "choices": [
+        "Winter",
+        "Praesepe",
+        "Smallest",
+        "Hours"
+      ],
+      "correctAnswer": "Winter",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "space_astronomy",
+      "cardType": "shield"
+    },
+    {
+      "factId": "ap_bio_mitosis_vs_meiosis_cell_number",
+      "question": "Mitosis produces two genetically identical diploid cells. Which process, by contrast, produces four genetically unique haploid cells?",
+      "choices": [
+        "Meiosis",
+        "Teosinte",
+        "Active site",
+        "Anaphase I"
+      ],
+      "correctAnswer": "Meiosis",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "natural_sciences",
+      "cardType": "utility"
+    }
+  ],
+  "issues": [],
+  "status": "PASS",
+  "rawErrors": [],
+  "screenshotPaths": [
+    "/tmp/rr-test-output/deck-batch-1_none_1775789268409/screenshot.png",
+    "/tmp/rr-test-output/deck-batch-1_none_1775789268409/ap_chemistry-enc1.png"
+  ],
+  "containerPort": 3268
+}

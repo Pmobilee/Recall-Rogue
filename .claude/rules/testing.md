@@ -60,6 +60,46 @@ scripts/docker-visual-test.sh --scenario <preset> --agent-id <task-id>
   - Cold mode: `--scenario X --agent-id Y` (~54s, fully isolated)
   - Warm mode: `--warm start`, then `--warm test --scenario X` (~5s per test after boot)
 
+## Docker-Only LLM Playtests — MANDATORY, NO EXCEPTIONS
+
+**All LLM-driven playtests MUST run inside a Docker warm container via `scripts/docker-visual-test.sh --warm`. Local `npm run dev` + Playwright MCP is PROHIBITED for playtest sessions.**
+
+This applies to:
+- `/llm-playtest` (all testers: quiz, balance, fun, study, fullrun)
+- `/scenario-playtest` (all scenarios)
+- `/bot-playtest`
+- `/inspect`'s live-play leg
+- Any ad-hoc LLM-driving-the-browser workflow where an agent interacts with `window.__rrPlay`, `__rrScenario`, or reads game UI
+
+**Rationale:**
+- Reproducible WebGL via system Chromium + SwiftShader — no host GPU dependency
+- No host dev-server dependency — container boots its own Vite inside
+- Parallel-safe `--agent-id` scoping — no chrome-lock contention
+- Consistent artifact paths under `/tmp/rr-docker-visual/<agent-id>_*`
+- Audit trail: every action batch writes a `result.json` the orchestrator can inspect
+
+**Allowed workflow (orchestrator + sub-agent must follow this exact shape):**
+```bash
+# 1. Start persistent container (once per session)
+scripts/docker-visual-test.sh --warm start --agent-id <session-id>
+
+# 2. Run N action batches — each batch is a JSON actions-file with
+#    rrPlay / eval / scenario / screenshot / rrScreenshot / layoutDump / wait
+scripts/docker-visual-test.sh --warm test --agent-id <session-id> --actions-file /tmp/rr-actions-<step>.json
+# Read the returned result.json + screenshots, decide next batch, repeat
+
+# 3. UNCONDITIONALLY stop the container — try/finally shape, even on crash
+scripts/docker-visual-test.sh --warm stop --agent-id <session-id>
+```
+
+**Forbidden in playtest contexts:**
+- ❌ `mcp__playwright__browser_navigate` / `browser_evaluate` / `browser_click` against `http://localhost:5173`
+- ❌ Starting `npm run dev` as a playtest prerequisite
+- ❌ Running a tester sub-agent without first starting a warm Docker container
+- ❌ Leaving a warm container running after a playtest completes (container leak)
+
+**Enforcement:** Every playtest skill (`/llm-playtest`, `/scenario-playtest`, `/bot-playtest`, `/inspect`) MUST carry a top-of-file banner referencing this rule. Sub-agent prompts spawned by these skills MUST include "NEVER call `mcp__playwright__*`. The ONLY browser access is `scripts/docker-visual-test.sh --warm test --actions-file`." as a hard constraint.
+
 **What to verify per change type:**
 - UI/layout changes → screenshot the affected screen at 1920x1080
 - Mechanic/data changes → screenshot the game state where the change is observable

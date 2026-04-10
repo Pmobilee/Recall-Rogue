@@ -1,0 +1,150 @@
+{
+  "deckId": "ancient_greece",
+  "name": "Ancient Greece",
+  "domain": "history",
+  "subDomain": "ancient_greece",
+  "category": "knowledge",
+  "factCount": 246,
+  "poolCount": 10,
+  "subDeckCount": 7,
+  "subDeckNames": [
+    "City-States: Athens vs Sparta",
+    "Persian Wars",
+    "Golden Age of Athens",
+    "Greek Philosophy",
+    "Alexander the Great",
+    "Greek Religion & Mythology",
+    "Olympics & Culture"
+  ],
+  "samples": [
+    {
+      "id": "greece_cs_democracy_founder",
+      "question": "Which Athenian statesman is credited with establishing democracy through his constitutional reforms of 508/507 BCE?",
+      "answer": "Cleisthenes",
+      "poolId": "ruler_general_names",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "greece_cs_boule_members",
+      "question": "How many members did the Athenian Boule (Council) have after Cleisthenes expanded it from Solon's original 400?",
+      "answer": "{500}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "greece_cs_ostracism_material",
+      "question": "In Athenian democracy, what material did citizens use to write names during an ostracism vote to expel someone from the ",
+      "answer": "Pottery shards (ostraka)",
+      "poolId": "historical_phrases_long",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "greece_cs_ostracism_duration",
+      "question": "How long did an Athenian ostracism exile last, after which the person could return without any loss of status or propert",
+      "answer": "Ten years",
+      "poolId": "historical_phrases_short",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "greece_cs_ecclesia_age",
+      "question": "What was the minimum age for Athenian male citizens to participate in the Ecclesia (the central democratic assembly)?",
+      "answer": "{20}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "ruler_general_names",
+      "label": "Rulers & Generals",
+      "factCount": 27,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "concept_terms",
+      "label": "Concepts & Terms",
+      "factCount": 30,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Counts & Numbers",
+      "factCount": 12,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "date_events",
+      "label": "Dates & Events",
+      "factCount": 37,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "structure_names",
+      "label": "Buildings & Structures",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "god_names",
+      "label": "Gods & Deities",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "city_state_names",
+      "label": "Cities & City-States",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "work_text_names",
+      "label": "Works, Texts & Plays",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "historical_phrases_short",
+      "label": "Historical Phrases & Descriptions (short)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "historical_phrases_long",
+      "label": "Historical Phrases & Descriptions (long)",
+      "factCount": 87,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about history",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

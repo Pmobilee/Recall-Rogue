@@ -1,0 +1,153 @@
+{
+  "deckId": "ap_microeconomics",
+  "category": "knowledge",
+  "name": "AP Microeconomics",
+  "encounters": 2,
+  "totalCardsPlayed": 11,
+  "totalQuizzes": 11,
+  "quizSamples": [
+    {
+      "factId": "am_kill_bill_anime_studio",
+      "question": "Which Japanese animation studio animated the anime sequence in Quentin Tarantino's Kill Bill: Volume 1 (2003)?",
+      "choices": [
+        "Production I.G",
+        "Mushi Production",
+        "TMS Entertainment",
+        "A-1 Pictures"
+      ],
+      "correctAnswer": "Production I.G",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "art_architecture",
+      "cardType": "attack"
+    },
+    {
+      "factId": "mh_3_rock_and_roll_birth",
+      "question": "What genre emerged in the 1950s from a fusion of blues, country, and gospel music?",
+      "choices": [
+        "rock and roll",
+        "reggae",
+        "Impressionism",
+        "Funk music"
+      ],
+      "correctAnswer": "rock and roll",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "art_architecture",
+      "cardType": "shield"
+    },
+    {
+      "factId": "mh_3_rock_and_roll_birth",
+      "question": "What genre emerged in the 1950s from a fusion of blues, country, and gospel music?",
+      "choices": [
+        "Impressionism",
+        "Funk music",
+        "reggae",
+        "rock and roll"
+      ],
+      "correctAnswer": "rock and roll",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "art_architecture",
+      "cardType": "attack"
+    },
+    {
+      "factId": "history-talaat-pasha-architect-armenian-genocide",
+      "question": "Who is historically called the architect of the Armenian Genocide?",
+      "choices": [
+        "Sultan Mehmed V",
+        "Ismail Hakki",
+        "Cemal Pasha",
+        "Talaat Pasha"
+      ],
+      "correctAnswer": "Talaat Pasha",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "history",
+      "cardType": "attack"
+    },
+    {
+      "factId": "am_yamato_western_title",
+      "question": "By what title was the anime series Space Battleship Yamato broadcast in the United States?",
+      "choices": [
+        "Your Name",
+        "Star Blazers",
+        "Inception",
+        "Dragon Ball"
+      ],
+      "correctAnswer": "Star Blazers",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "art_architecture",
+      "cardType": "shield"
+    },
+    {
+      "factId": "mh_3_rock_and_roll_birth",
+      "question": "What genre emerged in the 1950s from a fusion of blues, country, and gospel music?",
+      "choices": [
+        "Impressionism",
+        "reggae",
+        "Funk music",
+        "rock and roll"
+      ],
+      "correctAnswer": "rock and roll",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "art_architecture",
+      "cardType": "attack"
+    },
+    {
+      "factId": "world_religions_oth_jain_five_vows",
+      "question": "What is the collective name for the five complete renunciations required of Jain monks: non-violence, truthfulness, non-stealing, celibacy, and non-possessiveness?",
+      "choices": [
+        "Jnana yoga",
+        "Amrit Sanchar",
+        "Mahavrata",
+        "Raja yoga"
+      ],
+      "correctAnswer": "Mahavrata",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "mythology_folklore",
+      "cardType": "attack"
+    },
+    {
+      "factId": "history-talaat-pasha-architect-armenian-genocide",
+      "question": "Who is historically called the architect of the Armenian Genocide?",
+      "choices": [
+        "Sultan Mehmed V",
+        "Talaat Pasha",
+        "Mahmud Sevket Pasha",
+        "Mustafa Kemal"
+      ],
+      "correctAnswer": "Talaat Pasha",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "history",
+      "cardType": "attack"
+    },
+    {
+      "factId": "periodic_table_osmium_density",
+      "question": "Which element is the densest naturally occurring element at 22.59 g/cm³?",
+      "choices": [
+        "Indium",
+        "Technetium",
+        "Osmium",
+        "Chromium"
+      ],
+      "correctAnswer": "Osmium",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "natural_sciences",
+      "cardType": "attack"
+    }
+  ],
+  "issues": [],
+  "status": "PASS",
+  "rawErrors": [],
+  "screenshotPaths": [
+    "/tmp/rr-test-output/deck-batch-2_none_1775789367922/screenshot.png",
+    "/tmp/rr-test-output/deck-batch-2_none_1775789367922/ap_microeconomics-enc1.png"
+  ],
+  "containerPort": 3227
+}

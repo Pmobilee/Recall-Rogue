@@ -1,0 +1,148 @@
+{
+  "deckId": "famous_inventions",
+  "name": "Famous Inventions & Inventors",
+  "domain": "general_knowledge",
+  "subDomain": "inventions_tech",
+  "category": "knowledge",
+  "factCount": 200,
+  "poolCount": 11,
+  "subDeckCount": 5,
+  "subDeckNames": [
+    "Ancient & Medieval",
+    "Industrial Revolution",
+    "Modern Era (1880–1950)",
+    "Digital Age",
+    "Patents, Prizes & Rivalries"
+  ],
+  "samples": [
+    {
+      "id": "inv_0_wheel_oldest",
+      "question": "What is the oldest known wooden wheel with an axle?",
+      "answer": "Ljubljana Marshes Wheel",
+      "poolId": "invention_names_long",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "inv_0_wheel_date",
+      "question": "Approximately when was the Ljubljana Marshes Wheel (oldest known wooden wheel with axle) dated to?",
+      "answer": "3130 BCE",
+      "poolId": "invention_dates",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "inv_0_wheel_clay",
+      "question": "Clay tablet pictographs depicting wheeled wagons from Uruk, Sumer date to approximately what period?",
+      "answer": "3500–3350 BCE",
+      "poolId": "invention_dates",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "inv_0_paper_cailun",
+      "question": "Which Han dynasty official is traditionally credited with inventing paper around 105 CE?",
+      "answer": "Cai Lun",
+      "poolId": "person_inventor_names",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "inv_0_paper_materials",
+      "question": "What materials did Cai Lun use to improve papermaking around 105 CE?",
+      "answer": "Mulberry fibers, fishnets, old rags, and hemp waste",
+      "poolId": "invention_details_long",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "bracket_numbers",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "tech_codes",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 14
+    },
+    {
+      "id": "invention_names_short",
+      "label": "invention_names (short)",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "invention_names_long",
+      "label": "invention_names (long)",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "person_inventor_names",
+      "factCount": 23,
+      "hasSynthetics": true,
+      "syntheticCount": 15
+    },
+    {
+      "id": "invention_dates",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "invention_specs",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    },
+    {
+      "id": "invention_details_short",
+      "label": "invention_details (short)",
+      "factCount": 28,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "invention_details_long",
+      "label": "invention_details (long)",
+      "factCount": 30,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "discovery_descriptions",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "number_values",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about general_knowledge",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

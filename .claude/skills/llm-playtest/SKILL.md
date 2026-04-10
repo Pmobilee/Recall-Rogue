@@ -8,6 +8,21 @@ model: sonnet
 
 # /llm-playtest — Live LLM Game Playtest Orchestrator
 
+## 🚨 DOCKER-ONLY — MANDATORY, NO EXCEPTIONS
+
+**This skill runs EXCLUSIVELY in Docker warm containers via `scripts/docker-visual-test.sh --warm`. Local `npm run dev` + Playwright MCP is PROHIBITED.** See `.claude/rules/testing.md` § "Docker-Only LLM Playtests".
+
+- ✅ ALLOWED: `scripts/docker-visual-test.sh --warm start|test|stop --agent-id <id>` with `--actions-file <json>`
+- ❌ FORBIDDEN: `mcp__playwright__browser_*` against `http://localhost:5173` in any tester sub-agent prompt
+- ❌ FORBIDDEN: starting `npm run dev` as a prerequisite
+- ❌ FORBIDDEN: leaving a warm container running after the batch completes — always `--warm stop` in a try/finally
+
+Every tester sub-agent prompt spawned by this skill MUST include the hard constraint: *"NEVER call `mcp__playwright__*`. The ONLY browser access is `scripts/docker-visual-test.sh --warm test --actions-file`."*
+
+The orchestrator wraps the entire batch in a deterministic try/finally so container teardown runs even if testers crash.
+
+---
+
 ## What This Skill Does
 
 Spawns Sonnet sub-agents that **actually play the game** through Playwright MCP using the `window.__rrPlay` API. Each agent has a different testing focus and writes a structured report. The orchestrator aggregates all reports into a combined `SUMMARY.md`.
@@ -133,47 +148,47 @@ npx tsx scripts/registry/updater.ts --ids "${DECK_ID}" --type lastLLMPlaytest --
 
 ---
 
-## Phase 0: Smoke Test (Orchestrator Runs Directly — NOT Sub-Agent)
+## Phase 0: Docker Smoke Test (Orchestrator Runs Directly — NOT Sub-Agent)
 
-Before spawning any testers, the orchestrator MUST verify the game is running and APIs are accessible. Run these 6 checks via Playwright MCP directly:
+**Docker-only. No local dev server. No Playwright MCP.** Before spawning any testers, the orchestrator MUST:
 
-```javascript
-// Step 1: Navigate
-// mcp__playwright__browser_navigate -> http://localhost:5173?skipOnboarding=true&turbo=true&botMode=true
-// Wait 5 seconds.
+1. **Start the warm Docker container** (once per batch):
+   ```bash
+   scripts/docker-visual-test.sh --warm start --agent-id llm-playtest-${BATCH_ID}
+   ```
+   This boots Chromium + SwiftShader inside the container, serves Vite internally, and navigates to the game with `?skipOnboarding=true&turbo=true&botMode=true`. Expect ~40s first-time boot.
 
-// Step 2: Check all 6 APIs in one evaluate call
-const result = await page.evaluate(async () => {
-  const checks = {};
+2. **Run the 6-check smoke test** via a warm `test` invocation with an actions-file:
 
-  // Check 1: __rrPlay exists
-  checks.terraPlayExists = typeof window.__rrPlay !== 'undefined';
+   Create `/tmp/rr-smoke-${BATCH_ID}.json`:
+   ```json
+   [
+     {"type":"wait","ms":3000},
+     {"type":"eval","js":"JSON.stringify({terraPlayExists: typeof window.__rrPlay !== 'undefined', getScreen: (()=>{try{return window.__rrPlay.getScreen();}catch(e){return 'ERROR:'+e.message;}})(), lookWorks: (()=>{try{const s=window.__rrPlay.look();return !!s && typeof s==='object';}catch(e){return 'ERROR:'+e.message;}})(), terraScenarioExists: typeof window.__rrScenario !== 'undefined', screenshotFnExists: typeof window.__rrScreenshotFile === 'function', debugFnExists: typeof window.__rrDebug === 'function'})"},
+     {"type":"rrScreenshot","name":"smoke"},
+     {"type":"layoutDump","name":"smoke"}
+   ]
+   ```
 
-  // Check 2: getScreen() works
-  try { checks.getScreen = window.__rrPlay.getScreen(); } catch(e) { checks.getScreen = 'ERROR: ' + e.message; }
+   Then:
+   ```bash
+   scripts/docker-visual-test.sh --warm test \
+     --agent-id llm-playtest-${BATCH_ID} \
+     --actions-file /tmp/rr-smoke-${BATCH_ID}.json \
+     --scenario none \
+     --wait 5000
+   ```
 
-  // Check 3: look() returns state
-  try { const s = window.__rrPlay.look(); checks.lookWorks = !!s && typeof s === 'object'; } catch(e) { checks.lookWorks = 'ERROR: ' + e.message; }
-
-  // Check 4: __rrScenario exists
-  checks.terraScenarioExists = typeof window.__rrScenario !== 'undefined';
-
-  // Check 5: __rrScreenshotFile exists
-  checks.screenshotFnExists = typeof window.__rrScreenshotFile === 'function';
-
-  // Check 6: __rrDebug exists
-  checks.debugFnExists = typeof window.__rrDebug === 'function';
-
-  return checks;
-});
-```
+3. **Parse `result.json`** from the output directory (`/tmp/rr-docker-visual/llm-playtest-${BATCH_ID}_*/`). The `eval` action's output contains the stringified checks object.
 
 **Smoke test PASS criteria:** All 6 checks truthy. If any fail:
-- If dev server not running: tell user `npm run dev` is needed, abort
-- If APIs missing: warn that `__rrPlay` may not be initialized yet (game may still be loading) — wait 5 more seconds and retry once
-- If still failing after retry: report which checks failed, abort with instructions
+- Retry the actions-file once after an additional 5s wait (game may still be initializing)
+- If still failing after retry: **stop the container** (`--warm stop`), report which checks failed, abort with instructions
+- If container failed to start at all: check `docker ps`, Docker Desktop running, rebuild image via `--no-build=false` on next invocation
 
-If `smoke-only` was requested, stop here after reporting results.
+If `smoke-only` was requested, stop here, tear down the container (`--warm stop`), and report results.
+
+**Try/finally discipline:** from the moment `--warm start` succeeds, the orchestrator is responsible for running `--warm stop` before returning control to the user, even if Phase 1/2/3 crash.
 
 ---
 
@@ -1161,9 +1176,48 @@ Write your report to `{BATCH_DIR}/study-temple.md`:
 
 **FULL RUN BUG HUNTER TESTER — SELF-CONTAINED PROMPT**
 
-You are the Full Run Bug Hunter for Recall Rogue, a card roguelite knowledge game. Your job is to play a COMPLETE run from Hub through {FLOORS} full dungeon floors using the `window.__rrPlay` API via Playwright MCP. You must visit ALL room types (combat, shop, rest, mystery, boss) and report crashes, stuck states, broken transitions, missing UI, and data anomalies.
+You are the Full Run Bug Hunter for Recall Rogue, a card roguelite knowledge game. Your job is to play a COMPLETE run from Hub through {FLOORS} full dungeon floors using the `window.__rrPlay` API **via a Docker warm container** (NOT Playwright MCP). You must visit ALL room types (combat, shop, rest, mystery, boss) and report crashes, stuck states, broken transitions, missing UI, and data anomalies.
 
 **Your output**: Write a markdown report to `{BATCH_DIR}/full-run.md` using the bug report format defined at the end of this prompt.
+
+---
+
+### 🚨 DOCKER-ONLY EXECUTION — HARD CONSTRAINT
+
+**NEVER call `mcp__playwright__*` tools. The ONLY browser access is `scripts/docker-visual-test.sh --warm test --actions-file <json>`.** The orchestrator has already run `--warm start --agent-id {AGENT_ID}` before spawning you. Do NOT start or stop the container — that is the orchestrator's responsibility. You interact with the game EXCLUSIVELY by:
+
+1. **Building an actions-file** — write a JSON array to `/tmp/rr-actions-{AGENT_ID}-stepN.json` with your next action batch
+2. **Running the batch** — `Bash: scripts/docker-visual-test.sh --warm test --agent-id {AGENT_ID} --actions-file /tmp/rr-actions-{AGENT_ID}-stepN.json --scenario none --wait 2000`
+3. **Reading the result** — parse `result.json` from the output dir printed by the script (under `/tmp/rr-docker-visual/{AGENT_ID}_*/`); the `eval`/`rrPlay` actions return their outputs there; for visual verification, Read `screenshot.png` (full PNG) and/or `layout-dump.txt`
+
+**Action types you will use** (from `scripts/docker-visual-test.sh` — see script header for full reference):
+- `{type:'rrPlay', method:'<name>', args:[...]}` — calls `window.__rrPlay[method](...args)` and records the return value
+- `{type:'eval', js:'<expression>'}` — runs arbitrary JS in the page context and records the return value (use `JSON.stringify(...)` for complex objects)
+- `{type:'scenario', preset:'<name>'}` — loads a `__rrScenario` preset mid-batch (rarely needed for fullrun)
+- `{type:'rrScreenshot', name:'<label>'}` — saves `{label}.png` + `{label}.layout.txt` via `__rrScreenshotFile` + `__rrLayoutDump`
+- `{type:'layoutDump', name:'<label>'}` — layout dump only
+- `{type:'wait', ms:N}` — pause N milliseconds
+- `{type:'waitFor', selector:'...', state:'visible', timeout:5000}` — wait for a DOM element
+
+**Batch strategy:** Group related reads into one actions-file to minimize round-trips. Each batch takes ~5s. A good batch shape:
+```json
+[
+  {"type":"rrPlay","method":"getScreen"},
+  {"type":"rrPlay","method":"getCombatState"},
+  {"type":"rrScreenshot","name":"floor1-combat-turn3"}
+]
+```
+Then read `result.json` and the screenshot to decide the next action.
+
+**Quick mode note:** If you find yourself needing only `rrPlay` calls with no visual verification (e.g. mid-combat turn loop), you can bundle 5–10 `rrPlay` actions in one batch, then do a single `rrScreenshot` at the end of the turn.
+
+**Reading results:** After every Bash invocation, the stdout includes the output directory path. Read `<outputDir>/result.json` — it contains an `actions: [{type, ok, result/error, durationMs}]` array in the same order as your input. `rrPlay` results are in `result.result`; `eval` results are in `result.result` (already JSON-parsed if possible).
+
+**Prohibited:**
+- ❌ `mcp__playwright__browser_navigate` / `browser_evaluate` / `browser_click` / any `mcp__playwright__*` tool
+- ❌ Starting a local `npm run dev`
+- ❌ Calling `scripts/docker-visual-test.sh --warm start` or `--warm stop` (orchestrator's job)
+- ❌ Modifying game files — you are read-only except for the report + actions-files in `/tmp/`
 
 ---
 
@@ -1198,29 +1252,39 @@ You are the Full Run Bug Hunter for Recall Rogue, a card roguelite knowledge gam
 
 ### CRITICAL SCREENSHOT & LAYOUT DUMP RULES
 
-- **ALWAYS** call `__rrLayoutDump()` via `browser_evaluate(() => window.__rrLayoutDump())` at EVERY screen transition and after EVERY combat turn end
-- **ALWAYS** use `browser_evaluate(() => window.__rrScreenshotFile())` for screenshots — then `Read("/tmp/rr-screenshot.jpg")` to view
-- **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser's RAF loop blocks it permanently (30s timeout)
-- **NEVER** use `page.screenshot()` — same RAF issue
-- Layout dumps are your PRIMARY perception tool — they show exact positions of ALL Phaser + DOM elements
+- Use `{type:'rrScreenshot', name:'...'}` at every screen transition and after every combat turn end — it saves the full PNG + layout dump text
+- Use `{type:'layoutDump', name:'...'}` if you want layout only (cheaper than a full screenshot)
+- **ALWAYS** Read the full `screenshot.png` (NOT the jpg thumbnail) when diagnosing visual issues
+- **NEVER** call `mcp__playwright__*` tools — they are not available to you; the Docker container is your only execution surface
+- Layout dumps are your PRIMARY perception tool — they show exact positions of all Phaser + DOM elements
 
 ---
 
-### Setup
+### Setup (Docker warm mode — container already running)
 
-1. Navigate: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&turbo=true&botMode=true`
-2. Wait 5 seconds for the game to fully load
-3. Mute audio:
-```javascript
-await browser_evaluate(() => {
-  const sym1 = Symbol.for('rr:sfxEnabled');
-  const sym2 = Symbol.for('rr:musicEnabled');
-  if (globalThis[sym1]?.set) globalThis[sym1].set(false);
-  if (globalThis[sym2]?.set) globalThis[sym2].set(false);
-});
+The orchestrator has already started the warm container with `--agent-id {AGENT_ID}` and navigated the page to `http://localhost:5173?skipOnboarding=true&turbo=true&botMode=true`. Your first batch should:
+
+1. **Mute audio + verify APIs** — create `/tmp/rr-actions-{AGENT_ID}-setup.json`:
+```json
+[
+  {"type":"wait","ms":3000},
+  {"type":"eval","js":"(()=>{const s1=Symbol.for('rr:sfxEnabled');const s2=Symbol.for('rr:musicEnabled');if(globalThis[s1]?.set)globalThis[s1].set(false);if(globalThis[s2]?.set)globalThis[s2].set(false);return 'muted';})()"},
+  {"type":"eval","js":"JSON.stringify({play:typeof window.__rrPlay,dump:typeof window.__rrLayoutDump,debug:typeof window.__rrDebug,shot:typeof window.__rrScreenshotFile})"},
+  {"type":"rrPlay","method":"getScreen"},
+  {"type":"rrScreenshot","name":"setup-hub"}
+]
 ```
-4. Verify APIs exist: `__rrPlay`, `__rrLayoutDump`, `__rrDebug`, `__rrScreenshotFile`
-5. Take initial **LAYOUT DUMP + screenshot** to confirm hub screen
+
+2. **Run the batch**:
+```bash
+scripts/docker-visual-test.sh --warm test \
+  --agent-id {AGENT_ID} \
+  --actions-file /tmp/rr-actions-{AGENT_ID}-setup.json \
+  --scenario none \
+  --wait 2000
+```
+
+3. **Verify**: the `eval` API check should show all four functions exist; `getScreen` should return `'hub'`; `setup-hub.png` in the output dir should show the hub screen. If any check fails, retry once with an extra 5s wait; if still failing, document as a CRITICAL bug and abort (orchestrator will tear down the container).
 
 ---
 
@@ -1294,24 +1358,11 @@ Wait 2 seconds between each call. If any returns `{ok: false}`, capture evidence
 
 For each floor (repeat for {FLOORS} floors):
 
-**Discover available map nodes:**
-```javascript
-const mapInfo = await browser_evaluate(() => {
-  const nodes = document.querySelectorAll('[data-testid^="map-node-"]');
-  const available = [];
-  nodes.forEach(el => {
-    if ((el.classList.contains('state-available') || el.classList.contains('available'))
-        && el.offsetParent !== null) {
-      available.push({
-        testId: el.getAttribute('data-testid'),
-        classes: el.className,
-        text: el.textContent?.trim()?.substring(0, 50) || ''
-      });
-    }
-  });
-  return { available, total: nodes.length };
-});
+**Discover available map nodes** — add this to your next actions-file batch:
+```json
+{"type":"eval","js":"(()=>{const nodes=document.querySelectorAll('[data-testid^=\"map-node-\"]');const available=[];nodes.forEach(el=>{if((el.classList.contains('state-available')||el.classList.contains('available'))&&el.offsetParent!==null){available.push({testId:el.getAttribute('data-testid'),classes:el.className,text:(el.textContent||'').trim().substring(0,50)});}});return JSON.stringify({available,total:nodes.length});})()"}
 ```
+Read the result from `result.json` (the `eval` action's `result` field contains the JSON string) and parse it.
 
 **Node selection priority** (maximize room type coverage):
 1. Mystery (if not yet visited this floor)

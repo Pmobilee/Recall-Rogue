@@ -1,0 +1,17 @@
+{
+  "batchId": "BATCH-2026-04-10-001",
+  "createdAt": "2026-04-10T02:41:17Z",
+  "testers": ["full-run"],
+  "args": {
+    "floors": 2,
+    "domain": "general_knowledge",
+    "execution": "docker-warm"
+  },
+  "dockerContainer": "rr-warm-llm-playtest-fullrun",
+  "agentId": "llm-playtest-fullrun",
+  "warmPort": 3213,
+  "smokeTestPassed": true,
+  "smokeTestArtifacts": "/tmp/rr-docker-visual/llm-playtest-fullrun_none_1775788877195/",
+  "status": "running",
+  "reports": {}
+}

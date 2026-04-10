@@ -1,0 +1,87 @@
+{
+  "deckId": "czech_a2",
+  "name": "Czech A2 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "czech",
+  "category": "vocabulary",
+  "factCount": 475,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "cs-freq-501",
+      "question": "What does \"nástroj\" mean?",
+      "answer": "tool",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "nástroj"
+    },
+    {
+      "id": "cs-freq-502",
+      "question": "What does \"novinka\" mean?",
+      "answer": "news",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "novinka"
+    },
+    {
+      "id": "cs-freq-503",
+      "question": "What does \"oblast\" mean?",
+      "answer": "area",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "oblast"
+    },
+    {
+      "id": "cs-freq-504",
+      "question": "What does \"obličej\" mean?",
+      "answer": "face",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "obličej"
+    },
+    {
+      "id": "cs-freq-505",
+      "question": "What does \"osud\" mean?",
+      "answer": "fate",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "cs",
+      "partOfSpeech": "noun",
+      "targetWord": "osud"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 475,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Czech Words",
+      "factCount": 475,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "cs"
+  }
+}

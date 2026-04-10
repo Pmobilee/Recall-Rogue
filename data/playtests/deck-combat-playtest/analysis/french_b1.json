@@ -1,0 +1,87 @@
+{
+  "deckId": "french_b1",
+  "name": "French B1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "french",
+  "category": "vocabulary",
+  "factCount": 1412,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "fr-cefr-1471",
+      "question": "What does \"abbaye\" mean?",
+      "answer": "abbey",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "noun",
+      "targetWord": "abbaye"
+    },
+    {
+      "id": "fr-cefr-1472",
+      "question": "What does \"abbé\" mean?",
+      "answer": "abbot",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "noun",
+      "targetWord": "abbé"
+    },
+    {
+      "id": "fr-cefr-1473",
+      "question": "What does \"abondant\" mean?",
+      "answer": "abundant",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "noun",
+      "targetWord": "abondant"
+    },
+    {
+      "id": "fr-cefr-1474",
+      "question": "What does \"aboyer\" mean?",
+      "answer": "to bark",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "verb",
+      "targetWord": "aboyer"
+    },
+    {
+      "id": "fr-cefr-1475",
+      "question": "What does \"abri\" mean?",
+      "answer": "shelter",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "noun",
+      "targetWord": "abri"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 1412,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "French Words",
+      "factCount": 1412,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "fr"
+  }
+}

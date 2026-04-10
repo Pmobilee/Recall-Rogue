@@ -1,0 +1,194 @@
+{
+  "deckId": "ap_world_history",
+  "name": "AP World History: Modern",
+  "domain": "history",
+  "subDomain": "world_history",
+  "category": "knowledge",
+  "factCount": 620,
+  "poolCount": 16,
+  "subDeckCount": 9,
+  "subDeckNames": [
+    "The Global Tapestry (c. 1200–1450)",
+    "Webs of Exchange (c. 1200–1450)",
+    "Empires of the Land (c. 1450–1750)",
+    "Oceans Connected (c. 1450–1750)",
+    "Age of Revolution (c. 1750–1900)",
+    "The Imperial Age (c. 1750–1900)",
+    "Global Conflict (c. 1900–present)",
+    "Cold War and Liberation (c. 1900–present)",
+    "The Globalized World (c. 1900–present)"
+  ],
+  "samples": [
+    {
+      "id": "apwh_1_001",
+      "question": "Which Chinese dynasty (960-1279) pioneered paper money, the magnetic compass, and movable type printing?",
+      "answer": "Song Dynasty",
+      "poolId": "empire_dynasty_names",
+      "distractorCount": 4,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "apwh_1_002",
+      "question": "What Song Dynasty paper currency, the world's first government-issued paper money, helped fuel commercial expansion in C",
+      "answer": "Jiaozi (paper money)",
+      "poolId": "technology_inventions",
+      "distractorCount": 4,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "apwh_1_003",
+      "question": "Which Song Dynasty this system selected government officials based on merit rather than hereditary privilege?",
+      "answer": "Civil service examination system",
+      "poolId": "concept_terms",
+      "distractorCount": 4,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "apwh_1_004",
+      "question": "Which philosophy synthesized classical Confucian ethics with Buddhist and Daoist metaphysics, becoming the official stat",
+      "answer": "Neo-Confucianism",
+      "poolId": "religion_belief_terms",
+      "distractorCount": 4,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "apwh_1_005",
+      "question": "Which form of Buddhism, emphasizing meditation and direct experience over scripture, influenced Song Chinese art, litera",
+      "answer": "Chan Buddhism",
+      "poolId": "religion_belief_terms",
+      "distractorCount": 4,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "ruler_names",
+      "label": "Rulers, Emperors, Sultans, and Khans",
+      "factCount": 33,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "empire_dynasty_names",
+      "label": "Empire and Dynasty Names",
+      "factCount": 34,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "revolution_leaders",
+      "label": "Enlightenment Thinkers and Revolutionary Figures",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "battle_event_names",
+      "label": "Major Battles and Pivotal Events",
+      "factCount": 28,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "treaty_document_names",
+      "label": "Treaties, Declarations, and Foundational Documents",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "date_periods",
+      "label": "Key Dates and Years (Bracket Notation)",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "date_descriptions",
+      "label": "Date Descriptions (text date ranges)",
+      "factCount": 4,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "concept_terms",
+      "label": "Political, Economic, and Social Concepts",
+      "factCount": 297,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "trade_goods",
+      "label": "Trade Commodities and Columbian Exchange Items",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "place_names",
+      "label": "Cities, Regions, and Trade Routes",
+      "factCount": 37,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "religion_belief_terms",
+      "label": "Religious Movements, Philosophies, and Sects",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "technology_inventions",
+      "label": "Key Technologies and Inventions",
+      "factCount": 35,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "organization_names",
+      "label": "International Organizations and Alliances",
+      "factCount": 23,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "ideological_doctrine_names",
+      "label": "Policies, Doctrines, and Ideological Programs",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "mass_atrocity_names",
+      "label": "Genocides, Mass Atrocities, and Humanitarian Crises",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "labor_economic_terms",
+      "label": "Labor Systems and Economic Arrangements",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about history",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

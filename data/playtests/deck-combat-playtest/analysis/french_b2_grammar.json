@@ -1,0 +1,267 @@
+{
+  "deckId": "french_b2_grammar",
+  "name": "French B2 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "french_grammar",
+  "category": "grammar",
+  "factCount": 397,
+  "poolCount": 31,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Subjonctif Passé & Concordance",
+    "Conditionnel Passé & Si Type 3",
+    "Discours Rapporté au Passé",
+    "Passif Avancé & Causatif",
+    "Accord du Participe Passé",
+    "Connecteurs Logiques Avancés",
+    "Nominalisation & Mise en Relief",
+    "Futur Antérieur & Subordonnées Avancées"
+  ],
+  "samples": [
+    {
+      "id": "fr-gram-b2-subj-passe-parler-je-0",
+      "question": "Le professeur est surpris que je n'{___} si longtemps.\n(The teacher is surprised that I spoke so long.)",
+      "answer": "aie parlé",
+      "poolId": "subjonctif_passe_avoir",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "aie parlé"
+    },
+    {
+      "id": "fr-gram-b2-subj-passe-finir-tu-0",
+      "question": "Je suis soulagée que tu {___} tes devoirs à temps.\n(I'm relieved that you finished your homework on time.)",
+      "answer": "aies fini",
+      "poolId": "subjonctif_passe_avoir",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "aies fini"
+    },
+    {
+      "id": "fr-gram-b2-subj-passe-prendre-il-0",
+      "question": "Elle est étonnée qu'il {___} une telle décision sans la consulter.\n(She is astonished that he made such a decision witho",
+      "answer": "ait pris",
+      "poolId": "subjonctif_passe_avoir",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "ait pris"
+    },
+    {
+      "id": "fr-gram-b2-subj-passe-dire-nous-0",
+      "question": "Il regrette que nous lui {___} la vérité trop tard.\n(He regrets that we told him the truth too late.)",
+      "answer": "ayons dit",
+      "poolId": "subjonctif_passe_avoir",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "ayons dit"
+    },
+    {
+      "id": "fr-gram-b2-subj-passe-faire-vous-0",
+      "question": "Nous sommes heureux que vous {___} le voyage sans encombre.\n(We are happy that you made the trip without any problems.)",
+      "answer": "ayez fait",
+      "poolId": "subjonctif_passe_avoir",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "ayez fait"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "subjonctif_passe_avoir",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "subjonctif_passe_etre",
+      "factCount": 12,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "subjonctif_passe_pronominal",
+      "factCount": 11,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "subjonctif_imparfait_recognition",
+      "factCount": 10,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "concordance_subj_present_passe",
+      "factCount": 18,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "conditionnel_passe_avoir",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "conditionnel_passe_etre",
+      "factCount": 12,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "conditionnel_passe_modaux",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "si_plus_que_parfait",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "mixed_conditionals",
+      "factCount": 10,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "discours_rapporte_present_imparfait",
+      "factCount": 13,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "discours_rapporte_pc_pqp",
+      "factCount": 10,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "discours_rapporte_futur_cond",
+      "factCount": 9,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "discours_rapporte_temps_markers",
+      "factCount": 8,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "passif_avec_se",
+      "factCount": 10,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "passif_temps_composes",
+      "factCount": 11,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "causatif_faire_laisser",
+      "factCount": 11,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "accord_pp_avoir_cod_prepose",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "accord_pp_pronominal_complet",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "connecteurs_concession",
+      "factCount": 12,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "connecteurs_opposition",
+      "factCount": 10,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "connecteurs_reformulation",
+      "factCount": 8,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "connecteurs_addition",
+      "factCount": 9,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "nominalisation_verbe_nom",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "mise_en_relief_cest_qui_que",
+      "factCount": 10,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "mise_en_relief_ce_qui_cest",
+      "factCount": 7,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "futur_anterieur_avoir",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "futur_anterieur_etre",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "subordonnees_subj_avancees",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "opinion_negative_subj",
+      "factCount": 9,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "hypothese_attenuee",
+      "factCount": 10,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

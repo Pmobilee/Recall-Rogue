@@ -1,0 +1,183 @@
+{
+  "deckId": "ocean_life",
+  "name": "Ocean Life",
+  "domain": "animals_wildlife",
+  "subDomain": "marine_life",
+  "category": "knowledge",
+  "factCount": 182,
+  "poolCount": 15,
+  "subDeckCount": 5,
+  "subDeckNames": [
+    "Iconic Ocean Animals",
+    "Deep Sea & Extremes",
+    "Coral Reefs & Ecosystems",
+    "Behavior & Intelligence",
+    "Conservation & Threats"
+  ],
+  "samples": [
+    {
+      "id": "ocean_0_blue_whale_length",
+      "question": "What is the maximum recorded length of a blue whale?",
+      "answer": "30 meters",
+      "poolId": "stats_compact_short",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ocean_0_blue_whale_weight",
+      "question": "What is the maximum recorded weight of a blue whale?",
+      "answer": "190 tonnes",
+      "poolId": "stats_compact_short",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ocean_0_blue_whale_krill",
+      "question": "How much krill does a blue whale consume each day during feeding season?",
+      "answer": "4 tonnes of krill per day",
+      "poolId": "stats_extended",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ocean_0_blue_whale_call",
+      "question": "How loud can a blue whale's call be?",
+      "answer": "188 decibels",
+      "poolId": "stats_compact_long",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ocean_0_blue_whale_lifespan",
+      "question": "What is the estimated lifespan of a blue whale?",
+      "answer": "80–110 years",
+      "poolId": "stats_compact_long",
+      "distractorCount": 6,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "stats_percentages",
+      "label": "Ocean Stats — Percentages",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "stats_counts",
+      "label": "Ocean Stats — Counts & Values",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "sci_terms_short",
+      "label": "Marine Science Terms — Short",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "sci_terms_compound",
+      "label": "Marine Science Terms — Compound",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "behavior_descriptions_short",
+      "label": "Marine Animal Behaviors (short)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "behavior_descriptions_long",
+      "label": "Marine Animal Behaviors (long)",
+      "factCount": 19,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "species_names",
+      "label": "Species Names",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 21
+    },
+    {
+      "id": "conservation_status",
+      "label": "IUCN Conservation Status",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "habitat_zones",
+      "label": "Ocean Zones & Habitats",
+      "factCount": 4,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "stats_compact_short",
+      "label": "Ocean Stats — Compact Measurements (short)",
+      "factCount": 28,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "stats_compact_long",
+      "label": "Ocean Stats — Compact Measurements (long)",
+      "factCount": 24,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "stats_compact",
+      "label": "Ocean Stats — Compact Measurements (numeric)",
+      "factCount": 1,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "stats_extended",
+      "label": "Ocean Stats — Extended Measurements",
+      "factCount": 26,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "ocean_lists",
+      "label": "Ocean Named Lists",
+      "factCount": 1,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "ocean_currents",
+      "label": "Ocean Currents & Water Movements",
+      "factCount": 2,
+      "hasSynthetics": true,
+      "syntheticCount": 14
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about animals_wildlife",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

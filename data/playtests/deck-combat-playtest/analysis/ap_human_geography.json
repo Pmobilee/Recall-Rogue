@@ -1,0 +1,374 @@
+{
+  "deckId": "ap_human_geography",
+  "name": "AP Human Geography",
+  "domain": "geography",
+  "subDomain": "ap_human_geography",
+  "category": "knowledge",
+  "factCount": 299,
+  "poolCount": 42,
+  "subDeckCount": 7,
+  "subDeckNames": [
+    "Unit 1: Thinking Geographically",
+    "Unit 2: Population and Migration",
+    "Unit 3: Cultural Patterns and Processes",
+    "Unit 4: Political Patterns and Processes",
+    "Unit 5: Agriculture and Rural Land-Use",
+    "Unit 6: Cities and Urban Land-Use",
+    "Unit 7: Industrial and Economic Development"
+  ],
+  "samples": [
+    {
+      "id": "aphg_u1_mercator_projection",
+      "question": "Which map projection preserves shape but severely distorts the size of high-latitude landmasses?",
+      "answer": "Mercator projection",
+      "poolId": "model_and_theory_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "aphg_u1_equal_area_projection",
+      "question": "A map projection that accurately represents the relative size of landmasses is called what type?",
+      "answer": "equal-area projection",
+      "poolId": "unit1_spatial_concept_terms_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "aphg_u1_map_characteristics",
+      "question": "Which element of a map tells the reader what the symbols and colors mean?",
+      "answer": "legend",
+      "poolId": "unit1_spatial_concept_terms_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "aphg_u1_azimuthal_projection",
+      "question": "Which projection type is centered on a single point and shows true direction from that point to all others?",
+      "answer": "azimuthal projection",
+      "poolId": "unit1_spatial_concept_terms_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "aphg_u1_choropleth_map",
+      "question": "A thematic map that uses shading or color to show data values across defined areas is called a what?",
+      "answer": "choropleth map",
+      "poolId": "unit1_spatial_concept_terms_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "model_and_theory_names",
+      "label": "Model and Theory Names",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "geographer_names",
+      "label": "Geographer Names",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "agriculture_practice_names_short",
+      "label": "Agriculture Practice Names (short)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "agriculture_practice_names_long",
+      "label": "Agriculture Practice Names (long)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "religion_and_language_terms",
+      "label": "Religion and Language Terms",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "political_term_names_short",
+      "label": "Political Term Names (short)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "political_term_names_long",
+      "label": "Political Term Names (long)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "urban_model_names",
+      "label": "Urban Model Names",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "economic_indicator_names",
+      "label": "Economic Indicator Names",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "migration_type_names",
+      "label": "Migration Type Names",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "boundary_type_names",
+      "label": "Boundary Type Names",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "diffusion_type_names",
+      "label": "Diffusion Type Names",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "state_shape_names",
+      "label": "State Shape Names",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "survey_method_names",
+      "label": "Survey Method Names",
+      "factCount": 3,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "economic_sector_names",
+      "label": "Economic Sector Names",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "development_theory_names",
+      "label": "Development Theory Names",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "region_type_names",
+      "label": "Region Type Names",
+      "factCount": 3,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "organization_names",
+      "label": "Organization Names",
+      "factCount": 4,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "urban_challenge_terms_short",
+      "label": "Urban Challenge Terms (short)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "urban_challenge_terms_long",
+      "label": "Urban Challenge Terms (long)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Bracket Numbers",
+      "factCount": 5,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "organization_acronyms",
+      "label": "Organization Acronyms",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "migration_short_types",
+      "label": "Migration Short Types",
+      "factCount": 3,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "economic_indicator_acronyms",
+      "label": "Economic Indicator Acronyms",
+      "factCount": 2,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "language_family_names",
+      "label": "Language Family Names",
+      "factCount": 3,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "unit4_political_concept_terms",
+      "label": "Unit 4 Political Geography Concepts",
+      "factCount": 12,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unit6_urban_concept_terms_short",
+      "label": "Unit 6 Urban Geography Concepts (short)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "unit6_urban_concept_terms_long",
+      "label": "Unit 6 Urban Geography Concepts (long)",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "unit1_spatial_concept_terms_short",
+      "label": "Unit 1 Spatial & Mapping Concepts (Short Terms)",
+      "factCount": 7,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unit1_spatial_concept_terms_long",
+      "label": "Unit 1 Spatial & Mapping Concepts (Multi-word Phrases)",
+      "factCount": 11,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unit2_population_concept_terms_short",
+      "label": "Unit 2 Population & Migration Concepts (Short Terms)",
+      "factCount": 9,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unit2_population_concept_terms_long",
+      "label": "Unit 2 Population & Migration Concepts (Multi-word Phrases)",
+      "factCount": 12,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unit3_cultural_concept_terms_short",
+      "label": "Unit 3 Culture & Diffusion Concepts (Short Terms)",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unit3_cultural_concept_terms_long",
+      "label": "Unit 3 Culture & Diffusion Concepts (Multi-word Phrases)",
+      "factCount": 11,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unit5_agriculture_concept_terms_short",
+      "label": "Unit 5 Agriculture & Rural Concepts (Short Terms) (short)",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "unit5_agriculture_concept_terms_long",
+      "label": "Unit 5 Agriculture & Rural Concepts (Short Terms) (long)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "unit5_agriculture_concept_terms_long",
+      "label": "Unit 5 Agriculture & Rural Concepts (Multi-word Phrases)",
+      "factCount": 10,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unit7_economic_concept_terms_short",
+      "label": "Unit 7 Industrial & Economic Concepts (Short Terms) (short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "unit7_economic_concept_terms_long",
+      "label": "Unit 7 Industrial & Economic Concepts (Short Terms) (long)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "unit7_economic_concept_terms_long",
+      "label": "Unit 7 Industrial & Economic Concepts (Multi-word Phrases)",
+      "factCount": 9,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unit1_acronym_terms",
+      "label": "Unit 1 Geographic Acronyms",
+      "factCount": 2,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unit2_short_stage_terms",
+      "label": "Unit 2 DTM Stage and Push/Pull Terms (Short)",
+      "factCount": 5,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about geography",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

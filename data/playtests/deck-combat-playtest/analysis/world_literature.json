@@ -1,0 +1,175 @@
+{
+  "deckId": "world_literature",
+  "name": "World Literature",
+  "domain": "art_architecture",
+  "subDomain": "literature",
+  "category": "knowledge",
+  "factCount": 200,
+  "poolCount": 14,
+  "subDeckCount": 4,
+  "subDeckNames": [
+    "Ancient & Classical",
+    "Renaissance & Early Modern",
+    "19th Century",
+    "Modern & Contemporary"
+  ],
+  "samples": [
+    {
+      "id": "lit_anc_homer_iliad_author",
+      "question": "Which ancient Greek poet is credited with composing the Iliad?",
+      "answer": "Homer",
+      "poolId": "author_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "lit_anc_homer_iliad_lines",
+      "question": "How many lines does the Iliad contain in its standard edition?",
+      "answer": "{15693}",
+      "poolId": "publication_years",
+      "distractorCount": 0,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "lit_anc_homer_iliad_books",
+      "question": "Into how many books is both the Iliad and the Odyssey divided?",
+      "answer": "{24}",
+      "poolId": "publication_years",
+      "distractorCount": 0,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "lit_anc_homer_odyssey_hero",
+      "question": "Which Trojan War hero is the protagonist of Homer's Odyssey?",
+      "answer": "Odysseus",
+      "poolId": "character_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "lit_anc_homer_iliad_genre",
+      "question": "What literary genre do Homer's Iliad and Odyssey belong to?",
+      "answer": "Epic poetry",
+      "poolId": "genre_form_names_short",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "author_names_long",
+      "label": "Author Names (Long, 11+ chars)",
+      "factCount": 27,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "author_names_short",
+      "label": "Author Names (Short, ≤10 chars)",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "character_names_short",
+      "label": "Character Names (short)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "character_names_long",
+      "label": "Character Names (long)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "country_names",
+      "label": "Country / Language Names",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "genre_form_names_short",
+      "label": "Genre & Form Names (short)",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "genre_form_names_long",
+      "label": "Genre & Form Names (long)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "movement_names",
+      "label": "Literary Movement Names",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "opening_line_sources_short",
+      "label": "Opening Line Sources (short)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "opening_line_sources_long",
+      "label": "Opening Line Sources (long)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "publication_years",
+      "label": "Publication Years & Numbers",
+      "factCount": 11,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "work_titles_long",
+      "label": "Work Titles (Long, 25+ chars)",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    },
+    {
+      "id": "work_titles_mid",
+      "label": "Work Titles (Medium, 12–24 chars)",
+      "factCount": 39,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "work_titles_short",
+      "label": "Work Titles (Short, ≤11 chars)",
+      "factCount": 30,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about art_architecture",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

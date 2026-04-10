@@ -1,0 +1,125 @@
+{
+  "deckId": "japanese_n5",
+  "name": "Japanese N5 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "japanese",
+  "category": "vocabulary",
+  "factCount": 929,
+  "poolCount": 7,
+  "subDeckCount": 2,
+  "subDeckNames": [
+    "Vocabulary",
+    "Kanji"
+  ],
+  "samples": [
+    {
+      "id": "ja-jlpt-1",
+      "question": "What does \"～がる\" (～がる) mean?",
+      "answer": "feel",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "phrase",
+      "targetWord": "～がる"
+    },
+    {
+      "id": "ja-jlpt-2",
+      "question": "What does \"～か月\" (～かげつ) mean?",
+      "answer": "months",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "phrase",
+      "targetWord": "～か月"
+    },
+    {
+      "id": "ja-jlpt-3",
+      "question": "What does \"～くらい; ぐらい\" (～くらい; ぐらい) mean?",
+      "answer": "approximate",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "phrase",
+      "targetWord": "～くらい; ぐらい"
+    },
+    {
+      "id": "ja-jlpt-4",
+      "question": "What does \"～ころ; ～ごろ\" (～ころ; ～ごろ) mean?",
+      "answer": "about, toward",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "phrase",
+      "targetWord": "～ころ; ～ごろ"
+    },
+    {
+      "id": "ja-jlpt-5",
+      "question": "What does \"～さん\" (～さん) mean?",
+      "answer": "Mr., Ms.",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "phrase",
+      "targetWord": "～さん"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 692,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Japanese Words",
+      "factCount": 692,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "reading_hiragana",
+      "label": "Hiragana Readings",
+      "factCount": 692,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "kanji_meanings",
+      "label": "English meanings of kanji",
+      "factCount": 79,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "kanji_onyomi",
+      "label": "On'yomi readings (katakana)",
+      "factCount": 27,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "kanji_kunyomi",
+      "label": "Kun'yomi readings (hiragana)",
+      "factCount": 52,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "kanji_characters",
+      "label": "Kanji characters",
+      "factCount": 79,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "ja"
+  }
+}

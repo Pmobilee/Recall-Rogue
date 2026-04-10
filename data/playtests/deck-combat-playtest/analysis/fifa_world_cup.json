@@ -1,0 +1,211 @@
+{
+  "deckId": "fifa_world_cup",
+  "name": "FIFA World Cup",
+  "domain": "sports_entertainment",
+  "subDomain": "football_soccer",
+  "category": "knowledge",
+  "factCount": 214,
+  "poolCount": 19,
+  "subDeckCount": 5,
+  "subDeckNames": [
+    "Men's World Cup — Tournament History",
+    "Women's World Cup — Tournament History",
+    "Legendary World Cup Players",
+    "Iconic Matches & Moments",
+    "National Team Legacies"
+  ],
+  "samples": [
+    {
+      "id": "mens_wc_1930_winner",
+      "question": "Which country won the very first FIFA World Cup in 1930?",
+      "answer": "Uruguay",
+      "poolId": "winner_country_names_mens",
+      "distractorCount": 4,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "mens_wc_1930_host",
+      "question": "Which country hosted the inaugural 1930 FIFA World Cup?",
+      "answer": "Uruguay",
+      "poolId": "mens_host_country_names",
+      "distractorCount": 4,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "mens_wc_1930_top_scorer",
+      "question": "Who was the top scorer at the 1930 FIFA World Cup with 8 goals?",
+      "answer": "Guillermo Stábile",
+      "poolId": "golden_boot_winners_mens",
+      "distractorCount": 4,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "mens_wc_1930_score",
+      "question": "What was the final score of the 1930 World Cup Final between Uruguay and Argentina?",
+      "answer": "4-2",
+      "poolId": "regulation_final_scores_mens",
+      "distractorCount": 4,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "mens_wc_1934_winner",
+      "question": "Which country won the 1934 FIFA World Cup, defeating Czechoslovakia 2-1 after extra time?",
+      "answer": "Italy",
+      "poolId": "winner_country_names_mens",
+      "distractorCount": 4,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "mens_host_country_names",
+      "label": "Men's World Cup Host Countries",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "womens_host_country_names",
+      "label": "Women's World Cup Host Countries",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "winner_country_names_mens",
+      "label": "Men's World Cup Champion Nations",
+      "factCount": 40,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "winner_country_names_womens",
+      "label": "Women's World Cup Champion Nations",
+      "factCount": 16,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "runner_up_country_names_mens",
+      "label": "Men's World Cup Runner-Up Nations",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 14
+    },
+    {
+      "id": "regulation_final_scores_mens",
+      "label": "Men's WC Final Scores (Regulation/AET, No Shootout)",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "penalty_final_scores",
+      "label": "WC Finals Decided by Penalty Shootout",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "men_player_names",
+      "label": "Men's World Cup Legendary Players",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 18
+    },
+    {
+      "id": "women_player_names",
+      "label": "Women's World Cup Legendary Players",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "mens_wc_years",
+      "label": "Men's World Cup Tournament Years",
+      "factCount": 18,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "womens_wc_years",
+      "label": "Women's World Cup Tournament Years",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "venue_names",
+      "label": "Famous World Cup Venues",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "national_title_counts",
+      "label": "World Cup Title Counts by Nation",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "world_cup_goal_tallies",
+      "label": "World Cup Career/Tournament Goal Counts",
+      "factCount": 20,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "golden_ball_winners_mens",
+      "label": "Men's World Cup Golden Ball Winners",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 4
+    },
+    {
+      "id": "golden_ball_winners_womens",
+      "label": "Women's World Cup Golden Ball Winners",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "golden_boot_winners_mens",
+      "label": "Men's World Cup Golden Boot Winners",
+      "factCount": 18,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "golden_boot_winners_womens",
+      "label": "Women's World Cup Golden Boot Winners",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "match_outcomes_notable",
+      "label": "Notable World Cup Match Scorelines",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about sports_entertainment",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "deckId": "chinese_hsk3",
+  "name": "Chinese HSK 3 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "chinese",
+  "category": "vocabulary",
+  "factCount": 915,
+  "poolCount": 3,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "zh-hsk-1194",
+      "question": "What does \"把\" (bǎ) mean?",
+      "answer": "to hold; to grasp",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "verb",
+      "targetWord": "把"
+    },
+    {
+      "id": "zh-hsk-1195",
+      "question": "What does \"被\" (bèi) mean?",
+      "answer": "quilt",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "noun",
+      "targetWord": "被"
+    },
+    {
+      "id": "zh-hsk-1196",
+      "question": "What does \"就是\" (jiù shì) mean?",
+      "answer": "exactly; precisely",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "adverb",
+      "targetWord": "就是"
+    },
+    {
+      "id": "zh-hsk-1197",
+      "question": "What does \"需要\" (xū yào) mean?",
+      "answer": "to need",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "verb",
+      "targetWord": "需要"
+    },
+    {
+      "id": "zh-hsk-1198",
+      "question": "What does \"并\" (bìng) mean?",
+      "answer": "and",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "conjunction",
+      "targetWord": "并"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 915,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Chinese Words",
+      "factCount": 915,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "reading_pinyin",
+      "label": "Pinyin Readings",
+      "factCount": 915,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "zh"
+  }
+}

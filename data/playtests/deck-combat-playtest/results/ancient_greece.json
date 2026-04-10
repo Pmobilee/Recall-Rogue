@@ -1,0 +1,168 @@
+{
+  "deckId": "ancient_greece",
+  "category": "knowledge",
+  "name": "Ancient Greece",
+  "encounters": 2,
+  "totalCardsPlayed": 21,
+  "totalQuizzes": 21,
+  "quizSamples": [
+    {
+      "factId": "wwii_rtw_anglo_polish_two_stages",
+      "question": "Britain's commitment to defend Poland in 1939 actually happened in two separate stages. What were they, and when?",
+      "choices": [
+        "Mar and Aug treaties",
+        "Mustard gas; no oil ban",
+        "never surrendered",
+        "Slapping a soldier"
+      ],
+      "correctAnswer": "Mar and Aug treaties",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "history",
+      "cardType": "shield"
+    },
+    {
+      "factId": "philosophy_aw_stoicism_founder",
+      "question": "Who founded the Stoic school around 300 BCE in Athens, lecturing at the Stoa Poikile (Painted Porch) after studying under the Cynic Crates?",
+      "choices": [
+        "Zeno of Citium",
+        "Gorgias",
+        "Zhuangzi",
+        "Plato"
+      ],
+      "correctAnswer": "Zeno of Citium",
+      "correctIndex": 0,
+      "choiceCount": 4,
+      "domain": "general_knowledge",
+      "cardType": "attack"
+    },
+    {
+      "factId": "ss_sociology_stanford_prison",
+      "question": "Who conducted the 1971 Stanford Prison Experiment on social roles and behavior?",
+      "choices": [
+        "Stanley Milgram",
+        "Solomon Asch",
+        "Philip Zimbardo",
+        "Albert Bandura"
+      ],
+      "correctAnswer": "Philip Zimbardo",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "general_knowledge",
+      "cardType": "attack"
+    },
+    {
+      "factId": "solar_system_asteroid_belt_location",
+      "question": "The asteroid belt lies between Mars and which other planet?",
+      "choices": [
+        "Pluto",
+        "Jupiter",
+        "Saturn",
+        "Earth"
+      ],
+      "correctAnswer": "Jupiter",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "space_astronomy",
+      "cardType": "attack"
+    },
+    {
+      "factId": "philosophy_em_bayle_dictionary",
+      "question": "What 1697 reference work by Pierre Bayle — called the 'Arsenal of the Enlightenment' by Ernst Cassirer — catalogued errors and contradictions in prior scholarship with skeptical commentary?",
+      "choices": [
+        "The Methods of Ethics",
+        "Two Dogmas of Empiricism",
+        "Religion and Nothingness",
+        "Historical and Critical Dictionary"
+      ],
+      "correctAnswer": "Historical and Critical Dictionary",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "general_knowledge",
+      "cardType": "shield"
+    },
+    {
+      "factId": "ap_bio_induced_fit",
+      "question": "What is the name of the current model of enzyme-substrate interaction, in which the active site changes shape slightly upon substrate binding?",
+      "choices": [
+        "Translation",
+        "DNA methylation",
+        "Induced fit model",
+        "Lock-and-key model"
+      ],
+      "correctAnswer": "Induced fit model",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "natural_sciences",
+      "cardType": "shield"
+    },
+    {
+      "factId": "natural_sciences-alcohols-arabic-origin",
+      "question": "What did the Arabic word 'al-kuhl' (root of 'alcohol') originally refer to?",
+      "choices": [
+        "A sacred offering",
+        "A medicinal herb",
+        "A fine powder (kohl)",
+        "A burning liquid"
+      ],
+      "correctAnswer": "A fine powder (kohl)",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "natural_sciences",
+      "cardType": "shield"
+    },
+    {
+      "factId": "lit_anc_nights_narrator",
+      "question": "Which fictional narrator tells stories to King Shahryar across 1,001 nights to prevent her own execution?",
+      "choices": [
+        "Miss Havisham",
+        "Edward Rochester",
+        "Gregor Samsa",
+        "Scheherazade"
+      ],
+      "correctAnswer": "Scheherazade",
+      "correctIndex": 3,
+      "choiceCount": 4,
+      "domain": "art_architecture",
+      "cardType": "shield"
+    },
+    {
+      "factId": "natural_sciences-alcohols-arabic-origin",
+      "question": "What did the Arabic word 'al-kuhl' (root of 'alcohol') originally refer to?",
+      "choices": [
+        "A trade commodity",
+        "A type of grain",
+        "A fine powder (kohl)",
+        "A sacred offering"
+      ],
+      "correctAnswer": "A fine powder (kohl)",
+      "correctIndex": 2,
+      "choiceCount": 4,
+      "domain": "natural_sciences",
+      "cardType": "shield"
+    },
+    {
+      "factId": "ap_bio_induced_fit",
+      "question": "What is the name of the current model of enzyme-substrate interaction, in which the active site changes shape slightly upon substrate binding?",
+      "choices": [
+        "DNA methylation",
+        "Induced fit model",
+        "Lock-and-key model",
+        "Translation"
+      ],
+      "correctAnswer": "Induced fit model",
+      "correctIndex": 1,
+      "choiceCount": 4,
+      "domain": "natural_sciences",
+      "cardType": "shield"
+    }
+  ],
+  "issues": [],
+  "status": "PASS",
+  "rawErrors": [],
+  "screenshotPaths": [
+    "/tmp/rr-test-output/deck-batch-0_none_1775789151980/screenshot.png",
+    "/tmp/rr-test-output/deck-batch-0_none_1775789151980/ancient_greece-enc1.png"
+  ],
+  "containerPort": 3204
+}

@@ -1,0 +1,142 @@
+{
+  "deckId": "japanese_n3_grammar",
+  "name": "Japanese N3 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "japanese_grammar",
+  "category": "grammar",
+  "factCount": 670,
+  "poolCount": 10,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "ja-gram-n3-1304-fill-0",
+      "question": "食べ過ぎて、イチゴ{___}食べられない。\n(I am so full I could not [even] eat a strawberry.)",
+      "answer": "さえ",
+      "poolId": "particle_post_noun",
+      "distractorCount": 20,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "さえ"
+    },
+    {
+      "id": "ja-gram-n3-1304-fill-1",
+      "question": "食べ物がなくなれば、人間はネズミ{___}食べる。\n(If there is no food, humans would [even] eat a mouse.)",
+      "answer": "さえ",
+      "poolId": "particle_post_noun",
+      "distractorCount": 10,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "さえ"
+    },
+    {
+      "id": "ja-gram-n3-1304-fill-2",
+      "question": "ほとんどの人がその存在{___}知らないようなこと\n(thing which most people don't [even] know exists)",
+      "answer": "さえ",
+      "poolId": "particle_post_noun",
+      "distractorCount": 10,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "さえ"
+    },
+    {
+      "id": "ja-gram-n3-1304-fill-3",
+      "question": "ソースコードを見つけられ{___}しないのに、開発するなんてもってのほかだ。\n(they can't [even] -find- the source code, let alone finish developing it!)",
+      "answer": "さえ",
+      "poolId": "particle_post_noun",
+      "distractorCount": 10,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "さえ"
+    },
+    {
+      "id": "ja-gram-n3-1304-fill-4",
+      "question": "定規を使って{___}、まっすぐに線が引けない。\n([Even] using a ruler, he cannot draw a straight line.)",
+      "answer": "さえ",
+      "poolId": "particle_post_noun",
+      "distractorCount": 20,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "さえ"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "grammar_all",
+      "label": "All Grammar Points",
+      "factCount": 670,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "particle_post_noun",
+      "label": "Post-noun particles",
+      "factCount": 156,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "clause_connector",
+      "label": "Clause connectors",
+      "factCount": 127,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "particle_post_verb",
+      "label": "Post-verb expressions",
+      "factCount": 30,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "adverbial",
+      "label": "Adverbial expressions",
+      "factCount": 113,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "sentence_ender",
+      "label": "Sentence-final",
+      "factCount": 212,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "verb_suffix",
+      "label": "Verb stem suffixes",
+      "factCount": 37,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "te_form_auxiliary",
+      "label": "Te-form auxiliaries",
+      "factCount": 38,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "conditional",
+      "label": "Conditional forms",
+      "factCount": 20,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "copula_form",
+      "label": "Copula/state forms",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

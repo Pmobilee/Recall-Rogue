@@ -1,0 +1,262 @@
+{
+  "deckId": "world_religions",
+  "name": "World Religions",
+  "domain": "mythology_folklore",
+  "subDomain": "world_religions",
+  "category": "knowledge",
+  "factCount": 377,
+  "poolCount": 26,
+  "subDeckCount": 7,
+  "subDeckNames": [
+    "Christianity",
+    "Islam",
+    "Judaism",
+    "Hinduism",
+    "Buddhism",
+    "Sikhism",
+    "Other Living Religions"
+  ],
+  "samples": [
+    {
+      "id": "world_religions_chr_nativity",
+      "question": "According to the Gospels, in which city was Jesus born?",
+      "answer": "Bethlehem",
+      "poolId": "holy_site_names_long",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "world_religions_chr_baptism_john",
+      "question": "According to the Gospels, who baptized Jesus in the Jordan River?",
+      "answer": "John the Baptist",
+      "poolId": "religious_figure_names",
+      "distractorCount": 9,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "world_religions_chr_twelve_apostles",
+      "question": "How many apostles did Jesus choose as his closest disciples, according to the Gospels?",
+      "answer": "{12}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 0,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "world_religions_chr_peter_rock",
+      "question": "Which apostle did Jesus call 'the rock' on whom he would build his Church, according to Matthew's Gospel?",
+      "answer": "Peter",
+      "poolId": "religious_figure_names_short",
+      "distractorCount": 9,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "world_religions_chr_good_samaritan",
+      "question": "Which parable of Jesus tells the story of a traveler who helps a stranger beaten by robbers, regardless of their ethnic ",
+      "answer": "Good Samaritan",
+      "poolId": "religious_concept_names",
+      "distractorCount": 9,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "bodhisattva_and_buddhist_figures_short",
+      "label": "Buddhist Figures (short)",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "bodhisattva_and_buddhist_figures_long",
+      "label": "Buddhist Figures (long)",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Dates & Numbers",
+      "factCount": 32,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "building_type_names_short",
+      "label": "Building Type Names (short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "building_type_names_long",
+      "label": "Building Type Names (long)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "denomination_names_short",
+      "label": "Denomination Names (short)",
+      "factCount": 21,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "denomination_names_long",
+      "label": "Denomination Names (long)",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "founder_names_short",
+      "label": "Founder Names (short)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "founder_names_long",
+      "label": "Founder Names (long)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "hindu_deity_names",
+      "label": "Hindu Deity Names",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    },
+    {
+      "id": "holy_day_names_short",
+      "label": "Holy Day Names (short)",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "holy_day_names_long",
+      "label": "Holy Day Names (long)",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    },
+    {
+      "id": "holy_site_names_short",
+      "label": "Holy Site Names (short)",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "holy_site_names_long",
+      "label": "Holy Site Names (long)",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 1
+    },
+    {
+      "id": "religious_concept_names",
+      "label": "Religious Concept Names (Medium)",
+      "factCount": 31,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "religious_figure_names",
+      "label": "Religious Figure Names",
+      "factCount": 27,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "religious_object_names_short",
+      "label": "Religious Object Names (short)",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "religious_object_names_long",
+      "label": "Religious Object Names (long)",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "religious_practice_names_short",
+      "label": "Religious Practice Names (short)",
+      "factCount": 16,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "religious_practice_names_long",
+      "label": "Religious Practice Names (long)",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "sacred_text_names",
+      "label": "Sacred Text Names",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "religious_concept_names_short",
+      "label": "Religious Concept Names (Short) (short)",
+      "factCount": 25,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "religious_concept_names_long",
+      "label": "Religious Concept Names (Short) (long)",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "religious_concept_names_long",
+      "label": "Religious Concept Names (Long)",
+      "factCount": 7,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "religious_figure_names_short",
+      "label": "Religious Figure Names (Short)",
+      "factCount": 31,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "sacred_text_names_short",
+      "label": "Sacred Text Names (Short)",
+      "factCount": 7,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about mythology_folklore",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

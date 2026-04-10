@@ -1,0 +1,110 @@
+{
+  "deckId": "solar_system",
+  "name": "Solar System",
+  "domain": "space_astronomy",
+  "subDomain": "solar_system",
+  "category": "knowledge",
+  "factCount": 76,
+  "poolCount": 5,
+  "subDeckCount": 2,
+  "subDeckNames": [
+    "The Planets & the Sun",
+    "Moons, Missions & Deep Space"
+  ],
+  "samples": [
+    {
+      "id": "solar_system_jupiter_largest",
+      "question": "What is the largest planet in the solar system?",
+      "answer": "Jupiter",
+      "poolId": "planet_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "solar_system_jupiter_great_red_spot",
+      "question": "Which planet has a centuries-old storm called the Great Red Spot?",
+      "answer": "Jupiter",
+      "poolId": "planet_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "solar_system_jupiter_moon_count",
+      "question": "As of 2026, how many known moons does Jupiter have?",
+      "answer": "{101}",
+      "poolId": "bracket_numbers",
+      "distractorCount": 0,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "solar_system_jupiter_galilean_moons",
+      "question": "Io, Europa, Ganymede, and Callisto are moons of which planet?",
+      "answer": "Jupiter",
+      "poolId": "planet_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "solar_system_jupiter_fits_all_planets",
+      "question": "Which planet could fit all other solar system planets inside it?",
+      "answer": "Jupiter",
+      "poolId": "planet_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "planet_names",
+      "label": "Planet Names",
+      "factCount": 39,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "bracket_numbers",
+      "label": "Numeric Values",
+      "factCount": 5,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "moon_names",
+      "label": "Moon Names",
+      "factCount": 11,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "moon_names_outer",
+      "label": "Outer Moon Names",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "mission_names",
+      "label": "Space Mission Names",
+      "factCount": 15,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about space_astronomy",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

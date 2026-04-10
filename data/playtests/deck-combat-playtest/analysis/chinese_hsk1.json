@@ -1,0 +1,94 @@
+{
+  "deckId": "chinese_hsk1",
+  "name": "Chinese HSK 1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "chinese",
+  "category": "vocabulary",
+  "factCount": 466,
+  "poolCount": 3,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "zh-hsk-2",
+      "question": "What does \"了\" (le) mean?",
+      "answer": "completion marker",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "particle",
+      "targetWord": "了"
+    },
+    {
+      "id": "zh-hsk-3",
+      "question": "What does \"我\" (wǒ) mean?",
+      "answer": "I",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "pronoun",
+      "targetWord": "我"
+    },
+    {
+      "id": "zh-hsk-4",
+      "question": "What does \"是\" (shì) mean?",
+      "answer": "to be",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "verb",
+      "targetWord": "是"
+    },
+    {
+      "id": "zh-hsk-5",
+      "question": "What does \"你\" (nǐ) mean?",
+      "answer": "you",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "pronoun",
+      "targetWord": "你"
+    },
+    {
+      "id": "zh-hsk-6",
+      "question": "What does \"在\" (zài) mean?",
+      "answer": "to be at",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "zh",
+      "partOfSpeech": "verb",
+      "targetWord": "在"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 466,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Chinese Words",
+      "factCount": 466,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "reading_pinyin",
+      "label": "Pinyin Readings",
+      "factCount": 466,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "zh"
+  }
+}

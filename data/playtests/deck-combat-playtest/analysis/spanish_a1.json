@@ -1,0 +1,87 @@
+{
+  "deckId": "spanish_a1",
+  "name": "Spanish A1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "spanish",
+  "category": "vocabulary",
+  "factCount": 1546,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "es-cefr-1",
+      "question": "What does \"abajo\" mean?",
+      "answer": "down, downwards",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "preposition",
+      "targetWord": "abajo"
+    },
+    {
+      "id": "es-cefr-2",
+      "question": "What does \"abandonar\" mean?",
+      "answer": "to abandon",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "verb",
+      "targetWord": "abandonar"
+    },
+    {
+      "id": "es-cefr-3",
+      "question": "What does \"abogado\" mean?",
+      "answer": "lawyer, solicitor",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "abogado"
+    },
+    {
+      "id": "es-cefr-4",
+      "question": "What does \"abrazo\" mean?",
+      "answer": "hug, embrace",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "abrazo"
+    },
+    {
+      "id": "es-cefr-5",
+      "question": "What does \"abrir\" mean?",
+      "answer": "to open",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "verb",
+      "targetWord": "abrir"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 1546,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Spanish Words",
+      "factCount": 1546,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "es"
+  }
+}

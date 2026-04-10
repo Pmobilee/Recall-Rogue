@@ -1,0 +1,87 @@
+{
+  "deckId": "spanish_b1",
+  "name": "Spanish B1 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "spanish",
+  "category": "vocabulary",
+  "factCount": 596,
+  "poolCount": 2,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "es-cefr-2420",
+      "question": "What does \"abrigo\" mean?",
+      "answer": "overcoat",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "abrigo"
+    },
+    {
+      "id": "es-cefr-2421",
+      "question": "What does \"absoluto\" mean?",
+      "answer": "absolute",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "absoluto"
+    },
+    {
+      "id": "es-cefr-2422",
+      "question": "What does \"absurdo\" mean?",
+      "answer": "absurd",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "absurdo"
+    },
+    {
+      "id": "es-cefr-2423",
+      "question": "What does \"abundancia\" mean?",
+      "answer": "abundance",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "noun",
+      "targetWord": "abundancia"
+    },
+    {
+      "id": "es-cefr-2424",
+      "question": "What does \"acampar\" mean?",
+      "answer": "to camp",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "verb",
+      "targetWord": "acampar"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 596,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Spanish Words",
+      "factCount": 596,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "es"
+  }
+}

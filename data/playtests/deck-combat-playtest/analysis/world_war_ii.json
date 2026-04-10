@@ -1,0 +1,159 @@
+{
+  "deckId": "world_war_ii",
+  "name": "World War II",
+  "domain": "history",
+  "subDomain": "world_war_ii",
+  "category": "knowledge",
+  "factCount": 735,
+  "poolCount": 10,
+  "subDeckCount": 16,
+  "subDeckNames": [
+    "Road to War (1919-1939)",
+    "Western Front",
+    "Eastern Front",
+    "Pacific Theater",
+    "China & Southeast Asia",
+    "North Africa & Mediterranean",
+    "Allied Leaders & Commanders",
+    "Axis Leaders & Commanders",
+    "The Holocaust",
+    "Technology & Weapons",
+    "Naval & Air Warfare",
+    "Home Front & Civilians",
+    "Resistance & Espionage",
+    "Alliances & Diplomacy",
+    "Aftermath & Legacy",
+    "Wartime Culture & Propaganda"
+  ],
+  "samples": [
+    {
+      "id": "wwii_ad_atlantic_charter_date",
+      "question": "On what date did Churchill and FDR secretly meet off the coast of Newfoundland and issue the Atlantic Charter?",
+      "answer": "Aug 14, 1941",
+      "poolId": "year_dates",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "wwii_ad_atlantic_charter_principles",
+      "question": "How many principles were laid out in the Atlantic Charter signed by Churchill and FDR in August 1941?",
+      "answer": "{8}",
+      "poolId": "bracket_counts",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "wwii_ad_tripartite_pact_date",
+      "question": "On what date did Germany, Italy, and Japan sign the Tripartite Pact in Berlin, formally creating the Axis alliance?",
+      "answer": "Sep 27, 1940",
+      "poolId": "year_dates",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "wwii_ad_tripartite_pact_aim",
+      "question": "What was the primary strategic aim of the Tripartite Pact (1940) — the alliance between Germany, Italy, and Japan?",
+      "answer": "Deter U.S. entry into the war",
+      "poolId": "historical_events",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "wwii_ad_casablanca_unconditional_surrender",
+      "question": "What controversial Allied policy, announced at the Casablanca Conference in January 1943, required Axis powers to this w",
+      "answer": "Unconditional surrender",
+      "poolId": "historical_events",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "battle_names",
+      "label": "Battle Names",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "place_names",
+      "label": "Place Names",
+      "factCount": 58,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "year_dates",
+      "label": "Year/Dates",
+      "factCount": 159,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "number_stats",
+      "label": "Number Statistics",
+      "factCount": 108,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "military_terms",
+      "label": "Military Terms",
+      "factCount": 75,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "famous_quotes",
+      "label": "Famous Quotes",
+      "factCount": 30,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "historical_events",
+      "label": "Historical Events",
+      "factCount": 167,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "person_names",
+      "label": "Person Names",
+      "factCount": 67,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "organization_names",
+      "label": "Organization Names",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 2
+    },
+    {
+      "id": "bracket_counts",
+      "label": "Count Numbers",
+      "factCount": 51,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about history",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

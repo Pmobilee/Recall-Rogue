@@ -1,0 +1,231 @@
+{
+  "deckId": "spanish_a2_grammar",
+  "name": "Spanish A2 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "spanish_grammar",
+  "category": "grammar",
+  "factCount": 177,
+  "poolCount": 25,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Preterite",
+    "Imperfect",
+    "Perfect & Progressive",
+    "Object Pronouns",
+    "Reflexive Verbs",
+    "Comparatives & Superlatives",
+    "Por, Para & Future",
+    "Imperative & Impersonal"
+  ],
+  "samples": [
+    {
+      "id": "es-gram-a2-por-causa-0",
+      "question": "Lo hago {___} ti — quiero ayudarte.\n(I do it for you — I want to help you. [on your behalf])",
+      "answer": "por",
+      "poolId": "por_para_choice",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "por"
+    },
+    {
+      "id": "es-gram-a2-por-gracias-0",
+      "question": "Gracias {___} todo.\n(Thank you for everything.)",
+      "answer": "por",
+      "poolId": "por_para_choice",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "por"
+    },
+    {
+      "id": "es-gram-a2-por-exchange-0",
+      "question": "Pagué diez euros {___} el libro.\n(I paid ten euros for the book.)",
+      "answer": "por",
+      "poolId": "por_para_choice",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "por"
+    },
+    {
+      "id": "es-gram-a2-por-tiempo-manana-0",
+      "question": "Normalmente estudio {___} la tarde.\n(I usually study in the afternoon.)",
+      "answer": "por",
+      "poolId": "por_para_choice",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "por"
+    },
+    {
+      "id": "es-gram-a2-por-razon-0",
+      "question": "Estaba enfermo, {___} no fui al trabajo.\n(I was sick, that's why I didn't go to work.)",
+      "answer": "por eso",
+      "poolId": "por_para_choice",
+      "distractorCount": 0,
+      "language": "es",
+      "partOfSpeech": "grammar",
+      "targetWord": "por eso"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "preterite_ar",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "preterite_er_ir",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "preterite_ser_ir",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "preterite_estar",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "preterite_tener_hacer",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "preterite_decir_ver_dar",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "preterite_poder_poner_venir",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "preterite_querer_saber",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 13
+    },
+    {
+      "id": "preterite_time_expressions",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "imperfect_ar",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "imperfect_er_ir",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "imperfect_ser",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "imperfect_ir",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "imperfect_ver",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 12
+    },
+    {
+      "id": "past_participles_irregular",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "haber_forms",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "do_pronouns",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "io_pronouns",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "reflexive_conjugations",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "gerund_forms",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "comparative_words",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "comparative_irregular",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "imperative_tu",
+      "factCount": 15,
+      "hasSynthetics": true,
+      "syntheticCount": 11
+    },
+    {
+      "id": "por_para_choice",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "muy_mucho_forms",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

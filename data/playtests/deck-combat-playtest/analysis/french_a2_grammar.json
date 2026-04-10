@@ -1,0 +1,231 @@
+{
+  "deckId": "french_a2_grammar",
+  "name": "French A2 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "french_grammar",
+  "category": "grammar",
+  "factCount": 354,
+  "poolCount": 25,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Passé Composé",
+    "Imparfait",
+    "Futur Simple",
+    "Pronoms COD & COI",
+    "Pronoms Y & En",
+    "Verbes Pronominaux au Passé",
+    "Comparatifs & Superlatifs",
+    "Impératif & Structures"
+  ],
+  "samples": [
+    {
+      "id": "fr-gram-a2-pc-avoir-parler-je-0",
+      "question": "{___} de musique.\n(I talked about music.)",
+      "answer": "j'ai parlé",
+      "poolId": "passe_compose_avoir_forms",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "j'ai parlé"
+    },
+    {
+      "id": "fr-gram-a2-pc-avoir-parler-je-1",
+      "question": "{___} à des amis.\n(I talked to friends.)",
+      "answer": "j'ai parlé",
+      "poolId": "passe_compose_avoir_forms",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "j'ai parlé"
+    },
+    {
+      "id": "fr-gram-a2-pc-avoir-parler-participle-0",
+      "question": "J'ai {___} de musique.\n(I talked about music.)",
+      "answer": "parlé",
+      "poolId": "past_participles_regular",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "parlé"
+    },
+    {
+      "id": "fr-gram-a2-pc-avoir-manger-je-0",
+      "question": "{___} du caviar.\n(I ate caviar.)",
+      "answer": "j'ai mangé",
+      "poolId": "passe_compose_avoir_forms",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "j'ai mangé"
+    },
+    {
+      "id": "fr-gram-a2-pc-avoir-manger-participle-0",
+      "question": "J'ai {___} du caviar.\n(I ate caviar.)",
+      "answer": "mangé",
+      "poolId": "past_participles_regular",
+      "distractorCount": 0,
+      "language": "fr",
+      "partOfSpeech": "grammar",
+      "targetWord": "mangé"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "passe_compose_avoir_forms",
+      "factCount": 26,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "passe_compose_etre_forms",
+      "factCount": 32,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "past_participles_regular",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "past_participles_irregular",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "imparfait_regular",
+      "factCount": 29,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "imparfait_etre",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "futur_simple_irregular_stems",
+      "factCount": 21,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "futur_simple_forms",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "cod_pronouns",
+      "factCount": 22,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "coi_pronouns",
+      "factCount": 14,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "y_pronoun_uses",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "en_pronoun_uses",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "reflexive_passe_forms",
+      "factCount": 24,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "comparatif_plus_moins_aussi",
+      "factCount": 13,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "superlatif_forms",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "comparatif_irregular",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "imperatif_tu_forms",
+      "factCount": 15,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    },
+    {
+      "id": "imperatif_nous_vous_forms",
+      "factCount": 16,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "conditionnel_politesse_forms",
+      "factCount": 19,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "si_present_structures",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "connecteurs_logiques",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "time_expressions_passe",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "depuis_pendant_ilya",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "adverbes_ment",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 7
+    },
+    {
+      "id": "relatif_qui_que",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

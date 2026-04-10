@@ -1,0 +1,125 @@
+{
+  "deckId": "japanese_n3",
+  "name": "Japanese N3 Vocabulary",
+  "domain": "vocabulary",
+  "subDomain": "japanese",
+  "category": "vocabulary",
+  "factCount": 3091,
+  "poolCount": 7,
+  "subDeckCount": 2,
+  "subDeckNames": [
+    "Vocabulary",
+    "Kanji"
+  ],
+  "samples": [
+    {
+      "id": "ja-jlpt-1360",
+      "question": "What does \"ＯＵＴ\" (アウト) mean?",
+      "answer": "out",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "noun",
+      "targetWord": "ＯＵＴ"
+    },
+    {
+      "id": "ja-jlpt-1361",
+      "question": "What does \"アイスクリーム\" (アイスクリーム) mean?",
+      "answer": "ice cream",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "noun",
+      "targetWord": "アイスクリーム"
+    },
+    {
+      "id": "ja-jlpt-1362",
+      "question": "What does \"アップ\" (アップ) mean?",
+      "answer": "rise",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "noun",
+      "targetWord": "アップ"
+    },
+    {
+      "id": "ja-jlpt-1363",
+      "question": "What does \"あら\" (あら) mean?",
+      "answer": "oh!",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "interjection",
+      "targetWord": "あら"
+    },
+    {
+      "id": "ja-jlpt-1364",
+      "question": "What does \"アルバム\" (アルバム) mean?",
+      "answer": "album",
+      "poolId": "english_meanings",
+      "distractorCount": 0,
+      "language": "ja",
+      "partOfSpeech": "noun",
+      "targetWord": "アルバム"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "english_meanings",
+      "label": "English Meanings",
+      "factCount": 1990,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "target_language_words",
+      "label": "Japanese Words",
+      "factCount": 1990,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "reading_hiragana",
+      "label": "Hiragana Readings",
+      "factCount": 1990,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "kanji_meanings",
+      "label": "English meanings of kanji",
+      "factCount": 367,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "kanji_onyomi",
+      "label": "On'yomi readings (katakana)",
+      "factCount": 185,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "kanji_kunyomi",
+      "label": "Kun'yomi readings (hiragana)",
+      "factCount": 182,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "kanji_characters",
+      "label": "Kanji characters",
+      "factCount": 367,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "What does \"word\" mean? / How do you say \"X\" in Y?",
+    "answerStyle": "English meaning or target language word",
+    "distractorSource": "same part-of-speech pool",
+    "expectedChoices": "3-5",
+    "language": "ja"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "deckId": "us_presidents",
+  "name": "US Presidents",
+  "domain": "history",
+  "subDomain": "american_government",
+  "category": "knowledge",
+  "factCount": 126,
+  "poolCount": 4,
+  "subDeckCount": 2,
+  "subDeckNames": [
+    "Landmark Presidents",
+    "The Complete Oval Office"
+  ],
+  "samples": [
+    {
+      "id": "pres_washington_unanimous",
+      "question": "Which president is the ONLY one ever elected unanimously by the Electoral College — twice?",
+      "answer": "George Washington",
+      "poolId": "president_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "pres_washington_noparty",
+      "question": "Which president is the only one who never belonged to a political party?",
+      "answer": "George Washington",
+      "poolId": "president_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "pres_adams_j_oneterm",
+      "question": "Which Founding Father president lost his re-election bid and became the first president to be voted out of office?",
+      "answer": "John Adams",
+      "poolId": "president_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "pres_jefferson_louisiana",
+      "question": "Which president doubled the size of the United States with the Louisiana Purchase?",
+      "answer": "Thomas Jefferson",
+      "poolId": "president_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "pres_jefferson_died_july4",
+      "question": "Which president died on July 4th, 1826 — the exact 50th anniversary of American independence — on the same day as John A",
+      "answer": "Thomas Jefferson",
+      "poolId": "president_names",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "president_names",
+      "label": "President Names",
+      "factCount": 104,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "party_names",
+      "label": "Political Party Names",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "home_states",
+      "label": "Home States",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "inauguration_years",
+      "label": "Inauguration Years",
+      "factCount": 8,
+      "hasSynthetics": true,
+      "syntheticCount": 20
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about history",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}

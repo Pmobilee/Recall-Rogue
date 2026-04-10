@@ -1,0 +1,128 @@
+{
+  "deckId": "japanese_n5_grammar",
+  "name": "Japanese N5 Grammar",
+  "domain": "vocabulary",
+  "subDomain": "japanese_grammar",
+  "category": "grammar",
+  "factCount": 375,
+  "poolCount": 8,
+  "subDeckCount": 0,
+  "subDeckNames": [],
+  "samples": [
+    {
+      "id": "ja-gram-n5-n5-particle-ga-subject-fill-0",
+      "question": "バス{___}来るよ。\n(The bus is coming!)",
+      "answer": "が",
+      "poolId": "particle_case",
+      "distractorCount": 10,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "が"
+    },
+    {
+      "id": "ja-gram-n5-n5-particle-ga-subject-fill-1",
+      "question": "台所にテレビ{___}あります。\n(There is a television in the kitchen.)",
+      "answer": "が",
+      "poolId": "particle_case",
+      "distractorCount": 9,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "が"
+    },
+    {
+      "id": "ja-gram-n5-n5-particle-ga-subject-fill-2",
+      "question": "日本語{___}できます。\n(I can speak Japanese.)",
+      "answer": "が",
+      "poolId": "particle_case",
+      "distractorCount": 8,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "が"
+    },
+    {
+      "id": "ja-gram-n5-n5-particle-ga-subject-fill-3",
+      "question": "猫{___}好きです。\n(I like cats.)",
+      "answer": "が",
+      "poolId": "particle_case",
+      "distractorCount": 9,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "が"
+    },
+    {
+      "id": "ja-gram-n5-n5-particle-ga-subject-fill-4",
+      "question": "だれ{___}来ましたか。\n(Who came?)",
+      "answer": "が",
+      "poolId": "particle_case",
+      "distractorCount": 10,
+      "language": "ja",
+      "partOfSpeech": "grammar",
+      "targetWord": "が"
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "grammar_all",
+      "label": "All N5 Grammar Points",
+      "factCount": 375,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "particle_case",
+      "label": "Case Particles",
+      "factCount": 114,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "question_word",
+      "label": "Question Words (疑問詞)",
+      "factCount": 22,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "verb_form",
+      "label": "Verb Forms & Conjugations",
+      "factCount": 149,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "demonstrative",
+      "label": "Demonstratives (ko-so-a-do)",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "existence_pattern",
+      "label": "Existence Patterns",
+      "factCount": 9,
+      "hasSynthetics": true,
+      "syntheticCount": 6
+    },
+    {
+      "id": "sentence_ender",
+      "label": "Sentence-Final Particles",
+      "factCount": 60,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "adjective_form",
+      "label": "Adjective Forms",
+      "factCount": 6,
+      "hasSynthetics": true,
+      "syntheticCount": 9
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice (may have fill-in-blank {___})",
+    "questionStyle": "conjugation / sentence completion / grammar point",
+    "answerStyle": "conjugated form or grammar structure",
+    "distractorSource": "same-tense/same-pattern forms",
+    "expectedChoices": "3-5"
+  }
+}

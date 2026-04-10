@@ -1,0 +1,156 @@
+{
+  "deckId": "ap_physics_1",
+  "name": "AP Physics 1: Algebra-Based",
+  "domain": "natural_sciences",
+  "subDomain": "physics",
+  "category": "knowledge",
+  "factCount": 326,
+  "poolCount": 12,
+  "subDeckCount": 8,
+  "subDeckNames": [
+    "Kinematics",
+    "Force & Translational Dynamics",
+    "Work, Energy & Power",
+    "Linear Momentum",
+    "Torque & Rotational Dynamics",
+    "Energy & Momentum of Rotating Systems",
+    "Oscillations",
+    "Fluids"
+  ],
+  "samples": [
+    {
+      "id": "ap_phys1_scalar_def",
+      "question": "What type of physical quantity has magnitude only and no direction?",
+      "answer": "Scalar (magnitude only)",
+      "poolId": "term_definitions",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_phys1_vector_def",
+      "question": "What type of physical quantity requires both magnitude AND direction to fully describe it?",
+      "answer": "Vector (magnitude + direction)",
+      "poolId": "term_definitions",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_phys1_distance_scalar",
+      "question": "Which quantity measures total path length traveled and is a scalar (not a vector)?",
+      "answer": "Distance (total path length)",
+      "poolId": "quantity_definitions",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_phys1_displacement_def",
+      "question": "What vector quantity equals the change in position from start to finish, regardless of path taken?",
+      "answer": "Displacement (net change)",
+      "poolId": "quantity_definitions",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    },
+    {
+      "id": "ap_phys1_displacement_equation",
+      "question": "What equation defines displacement (Δx) in one dimension?",
+      "answer": "Δx = x − x₀",
+      "poolId": "physics_short_formulas",
+      "distractorCount": 8,
+      "language": null,
+      "partOfSpeech": null,
+      "targetWord": null
+    }
+  ],
+  "poolSummary": [
+    {
+      "id": "term_definitions",
+      "factCount": 37,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "equation_identifiers",
+      "factCount": 31,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "physics_short_formulas",
+      "label": "Physics Short Formulas (7-13 chars)",
+      "factCount": 19,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "law_principle_names",
+      "factCount": 17,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "force_type_names",
+      "factCount": 5,
+      "hasSynthetics": true,
+      "syntheticCount": 10
+    },
+    {
+      "id": "quantity_definitions",
+      "factCount": 15,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "unit_conversions",
+      "factCount": 12,
+      "hasSynthetics": true,
+      "syntheticCount": 3
+    },
+    {
+      "id": "graph_interpretations",
+      "factCount": 10,
+      "hasSynthetics": true,
+      "syntheticCount": 5
+    },
+    {
+      "id": "bracket_numbers",
+      "factCount": 6,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "rotational_quantities",
+      "factCount": 7,
+      "hasSynthetics": true,
+      "syntheticCount": 8
+    },
+    {
+      "id": "concept_statements",
+      "label": "Physics Concept",
+      "factCount": 123,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    },
+    {
+      "id": "equation_explanations",
+      "label": "Equation Explanation",
+      "factCount": 44,
+      "hasSynthetics": false,
+      "syntheticCount": 0
+    }
+  ],
+  "expectedBehavior": {
+    "quizFormat": "multiple_choice",
+    "questionStyle": "factual question about natural_sciences",
+    "answerStyle": "short factual answer",
+    "distractorSource": "answer type pool (semantically related wrong answers)",
+    "expectedChoices": "3-5 (mastery-dependent)"
+  }
+}
