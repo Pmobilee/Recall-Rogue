@@ -1631,3 +1631,27 @@ Both return early WITHOUT mutating the screen store.
 - `src/services/gameFlowController.termination.test.ts` (MEDIUM-10) — 6 regression tests, including source-level invariant checks that parse the production source and assert `finishRunAndReturnToHub` never calls `currentScreen.set('hub')`
 - `docs/mechanics/combat.md` §"Run Termination State Machine" — documents all termination paths and the convergence invariant
 
+
+---
+
+### 2026-04-10 — Svelte 5 $derived ordering: must appear after referenced $derived variables
+
+**What:** In `CardCombatOverlay.svelte`, `isLowHp` and `isCriticalHp` were initially inserted near the top of the script block before `playerHpRatio` was declared. Typecheck reported "used before declaration" errors because Svelte 5 `$derived` does not allow forward references to other `$derived` variables in the same scope.
+
+**Fix:** Always declare `$derived` variables that depend on other `$derived` variables AFTER the ones they depend on. Check the declaration order before adding new derived state to large components.
+
+---
+
+### 2026-04-10 — CampSpriteButton tooltip prop not in Props interface
+
+**What:** After adding tooltip usage in functions and template, typecheck reported "Cannot find name 'tooltip'" because the prop was added to the function bodies and template but not to the `Props` interface or the `$props()` destructure list.
+
+**Fix:** Every new Svelte 5 prop needs to be: (1) added to the `interface Props { ... }` block, (2) added to the `let { ..., newProp } = $props()` destructure. Both are required. Missing either one causes TS errors in different places.
+
+---
+
+### 2026-04-10 — Write tool in Svelte environment can trigger LSP reformat
+
+**What:** Using the Write tool to overwrite a large `.svelte` file triggered the Svelte LSP formatter in the worktree, which reverted the new file content to the original.
+
+**Fix:** For large Svelte file rewrites, use `python3` subprocess directly to write the file, bypassing the Svelte LSP. Example: `python3 -c "open('file.svelte','w').write(content)"`.

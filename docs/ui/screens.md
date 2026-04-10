@@ -524,3 +524,104 @@ The `onback?: () => void` prop allows callers to override the back navigation. I
 | `questions` | `QuizQuestion[]` | Quiz questions to display. Empty array triggers empty state. |
 | `oncomplete` | `(correctFactIds: string[]) => void` | Called when quiz completes (with correct IDs) or back is clicked. |
 | `onback` | `() => void` (optional) | Override back navigation. Defaults to navigating to hub. |
+
+---
+
+## NarrativeOverlay — Auto-Dismiss & Skip Preference (MEDIUM-11, 2026-04-10)
+
+**Source file:** `src/ui/components/NarrativeOverlay.svelte`
+
+### Auto-Dismiss Timer
+Every narrative cutscene auto-dismisses after **10 seconds** (`AUTO_DISMISS_MS = 10_000`). A live countdown appears in the hint pill: `"click to dismiss  (Ns)"`. The timer resets whenever dialogue advances (next line, jump to end). Dismissing manually cancels the timer.
+
+### Hint Contrast
+The hint pill is a frosted glass pill with:
+- `background: rgba(255,255,255,0.12)` + `backdrop-filter: blur(8px)`
+- `border: 1px solid rgba(255,255,255,0.30)`
+- Font size: `calc(15px * var(--text-scale,1))` (was 12px)
+- Color: warm white `#fff8f0`
+
+### Persistent Skip Preference
+- `localStorage` key `setting_skipNarrativeOverlays`: if `"true"`, overlay immediately calls `beginDissolve()` on mount.
+- After **3 consecutive manual dismissals** (tracked via `setting_narrativeConsecutiveDismisses`), an "always skip?" toast appears.
+- Toast offers "Yes, always skip" (sets preference) or "No" (dismisses toast, resets counter).
+- `CONSECUTIVE_THRESHOLD = 3` — the threshold constant is at top of script.
+
+---
+
+## CardCombatOverlay — Low-HP Danger Signals (MEDIUM-12, 2026-04-10)
+
+**Source file:** `src/ui/components/CardCombatOverlay.svelte`
+
+### Low-HP Vignette
+When `playerHpRatio <= 0.40`, a `.low-hp-vignette` div appears over the combat canvas:
+- `radial-gradient` from transparent center to `rgba(180,0,0,0.25)` at edges
+- Pulses via `lowHpPulse` keyframes (3s ease-in-out infinite)
+- At `playerHpRatio <= 0.25` (critical): `.critical-hp` class activates stronger gradient + 1.5s pulse
+
+### HP Bar Breathing
+`.player-hp-fill.hp-critical` adds `brightness` keyframe breathing animation at ≤25% HP.
+
+### Damage Screen Shake
+When the player takes damage while `isLowHp`, `triggerDamageShake()` is called:
+- Applies `damage-shaking` class → `@keyframes damageShake` (50ms translate-X/Y, 150ms total)
+- Fires only when `!$reducedMotion` (respects `prefers-reduced-motion` via `reducedMotion` store)
+
+### Derived Variable Ordering
+`isLowHp` and `isCriticalHp` must be declared **after** `playerHpRatio` in the script block. Svelte 5 `$derived` cannot forward-reference other `$derived` variables.
+
+---
+
+## HubScreen + CampSpriteButton — Sprite Tooltips (MEDIUM-14, 2026-04-10)
+
+**Source files:** `src/ui/components/HubScreen.svelte`, `src/ui/components/CampSpriteButton.svelte`
+
+### CampSpriteButton `tooltip` Prop
+New optional prop `tooltip?: string`. When provided:
+- Added to `title` attribute on the hitbox button (browser native tooltip fallback)
+- After a 300ms hover delay, a custom `.sprite-tooltip` div appears above the sprite
+- CSS: dark RPG-styled panel with `border: 1px solid rgba(255,215,140,0.4)`, `font-size: calc(11px * var(--text-scale,1))`
+- Tooltip disappears on `mouseleave`
+
+### Hub Sprite Tooltips
+All 10 interactive hub sprites now pass a `tooltip` prop with descriptive text explaining the button's purpose (e.g., "Enter the dungeon and begin a new expedition", "Browse your collected facts and knowledge").
+
+---
+
+## CardRewardScreen — Reward Altar Tooltips (MEDIUM-15, 2026-04-10)
+
+**Source file:** `src/ui/components/CardRewardScreen.svelte`
+
+### Hover Tooltip on Altar Items
+Each altar card option shows an `.altar-card-tooltip` on hover (before clicking to select):
+- Positioned absolutely above the card with `bottom: calc(105% ...)` 
+- Shows: card name, detailed description (`getDetailedCardDescription()`), "Click to select" hint
+- Disappears once a card is selected (`!isSelected(option)` guard)
+- `@keyframes rewardTooltipIn` for subtle scale-up entry
+
+---
+
+## KnowledgeLibrary — Virtualized Fact Browser (MEDIUM-16, 2026-04-10)
+
+**Source file:** `src/ui/components/KnowledgeLibrary.svelte`
+
+### Virtual Scroll (No External Deps)
+The `.fact-scroll` container renders only the visible window of `filteredDomainEntries` at any time. Implementation uses native `ResizeObserver` + scroll events.
+
+Key constants:
+- `ITEM_HEIGHT = 90` — fact-row height: 56px min-height + 24px padding + 10px gap
+- `VIRTUAL_BUFFER = 8` — extra items above/below visible area for smooth scroll
+
+State:
+- `virtualScrollTop = $state(0)` — current scroll position
+- `virtualContainerHeight = $state(600)` — measured by ResizeObserver
+
+Derived:
+- `virtualVisible = $derived.by(...)` — returns `{ startIdx, endIdx, paddingTop, paddingBottom }`
+
+Template:
+- Top spacer div (`virtual-spacer-top`) sets `height` = `paddingTop` px
+- `{#each filteredDomainEntries.slice(startIdx, endIdx)}` — renders only visible slice
+- Bottom spacer div (`virtual-spacer-bottom`) sets `height` = `paddingBottom` px
+
+Scroll resets to top whenever `filteredDomainEntries` changes (filter/search). No npm dependencies added.
