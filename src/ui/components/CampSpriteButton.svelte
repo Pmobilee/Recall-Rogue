@@ -25,6 +25,8 @@
      * drop-shadow filter chain is preserved and composed correctly.
      */
     brightness?: number
+    /** Descriptive tooltip shown on hover (300ms delay). Falls back to label for aria title. */
+    tooltip?: string
   }
 
   let {
@@ -45,7 +47,21 @@
     spriteOffsetX,
     spriteOffsetY,
     brightness = 1.0,
+    tooltip,
   }: Props = $props()
+
+  let showTooltip = $state(false)
+  let tooltipTimer: ReturnType<typeof setTimeout> | null = null
+
+  function handleMouseEnter(): void {
+    if (!tooltip) return
+    tooltipTimer = setTimeout(() => { showTooltip = true }, 300)
+  }
+
+  function handleMouseLeave(): void {
+    if (tooltipTimer) { clearTimeout(tooltipTimer); tooltipTimer = null }
+    showTooltip = false
+  }
 
   /** Build the inline style string for .sprite-img, composing transform + brightness variable. */
   function buildSpriteStyle(
@@ -88,7 +104,13 @@
       style="top: {hitTop}; left: {hitLeft}; width: {hitWidth}; height: {hitHeight};"
       onclick={onclick}
       aria-label={label}
+      title={tooltip ?? label}
+      onmouseenter={handleMouseEnter}
+      onmouseleave={handleMouseLeave}
     ></button>
+    {#if showTooltip && tooltip}
+      <div class="sprite-tooltip" role="tooltip">{tooltip}</div>
+    {/if}
   {/if}
   {#if labelTop}
     <span class="sprite-label" style="top: {labelTop}; left: {labelLeft};">{label}</span>
@@ -158,6 +180,34 @@
       drop-shadow(1px -1px 0 #000)
       drop-shadow(-1px -1px 0 #000);
     transition: filter 80ms ease;
+  }
+
+  .sprite-tooltip {
+    position: absolute;
+    bottom: calc(105% + calc(4px * var(--layout-scale, 1)));
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 8, 20, 0.95);
+    border: 1px solid rgba(255, 215, 140, 0.4);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    padding: calc(5px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    font-family: var(--font-rpg);
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #ffe8c2;
+    white-space: nowrap;
+    pointer-events: none;
+    animation: tooltipFadeIn 0.15s ease forwards;
+    z-index: 99;
+    text-shadow:
+      -1px -1px 0 #000,
+       1px -1px 0 #000,
+      -1px  1px 0 #000,
+       1px  1px 0 #000;
+  }
+
+  @keyframes tooltipFadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(calc(4px * var(--layout-scale, 1))); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
 
   .sprite-label {
