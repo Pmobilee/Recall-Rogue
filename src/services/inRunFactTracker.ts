@@ -1,5 +1,23 @@
 import type { DeckFact } from '../data/curatedDeckTypes';
 
+/**
+ * Plain-object snapshot of an InRunFactTracker for save/resume.
+ * Maps are flattened to `[key, value]` tuple arrays so JSON.stringify
+ * can roundtrip them losslessly. See `InRunFactTracker.toJSON` /
+ * `InRunFactTracker.fromJSON`.
+ */
+export interface InRunFactTrackerSnapshot {
+  states: Array<[string, InRunFactState]>;
+  learningCards: Array<[string, { step: number; dueAtCharge: number }]>;
+  graduatedCards: Array<[string, number]>;
+  lastFactId: string | null;
+  totalCharges: number;
+  currentEncounter: number;
+  recentTemplateIds: string[];
+  chargeCount: number;
+  chargesSinceLastNew: number;
+}
+
 export interface InRunFactState {
   factId: string;
   correctCount: number;
@@ -325,5 +343,48 @@ export class InRunFactTracker {
   /** Get all tracked fact states (for review museum, meditation UI, etc.) */
   getAllStates(): InRunFactState[] {
     return Array.from(this.states.values());
+  }
+
+  /**
+   * Serialize the tracker to a plain object for JSON storage.
+   * Named `toJSON` so `JSON.stringify` invokes it automatically — every
+   * `RunState` autosave path therefore captures the full tracker state
+   * (including the three internal Maps) instead of an empty `{}`.
+   */
+  toJSON(): InRunFactTrackerSnapshot {
+    return {
+      states: [...this.states],
+      learningCards: [...this.learningCards],
+      graduatedCards: [...this.graduatedCards],
+      lastFactId: this.lastFactId,
+      totalCharges: this.totalCharges,
+      currentEncounter: this.currentEncounter,
+      recentTemplateIds: [...this.recentTemplateIds],
+      chargeCount: this.chargeCount,
+      chargesSinceLastNew: this.chargesSinceLastNew,
+    };
+  }
+
+  /**
+   * Reconstruct an `InRunFactTracker` from a snapshot produced by `toJSON`.
+   * Defensive against missing/malformed fields so legacy and partially
+   * corrupt saves still load — the runSaveService deserializer relies on
+   * this for forward/backward compatibility.
+   */
+  static fromJSON(snapshot: InRunFactTrackerSnapshot | null | undefined): InRunFactTracker {
+    const tracker = new InRunFactTracker();
+    if (!snapshot || typeof snapshot !== 'object') {
+      return tracker;
+    }
+    tracker.states = Array.isArray(snapshot.states) ? new Map(snapshot.states) : new Map();
+    tracker.learningCards = Array.isArray(snapshot.learningCards) ? new Map(snapshot.learningCards) : new Map();
+    tracker.graduatedCards = Array.isArray(snapshot.graduatedCards) ? new Map(snapshot.graduatedCards) : new Map();
+    tracker.lastFactId = typeof snapshot.lastFactId === 'string' ? snapshot.lastFactId : null;
+    tracker.totalCharges = typeof snapshot.totalCharges === 'number' ? snapshot.totalCharges : 0;
+    tracker.currentEncounter = typeof snapshot.currentEncounter === 'number' ? snapshot.currentEncounter : 1;
+    tracker.recentTemplateIds = Array.isArray(snapshot.recentTemplateIds) ? [...snapshot.recentTemplateIds] : [];
+    tracker.chargeCount = typeof snapshot.chargeCount === 'number' ? snapshot.chargeCount : 0;
+    tracker.chargesSinceLastNew = typeof snapshot.chargesSinceLastNew === 'number' ? snapshot.chargesSinceLastNew : 0;
+    return tracker;
   }
 }

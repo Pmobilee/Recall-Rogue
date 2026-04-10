@@ -12,6 +12,7 @@ import type { RewardBundle, RewardRevealStep } from '../ui/stores/gameState';
 import type { EncounterSnapshot } from './encounterBridge';
 import { serializeRunRngState } from './seededRng';
 import { getBackend } from './storageBackend';
+import { InRunFactTracker, type InRunFactTrackerSnapshot } from './inRunFactTracker';
 
 const SAVE_KEY = 'recall-rogue-active-run';
 
@@ -47,7 +48,7 @@ export interface RunSaveState {
 /** RunState with Sets replaced by arrays for JSON serialization. */
 interface SerializedRunState extends Omit<
   RunState,
-  'consumedRewardFactIds' | 'factsAnsweredCorrectly' | 'factsAnsweredIncorrectly' | 'firstChargeFreeFactIds' | 'offeredRelicIds' | 'cursedFactIds' | 'attemptedFactIds' | 'chainDistribution'
+  'consumedRewardFactIds' | 'factsAnsweredCorrectly' | 'factsAnsweredIncorrectly' | 'firstChargeFreeFactIds' | 'offeredRelicIds' | 'cursedFactIds' | 'attemptedFactIds' | 'chainDistribution' | 'inRunFactTracker'
 > {
   /** Legacy field — present in old saves, ignored on load. */
   echoFactIds?: string[];
@@ -61,6 +62,13 @@ interface SerializedRunState extends Omit<
   attemptedFactIds: string[];
   /** Legacy field — present in old saves, ignored on load. */
   discoveredFactIds?: string[];
+  /**
+   * Plain-object snapshot of the per-run study mode tracker. Undefined for
+   * trivia runs (which never instantiate one). The runtime field is a class
+   * instance that JSON.stringify cannot represent natively, so we round-trip
+   * it through `InRunFactTracker.toJSON` / `InRunFactTracker.fromJSON`.
+   */
+  inRunFactTracker?: InRunFactTrackerSnapshot;
 }
 
 interface SerializedEncounterSnapshot {
@@ -79,6 +87,12 @@ function serializeRunState(run: RunState): SerializedRunState {
     offeredRelicIds: [...run.offeredRelicIds],
     cursedFactIds: [...run.cursedFactIds],
     attemptedFactIds: [...run.attemptedFactIds],
+    // Flatten the InRunFactTracker class instance to a plain snapshot.
+    // Without this, JSON.stringify would emit `{}` for the internal Maps and
+    // strip every method, causing first-card-play hangs on resume in Study
+    // Temple / custom_deck runs (selectFactForCharge would TypeError on
+    // tracker.getTotalCharges).
+    inRunFactTracker: run.inRunFactTracker ? run.inRunFactTracker.toJSON() : undefined,
   };
 }
 
@@ -113,6 +127,12 @@ function deserializeRunState(saved: SerializedRunState): RunState {
     factVariantLevel: (typeof savedAny['factVariantLevel'] === 'object' && savedAny['factVariantLevel'] !== null && !Array.isArray(savedAny['factVariantLevel']))
       ? savedAny['factVariantLevel'] as Record<string, number>
       : {},
+    // Rebuild the per-run study tracker from its serialized snapshot. Trivia
+    // and pre-fix study saves have no field — leave it undefined so the
+    // study-mode quiz path falls through to its existing guards.
+    inRunFactTracker: saved.inRunFactTracker
+      ? InRunFactTracker.fromJSON(saved.inRunFactTracker)
+      : undefined,
   };
 }
 

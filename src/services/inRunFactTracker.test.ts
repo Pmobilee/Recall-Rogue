@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { InRunFactTracker } from './inRunFactTracker';
+import { InRunFactTracker, type InRunFactTrackerSnapshot } from './inRunFactTracker';
 
 describe('InRunFactTracker — learning step delays', () => {
   let tracker: InRunFactTracker;
@@ -207,5 +207,66 @@ describe('InRunFactTracker — state machine transitions', () => {
       tracker.recordCharge(`fact-${i}`, true);
     }
     expect(tracker.canIntroduceNew()).toBe(true);
+  });
+});
+
+describe('InRunFactTracker — JSON round-trip', () => {
+  it('preserves all internal state across JSON.stringify/parse', () => {
+    const tracker = new InRunFactTracker();
+    tracker.recordCharge('fact-a', true);   // fact-a → learning step 0
+    tracker.recordCharge('fact-b', true);   // fact-b → learning step 0
+    tracker.recordCharge('fact-a', false);  // fact-a → learning step 0 (reset)
+    tracker.recordResult('fact-a', false, 1500, 1, 'fact-b');
+    tracker.recordTemplateUsed('forward');
+    tracker.recordTemplateUsed('reverse');
+    tracker.advanceEncounter();
+    tracker.recordNewCardServed();
+
+    // Round-trip through JSON — toJSON is auto-invoked by JSON.stringify.
+    const json = JSON.stringify(tracker);
+    const parsed = JSON.parse(json) as InRunFactTrackerSnapshot;
+    const restored = InRunFactTracker.fromJSON(parsed);
+
+    expect(restored.getTotalCharges()).toBe(tracker.getTotalCharges());
+    expect(restored.getLastFactId()).toBe('fact-a');
+    expect(restored.isInLearning('fact-a')).toBe(true);
+    expect(restored.isInLearning('fact-b')).toBe(true);
+    expect(restored.getRecentTemplateIds()).toEqual(['forward', 'reverse']);
+    expect(restored.getCurrentEncounter()).toBe(2);
+
+    const factAState = restored.getState('fact-a');
+    expect(factAState).toBeDefined();
+    expect(factAState!.wrongCount).toBe(1);
+    expect(factAState!.confusedWith).toContain('fact-b');
+  });
+
+  it('continues to function correctly after restore', () => {
+    const tracker = new InRunFactTracker();
+    tracker.recordCharge('fact-a', true);
+    tracker.recordCharge('fact-b', true);
+
+    const restored = InRunFactTracker.fromJSON(JSON.parse(JSON.stringify(tracker)));
+
+    // Should still respond to mutating calls and update its state.
+    restored.recordCharge('fact-c', true);
+    expect(restored.isInLearning('fact-c')).toBe(true);
+    expect(restored.getTotalCharges()).toBe(3);
+  });
+
+  it('fromJSON(undefined) returns a fresh empty tracker', () => {
+    const tracker = InRunFactTracker.fromJSON(undefined);
+    expect(tracker.getTotalCharges()).toBe(0);
+    expect(tracker.getLastFactId()).toBeNull();
+    expect(tracker.getCurrentEncounter()).toBe(1);
+    expect(tracker.getRecentTemplateIds()).toEqual([]);
+    expect(tracker.canIntroduceNew()).toBe(true);
+  });
+
+  it('fromJSON tolerates malformed snapshots without throwing', () => {
+    // Cast through unknown to bypass the typed signature for the bad-input case.
+    const tracker = InRunFactTracker.fromJSON({} as unknown as InRunFactTrackerSnapshot);
+    expect(tracker.getTotalCharges()).toBe(0);
+    expect(tracker.getLastFactId()).toBeNull();
+    expect(tracker.getCurrentEncounter()).toBe(1);
   });
 });

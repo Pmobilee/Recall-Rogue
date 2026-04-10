@@ -130,6 +130,7 @@
   import { resumeCombatWithFallback } from './services/combatResumeService'
   import { BASE_WIDTH } from './data/layout'
   import { layoutMode } from './stores/layoutStore'
+  import { restoreRunRngState } from './services/seededRng'
 
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
@@ -982,6 +983,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     const saved = loadActiveRun()
     if (!saved) return
     restoreRunMode(saved.runMode, saved.dailySeed, saved.runSeed)
+    if (saved.rngState) {
+      restoreRunRngState(saved.rngState)
+    }
     activeRunState.set(saved.runState)
     hydrateEncounterSnapshot(saved.encounterSnapshot ?? null)
     activeCardRewardOptions.set(saved.cardRewardOptions ?? [])
