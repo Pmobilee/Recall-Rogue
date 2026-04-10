@@ -1501,3 +1501,17 @@ Q: "Which word is closest in meaning to 'pique-niquer'?"  ← synonym_pick templ
 ### 2026-04-10 — pharmacology this-placeholder follow-up (17 facts fixed, deferred from main cluster batch)
 
 Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-replacement left bare "this" tokens (e.g., "this-release", "this-dependent", "side this of", "primary this complication"). Deferred from the main cluster fix (`3aa31709d`, 91 facts across 6 decks) due to a stale registry lock. Correct nouns derived from each fact's `correctAnswer`, `explanation`, and `statement` fields.
+
+---
+
+### 2026-04-10 — Spanish C1 row-alignment translation errors (donde, habitual, sino)
+
+**What:** Three facts in `data/decks/spanish_c1.json` had wrong `correctAnswer` values due to a data assembly error. The affected facts: `es-cefr-3990` (`donde` = "because" instead of "where"), `es-cefr-4014` (`habitual` = "beans" instead of "habitual"), `es-cefr-4002` (`sino` = "destiny, fate, lot" instead of "but rather"). Teaching learners that `donde` means "because" is an active miseducation — a student memorizing this will fail real communication.
+
+**Root cause investigation:** The source vocab data (`data/curated/vocab/es/vocab-es-all.json`) is correct — it shows `habitual` = "habitual" (correct) and `atentado` = "violent attack" (correct). The corruption happened during C1 deck assembly when an intermediate TSV or sorted list was row-misaligned, assigning translations from adjacent words to the wrong target words. The assembly script that produced this was not found in the current scripts directory — it may have been a one-off manual assembly or an earlier version of the pipeline.
+
+**Fix:** Manually corrected the three BLOCKER facts. `donde` → "where" (with example). `habitual` → "habitual" (cognate, with acceptableAlternatives: "customary", "usual"). `sino` → "but rather" (conjunction sense, with example and note about the homograph noun sense). Regression tests added in `factCorrectness.test.ts`.
+
+**Potential additional errors:** During a 20-fact spot-check, `es-cefr-4456` (`atentado`) showed "moderate, prudent" (should be "violent attack, bombing") — confirmed wrong by comparing against the source vocab. This was out of scope for this fix session but should be investigated in a follow-up sweep of the C1 deck.
+
+**Lesson:** After any batch-assembly of vocabulary decks, a spot-check of 20+ random facts against the source vocab data is mandatory. Checking `correctAnswer` against `data/curated/vocab/es/vocab-es-all.json` by `targetWord` key takes under 5 minutes and would catch any row-alignment errors immediately.
