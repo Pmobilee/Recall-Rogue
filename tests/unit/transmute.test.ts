@@ -262,11 +262,15 @@ describe('resolveTransmutePick — in-place encounter-only swap', () => {
 
     resolveTransmutePick(turnState, 'source-id', [candidate]);
 
-    // Source card still in discard pile (in-place swap)
-    const swapped = turnState.deck.discardPile.find(c => c.id === 'source-id');
+    // Source card still in discard pile — id changes to a new unique id for draw animation
+    const swapped = turnState.deck.discardPile.find(c => c.isTransmuted === true);
     expect(swapped).toBeDefined();
     expect(swapped!.isTransmuted).toBe(true);
+    // id is a new unique value (not the original 'source-id')
+    expect(swapped!.id).not.toBe('source-id');
+    expect(swapped!.id).toMatch(/^source-id-tx-/);
     expect(swapped!.originalCard).toBeDefined();
+    // originalCard preserves the OLD id for revert dedup
     expect(swapped!.originalCard!.id).toBe('source-id');
     expect(swapped!.originalCard!.mechanicId).toBe('strike');
     // Mechanic fields updated to candidate
@@ -284,9 +288,12 @@ describe('resolveTransmutePick — in-place encounter-only swap', () => {
 
     resolveTransmutePick(turnState, 'hand-src', [candidate]);
 
-    const swapped = turnState.deck.hand.find(c => c.id === 'hand-src');
+    // id changes to new unique value; search by isTransmuted flag
+    const swapped = turnState.deck.hand.find(c => c.isTransmuted === true);
     expect(swapped).toBeDefined();
     expect(swapped!.isTransmuted).toBe(true);
+    expect(swapped!.id).not.toBe('hand-src');
+    expect(swapped!.id).toMatch(/^hand-src-tx-/);
     expect(swapped!.originalCard!.mechanicId).toBe('block');
     expect(swapped!.mechanicId).toBe('strike');
     expect(swapped!.factId).toBe('hand-fact');
@@ -300,7 +307,11 @@ describe('resolveTransmutePick — in-place encounter-only swap', () => {
 
     resolveTransmutePick(turnState, 'draw-src', [candidate]);
 
-    const swapped = turnState.deck.drawPile.find(c => c.id === 'draw-src');
+    // id changes to new unique value; search by isTransmuted flag
+    const swapped = turnState.deck.drawPile.find(c => c.isTransmuted === true);
+    expect(swapped).toBeDefined();
+    expect(swapped!.id).not.toBe('draw-src');
+    expect(swapped!.id).toMatch(/^draw-src-tx-/);
     expect(swapped!.isTransmuted).toBe(true);
     expect(swapped!.mechanicId).toBe('block');
   });
@@ -317,8 +328,12 @@ describe('resolveTransmutePick — in-place encounter-only swap', () => {
 
     resolveTransmutePick(turnState, 'src-m3', [cand1, cand2]);
 
-    // Primary: source in discard transformed
-    const swapped = turnState.deck.discardPile.find(c => c.id === 'src-m3');
+    // Primary: source in discard transformed — id changed to new unique value
+    const swapped = turnState.deck.discardPile.find(c => c.isTransmuted === true);
+    expect(swapped).toBeDefined();
+    expect(swapped!.id).not.toBe('src-m3');
+    expect(swapped!.id).toMatch(/^src-m3-tx-/);
+    expect(swapped!.originalCard!.id).toBe('src-m3');
     expect(swapped!.isTransmuted).toBe(true);
     expect(swapped!.mechanicId).toBe('block');
 
@@ -462,8 +477,12 @@ describe('revertTransmutedCards — encounter-end cleanup', () => {
     // Apply transmute
     resolveTransmutePick(turnState, 'round-trip-src', [candidate]);
 
-    // Confirm it's transmuted
-    const transmuted = turnState.deck.discardPile.find(c => c.id === 'round-trip-src')!;
+    // Confirm it's transmuted — id is now a new unique value
+    const transmuted = turnState.deck.discardPile.find(c => c.isTransmuted === true)!;
+    expect(transmuted).toBeDefined();
+    expect(transmuted.id).not.toBe('round-trip-src');
+    expect(transmuted.id).toMatch(/^round-trip-src-tx-/);
+    expect(transmuted.originalCard!.id).toBe('round-trip-src');
     expect(transmuted.mechanicId).toBe('block');
     expect(transmuted.isTransmuted).toBe(true);
 

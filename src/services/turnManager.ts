@@ -3844,11 +3844,15 @@ function applyTransmuteSwap(
   // Gather current deck for catch-up mastery calculation (before mutation)
   const allDeckCards = [...drawPile, ...hand, ...discardPile, ...exhaustPile];
 
-  // Transform first selection in-place (preserving id + factId)
+  // Transform first selection in-place (factId preserved; id gets new unique value so
+  // CardHand's $effect ID-tracking detects it as a new card and fires card-drawn-in animation
+  // when drawn into hand. originalCard preserves the old id for revert dedup.)
   const primary = selectedCards[0];
   const primaryMastery = computeCatchUpMastery(primary, allDeckCards);
   sourcePile[sourceIdx] = {
     ...sourceCard,
+    // New unique id so CardHand's $effect sees this as a newly drawn card
+    id: `${sourceCard.id}-tx-${Date.now()}`,
     // Mechanic fields overwritten
     mechanicId: primary.mechanicId,
     mechanicName: primary.mechanicName,
@@ -3859,7 +3863,7 @@ function applyTransmuteSwap(
     chainType: primary.chainType,
     masteryLevel: primaryMastery,
     isUpgraded: primaryMastery > 0,
-    // Encounter-only: remember original for revert
+    // Encounter-only: remember original for revert (originalCard.id = old id for dedup)
     isTransmuted: true,
     originalCard: originalCardSnapshot,
   };

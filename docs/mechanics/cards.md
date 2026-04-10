@@ -427,7 +427,8 @@ Transmute transforms a source card into a new card for the current encounter onl
 
 **Implementation details:**
 - Source card is located across all four piles (hand/drawPile/discardPile/exhaustPile) by `applyTransmuteSwap()` helper in `turnManager.ts`.
-- Source card is mutated in-place (id and factId preserved). Original fields saved to `originalCard` snapshot. `isTransmuted=true` set.
+- Source card is mutated in-place (factId preserved; **id gets a new unique value** `${oldId}-tx-${Date.now()}`). This lets CardHand's `$effect` ID-tracking detect the card as a newly drawn card when it enters the hand, firing the `card-drawn-in` animation. Original id is preserved in `originalCard.id` for encounter-end revert dedup.
+- Original fields saved to `originalCard` snapshot. `isTransmuted=true` set.
 - Mastery 3+ CC with 2 picks: first selection replaces the source card; second is added to hand with a sentinel `originalCard.id` (`transmute_extra_remove_*`) so `revertTransmutedCards()` removes it entirely.
 - `revertTransmutedCards(deck)` walks hand/draw/discard piles. Cards with `isTransmuted && originalCard` are restored; those with sentinel ids are dropped.
 

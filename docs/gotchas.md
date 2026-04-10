@@ -1738,3 +1738,13 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **What was kept:** `FIRST_CHARGE_FREE_AP_SURCHARGE` and `FIRST_CHARGE_FREE_WRONG_MULTIPLIER` constants in `balance.ts`, `firstChargeFreeFactIds` field in `RunState`/`SerializedRunState`/save-load — preserved for save-format backward compatibility. `isFirstChargeFree`, `markFirstChargeUsed`, `getFirstChargeWrongMultiplier` functions remain in `discoverySystem.ts` for historical reference.
 
 **Lesson:** When disabling a mechanic by setting its constant to a no-op value, also remove the branch that calls it. A "disabled via constant = 1" mechanic that still runs its guard conditions and sets state variables can have subtle side effects.
+
+### 2026-04-10 — Transmute primary card now gets a new unique ID after swap
+
+**What:** `applyTransmuteSwap()` in `turnManager.ts` previously preserved the source card's `id` after the in-place mechanic swap. Changed to assign a new unique ID (`${sourceCard.id}-tx-${Date.now()}`). The old id is preserved only in `originalCard.id` for encounter-end revert dedup.
+
+**Why:** CardHand's `$effect` draw-animation tracker (lines 95-117) detects new cards by comparing current hand IDs against a prev-set. When a transmuted card is drawn into the hand, the same ID is already known — the `$effect` never fires `card-drawn-in`. With a new unique ID, the card is treated as freshly drawn every time it enters the hand.
+
+**Revert safety:** `revertTransmutedCards()` uses `card.originalCard.id` as the dedup key and restores `{ ...card.originalCard }` — which carries the old id. The revert path is unchanged. Unit tests updated to search by `c.isTransmuted === true` rather than `c.id === 'old-id'` during the transmuted state, while post-revert checks still use `c.id === 'original-id'`.
+
+**Tests affected:** `tests/unit/transmute.test.ts` — 5 test blocks updated.
