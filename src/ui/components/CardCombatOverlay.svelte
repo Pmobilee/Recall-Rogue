@@ -80,6 +80,7 @@
   import { isVulnerable, getStrengthModifier } from '../../data/statusEffects'
   import { computeIntentDisplayDamage } from '../../services/intentDisplay'
   import { quizPanelVisible } from '../stores/combatUiStore'
+  import { reducedMotion } from '../stores/settings'
 
 
   interface Props {
@@ -304,6 +305,24 @@
     const scene = getCombatScene()
     scene?.setNearDeath?.(isNearDeath)
   })
+
+  /** Whether the combat overlay is currently doing a damage-shake (CSS class). */
+  let isDamageShaking = $state(false)
+  let _damageShakeTimer: ReturnType<typeof setTimeout> | null = null
+
+  /** Trigger a brief 50ms CSS shake when player takes damage below 40% HP.
+   *  Called from the enemy damage event handler when isLowHp is true.
+   */
+  function triggerDamageShake(): void {
+    if ($reducedMotion) return
+    if (isDamageShaking) return
+    isDamageShaking = true
+    if (_damageShakeTimer) clearTimeout(_damageShakeTimer)
+    _damageShakeTimer = setTimeout(() => {
+      isDamageShaking = false
+      _damageShakeTimer = null
+    }, 150)
+  }
 
   // wowFactor overlay state
   let wowFactorText = $state<string | null>(null)
@@ -891,6 +910,11 @@
   let playerHpMax = $derived(turnState?.playerState.maxHP ?? 1)
   let playerShield = $derived(turnState?.playerState.shield ?? 0)
   let playerHpRatio = $derived(playerHpMax > 0 ? Math.max(0, Math.min(1, playerHpCurrent / playerHpMax)) : 0)
+
+  // MEDIUM-12 (2026-04-10): Low-HP visual signals — must be after playerHpRatio
+  // ≤40% HP = vignette visible; ≤25% HP = critical pulse
+  let isLowHp = $derived(turnState != null && playerHpRatio > 0 && playerHpRatio <= 0.40)
+  let isCriticalHp = $derived(turnState != null && playerHpRatio > 0 && playerHpRatio <= 0.25)
   let playerHpColor = $derived(
     playerShield > 0 ? '#3498db' :
     playerHpRatio >= 0.6 ? '#22c55e' :
@@ -2625,7 +2649,11 @@
 
 </script>
 
-<div class="card-combat-overlay" bind:this={combatOverlayEl} class:near-death-tension={isNearDeath} class:layout-landscape={$isLandscape} class:quiz-active={isQuizPanelVisible}>
+<div class="card-combat-overlay" bind:this={combatOverlayEl} class:near-death-tension={isNearDeath} class:layout-landscape={$isLandscape} class:quiz-active={isQuizPanelVisible} class:damage-shaking={isDamageShaking}>
+  <!-- MEDIUM-12: Low-HP vignette (<=40% HP) and pulse (<=25% HP) -->
+  {#if isLowHp}
+    <div class="low-hp-vignette" class:critical-hp={isCriticalHp} aria-hidden="true"></div>
+  {/if}
   {#if turnState === null}
     <div class="empty-state">
       <p>Waiting for encounter...</p>
@@ -3070,6 +3098,71 @@
     z-index: 10;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 15%, transparent 50%);
     overflow: visible;
+  }
+
+  /* MEDIUM-12: Low-HP vignette, HP-bar pulse, damage shake */
+  .low-hp-vignette {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9;
+    background:
+      radial-gradient(ellipse 100% 100% at 50% 50%, transparent 55%, rgba(180, 30, 30, 0.0) 75%, rgba(200, 20, 20, 0.35) 100%);
+    animation: lowHpPulse 3s ease-in-out infinite;
+    transition: opacity 0.5s ease;
+  }
+
+  .low-hp-vignette.critical-hp {
+    /* Stronger, faster pulse at <=25% HP */
+    background:
+      radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(200, 20, 20, 0.08) 65%, rgba(220, 10, 10, 0.55) 100%);
+    animation: criticalHpPulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes lowHpPulse {
+    0%, 100% { opacity: 0.6; }
+    50%       { opacity: 1.0; }
+  }
+
+  @keyframes criticalHpPulse {
+    0%, 100% { opacity: 0.7; }
+    50%       { opacity: 1.0; }
+  }
+
+  /* HP-bar pulse animation at <=25% HP */
+  .player-hp-fill.hp-critical {
+    animation: hpBarBreathing 1.5s ease-in-out infinite;
+  }
+
+  @keyframes hpBarBreathing {
+    0%, 100% { filter: brightness(1.0); }
+    50%       { filter: brightness(1.5) drop-shadow(0 0 calc(4px * var(--layout-scale, 1)) rgba(239, 68, 68, 0.8)); }
+  }
+
+  /* Damage shake (CSS transform animation, 50ms per cycle) */
+  .card-combat-overlay.damage-shaking {
+    animation: damageShake 150ms ease-out;
+  }
+
+  @keyframes damageShake {
+    0%  { transform: translate(0, 0); }
+    20% { transform: translate(calc(-4px * var(--layout-scale, 1)), calc(2px * var(--layout-scale, 1))); }
+    40% { transform: translate(calc(4px * var(--layout-scale, 1)), calc(-2px * var(--layout-scale, 1))); }
+    60% { transform: translate(calc(-3px * var(--layout-scale, 1)), calc(1px * var(--layout-scale, 1))); }
+    80% { transform: translate(calc(2px * var(--layout-scale, 1)), calc(-1px * var(--layout-scale, 1))); }
+    100% { transform: translate(0, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .low-hp-vignette,
+    .low-hp-vignette.critical-hp,
+    .player-hp-fill.hp-critical,
+    .card-combat-overlay.damage-shaking {
+      animation: none;
+    }
+    .card-combat-overlay.damage-shaking {
+      transform: none;
+    }
   }
 
   .card-combat-overlay.near-death-tension {
