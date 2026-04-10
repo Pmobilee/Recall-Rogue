@@ -1511,3 +1511,29 @@ which doesn't exist — CardGameManager registers as `Symbol.for('rr:cardGameMan
 made `__rrDebug().phaserPerf` always return null. Also, `game.tweens` does not exist in
 Phaser 3 — tweens are per-scene. Must aggregate via `scene.tweens.getTweens()` across all
 active scenes. Both bugs were fixed alongside the HIGH-4 fix.
+
+---
+
+### 2026-04-10 — Dev buttons shipped in post_tutorial hub because gating used devpreset instead of a dev flag
+
+**What:** HubScreen.svelte rendered dev-only buttons (Intro, BrightIdea, InkSlug, RunEnd, Enter, Exit, Lighting) unconditionally — no `{#if}` guard existed at all. Every LLM playtest tester using `?devpreset=post_tutorial` could see and interact with these internal buttons. BATCH-2026-04-10-003 playtest tester flagged this as HIGH-7.
+
+**Why:** The dev button row was added incrementally for testing purposes and the intent was probably "these are dev builds only". But the game is always built in DEV mode during playtesting, and `devpreset` was conflated with "dev environment" when it is actually a player-accessible test entry point.
+
+**Fix:** Created `src/ui/stores/devMode.ts` — a readable Svelte store that returns `true` only when `?dev=true` URL param is present OR `VITE_DEV_TOOLS=1` env var is set. Wrapped both the landscape and portrait `dev-btn-row` divs with `{#if $devMode}`. Added `data-dev-only="true"` attribute for test detection.
+
+**Prevention:** `.claude/rules/ui-layout.md` §"Dev-only UI Gating" — hard rule that dev buttons are NEVER gated on devpreset or botMode. Unit test in `tests/unit/devMode.test.ts` (9 tests) verifies gating behavior.
+
+---
+
+### 2026-04-10 — startStudy from hub softlocked in "QUESTION 1 / 0"
+
+**What:** `__rrPlay.startStudy()` in `src/dev/playtestAPI.ts` navigated directly to the `restStudy` screen via `writeStore('rr:currentScreen', 'restStudy')` without populating the `studyQuestions` state in CardApp. `StudyQuizOverlay` received `questions=[]` and rendered "Question 1 / 0" with no answer buttons and no back control. Players had no escape path without reloading.
+
+**Why:** `playtestAPI.ts` used `writeStore` to jump to the screen, bypassing the normal `handleRestStudy()` flow in CardApp which populates questions first. The overlay had no guard for the empty-array case.
+
+**Fix (UI layer):** `StudyQuizOverlay.svelte` now guards `{#if questions.length === 0}` at the top level and renders a clear empty state: "No Cards to Review — Start a run and visit a rest room to unlock study mode." with a "Return to Hub" button. An always-visible `data-testid="study-back-btn"` escape hatch is also shown during the active quiz state. Added optional `onback?: () => void` prop; if not supplied, `handleBack()` navigates to `hub`.
+
+**Note (game-logic territory):** `src/dev/playtestAPI.ts` is owned by game-logic. The underlying `startStudy` precondition (checking for no active run before navigating) should also be fixed in that file by a game-logic agent. The UI-layer fix prevents the softlock regardless of how the screen is entered.
+
+**Prevention:** `.claude/rules/ui-layout.md` §"Softlock Prevention" — hard rule that every data-driven screen must guard the zero-pool case. `scripts/lint/check-escape-hatches.mjs` enforces this in `npm run check`. Unit tests in `tests/unit/restStudyEmptyState.test.ts`.

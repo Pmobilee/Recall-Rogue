@@ -477,3 +477,50 @@ Comprehensive meta-progression dashboard covering run record, knowledge mastery,
 - Mastered tile: green (`#86efac`)
 - Lifetime mastered tile: purple (`#c4b5fd`)
 - Current streak tile: orange (`#fdba74`)
+
+---
+
+## Hub Screen — Dev-Mode Contract (HIGH-7, 2026-04-10)
+
+**Source file:** `src/ui/components/HubScreen.svelte`
+
+### Dev Button Visibility
+Dev buttons (Intro, BrightIdea, InkSlug, RunEnd, Enter, Exit, Lighting) are ONLY visible when the `devMode` store is true. This requires `?dev=true` URL param or `VITE_DEV_TOOLS=1` env var.
+
+**NEVER gate dev buttons on `devpreset`** — devpreset is a playtest entry point accessible to LLM testers and is not a dev-tools flag.
+
+### Dev Mode Store
+- Store: `src/ui/stores/devMode.ts`
+- Activation: `?dev=true` URL param OR `VITE_DEV_TOOLS=1` env var
+- All dev-only DOM elements carry `data-dev-only="true"` for test detection
+
+### Testing
+- `?skipOnboarding=true&devpreset=post_tutorial` → NO dev buttons visible
+- `?skipOnboarding=true&devpreset=post_tutorial&dev=true` → dev buttons ARE visible
+
+---
+
+## restStudy Screen — Empty State Contract (HIGH-8, 2026-04-10)
+
+**Source file:** `src/ui/components/StudyQuizOverlay.svelte`
+
+### Empty State
+When `questions.length === 0` (e.g., navigated to restStudy from hub without an active run), `StudyQuizOverlay` renders an empty state:
+- Message: "No Cards to Review — Start a run and visit a rest room to unlock study mode."
+- Back button: "Return to Hub" → navigates to hub screen
+- Test ID: `data-testid="study-empty-state"`
+
+### Back Button Contract
+A `data-testid="study-back-btn"` button is always rendered:
+- In the empty state (navigates to hub)
+- During active quiz (top-left "← Back" button)
+
+### Softlock Prevention
+The `onback?: () => void` prop allows callers to override the back navigation. If not supplied, `handleBack()` navigates to `hub`. This ensures no dead-end state regardless of how the screen is entered.
+
+### Props
+| Prop | Type | Description |
+|------|------|-------------|
+| `questions` | `QuizQuestion[]` | Quiz questions to display. Empty array triggers empty state. |
+| `oncomplete` | `(correctFactIds: string[]) => void` | Called when quiz completes (with correct IDs) or back is clicked. |
+| `onback` | `() => void` (optional) | Override back navigation. Defaults to navigating to hub. |
