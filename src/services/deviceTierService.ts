@@ -99,6 +99,22 @@ function detectTier(): DeviceTier {
   return 'low-end'
 }
 
+/**
+ * Probe the WebGL GPU renderer string and classify device tier.
+ *
+ * HIGH-4 (2026-04-10): Added software renderer detection (SwiftShader, llvmpipe,
+ * softpipe). These are CPU-emulated renderers that cannot sustain 45+ fps even at
+ * low-end shader quality. Classify them as 'low-end' to disable the DepthLightingFX
+ * PostFX pipeline, which caused 12-13 fps in Docker/SwiftShader environments that
+ * were incorrectly detected as 'flagship' via CPU core count fallback.
+ *
+ * Software renderer patterns:
+ *   - "swiftshader" — Google's software Vulkan (used in Docker CI + headless Chrome)
+ *   - "llvmpipe"    — Mesa LLVMpipe (Linux CI environments)
+ *   - "softpipe"    — Mesa softpipe fallback
+ *   - "angle (.*swiftshader" — ANGLE wrapping SwiftShader (Windows/macOS headless Chrome)
+ *   - "microsoft basic render driver" — Windows software fallback
+ */
 function probeGPU(): DeviceTier {
   try {
     const canvas = document.createElement('canvas')
@@ -107,7 +123,14 @@ function probeGPU(): DeviceTier {
     const ext = (gl as WebGLRenderingContext).getExtension('WEBGL_debug_renderer_info')
     if (!ext) return 'mid'
     const r = ((gl as WebGLRenderingContext).getParameter(ext.UNMASKED_RENDERER_WEBGL) as string ?? '').toLowerCase()
+
+    // Software renderers: classify as low-end regardless of CPU core count.
+    // These cannot sustain 45+ fps for the DepthLightingFX PostFX pipeline.
+    if (/swiftshader|llvmpipe|softpipe|microsoft basic render driver/.test(r)) return 'low-end'
+
+    // High-end GPU patterns
     if (/adreno 7[3-9]\d|adreno [89]\d\d|apple gpu|m[123]|rtx|rx [67]\d\d\d/.test(r)) return 'flagship'
+    // Low-end GPU patterns
     if (/adreno [23]\d\d|mali-[gt][5-7]\d|powervr|intel hd [45]/.test(r)) return 'low-end'
     return 'mid'
   } catch (_) { return 'mid' }

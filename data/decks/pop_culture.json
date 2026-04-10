@@ -686,7 +686,7 @@
       "correctAnswer": "Netflix",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "platform_console_names_short",
+      "answerTypePoolId": "streaming_social_platform_names",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "Stranger Things, created by the Duffer Brothers and set in 1980s Indiana, is an original series exclusive to which streaming platform?",
@@ -764,7 +764,7 @@
         "Disney Plus"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "platform_console_names_short",
+      "answerTypePoolId": "streaming_social_platform_names",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "The Mandalorian, created by Jon Favreau and featuring 'Baby Yoda', is a streaming original exclusive to which platform?",
@@ -1078,7 +1078,7 @@
         "battery backup saving"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "genre_format_names",
+      "answerTypePoolId": "game_innovations",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "The Legend of Zelda (1986) was the first NES cartridge to feature what technology that let players save their progress?",
@@ -1106,7 +1106,7 @@
         "Mega Drive"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "platform_console_names_long",
+      "answerTypePoolId": "console_platform_names",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "Sonic the Hedgehog helped which Sega console outsell the Super Nintendo 2:1 in 1991-1992?",
@@ -1207,7 +1207,7 @@
         "PS2"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "platform_console_names_long",
+      "answerTypePoolId": "console_platform_names",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "Which Sony console, with 160 million units sold, remains the best-selling video game console of all time?",
@@ -1233,7 +1233,7 @@
         "Switch"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "platform_console_names_long",
+      "answerTypePoolId": "console_platform_names",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "With 155 million units shipped, which 2017 Nintendo console is the second-best-selling video game console ever?",
@@ -1283,7 +1283,7 @@
         "Nintendo Game Boy"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "platform_console_names_short",
+      "answerTypePoolId": "console_platform_names",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Which 1989 Nintendo handheld, bundled with Tetris, sold 118.69 million units including the Color variant?",
@@ -1311,7 +1311,7 @@
         "3D analog stick"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "genre_format_names",
+      "answerTypePoolId": "game_innovations",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "The Nintendo 64 controller (1996) was the first game controller to include a standard what, enabling true 3D movement in games?",
@@ -1825,7 +1825,7 @@
         "Nintendo NES"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "platform_console_names_long",
+      "answerTypePoolId": "console_platform_names",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "Which console, released in North America in 1985, rescued the video game industry after the catastrophic 1983 market crash?",
@@ -2005,7 +2005,7 @@
         "FF #52"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "genre_format_names",
+      "answerTypePoolId": "comic_debut_issues",
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "In which 1966 comic book issue did Black Panther make his debut as the first Black superhero in American mainstream comics?",
@@ -2156,7 +2156,7 @@
         "DC #27"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "genre_format_names",
+      "answerTypePoolId": "comic_debut_issues",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "In which comic book issue did Batman make his first appearance in 1939?",
@@ -2284,7 +2284,7 @@
         "12-issue limited series"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "genre_format_names",
+      "answerTypePoolId": "media_format_names",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "Watchmen by Alan Moore and Dave Gibbons helped popularize what term for a self-contained book-length comic narrative?",
@@ -2612,7 +2612,7 @@
       "correctAnswer": "4chan",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "platform_console_names_short",
+      "answerTypePoolId": "streaming_social_platform_names",
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "On which website did the Rickroll meme originate in May 2007?",
@@ -3000,7 +3000,7 @@
       "correctAnswer": "Newgrounds",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "platform_console_names_long",
+      "answerTypePoolId": "streaming_social_platform_names",
       "difficulty": 4,
       "funScore": 8,
       "quizQuestion": "On which platform did Gary Brolsma originally post his Numa Numa lip-sync video in December 2004?",
@@ -4238,7 +4238,7 @@
       "correctAnswer": "YouTube",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "platform_console_names_short",
+      "answerTypePoolId": "streaming_social_platform_names",
       "difficulty": 1,
       "funScore": 8,
       "quizQuestion": "On which platform did MrBeast become the most-subscribed individual creator?",
@@ -4632,7 +4632,7 @@
       "correctAnswer": "Netflix",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "platform_console_names_short",
+      "answerTypePoolId": "streaming_social_platform_names",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "Which streaming service pioneered the binge-release model in 2013 with House of Cards?",
@@ -4708,7 +4708,7 @@
         "Disney Plus"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "platform_console_names_short",
+      "answerTypePoolId": "streaming_social_platform_names",
       "difficulty": 1,
       "funScore": 6,
       "quizQuestion": "Which streaming platform launched in 2019 and signed up 10 million subscribers on its very first day?",
@@ -4806,7 +4806,7 @@
         "true crime podcast"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "genre_format_names",
+      "answerTypePoolId": "media_format_names",
       "difficulty": 1,
       "funScore": 7,
       "quizQuestion": "What audio format did 'Serial' help push into the mainstream when it debuted in 2014 with over 80 million downloads?",
@@ -5359,56 +5359,6 @@
       "homogeneityExemptNote": "Franchise IP names vary inherently — single-word brands (Mario, LEGO) vs full titles (Marvel Cinematic Universe). All are recognizable franchise names suitable as distractors."
     },
     {
-      "id": "platform_console_names_short",
-      "label": "Consoles, Platforms & Services (short)",
-      "answerFormat": "name",
-      "factIds": [
-        "pc_3_rickroll_origin_platform",
-        "pc_0_strangerthings_platform",
-        "pc_0_mandalorian_platform",
-        "pc_5_mrbeast_platform",
-        "pc_5_netflix_platform",
-        "pc_5_disney_plus_platform",
-        "pc_1_gameboy_units"
-      ],
-      "syntheticDistractors": [
-        "Atari 2600",
-        "Xbox",
-        "Hulu",
-        "Amazon Prime Video",
-        "Apple TV+",
-        "TikTok",
-        "Instagram",
-        "Twitter",
-        "Discord"
-      ],
-      "homogeneityExemptNote": "Platform and console names vary inherently — short names (Wii, Xbox) vs full names (Nintendo Entertainment System). All are recognizable platform names suitable as distractors."
-    },
-    {
-      "id": "platform_console_names_long",
-      "label": "Consoles, Platforms & Services (long)",
-      "answerFormat": "name",
-      "factIds": [
-        "pc_3_numa_numa_platform",
-        "pc_1_sonic_platform_impact",
-        "pc_1_ps2_bestseller",
-        "pc_1_switch_rank",
-        "pc_1_game_crash_recovery"
-      ],
-      "syntheticDistractors": [
-        "Atari 2600",
-        "Xbox",
-        "Hulu",
-        "Amazon Prime Video",
-        "Apple TV+",
-        "TikTok",
-        "Instagram",
-        "Twitter",
-        "Discord"
-      ],
-      "homogeneityExemptNote": "Platform and console names vary inherently — short names (Wii, Xbox) vs full names (Nintendo Entertainment System). All are recognizable platform names suitable as distractors."
-    },
-    {
       "id": "meme_viral_names",
       "label": "Meme & Viral Content Names",
       "answerFormat": "name",
@@ -5438,37 +5388,6 @@
       "minimumSize": 3,
       "homogeneityExempt": true,
       "homogeneityExemptNote": "Meme and viral content names vary inherently — short names (Doge, Fatso) vs multi-word names (Boy's Club, Keyboard Cat). All are recognizable meme-related names suitable as distractors."
-    },
-    {
-      "id": "genre_format_names",
-      "label": "Genres & Formats",
-      "answerFormat": "term",
-      "factIds": [
-        "pc_1_zelda_innovation",
-        "pc_1_n64_innovation",
-        "pc_2_black_panther_debut",
-        "pc_2_batman_debut_issue",
-        "pc_2_watchmen_format",
-        "pc_2_jack_kirby_nickname",
-        "pc_3_the_dress_actual_color",
-        "pc_5_pewdiepie_nationality",
-        "pc_5_comic_con_attendance",
-        "pc_5_the_dress_actual_colors",
-        "pc_5_disney_plus_day_one_subs",
-        "pc_5_serial_podcast_format",
-        "pc_5_board_game_market_size",
-        "pc_5_cosplay_etymology"
-      ],
-      "syntheticDistractors": [
-        "sitcom",
-        "prestige drama",
-        "battle royale",
-        "MMORPG",
-        "reality TV",
-        "streaming original",
-        "found footage",
-        "battle pass"
-      ]
     },
     {
       "id": "bracket_numbers",
@@ -5565,6 +5484,137 @@
         "pc_5_gamergate_year"
       ],
       "syntheticDistractors": []
+    },
+    {
+      "id": "console_platform_names",
+      "factIds": [
+        "pc_1_sonic_platform_impact",
+        "pc_1_ps2_bestseller",
+        "pc_1_switch_rank",
+        "pc_1_gameboy_units",
+        "pc_1_game_crash_recovery"
+      ],
+      "syntheticDistractors": [
+        "Atari 2600",
+        "Xbox 360",
+        "Super Nintendo",
+        "PlayStation 3",
+        "Wii",
+        "Sega Dreamcast",
+        "Game Boy Advance",
+        "Nintendo DS",
+        "PlayStation Portable",
+        "TurboGrafx-16"
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Console brand names inherently vary in length (Game Boy=8 vs Nintendo Entertainment System=29). All answers are game console names."
+    },
+    {
+      "id": "streaming_social_platform_names",
+      "factIds": [
+        "pc_0_strangerthings_platform",
+        "pc_0_mandalorian_platform",
+        "pc_3_rickroll_origin_platform",
+        "pc_3_numa_numa_platform",
+        "pc_5_mrbeast_platform",
+        "pc_5_netflix_platform",
+        "pc_5_disney_plus_platform"
+      ],
+      "syntheticDistractors": [
+        "HBO Max",
+        "Hulu",
+        "Amazon Prime Video",
+        "Apple TV+",
+        "Peacock",
+        "Reddit",
+        "Twitter",
+        "Tumblr",
+        "MySpace",
+        "Vine"
+      ]
+    },
+    {
+      "id": "game_innovations",
+      "factIds": [
+        "pc_1_zelda_innovation",
+        "pc_1_n64_innovation"
+      ],
+      "syntheticDistractors": [
+        "rumble vibration",
+        "force feedback",
+        "motion controls",
+        "dual triggers",
+        "pressure-sensitive buttons",
+        "built-in microphone",
+        "touchpad",
+        "wireless connectivity",
+        "shoulder buttons",
+        "directional pad"
+      ],
+      "minimumSize": 2
+    },
+    {
+      "id": "comic_debut_issues",
+      "factIds": [
+        "pc_2_black_panther_debut",
+        "pc_2_batman_debut_issue"
+      ],
+      "syntheticDistractors": [
+        "Amazing Fantasy #15",
+        "Journey into Mystery #83",
+        "Tales of Suspense #39",
+        "Showcase #4",
+        "The Incredible Hulk #1",
+        "X-Men #1",
+        "Strange Tales #110",
+        "Avengers #1",
+        "Daredevil #1",
+        "Silver Surfer #1"
+      ],
+      "minimumSize": 2
+    },
+    {
+      "id": "media_format_names",
+      "factIds": [
+        "pc_2_watchmen_format",
+        "pc_5_serial_podcast_format"
+      ],
+      "syntheticDistractors": [
+        "miniseries",
+        "audio drama",
+        "web series",
+        "documentary film",
+        "mockumentary",
+        "anthology series",
+        "limited series",
+        "interactive film",
+        "magazine serial",
+        "radio play"
+      ],
+      "minimumSize": 2
+    },
+    {
+      "id": "genre_format_names",
+      "factIds": [
+        "pc_2_jack_kirby_nickname",
+        "pc_3_the_dress_actual_color",
+        "pc_5_pewdiepie_nationality",
+        "pc_5_comic_con_attendance",
+        "pc_5_the_dress_actual_colors",
+        "pc_5_disney_plus_day_one_subs",
+        "pc_5_board_game_market_size",
+        "pc_5_cosplay_etymology"
+      ],
+      "syntheticDistractors": [
+        "sitcom",
+        "prestige drama",
+        "battle royale",
+        "MMORPG",
+        "reality TV",
+        "streaming original",
+        "found footage",
+        "battle pass"
+      ]
     }
   ],
   "subDecks": [

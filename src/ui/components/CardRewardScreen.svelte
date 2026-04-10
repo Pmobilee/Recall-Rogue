@@ -150,6 +150,17 @@
     playCardAudio('card-cast')
   }
 
+  // MEDIUM-15: Hover tooltip state for altar items
+  let hoveredCardIndex = $state<number | null>(null)
+
+  function handleCardMouseEnter(idx: number): void {
+    hoveredCardIndex = idx
+  }
+
+  function handleCardMouseLeave(): void {
+    hoveredCardIndex = null
+  }
+
   function selectType(cardType: CardType): void {
     if (collectLocked) return
     if (selectedType !== cardType) {
@@ -381,7 +392,8 @@
               class:upgraded={option.isUpgraded}
               style={`border-top: 6px solid ${getChainColor(option.chainType ?? 0)}; --icon-glow: ${typeGlow}; --domain-color: ${domainColor}; --chain-color: ${getChainColor(option.chainType ?? 0)}; --chain-glow: ${getChainGlowColor(option.chainType ?? 0)};`}
               onclick={() => selectType(option.cardType)}
-              onpointerenter={() => hoverType(option.cardType)}
+              onpointerenter={() => { hoverType(option.cardType); handleCardMouseEnter(i) }}
+              onmouseleave={handleCardMouseLeave}
               disabled={collectLocked}
               data-testid={`reward-card-${i}`}
               aria-label={`Inspect ${option.mechanicName ?? option.cardType} reward`}
@@ -426,6 +438,15 @@
                 {/if}
               {/if}
               <div class="mini-card-domain-bar" style={`background: ${domainColor};`}></div>
+
+              <!-- MEDIUM-15: Hover tooltip for accessibility -->
+              {#if hoveredCardIndex === i && !isSelected(option)}
+                <div class="altar-card-tooltip" role="tooltip">
+                  <strong class="tooltip-card-name">{option.mechanicName ?? option.cardType}</strong>
+                  <span class="tooltip-card-desc">{getDetailedCardDescription(option)}</span>
+                  <span class="tooltip-card-hint">Click to select</span>
+                </div>
+              {/if}
             </button>
           {/each}
         </div>
@@ -999,6 +1020,52 @@
     text-align: center;
     padding: 0 calc(2px * var(--layout-scale, 1));
     margin-bottom: calc(14px * var(--layout-scale, 1));
+  }
+
+  /* MEDIUM-15: Altar item hover tooltip */
+  .altar-card-tooltip {
+    position: absolute;
+    top: calc(100% + calc(8px * var(--layout-scale, 1)));
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(8, 12, 24, 0.97);
+    border: 1px solid rgba(180, 160, 100, 0.45);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    width: calc(200px * var(--layout-scale, 1));
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    gap: calc(4px * var(--layout-scale, 1));
+    z-index: 50;
+    pointer-events: none;
+    animation: rewardTooltipIn 0.18s ease forwards;
+    box-shadow: 0 calc(8px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.5);
+  }
+
+  @keyframes rewardTooltipIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(calc(-4px * var(--layout-scale, 1))); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  .tooltip-card-name {
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #f6d57d;
+    line-height: 1.2;
+  }
+
+  .tooltip-card-desc {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #c8c8d0;
+    line-height: 1.4;
+  }
+
+  .tooltip-card-hint {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: rgba(160, 160, 200, 0.7);
+    font-style: italic;
+    margin-top: calc(2px * var(--layout-scale, 1));
   }
 
   .mini-card-domain-bar {

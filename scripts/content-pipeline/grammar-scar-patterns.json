@@ -1,0 +1,71 @@
+{
+  "_comment": "Grammar scar regex catalog for verify-all-decks.mjs Check #25.",
+  "_howToAdd": "Add new broken patterns as they are discovered in batch content rewrites. Each entry has a pattern (literal string) and a human-readable description of what caused it.",
+  "_lastUpdated": "2026-04-10",
+  "_note": "Patterns must be specific enough to avoid false positives. 'the concept of' and 'the concept that' are valid English and must NOT be included as patterns. Use patterns like ' a the ' (double article) or 'X-the concept' (hyphenated) or 'the concept Y' (noun following without 'of'/'that') rather than just 'the concept '.",
+  "patterns": [
+    {
+      "id": "a_the_double_article",
+      "pattern": " a the ",
+      "description": "'a the' double article — caused by naive word-substitution inserting 'a' before a phrase that already begins with 'the'. Example: 'bound to a the reactant molecule'.",
+      "introduced": "2026-04-09",
+      "example": "What forms when a the reactant molecule binds the active site?"
+    },
+    {
+      "id": "the_the_double_article",
+      "pattern": " the the ",
+      "description": "'the the' double definite article — caused by inserting 'the concept' (which starts with 'the') after a word that also ends with 'the'. Example: 'also called the the concept threshold'.",
+      "introduced": "2026-04-10",
+      "example": "also called the the concept threshold — is known by what abbreviation?"
+    },
+    {
+      "id": "hyphenated_the_concept",
+      "pattern": "-the concept",
+      "description": "Hyphenated 'X-the concept' — caused by replacing one part of a compound noun (e.g. 'logic-programming') with 'the concept', leaving the hyphen. Example: 'logic-the concept approach'.",
+      "introduced": "2026-04-10",
+      "example": "reflecting its logic-the concept approach where you declare facts"
+    },
+    {
+      "id": "encoding_the_concept_that",
+      "pattern": "encoding the concept that assigns",
+      "description": "'encoding the concept that assigns' — specific broken pattern where 'encoding' is the category and 'the concept' was erroneously inserted before 'that assigns'.",
+      "introduced": "2026-04-10",
+      "example": "the 1963 7-bit character encoding the concept that assigns numeric codes"
+    },
+    {
+      "id": "the_this_pronoun",
+      "pattern": " the this",
+      "description": "'the this' double determiner — caused by inserting 'this' after a phrase that already ends with 'the'. Example: 'in the this context'.",
+      "introduced": "2026-04-09",
+      "example": "Which element is found in the this compound?"
+    },
+    {
+      "id": "soviet_this_placeholder",
+      "pattern": "Soviet this",
+      "description": "Proper noun + 'this' — caused by replacing a proper noun (e.g., 'Union') with the placeholder 'this' without removing the preceding adjective. Example: 'the Soviet this collapsed in 1991'.",
+      "introduced": "2026-04-09",
+      "example": "When did the Soviet this collapse?"
+    },
+    {
+      "id": "in_a_who",
+      "pattern": "in a who",
+      "description": "'in a who' — caused by replacing a person/entity noun with 'who' inside a prepositional phrase. Example: 'studied in a who discovered...'.",
+      "introduced": "2026-04-09",
+      "example": "This technique was developed in a who pioneered..."
+    },
+    {
+      "id": "anatomical_this",
+      "pattern": "anatomical this",
+      "description": "'anatomical this' — caused by replacing an anatomical noun with 'this' while leaving the preceding adjective. Example: 'the anatomical this connects...'.",
+      "introduced": "2026-04-09",
+      "example": "The anatomical this connects two chambers."
+    },
+    {
+      "id": "un_this_introduced",
+      "pattern": "UN this introduced",
+      "description": "'UN this introduced' — caused by replacing 'report' or 'document' with 'this' while leaving 'UN'. Example: 'What 1987 UN this introduced the concept...'.",
+      "introduced": "2026-04-10",
+      "example": "What 1987 UN this introduced the concept of sustainable development?"
+    }
+  ]
+}

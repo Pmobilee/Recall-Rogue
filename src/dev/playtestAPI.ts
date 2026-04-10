@@ -12,6 +12,7 @@ import { readStore } from './storeBridge'
 import { turboDelay } from '../utils/turboMode'
 import { factsDB } from '../services/factsDB'
 import { RELIC_BY_ID } from '../data/relics'
+import { computeIntentDisplayDamage } from '../services/intentDisplay'
 import { getEffectiveApCost } from '../services/cardUpgradeService';
 
 // ---------------------------------------------------------------------------
@@ -170,7 +171,25 @@ function getCombatState(): Record<string, unknown> | null {
     enemyBlock: enemy?.block ?? 0,
     enemyIntent: enemy?.nextIntent ? {
       type: enemy.nextIntent.type,
+      /** Raw intent value from the enemy template (before global multipliers). */
       value: enemy.nextIntent.value,
+      /**
+       * Computed display damage — same scaling the Svelte UI shows.
+       * Applies GLOBAL_ENEMY_DAMAGE_MULTIPLIER, floor scaling, strength mods,
+       * difficulty variance, segment damage cap (first layer only — no runtime
+       * modifiers like enrage or Glass Cannon that change mid-encounter).
+       * Non-attack intents (defend, buff, debuff, heal, charge) return 0.
+       */
+      displayDamage: computeIntentDisplayDamage(
+        enemy.nextIntent,
+        enemy,
+        // Pass minimal scalingCtx from turnState if available for canary/ascension mods
+        turnState ? {
+          canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+          ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+          difficultyMode: turnState.difficultyMode,
+        } : undefined,
+      ),
       telegraph: enemy.nextIntent.telegraph,
       hitCount: enemy.nextIntent.hitCount,
       statusEffect: enemy.nextIntent.statusEffect ?? null,
@@ -569,6 +588,47 @@ function getRelicDetails(): Array<Record<string, unknown>> {
   });
 }
 
+/** Get the 3-card reward choices from the active reward picker WITHOUT accepting.
+ *  Returns an empty array if no card reward is currently pending. */
+async function getRewardChoices(): Promise<Array<Record<string, unknown>>> {
+  const { activeCardRewardOptions } = await import('../services/gameFlowController');
+  const { get } = await import('svelte/store');
+  const options = get(activeCardRewardOptions);
+  if (!Array.isArray(options) || options.length === 0) return [];
+  return options.map((card: any, i: number) => {
+    const fact = card.factId && factsDB.isReady() ? factsDB.getById(card.factId) : null;
+    return {
+      index: i,
+      id: card.id ?? '',
+      cardType: card.cardType ?? '',
+      mechanicId: card.mechanicId ?? null,
+      mechanicName: card.mechanicName ?? null,
+      domain: card.domain ?? null,
+      tier: card.tier ?? 0,
+      apCost: card.apCost ?? 1,
+      baseEffectValue: card.baseEffectValue ?? 0,
+      masteryLevel: card.masteryLevel ?? 0,
+      chainType: card.chainType ?? null,
+      factId: card.factId ?? null,
+      factQuestion: fact?.quizQuestion ?? null,
+      factAnswer: fact?.correctAnswer ?? null,
+    };
+  });
+}
+
+/** Get the number of cards currently eligible for mastery upgrade (study pool size).
+ *  Returns 0 when there is no active run or no eligible cards.
+ *  This lets testers observe the empty-study-pool state before triggering startStudy(). */
+async function getStudyPoolSize(): Promise<number> {
+  const runState = readStore<any>('rr:activeRunState');
+  if (!runState) return 0;
+  const { getActiveDeckCards, getRunPoolCards } = await import('../services/encounterBridge');
+  const { canMasteryUpgrade } = await import('../services/cardUpgradeService');
+  const allCards = getActiveDeckCards();
+  const cards = allCards.length > 0 ? allCards : getRunPoolCards();
+  return cards.filter((c: any) => canMasteryUpgrade(c)).length;
+}
+
 /** Retreat at a checkpoint (cash out). */
 async function retreat(): Promise<PlayResult> {
   return safeAction(async () => {
@@ -850,6 +910,18 @@ async function startStudy(size?: number): Promise<PlayResult> {
   // Acknowledge size param to satisfy TypeScript without unused-var warnings.
   void size;
   return safeAction(async () => {
+    // HIGH-8 precondition: fail fast if no active run — do NOT mutate screen store.
+    const runState = readStore<any>('rr:activeRunState');
+    if (!runState) {
+      return { ok: false, message: 'no active run — start a run first before calling startStudy()' };
+    }
+
+    // HIGH-8 precondition: fail fast if study pool is empty.
+    const { hasRestUpgradeCandidates } = await import('../services/gameFlowController');
+    if (!hasRestUpgradeCandidates()) {
+      return { ok: false, message: 'empty study pool — no cards are eligible for mastery upgrade in this run' };
+    }
+
     // Navigate to the rest room — RestRoomOverlay.svelte will mount.
     writeStore('rr:currentScreen', 'restStudy');
     await wait(turboDelay(500));
@@ -1250,6 +1322,7 @@ export function initPlaytestAPI(): void {
     selectRewardType,
     selectRelic,
     getRelicDetails,
+    getRewardChoices,
     retreat,
     delve,
     getRunState,
@@ -1275,6 +1348,7 @@ export function initPlaytestAPI(): void {
     gradeCard,
     endStudy,
     getLeechInfo,
+    getStudyPoolSize,
     // Dome (legacy but still functional)
     enterRoom,
     exitRoom,

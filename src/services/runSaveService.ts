@@ -45,10 +45,44 @@ export interface RunSaveState {
   rngState?: { seed: number; forks: Record<string, number> } | null;
 }
 
-/** RunState with Sets replaced by arrays for JSON serialization. */
+/**
+ * RunState with Sets/Maps/class-instances replaced by serializable equivalents.
+ *
+ * CRITICAL: Every field on RunState whose runtime type is Set, Map, WeakSet, or
+ * a class instance MUST be listed in the Omit<> union below and handled
+ * explicitly in serializeRunState / deserializeRunState. Plain `...spread` is
+ * NOT safe for these types — JSON.stringify converts Sets and Maps to `{}`,
+ * causing `.has()` / `.get()` TypeErrors after resume (CRITICAL-2, 2026-04-10).
+ *
+ * Currently excluded (in-memory only, not persisted):
+ *   - reviewStateSnapshot  (Map — rebuilt at startRun from FSRS state)
+ *   - firstTimeFactIds     (Set — rebuilt at startRun)
+ *   - tierAdvancedFactIds  (Set — rebuilt at startRun)
+ *   - masteredThisRunFactIds (Set — rebuilt at startRun)
+ *   - chainDistribution    (class instance)
+ *
+ * Currently serialized as arrays (re-wrapped to Set on load):
+ *   - consumedRewardFactIds, factsAnsweredCorrectly, factsAnsweredIncorrectly,
+ *     firstChargeFreeFactIds, offeredRelicIds, cursedFactIds, attemptedFactIds
+ *
+ * Currently serialized via class round-trip (toJSON / fromJSON):
+ *   - inRunFactTracker (InRunFactTracker class instance)
+ */
 interface SerializedRunState extends Omit<
   RunState,
-  'consumedRewardFactIds' | 'factsAnsweredCorrectly' | 'factsAnsweredIncorrectly' | 'firstChargeFreeFactIds' | 'offeredRelicIds' | 'cursedFactIds' | 'attemptedFactIds' | 'chainDistribution' | 'inRunFactTracker'
+  | 'consumedRewardFactIds'
+  | 'factsAnsweredCorrectly'
+  | 'factsAnsweredIncorrectly'
+  | 'firstChargeFreeFactIds'
+  | 'offeredRelicIds'
+  | 'cursedFactIds'
+  | 'attemptedFactIds'
+  | 'chainDistribution'
+  | 'inRunFactTracker'
+  | 'reviewStateSnapshot'
+  | 'firstTimeFactIds'
+  | 'tierAdvancedFactIds'
+  | 'masteredThisRunFactIds'
 > {
   /** Legacy field — present in old saves, ignored on load. */
   echoFactIds?: string[];
@@ -69,6 +103,12 @@ interface SerializedRunState extends Omit<
    * it through `InRunFactTracker.toJSON` / `InRunFactTracker.fromJSON`.
    */
   inRunFactTracker?: InRunFactTrackerSnapshot;
+  // NOTE: reviewStateSnapshot, firstTimeFactIds, tierAdvancedFactIds,
+  // masteredThisRunFactIds are intentionally absent — they are in-memory only
+  // and are rebuilt at startRun() / gameFlowController. On resume, these fields
+  // will be undefined until the next startRun call (which is correct: the
+  // player is resuming an in-progress run, not starting a new one, so tier
+  // deltas accumulate from this point forward only).
 }
 
 interface SerializedEncounterSnapshot {
@@ -78,8 +118,33 @@ interface SerializedEncounterSnapshot {
 
 /** Serialize RunState Sets to arrays for JSON storage. */
 function serializeRunState(run: RunState): SerializedRunState {
+  // Destructure to explicitly exclude in-memory-only Set/Map/class fields.
+  // DO NOT use `...run` alone — it would spread Sets/Maps into the output as
+  // `{}` (JSON.stringify strips their contents), breaking `.has()` on resume.
+  const {
+    // excluded — serialized via explicit array fields below:
+    consumedRewardFactIds: _c,
+    factsAnsweredCorrectly: _fac,
+    factsAnsweredIncorrectly: _fai,
+    firstChargeFreeFactIds: _fc,
+    offeredRelicIds: _or,
+    cursedFactIds: _cf,
+    attemptedFactIds: _af,
+    // excluded — class instance serialized via toJSON below:
+    inRunFactTracker: _irt,
+    // excluded — in-memory only (NOT persisted, rebuilt at startRun):
+    reviewStateSnapshot: _rss,
+    firstTimeFactIds: _ftf,
+    tierAdvancedFactIds: _taf,
+    masteredThisRunFactIds: _mtr,
+    // excluded — class instance, not persisted:
+    chainDistribution: _cd,
+    // everything else passes through:
+    ...rest
+  } = run;
+
   return {
-    ...run,
+    ...rest,
     consumedRewardFactIds: [...run.consumedRewardFactIds],
     factsAnsweredCorrectly: [...run.factsAnsweredCorrectly],
     factsAnsweredIncorrectly: [...run.factsAnsweredIncorrectly],
@@ -133,6 +198,16 @@ function deserializeRunState(saved: SerializedRunState): RunState {
     inRunFactTracker: saved.inRunFactTracker
       ? InRunFactTracker.fromJSON(saved.inRunFactTracker)
       : undefined,
+    // In-memory-only tracking fields: always initialize to empty/undefined on
+    // resume. These are rebuilt by gameFlowController.startRun() on a fresh
+    // run, but after resume they remain undefined until the next run starts —
+    // recordCardPlay() guards all access with `state.reviewStateSnapshot !== undefined`
+    // so this is safe. (CRITICAL-2 fix: previously these fields leaked through
+    // the `...run` spread as `{}` plain objects, causing .has() to throw.)
+    reviewStateSnapshot: undefined,
+    firstTimeFactIds: new Set<string>(),
+    tierAdvancedFactIds: new Set<string>(),
+    masteredThisRunFactIds: new Set<string>(),
   };
 }
 

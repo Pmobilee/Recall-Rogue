@@ -543,6 +543,66 @@ Scripts like `mine-distractors.mjs` or any `SELECT correct_answer FROM facts WHE
 
 ---
 
+## Obsessive Output Verification — MANDATORY (added 2026-04-10)
+
+**After ANY batch content operation — distractor generation, fact assembly, synthetic pool padding, question rewrites — SAMPLE AT LEAST 10 ITEMS and READ them back before saving or committing.**
+
+This rule exists because sub-agents produce broken output ~15-20% of the time. The cost of not verifying is high: 89 `{N}` bracket-notation tokens leaked into quiz options across 7 decks because no output was sampled. 262 grammar-broken question rewrites shipped in a prior batch. Three entire answer pools were skipped from a deck because they weren't tracked.
+
+### Mandatory Post-Batch Grep Patterns
+
+Run ALL of these after every batch operation before committing:
+
+**Bracket-notation brace leak (CRITICAL — 2026-04-10):**
+```bash
+python3 -c "
+import json, os, glob
+for path in glob.glob('data/decks/*.json'):
+    deck = json.load(open(path))
+    for pool in deck.get('answerTypePools', []):
+        for d in pool.get('syntheticDistractors', []):
+            if isinstance(d, str) and ('{' in d or '}' in d) and '{___}' not in d:
+                print(f'BRACE LEAK {path}/{pool["id"]}: {repr(d)}')
+"
+```
+
+**Grammar scars from word replacement (CRITICAL — 2026-04-09):**
+```bash
+grep -r '"the concept \|this the \| a the \| in a who \|Soviet this ' data/decks/
+```
+
+**Empty or placeholder distractors:**
+```bash
+grep -r '"Unknown\|None of the above\|Alternative option\|Related concept' data/decks/
+```
+
+### For Numeric Distractor Generators — Explicit Format Rule
+
+When generating numeric values (years, counts, measurements) as synthetic distractors:
+
+```js
+// WRONG — produces '{7}' (bracket-notation token, displays literally in quiz UI)
+const distractor = `{${value}}`
+const distractor = '{' + value + '}'
+
+// CORRECT — produces '7' (plain string the quiz runtime renders as a number)
+const distractor = String(value)
+const distractor = value.toString()
+```
+
+The game's bracket system uses `{N}` ONLY in `correctAnswer` fields to signal "runtime-generate numeric distractors". Bracket-format values in `syntheticDistractors` arrays are ALWAYS a bug.
+
+### Per-Batch Verification Checklist
+
+Before marking any batch as done:
+- [ ] Sampled 10+ output items and read them back as raw text
+- [ ] Ran the brace-leak grep (zero matches required)
+- [ ] Ran the grammar-scar grep (zero matches required)
+- [ ] Ran `node scripts/verify-all-decks.mjs` — 0 failures required
+- [ ] No `undefined`, `null`, or empty string values in distractor arrays
+
+---
+
 ## Variant & Answer Quality Rules
 
 1. **Variant coherence** — `correctAnswer` must directly answer the variant's `question`.

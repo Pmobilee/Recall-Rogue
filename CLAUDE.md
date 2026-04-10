@@ -82,7 +82,7 @@ Stable conventions are in `.claude/rules/` (auto-loaded every session):
 | `docs-first.md` | Read docs before code, update after every change |
 | `error-handling.md` | Error boundaries, recoverable vs fatal, logging patterns |
 | `game-conventions.md` | Damage pipeline, charge values, surge, FSRS, chains |
-| `git-workflow.md` | Branch naming, commit format, tags, worktree hygiene |
+| `git-workflow.md` | Branch naming, commit format, tags |
 | `performance.md` | FPS/memory targets, optimization guidelines |
 | `save-load.md` | Schema versioning, migration strategy, crash-safe writes |
 | `task-tracking.md` | CLI tasks for ALL work, no exceptions |
@@ -129,21 +129,7 @@ Agent roles and file ownership in `.claude/agents/`:
 
 - Commit + push after EVERY meaningful change — not batched, not "at the end"
 - Docs, memory, rules, gotchas updated IN THE SAME commit as code changes
-- If in a worktree, push the branch — unpushed worktrees get lost
-- At task completion: ASK THE USER "Should I merge this into main?" — they forget about lingering branches
-- Run `git worktree list` at natural breakpoints and flag orphaned worktrees
 - Every commit should leave the repo so a fresh agent can pick up seamlessly
-
-## 🚨 MANDATORY WORKTREE ISOLATION — READ THIS 🚨
-
-**EVERY agent — the orchestrator (you) AND every sub-agent you spawn — MUST work inside its OWN dedicated git worktree on its OWN branch. Nobody edits the primary `main` checkout directly. Nobody shares a worktree with another agent.**
-
-- Orchestrator: if you are in `/Users/damion/CODE/Recall_Rogue` on `main` and the task requires edits, create your own worktree FIRST: `git worktree add ../rr-<slug> -b <type>/<slug> && cd ../rr-<slug>`.
-- Every `Agent` tool invocation that edits files MUST pass `isolation: "worktree"`. Read-only Explore agents may skip it.
-- Parallel sub-agents each get their OWN worktree. Never shared.
-- At end of task, you MUST emit the "WORK IS IN A WORKTREE — NOT YET IN MAIN" reminder block (see `.claude/rules/git-workflow.md` → "END-OF-TASK RITUAL") and explicitly ASK the user whether to merge/commit/push. Do not auto-merge. Do not assume the user remembers the worktree exists.
-
-Full spec: `.claude/rules/git-workflow.md`. This is non-negotiable and applies to every single task in every single session.
 
 ## Chrome Browser Locking
 

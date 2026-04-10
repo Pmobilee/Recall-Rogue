@@ -18,6 +18,23 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, '..');
 
+// ---------------------------------------------------------------------------
+// Grammar scar patterns — loaded from catalog file
+// ---------------------------------------------------------------------------
+let GRAMMAR_SCAR_PATTERNS = [];
+try {
+  const scarCatalog = JSON.parse(readFileSync(resolve(repoRoot, 'scripts/content-pipeline/grammar-scar-patterns.json'), 'utf8'));
+  GRAMMAR_SCAR_PATTERNS = (scarCatalog.patterns || []).map(p => ({
+    id: p.id,
+    pattern: p.pattern,
+    description: p.description,
+  }));
+} catch (e) {
+  // Catalog not found — grammar scar check will be skipped
+  console.warn('[verify-all-decks] Warning: grammar-scar-patterns.json not found — Check #25 disabled');
+}
+
+
 const VERBOSE = process.argv.includes('--verbose');
 
 // ---------------------------------------------------------------------------
@@ -301,10 +318,15 @@ function getPoolDistractors(fact, deck, count = 3) {
 }
 
 // ---------------------------------------------------------------------------
-// Issue checking — 30 checks total (22 original + 8 new Phase 5 structural checks)
-// New checks: #23 mega_pool_size, #24 empty_chain_themes, #25 definition_match_explanation_leak,
-// #26 placeholder_leak, #27 reverse_template_pool_contam, #28 reading_on_phonetic,
-// #29 numeric_domain_violation, #30 chinese_sense_mismatch
+// Issue checking — 33 checks total
+// Checks #1-#22: original structural + quality + answer-quality
+// Checks #23-#30 (Phase 5, merged from main): mega_pool_size, empty_chain_themes,
+//   definition_match_explanation_leak, placeholder_leak, reverse_template_pool_contam,
+//   reading_on_phonetic, numeric_domain_violation, chinese_sense_mismatch
+// Checks #31-#33 (BATCH-2026-04-10-003-fullsweep additions):
+//   #31 brace-leak in syntheticDistractors (HARD FAIL)
+//   #32 grammar-scar pattern catalog (HARD FAIL)
+//   #33 semantic-category heuristics (WARN)
 // ---------------------------------------------------------------------------
 
 /**
@@ -618,6 +640,92 @@ function verifyDeck(deckId, deck) {
     const themes24 = deck.chainThemes;
     if (!Array.isArray(themes24) || themes24.length === 0) {
       factWarnings.push({ index: 0, factId: '_deck', msg: `empty_chain_themes: knowledge deck "${deck.id || deckId}" has no chainThemes defined` });
+    }
+  }
+
+  // Check #31: raw brace characters in syntheticDistractors (HARD FAIL — bracket-notation leak)
+  // Detects distractors formatted as {N} bracket-notation tokens (e.g. '{7}', '{1990}') that
+  // would display literally in the quiz UI instead of rendering as a number.
+  // Fill-in-blank {___} tokens are excluded (legitimate quiz syntax in quizQuestion stems only).
+  // This check fires even if the pool has homogeneityExempt: true.
+  // 2026-04-10: Added after 89 {N} distractors leaked into 7 decks (originally Check #24 in the
+  //             sweep branch; renumbered to #31 on merge with main's Phase 5 checks).
+  for (const pool31 of (deck.answerTypePools || [])) {
+    for (const synth of (pool31.syntheticDistractors || [])) {
+      if (typeof synth !== 'string') continue;
+      if (synth === '{___}') continue; // fill-in-blank token — not a real distractor
+      if (/[{}]/.test(synth)) {
+        addDeckIssue('Check #31 FAIL: pool "' + pool31.id + '" syntheticDistractor contains raw brace — bracket-notation leak: ' + JSON.stringify(synth) + ' — strip this distractor and fix the generator');
+      }
+    }
+  }
+
+  // Check #32: grammar scar patterns in quizQuestion fields (HARD FAIL)
+  // Detects broken English patterns produced by naive batch word-replacement.
+  // Patterns are maintained in scripts/content-pipeline/grammar-scar-patterns.json.
+  // 2026-04-10: Added after "a the concept", "a the reactant" scars found in 6 facts across 3 decks.
+  // This is the SECOND occurrence — first was 2026-04-09. The catalog ensures future patterns
+  // are machine-checkable rather than relying on manual grep. (originally Check #25; renumbered to #32)
+  if (GRAMMAR_SCAR_PATTERNS.length > 0) {
+    for (const fact32 of facts) {
+      const q = fact32.quizQuestion || '';
+      if (!q) continue;
+      for (const scar of GRAMMAR_SCAR_PATTERNS) {
+        if (q.includes(scar.pattern)) {
+          addDeckIssue('Check #32 FAIL: grammar scar "' + scar.id + '" in fact "' + fact32.id + '" quizQuestion — pattern "' + scar.pattern + '" — ' + scar.description + ' — rewrite the question stem instead of using naive replacement');
+          break; // one error per fact is sufficient
+        }
+      }
+    }
+  }
+
+  // Check #33: semantic-category heuristics — capitalization mismatch + digits-in-some-but-not-others
+  // These are additional pool-homogeneity signals that detect cross-category contamination.
+  // Pattern 1: Capitalization mismatch — some answers are ALL_CAPS or Title_Case while others are lowercase.
+  //            Detects pools mixing product names, abbreviations, and descriptions.
+  // Pattern 2: Digits-some-not-others — some answers contain digits (dates, quantities) while others don't.
+  //            Detects pools mixing "Who" answers (names) with "When" answers (years/dates).
+  // 2026-04-10: Added after barcode (name in description pool), netflix (streaming in console pool),
+  //             and n64 (hardware innovation in mixed category pool) were found in wrong pools.
+  //             (originally Check #26; renumbered to #33 on merge with main's Phase 5 checks)
+  // Reference: .claude/rules/deck-quality.md §"Pool Design Rules — MANDATORY"
+  if (!isVocab) {
+    const factById33 = new Map((deck.facts || []).map(f => [f.id, f]));
+    const FULL_BRACKET_RE33 = /^\{(\d[\d,]*\.?\d*)\}$/;
+    for (const pool33 of (deck.answerTypePools || [])) {
+      if (pool33.homogeneityExempt === true) continue;
+      const answers = [];
+      for (const fid of poolFactIds(pool33)) {
+        const f = factById33.get(fid);
+        if (!f || !f.correctAnswer) continue;
+        if (FULL_BRACKET_RE33.test(f.correctAnswer)) continue;
+        answers.push(f.correctAnswer);
+      }
+      if (answers.length < 3) continue; // too few to detect patterns meaningfully
+
+      // Pattern 2: digits-some-not-others (indicates date/number mixed with names/descriptions)
+      const hasDigits = answers.filter(a => /\d/.test(a));
+      const noDigits = answers.filter(a => !/\d/.test(a));
+      const digitRatio = hasDigits.length / answers.length;
+      if (digitRatio > 0.1 && digitRatio < 0.9 && hasDigits.length >= 1 && noDigits.length >= 1) {
+        factWarnings.push({
+          index: 0,
+          factId: pool33.id,
+          msg: 'pool-semantic WARN: pool "' + pool33.id + '" mixes digit-containing answers (' + hasDigits.length + ', e.g. "' + hasDigits[0].slice(0,30) + '") with non-digit answers (' + noDigits.length + ', e.g. "' + noDigits[0].slice(0,30) + '") — possible date/name contamination. Split pool by answer category.',
+        });
+      }
+
+      // Pattern 1: all-caps abbreviations mixed with regular answers
+      const allCaps = answers.filter(a => a.length >= 2 && /^[A-Z0-9][A-Z0-9\s\-/()]{1,}$/.test(a) && a === a.toUpperCase() && /[A-Z]{2}/.test(a));
+      const notAllCaps = answers.filter(a => !/^[A-Z0-9\s\-/()]+$/.test(a) || a !== a.toUpperCase());
+      const capsRatio = allCaps.length / answers.length;
+      if (capsRatio > 0.1 && capsRatio < 0.9 && allCaps.length >= 1 && notAllCaps.length >= 1) {
+        factWarnings.push({
+          index: 0,
+          factId: pool33.id,
+          msg: 'pool-semantic WARN: pool "' + pool33.id + '" mixes ALL_CAPS abbreviations (' + allCaps.length + ', e.g. "' + allCaps[0].slice(0,30) + '") with regular answers — possible acronym/term contamination. Consider splitting into abbreviation pool and full-name pool.',
+        });
+      }
     }
   }
 

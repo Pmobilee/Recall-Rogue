@@ -41,30 +41,22 @@ The orchestrator and sub-agents have distinct responsibilities:
 4. **Cross-domain tasks** — If files span multiple agents, spawn one agent per domain. Never let game-logic touch `src/ui/` or vice versa.
 5. **Unrouted files** — If a file doesn't appear in the table, flag it and assign to the closest domain agent. Then update this table.
 
-## 🚨 MANDATORY WORKTREE ISOLATION FOR EVERY SUB-AGENT 🚨
+## Worktrees — Off by Default
 
-**Every `Agent` tool invocation that edits files MUST pass `isolation: "worktree"`.** No sub-agent ever edits in the orchestrator's working tree. No two sub-agents ever share a tree. See `.claude/rules/git-workflow.md` → "MANDATORY WORKTREE ISOLATION" for the full rationale.
-
-- Editing sub-agent → `isolation: "worktree"` — NON-NEGOTIABLE
-- Read-only Explore/research sub-agent → may omit isolation (safe, no writes)
-- Parallel sub-agents → EACH gets its own `isolation: "worktree"`, never shared
-- The sub-agent prompt MUST tell it to stay inside its worktree and push its branch before returning
-
-The orchestrator itself ALSO must be operating inside a dedicated worktree (not primary `main` checkout) before spawning editing sub-agents. If you are still in `/Users/damion/CODE/Recall_Rogue` on `main`, create your own worktree first.
+Do NOT pass `isolation: "worktree"` to `Agent` calls by default. Sub-agents work in the primary checkout on `main` alongside the orchestrator. Only use `isolation: "worktree"` when the user explicitly asks for worktree isolation. See `.claude/rules/git-workflow.md` → "Worktrees — Not Used by Default".
 
 ## Sub-Agent Prompt Template
 
 Every sub-agent prompt MUST include:
 1. The agent's full instructions from its definition file
-2. **"You are running in an isolated git worktree (`isolation: worktree`). Do all work here. Do NOT `cd` out of this worktree. Do NOT touch sibling worktrees or the primary `main` checkout. Commit and push your branch before returning, and report the exact worktree path + branch name in your final message."**
-3. "Read relevant docs under docs/ BEFORE writing code. Navigate via docs/INDEX.md."
-4. "After changes, update those same doc files."
+2. "Read relevant docs under docs/ BEFORE writing code. Navigate via docs/INDEX.md."
+3. "After changes, update those same doc files."
    **This is non-negotiable. Every sub-agent deliverable MUST include doc updates. There is no change too small to document.**
-5. "Run `npm run typecheck` and `npm run build` after implementation."
-6. **"Run Docker visual verification (`scripts/docker-visual-test.sh`) with `__rrScreenshotFile()` + `__rrLayoutDump()` after implementation. Load a scenario where the change is observable. No exceptions."**
-7. **"After ANY batch operation or content edit, sample 5-10 items and READ them back. Check for broken grammar, corrupted data, unintended patterns. NEVER deliver output without verifying samples."**
-8. The specific task description
-9. "Break work into granular TaskCreate tasks BEFORE starting. One task per discrete step. Mark in_progress when beginning, completed when done. Run TaskList before delivering — zero pending tasks allowed."
+4. "Run `npm run typecheck` and `npm run build` after implementation."
+5. **"Run Docker visual verification (`scripts/docker-visual-test.sh`) with `__rrScreenshotFile()` + `__rrLayoutDump()` after implementation. Load a scenario where the change is observable. No exceptions."**
+6. **"After ANY batch operation or content edit, sample 5-10 items and READ them back. Check for broken grammar, corrupted data, unintended patterns. NEVER deliver output without verifying samples."**
+7. The specific task description
+8. "Break work into granular TaskCreate tasks BEFORE starting. One task per discrete step. Mark in_progress when beginning, completed when done. Run TaskList before delivering — zero pending tasks allowed."
 
 ## Anti-Patterns — NEVER Do These
 

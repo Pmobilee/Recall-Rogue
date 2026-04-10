@@ -388,6 +388,8 @@
     border-radius: calc(4px * var(--layout-scale, 1));
     letter-spacing: 0.05em;
     z-index: 2;
+    /* Ensure badge separates from any deck art background (LOW-18: purple badge on purple art) */
+    box-shadow: 0 1px calc(4px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.25);
   }
 
   /* When image is present, badges also float forward in 3D space */
@@ -396,22 +398,24 @@
   }
 
   .badge-new {
-    background: rgba(99, 102, 241, 0.85);
+    background: rgba(99, 102, 241, 0.95);
     color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   }
 
   .badge-continue {
-    background: rgba(245, 158, 11, 0.85);
+    background: rgba(245, 158, 11, 0.95);
     color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   }
 
   .badge-complete {
-    background: rgba(234, 179, 8, 0.9);
+    background: rgba(234, 179, 8, 0.95);
     color: #1a1a2e;
   }
 
   .badge-coming-soon {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     color: #94a3b8;
   }
 

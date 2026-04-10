@@ -435,6 +435,7 @@ All calls go through `mcp__playwright__browser_evaluate`. Example: `window.__rrP
 - `selectMysteryChoice(index)` — Select a mystery event choice.
 
 **Study Mode:**
+- `getStudyPoolSize()` — Returns count of cards eligible for mastery upgrade. Returns `0` when no active run or no upgradeable cards. Read-only. Use BEFORE `startStudy()` to verify the pool is non-empty.
 - `startStudy(size)` — Start study session with N cards.
 - `getStudyCard()` — Returns current study card: `{question, answer, category, choices?: string[]}`.
 - `gradeCard(button)` — Grade card: `'again'` | `'hard'` | `'good'` | `'easy'`.
@@ -682,6 +683,7 @@ All calls go through `mcp__playwright__browser_evaluate`.
 - `getRelicDetails()` — Returns: `[{id, name, description, rarity, trigger, acquiredAtFloor, triggerCount}]`
 
 **Post-Combat:**
+- `getRewardChoices()` — Preview 3-card reward choices WITHOUT accepting. Returns: `[{index, id, cardType, mechanicId, mechanicName, domain, tier, apCost, baseEffectValue, masteryLevel, factId, factQuestion}]`. Returns `[]` when no reward pending. Use BEFORE `acceptReward()` to read the options.
 - `acceptReward()` — Accept first reward (cards + relics)
 - `selectRewardType(cardType)` — Pick reward card by type
 - `selectRelic(index)` — Pick relic by index
@@ -1033,6 +1035,7 @@ You are the Study Temple Tester for Recall Rogue. Your job is to verify the stud
 All calls via `mcp__playwright__browser_evaluate`.
 
 **Study Mode:**
+- `getStudyPoolSize()` — Returns count of cards eligible for mastery upgrade. Returns `0` when no active run or no upgradeable cards. Read-only. Use BEFORE `startStudy()` to verify the pool is non-empty.
 - `startStudy(size)` — Start study session. Returns `{ok: boolean, cardCount: number}`. NOTE: The `size` parameter is no longer functional. The function navigates to the Study screen and clicks the Study button in RestRoomOverlay. Use `__rrScenario.spawn({ screen: 'restStudy' })` for direct access.
 - `getStudyCard()` — Get current card: `{question, answer, category, choices?: string[], interval?: number, reps?: number}`. Returns null when session complete.
 - `gradeCard(button)` — Grade current card: `'again'` | `'hard'` | `'good'` | `'easy'`. Returns `{ok, nextInterval?: number}`.

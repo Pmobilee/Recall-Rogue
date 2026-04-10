@@ -151,6 +151,7 @@ describe('multi_hit mechanic', () => {
 // Stat table L0: qpValue=7 (mechanic quickPlayValue=10, masteryBonus=7-10=-3)
 // QP=7, CC=round(7*1.50)=round(10.5)=11, CW=max(0, 7+(-3))=4 (chargeWrongValue=7)
 // apCost=2 at L0 (from stat table)
+// Updated 2026-04-10: qpValue bumped from 6→7 in MASTERY_STAT_TABLES balance pass
 
 describe('heavy_strike mechanic', () => {
   it('QP: deals 7 damage (stat table L0 qpValue=7)', () => {

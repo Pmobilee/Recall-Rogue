@@ -2449,7 +2449,7 @@
       "correctAnswer": "Lise Meitner and Otto Robert Frisch",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "invention_details_long",
+      "answerTypePoolId": "inventor_pair_names",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Who coined the term 'nuclear fission' and provided the theoretical explanation in January 1939?",
@@ -3544,7 +3544,7 @@
       "correctAnswer": "Whittingham, Goodenough, and Yoshino",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "invention_details_long",
+      "answerTypePoolId": "inventor_pair_names",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "Which three scientists shared the 2019 Nobel Prize in Chemistry for developing lithium-ion batteries?",
@@ -3575,7 +3575,7 @@
       "correctAnswer": "Peter Mansfield and Paul Lauterbur",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "invention_details_long",
+      "answerTypePoolId": "inventor_pair_names",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "Who received the 2003 Nobel Prize in Physiology or Medicine for MRI discoveries?",
@@ -3670,7 +3670,7 @@
       "correctAnswer": "Norman Joseph Woodland and Bernard Silver",
       "acceptableAlternatives": [],
       "chainThemeId": 3,
-      "answerTypePoolId": "invention_details_long",
+      "answerTypePoolId": "inventor_pair_names",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Who patented the barcode on October 7, 1952?",
@@ -4983,7 +4983,7 @@
       "correctAnswer": "Richard Trevithick and Oliver Evans",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "invention_details_long",
+      "answerTypePoolId": "inventor_pair_names",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "Who developed high-pressure steam engines for mobile use after Watt's patent expired in 1800?",
@@ -6500,14 +6500,9 @@
       "description": "Longer technical descriptions: materials, components, multi-person credits, and context",
       "factIds": [
         "inv_2_helicopter_rescue",
-        "inv_3_mri_nobel",
-        "inv_2_fission_hahn",
-        "inv_1_steam_highpressure",
-        "inv_3_liion_nobel",
         "inv_3_barcode_first",
         "inv_0_compass_south",
         "inv_1_telephone_bell",
-        "inv_3_barcode_patent",
         "inv_2_eniac_task",
         "inv_1_otto_fourstroke",
         "inv_3_arpanet_nodes",
@@ -6530,7 +6525,19 @@
         "inv_4_pat_kevlar_use",
         "inv_4_pat_postit_launch"
       ],
-      "label": "invention_details (long)"
+      "label": "invention_details (long)",
+      "syntheticDistractors": [
+        "By measuring radioactive decay intervals",
+        "By converting chemical energy to mechanical force",
+        "Through electromagnetic induction in a copper coil",
+        "Via catalytic oxidation at high pressure",
+        "Through piezoelectric crystal oscillation",
+        "By splitting light through a diffraction grating",
+        "Via steam-driven reciprocating motion",
+        "Through sequential binary switching gates",
+        "By harnessing photovoltaic electron emission",
+        "Through resonant frequency amplification"
+      ]
     },
     {
       "id": "discovery_descriptions",
@@ -6586,6 +6593,28 @@
         "24 hours",
         "45 kg (99 lb)",
         "300,000"
+      ]
+    },
+    {
+      "id": "inventor_pair_names",
+      "factIds": [
+        "inv_3_mri_nobel",
+        "inv_2_fission_hahn",
+        "inv_1_steam_highpressure",
+        "inv_3_liion_nobel",
+        "inv_3_barcode_patent"
+      ],
+      "syntheticDistractors": [
+        "Alexander Graham Bell and Elisha Gray",
+        "Robert Oppenheimer and Enrico Fermi",
+        "Charles Babbage and Augusta Ada Byron",
+        "Michael Faraday and James Clerk Maxwell",
+        "Nikola Tesla and George Westinghouse",
+        "Francis Crick and James Dewey Watson",
+        "Nikolaus Otto and Gottlieb Daimler",
+        "Orville Wright and Wilbur Wright",
+        "Thomas Edison and Joseph Wilson Swan",
+        "James Prescott Joule and Lord Kelvin"
       ]
     },
     {
