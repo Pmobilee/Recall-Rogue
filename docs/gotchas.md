@@ -1745,6 +1745,9 @@ Both return early WITHOUT mutating the screen store.
 **Impact:** Production build and vitest (which uses its own tsconfig) are unaffected. The `svelte-check` step in `npm run check` picks up the headless files even though `tsconfig.app.json` explicitly includes only `src/**`.
 
 **Fix:** Next balance pass should grep `tests/playtest/headless/simulator.ts` and `full-run-simulator.ts` for the stale properties and align them with current types. Rule: any production type refactor (`PlayCardResult`, `TurnState`, `PlayerCombatState`) MUST include a grep of the headless sim files for the old property name.
+**Resolution (2026-04-10):** Fixed all 26 errors in same-day QA pass.
+- `browser-shim.ts` lines 20-21: `import.meta as Record<string, unknown>` → `import.meta as unknown as Record<string, unknown>` (double-cast pattern required by TS strict mode).
+- `simulator.ts` + `full-run-simulator.ts`: `turnState.playerState.maxHp` → `maxHP` (4 occurrences); `res.comboCount` → `turnState.chainLength` (9 occurrences); combo heal blocks replaced with `// TODO AR-201: combo heal disabled` comment; `ascensionComboResetsOnTurnEnd` assignment lines removed (2 occurrences). Build: 0 errors. Sim smoke test: 60 runs, 1.9s, no crashes.
 
 ---
 

@@ -17,8 +17,8 @@ if (typeof globalThis.localStorage === 'undefined') {
 }
 
 // import.meta.env shim
-if (typeof (import.meta as Record<string, unknown>).env === 'undefined') {
-  (import.meta as Record<string, unknown>).env = { DEV: true, PROD: false, MODE: 'development' };
+if (typeof (import.meta as unknown as Record<string, unknown>).env === 'undefined') {
+  (import.meta as unknown as Record<string, unknown>).env = { DEV: true, PROD: false, MODE: 'development' };
 }
 
 // window shim (minimal)

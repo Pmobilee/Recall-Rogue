@@ -530,15 +530,11 @@ function simulateSingleEncounter(
             wrongAnswers++;
           }
 
-          if (ascMods.comboHealThreshold > 0 && res.comboCount >= ascMods.comboHealThreshold && res.comboCount === ascMods.comboHealThreshold) {
-            turnState.playerState.hp = Math.min(
-              turnState.playerState.hp + ascMods.comboHealAmount,
-              turnState.playerState.maxHP,
-            );
-          }
+          // TODO AR-201: combo heal disabled — combo system removed; comboHealThreshold/comboHealAmount still in AscensionModifiers but unused
+          // Chain length is available via turnState.chainLength if needed for future mechanics
 
           if (res.effect.damageDealt > 0) damageDealt += res.effect.damageDealt;
-          if (res.comboCount > maxCombo) maxCombo = res.comboCount;
+          if (turnState.chainLength > maxCombo) maxCombo = turnState.chainLength;
 
           const midCheckResult = checkEncounterEnd(turnState);
           if (midCheckResult !== null) {
@@ -641,15 +637,11 @@ function simulateSingleEncounter(
           wrongAnswers++;
         }
 
-        if (ascMods.comboHealThreshold > 0 && res.comboCount >= ascMods.comboHealThreshold && res.comboCount === ascMods.comboHealThreshold) {
-          turnState.playerState.hp = Math.min(
-            turnState.playerState.hp + ascMods.comboHealAmount,
-            turnState.playerState.maxHP,
-          );
-        }
+        // TODO AR-201: combo heal disabled — combo system removed; comboHealThreshold/comboHealAmount still in AscensionModifiers but unused
+        // Chain length is available via turnState.chainLength if needed for future mechanics
 
         if (res.effect.damageDealt > 0) damageDealt += res.effect.damageDealt;
-        if (res.comboCount > maxCombo) maxCombo = res.comboCount;
+        if (turnState.chainLength > maxCombo) maxCombo = turnState.chainLength;
 
         const midCheckResult = checkEncounterEnd(turnState);
         if (midCheckResult !== null) {
@@ -829,7 +821,7 @@ function handleCombatNode(
   initialTurnState.ascensionEnemyDamageMultiplier = ascMods.enemyDamageMultiplier;
   initialTurnState.ascensionShieldCardMultiplier = ascMods.shieldCardMultiplier;
   initialTurnState.ascensionWrongAnswerSelfDamage = ascMods.wrongAnswerSelfDamage;
-  initialTurnState.ascensionComboResetsOnTurnEnd = ascMods.comboResetsOnTurnEnd;
+  // AR-201: ascensionComboResetsOnTurnEnd removed — combo system replaced by chain system
   initialTurnState.ascensionBaseTimerPenaltySeconds = ascMods.timerBasePenaltySeconds;
   initialTurnState.ascensionEncounterTimerPenaltySeconds = ascMods.encounterTwoTimerPenaltySeconds;
   initialTurnState.ascensionPreferCloseDistractors = ascMods.preferCloseDistractors;
