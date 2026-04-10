@@ -3163,7 +3163,7 @@
         "satisfiability"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "technology_terms_long",
+      "answerTypePoolId": "cs_np_problem_names",
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "The Cook-Levin Theorem (1971) proved the first NP-complete problem, opening the floodgates for Karp's 21 problems in 1972. What was that first NP-complete problem?",
@@ -3173,14 +3173,14 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/NP-completeness",
       "volatile": false,
       "distractors": [
-        "Travelling Salesman",
-        "Graph Coloring",
-        "Knapsack Problem",
-        "Hamiltonian Circuit",
-        "Clique problem",
-        "Vertex Cover",
-        "Subset Sum",
-        "Integer Linear Programming"
+        "Travelling Salesman Problem",
+        "Graph Coloring Problem",
+        "Knapsack Decision Problem",
+        "Hamiltonian Cycle Problem",
+        "Vertex Cover Decision",
+        "Independent Set Problem",
+        "3-Satisfiability Problem",
+        "Integer Programming Problem"
       ]
     },
     {
@@ -7467,7 +7467,6 @@
         "cs_7_amazon_founded_location",
         "cs_3_bellman_ford_advantage",
         "cs_3_kruskal_problem",
-        "cs_3_np_complete_first_problem",
         "cs_6_svm_purpose",
         "cs_1_von_neumann_vs_harvard",
         "cs_6_transformer_paper",
@@ -7801,6 +7800,26 @@
         "O(√n)",
         "O(log log n)"
       ]
+    },
+    {
+      "id": "cs_np_problem_names",
+      "label": "NP Problem Names",
+      "answerFormat": "term",
+      "factIds": [
+        "cs_3_np_complete_first_problem"
+      ],
+      "minimumSize": 1,
+      "syntheticDistractors": [
+        "Travelling Salesman Problem",
+        "Graph Coloring Problem",
+        "Knapsack Decision Problem",
+        "Hamiltonian Cycle Problem",
+        "Vertex Cover Decision",
+        "Independent Set Problem",
+        "3-Satisfiability Problem",
+        "Integer Programming Problem"
+      ],
+      "homogeneityExemptNote": "NP-complete problem names — inherent minor length variation within class"
     }
   ],
   "synonymGroups": [

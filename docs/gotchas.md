@@ -1574,3 +1574,45 @@ active scenes. Both bugs were fixed alongside the HIGH-4 fix.
 
 **Prevention:** Deck-quality rule updated with canonical examples and semantic homogeneity self-review step. deck-master SKILL.md now requires the category-type elimination test ("Could a player eliminate wrong answers purely by category type?") at Phase 0.6 plan review AND Phase 2 Architecture step 4 and step 11.
 
+
+### 2026-04-10 — __rrPlay.startStudy() was missing precondition guard, causing screen store mutation without active run
+
+**What:** `startStudy()` in `playtestAPI.ts` wrote `'restStudy'` to the screen store as its very first action, before checking whether there was an active run. From the hub (no run), calling `__rrPlay.startStudy()` navigated to `restStudy` where the study pool was empty, showing "QUESTION 1 / 0" (HIGH-8 bug). The ui-agent fixed the empty-state UI, but the API itself still let testers land in a broken state.
+
+**Why:** The function was written to "navigate then click the button" without separating the precondition check from the side effect (navigation).
+
+**Fix:** Added two precondition checks at the top of `startStudy()` before any `writeStore` call:
+1. `if (!runState) return { ok: false, message: 'no active run...' }`
+2. `if (!hasRestUpgradeCandidates()) return { ok: false, message: 'empty study pool...' }`
+Both return early WITHOUT mutating the screen store.
+
+---
+
+### 2026-04-10 — __rrPlay.getRelicDetails/getRewardChoices/getStudyPoolSize were missing, blocking Phase 5 gap-fill playtest
+
+**What:** The Phase 5 gap-fill playtest (BATCH-2026-04-10-003) needed three `__rrPlay` methods to test Focus Items 11 and 12. `getRelicDetails()` existed but the FIX-PLAN documented it as returning `[]` (it had since been implemented). `getRewardChoices()` and `getStudyPoolSize()` did not exist at all, making it impossible for LLM testers to observe relic clarity or preview the reward picker without accepting it.
+
+**Why:** `__rrPlay` methods were added ad-hoc as needs arose, with no completeness contract or required documentation. Methods could be missing or stub-empty without any CI signal.
+
+**Fix:**
+- Added `getRewardChoices()`: imports `activeCardRewardOptions` from `gameFlowController`, returns mapped card choices without accepting
+- Added `getStudyPoolSize()`: reads from `encounterBridge.getActiveDeckCards()` + `cardUpgradeService.canMasteryUpgrade()`, returns count of upgradeable cards
+- Added API completeness invariants to `docs/testing/dev-tooling-restore-invariants.md`: every `__rrPlay` method MUST have a unit test + doc entry + playtest skill mention
+- Added lint script check and 14 unit tests covering all new + fixed methods
+
+---
+
+### 2026-04-10 — MEDIUM-13: Length-tells in 2 facts caught late by playtest (enforcement gap)
+
+**What:** Two facts in knowledge decks had distractor sets with a max/min answer-length ratio > 1.3x, making the correct answer identifiable by length alone without reading the question:
+- `cs_3_np_complete_first_problem` ("Boolean satisfiability", 22 chars) — the `technology_terms_long` pool contained short city-name answers ("San Francisco" 13 chars, "Snowbird, Utah" 14 chars, "Bellevue, Washington" 20 chars) from location-answer facts miscategorized into that pool. Ratio ≈ 1.7x.
+- `inv_3_barcode_patent` ("Norman Joseph Woodland and Bernard Silver", 41 chars) — the `inventor_pair_names` pool's syntheticDistractors included short pairs like "Bell and Gray" (13 chars) and "Edison and Tesla" (16 chars). Ratio ≈ 3.1x.
+
+**Why it got through:** The pool-homogeneity verifier Check #20 uses `homogeneityExempt: true` (present on `technology_terms_long`) to waive the check, and the syntheticDistractors on `inventor_pair_names` were written without checking their lengths relative to the real-fact answers in the same pool.
+
+**Fix:**
+- `cs_3_np_complete_first_problem`: Moved to a new dedicated `cs_np_problem_names` pool (minimumSize:1, 8 length-matched synthetic distractors 21-27 chars). Rewrote the fact's `distractors[]` from short bare names ("Subset Sum" 10 chars) to full problem names ("Subset Sum Problem" 18+ chars) — ratio now 1.29x.
+- `inv_3_barcode_patent`: Replaced `inventor_pair_names` syntheticDistractors from short 13-24 char pairs to 32-39 char historically accurate inventor pairs (e.g., "Alexander Graham Bell and Elisha Gray"). Ratio now 1.28x.
+
+**Prevention:** Already covered by HIGH-6-P (pool contamination prevention rules). The specific gap: `homogeneityExempt` pools can still produce length-tells when pool members have heterogeneous answer types (not just heterogeneous lengths). A future improvement to Check #20 could still flag length-tells even in exempt pools, treating length ratio as a separate signal from semantic homogeneity.
+
