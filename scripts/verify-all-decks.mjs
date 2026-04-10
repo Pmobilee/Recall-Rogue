@@ -301,7 +301,7 @@ function getPoolDistractors(fact, deck, count = 3) {
 }
 
 // ---------------------------------------------------------------------------
-// Issue checking — 22 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks + 1 pool-homogeneity + 2 new answer-quality checks)
+// Issue checking — 23 checks total (8 original + 4 new + 1 template-pool compatibility + 6 new quality checks + 1 pool-homogeneity + 2 new answer-quality checks + 1 brace-leak check)
 // ---------------------------------------------------------------------------
 
 /**
@@ -591,6 +591,27 @@ function verifyDeck(deckId, deck) {
         addHomogeneityIssue('pool-homogeneity FAIL: pool "' + pool20.id + '" answer lengths ' + minLen + '–' + maxLen + ' chars (ratio ' + ratio.toFixed(1) + 'x, threshold 3x)');
       } else if (ratio > 2) {
         factWarnings.push({ index: 0, factId: pool20.id, msg: 'pool-homogeneity WARN: pool "' + pool20.id + '" answer lengths ' + minLen + '–' + maxLen + ' chars (ratio ' + ratio.toFixed(1) + 'x)' });
+      }
+    }
+  }
+
+  // Check #24: raw brace characters in syntheticDistractors (HARD FAIL — bracket-notation leak)
+  // Detects distractors formatted as {N} bracket-notation tokens (e.g. '{7}', '{1990}') that
+  // would display literally in the quiz UI instead of rendering as a number.
+  // Fill-in-blank {___} tokens are excluded (legitimate quiz syntax in quizQuestion stems only).
+  // This check fires even if the pool has homogeneityExempt: true.
+  // 2026-04-10: Added after 89 {N} distractors leaked into 7 decks.
+  for (const pool24 of (deck.answerTypePools || [])) {
+    for (const synth of (pool24.syntheticDistractors || [])) {
+      if (typeof synth !== 'string') continue;
+      if (synth === '{___}') continue; // fill-in-blank token — not a real distractor
+      if (/[{}]/.test(synth)) {
+        failCount++;
+        factFailures.push({
+          index: 0,
+          factId: pool24.id,
+          msg: 'Check #24 FAIL: pool  + pool24.id +  syntheticDistractor contains raw brace — bracket-notation leak: ' + JSON.stringify(synth) + ' — strip this distractor and fix the generator',
+        });
       }
     }
   }
