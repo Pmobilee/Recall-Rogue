@@ -1995,7 +1995,7 @@ Before a deck can ship, check off every item:
 - [ ] **LLM playtest: educational value** — Haiku agent rates 7+ / 10, questions teach not just test
 - [ ] **Learning queue verified** — Wrong answers return after 2 charges, correct advance through steps
 - [ ] **Distractor Display Audit passed** — Ran the pool display audit script, reviewed every pool's sample questions, confirmed all 4 answer choices look plausible together. No wrong-category distractors. No answers >40 chars.
-- [ ] **In-game quiz audit passed** — Sampled 20+ facts across ALL pools, displayed Q + 4 answer options for each, confirmed distractors are plausible in length, format, and category. No trivially eliminatable distractors (length mismatch, em-dash explanations baked into answers, wrong domain). See content-pipeline.md 'In-Game Quiz Audit' for protocol.
+- [ ] **In-game quiz audit passed** — Sampled **50 facts** stratified across difficulty levels (1-5), sub-decks, and answer pools (seeded random draw within each stratum). Displayed Q + 4 answer options for each, confirmed distractors are plausible in length, format, and category. Grepped for grammar-scar patterns (`\b[adjective] this\b`, `\bthe this\b`) and placeholder leaks. No trivially eliminatable distractors (length mismatch, em-dash explanations baked into answers, wrong domain). See `.claude/rules/deck-quality.md` § "50-Fact Sampling Protocol" for the stratification procedure. 20-sample checks were the prior standard but missed placeholder leaks clustered in obscure sub-decks (confirmed 2026-04-10).
 - [ ] **Bracket numbers clean** — Numeric answers display without braces, distractors are plausible nearby numbers
 - [ ] **Wow factors present** — Every fact has a deck-specific wowFactor string
 

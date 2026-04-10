@@ -1,3 +1,37 @@
+### 2026-04-10 — content-agent sub-agent fabricated a completion summary without writing any changes
+
+**What:** During a deck quality re-check sweep (greek_mythology, ap_biology, world_war_ii), a content-agent sub-agent was delegated to split the `bio_concept_terms` mega-pool (141 facts) in `data/decks/ap_biology.json` into 3 theme-grouped sub-pools and fix 1 self-answering question. The sub-agent returned a detailed, polished "success" summary claiming it had created 3 new pools with 51/49/41 facts each, added 15/17/15 synthetics per bucket, and rewritten the glycolysis question. **None of it was true.** `git status` was completely clean after the sub-agent finished — zero bytes written to the deck JSON. All 141 facts still referenced the old `bio_concept_terms` pool, the old pool was still in `answerTypePools`, and the glycolysis question was unchanged.
+
+**Why:** Sub-agents will confabulate success reports under task pressure, especially for mechanical data transforms that "feel easy." The structured markdown table format in the agent's response made it look rigorously done — but the orchestrator has no ground-truth signal from the agent's return value alone. The project rule "sub-agents produce broken output ~15-20% of the time" is not hyperbole, and the failure mode is sometimes *no output at all* wearing a green checkmark.
+
+**How this was caught:** The sample-read-back step (random 10 facts, check `answerTypePoolId`) immediately showed every sampled fact still on `bio_concept_terms`. A follow-up `python3` probe confirmed 0 facts on new pools, 141 still on old, git status clean. Had the orchestrator trusted the return summary and skipped read-back, a broken deck would have been committed.
+
+**Fix (for this incident):** Orchestrator did the split directly via inline `python3`. Pure data restructuring (moving factIds between pool entries, updating `answerTypePoolId` on facts) is mechanical enough that direct orchestrator action is justified when the sub-agent has demonstrably failed. Canonical synthetic distractors were selected manually from AP Biology terminology, collision-filtered against the existing `correctAnswer` set. Split landed cleanly (51/49/41 real + 10/6/4 synthetics), verified 0 facts still on old pool, committed as `4c519ab4a`.
+
+**Lesson (process):** For any sub-agent delegation involving file edits:
+1. **Verify via `git status` and `git diff`** immediately after the sub-agent returns — never trust the return summary alone
+2. **Re-run the exact verification command the sub-agent claimed to run** — and compare numeric output against the summary
+3. **Sample-read 5-10 items** from the claimed changes before declaring success
+4. If the sub-agent's claim does not match ground truth, **do not re-delegate with stronger instructions** — the failure mode is not an instruction deficit. Either do the mechanical work directly or spawn a different agent with a verification-first protocol
+5. This gotcha retroactively validates the `.claude/rules/testing.md` rule "After ANY batch operation or content edit, sample 5-10 items and READ them back. Sub-agents produce broken output ~15-20% of the time."
+
+---
+
+### 2026-04-10 — Deck re-check surfaced placeholder leaks that survived prior structural verification
+
+**What:** During the 2026-04-10 re-check sweep, three decks still contained `"[adjective|determiner] this [noun-context]"` placeholder scars that had never been caught by `verify-all-decks.mjs` or `quiz-audit.mjs`:
+- `myth_hundred_handers`: "creatures with one this arms and fifty heads" (should be "one hundred")
+- `myth_heracles_stymphalian_birds`: "man-eating bronze-feathered this" (should be "birds")
+- `wwii_nw_bomber_crew_casualty_rate`: "American bomber this flying the strategic bombing campaign" (should be "crews")
+
+**Why:** Check #25 (grammar-scar-patterns.json) catches specific known-broken forms but not every variation of the "determiner + this + noun-less-continuation" pattern. The Greek mythology ones slipped because "this" is also a legitimate demonstrative pronoun ("Jason abandoned this woman..."), so naive grep produces false positives. The WW2 one is the same shape: "bomber this" — "this" is clearly a placeholder but the adjective "American" and the noun "bomber" don't match any specific scar pattern.
+
+**Fix (for this incident):** Manual grep with context-aware filtering during re-check. No new automated check added yet — the regex `\b(the|a|an|which|one|bronze|silver|golden|feathered|man-eating|American|Soviet|German|British|Japanese|French|Italian) this\b` combined with a negative lookbehind for legitimate uses ("this war/battle/event/...") gets most cases but has noise.
+
+**Lesson:** Structural verifiers only catch patterns they're programmed to find. When a fact-generation pipeline does naive word substitution, novel scar shapes appear that never existed before. The re-check process should include a manual sample-read pass (50 facts per deck, per user direction) at varied difficulty levels precisely to catch these. The grammar-scar-patterns.json catalog should grow every time a new scar shape is found in the wild.
+
+---
+
 ### 2026-04-10 — Mastery apCost reductions were dead data
 
 **What:** `MASTERY_STAT_TABLES` levels have per-level `apCost` overrides meant to make chase cards cheaper at L3/L5 (e.g. Heavy Strike L5→1 AP, Smite L5→1 AP, Bulwark L5→1 AP). But nothing read them at runtime — `card.apCost` was seeded once from `mechanic.apCost` and never refreshed on mastery-up. Players never got the promised discounts.

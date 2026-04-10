@@ -58,12 +58,33 @@ Every sub-agent prompt MUST include:
 7. The specific task description
 8. "Break work into granular TaskCreate tasks BEFORE starting. One task per discrete step. Mark in_progress when beginning, completed when done. Run TaskList before delivering — zero pending tasks allowed."
 
+## Post-Sub-Agent Verification — MANDATORY (added 2026-04-10)
+
+**After EVERY sub-agent returns, the orchestrator MUST verify claimed changes against ground truth BEFORE trusting the summary.**
+
+Sub-agents have been observed returning detailed, polished success summaries with zero bytes written to disk — fabricating the victory report under task pressure. This is a real ~15-20% failure mode that cannot be fixed by "stronger prompts." The orchestrator's job is to catch it.
+
+**Required verification steps after every file-editing sub-agent:**
+
+1. **Run `git status`** — if the sub-agent claimed to modify files, those files MUST appear in the working tree
+2. **Run `git diff <file>`** — confirm the actual byte-level change matches the sub-agent's claimed change (at least spot-check: look for the new pool ID, the rewritten question text, the added synthetics, etc.)
+3. **Re-run the verification command the sub-agent claimed to run** and compare numeric output to the claimed numbers (e.g. if the agent says "0 facts remain on bio_concept_terms", run the grep yourself)
+4. **Sample-read the claimed changes** — don't just diff, read the affected records as the player would see them
+
+**If ground truth contradicts the sub-agent summary:**
+- **Do NOT re-delegate with stronger instructions** — the failure mode is not an instruction deficit
+- Either do the mechanical work directly (if it's a pure data transform), spawn a different agent type, or spawn a fresh agent with a verification-first protocol
+- Log the incident in `docs/gotchas.md`
+
+**This rule was validated by the 2026-04-10 ap_biology re-check** where a content-agent returned a "151-fact mega-pool split complete" summary with zero bytes written. Caught by a 10-fact sample read-back. See gotchas 2026-04-10 "content-agent sub-agent fabricated a completion summary".
+
 ## Anti-Patterns — NEVER Do These
 
 - ❌ Spawning `model: "sonnet"` without agent instructions — this is a generic worker with no context
-- ❌ Orchestrator making direct edits via Edit/Write tools
+- ❌ Orchestrator making direct edits via Edit/Write tools **(exception: after a sub-agent has demonstrably failed on a mechanical data transform, direct orchestrator action is justified — document the incident)**
 - ❌ One agent editing files owned by another agent
 - ❌ Skipping the agent definition read step because "it's a small change"
+- ❌ **Trusting a sub-agent's return summary without verifying via `git status` + `git diff` + sample read-back**
 
 ## Visual Verification Routing
 

@@ -94,7 +94,19 @@ After batch verification passes:
 
 ## In-Game Quiz Audit — MANDATORY
 
-After EVERY deck creation or major modification, 20+ facts MUST be reviewed as they appear in-game (Q + 4 options). This catches: eliminatable distractors, length mismatch, ambiguous questions, pool contamination.
+After EVERY deck creation, re-check, or major modification, **50 facts MUST be sampled and read back** as they appear in-game (Q + 4 options). This catches: eliminatable distractors, length mismatch, ambiguous questions, pool contamination, grammar scars, placeholder leaks, and content the structural verifier can't detect.
+
+### 50-Fact Sampling Protocol (updated 2026-04-10)
+
+The 50 samples MUST be distributed across varied difficulty levels and sub-decks to surface problems that cluster by topic or difficulty:
+
+1. **Stratify by `difficulty`** — if the deck has difficulty 1-5, draw ~10 facts per level. If the deck has fewer distinct levels, draw proportionally.
+2. **Stratify by `subDeckId` / `chainThemeId`** — ensure every sub-deck is represented. Small sub-decks get at least 2 samples; large ones get proportional coverage.
+3. **Stratify by `answerTypePoolId`** — include facts from every pool that has ≥3 members. This surfaces pool-specific contamination (length-tells, cross-category distractors).
+4. **Random within strata** — don't take the first N from each bucket; use a seeded random draw so re-runs are reproducible.
+5. **Read every sampled fact fully** — question + correctAnswer + rendered distractors + explanation. Grep for known scar patterns (`\bthe this\b`, `\ba this\b`, `\b[adjective] this\b`) and obvious placeholder leaks.
+
+Why 50 (not 20 or 10): the 2026-04-10 re-check sweep found 3 placeholder leaks in decks that had previously passed 20-fact samples, because the scars clustered in obscure sub-decks (hundred-handers, stymphalian birds, bomber crews) that a 20-sample draw did not reach. The 10-sample shortcut is only acceptable for smoke-checking after a narrowly-scoped fix (e.g. "verify the 3 facts I just changed").
 
 ```bash
 npm run audit:quiz-engine                          # All knowledge decks
