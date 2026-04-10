@@ -27126,7 +27126,7 @@
       "answerTypePoolId": "equation_terms_long",
       "difficulty": 3,
       "funScore": 9,
-      "quizQuestion": "What type of population growth produces an S-shaped curve that levels off at carrying capacity (K), described by dN/dt = r_max × N × ((K−N)/K)?",
+      "quizQuestion": "What type of population growth produces an S-shaped curve that levels off at carrying capacity (K), described by this?",
       "explanation": "Logistic growth adds environmental resistance to exponential growth. The term (K−N)/K acts as a 'braking factor': when N is small, the factor approaches 1 and growth is nearly exponential; as N approaches K, the factor approaches 0 and growth slows to near zero. This produces an S-shaped (sigmoid) curve, more realistic than pure exponential models for most populations.",
       "visualDescription": "An S-shaped curve on a population-vs-time graph, leveling off at a horizontal dashed line labeled K",
       "sourceName": "OpenStax Biology 2e Ch. 45",

@@ -1529,3 +1529,10 @@ Fixed 17 `quizQuestion` fields in `data/decks/pharmacology.json` where noun-repl
 **Source data not available:** The Lichess puzzle CSV (`data/sources/lichess/lichess_db_puzzle.csv.zst`) is not present in the repo (gitignored). Re-extraction would require re-downloading the ~1GB Lichess puzzle database. Both puzzles are available at: `https://lichess.org/HpYvj2ho/black#96` (AHPUU) and `https://lichess.org/vrnBfloP#49` (KZU69). To re-add them, download the CSV, run `scripts/content-pipeline/chess/fetch-lichess-puzzles.mjs` to filter, verify the `solutionMoves[0]` is a legal move in the stored FEN, then re-insert.
 
 **Lesson:** Any deck fact that uses `solutionMoves` requires validation that `solutionMoves[0]` is a legal move FROM the stored `fenPosition`. The chess ingest script should run `chess.js` validation on all moves at generation time, not just at quiz runtime.
+### 2026-04-10 — fix-self-answering.mjs word_boundary_replacement produces broken grammar
+
+**What:** Running `node scripts/fix-self-answering.mjs` applies 14 auto-fixes. 4 of them use a `word_boundary_replacement` strategy that naively replaces the answer text with a placeholder like "this concept" or "this structure" without considering the surrounding article ("an this", "the this", "famous this"). The manual_fix strategy produces clean results.
+
+**Fix:** After running the script, grep for `an this`, `the this`, and `famous this` patterns in affected decks and hand-rewrite those questions to use natural phrasing. Script fixed 14 facts across 9 decks.
+
+---
