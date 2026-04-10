@@ -362,8 +362,8 @@ Several mechanics have designed creative milestones at key mastery levels that c
 - `stagger` L5: qpValue was 0 (< L4=1) — fixed to 1
 
 **New mastery tables added (`src/services/cardUpgradeService.ts`):**
-- `burnout_shield`: full L0–L5 table (qpValue 5→13). L5 gains `burnout_no_exhaust` tag (design intent — NOT yet wired in `cardEffectResolver.ts`)
-- `knowledge_ward`: full L0–L5 table (qpValue 6→12). L3+ gains `knowledge_ward_cleanse` tag (design intent — NOT yet wired)
+- `burnout_shield`: full L0–L5 table (qpValue 5→13). L5 gains `burnout_no_exhaust` tag (wired as of 2026-04-10: L5 CC no longer exhausts)
+- `knowledge_ward`: full L0–L5 table (qpValue 6→12). L3+ gains `knowledge_ward_cleanse` tag (wired as of 2026-04-10: cleanses 1 debuff from player on any play mode at L3+)
 - Both previously used legacy `getMasteryBaseBonus()` bridge; now have explicit `MASTERY_STAT_TABLES` entries
 
 **Regression tests (`tests/unit/cardUpgradeService-apCost.test.ts`, 34 tests):**
