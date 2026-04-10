@@ -1,3 +1,15 @@
+### 2026-04-10 — Mastery apCost reductions were dead data
+
+**What:** `MASTERY_STAT_TABLES` levels have per-level `apCost` overrides meant to make chase cards cheaper at L3/L5 (e.g. Heavy Strike L5→1 AP, Smite L5→1 AP, Bulwark L5→1 AP). But nothing read them at runtime — `card.apCost` was seeded once from `mechanic.apCost` and never refreshed on mastery-up. Players never got the promised discounts.
+
+**Why:** `runPoolBuilder.applyMechanics()` sets `card.apCost = mechanic.apCost` at card-build time. `masteryUpgrade()` only bumps `masteryLevel`. `turnManager` charged `cardInHand.apCost` directly.
+
+**Fix:** Added `getEffectiveApCost(card)` helper in `cardUpgradeService.ts` that prefers `getMasteryStats(id, level).apCost` and falls back to `card.apCost`. All readers (turnManager, damagePreview [n/a], cardDescription, simulator/playtest dev tools) now use the helper. `card.apCost` remains as the seeded baseline for save compatibility — we layer effective cost on read, not on mutation.
+
+**Lesson:** When adding a new unified stat system that parallels an old one, grep `\.apCost` (or equivalent field) for every field the new system owns and verify the callers actually read it. A field that looks correct in the table but isn’t wired is invisible in code review.
+
+---
+
 ### 2026-04-10 — git stash pop can wipe untracked file changes if conflicting tracked files exist
 
 **What:** During registry implementation work, `git stash` was used to check pre-existing typecheck errors on the baseline. When `git stash pop` was run afterward, it failed with "Your local changes to the following files would be overwritten by merge" (for files like `src/CardApp.svelte` that had uncommitted changes in the stash). The stash drop then required running `git checkout -- <our-files>` to restore the untracked-but-modified registry scripts — which wiped all our work from that session.

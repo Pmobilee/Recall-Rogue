@@ -1242,6 +1242,21 @@ export function getMasteryStats(mechanicId: string, level: number): MasteryLevel
   };
 }
 
+/**
+ * Get the effective AP cost for a card at its current mastery level.
+ * Prefers MASTERY_STAT_TABLES[id].levels[N].apCost (design intent),
+ * falls back to the card's seeded apCost (from mechanic.apCost at build time).
+ *
+ * Why this exists: mastery tables promise "L5: 1 AP" reductions, but the
+ * card.apCost field is only set once at runPoolBuilder time and never
+ * refreshed on mastery-up. This helper computes the live effective cost.
+ */
+export function getEffectiveApCost(card: Card): number {
+  const stats = getMasteryStats(card.mechanicId ?? '', card.masteryLevel ?? 0);
+  if (stats?.apCost != null) return Math.max(0, stats.apCost);
+  return Math.max(0, card.apCost ?? 1);
+}
+
 // ─── Mastery Upgrade System (AR-113) ───────────────────────────────────────
 
 /** Per-mechanic mastery definition: how values scale per mastery level. */

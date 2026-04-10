@@ -4,7 +4,7 @@
 import { get } from 'svelte/store';
 import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
 import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier } from './discoverySystem';
-import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags, getMasteryBaseBonus, getMasteryStats } from './cardUpgradeService';
+import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags, getMasteryBaseBonus, getMasteryStats, getEffectiveApCost } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
 import { resetChain, decayChain, extendOrResetChain, getChainState, getCurrentChainLength, initChainSystem, rotateActiveChainColor, getActiveChainColor, getChainMultiplier, switchActiveChainColor } from './chainSystem';
 import { resetAura, adjustAura, getAuraState } from './knowledgeAuraSystem';
@@ -926,7 +926,7 @@ export function playCardAction(
     answeredCorrectly = true;
   }
 
-  let apCost = Math.max(0, cardInHand.apCost ?? 1);
+  let apCost = getEffectiveApCost(cardInHand);
 
   // Charge AP surcharge: charging costs base AP + CHARGE_AP_SURCHARGE (1) on normal turns.
   // Priority order (7.6): Surge → Warcry → Chain Momentum → On-Colour → Free First Charge → surcharge.
@@ -3782,7 +3782,7 @@ export function isAnyCardPlayable(turnState: TurnState): boolean {
   // The loop logic is unchanged because Quick Play (baseAp only, no surcharge) covers all cases
   // where baseAp <= apCurrent. Chain-color matching affects charge AP cost in playCardAction.
   for (const card of deck.hand) {
-    const baseAp = Math.max(0, (card.apCost ?? 1) - focusDiscount);
+    const baseAp = Math.max(0, getEffectiveApCost(card) - focusDiscount);
     // Quick Play costs baseAp. Any card affordable via QP is playable.
     if (baseAp <= apCurrent) return true;
   }
