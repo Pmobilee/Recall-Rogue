@@ -8,6 +8,7 @@
 import { readStore } from './storeBridge'
 import { factsDB } from '../services/factsDB'
 import { RELIC_BY_ID } from '../data/relics'
+import { getEffectiveApCost } from '../services/cardUpgradeService';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -190,7 +191,7 @@ export function look(): string {
           const fact = c.factId && factsDB.isReady() ? factsDB.getById(c.factId) : null;
           const q = fact?.quizQuestion?.slice(0, 60) ?? 'no fact';
           const mechLabel = c.mechanicName ?? c.cardType ?? '?';
-          const apCost = c.apCost ?? 1;
+          const apCost = getEffectiveApCost(c);
           const domain = c.domain ?? '';
           const extras: string[] = [];
           if (c.isLocked) extras.push('LOCKED');

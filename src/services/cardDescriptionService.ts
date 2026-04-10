@@ -12,7 +12,7 @@
 
 import type { Card, CardType } from '../data/card-types';
 import { getMechanicDefinition } from '../data/mechanics';
-import { getMasteryBaseBonus, getMasterySecondaryBonus, getMasteryStats } from './cardUpgradeService';
+import { getMasteryBaseBonus, getMasterySecondaryBonus, getMasteryStats, getEffectiveApCost } from './cardUpgradeService';
 
 const GENERIC_TYPE_DESCRIPTIONS: Record<CardType, string> = {
   attack: 'Deal direct damage to enemies.',
@@ -32,7 +32,7 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
   const power = powerOverride ?? Math.round(card.baseEffectValue);
   const mechanic = getMechanicDefinition(card.mechanicId);
 
-  const apCost = Math.max(0, card.apCost ?? mechanic?.apCost ?? 1);
+  const apCost = getEffectiveApCost(card);
   const apSuffix = apCost === 0 ? ' (Free)' : apCost === 2 ? ' (Costs 2 AP)' : apCost >= 3 ? ` (Costs ${apCost} AP — full turn)` : '';
 
   if (!mechanic) {

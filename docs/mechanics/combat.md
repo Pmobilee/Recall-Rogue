@@ -120,7 +120,7 @@ The empty-hand trick uses the current (pre-damage) `turnState` — it does not r
 | `START_AP_PER_TURN` | 3 |
 | `MAX_AP_PER_TURN` | 5 |
 | `AP_PER_ACT` | `{ 1: 3, 2: 4, 3: 4 }` — Act 2+ gives 4 AP/turn |
-| Normal card cost | `card.apCost` |
+| Normal card cost | `getEffectiveApCost(card)` — prefers `MASTERY_STAT_TABLES[id].levels[N].apCost`, falls back to seeded `card.apCost` |
 | Charge surcharge | +1 AP added to `apCost` |
 | `FIRST_CHARGE_FREE_AP_SURCHARGE` | 1 (disabled Pass 8 — free first charge removed to preserve QP-vs-charge decision) |
 | `SURGE_BONUS_AP` | 1 — bonus AP at the start of Surge turns |
@@ -136,7 +136,7 @@ Charge plays add +1 AP surcharge. Surcharge waivers (checked in priority order i
 4. **Free First Charge** (DISABLED, Pass 8) — `isFirstChargeFree(factId, ...)` — function still exists for wrong-answer multiplier logic, but `FIRST_CHARGE_FREE_AP_SURCHARGE = 1` means no AP discount is granted. Discovery system retained for future re-enable.
 5. **Free Play Charges** — `turnState.freePlayCharges > 0` — set by frenzy mechanic or `focus_next2free` tag; reduces AP cost to 0 (highest priority — checked AFTER Focus discount)
 
-If `apCurrent < apCost`, card is blocked (`blocked: true`, no AP deducted).
+If `apCurrent < apCost`, card is blocked (`blocked: true`, no AP deducted). AP cost is resolved via `getEffectiveApCost(card)` (see `cardUpgradeService.ts`) which reads the mastery-level override before falling back to the seeded `card.apCost`.
 
 ---
 
