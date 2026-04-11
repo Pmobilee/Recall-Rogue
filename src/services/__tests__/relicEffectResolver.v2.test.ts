@@ -5,7 +5,8 @@
  * and V1→V2 save migration.
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, afterEach } from 'vitest';
+import { initRunRng, destroyRunRng } from '../seededRng';
 import {
   resolveChargeCorrectEffects,
   resolveChargeWrongEffects,
@@ -509,5 +510,99 @@ describe('migrateRelicsV1toV2', () => {
     migrateRelicsV1toV2(save);
     const chainReactorCount = (save.unlockedRelicIds ?? []).filter((id) => id === 'chain_reactor').length;
     expect(chainReactorCount).toBe(1);
+  });
+});
+
+// ─── Seeded RNG determinism — crit_lens + obsidian_dice ─────────────────────────────────────
+// These tests verify that when a run RNG is active, both relics produce deterministic
+// outcomes across multiple calls with the same seed (issue-1744335811000-09-01 and 09-02).
+// Co-op peers with identical seeds MUST roll identical crit/multiplier outcomes.
+
+const baseChargeCtx = {
+  answerTimeMs: 5000,
+  cardTier: 1,
+  cardType: 'attack' as const,
+  isFirstChargeThisTurn: false,
+  chargeCountThisEncounter: 1,
+  isFirstChargeCorrectThisEncounter: false,
+  correctChargesThisTurn: 0,
+  totalChargesThisRun: 1,
+  mirrorUsedThisEncounter: false,
+  adrenalineShard_usedThisTurn: false,
+};
+
+describe('crit_lens — seeded RNG determinism', () => {
+  afterEach(() => {
+    destroyRunRng();
+  });
+
+  it('produces identical crit sequence with same seed (deterministic for co-op)', () => {
+    // Run A
+    initRunRng(12345);
+    const resultA: boolean[] = [];
+    for (let i = 0; i < 20; i++) {
+      resultA.push(resolveChargeCorrectEffects(new Set(['crit_lens']), baseChargeCtx).isCrit);
+    }
+    destroyRunRng();
+
+    // Run B — identical seed
+    initRunRng(12345);
+    const resultB: boolean[] = [];
+    for (let i = 0; i < 20; i++) {
+      resultB.push(resolveChargeCorrectEffects(new Set(['crit_lens']), baseChargeCtx).isCrit);
+    }
+
+    expect(resultA).toEqual(resultB);
+  });
+
+  it('produces different crit sequences with different seeds', () => {
+    initRunRng(12345);
+    const resultA: boolean[] = [];
+    for (let i = 0; i < 20; i++) {
+      resultA.push(resolveChargeCorrectEffects(new Set(['crit_lens']), baseChargeCtx).isCrit);
+    }
+    destroyRunRng();
+
+    initRunRng(99999);
+    const resultB: boolean[] = [];
+    for (let i = 0; i < 20; i++) {
+      resultB.push(resolveChargeCorrectEffects(new Set(['crit_lens']), baseChargeCtx).isCrit);
+    }
+
+    // With different seeds, sequences are extremely unlikely to match (2^-20 probability)
+    expect(resultA).not.toEqual(resultB);
+  });
+});
+
+describe('obsidian_dice — seeded RNG determinism', () => {
+  afterEach(() => {
+    destroyRunRng();
+  });
+
+  it('produces identical multiplier sequence with same seed (deterministic for co-op)', () => {
+    // Run A
+    initRunRng(54321);
+    const resultA: number[] = [];
+    for (let i = 0; i < 20; i++) {
+      resultA.push(resolveChargeCorrectEffects(new Set(['obsidian_dice']), baseChargeCtx).extraMultiplier);
+    }
+    destroyRunRng();
+
+    // Run B — identical seed
+    initRunRng(54321);
+    const resultB: number[] = [];
+    for (let i = 0; i < 20; i++) {
+      resultB.push(resolveChargeCorrectEffects(new Set(['obsidian_dice']), baseChargeCtx).extraMultiplier);
+    }
+
+    expect(resultA).toEqual(resultB);
+  });
+
+  it('each roll produces 1.5 or 0.75 — no other values possible', () => {
+    initRunRng(77777);
+    for (let i = 0; i < 50; i++) {
+      const mult = resolveChargeCorrectEffects(new Set(['obsidian_dice']), baseChargeCtx).extraMultiplier;
+      expect([1.5, 0.75]).toContain(mult);
+    }
   });
 });

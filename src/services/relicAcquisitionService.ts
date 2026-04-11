@@ -1,4 +1,5 @@
 import type { RelicDefinition, RelicRarity } from '../data/relics/types';
+import { getRunRng, isRunRngActive } from './seededRng';
 import { FULL_RELIC_CATALOGUE, STARTER_RELIC_IDS } from '../data/relics/index';
 import {
   RELIC_RARITY_WEIGHTS,
@@ -69,8 +70,10 @@ export function generateRelicChoices(
   const totalWeight = weights.reduce((sum, w) => sum + w, 0);
 
   for (let i = 0; i < count && remaining.length > 0; i++) {
-    // Roll for rarity using cumulative weights
-    const roll = Math.random() * totalWeight;
+    // Roll for rarity using seeded RNG when active (co-op determinism — both peers
+    // must see the same relic reward options at the same time).
+    const _relicRng = isRunRngActive() ? getRunRng('relicRewards') : null;
+    const roll = (_relicRng ? _relicRng.next() : Math.random()) * totalWeight;
     let cumulative = 0;
     let chosenRarity: RelicRarity = rarities[0];
     for (let j = 0; j < rarities.length; j++) {
@@ -90,7 +93,8 @@ export function generateRelicChoices(
     }
 
     // Pick a random candidate
-    const pick = candidates[Math.floor(Math.random() * candidates.length)];
+    const _pickRng = isRunRngActive() ? getRunRng('relicRewards') : null;
+    const pick = candidates[Math.floor((_pickRng ? _pickRng.next() : Math.random()) * candidates.length)];
     chosen.push(pick);
 
     // Remove from remaining pool to prevent duplicates

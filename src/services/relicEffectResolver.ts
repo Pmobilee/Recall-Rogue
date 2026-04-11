@@ -13,6 +13,7 @@
 
 import { hasSynergy } from './relicSynergyResolver';
 import { playCardAudio } from './cardAudioManager';
+import { getRunRng, isRunRngActive } from './seededRng';
 import {
   MAX_RELIC_SLOTS,
   SCHOLARS_GAMBIT_EXTRA_SLOT,
@@ -1644,7 +1645,11 @@ export function resolveChargeCorrectEffects(
   }
 
   // crit_lens — 25% crit chance doubles final damage
-  const isCrit = relicIds.has('crit_lens') && Math.random() < 0.25;
+  // crit_lens uses seeded RNG when a run is active (co-op determinism — both peers must
+  // roll identical results for the same card play to avoid diverging enemy HP deltas).
+  // Falls back to Math.random() in dev/non-run contexts (e.g. headless sim preview mode).
+  const _critRng = isRunRngActive() ? getRunRng('relicEffects') : null;
+  const isCrit = relicIds.has('crit_lens') && (_critRng ? _critRng.next() : Math.random()) < 0.25;
 
   // bastions_will — +75% block for Charged shield cards
   if (relicIds.has('bastions_will') && context.cardType === 'shield') {
@@ -1707,9 +1712,12 @@ export function resolveChargeCorrectEffects(
     extraMultiplier *= 1.5; // +0.5× multiplier (multiplicative, applied before obsidian_dice)
   }
 
-  // obsidian_dice — 60%: +50% multiplier; 40%: -25% multiplier
+  // obsidian_dice — 50/50 roll: +50% multiplier or -25% multiplier.
+  // Uses seeded RNG when a run is active so co-op peers roll identical outcomes
+  // for the same card play (avoids diverging enemy HP deltas between peers).
   if (relicIds.has('obsidian_dice')) {
-    if (Math.random() < 0.50) {
+    const _diceRng = isRunRngActive() ? getRunRng('relicEffects') : null;
+    if ((_diceRng ? _diceRng.next() : Math.random()) < 0.50) {
       extraMultiplier *= 1.5;
     } else {
       extraMultiplier *= 0.75;

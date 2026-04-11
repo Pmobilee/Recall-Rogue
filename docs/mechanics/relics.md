@@ -1,8 +1,8 @@
 # Relic System
 
 > **Purpose:** Complete reference for relic catalog, rarities, trigger system, acquisition mechanics, and slot rules.
-> **Last verified:** 2026-04-10
-> **Source files:** `src/data/relics/index.ts`, `src/data/relics/starters.ts`, `src/data/relics/unlockable.ts`, `src/data/relics/types.ts`, `src/services/relicEffectResolver.ts`, `src/services/relicAcquisitionService.ts`, `src/data/balance.ts`
+> **Last verified:** 2026-04-11
+> **Source files:** `src/data/relics/index.ts`, `src/data/relics/starters.ts`, `src/data/relics/unlockable.ts`, `src/data/relics/types.ts`, `src/services/relicEffectResolver.ts`, `src/services/relicAcquisitionService.ts`, `src/data/balance.ts`, `src/services/seededRng.ts`
 
 ## Relic Slots
 
@@ -259,3 +259,19 @@ Removed `category: 'cursed'`. Context: `ChargeCorrectContext.factPreviouslyCorre
 
 `RelicCategory` values used for UI filtering and build archetype display:
 `offensive`, `defensive`, `sustain`, `tactical`, `knowledge`, `economy`, `cursed`, `chain`, `speed`, `burst`, `poison`, `glass_cannon`
+
+## 2026-04-11 — RNG Determinism Fixes (co-op critical)
+
+Two relic effects and the relic acquisition service were using bare `Math.random()`, causing co-op desync (BATCH-2026-04-11-ULTRA issues 09-01, 09-02, 09-03).
+
+**Fixed relics (`src/services/relicEffectResolver.ts`):**
+- `crit_lens`: 25% crit roll now uses `isRunRngActive() ? getRunRng('relicEffects').next() : Math.random()`
+- `obsidian_dice`: 50/50 multiplier roll now uses the same `'relicEffects'` fork
+
+**Fixed acquisition (`src/services/relicAcquisitionService.ts`):**
+- `generateRelicChoices()` rarity roll: uses `getRunRng('relicRewards')` when run is active
+- `generateRelicChoices()` candidate pick: uses same `'relicRewards'` fork
+
+**RNG pattern:** All four use the `isRunRngActive() ? getRunRng(fork) : Math.random()` fallback pattern, consistent with `rewardGenerator.ts` and `masteryChallengeService.ts`. Forks `'relicEffects'` and `'relicRewards'` are cached per run via the seededRng fork cache.
+
+**Tests added:** 4 new determinism tests in `src/services/__tests__/relicEffectResolver.v2.test.ts` confirm identical output for same seed and different output for different seeds.
