@@ -44,7 +44,7 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `leaderboards` | Global / friends / guild / season leaderboards |
 | `multiplayerMenu` | Multiplayer entry screen — two-tab UI (Create Lobby with 5 mode cards, Join Lobby with 6-char code); shown when hub "Multiplayer" button is pressed; entry point before lobby creation |
 | `lobbyBrowser` | Public lobby browser — lists open lobbies with mode/fullness filters, auto-refreshes every 5 s, supports password-modal join flow; navigated to from `multiplayerMenu` via "Browse Lobbies" button **Added 2026-04-11** |
-| `multiplayerLobby` | Multiplayer lobby — mode/deck/house-rules config and player readying; entered via `multiplayerMenu` |
+| `multiplayerLobby` | Multiplayer lobby — mode/deck/house-rules config and player readying; entered via `multiplayerMenu`. Start Game button gated by `canStartLobby()` in `src/ui/utils/lobbyStartGate.ts`: requires host + ≥2 ready players + content selection set (Issue 1, 2026-04-11) |
 | `settings` | In-game settings panel |
 | `studyTemple` | Study Temple screen for dedicated flashcard study |
 | `runPreview` | Pre-run chain distribution preview — shows topic assignments across 3 chains before expedition begins |

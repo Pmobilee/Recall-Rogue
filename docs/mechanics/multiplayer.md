@@ -447,6 +447,27 @@ The BroadcastChannel name is `rr-mp:<target>` where `<target>` is the lobby ID (
 5. Host starts game → shared seed distributed
 6. Mode service takes over (`multiplayerGameService` for Race/Duel/Co-op, `triviaNightService` for Trivia Night)
 
+### Start Game UI Gate (Issue 1, 2026-04-11)
+
+The "Start Game" button in `MultiplayerLobby.svelte` is disabled until **all three** conditions are met:
+
+1. The local player is the host (`lobby.hostId === localPlayerId`).
+2. At least 2 players are present (`lobby.players.length >= 2`).
+3. All players have marked themselves ready (`lobby.players.every(p => p.isReady)`).
+4. Content has been selected (`lobby.contentSelection !== null`).
+
+The gate is implemented as a pure exported function `canStartLobby(lobby, amHost)` in
+`src/ui/utils/lobbyStartGate.ts`. This allows unit testing without mounting the Svelte component.
+
+The button label uses a companion function `startButtonLabel(lobby, amHost)` that reflects gate state:
+
+| Gate state | Label |
+|---|---|
+| Local player is not host | `"Waiting for host..."` |
+| No content selected | `"Select Content"` |
+| Not all players ready | `"Waiting for players..."` |
+| All gates pass | `"Start Game"` |
+
 Lobby lifecycle managed by `src/services/multiplayerLobbyService.ts`.
 
 ## Screen Flow
@@ -464,6 +485,7 @@ hub → multiplayerMenu → (mode selected) → multiplayerLobby → (game start
 | `src/data/multiplayerTypes.ts` | All shared types, constants, `MultiplayerMode` union, lobby/fairness/race types, `LobbyContentSelection`, `MODE_DESCRIPTIONS`, `MODE_TAGLINES` |
 | `src/services/multiplayerScoring.ts` | `computeRaceScore()` — pure race score formula (AR-86 v1) |
 | `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start; `setContentSelection()` for rich content targeting; `addLocalBot()` / `removeLocalBot()` for same-machine dev testing; `generatePlayerId()` for unique tab IDs; `isBroadcastMode()` (exported) for two-tab transport selection and UI indicator |
+| `src/ui/utils/lobbyStartGate.ts` | Pure predicates `canStartLobby(lobby, amHost)` and `startButtonLabel(lobby, amHost)` — gate for "Start Game" button; unit-tested in `src/ui/utils/lobbyStartGate.test.ts` |
 | `src/services/multiplayerTransport.ts` | Transport abstraction (WebSocket + Steam P2P + Local + BroadcastChannel) |
 | `src/services/multiplayerGameService.ts` | Race / Duel / Same Cards game sync + `DuelTurnAction` / `DuelTurnResolution` |
 | `src/services/coopEffects.ts` | 6 co-op exclusive effects, damage multiplier computation |

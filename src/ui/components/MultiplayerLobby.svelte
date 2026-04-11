@@ -28,6 +28,7 @@
   } from '../../services/multiplayerLobbyService'
   import { hasSteam } from '../../services/platformService'
   import LobbyDeckPicker from './LobbyDeckPicker.svelte'
+  import { canStartLobby, startButtonLabel } from '../utils/lobbyStartGate'
 
   interface Props {
     lobby: LobbyState
@@ -69,7 +70,7 @@
   /** Local player's ready state */
   let myPlayer = $derived(lobby.players.find(p => p.id === localPlayerId))
   let isReady = $derived(myPlayer?.isReady ?? false)
-  let canStart = $derived(amHost && lobby.players.length >= 2 && lobby.players.every(p => p.isReady))
+  let canStart = $derived(canStartLobby(lobby, amHost))
 
   /** Empty slots to fill player list up to maxPlayers */
   let emptySlots = $derived(
@@ -314,7 +315,7 @@
             onclick={handleStart}
             aria-label="Start game"
           >
-            {canStart ? 'Start Game' : 'Waiting for players...'}
+            {startButtonLabel(lobby, amHost)}
           </button>
         {/if}
       </div>
