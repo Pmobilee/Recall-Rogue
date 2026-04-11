@@ -83,7 +83,7 @@ A deliverable is "done" only when **every** item on this checklist is satisfied.
 1. **Code compiles — own files only.** `npm run typecheck` passes for files YOU edited. Pre-existing errors in untouched files belong to another parallel agent and are NOT your responsibility. See `.claude/rules/testing.md` → "Agent Scope — Own-Files-Only Build Failures".
 2. **Tests pass.** Relevant unit tests, integration tests, or balance sim pass.
 3. **Visual verified.** If the change is observable, Docker visual verify has produced a screenshot and layout dump. Per `.claude/rules/testing.md`.
-4. **Docs updated same-commit.** Any file you touched has its corresponding doc updated in the same commit. No exceptions.
+4. **Docs AND skills updated same-commit.** Any file you touched has its corresponding doc AND its corresponding `.claude/skills/*/SKILL.md` entry updated in the same commit. Run the pre-commit self-check from `.claude/rules/docs-first.md` → "Mandatory Pre-Commit Self-Check" before every `git commit`. No code-only commits where docs/skills are applicable. "I'll do a docs pass after" is banned — see the `cc2e5b8bc` → `6e3a91fb3` split-commit failure logged 2026-04-11.
 5. **Gotcha logged** if you discovered a non-obvious behavior or made a mistake on the way.
 6. **Inspection registry stamped** if you tested an element.
 7. **TaskList empty.** `TaskList` shows zero pending or in-progress tasks from this session's work. Per `.claude/rules/task-tracking.md`.
