@@ -110,7 +110,7 @@
       <p>
         If we discover that we have inadvertently collected personal information from a child under
         13 without verifiable parental consent, we will delete that information promptly. Parents
-        or guardians may contact us at <a href="mailto:privacy@terragacha.com" class="link">privacy@terragacha.com</a> to request deletion.
+        or guardians may contact us at <a href="mailto:hello@recallrogue.com" class="link">hello@recallrogue.com</a> to request deletion.
       </p>
     </section>
 
@@ -158,7 +158,7 @@
       </ul>
       <p>
         To exercise any of these rights, contact us at
-        <a href="mailto:privacy@terragacha.com" class="link">privacy@terragacha.com</a>.
+        <a href="mailto:hello@recallrogue.com" class="link">hello@recallrogue.com</a>.
         We will respond within 30 days.
       </p>
     </section>
@@ -175,7 +175,7 @@
       </ul>
       <p>
         No system is 100% secure. If you discover a security vulnerability, please disclose it
-        responsibly to <a href="mailto:privacy@terragacha.com" class="link">privacy@terragacha.com</a>.
+        responsibly to <a href="mailto:hello@recallrogue.com" class="link">hello@recallrogue.com</a>.
       </p>
     </section>
 
@@ -187,7 +187,7 @@
       </p>
       <address class="contact-address">
         Recall Rogue Privacy Team<br />
-        <a href="mailto:privacy@terragacha.com" class="link">privacy@terragacha.com</a>
+        <a href="mailto:hello@recallrogue.com" class="link">hello@recallrogue.com</a>
       </address>
       <p>We aim to respond to all privacy requests within <strong>30 days</strong>.</p>
     </section>

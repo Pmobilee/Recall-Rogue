@@ -451,13 +451,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   let prevScreen = $state('')
   let exitEnemyId = $state<string | null>(null)
 
-  let showArcanePassModal = $state(false)
   let showSeasonPassModal = $state(false)
   let showCosmeticStoreModal = $state(false)
 
-  function handleOpenArcanePass(): void {
-    showArcanePassModal = true
-  }
 
   function handleOpenSeasonPass(): void {
     showSeasonPassModal = true
@@ -1196,7 +1192,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     }
   }
 
-  const loadRoguePassModal = createLazyLoader(() => import('./ui/components/RoguePassModal.svelte'))
   const loadSeasonPassView = createLazyLoader(() => import('./ui/components/SeasonPassView.svelte'))
   const loadCosmeticStoreModal = createLazyLoader(() => import('./ui/components/CosmeticStoreModal.svelte'))
 
@@ -1991,13 +1986,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       ondismiss={() => activeRelicPickup.set(null)}
       onswap={$activeRunState && isRelicSlotsFull($activeRunState.runRelics) ? handleRelicPickupSwap : undefined}
     />
-  {/if}
-
-  {#if showArcanePassModal}
-    {#await loadRoguePassModal() then module}
-      {@const RoguePassModalView = module.default}
-      <RoguePassModalView onClose={() => { showArcanePassModal = false }} />
-    {/await}
   {/if}
 
   {#if showSeasonPassModal}

@@ -81,7 +81,7 @@ export async function restorePurchases(): Promise<string[]> {
  * Kid mode IAP guard (DD-V2-131 / Phase 45.3.4).
  * If the player is NOT in kid mode, calls onParentApproves immediately.
  * If the player IS in kid mode, shows a PIN gate via a custom DOM event.
- * Callers (RoguePassModal) listen for the 'iap:approved' event.
+ * No active callers at present — reserve for future monetization if needed.
  *
  * @param onParentApproves - Callback to invoke when the purchase is authorised.
  */

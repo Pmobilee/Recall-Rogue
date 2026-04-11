@@ -28,8 +28,7 @@
     <section class="tos-section">
       <h2 class="section-heading">1. Acceptance of Terms</h2>
       <p>
-        These Terms form a legally binding agreement between you and the indie developer of Terra
-        Gacha. Your continued use of the Game constitutes your acceptance of any future amendments
+        These Terms form a legally binding agreement between you and the indie developer of Recall Rogue. Your continued use of the Game constitutes your acceptance of any future amendments
         to these Terms. We will notify you of material changes via in-game notification or email.
       </p>
     </section>
@@ -107,7 +106,7 @@
       <h2 class="section-heading">6. Termination</h2>
       <p>
         You may stop using the Game and request deletion of your account at any time by contacting
-        us at <a href="mailto:privacy@terragacha.com" class="link">privacy@terragacha.com</a>.
+        us at <a href="mailto:hello@recallrogue.com" class="link">hello@recallrogue.com</a>.
       </p>
       <p>
         We may suspend or terminate your access at any time if you violate these Terms, without
@@ -143,7 +142,7 @@
       <p>If you have questions about these Terms, please contact us:</p>
       <address class="contact-address">
         Recall Rogue Support<br />
-        <a href="mailto:privacy@terragacha.com" class="link">privacy@terragacha.com</a>
+        <a href="mailto:hello@recallrogue.com" class="link">hello@recallrogue.com</a>
       </address>
     </section>
 
