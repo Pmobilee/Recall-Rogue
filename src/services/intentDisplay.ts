@@ -1,7 +1,7 @@
 import type { EnemyIntent, EnemyInstance } from '../data/enemies';
 import { getStrengthModifier } from '../data/statusEffects';
 import { getFloorDamageScaling } from './enemyManager';
-import { GLOBAL_ENEMY_DAMAGE_MULTIPLIER, ENEMY_TURN_DAMAGE_CAP, getBalanceValue } from '../data/balance';
+import { GLOBAL_ENEMY_DAMAGE_MULTIPLIER, ENEMY_TURN_DAMAGE_CAP, BLOCK_DECAY_PER_ACT, BLOCK_DECAY_RETAIN_RATE, getBalanceValue } from '../data/balance';
 import { getAuraState } from './knowledgeAuraSystem';
 import { applyPostIntentDamageScaling, type EnemyDamageScalingContext } from './enemyDamageScaling';
 
@@ -45,6 +45,10 @@ function _getSegmentForFloor(floor: number): 1 | 2 | 3 | 4 | 'endless' {
  * @param scalingCtx  - Optional turn-state snapshot for canary/ascension/difficulty modifiers.
  *                      If omitted, only first-layer modifiers are applied (backward-compatible
  *                      for call sites that haven't been updated yet).
+ *
+ * @deprecated For display purposes, prefer `computeIntentHpImpact` which accounts for
+ *             block decay applied at end-of-player-turn (before the enemy swings).
+ *             Raw damage misleads players who have block — the actual HP loss is lower.
  */
 export function computeIntentDisplayDamage(
   intent: EnemyIntent,
@@ -90,4 +94,70 @@ export function computeIntentDisplayDamage(
     return damage;
   }
   return applyPostIntentDamageScaling(damage, scalingCtx);
+}
+
+/**
+ * Result of `computeIntentHpImpact` — the three numbers the UI needs to
+ * tell the player what the enemy intent will actually cost them.
+ */
+export interface IntentHpImpact {
+  /** Raw scaled damage before block is applied (what `computeIntentDisplayDamage` returns). */
+  raw: number;
+  /**
+   * Player's block value AFTER end-of-player-turn decay (act-aware).
+   * This is the block the enemy will actually hit, not the current displayed block.
+   * Decay: Act 1 = 15%, Act 2 = 25%, Act 3 = 35%. Falls back to 25% when act is unknown.
+   */
+  postDecayBlock: number;
+  /**
+   * HP the player will lose after their decayed block absorbs damage.
+   * This is the number that should be shown in the intent preview bubble — it is
+   * what actually matters to the player's decision-making.
+   * `Math.max(0, raw - postDecayBlock)`
+   */
+  hpDamage: number;
+}
+
+/**
+ * Compute the HP impact of an enemy intent, accounting for block decay.
+ *
+ * **Why this is needed (Issue 11):**
+ * Block decays at end-of-player-turn (`resetTurnState()` in `playerCombatState.ts`)
+ * BEFORE the enemy swings. A player with 15 block facing 15 damage in Act 1 will
+ * retain `floor(15 × 0.85) = 12` block and take 3 HP — not 0. Showing the raw
+ * damage ("15") misleads the player into thinking their block fully covers it.
+ *
+ * **Act fallback:** when `act` is undefined or not in `BLOCK_DECAY_PER_ACT`,
+ * falls back to `BLOCK_DECAY_RETAIN_RATE` (75% retain = 25% decay) — consistent
+ * with the fallback in `playerCombatState.resetTurnState()`.
+ *
+ * **Non-attack intents:** return `{ raw: 0, postDecayBlock: playerBlock, hpDamage: 0 }`.
+ * Block decay still happens but the player takes no damage, so hpDamage is 0.
+ *
+ * @param intent      - The enemy intent to evaluate.
+ * @param enemy       - The enemy instance (for damage pipeline modifiers).
+ * @param playerBlock - The player's CURRENT block value (before decay).
+ * @param act         - The current act number (1, 2, or 3). If undefined, falls back to 25% decay.
+ * @param scalingCtx  - Optional scaling context (same as `computeIntentDisplayDamage`).
+ */
+export function computeIntentHpImpact(
+  intent: EnemyIntent,
+  enemy: EnemyInstance,
+  playerBlock: number,
+  act: number | undefined,
+  scalingCtx?: EnemyDamageScalingContext,
+): IntentHpImpact {
+  const raw = computeIntentDisplayDamage(intent, enemy, scalingCtx);
+
+  // Compute the decay rate: act-aware first, fallback to legacy BLOCK_DECAY_RETAIN_RATE.
+  // Mirrors the exact logic in playerCombatState.resetTurnState().
+  const decayRate = act !== undefined
+    ? (BLOCK_DECAY_PER_ACT[act] ?? (1 - BLOCK_DECAY_RETAIN_RATE))
+    : (1 - BLOCK_DECAY_RETAIN_RATE); // 0.25 decay = 0.75 retain
+
+  const retainRate = 1 - decayRate;
+  const postDecayBlock = Math.floor(playerBlock * retainRate);
+  const hpDamage = Math.max(0, raw - postDecayBlock);
+
+  return { raw, postDecayBlock, hpDamage };
 }

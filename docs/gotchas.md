@@ -1,4 +1,19 @@
 
+
+### 2026-04-11 — Intent preview block decay ordering (Issue 11)
+
+**Symptom:** Player has 15 block, enemy intent badge shows "15 damage". Player ends their turn expecting the block to fully absorb it. But they take 3 HP anyway.
+
+**Root cause:** `endPlayerTurn()` calls `resetTurnState()` which applies `BLOCK_DECAY_PER_ACT` decay to the player's shield BEFORE the enemy attacks. Act 1 decay = 15%: `floor(15 × 0.85) = 12` block remains. The enemy's 15 damage pierces the decayed block for 3 HP. The intent preview (`computeIntentDisplayDamage`) showed the raw damage number, ignoring the upcoming decay.
+
+**Fix:** Added `computeIntentHpImpact(intent, enemy, playerBlock, act, scalingCtx?)` in `src/services/intentDisplay.ts`. It returns `{ raw, postDecayBlock, hpDamage }` where `hpDamage = Math.max(0, raw - postDecayBlock)`. This is the number the player actually cares about — how much HP they will lose.
+
+**Ordering rule (never forget):** Block decays at step 10 of `endPlayerTurn()` (`resetTurnState`) → enemy attack executes at step 4. So decay always happens before the enemy swings. The intent preview must account for decay.
+
+**Fallback:** When `act` is undefined, `computeIntentHpImpact` falls back to `BLOCK_DECAY_RETAIN_RATE` (75% retain = 25% decay), matching the fallback in `resetTurnState()`.
+
+**UI follow-up pending:** `CardCombatOverlay.svelte` still calls `computeIntentDisplayDamage` — ui-agent must replace with `computeIntentHpImpact` to complete the fix for the player-facing display. The service-layer function is ready.
+
 ### 2026-04-11 — Enemy intent determinism for co-op (Issue 12)
 
 **Root cause:** `weightedRandomIntent()` in `enemyManager.ts` originally called `Math.random()` unconditionally. Each co-op client rolled independently, so P1 could see "apply weakness 2" while P2 saw "heal 5" — two different intents for the same enemy on the same turn.

@@ -254,9 +254,19 @@ Enemy attack damage passes through two layers before `takeDamage()` is called:
 Both `turnManager.ts` layer 2 (items 7–9) AND `computeIntentDisplayDamage()` use this helper so the two paths can never silently diverge. Items 5, 10, 11 are runtime/HP-dependent and are not applied to the display value.
 
 **Intent display — `computeIntentDisplayDamage(intent, enemy, scalingCtx?)` in `src/services/intentDisplay.ts`:**
-Applies layer 1 inline (mirrors executeEnemyIntent math without side-effects), then calls `applyPostIntentDamageScaling` for layer 2 items 7–9. The optional `scalingCtx` parameter must be passed from the UI for canary/ascension multipliers to apply — if omitted, only layer 1 is applied (backward-compatible).
+Applies layer 1 inline (mirrors executeEnemyIntent math without side-effects), then calls `applyPostIntentDamageScaling` for layer 2 items 7–9. The optional `scalingCtx` parameter must be passed from the UI for canary/ascension multipliers to apply — if omitted, only layer 1 is applied (backward-compatible). This function is `@deprecated` for UI display — use `computeIntentHpImpact` instead.
 
-**Result:** The enemy intent display now shows the same number that `takeDamage()` receives, including coop canary scaling. This fixes the AR-263 bug where coop intent showed 18 but only 11 was applied (canary multiplier 0.6 not reflected in display).
+**HP-impact display — `computeIntentHpImpact(intent, enemy, playerBlock, act, scalingCtx?)` in `src/services/intentDisplay.ts`:**
+Accounts for block decay applied at end-of-player-turn (before the enemy swings). Block decays per act (`BLOCK_DECAY_PER_ACT`: Act 1 = 15%, Act 2 = 25%, Act 3 = 35%) in `resetTurnState()`, so the block available when the enemy strikes is less than what the UI currently shows. Returns `{ raw, postDecayBlock, hpDamage }`:
+- `raw` — the fully-scaled enemy damage (same as `computeIntentDisplayDamage`)
+- `postDecayBlock` — `Math.floor(playerBlock × (1 − decayRate))` — block after decay
+- `hpDamage` — `Math.max(0, raw − postDecayBlock)` — the actual HP the player will lose
+
+**Example (Issue 11):** Player has 15 block, enemy intent shows "15 damage", act = 1. Without decay accounting, the player expects their block to fully cover the hit. But decay reduces block to `floor(15 × 0.85) = 12`, so the player actually takes 3 HP. `computeIntentHpImpact` returns `{ raw: 15, postDecayBlock: 12, hpDamage: 3 }` — the preview should show "3 HP damage" (or "0 HP damage" if block is sufficient after decay).
+
+**UI note:** Call sites in `src/ui/` (`CardCombatOverlay.svelte`) must be updated by ui-agent to consume `hpDamage` from `computeIntentHpImpact` instead of calling `computeIntentDisplayDamage` directly. See Issue 11 follow-up.
+
+**Result:** The enemy intent display shows the same number that `takeDamage()` receives, including coop canary scaling. This fixes the AR-263 bug where coop intent showed 18 but only 11 was applied (canary multiplier 0.6 not reflected in display).
 
 ---
 
