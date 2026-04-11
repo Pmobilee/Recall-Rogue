@@ -22,6 +22,8 @@ The script handles the `--no-ff` merge, removes the worktree, and deletes the on
 
 **Why this exists**: on 2026-04-11, three cross-session `git add` races produced bundled commits (`713ea981c`, `4a1ba6f5c`, `63995b4ce`) where one orchestrator's files were swept into another orchestrator's commit under a wrong title. Worktrees eliminate the race because each session has its own git index. Full rationale: `.claude/rules/git-workflow.md` → "Worktrees — MANDATORY for Every File-Editing Dispatch".
 
+**⚠️ Silent harness fallback (observed 2026-04-11, same day):** on at least one dispatch, the harness accepted `isolation: "worktree"` but silently fell back to shared `main` — no worktree created, no `WorktreeCreate` hook fired, and the sub-agent committed directly on main anyway. Two defences are now in place: (1) item 11 in the Sub-Agent Prompt Template forces a `git rev-parse --show-toplevel` self-check at task start that ABORTS if the agent is on main; (2) when the self-check aborts, the orchestrator retries via the **manual fallback procedure** that pre-creates the worktree via `scripts/setup-worktree.sh` and embeds the absolute `WT_PATH` in the next dispatch. Full procedure: `.claude/rules/git-workflow.md` → "Silent Harness Fallback — Manual Worktree Procedure".
+
 **Quick decision table:**
 
 | Agent type | `isolation: "worktree"`? |

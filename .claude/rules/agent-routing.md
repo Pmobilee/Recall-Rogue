@@ -58,9 +58,22 @@ The orchestrator does NOT write game code — but DOES do all pre-implementation
 
 ## Worktrees — MANDATORY for File-Editing Dispatches
 
-**Every file-editing sub-agent dispatch uses `isolation: "worktree"`.** No sequential carve-out, no parallel-only carve-out — if the agent is going to write files, it runs in an isolated worktree on a one-time feature branch. Read-only agents (Explore, review, search-only) never need worktrees. Full policy and rationale in `.claude/rules/git-workflow.md` → "Worktrees — MANDATORY for Every File-Editing Dispatch".
+**Every file-editing sub-agent dispatch uses an isolated worktree.** Read-only agents (Explore, review, search-only) never need worktrees.
 
-**After each worktree agent returns:**
+There are **two valid dispatch modes**, in order of preference:
+
+### Mode A — Harness-native `isolation: "worktree"` (preferred when it works)
+
+Pass `isolation: "worktree"` on the Agent tool call. The harness creates the worktree, fires the `WorktreeCreate` hook (which runs `scripts/setup-worktree.sh` to symlink `node_modules`), and dispatches the sub-agent inside. The sub-agent's item 11 worktree self-check confirms the harness honored the parameter.
+
+**If the self-check reports main** — the harness silently fell back (first observed 2026-04-11). The sub-agent aborts, and the orchestrator MUST retry via Mode B.
+
+### Mode B — Orchestrator-side manual fallback
+
+The orchestrator creates the worktree directly and embeds its absolute path in the sub-agent prompt. Used when Mode A fails or when the harness behavior is unknown. Full procedure in `.claude/rules/git-workflow.md` → "Silent Harness Fallback — Manual Worktree Procedure".
+
+### After any worktree agent returns
+
 1. Verify changes: `git -C <worktree_path> log main..HEAD --oneline`
 2. Run ground-truth verification (same as Post-Sub-Agent Verification below, but in the worktree)
 3. Merge: `scripts/merge-worktree.sh <worktree-path> <branch-name> "<merge-message>"`
@@ -90,7 +103,8 @@ The orchestrator does NOT write game code — but DOES do all pre-implementation
     - **Build / typecheck** → the final `ERRORS N WARNINGS M` line (or the full error list if non-zero)
 
     If you cannot verify a claim, say so explicitly: 'unable to verify X because Y'. Returning a success summary without a `## Self-Verification` section for data-mutating claims is a hard failure — the orchestrator will re-run ground-truth checks regardless, and a missing self-verification section is treated as evidence the work did not land. See `docs/gotchas.md` 2026-04-11 for the sub-agent stamping incident that prompted this rule."
-11. **The specific task description.**
+11. **Worktree self-check (MANDATORY, first Bash call before ANY edit).** "If the dispatch prompt embedded an explicit worktree path (`WT_PATH=/tmp/rr-wt-...`), `cd` into it first. Then run `git rev-parse --show-toplevel && git rev-parse --abbrev-ref HEAD` and paste the raw output at the top of your `## Self-Verification` section. **If the toplevel resolves to `/Users/damion/CODE/Recall_Rogue` AND the branch is `main`, the harness silently fell back from worktree isolation.** ABORT IMMEDIATELY — do NOT edit any files, do NOT commit, do NOT delegate. Return a single-line message: `ABORTED: silent worktree fallback at task start — orchestrator must retry via manual fallback (.claude/rules/git-workflow.md → Silent Harness Fallback)`. The orchestrator will re-dispatch via the manual fallback procedure. This check exists because on 2026-04-11 a ui-agent dispatched with `isolation: \"worktree\"` silently committed directly on main with no worktree ever created; the harness parameter was accepted but not honored. Full incident: `docs/gotchas.md` 2026-04-11 — silent worktree fallback."
+12. **The specific task description.**
 
 ## Post-Sub-Agent Verification — MANDATORY
 

@@ -61,11 +61,37 @@ fi
 tool_name="$(printf '%s' "$payload" | jq -r '.tool_name // empty' 2>/dev/null || true)"
 subagent_type="$(printf '%s' "$payload" | jq -r '.tool_input.subagent_type // empty' 2>/dev/null || true)"
 isolation="$(printf '%s' "$payload" | jq -r '.tool_input.isolation // empty' 2>/dev/null || true)"
+prompt_body="$(printf '%s' "$payload" | jq -r '.tool_input.prompt // empty' 2>/dev/null || true)"
 
 # --- Guard: only check Agent tool calls ---
 if [ "$tool_name" != "Agent" ]; then
   # Matcher should prevent this, but belt-and-suspenders.
   exit 0
+fi
+
+# --- Manual-fallback bypass marker ---
+# The orchestrator-side manual fallback (see .claude/rules/git-workflow.md →
+# "Silent Harness Fallback — Manual Worktree Procedure") pre-creates the
+# worktree via scripts/setup-worktree.sh and embeds its path in the sub-agent
+# prompt. In that mode the harness's `isolation` parameter is intentionally
+# omitted (because using it would either create a second worktree or trigger
+# the same silent fallback that forced the manual path in the first place).
+# Allow dispatches that carry a literal `[WORKTREE: <abs path>]` marker in the
+# prompt body, where <abs path> is an existing directory inside a real git
+# worktree registered with `git worktree list`.
+if [ -n "$prompt_body" ]; then
+  marker_path="$(printf '%s' "$prompt_body" | grep -oE '\[WORKTREE: [^]]+\]' | head -n 1 | sed -E 's/^\[WORKTREE: (.+)\]$/\1/' || true)"
+  if [ -n "$marker_path" ] && [ -d "$marker_path" ]; then
+    # Verify the path is actually a registered git worktree. A bare directory
+    # that looks like a worktree but isn't one would still allow the dispatch
+    # here — item 11 of the sub-agent prompt template's self-check will catch
+    # the downstream damage — but we do the cheap check here as a courtesy.
+    if git worktree list --porcelain 2>/dev/null | grep -qE "^worktree ${marker_path}$"; then
+      echo "pre-tool-agent-worktree.sh: manual-fallback marker present — dispatching into $marker_path" >&2
+      exit 0
+    fi
+    echo "pre-tool-agent-worktree.sh: marker points at $marker_path but it is not a registered git worktree — falling through to isolation check" >&2
+  fi
 fi
 
 # --- Classify the subagent_type ---
