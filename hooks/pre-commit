@@ -90,6 +90,16 @@ if [ -n "$STAGED_DECKS" ]; then
   fi
 fi
 
+# --- Human-prose lint (blocks user-facing text with anti-AI tells) ---
+# Scans staged user-facing text files for the five top LLM-tell patterns.
+# Override: include [humanizer-verified] in commit message after running
+# /humanizer consciously. See .claude/rules/human-prose.md.
+if [ -f scripts/lint/check-human-prose.mjs ]; then
+  if ! node scripts/lint/check-human-prose.mjs 2>&1; then
+    block_or_warn "Human-prose lint" "Run /humanizer with .claude/skills/humanizer/voice-sample.md, or add [humanizer-verified] to commit message if you consciously ran the skill."
+  fi
+fi
+
 # --- Commit attribution detector (prototype, non-blocking) ---
 # Warns if staged files span a wide mtime window, suggesting cross-session
 # bundling from concurrent agents. Always exits 0. See gotchas 2026-04-11.
