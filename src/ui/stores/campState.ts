@@ -14,22 +14,35 @@ export interface CampState {
   unlockedPets: CampPet[]
 }
 
-export const CAMP_ELEMENTS: CampElement[] = ['tent', 'campfire', 'character', 'pet', 'library', 'questboard', 'shop', 'journal', 'doorway']
-
 const STORAGE_KEY = 'recall-rogue-camp-state'
 
-/** Per-element maximum upgrade tiers (tier 0 is base, these are the number of upgrade levels). */
+/**
+ * Per-element maximum upgrade tiers (tier 0 is base; these are the number of
+ * upgrade levels). Declared first in desired iteration order — CAMP_ELEMENTS
+ * is derived from Object.keys() which preserves insertion order for string keys.
+ *
+ * journal was lowered from 6 → 5 because only 6 sprite files exist on disk
+ * (tier-3.webp was never generated). Any saved tiers.journal === 6 clamps
+ * automatically to 5 via sanitizeState → clampTier.
+ */
 export const CAMP_MAX_TIERS: Record<CampElement, number> = {
   tent: 6,
+  campfire: 5,
   character: 6,
   pet: 5,
-  campfire: 5,
   library: 5,
   questboard: 6,
   shop: 6,
-  journal: 6,
+  journal: 5,
   doorway: 6,
 }
+
+/**
+ * Canonical element list derived from CAMP_MAX_TIERS key insertion order.
+ * Do NOT maintain a separate hand-written array — this is the single source.
+ * Order: tent, campfire, character, pet, library, questboard, shop, journal, doorway.
+ */
+export const CAMP_ELEMENTS: readonly CampElement[] = Object.keys(CAMP_MAX_TIERS) as CampElement[]
 
 const DEFAULT_CAMP_STATE: CampState = {
   tiers: {
@@ -59,17 +72,20 @@ const DEFAULT_CAMP_STATE: CampState = {
   unlockedPets: ['cat'],
 }
 
-/** Per-element upgrade costs. Index = tier being purchased (0 = first upgrade from base). */
+/**
+ * Per-element upgrade costs. Index = tier being purchased (0 = first upgrade from base).
+ * Length must equal CAMP_MAX_TIERS[element] for every entry.
+ */
 const UPGRADE_COSTS: Record<CampElement, readonly number[]> = {
-  tent:       [60, 120, 200, 320, 500, 750],
-  campfire:   [60, 120, 200, 320, 500],
-  character:  [80, 160, 280, 450, 700, 1000],
-  pet:        [150, 300, 500, 800, 1200],
-  library:    [80, 150, 250, 400, 600],
-  questboard: [40, 80, 150, 250, 400, 600],
-  shop:       [60, 120, 200, 320, 500, 750],
-  journal:    [40, 80, 150, 250, 400, 600],
-  doorway:    [100, 200, 350, 550, 800, 1100],
+  tent:       [60, 120, 200, 320, 500, 750],        // 6 entries, max 6
+  campfire:   [60, 120, 200, 320, 500],              // 5 entries, max 5
+  character:  [80, 160, 280, 450, 700, 1000],        // 6 entries, max 6
+  pet:        [150, 300, 500, 800, 1200],            // 5 entries, max 5
+  library:    [80, 150, 250, 400, 600],              // 5 entries, max 5
+  questboard: [40, 80, 150, 250, 400, 600],          // 6 entries, max 6
+  shop:       [60, 120, 200, 320, 500, 750],         // 6 entries, max 6
+  journal:    [40, 80, 150, 250, 400],               // 5 entries, max 5 (was 6; tier-3.webp missing)
+  doorway:    [100, 200, 350, 550, 800, 1100],       // 6 entries, max 6
 }
 
 export const PET_UNLOCK_COSTS: Record<CampPet, number> = {
@@ -89,6 +105,7 @@ function sanitizeState(raw: unknown): CampState {
       pet === 'cat' || pet === 'owl' || pet === 'fox' || pet === 'dragon_whelp')
     : ['cat']
 
+  // clampTier uses CAMP_MAX_TIERS — any saved tiers.journal === 6 clamps to 5 here.
   const clampTier = (el: CampElement, raw: unknown): number =>
     Math.max(0, Math.min(CAMP_MAX_TIERS[el], Number(raw ?? 0)))
 

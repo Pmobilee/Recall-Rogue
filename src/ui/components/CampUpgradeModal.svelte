@@ -31,6 +31,10 @@
   let previewingTrackId = $state<string | null>(null)
   let justPurchasedId = $state<string | null>(null)
 
+  // ── Upgrade confirm feedback ───────────────────────────────────────────────
+  /** Element currently showing the upgrade-confirm brightness/scale pop. */
+  let justUpgraded = $state<CampElement | null>(null)
+
   let unlockedIds = $derived(new Set($playerSave?.unlockedTracks ?? []))
   let jukeboxTracks = $derived(
     getLockedTracks().filter(t =>
@@ -71,6 +75,10 @@
     if (cost === null) return
     if (spendGreyMatter(cost)) {
       setCampTier(element, currentTier + 1)
+      // Reuse existing shop-purchase SFX — same currency, same satisfaction signal.
+      playCardAudio('shop-purchase')
+      justUpgraded = element
+      setTimeout(() => { justUpgraded = null }, 650)
     }
   }
 
@@ -186,6 +194,7 @@
               <div class="card-preview-wrapper">
                 <div
                   class="card-preview"
+                  class:just-upgraded={element === justUpgraded}
                   style="background-image: url({getCampUpgradeUrl(element, currentForm)}); {getPreviewBgStyle(element)}"
                   role="img"
                   aria-label={name}
@@ -623,6 +632,17 @@
     background-color: rgba(15, 23, 42, 0.6);
     border: calc(2px * var(--layout-scale, 1)) solid #000;
     image-rendering: pixelated;
+  }
+
+  /* Upgrade-confirm brightness + scale pop (600ms, fires on successful upgrade). */
+  .card-preview.just-upgraded {
+    animation: upgrade-confirm 600ms ease-out;
+  }
+
+  @keyframes upgrade-confirm {
+    0%   { filter: brightness(1) drop-shadow(0 0 0 rgba(255, 220, 120, 0)); transform: scale(1); }
+    40%  { filter: brightness(1.6) drop-shadow(0 0 calc(24px * var(--layout-scale, 1)) rgba(255, 220, 120, 0.9)); transform: scale(1.08); }
+    100% { filter: brightness(1) drop-shadow(0 0 0 rgba(255, 220, 120, 0)); transform: scale(1); }
   }
 
   /* ── Text + pips ── */

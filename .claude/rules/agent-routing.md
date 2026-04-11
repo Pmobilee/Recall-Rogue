@@ -43,6 +43,7 @@ The orchestrator does NOT write game code — but DOES do all pre-implementation
 | `src/data/chainThemes/**`, `src/data/domainMetadata.ts` | content-agent | `.claude/agents/content-agent.md` |
 | `src/i18n/locales/**` (translation content) | content-agent | `.claude/agents/content-agent.md` |
 | `tests/**`, `src/dev/**` | qa-agent | `.claude/agents/qa-agent.md` |
+| `scripts/lint/**` | qa-agent | `.claude/agents/qa-agent.md` |
 | `docs/gotchas.md` | qa-agent (primary writer) | `.claude/agents/qa-agent.md` |
 | `docs/**` (all other docs) | docs-agent | `.claude/agents/docs-agent.md` |
 | `src/_archived/**` | — ignored, do not edit | — |

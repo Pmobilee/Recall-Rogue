@@ -1,7 +1,7 @@
 # Svelte Stores — Gameplay State
 
 > **Purpose:** Complex gameplay runtime stores — combat, co-op, and camp upgrade state
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-11
 > **Source files:** `src/ui/stores/combatState.ts`, `src/ui/stores/coopState.ts`, `src/ui/stores/campState.ts`
 
 > See also: [stores.md](stores.md) for the singleton store pattern, routing, player data, settings, and all other stores
@@ -61,9 +61,15 @@ All plain `writable` stores for the (unimplemented/future) co-op mode.
 
 Tracks upgrade tiers and visual forms for 9 camp elements: `'tent'`, `'campfire'`, `'character'`, `'pet'`, `'library'`, `'questboard'`, `'shop'`, `'journal'`, `'doorway'`.
 
+**`CAMP_MAX_TIERS`** — per-element maximum logical tier (2026-04-11: `journal` lowered 6→5; see gotchas). `CAMP_ELEMENTS` is derived from `Object.keys(CAMP_MAX_TIERS)` — do not maintain a separate hand-written array.
+
+**Sprite mapping (2026-04-11):** `getCampUpgradeUrl` now resolves through `CAMP_UPGRADE_TIER_FILES` in `src/ui/utils/campArtManifest.ts`. Each element maps logical tier index → actual file number, skipping missing webps (`pet/tier-3`, `campfire/tier-1`, `journal/tier-3` were never generated). This eliminates 404s without renaming or regenerating art.
+
+**Save migration (journal max 6→5):** Any existing `tiers.journal === 6` clamps automatically to 5 on next load via `sanitizeState → clampTier`. No explicit migration needed.
+
 **Helpers exported:** `getCampUpgradeCost(element, currentTier)`, `setCampTier(element, tier)`, `setCampForm(element, form)`, `setCampOutfit(outfit)`, `unlockCampPet(pet)`, `setActiveCampPet(pet)`.
 
-**Consumed by:** `CampHudOverlay.svelte`, hub screen components.
+**Consumed by:** `CampHudOverlay.svelte`, `CampUpgradeModal.svelte`, hub screen components.
 
 ### classroomStore — Classroom Membership
 
