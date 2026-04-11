@@ -44,6 +44,10 @@
  *   - src/game/scenes/CombatScene.ts              — visual-only: particles,
  *                                                   fragments, rain effects;
  *                                                   no shared game state
+ *   - src/game/scenes/RewardRoomScene.ts          — all 28 calls are visual FX:
+ *                                                   particle depth, float amplitudes,
+ *                                                   orbital phases, ambient orb animation.
+ *                                                   None affect card draws, gold, or run state.
  *   - src/ui/effects/**      — UI cosmetic effects (hubLighting, moths, etc.)
  *   - src/ui/components/DamageNumber.svelte       — cosmetic damage display
  *   - src/ui/components/SurgeBorderOverlay.svelte — cosmetic VFX
@@ -53,16 +57,65 @@
  *   - src/ui/components/HubMoths.svelte           — cosmetic hub moths
  *   - src/ui/components/GachaReveal.svelte        — cosmetic gacha reveal
  *   - src/ui/components/NearMissBanner.svelte     — cosmetic feedback
+ *   - src/ui/components/HubScreen.svelte          — all 14 calls are fake "ghost run"
+ *                                                   preview data for the hub menu screen;
+ *                                                   none affect real run state.
+ *   - src/ui/components/MapPinDrop.svelte         — cosmetic lat/lng jitter for map pins
+ *   - src/ui/components/CosmeticStoreModal.svelte — cosmetic loot box dust reward (not
+ *                                                   co-op gameplay; cosmetic currency)
+ *   - src/ui/components/SocialScreen.svelte       — guest ID suffix generation (UI only)
+ *   - src/ui/components/StudyTempleScreen.svelte  — session ID generation (UI only)
  *   - src/services/seededRng.ts     — the RNG implementation itself
  *   - src/services/randomUtils.ts   — shuffled() used for distractor ordering
  *                                    (presentation only, not gameplay state).
  *                                    If co-op deterministic ordering is ever
  *                                    needed, remove this entry.
+ *   - src/services/audioService.ts  — all calls are audio buffer noise generation
+ *                                    (PCM sample values for synthesized SFX).
+ *                                    Audio synthesis is purely local and never
+ *                                    affects shared game state.
+ *   - src/services/musicService.ts  — playlist shuffle order (cosmetic, local only)
+ *   - src/services/rewardSpawnService.ts — x/y position jitter for floating reward icons
+ *                                          (visual only; does not affect reward contents)
+ *   - src/services/rewardRoomBridge.ts   — all calls inside openTestRewardRoom(), a
+ *                                          dev-only function called only from
+ *                                          src/dev/scenarioSimulator.ts. Never runs in
+ *                                          production gameplay sessions.
+ *   - src/services/encounterBridge.ts    — line 1735 only: Math.random() in UUID suffix
+ *                                          for card.id generation. Uniqueness not
+ *                                          determinism is the requirement here; IDs are
+ *                                          never compared across clients.
+ *   - src/services/socialService.ts      — guest ID suffix generation (social profile,
+ *                                          never synced as game state)
+ *   - src/services/studyPresetService.ts — preset ID generation (local study, never in run)
+ *   - src/services/eloMatchmakingService.ts — AI ELO variance for single-player fallback
+ *                                             matchmaking (no co-op run involved)
+ *   - src/services/multiplayerTransport.ts  — simulated network jitter/packet loss for
+ *                                             local testing (BroadcastChannel mock).
+ *                                             Deliberately non-deterministic to mimic real
+ *                                             network variance. Never affects game state.
+ *   - src/services/multiplayerWorkshopService.ts — workshop vote tiebreak runs on the
+ *                                                   host only, then result is broadcast
+ *                                                   to all clients. Determinism is
+ *                                                   provided by the broadcast, not RNG.
+ *   - src/services/multiplayerLobbyService.test.ts — test-only file; fake lobby IDs
  *   - src/data/petWaypoints.ts      — cosmetic pet pathfinding
  *   - src/data/petPersonalities.ts  — cosmetic pet reactions
  *   - src/data/shopkeeperBarks.ts   — cosmetic shopkeeper dialog
  *   - src/data/omniscientQuips.ts   — cosmetic narrator lines
  *   - src/data/foregroundElements.ts — cosmetic scene dressing
+ *
+ * ALLOWLIST_LINES (specific line overrides for files with mixed safe/unsafe calls):
+ *   - multiplayerLobbyService.ts:72    — generatePlayerId(): local player ID suffix,
+ *                                        not synchronized as game state
+ *   - multiplayerLobbyService.ts:553   — startGame() run seed: intentionally non-
+ *                                        deterministic entropy source. Host generates
+ *                                        a random seed and broadcasts it to all clients.
+ *                                        This IS the seed origin point — correct behavior.
+ *   - multiplayerLobbyService.ts:712   — generateLobbyId(): lobby ID suffix, not game state
+ *   - multiplayerLobbyService.ts:720   — generateLobbyCode(): lobby join code characters,
+ *                                        not game state
+ *   - ui/stores/playerData.ts:1564     — cosmetic loot box rarity roll (not gameplay sim)
  *
  * The ALLOWLIST is printed on every run so code reviewers can audit what is
  * explicitly exempted. Changes to the allowlist require code-review attention.
@@ -72,6 +125,8 @@
  *
  * Run:    node scripts/lint/no-bare-math-random.mjs
  * Added:  2026-04-11 — BATCH-ULTRA Cluster D meta-fix
+ * Updated: 2026-04-11 — BATCH-ULTRA Wave C: expanded allowlist for cosmetic paths
+ *                        (169 → ~30 violations; remaining are genuine co-op desync risks)
  *
  * Exit codes:
  *   0 — no violations
@@ -116,6 +171,11 @@ const ALLOWLIST_GLOBS = [
   // run independently on each client — divergence is both expected and harmless.
   'src/game/scenes/CombatScene.ts',
 
+  // RewardRoomScene: all 28 bare calls are visual FX — particle depth layers,
+  // float animation parameters (ampX, ampY, freqX, freqY), orbital radii,
+  // ambient orb phases and lifespans. None affect card rewards, gold, or run state.
+  'src/game/scenes/RewardRoomScene.ts',
+
   // UI cosmetic effects — purely presentation
   'src/ui/effects',
   'src/ui/components/DamageNumber.svelte',
@@ -127,6 +187,23 @@ const ALLOWLIST_GLOBS = [
   'src/ui/components/GachaReveal.svelte',
   'src/ui/components/NearMissBanner.svelte',
 
+  // HubScreen: all 14 bare calls generate fake "ghost run" preview data shown on
+  // the hub menu screen. These values are never persisted or sent to any peer.
+  'src/ui/components/HubScreen.svelte',
+
+  // MapPinDrop: 2 calls add cosmetic lat/lng jitter to map pins (visual scatter, no game state).
+  'src/ui/components/MapPinDrop.svelte',
+
+  // CosmeticStoreModal: cosmetic loot box dust reward roll — cosmetic currency,
+  // not part of co-op game simulation and never synchronized between clients.
+  'src/ui/components/CosmeticStoreModal.svelte',
+
+  // SocialScreen: 1 call generates a random suffix for guest social IDs (UI only).
+  'src/ui/components/SocialScreen.svelte',
+
+  // StudyTempleScreen: 1 call generates a unique session ID (local study, never in a run).
+  'src/ui/components/StudyTempleScreen.svelte',
+
   // The RNG implementation itself
   'src/services/seededRng.ts',
 
@@ -135,6 +212,48 @@ const ALLOWLIST_GLOBS = [
   // not part of game state synchronization. If deterministic shuffling is ever needed
   // for co-op (replay, spectator), this entry should be removed and shuffled() updated.
   'src/services/randomUtils.ts',
+
+  // audioService: all 6 bare calls are PCM audio buffer noise generation for synthesized
+  // sound effects (white noise, perlin noise for SFX). Audio synthesis is purely local
+  // and client-independent — no shared game state involved.
+  'src/services/audioService.ts',
+
+  // musicService: 1 call shuffles the local playlist order (cosmetic, local only).
+  'src/services/musicService.ts',
+
+  // rewardSpawnService: 2 calls add x/y position jitter to floating reward icons.
+  // Visual presentation only — does not affect reward contents or run state.
+  'src/services/rewardSpawnService.ts',
+
+  // rewardRoomBridge: all 11 bare calls are inside openTestRewardRoom(), a dev-only
+  // function called exclusively from src/dev/scenarioSimulator.ts. It is never
+  // invoked during production gameplay sessions.
+  'src/services/rewardRoomBridge.ts',
+
+  // socialService: 1 call generates a guest-{random} ID for social profile display.
+  // Social identifiers are never synchronized as co-op game state.
+  'src/services/socialService.ts',
+
+  // studyPresetService: 1 call generates a unique preset ID for local study sessions.
+  // Never runs during a co-op game run.
+  'src/services/studyPresetService.ts',
+
+  // eloMatchmakingService: 1 call adds ELO variance to AI opponent generation for
+  // single-player fallback matchmaking. No co-op run is involved.
+  'src/services/eloMatchmakingService.ts',
+
+  // multiplayerTransport: BroadcastChannel test harness — simulated jitter (5–20ms)
+  // and packet loss probability for local integration testing. Deliberately non-
+  // deterministic to mimic real network variance. These values never enter game state.
+  'src/services/multiplayerTransport.ts',
+
+  // multiplayerWorkshopService: vote tiebreak runs on the host only, then broadcasts
+  // the deterministic result to all clients via transport.send(). The randomness is
+  // consumed on one machine; all clients receive the same decided winner ID.
+  'src/services/multiplayerWorkshopService.ts',
+
+  // multiplayerLobbyService.test.ts: test file only — fake lobby/host IDs for unit tests.
+  'src/services/multiplayerLobbyService.test.ts',
 
   // Cosmetic pet/NPC behavior — no shared state
   'src/data/petWaypoints.ts',
@@ -152,6 +271,25 @@ const ALLOWLIST_GLOBS = [
 const ALLOWLIST_LINES = {
   // analyticsService — client-side A/B sampling, deliberately non-deterministic
   // 'src/services/analyticsService.ts': new Set([142]),
+
+  // multiplayerLobbyService.ts:
+  //   72  — generatePlayerId(): local unique player ID suffix (never synced as game state)
+  //  553  — startGame() run seed: INTENTIONALLY non-deterministic. Host generates entropy
+  //          for the shared run seed and broadcasts it. This IS the seed origin point —
+  //          correct behavior. Both clients receive the same seed via the broadcast.
+  //  712  — generateLobbyId(): lobby identifier suffix (not game state)
+  //  720  — generateLobbyCode(): 6-char join code character selection (not game state)
+  'src/services/multiplayerLobbyService.ts': new Set([72, 553, 712, 720]),
+
+  // encounterBridge.ts:
+  //   1735 — `reward_${Math.random()}` card ID suffix. Card IDs only need to be locally
+  //           unique, not deterministically identical between clients. IDs are never
+  //           compared across a co-op session for state synchronization.
+  'src/services/encounterBridge.ts': new Set([1735]),
+
+  // ui/stores/playerData.ts:
+  //   1564 — cosmetic loot box rarity roll (cosmetic currency; not part of co-op sim)
+  'src/ui/stores/playerData.ts': new Set([1564]),
 };
 
 // ---------------------------------------------------------------------------

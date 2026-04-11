@@ -756,9 +756,13 @@ Both forms pass the lint. The fallback to `Math.random()` in the non-run context
 - `relicEffectResolver.ts:1712` — `obsidian_dice` multiplier roll → now guarded with `_diceRng`
 - `relicAcquisitionService.ts:73,93` — rarity roll and candidate pick → now guarded with `_relicRng` / `_pickRng`
 
-**Pre-existing violations:** ~168 bare calls exist in the codebase (gradual migration target). The lint runs as soft-warn in the pre-commit hook until the count reaches zero.
+**Pre-existing violations:** 87 bare calls remain after the Wave C allowlist expansion (2026-04-11). The original 169 calls were categorized: 82 allowlisted as genuinely cosmetic (particles, audio synthesis, UI ghost data, network simulation, ID generation), leaving 87 genuine co-op desync risks for the gradual migration. The lint runs as soft-warn in the pre-commit hook until the count reaches zero.
 
-**Allowlist governance:** The allowlist in `no-bare-math-random.mjs` is printed on every run so code reviewers can audit what is granted. Cosmetic systems (particles, visual FX, hub ambience, boot animation) are explicitly allowlisted because they affect only visuals, never shared game state.
+**Allowlist governance:** The allowlist in `no-bare-math-random.mjs` is printed on every run so code reviewers can audit what is granted. The two mechanisms are:
+-  — whole files or directories (cosmetic FX, audio, dev-only code)
+-  — specific line numbers for files with mixed safe/unsafe calls (e.g.  lobby ID generation vs run seed creation)
+
+Every allowlist entry requires a rationale comment explaining WHY it is safe.
 
 ---
 
