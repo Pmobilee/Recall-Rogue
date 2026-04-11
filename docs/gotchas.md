@@ -2541,3 +2541,27 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 **Lesson:** When designing pools for synonym-heavy domains (medical roots, linguistic synonyms), use discriminated answers from the start. Never put two facts with identical `correctAnswer` in the same pool.
 
 **Issue ref:** issue-1775872247405-06-014
+
+### 2026-04-11 — Sub-agent claimed registry stamping ran on 21 decks; only 5 had any timestamp
+
+**What:** Content-agent was delegated a task including "run stratified quiz audit with --stamp-registry on all 21 vocab decks" as step 11. It returned a success summary with per-deck split counts, a claim of "0 failures across 97 decks", and reported the commit hashes. Verification via `node -e "const r=JSON.parse(fs.readFileSync('data/inspection-registry.json','utf8')); ..."` showed that 16 of the 21 decks still had `lastQuizAudit: 'not_checked'`, and the 5 Japanese decks had the stale 2026-04-10 date (not re-stamped).
+
+**Why it happened:** The task told the agent to use `npx tsx ... scripts/quiz-audit-engine.ts --deck <id> --stratified 50 --include-vocab --stamp-registry`. But `scripts/quiz-audit-engine.ts` does NOT support `--stamp-registry` — only the older `scripts/quiz-audit.mjs` does. The `.ts` engine silently ignored the flag and the stamping never happened, but the audit itself ran fine, so the agent had no error signal to detect. The summary written was technically accurate about the audit results — it just misrepresented stamping as completed when it wasn't.
+
+**Fix (orchestrator level):** Orchestrator invoked the "mechanical data transform after sub-agent failure" exception clause from `.claude/rules/agent-routing.md`, called `scripts/registry/updater.ts --ids <21 comma-separated> --type lastQuizAudit` directly, and the registry now shows all 21 stamped at 2026-04-11.
+
+**Fix (rule level):** `.claude/rules/deck-quality.md` In-Game Quiz Audit section updated to add an explicit note: `--stamp-registry` is ONLY supported by `scripts/quiz-audit.mjs` (the legacy script), NOT by `scripts/quiz-audit-engine.ts`. To stamp after running the engine, call `npx tsx scripts/registry/updater.ts --ids <comma-separated-deck-ids> --type lastQuizAudit` directly.
+
+**How to avoid:** In sub-agent prompts that require stamping, either explicitly direct the agent to use `scripts/quiz-audit.mjs` (not `quiz-audit-engine.ts`) when stamping is required, OR instruct them to call `scripts/registry/updater.ts` directly after the audit completes.
+
+### 2026-04-11 — scripts/quiz-audit-engine.ts silently ignores --stamp-registry
+
+**What:** `scripts/quiz-audit-engine.ts` accepts `--stamp-registry` as an unrecognized CLI flag without erroring or warning. The audit runs successfully, but no registry stamp is applied. There is no warning, no error, no log line indicating the flag was ignored.
+
+**Why it happened:** The `.ts` engine was written as a replacement/successor to `quiz-audit.mjs` but only the legacy `.mjs` file contains the `shouldStampRegistry` branch. The `.ts` engine's arg-parsing loop collects only the flags it knows about and silently discards the rest — a common Node.js pattern that becomes a footgun when the flag does something critical like stamping.
+
+**Verification:** `grep -n "stamp-registry" scripts/quiz-audit.mjs scripts/quiz-audit-engine.ts` — the `.mjs` file shows the branch at lines 388–406; the `.ts` file has zero matches.
+
+**Fix (immediate):** Gotcha logged so the pattern is visible to future agents.
+
+**Fix (proper, future, Yellow-zone):** Either (a) port the stamping branch from `quiz-audit.mjs` into `quiz-audit-engine.ts` (~20 lines; the updater CLI is already proven), OR (b) add a loud error to `quiz-audit-engine.ts` when `--stamp-registry` is detected: `"ERR: --stamp-registry is not supported by this engine; use scripts/quiz-audit.mjs or call scripts/registry/updater.ts directly."` Either approach eliminates the silent-no-op footgun. The error-log approach is safer to ship first since it requires no logic porting.
