@@ -2571,3 +2571,11 @@ The `spanish_a1_grammar` deck establishes these conventions for A1–B2 Spanish 
 - `_wip/pop_culture_batch4_gone_viral.json` — 31 facts, chainThemeId 3 (internet culture)
 - `_wip/pop_culture_batch5_franchise_empires.json` — 35 facts, chainThemeId 4 (mega-franchises)
 - `_wip/pop_culture_batch6_pop_icons.json` — 35 facts, chainThemeId 5 (cultural moments)
+
+
+---
+
+## See Also
+
+- [deck-known-issues](deck-known-issues.md) — Residual polish items from the 2026-04-10 audit (11 decks): 7 anti-pattern categories, per-deck warn table, and checklist for auditing new decks.
+- `deck-quality.md` (`.claude/rules/deck-quality.md`) — Canonical 14 anti-patterns and verification commands.

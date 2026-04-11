@@ -3,7 +3,7 @@
 > Navigation hub for all modular documentation. Each file is independently useful —
 > an agent reading just that file should understand that system.
 >
-> **Last rebuilt:** 2026-04-10
+> **Last rebuilt:** 2026-04-11
 
 ---
 
@@ -80,6 +80,7 @@
 | Doc | Summary |
 |-----|---------|
 | [deck-system](content/deck-system.md) | Curated deck structure, JSON format, runtime loading, deck registry, player progression tracking, kanji deck architecture (3-fact-per-kanji model, 5 JLPT levels, 6,633 facts), procedural math decks, and chess tactics deck (620K+ runtime puzzles via `chess-puzzles.db`, `chess_tactic` quiz mode, `chessPuzzleService.ts`) |
+| [deck-known-issues](content/deck-known-issues.md) | Residual polish items from the 2026-04-10 audit of 11 decks — 7 anti-pattern categories, per-deck residual warn table, and "check these first" guide for auditing new decks |
 | [trivia-bridge](content/trivia-bridge.md) | Curated deck → trivia bridge: entity selection, scoring, field mapping, CLI usage, provenance tracking |
 | [fact-pipeline](content/fact-pipeline.md) | `Fact` data format, `facts.db` SQLite build pipeline, `factsDB` runtime service, and content production workflow |
 | [domains](content/domains.md) | All knowledge domains, subcategory taxonomy, domain resolution logic, and language vs. knowledge domain distinction |
