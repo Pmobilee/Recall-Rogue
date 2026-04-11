@@ -96,12 +96,17 @@ scripts/distractor-expansion-queue.json
 *.jpeg
 *.mp4
 *.webp
-# But keep public assets and sprite-gen registry tracked
+# But keep public assets tracked
 !public/**/*.png
-# Preserve playtest visual evidence (ascension sweeps, batch screenshots)
-!data/playtests/**/*.png
 !public/**/*.webp
 !sprite-gen/sprite-registry.json
+# Note: the old `!data/playtests/**/*.png` negation was removed on 2026-04-11.
+# Zero PNGs under data/playtests/ were ever actually tracked (only .jpg evidence
+# under llm-batches/BATCH-.../evidence/screenshots/ — 18 files, all committed
+# explicitly). The negation was just preventing the general *.png ignore from
+# hiding the hundreds of untracked screenshot artifacts that pile up every run.
+# If you need to track a specific playtest PNG as a permanent reference, add a
+# narrow `!data/playtests/<specific path>.png` negation below this comment.
 
 # Sprite generation intermediate output (keep registry, ignore raw output)
 sprite-gen/output/characters/

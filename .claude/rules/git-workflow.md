@@ -17,17 +17,32 @@ Examples:
 - Feature branches: `feature/short-description` — only when the user asks for one or the work is genuinely long-lived
 - Fix branches: `fix/short-description` — same: only on request
 
-## Worktrees — Automatic for Parallel Batches
+## Worktrees — MANDATORY for Every File-Editing Dispatch
 
-Worktree isolation is triggered by the orchestrator's dispatch pattern, not by a global flag.
+**Every sub-agent that will edit files gets `isolation: "worktree"`. No exceptions, no sequential carve-out.** The previous hybrid policy (worktrees only for parallel batches) failed in practice because cross-session parallelism is invisible to any single orchestrator — two sessions both believing they were "sequential on main" produced at least two documented bundling races in one day (commits `713ea981c` and `4a1ba6f5c` on 2026-04-11, where parallel `git add -A` sweeps swept up unrelated work under wrong-titled commits).
 
-- **Sequential dispatch** (one sub-agent at a time): work directly on `main`. No worktree overhead.
-- **Parallel dispatch** (2+ file-editing sub-agents simultaneously): ALL parallel sub-agents get `isolation: "worktree"`. No exceptions. The orchestrator stays on `main`.
-- **Read-only agents** (Explore, code review, validation with no edits): never need worktrees, even during parallel batches.
+### The policy
 
-The `WorktreeCreate` hook in `settings.json` auto-bootstraps each worktree (symlinks `node_modules`, etc.) via `scripts/setup-worktree.sh`. After each worktree agent returns, the orchestrator merges via `scripts/merge-worktree.sh` and cleans up — no manual merge ceremony.
+- **File-editing sub-agents**: ALWAYS pass `isolation: "worktree"`. Sequential dispatch and parallel dispatch are treated the same. The orchestrator never dispatches a file-editing agent on shared `main`.
+- **Read-only sub-agents** (Explore, code review, search-only, research): never need worktrees. Dispatch directly without isolation.
+- **Orchestrator** stays on `main` for coordination, planning, reading, and verification. The orchestrator may still edit `.claude/`, `CLAUDE.md`, plans, and memory on `main` directly — those files are orchestrator-only and don't have the cross-session bundling risk that `src/`, `data/`, `docs/`, `scripts/`, and `public/` have.
 
-Rationale: the April 10 mandatory-worktree experiment failed because (1) merge-back was manual, (2) worktrees lacked `node_modules`, and (3) the mandate was all-or-nothing. The hybrid approach uses worktrees only when parallel isolation is needed, and automates the merge-back.
+### How it works end-to-end
+
+1. Orchestrator calls `Agent` with `isolation: "worktree"`.
+2. Claude Code harness picks a new worktree path (e.g. `.claude/worktrees/agent-<id>`) and a one-time branch name (e.g. `agent-<id>`), then fires the `WorktreeCreate` hook with a JSON payload on stdin: `{ "branch_name": "...", "worktree_path": "...", "session_id": "...", ... }`.
+3. `scripts/setup-worktree.sh` reads that JSON via `jq`, resolves the main checkout root via `git rev-parse --git-common-dir`, runs `git worktree add -B "$BRANCH_NAME" "$WORKTREE_PATH" HEAD` (idempotent — `-B` force-resets stale branch refs from aborted sessions), symlinks `node_modules` from the main checkout so the agent boots fast, and prints the worktree path to stdout.
+4. The sub-agent runs entirely inside that worktree. It sees a clean tree with only its own changes — no cross-session dirty state, no other agent's staged files, no `git add -A` landmines.
+5. When the sub-agent returns, the orchestrator runs `scripts/merge-worktree.sh <worktree-path> <branch-name> "<merge-message>"` which: checks `main..<branch>` for commits, switches to `main`, runs `git merge --no-ff <branch>` (preserves provenance in the graph), removes the worktree, and deletes the one-time branch. Empty-diff case is a no-op.
+6. Conflict case: `merge-worktree.sh` exits 1, does NOT clean up the worktree, prints the conflicting files, and the orchestrator resolves manually.
+
+### What this replaces
+
+The April 10 mandatory-worktree experiment failed because (1) the merge-back was manual, (2) worktrees lacked `node_modules`, and (3) nothing parsed stdin — the hook expected env vars the harness didn't set and crashed on every invocation. All three are now fixed: merge-back is automated, `node_modules` symlinks on boot, and the hook parses stdin JSON as its primary contract (with env-var + CWD fallbacks for legacy harness versions). The experiment can now actually run.
+
+### Legacy `RR_MULTI_AGENT=1` soft-warn
+
+Still supported as a last-resort escape hatch for scenarios where worktrees genuinely cannot be used (e.g. a manual `git rebase` workflow), but should never be used for normal sub-agent dispatch under this policy. If you find yourself reaching for it, flag it loudly and stop.
 
 ## Commit Discipline
 
