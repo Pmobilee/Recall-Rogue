@@ -755,8 +755,27 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   // Reset seen-facts tracker so this encounter starts fresh
   resetEncounterSeenFacts(activeDeck);
   turnState.playerState.hp = run.playerHp;
-  turnState.apMax = Math.max(2, run.startingAp);
-  turnState.apCurrent = Math.min(turnState.apCurrent, turnState.apMax);
+  // Issue-7 fix: startingAp is the A/B experiment's per-turn AP value (3 control / 4 test).
+  // Previously this wrongly set apMax = startingAp, which:
+  //   (a) capped apMax at 3 for control group (blocking Act 2's 4 AP), and
+  //   (b) failed to grant startingAp=4 on turn 1 for the test group (Math.min(3,4)=3).
+  // Fix: thread startingAp into turnState.startingApPerTurn (used as per-turn AP floor
+  // in endPlayerTurn) and set apCurrent directly here for the first encounter turn.
+  // apMax remains MAX_AP_PER_TURN (5) — relics and surge can still exceed startingAp.
+  turnState.startingApPerTurn = run.startingAp;
+  turnState.apCurrent = run.startingAp;
+  // Dev assertion: startingAp must be a valid AP value (within [START_AP_PER_TURN, MAX_AP_PER_TURN]).
+  // If this warns, a new code path is writing apCurrent without going through startingApPerTurn.
+  if (import.meta.env.DEV) {
+    const expectedMin = 3; // START_AP_PER_TURN
+    const expectedMax = 5; // MAX_AP_PER_TURN
+    if (run.startingAp < expectedMin || run.startingAp > expectedMax) {
+      console.warn('[encounterBridge] first-encounter AP out of range', {
+        startingAp: run.startingAp,
+        expectedRange: [expectedMin, expectedMax],
+      });
+    }
+  }
   turnState.activeRelicIds = runRelicIds;
   turnState.baseDrawCount = resolveBaseDrawCount(runRelicIds);
   // If a relic (e.g. swift_boots) boosts the draw count above the default 5,

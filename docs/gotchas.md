@@ -2756,3 +2756,51 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 **Prevention:** The orchestrator's Sub-Agent Prompt Template now includes a VERIFICATION-FIRST PROTOCOL section requiring the sub-agent to run `grep -n` after every Edit/Write, and the orchestrator must run `git diff --stat` for every claimed-modified file before trusting summaries. Rate: ~15-20% of sub-agent file-editing calls fail silently this way.
 
 **Files:** `.claude/rules/agent-routing.md` (Post-Sub-Agent Verification section), `docs/gotchas.md` (append-only log)
+
+### 2026-04-11 — Issue 7: First-encounter AP bootstrap — startingAp was setting apMax instead of apCurrent
+
+**Symptom:** A/B test group players (startingAp=4, ~50% of users) reported seeing 4 AP on their first encounter. Root-cause investigation also revealed a second bug: control-group players (startingAp=3) were silently capped at 3 AP in Act 2, where they should receive 4.
+
+**Root cause:** `encounterBridge.startEncounterForRoom()` had:
+```
+turnState.apMax = Math.max(2, run.startingAp);  // bug: clobbers MAX_AP_PER_TURN=5
+turnState.apCurrent = Math.min(turnState.apCurrent, turnState.apMax);  // = Math.min(3,4)=3
+```
+Two consequences: (a) control group got `apMax=3`, preventing Act 2's 4 AP; (b) test group never actually received 4 AP on turn 1 (Math.min(3,4)=3). The 4 AP report likely came from turn 2 (the first surge turn) where surge gave +1: `Math.min(4, 3+1)=4`.
+
+**Fix:**
+- `encounterBridge.ts`: set `turnState.startingApPerTurn = run.startingAp` and `turnState.apCurrent = run.startingAp`. Leave `apMax = MAX_AP_PER_TURN (5)`.
+- `turnManager.ts` `TurnState`: add `startingApPerTurn: number` field, init to `START_AP_PER_TURN`.
+- `turnManager.ts` `endPlayerTurn`: `baseAp = Math.max(AP_PER_ACT[act], turnState.startingApPerTurn)` — acts as a floor so test-group players always get at least 4 AP, while control-group still gets Act 2 scaling.
+
+**Files:** `src/services/encounterBridge.ts:758-778`, `src/services/turnManager.ts` (TurnState interface + endPlayerTurn), `src/services/turnManager.startAp.test.ts` (17 regression tests).
+
+**Lesson:** When an experiment variable controls "starting value of X", it must write `X` directly, not the cap field `X_max`. `startingAp` was used as `apMax` instead of `apCurrent` — a naming mismatch that hid the bug for months because the surge interaction produced the "right" visual on turn 2.
+
+### 2026-04-11 — multiplayerLobbyService test isolation: module-level state across tests
+
+**What:** `multiplayerLobbyService.ts` stores `_currentLobby`, `_localPlayerId`, `_passwordHash`, and `_broadcastHeartbeat` as module-level variables that persist across `describe` blocks in the same test file. Because Vitest ESM module caching keeps the module instance alive, a `createLobby` call in one test leaves `_localPlayerId` set for subsequent tests.
+
+**Symptom:** Non-host guard tests (e.g., `setVisibility` no-op for guests) could silently become host-guard tests if a prior test left `_localPlayerId` matching the `hostId`.
+
+**Fix:** Use unique player IDs per `createLobby` call in tests (timestamp + random suffix). For guest tests, call `joinLobby` with a distinct guest ID immediately before the assertion — this overwrites `_localPlayerId`. The `beforeEach` calling `vi.clearAllMocks()` resets mock call counts but does NOT reset module state; only creating a new lobby with a unique host ID achieves that.
+
+**Rule:** Any test of host-only guards must either (a) create its own lobby with a fresh unique ID, or (b) call `joinLobby` to become a guest immediately before the guarded call.
+
+### 2026-04-11 — Docker SwiftShader saturates with ≥7 concurrent warm containers (Wave A)
+
+**Symptom:** Cold-mode Docker tests time out at 120s with "page.waitForFunction: Timeout exceeded" — the Phaser canvas never renders (WebGL initialization hangs). Warm container starts also fail with the same timeout.
+
+**Root cause:** 7 anonymous containers from the BATCH-2026-04-11-ULTRA session were never stopped (`great_blackwell`, `condescending_roentgen`, `amazing_noyce`, `confident_dhawan`, `reverent_hofstadter`, `boring_galois`, `kind_dijkstra`). These containers each run Chromium + SwiftShader inside the Docker VM. With 7 of them active, new containers can boot and load the HTML page but cannot initialize WebGL/Canvas, causing Phaser to never start.
+
+**Threshold:** The existing gotcha (2026-04-11, "Docker SwiftShader crashes under 16-container parallel load") documented the problem at 16 containers. This session shows saturation at 7 containers that have been running for 4+ hours (no fresh GPU budget). The effective threshold may be 4-6 containers on an M4 Max host.
+
+**Fix:** Stop and remove the leaked containers:
+```bash
+docker stop great_blackwell condescending_roentgen amazing_noyce confident_dhawan reverent_hofstadter boring_galois kind_dijkstra
+docker rm great_blackwell condescending_roentgen amazing_noyce confident_dhawan reverent_hofstadter boring_galois kind_dijkstra
+```
+
+**Prevention:** `scripts/docker-visual-test.sh --warm stop` must be called unconditionally (try/finally pattern) after every warm test session. The `--rm` flag on cold-mode containers is correct (they auto-remove). Warm containers without explicit stop leave behind GPU state. Add a health-check command `docker ps | grep rr-playwright | wc -l` to pre-flight checks — if count > 2, stop all before starting new tests.
+
+**Files:** `data/playtests/llm-batches/BATCH-2026-04-11-ULTRA-WAVE-A/manifest.json`

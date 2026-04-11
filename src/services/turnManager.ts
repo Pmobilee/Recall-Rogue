@@ -195,6 +195,13 @@ export interface TurnState {
   activeRelicIds: Set<string>;
   apCurrent: number;
   apMax: number;
+  /**
+   * Experiment: base AP granted at the start of each player turn.
+   * Overrides AP_PER_ACT[1] (Act 1 floor 1-6) when higher than it.
+   * Set from RunState.startingAp by encounterBridge at encounter start.
+   * Defaults to START_AP_PER_TURN (3) for fresh encounters without an experiment override.
+   */
+  startingApPerTurn: number;
   bonusApNextTurn: number;
   baseDrawCount: number;
   bonusDrawNextTurn: number;
@@ -659,6 +666,7 @@ export function startEncounter(
     activeRelicIds: new Set<string>(),
     apCurrent: START_AP_PER_TURN,
     apMax: MAX_AP_PER_TURN,
+    startingApPerTurn: START_AP_PER_TURN,
     bonusApNextTurn: 0,
     baseDrawCount: 5,
     bonusDrawNextTurn: 0,
@@ -3461,9 +3469,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.damageDealtThisTurn = 0;
   turnState.firstAttackUsed = false;
   // Act-aware AP: Act 1 = 3 AP, Act 2+ = 4 AP (floors 1-6=Act1, 7-12=Act2, 13+=Act3).
+  // startingApPerTurn (from experiment A/B, default=3) acts as a floor — test group players (4)
+  // get at least 4 AP/turn; control group players still get Act 2 scaling (4 AP in Act 2+).
   const _currentFloor = turnState.deck?.currentFloor ?? 1;
   const _currentAct = _currentFloor <= 6 ? 1 : _currentFloor <= 12 ? 2 : 3;
-  const _baseAp = AP_PER_ACT[_currentAct] ?? START_AP_PER_TURN;
+  const _actBase = AP_PER_ACT[_currentAct] ?? START_AP_PER_TURN;
+  const _baseAp = Math.max(_actBase, turnState.startingApPerTurn ?? START_AP_PER_TURN);
   turnState.apCurrent = Math.min(turnState.apMax, _baseAp + turnState.bonusApNextTurn);
   turnState.bonusApNextTurn = 0;
   // Reset per-turn relic tracking fields
