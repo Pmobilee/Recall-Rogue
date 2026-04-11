@@ -6,6 +6,31 @@ A 2D card roguelite knowledge game built with Vite + Svelte + TypeScript + Phase
 
 Before doing ANYTHING else in a fresh conversation, invoke the `/catchup` skill. Applies to the first message in every new chat, every `/clear`, every worktree session, every sub-agent spawn that starts a new orchestrator context. The only exception is when the user's first message IS a skill invocation. Do not announce it — just invoke, read, and respond.
 
+## 🚨 WORKTREES ARE MANDATORY FOR EVERY FILE-EDITING SUB-AGENT
+
+**Every `Agent` dispatch for a file-editing sub-agent MUST pass `isolation: "worktree"`. There is no sequential carve-out, no "small change" exception, no "just this once."** A `PreToolUse` hook (`scripts/hooks/pre-tool-agent-worktree.sh`) enforces this — it will **BLOCK** any dispatch of `game-logic`, `ui-agent`, `content-agent`, `qa-agent`, or `docs-agent` that is missing `isolation: "worktree"`. You will see a loud error telling you to re-dispatch. This is not a warning; it is a hard refusal.
+
+**Read-only sub-agents are exempt**: `Explore`, `Plan`, `claude-code-guide`, `general-purpose`, `statusline-setup` pass through without isolation.
+
+**The orchestrator itself stays on `main`** for coordination, reading, verification, and direct edits to `.claude/`, `CLAUDE.md`, plans, and memory. Anything else — `src/`, `data/`, `docs/`, `scripts/`, `public/`, `tests/` — is delegated to a domain sub-agent, which runs in a worktree.
+
+**After a worktree sub-agent returns**, merge via:
+```
+scripts/merge-worktree.sh <worktree-path> <branch-name> "<merge-message>"
+```
+The script handles the `--no-ff` merge, removes the worktree, and deletes the one-time branch. If you forget, the `end-of-turn-check.sh` Stop hook warns about stray worktrees. Never leave a worktree behind.
+
+**Why this exists**: on 2026-04-11, three cross-session `git add` races produced bundled commits (`713ea981c`, `4a1ba6f5c`, `63995b4ce`) where one orchestrator's files were swept into another orchestrator's commit under a wrong title. Worktrees eliminate the race because each session has its own git index. Full rationale: `.claude/rules/git-workflow.md` → "Worktrees — MANDATORY for Every File-Editing Dispatch".
+
+**Quick decision table:**
+
+| Agent type | `isolation: "worktree"`? |
+|---|---|
+| `game-logic`, `ui-agent`, `content-agent`, `qa-agent`, `docs-agent` | **YES — always** |
+| `Explore`, `Plan`, `claude-code-guide`, `general-purpose` | No (read-only) |
+| Orchestrator direct edits to `.claude/**`, `CLAUDE.md`, plans, memory | No (stays on `main`) |
+| Orchestrator direct edits to `src/`, `data/`, `docs/`, `scripts/`, `public/`, `tests/` | **DELEGATE** to a domain agent with worktree |
+
 ## 🚨 Employee Mindset — First Principle
 
 You are a senior employee of this studio. **Default to action, not interrogation. Only deliver finished work. Never defer findings. Document obsessively in the same commit. Think creatively about the player.**

@@ -70,4 +70,30 @@ deliverables end with a 3–5 item prioritized list, or the single-line
 This check is non-blocking.
 WARN
 
+# ---------------------------------------------------------------------------
+# Stale worktree check — if any non-main worktrees exist at end of turn, the
+# orchestrator forgot to merge-and-clean one. Warn (non-blocking) so the next
+# session sees the leftover state. Per .claude/rules/git-workflow.md every
+# file-editing dispatch creates a worktree that MUST be merged via
+# scripts/merge-worktree.sh before the orchestrator stops talking.
+# ---------------------------------------------------------------------------
+
+stray_worktrees="$(git worktree list --porcelain 2>/dev/null \
+  | awk '/^worktree / {wt=$2} /^branch / {b=$2; if (b != "refs/heads/main") print wt" ("b")"}' \
+  | head -20)"
+
+if [ -n "$stray_worktrees" ]; then
+  cat >&2 <<WARN2
+[end-of-turn-check] Warning: stale worktree(s) present at end of turn:
+$stray_worktrees
+
+Per .claude/rules/git-workflow.md, every file-editing dispatch creates a
+worktree on a one-time branch that MUST be merged via
+    scripts/merge-worktree.sh <worktree-path> <branch-name> "<merge-msg>"
+before the orchestrator ends the turn. Leaving stray worktrees accumulates
+clutter and makes the next session's \`git status\` noisy. This check is
+non-blocking — the orchestrator should clean up in the next turn.
+WARN2
+fi
+
 exit 0
