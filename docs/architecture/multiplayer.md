@@ -149,6 +149,19 @@ interface EnemyTurnDelta {
 
 ---
 
+## Enemy Intent Determinism
+
+Enemy intents are deterministic across co-op clients via a **seeded RNG fork** named `enemy-intent` (fork of the run RNG initialized via `initRunRng(seed)` in `seededRng.ts`).
+
+- `weightedRandomIntent()` in `enemyManager.ts` calls `getRunRng('enemyIntents')` when `isRunRngActive()` is true. Both host and non-host advance the same fork in the same sequence, so both compute identical intents independently.
+- The host is still authoritative: after the barrier, the host rolls via `rollNextIntent`, snapshots (including `nextIntent`), and broadcasts. The `SharedEnemySnapshot.nextIntent` field carries the rolled intent to non-host clients.
+- **Non-host drift detection** (`encounterBridge.ts`): before calling `hydrateEnemyFromSnapshot`, the non-host rolls locally and compares with the host's `nextIntent`. A mismatch triggers `console.warn('[coop-sync] intent drift', { local, host })`. The host value is adopted regardless.
+- Solo/test contexts without an active run seed fall back to `Math.random()` (the `isRunRngActive()` guard preserves this path).
+
+**RNG fork label:** `getRunRng('enemyIntents')` in `enemyManager.ts`.
+
+---
+
 ## Known Acceptable Drift
 
 During a turn, P1's local enemy may show a different HP than P2's (each sees only their own damage). This is cosmetic and resolves at end-of-turn. Both clients converge to the host-authoritative state after each turn barrier.
@@ -180,6 +193,20 @@ The client routes discovery / create / join through a `lobbyBackend` abstraction
 | `steamBackend` | Steam P2P + Steamworks matchmaking | `steam_request_lobby_list` → metadata loop | Steam builds (primary) |
 | `webBackend` | Fastify REST + WebSocket | `GET /mp/lobbies` | Web / mobile builds |
 | `broadcastBackend` | BroadcastChannel + `localStorage` directory | `localStorage['rr-mp:directory']` | Dev two-tab mode |
+
+### Steam Backend — Lobby List Wrappers (Phase 3)
+
+**Source file:** `src/services/steamNetworkingService.ts`
+**Added:** 2026-04-11 — Phase 3 of the public/private lobby browsing feature
+
+Two TypeScript wrappers bridge the Phase-1 Rust commands to the `steamBackend`. Both are guarded by `hasSteam` and return safe defaults on non-Steam platforms (browser, mobile):
+
+| Function | Tauri command | Return | Off-Steam default | Purpose |
+|----------|---------------|--------|-------------------|---------|
+| `requestSteamLobbyList()` | `steam_request_lobby_list` | `Promise<boolean>` | `false` | Fire-and-forget kick; Steam callback delivers lobby IDs asynchronously. Callers pump `runSteamCallbacks` then query `getLobbyData` per lobby to build browser entries. Returns `true` if the IPC call was accepted. |
+| `getLobbyMemberCount(lobbyId)` | `steam_get_lobby_member_count` | `Promise<number>` | `0` | Read current member count for a lobby ID without joining — enables the "2/4" display in the browser grid. |
+
+`requestSteamLobbyList` is fire-and-forget: Steam's async callback mechanism delivers the actual list later. The `steamBackend` in `multiplayerLobbyService.ts` must pump `runSteamCallbacks` after calling this, then loop over returned lobby IDs via `getLobbyData` to construct `LobbyBrowserEntry` objects.
 
 ### Web Backend — Fastify Registry
 

@@ -1439,6 +1439,18 @@ export async function handleEndTurn(): Promise<void> {
       // Non-host: await the host's authoritative state
       try {
         const reconciledSnapshot = await awaitCoopEnemyReconcile();
+        // Drift detection: roll what we would have computed locally and compare with the host.
+        // Both clients use the same seeded RNG fork ('enemy-intent'), so these should always match.
+        // A mismatch indicates RNG desync (e.g. one client consumed an extra roll somewhere).
+        const localRolledIntent = rollNextIntent(turnState.enemy);
+        const hostIntent = reconciledSnapshot.nextIntent;
+        if (localRolledIntent.type !== hostIntent.type || localRolledIntent.value !== hostIntent.value) {
+          console.warn('[coop-sync] intent drift', {
+            local: { type: localRolledIntent.type, value: localRolledIntent.value },
+            host: { type: hostIntent.type, value: hostIntent.value },
+          });
+        }
+        // Host is always authoritative — overwrite local state including the intent we just rolled.
         hydrateEnemyFromSnapshot(turnState.enemy, reconciledSnapshot);
         // Update the pre-turn snapshot for the next turn
         _coopPreTurnEnemySnapshot = snapshotEnemy(turnState.enemy);

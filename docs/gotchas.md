@@ -2690,3 +2690,19 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 **Test coverage:** `scripts/lint/check-deck-schema-drift.test.mjs` — 7 cases covering real-file pass, missing-in-schema, extra-in-schema, full match, optional fields, comment stripping, and nested z.object non-pollution.
 
 **Fix:** When the lint fails, add the flagged field to `src/data/curatedDeckSchema.ts` in the appropriate `z.object({})` block, matching the TypeScript type from the interface.
+
+### 2026-04-11 — cardDescriptionService used baseEffectValue instead of stat-table qpValue
+
+**Root cause:** `getDetailedCardDescription`, `getShortCardDescription`, and `getCardDescriptionParts` all shared the pattern `const power = powerOverride ?? Math.round(card.baseEffectValue)`. `card.baseEffectValue` is seeded from `BASE_EFFECT[cardType]` in `cardFactory.ts` — a per-type constant (attack=4, shield=3, utility/buff/debuff/wild=0). This is NOT the per-mechanic L0 damage value from the mastery stat table.
+
+**Impact:** Any mechanic whose stat-table L0 `qpValue` differs from `BASE_EFFECT[cardType]` showed a wrong number in the rendered card description. For example, Heavy Strike shows "Deal 4 damage" (BASE_EFFECT[attack]=4) but the resolver applies `qpValue=6` from the stat table. This affected 22+ mechanics (Severity B in the audit) and was compounded by stale resolver hardcodes on Warcry, Gambit, and Hemorrhage (Severity A).
+
+**Fix (2026-04-11):** All three description functions now compute power as `getMasteryStats(mechanic.id, card.masteryLevel ?? 0)?.qpValue ?? Math.round(card.baseEffectValue)`. The stat-table lookup happens once per function entry and falls back to baseEffectValue only when `qpValue` is null (mechanics with no stat table entry). This is a truth-correction, not a balance change — the resolver already used the correct stat-table values.
+
+**Companion fixes in same commit:**
+- Gambit resolver: `gambitHeal` now reads `stats?.extras?.['healOnCC']` (was hardcoded to 5; L0 stat table has healOnCC=3).
+- Warcry resolver: Strength value now reads `stats?.extras?.['str']` (was hardcoded to 2; L0 stat table has str=1).
+- Hemorrhage resolver: base damage now reads `stats?.qpValue` (was using deprecated `getMasteryBaseBonus`).
+- Fortify description: changed from "Gain X Block. Persists into next turn." to an accurate description of the scaling formula. "Persists" was also wrong — it only applies at L5 via the `fortify_carry` tag.
+- Feedback Loop description: updated from stale pre-Pass-8 values (CC: 40/+16) to correct Pass-8 values (CC: 28/+12, max 40).
+- Overheal threshold: changed from 50% to 60% in descriptions (resolver checks `healthPercentage < 0.6`).
