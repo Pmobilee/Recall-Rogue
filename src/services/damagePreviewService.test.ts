@@ -2,6 +2,10 @@
  * Unit tests for damagePreviewService — display-only damage/block preview.
  * Updated 2026-04-09 (Pass 4): All CC values updated for CHARGE_CORRECT_MULTIPLIER 1.75→1.50.
  * Block card CC values recalculated for CC_MULT=1.50.
+ * Updated 2026-04-11 (PRE-EXISTING-1 fix): lifetap L0 QP expectation updated 3→5 after
+ * cardUpgradeService.ts stat table bump (3→5 for 2AP viability). No barbed_edge gate change
+ * needed — the gate was always correct (isStrikeTagged check at line 196/215); test expectation
+ * was simply stale from the stat table update.
  */
 
 import { describe, it, expect } from 'vitest';
@@ -409,12 +413,14 @@ describe('computeDamagePreview — barbed_edge synergy (strike-tagged)', () => {
   });
 
   it('card without strike tag gets no barbed_edge bonus', () => {
-    // lifetap stat table L0 QP=3, not strike-tagged
+    // lifetap stat table L0 QP=5 (bumped 3→5 in cardUpgradeService.ts for 2AP viability),
+    // mechanic.quickPlayValue=4; masteryBonus=5-4=1; nakedQpBase=5; not strike-tagged.
+    // barbed_edge isStrikeTagged=false → sharpenedEdgeBonus=0, relicFlat=0; qpValue=5
     const card = makeAttackCard({ mechanicId: 'lifetap' });
     const ctx = baseCtx({ activeRelicIds: new Set(['barbed_edge']) });
     const result = computeDamagePreview(card, ctx);
-    // lifetap QP=3, no strike tag → no sharpenedEdge, no relic flat bonus from barbed_edge
-    expect(result.qpValue).toBe(3);
+    // lifetap QP=5, no strike tag → no sharpenedEdge, no relic flat bonus from barbed_edge
+    expect(result.qpValue).toBe(5);
     expect(result.qpModified).toBe('neutral');
   });
 });
