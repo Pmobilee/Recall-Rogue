@@ -18,7 +18,7 @@
   import { getEffectiveApCost } from '../../services/cardUpgradeService'
   import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
   import { getMasteryStats } from '../../services/cardUpgradeService'
-  import { getUpgradeIconUrl, getMasteryIconFilter } from '../utils/cardFrameV2'
+  import { getMasteryIconFilter } from '../utils/cardFrameV2'
 
   // ============================================================
   // Card type color coding (matches CardBrowser palette)
@@ -429,25 +429,16 @@
           role="listitem"
           aria-label="Level {level}{isCurrent ? ' (current)' : ''}"
         >
-          <!-- Icon column -->
+          <!-- Icon column — background-crop renders the 73×73 plus region from the
+               full 886×1142 canvas at 40px display size. Avoids object-fit: contain
+               collapsing the plus to ~2px when the whole canvas is crammed into 28px. -->
           <div class="rdo-popup-icon-col">
-            {#if level === 0}
-              <img
-                class="rdo-popup-icon"
-                class:rdo-popup-icon-bob={isCurrent}
-                src={getUpgradeIconUrl()}
-                alt=""
-                style="filter: grayscale(1) brightness(0.5);"
-              />
-            {:else}
-              <img
-                class="rdo-popup-icon"
-                class:rdo-popup-icon-bob={isCurrent}
-                src={getUpgradeIconUrl()}
-                alt=""
-                style="filter: {getMasteryIconFilter(level)};"
-              />
-            {/if}
+            <div
+              class="rdo-popup-icon"
+              class:rdo-popup-icon-bob={isCurrent}
+              style="--rdo-icon-filter: {level === 0 ? 'grayscale(1) brightness(0.55) opacity(0.6)' : getMasteryIconFilter(level)};"
+              aria-hidden="true"
+            ></div>
           </div>
           <!-- Text column -->
           <div class="rdo-popup-text-col">
@@ -888,27 +879,35 @@
     border-color: rgba(201, 162, 39, 0.3);
   }
 
-  /* Mastery icon */
+  /* Mastery icon — 44px column gives padding around the 40px icon */
   .rdo-popup-icon-col {
     flex-shrink: 0;
-    width: calc(32px * var(--layout-scale, 1));
-    height: calc(32px * var(--layout-scale, 1));
+    width: calc(44px * var(--layout-scale, 1));
+    height: calc(44px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
+  /* background-crop approach: shows the 73×73 green plus region
+     from the 886×1142 card-upgrade-icon.webp canvas at 40px display size.
+     Scale factor: 40/73 ≈ 0.5479 → scaled canvas ~485×626px; plus starts at ~76,294px. */
   .rdo-popup-icon {
-    width: calc(28px * var(--layout-scale, 1));
-    height: calc(28px * var(--layout-scale, 1));
-    object-fit: contain;
+    width: calc(40px * var(--layout-scale, 1));
+    height: calc(40px * var(--layout-scale, 1));
+    background-image: url('/assets/cardframes/v2/card-upgrade-icon.webp');
+    background-repeat: no-repeat;
+    background-size: calc(485px * var(--layout-scale, 1)) calc(626px * var(--layout-scale, 1));
+    background-position: calc(-76px * var(--layout-scale, 1)) calc(-294px * var(--layout-scale, 1));
     image-rendering: pixelated;
+    flex-shrink: 0;
+    filter: var(--rdo-icon-filter, none);
   }
 
-  /* Bob animation for the current level's icon */
+  /* Bob animation for the current level's icon — 4px amplitude for visibility at 40px icon */
   @keyframes rdoIconBob {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(calc(-2px * var(--layout-scale, 1))); }
+    50% { transform: translateY(calc(-4px * var(--layout-scale, 1))); }
   }
 
   .rdo-popup-icon-bob {
