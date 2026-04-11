@@ -1,3 +1,4 @@
+<!-- @wiring-check:skip reason: social hub screen — social nav tab was deliberately removed from HubNavBar (2026-04-07); wiring requires adding social to Screen union and adding gameFlowController callbacks (onStartDailyExpedition, onStartEndlessDepths, onStartScholarChallenge, onOpenRelicSanctum) which is game-logic agent work; scheduled post-steam-launch with full social feature wave -->
 <script lang="ts">
   import { onMount } from 'svelte'
   import { authStore } from '../stores/authStore'

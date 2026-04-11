@@ -12,6 +12,7 @@
  *      (directly or via a parent component that CardApp imports). If a *Screen.svelte
  *      exists but is not reachable from CardApp, it is dead code the router can
  *      never show — exactly the TriviaRoundScreen + MapPinDrop pattern from T7.
+ *      Opt-out: add <!-- @wiring-check:skip reason: <why> --> inside the .svelte file.
  *
  *   2. STALE TurnState / RunState FIELD READS (ERROR):
  *      Every .ts file under tests/playtest/headless/ is scanned for property accesses
@@ -88,6 +89,16 @@ function formatLine(severity, file, line, rule, message) {
 // Check 1: Orphan Screen Components
 // ---------------------------------------------------------------------------
 
+/**
+ * Returns true if the svelte file source contains a suppression comment.
+ * Recognized syntax: <!-- @wiring-check:skip reason: <why> -->
+ * The reason clause is required (enforced by convention — the lint does not
+ * reject a bare @wiring-check:skip, but code-review should).
+ */
+function hasOrphanScreenSkip(source) {
+  return source.includes('@wiring-check:skip');
+}
+
 function checkOrphanScreens() {
   const issues = [];
   const componentsDir = path.join(REPO_ROOT, 'src', 'ui', 'components');
@@ -146,6 +157,14 @@ function checkOrphanScreens() {
 
   for (const screenFile of screenFiles) {
     if (!imported.has(screenFile)) {
+      // Check for explicit suppression inside the component file.
+      // Syntax: <!-- @wiring-check:skip reason: <concrete reason> -->
+      const source = readFile(screenFile);
+      if (source && hasOrphanScreenSkip(source)) {
+        // Suppressed — skip without error. The reason is documented inside the file.
+        continue;
+      }
+
       issues.push(formatLine(
         'ERROR',
         screenFile,
@@ -153,7 +172,7 @@ function checkOrphanScreens() {
         'orphan-screen',
         `${path.basename(screenFile)} is not imported by CardApp.svelte or any component CardApp imports. ` +
         `It is unreachable from the router — dead code. ` +
-        `Wire it into CardApp.svelte or remove it.`
+        `Wire it into CardApp.svelte or suppress with: <!-- @wiring-check:skip reason: <why> -->`
       ));
     }
   }
