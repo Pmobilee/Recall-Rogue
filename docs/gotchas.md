@@ -2804,3 +2804,19 @@ docker rm great_blackwell condescending_roentgen amazing_noyce confident_dhawan 
 **Prevention:** `scripts/docker-visual-test.sh --warm stop` must be called unconditionally (try/finally pattern) after every warm test session. The `--rm` flag on cold-mode containers is correct (they auto-remove). Warm containers without explicit stop leave behind GPU state. Add a health-check command `docker ps | grep rr-playwright | wc -l` to pre-flight checks — if count > 2, stop all before starting new tests.
 
 **Files:** `data/playtests/llm-batches/BATCH-2026-04-11-ULTRA-WAVE-A/manifest.json`
+
+### 2026-04-11 — chess.js and zod committed to source but never installed (missing dep pattern)
+
+**Symptom:** `npm run typecheck` reports 6 errors: 5× "Cannot find module 'chess.js'" and 1× "Parameter 'm' implicitly has an 'any' type" (cascade error). `npm run build` fails with "Rollup failed to resolve import 'zod'".
+
+**Root cause:** Two classes of missing dependency:
+1. `chess.js` — imported by `chessPuzzleService.ts`, `chessGrader.ts`, and `ChessBoard.svelte` (added in commit `3d722b0bd`). Never added to `package.json`, therefore never in `node_modules`.
+2. `zod` — imported by `curatedDeckSchema.ts` (added in commit `06097f1c7`). Also never added to `package.json`. The code that uses it was committed and merged but `npm install zod` was never run.
+
+**Fix:** `npm install chess.js zod` (separately in this case). Both are now in `package.json` under `dependencies`.
+
+**The implicit-any cascade:** The `m` parameter in `chessGrader.ts:198` `moves.map((m) => ...)` appears as implicit-any only when chess.js types are missing. Once `chess.js` is installed, the `verbose: true` overload types `moves` as `Move[]` and `m` resolves automatically. No explicit type annotation needed.
+
+**Prevention:** When committing files that import a new package, always include `package.json` and `package-lock.json` in the same commit. The pre-commit hook should ideally run `npm ls <package>` for all `import` statements to catch this class of error at commit time.
+
+**Files affected:** `package.json`, `package-lock.json`, `src/services/chessGrader.ts` (no change needed — type resolves), `src/services/chessPuzzleService.ts` (no change needed).
