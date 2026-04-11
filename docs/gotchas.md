@@ -64,6 +64,39 @@ promote `exit 0` to `exit 1`. Until then the detector is warning-only.
 
 **Files:** `scripts/lint/check-commit-attribution.sh`, `hooks/pre-commit:71-76`
 
+**Follow-up wave (2026-04-11, later same day):**
+
+1. **Retrospective bundling analyzer** (`scripts/lint/analyze-bundling-history.sh`,
+   `npm run lint:bundling-history`) — uses commit metadata that DOES survive
+   git history (domain diversity, extension diversity, title/file-set
+   mismatch heuristics) to score historical commits. First run against last
+   50 commits: median score 6, known-bundled `de1379f61` scored 15, the
+   commit-attribution detector's own shipping commit `4f96917ea` (which
+   bundled with parallel multiplayer work) scored 23 — highest in the
+   dataset. Heuristic validated.
+
+2. **Sub-agent discrimination** — the session-marker hook now records
+   `transcript_hash = sha1(transcript_path) | head -c8` alongside
+   `session_id` and writes a composite `agent_key = "session_id:transcript_hash"`.
+   Parallel sub-agents inside the same outer session get distinct transcript
+   paths (sidechain sessions), so their hashes differ and the detector
+   correctly sees them as distinct agents. Closes the intra-session
+   parallelism blind spot flagged in the prior Creative Pass.
+
+3. **Log rotation** — `post-edit-session-marker.sh` now prunes
+   `.claude/staged-by.jsonl` on every append: keeps last
+   `RR_STAGED_LOG_MAX_LINES` (default 10000) entries AND drops rows older
+   than `RR_STAGED_LOG_MAX_AGE_SEC` (default 30 days). Smoke-tested:
+   10-entry log with 5 aged 40-day-old entries pruned to 5 fresh + the
+   new append row.
+
+4. **Drift lint wired into pre-commit** — `.claude/hooks/pre-commit-verify.sh`
+   now runs `check-deck-schema-drift.mjs` as a soft-warn whenever
+   `src/data/curatedDeckTypes.ts` or `src/data/curatedDeckSchema.ts` is
+   staged. Closes the two-sided enforcement gap (previously the lint only
+   ran in `npm run check`). Soft-warn because concurrent-agent edits to
+   the sibling file can trigger spurious drift warnings.
+
 ---
 
 ### 2026-04-11 — Intent preview block decay ordering (Issue 11)

@@ -3,7 +3,7 @@
    * RunDeckOverlay.svelte
    *
    * Full-run deck viewer accessible from the top-bar deck icon on every run-active screen.
-   * Shows all cards currently in the run across all four piles (hand / draw / discard / exhaust)
+   * Shows all cards currently in the run across all four piles (hand / draw / discard / forget)
    * with their mastery level and pile tag. Read-only — no card selection.
    *
    * Opened via `openRunDeckOverlay()` from runDeckOverlayStore.ts.
@@ -44,7 +44,7 @@
     hand: 'Hand',
     draw: 'Draw',
     discard: 'Discard',
-    exhaust: 'Exhaust',
+    exhaust: 'Forget',
   }
 
   const PILE_COLORS: Record<PileId, string> = {
@@ -71,7 +71,7 @@
       ...ts.deck.hand.map((c: Card) => ({ card: c, pile: 'hand' as PileId })),
       ...ts.deck.drawPile.map((c: Card) => ({ card: c, pile: 'draw' as PileId })),
       ...ts.deck.discardPile.map((c: Card) => ({ card: c, pile: 'discard' as PileId })),
-      ...ts.deck.exhaustPile.map((c: Card) => ({ card: c, pile: 'exhaust' as PileId })),
+      ...ts.deck.forgetPile.map((c: Card) => ({ card: c, pile: 'exhaust' as PileId })),
     ]
 
     // Sort by pile order, then card type, then name
@@ -97,7 +97,7 @@
       hand: ts.deck.hand.length,
       draw: ts.deck.drawPile.length,
       discard: ts.deck.discardPile.length,
-      exhaust: ts.deck.exhaustPile.length,
+      exhaust: ts.deck.forgetPile.length,
     }
   })
 

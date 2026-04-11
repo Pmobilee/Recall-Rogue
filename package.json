@@ -15,6 +15,7 @@
     "lint:skill-drift": "node scripts/lint/check-skill-drift.mjs",
     "hooks:install": "./scripts/install-git-hooks.sh",
     "lint:commit-attribution": "./scripts/lint/check-commit-attribution.sh",
+    "lint:bundling-history": "./scripts/lint/analyze-bundling-history.sh",
     "build:chess": "node scripts/build-chess-db.mjs",
     "build:obfuscate": "node scripts/obfuscate-db.mjs",
     "steam:build": "./scripts/steam-build.sh",

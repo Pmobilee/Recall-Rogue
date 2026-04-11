@@ -65,14 +65,17 @@ echo "$STAGED" | while IFS= read -r f; do
   mt=$($STAT_CMD "$f" 2>/dev/null || echo 0)
   printf '%s\t%s\n' "$mt" "$f" >> "$TMPFILE"
 
-  # Look up the last session_id that edited this file, if the log exists.
-  # Use grep + tail to find the most recent row matching the file path.
+  # Look up the last agent_key that edited this file, if the log exists.
+  # agent_key = "session_id:transcript_hash" — discriminates sub-agents
+  # within the same outer Claude Code session (each sub-agent gets its
+  # own transcript file, so their hashes differ). Falls back to
+  # session_id for old log rows that predate the extension.
   if [ -f "$SESSION_LOG" ] && command -v jq >/dev/null 2>&1; then
-    sid=$(jq -r --arg p "$f" \
-      'select(.file_path == $p) | .session_id' \
+    aid=$(jq -r --arg p "$f" \
+      'select(.file_path == $p) | (.agent_key // .session_id)' \
       "$SESSION_LOG" 2>/dev/null | tail -1)
-    if [ -n "$sid" ]; then
-      printf '%s\t%s\n' "$sid" "$f" >> "$SESSIONFILE"
+    if [ -n "$aid" ]; then
+      printf '%s\t%s\n' "$aid" "$f" >> "$SESSIONFILE"
     fi
   fi
 done

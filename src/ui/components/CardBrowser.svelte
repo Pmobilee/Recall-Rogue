@@ -8,7 +8,7 @@
     cards: Card[];
     /** 'select' = tap to choose one. 'view' = read-only (no select action). */
     mode: 'select' | 'view';
-    /** Header text displayed at the top. E.g. "Draw Pile", "Discard Pile", "Exhausted". */
+    /** Header text displayed at the top. E.g. "Draw Pile", "Discard Pile", "Forgotten Cards". */
     title: string;
     /** Called when the player taps a card in 'select' mode. */
     onSelect?: (card: Card) => void;

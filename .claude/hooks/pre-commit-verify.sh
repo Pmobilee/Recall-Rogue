@@ -90,6 +90,28 @@ if [ -n "$STAGED_SKILLS" ]; then
   fi
 fi
 
+# Deck schema drift (soft-warn): detect DeckFact / AnswerTypePool / SynonymGroup
+# interface/schema mismatches when curatedDeckTypes.ts or curatedDeckSchema.ts
+# is staged. Soft-warn because the drift lint exits 1 on any mismatch — we
+# want the author to see it but not block under multi-agent concurrency
+# where a parallel agent may have the sibling file dirty. Two-sided
+# enforcement: `npm run check` also runs it for single-agent sessions.
+STAGED_SCHEMA=$(git diff --cached --name-only --diff-filter=AM \
+  | grep -E '^src/data/(curatedDeckTypes|curatedDeckSchema)\.ts$' || true)
+if [ -n "$STAGED_SCHEMA" ]; then
+  if [ -f "scripts/lint/check-deck-schema-drift.mjs" ]; then
+    echo "Checking deck schema drift (interface ↔ Zod)..." >&2
+    if ! node scripts/lint/check-deck-schema-drift.mjs 2>&1 >&2; then
+      echo "" >&2
+      echo "WARNING: deck schema drift detected." >&2
+      echo "  Fix the interface/schema mismatch above before committing." >&2
+      echo "  Run 'npm run lint:deck-schema-drift' for full details." >&2
+      echo "  This is a soft-warn — the commit will proceed." >&2
+      echo "" >&2
+    fi
+  fi
+fi
+
 # Wiring check (soft-warn): detect orphan screen components, stale TurnState field
 # reads, and Phaser-only interactive buttons without DOM overlays.
 # BATCH-ULTRA Cluster B meta-fix (2026-04-11). Runs on every commit touching
