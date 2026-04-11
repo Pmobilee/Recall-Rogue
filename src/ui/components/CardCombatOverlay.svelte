@@ -3,7 +3,7 @@
   import { onMount, onDestroy } from 'svelte'
   import { fade } from 'svelte/transition'
   import type { Card } from '../../data/card-types'
-  import type { EnemyInstance } from '../../data/enemies'
+  import type { EnemyInstance, EnemyIntent } from '../../data/enemies'
   import type { TurnState } from '../../services/turnManager'
   import { isAnyCardPlayable, resolveTransmutePick } from '../../services/turnManager'
   import { BALANCE, FLOOR_TIMER, MASTERY_MAX_LEVEL, MASTERY_BASE_DISTRACTORS, MASTERY_UPGRADED_DISTRACTORS } from '../../data/balance'
@@ -78,7 +78,7 @@
   import { tick } from 'svelte'
   import { computeDamagePreview, type DamagePreviewContext, type DamagePreview } from '../../services/damagePreviewService'
   import { isVulnerable, getStrengthModifier } from '../../data/statusEffects'
-  import { computeIntentDisplayDamage } from '../../services/intentDisplay'
+  import { computeIntentHpImpact, type IntentHpImpact } from '../../services/intentDisplay'
   import { quizPanelVisible } from '../stores/combatUiStore'
   import { reducedMotion } from '../stores/settings'
 
@@ -535,6 +535,8 @@
   let enemyName = $derived(turnState?.enemy.template.name ?? '')
   let enemyCategory = $derived(turnState?.enemy.template.category ?? 'common')
   let currentFloor = $derived(turnState?.deck.currentFloor ?? 0)
+  /** Act number derived from floor: floors 1-6 = Act 1, 7-12 = Act 2, 13+ = Act 3. */
+  let currentAct = $derived(currentFloor <= 6 ? 1 : currentFloor <= 12 ? 2 : 3)
   let currentEncounter = $derived(turnState?.deck.currentEncounter ?? 0)
 
   // Unified effect type for the icon bar
@@ -669,17 +671,21 @@
   }
 
   /**
-   * Compute display damage for an enemy intent, using the shared intentDisplay service.
-   * Mirrors the exact formula used in enemyManager.executeEnemyIntent so the UI always
-   * shows the actual damage the player will take.
+   * Compute the HP impact of an enemy attack intent, accounting for block decay.
+   * Uses `computeIntentHpImpact` from intentDisplay service so the displayed number
+   * reflects what the player will ACTUALLY lose — not the raw damage value.
+   *
+   * Block decays at end-of-player-turn BEFORE the enemy swings. A player with
+   * 15 block facing 15 damage in Act 1 retains floor(15 × 0.85) = 12 block → 3 HP lost.
+   * This was Issue 11: showing "15" instead of "3" misled players who had block.
    */
-  function displayDmg(base: number, enemy: EnemyInstance | null): number {
-    if (!enemy) return base
-    // Reuse the shared pure function so display and pipeline never drift.
-    // We pass a minimal intent stub since computeIntentDisplayDamage only reads .value.
-    // Pass turnState as scalingCtx so canary/ascension/relaxed modifiers are applied.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return computeIntentDisplayDamage({ type: 'attack', value: base } as any, enemy, turnState ?? undefined)
+  function displayImpact(intent: EnemyIntent, enemy: EnemyInstance | null): IntentHpImpact {
+    const playerBlock = turnState?.playerState?.shield ?? 0
+    if (!enemy) {
+      // Fallback: no block context available — show raw damage as hpDamage
+      return { raw: intent.value, postDecayBlock: playerBlock, hpDamage: intent.value }
+    }
+    return computeIntentHpImpact(intent, enemy, playerBlock, currentAct, turnState ?? undefined)
   }
 
   let intentDisplay = $derived.by(() => {
@@ -693,29 +699,31 @@
 
     if (enemyIntent.type === 'multi_attack') {
       const hits = enemyIntent.hitCount ?? 2
-      const dmg = displayDmg(val, turnState?.enemy ?? null)
-      return { icon, text: `${dmg}×${hits}`, type: enemyIntent.type, label, color, borderColor, telegraph }
+      const impact = displayImpact(enemyIntent, turnState?.enemy ?? null)
+      const fullyBlocked = impact.raw > 0 && impact.hpDamage === 0
+      return { icon, text: `${impact.hpDamage}×${hits}`, type: enemyIntent.type, label, color, borderColor, telegraph, fullyBlocked }
     }
     if (enemyIntent.type === 'attack') {
-      const dmg = displayDmg(val, turnState?.enemy ?? null)
-      return { icon, text: `${dmg}`, type: enemyIntent.type, label, color, borderColor, telegraph }
+      const impact = displayImpact(enemyIntent, turnState?.enemy ?? null)
+      const fullyBlocked = impact.raw > 0 && impact.hpDamage === 0
+      return { icon, text: `${impact.hpDamage}`, type: enemyIntent.type, label, color, borderColor, telegraph, fullyBlocked }
     }
     if (enemyIntent.type === 'defend') {
-      return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type, label, color, borderColor, telegraph }
+      return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type, label, color, borderColor, telegraph, fullyBlocked: false }
     }
     if (enemyIntent.type === 'buff') {
       const stacks = enemyIntent.statusEffect?.value ?? enemyIntent.value
       const turns = enemyIntent.statusEffect?.turns
       const compactText = turns ? `${stacks}×${turns}` : `${stacks}`
-      return { icon, text: compactText, type: enemyIntent.type, label, color, borderColor, telegraph }
+      return { icon, text: compactText, type: enemyIntent.type, label, color, borderColor, telegraph, fullyBlocked: false }
     }
     if (enemyIntent.type === 'debuff') {
       const stacks = enemyIntent.statusEffect?.value ?? enemyIntent.value
       const turns = enemyIntent.statusEffect?.turns
       const compactText = turns ? `${stacks}×${turns}` : `${stacks}`
-      return { icon, text: compactText, type: enemyIntent.type, label, color, borderColor, telegraph }
+      return { icon, text: compactText, type: enemyIntent.type, label, color, borderColor, telegraph, fullyBlocked: false }
     }
-    return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type, label, color, borderColor, telegraph }
+    return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type, label, color, borderColor, telegraph, fullyBlocked: false }
   })
 
   /** Second line of the static intent bubble (bottom line). */
@@ -724,13 +732,27 @@
     const val = enemyIntent.value
     switch (enemyIntent.type) {
       case 'attack': {
-        const dmg = displayDmg(val, turnState?.enemy ?? null)
-        return `Attacking for ${dmg} damage`
+        const impact = displayImpact(enemyIntent, turnState?.enemy ?? null)
+        if (impact.hpDamage === 0 && impact.raw > 0) {
+          // Fully blocked — communicate to player their shield absorbs all damage
+          return `Fully blocked (${impact.raw} absorbed)`
+        }
+        if (impact.postDecayBlock > 0 && impact.raw !== impact.hpDamage) {
+          // Partially blocked — show HP loss and how much block absorbs
+          return `${impact.hpDamage} HP damage (${impact.raw} − ${impact.postDecayBlock} block)`
+        }
+        return `Attacking for ${impact.hpDamage} HP damage`
       }
       case 'multi_attack': {
         const hits = enemyIntent.hitCount ?? 2
-        const dmg = displayDmg(val, turnState?.enemy ?? null)
-        return `Attacking for ${dmg} × ${hits} hits`
+        const impact = displayImpact(enemyIntent, turnState?.enemy ?? null)
+        if (impact.hpDamage === 0 && impact.raw > 0) {
+          return `Fully blocked (${impact.raw} × ${hits} absorbed)`
+        }
+        if (impact.postDecayBlock > 0 && impact.raw !== impact.hpDamage) {
+          return `${impact.hpDamage} HP × ${hits} hits (${impact.raw} − ${impact.postDecayBlock} block)`
+        }
+        return `Attacking for ${impact.hpDamage} HP × ${hits} hits`
       }
       case 'defend':
         return `Gains ${val} Block`
@@ -2758,8 +2780,10 @@
       {#key intentDetailText}
         <div
           class="enemy-intent-bubble"
+          class:intent-bubble-blocked={intentDisplay.fullyBlocked}
           style="background: {intentDisplay.color}; border-color: {intentDisplay.borderColor};"
           aria-label={intentDetailText}
+          data-intent-blocked={intentDisplay.fullyBlocked ? 'true' : undefined}
         >
           <div class="intent-bubble-name">
             <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type) : ''} alt=""
@@ -3349,6 +3373,17 @@
     color: rgba(255, 255, 255, 0.75);
     white-space: nowrap;
     line-height: 1.3;
+  }
+
+  /* When the player's block fully absorbs incoming damage, mute the attack intent bubble
+     so it reads as "no HP loss" rather than a threat. The detail text still shows context. */
+  .intent-bubble-blocked .intent-attack-name {
+    color: rgba(148, 163, 184, 0.7);
+    text-shadow: none;
+  }
+
+  .intent-bubble-blocked .intent-detail-line {
+    color: rgba(148, 163, 184, 0.6);
   }
 
   .intent-bubble-tail {

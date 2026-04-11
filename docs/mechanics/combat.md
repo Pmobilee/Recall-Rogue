@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-11 (Issue 7 fix: AP bootstrap — startingApPerTurn threaded through TurnState)
+> **Last verified:** 2026-04-11 (Issue 11 UI: intent badge shows HP damage after block decay)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`, `src/services/enemyDamageScaling.ts`, `src/services/intentDisplay.ts`, `src/services/multiplayerCoopSync.ts`
 
 ---
@@ -270,7 +270,10 @@ Accounts for block decay applied at end-of-player-turn (before the enemy swings)
 
 **Example (Issue 11):** Player has 15 block, enemy intent shows "15 damage", act = 1. Without decay accounting, the player expects their block to fully cover the hit. But decay reduces block to `floor(15 × 0.85) = 12`, so the player actually takes 3 HP. `computeIntentHpImpact` returns `{ raw: 15, postDecayBlock: 12, hpDamage: 3 }` — the preview should show "3 HP damage" (or "0 HP damage" if block is sufficient after decay).
 
-**UI note:** Call sites in `src/ui/` (`CardCombatOverlay.svelte`) must be updated by ui-agent to consume `hpDamage` from `computeIntentHpImpact` instead of calling `computeIntentDisplayDamage` directly. See Issue 11 follow-up.
+**UI wiring (Issue 11 complete, 2026-04-11):** `CardCombatOverlay.svelte` now calls `computeIntentHpImpact` instead of `computeIntentDisplayDamage` for all attack/multi_attack intent display. The `displayImpact(intent, enemy)` helper derives `playerBlock` from `turnState.playerState.shield` and `act` from `currentFloor` (≤6 → Act 1, ≤12 → Act 2, 13+ → Act 3). The intent detail line shows:
+- No block: "Attacking for N HP damage"
+- Partial block: "N HP damage (raw − postDecayBlock block)"  
+- Fully blocked: "Fully blocked (raw absorbed)" — bubble gets `.intent-bubble-blocked` CSS class (muted colors) and `data-intent-blocked="true"` attribute
 
 **Result:** The enemy intent display shows the same number that `takeDamage()` receives, including coop canary scaling. This fixes the AR-263 bug where coop intent showed 18 but only 11 was applied (canary multiplier 0.6 not reflected in display).
 
