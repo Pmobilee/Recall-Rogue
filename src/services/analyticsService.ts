@@ -762,14 +762,6 @@ export class AnalyticsService {
 
   // ── Monetization tracking (Phase 21.3 / DD-V2-181) ──────────────────────────
 
-  /**
-   * Track a Rogue Pass modal view.
-   *
-   * @param source - Where the modal was triggered from.
-   */
-  trackRoguePassViewed(source: 'dome' | 'pre_dive' | 'oxygen_empty'): void {
-    this.track({ name: 'terra_pass_viewed', properties: { source } })
-  }
 
   /**
    * Track the start of an IAP purchase flow.
@@ -800,15 +792,6 @@ export class AnalyticsService {
     this.track({ name: 'iap_purchase_failed', properties: { productId, error } })
   }
 
-  /**
-   * Track when the player's oxygen runs out in the mine.
-   *
-   * @param lootLostPercent - Percentage of session loot lost (0-100).
-   * @param layer           - Mine layer the player was on when O2 hit zero.
-   */
-  trackOxygenDepleted(lootLostPercent: number, layer: number): void {
-    this.track({ name: 'oxygen_depleted', properties: { lootLostPercent, layer } })
-  }
 
   /**
    * Track a daily economy wealth snapshot for balance monitoring.

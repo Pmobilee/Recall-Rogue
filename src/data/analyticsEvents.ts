@@ -5,11 +5,9 @@
 
 /** Monetization analytics events */
 export type MonetizationEvent =
-  | { name: 'terra_pass_viewed'; properties: { source: 'dome' | 'pre_dive' | 'oxygen_empty' } }
   | { name: 'iap_purchase_started'; properties: { productId: string } }
   | { name: 'iap_purchase_completed'; properties: { productId: string; priceUSD: number } }
   | { name: 'iap_purchase_failed'; properties: { productId: string; error: string } }
-  | { name: 'oxygen_depleted'; properties: { lootLostPercent: number; layer: number } }
   | { name: 'subscription_started'; properties: { productId: string; tier: string } }
   | { name: 'subscription_cancelled'; properties: { productId: string; daysActive: number } }
   | { name: 'season_pass_milestone_claimed'; properties: { milestone: number; track: 'free' | 'premium' } }

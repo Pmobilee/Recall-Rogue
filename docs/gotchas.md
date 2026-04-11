@@ -3584,3 +3584,24 @@ See orchestrator memory feedback_docs-always-updated.md for the rebrand hygiene 
 **Fix:** Built `subDecks` arrays mechanically by scanning each fact's `examTags` for `Period_N` or `Unit_N` tokens, grouping fact IDs in source order, and verifying 100% coverage (0 orphans, 0 duplicates). Final counts: APUSH 504, macro 440, micro 430 — all matched the declared fact counts. Also trimmed the `"Unit N: "` prefix from `ap_human_geography` subdeck names (they rendered as "Unit 1: Thinking Geographically" instead of the cleaner "Thinking Geographically" used by other AP decks).
 
 **Lesson:** When adding `examTags` to facts, also author the `subDecks` array in the same pass. The tags are the ground truth; the subDecks array is just a precomputed grouping. Deferring it creates a silent gap between "data has structure" and "runtime can show that structure."
+
+### 2026-04-11 — Terra Gacha legacy cleanup Phase 2 (backend)
+
+Removed `com.terragacha.*` IAP product ID catalog entries and `terra_pass_viewed` analytics
+event type. User authorized removal per "we don't use terragacha anymore". Related parallel
+commits deleted RoguePassModal.svelte (ui-agent) and removed terra_pass_* i18n keys (content-agent).
+
+Also removed `oxygen_depleted` event type from `MonetizationEvent` — source fields `lootLostPercent`
+and `layer` are Terra Gacha oxygen-dive terminology with no mapping to Recall Rogue mechanics.
+
+Assumption baked in: these product IDs were never live under the Terra Gacha brand in any real
+App Store / Play Store listing. If they WERE live, existing customers with old receipts will see
+receipt validation fail — mitigations would require a server-side receipt-translation layer.
+The user's "probably not important" + "never use it" language strongly suggests pre-launch cleanup.
+
+Parallel agents' file sets did not overlap; commits landed separately.
+
+NOTE: Phase 2 only covered src/data/ files. Additional com.terragacha.* string literals remain in
+src/services/monetizationService.ts (lines 13-20), src/services/subscriptionService.ts (lines 10, 50, 55, 60),
+src/services/analyticsService.ts (line 771 — trackRoguePassViewed call), and
+tests/unit/monetizationService.test.ts. These are Phase 3 cleanup targets.
