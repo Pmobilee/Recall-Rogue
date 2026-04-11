@@ -498,6 +498,18 @@ Dev buttons (Intro, BrightIdea, InkSlug, RunEnd, Enter, Exit, Lighting) are ONLY
 - `?skipOnboarding=true&devpreset=post_tutorial` → NO dev buttons visible
 - `?skipOnboarding=true&devpreset=post_tutorial&dev=true` → dev buttons ARE visible
 
+### Pending Next-Steps Overlay (added 2026-04-10)
+When `$devMode` is true, `HubScreen` also mounts `<PendingNextStepsOverlay />` alongside the existing dev button row (both landscape and portrait branches).
+
+- **Component:** `src/ui/components/PendingNextStepsOverlay.svelte` (see `docs/ui/components.md` → Hub & Navigation).
+- **Dev-only Vite endpoint:** `GET /__rr_pending_next_steps.json` — served by the `pendingNextStepsEndpoint()` plugin in `vite.config.ts`. Returns the contents of `.claude/pending-next-steps.json` (written by the `persist-whats-next.sh` Stop hook at session end), or `null` if the file is missing/malformed. Dev-server only — never compiled into the production bundle.
+- **Purpose:** closes the loop between session-end `## What's Next` persistence and the developer noticing the prior session's reminders without invoking `/catchup`. Top 1–3 items' `subject` strings render as low-opacity corner text.
+- **Gating:** the overlay mount is wrapped `{#if $devMode} <PendingNextStepsOverlay /> {/if}` in HubScreen. The component additionally tags every rendered DOM element with `data-dev-only="true"` for assertion-based absence tests.
+- **Dismiss / refresh:** × dismiss button (local `$state`, resets on reload) and ↻ refresh button (re-fetches the endpoint).
+- **Empty / error / loading states:** per `.claude/rules/ui-layout.md` § Softlock Prevention, the overlay always shows a dismiss button even when items are empty, loading, or the endpoint errored.
+- **Test IDs:** `pending-next-steps-overlay`, `pending-next-steps-list`, `pending-next-steps-empty`, `pending-next-steps-error`, `pending-next-steps-loading`, `pending-next-steps-dismiss`, `pending-next-steps-refresh`.
+- **Verified:** Docker visual test 2026-04-10 — dev-mode hub shows the overlay with 3 subjects + timestamp; non-dev hub has `overlayCount=0` and passes `assert exists:false`.
+
 ---
 
 ## restStudy Screen — Empty State Contract (HIGH-8, 2026-04-10)

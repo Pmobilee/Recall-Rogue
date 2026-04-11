@@ -133,6 +133,55 @@ function devScreenshotEndpoint(): Plugin {
 }
 
 /**
+ * Dev-only Vite plugin that exposes GET /__rr_pending_next_steps.json.
+ * Serves the contents of `.claude/pending-next-steps.json` (written by the
+ * `persist-whats-next.sh` Stop hook) so the dev-mode hub overlay can display
+ * the prior session's pending next-step reminders.
+ *
+ * The file may be missing (no prior session, or Form B closer used). In that
+ * case the endpoint returns `null` (HTTP 200) so the client can render its
+ * "no pending next steps" empty state without treating it as an error.
+ *
+ * Dev-only by construction: `configureServer` only runs under `vite dev`.
+ * The endpoint is never compiled into the production bundle.
+ */
+function pendingNextStepsEndpoint(): Plugin {
+  return {
+    name: 'rr-pending-next-steps',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if (req.method !== 'GET' || req.url !== '/__rr_pending_next_steps.json') {
+          return next()
+        }
+        try {
+          const filePath = join(process.cwd(), '.claude', 'pending-next-steps.json')
+          res.setHeader('Content-Type', 'application/json')
+          res.setHeader('Cache-Control', 'no-store')
+          if (!existsSync(filePath)) {
+            res.end('null')
+            return
+          }
+          const raw = readFileSync(filePath, 'utf8')
+          // Validate JSON before serving — never echo a corrupt file.
+          try {
+            JSON.parse(raw)
+          } catch (parseErr) {
+            console.warn('[pending-next-steps] file is malformed:', parseErr)
+            res.end('null')
+            return
+          }
+          res.end(raw)
+        } catch (err) {
+          console.error('[pending-next-steps] failed to read file:', err)
+          res.statusCode = 500
+          res.end(JSON.stringify({ error: String(err) }))
+        }
+      })
+    },
+  }
+}
+
+/**
  * Adds Cache-Control headers for static assets during development.
  * Prevents the Android webview from re-fetching every image on every app launch.
  * Applies Cache-Control: public, max-age=86400 (1 day) to /assets/ requests ONLY
@@ -181,6 +230,7 @@ if (process.env.ANALYZE === 'true') {
 export default defineConfig({
   plugins: [
     devScreenshotEndpoint(),
+    pendingNextStepsEndpoint(),
     staticAssetCachePlugin(),
     svelte(),
     cspInjectPlugin(),

@@ -21,6 +21,7 @@
   import { start as startLighting, stop as stopLighting, getHubLightingStore, getSpriteBrightness, updateStreak } from '../effects/hubLightingState'
 
   import ParallaxTransition from './ParallaxTransition.svelte'
+  import PendingNextStepsOverlay from './PendingNextStepsOverlay.svelte'
   import { getLevelProgress } from '../../services/characterLevel'
   import { playCardAudio } from '../../services/cardAudioManager'
   import { ambientAudio } from '../../services/ambientAudioService'
@@ -566,6 +567,7 @@
         <button class="dev-btn" onclick={testBrightIdea}>BrightIdea</button>
         <button class="dev-btn" onclick={testInkSlug}>InkSlug</button>
       </div>
+      <PendingNextStepsOverlay />
       {/if}
 
       {#if transitionActive}
@@ -802,6 +804,7 @@
       <button class="dev-btn" onclick={previewExit}>Exit</button>
       <button class="dev-btn" onclick={fakeRunEnd}>RunEnd</button>
     </div>
+    <PendingNextStepsOverlay />
     {/if}
 
     {#if transitionActive}
