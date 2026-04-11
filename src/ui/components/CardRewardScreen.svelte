@@ -791,6 +791,7 @@
     letter-spacing: 0.6px;
     color: #f8d779;
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    transform: translateY(calc(-8px * var(--layout-scale, 1)));
   }
 
   .altar-header p {
