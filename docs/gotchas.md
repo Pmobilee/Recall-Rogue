@@ -2842,3 +2842,13 @@ docker rm great_blackwell condescending_roentgen amazing_noyce confident_dhawan 
 **Two-sided enforcement gap:** The pool `homogeneityExempt` flag is a preventative author-time signal but `quiz-audit.mjs` — the reactive runtime checker — ignores it. This is the classic single-sided enforcement drift described in `.claude/rules/agent-mindset.md`.
 
 **Files affected:** `data/decks/medical_terminology.json`, `scripts/quiz-audit.mjs` (fix needed, NOT touched here).
+
+### 2026-04-11 — Docker warm container blocks on 504 after node_modules change
+
+**Symptom:** `scripts/docker-visual-test.sh --warm start` (and cold mode) times out at `page.waitForFunction` with `console error: "Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"`. The host dev server IS running and responding 200. Clearing `node_modules/.vite` on the host does not help.
+
+**Root cause:** The Docker container connects to the host dev server at `http://host.docker.internal:5173`. When `package.json` or `package-lock.json` changes (new deps added), Vite's dep-optimization fingerprint changes. Vite responds to the next request with a 504 to trigger a hard reload, but the container's Playwright `waitForFunction` for `canvas.width > 0` runs during that reload window and times out (120s limit), never seeing a successfully loaded Phaser canvas.
+
+**Workaround:** After any `npm install` or `package.json` change, restart the host dev server (`Ctrl+C` + `npm run dev`) to force Vite to re-optimize deps before starting Docker containers. The dev server must be cold-started (no `--force` needed, but the first load will take longer). Once the host dev server has served the app at least once (deps are optimized), Docker containers boot normally.
+
+**Files involved:** `docker/playwright-xvfb/warm-server.mjs` (boots from host dev server), `docker/playwright-xvfb/visual-test-runner.mjs` (same).
