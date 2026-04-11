@@ -150,6 +150,7 @@
         class:hovering={triviaHovering}
         role="button"
         tabindex="0"
+        aria-label="Trivia Dungeon — Battle with knowledge across multiple domains"
         onclick={handleSelectTrivia}
         onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSelectTrivia(); } }}
         onpointerenter={triviaHandlers.enter}
@@ -190,6 +191,7 @@
         class:hovering={studyHovering}
         role="button"
         tabindex="0"
+        aria-label="Study Temple — Master your curated decks with focused learning"
         onclick={handleSelectStudy}
         onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSelectStudy(); } }}
         onpointerenter={studyHandlers.enter}
@@ -277,6 +279,12 @@
     color: #e2e8f0;
   }
 
+  .back-btn:focus-visible {
+    outline: calc(2px * var(--layout-scale, 1)) solid #60a5fa;
+    outline-offset: calc(2px * var(--layout-scale, 1));
+    color: #e2e8f0;
+  }
+
   .panels-area {
     flex: 1;
     display: flex;
@@ -312,8 +320,17 @@
     transform-style: preserve-3d;
     transform: rotateX(var(--rot-x, 0deg)) rotateY(var(--rot-y, 0deg));
     transition: transform 0.4s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-    /* a11y — remove default focus outline, handled by border */
+    /* a11y — remove default focus outline, handled by focus-visible rule below */
     outline: none;
+  }
+
+  /* A11y: visible focus ring for keyboard navigation.
+     Appears only on keyboard focus (not mouse click) via :focus-visible.
+     Uses a bright blue outline with offset to float above the panel border.
+     See BATCH-ULTRA T11 issue-1744337400021-11-022. */
+  .panel:focus-visible {
+    outline: calc(3px * var(--layout-scale, 1)) solid #60a5fa;
+    outline-offset: calc(4px * var(--layout-scale, 1));
   }
 
   .panel.hovering {
