@@ -451,13 +451,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   let prevScreen = $state('')
   let exitEnemyId = $state<string | null>(null)
 
-  let showCosmeticStoreModal = $state(false)
-
-
-  function handleOpenCosmeticStore(): void {
-    showCosmeticStoreModal = true
-  }
-
   // ── Multiplayer state ─────────────────────────────────────────────────────
 
   /** Current lobby state — null when not in a multiplayer lobby. */
@@ -1186,8 +1179,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       return promise
     }
   }
-
-  const loadCosmeticStoreModal = createLazyLoader(() => import('./ui/components/CosmeticStoreModal.svelte'))
 
   let phaserBooted = false
   let phaserBootPromise: Promise<void> | null = null
@@ -1982,13 +1973,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     />
   {/if}
 
-
-  {#if showCosmeticStoreModal}
-    {#await loadCosmeticStoreModal() then module}
-      {@const CosmeticStoreModalView = module.default}
-      <CosmeticStoreModalView onClose={() => { showCosmeticStoreModal = false }} />
-    {/await}
-  {/if}
 
   {#if gainedFactText}
     <div class="fact-gained-toast" role="status">

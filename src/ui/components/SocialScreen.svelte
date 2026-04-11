@@ -33,8 +33,6 @@
     onStartEndlessDepths: () => Promise<{ ok: true } | { ok: false; reason: string }>
     onStartScholarChallenge: () => Promise<{ ok: true } | { ok: false; reason: string }>
     onOpenRelicSanctum: () => { ok: true } | { ok: false; reason: string }
-    onOpenArcanePass: () => void
-    onOpenCosmeticStore: () => void
   }
 
   let {
@@ -44,8 +42,6 @@
     onStartEndlessDepths,
     onStartScholarChallenge,
     onOpenRelicSanctum,
-    onOpenArcanePass,
-    onOpenCosmeticStore,
   }: Props = $props()
 
   type SocialPanel = 'coop' | 'duel' | 'guild' | null
@@ -401,22 +397,6 @@
         <p>Browse guilds, create one, and monitor contribution/progression panels.</p>
         <div class="actions">
           <button type="button" class="primary" onclick={() => openPanel('guild')}>Open Guilds</button>
-        </div>
-      </article>
-
-      <article class="card">
-        <h3>Arcane Pass</h3>
-        <p>Subscription tiers, ad-free unlock, and subscriber-only category filtering.</p>
-        <div class="actions">
-          <button type="button" class="primary" onclick={onOpenArcanePass}>Open Arcane Pass</button>
-        </div>
-      </article>
-
-      <article class="card">
-        <h3>Cosmetic Store</h3>
-        <p>Daily mineral deals, premium cosmetics, and mystery cache reveals.</p>
-        <div class="actions">
-          <button type="button" class="primary" onclick={onOpenCosmeticStore}>Open Store</button>
         </div>
       </article>
 

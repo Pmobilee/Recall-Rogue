@@ -1,7 +1,7 @@
 # UI Components — Social, Account & Utility
 
 > **Purpose:** Non-gameplay Svelte components: social, auth, monetization, onboarding, and utility
-> **Last verified:** 2026-04-11 (Phase 3 Wave A: deleted SeasonPassView, ReferralModal, SignInWithApple)
+> **Last verified:** 2026-04-11 (Phase 3 Wave B-1: deleted CosmeticStoreModal; removed ArcanePass/CosmeticStore from SocialScreen; removed subscription gate from DomainSelection)
 > **Source files:** `src/ui/components/**/*.svelte`
 
 > **See also:** [`components.md`](components.md) — Gameplay-critical components: Combat UI, Quiz & Study, Hub & Navigation, Dungeon & Map, Card Management, Rooms & Events, Rewards & Progression, Relics.
@@ -12,7 +12,7 @@
 
 | Component | Purpose |
 |-----------|---------|
-| `SocialScreen.svelte` | Social hub: leaderboards (daily expedition, endless depths, scholar challenge), co-op lobby creation, duels, guilds, relic sanctum access, weekly challenges, arcane/season pass, cosmetic store. Full screen with parental-control gate and back button. Props: see source. **Wiring status (2026-04-11): SUPPRESSED** — social nav tab deliberately removed from HubNavBar (2026-04-07); wiring requires adding `social` to Screen union and adding gameFlowController callbacks (onStartDailyExpedition, onStartEndlessDepths, onStartScholarChallenge, onOpenRelicSanctum) which is game-logic agent work; scheduled post-Steam-launch with full social feature wave. Carries `@wiring-check:skip` suppression comment to silence the orphan-screen lint. |
+| `SocialScreen.svelte` | Social hub: leaderboards (daily expedition, endless depths, scholar challenge), co-op lobby creation, duels, guilds, relic sanctum access, weekly challenges. Full screen with parental-control gate and back button. Props: see source. **Wiring status (2026-04-11): SUPPRESSED** — social nav tab deliberately removed from HubNavBar (2026-04-07); wiring requires adding `social` to Screen union and adding gameFlowController callbacks (onStartDailyExpedition, onStartEndlessDepths, onStartScholarChallenge, onOpenRelicSanctum) which is game-logic agent work; scheduled post-Steam-launch with full social feature wave. Carries `@wiring-check:skip` suppression comment to silence the orphan-screen lint. |
 | `CoopHUD.svelte` | Co-op mode HUD showing partner HP and sync state |
 | `CoopEmoteToast.svelte` | Short-lived toast for a co-op partner emote |
 | `CoopLobby.svelte` | Co-op lobby: invite friends, set rules, ready check |
@@ -90,7 +90,6 @@
 | Component | Purpose |
 |-----------|---------|
 | `RoguePassModal.svelte` | Rogue Pass (battle pass) purchase and tier view modal |
-| `CosmeticStoreModal.svelte` | Cosmetic shop: card backs, hub skins, emotes |
 | `PioneerPackModal.svelte` | Early-access Pioneer Pack offer modal |
 | `SeasonBanner.svelte` | Persistent season name/end-date banner at hub top |
 | `PartnerPortalView.svelte` | Partner/educator portal for class management |

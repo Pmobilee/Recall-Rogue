@@ -5,7 +5,6 @@
   import { getDomainIconPath } from '../utils/domainAssets'
   import { ENABLE_LANGUAGE_DOMAINS } from '../../data/balance'
   import { playerSave, persistPlayer } from '../stores/playerData'
-  import { hasArcanePass } from '../../services/subscriptionService'
   import { getDomainSubcategories } from '../../services/domainSubcategoryService'
   import { ascensionProfile, setAscensionLevel } from '../../services/cardPreferences'
   import { getAscensionRule } from '../../services/ascension'
@@ -36,7 +35,6 @@
   let filterOptions = $state<Array<{ name: string; count: number }>>([])
   let enabledSubcategories = $state<string[]>([])
   let filterError = $state('')
-  const arcanePassActive = $derived($playerSave ? hasArcanePass($playerSave) : false)
 
   let canStart = $derived(primaryDomain !== null && secondaryDomain !== null)
   let ascensionRule = $derived(getAscensionRule($ascensionProfile.selectedLevel))
@@ -79,7 +77,6 @@
   }
 
   function openFilterModal(domainId: FactDomain): void {
-    if (!arcanePassActive) return
     const options = getDomainSubcategories(domainId)
     if (options.length === 0) return
     filterDomain = domainId
@@ -164,11 +161,6 @@
 
   <h1 class="title">What are you curious about?</h1>
   <p class="subtitle">Pick 2 to specialize in. You can always add more later.</p>
-  {#if arcanePassActive}
-    <p class="subtitle subtitle-pass">Arcane Pass: selected domains can be filtered by sub-category.</p>
-  {:else}
-    <p class="subtitle subtitle-pass locked">Arcane Pass unlocks sub-category filters.</p>
-  {/if}
 
   <section class="ascension-panel" aria-label="Ascension mode">
     <div class="ascension-header">
@@ -236,7 +228,6 @@
           type="button"
           class="selected-filter-btn"
           onclick={() => { if (primaryDomain) openFilterModal(primaryDomain) }}
-          disabled={!arcanePassActive}
         >
           Filter PRIMARY: {DOMAINS.find((entry) => entry.id === primaryDomain)?.shortName}
         </button>
@@ -246,7 +237,6 @@
           type="button"
           class="selected-filter-btn"
           onclick={() => { if (secondaryDomain) openFilterModal(secondaryDomain) }}
-          disabled={!arcanePassActive}
         >
           Filter SECONDARY: {DOMAINS.find((entry) => entry.id === secondaryDomain)?.shortName}
         </button>
@@ -334,14 +324,6 @@
     color: #8b949e;
     margin: 0 0 calc(24px * var(--layout-scale, 1));
     text-align: center;
-  }
-  .subtitle-pass {
-    margin-top: calc(-16px * var(--layout-scale, 1));
-    margin-bottom: calc(20px * var(--layout-scale, 1));
-    font-size: calc(12px * var(--layout-scale, 1));
-  }
-  .subtitle-pass.locked {
-    color: #94a3b8;
   }
 
   .ascension-panel {
@@ -514,10 +496,6 @@
     font-size: calc(12px * var(--layout-scale, 1));
     font-weight: 600;
     cursor: pointer;
-  }
-  .selected-filter-btn:disabled {
-    opacity: 0.55;
-    cursor: not-allowed;
   }
 
   .start-btn {
