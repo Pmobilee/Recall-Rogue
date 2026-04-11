@@ -28,7 +28,7 @@ describe('encounterBridge snapshot serialization', () => {
         drawPile: [cardA],
         discardPile: [cardB],
         hand: [],
-        exhaustPile: [],
+        forgetPile: [],
         comboCount: 0,
         currentFloor: 2,
         currentEncounter: 1,

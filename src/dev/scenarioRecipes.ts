@@ -179,8 +179,8 @@ function configForTrigger(trigger: RelicTrigger, relicId: string): Partial<Recip
         hand: ['lifetap', 'strike', 'block', 'heavy_strike', 'expose'],
       };
 
-    case 'on_exhaust':
-      // Inscription cards exhaust on use
+    case 'on_forget':
+      // Inscription cards forget on use
       return { hand: ['inscription', 'strike', 'block', 'heavy_strike', 'expose'] };
 
     case 'on_discard':

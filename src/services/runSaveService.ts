@@ -161,6 +161,15 @@ function serializeRunState(run: RunState): SerializedRunState {
   };
 }
 
+/** Migration: rename exhaustPile → forgetPile in a CardRunState (2026-04-11 exhaust→forget rename). */
+function migrateExhaustPileToForgetPile(deck: Record<string, unknown>): void {
+  if ('exhaustPile' in deck && !('forgetPile' in deck)) {
+    // Migration 2026-04-11: exhaust → forget rename
+    (deck as Record<string, unknown>)['forgetPile'] = deck['exhaustPile'];
+    delete deck['exhaustPile'];
+  }
+}
+
 /** Deserialize arrays back to Sets for RunState. */
 function deserializeRunState(saved: SerializedRunState): RunState {
   const savedAny = saved as unknown as Record<string, unknown>;
@@ -285,10 +294,14 @@ export function loadActiveRun(): {
       activeRewardBundle: parsed.activeRewardBundle ?? null,
       rewardRevealStep: parsed.rewardRevealStep ?? 'gold',
       encounterSnapshot: parsed.encounterSnapshot
-        ? {
-          activeDeck: parsed.encounterSnapshot.activeDeck ?? null,
-          activeRunPool: parsed.encounterSnapshot.activeRunPool ?? [],
-        }
+        ? (() => {
+            const eDeck = parsed.encounterSnapshot!.activeDeck as (Record<string, unknown> | null);
+            if (eDeck) migrateExhaustPileToForgetPile(eDeck);
+            return {
+              activeDeck: parsed.encounterSnapshot!.activeDeck ?? null,
+              activeRunPool: parsed.encounterSnapshot!.activeRunPool ?? [],
+            };
+          })()
         : null,
       rngState: parsed.rngState ?? null,
     };

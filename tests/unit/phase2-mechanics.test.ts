@@ -198,19 +198,19 @@ describe('volatile_slash mechanic (exhaust-on-CC)', () => {
   it('QP: deals damage, does NOT exhaust', () => {
     const result = resolve('volatile_slash', 'quick');
     expect(result.damageDealt).toBeGreaterThan(0);
-    expect(result.exhaustOnResolve).toBeFalsy();
+    expect(result.forgetOnResolve).toBeFalsy();
   });
 
-  it('CC: deals damage AND sets exhaustOnResolve=true', () => {
+  it('CC: deals damage AND sets forgetOnResolve=true', () => {
     const result = resolve('volatile_slash', 'charge_correct');
     expect(result.damageDealt).toBeGreaterThan(0);
-    expect(result.exhaustOnResolve).toBe(true);
+    expect(result.forgetOnResolve).toBe(true);
   });
 
   it('CW: deals damage, does NOT exhaust', () => {
     const result = resolve('volatile_slash', 'charge_wrong');
     expect(result.damageDealt).toBeGreaterThan(0);
-    expect(result.exhaustOnResolve).toBeFalsy();
+    expect(result.forgetOnResolve).toBeFalsy();
   });
 
   it('CC damage is greater than QP damage', () => {
@@ -226,19 +226,19 @@ describe('burnout_shield mechanic (exhaust-on-CC)', () => {
   it('QP: applies block, does NOT exhaust', () => {
     const result = resolve('burnout_shield', 'quick');
     expect(result.shieldApplied).toBeGreaterThan(0);
-    expect(result.exhaustOnResolve).toBeFalsy();
+    expect(result.forgetOnResolve).toBeFalsy();
   });
 
-  it('CC: applies larger block AND sets exhaustOnResolve=true', () => {
+  it('CC: applies larger block AND sets forgetOnResolve=true', () => {
     const result = resolve('burnout_shield', 'charge_correct');
     expect(result.shieldApplied).toBeGreaterThan(0);
-    expect(result.exhaustOnResolve).toBe(true);
+    expect(result.forgetOnResolve).toBe(true);
   });
 
   it('CW: applies block, does NOT exhaust', () => {
     const result = resolve('burnout_shield', 'charge_wrong');
     expect(result.shieldApplied).toBeGreaterThan(0);
-    expect(result.exhaustOnResolve).toBeFalsy();
+    expect(result.forgetOnResolve).toBeFalsy();
   });
 
   it('CC block is greater than QP block', () => {
@@ -248,9 +248,9 @@ describe('burnout_shield mechanic (exhaust-on-CC)', () => {
   });
 
   it('mirrors volatile_slash: CC exhausts, QP/CW do not', () => {
-    expect(resolve('burnout_shield', 'charge_correct').exhaustOnResolve).toBe(true);
-    expect(resolve('burnout_shield', 'quick').exhaustOnResolve).toBeFalsy();
-    expect(resolve('burnout_shield', 'charge_wrong').exhaustOnResolve).toBeFalsy();
+    expect(resolve('burnout_shield', 'charge_correct').forgetOnResolve).toBe(true);
+    expect(resolve('burnout_shield', 'quick').forgetOnResolve).toBeFalsy();
+    expect(resolve('burnout_shield', 'charge_wrong').forgetOnResolve).toBeFalsy();
   });
 });
 
@@ -935,15 +935,15 @@ describe('unstable_flux mechanic (random or chosen effect)', () => {
 
 describe('exhaust-on-CC summary', () => {
   it('volatile_slash CC exhausts, QP/CW do not', () => {
-    expect(resolve('volatile_slash', 'charge_correct').exhaustOnResolve).toBe(true);
-    expect(resolve('volatile_slash', 'quick').exhaustOnResolve).toBeFalsy();
-    expect(resolve('volatile_slash', 'charge_wrong').exhaustOnResolve).toBeFalsy();
+    expect(resolve('volatile_slash', 'charge_correct').forgetOnResolve).toBe(true);
+    expect(resolve('volatile_slash', 'quick').forgetOnResolve).toBeFalsy();
+    expect(resolve('volatile_slash', 'charge_wrong').forgetOnResolve).toBeFalsy();
   });
 
   it('burnout_shield CC exhausts, QP/CW do not', () => {
-    expect(resolve('burnout_shield', 'charge_correct').exhaustOnResolve).toBe(true);
-    expect(resolve('burnout_shield', 'quick').exhaustOnResolve).toBeFalsy();
-    expect(resolve('burnout_shield', 'charge_wrong').exhaustOnResolve).toBeFalsy();
+    expect(resolve('burnout_shield', 'charge_correct').forgetOnResolve).toBe(true);
+    expect(resolve('burnout_shield', 'quick').forgetOnResolve).toBeFalsy();
+    expect(resolve('burnout_shield', 'charge_wrong').forgetOnResolve).toBeFalsy();
   });
 
   it('inscription_wisdom CW fizzles, QP/CC do not', () => {

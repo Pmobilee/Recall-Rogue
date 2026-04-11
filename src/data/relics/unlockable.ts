@@ -970,7 +970,7 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
     visualDescription: 'A small brass engine with gears and pistons, consuming card fragments at one end and producing fresh cards at the other. Steam and sparks. 32x32 pixel art.',
     rarity: 'rare',
     category: 'tactical',
-    trigger: 'on_exhaust',
+    trigger: 'on_forget',
     effects: [{ effectId: 'exhaust_draw', description: 'Draw 2 cards when a card is exhausted', value: 2 }],
     icon: '⚙️',
     unlockCost: 0,

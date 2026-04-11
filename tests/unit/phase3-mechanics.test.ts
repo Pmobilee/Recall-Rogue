@@ -334,7 +334,7 @@ describe('bulwark mechanic', () => {
     expect(result.shieldApplied).toBe(9);
   });
 
-  it('CC: 36 shield (chargeCorrectValue) + exhaustAfterPlay=true', () => {
+  it('CC: 36 shield (chargeCorrectValue) + forgetAfterPlay=true', () => {
     const result = resolve('bulwark', 'charge_correct');
     // finalValue is Math.round((9 + 0mastery) * 1.5) = 14 from pipeline,
     // but bulwark uses finalValue directly and the mechanic definition says CC=36 (from chargeCorrectValue in definition).
@@ -344,7 +344,7 @@ describe('bulwark mechanic', () => {
     // The chargeCorrectValue=36 in the definition is informational only (per code comments).
     // The actual block in CC is finalValue = 14 based on the pipeline.
     expect(result.shieldApplied).toBeGreaterThan(9); // More than QP
-    expect(result.exhaustAfterPlay).toBe(true);
+    expect(result.forgetAfterPlay).toBe(true);
   });
 
   it('CW: block > 0', () => {
@@ -352,9 +352,9 @@ describe('bulwark mechanic', () => {
     expect(result.shieldApplied).toBeGreaterThan(0);
   });
 
-  it('QP: no exhaustAfterPlay', () => {
+  it('QP: no forgetAfterPlay', () => {
     const result = resolve('bulwark', 'quick');
-    expect(result.exhaustAfterPlay).toBeFalsy();
+    expect(result.forgetAfterPlay).toBeFalsy();
   });
 });
 
@@ -559,28 +559,28 @@ describe('entropy mechanic', () => {
 // ── Recollect (Utility — return exhausted card) ───────────────────────────────
 
 describe('recollect mechanic', () => {
-  it('QP: returns 1 exhausted card (exhaustedCardsToReturn=1)', () => {
+  it('QP: returns 1 exhausted card (forgottenCardsToReturn=1)', () => {
     const result = resolve('recollect', 'quick');
-    expect(result.exhaustedCardsToReturn).toBe(1);
+    expect(result.forgottenCardsToReturn).toBe(1);
   });
 
   it('CC: returns 2 exhausted cards', () => {
     const result = resolve('recollect', 'charge_correct');
-    expect(result.exhaustedCardsToReturn).toBe(2);
+    expect(result.forgottenCardsToReturn).toBe(2);
   });
 
   it('CW: returns 1 exhausted card', () => {
     const result = resolve('recollect', 'charge_wrong');
-    expect(result.exhaustedCardsToReturn).toBe(1);
+    expect(result.forgottenCardsToReturn).toBe(1);
   });
 
-  it('exhaustedCardsToReturn is always >= 1', () => {
+  it('forgottenCardsToReturn is always >= 1', () => {
     const qp = resolve('recollect', 'quick');
     const cc = resolve('recollect', 'charge_correct');
     const cw = resolve('recollect', 'charge_wrong');
-    expect(qp.exhaustedCardsToReturn!).toBeGreaterThanOrEqual(1);
-    expect(cc.exhaustedCardsToReturn!).toBeGreaterThanOrEqual(1);
-    expect(cw.exhaustedCardsToReturn!).toBeGreaterThanOrEqual(1);
+    expect(qp.forgottenCardsToReturn!).toBeGreaterThanOrEqual(1);
+    expect(cc.forgottenCardsToReturn!).toBeGreaterThanOrEqual(1);
+    expect(cw.forgottenCardsToReturn!).toBeGreaterThanOrEqual(1);
   });
 });
 

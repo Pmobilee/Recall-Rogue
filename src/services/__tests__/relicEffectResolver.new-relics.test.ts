@@ -30,7 +30,7 @@ import {
   resolveChainMultiplierBonus,
   resolveChainMultiplierIsOverridden,
   resolveHpLossEffects,
-  resolveExhaustEffects,
+  resolveForgetEffects,
   resolveChainBreakEffects,
   resolveHealModifiers,
 } from '../relicEffectResolver';
@@ -129,13 +129,13 @@ describe('thick_skin (common, reworked)', () => {
 });
 
 describe('tattered_notebook (common, v3 rework)', () => {
-  it('grants +1 tempStrengthGain when card exhausted', () => {
-    const result = resolveExhaustEffects(new Set(['tattered_notebook']));
+  it('grants +1 tempStrengthGain when card forgotten', () => {
+    const result = resolveForgetEffects(new Set(['tattered_notebook']));
     expect(result.tempStrengthGain).toBe(1);
   });
 
   it('does NOT grant strength when relic not held', () => {
-    const result = resolveExhaustEffects(new Set());
+    const result = resolveForgetEffects(new Set());
     expect(result.tempStrengthGain).toBe(0);
   });
 
@@ -1089,13 +1089,13 @@ describe('bloodletter (conditional)', () => {
 });
 
 describe('exhaustion_engine (conditional)', () => {
-  it('draws 2 cards on exhaust', () => {
-    const result = resolveExhaustEffects(new Set(['exhaustion_engine']));
+  it('draws 2 cards on forget', () => {
+    const result = resolveForgetEffects(new Set(['exhaustion_engine']));
     expect(result.bonusCardDraw).toBe(2);
   });
 
   it('no draw without relic', () => {
-    const result = resolveExhaustEffects(new Set([]));
+    const result = resolveForgetEffects(new Set([]));
     expect(result.bonusCardDraw).toBe(0);
   });
 });

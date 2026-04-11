@@ -376,7 +376,7 @@ export interface AttackContext {
    */
   cardDomain?: string;
   /**
-   * Count of cards per domain in the active deck (draw + discard + hand, not exhaust).
+   * Count of cards per domain in the active deck (draw + discard + hand, not forget pile).
    * Keyed by FactDomain string. Used by domain_mastery_sigil v2.
    */
   deckDomainCounts?: Record<string, number>;
@@ -1488,7 +1488,7 @@ export interface ChargeCorrectEffects {
    * and player may activate it. Caller decides whether to consume the use.
    */
   mirrorAvailable: boolean;
-  /** Gold bonus: +10 per Charge from knowledge_tax. (tattered_notebook v3 reworked to on_exhaust) */
+  /** Gold bonus: +10 per Charge from knowledge_tax. (tattered_notebook v3 reworked to on_forget) */
   goldBonus: number;
   /**
    * Percentage bonus to charge-correct effect (glass_lens: +50%).
@@ -1664,7 +1664,7 @@ export function resolveChargeCorrectEffects(
   // mirror_of_knowledge — available if not yet used this encounter
   const mirrorAvailable = relicIds.has('mirror_of_knowledge') && !context.mirrorUsedThisEncounter;
 
-  // tattered_notebook (v3) — reworked to on_exhaust (tempStrengthGain in resolveExhaustEffects)
+  // tattered_notebook (v3) — reworked to on_forget (tempStrengthGain in resolveForgetEffects)
   // goldBonus only from knowledge_tax now
   const goldBonus = 0;
 
@@ -2246,7 +2246,7 @@ export function resolveCurrencyBonusV2(relicIds: Set<string>): number {
  */
 export function resolveCardRewardOptionCountV2(relicIds: Set<string>): number {
   // prospectors_pick (v1 legacy) gives +1 option
-  // scavengers_eye (v3) reworked to on_exhaust draw — no longer affects card reward count
+  // scavengers_eye (v3) reworked to on_forget draw — no longer affects card reward count
   if (relicIds.has('prospectors_pick')) return 4;
   return 3;
 }
@@ -2571,47 +2571,47 @@ export function resolveHpLossEffects(
   return { reflectDamage, nextAttackBonus };
 }
 
-// ─── Exhaust Effects ──────────────────────────────────────────────────
+// ─── Forget Effects ──────────────────────────────────────────────────
 
-/** Effects that trigger when a card is exhausted. */
-export interface ExhaustEffects {
+/** Effects that trigger when a card is forgotten. */
+export interface ForgetEffects {
   /**
-   * Bonus cards to draw when a card is exhausted (exhaustion_engine: +2 draw; scavengers_eye v3: +1 draw).
+   * Bonus cards to draw when a card is forgotten (exhaustion_engine: +2 draw; scavengers_eye v3: +1 draw).
    * 0 if neither relic held.
    */
   bonusCardDraw: number;
   /**
-   * Temporary Strength gain this turn from tattered_notebook v3 (+1 Strength when a card is exhausted).
+   * Temporary Strength gain this turn from tattered_notebook v3 (+1 Strength when a card is forgotten).
    * Caller applies as a Strength status effect for 1 turn. 0 if relic not held.
    */
   tempStrengthGain: number;
 }
 
 /**
- * Resolves effects that trigger when a card is exhausted.
+ * Resolves effects that trigger when a card is forgotten.
  *
  * @param relicIds - Set of relic IDs the player currently holds.
- * @returns Computed exhaust effects.
+ * @returns Computed forget effects.
  */
-export function resolveExhaustEffects(
+export function resolveForgetEffects(
   relicIds: Set<string>,
-): ExhaustEffects {
+): ForgetEffects {
   let bonusCardDraw = 0;
   let tempStrengthGain = 0;
 
-  // exhaustion_engine — draw 2 when a card is exhausted
+  // exhaustion_engine — draw 2 when a card is forgotten
   if (relicIds.has('exhaustion_engine')) {
     bonusCardDraw += 2;
     playCardAudio('relic-trigger');
   }
 
-  // scavengers_eye (v3) — draw 1 from draw pile when a card is exhausted
+  // scavengers_eye (v3) — draw 1 from draw pile when a card is forgotten
   if (relicIds.has('scavengers_eye')) {
     bonusCardDraw += 1;
     playCardAudio('relic-trigger');
   }
 
-  // tattered_notebook (v3) — gain +1 temporary Strength this turn when a card is exhausted
+  // tattered_notebook (v3) — gain +1 temporary Strength this turn when a card is forgotten
   if (relicIds.has('tattered_notebook')) {
     tempStrengthGain += 1;
     playCardAudio('relic-trigger');

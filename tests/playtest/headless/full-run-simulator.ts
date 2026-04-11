@@ -999,7 +999,7 @@ function handleCombatNode(
     // Bug 6: sync mastery from encounter deck back to persistent runState.deck
     // createDeck() makes copies of cards; mastery upgrades happen on those copies.
     const allEncounterCards = [
-      ...deck.drawPile, ...deck.hand, ...deck.discardPile, ...(deck.exhaustPile ?? [])
+      ...deck.drawPile, ...deck.hand, ...deck.discardPile, ...(deck.forgetPile ?? [])
     ];
     for (const persistentCard of runState.deck) {
       const encounterCard = allEncounterCards.find(c => c.id === persistentCard.id);

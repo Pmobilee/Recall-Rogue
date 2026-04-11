@@ -217,7 +217,7 @@ function makeDeck(overrides: Partial<CardRunState> = {}): CardRunState {
     hand: [],
     drawPile: [],
     discardPile: [],
-    exhaustPile: [],
+    forgetPile: [],
     factCooldown: [],
     ...overrides,
   } as unknown as CardRunState;

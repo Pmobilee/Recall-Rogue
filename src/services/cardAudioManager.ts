@@ -23,7 +23,7 @@ export type CardAudioCue =
   | 'card-select'
   | 'card-deselect'
   | 'card-fizzle'
-  | 'card-exhaust'
+  | 'card-forget'
   | 'charge-initiate'
   | 'double-strike'
   | 'inscription-resolve'
@@ -210,7 +210,7 @@ const CUE_TO_SOUND: Record<CardAudioCue, SoundName> = {
   'card-select': 'card_select',
   'card-deselect': 'card_deselect',
   'card-fizzle': 'card_fizzle',
-  'card-exhaust': 'card_exhaust',
+  'card-forget': 'card_forget',
   'charge-initiate': 'charge_initiate',
   'double-strike': 'double_strike',
   'inscription-resolve': 'inscription_resolve',

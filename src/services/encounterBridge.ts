@@ -8,7 +8,7 @@ import { startEncounter, playCardAction, skipCard, endPlayerTurn, resolveInscrip
 import { initChainSystem } from './chainSystem';
 import { selectRunChainTypes } from '../data/chainTypes';
 import { buildRunPool, recordRunFacts } from './runPoolBuilder';
-import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard } from './deckManager';
+import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, forgetCard } from './deckManager';
 import { createEnemy, snapshotEnemy, hydrateEnemyFromSnapshot, applyEnemyDeltaToState, rollNextIntent } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState } from './runStateStore';
@@ -314,7 +314,7 @@ function cloneDeck(deck: CardRunState): CardRunState {
     drawPile: deck.drawPile.map(cloneCard),
     discardPile: deck.discardPile.map(cloneCard),
     hand: deck.hand.map(cloneCard),
-    exhaustPile: deck.exhaustPile.map(cloneCard),
+    forgetPile: deck.forgetPile.map(cloneCard),
     factPool: [...deck.factPool],
     factCooldown: deck.factCooldown.map((entry) => ({ ...entry })),
   }
@@ -420,7 +420,7 @@ function syncCombatScene(turnState: TurnState): void {
     } else if (retries > 0) {
       setTimeout(() => tryPush(retries - 1), 200);
     } else {
-      // All retries exhausted — release transition to avoid permanent overlay
+      // All retries failed — release transition to avoid permanent overlay
       releaseScreenTransition();
     }
   };
@@ -828,33 +828,33 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
 
   turnState.activePassives = [];
 
-  // Phase 8: Dispatch onEncounterStart callback (e.g. Headmistress Detention — exhaust top-2 mastery cards).
+  // Phase 8: Dispatch onEncounterStart callback (e.g. Headmistress Detention — forget top-2 mastery cards).
   // Called after hand is drawn and relic hooks applied, so we're operating on the real opening hand.
   if (enemy.template.onEncounterStart && activeDeck) {
     const deckArg = {
       hand: activeDeck.hand,
       drawPile: activeDeck.drawPile,
-      exhaustPile: activeDeck.exhaustPile,
+      forgetPile: activeDeck.forgetPile,
     };
-    const idsToExhaust = enemy.template.onEncounterStart(enemy, deckArg);
-    for (const cardId of idsToExhaust) {
+    const idsToForget = enemy.template.onEncounterStart(enemy, deckArg);
+    for (const cardId of idsToForget) {
       // Remove from hand first, then drawPile
       const handIdx = activeDeck.hand.findIndex(c => c.id === cardId);
       if (handIdx !== -1) {
         const [card] = activeDeck.hand.splice(handIdx, 1);
-        activeDeck.exhaustPile.push(card);
+        activeDeck.forgetPile.push(card);
       } else {
         const drawIdx = activeDeck.drawPile.findIndex(c => c.id === cardId);
         if (drawIdx !== -1) {
           const [card] = activeDeck.drawPile.splice(drawIdx, 1);
-          activeDeck.exhaustPile.push(card);
+          activeDeck.forgetPile.push(card);
         }
       }
     }
     // Sync the modified deck back to turnState
     turnState.deck.hand = activeDeck.hand;
     turnState.deck.drawPile = activeDeck.drawPile;
-    turnState.deck.exhaustPile = activeDeck.exhaustPile;
+    turnState.deck.forgetPile = activeDeck.forgetPile;
   }
 
   // Increment generation so any stale 550ms victory/defeat timers from the previous
@@ -996,23 +996,23 @@ export function handlePlayCard(
   const run = get(activeRunState);
 
   // AR-204: Inscription detection — if the played card is an Inscription, register it,
-  // move it from discard to exhaust pile, and mark it as permanently removed from game.
+  // move it from discard to forget pile, and mark it as permanently removed from game.
   // Note: playCardAction already moved the card from hand to discard via deckPlayCard().
   // Skip if blocked (AP insufficient) — card never left hand and inscription was never played.
   if (!result.blocked && playedCard && (playedCard.isInscription || playedCard.mechanicId?.startsWith('inscription_'))) {
     const isWisdomCW = playedCard.mechanicId === 'inscription_wisdom' && playMode === 'charge_wrong';
-    // Wisdom CW = fizzle: do not register the inscription, but still exhaust and mark removed.
+    // Wisdom CW = fizzle: do not register the inscription, but still forget and mark removed.
     if (!isWisdomCW) {
       resolveInscription(result.turnState, playedCard, playMode);
     }
-    // Move card from discard pile to exhaust pile (card was placed in discard by playCard()).
+    // Move card from discard pile to forget pile (card was placed in discard by playCard()).
     const deck = result.turnState.deck;
     const discardIdx = deck.discardPile.findIndex(c => c.id === playedCard.id);
     if (discardIdx !== -1) {
       const [inscriptionCard] = deck.discardPile.splice(discardIdx, 1);
       inscriptionCard.isRemovedFromGame = true;
-      deck.exhaustPile.push(inscriptionCard);
-      playCardAudio('card-exhaust');
+      deck.forgetPile.push(inscriptionCard);
+      playCardAudio('card-forget');
     }
   }
 
@@ -1268,7 +1268,7 @@ export function handlePlayCard(
           ...ts.deck.hand,
           ...ts.deck.drawPile,
           ...ts.deck.discardPile,
-          ...(ts.deck.exhaustPile ?? []),
+          ...(ts.deck.forgetPile ?? []),
         ];
         const cardIdToFactId = new Map<string, string>(
           allDeckCards.filter(c => c.factId).map(c => [c.id, c.factId]),
@@ -1709,14 +1709,14 @@ export function getActiveDeckCards(): Card[] {
     ...activeDeck.drawPile,
     ...activeDeck.hand,
     ...activeDeck.discardPile,
-    ...activeDeck.exhaustPile,
+    ...activeDeck.forgetPile,
   ];
 }
 
 export function getActiveDeckFactIds(): Set<string> {
   if (!activeDeck) return new Set<string>();
   const ids = new Set<string>();
-  for (const pile of [activeDeck.drawPile, activeDeck.hand, activeDeck.discardPile, activeDeck.exhaustPile]) {
+  for (const pile of [activeDeck.drawPile, activeDeck.hand, activeDeck.discardPile, activeDeck.forgetPile]) {
     for (const card of pile) ids.add(card.factId);
   }
   return ids;
@@ -1746,7 +1746,7 @@ export function calculateCardSellPrice(_card: Card): number {
 
 export function sellCardFromActiveDeck(cardId: string): { soldCard: Card | null; gold: number } {
   if (!activeDeck) return { soldCard: null, gold: 0 };
-  const piles: Card[][] = [activeDeck.drawPile, activeDeck.hand, activeDeck.discardPile, activeDeck.exhaustPile];
+  const piles: Card[][] = [activeDeck.drawPile, activeDeck.hand, activeDeck.discardPile, activeDeck.forgetPile];
 
   for (const pile of piles) {
     const index = pile.findIndex((card) => card.id === cardId);

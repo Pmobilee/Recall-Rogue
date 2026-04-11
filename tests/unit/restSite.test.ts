@@ -47,17 +47,17 @@ describe('removeCardFromActiveDeck logic', () => {
   let drawPile: Card[]
   let hand: Card[]
   let discardPile: Card[]
-  let exhaustPile: Card[]
+  let forgetPile: Card[]
 
   beforeEach(() => {
     drawPile = [makeCard('c1'), makeCard('c2')]
     hand = [makeCard('c3'), makeCard('c4')]
     discardPile = [makeCard('c5')]
-    exhaustPile = [makeCard('c6')]
+    forgetPile = [makeCard('c6')]
   })
 
   it('removes a card from the draw pile and returns it', () => {
-    const result = removeFromPiles([drawPile, hand, discardPile, exhaustPile], 'c1')
+    const result = removeFromPiles([drawPile, hand, discardPile, forgetPile], 'c1')
     expect(result).not.toBeNull()
     expect(result!.id).toBe('c1')
     expect(drawPile).toHaveLength(1)
@@ -65,24 +65,24 @@ describe('removeCardFromActiveDeck logic', () => {
   })
 
   it('removes a card from the discard pile', () => {
-    const result = removeFromPiles([drawPile, hand, discardPile, exhaustPile], 'c5')
+    const result = removeFromPiles([drawPile, hand, discardPile, forgetPile], 'c5')
     expect(result).not.toBeNull()
     expect(result!.id).toBe('c5')
     expect(discardPile).toHaveLength(0)
   })
 
   it('removes a card from the exhaust pile', () => {
-    const result = removeFromPiles([drawPile, hand, discardPile, exhaustPile], 'c6')
+    const result = removeFromPiles([drawPile, hand, discardPile, forgetPile], 'c6')
     expect(result).not.toBeNull()
     expect(result!.id).toBe('c6')
-    expect(exhaustPile).toHaveLength(0)
+    expect(forgetPile).toHaveLength(0)
   })
 
   it('returns null for an unknown id and does not mutate any pile', () => {
-    const totalBefore = drawPile.length + hand.length + discardPile.length + exhaustPile.length
-    const result = removeFromPiles([drawPile, hand, discardPile, exhaustPile], 'unknown-id')
+    const totalBefore = drawPile.length + hand.length + discardPile.length + forgetPile.length
+    const result = removeFromPiles([drawPile, hand, discardPile, forgetPile], 'unknown-id')
     expect(result).toBeNull()
-    const totalAfter = drawPile.length + hand.length + discardPile.length + exhaustPile.length
+    const totalAfter = drawPile.length + hand.length + discardPile.length + forgetPile.length
     expect(totalAfter).toBe(totalBefore)
   })
 })

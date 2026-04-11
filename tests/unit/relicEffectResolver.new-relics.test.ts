@@ -17,7 +17,7 @@ import {
   resolveEncounterStartEffects,
   resolveEncounterEndEffects,
   resolveDebuffAppliedModifiers,
-  resolveExhaustEffects,
+  resolveForgetEffects,
 } from '../../src/services/relicEffectResolver';
 import type { AttackContext } from '../../src/services/relicEffectResolver';
 
@@ -185,22 +185,22 @@ describe('thick_skin (v4) — start each encounter with 5 block', () => {
 
 describe('scavengers_eye (v3) — draw 1 card on exhaust', () => {
   it('grants +1 bonusCardDraw on exhaust', () => {
-    const result = resolveExhaustEffects(makeRelics('scavengers_eye'));
+    const result = resolveForgetEffects(makeRelics('scavengers_eye'));
     expect(result.bonusCardDraw).toBe(1);
   });
 
   it('does NOT grant bonus draw when scavengers_eye is not held', () => {
-    const result = resolveExhaustEffects(makeRelics());
+    const result = resolveForgetEffects(makeRelics());
     expect(result.bonusCardDraw).toBe(0);
   });
 
   it('stacks with exhaustion_engine (both held: +3 draw)', () => {
-    const result = resolveExhaustEffects(makeRelics('scavengers_eye', 'exhaustion_engine'));
+    const result = resolveForgetEffects(makeRelics('scavengers_eye', 'exhaustion_engine'));
     expect(result.bonusCardDraw).toBe(3); // 2 from exhaustion_engine + 1 from scavengers_eye
   });
 
   it('does NOT grant tempStrengthGain', () => {
-    const result = resolveExhaustEffects(makeRelics('scavengers_eye'));
+    const result = resolveForgetEffects(makeRelics('scavengers_eye'));
     expect(result.tempStrengthGain).toBe(0);
   });
 });
@@ -209,17 +209,17 @@ describe('scavengers_eye (v3) — draw 1 card on exhaust', () => {
 
 describe('tattered_notebook (v3) — +1 temporary Strength on exhaust', () => {
   it('grants +1 tempStrengthGain on exhaust', () => {
-    const result = resolveExhaustEffects(makeRelics('tattered_notebook'));
+    const result = resolveForgetEffects(makeRelics('tattered_notebook'));
     expect(result.tempStrengthGain).toBe(1);
   });
 
   it('does NOT grant tempStrengthGain when tattered_notebook is not held', () => {
-    const result = resolveExhaustEffects(makeRelics());
+    const result = resolveForgetEffects(makeRelics());
     expect(result.tempStrengthGain).toBe(0);
   });
 
   it('stacks with other exhaust relics on bonusCardDraw (not on tempStrengthGain)', () => {
-    const result = resolveExhaustEffects(makeRelics('tattered_notebook', 'scavengers_eye'));
+    const result = resolveForgetEffects(makeRelics('tattered_notebook', 'scavengers_eye'));
     expect(result.bonusCardDraw).toBe(1); // scavengers_eye only
     expect(result.tempStrengthGain).toBe(1); // tattered_notebook only
   });

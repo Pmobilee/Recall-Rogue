@@ -95,8 +95,8 @@ export interface CardEffectResult {
   gambitselfDamage?: number;
   /** AR-207: Gambit CC heal amount. */
   gambitHeal?: number;
-  /** AR-207: If true, the card should be exhausted after resolution (volatile_slash CC, burnout_shield CC). */
-  exhaustOnResolve?: boolean;
+  /** AR-207: If true, the card should be forgotten after resolution (volatile_slash CC, burnout_shield CC). */
+  forgetOnResolve?: boolean;
   /** AR-207: Knowledge Ward — block is per-domain (value = block per unique domain, resolver sets finalValue). */
   knowledgeWardBlock?: number;
   /**
@@ -185,14 +185,14 @@ export interface CardEffectResult {
   aftershockRepeat?: { mechanicId: string; multiplier: number };
   /** Mimic: mechanic ID to replay and its power multiplier. */
   mimicReplay?: { mechanicId: string; multiplier: number; fromDiscard: boolean };
-  /** Recollect: number of exhausted cards to return to discard pile. */
-  exhaustedCardsToReturn?: number;
+  /** Recollect: number of forgotten cards to return to discard pile. */
+  forgottenCardsToReturn?: number;
   /** Sacrifice: AP gained (can exceed MAX_AP_PER_TURN). */
   sacrificeApGain?: number;
   /** Ironhide: Strength granted and whether it is permanent. */
   ironhideStrength?: { amount: number; permanent: boolean };
-  /** Bulwark / Volatile Slash / Burnout Shield: exhaust this card after resolving. */
-  exhaustAfterPlay?: boolean;
+  /** Bulwark / Volatile Slash / Burnout Shield: forget this card after resolving. */
+  forgetAfterPlay?: boolean;
   /** Archive: number of cards to retain in hand at turn end. */
   archiveRetainCount?: number;
   /** archive_block2_per tag: block bonus applied to each retained card. */
@@ -919,7 +919,7 @@ export function resolveCardEffect(
       }
       // T1.6: forget keyword — Foresight is removed from combat after use (one-per-combat nerf)
       if (hasTag('forget')) {
-        result.exhaustOnResolve = true;
+        result.forgetOnResolve = true;
       }
       return result;
     }
@@ -1486,19 +1486,19 @@ export function resolveCardEffect(
     // Volatile Slash — forget on CC
     case 'volatile_slash': {
       applyAttackDamage(finalValue);
-      // Tag: volatile_no_exhaust — card no longer exhausts on CC.
-      if (isChargeCorrect && !hasTag('volatile_no_exhaust')) {
-        result.exhaustOnResolve = true;
+      // Tag: volatile_no_forget — card no longer exhausts on CC.
+      if (isChargeCorrect && !hasTag('volatile_no_forget')) {
+        result.forgetOnResolve = true;
       }
       return result;
     }
 
-    // Burnout Shield — exhaust on CC unless burnout_no_exhaust tag (L5) is active
+    // Burnout Shield — forget on CC unless burnout_no_forget tag (L5) is active
     case 'burnout_shield': {
       result.shieldApplied = applyShieldRelics(finalValue);
-      // L5: burnout_no_exhaust — card no longer exhausts on CC.
-      if (isChargeCorrect && !hasTag('burnout_no_exhaust')) {
-        result.exhaustOnResolve = true;
+      // L5: burnout_no_forget — card no longer exhausts on CC.
+      if (isChargeCorrect && !hasTag('burnout_no_forget')) {
+        result.forgetOnResolve = true;
       }
       return result;
     }
@@ -1882,13 +1882,13 @@ export function resolveCardEffect(
       return result;
     }
 
-    // Bulwark — mega block; CC exhausts unless bulwark_no_exhaust tag active (L5)
+    // Bulwark — mega block; CC forgets unless bulwark_no_forget tag active (L5)
     case 'bulwark': {
       const bulwarkBlock = applyShieldRelics(finalValue);
       result.shieldApplied = bulwarkBlock;
-      // CC exhausts normally; L5 bulwark_no_exhaust tag skips this
-      if (isChargeCorrect && !hasTag('bulwark_no_exhaust')) {
-        result.exhaustAfterPlay = true;
+      // CC forgets normally; L5 bulwark_no_forget tag skips this
+      if (isChargeCorrect && !hasTag('bulwark_no_forget')) {
+        result.forgetAfterPlay = true;
       }
       return result;
     }
@@ -2075,7 +2075,7 @@ export function resolveCardEffect(
         recollectCount = hasTag('recollect_qp2') ? 2 : 1;
       }
       // Inscriptions (isRemovedFromGame) cannot be Recollected — enforced by turnManager UI filter.
-      result.exhaustedCardsToReturn = recollectCount;
+      result.forgottenCardsToReturn = recollectCount;
       // recollect_upgrade1: returned cards get +1 mastery bump
       if (hasTag('recollect_upgrade1')) {
         result.recollectUpgrade = 1;
@@ -2267,15 +2267,15 @@ export function resolveCardEffect(
       if (isChargeWrong) {
         // Intentional complete fizzle: 3 AP wasted, removed from game, zero effect.
         result.inscriptionFizzled = true;
-        // Card is removed from game — signaled by exhaustOnResolve.
+        // Card is removed from game — signaled by forgetOnResolve.
         // turnManager sets isRemovedFromGame on seeing inscriptionFizzled=true for inscriptions.
-        result.exhaustOnResolve = true;
+        result.forgetOnResolve = true;
         return result;
       }
       // Cursed + QP: 0.7× of "draw 1 extra" rounds to 0 → treat as fizzle
       if (card.isCursed && !isChargeCorrect) {
         result.inscriptionFizzled = true;
-        result.exhaustOnResolve = true;
+        result.forgetOnResolve = true;
         return result;
       }
       const masteryL3Wisdom = (card.masteryLevel ?? 0) >= 3;
@@ -2285,7 +2285,7 @@ export function resolveCardEffect(
         : 0;                        // QP: no heal
       result.inscriptionWisdomActivated = { extraDrawPerCC: extraDraw, healPerCC };
       // Inscription forgets on play and is removed from game (not recyclable via Recollect).
-      result.exhaustOnResolve = true;
+      result.forgetOnResolve = true;
       return result;
     }
 

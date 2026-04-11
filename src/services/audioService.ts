@@ -48,7 +48,7 @@ export type SoundName =
   | 'card_select'
   | 'card_deselect'
   | 'card_fizzle'
-  | 'card_exhaust'
+  | 'card_forget'
   | 'charge_initiate'
   | 'double_strike'
   | 'inscription_resolve'
@@ -304,7 +304,7 @@ const SFX_FILE_MAP: Partial<Record<SoundName, string>> = {
   card_deselect: sfxPath('card_deselect'),
   card_discard: sfxPath('card_discard'),
   card_fizzle: sfxPath('card_fizzle'),
-  card_exhaust: sfxPath('card_exhaust'),
+  card_forget: sfxPath('card_forget'),
   charge_initiate: sfxPath('charge_initiate'),
   double_strike: sfxPath('double_strike'),
   inscription_resolve: sfxPath('inscription_resolve'),
@@ -916,8 +916,8 @@ function playCardFizzle(ctx: AnyAudioContext, master: GainNode): void {
   scheduleNoiseBurst(ctx, master, 0.04, 0.12, now)
 }
 
-/** Card exhaust — paper burning to ash, crackle + descending sizzle. */
-function playCardExhaust(ctx: AnyAudioContext, master: GainNode): void {
+/** Card forget — paper burning to ash, crackle + descending sizzle. */
+function playCardForget(ctx: AnyAudioContext, master: GainNode): void {
   const now = ctx.currentTime
   scheduleNoiseBurst(ctx, master, 0.15, 0.2, now)
   const osc = ctx.createOscillator()
@@ -2893,7 +2893,7 @@ const SOUND_MAP: Record<SoundName, SoundFn> = {
   card_select: playCardSelect,
   card_deselect: playCardDeselect,
   card_fizzle: playCardFizzle,
-  card_exhaust: playCardExhaust,
+  card_forget: playCardForget,
   charge_initiate: playChargeInitiate,
   double_strike: playDoubleStrike,
   inscription_resolve: playInscriptionResolve,

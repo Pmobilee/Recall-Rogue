@@ -227,8 +227,8 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   // Utility (phase 1 promoted)
   {
     id: 'foresight', name: 'Foresight', type: 'utility',
-    description: 'Draw 2 cards.',
-    baseValue: 2, apCost: 0, maxPerPool: 0, tags: ['foresight'], launchPhase: 1, unlockLevel: 0,
+    description: 'Draw 2 cards. Forget: removed from combat after use.',
+    baseValue: 2, apCost: 0, maxPerPool: 0, tags: ['foresight', 'forget'], launchPhase: 1, unlockLevel: 0,
     quickPlayValue: 1, chargeCorrectValue: 3, chargeWrongValue: 1,
     chargeBonusEffect: 'foresight_intent',
   },
@@ -467,18 +467,18 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     quickPlayValue: 4, chargeCorrectValue: 8, chargeWrongValue: 3,
   },
 
-  // Attack — exhaust-on-charge burst
+  // Attack — forget-on-charge burst
   {
     id: 'volatile_slash', name: 'Volatile Slash', type: 'attack',
-    description: 'CC: 30 dmg then EXHAUST this card. QP/CW: standard damage.',
+    description: 'CC: 30 dmg then FORGET this card. QP/CW: standard damage.',
     baseValue: 10, apCost: 1, maxPerPool: 2, tags: ['strike'], launchPhase: 2, unlockLevel: 7,
     quickPlayValue: 5, chargeCorrectValue: 30, chargeWrongValue: 4,
   },
 
-  // Shield — exhaust-on-charge burst (mirror of Volatile Slash)
+  // Shield — forget-on-charge burst (mirror of Volatile Slash)
   {
     id: 'burnout_shield', name: 'Burnout Shield', type: 'shield',
-    description: 'CC: 24 block then EXHAUST this card. QP/CW: standard block.',
+    description: 'CC: 24 block then FORGET this card. QP/CW: standard block.',
     baseValue: 8, apCost: 1, maxPerPool: 2, tags: ['block'], launchPhase: 2, unlockLevel: 7,
     quickPlayValue: 4, chargeCorrectValue: 24, chargeWrongValue: 3,
   },
@@ -618,10 +618,10 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
 
   // ── Shields (3) ──────────────────────────────────────────────────────────
 
-  // Bulwark — mega block, exhausts on CC (L0: 2 AP / 9 block; L3+ no exhaust; L5: 1 AP)
+  // Bulwark — mega block, forgets on CC (L0: 2 AP / 9 block; L3+ no forget; L5: 1 AP)
   {
     id: 'bulwark', name: 'Bulwark', type: 'shield',
-    description: 'QP: 9 block. CC: 16 block then EXHAUST. CW: 5 block.',
+    description: 'QP: 9 block. CC: 16 block then FORGET. CW: 5 block.',
     baseValue: 9, apCost: 2, maxPerPool: 1, tags: ['block'], launchPhase: 2, unlockLevel: 9,
     quickPlayValue: 9, chargeCorrectValue: 16, chargeWrongValue: 5,
   },
@@ -696,10 +696,10 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     quickPlayValue: 1, chargeCorrectValue: 3, chargeWrongValue: 1,
   },
 
-  // Recollect — return exhausted card(s) to discard
+  // Recollect — return forgotten card(s) to discard
   {
     id: 'recollect', name: 'Recollect', type: 'utility',
-    description: 'Return 1 exhausted card to discard pile. CC: return 2. Cannot target Inscriptions.',
+    description: 'Return 1 forgotten card to discard pile. CC: return 2. Cannot target Inscriptions.',
     baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['recover'], launchPhase: 2, unlockLevel: 8,
     quickPlayValue: 1, chargeCorrectValue: 2, chargeWrongValue: 1,
   },
@@ -775,7 +775,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   // Inscription of Wisdom — persistent draw/heal bonus per CC (CW = complete fizzle)
   {
     id: 'inscription_wisdom', name: 'Inscription of Wisdom', type: 'buff',
-    description: 'Exhausts on play. QP: each future CC draws 1 extra. CC: draw 1 extra + heal 1 HP. CW: FIZZLE.',
+    description: 'Forgets on play. QP: each future CC draws 1 extra. CC: draw 1 extra + heal 1 HP. CW: FIZZLE.',
     baseValue: 1, apCost: 2, maxPerPool: 1, tags: ['inscription'], launchPhase: 2, unlockLevel: 1,
     quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 0,
   },

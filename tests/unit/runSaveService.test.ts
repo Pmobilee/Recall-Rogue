@@ -62,7 +62,7 @@ describe('runSaveService', () => {
           drawPile: [rewardCard],
           discardPile: [],
           hand: [],
-          exhaustPile: [],
+          forgetPile: [],
           comboCount: 0,
           currentFloor: 1,
           currentEncounter: 1,

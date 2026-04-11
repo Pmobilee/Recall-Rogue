@@ -498,22 +498,22 @@ describe('shield mechanics — cross-mechanic sanity checks', () => {
 describe('burnout_shield — burnout_no_exhaust tag (L5)', () => {
   it('L4 CC: exhausts normally (no burnout_no_exhaust tag yet)', () => {
     const result = resolve('burnout_shield', 'charge_correct', undefined, undefined, { masteryLevel: 4 });
-    expect(result.exhaustOnResolve).toBe(true);
+    expect(result.forgetOnResolve).toBe(true);
   });
 
   it('L5 CC: does NOT exhaust (burnout_no_exhaust tag active)', () => {
     const result = resolve('burnout_shield', 'charge_correct', undefined, undefined, { masteryLevel: 5 });
-    expect(result.exhaustOnResolve).toBeFalsy();
+    expect(result.forgetOnResolve).toBeFalsy();
   });
 
   it('L5 QP: still does not exhaust (tag only suppresses existing CC exhaust)', () => {
     const result = resolve('burnout_shield', 'quick', undefined, undefined, { masteryLevel: 5 });
-    expect(result.exhaustOnResolve).toBeFalsy();
+    expect(result.forgetOnResolve).toBeFalsy();
   });
 
   it('L5 CW: still does not exhaust', () => {
     const result = resolve('burnout_shield', 'charge_wrong', undefined, undefined, { masteryLevel: 5 });
-    expect(result.exhaustOnResolve).toBeFalsy();
+    expect(result.forgetOnResolve).toBeFalsy();
   });
 
   it('L5 CC: still applies shield (tag only removes exhaust, not the shield)', () => {

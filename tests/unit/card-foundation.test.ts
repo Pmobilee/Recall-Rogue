@@ -265,7 +265,7 @@ describe('deckManager', () => {
     it('starts with empty hand, discard, and exhaust', () => {
       expect(deck.hand.length).toBe(0);
       expect(deck.discardPile.length).toBe(0);
-      expect(deck.exhaustPile.length).toBe(0);
+      expect(deck.forgetPile.length).toBe(0);
     });
 
     it('initializes player stats from balance', () => {
@@ -315,12 +315,12 @@ describe('deckManager', () => {
           drawHand(deck, HAND_SIZE);
         }
         while (deck.hand.length > 0) {
-          exhaustCard(deck, deck.hand[0].id);
+          forgetCard(deck, deck.hand[0].id);
         }
       }
       expect(deck.drawPile.length).toBe(0);
       expect(deck.discardPile.length).toBe(0);
-      expect(deck.exhaustPile.length).toBe(POOL_SIZE);
+      expect(deck.forgetPile.length).toBe(POOL_SIZE);
 
       const drawn = drawHand(deck, 5);
       expect(drawn.length).toBe(0);
@@ -357,14 +357,14 @@ describe('deckManager', () => {
     it('moves card from hand to exhaust pile', () => {
       drawHand(deck, 1);
       const cardId = deck.hand[0].id;
-      exhaustCard(deck, cardId);
+      forgetCard(deck, cardId);
       expect(deck.hand.length).toBe(0);
-      expect(deck.exhaustPile.length).toBe(1);
-      expect(deck.exhaustPile[0].id).toBe(cardId);
+      expect(deck.forgetPile.length).toBe(1);
+      expect(deck.forgetPile[0].id).toBe(cardId);
     });
 
     it('throws if card not in hand', () => {
-      expect(() => exhaustCard(deck, 'nonexistent')).toThrow('not found in hand');
+      expect(() => forgetCard(deck, 'nonexistent')).toThrow('not found in hand');
     });
   });
 
@@ -372,13 +372,13 @@ describe('deckManager', () => {
     it('returns correct counts after various operations', () => {
       drawHand(deck, 3);
       playCard(deck, deck.hand[0].id);
-      exhaustCard(deck, deck.hand[0].id);
+      forgetCard(deck, deck.hand[0].id);
 
       const stats = getDeckStats(deck);
       expect(stats.drawRemaining).toBe(POOL_SIZE - 3);
       expect(stats.handSize).toBe(1);
       expect(stats.discardSize).toBe(1);
-      expect(stats.exhaustedCount).toBe(1);
+      expect(stats.forgottenCount).toBe(1);
     });
   });
 

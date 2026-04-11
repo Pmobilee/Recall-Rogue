@@ -115,7 +115,7 @@ export function createDeck(pool: Card[]): CardRunState {
     drawPile: deckShuffled(pool),
     discardPile: [],
     hand: [],
-    exhaustPile: [],
+    forgetPile: [],
     currentFloor: 1,
     currentEncounter: 0,
     playerHP: PLAYER_START_HP,
@@ -145,7 +145,7 @@ function deprioritizeCooledDownCards(_deck: CardRunState): void {
  *
  * If the draw pile runs out mid-draw, the discard pile is shuffled into the
  * draw pile (Slay the Spire model) and drawing continues. If both piles are
- * exhausted, drawing stops with fewer cards than requested.
+ * empty, drawing stops with fewer cards than requested.
  *
  * @param deck - The current deck state (mutated in place).
  * @param count - Number of cards to draw (default HAND_SIZE = 5).
@@ -411,28 +411,28 @@ export function discardHand(deck: CardRunState): Card[] {
 }
 
 /**
- * Exhausts a card — permanently removes it from the run.
+ * Forgets a card — permanently removes it from the run.
  *
- * The card is moved from the hand to the exhaust pile. Exhausted cards are
+ * The card is moved from the hand to the forget pile. Forgotten cards are
  * never reshuffled back into the draw pile.
  *
- * AR-202 invariant: Cursed cards cannot be exhausted via player choice (Recollect doesn't apply).
+ * AR-202 invariant: Cursed cards cannot be forgotten via player choice (Recollect doesn't apply).
  * The curse persists on the fact ID regardless of card slot removal — deck thinning does NOT
- * remove curses. Inscriptions bypass this invariant and always exhaust on play regardless of cursed state.
- * If "choose to exhaust" mechanics are implemented, they must filter out cursed cards from the picker UI.
+ * remove curses. Inscriptions bypass this invariant and always forget on play regardless of cursed state.
+ * If "choose to forget" mechanics are implemented, they must filter out cursed cards from the picker UI.
  *
  * @param deck - The current deck state (mutated in place).
- * @param cardId - The id of the card to exhaust.
- * @returns The exhausted Card.
+ * @param cardId - The id of the card to forget.
+ * @returns The forgotten Card.
  * @throws Error if the card is not found in the hand.
  */
-export function exhaustCard(deck: CardRunState, cardId: string): Card {
+export function forgetCard(deck: CardRunState, cardId: string): Card {
   const index = deck.hand.findIndex(c => c.id === cardId);
   if (index === -1) {
     throw new Error(`Card ${cardId} not found in hand`);
   }
   const [card] = deck.hand.splice(index, 1);
-  deck.exhaustPile.push(card);
+  deck.forgetPile.push(card);
   return card;
 }
 
@@ -462,7 +462,7 @@ export function getDeckStats(deck: CardRunState): DeckStats {
   return {
     drawRemaining: deck.drawPile.length,
     discardSize: deck.discardPile.length,
-    exhaustedCount: deck.exhaustPile.length,
+    forgottenCount: deck.forgetPile.length,
     handSize: deck.hand.length,
   };
 }

@@ -280,7 +280,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 6  },                                                        // L2
       { qpValue: 8  },                                                        // L3
       { qpValue: 10 },                                                        // L4
-      { qpValue: 12, tags: ['volatile_no_exhaust'] },                      // L5 — no longer exhausts! Repeatable nuke
+      { qpValue: 12, tags: ['volatile_no_forget'] },                      // L5 — no longer forgets! Repeatable nuke
     ],
   },
 
@@ -530,9 +530,9 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 9, apCost: 2 },                                                        // L0: 2 AP for 9 block (CC: 16 block + FORGET)
       { qpValue: 10 },                                                                   // L1
       { qpValue: 12 },                                                                   // L2
-      { qpValue: 12, tags: ['bulwark_no_exhaust'] },                                    // L3: exhaust removed! Still 2 AP
-      { qpValue: 14, tags: ['bulwark_no_exhaust'] },                                    // L4
-      { qpValue: 16, apCost: 1, tags: ['bulwark_no_exhaust'] },                         // L5: 1 AP premium shield, no exhaust
+      { qpValue: 12, tags: ['bulwark_no_forget'] },                                    // L3: forget removed! Still 2 AP
+      { qpValue: 14, tags: ['bulwark_no_forget'] },                                    // L4
+      { qpValue: 16, apCost: 1, tags: ['bulwark_no_forget'] },                         // L5: 1 AP premium shield, no forget
     ],
   },
 
@@ -561,7 +561,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 8, apCost: 1, extras: { str: 2, strPerm: 1 } },  // L5: 1 AP! bumped 7→8
     ],
   },
-  /** burnout_shield: CC exhausts at L0-L4; L5 CC no longer exhausts (burnout_no_exhaust tag). ap=1. Block scales strongly. */
+  /** burnout_shield: CC forgets at L0-L4; L5 CC no longer forgets (burnout_no_forget tag). ap=1. Block scales strongly. */
   burnout_shield: {
     maxLevel: 5,
     levels: [
@@ -570,7 +570,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 7 },                                              // L2
       { qpValue: 9 },                                              // L3
       { qpValue: 11 },                                             // L4
-      { qpValue: 13, tags: ['burnout_no_exhaust'] },               // L5: no longer exhausts (wired 2026-04-10)
+      { qpValue: 13, tags: ['burnout_no_forget'] },               // L5: no longer forgets (wired 2026-04-10)
     ],
   },
 

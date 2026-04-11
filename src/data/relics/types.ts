@@ -47,7 +47,7 @@ export type RelicTrigger =
   | 'on_surge_start'
   | 'on_elite_kill'
   | 'on_hp_loss'        // Player loses HP from any source (enemy attack, self-damage, etc.)
-  | 'on_exhaust'        // A card is exhausted (Inscriptions, Volatile Slash CC, etc.)
+  | 'on_forget'         // A card is forgotten (Inscriptions, Volatile Slash CC, etc.)
   | 'on_discard'        // A card is discarded (end of turn, Swap, Sift, etc.)
   | 'on_chain_break';   // Knowledge chain is broken (different domain played)
 

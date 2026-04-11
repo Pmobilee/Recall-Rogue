@@ -10,6 +10,7 @@ Usage:
     python3 tests/playtest/rl/train.py --timesteps 100000        # Quick test
     python3 tests/playtest/rl/train.py --resume models/latest    # Resume from checkpoint
     python3 tests/playtest/rl/train.py --phase 2                 # Start from specific phase
+    python3 tests/playtest/rl/train.py --timesteps 2000000 --n-envs 4 --model-name rogue_brain_v4_postfix
 
     # Monitor training:
     tensorboard --logdir tests/playtest/rl/logs/
@@ -17,6 +18,7 @@ Usage:
 
 import argparse
 import os
+import shutil
 import sys
 import time
 from datetime import datetime
@@ -140,6 +142,12 @@ def main():
     parser.add_argument("--n-envs", type=int, default=ENV_CONFIG["n_envs"], help="Number of parallel environments")
     parser.add_argument("--correct-rate", type=float, default=None, help="Override correct rate")
     parser.add_argument("--ascension", type=int, default=None, help="Override ascension level")
+    parser.add_argument(
+        "--model-name",
+        type=str,
+        default=None,
+        help="Named alias for the final model (saved to models/<name>.zip alongside the timestamped dir)",
+    )
     args = parser.parse_args()
 
     device = get_device()
@@ -147,6 +155,8 @@ def main():
     print(f"Device: {device}")
     print(f"PyTorch: {torch.__version__}")
     print(f"Parallel envs: {args.n_envs}")
+    if args.model_name:
+        print(f"Model alias: {args.model_name}")
 
     # Setup directories
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -216,9 +226,16 @@ def main():
         )
         elapsed = time.time() - start
 
-        model.save(os.path.join(model_dir, "final"))
+        final_path = os.path.join(model_dir, "final")
+        model.save(final_path)
         print(f"\nTraining complete in {elapsed:.0f}s. Model saved to {model_dir}")
         print(f"Steps/sec: {args.timesteps / elapsed:.0f}")
+
+        # Copy to named alias if requested
+        if args.model_name:
+            alias_path = os.path.join(TRAINING_CONFIG["model_dir"], f"{args.model_name}.zip")
+            shutil.copy2(f"{final_path}.zip", alias_path)
+            print(f"Alias saved: {alias_path}")
 
         train_env.close()
         eval_env.close()
@@ -276,11 +293,19 @@ def main():
     final_path = os.path.join(model_dir, "final")
     model.save(final_path)
 
+    # Copy to named alias if requested
+    if args.model_name:
+        alias_path = os.path.join(TRAINING_CONFIG["model_dir"], f"{args.model_name}.zip")
+        shutil.copy2(f"{final_path}.zip", alias_path)
+        print(f"Alias saved: {alias_path}")
+
     overall_elapsed = time.time() - overall_start
     print(f"\n{'='*60}")
     print(f"  TRAINING COMPLETE")
     print(f"  Total time: {overall_elapsed:.0f}s ({overall_elapsed/60:.1f}min)")
     print(f"  Final model: {final_path}")
+    if args.model_name:
+        print(f"  Named alias: {TRAINING_CONFIG['model_dir']}/{args.model_name}.zip")
     print(f"  TensorBoard: tensorboard --logdir {log_dir}")
     print(f"{'='*60}")
 

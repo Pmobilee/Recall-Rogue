@@ -2311,7 +2311,7 @@ export function playCardAction(
   }
 
   // Volatile Slash / Burnout Shield — forget after resolve
-  if (effect.exhaustOnResolve) {
+  if (effect.forgetOnResolve) {
     // Move card from discard pile to forget pile
     const discIdx = turnState.deck.discardPile.findIndex(c => c.id === cardId);
     if (discIdx !== -1) {
@@ -2675,12 +2675,12 @@ export function playCardAction(
   }
 
   // recollectUpgrade: returned forgotten cards get +N mastery (recollect_upgrade1 tag)
-  if ((effect.recollectUpgrade ?? 0) > 0 && (effect.exhaustedCardsToReturn ?? 0) > 0) {
-    // exhaustedCardsToReturn was already processed by the recollect handler above.
+  if ((effect.recollectUpgrade ?? 0) > 0 && (effect.forgottenCardsToReturn ?? 0) > 0) {
+    // forgottenCardsToReturn was already processed by the recollect handler above.
     // Apply +1 mastery to the most recently returned cards (those just moved to discard from forget pile).
-    // The recollect resolution that moves cards happens in the effect application for exhaustedCardsToReturn.
+    // The recollect resolution that moves cards happens in the effect application for forgottenCardsToReturn.
     // We mark the returned cards by bumping mastery on the LAST N cards added to discard (heuristic).
-    const returnCount = effect.exhaustedCardsToReturn!;
+    const returnCount = effect.forgottenCardsToReturn!;
     const upgradeDelta = effect.recollectUpgrade!;
     const recentlyReturned = turnState.deck.discardPile.slice(-returnCount);
     for (const rc of recentlyReturned) {

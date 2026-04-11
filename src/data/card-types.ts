@@ -109,12 +109,12 @@ export interface Card {
   isCursed?: boolean;
   /**
    * True if this card is an Inscription — played once, persists for rest of combat,
-   * exhausts on play and is permanently removed from game (cannot be Recollected).
+   * forgotten on play and is permanently removed from game (cannot be Recollected).
    * Set at card creation time for inscription mechanic definitions.
    */
   isInscription?: boolean;
   /**
-   * If true, this card was permanently removed from game (Inscription exhaust).
+   * If true, this card was permanently removed from game (Inscription forget).
    * Cannot be Recollected by the Recollect mechanic (AR-208).
    */
   isRemovedFromGame?: boolean;
@@ -146,7 +146,7 @@ export interface CardRunState {
   /** Cards currently in the player's hand */
   hand: Card[];
   /** Cards permanently removed from this run */
-  exhaustPile: Card[];
+  forgetPile: Card[];
   /** Current floor number (1-indexed) */
   currentFloor: number;
   /** Current encounter index within the floor (0-indexed) */
@@ -185,7 +185,7 @@ export interface CardRunState {
 export interface DeckStats {
   drawRemaining: number;
   discardSize: number;
-  exhaustedCount: number;
+  forgottenCount: number;
   handSize: number;
 }
 
