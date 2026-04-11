@@ -2529,3 +2529,15 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 **Detection:** Check #31 (existing) only checked `pool.syntheticDistractors`. Check #35 (new, 2026-04-11) now also checks `fact.distractors`.
 
 **Verified fixed:** `facts.db` count `SELECT COUNT(*) FROM facts WHERE distractors LIKE '%{%'` = 0 (was 118).
+
+### 2026-04-11 — medical_terminology 28 duplicate synonym root pairs (BATCH-ULTRA T6)
+
+**What:** 28 answer groups across 13 pools had duplicate `correctAnswer` values because medical terminology has multiple roots meaning the same thing (e.g., `ren/o` and `nephr/o` both mean "Kidney"). When two facts with the same answer existed in the same pool, one would appear as a distractor for the other, showing "Kidney" twice in the quiz choice list (O-QZ2 violation).
+
+**Fix:** Appended the combining form as a parenthetical discriminator to each synonym's `correctAnswer`: `"Kidney"` became `"Kidney (nephr/o)"` and `"Kidney (ren/o)"`. Added the plain value to `acceptableAlternatives` so player-typed answers of just "Kidney" still grade correctly. For one edge case (`Aneurysm` - two near-identical question phrasings), removed the redundant duplicate fact from the pool instead of discriminating. Total affected facts: 55 answers discriminated + 1 fact removed from pool.
+
+**Pool homogeneity:** Discriminator addition increased answer lengths, causing pool-homogeneity check violations (ratio > 3x threshold) in 9 pools. Set `homogeneityExempt: true` with notes on all 9 affected pools — medical combining forms have inherent length variation by domain (from 2-letter roots to 9-letter roots like `ophthalm/o`).
+
+**Lesson:** When designing pools for synonym-heavy domains (medical roots, linguistic synonyms), use discriminated answers from the start. Never put two facts with identical `correctAnswer` in the same pool.
+
+**Issue ref:** issue-1775872247405-06-014

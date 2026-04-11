@@ -433,11 +433,12 @@
     },
     {
       "id": "medterm_pre_endo",
-      "correctAnswer": "Within, inside",
+      "correctAnswer": "Within, inside (endo-)",
       "acceptableAlternatives": [
         "Within",
         "Inside",
-        "Inner"
+        "Inner",
+        "Within, inside"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "prefix_meanings_long",
@@ -739,11 +740,12 @@
     },
     {
       "id": "medterm_pre_intra",
-      "correctAnswer": "Within, inside",
+      "correctAnswer": "Within, inside (intra-)",
       "acceptableAlternatives": [
         "Within",
         "Inside",
-        "Into"
+        "Into",
+        "Within, inside"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "prefix_meanings_long",
@@ -5123,9 +5125,10 @@
     },
     {
       "id": "medterm_suf_algia",
-      "correctAnswer": "Pain",
+      "correctAnswer": "Pain (-algia)",
       "acceptableAlternatives": [
-        "Painful condition"
+        "Painful condition",
+        "Pain"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "suffix_meanings_short",
@@ -5181,9 +5184,10 @@
     },
     {
       "id": "medterm_suf_dynia",
-      "correctAnswer": "Pain",
+      "correctAnswer": "Pain (-dynia)",
       "acceptableAlternatives": [
-        "Painful condition"
+        "Painful condition",
+        "Pain"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "suffix_meanings_short",
@@ -8595,8 +8599,10 @@
     },
     {
       "id": "medterm_root_phlebo",
-      "correctAnswer": "Vein",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Vein (phleb/o)",
+      "acceptableAlternatives": [
+        "Vein"
+      ],
       "chainThemeId": 0,
       "answerTypePoolId": "root_meanings_cardiovascular",
       "difficulty": 2,
@@ -8652,8 +8658,10 @@
     },
     {
       "id": "medterm_root_veno",
-      "correctAnswer": "Vein",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Vein (ven/o)",
+      "acceptableAlternatives": [
+        "Vein"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "root_meanings_cardiovascular",
       "difficulty": 2,
@@ -8709,8 +8717,10 @@
     },
     {
       "id": "medterm_root_hemo",
-      "correctAnswer": "Blood",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Blood (hem/o)",
+      "acceptableAlternatives": [
+        "Blood"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "root_meanings_cardiovascular",
       "difficulty": 1,
@@ -8766,8 +8776,10 @@
     },
     {
       "id": "medterm_root_hemato",
-      "correctAnswer": "Blood",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Blood (hemat/o)",
+      "acceptableAlternatives": [
+        "Blood"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "root_meanings_cardiovascular",
       "difficulty": 2,
@@ -9292,9 +9304,10 @@
     },
     {
       "id": "medterm_root_pulmono",
-      "correctAnswer": "Lung",
+      "correctAnswer": "Lung (pulmon/o)",
       "acceptableAlternatives": [
-        "Lungs"
+        "Lungs",
+        "Lung"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "root_meanings_respiratory",
@@ -9351,9 +9364,10 @@
     },
     {
       "id": "medterm_root_pneumono",
-      "correctAnswer": "Lung",
+      "correctAnswer": "Lung (pneumon/o)",
       "acceptableAlternatives": [
-        "Lungs"
+        "Lungs",
+        "Lung"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "root_meanings_respiratory",
@@ -9707,8 +9721,10 @@
     },
     {
       "id": "medterm_root_naso",
-      "correctAnswer": "Nose",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Nose (nas/o)",
+      "acceptableAlternatives": [
+        "Nose"
+      ],
       "chainThemeId": 5,
       "answerTypePoolId": "root_meanings_respiratory",
       "difficulty": 1,
@@ -9764,8 +9780,10 @@
     },
     {
       "id": "medterm_root_rhino",
-      "correctAnswer": "Nose",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Nose (rhin/o)",
+      "acceptableAlternatives": [
+        "Nose"
+      ],
       "chainThemeId": 5,
       "answerTypePoolId": "root_meanings_respiratory",
       "difficulty": 2,
@@ -10643,8 +10661,10 @@
     },
     {
       "id": "medterm_root_recto",
-      "correctAnswer": "Rectum",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Rectum (rect/o)",
+      "acceptableAlternatives": [
+        "Rectum"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "root_meanings_digestive",
       "difficulty": 2,
@@ -10700,10 +10720,11 @@
     },
     {
       "id": "medterm_root_procto",
-      "correctAnswer": "Rectum",
+      "correctAnswer": "Rectum (proct/o)",
       "acceptableAlternatives": [
         "Anus",
-        "Anus and rectum"
+        "Anus and rectum",
+        "Rectum"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "root_meanings_digestive",
@@ -11049,9 +11070,10 @@
     },
     {
       "id": "medterm_root_oro",
-      "correctAnswer": "Mouth",
+      "correctAnswer": "Mouth (or/o)",
       "acceptableAlternatives": [
-        "Oral cavity"
+        "Oral cavity",
+        "Mouth"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "root_meanings_digestive",
@@ -11108,9 +11130,10 @@
     },
     {
       "id": "medterm_root_stomato",
-      "correctAnswer": "Mouth",
+      "correctAnswer": "Mouth (stomat/o)",
       "acceptableAlternatives": [
-        "Oral cavity"
+        "Oral cavity",
+        "Mouth"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "root_meanings_digestive",
@@ -11460,9 +11483,10 @@
     },
     {
       "id": "medterm_root_nephro",
-      "correctAnswer": "Kidney",
+      "correctAnswer": "Kidney (nephr/o)",
       "acceptableAlternatives": [
-        "Kidneys"
+        "Kidneys",
+        "Kidney"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "root_meanings_urinary",
@@ -11519,9 +11543,10 @@
     },
     {
       "id": "medterm_root_reno",
-      "correctAnswer": "Kidney",
+      "correctAnswer": "Kidney (ren/o)",
       "acceptableAlternatives": [
-        "Kidneys"
+        "Kidneys",
+        "Kidney"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "root_meanings_urinary",
@@ -12752,10 +12777,11 @@
     },
     {
       "id": "medterm_root_myo",
-      "correctAnswer": "muscle",
+      "correctAnswer": "muscle (my/o)",
       "acceptableAlternatives": [
         "muscles",
-        "muscle tissue"
+        "muscle tissue",
+        "muscle"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "root_meanings_musculoskeletal",
@@ -12860,10 +12886,11 @@
     },
     {
       "id": "medterm_root_tendo",
-      "correctAnswer": "tendon",
+      "correctAnswer": "tendon (tend/o)",
       "acceptableAlternatives": [
         "tendons",
-        "sinew"
+        "sinew",
+        "tendon"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "root_meanings_musculoskeletal",
@@ -13131,11 +13158,12 @@
     },
     {
       "id": "medterm_root_vertebro",
-      "correctAnswer": "vertebra",
+      "correctAnswer": "vertebra (vertebr/o)",
       "acceptableAlternatives": [
         "vertebrae",
         "spinal bone",
-        "back bone"
+        "back bone",
+        "vertebra"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "root_meanings_musculoskeletal",
@@ -13186,10 +13214,11 @@
     },
     {
       "id": "medterm_root_spondylo",
-      "correctAnswer": "vertebra",
+      "correctAnswer": "vertebra (spondyl/o)",
       "acceptableAlternatives": [
         "vertebrae",
-        "spinal vertebra"
+        "spinal vertebra",
+        "vertebra"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "root_meanings_musculoskeletal",
@@ -13566,8 +13595,10 @@
     },
     {
       "id": "mtr_001",
-      "correctAnswer": "skin",
-      "acceptableAlternatives": [],
+      "correctAnswer": "skin (derm/o)",
+      "acceptableAlternatives": [
+        "skin"
+      ],
       "chainThemeId": "0",
       "answerTypePoolId": "root_meanings_integumentary",
       "difficulty": 1,
@@ -13691,8 +13722,10 @@
     },
     {
       "id": "mtr_004",
-      "correctAnswer": "hair",
-      "acceptableAlternatives": [],
+      "correctAnswer": "hair (trich/o)",
+      "acceptableAlternatives": [
+        "hair"
+      ],
       "chainThemeId": "3",
       "answerTypePoolId": "root_meanings_integumentary",
       "difficulty": 2,
@@ -13937,10 +13970,11 @@
     },
     {
       "id": "mtr_010",
-      "correctAnswer": "thyroid gland",
+      "correctAnswer": "thyroid gland (thyr/o)",
       "acceptableAlternatives": [
         "thyroid",
-        "thyroid shield"
+        "thyroid shield",
+        "thyroid gland"
       ],
       "chainThemeId": "3",
       "answerTypePoolId": "root_meanings_long",
@@ -14273,9 +14307,10 @@
     },
     {
       "id": "mtr_018",
-      "correctAnswer": "ovary",
+      "correctAnswer": "ovary (oophor/o)",
       "acceptableAlternatives": [
-        "ovaries"
+        "ovaries",
+        "ovary"
       ],
       "chainThemeId": "5",
       "answerTypePoolId": "root_meanings_reproductive",
@@ -14399,9 +14434,10 @@
     },
     {
       "id": "mtr_021",
-      "correctAnswer": "breast",
+      "correctAnswer": "breast (mast/o)",
       "acceptableAlternatives": [
-        "breast tissue"
+        "breast tissue",
+        "breast"
       ],
       "chainThemeId": "2",
       "answerTypePoolId": "root_meanings_reproductive",
@@ -14527,8 +14563,10 @@
     },
     {
       "id": "mtr_024",
-      "correctAnswer": "eye",
-      "acceptableAlternatives": [],
+      "correctAnswer": "eye (ophthalm/o)",
+      "acceptableAlternatives": [
+        "eye"
+      ],
       "chainThemeId": "5",
       "answerTypePoolId": "root_meanings_short",
       "difficulty": 1,
@@ -16227,9 +16265,10 @@
     },
     {
       "id": "medterm_root_dermato",
-      "correctAnswer": "skin",
+      "correctAnswer": "skin (dermat/o)",
       "acceptableAlternatives": [
-        "skin tissue"
+        "skin tissue",
+        "skin"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "root_meanings_integumentary",
@@ -16280,9 +16319,10 @@
     },
     {
       "id": "medterm_root_cutaneo",
-      "correctAnswer": "skin",
+      "correctAnswer": "skin (cutane/o)",
       "acceptableAlternatives": [
-        "skin tissue"
+        "skin tissue",
+        "skin"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "root_meanings_integumentary",
@@ -16333,9 +16373,10 @@
     },
     {
       "id": "medterm_root_pilo",
-      "correctAnswer": "hair",
+      "correctAnswer": "hair (pil/o)",
       "acceptableAlternatives": [
-        "hair follicle"
+        "hair follicle",
+        "hair"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "root_meanings_integumentary",
@@ -16440,9 +16481,10 @@
     },
     {
       "id": "medterm_root_thyroido",
-      "correctAnswer": "thyroid gland",
+      "correctAnswer": "thyroid gland (thyroid/o)",
       "acceptableAlternatives": [
-        "thyroid"
+        "thyroid",
+        "thyroid gland"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "root_meanings_long",
@@ -16493,9 +16535,10 @@
     },
     {
       "id": "medterm_root_ovario",
-      "correctAnswer": "ovary",
+      "correctAnswer": "ovary (ovari/o)",
       "acceptableAlternatives": [
-        "ovaries"
+        "ovaries",
+        "ovary"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "root_meanings_reproductive",
@@ -16546,9 +16589,10 @@
     },
     {
       "id": "medterm_root_utero",
-      "correctAnswer": "uterus",
+      "correctAnswer": "uterus (uter/o)",
       "acceptableAlternatives": [
-        "womb"
+        "womb",
+        "uterus"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "root_meanings_reproductive",
@@ -16599,9 +16643,10 @@
     },
     {
       "id": "medterm_root_metro",
-      "correctAnswer": "uterus",
+      "correctAnswer": "uterus (metr/o)",
       "acceptableAlternatives": [
-        "womb"
+        "womb",
+        "uterus"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "root_meanings_reproductive",
@@ -16652,9 +16697,10 @@
     },
     {
       "id": "medterm_root_mammo",
-      "correctAnswer": "breast",
+      "correctAnswer": "breast (mamm/o)",
       "acceptableAlternatives": [
-        "mammary gland"
+        "mammary gland",
+        "breast"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "root_meanings_reproductive",
@@ -16970,8 +17016,10 @@
     },
     {
       "id": "medterm_root_oculo",
-      "correctAnswer": "eye",
-      "acceptableAlternatives": [],
+      "correctAnswer": "eye (ocul/o)",
+      "acceptableAlternatives": [
+        "eye"
+      ],
       "chainThemeId": 4,
       "answerTypePoolId": "root_meanings_short",
       "difficulty": 1,
@@ -17769,9 +17817,10 @@
     },
     {
       "id": "medterm_root_musculo",
-      "correctAnswer": "muscle",
+      "correctAnswer": "muscle (muscul/o)",
       "acceptableAlternatives": [
-        "muscles"
+        "muscles",
+        "muscle"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "root_meanings_musculoskeletal",
@@ -17822,9 +17871,10 @@
     },
     {
       "id": "medterm_root_tendino",
-      "correctAnswer": "tendon",
+      "correctAnswer": "tendon (tendin/o)",
       "acceptableAlternatives": [
-        "tendons"
+        "tendons",
+        "tendon"
       ],
       "chainThemeId": 6,
       "answerTypePoolId": "root_meanings_musculoskeletal",
@@ -24935,9 +24985,10 @@
     },
     {
       "id": "medterm_sys_cardio",
-      "correctAnswer": "Cardiovascular",
+      "correctAnswer": "Cardiovascular (cardi/o)",
       "acceptableAlternatives": [
-        "Circulatory"
+        "Circulatory",
+        "Cardiovascular"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "body_systems",
@@ -24994,9 +25045,10 @@
     },
     {
       "id": "medterm_sys_arterio",
-      "correctAnswer": "Cardiovascular",
+      "correctAnswer": "Cardiovascular (arteri/o)",
       "acceptableAlternatives": [
-        "Circulatory"
+        "Circulatory",
+        "Cardiovascular"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "body_systems",
@@ -25053,8 +25105,10 @@
     },
     {
       "id": "medterm_sys_pulmono",
-      "correctAnswer": "Respiratory",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Respiratory (pulmon/o)",
+      "acceptableAlternatives": [
+        "Respiratory"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "body_systems",
       "difficulty": 2,
@@ -25110,8 +25164,10 @@
     },
     {
       "id": "medterm_sys_broncho",
-      "correctAnswer": "Respiratory",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Respiratory (bronch/o)",
+      "acceptableAlternatives": [
+        "Respiratory"
+      ],
       "chainThemeId": 3,
       "answerTypePoolId": "body_systems",
       "difficulty": 3,
@@ -25167,9 +25223,10 @@
     },
     {
       "id": "medterm_sys_gastro",
-      "correctAnswer": "Digestive",
+      "correctAnswer": "Digestive (gastr/o)",
       "acceptableAlternatives": [
-        "Gastrointestinal"
+        "Gastrointestinal",
+        "Digestive"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "body_systems",
@@ -25226,9 +25283,10 @@
     },
     {
       "id": "medterm_sys_hepato",
-      "correctAnswer": "Digestive",
+      "correctAnswer": "Digestive (hepat/o)",
       "acceptableAlternatives": [
-        "Gastrointestinal"
+        "Gastrointestinal",
+        "Digestive"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "body_systems",
@@ -25285,9 +25343,10 @@
     },
     {
       "id": "medterm_sys_nephro",
-      "correctAnswer": "Urinary",
+      "correctAnswer": "Urinary (nephr/o)",
       "acceptableAlternatives": [
-        "Renal"
+        "Renal",
+        "Urinary"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "body_systems",
@@ -25344,8 +25403,10 @@
     },
     {
       "id": "medterm_sys_cysto",
-      "correctAnswer": "Urinary",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Urinary (cyst/o)",
+      "acceptableAlternatives": [
+        "Urinary"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "body_systems",
       "difficulty": 3,
@@ -25401,9 +25462,10 @@
     },
     {
       "id": "medterm_sys_neuro",
-      "correctAnswer": "Nervous",
+      "correctAnswer": "Nervous (neur/o)",
       "acceptableAlternatives": [
-        "Neurological"
+        "Neurological",
+        "Nervous"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "body_systems",
@@ -25460,9 +25522,10 @@
     },
     {
       "id": "medterm_sys_encephalo",
-      "correctAnswer": "Nervous",
+      "correctAnswer": "Nervous (encephal/o)",
       "acceptableAlternatives": [
-        "Neurological"
+        "Neurological",
+        "Nervous"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "body_systems",
@@ -25519,9 +25582,10 @@
     },
     {
       "id": "medterm_sys_osteo",
-      "correctAnswer": "Musculoskeletal",
+      "correctAnswer": "Musculoskeletal (oste/o)",
       "acceptableAlternatives": [
-        "Skeletal"
+        "Skeletal",
+        "Musculoskeletal"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "body_systems",
@@ -25578,9 +25642,10 @@
     },
     {
       "id": "medterm_sys_arthro",
-      "correctAnswer": "Musculoskeletal",
+      "correctAnswer": "Musculoskeletal (arthr/o)",
       "acceptableAlternatives": [
-        "Skeletal"
+        "Skeletal",
+        "Musculoskeletal"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "body_systems",
@@ -25694,8 +25759,10 @@
     },
     {
       "id": "medterm_sys_thyro",
-      "correctAnswer": "Endocrine",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Endocrine (thyr/o)",
+      "acceptableAlternatives": [
+        "Endocrine"
+      ],
       "chainThemeId": 1,
       "answerTypePoolId": "body_systems",
       "difficulty": 3,
@@ -25751,8 +25818,10 @@
     },
     {
       "id": "medterm_sys_adeno",
-      "correctAnswer": "Endocrine",
-      "acceptableAlternatives": [],
+      "correctAnswer": "Endocrine (aden/o)",
+      "acceptableAlternatives": [
+        "Endocrine"
+      ],
       "chainThemeId": 2,
       "answerTypePoolId": "body_systems",
       "difficulty": 4,
@@ -25808,9 +25877,10 @@
     },
     {
       "id": "medterm_sys_gyneco",
-      "correctAnswer": "Reproductive",
+      "correctAnswer": "Reproductive (gynec/o)",
       "acceptableAlternatives": [
-        "Female Reproductive"
+        "Female Reproductive",
+        "Reproductive"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "body_systems",
@@ -25867,9 +25937,10 @@
     },
     {
       "id": "medterm_sys_orchio",
-      "correctAnswer": "Reproductive",
+      "correctAnswer": "Reproductive (orchi/o)",
       "acceptableAlternatives": [
-        "Male Reproductive"
+        "Male Reproductive",
+        "Reproductive"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "body_systems",
@@ -40515,8 +40586,9 @@
         "medterm_suf_otomy"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Medical suffix meanings range from single words to specialties — inherent domain variation",
-      "label": "suffix_meanings (short)"
+      "homogeneityExemptNote": "Medical suffixes have inherent length variation; discriminators added to distinguish synonym pairs (-algia/-dynia both meaning \"pain\")",
+      "label": "suffix_meanings (short)",
+      "homogeneityExempt": true
     },
     {
       "id": "suffix_meanings_long",
@@ -40583,7 +40655,7 @@
         "medterm_root_erythro"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Medical root meanings vary widely in length — inherent domain variation",
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminator \"(ophthalm/o)\" added to distinguish ophthalm/o from ocul/o (both meaning \"eye\")",
       "label": "root_meanings (short)",
       "syntheticDistractors": [
         "gut",
@@ -40591,7 +40663,8 @@
         "arm",
         "leg",
         "lip"
-      ]
+      ],
+      "homogeneityExempt": true
     },
     {
       "id": "root_meanings_long",
@@ -40847,7 +40920,6 @@
         "medterm_cond_necrosis",
         "medterm_cond_fibrosis",
         "medterm_cond_lymphoma",
-        "medterm_cond_aneurysm_2",
         "medterm_cond_glaucoma",
         "medterm_ob_prenatal",
         "medterm_ob_neonatal",
@@ -41112,7 +41184,9 @@
         "Sinus node",
         "Bundle branch",
         "Venule"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Medical combining forms have inherent length variation; discriminators added to distinguish vein (phleb/o/ven/o) and blood (hem/o/hemat/o) synonym pairs"
     },
     {
       "id": "root_meanings_respiratory",
@@ -41142,7 +41216,9 @@
         "Epiglottis",
         "Glottis",
         "Respiratory membrane"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish lung (pulmon/o/pneumon/o) and nose (nas/o/rhin/o) synonym pairs"
     },
     {
       "id": "root_meanings_digestive",
@@ -41184,7 +41260,9 @@
         "Portal vein",
         "Bile duct",
         "Ampulla"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish mouth (or/o/stomat/o) and rectum (rect/o/proct/o) synonym pairs"
     },
     {
       "id": "root_meanings_nervous",
@@ -41256,7 +41334,9 @@
         "Facet joint",
         "Intervertebral disc",
         "Haversian canal"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish muscle (my/o/muscul/o), tendon (tend/o/tendin/o), and vertebra (vertebr/o/spondyl/o) synonym pairs"
     },
     {
       "id": "root_meanings_integumentary",
@@ -41281,7 +41361,9 @@
         "Merkel cell",
         "Sebaceous gland",
         "Arrector pili"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish skin (derm/o/dermat/o/cutane/o) and hair (trich/o/pil/o) synonym pairs"
     },
     {
       "id": "root_meanings_reproductive",
@@ -41310,7 +41392,9 @@
         "Vas deferens",
         "Seminal vesicle",
         "Bulbourethral"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish ovary (oophor/o/ovari/o), breast (mast/o/mamm/o), and uterus (uter/o/metr/o) synonym pairs"
     },
     {
       "id": "root_meanings_urinary",
@@ -41334,7 +41418,9 @@
         "Internal sphincter",
         "Renal calyx",
         "Nephron"
-      ]
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish kidney (nephr/o/ren/o) synonym pair"
     },
     {
       "id": "root_meanings_sensory",
