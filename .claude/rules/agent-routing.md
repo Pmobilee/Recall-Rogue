@@ -73,7 +73,16 @@ Do NOT pass `isolation: "worktree"` to `Agent` calls by default. Sub-agents work
 8. **Autonomy charter.** "Follow `.claude/rules/autonomy-charter.md`. Default to action, not interrogation. Never report work as 'deferred' — fix Green-zone issues in the same commit. Only come back with a question if a Red-zone action is required."
 9. **Player-experience lens.** "Follow `.claude/rules/player-experience-lens.md`. Mentally play the affected screen as a new player and as a veteran before returning."
 10. **Creative pass.** "Follow `.claude/rules/creative-pass.md`. Return with the 3-item Creative Pass filled in. A result without it is incomplete."
-11. **The specific task description.**
+11. **Self-verification paste (MANDATORY for data-mutating work).** "Before returning your summary, run a ground-truth verification command for every claim that touches data files — commits, registry stamps, deck JSON edits, script creation, file deletions. Paste the raw command output (not a description, not a paraphrase) into your final report under a `## Self-Verification` heading. For:
+    - **File edits** → `git diff <file> | head -30`
+    - **New files** → `ls -la <file>` and `wc -l <file>`
+    - **Commits** → `git log -1 --stat`
+    - **Registry stamps** → a `node -e` one-liner that counts the stamps you claim landed, e.g. `node -e \"const r=JSON.parse(require('fs').readFileSync('data/inspection-registry.json','utf8')); console.log(Object.values(r.tables.decks).filter(d=>d.lastQuizAudit==='2026-04-11').length)\"`
+    - **Audit results** → the exact script stdout, not a summary of it
+    - **Build / typecheck** → the final `ERRORS N WARNINGS M` line (or the full error list if non-zero)
+
+    If you cannot verify a claim, say so explicitly: 'unable to verify X because Y'. Returning a success summary without a `## Self-Verification` section for data-mutating claims is a hard failure — the orchestrator will re-run ground-truth checks regardless, and a missing self-verification section is treated as evidence the work did not land. See `docs/gotchas.md` 2026-04-11 for the sub-agent stamping incident that prompted this rule."
+12. **The specific task description.**
 
 ## Post-Sub-Agent Verification — MANDATORY
 
@@ -105,3 +114,4 @@ After any visual/rendering change: spawn ui-agent with `/visual-inspect`, OR use
 - ❌ Skipping the agent definition read step because "it's a small change."
 - ❌ Trusting a sub-agent's return summary without `git status` + `git diff` + sample read-back.
 - ❌ Re-stating the Sub-Agent Prompt Template in any other rule or agent definition. Always reference this file.
+- ❌ Sub-agent returning a success summary without a `## Self-Verification` paste for every data-mutating claim. The orchestrator will re-verify regardless — a missing self-verification section is evidence of either a silent failure or a skipped check, both of which are hard failures.
