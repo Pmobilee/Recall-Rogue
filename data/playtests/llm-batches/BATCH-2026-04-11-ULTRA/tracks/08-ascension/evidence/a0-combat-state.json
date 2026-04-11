@@ -1,0 +1,29 @@
+{
+  "ascensionLevel": 0,
+  "source": "docker-warm-container-eval",
+  "turnState": {
+    "ascensionLevel": 0,
+    "ascensionEnemyDamageMultiplier": 1.0,
+    "ascensionShieldCardMultiplier": 1.0,
+    "ascensionWrongAnswerSelfDamage": 0,
+    "ascensionBaseTimerPenaltySeconds": 0
+  },
+  "runState": {
+    "ascensionLevel": 0,
+    "playerMaxHp": 100
+  },
+  "combatState": {
+    "playerHp": 100,
+    "playerMaxHp": 100,
+    "enemyName": "Page Flutter",
+    "enemyHp": 32,
+    "enemyMaxHp": 32,
+    "enemyIntent": {
+      "type": "attack",
+      "value": 9,
+      "displayDamage": 14,
+      "telegraph": "Swooping strike"
+    }
+  },
+  "notes": "A0 baseline - no ascension modifiers active. Enemy HP 32, intent displayDamage 14."
+}

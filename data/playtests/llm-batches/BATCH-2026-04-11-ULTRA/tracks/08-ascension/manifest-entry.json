@@ -1,0 +1,55 @@
+{
+  "track": "08-ascension",
+  "batch": "BATCH-2026-04-11-ULTRA",
+  "completedAt": "2026-04-11T02:15:00Z",
+  "ascensionsTested": 5,
+  "levelNames": [
+    "No Ascension (A0)",
+    "Lean Start (A5)",
+    "Cursed Start (A10)",
+    "Boss Rush (A15)",
+    "Heart of the Archive (A20)"
+  ],
+  "divergencesFound": 1,
+  "issueCount": 4,
+  "issuesBySeverity": {
+    "critical": 1,
+    "high": 0,
+    "medium": 2,
+    "low": 1,
+    "cosmetic": 0
+  },
+  "verificationMethods": [
+    "headless-sim-300-runs-developing",
+    "headless-sim-300-runs-experienced",
+    "code-analysis-ascension-ts",
+    "docker-visual-a0-only"
+  ],
+  "dockerVisualStatus": "partial",
+  "dockerVisualNote": "A0 captured; A5-A20 visual capture failed due to warm-container crash on combat scenario load",
+  "simResults": {
+    "developing": {
+      "A0": { "winRate": 0.63, "avgRooms": 22.3, "survivorHp": 73 },
+      "A5": { "winRate": 0.21, "avgRooms": 18.3, "survivorHp": 55 },
+      "A10": { "winRate": 0.11, "avgRooms": 11.2, "survivorHp": 70 },
+      "A15": { "winRate": 0.03, "avgRooms": 8.1, "survivorHp": 62 },
+      "A20": { "winRate": 0.00, "avgRooms": 2.9, "survivorHp": 0 }
+    },
+    "experienced": {
+      "A0": { "winRate": 0.93, "avgRooms": 23.5, "survivorHp": 97 },
+      "A5": { "winRate": 0.79, "avgRooms": 22.4, "survivorHp": 83 },
+      "A10": { "winRate": 0.70, "avgRooms": 21.1, "survivorHp": 85 },
+      "A15": { "winRate": 0.58, "avgRooms": 19.3, "survivorHp": 67 },
+      "A20": { "winRate": 0.01, "avgRooms": 4.9, "survivorHp": 86 }
+    }
+  },
+  "verdictPerLevel": {
+    "A0": "PASS",
+    "A5": "PASS",
+    "A10": "PASS",
+    "A15": "PASS",
+    "A20": "CONDITIONAL_PASS"
+  },
+  "overallVerdict": "PASS with 1 critical tool bug and 1 infrastructure limitation",
+  "criticalFinding": "scenarioSimulator.ts::bootstrapRun() does not apply config.ascension to createRunState(). Scenario tool label/runtime divergence for ascension level."
+}

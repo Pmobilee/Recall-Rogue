@@ -1,0 +1,171 @@
+LAYOUT DUMP  2026-04-11T01:38:14.201Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (CombatScene) ──────────
+  [Container] relicContainer                     (38, 54)                depth:0  children:0
+  [Image] combatBackground                       (960, 540)  1939x1091   depth:0  frame:__BASE  tex:bg-enemy-page_flutter-landscape
+  [Graphics] vignetteGfx                         (0, 0)                  depth:1
+  [Graphics] edgeGlowTop                         (0, 0)                  depth:2  α:0.00
+  [Graphics] edgeGlowLeft                        (0, 0)                  depth:2  α:0.00
+  [Graphics] edgeGlowRight                       (0, 0)                  depth:2  α:0.00
+  [Rectangle] moodVignetteOverlay                (960, 540)  1920x1080   depth:2
+  [Graphics] nearDeathVignette                   (0, 0)                  depth:3  α:0.00
+  [Container]                                    (961, 487.5)  306x307   depth:5  children:6
+    [Image]                                      (4, 5)  300x300         depth:0  frame:__BASE  tex:enemy-page_flutter-idle  α:0.25
+    [Image]                                      (-2, 0)  300x300        depth:0  frame:__BASE  tex:enemy-page_flutter-idle  α:0.90
+    [Image]                                      (2, 0)  300x300         depth:0  frame:__BASE  tex:enemy-page_flutter-idle  α:0.90
+    [Image]                                      (0, -2)  300x300        depth:0  frame:__BASE  tex:enemy-page_flutter-idle  α:0.90
+    [Image]                                      (0, 2)  300x300         depth:0  frame:__BASE  tex:enemy-page_flutter-idle  α:0.90
+    [Image]                                      (0, 0)  300x300         depth:0  frame:__BASE  tex:enemy-page_flutter-idle
+  [Graphics] enemyHpBarBg                        (566, 117)  788x69      depth:10
+  [Graphics] enemyHpBarFill                      (566, 117)  788x69      depth:11
+  [Graphics] damagePreviewGfx                    (0, 0)                  depth:11
+  [Graphics] enemyBlockBarFill                   (0, 0)                  depth:12
+  [Text] enemyHpText                             (960, 151)  788x58      depth:13  "32 / 32"
+  [Container]                                    (0, 0)                  depth:13  children:0
+  [Rectangle] entryFadeRect                      (960, 540)  1920x1080   depth:995  α:0.00
+  [Image]                                        (-999, -999)  250x500   depth:996  frame:__BASE  tex:weapon-sword-canvas  α:0.00
+  [Container]                                    (1440, 1473.9162931138794)  1042x1130  depth:996  children:3  α:0.00
+    [Image]                                      (0, 138)  965x826       depth:0  frame:__BASE  tex:weapon-arm
+    [Image]                                      (0, -207)  1042x745     depth:0  frame:__BASE  tex:weapon-tome  α:0.00
+    [Image]                                      (0, -207)  965x690      depth:0  frame:__BASE  tex:weapon-tome
+  [Image]                                        (480, 1660)  758x1027   depth:996  frame:__BASE  tex:weapon-shield  α:0.00
+  [ParticleEmitter] particles                    (0, 0)                  depth:998
+  [Rectangle] flashRect                          (960, 540)  1920x1080   depth:999
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.topbar.svelte-1ramr3r]                                    (0, 0)  1920x49         HIDDEN
+      [div.hp-group.svelte-1ramr3r]                                (18, 9)  622x28       
+        [div.hp-bar-track.svelte-1ramr3r]                          (18, 9)  622x28       
+          [div.hp-bar-fill.svelte-1ramr3r]                         (19, 10)  620x26      
+          [span.hp-text.svelte-1ramr3r]                            (19, 15)  620x15      
+            [span.hp-value.svelte-1ramr3r]                         (297, 15)  64x15        "100/100"
+      [span.segment-name.svelte-1ramr3r]                           (1393, 15)  99x16       "Shallow Depths"
+      [span.progress-divider.svelte-1ramr3r]                       (1503, 17)  3x13        "·"
+      [span.floor-label.svelte-1ramr3r]                            (1518, 15)  38x16       "Floor 1"
+      [div.gold-counter.svelte-1ramr3r]                            (1581, -1)  68x48     
+        [span.gold-value.svelte-1ramr3r]                           (1612, 15)  36x15       "0"
+      [div.relics-row.svelte-1ramr3r]                              (1660, 7)  176x32     
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1660, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1696, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1732, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1768, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1804, 7)  32x32      
+      [button.pause-btn.svelte-1ramr3r]                            (1854, -1)  48x48     
+        [span.pause-icon.svelte-1ramr3r]                           (1861, 9)  33x27        "⚙"
+    [div.fog-wing-wrapper.svelte-1ramr3r.fog-wing-flow]            (0, 49)  672x48         HIDDEN
+    [canvas]                                                       (0, 0)                  HIDDEN
+    [div.card-combat-overlay.svelte-1a9rptt.layout-landscape]      (0, 0)  1920x1080       HIDDEN
+      [div.relic-tray.svelte-sj93q6]                               (0, 0)                  HIDDEN
+        [div.relic-empty-state.svelte-sj93q6]                      (0, 0)                  HIDDEN
+          [span.relic-empty-icon.svelte-sj93q6]                    (0, 0)                  "◇"  HIDDEN
+          [span.relic-empty-label.svelte-sj93q6]                   (0, 0)                  "No relics"  HIDDEN
+      [div.enemy-name-header.svelte-1a9rptt]                       (0, 70)  1920x38        "Page Flutter"  HIDDEN
+      [span.ap-number.svelte-1a9rptt]                              (0, 0)                  "3"  HIDDEN
+      [span.ap-label.svelte-1a9rptt]                               (0, 0)                  "AP"  HIDDEN
+      [div.pile-card-stack.svelte-1a9rptt]                         (37, 635)  66x92      
+      [div.pile-card-stack.svelte-1a9rptt]                         (39, 633)  66x92      
+      [span.pile-count-label.svelte-1a9rptt]                       (24, 744)  92x43        "5"
+      [div.pile-indicator.discard-pile-indicator.svelte-1a9rptt]   (1804, 623)  92x164     HIDDEN
+        [div.pile-card-stack.svelte-1a9rptt.pile-empty]            (1817, 635)  66x92    
+        [span.pile-count-label.svelte-1a9rptt]                     (1804, 744)  92x43      "0"
+      [div.enemy-intent-bubble.svelte-1a9rptt]                     (396, 302)  234x100     HIDDEN
+        [div.intent-bubble-name.svelte-1a9rptt]                    (425, 319)  176x42    
+          [img.intent-icon-img.svelte-1a9rptt]                     (425, 319)  42x42     
+          [span.intent-icon-fallback.svelte-1a9rptt]               (0, 0)                  "⚔️"  HIDDEN
+          [strong.intent-attack-name.svelte-1a9rptt]               (476, 330)  125x20      "Swooping strike"
+        [div.intent-detail-line.svelte-1a9rptt]                    (437, 367)  152x18      "Attacking for 14 damage"
+      [div.player-status-strip.svelte-1a9rptt]                     (0, 0)                  HIDDEN
+        [div.player-hp-track.svelte-1a9rptt]                       (0, 0)                  HIDDEN
+          [div.player-hp-fill.svelte-1a9rptt]                      (0, 0)                  HIDDEN
+          [span.player-hp-text.svelte-1a9rptt]                     (0, 0)                  "100/100"  HIDDEN
+      [div.player-ap-right.svelte-1a9rptt.ap-active]               (312, 999)  72x57       HIDDEN
+        [span.ap-num.svelte-1a9rptt]                               (343, 1018)  11x19      "3"
+      [div] data-testid="active-chain-bar"                         (18, 823)  181x35     
+        [span.chain-name.svelte-3qjn8k]                            (51, 830)  54x21        "Amber"
+        [span.chain-hint.svelte-3qjn8k]                            (112, 834)  74x14       "Play to chain!"
+      [div.card-hand-landscape.svelte-98ebis]                      (0, 702)  1920x378      HIDDEN
+        [button] data-testid="card-hand-0"                         (557, 872)  281x364   
+          [div.card-inner.svelte-98ebis]                           (557, 872)  281x364   
+            [div.card-front.svelte-98ebis]                         (557, 872)  281x364   
+              [div.card-v2-frame.svelte-d4ut2d]                    (557, 872)  281x364   
+                [img.frame-card-art.svelte-d4ut2d]                 (611, 932)  160x143   
+                [div.frame-text.v2-card-type.svelte-d4ut2d]        (690, 1068)  22x11    
+                [span.desc-number.svelte-d4ut2d]                   (724, 1083)  24x46      "4"
+        [button] data-testid="card-hand-1"                         (700, 860)  258x349   
+          [div.card-inner.svelte-98ebis]                           (700, 860)  258x349   
+            [div.card-front.svelte-98ebis]                         (700, 860)  258x349   
+              [div.card-v2-frame.svelte-d4ut2d]                    (700, 860)  258x349   
+                [img.frame-card-art.svelte-d4ut2d]                 (750, 917)  152x133   
+                [div.frame-text.v2-card-type.svelte-d4ut2d]        (819, 1050)  22x10    
+                [span.desc-number.svelte-d4ut2d]                   (853, 1068)  21x45      "4"
+        [button] data-testid="card-hand-2"                         (843, 862)  234x333   
+          [div.card-inner.svelte-98ebis]                           (843, 862)  234x333   
+            [div.card-front.svelte-98ebis]                         (843, 862)  234x333   
+              [div.card-v2-frame.svelte-d4ut2d]                    (843, 862)  234x333   
+                [img.frame-card-art.svelte-d4ut2d]                 (889, 916)  144x123   
+                [div]                                              (949, 1045)  21x8     
+                [span.desc-number.svelte-d4ut2d]                   (982, 1064)  18x44      "4"
+        [button] data-testid="card-hand-3"                         (962, 860)  258x349   
+          [div.card-inner.svelte-98ebis]                           (962, 860)  258x349   
+            [div.card-front.svelte-98ebis]                         (962, 860)  258x349   
+              [div.card-v2-frame.svelte-d4ut2d]                    (962, 860)  258x349   
+                [img.frame-card-art.svelte-d4ut2d]                 (1020, 918)  152x133  
+                [div]                                              (1079, 1050)  22x10   
+                [span.desc-number.svelte-d4ut2d]                   (1066, 1087)  21x45     "4"
+                [span.desc-keyword.svelte-d4ut2d]                  (1090, 1089)  77x49     "Block"
+        [button] data-testid="card-hand-4"                         (1082, 872)  281x364  
+          [div.card-inner.svelte-98ebis]                           (1082, 872)  281x364  
+            [div.card-front.svelte-98ebis]                         (1082, 872)  281x364  
+              [div.card-v2-frame.svelte-d4ut2d]                    (1082, 872)  281x364  
+                [img.frame-card-art.svelte-d4ut2d]                 (1151, 932)  160x143  
+                [div.frame-text.v2-card-type.svelte-d4ut2d]        (1208, 1068)  22x11   
+                [span.desc-number.svelte-d4ut2d]                   (1190, 1104)  24x46     "4"
+                [span.desc-keyword.svelte-d4ut2d]                  (1214, 1108)  80x55     "Block"
+      [button] data-testid="btn-end-turn"                          (24, 987)  197x69       "END TURN"  HIDDEN
+      [div.landscape-stats-bar.svelte-1a9rptt]                     (0, 680)  1920x54       HIDDEN
+    [button.pause-btn.svelte-2meh4s] data-testid="btn-pause"       (0, 0)                  HIDDEN
+    [button.dev-skip-btn.svelte-2meh4s]                            (1829, 118)  72x66      "⏭ Skip"  HIDDEN
+    [div.screen-transition.svelte-2meh4s.wipe-zoom]                (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image] combatBackground, [Rectangle] moodVignetteOverlay, [Rectangle] entryFadeRect, [Container], [Rectangle] flashRect
+  CENTER             → [Container], [div.card-app.svelte-2meh4s], [div.card-combat-overlay.svelte-1a9rptt.layout-landscape]
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+12 more)
+  TOP-CENTER         → [Graphics] enemyHpBarBg, [Graphics] enemyHpBarFill, [div.topbar.svelte-1ramr3r], [div.enemy-name-header.svelte-1a9rptt]
+  TOP-RIGHT          → [Text] enemyHpText, [div.relics-row.svelte-1ramr3r]
+  MIDDLE-LEFT        → [Image], [div.intent-detail-line.svelte-1a9rptt]
+  BOTTOM-CENTER      → [Image], [div.card-hand-landscape.svelte-98ebis], [button] data-testid="card-hand-0", [div.card-inner.svelte-98ebis], [div.card-front.svelte-98ebis] (+1 more)
+  BOTTOM-LEFT        → [div] data-testid="active-chain-bar"
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.card-combat-overlay.svelte-1a9rptt.layout-l   covers 100% height  CENTER
+  [div.card-hand-landscape.svelte-98ebis]            covers 35% height  BOTTOM-CENTER
+  [div.screen-transition.svelte-2meh4s.wipe-zoom]    covers 100% height  CENTER
+
+  Cross-layer proximity (nearest DOM testid to each Phaser object):
+  [Image] combatBackground               is 489px ABOVE card-hand-2
+  [Rectangle] moodVignetteOverlay        is 489px ABOVE card-hand-2
+  [Container]                            is 541px ABOVE card-hand-2
+  [Image]                                is 6px BELOW btn-pause
+  [Image]                                is 2px BELOW btn-pause
+  [Image]                                is 2px BELOW btn-pause
+  [Image]                                is 2px ABOVE btn-pause
+  [Image]                                is 2px BELOW btn-pause
+  [Image]                                is 0px BELOW btn-pause
+  [Graphics] enemyHpBarBg                is 578px BELOW btn-pause
+
+  Layer overlap check:
+  ⚠ [Image] combatBackground OVERLAPS active-chain-bar
+  ⚠ [Image] combatBackground OVERLAPS card-hand-0
+  ⚠ [Image] combatBackground OVERLAPS card-hand-1
+  ⚠ [Image] combatBackground OVERLAPS card-hand-2
+  ⚠ [Image] combatBackground OVERLAPS card-hand-3
+  ⚠ [Image] combatBackground OVERLAPS card-hand-4
+
+
+— END LAYOUT DUMP (30 Phaser objects, 94 DOM elements) —

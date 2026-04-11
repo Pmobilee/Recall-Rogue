@@ -1,0 +1,107 @@
+[
+  {
+    "id": "issue-1744332000000-08-001",
+    "track": "08-ascension",
+    "ascensionLevel": 0,
+    "ascensionName": "All Levels",
+    "category": "ascension_label_runtime_mismatch",
+    "severity": "critical",
+    "title": "scenarioSimulator.ts bootstrapRun() ignores config.ascension — combat stats remain at A0",
+    "description": "bootstrapRun() in src/dev/scenarioSimulator.ts calls createRunState() on line 651 WITHOUT passing ascensionLevel. When __rrScenario.spawn() is called with runOverrides: { ascensionLevel: N }, the encounter is already initialized at A0 multipliers (enemyHpMultiplier=1.0, enemyDamageMultiplier=1.0). The runOverrides patch applied afterward updates runState.ascensionLevel and runState.ascensionModifiers, which causes the HUD badge to show the correct level (e.g. 'A5'), but the TurnState ascension fields (ascensionEnemyDamageMultiplier, ascensionWrongAnswerSelfDamage, etc.) were already computed at A0 by encounterBridge.ts when startEncounterForRoom() was called. The label says A5; the enemy is actually at A0 difficulty.",
+    "evidence": {
+      "screenshotPath": "evidence/a0-combat-screenshot.png",
+      "bannerText": "N/A - only A0 visual captured; badge would show AN for N>0 but combat is at A0 stats",
+      "expectedStat": "For A10: enemyDamageMultiplier should be 1.20 in TurnState",
+      "actualStat": "TurnState shows ascensionEnemyDamageMultiplier = 1.00 (A0 value)",
+      "referenceA0Stat": 1.00,
+      "affectedFile": "src/dev/scenarioSimulator.ts",
+      "affectedLine": 651,
+      "rootCause": "bootstrapRun() calls createRunState(domain, domain, { selectedArchetype, starterDeckSize, startingAp }) without passing ascensionLevel from config"
+    },
+    "reproductionSteps": [
+      "Call window.__rrScenario.spawn({ screen: 'combat', enemy: 'page_flutter', runOverrides: { ascensionLevel: 10 } })",
+      "Wait for combat to load",
+      "Read: var ts; Symbol.for('rr:activeTurnState').subscribe(v => ts = v)(); console.log(ts.ascensionEnemyDamageMultiplier)",
+      "Expected: 1.20 (A10 value)",
+      "Actual: 1.00 (A0 value because encounter was started before runOverrides was applied)"
+    ],
+    "suggestedFix": "In bootstrapRun() at src/dev/scenarioSimulator.ts line 651, pass ascensionLevel: config.ascension ?? 0 to createRunState(). Example: createRunState(domain, domain, { selectedArchetype: 'balanced', starterDeckSize: 15, startingAp: 3, ascensionLevel: config.ascension ?? 0 }). This ensures encounterBridge.ts reads the correct modifiers when it calls getAscensionModifiers(run.ascensionLevel).",
+    "scope": "Dev tool only - real gameplay (runs started via gameFlowController) is not affected. createRunState() in real runs correctly receives ascensionLevel from the player's selected ascension level."
+  },
+  {
+    "id": "issue-1744332000001-08-002",
+    "track": "08-ascension",
+    "ascensionLevel": 5,
+    "ascensionName": "Lean Start",
+    "category": "balance_ascension_too_strong",
+    "severity": "medium",
+    "title": "A0->A5 drop is steepest in the ascension curve: 42pp drop for developing players",
+    "description": "Headless sim shows: A0 developing win% = 63%, A5 developing win% = 21% — a 42 percentage point drop. This is the single largest drop in the entire A0-A20 progression for the developing profile. A5->A10 drops only 10pp. The steepness at A5 may cause new players to feel a harsh wall when first trying ascension. By comparison, experienced players drop only 14pp (93% -> 79%), suggesting the difficulty spike disproportionately affects lower-skill players. Note: this may be intentional design ('no compensating buffs A1-A7' per ascension docs), but the ratio is very steep.",
+    "evidence": {
+      "screenshotPath": null,
+      "bannerText": "Not captured (Docker visual unavailable for A5)",
+      "expectedStat": "A5 win rate for developing profile should be noticeably lower than A0 (correct design direction)",
+      "actualStat": "21% (42pp drop from A0 63%)",
+      "referenceA0Stat": 63,
+      "simRuns": 300,
+      "profile": "developing",
+      "nearMissRate": "59% (vs A0 31%)"
+    },
+    "reproductionSteps": [
+      "Run: npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 300 --profile developing --ascension 5",
+      "Compare win rate to: --ascension 0 baseline (63%)",
+      "Observe 42pp drop"
+    ],
+    "suggestedFix": "Monitor real player data to verify whether the A5 wall causes drop-off. If player retention data shows A5 is a common stopping point, consider softening the A2 enemy damage bonus (currently +15%) or moving one challenge from A4 timer to a later level."
+  },
+  {
+    "id": "issue-1744332000002-08-003",
+    "track": "08-ascension",
+    "ascensionLevel": 20,
+    "ascensionName": "Heart of the Archive",
+    "category": "balance_ascension_too_strong",
+    "severity": "low",
+    "title": "A20 experienced profile at 1% win rate is borderline below the documented 5-15% target",
+    "description": "Headless sim shows A20 win rate for experienced profile = 1% (3 wins in 300 runs). Docs/ascension.ts say 'master at A20 still 82% (from April 2026-04-05 sim) — further tuning needed'. The experienced profile (76% accuracy) is not the same as the 'master' profile (100% accuracy in old tests). The quiz-pressure mechanics at A20 (wrongAnswerSelfDamage=5, forceHardQuestionFormats=true, preferCloseDistractors=true) are not captured by the headless sim since it doesn't simulate quiz difficulty variation. Real high-skill players will achieve higher win rates. This issue is LOW severity because the documented expectation was already that sim results don't reflect real quiz pressure.",
+    "evidence": {
+      "screenshotPath": null,
+      "bannerText": "Not captured (Docker visual unavailable for A20)",
+      "expectedStat": "5-15% win rate for master/experienced players at A20 (docs target)",
+      "actualStat": "1% (experienced profile, 300 runs headless sim)",
+      "referenceA0Stat": 93,
+      "simProfile": "experienced (76% accuracy)",
+      "simRuns": 300,
+      "note": "Sim cannot model quiz difficulty mechanics - real win rate will be higher"
+    },
+    "reproductionSteps": [
+      "Run: npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 300 --profile experienced --ascension 20",
+      "Observe 1% win rate"
+    ],
+    "suggestedFix": "No immediate action. Add a 'master' profile to the headless sim (100% accuracy, optimal strategy) to get a better A20 reference. Monitor with real player data once the game ships with ascension unlocked."
+  },
+  {
+    "id": "issue-1744332000003-08-004",
+    "track": "08-ascension",
+    "ascensionLevel": 0,
+    "ascensionName": "All Levels",
+    "category": "ascension_missing_effect",
+    "severity": "medium",
+    "title": "Docker warm container crashes on __rrScenario.load() for combat scenarios — ascension visual testing blind",
+    "description": "Docker warm-container visual testing is unreliable for combat scenarios. The warm server calls page.evaluate() with __rrScenario.load('combat-basic') which triggers bootstrapRun() + Phaser scene restart. In SwiftShader/Docker, this causes the Chrome process to crash (OOM/SwiftShader GPU memory limit). The 'Target crashed' error from Playwright indicates a full browser process crash, not a timeout. The warm server has no crash-recovery logic (no page.reload() or context.newPage() on crash). This means combat-state ascension testing via Docker visual is only possible for ONE test per container boot. A0 visual was captured; A5-A20 were not.",
+    "evidence": {
+      "screenshotPath": "evidence/a0-combat-screenshot.png",
+      "bannerText": "A0 only — no ascension badge (correct for level 0)",
+      "expectedStat": "Should capture HUD screenshots for all 5 levels showing correct ascension badge",
+      "actualStat": "Only A0 captured; A5-A20 Docker visual testing failed",
+      "referenceA0Stat": null,
+      "containerLogs": "Test 'combat-basic' done in 8ms (FAIL) — page.evaluate: Target crashed"
+    },
+    "reproductionSteps": [
+      "scripts/docker-visual-test.sh --warm start --agent-id test-ascension",
+      "scripts/docker-visual-test.sh --warm test --agent-id test-ascension --scenario combat-basic --wait 8000",
+      "Observe: Test fails in <10ms with 'page.evaluate: Target crashed'",
+      "This is reproducible on every fresh container first test"
+    ],
+    "suggestedFix": "Add crash recovery to docker/playwright-xvfb/warm-server.mjs: on 'Target crashed' error, call page.reload() or context.newPage(), wait for __rrScenario to reinitialize (page.waitForFunction), then retry the test. Alternatively, modify visual-test-runner.mjs to not use page.evaluate() for scenario loading — instead navigate to a URL with ?devScenario=combat-basic query param if the game supports it."
+  }
+]

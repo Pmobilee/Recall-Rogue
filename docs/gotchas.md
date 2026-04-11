@@ -2348,3 +2348,44 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engi
 ```
 
 **Rule updated:** `.claude/rules/deck-quality.md` § "50-Fact Sampling Protocol" now specifies `--stratified 50` as the canonical command.
+
+### 2026-04-11 — Warm container memory degradation after 5+ sequential tests
+
+**What:** After running 5+ sequential test requests against the same Docker warm container, the Chromium process becomes unstable. The `/health` endpoint still reports `ready: true` but the next `page.evaluate()` call throws `Target crashed`. The mystery-event scenario reliably triggers this when run as the 6th test in a session.
+
+**Why:** Accumulated WebGL/Phaser GPU state across tests causes renderer process memory pressure. Phaser 3 does not fully clean up WebGL resources between `__rrScenario.load()` calls. Over 5+ loads the GPU memory fills.
+
+**Fix:** Restart the warm container every 4-5 tests in sequential runs. For reliability, use separate containers per sub-test in automated batch testing (one container per test, cold-start). Do not run 6+ tests in one warm container session.
+
+---
+
+### 2026-04-11 — loadActiveRun() accepts any numeric save version without migration guard
+
+**What:** `runSaveService.loadActiveRun()` validates only `typeof parsed.version === 'number'`. A save with version 99999 from a hypothetical future code version passes this check and is loaded as-is. If a future schema version adds required fields, this could cause runtime TypeErrors.
+
+**Why:** The current save format (v1) has no breaking changes yet so no migration system was needed. The version field was added for future use but the guard was not added.
+
+**Fix:** Add `if (parsed.version > CURRENT_SAVE_VERSION) return null;` to `loadActiveRun()` to reject saves from future incompatible versions. Implement a migration table in `saveMigration.ts` per `.claude/rules/save-load.md`.
+
+---
+
+### 2026-04-11 — Parallel warm-container test requests cause scenario-state collision
+
+**What:** Running two `scripts/docker-visual-test.sh --warm test` commands in parallel against the same warm container (same `--agent-id`) causes scenario collision: the second request's scenario overwrites the first test's scenario before the first test completes, corrupting both results.
+
+**Why:** The warm server's `/test` endpoint is not concurrent — it processes requests serially, but if two requests arrive simultaneously the second queues behind the first. When the second test runs, the first test's in-memory JS state (`window.__t5_snap`, etc.) is gone.
+
+**Fix:** Never run parallel `--warm test` commands against the same `--agent-id`. Use separate agent IDs (separate containers) for parallel testing. Sequential tests in one container are safe.
+
+
+---
+
+### 2026-04-11 — Docker warm container crashes on first combat scenario load (SwiftShader OOM)
+
+**What:** `warm-server.mjs` calling `page.evaluate(() => window.__rrScenario.load('combat-basic'))` crashes the Chromium browser process with "Target crashed" on the first call after container boot. All subsequent `page.evaluate()` calls also fail because the page object stays in the crashed state — the warm server has no crash recovery logic.
+
+**Why:** `__rrScenario.load()` triggers `bootstrapRun()` + a full Phaser scene restart (teardown + reinitialize). In SwiftShader (CPU-rendered WebGL 2.0 in Docker), the combined GPU memory pressure of scene teardown and reinit causes a browser OOM crash. The warm server at `docker/playwright-xvfb/warm-server.mjs` (line 339-349) wraps this in a try/catch but the catch only records the error — it does not call `page.reload()` or `context.newPage()` to recover the page object.
+
+**Fix/Workaround:** Each fresh warm container reliably supports exactly ONE successful combat scenario test if the container is rebooted between tests. The one reliable pattern: start a new container → run one test → stop container. Do NOT attempt multiple combat scenario loads per container. Better systemic fix: add crash recovery to `warm-server.mjs` — on "Target crashed" error, call `page.reload()` + `waitForFunction(() => window.__rrScenario !== undefined)`, then retry the action batch. This would allow multi-test containers for combat scenarios. Alternatively, a query-param–based navigation approach (`?devScenario=combat-basic`) would avoid `page.evaluate()` for scenario loading entirely.
+
+**Scope:** Affects combat scenarios only — hub/map/shop scenarios do not trigger a Phaser scene restart and work reliably across multiple tests per container. Headless balance simulator (`tests/playtest/headless/run-batch.ts`) is unaffected and is the preferred tool for multi-level ascension verification.
