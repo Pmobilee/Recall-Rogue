@@ -22,6 +22,33 @@ Report pass/fail for each (don't dump full output unless there are errors).
 ## 4. Memory Context
 Read the last 5 entries in MEMORY.md to recall recent feedback, project decisions, or user preferences.
 
+## 4b. Multi-Agent Hygiene Check
+
+If `.claude/commit-attribution-log.jsonl` exists, run a quick grep to count
+cross-session bundling warnings in the last 24 hours. Surface the number so
+the orchestrator immediately knows the concurrency state of the repo — a
+high count means other agents are actively editing and the safe scope is
+narrow; zero means the tree is probably cohesive.
+
+```bash
+# Skip silently if the log or jq is absent (graceful degradation).
+if [ -f .claude/commit-attribution-log.jsonl ] && command -v jq >/dev/null 2>&1; then
+  CUTOFF=$(( $(date +%s) - 86400 ))
+  WARNED=$(jq -c "select(.ts >= $CUTOFF) | select(.warned == true)" \
+    .claude/commit-attribution-log.jsonl 2>/dev/null | wc -l | tr -d ' ')
+  TOTAL=$(jq -c "select(.ts >= $CUTOFF)" \
+    .claude/commit-attribution-log.jsonl 2>/dev/null | wc -l | tr -d ' ')
+  if [ "${WARNED:-0}" -gt 0 ]; then
+    echo "⚠️  Multi-agent hygiene: $WARNED / $TOTAL commits in the last 24h fired attribution warnings."
+    echo "   Other agents are actively working. Prefer cold-zone edits and stage explicitly by path."
+  fi
+fi
+```
+
+Report the count in the summary (step 6) if nonzero. If the log is missing
+entirely, skip this step silently — it either means the commit-attribution
+detector hasn't been wired up yet, or no commits have run through it yet.
+
 ## 5. Pending Next Steps (from previous session)
 
 Check for `.claude/pending-next-steps.json`. If the file exists, it was written by the `persist-whats-next.sh` Stop hook at the end of the previous session and contains the last `## What's Next` items, parsed into `{subject, description}` entries.
