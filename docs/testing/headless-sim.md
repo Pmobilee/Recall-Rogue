@@ -1,8 +1,8 @@
 # Headless Balance Simulator
 
 > **Purpose:** How to run the headless combat simulator for balance testing — profiles, output format, and key internals.
-> **Last verified:** 2026-04-09 (analytics overhaul — 8 build profiles, BuildPreferences, 6 analytics reports, --analytics flag; data model expanded for survivorship-free analytics — RelicAcquisition, EncounterDetail, CardPlayRecord, NodeVisitRecord)
-> **Source files:** `tests/playtest/headless/simulator.ts`, `tests/playtest/headless/run-batch.ts`, `tests/playtest/headless/sim-worker.ts`, `tests/playtest/headless/browser-shim.ts`, `tests/playtest/headless/tsconfig.json`, `tests/playtest/headless/full-run-simulator.ts`, `tests/playtest/headless/bot-brain.ts`, `tests/playtest/headless/bot-profiles.ts`, `tests/playtest/headless/analytics-report.ts`
+> **Last verified:** 2026-04-11 (gym-server comboCount fix; analytics overhaul — 8 build profiles, BuildPreferences, 6 analytics reports, --analytics flag; data model expanded for survivorship-free analytics — RelicAcquisition, EncounterDetail, CardPlayRecord, NodeVisitRecord)
+> **Source files:** `tests/playtest/headless/simulator.ts`, `tests/playtest/headless/run-batch.ts`, `tests/playtest/headless/sim-worker.ts`, `tests/playtest/headless/browser-shim.ts`, `tests/playtest/headless/tsconfig.json`, `tests/playtest/headless/full-run-simulator.ts`, `tests/playtest/headless/bot-brain.ts`, `tests/playtest/headless/bot-profiles.ts`, `tests/playtest/headless/analytics-report.ts`, `tests/playtest/headless/gym-server.ts`
 
 ## What It Is
 
@@ -582,3 +582,39 @@ Pass `--ascension N` (0–20). The sim calls `getAscensionModifiers(level)` once
 - Player max HP overrides, starting relic counts
 - Per-turn behaviors (regen, combo resets, correct-answer heals)
 - A19 free-charging buff, A2 first-turn bonus AP, A9 encounter-start shield
+
+## Gym Server (RL Training Interface)
+
+`tests/playtest/headless/gym-server.ts` is an OpenAI Gym-compatible JSON server for reinforcement learning training. It wraps the full game loop (combat, rewards, shop, rest, mystery) in a stdin/stdout JSON-lines protocol.
+
+```bash
+# Start the gym server (used by Python RL training scripts)
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
+  tests/playtest/headless/gym-server.ts
+
+# Smoke test via Python analyze script (requires SB3 + sb3-contrib)
+python3 tests/playtest/rl/analyze.py --model tests/playtest/rl/models/rogue_brain_v3_economy_2M.zip \
+  --episodes 50 --correct-rate 0.75
+```
+
+### Observation Space
+
+120-float observation vector. Combat slice (obs[0-29]):
+- `obs[6]`: `consecutiveCorrectThisEncounter / 10` (capped at 1.0)
+- **Note:** Was previously `ts.comboCount` (stale field from removed TurnState API) — fixed 2026-04-11. All prior RL model checkpoints were trained with corrupted reward signals (NaN from undefined `comboCount`) and should be treated as undertrained for chain-building behavior.
+
+### Reward Signal
+
+- Correct charge: `+0.1 * consecutiveCorrectThisEncounter` (combo multiplier)
+- Chain extended: `+0.3`
+- Chain broken: `-0.2`
+- Wrong charge: `-0.3`
+
+### Model Checkpoints
+
+Located in `tests/playtest/rl/models/`. Current checkpoints:
+- `rogue_brain_v3_economy_2M.zip` — recommended (best balance; MaskablePPO 2M steps)
+- `rogue_brain_v2_masked_2M.zip` — older; trained with broken reward signal (undertrained)
+- `rogue_brain_v2_2M.zip` — older; same issue
+
+**Warning:** The `latest/` symlink points to an empty dated subdirectory — do not rely on it. Use named paths.

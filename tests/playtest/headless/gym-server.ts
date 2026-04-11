@@ -86,7 +86,7 @@ interface RunState {
 interface PrevState {
   playerHp: number;
   enemyHp: number;
-  comboCount: number;
+  consecutiveCorrectThisEncounter: number;
   chainLength: number;
 }
 
@@ -378,7 +378,7 @@ function buildCombatObsSlice(ts: TurnState, deckSize: number): number[] {
   obs.push(Math.min((ts.enemy.block ?? 0) / (enemyMaxHP * 0.3), 1));
   obs.push(ts.apCurrent / (ts.apMax || 5));
   obs.push(ts.turnNumber / 40);
-  obs.push(Math.min(ts.comboCount / 10, 1));
+  obs.push(Math.min((ts.consecutiveCorrectThisEncounter ?? 0) / 10, 1));
   obs.push(Math.min(ts.chainLength / 5, 1));
   obs.push(Math.min((ts.chainMultiplier - 1.0) / 2.0, 1));
   obs.push(ts.isSurge ? 1 : 0);
@@ -625,7 +625,7 @@ function calculateCombatReward(
     if (actionResult.chainExtended) reward += 0.3;
     if (actionResult.chainBroken) reward -= 0.2;
     if (actionResult.wasCharge) {
-      if (actionResult.wasCorrect) reward += 0.1 * ts.comboCount;
+      if (actionResult.wasCorrect) reward += 0.1 * (ts.consecutiveCorrectThisEncounter ?? 0);
       else reward -= 0.3;
     }
   }
@@ -747,7 +747,7 @@ function afterCardReward(run: RunState): void {
 // ──────────────────────────────────────────────────────────────────────────────
 
 let run: RunState | null = null;
-let prevState: PrevState = { playerHp: PLAYER_START_HP, enemyHp: 0, comboCount: 0, chainLength: 0 };
+let prevState: PrevState = { playerHp: PLAYER_START_HP, enemyHp: 0, consecutiveCorrectThisEncounter: 0, chainLength: 0 };
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Command Handlers
@@ -807,7 +807,7 @@ function handleReset(opts: ResetOpts): object {
     run.playerHP = Math.min(run.playerHP + 20, run.playerMaxHP);
   }
 
-  prevState = { playerHp: playerHP, enemyHp: 0, comboCount: 0, chainLength: 0 };
+  prevState = { playerHp: playerHP, enemyHp: 0, consecutiveCorrectThisEncounter: 0, chainLength: 0 };
 
   const obs = buildFullObservation(run);
   const actionMask = getActionMask(run);
@@ -867,7 +867,7 @@ function handleStep(actionId: number): object {
     const snapBefore: PrevState = {
       playerHp: ts.playerState.hp,
       enemyHp: ts.enemy.currentHP,
-      comboCount: ts.comboCount,
+      consecutiveCorrectThisEncounter: ts.consecutiveCorrectThisEncounter ?? 0,
       chainLength: ts.chainLength,
     };
 
@@ -974,12 +974,12 @@ function handleStep(actionId: number): object {
       prevState = {
         playerHp: run.turnState.playerState.hp,
         enemyHp: run.turnState.enemy.currentHP,
-        comboCount: run.turnState.comboCount,
+        consecutiveCorrectThisEncounter: run.turnState.consecutiveCorrectThisEncounter ?? 0,
         chainLength: run.turnState.chainLength,
       };
       info['playerHp'] = run.turnState.playerState.hp;
       info['enemyHp'] = run.turnState.enemy.currentHP;
-      info['comboCount'] = run.turnState.comboCount;
+      info['consecutiveCorrectThisEncounter'] = run.turnState.consecutiveCorrectThisEncounter ?? 0;
       info['chainLength'] = run.turnState.chainLength;
     }
   }
@@ -1105,12 +1105,8 @@ function handleStep(actionId: number): object {
           run.turnState.baseDrawCount = drawCount;
         }
 
-        // Apply starting combo from relics (combo_ring)
-        const comboStart = 0;
-        if (comboStart > 0 && run.turnState) {
-          run.turnState.comboCount = comboStart;
-          run.turnState.baseComboCount = comboStart;
-        }
+        // Note: combo_ring relic no longer exists (consecutiveCorrectThisEncounter replaces
+        // the old comboCount field — reset to 0 at encounter start by turnManager.startEncounter)
 
         info['enemy'] = run.turnState.enemy.template.id;
         info['enemyName'] = run.turnState.enemy.template.name;
@@ -1206,12 +1202,8 @@ function handleStep(actionId: number): object {
           run.turnState.baseDrawCount = drawCountDefault;
         }
 
-        // Apply starting combo from relics (combo_ring)
-        const comboStartDefault = 0;
-        if (comboStartDefault > 0 && run.turnState) {
-          run.turnState.comboCount = comboStartDefault;
-          run.turnState.baseComboCount = comboStartDefault;
-        }
+        // Note: combo_ring relic no longer exists (consecutiveCorrectThisEncounter replaces
+        // the old comboCount field — reset to 0 at encounter start by turnManager.startEncounter)
 
         reward = 0;
         break;
