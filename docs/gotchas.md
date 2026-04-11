@@ -97,6 +97,42 @@ promote `exit 0` to `exit 1`. Until then the detector is warning-only.
    ran in `npm run check`). Soft-warn because concurrent-agent edits to
    the sibling file can trigger spurious drift warnings.
 
+**Worktree transition (2026-04-11, end of session):** The repo is switching
+to git worktrees as the primary multi-agent concurrency strategy. Two
+implications:
+
+1. **Session logs must live at the MAIN repo root**, not per-worktree.
+   `scripts/hooks/post-edit-session-marker.sh` and
+   `scripts/lint/check-commit-attribution.sh` both resolve their log paths
+   via `git rev-parse --git-common-dir` (returns the shared .git from any
+   linked worktree) → its parent is the canonical main repo root. Without
+   this, each worktree writes its own `.claude/staged-by.jsonl` and
+   cross-worktree attribution detection is blind. Gotcha: from a linked
+   worktree, `git-common-dir` returns an ABSOLUTE path — both scripts
+   handle the absolute/relative case via a `case "$_common_dir" in /*)`
+   branch. Smoke-tested end-to-end from a throwaway `git worktree add`.
+
+2. **Every commit from any worktree now trips multi-agent mode.** The
+   existing `is_multi_agent()` check already tests `git worktree list > 1`
+   as one of its three signals. Once the first linked worktree exists,
+   every hook invocation in EVERY worktree (including main) sees 2+
+   worktrees and flips `MULTI_AGENT=1`. Typecheck/build/vitest soft-warn
+   is now the effective default — the flake-under-load protection is
+   always on. Promoting soft-warns back to hard blocks requires an
+   explicit `RR_MULTI_AGENT=0` env var override on specific commits
+   (not implemented; add if needed).
+
+**Live self-validation event count this session: 4.** The commit-attribution
+detector witnessed its own commits get bundled four times:
+- `06097f1c7` "docs(index)" bundled Zod schema implementation
+- `25f29d8e5` "feat(hooks): session-marker..." bundled 4 UI Svelte files
+- `4f96917ea` "feat(lint): commit-attribution detector" bundled multiplayer work (19 files)
+- `d1cdcce53` "refactor(cards): severity-A resolvers" bundled git-add-safe wrapper
+Every bundling event validated the detector's purpose and simultaneously
+proved that the detector can warn but not prevent — the staging step must
+use `./scripts/git-add-safe.sh` (or `npm run gsafe`) to catch bundling at
+add-time, not commit-time.
+
 ---
 
 ### 2026-04-11 — Intent preview block decay ordering (Issue 11)

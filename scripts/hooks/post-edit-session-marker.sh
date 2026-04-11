@@ -64,10 +64,35 @@ if [ "${HOOK_TOOL_SUCCESS:-true}" != "true" ]; then
 fi
 
 ROOT="${CLAUDE_PROJECT_DIR:-$(pwd)}"
-LOG_FILE="$ROOT/.claude/staged-by.jsonl"
+
+# Canonical log location: the MAIN repo root (shared across worktrees),
+# NOT the current worktree root. `git rev-parse --git-common-dir` returns
+# the path to the shared .git directory (the main .git from any linked
+# worktree). Its parent is the main repo root. Without this, each worktree
+# writes its own staged-by.jsonl and cross-worktree detection goes blind.
+# Falls back to ROOT if the git call fails.
+_common_dir=$(git -C "$ROOT" rev-parse --git-common-dir 2>/dev/null)
+if [ -n "$_common_dir" ]; then
+  # From a linked worktree, git-common-dir is ABSOLUTE (e.g.
+  # /main/.git). From the main repo, it's relative (".git"). Resolve
+  # both via a cd that uses ROOT as a fallback base only when the
+  # path is relative.
+  case "$_common_dir" in
+    /*) SHARED_ROOT=$(cd "$_common_dir/.." 2>/dev/null && pwd) ;;
+    *)  SHARED_ROOT=$(cd "$ROOT/$_common_dir/.." 2>/dev/null && pwd) ;;
+  esac
+  SHARED_ROOT="${SHARED_ROOT:-$ROOT}"
+else
+  SHARED_ROOT="$ROOT"
+fi
+unset _common_dir
+
+LOG_FILE="$SHARED_ROOT/.claude/staged-by.jsonl"
 mkdir -p "$(dirname "$LOG_FILE")" 2>/dev/null || true
 
-# Strip repo root prefix for consistent relative-path logging.
+# Strip the CURRENT worktree's root prefix so cross-worktree entries for the
+# same tracked file collapse to the same relative path (a file edited in
+# worktree-A and worktree-B is still the same path in the repo's POV).
 REL_PATH="${HOOK_FILE_PATH#$ROOT/}"
 
 SESSION_ID="${HOOK_SESSION_ID:-unknown}"

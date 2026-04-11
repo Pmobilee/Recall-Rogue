@@ -89,8 +89,29 @@ if [ -z "$STAGED" ]; then
 fi
 
 REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
-SESSION_LOG="$REPO_ROOT/.claude/staged-by.jsonl"
-CALIBRATION_LOG="$REPO_ROOT/.claude/commit-attribution-log.jsonl"
+
+# Canonical log location: the MAIN repo root (shared across worktrees),
+# NOT the current worktree root. `git rev-parse --git-common-dir` gives us
+# the path to the shared .git dir; its parent is the main repo root.
+# Without this, each worktree would read its own staged-by.jsonl and
+# cross-worktree attribution detection would be blind. Falls back to
+# REPO_ROOT if the git call fails.
+_common_dir=$(git rev-parse --git-common-dir 2>/dev/null)
+if [ -n "$_common_dir" ]; then
+  # From a linked worktree, git-common-dir is ABSOLUTE (/main/.git).
+  # From the main repo, it's relative (.git). Handle both.
+  case "$_common_dir" in
+    /*) SHARED_ROOT=$(cd "$_common_dir/.." 2>/dev/null && pwd) ;;
+    *)  SHARED_ROOT=$(cd "$REPO_ROOT/$_common_dir/.." 2>/dev/null && pwd) ;;
+  esac
+  SHARED_ROOT="${SHARED_ROOT:-$REPO_ROOT}"
+else
+  SHARED_ROOT="$REPO_ROOT"
+fi
+unset _common_dir
+
+SESSION_LOG="$SHARED_ROOT/.claude/staged-by.jsonl"
+CALIBRATION_LOG="$SHARED_ROOT/.claude/commit-attribution-log.jsonl"
 
 # --- Pass 1: collect mtimes + (optionally) last-touching session_id per file.
 TMPFILE=$(mktemp -t rr-commit-attr.XXXXXX)
