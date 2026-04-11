@@ -909,11 +909,10 @@
 
   /* ── Stacked-card deck icon ────────────────────────────── */
   .deck-stack-icon {
+    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: calc(2px * var(--layout-scale, 1));
     width: calc(28px * var(--layout-scale, 1));
     height: calc(36px * var(--layout-scale, 1));
   }
@@ -942,11 +941,18 @@
   }
 
   .deck-stack-count {
+    position: absolute;
+    bottom: calc(2px * var(--layout-scale, 1));
+    right: calc(2px * var(--layout-scale, 1));
     font-family: var(--font-pixel, var(--font-rpg));
     font-size: calc(8px * var(--text-scale, 1));
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1;
     letter-spacing: 0.02em;
+    background: rgba(10, 18, 30, 0.85);
+    padding: calc(1px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1));
+    border-radius: calc(3px * var(--layout-scale, 1));
+    z-index: 1;
   }
 
   .pause-btn {
