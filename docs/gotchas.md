@@ -2984,3 +2984,26 @@ These four sources evolved independently and fell out of sync. The 2026-04-11 au
 **Affected canonical values (post-ratification, now in stat table):**
 - Warcry L0: +1 Str QP (not +2). L1=+2, L4-L5=+3. CC always permanent. L3+ grants free Charge waiver.
 - Gambit L0: deal 4 dmg, lose 4 HP (QP); deal 6 dmg, heal 3 HP (CC). Risk decreases with mastery.
+
+### 2026-04-11 — warcry_perm_str tag: dead in legacy table, behavior lives via direct mastery check
+
+**Context:** Phase 5 canonical value audit — Part A: verify warcry L3+ permanent Str via `warcry_perm_str` tag.
+
+**Finding:** The tag `warcry_perm_str` exists in the legacy `MASTERY_UPGRADE_DEFS` at `src/services/cardUpgradeService.ts` line ~1395 as: `warcry: { perLevelDelta: 0, addTagAtLevel: [3, 'warcry_perm_str'], maxLevel: 3 }`. However, the actual L3+ QP permanent Strength behavior is implemented via a **direct mastery level check** in `turnManager.ts` at lines 2368-2377, not via the tag:
+
+```typescript
+// L3 QP bonus: also +1 permanent Str (via warcry_perm_str tag)
+if (!isChargeCorrect && playMode !== 'charge_wrong' && (card.masteryLevel ?? 0) >= 3) {
+  // ... apply permanent Str bonus
+}
+```
+
+The comment says "via warcry_perm_str tag" but the code reads `card.masteryLevel >= 3` directly. The tag itself is never read. Meanwhile, the new MASTERY_STAT_TABLES for warcry (lines 659-668) do NOT include `warcry_perm_str` — they use a different design where L3+ CC grants free Charge via `warcry_freecharge` tag and the str bonus is baked into the `extras.str` field.
+
+**Classification:** Partially wired — the L3+ QP permanent Str behavior exists and works correctly. The tag in the legacy table is dead data (never read by the tag-dispatch mechanism in the resolver). The direct mastery check in turnManager is the authoritative implementation.
+
+**Impact:** None currently (behavior correct). Risk: a future agent reading `addTagAtLevel` in the legacy table might think the tag is load-bearing and try to remove it or "fix" it, causing confusion.
+
+**Recommended fix (out of scope for Phase 5):** Remove the `warcry_perm_str` entry from `MASTERY_UPGRADE_DEFS` (or add a comment explaining it's dead) and update the comment in `turnManager.ts` line 2368 to say "direct mastery level check" not "via warcry_perm_str tag". Also consider moving the L3+ QP permanent Str logic to a tag properly if the resolver/turnManager tag dispatch system ever normalizes this.
+
+**Files:** `src/services/cardUpgradeService.ts` (MASTERY_UPGRADE_DEFS, line ~1395), `src/services/turnManager.ts` (line 2368-2377).

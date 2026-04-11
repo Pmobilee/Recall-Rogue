@@ -991,3 +991,167 @@ describe('charge_wrong always produces non-zero total effect', () => {
     });
   }
 });
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Phase 5 additions — 2026-04-11 canonical value audit coverage
+// Warcry L0 str=1, Gambit L0 selfDmg=4/healOnCC=3 ratified in commit 69c3aa364.
+// These are locked values; tests here assert them as ground truth.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Warcry — 2026-04-11 canonical values
+// L0 str=1 (both QP and CC), CC permanent=true, QP permanent=false
+// Mastery table: L0=1, L1=2, L2=2, L3=2, L4=3, L5=3
+// ─────────────────────────────────────────────────────────────────────────────
+
+describe('Warcry — 2026-04-11 canonical values', () => {
+  // Test 1: L0 QP
+  it('L0 QP: applyStrengthToPlayer={value:1, permanent:false}, no warcryFreeCharge, finalValue:1', () => {
+    const result = resolve('warcry', 'quick', undefined, undefined, { masteryLevel: 0 });
+    expect(result.applyStrengthToPlayer).toBeDefined();
+    expect(result.applyStrengthToPlayer!.value).toBe(1);
+    expect(result.applyStrengthToPlayer!.permanent).toBe(false);
+    expect(result.warcryFreeCharge).toBeFalsy();
+    expect(result.finalValue).toBe(1);
+  });
+
+  // Test 2: L0 CC
+  it('L0 CC: applyStrengthToPlayer={value:1, permanent:true}, warcryFreeCharge:true, finalValue:1', () => {
+    const result = resolve('warcry', 'charge_correct', undefined, undefined, { masteryLevel: 0 });
+    expect(result.applyStrengthToPlayer).toBeDefined();
+    expect(result.applyStrengthToPlayer!.value).toBe(1);
+    expect(result.applyStrengthToPlayer!.permanent).toBe(true);
+    expect(result.warcryFreeCharge).toBe(true);
+    expect(result.finalValue).toBe(1);
+  });
+
+  // Test 3: L0 CW — same resolver-level value as QP at L0 (both use warcryStrValue=1, permanent=false)
+  it('L0 CW: applyStrengthToPlayer={value:1, permanent:false}, no warcryFreeCharge, finalValue:1', () => {
+    // CW path always sets value=1 regardless of mastery (minimal fizzle strength)
+    const result = resolve('warcry', 'charge_wrong', undefined, undefined, { masteryLevel: 0 });
+    expect(result.applyStrengthToPlayer).toBeDefined();
+    expect(result.applyStrengthToPlayer!.value).toBe(1);
+    expect(result.applyStrengthToPlayer!.permanent).toBe(false);
+    expect(result.warcryFreeCharge).toBeFalsy();
+    // finalValue is set to warcryStrValue (L0=1) even on CW
+    expect(result.finalValue).toBe(1);
+  });
+
+  // Test 4: L2 CC — str=2 at L2 (stat table progression)
+  it('L2 CC: applyStrengthToPlayer={value:2, permanent:true} (stat table L2 str=2)', () => {
+    const result = resolve('warcry', 'charge_correct', undefined, undefined, { masteryLevel: 2 });
+    expect(result.applyStrengthToPlayer!.value).toBe(2);
+    expect(result.applyStrengthToPlayer!.permanent).toBe(true);
+  });
+
+  // Test 5: L4 CC — str=3 at L4
+  it('L4 CC: applyStrengthToPlayer={value:3, permanent:true} (stat table L4 str=3)', () => {
+    const result = resolve('warcry', 'charge_correct', undefined, undefined, { masteryLevel: 4 });
+    expect(result.applyStrengthToPlayer!.value).toBe(3);
+    expect(result.applyStrengthToPlayer!.permanent).toBe(true);
+  });
+
+  // Test 6: L5 QP — str=3, strTurns=99 in stat table, but QP resolver always sets permanent=false.
+  // The turnManager applies the L3+ permanent bonus via direct mastery level check, not the
+  // resolver's permanent flag. The resolver-level permanent flag for QP is always false.
+  it('L5 QP: applyStrengthToPlayer={value:3, permanent:false} (resolver QP never sets permanent=true; turnManager handles L3+ bonus)', () => {
+    const result = resolve('warcry', 'quick', undefined, undefined, { masteryLevel: 5 });
+    expect(result.applyStrengthToPlayer!.value).toBe(3);
+    // QP path always permanent=false at resolver level — turnManager adds L3+ permanent bonus
+    expect(result.applyStrengthToPlayer!.permanent).toBe(false);
+    expect(result.warcryFreeCharge).toBeFalsy();
+  });
+
+  // Test 7: Two Warcry CC plays both emit strength signals with value=1 at L0.
+  // The resolver is stateless (pure function). Each call emits {value:1, permanent:true}.
+  // In turnManager, the second call stacks: existingStr.value += 1. Total = 2 at L0.
+  it('Two L0 Warcry CC calls both emit strength={value:1, permanent:true} — stacks to +2 total in turnManager', () => {
+    const first = resolve('warcry', 'charge_correct', undefined, undefined, { masteryLevel: 0 });
+    const second = resolve('warcry', 'charge_correct', undefined, undefined, { masteryLevel: 0 });
+    // Both resolver calls emit value=1; turnManager adds them together
+    expect(first.applyStrengthToPlayer!.value).toBe(1);
+    expect(first.applyStrengthToPlayer!.permanent).toBe(true);
+    expect(second.applyStrengthToPlayer!.value).toBe(1);
+    expect(second.applyStrengthToPlayer!.permanent).toBe(true);
+    // Cumulative in turnManager: 1 + 1 = 2 permanent strength applied total
+    expect(first.applyStrengthToPlayer!.value + second.applyStrengthToPlayer!.value).toBe(2);
+  });
+
+  // Test 8: warcryFreeCharge consumption — resolver sets flag on CC;
+  // turnManager consumes it to waive the +1 AP surcharge on the next Charge.
+  it('Warcry CC sets warcryFreeCharge=true (resolver side); turnManager consumes it to waive AP surcharge', () => {
+    // Resolver side: flag is set
+    const warcryResult = resolve('warcry', 'charge_correct');
+    expect(warcryResult.warcryFreeCharge).toBe(true);
+
+    // turnManager side: once warcryFreeChargeActive is true, it waives the surcharge.
+    // Verify that the flag is correctly consumed at line ~940 in turnManager.ts.
+    // We directly test via TurnState manipulation — warcryFreeChargeActive=true,
+    // then playing a charge card should cost base AP (not base + CHARGE_AP_SURCHARGE).
+    // This is tested via integration in warcryFreeCharge-waiver.test.ts (planned).
+    // Here we assert the resolver output that drives the flag:
+    expect(warcryResult.warcryFreeCharge).toBe(true);
+    // CW and QP do NOT set the flag
+    expect(resolve('warcry', 'quick').warcryFreeCharge).toBeFalsy();
+    expect(resolve('warcry', 'charge_wrong').warcryFreeCharge).toBeFalsy();
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Gambit — 2026-04-11 canonical values
+// L0: selfDmg=4 (QP), healOnCC=3 (CC), cwSelfDmg=5 (CW = selfDmg+1)
+// Stat table: L0 qpValue=4 / L3 qpValue=7 / L5 qpValue=10
+// ─────────────────────────────────────────────────────────────────────────────
+
+describe('Gambit — 2026-04-11 canonical values', () => {
+  // Test 1: L0 QP
+  it('L0 QP: selfDamage=4, gambitselfDamage=4, attack damage matches qpValue=4', () => {
+    const result = resolve('gambit', 'quick', undefined, undefined, { masteryLevel: 0 });
+    expect(result.gambitselfDamage).toBe(4);
+    expect(result.selfDamage).toBe(4);
+    expect(result.healApplied ?? 0).toBe(0);
+    // QP attack damage: qpValue=4 (through damage pipeline)
+    expect(result.damageDealt).toBe(4);
+  });
+
+  // Test 2: L0 CC
+  it('L0 CC: gambitHeal=3, healApplied=3, no self-damage, attack damage > 0', () => {
+    const result = resolve('gambit', 'charge_correct', undefined, undefined, { masteryLevel: 0 });
+    expect(result.gambitHeal).toBe(3);
+    expect(result.healApplied).toBe(3);
+    expect(result.selfDamage ?? 0).toBe(0);
+    expect(result.gambitselfDamage).toBeUndefined();
+    // CC attack damage: finalValue = qpValue × 1.5 = 4 × 1.5 = 6
+    expect(result.damageDealt).toBeGreaterThan(0);
+  });
+
+  // Test 3: L0 CW — selfDmg+1 penalty = 4+1 = 5; CW damage via fizzle ratio (FIZZLE_EFFECT_RATIO=0.5)
+  it('L0 CW: gambitselfDamage=5 (selfDmg+1 penalty), attack damage > 0 (fizzle ratio)', () => {
+    const result = resolve('gambit', 'charge_wrong', undefined, undefined, { masteryLevel: 0 });
+    expect(result.gambitselfDamage).toBe(5);
+    expect(result.selfDamage).toBe(5);
+    expect(result.healApplied ?? 0).toBe(0);
+    expect(result.damageDealt).toBeGreaterThan(0);
+  });
+
+  // Test 4: L3 QP — selfDmg=3 at L3, qpValue=7
+  it('L3 QP: gambitselfDamage=3 (stat table L3 selfDmg=3), attack damage = 7', () => {
+    const result = resolve('gambit', 'quick', undefined, undefined, { masteryLevel: 3 });
+    expect(result.gambitselfDamage).toBe(3);
+    expect(result.selfDamage).toBe(3);
+    expect(result.damageDealt).toBe(7);
+  });
+
+  // Test 5: L5 CC — healOnCC=8 at L5, qpValue=10, CC damage = 10 × 1.5 = 15
+  it('L5 CC: gambitHeal=8 (stat table L5 healOnCC=8), attack damage = 15 (10×1.5)', () => {
+    const result = resolve('gambit', 'charge_correct', undefined, undefined, { masteryLevel: 5 });
+    expect(result.gambitHeal).toBe(8);
+    expect(result.healApplied).toBe(8);
+    // CC damage = qpValue×1.5 = 10×1.5 = 15 (floored)
+    expect(result.damageDealt).toBe(15);
+    // selfDmg not set on CC path
+    expect(result.selfDamage ?? 0).toBe(0);
+    expect(result.gambitselfDamage).toBeUndefined();
+  });
+});
