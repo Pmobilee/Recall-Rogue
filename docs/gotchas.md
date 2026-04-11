@@ -1,3 +1,15 @@
+### 2026-04-11 — Zod schema guards curatedDeckStore decode boundary
+
+**Symptom (pre-fix):** `JSON.parse(row['distractors'])` in `curatedDeckStore.ts` returned `number[]` for some facts where the SQLite row stored numeric values (e.g. FIFA World Cup win counts stored as integers). The TypeScript type system assumed `string[]` — no runtime error was thrown, and numeric distractors silently reached the quiz engine where they were rendered as "7", "8", "9" instead of country names. This was the "fifa numeric distractors" incident.
+
+**Root cause:** `JSON.parse` is untyped — it returns `unknown` but was immediately used as the TypeScript-typed value via `as string[]` casts or untyped object literals. No boundary validation existed.
+
+**Fix:** Added Zod schemas in `src/data/curatedDeckSchema.ts` covering `DeckFact`, `AnswerTypePool`, and `SynonymGroup`. Every `JSON.parse` result in `rowToDeckFact`, `rowToAnswerTypePool`, and `rowToSynonymGroup` is validated before use. Invalid rows log a structured warning and return `null`; the grouping loops skip nulls. The load summary reports skipped row counts.
+
+**Key check:** `distractors: z.array(z.string())` — any non-string element in the array causes a parse failure for that fact. The fact is skipped with a warning rather than corrupting the distractor pool.
+
+**Regression test:** `src/data/curatedDeckSchema.test.ts` — test "rejects numeric distractors (fifa regression)" passes `[7, 8, 9]` and asserts rejection.
+
 ### 2026-04-11 — Both pre-commit hooks soft-warn under multi-agent concurrency
 
 **Symptom:** When multiple Claude sub-agents were committing in parallel, both
@@ -2565,3 +2577,63 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 **Fix (immediate):** Gotcha logged so the pattern is visible to future agents.
 
 **Fix (proper, future, Yellow-zone):** Either (a) port the stamping branch from `quiz-audit.mjs` into `quiz-audit-engine.ts` (~20 lines; the updater CLI is already proven), OR (b) add a loud error to `quiz-audit-engine.ts` when `--stamp-registry` is detected: `"ERR: --stamp-registry is not supported by this engine; use scripts/quiz-audit.mjs or call scripts/registry/updater.ts directly."` Either approach eliminates the silent-no-op footgun. The error-log approach is safer to ship first since it requires no logic porting.
+
+### 2026-04-11 — Steam lobby metadata is public; password hashes are UX gates only
+
+**What:** When a lobby is created on Steam with `visibility='password'`, the password hash is stored in Steam lobby metadata via `setLobbyData`. Steam lobby metadata is readable by anyone who can enumerate the lobby — it is NOT encrypted. The SHA-256 password hash is a friction layer to prevent accidental joins, not a security boundary.
+
+**Why it matters:** An attacker who enumerates public Steam lobbies can read the hash. SHA-256 is not a KDF (no salt, no iterations). A very short password could be brute-forced offline.
+
+**Fix / accepted state:** For V1 this is accepted and documented. The ranked play move-validation layer (deferred) is the appropriate anti-cheat boundary. Do NOT put secrets or personally-identifying info in lobby metadata or passwordHash.
+
+### 2026-04-11 — Fastify MP registry is in-memory; server restart drops all lobbies
+
+**What:** `server/src/services/mpLobbyRegistry.ts` stores all lobby state in a process-level `Map`. A Fastify server restart silently drops every active lobby.
+
+**Why it matters:** Clients with live WebSocket connections will be disconnected and the lobby ID they hold will 404 on reconnect. The UI must handle this gracefully (return to lobby browser, not infinite reconnect loop).
+
+**Fix / accepted state:** In-memory is correct for V1 — consistent with how Among Us and L4D handle lobby lifecycle. SQLite persistence via drizzle is the documented follow-up. Prune TTL is 10 minutes of no activity; active lobbies survive as long as the server stays up.
+
+### 2026-04-11 — Cluster B: "Built But Not Wired" — 7 bugs, 1 root cause (BATCH-ULTRA T7/T2/T8/T11)
+
+**What:** BATCH-2026-04-11-ULTRA cross-track correlation identified 7 ship-blocking bugs in 5 tracks that all shared the same root cause: a feature was implemented but silently disconnected from its wiring. The bugs were invisible in any single track's analysis. Examples:
+
+- `TriviaRoundScreen.svelte` existed but was never imported by `CardApp.svelte` (fixed before this lint shipped)
+- `MapPinDrop.svelte` had no `{:else if}` branch in `StudyQuizOverlay.svelte`
+- `gym-server.ts` referenced `ts.comboCount` which was deleted from `TurnState` (replaced by `consecutiveCorrectThisEncounter`)
+- `scenarioSimulator.ts` didn't pass `config.ascension` to `bootstrapRun()`, so all visual ascension tests were silently running at A0
+- Reward Room Continue button was Phaser-only canvas — no DOM button, keyboard blocked
+
+**Why it happened:** The agent-mindset.md anti-patterns rule ("feature built but not reachable", "service not registered") existed in prose but had NO enforcement at commit time. An agent could build a complete Svelte component, commit it, and the next agent had no signal it was dead code.
+
+**Fix (prevention):** `scripts/lint/check-wiring.mjs` — runs via `npm run lint:wiring`. Three checks:
+1. Every `*Screen.svelte` in `src/ui/components/` must be imported by `CardApp.svelte` or a component it imports
+2. Every `.ts` in `tests/playtest/headless/` is checked for field reads on `ts.*`/`turnState.*` that don't exist on the exported `TurnState` interface
+3. `src/game/scenes/*.ts` files with `setInteractive()` near button-like strings get a WARN if no DOM overlay exists in a matching Svelte component
+
+**Current state:** The lint finds 3 errors on the current codebase — `RaceResultsScreen.svelte` and `SocialScreen.svelte` (both unrouted in-progress features), and `gym-server.ts:316` (`ascensionComboResetsOnTurnEnd` assigned to a non-existent TurnState field). These are real findings that need follow-up.
+
+**Wired into:** `.claude/hooks/pre-commit-verify.sh` as soft-warn when `src/ui/components/`, `src/game/scenes/`, or `tests/playtest/headless/` files are staged.
+
+**References:** `data/playtests/llm-batches/BATCH-2026-04-11-ULTRA/correlation-report.md` Cluster B
+
+### 2026-04-11 — Cluster D: Unseeded Math.random() in co-op gameplay — 3 CRITICALs (BATCH-ULTRA T9)
+
+**What:** Three Math.random() calls in relic code caused co-op RNG desync. Both clients independently rolled relic effects, producing divergent enemy HP deltas for the same card play:
+- `relicEffectResolver.ts:1647` — crit_lens 25% crit chance: one peer crits, other doesn't → delta mismatch
+- `relicEffectResolver.ts:1712` — obsidian_dice +50%/-25% roll: peers roll different multipliers → damage mismatch
+- `relicAcquisitionService.ts:73,93` — rarity roll and candidate pick for post-combat relic offers → different relics shown to each peer
+
+**Why it was missed in prior sweeps:** Prior Math.random() sweeps (see 2026-04-08/09 gotchas) focused on enemy intents, pool picks, and map generation. Relic effect resolvers are a different subsystem that wasn't audited. The correlation report notes: "relic effects — a subsystem the prior sweep didn't audit."
+
+**Fix (immediate):** The three CRITICALs were fixed by adding the seeded-RNG-with-fallback pattern: `(rng ? rng.next() : Math.random())` and `isRunRngActive() ? getRunRng('relicEffects').next() : Math.random()`. Both clients now roll the same values when a run seed is active.
+
+**Fix (prevention):** `scripts/lint/no-bare-math-random.mjs` — runs via `npm run lint:rng`. Scans all `src/**/*.ts` and `src/**/*.svelte` files for bare `Math.random()` calls (i.e., no seeded-RNG check on the same line). Prints the allowlist on every run for reviewer auditability. Guarded patterns like `(rng ? rng.next() : Math.random())` are correctly skipped — they're the right approach.
+
+**Current state:** 168 bare Math.random() violations exist in the codebase, mostly in services that predate the seeded RNG system. These are a gradual migration target, not blocking immediately. The lint runs as soft-warn in pre-commit until the count reaches zero.
+
+**Wired into:** `.claude/hooks/pre-commit-verify.sh` as soft-warn when any `src/**/*.ts` or `src/**/*.svelte` files are staged.
+
+**The "guarded pattern" is correct:** `isRunRngActive() ? getRunRng('bucket').next() : Math.random()` — deterministic in co-op/replay/run contexts, non-deterministic in dev/test/non-run contexts where it doesn't matter. The lint does NOT flag this pattern.
+
+**References:** `data/playtests/llm-batches/BATCH-2026-04-11-ULTRA/correlation-report.md` Cluster D, `docs/mechanics/multiplayer.md` §RNG determinism invariant

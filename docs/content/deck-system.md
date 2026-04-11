@@ -1,8 +1,8 @@
 # Curated Deck System
 
 > **Purpose:** Explains what curated decks are, how they are structured, loaded, registered, and how player progression is tracked against them.
-> **Last verified:** 2026-04-10
-> **Source files:** `src/data/curatedDeckStore.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `src/services/dbDecoder.ts`, `src/services/chessPuzzleService.ts`, `public/curated.db`, `public/chess-puzzles.db`
+> **Last verified:** 2026-04-11
+> **Source files:** `src/data/curatedDeckStore.ts`, `src/data/curatedDeckSchema.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `src/services/dbDecoder.ts`, `src/services/chessPuzzleService.ts`, `public/curated.db`, `public/chess-puzzles.db`
 
 ---
 
@@ -25,6 +25,23 @@ Curated decks are distinct from the trivia `facts.db` SQLite database. They are 
 `public/curated.db` is a build artifact — do not edit it directly. To add or modify deck content, edit the JSON files in `data/decks/` and re-run `npm run build:curated`.
 
 ---
+
+
+### Runtime Schema Validation (Zod)
+
+`curatedDeckStore.ts` validates every `JSON.parse` result at the decode boundary using Zod schemas defined in `src/data/curatedDeckSchema.ts`. Added 2026-04-11 to close the class of silent-decode bugs exemplified by the **"fifa numeric distractors" incident**: `JSON.parse(row['distractors'])` returned `number[]` while the type system assumed `string[]`, causing silent corruption in the quiz distractor pool.
+
+**Schema file:** `src/data/curatedDeckSchema.ts` — Zod schemas for `DeckFact`, `AnswerTypePool`, and `SynonymGroup`; exports `parseDeckFact`, `parseAnswerTypePool`, `parseSynonymGroup`.
+
+**Behavior on validation failure:**
+- The malformed row is skipped (returns `null`); it is NOT loaded.
+- Warning logged: `[CuratedDecks] Schema validation failed for fact "<id>" in deck "<deckId>": <issues>`
+- Skipped rows are counted; final log reports: `Skipped N malformed row(s): M fact(s), P pool(s), Q synonym group(s).`
+- One bad fact does NOT kill the whole deck — graceful degradation is the policy.
+- Zero skipped rows is normal for healthy data; nonzero count indicates a content pipeline bug.
+
+**Key constraint:** `distractors: z.array(z.string())` — numeric arrays fail validation. This is the fifa regression test. See `src/data/curatedDeckSchema.test.ts` for the explicit regression test case.
+
 
 ## Deck Types
 
@@ -139,6 +156,8 @@ Script: `scripts/split-vocab-pos-mega-pool.mjs` — idempotent, handles all 21 P
 ### Deck Architecture Files
 
 Architecture YAML files in `data/deck-architectures/` hold the verified source data used to generate `.json` fact files. They are the canonical pre-generation source of truth. Some large decks (e.g. `world_wonders`) split generation across multiple architecture files — one per batch — which are then merged by an assembly script.
+
+**HSK explanation sense alignment (2026-04-11):** 711 facts across Chinese HSK 1-6 had `explanation` text that did not contain the `correctAnswer` substring, triggering `chinese_sense_mismatch_runtime` warnings in quiz-audit-engine Check 35. Two root causes: (1) explanations led with an obscure secondary reading of the character (e.g., 打(dá) = "dozen" instead of the HSK primary 打(dǎ) = "to hit"); (2) near-synonym wording that failed the strict substring check (e.g., "you (plural)" for correctAnswer "you all"). Fix: for each failing fact, replaced the primary meaning after the em-dash with the `correctAnswer`, keeping the "Also: ..." secondary content intact. HSK6 had 357 facts with "Multiple meanings exist..." placeholder explanations — replaced with "CHAR (pinyin) — correctAnswer." format. All 711 fixed, 0 warnings remain.
 
 | File | Deck ID | Status | Facts | Notes |
 |---|---|---|---|---|
