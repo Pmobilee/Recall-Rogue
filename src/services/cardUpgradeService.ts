@@ -127,7 +127,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Execute: bonus damage below HP threshold. L3 widens to 40%, L5 to 50%. */
   execute: {
     levels: [
-      { qpValue: 2, extras: { execBonus: 4 } },                            // L0 — Weak finisher
+      { qpValue: 2, extras: { execBonus: 8 } },                            // L0 — execBonus 4→8 to match resolver runtime (was reading mechanic.bonusValue=8)
       { qpValue: 3, extras: { execBonus: 5 } },                            // L1
       { qpValue: 3, extras: { execBonus: 6 } },                            // L2
       { qpValue: 4, extras: { execBonus: 8,  execThreshold: 0.4 } },      // L3 — triggers at 40% HP!
@@ -213,7 +213,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Lacerate: Bleed-heavy debuff-style attack. Low direct damage. L5 adds Vuln. */
   lacerate: {
     levels: [
-      { qpValue: 1, secondaryValue: 3 },                                     // L0 — 1 dmg + 3 Bleed
+      { qpValue: 1, secondaryValue: 4 },                                     // L0 — 1 dmg + 4 Bleed — secondaryValue 3→4 to match resolver runtime (was falling back to mechanic.secondaryValue=4)
       { qpValue: 2, secondaryValue: 3 },                                     // L1
       { qpValue: 2, secondaryValue: 4 },                                     // L2
       { qpValue: 2, secondaryValue: 5 },                                     // L3 — Bleed specialist
@@ -225,7 +225,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Kindle: deals Burn stacks that trigger immediately. L5 triggers Burn twice. */
   kindle: {
     levels: [
-      { qpValue: 1, secondaryValue: 2 },                                     // L0 — 1 dmg + 2 Burn (trigger)
+      { qpValue: 1, secondaryValue: 4 },                                     // L0 — 1 dmg + 4 Burn (trigger) — secondaryValue 2→4 to match resolver runtime (was falling back to mechanic.secondaryValue=4)
       { qpValue: 2, secondaryValue: 3 },                                     // L1
       { qpValue: 2, secondaryValue: 4 },                                     // L2
       { qpValue: 3, secondaryValue: 4 },                                     // L3
@@ -272,10 +272,10 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
     ],
   },
 
-  /** Volatile Slash: CC exhausts the card. L5 removes exhaust penalty — repeatable nuke. */
+  /** Volatile Slash: CC forgets the card. L5 removes forget penalty — repeatable nuke. */
   volatile_slash: {
     levels: [
-      { qpValue: 4  },                                                        // L0 — CC + exhaust
+      { qpValue: 4  },                                                        // L0 — CC + forget
       { qpValue: 5  },                                                        // L1
       { qpValue: 6  },                                                        // L2
       { qpValue: 8  },                                                        // L3
@@ -299,7 +299,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Riposte: attack + block. L5: qp=3, sec=5, block-based counterattack deals 40% of block as bonus damage (riposte_block_dmg40). */
   riposte: {
     levels: [
-      { qpValue: 2, secondaryValue: 3 },                                     // L0 — 2 dmg + 3 block
+      { qpValue: 2, secondaryValue: 4 },                                     // L0 — 2 dmg + 4 block — secondaryValue 3→4 to match resolver runtime (was falling back to mechanic.secondaryValue=4)
       { qpValue: 3, secondaryValue: 3 },                                     // L1
       { qpValue: 3, secondaryValue: 4 },                                     // L2
       { qpValue: 4, secondaryValue: 5 },                                     // L3
@@ -390,7 +390,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** thorns: block + reflect damage — sec=reflect value */
   thorns: {
     levels: [
-      { qpValue: 2, secondaryValue: 1 },                       // L0: 2 block + 1 reflect
+      { qpValue: 2, secondaryValue: 3 },                       // L0: 2 block + 3 reflect — secondaryValue 1→3 to match resolver runtime (was reading hardcoded 3)
       { qpValue: 3, secondaryValue: 2 },                       // L1
       { qpValue: 3, secondaryValue: 2 },                       // L2
       { qpValue: 4, secondaryValue: 3 },                       // L3: real reflect damage
@@ -512,7 +512,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** reactive_shield: block + thorns — sec=thorns value */
   reactive_shield: {
     levels: [
-      { qpValue: 2, secondaryValue: 1 },                       // L0: 2 block + 1 thorns
+      { qpValue: 2, secondaryValue: 2 },                       // L0: 2 block + 2 thorns — secondaryValue 1→2 to match resolver runtime (was falling back to mechanic.secondaryValue=2)
       { qpValue: 2, secondaryValue: 2 },                       // L1
       { qpValue: 3, secondaryValue: 2 },                       // L2
       { qpValue: 3, secondaryValue: 3 },                       // L3: 3 thorns damage
@@ -523,11 +523,11 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
 
   // ── Phase 3 Chase Shields (3) ─────────────────────────────────────────────
 
-  /** bulwark: ap=2 (was 3), exhaust removed at L3+; L5=1 AP — massive block ceiling */
+  /** bulwark: ap=2 (was 3), forget removed at L3+; L5=1 AP — massive block ceiling */
   bulwark: {
     maxLevel: 5,
     levels: [
-      { qpValue: 9, apCost: 2 },                                                        // L0: 2 AP for 9 block (CC: 16 block + EXHAUST)
+      { qpValue: 9, apCost: 2 },                                                        // L0: 2 AP for 9 block (CC: 16 block + FORGET)
       { qpValue: 10 },                                                                   // L1
       { qpValue: 12 },                                                                   // L2
       { qpValue: 12, tags: ['bulwark_no_exhaust'] },                                    // L3: exhaust removed! Still 2 AP
@@ -565,7 +565,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   burnout_shield: {
     maxLevel: 5,
     levels: [
-      { qpValue: 5 },                                              // L0: 5 block (CC exhausts)
+      { qpValue: 5 },                                              // L0: 5 block (CC forgets)
       { qpValue: 6 },                                              // L1
       { qpValue: 7 },                                              // L2
       { qpValue: 9 },                                              // L3
@@ -729,7 +729,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
 
   hex: {
     levels: [
-      { qpValue: 0, extras: { stacks: 2, turns: 2 } },           // L0: 2 Poison, 2 turns
+      { qpValue: 0, extras: { stacks: 3, turns: 3 } },           // L0: 3 Poison, 3 turns — stacks/turns 2→3 to match resolver runtime
       { qpValue: 0, extras: { stacks: 2, turns: 3 } },           // L1
       { qpValue: 0, extras: { stacks: 3, turns: 3 } },           // L2
       { qpValue: 0, extras: { stacks: 3, turns: 3 }, tags: ['hex_vuln1t'] }, // L3: also Vulnerable 1t
@@ -964,7 +964,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
 
   recollect: {
     levels: [
-      { qpValue: 0, extras: { returns: 1 } },                    // L0: Return 1 exhausted
+      { qpValue: 0, extras: { returns: 1 } },                    // L0: Return 1 forgotten
       { qpValue: 0, extras: { returns: 1 } },                    // L1
       { qpValue: 0, extras: { returns: 2 } },                    // L2: return 2!
       { qpValue: 0, extras: { returns: 2 }, tags: ['recollect_upgrade1'] }, // L3: returned cards +1 mastery
@@ -1197,7 +1197,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
 
   siphon_strike: {
     levels: [
-      { qpValue: 2, extras: { minHeal: 1, maxHeal: 6 } },        // L0
+      { qpValue: 2, extras: { minHeal: 2, maxHeal: 6 } },        // L0 — minHeal 1→2 to match resolver runtime (hardcoded: masteryLevel>=3?3:2, so L0=2)
       { qpValue: 3, extras: { minHeal: 1, maxHeal: 7 } },        // L1
       { qpValue: 3, extras: { minHeal: 2, maxHeal: 8 } },        // L2
       { qpValue: 4, extras: { minHeal: 2, maxHeal: 10 } },       // L3: heals up to 10
@@ -1387,14 +1387,14 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   // Attacks
   gambit:            { perLevelDelta: 2.0, addTagAtLevel: [3, 'self_dmg_minus1'] }, // 5 -> 15 (L5) — Great 3×, big risk
   chain_lightning:   { perLevelDelta: 1.2 },                         // 4 -> 10 (L5) — Solid 2.5×, chain mult is separate
-  volatile_slash:    { perLevelDelta: 2.0 },                         // 5 -> 15 (L5) — Great 3×, exhausts = earns it
+  volatile_slash:    { perLevelDelta: 2.0 },                         // 5 -> 15 (L5) — Great 3×, forgets = earns it
 
   // Shields
-  burnout_shield:    { perLevelDelta: 1.6 },                         // 4 -> 12 (L5) — Great 3×, CC exhausts
+  burnout_shield:    { perLevelDelta: 1.6 },                         // 4 -> 12 (L5) — Great 3×, CC forgets
   knowledge_ward:    { perLevelDelta: 0.9 },                         // 6 -> 10 (L5) — Modest 1.75×
 
   // Buffs
-  warcry:            { perLevelDelta: 0, addTagAtLevel: [3, 'warcry_perm_str'], maxLevel: 3 }, // L3 QP: +1 permanent Str
+  warcry:            { perLevelDelta: 0, maxLevel: 3 }, // L3+: permanent Str handled via direct masteryLevel>=3 check in turnManager — warcry_perm_str tag removed (dead, zero readers)
   battle_trance:     { perLevelDelta: 0, addTagsAtLevel: [3, ['battle_trance_draw4', 'trance_cc_ap1']], maxLevel: 3 }, // L3 QP: draw 4; CC grants +1 AP
 
   // Debuffs

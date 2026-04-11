@@ -1,7 +1,7 @@
 # Card System Mechanics
 
 > **Purpose:** Card entity, card types, tier system, damage formula, mastery system, and card creation pipeline.
-> **Last verified:** 2026-04-11 (Phase 6 audit rollup: four-source rule added; Warcry L0 str=1; Gambit L0 selfDmg=4/healOnCC=3; Fortify block-scaling; Overheal 60% threshold; Feedback Loop 28/+12 values; Smite/Recall/Precision Strike/Hemorrhage stat-table reads; Pass 8 + L0 Balance Overhaul from 2026-04-10)
+> **Last verified:** 2026-04-11 (Severity-A resolver normalization: 11 mechanics normalized to stat-table reads; HARD STOP rule documented for 5 mechanics with non-1.5 CC:QP ratios; warcry_perm_str dead tag removed; Gambit description reframed CC-first; Phase 6 audit rollup: four-source rule added; Pass 8 + L0 Balance Overhaul from 2026-04-10)
 > **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/services/catchUpMasteryService.ts`, `src/data/balance.ts`
 
 > **See also:** [`card-mechanics.md`](card-mechanics.md) — Complete table of all 50+ mechanics (attack, shield, buff, debuff, utility, wild).
@@ -511,3 +511,70 @@ This routing reuses the existing draw animation for free — the player sees the
 6. `isMasteryTrial` — `qualifiesForMasteryTrial()` checks `MASTERY_TRIAL.REQUIRED_STABILITY=30` + `REQUIRED_CONSECUTIVE_CORRECT=7`
 
 Mechanics (`mechanicId`) and chain type (`chainType`) are assigned by the run pool builder, not `createCard`.
+
+---
+
+## Severity-A Resolver Normalization (2026-04-11)
+
+**Context:** The 2026-04-11 four-source audit identified 11 mechanics whose resolvers in `cardEffectResolver.ts` used hardcoded literals instead of reading from `MASTERY_STAT_TABLES` via `getMasteryStats()`. This created drift risk: stat table edits would not propagate to the resolver runtime. These 11 were designated Severity A (resolver ignores stat table entirely).
+
+### HARD STOP Rule
+
+For mechanics where `CC ÷ QP ≠ 1.50`, CC normalization via the standard `qpValue × CHARGE_CORRECT_MULTIPLIER` formula would change the player-experienced value. Per the HARD STOP rule applied during this pass:
+
+- **CC values for these mechanics are preserved as hardcoded literals** — do not "normalize" them.
+- **QP and secondary values are normalized** to read from `getMasteryStats()` at L0.
+- The stat table is updated to match the resolver runtime (not the other way around).
+
+### Mechanics with HARD STOP (CC:QP ratio ≠ 1.5)
+
+| Mechanic | QP (L0) | CC (L0) | CC:QP Ratio | Action |
+|---|---|---|---|---|
+| `execute` | 8 (execBonus) | 24 | 3.0× | CC stays hardcoded; QP reads `extras.execBonus` from stat table |
+| `thorns` | 3 (secondaryValue) | 9 | 3.0× | CC stays hardcoded; QP reads `secondaryValue` from stat table |
+| `hex` | 3 stacks / 3 turns | 8 stacks | 2.67× | CC stays hardcoded (8 stacks); QP reads `extras.stacks/turns` from stat table |
+| `lacerate` | 4 (secondaryValue) | 8 | 2.0× | CC stays hardcoded; QP reads `secondaryValue` from stat table |
+| `kindle` | 4 (secondaryValue) | 8 | 2.0× | CC stays hardcoded; QP reads `secondaryValue` from stat table |
+
+**Stat table L0 corrections applied to align with resolver runtime:**
+- `execute` L0: `extras.execBonus` 4→8
+- `hex` L0: `extras.stacks` 2→3, `extras.turns` 2→3
+- `thorns` L0: `secondaryValue` 1→3
+- `lacerate` L0: `secondaryValue` 3→4
+- `kindle` L0: `secondaryValue` 2→4
+
+### Mechanics Fully Normalized (SAFE — CC:QP = 1.5)
+
+| Mechanic | Change | Notes |
+|---|---|---|
+| `iron_wave` | QP and CW now read `_masteryStats.secondaryValue` (L0=3) | Removed deprecated `getMastarySecondaryBonus` call path |
+| `riposte` | QP/CW now read `_masteryStats.secondaryValue` (L0=4) | CC (12) stays hardcoded; not a HARD STOP case — CC:QP=3:1 |
+| `reactive_shield` | QP thorn value now reads `_masteryStats.secondaryValue` (L0=2) | CC (5) and CW (1) stay hardcoded |
+| `siphon_strike` | `minHeal` now reads `_masteryStats.extras.minHeal` (L0=2, L3+=3) | Replaced direct `masteryLevel>=3` check |
+| `corrode` | Already reading stat table via `finalValue` | Comment added only |
+| `overcharge` | Already reading stat table via `finalValue` | Comment added only |
+
+**Stat table L0 corrections applied:**
+- `riposte` L0: `secondaryValue` 3→4
+- `reactive_shield` L0: `secondaryValue` 1→2
+- `siphon_strike` L0: `extras.minHeal` 1→2
+
+### Warcry Cleanup
+
+- `warcry_perm_str` tag removed from `MASTERY_UPGRADE_DEFS` in `cardUpgradeService.ts` — zero readers confirmed (grep: 0 callers outside definition). The L3+ permanent Strength effect is implemented via a direct `masteryLevel >= 3` check in `turnManager.ts`. The tag was defined but never dispatched.
+- Comment in `turnManager.ts` ~line 2368 updated to reflect the direct-check approach.
+- Comment in `cardEffectResolver.ts` warcry case updated to match.
+
+### Gambit Description Reframe
+
+**Problem:** Gambit was framed as a risk card ("deal damage and lose HP"), deterring first-time players from using it. The CC heal upside was buried at the end of the description.
+
+**Fix (L0 canonical values: power=4, selfDmg=4, healOnCC=3):**
+
+| Field | Before | After |
+|---|---|---|
+| Full description | "Deal 4 damage and lose 4 HP (QP). CC: deal damage and heal 3 HP instead." | "CC: Deal 4 damage and heal 3 HP. QP: deal 4 damage, lose 4 HP. CW: deal damage and lose extra HP." |
+| Short description | "4 dmg ±HP" | "CC:+4hp / QP:-hp" |
+| Parts array order | QP shown first, CC appended | CC shown first, QP appended |
+
+The CC heal upside is now the headline. New players see the reward before the risk.

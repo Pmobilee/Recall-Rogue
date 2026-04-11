@@ -207,7 +207,7 @@ export interface CardEffectResult {
   discardDamage?: number;
   /** siphon_eliminate1 tag: eliminate N wrong answers from the quiz. */
   eliminateDistractor?: number;
-  /** recollect_upgrade1 tag: returned exhausted cards get +1 mastery. */
+  /** recollect_upgrade1 tag: returned forgotten cards get +1 mastery. */
   recollectUpgrade?: number;
   /** recollect_play_free tag: play 1 returned card free this turn. */
   recollectPlayFree?: boolean;
@@ -324,7 +324,7 @@ export interface AdvancedResolveOptions {
   /** Knowledge Chain multiplier (1.0 = no chain). */
   chainMultiplier?: number;
   /**
-   * Count of cards per domain in the active deck (draw + discard + hand, not exhaust).
+   * Count of cards per domain in the active deck (draw + discard + hand, not forget pile).
    * Keyed by FactDomain string. Required for domain_mastery_sigil v2.
    */
   deckDomainCounts?: Record<string, number>;
@@ -773,9 +773,13 @@ export function resolveCardEffect(
       return result;
     }
     case 'execute': {
-      const threshold = mechanic?.secondaryThreshold ?? 0.3;
-      // execute bonus scales with the same per-mechanic charge value (chargeCorrectValue = 8 bonus at base)
-      const bonusBaseValue = isChargeCorrect ? 24 : (isChargeWrong ? 4 : 8);
+      // 2026-04-11 audit fix (Severity A partial): QP execBonus normalized to stat-table extras.
+      // Was: bonusBaseValue hardcoded as isCC?24 : isCW?4 : 8; threshold from mechanic.secondaryThreshold.
+      // Now: QP reads _masteryStats.extras.execBonus (L0=8). CC kept at 24 — CC:QP ratio is 3:1,
+      // incompatible with standard 1.5× formula (HARD STOP: would change 24→12). CW kept at 4.
+      const execBonus = _masteryStats?.extras?.['execBonus'] ?? 8;
+      const threshold = _masteryStats?.extras?.['execThreshold'] ?? mechanic?.secondaryThreshold ?? 0.3;
+      const bonusBaseValue = isChargeCorrect ? 24 : (isChargeWrong ? 4 : execBonus);
       const scaledBonus = Math.round(bonusBaseValue * focusAdjustedMultiplier * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
       const executeBonus = enemy.currentHP / enemy.maxHP < threshold ? scaledBonus : 0;
       applyAttackDamage(finalValue + executeBonus);
@@ -889,10 +893,15 @@ export function resolveCardEffect(
       return result;
     }
     case 'hex': {
-      // hex poison value scales with play mode
-      const poisonValue = isChargeCorrect ? 8 : (isChargeWrong ? 2 : 3);
+      // 2026-04-11 audit fix (Severity A partial): QP/CW normalized to stat-table extras.
+      // Was: poisonValue hardcoded as isCC?8 : isCW?2 : 3; turns hardcoded 3.
+      // Now: QP reads _masteryStats.extras.stacks (L0=3). CC kept at 8 — CC:QP ratio is 2.67:1,
+      // incompatible with standard 1.5× formula (HARD STOP: would change 8→5). CW kept at 2.
+      const hexStacksQP = _masteryStats?.extras?.['stacks'] ?? 3;
+      const hexTurnsQP = _masteryStats?.extras?.['turns'] ?? 3;
+      const poisonValue = isChargeCorrect ? 8 : (isChargeWrong ? 2 : hexStacksQP);
       // plague_flask — poison lasts 1 extra turn
-      const poisonTurns = 3 + resolvePoisonDurationBonus(activeRelicIds);
+      const poisonTurns = hexTurnsQP + resolvePoisonDurationBonus(activeRelicIds);
       result.statusesApplied.push({ type: 'poison', value: poisonValue, turnsRemaining: poisonTurns });
       // L3+: hex_vuln1t — also apply Vulnerable 1t
       if (hasTag('hex_vuln1t')) {
@@ -907,6 +916,10 @@ export function resolveCardEffect(
       // foresight_intent: reveal enemy's NEXT intent (the one after current)
       if (hasTag('foresight_intent')) {
         result.showNextIntent = true;
+      }
+      // T1.6: forget keyword — Foresight is removed from combat after use (one-per-combat nerf)
+      if (hasTag('forget')) {
+        result.exhaustOnResolve = true;
       }
       return result;
     }
@@ -950,10 +963,13 @@ export function resolveCardEffect(
       return result;
     }
     case 'thorns': {
-      // Both block and reflect scale with play mode
+      // 2026-04-11 audit fix (Severity A partial): QP reflect normalized to stat-table secondaryValue.
+      // Was: thornsBaseReflect hardcoded as isCC?9 : isCW?2 : 3.
+      // Now: QP reads _masteryStats.secondaryValue (L0=3). CC kept at 9 — CC:QP ratio is 3:1,
+      // incompatible with standard 1.5× formula (HARD STOP: would change 9→5). CW kept at 2.
       result.shieldApplied = applyShieldRelics(finalValue);
-      // thornsValue scales proportionally: quick=3, charge_correct=9, charge_wrong=2
-      const thornsBaseReflect = isChargeCorrect ? 9 : (isChargeWrong ? 2 : 3);
+      const thornsQP = _masteryStats?.secondaryValue ?? (mechanic?.secondaryValue ?? 3);
+      const thornsBaseReflect = isChargeCorrect ? 9 : (isChargeWrong ? 2 : thornsQP);
       result.thornsValue = Math.round(thornsBaseReflect * focusAdjustedMultiplier);
       // L5: thorns_persist — thorns don't reset at encounter end
       if (hasTag('thorns_persist')) result.thornsPersist = true;
@@ -1087,8 +1103,13 @@ export function resolveCardEffect(
     }
     // AR-203/AR-206: Lacerate — applies Bleed stacks AND deals damage.
     case 'lacerate': {
-      // QP: 4 dmg + 4 Bleed; CC: 12 dmg + 8 Bleed; CW: 3 dmg + 2 Bleed
-      const lacerateBleed = isChargeCorrect ? 8 : (isChargeWrong ? 2 : (card.secondaryValue ?? mechanic?.secondaryValue ?? 4));
+      // 2026-04-11 audit fix (Severity A partial): QP bleed normalized to stat-table secondaryValue.
+      // Was: lacerateBleed = isCC?8 : isCW?2 : (card.secondaryValue ?? mechanic.secondaryValue ?? 4).
+      // Now: QP reads _masteryStats.secondaryValue (L0=4, preserved from resolver runtime).
+      // CC kept at 8 — CC:QP ratio is 2:1, incompatible with standard 1.5× formula
+      // (HARD STOP: would change 8→6). CW kept at 2.
+      const lacerateQPBleed = _masteryStats?.secondaryValue ?? (mechanic?.secondaryValue ?? 4);
+      const lacerateBleed = isChargeCorrect ? 8 : (isChargeWrong ? 2 : lacerateQPBleed);
       applyAttackDamage(finalValue);
       result.applyBleedStacks = lacerateBleed;
       // Tag: lacerate_vuln1t — also apply Vulnerable 1t.
@@ -1118,15 +1139,22 @@ export function resolveCardEffect(
     }
     // Filler: Iron Wave — hybrid damage + block
     case 'iron_wave': {
+      // 2026-04-11 audit fix (Severity A): CC block normalized away from deprecated getMastarySecondaryBonus.
+      // Was: CC = round(mechanic.quickPlayValue × 1.5 + getMastarySecondaryBonus(...)) — deprecated path.
+      // Now: all modes use _mastaryStats.secondaryValue as the block base. L0: QP=3, CC=5, CW=2.
+      // Balance preserved: old CC at L0 = round(3×1.5+0) = 5; new CC = round(3×1.5) = 5. Same value.
       // Phase 3 Tag: iron_wave_block_double — if player has 10+ block, double the damage component.
       const ironWaveCurrentBlock = playerState.shield ?? 0;
       const ironWaveDmgValue = (hasTag('iron_wave_block_double') && ironWaveCurrentBlock >= 10)
         ? finalValue * 2
         : finalValue;
       applyAttackDamage(ironWaveDmgValue);
+      const ironWaveSecondary = _masteryStats?.secondaryValue ?? (mechanic?.secondaryValue ?? 3);
       const ironWaveBlock = isChargeCorrect
-        ? Math.round((mechanic?.quickPlayValue ?? 5) * CHARGE_CORRECT_MULTIPLIER + getMasterySecondaryBonus(mechanicId, card.masteryLevel ?? 0))
-        : (isChargeWrong ? Math.round((card.secondaryValue ?? mechanic?.secondaryValue ?? 5) * 0.7) : applyShieldRelics(card.secondaryValue ?? mechanic?.secondaryValue ?? 5));
+        ? Math.round(ironWaveSecondary * CHARGE_CORRECT_MULTIPLIER)        // CC: sec × 1.5
+        : (isChargeWrong
+          ? Math.max(1, Math.round(ironWaveSecondary * 0.7))              // CW: sec × 0.7
+          : ironWaveSecondary);                                            // QP: stat-table secondaryValue
       result.shieldApplied = applyShieldRelics(ironWaveBlock);
       return result;
     }
@@ -1184,8 +1212,14 @@ export function resolveCardEffect(
     }
     // Burn: Kindle — damage + Burn, and the hit itself triggers the Burn immediately
     case 'kindle': {
+      // 2026-04-11 audit fix (Severity A partial): QP burn normalized to stat-table secondaryValue.
+      // Was: kindleBurn = isCC?8 : isCW?2 : (card.secondaryValue ?? mechanic.secondaryValue ?? 4).
+      // Now: QP reads _masteryStats.secondaryValue (L0=4, preserved from resolver runtime).
+      // CC kept at 8 — CC:QP ratio is 2:1, incompatible with standard 1.5× formula
+      // (HARD STOP: would change 8→6). CW kept at 2.
       applyAttackDamage(finalValue);
-      const kindleBurn = isChargeCorrect ? 8 : (isChargeWrong ? 2 : (card.secondaryValue ?? mechanic?.secondaryValue ?? 4));
+      const kindleQPBurn = _masteryStats?.secondaryValue ?? (mechanic?.secondaryValue ?? 4);
+      const kindleBurn = isChargeCorrect ? 8 : (isChargeWrong ? 2 : kindleQPBurn);
       result.applyBurnStacks = kindleBurn;
       // hitCount = 1 so turnManager triggers Burn once on this hit.
       // Tag: kindle_double_trigger — trigger Burn TWICE (hitCount = 2).
@@ -1194,8 +1228,10 @@ export function resolveCardEffect(
     }
     // New: Overcharge — QP/CW fixed damage; CC scales with encounter charge count
     case 'overcharge': {
-      // The turnManager will read encounterChargeCount to compute CC bonus.
-      // We set a flag via mechanicId being 'overcharge' — turnManager handles scaling.
+      // 2026-04-11 audit note (Severity A resolved): applyAttackDamage(finalValue) already reads
+      // stat-table qpValue via the standard mechanicBaseValue pipeline — correctly normalized.
+      // CC scaling (encounter charge count × bonus) is handled separately in turnManager
+      // reading encounterChargeCount when mechanicId is 'overcharge'.
       // Tag: overcharge_bonus_x2 — double the encounter charge scaling bonus (read by turnManager).
       // Tag: overcharge_draw1 — also draw 1 card on play.
       applyAttackDamage(finalValue);
@@ -1204,6 +1240,12 @@ export function resolveCardEffect(
     }
     // New: Riposte — hybrid damage + block
     case 'riposte': {
+      // 2026-04-11 audit fix (Severity A partial): QP/CW block normalized to stat-table secondaryValue.
+      // Was: QP/CW block = card.secondaryValue ?? mechanic.secondaryValue ?? 4 (seed fallback).
+      // Now: QP/CW reads _masteryStats.secondaryValue (L0=4, preserved from resolver runtime).
+      // CC block hardcoded at 12 — INTENTIONAL: applies the full modifier chain (focus × chain × speed
+      // × buff × overclock). Normalizing to secondaryValue × 1.5 would drop those multipliers.
+      // HARD STOP: CC normalization deferred — secondaryValue encodes QP/CW ground truth only.
       applyAttackDamage(finalValue);
       // Phase 3 Tag: riposte_block_dmg40 — add Math.floor(playerBlock * 0.4) as bonus damage.
       if (hasTag('riposte_block_dmg40')) {
@@ -1213,10 +1255,12 @@ export function resolveCardEffect(
           result.enemyDefeated = result.damageDealt >= enemy.currentHP;
         }
       }
+      const riposteSecondary = _masteryStats?.secondaryValue ?? (mechanic?.secondaryValue ?? 4);
       const riposteBlock = isChargeCorrect
-        ? Math.round(12 * focusAdjustedMultiplier * chainMultiplier * speedBonus * buffMultiplier * overclockMultiplier)
-        : (isChargeWrong ? applyShieldRelics(Math.round((card.secondaryValue ?? mechanic?.secondaryValue ?? 4) * 0.75))
-          : applyShieldRelics(card.secondaryValue ?? mechanic?.secondaryValue ?? 4));
+        ? Math.round(12 * focusAdjustedMultiplier * chainMultiplier * speedBonus * buffMultiplier * overclockMultiplier)  // CC: hardcoded, full modifier chain
+        : (isChargeWrong
+          ? applyShieldRelics(Math.round(riposteSecondary * 0.75))   // CW: stat-table × 0.75
+          : applyShieldRelics(riposteSecondary));                     // QP: stat-table secondaryValue
       result.shieldApplied = applyShieldRelics(riposteBlock);
       // Tag: riposte_draw1 — also draw 1 card.
       if (hasTag('riposte_draw1')) { result.extraCardsDrawn = 1; }
@@ -1241,9 +1285,14 @@ export function resolveCardEffect(
     }
     // New: Reactive Shield — block + Thorns for turns
     case 'reactive_shield': {
+      // 2026-04-11 audit fix (Severity A partial): QP thorns normalized to stat-table secondaryValue.
+      // Was: QP = card.secondaryValue ?? mechanic.secondaryValue ?? 2 (seed fallback gave 2).
+      // Now: QP reads _masteryStats.secondaryValue (L0=2, preserved from resolver runtime).
+      // CC hardcoded=5 and CW hardcoded=1 remain: they are gameplay constants that don't scale
+      // with mastery (stat table doesn't define per-level CC/CW thorns separately).
       result.shieldApplied = applyShieldRelics(finalValue);
-      // Thorns value comes from stat table secondaryValue (already mastery-scaled)
-      const rsThornValue = isChargeCorrect ? 5 : (isChargeWrong ? 1 : (card.secondaryValue ?? mechanic?.secondaryValue ?? 2));
+      const rsQPThorns = _masteryStats?.secondaryValue ?? (mechanic?.secondaryValue ?? 2);
+      const rsThornValue = isChargeCorrect ? 5 : (isChargeWrong ? 1 : rsQPThorns);
       result.thornsValue = rsThornValue;
       // L5: reactive_thorns_persist — thorns persist the whole encounter (not per-hit reset)
       if (hasTag('reactive_thorns_persist')) result.thornsPersist = true;
@@ -1323,6 +1372,9 @@ export function resolveCardEffect(
     }
     // New: Corrode — remove enemy block + apply Weakness
     case 'corrode': {
+      // 2026-04-11 audit note (Severity A resolved): corrode's block-removal value is finalValue,
+      // which is computed from stat-table qpValue via the standard mechanicBaseValue pipeline.
+      // This is already correctly normalized — no code change needed.
       // QP: remove finalValue block + 1t Weakness; CC: remove ALL block + 2t Weakness; CW: remove 3 + 1t
       // L5: corrode_strip_all — QP/CW also removes ALL block (not just computed amount)
       const corrodeStripAll = hasTag('corrode_strip_all');
@@ -1347,11 +1399,14 @@ export function resolveCardEffect(
     }
     // New: Siphon Strike — damage + overkill heal (min 2, max 10)
     case 'siphon_strike': {
+      // 2026-04-11 audit fix (Severity A): minHeal normalized from stat-table extras.
+      // Was: hardcoded (card.masteryLevel ?? 0) >= 3 ? 3 : 2 — bypassed stat table.
+      // Now: reads _masteryStats.extras.minHeal (L0=2, L3+=3 from stat table). Same L0 behavior.
       applyAttackDamage(finalValue);
       if (!isChargeWrong) {
         // Overkill heal computed here; turnManager adjusts based on actual HP remaining.
         // We store the min heal; turnManager computes overkill and clamps.
-        const minHeal = (card.masteryLevel ?? 0) >= 3 ? 3 : 2;
+        const minHeal = _masteryStats?.extras?.['minHeal'] ?? 2;
         result.overkillHeal = minHeal; // sentinel: turnManager computes actual overkill
       }
       return result;
@@ -1368,7 +1423,7 @@ export function resolveCardEffect(
     }
     // New: Inscription of Fury — persistent attack bonus for rest of combat
     case 'inscription_fury': {
-      // resolveInscription() in turnManager handles registration + exhaust.
+      // resolveInscription() in turnManager handles registration + forget.
       // finalValue encodes the per-attack bonus (QP=2, CC=4, CW=1 + mastery).
       result.finalValue = finalValue;
       // L5: insc_fury_cc_bonus2 — CC attacks deal an additional +2 flat damage on top
@@ -1377,7 +1432,7 @@ export function resolveCardEffect(
     }
     // New: Inscription of Iron — persistent block per turn for rest of combat
     case 'inscription_iron': {
-      // resolveInscription() in turnManager handles registration + exhaust.
+      // resolveInscription() in turnManager handles registration + forget.
       // finalValue encodes the per-turn block bonus (QP=3, CC=6, CW=1 + mastery).
       result.finalValue = finalValue;
       // L5: insc_iron_thorns1 — also grants +1 thorns per turn
@@ -1428,7 +1483,7 @@ export function resolveCardEffect(
       return result;
     }
 
-    // Volatile Slash — exhaust on CC
+    // Volatile Slash — forget on CC
     case 'volatile_slash': {
       applyAttackDamage(finalValue);
       // Tag: volatile_no_exhaust — card no longer exhausts on CC.
@@ -1486,7 +1541,7 @@ export function resolveCardEffect(
         result.applyStrengthToPlayer = { value: 1, permanent: false };
       } else {
         // QP: Strength this turn only (stat-table value)
-        // L3+: turnManager also applies permanent Str via warcry_perm_str tag (handled there)
+        // L3+: turnManager also applies permanent Str via direct masteryLevel>=3 check (warcry_perm_str tag removed 2026-04-11 — was dead, zero readers)
         result.applyStrengthToPlayer = { value: warcryStrValue, permanent: false };
       }
       result.finalValue = warcryStrValue;
@@ -2008,7 +2063,7 @@ export function resolveCardEffect(
       return result;
     }
 
-    // Recollect — return exhausted card(s) to discard pile
+    // Recollect — return forgotten card(s) to discard pile
     case 'recollect': {
       let recollectCount: number;
       if (isChargeCorrect) {
@@ -2212,7 +2267,7 @@ export function resolveCardEffect(
       if (isChargeWrong) {
         // Intentional complete fizzle: 3 AP wasted, removed from game, zero effect.
         result.inscriptionFizzled = true;
-        // Card is removed from game (not just exhaust) — signaled by exhaustOnResolve.
+        // Card is removed from game — signaled by exhaustOnResolve.
         // turnManager sets isRemovedFromGame on seeing inscriptionFizzled=true for inscriptions.
         result.exhaustOnResolve = true;
         return result;
@@ -2229,7 +2284,7 @@ export function resolveCardEffect(
         ? (masteryL3Wisdom ? 2 : 1) // CC: heal 1 (or 2 at L3 via inscription_wisdom_heal2 tag)
         : 0;                        // QP: no heal
       result.inscriptionWisdomActivated = { extraDrawPerCC: extraDraw, healPerCC };
-      // Inscription exhausts on play and is removed from game (not recyclable via Recollect).
+      // Inscription forgets on play and is removed from game (not recyclable via Recollect).
       result.exhaustOnResolve = true;
       return result;
     }

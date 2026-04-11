@@ -380,34 +380,31 @@ describe('twin_strike mechanic', () => {
 });
 
 // ── 10. iron_wave ────────────────────────────────────────────────────────────
-// Stat table L0: qpValue=2, secondaryValue=3 (mechanic: quickPlayValue=3, secondaryValue=5)
-// masteryBonus = 2-3 = -1; masterySecondaryBonus = 3-5 = -2
-// QP: damage=2, block=card.secondaryValue=5 (mechanic value, no negative adjustment applied)
-// CC: damage=round(2*1.50)=3, block=round(mechanic.quickPlayValue*1.50+masterySecBonus)
-//         = round(3*1.50 + 0) = round(4.5) = 5
-// CW: damage=1 (max(0,2+(-1))=1), block=round(card.secondaryValue*0.7)=round(5*0.7)=round(3.5)=4
+// Stat table L0: qpValue=2, secondaryValue=3 (2026-04-11 fix: normalized from deprecated getMastarySecondaryBonus)
+// QP: damage=2, block=stat-table secondaryValue=3
+// CC: damage=round(2*1.50)=3, block=round(3*1.50)=5 (same as deprecated path at L0 — coincidence)
+// CW: damage=1, block=max(1, round(3*0.7))=max(1,2)=2
 
 describe('iron_wave mechanic', () => {
-  it('QP: 2 damage AND 5 block (mechanic.secondaryValue for block in QP path)', () => {
+  it('QP: 2 damage AND 3 block (stat-table secondaryValue L0=3 — 2026-04-11 normalized from deprecated getMastarySecondaryBonus)', () => {
     const result = resolve('iron_wave', 'quick');
     expect(result.damageDealt).toBe(2);
-    expect(result.shieldApplied).toBe(5);
+    expect(result.shieldApplied).toBe(3);
   });
 
-  it('CC: 3 damage (round(2*1.50)=3) AND 5 block', () => {
-    // CC block = round(mechanic.quickPlayValue * 1.50 + getMasterySecondaryBonus(L0))
-    //          = round(3 * 1.50 + 0) = round(4.5) = 5
-    // getMasterySecondaryBonus uses old MASTERY_UPGRADE_DEFS (secondaryPerLevelDelta * level)
-    // At level 0: 1.0 * 0 = 0, so no secondary bonus adjustment
+  it('CC: 3 damage AND 5 block (round(secondaryValue=3 × 1.5)=5 — same value as deprecated path coincidentally)', () => {
+    // CC block = round(stat-table secondaryValue × 1.5) = round(3 × 1.5) = round(4.5) = 5
+    // Old deprecated path: round(mechanic.quickPlayValue × 1.5 + getMastarySecondaryBonus(0)) = round(3 × 1.5 + 0) = 5
+    // Values match at L0 — both produce 5.
     const result = resolve('iron_wave', 'charge_correct');
     expect(result.damageDealt).toBe(3);
     expect(result.shieldApplied).toBe(5);
   });
 
-  it('CW: 1 damage AND 4 block (round(card.secondaryValue*0.7)=round(5*0.7)=round(3.5)=4)', () => {
+  it('CW: 1 damage AND 2 block (max(1, round(stat-table secondaryValue=3 × 0.7))=max(1,2)=2)', () => {
     const result = resolve('iron_wave', 'charge_wrong');
     expect(result.damageDealt).toBe(1);
-    expect(result.shieldApplied).toBe(4);
+    expect(result.shieldApplied).toBe(2);
   });
 
   it('grants both damage AND block in all play modes', () => {

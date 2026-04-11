@@ -114,14 +114,17 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
       return `Deal ${power} damage. Heal based on overkill damage (min ${minH}, max ${maxH} HP). CC: more damage and heal range.` + apSuffix;
     }
     case 'gambit': {
+      // 2026-04-11 reframe: lead with CC heal upside so first-time players see the reward, not the risk.
+      // Old: "Deal X damage and lose Y HP (QP). CC: deal damage and heal Z HP instead."
+      // New: "CC: Deal X damage and heal Z HP. QP: deal X damage, lose Y HP. CW: deal X damage, lose extra HP."
       const selfDmg = stats?.extras?.['selfDmg'] ?? 4;
       const healOnCC = stats?.extras?.['healOnCC'] ?? 3;
-      return `Deal ${power} damage and lose ${selfDmg} HP (QP). CC: deal damage and heal ${healOnCC} HP instead. CW: deal damage and lose extra HP.` + apSuffix;
+      return `CC: Deal ${power} damage and heal ${healOnCC} HP. QP: deal ${power} damage, lose ${selfDmg} HP. CW: deal damage and lose extra HP.` + apSuffix;
     }
     case 'chain_lightning':
       return `Deal ${power} damage (QP). CC: deal ${power} × chain length damage (counts itself). Requires chain. L5: costs 1 AP.` + apSuffix;
     case 'volatile_slash':
-      return `Deal ${power} damage. CC: ${Math.round(power * 1.75)} damage then Exhaust this card. L5: CC no longer Exhausts.` + apSuffix;
+      return `Deal ${power} damage. CC: ${Math.round(power * 1.75)} damage then Forget this card. L5: CC no longer Forgets.` + apSuffix;
     case 'hemorrhage': {
       const bleedMult = stats?.extras?.['bleedMult'] ?? 3;
       return `Deal ${power} damage plus ${bleedMult}× enemy Bleed stacks as bonus damage, then consume all Bleed. CC: higher multiplier.` + apSuffix;
@@ -174,9 +177,9 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     case 'aegis_pulse':
       return `Gain ${power} Block. CC: same-chain cards in hand gain +2 Block (3 at L3+). L5: CC also draws 1.` + apSuffix;
     case 'burnout_shield':
-      return `Gain ${power} Block. CC: ${Math.round(power * 1.75)} Block then Exhaust this card. L5: CC no longer Exhausts.` + apSuffix;
+      return `Gain ${power} Block. CC: ${Math.round(power * 1.75)} Block then Forget this card. L5: CC no longer Forgets.` + apSuffix;
     case 'bulwark':
-      return `Gain ${power} Block. CC: ${Math.round(power * 1.75)} Block then Exhaust this card. L3+: CC no longer Exhausts.` + apSuffix;
+      return `Gain ${power} Block. CC: ${Math.round(power * 1.75)} Block then Forget this card. L3+: CC no longer Forgets.` + apSuffix;
     case 'conversion':
       return `Gain ${power} Block, then deal damage equal to your current Block (consuming it). CC: deal 1.5× your Block instead. L5: Block is NOT consumed.` + apSuffix;
     case 'ironhide': {
@@ -196,12 +199,12 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
       return `Next attack applies ${burnStacks} Burn stacks. CC: double stacks. L3+: applies to next 2 attacks.` + apSuffix;
     }
     case 'inscription_fury':
-      return `Exhausts on play. All attacks deal +${power} bonus damage for the rest of combat. CC: double bonus.` + apSuffix;
+      return `Forgets on play. All attacks deal +${power} bonus damage for the rest of combat. CC: double bonus.` + apSuffix;
     case 'inscription_iron':
-      return `Exhausts on play. Gain +${power} Block at the start of each turn for the rest of combat. CC: double.` + apSuffix;
+      return `Forgets on play. Gain +${power} Block at the start of each turn for the rest of combat. CC: double.` + apSuffix;
     case 'inscription_wisdom': {
       const dpc = stats?.extras?.['drawPerCC'] ?? 1;
-      return `Exhausts on play. QP: each future Charge Correct draws ${dpc} extra card. CC: also heals 1 HP per CC. CW: fizzles completely — card is lost.` + apSuffix;
+      return `Forgets on play. QP: each future Charge Correct draws ${dpc} extra card. CC: also heals 1 HP per CC. CW: fizzles completely — card is lost.` + apSuffix;
     }
     case 'warcry': {
       const str = stats?.extras?.['str'] ?? 1;
@@ -276,7 +279,7 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     case 'recycle':
       return `Draw 3 cards.` + apSuffix;
     case 'foresight':
-      return `Draw ${power} cards.` + apSuffix;
+      return `Draw ${power} cards. Forget: removed from combat after use.` + apSuffix;
     case 'transmute':
       return `QP: Auto-transform into a random new card for this encounter. CC: Choose 1 of 3 new cards (2 at mastery 3+) for this encounter. CW: Auto-transform into a random card.` + apSuffix;
     case 'sift': {
@@ -300,7 +303,7 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     }
     case 'recollect': {
       const returns = stats?.extras?.['returns'] ?? 1;
-      return `Return ${returns} exhausted card(s) to your discard pile. CC: return 2. Cannot target Inscriptions. L3+: returned cards gain +1 mastery.` + apSuffix;
+      return `Return ${returns} forgotten card(s) to your discard pile. CC: return 2. Cannot target Inscriptions. L3+: returned cards gain +1 mastery.` + apSuffix;
     }
     case 'synapse': {
       const drawCount = stats?.drawCount ?? 1;
@@ -473,9 +476,9 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
       return `${power} dmg +${sec} blk`;
     }
     case 'siphon_strike': return `${power} drain`;
-    case 'gambit': return `${power} dmg ±HP`;
+    case 'gambit': return `CC:+${power}hp / QP:-hp`; // 2026-04-11: lead with CC heal
     case 'chain_lightning': return `${power} × chain (CC)`;
-    case 'volatile_slash': return `${power} / CC+Exhaust`;
+    case 'volatile_slash': return `${power} / CC+Forget`;
     case 'hemorrhage': {
       const bleedMult = stats?.extras?.['bleedMult'] ?? 3;
       return `${power}+${bleedMult}×Bleed`;
@@ -505,8 +508,8 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
       return `${power} blk +${thorns}▸`;
     }
     case 'aegis_pulse': return `${power} blk, CC+chain`;
-    case 'burnout_shield': return `${power} / CC+Exhaust`;
-    case 'bulwark': return `${power} / CC+Exhaust`;
+    case 'burnout_shield': return `${power} / CC+Forget`;
+    case 'bulwark': return `${power} / CC+Forget`;
     case 'conversion': return 'Deal Block as dmg';
     case 'ironhide': {
       const str = stats?.extras?.['str'] ?? 1;
@@ -604,7 +607,7 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     }
     case 'recollect': {
       const returns = stats?.extras?.['returns'] ?? 1;
-      return `Return ${returns} exhaust`;
+      return `Return ${returns} forget`;
     }
     case 'synapse': {
       const drawCount = stats?.drawCount ?? 1;
@@ -828,12 +831,13 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'gambit': {
       const selfDmg = stats?.extras?.['selfDmg'] ?? 4;
       const heal = stats?.extras?.['healOnCC'] ?? 3;
-      return [txt('Deal '), num(power), txt(' damage\nQP: −'), num(selfDmg), txt(' HP  CC: +'), num(heal), txt(' HP')];
+      // 2026-04-11 reframe: show CC heal first, then QP self-damage — reward-forward framing.
+      return [txt('Deal '), num(power), txt(' damage\nCC: +'), num(heal), txt(' HP  QP: −'), num(selfDmg), txt(' HP')];
     }
     case 'chain_lightning':
       return [txt('Deal '), num(power), txt(' damage\nCC: ×chain length')];
     case 'volatile_slash':
-      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\nCC: '), kw('Exhaust', 'exhaust')];
+      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\nCC: '), kw('Forget', 'forget')];
     case 'hemorrhage': {
       const mult = stats?.extras?.['bleedMult'] ?? 3;
       return [txt('Deal '), num(power), txt('+'), num(mult), txt('×'), kw('Bleed', 'bleed'), txt('\nConsume Bleed')];
@@ -883,9 +887,9 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'aegis_pulse':
       return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCC: chain +2 blk')];
     case 'burnout_shield':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCC: '), kw('Exhaust', 'exhaust')];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCC: '), kw('Forget', 'forget')];
     case 'bulwark':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCC: '), kw('Exhaust', 'exhaust')];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCC: '), kw('Forget', 'forget')];
     case 'conversion':
       return [txt('Deal Block as dmg\nGain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block')];
     case 'ironhide': {
@@ -993,7 +997,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       // from drawCount in the mastery stat table, not from power (which would show "Draw 0").
       const foresightStats = getMasteryStats(mechanic.id, masteryLevel);
       const foresightDraw = foresightStats?.drawCount ?? 1;
-      return [txt('Draw '), num(foresightDraw)];
+      return [txt('Draw '), num(foresightDraw), txt('\n'), kw('Forget', 'forget')];
     }
     case 'transmute':
       return [txt('Transform for\nencounter'), txt('\nCharge: choose 1/3')];
@@ -1024,7 +1028,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     }
     case 'recollect': {
       const rets = stats?.extras?.['returns'] ?? 1;
-      return [txt('Return '), num(rets), txt(' '), kw('Exhausted', 'exhaust'), txt('\nto discard')];
+      return [txt('Return '), num(rets), txt(' '), kw('Forgotten', 'forget'), txt('\nto discard')];
     }
     case 'synapse': {
       const draws = stats?.drawCount ?? 1;

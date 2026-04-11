@@ -27,13 +27,45 @@
 #
 # Usage:
 #   ./scripts/lint/check-commit-attribution.sh [--threshold SECONDS]
+#   ./scripts/lint/check-commit-attribution.sh --preview FILE [FILE ...]
 #
 # Default threshold: 600 seconds (10 minutes).
+#
+# --preview mode: check a given SET of files (not the current index).
+# Used by scripts/git-add-safe.sh to predict what the index WOULD look like
+# after a `git add` — catches cross-session bundling BEFORE it hits staging,
+# when unbundling is still trivial. The files are expected as the union of
+# (already-staged) ∪ (about-to-be-added).
 
-THRESHOLD="${1:-600}"
-if [ "$1" = "--threshold" ] && [ -n "$2" ]; then
-  THRESHOLD="$2"
-fi
+THRESHOLD=600
+PREVIEW_FILES=""
+MODE="staged"
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --threshold)
+      shift
+      THRESHOLD="${1:-600}"
+      shift
+      ;;
+    --preview)
+      MODE="preview"
+      shift
+      PREVIEW_FILES="$*"
+      break
+      ;;
+    -*)
+      echo "check-commit-attribution: unknown flag $1" >&2
+      exit 0
+      ;;
+    *)
+      # Legacy positional: bare number is a threshold override.
+      if [ "$1" -eq "$1" ] 2>/dev/null; then
+        THRESHOLD="$1"
+      fi
+      shift
+      ;;
+  esac
+done
 
 # Detect BSD vs GNU stat.
 if stat -f %m /dev/null >/dev/null 2>&1; then
@@ -45,8 +77,13 @@ else
   exit 0
 fi
 
-# Get staged files (added, modified, copied, renamed).
-STAGED=$(git diff --cached --name-only --diff-filter=ACMR 2>/dev/null)
+# Get the file list — either the current index (default) or the explicit
+# preview set.
+if [ "$MODE" = "preview" ]; then
+  STAGED=$(printf '%s\n' $PREVIEW_FILES)
+else
+  STAGED=$(git diff --cached --name-only --diff-filter=ACMR 2>/dev/null)
+fi
 if [ -z "$STAGED" ]; then
   exit 0
 fi

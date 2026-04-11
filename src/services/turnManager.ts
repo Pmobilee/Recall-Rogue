@@ -70,7 +70,7 @@ import {
   resolveChainCompleteEffects,
   resolveHealModifiers,
   resolveHpLossEffects,
-  resolveExhaustEffects,
+  resolveForgetEffects,
   resolveChainBreakEffects,
 } from './relicEffectResolver';
 import { applyPostIntentDamageScaling } from './enemyDamageScaling';
@@ -619,8 +619,8 @@ function createNoEffect(card: Card): CardEffectResult {
 /**
  * AR-204: Register an Inscription card effect in the active combat state.
  * Enforces Pool=1: if an inscription with the same mechanicId is already active,
- * the call is a no-op (card is still exhausted by the caller).
- * Does NOT exhaust the card — encounterBridge calls exhaustCard() separately.
+ * the call is a no-op (card is still forgotten by the caller).
+ * Does NOT forget the card — encounterBridge calls forgetCard() separately.
  */
 export function resolveInscription(turnState: TurnState, card: Card, playMode: PlayMode): void {
   const mechanicId = card.mechanicId ?? '';
@@ -780,7 +780,7 @@ export function startEncounter(
   }
 
   // Reset mastery encounter flags for all cards in all piles
-  const allCards = [...deck.drawPile, ...deck.discardPile, ...deck.hand, ...deck.exhaustPile];
+  const allCards = [...deck.drawPile, ...deck.discardPile, ...deck.hand, ...deck.forgetPile];
   resetEncounterMasteryFlags(allCards);
 
   // Phase 2: Compute passive encounter-start effects from deck tags.
@@ -1456,7 +1456,7 @@ export function playCardAction(
   const isChargeCorrect = playMode === 'charge' || playMode === 'charge_correct';
 
   // Compute deck domain counts for domain_mastery_sigil: count cards across draw + discard + hand.
-  // Exhaust pile is excluded — those cards are permanently removed from the run.
+  // Forget pile is excluded — those cards are permanently removed from the run.
   const deckDomainCounts: Record<string, number> = {};
   const deckCards = [
     ...turnState.deck.drawPile,
@@ -2310,34 +2310,34 @@ export function playCardAction(
     effect.chainLightningChainLength = clChainLen;
   }
 
-  // Volatile Slash / Burnout Shield — exhaust after resolve
+  // Volatile Slash / Burnout Shield — forget after resolve
   if (effect.exhaustOnResolve) {
-    // Move card from discard pile to exhaust pile
+    // Move card from discard pile to forget pile
     const discIdx = turnState.deck.discardPile.findIndex(c => c.id === cardId);
     if (discIdx !== -1) {
-      const [exhaustedCard] = turnState.deck.discardPile.splice(discIdx, 1);
-      turnState.deck.exhaustPile.push(exhaustedCard);
+      const [forgottenCard] = turnState.deck.discardPile.splice(discIdx, 1);
+      turnState.deck.forgetPile.push(forgottenCard);
       turnState.turnLog.push({
         type: 'play',
-        message: `${card.mechanicName ?? card.mechanicId}: exhausted after Charge`,
+        message: `${card.mechanicName ?? card.mechanicId}: forgotten after Charge`,
         cardId,
       });
-      // on_exhaust: exhaustion_engine draws 2 extra cards; scavengers_eye draws 1; tattered_notebook grants temp Strength
+      // on_forget: forget_engine draws 2 extra cards; scavengers_eye draws 1; tattered_notebook grants temp Strength
       if (turnState.activeRelicIds.size > 0) {
-        const exhaustFx = resolveExhaustEffects(turnState.activeRelicIds);
-        if (exhaustFx.bonusCardDraw > 0) {
-          drawHand(deck, exhaustFx.bonusCardDraw);
+        const forgetFx = resolveForgetEffects(turnState.activeRelicIds);
+        if (forgetFx.bonusCardDraw > 0) {
+          drawHand(deck, forgetFx.bonusCardDraw);
         }
-        if (exhaustFx.tempStrengthGain > 0) {
+        if (forgetFx.tempStrengthGain > 0) {
           // tattered_notebook v3: +1 Strength this turn (1 turn duration)
           playCardAudio('relic-trigger');
           const existingStr = playerState.statusEffects.find(s => s.type === 'strength');
           if (existingStr) {
-            existingStr.value += exhaustFx.tempStrengthGain;
+            existingStr.value += forgetFx.tempStrengthGain;
           } else {
             playerState.statusEffects.push({
               type: 'strength',
-              value: exhaustFx.tempStrengthGain,
+              value: forgetFx.tempStrengthGain,
               turnsRemaining: 1,
             });
           }
@@ -2365,7 +2365,7 @@ export function playCardAction(
         turnsRemaining: permanent ? 9999 : 1,
       });
     }
-    // L3 QP bonus: also +1 permanent Str (via warcry_perm_str tag)
+    // L3 QP bonus: also +1 permanent Str (direct check — warcry_perm_str tag removed 2026-04-11; tag was never dispatched)
     if (!isChargeCorrect && playMode !== 'charge_wrong' && (card.masteryLevel ?? 0) >= 3) {
       const strEffect = playerState.statusEffects.find(s => s.type === 'strength');
       if (strEffect) {
@@ -2674,10 +2674,10 @@ export function playCardAction(
     }
   }
 
-  // recollectUpgrade: returned exhausted cards get +N mastery (recollect_upgrade1 tag)
+  // recollectUpgrade: returned forgotten cards get +N mastery (recollect_upgrade1 tag)
   if ((effect.recollectUpgrade ?? 0) > 0 && (effect.exhaustedCardsToReturn ?? 0) > 0) {
     // exhaustedCardsToReturn was already processed by the recollect handler above.
-    // Apply +1 mastery to the most recently returned cards (those just moved to discard from exhaust).
+    // Apply +1 mastery to the most recently returned cards (those just moved to discard from forget pile).
     // The recollect resolution that moves cards happens in the effect application for exhaustedCardsToReturn.
     // We mark the returned cards by bumping mastery on the LAST N cards added to discard (heuristic).
     const returnCount = effect.exhaustedCardsToReturn!;
@@ -3838,14 +3838,14 @@ function applyTransmuteSwap(
 ): Card[] {
   if (selectedCards.length === 0) return [];
 
-  const { hand, discardPile, drawPile, exhaustPile } = turnState.deck;
+  const { hand, discardPile, drawPile, forgetPile } = turnState.deck;
 
-  // Search all piles — source card may be in hand (QP path), discard (post-play), draw, or exhaust
+  // Search all piles — source card may be in hand (QP path), discard (post-play), draw, or forget pile
   let sourceCard: Card | undefined;
   let sourcePile: Card[] | undefined;
   let sourceIdx = -1;
 
-  const piles: Card[][] = [hand, discardPile, drawPile, exhaustPile];
+  const piles: Card[][] = [hand, discardPile, drawPile, forgetPile];
   for (const pile of piles) {
     const idx = pile.findIndex(c => c.id === sourceCardId);
     if (idx >= 0) {
@@ -3865,7 +3865,7 @@ function applyTransmuteSwap(
   const originalCardSnapshot: Card = { ...sourceCard };
 
   // Gather current deck for catch-up mastery calculation (before mutation)
-  const allDeckCards = [...drawPile, ...hand, ...discardPile, ...exhaustPile];
+  const allDeckCards = [...drawPile, ...hand, ...discardPile, ...forgetPile];
 
   const primary = selectedCards[0];
   const primaryMastery = computeCatchUpMastery(primary, allDeckCards);
