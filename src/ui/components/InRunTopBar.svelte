@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getRelicIconPath, getGoldCoinIconPath } from '../utils/iconAssets'
+  import { openRunDeckOverlay } from '../stores/runDeckOverlayStore'
 
   // ============================================================
   // Segment name lookup
@@ -311,6 +312,16 @@
         ></div>
       {/each}
     </div>
+
+    <!-- Deck viewer button — opens RunDeckOverlay to show all cards in the run -->
+    <button
+      class="deck-btn"
+      aria-label="View current deck"
+      onclick={openRunDeckOverlay}
+      type="button"
+    >
+      <span class="deck-icon" aria-hidden="true">🎴</span>
+    </button>
 
     <!-- Pause button -->
     <button
@@ -832,12 +843,17 @@
   /* ============================================================
      Pause Button
      ============================================================ */
-  .pause-btn {
+  /* ============================================================
+     Deck Viewer Button — matches pause button sizing
+     ============================================================ */
+  .deck-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     width: calc(var(--topbar-height, 4.5vh) * 0.65);
     height: calc(var(--topbar-height, 4.5vh) * 0.7);
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
     border-radius: calc(4px * var(--layout-scale, 1));
     background: transparent;
     border: none;
@@ -846,6 +862,40 @@
     padding: 0;
     transition: background 150ms ease;
     margin-left: calc(4px * var(--layout-scale, 1));
+    align-self: center;
+  }
+
+  .deck-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .deck-btn:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+  }
+
+  .deck-icon {
+    font-size: calc(var(--topbar-height, 4.5vh) * 0.50);
+    line-height: 1;
+  }
+
+  .pause-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--topbar-height, 4.5vh) * 0.65);
+    height: calc(var(--topbar-height, 4.5vh) * 0.7);
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    border-radius: calc(4px * var(--layout-scale, 1));
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+    transition: background 150ms ease;
+    margin-left: calc(4px * var(--layout-scale, 1));
+    align-self: center;
   }
 
   .pause-btn:hover {

@@ -154,6 +154,8 @@ rewardRoom, masteryChallenge, relicSwapOverlay
 
 `InRunTopBar` only renders in landscape mode (`$layoutMode === 'landscape'`) AND when `activeRunState !== null`.
 
+**Run Deck Overlay (Issue 14, 2026-04-11):** `RunDeckOverlay` is also available on every in-run screen via the deck icon (🎴) in `InRunTopBar`. It is rendered centrally in `CardApp.svelte` gated on `showTopBar && $runDeckOverlayOpen` — no per-screen wiring required. When `activeTurnState` is null (non-combat screens), the overlay shows an empty state with a dismiss button (softlock-safe).
+
 ---
 
 ## Key Navigation Flows

@@ -8781,7 +8781,7 @@
         "Blood"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_long",
+      "answerTypePoolId": "root_meanings_cardiovascular",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -8840,7 +8840,7 @@
         "Blood clot"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_short",
+      "answerTypePoolId": "root_meanings_cardiovascular",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -13166,7 +13166,7 @@
         "vertebra"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_long",
+      "answerTypePoolId": "root_meanings_musculoskeletal",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -13221,7 +13221,7 @@
         "vertebra"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_long",
+      "answerTypePoolId": "root_meanings_musculoskeletal",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -14568,7 +14568,7 @@
         "eye"
       ],
       "chainThemeId": "5",
-      "answerTypePoolId": "root_meanings_long",
+      "answerTypePoolId": "root_meanings_short",
       "difficulty": 1,
       "funScore": 3,
       "ageGroup": "all",
@@ -16757,7 +16757,7 @@
         "testes"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_short",
+      "answerTypePoolId": "root_meanings_reproductive",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -16864,7 +16864,7 @@
         "seed"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_short",
+      "answerTypePoolId": "root_meanings_reproductive",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -16915,7 +16915,7 @@
       "correctAnswer": "vagina",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_short",
+      "answerTypePoolId": "root_meanings_reproductive",
       "difficulty": 1,
       "funScore": 5,
       "ageGroup": "all",
@@ -16968,7 +16968,7 @@
         "external female genitalia"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_short",
+      "answerTypePoolId": "root_meanings_reproductive",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -17021,7 +17021,7 @@
         "eye"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_long",
+      "answerTypePoolId": "root_meanings_short",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -40420,7 +40420,7 @@
         "Relating to milk"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_short",
+      "answerTypePoolId": "root_meanings_reproductive",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "adult",
@@ -40651,15 +40651,11 @@
         "medterm_root_lipo",
         "medterm_root_phago",
         "medterm_root_erythro",
-        "medterm_root_thrombo",
-        "medterm_root_lacto",
-        "medterm_root_spermo",
-        "medterm_root_vulvo",
-        "medterm_root_orchido",
-        "medterm_root_vagino"
+        "mtr_024",
+        "medterm_root_oculo"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "2026-04-11: Pool contains single-word root meanings (3-6 chars). Length variance is minimal and inherent. Eye discriminator facts (ophthalm/o, ocul/o) moved to root_meanings_long in the same commit.",
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminator \"(ophthalm/o)\" added to distinguish ophthalm/o from ocul/o (both meaning \"eye\")",
       "label": "root_meanings (short)",
       "syntheticDistractors": [
         "gut",
@@ -40729,12 +40725,7 @@
         "medroot_gen_013",
         "medroot_gen_029",
         "medroot_gen_028",
-        "medroot_gen_018",
-        "mtr_024",
-        "medterm_root_oculo",
-        "medterm_root_hemato",
-        "medterm_root_vertebro",
-        "medterm_root_spondylo"
+        "medroot_gen_018"
       ],
       "minimumSize": 5,
       "homogeneityExemptNote": "Medical root meanings vary widely in length — inherent domain variation",
@@ -41169,8 +41160,10 @@
       "factIds": [
         "medterm_root_phlebo",
         "medterm_root_veno",
+        "medterm_root_thrombo",
         "medterm_root_cardio",
         "medterm_root_hemo",
+        "medterm_root_hemato",
         "medterm_root_aorto",
         "medterm_root_valvulo",
         "medterm_root_sphygmo",
@@ -41322,6 +41315,8 @@
         "medterm_root_patello",
         "medterm_root_humero",
         "medterm_root_ligamento",
+        "medterm_root_vertebro",
+        "medterm_root_spondylo",
         "medterm_root_kinesio",
         "medterm_root_chondro",
         "medterm_root_lumbo",
@@ -41373,12 +41368,17 @@
     {
       "id": "root_meanings_reproductive",
       "factIds": [
+        "medterm_root_lacto",
         "mtr_018",
         "medterm_root_ovario",
+        "medterm_root_spermo",
         "mtr_021",
+        "medterm_root_vulvo",
         "medterm_root_utero",
         "medterm_root_metro",
         "medterm_root_mammo",
+        "medterm_root_orchido",
+        "medterm_root_vagino",
         "mtr_017"
       ],
       "syntheticDistractors": [

@@ -174,6 +174,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import { getCombatBgForEnemy, getCombatDepthMap } from './data/backgroundManifest'
   import ParallaxTransition from './ui/components/ParallaxTransition.svelte'
   import InRunTopBar from './ui/components/InRunTopBar.svelte'
+  import RunDeckOverlay from './ui/components/RunDeckOverlay.svelte'
+  import { runDeckOverlayOpen } from './ui/stores/runDeckOverlayStore'
   import MusicWidget from './ui/components/MusicWidget.svelte'
   import NarrativeOverlay from './ui/components/NarrativeOverlay.svelte'
   import { musicService } from './services/musicService'
@@ -1406,6 +1408,10 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       onpause={handlePause}
     />
     <MusicWidget />
+  {/if}
+
+  {#if showTopBar && $runDeckOverlayOpen}
+    <RunDeckOverlay />
   {/if}
 
   <div

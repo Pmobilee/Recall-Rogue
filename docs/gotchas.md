@@ -2913,6 +2913,8 @@ docker rm great_blackwell condescending_roentgen amazing_noyce confident_dhawan 
 
 **Files affected:** `data/decks/medical_terminology.json`, `scripts/quiz-audit.mjs` (fix needed, NOT touched here).
 
+**Revert complete (2026-04-11):** After `scripts/quiz-audit.mjs` was patched (commit `ade1182ad`) to honor `pool.homogeneityExempt`, the workaround reassignments were reverted. All 11 facts are back in their semantically correct anatomy pools (`root_meanings_cardiovascular`, `root_meanings_musculoskeletal`, `root_meanings_reproductive`, `root_meanings_short`). Quiz audit: 0 FAIL. Structural verify: 0 FAIL.
+
 ### 2026-04-11 — Docker warm container blocks on 504 after node_modules change
 
 **Symptom:** `scripts/docker-visual-test.sh --warm start` (and cold mode) times out at `page.waitForFunction` with `console error: "Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"`. The host dev server IS running and responding 200. Clearing `node_modules/.vite` on the host does not help.
