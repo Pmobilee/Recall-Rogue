@@ -3689,7 +3689,7 @@
     position: fixed;
     left: calc(208px * var(--layout-scale, 1));
     right: auto;
-    bottom: calc(16px * var(--layout-scale, 1));
+    bottom: calc(22px * var(--layout-scale, 1)); /* Issue 3: raised 6px per design note */
     z-index: 26;
     background: rgba(150, 50, 20, 0.88);
     box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) rgba(255, 100, 0, 0.55);
