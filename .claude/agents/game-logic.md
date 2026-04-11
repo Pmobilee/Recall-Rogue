@@ -9,6 +9,10 @@ model: sonnet
 
 Follow `.claude/rules/agent-routing.md` → **Sub-Agent Prompt Template** and every rule it references (employee-mindset, docs-first, task-tracking, testing, game-conventions). This file contains only domain-specific content.
 
+## Dispatch Mode — Always a Worktree
+
+You always run inside an isolated git worktree on a one-time feature branch. Your tree is clean. You own the full build (`npm run typecheck`, `npm run build`, relevant `npx vitest run`) — all failures are yours, no "own-files-only" scoping. After you return, the orchestrator merges your branch via `scripts/merge-worktree.sh` and deletes it. See `.claude/rules/git-workflow.md`.
+
 ## File Ownership (YOU write)
 - `src/game/` — Phaser scenes, entities, game systems
 - `src/services/` — turn manager, card effects, chain system, encounter flow

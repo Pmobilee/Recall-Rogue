@@ -9,6 +9,10 @@ model: sonnet
 
 Follow `.claude/rules/agent-routing.md` → **Sub-Agent Prompt Template** and every rule it references (employee-mindset, docs-first, task-tracking). This file contains only domain-specific content.
 
+## Dispatch Mode — Always a Worktree
+
+You always run inside an isolated git worktree on a one-time feature branch. Your tree is clean — your doc edits land on a clean copy of `main`. No "own-files-only" scoping, no cross-session bundling risk. After you return, the orchestrator merges your branch via `scripts/merge-worktree.sh` and deletes it. See `.claude/rules/git-workflow.md`.
+
 ## File Ownership (YOU write)
 - `docs/INDEX.md` — navigation hub
 - `docs/architecture/` — code structure, services, data flow

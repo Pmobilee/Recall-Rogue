@@ -13,28 +13,13 @@
 - `npm run build` — Production build (check Vite warnings)
 - Both must pass before committing
 
-## Agent Scope — Build Failure Ownership
+## Build Failure Ownership — You're Always in a Worktree
 
-### Worktree agents (parallel dispatch with `isolation: "worktree"`)
-Worktree agents have a clean, isolated tree. **They own the full build.** Run full `npm run typecheck`, `npm run build`, and relevant tests. All failures in a worktree are yours — there are no other agents editing your tree.
+Every file-editing sub-agent runs in an isolated worktree on a one-time branch (policy in `.claude/rules/git-workflow.md` → "Worktrees — MANDATORY for Every File-Editing Dispatch"). Your tree is clean: no other agent is editing it, no cross-session dirty state, no pre-existing breakage that isn't yours.
 
-### Shared-main agents (sequential dispatch, no worktree)
-When working directly on `main` during single-agent sequential dispatch, you also own the full build.
+**You own the full build.** Run full `npm run typecheck`, `npm run build`, and relevant unit tests after your implementation. Any failure in your tree is your responsibility — there's no "own-files-only" escape hatch under the worktree-mandatory policy.
 
-### Shared-main agents during parallel work (rare, legacy)
-If for any reason multiple agents are editing shared `main` without worktrees, each agent MUST IGNORE build / typecheck / test failures outside its own files. Fix only your own breakage.
-
-- Grep the error list for your file paths only
-- Do NOT install missing deps, delete unrelated broken code, or fix others' tests
-- If unrelated breakage blocks your verification, say so in ONE sentence and stop
-
-## Pre-Commit Mode in Worktrees vs Shared Main
-
-**Worktree agents:** Pre-commit hooks detect they are in a worktree (toplevel differs from main checkout) and run all checks in full blocking mode. The tree is isolated — no spurious failures from concurrent edits.
-
-**Shared `main` with `RR_MULTI_AGENT=1`:** If for any reason multiple agents edit shared `main` without worktrees, set `RR_MULTI_AGENT=1` to soft-warn on typecheck / build / vitest failures. Deck verification, skill drift, and Docker visual verify still hard-block. A soft-warn is NOT a license to ignore — re-run in single-agent mode to confirm.
-
-With the hybrid worktree policy, parallel agents should always be in worktrees, making the shared-main soft-warn path a rare fallback.
+Pre-commit hooks run in full blocking mode inside worktrees. The legacy `RR_MULTI_AGENT=1` soft-warn path and the old "shared-main own-files-only" carve-out are both retired — they only made sense when multiple agents could edit `main` concurrently, which no longer happens under the current policy.
 
 ## Balance Testing
 - Headless simulator is DEFAULT for balance: imports real game code, zero drift

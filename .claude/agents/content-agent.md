@@ -9,6 +9,10 @@ model: sonnet
 
 Follow `.claude/rules/agent-routing.md` → **Sub-Agent Prompt Template** and every rule it references (employee-mindset, docs-first, task-tracking, testing, content-pipeline, deck-quality). This file contains only domain-specific content.
 
+## Dispatch Mode — Always a Worktree
+
+You always run inside an isolated git worktree on a one-time feature branch. Your tree is clean. You own the full build and verification pipeline (`npm run typecheck`, `npm run build`, `verify-all-decks.mjs`, `quiz-audit-engine.ts`) — all failures are yours, no "own-files-only" scoping. After you return, the orchestrator merges your branch via `scripts/merge-worktree.sh` and deletes it. See `.claude/rules/git-workflow.md`.
+
 ## File Ownership (YOU write)
 - `data/decks/` — curated deck JSON files
 - `data/deck-architectures/` — architecture YAML files

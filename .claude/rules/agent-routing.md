@@ -56,9 +56,9 @@ The orchestrator does NOT write game code — but DOES do all pre-implementation
 4. **Cross-domain tasks:** spawn one agent per domain. Never let one domain agent touch another's files.
 5. **Unrouted files:** assign to the closest domain agent, then update this table.
 
-## Worktrees — Automatic for Parallel Batches
+## Worktrees — MANDATORY for File-Editing Dispatches
 
-When the orchestrator dispatches **2+ file-editing sub-agents simultaneously**, pass `isolation: "worktree"` to each Agent call. Sequential single-agent tasks work directly on `main`. Read-only agents (Explore, review) never need worktrees. See `.claude/rules/git-workflow.md`.
+**Every file-editing sub-agent dispatch uses `isolation: "worktree"`.** No sequential carve-out, no parallel-only carve-out — if the agent is going to write files, it runs in an isolated worktree on a one-time feature branch. Read-only agents (Explore, review, search-only) never need worktrees. Full policy and rationale in `.claude/rules/git-workflow.md` → "Worktrees — MANDATORY for Every File-Editing Dispatch".
 
 **After each worktree agent returns:**
 1. Verify changes: `git -C <worktree_path> log main..HEAD --oneline`
@@ -66,7 +66,7 @@ When the orchestrator dispatches **2+ file-editing sub-agents simultaneously**, 
 3. Merge: `scripts/merge-worktree.sh <worktree-path> <branch-name> "<merge-message>"`
 4. The script handles `--no-ff` merge, worktree removal, and branch cleanup
 
-**Worktree agents own the full build.** Unlike shared-main agents, a worktree agent has a clean isolated tree. It should run full `npm run typecheck` and `npm run build` — not the own-files-only scoping. Pre-commit hooks skip multi-agent soft-warn when running inside a worktree.
+**Worktree agents own the full build.** A worktree agent has a clean isolated tree. It runs full `npm run typecheck`, `npm run build`, and relevant tests — no "own-files-only" scoping. Pre-commit hooks run in full blocking mode.
 
 ## Sub-Agent Prompt Template — Canonical
 
@@ -76,11 +76,7 @@ When the orchestrator dispatches **2+ file-editing sub-agents simultaneously**, 
 2. **Read first.** "Read relevant docs under `docs/` BEFORE writing code. Navigate via `docs/INDEX.md`."
 3. **Docs same-commit.** "After changes, update the same doc files. Docs-first is non-negotiable; see `.claude/rules/docs-first.md`."
 4. **Tasks.** "Break work into granular `TaskCreate` tasks before starting. `TaskList` must be empty before delivering. See `.claude/rules/task-tracking.md`."
-5. **Build & test.** "Run `npm run typecheck` and `npm run build` after implementation. Run relevant unit tests.
-    - **If you are in a worktree** (`isolation: "worktree"`): you own the full build. Run full typecheck/build/tests. Your tree is clean and isolated — all failures are yours.
-    - **If you are on shared `main`** (sequential dispatch, no worktree): **Only verify your OWN edited files compile cleanly.** Ignore pre-existing failures in files you did not touch — those belong to another parallel agent. Do NOT install missing deps you did not introduce, do NOT delete unrelated broken code, do NOT 'fix' tests you did not author. See `.claude/rules/testing.md` → 'Agent Scope — Own-Files-Only Build Failures'.
-
-    **CRITICAL — Batch preflight SHA comparison (shared-main only).** When you see test failures on shared `main`, **'pre-existing' means present before the BATCH started, NOT before your task started.** Your parent BATCH has a preflight commit SHA (included in your task prompt when relevant). Compare test results against THAT SHA, not against the commit immediately before your task. Lesson from BATCH-ULTRA 2026-04-11 WAVE-B.FOLLOW test-failure misreport."
+5. **Build & test.** "You are running in an isolated worktree on a clean one-time branch. Run full `npm run typecheck`, `npm run build`, and relevant unit tests — you own every failure in your tree because no other agent is editing it. No 'own-files-only' scoping applies; that carve-out belonged to the retired shared-main dispatch mode. See `.claude/rules/testing.md`."
 6. **Visual verify — ONLY when visual.** "Run Docker visual verification per `.claude/rules/testing.md` → Visual Verify — Scoped. Run it only when the change could actually be seen by the player (UI, sprites, shaders, CSS, card/enemy data the combat screen reads, content text). Skip it for lint/test/doc/script edits and pure-TypeScript refactors. Don't burn 50–60s on a cold Docker boot for a change that has zero visual surface."
 7. **Output sampling.** "After ANY batch operation or content edit, sample 5–10 items and READ them back. Sub-agents produce broken output ~15–20% of the time — catch it before delivering."
 8. **Employee mindset.** "Follow `.claude/rules/employee-mindset.md` (single file covering Autonomy Ladder, Never Defer, Finished-Work Checklist, Clarification Bar, PX Lens, Creative Pass, What's Next). Default to action, not interrogation. Fix Green-zone issues in the same commit. Creative Pass + What's Next are required ONLY on non-trivial tasks — skip for mechanical single-purpose edits."
@@ -127,5 +123,5 @@ After any visual/rendering change: spawn ui-agent with `/visual-inspect`, OR use
 - ❌ Trusting a sub-agent's return summary without `git status` + `git diff` + sample read-back.
 - ❌ Re-stating the Sub-Agent Prompt Template in any other rule or agent definition. Always reference this file.
 - ❌ Sub-agent returning a success summary without a `## Self-Verification` paste for every data-mutating claim. The orchestrator will re-verify regardless — a missing self-verification section is evidence of either a silent failure or a skipped check, both of which are hard failures.
-- ❌ **`git add -A` / `git add .` on shared `main` when parallel agents are active.** A bulk `git add` sweeps up other agents' in-progress files. Use explicit paths instead. **Exception:** `git add -A` is safe inside a worktree — only your files exist in that index. See `docs/gotchas.md` 2026-04-11 "BATCH-ULTRA 51b68139b cross-agent git-add race".
+- ❌ **`git add -A` / `git add .` on shared `main`.** A bulk `git add` on `main` can sweep up a parallel session's in-progress files (two documented bundling races on 2026-04-11 — commits `713ea981c` and `4a1ba6f5c`). Under the worktree-mandatory policy this should be a non-issue: if you're in a worktree, `git add -A` is safe because only your files exist in that index; if you're the orchestrator, you stay on `main` and stage only explicit paths with `git add <file>`. Never `git add -A` on `main`.
 - ❌ **Sub-agent auto-committing outside its assigned wave.** The BATCH plan says when commits happen. Sub-agents that ship their own commits mid-batch break the orchestrator's ability to bundle related work atomically. When in doubt, stage your work and let the orchestrator commit at the wave boundary, unless your task prompt explicitly says "commit after each fix".

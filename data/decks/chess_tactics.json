@@ -3,7 +3,7 @@
   "name": "Chess Tactics",
   "domain": "games",
   "subDomain": "chess_tactics",
-  "description": "Master chess tactical patterns — forks, pins, skewers, sacrifices, and checkmate combinations. Each puzzle is a real game position from the Lichess database with a verified winning move. Move the pieces to solve!",
+  "description": "Real game positions from the Lichess database. One winning move each. Either you see it or you don't.",
   "minimumFacts": 200,
   "targetFacts": 300,
   "facts": [
