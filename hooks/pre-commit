@@ -7,27 +7,15 @@
 # deck verification and quiz audit soft-warn instead of hard-blocking, since
 # the shared facts.db and in-flight deck edits can cause spurious failures.
 #
-# SOURCE OF TRUTH: this file. Copy to .git/hooks/pre-commit on clone:
-#     cp hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
-# The .git/hooks/ copy is untracked and drifts silently — keep them in sync.
+# SOURCE OF TRUTH: this file is invoked directly by git via
+# `core.hooksPath=hooks` (set by `npm run hooks:install`). There is no
+# mirror to keep in sync — the .git/hooks/pre-commit copy is obsolete.
+# Multi-agent detection logic lives in hooks/lib/multi-agent-detect.sh
+# and is shared with .claude/hooks/pre-commit-verify.sh.
 
-# --- Multi-agent detection (POSIX sh, matches .claude/hooks/pre-commit-verify.sh) ---
+# --- Multi-agent detection (shared helper, single source of truth) ---
 REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
-MULTI_AGENT=0
-MULTI_AGENT_REASON=""
-if [ "${RR_MULTI_AGENT:-0}" = "1" ]; then
-  MULTI_AGENT=1
-  MULTI_AGENT_REASON="RR_MULTI_AGENT=1 env var"
-elif [ -f "$REPO_ROOT/.claude/multi-agent.lock" ]; then
-  MULTI_AGENT=1
-  MULTI_AGENT_REASON=".claude/multi-agent.lock present"
-else
-  wt_count=$(git worktree list 2>/dev/null | wc -l | tr -d ' ')
-  if [ "${wt_count:-0}" -gt 1 ]; then
-    MULTI_AGENT=1
-    MULTI_AGENT_REASON="$wt_count git worktrees active"
-  fi
-fi
+. "$REPO_ROOT/hooks/lib/multi-agent-detect.sh"
 
 if [ "$MULTI_AGENT" = "1" ]; then
   echo ""

@@ -40,7 +40,25 @@ npm run build:obfuscate  # XOR-obfuscate public/facts.db + public/curated.db
 npm run deck:quality     # Full deck quality gate (structural + quiz audit)
 npm run deck:fix-pools   # Auto-split heterogeneous answer pools
 npm run deck:fix-synthetics # Pad pools to 15+ with synthetic distractors
+npm run hooks:install    # One-time post-clone: point git at checked-in hooks/
 ```
+
+## One-Time Post-Clone Setup
+After cloning this repo, run `npm run hooks:install` once. It sets
+`core.hooksPath=hooks` so git invokes the checked-in `hooks/pre-commit`
+directly, eliminating the drift problem between the checked-in mirror and
+the `.git/hooks/` live copy. Skip this and you'll run the old unversioned
+hook. See `docs/gotchas.md` 2026-04-11 for the full story.
+
+## Multi-Agent Pre-Commit Mode
+When multiple agents commit in parallel, the pre-commit hooks (both the
+Claude-harness one and the git-side one) can flake on typecheck / build /
+vitest / deck-verify / quiz-audit due to concurrent edit collisions. Both
+hooks now detect multi-agent mode and soft-warn instead of blocking. Trip
+detection with any one of: `RR_MULTI_AGENT=1`, `.claude/multi-agent.lock`
+marker file, or >1 git worktree. Skill drift + Docker visual verify still
+hard-block (deterministic, collision-free). See `.claude/rules/testing.md`
+→ "Multi-Agent Pre-Commit Mode".
 
 ## Directory Structure
 ```
