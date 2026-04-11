@@ -275,3 +275,28 @@ Two relic effects and the relic acquisition service were using bare `Math.random
 **RNG pattern:** All four use the `isRunRngActive() ? getRunRng(fork) : Math.random()` fallback pattern, consistent with `rewardGenerator.ts` and `masteryChallengeService.ts`. Forks `'relicEffects'` and `'relicRewards'` are cached per run via the seededRng fork cache.
 
 **Tests added:** 4 new determinism tests in `src/services/__tests__/relicEffectResolver.v2.test.ts` confirm identical output for same seed and different output for different seeds.
+
+## 2026-04-11 — shouldDropRandomRelic Seeded (BATCH-2026-04-11-ULTRA Fix D)
+
+`shouldDropRandomRelic()` in `relicAcquisitionService.ts` was using bare `Math.random()`, causing the drop decision to desync in co-op. Both peers must agree on whether a drop occurs before either peer sees the relic pool.
+
+**Fix:** Uses a dedicated `'relicDrops'` RNG fork, independent from `'relicRewards'` (which governs the reward-selection rolls inside `generateRelicChoices`). Keeping the forks separate ensures that calling `shouldDropRandomRelic()` does not consume entropy from the reward-selection sequence and vice versa.
+
+```typescript
+// Before (desynced):
+export function shouldDropRandomRelic(): boolean {
+  return Math.random() < RELIC_DROP_CHANCE_REGULAR;
+}
+
+// After (deterministic):
+export function shouldDropRandomRelic(): boolean {
+  const roll = isRunRngActive() ? getRunRng('relicDrops').next() : Math.random();
+  return roll < RELIC_DROP_CHANCE_REGULAR;
+}
+```
+
+**Tests added** (`src/services/relicAcquisition.test.ts`):
+- Same seed → identical 20-decision sequence
+- Different seeds → different sequences
+- `'relicDrops'` fork is independent from `'relicRewards'` (calling `shouldDropRandomRelic` does not alter `generateRelicChoices` output for the same seed, and vice versa)
+- Without active run RNG, falls back to `Math.random()` without throwing

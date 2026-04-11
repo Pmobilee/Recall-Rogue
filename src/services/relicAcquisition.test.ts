@@ -2,18 +2,21 @@
  * Unit tests for the Relic Acquisition Flow — AR-59.12
  *
  * Covers: pity counter logic, generateRandomRelicDrop (full rarity weights + pity),
- * RELIC_BOSS_RARITY_WEIGHTS values, offeredRelicIds scope, and pool exclusions.
+ * RELIC_BOSS_RARITY_WEIGHTS values, offeredRelicIds scope, pool exclusions, and
+ * shouldDropRandomRelic co-op determinism (BATCH-2026-04-11-ULTRA Fix D).
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, afterEach } from 'vitest';
 import {
   generateRandomRelicDrop,
   generateRelicChoices,
   getEligibleRelicPool,
+  shouldDropRandomRelic,
 } from './relicAcquisitionService';
 import { RELIC_BOSS_RARITY_WEIGHTS, RELIC_RARITY_WEIGHTS, RELIC_PITY_THRESHOLD } from '../data/balance';
 import type { RelicDefinition, RelicRarity } from '../data/relics/types';
 import { STARTER_RELIC_IDS } from '../data/relics/index';
+import { initRunRng, destroyRunRng } from './seededRng';
 
 // ---------------------------------------------------------------------------
 // Helpers — minimal mock relic definitions
@@ -251,5 +254,73 @@ describe('generateRelicChoices', () => {
   it('returns empty array on empty pool', () => {
     const choices = generateRelicChoices([], 3, RELIC_RARITY_WEIGHTS);
     expect(choices).toEqual([]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// shouldDropRandomRelic — co-op determinism (BATCH-2026-04-11-ULTRA Fix D)
+// ---------------------------------------------------------------------------
+
+describe('shouldDropRandomRelic — seeded RNG determinism', () => {
+  // Ensure run RNG is always torn down after each test to prevent cross-test pollution.
+  afterEach(() => {
+    destroyRunRng();
+  });
+
+  it('same seed produces the same sequence of drop decisions', () => {
+    // Run 1: initialize, collect 20 decisions
+    initRunRng(12345);
+    const run1: boolean[] = [];
+    for (let i = 0; i < 20; i++) run1.push(shouldDropRandomRelic());
+    destroyRunRng();
+
+    // Run 2: same seed, must produce identical sequence
+    initRunRng(12345);
+    const run2: boolean[] = [];
+    for (let i = 0; i < 20; i++) run2.push(shouldDropRandomRelic());
+
+    expect(run2).toEqual(run1);
+  });
+
+  it('different seeds produce different sequences', () => {
+    initRunRng(11111);
+    const runA: boolean[] = [];
+    for (let i = 0; i < 20; i++) runA.push(shouldDropRandomRelic());
+    destroyRunRng();
+
+    initRunRng(22222);
+    const runB: boolean[] = [];
+    for (let i = 0; i < 20; i++) runB.push(shouldDropRandomRelic());
+
+    // With 20 independent boolean draws they should differ at least once
+    // (probability of matching perfectly: 2^-20 ≈ 1e-6)
+    expect(runA).not.toEqual(runB);
+  });
+
+  it("uses the 'relicDrops' fork independently from 'relicRewards'", () => {
+    // Calling shouldDropRandomRelic() must NOT consume the relicRewards fork.
+    // Verify: generateRelicChoices output is identical regardless of whether
+    // shouldDropRandomRelic was called first.
+    const seed = 99999;
+
+    initRunRng(seed);
+    const dropFirst = shouldDropRandomRelic();
+    const choicesAfterDrop = generateRelicChoices(POOL_WITH_ALL, 2, RELIC_RARITY_WEIGHTS).map(r => r.id);
+    destroyRunRng();
+
+    initRunRng(seed);
+    const choicesNoDrop = generateRelicChoices(POOL_WITH_ALL, 2, RELIC_RARITY_WEIGHTS).map(r => r.id);
+    const dropAfter = shouldDropRandomRelic();
+    destroyRunRng();
+
+    // Drop result must be the same regardless of call order
+    expect(dropFirst).toBe(dropAfter);
+    // Choices must be the same regardless of whether shouldDropRandomRelic was called
+    expect(choicesAfterDrop).toEqual(choicesNoDrop);
+  });
+
+  it('without active run RNG, falls back to Math.random (no throw)', () => {
+    // RNG is destroyed (afterEach called) — should not throw
+    expect(() => shouldDropRandomRelic()).not.toThrow();
   });
 });

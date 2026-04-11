@@ -135,9 +135,15 @@ export function generateRandomRelicDrop(
 /**
  * Determines whether a random relic should drop after a regular encounter.
  * Uses `RELIC_DROP_CHANCE_REGULAR` (10% chance).
+ *
+ * Uses the `'relicDrops'` RNG fork when a seeded run is active, keeping the
+ * drop decision independent from the reward-selection RNG (`'relicRewards'`).
+ * This is required for co-op determinism — both peers must agree on whether
+ * a drop occurs before either peer picks the relic. (BATCH-2026-04-11-ULTRA Fix D)
  */
 export function shouldDropRandomRelic(): boolean {
-  return Math.random() < RELIC_DROP_CHANCE_REGULAR;
+  const roll = isRunRngActive() ? getRunRng('relicDrops').next() : Math.random();
+  return roll < RELIC_DROP_CHANCE_REGULAR;
 }
 
 /**
