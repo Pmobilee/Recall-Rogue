@@ -1,7 +1,7 @@
 # Enemy System
 
 > **Purpose:** Complete reference for the enemy roster, categories, scaling formulas, special behaviors, and encounter selection.
-> **Last verified:** 2026-04-09 (Phase 8: Elite unique mechanics — Librarian Silence, Tutor Pop Quiz, Headmistress Detention, Study Group phase sim. Phase 9: strip_block intents on page_flutter/bookmark_vine/staple_bug)
+> **Last verified:** 2026-04-11 (T1.2-retry: Omnibus + Final Lesson status stacks cut 40% to reduce damage-per-turn. Phase 8: Elite unique mechanics — Librarian Silence, Tutor Pop Quiz, Headmistress Detention, Study Group phase sim. Phase 9: strip_block intents on page_flutter/bookmark_vine/staple_bug)
 > **Source files:** `src/data/enemies.ts`, `src/services/enemyManager.ts`, `src/data/balance.ts`, `src/services/ascension.ts`
 
 ## Enemy Categories
@@ -478,8 +478,8 @@ Act 3 commons: baseHP 5–8 (−1 across all, pass #6). Attack values 3. Multi p
 ### Act 3 Bosses
 | Enemy | Base HP | Phase | Notes |
 |---|---|---|---|
-| `omnibus` | 9 | 50% HP | Ph1: atk 4/5, defend 5, charge 7. Ph2: atk 5, multi 4×2, buff str+2, charge 7 | (HP 12→9, T1.2 -25%, 2026-04-11) |
-| `final_lesson` | 10 | 33% HP | Ph1: atk 5, multi 4×4. Ph2: atk 6, multi 4×4. Quiz phases at 66%+33% | (HP 14→10, T1.2 -25%, 2026-04-11) |
+| `omnibus` | 9 | 50% HP | Ph1: atk 4/5, defend 5, str+1 buff, charge 7. Ph2: atk 5, multi 4×2, str+1 buff, charge 7 | (HP 12→9, T1.2 -25%; str 2→1, T1.2-retry -40%, 2026-04-11) |
+| `final_lesson` | 10 | 33% HP | Ph1: atk 5, multi 4×4, weakness 1, str+1. Ph2: atk 6, multi 4×4, vulnerable 1, str+2, heal 6. Quiz 66%+33%; wrong charge →str+1 perm | (HP 14→10, T1.2 -25%; all status stacks -40%, T1.2-retry, 2026-04-11) |
 
 ---
 
@@ -556,8 +556,8 @@ Enemy selection uses `getEnemiesForNode(act, nodeType)` which maps to `ACT_ENEMY
 | `curriculum` | 17 | 50% HP | `onPhaseTransition`: `_quickPlayDamageMultiplierOverride = 0` + +2 `enrageBonusDamage`; only Charge deals damage |
 | `group_project` | 14 | 50% HP | Phase 2: 2-hit dual strike, 4-hit fang barrage, Poison 4×3, atk 4 (pass 2: HP 18→14, peak atk 6→4) |
 | `rabbit_hole` | 21 | — | Debuffs hand with vulnerable and weakness each turn; no phase transition |
-| `omnibus` | 9 | 50% HP | Phase 2: 5-base attacks, 2-hit page storm, +2 Strength buff; charges 7-damage Tome Avalanche (T1.2: HP 12→9, -25%, 2026-04-11) |
-| `final_lesson` | 10 | 33% HP | Quiz phases at 66% HP (5q) and 33% HP (8q, 4s rapid-fire); `onPlayerChargeWrong`: +2 permanent Strength | (T1.2: HP 14→10, -25%, 2026-04-11) |
+| `omnibus` | 9 | 50% HP | Phase 2: 5-base attacks, 2-hit page storm, +1 Strength buff (was +2); charges 7-damage Tome Avalanche (T1.2: HP 12→9, -25%, 2026-04-11; T1.2-retry: str 2→1 on all buff intents, -40%, 2026-04-11) |
+| `final_lesson` | 10 | 33% HP | Quiz phases at 66% HP (5q) and 33% HP (8q, 4s rapid-fire); `onPlayerChargeWrong`: +1 permanent Strength (was +2); Ph1: weakness 1 (was 2), str+1 (was +2); Ph2: vulnerable 1 (was 2), str+2 (was +3) | (T1.2: HP 14→10, -25%, 2026-04-11; T1.2-retry: all status stacks -40%, 2026-04-11) |
 
 ---
 

@@ -3325,3 +3325,65 @@ Fed via `scripts/docker-visual-test.sh --warm test --agent-id X --actions-file /
 **Parallel rename:** game-logic and ui-agent handled `src/` renames simultaneously. The code rename (exhaustPile → forgetPile, exhaustCard → forgetCard, on_exhaust → on_forget, etc.) is happening in the same commit batch.
 
 **Prevention:** When renaming a core mechanic keyword, search all four doc layers and both the player-visible text and the internal code-name form. Natural-English "exhaust" (deplete) and mechanic "Exhaust" (remove from game) are visually identical in prose — always read context before renaming. Run `grep -rn "exhaust" docs/mechanics docs/ui docs/architecture docs/testing docs/content docs/roadmap docs/GAME_DESIGN.md` as a final check.
+
+### 2026-04-11 — T1.2 retry: HP cut insufficient, status nerf was the real lever
+
+**Symptom:** T1.2 first pass cut Omnibus + Final Lesson baseHP by 25% (12→9 and 14→10 respectively). Across a 6,000-run headless sim, Floor 18 death rate only dropped from ~30% to ~29% — effectively no movement.
+
+**Root cause diagnosis:** Players were dying from damage-per-turn accumulation, not HP attrition. Shortening the fight (HP cut) reduces total incoming damage slightly but does not reduce the per-turn damage spike that kills players. The bosses' status inflictions (Strength buffs to self, weakness/vulnerable debuffs to player) compound over multi-turn fights — each Strength stack raises *every subsequent attack*, and weakness/vulnerable amplify incoming hits multiplicatively. The result is an exponential damage curve late in the fight that the HP cut does nothing to address.
+
+**Fix (T1.2 retry, 2026-04-11):** Cut all status stack values on Omnibus and Final Lesson by 40%, rounded to nearest integer:
+- Omnibus Ph1 "Absorb text": str 2→1
+- Omnibus Ph2 "Knowledge consumed": str 2→1
+- Final Lesson Ph1 "Forgotten lore": weakness 2→1
+- Final Lesson Ph1 "Ancient wisdom": str 2→1
+- Final Lesson Ph2 "Mind shatter": vulnerable 2→1
+- Final Lesson Ph2 "Final form": str 3→2
+- Final Lesson `onPlayerChargeWrong`: str 2→1 (permanent)
+
+The 25% HP cut was retained — both changes stack. Target metric: Floor 18 death rate ≤ 10%.
+
+**Lesson:** When a floor death rate is near-constant after an HP cut, the lever is DPT, not TTK. Check status infliction rates before cutting raw HP — status effects compound multiplicatively and are often the dominant damage source in later-act bosses.
+
+### 2026-04-11 — Multi-agent exhaust→forget contamination leaked into resolver target files
+
+**Context:** The docs-agent performed a repo-wide rename of the `Exhaust` mechanic term to `Forget` (field names, pile names, trigger names). The rename was correct for `src/services/deckManager.ts`, `src/services/encounterBridge.ts`, and `src/data/relics/types.ts`. However, the previous session of this game-logic agent used Python scripts that opened and rewrote `cardEffectResolver.ts` and `cardUpgradeService.ts` — these scripts ran AFTER the rename, so the `exhaust→forget` changes contaminated files that should retain `exhaust` field names.
+
+**Symptom:** Shield-mechanics tests (`burnout_shield`, `bulwark`, `volatile_slash`) started failing because:
+- `CardEffectResult.exhaustOnResolve` was renamed to `forgetOnResolve` in the resolver interface.
+- Tags `burnout_no_exhaust`, `bulwark_no_exhaust`, `volatile_no_exhaust` in the stat table were renamed to `burnout_no_forget`, etc. in the resolver's `hasTag()` checks.
+- The tests (`tests/unit/shield-mechanics.test.ts`) check `result.exhaustOnResolve` — they saw `undefined` instead of `true`.
+
+**Root cause:** Python `str.replace()` applied across the whole file replaces ALL occurrences globally. When the contamination rename wrote `forgetOnResolve` into the interface, the stat table's `no_exhaust` tags became mismatched with the resolver's `no_forget` checks.
+
+**Fix:** Comprehensive replacement in `cardEffectResolver.ts` restoring `exhaustOnResolve`, `exhaustAfterPlay`, `exhaustedCardsToReturn`, and all three tag names (`burnout_no_exhaust`, `bulwark_no_exhaust`, `volatile_no_exhaust`). Then the same fix in `turnManager.ts` which reads these fields (`effect.exhaustOnResolve`, `effect.exhaustedCardsToReturn`).
+
+**Signal that you have this bug:** `result.exhaustOnResolve` returns undefined in tests that pass mastery-level args — shield-mechanics tests for burnout/bulwark/volatile will fail. The resolver's `hasTag()` checks don't match what the stat table actually emits.
+
+**Prevention:** When a rename agent touches files by global script, check ALL files touched by game-logic Python scripts in the same session for cross-contamination. Always grep the specific field names used in tests (`exhaustOnResolve`, `forgetOnResolve`) against both the resolver interface AND the test expectations to confirm they agree.
+
+### 2026-04-11 — Python str.replace collision: iron_wave L0 stat table accidentally changed
+
+**Context:** During Severity-A resolver normalization, a Python `str.replace()` targeted `riposte` L0 by matching its stat-table pattern `{ qpValue: 2, secondaryValue: 3 }`. However, `iron_wave` L0 had the identical pattern. `str.replace()` replaces ALL occurrences — both were changed.
+
+**Symptom:** After the riposte patch, iron_wave L0 secondaryValue became 4 instead of 3. The attack-mechanics tests caught this: iron_wave QP block was expected at 3 but read 4.
+
+**Fix:** Reverted iron_wave L0 back to `secondaryValue: 3`. Separately patched riposte L0 by searching for its larger context (the full `riposte:` block).
+
+**Prevention:** When using Python `str.replace()` on stat table entries, always check whether the pattern appears more than once in the file (`content.count(pattern)` before replacing). If count > 1, use `replace(old, new, 1)` to limit to one occurrence, or match on more context (the mechanic name or a surrounding comment).
+
+### 2026-04-11 — HARD STOP rule: mechanics with non-1.5 CC:QP ratios cannot be fully normalized
+
+**Context:** Of the 11 Severity-A mechanics targeted for stat-table normalization, 5 had CC values that do NOT follow the standard `qpValue × 1.50` formula:
+
+| Mechanic | QP | CC | Ratio | Notes |
+|---|---|---|---|---|
+| `execute` | 8 | 24 | 3.0× | Conditional execute: high CC is the core design |
+| `thorns` | 3 | 9 | 3.0× | Reflect mechanic: CC is a direct 3× of QP by intent |
+| `hex` | 3 stacks | 8 stacks | 2.67× | Historical odd number, asymmetric by design |
+| `lacerate` | 4 | 8 | 2.0× | Bleed DoT: CC doubles the DoT application |
+| `kindle` | 4 | 8 | 2.0× | Burn DoT: CC doubles the DoT application |
+
+**Rule:** If `CC ÷ QP ≠ 1.50`, applying `qpValue × CHARGE_CORRECT_MULTIPLIER` would change the player-experienced CC value — which violates the balance-preservation goal of normalization. HARD STOP: only normalize QP to read from the stat table; leave CC as a hardcoded literal.
+
+**Why this matters:** A future pass that edits the stat table's `qpValue` for these mechanics would cascade to CC only for the 6 SAFE mechanics (where CC = `qpValue × 1.5`). For the 5 HARD STOP cases, the CC literal must also be updated manually. This is documented intentionally so the next engineer knows the discrepancy is not a bug.

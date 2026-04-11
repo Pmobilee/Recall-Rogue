@@ -176,7 +176,7 @@ export interface EnemyTemplate {
    * Used by the Headmistress to exhaust the player's 2 highest-mastery cards (Detention mechanic).
    * Dispatched from encounterBridge.startEncounterForRoom after turnState is fully initialized.
    */
-  onEncounterStart?: (enemy: EnemyInstance, deck: { hand: Array<{ id: string; masteryLevel?: number; mechName?: string }>, drawPile: Array<{ id: string; masteryLevel?: number; mechName?: string }>, exhaustPile: Array<{ id: string; masteryLevel?: number; mechName?: string }> }) => string[];
+  onEncounterStart?: (enemy: EnemyInstance, deck: { hand: Array<{ id: string; masteryLevel?: number; mechName?: string }>, drawPile: Array<{ id: string; masteryLevel?: number; mechName?: string }>, forgetPile: Array<{ id: string; masteryLevel?: number; mechName?: string }> }) => string[];
 }
 
 /** A live enemy instance in an encounter. */
@@ -575,7 +575,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 4, weight: 35, telegraph: 'Tome slam' },
       { type: 'attack', value: 5, weight: 25, telegraph: 'Crushing knowledge' },
       { type: 'defend', value: 5, weight: 20, telegraph: 'Page shield' },
-      { type: 'buff', value: 2, weight: 20, telegraph: 'Absorb text', statusEffect: { type: 'strength', value: 2, turns: 3 } },
+      { type: 'buff', value: 2, weight: 20, telegraph: 'Absorb text', statusEffect: { type: 'strength', value: 1, turns: 3 } }, // T1.2-retry 2026-04-11: strength 2→1 (-40%) to reduce damage-per-turn
       { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
     ],
     description: 'Built from compressed books. At half health, unleashes stored knowledge as devastating attacks.',
@@ -584,7 +584,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     phase2IntentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Tome crush' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Page storm', hitCount: 2 },
-      { type: 'buff', value: 2, weight: 1, telegraph: 'Knowledge consumed', statusEffect: { type: 'strength', value: 2, turns: 3 } },
+      { type: 'buff', value: 2, weight: 1, telegraph: 'Knowledge consumed', statusEffect: { type: 'strength', value: 1, turns: 3 } }, // T1.2-retry 2026-04-11: strength 2→1 (-40%) to reduce damage-per-turn
       { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
     ],
   },
@@ -599,17 +599,17 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     intentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Cataloguing strike' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Archive barrage', hitCount: 4 },
-      { type: 'debuff', value: 3, weight: 2, telegraph: 'Forgotten lore', statusEffect: { type: 'weakness', value: 2, turns: 2 } },
-      { type: 'buff', value: 3, weight: 2, telegraph: 'Ancient wisdom', statusEffect: { type: 'strength', value: 2, turns: 3 } },
+      { type: 'debuff', value: 3, weight: 2, telegraph: 'Forgotten lore', statusEffect: { type: 'weakness', value: 1, turns: 2 } }, // T1.2-retry 2026-04-11: weakness 2→1 (-40%) to reduce damage-per-turn
+      { type: 'buff', value: 3, weight: 2, telegraph: 'Ancient wisdom', statusEffect: { type: 'strength', value: 1, turns: 3 } }, // T1.2-retry 2026-04-11: strength 2→1 (-40%) to reduce damage-per-turn
     ],
     description: 'Final guardian. Quiz phases at 66% and 33% HP. Wrong Charge answers make it stronger. The second quiz phase is Rapid Fire.',
     phaseTransitionAt: 0.33,
     phase2IntentPool: [
       { type: 'attack', value: 6, weight: 3, telegraph: 'Judgement' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Knowledge storm', hitCount: 4 },
-      { type: 'debuff', value: 4, weight: 2, telegraph: 'Mind shatter', statusEffect: { type: 'vulnerable', value: 2, turns: 3 } },
+      { type: 'debuff', value: 4, weight: 2, telegraph: 'Mind shatter', statusEffect: { type: 'vulnerable', value: 1, turns: 3 } }, // T1.2-retry 2026-04-11: vulnerable 2→1 (-40%) to reduce damage-per-turn
       { type: 'heal', value: 6, weight: 1, telegraph: 'Archive restoration' },
-      { type: 'buff', value: 3, weight: 1, telegraph: 'Final form', statusEffect: { type: 'strength', value: 3, turns: 5 } },
+      { type: 'buff', value: 3, weight: 1, telegraph: 'Final form', statusEffect: { type: 'strength', value: 2, turns: 5 } }, // T1.2-retry 2026-04-11: strength 3→2 (-40%) to reduce damage-per-turn
     ],
     animArchetype: 'caster',
     quizPhases: [
@@ -620,7 +620,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       // Wrong answers strengthen the Final Lesson — knowledge IS power
       applyStatusEffect(ctx.enemy.statusEffects, {
         type: 'strength',
-        value: 2,
+        value: 1, // T1.2-retry 2026-04-11: strength 2→1 (-40%) to reduce damage-per-turn
         turnsRemaining: 999,
       });
     },
@@ -964,7 +964,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     animArchetype: 'slammer',
     onEncounterStart: (_enemy, deck) => {
       // Phase 8: Detention mechanic — exhaust the 2 highest-mastery cards from hand + draw pile.
-      // Returns card IDs to exhaust. encounterBridge handles moving them to exhaustPile.
+      // Returns card IDs to forget. encounterBridge handles moving them to forgetPile.
       const allCards = [...deck.hand, ...deck.drawPile];
       // Sort descending by mastery level (undefined treated as 0)
       allCards.sort((a, b) => (b.masteryLevel ?? 0) - (a.masteryLevel ?? 0));
