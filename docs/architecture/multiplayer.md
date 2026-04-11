@@ -163,3 +163,59 @@ Duel mode has a similar host-authoritative pattern (see `multiplayerGameService.
 - Simultaneous turns (not alternating)
 - Enemy attacks hit ALL players for full damage (not round-robin targeted)
 - Delta-based reconciliation (not full action submission per duel's `DuelTurnAction`)
+
+---
+
+## Lobby Discovery & Privacy — Phase 4 Web Backend
+
+**Source files:** `server/src/services/mpLobbyRegistry.ts`, `server/src/routes/mpLobby.ts`, `server/src/routes/mpLobbyWs.ts`
+**Added:** 2026-04-11 — Phase 4 of the public/private lobby browsing feature
+
+### Three-Backend Architecture
+
+The client routes discovery / create / join through a `lobbyBackend` abstraction in `multiplayerLobbyService.ts`. Three backends exist:
+
+| Backend | Transport | Discovery | Scope |
+|---------|-----------|-----------|-------|
+| `steamBackend` | Steam P2P + Steamworks matchmaking | `steam_request_lobby_list` → metadata loop | Steam builds (primary) |
+| `webBackend` | Fastify REST + WebSocket | `GET /mp/lobbies` | Web / mobile builds |
+| `broadcastBackend` | BroadcastChannel + `localStorage` directory | `localStorage['rr-mp:directory']` | Dev two-tab mode |
+
+### Web Backend — Fastify Registry
+
+`mpLobbyRegistry.ts` maintains an in-memory `Map<lobbyId, MpLobby>`. Key properties:
+
+- **In-memory only** — a server restart drops all lobbies. This is documented and accepted for V1 (matches Among Us / L4D lifecycle). SQLite persistence is a deferred follow-up.
+- **10-minute TTL** — `pruneStale()` runs every 60 s and drops lobbies with `lastActivity < Date.now() - 10 min`. All sockets are closed before deletion.
+- **Password convention** — client hashes the raw password with SHA-256 before sending. Server stores and compares the hash only. `timingSafeEqual` prevents timing-oracle attacks. This is a UX gate, not a crypto auth boundary.
+- **Friends-only degradation** — `friends_only` lobbies are excluded from `GET /mp/lobbies` because the web backend has no friends graph. On Steam, `SteamLobbyType::FriendsOnly` is used natively. On web, friends-only lobbies are code-join only (no browser entry).
+
+### REST Routes (under `/mp` prefix)
+
+| Method | Path | Body / Query | Description |
+|--------|------|-------------|-------------|
+| `POST` | `/mp/lobbies` | `{ hostId, hostName, mode, visibility, passwordHash?, maxPlayers, … }` | Create lobby, returns `{ lobbyId, lobbyCode, joinToken }` |
+| `GET` | `/mp/lobbies` | `?mode=&fullness=` | List public + password lobbies for browser |
+| `GET` | `/mp/lobbies/code/:code` | — | Resolve 6-char code → lobby info |
+| `POST` | `/mp/lobbies/:id/join` | `{ playerId, displayName, password? }` | Join + receive `joinToken` for WS upgrade |
+| `POST` | `/mp/lobbies/:id/leave` | `{ playerId }` | REST leave (before WS connected or after drop) |
+
+### WebSocket Protocol (`/mp/ws?lobbyId=&playerId=&token=`)
+
+1. Server validates `joinToken` (issued by prior REST join).
+2. On success: `attachWebSocket()` + sends `mp:lobby:settings` snapshot.
+3. **Inbound message routing:**
+   - `mp:lobby:ready` — broadcast to all players.
+   - `mp:lobby:leave` — `leaveLobby()` + close.
+   - `mp:lobby:settings` — host-only; apply patch + rebroadcast snapshot.
+   - `mp:lobby:start` — host-only; set `status=in_game` + broadcast.
+   - `mp:race:*`, `mp:coop:*`, `mp:duel:*`, `mp:trivia:*` — forwarded verbatim to other players.
+4. On close: `leaveLobby()` → broadcast `mp:lobby:leave` to remaining players.
+
+### Lobby Code Alphabet
+
+Both client (`multiplayerLobbyService.ts:465`) and server (`mpLobbyRegistry.ts`) use exactly:
+```
+ABCDEFGHJKLMNPQRSTUVWXYZ23456789
+```
+No I, O, 0, or 1 (visual confusion). Codes are 6 characters, uppercase only.

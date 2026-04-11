@@ -54,6 +54,8 @@ import { inviteRoutes } from "./routes/invite.js";
 import { errorRoutes } from "./routes/errors.js";
 import { tradingRoutes } from "./routes/trading.js";
 import { referralRoutes } from "./routes/referrals.js";
+import { mpLobbyRoutes } from "./routes/mpLobby.js";
+import { mpLobbyWsRoutes } from "./routes/mpLobbyWs.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -365,6 +367,10 @@ export async function buildApp() {
     },
     { prefix: "/api/referrals" }
   );
+
+  // Multiplayer Lobby Registry routes (Phase 4 — card-game MP; separate from Phase-43 Miner/Scholar coop).
+  await fastify.register(mpLobbyRoutes, { prefix: "/mp" });
+  await fastify.register(mpLobbyWsRoutes);   // WebSocket at /mp/ws (root-level, no prefix)
 
   // Prune stale co-op rooms every 30 minutes.
   setInterval(pruneStaleRooms, 30 * 60 * 1000);
