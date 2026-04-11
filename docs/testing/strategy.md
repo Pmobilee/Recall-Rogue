@@ -409,3 +409,33 @@ const isCrit = (_rng ? _rng.next() : Math.random()) < 0.25;
 **Exit codes:** 0 = no violations, 1 = violations found.
 
 **Pre-commit:** Runs as soft-warn when any `src/**/*.ts` or `src/**/*.svelte` files are staged. Currently ~168 pre-existing violations exist (migration target). Promote files to clean by applying the guarded pattern or adding to ALLOWLIST_GLOBS.
+
+### Deck Schema Drift Lint (`lint:deck-schema-drift`)
+
+```bash
+npm run lint:deck-schema-drift   # Full report
+node scripts/lint/check-deck-schema-drift.mjs
+```
+
+Detects **interface/schema drift** between `src/data/curatedDeckTypes.ts` (TypeScript interfaces) and `src/data/curatedDeckSchema.ts` (Zod schemas).
+
+Checked pairs:
+- `DeckFact` ↔ `DeckFactSchema` (40 fields)
+- `AnswerTypePool` ↔ `AnswerTypePoolSchema` (6 fields)
+- `SynonymGroup` ↔ `SynonymGroupSchema` (3 fields)
+
+Two failure modes detected:
+
+1. **Missing in schema (FAIL):** Field exists in the TypeScript interface but not in the `z.object({})` block. The field will silently bypass Zod validation — a type mismatch in that field is invisible at runtime.
+
+2. **Extra in schema (FAIL):** Field exists in the Zod schema but not the interface. Usually means the interface field was renamed but the schema was not updated.
+
+**Also runs under `npm run check`** — wired into the full type-check pipeline.
+
+**Parser:** Regex-based, handles optional fields (`field?:`), JSDoc comments, and nested `z.object()` / `z.array()` blocks without polluting top-level key extraction. Sub-second on these files.
+
+**Test coverage:** `scripts/lint/check-deck-schema-drift.test.mjs` — 7 cases (Node built-in test runner).
+
+**Fix:** When this lint fails, add the flagged field(s) to the corresponding `z.object({})` block in `src/data/curatedDeckSchema.ts`.
+
+**Context:** Added 2026-04-11 after `06097f1c7` introduced Zod schemas with no automated sync check. See `docs/gotchas.md` "2026-04-11 — Schema-drift lint".

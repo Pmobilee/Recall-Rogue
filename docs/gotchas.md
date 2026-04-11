@@ -1,4 +1,17 @@
 
+### 2026-04-11 — Enemy intent determinism for co-op (Issue 12)
+
+**Root cause:** `weightedRandomIntent()` in `enemyManager.ts` originally called `Math.random()` unconditionally. Each co-op client rolled independently, so P1 could see "apply weakness 2" while P2 saw "heal 5" — two different intents for the same enemy on the same turn.
+
+**Fix:** `weightedRandomIntent()` now calls `getRunRng('enemyIntents')` from `seededRng.ts` when `isRunRngActive()` is true, falling back to `Math.random()` only in solo/test contexts. The run RNG is initialized from the shared lobby seed (`initRunRng(seed)`), so both clients advance the same deterministic fork sequence.
+
+**Authoritative broadcast:** The host still wins. After the turn-end barrier, the host rolls via `rollNextIntent`, includes the rolled intent in `SharedEnemySnapshot.nextIntent`, and broadcasts. The non-host receives and adopts the host intent via `hydrateEnemyFromSnapshot`.
+
+**Drift detection:** In `encounterBridge.ts` (non-host reconcile path), the non-host now rolls locally before hydrating and compares with `reconciledSnapshot.nextIntent`. A mismatch logs `console.warn('[coop-sync] intent drift', { local, host })` — indicating RNG desync (one client consumed an extra roll somewhere). The host value is always adopted.
+
+**Fork label:** `getRunRng('enemyIntents')` (note: label string is `'enemyIntents'`, not `'enemy-intent'`).
+
+
 ### 2026-04-11 — Zod schema guards curatedDeckStore decode boundary
 
 **Symptom (pre-fix):** `JSON.parse(row['distractors'])` in `curatedDeckStore.ts` returned `number[]` for some facts where the SQLite row stored numeric values (e.g. FIFA World Cup win counts stored as integers). The TypeScript type system assumed `string[]` — no runtime error was thrown, and numeric distractors silently reached the quiz engine where they were rendered as "7", "8", "9" instead of country names. This was the "fifa numeric distractors" incident.
@@ -2648,3 +2661,17 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 **Fix (not applied here — Phase 4 force-sweep will address this):** To expose wild mechanics to the reward pool, either add `'wild'` to the type-pool in `pickRandomMechanic()`, or implement a force-sweep that guarantees every mechanic appears in at least one run during batch testing.
 
 **Lesson:** The coverage histogram revealed a systematic blind spot: all `wild`-typed Phase 1 mechanics are invisible to balance data. The ZERO bucket now clearly distinguishes Phase 2 gate (most zeros) from missing type-pool entry (wild mechanics).
+
+### 2026-04-11 — Schema-drift lint (check-deck-schema-drift.mjs)
+
+**What it catches:** A new field added to `DeckFact`, `AnswerTypePool`, or `SynonymGroup` in `src/data/curatedDeckTypes.ts` but not added to the matching `z.object({})` block in `src/data/curatedDeckSchema.ts`. Because the Zod schemas use `.passthrough()`, the missing field silently survives at runtime — but Zod will never validate it, so a wrong type in that field is invisible. The reverse is also caught: a field in the schema but not the interface usually means a rename in the interface was not mirrored to the schema.
+
+**Why it exists:** Commit `06097f1c7` added Zod validation for 40+ fields on `DeckFact`. Without a drift detector, any future field addition would be silently under-validated. The lint exits 1 with a human-readable message naming the exact field(s) that drifted.
+
+**Script:** `scripts/lint/check-deck-schema-drift.mjs`
+
+**How to run:** `npm run lint:deck-schema-drift` or as part of `npm run check`.
+
+**Test coverage:** `scripts/lint/check-deck-schema-drift.test.mjs` — 7 cases covering real-file pass, missing-in-schema, extra-in-schema, full match, optional fields, comment stripping, and nested z.object non-pollution.
+
+**Fix:** When the lint fails, add the flagged field to `src/data/curatedDeckSchema.ts` in the appropriate `z.object({})` block, matching the TypeScript type from the interface.
