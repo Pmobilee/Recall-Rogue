@@ -2477,3 +2477,39 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 **Fix:** When running parallel Docker warm containers, enforce **max 4-8 concurrent**. For ultra-scope batches, use a container pool with sequential dispatch rather than burst-spawning all agents at once. Alternative: stagger Docker tracks by 2-3 minutes so they don't all boot simultaneously. Pure API tracks (headless sim, Python RL, source-audit-only) have no Docker footprint and can run fully parallel.
 
 **Systemic fix candidate:** `scripts/docker-visual-test.sh --warm start` could reject new starts past N concurrent and queue them, or log a warning. Orchestration skills (`/llm-playtest`, `/inspect`, `/scenario-playtest`) should respect this cap in their scheduling.
+
+---
+
+### 2026-04-11 — crit_lens + obsidian_dice RNG leaked to Math.random(), caused co-op desync
+
+**What:** `crit_lens` (25% crit roll) and `obsidian_dice` (50/50 multiplier) in `src/services/relicEffectResolver.ts` used bare `Math.random()` calls. In co-op mode, both clients independently resolve relic effects against their local enemy copy and submit `EnemyTurnDelta` objects to the host barrier. If one client crits and the other doesn't, the deltas diverge — the merged enemy HP is the arithmetic sum of two divergent outcomes rather than one correct one.
+
+**Also:** `relicAcquisitionService.ts:generateRelicChoices()` used `Math.random()` for rarity rolls and candidate picks, meaning co-op reward screens would offer different relics to different peers.
+
+**Fix:** All three replaced with `isRunRngActive() ? getRunRng(fork) : Math.random()` pattern:
+- `crit_lens` and `obsidian_dice` use `getRunRng('relicEffects')`
+- `generateRelicChoices()` uses `getRunRng('relicRewards')`
+
+**Tests:** 4 new determinism tests in `src/services/__tests__/relicEffectResolver.v2.test.ts`.
+
+**Lesson:** Any `Math.random()` call that fires during a seeded run resolves to a co-op desync. The prior RNG gotcha entries (2026-04-09) listed this as a pattern; every new relic or effect with randomness MUST use the seeded fork pattern. A lint rule (`scripts/lint/no-bare-math-random.mjs`) would catch future occurrences before they reach review.
+
+---
+
+### 2026-04-11 — scenarioSimulator.ts bootstrapRun() silently dropped ascension level
+
+**What:** `bootstrapRun()` in `src/dev/scenarioSimulator.ts` called `createRunState()` without passing `ascensionLevel` from `config.ascension`. This meant `encounterBridge.ts` started every encounter with A0 modifiers regardless of the scenario badge. The `runOverrides` patch applied afterward updated `runState.ascensionLevel` and the HUD badge, but `TurnState` fields like `ascensionEnemyDamageMultiplier` were already frozen at 1.0 (A0). Every visual ascension test run since the simulator was created has been invalid.
+
+**Fix:** Added `ascensionLevel: config.ascension ?? 0` to the `createRunState()` options in `bootstrapRun()` (one line). Affects dev tooling only — real gameplay uses `gameFlowController`, not `bootstrapRun()`.
+
+**Scope:** Dev tool only. Real gameplay was never affected. Historical ascension visual captures from Docker are untrustworthy and should be re-captured after this fix.
+
+---
+
+### 2026-04-11 — manifest.json was a phantom deck in inspection-registry
+
+**What:** `scripts/registry/sync.ts` scans `data/decks/*.json` via `json_glob` mode. `data/decks/manifest.json` is a deck-listing file (`{"decks": [...]}`) with no `id` field, but the glob picked it up and the sync created an entry with `id: "manifest"` (derived from the filename stem). This showed up as an unaudited deck in `npm run registry:stale` and all downstream audit reports — pure noise.
+
+**Fix:** Added a structural skip clause in the `json_glob` loop, right after JSON parse: if the file has no `id` field AND has a `decks` array, log a `[skip]` notice and `continue`. This is the correct generalizable check — it will also catch any future non-deck listing files that land in `data/decks/`.
+
+**After fix:** Sync output shows `[skip] manifest.json — not a deck file (has 'decks' array, no 'id')`. Decks table now shows `98 active (1 deprecated)` — the old `manifest` entry is preserved as `deprecated` per the sync script's historical-tracking behavior. Active deck count is 98.

@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "lastSynced": "2026-04-10",
+  "lastSynced": "2026-04-11",
   "tables": {
     "cards": [
       {
@@ -7556,6 +7556,25 @@
         "notes": ""
       },
       {
+        "id": "triviaRound",
+        "name": "triviaRound",
+        "category": "screens",
+        "description": "",
+        "sourceFile": "src/ui/stores/gameState.ts",
+        "status": "active",
+        "mechanicDate": "not_checked",
+        "visualDate": "not_checked",
+        "uxDate": "not_checked",
+        "balanceDate": "not_checked",
+        "strategyDate": "not_checked",
+        "neuralDate": "not_checked",
+        "playtestDate": "not_checked",
+        "lastInspected": "not_checked",
+        "confidenceLevel": "not_checked",
+        "notes": "",
+        "inProgress": null
+      },
+      {
         "id": "starterRelicSelection",
         "name": "starterRelicSelection",
         "category": "screens",
@@ -9172,7 +9191,7 @@
         "lastTriviaBridge": "2026-04-10",
         "inProgress": null,
         "lastInspected": "2026-04-10",
-        "confidenceLevel": "Trustworthy ⚠",
+        "confidenceLevel": "not_checked",
         "notes": "Re-checked 2026-04-10: split bio_concept_terms mega-pool (141) into 3 chainTheme-grouped sub-pools (molecules_cells 51, processes 49, evolution_ecology 41) with canonical synthetic distractors. Fixed ap_bio_glycolysis_net_atp self-answering. 0 failures; 52 quiz-audit warnings remain (length-ratio, all <3x hard-fail)."
       },
       {
@@ -10184,7 +10203,7 @@
         "lastTriviaBridge": "not_checked",
         "inProgress": null,
         "lastInspected": "not_checked",
-        "confidenceLevel": "Trustworthy ✓",
+        "confidenceLevel": "not_checked",
         "notes": "Re-checked 2026-04-10: 2 placeholder leaks fixed (myth_hundred_handers, myth_heracles_stymphalian_birds); added length-balanced synthetics to creature_names_long, hero_names, titan_names. 0 failures, length-ratio warnings inherent to small pools."
       },
       {
@@ -10561,29 +10580,6 @@
         "category": "animals_wildlife/mammals",
         "description": "From the blue whale to the bumblebee bat — the extraordinary diversity of Earth's mammals. Iconic species, record breakers, surprising behaviors, and the fight to save endangered populations.",
         "sourceFile": "data/decks/mammals_world.json",
-        "status": "active",
-        "mechanicDate": "not_checked",
-        "visualDate": "not_checked",
-        "uxDate": "not_checked",
-        "balanceDate": "not_checked",
-        "strategyDate": "not_checked",
-        "neuralDate": "not_checked",
-        "playtestDate": "not_checked",
-        "lastStructuralVerify": "not_checked",
-        "lastQuizAudit": "not_checked",
-        "lastLLMPlaytest": "not_checked",
-        "lastTriviaBridge": "not_checked",
-        "inProgress": null,
-        "lastInspected": "not_checked",
-        "confidenceLevel": "not_checked",
-        "notes": ""
-      },
-      {
-        "id": "manifest",
-        "name": "manifest",
-        "category": "knowledge",
-        "description": "",
-        "sourceFile": "data/decks/manifest.json",
         "status": "active",
         "mechanicDate": "not_checked",
         "visualDate": "not_checked",
@@ -11339,7 +11335,7 @@
         "lastTriviaBridge": "2026-04-10",
         "inProgress": null,
         "lastInspected": "2026-04-10",
-        "confidenceLevel": "Trustworthy ⚠",
+        "confidenceLevel": "not_checked",
         "notes": "Re-checked 2026-04-10: split year_dates mega-pool (159) into 6 chainTheme-based sub-pools; split number_stats mega-pool (108) into 4 semantic sub-pools (casualties/durations/money/distances). Fixed wwii_nw_bomber_crew_casualty_rate placeholder leak (bomber this → bomber crews). Moved 3 altitude facts from casualties to distances pool. 0 failures; 49 warnings (small sub-pool size flags, acceptable)."
       },
       {
@@ -11349,6 +11345,29 @@
         "description": "From the Great Pyramid to the Burj Khalifa — humanity's greatest structures and Earth's most spectacular natural formations. Learn what makes each wonder remarkable, where to find them, and the storie",
         "sourceFile": "data/decks/world_wonders.json",
         "status": "active",
+        "mechanicDate": "not_checked",
+        "visualDate": "not_checked",
+        "uxDate": "not_checked",
+        "balanceDate": "not_checked",
+        "strategyDate": "not_checked",
+        "neuralDate": "not_checked",
+        "playtestDate": "not_checked",
+        "lastStructuralVerify": "not_checked",
+        "lastQuizAudit": "not_checked",
+        "lastLLMPlaytest": "not_checked",
+        "lastTriviaBridge": "not_checked",
+        "inProgress": null,
+        "lastInspected": "not_checked",
+        "confidenceLevel": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "manifest",
+        "name": "manifest",
+        "category": "knowledge",
+        "description": "",
+        "sourceFile": "data/decks/manifest.json",
+        "status": "deprecated",
         "mechanicDate": "not_checked",
         "visualDate": "not_checked",
         "uxDate": "not_checked",

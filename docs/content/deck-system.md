@@ -125,6 +125,8 @@ Two backfill scripts produced full coverage:
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar/N4 Grammar/N5 Grammar/N1–N5 Kanji, Korean Hangul/TOPIK 1–2, Spanish A1–C2 (vocab), Spanish A1–B2 (grammar)
 - **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, Music History, **Computer Science & Technology**, **Movies & Cinema**, **Medical Terminology**, **AP Psychology**, **AP Biology**, **AP U.S. History**, **AP Chemistry**, **AP World History: Modern**, **AP Physics 1: Algebra-Based**, **Pharmacology**, **World Literature**, **AP Human Geography**, **Philosophy**, **Chess Tactics** (300 baked fallback facts + 620K+ runtime puzzles from `chess-puzzles.db`)
 
+**Registry sync exclusion:** `scripts/registry/sync.ts` (json_glob mode) skips any JSON file in `data/decks/` that lacks an `id` field AND has a `decks` array — this structural check prevents `manifest.json` (and any future non-deck listing files) from appearing as phantom deck entries in `data/inspection-registry.json`.
+
 ### Deck Architecture Files
 
 Architecture YAML files in `data/deck-architectures/` hold the verified source data used to generate `.json` fact files. They are the canonical pre-generation source of truth. Some large decks (e.g. `world_wonders`) split generation across multiple architecture files — one per batch — which are then merged by an assembly script.
