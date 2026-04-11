@@ -167,7 +167,8 @@
 import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import RunPreviewScreen from './ui/components/RunPreviewScreen.svelte'
   import RewardCardDetail from './ui/components/RewardCardDetail.svelte'
-  import { rewardCardDetail, getCardDetailCallbacks, triggerRewardRoomContinue } from './services/rewardRoomBridge'
+  import { rewardCardDetail, getCardDetailCallbacks } from './services/rewardRoomBridge'
+  import RewardRoomOverlay from './ui/components/RewardRoomOverlay.svelte'
   import { updateRichPresence } from './services/steamService'
   import { getCombatBgForEnemy, getCombatDepthMap } from './data/backgroundManifest'
   import ParallaxTransition from './ui/components/ParallaxTransition.svelte'
@@ -1414,20 +1415,13 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     bind:this={phaserContainer}
   ></div>
 
-  <!-- A11y DOM overlay for Reward Room Continue button.
-       The Phaser scene renders a canvas-only Continue button at ~50% / 88% of the viewport.
-       This transparent DOM button sits above it, giving keyboard and screen-reader access.
-       Clicking fires triggerRewardRoomContinue() which emits 'sceneComplete' on the scene.
-       See BATCH-ULTRA T11 issue-1744337400013-11-014. -->
+  <!-- A11y DOM overlays for Reward Room Phaser buttons.
+       RewardRoomOverlay covers 4 canvas-only interactive objects (BATCH-ULTRA T11):
+       Continue (line 970, fully wired), Relic Accept (820), Relic Leave (851),
+       and the backdrop blocker (999, no DOM equivalent needed).
+       See RewardRoomOverlay.svelte and docs/ui/components.md. -->
   {#if $currentScreen === 'rewardRoom'}
-    <button
-      type="button"
-      class="reward-room-continue-overlay"
-      aria-label="Continue to next room"
-      data-testid="btn-reward-room-continue"
-      onclick={triggerRewardRoomContinue}
-      onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); triggerRewardRoomContinue(); } }}
-    >Continue</button>
+    <RewardRoomOverlay />
   {/if}
 
   {#if $currentScreen === 'hub' || $currentScreen === 'mainMenu' || $currentScreen === 'base'}
@@ -2141,48 +2135,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   [data-layout="landscape"] .phaser-container.visible :global(canvas) {
     height: 100dvh !important;
-  }
-
-  /* Reward Room a11y: transparent DOM button overlaid on the Phaser Continue button.
-     Positioned at ~50% / 88% of viewport, sized to match the Phaser button dimensions.
-     Keyboard-focusable, screen-reader-visible. The text matches the Phaser label.
-     pointer-events: auto so clicks actually register above the canvas.
-     See BATCH-ULTRA T11 issue-1744337400013-11-014. */
-  .reward-room-continue-overlay {
-    position: fixed;
-    /* Phaser button center: x=960/1920=50%, y≈88% of viewport (CONTINUE_Y_PCT=0.92 portrait, 0.88 landscape) */
-    left: 50%;
-    top: 88%;
-    transform: translate(-50%, -50%);
-    /* Width/height generous enough to cover the canvas button across viewport sizes */
-    width: calc(180px * var(--layout-scale, 1));
-    height: calc(52px * var(--layout-scale, 1));
-    min-width: calc(44px * var(--layout-scale, 1));
-    min-height: calc(44px * var(--layout-scale, 1));
-    /* Invisible — the Phaser canvas button is visible beneath; this DOM element is for a11y only */
-    background: transparent;
-    border: none;
-    color: transparent;
-    cursor: pointer;
-    z-index: 10;
-    pointer-events: auto;
-    /* Focus ring visible to keyboard users */
-    outline: none;
-    border-radius: calc(8px * var(--layout-scale, 1));
-    font-size: calc(16px * var(--text-scale, 1));
-  }
-
-  .reward-room-continue-overlay:focus-visible {
-    outline: calc(2px * var(--layout-scale, 1)) solid #60a5fa;
-    outline-offset: calc(4px * var(--layout-scale, 1));
-    color: #ffffff;
-    background: rgba(31, 41, 55, 0.8);
-    text-shadow: none;
-  }
-
-  /* Portrait: CONTINUE_Y_PCT=0.92 */
-  [data-layout="portrait"] .reward-room-continue-overlay {
-    top: 92%;
   }
 
   .hub-wrapper {

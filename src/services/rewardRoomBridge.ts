@@ -54,6 +54,67 @@ export function triggerRewardRoomContinue(): void {
 }
 
 /**
+ * Trigger the Accept button for the currently-shown relic detail panel.
+ *
+ * Emits 'relicDetailAccept' on the active RewardRoomScene. The scene MUST
+ * listen for this event in showRelicDetail() and react accordingly (collect
+ * the relic, clear overlay, emit 'relicAccepted').
+ *
+ * NOTE (BATCH-ULTRA T11): RewardRoomScene.ts lines 820/851 are Phaser-only
+ * interactive objects without DOM equivalents. This function provides the DOM
+ * → scene API bridge. A game-logic agent must add:
+ *   this.events.once('relicDetailAccept', () => { acceptBtn.emit('pointerdown'); })
+ *   this.events.once('relicDetailLeave', () => { leaveBtn.emit('pointerdown'); })
+ * inside showRelicDetail() to complete the wiring.
+ *
+ * Called by the DOM <button data-testid=btn-reward-room-relic-accept> overlay
+ * in RewardRoomOverlay.svelte. See BATCH-ULTRA T11.
+ */
+export function triggerRelicDetailAccept(): void {
+  const mgr = getManager();
+  if (!mgr) {
+    console.warn('[RewardRoomBridge] triggerRelicDetailAccept: no CardGameManager found');
+    return;
+  }
+  const scene = mgr.getRewardRoomScene();
+  if (!scene || !scene.scene.isActive()) {
+    console.warn('[RewardRoomBridge] triggerRelicDetailAccept: no active RewardRoomScene');
+    return;
+  }
+  // Requires RewardRoomScene to listen for this event inside showRelicDetail().
+  // See function JSDoc — game-logic wiring pending.
+  scene.events.emit('relicDetailAccept');
+}
+
+/**
+ * Trigger the Leave button for the currently-shown relic detail panel.
+ *
+ * Emits 'relicDetailLeave' on the active RewardRoomScene. The scene MUST
+ * listen for this event in showRelicDetail() and call clearOverlay().
+ *
+ * NOTE: Same wiring requirement as triggerRelicDetailAccept(). See that
+ * function's JSDoc for the game-logic change needed to complete the bridge.
+ *
+ * Called by the DOM <button data-testid=btn-reward-room-relic-leave> overlay
+ * in RewardRoomOverlay.svelte. See BATCH-ULTRA T11.
+ */
+export function triggerRelicDetailLeave(): void {
+  const mgr = getManager();
+  if (!mgr) {
+    console.warn('[RewardRoomBridge] triggerRelicDetailLeave: no CardGameManager found');
+    return;
+  }
+  const scene = mgr.getRewardRoomScene();
+  if (!scene || !scene.scene.isActive()) {
+    console.warn('[RewardRoomBridge] triggerRelicDetailLeave: no active RewardRoomScene');
+    return;
+  }
+  // Requires RewardRoomScene to listen for this event inside showRelicDetail().
+  // See triggerRelicDetailAccept() JSDoc — game-logic wiring pending.
+  scene.events.emit('relicDetailLeave');
+}
+
+/**
  * Wait for the RewardRoomScene to become active, polling up to maxWaitMs.
  * Returns the active scene, or null on timeout.
  */
