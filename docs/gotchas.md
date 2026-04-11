@@ -2635,6 +2635,8 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 
 **Issue ref:** issue-1775872247405-06-014
 
+**Fix shipped 2026-04-11:** quiz-audit.mjs now honors pool.homogeneityExempt at line 156 — the length-heterogeneity check (Check #20) is skipped entirely when the fact's pool carries homogeneityExempt: true. This eliminates the 22 spurious WARN/FAIL entries that forced the medical_terminology content-agent to reassign 11 facts as a workaround. See commit hash in git log for this file.
+
 ### 2026-04-11 — Sub-agent claimed registry stamping ran on 21 decks; only 5 had any timestamp
 
 **What:** Content-agent was delegated a task including "run stratified quiz audit with --stamp-registry on all 21 vocab decks" as step 11. It returned a success summary with per-deck split counts, a claim of "0 failures across 97 decks", and reported the commit hashes. Verification via `node -e "const r=JSON.parse(fs.readFileSync('data/inspection-registry.json','utf8')); ..."` showed that 16 of the 21 decks still had `lastQuizAudit: 'not_checked'`, and the 5 Japanese decks had the stale 2026-04-10 date (not re-stamped).
@@ -3043,3 +3045,26 @@ After careful reading of `handleEndTurn()` in `encounterBridge.ts`, the hand dis
 **Fix:** Changed `(deckFact as Record<string, unknown>)` to `(deckFact as unknown as Record<string, unknown>)` at all three cast sites. This is the TS-blessed pattern for bypassing incompatible direct casts when the intent is deliberate.
 
 **Fix commit:** applied in fix(services) after parallel regression. See `src/services/wowFactorService.ts` lines 63, 77, 85.
+
+### 2026-04-11 — Card picker flows through draw pile (Issue 5)
+
+**Symptom:** When a player used Transmute on Charge Correct, the chosen card appeared in hand instantly with no animation — it teleported rather than being drawn.
+
+**Root cause:** `applyTransmuteSwap()` mutated the source card in-place inside its pile (`sourcePile[sourceIdx] = newCard`). For the picker (CC) path, this meant the new card was immediately present in whatever pile it was found in (hand, discard, etc.) without any draw event. The CardHand animation system only fires `card-drawn-in` when a card is added to the hand via the draw path — not when a hand slot is overwritten.
+
+**Fix (2026-04-11, Issue 5):** Added `routeThroughDrawPile` parameter to `applyTransmuteSwap()`. When `true` (picker/CC path only):
+1. Source card is **spliced** out of its pile (not overwritten).
+2. New transmuted card is **pushed** onto the TOP of `drawPile` (`push()` to end = top because drawPile is a stack where `pop()` draws from the end).
+3. `resolveTransmutePick()` returns `Card[]` (the `pickResolvedCards`).
+4. UI must call `drawHand(deck, 1)` once per returned card to trigger the normal draw animation.
+
+The auto path (QP/CW) keeps the old in-place behavior via `routeThroughDrawPile = false` (default).
+
+**Draw pile stack orientation (critical):** `drawPile.pop()` draws from the END of the array. Therefore:
+- `push()` = add to TOP (drawn NEXT) 
+- `unshift()` = add to BOTTOM (drawn LAST)
+
+There is an existing comment `// put on top` at `turnManager.ts` line 2224 that uses `unshift()` for scavenge auto-pickup — this comment is **incorrect** (unshift puts at the bottom). Do not follow that comment as a reference.
+
+**Files changed:** `src/services/turnManager.ts`, new tests in `src/services/turnManager.transmute.test.ts`.
+**UI hand-off:** `CardCombatOverlay.svelte:handleCardPickSelect` must call `drawHand(deck, pickResolvedCards.length)` after `resolveTransmutePick()` returns, passing the count as an explicit argument (bypasses hand-size cap).

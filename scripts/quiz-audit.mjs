@@ -153,7 +153,7 @@ function checkFact(fact, poolFacts, allPools, deck) {
   picked = picked.slice(0, 3);
 
   // 4. Length mismatch — correct answer dramatically different from distractors
-  if (picked.length >= 3 && !isNumerical(fact.correctAnswer)) {
+  if (picked.length >= 3 && !isNumerical(fact.correctAnswer) && !pool?.homogeneityExempt) {
     const distractorLens = picked.map(d => d.length);
     const avgDistractorLen = distractorLens.reduce((a, b) => a + b, 0) / distractorLens.length;
     const ratio = correctLen / avgDistractorLen;
