@@ -35,6 +35,7 @@
 import '../tests/playtest/headless/browser-shim.js';
 
 import { readFileSync, readdirSync } from 'fs';
+import { execSync } from 'child_process';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { selectQuestionTemplate } from '../src/services/questionTemplateSelector';
@@ -200,6 +201,8 @@ interface CliOptions {
   minPoolFacts: number;
   /** When non-null, uses stratified sampling instead of per-pool --sample N. */
   stratified: number | null;
+  /** When true, stamp lastQuizAudit in inspection registry on clean pass (requires --deck). */
+  stampRegistry: boolean;
 }
 
 function parseArgs(): CliOptions {
@@ -215,6 +218,7 @@ function parseArgs(): CliOptions {
   let renderPerPool = 5;
   let minPoolFacts = 5;
   let stratified: number | null = null;
+  let stampRegistry = false;
 
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
@@ -240,30 +244,18 @@ function parseArgs(): CliOptions {
       minPoolFacts = parseInt(args[++i], 10);
     } else if (arg === '--stratified' && args[i + 1]) {
       stratified = parseInt(args[++i], 10);
+    } else if (arg === '--stamp-registry') {
+      stampRegistry = true;
     }
   }
 
-  // Explicit error for --stamp-registry: this engine does not support stamping.
-  // Use scripts/quiz-audit.mjs OR call scripts/registry/updater.ts directly.
-  // See docs/gotchas.md 2026-04-11 for the incident that prompted this guard.
-  if (args.includes('--stamp-registry')) {
-    console.error(
-      '[quiz-audit-engine] ERROR: --stamp-registry is NOT supported by this engine.\n' +
-      '  For stamping, either use:\n' +
-      '    node scripts/quiz-audit.mjs --full --stamp-registry  (knowledge decks, auto-exempts vocab)\n' +
-      '  OR run the engine first, then stamp via updater:\n' +
-      '    npx tsx scripts/registry/updater.ts --ids "<comma-separated-deck-ids>" --type lastQuizAudit\n' +
-      '  See docs/gotchas.md 2026-04-11 for the full context.'
-    );
-    process.exit(1);
-  }
 
   if (stratified !== null && sample !== null) {
     process.stderr.write('[quiz-audit-engine] both --stratified and --sample provided; using --stratified\n');
     sample = null;
   }
 
-  return { deckId, sample, masteryLevels, verbose, jsonOutput, includeVocab, confusionTest, renderMode, renderPerPool, minPoolFacts, stratified };
+  return { deckId, sample, masteryLevels, verbose, jsonOutput, includeVocab, confusionTest, renderMode, renderPerPool, minPoolFacts, stratified, stampRegistry };
 }
 
 // ---------------------------------------------------------------------------
@@ -1645,6 +1637,27 @@ function main(): void {
   }
 
   const totalFails = deckResults.reduce((s, r) => s + r.failCount, 0);
+
+  if (opts.stampRegistry) {
+    if (!opts.deckId) {
+      console.log('(Registry stamping requires --deck — skipped)');
+    } else if (totalFails > 0) {
+      console.log(`(Registry stamping skipped — ${totalFails} failures)`);
+    } else {
+      // Stamp lastQuizAudit in inspection registry — best-effort, never blocks audit output
+      try {
+        execSync(
+          `npx tsx scripts/registry/updater.ts --ids ${opts.deckId} --type lastQuizAudit`,
+          { stdio: 'pipe' }
+        );
+        console.log(`Registry stamped: 1 deck (${opts.deckId}) marked with lastQuizAudit=${new Date().toISOString().slice(0, 10)}`);
+      } catch (_) {
+        // Registry stamp failure never blocks audit output
+        console.error('[quiz-audit-engine] Registry stamp failed — run updater manually if needed.');
+      }
+    }
+  }
+
   process.exit(totalFails > 0 ? 1 : 0);
 }
 

@@ -131,7 +131,7 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engi
 npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts --deck <id> --stratified 50 --include-vocab
 ```
 
-> **`--stamp-registry` is ONLY supported by `scripts/quiz-audit.mjs`, NOT by `scripts/quiz-audit-engine.ts`.** The `.ts` engine errors loudly and exits 1 when the flag is passed. To stamp after running the engine, call `npx tsx scripts/registry/updater.ts --ids <comma-separated-deck-ids> --type lastQuizAudit` directly. Alternatively, run both: the engine for detailed analysis, then `quiz-audit.mjs` for the stamp pass. (See `docs/gotchas.md` 2026-04-11 for the incident that surfaced this.)
+> **`scripts/quiz-audit-engine.ts` supports `--stamp-registry` for single-deck audits (requires `--deck`).** When the audit completes with 0 failures and `--deck <id>` is specified, the engine stamps `lastQuizAudit` in the inspection registry via `scripts/registry/updater.ts`. Multi-deck fleet sweeps (no `--deck`) print a skip notice and leave stamping to `scripts/quiz-audit.mjs --stamp-registry`, which handles the fleet case. (See `docs/gotchas.md` 2026-04-11 for the history of this flag.)
 
 **`--stratified 50` is the canonical command for meeting the 50-fact protocol.** It replaces manual per-pool sampling by distributing the budget across the cross-product of `(difficulty × chainThemeId × answerTypePoolId)`. Every sub-group of the deck gets proportional representation. This is especially critical for vocab decks where `--sample 5` was producing only 15 total checks (5 facts × 3 mastery levels) because the deck has a single mega-pool.
 

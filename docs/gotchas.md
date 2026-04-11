@@ -2663,6 +2663,8 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 
 **Fix (shipped 2026-04-11):** `scripts/quiz-audit-engine.ts` now errors loudly with exit code 1 when `--stamp-registry` is passed. Commit `1bc813c9f`.
 
+**Proper fix shipped 2026-04-11:** `scripts/quiz-audit-engine.ts` now supports `--stamp-registry` natively for single-deck audits (requires `--deck`). The loud-error guard is removed; the engine stamps `lastQuizAudit` via `scripts/registry/updater.ts` when the audit passes with 0 failures. See commit for hash once committed.
+
 ### 2026-04-11 — Steam lobby metadata is public; password hashes are UX gates only
 
 **What:** When a lobby is created on Steam with `visibility='password'`, the password hash is stored in Steam lobby metadata via `setLobbyData`. Steam lobby metadata is readable by anyone who can enumerate the lobby — it is NOT encrypted. The SHA-256 password hash is a friction layer to prevent accidental joins, not a security boundary.
@@ -3101,3 +3103,13 @@ There is an existing comment `// put on top` at `turnManager.ts` line 2224 that 
 **Scope finding:** HSK2, HSK3, HSK4 carry very few or zero entries with `partOfSpeech = particle/interjection`. The target particles呀 哎 嗯 嘛 咦 are absent from HSK1-5 entirely — they appear only in HSK6. If a future pass wants to add them to lower levels, they would need to be added as new facts (not enriched), which is out of scope for this task.
 
 **Verification:** `verify-all-decks.mjs` → 0 failures for all 5 decks. Stratified 50-fact quiz audit → 0 failures, 0 new `chinese_sense_mismatch_runtime` warnings. All pre-existing warnings are unchanged.
+
+### 2026-04-11 — Missing npm deps: chess.js and zod imported before package.json — preventative lint added
+
+**What happened:** Two separate incidents in the same session where a file in `src/` was committed importing a package (`chess.js` then `zod`) that was not yet in `package.json`. Both caused `svelte-check` failures (red) that were caught at typecheck time — not at author time. The fix in each case was to add the package to `package.json` and run `npm install`, but that required a follow-up commit.
+
+**Root cause:** No author-time gate existed that caught "import X from 'pkg'" where `pkg` is absent from `package.json`. TypeScript's module resolution silently defers the error until typecheck; the pre-commit hook runs typecheck but by that point the commit is already staged.
+
+**Fix (2026-04-11):** Added `scripts/lint/check-missing-deps.mjs` — scans `src/**/*.{ts,svelte,mjs}`, extracts every external package specifier, cross-references against `package.json` dependencies + devDependencies. Exits 1 with file:line:col for each missing or undeclared package. Wired into `npm run lint:deps` (standalone) and appended to `npm run check` (gated). Also discovered `geojson` (type-only import in `src/services/geoDataLoader.ts` and `src/ui/components/MapPinDrop.svelte`) is missing from `package.json` — reported to user; not added by this agent (out of scope).
+
+**Pattern to avoid:** Never import a package in `src/` before confirming it is in `package.json`. Run `npm run lint:deps` before staging if in doubt.

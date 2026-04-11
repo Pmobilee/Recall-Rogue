@@ -14,6 +14,12 @@
  * Conversely, a field in the schema but not the interface usually means
  * a rename happened in the interface but not the schema.
  *
+ * Two classes of drift detected:
+ *   1. Field-name drift: a field exists in one side but not the other.
+ *   2. Required/optional drift: a field is required on one side but
+ *      optional on the other — a validation hole (schema passes rows
+ *      missing a required field, or rejects rows the interface says are valid).
+ *
  * Parsing strategy: regex-based on the literal source text. Both files
  * use plain interfaces and z.object({}) with one key per line. Generics,
  * JSDoc, and optional markers (?) are handled. Comments are stripped.
@@ -23,7 +29,7 @@
  *   npm run lint:deck-schema-drift
  *
  * Exit codes:
- *   0 — all field sets match
+ *   0 — all field sets match and optionality aligns
  *   1 — drift detected
  */
 
@@ -64,43 +70,16 @@ function stripComments(src) {
 }
 
 /**
- * Extract field names from a TypeScript interface body.
- *
- * Extracts from:
- *   interface Foo {
- *     fieldA: string;
- *     fieldB?: number;
- *     methodC(): void;   <- skipped (has parens)
- *   }
- *
- * Returns Set<string> of field names.
- *
- * Note: fields with complex inline types that span multiple lines (e.g.
- * Array<{...}>) are handled correctly — we only look at the leading
- * `  identifier?:` pattern, not the full type expression.
+ * Extract interface body text via brace-counting.
+ * Returns the inner body string, or null if the interface is not found.
  */
-function extractInterfaceFields(src, interfaceName) {
-  const clean = stripComments(src);
-
-  // Find the interface block. Handles `export interface Foo {` and `interface Foo {`.
-  // The regex captures everything between the opening brace and the matching
-  // closing brace (we find the first `}` on its own line after `interface X {`).
-  const ifacePattern = new RegExp(
-    `(?:export\\s+)?interface\\s+${interfaceName}(?:\\s+extends\\s+\\w+)?\\s*\\{([^}]*)\\}`,
-    'm'
-  );
-  // Because interfaces can contain nested braces (e.g. Array<{ t: string; r?: string }>),
-  // the simple [^}]* will stop at the first nested brace. We use a brace-counter approach.
+function extractInterfaceBody(clean, interfaceName) {
   const startPattern = new RegExp(
     `(?:export\\s+)?interface\\s+${interfaceName}(?:\\s+extends\\s+\\w+)?\\s*\\{`
   );
-
   const startMatch = startPattern.exec(clean);
-  if (!startMatch) {
-    return null; // interface not found
-  }
+  if (!startMatch) return null;
 
-  // Walk forward from the opening brace, counting depth.
   let depth = 0;
   let start = -1;
   let end = -1;
@@ -118,53 +97,78 @@ function extractInterfaceFields(src, interfaceName) {
   }
 
   if (start === -1 || end === -1) return null;
+  return clean.slice(start, end);
+}
 
-  const body = clean.slice(start, end);
+/**
+ * Extract field names from a TypeScript interface body.
+ *
+ * Extracts from:
+ *   interface Foo {
+ *     fieldA: string;
+ *     fieldB?: number;
+ *     methodC(): void;   <- skipped (has parens)
+ *   }
+ *
+ * Returns Set<string> of field names.
+ *
+ * Note: fields with complex inline types that span multiple lines (e.g.
+ * Array<{...}>) are handled correctly — we only look at the leading
+ * `  identifier?:` pattern, not the full type expression.
+ */
+function extractInterfaceFields(src, interfaceName) {
+  const clean = stripComments(src);
+  const body = extractInterfaceBody(clean, interfaceName);
+  if (body === null) return null;
+
   const fields = new Set();
-
-  // Match field lines: leading whitespace, identifier (with optional ?), colon
-  // Excludes method signatures (they have parens before the colon or lack one).
-  // Pattern: optional whitespace, word chars + optional ?, whitespace, colon
   const fieldLine = /^\s*([\w]+)\??:\s*/gm;
   let m;
   while ((m = fieldLine.exec(body)) !== null) {
-    // Skip index signatures like [key: string]
     if (m[0].trim().startsWith('[')) continue;
     fields.add(m[1]);
   }
-
   return fields;
 }
 
 /**
- * Extract key names from a z.object({ ... }) block in the schema file.
+ * Extract field names WITH optionality from a TypeScript interface body.
  *
- * Looks for:
- *   export const FooSchema = z.object({
- *     field1: z.string(),
- *     field2: z.number().optional(),
- *   }).passthrough();
- *
- * Uses brace-counting to handle nested z.object() / z.tuple() / z.array()
- * inside the outer object. Only the top-level keys are extracted.
+ * Returns Map<string, boolean> where true = optional (field has `?` before `:`).
+ * Method signatures (have parens) and index signatures (start with `[`) are skipped.
  */
-function extractSchemaFields(src, schemaName) {
+function extractInterfaceFieldOptional(src, interfaceName) {
   const clean = stripComments(src);
+  const body = extractInterfaceBody(clean, interfaceName);
+  if (body === null) return null;
 
-  // Find `const SchemaName = z.object({`
+  const result = new Map();
+  // Capture group 1 = field name, group 2 = optional marker (? or empty)
+  const fieldLine = /^\s*([\w]+)(\?)?\s*:\s*/gm;
+  let m;
+  while ((m = fieldLine.exec(body)) !== null) {
+    if (m[0].trim().startsWith('[')) continue;
+    const fieldName = m[1];
+    const isOptional = m[2] === '?';
+    result.set(fieldName, isOptional);
+  }
+  return result;
+}
+
+/**
+ * Extract z.object body text via brace-counting.
+ * Returns the inner body string, or null if the schema is not found.
+ */
+function extractSchemaBody(clean, schemaName) {
   const startPattern = new RegExp(
     `(?:export\\s+)?const\\s+${schemaName}\\s*=\\s*z\\.object\\s*\\(`
   );
   const startMatch = startPattern.exec(clean);
-  if (!startMatch) {
-    return null;
-  }
+  if (!startMatch) return null;
 
-  // Find the opening brace of z.object({)
   let braceStart = clean.indexOf('{', startMatch.index + startMatch[0].length - 1);
   if (braceStart === -1) return null;
 
-  // Walk forward with brace counter
   let depth = 0;
   let start = -1;
   let end = -1;
@@ -182,14 +186,27 @@ function extractSchemaFields(src, schemaName) {
   }
 
   if (start === -1 || end === -1) return null;
+  return clean.slice(start, end);
+}
 
-  const body = clean.slice(start, end);
+/**
+ * Extract key names from a z.object({ ... }) block in the schema file.
+ *
+ * Looks for:
+ *   export const FooSchema = z.object({
+ *     field1: z.string(),
+ *     field2: z.number().optional(),
+ *   }).passthrough();
+ *
+ * Uses brace-counting to handle nested z.object() / z.tuple() / z.array()
+ * inside the outer object. Only the top-level keys are extracted.
+ */
+function extractSchemaFields(src, schemaName) {
+  const clean = stripComments(src);
+  const body = extractSchemaBody(clean, schemaName);
+  if (body === null) return null;
+
   const fields = new Set();
-
-  // Extract only top-level keys.
-  // Strategy: scan line by line from the body, tracking nested depth.
-  // A top-level key line looks like:  `  fieldName: z.something`
-  // We skip lines inside nested braces/parens.
   let nestDepth = 0;
   const lines = body.split('\n');
   for (const line of lines) {
@@ -212,6 +229,91 @@ function extractSchemaFields(src, schemaName) {
   }
 
   return fields;
+}
+
+/**
+ * Extract key names WITH optionality from a z.object({ ... }) block.
+ *
+ * A schema field is considered optional when its full value expression
+ * (which may span multiple lines for nested objects/arrays) contains any of:
+ *   - .optional()
+ *   - .nullish()
+ *   - .default(   — supplies a default, so the field is not required
+ *
+ * Returns Map<string, boolean> where true = optional.
+ *
+ * Strategy: collect the full value text per top-level key by walking the body
+ * character-by-character with depth tracking. Each time a top-level key ends
+ * (i.e. depth returns to 0 and we hit a comma or the outer closing brace),
+ * we inspect the accumulated value text for optionality markers.
+ */
+function extractSchemaFieldOptional(src, schemaName) {
+  const clean = stripComments(src);
+  const body = extractSchemaBody(clean, schemaName);
+  if (body === null) return null;
+
+  const result = new Map();
+
+  // Walk character by character, collecting top-level key→value pairs.
+  // A top-level entry looks like:  fieldName: <value expression>,
+  // where <value expression> may contain nested {}, (), [].
+  let i = 0;
+  const n = body.length;
+
+  while (i < n) {
+    // Skip whitespace between entries
+    while (i < n && /\s/.test(body[i])) i++;
+    if (i >= n) break;
+
+    // Try to read a field name (word chars)
+    const nameMatch = /^([\w]+)\s*:/.exec(body.slice(i));
+    if (!nameMatch) {
+      // Not a key line — skip to next line
+      while (i < n && body[i] !== '\n') i++;
+      i++; // skip newline
+      continue;
+    }
+
+    const fieldName = nameMatch[1];
+    // Advance past the matched key + colon
+    i += nameMatch[0].length;
+
+    // Now collect the value expression until we return to depth 0 at a comma
+    // (end of this entry) or run out of body.
+    let depth = 0;
+    let valueStart = i;
+    while (i < n) {
+      const ch = body[i];
+      if (ch === '{' || ch === '(' || ch === '[') {
+        depth++;
+      } else if (ch === '}' || ch === ')' || ch === ']') {
+        if (depth === 0) {
+          // We've hit the outer closing brace — end of all entries
+          break;
+        }
+        depth--;
+      } else if (ch === ',' && depth === 0) {
+        // End of this field's value
+        i++; // skip comma
+        break;
+      }
+      i++;
+    }
+
+    const valueExpr = body.slice(valueStart, i).trim();
+
+    // A field is optional in the schema if its value expression contains
+    // .optional(), .nullish(), or .default( (anywhere, including after a
+    // multi-line nested z.array(...).optional() call).
+    const isOptional =
+      /\.optional\s*\(/.test(valueExpr) ||
+      /\.nullish\s*\(/.test(valueExpr) ||
+      /\.default\s*\(/.test(valueExpr);
+
+    result.set(fieldName, isOptional);
+  }
+
+  return result;
 }
 
 // ---------------------------------------------------------------------------
@@ -284,6 +386,61 @@ for (const [ifaceName, schemaName] of PAIRS) {
         `  → These were probably renamed in the interface but not the schema. ` +
         `Remove or rename them in src/data/curatedDeckSchema.ts`
       );
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Required/optional alignment check
+  // ---------------------------------------------------------------------------
+  // Only run when field names already match (avoids confusing double-errors).
+
+  if (missingInSchema.length === 0 && extraInSchema.length === 0) {
+    const ifaceOptional  = extractInterfaceFieldOptional(typesSrc, ifaceName);
+    const schemaOptional = extractSchemaFieldOptional(schemaSrc, schemaName);
+
+    if (ifaceOptional === null) {
+      fail(`Could not parse interface optionality for '${ifaceName}'`);
+      continue;
+    }
+    if (schemaOptional === null) {
+      fail(`Could not parse schema optionality for '${schemaName}'`);
+      continue;
+    }
+
+    // Print optionality pairs for sample-read verification
+    console.log(`  Optionality (interface required / schema required):`);
+    for (const [field, ifaceOpt] of [...ifaceOptional.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+      const schemaOpt = schemaOptional.get(field);
+      const iReq = ifaceOpt ? 'optional' : 'required';
+      const sReq = schemaOpt ? 'optional' : 'required';
+      const marker = (ifaceOpt !== schemaOpt) ? ' ← MISMATCH' : '';
+      console.log(`    ${field}: interface=${iReq}, schema=${sReq}${marker}`);
+    }
+
+    let optionalityMismatch = false;
+    for (const [field, ifaceOpt] of ifaceOptional.entries()) {
+      const schemaOpt = schemaOptional.get(field);
+      if (schemaOpt === undefined) continue; // already caught by field-name diff
+
+      if (!ifaceOpt && schemaOpt) {
+        // Required in interface, optional in schema → validation hole
+        fail(
+          `${ifaceName}.${field}: required in interface but optional in schema — ` +
+          `this is a validation hole (schema passes rows missing a required field)`
+        );
+        optionalityMismatch = true;
+      } else if (ifaceOpt && !schemaOpt) {
+        // Optional in interface, required in schema → schema rejects valid data
+        fail(
+          `${ifaceName}.${field}: optional in interface but required in schema — ` +
+          `schema rejects rows the interface says are valid`
+        );
+        optionalityMismatch = true;
+      }
+    }
+
+    if (!optionalityMismatch) {
+      pass(`${ifaceName} ↔ ${schemaName}: optionality alignment ok (${ifaceOptional.size} fields)`);
     }
   }
 }

@@ -424,18 +424,24 @@ Checked pairs:
 - `AnswerTypePool` ↔ `AnswerTypePoolSchema` (6 fields)
 - `SynonymGroup` ↔ `SynonymGroupSchema` (3 fields)
 
-Two failure modes detected:
+Four failure modes detected:
 
 1. **Missing in schema (FAIL):** Field exists in the TypeScript interface but not in the `z.object({})` block. The field will silently bypass Zod validation — a type mismatch in that field is invisible at runtime.
 
 2. **Extra in schema (FAIL):** Field exists in the Zod schema but not the interface. Usually means the interface field was renamed but the schema was not updated.
 
+3. **Required-in-interface, optional-in-schema (FAIL):** The interface promises the field is always present, but the schema allows it to be absent. Zod passes rows missing the field — the runtime receives `undefined` where a value is guaranteed.
+
+4. **Optional-in-interface, required-in-schema (FAIL):** The interface says the field may be absent, but the schema rejects rows that omit it. Silent data loss at decode time.
+
+A field with `.default(...)` in the schema is treated as optional (Zod supplies the default if the field is absent).
+
 **Also runs under `npm run check`** — wired into the full type-check pipeline.
 
-**Parser:** Regex-based, handles optional fields (`field?:`), JSDoc comments, and nested `z.object()` / `z.array()` blocks without polluting top-level key extraction. Sub-second on these files.
+**Parser:** Regex-based, handles optional fields (`field?:`), JSDoc comments, and nested `z.object()` / `z.array()` blocks without polluting top-level key extraction. Full value expressions (including multi-line) are captured for optionality detection. Sub-second on these files.
 
-**Test coverage:** `scripts/lint/check-deck-schema-drift.test.mjs` — 7 cases (Node built-in test runner).
+**Test coverage:** `scripts/lint/check-deck-schema-drift.test.mjs` — 14 cases (Node built-in test runner): 7 original field-name cases + 7 new optionality cases.
 
-**Fix:** When this lint fails, add the flagged field(s) to the corresponding `z.object({})` block in `src/data/curatedDeckSchema.ts`.
+**Fix:** When this lint fails, align the flagged field(s) in `src/data/curatedDeckSchema.ts` or `src/data/curatedDeckTypes.ts` — add missing fields, remove extras, or reconcile `?` / `.optional()` markers.
 
-**Context:** Added 2026-04-11 after `06097f1c7` introduced Zod schemas with no automated sync check. See `docs/gotchas.md` "2026-04-11 — Schema-drift lint".
+**Context:** Added 2026-04-11 after `06097f1c7` introduced Zod schemas with no automated sync check. Optionality check added 2026-04-11 (commit extends the lint). See `docs/gotchas.md` "2026-04-11 — Deck schema drift lint extended: required/optional alignment check".
