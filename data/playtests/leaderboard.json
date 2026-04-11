@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-11T17:15:00.000Z",
+  "updatedAt": "2026-04-11T17:45:00.000Z",
   "totalPlaythroughs": 17,
-  "totalIssues": 132,
+  "totalIssues": 139,
   "batches": [
     {
       "id": "BATCH-2026-04-11-ULTRA",
@@ -4438,8 +4438,118 @@
       ],
       "firstSeen": "2026-04-11T17:15:00.000Z",
       "suggestedFix": "Finish the exhaust→forget rename: grep the full repo for \"exhaust\" (case-insensitive) in src/ and tests/, update each to forget, commit."
+    },
+    {
+      "canonicalId": "alpha-launch-blocker-001",
+      "category": "build_broken",
+      "severity": "critical",
+      "title": "Build broken: chess.js, zod, @types/geojson imports unresolved",
+      "description": "`npm run build` fails at Rollup resolution for `chess.js` (ChessBoard.svelte + chessGrader.ts), `zod` (curatedDeckSchema.ts), and `geojson` types (MapPinDrop.svelte + geoDataLoader.ts). All three are WIP features shipped by parallel agents without adding their deps to package.json. Blocks EVERY downstream step: Steam build, ship-gate verification, production bundle. Nothing can upload until resolved. Either install the three deps or revert the WIP feature commits that introduced the imports.",
+      "source": "swift-splashing-crown.md alpha plan catchup",
+      "status": "open",
+      "score": 15,
+      "affectedTracks": [
+        "alpha-launch-blocker"
+      ],
+      "firstSeen": "2026-04-11T08:00:00.000Z",
+      "suggestedFix": "`npm install chess.js zod @types/geojson` — OR identify the owning agent of each feature and have them either install the dep or revert their import. Minimum-viable path: install all three (they're small, mainstream libs), then address whether each feature ships in alpha or gets gated."
+    },
+    {
+      "canonicalId": "alpha-launch-blocker-002",
+      "category": "balance_broken",
+      "severity": "critical",
+      "title": "Ascension 20 unplayable: experienced profile at 2% win rate (cliff from 52% at A15)",
+      "description": "WAVE-A (28k runs) confirms A15→A20 drop is 52pp for experienced, 20pp for master — 3x steeper than any prior tier. Root cause: wrongAnswerSelfDamage (A17, 3 HP/wrong) + forceHardQuestionFormats (A19, ~20% accuracy loss) + bossHpMultiplier (A15, 1.10x) stack multiplicatively with quiz accuracy, creating a feedback loop no buff offsets. experienced@A20 dies in Act 1 with avg 0.2 acts played — 2-relic starter buff never activates. User approved Option C: \"Scholar's Inversion\" — wrong charges resolve at 1.0x against the PLAYER instead of the enemy; QP is the safe line; A17/A19/A15 boss mult removed at A20; correctAnswerHeal raised 1→2. Fully specced in Task #18 of swift-splashing-crown.md. Implementation is one conditional on the fizzle path in cardEffectResolver.ts + ascension.ts modifier edit + GAME_DESIGN.md §27 drift fix.",
+      "source": "WAVE-A balance-report.md + game-logic design proposal round",
+      "status": "open",
+      "score": 15,
+      "affectedTracks": [
+        "alpha-launch-blocker",
+        "balance-ascension"
+      ],
+      "firstSeen": "2026-04-11T08:00:00.000Z",
+      "suggestedFix": "Spawn game-logic for Task #18. Single atomic commit: src/services/ascension.ts (remove A17/A19 flags, add chargeInvertTargetOnWrong at A20, bump correctAnswerHeal to 2) + src/services/cardEffectResolver.ts (invertTarget conditional on fizzle path) + docs/GAME_DESIGN.md §27 table drift fix + gotcha append. Verify via 1000-run headless sim: experienced@A20 ≥ 15%, A15→A20 drop ≤ 25pp. UI follow-up: INVERT badge on charge button at A20."
+    },
+    {
+      "canonicalId": "alpha-launch-blocker-003",
+      "category": "verification_missing",
+      "severity": "critical",
+      "title": "Steam Tauri build never verified: npm run steam:build + steam:test never run this session",
+      "description": "Code-complete status is asserted, but the actual Tauri production build (`npm run steam:build`) and local launch test (`npm run steam:test`) have not been run. Unknown whether: the app boots, save files write to the correct platform dir, Steam overlay works, 18 achievements fire, Rich Presence updates, offline mode is playable, XOR-obfuscated DBs load, dev flags don't leak. Any of these failing is a hard ship blocker. Running this now — instead of the day before drop — surfaces issues while there's time to fix them.",
+      "source": "swift-splashing-crown.md T2.10",
+      "status": "open",
+      "score": 12,
+      "affectedTracks": [
+        "alpha-launch-blocker"
+      ],
+      "firstSeen": "2026-04-11T08:00:00.000Z",
+      "suggestedFix": "After T1.1 lands and parallel-agent-001 (build break) is resolved: run `npm run verify:ship` (comprehensive gate) → `npm run steam:build` → `npm run steam:test` → walk the checklist in docs/deployment/steam.md §Phase 3. Report any failures as new leaderboard entries."
+    },
+    {
+      "canonicalId": "alpha-launch-blocker-004",
+      "category": "ops_missing",
+      "severity": "critical",
+      "title": "Steamworks dashboard entirely unconfigured: no depots, no Cloud, no achievement icons, no store page",
+      "description": "Code reads APP_ID 4547570 and 18 achievements from src/data/steamAchievements.ts, but the Steamworks Partner dashboard has none of: (a) macOS depot 4547574 created, (b) Linux depot 4547573 created, (c) dev/staging/default branches created, (d) Steam Auto-Cloud configured for ~/Library/Application Support/com.bramblegategames.recallrogue/saves/, (e) 18 achievements registered, (f) 256×256 achievement icons uploaded, (g) Rich Presence localization tokens, (h) store page (8 capsules, 8 screenshots, hero graphic, description) uploaded, (i) Coming Soon page live. User-driven work. 2-week Coming Soon minimum means this path has a hard clock.",
+      "source": "swift-splashing-crown.md T2.1-T2.8",
+      "status": "open",
+      "score": 12,
+      "affectedTracks": [
+        "alpha-launch-blocker",
+        "ops"
+      ],
+      "firstSeen": "2026-04-11T08:00:00.000Z",
+      "suggestedFix": "Walk docs/deployment/steam.md §Phase 1 + §Phase 2 at the Steamworks dashboard. Start with the Coming Soon page FIRST to kick the 2-week clock, do achievement dashboard setup in parallel. Art pipeline: generate 18× 256×256 achievement icons via artstudio skill."
+    },
+    {
+      "canonicalId": "alpha-review-risk-001",
+      "category": "accessibility",
+      "severity": "high",
+      "title": "RewardRoom Continue button is Phaser-only: keyboard-inaccessible, Steam review risk",
+      "description": "RewardRoomScene.ts Continue button is implemented as a Phaser canvas object (setInteractive()) with no DOM overlay equivalent. Keyboard-only and screen-reader users cannot advance past the reward room. Wiring lint (check-wiring.mjs) flags this with WARN status. Steam reviewers ding accessibility issues consistently. 1-2 hour fix: add a new RewardRoomOverlay.svelte component OR extend an existing overlay with a DOM button that triggers the same continue flow.",
+      "source": "swift-splashing-crown.md T0.4 + Agent 1 feature inventory",
+      "status": "open",
+      "score": 8,
+      "affectedTracks": [
+        "alpha-review-risk",
+        "accessibility"
+      ],
+      "firstSeen": "2026-04-11T08:00:00.000Z",
+      "suggestedFix": "ui-agent: create src/ui/components/RewardRoomOverlay.svelte with a DOM Continue button (`<button>` with onclick + data-testid=\"reward-continue\"). game-logic: expose a postMessage-style hook from RewardRoomScene that the overlay can trigger. Verify with keyboard-only walkthrough: Tab to button, Enter to continue."
+    },
+    {
+      "canonicalId": "alpha-review-risk-002",
+      "category": "feature_broken",
+      "severity": "high",
+      "title": "Chess Tactics deck board does not render: fenPosition convention mismatch",
+      "description": "chess_tactics.json stores fenPosition in one convention while chessGrader.ts getPlayerContext() expects a different convention (post-setup vs pre-setup FEN). Result: ChessBoard.svelte either crashes in the catch block or renders the wrong position. The chess tactics deck is advertised as a feature in the alpha scope but is functionally non-functional. Small scope (a single fenPosition transformation) but needs coordinated content+code fix.",
+      "source": "swift-splashing-crown.md T3.1 + BATCH-ULTRA built-but-not-wired findings",
+      "status": "open",
+      "score": 7,
+      "affectedTracks": [
+        "alpha-review-risk",
+        "feature-broken"
+      ],
+      "firstSeen": "2026-04-11T08:00:00.000Z",
+      "suggestedFix": "content-agent + ui-agent: read chessGrader.getPlayerContext() to determine whether baseFen should be pre-setup-move or post-setup-move. Update data/decks/chess_tactics.json fenPosition field to match expected convention OR update chessGrader to handle both. Verify: load a chess tactics scenario via __rrScenario, screenshot the board, confirm piece layout matches the puzzle image."
+    },
+    {
+      "canonicalId": "alpha-review-risk-003",
+      "category": "content_bug",
+      "severity": "high",
+      "title": "4 facts contain literal 'undefined' strings in player-visible text",
+      "description": "Four curated deck facts contain the literal string 'undefined' (lowercase) in their question or answer text, visible to players during combat quiz. Indicates a generation-pipeline bug where a template slot failed to substitute and the string 'undefined' was written into the fact body verbatim. 10-minute content-agent fix: grep facts.db / curated.db for `undefined` tokens, identify the 4 facts, rewrite each manually. Not a blocker but a predictable Steam review complaint (\"typos in questions\").",
+      "source": "swift-splashing-crown.md T3.2",
+      "status": "open",
+      "score": 6,
+      "affectedTracks": [
+        "alpha-review-risk",
+        "content"
+      ],
+      "firstSeen": "2026-04-11T08:00:00.000Z",
+      "suggestedFix": "content-agent: `grep -rn '\\bundefined\\b' data/decks/` — identify affected facts, rewrite each, rebuild curated.db via `npm run build:curated`, verify in-game display via visual-inspect scenario."
     }
   ],
-  "openCount": 106,
+  "openCount": 113,
   "resolvedCount": 26
 }
