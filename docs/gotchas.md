@@ -3559,3 +3559,28 @@ check-camp-sprites.mjs — scanned 9 elements, 60 tier files
 **Fix:** Entire `experimentService.ts` deleted. `gameFlowController.onArchetypeSelected()` now uses `START_AP_PER_TURN` directly (imported from `../data/balance`). Starter deck size defaults to `15` (the experiment control value, matching `runManager.ts` default). The `experiment_assigned` event type and the `getExperimentVariant`/`getExperimentGroup` methods were removed from `analyticsService.ts`. The separate live experiments in `src/data/experiments.ts` (`pioneer_pack_timing_v2`, etc.) are unaffected — they are proper product experiments, not balance forks.
 
 **Lesson:** Any service that silently assigns players to different balance values must be approved before wiring into `createRunState`. A balance-altering experiment that isn't in `docs/roadmap/` or explicitly approved is a balance fork, not an experiment.
+
+### 2026-04-11 — Terra Gacha legacy cleanup Phase 1
+
+Deleted orphaned Terra Gacha fork leftovers: `src/data/experiments.ts` (4 dead A/B test defs),
+`src/utils/experimentBucket.ts` (unused bucket utility), `pioneer_pack_*` analytics event types
+in `analyticsEvents.ts`, and (in parallel commits) `PioneerPackModal.svelte` + `pioneer_pack_title`
+i18n entries across 7 locales.
+
+These files came from the original Terra Gacha project that Recall Rogue was forked from.
+Zero active consumers. Total footprint removed: ~300 LOC + i18n entries in 7 locale files.
+
+Phase 2 (Rogue Pass modal, IAP product-ID strings, ToS legal text, support emails) requires
+user decisions on live monetization infrastructure and is tracked separately.
+
+See orchestrator memory feedback_docs-always-updated.md for the rebrand hygiene rule.
+
+### 2026-04-11 — AP orphan decks authored subDecks from examTags
+
+**What:** Three AP decks (`ap_us_history`, `ap_macroeconomics`, `ap_microeconomics`) had comprehensive `examTags` arrays on every fact (e.g. `Period_1`…`Period_9` for APUSH, `Unit_1`…`Unit_6` for the economics decks) but no `subDecks` array at all. After the `rowToDeckShell()` loader fix landed in commit `1fee8db0c`, the runtime could now serve sub-deck names to `DeckDetailModal` and `chainDistribution` — but these three decks still showed nothing because there was no data to load.
+
+**Root cause:** The decks were assembled before the `subDecks` convention was established for AP decks. The exam tags were added for query filtering but never consumed to build the subdeck groupings.
+
+**Fix:** Built `subDecks` arrays mechanically by scanning each fact's `examTags` for `Period_N` or `Unit_N` tokens, grouping fact IDs in source order, and verifying 100% coverage (0 orphans, 0 duplicates). Final counts: APUSH 504, macro 440, micro 430 — all matched the declared fact counts. Also trimmed the `"Unit N: "` prefix from `ap_human_geography` subdeck names (they rendered as "Unit 1: Thinking Geographically" instead of the cleaner "Thinking Geographically" used by other AP decks).
+
+**Lesson:** When adding `examTags` to facts, also author the `subDecks` array in the same pass. The tags are the ground truth; the subDecks array is just a precomputed grouping. Deferring it creates a silent gap between "data has structure" and "runtime can show that structure."

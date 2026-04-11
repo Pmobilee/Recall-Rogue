@@ -9,9 +9,6 @@ export type MonetizationEvent =
   | { name: 'iap_purchase_started'; properties: { productId: string } }
   | { name: 'iap_purchase_completed'; properties: { productId: string; priceUSD: number } }
   | { name: 'iap_purchase_failed'; properties: { productId: string; error: string } }
-  | { name: 'pioneer_pack_shown'; properties: { daysRemaining: number } }
-  | { name: 'pioneer_pack_purchased'; properties: Record<string, never> }
-  | { name: 'pioneer_pack_dismissed'; properties: { daysRemaining: number } }
   | { name: 'oxygen_depleted'; properties: { lootLostPercent: number; layer: number } }
   | { name: 'subscription_started'; properties: { productId: string; tier: string } }
   | { name: 'subscription_cancelled'; properties: { productId: string; daysActive: number } }
@@ -54,31 +51,3 @@ export type LearningMetricEvent =
   | { name: 'learning_daily_study_rate'; properties: { rate: number; dau: number } }
   | { name: 'learning_facts_per_player'; properties: { median: number; p90: number } }
   | { name: 'learning_time_to_mastery'; properties: { medianDays: number } }
-
-/** Experiment assignment for A/B testing */
-export interface ExperimentAssignment {
-  name: string
-  group: 'A' | 'B'
-  assignedAt: number
-}
-
-/**
- * Deterministic A/B experiment assignment based on hashed user ID.
- * Same user always gets same group for a given experiment.
- */
-export function assignExperiment(
-  userId: string,
-  experimentName: string,
-  weightA: number = 0.5,
-): 'A' | 'B' {
-  // Simple deterministic hash
-  let hash = 0
-  const key = `${userId}:${experimentName}`
-  for (let i = 0; i < key.length; i++) {
-    const char = key.charCodeAt(i)
-    hash = ((hash << 5) - hash) + char
-    hash = hash & hash // Convert to 32-bit integer
-  }
-  const normalized = Math.abs(hash) / 2147483647 // Normalize to 0-1
-  return normalized < weightA ? 'A' : 'B'
-}
