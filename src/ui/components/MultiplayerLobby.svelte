@@ -313,7 +313,7 @@
             class="start-btn"
             disabled={!canStart}
             onclick={handleStart}
-            aria-label="Start game"
+            aria-label={startButtonLabel(lobby, amHost)}
           >
             {startButtonLabel(lobby, amHost)}
           </button>
