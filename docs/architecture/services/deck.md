@@ -16,7 +16,7 @@ Deck management is split by run mode: `runPoolBuilder` handles standard domain r
 |---|---|
 | **File** | src/services/deckManager.ts |
 | **Purpose** | Active run deck state — draw pile, hand, discard pile, cooldowns, and per-encounter seen-fact deduplication |
-| **Key exports** | `createDeck`, `drawHand`, `discardHand`, `playCard`, `insertCardWithDelay`, `addCardToDeck`, `addFactsToCooldown`, `tickFactCooldowns`, `getEncounterSeenFacts`, `resetEncounterSeenFacts`, `exhaustCard`, `reshuffleEvent` (store) |
+| **Key exports** | `createDeck`, `drawHand`, `discardHand`, `playCard`, `insertCardWithDelay`, `addCardToDeck`, `addFactsToCooldown`, `tickFactCooldowns`, `getEncounterSeenFacts`, `resetEncounterSeenFacts`, `forgetCard`, `reshuffleEvent` (store) |
 | **Key dependencies** | factsDB, domainResolver, seededRng, randomUtils, activeRunState |
 
 ## cardFactory

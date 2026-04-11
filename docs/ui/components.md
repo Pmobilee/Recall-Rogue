@@ -28,8 +28,8 @@
 | `BossIntroOverlay.svelte` | Full-screen dramatic boss introduction cinematic |
 | `SurgeBorderOverlay.svelte` | Pulsing colored border overlay during surge turns |
 | `ComebackBonus.svelte` | Toast/banner when the low-HP comeback bonus activates |
-| `ExhaustPileViewer.svelte` | Drawer showing exhausted cards for the current turn |
-| `RunDeckOverlay.svelte` | **Full-run deck viewer (2026-04-11 Issue 14).** Modal overlay listing ALL cards in the run across all four piles (hand / draw / discard / exhaust). Opened via the deck icon in `InRunTopBar`. Reads `$activeTurnState.deck` — shows empty state with escape path when outside combat. Each row shows pile tag (color-coded), card type dot, card name + type/AP, mastery badge (L0-L5). Sorted by pile order then type then name. `data-testid="run-deck-overlay"`. Visibility driven by `runDeckOverlayOpen` writable store (`src/ui/stores/runDeckOverlayStore.ts`). Mounted centrally in `CardApp.svelte` gated on `showTopBar && $runDeckOverlayOpen`. Close via backdrop click, close button, or Escape. z-index: 400. |
+| `ForgetPileViewer.svelte` | Drawer showing forgotten cards for the current turn |
+| `RunDeckOverlay.svelte` | **Full-run deck viewer (2026-04-11 Issue 14).** Modal overlay listing ALL cards in the run across all four piles (hand / draw / discard / forget). Opened via the deck icon in `InRunTopBar`. Reads `$activeTurnState.deck` — shows empty state with escape path when outside combat. Each row shows pile tag (color-coded), card type dot, card name + type/AP, mastery badge (L0-L5). Sorted by pile order then type then name. `data-testid="run-deck-overlay"`. Visibility driven by `runDeckOverlayOpen` writable store (`src/ui/stores/runDeckOverlayStore.ts`). Mounted centrally in `CardApp.svelte` gated on `showTopBar && $runDeckOverlayOpen`. Close via backdrop click, close button, or Escape. z-index: 400. |
 | `SpeedRoundTimer.svelte` | Countdown timer for speed-round challenge phases |
 | `NearMissBanner.svelte` | Feedback banner when a wrong answer was very close |
 | `TimeUpOverlay.svelte` | Full-screen overlay when the floor timer expires |

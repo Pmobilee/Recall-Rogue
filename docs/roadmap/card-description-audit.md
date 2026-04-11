@@ -11,7 +11,7 @@ any edits land in the service file.
   `src/services/cardUpgradeService.ts`, cross-checked against resolver in
   `src/services/cardEffectResolver.ts`.
 - CC value = L0 qpValue × 1.75 (CHARGE_CORRECT_MULTIPLIER). Where CC behavior differs
-  fundamentally from QP (e.g. exhaust, choice, chain scaling), it is described behaviorally.
+  fundamentally from QP (e.g. forget, choice, chain scaling), it is described behaviorally.
 - CW is noted only when behavior is non-standard (non-standard = anything other than
   0.25× base effect). Standard CW fizzle is omitted from the short text to save chars.
 - Tone: verb-first, terse, concrete numbers. Match existing entries.
@@ -57,13 +57,13 @@ any edits land in the service file.
 | `swap` | utility | discard1, draw1 | discard1, draw2 | std | Discard 1 card and draw 1 replacement (free). CC: draw 2 (3 at L3+). | `Cycle 1→1` |
 | `siphon_strike` | attack | 2 dmg +heal | 4 dmg +heal | std | Deal `${power}` damage. Heal based on overkill damage (min `${minHeal}`, max `${maxHeal}` HP). CC: more damage and heal range. | `${power} dmg +drain` |
 | `aegis_pulse` | shield | 2 blk | 4 blk +chain bonus | std | Gain `${power}` Block. CC: same-chain cards in hand gain +2 Block (3 at L3+). L5: CC also draws 1. | `${power} blk, CC+chain` |
-| `inscription_fury` | buff | +1 dmg/all atk | +2 dmg/all atk | std | Exhausts on play. All attacks deal +`${power}` bonus damage for the rest of combat. CC: double bonus. | `+${power} dmg all atk` |
-| `inscription_iron` | buff | +1 blk/turn | +2 blk/turn | std | Exhausts on play. Gain +`${power}` Block at the start of each turn for the rest of combat. CC: double. | `+${power} blk/turn` |
-| `inscription_wisdom` | buff | +1 draw/CC | CC: +draw +heal | CW: fizzle | Exhausts on play. QP: each future Charge Correct draws 1 extra card. CC: also heals 1 HP per CC. CW: no effect. | `+1 draw/CC` |
+| `inscription_fury` | buff | +1 dmg/all atk | +2 dmg/all atk | std | Forgets on play. All attacks deal +`${power}` bonus damage for the rest of combat. CC: double bonus. | `+${power} dmg all atk` |
+| `inscription_iron` | buff | +1 blk/turn | +2 blk/turn | std | Forgets on play. Gain +`${power}` Block at the start of each turn for the rest of combat. CC: double. | `+${power} blk/turn` |
+| `inscription_wisdom` | buff | +1 draw/CC | CC: +draw +heal | CW: fizzle | Forgets on play. QP: each future Charge Correct draws 1 extra card. CC: also heals 1 HP per CC. CW: no effect. | `+1 draw/CC` |
 | `gambit` | attack | 4 dmg -4 HP | 7 dmg +3 heal | CW: 4 dmg -6 HP | Deal `${power}` damage and lose `${selfDmg}` HP (QP). CC: deal damage and heal `${healOnCC}` HP instead. CW: deal damage and lose extra HP. | `${power} dmg ±HP` |
 | `chain_lightning` | attack | 3 dmg | CC: qp × chain length | std | Deal `${power}` damage (QP). CC: deal `${power}` × chain length damage (counts itself). Requires chain. L5: costs 1 AP. | `${power} × chain (CC)` |
-| `volatile_slash` | attack | 4 dmg | 7 dmg +Exhaust | std | Deal `${power}` damage. CC: `${Math.round(power*1.75)}` damage then Exhaust this card. L5: CC no longer Exhausts. | `${power} dmg / CC+Exhaust` |
-| `burnout_shield` | shield | 4 blk | 7 blk +Exhaust | std | Gain `${power}` Block. CC: `${Math.round(power*1.75)}` Block then Exhaust this card. L5: CC no longer Exhausts. | `${power} blk / CC+Exhaust` |
+| `volatile_slash` | attack | 4 dmg | 7 dmg +Forget | std | Deal `${power}` damage. CC: `${Math.round(power*1.75)}` damage then Forget this card. L5: CC no longer Forgets. | `${power} dmg / CC+Forget` |
+| `burnout_shield` | shield | 4 blk | 7 blk +Forget | std | Gain `${power}` Block. CC: `${Math.round(power*1.75)}` Block then Forget this card. L5: CC no longer Forgets. | `${power} blk / CC+Forget` |
 | `warcry` | buff | +1 Str 1t | +2 Str perm +free charge | CW: +1 Str 1t | QP: gain +`${str}` Strength this turn. CC: gain Strength permanently and next Charge costs 0 AP. L5: +3 Str permanent. | `+${str} Str (CC: perm)` |
 | `battle_trance` | buff | draw 2 +lockout | draw 2 no lockout | draw 2 +lockout | Draw `${drawCount}` cards. QP/CW: cannot play or Charge more cards this turn. CC: no restriction. L3: QP no longer locks out. | `Draw ${drawCount} (lockout)` |
 | `curse_of_doubt` | debuff | +15% chg dmg 1t | +25% chg dmg 3t | +10% chg dmg 1t | Enemy takes +`${pctBonus}`% more damage from Charged attacks for `${turns}` turn(s). CC: higher bonus and more turns. | `+${pctBonus}% chg dmg` |
@@ -76,7 +76,7 @@ any edits land in the service file.
 | `unstable_flux` | wild | random eff 4 | choose eff 7 | random eff 4 | QP/CW: apply a random effect (damage, Block, draw, or debuff) at `${power}` power. CC: choose the effect at `${Math.round(power*1.75)}` power. | `Random/choose eff` |
 | `hemorrhage` | attack | 2 dmg +3×Bleed | 4 dmg +5×Bleed | std | Deal `${power}` damage plus `${bleedMult}` × enemy Bleed stacks as bonus damage, then consume all Bleed. CC: higher multiplier. Costs 2 AP. | `${power}+${bleedMult}×Bleed` |
 | `eruption` | attack | X-cost 6/AP | X-cost 9/AP | X-cost 3/AP | Spend all remaining AP. Deal `${dmgPerAp}` damage per AP spent (QP). CC: `${Math.round(dmgPerAp*1.5)}` per AP. CW: `${Math.round(dmgPerAp*0.5)}` per AP. L5: refund 1 AP. | `${dmgPerAp} dmg/AP (X)` |
-| `bulwark` | shield | 9 blk | 16 blk +Exhaust | std | Gain `${power}` Block. CC: `${Math.round(power*1.75)}` Block then Exhaust this card. L3+: CC no longer Exhausts. Costs 2 AP. | `${power} blk / CC+Exhaust` |
+| `bulwark` | shield | 9 blk | 16 blk +Forget | std | Gain `${power}` Block. CC: `${Math.round(power*1.75)}` Block then Forget this card. L3+: CC no longer Forgets. Costs 2 AP. | `${power} blk / CC+Forget` |
 | `conversion` | shield | 3 blk, deal block dmg | 5 blk, deal 1.5×block dmg | deal 50% block | Gain `${power}` Block, then deal damage equal to your current Block (consuming it). CC: deal 1.5× your Block instead. L5: Block is NOT consumed. | `Deal Block as dmg` |
 | `ironhide` | shield | 5 blk +1Str temp | 9 blk +1Str perm | std | Gain `${power}` Block and +`${str}` Strength this turn (QP) or permanently (CC). L5: costs 1 AP. | `${power} blk +${str}Str` |
 | `frenzy` | buff | next 1 card free | next 2 cards free | next 1 card free | Next `${freeCards}` card(s) cost 0 AP (QP). CC: `${freeCards+1}` free cards. CW: 1 free card. L5: costs 1 AP and draws 1. | `Next ${freeCards} free` |
@@ -85,7 +85,7 @@ any edits land in the service file.
 | `entropy` | debuff | 2 Burn +1 Poison 2t | 4 Burn +2 Poison 3t | std | Apply `${burn}` Burn and `${poison}` Poison for `${poisonTurns}` turn(s). CC: higher values and more turns. Costs 2 AP (1 at L5). | `${burn}Burn +${poison}Pois` |
 | `archive` | utility | retain 1 card | retain 2 cards | std | Choose 1 card in hand to retain past turn end. CC: retain 2. L3+: retained cards gain +2 Block. L5: also draws 1. | `Retain ${retain}` |
 | `reflex` | utility | draw 1 | draw 2 | std | Draw `${drawCount}` card(s). PASSIVE: when discarded from hand, gain `${passiveBlock}` Block. CC: draw more. L3: CC draws 3. | `Draw ${drawCount} +passive` |
-| `recollect` | utility | return 1 exhausted | return 2 exhausted | std | Return 1 exhausted card to your discard pile. CC: return 2. Cannot target Inscriptions. L3+: returned cards gain +1 mastery. | `Return ${returns} exhausted` |
+| `recollect` | utility | return 1 forgotten | return 2 forgotten | std | Return 1 forgotten card to your discard pile. CC: return 2. Cannot target Inscriptions. L3+: returned cards gain +1 mastery. | `Return ${returns} forgotten` |
 | `synapse` | utility | draw 1 | draw 2 +chain link | std | Draw `${drawCount}` card(s). CC: also extend the active chain by 1 (wildcard link). L3+ only. | `Draw ${drawCount} / CC+chain` |
 | `siphon_knowledge` | utility | draw 1, preview 2s | draw 2, preview 3s | std | Draw `${drawCount}` card(s) and briefly show all current quiz answers for `${previewSec}` seconds. CC: more draws, longer preview. Costs 2 AP (1 at L3). | `Draw ${drawCount} +preview` |
 | `tutor` | utility | search 1 | search 1, play free | std | Search your draw pile; choose a card and add it to hand. CC: that card costs 0 AP this turn. L3+: search top 2 choices. L5: costs 0 AP. | `Search & add` |
@@ -158,7 +158,7 @@ chain_lightning:
   [txt('Deal '), num(power), txt(' damage\nCC: ×chain length')]
 
 volatile_slash:
-  [txt('Deal '), ...numWithMastery(power, 'volatile_slash', ml), txt(' damage\nCC: '), kw('Exhaust', 'exhaust')]
+  [txt('Deal '), ...numWithMastery(power, 'volatile_slash', ml), txt(' damage\nCC: '), kw('Forget', 'forget')]
 
 hemorrhage:
   const mult = stats?.extras?.['bleedMult'] ?? 3;
@@ -191,10 +191,10 @@ aegis_pulse:
   [txt('Gain '), ...numWithMastery(power, 'aegis_pulse', ml), txt(' '), kw('Block', 'block'), txt('\nCC: chain +2 blk')]
 
 burnout_shield:
-  [txt('Gain '), ...numWithMastery(power, 'burnout_shield', ml), txt(' '), kw('Block', 'block'), txt('\nCC: '), kw('Exhaust', 'exhaust')]
+  [txt('Gain '), ...numWithMastery(power, 'burnout_shield', ml), txt(' '), kw('Block', 'block'), txt('\nCC: '), kw('Forget', 'forget')]
 
 bulwark:
-  [txt('Gain '), ...numWithMastery(power, 'bulwark', ml), txt(' '), kw('Block', 'block'), txt('\nCC: '), kw('Exhaust', 'exhaust')]
+  [txt('Gain '), ...numWithMastery(power, 'bulwark', ml), txt(' '), kw('Block', 'block'), txt('\nCC: '), kw('Forget', 'forget')]
 
 conversion:
   [txt('Deal Block as dmg\nGain '), ...numWithMastery(power, 'conversion', ml), txt(' '), kw('Block', 'block')]
@@ -301,7 +301,7 @@ reflex:
 
 recollect:
   const rets = stats?.extras?.['returns'] ?? 1;
-  [txt('Return '), num(rets), txt(' '), kw('Exhausted', 'exhaust'), txt('\nto discard')]
+  [txt('Return '), num(rets), txt(' '), kw('Forgotten', 'forget'), txt('\nto discard')]
 
 synapse:
   const draws = stats?.drawCount ?? 1;
@@ -398,8 +398,8 @@ inscription_iron→ `+${power} blk/turn`
 inscription_wisdom→`+1 draw/CC`
 gambit          → `${power} dmg ±HP`
 chain_lightning → `${power} × chain (CC)`
-volatile_slash  → `${power} / CC+Exhaust`
-burnout_shield  → `${power} / CC+Exhaust`
+volatile_slash  → `${power} / CC+Forget`
+burnout_shield  → `${power} / CC+Forget`
 warcry          → `+${str} Str / CC perm`
 battle_trance   → `Draw ${drawCount} +lock`
 curse_of_doubt  → `+${pctBonus}% chg dmg`
@@ -412,7 +412,7 @@ chain_anchor    → `Draw ${draws} / CC→2`
 unstable_flux   → `Random / CC: choose`
 hemorrhage      → `${power}+${bleedMult}×Bleed`
 eruption        → `${dmgPerAp} dmg/AP (X)`
-bulwark         → `${power} / CC+Exhaust`
+bulwark         → `${power} / CC+Forget`
 conversion      → `Deal Block as dmg`
 ironhide        → `${power} blk +${str} Str`
 frenzy          → `Next ${freeCards} free`
@@ -421,7 +421,7 @@ war_drum        → `Hand +${bonus} this turn`
 entropy         → `${burn}Burn +${poison}Pois`
 archive         → `Retain ${retain}`
 reflex          → `Draw ${drawCount} +passive`
-recollect       → `Return ${returns} exhaust`
+recollect       → `Return ${returns} forgotten`
 synapse         → `Draw ${drawCount} / CC+chain`
 siphon_knowledge→ `Draw ${drawCount} +preview`
 tutor           → `Search & add`
@@ -482,7 +482,7 @@ The mechanics.ts description says "CW: fizzle". The resolver should confirm this
 **Proposed:** CW fizzle — describe as "CW: no effect" in detailed text.
 
 ### 6. `inscription_wisdom` — CW fizzle note
-CW = complete fizzle (no exhaust, no draw bonus). This is confirmed by `chargeWrongValue: 0`
+CW = complete fizzle (no forget, no draw bonus). This is confirmed by `chargeWrongValue: 0`
 in MECHANIC_DEFINITIONS and the description field "CW: FIZZLE". Worth noting explicitly
 in the detailed text since it's the most punishing CW in the game.
 

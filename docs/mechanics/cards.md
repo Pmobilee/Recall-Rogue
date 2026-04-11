@@ -23,7 +23,7 @@ Each card is a runtime instance linked to a Fact. Key fields:
 | `mechanicId` | string? | Mechanic from the mechanic pool |
 | `masteryLevel` | number? | In-run mastery level 0–5 (AR-113) |
 | `apCost` | number? | AP cost to play |
-| `isInscription` | bool? | Exhausts on play, persists for combat |
+| `isInscription` | bool? | Forgets on play, persists for combat |
 | `isCursed` | bool? | Cursed fact penalty applies |
 | `isLocked` | bool? | Locked by Trick Question enemy (AR-268) |
 
@@ -346,7 +346,7 @@ Several mechanics have designed creative milestones at key mastery levels that c
 | `recall` | L3 | On review CC, also **heals 3 HP** (`recall_heal3` tag) |
 | `recall` | L5 | Heal 3 HP + **draw 1** on review CC (`recall_heal3`, `recall_draw1` tags) |
 | `eruption` | L5 | **Refunds 1 AP** after play (`eruption_refund1` tag) |
-| `volatile_slash` | L5 | **No longer exhausts** on CC (`volatile_no_exhaust` tag) |
+| `volatile_slash` | L5 | **No longer forgets** on CC (`volatile_no_exhaust` tag) |
 | `chain_lightning` | L3 | Minimum chain count = **2** (`chain_lightning_min2` tag) |
 | `chain_lightning` | L5 | Min chain = 2 (persists at L5) |
 | `strike` | L5 | **+Tempo bonus** if 3+ cards played this turn (`strike_tempo3`) |
@@ -397,7 +397,7 @@ Several mechanics have designed creative milestones at key mastery levels that c
 - `stagger` L5: qpValue was 0 (< L4=1) — fixed to 1
 
 **New mastery tables added (`src/services/cardUpgradeService.ts`):**
-- `burnout_shield`: full L0–L5 table (qpValue 5→13). L5 gains `burnout_no_exhaust` tag (wired as of 2026-04-10: L5 CC no longer exhausts)
+- `burnout_shield`: full L0–L5 table (qpValue 5→13). L5 gains `burnout_no_exhaust` tag (wired as of 2026-04-10: L5 CC no longer forgets)
 - `knowledge_ward`: full L0–L5 table (qpValue 6→12). L3+ gains `knowledge_ward_cleanse` tag (wired as of 2026-04-10: cleanses 1 debuff from player on any play mode at L3+)
 - Both previously used legacy `getMasteryBaseBonus()` bridge; now have explicit `MASTERY_STAT_TABLES` entries
 
@@ -475,7 +475,7 @@ Transmute transforms a source card into a new card for the current encounter onl
 **Picker resolution flow (CC path, Issue 5 — 2026-04-11):**
 
 After the player selects a card in the CardPickerOverlay, `resolveTransmutePick()` in `turnManager.ts`:
-1. Locates the source card across all four piles (hand/drawPile/discardPile/exhaustPile).
+1. Locates the source card across all four piles (hand/drawPile/discardPile/forgetPile).
 2. **Splices** the source card out of its pile (does NOT overwrite in-place).
 3. Builds the new transmuted card with a fresh unique id (`${oldId}-tx-${Date.now()}`).
 4. **Pushes** the new card onto the TOP of `drawPile` (`push()` = top because drawPile is a stack — `pop()` draws from the end).

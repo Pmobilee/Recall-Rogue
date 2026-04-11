@@ -297,7 +297,7 @@ Build profiles use `BuildPreferences` to bias `pickReward()` (+50 for preferred 
 | `build_fortress` | Build: Fortress/Block | block, fortify, reinforce, absorb, thorns, bulwark, brace, guard | iron_shield, aegis_stone, stone_wall | 1.0 |
 | `build_strength` | Build: Strength/Power | power_strike, empower, iron_wave, reckless, heavy_strike, bash | brass_knuckles, whetstone, volatile_core, berserker_band | 0.3 |
 | `build_chain` | Build: Chain Master | chain_anchor, strike, twin_strike | chain_addict, obsidian_dice | 0.4 |
-| `build_exhaust` | Build: Exhaust | sacrifice, volatile_slash, bulwark, catalyst | scavengers_eye, tattered_notebook | 0.5 |
+| `build_forget` | Build: Forget | sacrifice, volatile_slash, bulwark, catalyst | scavengers_eye, tattered_notebook | 0.5 |
 | `build_tempo` | Build: Tempo/Draw | swap, scout, quicken, foresight, sift, reflex | swift_boots, quicksilver_quill | 0.4 |
 | `build_control` | Build: Control | weaken, expose, slow, stagger, hex, sap | plague_flask, null_shard | 0.6 |
 | `build_berserker` | Build: Berserker | reckless, lifetap, execute, volatile_slash, heavy_strike | blood_price, berserker_band | 0.0 |
@@ -388,7 +388,7 @@ Added 2026-04-11. Generated automatically when `--analytics` is used. No extra f
 
 - `runsOffered=0`: Mechanic was never generated in a reward pool. Check `pickRandomMechanic()` — it is likely gated by `ENABLE_PHASE2_MECHANICS` or a type-pool imbalance.
 - `runsOffered > 0, runsTaken=0`: Mechanic was offered but the bot never chose it. Bot heuristic consistently prefers other options.
-- `runsOffered > 0, runsTaken > 0, timesPlayed=0`: Mechanic was picked but never played in combat. Likely an exhaust/trigger mechanic that needs special handling in the sim.
+- `runsOffered > 0, runsTaken > 0, timesPlayed=0`: Mechanic was picked but never played in combat. Likely a forget/trigger mechanic that needs special handling in the sim.
 - `timesPlayed` ZERO but `runsOffered > 0`: Usually means the mechanic is picked late in runs (after data is captured) or has a play condition the sim never satisfies.
 
 **ZERO bucket:** The report includes a prose section naming every ZERO mechanic and guessing the root cause (Phase 2 gate, unlockLevel gate, maxPerPool=1 rarity, never rolled in type pool).

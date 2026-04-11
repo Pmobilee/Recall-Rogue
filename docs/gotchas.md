@@ -3276,3 +3276,50 @@ Fed via `scripts/docker-visual-test.sh --warm test --agent-id X --actions-file /
 **Fix:** Updated `expect(result.qpValue).toBe(3)` → `expect(result.qpValue).toBe(5)` and the comment to reflect the current L0 value.
 
 **Prevention:** When bumping stat table values, search for test expectations referencing that mechanic's old QP value. Pattern: `grep -n "lifetap\|QP=3\|toBe(3)" tests/ src/services/*.test.ts` after any stat table change.
+
+### 2026-04-11 — Status effect display rename (Issue 13): ID vs display name separation
+
+**What:** Status effect display names were renamed to study-themed equivalents (e.g. "Poison" → "Doubt", "Weakness" → "Drawing Blanks") without changing any IDs.
+
+**ID vs display name:** The `StatusEffectType` union values (`'poison'`, `'weakness'`, etc.) are the canonical IDs used throughout game code, save files, type guards, and resolver logic. They must never change. Only the human-visible `name` field in the display-table objects (`STATUS_EFFECT_INFO`, `EFFECT_INFO`, `STATUS_LABELS`) changed.
+
+**Where display names live (ui-agent scope):**
+- `src/ui/components/InRunTopBar.svelte` — `STATUS_EFFECT_INFO` (full tooltip names)
+- `src/ui/components/StatusEffectBar.svelte` — `EFFECT_INFO` (full tooltip names)
+- `src/ui/components/CardCombatOverlay.svelte` — `STATUS_LABELS` (floater abbreviations) + debuff intent strings
+
+**Out-of-scope sites requiring game-logic/content-agent follow-up:**
+- `src/data/keywords.ts` — `KEYWORD_DEFINITIONS` has `name: 'Weakness'`, `name: 'Vulnerable'`, `name: 'Poison'` (used by card keyword tooltips in `cardDescriptionService.ts` via `kw()` calls)
+- `src/services/cardDescriptionService.ts` — card description strings contain old names verbatim
+- `tests/unit/card-descriptions.test.ts:127` — `expect(detailed).toContain('Weakness')` asserts on `getDetailedCardDescription()` output from `cardDescriptionService.ts`
+
+**Prevention:** When renaming display strings, grep for the old name across ALL files before committing. Seed data (`src/data/seed/*.json`) contains "Vulnerable", "Poison", "Strength" as legitimate quiz answer content — never rename those.
+
+### 2026-04-11 — Exhaust mechanic renamed to Forget (T1.6)
+
+**What:** The `exhaust` mechanic — the card keyword, pile name, trigger type, and all associated terminology — was globally renamed to `forget` as part of the Steam alpha launch plan (T1.6). The thematic rationale: "exhaust" is STS-jargon; "forget" connects directly to the game's spaced-repetition learning identity. When you forget a card, you literally can't retrieve the knowledge right now.
+
+**What changed (doc domain — docs-agent):**
+- `docs/GAME_DESIGN.md`: exhaust pile → forget pile; EXHAUST keyword in card tables; Exhaust archetype → Forget archetype; on_exhaust trigger → on_forget; Exhaustion Engine → Forget Engine; inscription fizzle language; Headmistress Detention description; Recollect card description; Conjure "Exhausts after use" language.
+- `docs/mechanics/cards.md`: `isInscription` "Forgets on play"; volatile_slash/burnout_shield tag descriptions; forgetPile in transmute picker flow.
+- `docs/mechanics/card-mechanics.md`: burnout_shield/bulwark table entries; FORGET keyword; recollect tag references; build_forget profile.
+- `docs/mechanics/combat.md`: burnout_shield L5 description; recollectUpgrade "forgotten cards".
+- `docs/mechanics/relics.md`: on_forget trigger; scavengers_eye and tattered_notebook descriptions; resolveForgetEffects().
+- `docs/mechanics/enemies.md`: Headmistress Detention; onEncounterStart callback; forgetPile in implementation.
+- `docs/ui/components.md`: ForgetPileViewer.svelte; RunDeckOverlay pile label.
+- `docs/architecture/services/platform-audio.md`: audio_combat SFX "forget" label.
+- `docs/architecture/services/deck.md`: forgetCard export.
+- `docs/testing/headless-sim.md`: build_forget profile; forget/trigger mechanic note.
+- `docs/content/card-description-audit.md`, `docs/roadmap/card-description-audit.md`: all player-visible card text references to Exhaust/Forget.
+
+**What was intentionally left unchanged:**
+- Natural English uses: "AP is exhausted" (depleted), "pool to exhaust" (deplete), "options are exhausted" (run out), "exhaustive catalog" (comprehensive), "Pool Exhaustion Prevention" (depletion), "Chain Theme Pool Exhaustion" (section header), "count exhausted" (depleted), "alternates are exhausted" (run out).
+- `docs/deck-provenance/japanese_n4_grammar.md`: "exhaustively handle" — English adverb.
+- `docs/content/ENEMY-ANIMATIONS.md` line 281: "exhaust puffs" — machine exhaust, not game mechanic.
+- `docs/reports/quiz-audit-2026-04-10*` — historical audit reports, frozen.
+- `docs/archive/**`, `docs/roadmap/completed/**`, `docs/roadmap/archived-futures/**`, `docs/RESEARCH/**` — frozen historical records.
+- Code tag names still referencing `exhaust` in tag form (`bulwark_no_exhaust`, `burnout_no_exhaust`, `volatile_no_exhaust`) were updated in docs where they appear with human-readable context but the tag string literals themselves are renamed by the game-logic agent.
+
+**Parallel rename:** game-logic and ui-agent handled `src/` renames simultaneously. The code rename (exhaustPile → forgetPile, exhaustCard → forgetCard, on_exhaust → on_forget, etc.) is happening in the same commit batch.
+
+**Prevention:** When renaming a core mechanic keyword, search all four doc layers and both the player-visible text and the internal code-name form. Natural-English "exhaust" (deplete) and mechanic "Exhaust" (remove from game) are visually identical in prose — always read context before renaming. Run `grep -rn "exhaust" docs/mechanics docs/ui docs/architecture docs/testing docs/content docs/roadmap docs/GAME_DESIGN.md` as a final check.

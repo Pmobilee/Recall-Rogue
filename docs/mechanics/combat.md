@@ -370,7 +370,7 @@ The reward screen (`CardRewardScreen.svelte`) skips the heal UI step when `healA
 `resolveCardEffect()` now checks cumulative mastery tags via `hasTag('tag_name')`. Tags are set in `MASTERY_STAT_TABLES` and read via `getMasteryStats().tags`.
 
 Key behavioral changes driven by tags:
-- **Shield mechanics**: `fortify_carry` (blockCarries), `brace_exceed2/brace_draw1`, `overheal_heal2/pct5`, `parry_counter3`, `reinforce_draw1`, `shrug_cleanse1`, `guard_taunt1t`, `absorb_draw2cc/absorb_heal1cc`, `reactive_thorns_persist`, `bulwark_no_exhaust`, `conversion_bonus_50pct/keep_block`, `burnout_no_exhaust` (burnout_shield L5: CC no longer exhausts), `knowledge_ward_cleanse` (knowledge_ward L3+: cleanse 1 debuff on any play)
+- **Shield mechanics**: `fortify_carry` (blockCarries), `brace_exceed2/brace_draw1`, `overheal_heal2/pct5`, `parry_counter3`, `reinforce_draw1`, `shrug_cleanse1`, `guard_taunt1t`, `absorb_draw2cc/absorb_heal1cc`, `reactive_thorns_persist`, `bulwark_no_exhaust`, `conversion_bonus_50pct/keep_block`, `burnout_no_exhaust` (burnout_shield L5: CC no longer forgets), `knowledge_ward_cleanse` (knowledge_ward L3+: cleanse 1 debuff on any play)
 - **Buff mechanics**: `empower_2cards`, `quicken_draw1/draw2/ap2`, `focus_draw1/next2free`, `insc_fury_cc_bonus2`, `insc_iron_thorns1`
 - **Debuff mechanics**: `hex_vuln1t`, `slow_any_action/slow_weak1t`, `sap_weak2t/strip3block`, `corrode_vuln1t/strip_all`, `expose_dmg3`, `corrtouch_vuln1t`, `bash_vuln2t`, `stagger_weak1t`
 
@@ -413,7 +413,7 @@ All new `CardEffectResult` fields are now wired in `playCardAction()` and `endPl
 | `masteryBumpAmount` | msurge_plus2 | Controls levels per bump (default 1, msurge_plus2 = 2) |
 | `blockCarries` | fortify_carry | Sets `persistentShield` to current shield value |
 | `darkHealPerCurse` | dark_heal1_per_curse | Heals 1 HP per cursed fact at resolve time |
-| `recollectUpgrade` | recollect_upgrade1 | Bumps mastery on the most recently returned exhaust cards |
+| `recollectUpgrade` | recollect_upgrade1 | Bumps mastery on the most recently returned forgotten cards |
 | `recollectPlayFree` | recollect_play_free | Adds 1 to `freePlayCharges` |
 | `synapseChainBonus` | synapse_chain_plus1 | Extra `extendOrResetChain()` calls when wildcard link is active |
 | `fluxDouble` | flux_double | Re-fires the unstable_flux effect at 50% (damage) or 100% (block/draw) |

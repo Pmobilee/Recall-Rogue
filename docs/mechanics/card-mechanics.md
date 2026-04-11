@@ -35,7 +35,7 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 | `siphon_strike` | Siphon Strike | 1 | 3 | 1 | Overkill heals (min 2, max 10) |
 | `gambit` | Gambit | 2 | 5 | 1 | QP: dmg + self-HP loss; CC: dmg + heal |
 | `chain_lightning` | Chain Lightning | 2 | 4 | 2 | CC: 8 × chain length |
-| `volatile_slash` | Volatile Slash | 2 | 5 | 1 | CC: 30 dmg then EXHAUST |
+| `volatile_slash` | Volatile Slash | 2 | 5 | 1 | CC: 30 dmg then FORGET |
 
 ### Shield Mechanics
 
@@ -54,9 +54,9 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 | `reactive_shield` | Reactive Shield | 1 | 2 | 1 | Block + Thorns (value from stat secondaryValue); L5 (`reactive_thorns_persist`): thorns persist encounter |
 | `aegis_pulse` | Aegis Pulse | 1 | 3 | 1 | Block; CC: same-chain cards in hand +2 block |
 | `parry` | Parry | 2 | 2 | 1 | Block + draw if enemy attacks; L5 (`parry_counter3`): deals 3 damage back to attacker |
-| `burnout_shield` | Burnout Shield | 2 | 4 | 1 | CC: 24 block then EXHAUST |
+| `burnout_shield` | Burnout Shield | 2 | 4 | 1 | CC: 24 block then FORGET |
 | `knowledge_ward` | Knowledge Ward | 2 | 6 | 1 | Block scales with correct Charges |
-| `bulwark` | Bulwark | 3 | 9 | 2 | Massive block; CC exhausts card; L0: 2 AP (was 3); L3+ (`bulwark_no_exhaust`): no exhaust on CC (was L5 only); L5: 1 AP |
+| `bulwark` | Bulwark | 3 | 9 | 2 | Massive block; CC forgets card; L0: 2 AP (was 3); L3+ (`bulwark_no_forget`): no forget on CC (was L5 only); L5: 1 AP |
 | `conversion` | Shield Bash | 3 | 3 | 1 | Deals damage = current block; L3+ (`conversion_bonus_50pct`): 1.5× block multiplier; L5 (`conversion_keep_block`): block not consumed |
 | `ironhide` | Ironhide | 3 | 5 | 2 | L0: 5 block + 1 permanent Str on CC (was 3 block + temp Str); L1-L2: 6 block; permanence driven by `extras.strPerm` in stat table (all levels from L0); L4+: +2 Str; L5: 1 AP |
 
@@ -149,7 +149,7 @@ const hasTag = (tag: string) => activeTags.includes(tag);
 | `showNextIntent` | `boolean` | `foresight_intent` | Show enemy's NEXT intent (after current) |
 | `discardDamage` | `number` | `sift_discard_dmg2` | Each sift-discarded card deals N damage to enemy |
 | `eliminateDistractor` | `number` | `siphon_eliminate1` | Eliminate N wrong answers from quiz |
-| `recollectUpgrade` | `number` | `recollect_upgrade1` | Returned exhausted cards get +N mastery |
+| `recollectUpgrade` | `number` | `recollect_upgrade1` | Returned forgotten cards get +N mastery |
 | `recollectPlayFree` | `boolean` | `recollect_play_free` | Play 1 returned card free this turn |
 | `synapseChainBonus` | `number` | `synapse_chain_plus1` | Wildcard chain link grants +N chain bonus |
 | `fluxDouble` | `boolean` | `flux_double` | Unstable Flux effect fires twice |
@@ -178,7 +178,7 @@ Some tags are read directly by `turnManager` without a dedicated result field:
 | `archive_retain2_qp` | archive | QP retains 2 cards instead of 1 |
 | `reflex_enhanced` | reflex | QP draws 3 instead of 2 |
 | `reflex_draw3cc` | reflex | CC draws 3 instead of 2 |
-| `recollect_qp2` | recollect | QP returns 2 exhausted cards |
+| `recollect_qp2` | recollect | QP returns 2 forgotten cards |
 | `synapse_draw3_qp` | synapse | QP draws 3 instead of 2 |
 | `siphon_qp3_time4s` | siphon_knowledge | QP draws 3 with 4s preview |
 | `tutor_free_play` | tutor | Tutored card costs 0 AP this turn |

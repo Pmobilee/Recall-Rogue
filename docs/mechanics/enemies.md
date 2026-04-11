@@ -307,7 +307,7 @@ Status effect values (poison, weakness, vulnerable) kept at 1–2 per applicatio
 |---|---|---|
 | `plagiarist` | 11 | Gains +1 Strength/turn from turn 4; attack 8/6 |
 | `card_catalogue` | 12 | Healer (reduced weight) + multi-hit 5×3; attack 8 |
-| `headmistress` | 13 | Heavy defender (defend 9, weight 2) + charge 10; attack 6 (weight 2). **Detention**: exhausts player's 2 highest-mastery cards at encounter start (`onEncounterStart`) |
+| `headmistress` | 13 | Heavy defender (defend 9, weight 2) + charge 10; attack 6 (weight 2). **Detention**: forgets player's 2 highest-mastery cards at encounter start (`onEncounterStart`) |
 | `tutor` | 11 | Attack weight raised 1→3; debuff/heal weights lowered; attack 8. **Pop Quiz**: wrong Charge doubles next attack (`onPlayerChargeWrong`) |
 | `study_group` | 20 | **Phase 8**: raised from 13 to 20 (simulate 3 members). Phase transition at 33% HP — last member stands alone (phase 2: atk 11). Group synergy Strength buff removed on transition |
 
@@ -584,7 +584,7 @@ Enemies telegraph next action via `EnemyIntent.telegraph`. Selected by `weighted
 | `onPlayerNoCharge(ctx)` | End of player turn with zero Charge plays that turn |
 | `onEnemyTurnStart(ctx)` | Start of each enemy turn (enrage, stun clear, mastery erosion) |
 | `onPhaseTransition(enemy)` | When phase 1 → 2 transition fires |
-| `onEncounterStart(enemy, deck)` | Once after encounter setup (hand dealt, relics applied). Returns `string[]` of card IDs to exhaust. Used by Headmistress Detention. Dispatched from `encounterBridge.startEncounterForRoom` |
+| `onEncounterStart(enemy, deck)` | Once after encounter setup (hand dealt, relics applied). Returns `string[]` of card IDs to forget. Used by Headmistress Detention. Dispatched from `encounterBridge.startEncounterForRoom` |
 
 `chainMultiplierOverride` (used by The Nullifier): forces all Knowledge Chain multipliers to a fixed value while the enemy is alive.
 
@@ -720,7 +720,7 @@ Four Act 1 elite/mini-boss encounters now have unique encounter mechanics that c
 ### Headmistress — Detention
 - **Trigger:** `onEncounterStart` — fires once after the opening hand is dealt
 - **Effect:** Returns IDs of the 2 highest-mastery cards in hand + draw pile
-- **Result:** Those 2 cards are moved to exhaustPile before the encounter begins. Player fights without their strongest cards
+- **Result:** Those 2 cards are moved to forgetPile before the encounter begins. Player fights without their strongest cards
 - **Implementation:** Dispatched in `encounterBridge.startEncounterForRoom()` before `activeTurnState.set()`. Directly mutates `activeDeck` and syncs back to `turnState.deck`
 
 ### Study Group — Phase Simulation

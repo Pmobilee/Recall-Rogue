@@ -670,16 +670,16 @@ Because the counter persists across encounters, Surge timing becomes unpredictab
 
 | Effect | Type | Stacking | Per-Turn | Trigger | Decay | Notes |
 |--------|------|----------|----------|---------|-------|-------|
-| **Poison** | Debuff | Additive | Deals value as damage | Start of turn | −1 stack/turn after tick | Blocked by Immunity |
-| **Burn** | Debuff | Additive | None (trigger-based) | On card-play hit | Halves after each trigger | Deals current stacks as bonus damage on hit; multi-hit cards trigger once per hit |
-| **Bleed** | Debuff | Additive | None | Per card play | −1 stack/turn (end of enemy turn) | +1 flat damage per stack per card play (BLEED_BONUS_PER_STACK) |
-| **Weakness** | Debuff | Additive | None | Passive | Decrements turns | −25% damage per stack (min multiplier 0.25×) |
-| **Vulnerable** | Debuff | Boolean | None | Passive | Decrements turns | +50% incoming damage |
-| **Strength** | Buff | Additive | None | Passive | Decrements turns | +25% damage per stack |
-| **Regen** | Buff | Additive | Heals value | Start of turn | Decrements turns | — |
-| **Immunity** | Buff | Boolean | None | On poison tick | Consumed on use | Absorbs next poison tick (immunity expires after blocking) |
-| **Charge Dmg Amp %** | Debuff | Additive | None | On Charge | Decrements turns | +X% Charge damage (AR-207: Curse of Doubt) |
-| **Charge Dmg Amp Flat** | Debuff | Additive | None | On Charge | Decrements turns | +X flat Charge damage (AR-207: Mark of Ignorance) |
+| **Doubt** (Poison) | Debuff | Additive | Deals value as damage | Start of turn | −1 stack/turn after tick | Blocked by Immunity |
+| **Brain Burn** (Burn) | Debuff | Additive | None (trigger-based) | On card-play hit | Halves after each trigger | Deals current stacks as bonus damage on hit; multi-hit cards trigger once per hit |
+| **Lingering Doubt** (Bleed) | Debuff | Additive | None | Per card play | −1 stack/turn (end of enemy turn) | +1 flat damage per stack per card play (BLEED_BONUS_PER_STACK) |
+| **Drawing Blanks** (Weakness) | Debuff | Additive | None | Passive | Decrements turns | −25% damage per stack (min multiplier 0.25×) |
+| **Exposed** (Vulnerable) | Debuff | Boolean | None | Passive | Decrements turns | +50% incoming damage |
+| **Clarity** (Strength) | Buff | Additive | None | Passive | Decrements turns | +25% damage per stack |
+| **Recall** (Regen) | Buff | Additive | Heals value | Start of turn | Decrements turns | — |
+| **Shielded Mind** (Immunity) | Buff | Boolean | None | On poison tick | Consumed on use | Absorbs next poison tick (immunity expires after blocking) |
+| **Epiphany %** (Charge Dmg Amp %) | Debuff | Additive | None | On Charge | Decrements turns | +X% Charge damage (AR-207: Curse of Doubt) |
+| **Insight +** (Charge Dmg Amp Flat) | Debuff | Additive | None | On Charge | Decrements turns | +X flat Charge damage (AR-207: Mark of Ignorance) |
 
 ### Debuff Details (applied to enemy or player)
 
@@ -758,8 +758,8 @@ Inscriptions are a special card keyword. Playing an Inscription card is a one-ti
 
 - **Played once:** An Inscription card is played from hand like any other card.
 - **Persists for rest of combat:** Its effect is applied continuously until the encounter ends.
-- **Removed from game on play:** The card is moved to the exhaust pile with `isRemovedFromGame: true`. It cannot be recovered by Recollect (AR-208).
-- **Pool = 1 per type:** Only one inscription of each mechanicId can be active at a time. Playing a second inscription of the same type is a no-op (card still exhausts, effect does not double-register).
+- **Removed from game on play:** The card is moved to the forget pile with `isRemovedFromGame: true`. It cannot be recovered by Recollect (AR-208).
+- **Pool = 1 per type:** Only one inscription of each mechanicId can be active at a time. Playing a second inscription of the same type is a no-op (card still forgets, effect does not double-register).
 
 ### Three Inscription Types (card definitions ship in AR-206/AR-208)
 
@@ -767,7 +767,7 @@ Inscriptions are a special card keyword. Playing an Inscription card is a one-ti
 |------|-----------|-----------|-----------|-----------|
 | Inscription of Fury | Damage pipeline step 3 (after mastery, before relic flat bonuses) | +N flat attack damage | +N flat attack damage | 0.7× N flat attack damage (QP penalty for playing as Quick Play) |
 | Inscription of Iron | Player turn start (before draw) | +N block per turn | +N block per turn | 0.7× N block per turn |
-| Inscription of Wisdom | Charge Correct resolution | Draw 1 extra card | Draw 1 extra card + heal 1 HP | Complete fizzle — card exhausted, no inscription registered |
+| Inscription of Wisdom | Charge Correct resolution | Draw 1 extra card | Draw 1 extra card + heal 1 HP | Complete fizzle — card forgotten, no inscription registered |
 
 ### Damage Pipeline Integration
 
@@ -779,7 +779,7 @@ Only applies to `attack`-type cards. Shield, buff, debuff, utility, and wild car
 
 ### Cursed Inscription
 
-An Inscription card played via Quick Play applies its effect at **0.7×** the base value (the "QP penalty" for not charging). Inscription of Wisdom played as Charge Wrong results in a complete fizzle — the card exhausts and is removed from game, but no inscription is registered.
+An Inscription card played via Quick Play applies its effect at **0.7×** the base value (the "QP penalty" for not charging). Inscription of Wisdom played as Charge Wrong results in a complete fizzle — the card forgets and is removed from game, but no inscription is registered.
 
 ---
 
@@ -1155,7 +1155,7 @@ Cards unlock as character level increases. New players start at level 0 with 36 
 | 4 | Rupture, Lacerate, Scavenge, Absorb, Precision Strike | 51 | Bleed archetype introduced. |
 | 5 | Kindle, Ignite, Corrode, Overcharge, Archive | 56 | Burn archetype + combat persistence. |
 | 6 | Gambit, Curse of Doubt, Knowledge Ward, Aegis Pulse, Reflex, Unstable Flux, Chameleon | 63 | Quiz-reward cards + wild cards. Knowledge-is-power identity solidifies. |
-| 7 | Burnout Shield, Battle Trance, Volatile Slash, Corroding Touch, Phase Shift | 68 | Exhaust archetype + advanced utility. |
+| 7 | Burnout Shield, Battle Trance, Volatile Slash, Corroding Touch, Phase Shift | 68 | Forget archetype + advanced utility. |
 | 8 | Ironhide, War Drum, Chain Lightning, Dark Knowledge, Mark of Ignorance, Sacrifice | 74 | Chain archetype + curse-as-weapon emerge. |
 | 9 | Smite, Entropy, Bulwark, Conversion, Chain Anchor | 79 | Build-defining specialists. |
 | 10 | Feedback Loop, Frenzy, Aftershock, Synapse, Catalyst | 84 | High-skill ceiling cards. |
@@ -1256,7 +1256,7 @@ Some cards are temporarily transformed for the duration of a single encounter an
 - **Charge Wrong (CW):** Same as QP — auto-pick random. Card always resolves.
 
 **Implementation:**
-- `applyTransmuteSwap(turnState, sourceCardId, selectedCards)` — shared helper in `turnManager.ts`. Searches hand/discard/draw/exhaust for source card; swaps mechanic fields in-place; sets `isTransmuted=true` + `originalCard` snapshot.
+- `applyTransmuteSwap(turnState, sourceCardId, selectedCards)` — shared helper in `turnManager.ts`. Searches hand/discard/draw/forget for source card; swaps mechanic fields in-place; sets `isTransmuted=true` + `originalCard` snapshot.
 - Source card `id` and `factId` preserved across the transform. Catch-up mastery applied.
 - Mastery 3+ CC: first pick replaces source; second pick added to hand with sentinel `originalCard.id` (`transmute_extra_remove_*`) — dropped entirely by revert.
 - `revertTransmutedCards()` restores originals in hand/drawPile/discardPile. Extras with sentinel prefix are removed without replacement.
@@ -1275,7 +1275,7 @@ Some cards are temporarily transformed for the duration of a single encounter an
 | A6 | Chain Lightning | 2 | 8 dmg | 8 × chain length | 8 | THE chain payoff card |
 | A7 | Smite | 2 | 10 dmg | 10 + (3 × avg hand mastery) | 9 | Rewards broad mastery |
 | A8 | Overcharge | 1 | 6 dmg | 6 + (2 per Charge this encounter) | 5 | Scales over encounter |
-| A9 | Volatile Slash | 1 | 10 dmg | 30 dmg, EXHAUST | 7 | One-shot burst |
+| A9 | Volatile Slash | 1 | 10 dmg | 30 dmg, FORGET | 7 | One-shot burst |
 | A10 | Riposte | 1 | 5 dmg + 4 block | 15 dmg + 12 block | 3 | Hybrid attack/shield |
 | A11 | Feedback Loop | 1 | 5 dmg (aura) | 28 base + 12 Flow State bonus (max 40) | 10 | Pass-8 values. CW = fizzle at L0-L2, 50% QP at L5. |
 | A12 | Precision Strike | 1 | 8 dmg | 24 dmg | 4 | Passive: +50% longer timer |
@@ -1288,9 +1288,9 @@ Some cards are temporarily transformed for the duration of a single encounter an
 |---|------|----|----|-----|--------|-------|
 | S1 | Absorb | 1 | 5 block | 5 block + draw 1 | 4 | Defensive cantrip |
 | S2 | Reactive Shield | 1 | 4 block + 2 Thorns (1t) | 12 block + 5 Thorns (2t) | 5 | Thorns-based |
-| S3 | Bulwark | 2 | 9 block | 16 block, EXHAUST | 9 | Emergency mega-block (2026-04-10: 3AP→2AP, 18→9 block — L0 balance fix) |
+| S3 | Bulwark | 2 | 9 block | 16 block, FORGET | 9 | Emergency mega-block (2026-04-10: 3AP→2AP, 18→9 block — L0 balance fix) |
 | S4 | Knowledge Ward | 1 | 4 block per unique domain in hand | Same × 1.5 | 6 | Domain diversity reward |
-| S5 | Burnout Shield | 1 | 8 block | 24 block, EXHAUST | 7 | Mirror of Volatile Slash |
+| S5 | Burnout Shield | 1 | 8 block | 24 block, FORGET | 7 | Mirror of Volatile Slash |
 | S6 | Conversion | 1 | Convert up to 10 block → damage | Convert up to 15 block | 10 | Lose converted block |
 | S7 | Ironhide | 2 | 6 block + 1 Strength (this turn) | 6 block + 1 Strength (permanent) | 8 | Strength snowball |
 | S8 | Aegis Pulse | 1 | 5 block | 5 block + chain allies +2 block | 6 | Chain synergy defense |
@@ -1329,11 +1329,11 @@ Some cards are temporarily transformed for the duration of a single encounter an
 | U3 | Siphon Knowledge | 2 | Draw 2 + see quiz answers 3s | Draw 3 + see answers 5s | 9 | FLAGSHIP. Study in combat |
 | U4 | Swap | 0 | Discard 1, draw 1 | Discard 1, draw 2 | 2 | 0-cost cycling |
 | U5 | Tutor | 1 | Search deck, add any card to hand | +0 AP cost this turn | 11 | Always powerful |
-| U6 | Recollect | 1 | Return 1 exhausted card to discard | Return 2 exhausted | 8 | Exhaust recovery |
+| U6 | Recollect | 1 | Return 1 forgotten card to discard | Return 2 forgotten | 8 | Forget recovery |
 | U7 | Synapse | 1 | Draw 2 | Draw 2 + wildcard chain link | 10 | Chain wildcard |
 | U9 | Archive | 1 | Retain 1 hand card (doesn't discard) | Retain 2 cards | 5 | Combo setup |
 | U10 | Reflex | 1 | Draw 2 | Draw 3 | 6 | Passive: +3 block when discarded from hand |
-| U11 | Conjure | 1 | Shows CardPickerOverlay with 1 attack, 1 shield, 1 other card; selected card added to hand as temporary (removed at encounter end). Exhausts after use. | Same; M1: one option is T2a; M2: all T2a; M3: all T2b | 5 | NEW (Phase 2). Temporary card summon via picker. |
+| U11 | Conjure | 1 | Shows CardPickerOverlay with 1 attack, 1 shield, 1 other card; selected card added to hand as temporary (removed at encounter end). Forgets after use. | Same; M1: one option is T2a; M2: all T2a; M3: all T2b | 5 | NEW (Phase 2). Temporary card summon via picker. |
 | U12 | Forge | 1 | Shows CardPickerOverlay with up to 3 hand cards; selected card gains +1 mastery for this encounter. Discards normally (reusable). | M2: +2 mastery to 1 card; M3: +2 mastery to 2 cards | 7 | NEW (Phase 2). Temporary mastery boost via picker. |
 
 #### New Wild Mechanics (10)
@@ -1787,7 +1787,7 @@ Intents: Heal 8 (wt 2), Multi-attack 2×3 (wt 2), Debuff Poison 2/3t (wt 1), Att
 
 **The Headmistress** (`headmistress`) — Mini-Boss | Medium tier
 Intents: Defend 9 (wt 2), Charge 10 (wt 1), Attack 6 (wt 2)
-**Unique mechanic — Detention:** At encounter start, exhausts the player's 2 highest-mastery cards. Players must fight with a weakened hand.
+**Unique mechanic — Detention:** At encounter start, forgets the player's 2 highest-mastery cards. Players must fight with a weakened hand.
 *A colony of iron beetles, stacked and coordinated. Doesn't yield.*
 
 **The Tutor** (`tutor`) — Mini-Boss | Light tier
@@ -3086,9 +3086,9 @@ When the enemy has both Burn and Poison, all your damage +30%.
 When you take self-damage: next attack +3 damage.
 *Synergizes with Volatile Core, Blood Price, Volatile Manuscript, and any cursed relic.*
 
-**Exhaustion Engine** — Rare (Unlockable, Level 9 — conditional)
-When a card is exhausted: draw 2 cards.
-*Turns any exhaust effect into card advantage. Strong with exhaust-heavy decks.*
+**Forget Engine** — Rare (Unlockable, Level 9 — conditional)
+When a card is forgotten: draw 2 cards.
+*Turns any forget effect into card advantage. Strong with forget-heavy decks.*
 
 ---
 
@@ -3163,7 +3163,7 @@ Wrong on a previously-correct fact: resolves at CC power. Wrong on a new fact: t
 | `on_chain_complete` | A Knowledge Chain finishes |
 | `on_surge_start` | A Knowledge Surge turn begins |
 | `on_multi_hit` | A multi-hit attack resolves |
-| `on_exhaust` | A card is moved to the exhaust pile |
+| `on_forget` | A card is moved to the forget pile |
 | `on_discard` | A card is discarded from hand |
 | `on_chain_break` | An active chain breaks |
 | `on_elite_kill` | An elite enemy is defeated |

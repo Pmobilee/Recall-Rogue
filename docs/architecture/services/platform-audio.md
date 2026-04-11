@@ -362,7 +362,7 @@ All audio files are catalogued in `sprite-gen/cardback-tool/artstudio-items.json
 | Key | Count | Contents |
 |-----|-------|----------|
 | `audio_loops` | 32 | Ambient loop `.m4a` files from `public/assets/audio/sfx/loops/`. All marked `needsReplacement: true` — current files are synthesized placeholders awaiting proper recordings. |
-| `audio_combat` | 41 | Combat SFX: card events (swooshes, deal, select, fizzle, exhaust, charge), enemy actions, player health, chain combo sounds |
+| `audio_combat` | 41 | Combat SFX: card events (swooshes, deal, select, fizzle, forget, charge), enemy actions, player health, chain combo sounds |
 | `audio_quiz` | 9 | Quiz SFX: appear, answer_select, correct, wrong, speed_bonus, dismiss, timer_tick, memory_tip, streak |
 | `audio_ui` | 9 | Generic UI SFX: button_click, modal_open/close, toggle_on/off, tab_switch, notification_ping, error_deny, ui_pop_in |
 | `audio_shop` | 22 | Shop SFX: open/close/purchase/sell, haggle, removal, transform variants, price tick, card appear/flip, coin fly, bark |

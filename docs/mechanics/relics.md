@@ -45,7 +45,7 @@
 | `on_boss_kill` | When a boss is defeated |
 | `on_surge_start` | When a Knowledge Surge turn begins |
 | `on_floor_advance` | When player descends to next floor |
-| `on_exhaust` | When a card is exhausted |
+| `on_forget` | When a card is forgotten |
 | `on_discard` | When a card is discarded |
 | `on_card_play` | When any card is played |
 | `on_multi_hit` | During multi-hit attacks |
@@ -100,10 +100,10 @@ All have `unlockCost: 0` and `startsUnlocked: true`.
 | `gold_magnet` | +30% gold from all sources | permanent |
 | `merchants_favor` | +1 card and +1 relic choice in shops | permanent |
 | `lucky_coin` | After 3 wrong Charges in encounter: +50% damage on next correct Charge | on_charge_wrong |
-| `scavengers_eye` | Exhausting a card draws 1 card from draw pile | on_exhaust |
+| `scavengers_eye` | Forgetting a card draws 1 card from draw pile | on_forget |
 | `quick_study` | Preview 1 answer after 3+ correct Charges; wrong answers deal +2 self-damage | on_encounter_end |
 | `thick_skin` | Start each encounter with 5 block | on_encounter_start |
-| `tattered_notebook` | Exhausting a card grants +1 Strength this turn | on_exhaust |
+| `tattered_notebook` | Forgetting a card grants +1 Strength this turn | on_forget |
 | `battle_scars` | After taking a hit: next attack +3 damage (once/turn) | on_damage_taken |
 | `brass_knuckles` | Start each turn with +1 temporary Strength (resets at turn end) | on_turn_start |
 
@@ -190,7 +190,7 @@ Key resolved contexts:
 - `resolveAttackModifiers()` — percentDamageBonus includes ritual_blade (+50% first card, -15% other cards; Pass 7 2026-04-09). brass_knuckles strengthGain is always 0 (moved to turn start).
 - `resolveDebuffAppliedModifiers()` — returns `reflectToEnemy: boolean`; always false now (thick_skin no longer reflects debuffs, 2026-04-09).
 - `resolveShieldModifiers()` — worn_shield grants +1 flatBlockBonus on CHARGED shield cards only (nerf: Pass 7 removed QP bonus entirely). hollow_armor: shields work normally; `blockGainHalved` removed (Pass 7). Context field `wasCharged` required to get the worn_shield bonus. TurnEndEffects.blockDrain = 3 after turn 3.
-- `resolveExhaustEffects()` — returns `bonusCardDraw` (exhaustion_engine +2, scavengers_eye +1) and `tempStrengthGain` (tattered_notebook +1 for 1 turn). Caller must apply strength status effect.
+- `resolveForgetEffects()` — returns `bonusCardDraw` (exhaustion_engine +2, scavengers_eye +1) and `tempStrengthGain` (tattered_notebook +1 for 1 turn). Caller must apply strength status effect.
 - `resolveEncounterEndEffects()` — herbal_pouch heals 3 HP post-combat.
 - `getMaxRelicSlots()` — returns 5, or 6 if scholars_gambit held
 
