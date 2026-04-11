@@ -2607,7 +2607,7 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 
 **Fix (proper, future, Yellow-zone):** Either (a) port the stamping branch from `quiz-audit.mjs` into `quiz-audit-engine.ts` (~20 lines; the updater CLI is already proven), OR (b) add a loud error to `quiz-audit-engine.ts` when `--stamp-registry` is detected: `"ERR: --stamp-registry is not supported by this engine; use scripts/quiz-audit.mjs or call scripts/registry/updater.ts directly."` Either approach eliminates the silent-no-op footgun. The error-log approach is safer to ship first since it requires no logic porting.
 
-**Fix (shipped 2026-04-11):** `scripts/quiz-audit-engine.ts` now errors loudly with exit code 1 when `--stamp-registry` is passed. Commit hash will be appended after commit.
+**Fix (shipped 2026-04-11):** `scripts/quiz-audit-engine.ts` now errors loudly with exit code 1 when `--stamp-registry` is passed. Commit `1bc813c9f`.
 
 ### 2026-04-11 — Steam lobby metadata is public; password hashes are UX gates only
 
