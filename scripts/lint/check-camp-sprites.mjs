@@ -2,38 +2,37 @@
 /**
  * check-camp-sprites.mjs
  *
- * Preventative lint script for the 2026-04-11 camp sprite gap incident.
+ * Preventative lint: verify that every camp element's tier sprite files exist
+ * on disk in a contiguous 0..CAMP_MAX_TIERS[element] sequence.
  *
- * Root cause: Several camp element directories had numeric gaps in their tier
- * files (pet/tier-3, campfire/tier-1, journal/tier-3 were never generated).
- * The original getCampUpgradeUrl() built URLs directly from the logical tier
- * number, producing 404s for players at those tiers. Additionally,
- * library/tier-6.webp exists on disk but is not referenced by any manifest
- * entry (orphaned art). See docs/gotchas.md 2026-04-11 "Camp upgrade sprite
- * gaps: missing tier-N.webp files cause 404s".
+ * Root cause (2026-04-11 "Camp upgrade sprite gaps"): art pipeline produced
+ * non-sequential file numbers for pet, campfire, and journal. getCampUpgradeUrl
+ * built URLs directly from logical tier numbers, causing 404s for players at
+ * affected tiers. See docs/gotchas.md 2026-04-11 "Camp upgrade sprite gaps:
+ * missing tier-N.webp files cause 404s".
  *
- * Fix: CAMP_UPGRADE_TIER_FILES in campArtManifest.ts maps logical tier index
- * → actual file number, skipping gaps. This lint script guards against future
- * drift between that manifest and the files that actually live on disk.
+ * Fix history: A manifest approach (CAMP_UPGRADE_TIER_FILES in campArtManifest.ts)
+ * was initially added to work around the gaps. However the gaps were a
+ * PSD-layer-naming misread — the art was always present, just mis-numbered.
+ * Sprites were renamed to contiguous numbering via `git mv` and the manifest
+ * was removed. getCampUpgradeUrl is now a direct formatter. See docs/gotchas.md
+ * 2026-04-11 "Camp sprite 'missing files' was a PSD layer naming misread".
  *
- * Checks performed:
- *   1. Every element key appears in BOTH CAMP_UPGRADE_TIER_FILES (manifest)
- *      and CAMP_MAX_TIERS (campState.ts). Missing from either = ERROR.
- *   2. manifest[el].length - 1 === CAMP_MAX_TIERS[el] for each element.
- *      Length mismatch = ERROR.
- *   3. Every file number in the manifest resolves to an existing .webp on disk.
- *      Missing file = ERROR.
- *   4. Any .webp in the upgrades directory whose tier number is NOT in the
- *      manifest = WARNING (stderr), does NOT cause exit 1.
+ * Algorithm:
+ *   Source of truth: CAMP_MAX_TIERS in src/ui/stores/campState.ts
+ *   For each element key:
+ *     1. Check public/assets/camp/upgrades/${element}/ directory exists.
+ *     2. For tier = 0..CAMP_MAX_TIERS[element], check tier-${tier}.webp exists.
+ *        Missing file → ERROR (exit 1).
+ *     3. Scan for tier-N.webp where N > CAMP_MAX_TIERS[element] → WARNING (stderr, exit 0).
+ *     4. Any .webp not matching tier-\d+\.webp pattern → WARNING (stderr, exit 0).
  *
- * Exit 0 = all checks pass (warnings are OK).
+ * Summary line format:
+ *   check-camp-sprites.mjs — scanned N elements, M tier files
+ *   ✓ All required tier files exist (contiguous 0..max per element).
+ *
+ * Exit 0 = no errors (warnings are OK).
  * Exit 1 = one or more errors.
- *
- * Expected clean output (as of 2026-04-11, ui-agent campArtManifest edits):
- *   check-camp-sprites.mjs — scanned 9 elements, 59 tier files
- *   ✓ All manifest entries resolve to existing files.
- *   ⚠ 1 orphaned file (not referenced by manifest):
- *     public/assets/camp/upgrades/library/tier-6.webp
  *
  * Usage:
  *   node scripts/lint/check-camp-sprites.mjs
@@ -46,43 +45,16 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '../../')
-const MANIFEST_FILE = resolve(ROOT, 'src/ui/utils/campArtManifest.ts')
 const CAMP_STATE_FILE = resolve(ROOT, 'src/ui/stores/campState.ts')
 const UPGRADES_DIR = resolve(ROOT, 'public/assets/camp/upgrades')
 
 // ---------------------------------------------------------------------------
-// Regex-based parsers (zero external deps)
+// Regex-based parser (zero external deps)
 // ---------------------------------------------------------------------------
 
 /**
- * Parse CAMP_UPGRADE_TIER_FILES from campArtManifest.ts.
- * Matches the block from the exported const declaration to its closing `}`.
- * Returns Record<string, number[]>.
- */
-function parseManifest(src) {
-  // Match the entire const body: CAMP_UPGRADE_TIER_FILES = { ... }
-  const blockMatch = src.match(
-    /CAMP_UPGRADE_TIER_FILES\s*:\s*Record<[^>]+>\s*=\s*\{([\s\S]*?)\n\}/
-  )
-  if (!blockMatch) {
-    throw new Error(`Could not locate CAMP_UPGRADE_TIER_FILES in ${MANIFEST_FILE}`)
-  }
-  const block = blockMatch[1]
-
-  const result = {}
-  // Each line like:  tent:       [0, 1, 2, 3, 4, 5, 6],  // comment
-  const lineRe = /^\s*(\w+)\s*:\s*\[([^\]]+)\]/gm
-  let m
-  while ((m = lineRe.exec(block)) !== null) {
-    const key = m[1]
-    const nums = m[2].split(',').map(s => parseInt(s.trim(), 10)).filter(n => !isNaN(n))
-    result[key] = nums
-  }
-  return result
-}
-
-/**
  * Parse CAMP_MAX_TIERS from campState.ts.
+ * Matches the block from the exported const declaration to its closing `}`.
  * Returns Record<string, number>.
  */
 function parseMaxTiers(src) {
@@ -95,10 +67,14 @@ function parseMaxTiers(src) {
   const block = blockMatch[1]
 
   const result = {}
+  // Each line like:  tent: 6,  or  campfire: 5,  // comment
   const lineRe = /^\s*(\w+)\s*:\s*(\d+)/gm
   let m
   while ((m = lineRe.exec(block)) !== null) {
     result[m[1]] = parseInt(m[2], 10)
+  }
+  if (Object.keys(result).length === 0) {
+    throw new Error(`CAMP_MAX_TIERS block parsed but found no entries in ${CAMP_STATE_FILE}`)
   }
   return result
 }
@@ -107,81 +83,59 @@ function parseMaxTiers(src) {
 // Main
 // ---------------------------------------------------------------------------
 
-const manifestSrc = readFileSync(MANIFEST_FILE, 'utf8')
-const campStateSrc = readFileSync(CAMP_STATE_FILE, 'utf8')
-
-let manifest, maxTiers
+let maxTiers
 try {
-  manifest = parseManifest(manifestSrc)
-} catch (e) {
-  console.error(`check-camp-sprites.mjs: PARSE ERROR — ${e.message}`)
-  process.exit(1)
-}
-try {
+  const campStateSrc = readFileSync(CAMP_STATE_FILE, 'utf8')
   maxTiers = parseMaxTiers(campStateSrc)
 } catch (e) {
   console.error(`check-camp-sprites.mjs: PARSE ERROR — ${e.message}`)
   process.exit(1)
 }
 
-const manifestKeys = new Set(Object.keys(manifest))
-const maxTierKeys = new Set(Object.keys(maxTiers))
-const allKeys = new Set([...manifestKeys, ...maxTierKeys])
-
 const errors = []
 const warnings = []
 let totalFiles = 0
 
-for (const el of allKeys) {
-  // Check 1: key must exist in both maps
-  if (!manifestKeys.has(el)) {
-    errors.push(`Element '${el}' is in CAMP_MAX_TIERS but missing from CAMP_UPGRADE_TIER_FILES`)
-    continue
-  }
-  if (!maxTierKeys.has(el)) {
-    errors.push(`Element '${el}' is in CAMP_UPGRADE_TIER_FILES but missing from CAMP_MAX_TIERS`)
-    continue
-  }
-
-  const files = manifest[el]
-  const maxTier = maxTiers[el]
-
-  // Check 2: files.length - 1 must equal maxTier
-  const derivedMax = files.length - 1
-  if (derivedMax !== maxTier) {
-    errors.push(
-      `Element '${el}': manifest length-1=${derivedMax} but CAMP_MAX_TIERS[${el}]=${maxTier} (mismatch — update one to match the other)`
-    )
-  }
-
-  // Check 3: every file number must exist on disk
+for (const [el, maxTier] of Object.entries(maxTiers)) {
   const elDir = join(UPGRADES_DIR, el)
-  for (const n of files) {
-    const path = join(elDir, `tier-${n}.webp`)
-    const relPath = `public/assets/camp/upgrades/${el}/tier-${n}.webp`
-    if (!existsSync(path)) {
-      errors.push(`Missing file on disk: ${relPath} (referenced in CAMP_UPGRADE_TIER_FILES[${el}])`)
+
+  // Step 1: directory must exist
+  if (!existsSync(elDir)) {
+    errors.push(`Missing directory: public/assets/camp/upgrades/${el}/ (CAMP_MAX_TIERS declares element '${el}')`)
+    continue
+  }
+
+  // Step 2: every tier-0..maxTier must exist on disk
+  for (let tier = 0; tier <= maxTier; tier++) {
+    const filePath = join(elDir, `tier-${tier}.webp`)
+    const relPath = `public/assets/camp/upgrades/${el}/tier-${tier}.webp`
+    if (!existsSync(filePath)) {
+      errors.push(`Missing file: ${relPath} (required by CAMP_MAX_TIERS[${el}]=${maxTier})`)
     } else {
       totalFiles++
     }
   }
 
-  // Check 4: orphaned webp files (WARNING only)
-  if (existsSync(elDir)) {
-    const diskFiles = readdirSync(elDir)
-      .filter(f => f.endsWith('.webp'))
-      .map(f => {
-        const match = f.match(/^tier-(\d+)\.webp$/)
-        return match ? parseInt(match[1], 10) : null
-      })
-      .filter(n => n !== null)
+  // Step 3 & 4: scan disk for unexpected files
+  let diskFiles
+  try {
+    diskFiles = readdirSync(elDir)
+  } catch {
+    diskFiles = []
+  }
 
-    const manifestSet = new Set(files)
-    for (const diskN of diskFiles) {
-      if (!manifestSet.has(diskN)) {
-        const orphanPath = `public/assets/camp/upgrades/${el}/tier-${diskN}.webp`
-        warnings.push(orphanPath)
-      }
+  for (const fname of diskFiles) {
+    if (!fname.endsWith('.webp')) continue
+    const tierMatch = fname.match(/^tier-(\d+)\.webp$/)
+    if (!tierMatch) {
+      // Step 4: webp not matching tier-N.webp pattern
+      warnings.push(`Unexpected file: public/assets/camp/upgrades/${el}/${fname} (does not match tier-N.webp pattern)`)
+      continue
+    }
+    const diskTier = parseInt(tierMatch[1], 10)
+    if (diskTier > maxTier) {
+      // Step 3: orphaned tier beyond CAMP_MAX_TIERS
+      warnings.push(`Orphaned file: public/assets/camp/upgrades/${el}/tier-${diskTier}.webp (tier ${diskTier} > CAMP_MAX_TIERS[${el}]=${maxTier})`)
     }
   }
 }
@@ -190,10 +144,10 @@ for (const el of allKeys) {
 // Output
 // ---------------------------------------------------------------------------
 
-console.log(`check-camp-sprites.mjs — scanned ${allKeys.size} elements, ${totalFiles} tier files`)
+console.log(`check-camp-sprites.mjs — scanned ${Object.keys(maxTiers).length} elements, ${totalFiles} tier files`)
 
 if (errors.length === 0) {
-  console.log('✓ All manifest entries resolve to existing files.')
+  console.log('✓ All required tier files exist (contiguous 0..max per element).')
 } else {
   for (const err of errors) {
     console.error(`✗ ERROR: ${err}`)
@@ -201,7 +155,7 @@ if (errors.length === 0) {
 }
 
 if (warnings.length > 0) {
-  process.stderr.write(`⚠ ${warnings.length} orphaned file${warnings.length === 1 ? '' : 's'} (not referenced by manifest):\n`)
+  process.stderr.write(`⚠ ${warnings.length} warning${warnings.length === 1 ? '' : 's'}:\n`)
   for (const w of warnings) {
     process.stderr.write(`  ${w}\n`)
   }
@@ -209,8 +163,8 @@ if (warnings.length > 0) {
 
 if (errors.length > 0) {
   console.error(`\ncheck-camp-sprites.mjs: FAIL — ${errors.length} error(s). See above.`)
-  console.error('Fix: Update CAMP_UPGRADE_TIER_FILES in src/ui/utils/campArtManifest.ts and/or')
-  console.error('     CAMP_MAX_TIERS in src/ui/stores/campState.ts to match disk state.')
+  console.error('Fix: Ensure all tier files 0..CAMP_MAX_TIERS[element] exist on disk, or update')
+  console.error('     CAMP_MAX_TIERS in src/ui/stores/campState.ts to match actual file count.')
   console.error('     See docs/gotchas.md 2026-04-11 "Camp upgrade sprite gaps".')
   process.exit(1)
 }

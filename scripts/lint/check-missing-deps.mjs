@@ -70,6 +70,17 @@ const declaredDeps = new Set([
   ...Object.keys(pkg.optionalDependencies ?? {}),
 ]);
 
+// DefinitelyTyped convention: @types/foo satisfies imports from 'foo'.
+// Add the bare package name for every @types/* entry so that
+//   import type { X } from 'foo'
+// is satisfied when '@types/foo' is declared in package.json.
+// This avoids false positives for type-only packages like @types/geojson.
+for (const dep of [...declaredDeps]) {
+  if (dep.startsWith('@types/')) {
+    declaredDeps.add(dep.slice('@types/'.length));
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Package name extraction
 // ---------------------------------------------------------------------------
@@ -211,7 +222,12 @@ function collectFiles(dir) {
 // ---------------------------------------------------------------------------
 
 function isInstalled(packageName) {
-  return fs.existsSync(path.join(REPO_ROOT, 'node_modules', packageName));
+  // Direct install check
+  if (fs.existsSync(path.join(REPO_ROOT, 'node_modules', packageName))) return true;
+  // DefinitelyTyped: @types/foo satisfies imports from 'foo'.
+  // If node_modules/@types/foo exists, the bare 'foo' import is satisfied at type-check time.
+  if (fs.existsSync(path.join(REPO_ROOT, 'node_modules', '@types', packageName))) return true;
+  return false;
 }
 
 // ---------------------------------------------------------------------------

@@ -21,16 +21,17 @@ const STORAGE_KEY = 'recall-rogue-camp-state'
  * upgrade levels). Declared first in desired iteration order — CAMP_ELEMENTS
  * is derived from Object.keys() which preserves insertion order for string keys.
  *
- * journal was lowered from 6 → 5 because only 6 sprite files exist on disk
- * (tier-3.webp was never generated). Any saved tiers.journal === 6 clamps
- * automatically to 5 via sanitizeState → clampTier.
+ * Tier numbers reflect the actual files on disk (all directories are contiguous
+ * 0..maxTier after the 2026-04-11 sprite rename). journal and pet/campfire are
+ * capped at 5 (6 sprites: tier-0..5). library is capped at 6 (7 sprites: tier-0..6).
+ * Existing saves with tiers below any cap are automatically valid (no migration needed).
  */
 export const CAMP_MAX_TIERS: Record<CampElement, number> = {
   tent: 6,
   campfire: 5,
   character: 6,
   pet: 5,
-  library: 5,
+  library: 6,
   questboard: 6,
   shop: 6,
   journal: 5,
@@ -81,10 +82,10 @@ const UPGRADE_COSTS: Record<CampElement, readonly number[]> = {
   campfire:   [60, 120, 200, 320, 500],              // 5 entries, max 5
   character:  [80, 160, 280, 450, 700, 1000],        // 6 entries, max 6
   pet:        [150, 300, 500, 800, 1200],            // 5 entries, max 5
-  library:    [80, 150, 250, 400, 600],              // 5 entries, max 5
+  library:    [80, 150, 250, 400, 600, 900],         // 6 entries, max 6
   questboard: [40, 80, 150, 250, 400, 600],          // 6 entries, max 6
   shop:       [60, 120, 200, 320, 500, 750],         // 6 entries, max 6
-  journal:    [40, 80, 150, 250, 400],               // 5 entries, max 5 (was 6; tier-3.webp missing)
+  journal:    [40, 80, 150, 250, 400],               // 5 entries, max 5
   doorway:    [100, 200, 350, 550, 800, 1100],       // 6 entries, max 6
 }
 
@@ -105,7 +106,7 @@ function sanitizeState(raw: unknown): CampState {
       pet === 'cat' || pet === 'owl' || pet === 'fox' || pet === 'dragon_whelp')
     : ['cat']
 
-  // clampTier uses CAMP_MAX_TIERS — any saved tiers.journal === 6 clamps to 5 here.
+  // clampTier uses CAMP_MAX_TIERS to clamp saved values above the current max tier.
   const clampTier = (el: CampElement, raw: unknown): number =>
     Math.max(0, Math.min(CAMP_MAX_TIERS[el], Number(raw ?? 0)))
 

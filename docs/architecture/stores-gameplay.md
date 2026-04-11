@@ -61,11 +61,11 @@ All plain `writable` stores for the (unimplemented/future) co-op mode.
 
 Tracks upgrade tiers and visual forms for 9 camp elements: `'tent'`, `'campfire'`, `'character'`, `'pet'`, `'library'`, `'questboard'`, `'shop'`, `'journal'`, `'doorway'`.
 
-**`CAMP_MAX_TIERS`** — per-element maximum logical tier (2026-04-11: `journal` lowered 6→5; see gotchas). `CAMP_ELEMENTS` is derived from `Object.keys(CAMP_MAX_TIERS)` — do not maintain a separate hand-written array.
+**`CAMP_MAX_TIERS`** — per-element maximum logical tier. All sprite directories are contiguously numbered 0..maxTier (sprites renamed 2026-04-11). Current maxes: tent/character/questboard/shop/doorway = 6; campfire/pet/journal = 5; library = 6. `CAMP_ELEMENTS` is derived from `Object.keys(CAMP_MAX_TIERS)` — do not maintain a separate hand-written array.
 
-**Sprite mapping (2026-04-11):** `getCampUpgradeUrl` now resolves through `CAMP_UPGRADE_TIER_FILES` in `src/ui/utils/campArtManifest.ts`. Each element maps logical tier index → actual file number, skipping missing webps (`pet/tier-3`, `campfire/tier-1`, `journal/tier-3` were never generated). This eliminates 404s without renaming or regenerating art.
+**Tier numbering origin (2026-04-11):** Sprite file numbers were originally PSD layer positions, not sequential tier indices. After the rename they are contiguous. `getCampUpgradeUrl` in `src/ui/utils/campArtManifest.ts` is a direct filename formatter: `/assets/camp/upgrades/${element}/tier-${tier}.webp` — no mapping table needed.
 
-**Save migration (journal max 6→5):** Any existing `tiers.journal === 6` clamps automatically to 5 on next load via `sanitizeState → clampTier`. No explicit migration needed.
+**Cost tables:** journal max=5 costs `[40, 80, 150, 250, 400]`; library max=6 costs `[80, 150, 250, 400, 600, 900]`. Existing saves with tier values in range are valid without migration — `sanitizeState → clampTier` handles any out-of-range saved value automatically.
 
 **Helpers exported:** `getCampUpgradeCost(element, currentTier)`, `setCampTier(element, tier)`, `setCampForm(element, form)`, `setCampOutfit(outfit)`, `unlockCampPet(pet)`, `setActiveCampPet(pet)`.
 

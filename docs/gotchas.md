@@ -3510,3 +3510,29 @@ check-camp-sprites.mjs — scanned 9 elements, 59 tier files
 - `src/CardApp.svelte` — wires `study-multi` directly to the new DeckMode variant; removes the `console.warn` fallback.
 
 **Tests:** `src/services/studyMulti.test.ts` — 17 tests covering type shape, wowFactorService resolution, chainDistribution guard, and leaderboard eligibility.
+
+### 2026-04-11 — Camp sprite "missing files" was a PSD layer naming misread, not missing art
+
+**What:** The previous dispatch (commit 23b0aeeb6) added `CAMP_UPGRADE_TIER_FILES` to `campArtManifest.ts` to work around apparent 404s at certain camp upgrade tiers. The gotcha entry from that dispatch described `pet/tier-3.webp`, `campfire/tier-1.webp`, and `journal/tier-3.webp` as "never generated."
+
+**Root cause correction:** The original numbering was based on Photoshop layer positions, not tier progression. The art WAS there — just with non-sequential file numbers (e.g., `tier-0, tier-2, tier-3, tier-4, tier-5, tier-6` for campfire; the layer named "tier-1" was the PSD index, not the logical tier). This was a misread of the art pipeline output. Nothing was actually missing.
+
+**Fix (2026-04-11):** Orchestrator ran `git mv` to rename all pet, campfire, and journal sprites to contiguous 0..5 numbering. `CAMP_UPGRADE_TIER_FILES` removed — `getCampUpgradeUrl` is now a one-liner direct filename formatter again. `CAMP_MAX_TIERS.library` bumped from 5 → 6 (library always had 7 sprites tier-0..6; the 5 cap was another consequence of the misread). `UPGRADE_COSTS.library` extended with a 6th entry `[80, 150, 250, 400, 600, 900]`.
+
+**Save migration:** library bump from max 5 → 6 is purely additive (no saved value can exceed 5 under the old cap). pet/campfire/journal renames are transparent — players at those tiers see the same sprite (file was renamed, not swapped). No migration needed.
+
+**Lesson:** When art files have non-sequential numbers, verify the art pipeline's naming convention BEFORE concluding files are missing. PSD layer positions, export batches, and alphabetical sort orders can all produce non-sequential numbers that look like gaps.
+
+### 2026-04-11 — check-camp-sprites.mjs rewritten to walk CAMP_MAX_TIERS directly; @types/geojson declared
+
+**Lint rewrite (check-camp-sprites.mjs):** The original lint script (commit 23b0aeeb6) parsed `CAMP_UPGRADE_TIER_FILES` from `campArtManifest.ts` and cross-referenced `CAMP_MAX_TIERS` from `campState.ts`. After the manifest approach was retired (see "Camp sprite 'missing files' was a PSD layer naming misread" above), `CAMP_UPGRADE_TIER_FILES` was deleted from `campArtManifest.ts` — making the old lint crash immediately on startup.
+
+**New algorithm:** Reads `CAMP_MAX_TIERS` from `campState.ts` as the single source of truth. For each element, checks that `public/assets/camp/upgrades/${element}/tier-${n}.webp` exists for every `n` in `0..CAMP_MAX_TIERS[element]`. Files beyond `CAMP_MAX_TIERS` are orphan warnings; non-tier-pattern `.webp` filenames are also warned. No manifest needed — the art is now contiguous and `getCampUpgradeUrl` is a simple formatter.
+
+**Expected clean output (post-rename state):**
+```
+check-camp-sprites.mjs — scanned 9 elements, 60 tier files
+✓ All required tier files exist (contiguous 0..max per element).
+```
+
+**@types/geojson devDependency declared:** `src/services/geoDataLoader.ts` and `src/ui/components/MapPinDrop.svelte` both use `import type { FeatureCollection } from 'geojson'`. The types come from `@types/geojson` (installed transitively), but it was not declared in `package.json`, causing `check-missing-deps.mjs` to error. Added `"@types/geojson": "^7946.0.16"` to devDependencies. Also improved `check-missing-deps.mjs` to apply the DefinitelyTyped convention: `@types/foo` in package.json satisfies both the declared-dep check AND the installed check for bare `'foo'` imports, so type-only packages no longer produce false positives.
