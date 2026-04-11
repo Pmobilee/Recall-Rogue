@@ -105,14 +105,14 @@ export function guideStyle(x: number, y: number, w: number, h: number): string {
  *
  * Manifest pixel values:
  *   apCost       { x:18,  y:7,   w:164, h:130 }  — top shifted +10% for visual centering in book icon
- *   mechanicName { x:205, y:86,  w:478, h:86  }
+ *   mechanicName { x:205, y:80,  w:478, h:110 }  — y moved up from 120→80 to center on banner ribbon
  *   artWindow    { x:194, y:186, w:498, h:412 }
  *   cardType     { x:352, y:615, w:182, h:54  }
  *   effectText   { x:134, y:667, w:640, h:376 }
  */
 export const GUIDE_STYLES = {
   apCost: guideStyle(18, 32, 164, 120),
-  mechanicName: guideStyle(205, 120, 478, 110),
+  mechanicName: guideStyle(205, 80, 478, 110),
   artWindow: guideStyle(194, 186, 498, 412),
   cardType: guideStyle(243, 608, 400, 70),
   /** Pill-shaped chain color indicator — matches the frame's small oval cutout exactly */

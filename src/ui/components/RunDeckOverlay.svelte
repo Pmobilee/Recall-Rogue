@@ -6,6 +6,8 @@
    * Shows all cards currently in the run across all four piles (hand / draw / discard / forget)
    * with their mastery level and pile tag. Read-only — no card selection.
    *
+   * Clicking a card opens a mastery popup that shows per-level descriptions for L0–L5.
+   *
    * Opened via `openRunDeckOverlay()` from runDeckOverlayStore.ts.
    * Rendered centrally in CardApp.svelte when IN_RUN_SCREENS is active.
    */
@@ -14,6 +16,9 @@
   import { activeTurnState } from '../../services/encounterBridge'
   import type { Card } from '../../data/card-types'
   import { getEffectiveApCost } from '../../services/cardUpgradeService'
+  import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
+  import { getMasteryStats } from '../../services/cardUpgradeService'
+  import { getUpgradeIconUrl, getMasteryIconFilter } from '../utils/cardFrameV2'
 
   // ============================================================
   // Card type color coding (matches CardBrowser palette)
@@ -160,12 +165,81 @@
   }
 
   // ============================================================
+  // Mastery popup state
+  // ============================================================
+  interface SelectedCardState {
+    card: Card
+    pile: PileId
+    top: number
+    left: number
+  }
+
+  let selectedCard = $state<SelectedCardState | null>(null)
+
+  const POPUP_WIDTH_PX = 320
+
+  /**
+   * Open the mastery popup positioned beside the clicked card cell.
+   * Flips to left side if the card is near the right viewport edge.
+   * Clamps top so popup stays visible.
+   */
+  function openMasteryPopup(e: MouseEvent, card: Card, pile: PileId): void {
+    const btn = e.currentTarget as HTMLElement
+    const rect = btn.getBoundingClientRect()
+    const popupWidth = POPUP_WIDTH_PX + 20 // padding buffer
+
+    // Decide left/right placement
+    let left: number
+    if (rect.right + popupWidth > window.innerWidth) {
+      // Flip: popup opens to the left of the card
+      left = rect.left - popupWidth + 20
+    } else {
+      left = rect.right + 10
+    }
+
+    // Clamp left to stay inside viewport
+    left = Math.max(8, Math.min(left, window.innerWidth - popupWidth - 8))
+
+    // Clamp top so popup stays on screen (assume max popup height ~440px)
+    const maxPopupH = 440
+    let top = rect.top
+    top = Math.max(8, Math.min(top, window.innerHeight - maxPopupH - 8))
+
+    selectedCard = { card, pile, top, left }
+  }
+
+  function closeMasteryPopup(): void {
+    selectedCard = null
+  }
+
+  /**
+   * Build a shallow clone of a card with masteryLevel overridden.
+   * Used to generate per-level description previews.
+   */
+  function cardAtLevel(card: Card, level: number): Card {
+    return { ...card, masteryLevel: level }
+  }
+
+  /**
+   * Get the description parts for a card at a specific mastery level.
+   * Builds a clone with the overridden mastery level so getCardDescriptionParts
+   * reads the correct stat-table values.
+   */
+  function getDescPartsAtLevel(card: Card, level: number): CardDescPart[] {
+    return getCardDescriptionParts(cardAtLevel(card, level))
+  }
+
+  // ============================================================
   // Keyboard handler — close on Escape
   // ============================================================
   function handleKeydown(e: KeyboardEvent): void {
     if (e.key === 'Escape') {
       e.preventDefault()
-      closeRunDeckOverlay()
+      if (selectedCard) {
+        closeMasteryPopup()
+      } else {
+        closeRunDeckOverlay()
+      }
     }
   }
 
@@ -174,7 +248,17 @@
   // ============================================================
   function handleBackdropClick(e: MouseEvent): void {
     if (e.target === e.currentTarget) {
+      closeMasteryPopup()
       closeRunDeckOverlay()
+    }
+  }
+
+  // ============================================================
+  // Grid scroll — close popup when user scrolls (fixed coords drift)
+  // ============================================================
+  function handleGridScroll(): void {
+    if (selectedCard) {
+      closeMasteryPopup()
     }
   }
 </script>
@@ -249,7 +333,7 @@
     </div>
 
     <!-- Card grid -->
-    <div class="rdo-grid-scroll">
+    <div class="rdo-grid-scroll" onscroll={handleGridScroll}>
       {#if sortedFilteredCards().length === 0}
         <div class="rdo-empty" data-testid="run-deck-overlay-empty">
           <p>
@@ -266,7 +350,20 @@
       {:else}
         <div class="rdo-card-grid" role="list" aria-label="Cards in deck">
           {#each sortedFilteredCards() as { card, pile }, i (card.id ?? i)}
-            <div class="rdo-card-cell" role="listitem" data-testid="rdo-card-{i}" aria-label="{card.mechanicName ?? card.factId ?? 'Card'}, {PILE_LABELS[pile]} pile">
+            <button
+              type="button"
+              class="rdo-card-cell rdo-card-cell-btn"
+              data-testid="rdo-card-{i}"
+              aria-label="{card.mechanicName ?? card.factId ?? 'Card'}, {PILE_LABELS[pile]} pile, click to see mastery levels"
+              onclick={(e) => {
+                // If clicking same card, toggle closed
+                if (selectedCard?.card.id === card.id) {
+                  closeMasteryPopup()
+                } else {
+                  openMasteryPopup(e, card, pile)
+                }
+              }}
+            >
               <!-- CardVisual wrapper — requires position:relative + explicit w/h + --card-w -->
               <div
                 class="rdo-card-visual-wrapper"
@@ -274,7 +371,7 @@
               >
                 <CardVisual {card} />
               </div>
-              <!-- Pile badge — absolute corner overlay -->
+              <!-- Pile badge — floats above card top, horizontally centered -->
               <span
                 class="rdo-card-pile-badge"
                 style="background: {PILE_COLORS[pile]}22; border-color: {PILE_COLORS[pile]}; color: {PILE_COLORS[pile]};"
@@ -288,13 +385,97 @@
                   aria-hidden="true"
                 >{masteryLabel(card.masteryLevel)}</span>
               {/if}
-            </div>
+            </button>
           {/each}
         </div>
       {/if}
     </div>
   </div>
 </div>
+
+<!-- Mastery popup — rendered fixed to viewport so it floats beside the clicked card -->
+{#if selectedCard !== null}
+  {@const sc = selectedCard}
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
+  <div
+    class="rdo-mastery-popup"
+    style="top: calc({sc.top}px * var(--layout-scale, 1)); left: calc({sc.left}px * var(--layout-scale, 1));"
+    role="dialog"
+    aria-modal="false"
+    aria-label="Mastery levels for {sc.card.mechanicName ?? 'card'}"
+    data-testid="rdo-mastery-popup"
+  >
+    <!-- Popup header -->
+    <div class="rdo-popup-header">
+      <span class="rdo-popup-mechanic-name">{sc.card.mechanicName ?? sc.card.factId ?? 'Card'}</span>
+      <button
+        type="button"
+        class="rdo-popup-close"
+        onclick={closeMasteryPopup}
+        aria-label="Close mastery popup"
+      >✕</button>
+    </div>
+
+    <!-- Per-level rows L0 → L5 -->
+    <div class="rdo-popup-levels" role="list" aria-label="Mastery levels">
+      {#each [0, 1, 2, 3, 4, 5] as level}
+        {@const isCurrent = (sc.card.masteryLevel ?? 0) === level}
+        {@const descParts = getDescPartsAtLevel(sc.card, level)}
+        {@const stats = getMasteryStats(sc.card.mechanicId ?? '', level)}
+        <div
+          class="rdo-popup-level-row"
+          class:rdo-popup-level-current={isCurrent}
+          role="listitem"
+          aria-label="Level {level}{isCurrent ? ' (current)' : ''}"
+        >
+          <!-- Icon column -->
+          <div class="rdo-popup-icon-col">
+            {#if level === 0}
+              <img
+                class="rdo-popup-icon"
+                class:rdo-popup-icon-bob={isCurrent}
+                src={getUpgradeIconUrl()}
+                alt=""
+                style="filter: grayscale(1) brightness(0.5);"
+              />
+            {:else}
+              <img
+                class="rdo-popup-icon"
+                class:rdo-popup-icon-bob={isCurrent}
+                src={getUpgradeIconUrl()}
+                alt=""
+                style="filter: {getMasteryIconFilter(level)};"
+              />
+            {/if}
+          </div>
+          <!-- Text column -->
+          <div class="rdo-popup-text-col">
+            <span class="rdo-popup-level-label" style="color: {masteryColor(level)};">L{level}</span>
+            <span class="rdo-popup-desc">
+              {#each descParts as part}
+                {#if part.type === 'number'}
+                  <span class="rdo-popup-desc-number">{part.value}</span>
+                {:else if part.type === 'keyword'}
+                  <span class="rdo-popup-desc-keyword">{part.value}</span>
+                {:else if part.type === 'conditional-number'}
+                  <span class="rdo-popup-desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
+                {:else if part.type === 'mastery-bonus'}
+                  <span class="rdo-popup-desc-mastery">{part.value}</span>
+                {:else}
+                  {part.value}
+                {/if}
+              {/each}
+              {#if stats?.apCost != null}
+                <span class="rdo-popup-desc-ap"> ({stats.apCost} AP)</span>
+              {/if}
+            </span>
+          </div>
+        </div>
+      {/each}
+    </div>
+  </div>
+{/if}
 
 <style>
   /* ============================================================
@@ -506,18 +687,41 @@
   .rdo-card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(calc(170px * var(--layout-scale, 1)), 1fr));
-    gap: calc(14px * var(--layout-scale, 1));
+    gap: calc(30px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
     justify-items: center;
+    /* Extra top padding so pile badges (which float above cards) are not clipped */
+    padding-top: calc(22px * var(--layout-scale, 1));
   }
 
   /* ============================================================
-     Card cell — positions the CardVisual wrapper + badges
+     Card cell — button reset + badge container
      ============================================================ */
-  .rdo-card-cell {
-    position: relative;
+  .rdo-card-cell-btn {
+    /* Reset button defaults */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    /* Layout */
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    /* Subtle hover indicator */
+    border-radius: calc(6px * var(--layout-scale, 1));
+    transition: filter 150ms ease;
+  }
+
+  .rdo-card-cell-btn:hover {
+    filter: brightness(1.08);
+  }
+
+  .rdo-card-cell-btn:focus-visible {
+    outline: 2px solid rgba(244, 211, 94, 0.7);
+    outline-offset: calc(3px * var(--layout-scale, 1));
   }
 
   /* Sized wrapper required by CardVisual (position:absolute inset:0 internally) */
@@ -526,11 +730,12 @@
     flex-shrink: 0;
   }
 
-  /* Pile badge — top-left corner of card */
+  /* Pile badge — floats ABOVE the card top, centered horizontally */
   .rdo-card-pile-badge {
     position: absolute;
-    top: calc(-4px * var(--layout-scale, 1));
-    left: calc(-2px * var(--layout-scale, 1));
+    top: calc(-18px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
     font-family: var(--font-pixel, var(--font-rpg));
     font-size: calc(7px * var(--text-scale, 1));
     font-weight: 700;
@@ -586,5 +791,184 @@
 
   .rdo-close-btn-center:hover {
     background: rgba(255, 255, 255, 0.14);
+  }
+
+  /* ============================================================
+     Mastery popup — fixed viewport panel
+     ============================================================ */
+  .rdo-mastery-popup {
+    position: fixed;
+    width: calc(320px * var(--layout-scale, 1));
+    background: rgba(10, 16, 30, 0.95);
+    border: 1px solid rgba(201, 162, 39, 0.45);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    box-shadow:
+      0 calc(8px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 460;
+    pointer-events: auto;
+    overflow: hidden;
+  }
+
+  /* Popup header bar */
+  .rdo-popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+  }
+
+  .rdo-popup-mechanic-name {
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-size: calc(10px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #f4d35e;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
+    margin-right: calc(8px * var(--layout-scale, 1));
+  }
+
+  .rdo-popup-close {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: calc(11px * var(--text-scale, 1));
+    min-width: calc(24px * var(--layout-scale, 1));
+    min-height: calc(24px * var(--layout-scale, 1));
+    border-radius: calc(4px * var(--layout-scale, 1));
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+    transition: color 120ms ease, border-color 120ms ease;
+  }
+
+  .rdo-popup-close:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .rdo-popup-close:focus-visible {
+    outline: 2px solid rgba(244, 211, 94, 0.8);
+    outline-offset: 2px;
+  }
+
+  /* Level rows container */
+  .rdo-popup-levels {
+    padding: calc(6px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(2px * var(--layout-scale, 1));
+  }
+
+  /* Individual level row */
+  .rdo-popup-level-row {
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    padding: calc(5px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
+    border-radius: calc(4px * var(--layout-scale, 1));
+    border: 1px solid transparent;
+    transition: background 150ms ease;
+  }
+
+  /* Current mastery level — gold tint + subtle border */
+  .rdo-popup-level-current {
+    background: rgba(201, 162, 39, 0.12);
+    border-color: rgba(201, 162, 39, 0.3);
+  }
+
+  /* Mastery icon */
+  .rdo-popup-icon-col {
+    flex-shrink: 0;
+    width: calc(32px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rdo-popup-icon {
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+
+  /* Bob animation for the current level's icon */
+  @keyframes rdoIconBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(calc(-2px * var(--layout-scale, 1))); }
+  }
+
+  .rdo-popup-icon-bob {
+    animation: rdoIconBob 1.6s ease-in-out infinite;
+  }
+
+  /* Text column */
+  .rdo-popup-text-col {
+    display: flex;
+    align-items: baseline;
+    gap: calc(6px * var(--layout-scale, 1));
+    flex: 1;
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+
+  .rdo-popup-level-label {
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-size: calc(9px * var(--text-scale, 1));
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+    min-width: calc(22px * var(--layout-scale, 1));
+  }
+
+  .rdo-popup-desc {
+    font-family: 'Kreon', 'Georgia', serif;
+    font-size: calc(10px * var(--text-scale, 1));
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .rdo-popup-desc-number {
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .rdo-popup-desc-keyword {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .rdo-popup-desc-conditional {
+    color: #9ca3af;
+    font-weight: 700;
+  }
+
+  .rdo-popup-desc-conditional.active {
+    color: #22c55e;
+  }
+
+  .rdo-popup-desc-mastery {
+    color: #4ade80;
+    font-weight: 700;
+  }
+
+  .rdo-popup-desc-ap {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: calc(9px * var(--text-scale, 1));
   }
 </style>
