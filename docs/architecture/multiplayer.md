@@ -310,7 +310,7 @@ interface LobbyBackend {
 }
 ```
 
-`pickBackend()` selects: `steamBackend` → `broadcastBackend` → `webBackend` (priority order).
+`pickBackend()` selects: `broadcastBackend` → `steamBackend` → `webBackend` (priority order). `?mp` is an explicit dev opt-in and therefore beats auto-detected Steam so devs running a Steam build can two-tab test the broadcast path without fighting the factory.
 
 ### Password handling
 
@@ -334,11 +334,11 @@ interface LobbyBackend {
 
 | Priority | Condition | Backend selected | Notes |
 |----------|-----------|-----------------|-------|
-| 1 | `hasSteam === true` | `steamBackend` | Tauri + Steam build; uses Steamworks matchmaking + P2P |
-| 2 | `isBroadcastMode()` — URL has `?mp` param | `broadcastBackend` | Dev two-tab mode; uses `localStorage` fake directory |
+| 1 | `isBroadcastMode()` — URL has `?mp` param | `broadcastBackend` | Dev two-tab mode; uses `localStorage` fake directory. Explicit opt-in beats auto-detected Steam. |
+| 2 | `hasSteam === true` | `steamBackend` | Tauri + Steam build; uses Steamworks matchmaking + P2P |
 | 3 | (default) | `webBackend` | Web / mobile / CI; uses Fastify REST + WebSocket |
 
-`hasSteam` is the existing Steam availability check from `steamService.ts`. `isBroadcastMode()` checks `new URLSearchParams(window.location.search).has('mp')`.
+`hasSteam` is the existing Steam availability check from `steamService.ts`. `isBroadcastMode()` checks `new URLSearchParams(window.location.search).has('mp')`. The `?mp`-first order is load-bearing: a dev running a Steam build with `?mp` in the URL expects broadcast-mode two-tab testing, not Steam auto-routing — see commit `cc2e5b8bc`.
 
 ### Lobby Visibility — Tri-State
 

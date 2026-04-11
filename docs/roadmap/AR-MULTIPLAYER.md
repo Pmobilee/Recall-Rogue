@@ -164,26 +164,28 @@ Lobby creation and join are asynchronous (Steamworks callback-based). JS must:
 | `src/ui/components/TriviaRoundScreen.svelte` | DONE: Trivia Night 3-phase UI (not wired) |
 | `src/services/seededRng.ts` | Seed sharing (reuse as-is) |
 
-## Lobby Browser Phases (Plan: splendid-watching-unicorn)
+## Lobby Browser Phases (Plan: splendid-watching-unicorn) — SHIPPED 2026-04-11
 
-> **Status:** Phases 1–6 DONE, Phases 7–8 IN PROGRESS (ui-agent running in parallel), Phases 9–12 documented.
+> **Status:** All 12 phases shipped + 2 Green-zone follow-ups. Only the two-Steam-account LAN test remains as a user-executed manual step.
 > **Web backend:** Fastify in-memory registry (`mpLobbyRegistry.ts`) — fast, restartable, V1 correct. SQLite persistence deferred.
 > **Deferred follow-ups:** Persistent lobby storage, real Steam friends graph integration, server-side anti-cheat on password-join.
+> **Commits:** `699c416e1` (server) · `766223a3a` (UI) · `4f96917ea` (Rust/types/services/docs/tests — misattributed message, see `docs/gotchas.md` 2026-04-11 commit-attribution entry) · `cc2e5b8bc` (follow-ups).
 
 | Phase | Scope | Status |
 |-------|-------|--------|
 | **1** | Rust: `steam_request_lobby_list` + `steam_get_lobby_member_count` in `steam.rs` | DONE |
-| **2** | `multiplayerTypes.ts`: `LobbyVisibility`, `LobbyBrowserEntry`, `LobbyListFilter`, `MODE_MIN_PLAYERS` | DONE |
+| **2** | `multiplayerTypes.ts`: `LobbyVisibility`, `LobbyBrowserEntry`, `LobbyListFilter`, `MODE_MIN_PLAYERS` | DONE (orchestrator direct, after sub-agent ghost-commit) |
 | **3** | `steamNetworkingService.ts`: TS wrappers (`requestSteamLobbyList`, `getLobbyMemberCount`) | DONE |
-| **4** | Fastify: `mpLobbyRegistry.ts` + REST routes (`mpLobby.ts`) + WS upgrade (`mpLobbyWs.ts`) | DONE |
+| **4** | Fastify: `mpLobbyRegistry.ts` + REST routes (`mpLobby.ts`) + WS upgrade (`mpLobbyWs.ts`) | DONE (60 server tests pass) |
 | **5** | `multiplayerTransport.ts`: WebSocket URL fix (`VITE_MP_WS_URL`) + `joinToken` support | DONE |
 | **6** | `multiplayerLobbyService.ts`: `LobbyBackend` abstraction, 3 backends, new public API | DONE |
-| **7** | UI: `LobbyBrowserScreen.svelte` + privacy toggle + max-players selector in `MultiplayerLobby.svelte` | IN PROGRESS (ui-agent) |
-| **8** | Dev: BroadcastChannel `localStorage` fake directory (broadcastBackend) | IN PROGRESS (ui-agent) |
-| **9** | Docs same-commit | DONE (this file) |
-| **10** | Tests: lobby service, mpLobbyRegistry, REST routes, steamBackend mock | PENDING |
-| **11** | Docker visual verify: BroadcastChannel + Web path scenarios | PENDING |
-| **12** | Manual Steam LAN verify (two Steam accounts) | PENDING (user-run) |
+| **7** | UI: `LobbyBrowserScreen.svelte` (new, 812 LOC) + privacy toggle + max-players selector in `MultiplayerLobby.svelte` (+224) + `MultiplayerMenu.svelte` Browse button + `CardApp.svelte` routing | DONE |
+| **8** | Dev: BroadcastChannel `localStorage` fake directory (`broadcastBackend`) with 30 s TTL heartbeat | DONE |
+| **9** | Docs same-commit: architecture/mechanics/roadmap/gotchas/SKILL/GAME_DESIGN/INDEX | DONE |
+| **10** | Tests: 43/43 `multiplayerLobbyService.test.ts`, 52 `mpLobbyRegistry.test.ts`, 18 `mpLobby.test.ts` | DONE |
+| **11** | Docker visual verify: 2 screenshots via `hub-fresh` + `__rrPlay.navigate` actions-file | DONE (`/tmp/rr-docker-visual/lobby-verify_combat-basic_1775893352566/`) |
+| **12** | Commit + registry sync + 2 Green-zone follow-ups (`pickBackend` precedence, real `$authStore.displayName`) | DONE (commit `cc2e5b8bc`) |
+| **12b** | Manual two-Steam-account LAN verify | PENDING (user-run; environmental; not blocking) |
 
 ## Changelog
 

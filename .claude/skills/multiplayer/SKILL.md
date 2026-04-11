@@ -45,18 +45,26 @@ Parse the user's message for a subcommand:
 | **Trivia UI** | `src/ui/components/TriviaRoundScreen.svelte` | DONE (not wired) |
 | **Gameplay Wiring** | gameFlowController + runManager + CardApp | DONE (Race Mode) |
 
-### Lobby Browser (Phase 1 complete — Plan: splendid-watching-unicorn)
+### Lobby Browser (splendid-watching-unicorn — SHIPPED 2026-04-11)
+
+StS/Balatro-style public/private lobby browsing — visibility tri-state (Public / Password / Friends-Only), host-picked max players, 3 backends unified behind one client API. All 12 phases shipped + 2 Green-zone follow-ups.
 
 | Phase | Scope | Status |
 |-------|-------|--------|
 | **Phase 1** | Rust: `steam_request_lobby_list` + `steam_get_lobby_member_count` | DONE |
-| **Phase 2** | `multiplayerTypes.ts`: `LobbyVisibility`, `LobbyBrowserEntry`, `LobbyListFilter` | DONE (orchestrator) |
-| **Phase 3** | `steamNetworkingService.ts`: TS wrappers for Phase 1 commands | DONE |
-| **Phase 4** | Fastify `mpLobbyRegistry` + REST routes + WS upgrade | DONE |
-| **Phase 5** | `multiplayerTransport.ts`: WebSocket URL fix + joinToken support | DONE |
-| **Phase 6** | `multiplayerLobbyService.ts`: `LobbyBackend` abstraction + 3 backends | DONE |
-| **Phase 7** | UI: `LobbyBrowserScreen.svelte` + privacy toggle + max-players selector | IN PROGRESS (ui-agent) |
-| **Phase 8** | Dev: BroadcastChannel fake `localStorage` directory for two-tab testing | IN PROGRESS (ui-agent) |
+| **Phase 2** | `multiplayerTypes.ts`: `LobbyVisibility`, `LobbyBrowserEntry`, `LobbyListFilter`, `MODE_MIN_PLAYERS` | DONE (orchestrator, after sub-agent ghost-commit) |
+| **Phase 3** | `steamNetworkingService.ts`: `requestSteamLobbyList`, `getLobbyMemberCount` | DONE |
+| **Phase 4** | Fastify `mpLobbyRegistry` + REST routes (`/mp/lobbies`) + WS upgrade (`/mp/ws`) | DONE (commit `699c416e1`) |
+| **Phase 5** | `multiplayerTransport.ts`: WebSocket URL from `VITE_MP_WS_URL` + `joinToken` | DONE |
+| **Phase 6** | `multiplayerLobbyService.ts`: `LobbyBackend` abstraction + `steamBackend` / `webBackend` / `broadcastBackend` + `setVisibility` / `setPassword` / `setMaxPlayers` / `listPublicLobbies` / `joinLobbyById` | DONE |
+| **Phase 7** | `LobbyBrowserScreen.svelte` (new, 812 LOC) + `MultiplayerLobby.svelte` privacy/password/max-players (+224 LOC) + `MultiplayerMenu.svelte` Browse button + `CardApp.svelte` routing | DONE (commit `766223a3a`) |
+| **Phase 8** | `broadcastBackend`: `localStorage['rr-mp:directory']` with 30 s TTL heartbeat | DONE |
+| **Phase 9** | Docs same-commit: architecture/mechanics/roadmap/gotchas/SKILL/GAME_DESIGN/INDEX | DONE |
+| **Phase 10** | Tests: 43/43 `multiplayerLobbyService.test.ts` + 52 `mpLobbyRegistry` + 18 `mpLobby.test.ts` | DONE |
+| **Phase 11** | Docker visual verify: 2-screenshot run via `hub-fresh` + `__rrPlay.navigate('lobbyBrowser')` actions-file | DONE (artifacts at `/tmp/rr-docker-visual/lobby-verify_*1775893352566/`) |
+| **Phase 12** | Commit + registry sync + follow-ups (`pickBackend` order + real `$authStore.displayName`) | DONE (commit `cc2e5b8bc`) |
+
+**Key commits this session:** `699c416e1` (server) · `766223a3a` (UI) · `4f96917ea` (Rust/types/services/docs/tests — misattributed log message, see gotcha 2026-04-11) · `cc2e5b8bc` (follow-ups).
 
 ### Race Mode Flow (End-to-End)
 Hub → Multiplayer button → Lobby (mode/deck/rules) → Start Game → shared seed → play with live opponent HUD → run end → race finish broadcast
@@ -65,10 +73,8 @@ Hub → Multiplayer button → Lobby (mode/deck/rules) → Start Game → shared
 
 | Priority | Task | Complexity |
 |----------|------|-----------|
-| **HIGH** | Complete Phase 7 UI: confirm `LobbyBrowserScreen.svelte` + privacy toggle land (ui-agent) | Medium |
-| **HIGH** | Phase 10: Tests for lobby service, mpLobbyRegistry, REST routes, steamBackend mock | Medium |
-| **HIGH** | Phase 11: Docker visual verify — BroadcastChannel + Web path scenarios | Medium |
-| **HIGH** | Test with 2 Steam accounts on LAN (verify P2P) | Low |
+| **HIGH** | Test lobby browser with 2 Steam accounts on LAN — user-executed environmental test (Red-zone); all other backends verified | Low |
+| **HIGH** | Two-tab Fastify E2E scenario via warm Docker + `?mp=web` override + real server boot | Medium |
 | **HIGH** | Wire RaceResultsScreen into run end flow | Low |
 | **HIGH** | Wire Duel mode (shared enemy, simultaneous turns) into gameplay | Medium |
 | **MEDIUM** | Server-side matchmaking queue (replace client simulation) | Medium |

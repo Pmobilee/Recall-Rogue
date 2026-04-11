@@ -3190,3 +3190,44 @@ There is an existing comment `// put on top` at `turnManager.ts` line 2224 that 
 **Fix:** Manual inventory of all 78 `" this"` patterns in quizQuestion fields. 57 were confirmed scars; 21 were legitimate demonstrative pronouns. Each scar was rewritten by reading the surrounding context (correctAnswer, explanation, distractors) to determine the original substitution target. All fixes are historically accurate and verified.
 
 **Prevention:** Add the pattern `\b[A-Z][a-z]+ this\b` (capitalized word followed by "this") and `\bpredict this \b` to `scripts/content-pipeline/grammar-scar-patterns.json`. Also: grep for sentences starting with lowercase "this" after a period (mid-sentence fragment starting with the placeholder).
+
+### 2026-04-11 — T1.2 Omnibus/Final Lesson HP nerf + T1.3 Relic price reduction
+
+**What:** Two balance fixes from WAVE-A playtest data (T1.2 + T1.3 from `swift-splashing-crown.md`).
+
+**T1.2 — Enemy HP cuts (floor 18/21/24 boss catastrophe):**
+The Omnibus (`omnibus`, floor 21) had 63.6% win rate and 49 avg damage taken per fight. The Final Lesson (`final_lesson`, floor 24) had 65.8% win rate and 45 avg damage taken. Floor 18 also showed 25.4% death rate in sim data, partly attributable to players arriving depleted from these late-game encounters. Both bosses cut 25% per user approval: Omnibus baseHP 12→9, Final Lesson baseHP 14→10. HP only — damage, intents, and status stacks unchanged.
+
+Note: The `enemy-analysis.md` floor table only showed data up to floor 18 — floors 21/24 didn't appear because the sim used 3-act truncation. The actual enemies causing floor 18 deaths in the floor table are rabbit_hole (floor 18 boss) as depleted players fail earlier. The Omnibus and Final Lesson are the *per-enemy* culprits, not the floor 18 map node. Target metric: floor 18 death rate ≤ 10%.
+
+**T1.3 — Relic price reduction (shop economy fix):**
+Previous relic prices [common=100, uncommon=160, rare=250, legendary=400] made 90% of shop visits unaffordable. New range [40, 55, 80, 120] linear-mapped from old [100, 400] range. Additionally added `SHOP_RELIC_MIN_PRICE = 40` and `SHOP_RELIC_MAX_PRICE = 120` runtime clamps in `generateShopRelics()` via `shopService.ts`. Floor discounts still apply before clamping. Target metric: ≥ 40% of shop visits affordable.
+
+**Files changed:** `src/data/enemies.ts`, `src/data/balance.ts`, `src/services/shopService.ts`, `docs/mechanics/enemies.md`, `docs/mechanics/relics.md`.
+
+### 2026-04-11 — Docker visual verify: scenario preset names + `__rrPlay.navigate` for new screens
+
+**What:** During Phase 11 of the lobby-browser feature (`splendid-watching-unicorn`), `scripts/docker-visual-test.sh --scenario hub` hung for 120 s at `page.waitForFunction` and never produced a screenshot. Same warm container succeeded cleanly on `--scenario none`. First suspicion was a Docker / SwiftShader / WebGL regression — it was not.
+
+**Root cause:** `hub` is not a scenario preset name. The real presets in `src/dev/scenarioSimulator.ts:443-452` are `hub-fresh` and `hub-endgame`. When an unknown preset is passed, `__rrScenario.load()` throws internally, the runner logs and continues, but the downstream `__rrScenario` global wait still appears to hang because the load promise never resolves correctly. The agent chasing this spent ~20 minutes debugging Docker/GPU/Playwright before noticing the preset name.
+
+**Fix:** Use `hub-fresh` (or any other real preset) — or, for brand-new screens that don't yet have a dedicated preset, use this pattern:
+
+```json
+[
+  { "type": "scenario", "preset": "hub-fresh" },
+  { "type": "wait", "ms": 2000 },
+  { "type": "rrPlay", "method": "navigate", "args": ["multiplayerMenu"] },
+  { "type": "wait", "ms": 1500 },
+  { "type": "screenshot", "name": "01-multiplayer-menu" },
+  { "type": "rrPlay", "method": "navigate", "args": ["lobbyBrowser"] },
+  { "type": "wait", "ms": 2000 },
+  { "type": "screenshot", "name": "02-lobby-browser" }
+]
+```
+
+Fed via `scripts/docker-visual-test.sh --warm test --agent-id X --actions-file /tmp/actions.json`. This avoids authoring a new scenario preset for every verification pass on a new screen — boot a known-good scene, then drive `__rrPlay.navigate()` to the target screen.
+
+**Prevention:** Before reporting "Docker visual verify broken," verify the preset name against `SCENARIOS` in `src/dev/scenarioSimulator.ts:145`. If the target screen is brand-new and not in the preset list, use the `hub-fresh + __rrPlay.navigate` actions-file pattern above rather than authoring a one-off preset. Also: `--scenario none --eval "..."` works for simple custom-JS verifications without the actions-file scaffolding.
+
+**Visible proof** that the feature actually worked end-to-end: screenshots at `/tmp/rr-docker-visual/lobby-verify_combat-basic_1775893352566/01-multiplayer-menu.png` and `02-lobby-browser-empty.png`. The "WEB" source badge in the browser header confirms `pickBackend()` routed to `webBackend` (no Steam, no `?mp`).
