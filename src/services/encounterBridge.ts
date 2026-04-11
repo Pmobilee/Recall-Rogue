@@ -54,6 +54,8 @@ import {
   awaitCoopTurnEnd,
   awaitCoopTurnEndWithDelta,
   awaitCoopEnemyReconcile,
+  cancelCoopTurnEnd,
+  isLocalTurnEndPending,
   broadcastPartnerState,
   broadcastSharedEnemyState,
   broadcastEnemyHpUpdate,
@@ -1656,6 +1658,45 @@ export async function handleEndTurn(): Promise<void> {
       notifyEncounterComplete('defeat');
     }, turboDelay(550));
   }
+}
+
+/**
+ * Cancel a pending co-op end-turn while waiting for partner consensus.
+ *
+ * Design (Issue 9): In co-op mode, `handleEndTurn()` sends the turn-end signal and
+ * then waits at a barrier (`awaitCoopTurnEndWithDelta`). The hand discard and enemy
+ * phase run only AFTER the barrier completes. While waiting, the player's hand is still
+ * intact — cancelling removes the local player from the barrier and resumes normal play.
+ *
+ * Guards:
+ *   - Returns `'not_in_coop'` if the current run is not a co-op run.
+ *   - Returns `'no_barrier'` if no turn-end barrier is in flight (safe to call idempotently).
+ *   - Returns `'empty_hand'` if the player's hand was empty when they ended their turn.
+ *     In that case, cancel is not available — the "Waiting…" button should be shown disabled.
+ *     The barrier continues; the player cannot take further actions regardless.
+ *   - Returns `'cancelled'` on success — the barrier promise resolves `'cancelled'`,
+ *     `coopWaitingForPartner` is cleared, and the player regains turn control.
+ *
+ * @see multiplayerCoopSync.cancelCoopTurnEnd — the underlying barrier cancel
+ */
+export function cancelEndTurnRequested():
+  'cancelled' | 'not_in_coop' | 'no_barrier' | 'empty_hand' {
+  const run = get(activeRunState);
+  if (run?.multiplayerMode !== 'coop') return 'not_in_coop';
+  if (!isLocalTurnEndPending()) return 'no_barrier';
+
+  // If the player ended their turn with an empty hand, cancel is not available.
+  // Show "Waiting…" (disabled) — there is nothing to restore.
+  const ts = get(activeTurnState);
+  const handSize = ts?.deck.hand.length ?? 0;
+  if (handSize === 0) return 'empty_hand';
+
+  // Cancel the barrier — this removes local player from the signal set,
+  // broadcasts mp:coop:turn_end_cancel to partners, and resolves the
+  // awaitCoopTurnEndWithDelta promise with 'cancelled'.
+  // handleEndTurn() will then return early, leaving the hand intact.
+  cancelCoopTurnEnd();
+  return 'cancelled';
 }
 
 export function getRunPoolCards(): Card[] {

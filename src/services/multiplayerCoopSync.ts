@@ -363,6 +363,20 @@ export function cancelCoopTurnEnd(): void {
 }
 
 /**
+ * Alias for `cancelCoopTurnEnd()`. Provided for callers using the
+ * Issue 9 end-turn cancel flow naming convention.
+ *
+ * Removes the local player from the turn-end barrier, broadcasts
+ * `mp:coop:turn_end_cancel`, and resolves the pending barrier promise
+ * with `'cancelled'`. No-op if no barrier is in flight.
+ *
+ * @see cancelCoopTurnEnd for full implementation details
+ */
+export function sendTurnEndCancel(): void {
+  cancelCoopTurnEnd();
+}
+
+/**
  * Returns true if the local player has signaled turn-end and is waiting for consensus.
  * Use this to guard UI state (e.g. show "Cancel" button while waiting).
  */

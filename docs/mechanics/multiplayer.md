@@ -196,6 +196,33 @@ In co-op mode, the partner's enemy HP display was previously only updated at tur
 
 **Message ordering:** The lightweight per-play HP update and the full `mp:coop:enemy_state` turn-end reconcile coexist. The turn-end reconcile is authoritative — it overwrites any optimistic HP state from the per-play updates. This maintains host-authoritative correctness while providing real-time visual feedback.
 
+## Co-op End-Turn Cancel Flow (Issue 9, 2026-04-11)
+
+In co-op mode, ending a turn has two phases:
+
+**Phase A — Announce:** `handleEndTurn()` (in `encounterBridge.ts`) sends the turn-end signal via `awaitCoopTurnEndWithDelta(delta)` and enters a barrier wait. At this point the player's hand **has not been discarded** and the enemy phase **has not run**. `coopWaitingForPartner` is set to `true`.
+
+**Phase B — Apply:** After all players signal (barrier releases), `endPlayerTurn()` runs: block decay, enemy phase, discard, draw. This is the same code as solo mode.
+
+**Cancel path:** While in Phase A, if the player wants to resume play (e.g. they forgot to play a card), `cancelEndTurnRequested()` in `encounterBridge.ts` returns the player to normal play.
+
+| Return value | Meaning |
+|---|---|
+| `'cancelled'` | Success — barrier cancelled, hand intact, `coopWaitingForPartner` cleared |
+| `'not_in_coop'` | Run is not co-op mode — cancel not applicable |
+| `'no_barrier'` | No barrier in flight — safe to call idempotently |
+| `'empty_hand'` | Player ended their turn with an empty hand — nothing to restore, cancel disabled |
+
+**Empty-hand rule:** If the player played all their cards before ending the turn, `cancelEndTurnRequested()` returns `'empty_hand'` and the barrier continues. The UI should show "Waiting…" (disabled) instead of a "Cancel" button.
+
+**Network message:** On success, `mp:coop:turn_end_cancel` is broadcast to partners via `cancelCoopTurnEnd()` in `multiplayerCoopSync.ts`. The receiving partner's `mp:coop:turn_end_cancel` handler removes the cancelling player from `_turnEndSignals`, preventing the barrier from releasing until they re-signal.
+
+**Functions added (2026-04-11):**
+- `cancelEndTurnRequested()` in `encounterBridge.ts` — the UI-callable cancel with empty-hand guard
+- `sendTurnEndCancel()` in `multiplayerCoopSync.ts` — explicit alias for `cancelCoopTurnEnd()` per Issue 9 naming convention
+
+**Key architectural property:** No snapshot or restore is needed. The hand was never discarded. When `awaitCoopTurnEndWithDelta` resolves with `'cancelled'`, `handleEndTurn()` returns early (line 1437) and the TurnState is unchanged.
+
 ## Co-op Exclusive Effects
 
 All multipliers are **additive** — max combined bonus is +1.25x over base. This prevents excessive

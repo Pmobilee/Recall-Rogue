@@ -3017,3 +3017,19 @@ The comment says "via warcry_perm_str tag" but the code reads `card.masteryLevel
 **Fix (2026-04-11 BATCH-ULTRA meta-lint):** Removed the dead assignment from gym-server.ts (line 316). Added explanatory comment. The actual game behavior of A14 (combo persists across turns, no turn-end reset) is currently the de-facto behavior. If the intent is to actually reset, `endPlayerTurn` needs to be updated to check `ascensionComboResetsOnTurnEnd` and reset `consecutiveCorrectThisEncounter`.
 
 **Impact on sim:** None — the sim never read this field. The A14 challenge text ("combo resets each turn") is technically a lie in the current implementation. The BATCH-ULTRA sim results showing 60% win rate at A16 (which inherits A14) are consistent with combo NOT resetting.
+
+### 2026-04-11 — End-turn cancel flow (Issue 9): split vs snapshot design trade-off
+
+**Symptom:** In co-op mode, a player who ends their turn enters a "waiting for partner" state. There was no way to cancel this and resume playing, so if the player accidentally ended early they were locked out until the barrier completed.
+
+**Design considered: Split (Phase A/Phase B)**
+Full split of `endPlayerTurn()` into `announceEndTurn()` (barrier only, no discard/decay/enemy-phase) and `applyEndTurn()` (the rest). Cleanest long-term, but highly invasive — `endPlayerTurn()` is ~500 lines and feeds `EnemyTurnResult` into every test, the headless sim, and encounterBridge's animation loop.
+
+**Design chosen: No-split / no-snapshot needed**
+After careful reading of `handleEndTurn()` in `encounterBridge.ts`, the hand discard and enemy phase run at line ~1499 — AFTER the barrier awaited at line 1429. During the barrier wait the hand is completely intact. Cancelling the barrier (`cancelCoopTurnEnd()`) causes `handleEndTurn()` to return early at line 1437 before any destructive operation. **No snapshot needed, no restoration needed.**
+
+**Implementation:** `cancelEndTurnRequested()` added to `encounterBridge.ts`. It wraps `cancelCoopTurnEnd()` with three guards: (1) must be co-op mode, (2) barrier must be in flight, (3) hand must be non-empty (empty-hand cancel is disabled — show "Waiting…" disabled instead).
+
+**Alias added:** `sendTurnEndCancel()` in `multiplayerCoopSync.ts` as an explicit alias for `cancelCoopTurnEnd()` per Issue 9 naming convention.
+
+**Files:** `src/services/encounterBridge.ts` (cancelEndTurnRequested), `src/services/multiplayerCoopSync.ts` (sendTurnEndCancel), `src/services/turnManager.endTurnCancel.test.ts` (22 tests).
