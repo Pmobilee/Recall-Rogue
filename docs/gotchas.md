@@ -3113,3 +3113,46 @@ There is an existing comment `// put on top` at `turnManager.ts` line 2224 that 
 **Fix (2026-04-11):** Added `scripts/lint/check-missing-deps.mjs` — scans `src/**/*.{ts,svelte,mjs}`, extracts every external package specifier, cross-references against `package.json` dependencies + devDependencies. Exits 1 with file:line:col for each missing or undeclared package. Wired into `npm run lint:deps` (standalone) and appended to `npm run check` (gated). Also discovered `geojson` (type-only import in `src/services/geoDataLoader.ts` and `src/ui/components/MapPinDrop.svelte`) is missing from `package.json` — reported to user; not added by this agent (out of scope).
 
 **Pattern to avoid:** Never import a package in `src/` before confirming it is in `package.json`. Run `npm run lint:deps` before staging if in doubt.
+
+### 2026-04-11 — BATCH-ULTRA 51b68139b cross-agent git-add race
+
+**What:** During BATCH-2026-04-11-ULTRA Wave B, two parallel sub-agents (`WAVE-B.GL` game-logic + `WAVE-B.UI` ui-agent) were editing different files at the same time. The game-logic agent ran a bulk `git add` while the ui-agent still had uncommitted work in the tree for `BossPreviewBanner.svelte`, `DungeonMap.svelte`, and `scenarioSimulator.ts` (the boss-preview banner for Cluster A). The game-logic agent's commit `51b68139b` ("fix(gym-server): remove stale TurnState.ascensionComboResetsOnTurnEnd assignment") actually contained 8 files — the gym-server fix PLUS the entire ui-agent banner implementation. Both the commit message attribution and the provenance were wrong; the ui-agent later wrote "Fix A commit was absorbed" in its own return summary when it noticed its files were already in a commit it didn't author.
+
+**Impact:** Game behavior was correct (the banner code shipped and worked) but provenance was permanently polluted. If you blame the banner lines today, git points you at a commit whose author + message discuss gym-server, not the banner. This makes archaeology and bisect confusing.
+
+**Root cause:** Sub-agents using `git add -A` or `git add .` to stage their work pick up ALL uncommitted files in the tree, including files being edited by other parallel sub-agents. No lock, no coordination, no warning.
+
+**Fix (prevention):**
+1. `.claude/rules/agent-routing.md` Anti-Patterns section now explicitly forbids `git add -A` / `git add .` in sub-agents. Use explicit paths: `git add src/foo.ts src/bar.ts`.
+2. Sub-agent prompts should list the exact files the sub-agent owns for the task so explicit staging is unambiguous.
+3. When you see unexpected files in your `git status` that are NOT part of your task, leave them alone — they belong to another parallel agent. Do NOT git-add them even if they look related.
+
+**Detection:** After any multi-agent batch, the orchestrator MUST `git show --stat <each-commit>` and compare the file list against what each sub-agent's prompt authorized. Discrepancies are evidence of this class of bug.
+
+### 2026-04-11 — "Pre-existing" test failure misreport from chained sub-agents
+
+**What:** During BATCH-2026-04-11-ULTRA Wave B, the WAVE-B.FOLLOW sub-agent (spawned after WAVE-B.GL completed) ran `npx vitest run` and saw 4 failing tests: `ascension.test.ts` ×2, `cardUpgradeService-apCost.test.ts` ×1, `damagePreviewService.test.ts` ×1. It compared against "the previous commit SHA" (which was post-WAVE-B.GL, where the failures already existed) and concluded: *"The 4 test failures are identical before and after our changes — confirmed pre-existing. Our changes introduced no new test failures."* **This was wrong.** 3 of the 4 failures were session-introduced — WAVE-B.GL's Fix A (asc cliff tune, `9705fd066`) and Fix B (Foresight mastery-gated cost, `6f5d33725`) had shipped balance/cost changes without updating the tests that hardcoded the old values. From WAVE-B.FOLLOW's narrow view ("before my task" = right after WAVE-B.GL), they looked pre-existing. From the batch's perspective ("before the BATCH" = preflight commit `44fc6f666`), they were brand new.
+
+**Root cause:** Sub-agents define "pre-existing" relative to their own task start, not the batch start. When sub-agents chain, each one's "pre-existing" window shrinks, and regressions introduced by earlier chain members get grandfathered silently. This is a cumulative lie-by-omission.
+
+**Fix (prevention):**
+1. `.claude/rules/agent-routing.md` Sub-Agent Prompt Template rule #5 now explicitly says: `'pre-existing' means present before the BATCH started, NOT before your task started`.
+2. Orchestrator task prompts for sub-agents that run in the middle of a batch must include the batch preflight SHA so the sub-agent can compare against it.
+3. Orchestrator must re-verify "pre-existing" claims from sub-agents by actually checking the batch preflight SHA. In BATCH-ULTRA the preflight SHA was `44fc6f666`; preflight had 1 failing test (PRE-EXISTING-1 barbed_edge). Any new failures = session-introduced regardless of which intermediate sub-agent shipped them.
+
+**Detection:** After any sub-agent reports "pre-existing test failures", the orchestrator should compare test results against the batch preflight commit, not the sub-agent's starting commit. If the test passed at batch preflight, the sub-agent's report is wrong and the failure is session-introduced.
+
+### 2026-04-11 — CRITICAL-3 visual re-verify blocked by persistent Docker SwiftShader saturation
+
+**What:** BATCH-2026-04-10-003-fullsweep's CRITICAL-3 finding was that `__rrScenario.restore()` leaves the Phaser scene black. During BATCH-2026-04-11-ULTRA Wave A re-verification, the Docker warm container for the CRITICAL-3 re-test failed to boot with `ERROR: Container failed to become ready in 120s` even though only 1-2 other containers were running on the host. The orchestrator attempted the same test directly and hit the same failure.
+
+**Why:** The 12-wide Docker saturation gotcha from earlier in the same session left system-level GPU state wedged. Subsequent containers — even when spawned after the old ones died — couldn't acquire SwiftShader GPU mailboxes. The saturation is not just about concurrent count; it's about host-level GPU resource fragmentation that persists until a reboot or a forced `docker system prune` + GPU driver reset.
+
+**Workaround during the session:** CRITICAL-3 was confirmed FIXED via unit tests (5/5 passing) and the code fix is in place at `src/dev/scenarioSimulator.ts:1734-1752`. Visual re-verify was marked BLOCKED and deferred.
+
+**Fix (prevention):**
+1. When Docker visual verify is the only way to close a bug, do NOT bury it at the end of a heavy-parallel-Docker session. Run it first, in isolation, before the concurrent agents saturate the environment.
+2. `scripts/docker-visual-test.sh` should add a "pre-flight" mode that checks SwiftShader GPU resource availability before attempting a container boot and refuses to start if the host is already saturated.
+3. If you absolutely MUST run visual verify after saturation, restart Docker Desktop / `docker system prune -a` / give the host 5-10 minutes idle before trying.
+
+**Status:** CRITICAL-3 is effectively closed via unit tests but visual verify remains open as follow-up.
