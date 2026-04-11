@@ -3653,3 +3653,17 @@ denies), receipt validation for old purchases will fail.
 - `isItemExpandable`: early return `false` when `item.subDeckId` is truthy.
 - `itemProg`: `item.subDeckId ? getSubDeckProgress(deckId, subDeckId) : getDeckProgress(deckId)`.
 - Expanded panel sub-deck list guard: `{#if !item.subDeckId && entry.subDecks && entry.subDecks.length > 0}`.
+
+### 2026-04-11 — Silent worktree fallback on Agent dispatch
+
+A ui-agent dispatch earlier in this session was called with `isolation: "worktree"` per the mandatory-worktree policy. The harness accepted the parameter but silently fell back to shared `main`. The agent's return summary included `worktreePath: /Users/damion/CODE/Recall_Rogue` and `worktreeBranch: undefined`. No entry was created in `.claude/worktrees/` or `.git/worktrees/`. The `WorktreeCreate` hook (`scripts/setup-worktree.sh`) never fired. The sub-agent committed its fix (`0a54b84b9 fix(ui): custom deck view no longer leaks parent deck subDecks into sub-deck items`) directly on main.
+
+Nothing broke this time because a parallel session's commit (`f5a4a9542 feat(ui): disable BossPreviewBanner render in DungeonMap`) had landed about 8 minutes earlier. Their file sets were completely disjoint — `DungeonMap.svelte` vs `CustomDeckViewModal.svelte` — so there was no `git add` race and no bundling collision. Luck, not safety.
+
+The root cause is partially understood. The scripts themselves work: running `scripts/setup-worktree.sh` from inside the repo with a synthetic JSON payload on stdin creates the worktree cleanly, symlinks `node_modules`, and prints the path. The gap is in the harness layer — either the Claude Code build in use does not honor the documented `isolation: "worktree"` parameter, or it does but the `WorktreeCreate` hook dispatch path is broken in some conditions.
+
+Two defences are now wired in. First, item 11 in the Sub-Agent Prompt Template (`.claude/rules/agent-routing.md`) requires every sub-agent to run `git rev-parse --show-toplevel && git rev-parse --abbrev-ref HEAD` as its very first Bash call and ABORT if it finds itself on `main`. Silent fallback becomes loud fallback. Second, the orchestrator now has a documented manual fallback procedure (`.claude/rules/git-workflow.md` → "Silent Harness Fallback — Manual Worktree Procedure"): invoke `scripts/setup-worktree.sh` directly with a synthetic JSON payload, embed the worktree path in the next sub-agent prompt via a `[WORKTREE: <path>]` marker, and merge via `scripts/merge-worktree.sh` on return. The `pre-tool-agent-worktree.sh` hook was extended to recognise the marker and allow the dispatch to proceed without the `isolation` parameter, after confirming the marker points at a real registered worktree.
+
+This gotcha entry was itself written using the manual fallback procedure end-to-end, as the dogfood proof that it works. If the self-check at the top of the sub-agent task showed the correct worktree path and branch, the procedure is confirmed working.
+
+What to watch for next: any future dispatch where the item 11 self-check shows `toplevel=/Users/damion/CODE/Recall_Rogue, branch=main` is a silent fallback. Do not retry with stronger prompt wording — retry via the manual fallback. If silent fallback happens repeatedly, Mode A (isolation parameter) should be demoted to optional and Mode B (manual pre-creation) becomes the default.
