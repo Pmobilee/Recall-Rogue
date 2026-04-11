@@ -77,6 +77,7 @@ If you can only answer one side, the rule is fragile. Plan the other side at the
 | Save-file Set/Map rehydration | `scripts/lint/check-set-map-rehydration.mjs` | `scripts/hooks/post-edit-check-rehydration.sh` PostToolUse |
 | UI softlock prevention | `scripts/lint/check-escape-hatches.mjs` | `scripts/hooks/post-edit-check-escape-hatches.sh` PostToolUse |
 | No hardcoded px | lint-hardcoded-px.mjs (pre-commit warning) | *Missing runtime hook — future work* |
+| Resolver hardcodes (four-source rule) | `scripts/lint/check-resolver-hardcodes.mjs` (`npm run lint:resolver`) | existing unit tests + card-description audit (2026-04-11) |
 | Docker visual verify | *Missing author-time check* | `.claude/hooks/pre-commit-verify.sh` runs Docker verify |
 
 Rules marked "Missing ..." are single-sided and therefore drift-prone. Adding the missing side is always a Green-zone follow-up.

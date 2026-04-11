@@ -3156,3 +3156,15 @@ There is an existing comment `// put on top` at `turnManager.ts` line 2224 that 
 3. If you absolutely MUST run visual verify after saturation, restart Docker Desktop / `docker system prune -a` / give the host 5-10 minutes idle before trying.
 
 **Status:** CRITICAL-3 is effectively closed via unit tests but visual verify remains open as follow-up.
+
+### 2026-04-11 — ap_world_history batch substitution scars: 57 "ProperNoun this" grammar breaks
+
+**What:** A batch content pipeline run replaced specific proper nouns/phrases with the placeholder word "this" during substitution, then failed to restore them. Result: 57 quizQuestion fields in `ap_world_history.json` contained broken grammar like "Rape of this", "Ho Chi this", "Song Dynasty this system", "European Union this in 1999", etc.
+
+**Why:** The 2026-04-09 content pipeline batch rewrite used "this" as a substitution token in templates. The restoration step was skipped or partially failed. The grammar scar check in `verify-all-decks.mjs` (Check #25) did not flag the pattern `[Word] this [noun/verb]` — it caught double-article forms ("the this", "a this") but missed the proper-noun-preceding form.
+
+**Detection:** BATCH-ULTRA T6 content-sample audit (track 06) flagged the issue as HIGH. The audit report (at `data/playtests/llm-batches/BATCH-2026-04-11-ULTRA/tracks/06-content-sample/report.md`) listed 10+ examples; full audit via grep revealed 57 affected quizQuestions.
+
+**Fix:** Manual inventory of all 78 `" this"` patterns in quizQuestion fields. 57 were confirmed scars; 21 were legitimate demonstrative pronouns. Each scar was rewritten by reading the surrounding context (correctAnswer, explanation, distractors) to determine the original substitution target. All fixes are historically accurate and verified.
+
+**Prevention:** Add the pattern `\b[A-Z][a-z]+ this\b` (capitalized word followed by "this") and `\bpredict this \b` to `scripts/content-pipeline/grammar-scar-patterns.json`. Also: grep for sentences starting with lowercase "this" after a period (mid-sentence fragment starting with the placeholder).

@@ -445,3 +445,35 @@ A field with `.default(...)` in the schema is treated as optional (Zod supplies 
 **Fix:** When this lint fails, align the flagged field(s) in `src/data/curatedDeckSchema.ts` or `src/data/curatedDeckTypes.ts` — add missing fields, remove extras, or reconcile `?` / `.optional()` markers.
 
 **Context:** Added 2026-04-11 after `06097f1c7` introduced Zod schemas with no automated sync check. Optionality check added 2026-04-11 (commit extends the lint). See `docs/gotchas.md` "2026-04-11 — Deck schema drift lint extended: required/optional alignment check".
+
+### Resolver Hardcode Lint (`lint:resolver`)
+
+```bash
+npm run lint:resolver          # Full report
+node scripts/lint/check-resolver-hardcodes.mjs
+```
+
+Detects **four-source rule violations** in `src/services/cardEffectResolver.ts` — numeric literals used as effect-quantity values (damage, heal, block, AP, status stacks) inside `case '<mechanicId>':` blocks of `resolveCardEffect`.
+
+**The four-source rule:** every effect-quantity value must come from one of:
+1. `stats?.extras?.['field']` — mastery stat table (the canonical source)
+2. `mechanic?.quickPlayValue` / `mechanic?.secondaryValue` — mechanic definition fallback
+3. `finalValue` / `mechanicBaseValue` — pipeline-computed value (already scales with mastery)
+4. An `UPPERCASE_CONSTANT` imported from `src/data/balance.ts`
+
+Hardcoded literals (e.g. `result.healApplied = 6`) cause card-description drift: when stat tables are updated, the description changes but the resolver doesn't (or vice versa). This was identified as Severity-A in the 2026-04-11 card-description audit; 11 mechanics were affected.
+
+**Allowlisted (never flagged):**
+- `value: 1` for boolean-like status stacks (Vulnerable, Weakness are always 1 stack = on/off)
+- Literals that appear as digits within a `hasTag('...')` call in the surrounding 6-line context (tag-name-encoded values, e.g. `sap_strip3block` encodes `3`)
+- Fallbacks immediately after `mechanic?.` or `stats?.` (e.g. `mechanic?.secondaryValue ?? 3`)
+- Scheduling fields: `turnsRemaining`, `turns`, `extraCardsDrawn`, `pickCount`, etc.
+- Comparison operands: `>= 3`, `< 0.3`, `=== 0`
+- `Math.*` arguments
+- Lines with `// lint-allow: resolver-hardcode — <reason>` comment
+
+**Exit codes:** 0 = clean, 1 = violations.
+
+**NOT wired into pre-commit** — run standalone after resolver edits. To make it blocking, add `node scripts/lint/check-resolver-hardcodes.mjs` to `.claude/hooks/pre-commit-verify.sh`.
+
+**Context:** Added 2026-04-11 as the preventative side of two-sided enforcement for the four-source rule. See `docs/gotchas.md` 2026-04-11 "card-description-audit Severity-A hardcodes" and `.claude/rules/agent-mindset.md` two-sided enforcement table.
