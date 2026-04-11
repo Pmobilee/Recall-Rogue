@@ -1,0 +1,41 @@
+LAYOUT DUMP  2026-04-11T02:09:31.944Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.run-preview-screen.svelte-2tbag8]                         (0, 0)  1920x1080       HIDDEN
+      [header.screen-header.svelte-2tbag8]                         (0, 0)  1920x155      
+        [h1.screen-title.svelte-2tbag8]                            (72, 48)  1776x45       "YOUR KNOWLEDGE CHAINS"
+        [p.screen-subtitle.svelte-2tbag8]                          (72, 105)  1776x20      "Topics are distributed across your three chain col"
+      [p]                                                          (770, 533)  380x30      "Preparing your knowledge chains..."
+      [footer.screen-footer.svelte-2tbag8]                         (0, 941)  1920x139    
+        [span.legend-item.legend-item--new.svelte-2tbag8]          (72, 996)  57x18        "N = New"
+        [span.legend-item.legend-item--learning.svelte-2tbag8]     (159, 996)  86x18       "L = Learning"
+        [span.legend-item.legend-item--review.svelte-2tbag8]       (275, 996)  74x18       "R = Review"
+        [span.legend-item.legend-item--mastered.svelte-2tbag8]     (380, 996)  94x18       "M = Mastered"
+        [div.action-buttons.svelte-2tbag8]                         (1259, 972)  589x66   
+          [button.btn-secondary.svelte-2tbag8]                     (1259, 972)  213x66     "Shuffle Chains"
+          [button.btn-primary.svelte-2tbag8]                       (1496, 972)  352x66     "Begin Expedition"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.run-preview-screen.svelte-2tbag8], [p], [div.screen-transition.svelte-2meh4s]
+  TOP-CENTER         → [header.screen-header.svelte-2tbag8], [h1.screen-title.svelte-2tbag8], [p.screen-subtitle.svelte-2tbag8]
+  BOTTOM-CENTER      → [footer.screen-footer.svelte-2tbag8]
+  BOTTOM-RIGHT       → [div.action-buttons.svelte-2tbag8], [button.btn-secondary.svelte-2tbag8], [button.btn-primary.svelte-2tbag8]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.run-preview-screen.svelte-2tbag8]             covers 100% height  CENTER
+  [header.screen-header.svelte-2tbag8]               covers 14% height  TOP-CENTER
+  [footer.screen-footer.svelte-2tbag8]               covers 13% height  BOTTOM-CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 15 DOM elements) —

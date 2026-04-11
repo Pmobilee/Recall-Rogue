@@ -1,0 +1,36 @@
+STATE: state-03-08 | Floor 5 | Proctor (block-stacker + Strength 2) | Mid Game
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 13, block 6 (gaining 6 more = 12 total). Strength 2. Intent: Defend.
+- Player: 44/80 HP, 3 AP, chain 2 (×1.2). Vitality Ring (+20 max HP, so actual max HP accounting for ring).
+- 3 AP budget with chain 2 active.
+
+OPTION ANALYSIS:
+Double Strike(CC,3ap) effect: next attack hits twice at full power + pierce. Costs 2+1=3ap. 0 AP left. Need to play an attack AFTER, but have no AP. So Double Strike alone doesn't deal damage.
+
+Double Strike(QP,2ap) + Piercing(QP,1ap) = 3ap. Double Strike buffs next attack to hit twice. Piercing hits twice (due to Double Strike), bypasses block both times, not pierced. Each hit = 3×1.2 = 3.6→3 dmg. Two hits = 6 dmg. Enemy: 7 HP.
+
+Double Strike(CC,3ap) uses all AP. Can't play Piercing after. USELESS combo.
+
+Better option: Weaken(QP,1ap) + Piercing(QP,1ap) + Piercing... only 1 Piercing in hand.
+
+Recycle(CC,2ap): draws 3 cards + recovers from discard. Costs 2+1=3ap. 0 AP left. But draws 3 = may find more piercing/heavy attacks. Gambling on next hand.
+
+Heavy Strike assessment:
+- Heavy Strike(QP,2ap) vs 12 block = 10 dmg - 12 block = 0 dmg (absorbed). Useless with block up.
+- Heavy Strike(CC,3ap) = floor(10×1.5)×1.2 = 15×1.2=18 dmg. vs 12 block = 6 dmg through. Enemy: 7 HP. Not killed.
+
+Piercing(CC,2ap) = floor(3×1.5)×1.2 = 4×1.2=4.8→4 dmg (bypasses 12 block). Enemy: 9 HP. 1AP left → Weaken(QP,1ap). Enemy weakened for next turn.
+
+BEST SEQUENCE: Piercing(CC,2ap) = 4 to HP. Weaken(QP,1ap) = apply weakness. 3 AP used. Enemy: 9 HP, weakened. Incoming defend just adds more block (which Piercing ignores). The weakened status reduces future attacks.
+
+ALTERNATIVE: Double Strike(QP,2ap) + Piercing(QP,1ap) = 6 dmg (2×3) to HP through block. Enemy: 7 HP. 3 AP used.
+
+TENSION: Double Strike path vs Piercing CC path. Both deal ~4-6 to HP. Chain 2 active. Recycle gamble.
+
+DEAD CARDS: Heavy Strike without a pierce combo. Fortify (player block=0).
+
+DESIGN NOTE: Proctor's block-stacking plus Strength creates a war of attrition that genuinely punishes QP-only strategies (no Charge = more Strength). The 3-AP constraint is real: you can Charge one card OR play two QP cards, but Double Strike+attack combos require 4+ AP. Double Strike is structurally weak here with only 3 AP. This is a known mechanical constraint that creates interesting sub-optimal traps.
+
+SURVIVAL ODDS: 6/10. Proctor will not die quickly. Extended fight ahead.

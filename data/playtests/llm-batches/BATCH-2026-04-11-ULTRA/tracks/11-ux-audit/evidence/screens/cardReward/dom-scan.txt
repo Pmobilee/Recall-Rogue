@@ -1,0 +1,88 @@
+LAYOUT DUMP  2026-04-11T01:58:10.655Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.topbar.svelte-1ramr3r]                                    (0, 0)  1920x49         HIDDEN
+      [div.hp-group.svelte-1ramr3r]                                (18, 9)  622x28       
+        [div.hp-bar-track.svelte-1ramr3r]                          (18, 9)  622x28       
+          [div.hp-bar-fill.svelte-1ramr3r]                         (19, 10)  620x26      
+          [span.hp-text.svelte-1ramr3r]                            (19, 15)  620x15      
+            [span.hp-value.svelte-1ramr3r]                         (297, 15)  64x15        "100/100"
+      [span.segment-name.svelte-1ramr3r]                           (1393, 15)  99x16       "Shallow Depths"
+      [span.progress-divider.svelte-1ramr3r]                       (1503, 17)  3x13        "·"
+      [span.floor-label.svelte-1ramr3r]                            (1518, 15)  38x16       "Floor 1"
+      [div.gold-counter.svelte-1ramr3r]                            (1581, -1)  68x48     
+        [span.gold-value.svelte-1ramr3r]                           (1612, 15)  36x15       "0"
+      [div.relics-row.svelte-1ramr3r]                              (1660, 7)  176x32     
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1660, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1696, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1732, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1768, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1804, 7)  32x32      
+      [button.pause-btn.svelte-1ramr3r]                            (1854, -1)  48x48     
+        [span.pause-icon.svelte-1ramr3r]                           (1861, 9)  33x27        "⚙"
+    [canvas]                                                       (0, 0)                  HIDDEN
+    [div.reward-screen.svelte-1lvanm6.landscape.card-phase]        (0, 0)  1920x1080       HIDDEN
+      [img.overlay-bg.svelte-1lvanm6]                              (0, 0)  1910x1080     
+      [h1.svelte-1lvanm6]                                          (93, -157)  1725x86     "Choose a Card"
+      [p.svelte-1lvanm6]                                           (93, -63)  1725x41      "Cavern Altar • Cold stone and echoing depth."
+      [button] data-testid="reward-card-0"                         (126, 47)  517x675    
+        [div.card-v2-frame.svelte-1lvanm6]                         (126, 56)  517x666    
+          [img.frame-card-art.svelte-1lvanm6]                      (228, 164)  317x246   
+        [div.mini-card-ap.svelte-1lvanm6]                          (137, 67)  45x45        "1"
+        [div.mini-card-name.svelte-1lvanm6]                        (313, 542)  142x54      "Strike"
+        [div.mini-card-desc.svelte-1lvanm6]                        (327, 603)  113x47      "Deal 8"
+        [div.mini-card-domain-bar.svelte-1lvanm6]                  (126, 713)  517x9     
+      [button] data-testid="reward-card-1"                         (696, 47)  517x675    
+        [div.card-v2-frame.svelte-1lvanm6]                         (696, 56)  517x666    
+          [img.frame-card-art.svelte-1lvanm6]                      (799, 164)  317x246   
+        [div.mini-card-ap.svelte-1lvanm6]                          (708, 67)  45x45        "1"
+        [div.mini-card-name.svelte-1lvanm6]                        (890, 542)  129x54      "Block"
+        [div.mini-card-desc.svelte-1lvanm6]                        (896, 603)  117x47      "Gain 6"
+        [div.mini-card-domain-bar.svelte-1lvanm6]                  (696, 713)  517x9     
+      [button] data-testid="reward-card-2"                         (1267, 47)  517x675   
+        [div.card-v2-frame.svelte-1lvanm6]                         (1267, 56)  517x666   
+          [img.frame-card-art.svelte-1lvanm6]                      (1370, 164)  317x246  
+        [div.mini-card-ap.svelte-1lvanm6]                          (1279, 67)  45x45       "2"
+        [div.mini-card-name.svelte-1lvanm6]                        (1382, 542)  287x54     "Heavy Strike"
+        [div.mini-card-desc.svelte-1lvanm6]                        (1459, 603)  135x47     "Deal 20"
+        [div.mini-card-domain-bar.svelte-1lvanm6]                  (1267, 713)  517x9    
+      [h2.svelte-1lvanm6]                                          (121, 903)  1668x81     "Inspect a card"
+      [p.inspect-summary.svelte-1lvanm6]                           (121, 1002)  1668x41    "Click a card on the altar to reveal details."
+      [button] data-testid="reward-reroll"                         (55, 871)  1800x90      "Reroll"
+      [button.skip.svelte-1lvanm6]                                 (55, 979)  891x117      "Skip"
+      [button.accept.svelte-1lvanm6] data-testid="reward-accept"   (964, 979)  891x117     "Accept"
+    [div.parallax-transition-overlay.svelte-1lwegjf.settled]       (0, 0)  1920x1080       HIDDEN
+      [canvas.parallax-canvas.svelte-1lwegjf]                      (0, 0)  1920x1080     
+    [div.screen-transition.svelte-2meh4s.wipe-zoom]                (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.reward-screen.svelte-1lvanm6.landscape.card-phase], [img.overlay-bg.svelte-1lvanm6], [button] data-testid="reward-card-1", [div.card-v2-frame.svelte-1lvanm6] (+6 more)
+  TOP-CENTER         → [div.topbar.svelte-1ramr3r], [h1.svelte-1lvanm6], [p.svelte-1lvanm6], [img.frame-card-art.svelte-1lvanm6]
+  TOP-LEFT           → [div.hp-group.svelte-1ramr3r], [div.hp-bar-track.svelte-1ramr3r], [div.hp-bar-fill.svelte-1ramr3r], [span.hp-text.svelte-1ramr3r], [img.frame-card-art.svelte-1lvanm6]
+  TOP-RIGHT          → [div.relics-row.svelte-1ramr3r], [img.frame-card-art.svelte-1lvanm6]
+  MIDDLE-LEFT        → [button] data-testid="reward-card-0", [div.card-v2-frame.svelte-1lvanm6], [div.mini-card-name.svelte-1lvanm6], [div.mini-card-desc.svelte-1lvanm6], [div.mini-card-domain-bar.svelte-1lvanm6]
+  MIDDLE-RIGHT       → [button] data-testid="reward-card-2", [div.card-v2-frame.svelte-1lvanm6], [div.mini-card-name.svelte-1lvanm6], [div.mini-card-desc.svelte-1lvanm6], [div.mini-card-domain-bar.svelte-1lvanm6]
+  BOTTOM-CENTER      → [h2.svelte-1lvanm6], [p.inspect-summary.svelte-1lvanm6], [button] data-testid="reward-reroll"
+  BOTTOM-LEFT        → [button.skip.svelte-1lvanm6]
+  BOTTOM-RIGHT       → [button.accept.svelte-1lvanm6] data-testid="reward-accept"
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.reward-screen.svelte-1lvanm6.landscape.card   covers 100% height  CENTER
+  [img.overlay-bg.svelte-1lvanm6]                    covers 100% height  CENTER
+  [button] data-testid="reward-card-0"               covers 63% height  MIDDLE-LEFT
+  [div.card-v2-frame.svelte-1lvanm6]                 covers 62% height  MIDDLE-LEFT
+  [button] data-testid="reward-card-1"               covers 63% height  CENTER
+  [div.card-v2-frame.svelte-1lvanm6]                 covers 62% height  CENTER
+  [button] data-testid="reward-card-2"               covers 63% height  MIDDLE-RIGHT
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 54 DOM elements) —

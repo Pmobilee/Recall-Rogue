@@ -1,0 +1,78 @@
+{
+  "auditLabel": "math-random-exposure-in-coop-critical-paths",
+  "performedAt": "2026-04-11",
+  "methodology": "Static source scan of all Math.random() calls in src/services/ and src/data/; classified by co-op shared-state impact",
+  "recentlyFixed": [
+    {
+      "file": "src/services/enemyManager.ts",
+      "line": 56,
+      "context": "weightedRandomIntent — now uses 'enemyIntents' seeded fork",
+      "fixDate": "2026-04-09",
+      "status": "FIXED"
+    },
+    {
+      "file": "src/services/encounterBridge.ts",
+      "context": "Enemy pool selection block — now uses 'enemyPool' seeded fork",
+      "fixDate": "2026-04-09",
+      "status": "FIXED"
+    },
+    {
+      "file": "src/services/mapGenerator.ts",
+      "context": "assignEnemyIds — local rng param threaded through pickCombatEnemy/getMiniBossForFloor/weightedEnemyPick",
+      "fixDate": "2026-04-09",
+      "status": "FIXED"
+    }
+  ],
+  "remainingExposure": [
+    {
+      "file": "src/services/relicEffectResolver.ts",
+      "line": 1647,
+      "context": "crit_lens — 25% crit chance check: Math.random() < 0.25",
+      "coopImpact": "CRITICAL",
+      "reason": "Both co-op clients independently roll crit; one may crit and the other not. This produces different damage dealt to the shared enemy even within the same turn, potentially causing delta divergence after reconciliation."
+    },
+    {
+      "file": "src/services/relicEffectResolver.ts",
+      "line": 1712,
+      "context": "obsidian_dice — 50% multiplier branch: Math.random() < 0.50",
+      "coopImpact": "CRITICAL",
+      "reason": "Same as crit_lens — independently rolled per client. The two delta computations sent to the barrier will have different damage values depending on the roll outcome."
+    },
+    {
+      "file": "src/services/relicAcquisitionService.ts",
+      "lines": [73, 93],
+      "context": "Relic reward acquisition rarity roll and candidate pick",
+      "coopImpact": "HIGH",
+      "reason": "If co-op has a shared reward screen (architecture doc suggests it may), both clients independently pick a relic from the pool. They could surface different rarities and different relics to the player."
+    },
+    {
+      "file": "src/services/shopService.ts",
+      "lines": [87, 93, 98, 232],
+      "context": "Shop relic selection (rarity and candidate pick)",
+      "coopImpact": "MEDIUM",
+      "reason": "In solo/race mode this is per-player. If co-op ever shares a shop, this would desync. Currently co-op mode does not appear to use a shared shop, so impact is deferred."
+    },
+    {
+      "file": "src/services/randomUtils.ts",
+      "line": 8,
+      "context": "Fisher-Yates shuffle — used in deck manager for card ordering",
+      "coopImpact": "MEDIUM",
+      "reason": "Card draw order divergence between peers. In co-op the deck is per-player so this does not affect shared state directly, but replay determinism would be broken."
+    },
+    {
+      "file": "src/services/quizService.ts",
+      "lines": [145, 255],
+      "context": "Distractor selection and shuffle",
+      "coopImpact": "LOW",
+      "reason": "Quiz answer options are per-player UI, not shared game state. No desync risk for shared enemy HP."
+    }
+  ],
+  "summary": {
+    "critical": 2,
+    "high": 1,
+    "medium": 2,
+    "low": 2,
+    "totalUnprotected": 7,
+    "recentlyFixed": 3
+  }
+}

@@ -1,0 +1,29 @@
+STATE: state-03-01 | Floor 1 | Page Flutter | Early Game
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback per track constraints)
+
+COMBAT MATH:
+- Enemy HP: 7, no block. Intent: Attack 9.
+- Player HP: 72/80, 3 AP, chain 0, Whetstone (+3 attack dmg).
+- Whetstone makes Strike QP = 4+3 = 7 dmg. Charge Correct = floor(7×1.5) = 10 dmg.
+
+OPTION ANALYSIS:
+1. Strike (QP, 1ap) → 7 dmg. Two Strikes = 14 dmg → kills (7 HP).
+2. Strike (Charge Correct, 2ap) → 10 dmg → kills alone. Leaves 1 AP.
+3. Empower (QP, 1ap) + Strike (QP, 1ap) = 1ap + 1ap = 2ap → Strike does 7×1.5=10.5→10 dmg. Kills. Leaves 1 AP for Block (5-1=4 block from Whetstone penalty). OR:
+4. Empower (QP, 1ap) + Strike (CC, 2ap) = 3ap total = 0 AP left. Strike deals 10×1.5 = 15 dmg. Kills, no block possible.
+5. Scout (QP, 1ap) → draws 2, but wastes AP when enemy is at full HP and easily killable.
+6. Block (QP, 1ap) → 5-1=4 block (Whetstone penalty). Reduces 9 dmg to 5. Not efficient.
+
+DOMINANT CHOICE: Empower + Strike(QP) = kills in 2 AP, 1 AP left for Block(4) = both kills AND absorbs the 9-dmg attack with 4 block (so take 5 dmg instead of 9). OR just Strike + Strike QP in 2 AP = kills, leaves 1 AP for Block.
+
+ACTUALLY OPTIMAL: Strike(QP,1ap) + Strike(QP,1ap) = 14 dmg, kills. 1 AP left → Block(QP) = 4 block, absorbs 4 of 9 incoming. Net HP loss = 5.
+
+ALTERNATIVE: Empower(QP,1ap) + Strike(QP,1ap) = 10 dmg, kills, 1 AP left → Block(4 block). Same net result.
+
+DEAD CARDS: Scout — useless when enemy is almost dead. Block alone — no need to survive multiple turns.
+
+IS THERE TENSION? Minimal. The enemy is trivially killable with 2 basic attacks. The only "tension" is: do you spend 3 AP to zero out the incoming damage vs 2 AP to kill and absorb partial damage? This is not meaningful tension for experienced players.
+
+SURVIVAL ODDS: 9/10. Player cannot die here.
+
+DESIGN NOTE: This state is intentionally easy (Floor 1). No meaningful decision — just kill the enemy. Empower feels intuitive but is not strictly necessary. Scout is a dead card.

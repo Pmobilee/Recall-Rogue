@@ -1,0 +1,36 @@
+{
+  "stateId": "state-03-17",
+  "bucket": "edge_case",
+  "floor": 4,
+  "description": "Edge: Player at critical HP (<30%), multiple threshold cards active",
+  "enemy": {
+    "id": "plagiarist",
+    "name": "The Plagiarist",
+    "currentHP": 8,
+    "maxHP": 11,
+    "block": 0,
+    "intent": { "type": "attack", "value": 8, "telegraph": "Serpent lunge" },
+    "statusEffects": [
+      { "type": "strength", "value": 3, "turnsRemaining": 9999, "note": "Gained from turn 4+ escalation (3 turns)" }
+    ],
+    "special": "onEnemyTurnStart: from turn 4+, gains +1 Strength each turn. Currently turn 7, has 3 stacks."
+  },
+  "player": {
+    "currentHP": 14,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 0
+  },
+  "hand": [
+    { "id": "emergency", "name": "Emergency", "type": "shield", "apCost": 1, "quickPlayValue": 2, "chargeCorrectValue": 6, "chargeWrongValue": 2, "description": "Gain block. DOUBLE if HP below 30%. Player at 17.5% HP — doubles! QP=4, CC=12." },
+    { "id": "execute", "name": "Execute", "type": "attack", "apCost": 1, "quickPlayValue": 3, "chargeCorrectValue": 9, "chargeWrongValue": 2, "description": "Bonus damage below 30% enemy HP. Enemy at 73% — NO bonus yet." },
+    { "id": "lifetap", "name": "Lifetap", "type": "attack", "apCost": 2, "quickPlayValue": 4, "chargeCorrectValue": 12, "chargeWrongValue": 3, "description": "Deal damage. Heal 20% of damage dealt." },
+    { "id": "overheal", "name": "Overheal", "type": "shield", "apCost": 2, "quickPlayValue": 5, "chargeCorrectValue": 15, "chargeWrongValue": 4, "description": "Gain 10 block. DOUBLE if HP below 50%. Player at 17.5% — doubles! QP=10, CC=30." },
+    { "id": "reckless", "name": "Reckless", "type": "attack", "apCost": 1, "quickPlayValue": 6, "chargeCorrectValue": 18, "chargeWrongValue": 4, "description": "High damage, self-damage (3 HP). At 14 HP, self-damage leaves 11 HP then enemy hits for 8+Str3=11... death?" }
+  ],
+  "relics": [
+    { "id": "last_breath", "name": "Last Breath", "description": "Once per run, survive a killing blow with 1 HP." }
+  ],
+  "notes": "EDGE CASE: Player at 14 HP (< 30% of 80 = 24 HP). Both Emergency and Overheal trigger double effects. Reckless would leave player at 11, then enemy hits for 8+Strength3 = 11+ multiplier. Last Breath relic can save once. Execute gets no bonus (enemy at 73%). Overheal (doubled) = 20 block for 2 AP blocks the incoming 11+dmg. Emergency (doubled) = 12 block for 1 AP. These thresholds make this state rich with double-effect synergies. Is there a dominant defensive play?"
+}

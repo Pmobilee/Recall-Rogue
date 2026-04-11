@@ -1,0 +1,108 @@
+LAYOUT DUMP  2026-04-11T02:05:39.136Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (1084, 562)  121x30     depth:2  α:0.30
+  [Ellipse]                                      (903, 393)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (888, 650)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (765, 528)  54x13       depth:2  α:0.30
+  [Image]                                        (1084, 530)  173x173    depth:3  frame:__BASE  tex:gold_tier_2  rot:7°
+  [Container]                                    (903, 370)  96x124      depth:3  children:3  rot:8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_attack
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_heavy_strike
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (888, 627)  96x124      depth:3  children:3  rot:-8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_block
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Image]                                        (765, 513)  77x203      depth:3  frame:__BASE  tex:vial_large  rot:-4°
+  [Arc]                                          (1057, 504)  5x5        depth:4  α:0.80
+  [Arc]                                          (1205, 244)  4x4        depth:5  α:0.43
+  [Arc]                                          (277, 170)  4x4         depth:5  α:0.63
+  [Arc]                                          (1522, 337)  7x7        depth:5  α:0.68
+  [Arc]                                          (1002, 227)  6x6        depth:5  α:0.67
+  [Arc]                                          (819, 172)  3x3         depth:5  α:0.51
+  [Arc]                                          (409, 34)  5x5          depth:5  α:0.64
+  [Arc]                                          (1819, 224)  6x6        depth:5  α:0.63
+  [Arc]                                          (74, 240)  5x5          depth:5  α:0.62
+  [Arc]                                          (637, 283)  6x6         depth:5  α:0.68
+  [Arc]                                          (1616, 231)  3x3        depth:5  α:0.53
+  [Arc]                                          (377, 193)  4x4         depth:5  α:0.56
+  [Arc]                                          (1248, 214)  4x4        depth:5  α:0.61
+  [Arc]                                          (1622, 100)  3x3        depth:5  α:0.53
+  [Arc]                                          (1638, 192)  3x3        depth:5  α:0.54
+  [Arc]                                          (80, 359)  5x5          depth:5  α:0.62
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.topbar.svelte-1ramr3r]                                    (0, 0)  1920x49         HIDDEN
+      [div.hp-group.svelte-1ramr3r]                                (18, 9)  622x28       
+        [div.hp-bar-track.svelte-1ramr3r]                          (18, 9)  622x28       
+          [div.hp-bar-fill.svelte-1ramr3r]                         (19, 10)  620x26      
+          [span.hp-text.svelte-1ramr3r]                            (19, 15)  620x15      
+            [span.hp-value.svelte-1ramr3r]                         (297, 15)  64x15        "100/100"
+      [span.segment-name.svelte-1ramr3r]                           (1393, 15)  99x16       "Shallow Depths"
+      [span.progress-divider.svelte-1ramr3r]                       (1503, 17)  3x13        "·"
+      [span.floor-label.svelte-1ramr3r]                            (1518, 15)  38x16       "Floor 1"
+      [div.gold-counter.svelte-1ramr3r]                            (1581, -1)  68x48     
+        [span.gold-value.svelte-1ramr3r]                           (1612, 15)  36x15       "0"
+      [div.relics-row.svelte-1ramr3r]                              (1660, 7)  176x32     
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1660, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1696, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1732, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1768, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1804, 7)  32x32      
+      [button.pause-btn.svelte-1ramr3r]                            (1854, -1)  48x48     
+        [span.pause-icon.svelte-1ramr3r]                           (1861, 9)  33x27        "⚙"
+    [canvas]                                                       (0, 0)                  HIDDEN
+    [div.mastery-challenge-overlay.svelte-16mdp51]                 (0, 0)  1920x1080       HIDDEN
+      [h2.svelte-16mdp51]                                          (715, 330)  446x108     "Mastery Challenge"
+      [span.timer.svelte-16mdp51]                                  (1161, 370)  44x29      "4s"
+      [div.timer-bar.svelte-16mdp51]                               (715, 448)  490x10    
+      [p.sub.svelte-16mdp51]                                       (715, 468)  490x18      "Relic check for: What is the approximate speed of "
+      [p.question.svelte-16mdp51] data-testid="mastery-question"   (715, 496)  490x28      "What is the approximate speed of light in a vacuum"
+      [button] data-testid="mastery-answer-0"                      (715, 534)  490x48      "1,000,000 km/s"
+      [button] data-testid="mastery-answer-1"                      (715, 590)  490x48      "150,000 km/s"
+      [button] data-testid="mastery-answer-2"                      (715, 646)  490x48      "3,000 km/s"
+      [button] data-testid="mastery-answer-3"                      (715, 702)  490x48      "299,792 km/s"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Image] (+5 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+10 more)
+  TOP-CENTER         → [Arc], [Arc], [Arc], [Arc], [Arc] (+1 more)
+  TOP-RIGHT          → [Arc], [Arc], [Arc], [Arc], [Arc] (+1 more)
+  MIDDLE-LEFT        → [Arc]
+  BOTTOM-CENTER      → [Container] continueButton
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.mastery-challenge-overlay.svelte-16mdp51]     covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Cross-layer proximity (nearest DOM testid to each Phaser object):
+  [Image]                                is 18px ABOVE mastery-answer-0
+  [Ellipse]                              is 124px BELOW mastery-answer-0
+  [Ellipse]                              is 130px ABOVE mastery-question
+  [Ellipse]                              is 75px ABOVE mastery-answer-2
+  [Ellipse]                              is 196px BELOW mastery-question
+  [Image]                                is 126px BELOW mastery-question
+  [Container]                            is 151px ABOVE mastery-question
+
+  Layer overlap check:
+  ⚠ [Image] OVERLAPS mastery-question
+  ⚠ [Image] OVERLAPS mastery-answer-0
+  ⚠ [Image] OVERLAPS mastery-answer-1
+  ⚠ [Image] OVERLAPS mastery-answer-2
+  ⚠ [Image] OVERLAPS mastery-answer-3
+  ⚠ [Ellipse] OVERLAPS mastery-answer-0
+
+
+— END LAYOUT DUMP (34 Phaser objects, 32 DOM elements) —

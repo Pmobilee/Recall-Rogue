@@ -1,0 +1,21 @@
+{
+  "runLabel": "enemy-intent-run-B",
+  "seed": 42,
+  "enemy": "margin_gremlin",
+  "floor": 1,
+  "turnsRecorded": 11,
+  "intents": [
+    {"turn": 0, "type": "buff", "value": 1},
+    {"turn": 1, "type": "attack", "value": 9},
+    {"turn": 2, "type": "attack", "value": 9},
+    {"turn": 3, "type": "buff", "value": 1},
+    {"turn": 4, "type": "attack", "value": 9},
+    {"turn": 5, "type": "attack", "value": 9},
+    {"turn": 6, "type": "attack", "value": 9},
+    {"turn": 7, "type": "attack", "value": 9},
+    {"turn": 8, "type": "attack", "value": 9},
+    {"turn": 9, "type": "attack", "value": 8},
+    {"turn": 10, "type": "attack", "value": 9}
+  ],
+  "note": "Identical to run-A — determinism confirmed"
+}

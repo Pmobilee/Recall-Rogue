@@ -1,0 +1,70 @@
+{
+  "trackId": "07-mode-coverage",
+  "batchId": "BATCH-2026-04-11-ULTRA",
+  "completedAt": "2026-04-11T11:10:00Z",
+  "agent": "ui-agent (claude-sonnet-4-6)",
+  "modesTested": 5,
+  "modesLoadable": 3,
+  "modesFunctional": 2,
+  "modesBroken": 2,
+  "modesMissing": 1,
+  "issueCount": 6,
+  "issuesBySeverity": {
+    "critical": 1,
+    "high": 3,
+    "medium": 1,
+    "low": 1,
+    "cosmetic": 0
+  },
+  "containersUsed": [
+    "BATCH-ULTRA-t7b",
+    "BATCH-ULTRA-t7map2",
+    "BATCH-ULTRA-t7proc",
+    "BATCH-ULTRA-t7study2",
+    "BATCH-ULTRA-t7trivia"
+  ],
+  "modeResults": {
+    "chess": {
+      "loadable": true,
+      "functional": false,
+      "verdict": "BROKEN",
+      "severity": "high",
+      "reason": "Interactive board not rendered. StudyQuizOverlay HAS chess code (imported at line 7, branch at line 211) but chessContext is null because chess_tactics.json stores fenPosition as the post-setup-move puzzle position while getPlayerContext() expects the base FEN before setup move. chess.js throws on invalid move, catch block silently nullifies chessContext. Fix: correct fenPosition convention in chess_tactics.json."
+    },
+    "map-pin": {
+      "loadable": true,
+      "functional": false,
+      "verdict": "BROKEN",
+      "severity": "high",
+      "reason": "SVG map not rendered. MapPinDrop.svelte is not imported into StudyQuizOverlay.svelte and there is no map_pin branch in the template (lines 210-252). Data pipeline correctly forwards mapCoordinates and quizResponseMode — the gap is the missing UI branch. Fix: add map_pin conditional branch to StudyQuizOverlay."
+    },
+    "procedural": {
+      "loadable": true,
+      "functional": true,
+      "verdict": "PASS",
+      "severity": "low",
+      "reason": "Arithmetic questions generate and score correctly; minor UX: 0% accuracy shown too early"
+    },
+    "trivia": {
+      "loadable": false,
+      "functional": false,
+      "verdict": "MISSING",
+      "severity": "critical",
+      "reason": "TriviaRoundScreen.svelte orphan — never imported, no screen routing, no scenario preset"
+    },
+    "study": {
+      "loadable": true,
+      "functional": true,
+      "verdict": "PASS",
+      "severity": "medium",
+      "reason": "FSRS session works with curated deck scenarios; legacy study-quiz requires pre-seeded player data"
+    }
+  },
+  "topFindings": [
+    "Chess board: StudyQuizOverlay has the code but chess_tactics.json fenPosition convention is wrong (post-setup FEN stored, but pre-setup base FEN expected by getPlayerContext)",
+    "Map pin: MapPinDrop not wired into StudyQuizOverlay — missing UI branch, data pipeline is correct",
+    "TriviaRoundScreen.svelte is unreachable dead code — never imported, no routing, no scenario preset",
+    "Procedural Math (16 math decks) is production-ready but obscured behind 4-click navigation"
+  ],
+  "codeVerificationNote": "Initial report incorrectly stated StudyQuizOverlay had zero references to ChessBoard. Post-session source inspection corrected the chess root cause from 'missing UI code' to 'fenPosition data format mismatch'. Map-pin finding unchanged — genuinely not wired in study flow."
+}

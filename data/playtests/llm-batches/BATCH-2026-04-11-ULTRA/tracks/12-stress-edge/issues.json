@@ -1,0 +1,190 @@
+[
+  {
+    "id": "issue-17758744933N-12-001",
+    "track": "12-stress-edge",
+    "scenario": 1,
+    "category": "perf_fps_regression",
+    "severity": "medium",
+    "title": "FPS drops to 10-15 sustained after 5+ turns of combat under Docker SwiftShader",
+    "description": "Sustained combat FPS drops from initial 31fps to 10-15fps after approximately 5 turns. This pattern was previously documented as HIGH-4 (2026-04-10) and should be interpreted with Docker-SwiftShader baseline in mind. The initial FPS is above the 22fps SwiftShader ceiling, which indicates the game loads within budget. The 10-15fps sustained reading likely reflects SwiftShader resource exhaustion under simultaneous multi-container load (16 containers at peak during this batch). drawCalls=-1 confirms SwiftShader GL draw call counting is disabled. On real GPU hardware this is NOT expected to reproduce. CRITICAL CONTEXT: System load average was 35-125 during this batch; this is NOT a representative isolated measurement.",
+    "evidence": {
+      "fpsCurve": "evidence/fps-curve.csv",
+      "fpsInitial": 31,
+      "fpsSustainedMin": 10,
+      "fpsSustainedAvg": 22,
+      "drawCalls": -1,
+      "renderer": "WebGL (SwiftShader)",
+      "gameObjects": 36,
+      "textures": 109,
+      "memoryMB": 351,
+      "screenshotPath": "evidence/screenshots/s1-combat-final.png",
+      "systemLoadAvgDuringTest": "35-125 (16 parallel Docker containers)"
+    },
+    "reproductionSteps": [
+      "Run scripts/docker-visual-test.sh --warm start --agent-id test",
+      "Load combat-basic scenario",
+      "Execute 10+ quickPlayCard + endTurn cycles",
+      "Sample __rrDebug().phaserPerf.fps every 3 seconds"
+    ],
+    "suggestedFix": "No fix needed for Docker baseline. For real GPU: verify SwiftShader detection in probeGPU() fires correctly (see HIGH-4 fix). Monitor on real hardware before actioning.",
+    "dockerBaseline": true
+  },
+  {
+    "id": "issue-17758744933N-12-002",
+    "track": "12-stress-edge",
+    "scenario": 1,
+    "category": "perf_fps_regression",
+    "severity": "low",
+    "title": "Docker SwiftShader WebGL drawCalls always -1 (not observable in this environment)",
+    "description": "The phaserPerf.drawCalls field returns -1 in Docker SwiftShader. The GL draw call count (renderer.gl?.drawCount) is not available when SwiftShader is running. This means draw call budgeting cannot be validated in Docker. Real GPU testing required for draw call verification.",
+    "evidence": {
+      "fpsCurve": "evidence/fps-curve.csv",
+      "drawCalls": -1,
+      "renderer": "WebGL (SwiftShader)"
+    },
+    "reproductionSteps": [
+      "Check window.__rrDebug().phaserPerf.drawCalls in Docker container"
+    ],
+    "suggestedFix": "Document in perf-baselines.md that drawCalls=-1 is expected in Docker SwiftShader. Validate draw call count on native GPU only.",
+    "dockerBaseline": true
+  },
+  {
+    "id": "issue-17758744933N-12-003",
+    "track": "12-stress-edge",
+    "scenario": 1,
+    "category": "perf_fps_regression",
+    "severity": "high",
+    "title": "Docker SwiftShader page crashes under extreme multi-container load (16+ parallel containers)",
+    "description": "When 16 Docker warm containers are running simultaneously (BATCH-2026-04-11-ULTRA parallel batch), the SwiftShader GPU process experiences SharedImageManager mailbox errors and the Chromium renderer crashes. The error pattern is: repeated 'SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox' followed by 'Target crashed'. This is a Docker host resource exhaustion issue, not a game bug. However it documents that parallel Docker testing at scale >8 containers on this host is unreliable.",
+    "evidence": {
+      "errorText": "SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox (repeated 30+ times)",
+      "crashType": "page.screenshot: Target crashed",
+      "systemLoadAtCrash": "34-128 load average",
+      "containersAtCrash": 16
+    },
+    "reproductionSteps": [
+      "Start 16+ Docker warm containers simultaneously",
+      "Attempt to run any test in any container",
+      "Page crashes with Target crashed error"
+    ],
+    "suggestedFix": "Limit parallel Docker containers to max 8. Stagger batch track start times by 2-3 minutes. Consider sequential Docker testing for stress/perf track specifically.",
+    "dockerBaseline": true
+  },
+  {
+    "id": "issue-17758744933N-12-004",
+    "track": "12-stress-edge",
+    "scenario": 3,
+    "category": "race_condition",
+    "severity": "low",
+    "title": "PASS: 50 rapid quickPlayCard+endTurn iterations produce zero errors or race conditions",
+    "description": "Rapid input mashing (50 play+endTurn cycles with no delay) produced zero game errors, zero race conditions, and no UI errors. All 50 plays and 50 turn ends executed successfully. The game handles rapid automated input gracefully.",
+    "evidence": {
+      "iterationsRun": 50,
+      "playErrors": 0,
+      "turnEndErrors": 0,
+      "rrLogErrors": 0,
+      "recentErrors": []
+    },
+    "reproductionSteps": [],
+    "suggestedFix": null,
+    "dockerBaseline": false
+  },
+  {
+    "id": "issue-17758744933N-12-005",
+    "track": "12-stress-edge",
+    "scenario": 4,
+    "category": "visual_resize_broken",
+    "severity": "low",
+    "title": "Viewport resize via JS dispatch does not change --layout-scale (expected: Playwright viewport is fixed)",
+    "description": "window.dispatchEvent(new Event('resize')) with no actual viewport size change does not alter --layout-scale (stayed at 1.5). This is expected behavior - the CSS variable is driven by the actual viewport dimensions, not artificial resize events. In Playwright, window.resizeTo() is sandboxed and ignored. Actual resize testing requires Playwright viewport parameter change or multiple viewport configurations. The canvas getBoundingClientRect returned 42x28px which is mid-animation transform (not a bug - per testing.md Layout dump is not ground truth). Screenshot at 1920x1080 shows correct layout with all elements in frame.",
+    "evidence": {
+      "layoutScaleInitial": "1.5",
+      "layoutScaleAfterResize": "1.5",
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "screenshotPath": "evidence/screenshots/s4-1920x1080.png"
+    },
+    "reproductionSteps": [],
+    "suggestedFix": "For future resize testing, use Playwright's page.setViewportSize() API or test at multiple viewport sizes via cold Docker runs with different --viewport parameters.",
+    "dockerBaseline": false
+  },
+  {
+    "id": "issue-17758744933N-12-006",
+    "track": "12-stress-edge",
+    "scenario": 5,
+    "category": "empty_state_crash",
+    "severity": "low",
+    "title": "PASS: Shop renders correctly at 500g with 3 items; no zero-gold scenario available via __rrPlay",
+    "description": "Shop scenario renders correctly: shows 500g gold display, 3 items (Whetstone 150g, Iron Shield 150g, Vitality Ring 150g). The __rrPlay API does not expose a setGold() method, so forcing 0-gold state requires a different approach (spawn with gold:0 parameter). Shop did not crash. forceHand() is also not in __rrPlay API - empty hand state cannot be force-tested via current API. These are API coverage gaps, not game bugs.",
+    "evidence": {
+      "shopRendered": true,
+      "goldDisplayed": "500g",
+      "itemsShown": 3,
+      "screenshotPath": "evidence/screenshots/s5-shop.png",
+      "forceHandAvailable": false,
+      "setGoldAvailable": false
+    },
+    "reproductionSteps": [],
+    "suggestedFix": "Consider adding __rrPlay.setGold(amount) and __rrPlay.forceHand([]) to the debug API for more comprehensive edge state testing.",
+    "dockerBaseline": false
+  },
+  {
+    "id": "issue-17758744933N-12-007",
+    "track": "12-stress-edge",
+    "scenario": 6,
+    "category": "error_state_crash",
+    "severity": "low",
+    "title": "PASS: Game handles corrupt localStorage save gracefully - loads hub without crash",
+    "description": "Corrupting 4 of 5 localStorage save keys (rr_save, rr_analytics_queue, terra-review-prompt-state, card:currentScreen) with invalid JSON did not crash the game. Hub scene loaded normally after corruption. Combat scenario also loaded normally. This confirms robust save data error handling - the game falls back to defaults when save data is corrupt.",
+    "evidence": {
+      "keysCorrupted": 4,
+      "hubLoadedAfterCorrupt": true,
+      "combatLoadedAfterCorrupt": true,
+      "screenshotPath": "evidence/screenshots/s6-after-corrupt.png",
+      "errorsAfterCorrupt": []
+    },
+    "reproductionSteps": [],
+    "suggestedFix": null,
+    "dockerBaseline": false
+  },
+  {
+    "id": "issue-17758744933N-12-008",
+    "track": "12-stress-edge",
+    "scenario": 2,
+    "category": "perf_memory_leak",
+    "severity": "low",
+    "title": "PASS: Memory stable across 3 consecutive combats (350-353MB, <1% growth)",
+    "description": "Memory usage across 3 consecutive combat scenario loads: combat1_start=350.3MB, combat1_end=351.0MB, combat2_start=350.2MB, combat2_end=352.6MB, combat3_start=353.2MB, combat3_end=352.6MB. Maximum growth: 2.9MB (0.83%) across 3 combats - well below the 10% threshold for leak suspect. gameObjectCount=36 and textureCount=109 were stable across all 3 combats, confirming proper cleanup on scenario reload.",
+    "evidence": {
+      "memoryAtStart": 350.3,
+      "memoryAtEnd": 352.6,
+      "growthMB": 2.3,
+      "growthPercent": 0.65,
+      "gameObjectsStable": true,
+      "texturesStable": true,
+      "csvPath": "evidence/memory-samples.csv"
+    },
+    "reproductionSteps": [],
+    "suggestedFix": null,
+    "dockerBaseline": false
+  },
+  {
+    "id": "issue-17758744933N-12-009",
+    "track": "12-stress-edge",
+    "scenario": 7,
+    "category": "console_error",
+    "severity": "low",
+    "title": "PASS: Zero game logic errors in __rrLog and recentErrors across combat/shop/reward/hub",
+    "description": "Across combat-basic, shop, reward-room, and hub-fresh scenarios, window.__rrLog.filter(e=>e.type==='error') returned 0 entries and window.__rrDebug().recentErrors returned [] in all cases. The 4 console errors collected were all ERR_CONNECTION_REFUSED for static asset fetches (Docker environment artifact) and 1 Web Worker blob URL warning. Zero game logic errors.",
+    "evidence": {
+      "gameLogicErrors": 0,
+      "consoleErrors": 4,
+      "consoleErrorBreakdown": "3x ERR_CONNECTION_REFUSED (Docker static asset), 1x Web Worker blob URL warning",
+      "scenariosTested": ["combat-basic", "shop", "reward-room", "hub-fresh"],
+      "errorsPath": "evidence/console-errors.json"
+    },
+    "reproductionSteps": [],
+    "suggestedFix": null,
+    "dockerBaseline": false
+  }
+]

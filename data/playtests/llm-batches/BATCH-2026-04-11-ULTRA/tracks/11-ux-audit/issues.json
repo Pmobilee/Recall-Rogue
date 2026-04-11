@@ -1,0 +1,528 @@
+[
+  {
+    "id": "issue-1744337400000-11-001",
+    "track": "11-ux-audit",
+    "screen": "hub",
+    "category": "ux_no_accessible_name",
+    "severity": "high",
+    "title": "Hub sprite-hitbox buttons have no accessible name — all 8 unlabeled",
+    "description": "8 `button.sprite-hitbox` elements on the hub screen have no text content, no aria-label, and no title attribute. They are the primary navigation for Library, Camp, Tent, Shop, etc. Screen reader users and keyboard-only users cannot determine what each button does. The only labeled button is btn-start-run.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/hub/screenshot.png",
+      "elementSelector": "button.sprite-hitbox",
+      "measured": "8 buttons, 0 with accessible names",
+      "required": "Every button must have accessible name via text, aria-label, or aria-labelledby"
+    },
+    "reproductionSteps": [
+      "Load hub-endgame scenario",
+      "Inspect all button.sprite-hitbox elements in DevTools",
+      "Observe: no aria-label, no text content, no title attribute"
+    ],
+    "suggestedFix": "Add aria-label attributes matching the visual room/object names (e.g. aria-label='Library', aria-label='Rest Camp')"
+  },
+  {
+    "id": "issue-1744337400001-11-002",
+    "track": "11-ux-audit",
+    "screen": "hub",
+    "category": "ux_hierarchy_broken",
+    "severity": "medium",
+    "title": "Hub HUD counters (fire streak, grey matter) are 14px with icon only — no label",
+    "description": "The two HUD pills in the hub show numeric values (0 and 0) with emoji icons (fire, gem) but no text labels. The values are 14px which is just at the minimum threshold, and a new player has no context for what these numbers represent. The fire counter and grey matter resource are core game economy but not labeled.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/hub/screenshot.png",
+      "elementSelector": ".hud-value",
+      "measured": "14px font, emoji-only icon, no label",
+      "required": "Primary resource indicators should have labels on first encounter, or a persistent tooltip trigger"
+    },
+    "reproductionSteps": [
+      "Load hub-endgame scenario",
+      "Observe top-center HUD pills showing fire emoji and gem emoji with number values",
+      "Note: no tooltip, no label, no explanation of what these values mean"
+    ],
+    "suggestedFix": "Add aria-label to hud pills (e.g. 'Streak: 0', 'Grey Matter: 0'), and add a first-visit tooltip"
+  },
+  {
+    "id": "issue-1744337400002-11-003",
+    "track": "11-ux-audit",
+    "screen": "hub",
+    "category": "ux_primary_above_thumb_zone",
+    "severity": "medium",
+    "title": "Start Run button at Y=119 is in top 11% of screen — far above thumb zone",
+    "description": "btn-start-run is positioned at Y=119 (of 1080 total), placing it at 11% from the top. The thumb zone threshold (55% of screen height) is at Y=594. Primary actions should be in the bottom half for landscape card game ergonomics. The door/dungeon entrance is the most important button on the hub and is in the most difficult reach zone for handheld/Steam Deck players.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/hub/screenshot.png",
+      "elementSelector": "[data-testid='btn-start-run']",
+      "measured": "Y=119, screen height=1080, relative position=11%",
+      "required": "Primary actions should be in bottom 55% of screen (Y > 594px)"
+    },
+    "reproductionSteps": [
+      "Load hub-endgame scenario",
+      "Observe btn-start-run position at top of screen",
+      "Layout dump confirms: (826, 119) 267x292"
+    ],
+    "suggestedFix": "This is a design constraint (the door is in the scene art). Consider adding a floating 'Start Run' CTA button lower on screen that supplements the sprite hitbox."
+  },
+  {
+    "id": "issue-1744337400003-11-004",
+    "track": "11-ux-audit",
+    "screen": "combat",
+    "category": "ux_no_accessible_name",
+    "severity": "high",
+    "title": "btn-end-turn has no visible accessible name — text is CSS-only 'END TURN' but element is HIDDEN per layout dump",
+    "description": "The btn-end-turn element is flagged HIDDEN in the layout dump at position (24, 987) 197x69. This could be a z-index or CSS visibility issue causing the button to be absent from the accessibility tree. However, visually it renders correctly in the screenshot. If the HIDDEN flag indicates pointer-events:none or visibility:hidden, keyboard users cannot reach it.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/combat/screenshot.png",
+      "elementSelector": "[data-testid='btn-end-turn']",
+      "measured": "Flagged HIDDEN in layout dump, position (24, 987) 197x69",
+      "required": "Primary action button must be reachable via keyboard and have an accessible name"
+    },
+    "reproductionSteps": [
+      "Load combat-basic scenario",
+      "Inspect btn-end-turn in accessibility tree",
+      "Note HIDDEN flag in layout dump output"
+    ],
+    "suggestedFix": "Verify that btn-end-turn is not rendered with visibility:hidden or pointer-events:none during the player_action phase. Remove conditional hiding if present."
+  },
+  {
+    "id": "issue-1744337400004-11-005",
+    "track": "11-ux-audit",
+    "screen": "combat",
+    "category": "ux_text_too_small",
+    "severity": "high",
+    "title": "HP text (hp-value) renders at 15px — below 16px minimum for HP numbers",
+    "description": "The player HP display span.hp-value shows '100/100' at 15px font size. HP is the most critical stat in combat — the UX spec requires HP numbers to be at least 16px. At 15px it will be uncomfortable to read during fast-paced combat, especially on Steam Deck (7\" screen at 1280×800).",
+    "evidence": {
+      "screenshotPath": "evidence/screens/combat/screenshot.png",
+      "elementSelector": "span.hp-value",
+      "measured": "15px",
+      "required": "16px minimum for HP/critical stat numbers"
+    },
+    "reproductionSteps": [
+      "Load combat-basic scenario",
+      "Inspect span.hp-value in DevTools",
+      "Layout dump: (297, 15) 64x15 = 15px height confirms approximate font size"
+    ],
+    "suggestedFix": "Increase hp-value font-size to calc(16px * var(--text-scale, 1)) minimum"
+  },
+  {
+    "id": "issue-1744337400005-11-006",
+    "track": "11-ux-audit",
+    "screen": "combat",
+    "category": "ux_no_accessible_name",
+    "severity": "medium",
+    "title": "Enemy intent bubble flagged HIDDEN during combat — intent info may be inaccessible",
+    "description": "The div.enemy-intent-bubble is flagged HIDDEN in the layout dump at (396, 302) 234x100, yet it visually renders with 'Swooping strike — Attacking for 14 damage'. If the HIDDEN state is CSS-driven (not JS visibility), it may not be present in the accessibility tree. Enemy intent is core strategic information.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/combat/screenshot.png",
+      "elementSelector": "div.enemy-intent-bubble",
+      "measured": "Flagged HIDDEN in layout dump, text 'Swooping strike' not in accessibility tree",
+      "required": "Enemy intent information must be accessible (aria-live region or visible element)"
+    },
+    "reproductionSteps": [
+      "Load combat-basic scenario",
+      "Check accessibility tree for enemy intent information",
+      "Note HIDDEN flag in layout dump despite visual rendering"
+    ],
+    "suggestedFix": "Add aria-live='polite' region announcing enemy intent changes. Ensure intent bubble is not set to visibility:hidden when active."
+  },
+  {
+    "id": "issue-1744337400006-11-007",
+    "track": "11-ux-audit",
+    "screen": "combat",
+    "category": "ux_text_too_small",
+    "severity": "medium",
+    "title": "Card type label (v2-card-type) renders at 11px or smaller — at threshold",
+    "description": "The frame-text.v2-card-type element inside hand cards has dimensions of approximately 22x11 pixels, indicating a font size of around 11px. This is the bare minimum and may be unreadable at smaller viewport sizes or for players with moderate visual impairment. Card type (Attack, Block, Utility) is strategically important.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/combat/screenshot.png",
+      "elementSelector": "div.frame-text.v2-card-type",
+      "measured": "22x11 px bounding box",
+      "required": "Body text minimum 11px, card type label should be clearly readable"
+    },
+    "reproductionSteps": [
+      "Load combat-basic scenario",
+      "Inspect div.frame-text.v2-card-type on hand cards",
+      "Layout dump: e.g. (690, 1068) 22x11"
+    ],
+    "suggestedFix": "Increase card type label to calc(12px * var(--text-scale, 1)) minimum"
+  },
+  {
+    "id": "issue-1744337400007-11-008",
+    "track": "11-ux-audit",
+    "screen": "combat",
+    "category": "ux_card_game_pattern",
+    "severity": "medium",
+    "title": "AP counter (ap-number) is flagged HIDDEN — action point display may be inaccessible",
+    "description": "The span.ap-number showing '3' (current AP) is flagged HIDDEN in the layout dump at position (0,0), along with ap-label 'AP'. The AP display is essential game information — players need to know how many actions they have. If this is rendered off-screen or hidden via CSS, players are losing critical information.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/combat/screenshot.png",
+      "elementSelector": "span.ap-number, span.ap-label",
+      "measured": "Both flagged HIDDEN at position (0,0) — off-screen or visibility:hidden",
+      "required": "AP counter must be prominently visible during player_action phase"
+    },
+    "reproductionSteps": [
+      "Load combat-basic scenario in player_action phase",
+      "Look for AP counter display on screen",
+      "Layout dump shows span.ap-number at (0,0) HIDDEN"
+    ],
+    "suggestedFix": "Verify AP counter visibility logic. The div.player-ap-right.ap-active at (312, 999) shows a separate ap-num element — confirm this is the active display and that position is accessible."
+  },
+  {
+    "id": "issue-1744337400008-11-009",
+    "track": "11-ux-audit",
+    "screen": "dungeonMap",
+    "category": "ux_hierarchy_broken",
+    "severity": "high",
+    "title": "Dungeon map renders blank/dark — map nodes exist in DOM but fog overlay covers everything",
+    "description": "The dungeon map screenshot shows a nearly-black screen with faint nebula effects. All map nodes are present in the DOM (map-node-r0-n0 through r7-n0 at coordinates 694-1139 x 267-1233), but the fog-overlay at (-340, -10) 2600x1350 appears to cover the entire visible area. Players would see an empty black screen with no indication of map content.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/dungeonMap/screenshot.png",
+      "elementSelector": "div.fog-overlay",
+      "measured": "fog-overlay at (-340, -10) 2600x1350 — covers entire 1920x1080 viewport",
+      "required": "At minimum the current floor entry nodes and the boss node should be visible without fog"
+    },
+    "reproductionSteps": [
+      "Load dungeon-map scenario",
+      "Observe screenshot — nearly blank dark screen",
+      "Layout dump shows map nodes but all buried under fog-overlay"
+    ],
+    "suggestedFix": "Verify fog logic for floor 1 maps. Entry nodes at row 0 should be visible (not fogged) on initial load. Check if fog state was not initialized for the scenario preset."
+  },
+  {
+    "id": "issue-1744337400009-11-010",
+    "track": "11-ux-audit",
+    "screen": "dungeonMap",
+    "category": "ux_no_accessible_name",
+    "severity": "high",
+    "title": "All 18 map node buttons lack accessible names — node type not communicated",
+    "description": "Every map node button (map-node-r0-n0 through map-node-r7-n0) has a testid but no text content, no aria-label, and no title. Players using keyboard or screen readers cannot determine which nodes are combat, rest, shop, or boss. The node type icons are visual-only. 18 interactive buttons with zero accessible information.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/dungeonMap/screenshot.png",
+      "elementSelector": "[data-testid^='map-node-']",
+      "measured": "18 buttons, 0 with accessible names",
+      "required": "Each map node button should have aria-label describing node type and position (e.g. 'Row 3 node 1: Rest Site')"
+    },
+    "reproductionSteps": [
+      "Load dungeon-map scenario",
+      "Inspect any map-node-* button",
+      "No aria-label, no text content found"
+    ],
+    "suggestedFix": "Add aria-label to each map node: `aria-label='{nodeType} — Floor {floor}'` where nodeType is combat/rest/shop/elite/boss"
+  },
+  {
+    "id": "issue-1744337400010-11-011",
+    "track": "11-ux-audit",
+    "screen": "cardReward",
+    "category": "ux_text_too_small",
+    "severity": "high",
+    "title": "Card description text (mini-card-desc) renders at approximately 11px — critical info too small",
+    "description": "The mini-card-desc spans showing 'Deal 8', 'Gain 6', 'Deal 20' have a bounding box of approximately 47x113 to 135x135 pixels at the reward screen card size. Given the card dimensions (517x675), the description text area (113x47 for 'Deal 8') indicates very small font. This is the primary decision-making information for card selection.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/cardReward/screenshot.png",
+      "elementSelector": "div.mini-card-desc",
+      "measured": "'Deal 8' → bounding box 113x47; 'Deal 20' → 135x47",
+      "required": "Body text minimum 11px; card effect description should be clearly readable at reward selection"
+    },
+    "reproductionSteps": [
+      "Load card-reward scenario",
+      "Inspect mini-card-desc text elements",
+      "Layout dump: (327, 603) 113x47 for 'Deal 8'"
+    ],
+    "suggestedFix": "Verify card description font size uses calc(11px * var(--text-scale, 1)) minimum"
+  },
+  {
+    "id": "issue-1744337400011-11-012",
+    "track": "11-ux-audit",
+    "screen": "cardReward",
+    "category": "ux_hierarchy_broken",
+    "severity": "medium",
+    "title": "Card title and heading are positioned off-screen (y=-157 and y=-63) — not visible",
+    "description": "The h1 'Choose a Card' is at Y=-157 (off-screen top) and the p subtitle 'Cavern Altar...' is at Y=-63 (off-screen top). These contextual elements that help the player understand the screen are not visible on the 1920x1080 viewport. The reward screen loses its heading/context.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/cardReward/screenshot.png",
+      "elementSelector": "h1.svelte-1lvanm6, p.svelte-1lvanm6",
+      "measured": "h1 at (93, -157) 1725x86 — 157px above viewport; p at (93, -63) 1725x41 — 63px above viewport",
+      "required": "Screen title and context text must be visible within the viewport"
+    },
+    "reproductionSteps": [
+      "Load card-reward scenario",
+      "Layout dump shows h1 at (93, -157) — above the 1080 viewport top edge",
+      "Screenshot confirms no heading visible at top of card reward screen"
+    ],
+    "suggestedFix": "Fix card reward layout — scroll or adjust top offset so heading is visible. Currently heading requires negative viewport space. Remove negative margins or transform that push h1 off-screen."
+  },
+  {
+    "id": "issue-1744337400012-11-013",
+    "track": "11-ux-audit",
+    "screen": "cardReward",
+    "category": "ux_touch_target_small",
+    "severity": "medium",
+    "title": "Reroll button is 1800x90px spanning full width — deceptively large, no destructive gap from Skip",
+    "description": "The reward-reroll button spans 1800x90 pixels (full width). The 'Skip' button is at Y=979 and the reroll button is at Y=871 — gap of approximately 19px between reroll bottom edge and skip top edge. This is below the 20px destructive gap requirement since skipping has no undo. The reroll button's extreme width may also cause accidental activation.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/cardReward/screenshot.png",
+      "elementSelector": "[data-testid='reward-reroll']",
+      "measured": "reroll: (55, 871) 1800x90; skip: (55, 979) — gap = 979-961 = 18px",
+      "required": "Destructive action gap ≥ 20px between reroll and skip/accept buttons"
+    },
+    "reproductionSteps": [
+      "Load card-reward scenario",
+      "Measure gap between reroll bottom (871+90=961) and skip top (979)",
+      "Gap = 18px < 20px required"
+    ],
+    "suggestedFix": "Increase spacing between reroll and skip/accept button row to at least 20px"
+  },
+  {
+    "id": "issue-1744337400013-11-014",
+    "track": "11-ux-audit",
+    "screen": "rewardRoom",
+    "category": "ux_no_accessible_name",
+    "severity": "critical",
+    "title": "Reward room Continue button is a Phaser Text object — not accessible to DOM at all",
+    "description": "The reward room 'Continue' button is a Phaser Container with a Text child at (960, 950) — it exists only in the Phaser canvas layer, not the DOM layer. There is no DOM button, no aria role, no keyboard interaction possible. This is the sole action on the reward room screen. Players who cannot use a mouse have no way to proceed.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/rewardRoom/screenshot.png",
+      "elementSelector": "[Container] continueButton",
+      "measured": "Phaser Container at (960, 950) 270x72 — no corresponding DOM element",
+      "required": "All interactive buttons must exist in the DOM for accessibility and keyboard navigation"
+    },
+    "reproductionSteps": [
+      "Load reward-room scenario",
+      "Search DOM for any button, [role=button], or interactive element",
+      "Layout dump DOM layer shows only topbar elements — no Continue DOM button"
+    ],
+    "suggestedFix": "Add a DOM-overlay button positioned over the Phaser canvas that calls the same reward-room completion handler. Pattern: transparent button overlaid on the Phaser button position."
+  },
+  {
+    "id": "issue-1744337400014-11-015",
+    "track": "11-ux-audit",
+    "screen": "shopRoom",
+    "category": "ux_touch_target_small",
+    "severity": "high",
+    "title": "Shop buy buttons are 74x66px — width barely meets minimum but gap to content is poor",
+    "description": "The three shop buy buttons (shop-buy-relic-whetstone, iron_shield, vitality_ring) measure 74x66 pixels. Height 66px passes the 44px minimum but the gap between the relic item card (which ends at ~502px) and the buy button (starts at ~568px) gives only ~66px of internal spacing. The 66px height means accidental taps between item art and price button are likely.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/shopRoom/screenshot.png",
+      "elementSelector": "[data-testid='shop-buy-relic-whetstone']",
+      "measured": "74x66px — passes 44px minimum but ergonomically tight",
+      "required": "44x44px minimum; recommend 44x44 or larger with adequate gap from item content"
+    },
+    "reproductionSteps": [
+      "Load shop scenario",
+      "Inspect buy button dimensions",
+      "Layout dump: shop-buy-relic-whetstone at (568, 419) 74x66"
+    ],
+    "suggestedFix": "Consider expanding buy buttons to at least 80x48px for better ergonomics. The current 66px height passes minimum but benefits from additional height."
+  },
+  {
+    "id": "issue-1744337400015-11-016",
+    "track": "11-ux-audit",
+    "screen": "shopRoom",
+    "category": "ux_hierarchy_broken",
+    "severity": "medium",
+    "title": "Shop relic items have emoji-only icon with no accessible name for the relic",
+    "description": "Shop relic items display an emoji icon (🪨, 🛡️, 💍) and a rarity pill ('common'), but no accessible name for the relic itself. The relic name is not in the visible DOM elements listed in the layout dump — only the icon and rarity pill are present. Players using assistive technology cannot identify which relic they are looking at.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/shopRoom/screenshot.png",
+      "elementSelector": "article.card-item.relic-item span.icon",
+      "measured": "Emoji icon only — no accessible name for relic in DOM scan",
+      "required": "Each shop item should have a visible or aria-accessible name"
+    },
+    "reproductionSteps": [
+      "Load shop scenario",
+      "Inspect the relic item articles",
+      "No relic name text in layout dump — only icon emoji and rarity pill"
+    ],
+    "suggestedFix": "Add aria-label to each relic article (e.g. aria-label='Whetstone — Common relic'). Also verify relic name is visually present (may be hidden in screenshot crop)."
+  },
+  {
+    "id": "issue-1744337400016-11-017",
+    "track": "11-ux-audit",
+    "screen": "shopRoom",
+    "category": "ux_no_accessible_name",
+    "severity": "medium",
+    "title": "Card Transform service shows 'Coming soon' but button is still interactive",
+    "description": "The Card Transform service button renders with text 'Coming soon' for its price, but the button itself (service-action) still renders as an active button (not disabled). Players who click it expecting a feature will experience silent failure. The service should be visually grayed out with a disabled attribute.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/shopRoom/screenshot.png",
+      "elementSelector": "button.service-action",
+      "measured": "Active button with 'Coming soon' price label — no disabled state",
+      "required": "Non-functional features should be disabled (aria-disabled=true, visual gray state)"
+    },
+    "reproductionSteps": [
+      "Load shop scenario",
+      "Observe Card Transform section",
+      "Layout dump shows active button despite 'Coming soon' status"
+    ],
+    "suggestedFix": "Add disabled attribute and aria-disabled='true' to Card Transform button. Add tooltip explaining feature is in development."
+  },
+  {
+    "id": "issue-1744337400017-11-018",
+    "track": "11-ux-audit",
+    "screen": "restRoom",
+    "category": "ux_text_too_small",
+    "severity": "medium",
+    "title": "Rest option detail text (option-detail) renders at approximately 13-14px — borderline",
+    "description": "The option-detail spans ('Heal 20% HP', 'Quiz 3 questions...', 'Remove 1 card from your deck') have bounding boxes around 108x25 to 197x76. The 25px height for single-line text suggests approximately 13-14px font size, which is above the 11px minimum but may be uncomfortable at distance on a monitor.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/restRoom/screenshot.png",
+      "elementSelector": "span.option-detail",
+      "measured": "108x25 for 'Heal 20% HP' — approximately 13-14px font",
+      "required": "Body text minimum 11px; important decision text benefits from 14px+ for comfortable reading"
+    },
+    "reproductionSteps": [
+      "Load rest-site scenario",
+      "Inspect option-detail spans",
+      "Layout dump: (639, 632) 108x25 for 'Heal 20% HP'"
+    ],
+    "suggestedFix": "Confirm font size is calc(13px * var(--text-scale, 1)). Consider bumping to 14px for better readability."
+  },
+  {
+    "id": "issue-1744337400018-11-019",
+    "track": "11-ux-audit",
+    "screen": "restRoom",
+    "category": "ux_card_game_pattern",
+    "severity": "low",
+    "title": "Study option shows 'No cards to upgrade' but no visual disabled state on the button",
+    "description": "The rest-study button renders fully active even when 'No cards to upgrade' is shown as the preview text. Players will click Study expecting to upgrade cards but receive a quiz with no upgrade reward. The button should either be disabled or the warning should be more prominent (e.g. in red, with a warning icon).",
+    "evidence": {
+      "screenshotPath": "evidence/screens/restRoom/screenshot.png",
+      "elementSelector": "[data-testid='rest-study']",
+      "measured": "Button fully active at 243x312, preview text 'No cards to upgrade' at 156x23",
+      "required": "When a choice has reduced/no effect, the player should see a clear affordance difference"
+    },
+    "reproductionSteps": [
+      "Load rest-site scenario with no upgradeable cards",
+      "Observe Study option — button fully active",
+      "Preview reads 'No cards to upgrade' in same style as normal preview"
+    ],
+    "suggestedFix": "Add a warning color (amber/yellow) to the preview text when effect is null. Consider dimming the option card or adding a badge."
+  },
+  {
+    "id": "issue-1744337400019-11-020",
+    "track": "11-ux-audit",
+    "screen": "runEnd",
+    "category": "ux_text_too_small",
+    "severity": "medium",
+    "title": "Run stats pill labels are 14px on small pill boxes — may be unreadable on Steam Deck",
+    "description": "The run stats section shows pill-label spans ('Floor', 'Accuracy', 'Best Chain', 'Encounters', 'Time') measuring approximately 14x42 to 87x14 pixels. The 14px height indicates approximately 10-11px font size. On Steam Deck (7 inch at 1280x800 scaled) these labels will be extremely small.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/runEnd/screenshot.png",
+      "elementSelector": "span.pill-label",
+      "measured": "'Floor' label: (534, 766) 42x14 — approximately 10px font",
+      "required": "Body text minimum 11px, label context text minimum 10px acceptable but push toward 11"
+    },
+    "reproductionSteps": [
+      "Load run-end-victory scenario",
+      "Inspect span.pill-label elements",
+      "Layout dump: pill-label 'Floor' at (534, 766) 42x14"
+    ],
+    "suggestedFix": "Increase pill-label to calc(11px * var(--text-scale, 1)) minimum"
+  },
+  {
+    "id": "issue-1744337400020-11-021",
+    "track": "11-ux-audit",
+    "screen": "runEnd",
+    "category": "ux_hierarchy_broken",
+    "severity": "high",
+    "title": "Multiple enemy badge images show '❓' fallback — missing enemy portraits on run end screen",
+    "description": "At least 5 enemy badge-wrapper elements show span.enemy-badge-fallback '❓' as the visible element while the img.enemy-badge-img is HIDDEN. This means multiple enemies in the 'Foes Vanquished' parade show blank question marks instead of their portraits. This is a significant visual regression on the victory screen.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/runEnd/screenshot.png",
+      "elementSelector": "span.enemy-badge-fallback",
+      "measured": "At (637, 280), (822, 280), (945, 280), (1191, 280), (1252, 280), (1314, 280) — all visible, img.enemy-badge-img HIDDEN",
+      "required": "All enemy badges should show portraits from enemy sprite assets"
+    },
+    "reproductionSteps": [
+      "Load run-end-victory scenario",
+      "Observe Foes Vanquished parade",
+      "Multiple enemies show '❓' symbol instead of portraits",
+      "Layout dump confirms: enemy-badge-img HIDDEN with badge-fallback visible for several enemies"
+    ],
+    "suggestedFix": "Verify enemy badge image paths in run-end-victory scenario. Ensure enemy sprite textures are loaded before the run end screen renders. Add a loading state to defer display until images load."
+  },
+  {
+    "id": "issue-1744337400021-11-022",
+    "track": "11-ux-audit",
+    "screen": "deckSelectionHub",
+    "category": "ux_no_accessible_name",
+    "severity": "critical",
+    "title": "Deck selection panels (Trivia Dungeon, Study Temple) have no interactive button — entire panel is a div",
+    "description": "The deck selection hub shows two large panels (panel--trivia, panel--study) each 750x720px, but neither has a button or role='button' element. The click handler likely lives on the div.panel itself. This means keyboard navigation cannot reach the panels, and screen readers will not announce them as interactive. There is only one DOM button on this screen: the back button.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/deckSelectionHub/screenshot.png",
+      "elementSelector": "div.panel.panel--trivia, div.panel.panel--study",
+      "measured": "div elements at 750x720px — no button, no role attribute",
+      "required": "Interactive areas must use button elements or role='button' with keyboard handlers"
+    },
+    "reproductionSteps": [
+      "Load dungeon-selection scenario",
+      "Press Tab to navigate — only back-btn is reachable via keyboard",
+      "Layout dump: no button elements for the two dungeon panels"
+    ],
+    "suggestedFix": "Wrap each panel div in a button element, or add role='button' and tabindex='0' with keydown Enter/Space handlers. Add aria-label='Trivia Dungeon — Battle with knowledge' etc."
+  },
+  {
+    "id": "issue-1744337400022-11-023",
+    "track": "11-ux-audit",
+    "screen": "deckSelectionHub",
+    "category": "ux_hierarchy_broken",
+    "severity": "medium",
+    "title": "Deck selection panel text overlay has no visible text in DOM scan — title only rendered via CSS/canvas",
+    "description": "The panel-text-overlay divs within each panel don't contain visible text in the DOM scan despite the screenshot showing 'TRIVIA DUNGEON', 'The Armory', and description text. This suggests the text is rendered via CSS content, canvas, or Phaser layer — making it invisible to accessibility tools.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/deckSelectionHub/screenshot.png",
+      "elementSelector": "div.panel-text-overlay",
+      "measured": "div.panel-text-overlay at (374, 454) 385x269 — no child text elements in DOM scan",
+      "required": "Visible text content should be in the DOM for accessibility"
+    },
+    "reproductionSteps": [
+      "Load dungeon-selection scenario",
+      "Inspect panel-text-overlay elements",
+      "DOM scan shows empty divs despite visible text in screenshot"
+    ],
+    "suggestedFix": "Add actual text elements inside panel-text-overlay (h2 for dungeon name, p for description). These can be visually positioned over the art using absolute positioning."
+  },
+  {
+    "id": "issue-1744337400023-11-024",
+    "track": "11-ux-audit",
+    "screen": "settings",
+    "category": "ux_touch_target_small",
+    "severity": "medium",
+    "title": "Settings checkboxes (SFX Enabled, Music Enabled, Ambient Enabled) are not visible as DOM buttons",
+    "description": "The settings screen shows three toggle checkboxes but none appear in the DOM as interactive elements in the layout dump. Only the tab buttons and labels are captured. If the checkboxes use native input[type=checkbox] without proper styling or a custom component without button semantics, they may have very small hit targets (~20x20px native checkbox).",
+    "evidence": {
+      "screenshotPath": "evidence/screens/settings/screenshot.png",
+      "elementSelector": "input[type='checkbox'] (expected, not found in dump)",
+      "measured": "No interactive elements found for toggles in layout dump",
+      "required": "Toggle controls minimum 44x44px tap target"
+    },
+    "reproductionSteps": [
+      "Load settings scenario",
+      "Inspect SFX Enabled toggle control",
+      "Layout dump shows only span text elements — no button or input for toggles"
+    ],
+    "suggestedFix": "Verify checkbox components use custom button-style toggles with min 44x44px click area. Add explicit click area wrapper div with minimum size."
+  },
+  {
+    "id": "issue-1744337400024-11-025",
+    "track": "11-ux-audit",
+    "screen": "settings",
+    "category": "ux_hierarchy_broken",
+    "severity": "low",
+    "title": "Settings page bottom half is empty — large dead space below Audio section",
+    "description": "The settings Audio tab fills only the top ~530px of 1080px height. The bottom 550px is empty dark space. This makes the settings page feel unfinished and wastes screen real estate. On Steam Deck or ultrawide displays this empty space is even more pronounced.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/settings/screenshot.png",
+      "elementSelector": "div.settings-card.settings-card-landscape",
+      "measured": "Content ends around Y=650 of 1080 — 430px empty space below",
+      "required": "Settings content should use the available space or have a clear visual boundary"
+    },
+    "reproductionSteps": [
+      "Load settings scenario",
+      "Observe the large empty space below the audio section",
+      "Screenshot shows approximately 40% of screen height unused"
+    ],
+    "suggestedFix": "Either: add a decorative separator/card boundary at the content end, or expand settings card to use max-content height with a scroll container."
+  }
+]

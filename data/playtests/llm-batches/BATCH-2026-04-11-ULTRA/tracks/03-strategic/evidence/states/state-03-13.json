@@ -1,0 +1,36 @@
+{
+  "stateId": "state-03-13",
+  "bucket": "late_game",
+  "floor": 10,
+  "enemy": {
+    "id": "final_lesson",
+    "name": "The Final Lesson",
+    "currentHP": 9,
+    "maxHP": 14,
+    "block": 0,
+    "intent": { "type": "multi_attack", "value": 4, "hitCount": 4, "telegraph": "Archive barrage (4 × 4 = up to 16 total)" },
+    "statusEffects": [
+      { "type": "strength", "value": 4, "turnsRemaining": 999, "note": "Gained from 2 wrong charges" }
+    ],
+    "phase": 1,
+    "special": "onPlayerChargeWrong: gains permanent +2 Strength. quizPhases: 5 questions at 66% HP (passed), 8 rapid-fire questions at 33% HP (approaching). Enemy at 64% HP, approaching 33% trigger."
+  },
+  "player": {
+    "currentHP": 18,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 0
+  },
+  "hand": [
+    { "id": "reckless", "name": "Reckless", "type": "attack", "apCost": 1, "quickPlayValue": 6, "chargeCorrectValue": 18, "chargeWrongValue": 4, "description": "High damage, self-damage (3 HP)." },
+    { "id": "lifetap", "name": "Lifetap", "type": "attack", "apCost": 2, "quickPlayValue": 4, "chargeCorrectValue": 12, "chargeWrongValue": 3, "description": "Deal damage. Heal 20% of damage dealt." },
+    { "id": "empower", "name": "Empower", "type": "buff", "apCost": 1, "quickPlayValue": 50, "chargeCorrectValue": 75, "chargeWrongValue": 35, "description": "Next card deals 50% more damage." },
+    { "id": "emergency", "name": "Emergency", "type": "shield", "apCost": 1, "quickPlayValue": 2, "chargeCorrectValue": 6, "chargeWrongValue": 2, "description": "Gain block. DOUBLE if HP below 30%. Player at 22.5% HP — doubles!" },
+    { "id": "execute", "name": "Execute", "type": "attack", "apCost": 1, "quickPlayValue": 3, "chargeCorrectValue": 9, "chargeWrongValue": 2, "description": "Bonus damage below 30% enemy HP. Enemy at 64% — no bonus." }
+  ],
+  "relics": [
+    { "id": "vitality_ring", "name": "Vitality Ring", "description": "+20 max HP this run." }
+  ],
+  "notes": "Final boss. Player critically low at 18 HP. Enemy has Strength 4 from 2 wrong charges (incoming 4×4 hits = potentially 32 total with Strength multiplier). Emergency triggers DOUBLE block at <30% HP (player at 22.5%). Lifetap heals from damage. Reckless at 18 HP is dangerous — 3 self-damage could leave player at 15, then 4 hits from 14+ dmg each = death. Wrong Charge on any card empowers Final Lesson further. This is a desperate final-boss endgame state."
+}

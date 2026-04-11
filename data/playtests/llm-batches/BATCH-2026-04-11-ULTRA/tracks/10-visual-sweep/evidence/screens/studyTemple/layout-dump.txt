@@ -1,0 +1,1402 @@
+LAYOUT DUMP  2026-04-11T02:09:18.562Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.study-temple-screen.svelte-10ykr27]                       (0, 0)  1920x1080       HIDDEN
+      [button.back-btn.svelte-10ykr27]                             (24, 20)  42x42         "←"
+      [h1.title.svelte-10ykr27]                                    (81, 28)  145x25        "THE LIBRARY"
+      [span.search-icon.svelte-9me99l]                             (263, 31)  20x20        "🔍"
+      [button.chip.svelte-e67dst]                                  (1552, 17)  112x48      "In Progress"
+      [button.chip.svelte-e67dst]                                  (1674, 17)  114x48      "Not Started"
+      [button.chip.svelte-e67dst]                                  (1796, 17)  100x48      "Mastered"
+      [aside.sidebar.svelte-10ykr27]                               (0, 82)  300x998      
+        [button.sidebar-toggle.svelte-10ykr27]                     (0, 82)  299x48       
+          [span.toggle-arrow.svelte-10ykr27]                       (18, 93)  17x24         "◀"
+        [nav.sidebar-categories.svelte-10ykr27]                    (0, 130)  299x950     
+          [button.sidebar-item.svelte-10ykr27.active]              (0, 136)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 151)  51x35        "All"
+            [span.sidebar-count.svelte-10ykr27]                    (261, 163)  17x19       "113"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 188)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 203)  221x35       "Custom Decks"
+            [span.sidebar-count.svelte-10ykr27]                    (270, 215)  8x19        "0"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 240)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 255)  169x35       "Languages"
+            [span.sidebar-count.svelte-10ykr27]                    (266, 267)  12x19       "51"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 292)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 307)  81x35        "Math"
+            [span.sidebar-count.svelte-10ykr27]                    (266, 319)  12x19       "16"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 344)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 359)  124x35       "History"
+            [span.sidebar-count.svelte-10ykr27]                    (270, 371)  8x19        "8"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 397)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 412)  55x35        "Art"
+            [span.sidebar-count.svelte-10ykr27]                    (271, 424)  7x19        "5"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 449)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 464)  121x35       "Science"
+            [span.sidebar-count.svelte-10ykr27]                    (271, 476)  7x19        "5"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 501)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 516)  233x35       "General Geography"
+            [span.sidebar-count.svelte-10ykr27]                    (270, 528)  8x19        "6"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 553)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 568)  157x35       "Social Sci"
+            [span.sidebar-count.svelte-10ykr27]                    (271, 580)  7x19        "3"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 605)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 620)  130x35       "General"
+            [span.sidebar-count.svelte-10ykr27]                    (273, 632)  5x19        "1"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 657)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 672)  130x35       "General"
+            [span.sidebar-count.svelte-10ykr27]                    (270, 684)  8x19        "4"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 709)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 724)  85x35        "Space"
+            [span.sidebar-count.svelte-10ykr27]                    (271, 736)  7x19        "3"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 761)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 776)  83x35        "Myth"
+            [span.sidebar-count.svelte-10ykr27]                    (270, 788)  8x19        "4"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 813)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 828)  106x35       "Sports"
+            [span.sidebar-count.svelte-10ykr27]                    (273, 840)  5x19        "1"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 866)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 881)  111x35       "Health"
+            [span.sidebar-count.svelte-10ykr27]                    (271, 893)  7x19        "3"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 918)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 933)  126x35       "Animals"
+            [span.sidebar-count.svelte-10ykr27]                    (270, 945)  8x19        "2"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 970)  299x52      
+            [span.sidebar-label.svelte-10ykr27]                    (25, 985)  116x35       "Cuisine"
+            [span.sidebar-count.svelte-10ykr27]                    (273, 997)  5x19        "1"
+          [button.sidebar-item.svelte-10ykr27]                     (0, 1022)  299x52     
+            [span.sidebar-label.svelte-10ykr27]                    (25, 1037)  162x35      "Workshop"
+            [span.sidebar-count.svelte-10ykr27]                    (270, 1049)  8x19       "0"
+      [div.deck-tile.svelte-15ynl8a]                               (330, 155)  365x636   
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 156)  363x484   
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 550)  327x78      "Algebra"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 168)  56x25       "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 685)  321x43    
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 685)  321x18    
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 685)  87x18       "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (448, 690)  174x9     
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 690)  0x9       
+            [span.bar-count.svelte-15ynl8a]                        (631, 685)  42x18       "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 156)  363x634     HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 155)  365x636   
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 156)  363x484   
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 550)  327x78      "Ancient Greece"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 168)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 685)  321x66    
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 685)  321x18    
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 685)  87x18       "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 690)  174x9     
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 690)  0x9       
+            [span.bar-count.svelte-15ynl8a]                        (1026, 685)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 709)  321x18    
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 709)  87x18       "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 714)  174x9     
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 714)  0x9       
+            [span.bar-count.svelte-15ynl8a]                        (1026, 709)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 733)  321x18    
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 733)  87x18       "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 738)  174x9     
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 738)  0x9       
+            [span.bar-count.svelte-15ynl8a]                        (1026, 733)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 156)  363x634     HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 155)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 156)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 550)  327x78     "Ancient Rome"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 168)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 685)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 685)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1142, 685)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 690)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1238, 690)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1421, 685)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 709)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (1142, 709)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 714)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1238, 714)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1421, 709)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 733)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 733)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 738)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 738)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1421, 733)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 156)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 155)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 156)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 550)  327x78     "Anime & Manga"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 168)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 685)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 685)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 685)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 690)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 690)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1816, 685)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 709)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 709)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 714)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 714)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1816, 709)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 733)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 733)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 738)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 738)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1816, 733)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 156)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 821)  365x636   
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 822)  363x484   
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 1216)  327x78     "AP Biology"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 834)  56x25       "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 1351)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 1351)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 1351)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 1356)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 1356)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 1351)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 1375)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 1375)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 1380)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 1380)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 1375)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 1399)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 1399)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 1404)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 1404)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 1399)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 822)  363x634     HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 821)  365x636   
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 822)  363x484   
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 1216)  327x78     "AP Chemistry"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 834)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 1351)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 1351)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 1351)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 1356)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 1356)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 1351)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 1375)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 1375)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 1380)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 1380)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 1375)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 1399)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 1399)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 1404)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 1404)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 1399)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 822)  363x634     HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 821)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 822)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 1186)  327x108   "AP European History"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 834)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 1351)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 1351)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1142, 1351)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 1356)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1238, 1356)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 1351)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 1375)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1142, 1375)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 1380)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1238, 1380)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 1375)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 1399)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 1399)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 1404)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 1404)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 1399)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 822)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 821)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 822)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 1186)  327x108   "AP Human Geography"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 834)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 1351)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 1351)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 1351)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 1356)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 1356)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 1351)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 1375)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 1375)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 1380)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 1380)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 1375)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 1399)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 1399)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 1404)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 1404)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 1399)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 822)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 1487)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 1488)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 1852)  327x108    "AP Macroeconomics"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 1500)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 2017)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 2017)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 2017)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 2022)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 2022)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 2017)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 2041)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 2041)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 2046)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 2046)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 2041)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 2065)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 2065)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 2070)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 2070)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 2065)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 1488)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 1487)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 1488)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 1852)  327x108    "AP Microeconomics"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 1500)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 2017)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 2017)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 2017)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 2022)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 2022)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 2017)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 2041)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 2041)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 2046)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 2046)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 2041)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 2065)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 2065)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 2070)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 2070)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 2065)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 1488)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 1487)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 1488)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 1852)  327x108   "AP Physics 1: Algebra-Based"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 1500)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 2017)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 2017)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1142, 2017)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 2022)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1238, 2022)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 2017)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 2041)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1142, 2041)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 2046)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1238, 2046)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 2041)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 2065)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 2065)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 2070)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 2070)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 2065)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 1488)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 1487)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 1488)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 1882)  327x78    "AP Psychology"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 1500)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 2017)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 2017)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 2017)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 2022)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 2022)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 2017)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 2041)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 2041)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 2046)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 2046)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 2041)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 2065)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 2065)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 2070)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 2070)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 2065)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 1488)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 2153)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 2154)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 2548)  327x78     "AP U.S. History"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 2166)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 2683)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 2683)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 2683)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 2688)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 2688)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 2683)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 2707)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 2707)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 2712)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 2712)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 2707)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 2731)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 2731)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 2736)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 2736)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 2731)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 2154)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 2153)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 2154)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 2518)  327x108    "AP World History: Modern"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 2166)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 2683)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 2683)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 2683)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 2688)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 2688)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 2683)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 2707)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 2707)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 2712)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 2712)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 2707)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 2731)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 2731)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 2736)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 2736)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 2731)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 2154)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 2153)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 2154)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 2548)  327x78    "Arithmetic"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 2166)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 2683)  321x43  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 2683)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 2683)  87x18     "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 2688)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 2688)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 2683)  42x18     "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 2154)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 2153)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 2154)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 2548)  327x78    "Calculus"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 2166)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 2683)  321x43  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 2683)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 2683)  87x18     "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 2688)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 2688)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 2683)  42x18     "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 2154)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 2819)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 2820)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 3214)  327x78     "Chess Tactics"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 2832)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 3349)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 3349)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 3349)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 3354)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 3354)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 3349)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 3373)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 3373)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 3378)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 3378)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 3373)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 3397)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 3397)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 3402)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 3402)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 3397)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 2820)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 2819)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 2820)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 3214)  327x78     "Chinese"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 2832)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 3349)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 3349)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 3349)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 3354)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 3354)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 3349)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 3373)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 3373)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 3378)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 3378)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 3373)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 3397)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 3397)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 3402)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 3402)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 3397)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 2820)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 2819)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 2820)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 3184)  327x108   "Complex Numbers"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 2832)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 3349)  321x43  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 3349)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 3349)  87x18     "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 3354)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 3354)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 3349)  42x18     "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 2820)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 2819)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 2820)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 3154)  327x138   "Computer Science & Technology"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 2832)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 3349)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 3349)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 3349)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 3354)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 3354)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 3349)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 3373)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 3373)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 3378)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 3378)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 3373)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 3397)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 3397)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 3402)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 3402)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 3397)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 2820)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 3485)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 3486)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 3880)  327x78     "Constellations"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 3498)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 4015)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 4015)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 4015)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 4020)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 4020)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 4015)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 4039)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 4039)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 4044)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 4044)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 4039)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 4063)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 4063)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 4068)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 4068)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 4063)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 3486)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 3485)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 3486)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 3850)  327x108    "Coordinate Geometry"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 3498)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 4015)  321x43   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 4015)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 4015)  87x18      "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (843, 4020)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 4020)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 4015)  42x18     "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 3486)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 3485)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 3486)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 3880)  327x78    "Czech"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 3498)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 4015)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 4015)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1142, 4015)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 4020)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1238, 4020)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 4015)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 4039)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1142, 4039)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 4044)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1238, 4044)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 4039)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 4063)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 4063)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 4068)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 4068)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 4063)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 3486)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 3485)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 3486)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 3850)  327x108   "Dinosaurs & Paleontology"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 3498)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 4015)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 4015)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 4015)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 4020)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 4020)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 4015)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 4039)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 4039)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 4044)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 4044)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 4039)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 4063)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 4063)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 4068)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 4068)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 4063)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 3486)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 4151)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 4152)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 4546)  327x78     "Discrete Math"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 4164)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 4681)  321x43   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 4681)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 4681)  87x18      "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (448, 4686)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 4686)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 4681)  42x18      "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 4152)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 4151)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 4152)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 4546)  327x78     "Dutch"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 4164)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 4681)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 4681)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 4681)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 4686)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 4686)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 4681)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 4705)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 4705)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 4710)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 4710)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 4705)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 4729)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 4729)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 4734)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 4734)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 4729)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 4152)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 4151)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 4152)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 4516)  327x108   "Egyptian Mythology"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 4164)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 4681)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 4681)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1142, 4681)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 4686)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1238, 4686)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 4681)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 4705)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1142, 4705)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 4710)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1238, 4710)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 4705)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 4729)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 4729)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 4734)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 4734)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 4729)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 4152)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 4151)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 4152)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 4486)  327x138   "Famous Inventions & Inventors"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 4164)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 4681)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 4681)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 4681)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 4686)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 4686)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 4681)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 4705)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 4705)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 4710)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 4710)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 4705)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 4729)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 4729)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 4734)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 4734)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 4729)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 4152)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 4817)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 4818)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 5182)  327x108    "Famous Paintings & Artists"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 4830)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 5347)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 5347)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 5347)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 5352)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 5352)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 5347)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 5371)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 5371)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 5376)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 5376)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 5371)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 5395)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 5395)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 5400)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 5400)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 5395)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 4818)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 4817)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 4818)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 5212)  327x78     "FIFA World Cup"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 4830)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 5347)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 5347)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 5347)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 5352)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 5352)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 5347)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 5371)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 5371)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 5376)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 5376)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 5371)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 5395)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 5395)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 5400)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 5400)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 5395)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 4818)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 4817)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 4818)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 5212)  327x78    "Financial Math"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 4830)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 5347)  321x43  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 5347)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 5347)  87x18     "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 5352)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 5352)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 5347)  42x18     "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 4818)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 4817)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 4818)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 5212)  327x78    "French"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 4830)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 5347)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 5347)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 5347)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 5352)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 5352)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 5347)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 5371)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 5371)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 5376)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 5376)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 5371)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 5395)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 5395)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 5400)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 5400)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 5395)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 4818)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 5483)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 5484)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 5878)  327x78     "Geometry"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 5496)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 6013)  321x43   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 6013)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 6013)  87x18      "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (448, 6018)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 6018)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 6013)  42x18      "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 5484)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 5483)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 5484)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 5878)  327x78     "German"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 5496)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 6013)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 6013)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 6013)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 6018)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 6018)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 6013)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 6037)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 6037)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 6042)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 6042)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 6037)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 6061)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 6061)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 6066)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 6066)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 6061)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 5484)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 5483)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 5484)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 5848)  327x108   "Greek Mythology"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 5496)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 6013)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 6013)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1142, 6013)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 6018)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1238, 6018)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 6013)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 6037)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1142, 6037)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 6042)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1238, 6042)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 6037)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 6061)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 6061)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 6066)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 6066)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 6061)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 5484)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 5483)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 5484)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 5878)  327x78    "Human Anatomy"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 5496)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 6013)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 6013)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 6013)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 6018)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 6018)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 6013)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 6037)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 6037)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 6042)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 6042)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 6037)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 6061)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 6061)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 6066)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 6066)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 6061)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 5484)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 6149)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 6150)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 6544)  327x78     "Japanese"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 6162)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 6679)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 6679)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 6679)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 6684)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 6684)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 6679)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 6703)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 6703)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 6708)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 6708)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 6703)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 6727)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 6727)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 6732)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 6732)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 6727)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 6150)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 6149)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 6150)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 6544)  327x78     "Korean"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 6162)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 6679)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 6679)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 6679)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 6684)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 6684)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 6679)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 6703)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 6703)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 6708)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 6708)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 6703)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 6727)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 6727)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 6732)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 6732)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 6727)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 6150)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 6149)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 6150)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 6544)  327x78    "Linear Algebra"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 6162)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 6679)  321x43  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 6679)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 6679)  87x18     "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 6684)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 6684)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 6679)  42x18     "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 6150)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 6149)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 6150)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 6544)  327x78    "Logic & Sets"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 6162)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 6679)  321x43  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 6679)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 6679)  87x18     "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 6684)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 6684)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 6679)  42x18     "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 6150)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 6815)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 6816)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 7180)  327x108    "Mammals of the World"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 6828)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 7345)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 7345)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 7345)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 7350)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 7350)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 7345)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 7369)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 7369)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 7374)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 7374)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 7369)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 7393)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 7393)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 7398)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 7398)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 7393)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 6816)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 6815)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 6816)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 7180)  327x108    "Medical Terminology"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 6828)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 7345)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 7345)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 7345)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 7350)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 7350)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 7345)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 7369)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 7369)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 7374)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 7374)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 7369)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 7393)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 7393)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 7398)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 7398)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 7393)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 6816)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 6815)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 6816)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 7210)  327x78    "Medieval World"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 6828)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 7345)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 7345)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1142, 7345)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 7350)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1238, 7350)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 7345)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 7369)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1142, 7369)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 7374)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1238, 7374)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 7369)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 7393)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 7393)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 7398)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 7398)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 7393)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 6816)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 6815)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 6816)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 7210)  327x78    "Mental Math"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 6828)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 7345)  321x43  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 7345)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 7345)  87x18     "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 7350)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 7350)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 7345)  42x18     "4"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 6816)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 7481)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 7482)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 7876)  327x78     "Movies & Cinema"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 7494)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 8011)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 8011)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 8011)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 8016)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 8016)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 8011)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 8035)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 8035)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 8040)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 8040)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 8035)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 8059)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 8059)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 8064)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 8064)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 8059)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 7482)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 7481)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 7482)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 7876)  327x78     "Music History"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 7494)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 8011)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 8011)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 8011)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 8016)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 8016)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 8011)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 8035)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 8035)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 8040)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 8040)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 8035)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 8059)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 8059)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 8064)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 8064)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 8059)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 7482)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 7481)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 7482)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 7876)  327x78    "NASA Missions"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 7494)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 8011)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 8011)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1142, 8011)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 8016)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1238, 8016)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 8011)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 8035)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1142, 8035)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 8040)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1238, 8040)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 8035)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 8059)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 8059)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 8064)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 8064)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 8059)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 7482)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 7481)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 7482)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 7846)  327x108   "Norse Mythology"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 7494)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 8011)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 8011)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 8011)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 8016)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 8016)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 8011)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 8035)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 8035)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 8040)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 8040)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 8035)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 8059)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 8059)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 8064)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 8064)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 8059)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 7482)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 8147)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 8148)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 8542)  327x78     "Number Theory"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 8160)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 8677)  321x43   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 8677)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 8677)  87x18      "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (448, 8682)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 8682)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 8677)  42x18      "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 8148)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 8147)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 8148)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 8512)  327x108    "Nursing Pharmacology"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 8160)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 8677)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 8677)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 8677)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 8682)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 8682)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 8677)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 8701)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 8701)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 8706)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 8706)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 8701)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 8725)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 8725)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 8730)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 8730)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 8725)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 8148)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 8147)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 8148)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 8542)  327x78    "Ocean Life"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 8160)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 8677)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 8677)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1142, 8677)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 8682)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1238, 8682)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 8677)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 8701)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1142, 8701)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 8706)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1238, 8706)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 8701)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 8725)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 8725)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 8730)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 8730)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 8725)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 8148)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 8147)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 8148)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 8512)  327x108   "Periodic Table of Elements"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 8160)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 8677)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 8677)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 8677)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 8682)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 8682)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 8677)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 8701)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 8701)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 8706)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 8706)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 8701)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 8725)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 8725)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 8730)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 8730)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 8725)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 8148)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 8813)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 8814)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 9208)  327x78     "Philosophy"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 8826)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 9343)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 9343)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 9343)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 9348)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 9348)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 9343)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 9367)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 9367)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 9372)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 9372)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 9367)  42x18      "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 9391)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 9391)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 9396)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 9396)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (631, 9391)  42x18      "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 8814)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 8813)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 8814)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 9208)  327x78     "Pop Culture"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 8826)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 9343)  321x66   
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 9343)  321x18   
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 9343)  87x18      "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 9348)  174x9    
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 9348)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 9343)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 9367)  321x18   
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 9367)  87x18      "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 9372)  174x9    
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 9372)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 9367)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 9391)  321x18   
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 9391)  87x18      "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 9396)  174x9    
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 9396)  0x9      
+            [span.bar-count.svelte-15ynl8a]                        (1026, 9391)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 8814)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 8813)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 8814)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 9208)  327x78    "Pre-Calculus"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 8826)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 9343)  321x43  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 9343)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 9343)  87x18     "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 9348)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 9348)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1421, 9343)  42x18     "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 8814)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 8813)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 8814)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 9208)  327x78    "Solar System"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 8826)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 9343)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 9343)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 9343)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 9348)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 9348)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 9343)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 9367)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 9367)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 9372)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 9372)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 9367)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 9391)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 9391)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 9396)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 9396)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1816, 9391)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 8814)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 9479)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 9480)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 9874)  327x78     "Spanish"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 9492)  56x25      "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 10009)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 10009)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 10009)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 10014)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 10014)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (631, 10009)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 10033)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 10033)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 10038)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 10038)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (631, 10033)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 10057)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 10057)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 10062)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 10062)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (631, 10057)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 9480)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 9479)  365x636  
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 9480)  363x484  
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 9844)  327x108    "Statistics & Probability"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 9492)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 10009)  321x43  
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 10009)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 10009)  87x18     "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (843, 10014)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 10014)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1026, 10009)  42x18    "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 9480)  363x634    HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 9479)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 9480)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 9874)  327x78    "Trigonometry"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 9492)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 10009)  321x43 
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 10009)  321x18 
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 10009)  87x18    "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 10014)  174x9  
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 10014)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1421, 10009)  42x18    "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 9480)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 9479)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 9480)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 9874)  327x78    "Unit Conversion"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 9492)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 10009)  321x43 
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 10009)  321x18 
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 10009)  87x18    "Skills"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 10014)  174x9  
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 10014)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1816, 10009)  42x18    "5"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 9480)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 10145)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 10146)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 10540)  327x78    "US Presidents"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 10158)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 10675)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 10675)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 10675)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 10680)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 10680)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (631, 10675)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 10699)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 10699)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 10704)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 10704)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (631, 10699)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 10723)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 10723)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 10728)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 10728)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (631, 10723)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 10146)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 10145)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 10146)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 10540)  327x78    "US States"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 10158)  56x25    "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 10675)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 10675)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 10675)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 10680)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 10680)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1026, 10675)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 10699)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 10699)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 10704)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 10704)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1026, 10699)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 10723)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 10723)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 10728)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 10728)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1026, 10723)  42x18    "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 10146)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 10145)  365x636
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 10146)  363x484
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 10540)  327x78   "World Capitals"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 10158)  56x25    "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 10675)  321x66 
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 10675)  321x18 
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1142, 10675)  87x18    "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 10680)  174x9  
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1238, 10680)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1421, 10675)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 10699)  321x18 
+            [span.bar-label.review-label.svelte-15ynl8a]           (1142, 10699)  87x18    "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 10704)  174x9  
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1238, 10704)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1421, 10699)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 10723)  321x18 
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 10723)  87x18    "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 10728)  174x9  
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 10728)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1421, 10723)  42x18    "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 10146)  363x634  HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 10145)  365x636
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 10146)  363x484
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 10540)  327x78   "World Countries"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 10158)  56x25    "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 10675)  321x66 
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 10675)  321x18 
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 10675)  87x18    "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 10680)  174x9  
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 10680)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1816, 10675)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 10699)  321x18 
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 10699)  87x18    "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 10704)  174x9  
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 10704)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1816, 10699)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 10723)  321x18 
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 10723)  87x18    "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 10728)  174x9  
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 10728)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1816, 10723)  42x18    "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 10146)  363x634  HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 10811)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 10812)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 11176)  327x108   "World Cuisines & Spices"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 10824)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 11341)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 11341)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 11341)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 11346)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 11346)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (631, 11341)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 11365)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 11365)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 11370)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 11370)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (631, 11365)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 11389)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 11389)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 11394)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 11394)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (631, 11389)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 10812)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 10811)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 10812)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 11206)  327x78    "World Flags"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 10824)  56x25    "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 11341)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 11341)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 11341)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 11346)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 11346)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1026, 11341)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 11365)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 11365)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 11370)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 11370)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1026, 11365)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 11389)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 11389)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 11394)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 11394)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1026, 11389)  42x18    "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 10812)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1120, 10811)  365x636
+        [div.parallax-wrap.svelte-15ynl8a]                         (1121, 10812)  363x484
+        [span.deck-title-3d.svelte-15ynl8a]                        (1139, 11176)  327x108  "World Literature"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1416, 10824)  56x25    "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1142, 11341)  321x66 
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 11341)  321x18 
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1142, 11341)  87x18    "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 11346)  174x9  
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1238, 11346)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1421, 11341)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 11365)  321x18 
+            [span.bar-label.review-label.svelte-15ynl8a]           (1142, 11365)  87x18    "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 11370)  174x9  
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1238, 11370)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1421, 11365)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1142, 11389)  321x18 
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1142, 11389)  87x18    "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1238, 11394)  174x9  
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1238, 11394)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1421, 11389)  42x18    "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1121, 10812)  363x634  HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (1515, 10811)  365x636
+        [div.parallax-wrap.svelte-15ynl8a]                         (1516, 10812)  363x484
+        [span.deck-title-3d.svelte-15ynl8a]                        (1534, 11206)  327x78   "World Religions"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1811, 10824)  56x25    "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (1537, 11341)  321x66 
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 11341)  321x18 
+            [span.bar-label.seen-label.svelte-15ynl8a]             (1537, 11341)  87x18    "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 11346)  174x9  
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (1633, 11346)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1816, 11341)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 11365)  321x18 
+            [span.bar-label.review-label.svelte-15ynl8a]           (1537, 11365)  87x18    "Review"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 11370)  174x9  
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (1633, 11370)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1816, 11365)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (1537, 11389)  321x18 
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (1537, 11389)  87x18    "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (1633, 11394)  174x9  
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (1633, 11394)  0x9    
+            [span.bar-count.svelte-15ynl8a]                        (1816, 11389)  42x18    "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (1516, 10812)  363x634  HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (330, 11477)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (331, 11478)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (349, 11872)  327x78    "World War II"
+        [span.badge.badge-new.svelte-15ynl8a]                      (626, 11490)  56x25     "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (352, 12007)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 12007)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (352, 12007)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (448, 12012)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (448, 12012)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (631, 12007)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 12031)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (352, 12031)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (448, 12036)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (448, 12036)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (631, 12031)  42x18     "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (352, 12055)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (352, 12055)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (448, 12060)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (448, 12060)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (631, 12055)  42x18     "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (331, 11478)  363x634   HIDDEN
+      [div.deck-tile.svelte-15ynl8a]                               (725, 11477)  365x636 
+        [div.parallax-wrap.svelte-15ynl8a]                         (726, 11478)  363x484 
+        [span.deck-title-3d.svelte-15ynl8a]                        (744, 11842)  327x108   "World Wonders & Landmarks"
+        [span.badge.badge-new.svelte-15ynl8a]                      (1021, 11490)  56x25    "NEW"
+        [div.progress-bars.svelte-15ynl8a]                         (747, 12007)  321x66  
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 12007)  321x18  
+            [span.bar-label.seen-label.svelte-15ynl8a]             (747, 12007)  87x18     "Seen"
+            [div.bar-track.svelte-15ynl8a]                         (843, 12012)  174x9   
+              [div.bar-fill.bar-seen.svelte-15ynl8a]               (843, 12012)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1026, 12007)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 12031)  321x18  
+            [span.bar-label.review-label.svelte-15ynl8a]           (747, 12031)  87x18     "Review"
+            [div.bar-track.svelte-15ynl8a]                         (843, 12036)  174x9   
+              [div.bar-fill.bar-review.svelte-15ynl8a]             (843, 12036)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1026, 12031)  42x18    "0"
+          [div.progress-bar-row.svelte-15ynl8a]                    (747, 12055)  321x18  
+            [span.bar-label.mastered-label.svelte-15ynl8a]         (747, 12055)  87x18     "Mastered"
+            [div.bar-track.svelte-15ynl8a]                         (843, 12060)  174x9   
+              [div.bar-fill.bar-mastered.svelte-15ynl8a]           (843, 12060)  0x9     
+            [span.bar-count.svelte-15ynl8a]                        (1026, 12055)  42x18    "0"
+        [div.shine-overlay.svelte-15ynl8a]                         (726, 11478)  363x634   HIDDEN
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.study-temple-screen.svelte-10ykr27]
+  TOP-LEFT           → [h1.title.svelte-10ykr27], [button.sidebar-toggle.svelte-10ykr27], [button.sidebar-item.svelte-10ykr27.active], [button.sidebar-item.svelte-10ykr27], [span.sidebar-label.svelte-10ykr27] (+3 more)
+  TOP-RIGHT          → [button.chip.svelte-e67dst], [button.chip.svelte-e67dst]
+  MIDDLE-LEFT        → [aside.sidebar.svelte-10ykr27], [nav.sidebar-categories.svelte-10ykr27], [button.sidebar-item.svelte-10ykr27], [span.sidebar-label.svelte-10ykr27], [button.sidebar-item.svelte-10ykr27] (+11 more)
+  BOTTOM-LEFT        → [button.sidebar-item.svelte-10ykr27], [button.sidebar-item.svelte-10ykr27], [button.sidebar-item.svelte-10ykr27], [span.sidebar-label.svelte-10ykr27], [button.sidebar-item.svelte-10ykr27] (+7 more)
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.study-temple-screen.svelte-10ykr27]           covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 1377 DOM elements) —

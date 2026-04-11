@@ -1,0 +1,18 @@
+[
+  {"type": "wait", "ms": 6000},
+  {"type": "eval", "js": "window.__rrPlay?.getScreen?.() || 'unknown'"},
+  
+  {"type": "eval", "js": "(function(){try{const s=window.__rrScenario.snapshot('t5-reward-snap');window.__t5_rewardSnap=s;return JSON.stringify({ok:true,label:s.label,screen:s.screen,hasRunState:!!s.runState})}catch(e){return JSON.stringify({ok:false,err:e.message})}})()"},
+  
+  {"type": "rrScreenshot", "name": "t5-sub3-reward-initial"},
+  
+  {"type": "eval", "js": "(function(){try{const s=window.__t5_rewardSnap;if(!s)return JSON.stringify({ok:false,err:'no snap'});const r=window.__rrScenario.restore(s);return JSON.stringify({ok:r?.ok,msg:r?.message})}catch(e){return JSON.stringify({ok:false,err:e.message})}})()"},
+  
+  {"type": "wait", "ms": 2000},
+  
+  {"type": "eval", "js": "window.__rrPlay?.getScreen?.() || 'unknown'"},
+  
+  {"type": "rrScreenshot", "name": "t5-sub3-reward-restored"},
+  
+  {"type": "eval", "js": "(function(){const snap=window.__t5_rewardSnap;const rs=snap?.runState;const issues=[];const setFields=['consumedRewardFactIds','factsAnsweredCorrectly','factsAnsweredIncorrectly'];for(const f of setFields){if(rs&&f in rs){const v=rs[f];if(v&&typeof v==='object'&&!Array.isArray(v)&&v.__type!=='Set'){issues.push('BAD_FIELD_'+f+':'+JSON.stringify(v).slice(0,50))}}}return JSON.stringify({sub3_result:issues.length===0?'PASS':'FAIL',screen_ok:window.__rrPlay?.getScreen?.()===snap?.screen,issues:issues})})()"}
+]

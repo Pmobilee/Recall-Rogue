@@ -11,13 +11,21 @@ status: internal-fixture
 
 # Template Demo — Regression Fixture
 
-This file exists only to exercise `scripts/build-skills.mjs` and `scripts/lint/check-skill-drift.mjs`. It proves the include macro (of the form `{` + `{include: PATH}` + `}`) works end-to-end by pulling a section from an always-loaded rule and expanding it here at build time.
+This file exists only to exercise `scripts/build-skills.mjs` and `scripts/lint/check-skill-drift.mjs`. It proves the `{{include: PATH}}` macro works end-to-end by pulling a section from an always-loaded rule and expanding it here at build time.
+
+**Markdown-aware parsing is tested here.** The literal `{{include: ...}}` in the previous paragraph (inside backticks) MUST NOT expand — if it does, the expander has regressed. The same applies to the fenced code block below:
+
+```
+{{include: .claude/rules/autonomy-charter.md#this-should-not-expand}}
+```
+
+And this inline code span: `{{include: this/should/not/expand.md}}` must also pass through unchanged.
 
 If this file drifts out of sync with its `.template`, the drift check fails and the pre-commit hook blocks the commit. That is the whole point.
 
 ## Inherited: The "Keep Going" Rule
 
-The following section is pulled verbatim from `.claude/rules/autonomy-charter.md` via the include macro — edit the charter, run `node scripts/build-skills.mjs`, and this block regenerates.
+The following section is pulled verbatim from `.claude/rules/autonomy-charter.md` via the include macro (on its own line, in plain text) — edit the charter, run `node scripts/build-skills.mjs`, and this block regenerates.
 
 ## The "Keep Going" Rule
 

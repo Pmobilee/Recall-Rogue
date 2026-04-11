@@ -1,0 +1,80 @@
+LAYOUT DUMP  2026-04-11T02:05:14.203Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (1084, 562)  121x30     depth:2  α:0.30
+  [Ellipse]                                      (903, 393)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (888, 650)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (765, 528)  54x13       depth:2  α:0.30
+  [Image]                                        (1084, 531)  173x173    depth:3  frame:__BASE  tex:gold_tier_2  rot:7°
+  [Container]                                    (903, 370)  96x124      depth:3  children:3  rot:8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_attack
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_heavy_strike
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (888, 628)  96x124      depth:3  children:3  rot:-8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_block
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Image]                                        (765, 512)  77x203      depth:3  frame:__BASE  tex:vial_large  rot:-4°
+  [Arc]                                          (869, 419)  2x2         depth:4  α:0.01
+  [Arc]                                          (739, 480)  4x4         depth:4  α:0.63
+  [Arc]                                          (1237, 129)  4x4        depth:5  α:0.11
+  [Arc]                                          (534, 178)  4x4         depth:5  α:0.53
+  [Arc]                                          (96, 334)  5x5          depth:5  α:0.67
+  [Arc]                                          (1743, 316)  3x3        depth:5  α:0.58
+  [Arc]                                          (369, 245)  3x3         depth:5  α:0.58
+  [Arc]                                          (671, 27)  3x3          depth:5  α:0.62
+  [Arc]                                          (235, 104)  5x5         depth:5  α:0.57
+  [Arc]                                          (702, 117)  5x5         depth:5  α:0.57
+  [Arc]                                          (850, 258)  3x3         depth:5  α:0.53
+  [Arc]                                          (1364, 301)  5x5        depth:5  α:0.56
+  [Arc]                                          (540, 113)  3x3         depth:5  α:0.52
+  [Arc]                                          (1498, 115)  5x5        depth:5  α:0.57
+  [Arc]                                          (1555, 120)  6x6        depth:5  α:0.48
+  [Arc]                                          (1445, 31)  3x3         depth:5  α:0.18
+  [Arc]                                          (284, 232)  2x2         depth:5  α:0.16
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [section.journal-screen.svelte-1s3c6oq.journal-landscape]      (0, 0)  1920x1080       HIDDEN
+      [h2.svelte-1s3c6oq]                                          (72, 30)  353x54        "Expedition Log"
+      [button.back-btn.svelte-1s3c6oq]                             (1752, 24)  96x66       "Back"
+      [div.detail-column.svelte-1s3c6oq]                           (72, 133)  1048x917   
+        [div.empty-detail.svelte-1s3c6oq]                          (72, 133)  1048x917   
+          [p.empty-icon.svelte-1s3c6oq]                            (586, 540)  20x20       "📖"
+          [h3.svelte-1s3c6oq]                                      (411, 575)  369x33      "No expeditions logged yet"
+          [p.svelte-1s3c6oq]                                       (472, 623)  248x20      "Dive into a run to begin your log."
+      [h4.svelte-1s3c6oq]                                          (1150, 144)  120x21     "Run History"
+      [button.pill.svelte-1s3c6oq.pill-active]                     (1590, 133)  60x42      "All"
+      [button.pill.svelte-1s3c6oq]                                 (1656, 133)  60x42      "🏆"
+      [button.pill.svelte-1s3c6oq]                                 (1722, 133)  60x42      "💀"
+      [button.pill.svelte-1s3c6oq]                                 (1788, 133)  60x42      "🚪"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Image] (+7 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+9 more)
+  TOP-CENTER         → [Arc], [Arc], [Arc], [Arc]
+  TOP-RIGHT          → [Arc], [Arc], [Arc], [Arc], [Arc]
+  BOTTOM-CENTER      → [Container] continueButton
+  MIDDLE-LEFT        → [div.detail-column.svelte-1s3c6oq], [div.empty-detail.svelte-1s3c6oq], [h3.svelte-1s3c6oq]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [section.journal-screen.svelte-1s3c6oq.journal-l   covers 100% height  CENTER
+  [div.detail-column.svelte-1s3c6oq]                 covers 85% height  MIDDLE-LEFT
+  [div.empty-detail.svelte-1s3c6oq]                  covers 85% height  MIDDLE-LEFT
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (35 Phaser objects, 15 DOM elements) —

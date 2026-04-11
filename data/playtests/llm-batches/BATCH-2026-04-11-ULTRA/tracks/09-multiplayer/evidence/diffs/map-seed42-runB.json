@@ -1,0 +1,24 @@
+{
+  "runLabel": "map-generation-run-B",
+  "seed": 42,
+  "attempt": "B-fallback",
+  "nodeCount": 24,
+  "rowCount": 8,
+  "enemyNodes": [
+    {"id": "r0-n0", "row": 0, "type": "combat", "enemyId": "mold_puff"},
+    {"id": "r0-n1", "row": 0, "type": "combat", "enemyId": "page_flutter"},
+    {"id": "r0-n2", "row": 0, "type": "combat", "enemyId": "index_weaver"},
+    {"id": "r1-n0", "row": 1, "type": "combat", "enemyId": "mold_puff"},
+    {"id": "r1-n1", "row": 1, "type": "combat", "enemyId": "index_weaver"},
+    {"id": "r1-n2", "row": 1, "type": "combat", "enemyId": "overdue_golem"},
+    {"id": "r2-n0", "row": 2, "type": "elite", "enemyId": "plagiarist"},
+    {"id": "r2-n1", "row": 2, "type": "combat", "enemyId": "bookmark_vine"},
+    {"id": "r2-n2", "row": 2, "type": "combat", "enemyId": "overdue_golem"},
+    {"id": "r3-n3", "row": 3, "type": "combat", "enemyId": "thesis_construct"},
+    {"id": "r4-n1", "row": 4, "type": "combat", "enemyId": "pop_quiz"},
+    {"id": "r4-n3", "row": 4, "type": "combat", "enemyId": "thesis_construct"},
+    {"id": "r5-n1", "row": 5, "type": "combat", "enemyId": "index_weaver"},
+    {"id": "r5-n2", "row": 5, "type": "combat", "enemyId": "index_weaver"},
+    {"id": "r7-n0", "row": 7, "type": "boss", "enemyId": "algorithm"}
+  ]
+}

@@ -1,0 +1,83 @@
+[
+  {
+    "id": "issue-1744335811000-09-01",
+    "track": "09-multiplayer",
+    "category": "rng_nondeterminism",
+    "severity": "critical",
+    "title": "crit_lens relic uses Math.random() — co-op peers roll independent crits for same card play",
+    "description": "In relicEffectResolver.ts line 1647, the crit_lens relic's 25% crit chance uses a bare Math.random() call. In co-op mode, both clients independently compute damage for the shared enemy via delta submission. If one client crits and the other doesn't, the two deltas submitted to the host barrier will differ for the same card play. The host merges deltas additively, so the final reconciled enemy HP will be correct, BUT the crit outcome feedback shown to each player will differ — one sees a crit flash, the other doesn't. If the delta computation itself uses crit to modify the damage value that goes into the delta, the two clients will submit different damage values for the same card, leading to inflated or deflated total damage in the merged snapshot.",
+    "evidence": {
+      "file": "src/services/relicEffectResolver.ts",
+      "line": 1647,
+      "code": "const isCrit = relicIds.has('crit_lens') && Math.random() < 0.25;",
+      "coopMechanism": "EnemyTurnDelta.damageDealt = preTurnSnapshot.currentHP - enemy.currentHP after all card plays; if crit doubles a card's damage on one client but not the other, the deltas diverge"
+    },
+    "reproductionSteps": [
+      "Two co-op peers, both holding crit_lens relic",
+      "Either peer plays a Charge card during their turn",
+      "Peer A crits (25% chance), Peer B does not",
+      "Both submit EnemyTurnDelta to the barrier",
+      "Peer A's delta shows higher damageDealt than Peer B's for the same card",
+      "Host merges: result is sum of both deltas — enemy takes non-crit damage twice instead of crit + non-crit"
+    ],
+    "suggestedFix": "Replace Math.random() in crit_lens with getRunRng('relicEffects').next() when isRunRngActive(). In co-op mode, the host should be the sole randomness authority for relic effects that affect shared enemy state — broadcast the crit result alongside the delta."
+  },
+  {
+    "id": "issue-1744335811000-09-02",
+    "track": "09-multiplayer",
+    "category": "rng_nondeterminism",
+    "severity": "critical",
+    "title": "obsidian_dice relic uses Math.random() — co-op peers independently roll +50%/-25% multiplier",
+    "description": "In relicEffectResolver.ts line 1712, the obsidian_dice relic applies a 50/50 multiplier roll (+50% or -25%) using Math.random(). Same issue as crit_lens: in co-op, both clients resolve the effect independently against their local enemy copy. If one rolls high and the other rolls low, the damage deltas submitted to the turn-end barrier will disagree for the same card play event.",
+    "evidence": {
+      "file": "src/services/relicEffectResolver.ts",
+      "line": 1712,
+      "code": "if (Math.random() < 0.50) { extraMultiplier *= 1.5; } else { extraMultiplier *= 0.75; }",
+      "coopMechanism": "Same delta-submission path as crit_lens issue"
+    },
+    "reproductionSteps": [
+      "Two co-op peers, at least one holding obsidian_dice relic",
+      "Peer plays a Charge card",
+      "One client rolls the +50% branch, other rolls the -25% branch",
+      "Deltas diverge — merged result is the arithmetic sum of the two divergent outcomes"
+    ],
+    "suggestedFix": "Same pattern as crit_lens: use seeded RNG fork for randomness that affects shared enemy state. Alternatively, include the relic roll result in the delta payload so both sides converge."
+  },
+  {
+    "id": "issue-1744335811000-09-03",
+    "track": "09-multiplayer",
+    "category": "rng_nondeterminism",
+    "severity": "high",
+    "title": "relicAcquisitionService uses Math.random() — co-op reward screens could offer different relics",
+    "description": "relicAcquisitionService.ts lines 73 and 93 use Math.random() for rarity roll and candidate selection when offering post-combat relic rewards. If co-op has or will have a shared reward screen (the architecture doc is ambiguous on this), both clients will independently roll the relic pool and offer different relics. One player sees Rare Relic A, the other sees Common Relic B.",
+    "evidence": {
+      "file": "src/services/relicAcquisitionService.ts",
+      "lines": [73, 93],
+      "code": "const roll = Math.random() * totalWeight; ... const pick = candidates[Math.floor(Math.random() * candidates.length)];"
+    },
+    "reproductionSteps": [
+      "Complete a co-op combat encounter",
+      "Proceed to reward screen",
+      "Host and guest see different relics offered"
+    ],
+    "suggestedFix": "Use getRunRng('relicRewards').next() instead of Math.random(), seeded from the run seed. The host can also broadcast the relic offer list to the guest at reward screen entry."
+  },
+  {
+    "id": "issue-1744335811000-09-04",
+    "track": "09-multiplayer",
+    "category": "lobby_broken",
+    "severity": "medium",
+    "title": "Attempt A (2-peer Docker lockstep) not feasible — BroadcastChannel transport cannot cross container boundaries",
+    "description": "The multiplayer transport implementation (multiplayerTransport.ts) uses BroadcastChannel for peer-to-peer messaging. BroadcastChannel is a browser same-origin API — messages only reach tabs within the same browser context. Two separate Docker containers each have isolated Chromium instances. No cross-container BroadcastChannel is possible without a shared WebSocket server or similar bridge. Therefore, a true 2-peer headless lockstep test cannot be conducted with the current infrastructure. The test was downgraded to Attempt B (single-peer seed determinism via Vitest).",
+    "evidence": {
+      "file": "src/services/multiplayerTransport.ts",
+      "mechanism": "BroadcastChannel API — tab-scoped, not cross-process or cross-container"
+    },
+    "reproductionSteps": [
+      "Spin up two Docker containers",
+      "Attempt to have both join the same BroadcastChannel",
+      "Messages will not be received across containers"
+    ],
+    "suggestedFix": "For headless integration testing of multiplayer, replace BroadcastChannel with a WebSocket transport mode (already partially scaffolded) and provide a test harness that injects a shared in-process message bus for two simulated peers."
+  }
+]

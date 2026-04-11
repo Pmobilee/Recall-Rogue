@@ -1,0 +1,49 @@
+{
+  "track": "04-combat-core",
+  "batchId": "BATCH-2026-04-11-ULTRA",
+  "generatedAt": "2026-04-11T02:15:00Z",
+  "testers": 3,
+  "testerNames": ["quiz-quality", "balance-curve", "fun-engagement"],
+  "encountersPerTester": 3,
+  "containersUsed": [
+    "BATCH-ULTRA-t4-quiz-quality",
+    "BATCH-ULTRA-t4-balance-curve",
+    "BATCH-ULTRA-t4-fun-engagement"
+  ],
+  "containerStatus": {
+    "BATCH-ULTRA-t4-quiz-quality": "started-stopped-restarted-stopped-restarted-crashed-stopped (host resource saturation with 17 concurrent containers)",
+    "BATCH-ULTRA-t4-balance-curve": "started-health-check-failed-stopped (host resource saturation)",
+    "BATCH-ULTRA-t4-fun-engagement": "started-health-check-failed-stopped (host resource saturation)"
+  },
+  "containersStopped": true,
+  "liveSessionDataCollected": {
+    "screenshotsCapture": 4,
+    "encountersCompleted": 0,
+    "noteOnMethod": "Live Docker warm containers all experienced 'Target crashed' due to SwiftShader/WebGL memory pressure from 17 concurrent BATCH-ULTRA containers running simultaneously. Analysis supplemented with: (1) authoritative DB scan of 53,269 facts, (2) 28,000-run headless sim analysis from 2026-04-11 run batch, (3) balance.ts constants analysis, (4) visual evidence from partial container sessions."
+  },
+  "dataSourcesUsed": [
+    "public/facts.db (53,269 facts — direct SQL scan)",
+    "data/playtests/runs/2026-04-11_01-25-56/analytics/balance-report.md",
+    "data/playtests/runs/2026-04-11_01-25-56/analytics/enemy-analysis.md",
+    "data/playtests/runs/2026-04-11_01-25-56/analytics/archetype-performance.md",
+    "data/playtests/runs/2026-04-11_01-25-56/analytics/card-performance.md",
+    "data/playtests/runs/2026-04-11_01-25-56/experienced.json",
+    "data/playtests/runs/2026-04-11_01-25-56/new_player.json",
+    "data/playtests/runs/2026-04-11_01-25-56/language_learner.json",
+    "data/playtests/runs/2026-04-11_01-25-56/competent.json",
+    "src/data/balance.ts",
+    "src/dev/scenarioSimulator.ts"
+  ],
+  "issueCount": {
+    "critical": 1,
+    "high": 4,
+    "medium": 3,
+    "low": 1
+  },
+  "verdicts": {
+    "quiz-quality": "FAIL",
+    "balance-curve": "ISSUES",
+    "fun-engagement": "ISSUES",
+    "overall": "FAIL"
+  }
+}

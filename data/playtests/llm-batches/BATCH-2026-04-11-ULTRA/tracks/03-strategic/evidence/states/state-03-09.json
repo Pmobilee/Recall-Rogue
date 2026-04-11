@@ -1,0 +1,35 @@
+{
+  "stateId": "state-03-09",
+  "bucket": "mid_game",
+  "floor": 6,
+  "enemy": {
+    "id": "tenure_guardian",
+    "name": "The Tenure Guardian",
+    "currentHP": 11,
+    "maxHP": 11,
+    "block": 12,
+    "intent": { "type": "defend", "value": 6, "telegraph": "Stone shell (gains 6 more block)" },
+    "statusEffects": [
+      { "type": "strength", "value": 1, "turnsRemaining": 999 }
+    ],
+    "special": "onPlayerNoCharge: gains +1 Strength. Currently has 12 block, gaining more."
+  },
+  "player": {
+    "currentHP": 38,
+    "maxHP": 80,
+    "block": 5,
+    "ap": 3,
+    "chain": 0
+  },
+  "hand": [
+    { "id": "slow", "name": "Slow", "type": "debuff", "apCost": 2, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Skip enemy's next defend or buff action. Charge bonus: also weaken.", "chargeBonusEffect": "slow_weaken" },
+    { "id": "piercing", "name": "Piercing", "type": "attack", "apCost": 1, "quickPlayValue": 3, "chargeCorrectValue": 9, "chargeWrongValue": 2, "description": "Ignores enemy block." },
+    { "id": "block", "name": "Block", "type": "shield", "apCost": 1, "quickPlayValue": 5, "chargeCorrectValue": 9, "chargeWrongValue": 3, "description": "Gain block." },
+    { "id": "expose", "name": "Expose", "type": "debuff", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 3, "chargeWrongValue": 1, "description": "Apply vulnerable (1.5× damage taken)." },
+    { "id": "reckless", "name": "Reckless", "type": "attack", "apCost": 1, "quickPlayValue": 6, "chargeCorrectValue": 18, "chargeWrongValue": 4, "description": "High damage, takes 3 self-damage." }
+  ],
+  "relics": [
+    { "id": "chain_reactor", "name": "Chain Reactor", "description": "Knowledge Chains of 2+ deal 6 splash damage per chain link." }
+  ],
+  "notes": "Tenure Guardian is a block-stacker that punishes Quick Play. Player is below half HP. The Slow card can cancel the incoming defend action (prevents it gaining 6 more block). Chain Reactor is useless here (chain=0). Reckless self-damages a low-HP player. Piercing bypasses block. This is a 'do you spend 2 AP to Slow or do you just Pierce through the existing block?' puzzle. Without Slow the enemy will have 18 block next turn."
+}

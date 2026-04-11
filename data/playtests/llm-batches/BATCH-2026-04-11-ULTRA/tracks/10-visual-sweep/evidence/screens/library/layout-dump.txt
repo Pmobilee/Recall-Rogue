@@ -1,0 +1,144 @@
+LAYOUT DUMP  2026-04-11T02:04:47.963Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (1084, 562)  121x30     depth:2  α:0.30
+  [Ellipse]                                      (903, 393)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (888, 650)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (765, 528)  54x13       depth:2  α:0.30
+  [Image]                                        (1084, 527)  173x173    depth:3  frame:__BASE  tex:gold_tier_2  rot:7°
+  [Container]                                    (903, 371)  96x124      depth:3  children:3  rot:8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_attack
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_heavy_strike
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (888, 627)  96x124      depth:3  children:3  rot:-8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_block
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Image]                                        (765, 513)  77x203      depth:3  frame:__BASE  tex:vial_large  rot:-4°
+  [Arc]                                          (946, 325)  5x5         depth:4  α:0.80
+  [Arc]                                          (1236, 231)  5x5        depth:5  α:0.55
+  [Arc]                                          (1019, 238)  6x6        depth:5  α:0.24
+  [Arc]                                          (486, 170)  3x3         depth:5  α:0.00
+  [Arc]                                          (1610, 104)  5x5        depth:5  α:0.68
+  [Arc]                                          (1643, 312)  3x3        depth:5  α:0.60
+  [Arc]                                          (1163, 119)  4x4        depth:5  α:0.65
+  [Arc]                                          (1888, 205)  3x3        depth:5  α:0.35
+  [Arc]                                          (740, 138)  5x5         depth:5  α:0.66
+  [Arc]                                          (516, 193)  5x5         depth:5  α:0.61
+  [Arc]                                          (441, 87)  4x4          depth:5  α:0.53
+  [Arc]                                          (1724, 204)  3x3        depth:5  α:0.53
+  [Arc]                                          (1678, 200)  4x4        depth:5  α:0.55
+  [Arc]                                          (842, 250)  4x4         depth:5  α:0.60
+  [Arc]                                          (1713, 150)  5x5        depth:5  α:0.69
+  [Arc]                                          (488, 74)  3x3          depth:5  α:0.19
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.library-screen.svelte-1ienhgk]                            (0, 0)  1920x1080       HIDDEN
+      [button.back-btn.svelte-1ienhgk]                             (24, 29)  42x42         "←"
+      [h1.title.svelte-1ienhgk]                                    (81, 37)  94x25         "LIBRARY"
+      [div.search-bar.svelte-1ienhgk]                              (196, 24)  600x51     
+      [span.mastery-badge.svelte-1ienhgk]                          (1817, 40)  79x19       "0 mastered"
+      [aside.sidebar.svelte-1ienhgk]                               (0, 100)  300x980     
+        [button.sidebar-toggle.svelte-1ienhgk]                     (0, 100)  299x48      
+          [span.toggle-arrow.svelte-1ienhgk]                       (18, 111)  17x24        "◀"
+        [nav.sidebar-categories.svelte-1ienhgk]                    (0, 148)  299x932     
+          [button.sidebar-item.svelte-1ienhgk.active]              (0, 154)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 169)  51x35        "All"
+            [span.sidebar-count.svelte-1ienhgk]                    (242, 181)  36x19       "53269"
+          [button.sidebar-item.svelte-1ienhgk]                     (0, 219)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 234)  130x35       "General"
+            [span.sidebar-count.svelte-1ienhgk]                    (251, 246)  27x19       "1744"
+          [button.sidebar-item.svelte-1ienhgk]                     (0, 284)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 299)  121x35       "Science"
+            [span.sidebar-count.svelte-1ienhgk]                    (254, 311)  24x19       "1817"
+          [button.sidebar-item.svelte-1ienhgk]                     (0, 349)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 364)  85x35        "Space"
+            [span.sidebar-count.svelte-1ienhgk]                    (255, 376)  23x19       "300"
+          [button.sidebar-item.svelte-1ienhgk]                     (0, 414)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 429)  215x35       "General Geography"
+            [span.sidebar-count.svelte-1ienhgk]                    (252, 441)  26x19       "1763"
+          [button.sidebar-item.svelte-1ienhgk]                     (0, 479)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 494)  221x35       "Capitals & Flags"
+            [span.sidebar-count.svelte-1ienhgk]                    (258, 506)  20x19       "168"
+          [button.sidebar-item.svelte-1ienhgk]                     (0, 544)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 559)  124x35       "History"
+            [span.sidebar-count.svelte-1ienhgk]                    (251, 571)  27x19       "2617"
+          [button.sidebar-item.svelte-1ienhgk]                     (0, 609)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 624)  83x35        "Myth"
+            [span.sidebar-count.svelte-1ienhgk]                    (258, 636)  20x19       "912"
+          [button.sidebar-item.svelte-1ienhgk]                     (0, 674)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 689)  126x35       "Animals"
+            [span.sidebar-count.svelte-1ienhgk]                    (256, 701)  22x19       "965"
+          [button.sidebar-item.svelte-1ienhgk]                     (0, 739)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 754)  111x35       "Health"
+            [span.sidebar-count.svelte-1ienhgk]                    (255, 766)  23x19       "950"
+          [button.sidebar-item.svelte-1ienhgk]                     (0, 804)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 819)  116x35       "Cuisine"
+            [span.sidebar-count.svelte-1ienhgk]                    (255, 831)  23x19       "590"
+          [button.sidebar-item.svelte-1ienhgk]                     (0, 869)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 884)  55x35        "Art"
+            [span.sidebar-count.svelte-1ienhgk]                    (254, 896)  24x19       "1213"
+          [button.sidebar-item.svelte-1ienhgk]                     (0, 934)  299x65      
+            [span.sidebar-label.svelte-1ienhgk]                    (25, 949)  154x35       "Language"
+            [span.sidebar-count.svelte-1ienhgk]                    (239, 961)  39x19       "40230"
+      [button.fact-row.svelte-1ienhgk]                             (330, 161)  507x132   
+      [button.fact-row.svelte-1ienhgk]                             (852, 161)  507x132   
+      [button.fact-row.svelte-1ienhgk]                             (1373, 161)  507x132  
+      [button.fact-row.svelte-1ienhgk]                             (330, 308)  507x132   
+      [button.fact-row.svelte-1ienhgk]                             (852, 308)  507x132   
+      [button.fact-row.svelte-1ienhgk]                             (1373, 308)  507x132  
+      [button.fact-row.svelte-1ienhgk]                             (330, 455)  507x132   
+      [button.fact-row.svelte-1ienhgk]                             (852, 455)  507x132   
+      [button.fact-row.svelte-1ienhgk]                             (1373, 455)  507x132  
+      [button.fact-row.svelte-1ienhgk]                             (330, 602)  507x176   
+      [button.fact-row.svelte-1ienhgk]                             (852, 602)  507x176   
+      [button.fact-row.svelte-1ienhgk]                             (1373, 602)  507x176  
+      [button.fact-row.svelte-1ienhgk]                             (330, 793)  507x132   
+      [button.fact-row.svelte-1ienhgk]                             (852, 793)  507x132   
+      [button.fact-row.svelte-1ienhgk]                             (1373, 793)  507x132  
+      [button.fact-row.svelte-1ienhgk]                             (330, 940)  507x132   
+      [button.fact-row.svelte-1ienhgk]                             (852, 940)  507x132   
+      [button.fact-row.svelte-1ienhgk]                             (1373, 940)  507x132  
+      [button.fact-row.svelte-1ienhgk]                             (330, 1087)  507x132  
+      [button.fact-row.svelte-1ienhgk]                             (852, 1087)  507x132  
+      [button.fact-row.svelte-1ienhgk]                             (1373, 1087)  507x132 
+      [button.fact-row.svelte-1ienhgk]                             (330, 1234)  507x154  
+      [button.fact-row.svelte-1ienhgk]                             (852, 1234)  507x154  
+      [button.fact-row.svelte-1ienhgk]                             (1373, 1234)  507x154 
+      [button.fact-row.svelte-1ienhgk]                             (330, 1403)  507x176  
+      [button.fact-row.svelte-1ienhgk]                             (852, 1403)  507x176  
+      [button.fact-row.svelte-1ienhgk]                             (1373, 1403)  507x176 
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Image] (+5 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+9 more)
+  TOP-CENTER         → [Arc], [Arc], [Arc], [Arc], [Arc] (+1 more)
+  TOP-RIGHT          → [Arc], [Arc], [Arc], [Arc], [Arc] (+1 more)
+  BOTTOM-CENTER      → [Container] continueButton
+  MIDDLE-LEFT        → [aside.sidebar.svelte-1ienhgk], [nav.sidebar-categories.svelte-1ienhgk]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.library-screen.svelte-1ienhgk]                covers 100% height  CENTER
+  [button.fact-row.svelte-1ienhgk]                   covers 12% height  TOP-LEFT
+  [button.fact-row.svelte-1ienhgk]                   covers 12% height  TOP-CENTER
+  [button.fact-row.svelte-1ienhgk]                   covers 12% height  TOP-RIGHT
+  [button.fact-row.svelte-1ienhgk]                   covers 12% height  MIDDLE-LEFT
+  [button.fact-row.svelte-1ienhgk]                   covers 12% height  CENTER
+  [button.fact-row.svelte-1ienhgk]                   covers 12% height  MIDDLE-RIGHT
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (34 Phaser objects, 77 DOM elements) —

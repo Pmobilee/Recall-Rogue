@@ -1,0 +1,32 @@
+STATE: state-03-05 | Floor 3 | Headmistress | Early Game (Detention mechanic)
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 13, no block. Intent: Charging → 10 dmg next turn.
+- Player: 65/80 HP, 3 block, 3 AP, chain 0. Best 2 cards exhausted.
+- Steel Skin: take 2 less per hit. Incoming 10 - 2 = 8 effective dmg.
+
+OPTION ANALYSIS:
+Best offensive card available:
+- Strike(CC,2ap) = floor(4×1.5)=6 dmg. Enemy: 7 HP.
+- Strike(QP,1ap) = 4 dmg. Two strikes = 8 dmg. Enemy: 5 HP.
+- Weaken(QP,1ap) = apply weakness. Reduces enemy attack. Incoming 10 becomes ~7.5 → 7 (with Steel Skin: 7-2=5 dmg).
+
+BEST COMBO: Block(QP,1ap)=5 block. Strike(CC,2ap)=6 dmg. Total 3 AP. Block gives 3+5=8 block. Incoming 10-8 block=2 dmg, minus Steel Skin 2=0 dmg. Enemy: 7 HP. Tanks the charge for 0 damage.
+
+ALTERNATIVE: Weaken(QP,1ap) + Strike(QP,1ap) + Strike(QP,1ap) = 3AP. 4+4=8 dmg. Enemy: 5 HP. Incoming 10×weakness~0.75=7.5-2 Steel Skin = 5.5→5 dmg. Net: 65-5=60 HP.
+
+ADAPT ASSESSMENT: Intent is "charge" type (attack). Adapt sees "ATK" → plays as Block. QP block value = 1 (Adapt quickPlayValue=1). Not very helpful for blocking 10 dmg.
+
+IS THERE REAL TENSION?
+- Block path: 0 damage taken, enemy survives at 7 HP. Need more turns.
+- Attack path: deal 6-8 dmg, take 5-8 damage, potentially kill sooner.
+The Detention mechanic created the problem (fewer offensive tools) but the available cards are still functional for defense.
+
+DEAD CARDS: Emergency — player at 65/80 HP, nowhere near the 30% threshold (24 HP).
+
+SURVIVOR ASSESSMENT: The key question is "block the charge or push damage?" Neither path is clearly dominant. Block path is safer. Attack path is riskier but faster.
+
+SURVIVAL ODDS: 8/10.
+
+DESIGN NOTE: The Detention mechanic (exhausting best cards at encounter start) is thematically strong but the resulting hand still has workable options. The player is not truly constrained. The "interesting" decision is about the incoming charged attack — do you armor up or push damage? This is legitimate tension. Emergency being a dead card here is a minor dead-card issue.

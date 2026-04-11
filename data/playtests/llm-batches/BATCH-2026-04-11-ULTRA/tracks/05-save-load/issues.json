@@ -1,0 +1,84 @@
+[
+  {
+    "id": "issue-1775872580000-05-001",
+    "track": "05-save-load",
+    "category": "state_divergence",
+    "severity": "medium",
+    "title": "Warm container memory degradation causes crash after 5-6 sequential save/load tests",
+    "description": "After 5+ sequential test runs in a single warm Docker container, the Chromium process becomes unstable and crashes on the next test request. The mysteryEvent scenario consistently triggered this when run 6th in a sequence. Container health check still reports 'ready' but page.evaluate throws 'Target crashed'. Root cause: accumulated WebGL/Phaser state in the renderer process across tests.",
+    "evidence": {
+      "screenshotPath": null,
+      "consoleError": "page.evaluate: Target crashed",
+      "snapshotBefore": null,
+      "snapshotAfter": null,
+      "scenarioLoaded": "mystery-event (6th test in session)"
+    },
+    "reproductionSteps": [
+      "Start warm container: scripts/docker-visual-test.sh --warm start --agent-id test",
+      "Run 5+ sequential tests against the same container",
+      "Run 6th test — container crashes, 'Target crashed' error"
+    ],
+    "suggestedFix": "Restart container every 4-5 tests in sequential test runs, OR add a /reset endpoint to warm-server.mjs that navigates to the base URL to clear GPU state"
+  },
+  {
+    "id": "issue-1775872580000-05-002",
+    "track": "05-save-load",
+    "category": "state_divergence",
+    "severity": "low",
+    "title": "loadActiveRun() accepts any numeric save version without migration guard",
+    "description": "loadActiveRun() checks only `typeof parsed.version === 'number'` to validate the save. A save from a future schema version (e.g. v99999) passes this check and is loaded as-is. If a future version adds required fields that old deserialization code doesn't populate, runtime TypeErrors could result. Currently no migration system exists to handle version mismatches beyond the basic version field check.",
+    "evidence": {
+      "screenshotPath": null,
+      "consoleError": null,
+      "snapshotBefore": "{version: 99999, runState: {isActive: true, playerHp: 70, floor: 1}}",
+      "snapshotAfter": "loaded successfully without error",
+      "scenarioLoaded": "n/a - localStorage injection test"
+    },
+    "reproductionSteps": [
+      "Inject save with version 99999 into localStorage",
+      "Call loadActiveRun()",
+      "Observe: returns the save object without any migration or version check failure"
+    ],
+    "suggestedFix": "Add a max supported version check in loadActiveRun(): if (parsed.version > CURRENT_SAVE_VERSION) return null; — also see save-load.md 'Schema Versioning' section"
+  },
+  {
+    "id": "issue-1775872580000-05-003",
+    "track": "05-save-load",
+    "category": "state_divergence",
+    "severity": "low",
+    "title": "Parallel warm container tests are not safe — scenario-state collision when tests queue simultaneously",
+    "description": "When two tests are sent to the same warm container near-simultaneously (within 100ms), the second test's scenario load overwrites the first test's scenario before the first test completes. This caused mystery-event to show 'restRoom' in the parallel-run test. The warm server processes one /test request at a time but the shell script doesn't wait for the previous test to finish before sending the next.",
+    "evidence": {
+      "screenshotPath": null,
+      "consoleError": null,
+      "snapshotBefore": "mystery-event scenario expected 'mysteryEvent' screen",
+      "snapshotAfter": "got 'restRoom' (from prior rest-site test)",
+      "scenarioLoaded": "mystery-event (parallel with rest-site)"
+    },
+    "reproductionSteps": [
+      "Run: scripts/docker-visual-test.sh --warm test --scenario rest-site & scripts/docker-visual-test.sh --warm test --scenario mystery-event",
+      "The second request queues behind first but result.json captures intermediate state"
+    ],
+    "suggestedFix": "Never run multiple tests against the same warm container in parallel. Use separate containers with unique --agent-id for parallel testing."
+  },
+  {
+    "id": "issue-1775872580000-05-004",
+    "track": "05-save-load",
+    "category": "state_divergence",
+    "severity": "low",
+    "title": "Pre-existing test failure: damagePreviewService barbed_edge synergy test fails on non-strike cards",
+    "description": "src/services/damagePreviewService.test.ts 'card without strike tag gets no barbed_edge bonus' fails: expected qpValue 3, got 5. Non-strike-tagged cards (lifetap) are incorrectly receiving the barbed_edge bonus. This is a pre-existing failure present before this track ran — git status shows no source modifications.",
+    "evidence": {
+      "screenshotPath": null,
+      "consoleError": "AssertionError: expected 5 to be 3 — damagePreviewService.test.ts:417",
+      "snapshotBefore": null,
+      "snapshotAfter": null,
+      "scenarioLoaded": "n/a - unit test"
+    },
+    "reproductionSteps": [
+      "Run: npx vitest run src/services/damagePreviewService.test.ts",
+      "Test 'card without strike tag gets no barbed_edge bonus' fails"
+    ],
+    "suggestedFix": "Fix barbed_edge relic logic to not apply flat bonus to non-strike-tagged cards. File: src/services/damagePreviewService.ts or relic implementation."
+  }
+]

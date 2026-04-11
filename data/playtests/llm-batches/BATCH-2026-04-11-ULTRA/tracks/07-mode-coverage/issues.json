@@ -1,0 +1,125 @@
+[
+  {
+    "id": "issue-1775873221654-07-001",
+    "track": "07-mode-coverage",
+    "mode": "chess",
+    "category": "feature_broken",
+    "severity": "high",
+    "title": "Chess Tactics: interactive board never renders — fenPosition data mismatch causes silent fallback to text MCQ",
+    "description": "The chess_tactics deck has quizResponseMode: 'chess_move', fenPosition, and solutionMoves on every fact. StudyQuizOverlay.svelte DOES import ChessBoard.svelte (line 7) and HAS the chess rendering branch (line 211: 'quizResponseMode === chess_move && chessContext'). The pipeline correctly forwards all chess fields through nonCombatQuizSelector → generateStudyQuestions → QuizQuestion. The board never renders because getPlayerContext() in chessGrader.ts throws when applying solutionMoves[0] to the stored fenPosition.\n\nRoot cause: The fenPosition stored in chess_tactics.json facts is the puzzle position AFTER the opponent's setup move (the position the player sees). getPlayerContext() expects the BASE FEN before the setup move and applies solutionMoves[0] to produce the puzzle FEN. Example: fact chess_tac_4172G has fenPosition='1rb3k1/pp1pB1p1/3Pp2p/q1p2n2/2P3Q1/2bB1P2/P1R4P/5KNR b - - 3 20' with solutionMoves=['e4g4','f5e3','f1e2','e3g4']. There is no piece at e4 in this FEN, so applying e4g4 throws. The catch block at StudyQuizOverlay.svelte line 77-79 silently sets chessContext=null. Board branch at line 211 is skipped. Falls back to text MCQ with no error visible to player or in console.\n\nContrast: chessPuzzleService.ts stores puzzle.fen as the BASE FEN correctly (before setup move). chess_tactics.json was authored with the wrong FEN convention. Also: raw puzzle ID tag '[#Goifm]' is leaked in question text — separate content fix needed.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/chess/chess-01-initial.png",
+      "consoleError": "",
+      "additionalScreenshots": [
+        "evidence/screenshots/chess/chess-02-question.png",
+        "evidence/screenshots/chess/chess-03-after-answer.png"
+      ],
+      "layoutDump": "/tmp/rr-docker-visual/BATCH-ULTRA-t7b_study-deck-chess_1775871980533/layout-dump.txt"
+    },
+    "reproductionSteps": [
+      "Load __rrScenario.load('study-deck-chess') in Docker container",
+      "Wait 7s for scene to init",
+      "Observe: 4 multiple-choice buttons with chess notation text (no chess board rendered)",
+      "Question shows 'White to move. [#Goifm]' — raw puzzle ID visible in brackets",
+      "Note: StudyQuizOverlay.svelte line 7 imports ChessBoard, line 211 has chess branch — the UI code IS present"
+    ],
+    "rootCauseAnalysis": "chess_tactics.json stores fenPosition as the post-setup-move puzzle position. chessGrader.getPlayerContext() expects the pre-setup-move base FEN and applies solutionMoves[0] to arrive at puzzle position. When solutionMoves[0]='e4g4' is applied to a FEN with no piece at e4, chess.js throws. StudyQuizOverlay.svelte line 77-79 catch block silently nullifies chessContext. Board branch condition at line 211 is never true.",
+    "suggestedFix": "Fix chess_tactics.json — store the BASE FEN (one move before the puzzle position) in fenPosition so getPlayerContext() can apply the setup move correctly. This matches chessPuzzleService.ts convention. Alternatively fix the getPlayerContext call in StudyQuizOverlay to detect already-setup positions. Also strip '[#ID]' bracket tags from quizQuestion display text (separate content fix)."
+  },
+  {
+    "id": "issue-1775873221654-07-002",
+    "track": "07-mode-coverage",
+    "mode": "chess",
+    "category": "content_quality",
+    "severity": "medium",
+    "title": "Chess Tactics: raw puzzle ID tag '[#Goifm]' leaked into question text shown to player",
+    "description": "Chess fact quiz questions display 'White to move. [#Goifm]' where '[#Goifm]' is the internal puzzle reference ID used to look up the FEN position. This is an internal implementation detail that should never be visible to the player. A player who doesn't know chess notation syntax will see this as gibberish.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/chess/chess-02-question.png",
+      "consoleError": ""
+    },
+    "reproductionSteps": [
+      "Load study-deck-chess scenario",
+      "Observe question text: 'White to move. [#Goifm]'"
+    ],
+    "suggestedFix": "Strip the [#ID] bracket tag from displayed question text. The quizQuestion field in chess_tactics facts should be just 'White to move.' with the puzzle ID stored separately (or omitted entirely, since the id field already identifies the fact)."
+  },
+  {
+    "id": "issue-1775873221654-07-003",
+    "track": "07-mode-coverage",
+    "mode": "map-pin",
+    "category": "feature_broken",
+    "severity": "high",
+    "title": "Map Pin Drop: MapPinDrop.svelte not wired into StudyQuizOverlay — no map_pin branch in study quiz template",
+    "description": "The world_capitals deck has quizResponseMode: 'map_pin' and mapCoordinates [lat, lon] on every fact. The data pipeline correctly forwards mapCoordinates and quizResponseMode through nonCombatQuizSelector and generateStudyQuestions (confirmed by code inspection). However, StudyQuizOverlay.svelte has NO import of MapPinDrop.svelte and NO conditional branch for 'map_pin' quizResponseMode in its template. The template (lines 210-252) handles: chess_move (with chessContext), image_answers, and default text MCQ. There is no map_pin case. The restStudy flow silently falls back to standard 4-choice text answers for world_capitals facts.\n\nThis is structurally different from the chess issue: chess has all UI code present but fails on a data bug. Map pin has no UI code in the study flow at all. MapPinDrop.svelte exists and is functional — it is wired in CardExpanded.svelte and CardCombatOverlay.svelte — but never imported or used in StudyQuizOverlay.svelte.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/map-pin/map-01-world-capitals-no-map.png",
+      "consoleError": ""
+    },
+    "reproductionSteps": [
+      "Load world_capitals deck via __rrScenario.loadCustom({screen:'restStudy', deckId:'world_capitals'})",
+      "Wait 7s",
+      "Observe: standard 4-choice text quiz, no SVG world map, no draggable pin",
+      "Grep StudyQuizOverlay.svelte for 'MapPinDrop' or 'map_pin' — zero results (confirmed via code inspection)"
+    ],
+    "suggestedFix": "Import MapPinDrop into StudyQuizOverlay.svelte and add a '{:else if currentQuestion.quizResponseMode === \"map_pin\" && currentQuestion.mapCoordinates}' branch in the answers block (between the chess_move block and image_answers block). Wire up a handleMapPinConfirm callback similar to how CardExpanded.svelte handles it. The MapPinDrop component already implements distance-based partial credit scoring."
+  },
+  {
+    "id": "issue-1775873221654-07-004",
+    "track": "07-mode-coverage",
+    "mode": "trivia",
+    "category": "feature_missing",
+    "severity": "critical",
+    "title": "Trivia Night: TriviaRoundScreen.svelte is an orphan component — unreachable from any screen flow",
+    "description": "TriviaRoundScreen.svelte exists in src/ui/components/ but is NEVER imported into CardApp.svelte or any other component. The 'trivia_night' mode is defined in multiplayerTypes.ts and referenced in MultiplayerMenu.svelte and MultiplayerLobby.svelte, but those screens require an active multiplayer lobby session with peer connections. The trivia_night game mode as a standalone single-player feature does not exist. There is no scenario preset and no screen routing for a solo trivia round. The component is dead code.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/trivia/trivia-01-hub-no-access.png",
+      "consoleError": ""
+    },
+    "reproductionSteps": [
+      "grep -rn 'TriviaRoundScreen' src/ — only self-reference in the component file",
+      "grep -rn 'triviaRound' src/CardApp.svelte — zero results",
+      "There is no scenario preset 'trivia-night' or 'trivia-round' in scenarioSimulator.ts",
+      "The trivia_night mode is locked behind multiplayer lobby (needs P2P connection)"
+    ],
+    "suggestedFix": "Two paths: (1) Wire TriviaRoundScreen.svelte into CardApp.svelte as a solo party-mode screen accessible from hub, add scenario preset 'trivia-night'. (2) Accept it's multiplayer-only and add a proper 'solo trivia round' mode using the trivia_night game mode type. The current state — a fully-built component with zero integration — is wasted work that could be shipped."
+  },
+  {
+    "id": "issue-1775873221654-07-005",
+    "track": "07-mode-coverage",
+    "mode": "procedural",
+    "category": "visual_glitch",
+    "severity": "low",
+    "title": "Procedural Math: accuracy counter shows 0% immediately after first incorrect answer, discouraging early learners",
+    "description": "The top bar shows '1 | 0% | Stop' after one answered question. The '0%' reads as a failure state, but it's because the player answered incorrectly (we deliberately chose wrong for testing). The UX concern: the 0% accuracy metric is displayed prominently and could be discouraging for new learners who get a few wrong at first. The sad-face emoji on the Study Complete screen ('0 of 3 cards mastered up!') reinforces this.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/procedural/proc-02-q2-subtraction.png",
+      "consoleError": ""
+    },
+    "reproductionSteps": [
+      "Navigate to Study Temple → Math → Arithmetic → START PRACTICE",
+      "Answer the first question incorrectly",
+      "Observe top bar: '1 | 0% | Stop'"
+    ],
+    "suggestedFix": "Consider showing accuracy only after 5+ answers (same as Duolingo/Anki pattern) or replace the 0% with a more neutral label during early session. Also consider replacing the sad-face emoji on the Complete screen with a neutral or encouraging icon when accuracy is low."
+  },
+  {
+    "id": "issue-1775873221654-07-006",
+    "track": "07-mode-coverage",
+    "mode": "study",
+    "category": "feature_broken",
+    "severity": "high",
+    "title": "Study Temple full FSRS session: study-quiz scenario shows empty state in fresh container — requires pre-seeded player data",
+    "description": "The 'study-quiz' scenario (restStudy with no deckId) shows empty state ('Return to Hub' button, study-empty-state testid) in a fresh Docker container. This is because the FSRS queue requires pre-existing PlayerFactState records — new cards aren't served by the legacy trivia path without a bootstrapped player save with cards in the 'review' state. This makes the scenario unusable for fresh test environments. The study-deck-* scenarios work correctly (new cards are served via the curated deck Anki selector).",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/study/study-01-q1.png",
+      "consoleError": ""
+    },
+    "reproductionSteps": [
+      "Load __rrScenario.load('study-quiz') in fresh Docker container",
+      "Wait 6s",
+      "Observe: empty state with 'Return to Hub' button, no quiz questions"
+    ],
+    "suggestedFix": "The study-quiz scenario should either (a) bootstrap with some pre-seeded fact states to populate the FSRS queue, or (b) add a comment in scenarioSimulator.ts that this scenario requires prior player data. The deck-specific scenarios (study-deck-chess etc.) work correctly and should be used for fresh-container testing."
+  }
+]

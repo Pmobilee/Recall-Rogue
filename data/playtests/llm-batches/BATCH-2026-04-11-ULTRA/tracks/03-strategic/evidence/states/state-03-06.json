@@ -1,0 +1,36 @@
+{
+  "stateId": "state-03-06",
+  "bucket": "mid_game",
+  "floor": 4,
+  "enemy": {
+    "id": "peer_reviewer",
+    "name": "The Peer Reviewer",
+    "currentHP": 7,
+    "maxHP": 7,
+    "block": 0,
+    "intent": { "type": "buff", "value": 3, "telegraph": "Academic rigor", "statusEffect": { "type": "strength", "value": 1, "turns": 2 } },
+    "statusEffects": [
+      { "type": "strength", "value": 3, "turnsRemaining": 999, "note": "Gained from 3 previous turns with no Charge" }
+    ],
+    "special": "onPlayerNoCharge: gains +3 permanent Strength each turn player doesn't Charge"
+  },
+  "player": {
+    "currentHP": 52,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 0
+  },
+  "hand": [
+    { "id": "heavy_strike", "name": "Heavy Strike", "type": "attack", "apCost": 2, "quickPlayValue": 10, "chargeCorrectValue": 30, "chargeWrongValue": 7, "description": "High damage. Costs 2 AP." },
+    { "id": "expose", "name": "Expose", "type": "debuff", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 3, "chargeWrongValue": 1, "description": "Apply vulnerable (enemy takes 50% more damage)." },
+    { "id": "empower", "name": "Empower", "type": "buff", "apCost": 1, "quickPlayValue": 50, "chargeCorrectValue": 75, "chargeWrongValue": 35, "description": "Next card deals 50% more damage." },
+    { "id": "block", "name": "Block", "type": "shield", "apCost": 1, "quickPlayValue": 5, "chargeCorrectValue": 9, "chargeWrongValue": 3, "description": "Gain block." },
+    { "id": "lifetap", "name": "Lifetap", "type": "attack", "apCost": 2, "quickPlayValue": 4, "chargeCorrectValue": 12, "chargeWrongValue": 3, "description": "Deal damage. Heal 20% of damage dealt." }
+  ],
+  "relics": [
+    { "id": "whetstone", "name": "Whetstone", "description": "All attacks +3 base damage. All shields -1 block." },
+    { "id": "herbal_pouch", "name": "Herbal Pouch", "description": "Apply 1 Poison to all enemies at turn start. Heal 3 HP after combat." }
+  ],
+  "notes": "The Peer Reviewer already has 3 stacks of Strength (equivalent to +75% damage multiplier) from 3 prior turns of no Charge. Now buffing again. This fight has escalated dangerously. With 3 AP: Empower + Expose + Heavy Strike kill it in 1 action sequence if charged. But the enemy is about to hit AGAIN for buffed damage if player blocks. No room for defensive play — must burst now."
+}

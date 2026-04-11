@@ -1,0 +1,22 @@
+LAYOUT DUMP  2026-04-11T02:13:25.809Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.screen-transition.svelte-2meh4s]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 2 DOM elements) —

@@ -1,0 +1,153 @@
+LAYOUT DUMP  2026-04-11T02:07:07.577Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.run-end-overlay.svelte-l8wvex.victory-result]             (0, 0)  1920x1080       HIDDEN
+      [span.header-label.svelte-l8wvex]                            (823, 36)  275x18       "DUNGEON VANQUISHED"
+      [span.grade-letter.svelte-l8wvex]                            (950, 94)  19x35        "S"
+      [p.grade-flavor.svelte-l8wvex.grade-visible]                 (694, 168)  533x23      "Triumphant return — the knowledge wrested from dar"
+      [h2.section-heading.svelte-l8wvex]                           (510, 215)  900x54      "Foes Vanquished"
+      [div.enemy-parade.svelte-l8wvex]                             (510, 276)  900x116   
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (510, 276)  54x54     
+          [div.enemy-badge.svelte-l8wvex]                          (510, 276)  54x54     
+            [img.enemy-badge-img.svelte-l8wvex]                    (514, 280)  46x46     
+            [span.enemy-badge-fallback.svelte-l8wvex]              (0, 0)                  "❓"  HIDDEN
+          [span.badge-xp-float.svelte-l8wvex]                      (530, 219)  13x16       "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (572, 276)  54x54     
+          [div.enemy-badge.svelte-l8wvex]                          (572, 276)  54x54     
+            [img.enemy-badge-img.svelte-l8wvex]                    (576, 280)  46x46     
+            [span.enemy-badge-fallback.svelte-l8wvex]              (0, 0)                  "❓"  HIDDEN
+          [span.badge-xp-float.svelte-l8wvex]                      (592, 219)  13x16       "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (633, 276)  54x54     
+          [div.enemy-badge.svelte-l8wvex]                          (633, 276)  54x54     
+            [img.enemy-badge-img.svelte-l8wvex]                    (0, 0)                  HIDDEN
+            [span.enemy-badge-fallback.svelte-l8wvex]              (637, 280)  46x46       "❓"
+          [span.badge-xp-float.svelte-l8wvex]                      (653, 219)  13x16       "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (695, 276)  54x54     
+          [div.enemy-badge.svelte-l8wvex]                          (695, 276)  54x54     
+            [img.enemy-badge-img.svelte-l8wvex]                    (699, 280)  46x46     
+            [span.enemy-badge-fallback.svelte-l8wvex]              (0, 0)                  "❓"  HIDDEN
+          [span.badge-xp-float.svelte-l8wvex]                      (715, 219)  13x16       "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (756, 276)  54x54     
+          [div.enemy-badge.svelte-l8wvex]                          (756, 276)  54x54     
+            [img.enemy-badge-img.svelte-l8wvex]                    (760, 280)  46x46     
+            [span.enemy-badge-fallback.svelte-l8wvex]              (0, 0)                  "❓"  HIDDEN
+          [span.badge-xp-float.svelte-l8wvex]                      (776, 219)  13x16       "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (818, 276)  54x54     
+          [div.enemy-badge.svelte-l8wvex]                          (818, 276)  54x54     
+            [img.enemy-badge-img.svelte-l8wvex]                    (0, 0)                  HIDDEN
+            [span.enemy-badge-fallback.svelte-l8wvex]              (822, 280)  46x46       "❓"
+          [span.badge-xp-float.svelte-l8wvex]                      (838, 219)  13x16       "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (879, 276)  54x54     
+          [div.enemy-badge.svelte-l8wvex]                          (879, 276)  54x54     
+            [img.enemy-badge-img.svelte-l8wvex]                    (883, 280)  46x46     
+            [span.enemy-badge-fallback.svelte-l8wvex]              (0, 0)                  "❓"  HIDDEN
+          [span.badge-xp-float.svelte-l8wvex]                      (899, 219)  13x16       "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (941, 276)  54x54     
+          [div.enemy-badge.svelte-l8wvex]                          (941, 276)  54x54     
+            [img.enemy-badge-img.svelte-l8wvex]                    (0, 0)                  HIDDEN
+            [span.enemy-badge-fallback.svelte-l8wvex]              (945, 280)  46x46       "❓"
+          [span.badge-xp-float.svelte-l8wvex]                      (961, 219)  13x16       "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (1002, 276)  54x54    
+          [div.enemy-badge.svelte-l8wvex]                          (1002, 276)  54x54    
+            [img.enemy-badge-img.svelte-l8wvex]                    (1006, 280)  46x46    
+            [span.enemy-badge-fallback.svelte-l8wvex]              (0, 0)                  "❓"  HIDDEN
+            [span.badge-category-pip.svelte-l8wvex]                (1034, 308)  21x21      "★"
+          [span.badge-xp-float.svelte-l8wvex]                      (1019, 219)  20x16      "+25"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (1064, 276)  54x54    
+          [div.enemy-badge.svelte-l8wvex]                          (1064, 276)  54x54    
+            [img.enemy-badge-img.svelte-l8wvex]                    (1068, 280)  46x46    
+            [span.enemy-badge-fallback.svelte-l8wvex]              (0, 0)                  "❓"  HIDDEN
+          [span.badge-xp-float.svelte-l8wvex]                      (1084, 219)  13x16      "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (1125, 276)  54x54    
+          [div.enemy-badge.svelte-l8wvex]                          (1125, 276)  54x54    
+            [img.enemy-badge-img.svelte-l8wvex]                    (1129, 280)  46x46    
+            [span.enemy-badge-fallback.svelte-l8wvex]              (0, 0)                  "❓"  HIDDEN
+          [span.badge-xp-float.svelte-l8wvex]                      (1145, 219)  13x16      "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (1187, 276)  54x54    
+          [div.enemy-badge.svelte-l8wvex]                          (1187, 276)  54x54    
+            [img.enemy-badge-img.svelte-l8wvex]                    (0, 0)                  HIDDEN
+            [span.enemy-badge-fallback.svelte-l8wvex]              (1191, 280)  46x46      "❓"
+          [span.badge-xp-float.svelte-l8wvex]                      (1207, 219)  13x16      "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (1248, 276)  54x54    
+          [div.enemy-badge.svelte-l8wvex]                          (1248, 276)  54x54    
+            [img.enemy-badge-img.svelte-l8wvex]                    (0, 0)                  HIDDEN
+            [span.enemy-badge-fallback.svelte-l8wvex]              (1252, 280)  46x46      "❓"
+          [span.badge-xp-float.svelte-l8wvex]                      (1268, 219)  13x16      "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (1310, 276)  54x54    
+          [div.enemy-badge.svelte-l8wvex]                          (1310, 276)  54x54    
+            [img.enemy-badge-img.svelte-l8wvex]                    (0, 0)                  HIDDEN
+            [span.enemy-badge-fallback.svelte-l8wvex]              (1314, 280)  46x46      "❓"
+          [span.badge-xp-float.svelte-l8wvex]                      (1330, 219)  13x16      "+5"  HIDDEN
+        [div.enemy-badge-wrapper.svelte-l8wvex.badge-visible]      (510, 338)  54x54     
+          [div.enemy-badge.svelte-l8wvex]                          (510, 338)  54x54     
+            [img.enemy-badge-img.svelte-l8wvex]                    (514, 342)  46x46     
+            [span.enemy-badge-fallback.svelte-l8wvex]              (0, 0)                  "❓"  HIDDEN
+            [span.badge-category-pip.svelte-l8wvex]                (542, 370)  21x21       "★"
+          [span.badge-xp-float.svelte-l8wvex]                      (527, 281)  20x16       "+25"  HIDDEN
+      [span.legend-label.svelte-l8wvex]                            (911, 401)  53x16       "Common"
+      [span.legend-label.svelte-l8wvex]                            (1000, 401)  27x16      "Boss"
+      [h2.section-heading.svelte-l8wvex]                           (510, 441)  900x54      "Knowledge Harvest"
+      [span.fact-label.svelte-l8wvex]                              (552, 513)  344x18      "Seen"
+      [span.fact-count.svelte-l8wvex]                              (908, 510)  42x24       "14"
+        [span.fact-total.svelte-l8wvex]                            (926, 515)  24x18       "/42"
+      [div.fact-bar.svelte-l8wvex]                                 (961, 516)  344x12    
+        [div.fact-bar-fill.fact-bar-seen.svelte-l8wvex]            (961, 516)  115x12    
+      [span.fact-xp.svelte-l8wvex]                                 (1317, 513)  78x18      "+28"
+      [span.fact-label.svelte-l8wvex]                              (552, 558)  343x18      "Reviewing"
+      [span.fact-count.svelte-l8wvex]                              (907, 555)  44x24       "22"
+        [span.fact-total.svelte-l8wvex]                            (927, 560)  24x18       "/42"
+      [div.fact-bar.svelte-l8wvex]                                 (962, 561)  343x12    
+        [div.fact-bar-fill.fact-bar-reviewing.svelte-l8wvex]       (962, 561)  179x12    
+      [span.fact-xp.svelte-l8wvex]                                 (1317, 558)  78x18      "+66"
+      [span.fact-label.svelte-l8wvex]                              (552, 603)  345x18      "Mastered"
+      [span.fact-count.svelte-l8wvex]                              (909, 600)  39x24       "6"
+        [span.fact-total.svelte-l8wvex]                            (924, 605)  24x18       "/42"
+      [div.fact-bar.svelte-l8wvex]                                 (960, 606)  345x12    
+        [div.fact-bar-fill.fact-bar-mastered.svelte-l8wvex]        (960, 606)  49x12     
+      [span.fact-xp.svelte-l8wvex]                                 (1317, 603)  78x18      "+120"
+      [span.harvest-total-label.svelte-l8wvex]                     (510, 652)  171x19      "Total XP earned this run"
+      [span.harvest-total-value.svelte-l8wvex]                     (1375, 650)  35x23      "+214"
+      [h2.section-heading.svelte-l8wvex]                           (510, 697)  900x54      "Run Stats"
+      [span.pill-label.svelte-l8wvex]                              (534, 766)  42x14       "Floor"
+      [span.pill-value.svelte-l8wvex]                              (547, 779)  17x21       "10"
+      [span.pill-label.svelte-l8wvex]                              (625, 766)  69x14       "Accuracy"
+      [span.pill-value.svelte-l8wvex]                              (643, 779)  33x21       "92%"
+      [span.pill-context.svelte-l8wvex]                            (622, 800)  75x10       "Exceptional"
+      [span.pill-label.svelte-l8wvex]                              (734, 766)  76x14       "Best Chain"
+      [span.pill-value.svelte-l8wvex]                              (760, 779)  24x21       "12x"
+      [span.pill-label.svelte-l8wvex]                              (847, 766)  87x14       "Encounters"
+      [span.pill-value.svelte-l8wvex]                              (883, 779)  15x21       "15"
+      [span.pill-label.svelte-l8wvex]                              (986, 766)  32x14       "Time"
+      [span.pill-value.svelte-l8wvex]                              (970, 779)  63x21       "15m 00s"
+      [span.tally-label.svelte-l8wvex]                             (582, 876)  112x16      "GREY MATTER"
+      [span.tally-value.svelte-l8wvex]                             (704, 863)  59x42       "500"
+      [div.re-buttons.svelte-l8wvex.section-visible]               (510, 951)  900x67    
+        [button.btn.btn-ghost.svelte-l8wvex] data-testid="btn-home" (510, 951)  218x67      "Home"
+        [button] data-testid="btn-play-again"                      (743, 951)  435x67      "Descend Again"
+        [button] data-testid="btn-share-run"                       (1193, 951)  218x67     "Share"
+    [div.screen-transition.svelte-2meh4s.wipe-zoom]                (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.run-end-overlay.svelte-l8wvex.victory-result], [h2.section-heading.svelte-l8wvex], [span.fact-label.svelte-l8wvex], [div.fact-bar.svelte-l8wvex] (+7 more)
+  TOP-CENTER         → [span.header-label.svelte-l8wvex], [p.grade-flavor.svelte-l8wvex.grade-visible], [h2.section-heading.svelte-l8wvex], [div.enemy-parade.svelte-l8wvex]
+  MIDDLE-LEFT        → [span.harvest-total-label.svelte-l8wvex]
+  BOTTOM-CENTER      → [h2.section-heading.svelte-l8wvex], [div.re-buttons.svelte-l8wvex.section-visible], [button] data-testid="btn-play-again"
+  BOTTOM-LEFT        → [span.tally-label.svelte-l8wvex], [button.btn.btn-ghost.svelte-l8wvex] data-testid="btn-home"
+  BOTTOM-RIGHT       → [button] data-testid="btn-share-run"
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.run-end-overlay.svelte-l8wvex.victory-resul   covers 100% height  CENTER
+  [div.enemy-parade.svelte-l8wvex]                   covers 11% height  TOP-CENTER
+  [div.screen-transition.svelte-2meh4s.wipe-zoom]    covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 126 DOM elements) —

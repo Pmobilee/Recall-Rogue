@@ -1,0 +1,35 @@
+{
+  "stateId": "state-03-20",
+  "bucket": "edge_case",
+  "floor": 8,
+  "description": "Edge: Mirror/Overclock combo setup — highest variance hand",
+  "enemy": {
+    "id": "algorithm",
+    "name": "The Algorithm",
+    "currentHP": 8,
+    "maxHP": 15,
+    "block": 6,
+    "intent": { "type": "heal", "value": 5, "telegraph": "Self-repair (heals 5 HP)" },
+    "statusEffects": [],
+    "phase": 2,
+    "special": "Phase 2 intents: Rapid queries (4×4=16), Memory wipe (weakness 2 turns), Backup restore (heal 6)."
+  },
+  "player": {
+    "currentHP": 30,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 3
+  },
+  "hand": [
+    { "id": "overclock", "name": "Overclock", "type": "wild", "apCost": 2, "quickPlayValue": 1, "chargeCorrectValue": 2, "chargeWrongValue": 2, "description": "Next card has 2× effect. Costs 2 AP." },
+    { "id": "mirror", "name": "Mirror", "type": "wild", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Copy previous card effect." },
+    { "id": "heavy_strike", "name": "Heavy Strike", "type": "attack", "apCost": 2, "quickPlayValue": 10, "chargeCorrectValue": 30, "chargeWrongValue": 7, "description": "High damage. Costs 2 AP." },
+    { "id": "piercing", "name": "Piercing", "type": "attack", "apCost": 1, "quickPlayValue": 3, "chargeCorrectValue": 9, "chargeWrongValue": 2, "description": "Ignores enemy block." },
+    { "id": "slow", "name": "Slow", "type": "debuff", "apCost": 2, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Skip enemy's next defend or buff. Enemy intending HEAL — Slow cancels it!" }
+  ],
+  "relics": [
+    { "id": "quicksilver_quill", "name": "Quicksilver Quill", "description": "Charge correct in under 2 seconds: extra 1.5× multiplier." }
+  ],
+  "notes": "EDGE CASE: Overclock + Mirror combo. Overclock doubles next card (2 AP). With 3 AP: Overclock(2) + Piercing(1) = 3 AP total — Overclock makes Piercing hit for 2× (bypasses block). OR Slow(2) cancels the self-repair + free Piercing(1). Algorithm phase 2 heals for 6, so Slow is very efficient. But Overclock+Heavy Strike would cost 2+2+1surcharge=5 AP (impossible). The Quicksilver Quill rewards fast answers but Overclock is already invested. Chain 3 provides damage multiplier. What does Slow's 'skip defend/buff' do to a 'heal' intent — does it cancel healing too?"
+}

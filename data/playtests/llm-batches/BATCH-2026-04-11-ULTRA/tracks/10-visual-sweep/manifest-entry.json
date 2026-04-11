@@ -1,0 +1,31 @@
+{
+  "trackId": "10-visual-sweep",
+  "batchId": "BATCH-2026-04-11-ULTRA",
+  "completedAt": "2026-04-11T02:30:00.000Z",
+  "agentId": "BATCH-ULTRA-t10-a",
+  "screensTargeted": 37,
+  "screensCaptured": 34,
+  "screensFailedToLoad": 3,
+  "failedScreens": [
+    {
+      "screen": "mainMenu",
+      "reason": "mainMenu is an alias for hub — no distinct screen component; captured as hub"
+    },
+    {
+      "screen": "base",
+      "reason": "base is an alias for hub — no distinct screen component; captured as hub"
+    },
+    {
+      "screen": "relicReward",
+      "reason": "deprecated screen — routes to rewardRoom Phaser scene; captured under relicReward evidence dir using reward-room preset, shows rewardRoom content"
+    }
+  ],
+  "issuesFound": 10,
+  "issuesBySeverity": {
+    "high": 1,
+    "medium": 4,
+    "low": 5
+  },
+  "methodology": "Docker warm container (BATCH-ULTRA-t10-a, port 3262), SwiftShader WebGL. Each screen loaded via named scenario preset or __rrScenario.loadCustom(). Wait >= 5000ms per screen. Captured screenshot.png + layout-dump.txt per screen. Cross-validated dark screenshots against layout dump before flagging.",
+  "evidenceBase": "evidence/screens/"
+}

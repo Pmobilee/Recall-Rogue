@@ -1,0 +1,60 @@
+{
+  "testId": "ultra-orchestrator_none_1775870559878",
+  "agentId": "ultra-orchestrator",
+  "scenario": "none",
+  "timestamp": "2026-04-11T01:22:39.880Z",
+  "success": true,
+  "screenshotPath": "/tmp/rr-test-output/ultra-orchestrator_none_1775870559878/screenshot.png",
+  "rrScreenshotPath": "/tmp/rr-test-output/ultra-orchestrator_none_1775870559878/rr-screenshot.jpg",
+  "layoutDumpPath": "/tmp/rr-test-output/ultra-orchestrator_none_1775870559878/layout-dump.txt",
+  "actionLog": [
+    {
+      "type": "wait",
+      "ok": true,
+      "ms": 3000
+    },
+    {
+      "type": "eval",
+      "ok": true
+    },
+    {
+      "type": "eval",
+      "ok": true
+    },
+    {
+      "type": "eval",
+      "ok": true
+    },
+    {
+      "type": "eval",
+      "ok": true
+    },
+    {
+      "type": "eval",
+      "ok": true
+    },
+    {
+      "type": "eval",
+      "ok": true
+    },
+    {
+      "type": "eval",
+      "ok": true
+    },
+    {
+      "type": "rrScreenshot",
+      "ok": true,
+      "name": "smoke-01-initial",
+      "path": "/tmp/rr-test-output/ultra-orchestrator_none_1775870559878/smoke-01-initial.rr.jpg"
+    },
+    {
+      "type": "layoutDump",
+      "ok": true,
+      "name": "smoke-01-layout",
+      "path": "/tmp/rr-test-output/ultra-orchestrator_none_1775870559878/smoke-01-layout.layout.txt"
+    }
+  ],
+  "consoleErrors": [],
+  "durationMs": 8268,
+  "error": null
+}

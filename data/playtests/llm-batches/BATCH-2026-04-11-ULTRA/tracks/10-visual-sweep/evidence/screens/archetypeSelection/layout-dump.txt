@@ -1,0 +1,104 @@
+LAYOUT DUMP  2026-04-11T02:03:52.326Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (1084, 562)  121x30     depth:2  α:0.30
+  [Ellipse]                                      (903, 393)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (888, 650)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (765, 528)  54x13       depth:2  α:0.30
+  [Image]                                        (1084, 531)  173x173    depth:3  frame:__BASE  tex:gold_tier_2  rot:7°
+  [Container]                                    (903, 370)  96x124      depth:3  children:3  rot:8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_attack
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_heavy_strike
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (888, 628)  96x124      depth:3  children:3  rot:-8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_block
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Image]                                        (765, 512)  77x203      depth:3  frame:__BASE  tex:vial_large  rot:-4°
+  [Arc]                                          (883, 674)  4x4         depth:4  α:0.73
+  [Arc]                                          (750, 536)  4x4         depth:4  α:0.76
+  [Arc]                                          (1103, 541)  2x2        depth:4  α:0.02
+  [Arc]                                          (424, 320)  5x5         depth:5  α:0.41
+  [Arc]                                          (1388, 159)  6x6        depth:5  α:0.67
+  [Arc]                                          (157, 124)  5x5         depth:5  α:0.63
+  [Arc]                                          (1585, 327)  5x5        depth:5  α:0.61
+  [Arc]                                          (1307, 296)  3x3        depth:5  α:0.53
+  [Arc]                                          (706, 236)  5x5         depth:5  α:0.08
+  [Arc]                                          (1552, 342)  6x6        depth:5  α:0.23
+  [Arc]                                          (1878, 87)  3x3         depth:5  α:0.51
+  [Arc]                                          (871, 169)  3x3         depth:5  α:0.51
+  [Arc]                                          (462, 317)  4x4         depth:5  α:0.64
+  [Arc]                                          (1864, 2)  4x4          depth:5  α:0.64
+  [Arc]                                          (1398, 223)  3x3        depth:5  α:0.60
+  [Arc]                                          (1433, 230)  3x3        depth:5  α:0.51
+  [Arc]                                          (1544, 117)  6x6        depth:5  α:0.65
+  [Arc]                                          (497, 117)  6x6         depth:5  α:0.65
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [section.archetype-overlay.svelte-ap0po0]                      (0, 0)  1920x1080       HIDDEN
+      [button.back-btn.svelte-ap0po0]                              (24, 24)  93x66         "← Back"
+      [h1.svelte-ap0po0]                                           (796, 29)  329x38       "Choose Your Playstyle"
+      [p.svelte-ap0po0]                                            (690, 85)  540x27       "Your archetype biases reward type options for this"
+      [button] data-testid="archetype-balanced"                    (360, 136)  1200x108  
+        [span.arch-icon-fallback.svelte-ap0po0]                    (0, 0)                  "⚖️"  HIDDEN
+        [span.title.svelte-ap0po0]                                 (429, 159)  1112x26     "Balanced"
+        [span.desc.svelte-ap0po0]                                  (429, 202)  1112x20     "Even spread across all core card types."
+      [button] data-testid="archetype-aggressive"                  (360, 259)  1200x108  
+        [span.arch-icon-fallback.svelte-ap0po0]                    (0, 0)                  "⚔️"  HIDDEN
+        [span.title.svelte-ap0po0]                                 (429, 282)  1112x26     "Aggressive"
+        [span.desc.svelte-ap0po0]                                  (429, 325)  1112x20     "More Attack and Buff options."
+      [button] data-testid="archetype-defensive"                   (360, 382)  1200x108  
+        [span.arch-icon-fallback.svelte-ap0po0]                    (0, 0)                  "🛡️"  HIDDEN
+        [span.title.svelte-ap0po0]                                 (429, 405)  1112x26     "Defensive"
+        [span.desc.svelte-ap0po0]                                  (429, 448)  1112x20     "More Shield, Heal, and sustain options."
+      [button] data-testid="archetype-control"                     (360, 505)  1200x108  
+        [span.arch-icon-fallback.svelte-ap0po0]                    (0, 0)                  "🧠"  HIDDEN
+        [span.title.svelte-ap0po0]                                 (429, 528)  1112x26     "Control"
+        [span.desc.svelte-ap0po0]                                  (429, 571)  1112x20     "More Debuff and Utility options."
+      [button.option.svelte-ap0po0] data-testid="archetype-hybrid" (360, 628)  1200x108  
+        [span.arch-icon-fallback.svelte-ap0po0]                    (0, 0)                  "🧩"  HIDDEN
+        [span.title.svelte-ap0po0]                                 (429, 651)  1112x26     "Hybrid"
+        [span.desc.svelte-ap0po0]                                  (429, 694)  1112x20     "Flexible mix for adaptive play."
+      [button.skip.svelte-ap0po0]                                  (795, 766)  330x72      "Skip (Balanced)"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Image] (+8 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+6 more)
+  TOP-RIGHT          → [Arc], [Arc], [Arc], [Arc], [Arc] (+4 more)
+  TOP-CENTER         → [Arc], [Arc], [h1.svelte-ap0po0], [p.svelte-ap0po0], [button] data-testid="archetype-balanced"
+  BOTTOM-CENTER      → [Container] continueButton
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [section.archetype-overlay.svelte-ap0po0]          covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Cross-layer proximity (nearest DOM testid to each Phaser object):
+  [Image]                                is 19px ABOVE archetype-control
+  [Ellipse]                              is 124px BELOW archetype-control
+  [Ellipse]                              is 71px ABOVE archetype-defensive
+  [Ellipse]                              is 79px ABOVE archetype-hybrid
+  [Ellipse]                              is 197px ABOVE archetype-control
+  [Image]                                is 127px ABOVE archetype-control
+  [Container]                            is 81px BELOW archetype-aggressive
+
+  Layer overlap check:
+  ⚠ [Image] OVERLAPS archetype-balanced
+  ⚠ [Image] OVERLAPS archetype-aggressive
+  ⚠ [Image] OVERLAPS archetype-defensive
+  ⚠ [Image] OVERLAPS archetype-control
+  ⚠ [Image] OVERLAPS archetype-hybrid
+  ⚠ [Ellipse] OVERLAPS archetype-control
+
+
+— END LAYOUT DUMP (36 Phaser objects, 27 DOM elements) —

@@ -1,0 +1,36 @@
+{
+  "track": "06-content-sample",
+  "batchId": "BATCH-2026-04-11-ULTRA",
+  "completedAt": "2026-04-11T10:55:00Z",
+  "decksTested": 10,
+  "questionsPerDeck": 10,
+  "totalQuestions": 100,
+  "totalIssues": 17,
+  "issuesBySeverity": {
+    "critical": 1,
+    "high": 8,
+    "medium": 8,
+    "low": 0,
+    "cosmetic": 0
+  },
+  "containersUsed": 1,
+  "containerId": "rr-warm-BATCH-ULTRA-t6-content",
+  "containerPort": 3250,
+  "containerStatus": "stopped",
+  "decksSuccessfullyTested": 10,
+  "decksFailedToLoad": 0,
+  "substitutions": [
+    {
+      "requested": "ap_statistics",
+      "used": "ap_microeconomics",
+      "reason": "ap_statistics deck does not exist in data/decks/"
+    },
+    {
+      "requested": "food_world_cuisine",
+      "used": "world_cuisines",
+      "reason": "deck ID is world_cuisines not food_world_cuisine"
+    }
+  ],
+  "analysisMethod": "Direct JSON analysis of deck files + Docker warm container for live screenshots and scenario verification",
+  "screenshotsCaptured": 7
+}

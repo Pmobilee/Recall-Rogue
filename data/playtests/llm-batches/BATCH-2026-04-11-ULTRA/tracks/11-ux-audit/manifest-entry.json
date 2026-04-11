@@ -1,0 +1,57 @@
+{
+  "track": "11-ux-audit",
+  "method": "Docker cold containers, 1920x1080, ux-review methodology",
+  "scenarios": [
+    "hub-endgame",
+    "combat-basic",
+    "dungeon-map",
+    "card-reward",
+    "reward-room",
+    "shop",
+    "rest-site",
+    "run-end-victory",
+    "dungeon-selection",
+    "settings"
+  ],
+  "screensAudited": 10,
+  "totalChecks": 87,
+  "passed": 44,
+  "failed": 43,
+  "passRate": 0.506,
+  "issueCount": 25,
+  "issuesBySeverity": {
+    "critical": 2,
+    "high": 9,
+    "medium": 11,
+    "low": 3,
+    "cosmetic": 0
+  },
+  "issuesByCategory": {
+    "ux_no_accessible_name": 12,
+    "ux_touch_target_small": 3,
+    "ux_hierarchy_broken": 6,
+    "ux_text_too_small": 5,
+    "ux_primary_above_thumb_zone": 2,
+    "ux_card_game_pattern": 2,
+    "ux_gap_too_small": 1
+  },
+  "verdictByScreen": {
+    "hub": "WARN",
+    "combat": "FAIL",
+    "dungeonMap": "FAIL",
+    "cardReward": "WARN",
+    "rewardRoom": "WARN",
+    "shopRoom": "WARN",
+    "restRoom": "WARN",
+    "runEnd": "WARN",
+    "deckSelectionHub": "FAIL",
+    "settings": "WARN"
+  },
+  "screensWithFail": 3,
+  "screensWithWarn": 7,
+  "screensWithPass": 0,
+  "capturedAt": "2026-04-11T02:10:00Z",
+  "evidencePath": "evidence/screens/",
+  "reportPath": "report.md",
+  "issuesPath": "issues.json"
+}

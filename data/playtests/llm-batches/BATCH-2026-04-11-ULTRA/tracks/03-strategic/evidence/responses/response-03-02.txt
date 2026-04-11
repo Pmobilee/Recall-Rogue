@@ -1,0 +1,41 @@
+STATE: state-03-02 | Floor 2 | Thesis Construct | Early Game
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 9, block: 10. chargeResistant (QP=50% dmg). Intent: Charging next turn → 12 dmg bypass damage cap.
+- Player HP: 68/80, 3 AP, chain 0, Iron Shield relic.
+- Iron Shield: next turn start block = 2 + shields played this turn.
+
+OPTION ANALYSIS — OFFENSE PATH:
+- Piercing(QP,1ap) = 3 dmg to HP (bypasses block). Piercing(CC,2ap) = floor(3×1.5)=4 dmg.
+- Heavy Strike(QP,2ap) vs chargeResistant = 10×0.5=5 dmg to block (doesn't reach HP since 10 block). Useless.
+- Heavy Strike(CC,3ap) vs chargeResistant = floor(10×1.5)×0.5? Or does chargeResistant only apply to QP? Per game rules: chargeResistant = QP deals 50% damage. CC is not QP, so Heavy Strike CC = floor(10×1.5) = 15 dmg vs 10 block → 5 dmg to HP! Kills.
+- But Heavy Strike CC costs 2+1=3ap total. That uses ALL AP. No block left.
+
+OFFENSE OPTION A: Heavy Strike(CC,3ap) → 15 dmg → 5 goes through block → total 9 HP, hits for 5... wait: 15 - 10 block = 5 dmg to HP. Enemy had 9 HP - 5 = 4 HP. Not dead yet.
+
+Wait, re-check: block absorbs damage. 15 - 10 block = 5 dmg through. Enemy goes from 9 → 4 HP. Not killed. And player spent all 3 AP. Incoming 12 bypass next turn.
+
+OFFENSE OPTION B: Piercing(CC,2ap) = floor(3×1.5)=4 dmg to HP (bypass). Piercing(QP,1ap) = 3 dmg to HP. Combined = 7 dmg to HP. Enemy: 9-7=2 HP. Not killed. 0 AP left.
+
+OFFENSE OPTION C: Piercing(CC,2ap) = 4 to HP. Enemy: 5 HP. 1 AP left. Weaken(QP,1ap) = debuff (reduces enemy attacks). Can't kill this turn.
+
+DEFENSE PATH:
+- Block(QP,1ap) = 5 block. Block(QP,1ap) = 5 block. Total 10 block this turn.
+- Iron Shield next turn start = 2 + 2 shields = 4 block. So next turn starts with 4 block.
+- 2 Block cards + Weaken = 3 AP. 10 block + Weaken = reduces 12 bypass dmg by weakness factor.
+- Incoming 12 bypass (no block absorption on bypass attacks!). With 10 current block that DOESN'T help since bypass ignores block.
+
+KEY INSIGHT: The "bypass damage cap" on the charge intent — does this mean it bypasses BLOCK or just the damage cap mechanic? The telegraph says "bypasses damage cap" not "bypasses block." Block still absorbs bypass attacks. So:
+- Block(QP)×2 = 10 block this turn. Next turn 12 dmg hits → 12-10=2 dmg through. Excellent defense.
+- Meanwhile Iron Shield gives 2+2=4 block at next turn start, but the 12 hits on enemy turn BEFORE player gets to act next.
+
+DOMINANT CHOICE: Play 2×Block(QP) + Weaken or Piercing. The 12-bypass hit is scary but blockable. Piercing+Block+Block (1+1+1=3ap) = 3 dmg to HP + 10 block = reduces incoming to 2 dmg. Enemy survives at 6 HP.
+
+TENSION: Real tension between "kill it before the charged hit" vs "block the charged hit." Neither fully solves the problem this turn. Piercing CC (2ap) + Block(1ap) = 4 HP damage + 5 block. Enemy at 5 HP, incoming 12-5=7 dmg. Not ideal.
+
+DEAD CARDS: Heavy Strike(QP) vs chargeResistant + full block = ~2.5 dmg net, clearly worst attack option.
+
+SURVIVAL ODDS: 7/10. Enemy survives turn 1 in most lines. Turn 2 might kill it.
+
+DESIGN NOTE: chargeResistant enemy with heavy block creates genuine tension: QP is penalized twice (charge resistance + block), making Charge feels mandatory, but spending AP on Charge leaves you vulnerable to the incoming hit. This is GOOD DESIGN. However, the Weaken card is essentially dead here — weakness reduces enemy ATK but the threatening intent is a charged hit, and weakness effect timing vs the upcoming 12-bypass is unclear.

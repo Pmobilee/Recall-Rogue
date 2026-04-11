@@ -1,0 +1,32 @@
+LAYOUT DUMP  2026-04-11T02:10:32.439Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.procedural-study-screen.svelte-1e2hvcb]                   (0, 0)  1920x1080       HIDDEN
+      [span.stat-value.svelte-1e2hvcb]                             (1613, 28)  14x23       "0"
+      [span.stat-label.svelte-1e2hvcb]                             (1583, 52)  74x16       "answered"
+      [span.stat-value.svelte-1e2hvcb]                             (1705, 28)  35x23       "0%"
+      [span.stat-label.svelte-1e2hvcb]                             (1686, 52)  72x16       "accuracy"
+      [button.stop-btn.svelte-1e2hvcb]                             (1788, 21)  96x54       "Stop"
+      [p.error-title.svelte-1e2hvcb]                               (791, 513)  339x29      "Could not start practice session"
+      [p.error-sub.svelte-1e2hvcb]                                 (787, 560)  346x20      "Deck "" is not registered as a procedural deck."
+      [button.btn-back-error.svelte-1e2hvcb]                       (895, 598)  130x66      "Go Back"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.procedural-study-screen.svelte-1e2hvcb], [p.error-title.svelte-1e2hvcb], [p.error-sub.svelte-1e2hvcb], [button.btn-back-error.svelte-1e2hvcb] (+1 more)
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.procedural-study-screen.svelte-1e2hvcb]       covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 11 DOM elements) —

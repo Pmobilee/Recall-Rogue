@@ -1,0 +1,36 @@
+{
+  "stateId": "state-03-10",
+  "bucket": "mid_game",
+  "floor": 7,
+  "enemy": {
+    "id": "librarian",
+    "name": "The Librarian",
+    "currentHP": 8,
+    "maxHP": 16,
+    "block": 0,
+    "intent": { "type": "charge", "value": 10, "telegraph": "Charging: Devastating roar! (next turn: 10 dmg)" },
+    "statusEffects": [],
+    "phase": 2,
+    "special": "Phase 2 (HP below 40%): onEnemyTurnStart silences a random card type each turn. Currently silenced: 'buff'"
+  },
+  "player": {
+    "currentHP": 32,
+    "maxHP": 80,
+    "block": 4,
+    "ap": 3,
+    "chain": 3,
+    "lockedCardType": "buff"
+  },
+  "hand": [
+    { "id": "empower", "name": "Empower", "type": "buff", "apCost": 1, "quickPlayValue": 50, "chargeCorrectValue": 75, "chargeWrongValue": 35, "description": "Next card deals 50% more damage. [SILENCED this turn]" },
+    { "id": "heavy_strike", "name": "Heavy Strike", "type": "attack", "apCost": 2, "quickPlayValue": 10, "chargeCorrectValue": 30, "chargeWrongValue": 7, "description": "High damage. Costs 2 AP." },
+    { "id": "execute", "name": "Execute", "type": "attack", "apCost": 1, "quickPlayValue": 3, "chargeCorrectValue": 9, "chargeWrongValue": 2, "description": "Bonus damage below 30% enemy HP (enemy at 50% now, no bonus yet)." },
+    { "id": "block", "name": "Block", "type": "shield", "apCost": 1, "quickPlayValue": 5, "chargeCorrectValue": 9, "chargeWrongValue": 3, "description": "Gain block." },
+    { "id": "mirror", "name": "Mirror", "type": "wild", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Copy previous card effect." }
+  ],
+  "relics": [
+    { "id": "whetstone", "name": "Whetstone", "description": "All attacks +3 base damage. All shields -1 block." },
+    { "id": "chain_reactor", "name": "Chain Reactor", "description": "Knowledge Chains of 2+ deal 6 splash damage per chain link." }
+  ],
+  "notes": "Librarian in phase 2 silences 'buff' this turn — Empower is locked. Player has chain=3 and Chain Reactor (splash per link). Heavy Strike + Execute doesn't kill it (8 HP, not below 30%). Mirror after Heavy Strike copies the 10-dmg hit. Chain 3 gives multiplicative damage boost. Empower locked. Block costs AP vs preparing for the incoming 10-dmg charge. Player at 32 HP, taking 10 next turn if they don't block = 22 HP. Tricky resource allocation."
+}

@@ -1,0 +1,27 @@
+STATE: state-03-06 | Floor 4 | Peer Reviewer (3 Strength stacks) | Mid Game
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 7, no block. Strength 3 (each stack ×1.25). Intent: buff again (Academic rigor, +1 Strength for 2 turns).
+- Player: 52/80 HP, 3 AP, chain 0. Relics: Whetstone (+3 atk), Herbal Pouch (1 poison to enemy/turn).
+- Enemy current attack with Strength 3: base ~2 dmg × 1.25^3 ≈ 2×1.95 ≈ 3.9 → ~4 damage. Wait, Strength boosts are multiplicative. But the enemy's attack intents have base values of 2 (Examiner's strike). With Strength 3 stacks at +25% each = 2 × (1.25)^3 = 2 × 1.95 = 3.9 → ~4 dmg. That seems low, but the enemy is ABOUT TO buff again to Strength 4.
+- Actually the Peer Reviewer's attack in this state has been in progress for 3 turns. Base attack of Examiner's strike = 2. With 3 Strength stacks: 2 × (1.25)^3 = ~4 dmg. Not immediately lethal.
+
+OFFENSIVE CALCULATION:
+- Strike(CC,2ap) + Whetstone = floor((4+3)×1.5) = floor(10.5) = 10 dmg. Enemy HP: 7-10 = dead.
+- Empower(QP,1ap) + Heavy Strike(QP,2ap) = 3ap. HS = (10+3) × 1.5 = 19.5 → 19 dmg. Kills.
+- But wait: Empower applies to NEXT card at 50% more. Empower + HeavyStrike(QP) = 13×1.5=19. Kills easily.
+
+DOMINANT CHOICE: Any single big attack kills this enemy (7 HP). With Whetstone, Strike(CC) alone = 10 dmg = kill. This is a trivially one-shot fight at this point.
+
+STRATEGIC NOTE: The enemy was allowed to grow to Strength 3 (implies 3 turns of no Charge). THIS turn, the player finally has a capable hand. The fight outcome was already determined by past turns, not this decision. The Peer Reviewer's threat only matters if the player KEEPS not Charging.
+
+DEAD CARDS: Block — useless when the enemy dies this turn. Expose(vulnerable) — overkill for 7 HP.
+
+DESIGN OBSERVATION: The Peer Reviewer creates interesting multi-turn pressure but the STATE where you finally burst it down is not interesting — it's just "play biggest damage card." The interesting decisions happened in prior turns (Charge or not?). The current decision node is trivial.
+
+LIFETAP ASSESSMENT: Lifetap(CC) at 52 HP = (4+3)×1.5=10.5→10 dmg + heal 20% = 2 HP. Heal is minimal but kills the enemy.
+
+SURVIVAL ODDS: 10/10. The burst is too easy once you have a reasonable hand.
+
+DESIGN NOTE: Peer Reviewer's risk is getting to this state after many turns of no Charge. But once you're HERE with a normal hand, the kill is trivial. The mechanic creates anxiety, not difficult decisions. Good early tension, anti-climactic kill.

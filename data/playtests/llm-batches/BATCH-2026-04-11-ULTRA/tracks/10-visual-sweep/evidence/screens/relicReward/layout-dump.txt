@@ -1,0 +1,64 @@
+LAYOUT DUMP  2026-04-11T02:13:55.043Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (965, 584)  151x38      depth:2  α:0.30
+  [Ellipse]                                      (789, 572)  47x12       depth:2  α:0.30
+  [Ellipse]                                      (1121, 517)  67x17      depth:2  α:0.30
+  [Ellipse]                                      (957, 372)  67x17       depth:2  α:0.30
+  [Image]                                        (965, 542)  216x216     depth:3  frame:__BASE  tex:gold_tier_3  rot:7°
+  [Image]                                        (789, 559)  67x92       depth:3  frame:__BASE  tex:vial_small  rot:-2°
+  [Container]                                    (1121, 494)  96x124     depth:3  children:3  rot:3°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_utility
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_foresight
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (957, 351)  96x124      depth:3  children:3  rot:-5°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_fortify
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Arc]                                          (953, 361)  2x2         depth:4  α:0.06
+  [Arc]                                          (947, 525)  3x3         depth:4  α:0.00
+  [Arc]                                          (1247, 385)  4x4        depth:5  α:0.64
+  [Arc]                                          (1176, 189)  4x4        depth:5  α:0.61
+  [Arc]                                          (263, 395)  3x3         depth:5  α:0.59
+  [Arc]                                          (1790, 22)  7x7         depth:5  α:0.67
+  [Arc]                                          (1438, 215)  5x5        depth:5  α:0.59
+  [Arc]                                          (1246, 184)  3x3        depth:5  α:0.51
+  [Arc]                                          (1001, 159)  3x3        depth:5  α:0.54
+  [Arc]                                          (175, 76)  4x4          depth:5  α:0.59
+  [Arc]                                          (682, 35)  3x3          depth:5  α:0.58
+  [Arc]                                          (495, 209)  3x3         depth:5  α:0.54
+  [Arc]                                          (268, 213)  2x2         depth:5  α:0.50
+  [Arc]                                          (312, 284)  4x4         depth:5  α:0.67
+  [Arc]                                          (485, 212)  5x5         depth:5  α:0.58
+  [Arc]                                          (284, 215)  6x6         depth:5  α:0.68
+  [Arc]                                          (360, 149)  3x3         depth:5  α:0.54
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Image] (+8 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+9 more)
+  TOP-CENTER         → [Arc], [Arc], [Arc], [Arc]
+  MIDDLE-LEFT        → [Arc]
+  TOP-RIGHT          → [Arc], [Arc]
+  BOTTOM-CENTER      → [Container] continueButton
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (35 Phaser objects, 2 DOM elements) —

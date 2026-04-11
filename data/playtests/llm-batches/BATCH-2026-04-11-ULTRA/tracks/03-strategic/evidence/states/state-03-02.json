@@ -1,0 +1,33 @@
+{
+  "stateId": "state-03-02",
+  "bucket": "early_game",
+  "floor": 2,
+  "enemy": {
+    "id": "thesis_construct",
+    "name": "Thesis Construct",
+    "currentHP": 9,
+    "maxHP": 9,
+    "block": 10,
+    "intent": { "type": "charge", "value": 12, "telegraph": "Charging: Crystal Crush! (next turn: 12 dmg, bypasses damage cap)", "bypassDamageCap": true },
+    "statusEffects": [],
+    "special": "chargeResistant: Quick Play attacks deal 50% damage against this enemy"
+  },
+  "player": {
+    "currentHP": 68,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 0
+  },
+  "hand": [
+    { "id": "piercing", "name": "Piercing", "type": "attack", "apCost": 1, "quickPlayValue": 3, "chargeCorrectValue": 9, "chargeWrongValue": 2, "description": "Ignores enemy block." },
+    { "id": "block", "name": "Block", "type": "shield", "apCost": 1, "quickPlayValue": 5, "chargeCorrectValue": 9, "chargeWrongValue": 3, "description": "Gain block." },
+    { "id": "block", "name": "Block", "type": "shield", "apCost": 1, "quickPlayValue": 5, "chargeCorrectValue": 9, "chargeWrongValue": 3, "description": "Gain block." },
+    { "id": "weaken", "name": "Weaken", "type": "debuff", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 3, "chargeWrongValue": 1, "description": "Apply weakness (reduces enemy attack damage)." },
+    { "id": "heavy_strike", "name": "Heavy Strike", "type": "attack", "apCost": 2, "quickPlayValue": 10, "chargeCorrectValue": 30, "chargeWrongValue": 7, "description": "High damage. Costs 2 AP." }
+  ],
+  "relics": [
+    { "id": "iron_shield", "name": "Iron Shield", "description": "Start each turn with block = 2 + shields played last turn." }
+  ],
+  "notes": "Enemy is charging a 12-damage bypass attack next turn. Has 10 block. chargeResistant (QP deals 50% dmg). Player must decide: block for the incoming hit, or push through block with Piercing to kill it first? Tension between offense and defense."
+}

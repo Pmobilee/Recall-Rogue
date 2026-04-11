@@ -1,0 +1,35 @@
+{
+  "stateId": "state-03-08",
+  "bucket": "mid_game",
+  "floor": 5,
+  "enemy": {
+    "id": "proctor",
+    "name": "The Proctor",
+    "currentHP": 13,
+    "maxHP": 13,
+    "block": 6,
+    "intent": { "type": "defend", "value": 6, "telegraph": "Fortify (gains 6 more block)" },
+    "statusEffects": [
+      { "type": "strength", "value": 2, "turnsRemaining": 999, "note": "2 turns of no-Charge penalty" }
+    ],
+    "special": "onPlayerNoCharge: gains +1 Strength. Currently charging a 7-dmg Seismic Slam on next turn with charge intent."
+  },
+  "player": {
+    "currentHP": 44,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 2
+  },
+  "hand": [
+    { "id": "double_strike", "name": "Double Strike", "type": "buff", "apCost": 2, "quickPlayValue": 75, "chargeCorrectValue": 100, "chargeWrongValue": 75, "description": "Next attack card hits twice at full power. Charge bonus: also pierces.", "chargeBonusEffect": "double_strike_pierce" },
+    { "id": "heavy_strike", "name": "Heavy Strike", "type": "attack", "apCost": 2, "quickPlayValue": 10, "chargeCorrectValue": 30, "chargeWrongValue": 7, "description": "High damage. Costs 2 AP." },
+    { "id": "piercing", "name": "Piercing", "type": "attack", "apCost": 1, "quickPlayValue": 3, "chargeCorrectValue": 9, "chargeWrongValue": 2, "description": "Ignores enemy block." },
+    { "id": "weaken", "name": "Weaken", "type": "debuff", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 3, "chargeWrongValue": 1, "description": "Apply weakness." },
+    { "id": "recycle", "name": "Recycle", "type": "utility", "apCost": 1, "quickPlayValue": 2, "chargeCorrectValue": 4, "chargeWrongValue": 2, "description": "Draw 3 cards. Charge bonus: recover from discard.", "chargeBonusEffect": "recycle_from_discard" }
+  ],
+  "relics": [
+    { "id": "vitality_ring", "name": "Vitality Ring", "description": "+20 max HP this run." }
+  ],
+  "notes": "Proctor has 6 block, is gaining 6 more (total 12 after this turn), AND has Strength 2. AP budget is 3. Double Strike (2ap) + Piercing (1ap) would bypass ALL block and double-hit. But Double Strike costs 2 AP and Heavy Strike costs 2 AP — can't use both. Or use Piercing (1) + Weaken (1) + strike (but no strike in hand). Recycle to fish? This is a real decision tree with AP constraints. Chain 2 is active, boosting damage."
+}

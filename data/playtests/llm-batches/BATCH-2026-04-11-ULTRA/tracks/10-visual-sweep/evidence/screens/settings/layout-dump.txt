@@ -1,0 +1,101 @@
+LAYOUT DUMP  2026-04-11T02:04:33.923Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (1084, 562)  121x30     depth:2  α:0.30
+  [Ellipse]                                      (903, 393)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (888, 650)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (765, 528)  54x13       depth:2  α:0.30
+  [Image]                                        (1084, 529)  173x173    depth:3  frame:__BASE  tex:gold_tier_2  rot:7°
+  [Container]                                    (903, 374)  96x124      depth:3  children:3  rot:8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_attack
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_heavy_strike
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (888, 631)  96x124      depth:3  children:3  rot:-8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_block
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Image]                                        (765, 508)  77x203      depth:3  frame:__BASE  tex:vial_large  rot:-4°
+  [Arc]                                          (899, 359)  3x3         depth:4  α:0.31
+  [Arc]                                          (1061, 505)  4x4        depth:4  α:0.63
+  [Arc]                                          (740, 477)  4x4         depth:4  α:0.59
+  [Arc]                                          (803, 73)  7x7          depth:5  α:0.11
+  [Arc]                                          (1173, 87)  3x3         depth:5  α:0.20
+  [Arc]                                          (1779, 276)  5x5        depth:5  α:0.60
+  [Arc]                                          (306, 129)  3x3         depth:5  α:0.53
+  [Arc]                                          (1370, 305)  5x5        depth:5  α:0.58
+  [Arc]                                          (280, 228)  3x3         depth:5  α:0.54
+  [Arc]                                          (788, 126)  3x3         depth:5  α:0.55
+  [Arc]                                          (578, 171)  5x5         depth:5  α:0.67
+  [Arc]                                          (1351, 159)  7x7        depth:5  α:0.68
+  [Arc]                                          (1420, 34)  6x6         depth:5  α:0.66
+  [Arc]                                          (422, 38)  6x6          depth:5  α:0.61
+  [Arc]                                          (691, 290)  4x4         depth:5  α:0.53
+  [Arc]                                          (1101, 282)  5x5        depth:5  α:0.62
+  [Arc]                                          (522, 131)  6x6         depth:5  α:0.46
+  [Arc]                                          (439, 66)  6x6          depth:5  α:0.41
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.settings-overlay.svelte-l3jv5s]                           (0, 0)  1920x1080       HIDDEN
+      [div.settings-card.settings-card-landscape.svelte-l3jv5s]    (0, 0)  1920x1080     
+        [aside.settings-sidebar.svelte-l3jv5s]                     (0, 0)                  HIDDEN
+          [div.settings-sidebar-header.svelte-l3jv5s]              (0, 0)                  HIDDEN
+            [h2.svelte-l3jv5s]                                     (0, 0)                  "Settings"  HIDDEN
+        [button] data-testid="btn-settings-back"                   (499, 15)  119x49       "← Back"
+        [button] data-testid="btn-settings-audio"                  (647, 15)  180x49       "Audio"
+        [button] data-testid="btn-settings-accessibility"          (845, 15)  180x49       "Accessibility"
+        [button] data-testid="btn-settings-notifications"          (1043, 15)  180x49      "Notifications"
+        [button] data-testid="btn-settings-account"                (1241, 15)  180x49      "Account"
+        [h3.svelte-l3jv5s]                                         (79, 129)  1762x33      "Audio"
+        [span]                                                     (79, 207)  300x30       "SFX Enabled"
+        [span]                                                     (79, 291)  210x30       "SFX Volume"
+        [strong.svelte-l3jv5s]                                     (1075, 291)  766x30     "100%"
+        [span]                                                     (79, 375)  300x30       "Music Enabled"
+        [span]                                                     (79, 459)  210x30       "Music Volume"
+        [strong.svelte-l3jv5s]                                     (1075, 459)  766x30     "50%"
+        [span]                                                     (79, 543)  300x30       "Ambient Enabled"
+        [span]                                                     (79, 627)  210x30       "Ambient Volume"
+        [strong.svelte-l3jv5s]                                     (1075, 627)  766x30     "70%"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Image] (+9 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+9 more)
+  TOP-CENTER         → [Arc], [Arc], [Arc], [Arc], [Arc] (+1 more)
+  TOP-RIGHT          → [Arc], [Arc], [Arc], [Arc]
+  BOTTOM-CENTER      → [Container] continueButton
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.settings-overlay.svelte-l3jv5s]               covers 100% height  CENTER
+  [div.settings-card.settings-card-landscape.svelt   covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Cross-layer proximity (nearest DOM testid to each Phaser object):
+  [Image]                                is 501px BELOW btn-settings-accessibility
+  [Ellipse]                              is 525px BELOW btn-settings-notifications
+  [Ellipse]                              is 355px BELOW btn-settings-accessibility
+  [Ellipse]                              is 489px BELOW btn-settings-audio
+  [Image]                                is 492px BELOW btn-settings-notifications
+  [Container]                            is 336px BELOW btn-settings-accessibility
+  [Image]                                is 560px ABOVE btn-settings-back
+  [Image]                                is 561px ABOVE btn-settings-back
+  [Image]                                is 560px ABOVE btn-settings-back
+
+  Layer overlap check:
+  ⚠ [Image] OVERLAPS btn-settings-back
+  ⚠ [Image] OVERLAPS btn-settings-audio
+  ⚠ [Image] OVERLAPS btn-settings-accessibility
+  ⚠ [Image] OVERLAPS btn-settings-notifications
+  ⚠ [Image] OVERLAPS btn-settings-account
+
+
+— END LAYOUT DUMP (36 Phaser objects, 22 DOM elements) —

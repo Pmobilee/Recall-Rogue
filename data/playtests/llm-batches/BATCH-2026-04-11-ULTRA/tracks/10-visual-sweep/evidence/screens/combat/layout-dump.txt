@@ -1,0 +1,226 @@
+LAYOUT DUMP  2026-04-11T02:14:10.900Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (CombatScene) ──────────
+  [Container] relicContainer                     (38, 54)                depth:0  children:0
+  [Image] combatBackground                       (960, 540)  1939x1091   depth:0  frame:__BASE  tex:bg-enemy-algorithm-landscape
+  [Graphics] vignetteGfx                         (0, 0)                  depth:1
+  [Graphics] edgeGlowTop                         (0, 0)                  depth:2  α:0.00
+  [Graphics] edgeGlowLeft                        (0, 0)                  depth:2  α:0.00
+  [Graphics] edgeGlowRight                       (0, 0)                  depth:2  α:0.00
+  [Rectangle] moodVignetteOverlay                (960, 540)  1920x1080   depth:2
+  [Graphics] nearDeathVignette                   (0, 0)                  depth:3  α:0.00
+  [Container]                                    (961.5, 488)  429x430   depth:5  children:6
+    [Image]                                      (6, 7)  420x420         depth:0  frame:__BASE  tex:enemy-algorithm-idle  α:0.25
+    [Image]                                      (-3, 0)  420x420        depth:0  frame:__BASE  tex:enemy-algorithm-idle  α:0.90
+    [Image]                                      (3, 0)  420x420         depth:0  frame:__BASE  tex:enemy-algorithm-idle  α:0.90
+    [Image]                                      (0, -3)  420x420        depth:0  frame:__BASE  tex:enemy-algorithm-idle  α:0.90
+    [Image]                                      (0, 3)  420x420         depth:0  frame:__BASE  tex:enemy-algorithm-idle  α:0.90
+    [Image]                                      (0, 0)  420x420         depth:0  frame:__BASE  tex:enemy-algorithm-idle
+  [Graphics] enemyHpBarBg                        (566, 117)  788x69      depth:10
+  [Graphics] enemyHpBarFill                      (566, 117)  788x69      depth:11
+  [Graphics] damagePreviewGfx                    (0, 0)                  depth:11
+  [Graphics] enemyBlockBarFill                   (0, 0)                  depth:12
+  [Text] enemyHpText                             (960, 151)  788x58      depth:13  "71 / 71"
+  [Container]                                    (0, 0)                  depth:13  children:0
+  [Rectangle] entryFadeRect                      (960, 540)  1920x1080   depth:995  α:0.00
+  [Image]                                        (-999, -999)  250x500   depth:996  frame:__BASE  tex:weapon-sword-canvas  α:0.00
+  [Container]                                    (1440, 1473.9162931138794)  1042x1130  depth:996  children:3  α:0.00
+    [Image]                                      (0, 138)  965x826       depth:0  frame:__BASE  tex:weapon-arm
+    [Image]                                      (0, -207)  1042x745     depth:0  frame:__BASE  tex:weapon-tome  α:0.00
+    [Image]                                      (0, -207)  965x690      depth:0  frame:__BASE  tex:weapon-tome
+  [Image]                                        (480, 1660)  758x1027   depth:996  frame:__BASE  tex:weapon-shield  α:0.00
+  [ParticleEmitter] particles                    (0, 0)                  depth:998
+  [Rectangle] flashRect                          (960, 540)  1920x1080   depth:999
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (965, 584)  151x38      depth:2  α:0.30
+  [Ellipse]                                      (789, 572)  47x12       depth:2  α:0.30
+  [Ellipse]                                      (1121, 517)  67x17      depth:2  α:0.30
+  [Ellipse]                                      (957, 372)  67x17       depth:2  α:0.30
+  [Image]                                        (965, 540)  216x216     depth:3  frame:__BASE  tex:gold_tier_3  rot:7°
+  [Image]                                        (789, 557)  67x92       depth:3  frame:__BASE  tex:vial_small  rot:-2°
+  [Container]                                    (1121, 497)  96x124     depth:3  children:3  rot:3°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_utility
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_foresight
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (957, 353)  96x124      depth:3  children:3  rot:-5°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_fortify
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Arc]                                          (774, 566)  2x2         depth:4  α:0.13
+  [Arc]                                          (939, 322)  2x2         depth:4  α:0.13
+  [Arc]                                          (1099, 440)  4x4        depth:4  α:0.64
+  [Arc]                                          (328, 184)  4x4         depth:5  α:0.03
+  [Arc]                                          (433, 319)  5x5         depth:5  α:0.59
+  [Arc]                                          (1487, 145)  3x3        depth:5  α:0.52
+  [Arc]                                          (1234, 291)  3x3        depth:5  α:0.57
+  [Arc]                                          (544, 252)  4x4         depth:5  α:0.56
+  [Arc]                                          (644, 72)  3x3          depth:5  α:0.51
+  [Arc]                                          (1717, 21)  5x5         depth:5  α:0.70
+  [Arc]                                          (1387, 147)  7x7        depth:5  α:0.67
+  [Arc]                                          (719, 41)  4x4          depth:5  α:0.61
+  [Arc]                                          (856, 204)  4x4         depth:5  α:0.65
+  [Arc]                                          (591, 158)  5x5         depth:5  α:0.64
+  [Arc]                                          (336, 283)  3x3         depth:5  α:0.59
+  [Arc]                                          (243, 113)  4x4         depth:5  α:0.51
+  [Arc]                                          (99, 55)  4x4           depth:5  α:0.64
+  [Arc]                                          (769, 248)  3x3         depth:5  α:0.00
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.topbar.svelte-1ramr3r]                                    (0, 0)  1920x49         HIDDEN
+      [div.hp-group.svelte-1ramr3r]                                (18, 9)  622x28       
+        [div.hp-bar-track.svelte-1ramr3r]                          (18, 9)  622x28       
+          [div.hp-bar-fill.svelte-1ramr3r]                         (19, 10)  310x26      
+          [span.hp-text.svelte-1ramr3r]                            (19, 15)  620x15      
+            [span.hp-value.svelte-1ramr3r]                         (301, 15)  56x15        "50/100"
+      [span.segment-name.svelte-1ramr3r]                           (1343, 15)  99x16       "Shallow Depths"
+      [span.progress-divider.svelte-1ramr3r]                       (1454, 17)  3x13        "·"
+      [span.floor-label.svelte-1ramr3r]                            (1469, 15)  38x16       "Floor 1"
+      [div.gold-counter.svelte-1ramr3r]                            (1531, -1)  68x48     
+        [span.gold-value.svelte-1ramr3r]                           (1563, 15)  36x15       "0"
+      [div.relics-row.svelte-1ramr3r]                              (1611, -1)  225x48    
+        [button.relic-btn.svelte-1ramr3r]                          (1611, -1)  48x48     
+          [img.relic-icon.svelte-1ramr3r]                          (1623, 11)  24x24     
+          [span.relic-emoji-fallback.svelte-1ramr3r]               (0, 0)                  "🪨"  HIDDEN
+        [button.relic-btn.svelte-1ramr3r]                          (1663, -1)  48x48     
+          [img.relic-icon.svelte-1ramr3r]                          (1675, 11)  24x24     
+          [span.relic-emoji-fallback.svelte-1ramr3r]               (0, 0)                  "🛡️"  HIDDEN
+        [button.relic-btn.svelte-1ramr3r]                          (1716, -1)  48x48     
+          [img.relic-icon.svelte-1ramr3r]                          (1728, 11)  24x24     
+          [span.relic-emoji-fallback.svelte-1ramr3r]               (0, 0)                  "👢"  HIDDEN
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1768, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1804, 7)  32x32      
+      [button.pause-btn.svelte-1ramr3r]                            (1854, -1)  48x48     
+        [span.pause-icon.svelte-1ramr3r]                           (1861, 9)  33x27        "⚙"
+    [div.fog-wing-wrapper.svelte-1ramr3r.fog-wing-flow]            (0, 49)  672x48         HIDDEN
+    [canvas]                                                       (0, 0)                  HIDDEN
+    [div.card-combat-overlay.svelte-1a9rptt.layout-landscape]      (0, 0)  1920x1080       HIDDEN
+      [div.relic-tray.svelte-sj93q6]                               (0, 0)                  HIDDEN
+        [div.relic-slot-wrapper.svelte-sj93q6]                     (0, 0)                  HIDDEN
+          [div.relic-slot.svelte-sj93q6]                           (0, 0)                  HIDDEN
+            [img.relic-icon.svelte-sj93q6]                         (0, 0)                  HIDDEN
+            [span.relic-emoji-fallback.svelte-sj93q6]              (0, 0)                  "🪨"  HIDDEN
+        [div.relic-slot-wrapper.svelte-sj93q6]                     (0, 0)                  HIDDEN
+          [div.relic-slot.svelte-sj93q6]                           (0, 0)                  HIDDEN
+            [img.relic-icon.svelte-sj93q6]                         (0, 0)                  HIDDEN
+            [span.relic-emoji-fallback.svelte-sj93q6]              (0, 0)                  "🛡️"  HIDDEN
+        [div.relic-slot-wrapper.svelte-sj93q6]                     (0, 0)                  HIDDEN
+          [div.relic-slot.svelte-sj93q6]                           (0, 0)                  HIDDEN
+            [img.relic-icon.svelte-sj93q6]                         (0, 0)                  HIDDEN
+            [span.relic-emoji-fallback.svelte-sj93q6]              (0, 0)                  "👢"  HIDDEN
+        [div.relic-slot.empty.svelte-sj93q6]                       (0, 0)                  HIDDEN
+        [div.relic-slot.empty.svelte-sj93q6]                       (0, 0)                  HIDDEN
+      [div.enemy-name-header.svelte-1a9rptt]                       (0, 70)  1920x38        "The Algorithm"  HIDDEN
+      [div.enemy-power-badges.svelte-1dufiha]                      (867, 238)  186x90      HIDDEN
+      [span.ap-number.svelte-1a9rptt]                              (0, 0)                  "3"  HIDDEN
+      [span.ap-label.svelte-1a9rptt]                               (0, 0)                  "AP"  HIDDEN
+      [div.pile-card-stack.svelte-1a9rptt]                         (37, 635)  66x92      
+      [div.pile-card-stack.svelte-1a9rptt]                         (39, 633)  66x92      
+      [span.pile-count-label.svelte-1a9rptt]                       (24, 744)  92x43        "4"
+      [div.pile-indicator.discard-pile-indicator.svelte-1a9rptt]   (1804, 623)  92x164     HIDDEN
+        [div.pile-card-stack.svelte-1a9rptt.pile-empty]            (1817, 635)  66x92    
+        [span.pile-count-label.svelte-1a9rptt]                     (1804, 744)  92x43      "0"
+      [div.enemy-intent-bubble.svelte-1a9rptt]                     (382, 302)  248x100     HIDDEN
+        [div.intent-bubble-name.svelte-1a9rptt]                    (433, 319)  147x42    
+          [img.intent-icon-img.svelte-1a9rptt]                     (433, 319)  42x42     
+          [span.intent-icon-fallback.svelte-1a9rptt]               (0, 0)                  "🔮"  HIDDEN
+          [strong.intent-attack-name.svelte-1a9rptt]               (484, 330)  96x20       "System scan"
+        [div.intent-detail-line.svelte-1a9rptt]                    (411, 367)  190x18      "Applies Vulnerable for 2 turns"
+      [div.player-status-strip.svelte-1a9rptt]                     (0, 0)                  HIDDEN
+        [div.player-hp-track.svelte-1a9rptt]                       (0, 0)                  HIDDEN
+          [div.player-hp-fill.svelte-1a9rptt]                      (0, 0)                  HIDDEN
+          [span.player-hp-text.svelte-1a9rptt]                     (0, 0)                  "50/100"  HIDDEN
+      [div.player-ap-right.svelte-1a9rptt.ap-active]               (312, 999)  72x57       HIDDEN
+        [span.ap-num.svelte-1a9rptt]                               (343, 1018)  11x19      "3"
+      [div] data-testid="active-chain-bar"                         (18, 823)  178x35     
+        [span.chain-name.svelte-3qjn8k]                            (51, 830)  52x21        "Azure"
+        [span.chain-hint.svelte-3qjn8k]                            (110, 834)  74x14       "Play to chain!"
+      [div.card-hand-landscape.svelte-98ebis]                      (0, 702)  1920x378      HIDDEN
+        [button] data-testid="card-hand-0"                         (557, 872)  281x364   
+          [div.card-inner.svelte-98ebis]                           (557, 872)  281x364   
+            [div.card-front.svelte-98ebis]                         (557, 872)  281x364   
+              [div.card-v2-frame.svelte-d4ut2d]                    (557, 872)  281x364   
+                [img.frame-card-art.svelte-d4ut2d]                 (611, 932)  160x143   
+                [div.frame-text.v2-card-type.svelte-d4ut2d]        (690, 1068)  22x11    
+                [span.desc-number.svelte-d4ut2d.damage-buffed]     (718, 1082)  37x48      "10"
+        [button] data-testid="card-hand-1"                         (700, 860)  258x349   
+          [div.card-inner.svelte-98ebis]                           (700, 860)  258x349   
+            [div.card-front.svelte-98ebis]                         (700, 860)  258x349   
+              [div.card-v2-frame.svelte-d4ut2d]                    (700, 860)  258x349   
+                [img.frame-card-art.svelte-d4ut2d]                 (750, 917)  152x133   
+                [div.frame-text.v2-card-type.svelte-d4ut2d]        (819, 1050)  22x10    
+                [span.desc-number.svelte-d4ut2d.damage-buffed]     (854, 1068)  18x45      "7"
+        [button] data-testid="card-hand-2"                         (843, 862)  234x333   
+          [div.card-inner.svelte-98ebis]                           (843, 862)  234x333   
+            [div.card-front.svelte-98ebis]                         (843, 862)  234x333   
+              [div.card-v2-frame.svelte-d4ut2d]                    (843, 862)  234x333   
+                [img.frame-card-art.svelte-d4ut2d]                 (889, 916)  144x123   
+                [div.frame-text.v2-card-type.svelte-d4ut2d]        (949, 1045)  21x8     
+                [span.desc-number.svelte-d4ut2d.damage-nerfed]     (942, 1082)  18x44      "3"
+                [span.desc-keyword.svelte-d4ut2d]                  (966, 1082)  74x44      "Block"
+        [button] data-testid="card-hand-3"                         (962, 860)  258x349   
+          [div.card-inner.svelte-98ebis]                           (962, 860)  258x349   
+            [div.card-front.svelte-98ebis]                         (962, 860)  258x349   
+              [div.card-v2-frame.svelte-d4ut2d]                    (962, 860)  258x349   
+                [img.frame-card-art.svelte-d4ut2d]                 (1020, 918)  152x133  
+                [div.frame-text.v2-card-type.svelte-d4ut2d]        (1079, 1050)  22x10   
+                [span.desc-number.svelte-d4ut2d.damage-buffed]     (1066, 1077)  17x36     "8"
+        [button] data-testid="card-hand-4"                         (1082, 872)  281x364  
+          [div.card-inner.svelte-98ebis]                           (1082, 872)  281x364  
+            [div.card-front.svelte-98ebis]                         (1082, 872)  281x364  
+              [div.card-v2-frame.svelte-d4ut2d]                    (1082, 872)  281x364  
+                [img.frame-card-art.svelte-d4ut2d]                 (1151, 932)  160x143  
+                [div.frame-text.v2-card-type.svelte-d4ut2d]        (1208, 1068)  22x11   
+                [span.desc-number.svelte-d4ut2d]                   (1141, 1116)  21x37     "0"
+                [span.desc-keyword.svelte-d4ut2d]                  (1162, 1119)  121x52    "Vulnerable"
+      [button] data-testid="btn-end-turn"                          (24, 987)  197x69       "END TURN"  HIDDEN
+      [div.landscape-stats-bar.svelte-1a9rptt]                     (0, 680)  1920x54       HIDDEN
+    [button.pause-btn.svelte-2meh4s] data-testid="btn-pause"       (0, 0)                  HIDDEN
+    [button.dev-skip-btn.svelte-2meh4s]                            (1829, 118)  72x66      "⏭ Skip"  HIDDEN
+    [div.screen-transition.svelte-2meh4s.wipe-zoom]                (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image] combatBackground, [Rectangle] moodVignetteOverlay, [Rectangle] entryFadeRect, [Container], [Rectangle] flashRect (+1 more)
+  CENTER             → [Container], [Ellipse], [Ellipse], [Ellipse], [Ellipse] (+6 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+12 more)
+  TOP-CENTER         → [Graphics] enemyHpBarBg, [Graphics] enemyHpBarFill, [Arc]
+  TOP-RIGHT          → [Text] enemyHpText
+  MIDDLE-LEFT        → [Image]
+  BOTTOM-CENTER      → [Image]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.card-combat-overlay.svelte-1a9rptt.layout-l   covers 100% height  CENTER
+  [div.card-hand-landscape.svelte-98ebis]            covers 35% height  BOTTOM-CENTER
+  [div.screen-transition.svelte-2meh4s.wipe-zoom]    covers 100% height  CENTER
+
+  Cross-layer proximity (nearest DOM testid to each Phaser object):
+  [Image] combatBackground               is 489px ABOVE card-hand-2
+  [Rectangle] moodVignetteOverlay        is 489px ABOVE card-hand-2
+  [Container]                            is 541px ABOVE card-hand-2
+  [Image]                                is 9px BELOW btn-pause
+  [Image]                                is 3px BELOW btn-pause
+  [Image]                                is 3px BELOW btn-pause
+  [Image]                                is 3px ABOVE btn-pause
+  [Image]                                is 3px BELOW btn-pause
+  [Image]                                is 0px BELOW btn-pause
+  [Graphics] enemyHpBarBg                is 578px BELOW btn-pause
+
+  Layer overlap check:
+  ⚠ [Image] combatBackground OVERLAPS active-chain-bar
+  ⚠ [Image] combatBackground OVERLAPS card-hand-0
+  ⚠ [Image] combatBackground OVERLAPS card-hand-1
+  ⚠ [Image] combatBackground OVERLAPS card-hand-2
+  ⚠ [Image] combatBackground OVERLAPS card-hand-3
+  ⚠ [Image] combatBackground OVERLAPS card-hand-4
+
+
+— END LAYOUT DUMP (66 Phaser objects, 112 DOM elements) —

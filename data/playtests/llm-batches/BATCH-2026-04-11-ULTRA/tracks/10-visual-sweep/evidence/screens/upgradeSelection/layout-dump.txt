@@ -1,0 +1,76 @@
+LAYOUT DUMP  2026-04-11T02:07:51.272Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.topbar.svelte-1ramr3r]                                    (0, 0)  1920x49         HIDDEN
+      [div.hp-group.svelte-1ramr3r]                                (18, 9)  622x28       
+        [div.hp-bar-track.svelte-1ramr3r]                          (18, 9)  622x28       
+          [div.hp-bar-fill.svelte-1ramr3r]                         (19, 10)  620x26      
+          [span.hp-text.svelte-1ramr3r]                            (19, 15)  620x15      
+            [span.hp-value.svelte-1ramr3r]                         (297, 15)  64x15        "100/100"
+      [span.segment-name.svelte-1ramr3r]                           (1393, 15)  99x16       "Shallow Depths"
+      [span.progress-divider.svelte-1ramr3r]                       (1503, 17)  3x13        "·"
+      [span.floor-label.svelte-1ramr3r]                            (1518, 15)  38x16       "Floor 1"
+      [div.gold-counter.svelte-1ramr3r]                            (1581, -1)  68x48     
+        [span.gold-value.svelte-1ramr3r]                           (1612, 15)  36x15       "0"
+      [div.relics-row.svelte-1ramr3r]                              (1660, 7)  176x32     
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1660, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1696, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1732, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1768, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1804, 7)  32x32      
+      [button.pause-btn.svelte-1ramr3r]                            (1854, -1)  48x48     
+        [span.pause-icon.svelte-1ramr3r]                           (1861, 9)  33x27        "⚙"
+    [canvas]                                                       (0, 0)                  HIDDEN
+    [div.upgrade-overlay.svelte-1fzn0ep]                           (0, 0)  1920x1080       HIDDEN
+      [h2.title.svelte-1fzn0ep]                                    (772, 290)  376x54      "Upgrade a Card"
+      [p.subtitle.svelte-1fzn0ep]                                  (772, 356)  376x17      "Choose one card to enhance"
+      [button] data-testid="upgrade-candidate-scenario_upgrade_0_5z6k" (772, 385)  184x100   
+        [span.type-icon.svelte-1fzn0ep]                            (784, 397)  22x25       "⚔"
+        [span.old.svelte-1fzn0ep]                                  (784, 448)  10x25       "8"
+        [span.arrow.svelte-1fzn0ep]                                (798, 452)  12x17       "→"
+        [span.new.svelte-1fzn0ep]                                  (814, 448)  14x25       "11"
+      [button] data-testid="upgrade-candidate-scenario_upgrade_1_6ptf" (964, 385)  184x100   
+        [span.type-icon.svelte-1fzn0ep]                            (976, 397)  22x25       "🛡"
+        [span.old.svelte-1fzn0ep]                                  (976, 448)  10x25       "6"
+        [span.arrow.svelte-1fzn0ep]                                (990, 452)  12x17       "→"
+        [span.new.svelte-1fzn0ep]                                  (1006, 448)  10x25      "9"
+      [button] data-testid="upgrade-candidate-scenario_upgrade_2_e7ws" (772, 493)  184x117   
+        [span.type-icon.svelte-1fzn0ep]                            (784, 505)  22x25       "⚔"
+        [span.old.svelte-1fzn0ep]                                  (784, 554)  20x25       "20"
+        [span.arrow.svelte-1fzn0ep]                                (808, 557)  12x17       "→"
+        [span.new.svelte-1fzn0ep]                                  (824, 554)  20x25       "20"
+      [button] data-testid="upgrade-candidate-scenario_upgrade_3_jayd" (964, 493)  184x117   
+        [span.type-icon.svelte-1fzn0ep]                            (976, 505)  22x25       "⚔"
+        [span.old.svelte-1fzn0ep]                                  (976, 554)  10x25       "4"
+        [span.arrow.svelte-1fzn0ep]                                (990, 557)  12x17       "→"
+        [span.new.svelte-1fzn0ep]                                  (1006, 554)  10x25      "4"
+      [button] data-testid="upgrade-candidate-scenario_upgrade_4_kr6w" (772, 618)  184x117   
+        [span.type-icon.svelte-1fzn0ep]                            (784, 630)  22x25       "⚔"
+        [span.old.svelte-1fzn0ep]                                  (784, 678)  10x25       "8"
+        [span.arrow.svelte-1fzn0ep]                                (798, 682)  12x17       "→"
+        [span.new.svelte-1fzn0ep]                                  (814, 678)  10x25       "9"
+      [button.skip-btn.svelte-1fzn0ep] data-testid="upgrade-skip"  (772, 746)  376x44      "Skip"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.upgrade-overlay.svelte-1fzn0ep], [p.subtitle.svelte-1fzn0ep], [button] data-testid="upgrade-candidate-scenario_upgrade_0_5z6k", [button] data-testid="upgrade-candidate-scenario_upgrade_1_6ptf" (+4 more)
+  TOP-CENTER         → [div.topbar.svelte-1ramr3r], [h2.title.svelte-1fzn0ep]
+  TOP-LEFT           → [div.hp-group.svelte-1ramr3r], [div.hp-bar-track.svelte-1ramr3r], [div.hp-bar-fill.svelte-1ramr3r], [span.hp-text.svelte-1ramr3r]
+  TOP-RIGHT          → [div.relics-row.svelte-1ramr3r]
+  BOTTOM-CENTER      → [button.skip-btn.svelte-1fzn0ep] data-testid="upgrade-skip"
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.upgrade-overlay.svelte-1fzn0ep]               covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 51 DOM elements) —

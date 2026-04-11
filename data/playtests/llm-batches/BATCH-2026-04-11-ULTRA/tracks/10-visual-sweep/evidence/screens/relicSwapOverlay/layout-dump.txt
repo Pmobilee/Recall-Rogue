@@ -1,0 +1,66 @@
+LAYOUT DUMP  2026-04-11T02:07:40.283Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.topbar.svelte-1ramr3r]                                    (0, 0)  1920x49         HIDDEN
+      [div.hp-group.svelte-1ramr3r]                                (18, 9)  622x28       
+        [div.hp-bar-track.svelte-1ramr3r]                          (18, 9)  622x28       
+          [div.hp-bar-fill.svelte-1ramr3r]                         (19, 10)  620x26      
+          [span.hp-text.svelte-1ramr3r]                            (19, 15)  620x15      
+            [span.hp-value.svelte-1ramr3r]                         (297, 15)  64x15        "100/100"
+      [span.segment-name.svelte-1ramr3r]                           (1310, 15)  99x16       "Shallow Depths"
+      [span.progress-divider.svelte-1ramr3r]                       (1421, 17)  3x13        "·"
+      [span.floor-label.svelte-1ramr3r]                            (1436, 15)  38x16       "Floor 1"
+      [div.gold-counter.svelte-1ramr3r]                            (1499, -1)  68x48     
+        [span.gold-value.svelte-1ramr3r]                           (1530, 15)  36x15       "499"
+      [div.relics-row.svelte-1ramr3r]                              (1578, -1)  258x48    
+        [button.relic-btn.svelte-1ramr3r]                          (1578, -1)  48x48     
+          [img.relic-icon.svelte-1ramr3r]                          (1590, 11)  24x24     
+          [span.relic-emoji-fallback.svelte-1ramr3r]               (0, 0)                  "🪨"  HIDDEN
+        [button.relic-btn.svelte-1ramr3r]                          (1631, -1)  48x48     
+          [img.relic-icon.svelte-1ramr3r]                          (1642, 11)  24x24     
+          [span.relic-emoji-fallback.svelte-1ramr3r]               (0, 0)                  "🛡️"  HIDDEN
+        [button.relic-btn.svelte-1ramr3r]                          (1683, -1)  48x48     
+          [img.relic-icon.svelte-1ramr3r]                          (1695, 11)  24x24     
+          [span.relic-emoji-fallback.svelte-1ramr3r]               (0, 0)                  "👢"  HIDDEN
+        [button.relic-btn.svelte-1ramr3r]                          (1736, -1)  48x48     
+          [img.relic-icon.svelte-1ramr3r]                          (1747, 11)  24x24     
+          [span.relic-emoji-fallback.svelte-1ramr3r]               (0, 0)                  "💍"  HIDDEN
+        [button.relic-btn.svelte-1ramr3r]                          (1788, -1)  48x48     
+          [img.relic-icon.svelte-1ramr3r]                          (1800, 11)  24x24     
+          [span.relic-emoji-fallback.svelte-1ramr3r]               (0, 0)                  "🔭"  HIDDEN
+      [button.pause-btn.svelte-1ramr3r]                            (1854, -1)  48x48     
+        [span.pause-icon.svelte-1ramr3r]                           (1861, 9)  33x27        "⚙"
+    [canvas]                                                       (0, 0)                  HIDDEN
+    [div.special-overlay.svelte-2wk2si]                            (0, 0)  1920x1080       HIDDEN
+      [div.special-card.svelte-2wk2si]                             (645, 302)  630x476   
+        [span.event-icon.svelte-2wk2si]                            (916, 346)  87x89       "📉"
+        [h2.event-name.svelte-2wk2si]                              (847, 456)  226x54      "Deck Thin"
+        [p.event-desc.svelte-2wk2si]                               (716, 531)  489x26      "A slot in the wall. Drop up to 2 cards. They won't"
+        [div.event-actions.svelte-2wk2si]                          (683, 590)  554x144   
+          [button.action-btn.primary.svelte-2wk2si]                (683, 590)  554x72      "Thin Deck"
+          [button] data-testid="special-event-skip"                (683, 674)  554x60      "Skip"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.special-overlay.svelte-2wk2si], [div.special-card.svelte-2wk2si], [h2.event-name.svelte-2wk2si], [p.event-desc.svelte-2wk2si] (+4 more)
+  TOP-CENTER         → [div.topbar.svelte-1ramr3r]
+  TOP-LEFT           → [div.hp-group.svelte-1ramr3r], [div.hp-bar-track.svelte-1ramr3r], [div.hp-bar-fill.svelte-1ramr3r], [span.hp-text.svelte-1ramr3r]
+  TOP-RIGHT          → [div.relics-row.svelte-1ramr3r]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.special-overlay.svelte-2wk2si]                covers 100% height  CENTER
+  [div.special-card.svelte-2wk2si]                   covers 44% height  CENTER
+  [div.event-actions.svelte-2wk2si]                  covers 13% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 40 DOM elements) —

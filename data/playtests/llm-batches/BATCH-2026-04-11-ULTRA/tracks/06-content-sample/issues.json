@@ -1,0 +1,437 @@
+[
+  {
+    "id": "issue-1775872247392-06-001",
+    "track": "06-content-sample",
+    "deckId": "ap_macroeconomics",
+    "questionIndex": 6,
+    "category": "content_duplicate",
+    "severity": "high",
+    "title": "ap_macroeconomics: equation_symbols pool has duplicate '1' choices in balanced budget multiplier question",
+    "description": "Q: 'When government increases spending and taxes by the same amount (balanced budget), what is the Balanced Budget Multiplier?' A: '1'. The equation_symbols pool (16 facts) contains 2 separate facts with correctAnswer '1'. When distractors are drawn, both appear, showing '1' as both the correct answer and a distractor. O-QZ2 violation.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/ap_macroeconomics/quiz_01.jpg",
+      "questionText": "When government increases spending and taxes by the same amount (balanced budget), what is the Balanced Budget Multiplier?",
+      "choices": [
+        "1",
+        "1",
+        "G",
+        "10"
+      ],
+      "correctAnswer": "1"
+    },
+    "reproductionSteps": [
+      "Load deck ap_macroeconomics",
+      "Draw balanced budget multiplier question",
+      "Observe two '1' choices"
+    ],
+    "suggestedFix": "Deduplicate equation_symbols pool: differentiate answers ('BBM = 1' vs '1 (Keynesian multiplier base)') or use bracket notation for numeric facts."
+  },
+  {
+    "id": "issue-1775872247393-06-002",
+    "track": "06-content-sample",
+    "deckId": "ap_macroeconomics",
+    "questionIndex": 10,
+    "category": "content_length",
+    "severity": "medium",
+    "title": "ap_macroeconomics: financial_asset_terms pool length disparity 3.8x (Time deposit vs Bond)",
+    "description": "Q: 'What type of bank deposit requires funds to remain for a set term...' A: 'Time deposit' (12 chars). Distractors include 'Bond' (4 chars), ratio 3x. Pool has only 5 real facts + 0 synthetics. The wide length range makes 'Bond' and 'Stock' easily eliminable as length outliers. O-QZ6 violation.",
+    "evidence": {
+      "questionText": "What type of bank deposit requires funds to remain for a set term and penalizes early withdrawal?",
+      "choices": [
+        "Time deposit",
+        "Financial asset",
+        "Stock",
+        "Bond"
+      ],
+      "correctAnswer": "Time deposit"
+    },
+    "reproductionSteps": [
+      "Load deck ap_macroeconomics",
+      "Draw question about bank deposit types"
+    ],
+    "suggestedFix": "Add synthetic distractors matching length of 'Time deposit': 'Demand deposit', 'Savings deposit', 'Certificate of deposit', 'Treasury bill', 'Money market fund'."
+  },
+  {
+    "id": "issue-1775872247394-06-003",
+    "track": "06-content-sample",
+    "deckId": "spanish",
+    "questionIndex": 3,
+    "category": "content_length",
+    "severity": "high",
+    "title": "spanish: english_meanings_adverbs pool has length disparity 4.3x (multi-word vs single-word)",
+    "description": "Q: 'What does \"adem\u00e1s\" mean?' A: 'also, besides' (13 chars). Distractors 'here' (4), 'now' (3), 'there' (5). Ratio 4.3x. Spanish adverb pool mixes multi-word English meanings ('also, besides', 'even though') with single-word translations ('here', 'now'). Players identify the compound meaning as the answer without vocabulary knowledge. Anti-Pattern 2 violation.",
+    "evidence": {
+      "questionText": "What does \"adem\u00e1s\" mean?",
+      "choices": [
+        "also, besides",
+        "here",
+        "now",
+        "there"
+      ],
+      "correctAnswer": "also, besides"
+    },
+    "reproductionSteps": [
+      "Load deck spanish (spanish_a1)",
+      "Draw questions about adem\u00e1s, incluso, or other adverbs with compound translations"
+    ],
+    "suggestedFix": "Split english_meanings_adverbs: english_meanings_adverbs_short (\u22646 chars: 'here', 'now', 'still', 'even') vs english_meanings_adverbs_compound (>6 chars: 'also, besides', 'only then')."
+  },
+  {
+    "id": "issue-1775872247395-06-004",
+    "track": "06-content-sample",
+    "deckId": "korean",
+    "questionIndex": 1,
+    "category": "content_quality",
+    "severity": "high",
+    "title": "korean: english_meanings mega-pool (1368 facts, no POS split) - POS-TELL vulnerability across all questions",
+    "description": "All 1368 korean_topik1 facts share a single english_meanings pool with no part-of-speech separation. Mixed POS distractors (verbs: 'teach', 'cultivate, grow'; nouns: 'store, shop', 'meat', 'rainy season'; adjectives: 'cheap', 'fun, be pleasant') allow players to identify answers by grammatical category rather than vocabulary knowledge. Anti-Pattern 10 violation. The target_language_words pool is correctly separate, but POS splitting is missing.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/korean_topik1/quiz_01.jpg",
+      "questionText": "What does '\uc990\uac81\ub2e4' mean?",
+      "choices": [
+        "fun, be pleasant",
+        "store, shop",
+        "teach",
+        "meat"
+      ],
+      "correctAnswer": "fun, be pleasant"
+    },
+    "reproductionSteps": [
+      "Load deck korean_topik1",
+      "Draw vocabulary questions",
+      "Observe mixed POS distractors"
+    ],
+    "suggestedFix": "Split english_meanings pool by POS: english_meanings_verbs, english_meanings_nouns, english_meanings_adjectives, english_meanings_other. Pad each sub-pool to 15+. Run node scripts/fix-pool-heterogeneity.mjs."
+  },
+  {
+    "id": "issue-1775872247396-06-005",
+    "track": "06-content-sample",
+    "deckId": "korean",
+    "questionIndex": 2,
+    "category": "content_semantic_overlap",
+    "severity": "medium",
+    "title": "korean: same 3 distractors ('store, shop', 'teach', 'meat') appearing across majority of questions",
+    "description": "In 10 sampled questions, 9 of 10 showed 'store, shop', 'teach', 'meat' as the first 3 distractors. With 1368 facts in one mega-pool, the first 3 non-correct pool members always appear. Players learn these specific wrong answers across sessions, reducing learning efficacy.",
+    "evidence": {
+      "questionText": "Multiple vocabulary questions",
+      "choices": [
+        "[various]",
+        "store, shop",
+        "teach",
+        "meat"
+      ],
+      "correctAnswer": "[varies]"
+    },
+    "reproductionSteps": [
+      "Load deck korean_topik1",
+      "Draw 5+ questions",
+      "Note 'store, shop', 'teach', 'meat' recurring"
+    ],
+    "suggestedFix": "POS split (Issue 4) will naturally resolve this. The Korean deck likely needs to ensure the distractor selection algorithm randomizes within the pool rather than always taking the first N entries."
+  },
+  {
+    "id": "issue-1775872247397-06-006",
+    "track": "06-content-sample",
+    "deckId": "ap_chemistry",
+    "questionIndex": 2,
+    "category": "content_quality",
+    "severity": "medium",
+    "title": "ap_chemistry: chemistry_concepts_long_u4 pool has only 9 facts (below 15 recommended)",
+    "description": "Pool chemistry_concepts_long_u4 has 9 real facts and 0 synthetic distractors. At exactly 9 items, players see limited distractor variety. The pool is unit-coherent (good), but underpopulated.",
+    "evidence": {
+      "questionText": "In a particulate diagram showing a reaction, the circles and molecular models drawn on the right side represent...",
+      "choices": [
+        "products (after rxn)",
+        "H+(aq) + OH-(aq) \u2192 H2O(l)",
+        "only change coefficients",
+        "intermolecular forces change"
+      ],
+      "correctAnswer": "products (after rxn)"
+    },
+    "reproductionSteps": [
+      "Load deck ap_chemistry",
+      "Draw Unit 4 particulate diagram questions"
+    ],
+    "suggestedFix": "Add 6+ synthetic distractors to reach 15+: 'transition state', 'activation energy', 'reaction intermediate', 'spectator ions', 'limiting reagent', 'theoretical yield'."
+  },
+  {
+    "id": "issue-1775872247398-06-007",
+    "track": "06-content-sample",
+    "deckId": "ap_microeconomics",
+    "questionIndex": 5,
+    "category": "content_duplicate",
+    "severity": "high",
+    "title": "ap_microeconomics: curve_and_graph_names_short pool has duplicate 'U-shaped' distractors",
+    "description": "Q: 'In a surplus graph, producer surplus is the triangular area below the price level and above the...' A: 'Supply curve'. The pool draws 'U-shaped' twice because two separate facts in curve_and_graph_names_short have identical correctAnswer 'U-shaped' (likely one for ATC curve, one for AVC curve). O-QZ2 violation.",
+    "evidence": {
+      "questionText": "In a surplus graph, producer surplus is the triangular area below the price level and above the Supply curve. This area is...",
+      "choices": [
+        "Supply curve",
+        "Demand curve",
+        "U-shaped",
+        "U-shaped"
+      ],
+      "correctAnswer": "Supply curve"
+    },
+    "reproductionSteps": [
+      "Load deck ap_microeconomics",
+      "Draw producer surplus question"
+    ],
+    "suggestedFix": "Differentiate answers: 'U-shaped (ATC curve)' and 'U-shaped (AVC curve)' to make each pool member unique. Or merge the two U-shaped facts into one and add a different distractor."
+  },
+  {
+    "id": "issue-1775872247399-06-008",
+    "track": "06-content-sample",
+    "deckId": "philosophy",
+    "questionIndex": 3,
+    "category": "content_length",
+    "severity": "medium",
+    "title": "philosophy: bracket_dates pool mixes '551 BCE' text format with {1651} bracket notation - inconsistent display",
+    "description": "The bracket_dates pool has 2 BCE dates ('551 BCE', 'c. 405 BCE') as plain text and 6 CE dates as bracket notation ({1651}, {1637}, etc.). When Confucius birth year question is shown, distractors from the CE dates appear as '1651', '1637' \u2014 obviously wrong CE years for an ancient figure. Format inconsistency allows elimination without knowledge.",
+    "evidence": {
+      "questionText": "According to traditional Chinese sources, in what year was Confucius born?",
+      "choices": [
+        "551 BCE",
+        "1651",
+        "1637",
+        "1656"
+      ],
+      "correctAnswer": "551 BCE"
+    },
+    "reproductionSteps": [
+      "Load deck philosophy",
+      "Draw Confucius birth year question"
+    ],
+    "suggestedFix": "Convert BCE dates to bracket notation with negative values ({-551}, {-405}) or create bracket_dates_bce pool. This ensures all pool members render in the same format (plain numbers), making CE dates plausible wrong answers for BC-era questions."
+  },
+  {
+    "id": "issue-1775872247400-06-009",
+    "track": "06-content-sample",
+    "deckId": "philosophy",
+    "questionIndex": 6,
+    "category": "content_quality",
+    "severity": "medium",
+    "title": "philosophy: concept_terms_tiny pool semantic contamination (atomism, Water, Air mixed with Epoch\u00e9)",
+    "description": "Q: 'What philosophical position is Vaisheshika school best known for?' A: 'atomism'. Distractors 'Water', 'Air' are pre-Socratic element concepts; 'Epoch\u00e9' is phenomenological. The concept_terms_tiny pool (28 items) mixes Hindu philosophical answers with pre-Socratic Greek answers and modern phenomenological terms. Some are eliminable by tradition when questions are tradition-specific.",
+    "evidence": {
+      "questionText": "What philosophical position is the Vaisheshika school best known for \u2014 its belief that reality is composed of?",
+      "choices": [
+        "atomism",
+        "Water",
+        "Air",
+        "Epoch\u00e9"
+      ],
+      "correctAnswer": "atomism"
+    },
+    "reproductionSteps": [
+      "Load deck philosophy",
+      "Draw Vaisheshika atomism question"
+    ],
+    "suggestedFix": "concept_terms_tiny is likely used as a catch-all for short concept answers. Consider splitting by tradition or era when the deck's question templates can make tradition-crossing distractors eliminable."
+  },
+  {
+    "id": "issue-1775872247401-06-010",
+    "track": "06-content-sample",
+    "deckId": "ap_world_history",
+    "questionIndex": 2,
+    "category": "content_template_leak",
+    "severity": "high",
+    "title": "ap_world_history: 10+ questions contain 'ProperNoun this' grammar scar artifacts from incomplete substitution",
+    "description": "The deck has at least 10 questions where a specific noun phrase was replaced with 'this' as a placeholder but never restored. Examples: 'Song Dynasty this system', 'European Union this', 'Ho Chi this', 'Grameen this', 'Rwandan this', 'South this', 'WWI this', 'Qing this'. These render as ungrammatical questions that confuse players and compromise educational clarity. Grammar scar pipeline artifact.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/ap_world_history/quiz_01.jpg",
+      "questionText": "Which Song Dynasty this system selected government officials based on merit rather than hereditary privilege?",
+      "choices": [
+        "Civil service examination system",
+        "Commercialization (market economy)",
+        "Dar al-Islam (Muslim world)",
+        "Hindu-Buddhist syncretism"
+      ],
+      "correctAnswer": "Civil service examination system"
+    },
+    "reproductionSteps": [
+      "Load deck ap_world_history",
+      "Draw questions about Song Dynasty, Ho Chi Minh, European Union, Grameen Bank, Rwanda, Korean Wave, WWI Gallipoli, Qing tributary system"
+    ],
+    "suggestedFix": "Run verify-all-decks.mjs grammar scar check. Manual fixes needed: 'Song Dynasty this system' \u2192 'Song Dynasty examination system'; 'Ho Chi this' \u2192 'Ho Chi Minh'; 'Grameen this' \u2192 'Grameen Bank'; 'Rwandan this' \u2192 'Rwandan Genocide'; 'European Union this' \u2192 'European Union member states'; 'South this' \u2192 'South Korean'; 'WWI this, fought at the Dardanelles' \u2192 'WWI campaign, fought at the Dardanelles'; 'Qing this system' \u2192 'Qing tributary system'."
+  },
+  {
+    "id": "issue-1775872247402-06-011",
+    "track": "06-content-sample",
+    "deckId": "ap_world_history",
+    "questionIndex": 3,
+    "category": "content_template_leak",
+    "severity": "high",
+    "title": "ap_world_history: 'Rape of this' question corrupts critical WWII massacre education",
+    "description": "Q: 'What was the \"Rape of this\" and why is it significant?' A: 'Nanjing Massacre'. The term 'Nanjing' was replaced with 'this', making 'Rape of this' meaningless. This is the most educationally harmful scar because the question is supposed to teach students to recognize 'Rape of Nanjing' as a historical event name.",
+    "evidence": {
+      "questionText": "What was the 'Rape of this' and why is it significant in the AP World History exam's coverage of WWII?",
+      "choices": [
+        "Nanjing Massacre",
+        "10 million",
+        "Armenian Genocide",
+        "Roma, disabled, and LGBTQ+"
+      ],
+      "correctAnswer": "Nanjing Massacre"
+    },
+    "reproductionSteps": [
+      "Load deck ap_world_history",
+      "Draw question about Nanjing Massacre"
+    ],
+    "suggestedFix": "Fix: 'What was the Rape of Nanjing and why is it significant...?' This is a factual question requiring the historical event name to be in the question stem."
+  },
+  {
+    "id": "issue-1775872247403-06-012",
+    "track": "06-content-sample",
+    "deckId": "anime_manga",
+    "questionIndex": 2,
+    "category": "content_duplicate",
+    "severity": "high",
+    "title": "anime_manga: creator_names_short pool (5 facts) has duplicate 'CLAMP' distractor",
+    "description": "Q: 'Which mangaka created Bleach?' A: 'Tite Kubo'. Pool creator_names_short has only 5 facts with 0 synthetics. Two separate facts both answer 'CLAMP' (likely two CLAMP-created series: Cardcaptor Sakura and another). When distractors are drawn, both CLAMP facts appear, showing 'CLAMP' twice. O-QZ1 (borderline) and O-QZ2 violations.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/anime_manga/quiz_01.jpg",
+      "questionText": "Which mangaka created Bleach?",
+      "choices": [
+        "Tite Kubo",
+        "CLAMP",
+        "CLAMP",
+        "ONE"
+      ],
+      "correctAnswer": "Tite Kubo"
+    },
+    "reproductionSteps": [
+      "Load deck anime_manga",
+      "Draw Bleach creator question"
+    ],
+    "suggestedFix": "Merge the two CLAMP facts into one (or differentiate as 'CLAMP (Cardcaptor Sakura)' vs 'CLAMP (xxxHolic)'). Add 10+ synthetic distractors to creator_names_short: 'Yoshihiro Togashi', 'Hajime Isayama', 'Naoki Urasawa', 'Rumiko Takahashi', 'Kentaro Miura'."
+  },
+  {
+    "id": "issue-1775872247404-06-013",
+    "track": "06-content-sample",
+    "deckId": "anime_manga",
+    "questionIndex": 5,
+    "category": "content_quality",
+    "severity": "medium",
+    "title": "anime_manga: manga_series_titles pool (5 facts) mixes series titles with magazine names",
+    "description": "The manga_series_titles pool contains: Dragon Ball, One Piece, Shojo Comic, Bessatsu Shonen Magazine, Fairy Tail. 'Shojo Comic' and 'Bessatsu Shonen Magazine' are publication titles, not manga series. When a Dragon Ball question is asked, 'Shojo Comic' appears as a distractor \u2014 obviously a magazine, not a series. Anti-Pattern 13 semantic contamination.",
+    "evidence": {
+      "questionText": "Which manga series by Akira Toriyama was serialized in Weekly Shonen Jump from 1984 to 1995?",
+      "choices": [
+        "Dragon Ball",
+        "One Piece",
+        "Shojo Comic",
+        "Bessatsu Shonen Magazine"
+      ],
+      "correctAnswer": "Dragon Ball"
+    },
+    "reproductionSteps": [
+      "Load deck anime_manga",
+      "Draw Dragon Ball question"
+    ],
+    "suggestedFix": "Remove 'Shojo Comic' and 'Bessatsu Shonen Magazine' from manga_series_titles (they belong in publisher_magazine_names). Add series titles: 'Naruto', 'Death Note', 'Fullmetal Alchemist', 'Attack on Titan', 'Hunter x Hunter', 'Yu Yu Hakusho'."
+  },
+  {
+    "id": "issue-1775872247405-06-014",
+    "track": "06-content-sample",
+    "deckId": "medical_terminology",
+    "questionIndex": 5,
+    "category": "content_duplicate",
+    "severity": "critical",
+    "title": "medical_terminology: 31 duplicate answer instances across 13 pools cause systemic O-QZ2 failures",
+    "description": "Medical terminology has multiple roots meaning the same thing (ren/o and nephr/o both = Kidney; dermato and derm/o both = skin; etc.). With these facts in the same pools, any question about one root draws the other as a distractor \u2014 showing the correct answer twice. 31 duplicate instances across 13 pools including: root_meanings_urinary (Kidney x2), root_meanings_integumentary (skin x3, hair x2), root_meanings_digestive (4 duplicates), body_systems (5 duplicates), root_meanings_reproductive (ovary x2, breast x2, uterus x2).",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/medical_terminology/quiz_01.jpg",
+      "questionText": "What does the combining form ren/o mean?",
+      "choices": [
+        "Kidney",
+        "Kidney",
+        "Bladder",
+        "Urethra"
+      ],
+      "correctAnswer": "Kidney"
+    },
+    "reproductionSteps": [
+      "Load deck medical_terminology",
+      "Draw question about ren/o (should see 'Kidney' twice in choices)",
+      "Also: mast/o question shows 'ovary' twice; bronch/o shows 'Respiratory' twice"
+    ],
+    "suggestedFix": "Append the root abbreviation to each answer to make it unique within its pool: 'Kidney (ren/o)' vs 'Kidney (nephr/o)', 'skin (derm/o)' vs 'skin (dermat/o)'. This preserves educational value while ensuring pool uniqueness. Apply to all 31 duplicates."
+  },
+  {
+    "id": "issue-1775872247406-06-015",
+    "track": "06-content-sample",
+    "deckId": "world_cuisines",
+    "questionIndex": 5,
+    "category": "content_quality",
+    "severity": "high",
+    "title": "world_cuisines: technique_terms_short pool is severely semantically contaminated (16 facts, 0 synthetics)",
+    "description": "technique_terms_short mixes: temperatures (480\u00b0C), physiological effects (Pain receptors), ratios (14-17 times, 20-50%), chemical components (Amino acids), establishments (El Bulli, Tandoor), biology (SCOBY, Zymology), techniques (Wok hei, Spherification, Osmosis), slang (Bitter drink, Air pumping), historical values (4 denarii, 2,000). A player sees 'SCOBY', '480\u00b0C', 'Pain receptors', '14-17 times' as quiz options \u2014 temperature and body-part answers are immediately eliminable for a fermentation culture question. Anti-Pattern 13.",
+    "evidence": {
+      "questionText": "What is the symbiotic culture of bacteria and yeast used to ferment kombucha tea called?",
+      "choices": [
+        "SCOBY",
+        "480\u00b0C",
+        "Pain receptors",
+        "14\u201317 times"
+      ],
+      "correctAnswer": "SCOBY"
+    },
+    "reproductionSteps": [
+      "Load deck world_cuisines",
+      "Draw SCOBY/kombucha question",
+      "Observe temperature and body-part distractors"
+    ],
+    "suggestedFix": "Split technique_terms_short into semantically coherent sub-pools: temperature_values, biological_terms, ratio_values, technique_names, establishment_names. Each sub-pool needs 5+ real facts + synthetic distractors."
+  },
+  {
+    "id": "issue-1775872247407-06-016",
+    "track": "06-content-sample",
+    "deckId": "world_cuisines",
+    "questionIndex": 3,
+    "category": "content_quality",
+    "severity": "medium",
+    "title": "world_cuisines: cultural_references pool mixes historical events with literary titles (Boston Tea Party vs The Odyssey)",
+    "description": "Q: 'The British Tea Act of 1773 provoked which event?' A: 'Boston Tea Party'. Distractors: 'The Lion, the Witch and the Wardrobe', 'One Thousand and One Nights', 'The Odyssey'. Historical political events appear alongside fantasy/literary works \u2014 immediately eliminable by category. Length disparity also present (16 vs 35 chars). Anti-Pattern 13.",
+    "evidence": {
+      "questionText": "The British Tea Act of 1773 provoked which event that escalated into the American Revolution?",
+      "choices": [
+        "Boston Tea Party",
+        "The Lion, the Witch and the Wardrobe",
+        "One Thousand and One Nights",
+        "The Odyssey"
+      ],
+      "correctAnswer": "Boston Tea Party"
+    },
+    "reproductionSteps": [
+      "Load deck world_cuisines",
+      "Draw Boston Tea Party question"
+    ],
+    "suggestedFix": "Separate cultural_references into: cultural_events (historical events, treaties) and cultural_works (books, films, stories). Ensure each sub-pool has semantically homogenous items."
+  },
+  {
+    "id": "issue-1775872247408-06-017",
+    "track": "06-content-sample",
+    "deckId": "ap_world_history",
+    "questionIndex": 9,
+    "category": "content_template_leak",
+    "severity": "medium",
+    "title": "ap_world_history: 'European Union this in 1999' grammar scar in eurozone question",
+    "description": "Q contains 'The euro currency, adopted by European Union this in 1999' where 'this' should be 'member states'. The question is still answerable ('20 eurozone members') but the grammar break undermines educational quality and makes the question confusing.",
+    "evidence": {
+      "questionText": "The euro currency, adopted by European Union this in 1999 for electronic transactions and 2002 for coins and notes, is currently used by how many eurozone members?",
+      "choices": [
+        "20 eurozone members",
+        "Mamluks",
+        "Grand Council",
+        "Joint-stock company"
+      ],
+      "correctAnswer": "20 eurozone members"
+    },
+    "reproductionSteps": [
+      "Load deck ap_world_history",
+      "Draw eurozone members question"
+    ],
+    "suggestedFix": "Fix: 'The euro currency, adopted by European Union member states in 1999...'"
+  }
+]

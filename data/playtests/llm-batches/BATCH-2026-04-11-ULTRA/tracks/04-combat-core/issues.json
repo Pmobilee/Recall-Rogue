@@ -1,0 +1,184 @@
+[
+  {
+    "id": "issue-1744339200000-04-001",
+    "track": "04-combat-core",
+    "tester": "quiz-quality",
+    "category": "content_quality",
+    "severity": "critical",
+    "title": "{N} template artifact in 118 facts — correct answers and distractors show {1988} instead of 1988",
+    "description": "A generation pipeline bug wrapped numeric answers in curly-brace template syntax (e.g., {1988}) which was stored verbatim to the facts database. Both correct_answer and distractors fields are affected. Players would see \"{1988}\" as an answer choice instead of \"1988\". Confirmed in the live facts.db via SQL scan.\n\nAffected categories:\n- General Knowledge / Pop Culture: 70 facts\n- Art & Architecture / Anime & Manga: 16 facts\n- Natural Sciences / AP Biology: 12 facts\n- Space & Astronomy / NASA Missions: 4 facts\n- History / AP World History: 4 facts\n- Social Sciences / AP Psychology: 3 facts\n- Natural Sciences / AP Physics 1: 3 facts\n- Natural Sciences / Dinosaurs & Paleontology: 2 facts\n- Natural Sciences / AP Chemistry: 2 facts\n- History / US Presidents: 1 fact\n- General Knowledge / Philosophy: 1 fact\n\nTotal: 118 facts\n\nExample: Q='In what year was Akira released?' correct_answer='{1988}' distractors=['{1979}','{1982}','{1985}','{1990}']",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 0,
+      "questionId": "multiple — see category breakdown",
+      "metric": "118 facts confirmed via: SELECT COUNT(*) FROM facts WHERE distractors LIKE '%{%' → 118"
+    },
+    "reproductionSteps": [
+      "Run: node -e \"const db=require('better-sqlite3')('./public/facts.db',{readonly:true}); const r=db.prepare(\\\"SELECT COUNT(*) as n FROM facts WHERE distractors LIKE '%{%'\\\").get(); console.log(r.n);\"",
+      "Expected output: 118",
+      "To see examples: SELECT id, quiz_question, correct_answer, distractors FROM facts WHERE distractors LIKE '%{%' LIMIT 5"
+    ],
+    "suggestedFix": "Write a migration script to strip curly braces from correct_answer and distractors fields where the full value matches /{\\d+}/. Run: UPDATE facts SET correct_answer = REPLACE(REPLACE(correct_answer, '{', ''), '}', '') WHERE correct_answer LIKE '{%}'; and similar for distractors field (parse JSON, strip braces from all elements, re-serialize). Then re-run verify-all-decks.mjs to confirm clean."
+  },
+  {
+    "id": "issue-1744339200001-04-002",
+    "track": "04-combat-core",
+    "tester": "quiz-quality",
+    "category": "content_quality",
+    "severity": "high",
+    "title": "4 facts have 'undefined' string literal in distractors field",
+    "description": "SQL scan confirms 4 facts with 'undefined' string literal in their distractors field. These would render as the text 'undefined' as an answer choice in the quiz UI. This is a distractor generation bug (likely a variable that failed to resolve during generation).",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 0,
+      "questionId": "4 facts — categories unknown without full scan",
+      "metric": "SELECT COUNT(*) FROM facts WHERE distractors LIKE '%undefined%' → 4"
+    },
+    "reproductionSteps": [
+      "Run: SELECT id, category, quiz_question, distractors FROM facts WHERE distractors LIKE '%undefined%'"
+    ],
+    "suggestedFix": "Identify the 4 affected facts, regenerate their distractors, or remove those facts from the active pool (set status='draft') until fixed."
+  },
+  {
+    "id": "issue-1744339200002-04-003",
+    "track": "04-combat-core",
+    "tester": "quiz-quality",
+    "category": "content_quality",
+    "severity": "medium",
+    "title": "Grammatically malformed question detected in sample: 'How many different is Azerbaijani written in'",
+    "description": "During random sampling of 10 facts from the general_knowledge category, one question had malformed grammar: 'How many different is Azerbaijani written in across different countries?' The intended question is likely 'How many different scripts is Azerbaijani written in across different countries?' The verb order is incorrect. Cannot enumerate all malformed questions via DB scan alone; spotted rate of 1/10 in the sample. With 53,269 facts, this could affect hundreds of questions.",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 0,
+      "questionId": "general_knowledge/languages category, Azerbaijani",
+      "metric": "1/10 random sample showed grammatical error"
+    },
+    "reproductionSteps": [
+      "Run: SELECT quiz_question FROM facts WHERE quiz_question LIKE '%Azerbaijani%'"
+    ],
+    "suggestedFix": "Run a grammar-check pass on all questions under 60 characters (shorter questions are higher-risk for truncation/mangling). Prioritize questions that start with 'How many' or 'What' constructions."
+  },
+  {
+    "id": "issue-1744339200003-04-004",
+    "track": "04-combat-core",
+    "tester": "balance-curve",
+    "category": "balance_damage_spike",
+    "severity": "high",
+    "title": "Floor 18 damage spike: 14x jump from floor 16 (avg 2 dmg) to floor 18 (avg 28 dmg) — 24.4% death rate",
+    "description": "Analysis of 28,000 headless sim runs shows a sharp, discontinuous difficulty spike at floor 18 (The Final Lesson, The Omnibus). Floor 16 avg damage taken: 2. Floor 18 avg damage taken: 28. That is a 14x increase in a single floor transition. Death rate at floor 18 is 24.4% (compared to 0% at floors 13-16).\n\nFloor 18 enemy details:\n- The Omnibus: 11,008 fights, 64.3% win rate, avg 49 dmg taken — deadliest enemy in game\n- The Final Lesson: 10,896 fights, 66.1% win rate, avg 45 dmg taken\n\nIn 200 experienced-profile runs, 368/1963 floor-18 encounters (18.8%) took more than 50 damage (>50% of PLAYER_HP_START). This exceeds the balance_damage_spike threshold.\n\nFor new players and language learners, 379/1000 and 380/1000 deaths respectively occur at floor 18 — by far the most common death floor (vs floor 6 which accounts for 122 and 156 deaths respectively).",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 18,
+      "questionId": "",
+      "metric": "Floor 18 avg dmg taken: 28 | Death rate: 24.4% | Enemies: The Omnibus (35.7% loss rate), The Final Lesson (33.9% loss rate) | Big hits (>50 dmg): 18.8% of encounters"
+    },
+    "reproductionSteps": [
+      "Run: npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200",
+      "Check data/playtests/runs/latest/analytics/enemy-analysis.md for The Omnibus and The Final Lesson stats"
+    ],
+    "suggestedFix": "Option A: Reduce floor 18 enemy HP by 15-20% to soften the spike while keeping them as the definitive challenge. Option B: Add a 'warning' floor at floor 17 with a mid-difficulty enemy (currently floor 17 is missing from the data — may be a rest room or segment checkpoint). Option C: Add a floor 17 combat with moderate damage (10-15 avg) to bridge the gap from floor 16's 2 avg dmg."
+  },
+  {
+    "id": "issue-1744339200004-04-005",
+    "track": "04-combat-core",
+    "tester": "balance-curve",
+    "category": "balance_damage_spike",
+    "severity": "medium",
+    "title": "Floors 7-16 too safe: avg 1-4 dmg taken allows HP recovery, removing mid-game tension",
+    "description": "Floor-by-floor analysis shows that after a moderate floor 6 encounter (9 avg dmg, 18.3 turns), floors 7-16 become very safe (1-4 avg dmg taken, 0% death rate). This creates a bimodal difficulty curve: challenging at floors 1-6, then a long plateau from 7-16, then a wall at floor 18.\n\nConsequence: experienced players enter floor 18 at avg 105 HP (above starting 100 HP) — they have fully healed during the mid-game. The wall at floor 18 is experienced from near-full health, making it feel unfair rather than climactic.\n\nSim data: experienced profile floors 7-16 show avg HP entering those floors rising from 85 to 105. Players are net-positive-HP through mid-game.",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 7,
+      "questionId": "",
+      "metric": "Floor 7: 1 avg dmg taken, 0% death rate, 85 avg HP before. Floor 16: 2 avg dmg taken, 0% death, 103 avg HP before. 10 consecutive floors of zero tension."
+    },
+    "reproductionSteps": [
+      "Run experienced profile sim for 200 runs",
+      "Analyze floor-by-floor encounter data from JSON output",
+      "Compare damageTaken values floors 7-16"
+    ],
+    "suggestedFix": "Review segment 2 (floors 7-12) and segment 3 (floors 13-18) enemy damage scaling. Current ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT has segment 2 at 0.18 and segment 3 at 0.60 — the HP increase is there but the damage output may not be scaling with it. Consider increasing enemy damage for segments 2-3 to prevent HP recovery. Alternatively, reduce rest room heal effectiveness in mid-game."
+  },
+  {
+    "id": "issue-1744339200005-04-006",
+    "track": "04-combat-core",
+    "tester": "balance-curve",
+    "category": "balance_damage_spike",
+    "severity": "high",
+    "title": "experienced@asc0 win rate 95% exceeds recommended ceiling — game too easy for semi-experienced players at base difficulty",
+    "description": "The 'experienced' profile (approximate: ~70% charge rate, 80% accuracy, balanced archetype) achieves a 95% win rate at Ascension 0. The floor progression shows 0% death rate through floor 16 and only 4% at floor 18. Average final HP is 91/100 for survivors.\n\nFor context: this profile represents a player who has played 5-10 hours and understands basic charge/chain mechanics but is not optimizing. A 95% win rate at base difficulty means this player feels no challenge until the final boss.\n\nThe Canary adaptive system (CANARY_RUN_STRONG_CHALLENGE_DMG_MULT = 1.20 at 85% accuracy) is supposed to provide challenge for high-accuracy players, but the 95% win rate persists even with these multipliers active.",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 0,
+      "questionId": "",
+      "metric": "experienced@asc0: 1890/2000 runs survived (94.5%), avg 17.8 floors reached, 0% death rate floors 1-16"
+    },
+    "reproductionSteps": [
+      "Run: npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --profile experienced --runs 1000",
+      "Observe survival rate in output"
+    ],
+    "suggestedFix": "Consider increasing default Ascension-0 challenge for the experienced archetype, or use the Canary challenge mode more aggressively when 5+ consecutive correct answers are seen early in a run. The CANARY_CHALLENGE_ENEMY_HP_MULT_5 (1.20 at 5-correct streak) may not be triggering frequently enough. Alternatively, the goal may be intentional (new players should win; Ascension exists for challenge) — in which case this should be documented and the threshold for 'experienced-level' Asc recommendation should be lowered."
+  },
+  {
+    "id": "issue-1744339200006-04-007",
+    "track": "04-combat-core",
+    "tester": "fun-engagement",
+    "category": "ux_no_meaningful_choice",
+    "severity": "medium",
+    "title": "Quick Play vs Charge decision degenerated: 82% charge rate shows experienced players near-always charge",
+    "description": "From 200 experienced-profile sim runs: 82% of all card plays are charge plays, 18% quick plays. Avg damage per charge: 9.2. Avg damage per quick play: 3.0 — a 3.1x ratio.\n\nThe Quick vs Charge decision was designed as the core player expression mechanism ('do you know this fact?'). In practice, high-accuracy players (76-80% charge accuracy) find charging almost always dominant because:\n1. Charge Correct multiplier (1.5x base) + chain multipliers (up to 3.5x) + mastery bonuses = far exceed quick play output\n2. AP surcharge (CHARGE_AP_SURCHARGE = 1) means charging costs 1 extra AP — but with 3 AP, a player can charge twice and quick-play once, making the choice mathematical not meaningful\n3. The only time Quick Play is correct is when the player genuinely doesn't know the answer — but the game doesn't distinguish between 'strategic quick play' and 'don't know quick play'\n\nFor a new player, this might not be an issue (forced to quick play more). For a 10+ hour veteran, the decision has collapsed.",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 0,
+      "questionId": "",
+      "metric": "200 experienced runs: totalQuickPlays=16614 (18%), totalChargedPlays=75757 (82%), dmg/QP=3.0, dmg/CC=9.2, ratio=3.1x"
+    },
+    "reproductionSteps": [
+      "Check experienced profile data: data/playtests/runs/2026-04-11_01-25-56/experienced.json",
+      "Aggregate totalQuickPlays vs totalChargedPlays across all runs"
+    ],
+    "suggestedFix": "Several options: (A) Make Quick Play contribute to chain multiplier building (rewarding quick-play-heavy styles). (B) Add a Quick Play momentum system: 3 consecutive quick plays in a turn grants +1 AP. (C) Increase AP surcharge for charge plays (currently 1) to 2 for high-mastery cards, forcing some quick plays. (D) Design intent review: if charge is always dominant by design (the educational goal), this is not a bug — but it should be documented as such."
+  },
+  {
+    "id": "issue-1744339200007-04-008",
+    "track": "04-combat-core",
+    "tester": "fun-engagement",
+    "category": "ux_no_meaningful_choice",
+    "severity": "medium",
+    "title": "Trivia Dungeon setup screen overwhelms first-time players with 375 DOM elements and no guidance",
+    "description": "The Trivia Dungeon entry screen (confirmed via layout dump from live session) presents: 11 domain toggle cards, 375 total DOM elements including subcategory chips for all domains simultaneously, and a 'Start Run ▶' button at coordinates (1727, 1008) — bottom-right corner, below the primary viewport for most content.\n\nA first-time player who clicks 'Start Run' on the deck selection hub is immediately confronted with this screen. There is no 'Recommended Starter' option, no tooltip explaining what domain selection means for gameplay, and no visual hierarchy guiding them to the start button.\n\nThe domain selection screen shows 12,871 facts across 11 domains. For reference, the DECKBUILDER.md spec notes that new players benefit from focused domain selection — but nothing in the UI communicates this.\n\nFrom the layout dump: the start button is visible as '.footer-start-btn.enabled' with text 'Start Run ▶' but is at (1727, 1008) — far right edge of a 1920-wide screen, requiring the player to know to scroll or look for it.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/deck-selection-hub.png",
+      "floor": 0,
+      "questionId": "",
+      "metric": "Layout dump: 375 DOM elements on trivia-dungeon-screen, Start button at (1727, 1008)"
+    },
+    "reproductionSteps": [
+      "Navigate to Trivia Dungeon from deck selection hub",
+      "Observe the density of domain cards, subcategory chips, and loadout cards",
+      "Note that 'Start Run' button is at far-right edge"
+    ],
+    "suggestedFix": "Add a 'Quick Start' button above the domain cards that starts with the default All-Domains loadout, bypassing customization. Add a short tooltip or first-run hint explaining domain selection. Move or increase prominence of the Start Run button — it should be the most visually dominant element on the screen for a first-time user."
+  },
+  {
+    "id": "issue-1744339200008-04-009",
+    "track": "04-combat-core",
+    "tester": "fun-engagement",
+    "category": "visual_glitch",
+    "severity": "low",
+    "title": "Loading bar visible during combat entry creates mid-combat visual noise",
+    "description": "In the combat-basic-enc1.jpg screenshot, a 'Loading...' progress bar is visible in the center of the combat scene (below the enemy sprite area, above the card hand). This occurs during the transition into the combat state. While likely brief in real gameplay, it creates a gap in the cinematic quality of combat entry — the most high-stakes moment in the game.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/combat-basic-enc1.jpg",
+      "floor": 1,
+      "questionId": "",
+      "metric": "Loading bar visible at approximately (428, 255) in the 1920x1080 combat scene"
+    },
+    "reproductionSteps": [
+      "Load combat-basic scenario",
+      "Capture screenshot immediately at 6 seconds after scenario load",
+      "Loading bar is visible during the transition state"
+    ],
+    "suggestedFix": "Verify this loading bar is only visible during the asset-loading phase and disappears before the player can interact. If it persists beyond 1 second of combat entry, investigate the asset preloading strategy for combat scenes. Consider masking with a fade-in animation rather than an exposed loading bar."
+  }
+]

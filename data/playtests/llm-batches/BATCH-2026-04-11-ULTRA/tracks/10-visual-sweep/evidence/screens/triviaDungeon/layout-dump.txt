@@ -1,0 +1,405 @@
+LAYOUT DUMP  2026-04-11T02:10:19.088Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.trivia-dungeon-screen.svelte-1sjr81q]                     (0, 0)  1920x1080       HIDDEN
+      [button.back-btn.svelte-1sjr81q]                             (30, 21)  91x48         "← Back"
+      [button.domain-card.svelte-5djy83.selected]                  (30, 109)  210x144    
+        [span.icon.svelte-5djy83]                                  (113, 151)  44x35       "🌐"
+        [span.name.svelte-5djy83]                                  (117, 195)  35x17       "All"
+        [span.color-bar.svelte-5djy83]                             (31, 248)  208x5      
+      [button.domain-card.svelte-5djy83.selected]                  (252, 109)  210x144   
+        [span.name.svelte-5djy83]                                  (322, 198)  69x17       "General"
+        [span.color-bar.svelte-5djy83]                             (253, 248)  208x5     
+      [button.domain-card.svelte-5djy83.selected]                  (474, 109)  210x144   
+        [span.name.svelte-5djy83]                                  (545, 198)  68x17       "Science"
+        [span.color-bar.svelte-5djy83]                             (475, 248)  208x5     
+      [button.domain-card.svelte-5djy83.selected]                  (696, 109)  210x144   
+        [span.name.svelte-5djy83]                                  (773, 198)  56x17       "Space"
+        [span.color-bar.svelte-5djy83]                             (697, 248)  208x5     
+      [button.domain-card.svelte-5djy83.selected]                  (918, 109)  210x144   
+        [span.name.svelte-5djy83]                                  (951, 198)  144x17      "General Geography"
+        [span.color-bar.svelte-5djy83]                             (919, 248)  208x5     
+      [button.domain-card.svelte-5djy83.selected]                  (1140, 109)  210x144  
+        [span.name.svelte-5djy83]                                  (1211, 198)  67x17      "History"
+        [span.color-bar.svelte-5djy83]                             (1141, 248)  208x5    
+      [button.domain-card.svelte-5djy83.selected]                  (1362, 109)  210x144  
+        [span.name.svelte-5djy83]                                  (1441, 198)  52x17      "Myth"
+        [span.color-bar.svelte-5djy83]                             (1363, 248)  208x5    
+      [button.domain-card.svelte-5djy83.selected]                  (1584, 109)  210x144  
+        [span.name.svelte-5djy83]                                  (1654, 198)  70x17      "Animals"
+        [span.color-bar.svelte-5djy83]                             (1585, 248)  208x5    
+      [button.domain-card.svelte-5djy83.selected]                  (1806, 109)  210x144  
+        [span.name.svelte-5djy83]                                  (1880, 198)  61x17      "Health"
+        [span.color-bar.svelte-5djy83]                             (1807, 248)  208x5    
+      [button.domain-card.svelte-5djy83.selected]                  (2028, 109)  210x144  
+        [span.name.svelte-5djy83]                                  (2099, 198)  67x17      "Cuisine"
+        [span.color-bar.svelte-5djy83]                             (2029, 248)  208x5    
+      [button.domain-card.svelte-5djy83.selected]                  (2250, 109)  210x144  
+        [span.name.svelte-5djy83]                                  (2336, 198)  39x17      "Art"
+        [span.color-bar.svelte-5djy83]                             (2251, 248)  208x5    
+      [button.domain-card.svelte-5djy83.selected]                  (2472, 109)  210x144  
+        [span.name.svelte-5djy83]                                  (2537, 198)  80x17      "Social Sci"
+        [span.color-bar.svelte-5djy83]                             (2473, 248)  208x5    
+      [button.domain-card.svelte-5djy83.locked]                    (2694, 109)  210x144  
+        [span.lock-overlay.svelte-5djy83]                          (2788, 160)  22x18      "🔒"
+        [span.name.svelte-5djy83]                                  (2769, 198)  61x17      "Sports"
+      [div.loadout-card.svelte-myr6b1]                             (24, 296)  607x493    
+        [div.card-header.svelte-myr6b1]                            (25, 297)  605x79     
+          [span.domain-icon.svelte-myr6b1]                         (46, 325)  28x23        "🧠"
+          [span.domain-name.svelte-myr6b1]                         (86, 326)  151x20       "General Knowledge"
+          [span.fact-count.svelte-myr6b1]                          (488, 327)  61x18       "1744 facts"
+          [button.expand-toggle.svelte-myr6b1]                     (561, 312)  48x48       "▾"
+        [button.chip.svelte-13qtn53.selected]                      (43, 394)  142x48       "Philosophy"
+          [span.count.svelte-13qtn53]                              (145, 412)  20x13       "252"
+        [button.chip.svelte-13qtn53.selected]                      (194, 394)  294x48      "Computer Science & Technology"
+          [span.count.svelte-13qtn53]                              (448, 412)  21x13       "236"
+        [button.chip.svelte-13qtn53.selected]                      (43, 451)  239x48       "Inventions & Technology"
+          [span.count.svelte-13qtn53]                              (242, 469)  21x13       "233"
+        [button.chip.svelte-13qtn53.selected]                      (291, 451)  197x48      "Words & Language"
+          [span.count.svelte-13qtn53]                              (447, 469)  21x13       "230"
+        [button.chip.svelte-13qtn53.selected]                      (43, 508)  147x48       "Pop Culture"
+          [span.count.svelte-13qtn53]                              (152, 526)  19x13       "168"
+        [button.chip.svelte-13qtn53.selected]                      (199, 508)  177x48      "Records & Firsts"
+          [span.count.svelte-13qtn53]                              (339, 526)  18x13       "125"
+        [button.chip.svelte-13qtn53.selected]                      (385, 508)  181x48      "Everyday Science"
+          [span.count.svelte-13qtn53]                              (533, 526)  14x13       "94"
+        [button.chip.svelte-13qtn53.selected]                      (43, 565)  161x48       "AP Psychology"
+          [span.count.svelte-13qtn53]                              (170, 583)  14x13       "86"
+        [button.chip.svelte-13qtn53.selected]                      (213, 565)  276x48      "Famous Inventions & Inventors"
+          [span.count.svelte-13qtn53]                              (455, 583)  14x13       "69"
+        [button.chip.svelte-13qtn53.selected]                      (43, 622)  169x48       "FIFA World Cup"
+          [span.count.svelte-13qtn53]                              (178, 640)  14x13       "69"
+        [button.chip.svelte-13qtn53.selected]                      (221, 622)  210x48      "Oddities & Curiosities"
+          [span.count.svelte-13qtn53]                              (400, 640)  12x13       "61"
+        [button.chip.svelte-13qtn53.selected]                      (440, 622)  171x48      "Political Science"
+          [span.count.svelte-13qtn53]                              (580, 640)  12x13       "51"
+        [button.chip.svelte-13qtn53.selected]                      (43, 679)  126x48       "Sociology"
+          [span.count.svelte-13qtn53]                              (136, 697)  14x13       "49"
+        [button.chip.svelte-13qtn53.selected]                      (178, 679)  197x48      "AP Macroeconomics"
+          [span.count.svelte-13qtn53]                              (346, 697)  9x13        "11"
+        [button.chip.svelte-13qtn53.selected]                      (384, 679)  197x48      "AP Microeconomics"
+          [span.count.svelte-13qtn53]                              (549, 697)  13x13       "10"
+        [div.card-footer.svelte-myr6b1]                            (25, 745)  605x43       "15 subcategories · all included"
+      [div.loadout-card.svelte-myr6b1]                             (652, 296)  607x493   
+        [div.card-header.svelte-myr6b1]                            (653, 297)  605x79    
+          [span.domain-icon.svelte-myr6b1]                         (674, 325)  28x23       "🧪"
+          [span.domain-name.svelte-myr6b1]                         (714, 326)  131x20      "Natural Sciences"
+          [span.fact-count.svelte-myr6b1]                          (1117, 327)  59x18      "1817 facts"
+          [button.expand-toggle.svelte-myr6b1]                     (1188, 312)  48x48      "▾"
+        [button.chip.svelte-13qtn53.selected]                      (671, 394)  140x48      "AP Biology"
+          [span.count.svelte-13qtn53]                              (771, 412)  21x13       "464"
+        [button.chip.svelte-13qtn53.selected]                      (819, 394)  222x48      "Chemistry & Elements"
+          [span.count.svelte-13qtn53]                              (1002, 412)  21x13      "354"
+        [button.chip.svelte-13qtn53.selected]                      (671, 451)  210x48      "Physics & Mechanics"
+          [span.count.svelte-13qtn53]                              (842, 469)  20x13       "242"
+        [button.chip.svelte-13qtn53.selected]                      (890, 451)  259x48      "AP Physics 1: Algebra-Based"
+          [span.count.svelte-13qtn53]                              (1109, 469)  21x13      "236"
+        [button.chip.svelte-13qtn53.selected]                      (671, 508)  175x48      "Geology & Earth"
+          [span.count.svelte-13qtn53]                              (811, 526)  16x13       "121"
+        [button.chip.svelte-13qtn53.selected]                      (855, 508)  157x48      "AP Chemistry"
+          [span.count.svelte-13qtn53]                              (976, 526)  16x13       "114"
+        [button.chip.svelte-13qtn53.selected]                      (671, 565)  245x48      "Periodic Table Of Elements"
+          [span.count.svelte-13qtn53]                              (886, 583)  11x13       "71"
+        [button.chip.svelte-13qtn53.selected]                      (925, 565)  204x48      "Biology & Organisms"
+          [span.count.svelte-13qtn53]                              (1096, 583)  14x13      "48"
+        [button.chip.svelte-13qtn53.selected]                      (671, 622)  169x48      "Plants & Botany"
+          [span.count.svelte-13qtn53]                              (806, 640)  14x13       "48"
+        [button.chip.svelte-13qtn53.selected]                      (848, 622)  228x48      "Materials & Engineering"
+          [span.count.svelte-13qtn53]                              (1043, 640)  14x13      "44"
+        [button.chip.svelte-13qtn53.selected]                      (671, 679)  224x48      "Ecology & Environment"
+          [span.count.svelte-13qtn53]                              (861, 697)  14x13       "39"
+        [button.chip.svelte-13qtn53.selected]                      (903, 679)  239x48      "Dinosaurs & Paleontology"
+          [span.count.svelte-13qtn53]                              (1109, 697)  14x13      "36"
+        [div.card-footer.svelte-myr6b1]                            (653, 745)  605x43      "12 subcategories · all included"
+      [div.loadout-card.svelte-myr6b1]                             (1279, 296)  607x493  
+        [div.card-header.svelte-myr6b1]                            (1280, 297)  605x79   
+          [span.domain-icon.svelte-myr6b1]                         (1301, 325)  28x23      "🌌"
+          [span.domain-name.svelte-myr6b1]                         (1341, 326)  150x20     "Space & Astronomy"
+          [span.fact-count.svelte-myr6b1]                          (1744, 327)  60x18      "300 facts"
+          [button.expand-toggle.svelte-myr6b1]                     (1816, 312)  48x48      "▾"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 394)  159x48     "Constellations"
+          [span.count.svelte-13qtn53]                              (1424, 412)  14x13      "63"
+        [button.chip.svelte-13qtn53.selected]                      (1467, 394)  164x48     "NASA Missions"
+          [span.count.svelte-13qtn53]                              (1597, 412)  15x13      "60"
+        [button.chip.svelte-13qtn53.selected]                      (1640, 394)  174x48     "Planets & Moons"
+          [span.count.svelte-13qtn53]                              (1782, 412)  13x13      "37"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 451)  171x48     "Stars & Galaxies"
+          [span.count.svelte-13qtn53]                              (1436, 469)  14x13      "34"
+        [button.chip.svelte-13qtn53.selected]                      (1478, 451)  149x48     "Solar System"
+          [span.count.svelte-13qtn53]                              (1595, 469)  14x13      "28"
+        [button.chip.svelte-13qtn53.selected]                      (1636, 451)  216x48     "Cosmology & Universe"
+          [span.count.svelte-13qtn53]                              (1820, 469)  14x13      "25"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 508)  241x48     "Exoplanets & Astrobiology"
+          [span.count.svelte-13qtn53]                              (1508, 526)  12x13      "16"
+        [button.chip.svelte-13qtn53.selected]                      (1548, 508)  218x48     "Satellites & Space Tech"
+          [span.count.svelte-13qtn53]                              (1735, 526)  12x13      "15"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 565)  171x48     "NASA Astronauts"
+          [span.count.svelte-13qtn53]                              (1443, 583)  7x13       "8"
+        [button.chip.svelte-13qtn53.selected]                      (1478, 565)  173x48     "Space Telescopes"
+          [span.count.svelte-13qtn53]                              (1626, 583)  7x13       "8"
+        [button.chip.svelte-13qtn53.selected]                      (1661, 565)  171x48     "Crewed Missions"
+          [span.count.svelte-13qtn53]                              (1806, 583)  7x13       "5"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 622)  204x48     "Missions & Spacecraft"
+          [span.count.svelte-13qtn53]                              (1478, 640)  5x13       "1"
+        [div.card-footer.svelte-myr6b1]                            (1280, 688)  605x43     "12 subcategories · all included"
+      [div.loadout-card.svelte-myr6b1]                             (24, 810)  607x493    
+        [div.card-header.svelte-myr6b1]                            (25, 811)  605x79     
+          [span.domain-icon.svelte-myr6b1]                         (46, 839)  28x23        "🗺️"
+          [span.domain-name.svelte-myr6b1]                         (86, 840)  150x20       "General Geography"
+          [span.fact-count.svelte-myr6b1]                          (487, 841)  62x18       "1763 facts"
+          [button.expand-toggle.svelte-myr6b1]                     (561, 826)  48x48       "▾"
+        [button.chip.svelte-13qtn53.selected]                      (43, 908)  167x48       "Asia & Oceania"
+          [span.count.svelte-13qtn53]                              (172, 926)  19x13       "410"
+        [button.chip.svelte-13qtn53.selected]                      (219, 908)  115x48      "Europe"
+          [span.count.svelte-13qtn53]                              (295, 926)  20x13       "324"
+        [button.chip.svelte-13qtn53.selected]                      (343, 908)  220x48      "AP Human Geography"
+          [span.count.svelte-13qtn53]                              (523, 926)  21x13       "289"
+        [button.chip.svelte-13qtn53.selected]                      (43, 965)  178x48       "World Countries"
+          [span.count.svelte-13qtn53]                              (184, 983)  18x13       "167"
+        [button.chip.svelte-13qtn53.selected]                      (230, 965)  128x48      "Americas"
+          [span.count.svelte-13qtn53]                              (320, 983)  19x13       "133"
+        [button.chip.svelte-13qtn53.selected]                      (43, 1022)  269x48      "World Wonders & Landmarks"
+          [span.count.svelte-13qtn53]                              (274, 1040)  19x13      "129"
+        [button.chip.svelte-13qtn53.selected]                      (321, 1022)  200x48     "Records & Extremes"
+          [span.count.svelte-13qtn53]                              (488, 1040)  14x13      "94"
+        [button.chip.svelte-13qtn53.selected]                      (43, 1079)  195x48      "Landforms & Water"
+          [span.count.svelte-13qtn53]                              (205, 1097)  14x13      "68"
+        [button.chip.svelte-13qtn53.selected]                      (247, 1079)  182x48     "Climate & Biomes"
+          [span.count.svelte-13qtn53]                              (396, 1097)  14x13      "54"
+        [button.chip.svelte-13qtn53.selected]                      (438, 1079)  97x48      "Africa"
+          [span.count.svelte-13qtn53]                              (505, 1097)  12x13      "51"
+        [button.chip.svelte-13qtn53.selected]                      (43, 1136)  125x48      "US States"
+          [span.count.svelte-13qtn53]                              (135, 1154)  14x13      "44"
+        [div.card-footer.svelte-myr6b1]                            (25, 1202)  605x43      "11 subcategories · all included"
+      [div.loadout-card.svelte-myr6b1]                             (652, 810)  607x493   
+        [div.card-header.svelte-myr6b1]                            (653, 811)  605x79    
+          [span.domain-icon.svelte-myr6b1]                         (674, 839)  28x23       "🏺"
+          [span.domain-name.svelte-myr6b1]                         (714, 840)  59x20       "History"
+          [span.fact-count.svelte-myr6b1]                          (1115, 841)  62x18      "2617 facts"
+          [button.expand-toggle.svelte-myr6b1]                     (1188, 826)  48x48      "▾"
+        [button.chip.svelte-13qtn53.selected]                      (671, 908)  169x48      "AP U.S. History"
+          [span.count.svelte-13qtn53]                              (802, 926)  19x13       "481"
+        [button.chip.svelte-13qtn53.selected]                      (849, 908)  212x48      "AP European History"
+          [span.count.svelte-13qtn53]                              (1021, 926)  21x13      "394"
+        [button.chip.svelte-13qtn53.selected]                      (1070, 908)  153x48     "World War II"
+          [span.count.svelte-13qtn53]                              (1185, 926)  19x13      "381"
+        [button.chip.svelte-13qtn53.selected]                      (671, 965)  238x48      "Modern & Contemporary"
+          [span.count.svelte-13qtn53]                              (872, 983)  17x13       "175"
+        [button.chip.svelte-13qtn53.selected]                      (918, 965)  161x48      "Ancient Rome"
+          [span.count.svelte-13qtn53]                              (1041, 983)  19x13      "169"
+        [button.chip.svelte-13qtn53.selected]                      (671, 1022)  184x48     "People & Leaders"
+          [span.count.svelte-13qtn53]                              (817, 1040)  19x13      "165"
+        [button.chip.svelte-13qtn53.selected]                      (863, 1022)  171x48     "Ancient Greece"
+          [span.count.svelte-13qtn53]                              (997, 1040)  18x13      "145"
+        [button.chip.svelte-13qtn53.selected]                      (1043, 1022)  123x48    "Medieval"
+          [span.count.svelte-13qtn53]                              (1131, 1040)  16x13     "141"
+        [button.chip.svelte-13qtn53.selected]                      (671, 1079)  156x48     "Early Modern"
+          [span.count.svelte-13qtn53]                              (791, 1097)  17x13      "118"
+        [button.chip.svelte-13qtn53.selected]                      (836, 1079)  190x48     "Ancient & Classical"
+          [span.count.svelte-13qtn53]                              (994, 1097)  13x13      "97"
+        [button.chip.svelte-13qtn53.selected]                      (1035, 1079)  175x48    "Social & Cultural"
+          [span.count.svelte-13qtn53]                              (1177, 1097)  14x13     "83"
+        [button.chip.svelte-13qtn53.selected]                      (671, 1136)  245x48     "AP World History: Modern"
+          [span.count.svelte-13qtn53]                              (881, 1154)  15x13      "80"
+        [button.chip.svelte-13qtn53.selected]                      (924, 1136)  181x48     "Battles & Military"
+          [span.count.svelte-13qtn53]                              (1072, 1154)  14x13     "65"
+        [button.chip.svelte-13qtn53.selected]                      (671, 1193)  168x48     "Medieval World"
+          [span.count.svelte-13qtn53]                              (806, 1211)  14x13      "54"
+        [button.chip.svelte-13qtn53.selected]                      (847, 1193)  156x48     "US Presidents"
+          [span.count.svelte-13qtn53]                              (971, 1211)  14x13      "48"
+        [button.chip.svelte-13qtn53.selected]                      (1013, 1193)  138x48    "World Wars"
+          [span.count.svelte-13qtn53]                              (1120, 1211)  11x13     "21"
+        [div.card-footer.svelte-myr6b1]                            (653, 1259)  605x43     "16 subcategories · all included"
+      [div.loadout-card.svelte-myr6b1]                             (1279, 810)  607x493  
+        [div.card-header.svelte-myr6b1]                            (1280, 811)  605x79   
+          [span.domain-icon.svelte-myr6b1]                         (1301, 839)  28x23      "🐉"
+          [span.domain-name.svelte-myr6b1]                         (1341, 840)  165x20     "Mythology & Folklore"
+          [span.fact-count.svelte-myr6b1]                          (1749, 841)  55x18      "912 facts"
+          [button.expand-toggle.svelte-myr6b1]                     (1816, 826)  48x48      "▾"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 908)  176x48     "World Religions"
+          [span.count.svelte-13qtn53]                              (1435, 926)  20x13      "232"
+        [button.chip.svelte-13qtn53.selected]                      (1483, 908)  165x48     "Gods & Deities"
+          [span.count.svelte-13qtn53]                              (1612, 926)  17x13      "127"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 965)  216x48     "Creatures & Monsters"
+          [span.count.svelte-13qtn53]                              (1478, 983)  17x13      "110"
+        [button.chip.svelte-13qtn53.selected]                      (1523, 965)  183x48     "Greek Mythology"
+          [span.count.svelte-13qtn53]                              (1670, 983)  17x13      "101"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 1022)  200x48    "Egyptian Mythology"
+          [span.count.svelte-13qtn53]                              (1465, 1040)  14x13     "69"
+        [button.chip.svelte-13qtn53.selected]                      (1507, 1022)  168x48    "Greek & Roman"
+          [span.count.svelte-13qtn53]                              (1642, 1040)  14x13     "64"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 1079)  205x48    "Folk Tales & Legends"
+          [span.count.svelte-13qtn53]                              (1470, 1097)  15x13     "60"
+        [button.chip.svelte-13qtn53.selected]                      (1513, 1079)  179x48    "Norse Mythology"
+          [span.count.svelte-13qtn53]                              (1659, 1097)  14x13     "54"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 1136)  192x48    "Eastern Mythology"
+          [span.count.svelte-13qtn53]                              (1457, 1154)  15x13     "40"
+        [button.chip.svelte-13qtn53.selected]                      (1499, 1136)  215x48    "Creation & Cosmology"
+          [span.count.svelte-13qtn53]                              (1682, 1154)  14x13     "35"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 1193)  160x48    "Norse & Celtic"
+          [span.count.svelte-13qtn53]                              (1424, 1211)  15x13     "20"
+        [div.card-footer.svelte-myr6b1]                            (1280, 1259)  605x43    "11 subcategories · all included"
+      [div.loadout-card.svelte-myr6b1]                             (24, 1324)  607x550   
+        [div.card-header.svelte-myr6b1]                            (25, 1325)  605x79    
+          [span.domain-icon.svelte-myr6b1]                         (46, 1353)  28x23       "🦉"
+          [span.domain-name.svelte-myr6b1]                         (86, 1354)  144x20      "Animals & Wildlife"
+          [span.fact-count.svelte-myr6b1]                          (491, 1355)  58x18      "965 facts"
+          [button.expand-toggle.svelte-myr6b1]                     (561, 1340)  48x48      "▾"
+        [button.chip.svelte-13qtn53.selected]                      (43, 1422)  102x48      "Birds"
+          [span.count.svelte-13qtn53]                              (104, 1440)  22x13      "209"
+        [button.chip.svelte-13qtn53.selected]                      (154, 1422)  138x48     "Ocean Life"
+          [span.count.svelte-13qtn53]                              (254, 1440)  18x13      "145"
+        [button.chip.svelte-13qtn53.selected]                      (301, 1422)  220x48     "Adaptations & Records"
+          [span.count.svelte-13qtn53]                              (485, 1440)  16x13      "141"
+        [button.chip.svelte-13qtn53.selected]                      (43, 1479)  141x48      "Marine Life"
+          [span.count.svelte-13qtn53]                              (149, 1497)  16x13      "115"
+        [button.chip.svelte-13qtn53.selected]                      (193, 1479)  223x48     "Behavior & Intelligence"
+          [span.count.svelte-13qtn53]                              (381, 1497)  16x13      "113"
+        [button.chip.svelte-13qtn53.selected]                      (426, 1479)  152x48     "Conservation"
+          [span.count.svelte-13qtn53]                              (545, 1497)  14x13      "84"
+        [button.chip.svelte-13qtn53.selected]                      (43, 1536)  195x48      "Insects & Arachnids"
+          [span.count.svelte-13qtn53]                              (207, 1554)  12x13      "51"
+        [button.chip.svelte-13qtn53.selected]                      (247, 1536)  126x48     "Mammals"
+          [span.count.svelte-13qtn53]                              (340, 1554)  14x13      "46"
+        [button.chip.svelte-13qtn53.selected]                      (382, 1536)  215x48     "Reptiles & Amphibians"
+          [span.count.svelte-13qtn53]                              (564, 1554)  14x13      "34"
+        [button.chip.svelte-13qtn53.selected]                      (43, 1593)  223x48      "Mammals Of The World"
+          [span.count.svelte-13qtn53]                              (235, 1611)  13x13      "27"
+        [div.card-footer.svelte-myr6b1]                            (25, 1659)  605x43      "10 subcategories · all included"
+      [div.loadout-card.svelte-myr6b1]                             (652, 1324)  607x550  
+        [div.card-header.svelte-myr6b1]                            (653, 1325)  605x79   
+          [span.domain-icon.svelte-myr6b1]                         (674, 1353)  28x23      "🫀"
+          [span.domain-name.svelte-myr6b1]                         (714, 1354)  171x20     "Human Body & Health"
+          [span.fact-count.svelte-myr6b1]                          (1118, 1355)  59x18     "950 facts"
+          [button.expand-toggle.svelte-myr6b1]                     (1188, 1340)  48x48     "▾"
+        [button.chip.svelte-13qtn53.selected]                      (671, 1422)  218x48     "Brain & Neuroscience"
+          [span.count.svelte-13qtn53]                              (848, 1440)  22x13      "206"
+        [button.chip.svelte-13qtn53.selected]                      (898, 1422)  201x48     "Immunity & Disease"
+          [span.count.svelte-13qtn53]                              (1064, 1440)  16x13     "177"
+        [button.chip.svelte-13qtn53.selected]                      (671, 1479)  177x48     "Medical Science"
+          [span.count.svelte-13qtn53]                              (809, 1497)  19x13      "120"
+        [button.chip.svelte-13qtn53.selected]                      (856, 1479)  219x48     "Nursing Pharmacology"
+          [span.count.svelte-13qtn53]                              (1042, 1497)  14x13     "98"
+        [button.chip.svelte-13qtn53.selected]                      (671, 1536)  156x48     "Heart & Blood"
+          [span.count.svelte-13qtn53]                              (794, 1554)  14x13      "48"
+        [button.chip.svelte-13qtn53.selected]                      (836, 1536)  206x48     "Medical Terminology"
+          [span.count.svelte-13qtn53]                              (1009, 1554)  14x13     "43"
+        [button.chip.svelte-13qtn53.selected]                      (671, 1593)  189x48     "Anatomy & Organs"
+          [span.count.svelte-13qtn53]                              (827, 1611)  14x13      "34"
+        [button.chip.svelte-13qtn53.selected]                      (869, 1593)  201x48     "Senses & Perception"
+          [span.count.svelte-13qtn53]                              (1038, 1611)  14x13     "34"
+        [button.chip.svelte-13qtn53.selected]                      (671, 1650)  227x48     "Digestion & Metabolism"
+          [span.count.svelte-13qtn53]                              (864, 1668)  15x13      "30"
+        [button.chip.svelte-13qtn53.selected]                      (906, 1650)  125x48     "Histology"
+          [span.count.svelte-13qtn53]                              (999, 1668)  14x13      "25"
+        [button.chip.svelte-13qtn53.selected]                      (1040, 1650)  175x48    "Human Anatomy"
+          [span.count.svelte-13qtn53]                              (1183, 1668)  14x13     "25"
+        [button.chip.svelte-13qtn53.selected]                      (671, 1707)  206x48     "Medical Terminology"
+          [span.count.svelte-13qtn53]                              (844, 1725)  14x13      "25"
+        [button.chip.svelte-13qtn53.selected]                      (886, 1707)  171x48     "Nervous System"
+          [span.count.svelte-13qtn53]                              (1025, 1725)  14x13     "25"
+        [button.chip.svelte-13qtn53.selected]                      (671, 1764)  207x48     "Reproductive System"
+          [span.count.svelte-13qtn53]                              (845, 1782)  14x13      "25"
+        [button.chip.svelte-13qtn53.selected]                      (886, 1764)  174x48     "Human Anatomy"
+          [span.count.svelte-13qtn53]                              (1029, 1782)  12x13     "18"
+        [button.chip.svelte-13qtn53.selected]                      (1069, 1764)  167x48    "Genetics & DNA"
+          [span.count.svelte-13qtn53]                              (1206, 1782)  11x13     "17"
+        [div.card-footer.svelte-myr6b1]                            (653, 1830)  605x43     "16 subcategories · all included"
+      [div.loadout-card.svelte-myr6b1]                             (1279, 1324)  607x550 
+        [div.card-header.svelte-myr6b1]                            (1280, 1325)  605x79  
+          [span.domain-icon.svelte-myr6b1]                         (1301, 1353)  28x23     "🍜"
+          [span.domain-name.svelte-myr6b1]                         (1341, 1354)  166x20    "Food & World Cuisine"
+          [span.fact-count.svelte-myr6b1]                          (1745, 1355)  59x18     "590 facts"
+          [button.expand-toggle.svelte-myr6b1]                     (1816, 1340)  48x48     "▾"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 1422)  254x48    "Food Science & Techniques"
+          [span.count.svelte-13qtn53]                              (1515, 1440)  19x13     "166"
+        [button.chip.svelte-13qtn53.selected]                      (1562, 1422)  225x48    "Food History & Origins"
+          [span.count.svelte-13qtn53]                              (1748, 1440)  19x13     "104"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 1479)  226x48    "World Cuisines & Spices"
+          [span.count.svelte-13qtn53]                              (1493, 1497)  13x13     "75"
+        [button.chip.svelte-13qtn53.selected]                      (1534, 1479)  153x48    "Asian Cuisine"
+          [span.count.svelte-13qtn53]                              (1654, 1497)  15x13     "50"
+        [button.chip.svelte-13qtn53.selected]                      (1696, 1479)  158x48    "World Cuisine"
+          [span.count.svelte-13qtn53]                              (1821, 1497)  15x13     "50"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 1536)  242x48    "Fermentation & Beverages"
+          [span.count.svelte-13qtn53]                              (1508, 1554)  14x13     "42"
+        [button.chip.svelte-13qtn53.selected]                      (1550, 1536)  186x48    "Baking & Desserts"
+          [span.count.svelte-13qtn53]                              (1702, 1554)  15x13     "40"
+        [button.chip.svelte-13qtn53.selected]                      (1298, 1593)  182x48    "European Cuisine"
+          [span.count.svelte-13qtn53]                              (1448, 1611)  14x13     "33"
+        [button.chip.svelte-13qtn53.selected]                      (1490, 1593)  203x48    "Ingredients & Spices"
+          [span.count.svelte-13qtn53]                              (1659, 1611)  15x13     "30"
+        [div.card-footer.svelte-myr6b1]                            (1280, 1659)  605x43    "9 subcategories · all included"
+      [div.loadout-card.svelte-myr6b1]                             (24, 1895)  607x550   
+        [div.card-header.svelte-myr6b1]                            (25, 1896)  605x79    
+          [span.domain-icon.svelte-myr6b1]                         (46, 1924)  28x23       "🎨"
+          [span.domain-name.svelte-myr6b1]                         (86, 1925)  144x20      "Art & Architecture"
+          [span.fact-count.svelte-myr6b1]                          (488, 1926)  60x18      "1213 facts"
+          [button.expand-toggle.svelte-myr6b1]                     (561, 1911)  48x48      "▾"
+        [button.chip.svelte-13qtn53.selected]                      (43, 1993)  162x48      "Music History"
+          [span.count.svelte-13qtn53]                              (167, 2011)  19x13      "138"
+        [button.chip.svelte-13qtn53.selected]                      (214, 1993)  171x48     "Anime & Manga"
+          [span.count.svelte-13qtn53]                              (349, 2011)  17x13      "116"
+        [button.chip.svelte-13qtn53.selected]                      (394, 1993)  216x48     "Painting & Visual Arts"
+          [span.count.svelte-13qtn53]                              (571, 2011)  20x13      "106"
+        [button.chip.svelte-13qtn53.selected]                      (43, 2050)  267x48      "Modern & Contemporary Art"
+          [span.count.svelte-13qtn53]                              (271, 2068)  20x13      "103"
+        [button.chip.svelte-13qtn53.selected]                      (319, 2050)  253x48     "Famous Paintings & Artists"
+          [span.count.svelte-13qtn53]                              (532, 2068)  20x13      "100"
+        [button.chip.svelte-13qtn53.selected]                      (43, 2107)  130x48      "Literature"
+          [span.count.svelte-13qtn53]                              (140, 2125)  14x13      "96"
+        [button.chip.svelte-13qtn53.selected]                      (182, 2107)  254x48     "Sculpture & Decorative Arts"
+          [span.count.svelte-13qtn53]                              (403, 2125)  14x13      "95"
+        [button.chip.svelte-13qtn53.selected]                      (43, 2164)  179x48      "Movies & Cinema"
+          [span.count.svelte-13qtn53]                              (190, 2182)  13x13      "67"
+        [button.chip.svelte-13qtn53.selected]                      (231, 2164)  175x48     "World Literature"
+          [span.count.svelte-13qtn53]                              (374, 2182)  13x13      "67"
+        [button.chip.svelte-13qtn53.selected]                      (415, 2164)  184x48     "Historic Buildings"
+          [span.count.svelte-13qtn53]                              (566, 2182)  14x13      "66"
+        [button.chip.svelte-13qtn53.selected]                      (43, 2221)  197x48      "Architectural Styles"
+          [span.count.svelte-13qtn53]                              (207, 2239)  14x13      "59"
+        [button.chip.svelte-13qtn53.selected]                      (249, 2221)  195x48     "Music Performance"
+          [span.count.svelte-13qtn53]                              (412, 2239)  14x13      "58"
+        [button.chip.svelte-13qtn53.selected]                      (43, 2278)  226x48      "Museums & Institutions"
+          [span.count.svelte-13qtn53]                              (236, 2296)  14x13      "49"
+        [button.chip.svelte-13qtn53.selected]                      (278, 2278)  170x48     "Performing Arts"
+          [span.count.svelte-13qtn53]                              (417, 2296)  13x13      "47"
+        [button.chip.svelte-13qtn53.selected]                      (43, 2335)  210x48      "Engineering & Design"
+          [span.count.svelte-13qtn53]                              (220, 2353)  14x13      "46"
+        [div.card-footer.svelte-myr6b1]                            (25, 2401)  605x43      "15 subcategories · all included"
+      [div.loadout-card.svelte-myr6b1]                             (652, 1895)  607x550  
+        [div.card-header.svelte-myr6b1]                            (653, 1896)  605x54   
+          [span.domain-icon.svelte-myr6b1]                         (674, 1911)  28x23      "📊"
+          [span.domain-name.svelte-myr6b1]                         (714, 1912)  118x20     "Social Sciences"
+        [p.empty-note.svelte-myr6b1]                               (653, 1950)  605x67     "Social Sciences — all facts included (no subcatego"
+      [span.footer-text.svelte-1sjr81q]                            (30, 1027)  157x19      "11 domains · 12871 facts"
+      [button.footer-start-btn.svelte-1sjr81q.enabled]             (1727, 1008)  163x57    "Start Run ▶"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.trivia-dungeon-screen.svelte-1sjr81q]
+  TOP-LEFT           → [button.domain-card.svelte-5djy83.selected], [span.color-bar.svelte-5djy83], [button.domain-card.svelte-5djy83.selected], [span.color-bar.svelte-5djy83], [button.domain-card.svelte-5djy83.selected] (+3 more)
+  TOP-CENTER         → [button.domain-card.svelte-5djy83.selected], [span.color-bar.svelte-5djy83], [button.domain-card.svelte-5djy83.selected], [span.name.svelte-5djy83], [span.color-bar.svelte-5djy83] (+2 more)
+  TOP-RIGHT          → [button.domain-card.svelte-5djy83.selected], [span.color-bar.svelte-5djy83], [button.domain-card.svelte-5djy83.selected], [span.color-bar.svelte-5djy83], [button.domain-card.svelte-5djy83.selected] (+8 more)
+  MIDDLE-LEFT        → [div.loadout-card.svelte-myr6b1], [button.chip.svelte-13qtn53.selected], [button.chip.svelte-13qtn53.selected], [button.chip.svelte-13qtn53.selected], [button.chip.svelte-13qtn53.selected] (+5 more)
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.trivia-dungeon-screen.svelte-1sjr81q]         covers 100% height  CENTER
+  [div.loadout-card.svelte-myr6b1]                   covers 46% height  MIDDLE-LEFT
+  [div.loadout-card.svelte-myr6b1]                   covers 46% height  CENTER
+  [div.loadout-card.svelte-myr6b1]                   covers 46% height  MIDDLE-RIGHT
+  [div.loadout-card.svelte-myr6b1]                   covers 46% height  BOTTOM-LEFT
+  [div.loadout-card.svelte-myr6b1]                   covers 46% height  BOTTOM-CENTER
+  [div.loadout-card.svelte-myr6b1]                   covers 46% height  BOTTOM-RIGHT
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 375 DOM elements) —

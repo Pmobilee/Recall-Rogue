@@ -1,0 +1,36 @@
+STATE: state-03-11 | Floor 8 | Final Exam Phase 2 | Late Game Boss
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 11, no block. Phase 2. Intent: Multi-attack 4×6=24 total.
+- Player: 28/80 HP, 0 block, 3 AP. Steel Skin (-2 dmg each hit). Relics: Vitality Ring + Steel Skin.
+- Steel Skin on multi-attack: reduces each hit by 2. So 4×(6-2)=4×4=16 effective damage incoming.
+- Player at 28 HP - 16 = 12 HP after attack. Survivable but very low.
+
+OVERHEAL ANALYSIS:
+- Overheal(QP,2ap) = 5 block, doubled since player <50% HP = 10 block. Absorbs 10 of 16 = 6 HP remaining after.
+  Wait: multi-attack hits sequentially. Block absorbs hits until depleted. 10 block vs 4 hits of 4 effective dmg each:
+  - Hit 1: 10 block - 4 = 6 block remaining.
+  - Hit 2: 6 block - 4 = 2 block remaining.
+  - Hit 3: 2 block - 4 = 0, 2 dmg to HP.
+  - Hit 4: 0 block, 4 dmg to HP.
+  Total HP dmg: 2+4=6. Player: 28-6=22 HP. Much better.
+- Overheal(CC,3ap) = floor(5×1.5)=7 block, doubled=14 block. Cost 2+1=3ap. 0 AP left.
+  14 block vs 4×4 hits:
+  - H1: 10 rem. H2: 6 rem. H3: 2 rem. H4: 0, 2 dmg. Total 2 HP dmg. Player: 26 HP.
+
+OFFENSIVE OPTION: 3 AP available.
+- Reckless(CC,2ap) = floor(6×1.5)=9 dmg + 3 self. HP: 28-3=25. Enemy: 2 HP. Then Hex(QP,1ap) = 2 poison × 3 turns = 6 more dmg (but enemy has 2 HP, dies anyway next turn). But player took full 16 incoming.
+- Execute(QP,1ap) = 3 dmg. No bonus (enemy at 100% not 30%). Worthless.
+- Hex(CC,2ap) = 4 poison × 3 turns. Kills 11 HP enemy in 3 turns. But takes 16 dmg per turn.
+
+BEST PLAY: Overheal(CC,3ap) uses all AP, gives 14 block, takes only 2 dmg from 4-hit multi. Player survives at 26 HP. Enemy survives at 11 HP. Next turn: attack with 3 AP.
+OR: Overheal(QP,2ap)=10 block + Hex(QP,1ap)=2 poison. Takes 6 dmg, survives at 22 HP, enemy takes 2 poison per turn.
+
+TENSION: Purely defensive turn (save HP) vs mixed offense/defense. At 28 HP with multi-hit incoming, defense is prioritized. This is not free — you're trading turns for HP. Execute is dead (no threshold bonus). Reckless is too risky at 28 HP + 3 self-dmg + 16 incoming.
+
+DEAD CARDS: Execute (enemy not at 30% HP, no bonus applies). Hex alone without blocking = player dies.
+
+SURVIVAL ODDS: 6/10. The fight continues but player is at critically low HP range.
+
+DESIGN NOTE: Multi-attack + low player HP + Execute in hand is a classic trap. Execute's "bonus at 30% enemy HP" is irrelevant at start of boss fight. New players will waste it. The Overheal doubling at <50% HP is genuinely valuable here and rewards knowing the threshold.

@@ -1,0 +1,16 @@
+[
+  {"type": "wait", "ms": 6000},
+  {"type": "eval", "js": "window.__rrPlay?.getScreen?.() || 'unknown'"},
+  
+  {"type": "eval", "js": "(function(){try{const s=window.__rrScenario.snapshot('t5-rest-snap');window.__t5_restSnap=s;return JSON.stringify({ok:true,label:s.label,screen:s.screen})}catch(e){return JSON.stringify({ok:false,err:e.message})}})()"},
+  
+  {"type": "rrScreenshot", "name": "t5-sub5-rest-initial"},
+  
+  {"type": "eval", "js": "(function(){try{const r=window.__rrScenario.restore(window.__t5_restSnap);return JSON.stringify({ok:r?.ok,msg:r?.message})}catch(e){return JSON.stringify({ok:false,err:e.message})}})()"},
+  
+  {"type": "wait", "ms": 2000},
+  {"type": "eval", "js": "window.__rrPlay?.getScreen?.() || 'unknown'"},
+  {"type": "rrScreenshot", "name": "t5-sub5-rest-restored"},
+  
+  {"type": "eval", "js": "(function(){const snap=window.__t5_restSnap;const screen_after=window.__rrPlay?.getScreen?.();return JSON.stringify({sub5_result:screen_after===snap?.screen?'PASS':'FAIL',screen_expected:snap?.screen,screen_got:screen_after})})()"}
+]

@@ -1,0 +1,58 @@
+LAYOUT DUMP  2026-04-11T01:46:07.955Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.hub-wrapper.svelte-2meh4s]                                (0, 0)                  HIDDEN
+      [div.hub-landscape.svelte-1lu7iy2]                           (0, 0)  1920x1080       HIDDEN
+        [canvas.hub-glow-canvas.svelte-10j2h25]                    (0, 0)  1920x1080       HIDDEN
+        [canvas.hub-vignette-canvas.svelte-10j2h25]                (0, 0)  1920x1080       HIDDEN
+        [div.hub-center.svelte-1lu7iy2]                            (656, 0)  608x1080    
+          [div.hud-overlay.svelte-130istd.landscape]               (656, 0)  608x24      
+            [div.hud-pill.hud-left.svelte-130istd]                 (674, 21)  108x51     
+              [span.hud-icon.svelte-130istd]                       (699, 34)  31x25        "🔥"
+              [span.hud-value.svelte-130istd]                      (742, 35)  14x23        "0"
+            [div.hud-pill.hud-right.svelte-130istd]                (1136, 21)  109x59    
+              [img.hud-icon-img.svelte-130istd]                    (1161, 34)  33x33     
+              [span.hud-value.svelte-130istd]                      (1206, 39)  14x23       "0"
+          [button] data-testid="btn-start-run"                     (826, 119)  267x292   
+          [button.sprite-hitbox.svelte-17eswsb]                    (668, 335)  194x248   
+          [button.sprite-hitbox.svelte-17eswsb]                    (1118, 313)  97x194   
+          [button.sprite-hitbox.svelte-17eswsb]                    (1094, 810)  158x216  
+          [button.sprite-hitbox.svelte-17eswsb]                    (687, 821)  140x97    
+          [button.sprite-hitbox.svelte-17eswsb]                    (529, 659)  115x119   
+          [button.sprite-hitbox.svelte-17eswsb]                    (1203, 432)  182x216  
+          [button.sprite-hitbox.svelte-17eswsb]                    (887, 594)  146x194   
+          [button.sprite-hitbox.svelte-17eswsb]                    (984, 626)  128x119   
+          [button.sprite-hitbox.svelte-17eswsb]                    (1021, 745)  67x65    
+          [div.hub-moth.svelte-15omeeb]                            (804, 2)  5x3         
+          [div.hub-moth.svelte-15omeeb]                            (659, 25)  5x3        
+          [div.hub-moth.svelte-15omeeb]                            (588, 2)  5x3         
+          [div.hub-moth.svelte-15omeeb]                            (658, -26)  5x3       
+          [div.level-xp-bar.svelte-1lu7iy2]                        (1755, 1013)  135x9   
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.hub-landscape.svelte-1lu7iy2], [canvas.hub-glow-canvas.svelte-10j2h25], [canvas.hub-vignette-canvas.svelte-10j2h25], [div.hub-center.svelte-1lu7iy2] (+4 more)
+  TOP-CENTER         → [div.hud-overlay.svelte-130istd.landscape], [div.hud-pill.hud-left.svelte-130istd], [div.hud-pill.hud-right.svelte-130istd], [button] data-testid="btn-start-run"
+  BOTTOM-CENTER      → [button.sprite-hitbox.svelte-17eswsb], [button.sprite-hitbox.svelte-17eswsb]
+  MIDDLE-LEFT        → [button.sprite-hitbox.svelte-17eswsb]
+  MIDDLE-RIGHT       → [button.sprite-hitbox.svelte-17eswsb]
+  BOTTOM-RIGHT       → [div.level-xp-bar.svelte-1lu7iy2]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.hub-landscape.svelte-1lu7iy2]                 covers 100% height  CENTER
+  [canvas.hub-glow-canvas.svelte-10j2h25]            covers 100% height  CENTER
+  [canvas.hub-vignette-canvas.svelte-10j2h25]        covers 100% height  CENTER
+  [div.hub-center.svelte-1lu7iy2]                    covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 29 DOM elements) —

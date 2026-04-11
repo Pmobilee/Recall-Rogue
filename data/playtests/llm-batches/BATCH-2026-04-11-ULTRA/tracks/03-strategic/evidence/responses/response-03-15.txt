@@ -1,0 +1,26 @@
+STATE: state-03-15 | Floor 10 | Group Project Phase 2 (7 HP) | Late Game
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 7, no block. Poison 2 remaining (2 turns). Intent: Apply Poison 4 for 3 turns.
+- Player: 40/80 HP, 3 block, 3 AP, chain 3 (×1.3), Poison 3 for 2 turns (3 dmg/turn × 2 = 6 coming).
+- Herbal Pouch: auto-1 poison to enemy each turn. Enemy already has 2 poison.
+
+KILLING OPTION:
+- Reckless(QP,1ap) = 6×1.3=7.8→7 dmg. Self-damage 3. Enemy: 0 HP. Dead!
+- Wait: does 7 exactly = 7 HP? Yes! But floor might be involved. 6×1.3=7.8→floor=7. Exactly kills.
+- Self-damage: 3 HP. Player: 40-3=37 HP. Herbal Pouch at start of NEXT turn would have added 1 more poison, but enemy is dead so no next turn.
+
+CLEANSE ANALYSIS: Player has 3 poison (6 dmg total). Cleanse(1ap) removes all debuffs = saves 6 future dmg. Is that worth 1 AP when you can kill for 1 AP?
+
+TRIVIAL ANSWER: Reckless(QP,1ap) kills the enemy. Nothing else needed. 2 AP to spare. Then Cleanse(1ap) removes player poison. Then Thorns or another card.
+
+Actually even simpler: Reckless kills, enemy is dead, poison no longer applies after. Player just needs to kill and cleanse. This is the easiest decision in the set.
+
+DOMINANT CHOICE: Reckless(QP,1ap) → kills. Cleanse(1ap) → removes poison. 2 AP used. Done.
+
+IS THIS TRIVIAL? Yes. Enemy at 7 HP with no block is trivially killed by Reckless in 1 AP. The state design notes this as potentially "just kill it" territory. That assessment is confirmed.
+
+DEAD CARDS: All others — Hex (enemy dying), Thorns (no incoming attack this turn), second Reckless (overkill).
+
+DESIGN NOTE: This state has zero decision tension. Enemy at 7 HP with no block dies to any single attack card. The "should I cleanse first?" consideration is irrelevant because killing takes priority and Reckless kills in 1 AP. The two-Reckless design creates a clear "just play one and be done" scenario with zero genuine choice. Consider making the final phase of Group Project more threatening or higher HP to extend the interesting fight phase.

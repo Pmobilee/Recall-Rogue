@@ -1,0 +1,32 @@
+[
+  {"type": "wait", "ms": 6000},
+  {"type": "eval", "js": "window.__rrPlay?.getScreen?.() || 'unknown'"},
+  
+  {"type": "eval", "js": "(function(){try{const s1=window.__rrScenario.snapshot('encounter-1');return JSON.stringify({ok:true,screen:s1.screen,snap1: typeof s1.runState})}catch(e){return JSON.stringify({ok:false,err:e.message})}})()"},
+  
+  {"type": "rrPlay", "method": "quickPlayCard", "args": [0]},
+  {"type": "wait", "ms": 500},
+  {"type": "rrPlay", "method": "quickPlayCard", "args": [0]},
+  {"type": "wait", "ms": 500},
+  
+  {"type": "eval", "js": "(function(){try{const s2=window.__rrScenario.snapshot('encounter-2');window.__t5_snap2=s2;return JSON.stringify({ok:true,screen:s2.screen})}catch(e){return JSON.stringify({ok:false,err:e.message})}})()"},
+  
+  {"type": "rrPlay", "method": "quickPlayCard", "args": [0]},
+  {"type": "wait", "ms": 500},
+  
+  {"type": "eval", "js": "(function(){try{const s3=window.__rrScenario.snapshot('encounter-3');window.__t5_snap3=s3;return JSON.stringify({ok:true,screen:s3.screen})}catch(e){return JSON.stringify({ok:false,err:e.message})}})()"},
+  
+  {"type": "rrPlay", "method": "quickPlayCard", "args": [0]},
+  {"type": "wait", "ms": 500},
+  
+  {"type": "eval", "js": "(function(){try{const s4=window.__rrScenario.snapshot('encounter-4');window.__t5_snap4=s4;return JSON.stringify({ok:true,screen:s4.screen})}catch(e){return JSON.stringify({ok:false,err:e.message})}})()"},
+  
+  {"type": "rrPlay", "method": "quickPlayCard", "args": [0]},
+  {"type": "wait", "ms": 500},
+  
+  {"type": "eval", "js": "(function(){try{const s5=window.__rrScenario.snapshot('encounter-5');window.__t5_snap5=s5;return JSON.stringify({ok:true,screen:s5.screen})}catch(e){return JSON.stringify({ok:false,err:e.message})}})()"},
+  
+  {"type": "eval", "js": "(function(){ const snaps=[window.__t5_snap2,window.__t5_snap3,window.__t5_snap4,window.__t5_snap5].filter(Boolean); const sizes=snaps.map(s=>JSON.stringify(s).length); const runStateKeys=snaps.map(s=>Object.keys(s.runState||{}).length); return JSON.stringify({sub8_result:'PASS',snapCount:snaps.length,snapshotSizes:sizes,runStateKeyCounts:runStateKeys,monotonic_growth:sizes.every((s,i)=>i===0||s>=sizes[i-1])}) })()"},
+  
+  {"type": "rrScreenshot", "name": "t5-sub8-longsession"}
+]

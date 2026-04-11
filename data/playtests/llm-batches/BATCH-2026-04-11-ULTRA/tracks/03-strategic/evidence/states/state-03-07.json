@@ -1,0 +1,33 @@
+{
+  "stateId": "state-03-07",
+  "bucket": "mid_game",
+  "floor": 5,
+  "enemy": {
+    "id": "citation_needed",
+    "name": "The Citation Needed",
+    "currentHP": 9,
+    "maxHP": 9,
+    "block": 0,
+    "intent": { "type": "heal", "value": 5, "telegraph": "Consume remains (heals 5 HP)" },
+    "statusEffects": [],
+    "special": "onPlayerChargeWrong: steals up to 5 block from player and converts to enemy HP. Can heal from BOTH this intent AND wrong-charge steal in same turn."
+  },
+  "player": {
+    "currentHP": 48,
+    "maxHP": 80,
+    "block": 8,
+    "ap": 3,
+    "chain": 1
+  },
+  "hand": [
+    { "id": "fortify", "name": "Entrench", "type": "shield", "apCost": 2, "quickPlayValue": 6, "chargeCorrectValue": 10, "chargeWrongValue": 4, "description": "Double your current block." },
+    { "id": "pierce", "name": "Piercing", "type": "attack", "apCost": 1, "quickPlayValue": 3, "chargeCorrectValue": 9, "chargeWrongValue": 2, "description": "Ignores enemy block." },
+    { "id": "strike", "name": "Strike", "type": "attack", "apCost": 1, "quickPlayValue": 4, "chargeCorrectValue": 6, "chargeWrongValue": 2, "description": "Deal damage." },
+    { "id": "brace", "name": "Brace", "type": "shield", "apCost": 1, "quickPlayValue": 3, "chargeCorrectValue": 5, "chargeWrongValue": 2, "description": "Block equal to enemy telegraph value." },
+    { "id": "slow", "name": "Slow", "type": "debuff", "apCost": 2, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Skip enemy's next defend or buff. Charge bonus: also weaken enemy.", "chargeBonusEffect": "slow_weaken" }
+  ],
+  "relics": [
+    { "id": "iron_shield", "name": "Iron Shield", "description": "Start each turn with block = 2 + shields played last turn." }
+  ],
+  "notes": "Citation Needed is about to heal. Player has 8 block. The enemy steals block on wrong Charge and heals from it — so building MORE block via Fortify is risky. If player wrong-charges a Fortify (16 block), enemy can steal 5 of it AND then heal 5 from Consume remains = +10 HP total. Slow could cancel the heal intent if charged. Key tension: Slow is 2 AP and the charge bonus is valuable but risking wrong answer means enemy steals your block AND gains HP from heal. Is the block-steal mechanic leading to a feel-bad trap?"
+}

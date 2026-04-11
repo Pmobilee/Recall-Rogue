@@ -1,0 +1,39 @@
+{
+  "stateId": "state-03-15",
+  "bucket": "late_game",
+  "floor": 10,
+  "enemy": {
+    "id": "group_project",
+    "name": "The Group Project",
+    "currentHP": 7,
+    "maxHP": 14,
+    "block": 0,
+    "intent": { "type": "debuff", "value": 4, "telegraph": "Toxic deluge (4 stacks poison, 3 turns)" },
+    "statusEffects": [
+      { "type": "poison", "value": 2, "turnsRemaining": 2 }
+    ],
+    "phase": 2,
+    "special": "Phase 2: last member standing, hits for 11 (Desperate strike). Losing group buff."
+  },
+  "player": {
+    "currentHP": 40,
+    "maxHP": 80,
+    "block": 3,
+    "ap": 3,
+    "chain": 3,
+    "statusEffects": [
+      { "type": "poison", "value": 3, "turnsRemaining": 2 }
+    ]
+  },
+  "hand": [
+    { "id": "cleanse", "name": "Cleanse", "type": "utility", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Remove all debuffs. Draw 1 card." },
+    { "id": "reckless", "name": "Reckless", "type": "attack", "apCost": 1, "quickPlayValue": 6, "chargeCorrectValue": 18, "chargeWrongValue": 4, "description": "High damage, self-damage (3 HP)." },
+    { "id": "reckless", "name": "Reckless", "type": "attack", "apCost": 1, "quickPlayValue": 6, "chargeCorrectValue": 18, "chargeWrongValue": 4, "description": "High damage, self-damage (3 HP)." },
+    { "id": "hex", "name": "Hex", "type": "debuff", "apCost": 1, "quickPlayValue": 2, "chargeCorrectValue": 4, "chargeWrongValue": 1, "description": "Apply poison 3 for 3 turns." },
+    { "id": "thorns", "name": "Thorns", "type": "shield", "apCost": 1, "quickPlayValue": 3, "chargeCorrectValue": 9, "chargeWrongValue": 2, "description": "Gain 6 block and reflect 3 damage when hit." }
+  ],
+  "relics": [
+    { "id": "herbal_pouch", "name": "Herbal Pouch", "description": "Apply 1 Poison to all enemies each turn start. Heal 3 HP after combat." }
+  ],
+  "notes": "Group Project at 7 HP in phase 2 (last member). Already has 2 poison on it. Player has 3 poison stacks on them, chain 3 active. Enemy is ABOUT to add 4 more poison to player. Two Reckless cards could kill in 1 turn (7 HP, 2×18 charged = well more than needed). But cleanse is needed or player takes 7 poison damage over time. Is 1 Reckless + Cleanse better? Or just burst with both Reckless (6 HP self-damage, 7 HP total with existing poison) and win immediately? Potentially a 'just kill it' obvious play."
+}

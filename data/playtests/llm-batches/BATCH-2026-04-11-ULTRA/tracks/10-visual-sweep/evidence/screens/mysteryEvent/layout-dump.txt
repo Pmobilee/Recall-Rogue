@@ -1,0 +1,102 @@
+LAYOUT DUMP  2026-04-11T02:03:27.068Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (1084, 562)  121x30     depth:2  α:0.30
+  [Ellipse]                                      (903, 393)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (888, 650)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (765, 528)  54x13       depth:2  α:0.30
+  [Image]                                        (1084, 530)  173x173    depth:3  frame:__BASE  tex:gold_tier_2  rot:7°
+  [Container]                                    (903, 370)  96x124      depth:3  children:3  rot:8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_attack
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_heavy_strike
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (888, 627)  96x124      depth:3  children:3  rot:-8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_block
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Image]                                        (765, 513)  77x203      depth:3  frame:__BASE  tex:vial_large  rot:-4°
+  [Arc]                                          (1056, 522)  2x2        depth:4  α:0.06
+  [Arc]                                          (756, 484)  3x3         depth:4  α:0.48
+  [Arc]                                          (1262, 332)  3x3        depth:5  α:0.52
+  [Arc]                                          (1827, 257)  3x3        depth:5  α:0.55
+  [Arc]                                          (1739, 103)  4x4        depth:5  α:0.56
+  [Arc]                                          (440, 55)  5x5          depth:5  α:0.62
+  [Arc]                                          (523, 238)  5x5         depth:5  α:0.62
+  [Arc]                                          (1572, 186)  3x3        depth:5  α:0.60
+  [Arc]                                          (378, 193)  4x4         depth:5  α:0.60
+  [Arc]                                          (352, 388)  4x4         depth:5  α:0.64
+  [Arc]                                          (1808, 274)  5x5        depth:5  α:0.68
+  [Arc]                                          (455, 168)  6x6         depth:5  α:0.65
+  [Arc]                                          (1694, 192)  3x3        depth:5  α:0.53
+  [Arc]                                          (1386, 300)  4x4        depth:5  α:0.53
+  [Arc]                                          (1180, 240)  5x5        depth:5  α:0.56
+  [Arc]                                          (1058, 185)  4x4        depth:5  α:0.58
+  [Arc]                                          (1790, 241)  6x6        depth:5  α:0.61
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.topbar.svelte-1ramr3r]                                    (0, 0)  1920x49         HIDDEN
+      [div.hp-group.svelte-1ramr3r]                                (18, 9)  622x28       
+        [div.hp-bar-track.svelte-1ramr3r]                          (18, 9)  622x28       
+          [div.hp-bar-fill.svelte-1ramr3r]                         (19, 10)  620x26      
+          [span.hp-text.svelte-1ramr3r]                            (19, 15)  620x15      
+            [span.hp-value.svelte-1ramr3r]                         (297, 15)  64x15        "100/100"
+      [span.segment-name.svelte-1ramr3r]                           (1390, 15)  99x16       "Shallow Depths"
+      [span.progress-divider.svelte-1ramr3r]                       (1501, 17)  3x13        "·"
+      [span.floor-label.svelte-1ramr3r]                            (1516, 15)  41x16       "Floor 3"
+      [div.gold-counter.svelte-1ramr3r]                            (1581, -1)  68x48     
+        [span.gold-value.svelte-1ramr3r]                           (1612, 15)  36x15       "0"
+      [div.relics-row.svelte-1ramr3r]                              (1660, 7)  176x32     
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1660, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1696, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1732, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1768, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1804, 7)  32x32      
+      [button.pause-btn.svelte-1ramr3r]                            (1854, -1)  48x48     
+        [span.pause-icon.svelte-1ramr3r]                           (1861, 9)  33x27        "⚙"
+    [canvas]                                                       (0, 0)                  HIDDEN
+    [div.mystery-overlay.svelte-2xxiqk]                            (0, 0)  1920x1080       HIDDEN
+      [img.overlay-bg.svelte-2xxiqk]                               (0, 0)  1920x1080     
+      [div.mystery-card.svelte-2xxiqk]                             (600, 253)  720x575   
+        [h2.event-name.svelte-2xxiqk]                              (738, 291)  445x54      "The Lost Notebook"
+        [span.svelte-2xxiqk]                                       (0, 0)                  "❓"  HIDDEN
+        [p.event-desc.svelte-2xxiqk]                               (638, 509)  644x63      "A leather notebook lies open. The handwriting is f"
+        [div.hp-info.svelte-2xxiqk]                                (903, 590)  114x23      "HP: 100 / 100"
+        [div.choice-buttons.svelte-2xxiqk]                         (638, 643)  644x147   
+          [button.choice-btn.svelte-2xxiqk]                        (638, 643)  644x67      "Read it carefully (upgrade a card)"
+          [button.choice-btn.svelte-2xxiqk]                        (638, 722)  644x67      "Stuff it in your bag (gain a card)"
+    [div.parallax-transition-overlay.svelte-1lwegjf.settled]       (0, 0)  1920x1080       HIDDEN
+      [canvas.parallax-canvas.svelte-1lwegjf]                      (0, 0)  1920x1080     
+    [div.screen-transition.svelte-2meh4s.wipe-zoom]                (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Image] (+6 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+10 more)
+  TOP-CENTER         → [Arc], [Arc], [Arc], [div.topbar.svelte-1ramr3r]
+  TOP-RIGHT          → [Arc], [Arc], [Arc], [Arc], [Arc] (+2 more)
+  MIDDLE-LEFT        → [Arc]
+  BOTTOM-CENTER      → [Container] continueButton
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.mystery-overlay.svelte-2xxiqk]                covers 100% height  CENTER
+  [img.overlay-bg.svelte-2xxiqk]                     covers 100% height  CENTER
+  [div.mystery-card.svelte-2xxiqk]                   covers 53% height  CENTER
+  [div.choice-buttons.svelte-2xxiqk]                 covers 14% height  CENTER
+  [div.parallax-transition-overlay.svelte-1lwegjf.   covers 100% height  CENTER
+  [canvas.parallax-canvas.svelte-1lwegjf]            covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s.wipe-zoom]    covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (35 Phaser objects, 34 DOM elements) —

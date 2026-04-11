@@ -1,0 +1,35 @@
+{
+  "stateId": "state-03-14",
+  "bucket": "late_game",
+  "floor": 9,
+  "enemy": {
+    "id": "rabbit_hole",
+    "name": "The Rabbit Hole",
+    "currentHP": 15,
+    "maxHP": 21,
+    "block": 0,
+    "intent": { "type": "debuff", "value": 3, "telegraph": "Reality tear", "statusEffect": { "type": "vulnerable", "value": 1, "turns": 2 } },
+    "statusEffects": []
+  },
+  "player": {
+    "currentHP": 35,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 2,
+    "statusEffects": [
+      { "type": "weakness", "value": 1, "turnsRemaining": 1 }
+    ]
+  },
+  "hand": [
+    { "id": "cleanse", "name": "Cleanse", "type": "utility", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Remove all debuffs. Draw 1 card." },
+    { "id": "hex", "name": "Hex", "type": "debuff", "apCost": 1, "quickPlayValue": 2, "chargeCorrectValue": 4, "chargeWrongValue": 1, "description": "Apply poison 3 for 3 turns." },
+    { "id": "heavy_strike", "name": "Heavy Strike", "type": "attack", "apCost": 2, "quickPlayValue": 10, "chargeCorrectValue": 30, "chargeWrongValue": 7, "description": "High damage. Costs 2 AP." },
+    { "id": "adapt", "name": "Adapt", "type": "wild", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Smart: plays as Block vs ATK, Cleanse vs debuff, else Attack." },
+    { "id": "foresight", "name": "Foresight", "type": "utility", "apCost": 0, "quickPlayValue": 1, "chargeCorrectValue": 3, "chargeWrongValue": 1, "description": "Draw 2 cards. Charge bonus: also reveal next intent.", "chargeBonusEffect": "foresight_intent" }
+  ],
+  "relics": [
+    { "id": "swift_boots", "name": "Swift Boots", "description": "Draw 6 cards per turn instead of 5." }
+  ],
+  "notes": "Rabbit Hole debuffs heavily. Player already has Weakness (1 turn left). Enemy about to add Vulnerable. Cleanse removes weakness but costs 1 AP. Adapt sees player is debuffed so would auto-Cleanse. Foresight is free (0 AP). Chain 2 gives damage bonus. Is Cleanse worth 1 AP? Or let weakness expire and push damage with chain bonus? Adapt vs Cleanse — both achieve the same cleanse but Adapt also could deal damage if not debuffed. Classic 'reactive vs proactive' choice."
+}

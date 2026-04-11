@@ -1,0 +1,101 @@
+
+> recall-rogue@0.1.0 registry:stale
+> tsx scripts/registry/stale.ts
+
+Loading registry...
+═══════════════════════════════════════════════
+  INSPECTION REGISTRY — STALE ELEMENT REPORT  
+═══════════════════════════════════════════════
+
+IN PROGRESS — locked by agents (do NOT start parallel work on these):
+
+  [decks] medieval_world (Medieval World)
+    agent='fix-this-cluster' testType='lastStructuralVerify' startedAt=19h 12m ago expectedDone=2026-04-10T11:21
+
+STALE — code changed since last inspection:
+
+  [Tier 1] cards (src/data/mechanics.ts — modified 2026-04-10)
+    • Multi-Hit — last inspected 2026-03-21 (21 days stale)
+    • Heavy Strike — last inspected 2026-03-21 (21 days stale)
+    • Piercing — last inspected 2026-03-21 (21 days stale)
+    • Reckless — last inspected 2026-03-21 (21 days stale)
+    • Execute — last inspected 2026-03-21 (21 days stale)
+    ... (26 more)
+
+  [Tier 1] enemies (src/data/enemies.ts — modified 2026-04-09)
+    • Page Flutter — last inspected 2026-03-21 (21 days stale)
+    • The Grade Curve — last inspected 2026-03-21 (21 days stale)
+
+  [Tier 2] decks (data/decks/*.json — modified 2026-04-10)
+    • Ancient Greece — last inspected 2026-04-10 (1 day stale) [struct=2026-04-10 quiz=2026-04-10 playtest=not_checke bridge=2026-04-10]
+    • AP Biology — last inspected 2026-04-10 (1 day stale) [struct=2026-04-10 quiz=2026-04-10 playtest=not_checke bridge=2026-04-10]
+    • AP Physics 1: Algebra-Based — last inspected 2026-04-10 (1 day stale) [struct=2026-04-10 quiz=2026-04-10 playtest=not_checke bridge=2026-04-10]
+    • Japanese N1 Vocabulary — last inspected 2026-04-10 (1 day stale) [struct=2026-04-10 quiz=2026-04-10 playtest=not_checke bridge=not_checke]
+    • Japanese N2 Vocabulary — last inspected 2026-04-10 (1 day stale) [struct=2026-04-10 quiz=2026-04-10 playtest=not_checke bridge=not_checke]
+    ... (5 more)
+
+  [Tier 2] domains (src/data/domainMetadata.ts — modified 2026-04-09)
+    • Language — last inspected 2026-03-23 (19 days stale)
+
+  [Tier 2] screens (src/ui/stores/gameState.ts — modified 2026-04-08)
+    • relicSanctum — last inspected 2026-03-21 (21 days stale)
+    • onboarding — last inspected 2026-03-21 (21 days stale)
+    • hub — last inspected 2026-03-22 (20 days stale)
+    • combat — last inspected 2026-03-22 (20 days stale)
+    • archetypeSelection — last inspected 2026-03-22 (20 days stale)
+    ... (20 more)
+
+NEVER INSPECTED:
+
+  [Tier 1] cards: 67/98 never inspected
+    Conjure, Forge, Power Strike, Twin Strike, Iron Wave, Reinforce, Shrug It Off, Bash, Guard, Sap, ... (57 more)
+
+  [Tier 1] enemies: 87/89 never inspected
+    Thesis Construct, Mold Puff, The Crib Sheet, The Bookwyrm, The Peer Reviewer, The Final Exam, The Burning Deadline, The Algorithm, The Curriculum, The Group Project, ... (77 more)
+
+  [Tier 1] relics: 85/90 never inspected
+    Whetstone, Iron Shield, Vitality Ring, Herbal Pouch, Steel Skin, Gold Magnet, Merchant's Favor, Lucky Coin, Scavenger's Eye, Last Breath, ... (75 more)
+
+  [Tier 1] statusEffects: 11/11 never inspected
+    poison, regen, strength, weakness, vulnerable, immunity, burn, bleed, charge_damage_amp_percent, charge_damage_amp_flat, ... (1 more)
+
+  [Tier 2] screens: 12/37 never inspected
+    mainMenu, base, multiplayerLobby, multiplayerMenu, relicReward, postMiniBossRest, deckSelectionHub, triviaDungeon, studyTemple, runPreview, ... (2 more)
+
+  [Tier 2] domains: 14/15 never inspected
+    General Knowledge, Natural Sciences, Space & Astronomy, General Geography, Capitals & Flags, History, Mythology & Folklore, Animals & Wildlife, Human Body & Health, Food & World Cuisine, ... (4 more)
+
+  [Tier 2] specialEvents: 5/5 never inspected
+    Relic Forge, Card Transform, Deck Thin, Knowledge Spring, Mystery Event
+
+  [Tier 2] mysteryEffects: 3/3 never inspected
+    A faint warmth seeps up through the floor. Restored 20 HP., 50 gold, wedged into a crack in the rock., Your mind feels sharp. Draw +1 card next encounter.
+
+  [Tier 2] decks: 89/99 never inspected
+    Ancient Rome, Anime & Manga, AP Chemistry, AP European History, AP Human Geography, AP Macroeconomics, AP Microeconomics, AP Psychology, AP U.S. History, AP World History: Modern, ... (79 more)
+    Tip: run "npm run audit:quiz-engine" to stamp lastQuizAudit for these decks
+
+  [Tier 3] ascensionLevels: 20/20 never inspected
+    First Trial, Aggressive Foes, Scarce Healing, Quick Thinking, Lean Start, No Escape, Harsh Grading, Elite Surge, Undying Foes, Cursed Start, ... (10 more)
+
+  [Tier 3] keywords: 10/10 never inspected
+    Block, Poison, Weakness, Vulnerable, Thorns, Persistent Block, Lifetap, AP, Echo, Mastery Trial
+
+  [Tier 3] synergies: 26/27 never inspected
+    empower, double_strike, focus, expose, quicken, hex, brace, heavy_strike, multi_hit, reckless, ... (16 more)
+
+  [Tier 3] roomThemes: 5/5 never inspected
+    dust, embers, ice, arcane, void
+
+  [Tier 3] cardTypes: 6/6 never inspected
+    attack, shield, utility, buff, debuff, wild
+
+FRESH (no action needed): 12 elements across 3 tables
+  5 relics, 6 chainTypes, 1 synergies
+
+───────────────────────────────────────────────
+SUMMARY: 69 stale | 440 never-inspected | 12 fresh | 61 deprecated | 1 in-progress
+───────────────────────────────────────────────
+
+RECOMMENDATION: Run `/inspect cards` first — 31 elements stale from src/data/mechanics.ts change on 2026-04-10 (Tier 1, highest risk)
+

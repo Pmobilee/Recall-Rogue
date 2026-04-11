@@ -1,0 +1,34 @@
+{
+  "stateId": "state-03-05",
+  "bucket": "early_game",
+  "floor": 3,
+  "enemy": {
+    "id": "headmistress",
+    "name": "The Headmistress",
+    "currentHP": 13,
+    "maxHP": 13,
+    "block": 0,
+    "intent": { "type": "charge", "value": 10, "telegraph": "Charging: Metallic crush! (next turn: 10 dmg)" },
+    "statusEffects": [],
+    "special": "onEncounterStart: exhausted your 2 highest-mastery cards at encounter start"
+  },
+  "player": {
+    "currentHP": 65,
+    "maxHP": 80,
+    "block": 3,
+    "ap": 3,
+    "chain": 0,
+    "deckNote": "2 strongest cards already exhausted at encounter start"
+  },
+  "hand": [
+    { "id": "block", "name": "Block", "type": "shield", "apCost": 1, "quickPlayValue": 5, "chargeCorrectValue": 9, "chargeWrongValue": 3, "description": "Gain block." },
+    { "id": "emergency", "name": "Emergency", "type": "shield", "apCost": 1, "quickPlayValue": 2, "chargeCorrectValue": 6, "chargeWrongValue": 2, "description": "Gain block. Double if HP below 30%." },
+    { "id": "weaken", "name": "Weaken", "type": "debuff", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 3, "chargeWrongValue": 1, "description": "Apply weakness (reduces enemy attack damage)." },
+    { "id": "strike", "name": "Strike", "type": "attack", "apCost": 1, "quickPlayValue": 4, "chargeCorrectValue": 6, "chargeWrongValue": 2, "description": "Deal damage." },
+    { "id": "adapt", "name": "Adapt", "type": "wild", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Smart card: plays as Block if enemy attacks, Cleanse if debuffed, else Attack." }
+  ],
+  "relics": [
+    { "id": "steel_skin", "name": "Steel Skin", "description": "Take 2 less damage from all sources (min 1)." }
+  ],
+  "notes": "Headmistress already burned the player's 2 best cards at encounter start (Detention mechanic). Now charging a 10-dmg hit. Player has mostly defensive options. Steel Skin reduces damage by 2. Does blocking make more sense than trying to push 13 HP? Emergency is weak at full HP. Is Adapt useful here? Low tension — likely just block-and-grind."
+}

@@ -1,0 +1,32 @@
+{
+  "stateId": "state-03-01",
+  "bucket": "early_game",
+  "floor": 1,
+  "enemy": {
+    "id": "page_flutter",
+    "name": "Page Flutter",
+    "currentHP": 7,
+    "maxHP": 7,
+    "block": 0,
+    "intent": { "type": "attack", "value": 9, "telegraph": "Swooping strike" },
+    "statusEffects": []
+  },
+  "player": {
+    "currentHP": 72,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 0
+  },
+  "hand": [
+    { "id": "strike", "name": "Strike", "type": "attack", "apCost": 1, "quickPlayValue": 4, "chargeCorrectValue": 6, "chargeWrongValue": 2, "description": "Deal damage." },
+    { "id": "block", "name": "Block", "type": "shield", "apCost": 1, "quickPlayValue": 5, "chargeCorrectValue": 9, "chargeWrongValue": 3, "description": "Gain block." },
+    { "id": "strike", "name": "Strike", "type": "attack", "apCost": 1, "quickPlayValue": 4, "chargeCorrectValue": 6, "chargeWrongValue": 2, "description": "Deal damage." },
+    { "id": "empower", "name": "Empower", "type": "buff", "apCost": 1, "quickPlayValue": 50, "chargeCorrectValue": 75, "chargeWrongValue": 35, "description": "Next card deals 50% more damage." },
+    { "id": "scout", "name": "Scout", "type": "utility", "apCost": 1, "quickPlayValue": 2, "chargeCorrectValue": 3, "chargeWrongValue": 1, "description": "Draw 2 cards." }
+  ],
+  "relics": [
+    { "id": "whetstone", "name": "Whetstone", "description": "All attacks +3 base damage. All shields -1 block." }
+  ],
+  "notes": "Standard early game opening. Player has 3 AP, enemy telegraphs 9 damage attack. Whetstone boosts attacks. Empower combo potential."
+}

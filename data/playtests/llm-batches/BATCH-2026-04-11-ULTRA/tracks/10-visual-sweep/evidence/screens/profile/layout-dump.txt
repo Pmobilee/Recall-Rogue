@@ -1,0 +1,118 @@
+LAYOUT DUMP  2026-04-11T02:05:01.208Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (1084, 562)  121x30     depth:2  α:0.30
+  [Ellipse]                                      (903, 393)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (888, 650)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (765, 528)  54x13       depth:2  α:0.30
+  [Image]                                        (1084, 530)  173x173    depth:3  frame:__BASE  tex:gold_tier_2  rot:7°
+  [Container]                                    (903, 370)  96x124      depth:3  children:3  rot:8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_attack
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_heavy_strike
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (888, 627)  96x124      depth:3  children:3  rot:-8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_block
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Image]                                        (765, 513)  77x203      depth:3  frame:__BASE  tex:vial_large  rot:-4°
+  [Arc]                                          (858, 349)  5x5         depth:4  α:0.80
+  [Arc]                                          (618, 230)  3x3         depth:5  α:0.53
+  [Arc]                                          (1636, 336)  3x3        depth:5  α:0.39
+  [Arc]                                          (1749, 335)  3x3        depth:5  α:0.51
+  [Arc]                                          (1396, 131)  4x4        depth:5  α:0.24
+  [Arc]                                          (1404, 364)  6x6        depth:5  α:0.67
+  [Arc]                                          (1623, 299)  7x7        depth:5  α:0.64
+  [Arc]                                          (707, 110)  5x5         depth:5  α:0.57
+  [Arc]                                          (189, 99)  3x3          depth:5  α:0.51
+  [Arc]                                          (444, 80)  4x4          depth:5  α:0.56
+  [Arc]                                          (1142, 153)  6x6        depth:5  α:0.63
+  [Arc]                                          (664, 180)  7x7         depth:5  α:0.67
+  [Arc]                                          (1626, 347)  3x3        depth:5  α:0.52
+  [Arc]                                          (688, 239)  4x4         depth:5  α:0.60
+  [Arc]                                          (1823, 100)  5x5        depth:5  α:0.58
+  [Arc]                                          (531, 113)  3x3         depth:5  α:0.53
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [section.profile-screen.svelte-1017cb8.profile-landscape]      (0, 0)  1920x1080       HIDDEN
+      [h2.svelte-1017cb8]                                          (72, 30)  405x54        "Scholar's Profile"
+      [button.back-btn.svelte-1017cb8]                             (1752, 24)  96x66       "Back"
+      [article.hero-card.svelte-1017cb8]                           (72, 133)  1776x164   
+        [h3.svelte-1017cb8]                                        (235, 169)  127x33      "Explorer"
+        [p.hero-sub.svelte-1017cb8]                                (235, 208)  1591x18     "Scholar since Apr 11, 2026"
+        [span.level-badge.svelte-1017cb8]                          (235, 235)  50x26       "Lvl 1"
+        [div.xp-bar-wrap.svelte-1017cb8]                           (297, 244)  1491x9    
+          [div.xp-bar.svelte-1017cb8]                              (297, 244)  2x9       
+        [span.xp-label.svelte-1017cb8]                             (1799, 240)  27x16      "0 XP"
+      [article.section-card.svelte-1017cb8]                        (72, 318)  878x219    
+        [h4.section-title.svelte-1017cb8]                          (94, 340)  834x18       "Expedition Record"
+        [span.svelte-1017cb8]                                      (160, 386)  70x14       "Total Runs"
+        [strong.svelte-1017cb8]                                    (184, 405)  21x42       "0"
+        [span.svelte-1017cb8]                                      (376, 386)  59x14       "Victories"
+        [strong.svelte-1017cb8]                                    (395, 405)  21x42       "0"
+        [span.svelte-1017cb8]                                      (592, 386)  49x14       "Defeats"
+        [strong.svelte-1017cb8]                                    (606, 405)  21x42       "0"
+        [span.svelte-1017cb8]                                      (799, 386)  56x14       "Retreats"
+        [strong.svelte-1017cb8]                                    (816, 405)  21x42       "0"
+        [span.svelte-1017cb8]                                      (167, 475)  55x14       "Win Rate"
+        [strong.svelte-1017cb8]                                    (181, 492)  27x23       "0%"
+        [span.svelte-1017cb8]                                      (372, 475)  68x14       "Best Floor"
+        [strong.svelte-1017cb8]                                    (400, 492)  11x23       "0"
+        [span.svelte-1017cb8]                                      (583, 475)  66x14       "Best Chain"
+        [strong.svelte-1017cb8]                                    (606, 492)  21x23       "x0"
+        [span.svelte-1017cb8]                                      (779, 475)  95x14       "Total Playtime"
+        [strong.svelte-1017cb8]                                    (813, 492)  27x23       "0m"
+      [article.section-card.svelte-1017cb8]                        (971, 318)  878x219   
+        [h4.section-title.svelte-1017cb8]                          (993, 340)  834x18      "Knowledge Mastery"
+        [span.svelte-1017cb8]                                      (1006, 386)  176x14     "Facts Learned"
+        [strong.svelte-1017cb8]                                    (1006, 405)  176x36     "0"
+        [span.svelte-1017cb8]                                      (1216, 386)  176x14     "In Review"
+        [strong.svelte-1017cb8]                                    (1216, 405)  176x36     "0"
+        [span.svelte-1017cb8]                                      (1427, 386)  176x14     "Mastered"
+        [strong.svelte-1017cb8]                                    (1427, 405)  176x36     "0"
+        [span.svelte-1017cb8]                                      (1637, 386)  176x14     "Lifetime Mastered"
+        [strong.svelte-1017cb8]                                    (1637, 405)  176x36     "0"
+      [article.section-card.svelte-1017cb8]                        (72, 558)  878x161    
+        [h4.section-title.svelte-1017cb8]                          (94, 580)  834x18       "Streak & Rhythm"
+        [span.svelte-1017cb8]                                      (107, 626)  176x14      "Current Streak"
+        [strong.svelte-1017cb8]                                    (107, 644)  176x25      "0 days"
+        [span.svelte-1017cb8]                                      (318, 626)  176x14      "Best Streak"
+        [strong.svelte-1017cb8]                                    (318, 644)  176x25      "0 days"
+        [span.svelte-1017cb8]                                      (528, 626)  176x14      "Milestones"
+        [strong.svelte-1017cb8]                                    (528, 644)  176x25      "0"
+        [span.svelte-1017cb8]                                      (739, 626)  176x14      "Sessions"
+        [strong.svelte-1017cb8]                                    (739, 644)  176x25      "0"
+      [p.empty-icon.svelte-1017cb8]                                (1007, 594)  806x51     "🗺️"
+      [p]                                                          (1007, 657)  806x26     "No expeditions yet — dive in to start building you"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Image] (+5 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+8 more)
+  TOP-CENTER         → [Arc], [Arc], [Arc], [Arc], [Arc] (+3 more)
+  TOP-RIGHT          → [Arc], [Arc], [Arc], [Arc], [Arc] (+1 more)
+  MIDDLE-RIGHT       → [Arc]
+  BOTTOM-CENTER      → [Container] continueButton
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [section.profile-screen.svelte-1017cb8.profile-l   covers 100% height  CENTER
+  [article.hero-card.svelte-1017cb8]                 covers 15% height  TOP-CENTER
+  [article.section-card.svelte-1017cb8]              covers 20% height  MIDDLE-LEFT
+  [article.section-card.svelte-1017cb8]              covers 20% height  MIDDLE-RIGHT
+  [article.section-card.svelte-1017cb8]              covers 15% height  MIDDLE-LEFT
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (34 Phaser objects, 52 DOM elements) —

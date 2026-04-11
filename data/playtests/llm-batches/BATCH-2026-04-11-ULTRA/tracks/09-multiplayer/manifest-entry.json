@@ -1,0 +1,39 @@
+{
+  "track": "09-multiplayer",
+  "attemptA": "failed",
+  "attemptB": "passed",
+  "downgradeReason": "Attempt A requires 2-peer lockstep via Docker containers. The multiplayer transport uses BroadcastChannel (browser same-origin API), which cannot communicate across separate Docker container Chromium instances. No shared WebSocket server exists in the headless test infrastructure. Downgraded to Attempt B: single-peer seed determinism via Vitest unit tests (9 tests) plus programmatic source auditing.",
+  "divergencesFound": 0,
+  "openIssues": 4,
+  "criticalIssues": 2,
+  "highIssues": 1,
+  "unitTestsPassed": 35,
+  "unitTestsFailed": 0,
+  "testsRun": [
+    "src/services/mapGenerator.test.ts (6 tests — map determinism, enemy ID isolation, edge balance)",
+    "src/services/enemyManager.test.ts (3 tests — intent RNG determinism)",
+    "src/services/multiplayerCoopSync.test.ts (11 tests — barrier/delta/cancel flow)",
+    "src/services/multiplayerLobbyService.test.ts (7 tests — contentSelection sync)",
+    "src/services/multiplayerMapSync.test.ts (7 tests — consensus, no-null-subscriptions regression)",
+    "Programmatic snapshot tests — map seed=42 run×2, intent seed=42 run×2, Bug 6 fork isolation (seed=12345), Math.random() exposure audit"
+  ],
+  "gotchasVerified": [
+    "2026-04-09 — Map-generation RNG must not depend on global getRunRng('enemies') fork (PASS — Bug 6 regression confirmed fixed)",
+    "2026-04-09 — Math.random() broke co-op determinism for enemy intents and pool picks (PASS — enemyIntents/enemyPool forks confirmed active)",
+    "2026-04-09 — multiplayerMapSync.destroyMapNodeSync wiped UI subscriptions (PASS — 7 tests all green)"
+  ],
+  "newVulnerabilitiesFound": [
+    "crit_lens relic (relicEffectResolver.ts:1647) — CRITICAL co-op desync",
+    "obsidian_dice relic (relicEffectResolver.ts:1712) — CRITICAL co-op desync",
+    "relicAcquisitionService.ts:73,93 — HIGH reward screen divergence"
+  ],
+  "visualVerification": {
+    "status": "passed",
+    "scenario": "combat-basic",
+    "agentId": "BATCH-ULTRA-t9-final",
+    "port": 3287,
+    "artifactPath": "/tmp/rr-docker-visual/BATCH-ULTRA-t9-final_combat-basic_1775871915377/",
+    "screenshotPath": "/tmp/rr-docker-visual/BATCH-ULTRA-t9-final_combat-basic_1775871915377/screenshot.png",
+    "note": "Combat scene rendered correctly. PAGE FLUTTER 31/31 HP. Player cards in hand. No visual anomalies."
+  }
+}

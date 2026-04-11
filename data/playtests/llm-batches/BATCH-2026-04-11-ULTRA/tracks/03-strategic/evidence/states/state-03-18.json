@@ -1,0 +1,35 @@
+{
+  "stateId": "state-03-18",
+  "bucket": "edge_case",
+  "floor": 5,
+  "description": "Edge: Surge turn — all Charge multipliers elevated, +1 bonus AP",
+  "enemy": {
+    "id": "grade_dragon",
+    "name": "The Grade Dragon",
+    "currentHP": 13,
+    "maxHP": 13,
+    "block": 0,
+    "intent": { "type": "attack", "value": 6, "telegraph": "Fire breath" },
+    "statusEffects": []
+  },
+  "player": {
+    "currentHP": 55,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 4,
+    "chain": 1,
+    "surgeActive": true,
+    "surgeNote": "Surge turn: +1 bonus AP granted (total 4 AP). globalTurnCounter = 6."
+  },
+  "hand": [
+    { "id": "empower", "name": "Empower", "type": "buff", "apCost": 1, "quickPlayValue": 50, "chargeCorrectValue": 75, "chargeWrongValue": 35, "description": "Next card deals 50% more damage." },
+    { "id": "heavy_strike", "name": "Heavy Strike", "type": "attack", "apCost": 2, "quickPlayValue": 10, "chargeCorrectValue": 30, "chargeWrongValue": 7, "description": "High damage. Costs 2 AP." },
+    { "id": "reckless", "name": "Reckless", "type": "attack", "apCost": 1, "quickPlayValue": 6, "chargeCorrectValue": 18, "chargeWrongValue": 4, "description": "High damage, self-damage (3 HP)." },
+    { "id": "block", "name": "Block", "type": "shield", "apCost": 1, "quickPlayValue": 5, "chargeCorrectValue": 9, "chargeWrongValue": 3, "description": "Gain block." },
+    { "id": "double_strike", "name": "Double Strike", "type": "buff", "apCost": 2, "quickPlayValue": 75, "chargeCorrectValue": 100, "chargeWrongValue": 75, "description": "Next attack card hits twice at full power. Charge bonus: also pierces." }
+  ],
+  "relics": [
+    { "id": "time_warp", "name": "Time Warp", "description": "On Surge turns: quiz timer halved, Charge multiplier 5.0×, +1 AP (already applied: 4 AP total)." }
+  ],
+  "notes": "SURGE TURN with Time Warp relic: Charge multiplier is 5.0× instead of 1.5×. +1 AP (4 total). This completely changes the math: Charged Heavy Strike (2ap+1surcharge=3ap) = QP×5 = 10×5=50 damage on correct! But Double Strike + Heavy Strike = 5 AP (exceeds 4). Empower + Heavy Strike Charged = 50% more × 5.0× multiplier = enormous damage. Does the player know to go all-in on a single charged attack rather than spread out? Surge creates a 'glass cannon moment' design space."
+}

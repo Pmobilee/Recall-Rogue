@@ -1,0 +1,203 @@
+[
+  {
+    "id": "issue-1744334400001-10-001",
+    "track": "10-visual-sweep",
+    "screen": "dungeonMap",
+    "category": "visual_layout_wrong",
+    "severity": "high",
+    "title": "DungeonMap nodes render below viewport — map appears near-black on first load",
+    "description": "When dungeonMap loads via scenario, all map nodes are positioned below y=1080 (starting at y=1233). The visible viewport (1080px tall) shows only the fog-overlay wisps against a dark background. The map content is scrolled off-screen downward. A player arriving at the dungeon map for the first time would see a nearly black screen with fog wisps and no map nodes. The layout dump confirms nodes exist at y=693–1233, all below viewport. This could be an init timing issue (scroll position not set) or a CSS scroll-to-current-floor behavior that isn't working on first load.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/dungeonMap/screenshot.png",
+      "layoutDumpPath": "evidence/screens/dungeonMap/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#dungeonMap"
+    },
+    "reproductionSteps": [
+      "Scenario: dungeon-map (screen: dungeonMap)",
+      "Wait 7000ms",
+      "Observe: screenshot shows near-black with fog wisps, no map nodes visible",
+      "Layout dump: all map-node buttons at y=693–1233, viewport height=1080"
+    ],
+    "suggestedFix": "Check DungeonMap.svelte scroll initialization — ensure the scroll container scrolls to the current floor row on mount. The nodes exist but are off-screen. May need a scrollToCurrentFloor() call after map renders."
+  },
+  {
+    "id": "issue-1744334400002-10-002",
+    "track": "10-visual-sweep",
+    "screen": "relicSwapOverlay",
+    "category": "screen_load_failed",
+    "severity": "medium",
+    "title": "relicSwapOverlay scenario loads specialEvent instead of RelicSwapOverlay component",
+    "description": "The 'relic-swap' scenario (screen: relicSwapOverlay, 4 relics equipped) does not show the RelicSwapOverlay component. Instead, the layout dump shows div.special-overlay (specialEvent 'Deck Thin' event). The relicSwapOverlay may require a pendingSwapRelicId to render, and without it falls through to a different screen or the previous screen state bleeds through. The screenshot confirms 'Deck Thin' specialEvent is what renders, not any relic swap UI.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/relicSwapOverlay/screenshot.png",
+      "layoutDumpPath": "evidence/screens/relicSwapOverlay/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#relicSwapOverlay"
+    },
+    "reproductionSteps": [
+      "Scenario: relic-swap (screen: relicSwapOverlay, relics: 4)",
+      "Wait 6000ms",
+      "Observe: specialEvent 'Deck Thin' overlay renders instead of RelicSwapOverlay"
+    ],
+    "suggestedFix": "The scenarioSimulator's relic-swap preset should also set a pendingSwapRelicId in the run state, or the scenario should trigger the swap flow. Without a pending relic offer, RelicSwapOverlay has nothing to show."
+  },
+  {
+    "id": "issue-1744334400003-10-003",
+    "track": "10-visual-sweep",
+    "screen": "multiplayerLobby",
+    "category": "visual_missing_element",
+    "severity": "medium",
+    "title": "multiplayerLobby renders empty — requires currentLobby !== null to mount",
+    "description": "When navigating to multiplayerLobby via loadCustom({ screen: 'multiplayerLobby' }), the layout dump shows only a screen-transition div with no MultiplayerLobby component. Per docs, MultiplayerLobby only mounts when currentLobby !== null. The scenario simulator has no way to set up a lobby object, so the screen cannot be tested via scenario. The player sees a near-black screen with star particle background.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/multiplayerLobby/screenshot.png",
+      "layoutDumpPath": "evidence/screens/multiplayerLobby/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#multiplayerLobby"
+    },
+    "reproductionSteps": [
+      "eval: window.__rrScenario.loadCustom({ screen: 'multiplayerLobby' })",
+      "Wait 5000ms",
+      "Observe: empty screen, layout dump shows only screen-transition element"
+    ],
+    "suggestedFix": "Add a multiplayerLobby scenario preset that bootstraps a mock lobby object (currentLobby) before navigating to the screen. The MultiplayerLobby component has a guard condition requiring currentLobby to be non-null."
+  },
+  {
+    "id": "issue-1744334400004-10-004",
+    "track": "10-visual-sweep",
+    "screen": "masteryChallenge",
+    "category": "visual_layout_wrong",
+    "severity": "medium",
+    "title": "masteryChallenge renders with very small viewport — dialog box uses ~50% of 1080p space",
+    "description": "The mastery challenge dialog box occupies roughly the center 30% of the screen (approximately 600x420px out of 1920x1080). The surrounding 70% of the screen is pure black background. For a Steam PC target of 1920x1080, this creates a lot of dead space. The quiz panel appears correctly formed but undersized relative to the available viewport. The question text 'What is the approximate speed of light in a vacuum?' and 4 answer options are readable but small.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/masteryChallenge/screenshot.png",
+      "layoutDumpPath": "evidence/screens/masteryChallenge/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#masteryChallenge"
+    },
+    "reproductionSteps": [
+      "Scenario: mastery-challenge",
+      "Wait 6000ms",
+      "Observe: small quiz panel centered in large black void"
+    ],
+    "suggestedFix": "Consider expanding the masteryChallenge overlay to use more of the 1920x1080 space, or adding a background visual to fill the dark void."
+  },
+  {
+    "id": "issue-1744334400005-10-005",
+    "track": "10-visual-sweep",
+    "screen": "restStudy",
+    "category": "visual_missing_element",
+    "severity": "low",
+    "title": "restStudy empty state has no background ambience — pure dark void behind dialog",
+    "description": "The restStudy empty state ('No Cards to Review') shows correct empty state messaging and a 'Return to Hub' escape button (per HIGH-8 contract), but the background is pure dark navy with no Phaser scene or background visual. Other screens in the same context (restRoom, restMeditate) show the dungeon/rest-site background. The empty state appears visually disconnected from the game world.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/restStudy/screenshot.png",
+      "layoutDumpPath": "evidence/screens/restStudy/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#restStudy"
+    },
+    "reproductionSteps": [
+      "Scenario: study-quiz (no active run facts)",
+      "Wait 6000ms",
+      "Observe: 'No Cards to Review' dialog on pure dark background"
+    ],
+    "suggestedFix": "Consider adding a background visual or keeping the rest-site Phaser scene active behind the empty state."
+  },
+  {
+    "id": "issue-1744334400006-10-006",
+    "track": "10-visual-sweep",
+    "screen": "cardReward",
+    "category": "visual_missing_element",
+    "severity": "low",
+    "title": "cardReward cards have empty description area — card text boxes appear blank",
+    "description": "The cardReward screen shows 3 card choices with artwork visible, but the lower portion of each card (description/effect text area) appears as a dark empty rectangle. Card names and type icons are visible but the mechanical description text area shows no text. This could be due to test scenario facts not being populated, or the card description rendering not triggering in the test environment.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/cardReward/screenshot.png",
+      "layoutDumpPath": "evidence/screens/cardReward/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#cardReward"
+    },
+    "reproductionSteps": [
+      "Scenario: card-reward-mixed (Strike, Block, Expose)",
+      "Wait 6000ms",
+      "Observe: card artwork visible but description text area appears empty"
+    ],
+    "suggestedFix": "Check if card description text rendering requires the quiz question to be resolved first, or if there's a missing data hydration step."
+  },
+  {
+    "id": "issue-1744334400007-10-007",
+    "track": "10-visual-sweep",
+    "screen": "runEnd",
+    "category": "visual_layout_wrong",
+    "severity": "low",
+    "title": "runEnd screen uses narrow centered column — large empty margins on 1920x1080",
+    "description": "The runEnd victory screen shows content in a narrow centered column (approximately 800px wide) centered on the 1920px canvas. Large empty margins on both sides (~560px each). Sections visible: 'FOES VANQUISHED' (enemy icons row), 'KNOWLEDGE HARVEST' (progress bars), 'RUN STATS' (stat tiles), and 'EASY MATTER 500' gold reward. Content is functional but the layout uses only ~42% of the available horizontal space.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/runEnd/screenshot.png",
+      "layoutDumpPath": "evidence/screens/runEnd/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#runEnd"
+    },
+    "reproductionSteps": [
+      "Scenario: run-end-victory",
+      "Wait 6000ms",
+      "Observe: narrow column centered in wide viewport with large empty margins"
+    ],
+    "suggestedFix": "Consider expanding runEnd layout to utilize more horizontal space on 1920px wide screens, or adding side panels (e.g., detailed fact review, achievements unlocked)."
+  },
+  {
+    "id": "issue-1744334400008-10-008",
+    "track": "10-visual-sweep",
+    "screen": "runPreview",
+    "category": "visual_missing_element",
+    "severity": "medium",
+    "title": "runPreview shows 'Preparing your knowledge chains...' loading state — chains never render",
+    "description": "The runPreview (Your Knowledge Chains) screen shows a perpetual loading state: 'Preparing your knowledge chains...' text in the center. The 'Shuffle Chains' and 'Begin Expedition' buttons are visible at the bottom, and the FSRS legend (N/L/R/M) is at bottom-left. However, no chain distribution is shown — the main content area is empty. This indicates the chainDistribution data is not available when loaded via loadCustom.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/runPreview/screenshot.png",
+      "layoutDumpPath": "evidence/screens/runPreview/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#runPreview"
+    },
+    "reproductionSteps": [
+      "eval: window.__rrScenario.loadCustom({ screen: 'runPreview', domain: 'general_knowledge' })",
+      "Wait 5000ms",
+      "Observe: 'Preparing your knowledge chains...' with empty chain distribution area"
+    ],
+    "suggestedFix": "The runPreview scenario needs a chainDistribution object in activeRunState. Add a dedicated runPreview scenario preset that bootstraps proper chain distribution data before navigating."
+  },
+  {
+    "id": "issue-1744334400009-10-009",
+    "track": "10-visual-sweep",
+    "screen": "proceduralStudy",
+    "category": "visual_missing_element",
+    "severity": "low",
+    "title": "proceduralStudy shows error state 'Could not start practice session' — no procedural deck registered",
+    "description": "The proceduralStudy screen shows an error: 'Could not start practice session. You'll need to register a procedural deck.' with a 'Go Back' button. This is an expected error state in the scenario context (no procedural deck is registered), but the error message is unclear to a regular player about how to register a procedural deck. The error handling provides an escape (Go Back) which is correct.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/proceduralStudy/screenshot.png",
+      "layoutDumpPath": "evidence/screens/proceduralStudy/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#proceduralStudy"
+    },
+    "reproductionSteps": [
+      "eval: window.__rrScenario.loadCustom({ screen: 'proceduralStudy' })",
+      "Wait 5000ms",
+      "Observe: error state 'Could not start practice session'"
+    ],
+    "suggestedFix": "Improve error message to be more user-friendly (e.g., 'This mode requires a math practice deck. Visit the Study Temple to set one up.'). Also add a procedural study scenario preset that bootstraps the required deck."
+  },
+  {
+    "id": "issue-1744334400010-10-010",
+    "track": "10-visual-sweep",
+    "screen": "profile",
+    "category": "visual_layout_wrong",
+    "severity": "low",
+    "title": "profile screen shows sparse content on fresh save — sections appear to float in empty space",
+    "description": "The Scholar's Profile screen shows a minimal layout with a fresh/empty save: Explorer avatar, Level 1, stats all at zero, and an 'No expeditions yet' placeholder. The layout uses 2-column grid but with no expedition data, many sections are minimal or absent. The visual result is a sparsely populated screen that could confuse new players about what content will appear here. The overall visual polish is functional but the empty state could be more welcoming.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/profile/screenshot.png",
+      "layoutDumpPath": "evidence/screens/profile/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#profile"
+    },
+    "reproductionSteps": [
+      "Scenario: profile (fresh save state)",
+      "Wait 6000ms",
+      "Observe: sparse layout with zero stats, minimal section content"
+    ],
+    "suggestedFix": "Add richer empty-state messaging for profile sections (e.g., 'Complete your first expedition to see stats here'). Consider a 'teaser' layout that shows what each section will contain."
+  }
+]

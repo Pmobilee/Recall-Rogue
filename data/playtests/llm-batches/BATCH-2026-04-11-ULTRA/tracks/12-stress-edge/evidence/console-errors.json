@@ -1,0 +1,26 @@
+{
+  "collectedAt": "2026-04-11T11:35:00Z",
+  "scenarios": ["combat-basic", "shop", "reward-room", "hub-fresh"],
+  "gameLogicErrors": [],
+  "consoleErrors": [
+    {
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "frequency": 4,
+      "source": "static asset fetch (fonts/sounds not accessible in Docker)",
+      "severity": "low",
+      "dockerSpecific": true,
+      "note": "Expected in Docker environment - dev server serves the game but some HMR/hot-reload connections fail"
+    },
+    {
+      "text": "Creating a worker from 'blob:http://host.docker.internal:5173/...'",
+      "frequency": 1,
+      "source": "Web Worker creation in Docker context",
+      "severity": "low",
+      "dockerSpecific": true,
+      "note": "Warning about creating workers from blob URLs - informational only"
+    }
+  ],
+  "rrLogErrors": [],
+  "recentErrorsFromDebugBridge": [],
+  "summary": "Zero game logic errors across all tested scenarios. All 4 console errors are Docker-environment artifacts (static asset connection refused). No errors from __rrLog or __rrDebug().recentErrors in any scenario."
+}

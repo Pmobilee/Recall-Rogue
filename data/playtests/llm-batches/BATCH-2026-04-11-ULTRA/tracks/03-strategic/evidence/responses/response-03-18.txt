@@ -1,0 +1,30 @@
+STATE: state-03-18 | Floor 5 | Edge: Surge Turn with Time Warp relic | Grade Dragon
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 13, no block. Intent: Attack 6. Grade Dragon.
+- Player: 55/80 HP, 4 AP (surge +1), chain 1 (×1.1). Time Warp relic: on surge, Charge multiplier = 5.0×.
+- SURGE TURN MATH: Charge Correct multiplier is 5.0× (not 1.5×). This is massive.
+
+SURGE CHARGE MATH:
+- Empower(QP,1ap) + Heavy Strike(CC,2+1=3ap) = 4ap total. HS CC = floor(10×5.0)×1.1×1.5(empower) = 50×1.1×1.5 = 82.5→82 dmg. Completely overkill on 13 HP enemy.
+- Reckless(CC,3ap) = floor(6×5.0)×1.1 = 30×1.1=33 dmg. Kills in 1 card. 1 AP left. Self-damage 3.
+- Heavy Strike(CC,3ap) = floor(10×5.0)×1.1 = 50×1.1=55 dmg. Kills. 1 AP left. No self-damage.
+
+OPTIMAL: Heavy Strike(CC,3ap) = 55 dmg on 13 HP enemy. Kills. 1 AP left → Block(QP,1ap) = 5 block.
+OR: Empower(1ap) + Reckless(CC,3ap) = 4ap. Reckless=floor(6×5.0)×1.1×1.5(empower) = 30×1.65=49.5→49 dmg. Kills with massive overkill. Self-damage 3.
+
+TRIVIAL KILL: Any single Charged attack during a surge turn (5.0× multiplier) kills a 13-HP enemy easily. The Grade Dragon dies in 1 card to any Charged attack.
+
+IS THERE TENSION? Zero tension on the kill. The 4th AP (surge) opens one additional option. The "decision" is: do you spend the 4th AP on a second card (Block for defense) or just use 1 big Charged attack? Both paths kill the enemy trivially.
+
+DOUBLE STRIKE ASSESSMENT: Double Strike(CC,3ap) = next attack hits twice piercing. Then Block(1ap) = 5 block. But no attack to follow after Double Strike (0 AP). Useless combo unless an attack card was played after.
+
+Double Strike(QP,2ap) + Reckless(CC,3ap) = 5ap. Can't afford even with surge (4 AP max).
+Double Strike(QP,2ap) + Reckless(QP,1ap) = 3ap. Double Strike buffs next. Reckless hits twice = 6+6=12 dmg ×1.1=13.2→13 dmg exactly. Kills! 1 AP left. Self-damage 3×2? Does self-damage double with Double Strike? Unclear — design question.
+
+DEAD CARDS: Nothing is truly dead given the surge multiplier makes any attack lethal. But Double Strike+attack combos are overcomplicated when a single Heavy Strike CC is simpler.
+
+DESIGN NOTE: Surge turns with Time Warp are a GLASS CANNON MOMENT where correct answers deal 3-5x more damage than usual. The "decision space" is essentially "which attack looks coolest" because any Charged attack is sufficient. The Time Warp relic may be too powerful — it converts any Charge into an instant-kill on standard enemies. The risk (halved timer on quiz) is balanced by the reward (5.0× multiplier), but the design intent of creating a special moment works.
+
+SURVIVAL ODDS: 10/10. Surge + Time Warp + any Charge = trivial kill.

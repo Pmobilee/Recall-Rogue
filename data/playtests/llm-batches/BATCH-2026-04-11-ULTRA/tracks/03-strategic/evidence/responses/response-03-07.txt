@@ -1,0 +1,37 @@
+STATE: state-03-07 | Floor 5 | Citation Needed (block-steal + heal) | Mid Game
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 9, no block. Intent: Heal 5 HP (Consume remains).
+- Player: 48/80 HP, 8 block, 3 AP, chain 1 (×1.1).
+- Citation Needed: onPlayerChargeWrong → steals up to 5 player block AND adds it to own HP.
+- If enemy heals 5 AND player wrong-charges losing 5 block → enemy gains 10 HP total. Starting at 9 HP → 19 HP. Catastrophic.
+
+SLOW OPTION: Slow(CC, 2+1=3ap) = skips enemy's next defend or BUFF. Does Slow cancel a HEAL intent?
+- Slow description: "Skip enemy's next defend or buff." Heal is technically NOT a defend or buff.
+- Slow does NOT cancel the heal. This is a critical misunderstanding trap. Slow cannot cancel Consume remains.
+- Slow(QP, 2ap) = same result. Useless against heal.
+
+KILLING BEFORE HEAL LANDS: 9 HP enemy.
+- Piercing(CC,2ap) = floor(3×1.5)×1.1 = 4×1.1=4.4→4 dmg. Enemy: 5 HP. Not dead.
+- Piercing(CC,2ap) + Strike(CC,2ap) = 4ap. Can't afford.
+- Piercing(QP,1ap) + Strike(QP,1ap) = 4+3=7 dmg (without chain: 3+4=7)... with chain 1: piercing(3×1.1=3.3→3) + strike(4×1.1=4.4→4) = 7 total dmg. Enemy: 2 HP. Still alive.
+- Piercing(QP,1ap) + Brace(QP,1ap) + Piercing... wait, only 1 Piercing in hand.
+- Piercing(CC,2ap) = 4 dmg + Brace(QP,1ap) = 3 AP used. Piercing hits for 4 (through block). Brace adds block equal to telegraph value... what is the telegraph value of Consume Remains? It's a heal, not an attack — Brace blocks "equal to enemy telegraph." If the next intent is Heal, Brace's block = 0 (or however Brace handles non-attack telegraphs).
+
+BEST LINE: Don't worry about Slow (ineffective vs heal). Can't kill in 1 turn.
+- Build block to resist incoming turns, AND deal damage without wrong-charging.
+- Piercing(CC,2ap) = 4 to HP (bypass). 1 AP left → Brace or block.
+- Fortify(QP,2ap) = double current block: 8×2=16 block. But if wrong-charged, enemy steals 5 of it.
+- Fortify(CC,3ap) = floor(6×1.5... wait, Fortify quickPlayValue=6 but it "doubles current block." So Fortify value isn't a flat number, it doubles whatever you currently have (8 block). CC might give even more? Actually Fortify is complex — QP doubles block, CC might triple? Reading card: "Double your current block." With chargeCorrectValue=10 but functionality is "double current," QP and CC may both just double.
+
+REAL TENSION: The block-steal mechanic makes building block RISKY vs a wrong charge. Do you:
+A) Go all-offense, accept HP loss when enemy heals
+B) Build block conservatively but risk wrong-charge stealing it
+C) Play for draws/cycling to find a kill
+
+DOMINANT PLAY: Piercing(CC,2ap) = 4 to HP. Strike(QP,1ap) = 4×1.1=4 dmg... wait, no: chain 1 = ×1.1. Strike QP = 4+chain1=4×1.1=4.4→4. Oh wait: the 1.1 IS the chain, so strike dmg = 4×1.1=4.4→4. Total 4+4=8 dmg to HP. Enemy: 1 HP. One more turn kills. And Brace gives 0 block (enemy telegraphing a heal). Slow is useless.
+
+SURVIVAL ODDS: 7/10. The heal mechanic extends the fight and the block-steal creates a cognitive trap.
+
+DESIGN FLAW IDENTIFIED: Slow cannot cancel heals, but a new player would absolutely waste 2 AP on Slow trying to stop "Consume remains." The Slow card description "skip defend or buff" doesn't clearly exclude heals. This is a COMMUNICATION failure (appears to be a valid counter but isn't). This is a real design issue.

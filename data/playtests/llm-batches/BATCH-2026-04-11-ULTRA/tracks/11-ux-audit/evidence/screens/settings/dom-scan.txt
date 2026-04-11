@@ -1,0 +1,49 @@
+LAYOUT DUMP  2026-04-11T02:10:11.329Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.settings-overlay.svelte-l3jv5s]                           (0, 0)  1920x1080       HIDDEN
+      [div.settings-card.settings-card-landscape.svelte-l3jv5s]    (0, 0)  1920x1080     
+        [aside.settings-sidebar.svelte-l3jv5s]                     (0, 0)                  HIDDEN
+          [div.settings-sidebar-header.svelte-l3jv5s]              (0, 0)                  HIDDEN
+            [h2.svelte-l3jv5s]                                     (0, 0)                  "Settings"  HIDDEN
+        [button] data-testid="btn-settings-back"                   (499, 15)  119x49       "← Back"
+        [button] data-testid="btn-settings-audio"                  (647, 15)  180x49       "Audio"
+        [button] data-testid="btn-settings-accessibility"          (845, 15)  180x49       "Accessibility"
+        [button] data-testid="btn-settings-notifications"          (1043, 15)  180x49      "Notifications"
+        [button] data-testid="btn-settings-account"                (1241, 15)  180x49      "Account"
+        [h3.svelte-l3jv5s]                                         (79, 129)  1762x33      "Audio"
+        [span]                                                     (79, 207)  300x30       "SFX Enabled"
+        [span]                                                     (79, 291)  210x30       "SFX Volume"
+        [strong.svelte-l3jv5s]                                     (1075, 291)  766x30     "100%"
+        [span]                                                     (79, 375)  300x30       "Music Enabled"
+        [span]                                                     (79, 459)  210x30       "Music Volume"
+        [strong.svelte-l3jv5s]                                     (1075, 459)  766x30     "50%"
+        [span]                                                     (79, 543)  300x30       "Ambient Enabled"
+        [span]                                                     (79, 627)  210x30       "Ambient Volume"
+        [strong.svelte-l3jv5s]                                     (1075, 627)  766x30     "70%"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.settings-overlay.svelte-l3jv5s], [div.settings-card.settings-card-landscape.svelte-l3jv5s], [div.screen-transition.svelte-2meh4s]
+  TOP-LEFT           → [button] data-testid="btn-settings-back", [span], [span]
+  TOP-CENTER         → [button] data-testid="btn-settings-audio", [button] data-testid="btn-settings-accessibility", [button] data-testid="btn-settings-notifications", [h3.svelte-l3jv5s]
+  TOP-RIGHT          → [button] data-testid="btn-settings-account", [strong.svelte-l3jv5s]
+  MIDDLE-LEFT        → [span], [span], [span], [span]
+  MIDDLE-RIGHT       → [strong.svelte-l3jv5s], [strong.svelte-l3jv5s]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.settings-overlay.svelte-l3jv5s]               covers 100% height  CENTER
+  [div.settings-card.settings-card-landscape.svelt   covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 22 DOM elements) —

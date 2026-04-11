@@ -1,0 +1,38 @@
+STATE: state-03-12 | Floor 9 | The Curriculum Phase 2 (QP immune) | Late Game Boss
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 6, block 6. Phase 2: _quickPlayDamageMultiplierOverride = 0.0. Quick Play deals ZERO damage.
+- Player: 22/80 HP, 6 block, 3 AP, chain 2 (×1.2). Crit Lens (25% crit on CC = ×2).
+- ALL Quick Play attacks = 0 damage. Only Charged attacks deal damage.
+- Charge AP cost = apCost + 1 surcharge.
+
+HAND ANALYSIS vs QP-immune:
+- Strike(QP,1ap) = 0 dmg. DEAD.
+- Strike(QP,1ap) = 0 dmg. DEAD.
+- Heavy Strike(QP,2ap) = 0 dmg. DEAD.
+- Block(QP,1ap) = 5 block (shields are not "attacks" — they give block regardless, QP immunity only affects damage).
+- Empower(QP,1ap) = 50% buff to next card... but if next card is a QP attack = still 0. Empower is dead if only QP attacks remain.
+
+ONLY VIABLE ATTACKS ARE CHARGED:
+- Strike(CC,1+1=2ap) = floor(4×1.5)×1.2 = 6×1.2=7.2→7 dmg. vs 6 block = 1 dmg to HP. Enemy: 5 HP.
+- Strike(CC,2ap) + Strike(CC,2ap) = 4ap total. Can't afford with 3 AP.
+- Empower(QP,1ap) + Strike(CC,2ap) = 3ap. Empower doesn't make QP attacks work vs QP-immune (Empower buff still applies but Strike CC is NOT a QP attack). Strike(CC,2ap) = floor((4×1.5)×1.5×1.2) = floor(9×1.2)=10 dmg. vs 6 block = 4 dmg to HP. Enemy: 2 HP. (Crit Lens 25% chance: 8 to HP → enemy dead!)
+
+BEST SEQUENCE: Empower(QP,1ap) + Strike(CC,2ap) = 3ap. Strike CC with Empower = 4 HP through block (25% chance: kill). Enemy at 2 HP. Block(QP) already used in previous turns (not available now, only in hand if player plays Empower+Strike, leaving Block unplayed).
+
+Wait, rechecking: I have 3 AP. Empower(1) + Strike(CC,2)=3ap. 0 AP left. Enemy: 2 HP. No block played. Incoming 4×4+2enrage = 16+2=18 dmg × chain... wait, enemy's dmg: 4 hits × 4 each + 2 enrage bonus = 4×6=24 potential. Player has 6 block. 6 block absorbs hits: first hit 4(6-4=2 rem), second hit 4(2-4=0,2dmg to HP), third hit 6 to HP, fourth hit 6 to HP. Total: 2+6+6=14 HP dmg. Player: 22-14=8 HP. Nearly dead.
+
+ALTERNATIVE: Block(QP,1ap) + Empower(QP,1ap) + Strike(CC,2ap) = 4ap. Can't afford.
+
+VERDICT: No good play exists to both damage AND survive. Player must choose: deal damage (Empower+Strike CC = 4 to HP) and take ~14 dmg, OR block (Block+Block... but only 1 block card in hand). Maximum block available = Block(QP,1ap)=5 block + 6 existing = 11 total. Then Empower+Strike CC uses remaining 2 AP: floor(7.5×1.2)×1.5... no, Empower+StrikeCC = floor(4×1.5)×1.2×1.5(empower). Wait: Empower = 50% bonus to DAMAGE OUTPUT of next card. Strike CC = floor(4×1.5)=6. With Empower: 6×1.5=9 dmg. vs 6 block = 3 to HP.
+
+FINAL ANSWER: Block(QP,1ap) + Empower(QP,1ap) = 2ap, but leaves only 1 AP for a charge play... Strike(CC,2ap) = 2ap needed. Can't do Block+Empower+StrikeCC in 3ap.
+
+REAL CONSTRAINT: The QP-immune mechanic + Charge AP surcharge = player can play at most 1 Charge per turn with 3 AP. With block cards consuming AP, the offense is extremely limited. This is a GENUINELY PUNISHING state if the player didn't prioritize offensive relics.
+
+DEAD CARDS: Strike (QP) ×2, Heavy Strike (QP). These are 3 of 5 cards in hand. 60% of hand is effectively dead.
+
+SURVIVAL ODDS: 4/10. QP-immunity + low HP = severe pressure.
+
+DESIGN NOTE: The Curriculum's Phase 2 QP immunity is the most mechanically demanding state in the game. Having QP attacks deal 0 damage is brutal and genuinely forces Charge play. But with 3 AP and Charge costing +1 surcharge, a player can only execute ONE charge attack per turn. This creates a legitimate "no good play" scenario for players who haven't built around it. This is flagged as a potential balance concern.

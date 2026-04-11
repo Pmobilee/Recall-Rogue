@@ -1,0 +1,36 @@
+STATE: state-03-04 | Floor 3 | Pop Quiz | Early Game
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 7, no block. Intent: Attack 8.
+- Player: 74/80 HP, 3 AP, chain 0, Swift Boots.
+- Pop Quiz: if I Charge any card correctly → stun enemy next turn. If I make NO Charge this turn → enemy gets +1 permanent dmg bonus.
+
+KEY MECHANIC: The stun from Charge Correct is an EXTREMELY strong incentive to Charge. The permanent enrage from not charging is a strong DISINCENTIVE to play Quick Play only.
+
+OPTION ANALYSIS:
+Option A — Full Quick Play (no Charge):
+- Quicken(QP,0ap) + Focus(QP,1ap) + Heavy Strike(QP,2ap) = 0+1+2=3ap. Quicken gives +1AP (now 4 total). Focus reduces next card by 1. Heavy Strike = 10 dmg. Enemy 7-10=dead.
+  Wait: Quicken (0ap) gives +1AP = 4 AP. Focus (1ap) = reduces next card 1 AP. Heavy Strike (2ap-1=1ap). Total: 0+1+1=2ap used. But this is ALL quick play = enemy enrages (+1 permanent dmg). Kill it before it matters? Enemy IS dead in this scenario.
+  - If I kill in 1 turn with QP, the enrage never matters. So go QP-kill?
+  - Quicken(QP,0ap) + Heavy Strike(QP,2ap) = 0+2=2ap. 4AP total after Quicken. 2 remaining. Strike(QP,1ap) for 4 dmg. Total: 10+4=14 dmg > 7 HP. Dead.
+
+Option B — Charge one card (get stun for next turn):
+- Quicken(Charge,0+1ap=1ap): spends 1 AP for +1 AP and a card draw. Net: still 3 AP (gained 1, spent 1). Plus draws a card. Charges correctly → stun next turn. PERFECT: 0 net AP cost but gets stun.
+  Then: with 3 AP remaining → Heavy Strike(QP,2ap) + Strike(QP,1ap) = 14 dmg → kills enemy.
+  Total: Quicken(CC,1ap) + Heavy Strike(QP,2ap) = 3ap. Pop Quiz stunned next turn. Win.
+
+Option C — Charge Heavy Strike (highest damage):
+- Heavy Strike(CC) = 2+1=3ap total. Damage = floor(10×1.5)=15 dmg > 7 HP. Kills. Gets stun (moot since enemy is dead).
+
+DOMINANT CHOICE: Either Option B (Quicken CC + Heavy Strike QP) or Option C (Heavy Strike CC) both kill the enemy and get the stun. But since enemy dies either way, stun doesn't matter for NEXT turn of THIS fight. The real question is: does Charge-once matter vs going all QP?
+
+KEY INSIGHT: If player can kill Pop Quiz in ONE turn with QP, the enrage mechanic is irrelevant. The "tension" of Charge vs No-Charge exists only if the fight extends multiple turns.
+
+DEAD CARDS: Scout — Recycle equivalent; waste when enemy is nearly dead. Focus — useful but not critical when AP is sufficient to kill outright.
+
+DESIGN FLAW IDENTIFIED: If Pop Quiz can be killed in turn 1 with Quick Play, the "incentive to Charge" is negated. The enrage and stun mechanics only create tension in multi-turn fights. At 7 HP with an average hand, Pop Quiz dies turn 1 routinely.
+
+SURVIVAL ODDS: 10/10. Trivially solved.
+
+DESIGN NOTE: Pop Quiz's reactive hooks are interesting design but may be ineffective against players who simply kill it fast. The stun reward is valuable for longer fights (Proctor, Tenure Guardian) but Pop Quiz itself dies too fast to make the choice meaningful. Consider raising its HP or adding block.

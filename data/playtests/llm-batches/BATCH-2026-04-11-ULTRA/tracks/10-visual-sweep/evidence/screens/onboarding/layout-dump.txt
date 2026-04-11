@@ -1,0 +1,75 @@
+LAYOUT DUMP  2026-04-11T02:04:19.983Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (1084, 562)  121x30     depth:2  α:0.30
+  [Ellipse]                                      (903, 393)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (888, 650)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (765, 528)  54x13       depth:2  α:0.30
+  [Image]                                        (1084, 527)  173x173    depth:3  frame:__BASE  tex:gold_tier_2  rot:7°
+  [Container]                                    (903, 371)  96x124      depth:3  children:3  rot:8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_attack
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_heavy_strike
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (888, 627)  96x124      depth:3  children:3  rot:-8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_block
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Image]                                        (765, 513)  77x203      depth:3  frame:__BASE  tex:vial_large  rot:-4°
+  [Arc]                                          (736, 515)  4x4         depth:4  α:0.73
+  [Arc]                                          (1083, 559)  2x2        depth:4  α:0.26
+  [Arc]                                          (1510, 371)  3x3        depth:5  α:0.38
+  [Arc]                                          (1237, 223)  5x5        depth:5  α:0.58
+  [Arc]                                          (1551, 207)  2x2        depth:5  α:0.54
+  [Arc]                                          (220, 375)  7x7         depth:5  α:0.70
+  [Arc]                                          (804, 257)  3x3         depth:5  α:0.54
+  [Arc]                                          (1395, 63)  4x4         depth:5  α:0.64
+  [Arc]                                          (1573, 222)  3x3        depth:5  α:0.58
+  [Arc]                                          (24, 403)  3x3          depth:5  α:0.59
+  [Arc]                                          (649, 172)  5x5         depth:5  α:0.67
+  [Arc]                                          (617, 44)  4x4          depth:5  α:0.61
+  [Arc]                                          (1441, 248)  6x6        depth:5  α:0.62
+  [Arc]                                          (982, 68)  3x3          depth:5  α:0.60
+  [Arc]                                          (1428, 230)  7x7        depth:5  α:0.69
+  [Arc]                                          (1707, 33)  5x5         depth:5  α:0.59
+  [Arc]                                          (823, 62)  7x7          depth:5  α:0.69
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.onboarding-screen.svelte-1d01s3v]                         (0, 0)  1920x1080       HIDDEN
+      [button.back-btn.svelte-1d01s3v]                             (16, 16)  80x44         "← Back"
+      [h1.svelte-1d01s3v]                                          (821, 474)  278x33      "RECALL ROGUE"
+      [p.svelte-1d01s3v]                                           (821, 517)  278x18      "Enter the depths and test your recall."
+      [button.enter-btn.svelte-1d01s3v]                            (849, 551)  222x56      "ENTER THE DEPTHS"
+    [div.parallax-transition-overlay.svelte-1lwegjf.settled]       (0, 0)  1920x1080       HIDDEN
+      [canvas.parallax-canvas.svelte-1lwegjf]                      (0, 0)  1920x1080     
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Image] (+11 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+3 more)
+  MIDDLE-RIGHT       → [Arc]
+  TOP-CENTER         → [Arc], [Arc], [Arc], [Arc], [Arc]
+  TOP-RIGHT          → [Arc], [Arc], [Arc], [Arc], [Arc] (+1 more)
+  MIDDLE-LEFT        → [Arc], [Arc]
+  BOTTOM-CENTER      → [Container] continueButton
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.onboarding-screen.svelte-1d01s3v]             covers 100% height  CENTER
+  [div.parallax-transition-overlay.svelte-1lwegjf.   covers 100% height  CENTER
+  [canvas.parallax-canvas.svelte-1lwegjf]            covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (35 Phaser objects, 9 DOM elements) —

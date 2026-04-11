@@ -1,0 +1,33 @@
+{
+  "stateId": "state-03-16",
+  "bucket": "edge_case",
+  "floor": 6,
+  "description": "Edge: ALL cards cost 2+ AP with only 3 AP — AP crunch test",
+  "enemy": {
+    "id": "proctor",
+    "name": "The Proctor",
+    "currentHP": 10,
+    "maxHP": 13,
+    "block": 6,
+    "intent": { "type": "attack", "value": 6, "telegraph": "Heavy swing" },
+    "statusEffects": []
+  },
+  "player": {
+    "currentHP": 50,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 0
+  },
+  "hand": [
+    { "id": "heavy_strike", "name": "Heavy Strike", "type": "attack", "apCost": 2, "quickPlayValue": 10, "chargeCorrectValue": 30, "chargeWrongValue": 7, "description": "High damage. Costs 2 AP." },
+    { "id": "double_strike", "name": "Double Strike", "type": "buff", "apCost": 2, "quickPlayValue": 75, "chargeCorrectValue": 100, "chargeWrongValue": 75, "description": "Next attack card hits twice. Charge bonus: also pierces. Costs 2 AP." },
+    { "id": "lifetap", "name": "Lifetap", "type": "attack", "apCost": 2, "quickPlayValue": 4, "chargeCorrectValue": 12, "chargeWrongValue": 3, "description": "Deal damage. Heal 20%. Costs 2 AP." },
+    { "id": "slow", "name": "Slow", "type": "debuff", "apCost": 2, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Skip enemy's next defend or buff. Costs 2 AP." },
+    { "id": "fortify", "name": "Entrench", "type": "shield", "apCost": 2, "quickPlayValue": 6, "chargeCorrectValue": 10, "chargeWrongValue": 4, "description": "Double current block. Costs 2 AP. (block is 0, so useless here)" }
+  ],
+  "relics": [
+    { "id": "vitality_ring", "name": "Vitality Ring", "description": "+20 max HP this run." }
+  ],
+  "notes": "EDGE CASE: Every card costs 2 AP. Player has only 3 AP. Can play exactly 1 card per turn. Fortify is dead (block=0). Double Strike without a follow-up attack is wasted (no AP left). Double Strike + Heavy Strike = 5 AP (can't do). Heavy Strike (2ap) is the most direct option but doesn't kill (10 HP, block 6, only 10+bonus=13 QP with Whetstone... wait, no Whetstone here). Does Slow prevent the incoming 6 damage? Yes, if it cancels a defend/buff — but enemy intends ATTACK, so Slow may be irrelevant? This tests whether agents understand Slow only cancels defend/buff intents."
+}

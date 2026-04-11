@@ -1,0 +1,146 @@
+[
+  {
+    "id": "issue-1744387200000-03-01",
+    "track": "03-strategic",
+    "category": "balance_dominant_strategy",
+    "severity": "high",
+    "title": "Foresight (0 AP cost) is strictly dominant — always played, never suboptimal",
+    "description": "Across 3 independent states (03-04, 03-14, 03-19) where Foresight appeared in hand, it was identified as the correct first play every time. The 0 AP cost makes it impossible to make a wrong decision about Foresight — it is always correct to play. This is the definition of a dominant strategy card: no opportunity cost, positive return. In state-03-19 (zero damage hand), Foresight's free draw effectively replaced a dead card slot with two live draws at 0 AP cost. In state-03-14, Foresight was played optimally before a killing blow. In state-03-04, it was identified as the setup before any kill sequence. A card with 0 AP cost and a positive draw effect has no meaningful downside and should not exist as a deck staple without a trade-off.",
+    "evidence": {
+      "stateIds": ["state-03-04", "state-03-14", "state-03-19"],
+      "agentsSayingSo": 3,
+      "cardId": "foresight",
+      "enemyId": ""
+    },
+    "reproductionSteps": [
+      "Load any combat state where Foresight is in hand",
+      "Observe: Foresight is always played regardless of game state",
+      "No strategic tension about whether to play Foresight exists"
+    ],
+    "suggestedFix": "Add a meaningful cost or trade-off to Foresight: either increase AP cost to 1 (making it a true utility decision), or change the Charge bonus to reveal intent only (removing free draw), or limit to once-per-turn. Alternatively, accept the 0-AP cost but reduce draw count to 1 card at base."
+  },
+  {
+    "id": "issue-1744387200001-03-02",
+    "track": "03-strategic",
+    "category": "ux_no_meaningful_choice",
+    "severity": "high",
+    "title": "Slow card description misleads players into wasting 2 AP against enemy heal intents",
+    "description": "In states 03-07 (Citation Needed with 'Consume remains' heal) and 03-20 (The Algorithm Phase 2 with 'Self-repair' heal), the Slow card was present in hand and the enemy's intent was a heal. In both cases, analysis confirmed Slow CANNOT cancel heal intents — only 'defend or buff' intents. The card description reads 'Skip enemy's next defend or buff' which does NOT explicitly exclude heals. New and intermediate players will routinely attempt to use Slow against heal intents, wasting 2 AP (Slow base cost) plus the Charge surcharge if charged. In state-03-07 where Citation Needed healing is paired with block-steal mechanics, this wasted AP is particularly punishing. Across the two states, this is a recurring communication failure that creates a predictable 'trap' decision without providing meaningful information to course-correct.",
+    "evidence": {
+      "stateIds": ["state-03-07", "state-03-20"],
+      "agentsSayingSo": 2,
+      "cardId": "slow",
+      "enemyId": ""
+    },
+    "reproductionSteps": [
+      "Play a run until you face Citation Needed or any healing enemy",
+      "Have Slow in hand when enemy telegraphs 'Consume remains' or any heal intent",
+      "Play Slow expecting to cancel the heal",
+      "Observe: heal fires anyway. 2+ AP wasted."
+    ],
+    "suggestedFix": "Option A (design): Extend Slow to also cancel heal intents ('Skip enemy's next defend, buff, or heal'). Option B (UX): Add explicit tooltip text stating 'This card only works against defend and buff intents. Does not cancel attacks or heals.' with an in-combat indicator when Slow is suboptimal. Option B is lower risk and higher player-clarity value."
+  },
+  {
+    "id": "issue-1744387200002-03-03",
+    "track": "03-strategic",
+    "category": "balance_dead_card",
+    "severity": "medium",
+    "title": "Reckless attack card becomes zero-damage dead card against any block-stacking enemy",
+    "description": "In state-03-09 (Tenure Guardian with 12-18 block) and state-03-16 (Proctor with 6+ block, no Piercing available), Reckless(QP) dealing 6 base damage is entirely absorbed by enemy block. The player still takes the 3 HP self-damage but deals 0 damage to the enemy. Reckless has no pierce, no block bypass, no secondary effect — it is a pure damage card with self-damage. Against the block-stacking enemy archetype (Tenure Guardian, Proctor, Headmistress, Staple Bug, Thesis Construct), Reckless is strictly worse than doing nothing (self-damage for no benefit). This creates a class of encounters where Reckless is actively harmful to play, with no visual feedback to communicate that the self-damage was wasted. The card's high floor-1 damage value makes it appealing to pick up, but it becomes dead weight against the second most common mid-game enemy archetype.",
+    "evidence": {
+      "stateIds": ["state-03-09", "state-03-16"],
+      "agentsSayingSo": 2,
+      "cardId": "reckless",
+      "enemyId": "tenure_guardian"
+    },
+    "reproductionSteps": [
+      "Enter combat with Reckless in hand vs Tenure Guardian or Proctor",
+      "Enemy builds to 12+ block",
+      "Play Reckless QP (6 dmg, 3 self-damage)",
+      "Observe: 0 HP damage to enemy, player takes 3 self-damage"
+    ],
+    "suggestedFix": "Option A: Give Reckless a secondary pierce or 'deals minimum 3 damage ignoring block' at mastery level 1+. Option B: Add a visual indicator when Reckless would deal 0 HP damage (block fully absorbs it) — at least players know before committing the card. Option C: Redesign Reckless to deal half-damage to block, ensuring it always does something."
+  },
+  {
+    "id": "issue-1744387200003-03-04",
+    "track": "03-strategic",
+    "category": "balance_dominant_strategy",
+    "severity": "medium",
+    "title": "The Curriculum Phase 2 QP-immunity reduces player effective actions to 1 per turn",
+    "description": "The Curriculum's Phase 2 (_quickPlayDamageMultiplierOverride = 0.0) makes every Quick Play attack deal 0 damage. Combined with the Charge AP surcharge (+1 AP), a player with standard 3 AP can execute at most 1 Charged attack per turn. In state-03-12, 3 of 5 hand cards (two Strikes and Heavy Strike) were completely dead as QP attacks, and the viable Charge sequence consumed all 3 AP. This reduces the player's agency to a single action per turn — a dramatic reduction from the normal 2-3 actions. While mechanically interesting as a design concept, the implementation creates a 'no good play' state not because of interesting strategic tradeoffs but because the mechanic hard-limits the player's action economy. The fight feels like waiting rather than decision-making.",
+    "evidence": {
+      "stateIds": ["state-03-12"],
+      "agentsSayingSo": 1,
+      "cardId": "",
+      "enemyId": "curriculum"
+    },
+    "reproductionSteps": [
+      "Fight The Curriculum, reduce to 50% HP to trigger Phase 2",
+      "Observe: all Quick Play attack cards in hand deal 0 damage",
+      "With 3 AP and 1 AP surcharge per Charge, play at most 1 Charged attack per turn",
+      "Notice effective actions reduced from 3 to 1"
+    ],
+    "suggestedFix": "Option A: Reduce the Charge AP surcharge to 0 when fighting QP-immune enemies (make 'Charge mode' free to incentivize its use). Option B: Add a visual 'CHARGE REQUIRED' overlay on QP-immune enemies so players immediately understand the mechanic. Option C: Give the player +1 AP when Phase 2 activates to compensate for the AP tax. Any combination of above would improve the experience."
+  },
+  {
+    "id": "issue-1744387200004-03-05",
+    "track": "03-strategic",
+    "category": "balance_boring_fight",
+    "severity": "medium",
+    "title": "Pop Quiz (7 HP), Mold Puff (6 HP), and Group Project Phase 2 (7 HP) trivially die before reactive mechanics have impact",
+    "description": "Three enemies with reactive behavioral hooks are so low-HP that they die in 1 turn of normal play before their mechanics create meaningful decisions. Pop Quiz (onPlayerChargeCorrect: stun, onPlayerNoCharge: enrage) at 7 HP dies to any two QP attacks or one Charged attack — the stun/enrage never activates in turn-1 kills. Mold Puff (6 HP) dies to one Reckless before its poison stacking creates pressure. Group Project Phase 2 (7 HP, no block) dies to any single attack, making the 'last member standing' narrative weight meaningless mechanically. In all three states (03-03, 03-04, 03-15), the strategic analysis found zero tension because the kill was trivial. These enemies have interesting designs sabotaged by insufficient HP for their mechanics to fire.",
+    "evidence": {
+      "stateIds": ["state-03-03", "state-03-04", "state-03-15"],
+      "agentsSayingSo": 3,
+      "cardId": "",
+      "enemyId": "pop_quiz"
+    },
+    "reproductionSteps": [
+      "Fight Pop Quiz on floor 3 with any standard hand",
+      "Play 2× Strike(QP) or 1× Heavy Strike(QP) in turn 1",
+      "Observe: enemy dies before stun/enrage mechanics ever fire"
+    ],
+    "suggestedFix": "Increase HP of these enemies to extend fights long enough for their mechanics to matter. Pop Quiz: raise to 12-14 HP (currently 7). Mold Puff: raise to 10 HP (currently 6). Group Project Phase 2: minimum 12 HP (currently 7 at phase transition). These HP values push fights to 2-3 turns where the reactive mechanics have time to activate."
+  },
+  {
+    "id": "issue-1744387200005-03-06",
+    "track": "03-strategic",
+    "category": "balance_dead_card",
+    "severity": "low",
+    "title": "Execute is dead in most mid and early combat states (threshold never reached at draw time)",
+    "description": "Execute (bonus damage when enemy HP < 30%) appeared in 5 states (03-08, 03-11, 03-13, 03-14, 03-17). In 4 of 5 states, the enemy was not near 30% HP when Execute was drawn. In state-03-13 (Final Lesson at 64% HP), state-03-11 (Final Exam at 40% HP), state-03-14 (Rabbit Hole at 71% HP), and state-03-08 (Proctor at 77% HP), Execute provided no bonus and was strictly worse than Strike QP. Execute only becomes useful late in a fight when the enemy is already nearly dead — at which point any attack card would finish them. The card creates a 'waiting for the right moment' pattern where players hold it hoping for the threshold, but by the time the threshold is reached, the enemy often dies to other cards first. Execute as a deck filler card with a conditional that rarely fires is a dead card for most of its in-hand time.",
+    "evidence": {
+      "stateIds": ["state-03-08", "state-03-11", "state-03-13", "state-03-14"],
+      "agentsSayingSo": 4,
+      "cardId": "execute",
+      "enemyId": ""
+    },
+    "reproductionSteps": [
+      "Include Execute in a deck",
+      "Draw it early-mid fight when enemy is at full or half HP",
+      "Observe: Execute deals 3 base damage (no bonus) vs Strike's 4 base — strictly worse"
+    ],
+    "suggestedFix": "Option A: Give Execute a meaningful base value even when threshold not met (e.g., base 5 damage, matching Strike, with +8 bonus below threshold). Option B: Change threshold to 50% HP (making it trigger more reliably as a mid-fight card). Current design as a pure finisher with low base value makes it a liability until the very late game of each fight."
+  },
+  {
+    "id": "issue-1744387200006-03-07",
+    "track": "03-strategic",
+    "category": "balance_boring_fight",
+    "severity": "low",
+    "title": "Time Warp relic + Surge turn creates zero-tension auto-kill on standard enemies",
+    "description": "State-03-18 demonstrates that Time Warp's 5.0× surge multiplier makes any Charged attack instantly lethal against standard enemies. Heavy Strike CC on a surge turn = floor(10×5.0)×chain = 55 damage against a 13 HP enemy. The 'tension' element of the relic (timer halved for the quiz) is irrelevant because even wrong-charge (chargeWrongValue) on surge with Time Warp deals more than enough to kill most enemies. The design intent of creating a 'special power moment' is achieved, but at the cost of strategic interest. All surge turns become the same: charge one attack, auto-kill. The Time Warp relic may be reducing the interesting AP-allocation decisions of surge turns to a single obvious action.",
+    "evidence": {
+      "stateIds": ["state-03-18"],
+      "agentsSayingSo": 1,
+      "cardId": "",
+      "enemyId": "grade_dragon"
+    },
+    "reproductionSteps": [
+      "Equip Time Warp relic",
+      "Reach a surge turn (globalTurnCounter mod 4 = 2)",
+      "Observe: any single Charged attack kills all standard enemies outright",
+      "No decision needed beyond 'charge one card'"
+    ],
+    "suggestedFix": "Consider reducing Time Warp's surge multiplier from 5.0× to 3.5× — still dramatically powerful (3.5× vs base 1.5×) but not an auto-kill on most enemies. This preserves the 'power turn' fantasy while retaining some AP-allocation interest."
+  }
+]

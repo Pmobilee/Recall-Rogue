@@ -1,0 +1,89 @@
+LAYOUT DUMP  2026-04-11T02:08:18.171Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (1060, 585)  151x38     depth:2  α:0.30
+  [Ellipse]                                      (840, 647)  47x12       depth:2  α:0.30
+  [Ellipse]                                      (868, 403)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (983, 690)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (769, 519)  67x17       depth:2  α:0.30
+  [Image]                                        (1060, 544)  216x216    depth:3  frame:__BASE  tex:gold_tier_3  rot:4°
+  [Image]                                        (840, 629)  67x92       depth:3  frame:__BASE  tex:vial_small  rot:4°
+  [Container]                                    (868, 385)  96x124      depth:3  children:3  rot:-4°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_utility
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_recycle
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (983, 668)  96x124      depth:3  children:3  rot:-8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_attack
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_strike
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (769, 497)  96x124      depth:3  children:3  rot:1°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_buff
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_adapt
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Arc]                                          (748, 440)  5x5         depth:4  α:0.80
+  [Arc]                                          (895, 333)  3x3         depth:4  α:0.29
+  [Arc]                                          (859, 663)  2x2         depth:4  α:0.07
+  [Arc]                                          (1361, 298)  3x3        depth:5  α:0.50
+  [Arc]                                          (91, 313)  5x5          depth:5  α:0.58
+  [Arc]                                          (1134, 93)  5x5         depth:5  α:0.64
+  [Arc]                                          (814, 227)  3x3         depth:5  α:0.53
+  [Arc]                                          (906, 20)  5x5          depth:5  α:0.58
+  [Arc]                                          (1351, 169)  4x4        depth:5  α:0.53
+  [Arc]                                          (1264, 124)  2x2        depth:5  α:0.52
+  [Arc]                                          (1534, 57)  6x6         depth:5  α:0.66
+  [Arc]                                          (988, 322)  3x3         depth:5  α:0.57
+  [Arc]                                          (1325, 14)  4x4         depth:5  α:0.61
+  [Arc]                                          (1886, 180)  5x5        depth:5  α:0.68
+  [Arc]                                          (980, 329)  5x5         depth:5  α:0.66
+  [Arc]                                          (1885, 201)  4x4        depth:5  α:0.53
+  [Arc]                                          (156, 352)  8x8         depth:5  α:0.69
+  [Arc]                                          (1005, 348)  5x5        depth:5  α:0.58
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.topbar.svelte-1ramr3r]                                    (0, 0)  1920x49         HIDDEN
+      [div.hp-group.svelte-1ramr3r]                                (18, 9)  622x28       
+        [div.hp-bar-track.svelte-1ramr3r]                          (18, 9)  622x28       
+          [div.hp-bar-fill.svelte-1ramr3r]                         (19, 10)  620x26      
+          [span.hp-text.svelte-1ramr3r]                            (19, 15)  620x15      
+            [span.hp-value.svelte-1ramr3r]                         (297, 15)  64x15        "100/100"
+      [span.segment-name.svelte-1ramr3r]                           (1393, 15)  99x16       "Shallow Depths"
+      [span.progress-divider.svelte-1ramr3r]                       (1503, 17)  3x13        "·"
+      [span.floor-label.svelte-1ramr3r]                            (1518, 15)  38x16       "Floor 1"
+      [div.gold-counter.svelte-1ramr3r]                            (1581, -1)  68x48     
+        [span.gold-value.svelte-1ramr3r]                           (1612, 15)  36x15       "0"
+      [div.relics-row.svelte-1ramr3r]                              (1660, 7)  176x32     
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1660, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1696, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1732, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1768, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1804, 7)  32x32      
+      [button.pause-btn.svelte-1ramr3r]                            (1854, -1)  48x48     
+        [span.pause-icon.svelte-1ramr3r]                           (1861, 9)  33x27        "⚙"
+    [canvas]                                                       (0, 0)                  HIDDEN
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Ellipse] (+6 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+7 more)
+  BOTTOM-CENTER      → [Container], [Container] continueButton
+  TOP-CENTER         → [Arc], [Arc], [Arc], [Arc], [Arc] (+3 more)
+  TOP-RIGHT          → [Arc], [Arc], [Arc], [Arc], [Arc] (+1 more)
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (41 Phaser objects, 22 DOM elements) —

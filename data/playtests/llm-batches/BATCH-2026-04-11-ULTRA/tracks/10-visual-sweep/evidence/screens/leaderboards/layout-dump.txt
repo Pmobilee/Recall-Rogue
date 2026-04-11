@@ -1,0 +1,72 @@
+LAYOUT DUMP  2026-04-11T02:08:30.085Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [section.leaderboards-screen.svelte-5feztz]                    (0, 0)  1920x1080       HIDDEN
+      [h2.svelte-5feztz]                                           (205, 54)  324x54       "Leaderboards"
+      [button.back-btn.svelte-5feztz]                              (1628, 48)  77x66       "Back"
+      [p.helper.svelte-5feztz]                                     (205, 114)  1500x23     "Local rankings"
+      [span.label.svelte-5feztz]                                   (1258, 172)  65x20      "streak"
+      [span.label.svelte-5feztz]                                   (1466, 172)  49x20      "gold"
+      [div.metric.metric-floor.svelte-5feztz]                      (1551, 164)  138x31     "🗻 F19"
+        [span.label.svelte-5feztz]                                 (1632, 172)  57x20      "floor"
+      [span.label.svelte-5feztz]                                   (1265, 268)  65x20      "streak"
+      [span.label.svelte-5feztz]                                   (1469, 268)  49x20      "gold"
+      [div.metric.metric-floor.svelte-5feztz]                      (1554, 260)  135x31     "🗻 F17"
+        [span.label.svelte-5feztz]                                 (1632, 268)  57x20      "floor"
+      [span.label.svelte-5feztz]                                   (1256, 364)  65x20      "streak"
+      [span.label.svelte-5feztz]                                   (1466, 364)  49x20      "gold"
+      [div.metric.metric-floor.svelte-5feztz]                      (1551, 356)  138x31     "🗻 F16"
+        [span.label.svelte-5feztz]                                 (1632, 364)  57x20      "floor"
+      [span.label.svelte-5feztz]                                   (1266, 460)  65x20      "streak"
+      [span.label.svelte-5feztz]                                   (1467, 460)  49x20      "gold"
+      [div.metric.metric-floor.svelte-5feztz]                      (1552, 452)  137x31     "🗻 F15"
+        [span.label.svelte-5feztz]                                 (1632, 460)  57x20      "floor"
+      [span.label.svelte-5feztz]                                   (1267, 556)  65x20      "streak"
+      [span.label.svelte-5feztz]                                   (1467, 556)  49x20      "gold"
+      [div.metric.metric-floor.svelte-5feztz]                      (1552, 548)  137x31     "🗻 F14"
+        [span.label.svelte-5feztz]                                 (1632, 556)  57x20      "floor"
+      [span.label.svelte-5feztz]                                   (1266, 652)  65x20      "streak"
+      [span.label.svelte-5feztz]                                   (1467, 652)  49x20      "gold"
+      [div.metric.metric-floor.svelte-5feztz]                      (1552, 644)  137x31     "🗻 F14"
+        [span.label.svelte-5feztz]                                 (1632, 652)  57x20      "floor"
+      [span.label.svelte-5feztz]                                   (1269, 748)  65x20      "streak"
+      [span.label.svelte-5feztz]                                   (1467, 748)  49x20      "gold"
+      [div.metric.metric-floor.svelte-5feztz]                      (1552, 740)  137x31     "🗻 F13"
+        [span.label.svelte-5feztz]                                 (1632, 748)  57x20      "floor"
+      [span.label.svelte-5feztz]                                   (1271, 844)  65x20      "streak"
+      [span.label.svelte-5feztz]                                   (1467, 844)  49x20      "gold"
+      [div.metric.metric-floor.svelte-5feztz]                      (1552, 836)  137x31     "🗻 F13"
+        [span.label.svelte-5feztz]                                 (1632, 844)  57x20      "floor"
+      [span.label.svelte-5feztz]                                   (1274, 940)  65x20      "streak"
+      [span.label.svelte-5feztz]                                   (1467, 940)  49x20      "gold"
+      [div.metric.metric-floor.svelte-5feztz]                      (1552, 932)  137x31     "🗻 F12"
+        [span.label.svelte-5feztz]                                 (1632, 940)  57x20      "floor"
+      [span.label.svelte-5feztz]                                   (1266, 1036)  65x20     "streak"
+      [span.label.svelte-5feztz]                                   (1467, 1036)  49x20     "gold"
+      [div.metric.metric-floor.svelte-5feztz]                      (1552, 1028)  137x31    "🗻 F12"
+        [span.label.svelte-5feztz]                                 (1632, 1036)  57x20     "floor"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [section.leaderboards-screen.svelte-5feztz], [div.screen-transition.svelte-2meh4s]
+  TOP-LEFT           → [h2.svelte-5feztz]
+  TOP-CENTER         → [p.helper.svelte-5feztz]
+  TOP-RIGHT          → [div.metric.metric-floor.svelte-5feztz], [div.metric.metric-floor.svelte-5feztz]
+  MIDDLE-RIGHT       → [div.metric.metric-floor.svelte-5feztz], [div.metric.metric-floor.svelte-5feztz], [div.metric.metric-floor.svelte-5feztz], [div.metric.metric-floor.svelte-5feztz]
+  BOTTOM-RIGHT       → [div.metric.metric-floor.svelte-5feztz], [div.metric.metric-floor.svelte-5feztz], [div.metric.metric-floor.svelte-5feztz], [div.metric.metric-floor.svelte-5feztz]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [section.leaderboards-screen.svelte-5feztz]        covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 46 DOM elements) —

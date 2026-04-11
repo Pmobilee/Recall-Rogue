@@ -1,0 +1,10 @@
+{
+  "runLabel": "global-fork-isolation-test",
+  "description": "Bug 6 regression: verify that pre-consuming the global 'enemies' fork (simulating asymmetric UI hover previews between peers) does NOT alter enemy ID assignments",
+  "seed": 12345,
+  "scenario": "Run A: clean init. Run B: global enemies fork consumed 5 times before generateActMap call.",
+  "result": "PASS — enemy ID assignments identical in both runs",
+  "runA_firstEnemyId": "mold_puff",
+  "runB_firstEnemyId": "mold_puff",
+  "divergencesFound": 0
+}

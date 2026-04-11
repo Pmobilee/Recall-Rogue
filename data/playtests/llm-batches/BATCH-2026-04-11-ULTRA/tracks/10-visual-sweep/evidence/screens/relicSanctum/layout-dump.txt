@@ -1,0 +1,682 @@
+LAYOUT DUMP  2026-04-11T02:05:27.256Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (1084, 562)  121x30     depth:2  α:0.30
+  [Ellipse]                                      (903, 393)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (888, 650)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (765, 528)  54x13       depth:2  α:0.30
+  [Image]                                        (1084, 530)  173x173    depth:3  frame:__BASE  tex:gold_tier_2  rot:7°
+  [Container]                                    (903, 372)  96x124      depth:3  children:3  rot:8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_attack
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_heavy_strike
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (888, 630)  96x124      depth:3  children:3  rot:-8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_block
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Image]                                        (765, 510)  77x203      depth:3  frame:__BASE  tex:vial_large  rot:-4°
+  [Arc]                                          (875, 415)  5x5         depth:4  α:0.80
+  [Arc]                                          (877, 583)  5x5         depth:4  α:0.80
+  [Arc]                                          (1307, 226)  6x6        depth:5  α:0.23
+  [Arc]                                          (814, 145)  5x5         depth:5  α:0.59
+  [Arc]                                          (435, 113)  5x5         depth:5  α:0.49
+  [Arc]                                          (1396, 140)  3x3        depth:5  α:0.55
+  [Arc]                                          (714, 279)  6x6         depth:5  α:0.65
+  [Arc]                                          (560, 296)  6x6         depth:5  α:0.68
+  [Arc]                                          (729, 163)  6x6         depth:5  α:0.60
+  [Arc]                                          (523, 287)  3x3         depth:5  α:0.50
+  [Arc]                                          (637, 227)  3x3         depth:5  α:0.56
+  [Arc]                                          (1149, 36)  4x4         depth:5  α:0.52
+  [Arc]                                          (669, 343)  4x4         depth:5  α:0.60
+  [Arc]                                          (670, 262)  6x6         depth:5  α:0.62
+  [Arc]                                          (1093, 117)  5x5        depth:5  α:0.36
+  [Arc]                                          (583, 186)  6x6         depth:5  α:0.35
+  [Arc]                                          (1522, 334)  2x2        depth:5  α:0.07
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [section.relic-screen.svelte-19ofhx2]                          (0, 0)  1920x1080       HIDDEN
+      [button.back-btn.svelte-19ofhx2]                             (18, 24)  771x66      
+        [span]                                                     (40, 43)  20x28         "←"
+        [span]                                                     (69, 43)  55x28         "Camp"
+      [h2.header-title.svelte-19ofhx2]                             (801, 30)  307x54       "Relic Archive"
+      [span.coin-icon.svelte-19ofhx2]                              (1838, 46)  22x23       "⚡"
+      [span.coin-amount.svelte-19ofhx2]                            (1866, 47)  10x20       "0"
+      [button.pill.svelte-19ofhx2.active]                          (18, 108)  55x51        "All"
+      [button.pill.svelte-19ofhx2]                                 (82, 108)  97x51        "Common"
+      [button.pill.svelte-19ofhx2]                                 (188, 108)  113x51      "Uncommon"
+      [button.pill.svelte-19ofhx2]                                 (311, 108)  68x51       "Rare"
+      [button.pill.svelte-19ofhx2]                                 (388, 108)  107x51      "Legendary"
+      [button.pill.svelte-19ofhx2.active]                          (18, 174)  55x51        "All"
+      [button.pill.svelte-19ofhx2]                                 (82, 174)  100x51       "Offensive"
+      [button.pill.svelte-19ofhx2]                                 (191, 174)  102x51      "Defensive"
+      [button.pill.svelte-19ofhx2]                                 (302, 174)  87x51       "Sustain"
+      [button.pill.svelte-19ofhx2]                                 (398, 174)  89x51       "Tactical"
+      [button.pill.svelte-19ofhx2]                                 (496, 174)  110x51      "Knowledge"
+      [button.pill.svelte-19ofhx2]                                 (615, 174)  98x51       "Economy"
+      [button.pill.svelte-19ofhx2]                                 (722, 174)  84x51       "Cursed"
+      [span]                                                       (21, 249)  149x24       "Unlocked: 40/90"
+      [span]                                                       (1818, 249)  71x24      "Coins: 0"
+      [div.relic-grid.svelte-19ofhx2]                              (18, 291)  1874x4485  
+        [button.relic-card.svelte-19ofhx2]                         (18, 291)  615x135    
+          [div.relic-icon.svelte-19ofhx2]                          (308, 311)  35x35     
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 311)  35x35     
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🪨"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (293, 352)  65x15       "Whetstone"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 373)  66x20       "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 291)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (937, 311)  35x35     
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 311)  35x35     
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🛡️"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (922, 352)  65x15       "Iron Shield"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 373)  66x20       "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 291)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 311)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 311)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "💍"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1548, 352)  74x15      "Vitality Ring"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 373)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 441)  615x135    
+          [div.relic-icon.svelte-19ofhx2]                          (308, 461)  35x35     
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 461)  35x35     
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🌿"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (286, 502)  80x15       "Herbal Pouch"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 523)  66x20       "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 441)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (937, 461)  35x35     
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 461)  35x35     
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "👢"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (921, 502)  68x15       "Swift Boots"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 523)  66x20       "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 441)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 461)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 461)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🔩"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1555, 502)  59x15      "Steel Skin"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 523)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 591)  615x135    
+          [div.relic-icon.svelte-19ofhx2]                          (308, 611)  35x35     
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 611)  35x35     
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🧲"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (287, 652)  76x15       "Gold Magnet"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 673)  66x20       "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 591)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (937, 611)  35x35     
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 611)  35x35     
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🏪"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (904, 652)  102x15      "Merchant's Favor"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 673)  66x20       "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 591)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 611)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 611)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🪙"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1551, 652)  66x15      "Lucky Coin"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 673)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 741)  615x135    
+          [div.relic-icon.svelte-19ofhx2]                          (308, 761)  35x35     
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 761)  35x35     
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "👁️"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (279, 802)  93x15       "Scavenger's Eye"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 823)  66x20       "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 741)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (937, 761)  35x35     
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 761)  35x35     
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "💀"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (921, 802)  68x15       "Last Breath"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 823)  66x20       "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 741)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 761)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 761)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🔗"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1550, 802)  69x15      "Tag Magnet"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 823)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 891)  615x135    
+          [div.relic-icon.svelte-19ofhx2]                          (308, 911)  35x35     
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 911)  35x35     
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "⚡"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (274, 952)  103x15      "Adrenaline Shard"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 973)  66x20       "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 891)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (937, 911)  35x35     
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 911)  35x35     
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "💥"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (917, 952)  76x15       "Volatile Core"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 973)  66x20       "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 891)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 911)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 911)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🧱"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1550, 952)  69x15      "Aegis Stone"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 973)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 1041)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 1061)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 1061)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🔮"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (273, 1102)  105x15     "Regeneration Orb"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 1123)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 1041)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 1061)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 1061)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🧪"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (918, 1102)  73x15      "Plague Flask"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 1123)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 1041)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 1061)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 1061)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🧠"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1540, 1102)  90x15     "Memory Nexus"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 1123)  66x20     "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 1191)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 1211)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 1211)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🔭"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (285, 1252)  80x15      "Insight Prism"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 1273)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 1191)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 1211)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 1211)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🩸"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (921, 1252)  68x15      "Blood Price"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 1273)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 1191)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 1211)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 1211)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🔥"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1535, 1252)  99x15     "Reckless Resolve"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 1273)  66x20     "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 1341)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 1361)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 1361)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "💎"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (283, 1402)  85x15      "Overflow Gem"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 1423)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 1341)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 1361)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 1361)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🔷"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (900, 1402)  110x15     "Resonance Crystal"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 1423)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 1341)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 1361)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 1361)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "📖"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1548, 1402)  72x15     "Quick Study"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 1423)  66x20     "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 1491)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 1511)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 1511)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🦴"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (294, 1552)  63x15      "Thick Skin"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 1573)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 1491)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 1511)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 1511)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "📒"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (899, 1552)  111x15     "Tattered Notebook"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 1573)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 1491)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 1511)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 1511)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "⚔️"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1549, 1552)  71x15     "Battle Scars"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 1573)  66x20     "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 1641)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 1661)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 1661)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🥊"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (280, 1702)  90x15      "Brass Knuckles"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 1723)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 1641)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 1661)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 1661)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "⌚"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (915, 1702)  81x15      "Pocket Watch"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 1723)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 1641)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 1661)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 1661)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "⛓️"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1531, 1702)  108x15    "Chain Link Charm"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 1723)  66x20     "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 1791)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 1811)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 1811)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🛡️"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (289, 1852)  73x15      "Worn Shield"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 1873)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 1791)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 1811)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 1811)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🩸"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (922, 1852)  65x15      "Bleedstone"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 1873)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 1791)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 1811)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 1811)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🔥"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1549, 1852)  70x15     "Ember Core"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 1873)  66x20     "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 1941)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 1961)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 1961)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🎲"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (276, 2002)  99x15      "Gambler's Token"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 2023)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 1941)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 1961)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 1961)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "💭"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (916, 2002)  79x15      "Thoughtform"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 2023)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 1941)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 1961)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 1961)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🩹"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1551, 2002)  68x15     "Scar Tissue"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 2023)  66x20     "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 2091)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 2111)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 2111)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "📗"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (278, 2152)  94x15      "Living Grimoire"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 2173)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (648, 2091)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 2111)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 2111)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "⚡"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (907, 2152)  95x15      "Surge Capacitor"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (922, 2173)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (1277, 2091)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 2111)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 2111)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🎲"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1544, 2152)  82x15     "Obsidian Dice"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (1552, 2173)  66x20     "OWNED"
+        [button.relic-card.svelte-19ofhx2]                         (18, 2241)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 2261)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 2261)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "🏟️"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (276, 2302)  98x15      "Gladiator's Mark"
+          [span.badge.badge-owned.svelte-19ofhx2]                  (292, 2323)  66x20      "OWNED"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 2241)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 2261)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 2261)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 2302)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (930, 2323)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (940, 2325)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 2241)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 2261)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 2261)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 2302)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1559, 2323)  50x20     "55"
+            [span.badge-coin.svelte-19ofhx2]                       (1569, 2325)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 2391)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 2411)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 2411)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 2452)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (300, 2473)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (310, 2475)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 2391)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 2411)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 2411)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 2452)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (930, 2473)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (940, 2475)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 2391)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 2411)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 2411)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 2452)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1559, 2473)  50x20     "55"
+            [span.badge-coin.svelte-19ofhx2]                       (1569, 2475)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 2541)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 2561)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 2561)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 2602)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (300, 2623)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (310, 2625)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 2541)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 2561)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 2561)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 2602)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (930, 2623)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (940, 2625)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 2541)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 2561)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 2561)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 2602)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1559, 2623)  50x20     "55"
+            [span.badge-coin.svelte-19ofhx2]                       (1569, 2625)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 2691)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 2711)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 2711)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 2752)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (299, 2773)  52x20      "60"
+            [span.badge-coin.svelte-19ofhx2]                       (309, 2775)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 2691)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 2711)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 2711)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 2752)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (930, 2773)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (940, 2775)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 2691)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 2711)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 2711)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 2752)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1559, 2773)  50x20     "55"
+            [span.badge-coin.svelte-19ofhx2]                       (1569, 2775)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 2841)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 2861)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 2861)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 2902)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (299, 2923)  52x20      "60"
+            [span.badge-coin.svelte-19ofhx2]                       (309, 2925)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 2841)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 2861)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 2861)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 2902)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (929, 2923)  52x20      "60"
+            [span.badge-coin.svelte-19ofhx2]                       (939, 2925)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 2841)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 2861)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 2861)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 2902)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1560, 2923)  50x20     "75"
+            [span.badge-coin.svelte-19ofhx2]                       (1570, 2925)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 2991)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 3011)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 3011)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 3052)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (301, 3073)  50x20      "75"
+            [span.badge-coin.svelte-19ofhx2]                       (311, 3075)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 2991)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 3011)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 3011)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 3052)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (930, 3073)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (940, 3075)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 2991)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 3011)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 3011)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 3052)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1559, 3073)  50x20     "55"
+            [span.badge-coin.svelte-19ofhx2]                       (1569, 3075)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 3141)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 3161)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 3161)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 3202)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (300, 3223)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (310, 3225)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 3141)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 3161)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 3161)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 3202)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (930, 3223)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (940, 3225)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 3141)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 3161)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 3161)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 3202)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1559, 3223)  50x20     "55"
+            [span.badge-coin.svelte-19ofhx2]                       (1569, 3225)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 3291)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 3311)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 3311)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 3352)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (300, 3373)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (310, 3375)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 3291)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 3311)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 3311)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 3352)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (930, 3373)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (940, 3375)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 3291)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 3311)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 3311)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 3352)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1559, 3373)  50x20     "55"
+            [span.badge-coin.svelte-19ofhx2]                       (1569, 3375)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 3441)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 3461)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 3461)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 3502)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (300, 3523)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (310, 3525)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 3441)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 3461)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 3461)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 3502)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (930, 3523)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (940, 3525)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 3441)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 3461)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 3461)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 3502)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1559, 3523)  50x20     "55"
+            [span.badge-coin.svelte-19ofhx2]                       (1569, 3525)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 3591)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 3611)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 3611)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 3652)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (300, 3673)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (310, 3675)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 3591)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 3611)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 3611)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 3652)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (930, 3673)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (940, 3675)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 3591)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 3611)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 3611)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 3652)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1559, 3673)  50x20     "55"
+            [span.badge-coin.svelte-19ofhx2]                       (1569, 3675)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 3741)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 3761)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 3761)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 3802)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (300, 3823)  50x20      "55"
+            [span.badge-coin.svelte-19ofhx2]                       (310, 3825)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 3741)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 3761)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 3761)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 3802)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (930, 3823)  50x20      "75"
+            [span.badge-coin.svelte-19ofhx2]                       (940, 3825)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 3741)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 3761)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 3761)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 3802)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1560, 3823)  50x20     "75"
+            [span.badge-coin.svelte-19ofhx2]                       (1570, 3825)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 3891)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 3911)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 3911)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 3952)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (301, 3973)  50x20      "75"
+            [span.badge-coin.svelte-19ofhx2]                       (311, 3975)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 3891)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 3911)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 3911)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 3952)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (930, 3973)  50x20      "75"
+            [span.badge-coin.svelte-19ofhx2]                       (940, 3975)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 3891)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 3911)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 3911)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 3952)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1559, 3973)  50x20     "55"
+            [span.badge-coin.svelte-19ofhx2]                       (1569, 3975)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 4041)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 4061)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 4061)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 4102)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (300, 4123)  52x20      "40"
+            [span.badge-coin.svelte-19ofhx2]                       (310, 4125)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 4041)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 4061)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 4061)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 4102)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (932, 4123)  45x20      "0"
+            [span.badge-coin.svelte-19ofhx2]                       (942, 4125)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 4041)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 4061)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 4061)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 4102)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1562, 4123)  45x20     "0"
+            [span.badge-coin.svelte-19ofhx2]                       (1572, 4125)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 4191)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 4211)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 4211)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 4252)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (303, 4273)  45x20      "0"
+            [span.badge-coin.svelte-19ofhx2]                       (313, 4275)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 4191)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 4211)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 4211)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 4252)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (932, 4273)  45x20      "0"
+            [span.badge-coin.svelte-19ofhx2]                       (942, 4275)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 4191)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 4211)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 4211)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 4252)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1562, 4273)  45x20     "0"
+            [span.badge-coin.svelte-19ofhx2]                       (1572, 4275)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 4341)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 4361)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 4361)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 4402)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (303, 4423)  45x20      "0"
+            [span.badge-coin.svelte-19ofhx2]                       (313, 4425)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 4341)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 4361)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 4361)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 4402)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (932, 4423)  45x20      "0"
+            [span.badge-coin.svelte-19ofhx2]                       (942, 4425)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 4341)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 4361)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 4361)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 4402)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1562, 4423)  45x20     "0"
+            [span.badge-coin.svelte-19ofhx2]                       (1572, 4425)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 4491)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 4511)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 4511)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 4552)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (303, 4573)  45x20      "0"
+            [span.badge-coin.svelte-19ofhx2]                       (313, 4575)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 4491)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 4511)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 4511)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 4552)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (932, 4573)  45x20      "0"
+            [span.badge-coin.svelte-19ofhx2]                       (942, 4575)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 4491)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 4511)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 4511)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 4552)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1562, 4573)  45x20     "0"
+            [span.badge-coin.svelte-19ofhx2]                       (1572, 4575)  14x16     "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (18, 4641)  615x135   
+          [div.relic-icon.svelte-19ofhx2]                          (308, 4661)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (308, 4661)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (316, 4702)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (303, 4723)  45x20      "0"
+            [span.badge-coin.svelte-19ofhx2]                       (313, 4725)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (648, 4641)  615x135  
+          [div.relic-icon.svelte-19ofhx2]                          (937, 4661)  35x35    
+            [img.relic-icon-img.svelte-19ofhx2]                    (937, 4661)  35x35    
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (946, 4702)  19x15      "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (932, 4723)  45x20      "0"
+            [span.badge-coin.svelte-19ofhx2]                       (942, 4725)  14x16      "⚡"
+        [button.relic-card.svelte-19ofhx2.locked]                  (1277, 4641)  615x135 
+          [div.relic-icon.svelte-19ofhx2]                          (1567, 4661)  35x35   
+            [img.relic-icon-img.svelte-19ofhx2]                    (1567, 4661)  35x35   
+            [span.relic-icon-fallback.svelte-19ofhx2]              (0, 0)                  "❓"  HIDDEN
+          [span.relic-name.svelte-19ofhx2]                         (1575, 4702)  19x15     "???"
+          [span.badge.badge-cost.svelte-19ofhx2]                   (1562, 4723)  45x20     "0"
+            [span.badge-coin.svelte-19ofhx2]                       (1572, 4725)  14x16     "⚡"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Image] (+7 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+10 more)
+  TOP-RIGHT          → [Arc], [Arc], [Arc]
+  TOP-CENTER         → [Arc], [Arc], [Arc], [Arc], [Arc] (+3 more)
+  BOTTOM-CENTER      → [Container] continueButton
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [section.relic-screen.svelte-19ofhx2]              covers 100% height  CENTER
+  [div.relic-grid.svelte-19ofhx2]                    covers 415% height  BOTTOM-CENTER
+  [button.relic-card.svelte-19ofhx2]                 covers 13% height  TOP-LEFT
+  [button.relic-card.svelte-19ofhx2]                 covers 13% height  TOP-CENTER
+  [button.relic-card.svelte-19ofhx2]                 covers 13% height  TOP-RIGHT
+  [button.relic-card.svelte-19ofhx2]                 covers 13% height  MIDDLE-LEFT
+  [button.relic-card.svelte-19ofhx2]                 covers 13% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (35 Phaser objects, 615 DOM elements) —

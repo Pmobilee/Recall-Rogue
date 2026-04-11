@@ -2389,3 +2389,52 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engi
 **Fix/Workaround:** Each fresh warm container reliably supports exactly ONE successful combat scenario test if the container is rebooted between tests. The one reliable pattern: start a new container → run one test → stop container. Do NOT attempt multiple combat scenario loads per container. Better systemic fix: add crash recovery to `warm-server.mjs` — on "Target crashed" error, call `page.reload()` + `waitForFunction(() => window.__rrScenario !== undefined)`, then retry the action batch. This would allow multi-test containers for combat scenarios. Alternatively, a query-param–based navigation approach (`?devScenario=combat-basic`) would avoid `page.evaluate()` for scenario loading entirely.
 
 **Scope:** Affects combat scenarios only — hub/map/shop scenarios do not trigger a Phaser scene restart and work reliably across multiple tests per container. Headless balance simulator (`tests/playtest/headless/run-batch.ts`) is unaffected and is the preferred tool for multi-level ascension verification.
+
+
+---
+
+### 2026-04-11 — chess_tactics.json fenPosition is post-setup FEN; getPlayerContext() expects pre-setup base FEN
+
+**What:** When the `study-deck-chess` scenario is loaded, `StudyQuizOverlay.svelte` never renders the `ChessBoard` component despite having all the required code (imported at line 7, branch at line 211). The quiz silently falls back to text multiple-choice. No console error is surfaced.
+
+**Why:** `chessGrader.getPlayerContext(baseFen, solutionMoves)` expects the FEN position BEFORE the opponent's setup move, then applies `solutionMoves[0]` to produce the puzzle position. `chess_tactics.json` instead stores the FEN AFTER the setup move has already been applied (the puzzle position the player would see). When `chess.js` tries to apply `solutionMoves[0]` (e.g., `e4g4`) to a FEN with no piece at e4, it throws. The catch block at `StudyQuizOverlay.svelte` lines 77-79 silently sets `chessContext = null`. The board branch condition `quizResponseMode === 'chess_move' && chessContext` at line 211 is never true.
+
+The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess puzzles) is to store the BASE FEN (one move before the puzzle starts). `chess_tactics.json` was authored with the wrong FEN.
+
+**How to detect:** If `ChessBoard` is imported in a component but never appears in the DOM, add a `console.warn` to the `catch` block (lines 77-79 of `StudyQuizOverlay.svelte`) that logs the FEN and the failing move. The silent catch is the trap — it looks like the board "never wired up" when actually a data format mismatch is causing the grader to throw.
+
+**Fix:** Either (a) correct `chess_tactics.json` to store the pre-setup base FEN in `fenPosition`, or (b) add a "pre-applied" mode to `getPlayerContext()` where `solutionMoves[0]` is skipped and the passed FEN is treated as already at the puzzle position.
+
+### 2026-04-11 — Docker SwiftShader Crashes Under 16-Container Parallel Load
+
+**What happened:** Track 12 (stress/edge/perf) in BATCH-2026-04-11-ULTRA ran concurrently with 15 other Docker warm containers. The SwiftShader GPU process crashed repeatedly with `SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox` (30+ times), followed by Chromium renderer crash (`Target crashed`). System load avg hit 34–128.
+
+**Why:** SwiftShader's software-renderer GPU process cannot share GPU mailboxes across containers under extreme CPU saturation. Each Docker warm container runs Chromium with SwiftShader which requires exclusive GPU mailbox slots. At 16 containers, the shared GPU memory pool is exhausted.
+
+**Fix:** Limit parallel Docker warm containers to max 8. Stagger batch track start times by 2–3 minutes. The stress/perf track is particularly vulnerable because it requires stable FPS readings — always run it with ≤4 other containers active.
+
+### 2026-04-11 — Docker SwiftShader drawCalls Always Returns -1
+
+**What happened:** `__rrDebug().phaserPerf.drawCalls` returns -1 in all Docker SwiftShader containers. The implementation reads `renderer.gl?.drawCount` but SwiftShader's WebGL implementation does not track this counter.
+
+**Why:** SwiftShader does not expose GL draw count statistics via the standard WebGL API.
+
+**Fix:** Draw call validation must be done on real GPU (native Chrome). Docker is not suitable for draw call budget verification. Document this in `docs/testing/perf-baselines.md`.
+
+### 2026-04-11 — __rrPlay API Missing forceHand and setGold Methods
+
+**What happened:** S5 empty state testing tried `window.__rrPlay.forceHand([])` and `window.__rrPlay.setGold(0)` — both methods are absent from the API. Empty hand and zero-gold state cannot be force-tested via the current automation API.
+
+**Why:** These debug/test utility methods were never added to the __rrPlay interface.
+
+**Fix:** Add `__rrPlay.forceHand(cards[])` and `__rrPlay.setGold(amount)` to the debug bridge API for more complete edge state testing coverage. File as a qa-agent task.
+
+### 2026-04-11 — BATCH-ULTRA: 12-wide parallel Docker warm containers saturate SwiftShader
+
+**What happened:** BATCH-2026-04-11-ULTRA launched 12 parallel sub-agents, 9 of which used Docker warm containers simultaneously (plus the orchestrator's own reference container). Under this load, SwiftShader's GPU process crashes with `SharedImageManager::ProduceSkia` mailbox exhaustion, cascading into `Target crashed` page errors. Track 04 (combat-core LLM) lost ALL 3 testers to this; Track 08 (ascension) was limited to 1 visual capture per container; Track 12 (stress/edge) independently confirmed the root cause at 16+ simulaneous containers.
+
+**Why:** Docker + Chromium + SwiftShader each consume GPU mailbox slots that are shared across container instances via the host's virtual framebuffer. M4 Max has plenty of CPU but the shared GPU memory pool fills at ~8 containers. Symptom is random `Target crashed` errors on `page.evaluate()` calls that scale with concurrent load.
+
+**Fix:** When running parallel Docker warm containers, enforce **max 4-8 concurrent**. For ultra-scope batches, use a container pool with sequential dispatch rather than burst-spawning all agents at once. Alternative: stagger Docker tracks by 2-3 minutes so they don't all boot simultaneously. Pure API tracks (headless sim, Python RL, source-audit-only) have no Docker footprint and can run fully parallel.
+
+**Systemic fix candidate:** `scripts/docker-visual-test.sh --warm start` could reject new starts past N concurrent and queue them, or log a warning. Orchestration skills (`/llm-playtest`, `/inspect`, `/scenario-playtest`) should respect this cap in their scheduling.

@@ -1,0 +1,63 @@
+LAYOUT DUMP  2026-04-11T02:08:46.832Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.mp-menu.svelte-16eay0a]                                   (0, 0)  1920x1080       HIDDEN
+      [button.back-btn.svelte-16eay0a]                             (36, 21)  66x66       
+        [span.back-icon.svelte-16eay0a]                            (55, 40)  28x28         "←"
+      [h1.mp-title.svelte-16eay0a]                                 (126, 36)  163x36       "Multiplayer"
+      [div.mp-content-card.svelte-16eay0a]                         (445, 157)  1020x893  
+        [div.tab-bar.svelte-16eay0a]                               (446, 158)  1018x73   
+          [button.tab-btn.svelte-16eay0a.active]                   (446, 158)  509x73      "Create Lobby"
+          [button.tab-btn.svelte-16eay0a]                          (955, 158)  509x73      "Join Lobby"
+        [li.mode-card.svelte-16eay0a.selected]                     (476, 261)  958x123   
+          [div.mode-card-header.svelte-16eay0a]                    (501, 283)  908x26    
+            [span.mode-name.svelte-16eay0a]                        (501, 285)  95x23       "Race Mode"
+            [span.mode-badge.svelte-16eay0a]                       (1372, 283)  37x26      "4P"
+        [li.mode-card.svelte-16eay0a]                              (476, 396)  958x123   
+          [div.mode-card-header.svelte-16eay0a]                    (501, 418)  908x26    
+            [span.mode-name.svelte-16eay0a]                        (501, 419)  103x23      "Same Cards"
+            [span.mode-badge.svelte-16eay0a]                       (1372, 418)  37x26      "2P"
+        [li.mode-card.svelte-16eay0a]                              (476, 531)  958x123   
+          [div.mode-card-header.svelte-16eay0a]                    (501, 553)  908x26    
+            [span.mode-name.svelte-16eay0a]                        (501, 554)  142x23      "Knowledge Duel"
+            [span.mode-badge.svelte-16eay0a]                       (1372, 553)  37x26      "2P"
+        [li.mode-card.svelte-16eay0a]                              (476, 665)  958x123   
+          [div.mode-card-header.svelte-16eay0a]                    (501, 687)  908x26    
+            [span.mode-name.svelte-16eay0a]                        (501, 689)  54x23       "Co-op"
+            [span.mode-badge.svelte-16eay0a]                       (1372, 687)  37x26      "2P"
+        [li.mode-card.svelte-16eay0a]                              (476, 800)  958x123   
+          [div.mode-card-header.svelte-16eay0a]                    (501, 822)  908x26    
+            [span.mode-name.svelte-16eay0a]                        (501, 824)  106x23      "Trivia Night"
+            [span.mode-badge.svelte-16eay0a]                       (1371, 822)  38x26      "8P"
+        [button.primary-btn.svelte-16eay0a]                        (1236, 953)  198x66     "Create Lobby"
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.mp-menu.svelte-16eay0a], [div.mp-content-card.svelte-16eay0a], [li.mode-card.svelte-16eay0a], [div.mode-card-header.svelte-16eay0a] (+4 more)
+  TOP-LEFT           → [h1.mp-title.svelte-16eay0a]
+  TOP-CENTER         → [div.tab-bar.svelte-16eay0a], [button.tab-btn.svelte-16eay0a.active], [button.tab-btn.svelte-16eay0a], [li.mode-card.svelte-16eay0a.selected], [div.mode-card-header.svelte-16eay0a]
+  MIDDLE-LEFT        → [span.mode-name.svelte-16eay0a], [span.mode-name.svelte-16eay0a]
+  BOTTOM-CENTER      → [li.mode-card.svelte-16eay0a], [li.mode-card.svelte-16eay0a], [div.mode-card-header.svelte-16eay0a]
+  BOTTOM-LEFT        → [span.mode-name.svelte-16eay0a]
+  BOTTOM-RIGHT       → [button.primary-btn.svelte-16eay0a]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.mp-menu.svelte-16eay0a]                       covers 100% height  CENTER
+  [div.mp-content-card.svelte-16eay0a]               covers 83% height  CENTER
+  [li.mode-card.svelte-16eay0a.selected]             covers 11% height  TOP-CENTER
+  [li.mode-card.svelte-16eay0a]                      covers 11% height  CENTER
+  [li.mode-card.svelte-16eay0a]                      covers 11% height  CENTER
+  [li.mode-card.svelte-16eay0a]                      covers 11% height  BOTTOM-CENTER
+  [li.mode-card.svelte-16eay0a]                      covers 11% height  BOTTOM-CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 31 DOM elements) —

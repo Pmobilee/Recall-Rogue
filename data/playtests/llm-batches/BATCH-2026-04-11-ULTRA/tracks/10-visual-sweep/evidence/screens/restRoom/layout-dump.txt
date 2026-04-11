@@ -1,0 +1,127 @@
+LAYOUT DUMP  2026-04-11T02:03:04.489Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (1084, 562)  121x30     depth:2  α:0.30
+  [Ellipse]                                      (903, 393)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (888, 650)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (765, 528)  54x13       depth:2  α:0.30
+  [Image]                                        (1084, 528)  173x173    depth:3  frame:__BASE  tex:gold_tier_2  rot:7°
+  [Container]                                    (903, 371)  96x124      depth:3  children:3  rot:8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_attack
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_heavy_strike
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (888, 627)  96x124      depth:3  children:3  rot:-8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_block
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Image]                                        (765, 513)  77x203      depth:3  frame:__BASE  tex:vial_large  rot:-4°
+  [Arc]                                          (735, 477)  2x2         depth:4  α:0.25
+  [Arc]                                          (1377, 345)  3x3        depth:5  α:0.05
+  [Arc]                                          (1336, 288)  4x4        depth:5  α:0.10
+  [Arc]                                          (820, 363)  3x3         depth:5  α:0.52
+  [Arc]                                          (1501, 178)  4x4        depth:5  α:0.61
+  [Arc]                                          (228, 222)  4x4         depth:5  α:0.53
+  [Arc]                                          (773, 283)  4x4         depth:5  α:0.52
+  [Arc]                                          (123, 319)  3x3         depth:5  α:0.56
+  [Arc]                                          (987, 153)  5x5         depth:5  α:0.55
+  [Arc]                                          (1428, 366)  5x5        depth:5  α:0.56
+  [Arc]                                          (309, 167)  5x5         depth:5  α:0.60
+  [Arc]                                          (1392, 110)  2x2        depth:5  α:0.54
+  [Arc]                                          (1407, 126)  4x4        depth:5  α:0.61
+  [Arc]                                          (604, 145)  6x6         depth:5  α:0.68
+  [Arc]                                          (671, 305)  4x4         depth:5  α:0.66
+  [Arc]                                          (1057, 199)  4x4        depth:5  α:0.62
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.topbar.svelte-1ramr3r]                                    (0, 0)  1920x49         HIDDEN
+      [div.hp-group.svelte-1ramr3r]                                (18, 9)  622x28       
+        [div.hp-bar-track.svelte-1ramr3r]                          (18, 9)  622x28       
+          [div.hp-bar-fill.svelte-1ramr3r]                         (19, 10)  620x26      
+          [span.hp-text.svelte-1ramr3r]                            (19, 15)  620x15      
+            [span.hp-value.svelte-1ramr3r]                         (297, 15)  64x15        "100/100"
+      [span.segment-name.svelte-1ramr3r]                           (1393, 15)  99x16       "Shallow Depths"
+      [span.progress-divider.svelte-1ramr3r]                       (1503, 17)  3x13        "·"
+      [span.floor-label.svelte-1ramr3r]                            (1518, 15)  38x16       "Floor 1"
+      [div.gold-counter.svelte-1ramr3r]                            (1581, -1)  68x48     
+        [span.gold-value.svelte-1ramr3r]                           (1612, 15)  36x15       "0"
+      [div.relics-row.svelte-1ramr3r]                              (1660, 7)  176x32     
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1660, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1696, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1732, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1768, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1804, 7)  32x32      
+      [button.pause-btn.svelte-1ramr3r]                            (1854, -1)  48x48     
+        [span.pause-icon.svelte-1ramr3r]                           (1861, 9)  33x27        "⚙"
+    [canvas]                                                       (0, 0)                  HIDDEN
+    [div.rest-overlay.svelte-9b391i.landscape]                     (0, 0)  1920x1080       HIDDEN
+      [img.screen-bg.svelte-9b391i]                                (0, 0)  1920x1080     
+      [div.rest-card.svelte-9b391i]                                (510, 248)  900x583   
+        [h2.rest-title.svelte-9b391i]                              (860, 298)  201x54      "Rest Site"
+        [p.rest-choice-caption.svelte-9b391i]                      (803, 367)  314x23      "Choose one: Rest, Study, or Meditate"
+        [div.hp-info.svelte-9b391i]                                (882, 414)  157x31      "HP: 100 / 100"
+        [div.option-cards.svelte-9b391i]                           (572, 469)  776x312   
+          [button] data-testid="rest-heal"                         (572, 469)  243x312   
+            [span.option-icon.svelte-9b391i]                       (660, 507)  67x76       "❤️"
+            [span.option-label.svelte-9b391i]                      (668, 590)  51x34       "Rest"
+            [span.option-detail.svelte-9b391i]                     (639, 632)  108x25      "Heal 20% HP"
+            [span.option-preview.svelte-9b391i]                    (640, 670)  106x23      "+20 HP → 100"
+          [button] data-testid="rest-study"                        (839, 469)  243x312   
+            [span.option-icon.svelte-9b391i]                       (926, 507)  67x76       "📖"
+            [span.option-label.svelte-9b391i]                      (927, 590)  66x34       "Study"
+            [span.option-detail.svelte-9b391i]                     (862, 632)  197x76      "Quiz 3 questions — each correct upgrades a card"
+            [span.option-preview.svelte-9b391i]                    (882, 721)  156x23      "No cards to upgrade"
+          [button] data-testid="rest-meditate"                     (1105, 469)  243x312  
+            [span.option-icon.svelte-9b391i]                       (1193, 507)  67x76      "🧘"
+            [span.option-label.svelte-9b391i]                      (1175, 590)  103x34     "Meditate"
+            [span.option-detail.svelte-9b391i]                     (1128, 632)  197x50     "Remove 1 card from your deck"
+            [span.option-preview.svelte-9b391i]                    (1142, 695)  170x23     "Deck too small (min 5)"
+    [div.parallax-transition-overlay.svelte-1lwegjf.settled]       (0, 0)  1920x1080       HIDDEN
+      [canvas.parallax-canvas.svelte-1lwegjf]                      (0, 0)  1920x1080     
+    [div.screen-transition.svelte-2meh4s.wipe-zoom]                (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Image] (+6 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+10 more)
+  TOP-RIGHT          → [Arc], [Arc], [Arc], [Arc], [Arc] (+1 more)
+  TOP-CENTER         → [Arc], [Arc], [Arc], [Arc], [div.topbar.svelte-1ramr3r]
+  MIDDLE-RIGHT       → [Arc]
+  BOTTOM-CENTER      → [Container] continueButton
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.rest-overlay.svelte-9b391i.landscape]         covers 100% height  CENTER
+  [img.screen-bg.svelte-9b391i]                      covers 100% height  CENTER
+  [div.rest-card.svelte-9b391i]                      covers 54% height  CENTER
+  [div.option-cards.svelte-9b391i]                   covers 29% height  CENTER
+  [div.parallax-transition-overlay.svelte-1lwegjf.   covers 100% height  CENTER
+  [canvas.parallax-canvas.svelte-1lwegjf]            covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s.wipe-zoom]    covers 100% height  CENTER
+
+  Cross-layer proximity (nearest DOM testid to each Phaser object):
+  [Image]                                is 85px ABOVE rest-study
+  [Ellipse]                              is 139px ABOVE rest-study
+  [Ellipse]                              is 239px ABOVE rest-study
+  [Ellipse]                              is 77px BELOW rest-study
+  [Ellipse]                              is 121px ABOVE rest-heal
+  [Image]                                is 157px ABOVE rest-study
+  [Container]                            is 260px ABOVE rest-study
+
+  Layer overlap check:
+  ⚠ [Image] OVERLAPS rest-heal
+  ⚠ [Image] OVERLAPS rest-study
+  ⚠ [Image] OVERLAPS rest-meditate
+  ⚠ [Ellipse] OVERLAPS rest-study
+  ⚠ [Ellipse] OVERLAPS rest-meditate
+  ⚠ [Ellipse] OVERLAPS rest-study
+
+
+— END LAYOUT DUMP (34 Phaser objects, 46 DOM elements) —

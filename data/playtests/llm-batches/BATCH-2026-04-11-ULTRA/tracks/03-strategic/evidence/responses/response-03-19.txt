@@ -1,0 +1,40 @@
+STATE: state-03-19 | Floor 7 | Edge: Zero damage cards | Comparison Trap
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 10, no block. Vulnerable (enemy takes 50% more dmg). Intent: Multi 3×4=12.
+- Player: 45/80 HP, 0 block, 3 AP, chain 2 (×1.2). No damage cards in hand.
+- Swift Boots: draw 6 per turn.
+
+HAND ANALYSIS:
+- Foresight(QP,0ap) = draw 2 cards. FREE.
+- Scout(QP,1ap) = draw 2 cards.
+- Recycle(QP,1ap) = draw 3 cards. Recycle(CC,2ap) = draw 4 + recover from discard.
+- Cleanse(QP,1ap) = remove debuffs + draw 1. (Player has no debuffs.)
+- Adapt(QP,1ap) = enemy attacking → plays as BLOCK. Block value = quickPlayValue=1. Only 1 block for 1 AP. Very weak.
+
+DRAW STRATEGY:
+Foresight(0ap) = draw 2. Now have 7 cards total (5+2). BUT hand limit is typically 5... Actually Foresight can overdraw beyond hand limit on the drawn cards. Or maybe hand cap is not strictly 5? Assume drawing gives new options.
+
+With Foresight(0ap) + Scout(1ap) + Recycle(CC,2ap): 0+1+3=4ap. Can't afford Recycle CC.
+
+Foresight(0ap) + Scout(1ap) + Recycle(QP,1ap) = 2ap. Draws 2+2+3=7 cards over 3 plays. New cards drawn might include attacks.
+
+INCOMING DAMAGE: 3×4=12 through 0 block. Adapt→Block=1 block (useless against 12). Player takes 12 dmg: 45-12=33 HP. Survivable.
+
+THE REAL QUESTION: With hand full of draw cards, should you:
+A) Draw aggressively (Foresight+Scout+Recycle = draw 7) and use NO block this turn, taking 12 dmg.
+B) Adapt→Block (1 block, useless) + draw some.
+C) Accept taking 12 dmg and draw for big burst turn 2.
+
+DOMINANT CHOICE: Foresight(0ap) is always free — always play it. Then draw more with remaining AP. Cleanse has no targets (player not debuffed). Adapt's block of 1 is negligible against 12 incoming.
+
+VERDICT: Foresight first (always). Then Scout or Recycle for more draws. Take the 12 dmg (33 HP safe). Turn 2 with a full hand of attacks + chain 2 + enemy vulnerable = kill.
+
+DEAD CARDS: Cleanse (no debuffs on player), Adapt (1 block negligible vs 12-dmg multi-hit).
+
+DESIGN INSIGHT: Having a hand full of draw cards means you never LACK for cards the following turn, but you do sacrifice a turn. The draw engine is self-reinforcing — draw more draws, then draw attacks. The REAL dead card pattern: if your deck has TOO MANY utility/draw cards and not enough attacks, you'll draw only utilities again. This is a deck composition problem, not just a state problem. The state exposes this weakness.
+
+FORESIGHT IS ALWAYS PLAYED: Across states 04, 14, and 19, Foresight's 0 AP cost means it is NEVER a bad play. This is a recurring pattern that suggests dominance.
+
+SURVIVAL ODDS: 8/10. Taking 12 dmg hurts but vulnerable enemy dies fast next turn.

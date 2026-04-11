@@ -1,0 +1,29 @@
+[
+  {"type": "wait", "ms": 6000},
+
+  {"type": "eval", "js": "window.__rrPlay?.getScreen?.() || 'unknown'"},
+
+  {"type": "rrPlay", "method": "quickPlayCard", "args": [0]},
+  {"type": "wait", "ms": 800},
+  {"type": "rrPlay", "method": "quickPlayCard", "args": [0]},
+  {"type": "wait", "ms": 800},
+
+  {"type": "eval", "js": "(function(){const cs=window.__rrPlay?.getCombatState?.();return JSON.stringify({hp:cs?.playerHp,ap:cs?.ap,hand:cs?.handSize,enemyHp:cs?.enemyHp})})()"},
+
+  {"type": "eval", "js": "(function(){try{const s=window.__rrScenario.snapshot('t5-mid-combat');window.__t5_midCombatSnap=s;return JSON.stringify({ok:true,label:s.label,screen:s.screen})}catch(e){return JSON.stringify({ok:false,err:e.message})}})()"},
+
+  {"type": "rrPlay", "method": "quickPlayCard", "args": [0]},
+  {"type": "wait", "ms": 800},
+
+  {"type": "eval", "js": "(function(){const cs=window.__rrPlay?.getCombatState?.();return JSON.stringify({hp:cs?.playerHp,ap:cs?.ap,hand:cs?.handSize,enemyHp:cs?.enemyHp,note:'after 3rd card'})})()"},
+
+  {"type": "eval", "js": "(function(){try{const s=window.__t5_midCombatSnap;if(!s)return JSON.stringify({ok:false,err:'no snap'});const r=window.__rrScenario.restore(s);return JSON.stringify({ok:r?.ok,msg:r?.message})}catch(e){return JSON.stringify({ok:false,err:e.message})}})()"},
+
+  {"type": "wait", "ms": 2000},
+
+  {"type": "eval", "js": "(function(){const cs=window.__rrPlay?.getCombatState?.();return JSON.stringify({hp:cs?.playerHp,ap:cs?.ap,hand:cs?.handSize,enemyHp:cs?.enemyHp,note:'after restore - should match mid-combat snap'})})()"},
+
+  {"type": "rrScreenshot", "name": "t5-sub1-combat-restored"},
+
+  {"type": "eval", "js": "(function(){try{const snap=window.__t5_midCombatSnap;const issues=[];const rs=snap?.runState;const ts=snap?.turnState;if(!ts)issues.push('no turnState in snapshot');if(!rs)issues.push('no runState in snapshot');const badFields=['reviewStateSnapshot'];for(const f of badFields){if(rs&&f in rs&&rs[f]!==null&&rs[f]!==undefined){const v=rs[f];if(typeof v==='object'&&!(v.__type)){issues.push('BAD_FIELD_'+f+': '+JSON.stringify(v).slice(0,60))}}}const setFields=['consumedRewardFactIds','factsAnsweredCorrectly','factsAnsweredIncorrectly','firstChargeFreeFactIds','offeredRelicIds','cursedFactIds','attemptedFactIds'];for(const f of setFields){if(rs&&f in rs){const v=rs[f];if(v&&typeof v==='object'&&!Array.isArray(v)&&!(v.__type)){issues.push('SET_FIELD_NOT_SERIALIZED_'+f+':'+typeof v)}}}return JSON.stringify({sub1_result:issues.length===0?'PASS':'FAIL',issues:issues,snapshotHasRunState:!!rs,snapshotHasTurnState:!!ts})}catch(e){return JSON.stringify({error:e.message})}})()"}
+]

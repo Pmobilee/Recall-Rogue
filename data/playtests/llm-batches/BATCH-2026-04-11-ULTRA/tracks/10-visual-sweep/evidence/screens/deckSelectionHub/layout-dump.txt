@@ -1,0 +1,82 @@
+LAYOUT DUMP  2026-04-11T02:04:06.853Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+▸ PHASER LAYER (RewardRoom) ──────────
+  [Image]                                        (960, 540)  1935x1080   depth:0  frame:__BASE  tex:reward_bg_landscape
+  [Ellipse]                                      (1084, 562)  121x30     depth:2  α:0.30
+  [Ellipse]                                      (903, 393)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (888, 650)  67x17       depth:2  α:0.30
+  [Ellipse]                                      (765, 528)  54x13       depth:2  α:0.30
+  [Image]                                        (1084, 526)  173x173    depth:3  frame:__BASE  tex:gold_tier_2  rot:7°
+  [Container]                                    (903, 372)  96x124      depth:3  children:3  rot:8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_attack
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_heavy_strike
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Container]                                    (888, 628)  96x124      depth:3  children:3  rot:-8°
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_border_shield
+    [Image]                                      (0, -10)  69x59         depth:0  frame:__BASE  tex:cardart_block
+    [Image]                                      (0, 0)  96x124          depth:0  frame:__BASE  tex:v2_frame_base
+  [Image]                                        (765, 512)  77x203      depth:3  frame:__BASE  tex:vial_large  rot:-4°
+  [Arc]                                          (925, 392)  3x3         depth:4  α:0.37
+  [Arc]                                          (761, 481)  2x2         depth:4  α:0.07
+  [Arc]                                          (410, 335)  4x4         depth:5  α:0.03
+  [Arc]                                          (1410, 189)  3x3        depth:5  α:0.60
+  [Arc]                                          (1531, 125)  6x6        depth:5  α:0.65
+  [Arc]                                          (390, 62)  6x6          depth:5  α:0.65
+  [Arc]                                          (1844, 286)  6x6        depth:5  α:0.64
+  [Arc]                                          (1153, 353)  5x5        depth:5  α:0.64
+  [Arc]                                          (1813, 93)  4x4         depth:5  α:0.59
+  [Arc]                                          (1418, 135)  6x6        depth:5  α:0.62
+  [Arc]                                          (287, 55)  4x4          depth:5  α:0.56
+  [Arc]                                          (1096, 61)  3x3         depth:5  α:0.52
+  [Arc]                                          (1345, 152)  4x4        depth:5  α:0.53
+  [Arc]                                          (1329, 388)  7x7        depth:5  α:0.67
+  [Arc]                                          (1059, 202)  4x4        depth:5  α:0.57
+  [Arc]                                          (1563, 350)  3x3        depth:5  α:0.51
+  [Arc]                                          (1004, 248)  3x3        depth:5  α:0.51
+  [Container] continueButton                     (960, 950)  270x72      depth:8  children:2
+    [Graphics]                                   (0, 0)                  depth:0
+    [Text]                                       (0, 0)  103x30          depth:0  "Continue"
+
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.deck-selection-hub.svelte-qoeryv]                         (0, 0)  1920x1080       HIDDEN
+      [div.top-bar.svelte-qoeryv]                                  (0, 0)  1920x97       
+        [button.back-btn.svelte-qoeryv]                            (36, 24)  100x49        "← Back"
+      [div.panel.panel--trivia.svelte-qoeryv]                      (192, 228)  750x720   
+        [div.parallax-wrap.svelte-qoeryv]                          (193, 229)  748x718   
+        [div.panel-text-overlay.svelte-qoeryv]                     (374, 454)  385x269   
+        [div.shine-overlay.svelte-qoeryv]                          (193, 229)  748x718     HIDDEN
+      [div.panel.panel--study.svelte-qoeryv]                       (978, 228)  750x720   
+        [div.parallax-wrap.svelte-qoeryv]                          (979, 229)  748x718   
+        [div.panel-text-overlay.svelte-qoeryv]                     (1185, 454)  335x269  
+        [div.shine-overlay.svelte-qoeryv]                          (979, 229)  748x718     HIDDEN
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  BOTTOM-RIGHT       → [Image]
+  CENTER             → [Ellipse], [Ellipse], [Ellipse], [Ellipse], [Image] (+7 more)
+  TOP-LEFT           → [Image], [Image], [Image], [Image], [Image] (+5 more)
+  TOP-RIGHT          → [Arc], [Arc], [Arc], [Arc], [Arc] (+2 more)
+  TOP-CENTER         → [Arc], [Arc], [Arc], [Arc], [div.top-bar.svelte-qoeryv]
+  MIDDLE-RIGHT       → [Arc]
+  BOTTOM-CENTER      → [Container] continueButton
+  MIDDLE-LEFT        → [div.panel.panel--trivia.svelte-qoeryv], [div.parallax-wrap.svelte-qoeryv], [div.panel-text-overlay.svelte-qoeryv]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.deck-selection-hub.svelte-qoeryv]             covers 100% height  CENTER
+  [div.panel.panel--trivia.svelte-qoeryv]            covers 67% height  MIDDLE-LEFT
+  [div.parallax-wrap.svelte-qoeryv]                  covers 66% height  MIDDLE-LEFT
+  [div.panel-text-overlay.svelte-qoeryv]             covers 25% height  MIDDLE-LEFT
+  [div.shine-overlay.svelte-qoeryv]                  covers 66% height  MIDDLE-LEFT
+  [div.panel.panel--study.svelte-qoeryv]             covers 67% height  MIDDLE-RIGHT
+  [div.parallax-wrap.svelte-qoeryv]                  covers 66% height  MIDDLE-RIGHT
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (35 Phaser objects, 13 DOM elements) —

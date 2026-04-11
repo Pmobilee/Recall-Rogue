@@ -1,0 +1,31 @@
+STATE: state-03-16 | Floor 6 | Edge: All 2-AP cards, 3 AP budget | Proctor
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 10, block 6. Intent: Attack 6 (not defend/buff — so Slow can't cancel it).
+- Player: 50/80 HP, 0 block, 3 AP. No relic bonus.
+- All hand cards cost 2 AP. Player can afford EXACTLY ONE card per turn.
+
+SLOW ASSESSMENT: Slow cancels next DEFEND or BUFF. Enemy intent is ATTACK. Slow is completely useless here. 2 AP wasted if played.
+
+FORTIFY ASSESSMENT: Fortify(QP,2ap) = doubles current block (0 block). 0×2=0 block. Completely useless.
+
+LIFETAP ASSESSMENT: Lifetap(QP,2ap) = 4 dmg vs 6 block = 0 dmg (absorbed). 0 heal. Useless.
+Lifetap(CC,3ap) = floor(4×1.5)=6 dmg vs 6 block = 0 to HP. Still absorbed. 0 heal. Useless.
+
+HEAVY STRIKE ASSESSMENT: Heavy Strike(QP,2ap) = 10 dmg vs 6 block = 4 to HP. Enemy: 6 HP. Incoming 6 atk: player takes 6 dmg.
+Heavy Strike(CC,3ap) = floor(10×1.5)=15 dmg vs 6 block = 9 to HP. Enemy: 1 HP. 0 AP left, takes 6 dmg.
+
+DOUBLE STRIKE ASSESSMENT: Double Strike(QP,2ap) = next attack hits twice. But 0 AP remains. No attack to follow. Dead.
+
+DOMINANT CHOICE: Heavy Strike(CC,3ap) = 9 HP through = enemy at 1 HP. Enemy attacks for 6. Player: 44 HP. Next turn: ANY card at 2 AP finishes it.
+
+SECOND CHOICE: Heavy Strike(QP,2ap) = 4 to HP, 1 AP wasted. Enemy at 6 HP. Takes 6 dmg. Player: 44. Then need 3 more turns.
+
+DEAD CARDS: Slow (wrong intent type), Fortify (0 block), Lifetap (absorbed by block), Double Strike (no follow-up AP).
+
+KEY INSIGHT: In an all-2-AP hand with 3 AP, FOUR of FIVE cards are effectively dead (Slow vs wrong intent, Fortify vs 0 block, Lifetap absorbed by block, Double Strike with no AP follow-up). Only Heavy Strike CC is viable. This is a genuine "no meaningful choice" state.
+
+SURVIVAL ODDS: 8/10. Heavy Strike CC mostly solves it in 2 turns.
+
+DESIGN INSIGHT: The AP crunch state reveals that some cards have hidden prerequisites that make them dead in specific contexts. Slow's intent-type dependency, Fortify's block prerequisite, Double Strike's follow-up requirement, and Lifetap's block-absorption issue all compound in this hand. The state is functional as an educational trap but may frustrate players who feel "I have 5 cards and can only play 1 useful one."

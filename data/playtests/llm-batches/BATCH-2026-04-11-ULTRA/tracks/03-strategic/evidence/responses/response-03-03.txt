@@ -1,0 +1,31 @@
+STATE: state-03-03 | Floor 2 | Mold Puff | Early Game
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 6, no block. Intent: Apply poison 2 for 3 turns.
+- Player: 62 HP, 1 poison stack (2 turns left), Herbal Pouch (auto-1 poison to enemy each turn), chain 1 (×1.1 dmg).
+- Player takes poison dmg = 1 per turn for 2 more turns = 2 dmg coming from existing poison.
+- If enemy applies 2 more poison, player takes 3/turn for 3 more turns = 9 more dmg total.
+
+OPTION ANALYSIS:
+Kill-before-debuff:
+- Reckless(QP,1ap) = 6 dmg ×1.1 chain = 6.6→6 dmg. Self-damage 3. Enemy: 0 HP. Dead. Player: 62-3=59 HP. Win.
+- Strike(QP,1ap) = 4×1.1=4.4→4 dmg. Reckless(QP,1ap) = 6×1.1=6 dmg. Total 10 dmg, enemy dead (6 HP). Self-damage 3. 1 AP left.
+- Empower(QP,1ap) + Reckless(QP,1ap) = Reckless does 6×1.5×1.1=9.9→9 dmg. 3 self-damage. Enemy dies. 1 AP left.
+  But Empower+Reckless = 2 AP total. 1 AP remaining.
+
+DOMINANT CHOICE: Reckless alone (QP, 1ap) = 6 dmg kills enemy (6 HP), self-damage 3. Done in 1 AP. Why use 2 AP when 1 does it?
+
+TENSION CHECK: Cleanse costs 1 AP to remove existing poison. Is losing 1 AP worth removing 2 turns of 1-dmg = 2 total dmg? No. 2 HP is not worth the AP, and the enemy dies before applying more poison if you play Reckless now.
+
+IS RECKLESS DANGEROUS AT 62 HP? Self-damage of 3 at 62/80 = negligible. No tension from the health risk.
+
+DEAD CARDS: Hex — the enemy has 6 HP. Applying poison to a 6 HP enemy that the Herbal Pouch is ALREADY poisoning is wasteful. Cleanse — enemy hasn't applied more poison yet; existing 1-stack not worth 1 AP.
+
+EMPOWER ASSESSMENT: Empower(QP,1ap)+Reckless(QP,1ap) is slightly better (2AP, 9 dmg + 3 self) vs just Reckless(1ap, 6 dmg + 3 self). Both kill the enemy. But spending 2 AP vs 1 AP when enemy is at 6 HP and dies either way = Empower is essentially wasted.
+
+VERDICT: Completely obvious play — just Reckless and it's over. The Herbal Pouch makes this even more clean since Mold Puff takes 1 poison at turn start already. Enemy effectively has less than 6 HP when factoring the poison tick. The "tension" the state notes document (cleanse first?) is not real tension at this HP level.
+
+SURVIVAL ODDS: 10/10.
+
+DESIGN NOTE: Mold Puff is too fragile at 6 HP to create genuine decisions. The tension only emerges if player is already at much lower HP or if Mold Puff has been in the fight for 2+ turns stacking poison. Floor 2 placement is appropriate but the state as constructed is trivially solved.

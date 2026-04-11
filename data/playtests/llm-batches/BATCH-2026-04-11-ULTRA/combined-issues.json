@@ -1,0 +1,2492 @@
+[
+  {
+    "id": "issue-1744334400000-01-001",
+    "track": "01-stat-baseline",
+    "category": "progression_difficulty_spike",
+    "severity": "high",
+    "title": "Floor 4→6 boss encounter is 3.36x harder than preceding floor (all profiles)",
+    "description": "Across all 6 skill profiles and 28,000 runs, the average turns per encounter jumps from 6.68 on floor 4 to 22.44 on floor 6 — a 3.36x ratio that exceeds the 2.0x spike threshold by 68%. Floor 6 hosts two boss-tier enemies: The Final Exam (27.5 avg turns, 77-97% win rate depending on profile) and The Burning Deadline (23.6 avg turns, 77% win rate for new_player). For weaker profiles the damage spike compounds: language_learner loses 30.7 avg HP on floor 6 encounters vs 6-10 HP on floors 1-4. This is the single largest difficulty cliff in the game.",
+    "evidence": {
+      "metric": "Floor 4 avg turns: 6.68 | Floor 6 avg turns: 22.44 | ratio 3.36x (threshold: 2.0x). Floor 6 death rate: 7.8% vs floor 4: 1.6%. n=7,465 floor-6 encounters across 28,000 runs",
+      "runsAffected": 28000,
+      "pctAffected": 1.0,
+      "profileId": "all",
+      "floor": 6
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile new_player --analytics",
+      "Read analytics/enemy-analysis.md, compare floor 4 vs floor 6 avg turns and death rate"
+    ],
+    "suggestedFix": "Reduce floor 6 boss HP or damage by 20-30%, or add a difficulty bridge encounter on floor 5 to smooth the ramp. Alternatively reduce The Burning Deadline's damage output for lower mastery levels."
+  },
+  {
+    "id": "issue-1744334400000-01-002",
+    "track": "01-stat-baseline",
+    "category": "progression_difficulty_spike",
+    "severity": "high",
+    "title": "Floor 10→12 encounter spike (2.06x turns) hits low-skill profiles disproportionately",
+    "description": "Floor 12 encounters average 15.69 turns vs floor 10's 7.62 — a 2.06x jump that crosses the structural 2x threshold. Disaggregated by profile it is worse: new_player sees floor 10→12 go from 11.4→22.8 turns (2.0x), master@asc20 sees 9.4→23.2 turns (2.47x). The Curriculum on floor 12 has a 37% spike rate (>50% of HP taken in one fight) for new_player. This spike coincides with the act-2 boss tier and is structurally separate from the floor-6 spike.",
+    "evidence": {
+      "metric": "Floor 10 avg turns: 7.62 | Floor 12 avg turns: 15.69 | ratio 2.06x. The Curriculum (floor 12): 62% win rate, 37% damage spike rate for new_player (n=193). master@asc20 floor 10→12: 9.4→23.2 turns (2.47x)",
+      "runsAffected": 14000,
+      "pctAffected": 0.50,
+      "profileId": "new_player|language_learner|master_asc20",
+      "floor": 12
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile new_player --analytics",
+      "In per-run JSON, aggregate encounters by floor and compute avg turns floor 10 vs 12"
+    ],
+    "suggestedFix": "Tune The Curriculum's HP or attack pattern for act 2 entry; add a floor 11 mid-tier encounter to bridge the gap."
+  },
+  {
+    "id": "issue-1744334400000-01-003",
+    "track": "01-stat-baseline",
+    "category": "balance_damage_spike",
+    "severity": "high",
+    "title": "Floor 18 final bosses (The Omnibus / The Final Lesson) delete 87-91% of encounters via 50%+ HP damage",
+    "description": "The Omnibus and The Final Lesson on floor 18 are catastrophically damaging: 91% and 87% of encounters against these enemies respectively result in the player losing more than 50% of their starting HP. The Omnibus averages 79.5 HP taken (out of 100 starting) per encounter for new_player, with a 67% defeat rate. Average turns are 23.6-24.7 — these are slow, grinding fights that end in near-certain death for players below median skill. The floor 18 death rate across all runs is 30.2% — higher than any other floor by 6x.",
+    "evidence": {
+      "metric": "Omnibus: 91% spike rate, 79.5 avg HP taken, 67% defeat rate for new_player (n=323). Final Lesson: 87% spike rate, 71.4 avg HP taken, 64% defeat rate (n=278). Floor 18 death rate: 30.2% vs next worst floor 6 at 7.8%",
+      "runsAffected": 5898,
+      "pctAffected": 0.302,
+      "profileId": "new_player|competent|language_learner",
+      "floor": 18
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile new_player --analytics",
+      "In per-run JSON, filter encounters floor==18 and compute damageTaken/playerHpBefore ratio"
+    ],
+    "suggestedFix": "Reduce The Omnibus and The Final Lesson base damage by 25-30%. Consider adding a rest room before floor 18 to allow healing. The current 30.2% floor-18 death rate is the primary funnel failure point for a full run."
+  },
+  {
+    "id": "issue-1744334400000-01-004",
+    "track": "01-stat-baseline",
+    "category": "balance_too_hard",
+    "severity": "high",
+    "title": "Ascension 20 is unplayable: experienced@asc20 wins 2.7%, avg death floor 3",
+    "description": "The experienced profile at ascension 20 achieves a 2.7% win rate with an average of 4.0 floors reached. This is far below the too_hard threshold (target_win×0.5 = 32.5%) and the avg_floors<5 criterion escalates severity to HIGH. Of 1,000 runs, 285 (28.5%) die on floor 1 alone. This pattern persists for master@asc20 at 9.1% (still below the 32.5% threshold). Ascension 20 as implemented provides no viable path to completion — it functions as a wall, not a challenge.",
+    "evidence": {
+      "metric": "experienced@asc20: win=2.7%, avg_floors=4.0, floor-1 deaths=285/1000 (28.5%). master@asc20: win=9.1%, avg_floors=8.3. too_hard_threshold=32.5% (target 65% × 0.5)",
+      "runsAffected": 2000,
+      "pctAffected": 0.027,
+      "profileId": "experienced@asc20|master@asc20",
+      "floor": 1
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile experienced --ascension 20",
+      "Check survival rate and deathFloor distribution"
+    ],
+    "suggestedFix": "Audit ascension 20 modifiers — current scaling produces a run that cannot be completed by even experienced players (76% accuracy, high charge rate). Target win rate should be 10-20% for max ascension. Consider capping enemy HP scaling multiplier at asc15 and applying flat attack increases instead."
+  },
+  {
+    "id": "issue-1744334400000-01-005",
+    "track": "01-stat-baseline",
+    "category": "balance_too_easy",
+    "severity": "low",
+    "title": "experienced profile at ascension 0 wins 94.5% — above too_easy ceiling",
+    "description": "The experienced profile (proxy for a dedicated returning player at 76% accuracy, high charge rate) wins 94.5% of runs at ascension 0. The too_easy threshold is target_win×1.3 = 84.5%. This is 10 percentage points above the ceiling, meaning experienced players have essentially no challenge at base difficulty. The win rate variance (std_dev=0.228) is healthy but the absolute level removes tension from the majority of runs.",
+    "evidence": {
+      "metric": "experienced@asc0: win=94.5% (n=4000). too_easy threshold: 65%×1.3=84.5%. Variance std_dev=0.228 (healthy). Avg floors: 17.8/18",
+      "runsAffected": 4000,
+      "pctAffected": 0.945,
+      "profileId": "experienced",
+      "floor": 0
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile experienced"
+    ],
+    "suggestedFix": "Encourage experienced players to play ascension 3-5 as a 'normal challenge' baseline. Consider a soft prompt after 3 wins at asc0 suggesting higher ascension."
+  },
+  {
+    "id": "issue-1744334400000-01-006",
+    "track": "01-stat-baseline",
+    "category": "engagement_tedious_grind",
+    "severity": "medium",
+    "title": "New player encounters average 13.8 turns — nearly double the 8-turn engagement ceiling",
+    "description": "The new_player profile takes an average of 13.8 turns per encounter (14,693 encounters analyzed). The engagement_tedious_grind threshold is 8 turns. At 13.8 turns, fights feel like slow attrition — particularly for a new player who is still learning the system. Language_learner is at 12.9 turns. This is driven by low mastery (cards deal 3-8 damage at L0) and the inability to charge (50% accuracy), meaning every fight takes 2-3x as many attacks to kill enemies whose HP scales for mid-game mastery levels.",
+    "evidence": {
+      "metric": "new_player: avg 13.8 turns/enc (n=14,693). language_learner: avg 12.9 turns/enc (n=11,932). Tedious threshold: >8 turns. Master@asc20 also hits 13.0 turns/enc",
+      "runsAffected": 2000,
+      "pctAffected": 1.0,
+      "profileId": "new_player|language_learner",
+      "floor": 0
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile new_player",
+      "Aggregate avgTurnsPerEncounter across all encounters"
+    ],
+    "suggestedFix": "Raise base card damage at mastery level 0 for strike (3→5) and ensure enemy HP at floor 1 allows sub-10 turn victories without charging. New player fights should feel resolvable, not like grinding."
+  },
+  {
+    "id": "issue-1744334400000-01-007",
+    "track": "01-stat-baseline",
+    "category": "balance_healing_insufficient",
+    "severity": "medium",
+    "title": "language_learner profile HP drains to 37.4 average after floor 5 — below the 40 HP healing floor",
+    "description": "The language_learner profile (35% accuracy, 61% charge rate) reaches an average HP of 37.4 after encounters past floor 5 — below the balance_healing_insufficient threshold of PLAYER_HP_START×0.4 = 40. This indicates the game's healing economy (rest rooms, healing cards) is insufficient to offset the incoming damage from later floors for players with low quiz accuracy. This profile also sees 16.6% of encounters take >50% of starting HP.",
+    "evidence": {
+      "metric": "language_learner: avg HP after floor 5+ encounters = 37.4 (threshold: 40). Damage spike rate: 16.6% of 11,932 encounters. Win rate: 19.8%",
+      "runsAffected": 1000,
+      "pctAffected": 0.802,
+      "profileId": "language_learner",
+      "floor": 5
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile language_learner",
+      "Aggregate playerHpAfter for encounters with floor >= 5"
+    ],
+    "suggestedFix": "Increase healing at rest rooms for players below 50% HP. Consider giving language/vocab-focused runs a 'catch-up healing' relic that provides bonus HP recovery when accuracy is low."
+  },
+  {
+    "id": "issue-1744334400000-01-008",
+    "track": "01-stat-baseline",
+    "category": "engagement_frustrating_streaks",
+    "severity": "medium",
+    "title": "language_learner wrong-answer rate is 64.9% — above the 60% frustration ceiling",
+    "description": "The language_learner profile answers 64.9% of card plays incorrectly (265,231 wrong out of 408,824 plays). The engagement_frustrating_streaks threshold is 60% wrong/played for new-player-tier profiles. At nearly 2/3 wrong answers, the game loop for language learners is predominantly: attempt charge → get it wrong → fizzle. The 0.50x fizzle ratio is protective, but sustained 65% wrong-answer rates mean the player is more often punished than rewarded.",
+    "evidence": {
+      "metric": "language_learner: wrong=265,231 / played=408,824 = 64.9%. Threshold: >60%. This profile has 35% accuracy and 61% charge rate meaning most charge attempts fail",
+      "runsAffected": 1000,
+      "pctAffected": 1.0,
+      "profileId": "language_learner",
+      "floor": 0
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile language_learner",
+      "Sum totalWrong and totalCardsPlayed across all runs, compute ratio"
+    ],
+    "suggestedFix": "Consider reducing the charge-attempt rate for language learners who have low historical accuracy — let the bot (and real players) lean on Quick Play more. Alternatively provide a tooltip or UI hint after 5+ consecutive wrong answers suggesting Quick Play."
+  },
+  {
+    "id": "issue-1744334400000-01-009",
+    "track": "01-stat-baseline",
+    "category": "progression_timeout_rate",
+    "severity": "medium",
+    "title": "master@asc20 timeout rate reaches 5.43% — crossing the 5% structural threshold",
+    "description": "The master@asc20 profile (85% accuracy, high mastery) sees 5.43% of encounters end in timeout — just above the 5% structural threshold. This is notable because it occurs in the highest-skill profile under the hardest ascension, suggesting enemy HP values at asc20 can exceed the player's damage output even with near-perfect play. Combined with the 9.1% win rate, timeout-induced stalemates are a real second failure mode at max ascension.",
+    "evidence": {
+      "metric": "master@asc20: 433 timeouts / 7,973 encounters = 5.43%. Threshold: >5%. master@asc15: 1.6% (within normal range). language_learner: 2.68%",
+      "runsAffected": 1000,
+      "pctAffected": 0.0543,
+      "profileId": "master@asc20",
+      "floor": 0
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile master --ascension 20",
+      "Count encounters where result === 'timeout'"
+    ],
+    "suggestedFix": "Cap enemy HP at asc20 to ensure even low-damage runs can technically win within the turn limit. Check if the timeout limit scales with enemy HP or stays fixed."
+  },
+  {
+    "id": "issue-1744334400000-01-010",
+    "track": "01-stat-baseline",
+    "category": "balance_damage_spike",
+    "severity": "medium",
+    "title": "language_learner 16.6% and competent 13.5% of encounters take >50% HP in a single fight",
+    "description": "Both the language_learner (16.6% of 11,932 encounters) and competent (13.5% of 13,589 encounters) profiles exceed the 10% damage spike threshold — meaning more than 1 in 8 fights drains over half of starting HP. For competent this spikes further: The Burning Deadline on floor 6 averages 30.7 HP taken vs 89 HP start (34.5% ratio per encounter, but 24% of individual competent fights go above 50% HP).",
+    "evidence": {
+      "metric": "language_learner: 16.6% spike rate (1,981/11,932 encounters). competent: 13.5% spike rate (1,834/13,589 encounters). Balance threshold: >10%",
+      "runsAffected": 2000,
+      "pctAffected": 0.15,
+      "profileId": "language_learner|competent",
+      "floor": 6
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile language_learner",
+      "Compute damageTaken / playerHpBefore > 0.5 per encounter"
+    ],
+    "suggestedFix": "Reduce The Burning Deadline damage scaling for players with mastery < 2. Consider a damage reduction mechanic for players at low HP entering floor 6 boss fights."
+  },
+  {
+    "id": "issue-1744334400000-01-011",
+    "track": "01-stat-baseline",
+    "category": "engagement_low_fun",
+    "severity": "high",
+    "title": "Ascension 15-20 win rates indicate a progression cliff where difficulty outpaces player agency",
+    "description": "The engagement_low_fun rule fires when regular/gamer proxies fall below too_hard_threshold. At ascension 15, experienced@asc15 drops to 55% (within range), but master@asc15 is 31% — only marginally above the 32.5% too_hard threshold. At asc20 both profiles are catastrophically below: experienced@asc20 at 2.7% and master@asc20 at 9.1%. The progression from asc10 (72%/42%) to asc15 (55%/31%) to asc20 (2.7%/9.1%) shows a non-linear cliff rather than a smooth curve — asc20 isn't 'harder', it's a different game.",
+    "evidence": {
+      "metric": "experienced@asc10: 72%, asc15: 55%, asc20: 2.7%. master@asc10: 42%, asc15: 31%, asc20: 9.1%. The drop from asc15→asc20 is 52pp for experienced (vs 17pp for asc10→asc15)",
+      "runsAffected": 4000,
+      "pctAffected": 0.05,
+      "profileId": "experienced@asc20|master@asc20",
+      "floor": 0
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile experienced --ascension 20",
+      "Compare win rates across ascension levels"
+    ],
+    "suggestedFix": "The asc15→asc20 gap needs a difficulty audit. Either add ascension levels 16-19 as stepping stones, or tune asc20 so that it targets 15-25% win rate rather than 3-9%. A player should be able to see what they're working toward."
+  },
+  {
+    "id": "issue-1744334400000-01-012",
+    "track": "01-stat-baseline",
+    "category": "balance_too_hard",
+    "severity": "medium",
+    "title": "volatile_core relic has 6% observational win rate vs 59% baseline — power score 0.378",
+    "description": "The volatile_core relic appears in 250 runs and achieves only 6.0% win rate vs 59.6% for non-holders. The survivorship-free relic-performance report confirms the signal: 7.0 floors after acquisition (vs 17.0 for top relics), power score 0.378 vs 0.680-0.700 cluster for all other relics. Per cross-checking individual profiles: volatile_core holders in experienced profile win 42.9% (n=7) vs 94.7% for non-holders; master holders win 20% (n=5) vs 71.3%. The relic is either mechanically broken (its effect may not trigger as intended) or so punishing that acquiring it is a net negative.",
+    "evidence": {
+      "metric": "volatile_core: 250 appearances, 6.0% win rate (-53.6% delta vs baseline). Power score 0.378 vs cluster mean ~0.67. 7.0 avg floors after acquisition. Experienced: 42.9% win with vs 94.7% without (n=7 vs 1993)",
+      "runsAffected": 250,
+      "pctAffected": 0.009,
+      "profileId": "all",
+      "floor": 0
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 5000 --analytics",
+      "In relic-performance.md and relic-analysis.md, compare volatile_core vs baseline. Check src/data/relics/ for volatile_core definition."
+    ],
+    "suggestedFix": "Audit volatile_core's implementation. The -53.6% observational delta is the largest negative relic signal in the dataset by far. Either the relic description doesn't match its effect, or it creates an unwinnable game state. Check if it permanently modifies HP/damage in a way that stacks negatively."
+  },
+  {
+    "id": "issue-1744334400000-01-013",
+    "track": "01-stat-baseline",
+    "category": "balance_too_hard",
+    "severity": "medium",
+    "title": "build_strength archetype at 41% win rate — 2.1x gap below build_poison (87%)",
+    "description": "The 8 tested archetypes span a 2.1x win rate gap from build_strength (41%) to build_poison (87%). build_fortress at 84% and build_poison at 87% are both above the too_easy threshold for a 65%-target profile. build_strength at 41% and build_chain/build_tempo at 54% indicate these archetypes are undertuned relative to their counterparts. All archetypes share nearly identical deck compositions (42-48% attack, 46-50% shield) so the gap comes entirely from mechanic choices — strength-scaling mechanics underperform poison/fortress mechanics.",
+    "evidence": {
+      "metric": "build_poison: 87%, build_fortress: 84%, build_control: 73%, build_exhaust: 65%, build_chain/tempo: 54%, build_strength: 41%. HP efficiency delta: fortress=34.66x vs strength=12.62x. build_strength avg mastery 2.5 vs poison 4.0",
+      "runsAffected": 8000,
+      "pctAffected": 0.41,
+      "profileId": "build_strength",
+      "floor": 0
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --archetype build_strength",
+      "Compare archetype-analysis.md win rates and HP efficiency"
+    ],
+    "suggestedFix": "Buff strength-scaling mechanics (reckless, heavy_strike, bash) or adjust the bot profile's card selection logic to better support the strength archetype's win condition. Flag for balance-sim follow-up."
+  },
+  {
+    "id": "issue-1744334400000-01-014",
+    "track": "01-stat-baseline",
+    "category": "engagement_low_fun",
+    "severity": "low",
+    "title": "eruption card carries -14.4% win-rate delta with 3,741 affected runs — potential archetype trap",
+    "description": "The eruption card appears in 3,741 runs (via card-analysis) with a correlated win rate of 45% vs the 59% baseline — a -14.4% delta. This is the largest negative card-level win signal in the dataset. With 125,486 total plays and 2.22 average play frequency per run, eruption is a common card that correlates strongly with losing. This may indicate it is a 'trap' card that players draft because it appears useful (18.4 avg dmg) but underperforms in actual play contexts. The barbed_edge PRE-EXISTING-1 bug could be inflating eruption's effective damage in playtests while the real game is lower.",
+    "evidence": {
+      "metric": "eruption: 125,486 plays, 3,741 runs, win%=45% vs 59% baseline, delta=-14.4%. Avg dmg/play=18.4, floorDelta=+0.2 (near neutral on floors, but win-rate-negative)",
+      "runsAffected": 3741,
+      "pctAffected": 0.134,
+      "profileId": "all",
+      "floor": 0
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 5000 --analytics",
+      "In card-analysis.md, sort by delta and check eruption row"
+    ],
+    "suggestedFix": "Investigate whether eruption is being drawn too frequently in the starting deck, causing players to over-invest in the mechanic. Cross-reference with barbed_edge bug resolution — after fixing PRE-EXISTING-1, eruption's real damage output may be even lower."
+  },
+  {
+    "id": "issue-1744334400000-01-015",
+    "track": "01-stat-baseline",
+    "category": "mechanic_accuracy_disconnect",
+    "severity": "low",
+    "title": "execute card actual charge rate is 9% per encounter data vs 24% in card-analysis — possible tracking discrepancy",
+    "description": "The card-analysis report shows execute with a 24% charge rate. Manual extraction from per-encounter cardPlay arrays shows only 9.0% of execute plays are charged (136/1,515 plays across 4 profiles). This 2.7x discrepancy may indicate the analytics aggregation weights charge attempts differently from actual charges, or execute has a conditional charging mechanic (enemy HP threshold) that the aggregate obscures. This warrants investigation of analytics computation methodology.",
+    "evidence": {
+      "metric": "card-analysis.md: execute charge%=24% (2,322 plays). Per-encounter cardPlay extraction: execute charged=136/1,515 plays = 9.0%. Discrepancy factor: 2.7x",
+      "runsAffected": 150,
+      "pctAffected": 0.005,
+      "profileId": "all",
+      "floor": 0
+    },
+    "reproductionSteps": [
+      "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --analytics",
+      "In card-analysis.md row for execute compare charge% vs manual count from encounter cardPlays"
+    ],
+    "suggestedFix": "Verify analytics-report.ts charge rate aggregation logic for cards with conditional charging. Execute may only charge when enemy is below HP threshold — this would suppress charge opportunities and be expected behavior, but should be documented."
+  },
+  {
+    "id": "issue-1775871222977-02-001",
+    "track": "02-neural-optimal",
+    "category": "mechanic_broken",
+    "severity": "critical",
+    "title": "Gym-server comboCount NaN: RL pipeline fully non-functional (obs + reward both corrupted)",
+    "description": "The field `comboCount` was removed from `TurnState` in `src/services/turnManager.ts` (replaced by `consecutiveCorrectThisEncounter` and `chainLength`), but `tests/playtest/headless/gym-server.ts` was never updated. Two code paths reference the deleted field:\n\n1. `buildCombatObsSlice` line 381: `ts.comboCount / 10` → `undefined / 10 = NaN` → JSON null at obs[6]. NaN propagates through neural network policy → all 30 action logits = NaN → `MaskablePPO.predict()` raises ValueError immediately after the first combat step.\n\n2. `calculateCombatReward` line 628: `0.1 * ts.comboCount` → `0.1 * undefined = NaN` → JavaScript NaN serialized as JSON null → Python `float(response['reward'])` raises TypeError.\n\nAll 6 model checkpoints are blocked. The 2 models with 80-float obs-space (pre-v2) also fail due to obs-space shape mismatch (env now emits 120 floats). The RL testing system cannot run any analysis in its current state. No RL-derived strategy conclusions are possible.",
+    "evidence": {
+      "metric": "100% of episodes fail within 1-4 steps; obs[6]=null after first TurnState activation; reward=null on any correct charge action",
+      "episodes": 0,
+      "cardId": "",
+      "relicId": "",
+      "bugFile": "tests/playtest/headless/gym-server.ts",
+      "bugLines": [
+        381,
+        628,
+        870,
+        977,
+        982,
+        1111,
+        1212
+      ],
+      "removedField": "TurnState.comboCount",
+      "replacementField": "TurnState.consecutiveCorrectThisEncounter"
+    },
+    "reproductionSteps": [
+      "pkill -f gym-server 2>/dev/null",
+      "cd /path/to/Recall_Rogue",
+      "python3 tests/playtest/rl/analyze.py --model tests/playtest/rl/models/rogue_brain_v2_masked_2M.zip --episodes 1 --correct-rate 0.75",
+      "Observe: ValueError at sb3_contrib/common/maskable/distributions.py — logits are all NaN",
+      "OR: python3 tests/playtest/rl/analyze.py --model tests/playtest/rl/models/rogue_brain_v2_2M.zip --episodes 1 --correct-rate 0.75",
+      "Observe: TypeError: float() argument must be a string or a real number, not 'NoneType'"
+    ],
+    "suggestedFix": "In gym-server.ts: (1) Line 381: replace ts.comboCount with (ts.consecutiveCorrectThisEncounter ?? 0). (2) Line 628: replace ts.comboCount with (ts.consecutiveCorrectThisEncounter ?? 0). (3) Lines 870, 977, 982: replace comboCount field reads on TurnState with consecutiveCorrectThisEncounter. (4) Lines 1111, 1212: remove dead writes to ts.comboCount (the field no longer exists on TurnState). (5) After fix: verify gym-server type-checks cleanly, run 50-episode smoke test to confirm. NOTE: the trained models may not have learned optimal combo-chain behavior since comboCount in the reward signal was undefined throughout training (NaN → null reward → agent received no signal for correct charges)."
+  },
+  {
+    "id": "issue-1775871222977-02-002",
+    "track": "02-neural-optimal",
+    "category": "mechanic_broken",
+    "severity": "high",
+    "title": "Gym-server latest/ model checkpoint is empty — rogue-brain skill broken for fresh installs",
+    "description": "The symlink `tests/playtest/rl/models/latest/` points to `tests/playtest/rl/models/20260325_162724/`, which is an empty directory with no `.zip` model file. The skill documentation (`SKILL.md`) shows the analyze workflow using `--model tests/playtest/rl/models/rogue_brain_v2_masked_2M` (a named path), but if any script or agent relies on the `latest/` symlink it will fail silently. All 6 named checkpoints are ZIP files in the models/ root, not in the dated subdirectories. The dated subdirectory pattern was intended for checkpoint saving during training but no checkpoint has ever been saved there.",
+    "evidence": {
+      "metric": "ls tests/playtest/rl/models/latest/ returns empty; the 6 actual model ZIPs are in the models/ root, not in dated subdirs",
+      "episodes": 0,
+      "cardId": "",
+      "relicId": ""
+    },
+    "reproductionSteps": [
+      "ls -la tests/playtest/rl/models/latest/",
+      "Observe: empty directory (no model files)"
+    ],
+    "suggestedFix": "Copy or symlink the best checkpoint (rogue_brain_v3_economy_2M.zip) into the latest/ directory, OR update the latest symlink to point to the ZIPs directly. Update the skill docs to clarify the expected path."
+  },
+  {
+    "id": "issue-1775871222977-02-003",
+    "track": "02-neural-optimal",
+    "category": "mechanic_broken",
+    "severity": "high",
+    "title": "RL reward signal missing comboCount bonus since TurnState field was removed — all trained models are undertrained on charge-correct behavior",
+    "description": "The `calculateCombatReward` function in gym-server.ts awards `0.1 * ts.comboCount` for each correct charge. Since `comboCount` was undefined throughout all training runs (the field was absent from TurnState), JavaScript evaluated this as `0.1 * undefined = NaN`, which JSON-serializes as `null`. The Python env received `null` reward and raised TypeError on every correct charge, causing the training process to either crash or fall back to a default. This means ALL trained models (v2_500k, v2_2M, v2_masked_2M, v3_economy_2M) were trained with corrupted reward signals for the most important positive feedback loop in the game — rewarding correct charges and chain building. The models' learned strategies are therefore unreliable with respect to charge-vs-quick decisions and chain building behavior.",
+    "evidence": {
+      "metric": "gym-server.ts:628 ts.comboCount was undefined throughout all training; reward for correct charges was NaN (null) for all 2M-step training runs",
+      "episodes": 0,
+      "cardId": "",
+      "relicId": ""
+    },
+    "reproductionSteps": [
+      "Inspect tests/playtest/rl/analyze.py reward signal: calculateCombatReward at line 628",
+      "Confirm ts.comboCount is undefined in current TurnState (grep src/services/turnManager.ts for comboCount — returns no results)",
+      "The training logs in tests/playtest/rl/logs/ would show reward curves; if they exist, look for abnormally low reward per correct charge step"
+    ],
+    "suggestedFix": "After fixing Bug A (issue-001): fix the reward signal to use ts.consecutiveCorrectThisEncounter instead of ts.comboCount. Then retrain from scratch — existing checkpoints were trained with broken reward signals and may have learned suboptimal policies. For a quick smoke test, the v2_2M plain PPO checkpoint MAY be partially useful if Bug B is fixed (reward returns 0 instead of null for correct charges), but its learned behavior should be treated as untrusted."
+  },
+  {
+    "id": "issue-1775871222977-02-004",
+    "track": "02-neural-optimal",
+    "category": "mechanic_broken",
+    "severity": "medium",
+    "title": "Gym-server observation space has 5 stale comboCount-dependent references producing undefined/null values",
+    "description": "Beyond the two critical bugs (obs[6] and reward), gym-server.ts has additional stale comboCount references that will produce undefined/null in the response JSON on every step: lines 870 (snapBefore.comboCount = ts.comboCount), 977 (comboCount: run.turnState.comboCount), 982 (info['comboCount'] = run.turnState.comboCount), 1111 and 1212 (run.turnState.comboCount = ...). These produce null fields in the info dict returned to the Python env, which may confuse downstream logic (e.g. analyze.py line 628 `if (ts.comboCount)` reward check). The info dict's `comboCount` field is read by analyze.py to track chain behavior in the 17-category report.",
+    "evidence": {
+      "metric": "5 additional stale comboCount references in gym-server.ts beyond the two critical ones",
+      "episodes": 0,
+      "cardId": "",
+      "relicId": ""
+    },
+    "reproductionSteps": [
+      "grep -n comboCount tests/playtest/headless/gym-server.ts",
+      "Observe: 10 hits, none of which reference the actual TurnState field (it no longer exists)"
+    ],
+    "suggestedFix": "Do a comprehensive rename pass in gym-server.ts: replace all comboCount references on TurnState objects with consecutiveCorrectThisEncounter. Update PrevState interface if needed."
+  },
+  {
+    "id": "issue-1744387200000-03-01",
+    "track": "03-strategic",
+    "category": "balance_dominant_strategy",
+    "severity": "high",
+    "title": "Foresight (0 AP cost) is strictly dominant — always played, never suboptimal",
+    "description": "Across 3 independent states (03-04, 03-14, 03-19) where Foresight appeared in hand, it was identified as the correct first play every time. The 0 AP cost makes it impossible to make a wrong decision about Foresight — it is always correct to play. This is the definition of a dominant strategy card: no opportunity cost, positive return. In state-03-19 (zero damage hand), Foresight's free draw effectively replaced a dead card slot with two live draws at 0 AP cost. In state-03-14, Foresight was played optimally before a killing blow. In state-03-04, it was identified as the setup before any kill sequence. A card with 0 AP cost and a positive draw effect has no meaningful downside and should not exist as a deck staple without a trade-off.",
+    "evidence": {
+      "stateIds": [
+        "state-03-04",
+        "state-03-14",
+        "state-03-19"
+      ],
+      "agentsSayingSo": 3,
+      "cardId": "foresight",
+      "enemyId": ""
+    },
+    "reproductionSteps": [
+      "Load any combat state where Foresight is in hand",
+      "Observe: Foresight is always played regardless of game state",
+      "No strategic tension about whether to play Foresight exists"
+    ],
+    "suggestedFix": "Add a meaningful cost or trade-off to Foresight: either increase AP cost to 1 (making it a true utility decision), or change the Charge bonus to reveal intent only (removing free draw), or limit to once-per-turn. Alternatively, accept the 0-AP cost but reduce draw count to 1 card at base."
+  },
+  {
+    "id": "issue-1744387200001-03-02",
+    "track": "03-strategic",
+    "category": "ux_no_meaningful_choice",
+    "severity": "high",
+    "title": "Slow card description misleads players into wasting 2 AP against enemy heal intents",
+    "description": "In states 03-07 (Citation Needed with 'Consume remains' heal) and 03-20 (The Algorithm Phase 2 with 'Self-repair' heal), the Slow card was present in hand and the enemy's intent was a heal. In both cases, analysis confirmed Slow CANNOT cancel heal intents — only 'defend or buff' intents. The card description reads 'Skip enemy's next defend or buff' which does NOT explicitly exclude heals. New and intermediate players will routinely attempt to use Slow against heal intents, wasting 2 AP (Slow base cost) plus the Charge surcharge if charged. In state-03-07 where Citation Needed healing is paired with block-steal mechanics, this wasted AP is particularly punishing. Across the two states, this is a recurring communication failure that creates a predictable 'trap' decision without providing meaningful information to course-correct.",
+    "evidence": {
+      "stateIds": [
+        "state-03-07",
+        "state-03-20"
+      ],
+      "agentsSayingSo": 2,
+      "cardId": "slow",
+      "enemyId": ""
+    },
+    "reproductionSteps": [
+      "Play a run until you face Citation Needed or any healing enemy",
+      "Have Slow in hand when enemy telegraphs 'Consume remains' or any heal intent",
+      "Play Slow expecting to cancel the heal",
+      "Observe: heal fires anyway. 2+ AP wasted."
+    ],
+    "suggestedFix": "Option A (design): Extend Slow to also cancel heal intents ('Skip enemy's next defend, buff, or heal'). Option B (UX): Add explicit tooltip text stating 'This card only works against defend and buff intents. Does not cancel attacks or heals.' with an in-combat indicator when Slow is suboptimal. Option B is lower risk and higher player-clarity value."
+  },
+  {
+    "id": "issue-1744387200002-03-03",
+    "track": "03-strategic",
+    "category": "balance_dead_card",
+    "severity": "medium",
+    "title": "Reckless attack card becomes zero-damage dead card against any block-stacking enemy",
+    "description": "In state-03-09 (Tenure Guardian with 12-18 block) and state-03-16 (Proctor with 6+ block, no Piercing available), Reckless(QP) dealing 6 base damage is entirely absorbed by enemy block. The player still takes the 3 HP self-damage but deals 0 damage to the enemy. Reckless has no pierce, no block bypass, no secondary effect — it is a pure damage card with self-damage. Against the block-stacking enemy archetype (Tenure Guardian, Proctor, Headmistress, Staple Bug, Thesis Construct), Reckless is strictly worse than doing nothing (self-damage for no benefit). This creates a class of encounters where Reckless is actively harmful to play, with no visual feedback to communicate that the self-damage was wasted. The card's high floor-1 damage value makes it appealing to pick up, but it becomes dead weight against the second most common mid-game enemy archetype.",
+    "evidence": {
+      "stateIds": [
+        "state-03-09",
+        "state-03-16"
+      ],
+      "agentsSayingSo": 2,
+      "cardId": "reckless",
+      "enemyId": "tenure_guardian"
+    },
+    "reproductionSteps": [
+      "Enter combat with Reckless in hand vs Tenure Guardian or Proctor",
+      "Enemy builds to 12+ block",
+      "Play Reckless QP (6 dmg, 3 self-damage)",
+      "Observe: 0 HP damage to enemy, player takes 3 self-damage"
+    ],
+    "suggestedFix": "Option A: Give Reckless a secondary pierce or 'deals minimum 3 damage ignoring block' at mastery level 1+. Option B: Add a visual indicator when Reckless would deal 0 HP damage (block fully absorbs it) — at least players know before committing the card. Option C: Redesign Reckless to deal half-damage to block, ensuring it always does something."
+  },
+  {
+    "id": "issue-1744387200003-03-04",
+    "track": "03-strategic",
+    "category": "balance_dominant_strategy",
+    "severity": "medium",
+    "title": "The Curriculum Phase 2 QP-immunity reduces player effective actions to 1 per turn",
+    "description": "The Curriculum's Phase 2 (_quickPlayDamageMultiplierOverride = 0.0) makes every Quick Play attack deal 0 damage. Combined with the Charge AP surcharge (+1 AP), a player with standard 3 AP can execute at most 1 Charged attack per turn. In state-03-12, 3 of 5 hand cards (two Strikes and Heavy Strike) were completely dead as QP attacks, and the viable Charge sequence consumed all 3 AP. This reduces the player's agency to a single action per turn — a dramatic reduction from the normal 2-3 actions. While mechanically interesting as a design concept, the implementation creates a 'no good play' state not because of interesting strategic tradeoffs but because the mechanic hard-limits the player's action economy. The fight feels like waiting rather than decision-making.",
+    "evidence": {
+      "stateIds": [
+        "state-03-12"
+      ],
+      "agentsSayingSo": 1,
+      "cardId": "",
+      "enemyId": "curriculum"
+    },
+    "reproductionSteps": [
+      "Fight The Curriculum, reduce to 50% HP to trigger Phase 2",
+      "Observe: all Quick Play attack cards in hand deal 0 damage",
+      "With 3 AP and 1 AP surcharge per Charge, play at most 1 Charged attack per turn",
+      "Notice effective actions reduced from 3 to 1"
+    ],
+    "suggestedFix": "Option A: Reduce the Charge AP surcharge to 0 when fighting QP-immune enemies (make 'Charge mode' free to incentivize its use). Option B: Add a visual 'CHARGE REQUIRED' overlay on QP-immune enemies so players immediately understand the mechanic. Option C: Give the player +1 AP when Phase 2 activates to compensate for the AP tax. Any combination of above would improve the experience."
+  },
+  {
+    "id": "issue-1744387200004-03-05",
+    "track": "03-strategic",
+    "category": "balance_boring_fight",
+    "severity": "medium",
+    "title": "Pop Quiz (7 HP), Mold Puff (6 HP), and Group Project Phase 2 (7 HP) trivially die before reactive mechanics have impact",
+    "description": "Three enemies with reactive behavioral hooks are so low-HP that they die in 1 turn of normal play before their mechanics create meaningful decisions. Pop Quiz (onPlayerChargeCorrect: stun, onPlayerNoCharge: enrage) at 7 HP dies to any two QP attacks or one Charged attack — the stun/enrage never activates in turn-1 kills. Mold Puff (6 HP) dies to one Reckless before its poison stacking creates pressure. Group Project Phase 2 (7 HP, no block) dies to any single attack, making the 'last member standing' narrative weight meaningless mechanically. In all three states (03-03, 03-04, 03-15), the strategic analysis found zero tension because the kill was trivial. These enemies have interesting designs sabotaged by insufficient HP for their mechanics to fire.",
+    "evidence": {
+      "stateIds": [
+        "state-03-03",
+        "state-03-04",
+        "state-03-15"
+      ],
+      "agentsSayingSo": 3,
+      "cardId": "",
+      "enemyId": "pop_quiz"
+    },
+    "reproductionSteps": [
+      "Fight Pop Quiz on floor 3 with any standard hand",
+      "Play 2× Strike(QP) or 1× Heavy Strike(QP) in turn 1",
+      "Observe: enemy dies before stun/enrage mechanics ever fire"
+    ],
+    "suggestedFix": "Increase HP of these enemies to extend fights long enough for their mechanics to matter. Pop Quiz: raise to 12-14 HP (currently 7). Mold Puff: raise to 10 HP (currently 6). Group Project Phase 2: minimum 12 HP (currently 7 at phase transition). These HP values push fights to 2-3 turns where the reactive mechanics have time to activate."
+  },
+  {
+    "id": "issue-1744387200005-03-06",
+    "track": "03-strategic",
+    "category": "balance_dead_card",
+    "severity": "low",
+    "title": "Execute is dead in most mid and early combat states (threshold never reached at draw time)",
+    "description": "Execute (bonus damage when enemy HP < 30%) appeared in 5 states (03-08, 03-11, 03-13, 03-14, 03-17). In 4 of 5 states, the enemy was not near 30% HP when Execute was drawn. In state-03-13 (Final Lesson at 64% HP), state-03-11 (Final Exam at 40% HP), state-03-14 (Rabbit Hole at 71% HP), and state-03-08 (Proctor at 77% HP), Execute provided no bonus and was strictly worse than Strike QP. Execute only becomes useful late in a fight when the enemy is already nearly dead — at which point any attack card would finish them. The card creates a 'waiting for the right moment' pattern where players hold it hoping for the threshold, but by the time the threshold is reached, the enemy often dies to other cards first. Execute as a deck filler card with a conditional that rarely fires is a dead card for most of its in-hand time.",
+    "evidence": {
+      "stateIds": [
+        "state-03-08",
+        "state-03-11",
+        "state-03-13",
+        "state-03-14"
+      ],
+      "agentsSayingSo": 4,
+      "cardId": "execute",
+      "enemyId": ""
+    },
+    "reproductionSteps": [
+      "Include Execute in a deck",
+      "Draw it early-mid fight when enemy is at full or half HP",
+      "Observe: Execute deals 3 base damage (no bonus) vs Strike's 4 base — strictly worse"
+    ],
+    "suggestedFix": "Option A: Give Execute a meaningful base value even when threshold not met (e.g., base 5 damage, matching Strike, with +8 bonus below threshold). Option B: Change threshold to 50% HP (making it trigger more reliably as a mid-fight card). Current design as a pure finisher with low base value makes it a liability until the very late game of each fight."
+  },
+  {
+    "id": "issue-1744387200006-03-07",
+    "track": "03-strategic",
+    "category": "balance_boring_fight",
+    "severity": "low",
+    "title": "Time Warp relic + Surge turn creates zero-tension auto-kill on standard enemies",
+    "description": "State-03-18 demonstrates that Time Warp's 5.0× surge multiplier makes any Charged attack instantly lethal against standard enemies. Heavy Strike CC on a surge turn = floor(10×5.0)×chain = 55 damage against a 13 HP enemy. The 'tension' element of the relic (timer halved for the quiz) is irrelevant because even wrong-charge (chargeWrongValue) on surge with Time Warp deals more than enough to kill most enemies. The design intent of creating a 'special power moment' is achieved, but at the cost of strategic interest. All surge turns become the same: charge one attack, auto-kill. The Time Warp relic may be reducing the interesting AP-allocation decisions of surge turns to a single obvious action.",
+    "evidence": {
+      "stateIds": [
+        "state-03-18"
+      ],
+      "agentsSayingSo": 1,
+      "cardId": "",
+      "enemyId": "grade_dragon"
+    },
+    "reproductionSteps": [
+      "Equip Time Warp relic",
+      "Reach a surge turn (globalTurnCounter mod 4 = 2)",
+      "Observe: any single Charged attack kills all standard enemies outright",
+      "No decision needed beyond 'charge one card'"
+    ],
+    "suggestedFix": "Consider reducing Time Warp's surge multiplier from 5.0× to 3.5× — still dramatically powerful (3.5× vs base 1.5×) but not an auto-kill on most enemies. This preserves the 'power turn' fantasy while retaining some AP-allocation interest."
+  },
+  {
+    "id": "issue-1744339200000-04-001",
+    "track": "04-combat-core",
+    "tester": "quiz-quality",
+    "category": "content_quality",
+    "severity": "critical",
+    "title": "{N} template artifact in 118 facts — correct answers and distractors show {1988} instead of 1988",
+    "description": "A generation pipeline bug wrapped numeric answers in curly-brace template syntax (e.g., {1988}) which was stored verbatim to the facts database. Both correct_answer and distractors fields are affected. Players would see \"{1988}\" as an answer choice instead of \"1988\". Confirmed in the live facts.db via SQL scan.\n\nAffected categories:\n- General Knowledge / Pop Culture: 70 facts\n- Art & Architecture / Anime & Manga: 16 facts\n- Natural Sciences / AP Biology: 12 facts\n- Space & Astronomy / NASA Missions: 4 facts\n- History / AP World History: 4 facts\n- Social Sciences / AP Psychology: 3 facts\n- Natural Sciences / AP Physics 1: 3 facts\n- Natural Sciences / Dinosaurs & Paleontology: 2 facts\n- Natural Sciences / AP Chemistry: 2 facts\n- History / US Presidents: 1 fact\n- General Knowledge / Philosophy: 1 fact\n\nTotal: 118 facts\n\nExample: Q='In what year was Akira released?' correct_answer='{1988}' distractors=['{1979}','{1982}','{1985}','{1990}']",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 0,
+      "questionId": "multiple — see category breakdown",
+      "metric": "118 facts confirmed via: SELECT COUNT(*) FROM facts WHERE distractors LIKE '%{%' → 118"
+    },
+    "reproductionSteps": [
+      "Run: node -e \"const db=require('better-sqlite3')('./public/facts.db',{readonly:true}); const r=db.prepare(\\\"SELECT COUNT(*) as n FROM facts WHERE distractors LIKE '%{%'\\\").get(); console.log(r.n);\"",
+      "Expected output: 118",
+      "To see examples: SELECT id, quiz_question, correct_answer, distractors FROM facts WHERE distractors LIKE '%{%' LIMIT 5"
+    ],
+    "suggestedFix": "Write a migration script to strip curly braces from correct_answer and distractors fields where the full value matches /{\\d+}/. Run: UPDATE facts SET correct_answer = REPLACE(REPLACE(correct_answer, '{', ''), '}', '') WHERE correct_answer LIKE '{%}'; and similar for distractors field (parse JSON, strip braces from all elements, re-serialize). Then re-run verify-all-decks.mjs to confirm clean."
+  },
+  {
+    "id": "issue-1744339200001-04-002",
+    "track": "04-combat-core",
+    "tester": "quiz-quality",
+    "category": "content_quality",
+    "severity": "high",
+    "title": "4 facts have 'undefined' string literal in distractors field",
+    "description": "SQL scan confirms 4 facts with 'undefined' string literal in their distractors field. These would render as the text 'undefined' as an answer choice in the quiz UI. This is a distractor generation bug (likely a variable that failed to resolve during generation).",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 0,
+      "questionId": "4 facts — categories unknown without full scan",
+      "metric": "SELECT COUNT(*) FROM facts WHERE distractors LIKE '%undefined%' → 4"
+    },
+    "reproductionSteps": [
+      "Run: SELECT id, category, quiz_question, distractors FROM facts WHERE distractors LIKE '%undefined%'"
+    ],
+    "suggestedFix": "Identify the 4 affected facts, regenerate their distractors, or remove those facts from the active pool (set status='draft') until fixed."
+  },
+  {
+    "id": "issue-1744339200002-04-003",
+    "track": "04-combat-core",
+    "tester": "quiz-quality",
+    "category": "content_quality",
+    "severity": "medium",
+    "title": "Grammatically malformed question detected in sample: 'How many different is Azerbaijani written in'",
+    "description": "During random sampling of 10 facts from the general_knowledge category, one question had malformed grammar: 'How many different is Azerbaijani written in across different countries?' The intended question is likely 'How many different scripts is Azerbaijani written in across different countries?' The verb order is incorrect. Cannot enumerate all malformed questions via DB scan alone; spotted rate of 1/10 in the sample. With 53,269 facts, this could affect hundreds of questions.",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 0,
+      "questionId": "general_knowledge/languages category, Azerbaijani",
+      "metric": "1/10 random sample showed grammatical error"
+    },
+    "reproductionSteps": [
+      "Run: SELECT quiz_question FROM facts WHERE quiz_question LIKE '%Azerbaijani%'"
+    ],
+    "suggestedFix": "Run a grammar-check pass on all questions under 60 characters (shorter questions are higher-risk for truncation/mangling). Prioritize questions that start with 'How many' or 'What' constructions."
+  },
+  {
+    "id": "issue-1744339200003-04-004",
+    "track": "04-combat-core",
+    "tester": "balance-curve",
+    "category": "balance_damage_spike",
+    "severity": "high",
+    "title": "Floor 18 damage spike: 14x jump from floor 16 (avg 2 dmg) to floor 18 (avg 28 dmg) — 24.4% death rate",
+    "description": "Analysis of 28,000 headless sim runs shows a sharp, discontinuous difficulty spike at floor 18 (The Final Lesson, The Omnibus). Floor 16 avg damage taken: 2. Floor 18 avg damage taken: 28. That is a 14x increase in a single floor transition. Death rate at floor 18 is 24.4% (compared to 0% at floors 13-16).\n\nFloor 18 enemy details:\n- The Omnibus: 11,008 fights, 64.3% win rate, avg 49 dmg taken — deadliest enemy in game\n- The Final Lesson: 10,896 fights, 66.1% win rate, avg 45 dmg taken\n\nIn 200 experienced-profile runs, 368/1963 floor-18 encounters (18.8%) took more than 50 damage (>50% of PLAYER_HP_START). This exceeds the balance_damage_spike threshold.\n\nFor new players and language learners, 379/1000 and 380/1000 deaths respectively occur at floor 18 — by far the most common death floor (vs floor 6 which accounts for 122 and 156 deaths respectively).",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 18,
+      "questionId": "",
+      "metric": "Floor 18 avg dmg taken: 28 | Death rate: 24.4% | Enemies: The Omnibus (35.7% loss rate), The Final Lesson (33.9% loss rate) | Big hits (>50 dmg): 18.8% of encounters"
+    },
+    "reproductionSteps": [
+      "Run: npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200",
+      "Check data/playtests/runs/latest/analytics/enemy-analysis.md for The Omnibus and The Final Lesson stats"
+    ],
+    "suggestedFix": "Option A: Reduce floor 18 enemy HP by 15-20% to soften the spike while keeping them as the definitive challenge. Option B: Add a 'warning' floor at floor 17 with a mid-difficulty enemy (currently floor 17 is missing from the data — may be a rest room or segment checkpoint). Option C: Add a floor 17 combat with moderate damage (10-15 avg) to bridge the gap from floor 16's 2 avg dmg."
+  },
+  {
+    "id": "issue-1744339200004-04-005",
+    "track": "04-combat-core",
+    "tester": "balance-curve",
+    "category": "balance_damage_spike",
+    "severity": "medium",
+    "title": "Floors 7-16 too safe: avg 1-4 dmg taken allows HP recovery, removing mid-game tension",
+    "description": "Floor-by-floor analysis shows that after a moderate floor 6 encounter (9 avg dmg, 18.3 turns), floors 7-16 become very safe (1-4 avg dmg taken, 0% death rate). This creates a bimodal difficulty curve: challenging at floors 1-6, then a long plateau from 7-16, then a wall at floor 18.\n\nConsequence: experienced players enter floor 18 at avg 105 HP (above starting 100 HP) — they have fully healed during the mid-game. The wall at floor 18 is experienced from near-full health, making it feel unfair rather than climactic.\n\nSim data: experienced profile floors 7-16 show avg HP entering those floors rising from 85 to 105. Players are net-positive-HP through mid-game.",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 7,
+      "questionId": "",
+      "metric": "Floor 7: 1 avg dmg taken, 0% death rate, 85 avg HP before. Floor 16: 2 avg dmg taken, 0% death, 103 avg HP before. 10 consecutive floors of zero tension."
+    },
+    "reproductionSteps": [
+      "Run experienced profile sim for 200 runs",
+      "Analyze floor-by-floor encounter data from JSON output",
+      "Compare damageTaken values floors 7-16"
+    ],
+    "suggestedFix": "Review segment 2 (floors 7-12) and segment 3 (floors 13-18) enemy damage scaling. Current ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT has segment 2 at 0.18 and segment 3 at 0.60 — the HP increase is there but the damage output may not be scaling with it. Consider increasing enemy damage for segments 2-3 to prevent HP recovery. Alternatively, reduce rest room heal effectiveness in mid-game."
+  },
+  {
+    "id": "issue-1744339200005-04-006",
+    "track": "04-combat-core",
+    "tester": "balance-curve",
+    "category": "balance_damage_spike",
+    "severity": "high",
+    "title": "experienced@asc0 win rate 95% exceeds recommended ceiling — game too easy for semi-experienced players at base difficulty",
+    "description": "The 'experienced' profile (approximate: ~70% charge rate, 80% accuracy, balanced archetype) achieves a 95% win rate at Ascension 0. The floor progression shows 0% death rate through floor 16 and only 4% at floor 18. Average final HP is 91/100 for survivors.\n\nFor context: this profile represents a player who has played 5-10 hours and understands basic charge/chain mechanics but is not optimizing. A 95% win rate at base difficulty means this player feels no challenge until the final boss.\n\nThe Canary adaptive system (CANARY_RUN_STRONG_CHALLENGE_DMG_MULT = 1.20 at 85% accuracy) is supposed to provide challenge for high-accuracy players, but the 95% win rate persists even with these multipliers active.",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 0,
+      "questionId": "",
+      "metric": "experienced@asc0: 1890/2000 runs survived (94.5%), avg 17.8 floors reached, 0% death rate floors 1-16"
+    },
+    "reproductionSteps": [
+      "Run: npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --profile experienced --runs 1000",
+      "Observe survival rate in output"
+    ],
+    "suggestedFix": "Consider increasing default Ascension-0 challenge for the experienced archetype, or use the Canary challenge mode more aggressively when 5+ consecutive correct answers are seen early in a run. The CANARY_CHALLENGE_ENEMY_HP_MULT_5 (1.20 at 5-correct streak) may not be triggering frequently enough. Alternatively, the goal may be intentional (new players should win; Ascension exists for challenge) — in which case this should be documented and the threshold for 'experienced-level' Asc recommendation should be lowered."
+  },
+  {
+    "id": "issue-1744339200006-04-007",
+    "track": "04-combat-core",
+    "tester": "fun-engagement",
+    "category": "ux_no_meaningful_choice",
+    "severity": "medium",
+    "title": "Quick Play vs Charge decision degenerated: 82% charge rate shows experienced players near-always charge",
+    "description": "From 200 experienced-profile sim runs: 82% of all card plays are charge plays, 18% quick plays. Avg damage per charge: 9.2. Avg damage per quick play: 3.0 — a 3.1x ratio.\n\nThe Quick vs Charge decision was designed as the core player expression mechanism ('do you know this fact?'). In practice, high-accuracy players (76-80% charge accuracy) find charging almost always dominant because:\n1. Charge Correct multiplier (1.5x base) + chain multipliers (up to 3.5x) + mastery bonuses = far exceed quick play output\n2. AP surcharge (CHARGE_AP_SURCHARGE = 1) means charging costs 1 extra AP — but with 3 AP, a player can charge twice and quick-play once, making the choice mathematical not meaningful\n3. The only time Quick Play is correct is when the player genuinely doesn't know the answer — but the game doesn't distinguish between 'strategic quick play' and 'don't know quick play'\n\nFor a new player, this might not be an issue (forced to quick play more). For a 10+ hour veteran, the decision has collapsed.",
+    "evidence": {
+      "screenshotPath": null,
+      "floor": 0,
+      "questionId": "",
+      "metric": "200 experienced runs: totalQuickPlays=16614 (18%), totalChargedPlays=75757 (82%), dmg/QP=3.0, dmg/CC=9.2, ratio=3.1x"
+    },
+    "reproductionSteps": [
+      "Check experienced profile data: data/playtests/runs/2026-04-11_01-25-56/experienced.json",
+      "Aggregate totalQuickPlays vs totalChargedPlays across all runs"
+    ],
+    "suggestedFix": "Several options: (A) Make Quick Play contribute to chain multiplier building (rewarding quick-play-heavy styles). (B) Add a Quick Play momentum system: 3 consecutive quick plays in a turn grants +1 AP. (C) Increase AP surcharge for charge plays (currently 1) to 2 for high-mastery cards, forcing some quick plays. (D) Design intent review: if charge is always dominant by design (the educational goal), this is not a bug — but it should be documented as such."
+  },
+  {
+    "id": "issue-1744339200007-04-008",
+    "track": "04-combat-core",
+    "tester": "fun-engagement",
+    "category": "ux_no_meaningful_choice",
+    "severity": "medium",
+    "title": "Trivia Dungeon setup screen overwhelms first-time players with 375 DOM elements and no guidance",
+    "description": "The Trivia Dungeon entry screen (confirmed via layout dump from live session) presents: 11 domain toggle cards, 375 total DOM elements including subcategory chips for all domains simultaneously, and a 'Start Run ▶' button at coordinates (1727, 1008) — bottom-right corner, below the primary viewport for most content.\n\nA first-time player who clicks 'Start Run' on the deck selection hub is immediately confronted with this screen. There is no 'Recommended Starter' option, no tooltip explaining what domain selection means for gameplay, and no visual hierarchy guiding them to the start button.\n\nThe domain selection screen shows 12,871 facts across 11 domains. For reference, the DECKBUILDER.md spec notes that new players benefit from focused domain selection — but nothing in the UI communicates this.\n\nFrom the layout dump: the start button is visible as '.footer-start-btn.enabled' with text 'Start Run ▶' but is at (1727, 1008) — far right edge of a 1920-wide screen, requiring the player to know to scroll or look for it.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/deck-selection-hub.png",
+      "floor": 0,
+      "questionId": "",
+      "metric": "Layout dump: 375 DOM elements on trivia-dungeon-screen, Start button at (1727, 1008)"
+    },
+    "reproductionSteps": [
+      "Navigate to Trivia Dungeon from deck selection hub",
+      "Observe the density of domain cards, subcategory chips, and loadout cards",
+      "Note that 'Start Run' button is at far-right edge"
+    ],
+    "suggestedFix": "Add a 'Quick Start' button above the domain cards that starts with the default All-Domains loadout, bypassing customization. Add a short tooltip or first-run hint explaining domain selection. Move or increase prominence of the Start Run button — it should be the most visually dominant element on the screen for a first-time user."
+  },
+  {
+    "id": "issue-1744339200008-04-009",
+    "track": "04-combat-core",
+    "tester": "fun-engagement",
+    "category": "visual_glitch",
+    "severity": "low",
+    "title": "Loading bar visible during combat entry creates mid-combat visual noise",
+    "description": "In the combat-basic-enc1.jpg screenshot, a 'Loading...' progress bar is visible in the center of the combat scene (below the enemy sprite area, above the card hand). This occurs during the transition into the combat state. While likely brief in real gameplay, it creates a gap in the cinematic quality of combat entry — the most high-stakes moment in the game.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/combat-basic-enc1.jpg",
+      "floor": 1,
+      "questionId": "",
+      "metric": "Loading bar visible at approximately (428, 255) in the 1920x1080 combat scene"
+    },
+    "reproductionSteps": [
+      "Load combat-basic scenario",
+      "Capture screenshot immediately at 6 seconds after scenario load",
+      "Loading bar is visible during the transition state"
+    ],
+    "suggestedFix": "Verify this loading bar is only visible during the asset-loading phase and disappears before the player can interact. If it persists beyond 1 second of combat entry, investigate the asset preloading strategy for combat scenes. Consider masking with a fade-in animation rather than an exposed loading bar."
+  },
+  {
+    "id": "issue-1775872580000-05-001",
+    "track": "05-save-load",
+    "category": "state_divergence",
+    "severity": "medium",
+    "title": "Warm container memory degradation causes crash after 5-6 sequential save/load tests",
+    "description": "After 5+ sequential test runs in a single warm Docker container, the Chromium process becomes unstable and crashes on the next test request. The mysteryEvent scenario consistently triggered this when run 6th in a sequence. Container health check still reports 'ready' but page.evaluate throws 'Target crashed'. Root cause: accumulated WebGL/Phaser state in the renderer process across tests.",
+    "evidence": {
+      "screenshotPath": null,
+      "consoleError": "page.evaluate: Target crashed",
+      "snapshotBefore": null,
+      "snapshotAfter": null,
+      "scenarioLoaded": "mystery-event (6th test in session)"
+    },
+    "reproductionSteps": [
+      "Start warm container: scripts/docker-visual-test.sh --warm start --agent-id test",
+      "Run 5+ sequential tests against the same container",
+      "Run 6th test — container crashes, 'Target crashed' error"
+    ],
+    "suggestedFix": "Restart container every 4-5 tests in sequential test runs, OR add a /reset endpoint to warm-server.mjs that navigates to the base URL to clear GPU state"
+  },
+  {
+    "id": "issue-1775872580000-05-002",
+    "track": "05-save-load",
+    "category": "state_divergence",
+    "severity": "low",
+    "title": "loadActiveRun() accepts any numeric save version without migration guard",
+    "description": "loadActiveRun() checks only `typeof parsed.version === 'number'` to validate the save. A save from a future schema version (e.g. v99999) passes this check and is loaded as-is. If a future version adds required fields that old deserialization code doesn't populate, runtime TypeErrors could result. Currently no migration system exists to handle version mismatches beyond the basic version field check.",
+    "evidence": {
+      "screenshotPath": null,
+      "consoleError": null,
+      "snapshotBefore": "{version: 99999, runState: {isActive: true, playerHp: 70, floor: 1}}",
+      "snapshotAfter": "loaded successfully without error",
+      "scenarioLoaded": "n/a - localStorage injection test"
+    },
+    "reproductionSteps": [
+      "Inject save with version 99999 into localStorage",
+      "Call loadActiveRun()",
+      "Observe: returns the save object without any migration or version check failure"
+    ],
+    "suggestedFix": "Add a max supported version check in loadActiveRun(): if (parsed.version > CURRENT_SAVE_VERSION) return null; — also see save-load.md 'Schema Versioning' section"
+  },
+  {
+    "id": "issue-1775872580000-05-003",
+    "track": "05-save-load",
+    "category": "state_divergence",
+    "severity": "low",
+    "title": "Parallel warm container tests are not safe — scenario-state collision when tests queue simultaneously",
+    "description": "When two tests are sent to the same warm container near-simultaneously (within 100ms), the second test's scenario load overwrites the first test's scenario before the first test completes. This caused mystery-event to show 'restRoom' in the parallel-run test. The warm server processes one /test request at a time but the shell script doesn't wait for the previous test to finish before sending the next.",
+    "evidence": {
+      "screenshotPath": null,
+      "consoleError": null,
+      "snapshotBefore": "mystery-event scenario expected 'mysteryEvent' screen",
+      "snapshotAfter": "got 'restRoom' (from prior rest-site test)",
+      "scenarioLoaded": "mystery-event (parallel with rest-site)"
+    },
+    "reproductionSteps": [
+      "Run: scripts/docker-visual-test.sh --warm test --scenario rest-site & scripts/docker-visual-test.sh --warm test --scenario mystery-event",
+      "The second request queues behind first but result.json captures intermediate state"
+    ],
+    "suggestedFix": "Never run multiple tests against the same warm container in parallel. Use separate containers with unique --agent-id for parallel testing."
+  },
+  {
+    "id": "issue-1775872580000-05-004",
+    "track": "05-save-load",
+    "category": "state_divergence",
+    "severity": "low",
+    "title": "Pre-existing test failure: damagePreviewService barbed_edge synergy test fails on non-strike cards",
+    "description": "src/services/damagePreviewService.test.ts 'card without strike tag gets no barbed_edge bonus' fails: expected qpValue 3, got 5. Non-strike-tagged cards (lifetap) are incorrectly receiving the barbed_edge bonus. This is a pre-existing failure present before this track ran — git status shows no source modifications.",
+    "evidence": {
+      "screenshotPath": null,
+      "consoleError": "AssertionError: expected 5 to be 3 — damagePreviewService.test.ts:417",
+      "snapshotBefore": null,
+      "snapshotAfter": null,
+      "scenarioLoaded": "n/a - unit test"
+    },
+    "reproductionSteps": [
+      "Run: npx vitest run src/services/damagePreviewService.test.ts",
+      "Test 'card without strike tag gets no barbed_edge bonus' fails"
+    ],
+    "suggestedFix": "Fix barbed_edge relic logic to not apply flat bonus to non-strike-tagged cards. File: src/services/damagePreviewService.ts or relic implementation."
+  },
+  {
+    "id": "issue-1775872247392-06-001",
+    "track": "06-content-sample",
+    "deckId": "ap_macroeconomics",
+    "questionIndex": 6,
+    "category": "content_duplicate",
+    "severity": "high",
+    "title": "ap_macroeconomics: equation_symbols pool has duplicate '1' choices in balanced budget multiplier question",
+    "description": "Q: 'When government increases spending and taxes by the same amount (balanced budget), what is the Balanced Budget Multiplier?' A: '1'. The equation_symbols pool (16 facts) contains 2 separate facts with correctAnswer '1'. When distractors are drawn, both appear, showing '1' as both the correct answer and a distractor. O-QZ2 violation.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/ap_macroeconomics/quiz_01.jpg",
+      "questionText": "When government increases spending and taxes by the same amount (balanced budget), what is the Balanced Budget Multiplier?",
+      "choices": [
+        "1",
+        "1",
+        "G",
+        "10"
+      ],
+      "correctAnswer": "1"
+    },
+    "reproductionSteps": [
+      "Load deck ap_macroeconomics",
+      "Draw balanced budget multiplier question",
+      "Observe two '1' choices"
+    ],
+    "suggestedFix": "Deduplicate equation_symbols pool: differentiate answers ('BBM = 1' vs '1 (Keynesian multiplier base)') or use bracket notation for numeric facts."
+  },
+  {
+    "id": "issue-1775872247393-06-002",
+    "track": "06-content-sample",
+    "deckId": "ap_macroeconomics",
+    "questionIndex": 10,
+    "category": "content_length",
+    "severity": "medium",
+    "title": "ap_macroeconomics: financial_asset_terms pool length disparity 3.8x (Time deposit vs Bond)",
+    "description": "Q: 'What type of bank deposit requires funds to remain for a set term...' A: 'Time deposit' (12 chars). Distractors include 'Bond' (4 chars), ratio 3x. Pool has only 5 real facts + 0 synthetics. The wide length range makes 'Bond' and 'Stock' easily eliminable as length outliers. O-QZ6 violation.",
+    "evidence": {
+      "questionText": "What type of bank deposit requires funds to remain for a set term and penalizes early withdrawal?",
+      "choices": [
+        "Time deposit",
+        "Financial asset",
+        "Stock",
+        "Bond"
+      ],
+      "correctAnswer": "Time deposit"
+    },
+    "reproductionSteps": [
+      "Load deck ap_macroeconomics",
+      "Draw question about bank deposit types"
+    ],
+    "suggestedFix": "Add synthetic distractors matching length of 'Time deposit': 'Demand deposit', 'Savings deposit', 'Certificate of deposit', 'Treasury bill', 'Money market fund'."
+  },
+  {
+    "id": "issue-1775872247394-06-003",
+    "track": "06-content-sample",
+    "deckId": "spanish",
+    "questionIndex": 3,
+    "category": "content_length",
+    "severity": "high",
+    "title": "spanish: english_meanings_adverbs pool has length disparity 4.3x (multi-word vs single-word)",
+    "description": "Q: 'What does \"además\" mean?' A: 'also, besides' (13 chars). Distractors 'here' (4), 'now' (3), 'there' (5). Ratio 4.3x. Spanish adverb pool mixes multi-word English meanings ('also, besides', 'even though') with single-word translations ('here', 'now'). Players identify the compound meaning as the answer without vocabulary knowledge. Anti-Pattern 2 violation.",
+    "evidence": {
+      "questionText": "What does \"además\" mean?",
+      "choices": [
+        "also, besides",
+        "here",
+        "now",
+        "there"
+      ],
+      "correctAnswer": "also, besides"
+    },
+    "reproductionSteps": [
+      "Load deck spanish (spanish_a1)",
+      "Draw questions about además, incluso, or other adverbs with compound translations"
+    ],
+    "suggestedFix": "Split english_meanings_adverbs: english_meanings_adverbs_short (≤6 chars: 'here', 'now', 'still', 'even') vs english_meanings_adverbs_compound (>6 chars: 'also, besides', 'only then')."
+  },
+  {
+    "id": "issue-1775872247395-06-004",
+    "track": "06-content-sample",
+    "deckId": "korean",
+    "questionIndex": 1,
+    "category": "content_quality",
+    "severity": "high",
+    "title": "korean: english_meanings mega-pool (1368 facts, no POS split) - POS-TELL vulnerability across all questions",
+    "description": "All 1368 korean_topik1 facts share a single english_meanings pool with no part-of-speech separation. Mixed POS distractors (verbs: 'teach', 'cultivate, grow'; nouns: 'store, shop', 'meat', 'rainy season'; adjectives: 'cheap', 'fun, be pleasant') allow players to identify answers by grammatical category rather than vocabulary knowledge. Anti-Pattern 10 violation. The target_language_words pool is correctly separate, but POS splitting is missing.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/korean_topik1/quiz_01.jpg",
+      "questionText": "What does '즐겁다' mean?",
+      "choices": [
+        "fun, be pleasant",
+        "store, shop",
+        "teach",
+        "meat"
+      ],
+      "correctAnswer": "fun, be pleasant"
+    },
+    "reproductionSteps": [
+      "Load deck korean_topik1",
+      "Draw vocabulary questions",
+      "Observe mixed POS distractors"
+    ],
+    "suggestedFix": "Split english_meanings pool by POS: english_meanings_verbs, english_meanings_nouns, english_meanings_adjectives, english_meanings_other. Pad each sub-pool to 15+. Run node scripts/fix-pool-heterogeneity.mjs."
+  },
+  {
+    "id": "issue-1775872247396-06-005",
+    "track": "06-content-sample",
+    "deckId": "korean",
+    "questionIndex": 2,
+    "category": "content_semantic_overlap",
+    "severity": "medium",
+    "title": "korean: same 3 distractors ('store, shop', 'teach', 'meat') appearing across majority of questions",
+    "description": "In 10 sampled questions, 9 of 10 showed 'store, shop', 'teach', 'meat' as the first 3 distractors. With 1368 facts in one mega-pool, the first 3 non-correct pool members always appear. Players learn these specific wrong answers across sessions, reducing learning efficacy.",
+    "evidence": {
+      "questionText": "Multiple vocabulary questions",
+      "choices": [
+        "[various]",
+        "store, shop",
+        "teach",
+        "meat"
+      ],
+      "correctAnswer": "[varies]"
+    },
+    "reproductionSteps": [
+      "Load deck korean_topik1",
+      "Draw 5+ questions",
+      "Note 'store, shop', 'teach', 'meat' recurring"
+    ],
+    "suggestedFix": "POS split (Issue 4) will naturally resolve this. The Korean deck likely needs to ensure the distractor selection algorithm randomizes within the pool rather than always taking the first N entries."
+  },
+  {
+    "id": "issue-1775872247397-06-006",
+    "track": "06-content-sample",
+    "deckId": "ap_chemistry",
+    "questionIndex": 2,
+    "category": "content_quality",
+    "severity": "medium",
+    "title": "ap_chemistry: chemistry_concepts_long_u4 pool has only 9 facts (below 15 recommended)",
+    "description": "Pool chemistry_concepts_long_u4 has 9 real facts and 0 synthetic distractors. At exactly 9 items, players see limited distractor variety. The pool is unit-coherent (good), but underpopulated.",
+    "evidence": {
+      "questionText": "In a particulate diagram showing a reaction, the circles and molecular models drawn on the right side represent...",
+      "choices": [
+        "products (after rxn)",
+        "H+(aq) + OH-(aq) → H2O(l)",
+        "only change coefficients",
+        "intermolecular forces change"
+      ],
+      "correctAnswer": "products (after rxn)"
+    },
+    "reproductionSteps": [
+      "Load deck ap_chemistry",
+      "Draw Unit 4 particulate diagram questions"
+    ],
+    "suggestedFix": "Add 6+ synthetic distractors to reach 15+: 'transition state', 'activation energy', 'reaction intermediate', 'spectator ions', 'limiting reagent', 'theoretical yield'."
+  },
+  {
+    "id": "issue-1775872247398-06-007",
+    "track": "06-content-sample",
+    "deckId": "ap_microeconomics",
+    "questionIndex": 5,
+    "category": "content_duplicate",
+    "severity": "high",
+    "title": "ap_microeconomics: curve_and_graph_names_short pool has duplicate 'U-shaped' distractors",
+    "description": "Q: 'In a surplus graph, producer surplus is the triangular area below the price level and above the...' A: 'Supply curve'. The pool draws 'U-shaped' twice because two separate facts in curve_and_graph_names_short have identical correctAnswer 'U-shaped' (likely one for ATC curve, one for AVC curve). O-QZ2 violation.",
+    "evidence": {
+      "questionText": "In a surplus graph, producer surplus is the triangular area below the price level and above the Supply curve. This area is...",
+      "choices": [
+        "Supply curve",
+        "Demand curve",
+        "U-shaped",
+        "U-shaped"
+      ],
+      "correctAnswer": "Supply curve"
+    },
+    "reproductionSteps": [
+      "Load deck ap_microeconomics",
+      "Draw producer surplus question"
+    ],
+    "suggestedFix": "Differentiate answers: 'U-shaped (ATC curve)' and 'U-shaped (AVC curve)' to make each pool member unique. Or merge the two U-shaped facts into one and add a different distractor."
+  },
+  {
+    "id": "issue-1775872247399-06-008",
+    "track": "06-content-sample",
+    "deckId": "philosophy",
+    "questionIndex": 3,
+    "category": "content_length",
+    "severity": "medium",
+    "title": "philosophy: bracket_dates pool mixes '551 BCE' text format with {1651} bracket notation - inconsistent display",
+    "description": "The bracket_dates pool has 2 BCE dates ('551 BCE', 'c. 405 BCE') as plain text and 6 CE dates as bracket notation ({1651}, {1637}, etc.). When Confucius birth year question is shown, distractors from the CE dates appear as '1651', '1637' — obviously wrong CE years for an ancient figure. Format inconsistency allows elimination without knowledge.",
+    "evidence": {
+      "questionText": "According to traditional Chinese sources, in what year was Confucius born?",
+      "choices": [
+        "551 BCE",
+        "1651",
+        "1637",
+        "1656"
+      ],
+      "correctAnswer": "551 BCE"
+    },
+    "reproductionSteps": [
+      "Load deck philosophy",
+      "Draw Confucius birth year question"
+    ],
+    "suggestedFix": "Convert BCE dates to bracket notation with negative values ({-551}, {-405}) or create bracket_dates_bce pool. This ensures all pool members render in the same format (plain numbers), making CE dates plausible wrong answers for BC-era questions."
+  },
+  {
+    "id": "issue-1775872247400-06-009",
+    "track": "06-content-sample",
+    "deckId": "philosophy",
+    "questionIndex": 6,
+    "category": "content_quality",
+    "severity": "medium",
+    "title": "philosophy: concept_terms_tiny pool semantic contamination (atomism, Water, Air mixed with Epoché)",
+    "description": "Q: 'What philosophical position is Vaisheshika school best known for?' A: 'atomism'. Distractors 'Water', 'Air' are pre-Socratic element concepts; 'Epoché' is phenomenological. The concept_terms_tiny pool (28 items) mixes Hindu philosophical answers with pre-Socratic Greek answers and modern phenomenological terms. Some are eliminable by tradition when questions are tradition-specific.",
+    "evidence": {
+      "questionText": "What philosophical position is the Vaisheshika school best known for — its belief that reality is composed of?",
+      "choices": [
+        "atomism",
+        "Water",
+        "Air",
+        "Epoché"
+      ],
+      "correctAnswer": "atomism"
+    },
+    "reproductionSteps": [
+      "Load deck philosophy",
+      "Draw Vaisheshika atomism question"
+    ],
+    "suggestedFix": "concept_terms_tiny is likely used as a catch-all for short concept answers. Consider splitting by tradition or era when the deck's question templates can make tradition-crossing distractors eliminable."
+  },
+  {
+    "id": "issue-1775872247401-06-010",
+    "track": "06-content-sample",
+    "deckId": "ap_world_history",
+    "questionIndex": 2,
+    "category": "content_template_leak",
+    "severity": "high",
+    "title": "ap_world_history: 10+ questions contain 'ProperNoun this' grammar scar artifacts from incomplete substitution",
+    "description": "The deck has at least 10 questions where a specific noun phrase was replaced with 'this' as a placeholder but never restored. Examples: 'Song Dynasty this system', 'European Union this', 'Ho Chi this', 'Grameen this', 'Rwandan this', 'South this', 'WWI this', 'Qing this'. These render as ungrammatical questions that confuse players and compromise educational clarity. Grammar scar pipeline artifact.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/ap_world_history/quiz_01.jpg",
+      "questionText": "Which Song Dynasty this system selected government officials based on merit rather than hereditary privilege?",
+      "choices": [
+        "Civil service examination system",
+        "Commercialization (market economy)",
+        "Dar al-Islam (Muslim world)",
+        "Hindu-Buddhist syncretism"
+      ],
+      "correctAnswer": "Civil service examination system"
+    },
+    "reproductionSteps": [
+      "Load deck ap_world_history",
+      "Draw questions about Song Dynasty, Ho Chi Minh, European Union, Grameen Bank, Rwanda, Korean Wave, WWI Gallipoli, Qing tributary system"
+    ],
+    "suggestedFix": "Run verify-all-decks.mjs grammar scar check. Manual fixes needed: 'Song Dynasty this system' → 'Song Dynasty examination system'; 'Ho Chi this' → 'Ho Chi Minh'; 'Grameen this' → 'Grameen Bank'; 'Rwandan this' → 'Rwandan Genocide'; 'European Union this' → 'European Union member states'; 'South this' → 'South Korean'; 'WWI this, fought at the Dardanelles' → 'WWI campaign, fought at the Dardanelles'; 'Qing this system' → 'Qing tributary system'."
+  },
+  {
+    "id": "issue-1775872247402-06-011",
+    "track": "06-content-sample",
+    "deckId": "ap_world_history",
+    "questionIndex": 3,
+    "category": "content_template_leak",
+    "severity": "high",
+    "title": "ap_world_history: 'Rape of this' question corrupts critical WWII massacre education",
+    "description": "Q: 'What was the \"Rape of this\" and why is it significant?' A: 'Nanjing Massacre'. The term 'Nanjing' was replaced with 'this', making 'Rape of this' meaningless. This is the most educationally harmful scar because the question is supposed to teach students to recognize 'Rape of Nanjing' as a historical event name.",
+    "evidence": {
+      "questionText": "What was the 'Rape of this' and why is it significant in the AP World History exam's coverage of WWII?",
+      "choices": [
+        "Nanjing Massacre",
+        "10 million",
+        "Armenian Genocide",
+        "Roma, disabled, and LGBTQ+"
+      ],
+      "correctAnswer": "Nanjing Massacre"
+    },
+    "reproductionSteps": [
+      "Load deck ap_world_history",
+      "Draw question about Nanjing Massacre"
+    ],
+    "suggestedFix": "Fix: 'What was the Rape of Nanjing and why is it significant...?' This is a factual question requiring the historical event name to be in the question stem."
+  },
+  {
+    "id": "issue-1775872247403-06-012",
+    "track": "06-content-sample",
+    "deckId": "anime_manga",
+    "questionIndex": 2,
+    "category": "content_duplicate",
+    "severity": "high",
+    "title": "anime_manga: creator_names_short pool (5 facts) has duplicate 'CLAMP' distractor",
+    "description": "Q: 'Which mangaka created Bleach?' A: 'Tite Kubo'. Pool creator_names_short has only 5 facts with 0 synthetics. Two separate facts both answer 'CLAMP' (likely two CLAMP-created series: Cardcaptor Sakura and another). When distractors are drawn, both CLAMP facts appear, showing 'CLAMP' twice. O-QZ1 (borderline) and O-QZ2 violations.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/anime_manga/quiz_01.jpg",
+      "questionText": "Which mangaka created Bleach?",
+      "choices": [
+        "Tite Kubo",
+        "CLAMP",
+        "CLAMP",
+        "ONE"
+      ],
+      "correctAnswer": "Tite Kubo"
+    },
+    "reproductionSteps": [
+      "Load deck anime_manga",
+      "Draw Bleach creator question"
+    ],
+    "suggestedFix": "Merge the two CLAMP facts into one (or differentiate as 'CLAMP (Cardcaptor Sakura)' vs 'CLAMP (xxxHolic)'). Add 10+ synthetic distractors to creator_names_short: 'Yoshihiro Togashi', 'Hajime Isayama', 'Naoki Urasawa', 'Rumiko Takahashi', 'Kentaro Miura'."
+  },
+  {
+    "id": "issue-1775872247404-06-013",
+    "track": "06-content-sample",
+    "deckId": "anime_manga",
+    "questionIndex": 5,
+    "category": "content_quality",
+    "severity": "medium",
+    "title": "anime_manga: manga_series_titles pool (5 facts) mixes series titles with magazine names",
+    "description": "The manga_series_titles pool contains: Dragon Ball, One Piece, Shojo Comic, Bessatsu Shonen Magazine, Fairy Tail. 'Shojo Comic' and 'Bessatsu Shonen Magazine' are publication titles, not manga series. When a Dragon Ball question is asked, 'Shojo Comic' appears as a distractor — obviously a magazine, not a series. Anti-Pattern 13 semantic contamination.",
+    "evidence": {
+      "questionText": "Which manga series by Akira Toriyama was serialized in Weekly Shonen Jump from 1984 to 1995?",
+      "choices": [
+        "Dragon Ball",
+        "One Piece",
+        "Shojo Comic",
+        "Bessatsu Shonen Magazine"
+      ],
+      "correctAnswer": "Dragon Ball"
+    },
+    "reproductionSteps": [
+      "Load deck anime_manga",
+      "Draw Dragon Ball question"
+    ],
+    "suggestedFix": "Remove 'Shojo Comic' and 'Bessatsu Shonen Magazine' from manga_series_titles (they belong in publisher_magazine_names). Add series titles: 'Naruto', 'Death Note', 'Fullmetal Alchemist', 'Attack on Titan', 'Hunter x Hunter', 'Yu Yu Hakusho'."
+  },
+  {
+    "id": "issue-1775872247405-06-014",
+    "track": "06-content-sample",
+    "deckId": "medical_terminology",
+    "questionIndex": 5,
+    "category": "content_duplicate",
+    "severity": "critical",
+    "title": "medical_terminology: 31 duplicate answer instances across 13 pools cause systemic O-QZ2 failures",
+    "description": "Medical terminology has multiple roots meaning the same thing (ren/o and nephr/o both = Kidney; dermato and derm/o both = skin; etc.). With these facts in the same pools, any question about one root draws the other as a distractor — showing the correct answer twice. 31 duplicate instances across 13 pools including: root_meanings_urinary (Kidney x2), root_meanings_integumentary (skin x3, hair x2), root_meanings_digestive (4 duplicates), body_systems (5 duplicates), root_meanings_reproductive (ovary x2, breast x2, uterus x2).",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/medical_terminology/quiz_01.jpg",
+      "questionText": "What does the combining form ren/o mean?",
+      "choices": [
+        "Kidney",
+        "Kidney",
+        "Bladder",
+        "Urethra"
+      ],
+      "correctAnswer": "Kidney"
+    },
+    "reproductionSteps": [
+      "Load deck medical_terminology",
+      "Draw question about ren/o (should see 'Kidney' twice in choices)",
+      "Also: mast/o question shows 'ovary' twice; bronch/o shows 'Respiratory' twice"
+    ],
+    "suggestedFix": "Append the root abbreviation to each answer to make it unique within its pool: 'Kidney (ren/o)' vs 'Kidney (nephr/o)', 'skin (derm/o)' vs 'skin (dermat/o)'. This preserves educational value while ensuring pool uniqueness. Apply to all 31 duplicates."
+  },
+  {
+    "id": "issue-1775872247406-06-015",
+    "track": "06-content-sample",
+    "deckId": "world_cuisines",
+    "questionIndex": 5,
+    "category": "content_quality",
+    "severity": "high",
+    "title": "world_cuisines: technique_terms_short pool is severely semantically contaminated (16 facts, 0 synthetics)",
+    "description": "technique_terms_short mixes: temperatures (480°C), physiological effects (Pain receptors), ratios (14-17 times, 20-50%), chemical components (Amino acids), establishments (El Bulli, Tandoor), biology (SCOBY, Zymology), techniques (Wok hei, Spherification, Osmosis), slang (Bitter drink, Air pumping), historical values (4 denarii, 2,000). A player sees 'SCOBY', '480°C', 'Pain receptors', '14-17 times' as quiz options — temperature and body-part answers are immediately eliminable for a fermentation culture question. Anti-Pattern 13.",
+    "evidence": {
+      "questionText": "What is the symbiotic culture of bacteria and yeast used to ferment kombucha tea called?",
+      "choices": [
+        "SCOBY",
+        "480°C",
+        "Pain receptors",
+        "14–17 times"
+      ],
+      "correctAnswer": "SCOBY"
+    },
+    "reproductionSteps": [
+      "Load deck world_cuisines",
+      "Draw SCOBY/kombucha question",
+      "Observe temperature and body-part distractors"
+    ],
+    "suggestedFix": "Split technique_terms_short into semantically coherent sub-pools: temperature_values, biological_terms, ratio_values, technique_names, establishment_names. Each sub-pool needs 5+ real facts + synthetic distractors."
+  },
+  {
+    "id": "issue-1775872247407-06-016",
+    "track": "06-content-sample",
+    "deckId": "world_cuisines",
+    "questionIndex": 3,
+    "category": "content_quality",
+    "severity": "medium",
+    "title": "world_cuisines: cultural_references pool mixes historical events with literary titles (Boston Tea Party vs The Odyssey)",
+    "description": "Q: 'The British Tea Act of 1773 provoked which event?' A: 'Boston Tea Party'. Distractors: 'The Lion, the Witch and the Wardrobe', 'One Thousand and One Nights', 'The Odyssey'. Historical political events appear alongside fantasy/literary works — immediately eliminable by category. Length disparity also present (16 vs 35 chars). Anti-Pattern 13.",
+    "evidence": {
+      "questionText": "The British Tea Act of 1773 provoked which event that escalated into the American Revolution?",
+      "choices": [
+        "Boston Tea Party",
+        "The Lion, the Witch and the Wardrobe",
+        "One Thousand and One Nights",
+        "The Odyssey"
+      ],
+      "correctAnswer": "Boston Tea Party"
+    },
+    "reproductionSteps": [
+      "Load deck world_cuisines",
+      "Draw Boston Tea Party question"
+    ],
+    "suggestedFix": "Separate cultural_references into: cultural_events (historical events, treaties) and cultural_works (books, films, stories). Ensure each sub-pool has semantically homogenous items."
+  },
+  {
+    "id": "issue-1775872247408-06-017",
+    "track": "06-content-sample",
+    "deckId": "ap_world_history",
+    "questionIndex": 9,
+    "category": "content_template_leak",
+    "severity": "medium",
+    "title": "ap_world_history: 'European Union this in 1999' grammar scar in eurozone question",
+    "description": "Q contains 'The euro currency, adopted by European Union this in 1999' where 'this' should be 'member states'. The question is still answerable ('20 eurozone members') but the grammar break undermines educational quality and makes the question confusing.",
+    "evidence": {
+      "questionText": "The euro currency, adopted by European Union this in 1999 for electronic transactions and 2002 for coins and notes, is currently used by how many eurozone members?",
+      "choices": [
+        "20 eurozone members",
+        "Mamluks",
+        "Grand Council",
+        "Joint-stock company"
+      ],
+      "correctAnswer": "20 eurozone members"
+    },
+    "reproductionSteps": [
+      "Load deck ap_world_history",
+      "Draw eurozone members question"
+    ],
+    "suggestedFix": "Fix: 'The euro currency, adopted by European Union member states in 1999...'"
+  },
+  {
+    "id": "issue-1775873221654-07-001",
+    "track": "07-mode-coverage",
+    "mode": "chess",
+    "category": "feature_broken",
+    "severity": "high",
+    "title": "Chess Tactics: interactive board never renders — fenPosition data mismatch causes silent fallback to text MCQ",
+    "description": "The chess_tactics deck has quizResponseMode: 'chess_move', fenPosition, and solutionMoves on every fact. StudyQuizOverlay.svelte DOES import ChessBoard.svelte (line 7) and HAS the chess rendering branch (line 211: 'quizResponseMode === chess_move && chessContext'). The pipeline correctly forwards all chess fields through nonCombatQuizSelector → generateStudyQuestions → QuizQuestion. The board never renders because getPlayerContext() in chessGrader.ts throws when applying solutionMoves[0] to the stored fenPosition.\n\nRoot cause: The fenPosition stored in chess_tactics.json facts is the puzzle position AFTER the opponent's setup move (the position the player sees). getPlayerContext() expects the BASE FEN before the setup move and applies solutionMoves[0] to produce the puzzle FEN. Example: fact chess_tac_4172G has fenPosition='1rb3k1/pp1pB1p1/3Pp2p/q1p2n2/2P3Q1/2bB1P2/P1R4P/5KNR b - - 3 20' with solutionMoves=['e4g4','f5e3','f1e2','e3g4']. There is no piece at e4 in this FEN, so applying e4g4 throws. The catch block at StudyQuizOverlay.svelte line 77-79 silently sets chessContext=null. Board branch at line 211 is skipped. Falls back to text MCQ with no error visible to player or in console.\n\nContrast: chessPuzzleService.ts stores puzzle.fen as the BASE FEN correctly (before setup move). chess_tactics.json was authored with the wrong FEN convention. Also: raw puzzle ID tag '[#Goifm]' is leaked in question text — separate content fix needed.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/chess/chess-01-initial.png",
+      "consoleError": "",
+      "additionalScreenshots": [
+        "evidence/screenshots/chess/chess-02-question.png",
+        "evidence/screenshots/chess/chess-03-after-answer.png"
+      ],
+      "layoutDump": "/tmp/rr-docker-visual/BATCH-ULTRA-t7b_study-deck-chess_1775871980533/layout-dump.txt"
+    },
+    "reproductionSteps": [
+      "Load __rrScenario.load('study-deck-chess') in Docker container",
+      "Wait 7s for scene to init",
+      "Observe: 4 multiple-choice buttons with chess notation text (no chess board rendered)",
+      "Question shows 'White to move. [#Goifm]' — raw puzzle ID visible in brackets",
+      "Note: StudyQuizOverlay.svelte line 7 imports ChessBoard, line 211 has chess branch — the UI code IS present"
+    ],
+    "rootCauseAnalysis": "chess_tactics.json stores fenPosition as the post-setup-move puzzle position. chessGrader.getPlayerContext() expects the pre-setup-move base FEN and applies solutionMoves[0] to arrive at puzzle position. When solutionMoves[0]='e4g4' is applied to a FEN with no piece at e4, chess.js throws. StudyQuizOverlay.svelte line 77-79 catch block silently nullifies chessContext. Board branch condition at line 211 is never true.",
+    "suggestedFix": "Fix chess_tactics.json — store the BASE FEN (one move before the puzzle position) in fenPosition so getPlayerContext() can apply the setup move correctly. This matches chessPuzzleService.ts convention. Alternatively fix the getPlayerContext call in StudyQuizOverlay to detect already-setup positions. Also strip '[#ID]' bracket tags from quizQuestion display text (separate content fix)."
+  },
+  {
+    "id": "issue-1775873221654-07-002",
+    "track": "07-mode-coverage",
+    "mode": "chess",
+    "category": "content_quality",
+    "severity": "medium",
+    "title": "Chess Tactics: raw puzzle ID tag '[#Goifm]' leaked into question text shown to player",
+    "description": "Chess fact quiz questions display 'White to move. [#Goifm]' where '[#Goifm]' is the internal puzzle reference ID used to look up the FEN position. This is an internal implementation detail that should never be visible to the player. A player who doesn't know chess notation syntax will see this as gibberish.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/chess/chess-02-question.png",
+      "consoleError": ""
+    },
+    "reproductionSteps": [
+      "Load study-deck-chess scenario",
+      "Observe question text: 'White to move. [#Goifm]'"
+    ],
+    "suggestedFix": "Strip the [#ID] bracket tag from displayed question text. The quizQuestion field in chess_tactics facts should be just 'White to move.' with the puzzle ID stored separately (or omitted entirely, since the id field already identifies the fact)."
+  },
+  {
+    "id": "issue-1775873221654-07-003",
+    "track": "07-mode-coverage",
+    "mode": "map-pin",
+    "category": "feature_broken",
+    "severity": "high",
+    "title": "Map Pin Drop: MapPinDrop.svelte not wired into StudyQuizOverlay — no map_pin branch in study quiz template",
+    "description": "The world_capitals deck has quizResponseMode: 'map_pin' and mapCoordinates [lat, lon] on every fact. The data pipeline correctly forwards mapCoordinates and quizResponseMode through nonCombatQuizSelector and generateStudyQuestions (confirmed by code inspection). However, StudyQuizOverlay.svelte has NO import of MapPinDrop.svelte and NO conditional branch for 'map_pin' quizResponseMode in its template. The template (lines 210-252) handles: chess_move (with chessContext), image_answers, and default text MCQ. There is no map_pin case. The restStudy flow silently falls back to standard 4-choice text answers for world_capitals facts.\n\nThis is structurally different from the chess issue: chess has all UI code present but fails on a data bug. Map pin has no UI code in the study flow at all. MapPinDrop.svelte exists and is functional — it is wired in CardExpanded.svelte and CardCombatOverlay.svelte — but never imported or used in StudyQuizOverlay.svelte.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/map-pin/map-01-world-capitals-no-map.png",
+      "consoleError": ""
+    },
+    "reproductionSteps": [
+      "Load world_capitals deck via __rrScenario.loadCustom({screen:'restStudy', deckId:'world_capitals'})",
+      "Wait 7s",
+      "Observe: standard 4-choice text quiz, no SVG world map, no draggable pin",
+      "Grep StudyQuizOverlay.svelte for 'MapPinDrop' or 'map_pin' — zero results (confirmed via code inspection)"
+    ],
+    "suggestedFix": "Import MapPinDrop into StudyQuizOverlay.svelte and add a '{:else if currentQuestion.quizResponseMode === \"map_pin\" && currentQuestion.mapCoordinates}' branch in the answers block (between the chess_move block and image_answers block). Wire up a handleMapPinConfirm callback similar to how CardExpanded.svelte handles it. The MapPinDrop component already implements distance-based partial credit scoring."
+  },
+  {
+    "id": "issue-1775873221654-07-004",
+    "track": "07-mode-coverage",
+    "mode": "trivia",
+    "category": "feature_missing",
+    "severity": "critical",
+    "title": "Trivia Night: TriviaRoundScreen.svelte is an orphan component — unreachable from any screen flow",
+    "description": "TriviaRoundScreen.svelte exists in src/ui/components/ but is NEVER imported into CardApp.svelte or any other component. The 'trivia_night' mode is defined in multiplayerTypes.ts and referenced in MultiplayerMenu.svelte and MultiplayerLobby.svelte, but those screens require an active multiplayer lobby session with peer connections. The trivia_night game mode as a standalone single-player feature does not exist. There is no scenario preset and no screen routing for a solo trivia round. The component is dead code.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/trivia/trivia-01-hub-no-access.png",
+      "consoleError": ""
+    },
+    "reproductionSteps": [
+      "grep -rn 'TriviaRoundScreen' src/ — only self-reference in the component file",
+      "grep -rn 'triviaRound' src/CardApp.svelte — zero results",
+      "There is no scenario preset 'trivia-night' or 'trivia-round' in scenarioSimulator.ts",
+      "The trivia_night mode is locked behind multiplayer lobby (needs P2P connection)"
+    ],
+    "suggestedFix": "Two paths: (1) Wire TriviaRoundScreen.svelte into CardApp.svelte as a solo party-mode screen accessible from hub, add scenario preset 'trivia-night'. (2) Accept it's multiplayer-only and add a proper 'solo trivia round' mode using the trivia_night game mode type. The current state — a fully-built component with zero integration — is wasted work that could be shipped."
+  },
+  {
+    "id": "issue-1775873221654-07-005",
+    "track": "07-mode-coverage",
+    "mode": "procedural",
+    "category": "visual_glitch",
+    "severity": "low",
+    "title": "Procedural Math: accuracy counter shows 0% immediately after first incorrect answer, discouraging early learners",
+    "description": "The top bar shows '1 | 0% | Stop' after one answered question. The '0%' reads as a failure state, but it's because the player answered incorrectly (we deliberately chose wrong for testing). The UX concern: the 0% accuracy metric is displayed prominently and could be discouraging for new learners who get a few wrong at first. The sad-face emoji on the Study Complete screen ('0 of 3 cards mastered up!') reinforces this.",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/procedural/proc-02-q2-subtraction.png",
+      "consoleError": ""
+    },
+    "reproductionSteps": [
+      "Navigate to Study Temple → Math → Arithmetic → START PRACTICE",
+      "Answer the first question incorrectly",
+      "Observe top bar: '1 | 0% | Stop'"
+    ],
+    "suggestedFix": "Consider showing accuracy only after 5+ answers (same as Duolingo/Anki pattern) or replace the 0% with a more neutral label during early session. Also consider replacing the sad-face emoji on the Complete screen with a neutral or encouraging icon when accuracy is low."
+  },
+  {
+    "id": "issue-1775873221654-07-006",
+    "track": "07-mode-coverage",
+    "mode": "study",
+    "category": "feature_broken",
+    "severity": "high",
+    "title": "Study Temple full FSRS session: study-quiz scenario shows empty state in fresh container — requires pre-seeded player data",
+    "description": "The 'study-quiz' scenario (restStudy with no deckId) shows empty state ('Return to Hub' button, study-empty-state testid) in a fresh Docker container. This is because the FSRS queue requires pre-existing PlayerFactState records — new cards aren't served by the legacy trivia path without a bootstrapped player save with cards in the 'review' state. This makes the scenario unusable for fresh test environments. The study-deck-* scenarios work correctly (new cards are served via the curated deck Anki selector).",
+    "evidence": {
+      "screenshotPath": "evidence/screenshots/study/study-01-q1.png",
+      "consoleError": ""
+    },
+    "reproductionSteps": [
+      "Load __rrScenario.load('study-quiz') in fresh Docker container",
+      "Wait 6s",
+      "Observe: empty state with 'Return to Hub' button, no quiz questions"
+    ],
+    "suggestedFix": "The study-quiz scenario should either (a) bootstrap with some pre-seeded fact states to populate the FSRS queue, or (b) add a comment in scenarioSimulator.ts that this scenario requires prior player data. The deck-specific scenarios (study-deck-chess etc.) work correctly and should be used for fresh-container testing."
+  },
+  {
+    "id": "issue-1744332000000-08-001",
+    "track": "08-ascension",
+    "ascensionLevel": 0,
+    "ascensionName": "All Levels",
+    "category": "ascension_label_runtime_mismatch",
+    "severity": "critical",
+    "title": "scenarioSimulator.ts bootstrapRun() ignores config.ascension — combat stats remain at A0",
+    "description": "bootstrapRun() in src/dev/scenarioSimulator.ts calls createRunState() on line 651 WITHOUT passing ascensionLevel. When __rrScenario.spawn() is called with runOverrides: { ascensionLevel: N }, the encounter is already initialized at A0 multipliers (enemyHpMultiplier=1.0, enemyDamageMultiplier=1.0). The runOverrides patch applied afterward updates runState.ascensionLevel and runState.ascensionModifiers, which causes the HUD badge to show the correct level (e.g. 'A5'), but the TurnState ascension fields (ascensionEnemyDamageMultiplier, ascensionWrongAnswerSelfDamage, etc.) were already computed at A0 by encounterBridge.ts when startEncounterForRoom() was called. The label says A5; the enemy is actually at A0 difficulty.",
+    "evidence": {
+      "screenshotPath": "evidence/a0-combat-screenshot.png",
+      "bannerText": "N/A - only A0 visual captured; badge would show AN for N>0 but combat is at A0 stats",
+      "expectedStat": "For A10: enemyDamageMultiplier should be 1.20 in TurnState",
+      "actualStat": "TurnState shows ascensionEnemyDamageMultiplier = 1.00 (A0 value)",
+      "referenceA0Stat": 1.00,
+      "affectedFile": "src/dev/scenarioSimulator.ts",
+      "affectedLine": 651,
+      "rootCause": "bootstrapRun() calls createRunState(domain, domain, { selectedArchetype, starterDeckSize, startingAp }) without passing ascensionLevel from config"
+    },
+    "reproductionSteps": [
+      "Call window.__rrScenario.spawn({ screen: 'combat', enemy: 'page_flutter', runOverrides: { ascensionLevel: 10 } })",
+      "Wait for combat to load",
+      "Read: var ts; Symbol.for('rr:activeTurnState').subscribe(v => ts = v)(); console.log(ts.ascensionEnemyDamageMultiplier)",
+      "Expected: 1.20 (A10 value)",
+      "Actual: 1.00 (A0 value because encounter was started before runOverrides was applied)"
+    ],
+    "suggestedFix": "In bootstrapRun() at src/dev/scenarioSimulator.ts line 651, pass ascensionLevel: config.ascension ?? 0 to createRunState(). Example: createRunState(domain, domain, { selectedArchetype: 'balanced', starterDeckSize: 15, startingAp: 3, ascensionLevel: config.ascension ?? 0 }). This ensures encounterBridge.ts reads the correct modifiers when it calls getAscensionModifiers(run.ascensionLevel).",
+    "scope": "Dev tool only - real gameplay (runs started via gameFlowController) is not affected. createRunState() in real runs correctly receives ascensionLevel from the player's selected ascension level."
+  },
+  {
+    "id": "issue-1744332000001-08-002",
+    "track": "08-ascension",
+    "ascensionLevel": 5,
+    "ascensionName": "Lean Start",
+    "category": "balance_ascension_too_strong",
+    "severity": "medium",
+    "title": "A0->A5 drop is steepest in the ascension curve: 42pp drop for developing players",
+    "description": "Headless sim shows: A0 developing win% = 63%, A5 developing win% = 21% — a 42 percentage point drop. This is the single largest drop in the entire A0-A20 progression for the developing profile. A5->A10 drops only 10pp. The steepness at A5 may cause new players to feel a harsh wall when first trying ascension. By comparison, experienced players drop only 14pp (93% -> 79%), suggesting the difficulty spike disproportionately affects lower-skill players. Note: this may be intentional design ('no compensating buffs A1-A7' per ascension docs), but the ratio is very steep.",
+    "evidence": {
+      "screenshotPath": null,
+      "bannerText": "Not captured (Docker visual unavailable for A5)",
+      "expectedStat": "A5 win rate for developing profile should be noticeably lower than A0 (correct design direction)",
+      "actualStat": "21% (42pp drop from A0 63%)",
+      "referenceA0Stat": 63,
+      "simRuns": 300,
+      "profile": "developing",
+      "nearMissRate": "59% (vs A0 31%)"
+    },
+    "reproductionSteps": [
+      "Run: npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 300 --profile developing --ascension 5",
+      "Compare win rate to: --ascension 0 baseline (63%)",
+      "Observe 42pp drop"
+    ],
+    "suggestedFix": "Monitor real player data to verify whether the A5 wall causes drop-off. If player retention data shows A5 is a common stopping point, consider softening the A2 enemy damage bonus (currently +15%) or moving one challenge from A4 timer to a later level."
+  },
+  {
+    "id": "issue-1744332000002-08-003",
+    "track": "08-ascension",
+    "ascensionLevel": 20,
+    "ascensionName": "Heart of the Archive",
+    "category": "balance_ascension_too_strong",
+    "severity": "low",
+    "title": "A20 experienced profile at 1% win rate is borderline below the documented 5-15% target",
+    "description": "Headless sim shows A20 win rate for experienced profile = 1% (3 wins in 300 runs). Docs/ascension.ts say 'master at A20 still 82% (from April 2026-04-05 sim) — further tuning needed'. The experienced profile (76% accuracy) is not the same as the 'master' profile (100% accuracy in old tests). The quiz-pressure mechanics at A20 (wrongAnswerSelfDamage=5, forceHardQuestionFormats=true, preferCloseDistractors=true) are not captured by the headless sim since it doesn't simulate quiz difficulty variation. Real high-skill players will achieve higher win rates. This issue is LOW severity because the documented expectation was already that sim results don't reflect real quiz pressure.",
+    "evidence": {
+      "screenshotPath": null,
+      "bannerText": "Not captured (Docker visual unavailable for A20)",
+      "expectedStat": "5-15% win rate for master/experienced players at A20 (docs target)",
+      "actualStat": "1% (experienced profile, 300 runs headless sim)",
+      "referenceA0Stat": 93,
+      "simProfile": "experienced (76% accuracy)",
+      "simRuns": 300,
+      "note": "Sim cannot model quiz difficulty mechanics - real win rate will be higher"
+    },
+    "reproductionSteps": [
+      "Run: npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 300 --profile experienced --ascension 20",
+      "Observe 1% win rate"
+    ],
+    "suggestedFix": "No immediate action. Add a 'master' profile to the headless sim (100% accuracy, optimal strategy) to get a better A20 reference. Monitor with real player data once the game ships with ascension unlocked."
+  },
+  {
+    "id": "issue-1744332000003-08-004",
+    "track": "08-ascension",
+    "ascensionLevel": 0,
+    "ascensionName": "All Levels",
+    "category": "ascension_missing_effect",
+    "severity": "medium",
+    "title": "Docker warm container crashes on __rrScenario.load() for combat scenarios — ascension visual testing blind",
+    "description": "Docker warm-container visual testing is unreliable for combat scenarios. The warm server calls page.evaluate() with __rrScenario.load('combat-basic') which triggers bootstrapRun() + Phaser scene restart. In SwiftShader/Docker, this causes the Chrome process to crash (OOM/SwiftShader GPU memory limit). The 'Target crashed' error from Playwright indicates a full browser process crash, not a timeout. The warm server has no crash-recovery logic (no page.reload() or context.newPage() on crash). This means combat-state ascension testing via Docker visual is only possible for ONE test per container boot. A0 visual was captured; A5-A20 were not.",
+    "evidence": {
+      "screenshotPath": "evidence/a0-combat-screenshot.png",
+      "bannerText": "A0 only — no ascension badge (correct for level 0)",
+      "expectedStat": "Should capture HUD screenshots for all 5 levels showing correct ascension badge",
+      "actualStat": "Only A0 captured; A5-A20 Docker visual testing failed",
+      "referenceA0Stat": null,
+      "containerLogs": "Test 'combat-basic' done in 8ms (FAIL) — page.evaluate: Target crashed"
+    },
+    "reproductionSteps": [
+      "scripts/docker-visual-test.sh --warm start --agent-id test-ascension",
+      "scripts/docker-visual-test.sh --warm test --agent-id test-ascension --scenario combat-basic --wait 8000",
+      "Observe: Test fails in <10ms with 'page.evaluate: Target crashed'",
+      "This is reproducible on every fresh container first test"
+    ],
+    "suggestedFix": "Add crash recovery to docker/playwright-xvfb/warm-server.mjs: on 'Target crashed' error, call page.reload() or context.newPage(), wait for __rrScenario to reinitialize (page.waitForFunction), then retry the test. Alternatively, modify visual-test-runner.mjs to not use page.evaluate() for scenario loading — instead navigate to a URL with ?devScenario=combat-basic query param if the game supports it."
+  },
+  {
+    "id": "issue-1744335811000-09-01",
+    "track": "09-multiplayer",
+    "category": "rng_nondeterminism",
+    "severity": "critical",
+    "title": "crit_lens relic uses Math.random() — co-op peers roll independent crits for same card play",
+    "description": "In relicEffectResolver.ts line 1647, the crit_lens relic's 25% crit chance uses a bare Math.random() call. In co-op mode, both clients independently compute damage for the shared enemy via delta submission. If one client crits and the other doesn't, the two deltas submitted to the host barrier will differ for the same card play. The host merges deltas additively, so the final reconciled enemy HP will be correct, BUT the crit outcome feedback shown to each player will differ — one sees a crit flash, the other doesn't. If the delta computation itself uses crit to modify the damage value that goes into the delta, the two clients will submit different damage values for the same card, leading to inflated or deflated total damage in the merged snapshot.",
+    "evidence": {
+      "file": "src/services/relicEffectResolver.ts",
+      "line": 1647,
+      "code": "const isCrit = relicIds.has('crit_lens') && Math.random() < 0.25;",
+      "coopMechanism": "EnemyTurnDelta.damageDealt = preTurnSnapshot.currentHP - enemy.currentHP after all card plays; if crit doubles a card's damage on one client but not the other, the deltas diverge"
+    },
+    "reproductionSteps": [
+      "Two co-op peers, both holding crit_lens relic",
+      "Either peer plays a Charge card during their turn",
+      "Peer A crits (25% chance), Peer B does not",
+      "Both submit EnemyTurnDelta to the barrier",
+      "Peer A's delta shows higher damageDealt than Peer B's for the same card",
+      "Host merges: result is sum of both deltas — enemy takes non-crit damage twice instead of crit + non-crit"
+    ],
+    "suggestedFix": "Replace Math.random() in crit_lens with getRunRng('relicEffects').next() when isRunRngActive(). In co-op mode, the host should be the sole randomness authority for relic effects that affect shared enemy state — broadcast the crit result alongside the delta."
+  },
+  {
+    "id": "issue-1744335811000-09-02",
+    "track": "09-multiplayer",
+    "category": "rng_nondeterminism",
+    "severity": "critical",
+    "title": "obsidian_dice relic uses Math.random() — co-op peers independently roll +50%/-25% multiplier",
+    "description": "In relicEffectResolver.ts line 1712, the obsidian_dice relic applies a 50/50 multiplier roll (+50% or -25%) using Math.random(). Same issue as crit_lens: in co-op, both clients resolve the effect independently against their local enemy copy. If one rolls high and the other rolls low, the damage deltas submitted to the turn-end barrier will disagree for the same card play event.",
+    "evidence": {
+      "file": "src/services/relicEffectResolver.ts",
+      "line": 1712,
+      "code": "if (Math.random() < 0.50) { extraMultiplier *= 1.5; } else { extraMultiplier *= 0.75; }",
+      "coopMechanism": "Same delta-submission path as crit_lens issue"
+    },
+    "reproductionSteps": [
+      "Two co-op peers, at least one holding obsidian_dice relic",
+      "Peer plays a Charge card",
+      "One client rolls the +50% branch, other rolls the -25% branch",
+      "Deltas diverge — merged result is the arithmetic sum of the two divergent outcomes"
+    ],
+    "suggestedFix": "Same pattern as crit_lens: use seeded RNG fork for randomness that affects shared enemy state. Alternatively, include the relic roll result in the delta payload so both sides converge."
+  },
+  {
+    "id": "issue-1744335811000-09-03",
+    "track": "09-multiplayer",
+    "category": "rng_nondeterminism",
+    "severity": "high",
+    "title": "relicAcquisitionService uses Math.random() — co-op reward screens could offer different relics",
+    "description": "relicAcquisitionService.ts lines 73 and 93 use Math.random() for rarity roll and candidate selection when offering post-combat relic rewards. If co-op has or will have a shared reward screen (the architecture doc is ambiguous on this), both clients will independently roll the relic pool and offer different relics. One player sees Rare Relic A, the other sees Common Relic B.",
+    "evidence": {
+      "file": "src/services/relicAcquisitionService.ts",
+      "lines": [
+        73,
+        93
+      ],
+      "code": "const roll = Math.random() * totalWeight; ... const pick = candidates[Math.floor(Math.random() * candidates.length)];"
+    },
+    "reproductionSteps": [
+      "Complete a co-op combat encounter",
+      "Proceed to reward screen",
+      "Host and guest see different relics offered"
+    ],
+    "suggestedFix": "Use getRunRng('relicRewards').next() instead of Math.random(), seeded from the run seed. The host can also broadcast the relic offer list to the guest at reward screen entry."
+  },
+  {
+    "id": "issue-1744335811000-09-04",
+    "track": "09-multiplayer",
+    "category": "lobby_broken",
+    "severity": "medium",
+    "title": "Attempt A (2-peer Docker lockstep) not feasible — BroadcastChannel transport cannot cross container boundaries",
+    "description": "The multiplayer transport implementation (multiplayerTransport.ts) uses BroadcastChannel for peer-to-peer messaging. BroadcastChannel is a browser same-origin API — messages only reach tabs within the same browser context. Two separate Docker containers each have isolated Chromium instances. No cross-container BroadcastChannel is possible without a shared WebSocket server or similar bridge. Therefore, a true 2-peer headless lockstep test cannot be conducted with the current infrastructure. The test was downgraded to Attempt B (single-peer seed determinism via Vitest).",
+    "evidence": {
+      "file": "src/services/multiplayerTransport.ts",
+      "mechanism": "BroadcastChannel API — tab-scoped, not cross-process or cross-container"
+    },
+    "reproductionSteps": [
+      "Spin up two Docker containers",
+      "Attempt to have both join the same BroadcastChannel",
+      "Messages will not be received across containers"
+    ],
+    "suggestedFix": "For headless integration testing of multiplayer, replace BroadcastChannel with a WebSocket transport mode (already partially scaffolded) and provide a test harness that injects a shared in-process message bus for two simulated peers."
+  },
+  {
+    "id": "issue-1744334400001-10-001",
+    "track": "10-visual-sweep",
+    "screen": "dungeonMap",
+    "category": "visual_layout_wrong",
+    "severity": "high",
+    "title": "DungeonMap nodes render below viewport — map appears near-black on first load",
+    "description": "When dungeonMap loads via scenario, all map nodes are positioned below y=1080 (starting at y=1233). The visible viewport (1080px tall) shows only the fog-overlay wisps against a dark background. The map content is scrolled off-screen downward. A player arriving at the dungeon map for the first time would see a nearly black screen with fog wisps and no map nodes. The layout dump confirms nodes exist at y=693–1233, all below viewport. This could be an init timing issue (scroll position not set) or a CSS scroll-to-current-floor behavior that isn't working on first load.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/dungeonMap/screenshot.png",
+      "layoutDumpPath": "evidence/screens/dungeonMap/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#dungeonMap"
+    },
+    "reproductionSteps": [
+      "Scenario: dungeon-map (screen: dungeonMap)",
+      "Wait 7000ms",
+      "Observe: screenshot shows near-black with fog wisps, no map nodes visible",
+      "Layout dump: all map-node buttons at y=693–1233, viewport height=1080"
+    ],
+    "suggestedFix": "Check DungeonMap.svelte scroll initialization — ensure the scroll container scrolls to the current floor row on mount. The nodes exist but are off-screen. May need a scrollToCurrentFloor() call after map renders."
+  },
+  {
+    "id": "issue-1744334400002-10-002",
+    "track": "10-visual-sweep",
+    "screen": "relicSwapOverlay",
+    "category": "screen_load_failed",
+    "severity": "medium",
+    "title": "relicSwapOverlay scenario loads specialEvent instead of RelicSwapOverlay component",
+    "description": "The 'relic-swap' scenario (screen: relicSwapOverlay, 4 relics equipped) does not show the RelicSwapOverlay component. Instead, the layout dump shows div.special-overlay (specialEvent 'Deck Thin' event). The relicSwapOverlay may require a pendingSwapRelicId to render, and without it falls through to a different screen or the previous screen state bleeds through. The screenshot confirms 'Deck Thin' specialEvent is what renders, not any relic swap UI.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/relicSwapOverlay/screenshot.png",
+      "layoutDumpPath": "evidence/screens/relicSwapOverlay/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#relicSwapOverlay"
+    },
+    "reproductionSteps": [
+      "Scenario: relic-swap (screen: relicSwapOverlay, relics: 4)",
+      "Wait 6000ms",
+      "Observe: specialEvent 'Deck Thin' overlay renders instead of RelicSwapOverlay"
+    ],
+    "suggestedFix": "The scenarioSimulator's relic-swap preset should also set a pendingSwapRelicId in the run state, or the scenario should trigger the swap flow. Without a pending relic offer, RelicSwapOverlay has nothing to show."
+  },
+  {
+    "id": "issue-1744334400003-10-003",
+    "track": "10-visual-sweep",
+    "screen": "multiplayerLobby",
+    "category": "visual_missing_element",
+    "severity": "medium",
+    "title": "multiplayerLobby renders empty — requires currentLobby !== null to mount",
+    "description": "When navigating to multiplayerLobby via loadCustom({ screen: 'multiplayerLobby' }), the layout dump shows only a screen-transition div with no MultiplayerLobby component. Per docs, MultiplayerLobby only mounts when currentLobby !== null. The scenario simulator has no way to set up a lobby object, so the screen cannot be tested via scenario. The player sees a near-black screen with star particle background.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/multiplayerLobby/screenshot.png",
+      "layoutDumpPath": "evidence/screens/multiplayerLobby/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#multiplayerLobby"
+    },
+    "reproductionSteps": [
+      "eval: window.__rrScenario.loadCustom({ screen: 'multiplayerLobby' })",
+      "Wait 5000ms",
+      "Observe: empty screen, layout dump shows only screen-transition element"
+    ],
+    "suggestedFix": "Add a multiplayerLobby scenario preset that bootstraps a mock lobby object (currentLobby) before navigating to the screen. The MultiplayerLobby component has a guard condition requiring currentLobby to be non-null."
+  },
+  {
+    "id": "issue-1744334400004-10-004",
+    "track": "10-visual-sweep",
+    "screen": "masteryChallenge",
+    "category": "visual_layout_wrong",
+    "severity": "medium",
+    "title": "masteryChallenge renders with very small viewport — dialog box uses ~50% of 1080p space",
+    "description": "The mastery challenge dialog box occupies roughly the center 30% of the screen (approximately 600x420px out of 1920x1080). The surrounding 70% of the screen is pure black background. For a Steam PC target of 1920x1080, this creates a lot of dead space. The quiz panel appears correctly formed but undersized relative to the available viewport. The question text 'What is the approximate speed of light in a vacuum?' and 4 answer options are readable but small.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/masteryChallenge/screenshot.png",
+      "layoutDumpPath": "evidence/screens/masteryChallenge/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#masteryChallenge"
+    },
+    "reproductionSteps": [
+      "Scenario: mastery-challenge",
+      "Wait 6000ms",
+      "Observe: small quiz panel centered in large black void"
+    ],
+    "suggestedFix": "Consider expanding the masteryChallenge overlay to use more of the 1920x1080 space, or adding a background visual to fill the dark void."
+  },
+  {
+    "id": "issue-1744334400005-10-005",
+    "track": "10-visual-sweep",
+    "screen": "restStudy",
+    "category": "visual_missing_element",
+    "severity": "low",
+    "title": "restStudy empty state has no background ambience — pure dark void behind dialog",
+    "description": "The restStudy empty state ('No Cards to Review') shows correct empty state messaging and a 'Return to Hub' escape button (per HIGH-8 contract), but the background is pure dark navy with no Phaser scene or background visual. Other screens in the same context (restRoom, restMeditate) show the dungeon/rest-site background. The empty state appears visually disconnected from the game world.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/restStudy/screenshot.png",
+      "layoutDumpPath": "evidence/screens/restStudy/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#restStudy"
+    },
+    "reproductionSteps": [
+      "Scenario: study-quiz (no active run facts)",
+      "Wait 6000ms",
+      "Observe: 'No Cards to Review' dialog on pure dark background"
+    ],
+    "suggestedFix": "Consider adding a background visual or keeping the rest-site Phaser scene active behind the empty state."
+  },
+  {
+    "id": "issue-1744334400006-10-006",
+    "track": "10-visual-sweep",
+    "screen": "cardReward",
+    "category": "visual_missing_element",
+    "severity": "low",
+    "title": "cardReward cards have empty description area — card text boxes appear blank",
+    "description": "The cardReward screen shows 3 card choices with artwork visible, but the lower portion of each card (description/effect text area) appears as a dark empty rectangle. Card names and type icons are visible but the mechanical description text area shows no text. This could be due to test scenario facts not being populated, or the card description rendering not triggering in the test environment.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/cardReward/screenshot.png",
+      "layoutDumpPath": "evidence/screens/cardReward/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#cardReward"
+    },
+    "reproductionSteps": [
+      "Scenario: card-reward-mixed (Strike, Block, Expose)",
+      "Wait 6000ms",
+      "Observe: card artwork visible but description text area appears empty"
+    ],
+    "suggestedFix": "Check if card description text rendering requires the quiz question to be resolved first, or if there's a missing data hydration step."
+  },
+  {
+    "id": "issue-1744334400007-10-007",
+    "track": "10-visual-sweep",
+    "screen": "runEnd",
+    "category": "visual_layout_wrong",
+    "severity": "low",
+    "title": "runEnd screen uses narrow centered column — large empty margins on 1920x1080",
+    "description": "The runEnd victory screen shows content in a narrow centered column (approximately 800px wide) centered on the 1920px canvas. Large empty margins on both sides (~560px each). Sections visible: 'FOES VANQUISHED' (enemy icons row), 'KNOWLEDGE HARVEST' (progress bars), 'RUN STATS' (stat tiles), and 'EASY MATTER 500' gold reward. Content is functional but the layout uses only ~42% of the available horizontal space.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/runEnd/screenshot.png",
+      "layoutDumpPath": "evidence/screens/runEnd/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#runEnd"
+    },
+    "reproductionSteps": [
+      "Scenario: run-end-victory",
+      "Wait 6000ms",
+      "Observe: narrow column centered in wide viewport with large empty margins"
+    ],
+    "suggestedFix": "Consider expanding runEnd layout to utilize more horizontal space on 1920px wide screens, or adding side panels (e.g., detailed fact review, achievements unlocked)."
+  },
+  {
+    "id": "issue-1744334400008-10-008",
+    "track": "10-visual-sweep",
+    "screen": "runPreview",
+    "category": "visual_missing_element",
+    "severity": "medium",
+    "title": "runPreview shows 'Preparing your knowledge chains...' loading state — chains never render",
+    "description": "The runPreview (Your Knowledge Chains) screen shows a perpetual loading state: 'Preparing your knowledge chains...' text in the center. The 'Shuffle Chains' and 'Begin Expedition' buttons are visible at the bottom, and the FSRS legend (N/L/R/M) is at bottom-left. However, no chain distribution is shown — the main content area is empty. This indicates the chainDistribution data is not available when loaded via loadCustom.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/runPreview/screenshot.png",
+      "layoutDumpPath": "evidence/screens/runPreview/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#runPreview"
+    },
+    "reproductionSteps": [
+      "eval: window.__rrScenario.loadCustom({ screen: 'runPreview', domain: 'general_knowledge' })",
+      "Wait 5000ms",
+      "Observe: 'Preparing your knowledge chains...' with empty chain distribution area"
+    ],
+    "suggestedFix": "The runPreview scenario needs a chainDistribution object in activeRunState. Add a dedicated runPreview scenario preset that bootstraps proper chain distribution data before navigating."
+  },
+  {
+    "id": "issue-1744334400009-10-009",
+    "track": "10-visual-sweep",
+    "screen": "proceduralStudy",
+    "category": "visual_missing_element",
+    "severity": "low",
+    "title": "proceduralStudy shows error state 'Could not start practice session' — no procedural deck registered",
+    "description": "The proceduralStudy screen shows an error: 'Could not start practice session. You'll need to register a procedural deck.' with a 'Go Back' button. This is an expected error state in the scenario context (no procedural deck is registered), but the error message is unclear to a regular player about how to register a procedural deck. The error handling provides an escape (Go Back) which is correct.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/proceduralStudy/screenshot.png",
+      "layoutDumpPath": "evidence/screens/proceduralStudy/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#proceduralStudy"
+    },
+    "reproductionSteps": [
+      "eval: window.__rrScenario.loadCustom({ screen: 'proceduralStudy' })",
+      "Wait 5000ms",
+      "Observe: error state 'Could not start practice session'"
+    ],
+    "suggestedFix": "Improve error message to be more user-friendly (e.g., 'This mode requires a math practice deck. Visit the Study Temple to set one up.'). Also add a procedural study scenario preset that bootstraps the required deck."
+  },
+  {
+    "id": "issue-1744334400010-10-010",
+    "track": "10-visual-sweep",
+    "screen": "profile",
+    "category": "visual_layout_wrong",
+    "severity": "low",
+    "title": "profile screen shows sparse content on fresh save — sections appear to float in empty space",
+    "description": "The Scholar's Profile screen shows a minimal layout with a fresh/empty save: Explorer avatar, Level 1, stats all at zero, and an 'No expeditions yet' placeholder. The layout uses 2-column grid but with no expedition data, many sections are minimal or absent. The visual result is a sparsely populated screen that could confuse new players about what content will appear here. The overall visual polish is functional but the empty state could be more welcoming.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/profile/screenshot.png",
+      "layoutDumpPath": "evidence/screens/profile/layout-dump.txt",
+      "docReference": "docs/ui/screens.md#profile"
+    },
+    "reproductionSteps": [
+      "Scenario: profile (fresh save state)",
+      "Wait 6000ms",
+      "Observe: sparse layout with zero stats, minimal section content"
+    ],
+    "suggestedFix": "Add richer empty-state messaging for profile sections (e.g., 'Complete your first expedition to see stats here'). Consider a 'teaser' layout that shows what each section will contain."
+  },
+  {
+    "id": "issue-1744337400000-11-001",
+    "track": "11-ux-audit",
+    "screen": "hub",
+    "category": "ux_no_accessible_name",
+    "severity": "high",
+    "title": "Hub sprite-hitbox buttons have no accessible name — all 8 unlabeled",
+    "description": "8 `button.sprite-hitbox` elements on the hub screen have no text content, no aria-label, and no title attribute. They are the primary navigation for Library, Camp, Tent, Shop, etc. Screen reader users and keyboard-only users cannot determine what each button does. The only labeled button is btn-start-run.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/hub/screenshot.png",
+      "elementSelector": "button.sprite-hitbox",
+      "measured": "8 buttons, 0 with accessible names",
+      "required": "Every button must have accessible name via text, aria-label, or aria-labelledby"
+    },
+    "reproductionSteps": [
+      "Load hub-endgame scenario",
+      "Inspect all button.sprite-hitbox elements in DevTools",
+      "Observe: no aria-label, no text content, no title attribute"
+    ],
+    "suggestedFix": "Add aria-label attributes matching the visual room/object names (e.g. aria-label='Library', aria-label='Rest Camp')"
+  },
+  {
+    "id": "issue-1744337400001-11-002",
+    "track": "11-ux-audit",
+    "screen": "hub",
+    "category": "ux_hierarchy_broken",
+    "severity": "medium",
+    "title": "Hub HUD counters (fire streak, grey matter) are 14px with icon only — no label",
+    "description": "The two HUD pills in the hub show numeric values (0 and 0) with emoji icons (fire, gem) but no text labels. The values are 14px which is just at the minimum threshold, and a new player has no context for what these numbers represent. The fire counter and grey matter resource are core game economy but not labeled.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/hub/screenshot.png",
+      "elementSelector": ".hud-value",
+      "measured": "14px font, emoji-only icon, no label",
+      "required": "Primary resource indicators should have labels on first encounter, or a persistent tooltip trigger"
+    },
+    "reproductionSteps": [
+      "Load hub-endgame scenario",
+      "Observe top-center HUD pills showing fire emoji and gem emoji with number values",
+      "Note: no tooltip, no label, no explanation of what these values mean"
+    ],
+    "suggestedFix": "Add aria-label to hud pills (e.g. 'Streak: 0', 'Grey Matter: 0'), and add a first-visit tooltip"
+  },
+  {
+    "id": "issue-1744337400002-11-003",
+    "track": "11-ux-audit",
+    "screen": "hub",
+    "category": "ux_primary_above_thumb_zone",
+    "severity": "medium",
+    "title": "Start Run button at Y=119 is in top 11% of screen — far above thumb zone",
+    "description": "btn-start-run is positioned at Y=119 (of 1080 total), placing it at 11% from the top. The thumb zone threshold (55% of screen height) is at Y=594. Primary actions should be in the bottom half for landscape card game ergonomics. The door/dungeon entrance is the most important button on the hub and is in the most difficult reach zone for handheld/Steam Deck players.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/hub/screenshot.png",
+      "elementSelector": "[data-testid='btn-start-run']",
+      "measured": "Y=119, screen height=1080, relative position=11%",
+      "required": "Primary actions should be in bottom 55% of screen (Y > 594px)"
+    },
+    "reproductionSteps": [
+      "Load hub-endgame scenario",
+      "Observe btn-start-run position at top of screen",
+      "Layout dump confirms: (826, 119) 267x292"
+    ],
+    "suggestedFix": "This is a design constraint (the door is in the scene art). Consider adding a floating 'Start Run' CTA button lower on screen that supplements the sprite hitbox."
+  },
+  {
+    "id": "issue-1744337400003-11-004",
+    "track": "11-ux-audit",
+    "screen": "combat",
+    "category": "ux_no_accessible_name",
+    "severity": "high",
+    "title": "btn-end-turn has no visible accessible name — text is CSS-only 'END TURN' but element is HIDDEN per layout dump",
+    "description": "The btn-end-turn element is flagged HIDDEN in the layout dump at position (24, 987) 197x69. This could be a z-index or CSS visibility issue causing the button to be absent from the accessibility tree. However, visually it renders correctly in the screenshot. If the HIDDEN flag indicates pointer-events:none or visibility:hidden, keyboard users cannot reach it.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/combat/screenshot.png",
+      "elementSelector": "[data-testid='btn-end-turn']",
+      "measured": "Flagged HIDDEN in layout dump, position (24, 987) 197x69",
+      "required": "Primary action button must be reachable via keyboard and have an accessible name"
+    },
+    "reproductionSteps": [
+      "Load combat-basic scenario",
+      "Inspect btn-end-turn in accessibility tree",
+      "Note HIDDEN flag in layout dump output"
+    ],
+    "suggestedFix": "Verify that btn-end-turn is not rendered with visibility:hidden or pointer-events:none during the player_action phase. Remove conditional hiding if present."
+  },
+  {
+    "id": "issue-1744337400004-11-005",
+    "track": "11-ux-audit",
+    "screen": "combat",
+    "category": "ux_text_too_small",
+    "severity": "high",
+    "title": "HP text (hp-value) renders at 15px — below 16px minimum for HP numbers",
+    "description": "The player HP display span.hp-value shows '100/100' at 15px font size. HP is the most critical stat in combat — the UX spec requires HP numbers to be at least 16px. At 15px it will be uncomfortable to read during fast-paced combat, especially on Steam Deck (7\" screen at 1280×800).",
+    "evidence": {
+      "screenshotPath": "evidence/screens/combat/screenshot.png",
+      "elementSelector": "span.hp-value",
+      "measured": "15px",
+      "required": "16px minimum for HP/critical stat numbers"
+    },
+    "reproductionSteps": [
+      "Load combat-basic scenario",
+      "Inspect span.hp-value in DevTools",
+      "Layout dump: (297, 15) 64x15 = 15px height confirms approximate font size"
+    ],
+    "suggestedFix": "Increase hp-value font-size to calc(16px * var(--text-scale, 1)) minimum"
+  },
+  {
+    "id": "issue-1744337400005-11-006",
+    "track": "11-ux-audit",
+    "screen": "combat",
+    "category": "ux_no_accessible_name",
+    "severity": "medium",
+    "title": "Enemy intent bubble flagged HIDDEN during combat — intent info may be inaccessible",
+    "description": "The div.enemy-intent-bubble is flagged HIDDEN in the layout dump at (396, 302) 234x100, yet it visually renders with 'Swooping strike — Attacking for 14 damage'. If the HIDDEN state is CSS-driven (not JS visibility), it may not be present in the accessibility tree. Enemy intent is core strategic information.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/combat/screenshot.png",
+      "elementSelector": "div.enemy-intent-bubble",
+      "measured": "Flagged HIDDEN in layout dump, text 'Swooping strike' not in accessibility tree",
+      "required": "Enemy intent information must be accessible (aria-live region or visible element)"
+    },
+    "reproductionSteps": [
+      "Load combat-basic scenario",
+      "Check accessibility tree for enemy intent information",
+      "Note HIDDEN flag in layout dump despite visual rendering"
+    ],
+    "suggestedFix": "Add aria-live='polite' region announcing enemy intent changes. Ensure intent bubble is not set to visibility:hidden when active."
+  },
+  {
+    "id": "issue-1744337400006-11-007",
+    "track": "11-ux-audit",
+    "screen": "combat",
+    "category": "ux_text_too_small",
+    "severity": "medium",
+    "title": "Card type label (v2-card-type) renders at 11px or smaller — at threshold",
+    "description": "The frame-text.v2-card-type element inside hand cards has dimensions of approximately 22x11 pixels, indicating a font size of around 11px. This is the bare minimum and may be unreadable at smaller viewport sizes or for players with moderate visual impairment. Card type (Attack, Block, Utility) is strategically important.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/combat/screenshot.png",
+      "elementSelector": "div.frame-text.v2-card-type",
+      "measured": "22x11 px bounding box",
+      "required": "Body text minimum 11px, card type label should be clearly readable"
+    },
+    "reproductionSteps": [
+      "Load combat-basic scenario",
+      "Inspect div.frame-text.v2-card-type on hand cards",
+      "Layout dump: e.g. (690, 1068) 22x11"
+    ],
+    "suggestedFix": "Increase card type label to calc(12px * var(--text-scale, 1)) minimum"
+  },
+  {
+    "id": "issue-1744337400007-11-008",
+    "track": "11-ux-audit",
+    "screen": "combat",
+    "category": "ux_card_game_pattern",
+    "severity": "medium",
+    "title": "AP counter (ap-number) is flagged HIDDEN — action point display may be inaccessible",
+    "description": "The span.ap-number showing '3' (current AP) is flagged HIDDEN in the layout dump at position (0,0), along with ap-label 'AP'. The AP display is essential game information — players need to know how many actions they have. If this is rendered off-screen or hidden via CSS, players are losing critical information.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/combat/screenshot.png",
+      "elementSelector": "span.ap-number, span.ap-label",
+      "measured": "Both flagged HIDDEN at position (0,0) — off-screen or visibility:hidden",
+      "required": "AP counter must be prominently visible during player_action phase"
+    },
+    "reproductionSteps": [
+      "Load combat-basic scenario in player_action phase",
+      "Look for AP counter display on screen",
+      "Layout dump shows span.ap-number at (0,0) HIDDEN"
+    ],
+    "suggestedFix": "Verify AP counter visibility logic. The div.player-ap-right.ap-active at (312, 999) shows a separate ap-num element — confirm this is the active display and that position is accessible."
+  },
+  {
+    "id": "issue-1744337400008-11-009",
+    "track": "11-ux-audit",
+    "screen": "dungeonMap",
+    "category": "ux_hierarchy_broken",
+    "severity": "high",
+    "title": "Dungeon map renders blank/dark — map nodes exist in DOM but fog overlay covers everything",
+    "description": "The dungeon map screenshot shows a nearly-black screen with faint nebula effects. All map nodes are present in the DOM (map-node-r0-n0 through r7-n0 at coordinates 694-1139 x 267-1233), but the fog-overlay at (-340, -10) 2600x1350 appears to cover the entire visible area. Players would see an empty black screen with no indication of map content.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/dungeonMap/screenshot.png",
+      "elementSelector": "div.fog-overlay",
+      "measured": "fog-overlay at (-340, -10) 2600x1350 — covers entire 1920x1080 viewport",
+      "required": "At minimum the current floor entry nodes and the boss node should be visible without fog"
+    },
+    "reproductionSteps": [
+      "Load dungeon-map scenario",
+      "Observe screenshot — nearly blank dark screen",
+      "Layout dump shows map nodes but all buried under fog-overlay"
+    ],
+    "suggestedFix": "Verify fog logic for floor 1 maps. Entry nodes at row 0 should be visible (not fogged) on initial load. Check if fog state was not initialized for the scenario preset."
+  },
+  {
+    "id": "issue-1744337400009-11-010",
+    "track": "11-ux-audit",
+    "screen": "dungeonMap",
+    "category": "ux_no_accessible_name",
+    "severity": "high",
+    "title": "All 18 map node buttons lack accessible names — node type not communicated",
+    "description": "Every map node button (map-node-r0-n0 through map-node-r7-n0) has a testid but no text content, no aria-label, and no title. Players using keyboard or screen readers cannot determine which nodes are combat, rest, shop, or boss. The node type icons are visual-only. 18 interactive buttons with zero accessible information.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/dungeonMap/screenshot.png",
+      "elementSelector": "[data-testid^='map-node-']",
+      "measured": "18 buttons, 0 with accessible names",
+      "required": "Each map node button should have aria-label describing node type and position (e.g. 'Row 3 node 1: Rest Site')"
+    },
+    "reproductionSteps": [
+      "Load dungeon-map scenario",
+      "Inspect any map-node-* button",
+      "No aria-label, no text content found"
+    ],
+    "suggestedFix": "Add aria-label to each map node: `aria-label='{nodeType} — Floor {floor}'` where nodeType is combat/rest/shop/elite/boss"
+  },
+  {
+    "id": "issue-1744337400010-11-011",
+    "track": "11-ux-audit",
+    "screen": "cardReward",
+    "category": "ux_text_too_small",
+    "severity": "high",
+    "title": "Card description text (mini-card-desc) renders at approximately 11px — critical info too small",
+    "description": "The mini-card-desc spans showing 'Deal 8', 'Gain 6', 'Deal 20' have a bounding box of approximately 47x113 to 135x135 pixels at the reward screen card size. Given the card dimensions (517x675), the description text area (113x47 for 'Deal 8') indicates very small font. This is the primary decision-making information for card selection.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/cardReward/screenshot.png",
+      "elementSelector": "div.mini-card-desc",
+      "measured": "'Deal 8' → bounding box 113x47; 'Deal 20' → 135x47",
+      "required": "Body text minimum 11px; card effect description should be clearly readable at reward selection"
+    },
+    "reproductionSteps": [
+      "Load card-reward scenario",
+      "Inspect mini-card-desc text elements",
+      "Layout dump: (327, 603) 113x47 for 'Deal 8'"
+    ],
+    "suggestedFix": "Verify card description font size uses calc(11px * var(--text-scale, 1)) minimum"
+  },
+  {
+    "id": "issue-1744337400011-11-012",
+    "track": "11-ux-audit",
+    "screen": "cardReward",
+    "category": "ux_hierarchy_broken",
+    "severity": "medium",
+    "title": "Card title and heading are positioned off-screen (y=-157 and y=-63) — not visible",
+    "description": "The h1 'Choose a Card' is at Y=-157 (off-screen top) and the p subtitle 'Cavern Altar...' is at Y=-63 (off-screen top). These contextual elements that help the player understand the screen are not visible on the 1920x1080 viewport. The reward screen loses its heading/context.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/cardReward/screenshot.png",
+      "elementSelector": "h1.svelte-1lvanm6, p.svelte-1lvanm6",
+      "measured": "h1 at (93, -157) 1725x86 — 157px above viewport; p at (93, -63) 1725x41 — 63px above viewport",
+      "required": "Screen title and context text must be visible within the viewport"
+    },
+    "reproductionSteps": [
+      "Load card-reward scenario",
+      "Layout dump shows h1 at (93, -157) — above the 1080 viewport top edge",
+      "Screenshot confirms no heading visible at top of card reward screen"
+    ],
+    "suggestedFix": "Fix card reward layout — scroll or adjust top offset so heading is visible. Currently heading requires negative viewport space. Remove negative margins or transform that push h1 off-screen."
+  },
+  {
+    "id": "issue-1744337400012-11-013",
+    "track": "11-ux-audit",
+    "screen": "cardReward",
+    "category": "ux_touch_target_small",
+    "severity": "medium",
+    "title": "Reroll button is 1800x90px spanning full width — deceptively large, no destructive gap from Skip",
+    "description": "The reward-reroll button spans 1800x90 pixels (full width). The 'Skip' button is at Y=979 and the reroll button is at Y=871 — gap of approximately 19px between reroll bottom edge and skip top edge. This is below the 20px destructive gap requirement since skipping has no undo. The reroll button's extreme width may also cause accidental activation.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/cardReward/screenshot.png",
+      "elementSelector": "[data-testid='reward-reroll']",
+      "measured": "reroll: (55, 871) 1800x90; skip: (55, 979) — gap = 979-961 = 18px",
+      "required": "Destructive action gap ≥ 20px between reroll and skip/accept buttons"
+    },
+    "reproductionSteps": [
+      "Load card-reward scenario",
+      "Measure gap between reroll bottom (871+90=961) and skip top (979)",
+      "Gap = 18px < 20px required"
+    ],
+    "suggestedFix": "Increase spacing between reroll and skip/accept button row to at least 20px"
+  },
+  {
+    "id": "issue-1744337400013-11-014",
+    "track": "11-ux-audit",
+    "screen": "rewardRoom",
+    "category": "ux_no_accessible_name",
+    "severity": "critical",
+    "title": "Reward room Continue button is a Phaser Text object — not accessible to DOM at all",
+    "description": "The reward room 'Continue' button is a Phaser Container with a Text child at (960, 950) — it exists only in the Phaser canvas layer, not the DOM layer. There is no DOM button, no aria role, no keyboard interaction possible. This is the sole action on the reward room screen. Players who cannot use a mouse have no way to proceed.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/rewardRoom/screenshot.png",
+      "elementSelector": "[Container] continueButton",
+      "measured": "Phaser Container at (960, 950) 270x72 — no corresponding DOM element",
+      "required": "All interactive buttons must exist in the DOM for accessibility and keyboard navigation"
+    },
+    "reproductionSteps": [
+      "Load reward-room scenario",
+      "Search DOM for any button, [role=button], or interactive element",
+      "Layout dump DOM layer shows only topbar elements — no Continue DOM button"
+    ],
+    "suggestedFix": "Add a DOM-overlay button positioned over the Phaser canvas that calls the same reward-room completion handler. Pattern: transparent button overlaid on the Phaser button position."
+  },
+  {
+    "id": "issue-1744337400014-11-015",
+    "track": "11-ux-audit",
+    "screen": "shopRoom",
+    "category": "ux_touch_target_small",
+    "severity": "high",
+    "title": "Shop buy buttons are 74x66px — width barely meets minimum but gap to content is poor",
+    "description": "The three shop buy buttons (shop-buy-relic-whetstone, iron_shield, vitality_ring) measure 74x66 pixels. Height 66px passes the 44px minimum but the gap between the relic item card (which ends at ~502px) and the buy button (starts at ~568px) gives only ~66px of internal spacing. The 66px height means accidental taps between item art and price button are likely.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/shopRoom/screenshot.png",
+      "elementSelector": "[data-testid='shop-buy-relic-whetstone']",
+      "measured": "74x66px — passes 44px minimum but ergonomically tight",
+      "required": "44x44px minimum; recommend 44x44 or larger with adequate gap from item content"
+    },
+    "reproductionSteps": [
+      "Load shop scenario",
+      "Inspect buy button dimensions",
+      "Layout dump: shop-buy-relic-whetstone at (568, 419) 74x66"
+    ],
+    "suggestedFix": "Consider expanding buy buttons to at least 80x48px for better ergonomics. The current 66px height passes minimum but benefits from additional height."
+  },
+  {
+    "id": "issue-1744337400015-11-016",
+    "track": "11-ux-audit",
+    "screen": "shopRoom",
+    "category": "ux_hierarchy_broken",
+    "severity": "medium",
+    "title": "Shop relic items have emoji-only icon with no accessible name for the relic",
+    "description": "Shop relic items display an emoji icon (🪨, 🛡️, 💍) and a rarity pill ('common'), but no accessible name for the relic itself. The relic name is not in the visible DOM elements listed in the layout dump — only the icon and rarity pill are present. Players using assistive technology cannot identify which relic they are looking at.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/shopRoom/screenshot.png",
+      "elementSelector": "article.card-item.relic-item span.icon",
+      "measured": "Emoji icon only — no accessible name for relic in DOM scan",
+      "required": "Each shop item should have a visible or aria-accessible name"
+    },
+    "reproductionSteps": [
+      "Load shop scenario",
+      "Inspect the relic item articles",
+      "No relic name text in layout dump — only icon emoji and rarity pill"
+    ],
+    "suggestedFix": "Add aria-label to each relic article (e.g. aria-label='Whetstone — Common relic'). Also verify relic name is visually present (may be hidden in screenshot crop)."
+  },
+  {
+    "id": "issue-1744337400016-11-017",
+    "track": "11-ux-audit",
+    "screen": "shopRoom",
+    "category": "ux_no_accessible_name",
+    "severity": "medium",
+    "title": "Card Transform service shows 'Coming soon' but button is still interactive",
+    "description": "The Card Transform service button renders with text 'Coming soon' for its price, but the button itself (service-action) still renders as an active button (not disabled). Players who click it expecting a feature will experience silent failure. The service should be visually grayed out with a disabled attribute.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/shopRoom/screenshot.png",
+      "elementSelector": "button.service-action",
+      "measured": "Active button with 'Coming soon' price label — no disabled state",
+      "required": "Non-functional features should be disabled (aria-disabled=true, visual gray state)"
+    },
+    "reproductionSteps": [
+      "Load shop scenario",
+      "Observe Card Transform section",
+      "Layout dump shows active button despite 'Coming soon' status"
+    ],
+    "suggestedFix": "Add disabled attribute and aria-disabled='true' to Card Transform button. Add tooltip explaining feature is in development."
+  },
+  {
+    "id": "issue-1744337400017-11-018",
+    "track": "11-ux-audit",
+    "screen": "restRoom",
+    "category": "ux_text_too_small",
+    "severity": "medium",
+    "title": "Rest option detail text (option-detail) renders at approximately 13-14px — borderline",
+    "description": "The option-detail spans ('Heal 20% HP', 'Quiz 3 questions...', 'Remove 1 card from your deck') have bounding boxes around 108x25 to 197x76. The 25px height for single-line text suggests approximately 13-14px font size, which is above the 11px minimum but may be uncomfortable at distance on a monitor.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/restRoom/screenshot.png",
+      "elementSelector": "span.option-detail",
+      "measured": "108x25 for 'Heal 20% HP' — approximately 13-14px font",
+      "required": "Body text minimum 11px; important decision text benefits from 14px+ for comfortable reading"
+    },
+    "reproductionSteps": [
+      "Load rest-site scenario",
+      "Inspect option-detail spans",
+      "Layout dump: (639, 632) 108x25 for 'Heal 20% HP'"
+    ],
+    "suggestedFix": "Confirm font size is calc(13px * var(--text-scale, 1)). Consider bumping to 14px for better readability."
+  },
+  {
+    "id": "issue-1744337400018-11-019",
+    "track": "11-ux-audit",
+    "screen": "restRoom",
+    "category": "ux_card_game_pattern",
+    "severity": "low",
+    "title": "Study option shows 'No cards to upgrade' but no visual disabled state on the button",
+    "description": "The rest-study button renders fully active even when 'No cards to upgrade' is shown as the preview text. Players will click Study expecting to upgrade cards but receive a quiz with no upgrade reward. The button should either be disabled or the warning should be more prominent (e.g. in red, with a warning icon).",
+    "evidence": {
+      "screenshotPath": "evidence/screens/restRoom/screenshot.png",
+      "elementSelector": "[data-testid='rest-study']",
+      "measured": "Button fully active at 243x312, preview text 'No cards to upgrade' at 156x23",
+      "required": "When a choice has reduced/no effect, the player should see a clear affordance difference"
+    },
+    "reproductionSteps": [
+      "Load rest-site scenario with no upgradeable cards",
+      "Observe Study option — button fully active",
+      "Preview reads 'No cards to upgrade' in same style as normal preview"
+    ],
+    "suggestedFix": "Add a warning color (amber/yellow) to the preview text when effect is null. Consider dimming the option card or adding a badge."
+  },
+  {
+    "id": "issue-1744337400019-11-020",
+    "track": "11-ux-audit",
+    "screen": "runEnd",
+    "category": "ux_text_too_small",
+    "severity": "medium",
+    "title": "Run stats pill labels are 14px on small pill boxes — may be unreadable on Steam Deck",
+    "description": "The run stats section shows pill-label spans ('Floor', 'Accuracy', 'Best Chain', 'Encounters', 'Time') measuring approximately 14x42 to 87x14 pixels. The 14px height indicates approximately 10-11px font size. On Steam Deck (7 inch at 1280x800 scaled) these labels will be extremely small.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/runEnd/screenshot.png",
+      "elementSelector": "span.pill-label",
+      "measured": "'Floor' label: (534, 766) 42x14 — approximately 10px font",
+      "required": "Body text minimum 11px, label context text minimum 10px acceptable but push toward 11"
+    },
+    "reproductionSteps": [
+      "Load run-end-victory scenario",
+      "Inspect span.pill-label elements",
+      "Layout dump: pill-label 'Floor' at (534, 766) 42x14"
+    ],
+    "suggestedFix": "Increase pill-label to calc(11px * var(--text-scale, 1)) minimum"
+  },
+  {
+    "id": "issue-1744337400020-11-021",
+    "track": "11-ux-audit",
+    "screen": "runEnd",
+    "category": "ux_hierarchy_broken",
+    "severity": "high",
+    "title": "Multiple enemy badge images show '❓' fallback — missing enemy portraits on run end screen",
+    "description": "At least 5 enemy badge-wrapper elements show span.enemy-badge-fallback '❓' as the visible element while the img.enemy-badge-img is HIDDEN. This means multiple enemies in the 'Foes Vanquished' parade show blank question marks instead of their portraits. This is a significant visual regression on the victory screen.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/runEnd/screenshot.png",
+      "elementSelector": "span.enemy-badge-fallback",
+      "measured": "At (637, 280), (822, 280), (945, 280), (1191, 280), (1252, 280), (1314, 280) — all visible, img.enemy-badge-img HIDDEN",
+      "required": "All enemy badges should show portraits from enemy sprite assets"
+    },
+    "reproductionSteps": [
+      "Load run-end-victory scenario",
+      "Observe Foes Vanquished parade",
+      "Multiple enemies show '❓' symbol instead of portraits",
+      "Layout dump confirms: enemy-badge-img HIDDEN with badge-fallback visible for several enemies"
+    ],
+    "suggestedFix": "Verify enemy badge image paths in run-end-victory scenario. Ensure enemy sprite textures are loaded before the run end screen renders. Add a loading state to defer display until images load."
+  },
+  {
+    "id": "issue-1744337400021-11-022",
+    "track": "11-ux-audit",
+    "screen": "deckSelectionHub",
+    "category": "ux_no_accessible_name",
+    "severity": "critical",
+    "title": "Deck selection panels (Trivia Dungeon, Study Temple) have no interactive button — entire panel is a div",
+    "description": "The deck selection hub shows two large panels (panel--trivia, panel--study) each 750x720px, but neither has a button or role='button' element. The click handler likely lives on the div.panel itself. This means keyboard navigation cannot reach the panels, and screen readers will not announce them as interactive. There is only one DOM button on this screen: the back button.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/deckSelectionHub/screenshot.png",
+      "elementSelector": "div.panel.panel--trivia, div.panel.panel--study",
+      "measured": "div elements at 750x720px — no button, no role attribute",
+      "required": "Interactive areas must use button elements or role='button' with keyboard handlers"
+    },
+    "reproductionSteps": [
+      "Load dungeon-selection scenario",
+      "Press Tab to navigate — only back-btn is reachable via keyboard",
+      "Layout dump: no button elements for the two dungeon panels"
+    ],
+    "suggestedFix": "Wrap each panel div in a button element, or add role='button' and tabindex='0' with keydown Enter/Space handlers. Add aria-label='Trivia Dungeon — Battle with knowledge' etc."
+  },
+  {
+    "id": "issue-1744337400022-11-023",
+    "track": "11-ux-audit",
+    "screen": "deckSelectionHub",
+    "category": "ux_hierarchy_broken",
+    "severity": "medium",
+    "title": "Deck selection panel text overlay has no visible text in DOM scan — title only rendered via CSS/canvas",
+    "description": "The panel-text-overlay divs within each panel don't contain visible text in the DOM scan despite the screenshot showing 'TRIVIA DUNGEON', 'The Armory', and description text. This suggests the text is rendered via CSS content, canvas, or Phaser layer — making it invisible to accessibility tools.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/deckSelectionHub/screenshot.png",
+      "elementSelector": "div.panel-text-overlay",
+      "measured": "div.panel-text-overlay at (374, 454) 385x269 — no child text elements in DOM scan",
+      "required": "Visible text content should be in the DOM for accessibility"
+    },
+    "reproductionSteps": [
+      "Load dungeon-selection scenario",
+      "Inspect panel-text-overlay elements",
+      "DOM scan shows empty divs despite visible text in screenshot"
+    ],
+    "suggestedFix": "Add actual text elements inside panel-text-overlay (h2 for dungeon name, p for description). These can be visually positioned over the art using absolute positioning."
+  },
+  {
+    "id": "issue-1744337400023-11-024",
+    "track": "11-ux-audit",
+    "screen": "settings",
+    "category": "ux_touch_target_small",
+    "severity": "medium",
+    "title": "Settings checkboxes (SFX Enabled, Music Enabled, Ambient Enabled) are not visible as DOM buttons",
+    "description": "The settings screen shows three toggle checkboxes but none appear in the DOM as interactive elements in the layout dump. Only the tab buttons and labels are captured. If the checkboxes use native input[type=checkbox] without proper styling or a custom component without button semantics, they may have very small hit targets (~20x20px native checkbox).",
+    "evidence": {
+      "screenshotPath": "evidence/screens/settings/screenshot.png",
+      "elementSelector": "input[type='checkbox'] (expected, not found in dump)",
+      "measured": "No interactive elements found for toggles in layout dump",
+      "required": "Toggle controls minimum 44x44px tap target"
+    },
+    "reproductionSteps": [
+      "Load settings scenario",
+      "Inspect SFX Enabled toggle control",
+      "Layout dump shows only span text elements — no button or input for toggles"
+    ],
+    "suggestedFix": "Verify checkbox components use custom button-style toggles with min 44x44px click area. Add explicit click area wrapper div with minimum size."
+  },
+  {
+    "id": "issue-1744337400024-11-025",
+    "track": "11-ux-audit",
+    "screen": "settings",
+    "category": "ux_hierarchy_broken",
+    "severity": "low",
+    "title": "Settings page bottom half is empty — large dead space below Audio section",
+    "description": "The settings Audio tab fills only the top ~530px of 1080px height. The bottom 550px is empty dark space. This makes the settings page feel unfinished and wastes screen real estate. On Steam Deck or ultrawide displays this empty space is even more pronounced.",
+    "evidence": {
+      "screenshotPath": "evidence/screens/settings/screenshot.png",
+      "elementSelector": "div.settings-card.settings-card-landscape",
+      "measured": "Content ends around Y=650 of 1080 — 430px empty space below",
+      "required": "Settings content should use the available space or have a clear visual boundary"
+    },
+    "reproductionSteps": [
+      "Load settings scenario",
+      "Observe the large empty space below the audio section",
+      "Screenshot shows approximately 40% of screen height unused"
+    ],
+    "suggestedFix": "Either: add a decorative separator/card boundary at the content end, or expand settings card to use max-content height with a scroll container."
+  },
+  {
+    "id": "issue-17758744933N-12-001",
+    "track": "12-stress-edge",
+    "scenario": 1,
+    "category": "perf_fps_regression",
+    "severity": "medium",
+    "title": "FPS drops to 10-15 sustained after 5+ turns of combat under Docker SwiftShader",
+    "description": "Sustained combat FPS drops from initial 31fps to 10-15fps after approximately 5 turns. This pattern was previously documented as HIGH-4 (2026-04-10) and should be interpreted with Docker-SwiftShader baseline in mind. The initial FPS is above the 22fps SwiftShader ceiling, which indicates the game loads within budget. The 10-15fps sustained reading likely reflects SwiftShader resource exhaustion under simultaneous multi-container load (16 containers at peak during this batch). drawCalls=-1 confirms SwiftShader GL draw call counting is disabled. On real GPU hardware this is NOT expected to reproduce. CRITICAL CONTEXT: System load average was 35-125 during this batch; this is NOT a representative isolated measurement.",
+    "evidence": {
+      "fpsCurve": "evidence/fps-curve.csv",
+      "fpsInitial": 31,
+      "fpsSustainedMin": 10,
+      "fpsSustainedAvg": 22,
+      "drawCalls": -1,
+      "renderer": "WebGL (SwiftShader)",
+      "gameObjects": 36,
+      "textures": 109,
+      "memoryMB": 351,
+      "screenshotPath": "evidence/screenshots/s1-combat-final.png",
+      "systemLoadAvgDuringTest": "35-125 (16 parallel Docker containers)"
+    },
+    "reproductionSteps": [
+      "Run scripts/docker-visual-test.sh --warm start --agent-id test",
+      "Load combat-basic scenario",
+      "Execute 10+ quickPlayCard + endTurn cycles",
+      "Sample __rrDebug().phaserPerf.fps every 3 seconds"
+    ],
+    "suggestedFix": "No fix needed for Docker baseline. For real GPU: verify SwiftShader detection in probeGPU() fires correctly (see HIGH-4 fix). Monitor on real hardware before actioning.",
+    "dockerBaseline": true
+  },
+  {
+    "id": "issue-17758744933N-12-002",
+    "track": "12-stress-edge",
+    "scenario": 1,
+    "category": "perf_fps_regression",
+    "severity": "low",
+    "title": "Docker SwiftShader WebGL drawCalls always -1 (not observable in this environment)",
+    "description": "The phaserPerf.drawCalls field returns -1 in Docker SwiftShader. The GL draw call count (renderer.gl?.drawCount) is not available when SwiftShader is running. This means draw call budgeting cannot be validated in Docker. Real GPU testing required for draw call verification.",
+    "evidence": {
+      "fpsCurve": "evidence/fps-curve.csv",
+      "drawCalls": -1,
+      "renderer": "WebGL (SwiftShader)"
+    },
+    "reproductionSteps": [
+      "Check window.__rrDebug().phaserPerf.drawCalls in Docker container"
+    ],
+    "suggestedFix": "Document in perf-baselines.md that drawCalls=-1 is expected in Docker SwiftShader. Validate draw call count on native GPU only.",
+    "dockerBaseline": true
+  },
+  {
+    "id": "issue-17758744933N-12-003",
+    "track": "12-stress-edge",
+    "scenario": 1,
+    "category": "perf_fps_regression",
+    "severity": "high",
+    "title": "Docker SwiftShader page crashes under extreme multi-container load (16+ parallel containers)",
+    "description": "When 16 Docker warm containers are running simultaneously (BATCH-2026-04-11-ULTRA parallel batch), the SwiftShader GPU process experiences SharedImageManager mailbox errors and the Chromium renderer crashes. The error pattern is: repeated 'SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox' followed by 'Target crashed'. This is a Docker host resource exhaustion issue, not a game bug. However it documents that parallel Docker testing at scale >8 containers on this host is unreliable.",
+    "evidence": {
+      "errorText": "SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox (repeated 30+ times)",
+      "crashType": "page.screenshot: Target crashed",
+      "systemLoadAtCrash": "34-128 load average",
+      "containersAtCrash": 16
+    },
+    "reproductionSteps": [
+      "Start 16+ Docker warm containers simultaneously",
+      "Attempt to run any test in any container",
+      "Page crashes with Target crashed error"
+    ],
+    "suggestedFix": "Limit parallel Docker containers to max 8. Stagger batch track start times by 2-3 minutes. Consider sequential Docker testing for stress/perf track specifically.",
+    "dockerBaseline": true
+  },
+  {
+    "id": "issue-17758744933N-12-004",
+    "track": "12-stress-edge",
+    "scenario": 3,
+    "category": "race_condition",
+    "severity": "low",
+    "title": "PASS: 50 rapid quickPlayCard+endTurn iterations produce zero errors or race conditions",
+    "description": "Rapid input mashing (50 play+endTurn cycles with no delay) produced zero game errors, zero race conditions, and no UI errors. All 50 plays and 50 turn ends executed successfully. The game handles rapid automated input gracefully.",
+    "evidence": {
+      "iterationsRun": 50,
+      "playErrors": 0,
+      "turnEndErrors": 0,
+      "rrLogErrors": 0,
+      "recentErrors": []
+    },
+    "reproductionSteps": [],
+    "suggestedFix": null,
+    "dockerBaseline": false
+  },
+  {
+    "id": "issue-17758744933N-12-005",
+    "track": "12-stress-edge",
+    "scenario": 4,
+    "category": "visual_resize_broken",
+    "severity": "low",
+    "title": "Viewport resize via JS dispatch does not change --layout-scale (expected: Playwright viewport is fixed)",
+    "description": "window.dispatchEvent(new Event('resize')) with no actual viewport size change does not alter --layout-scale (stayed at 1.5). This is expected behavior - the CSS variable is driven by the actual viewport dimensions, not artificial resize events. In Playwright, window.resizeTo() is sandboxed and ignored. Actual resize testing requires Playwright viewport parameter change or multiple viewport configurations. The canvas getBoundingClientRect returned 42x28px which is mid-animation transform (not a bug - per testing.md Layout dump is not ground truth). Screenshot at 1920x1080 shows correct layout with all elements in frame.",
+    "evidence": {
+      "layoutScaleInitial": "1.5",
+      "layoutScaleAfterResize": "1.5",
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "screenshotPath": "evidence/screenshots/s4-1920x1080.png"
+    },
+    "reproductionSteps": [],
+    "suggestedFix": "For future resize testing, use Playwright's page.setViewportSize() API or test at multiple viewport sizes via cold Docker runs with different --viewport parameters.",
+    "dockerBaseline": false
+  },
+  {
+    "id": "issue-17758744933N-12-006",
+    "track": "12-stress-edge",
+    "scenario": 5,
+    "category": "empty_state_crash",
+    "severity": "low",
+    "title": "PASS: Shop renders correctly at 500g with 3 items; no zero-gold scenario available via __rrPlay",
+    "description": "Shop scenario renders correctly: shows 500g gold display, 3 items (Whetstone 150g, Iron Shield 150g, Vitality Ring 150g). The __rrPlay API does not expose a setGold() method, so forcing 0-gold state requires a different approach (spawn with gold:0 parameter). Shop did not crash. forceHand() is also not in __rrPlay API - empty hand state cannot be force-tested via current API. These are API coverage gaps, not game bugs.",
+    "evidence": {
+      "shopRendered": true,
+      "goldDisplayed": "500g",
+      "itemsShown": 3,
+      "screenshotPath": "evidence/screenshots/s5-shop.png",
+      "forceHandAvailable": false,
+      "setGoldAvailable": false
+    },
+    "reproductionSteps": [],
+    "suggestedFix": "Consider adding __rrPlay.setGold(amount) and __rrPlay.forceHand([]) to the debug API for more comprehensive edge state testing.",
+    "dockerBaseline": false
+  },
+  {
+    "id": "issue-17758744933N-12-007",
+    "track": "12-stress-edge",
+    "scenario": 6,
+    "category": "error_state_crash",
+    "severity": "low",
+    "title": "PASS: Game handles corrupt localStorage save gracefully - loads hub without crash",
+    "description": "Corrupting 4 of 5 localStorage save keys (rr_save, rr_analytics_queue, terra-review-prompt-state, card:currentScreen) with invalid JSON did not crash the game. Hub scene loaded normally after corruption. Combat scenario also loaded normally. This confirms robust save data error handling - the game falls back to defaults when save data is corrupt.",
+    "evidence": {
+      "keysCorrupted": 4,
+      "hubLoadedAfterCorrupt": true,
+      "combatLoadedAfterCorrupt": true,
+      "screenshotPath": "evidence/screenshots/s6-after-corrupt.png",
+      "errorsAfterCorrupt": []
+    },
+    "reproductionSteps": [],
+    "suggestedFix": null,
+    "dockerBaseline": false
+  },
+  {
+    "id": "issue-17758744933N-12-008",
+    "track": "12-stress-edge",
+    "scenario": 2,
+    "category": "perf_memory_leak",
+    "severity": "low",
+    "title": "PASS: Memory stable across 3 consecutive combats (350-353MB, <1% growth)",
+    "description": "Memory usage across 3 consecutive combat scenario loads: combat1_start=350.3MB, combat1_end=351.0MB, combat2_start=350.2MB, combat2_end=352.6MB, combat3_start=353.2MB, combat3_end=352.6MB. Maximum growth: 2.9MB (0.83%) across 3 combats - well below the 10% threshold for leak suspect. gameObjectCount=36 and textureCount=109 were stable across all 3 combats, confirming proper cleanup on scenario reload.",
+    "evidence": {
+      "memoryAtStart": 350.3,
+      "memoryAtEnd": 352.6,
+      "growthMB": 2.3,
+      "growthPercent": 0.65,
+      "gameObjectsStable": true,
+      "texturesStable": true,
+      "csvPath": "evidence/memory-samples.csv"
+    },
+    "reproductionSteps": [],
+    "suggestedFix": null,
+    "dockerBaseline": false
+  },
+  {
+    "id": "issue-17758744933N-12-009",
+    "track": "12-stress-edge",
+    "scenario": 7,
+    "category": "console_error",
+    "severity": "low",
+    "title": "PASS: Zero game logic errors in __rrLog and recentErrors across combat/shop/reward/hub",
+    "description": "Across combat-basic, shop, reward-room, and hub-fresh scenarios, window.__rrLog.filter(e=>e.type==='error') returned 0 entries and window.__rrDebug().recentErrors returned [] in all cases. The 4 console errors collected were all ERR_CONNECTION_REFUSED for static asset fetches (Docker environment artifact) and 1 Web Worker blob URL warning. Zero game logic errors.",
+    "evidence": {
+      "gameLogicErrors": 0,
+      "consoleErrors": 4,
+      "consoleErrorBreakdown": "3x ERR_CONNECTION_REFUSED (Docker static asset), 1x Web Worker blob URL warning",
+      "scenariosTested": [
+        "combat-basic",
+        "shop",
+        "reward-room",
+        "hub-fresh"
+      ],
+      "errorsPath": "evidence/console-errors.json"
+    },
+    "reproductionSteps": [],
+    "suggestedFix": null,
+    "dockerBaseline": false
+  }
+]

@@ -1,0 +1,37 @@
+STATE: state-03-20 | Floor 8 | Edge: Overclock + Mirror combo | The Algorithm Phase 2
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 8, block 6. Healing 5 HP (intent). Phase 2.
+- Player: 30/80 HP, 0 block, 3 AP, chain 3 (×1.3). Quicksilver Quill (<2s charge = ×1.5 extra).
+
+SLOW vs HEAL: Does Slow cancel the heal intent?
+- Slow: "Skip enemy's next defend or buff." Heal is neither defend nor buff. Slow does NOT cancel heals. (Consistent with state-03-07 analysis.)
+- Slow is useless against the heal intent.
+
+KILL BEFORE HEAL PATH:
+- Piercing(CC,2ap) = floor(3×1.5)×1.3 = 4×1.3=5.2→5 dmg (bypasses 6 block). Enemy: 3 HP.
+- Overclock(QP,2ap) + Piercing(QP,1ap) = 3ap. Overclock makes Piercing hit for 2×: 3×2×1.3=7.8→7 dmg. vs 0 block (pierces). Enemy: 1 HP. Just alive.
+- Overclock(CC,3ap) = floor(Overclock... Overclock CC=chargeCorrectValue=2? Actually Overclock "next card 2× effect." CC might give even stronger doubling but the value=2 = still doubles. Enemy: 0 AP left.
+
+OVERCLOCK + PIERCING MATH:
+Overclock(QP,2ap) + Piercing(CC,2ap) = 4ap. Can't afford.
+Overclock(QP,2ap) + Piercing(QP,1ap) = 3ap. Overclock doubles Piercing: 3×2=6 × chain1.3=7.8→7 dmg to HP. Enemy: 1 HP. Damn.
+
+SLOW (cancels... wait, heal not cancellable) + Piercing:
+No useful Slow combo.
+
+MIRROR ANALYSIS: Mirror copies previous card. If Piercing plays first, Mirror copies = another Piercing hit. Piercing(QP,1ap) + Mirror(QP,1ap) = 2ap. 3+3=6 dmg (bypasses block both times). Chain 3 × each: 3×1.3+3×1.3=3.9+3.9→3+3=6 total? Floor(3×1.3)=3 each, total 6 to HP. Enemy: 2 HP.
+Piercing(CC,2ap) + Mirror(QP,1ap) = 3ap. Piercing CC = 5 dmg to HP. Mirror copies = another pierce for 5? Or does Mirror copy the resolved value vs the base? If Mirror copies the CARD effect (not modified value), Mirror Pierce = 3 QP = floor(3×1.3)=3 dmg. Total 5+3=8 ≥ 8 HP. Kills!
+
+BEST SEQUENCE: Piercing(CC,2ap) + Mirror(QP,1ap) = 3ap. Piercing bypasses block (5 to HP). Mirror copies Piercing (3 to HP, not the CC value). Total 8 ≥ 8. KILLS. Quicksilver Quill: if Piercing CC answered in <2s = additional ×1.5: floor(3×1.5)×1.3×1.5=4×1.3×1.5=7.8→7 dmg. Then Mirror: 3 more. Total 10. Still kills.
+
+DOMINANT CHOICE: Piercing(CC,2ap) + Mirror(QP,1ap) = 3ap. Kills cleanly. Overclock+Piercing path = 1 HP left (doesn't kill). Slow is useless. Quicksilver Quill rewards fast answers.
+
+DEAD CARDS: Slow (can't cancel heal), Overclock alone (no follow-up AP for big attack).
+
+TENSION: Real! Overclock + Piercing(QP) = 7 dmg but enemy survives at 1 HP and then heals to 6 HP. Pierce(CC) + Mirror = exactly kills 8 HP. Missing the correct play by 1 HP is a meaningful difference.
+
+SURVIVAL ODDS: 7/10. Kill path exists but requires identifying Pierce+Mirror > Overclock+Pierce.
+
+DESIGN NOTE: Mirror is an underappreciated card — it creates multiplicative value when paired with pierce or a charged attack. But its value depends entirely on what was played before it. As the FIRST card in sequence, Mirror is dead (copies nothing). As the SECOND card after Piercing, it doubles pierce hits for 1 AP. This hidden sequential dependency makes Mirror easy to misvalue.

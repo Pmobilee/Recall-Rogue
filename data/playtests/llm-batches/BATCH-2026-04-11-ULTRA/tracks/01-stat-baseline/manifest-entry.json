@@ -1,0 +1,33 @@
+{
+  "trackId": "01-stat-baseline",
+  "status": "completed",
+  "durationMs": 83100,
+  "methodology": "headless simulation 28,000 runs across 22 profiles + 9 analytics reports; 23 detection rules applied via sim-report methodology",
+  "model": "claude-sonnet-4-6",
+  "startedAt": "2026-04-11T01:25:56Z",
+  "finishedAt": "2026-04-11T01:27:19Z",
+  "runsExecuted": 28000,
+  "profilesAnalyzed": 22,
+  "headlessRunPath": "data/playtests/runs/2026-04-11_01-25-56",
+  "analyticsGenerated": true,
+  "issuesFound": {
+    "critical": 0,
+    "high": 5,
+    "medium": 7,
+    "low": 3
+  },
+  "verdict": "mixed",
+  "verdictReason": "No critical failures (no zero-damage bugs, no broken mechanics). 5 HIGH issues including asc20 unplayability, floor difficulty spikes, and final boss damage walls require attention before release. Game is functionally correct but has significant balance/progression issues at extremes.",
+  "preExistingFindings": {
+    "PRE-EXISTING-1": {
+      "id": "PRE-EXISTING-1",
+      "status": "unconfirmed",
+      "note": "barbed_edge leak noted in preflight. lifetap shows 15.1 avg dmg which may be elevated. No dedicated barbed_edge sim run performed in this track — impact on win rates cannot be isolated."
+    }
+  },
+  "topFindings": [
+    "Floor 4->6 difficulty spike is 3.36x (2.0x threshold) across ALL 28,000 runs — most impactful structural issue",
+    "Ascension 20 produces 2.7-9.1% win rates vs 32.5% too_hard threshold — fails as a game mode",
+    "Floor 18 final bosses (Omnibus/Final Lesson) cause 30.2% floor death rate with 87-91% HP-wipe encounters"
+  ]
+}

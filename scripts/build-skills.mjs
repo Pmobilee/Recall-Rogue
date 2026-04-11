@@ -98,10 +98,16 @@ function stripFrontmatter(content) {
 
 /**
  * Expand a template string by replacing every {{include: ...}} macro.
+ *
+ * **Markdown-aware.** The regex is ONLY applied to plain text. Matches
+ * inside fenced code blocks (``` or ~~~) and inline backtick spans
+ * (`...` or ``...``) are left untouched so authors can document the
+ * macro syntax itself without triggering expansion.
+ *
  * Include paths are resolved from REPO_ROOT.
  */
 function expandTemplate(templateString, templateAbsPath) {
-  return templateString.replace(INCLUDE_RE, (_, rawPath, heading) => {
+  const expandOne = (match, rawPath, heading) => {
     const relPath = rawPath.trim();
     const targetAbs = path.resolve(REPO_ROOT, relPath);
     if (!targetAbs.startsWith(REPO_ROOT)) {
@@ -112,7 +118,48 @@ function expandTemplate(templateString, templateAbsPath) {
     } catch (err) {
       throw new Error(`${templateAbsPath}: ${err.message}`);
     }
-  });
+  };
+
+  // Walk line by line, tracking fenced-code-block state. Inside a fence,
+  // pass lines through verbatim. Outside a fence, further split each line
+  // by inline backtick spans and only expand the non-backtick runs.
+  const lines = templateString.split('\n');
+  const out = [];
+  let inFence = false;
+  let fenceMarker = null;
+  for (const line of lines) {
+    // Fence open/close detection. A fence line starts with at least 3
+    // backticks or tildes at the beginning of the line (with optional
+    // leading whitespace for nested fences — rare in SKILL.md, but cheap).
+    const fenceMatch = line.match(/^(\s*)(```+|~~~+)/);
+    if (fenceMatch) {
+      const marker = fenceMatch[2][0]; // "`" or "~"
+      if (!inFence) {
+        inFence = true;
+        fenceMarker = marker;
+      } else if (marker === fenceMarker) {
+        inFence = false;
+        fenceMarker = null;
+      }
+      out.push(line);
+      continue;
+    }
+    if (inFence) {
+      out.push(line);
+      continue;
+    }
+    // Not in a fence. Split the line on inline backtick spans. We match
+    // backtick spans of 1 or 2 backticks (covers the common case); odd-
+    // indexed segments in the result are "inside backticks", even-indexed
+    // are plain text. Include-macro expansion runs only on plain text.
+    const segments = line.split(/(``[^`]*``|`[^`]*`)/);
+    for (let i = 0; i < segments.length; i++) {
+      if (i % 2 === 1) continue; // backtick-wrapped → leave alone
+      segments[i] = segments[i].replace(INCLUDE_RE, expandOne);
+    }
+    out.push(segments.join(''));
+  }
+  return out.join('\n');
 }
 
 function buildOne(templatePath) {

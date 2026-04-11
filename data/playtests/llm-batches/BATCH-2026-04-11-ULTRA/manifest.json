@@ -1,0 +1,48 @@
+{
+  "batchId": "BATCH-2026-04-11-ULTRA",
+  "startedAt": "2026-04-11T10:20:00Z",
+  "author": "orchestrator-opus-4.6",
+  "plan": "/Users/damion/.claude-muldamion/plans/polished-wibbling-bear.md",
+  "mode": "ultra-scope",
+  "gitHead": "33b666b972b838d60ba66f435fa6b9b49cbaf715",
+  "workingTreeDirty": true,
+  "preflight": {
+    "typecheck": "pass (0 errors, 18 a11y warnings)",
+    "build": "pass",
+    "unitTests": "FAIL 1/5823 — damagePreviewService.test.ts:417 barbed_edge leak (PRE-EXISTING-1)",
+    "registryStalePre": "69 stale | 440 never-inspected | 12 fresh",
+    "dockerDaemon": "ok",
+    "warmContainerBooted": false,
+    "smokeTestPassed": false
+  },
+  "tracks": [
+    { "id": "01-stat-baseline",  "name": "Stat-Baseline",          "owner": "game-logic",  "status": "pending", "method": "headless sim 1000×6 + sim-report" },
+    { "id": "02-neural-optimal", "name": "Neural-Optimal",         "owner": "game-logic",  "status": "pending", "method": "rogue-brain analyze 200 episodes (fallback: quick 50)" },
+    { "id": "03-strategic",      "name": "Strategic-Reasoning",    "owner": "game-logic",  "status": "pending", "method": "strategy-analysis 20 states × Haiku swarm" },
+    { "id": "04-combat-core",    "name": "Combat-Core LLM",        "owner": "content-agent","status": "pending", "method": "/llm-playtest quiz+balance+fun (3 Sonnet testers)" },
+    { "id": "05-save-load",      "name": "Save/Load Hammer",       "owner": "qa-agent",    "status": "pending", "method": "dedicated save→reload→resume loop (docker warm)" },
+    { "id": "06-content-sample", "name": "Content-Sample",         "owner": "content-agent","status": "pending", "method": "10 untested decks × 10 quizzes each" },
+    { "id": "07-mode-coverage",  "name": "Mode-Coverage",          "owner": "ui-agent",    "status": "pending", "method": "chess / map-pin / proc-math / trivia / study" },
+    { "id": "08-ascension",      "name": "Ascension-Crusher",      "owner": "game-logic",  "status": "pending", "method": "5 levels × label↔tooltip↔runtime verify" },
+    { "id": "09-multiplayer",    "name": "Multiplayer-Sync",       "owner": "game-logic",  "status": "pending", "method": "2-peer determinism diff or single-peer fallback" },
+    { "id": "10-visual-sweep",   "name": "Visual-Sweep",           "owner": "ui-agent",    "status": "pending", "method": "37 screens × screenshot + layout dump" },
+    { "id": "11-ux-audit",       "name": "UX-Audit",               "owner": "ui-agent",    "status": "pending", "method": "/ux-review on top 10 screens" },
+    { "id": "12-stress-edge",    "name": "Stress/Edge/Perf",       "owner": "qa-agent",    "status": "pending", "method": "FPS + memory + rapid-input + resize + empty/error" }
+  ],
+  "synthesis": {
+    "s1_ingest":        { "status": "pending" },
+    "s2_correlation":   { "status": "pending" },
+    "s3_triage":        { "status": "pending" },
+    "s4_synthesis_md":  { "status": "pending" },
+    "s5_teardown":      { "status": "pending" }
+  },
+  "preExistingFindings": [
+    {
+      "id": "PRE-EXISTING-1",
+      "severity": "high",
+      "title": "barbed_edge synergy applies to non-strike-tagged cards",
+      "source": "src/services/damagePreviewService.test.ts:417",
+      "description": "Unit test failing on pre-run preflight: lifetap card without strike tag gets +2 damage from barbed_edge synergy. Expected 3, got 5. Not caused by this playtest run — present at HEAD 33b666b97."
+    }
+  ]
+}

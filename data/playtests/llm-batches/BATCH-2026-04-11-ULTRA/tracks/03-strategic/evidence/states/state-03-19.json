@@ -1,0 +1,35 @@
+{
+  "stateId": "state-03-19",
+  "bucket": "edge_case",
+  "floor": 7,
+  "description": "Edge: All utility/draw hand — no direct damage cards",
+  "enemy": {
+    "id": "comparison_trap",
+    "name": "The Comparison Trap",
+    "currentHP": 10,
+    "maxHP": 10,
+    "block": 0,
+    "intent": { "type": "multi_attack", "value": 4, "hitCount": 3, "telegraph": "Phantom copies (3 × 4 = 12 total)" },
+    "statusEffects": [
+      { "type": "vulnerable", "value": 1, "turnsRemaining": 1 }
+    ]
+  },
+  "player": {
+    "currentHP": 45,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 2
+  },
+  "hand": [
+    { "id": "scout", "name": "Scout", "type": "utility", "apCost": 1, "quickPlayValue": 2, "chargeCorrectValue": 3, "chargeWrongValue": 1, "description": "Draw 2 cards." },
+    { "id": "recycle", "name": "Recycle", "type": "utility", "apCost": 1, "quickPlayValue": 2, "chargeCorrectValue": 4, "chargeWrongValue": 2, "description": "Draw 3 cards. Charge bonus: recover from discard." },
+    { "id": "foresight", "name": "Foresight", "type": "utility", "apCost": 0, "quickPlayValue": 1, "chargeCorrectValue": 3, "chargeWrongValue": 1, "description": "Draw 2 cards. Charge bonus: reveal enemy intent." },
+    { "id": "cleanse", "name": "Cleanse", "type": "utility", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Remove all debuffs. Draw 1 card." },
+    { "id": "adapt", "name": "Adapt", "type": "wild", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Smart: Block vs ATK (enemy attacking!), Cleanse vs debuff, else Attack." }
+  ],
+  "relics": [
+    { "id": "swift_boots", "name": "Swift Boots", "description": "Draw 6 cards per turn instead of 5." }
+  ],
+  "notes": "EDGE CASE: Zero direct damage cards in hand. Enemy incoming 12 dmg. Adapt vs ATK intent = Block effect. Must draw to find attack cards. Optimal: Foresight (free, draws 2), then Scout or Recycle to keep digging. Adapt = Block is defensive fallback. With chain 2 and enemy vulnerable, next turn could be explosive. Question: does player understand Foresight is free (0 AP), making it always correct to play? And does Adapt's auto-block help here vs a multi-hit? (Block absorbs all hits until depleted.)"
+}

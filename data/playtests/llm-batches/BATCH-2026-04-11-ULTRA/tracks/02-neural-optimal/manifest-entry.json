@@ -1,0 +1,40 @@
+{
+  "track": "02-neural-optimal",
+  "status": "blocked",
+  "verdict": "blocked",
+  "startTime": "2026-04-11T00:00:00Z",
+  "endTime": "2026-04-11T00:30:00Z",
+  "durationSeconds": 1800,
+  "methodology": "PPO neural agent strategy analysis via rogue-brain skill",
+  "modelCheckpoint": "tests/playtest/rl/models/rogue_brain_v2_masked_2M.zip (attempted); also tried rogue_brain_v2_2M.zip, rogue_brain_v3_economy_2M.zip",
+  "modelVersion": "rogue_brain_v2_masked_2M (2M steps, MaskablePPO, trained 2026-03-21)",
+  "latestCheckpointPath": "tests/playtest/rl/models/rogue_brain_v2_masked_2M.zip",
+  "latestSymlink": "tests/playtest/rl/models/latest/ (EMPTY — symlink points to empty directory)",
+  "episodes": 0,
+  "episodesRequested": 200,
+  "downgraded": true,
+  "downgradeReason": "Full 200-episode analysis BLOCKED. 50-episode smoke test also BLOCKED. Root cause: gym-server.ts references TurnState.comboCount which was removed from the TurnState interface in src/services/turnManager.ts. This produces NaN observations and NaN/null reward values. All 6 model checkpoints fail. Zero episodes completed.",
+  "pythonDependencies": {
+    "stable_baselines3": "2.7.1",
+    "sb3_contrib": "2.7.1",
+    "gymnasium": "present",
+    "status": "OK — deps installed but env broken"
+  },
+  "blockerFile": "tests/playtest/headless/gym-server.ts",
+  "blockerLines": [381, 628],
+  "blockerField": "TurnState.comboCount (removed from turnManager.ts, not updated in gym-server.ts)",
+  "replacementField": "TurnState.consecutiveCorrectThisEncounter",
+  "issueCount": 4,
+  "criticalCount": 1,
+  "highCount": 2,
+  "mediumCount": 1,
+  "lowCount": 0,
+  "cosmeticCount": 0,
+  "testerModel": "claude-sonnet-4-6",
+  "outputFiles": [
+    "report.md",
+    "issues.json",
+    "manifest-entry.json",
+    "evidence/gym-server-bug-trace.md"
+  ]
+}

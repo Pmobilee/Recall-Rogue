@@ -1,0 +1,35 @@
+{
+  "stateId": "state-03-03",
+  "bucket": "early_game",
+  "floor": 2,
+  "enemy": {
+    "id": "mold_puff",
+    "name": "Mold Puff",
+    "currentHP": 6,
+    "maxHP": 6,
+    "block": 0,
+    "intent": { "type": "debuff", "value": 2, "telegraph": "Toxic cloud", "statusEffect": { "type": "poison", "value": 2, "turns": 3 } },
+    "statusEffects": []
+  },
+  "player": {
+    "currentHP": 62,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 1,
+    "statusEffects": [
+      { "type": "poison", "value": 1, "turnsRemaining": 2 }
+    ]
+  },
+  "hand": [
+    { "id": "strike", "name": "Strike", "type": "attack", "apCost": 1, "quickPlayValue": 4, "chargeCorrectValue": 6, "chargeWrongValue": 2, "description": "Deal damage." },
+    { "id": "hex", "name": "Hex", "type": "debuff", "apCost": 1, "quickPlayValue": 2, "chargeCorrectValue": 4, "chargeWrongValue": 1, "description": "Apply poison 3 for 3 turns." },
+    { "id": "cleanse", "name": "Cleanse", "type": "utility", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Remove all debuffs. Draw 1 card." },
+    { "id": "reckless", "name": "Reckless", "type": "attack", "apCost": 1, "quickPlayValue": 6, "chargeCorrectValue": 18, "chargeWrongValue": 4, "description": "High damage, self-damage (3 HP)." },
+    { "id": "empower", "name": "Empower", "type": "buff", "apCost": 1, "quickPlayValue": 50, "chargeCorrectValue": 75, "chargeWrongValue": 35, "description": "Next card deals 50% more damage." }
+  ],
+  "relics": [
+    { "id": "herbal_pouch", "name": "Herbal Pouch", "description": "Apply 1 Poison to all enemies at turn start. Heal 3 HP after combat." }
+  ],
+  "notes": "Player is already poisoned (1 stk). Mold Puff is about to add 2 more. Herbal Pouch auto-applies 1 poison to enemy each turn. Cleanse can remove player poison but wastes AP. Reckless self-damages a poisoned player. Genuine tension: cleanse first or burst the enemy before it stacks more poison?"
+}

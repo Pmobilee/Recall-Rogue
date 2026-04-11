@@ -1,0 +1,30 @@
+STATE: state-03-09 | Floor 6 | Tenure Guardian (block-stacker) | Mid Game
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 11, block 12 (gaining 6 more = 18 next turn). Strength 1. Intent: Defend.
+- Player: 38/80 HP, 5 block, 3 AP, chain 0, Chain Reactor relic (useless at chain 0).
+- Reckless self-damages 3 HP at 38 HP = risky.
+
+SLOW ANALYSIS: Slow costs 2 AP and cancels the incoming DEFEND action. This prevents the enemy gaining 6 more block (stays at 12). Then Piercing(QP,1ap) = 3 dmg to HP through block. 3 AP total.
+OR: Slow(CC,3ap) = cancels defend + weakens enemy. 0 AP left. Enemy stays at 12 block, weakened. Next turn: can deal dmg via Piercing.
+
+PIERCING PATH: Piercing(CC,2ap) = floor(3×1.5) = 4 to HP (bypass). 1 AP left → Reckless? At 38 HP, Reckless(QP,1ap) = 6 dmg + 3 self. But Reckless doesn't bypass block. With 18 incoming block, regular attacks are useless.
+
+WAIT — Reckless is an attack that doesn't pierce. Against 12 block (or 18 after defend), Reckless QP = 6-12 = 0 (absorbed). Reckless is DEAD vs block enemies unless used with Double Strike pierce or with Piercing first.
+
+EXPOSE ANALYSIS: Expose(QP,1ap) = apply vulnerable (enemy takes 50% more). Piercing(CC,2ap) = 4 dmg ×1.5 vulnerable = 6 dmg to HP. Total 3 AP. Enemy: 5 HP. Excellent!
+
+BEST SEQUENCE: Expose(QP,1ap) + Piercing(CC,2ap) = 3 AP. 4×1.5=6 dmg to HP. Enemy: 5 HP. Enemy was going to defend (+6 block = 18 total), but it happened ANYWAY (defense fires on enemy turn, player didn't stop it). Next turn: still 18 block but enemy at 5 HP.
+
+SLOW COMPARISON: Slow(CC,3ap) = prevents the 6 block gain (enemy stays at 12). No damage. Enemy: 11 HP, weakened. Better for sustained fights.
+
+TENSION: Expose+Pierce(damage now) vs Slow(prevent block gain). Both use 3 AP. Expose path = more damage but enemy gets to 18 block. Slow path = less damage but enemy stays at 12 block. At 11 HP enemy, which 5-HP gap matters more?
+
+KEY INSIGHT: If player can kill in 2-3 more turns, Expose+Pierce is better (aggressive). If fight drags on, Slow is better. This is GENUINE TENSION.
+
+DEAD CARDS: Reckless — dealing 0 damage against 12+ block is truly dead. Block — at 38 HP vs 5 block player, incoming attack next turn (Strength 1 means attacks from this enemy will hit ~6×1.25=7.5 dmg after Strength). Block(5 block - but enemy hasn't attacked this turn) is defensive but enemy just defended.
+
+SURVIVAL ODDS: 6/10. Extended fight at 38 HP vs a high-block enemy.
+
+RECKLESS: CONFIRMED DEAD CARD here. Zero effective damage vs 12+ block. This is a design insight.

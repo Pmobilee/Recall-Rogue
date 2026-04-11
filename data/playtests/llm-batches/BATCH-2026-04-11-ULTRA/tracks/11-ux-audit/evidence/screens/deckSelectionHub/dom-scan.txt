@@ -1,0 +1,42 @@
+LAYOUT DUMP  2026-04-11T02:09:17.120Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.deck-selection-hub.svelte-qoeryv]                         (0, 0)  1920x1080       HIDDEN
+      [div.top-bar.svelte-qoeryv]                                  (0, 0)  1920x97       
+        [button.back-btn.svelte-qoeryv]                            (36, 24)  100x49        "← Back"
+      [div.panel.panel--trivia.svelte-qoeryv]                      (192, 228)  750x720   
+        [div.parallax-wrap.svelte-qoeryv]                          (193, 229)  748x718   
+        [div.panel-text-overlay.svelte-qoeryv]                     (374, 454)  385x269   
+        [div.shine-overlay.svelte-qoeryv]                          (193, 229)  748x718     HIDDEN
+      [div.panel.panel--study.svelte-qoeryv]                       (978, 228)  750x720   
+        [div.parallax-wrap.svelte-qoeryv]                          (979, 229)  748x718   
+        [div.panel-text-overlay.svelte-qoeryv]                     (1185, 454)  335x269  
+        [div.shine-overlay.svelte-qoeryv]                          (979, 229)  748x718     HIDDEN
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.deck-selection-hub.svelte-qoeryv], [div.screen-transition.svelte-2meh4s]
+  TOP-CENTER         → [div.top-bar.svelte-qoeryv]
+  MIDDLE-LEFT        → [div.panel.panel--trivia.svelte-qoeryv], [div.parallax-wrap.svelte-qoeryv], [div.panel-text-overlay.svelte-qoeryv], [div.shine-overlay.svelte-qoeryv]
+  MIDDLE-RIGHT       → [div.panel.panel--study.svelte-qoeryv], [div.parallax-wrap.svelte-qoeryv], [div.panel-text-overlay.svelte-qoeryv], [div.shine-overlay.svelte-qoeryv]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.deck-selection-hub.svelte-qoeryv]             covers 100% height  CENTER
+  [div.panel.panel--trivia.svelte-qoeryv]            covers 67% height  MIDDLE-LEFT
+  [div.parallax-wrap.svelte-qoeryv]                  covers 66% height  MIDDLE-LEFT
+  [div.panel-text-overlay.svelte-qoeryv]             covers 25% height  MIDDLE-LEFT
+  [div.shine-overlay.svelte-qoeryv]                  covers 66% height  MIDDLE-LEFT
+  [div.panel.panel--study.svelte-qoeryv]             covers 67% height  MIDDLE-RIGHT
+  [div.parallax-wrap.svelte-qoeryv]                  covers 66% height  MIDDLE-RIGHT
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 13 DOM elements) —

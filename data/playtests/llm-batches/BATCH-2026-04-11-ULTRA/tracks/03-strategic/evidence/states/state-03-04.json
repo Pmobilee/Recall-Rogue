@@ -1,0 +1,33 @@
+{
+  "stateId": "state-03-04",
+  "bucket": "early_game",
+  "floor": 3,
+  "enemy": {
+    "id": "pop_quiz",
+    "name": "Pop Quiz",
+    "currentHP": 7,
+    "maxHP": 7,
+    "block": 0,
+    "intent": { "type": "attack", "value": 8, "telegraph": "Cap strike" },
+    "statusEffects": [],
+    "special": "onPlayerChargeCorrect: stun enemy next turn. onPlayerNoCharge: gains +1 permanent enrage bonus damage."
+  },
+  "player": {
+    "currentHP": 74,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 0
+  },
+  "hand": [
+    { "id": "strike", "name": "Strike", "type": "attack", "apCost": 1, "quickPlayValue": 4, "chargeCorrectValue": 6, "chargeWrongValue": 2, "description": "Deal damage." },
+    { "id": "quicken", "name": "Quicken", "type": "buff", "apCost": 0, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Gain +1 AP this turn. Charge bonus: also draw 1 card.", "chargeBonusEffect": "quicken_draw" },
+    { "id": "focus", "name": "Focus", "type": "buff", "apCost": 1, "quickPlayValue": 1, "chargeCorrectValue": 1, "chargeWrongValue": 1, "description": "Next card costs 1 less AP. Charge bonus: next TWO cards cost 1 less AP.", "chargeBonusEffect": "focus_double" },
+    { "id": "heavy_strike", "name": "Heavy Strike", "type": "attack", "apCost": 2, "quickPlayValue": 10, "chargeCorrectValue": 30, "chargeWrongValue": 7, "description": "High damage. Costs 2 AP." },
+    { "id": "recycle", "name": "Recycle", "type": "utility", "apCost": 1, "quickPlayValue": 2, "chargeCorrectValue": 4, "chargeWrongValue": 2, "description": "Draw 3 cards. Charge bonus: also recover 1 card from discard.", "chargeBonusEffect": "recycle_from_discard" }
+  ],
+  "relics": [
+    { "id": "swift_boots", "name": "Swift Boots", "description": "Draw 6 cards per turn instead of 5." }
+  ],
+  "notes": "Pop Quiz has dual reactive hooks. Charging correctly stuns it (strong incentive to Charge). NOT charging gives it permanent damage buffs. But Quicken is free and costs 0 AP. Is charging the Quicken worth it just to stun Pop Quiz? The stun benefit is powerful but costs 1 AP surcharge per charge. Deep AP optimization puzzle."
+}

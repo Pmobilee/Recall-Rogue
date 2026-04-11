@@ -1,0 +1,88 @@
+LAYOUT DUMP  2026-04-11T02:04:37.707Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.topbar.svelte-1ramr3r]                                    (0, 0)  1920x49         HIDDEN
+      [div.hp-group.svelte-1ramr3r]                                (18, 9)  622x28       
+        [div.hp-bar-track.svelte-1ramr3r]                          (18, 9)  622x28       
+          [div.hp-bar-fill.svelte-1ramr3r]                         (19, 10)  620x26      
+          [span.hp-text.svelte-1ramr3r]                            (19, 15)  620x15      
+            [span.hp-value.svelte-1ramr3r]                         (297, 15)  64x15        "100/100"
+      [span.segment-name.svelte-1ramr3r]                           (1393, 15)  99x16       "Shallow Depths"
+      [span.progress-divider.svelte-1ramr3r]                       (1503, 17)  3x13        "·"
+      [span.floor-label.svelte-1ramr3r]                            (1518, 15)  38x16       "Floor 1"
+      [div.gold-counter.svelte-1ramr3r]                            (1581, -1)  68x48     
+        [span.gold-value.svelte-1ramr3r]                           (1612, 15)  36x15       "500"
+      [div.relics-row.svelte-1ramr3r]                              (1660, 7)  176x32     
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1660, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1696, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1732, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1768, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1804, 7)  32x32      
+      [button.pause-btn.svelte-1ramr3r]                            (1854, -1)  48x48     
+        [span.pause-icon.svelte-1ramr3r]                           (1861, 9)  33x27        "⚙"
+    [canvas]                                                       (0, 0)                  HIDDEN
+    [section.shop-overlay.svelte-jqi7hc.landscape]                 (0, 0)  1920x1080       HIDDEN
+      [img.shop-screen-bg.svelte-jqi7hc]                           (0, 0)  1728x1080     
+      [div.shop-hud.svelte-jqi7hc]                                 (96, 246)  1728x72    
+        [button.hud-back.svelte-jqi7hc] data-testid="btn-leave-shop" (114, 248)  66x66       "←"
+        [div.hud-gold.svelte-jqi7hc]                               (198, 265)  83x31     
+          [span.gold-icon.svelte-jqi7hc]                           (198, 265)  30x31       "🪙"
+          [span.gold-amount.svelte-jqi7hc]                         (234, 268)  47x25       "500g"
+        [span.hud-info.svelte-jqi7hc]                              (1617, 272)  85x18      "Shop · Floor 1"
+        [span.hud-deck.svelte-jqi7hc]                              (1720, 272)  86x18      "Deck: 0 cards"
+      [div.card-list.svelte-jqi7hc]                                (96, 402)  1728x100   
+        [article.card-item.relic-item.svelte-jqi7hc]               (96, 402)  566x100    
+          [span.icon.svelte-jqi7hc]                                (116, 428)  37x30       "🪨"
+          [span.rarity-pill.svelte-jqi7hc]                         (165, 449)  110x18      "common"
+          [button] data-testid="shop-buy-relic-whetstone"          (568, 419)  74x66       "150g"
+        [article.card-item.relic-item.svelte-jqi7hc]               (677, 402)  566x100   
+          [span.icon.svelte-jqi7hc]                                (697, 428)  37x30       "🛡️"
+          [span.rarity-pill.svelte-jqi7hc]                         (746, 449)  111x18      "common"
+          [button] data-testid="shop-buy-relic-iron_shield"        (1149, 419)  74x66      "150g"
+        [article.card-item.relic-item.svelte-jqi7hc]               (1258, 402)  566x100  
+          [span.icon.svelte-jqi7hc]                                (1278, 428)  37x30      "💍"
+          [span.rarity-pill.svelte-jqi7hc]                         (1327, 449)  126x18     "common"
+          [button] data-testid="shop-buy-relic-vitality_ring"      (1730, 419)  74x66      "150g"
+      [article.service-card.service-removal.svelte-jqi7hc]         (96, 586)  857x248    
+        [span.service-title.svelte-jqi7hc]                         (118, 666)  113x23      "Card Removal"
+        [span.service-price.svelte-jqi7hc.unaffordable-price]      (903, 666)  27x23       "75g"
+        [button] data-testid="shop-buy-removal"                    (118, 736)  813x48      "Choose a card →"
+        [span.service-note.svelte-jqi7hc]                          (118, 796)  813x16      "Need more than 5 cards"
+      [article.service-card.service-transform.svelte-jqi7hc]       (968, 586)  857x248   
+        [span.service-title.svelte-jqi7hc]                         (990, 666)  131x23      "Card Transform"
+        [span.service-price.service-price-disabled.svelte-jqi7hc]  (1718, 669)  84x18      "Coming soon"
+        [button.service-action.svelte-jqi7hc]                      (990, 764)  813x48      "Choose a card →"
+    [div.parallax-transition-overlay.svelte-1lwegjf.settled]       (0, 0)  1920x1080       HIDDEN
+      [canvas.parallax-canvas.svelte-1lwegjf]                      (0, 0)  1920x1080     
+    [div.screen-transition.svelte-2meh4s.wipe-zoom]                (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [section.shop-overlay.svelte-jqi7hc.landscape], [img.shop-screen-bg.svelte-jqi7hc], [div.card-list.svelte-jqi7hc], [article.card-item.relic-item.svelte-jqi7hc] (+6 more)
+  TOP-CENTER         → [div.topbar.svelte-1ramr3r], [div.shop-hud.svelte-jqi7hc]
+  TOP-LEFT           → [div.hp-group.svelte-1ramr3r], [div.hp-bar-track.svelte-1ramr3r], [div.hp-bar-fill.svelte-1ramr3r], [span.hp-text.svelte-1ramr3r], [button.hud-back.svelte-jqi7hc] data-testid="btn-leave-shop"
+  TOP-RIGHT          → [div.relics-row.svelte-1ramr3r]
+  MIDDLE-LEFT        → [article.card-item.relic-item.svelte-jqi7hc], [span.rarity-pill.svelte-jqi7hc], [button] data-testid="shop-buy-relic-whetstone", [article.service-card.service-removal.svelte-jqi7hc], [span.service-title.svelte-jqi7hc]
+  MIDDLE-RIGHT       → [article.card-item.relic-item.svelte-jqi7hc], [span.rarity-pill.svelte-jqi7hc], [button] data-testid="shop-buy-relic-vitality_ring", [article.service-card.service-transform.svelte-jqi7hc]
+  BOTTOM-LEFT        → [button] data-testid="shop-buy-removal", [span.service-note.svelte-jqi7hc]
+  BOTTOM-RIGHT       → [button.service-action.svelte-jqi7hc]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [section.shop-overlay.svelte-jqi7hc.landscape]     covers 100% height  CENTER
+  [img.shop-screen-bg.svelte-jqi7hc]                 covers 100% height  CENTER
+  [article.service-card.service-removal.svelte-jqi   covers 23% height  MIDDLE-LEFT
+  [article.service-card.service-transform.svelte-j   covers 23% height  MIDDLE-RIGHT
+  [div.parallax-transition-overlay.svelte-1lwegjf.   covers 100% height  CENTER
+  [canvas.parallax-canvas.svelte-1lwegjf]            covers 100% height  CENTER
+  [div.screen-transition.svelte-2meh4s.wipe-zoom]    covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 55 DOM elements) —

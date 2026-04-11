@@ -1,0 +1,87 @@
+[
+  {
+    "id": "issue-1775871222977-02-001",
+    "track": "02-neural-optimal",
+    "category": "mechanic_broken",
+    "severity": "critical",
+    "title": "Gym-server comboCount NaN: RL pipeline fully non-functional (obs + reward both corrupted)",
+    "description": "The field `comboCount` was removed from `TurnState` in `src/services/turnManager.ts` (replaced by `consecutiveCorrectThisEncounter` and `chainLength`), but `tests/playtest/headless/gym-server.ts` was never updated. Two code paths reference the deleted field:\n\n1. `buildCombatObsSlice` line 381: `ts.comboCount / 10` → `undefined / 10 = NaN` → JSON null at obs[6]. NaN propagates through neural network policy → all 30 action logits = NaN → `MaskablePPO.predict()` raises ValueError immediately after the first combat step.\n\n2. `calculateCombatReward` line 628: `0.1 * ts.comboCount` → `0.1 * undefined = NaN` → JavaScript NaN serialized as JSON null → Python `float(response['reward'])` raises TypeError.\n\nAll 6 model checkpoints are blocked. The 2 models with 80-float obs-space (pre-v2) also fail due to obs-space shape mismatch (env now emits 120 floats). The RL testing system cannot run any analysis in its current state. No RL-derived strategy conclusions are possible.",
+    "evidence": {
+      "metric": "100% of episodes fail within 1-4 steps; obs[6]=null after first TurnState activation; reward=null on any correct charge action",
+      "episodes": 0,
+      "cardId": "",
+      "relicId": "",
+      "bugFile": "tests/playtest/headless/gym-server.ts",
+      "bugLines": [381, 628, 870, 977, 982, 1111, 1212],
+      "removedField": "TurnState.comboCount",
+      "replacementField": "TurnState.consecutiveCorrectThisEncounter"
+    },
+    "reproductionSteps": [
+      "pkill -f gym-server 2>/dev/null",
+      "cd /path/to/Recall_Rogue",
+      "python3 tests/playtest/rl/analyze.py --model tests/playtest/rl/models/rogue_brain_v2_masked_2M.zip --episodes 1 --correct-rate 0.75",
+      "Observe: ValueError at sb3_contrib/common/maskable/distributions.py — logits are all NaN",
+      "OR: python3 tests/playtest/rl/analyze.py --model tests/playtest/rl/models/rogue_brain_v2_2M.zip --episodes 1 --correct-rate 0.75",
+      "Observe: TypeError: float() argument must be a string or a real number, not 'NoneType'"
+    ],
+    "suggestedFix": "In gym-server.ts: (1) Line 381: replace ts.comboCount with (ts.consecutiveCorrectThisEncounter ?? 0). (2) Line 628: replace ts.comboCount with (ts.consecutiveCorrectThisEncounter ?? 0). (3) Lines 870, 977, 982: replace comboCount field reads on TurnState with consecutiveCorrectThisEncounter. (4) Lines 1111, 1212: remove dead writes to ts.comboCount (the field no longer exists on TurnState). (5) After fix: verify gym-server type-checks cleanly, run 50-episode smoke test to confirm. NOTE: the trained models may not have learned optimal combo-chain behavior since comboCount in the reward signal was undefined throughout training (NaN → null reward → agent received no signal for correct charges)."
+  },
+  {
+    "id": "issue-1775871222977-02-002",
+    "track": "02-neural-optimal",
+    "category": "mechanic_broken",
+    "severity": "high",
+    "title": "Gym-server latest/ model checkpoint is empty — rogue-brain skill broken for fresh installs",
+    "description": "The symlink `tests/playtest/rl/models/latest/` points to `tests/playtest/rl/models/20260325_162724/`, which is an empty directory with no `.zip` model file. The skill documentation (`SKILL.md`) shows the analyze workflow using `--model tests/playtest/rl/models/rogue_brain_v2_masked_2M` (a named path), but if any script or agent relies on the `latest/` symlink it will fail silently. All 6 named checkpoints are ZIP files in the models/ root, not in the dated subdirectories. The dated subdirectory pattern was intended for checkpoint saving during training but no checkpoint has ever been saved there.",
+    "evidence": {
+      "metric": "ls tests/playtest/rl/models/latest/ returns empty; the 6 actual model ZIPs are in the models/ root, not in dated subdirs",
+      "episodes": 0,
+      "cardId": "",
+      "relicId": ""
+    },
+    "reproductionSteps": [
+      "ls -la tests/playtest/rl/models/latest/",
+      "Observe: empty directory (no model files)"
+    ],
+    "suggestedFix": "Copy or symlink the best checkpoint (rogue_brain_v3_economy_2M.zip) into the latest/ directory, OR update the latest symlink to point to the ZIPs directly. Update the skill docs to clarify the expected path."
+  },
+  {
+    "id": "issue-1775871222977-02-003",
+    "track": "02-neural-optimal",
+    "category": "mechanic_broken",
+    "severity": "high",
+    "title": "RL reward signal missing comboCount bonus since TurnState field was removed — all trained models are undertrained on charge-correct behavior",
+    "description": "The `calculateCombatReward` function in gym-server.ts awards `0.1 * ts.comboCount` for each correct charge. Since `comboCount` was undefined throughout all training runs (the field was absent from TurnState), JavaScript evaluated this as `0.1 * undefined = NaN`, which JSON-serializes as `null`. The Python env received `null` reward and raised TypeError on every correct charge, causing the training process to either crash or fall back to a default. This means ALL trained models (v2_500k, v2_2M, v2_masked_2M, v3_economy_2M) were trained with corrupted reward signals for the most important positive feedback loop in the game — rewarding correct charges and chain building. The models' learned strategies are therefore unreliable with respect to charge-vs-quick decisions and chain building behavior.",
+    "evidence": {
+      "metric": "gym-server.ts:628 ts.comboCount was undefined throughout all training; reward for correct charges was NaN (null) for all 2M-step training runs",
+      "episodes": 0,
+      "cardId": "",
+      "relicId": ""
+    },
+    "reproductionSteps": [
+      "Inspect tests/playtest/rl/analyze.py reward signal: calculateCombatReward at line 628",
+      "Confirm ts.comboCount is undefined in current TurnState (grep src/services/turnManager.ts for comboCount — returns no results)",
+      "The training logs in tests/playtest/rl/logs/ would show reward curves; if they exist, look for abnormally low reward per correct charge step"
+    ],
+    "suggestedFix": "After fixing Bug A (issue-001): fix the reward signal to use ts.consecutiveCorrectThisEncounter instead of ts.comboCount. Then retrain from scratch — existing checkpoints were trained with broken reward signals and may have learned suboptimal policies. For a quick smoke test, the v2_2M plain PPO checkpoint MAY be partially useful if Bug B is fixed (reward returns 0 instead of null for correct charges), but its learned behavior should be treated as untrusted."
+  },
+  {
+    "id": "issue-1775871222977-02-004",
+    "track": "02-neural-optimal",
+    "category": "mechanic_broken",
+    "severity": "medium",
+    "title": "Gym-server observation space has 5 stale comboCount-dependent references producing undefined/null values",
+    "description": "Beyond the two critical bugs (obs[6] and reward), gym-server.ts has additional stale comboCount references that will produce undefined/null in the response JSON on every step: lines 870 (snapBefore.comboCount = ts.comboCount), 977 (comboCount: run.turnState.comboCount), 982 (info['comboCount'] = run.turnState.comboCount), 1111 and 1212 (run.turnState.comboCount = ...). These produce null fields in the info dict returned to the Python env, which may confuse downstream logic (e.g. analyze.py line 628 `if (ts.comboCount)` reward check). The info dict's `comboCount` field is read by analyze.py to track chain behavior in the 17-category report.",
+    "evidence": {
+      "metric": "5 additional stale comboCount references in gym-server.ts beyond the two critical ones",
+      "episodes": 0,
+      "cardId": "",
+      "relicId": ""
+    },
+    "reproductionSteps": [
+      "grep -n comboCount tests/playtest/headless/gym-server.ts",
+      "Observe: 10 hits, none of which reference the actual TurnState field (it no longer exists)"
+    ],
+    "suggestedFix": "Do a comprehensive rename pass in gym-server.ts: replace all comboCount references on TurnState objects with consecutiveCorrectThisEncounter. Update PrevState interface if needed."
+  }
+]

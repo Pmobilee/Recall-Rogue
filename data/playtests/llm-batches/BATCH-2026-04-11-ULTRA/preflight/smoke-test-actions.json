@@ -1,0 +1,12 @@
+[
+  { "type": "wait", "ms": 3000 },
+  { "type": "eval", "code": "typeof window.__rrPlay === 'object' && typeof window.__rrPlay.getScreen === 'function'", "name": "rrPlay_exists" },
+  { "type": "eval", "code": "typeof window.__rrScenario === 'object' && typeof window.__rrScenario.load === 'function'", "name": "rrScenario_exists" },
+  { "type": "eval", "code": "typeof window.__rrDebug === 'function'", "name": "rrDebug_exists" },
+  { "type": "eval", "code": "typeof window.__rrScreenshotFile === 'function'", "name": "rrScreenshotFile_exists" },
+  { "type": "eval", "code": "typeof window.__rrLayoutDump === 'function'", "name": "rrLayoutDump_exists" },
+  { "type": "eval", "code": "window.__rrPlay.getScreen()", "name": "current_screen" },
+  { "type": "eval", "code": "window.__rrDebug().fps.current", "name": "current_fps" },
+  { "type": "rrScreenshot", "name": "smoke-01-initial" },
+  { "type": "layoutDump", "name": "smoke-01-layout" }
+]

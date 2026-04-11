@@ -1,0 +1,65 @@
+LAYOUT DUMP  2026-04-11T02:09:46.287Z
+Viewport: 1920 x 1080  (landscape)
+════════════════════════════════════════════════════════════
+
+  (no Phaser game running)
+
+▸ DOM LAYER ────────────────────────────
+  [div.card-app.svelte-2meh4s]                                     (0, 0)  1920x1080       HIDDEN
+    [div.topbar.svelte-1ramr3r]                                    (0, 0)  1920x49         HIDDEN
+      [div.hp-group.svelte-1ramr3r]                                (18, 9)  622x28       
+        [div.hp-bar-track.svelte-1ramr3r]                          (18, 9)  622x28       
+          [div.hp-bar-fill.svelte-1ramr3r]                         (19, 10)  620x26      
+          [span.hp-text.svelte-1ramr3r]                            (19, 15)  620x15      
+            [span.hp-value.svelte-1ramr3r]                         (297, 15)  64x15        "100/100"
+      [span.segment-name.svelte-1ramr3r]                           (1393, 15)  99x16       "Shallow Depths"
+      [span.progress-divider.svelte-1ramr3r]                       (1503, 17)  3x13        "·"
+      [span.floor-label.svelte-1ramr3r]                            (1518, 15)  38x16       "Floor 1"
+      [div.gold-counter.svelte-1ramr3r]                            (1581, -1)  68x48     
+        [span.gold-value.svelte-1ramr3r]                           (1612, 15)  36x15       "0"
+      [div.relics-row.svelte-1ramr3r]                              (1660, 7)  176x32     
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1660, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1696, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1732, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1768, 7)  32x32      
+        [div.relic-btn.relic-empty.svelte-1ramr3r]                 (1804, 7)  32x32      
+      [button.pause-btn.svelte-1ramr3r]                            (1854, -1)  48x48     
+        [span.pause-icon.svelte-1ramr3r]                           (1861, 9)  33x27        "⚙"
+    [canvas]                                                       (0, 0)                  HIDDEN
+    [div.campfire-overlay.svelte-bd7zec]                           (0, 0)  1920x1080       HIDDEN
+      [div.campfire-card.svelte-bd7zec]                            (600, 161)  720x759   
+        [h2.campfire-title.svelte-bd7zec]                          (736, 204)  448x54      "Resting by the fire..."
+        [span.stat-label.svelte-bd7zec]                            (771, 304)  48x18       "Floor"
+        [span.stat-value.svelte-bd7zec]                            (791, 328)  8x25        "1"
+        [span.stat-label.svelte-bd7zec]                            (1115, 304)  20x18      "HP"
+        [span.stat-value.svelte-bd7zec]                            (1085, 328)  80x25      "100/100"
+        [span.stat-label.svelte-bd7zec]                            (775, 400)  40x18       "Deck"
+        [span.stat-value.svelte-bd7zec]                            (757, 424)  76x25       "15 cards"
+        [span.stat-label.svelte-bd7zec]                            (1100, 400)  50x18      "Relics"
+        [span.stat-value.svelte-bd7zec]                            (1119, 424)  13x25      "0"
+        [span.stat-label.svelte-bd7zec]                            (921, 496)  78x18       "Accuracy"
+        [span.stat-value.svelte-bd7zec]                            (945, 520)  31x25       "0%"
+        [button.settings-toggle.svelte-bd7zec]                     (637, 591)  646x49      "▸ Quick Settings"
+        [button] data-testid="btn-campfire-resume"                 (637, 669)  646x78      "Resume Run"
+        [button] data-testid="btn-campfire-hub"                    (637, 762)  646x66      "Return to Hub"
+        [p.hub-hint.svelte-bd7zec]                                 (830, 858)  260x18      "Your run will be saved. Resume any time."
+    [div.screen-transition.svelte-2meh4s]                          (0, 0)  1920x1080       HIDDEN
+
+
+▸ SPATIAL RELATIONSHIPS ────────────────
+  CENTER             → [div.card-app.svelte-2meh4s], [div.campfire-overlay.svelte-bd7zec], [div.campfire-card.svelte-bd7zec], [button.settings-toggle.svelte-bd7zec], [button] data-testid="btn-campfire-resume" (+1 more)
+  TOP-CENTER         → [div.topbar.svelte-1ramr3r], [h2.campfire-title.svelte-bd7zec]
+  TOP-LEFT           → [div.hp-group.svelte-1ramr3r], [div.hp-bar-track.svelte-1ramr3r], [div.hp-bar-fill.svelte-1ramr3r], [span.hp-text.svelte-1ramr3r]
+  TOP-RIGHT          → [div.relics-row.svelte-1ramr3r]
+  BOTTOM-CENTER      → [button] data-testid="btn-campfire-hub", [p.hub-hint.svelte-bd7zec]
+
+  [div.card-app.svelte-2meh4s]                       covers 100% height  CENTER
+  [div.campfire-overlay.svelte-bd7zec]               covers 100% height  CENTER
+  [div.campfire-card.svelte-bd7zec]                  covers 70% height  CENTER
+  [div.screen-transition.svelte-2meh4s]              covers 100% height  CENTER
+
+  Layer overlap check:
+  (no significant cross-layer overlaps detected)
+
+
+— END LAYOUT DUMP (0 Phaser objects, 39 DOM elements) —

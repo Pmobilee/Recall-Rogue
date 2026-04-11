@@ -1,0 +1,35 @@
+{
+  "stateId": "state-03-11",
+  "bucket": "late_game",
+  "floor": 8,
+  "enemy": {
+    "id": "final_exam",
+    "name": "The Final Exam",
+    "currentHP": 11,
+    "maxHP": 27,
+    "block": 0,
+    "intent": { "type": "multi_attack", "value": 6, "hitCount": 4, "telegraph": "Drill barrage (4 hits × 6 damage each = up to 24 total)" },
+    "statusEffects": [],
+    "phase": 2,
+    "special": "Phase 2 at 40% HP. Phase 2 intents include charge (12 bypass). Has quizPhases: 8-question rapid fire at 50% HP (already passed)."
+  },
+  "player": {
+    "currentHP": 28,
+    "maxHP": 80,
+    "block": 0,
+    "ap": 3,
+    "chain": 1
+  },
+  "hand": [
+    { "id": "reckless", "name": "Reckless", "type": "attack", "apCost": 1, "quickPlayValue": 6, "chargeCorrectValue": 18, "chargeWrongValue": 4, "description": "High damage, self-damage (3 HP)." },
+    { "id": "block", "name": "Block", "type": "shield", "apCost": 1, "quickPlayValue": 5, "chargeCorrectValue": 9, "chargeWrongValue": 3, "description": "Gain block." },
+    { "id": "overheal", "name": "Overheal", "type": "shield", "apCost": 2, "quickPlayValue": 5, "chargeCorrectValue": 15, "chargeWrongValue": 4, "description": "Gain 10 block. Double if HP below 50%." },
+    { "id": "execute", "name": "Execute", "type": "attack", "apCost": 1, "quickPlayValue": 3, "chargeCorrectValue": 9, "chargeWrongValue": 2, "description": "Bonus damage below 30% enemy HP. Enemy at ~41% HP — barely above threshold." },
+    { "id": "hex", "name": "Hex", "type": "debuff", "apCost": 1, "quickPlayValue": 2, "chargeCorrectValue": 4, "chargeWrongValue": 1, "description": "Apply poison 3 for 3 turns." }
+  ],
+  "relics": [
+    { "id": "vitality_ring", "name": "Vitality Ring", "description": "+20 max HP this run." },
+    { "id": "steel_skin", "name": "Steel Skin", "description": "Take 2 less damage from all sources (min 1)." }
+  ],
+  "notes": "Boss fight, Final Exam in phase 2. Multi-attack 4×6 incoming — Steel Skin reduces each hit by 2, so 4×4=16 total. Player has 28 HP. Overheal: at <50% HP (28/80 = 35%), it doubles to 20 block, which blocks all 16 damage. But that's 2 AP. Reckless at 28 HP takes 3 self-damage + boss damage = risky. Execute doesn't get bonus (enemy at 41%). A genuine tactical decision: use Overheal (2ap, full defense) vs Reckless+something."
+}

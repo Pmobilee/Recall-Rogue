@@ -1,0 +1,34 @@
+STATE: state-03-14 | Floor 9 | The Rabbit Hole (debuff spam) | Late Game
+ANALYST: Sonnet 4.6 (Haiku sub-agent fallback)
+
+COMBAT MATH:
+- Enemy HP: 15, no block. Intent: Apply Vulnerable 1 for 2 turns.
+- Player: 35/80 HP, 0 block, 3 AP, chain 2 (×1.2), Weakness 1 turn left. Swift Boots (+1 draw).
+- Player has Weakness: attacks deal reduced damage (~75% per stack). Chain 2 partially compensates.
+
+OPTION ANALYSIS:
+Cleanse(QP,1ap) = removes Weakness (and any other debuffs). Draws 1 card. Costs 1 AP.
+After cleanse: 2 AP left. Chain 2 still active (×1.2).
+
+Adapt(QP,1ap): enemy is debuffing (not attacking this turn). "Else attack" triggers? Actually Adapt: "Smart: Block vs ATK, Cleanse vs debuff, else Attack." Enemy intent is Debuff. Player currently HAS a debuff. Does Adapt auto-cleanse because player IS debuffed? The description says "Cleanse vs debuff" — this means vs enemy debuff intent OR vs player being debuffed? If vs player being debuffed = Adapt cleanse. If vs enemy intent = Adapt cleanse.
+Either way: Adapt likely triggers Cleanse here (either interpretation). Costs 1 AP.
+
+Foresight(QP,0ap) = draws 2 cards. FREE. Always correct to play (0 AP cost).
+
+OPTIMAL SEQUENCE:
+Foresight(QP,0ap) + Cleanse OR Adapt(QP,1ap) + Heavy Strike(CC,3ap)? Total = 0+1+3=4ap. Can't.
+Foresight(0) + Adapt(1) + Hex(1) = 2ap. Foresight draws 2 new cards. Adapt cleanse. Hex = poison 3/3 on enemy.
+
+CHAIN 2 DAMAGE: Heavy Strike(CC,2ap) with Weakness (if not cleansed) = floor(10×1.5)×0.75×1.2 = 15×0.75×1.2=13.5→13. vs 0 block = 13 to HP. Enemy: 2 HP.
+
+WITH CLEANSE: Heavy Strike(CC,3ap) = floor(10×1.5)×1.2 = 18 dmg. Enemy: -3 HP = dead. 3 AP total.
+
+DOMINANT CHOICE: Foresight(0ap) + Heavy Strike(CC,3ap) = 3ap. Heavy Strike chain 2 = 18 dmg > 15 HP = kills enemy. No need to cleanse (weakness expires anyway next turn). Foresight draws 2 free cards for next encounter.
+
+TENSION: Is Cleanse worth 1 AP vs just killing the enemy? At chain 2 with Heavy Strike CC = 18 dmg vs 15 HP enemy, the answer is no — kill it outright. The cleanse adds no value if the kill is guaranteed. Adapt is also redundant.
+
+DEAD CARDS: Adapt (Cleanse effect is unnecessary when you can just kill), Cleanse (same reason), Hex (enemy dies in 1-2 turns anyway, poison overkill).
+
+SURVIVAL ODDS: 9/10. Chain 2 + Heavy Strike CC = kill.
+
+DESIGN NOTE: Foresight's 0 AP cost makes it ALWAYS correct to play. There is never a reason NOT to play Foresight. This may be too efficient — a strictly dominant always-include card. Combined with the free draw, it's hard to argue against including it in any deck. Potential over-powered utility card.
