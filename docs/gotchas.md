@@ -3068,3 +3068,36 @@ There is an existing comment `// put on top` at `turnManager.ts` line 2224 that 
 
 **Files changed:** `src/services/turnManager.ts`, new tests in `src/services/turnManager.transmute.test.ts`.
 **UI hand-off:** `CardCombatOverlay.svelte:handleCardPickSelect` must call `drawHand(deck, pickResolvedCards.length)` after `resolveTransmutePick()` returns, passing the count as an explicit argument (bypasses hand-size cap).
+
+### 2026-04-11 — Deck schema drift lint extended: required/optional alignment check
+
+**What:** `scripts/lint/check-deck-schema-drift.mjs` previously only compared field names between `curatedDeckTypes.ts` (TypeScript interface) and `curatedDeckSchema.ts` (Zod schema). It passed a field that was `required: string` in the interface but `z.string().optional()` in the schema — a latent Zod validation hole.
+
+**Why it matters:** Two failure modes are now caught:
+1. **Required in interface, optional in schema** → Zod passes rows that are missing the field. The runtime receives `undefined` where the type system promises a value.
+2. **Optional in interface, required in schema** → Zod rejects rows that the interface says are valid. Silent data loss at decode time.
+
+**First real finding:** `DeckFact.acceptableAlternatives` — interface has `acceptableAlternatives: string[]` (required), schema has `z.array(z.string()).default([])` (optional via `.default()`). This means rows without this field pass Zod but carry `[]` silently rather than triggering a validation error. **Not fixed by this PR — flagged for content-agent or game-logic to decide whether the interface should be `acceptableAlternatives?: string[]` or the schema should drop the `.default([])`.**
+
+**Parser approach:** Interface optionality = presence of `?` before `:` on the field line. Schema optionality = presence of `.optional()`, `.nullish()`, or `.default(` anywhere in the field's full value expression (including multi-line nested `z.array(...).optional()`). Comments are stripped before parsing so `?:` in JSDoc does not create false positives.
+
+**Test coverage:** `scripts/lint/check-deck-schema-drift.test.mjs` extended to 14 tests — 7 new optionality cases.
+
+### 2026-04-11 — HSK1-5 particle/interjection enrichment (continuation of HSK6 commit 0ae3e18c0)
+
+**What:** Promoted the particle/interjection enrichment pattern established in HSK6 (commit `0ae3e18c0`) to the higher-traffic HSK1-5 decks, where beginners most need grounding.
+
+**Facts enriched (8 total):**
+- HSK1 (6 facts): 了(le), 着(zhe), 吧(ba), 吗(ma), 呢(ne), 喂(wèi)
+- HSK2 (1 fact): 啊(a)
+- HSK3 (0): no particle/interjection facts found in deck
+- HSK4 (0): no particle/interjection facts found in deck
+- HSK5 (1 fact): 唉(āi)
+
+**Before/after example:**
+- Before: `"吧 (bā) — sentence particle. Also: to puff (on a pipe etc), (onom.) bang, abbr. for 贴吧"`
+- After: `"吧 (ba) — sentence-final modal particle (suggestion or soft confirmation). Example: 我们走吧 (wǒmen zǒu ba) — 'Let's go.'"`
+
+**Scope finding:** HSK2, HSK3, HSK4 carry very few or zero entries with `partOfSpeech = particle/interjection`. The target particles呀 哎 嗯 嘛 咦 are absent from HSK1-5 entirely — they appear only in HSK6. If a future pass wants to add them to lower levels, they would need to be added as new facts (not enriched), which is out of scope for this task.
+
+**Verification:** `verify-all-decks.mjs` → 0 failures for all 5 decks. Stratified 50-fact quiz audit → 0 failures, 0 new `chinese_sense_mismatch_runtime` warnings. All pre-existing warnings are unchanged.
