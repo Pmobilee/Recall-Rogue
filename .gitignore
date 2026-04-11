@@ -98,6 +98,8 @@ scripts/distractor-expansion-queue.json
 *.webp
 # But keep public assets and sprite-gen registry tracked
 !public/**/*.png
+# Preserve playtest visual evidence (ascension sweeps, batch screenshots)
+!data/playtests/**/*.png
 !public/**/*.webp
 !sprite-gen/sprite-registry.json
 
@@ -196,3 +198,7 @@ steam/output/*
 !steam/output/.gitkeep
 .env.local
 data/audits/quiz-dumps/
+
+# Commit-attribution detector runtime logs — per-clone, never tracked
+.claude/staged-by.jsonl
+.claude/commit-attribution-log.jsonl

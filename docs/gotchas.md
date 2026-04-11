@@ -43,10 +43,24 @@ see (a) how many warnings were legitimate cross-session bundles vs slow
 single-agent work, (b) whether the 10-minute threshold is too tight/loose.
 Promote to blocking (`exit 1`) only after false-positive rate is < 10%.
 
-**Harder fix** (not shipped): session-tagged file markers — a PostToolUse hook
-that writes the current agent session ID into `.claude/staged-by.json` after
-every Edit/Write, then the pre-commit hook reads the marker and flags any
-mixed-session commits. More reliable but requires harness-level coordination.
+**Harder fix** (SHIPPED same session): session-tagged file markers.
+`scripts/hooks/post-edit-session-marker.sh` is a PostToolUse hook wired into
+`.claude/settings.local.json` for `Edit|Write|NotebookEdit`. It writes one
+JSONL line per edit to `.claude/staged-by.jsonl` with
+`{session_id, tool_name, file_path, ts}`. The attribution detector now reads
+this log at commit time and, for each staged file, looks up the LAST
+session_id that touched it. If staged files span more than one distinct
+session_id, that's definitive cross-session bundling — and catches the
+**same-file bundling** case that's the blind spot of the mtime-only
+heuristic. Mtime spread remains as the fallback when the session log is
+absent.
+
+**Calibration log** (item #2 of the 2026-04-11 What's Next): every detector
+invocation appends a JSONL row to `.claude/commit-attribution-log.jsonl` —
+`{ts, staged, mtime_delta, threshold, session_count, warned, reason,
+sessions}`. Both logs are gitignored. After ~1 week of production usage,
+grep the log to measure the false-positive rate and decide whether to
+promote `exit 0` to `exit 1`. Until then the detector is warning-only.
 
 **Files:** `scripts/lint/check-commit-attribution.sh`, `hooks/pre-commit:71-76`
 
