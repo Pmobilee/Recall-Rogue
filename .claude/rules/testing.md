@@ -13,50 +13,28 @@
 - `npm run build` — Production build (check Vite warnings)
 - Both must pass before committing
 
-## Agent Scope — Own-Files-Only Build Failures (MANDATORY)
+## Agent Scope — Build Failure Ownership
 
-**When multiple agents are working in parallel, each agent MUST IGNORE build / typecheck / test failures that originate outside the files it is editing. Fix only your own breakage. Never chase unrelated failures.**
+### Worktree agents (parallel dispatch with `isolation: "worktree"`)
+Worktree agents have a clean, isolated tree. **They own the full build.** Run full `npm run typecheck`, `npm run build`, and relevant tests. All failures in a worktree are yours — there are no other agents editing your tree.
 
-### Rule
-- An agent owns the files it edited in the current task. Period.
-- If `npm run typecheck` or `npm run build` reports errors in files the agent did **not** touch, those errors are SOMEONE ELSE'S problem — another parallel agent, an in-progress WIP branch, or a feature mid-landing.
-- The agent may verify its own diff compiles cleanly (grep the error list for the files it edited), but must NOT:
-  - Install missing npm deps it did not introduce
-  - Delete or comment out broken code it did not write
-  - "Fix" failing tests it did not author
-  - Report the unrelated failures as blockers in its final summary
-- The agent's job: confirm its own changes don't introduce new errors, then ship.
+### Shared-main agents (sequential dispatch, no worktree)
+When working directly on `main` during single-agent sequential dispatch, you also own the full build.
 
-### How to verify your own scope is green
-1. Keep a list of files you edited this task.
-2. Run `npm run typecheck` (or `build`) and capture output.
-3. Grep the error list for your file paths: `grep -F -f my-touched-files.txt errors.log`
-4. If your files are clean, you are done with verification — ignore everything else.
-5. If the pre-existing, unrelated breakage blocks your verification (e.g., prevents `npm run build` from reaching your file), say so in ONE sentence in the final report and stop. Do NOT attempt to unblock it yourself.
+### Shared-main agents during parallel work (rare, legacy)
+If for any reason multiple agents are editing shared `main` without worktrees, each agent MUST IGNORE build / typecheck / test failures outside its own files. Fix only your own breakage.
 
-### Rationale
-Multiple agents edit multiple files concurrently. One agent chasing another agent's missing dep / broken import / failing test creates:
-- Scope creep (agent does work it wasn't asked to do)
-- Red-zone dep installs without authorization
-- Conflicting edits to files owned by other agents
-- False "done" reports where the fixes land but the original task didn't
+- Grep the error list for your file paths only
+- Do NOT install missing deps, delete unrelated broken code, or fix others' tests
+- If unrelated breakage blocks your verification, say so in ONE sentence and stop
 
-If everyone fixes only their own breakage, the sum of parallel work converges to green. If agents chase each other's failures, they fight each other's edits.
+## Pre-Commit Mode in Worktrees vs Shared Main
 
-### When this rule does NOT apply
-- Single-agent sessions with no `.claude/multi-agent.lock` and no parallel worktrees — then you own the whole build and should fix everything.
-- The user explicitly asks you to fix an unrelated failure ("while you're at it, fix the chess.js import").
-- The unrelated failure is in a file in your own routing domain (per `.claude/rules/agent-routing.md`) AND the task description covers that domain.
+**Worktree agents:** Pre-commit hooks detect they are in a worktree (toplevel differs from main checkout) and run all checks in full blocking mode. The tree is isolated — no spurious failures from concurrent edits.
 
-## Multi-Agent Pre-Commit Mode
-When multiple agents work in parallel, `.claude/hooks/pre-commit-verify.sh`
-soft-warns on typecheck / build / vitest failures instead of blocking — those
-three are prone to spurious collisions from concurrent edits. Detection trips
-on any one of: `RR_MULTI_AGENT=1` env var, `.claude/multi-agent.lock` file, or
-`git worktree list` > 1. Deck verification, skill drift, and Docker visual
-verify still hard-block (deterministic, collision-free). A soft-warn is NOT a
-license to ignore the failure — re-run in single-agent mode to confirm before
-merging anything user-facing. See `docs/gotchas.md` → 2026-04-11 entry.
+**Shared `main` with `RR_MULTI_AGENT=1`:** If for any reason multiple agents edit shared `main` without worktrees, set `RR_MULTI_AGENT=1` to soft-warn on typecheck / build / vitest failures. Deck verification, skill drift, and Docker visual verify still hard-block. A soft-warn is NOT a license to ignore — re-run in single-agent mode to confirm.
+
+With the hybrid worktree policy, parallel agents should always be in worktrees, making the shared-main soft-warn path a rare fallback.
 
 ## Balance Testing
 - Headless simulator is DEFAULT for balance: imports real game code, zero drift

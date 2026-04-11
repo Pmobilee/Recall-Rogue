@@ -50,15 +50,16 @@ directly, eliminating the drift problem between the checked-in mirror and
 the `.git/hooks/` live copy. Skip this and you'll run the old unversioned
 hook. See `docs/gotchas.md` 2026-04-11 for the full story.
 
-## Multi-Agent Pre-Commit Mode
-When multiple agents commit in parallel, the pre-commit hooks (both the
-Claude-harness one and the git-side one) can flake on typecheck / build /
-vitest / deck-verify / quiz-audit due to concurrent edit collisions. Both
-hooks now detect multi-agent mode and soft-warn instead of blocking. Trip
-detection with any one of: `RR_MULTI_AGENT=1`, `.claude/multi-agent.lock`
-marker file, or >1 git worktree. Skill drift + Docker visual verify still
-hard-block (deterministic, collision-free). See `.claude/rules/testing.md`
-→ "Multi-Agent Pre-Commit Mode".
+## Parallel Agent Isolation (Hybrid Worktree Mode)
+When the orchestrator dispatches 2+ file-editing sub-agents simultaneously,
+each gets `isolation: "worktree"` for true git isolation. Sequential
+single-agent tasks work directly on `main`. The `WorktreeCreate` hook
+auto-bootstraps worktrees (symlinks `node_modules`, etc.) via
+`scripts/setup-worktree.sh`. After each agent returns, the orchestrator
+merges via `scripts/merge-worktree.sh`. Pre-commit hooks run in full
+blocking mode inside worktrees (no soft-warn needed — the tree is isolated).
+Fallback: set `RR_MULTI_AGENT=1` to soft-warn if agents must share `main`.
+See `.claude/rules/git-workflow.md` → "Worktrees — Automatic for Parallel Batches".
 
 ## Directory Structure
 ```

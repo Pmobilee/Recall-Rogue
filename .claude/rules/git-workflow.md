@@ -17,11 +17,17 @@ Examples:
 - Feature branches: `feature/short-description` — only when the user asks for one or the work is genuinely long-lived
 - Fix branches: `fix/short-description` — same: only on request
 
-## Worktrees — Not Used by Default
+## Worktrees — Automatic for Parallel Batches
 
-Worktrees are **not** required. Work directly in the primary checkout at `/Users/damion/CODE/Recall_Rogue` on `main`. Do not create worktrees proactively, do not pass `isolation: "worktree"` to `Agent` calls by default, and do not spawn sub-agents into isolated trees. Only use a worktree if the user explicitly asks for one (e.g. "do this in a worktree", "spin up a branch for this").
+Worktree isolation is triggered by the orchestrator's dispatch pattern, not by a global flag.
 
-Rationale: the prior mandatory-worktree policy created more overhead than it prevented — hidden branches, forgotten merges, and end-of-task merge rituals that slowed every task down. Direct work on `main` with disciplined commits is the default.
+- **Sequential dispatch** (one sub-agent at a time): work directly on `main`. No worktree overhead.
+- **Parallel dispatch** (2+ file-editing sub-agents simultaneously): ALL parallel sub-agents get `isolation: "worktree"`. No exceptions. The orchestrator stays on `main`.
+- **Read-only agents** (Explore, code review, validation with no edits): never need worktrees, even during parallel batches.
+
+The `WorktreeCreate` hook in `settings.json` auto-bootstraps each worktree (symlinks `node_modules`, etc.) via `scripts/setup-worktree.sh`. After each worktree agent returns, the orchestrator merges via `scripts/merge-worktree.sh` and cleans up — no manual merge ceremony.
+
+Rationale: the April 10 mandatory-worktree experiment failed because (1) merge-back was manual, (2) worktrees lacked `node_modules`, and (3) the mandate was all-or-nothing. The hybrid approach uses worktrees only when parallel isolation is needed, and automates the merge-back.
 
 ## Commit Discipline
 

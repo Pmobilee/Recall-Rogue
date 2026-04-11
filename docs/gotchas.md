@@ -3423,3 +3423,17 @@ The 25% HP cut was retained — both changes stack. Target metric: Floor 18 deat
 **Rule:** If `CC ÷ QP ≠ 1.50`, applying `qpValue × CHARGE_CORRECT_MULTIPLIER` would change the player-experienced CC value — which violates the balance-preservation goal of normalization. HARD STOP: only normalize QP to read from the stat table; leave CC as a hardcoded literal.
 
 **Why this matters:** A future pass that edits the stat table's `qpValue` for these mechanics would cascade to CC only for the 6 SAFE mechanics (where CC = `qpValue × 1.5`). For the 5 HARD STOP cases, the CC literal must also be updated manually. This is documented intentionally so the next engineer knows the discrepancy is not a bug.
+
+### 2026-04-11 — Hybrid worktree migration (parallel agent isolation)
+
+**What:** Migrated from shared-main parallel agent workflow to hybrid worktree model. Parallel sub-agents (2+ simultaneous) now get `isolation: "worktree"` for true git isolation. Sequential single-agent work stays on `main`.
+
+**Why:** The shared-main approach caused persistent issues despite elaborate mitigations: cross-agent git-add races (BATCH-ULTRA `51b68139b`), wrong commit attribution, build flakiness from concurrent edits, and 30+ dirty file accumulation. The April 10 mandatory-worktree experiment was abandoned after 5 hours because (1) merge-back was manual, (2) worktrees lacked `node_modules`, and (3) the mandate was all-or-nothing.
+
+**Fix:** Hybrid approach with automation:
+- `scripts/setup-worktree.sh` — auto-bootstraps worktrees via `WorktreeCreate` hook (symlinks `node_modules`)
+- `scripts/merge-worktree.sh` — orchestrator runs this after each agent returns (automated `--no-ff` merge + cleanup)
+- Pre-commit hooks detect worktree context and run in full blocking mode (no soft-warn needed)
+- Deleted obsolete infrastructure: `.claude/multi-agent.lock`, `.claude/staged-by.jsonl`, `scripts/hooks/post-edit-session-marker.sh`, `scripts/git-add-safe.sh`, `scripts/lint/analyze-bundling-history.sh`
+
+**Lesson:** Worktrees weren't the problem — manual merge ceremonies, missing `node_modules`, and the all-or-nothing mandate were. Automate the pain points, scope the policy correctly, and worktrees work well.

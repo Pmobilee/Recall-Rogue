@@ -3,9 +3,9 @@
 #
 # This is the git-side hook (invoked by `git commit` directly). It runs in
 # addition to .claude/hooks/pre-commit-verify.sh (the Claude-harness hook).
-# Both hooks honor multi-agent mode — when concurrent agent work is detected,
-# deck verification and quiz audit soft-warn instead of hard-blocking, since
-# the shared facts.db and in-flight deck edits can cause spurious failures.
+# Both hooks detect worktree context: in a worktree, all checks run in full
+# blocking mode (the tree is isolated). On shared main with RR_MULTI_AGENT=1,
+# deck verification and quiz audit soft-warn instead of hard-blocking.
 #
 # SOURCE OF TRUTH: this file is invoked directly by git via
 # `core.hooksPath=hooks` (set by `npm run hooks:install`). There is no
@@ -13,9 +13,31 @@
 # Multi-agent detection logic lives in hooks/lib/multi-agent-detect.sh
 # and is shared with .claude/hooks/pre-commit-verify.sh.
 
-# --- Multi-agent detection (shared helper, single source of truth) ---
 REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+
+# --- Worktree detection ---
+# If this hook is running inside a worktree, the tree is fully isolated from
+# other parallel agents. Force MULTI_AGENT=0 so all checks run in full
+# blocking mode — worktree isolation removes the shared-state collision risk
+# that makes soft-warn necessary on the shared main tree.
+MAIN_CHECKOUT="${CLAUDE_PROJECT_DIR:-$REPO_ROOT}"
+CURRENT_TOPLEVEL=$(git rev-parse --show-toplevel 2>/dev/null || echo "$MAIN_CHECKOUT")
+IN_WORKTREE=0
+if [ "$CURRENT_TOPLEVEL" != "$MAIN_CHECKOUT" ]; then
+  IN_WORKTREE=1
+fi
+
+# --- Multi-agent detection (shared helper, single source of truth) ---
 . "$REPO_ROOT/hooks/lib/multi-agent-detect.sh"
+
+# Override: worktree agents are isolated — disable multi-agent soft-warn.
+if [ "$IN_WORKTREE" = "1" ]; then
+  MULTI_AGENT=0
+  MULTI_AGENT_REASON=""
+  echo ""
+  echo "Running in worktree ($CURRENT_TOPLEVEL) — all checks in full blocking mode."
+  echo ""
+fi
 
 if [ "$MULTI_AGENT" = "1" ]; then
   echo ""

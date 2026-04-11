@@ -8,11 +8,28 @@ cd "$CLAUDE_PROJECT_DIR" || exit 1
 
 echo "=== Pre-Commit Verification ===" >&2
 
+# --- Worktree detection ---
+# If we are inside a worktree (toplevel differs from the main checkout),
+# skip multi-agent soft-warn — the tree is isolated, all checks should block.
+MAIN_CHECKOUT="$CLAUDE_PROJECT_DIR"
+CURRENT_TOPLEVEL=$(git rev-parse --show-toplevel 2>/dev/null || echo "$MAIN_CHECKOUT")
+IN_WORKTREE=0
+if [ "$CURRENT_TOPLEVEL" != "$MAIN_CHECKOUT" ]; then
+  IN_WORKTREE=1
+  echo "" >&2
+  echo "Running in worktree ($CURRENT_TOPLEVEL) — all checks in full blocking mode." >&2
+  echo "" >&2
+fi
+
 # --- Multi-agent detection (shared helper, single source of truth) ---
-# Sources hooks/lib/multi-agent-detect.sh which exports MULTI_AGENT and
-# MULTI_AGENT_REASON. Same script is sourced by the git-side pre-commit hook,
-# so the detection logic lives in exactly one place.
+# Only relevant when NOT in a worktree. Worktree agents own their full build.
 . "$CLAUDE_PROJECT_DIR/hooks/lib/multi-agent-detect.sh"
+
+# Override: worktree agents are never in multi-agent mode for hook purposes
+if [ "$IN_WORKTREE" = "1" ]; then
+  MULTI_AGENT=0
+  MULTI_AGENT_REASON=""
+fi
 
 if [ "$MULTI_AGENT" = "1" ]; then
   echo "" >&2

@@ -55,9 +55,17 @@ The orchestrator does NOT write game code — but DOES do all pre-implementation
 4. **Cross-domain tasks:** spawn one agent per domain. Never let one domain agent touch another's files.
 5. **Unrouted files:** assign to the closest domain agent, then update this table.
 
-## Worktrees — Off by Default
+## Worktrees — Automatic for Parallel Batches
 
-Do NOT pass `isolation: "worktree"` to `Agent` calls by default. Sub-agents work in the primary checkout on `main`. Only use `isolation: "worktree"` when the user explicitly asks for it. See `.claude/rules/git-workflow.md`.
+When the orchestrator dispatches **2+ file-editing sub-agents simultaneously**, pass `isolation: "worktree"` to each Agent call. Sequential single-agent tasks work directly on `main`. Read-only agents (Explore, review) never need worktrees. See `.claude/rules/git-workflow.md`.
+
+**After each worktree agent returns:**
+1. Verify changes: `git -C <worktree_path> log main..HEAD --oneline`
+2. Run ground-truth verification (same as Post-Sub-Agent Verification below, but in the worktree)
+3. Merge: `scripts/merge-worktree.sh <worktree-path> <branch-name> "<merge-message>"`
+4. The script handles `--no-ff` merge, worktree removal, and branch cleanup
+
+**Worktree agents own the full build.** Unlike shared-main agents, a worktree agent has a clean isolated tree. It should run full `npm run typecheck` and `npm run build` — not the own-files-only scoping. Pre-commit hooks skip multi-agent soft-warn when running inside a worktree.
 
 ## Sub-Agent Prompt Template — Canonical
 
@@ -67,9 +75,11 @@ Do NOT pass `isolation: "worktree"` to `Agent` calls by default. Sub-agents work
 2. **Read first.** "Read relevant docs under `docs/` BEFORE writing code. Navigate via `docs/INDEX.md`."
 3. **Docs same-commit.** "After changes, update the same doc files. Docs-first is non-negotiable; see `.claude/rules/docs-first.md`."
 4. **Tasks.** "Break work into granular `TaskCreate` tasks before starting. `TaskList` must be empty before delivering. See `.claude/rules/task-tracking.md`."
-5. **Build & test — OWN FILES ONLY.** "Run `npm run typecheck` and `npm run build` after implementation. Run relevant unit tests. **Only verify your OWN edited files compile cleanly.** Ignore pre-existing failures in files you did not touch — those belong to another parallel agent. Do NOT install missing deps you did not introduce, do NOT delete unrelated broken code, do NOT 'fix' tests you did not author. See `.claude/rules/testing.md` → 'Agent Scope — Own-Files-Only Build Failures'.
+5. **Build & test.** "Run `npm run typecheck` and `npm run build` after implementation. Run relevant unit tests.
+    - **If you are in a worktree** (`isolation: "worktree"`): you own the full build. Run full typecheck/build/tests. Your tree is clean and isolated — all failures are yours.
+    - **If you are on shared `main`** (sequential dispatch, no worktree): **Only verify your OWN edited files compile cleanly.** Ignore pre-existing failures in files you did not touch — those belong to another parallel agent. Do NOT install missing deps you did not introduce, do NOT delete unrelated broken code, do NOT 'fix' tests you did not author. See `.claude/rules/testing.md` → 'Agent Scope — Own-Files-Only Build Failures'.
 
-    **CRITICAL — Batch preflight SHA comparison.** When you see test failures, **'pre-existing' means present before the BATCH started, NOT before your task started.** Your parent BATCH has a preflight commit SHA (included in your task prompt when relevant). Compare test results against THAT SHA, not against the commit immediately before your task. A previous sub-agent in the same batch may have shipped breaking changes that now appear 'pre-existing' from your narrow view. If unsure, checkout the batch preflight SHA into a temp worktree and re-run the test — if it passed there but fails now, the failure IS session-introduced and IS your problem to either fix (if within scope) or flag loudly to the orchestrator (if cross-domain). Lesson from BATCH-ULTRA 2026-04-11 WAVE-B.FOLLOW test-failure misreport."
+    **CRITICAL — Batch preflight SHA comparison (shared-main only).** When you see test failures on shared `main`, **'pre-existing' means present before the BATCH started, NOT before your task started.** Your parent BATCH has a preflight commit SHA (included in your task prompt when relevant). Compare test results against THAT SHA, not against the commit immediately before your task. Lesson from BATCH-ULTRA 2026-04-11 WAVE-B.FOLLOW test-failure misreport."
 6. **Docker visual verify.** "Run Docker visual verification per `.claude/rules/testing.md` → Docker Visual Verification. No exceptions."
 7. **Output sampling.** "After ANY batch operation or content edit, sample 5–10 items and READ them back. Sub-agents produce broken output ~15–20% of the time — catch it before delivering."
 8. **Autonomy charter.** "Follow `.claude/rules/autonomy-charter.md`. Default to action, not interrogation. Never report work as 'deferred' — fix Green-zone issues in the same commit. Only come back with a question if a Red-zone action is required."
@@ -117,5 +127,5 @@ After any visual/rendering change: spawn ui-agent with `/visual-inspect`, OR use
 - ❌ Trusting a sub-agent's return summary without `git status` + `git diff` + sample read-back.
 - ❌ Re-stating the Sub-Agent Prompt Template in any other rule or agent definition. Always reference this file.
 - ❌ Sub-agent returning a success summary without a `## Self-Verification` paste for every data-mutating claim. The orchestrator will re-verify regardless — a missing self-verification section is evidence of either a silent failure or a skipped check, both of which are hard failures.
-- ❌ **`git add -A` / `git add .` in sub-agents.** When multiple sub-agents run in parallel, any of them can leave uncommitted work in the tree. A bulk `git add` by a second agent will sweep up the first agent's in-progress files into the wrong commit, producing polluted provenance (wrong commit message attribution, accidental cross-domain edits). Instead, always `git add <specific-file> <specific-file>` with explicit paths. See `docs/gotchas.md` 2026-04-11 "BATCH-ULTRA 51b68139b cross-agent git-add race" for the incident that prompted this rule.
+- ❌ **`git add -A` / `git add .` on shared `main` when parallel agents are active.** A bulk `git add` sweeps up other agents' in-progress files. Use explicit paths instead. **Exception:** `git add -A` is safe inside a worktree — only your files exist in that index. See `docs/gotchas.md` 2026-04-11 "BATCH-ULTRA 51b68139b cross-agent git-add race".
 - ❌ **Sub-agent auto-committing outside its assigned wave.** The BATCH plan says when commits happen. Sub-agents that ship their own commits mid-batch break the orchestrator's ability to bundle related work atomically. When in doubt, stage your work and let the orchestrator commit at the wave boundary, unless your task prompt explicitly says "commit after each fix".

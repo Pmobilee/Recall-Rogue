@@ -12,18 +12,7 @@
         ]
       }
     ],
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write|NotebookEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "scripts/hooks/post-edit-session-marker.sh",
-            "timeout": 5
-          }
-        ]
-      }
-    ]
+    "PostToolUse": []
   },
   "permissions": {
     "allow": [

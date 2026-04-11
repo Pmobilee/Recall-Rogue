@@ -32,6 +32,16 @@
         ]
       }
     ],
+    "WorktreeCreate": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "scripts/setup-worktree.sh"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
