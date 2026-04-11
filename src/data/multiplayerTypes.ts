@@ -49,9 +49,31 @@ export interface HouseRules {
 
 /** Content selection for a multiplayer lobby — replaces bare deckId */
 export type LobbyContentSelection =
+  /**
+   * @deprecated Use 'study-multi' for new code. Single-deck single-subdeck selection.
+   */
   | { type: 'study'; deckId: string; subDeckId?: string; deckName: string }
+  /**
+   * @deprecated Use 'study-multi' for new code. Trivia domains only — no study decks.
+   */
   | { type: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> }
   | { type: 'custom_deck'; customDeckId: string; deckName: string }
+  /**
+   * Multi-deck selection: one or more study decks (optionally narrowed to sub-decks)
+   * plus optional trivia domains. Introduced Issue 2 (2026-04-11).
+   * Use this variant for all new lobby content selection code.
+   */
+  | {
+      type: 'study-multi';
+      decks: Array<{
+        deckId: string;
+        deckName: string;
+        /** Sub-deck IDs to include, or 'all' for the full deck. */
+        subDeckIds: string[] | 'all';
+      }>;
+      /** Trivia domain IDs that can coexist with study decks. */
+      triviaDomains: string[];
+    }
 
 /** A player in a multiplayer lobby */
 export interface LobbyPlayer {

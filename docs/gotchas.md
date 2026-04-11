@@ -3437,3 +3437,16 @@ The 25% HP cut was retained — both changes stack. Target metric: Floor 18 deat
 - Deleted obsolete infrastructure: `.claude/multi-agent.lock`, `.claude/staged-by.jsonl`, `scripts/hooks/post-edit-session-marker.sh`, `scripts/git-add-safe.sh`, `scripts/lint/analyze-bundling-history.sh`
 
 **Lesson:** Worktrees weren't the problem — manual merge ceremonies, missing `node_modules`, and the all-or-nothing mandate were. Automate the pain points, scope the policy correctly, and worktrees work well.
+
+### 2026-04-11 — study-multi fact-pool mapping to DeckMode (Issue 2)
+
+**What:** `LobbyContentSelection` now has a `study-multi` variant (multi-deck + trivia domains). The run's `DeckMode` has no direct `study-multi` equivalent — mapping is done in `CardApp.svelte`'s `mp:lobby:start` handler.
+
+**Mapping rules:**
+- `decks.length > 0` → `custom_deck` DeckMode with one `CustomDeckRunItem` per deck (subdeck list expanded into multiple items when partial selection).
+- `decks.length === 0`, trivia domains → `trivia` DeckMode.
+- Both decks AND trivia domains → `custom_deck` takes priority; trivia domains logged as `console.warn` (DeckMode has no mixed variant yet).
+
+**Why DeckMode has no study-multi:** `DeckMode` is in `src/data/studyPreset.ts` (game-logic scope). Adding a proper `study-multi` DeckMode variant that carries both decks and trivia domains is the correct fix long-term but requires touching `encounterBridge.ts`, `presetPoolBuilder.ts`, and the save schema — a non-trivial game-logic change. The CardApp mapping is the minimal UI-scope fix.
+
+**Lesson:** When a UI type (LobbyContentSelection) evolves faster than its game-logic counterpart (DeckMode), explicit mapping at the boundary (CardApp.svelte) keeps both concerns isolated. The console.warn is the signal for when the game-logic migration is needed.

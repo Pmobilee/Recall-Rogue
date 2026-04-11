@@ -29,6 +29,7 @@
   import { hasSteam } from '../../services/platformService'
   import LobbyDeckPicker from './LobbyDeckPicker.svelte'
   import { canStartLobby, startButtonLabel } from '../utils/lobbyStartGate'
+  import { describeSelection } from '../utils/lobbyDeckSelection'
 
   interface Props {
     lobby: LobbyState
@@ -332,7 +333,10 @@
         <!-- Current selection display -->
         <div class="content-selection-display">
           {#if lobby.contentSelection}
-            {#if lobby.contentSelection.type === 'study'}
+            {#if lobby.contentSelection.type === 'study-multi'}
+              <span class="content-badge content-badge--multi">Multi-Select</span>
+              <span class="content-name">{describeSelection(lobby.contentSelection)}</span>
+            {:else if lobby.contentSelection.type === 'study'}
               <span class="content-badge content-badge--study">Study Deck</span>
               <span class="content-name">{lobby.contentSelection.deckName}</span>
             {:else if lobby.contentSelection.type === 'trivia'}
@@ -1059,6 +1063,12 @@
     background: rgba(168, 85, 247, 0.2);
     color: #c084fc;
     border: 1px solid rgba(168, 85, 247, 0.35);
+  }
+
+  .content-badge--multi {
+    background: rgba(255, 215, 0, 0.18);
+    color: #FFD700;
+    border: 1px solid rgba(255, 215, 0, 0.4);
   }
 
   .content-name {

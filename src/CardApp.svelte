@@ -615,6 +615,44 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
             .map(item => ({ deckId: item.deckId, subDeckId: item.subDeckId }))
           playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'custom_deck' as const, items } } : s)
         }
+      } else if (sel.type === 'study-multi') {
+        // Multi-deck selection from the Issue 2 lobby picker redesign.
+        // Map to DeckMode variants:
+        //   - decks-only or mixed → custom_deck with one item per selected (sub)deck
+        //   - trivia-domains-only  → trivia
+        // Note: when both decks AND trivia domains are selected, the study decks take
+        // priority because DeckMode has no native "decks + domains" variant yet.
+        // A future DeckMode extension can handle the mixed case properly.
+        if (sel.decks.length > 0) {
+          // Expand each deck entry into one CustomDeckRunItem per subdeck (or one item for 'all').
+          // If subDeckIds is 'all', emit a single item with no subDeckId so the pool builder
+          // uses the whole deck. If it is a specific list, emit one item per sub-deck ID.
+          const items: CustomDeckRunItem[] = sel.decks.flatMap(d => {
+            if (d.subDeckIds === 'all') {
+              return [{ deckId: d.deckId }]
+            }
+            if (d.subDeckIds.length === 1) {
+              return [{ deckId: d.deckId, subDeckId: d.subDeckIds[0] }]
+            }
+            // Multiple subdecks: emit one item per subdeck so the encounter bridge
+            // iterates each as an independent pool and deduplicates facts.
+            return d.subDeckIds.map(subId => ({ deckId: d.deckId, subDeckId: subId }))
+          })
+          playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'custom_deck' as const, items } } : s)
+          if (sel.triviaDomains.length > 0) {
+            // Trivia domains cannot be represented in custom_deck mode yet — log for future fix.
+            console.warn(
+              '[Multiplayer] study-multi with both decks and trivia domains: ' +
+              'trivia domains are not included in this run. Decks take priority.',
+              { triviaDomains: sel.triviaDomains }
+            )
+          }
+        } else if (sel.triviaDomains.length > 0) {
+          // No study decks selected — treat as a trivia run over the selected domains.
+          playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'trivia' as const, domains: sel.triviaDomains } } : s)
+        }
+        // If both arrays are empty, no activeDeckMode is set and the run falls
+        // through to the general pool (same as if no content was selected).
       }
       persistPlayer()
 

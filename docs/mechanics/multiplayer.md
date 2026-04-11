@@ -32,16 +32,33 @@ All mode metadata lives in `src/data/multiplayerTypes.ts`. Three exports cover U
 
 ```typescript
 export type LobbyContentSelection =
-  | { type: 'study'; deckId: string; subDeckId?: string; deckName: string }
-  | { type: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> }
+  | { type: 'study'; deckId: string; subDeckId?: string; deckName: string }       // @deprecated
+  | { type: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> }  // @deprecated
   | { type: 'custom_deck'; customDeckId: string; deckName: string }
+  | {
+      type: 'study-multi';
+      decks: Array<{ deckId: string; deckName: string; subDeckIds: string[] | 'all' }>;
+      triviaDomains: string[];
+    }
 ```
 
-| Variant | Use case |
-|---------|----------|
-| `study` | Curated Study Temple deck, optionally narrowed to a sub-deck |
-| `trivia` | Trivia Dungeon — one or more knowledge domains, optional subdomain filters |
-| `custom_deck` | Player-owned personal/Anki-imported deck |
+| Variant | Use case | Status |
+|---------|----------|--------|
+| `study` | Single curated deck, optionally narrowed to one sub-deck | @deprecated — use `study-multi` |
+| `trivia` | Trivia Dungeon — one or more knowledge domains | @deprecated — use `study-multi` |
+| `custom_deck` | Player-owned personal/Anki-imported deck | Active |
+| `study-multi` | Multi-deck selection: one or more curated study decks (optionally narrowed to sub-deck ID lists) plus optional trivia domains. Introduced Issue 2 (2026-04-11). Use for all new lobby content code. | Active (preferred) |
+
+`study-multi` is produced by `buildStudyMultiSelection()` in `src/ui/utils/lobbyDeckSelection.ts`.
+Selection state persists across tab switches in `LobbyDeckPicker.svelte` via a `Map<deckId, Set<subDeckId> | "all">` — reassignment-based (never in-place mutation) to trigger Svelte 5 reactivity.
+
+**Fact-pool mapping in `CardApp.svelte`** (mp:lobby:start handler, Issue 2):
+
+| study-multi sub-case | Mapped DeckMode |
+|---------------------|-----------------|
+| `decks.length > 0` | `custom_deck` — one `CustomDeckRunItem` per deck or per individual subdeck when a partial list is given |
+| `decks.length === 0`, trivia domains present | `trivia` — domains forwarded directly |
+| both decks AND trivia domains | `custom_deck` for the decks; trivia domains logged as a warning (DeckMode has no mixed variant yet) |
 
 Both `LobbyState` and `LobbyPlayer` carry an optional `contentSelection?: LobbyContentSelection` field. The legacy `selectedDeckId?: string` fields are retained on both interfaces but marked `@deprecated` — use `contentSelection` for new code.
 
