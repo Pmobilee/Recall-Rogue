@@ -15,12 +15,12 @@
   let activeEffectType = $state<string | null>(null)
 
   const EFFECT_INFO: Record<string, { name: string; icon: string; spriteIcon?: string; color: string; desc: (v: number, t: number) => string }> = {
-    poison: { name: 'Poison', icon: '☠️', spriteIcon: '/assets/sprites/icons/icon_status_poison.png', color: '#22c55e', desc: (v, t) => `${v} poison damage at end of turn (${t} turn${t !== 1 ? 's' : ''} left)` },
-    weakness: { name: 'Weakness', icon: '⬇', spriteIcon: '/assets/sprites/icons/icon_status_weakness.png', color: '#a78bfa', desc: (v, t) => `Attacks deal 25% less damage (${t} turn${t !== 1 ? 's' : ''} left)` },
-    vulnerable: { name: 'Vulnerable', icon: '🎯', spriteIcon: '/assets/sprites/icons/icon_status_vulnerable.png', color: '#f87171', desc: (v, t) => `Takes 50% more damage (${t} turn${t !== 1 ? 's' : ''} left)` },
-    strength: { name: 'Strength', icon: '💪', spriteIcon: '/assets/sprites/icons/icon_status_strength.png', color: '#fbbf24', desc: (v, t) => `Attacks deal +25% damage per stack (${v} stack${v !== 1 ? 's' : ''})` },
-    regen: { name: 'Regen', icon: '💚', spriteIcon: '/assets/sprites/icons/icon_status_regen.png', color: '#4ade80', desc: (v, t) => `Heals ${v} HP at end of turn (${t} turn${t !== 1 ? 's' : ''} left)` },
-    immunity: { name: 'Immunity', icon: '✨', spriteIcon: '/assets/sprites/icons/icon_status_immunity.png', color: '#60a5fa', desc: () => `Absorbs next poison instance` },
+    poison: { name: 'Doubt', icon: '☠️', spriteIcon: '/assets/sprites/icons/icon_status_poison.png', color: '#22c55e', desc: (v, t) => `${v} doubt damage at end of turn (${t} turn${t !== 1 ? 's' : ''} left)` },
+    weakness: { name: 'Drawing Blanks', icon: '⬇', spriteIcon: '/assets/sprites/icons/icon_status_weakness.png', color: '#a78bfa', desc: (v, t) => `Attacks deal 25% less damage (${t} turn${t !== 1 ? 's' : ''} left)` },
+    vulnerable: { name: 'Exposed', icon: '🎯', spriteIcon: '/assets/sprites/icons/icon_status_vulnerable.png', color: '#f87171', desc: (v, t) => `Takes 50% more damage (${t} turn${t !== 1 ? 's' : ''} left)` },
+    strength: { name: 'Clarity', icon: '💪', spriteIcon: '/assets/sprites/icons/icon_status_strength.png', color: '#fbbf24', desc: (v, t) => `Attacks deal +25% damage per stack (${v} stack${v !== 1 ? 's' : ''})` },
+    regen: { name: 'Recall', icon: '💚', spriteIcon: '/assets/sprites/icons/icon_status_regen.png', color: '#4ade80', desc: (v, t) => `Heals ${v} HP at end of turn (${t} turn${t !== 1 ? 's' : ''} left)` },
+    immunity: { name: 'Shielded Mind', icon: '✨', spriteIcon: '/assets/sprites/icons/icon_status_immunity.png', color: '#60a5fa', desc: () => `Absorbs next doubt instance` },
     thorns: { name: 'Thorns', icon: '🌿', color: '#86efac', desc: (v) => `Deals ${v} damage back when hit this turn` },
     empower: { name: 'Empower', icon: '⚡', color: '#fcd34d', desc: (v) => `Next card gets +${v}% effect` },
     double_strike: { name: 'Double Strike', icon: '⚔️', color: '#fb923c', desc: (v) => `Next attack hits twice at ${v}%` },
@@ -29,8 +29,8 @@
     fortify: { name: 'Fortify', icon: '🏰', color: '#94a3b8', desc: (v) => `${v} block persists into next turn` },
     overclock: { name: 'Overclock', icon: '⚙️', color: '#e879f9', desc: () => `Next card effect doubled, draw -1 next turn` },
     slow: { name: 'Slow', icon: '🐌', color: '#a1a1aa', desc: (v, t) => `Skips next defend/buff action (${t} turn${t !== 1 ? 's' : ''} left)` },
-    burn: { name: 'Burn', icon: '🔥', spriteIcon: '/assets/sprites/icons/icon_status_burn.png', color: '#f97316', desc: (v) => `Burn [${v}]: Next hit deals +${v} bonus damage, then halves.` },
-    bleed: { name: 'Bleed', icon: '🩸', spriteIcon: '/assets/sprites/icons/icon_status_bleed.png', color: '#ef4444', desc: (v) => `Bleed [${v}]: Incoming card attacks deal +${v} damage. Decays 1/turn.` },
+    burn: { name: 'Brain Burn', icon: '🔥', spriteIcon: '/assets/sprites/icons/icon_status_burn.png', color: '#f97316', desc: (v) => `Brain Burn [${v}]: Next hit deals +${v} bonus damage, then halves.` },
+    bleed: { name: 'Lingering Doubt', icon: '🩸', spriteIcon: '/assets/sprites/icons/icon_status_bleed.png', color: '#ef4444', desc: (v) => `Lingering Doubt [${v}]: Incoming card attacks deal +${v} damage. Decays 1/turn.` },
     freeze: { name: 'Freeze', icon: '❄️', color: '#38bdf8', desc: (v, t) => `Frozen — skips action (${t} turn${t !== 1 ? 's' : ''} left)` },
     // Knowledge Aura states (AR-261) — desc reflects actual fog level thresholds (0-2: flow, 3-6: neutral, 7-10: fog)
     brain_fog: { name: 'Brain Fog', icon: '🌫️', color: '#818cf8', desc: (v) => {

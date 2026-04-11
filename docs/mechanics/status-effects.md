@@ -1,8 +1,29 @@
 # Status Effects
 
 > **Purpose:** Complete list of all status effects, stacking rules, tick timing, and application behavior.
-> **Last verified:** 2026-04-09 (Phase 9: strip_block added — instant block removal, not a persistent status)
+> **Last verified:** 2026-04-11 (Issue 13: study-themed display name rename; IDs unchanged)
 > **Source files:** `src/data/statusEffects.ts`, `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`
+
+
+---
+
+## Display Names (Issue 13 — Study-Themed Rename)
+
+IDs (the `StatusEffectType` values) never change. The table below maps each ID to its current player-visible display name. Update this when `InRunTopBar.svelte`, `StatusEffectBar.svelte`, or `CardCombatOverlay.svelte` display tables change.
+
+| ID | Display Name | Floater Abbreviation |
+|----|-------------|----------------------|
+| `poison` | Doubt | Doubt |
+| `weakness` | Drawing Blanks | Blanks |
+| `vulnerable` | Exposed | Exposed |
+| `strength` | Clarity | Clarity |
+| `regen` | Recall | Recall |
+| `immunity` | Shielded Mind | Shielded |
+| `burn` | Brain Burn | Brain Burn |
+| `bleed` | Lingering Doubt | L.Doubt |
+| `charge_damage_amp_percent` | Epiphany % | Epiphany% |
+| `charge_damage_amp_flat` | Insight + | Insight+ |
+| `strip_block` | Exposed Guard | (instant — no floater) |
 
 ---
 
