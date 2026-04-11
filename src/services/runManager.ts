@@ -394,6 +394,49 @@ export function createRunState(
     runState.factSourceDeckMap = factSourceMap;
   }
 
+  // study-multi mode: seed tracker from all curated deck entries.
+  // Trivia-domain facts come from factsDB (not curated decks) so they are not
+  // tracked in the InRunFactTracker — they use the standard FSRS review flow.
+  if (options?.deckMode?.type === 'study-multi') {
+    const tracker = new InRunFactTracker();
+    const factSourceMap: Record<string, string> = {};
+    const perDeckFacts: { id: string }[][] = [];
+
+    for (const entry of options.deckMode.decks) {
+      // Expand to facts: if subDeckIds is 'all', use the whole deck.
+      // If it is a list, gather facts from each named subdeck (union, dedup).
+      let deckFacts: { id: string }[];
+      if (entry.subDeckIds === 'all') {
+        deckFacts = getCuratedDeckFacts(entry.deckId);
+      } else {
+        const seenIds = new Set<string>();
+        deckFacts = [];
+        for (const subId of entry.subDeckIds) {
+          for (const f of getCuratedDeckFacts(entry.deckId, subId)) {
+            if (!seenIds.has(f.id)) {
+              seenIds.add(f.id);
+              deckFacts.push(f);
+            }
+          }
+        }
+      }
+      perDeckFacts.push(deckFacts);
+      for (const f of deckFacts) {
+        factSourceMap[f.id] = entry.deckId;
+      }
+    }
+
+    const allFacts = interleaveFacts(perDeckFacts);
+    const factIds = allFacts.map(f => f.id);
+    const reviewStates = get(playerSave)?.reviewStates ?? [];
+    tracker.seedFromGlobalFSRS(factIds, (factId: string) => {
+      const reviewState = reviewStates.find((rs) => rs.factId === factId);
+      return reviewState?.stability;
+    });
+    runState.inRunFactTracker = tracker;
+    runState.factSourceDeckMap = factSourceMap;
+  }
+
   return runState;
 }
 

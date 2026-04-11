@@ -151,8 +151,8 @@ export function getLeaderboardEligibility(deckMode: DeckMode): string | null {
     return `language:${deckMode.languageCode}`;
   }
 
-  // Trivia/study/procedural/custom_deck modes: not yet eligible for leaderboards.
-  if (deckMode.type === 'trivia' || deckMode.type === 'study' || deckMode.type === 'procedural' || deckMode.type === 'custom_deck') {
+  // Trivia/study/procedural/custom_deck/study-multi modes: not yet eligible for leaderboards.
+  if (deckMode.type === 'trivia' || deckMode.type === 'study' || deckMode.type === 'procedural' || deckMode.type === 'custom_deck' || deckMode.type === 'study-multi') {
     return null;
   }
 

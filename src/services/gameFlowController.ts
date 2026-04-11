@@ -968,6 +968,14 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
     } else if (run.deckMode?.type === 'custom_deck' && run.deckMode.items.length > 0) {
       run.runDeckId = run.deckMode.items[0].deckId;
       run.runDeckLabel = run.deckMode.items.map(i => i.deckId).join(', ');
+    } else if (run.deckMode?.type === 'study-multi') {
+      const deckIds = run.deckMode.decks.map(e => e.deckId);
+      const parts = [
+        ...deckIds,
+        ...run.deckMode.triviaDomains,
+      ];
+      run.runDeckId = deckIds[0]; // Primary key is first deck (may be undefined for trivia-only)
+      run.runDeckLabel = parts.join(', ') || 'study-multi';
     }
   }
 

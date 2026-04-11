@@ -46,7 +46,7 @@ import {
   resolveBaseDrawCount,
 } from './relicEffectResolver';
 import { buildPresetRunPool, buildGeneralRunPool, buildLanguageRunPool } from './presetPoolBuilder'
-import { getCuratedDeck, getCuratedDeckFact } from '../data/curatedDeckStore'
+import { getCuratedDeck, getCuratedDeckFact, getCuratedDeckFacts } from '../data/curatedDeckStore'
 import type { FactDomain } from '../data/card-types'
 import { turboDelay } from '../utils/turboMode'
 import { getRunRng, isRunRngActive } from './seededRng'
@@ -165,6 +165,25 @@ export function resolveNarrativeFact(factId: string, run: RunState): NarrativeFa
   } else if (deckMode.type === 'custom_deck') {
     for (const item of deckMode.items) {
       const cur = getCuratedDeckFact(item.deckId, factId);
+      if (cur) {
+        return {
+          factId: cur.id,
+          answer: cur.correctAnswer,
+          quizQuestion: cur.quizQuestion,
+          partOfSpeech: cur.partOfSpeech,
+          targetLanguageWord: cur.targetLanguageWord,
+          pronunciation: cur.pronunciation,
+          categoryL1: cur.categoryL1,
+          categoryL2: cur.categoryL2,
+          language: cur.language,
+        };
+      }
+    }
+  } else if (deckMode.type === 'study-multi') {
+    // Search all curated decks in the multi selection; trivia-domain facts
+    // resolve via the factsDB path above, so we only check curated items here.
+    for (const entry of deckMode.decks) {
+      const cur = getCuratedDeckFact(entry.deckId, factId);
       if (cur) {
         return {
           factId: cur.id,
@@ -616,6 +635,105 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
         }
 
         activeRunPool = mergedPool;
+      } else if (run.deckMode.type === 'study-multi') {
+        // Multi-source mode: merge curated deck facts and trivia-domain facts.
+        // Curated deck entries use the same LANG_PREFIX_TO_CODE / pool-builder
+        // logic as custom_deck. Trivia domains use buildPresetRunPool.
+        // All cards are deduplicated by factId (first-seen wins).
+        const LANG_PREFIX_TO_CODE_SM: Record<string, string> = {
+          japanese: 'ja', korean: 'ko', chinese: 'zh', mandarin: 'zh',
+          spanish: 'es', french: 'fr', german: 'de', dutch: 'nl',
+          czech: 'cs', portuguese: 'pt', italian: 'it', russian: 'ru',
+          arabic: 'ar', hindi: 'hi', vietnamese: 'vi', turkish: 'tr',
+        };
+
+        // Detect if ANY curated deck entry is a language deck (affects allowLanguageFacts).
+        const hasLangDeckSM = run.deckMode.decks.some((entry) => {
+          const prefix = entry.deckId.indexOf('_') > 0
+            ? entry.deckId.substring(0, entry.deckId.indexOf('_'))
+            : entry.deckId;
+          return LANG_PREFIX_TO_CODE_SM[prefix] !== undefined;
+        });
+
+        const smMergedPool: Card[] = [];
+        const smSeenFactIds = new Set<string>();
+
+        // --- Curated deck contributions ---
+        for (const entry of run.deckMode.decks) {
+          const prefix = entry.deckId.indexOf('_') > 0
+            ? entry.deckId.substring(0, entry.deckId.indexOf('_'))
+            : entry.deckId;
+          const langCode = LANG_PREFIX_TO_CODE_SM[prefix];
+
+          let entryPool: Card[];
+          if (langCode) {
+            entryPool = buildLanguageRunPool(langCode, reviewStates, {
+              categoryFilters,
+              funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+              chainDistribution: run.chainDistribution,
+            });
+            // If partial subdeck selection, filter to the matching fact IDs.
+            if (entry.subDeckIds !== 'all') {
+              const subDeckFactIdSets = entry.subDeckIds.map(
+                (subId) => new Set(getCuratedDeckFacts(entry.deckId, subId).map((f) => f.id)),
+              );
+              const allowedIds = new Set(entry.subDeckIds.flatMap(
+                (subId) => getCuratedDeckFacts(entry.deckId, subId).map((f) => f.id),
+              ));
+              entryPool = entryPool.filter((c) => allowedIds.has(c.factId));
+              void subDeckFactIdSets; // suppress unused-var lint; computed inline above
+            }
+          } else {
+            entryPool = buildGeneralRunPool(reviewStates, {
+              categoryFilters,
+              funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+              chainDistribution: run.chainDistribution,
+              allowLanguageFacts: hasLangDeckSM,
+            });
+            const curatedDeckSM = getCuratedDeck(entry.deckId);
+            if (curatedDeckSM) {
+              const deckDomainSM = curatedDeckSM.domain as FactDomain;
+              for (const card of entryPool) {
+                card.domain = deckDomainSM;
+              }
+            }
+            // If partial subdeck selection, filter to facts in those subdecks.
+            if (entry.subDeckIds !== 'all') {
+              const allowedIds = new Set(entry.subDeckIds.flatMap(
+                (subId) => getCuratedDeckFacts(entry.deckId, subId).map((f) => f.id),
+              ));
+              entryPool = entryPool.filter((c) => allowedIds.has(c.factId));
+            }
+          }
+
+          for (const card of entryPool) {
+            if (!smSeenFactIds.has(card.factId)) {
+              smSeenFactIds.add(card.factId);
+              smMergedPool.push(card);
+            }
+          }
+        }
+
+        // --- Trivia domain contributions ---
+        for (const domain of run.deckMode.triviaDomains) {
+          const triviaPool = buildPresetRunPool(
+            { [domain]: [] },
+            reviewStates,
+            {
+              categoryFilters,
+              funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+              includeOutsideDueReviews: run.includeOutsideDueReviews ?? false,
+            },
+          );
+          for (const card of triviaPool) {
+            if (!smSeenFactIds.has(card.factId)) {
+              smSeenFactIds.add(card.factId);
+              smMergedPool.push(card);
+            }
+          }
+        }
+
+        activeRunPool = smMergedPool;
       } else {
         // Other modes — fall back to general pool until dedicated builders exist.
         activeRunPool = buildGeneralRunPool(reviewStates, {

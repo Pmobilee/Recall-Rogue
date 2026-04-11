@@ -90,6 +90,29 @@ export function resolveWowFactorText(
     return null;
   }
 
+  if (deckMode?.type === 'study-multi') {
+    // Multi-source mode: curated deck facts resolve the same way as custom_deck.
+    // Trivia-domain facts resolve from factsDB (handled by the guard at top).
+    const factSourceDeckMap = runContext?.factSourceDeckMap;
+    const sourceDeckId = factSourceDeckMap?.[answeredFactId];
+    if (sourceDeckId) {
+      const deckFact = getCuratedDeckFact(sourceDeckId, answeredFactId);
+      return (deckFact as unknown as Record<string, unknown>)?.wowFactor as string | null
+        ?? deckFact?.explanation
+        ?? null;
+    }
+    // Fallback: try each deck entry in order.
+    for (const entry of deckMode.decks) {
+      const deckFact = getCuratedDeckFact(entry.deckId, answeredFactId);
+      if (deckFact) {
+        return (deckFact as unknown as Record<string, unknown>)?.wowFactor as string | null
+          ?? deckFact?.explanation
+          ?? null;
+      }
+    }
+    // May be a trivia-domain fact — fall through to factsDB below.
+  }
+
   // Trivia / general mode: look up in the facts DB.
   if (!factsDB.isReady()) return null;
   const fact = factsDB.getById(answeredFactId);

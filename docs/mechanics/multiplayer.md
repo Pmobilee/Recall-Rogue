@@ -52,13 +52,27 @@ export type LobbyContentSelection =
 `study-multi` is produced by `buildStudyMultiSelection()` in `src/ui/utils/lobbyDeckSelection.ts`.
 Selection state persists across tab switches in `LobbyDeckPicker.svelte` via a `Map<deckId, Set<subDeckId> | "all">` — reassignment-based (never in-place mutation) to trigger Svelte 5 reactivity.
 
-**Fact-pool mapping in `CardApp.svelte`** (mp:lobby:start handler, Issue 2):
+**Fact-pool mapping — `study-multi` to `DeckMode`** (Issue 2 game-logic followup, 2026-04-11):
 
-| study-multi sub-case | Mapped DeckMode |
-|---------------------|-----------------|
-| `decks.length > 0` | `custom_deck` — one `CustomDeckRunItem` per deck or per individual subdeck when a partial list is given |
-| `decks.length === 0`, trivia domains present | `trivia` — domains forwarded directly |
-| both decks AND trivia domains | `custom_deck` for the decks; trivia domains logged as a warning (DeckMode has no mixed variant yet) |
+`DeckMode` now has a native `study-multi` variant in `src/data/studyPreset.ts`. The `mp:lobby:start` handler in `CardApp.svelte` wires it directly:
+
+```typescript
+playerSave.update(s => s ? {
+  ...s,
+  activeDeckMode: { type: 'study-multi', decks: sel.decks, triviaDomains: sel.triviaDomains },
+} : s)
+```
+
+Pool assembly in `encounterBridge.ts` (`study-multi` branch):
+
+| Source | Pool builder used |
+|--------|------------------|
+| Curated deck entry (`subDeckIds === 'all'`) | `buildLanguageRunPool` or `buildGeneralRunPool`, same logic as `custom_deck` |
+| Curated deck entry (partial subdeck list) | Same builder, then filtered to the matching subdeck fact IDs |
+| Trivia domain | `buildPresetRunPool({ [domain]: [] })` per domain |
+| Combined | All cards merged and deduplicated by `factId` (first-seen insertion order) |
+
+Empty `decks` + empty `triviaDomains` → empty pool, no crash. Trivia-domain facts are resolved via `factsDB` (not `curatedDeckStore`) in narrative lookups and wowFactorService.
 
 Both `LobbyState` and `LobbyPlayer` carry an optional `contentSelection?: LobbyContentSelection` field. The legacy `selectedDeckId?: string` fields are retained on both interfaces but marked `@deprecated` — use `contentSelection` for new code.
 

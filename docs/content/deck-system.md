@@ -984,7 +984,7 @@ Procedural decks generate quiz problems on-the-fly instead of drawing from stati
 ```
 The `encounterBridge.ts` if-else chain falls through to the general fallback for `type: 'procedural'` until Phase 2 wires the math pool builder. `masteryScalingService.getLeaderboardEligibility()` returns `null` for procedural mode (not leaderboard-eligible).
 
-**DeckMode: playlist** (added 2026-04-07) — the `'playlist'` variant combines multiple heterogeneous curated decks (e.g. `spanish_a1` + `japanese_n5_grammar` + `computer_science`) into a single Study Temple run. Defined in `src/data/studyPreset.ts`:
+**DeckMode: playlist / custom_deck** (added 2026-04-07) — the `'custom_deck'` variant combines multiple heterogeneous curated decks (e.g. `spanish_a1` + `japanese_n5_grammar` + `computer_science`) into a single Study Temple run. Defined in `src/data/studyPreset.ts`:
 
 ```typescript
 { type: 'custom_deck'; items: CustomDeckRunItem[] }
@@ -1000,6 +1000,31 @@ interface CustomDeckRunItem {
 **Run initialization** (`runManager.ts` `createRunState`): iterates over all items, merges facts via `getCuratedDeckFacts`, seeds a shared `InRunFactTracker`, and populates `RunState.factSourceDeckMap` (`Record<string, string>`) mapping each `factId` to its source `deckId` for downstream template/distractor resolution.
 
 **Chain distribution** (`chainDistribution.ts` `precomputeChainDistribution`): playlist runs use `extractTopicGroupsMultiDeck` across all item decks — the same FSRS-weighted LPT bin-packing used for `all:` language aggregate runs.
+
+---
+
+**DeckMode: study-multi** (added 2026-04-11, Issue 2 game-logic followup) — the `'study-multi'` variant supports the new multi-deck picker UI in multiplayer lobbies. It is the only DeckMode that combines curated deck facts and trivia-domain facts in a single run pool. Defined in `src/data/studyPreset.ts`:
+
+```typescript
+{
+  type: 'study-multi';
+  decks: Array<{ deckId: string; subDeckIds: string[] | 'all' }>;
+  triviaDomains: string[];
+}
+```
+
+**Pool assembly** (`encounterBridge.ts`):
+- Each `decks[]` entry: if `subDeckIds === 'all'`, the whole deck's pool is used; if it is a string array, the pool is filtered to facts in those specific sub-decks.
+- Each `triviaDomains[]` entry: `buildPresetRunPool({ [domain]: [] })` (all subcategories).
+- All cards are merged and deduplicated by `factId` (first-seen wins). Order: curated decks first, trivia domains appended.
+
+**Run initialization** (`runManager.ts`): seeds `InRunFactTracker` from curated deck entries only (trivia-domain facts go through the standard `factsDB` FSRS flow). `factSourceDeckMap` is populated for curated facts.
+
+**Chain distribution** (`chainDistribution.ts`): `precomputeChainDistribution` handles `study-multi` — uses `extractTopicGroupsMultiDeck` across all curated deck entries. Trivia-domain facts have no chain themes and do not contribute to chain distribution.
+
+**Leaderboard eligibility**: `null` (not eligible for any leaderboard category).
+
+**Wiring**: `CardApp.svelte` (mp:lobby:start handler) now routes `LobbyContentSelection.type === 'study-multi'` directly to `activeDeckMode = { type: 'study-multi', ... }` — no intermediate mapping to custom_deck/trivia.
 
 **Group label rules** (`extractTopicGroups`):
 

@@ -3471,3 +3471,42 @@ The 25% HP cut was retained — both changes stack. Target metric: Floor 18 deat
 **Root cause:** `KEYWORD_DEFINITIONS` in `src/data/keywords.ts` had 3 of 8 status effect entries. The other 5 were never added when the file was first created — `cardDescriptionService.ts` already used `kw('Clarity', 'strength')`, `kw('Brain Burn', 'burn')`, etc. and expected resolution, but received `undefined`.
 
 **Fix (2026-04-11):** Added the 5 missing entries (`strength → Clarity`, `regen → Recall`, `immunity → Shielded Mind`, `burn → Brain Burn`, `bleed → Lingering Doubt`) with descriptions drawn from `src/data/statusEffects.ts` actual behavior. Added `src/data/keywords.test.ts` asserting all 8 IDs resolve with correct names and non-empty descriptions under 80 chars.
+
+### 2026-04-11 — check-camp-sprites.mjs: new lint preventing future sprite manifest drift
+
+**What:** Added `scripts/lint/check-camp-sprites.mjs` to catch four classes of drift between `CAMP_UPGRADE_TIER_FILES` (campArtManifest.ts) and the actual `.webp` files on disk:
+1. A manifest entry references a `.webp` file that does not exist on disk (ERROR → exit 1).
+2. `CAMP_UPGRADE_TIER_FILES[el].length - 1 !== CAMP_MAX_TIERS[el]` — the two stores are inconsistent (ERROR → exit 1).
+3. An element key exists in one map but not the other (ERROR → exit 1).
+4. A `.webp` file exists in the upgrade directory but is NOT in the manifest — orphaned art like `library/tier-6.webp` (WARNING → stderr, exit 0).
+
+**Why:** Direct follow-up to the 2026-04-11 "Camp upgrade sprite gaps" gotcha entry above. Without a lint, the CAMP_UPGRADE_TIER_FILES mapping would silently drift the next time art pipeline fills a gap or someone edits the arrays. The script is zero-dep, regex-based, and runs as part of `npm run check` and `npm run lint:camp-sprites`.
+
+**Two-sided enforcement status:** Author-time: `check-camp-sprites.mjs` (this script). Runtime hook: *missing — future work*. The missing runtime hook means if a PostToolUse hook is added later (e.g. firing after edits to campArtManifest.ts or campState.ts), it should call this script. Row added to `.claude/rules/agent-mindset.md` two-sided enforcement table.
+
+**Cross-reference:** See the immediately preceding gotcha entry: "Camp upgrade sprite gaps: missing tier-N.webp files cause 404s" (2026-04-11).
+
+**Expected clean output (as of 2026-04-11 state):**
+```
+check-camp-sprites.mjs — scanned 9 elements, 59 tier files
+✓ All manifest entries resolve to existing files.
+⚠ 1 orphaned file (not referenced by manifest):
+  public/assets/camp/upgrades/library/tier-6.webp
+```
+
+### 2026-04-11 — study-multi DeckMode now supported (Issue 2 game-logic followup)
+
+**Previous state:** `LobbyContentSelection.type === 'study-multi'` (the new multi-deck picker selection) was mapped in `CardApp.svelte` to either `custom_deck` or `trivia` DeckMode. When both decks AND trivia domains were selected, trivia domains were silently dropped (logged as `console.warn`). The gotcha entry at `### 2026-04-11 — study-multi fact-pool mapping to DeckMode` documented this limitation.
+
+**Fix (2026-04-11):** Added `study-multi` as a native DeckMode variant in `src/data/studyPreset.ts`. Updated the following files to handle the new variant:
+
+- `src/data/studyPreset.ts` — DeckMode union extended with `{ type: 'study-multi'; decks: StudyMultiDeckEntry[]; triviaDomains: string[] }`.
+- `src/services/encounterBridge.ts` — `study-multi` pool builder branch merges curated deck pools and trivia domain pools with factId deduplication. `resolveNarrativeFact` handles curated fact lookup for `study-multi`.
+- `src/services/runManager.ts` — `study-multi` seeds `InRunFactTracker` from curated deck entries; trivia-domain facts use standard factsDB flow.
+- `src/services/chainDistribution.ts` — `precomputeChainDistribution` handles `study-multi` via `extractTopicGroupsMultiDeck` on curated entries.
+- `src/services/wowFactorService.ts` — `study-multi` resolves wow factor from curated decks first, falls through to factsDB for trivia-domain facts.
+- `src/services/masteryScalingService.ts` — `study-multi` added to leaderboard-ineligibility list.
+- `src/services/gameFlowController.ts` — `study-multi` populates `runDeckId` and `runDeckLabel`.
+- `src/CardApp.svelte` — wires `study-multi` directly to the new DeckMode variant; removes the `console.warn` fallback.
+
+**Tests:** `src/services/studyMulti.test.ts` — 17 tests covering type shape, wowFactorService resolution, chainDistribution guard, and leaderboard eligibility.

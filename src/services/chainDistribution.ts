@@ -485,8 +485,39 @@ export function precomputeChainDistribution(
   reviewStates: ReviewState[],
   seed: number,
 ): ChainDistribution | undefined {
-  // Only curated study runs and custom deck runs get topic-aware chain distribution.
-  if (deckMode.type !== 'study' && deckMode.type !== 'custom_deck') return undefined;
+  // Only curated study runs, custom deck runs, and study-multi runs get topic-aware chain distribution.
+  if (deckMode.type !== 'study' && deckMode.type !== 'custom_deck' && deckMode.type !== 'study-multi') return undefined;
+
+  // study-multi mode: merge topic groups from all curated deck entries.
+  // Trivia-domain facts have no curated chain themes, so only the deck portion contributes.
+  if (deckMode.type === 'study-multi') {
+    const decks = deckMode.decks
+      .map(entry => getCuratedDeck(entry.deckId))
+      .filter((d): d is NonNullable<typeof d> => d != null);
+    if (decks.length === 0) return undefined;
+
+    const allFactIds: string[] = [];
+    for (const entry of deckMode.decks) {
+      if (entry.subDeckIds === 'all') {
+        allFactIds.push(...getCuratedDeckFacts(entry.deckId).map(f => f.id));
+      } else {
+        const seenIds = new Set<string>();
+        for (const subId of entry.subDeckIds) {
+          for (const f of getCuratedDeckFacts(entry.deckId, subId)) {
+            if (!seenIds.has(f.id)) {
+              seenIds.add(f.id);
+              allFactIds.push(f.id);
+            }
+          }
+        }
+      }
+    }
+    if (allFactIds.length === 0) return undefined;
+
+    const groups = extractTopicGroupsMultiDeck(decks, allFactIds, reviewStates);
+    const runChainTypes = selectRunChainTypes(seed);
+    return distributeTopicGroups(groups, runChainTypes, seed);
+  }
 
   // Custom deck mode: merge topic groups from all deck items.
   if (deckMode.type === 'custom_deck') {
