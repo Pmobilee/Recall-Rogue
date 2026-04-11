@@ -2820,3 +2820,25 @@ docker rm great_blackwell condescending_roentgen amazing_noyce confident_dhawan 
 **Prevention:** When committing files that import a new package, always include `package.json` and `package-lock.json` in the same commit. The pre-commit hook should ideally run `npm ls <package>` for all `import` statements to catch this class of error at commit time.
 
 **Files affected:** `package.json`, `package-lock.json`, `src/services/chessGrader.ts` (no change needed — type resolves), `src/services/chessPuzzleService.ts` (no change needed).
+
+### 2026-04-11 — quiz-audit.mjs ignores pool-level homogeneityExempt flag
+
+**Symptom:** `node scripts/quiz-audit.mjs --full --deck medical_terminology` reported 5 FAIL (length-heterogeneity Check #20) on facts in pools that all had `homogeneityExempt: true` already set. The structural verifier (`verify-all-decks.mjs`) reported 0 FAIL for the same deck, correctly honoring the exempt flag.
+
+**Root cause:** `scripts/quiz-audit.mjs` `checkFact()` (line 156–174) reads the pool object at line 119 but never consults `pool.homogeneityExempt`. The length-mismatch check fires unconditionally for every fact regardless of pool exempt status. The structural verifier has separate logic that skips the homogeneity check when the flag is set — the quiz audit has no equivalent guard.
+
+**Affected pools (all had `homogeneityExempt: true` pre-existing):**
+- `root_meanings_short` — eye (ophthalm/o) 5.3× ratio
+- `root_meanings_cardiovascular` — Clot 0.3× and Blood (hemat/o) 3.2×
+- `root_meanings_musculoskeletal` — vertebra (vertebr/o) 4.0×
+- `root_meanings_reproductive` — Milk 0.3×
+
+**Workaround applied (2026-04-11):** Reassigned 11 facts to length-matched pools so the audit-engine length ratio checks pass without relying on the exempt flag:
+- Moved to `root_meanings_long` (avg 18.8ch): eye (ophthalm/o), eye (ocul/o), Blood (hemat/o), vertebra (vertebr/o), vertebra (spondyl/o)
+- Moved to `root_meanings_short` (avg 3.2ch): Clot, Milk, sperm, vulva, testis, vagina
+
+**True fix needed:** `scripts/quiz-audit.mjs` `checkFact()` should skip the length-mismatch FAIL check (and optionally downgrade to WARN) when `pool.homogeneityExempt === true`. This is a one-line guard at line 156. Assigned to qa-agent or the next scripts/ maintenance pass.
+
+**Two-sided enforcement gap:** The pool `homogeneityExempt` flag is a preventative author-time signal but `quiz-audit.mjs` — the reactive runtime checker — ignores it. This is the classic single-sided enforcement drift described in `.claude/rules/agent-mindset.md`.
+
+**Files affected:** `data/decks/medical_terminology.json`, `scripts/quiz-audit.mjs` (fix needed, NOT touched here).
