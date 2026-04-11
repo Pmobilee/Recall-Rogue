@@ -3007,3 +3007,13 @@ The comment says "via warcry_perm_str tag" but the code reads `card.masteryLevel
 **Recommended fix (out of scope for Phase 5):** Remove the `warcry_perm_str` entry from `MASTERY_UPGRADE_DEFS` (or add a comment explaining it's dead) and update the comment in `turnManager.ts` line 2368 to say "direct mastery level check" not "via warcry_perm_str tag". Also consider moving the L3+ QP permanent Str logic to a tag properly if the resolver/turnManager tag dispatch system ever normalizes this.
 
 **Files:** `src/services/cardUpgradeService.ts` (MASTERY_UPGRADE_DEFS, line ~1395), `src/services/turnManager.ts` (line 2368-2377).
+
+### 2026-04-11 — A14 comboResetsOnTurnEnd defined but never implemented in turnManager
+
+**Symptom:** Ascension level 14 is supposed to reset the combo counter at the end of each player turn (description: "Combo resets each turn"). The `AscensionModifiers.comboResetsOnTurnEnd` field is set to `true` at A14, and gym-server.ts had `ts.ascensionComboResetsOnTurnEnd = ascMods.comboResetsOnTurnEnd`. However, `TurnState` has no `ascensionComboResetsOnTurnEnd` field, and `endPlayerTurn()` in `turnManager.ts` does not reset `consecutiveCorrectThisEncounter` at turn end.
+
+**Root cause:** The feature was designed (field added to AscensionModifiers) but never implemented in the combat engine. The gym-server assignment was writing to a nonexistent property (TypeScript would have caught this with strict checks).
+
+**Fix (2026-04-11 BATCH-ULTRA meta-lint):** Removed the dead assignment from gym-server.ts (line 316). Added explanatory comment. The actual game behavior of A14 (combo persists across turns, no turn-end reset) is currently the de-facto behavior. If the intent is to actually reset, `endPlayerTurn` needs to be updated to check `ascensionComboResetsOnTurnEnd` and reset `consecutiveCorrectThisEncounter`.
+
+**Impact on sim:** None — the sim never read this field. The A14 challenge text ("combo resets each turn") is technically a lie in the current implementation. The BATCH-ULTRA sim results showing 60% win rate at A16 (which inherits A14) are consistent with combo NOT resetting.

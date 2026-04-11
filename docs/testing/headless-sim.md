@@ -682,7 +682,7 @@ python3 tests/playtest/rl/analyze.py --model tests/playtest/rl/models/rogue_brai
 
 120-float observation vector. Combat slice (obs[0-29]):
 - `obs[6]`: `consecutiveCorrectThisEncounter / 10` (capped at 1.0)
-- **Note:** Was previously `ts.comboCount` (stale field from removed TurnState API) — fixed 2026-04-11. All prior RL model checkpoints were trained with corrupted reward signals (NaN from undefined `comboCount`) and should be treated as undertrained for chain-building behavior.
+- **Note:** Was previously `ts.comboCount` (stale field from removed TurnState API) — fixed 2026-04-11. All prior RL model checkpoints were trained with corrupted reward signals (NaN from undefined `comboCount`) and should be treated as undertrained for chain-building behavior. 2026-04-11 BATCH-ULTRA: also removed ts.ascensionComboResetsOnTurnEnd (stale field — A14 combo-reset not wired in endPlayerTurn; see docs/gotchas.md).
 
 ### Reward Signal
 

@@ -84,7 +84,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `archetypeSelection` | `ArchetypeSelection` | |
 | `deckSelectionHub` | `DeckSelectionHub` | |
 | `triviaDungeon` | `TriviaDungeonScreen` | |
-| `dungeonMap` | `DungeonMap` | Only if `activeRunState.floor.actMap` exists |
+| `dungeonMap` | `DungeonMap` | Only if `activeRunState.floor.actMap` exists. **Boss preview (BATCH-ULTRA Cluster A):** `BossPreviewBanner` component renders in the HUD when the act has an undefeated boss node (`node.type === 'boss'` && `state !== 'visited'`). Shows boss name, silhouette, description, and floor number. Always visible from map open to boss defeat — mirrors StS persistent boss icon. Use scenario `map-with-boss-preview` to test. |
 | `combat` | `CardCombatOverlay` | Phaser container also shown; `ParallaxTransition` for enter/exit |
 | `cardReward` | `CardRewardScreen` | |
 | `rewardRoom` | *(Phaser scene)* | `RewardRoomScene` handles rendering; `RewardCardDetail` as DOM overlay. **A11y (BATCH-ULTRA T11):** `CardApp.svelte` also renders a transparent DOM `<button data-testid='btn-reward-room-continue'>` absolutely positioned over the Phaser Continue button, enabling Tab-focus and screen reader access. Click calls `triggerRewardRoomContinue()` from `rewardRoomBridge.ts`. |

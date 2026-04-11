@@ -225,6 +225,13 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   'dungeon-map': {
     screen: 'dungeonMap',
   },
+  // Boss preview: loads segment 1 map at floor 5 (boss on floor 6).
+  // The BossPreviewBanner shows in the HUD because the act has an undefeated boss node.
+  // See BossPreviewBanner.svelte and BATCH-2026-04-11-ULTRA Cluster A.
+  'map-with-boss-preview': {
+    screen: 'dungeonMap',
+    floor: 5,
+  },
   'retreat-or-delve': {
     screen: 'retreatOrDelve',
     gold: 200,

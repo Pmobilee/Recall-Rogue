@@ -34,6 +34,8 @@ Hub → Domain Selection → Floor 1 → [rooms] → Boss → Retreat or Delve �
 
 `SEGMENT_BOSS_FLOORS = [3, 6, 9, 12, 15, 18, 21, 24]`. Endless mode: boss every `ENDLESS_BOSS_INTERVAL = 3` floors. `MAX_FLOORS = 24`.
 
+**Boss preview banner (BATCH-2026-04-11-ULTRA Cluster A):** The `DungeonMap` component renders a `BossPreviewBanner` in the HUD whenever the act has an undefeated boss node. This telegraphs the floor-cliff difficulty spikes at floors 6 (3.11× harder) and 18 (14× damage spike) identified in the BATCH-ULTRA playtest. The banner shows boss name, silhouette sprite, and description — mirrors the StS persistent boss icon pattern. Hidden after the boss is defeated.
+
 ### Encounters Per Floor
 Always 3 (`getEncountersForFloor`). Encounter 3 is always a mini-boss on non-boss floors (`isMiniBossEncounter`), or the floor boss on boss floors.
 

@@ -313,7 +313,10 @@ function initEncounterFromRun(run: RunState): TurnState {
   ts.ascensionEnemyDamageMultiplier = ascMods.enemyDamageMultiplier;
   ts.ascensionShieldCardMultiplier = ascMods.shieldCardMultiplier;
   ts.ascensionWrongAnswerSelfDamage = ascMods.wrongAnswerSelfDamage;
-  ts.ascensionComboResetsOnTurnEnd = ascMods.comboResetsOnTurnEnd;
+  // NOTE: ascMods.comboResetsOnTurnEnd (A14) is defined but NOT yet wired into TurnState.
+  // The endPlayerTurn() function does not reset consecutiveCorrectThisEncounter on turn end.
+  // Removed dead assignment — ts.ascensionComboResetsOnTurnEnd does not exist on TurnState.
+  // See docs/gotchas.md 2026-04-11 "A14 comboResetsOnTurnEnd unimplemented in turnManager".
   ts.ascensionBaseTimerPenaltySeconds = ascMods.timerBasePenaltySeconds;
   ts.ascensionEncounterTimerPenaltySeconds = ascMods.encounterTwoTimerPenaltySeconds;
   ts.ascensionPreferCloseDistractors = ascMods.preferCloseDistractors;

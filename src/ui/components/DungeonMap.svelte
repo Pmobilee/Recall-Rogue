@@ -3,10 +3,13 @@
   import type { ActMap } from '../../services/mapGenerator'
   import MapNodeComponent from './MapNode.svelte'
   import MapAmbientParticles from './MapAmbientParticles.svelte'
+  import BossPreviewBanner from './BossPreviewBanner.svelte'
   import { BASE_WIDTH } from '../../data/layout'
   import { isLandscape } from '../../stores/layoutStore'
   import { playCardAudio } from '../../services/cardAudioManager'
   import { ambientAudio } from '../../services/ambientAudioService'
+  import { ENEMY_TEMPLATES } from '../../data/enemies'
+  import { MAP_CONFIG } from '../../data/balance'
 
   // =========================================================
   // Props
@@ -152,6 +155,49 @@
   let availableNodes = $derived(
     Object.values(map.nodes).filter(n => n.state === 'available'),
   )
+
+  // =========================================================
+  // Boss preview banner data
+  // BATCH-2026-04-11-ULTRA Cluster A: floor 4→6 and floor 17→18 cliffs.
+  // Show the boss preview when the player is within 3 rows of BOSS_ROW — i.e.
+  // they can see the boss node through the fog-of-war blur. Mirrors StS's
+  // persistent boss icon at the top of the act map.
+  // =========================================================
+
+  /** The boss node for this act (always at MAP_CONFIG.BOSS_ROW). */
+  let bossNode = $derived.by(() => {
+    const bossRowIds = map.rows[MAP_CONFIG.BOSS_ROW] ?? []
+    for (const id of bossRowIds) {
+      const node = map.nodes[id]
+      if (node && node.type === 'boss') return node
+    }
+    return null
+  })
+
+  /** EnemyTemplate for the boss node, used to render the banner. */
+  let bossTemplate = $derived.by(() => {
+    if (!bossNode?.enemyId) return null
+    return ENEMY_TEMPLATES.find(t => t.id === bossNode!.enemyId) ?? null
+  })
+
+  /**
+   * Boss floor number for display: startFloor + 5 (boss is always at the 6th
+   * floor of each segment — floors 6, 12, 18, 24 for segments 1–4).
+   */
+  let bossFloor = $derived(map.startFloor + 5)
+
+  /**
+   * Show the boss preview banner whenever the act has an undefeated boss node.
+   * Mirrors Slay the Spire's always-visible boss icon at the top of the act map
+   * so the player can plan around it from the moment they open the map.
+   * Hidden only after the boss has been defeated (state === 'visited').
+   * The boss must not yet be defeated (state !== 'visited').
+   */
+  let showBossPreview = $derived.by(() => {
+    if (!bossNode || !bossTemplate) return false
+    if (bossNode.state === 'visited') return false
+    return true
+  })
 
   // =========================================================
   // Map canvas sizing
@@ -317,6 +363,19 @@
   <header class="map-hud">
     <h1 class="hud-title">{segmentName}</h1>
     <!-- HP bar removed — InRunTopBar is the canonical HP display for dungeonMap screen -->
+
+    <!-- Boss preview banner: shown when player is within 3 rows of the act boss.
+         BATCH-2026-04-11-ULTRA Cluster A — telegraphs the floor 4→6 and 17→18 cliffs.
+         Only visible when boss hasn't been defeated yet.
+         See BossPreviewBanner.svelte and docs/ui/screens.md. -->
+    {#if showBossPreview && bossTemplate}
+      <BossPreviewBanner
+        enemyId={bossNode!.enemyId ?? ''}
+        enemyName={bossTemplate.name}
+        enemyDesc={bossTemplate.description}
+        {bossFloor}
+      />
+    {/if}
   </header>
 
   <!-- Ambient particles — segment-themed floating dust/wisps -->
