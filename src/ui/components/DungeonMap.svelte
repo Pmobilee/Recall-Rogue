@@ -364,15 +364,16 @@
     <h1 class="hud-title">{segmentName}</h1>
     <!-- HP bar removed — InRunTopBar is the canonical HP display for dungeonMap screen -->
 
-    <!-- Boss preview banner: shown when player is within 3 rows of the act boss.
-         BATCH-2026-04-11-ULTRA Cluster A — telegraphs the floor 4→6 and 17→18 cliffs.
-         Only visible when boss hasn't been defeated yet.
+    <!-- Boss preview banner TEMPORARILY DISABLED 2026-04-11 (user request).
+         Re-enable by removing the `false &&` guard below.
+         Original purpose: telegraphs the floor 4→6 and 17→18 cliffs identified in
+         BATCH-2026-04-11-ULTRA Cluster A. Only visible when boss hasn't been defeated yet.
          See BossPreviewBanner.svelte and docs/ui/screens.md. -->
-    {#if showBossPreview && bossTemplate}
+    {#if false && showBossPreview && bossTemplate}
       <BossPreviewBanner
         enemyId={bossNode!.enemyId ?? ''}
-        enemyName={bossTemplate.name}
-        enemyDesc={bossTemplate.description}
+        enemyName={bossTemplate!.name}
+        enemyDesc={bossTemplate!.description}
         {bossFloor}
       />
     {/if}
