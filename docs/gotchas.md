@@ -2852,3 +2852,28 @@ docker rm great_blackwell condescending_roentgen amazing_noyce confident_dhawan 
 **Workaround:** After any `npm install` or `package.json` change, restart the host dev server (`Ctrl+C` + `npm run dev`) to force Vite to re-optimize deps before starting Docker containers. The dev server must be cold-started (no `--force` needed, but the first load will take longer). Once the host dev server has served the app at least once (deps are optimized), Docker containers boot normally.
 
 **Files involved:** `docker/playwright-xvfb/warm-server.mjs` (boots from host dev server), `docker/playwright-xvfb/visual-test-runner.mjs` (same).
+
+### 2026-04-11 — HSK6 particle/interjection enrichment pass
+
+**What:** Enriched 8 particle and interjection facts in `data/decks/chinese_hsk6.json` with authentic example sentences. These facts had minimal "字 (pīnyīn) — meaning." explanations that provided no learnable context.
+
+**Facts enriched (8 total):**
+- 哦 (é) — oh; I see → added example: 哦，原来如此
+- 啦 (lā) — exclamatory particle → added example: 他终于来啦！
+- 嘛 (má) — obviously; you know → added example: 这很简单嘛
+- 嗯 (ēn) — interjection of assent → added example: 嗯，我明白了
+- 嗨 (hāi) — hi; hey → trimmed verbose CEDICT "oh alas / drug high" note; added example: 嗨！好久不见！
+- 嘿 (hēi) — hey → added example: 嘿，快来看！
+- 罢了 (bà le) — that's all; nothing more → simplified modal particle description; added example: 不过是个玩笑罢了
+- 哎哟 (āi yō) — hey; ouch → simplified multi-meaning note; added example: 哎哟，我的脚好疼！
+
+**Before:** `"哦 (é) — oh; I see."`
+**After:** `"哦 (é) — oh; I see. Example: 哦，原来如此 (ó, yuánlái rúcǐ) — 'Oh, so that's how it is.'"`
+
+**Content decisions:**
+- 嗨 (hāi): The original explanation "oh alas. Also: hey!, hi! (loanword), a high (natural or drug-induced) (loanword)" was CEDICT verbatim with distracting loanword info. Simplified to "hi; hey" which matches the correctAnswer, then added a social greeting example.
+- 罢了 (bà le): Original "a modal particle indicating (that's all, only, nothing much)" is grammatically awkward. Streamlined to "that's all; nothing more" which already matches the correctAnswer.
+- 层面 (céng miàn): Has partOfSpeech "particle" in source data but means "aspect/facet/level" — it is a noun mislabeled at the CEDICT source level. Skipped (not a true particle/interjection).
+- All example sentences drawn from standard Chinese pedagogical usage and CEDICT/HSK corpus patterns. No invented sentences.
+
+**Verification:** `verify-all-decks.mjs --deck chinese_hsk6` → 0 failures, 0 warnings. Stratified 50-fact quiz audit → 0 failures, 16 pre-existing warnings (distractor_format_inconsistency on pinyin pool mixing — not introduced by this change).
