@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-11T14:55:00.000Z",
+  "updatedAt": "2026-04-11T16:40:00.000Z",
   "totalPlaythroughs": 17,
-  "totalIssues": 129,
+  "totalIssues": 131,
   "batches": [
     {
       "id": "BATCH-2026-04-11-ULTRA",
@@ -355,7 +355,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 10,
       "score": 7.5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "metric": "Floor 4 avg turns: 6.68 | Floor 6 avg turns: 22.44 | ratio 3.36x (threshold: 2.0x). Floor 6 death rate: 7.8% vs floor 4: 1.6%. n=7,465 floor-6 encounters across 28,000 runs",
@@ -368,7 +368,9 @@
         "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile new_player --analytics",
         "Read analytics/enemy-analysis.md, compare floor 4 vs floor 6 avg turns and death rate"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "51b68139b",
+      "resolvedAt": "2026-04-11T16:40:00.000Z"
     },
     {
       "canonicalId": "01-stat-baseline-issue-1744334400000-01-002",
@@ -385,7 +387,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 11,
       "score": 7.5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "metric": "Floor 10 avg turns: 7.62 | Floor 12 avg turns: 15.69 | ratio 2.06x. The Curriculum (floor 12): 62% win rate, 37% damage spike rate for new_player (n=193). master@asc20 floor 10→12: 9.4→23.2 turns (2.47x)",
@@ -398,7 +400,9 @@
         "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile new_player --analytics",
         "In per-run JSON, aggregate encounters by floor and compute avg turns floor 10 vs 12"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "51b68139b",
+      "resolvedAt": "2026-04-11T16:40:00.000Z"
     },
     {
       "canonicalId": "01-stat-baseline-issue-1744334400000-01-003",
@@ -415,7 +419,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 12,
       "score": 7.5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "metric": "Omnibus: 91% spike rate, 79.5 avg HP taken, 67% defeat rate for new_player (n=323). Final Lesson: 87% spike rate, 71.4 avg HP taken, 64% defeat rate (n=278). Floor 18 death rate: 30.2% vs next worst floor 6 at 7.8%",
@@ -428,7 +432,9 @@
         "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile new_player --analytics",
         "In per-run JSON, filter encounters floor==18 and compute damageTaken/playerHpBefore ratio"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "51b68139b",
+      "resolvedAt": "2026-04-11T16:40:00.000Z"
     },
     {
       "canonicalId": "01-stat-baseline-issue-1744334400000-01-004",
@@ -445,7 +451,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 13,
       "score": 7.5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "metric": "experienced@asc20: win=2.7%, avg_floors=4.0, floor-1 deaths=285/1000 (28.5%). master@asc20: win=9.1%, avg_floors=8.3. too_hard_threshold=32.5% (target 65% × 0.5)",
@@ -458,7 +464,9 @@
         "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile experienced --ascension 20",
         "Check survival rate and deathFloor distribution"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "9705fd066",
+      "resolvedAt": "2026-04-11T16:40:00.000Z"
     },
     {
       "canonicalId": "01-stat-baseline-issue-1744334400000-01-011",
@@ -475,7 +483,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 14,
       "score": 7.5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "metric": "experienced@asc10: 72%, asc15: 55%, asc20: 2.7%. master@asc10: 42%, asc15: 31%, asc20: 9.1%. The drop from asc15→asc20 is 52pp for experienced (vs 17pp for asc10→asc15)",
@@ -488,7 +496,9 @@
         "npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000 --profile experienced --ascension 20",
         "Compare win rates across ascension levels"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "9705fd066",
+      "resolvedAt": "2026-04-11T16:40:00.000Z"
     },
     {
       "canonicalId": "07-mode-coverage-issue-1775873221654-07-001",
@@ -662,7 +672,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 20,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "stateIds": [
@@ -679,7 +689,9 @@
         "Observe: Foresight is always played regardless of game state",
         "No strategic tension about whether to play Foresight exists"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "closingCommit": "6f5d33725",
+      "resolvedAt": "2026-04-11T16:40:00.000Z"
     },
     {
       "canonicalId": "03-strategic-issue-1744387200001-03-02",
@@ -758,7 +770,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 23,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": null,
@@ -770,7 +782,9 @@
         "Run: npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200",
         "Check data/playtests/runs/latest/analytics/enemy-analysis.md for The Omnibus and The Final Lesson stats"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "closingCommit": "51b68139b",
+      "resolvedAt": "2026-04-11T16:40:00.000Z"
     },
     {
       "canonicalId": "04-combat-core-issue-1744339200005-04-006",
@@ -4285,7 +4299,7 @@
       "description": "Second stale-field bug in gym-server.ts (sibling to the comboCount fix from 2fd8e70cf). Discovered by check-wiring.mjs lint on day-1 run. Runtime will produce undefined assignment, likely a silent no-op that hides ascension behavior in RL training.",
       "source": "check-wiring.mjs",
       "severity_note": "HIGH — affects RL training reward for ascension runs",
-      "status": "open",
+      "status": "closed",
       "score": 5,
       "affectedTracks": [
         "meta-lint"
@@ -4294,7 +4308,9 @@
         "npm run lint:wiring"
       ],
       "suggestedFix": "Either add ascensionComboResetsOnTurnEnd to TurnState in src/services/turnManager.ts, or delete the assignment in gym-server.ts:316. Game-logic agent scope.",
-      "firstSeen": "2026-04-11T14:50:00.000Z"
+      "firstSeen": "2026-04-11T14:50:00.000Z",
+      "closingCommit": "51b68139b",
+      "resolvedAt": "2026-04-11T16:40:00.000Z"
     },
     {
       "canonicalId": "meta-lint-002",
@@ -4339,7 +4355,7 @@
       "title": "relicAcquisitionService.ts:140 shouldDropRandomRelic uses unseeded Math.random()",
       "description": "Third unsanctioned Math.random() in relic acquisition pipeline, not covered by BATCH-ULTRA T9 fix (1e7624430). Co-op peers will get different relic drops. Discovered by no-bare-math-random.mjs lint on day-1 run.",
       "source": "no-bare-math-random.mjs",
-      "status": "open",
+      "status": "closed",
       "score": 5,
       "affectedTracks": [
         "meta-lint"
@@ -4348,7 +4364,9 @@
         "npm run lint:rng"
       ],
       "suggestedFix": "Apply same seeded-RNG guard pattern: isRunRngActive() ? getRunRng('relicDrops').next() : Math.random().",
-      "firstSeen": "2026-04-11T14:50:00.000Z"
+      "firstSeen": "2026-04-11T14:50:00.000Z",
+      "closingCommit": "b3164469a",
+      "resolvedAt": "2026-04-11T16:40:00.000Z"
     },
     {
       "canonicalId": "meta-lint-005",
@@ -4357,7 +4375,7 @@
       "title": "RewardRoomScene.ts Accept/Leave/Close buttons still Phaser-only (lines 820, 851, 970, 999)",
       "description": "T11 BATCH-ULTRA fix handled the Continue button DOM overlay via 003fe7d73, but 4 OTHER reward-room buttons are still Phaser-only. Keyboard/assistive-tech users are still partially blocked in the reward room. check-wiring.mjs WARN on each.",
       "source": "check-wiring.mjs",
-      "status": "open",
+      "status": "closed",
       "score": 5,
       "affectedTracks": [
         "meta-lint"
@@ -4366,9 +4384,39 @@
         "npm run lint:wiring"
       ],
       "suggestedFix": "Add 4 additional DOM <button> overlays in CardApp.svelte reward-room section mapped to the 4 Phaser button data-phaser-ids. Follow the pattern from 003fe7d73.",
-      "firstSeen": "2026-04-11T14:50:00.000Z"
+      "firstSeen": "2026-04-11T14:50:00.000Z",
+      "closingCommit": "716715747",
+      "resolvedAt": "2026-04-11T16:40:00.000Z"
+    },
+    {
+      "canonicalId": "parallel-session-regression-001",
+      "category": "typecheck_regression",
+      "severity": "medium",
+      "title": "wowFactorService.ts DeckFact cast errors introduced by 766223a3a parallel session",
+      "description": "3 TypeScript errors at lines 63/77/85: DeckFact → Record<string, unknown> cast incompatibility. Not introduced by this session, traced to parallel Claude session commit 766223a3a (Phase 7 multiplayer lobby browser). Soft-warn hook lets it through but real fix still needed.",
+      "source": "typecheck",
+      "status": "open",
+      "score": 3,
+      "affectedTracks": [
+        "parallel-session-regression"
+      ],
+      "firstSeen": "2026-04-11T16:40:00.000Z"
+    },
+    {
+      "canonicalId": "wave-b-incomplete-1",
+      "category": "incomplete_wiring",
+      "severity": "high",
+      "title": "RewardRoomScene.showRelicDetail() missing listeners for relicDetailAccept/relicDetailLeave bridge events",
+      "description": "Commit 716715747 added DOM overlay buttons + bridge exports, but the Phaser scene does not subscribe to the emitted events. DOM buttons fire silent no-ops until listeners added. Part of Cluster F completion.",
+      "source": "ground-truth grep",
+      "status": "open",
+      "score": 5,
+      "affectedTracks": [
+        "wave-b-followup"
+      ],
+      "firstSeen": "2026-04-11T16:40:00.000Z"
     }
   ],
-  "openCount": 117,
-  "resolvedCount": 12
+  "openCount": 109,
+  "resolvedCount": 22
 }
