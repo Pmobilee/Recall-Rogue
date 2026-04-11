@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { resolveDomain, resolveCardType } from '../../src/services/domainResolver';
 import { createCard, computeTier, resetCardIdCounter } from '../../src/services/cardFactory';
-import { createDeck, drawHand, playCard, discardCard, exhaustCard, reshuffleDiscard, getDeckStats } from '../../src/services/deckManager';
+import { createDeck, drawHand, playCard, discardCard, forgetCard, reshuffleDiscard, getDeckStats } from '../../src/services/deckManager';
 import { HAND_SIZE } from '../../src/data/balance';
 import type { Fact, ReviewState } from '../../src/data/types';
 import type { Card, CardType, FactDomain } from '../../src/data/card-types';
@@ -353,8 +353,8 @@ describe('deckManager', () => {
     });
   });
 
-  describe('exhaustCard', () => {
-    it('moves card from hand to exhaust pile', () => {
+  describe('forgetCard', () => {
+    it('moves card from hand to forget pile', () => {
       drawHand(deck, 1);
       const cardId = deck.hand[0].id;
       forgetCard(deck, cardId);

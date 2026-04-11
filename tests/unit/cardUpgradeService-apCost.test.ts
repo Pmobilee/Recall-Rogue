@@ -251,10 +251,10 @@ describe('Phase 4 new mastery tables', () => {
     expect(stats?.qpValue).toBe(5);
   });
 
-  it('burnout_shield L5 has burnout_no_exhaust tag', () => {
+  it('burnout_shield L5 has burnout_no_forget tag', () => {
     const stats = getMasteryStats('burnout_shield', 5);
     expect(stats?.qpValue).toBe(13);
-    expect(stats?.tags).toContain('burnout_no_exhaust');
+    expect(stats?.tags).toContain('burnout_no_forget');
   });
 
   it('knowledge_ward has a mastery table with 6 levels', () => {
