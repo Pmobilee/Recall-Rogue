@@ -851,13 +851,15 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   },
 
   foresight: {
+    // BATCH-ULTRA Cluster G: Foresight was 0 AP at all mastery levels — strictly dominant.
+    // Fix: free at mastery 0 (onboarding), 1 AP at mastery 1+ (restores decision tension).
     levels: [
-      { qpValue: 0, drawCount: 1, apCost: 0 },                   // L0: Free draw 1
-      { qpValue: 0, drawCount: 1 },                              // L1
-      { qpValue: 0, drawCount: 2 },                              // L2: Draw 2!
-      { qpValue: 0, drawCount: 2, tags: ['foresight_intent'] },  // L3: see enemy's NEXT intent too
-      { qpValue: 0, drawCount: 2 },                              // L4
-      { qpValue: 0, drawCount: 3, tags: ['foresight_intent'] },  // L5: free draw 3 + see next intent
+      { qpValue: 0, drawCount: 1, apCost: 0 },                            // L0: Free draw 1 — zero-cost for new players
+      { qpValue: 0, drawCount: 1, apCost: 1 },                            // L1: Draw 1, now costs 1 AP
+      { qpValue: 0, drawCount: 2, apCost: 1 },                            // L2: Draw 2!
+      { qpValue: 0, drawCount: 2, apCost: 1, tags: ['foresight_intent'] }, // L3: see enemy's NEXT intent too
+      { qpValue: 0, drawCount: 2, apCost: 1 },                            // L4
+      { qpValue: 0, drawCount: 3, apCost: 1, tags: ['foresight_intent'] }, // L5: draw 3 + see next intent
     ],
   },
 

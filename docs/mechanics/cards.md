@@ -408,6 +408,18 @@ Several mechanics have designed creative milestones at key mastery levels that c
 - Per-mechanic `getEffectiveApCost` checks for all mechanics with AP reductions
 - Spot-checks for all 9 bumped cards and 2 new tables
 
+### Foresight Mastery-Gated AP Cost (2026-04-11 — BATCH-ULTRA Cluster G)
+
+**Problem:** Foresight was 0 AP at all mastery levels, making it strictly dominant — always played, never suboptimal. T3 strategic analysis confirmed it was always the first card played regardless of board state.
+
+**Fix:** Mastery-gated cost in `MASTERY_STAT_TABLES` (src/services/cardUpgradeService.ts):
+- **L0: 0 AP** — stays free for onboarding; new players should not be punished for drawing
+- **L1-L5: 1 AP** — restores the tension between using Foresight vs spending AP on attacks/blocks
+
+`getEffectiveApCost(card)` reads the stat table override, so even cards with old `card.apCost=0` seeds return 1 AP at mastery 1+.
+
+**Tests:** `src/services/cardUpgradeService.test.ts` (10 tests) covers all 6 mastery levels, draw count progression, and stat-table-overrides-seed behavior.
+
 ### Tag System — How Tags Work in the Resolver
 
 Tags in `MasteryLevelStats.tags` are cumulative — a mechanic at L5 inherits all tags from lower levels that define them.
