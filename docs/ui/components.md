@@ -96,6 +96,33 @@ Card glow is **exclusively** driven by active chain color matching. Non-matching
 - Chain-match glow: inline style `filter: drop-shadow(0 0 6px {activeChainHex}99) drop-shadow(0 0 12px {activeChainHex}55)` — only applied when `isActiveChainMatch && !isSelected && !isDraggingThis && selectedIndex === null`. The charge drag animation overrides with a yellow glow during drag-into-charge-zone.
 - `.card--active-chain` class and chain pill pulse animation are unaffected — they continue to work independently.
 
+### CardHand unified playability predicates (2026-04-11 — Issues 6+10)
+
+**Root cause of Issues 6+10:** Two out-of-sync predicates existed in `CardHand.svelte`:
+
+1. **Visual gate** (`hasEnoughAp`) — only checked Quick Play cost: `max(0, effectiveCost - focusDiscount) <= apCurrent`. No surcharge.
+2. **Charge button disabled** — inline computation that correctly included the +1 surcharge (waived on surge / momentum match / active chain match).
+
+This caused: when AP=1, baseCost=1, NO chain match → QP showed "playable" (1≤1), but charge cost=2, button disabled. The card appeared interactive but clicking did nothing (Issue 6). Also: when AP=0, baseCost=1, chain match → card appeared playable but no action was available (Issue 10).
+
+**Fix:** Extracted pure helper functions to `src/ui/utils/cardPlayability.ts`. The template now uses `chargeAffordableForDrag` (already computed from the correct formula) as the single source of truth for BOTH the visual `.card-playable` class AND the charge button `disabled` state.
+
+**`card-playable` class** (landscape line 867, portrait line 1143): now `(!insufficientAp || chargeAffordableForDrag) && !isSelected && !isOther && selectedIndex === null`
+
+- `insufficientAp` still drives `.insufficient-ap` (red AP gem) — QP cost only, by design
+- `chargeAffordableForDrag` = `max(0, effectiveCost - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1) <= apCurrent`
+
+**Charge button** (landscape line 960, portrait line 1247): replaced duplicate inline computation with `{@const chargeAffordable = chargeAffordableForDrag}`. `chargeAffordableForDrag` is computed once per card in the `{#each}` scope and reused by both the visual gate and the button.
+
+**Utility functions** (`src/ui/utils/cardPlayability.ts`):
+- `canChargeCard(card, ctx: ChargeContext): boolean` — unified charge affordability check
+- `canQuickPlayCard(card, ctx): boolean` — QP affordability check
+- `isCardPlayable(card, ctx): boolean` — QP OR charge affordable (used as the "any playable path" check)
+- `getChargeApCost(card, ctx): number` — real charge cost with all waivers
+
+These are exported for unit testing. CardHand uses `chargeAffordableForDrag` (identical computation) directly in the template for efficiency.
+
+
 ### CardHand card-play animation phases
 
 Cards animate in place (no centering/floating to screen center). All three phases use `z-index: 60` instead of `z-index: 100`.

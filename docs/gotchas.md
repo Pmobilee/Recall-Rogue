@@ -1,5 +1,21 @@
 
 
+### 2026-04-11 — Two gates for card playability (Issues 6+10)
+
+**Symptom:** In combat, a card with baseCost=1 and AP=1 on an Obsidian chain showed as "playable" (no grey-out) but clicking did nothing because the charge button was disabled. Separately, a 0-AP player with a chain-matching card saw the card as "playable" even though neither QP nor charge were affordable.
+
+**Root cause:** Two independent predicates existed in `CardHand.svelte`:
+- `hasEnoughAp(card)` (visual gate, line 813/1094): only checked QP cost `max(0, effectiveCost - focusDiscount) <= apCurrent`. No surcharge factored in.
+- Charge button inline `chargeAffordable` (line 960/1248): correctly computed `QP_cost + 1_surcharge` with waivers for surge/momentum/chain-match.
+
+When the predicates diverged (AP=1, cost=1, no chain match → QP=1≤1=playable, charge=2>1=disabled) the card appeared interactive but all click paths immediately failed.
+
+**Fix (2026-04-11):** Extracted pure helpers to `src/ui/utils/cardPlayability.ts`. Changed `card-playable` to `(!insufficientAp || chargeAffordableForDrag)` — a card is visually playable when EITHER QP OR charge is affordable. Charge buttons now reference `chargeAffordableForDrag` (computed once per `{#each}` iteration) instead of a duplicate inline formula.
+
+`insufficientAp` is kept for the `.insufficient-ap` CSS class (red AP gem indicator) which is intentionally QP-only by design.
+
+**Unit tests:** `src/ui/utils/cardPlayability.test.ts` — 26 tests including both regression cases.
+
 ### 2026-04-11 — Commit-attribution detector (prototype) — cross-session bundling
 
 **Symptom:** When multiple agents stage files concurrently, whichever agent

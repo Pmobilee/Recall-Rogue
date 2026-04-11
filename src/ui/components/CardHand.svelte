@@ -862,7 +862,7 @@
       class:echo-card={false}
       class:trial-card={card.isMasteryTrial}
       class:insufficient-ap={insufficientAp}
-      class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
+      class:card-playable={(!insufficientAp || chargeAffordableForDrag) && !isSelected && !isOther && selectedIndex === null}
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-discard={cardAnim === 'discard'}
       class:card-reveal={isAnimating}
@@ -957,9 +957,8 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
-      {@const chargeAffordable = chargeApCost <= apCurrent}
-      {@const chargeApDisplay = String(chargeApCost)}
+      {@const chargeAffordable = chargeAffordableForDrag}
+      {@const chargeApDisplay = String(chargeApCostForDrag)}
       {@const apBadgeColor = chargeAffordable ? '#4ADE80' : '#EF4444'}
       <button
         class="charge-play-btn charge-play-btn-landscape"
@@ -1139,7 +1138,7 @@
       class:echo-card={false}
       class:trial-card={card.isMasteryTrial}
       class:insufficient-ap={insufficientAp}
-      class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
+      class:card-playable={(!insufficientAp || chargeAffordableForDrag) && !isSelected && !isOther && selectedIndex === null}
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-discard={cardAnim === 'discard'}
       class:card-reveal={isAnimating}
@@ -1245,9 +1244,8 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
-      {@const chargeAffordable = chargeApCost <= apCurrent}
-      {@const chargeApDisplay = String(chargeApCost)}
+      {@const chargeAffordable = chargeAffordableForDrag}
+      {@const chargeApDisplay = String(chargeApCostForDrag)}
       {@const apBadgeColor = chargeAffordable ? '#4ADE80' : '#EF4444'}
       <button
         class="charge-play-btn"
