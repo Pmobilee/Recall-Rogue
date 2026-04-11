@@ -3,6 +3,29 @@
  * Per DECKBUILDER.md §3.1.
  */
 
+/**
+ * A single sub-grouping within a curated deck.
+ *
+ * Either `factIds` or `chainThemeId` may drive fact membership:
+ * - `factIds` — the explicit list of fact IDs belonging to this sub-deck. Used by
+ *   knowledge decks that have hard unit boundaries (e.g. ap_biology units).
+ * - `chainThemeId` — when present and `factIds` is absent/empty, facts are
+ *   matched by their `chainThemeId` field at runtime. This is the canonical pattern
+ *   for language/vocabulary decks like `ancient_greece` where facts are grouped
+ *   by theme rather than an explicit list.
+ *
+ * Persisted to `curated.db.decks.sub_decks` as a JSON array by the build script.
+ * Rehydrated by `rowToDeckShell()` in `curatedDeckStore.ts`.
+ */
+export interface SubDeck {
+  id: string;
+  name: string;
+  /** Explicit fact membership. Absent on chainThemeId-only sub-decks (e.g. ancient_greece). */
+  factIds?: string[];
+  /** Numeric chain theme slot. Used instead of factIds on language/vocabulary decks. */
+  chainThemeId?: number;
+}
+
 /** A full curated deck loaded from JSON. */
 export interface CuratedDeck {
   id: string;
@@ -17,6 +40,19 @@ export interface CuratedDeck {
   synonymGroups: SynonymGroup[];
   questionTemplates: QuestionTemplate[];
   difficultyTiers: DifficultyTier[];
+  /**
+   * Optional groupings within the deck (e.g. AP Biology units, Medieval World regions).
+   * Present only for decks that define `sub_decks` in their JSON source.
+   * `undefined` (not an empty array) when absent — downstream code uses `!!deck.subDecks`
+   * to detect presence.
+   *
+   * Persisted to `curated.db.decks.sub_decks` as a JSON column and rehydrated by
+   * `rowToDeckShell()` in `curatedDeckStore.ts`. See `SubDeck` for the full shape.
+   *
+   * `ancient_greece` is the canonical example of the `chainThemeId`-only variant
+   * (no `factIds` — facts match by theme slot at runtime).
+   */
+  subDecks?: SubDeck[];
   /**
    * Runtime metadata only — NOT persisted to curated.db or the Zod schema.
    * Set by curatedDeckStore.ts during initialization to the number of fact rows

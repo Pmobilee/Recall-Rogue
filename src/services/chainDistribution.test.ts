@@ -12,7 +12,7 @@ import {
   extractTopicGroupsMultiDeck,
   type TopicGroup,
 } from './chainDistribution';
-import type { CuratedDeck, DeckFact } from '../data/curatedDeckTypes';
+import type { CuratedDeck, DeckFact, SubDeck } from '../data/curatedDeckTypes';
 import type { ReviewState } from '../data/types';
 
 // ---------------------------------------------------------------------------
@@ -40,8 +40,8 @@ function makeFact(id: string, overrides: Partial<DeckFact> = {}): DeckFact {
 function makeDeck(
   id: string,
   facts: DeckFact[],
-  subDecks?: Array<{ id: string; name: string; factIds?: string[]; chainThemeId?: number }>,
-): CuratedDeck & { subDecks?: Array<{ id: string; name: string; factIds?: string[]; chainThemeId?: number }> } {
+  subDecks?: SubDeck[],
+): CuratedDeck {
   return {
     id,
     name: id,

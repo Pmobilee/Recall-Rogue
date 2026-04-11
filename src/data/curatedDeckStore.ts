@@ -18,7 +18,7 @@
  * deck-info panel can show a warning badge to players importing broken decks.
  */
 
-import type { CuratedDeck, DeckFact, AnswerTypePool, SynonymGroup } from './curatedDeckTypes';
+import type { CuratedDeck, DeckFact, AnswerTypePool, SynonymGroup, SubDeck } from './curatedDeckTypes';
 import { parseDeckFact, parseAnswerTypePool, parseSynonymGroup } from './curatedDeckSchema';
 import { registerDeck } from './deckRegistry';
 import { registerDeckFacts, getSubDeckFactIds, getTagFactIds } from './deckFactIndex';
@@ -236,16 +236,11 @@ function loadDeck(deck: CuratedDeck, skippedFactCount = 0): void {
 
   loadedDecks.set(deckWithMeta.id, deckWithMeta);
 
-  // Build sub-deck fact mappings if the deck JSON contains sub-deck info.
-  // Sub-decks are detected by examining the registry entry's subDecks array
-  // when present in the deck JSON itself (non-standard extension).
-  const deckWithSubDecks = deckWithMeta as CuratedDeck & {
-    subDecks?: Array<{ id: string; name: string; factIds: string[] }>;
-  };
-
+  // Build sub-deck fact mappings. subDecks is now a first-class typed field on
+  // CuratedDeck — no runtime-widening cast needed.
   const subDecksRecord: Record<string, string[]> = {};
-  if (deckWithSubDecks.subDecks && Array.isArray(deckWithSubDecks.subDecks)) {
-    for (const sd of deckWithSubDecks.subDecks) {
+  if (deckWithMeta.subDecks && Array.isArray(deckWithMeta.subDecks)) {
+    for (const sd of deckWithMeta.subDecks) {
       if (sd.id && Array.isArray(sd.factIds)) {
         subDecksRecord[sd.id] = sd.factIds;
       }
@@ -253,7 +248,7 @@ function loadDeck(deck: CuratedDeck, skippedFactCount = 0): void {
   }
 
   // Register in deck registry (metadata only).
-  const registrySubDecks = deckWithSubDecks.subDecks?.map(sd => ({
+  const registrySubDecks = deckWithMeta.subDecks?.map((sd: SubDeck) => ({
     id: sd.id,
     name: sd.name,
     factCount: sd.factIds?.length ?? 0,
@@ -301,7 +296,16 @@ function loadDeck(deck: CuratedDeck, skippedFactCount = 0): void {
 // ---------------------------------------------------------------------------
 
 /** Map a raw deck row from the `decks` table to a partial CuratedDeck (without facts/pools/synonyms). */
-function rowToDeckShell(row: Record<string, unknown>): Omit<CuratedDeck, 'facts' | 'answerTypePools' | 'synonymGroups'> {
+export function rowToDeckShell(row: Record<string, unknown>): Omit<CuratedDeck, 'facts' | 'answerTypePools' | 'synonymGroups'> {
+  // Parse sub_decks JSON when present. Default to undefined (not []) so downstream
+  // code can use !!deck.subDecks to detect presence. Follows the same pattern as
+  // question_templates / difficulty_tiers, but omits the fallback default because
+  // an absent sub_decks column and an empty array have different semantics.
+  const subDecksRaw = row['sub_decks'];
+  const subDecks: SubDeck[] | undefined = subDecksRaw
+    ? (JSON.parse(String(subDecksRaw)) as SubDeck[])
+    : undefined;
+
   return {
     id: String(row['id']),
     name: String(row['name']),
@@ -312,6 +316,7 @@ function rowToDeckShell(row: Record<string, unknown>): Omit<CuratedDeck, 'facts'
     targetFacts: Number(row['target_facts']),
     questionTemplates: JSON.parse(String(row['question_templates'] ?? '[]')),
     difficultyTiers: JSON.parse(String(row['difficulty_tiers'] ?? '[]')),
+    subDecks,
   };
 }
 

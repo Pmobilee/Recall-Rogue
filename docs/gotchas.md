@@ -1,5 +1,15 @@
 
 
+### 2026-04-11 — curatedDeckStore silently dropped sub_decks column
+
+**What:** `rowToDeckShell()` in `curatedDeckStore.ts` never read the `sub_decks` column from the SQLite `decks` table. Every curated deck's `subDecks` was `undefined` at runtime even though the build script correctly wrote the JSON column. `medieval_world` showed 0 subdecks in the Study Temple UI; all AP decks (`ap_biology`, `ap_world_history`, `ap_human_geography`) fell through to the `chainDistribution` "Group N" fallback in combat instead of using their real unit names. `deckFactIndex` received no sub-deck mappings, so `getSubDeckFactIds()` always returned [].
+
+**Why it was missed:** The field was accessed via ad-hoc runtime-widening casts (`as CuratedDeck & { subDecks?: ... }`) instead of being a typed member on `CuratedDeck`. TypeScript could not warn on the missing shell mapping because the type did not require it. The casts made the code appear to work in tests that never loaded from SQLite.
+
+**Fix:** Promoted `subDecks` and the new `SubDeck` interface to first-class typed fields on `CuratedDeck` in `curatedDeckTypes.ts`. Added JSON parse of `sub_decks` in `rowToDeckShell()`. Removed all runtime-widening casts in `curatedDeckStore.ts` and `chainDistribution.ts`. Added unit test in `src/data/curatedDeckStore.test.ts`.
+
+**Lesson:** Ad-hoc type casts that extend an interface at call sites are a maintenance trap — schema drift between the build script and the row mapper becomes invisible to TypeScript. Promote optional persisted fields to the canonical interface.
+
 ### 2026-04-11 — Two gates for card playability (Issues 6+10)
 
 **Symptom:** In combat, a card with baseCost=1 and AP=1 on an Obsidian chain showed as "playable" (no grey-out) but clicking did nothing because the charge button was disabled. Separately, a 0-AP player with a chain-matching card saw the card as "playable" even though neither QP nor charge were affordable.

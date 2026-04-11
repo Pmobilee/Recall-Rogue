@@ -91,7 +91,7 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 | `answerTypePools` | `AnswerTypePool[]` | Facts grouped by answer format (name/year/term/place) |
 | `synonymGroups` | `SynonymGroup[]` | Facts sharing acceptable-answer synonym groups |
 | `difficultyTiers` | `DifficultyTier[]` | Fact IDs bucketed into `easy`, `medium`, `hard` |
-| `subDecks` | `{id,name,factIds}[]?` | Optional sub-groupings (e.g. Vocabulary/Kanji/Grammar for Japanese). Names should be descriptive and player-facing — avoid generic prefixes like "Unit N:" or opaque abbreviations. |
+| `subDecks` | `SubDeck[]?` | Optional sub-groupings (e.g. AP Biology units, Medieval World regions). Each entry: `{id, name, factIds?, chainThemeId?}`. Use `factIds` for explicit membership; use `chainThemeId` alone for language/vocabulary decks (e.g. `ancient_greece`). Persisted to `curated.db.decks.sub_decks` as JSON and rehydrated by `rowToDeckShell()` in `curatedDeckStore.ts`. Names should be descriptive — avoid generic prefixes like "Unit N:". |
 
 ### DeckFact Fields
 

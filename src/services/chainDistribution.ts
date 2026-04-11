@@ -166,16 +166,13 @@ export function extractTopicGroups(
   const runPool = new Set(factIds);
   const reviewMap = new Map(reviewStates.map(rs => [rs.factId, rs]));
 
-  // Cast to access runtime-extended subDecks field (matches curatedDeckStore.ts pattern).
+  // subDecks is a first-class typed field on CuratedDeck — no cast needed.
   // chainThemeId is optional — decks like ancient_greece use it instead of factIds.
-  const deckWithSubs = deck as CuratedDeck & {
-    subDecks?: Array<{ id: string; name: string; factIds?: string[]; chainThemeId?: number }>;
-  };
 
   // ── Priority 1: sub-decks ──────────────────────────────────────────────
-  if (deckWithSubs.subDecks && deckWithSubs.subDecks.length > 0) {
+  if (deck.subDecks && deck.subDecks.length > 0) {
     const groups: TopicGroup[] = [];
-    for (const sd of deckWithSubs.subDecks) {
+    for (const sd of deck.subDecks) {
       let sdFactIds: string[];
       if (sd.factIds && sd.factIds.length > 0) {
         // Sub-deck has an explicit factIds list — use it.
@@ -564,12 +561,9 @@ export function precomputeChainDistribution(
   // Get fact IDs to consider: filtered by subDeckId if specified.
   let factIds: string[];
   if (deckMode.subDeckId) {
-    // Cast to access runtime-extended subDecks field (matches extractTopicGroups pattern).
+    // subDecks is a first-class typed field on CuratedDeck — no cast needed.
     // chainThemeId is optional — sub-decks may use it instead of factIds.
-    const deckWithSubs = deck as typeof deck & {
-      subDecks?: Array<{ id: string; name: string; factIds?: string[]; chainThemeId?: number }>;
-    };
-    const subDeck = deckWithSubs.subDecks?.find(sd => sd.id === deckMode.subDeckId);
+    const subDeck = deck.subDecks?.find(sd => sd.id === deckMode.subDeckId);
     if (subDeck) {
       if (subDeck.factIds && subDeck.factIds.length > 0) {
         factIds = subDeck.factIds;
