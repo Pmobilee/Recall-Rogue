@@ -3806,25 +3806,37 @@ export function applyPendingChoice(
 }
 
 /**
- * Shared in-place swap helper for Transmute (encounter-only scope).
+ * Shared swap helper for Transmute (encounter-only scope).
  *
- * Searches all four piles for sourceCardId. When found, transforms it in-place:
- * - Overwrites mechanic fields (mechanicId, mechanicName, cardType, apCost, baseEffectValue,
- *   originalBaseEffectValue, chainType) with the first selected candidate.
- * - Sets isTransmuted=true and stashes full original card in originalCard for revert at encounter end.
- * - Keeps the card's id, factId, and position in its pile stable.
- * - Applies catch-up mastery to the new mechanic.
- * - At mastery 3+ with 2+ selections, extra selections are added as NEW transmuted cards in hand.
- *   These extras carry a stub originalCard (just id) so revertTransmutedCards removes them cleanly.
+ * Searches all four piles for sourceCardId. When found:
  *
- * If sourceCardId is not found in any pile, logs a warning and returns without mutating state.
+ * **routeThroughDrawPile = true** (picker/CC path, Issue 5):
+ *   - Removes the source card from its pile (splice — no in-place overwrite).
+ *   - Builds the new transmuted card and pushes it onto the TOP of drawPile
+ *     (drawPile is a stack; pop() draws from the end, so push() = top/next-draw).
+ *   - Extra selections (mastery 3+ 2-pick) are also pushed to drawPile top, in order.
+ *   - Returns the array of cards pushed to drawPile; the caller (resolveTransmutePick)
+ *     surfaces these as pickResolvedCards so the UI can trigger one draw per card.
+ *   - Does NOT touch the shuffle RNG — push() on an already-built drawPile is order
+ *     manipulation only; co-op seed safety is preserved.
+ *
+ * **routeThroughDrawPile = false** (auto/QP/CW path, no picker UI):
+ *   - Mutates the source card in-place inside its pile (original behaviour).
+ *   - Extra selections go directly into hand.
+ *   - Returns [].
+ *
+ * In both modes: isTransmuted=true + originalCard snapshot are set for
+ * revertTransmutedCards at encounter end.
+ *
+ * If sourceCardId is not found in any pile, logs a warning and returns [].
  */
 function applyTransmuteSwap(
   turnState: TurnState,
   sourceCardId: string,
   selectedCards: Card[],
-): void {
-  if (selectedCards.length === 0) return;
+  routeThroughDrawPile = false,
+): Card[] {
+  if (selectedCards.length === 0) return [];
 
   const { hand, discardPile, drawPile, exhaustPile } = turnState.deck;
 
@@ -3846,7 +3858,7 @@ function applyTransmuteSwap(
 
   if (!sourceCard || !sourcePile || sourceIdx < 0) {
     console.warn(`[turnManager] applyTransmuteSwap: source card ${sourceCardId} not found in any pile`);
-    return;
+    return [];
   }
 
   // Capture full original state for revert
@@ -3855,16 +3867,14 @@ function applyTransmuteSwap(
   // Gather current deck for catch-up mastery calculation (before mutation)
   const allDeckCards = [...drawPile, ...hand, ...discardPile, ...exhaustPile];
 
-  // Transform first selection in-place (factId preserved; id gets new unique value so
-  // CardHand's $effect ID-tracking detects it as a new card and fires card-drawn-in animation
-  // when drawn into hand. originalCard preserves the old id for revert dedup.)
   const primary = selectedCards[0];
   const primaryMastery = computeCatchUpMastery(primary, allDeckCards);
-  sourcePile[sourceIdx] = {
+
+  const primaryCard: Card = {
     ...sourceCard,
-    // New unique id so CardHand's $effect sees this as a newly drawn card
+    // New unique id so CardHand's $effect sees this as a newly drawn card when it enters hand
     id: `${sourceCard.id}-tx-${Date.now()}`,
-    // Mechanic fields overwritten
+    // Mechanic fields overwritten with chosen candidate
     mechanicId: primary.mechanicId,
     mechanicName: primary.mechanicName,
     cardType: primary.cardType,
@@ -3879,12 +3889,13 @@ function applyTransmuteSwap(
     originalCard: originalCardSnapshot,
   };
 
-  // Extra selections (mastery 3+ CC 2-pick): add as new transmuted cards in hand
+  // Build extra cards (mastery 3+ CC 2-pick)
+  const extraCards: Card[] = [];
   for (let i = 1; i < selectedCards.length; i++) {
     const extra = selectedCards[i];
     const extraMastery = computeCatchUpMastery(extra, allDeckCards);
     // Stub originalCard marks this as a "remove on revert" extra (no real original to restore)
-    const extraCard: Card = {
+    extraCards.push({
       ...extra,
       id: `transmute_extra_${Math.random().toString(36).slice(2, 10)}`,
       factId: originalCardSnapshot.factId,
@@ -3892,23 +3903,48 @@ function applyTransmuteSwap(
       isUpgraded: extraMastery > 0,
       isTransmuted: true,
       originalCard: { id: `transmute_extra_remove_${Math.random().toString(36).slice(2, 10)}` } as Card,
-    };
-    hand.push(extraCard);
+    });
+  }
+
+  if (routeThroughDrawPile) {
+    // Picker/CC path (Issue 5): remove source from its pile, push new card(s) to draw pile top.
+    // drawPile is a stack — pop() draws from the END, so push() places a card on top (next to draw).
+    // This does NOT invoke the RNG shuffle path (reshuffleDiscard); seed safety is preserved.
+    sourcePile.splice(sourceIdx, 1);
+    drawPile.push(primaryCard);
+    for (const ec of extraCards) {
+      drawPile.push(ec);
+    }
+    return [primaryCard, ...extraCards];
+  } else {
+    // Auto/QP/CW path: mutate the source slot in-place (original behaviour).
+    sourcePile[sourceIdx] = primaryCard;
+    for (const ec of extraCards) {
+      hand.push(ec);
+    }
+    return [];
   }
 }
 
 /**
- * Resolve a Transmute card pick (Charge Correct path) — encounter-only in-place swap.
- * Finds the source card in any pile, transforms it in-place with the selected candidate(s),
- * sets isTransmuted=true + originalCard for revert at encounter end.
- * Mastery 3+ with 2 selections: first replaces the source, second is added to hand.
+ * Resolve a Transmute card pick (Charge Correct path).
+ *
+ * Removes the source card from its pile, pushes the chosen card(s) onto the TOP
+ * of the draw pile (next to be drawn), and returns the pushed cards as
+ * pickResolvedCards.
+ *
+ * **UI hand-off:** after calling this, the UI MUST call `drawHand(deck, 1)` once
+ * for each element in the returned array to trigger the normal draw animation into
+ * hand. `drawHand` with an explicit count bypasses the hand-size cap, so the draw
+ * will succeed even if the hand is already at HAND_SIZE. See `deckManager.ts`
+ * `drawHand()` — explicit-count branch (count !== undefined skips the cap clamp).
  */
 export function resolveTransmutePick(
   turnState: TurnState,
   sourceCardId: string,
   selectedCards: Card[],
-): void {
-  applyTransmuteSwap(turnState, sourceCardId, selectedCards);
+): Card[] {
+  return applyTransmuteSwap(turnState, sourceCardId, selectedCards, true);
 }
 
 /**

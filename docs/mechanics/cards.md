@@ -464,20 +464,38 @@ The run starts with 10 cards: **5 Strike + 4 Block + 1 Transmute**. Transmute re
 | Block | 4 | 3 block |
 | Transmute | 1 | Transforms 1 deck card for the encounter |
 
-**Transmute mechanic (encounter-only scope, 2026-04-09):**
+**Transmute mechanic (encounter-only scope, 2026-04-09, draw-pile routing added 2026-04-11 Issue 5):**
 
 Transmute transforms a source card into a new card for the current encounter only. At encounter end, `revertTransmutedCards()` restores all cards with `isTransmuted=true` back to their originals.
 
-- **Quick Play (QP):** Auto-transforms the source card into 1 randomly chosen candidate. No picker shown. Resolves immediately via `applyTransmuteAuto` in the effect result.
-- **Charge Correct (CC):** Opens the CardPickerOverlay. Player chooses 1 of 3 candidates (2 at mastery 3+). Resolved via `resolveTransmutePick()`.
-- **Charge Wrong (CW):** Same as QP — auto-picks 1 random candidate. Card still resolves; wrong answer is never a dead play.
+- **Quick Play (QP):** Auto-transforms the source card into 1 randomly chosen candidate. No picker shown. Resolves immediately via `applyTransmuteAuto` in the effect result. The source card is mutated **in-place** (stays in its current pile position).
+- **Charge Correct (CC):** Opens the CardPickerOverlay. Player chooses 1 of 3 candidates (2 at mastery 3+). Resolved via `resolveTransmutePick()`. **The chosen card routes through the draw pile top** — see picker resolution flow below.
+- **Charge Wrong (CW):** Same as QP — auto-picks 1 random candidate. Card still resolves; wrong answer is never a dead play. In-place mutation (same as QP).
+
+**Picker resolution flow (CC path, Issue 5 — 2026-04-11):**
+
+After the player selects a card in the CardPickerOverlay, `resolveTransmutePick()` in `turnManager.ts`:
+1. Locates the source card across all four piles (hand/drawPile/discardPile/exhaustPile).
+2. **Splices** the source card out of its pile (does NOT overwrite in-place).
+3. Builds the new transmuted card with a fresh unique id (`${oldId}-tx-${Date.now()}`).
+4. **Pushes** the new card onto the TOP of `drawPile` (`push()` = top because drawPile is a stack — `pop()` draws from the end).
+5. Returns the pushed card(s) as `Card[]` (`pickResolvedCards`).
+
+The UI (CardCombatOverlay) then calls `drawHand(deck, 1)` once per element in `pickResolvedCards` to trigger the normal draw animation into hand. `drawHand` with an explicit count bypasses the hand-size cap (`count !== undefined` skips the HAND_SIZE clamp in deckManager.ts), so the draw succeeds even when the hand is full.
+
+This routing reuses the existing draw animation for free — the player sees their chosen card fly into their hand rather than teleporting.
+
+**Draw pile ordering note:** `drawPile` is a stack — `pop()` draws from the END of the array. `push()` adds to the end (top). `unshift()` adds to the front (bottom, drawn last). Never confuse the two.
 
 **Implementation details:**
-- Source card is located across all four piles (hand/drawPile/discardPile/exhaustPile) by `applyTransmuteSwap()` helper in `turnManager.ts`.
-- Source card is mutated in-place (factId preserved; **id gets a new unique value** `${oldId}-tx-${Date.now()}`). This lets CardHand's `$effect` ID-tracking detect the card as a newly drawn card when it enters the hand, firing the `card-drawn-in` animation. Original id is preserved in `originalCard.id` for encounter-end revert dedup.
-- Original fields saved to `originalCard` snapshot. `isTransmuted=true` set.
-- Mastery 3+ CC with 2 picks: first selection replaces the source card; second is added to hand with a sentinel `originalCard.id` (`transmute_extra_remove_*`) so `revertTransmutedCards()` removes it entirely.
+- `applyTransmuteSwap()` internal helper handles both paths via `routeThroughDrawPile` parameter (default `false` for auto path).
+- Source card's factId is preserved — the transmuted card keeps its fact binding.
+- New unique id on the transmuted card so CardHand's `$effect` ID-tracking detects it as a new card entering the hand, firing the `card-drawn-in` animation.
+- Original fields saved to `originalCard` snapshot. `isTransmuted=true` set on the new card.
+- Mastery 3+ CC with 2 picks: primary card pushed first, extra card pushed second (becomes the topmost draw). Both returned in `pickResolvedCards`. UI draws both.
+- Extra card (second pick) uses sentinel `originalCard.id` (`transmute_extra_remove_*`) so `revertTransmutedCards()` removes it entirely at encounter end.
 - `revertTransmutedCards(deck)` walks hand/draw/discard piles. Cards with `isTransmuted && originalCard` are restored; those with sentinel ids are dropped.
+- RNG safety: `push()` on an already-built drawPile is order manipulation only — it does NOT invoke `reshuffleDiscard()` or advance any RNG seed. Co-op seed is safe.
 
 ---
 
