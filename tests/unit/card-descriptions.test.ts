@@ -124,7 +124,7 @@ describe('card-descriptions — specific mechanics', () => {
     const card = makeCard('corrode', { cardType: 'debuff', baseEffectValue: 2 });
     const detailed = getDetailedCardDescription(card);
     expect(detailed).toContain('ALL');
-    expect(detailed).toContain('Weakness');
+    expect(detailed).toContain('Drawing Blanks');
     // CC should NOT mention bonus damage
     expect(detailed.toLowerCase()).not.toContain('bonus damage');
   });
@@ -307,7 +307,7 @@ describe('card-descriptions — 2026-04-11 audit fix: power reads from stat tabl
     const card = makeCard('warcry', { cardType: 'buff', baseEffectValue: 0 });
     const detailed = getDetailedCardDescription(card);
     // stat table L0 extras.str=1; description reads this
-    expect(detailed).toContain('+1 Strength');
+    expect(detailed).toContain('+1 Clarity');
     expect(detailed).toContain('CC:');
   });
 

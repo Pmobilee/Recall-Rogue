@@ -10,15 +10,15 @@ export const KEYWORD_DEFINITIONS: Record<string, KeywordDef> = {
     description: 'Absorbs incoming damage before HP. Resets at start of your turn.',
   },
   poison: {
-    name: 'Poison',
+    name: 'Doubt',
     description: 'Deals damage at the start of each turn. Decreases by 1 each turn.',
   },
   weakness: {
-    name: 'Weakness',
+    name: 'Drawing Blanks',
     description: 'Enemy deals 25% less damage while weakened.',
   },
   vulnerable: {
-    name: 'Vulnerable',
+    name: 'Exposed',
     description: 'Target takes 50% more damage while vulnerable.',
   },
   thorns: {
