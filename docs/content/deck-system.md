@@ -268,14 +268,14 @@ mixed in the same pool as text-quiz facts. human_anatomy required 11 visual pool
 
 ### Batch Verifier — `scripts/verify-all-decks.mjs`
 
-Runs 22 checks across all decks. Must produce 0 failures before committing deck changes.
+Runs 35 checks across all decks. Must produce 0 failures before committing deck changes.
 
 ```bash
 node scripts/verify-all-decks.mjs           # Summary table
 node scripts/verify-all-decks.mjs --verbose  # Per-fact failure details
 ```
 
-**22 checks — 13 structural + 6 content quality + 1 pool homogeneity + 2 answer-quality:**
+**35 checks — 13 structural + 6 content quality + 1 pool homogeneity + 2 answer-quality + 13 additional checks added 2026-04-09 to 2026-04-11:**
 
 Structural (FAIL): braces in answer/question, answer-in-distractors, duplicate distractors, distractor count, pool size, missing fields, non-numeric bracket distractors, missing explanation, duplicate questions, orphaned pool refs, empty pools, template-pool placeholder compatibility.
 
@@ -286,6 +286,14 @@ Answer quality (2 new checks):
 - Answer appears in question (WARN): correctAnswer text (>5 chars) appears verbatim in quizQuestion — self-answering question (skip vocab).
 
 Pool homogeneity (check #20, non-vocab only): Per pool, if the max/min display-length ratio of non-bracket answers exceeds 3x → FAIL (displayed); exceeds 2x → WARN. Catches pools that mix very short answers with long ones, making the correct answer visually obvious. Bracket-number answers are excluded (numerical distractors are algorithmic). NOTE: Pool-homogeneity FAIL from `verify-all-decks.mjs` is now a hard gate — all 41 knowledge decks have 0 verify-all-decks FAIL as of 2026-04-09. Separate quiz-audit `length_mismatch` failures (from `quiz-audit.mjs --full`) are also now at 0. Use `scripts/fix-pool-heterogeneity.mjs` to auto-split heterogeneous pools; manually resolve outlier facts that cannot be auto-split. Use `pool-homogeneity-analysis.mjs` for detailed per-pool analysis.
+
+Check #31 — Raw braces in `pool.syntheticDistractors` (HARD FAIL): Any `syntheticDistractor` containing `{` or `}` is a bracket-notation token that will display literally. E.g., `{7}` instead of `7`. Added 2026-04-10.
+
+Check #34 — Non-string syntheticDistractors (HARD FAIL): A non-string entry (number, null, object) will crash `selectDistractors` with TypeError. All syntheticDistractors must be strings. Added 2026-04-11.
+
+Check #35 — Raw braces in `fact.distractors` (HARD FAIL, 2026-04-11): A bracket-notation token in a fact's own `distractors` array (e.g., `"{1988}"`) displays literally as `{1988}` in the quiz UI. Root cause: generator produced distractors using `{${value}}` template syntax. Fix: use `String(value)`. Added after 271 affected facts across 14 decks found in BATCH-ULTRA T4 (issue-1744339200000-04-001).
+
+**Synonym discriminator pattern (medical terminology):** When a pool contains two facts with the same `correctAnswer` (e.g., `nephr/o` and `ren/o` both mean "Kidney"), append the combining form as a parenthetical discriminator: `"Kidney (nephr/o)"` vs `"Kidney (ren/o)"`. Add the plain base value to `acceptableAlternatives` for typed-answer grading. Set `homogeneityExempt: true` on the pool if the discriminators cause length-ratio violations (medical combining forms have inherent length variation — `or/o` vs `ophthalm/o`). Applies to all synonym-heavy domains: medical roots, linguistic synonyms.
 
 ### Self-Answering Fix — `scripts/fix-self-answering.mjs`
 
