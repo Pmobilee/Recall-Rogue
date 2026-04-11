@@ -729,6 +729,27 @@ function verifyDeck(deckId, deck) {
     }
   }
 
+  // Check #34: non-string syntheticDistractors (HARD FAIL — runtime TypeError)
+  // Runtime selectDistractors calls .toLowerCase() on every synthetic distractor.
+  // A non-string entry (number, null, object) crashes combat with a TypeError.
+  // Example 2026-04-10: fifa_world_cup mens_wc_years and womens_wc_years pools had
+  // numeric integer distractors like 1926 instead of "1926", crashing the quiz engine
+  // on any year-pool question. Fix: coerce all non-string distractors to strings in
+  // the deck JSON, or re-run the generator with correct JSON serialization.
+  // Added 2026-04-11 after the fifa_world_cup runtime crash incident.
+  for (const pool34 of (deck.answerTypePools || [])) {
+    const syn34 = pool34.syntheticDistractors || [];
+    for (let i = 0; i < syn34.length; i++) {
+      if (typeof syn34[i] !== 'string') {
+        addDeckIssue(
+          'Check #34 FAIL: pool "' + pool34.id + '" syntheticDistractor[' + i +
+          '] is ' + (typeof syn34[i]) + ' (' + JSON.stringify(syn34[i]) +
+          ') — runtime selectDistractors will throw TypeError. All syntheticDistractors MUST be strings.'
+        );
+      }
+    }
+  }
+
   // Build a set of factIds that have duplicate questions (for per-fact flagging)
   const dupeFactIdSet = new Set();
   for (const [, ids] of dupeQuestions) {

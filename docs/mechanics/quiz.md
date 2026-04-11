@@ -196,6 +196,7 @@ Key rules for synthetic members:
 - A synthetic answer equal to `correctFact.correctAnswer` is always excluded (case-insensitive)
 - They appear as distractors only — never as quiz questions (`quizQuestion: ''`)
 - Content authors set this field in the deck JSON; it is never auto-generated at runtime
+- **Defense-in-depth:** non-string entries in `syntheticDistractors` (e.g. a numeric value from a JSON authoring mistake) are skipped with a `console.warn` rather than crashing live combat. The warn message includes the pool id and the malformed value for diagnosis.
 
 #### Pool Sizing Guidelines
 

@@ -156,10 +156,19 @@ export function selectDistractors(
   // This allows the scoring loop and selection loop to treat them uniformly
   // with real facts without special-casing their IDs everywhere.
   if (answerPool.syntheticDistractors) {
-    for (const synAnswer of answerPool.syntheticDistractors) {
-      const synId = `_synthetic_${synAnswer}`;
+    for (const rawSyn of answerPool.syntheticDistractors) {
+      // Defense-in-depth: malformed deck data can contain non-string synthetic distractors
+      // (e.g. numeric values from a JSON authoring mistake). Skip and warn rather than crash.
+      if (typeof rawSyn !== 'string') {
+        console.warn(
+          '[selectDistractors] non-string syntheticDistractor in pool',
+          answerPool.id, '—', JSON.stringify(rawSyn),
+        );
+        continue;
+      }
+      const synId = `_synthetic_${rawSyn}`;
       if (!factById.has(synId)) {
-        factById.set(synId, makeSyntheticFact(synAnswer, answerPool.id));
+        factById.set(synId, makeSyntheticFact(rawSyn, answerPool.id));
       }
     }
   }
@@ -300,7 +309,12 @@ export function selectDistractors(
   // Lower than real pool members (1.0 base) so real facts are always preferred,
   // but they still beat the fallback path when the real pool is too small.
   if (answerPool.syntheticDistractors) {
-    for (const synAnswer of answerPool.syntheticDistractors) {
+    for (const rawSyn of answerPool.syntheticDistractors) {
+      // Defense-in-depth: skip non-string synthetic distractors from malformed deck data.
+      // The same guard in the factById-build loop above already warned; skip silently here.
+      if (typeof rawSyn !== 'string') continue;
+
+      const synAnswer = rawSyn;
       const synId = `_synthetic_${synAnswer}`;
       // Skip if this synthetic answer is identical to the correct display answer
       if (synAnswer.toLowerCase() === correctDisplayAnswer.toLowerCase()) continue;

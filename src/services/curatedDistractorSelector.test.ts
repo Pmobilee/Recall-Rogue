@@ -3,7 +3,7 @@
  * synthetic distractor members, pool size viability, and fallback behavior.
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { selectDistractors, getDistractorCount } from './curatedDistractorSelector';
 import type { DeckFact, AnswerTypePool, SynonymGroup } from '../data/curatedDeckTypes';
 import { ConfusionMatrix } from './confusionMatrix';
@@ -258,6 +258,44 @@ describe('selectDistractors — synthetic distractors', () => {
     // Without synthetics the pool is too small — should use fallback
     const answers = result.distractors.map(d => d.correctAnswer);
     expect(answers.some(a => ['FB1', 'FB2', 'FB3'].includes(a))).toBe(true);
+  });
+
+  it('does not crash when syntheticDistractors contains non-string values (malformed deck data)', () => {
+    // Regression guard: fifa_world_cup.json had numeric syntheticDistractors that crashed
+    // selectDistractors at synAnswer.toLowerCase() with "not a function".
+    const realFacts = [
+      makeFact('f1', 'Brazil'),
+      makeFact('f2', 'Germany'),
+      makeFact('f3', 'Italy'),
+      makeFact('f4', 'France'),
+    ];
+    const correctFact = makeFact('correct', 'Argentina', {
+      answerTypePoolId: 'pool_main',
+      distractors: ['FallbackA', 'FallbackB'],
+    });
+    // Intentionally inject numeric values to simulate malformed deck JSON
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const syntheticDistractors: any[] = [4, 'Spain', null, 'England'];
+    const pool = makePool([...realFacts.map(f => f.id), correctFact.id], syntheticDistractors);
+    const allFacts = [...realFacts, correctFact];
+
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    let result: ReturnType<typeof selectDistractors> | undefined;
+    expect(() => {
+      result = selectDistractors(correctFact, pool, allFacts, noSynonymGroups, emptyConfusion, null, 2, 1);
+    }).not.toThrow();
+
+    // Non-string entries should have been skipped, valid strings should still work
+    expect(result).toBeDefined();
+    expect(result!.distractors.length).toBeGreaterThan(0);
+
+    // Exactly two non-string entries (4 and null) should have produced warn calls
+    const warnCalls = warnSpy.mock.calls.filter(c =>
+      String(c[0]).includes('[selectDistractors]'),
+    );
+    expect(warnCalls.length).toBe(2);
+
+    warnSpy.mockRestore();
   });
 });
 

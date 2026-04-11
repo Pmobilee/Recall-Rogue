@@ -2312,3 +2312,16 @@ node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs --stamp-regis
 ```
 
 **If any probe FAILs,** the charter needs another pass. File the specific rule that didn't land as an urgent follow-up — the rule is useless until it lands behaviorally.
+
+### 2026-04-11 — fifa_world_cup numeric syntheticDistractors crashed combat (Sev-2 latent)
+
+**What:** `data/decks/fifa_world_cup.json` pools `mens_wc_years` and `womens_wc_years` contained 15 numeric (integer) `syntheticDistractors` — e.g. `1926`, `1942`, `1993` — instead of quoted strings like `"1926"`. The runtime `selectDistractors` at `src/services/curatedDistractorSelector.ts:306` calls `.toLowerCase()` on every synthetic distractor, crashing with `TypeError: synAnswer.toLowerCase is not a function` the moment a player drew a year-pool question.
+
+**Why it happened:** The deck was authored by a script that wrote numeric literals for year distractors instead of JSON strings. No existing `verify-all-decks.mjs` check enforced the string type.
+
+**Fix:** Three-part fix landed in Phase 1 of the 2026-04-10 audit cleanup:
+1. Coerced all 15 numeric entries in fifa_world_cup.json to strings.
+2. Added a defensive `typeof === 'string'` guard at the top of the synthetic-distractor loop in `curatedDistractorSelector.ts` — non-string entries are now warn-logged and skipped instead of crashing combat.
+3. Added `verify-all-decks.mjs` Check #34 (HARD FAIL) that rejects any non-string syntheticDistractors entry at deck-verification time, preventing recurrence.
+
+**Lesson:** Untyped JSON deck fields need explicit structural checks. Any pool field iterated by the runtime that assumes a type must have a matching Check in `verify-all-decks.mjs`. When adding a new pool field, add the type check in the same commit.
