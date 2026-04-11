@@ -2515,3 +2515,17 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 **Fix:** Added a structural skip clause in the `json_glob` loop, right after JSON parse: if the file has no `id` field AND has a `decks` array, log a `[skip]` notice and `continue`. This is the correct generalizable check — it will also catch any future non-deck listing files that land in `data/decks/`.
 
 **After fix:** Sync output shows `[skip] manifest.json — not a deck file (has 'decks' array, no 'id')`. Decks table now shows `98 active (1 deprecated)` — the old `manifest` entry is preserved as `deprecated` per the sync script's historical-tracking behavior. Active deck count is 98.
+
+### 2026-04-11 — {N} bracket-notation tokens in fact-level distractors (BATCH-ULTRA T4)
+
+**What:** 270 facts across 14 curated decks had bracket-notation tokens (e.g. `{1988}`, `{1979}`) in their `distractors` arrays instead of plain strings. In `facts.db` (built from `src/data/seed/bridge-curated.json`) this manifested as 118 facts (a subset of the 270 in the curated decks). These displayed as `{1988}` literally in the quiz UI instead of `1988` because `quizService.ts:getQuizChoices()` applies `displayAnswer()` only to `correctAnswer`, not to the distractors array.
+
+**Root cause:** The deck generator produced numeric distractors by formatting them as bracket-notation tokens (matching the `correctAnswer` format of `{1988}`). This was incorrect: `correctAnswer` uses bracket notation to signal the `displayAnswer()` rendering pipeline; distractors bypass that pipeline and must always be plain strings.
+
+**Affected decks:** pop_culture (86 facts), anime_manga (44 facts), ap_biology (37 facts), dinosaurs (33 facts), ap_world_history (19 facts), philosophy (12 facts), ap_chemistry (12 facts), us_presidents (8 facts), ap_psychology (7 facts), nasa_missions (6 facts), ap_physics_1 (4 facts), ap_human_geography (1 fact), egyptian_mythology (1 fact), human_anatomy (1 fact). Total: 271 facts (270 numeric + 1 text: `{any value}` / `{depends on mixture}` in ap_chemistry).
+
+**Fix:** Strip all bracket-notation tokens from `fact.distractors` in JSON deck files using `re.sub(r'\{([^}]+)\}', r'\1', d)`. Add Check #35 to `scripts/verify-all-decks.mjs` to detect this pattern in fact-level distractors going forward. Root cause: generator must use `String(value)` not `` `{${value}}` `` when building distractors for numeric facts.
+
+**Detection:** Check #31 (existing) only checked `pool.syntheticDistractors`. Check #35 (new, 2026-04-11) now also checks `fact.distractors`.
+
+**Verified fixed:** `facts.db` count `SELECT COUNT(*) FROM facts WHERE distractors LIKE '%{%'` = 0 (was 118).

@@ -753,6 +753,25 @@ function verifyDeck(deckId, deck) {
     }
   }
 
+
+  // Check #35: bracket-notation tokens in fact-level distractors (HARD FAIL)
+  // Detects distractors like '{1988}' in a fact's own `distractors` array.
+  // These display literally as '{1988}' in the quiz UI instead of '1988' because
+  // quizService.ts applies displayAnswer() only to correctAnswer, not to distractors.
+  // Root cause: the deck generator wrapped numeric distractor values in bracket notation
+  // to match the correctAnswer format - but distractors must always be plain strings.
+  // 2026-04-11: Added after 270 affected facts found across 14 decks (issue-1744339200000-04-001).
+  for (const fact35 of (deck.facts || [])) {
+    const ds35 = fact35.distractors || [];
+    for (const d35 of ds35) {
+      if (typeof d35 !== 'string') continue;
+      if (d35 === '{___}') continue; // fill-in-blank token - never a distractor
+      if (/[{}]/.test(d35)) {
+        addDeckIssue('Check #35 FAIL: fact "' + fact35.id + '" distractor contains raw brace - bracket-notation leak: ' + JSON.stringify(d35) + ' - strip braces from fact.distractors (plain numbers, not bracket tokens)');
+      }
+    }
+  }
+
   // Build a set of factIds that have duplicate questions (for per-fact flagging)
   const dupeFactIdSet = new Set();
   for (const [, ids] of dupeQuestions) {
