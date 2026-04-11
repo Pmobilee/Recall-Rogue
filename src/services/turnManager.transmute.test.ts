@@ -196,6 +196,7 @@ function makeCard(id: string, mechanicId = 'strike', cardType: Card['cardType'] 
     id,
     factId: `fact_${id}`,
     cardType,
+    domain: 'general_knowledge',
     mechanicId,
     mechanicName: mechanicId,
     chainType: 0,
@@ -210,15 +211,16 @@ function makeCard(id: string, mechanicId = 'strike', cardType: Card['cardType'] 
 
 /** Minimal CardRunState stub. */
 function makeDeck(overrides: Partial<CardRunState> = {}): CardRunState {
+  // Minimal stub — CardRunState has many required fields not needed by these tests.
+  // Cast via unknown so TypeScript accepts the partial stub.
   return {
     hand: [],
     drawPile: [],
     discardPile: [],
     exhaustPile: [],
-    passiveEffects: [],
     factCooldown: [],
     ...overrides,
-  };
+  } as unknown as CardRunState;
 }
 
 /** Minimal TurnState stub. */
@@ -236,10 +238,12 @@ function makeTurnState(deck: CardRunState): TurnState {
     enemy: null as unknown as TurnState['enemy'],
     playerState: {
       hp: 50,
-      maxHp: 50,
+      maxHP: 50,
       shield: 0,
       statusEffects: [],
-    } as TurnState['playerState'],
+      hintsRemaining: 1,
+      cardsPlayedThisTurn: 0,
+    } as unknown as TurnState['playerState'],
     activeRelics: [],
     inscriptions: [],
     focusReady: false,

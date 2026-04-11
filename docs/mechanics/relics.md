@@ -68,7 +68,16 @@ Reroll costs 50 gold (`RELIC_REROLL_COST`), max 1 reroll per selection (`RELIC_R
 `generateMiniBossRelicChoices()` presents 3 options using standard rarity weights.
 
 ### Shop
-Relics appear in the shop at rarity-based gold prices.
+Relics appear in the shop at rarity-based gold prices (T1.3 2026-04-11: linear-mapped from [100,400] to [40,120] range per WAVE-A economy fix):
+
+| Rarity | Base Price | Min (clamped) | Max (clamped) |
+|---|---|---|---|
+| common | 40g | 40g | 40g |
+| uncommon | 55g | 40g | 55g |
+| rare | 80g | 40g | 80g |
+| legendary | 120g | 40g | 120g |
+
+Floor discounts (3% per floor, max 40%) apply before clamping. ,  in .
 
 ### Eligibility (`getEligibleRelicPool`)
 - Starter relics (`isStarter: true` or `startsUnlocked: true`): always eligible

@@ -3,9 +3,9 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { removalPrice, priceShopCards, calculateShopPrice } from './shopService';
+import { removalPrice, priceShopCards, calculateShopPrice, generateShopRelics } from './shopService';
 import type { Card } from '../data/card-types';
-import { SHOP_CARD_PRICE_V2 } from '../data/balance';
+import { SHOP_CARD_PRICE_V2, SHOP_RELIC_MIN_PRICE, SHOP_RELIC_MAX_PRICE } from '../data/balance';
 
 // ─── removalPrice ────────────────────────────────────────────────────────────
 
@@ -113,5 +113,41 @@ describe('calculateShopPrice', () => {
 
   it('caps discount at 40%', () => {
     expect(calculateShopPrice(100, 50)).toBe(60); // max 40% off
+  });
+});
+
+// ─── Relic price floor/cap (T1.3 2026-04-11) ─────────────────────────────────
+
+function makeRelic(id: string, rarity: 'common' | 'uncommon' | 'rare' | 'legendary') {
+  return { id, rarity, name: id, description: '', trigger: 'permanent', effect: () => {} } as unknown as import('../data/relics/types').RelicDefinition;
+}
+
+describe('generateShopRelics price clamping', () => {
+  const commonRelic = makeRelic('test_common', 'common');
+  const legendaryRelic = makeRelic('test_legendary', 'legendary');
+
+  it('common relic at floor 0 costs exactly 40g (new base = floor)', () => {
+    const result = generateShopRelics(0, [commonRelic], 1);
+    expect(result[0].price).toBe(40);
+  });
+
+  it('common relic at floor 20 (max discount) stays clamped at 40g minimum', () => {
+    // 40 * (1 - min(20*0.03, 0.40)) = 40 * 0.60 = 24 → clamped to 40
+    const result = generateShopRelics(20, [commonRelic], 1);
+    expect(result[0].price).toBeGreaterThanOrEqual(SHOP_RELIC_MIN_PRICE);
+  });
+
+  it('legendary relic at floor 0 costs exactly 120g (new cap)', () => {
+    const result = generateShopRelics(0, [legendaryRelic], 1);
+    expect(result[0].price).toBeLessThanOrEqual(SHOP_RELIC_MAX_PRICE);
+    expect(result[0].price).toBeGreaterThanOrEqual(SHOP_RELIC_MIN_PRICE);
+  });
+
+  it('SHOP_RELIC_MIN_PRICE is 40', () => {
+    expect(SHOP_RELIC_MIN_PRICE).toBe(40);
+  });
+
+  it('SHOP_RELIC_MAX_PRICE is 120', () => {
+    expect(SHOP_RELIC_MAX_PRICE).toBe(120);
   });
 });

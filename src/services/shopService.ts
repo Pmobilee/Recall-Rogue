@@ -11,6 +11,8 @@ import {
   SHOP_RELIC_COUNT,
   SHOP_CARD_COUNT,
   SHOP_RELIC_PRICE,
+  SHOP_RELIC_MIN_PRICE,
+  SHOP_RELIC_MAX_PRICE,
   SHOP_CARD_PRICE_V2,
   SHOP_FLOOR_DISCOUNT_PER_FLOOR,
   SHOP_MAX_DISCOUNT,
@@ -118,10 +120,13 @@ export function generateShopRelics(
     if (!selected) break;
     const idx = remainingRelics.findIndex(r => r.id === selected.id);
     if (idx !== -1) remainingRelics.splice(idx, 1);
-    const basePrice = SHOP_RELIC_PRICE[selected.rarity] ?? 100;
+    const basePrice = SHOP_RELIC_PRICE[selected.rarity] ?? 80;
+    const rawPrice = calculateShopPrice(basePrice, floor);
+    // Enforce economy floor/cap (T1.3 2026-04-11): relics always between 40g and 120g.
+    const price = Math.max(SHOP_RELIC_MIN_PRICE, Math.min(SHOP_RELIC_MAX_PRICE, rawPrice));
     relics.push({
       relic: selected,
-      price: calculateShopPrice(basePrice, floor),
+      price,
     });
   }
   return relics;

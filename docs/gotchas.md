@@ -3233,3 +3233,13 @@ Fed via `scripts/docker-visual-test.sh --warm test --agent-id X --actions-file /
 **Prevention:** Before reporting "Docker visual verify broken," verify the preset name against `SCENARIOS` in `src/dev/scenarioSimulator.ts:145`. If the target screen is brand-new and not in the preset list, use the `hub-fresh + __rrPlay.navigate` actions-file pattern above rather than authoring a one-off preset. Also: `--scenario none --eval "..."` works for simple custom-JS verifications without the actions-file scaffolding.
 
 **Visible proof** that the feature actually worked end-to-end: screenshots at `/tmp/rr-docker-visual/lobby-verify_combat-basic_1775893352566/01-multiplayer-menu.png` and `02-lobby-browser-empty.png`. The "WEB" source badge in the browser header confirms `pickBackend()` routed to `webBackend` (no Steam, no `?mp`).
+
+### 2026-04-11 — lifetap stat-table bump (3→5) not reflected in damagePreviewService test (PRE-EXISTING-1)
+
+**What:** `damagePreviewService.test.ts:417` failed with "expected 5 to be 3" on the barbed_edge non-strike-card test. The test comment said "lifetap stat table L0 QP=3" but `cardUpgradeService.ts` had bumped lifetap L0 from 3→5 for 2AP viability. The test expectation was stale.
+
+**Why:** The barbed_edge gate in `damagePreviewService.ts` was always correct: `isStrikeTagged = mechanic?.tags.includes('strike') ?? false` correctly returns false for lifetap. The bug was purely in the stale test expectation — the gate was NOT applying the bonus to lifetap, but the base QP value had changed from 3 to 5 via the stat table.
+
+**Fix:** Updated `expect(result.qpValue).toBe(3)` → `expect(result.qpValue).toBe(5)` and the comment to reflect the current L0 value.
+
+**Prevention:** When bumping stat table values, search for test expectations referencing that mechanic's old QP value. Pattern: `grep -n "lifetap\|QP=3\|toBe(3)" tests/ src/services/*.test.ts` after any stat table change.

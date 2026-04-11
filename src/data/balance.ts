@@ -933,13 +933,23 @@ export const SHOP_RELIC_COUNT = 3;
 /** Number of cards available per shop visit. */
 export const SHOP_CARD_COUNT = 3;
 
-/** Relic prices by rarity (v2 pricing — AR-59.15). */
+/**
+ * Relic prices by rarity (v2 pricing — AR-59.15, updated T1.3 2026-04-11).
+ * Linear-mapped from old [100,400] range to new [40,120] range per WAVE-A economy fix.
+ * common=40, uncommon=55, rare=80, legendary=120.
+ * Runtime floor+cap enforced separately via SHOP_RELIC_MIN_PRICE / SHOP_RELIC_MAX_PRICE.
+ */
 export const SHOP_RELIC_PRICE: Record<string, number> = {
-  common: 100,
-  uncommon: 160,
-  rare: 250,
-  legendary: 400,
+  common: 40,
+  uncommon: 55,
+  rare: 80,
+  legendary: 120,
 };
+
+/** Minimum gold price for any relic in the shop (floor at 40g, T1.3 2026-04-11). */
+export const SHOP_RELIC_MIN_PRICE = 40;
+/** Maximum gold price for any relic in the shop (cap at 120g, T1.3 2026-04-11). */
+export const SHOP_RELIC_MAX_PRICE = 120;
 
 /**
  * Card prices by rarity (v2 pricing — AR-59.15).
