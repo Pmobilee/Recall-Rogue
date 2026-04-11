@@ -201,7 +201,7 @@ function checkFact(fact, poolFacts, allPools, deck) {
   }
 
   // 9. Trivially eliminatable — one option dramatically longer/shorter
-  if (picked.length >= 3 && !isNumerical(fact.correctAnswer)) {
+  if (picked.length >= 3 && !isNumerical(fact.correctAnswer) && !pool?.homogeneityExempt) {
     const allOptions = [correct, ...picked];
     const lens = allOptions.map(o => o.length);
     const avgLen = lens.reduce((a, b) => a + b, 0) / lens.length;
