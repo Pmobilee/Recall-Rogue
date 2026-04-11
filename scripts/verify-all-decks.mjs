@@ -633,13 +633,16 @@ function verifyDeck(deckId, deck) {
     }
   }
 
-  // Check #24 WARNING: empty_chain_themes — knowledge decks must define chainThemes
-  // Decks without chain themes can't drive the themed chain gameplay that is central to
-  // the Study Temple mode. Vocab and image decks are exempt.
+  // Check #24 WARNING: empty_chain_themes — knowledge decks must define chainThemes OR subDecks
+  // Decks without either can't drive the themed chain gameplay central to Study Temple mode.
+  // Guard: chainDistribution.ts Priority-1 uses deck.subDecks as TopicGroups — decks with
+  // populated subDecks work correctly at runtime even without chainThemes. Only warn when
+  // BOTH chainThemes AND subDecks are absent. Vocab and image decks are exempt.
   if (!isVocab && !(deck.id === 'world_flags')) {
     const themes24 = deck.chainThemes;
-    if (!Array.isArray(themes24) || themes24.length === 0) {
-      factWarnings.push({ index: 0, factId: '_deck', msg: `empty_chain_themes: knowledge deck "${deck.id || deckId}" has no chainThemes defined` });
+    const subDeckCount24 = Array.isArray(deck.subDecks) ? deck.subDecks.length : 0;
+    if ((!Array.isArray(themes24) || themes24.length === 0) && subDeckCount24 === 0) {
+      factWarnings.push({ index: 0, factId: '_deck', msg: `empty_chain_themes: knowledge deck "${deck.id || deckId}" has neither chainThemes nor subDecks — Study Temple mode will fall through to a default grouping` });
     }
   }
 

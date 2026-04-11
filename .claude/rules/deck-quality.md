@@ -311,18 +311,23 @@ npm run build:curated
 3. Percentage values ("75%", "~45%") belong in a `percentage_values` pool, not in year or count pools.
 4. Run `verify-all-decks.mjs` — homogeneity check #20 will flag pools mixing 1-digit numbers with multi-word names.
 
-### Anti-Pattern 12: Knowledge decks without chainThemes
+### Anti-Pattern 12: Knowledge decks without chainThemes or subDecks
 
-**Rule:** Every knowledge deck (non-vocabulary, non-grammar) MUST have a populated `chainThemes` array with ≥3 entries before deployment. Every sub-deck in the deck MUST have a `chainThemeId` field pointing to one of those themes.
+**Rule:** Every knowledge deck (non-vocabulary, non-grammar) MUST satisfy at least one of the following before deployment:
+- A populated `chainThemes` array with ≥3 entries (classic authoring approach — preferred for NEW decks without a natural sub-deck structure), OR
+- A populated `subDecks` array where each sub-deck has a non-empty `factIds` list.
+
+`chainThemes` remains the recommended approach for new decks because it allows rich theme labeling and explicit `chainThemeId` mapping. However, decks that already have a well-structured `subDecks` array do NOT need `chainThemes` — `src/services/chainDistribution.ts` Priority-1 fallback uses `deck.subDecks` directly as TopicGroups, which provides the same runtime chain grouping experience. As of 2026-04-10, 22 of 24 decks previously flagged `empty_chain_themes_runtime` have populated `subDecks` and work correctly without `chainThemes`.
+
+The audit checks (`scripts/quiz-audit-engine.ts` check 34 and `scripts/verify-all-decks.mjs` check #24) now only warn when BOTH `chainThemes` and `subDecks` are absent. Two decks that lack both (`world_capitals`, `world_countries`) are the genuine cases to address.
 
 **Why:** The 2026-04-10 audit found 8+ knowledge decks with `chainThemes: []` despite having sub-decks with `chainThemeId` values on facts. Without `chainThemes`, the Study Temple chain mechanic has no theme definitions — the chain system falls back and players never experience the knowledge chain progression mechanic. Confirmed across `ancient_greece`, `ancient_rome`, `world_war_ii`, `greek_mythology`, `norse_mythology`, `egyptian_mythology`, `mammals_world`, `dinosaurs`, `medieval_world`.
 
 **How to apply:**
-1. When authoring a knowledge deck with sub-decks: define `chainThemes` in the same authoring pass, not after the fact.
-2. Derive themes from sub-deck names — each sub-deck maps to its most relevant chain theme.
-3. Assign `chainThemeId` on each sub-deck object (not just on individual facts).
-4. Verify: `jq '.chainThemes | length' data/decks/<name>.json` — must be ≥3.
-5. Facts already carry `chainThemeId` via their sub-deck membership; the `chainThemes` array is the lookup table that makes those IDs meaningful at runtime.
+1. **New deck with sub-decks that already exist:** populate `factIds` on each sub-deck entry (run `node scripts/fix-empty-subdecks.mjs`). You do NOT need to add `chainThemes` separately — the Priority-1 fallback handles runtime grouping.
+2. **New deck without natural sub-decks:** define `chainThemes` with ≥3 entries in the same authoring pass. Derive themes from topical clusters. Assign `chainThemeId` on each sub-deck object.
+3. Verify that the deck satisfies at least one path: `jq '.subDecks | length' data/decks/<name>.json` ≥1 OR `jq '.chainThemes | length' data/decks/<name>.json` ≥3.
+4. Facts already carry `chainThemeId` via their sub-deck membership; the `chainThemes` array is the lookup table that makes those IDs meaningful at runtime when the `chainThemes` path is chosen.
 
 ### Anti-Pattern 13: Cross-Category Pool Contamination
 **What:** Facts from completely different semantic categories placed in the same answer pool. Players can instantly eliminate wrong answers not because they know the answer, but because the distractors are from a different *type* of thing.

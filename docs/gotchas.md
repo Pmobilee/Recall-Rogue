@@ -2325,3 +2325,11 @@ node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs --stamp-regis
 3. Added `verify-all-decks.mjs` Check #34 (HARD FAIL) that rejects any non-string syntheticDistractors entry at deck-verification time, preventing recurrence.
 
 **Lesson:** Untyped JSON deck fields need explicit structural checks. Any pool field iterated by the runtime that assumes a type must have a matching Check in `verify-all-decks.mjs`. When adding a new pool field, add the type check in the same commit.
+
+### 2026-04-10 — empty_chain_themes_runtime was a false positive for subDecks decks
+
+22 of 24 knowledge decks were flagged by `empty_chain_themes_runtime` in `scripts/quiz-audit-engine.ts` and by Check #24 in `scripts/verify-all-decks.mjs`. The audit checks were testing only for `deck.chainThemes`, but `src/services/chainDistribution.ts` Priority-1 fallback uses `deck.subDecks` as TopicGroups — making chainThemes optional when subDecks is populated. All 22 flagged decks (e.g. `ap_chemistry`, `solar_system`, `us_presidents`) have populated `subDecks` arrays and work correctly at runtime.
+
+**Fix:** Both checks now guard: `(!chainThemes || chainThemes.length === 0) && subDeckCount === 0`. Only decks missing BOTH fields emit the warning. Genuine cases remaining: `world_capitals` and `world_countries`.
+
+**Rule updated:** Anti-Pattern 12 in `.claude/rules/deck-quality.md` now documents that either `chainThemes` OR `subDecks` satisfies the chain runtime requirement.

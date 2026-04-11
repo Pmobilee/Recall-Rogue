@@ -953,10 +953,14 @@ function auditDeck(
   // Deck-level Phase 5 checks:
 
   // Phase 5 — empty_chain_themes_runtime (check 34 moved to deck level)
-  // Knowledge decks must define chainThemes. Fires once per deck.
+  // Knowledge decks must define chainThemes OR have populated subDecks. Fires once per deck.
+  // Guard: chainDistribution.ts Priority-1 uses deck.subDecks as TopicGroups — decks
+  // with subDecks work correctly at runtime even without chainThemes. Only fire the
+  // warning when BOTH chainThemes AND subDecks are absent.
   if (deckClass !== 'vocab' && deckClass !== 'image') {
     const themes = (deck as unknown as { chainThemes?: unknown[] }).chainThemes;
-    if (!Array.isArray(themes) || themes.length === 0) {
+    const subDeckCount = (deck as unknown as { subDecks?: unknown[] }).subDecks?.length ?? 0;
+    if ((!Array.isArray(themes) || themes.length === 0) && subDeckCount === 0) {
       const key = 'empty_chain_themes_runtime';
       if (!issuesByType[key]) issuesByType[key] = { fail: 0, warn: 0 };
       issuesByType[key].warn++;
@@ -973,7 +977,7 @@ function auditDeck(
         issues: [{
           severity: 'WARN',
           type: 'empty_chain_themes_runtime',
-          detail: `Knowledge deck "${deck.id}" has no chainThemes — Study Temple mode will not work correctly`,
+          detail: `Knowledge deck "${deck.id}" has neither chainThemes nor subDecks — Study Temple mode will fall through to a default grouping.`,
         }],
       });
     }
