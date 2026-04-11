@@ -52,7 +52,8 @@ import {
   makeSkills,
   profileLabel,
 } from './bot-profiles.js';
-import { generateAnalyticsReports, type AnalyticsRun } from './analytics-report.js';
+import { generateAnalyticsReports, type AnalyticsRun, type MechanicRegistryEntry } from './analytics-report.js';
+import { MECHANIC_DEFINITIONS } from '../../../src/data/mechanics.js';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
@@ -1028,11 +1029,22 @@ if (isAnalyticsMode && simMode === 'full' && allFullResults.length > 0) {
       finalDeckTypeDistribution,
       masteryAtEnd,
       deathFloor: r.deathFloor || undefined,
+      // Coverage analytics — pass through from FullRunResult
+      mechanicsOffered: r.mechanicsOffered ?? [],
+      mechanicsTaken:   r.mechanicsTaken ?? [],
     };
   });
 
   const analyticsOutputDir = path.join(outputDir, 'analytics');
-  generateAnalyticsReports(analyticsRuns, analyticsOutputDir);
+  // Build lightweight registry for card-coverage.md (includes all 98 mechanics, even ZERO-plays ones)
+  const mechanicRegistry: MechanicRegistryEntry[] = MECHANIC_DEFINITIONS.map(m => ({
+    id: m.id,
+    name: m.name,
+    launchPhase: m.launchPhase,
+    unlockLevel: m.unlockLevel,
+    maxPerPool: m.maxPerPool,
+  }));
+  generateAnalyticsReports(analyticsRuns, analyticsOutputDir, mechanicRegistry);
 }
 
 // Write combined.json — strip encounter details to avoid V8 string limit at high run counts

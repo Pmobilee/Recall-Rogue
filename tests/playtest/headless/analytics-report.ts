@@ -65,6 +65,19 @@ export interface RelicAcquisition {
   acquiredAtEncounter?: number;
 }
 
+/**
+ * Lightweight mechanic descriptor for card-coverage.md.
+ * Passed from run-batch.ts (which can import MECHANIC_DEFINITIONS) into the
+ * analytics engine (which stays self-contained — no game imports).
+ */
+export interface MechanicRegistryEntry {
+  id: string;
+  name: string;
+  launchPhase: 1 | 2;
+  unlockLevel: number;
+  maxPerPool: number;
+}
+
 export interface AnalyticsRun {
   profile: string;
   ascension: number;
@@ -90,6 +103,9 @@ export interface AnalyticsRun {
   deathFloor?: number;
   // Extended field (optional — populated by data model expansion agent)
   relicTimeline?: RelicAcquisition[];
+  // Coverage analytics — mechanics that appeared in reward slots this run
+  mechanicsOffered?: string[];
+  mechanicsTaken?: string[];
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -97,14 +113,20 @@ export interface AnalyticsRun {
 // ──────────────────────────────────────────────────────────────────────────────
 
 /**
- * Generate all 9 analytics report files into the given output directory.
+ * Generate all 10 analytics report files into the given output directory.
  * Creates the directory if it does not exist.
  * Reports 1-6 are the original survivorship-biased reports (preserved unchanged).
  * Reports 7-9 are survivorship-free multi-dimensional reports.
+ * Report 10 is card-coverage.md — per-mechanic offered/taken/played histogram.
+ *
+ * @param mechanicRegistry - Optional full mechanic list (from MECHANIC_DEFINITIONS).
+ *   When provided, card-coverage.md shows all 98 mechanics including ZERO-plays ones.
+ *   When omitted, only mechanics observed in the run data are shown.
  */
 export function generateAnalyticsReports(
   results: AnalyticsRun[],
   outputDir: string,
+  mechanicRegistry?: MechanicRegistryEntry[],
 ): void {
   fs.mkdirSync(outputDir, { recursive: true });
 
@@ -119,6 +141,7 @@ export function generateAnalyticsReports(
   generateRelicPerformanceReport(results, outputDir);
   generateCardPerformanceReport(results, outputDir);
   generateArchetypePerformanceReport(results, outputDir);
+  generateCardCoverageReport(results, outputDir, mechanicRegistry);
 
   console.log('  Analytics reports complete.');
 }
@@ -1215,8 +1238,9 @@ export function generateRelicPerformanceReport(results: AnalyticsRun[], outputDi
  *   - floorDelta: avgFloorsWithCard − avgFloorsWithout — the survivorship-free signal
  *   - playFrequency: how often the card is played relative to encounters (demand signal)
  *
- * Cards are filtered to those played 50+ times across all runs to ensure statistical
- * significance. Sorted by avgDmgPerAP for attack cards, avgBlockPerPlay for shield cards.
+ * Cards are filtered to those played 5+ times across all runs (threshold lowered from 50).
+ * Rows with 5-49 plays are marked `[low-sample]` in the Mechanic column to flag low confidence.
+ * Sorted by avgDmgPerAP for attack cards, avgBlockPerPlay for shield cards.
  */
 export function generateCardPerformanceReport(results: AnalyticsRun[], outputDir: string): void {
   if (results.length === 0) {
@@ -1313,7 +1337,7 @@ export function generateCardPerformanceReport(results: AnalyticsRun[], outputDir
   const stats: CardPerfStat[] = [];
 
   for (const [mechanic, a] of Object.entries(acc)) {
-    if (a.totalPlays < 50) continue; // skip low-sample mechanics
+    if (a.totalPlays < 5) continue; // include mechanics with >=5 plays (low-sample marked)
 
     const runsWith = Array.from(a.runsWithCard).map(i => results[i]);
     const runsWithout = Array.from(a.runsWithoutCard).map(i => results[i]);
@@ -1348,7 +1372,7 @@ export function generateCardPerformanceReport(results: AnalyticsRun[], outputDir
     const lines = [
       '# Card Performance (Efficiency Metrics)',
       '',
-      '*Not enough data — need 50+ plays per mechanic. Run with more --runs.*',
+      '*Not enough data — need 5+ plays per mechanic. Run with more --runs.*',
     ];
     fs.writeFileSync(path.join(outputDir, 'card-performance.md'), lines.join('\n') + '\n');
     console.log('    [8/9] card-performance.md (insufficient data)');
@@ -1363,10 +1387,15 @@ export function generateCardPerformanceReport(results: AnalyticsRun[], outputDir
     .filter(s => s.avgDmgPerPlay === 0 && s.avgBlockPerPlay === 0)
     .sort((a, b) => b.floorDelta - a.floorDelta);
 
+  /** Append [low-sample] marker when play count is 5-49 (below old 50-play threshold). */
+  function mechanicLabel(s: CardPerfStat): string {
+    return s.totalPlays < 50 ? `${s.mechanic} [low-sample]` : s.mechanic;
+  }
+
   const lines: string[] = [
     '# Card Performance (Efficiency Metrics)',
     '',
-    `*${results.length} total runs | ${stats.length} mechanics with ≥50 plays*`,
+    `*${results.length} total runs | ${stats.length} mechanics with ≥5 plays ([low-sample] = 5-49)*`,
     '',
     '> **Survivorship-free signal:** `floorDelta` = avgFloorsWithCard − avgFloorsWithout.',
     '> Positive floorDelta means runs containing this card progress farther on average.',
@@ -1383,7 +1412,7 @@ export function generateCardPerformanceReport(results: AnalyticsRun[], outputDir
     );
     for (const s of attackStats) {
       lines.push(
-        `| ${s.mechanic} | ${s.totalPlays} | ${fmt(s.avgDmgPerPlay, 1)} | ${fmt(s.avgDmgPerAP, 2)} | ${(s.chargeRate * 100).toFixed(0)}% | ${(s.chargeAccuracy * 100).toFixed(0)}% | ${fmt(s.playFrequency, 2)} | ${fmt(s.avgFloorsWithCard, 1)} | ${fmt(s.avgFloorsWithout, 1)} | ${s.floorDelta >= 0 ? '+' : ''}${fmt(s.floorDelta, 1)} |`,
+        `| ${mechanicLabel(s)} | ${s.totalPlays} | ${fmt(s.avgDmgPerPlay, 1)} | ${fmt(s.avgDmgPerAP, 2)} | ${(s.chargeRate * 100).toFixed(0)}% | ${(s.chargeAccuracy * 100).toFixed(0)}% | ${fmt(s.playFrequency, 2)} | ${fmt(s.avgFloorsWithCard, 1)} | ${fmt(s.avgFloorsWithout, 1)} | ${s.floorDelta >= 0 ? '+' : ''}${fmt(s.floorDelta, 1)} |`,
       );
     }
     lines.push('');
@@ -1398,7 +1427,7 @@ export function generateCardPerformanceReport(results: AnalyticsRun[], outputDir
     );
     for (const s of shieldStats) {
       lines.push(
-        `| ${s.mechanic} | ${s.totalPlays} | ${fmt(s.avgBlockPerPlay, 1)} | ${fmt(s.avgDmgPerAP, 2)} | ${(s.chargeRate * 100).toFixed(0)}% | ${(s.chargeAccuracy * 100).toFixed(0)}% | ${fmt(s.playFrequency, 2)} | ${fmt(s.avgFloorsWithCard, 1)} | ${fmt(s.avgFloorsWithout, 1)} | ${s.floorDelta >= 0 ? '+' : ''}${fmt(s.floorDelta, 1)} |`,
+        `| ${mechanicLabel(s)} | ${s.totalPlays} | ${fmt(s.avgBlockPerPlay, 1)} | ${fmt(s.avgDmgPerAP, 2)} | ${(s.chargeRate * 100).toFixed(0)}% | ${(s.chargeAccuracy * 100).toFixed(0)}% | ${fmt(s.playFrequency, 2)} | ${fmt(s.avgFloorsWithCard, 1)} | ${fmt(s.avgFloorsWithout, 1)} | ${s.floorDelta >= 0 ? '+' : ''}${fmt(s.floorDelta, 1)} |`,
       );
     }
     lines.push('');
@@ -1413,7 +1442,7 @@ export function generateCardPerformanceReport(results: AnalyticsRun[], outputDir
     );
     for (const s of otherStats) {
       lines.push(
-        `| ${s.mechanic} | ${s.totalPlays} | ${(s.chargeRate * 100).toFixed(0)}% | ${(s.chargeAccuracy * 100).toFixed(0)}% | ${fmt(s.playFrequency, 2)} | ${fmt(s.avgFloorsWithCard, 1)} | ${fmt(s.avgFloorsWithout, 1)} | ${s.floorDelta >= 0 ? '+' : ''}${fmt(s.floorDelta, 1)} |`,
+        `| ${mechanicLabel(s)} | ${s.totalPlays} | ${(s.chargeRate * 100).toFixed(0)}% | ${(s.chargeAccuracy * 100).toFixed(0)}% | ${fmt(s.playFrequency, 2)} | ${fmt(s.avgFloorsWithCard, 1)} | ${fmt(s.avgFloorsWithout, 1)} | ${s.floorDelta >= 0 ? '+' : ''}${fmt(s.floorDelta, 1)} |`,
       );
     }
     lines.push('');
@@ -1541,4 +1570,186 @@ export function generateArchetypePerformanceReport(results: AnalyticsRun[], outp
 
   fs.writeFileSync(path.join(outputDir, 'archetype-performance.md'), lines.join('\n') + '\n');
   console.log('    [9/9] archetype-performance.md');
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Report 10: card-coverage.md  (per-mechanic offered/taken/played histogram)
+// ──────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Per-mechanic coverage histogram showing which mechanics are underrepresented.
+ *
+ * Three bucket classification:
+ *   OK   — >=50 timesPlayed across the batch (mechanic is well-exercised)
+ *   LOW  — 5-49 timesPlayed (mechanic appears but rarely)
+ *   ZERO — 0 timesPlayed (mechanic never appears in any run)
+ *
+ * Table is sorted by timesPlayed ascending so problem mechanics are at the top.
+ *
+ * runsOffered / runsTaken come from per-run coverage tracking in full-run-simulator.ts.
+ * When mechanicRegistry is provided, ALL 98 mechanics appear including ZERO-plays ones.
+ * When omitted, only mechanics observed in run data are shown.
+ */
+export function generateCardCoverageReport(
+  results: AnalyticsRun[],
+  outputDir: string,
+  mechanicRegistry?: MechanicRegistryEntry[],
+): void {
+  const profileList = Array.from(new Set(results.map(r => r.profile))).sort();
+  const batchLabel = results.length > 0
+    ? `${results.length} runs (${profileList.join(', ')})`
+    : 'no data';
+
+  if (results.length === 0) {
+    const lines = [
+      '# Card Coverage — (no data)',
+      '',
+      '*No run data provided.*',
+    ];
+    fs.writeFileSync(path.join(outputDir, 'card-coverage.md'), lines.join('\n') + '\n');
+    console.log('    [10/10] card-coverage.md (no data)');
+    return;
+  }
+
+  // ── Accumulate counters ────────────────────────────────────────────────────
+
+  interface CoverageAcc {
+    runsOffered: number;   // number of runs where this mechanic appeared in a reward slot
+    runsTaken: number;     // number of runs where the bot picked this mechanic
+    timesPlayed: number;   // total card plays across all runs
+  }
+
+  const acc: Record<string, CoverageAcc> = {};
+
+  /** Ensure a mechanic has an entry in acc. */
+  function ensureMechanic(id: string): CoverageAcc {
+    if (!acc[id]) acc[id] = { runsOffered: 0, runsTaken: 0, timesPlayed: 0 };
+    return acc[id];
+  }
+
+  // Seed acc from registry so ZERO-bucket mechanics appear in the table
+  if (mechanicRegistry) {
+    for (const m of mechanicRegistry) ensureMechanic(m.id);
+  }
+
+  for (const run of results) {
+    // Count runsOffered and runsTaken (per-run sets — no double-counting within a run)
+    if (run.mechanicsOffered) {
+      for (const mechId of run.mechanicsOffered) {
+        ensureMechanic(mechId).runsOffered++;
+      }
+    }
+    if (run.mechanicsTaken) {
+      for (const mechId of run.mechanicsTaken) {
+        ensureMechanic(mechId).runsTaken++;
+      }
+    }
+    // timesPlayed: count card plays across all encounters in this run
+    for (const enc of run.encounters) {
+      for (const play of enc.cardPlays) {
+        if (play.mechanic) ensureMechanic(play.mechanic).timesPlayed++;
+      }
+    }
+  }
+
+  // ── Build per-mechanic stats table ────────────────────────────────────────
+
+  interface CoverageStat {
+    id: string;
+    name: string;
+    phase: number;
+    unlockLevel: number;
+    maxPerPool: number;
+    runsOffered: number;
+    runsTaken: number;
+    timesPlayed: number;
+    status: 'OK' | 'LOW' | 'ZERO';
+  }
+
+  // Build lookup for registry metadata
+  const registryById: Record<string, MechanicRegistryEntry> = {};
+  if (mechanicRegistry) {
+    for (const m of mechanicRegistry) registryById[m.id] = m;
+  }
+
+  const stats: CoverageStat[] = Object.entries(acc).map(([id, a]) => {
+    const reg = registryById[id];
+    let status: 'OK' | 'LOW' | 'ZERO';
+    if (a.timesPlayed >= 50) status = 'OK';
+    else if (a.timesPlayed >= 5) status = 'LOW';
+    else status = 'ZERO';
+
+    return {
+      id,
+      name: reg?.name ?? id,
+      phase: reg?.launchPhase ?? 1,
+      unlockLevel: reg?.unlockLevel ?? 0,
+      maxPerPool: reg?.maxPerPool ?? 0,
+      runsOffered: a.runsOffered,
+      runsTaken: a.runsTaken,
+      timesPlayed: a.timesPlayed,
+      status,
+    };
+  });
+
+  // Sort by timesPlayed ascending — problem mechanics at top
+  stats.sort((a, b) => a.timesPlayed - b.timesPlayed || a.id.localeCompare(b.id));
+
+  // ── Summary counts ─────────────────────────────────────────────────────────
+  const okCount = stats.filter(s => s.status === 'OK').length;
+  const lowCount = stats.filter(s => s.status === 'LOW').length;
+  const zeroCount = stats.filter(s => s.status === 'ZERO').length;
+  const total = stats.length;
+
+  const isoDate = new Date().toISOString().slice(0, 10);
+
+  const lines: string[] = [
+    `# Card Coverage — ${batchLabel}`,
+    '',
+    `Generated: ${isoDate}`,
+    `Runs: ${results.length}`,
+    '',
+    '## Summary',
+    '',
+    `- Total mechanics in registry: ${total}`,
+    `- **OK** (>=50 plays): ${okCount} / ${total}`,
+    `- **LOW** (5-49 plays): ${lowCount} / ${total}`,
+    `- **ZERO** (0 plays): ${zeroCount} / ${total}`,
+    '',
+    '## Per-mechanic table',
+    '',
+    '| ID | Name | Phase | Unlock | maxPerPool | runsOffered | runsTaken | timesPlayed | Status |',
+    '|---|---|---|---|---|---|---|---|---|',
+  ];
+
+  for (const s of stats) {
+    lines.push(
+      `| ${s.id} | ${s.name} | ${s.phase} | ${s.unlockLevel} | ${s.maxPerPool} | ${s.runsOffered} | ${s.runsTaken} | ${s.timesPlayed} | ${s.status} |`,
+    );
+  }
+
+  // ── ZERO bucket detail ────────────────────────────────────────────────────
+  const zeroStats = stats.filter(s => s.status === 'ZERO');
+  if (zeroStats.length > 0) {
+    lines.push(
+      '',
+      '## ZERO bucket',
+      '',
+      '*Mechanics with 0 plays across all runs. These are completely invisible to balance data.*',
+      '',
+    );
+    for (const s of zeroStats) {
+      // Guess why it is zero
+      const reasons: string[] = [];
+      if (s.phase === 2) reasons.push('Phase 2 unlock gate (ENABLE_PHASE2_MECHANICS=false?)');
+      if (s.unlockLevel > 0) reasons.push(`unlockLevel=${s.unlockLevel} — may not reach reward tier`);
+      if (s.maxPerPool === 1) reasons.push('maxPerPool=1 — rare pool slot, low roll probability');
+      if (s.runsOffered === 0) reasons.push('never rolled in reward pool');
+      const why = reasons.length > 0 ? reasons.join('; ') : 'unknown — investigate reward pool logic';
+      lines.push(`- **${s.id}** (${s.name}): ${why}`);
+    }
+  }
+
+  fs.writeFileSync(path.join(outputDir, 'card-coverage.md'), lines.join('\n') + '\n');
+  console.log(`    [10/10] card-coverage.md (${okCount} OK, ${lowCount} LOW, ${zeroCount} ZERO)`);
 }

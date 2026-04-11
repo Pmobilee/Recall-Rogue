@@ -1,3 +1,4 @@
+
 ### 2026-04-11 — Zod schema guards curatedDeckStore decode boundary
 
 **Symptom (pre-fix):** `JSON.parse(row['distractors'])` in `curatedDeckStore.ts` returned `number[]` for some facts where the SQLite row stored numeric values (e.g. FIFA World Cup win counts stored as integers). The TypeScript type system assumed `string[]` — no runtime error was thrown, and numeric distractors silently reached the quiz engine where they were rendered as "7", "8", "9" instead of country names. This was the "fifa numeric distractors" incident.
@@ -2637,3 +2638,13 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 **The "guarded pattern" is correct:** `isRunRngActive() ? getRunRng('bucket').next() : Math.random()` — deterministic in co-op/replay/run contexts, non-deterministic in dev/test/non-run contexts where it doesn't matter. The lint does NOT flag this pattern.
 
 **References:** `data/playtests/llm-batches/BATCH-2026-04-11-ULTRA/correlation-report.md` Cluster D, `docs/mechanics/multiplayer.md` §RNG determinism invariant
+
+### 2026-04-11 — `adapt` and `mirror` are Phase 1 mechanics never rolled by the sim reward pool
+
+**Symptom:** The new `card-coverage.md` histogram (first run: 14,000 runs) showed `adapt` and `mirror` with `runsOffered=0, runsTaken=0, timesPlayed=0` despite both being Phase 1 (`launchPhase: 1`) mechanics with `unlockLevel: 0`. All other Phase 2 ZERO-bucket mechanics were expected (gated by `ENABLE_PHASE2_MECHANICS=false`).
+
+**Root cause:** `pickRandomMechanic()` in `full-run-simulator.ts` filters mechanics by `type` from a type-pool (`attack×3, shield×3, utility×2, buff×1, debuff×1`). The type `wild` is absent from the pool. Both `adapt` and `mirror` are `type: 'wild'`. They can never be rolled by the sim reward generator regardless of phase or unlock level.
+
+**Fix (not applied here — Phase 4 force-sweep will address this):** To expose wild mechanics to the reward pool, either add `'wild'` to the type-pool in `pickRandomMechanic()`, or implement a force-sweep that guarantees every mechanic appears in at least one run during batch testing.
+
+**Lesson:** The coverage histogram revealed a systematic blind spot: all `wild`-typed Phase 1 mechanics are invisible to balance data. The ZERO bucket now clearly distinguishes Phase 2 gate (most zeros) from missing type-pool entry (wild mechanics).

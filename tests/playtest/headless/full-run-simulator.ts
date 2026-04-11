@@ -193,6 +193,10 @@ export interface FullRunResult {
   finalDeckTypeDistribution: Record<string, number>;
   deckEvolution: { floor: number; deckSize: number; types: Record<string, number> }[];
   masteryAtEnd: Record<string, number>;
+  /** Mechanic IDs that appeared in at least one reward slot this run. */
+  mechanicsOffered: string[];
+  /** Mechanic IDs that the bot actually added to the deck from a reward slot this run. */
+  mechanicsTaken: string[];
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -214,6 +218,9 @@ interface SimRunState {
   // Survivorship-free analytics
   relicTimeline: RelicAcquisition[];
   encounterCount: number;  // number of encounters fought so far (for relicTimeline)
+  // Coverage analytics — which mechanics were offered/taken in reward slots this run
+  mechanicsOfferedThisRun: Set<string>;
+  mechanicsTakenThisRun: Set<string>;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -316,7 +323,11 @@ const MAX_DECK_SIZE = 20;
  * Picks the best card from 3 random options by balancing deck type distribution.
  * Returns null if deck is already at max size.
  */
-function pickCardReward(currentDeck: Card[]): Card | null {
+function pickCardReward(
+  currentDeck: Card[],
+  /** Optional coverage tracker — mechanic IDs that were offered (set) and taken (set). */
+  coverage?: { offered: Set<string>; taken: Set<string> },
+): Card | null {
   if (currentDeck.length >= MAX_DECK_SIZE) return null;
 
   // Generate 3 random options
@@ -325,6 +336,11 @@ function pickCardReward(currentDeck: Card[]): Card | null {
     pickRandomMechanic(),
     pickRandomMechanic(),
   ];
+
+  // Track every offered mechanic for coverage analytics (per-run set — no double-counting)
+  if (coverage) {
+    for (const opt of options) coverage.offered.add(opt.id);
+  }
 
   // Count current type distribution
   const typeCounts: Partial<Record<CardType, number>> = {};
@@ -341,6 +357,11 @@ function pickCardReward(currentDeck: Card[]): Card | null {
       lowestCount = count;
       bestOption = opt;
     }
+  }
+
+  // Track the taken mechanic
+  if (coverage) {
+    coverage.taken.add(bestOption.id);
   }
 
   return makeMechanicCard(bestOption);
@@ -874,10 +895,14 @@ function handleCombatNode(
     // Card reward (all combat nodes, plus elite and boss get one too)
     if (brain) {
       const options = [pickRandomMechanic(), pickRandomMechanic(), pickRandomMechanic()];
+      // Track every offered mechanic for coverage analytics (per-run set — no double-counting)
+      for (const opt of options) runState.mechanicsOfferedThisRun.add(opt.id);
       const chosen = brain.pickReward(options, runState.deck);
       if (chosen && runState.deck.length < MAX_DECK_SIZE) {
         // Bug 5: never add transmute as a reward — it has no sim target behavior
         const mechanic = chosen.id === 'transmute' ? findMechanic('strike') : chosen;
+        // Track the taken mechanic (use the actual mechanic ID, not transmute alias)
+        runState.mechanicsTakenThisRun.add(mechanic.id);
         const newCard = makeMechanicCard(mechanic);
         newCard.chainType = runChainTypes[runState.deck.length % runChainTypes.length];
         // Bug 7: catch-up mastery — new cards start near 75% of deck average
@@ -887,7 +912,7 @@ function handleCombatNode(
         runState.cardsAdded++;
       }
     } else {
-      const newCard = pickCardReward(runState.deck);
+      const newCard = pickCardReward(runState.deck, { offered: runState.mechanicsOfferedThisRun, taken: runState.mechanicsTakenThisRun });
       if (newCard) {
         // Bug 5: transmute is dead weight in sim (pickCardReward can return any mechanic)
         if (newCard.mechanicId === 'transmute') {
@@ -1393,6 +1418,8 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     cardsRemoved: 0,
     relicTimeline: [],
     encounterCount: 0,
+    mechanicsOfferedThisRun: new Set<string>(),
+    mechanicsTakenThisRun: new Set<string>(),
   };
 
   // Apply starter deck size override from ascension
@@ -1827,6 +1854,9 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     finalDeckTypeDistribution,
     deckEvolution,
     masteryAtEnd,
+    // Coverage analytics — which mechanics were offered / taken in reward slots this run
+    mechanicsOffered: Array.from(runState.mechanicsOfferedThisRun),
+    mechanicsTaken: Array.from(runState.mechanicsTakenThisRun),
   };
 }
 
