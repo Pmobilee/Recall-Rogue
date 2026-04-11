@@ -1,6 +1,7 @@
 <script lang="ts">
   import { getRelicIconPath, getGoldCoinIconPath } from '../utils/iconAssets'
   import { openRunDeckOverlay } from '../stores/runDeckOverlayStore'
+  import { activeTurnState } from '../../services/encounterBridge'
 
   // ============================================================
   // Segment name lookup
@@ -158,6 +159,23 @@
 
   /** Only show effects that are still active */
   const activeStatusEffects = $derived(statusEffects.filter(e => e.turnsRemaining > 0))
+
+  // ============================================================
+  // Deck stack icon — card count for stacked-rect visual
+  // ============================================================
+  const deckTotalCards = $derived((): number => {
+    const ts = $activeTurnState
+    if (!ts) return 0
+    return (
+      ts.deck.hand.length +
+      ts.deck.drawPile.length +
+      ts.deck.discardPile.length +
+      ts.deck.forgetPile.length
+    )
+  })
+
+  /** Number of stacked rect layers to show: 1 for tiny decks, up to 5 for large ones. */
+  const deckStackCount = $derived(Math.max(1, Math.min(5, Math.ceil(deckTotalCards() / 8))))
 </script>
 
 <div class="topbar" role="banner" aria-label="Run status">
@@ -316,11 +334,23 @@
     <!-- Deck viewer button — opens RunDeckOverlay to show all cards in the run -->
     <button
       class="deck-btn"
-      aria-label="View current deck"
+      aria-label="View current deck ({deckTotalCards()} cards)"
       onclick={openRunDeckOverlay}
       type="button"
     >
-      <span class="deck-icon" aria-hidden="true">🎴</span>
+      <div class="deck-stack-icon" aria-hidden="true">
+        <div class="deck-stack-cards">
+          {#each Array(deckStackCount) as _, idx}
+            <div
+              class="deck-stack-card"
+              style="transform: translate(calc({idx * 2}px * var(--layout-scale, 1)), calc({-idx * 2}px * var(--layout-scale, 1)));"
+            ></div>
+          {/each}
+        </div>
+        {#if deckTotalCards() > 0}
+          <span class="deck-stack-count">{deckTotalCards()}</span>
+        {/if}
+      </div>
     </button>
 
     <!-- Pause button -->
@@ -330,7 +360,10 @@
       onclick={onpause}
       type="button"
     >
-      <span class="pause-icon" aria-hidden="true">⚙</span>
+      <svg class="pause-gear-svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </button>
   </div>
 </div>
@@ -861,7 +894,7 @@
     flex-shrink: 0;
     padding: 0;
     transition: background 150ms ease;
-    margin-left: calc(4px * var(--layout-scale, 1));
+    margin-left: calc(14px * var(--layout-scale, 1));
     align-self: center;
   }
 
@@ -874,9 +907,46 @@
     outline-offset: 2px;
   }
 
-  .deck-icon {
-    font-size: calc(var(--topbar-height, 4.5vh) * 0.50);
+  /* ── Stacked-card deck icon ────────────────────────────── */
+  .deck-stack-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(2px * var(--layout-scale, 1));
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(36px * var(--layout-scale, 1));
+  }
+
+  .deck-stack-cards {
+    position: relative;
+    width: calc(22px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+  }
+
+  .deck-stack-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(22px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+    border-radius: calc(2px * var(--layout-scale, 1));
+    background: rgba(10, 18, 30, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+  }
+
+  /* Top card in the stack is slightly brighter */
+  .deck-stack-card:last-child {
+    border-color: rgba(201, 162, 39, 0.85);
+    background: rgba(20, 30, 50, 0.85);
+  }
+
+  .deck-stack-count {
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-size: calc(8px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.75);
     line-height: 1;
+    letter-spacing: 0.02em;
   }
 
   .pause-btn {
@@ -894,7 +964,7 @@
     flex-shrink: 0;
     padding: 0;
     transition: background 150ms ease;
-    margin-left: calc(4px * var(--layout-scale, 1));
+    margin-left: calc(2px * var(--layout-scale, 1));
     align-self: center;
   }
 
@@ -907,10 +977,13 @@
     outline-offset: 2px;
   }
 
-  .pause-icon {
-    font-size: calc(var(--topbar-height, 4.5vh) * 0.55);
-    line-height: 1;
+  /* ── SVG gear icon — deterministic centering, no glyph-bearing drift ── */
+  .pause-gear-svg {
+    width: calc(20px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
     color: rgba(255, 255, 255, 0.75);
+    display: block;
+    flex-shrink: 0;
   }
 
   /* ============================================================

@@ -10,6 +10,7 @@
    * Rendered centrally in CardApp.svelte when IN_RUN_SCREENS is active.
    */
   import { closeRunDeckOverlay } from '../stores/runDeckOverlayStore'
+  import CardVisual from './CardVisual.svelte'
   import { activeTurnState } from '../../services/encounterBridge'
   import type { Card } from '../../data/card-types'
   import { getEffectiveApCost } from '../../services/cardUpgradeService'
@@ -102,6 +103,48 @@
   })
 
   // ============================================================
+  // Sort / filter state
+  // ============================================================
+  type SortKey = 'pile' | 'type' | 'name' | 'mastery'
+  let sortKey = $state<SortKey>('pile')
+  let filterPile = $state<PileId | 'all'>('all')
+
+  const sortedFilteredCards = $derived((): PiledCard[] => {
+    let cards = allCards()
+    if (filterPile !== 'all') {
+      cards = cards.filter(pc => pc.pile === filterPile)
+    }
+    if (sortKey === 'pile') {
+      // pile sort is already the default in allCards()
+      return cards
+    }
+    if (sortKey === 'type') {
+      return [...cards].sort((a, b) => {
+        const typeDiff = (TYPE_ORDER[a.card.cardType] ?? 99) - (TYPE_ORDER[b.card.cardType] ?? 99)
+        if (typeDiff !== 0) return typeDiff
+        return (a.card.mechanicName ?? '').localeCompare(b.card.mechanicName ?? '')
+      })
+    }
+    if (sortKey === 'name') {
+      return [...cards].sort((a, b) =>
+        (a.card.mechanicName ?? a.card.factId ?? '').localeCompare(
+          b.card.mechanicName ?? b.card.factId ?? '',
+        ),
+      )
+    }
+    if (sortKey === 'mastery') {
+      return [...cards].sort((a, b) => (b.card.masteryLevel ?? 0) - (a.card.masteryLevel ?? 0))
+    }
+    return cards
+  })
+
+  // ============================================================
+  // Card visual sizing — ~170px base width, aspect 886:1142
+  // ============================================================
+  /** CSS card width used as grid column basis (unitless px for --card-w var). */
+  const CARD_W_PX = 170
+
+  // ============================================================
   // Mastery label (L0-L5)
   // ============================================================
   function masteryLabel(level: number | undefined): string {
@@ -181,57 +224,73 @@
       </button>
     </div>
 
-    <!-- Card list -->
-    <div class="rdo-list" role="list">
-      {#if allCards().length === 0}
+    <!-- Sort / filter controls -->
+    <div class="rdo-controls" role="toolbar" aria-label="Sort and filter deck">
+      <div class="rdo-control-group">
+        <span class="rdo-control-label">Filter:</span>
+        <button class="rdo-filter-btn" class:rdo-filter-active={filterPile === 'all'} onclick={() => { filterPile = 'all' }} type="button">All</button>
+        {#each Object.entries(PILE_LABELS) as [pileId, label]}
+          <button
+            class="rdo-filter-btn"
+            class:rdo-filter-active={filterPile === pileId}
+            style="--filter-color: {PILE_COLORS[pileId as PileId]};"
+            onclick={() => { filterPile = pileId as PileId }}
+            type="button"
+          >{label}</button>
+        {/each}
+      </div>
+      <div class="rdo-control-group">
+        <span class="rdo-control-label">Sort:</span>
+        <button class="rdo-sort-btn" class:rdo-sort-active={sortKey === 'pile'} onclick={() => { sortKey = 'pile' }} type="button">Pile</button>
+        <button class="rdo-sort-btn" class:rdo-sort-active={sortKey === 'type'} onclick={() => { sortKey = 'type' }} type="button">Type</button>
+        <button class="rdo-sort-btn" class:rdo-sort-active={sortKey === 'name'} onclick={() => { sortKey = 'name' }} type="button">A-Z</button>
+        <button class="rdo-sort-btn" class:rdo-sort-active={sortKey === 'mastery'} onclick={() => { sortKey = 'mastery' }} type="button">Mastery</button>
+      </div>
+    </div>
+
+    <!-- Card grid -->
+    <div class="rdo-grid-scroll">
+      {#if sortedFilteredCards().length === 0}
         <div class="rdo-empty" data-testid="run-deck-overlay-empty">
-          <p>No cards in deck yet. Start combat to load your run deck.</p>
+          <p>
+            {#if allCards().length === 0}
+              No cards in deck yet. Start combat to load your run deck.
+            {:else}
+              No cards in {PILE_LABELS[filterPile as PileId] ?? 'this'} pile.
+            {/if}
+          </p>
           <button class="rdo-close-btn-center" onclick={closeRunDeckOverlay} type="button">
             Close
           </button>
         </div>
       {:else}
-        {#each allCards() as { card, pile }, i (card.id ?? i)}
-          <div class="rdo-row" role="listitem" data-testid="rdo-card-{i}">
-            <!-- Pile tag -->
-            <span
-              class="rdo-pile-tag"
-              style="color: {PILE_COLORS[pile]}; border-color: {PILE_COLORS[pile]};"
-              aria-label="In {PILE_LABELS[pile]} pile"
-            >
-              {PILE_LABELS[pile]}
-            </span>
-
-            <!-- Type dot -->
-            <span
-              class="rdo-type-dot"
-              style="background: {TYPE_COLORS[card.cardType] ?? '#888'};"
-              aria-hidden="true"
-            ></span>
-
-            <!-- Card name + type -->
-            <div class="rdo-card-info">
-              <span class="rdo-card-name">
-                {card.mechanicName ?? card.factId ?? 'Unknown'}
-                {#if card.isRemovedFromGame}
-                  <span class="rdo-inscribed-badge">INSCRIBED</span>
-                {/if}
-              </span>
-              <span class="rdo-card-meta">
-                {card.cardType} · AP {getEffectiveApCost(card)}
-              </span>
+        <div class="rdo-card-grid" role="list" aria-label="Cards in deck">
+          {#each sortedFilteredCards() as { card, pile }, i (card.id ?? i)}
+            <div class="rdo-card-cell" role="listitem" data-testid="rdo-card-{i}" aria-label="{card.mechanicName ?? card.factId ?? 'Card'}, {PILE_LABELS[pile]} pile">
+              <!-- CardVisual wrapper — requires position:relative + explicit w/h + --card-w -->
+              <div
+                class="rdo-card-visual-wrapper"
+                style="width: calc({CARD_W_PX}px * var(--layout-scale, 1)); height: calc({Math.round(CARD_W_PX * (1142 / 886))}px * var(--layout-scale, 1)); --card-w: calc({CARD_W_PX}px * var(--layout-scale, 1));"
+              >
+                <CardVisual {card} />
+              </div>
+              <!-- Pile badge — absolute corner overlay -->
+              <span
+                class="rdo-card-pile-badge"
+                style="background: {PILE_COLORS[pile]}22; border-color: {PILE_COLORS[pile]}; color: {PILE_COLORS[pile]};"
+                aria-hidden="true"
+              >{PILE_LABELS[pile]}</span>
+              <!-- Mastery badge -->
+              {#if (card.masteryLevel ?? 0) > 0}
+                <span
+                  class="rdo-card-mastery-badge"
+                  style="color: {masteryColor(card.masteryLevel)};"
+                  aria-hidden="true"
+                >{masteryLabel(card.masteryLevel)}</span>
+              {/if}
             </div>
-
-            <!-- Mastery badge -->
-            <span
-              class="rdo-mastery"
-              style="color: {masteryColor(card.masteryLevel)};"
-              aria-label="Mastery {masteryLabel(card.masteryLevel)}"
-            >
-              {masteryLabel(card.masteryLevel)}
-            </span>
-          </div>
-        {/each}
+          {/each}
+        </div>
       {/if}
     </div>
   </div>
@@ -262,7 +321,7 @@
     box-shadow:
       0 calc(8px * var(--layout-scale, 1)) calc(32px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.8),
       inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    width: calc(480px * var(--layout-scale, 1));
+    width: calc(900px * var(--layout-scale, 1));
     max-width: 90vw;
     max-height: 80vh;
     display: flex;
@@ -357,25 +416,146 @@
   }
 
   /* ============================================================
-     Card list — scrollable
+     Sort / filter controls
      ============================================================ */
-  .rdo-list {
-    overflow-y: auto;
-    flex: 1;
-    padding: calc(6px * var(--layout-scale, 1)) 0;
+  .rdo-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(6px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+    flex-shrink: 0;
+    align-items: center;
   }
 
-  .rdo-list::-webkit-scrollbar {
+  .rdo-control-group {
+    display: flex;
+    align-items: center;
+    gap: calc(4px * var(--layout-scale, 1));
+  }
+
+  .rdo-control-label {
+    font-size: calc(9px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.05em;
+    font-family: var(--font-pixel, var(--font-rpg));
+    margin-right: calc(2px * var(--layout-scale, 1));
+  }
+
+  .rdo-filter-btn,
+  .rdo-sort-btn {
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-size: calc(9px * var(--text-scale, 1));
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+    line-height: 1.5;
+    min-height: calc(22px * var(--layout-scale, 1));
+  }
+
+  .rdo-filter-btn:hover,
+  .rdo-sort-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .rdo-filter-active,
+  .rdo-sort-active {
+    background: rgba(244, 211, 94, 0.15) !important;
+    border-color: rgba(244, 211, 94, 0.6) !important;
+    color: #f4d35e !important;
+  }
+
+  .rdo-filter-btn.rdo-filter-active {
+    border-color: var(--filter-color, rgba(244, 211, 94, 0.6)) !important;
+    color: var(--filter-color, #f4d35e) !important;
+    background: color-mix(in srgb, var(--filter-color, rgba(244, 211, 94, 1)) 15%, transparent) !important;
+  }
+
+  /* ============================================================
+     Grid scroll container
+     ============================================================ */
+  .rdo-grid-scroll {
+    overflow-y: auto;
+    flex: 1;
+    padding: calc(12px * var(--layout-scale, 1));
+  }
+
+  .rdo-grid-scroll::-webkit-scrollbar {
     width: calc(4px * var(--layout-scale, 1));
   }
 
-  .rdo-list::-webkit-scrollbar-track {
+  .rdo-grid-scroll::-webkit-scrollbar-track {
     background: transparent;
   }
 
-  .rdo-list::-webkit-scrollbar-thumb {
+  .rdo-grid-scroll::-webkit-scrollbar-thumb {
     background: rgba(201, 162, 39, 0.3);
     border-radius: 2px;
+  }
+
+  /* ============================================================
+     Card grid
+     ============================================================ */
+  .rdo-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(170px * var(--layout-scale, 1)), 1fr));
+    gap: calc(14px * var(--layout-scale, 1));
+    justify-items: center;
+  }
+
+  /* ============================================================
+     Card cell — positions the CardVisual wrapper + badges
+     ============================================================ */
+  .rdo-card-cell {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Sized wrapper required by CardVisual (position:absolute inset:0 internally) */
+  .rdo-card-visual-wrapper {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* Pile badge — top-left corner of card */
+  .rdo-card-pile-badge {
+    position: absolute;
+    top: calc(-4px * var(--layout-scale, 1));
+    left: calc(-2px * var(--layout-scale, 1));
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-size: calc(7px * var(--text-scale, 1));
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border: 1px solid;
+    border-radius: 999px;
+    padding: calc(1px * var(--layout-scale, 1)) calc(5px * var(--layout-scale, 1));
+    line-height: 1.4;
+    pointer-events: none;
+    z-index: 10;
+    white-space: nowrap;
+  }
+
+  /* Mastery badge — bottom-right corner */
+  .rdo-card-mastery-badge {
+    position: absolute;
+    bottom: calc(4px * var(--layout-scale, 1));
+    right: calc(0px * var(--layout-scale, 1));
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-size: calc(9px * var(--text-scale, 1));
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    pointer-events: none;
+    z-index: 10;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
   }
 
   /* ============================================================
@@ -401,109 +581,10 @@
     border-radius: calc(4px * var(--layout-scale, 1));
     cursor: pointer;
     transition: background 150ms ease;
+    min-height: calc(44px * var(--layout-scale, 1));
   }
 
   .rdo-close-btn-center:hover {
     background: rgba(255, 255, 255, 0.14);
-  }
-
-  /* ============================================================
-     Card row
-     ============================================================ */
-  .rdo-row {
-    display: flex;
-    align-items: center;
-    gap: calc(8px * var(--layout-scale, 1));
-    padding: calc(6px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    min-height: calc(36px * var(--layout-scale, 1));
-  }
-
-  .rdo-row:last-child {
-    border-bottom: none;
-  }
-
-  .rdo-row:hover {
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  /* ============================================================
-     Pile tag — small chip left of the row
-     ============================================================ */
-  .rdo-pile-tag {
-    font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(8px * var(--text-scale, 1));
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    border: 1px solid;
-    border-radius: 999px;
-    padding: calc(1px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
-    flex-shrink: 0;
-    min-width: calc(52px * var(--layout-scale, 1));
-    text-align: center;
-    line-height: 1.5;
-  }
-
-  /* ============================================================
-     Type dot
-     ============================================================ */
-  .rdo-type-dot {
-    width: calc(8px * var(--layout-scale, 1));
-    height: calc(8px * var(--layout-scale, 1));
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  /* ============================================================
-     Card info block
-     ============================================================ */
-  .rdo-card-info {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 0;
-    gap: calc(1px * var(--layout-scale, 1));
-  }
-
-  .rdo-card-name {
-    font-size: calc(11px * var(--text-scale, 1));
-    color: #e2e8f0;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.3;
-  }
-
-  .rdo-card-meta {
-    font-size: calc(9px * var(--text-scale, 1));
-    color: rgba(255, 255, 255, 0.45);
-    line-height: 1.2;
-  }
-
-  .rdo-inscribed-badge {
-    font-size: calc(7px * var(--text-scale, 1));
-    font-weight: 700;
-    color: #a78bfa;
-    background: rgba(167, 139, 250, 0.15);
-    border: 1px solid rgba(167, 139, 250, 0.4);
-    border-radius: calc(2px * var(--layout-scale, 1));
-    padding: 0 calc(3px * var(--layout-scale, 1));
-    margin-left: calc(4px * var(--layout-scale, 1));
-    vertical-align: middle;
-    letter-spacing: 0.05em;
-  }
-
-  /* ============================================================
-     Mastery badge
-     ============================================================ */
-  .rdo-mastery {
-    font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(9px * var(--text-scale, 1));
-    font-weight: 700;
-    flex-shrink: 0;
-    min-width: calc(22px * var(--layout-scale, 1));
-    text-align: right;
-    letter-spacing: 0.03em;
   }
 </style>
