@@ -126,14 +126,18 @@ if [ -n "$WARM_CMD" ]; then
                 exit 0
             fi
 
-            echo "Starting warm container: $CONTAINER_NAME (port $WARM_PORT)"
+            # DEV_SERVER override: each parallel worktree agent can point its container
+            # at its own Vite (e.g. DEV_SERVER=http://host.docker.internal:5174).
+            # Default stays on port 5173 for single-agent sessions.
+            DEV_SERVER_URL="${DEV_SERVER:-http://host.docker.internal:5173}"
+            echo "Starting warm container: $CONTAINER_NAME (port $WARM_PORT, dev=$DEV_SERVER_URL)"
             docker run -d --rm \
                 --name "$CONTAINER_NAME" \
                 --add-host=host.docker.internal:host-gateway \
                 --shm-size=2g \
                 -p "${WARM_PORT}:3200" \
                 -v "/tmp/rr-docker-visual:/tmp/rr-test-output" \
-                -e DEV_SERVER=http://host.docker.internal:5173 \
+                -e DEV_SERVER="$DEV_SERVER_URL" \
                 -e AGENT_ID="$AGENT_ID" \
                 "$IMAGE_NAME" \
                 node /app/warm-server.mjs
@@ -247,12 +251,19 @@ if [ -z "$OUTPUT_DIR" ]; then
 fi
 mkdir -p "$OUTPUT_DIR"
 
+# DEV_SERVER override (same pattern as warm mode above) — each parallel worktree
+# agent can point its container at its own Vite port.
+DEV_SERVER_URL="${DEV_SERVER:-http://host.docker.internal:5173}"
+# Parse port out for the host-side healthcheck (strip scheme + host).
+DEV_SERVER_PORT="${DEV_SERVER_URL##*:}"
+DEV_SERVER_PORT="${DEV_SERVER_PORT%%/*}"
+
 # Check dev server
-if ! curl -s -o /dev/null -w "%{http_code}" http://localhost:5173 | grep -q "200"; then
-    echo "WARNING: Dev server may not be running at localhost:5173"
+if ! curl -s -o /dev/null -w "%{http_code}" "http://localhost:${DEV_SERVER_PORT}" | grep -q "200"; then
+    echo "WARNING: Dev server may not be running at localhost:${DEV_SERVER_PORT}"
 fi
 
-echo "Docker Visual Test (cold): scenario=$SCENARIO agent=$AGENT_ID"
+echo "Docker Visual Test (cold): scenario=$SCENARIO agent=$AGENT_ID dev=$DEV_SERVER_URL"
 echo "Output: $OUTPUT_DIR"
 
 # Run container
@@ -260,7 +271,7 @@ docker run --rm \
     --add-host=host.docker.internal:host-gateway \
     --shm-size=2g \
     -v "$OUTPUT_DIR:/tmp/rr-test-output" \
-    -e DEV_SERVER=http://host.docker.internal:5173 \
+    -e DEV_SERVER="$DEV_SERVER_URL" \
     -e SCENARIO="$SCENARIO" \
     -e VIEWPORT_W="${VIEWPORT%x*}" \
     -e VIEWPORT_H="${VIEWPORT#*x}" \
