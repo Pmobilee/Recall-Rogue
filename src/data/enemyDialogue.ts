@@ -1691,7 +1691,7 @@ export const ENEMY_DIALOGUE: Record<string, EnemyDialogue> = {
       "The phoenix rises again. Always.",
       "Breakthrough follows breakdown.",
       "I am the moment of perfect clarity.",
-      "Discovery is the essence of my being.",
+      "I am the line between not-knowing and knowing.",
       "The cycles never stop. Neither do I.",
       "I've transcended death through understanding.",
       "Every aha moment spawns my next.",
