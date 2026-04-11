@@ -113,6 +113,13 @@ export interface FullRunOptions {
   forceRelics?: string[];
   /** Build preferences for bot (preferred mechanics, relic categories, relic IDs). */
   buildPrefs?: BuildPreferences;
+  /**
+   * Force a specific mechanic into reward slot 1 for this run (force-sweep mode).
+   * The bot will always pick slot 1 for the first 3 rewards, then decide normally.
+   * Bypasses the type pool entirely — works for wild-type mechanics like adapt/mirror.
+   * Do NOT set this in normal runs — it is only for the --force-sweep batch.
+   */
+  forcedMechanicSlot1?: string;
 }
 
 /**
@@ -142,7 +149,7 @@ export interface NodeVisitRecord {
 
 export interface FullRunResult {
   runId: string;
-  options: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics' | 'buildPrefs'>> & { botSkills?: BotSkills; forceRelics?: string[]; buildPrefs?: BuildPreferences };
+  options: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics' | 'buildPrefs' | 'forcedMechanicSlot1'>> & { botSkills?: BotSkills; forceRelics?: string[]; buildPrefs?: BuildPreferences; forcedMechanicSlot1?: string };
   survived: boolean;
   actsCompleted: number;
   finalHP: number;
@@ -221,6 +228,8 @@ interface SimRunState {
   // Coverage analytics — which mechanics were offered/taken in reward slots this run
   mechanicsOfferedThisRun: Set<string>;
   mechanicsTakenThisRun: Set<string>;
+  /** How many forced-slot-1 rewards have been given (force-sweep mode). Resets per run. */
+  forcedRewardCount: number;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -327,12 +336,17 @@ function pickCardReward(
   currentDeck: Card[],
   /** Optional coverage tracker — mechanic IDs that were offered (set) and taken (set). */
   coverage?: { offered: Set<string>; taken: Set<string> },
+  /** Force-sweep: when set, slot 1 is always this mechanic ID (bypasses type pool). */
+  forcedMechanicSlot1?: string,
 ): Card | null {
   if (currentDeck.length >= MAX_DECK_SIZE) return null;
 
-  // Generate 3 random options
+  // Generate 3 random options; slot 1 may be overridden for force-sweep
+  const slot1: MechanicDefinition = forcedMechanicSlot1
+    ? (MECHANIC_DEFINITIONS.find(m => m.id === forcedMechanicSlot1) ?? pickRandomMechanic())
+    : pickRandomMechanic();
   const options: MechanicDefinition[] = [
-    pickRandomMechanic(),
+    slot1,
     pickRandomMechanic(),
     pickRandomMechanic(),
   ];
@@ -788,7 +802,7 @@ function handleCombatNode(
   nodeType: MapNodeType,
   floor: number,
   act: 1 | 2 | 3,
-  opts: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics' | 'buildPrefs'>> & { botSkills?: BotSkills; forceRelics?: string[]; buildPrefs?: BuildPreferences },
+  opts: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics' | 'buildPrefs' | 'forcedMechanicSlot1'>> & { botSkills?: BotSkills; forceRelics?: string[]; buildPrefs?: BuildPreferences; forcedMechanicSlot1?: string },
   ascMods: ReturnType<typeof getAscensionModifiers>,
   relicPool: string[],
   verbose: boolean,
@@ -894,10 +908,19 @@ function handleCombatNode(
 
     // Card reward (all combat nodes, plus elite and boss get one too)
     if (brain) {
-      const options = [pickRandomMechanic(), pickRandomMechanic(), pickRandomMechanic()];
+      // Force-sweep: when a target mechanic is set and fewer than 3 forced rewards given,
+      // slot 1 is always the target mechanic. The bot is overridden to always pick slot 1
+      // for these forced rewards. Bypasses the type pool — works for wild-type mechanics.
+      const isForcedReward = !!opts.forcedMechanicSlot1 && runState.forcedRewardCount < 3;
+      const slot1Mechanic: MechanicDefinition = isForcedReward
+        ? (MECHANIC_DEFINITIONS.find(m => m.id === opts.forcedMechanicSlot1) ?? pickRandomMechanic())
+        : pickRandomMechanic();
+      const options = [slot1Mechanic, pickRandomMechanic(), pickRandomMechanic()];
       // Track every offered mechanic for coverage analytics (per-run set — no double-counting)
       for (const opt of options) runState.mechanicsOfferedThisRun.add(opt.id);
-      const chosen = brain.pickReward(options, runState.deck);
+      // Force-sweep override: always pick slot 1 (index 0) for the first 3 forced rewards
+      const chosen = isForcedReward ? options[0] : brain.pickReward(options, runState.deck);
+      if (isForcedReward) runState.forcedRewardCount++;
       if (chosen && runState.deck.length < MAX_DECK_SIZE) {
         // Bug 5: never add transmute as a reward — it has no sim target behavior
         const mechanic = chosen.id === 'transmute' ? findMechanic('strike') : chosen;
@@ -912,7 +935,11 @@ function handleCombatNode(
         runState.cardsAdded++;
       }
     } else {
-      const newCard = pickCardReward(runState.deck, { offered: runState.mechanicsOfferedThisRun, taken: runState.mechanicsTakenThisRun });
+      // Force-sweep: pass the forced mechanic to pickCardReward for slot 1 override
+      const forcedId = (opts.forcedMechanicSlot1 && runState.forcedRewardCount < 3)
+        ? (runState.forcedRewardCount++, opts.forcedMechanicSlot1)
+        : undefined;
+      const newCard = pickCardReward(runState.deck, { offered: runState.mechanicsOfferedThisRun, taken: runState.mechanicsTakenThisRun }, forcedId);
       if (newCard) {
         // Bug 5: transmute is dead weight in sim (pickCardReward can return any mechanic)
         if (newCard.mechanicId === 'transmute') {
@@ -1228,7 +1255,7 @@ function handleMysteryNode(
   runState: SimRunState,
   floor: number,
   act: 1 | 2 | 3,
-  opts: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics' | 'buildPrefs'>> & { botSkills?: BotSkills; forceRelics?: string[]; buildPrefs?: BuildPreferences },
+  opts: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics' | 'buildPrefs' | 'forcedMechanicSlot1'>> & { botSkills?: BotSkills; forceRelics?: string[]; buildPrefs?: BuildPreferences; forcedMechanicSlot1?: string },
   ascMods: ReturnType<typeof getAscensionModifiers>,
   relicPool: string[],
   verbose: boolean,
@@ -1376,7 +1403,7 @@ function walkMapPath(actMap: ActMap): MapNode[] {
 export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   const startTime = Date.now();
 
-  const options: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics' | 'buildPrefs'>> & { botSkills?: BotSkills; forceRelics?: string[]; buildPrefs?: BuildPreferences } = {
+  const options: Required<Omit<FullRunOptions, 'botSkills' | 'forceRelics' | 'buildPrefs' | 'forcedMechanicSlot1'>> & { botSkills?: BotSkills; forceRelics?: string[]; buildPrefs?: BuildPreferences; forcedMechanicSlot1?: string } = {
     correctRate: opts.correctRate ?? 0.75,
     chargeRate: opts.chargeRate ?? 0.7,
     seed: opts.seed ?? Math.floor(Math.random() * 1_000_000),
@@ -1387,6 +1414,7 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     botSkills: opts.botSkills,
     forceRelics: opts.forceRelics,
     buildPrefs: opts.buildPrefs,
+    forcedMechanicSlot1: opts.forcedMechanicSlot1,
   };
 
   const { verbose } = options;
@@ -1420,6 +1448,7 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     encounterCount: 0,
     mechanicsOfferedThisRun: new Set<string>(),
     mechanicsTakenThisRun: new Set<string>(),
+    forcedRewardCount: 0,
   };
 
   // Apply starter deck size override from ascension

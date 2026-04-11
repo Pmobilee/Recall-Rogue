@@ -52,7 +52,7 @@ import {
   makeSkills,
   profileLabel,
 } from './bot-profiles.js';
-import { generateAnalyticsReports, type AnalyticsRun, type MechanicRegistryEntry } from './analytics-report.js';
+import { generateAnalyticsReports, generateForcedSweepCoverage, type AnalyticsRun, type MechanicRegistryEntry, type ForceSweepMechanicResult as AnalyticsForceSweepMechanicResult } from './analytics-report.js';
 import { MECHANIC_DEFINITIONS } from '../../../src/data/mechanics.js';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -371,6 +371,9 @@ const customSkillsJson = getArg('--skills');
 const forceRelicArg   = getArg('--force-relic');
 const isAnalyticsMode = args.includes('--analytics');
 const isResumeSmoke    = args.includes('--resume-smoke');
+// Force-sweep mode: guarantees every mechanic gets >=50 plays
+const isForceSweep     = args.includes('--force-sweep');
+const forceSweepRunsPerMechanic = parseInt(getArg('--force-sweep-runs') ?? '10', 10);
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Determine which profiles to run
@@ -959,6 +962,89 @@ if (sweepAxis && sweepAxis !== 'all' && sweepResults.length > 0) {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
+// Force-Sweep Mode
+// Runs N mini-runs per mechanic where slot 1 is always the target mechanic.
+// The bot always picks slot 1 for the first 3 rewards in each forced run.
+// Works for wild-type mechanics (adapt, mirror) by bypassing the type pool entirely.
+// Results are written to a Forced Sweep Coverage section in card-coverage.md.
+// ──────────────────────────────────────────────────────────────────────────────
+
+// ForceSweepMechanicResult type is imported from analytics-report.ts
+const forceSweepResults: AnalyticsForceSweepMechanicResult[] = [];
+
+if (isForceSweep && simMode === 'full') {
+  const sweepStartTime = Date.now();
+  console.log(`
+${'─'.repeat(60)}`);
+  console.log(`  FORCE SWEEP (${MECHANIC_DEFINITIONS.length} mechanics × ${forceSweepRunsPerMechanic} runs)`);
+  console.log(`${'─'.repeat(60)}`);
+
+  // Use the master profile from PROGRESSION_PROFILES for sweep runs (high skill, sees rewards often)
+  const MASTER_SKILLS = PROGRESSION_PROFILES['master'];
+  const sweepBotSkills = MASTER_SKILLS ?? makeSkills({ accuracy: 0.85, rewardSkill: 1.0 });
+
+  for (let mi = 0; mi < MECHANIC_DEFINITIONS.length; mi++) {
+    const mechDef = MECHANIC_DEFINITIONS[mi];
+    let runsWhereTargetPicked = 0;
+    let totalPlaysOfTarget = 0;
+
+    for (let ri = 0; ri < forceSweepRunsPerMechanic; ri++) {
+      const result = simulateFullRun({
+        botSkills: sweepBotSkills,
+        maxTurnsPerEncounter: 50,
+        verbose: false,
+        ascensionLevel: 0,
+        acts: 3,
+        forcedMechanicSlot1: mechDef.id,
+      });
+
+      // Check if target was picked (appears in mechanicsTaken or was played)
+      const wasPicked = result.mechanicsTaken.includes(mechDef.id);
+      if (wasPicked) runsWhereTargetPicked++;
+
+      // Count how many times the target mechanic was actually played in combat
+      for (const enc of result.encounters) {
+        for (const play of enc.cardPlays) {
+          if (play.mechanic === mechDef.id) totalPlaysOfTarget++;
+        }
+      }
+    }
+
+    const pass = totalPlaysOfTarget >= 50;
+    forceSweepResults.push({
+      mechanicId: mechDef.id,
+      mechanicName: mechDef.name,
+      runsAttempted: forceSweepRunsPerMechanic,
+      runsWhereTargetPicked,
+      totalPlaysOfTarget,
+      pass,
+    });
+
+    // Progress dot every 10 mechanics
+    if ((mi + 1) % 10 === 0 || mi === MECHANIC_DEFINITIONS.length - 1) {
+      const doneCount = mi + 1;
+      const failCount = forceSweepResults.filter(r => !r.pass).length;
+      process.stdout.write(`    [${String(doneCount).padStart(3)}/${MECHANIC_DEFINITIONS.length}] sweeps done | FAIL so far: ${failCount}
+`);
+    }
+  }
+
+  const sweepElapsed = ((Date.now() - sweepStartTime) / 1000).toFixed(1);
+  const sweepPassed = forceSweepResults.filter(r => r.pass).length;
+  const sweepFailed = forceSweepResults.filter(r => !r.pass).length;
+
+  console.log(`
+  Force sweep complete in ${sweepElapsed}s: ${sweepPassed} PASS / ${sweepFailed} FAIL`);
+
+  if (sweepFailed > 0) {
+    console.log(`  FAILED mechanics:`);
+    for (const r of forceSweepResults.filter(r => !r.pass)) {
+      console.log(`    FAIL  ${r.mechanicId.padEnd(20)} ${r.totalPlaysOfTarget} plays (${r.runsWhereTargetPicked}/${r.runsAttempted} runs picked)`);
+    }
+  }
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
 // Save combined JSON
 // ──────────────────────────────────────────────────────────────────────────────
 
@@ -1045,20 +1131,24 @@ if (isAnalyticsMode && simMode === 'full' && allFullResults.length > 0) {
     maxPerPool: m.maxPerPool,
   }));
   generateAnalyticsReports(analyticsRuns, analyticsOutputDir, mechanicRegistry);
+  // Append forced sweep section if sweep was run
+  if (isForceSweep && forceSweepResults.length > 0) {
+    generateForcedSweepCoverage(forceSweepResults, analyticsOutputDir);
+  }
 }
 
 // Write combined.json — strip encounter details to avoid V8 string limit at high run counts
 try {
   const strippedResults = simMode === 'full'
     ? allFullResults.map(r => {
-        const { encounters, deckEvolution, ...rest } = r as Record<string, unknown>;
+        const { encounters, deckEvolution, ...rest } = r as unknown as Record<string, unknown>;
         void encounters; void deckEvolution;
         return rest;
       })
     : allResults;
   const combined = {
     timestamp,
-    description: runDescription,
+    description: description,
     totalRuns:   simMode === 'full' ? allFullResults.length : allResults.length,
     runsPerProfile: runsPerProfile,
     durationSeconds: totalElapsed,
@@ -1071,6 +1161,12 @@ try {
   fs.writeFileSync(path.join(outputDir, 'combined.json'), JSON.stringify(combined, null, 2));
 } catch (err) {
   console.warn(`  [WARN] combined.json too large to write (${allFullResults.length} runs). Analytics reports still generated.`);
+}
+
+// ── Standalone force-sweep report (when not running in analytics mode) ──────
+// When --analytics was also passed, the report is already appended inside the analytics block above.
+if (isForceSweep && forceSweepResults.length > 0 && !isAnalyticsMode) {
+  generateForcedSweepCoverage(forceSweepResults, outputDir);
 }
 
 // ──────────────────────────────────────────────────────────────────────────────

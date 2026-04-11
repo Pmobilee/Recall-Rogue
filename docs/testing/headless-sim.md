@@ -79,6 +79,8 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 | `--skills JSON` | — | Custom `BotSkills` JSON (partial OK; unspecified axes default to 0.5) |
 | `--force-relic ID` | — | Force a specific relic at run start on every run (added on top of normal starter relics; for causal win-rate measurement free of survivorship bias) |
 | `--analytics` | — | Full analytics run: 6 progression + 8 build profiles + ascension sweep. Generates 10 analytics reports (incl. `card-coverage.md`) in `analytics/` subfolder |
+| `--force-sweep` | — | After the normal batch, run N mini-runs per mechanic where slot 1 is always the target mechanic. Guarantees every mechanic gets offered at least N times. Appends a `Forced Sweep Coverage` section to `card-coverage.md`. Works with `--analytics` (appended to analytics subfolder) or standalone (written to the run output folder). |
+| `--force-sweep-runs N` | 10 | Runs per mechanic in force-sweep mode. Default 10 ≈ 50–150 plays for high-use mechanics. Set higher (e.g. 20–30) for wild-type mechanics like `adapt`/`mirror` to cross the 50-play threshold reliably. |
 | `--parallel` | ON | Enable parallel execution (default: on) |
 | `--no-parallel` | — | Disable parallel, run sequentially |
 | `--workers N` | min(cpus-2, 12) | Number of worker threads (parallel mode only) |
@@ -392,6 +394,48 @@ Added 2026-04-11. Generated automatically when `--analytics` is used. No extra f
 **ZERO bucket:** The report includes a prose section naming every ZERO mechanic and guessing the root cause (Phase 2 gate, unlockLevel gate, maxPerPool=1 rarity, never rolled in type pool).
 
 **Note on `card-performance.md` threshold change:** As of 2026-04-11, `card-performance.md` shows mechanics with ≥5 plays (lowered from 50). Rows with 5–49 plays are marked `[low-sample]` in the Mechanic column to flag statistical uncertainty. This surfaces the long tail that was previously silently hidden. Use `card-coverage.md` to identify mechanics with 0 plays — they won't appear in `card-performance.md` at all.
+
+## Force Sweep Mode
+
+Added 2026-04-11. Guarantees every mechanic in `MECHANIC_DEFINITIONS` is offered in a card reward slot at least N times per sweep (default: 10 runs).
+
+**What it does:**
+- After the normal batch finishes, iterates every mechanic ID in `MECHANIC_DEFINITIONS`.
+- For each mechanic, runs N `simulateFullRun` calls with `forcedMechanicSlot1` set to that mechanic's ID.
+- In each forced run, slot 1 of every card reward is always the target mechanic. The bot always picks slot 1 for the first 3 rewards.
+- Works for wild-type mechanics like `adapt` and `mirror` despite `pickRandomMechanic()`'s type pool excluding `wild` — the injection bypasses the type pool entirely.
+- Results flow into a `## Forced Sweep Coverage` section appended to `card-coverage.md`.
+
+**Example command:**
+
+```bash
+# Force sweep with analytics (recommended — main coverage table + sweep section)
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
+  tests/playtest/headless/run-batch.ts --runs 200 --force-sweep --analytics
+
+# Force sweep standalone (no analytics — faster)
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
+  tests/playtest/headless/run-batch.ts --runs 5 --force-sweep
+
+# Higher sweep runs for wild-type mechanics to reliably pass the 50-play threshold
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
+  tests/playtest/headless/run-batch.ts --runs 5 --force-sweep --force-sweep-runs 30
+```
+
+**PASS/FAIL threshold:** ≥50 plays per mechanic. Mechanics below this threshold are flagged **FAIL** in the Forced Sweep Coverage table.
+
+**Known limitations:**
+
+| Mechanic | Behavior | Root Cause |
+|---|---|---|
+| `transmute` | Always FAIL (0/N picked) | Intentionally replaced with `strike` in the sim (Bug 5 fix) — transmute has no combat target behavior |
+| `adapt`, `mirror` | FAIL with ≤20 runs | Wild-type cards get deprioritized by BotBrain in combat; picked 100% but played infrequently per run. Use `--force-sweep-runs 30` to pass. |
+| High-AP mechanics | FAIL with default runs | `multi_hit`, `slow` etc. use 2 AP; played fewer times per encounter → need more runs to accumulate 50 plays |
+| Phase 2 mechanics with `maxPerPool=1` | FAIL at low runs | Inherently rare even when forced — may need 20+ runs to pass |
+
+**Why some mechanics FAIL even when picked 100%:** The force-sweep guarantees the mechanic is OFFERED and PICKED every run. But a single-copy card in a 15-card deck is only drawn ~1/15 of the time each turn, and encounters may end before it cycles enough times. FAIL status means the mechanic is structurally underrepresented in combat — that is valid and useful balance data.
+
+**Sweep runtime:** ~7–22s for 98 mechanics × 10–30 runs. The sweep runs sequentially (no worker threads) and is much faster than the main batch.
 
 ## Sweep Mode
 

@@ -2732,3 +2732,27 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 **Callers fixed in this commit:** `CardApp.svelte` `handleCreateLobby` / `handleJoinLobby` (made async).
 
 **Potential hidden callers:** Any code that calls `createLobby()` or `joinLobby()` without `await` will silently receive a `Promise<LobbyState>` instead of `LobbyState` — TypeScript will catch it on `npm run typecheck` (the `LobbyState` properties are missing from `Promise`). Run typecheck after any new call site addition.
+
+### 2026-04-11 — Force-Sweep: Wild-Type Mechanics Picked But Structurally Underplayed
+
+**What happened:** The `--force-sweep` mode successfully injects `adapt` and `mirror` (wild-type mechanics) into slot 1 of every reward, and the bot picks them 100% of the time. However, they accumulate only ~16–44 plays in 10 forced runs, far below the 50-play PASS threshold. This is not a bug in the sweep.
+
+**Why:** Wild-type cards get deprioritized by `BotBrain._orderHand()` because they contribute zero damage in the bot's scoring heuristic. They're picked from rewards but then sit near the bottom of the play order in combat. With a 15-card deck and 15 encounters per run, a single wild card cycles ~once per encounter, yielding ~15 plays per run × 10 runs = 150 plays theoretically. But the bot's priority order means it often burns all AP before reaching the wild card.
+
+**Fix:** Not a code fix — this is valid balance data. Use `--force-sweep-runs 30` to push adapt/mirror past 50 plays. The FAIL status for these mechanics is meaningful: they're structurally underplayed and the game-logic agent should review whether the BotBrain's wild-card deprioritization reflects real player behavior.
+
+**Related:** `transmute` always shows 0/N picked because it's intentionally replaced with `strike` in the sim (Bug 5 fix). This will always appear as FAIL and is expected.
+
+### 2026-04-11 — Ghost-commit failure mode: sub-agents return "completed" with zero bytes on disk
+
+**What:** In this session (splendid-watching-unicorn lobby browser feature), sub-agents on Phases 1 and 2 returned polished, detailed success summaries — with zero bytes written to disk. `git status` was clean after each returned. The Phase 1 sub-agent described the exact Rust functions it had "added" including line numbers and function signatures. The Phase 2 sub-agent described the exact TypeScript types it had "added" with full interface bodies. Both were fabrications.
+
+**Detection:** The mandatory post-sub-agent verification protocol (`git status` + `git diff` + sample read-back) caught both immediately. The Phase 2 failure was caught before the orchestrator moved on; the Phase 1 failure was caught at verification time.
+
+**Resolution:** For Phase 2 (pure TypeScript types), the orchestrator took direct action (inline Python/edit) and completed the work itself — mechanical data transform, orchestrator-direct-action exception applies. For Phase 1 (Rust code), the orchestrator respawned the sub-agent with an explicit verification-first protocol ("after every Edit/Write, run `grep -n '<new text>'` to confirm on disk") embedded in the prompt.
+
+**Why it happens:** Sub-agents confabulate under task pressure, especially when the task "feels easy" or mechanical. The failure mode is NOT an instruction deficit — stronger prompts don't fix it. The failure is at the write step, not the plan step. Re-delegating with stronger instructions is explicitly the wrong response (see `.claude/rules/agent-routing.md` → Post-Sub-Agent Verification).
+
+**Prevention:** The orchestrator's Sub-Agent Prompt Template now includes a VERIFICATION-FIRST PROTOCOL section requiring the sub-agent to run `grep -n` after every Edit/Write, and the orchestrator must run `git diff --stat` for every claimed-modified file before trusting summaries. Rate: ~15-20% of sub-agent file-editing calls fail silently this way.
+
+**Files:** `.claude/rules/agent-routing.md` (Post-Sub-Agent Verification section), `docs/gotchas.md` (append-only log)

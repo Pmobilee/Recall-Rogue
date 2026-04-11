@@ -1753,3 +1753,99 @@ export function generateCardCoverageReport(
   fs.writeFileSync(path.join(outputDir, 'card-coverage.md'), lines.join('\n') + '\n');
   console.log(`    [10/10] card-coverage.md (${okCount} OK, ${lowCount} LOW, ${zeroCount} ZERO)`);
 }
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Force-Sweep Coverage Appendix (Report 11)
+// ──────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Per-mechanic result from the --force-sweep batch.
+ * Mirrors run-batch.ts ForceSweepMechanicResult (duplicated to avoid circular import).
+ */
+export interface ForceSweepMechanicResult {
+  mechanicId: string;
+  mechanicName: string;
+  runsAttempted: number;
+  runsWhereTargetPicked: number;
+  totalPlaysOfTarget: number;
+  pass: boolean;
+}
+
+/**
+ * Appends a `## Forced Sweep Coverage` section to the existing card-coverage.md.
+ * If card-coverage.md does not exist, it creates a standalone file.
+ *
+ * PASS threshold: totalPlaysOfTarget >= 50.
+ * Works for wild-type mechanics (adapt, mirror) because the force-sweep injects
+ * the mechanic directly into slot 1, bypassing pickRandomMechanic()'s type pool.
+ *
+ * @param results - Per-mechanic sweep results from run-batch.ts --force-sweep
+ * @param outputDir - Directory where card-coverage.md lives
+ */
+export function generateForcedSweepCoverage(
+  results: ForceSweepMechanicResult[],
+  outputDir: string,
+): void {
+  if (results.length === 0) return;
+
+  const passed = results.filter(r => r.pass);
+  const failed = results.filter(r => !r.pass);
+  const isoDate = new Date().toISOString().slice(0, 10);
+
+  const lines: string[] = [
+    '',
+    '## Forced Sweep Coverage',
+    '',
+    `*Generated: ${isoDate} | Threshold: ≥50 plays per mechanic | ${passed.length}/${results.length} PASS*`,
+    '',
+    '| Mechanic ID | Name | Runs Attempted | Runs Picked | Total Plays | Status |',
+    '|---|---|---|---|---|---|',
+  ];
+
+  // Sort: failures first, then by mechanicId
+  const sorted = [...results].sort((a, b) => {
+    if (a.pass !== b.pass) return a.pass ? 1 : -1;
+    return a.mechanicId.localeCompare(b.mechanicId);
+  });
+
+  for (const r of sorted) {
+    const pickRate = r.runsAttempted > 0
+      ? `${r.runsWhereTargetPicked}/${r.runsAttempted} (${Math.round(r.runsWhereTargetPicked / r.runsAttempted * 100)}%)`
+      : '0/0';
+    lines.push(
+      `| ${r.mechanicId} | ${r.mechanicName} | ${r.runsAttempted} | ${pickRate} | ${r.totalPlaysOfTarget} | ${r.pass ? 'PASS' : '**FAIL**'} |`,
+    );
+  }
+
+  if (failed.length > 0) {
+    lines.push(
+      '',
+      `### Failed mechanics (${failed.length})`,
+      '',
+      '*These mechanics did not reach 50 plays despite forced slot 1 injection. Investigate their combat playability or AP cost.*',
+      '',
+    );
+    for (const r of failed) {
+      lines.push(`- **${r.mechanicId}** (${r.mechanicName}): ${r.totalPlaysOfTarget} plays in ${r.runsAttempted} runs — ${r.runsWhereTargetPicked} runs where it was picked`);
+    }
+  } else {
+    lines.push('', '*All mechanics passed. Sweep complete — every mechanic has sufficient play data.*');
+  }
+
+  const coveragePath = path.join(outputDir, 'card-coverage.md');
+  if (fs.existsSync(coveragePath)) {
+    // Append to existing card-coverage.md
+    fs.appendFileSync(coveragePath, lines.join('\n') + '\n');
+  } else {
+    // Standalone: write a minimal file
+    const header = [
+      '# Card Coverage — Forced Sweep Only',
+      '',
+      '*Normal batch not run. Forced sweep results only.*',
+    ];
+    fs.mkdirSync(outputDir, { recursive: true });
+    fs.writeFileSync(coveragePath, [...header, ...lines].join('\n') + '\n');
+  }
+
+  console.log(`    [11/11] card-coverage.md ← Forced Sweep Coverage appended (${passed.length} PASS, ${failed.length} FAIL)`);
+}
