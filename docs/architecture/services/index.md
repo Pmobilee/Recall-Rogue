@@ -62,7 +62,6 @@
 | engagementScorer | src/services/engagementScorer.ts | [learning.md](learning.md) |
 | entitlementService | src/services/entitlementService.ts | [platform.md](platform.md) |
 | errorReporting | src/services/errorReporting.ts | [platform.md](platform.md) |
-| experimentService | src/services/experimentService.ts | [platform.md](platform.md) |
 | fairnessService | src/services/fairnessService.ts | [social.md](social.md) |
 | factPackService | src/services/factPackService.ts | [quiz.md](quiz.md) |
 | factSpriteManifest | src/services/factSpriteManifest.ts | [quiz.md](quiz.md) |

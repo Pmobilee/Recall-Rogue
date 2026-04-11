@@ -3536,3 +3536,16 @@ check-camp-sprites.mjs — scanned 9 elements, 60 tier files
 ```
 
 **@types/geojson devDependency declared:** `src/services/geoDataLoader.ts` and `src/ui/components/MapPinDrop.svelte` both use `import type { FeatureCollection } from 'geojson'`. The types come from `@types/geojson` (installed transitively), but it was not declared in `package.json`, causing `check-missing-deps.mjs` to error. Added `"@types/geojson": "^7946.0.16"` to devDependencies. Also improved `check-missing-deps.mjs` to apply the DefinitelyTyped convention: `@types/foo` in package.json satisfies both the declared-dep check AND the installed check for bare `'foo'` imports, so type-only packages no longer produce false positives.
+
+### 2026-04-11 — A/B experiment system removed (never authorized)
+
+**What happened:** `src/services/experimentService.ts` was added on 2026-03-09 by the AR-09/10/12/14 analytics wiring batch without design approval. It silently bucketed every player into test/control groups for three experiments based on a deterministic hash of `deviceId`/`playerId`:
+- `starting_ap_3_vs_4` — 3 vs 4 starting AP (was wired into `gameFlowController.onArchetypeSelected()`)
+- `slow_reader_default` — slow-reader mode default (wired but ineffective — `isSlowReader` store defaults to `false` regardless)
+- `starter_deck_15_vs_18` — 15 vs 18 card starter deck (wired but `runManager.ts` already defaults to 15)
+
+**Side effect discovered:** Dev users with certain device IDs were permanently assigned to the 4-AP `test` group. This silently overrode `START_AP_PER_TURN = 3`. The design intent (3 AP in Act 1, 4 AP in Acts 2+) was never actually the live experience for roughly half of all testers.
+
+**Fix:** Entire `experimentService.ts` deleted. `gameFlowController.onArchetypeSelected()` now uses `START_AP_PER_TURN` directly (imported from `../data/balance`). Starter deck size defaults to `15` (the experiment control value, matching `runManager.ts` default). The `experiment_assigned` event type and the `getExperimentVariant`/`getExperimentGroup` methods were removed from `analyticsService.ts`. The separate live experiments in `src/data/experiments.ts` (`pioneer_pack_timing_v2`, etc.) are unaffected — they are proper product experiments, not balance forks.
+
+**Lesson:** Any service that silently assigns players to different balance values must be approved before wiring into `createRunState`. A balance-altering experiment that isn't in `docs/roadmap/` or explicitly approved is a balance fork, not an experiment.

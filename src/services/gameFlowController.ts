@@ -50,8 +50,7 @@ import {
   unlockAscensionLevel,
   unlockNextAscensionLevel,
 } from './cardPreferences';
-import { isSlowReader } from './cardPreferences';
-import { STORY_MODE_FORCED_RUNS, ARCHETYPE_UNLOCK_RUNS } from '../data/balance';
+import { STORY_MODE_FORCED_RUNS, ARCHETYPE_UNLOCK_RUNS, START_AP_PER_TURN } from '../data/balance';
 import { updateBounties } from './bountyManager';
 import { resetCanaryFloor } from './canaryService';
 import {
@@ -71,7 +70,6 @@ import {
   incrementDomainRunCount,
   isEarlyBoostActiveForDomain,
 } from './runEarlyBoostController';
-import { getExperimentValue } from './experimentService';
 import { analyticsService } from './analyticsService';
 import type { SpecialEvent } from '../data/specialEvents';
 import { rollSpecialEvent } from '../data/specialEvents';
@@ -892,20 +890,12 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
   const pending = pendingDomainSelection;
   if (!pending) return;
   const save = get(playerSave);
-  const userId = save?.deviceId ?? save?.playerId ?? 'anonymous';
   const runNumber = save ? getRunNumberForDomain(save, pending.primary) : 1;
   const earlyBoostActive = save ? isEarlyBoostActiveForDomain(save, pending.primary) : true;
-  const startingAp = getExperimentValue('starting_ap_3_vs_4', userId);
-  const starterDeckSizeExperiment = getExperimentValue('starter_deck_15_vs_18', userId);
   const selectedAscensionLevel = getAscensionLevel();
   const ascensionModifiers = getAscensionModifiers(selectedAscensionLevel);
-  const starterDeckSize = ascensionModifiers.starterDeckSizeOverride ?? Number(starterDeckSizeExperiment);
-  const slowReaderDefault = getExperimentValue('slow_reader_default', userId);
-
-  // Apply first-run default only once; user preferences continue to override after this.
-  if (typeof window !== 'undefined' && window.localStorage.getItem('card:isSlowReader') === null) {
-    isSlowReader.set(Boolean(slowReaderDefault));
-  }
+  // Starter deck size: ascension overrides take priority; default is 15.
+  const starterDeckSize = ascensionModifiers.starterDeckSizeOverride ?? 15;
 
   if (save) {
     let updatedSave = incrementDomainRunCount(save, pending.primary);
@@ -925,7 +915,7 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
   const run = createRunState(pending.primary, pending.secondary, {
     selectedArchetype: archetype,
     starterDeckSize,
-    startingAp: Number(startingAp),
+    startingAp: START_AP_PER_TURN,
     primaryDomainRunNumber: runNumber,
     earlyBoostActive,
     ascensionLevel: selectedAscensionLevel,
@@ -987,7 +977,7 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
       archetype,
       run_number: runNumber,
       starter_deck_size: starterDeckSize,
-      starting_ap: startingAp,
+      starting_ap: START_AP_PER_TURN,
       early_boost_active: earlyBoostActive,
       ascension_level: selectedAscensionLevel,
     },
@@ -998,7 +988,7 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
       domain_primary: pending.primary,
       domain_secondary: pending.secondary,
       archetype,
-      starting_ap: startingAp,
+      starting_ap: START_AP_PER_TURN,
       starter_deck_size: starterDeckSize,
       run_number: runNumber,
       ascension_level: selectedAscensionLevel,

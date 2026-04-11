@@ -124,14 +124,12 @@ The empty-hand trick uses the current (pre-damage) `turnState` — it does not r
 | Charge surcharge | +1 AP added to `apCost` |
 | `FIRST_CHARGE_FREE_AP_SURCHARGE` | 1 (constant kept for save-format compatibility; the free-charge branch was removed from `playCardAction` on 2026-04-10) |
 | `SURGE_BONUS_AP` | 1 — bonus AP at the start of Surge turns |
-| `RunState.startingAp` | 3 (control) or 4 (test) from `starting_ap_3_vs_4` A/B experiment; set per-player at run creation in `gameFlowController.onArchetypeSelected()` |
+| `RunState.startingAp` | `START_AP_PER_TURN = 3`; set at run creation in `gameFlowController.onArchetypeSelected()` |
 | `TurnState.startingApPerTurn` | Mirrors `RunState.startingAp`; threaded in by `encounterBridge.startEncounterForRoom()`. Per-turn floor: `baseAp = Math.max(AP_PER_ACT[act], startingApPerTurn)` in `endPlayerTurn`. |
 
 **Act-aware AP:** Floors 1-6 = Act 1 (3 AP), floors 7-12 = Act 2 (4 AP), floors 13+ = Act 3 (4 AP). More AP in later acts gives players room to charge and combo under heavier enemy pressure.
 
-**A/B experiment (`starting_ap_3_vs_4`):** Players are assigned once to `control` (3 AP) or `test` (4 AP) groups based on a hash of their device ID, stored in `localStorage`. Test-group players get at least 4 AP/turn in all acts; control-group players still receive Act 2 scaling (4 AP on floors 7+). `apMax` stays `MAX_AP_PER_TURN (5)` for both groups.
-
-> **Issue 7 fix (2026-04-11):** Prior to this fix, `encounterBridge` set `apMax = startingAp` instead of `apCurrent = startingAp`. Two bugs: (a) control group was capped at `apMax=3`, never getting Act 2's 4 AP; (b) test group turn 1 gave `Math.min(3,4)=3` instead of 4. Fixed by threading `startingApPerTurn` through `TurnState` and using `Math.max(AP_PER_ACT[act], startingApPerTurn)` as the per-turn base.
+> **Issue 7 fix (2026-04-11):** Prior to this fix, `encounterBridge` set `apMax = startingAp` instead of `apCurrent = startingAp`, causing Act 2's 4 AP unlock to be ignored. Fixed by threading `startingApPerTurn` through `TurnState` and using `Math.max(AP_PER_ACT[act], startingApPerTurn)` as the per-turn base.
 
 **Surge turns** (`isSurgeTurn(turnNumber)`; turns 2, 6, 10, 14, ...) grant `+SURGE_BONUS_AP` (+1) at the start of the turn. Surge turns still pay full `CHARGE_AP_SURCHARGE` — the extra AP is a flexible resource, not a free-charge voucher. Changed from surcharge-waiver to AP-grant (Pass 3 balance, 2026-04-09).
 

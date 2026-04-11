@@ -2,7 +2,7 @@
 
 > **Purpose:** Device detection, haptics, performance monitoring, analytics, error reporting, input handling, accessibility, notifications, entitlements, Steam integration, Steam P2P networking, and browser compatibility.
 > **Last verified:** 2026-04-06
-> **Source files:** platformService.ts, hapticService.ts, perfService.ts, analyticsService.ts, errorReporting.ts, inputService.ts, keyboardInput.ts, shortcutService.ts, accessibilityManager.ts, notificationService.ts, entitlementService.ts, steamService.ts, steamNetworkingService.ts, reviewPromptService.ts, browserCompat.ts, deviceTierService.ts, experimentService.ts, kidModeService.ts, legalConstants.ts, sessionTimer.ts, multiplayerTransport.ts
+> **Source files:** platformService.ts, hapticService.ts, perfService.ts, analyticsService.ts, errorReporting.ts, inputService.ts, keyboardInput.ts, shortcutService.ts, accessibilityManager.ts, notificationService.ts, entitlementService.ts, steamService.ts, steamNetworkingService.ts, reviewPromptService.ts, browserCompat.ts, deviceTierService.ts, kidModeService.ts, legalConstants.ts, sessionTimer.ts, multiplayerTransport.ts
 
 > **See also:** [`platform-audio.md`](platform-audio.md) — audioService, cardAudioManager, and juiceManager (audio synthesis and game-feel coordination).
 
@@ -160,14 +160,6 @@ Platform services form the bridge between web-standard APIs and the three deploy
 | **Key exports** | `getDeviceTier`, `DeviceTier` (type) |
 | **Key dependencies** | platformService |
 
-## experimentService
-
-| | |
-|---|---|
-| **File** | src/services/experimentService.ts |
-| **Purpose** | A/B experiment variant assignment by user ID hash — `slow_reader_default`, `starting_ap_3_vs_4`, `starter_deck_15_vs_18` |
-| **Key exports** | `getExperimentVariant`, `ExperimentKey` (type) |
-| **Key dependencies** | analyticsService |
 
 ## kidModeService
 
