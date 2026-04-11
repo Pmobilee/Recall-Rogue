@@ -90,6 +90,60 @@ if [ -n "$STAGED_SKILLS" ]; then
   fi
 fi
 
+# Wiring check (soft-warn): detect orphan screen components, stale TurnState field
+# reads, and Phaser-only interactive buttons without DOM overlays.
+# BATCH-ULTRA Cluster B meta-fix (2026-04-11). Runs on every commit touching
+# src/ui/components/, src/game/scenes/, or tests/playtest/headless/ files.
+# Soft-warn (never blocks) because the current codebase has known orphans
+# (RaceResultsScreen, SocialScreen) that are in-progress features, not regressions.
+# Promote to blocking after those orphans are resolved.
+STAGED_WIRING=$(git diff --cached --name-only --diff-filter=AM \
+  | grep -E '^(src/ui/components/|src/game/scenes/|tests/playtest/headless/)' || true)
+if [ -n "$STAGED_WIRING" ]; then
+  if [ -f "scripts/lint/check-wiring.mjs" ]; then
+    echo "Checking wiring (orphan screens, stale field reads, Phaser buttons)..." >&2
+    WIRING_EXIT=0
+    node scripts/lint/check-wiring.mjs 2>&1 >&2 || WIRING_EXIT=$?
+    if [ "$WIRING_EXIT" != "0" ]; then
+      echo "" >&2
+      echo "WARNING: check-wiring found issues (exit $WIRING_EXIT)." >&2
+      echo "  Errors (exit 1) indicate orphan screens or stale TurnState field reads." >&2
+      echo "  Warnings (exit 2) are heuristic Phaser-button hints." >&2
+      echo "  Run 'npm run lint:wiring' for full report." >&2
+      echo "  See docs/gotchas.md 2026-04-11 — Cluster B for context." >&2
+      echo "" >&2
+    fi
+  fi
+fi
+
+# RNG determinism check (soft-warn): detect bare Math.random() in gameplay code.
+# BATCH-ULTRA Cluster D meta-fix (2026-04-11). Runs on every commit touching
+# src/ TypeScript or Svelte files.
+# Soft-warn because the codebase has ~168 pre-existing bare Math.random() calls
+# outside the allowlist. These are real issues (gradual migration target) but
+# blocking every commit immediately would be counterproductive. As files are
+# migrated to the seeded-RNG-with-fallback pattern, violations will decrease.
+# Promote individual files from violations to allowlist as they are fixed.
+STAGED_RNG=$(git diff --cached --name-only --diff-filter=AM \
+  | grep -E '^src/.*\.(ts|svelte)$' || true)
+if [ -n "$STAGED_RNG" ]; then
+  if [ -f "scripts/lint/no-bare-math-random.mjs" ]; then
+    echo "Checking RNG determinism (bare Math.random in gameplay code)..." >&2
+    RNG_EXIT=0
+    node scripts/lint/no-bare-math-random.mjs 2>&1 >&2 || RNG_EXIT=$?
+    if [ "$RNG_EXIT" != "0" ]; then
+      echo "" >&2
+      echo "WARNING: no-bare-math-random found violations (exit $RNG_EXIT)." >&2
+      echo "  Bare Math.random() in gameplay code causes co-op RNG desync." >&2
+      echo "  Run 'npm run lint:rng' for full report." >&2
+      echo "  Fix: use isRunRngActive() ? getRunRng('<bucket>').next() : Math.random()" >&2
+      echo "  Or add the file to ALLOWLIST_GLOBS with a rationale." >&2
+      echo "  See docs/mechanics/multiplayer.md §RNG determinism invariant." >&2
+      echo "" >&2
+    fi
+  fi
+fi
+
 # Deck verification: block if deck JSON files are staged and fail verification
 STAGED_DECKS=$(git diff --cached --name-only --diff-filter=AM | grep '^data/decks/.*\.json$' || true)
 if [ -n "$STAGED_DECKS" ]; then

@@ -358,3 +358,54 @@ npx vitest run       # Unit tests (1900+)
 ```
 
 For balance changes, also run the headless sim. For UI changes, also do a Playwright visual inspection. Never report a fix done without confirming the result.
+
+## Structural Lint Checks
+
+Two lint scripts prevent structural wiring failures from recurring (added 2026-04-11, BATCH-ULTRA meta-fix):
+
+### Wiring Lint (`lint:wiring`)
+
+```bash
+npm run lint:wiring          # Full report
+node scripts/lint/check-wiring.mjs
+```
+
+Detects **Cluster B "built but not wired" bugs** — features implemented but silently disconnected:
+
+1. **Orphan screen components (ERROR):** Every `*Screen.svelte` in `src/ui/components/` must be imported by `CardApp.svelte` (directly or transitively). Catches `TriviaRoundScreen`, `RaceResultsScreen`, and `MapPinDrop` patterns.
+
+2. **Stale TurnState field reads (ERROR):** Every `.ts` in `tests/playtest/headless/` is checked for `ts.fieldName` reads against the live `TurnState` interface. Catches `ts.comboCount` (removed, replaced by `ts.consecutiveCorrectThisEncounter`) and `ts.ascensionComboResetsOnTurnEnd` (set on TurnState but not in the interface).
+
+3. **Phaser-only interactive buttons (WARN):** Heuristic check — `setInteractive()` calls near button-like strings in `src/game/scenes/*.ts` without a matching DOM `<button>` overlay. Suppress false positives with `// @wiring-check:skip reason: <why>`.
+
+**Exit codes:** 0 = clean, 1 = errors (fix required), 2 = warnings only.
+
+**Pre-commit:** Runs as soft-warn when `src/ui/components/`, `src/game/scenes/`, or `tests/playtest/headless/` files are staged.
+
+### RNG Determinism Lint (`lint:rng`)
+
+```bash
+npm run lint:rng             # Full report
+node scripts/lint/no-bare-math-random.mjs
+```
+
+Detects **Cluster D bare Math.random() calls** in gameplay code that cause co-op RNG desync.
+
+- Scans all `src/**/*.ts` and `src/**/*.svelte` files
+- Prints the allowlist on every run (cosmetic files, dev tools, seededRng.ts itself)
+- Skips **guarded patterns** — `(rng ? rng.next() : Math.random())` and `isRunRngActive() ? getRunRng(...).next() : Math.random()` are the CORRECT seeded-with-fallback approach and are NOT violations
+- Only flags truly bare calls with no seeded RNG check
+
+**The correct fix:**
+```typescript
+// Before (bare — flags in co-op):
+const isCrit = Math.random() < 0.25;
+
+// After (guarded — passes lint):
+const _rng = isRunRngActive() ? getRunRng('relicEffects') : null;
+const isCrit = (_rng ? _rng.next() : Math.random()) < 0.25;
+```
+
+**Exit codes:** 0 = no violations, 1 = violations found.
+
+**Pre-commit:** Runs as soft-warn when any `src/**/*.ts` or `src/**/*.svelte` files are staged. Currently ~168 pre-existing violations exist (migration target). Promote files to clean by applying the guarded pattern or adding to ALLOWLIST_GLOBS.
