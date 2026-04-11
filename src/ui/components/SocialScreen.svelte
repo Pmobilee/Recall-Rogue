@@ -34,7 +34,6 @@
     onStartScholarChallenge: () => Promise<{ ok: true } | { ok: false; reason: string }>
     onOpenRelicSanctum: () => { ok: true } | { ok: false; reason: string }
     onOpenArcanePass: () => void
-    onOpenSeasonPass: () => void
     onOpenCosmeticStore: () => void
   }
 
@@ -46,7 +45,6 @@
     onStartScholarChallenge,
     onOpenRelicSanctum,
     onOpenArcanePass,
-    onOpenSeasonPass,
     onOpenCosmeticStore,
   }: Props = $props()
 
@@ -411,14 +409,6 @@
         <p>Subscription tiers, ad-free unlock, and subscriber-only category filtering.</p>
         <div class="actions">
           <button type="button" class="primary" onclick={onOpenArcanePass}>Open Arcane Pass</button>
-        </div>
-      </article>
-
-      <article class="card">
-        <h3>Season Pass</h3>
-        <p>Track free and premium milestones for the current season.</p>
-        <div class="actions">
-          <button type="button" class="primary" onclick={onOpenSeasonPass}>Open Season Pass</button>
         </div>
       </article>
 

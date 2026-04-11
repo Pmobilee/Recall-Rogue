@@ -1,7 +1,7 @@
 # UI Components — Social, Account & Utility
 
 > **Purpose:** Non-gameplay Svelte components: social, auth, monetization, onboarding, and utility
-> **Last verified:** 2026-04-11
+> **Last verified:** 2026-04-11 (Phase 3 Wave A: deleted SeasonPassView, ReferralModal, SignInWithApple)
 > **Source files:** `src/ui/components/**/*.svelte`
 
 > **See also:** [`components.md`](components.md) — Gameplay-critical components: Combat UI, Quiz & Study, Hub & Navigation, Dungeon & Map, Card Management, Rooms & Events, Rewards & Progression, Relics.
@@ -78,7 +78,6 @@
 | `legal/TermsOfService.svelte` | In-app terms of service document view |
 | `AgeSelection.svelte` | Age bracket selection (Kid / Teen / Adult) for content filtering |
 | `ATTConsentPrompt.svelte` | iOS App Tracking Transparency consent prompt |
-| `SignInWithApple.svelte` | Apple Sign-In button and OAuth handler |
 | `ParentalControlsPanel.svelte` | Parental controls: session limits, content filters, PIN lock |
 | `ParentalControlsOverlay.svelte` | Overlay gate for parental-restricted areas |
 | `ParentalPinGate.svelte` | PIN entry gate for parental-lock protection |
@@ -91,7 +90,6 @@
 | Component | Purpose |
 |-----------|---------|
 | `RoguePassModal.svelte` | Rogue Pass (battle pass) purchase and tier view modal |
-| `SeasonPassView.svelte` | Season pass overview: tiers, rewards, XP progress |
 | `CosmeticStoreModal.svelte` | Cosmetic shop: card backs, hub skins, emotes |
 | `PioneerPackModal.svelte` | Early-access Pioneer Pack offer modal |
 | `SeasonBanner.svelte` | Persistent season name/end-date banner at hub top |
@@ -99,7 +97,6 @@
 | `ClassJoinPanel.svelte` | Panel for students joining a teacher's class via code |
 | `UGCReviewQueue.svelte` | User-generated content review queue for moderators |
 | `UGCSubmitOverlay.svelte` | Overlay for submitting a user-generated fact for review |
-| `ReferralModal.svelte` | Referral code share modal |
 | `GiftModal.svelte` | Gift a subscription / relic / cosmetic to another player |
 
 ---

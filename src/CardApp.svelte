@@ -451,13 +451,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   let prevScreen = $state('')
   let exitEnemyId = $state<string | null>(null)
 
-  let showSeasonPassModal = $state(false)
   let showCosmeticStoreModal = $state(false)
 
-
-  function handleOpenSeasonPass(): void {
-    showSeasonPassModal = true
-  }
 
   function handleOpenCosmeticStore(): void {
     showCosmeticStoreModal = true
@@ -1192,7 +1187,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     }
   }
 
-  const loadSeasonPassView = createLazyLoader(() => import('./ui/components/SeasonPassView.svelte'))
   const loadCosmeticStoreModal = createLazyLoader(() => import('./ui/components/CosmeticStoreModal.svelte'))
 
   let phaserBooted = false
@@ -1988,12 +1982,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     />
   {/if}
 
-  {#if showSeasonPassModal}
-    {#await loadSeasonPassView() then module}
-      {@const SeasonPassViewModal = module.default}
-      <SeasonPassViewModal onClose={() => { showSeasonPassModal = false }} />
-    {/await}
-  {/if}
 
   {#if showCosmeticStoreModal}
     {#await loadCosmeticStoreModal() then module}
