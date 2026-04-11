@@ -43,6 +43,7 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `journal` | Learning journal and fact history |
 | `leaderboards` | Global / friends / guild / season leaderboards |
 | `multiplayerMenu` | Multiplayer entry screen — two-tab UI (Create Lobby with 5 mode cards, Join Lobby with 6-char code); shown when hub "Multiplayer" button is pressed; entry point before lobby creation |
+| `lobbyBrowser` | Public lobby browser — lists open lobbies with mode/fullness filters, auto-refreshes every 5 s, supports password-modal join flow; navigated to from `multiplayerMenu` via "Browse Lobbies" button **Added 2026-04-11** |
 | `multiplayerLobby` | Multiplayer lobby — mode/deck/house-rules config and player readying; entered via `multiplayerMenu` |
 | `settings` | In-game settings panel |
 | `studyTemple` | Study Temple screen for dedicated flashcard study |
@@ -104,7 +105,8 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `profile` | `ProfileScreen` | |
 | `journal` | `JournalScreen` | |
 | `leaderboards` | `LeaderboardsScreen` | |
-| `multiplayerMenu` | `MultiplayerMenu` | Two-tab entry screen. Create tab: 5 mode cards (race/same_cards/duel/coop/trivia_night) + "Create Lobby" button. Join tab: monospace 6-char code input + "Join Lobby" button. Props: `onBack`, `onCreateLobby(mode)`, `onJoinLobby(code)`. `onBack` returns to hub; creating transitions to `multiplayerLobby` with new lobby; joining transitions to `multiplayerLobby` (lobby syncs via onLobbyUpdate). |
+| `multiplayerMenu` | `MultiplayerMenu` | Two-tab entry screen. Create tab: 5 mode cards (race/same_cards/duel/coop/trivia_night) + "Create Lobby" button. Join tab: monospace 6-char code input + "Join Lobby" button. **Browse Lobbies button (2026-04-11):** gold button in the Create tab footer calls `onBrowseLobbies` → transitions to `lobbyBrowser`. Props: `onBack`, `onCreateLobby(mode)`, `onJoinLobby(code)`, `onBrowseLobbies`. `onBack` returns to hub; creating transitions to `multiplayerLobby` with new lobby; joining transitions to `multiplayerLobby` (lobby syncs via onLobbyUpdate). |
+| `lobbyBrowser` | `LobbyBrowserScreen` | Public lobby browser. Props: `localPlayerId`, `localDisplayName`, `onBack` (→ `multiplayerMenu`), `onJoined` (→ `multiplayerLobby`). Auto-refresh every 5 s. Mode + fullness filter bar. 3-column lobby card grid. Password modal for protected lobbies. Empty state shown when no lobbies match filters. **Added 2026-04-11.** |
 | `multiplayerLobby` | `MultiplayerLobby` | Only mounts when `currentLobby !== null`; Props: `lobby`, `localPlayerId`, `onBack`. `MultiplayerHUD` also overlaid during `combat` when `isMultiplayerRun` is true. |
 | `settings` | `SettingsPanel` | |
 | `studyTemple` | `StudyTempleScreen` | |

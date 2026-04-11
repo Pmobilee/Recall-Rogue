@@ -81,6 +81,7 @@
   import { computeIntentHpImpact, type IntentHpImpact } from '../../services/intentDisplay'
   import { quizPanelVisible } from '../stores/combatUiStore'
   import { reducedMotion } from '../stores/settings'
+  import { resolveWowFactorText } from '../../services/wowFactorService'
 
 
   interface Props {
@@ -133,6 +134,8 @@
     answers: string[]
     correctAnswer: string
     variantIndex: number
+    /** The ID of the fact that was displayed to the player. Used for wow-factor lookup. */
+    factId?: string
     questionImageUrl?: string
     /** For synonym variant: additional correct answers accepted from the player. */
     acceptableAnswers?: string[]
@@ -989,22 +992,11 @@
    */
   function showWowFactor(answeredFactId: string, card: Card): void {
     if (wowFactorCount >= WOW_FACTOR_MAX_PER_ENCOUNTER) return
-    if (card.tier !== '1') return
 
-    let wowText: string | null = null
-
-    // Study mode: look up the curated deck fact by the answered fact ID
+    // Delegate lookup to wowFactorService (pure, testable).
+    // resolveWowFactorText also checks card.tier — no need to duplicate here.
     const runState = $activeRunState
-    if (runState?.deckMode?.type === 'study') {
-      if (answeredFactId && runState.deckMode.deckId) {
-        const deckFact = getCuratedDeckFact(runState.deckMode.deckId, answeredFactId)
-        wowText = (deckFact as any)?.wowFactor ?? deckFact?.explanation ?? null
-      }
-    } else {
-      // Trivia mode: use the answered fact ID directly from the facts DB
-      const fact = factsDB.isReady() ? factsDB.getById(answeredFactId) : null
-      wowText = fact?.wowFactor ?? null
-    }
+    const wowText = resolveWowFactorText(answeredFactId, card.tier, runState ?? null)
 
     if (!wowText) return
 
@@ -1481,6 +1473,7 @@
       answers: allAnswers,
       correctAnswer: correctAnswerDisplay,
       variantIndex: 0,
+      factId: fact.id,
       acceptableAnswers: fact.acceptableAlternatives.length > 0 ? fact.acceptableAlternatives : undefined,
       language: fact.language ?? undefined,
       // DeckFact may not have pronunciation — fall back to reading field, or look up from trivia DB
@@ -1677,6 +1670,7 @@
       answers: allAnswers,
       correctAnswer,
       variantIndex,
+      factId: fact.id,
       questionImageUrl: fact.imageUrl ?? undefined,
       acceptableAnswers,
       language: factLanguageCode,
@@ -2291,9 +2285,11 @@
         checkAutoEndTurn()
       }, turboDelay(FIZZLE_DURATION))
     } else {
-      // Derive the fact ID that was actually quizzed — in study mode this is __studyFactId
-      // (assigned by getStudyModeQuiz), in trivia mode it matches card.factId.
-      const answeredFactId = ((card as any).__studyFactId as string | undefined) ?? card.factId
+      // Derive the fact ID that was actually quizzed from the committed quiz data.
+      // quizDataSnapshot.factId is authoritative — set at commit time, never stale.
+      // Previously used card.__studyFactId which could be overwritten by a concurrent
+      // card play before this handler fired (Issue 8).
+      const answeredFactId = quizDataSnapshot?.factId ?? card.factId
       showWowFactor(answeredFactId, card)
 
       // Correct answer: new 5-phase animation sequence

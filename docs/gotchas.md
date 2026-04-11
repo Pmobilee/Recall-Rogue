@@ -2877,3 +2877,28 @@ docker rm great_blackwell condescending_roentgen amazing_noyce confident_dhawan 
 - All example sentences drawn from standard Chinese pedagogical usage and CEDICT/HSK corpus patterns. No invented sentences.
 
 **Verification:** `verify-all-decks.mjs --deck chinese_hsk6` → 0 failures, 0 warnings. Stratified 50-fact quiz audit → 0 failures, 16 pre-existing warnings (distractor_format_inconsistency on pinyin pool mixing — not introduced by this change).
+
+### 2026-04-11 — Wow factor stale __studyFactId (Issue 8)
+
+**Symptom:** Player correctly answers a Tale of Genji fact in Study Temple. The mid-screen
+wow-factor sentence displays text from a completely different fact (e.g., a world capitals card).
+
+**Root cause:** In study mode, the fact shown in the quiz is dynamically selected — NOT
+`card.factId`. `getStudyModeQuiz` selected the fact and stored its ID on `card.__studyFactId`
+as a mutable property. The correct-answer handler read this property to resolve wow-factor text.
+If the player committed a second card's quiz before the first card's handler ran (or if any
+async code ran between quiz build and handler), `card.__studyFactId` could be the second card's
+fact ID, causing the wow text lookup to use the wrong fact.
+
+**Fix:** `QuizData` now has a `factId?: string` field. `getStudyModeQuiz` populates it with
+the dynamically selected fact's ID at build time. `getQuizForCard` (trivia) populates it with
+`fact.id`. The call site now reads `quizDataSnapshot?.factId ?? card.factId` — the snapshot
+is taken before `resetCardFlow()` nulls it, so it is always the committed quiz's fact.
+
+The lookup logic was also extracted into `src/services/wowFactorService.ts` (pure function,
+fully unit tested) and the overlay's `showWowFactor` now delegates to it.
+
+**`card.__studyFactId` is still written** for FSRS tracking (lines 2233-2256 in the overlay)
+— that code reads it correctly within the same synchronous block. Only the wow-factor lookup
+was wrong. The property can be removed in a future cleanup if the FSRS tracking is also
+refactored to use `committedQuizData`.

@@ -16,9 +16,10 @@
     onBack: () => void
     onCreateLobby: (mode: MultiplayerMode) => void
     onJoinLobby: (code: string) => void
+    onBrowseLobbies: () => void
   }
 
-  let { onBack, onCreateLobby, onJoinLobby }: Props = $props()
+  let { onBack, onCreateLobby, onJoinLobby, onBrowseLobbies }: Props = $props()
 
   const MODES: MultiplayerMode[] = ['race', 'same_cards', 'duel', 'coop', 'trivia_night']
 
@@ -128,6 +129,9 @@
           <div class="create-footer">
             <button class="primary-btn" onclick={handleCreateLobby}>
               Create Lobby
+            </button>
+            <button class="browse-btn" onclick={onBrowseLobbies}>
+              &#127760; Browse Lobbies
             </button>
           </div>
         </div>
@@ -386,7 +390,9 @@
   /* ===== Create footer ===== */
   .create-footer {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(10px * var(--layout-scale, 1));
     padding-top: calc(4px * var(--layout-scale, 1));
   }
 
@@ -484,5 +490,24 @@
   .primary-btn:disabled {
     opacity: 0.38;
     cursor: not-allowed;
+  }
+
+  .browse-btn {
+    background: rgba(255, 215, 0, 0.10);
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    color: #FFD700;
+    font-family: var(--font-body, 'Lora', serif);
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 600;
+    cursor: pointer;
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .browse-btn:hover {
+    background: rgba(255, 215, 0, 0.20);
+    border-color: rgba(255, 215, 0, 0.6);
   }
 </style>

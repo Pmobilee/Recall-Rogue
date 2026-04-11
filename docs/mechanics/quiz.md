@@ -926,3 +926,44 @@ Samples N facts **across the whole deck**, stratified by the cross-product of `(
 ### Backward Compatibility
 
 `--sample N` behavior is unchanged. Not passing `--stratified` runs the original per-pool sampling path exactly as before.
+
+---
+
+## Wow-Factor Text Resolution
+
+**Source:** `src/services/wowFactorService.ts`
+**Updated:** 2026-04-11 (Issue 8 fix)
+
+After a correct charge, the combat overlay displays a "wow factor" sentence — a memorable hook
+or explanation pulled from the quizzed fact's metadata. The resolution is mode-aware:
+
+| Run mode | Source | Field priority |
+|----------|--------|----------------|
+| `study` | `curatedDeckStore.getCuratedDeckFact(deckId, factId)` | `wowFactor` → `explanation` |
+| `custom_deck` | Same lookup; source deck resolved via `factSourceDeckMap` then by iterating items | `wowFactor` → `explanation` |
+| Trivia / general | `factsDB.getById(factId)` | `wowFactor` only |
+
+### `QuizData.factId` — the authoritative source
+
+`QuizData` (the committed quiz snapshot) now carries a `factId` field set at build time in
+`getStudyModeQuiz` (study/custom_deck) and `getQuizForCard` (trivia). The call site uses
+`committedQuizData.factId` as the authoritative fact ID rather than the mutable
+`card.__studyFactId` property.
+
+**Why this matters:** In study mode, the quizzed fact is selected dynamically — it is NOT
+`card.factId`. The old code stored the selected fact's ID on `card.__studyFactId` as a
+mutable property. If the player committed two cards in rapid succession, the property could
+be overwritten before the first card's correct-answer handler ran, causing the wow-factor
+to show text from the WRONG fact. Using `committedQuizData.factId` (snapshot taken at
+commit time) is race-condition-free.
+
+### Only tier-1 cards show wow-factor
+
+`resolveWowFactorText` returns `null` for any card with `tier !== '1'`. This is enforced
+inside the service (not just at the call site) so that moving the logic does not accidentally
+remove the guard.
+
+### Max per encounter
+
+`WOW_FACTOR_MAX_PER_ENCOUNTER` (constant in `CardCombatOverlay.svelte`) caps the number of
+wow-factor displays per encounter to prevent saturation.

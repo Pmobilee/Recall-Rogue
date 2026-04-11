@@ -182,10 +182,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import MultiplayerLobby from './ui/components/MultiplayerLobby.svelte'
   import MultiplayerHUD from './ui/components/MultiplayerHUD.svelte'
   import MultiplayerMenu from './ui/components/MultiplayerMenu.svelte'
+  import LobbyBrowserScreen from './ui/components/LobbyBrowserScreen.svelte'
   import TriviaRoundScreen from './ui/components/TriviaRoundScreen.svelte'
   import {
     createLobby,
     joinLobby,
+    joinLobbyById,
     leaveLobby,
     getCurrentLobby,
     onLobbyUpdate,
@@ -544,14 +546,23 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   }
 
   // TODO(multiplayer): Replace placeholder display names with real Steam usernames when Steam integration lands. See docs/roadmap/AR-MULTIPLAYER.md.
-  function handleCreateLobby(mode: MultiplayerMode): void {
-    const lobby = createLobby(localPlayerId, 'Player 1', mode)
+  async function handleCreateLobby(mode: MultiplayerMode): Promise<void> {
+    const lobby = await createLobby(localPlayerId, 'Player 1', mode)
     currentLobby = lobby
     transitionScreen('multiplayerLobby')
   }
 
-  function handleJoinLobby(code: string): void {
-    const lobby = joinLobby(code, localPlayerId, 'Player 2')
+  async function handleJoinLobby(code: string): Promise<void> {
+    const lobby = await joinLobby(code, localPlayerId, 'Player 2')
+    currentLobby = lobby
+    transitionScreen('multiplayerLobby')
+  }
+
+  function handleBrowseLobbies(): void {
+    transitionScreen('lobbyBrowser')
+  }
+
+  function handleLobbyJoined(lobby: LobbyState): void {
     currentLobby = lobby
     transitionScreen('multiplayerLobby')
   }
@@ -1904,6 +1915,18 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         onBack={() => transitionScreen('hub')}
         onCreateLobby={handleCreateLobby}
         onJoinLobby={handleJoinLobby}
+        onBrowseLobbies={handleBrowseLobbies}
+      />
+    </div>
+  {/if}
+
+  {#if $currentScreen === 'lobbyBrowser'}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <LobbyBrowserScreen
+        localPlayerId={localPlayerId}
+        localDisplayName="Player 1"
+        onBack={() => transitionScreen('multiplayerMenu')}
+        onJoined={handleLobbyJoined}
       />
     </div>
   {/if}

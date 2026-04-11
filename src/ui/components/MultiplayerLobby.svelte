@@ -3,11 +3,12 @@
      Handles mode selection, player list, house rules, deck settings, and start.
      Props: lobby state from multiplayerLobbyService. Not yet wired into app flow. -->
 <script lang="ts">
-  import type { LobbyState, MultiplayerMode, DeckSelectionMode, LobbyContentSelection } from '../../data/multiplayerTypes'
+  import type { LobbyState, MultiplayerMode, DeckSelectionMode, LobbyContentSelection, LobbyVisibility } from '../../data/multiplayerTypes'
   import {
     MODE_DISPLAY_NAMES,
     MODE_DESCRIPTIONS,
     MODE_MAX_PLAYERS,
+    MODE_MIN_PLAYERS,
   } from '../../data/multiplayerTypes'
   import {
     setMode,
@@ -21,7 +22,11 @@
     addLocalBot,
     removeLocalBot,
     isBroadcastMode,
+    setVisibility,
+    setPassword,
+    setMaxPlayers,
   } from '../../services/multiplayerLobbyService'
+  import { hasSteam } from '../../services/platformService'
   import LobbyDeckPicker from './LobbyDeckPicker.svelte'
 
   interface Props {
@@ -36,8 +41,24 @@
   let fairnessExpanded = $state(false)
   let showDeckPicker = $state(false)
   let copyFeedback = $state(false)
+  /** Local password input state for the host-side password field. */
+  let passwordInputValue = $state('')
+  /** Whether to reveal password plaintext in the input. */
+  let showPasswordText = $state(false)
 
   const MODES: MultiplayerMode[] = ['race', 'same_cards', 'duel', 'coop', 'trivia_night']
+
+  /** Max-players options for current mode: [min..max] inclusive. */
+  let maxPlayersRange = $derived.by(() => {
+    const min = MODE_MIN_PLAYERS[lobby.mode]
+    const max = MODE_MAX_PLAYERS[lobby.mode]
+    const out: number[] = []
+    for (let i = min; i <= max; i++) out.push(i)
+    return out
+  })
+
+  /** Whether the max-players selector is fixed (single pill, no click). */
+  let isMaxPlayersFixed = $derived(lobby.mode === 'duel' || lobby.mode === 'coop')
 
   /** Is the current user the host? */
   let amHost = $derived(lobby.hostId === localPlayerId)
@@ -130,6 +151,30 @@
       // Clipboard API may not be available in all environments
     }
   }
+
+  /** Host sets lobby visibility (public / password / friends_only). */
+  function handleVisibilityChange(v: LobbyVisibility): void {
+    if (!amHost) return
+    setVisibility(v)
+  }
+
+  /** Host submits a new password (on blur or Enter). Requires at least 4 chars. */
+  async function handlePasswordCommit(): Promise<void> {
+    if (!amHost) return
+    const val = passwordInputValue.trim()
+    if (val.length === 0) {
+      await setPassword(null)
+    } else if (val.length >= 4) {
+      await setPassword(val)
+    }
+    // < 4 chars: don't commit yet; user is still typing
+  }
+
+  /** Host changes max player count. */
+  function handleMaxPlayersChange(n: number): void {
+    if (!amHost) return
+    setMaxPlayers(n)
+  }
 </script>
 
 <div class="mp-lobby" role="main" aria-label="Multiplayer Lobby">
@@ -192,6 +237,11 @@
             {lobby.lobbyCode}
             <span class="copy-hint">{copyFeedback ? 'Copied!' : 'Copy'}</span>
           </button>
+          {#if lobby.visibility === 'password'}
+            <span class="vis-badge vis-badge--lock" title="Password required" aria-label="Password protected">&#128274;</span>
+          {:else if lobby.visibility === 'friends_only'}
+            <span class="vis-badge vis-badge--friends" title="Friends only" aria-label="Friends only">&#128101;</span>
+          {/if}
         </div>
       {/if}
 
@@ -434,6 +484,96 @@
               />
             </div>
           </div>
+        {/if}
+      </section>
+
+      <!-- Lobby Visibility (host-only) -->
+      <section class="settings-section">
+        <h3 class="section-label">Visibility</h3>
+        {#if amHost}
+          <div class="radio-pills" role="radiogroup" aria-label="Lobby visibility">
+            {#each (['public', 'password', 'friends_only'] as LobbyVisibility[]) as vis}
+              {@const labels: Record<LobbyVisibility, string> = { public: 'Public', password: 'Password', friends_only: 'Friends Only' }}
+              {@const isFriendsDisabled = vis === 'friends_only' && !hasSteam}
+              <label
+                class="pill-label"
+                class:active={lobby.visibility === vis}
+                class:pill-disabled={isFriendsDisabled}
+                title={isFriendsDisabled ? 'Steam only' : undefined}
+              >
+                <input
+                  type="radio"
+                  name="lobby-visibility"
+                  value={vis}
+                  checked={lobby.visibility === vis}
+                  disabled={isFriendsDisabled}
+                  onchange={() => handleVisibilityChange(vis)}
+                />
+                {labels[vis]}
+              </label>
+            {/each}
+          </div>
+          {#if lobby.visibility === 'password'}
+            <div class="password-row">
+              <input
+                class="password-input"
+                type={showPasswordText ? 'text' : 'password'}
+                placeholder="Min 4 characters"
+                minlength={4}
+                bind:value={passwordInputValue}
+                onblur={handlePasswordCommit}
+                onkeydown={(e) => { if (e.key === 'Enter') { (e.target as HTMLInputElement).blur() } }}
+                aria-label="Lobby password"
+              />
+              <button
+                class="eye-btn"
+                type="button"
+                onclick={() => { showPasswordText = !showPasswordText }}
+                aria-label={showPasswordText ? 'Hide password' : 'Show password'}
+                title={showPasswordText ? 'Hide' : 'Show'}
+              >{showPasswordText ? '&#128064;' : '&#128065;'}</button>
+            </div>
+          {/if}
+        {:else}
+          <!-- Non-host read-only badge -->
+          {#if lobby.visibility === 'password'}
+            <span class="vis-badge-inline">&#128274; Password required</span>
+          {:else if lobby.visibility === 'friends_only'}
+            <span class="vis-badge-inline">&#128101; Friends only</span>
+          {:else}
+            <span class="vis-badge-inline vis-badge-inline--public">Public</span>
+          {/if}
+        {/if}
+      </section>
+
+      <!-- Max Players (host-only) -->
+      <section class="settings-section">
+        <h3 class="section-label">Max Players</h3>
+        {#if amHost}
+          <div class="radio-pills" role="radiogroup" aria-label="Max players">
+            {#each maxPlayersRange as n}
+              <label
+                class="pill-label"
+                class:active={lobby.maxPlayers === n}
+                class:pill-disabled={isMaxPlayersFixed}
+              >
+                <input
+                  type="radio"
+                  name="max-players"
+                  value={n}
+                  checked={lobby.maxPlayers === n}
+                  disabled={isMaxPlayersFixed}
+                  onchange={() => handleMaxPlayersChange(n)}
+                />
+                {n}
+              </label>
+            {/each}
+            {#if isMaxPlayersFixed}
+              <span class="fixed-label">Fixed for this mode</span>
+            {/if}
+          </div>
+        {:else}
+          <span class="vis-badge-inline">{lobby.maxPlayers} players</span>
         {/if}
       </section>
 
@@ -1224,5 +1364,89 @@
 
   .remove-bot-btn:hover {
     color: #e74c3c;
+  }
+
+  /* ── Visibility badges in lobby code header ── */
+  .vis-badge {
+    font-size: calc(18px * var(--text-scale, 1));
+    line-height: 1;
+  }
+
+  /* ── Visibility / password settings ── */
+  .pill-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .password-row {
+    display: flex;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+    margin-top: calc(6px * var(--layout-scale, 1));
+  }
+
+  .password-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid #3a3f52;
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #e0e0e0;
+    font-size: calc(12px * var(--text-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    min-height: calc(36px * var(--layout-scale, 1));
+    outline: none;
+    font-family: var(--font-body, 'Lora', serif);
+  }
+
+  .password-input:focus {
+    border-color: rgba(255, 215, 0, 0.5);
+  }
+
+  .eye-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid #3a3f52;
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #aaa;
+    cursor: pointer;
+    font-size: calc(14px * var(--text-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    min-height: calc(36px * var(--layout-scale, 1));
+    min-width: calc(36px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.12s;
+    flex-shrink: 0;
+  }
+
+  .eye-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+
+  /* Read-only visibility badge for non-hosts */
+  .vis-badge-inline {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #aaa;
+    padding: calc(3px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    border-radius: calc(4px * var(--layout-scale, 1));
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #2e3244;
+  }
+
+  .vis-badge-inline--public {
+    color: #2ecc71;
+    border-color: rgba(46, 204, 113, 0.3);
+    background: rgba(46, 204, 113, 0.07);
+  }
+
+  /* Fixed mode label in max-players selector */
+  .fixed-label {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #555;
+    font-style: italic;
+    align-self: center;
+    margin-left: calc(4px * var(--layout-scale, 1));
   }
 </style>
