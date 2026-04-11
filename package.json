@@ -84,6 +84,8 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json && node scripts/lint/check-set-map-rehydration.mjs && node scripts/lint/check-rrplay-api-coverage.mjs && node scripts/lint/check-escape-hatches.mjs",
     "lint:rehydration": "node scripts/lint/check-set-map-rehydration.mjs",
+    "lint:wiring": "node scripts/lint/check-wiring.mjs",
+    "lint:rng": "node scripts/lint/no-bare-math-random.mjs",
     "typecheck": "svelte-check --tsconfig ./tsconfig.app.json",
     "lint": "eslint src/ --ext .ts,.svelte",
     "audit": "npm audit --audit-level=moderate",

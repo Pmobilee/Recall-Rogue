@@ -1,7 +1,7 @@
 # Services Index
 
 > **Purpose:** Lookup table mapping every service name to its domain sub-doc.
-> **Last verified:** 2026-04-06
+> **Last verified:** 2026-04-11
 > **Source files:** All `src/services/*.ts` (149 files, excluding test files) + `src/services/math/*.ts` (7 files)
 
 | Service | File | Sub-doc |
@@ -40,6 +40,7 @@
 | coopEffects | src/services/coopEffects.ts | [combat.md](../../mechanics/combat.md) |
 | coopService | src/services/coopService.ts | [social.md](social.md) |
 | curatedDistractorSelector | src/services/curatedDistractorSelector.ts | [quiz.md](quiz.md) |
+| curatedDeckSchema | src/data/curatedDeckSchema.ts | [deck-system.md](../../content/deck-system.md) |
 | curatedFactSelector | src/services/curatedFactSelector.ts | [quiz.md](quiz.md) |
 | damagePreviewService | src/services/damagePreviewService.ts | [cards.md](../../mechanics/cards.md) |
 | dailyExpeditionService | src/services/dailyExpeditionService.ts | [run-competitive.md](run-competitive.md) |

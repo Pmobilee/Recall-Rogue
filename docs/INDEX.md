@@ -81,6 +81,7 @@
 |-----|---------|
 | [deck-system](content/deck-system.md) | Curated deck structure, JSON format, runtime loading, deck registry, player progression tracking, kanji deck architecture (3-fact-per-kanji model, 5 JLPT levels, 6,633 facts), procedural math decks, and chess tactics deck (620K+ runtime puzzles via `chess-puzzles.db`, `chess_tactic` quiz mode, `chessPuzzleService.ts`) |
 | [deck-known-issues](content/deck-known-issues.md) | Residual polish items from the 2026-04-10 audit of 11 decks — 7 anti-pattern categories, per-deck residual warn table, and "check these first" guide for auditing new decks |
+| [card-description-audit](content/card-description-audit.md) | Four-source drift audit for all 98 card mechanics (seed vs. stat table vs. resolver vs. description renderer) — severity A–F classification, per-mechanic table, and full detail sections for 14 critical mechanics. Root cause: `getDetailedCardDescription` uses `card.baseEffectValue` not stat-table qpValue. |
 | [trivia-bridge](content/trivia-bridge.md) | Curated deck → trivia bridge: entity selection, scoring, field mapping, CLI usage, provenance tracking |
 | [fact-pipeline](content/fact-pipeline.md) | `Fact` data format, `facts.db` SQLite build pipeline, `factsDB` runtime service, and content production workflow |
 | [domains](content/domains.md) | All knowledge domains, subcategory taxonomy, domain resolution logic, and language vs. knowledge domain distinction |

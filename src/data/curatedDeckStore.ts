@@ -6,9 +6,16 @@
  * The sql.js WASM module is loaded lazily using the same pattern as factsDB.ts.
  * In production, the database binary is XOR-obfuscated and decoded at runtime
  * by decodeDbBuffer() from ../services/dbDecoder.
+ *
+ * Schema validation: every JSON.parse result is validated via Zod schemas from
+ * curatedDeckSchema.ts before being used as a typed object. Malformed rows are
+ * skipped (null-filtered) and counted — see the load summary log at the end of
+ * initializeCuratedDecks(). This closes the class of silent-decode bugs including
+ * the "fifa numeric distractors" incident.
  */
 
 import type { CuratedDeck, DeckFact, AnswerTypePool, SynonymGroup } from './curatedDeckTypes';
+import { parseDeckFact, parseAnswerTypePool, parseSynonymGroup } from './curatedDeckSchema';
 import { registerDeck } from './deckRegistry';
 import { registerDeckFacts, getSubDeckFactIds, getTagFactIds } from './deckFactIndex';
 import type { DeckRegistryEntry } from './deckRegistry';
@@ -291,10 +298,15 @@ function rowToDeckShell(row: Record<string, unknown>): Omit<CuratedDeck, 'facts'
   };
 }
 
-/** Map a raw row from the `deck_facts` table to a DeckFact. */
-function rowToDeckFact(row: Record<string, unknown>): DeckFact {
+/**
+ * Map a raw row from the `deck_facts` table to a validated DeckFact.
+ * Returns null if Zod schema validation fails — callers must filter nulls.
+ * The Zod validation runs AFTER the JSON.parse chain so that type coercions
+ * (e.g. Number(), String()) happen before the shape check.
+ */
+function rowToDeckFact(row: Record<string, unknown>, deckId: string): DeckFact | null {
   const examTagsRaw = JSON.parse(String(row['exam_tags'] ?? '[]')) as string[];
-  return {
+  const assembled = {
     id: String(row['id']),
     correctAnswer: String(row['correct_answer']),
     acceptableAlternatives: JSON.parse(String(row['acceptable_alternatives'] ?? '[]')),
@@ -312,6 +324,7 @@ function rowToDeckFact(row: Record<string, unknown>): DeckFact {
     sourceName: String(row['source_name'] ?? ''),
     sourceUrl: row['source_url'] ? String(row['source_url']) : undefined,
     volatile: row['volatile'] === 1 ? true : undefined,
+    // Intentionally NOT cast to string[] — Zod validates the element types.
     distractors: JSON.parse(String(row['distractors'] ?? '[]')),
     targetLanguageWord: row['target_language_word'] ? String(row['target_language_word']) : undefined,
     reading: row['reading'] ? String(row['reading']) : undefined,
@@ -320,8 +333,8 @@ function rowToDeckFact(row: Record<string, unknown>): DeckFact {
     partOfSpeech: row['part_of_speech'] ? String(row['part_of_speech']) : undefined,
     examTags: examTagsRaw.length > 0 ? examTagsRaw : undefined,
     imageAssetPath: row['image_asset_path'] ? String(row['image_asset_path']) : undefined,
-    quizMode: row['quiz_mode'] ? (String(row['quiz_mode']) as DeckFact['quizMode']) : undefined,
-    quizResponseMode: row['quiz_response_mode'] ? (String(row['quiz_response_mode']) as DeckFact['quizResponseMode']) : undefined,
+    quizMode: row['quiz_mode'] ? String(row['quiz_mode']) : undefined,
+    quizResponseMode: row['quiz_response_mode'] ? String(row['quiz_response_mode']) : undefined,
     sentenceFurigana: row['sentence_furigana'] ? JSON.parse(String(row['sentence_furigana'])) : undefined,
     sentenceRomaji: row['sentence_romaji'] ? String(row['sentence_romaji']) : undefined,
     sentenceTranslation: row['sentence_translation'] ? String(row['sentence_translation']) : undefined,
@@ -329,32 +342,42 @@ function rowToDeckFact(row: Record<string, unknown>): DeckFact {
     categoryL1: row['category_l1'] ? String(row['category_l1']) : undefined,
     categoryL2: row['category_l2'] ? String(row['category_l2']) : undefined,
     fenPosition: row['fen_position'] ? String(row['fen_position']) : undefined,
-    solutionMoves: row['solution_moves'] ? (JSON.parse(String(row['solution_moves'])) as string[]) : undefined,
+    solutionMoves: row['solution_moves'] ? JSON.parse(String(row['solution_moves'])) : undefined,
     tacticTheme: row['tactic_theme'] ? String(row['tactic_theme']) : undefined,
     lichessRating: row['lichess_rating'] ? Number(row['lichess_rating']) : undefined,
   };
+  return parseDeckFact(assembled, deckId, assembled.id);
 }
 
-/** Map a raw row from the `answer_type_pools` table to an AnswerTypePool. */
-function rowToAnswerTypePool(row: Record<string, unknown>): AnswerTypePool {
-  const syntheticRaw = JSON.parse(String(row['synthetic_distractors'] ?? '[]')) as string[];
-  return {
+/**
+ * Map a raw row from the `answer_type_pools` table to a validated AnswerTypePool.
+ * Returns null if Zod schema validation fails.
+ */
+function rowToAnswerTypePool(row: Record<string, unknown>, deckId: string): AnswerTypePool | null {
+  // Intentionally NOT cast to string[] — Zod validates the element types.
+  const syntheticRaw = JSON.parse(String(row['synthetic_distractors'] ?? '[]'));
+  const assembled = {
     id: String(row['id']),
     label: String(row['label']),
     answerFormat: String(row['answer_format']),
     factIds: JSON.parse(String(row['fact_ids'] ?? '[]')),
     minimumSize: Number(row['minimum_size']),
-    syntheticDistractors: syntheticRaw.length > 0 ? syntheticRaw : undefined,
+    syntheticDistractors: Array.isArray(syntheticRaw) && syntheticRaw.length > 0 ? syntheticRaw : undefined,
   };
+  return parseAnswerTypePool(assembled, deckId, assembled.id);
 }
 
-/** Map a raw row from the `synonym_groups` table to a SynonymGroup. */
-function rowToSynonymGroup(row: Record<string, unknown>): SynonymGroup {
-  return {
+/**
+ * Map a raw row from the `synonym_groups` table to a validated SynonymGroup.
+ * Returns null if Zod schema validation fails.
+ */
+function rowToSynonymGroup(row: Record<string, unknown>, deckId: string): SynonymGroup | null {
+  const assembled = {
     id: String(row['id']),
     factIds: JSON.parse(String(row['fact_ids'] ?? '[]')),
     reason: String(row['reason']),
   };
+  return parseSynonymGroup(assembled, deckId, assembled.id);
 }
 
 // ---------------------------------------------------------------------------
@@ -368,6 +391,9 @@ function rowToSynonymGroup(row: Record<string, unknown>): SynonymGroup {
  *
  * Call at app startup alongside factsDB.init().
  * Gracefully handles a missing or unreadable curated.db.
+ *
+ * Schema validation: malformed rows are skipped (null-filtered) rather than
+ * crashing the whole deck load. The final log reports how many rows were skipped.
  */
 let _initCalled = false;
 export async function initializeCuratedDecks(): Promise<void> {
@@ -421,26 +447,46 @@ export async function initializeCuratedDecks(): Promise<void> {
     const poolRows = queryAll('SELECT * FROM answer_type_pools');
     const synonymRows = queryAll('SELECT * FROM synonym_groups');
 
-    // Group by deck_id.
+    // Track skipped rows for the final summary log.
+    let skippedFacts = 0;
+    let skippedPools = 0;
+    let skippedSynonyms = 0;
+
+    // Group by deck_id, filtering out null (schema-invalid) rows.
     const factsByDeck = new Map<string, DeckFact[]>();
     for (const row of factRows) {
       const deckId = String(row['deck_id']);
+      const fact = rowToDeckFact(row, deckId);
+      if (fact === null) {
+        skippedFacts++;
+        continue;
+      }
       if (!factsByDeck.has(deckId)) factsByDeck.set(deckId, []);
-      factsByDeck.get(deckId)!.push(rowToDeckFact(row));
+      factsByDeck.get(deckId)!.push(fact);
     }
 
     const poolsByDeck = new Map<string, AnswerTypePool[]>();
     for (const row of poolRows) {
       const deckId = String(row['deck_id']);
+      const pool = rowToAnswerTypePool(row, deckId);
+      if (pool === null) {
+        skippedPools++;
+        continue;
+      }
       if (!poolsByDeck.has(deckId)) poolsByDeck.set(deckId, []);
-      poolsByDeck.get(deckId)!.push(rowToAnswerTypePool(row));
+      poolsByDeck.get(deckId)!.push(pool);
     }
 
     const synonymsByDeck = new Map<string, SynonymGroup[]>();
     for (const row of synonymRows) {
       const deckId = String(row['deck_id']);
+      const group = rowToSynonymGroup(row, deckId);
+      if (group === null) {
+        skippedSynonyms++;
+        continue;
+      }
       if (!synonymsByDeck.has(deckId)) synonymsByDeck.set(deckId, []);
-      synonymsByDeck.get(deckId)!.push(rowToSynonymGroup(row));
+      synonymsByDeck.get(deckId)!.push(group);
     }
 
     // 3. Assemble and register each deck.
@@ -473,7 +519,18 @@ export async function initializeCuratedDecks(): Promise<void> {
     }
 
     db.close();
-    console.log(`[CuratedDecks] Loaded ${loaded} curated deck(s) with ${totalFacts} total facts`);
+
+    // Report skipped malformed rows — zero is expected for healthy data.
+    const skippedTotal = skippedFacts + skippedPools + skippedSynonyms;
+    if (skippedTotal > 0) {
+      console.warn(
+        `[CuratedDecks] Loaded ${loaded} deck(s) with ${totalFacts} facts. ` +
+        `Skipped ${skippedTotal} malformed row(s): ${skippedFacts} fact(s), ${skippedPools} pool(s), ${skippedSynonyms} synonym group(s). ` +
+        `See schema warnings above for details.`
+      );
+    } else {
+      console.log(`[CuratedDecks] Loaded ${loaded} curated deck(s) with ${totalFacts} total facts`);
+    }
 
     // Start background load of chess puzzle DB if chess deck is present
     if (loadedDecks.has(CHESS_TACTICS_DECK_ID)) {
