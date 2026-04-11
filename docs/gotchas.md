@@ -3636,3 +3636,20 @@ were also removed (they were initializing fields that no runtime code reads anym
 Assumption baked in: pre-launch, no real customers, no save migrations needed.
 If Recall Rogue ever shipped under the Terra Gacha brand (which the user's direction explicitly
 denies), receipt validation for old purchases will fail.
+
+### 2026-04-11 — CustomDeckViewModal: sub-deck items leaked parent deck's sub-deck list and wrong progress
+
+**What:** Three bugs in `CustomDeckViewModal.svelte` (formerly `PlaylistViewModal.svelte`) affected items that represent a specific sub-deck (i.e. `item.subDeckId` is set):
+
+1. **Expanded-panel leak (primary bug):** The `{#if entry.subDecks && entry.subDecks.length > 0}` guard in the expanded panel used `entry = getDeckById(item.deckId)`, which always returns the PARENT deck regardless of whether the item is a sub-deck. Result: expanding a sub-deck item (e.g. "Cold War & Contemporary Europe" from AP World History) showed ALL sibling sub-decks (Renaissance, Absolutism, etc.) in the panel as if they were its children.
+
+2. **Expand affordance offered on non-expandable rows:** `isItemExpandable()` returned true for sub-deck items because the parent deck has sub-decks/tags. Sub-decks never nest further, and parent deck tags don't belong to a sub-deck row — so the chevron and expand button were misleading.
+
+3. **Wrong progress bar value:** `itemProg = getDeckProgress(item.deckId)` was used for every item, so a sub-deck item's mini progress bar showed the whole parent deck's aggregate mastery instead of the sub-deck's own progress.
+
+**Why it happened:** `getDeckById(item.deckId)` always resolves to the parent deck — there is no sub-deck variant. The guards that depended on `entry` didn't account for the `item.subDeckId` context.
+
+**Fix:** Three targeted changes in `isItemExpandable` and the item loop template:
+- `isItemExpandable`: early return `false` when `item.subDeckId` is truthy.
+- `itemProg`: `item.subDeckId ? getSubDeckProgress(deckId, subDeckId) : getDeckProgress(deckId)`.
+- Expanded panel sub-deck list guard: `{#if !item.subDeckId && entry.subDecks && entry.subDecks.length > 0}`.

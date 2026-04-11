@@ -69,8 +69,11 @@
     return { totalFacts, encountered, mastered, pct };
   });
 
-  /** Whether the item at the given original index is expandable (has sub-decks or exam tags). */
+  /** Whether the item at the given original index is expandable (has sub-decks or exam tags).
+   * Sub-deck items are never expandable — sub-decks do not nest, and parent deck tags
+   * don't belong to an individual sub-deck row. */
   function isItemExpandable(item: Extract<(typeof customDeck.items)[number], { type: 'study' }>): boolean {
+    if (item.subDeckId) return false;
     const entry = getDeckById(item.deckId);
     if (!entry) return false;
     return (entry.subDecks && entry.subDecks.length > 0) || getDeckTags(item.deckId).length > 0;
@@ -186,7 +189,9 @@
             {#if item.type === 'study'}
               {@const deckName = getDeckDisplayName(item.deckId, item.subDeckId)}
               {@const factCount = getItemFactCount(item.deckId, item.subDeckId)}
-              {@const itemProg = getDeckProgress(item.deckId)}
+              {@const itemProg = item.subDeckId
+                ? getSubDeckProgress(item.deckId, item.subDeckId)
+                : getDeckProgress(item.deckId)}
               {@const expandable = isItemExpandable(item)}
               {@const isExpanded = expandedItems.has(i)}
               {@const entry = getDeckById(item.deckId)}
@@ -233,7 +238,7 @@
                 {#if isExpanded && expandable && entry}
                   <div class="expanded-panel">
                     <!-- Sub-decks -->
-                    {#if entry.subDecks && entry.subDecks.length > 0}
+                    {#if !item.subDeckId && entry.subDecks && entry.subDecks.length > 0}
                       <div class="subdeck-section-inner">
                         <div class="section-label-sm">Sub-decks</div>
                         {#each entry.subDecks as subDeck (subDeck.id)}
