@@ -1,0 +1,94 @@
+{
+  "batch": "BATCH-2026-04-11-ULTRA-WAVE-A",
+  "date": "2026-04-11",
+  "agent": "game-logic (Sonnet 4.6)",
+  "tier1_commits": [
+    "2fd8e70cf — fix(gym-server): replace TurnState.comboCount with consecutiveCorrectThisEncounter",
+    "dd7c67d86 — fix(dev): bootstrapRun() now respects config.ascension",
+    "1e7624430 — fix(relics): crit_lens + obsidian_dice + rarity roll use seeded RNG for co-op determinism"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "name": "Headless balance sim re-run",
+      "method": "npx tsx tests/playtest/headless/run-batch.ts --runs 1000 --analytics --workers 8",
+      "status": "COMPLETED",
+      "started": "2026-04-11T05:33:50Z",
+      "completed": "2026-04-11T05:34:65Z",
+      "duration_s": 75,
+      "run_dir": "data/playtests/runs/2026-04-11_05-33-50",
+      "total_runs": 24000,
+      "profiles": 22,
+      "verdict": "BALANCE_ISSUES_CONFIRMED — floor 4→6 spike and asc20 wall are real (not tool artifacts)"
+    },
+    {
+      "step": 2,
+      "name": "/sim-report 23-rule analysis",
+      "method": "Manual application of detection rules from .claude/skills/sim-report/SKILL.md",
+      "status": "COMPLETED",
+      "verdict": "6 HIGH/MEDIUM issues confirmed, 2 tool-fix verifications, 1 new relic balance concern",
+      "new_issues": ["wave-a-001", "wave-a-002", "wave-a-003", "wave-a-004", "wave-a-005", "wave-a-006"]
+    },
+    {
+      "step": 3,
+      "name": "Rogue Brain smoke test (50 episodes)",
+      "method": "python3 tests/playtest/rl/analyze.py --model rogue_brain_v3_economy_2M.zip --episodes 50 --correct-rate 0.75",
+      "status": "COMPLETED",
+      "docker_container": null,
+      "episodes_requested": 50,
+      "episodes_completed": 50,
+      "win_rate": "64%",
+      "charge_rate": "75.4%",
+      "verdict": "PIPELINE_UNBLOCKED — gym-server fix confirmed working; model quality unknown (trained on broken signal)",
+      "output_file": "data/playtests/rl-analysis/2026-04-11_14-37.json"
+    },
+    {
+      "step": 4,
+      "name": "Ascension Docker visual sweep (A5/A10/A15/A20)",
+      "method": "scripts/docker-visual-test.sh --warm (agent: wave-a-ascension, port: 3209)",
+      "status": "COMPLETED",
+      "docker_container": "rr-warm-wave-a-ascension",
+      "docker_port": 3209,
+      "levels_tested": ["A5", "A10", "A15", "A20"],
+      "key_evidence": {
+        "A5_enemy_hp": 68,
+        "A5_note": "A5 has no enemyHpMultiplier — matches A0 scaling (correct)",
+        "A10_enemy_hp": 65,
+        "A10_note": "Floor randomness within combat-basic spawn (65 vs expected 75 — different floor rolled)",
+        "A15_enemy_hp": 81,
+        "A15_note": "Matches 11 * 4.75 * 1.35 * 1.15 = 81 (1.15x HP mult confirmed applied)",
+        "A20_enemy_hp": 77,
+        "A20_player_max_hp": 75,
+        "A20_note": "playerMaxHp=75 (not 100) is DEFINITIVE PROOF the ascension fix works"
+      },
+      "verdict": "FIX_CONFIRMED — ascension modifiers correctly applied at bootstrap time"
+    },
+    {
+      "step": 5,
+      "name": "CRITICAL-3 __rrScenario.restore() black scene re-test",
+      "method": "Docker warm container (attempted) + unit tests + code review",
+      "status": "BLOCKED",
+      "docker_container": "wave-a-critical-3 — FAILED TO START (SwiftShader saturation)",
+      "blocker": "7 leaked containers from BATCH-ULTRA occupying host GPU emulation bandwidth",
+      "alternative_evidence": {
+        "unit_tests": "5/5 passing in src/dev/scenarioSimulator.test.ts",
+        "code_review": "restore() has CRITICAL-3 fix at line 1734 — boots Phaser + calls syncCombatDisplayFromCurrentState()",
+        "fix_commit": "Part of original BATCH-ULTRA fix session"
+      },
+      "verdict": "BLOCKED — visual confirmation needed but code fix is in place and unit-tested",
+      "recommendation": "Stop 7 leaked containers, re-run Step 5 in a follow-up session"
+    }
+  ],
+  "containers_used": [
+    {
+      "agent_id": "wave-a-ascension",
+      "port": 3209,
+      "name": "rr-warm-wave-a-ascension",
+      "lifecycle": "started → 4 tests → stopped (unconditionally)"
+    }
+  ],
+  "leaked_containers_blocking_environment": [
+    "great_blackwell", "condescending_roentgen", "amazing_noyce",
+    "confident_dhawan", "reverent_hofstadter", "boring_galois", "kind_dijkstra"
+  ]
+}

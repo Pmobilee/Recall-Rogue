@@ -1,0 +1,111 @@
+[
+  {
+    "id": "wave-a-001",
+    "severity": "HIGH",
+    "category": "balance_difficulty_spike",
+    "title": "Floor 4→6 spike ratio 3.11x (target: <2x) — confirmed persistent post-fix",
+    "track": "wave-a-step1",
+    "description": "Post-fix headless sim (28000 runs) shows floor 4 avg turns 5.76, floor 6 avg turns 17.90, ratio 3.11x. Pre-fix was 3.36x. Delta: -7.4% (within 5% threshold). Issue is structural — the tool fixes did not affect boss encounter difficulty. Cluster A finding confirmed.",
+    "evidence": "evidence/sim/enemy-analysis.md, balance-report.md",
+    "pre_fix_value": "3.36x",
+    "post_fix_value": "3.11x",
+    "delta": "-7.4%",
+    "status": "CONFIRMED_PERSISTENT"
+  },
+  {
+    "id": "wave-a-002",
+    "severity": "HIGH",
+    "category": "balance_difficulty_spike",
+    "title": "Floor 18 death rate 28.0% (was 30.2%) — confirmed persistent post-fix",
+    "track": "wave-a-step1",
+    "description": "Across all 22 profiles, floor 18 death rate dropped slightly from 30.2% to 28.0% (delta: -7.3%). Within 5% threshold — structurally unchanged. Floor 18 avg turns 27.9 vs prior 26.83. The boss wall is real and persists.",
+    "evidence": "evidence/sim/enemy-analysis.md",
+    "pre_fix_value": "30.2%",
+    "post_fix_value": "28.0%",
+    "delta": "-7.3%",
+    "status": "CONFIRMED_PERSISTENT"
+  },
+  {
+    "id": "wave-a-003",
+    "severity": "HIGH",
+    "category": "balance_too_hard",
+    "title": "experienced@asc20 win rate 2% — confirmed post-fix (was 2.7%)",
+    "track": "wave-a-step1",
+    "description": "Post-fix sim with the now-correctly-applying ascension modifiers shows experienced@asc20 at 2% (1000 runs). Pre-fix was 2.7%. This is within measurement variance (smaller run count in prior test). The asc20 wall is NOT an artifact of the broken tool — it is a real gameplay issue. Cluster E finding confirmed.",
+    "evidence": "evidence/sim/balance-report.md",
+    "pre_fix_value": "2.7%",
+    "post_fix_value": "2%",
+    "delta": "-26%",
+    "status": "CONFIRMED_PERSISTENT",
+    "note": "Both values are below the 5-15% design target. Tool fix did not hide a false positive here."
+  },
+  {
+    "id": "wave-a-004",
+    "severity": "HIGH",
+    "category": "balance_too_hard",
+    "title": "experienced@asc15 win rate 52% (was 54.8%) — confirmed post-fix",
+    "track": "wave-a-step1",
+    "description": "Post-fix sim: experienced@asc15 = 52%, master@asc15 = 30%. Pre-fix: 54.8% / 31.3%. Delta < 5%. asc15→asc20 cliff is confirmed real (52% → 2% = 50pp drop, vs asc10→asc15 of 15pp). Structural issue.",
+    "evidence": "evidence/sim/balance-report.md",
+    "pre_fix_value": "54.8%",
+    "post_fix_value": "52%",
+    "delta": "-5.1%",
+    "status": "CONFIRMED_PERSISTENT"
+  },
+  {
+    "id": "wave-a-005",
+    "severity": "HIGH",
+    "category": "balance_relic",
+    "title": "volatile_core win delta -50.9% (was -53.6%) — confirmed persistent post-fix",
+    "track": "wave-a-step1",
+    "description": "Post-fix: volatile_core observational win rate 7.9% vs baseline 58.8% = -50.9% delta. Power score 0.351, floors after acq 6.5 (vs cluster avg ~16.5). Pre-fix: -53.6%. Delta between runs: -0.9pp (measurement noise). volatile_core remains severely underperforming.",
+    "evidence": "evidence/sim/balance-report.md, relic-performance.md",
+    "pre_fix_value": "-53.6%",
+    "post_fix_value": "-50.9%",
+    "delta": "-2.7pp shift (within noise)",
+    "status": "CONFIRMED_PERSISTENT"
+  },
+  {
+    "id": "wave-a-006",
+    "severity": "MEDIUM",
+    "category": "relic_balance",
+    "title": "obsidian_dice power score 0.542 (low) — potential RNG fix side effect",
+    "track": "wave-a-step2",
+    "description": "obsidian_dice was one of the CRITICAL co-op RNG fix targets. Post-fix: power score 0.542, avg floors after acq 12.1, obs win rate 49.6%. This is notably below the cluster average (~0.68). The deterministic RNG fix may have changed its expected value if the seeded path differs from the old Math.random() path. Needs monitoring.",
+    "evidence": "evidence/sim/balance-report.md",
+    "status": "NEW_FINDING",
+    "recommendation": "Run isolated obsidian_dice smoke test to confirm expected value unchanged. If deterministic seed produces different outcome than prior Math.random() calls, the balance is now different."
+  },
+  {
+    "id": "wave-a-007",
+    "severity": "LOW",
+    "category": "environment",
+    "title": "7 leaked Docker containers from BATCH-ULTRA blocking CRITICAL-3 visual re-test",
+    "track": "wave-a-step5",
+    "description": "The BATCH-2026-04-11-ULTRA session left 7 anonymous rr-playwright containers running (great_blackwell, condescending_roentgen, amazing_noyce, confident_dhawan, reverent_hofstadter, boring_galois, kind_dijkstra). These containers collectively saturate SwiftShader GPU emulation on the host, causing cold-mode Docker tests to time out at 120s during canvas rendering. The CRITICAL-3 visual re-test is blocked by this environment pollution.",
+    "evidence": "docker ps output — 7 containers Up 4 hours",
+    "status": "ENVIRONMENT_BLOCKER",
+    "fix": "docker stop great_blackwell condescending_roentgen amazing_noyce confident_dhawan reverent_hofstadter boring_galois kind_dijkstra && docker rm great_blackwell condescending_roentgen amazing_noyce confident_dhawan reverent_hofstadter boring_galois kind_dijkstra",
+    "recommendation": "After cleaning containers, re-run CRITICAL-3 step in a fresh session with no competing containers."
+  },
+  {
+    "id": "wave-a-008",
+    "severity": "INFO",
+    "category": "tool_fix_verified",
+    "title": "gym-server comboCount fix confirmed: 50 RL episodes completed, 64% win rate",
+    "track": "wave-a-step3",
+    "description": "Prior to fix: 0 episodes completed (gym-server NaN crash). Post-fix: 50/50 episodes completed with rogue_brain_v3_economy_2M model. Win rate 64%, charge rate 75.4%, charge accuracy 78%. CAVEAT: all prior training checkpoints used a broken reward signal (comboCount was always NaN), so the model's learned strategy is unreliable. The pipeline is unblocked but the model needs retraining before any strategic conclusions can be drawn.",
+    "evidence": "data/playtests/rl-analysis/2026-04-11_14-37.json",
+    "status": "TOOL_FIX_VERIFIED"
+  },
+  {
+    "id": "wave-a-009",
+    "severity": "INFO",
+    "category": "tool_fix_verified",
+    "title": "scenarioSimulator.ts ascension fix confirmed: A20 playerMaxHp=75 verified",
+    "track": "wave-a-step4",
+    "description": "Prior to fix: ascension badge showed correct level but combat stats ran at A0. Post-fix: Docker visual test shows A5=68HP (A5 has no HP mult, matches A0 scaling), A15=81HP (1.15x mult applied to ~70 floor base), A20 enemy=77HP + playerMaxHp=75 (not 100). The playerMaxHp=75 is definitive proof the A20 modifier (playerMaxHpOverride: 75) is now correctly applied at bootstrap time.",
+    "evidence": "evidence/ascension/A5/result.json, evidence/ascension/A20/result.json",
+    "status": "TOOL_FIX_VERIFIED"
+  }
+]

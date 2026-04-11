@@ -1,0 +1,17 @@
+{
+  "agentId": "wave-a-critical3",
+  "scenario": "none",
+  "viewport": "1920x1080",
+  "timestamp": "2026-04-11T06:02:24.097Z",
+  "success": false,
+  "screenshotPath": null,
+  "rrScreenshotPath": null,
+  "layoutDumpPath": null,
+  "webglInfo": null,
+  "phaserInfo": null,
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+  ],
+  "durationMs": 120733,
+  "error": "page.waitForFunction: Timeout 120000ms exceeded."
+}

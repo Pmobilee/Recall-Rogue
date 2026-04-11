@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-11T11:30:00.000Z",
+  "updatedAt": "2026-04-11T14:55:00.000Z",
   "totalPlaythroughs": 17,
-  "totalIssues": 124,
+  "totalIssues": 129,
   "batches": [
     {
       "id": "BATCH-2026-04-11-ULTRA",
@@ -38,7 +38,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 1,
       "score": 15,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "metric": "100% of episodes fail within 1-4 steps; obs[6]=null after first TurnState activation; reward=null on any correct charge action",
@@ -66,7 +66,9 @@
         "OR: python3 tests/playtest/rl/analyze.py --model tests/playtest/rl/models/rogue_brain_v2_2M.zip --episodes 1 --correct-rate 0.75",
         "Observe: TypeError: float() argument must be a string or a real number, not 'NoneType'"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "2fd8e70cf",
+      "resolvedAt": "2026-04-11T14:55:00.000Z"
     },
     {
       "canonicalId": "07-mode-coverage-issue-1775873221654-07-004",
@@ -83,7 +85,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 2,
       "score": 15,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screenshots/trivia/trivia-01-hub-no-access.png",
@@ -95,7 +97,9 @@
         "There is no scenario preset 'trivia-night' or 'trivia-round' in scenarioSimulator.ts",
         "The trivia_night mode is locked behind multiplayer lobby (needs P2P connection)"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "b89b9403a",
+      "resolvedAt": "2026-04-11T14:55:00.000Z"
     },
     {
       "canonicalId": "08-ascension-issue-1744332000000-08-001",
@@ -112,7 +116,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 3,
       "score": 15,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/a0-combat-screenshot.png",
@@ -131,7 +135,9 @@
         "Expected: 1.20 (A10 value)",
         "Actual: 1.00 (A0 value because encounter was started before runOverrides was applied)"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "dd7c67d86",
+      "resolvedAt": "2026-04-11T14:55:00.000Z"
     },
     {
       "canonicalId": "09-multiplayer-issue-1744335811000-09-01",
@@ -148,7 +154,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 4,
       "score": 15,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "file": "src/services/relicEffectResolver.ts",
@@ -164,7 +170,9 @@
         "Peer A's delta shows higher damageDealt than Peer B's for the same card",
         "Host merges: result is sum of both deltas — enemy takes non-crit damage twice instead of crit + non-crit"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "1e7624430",
+      "resolvedAt": "2026-04-11T14:55:00.000Z"
     },
     {
       "canonicalId": "09-multiplayer-issue-1744335811000-09-02",
@@ -181,7 +189,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 5,
       "score": 15,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "file": "src/services/relicEffectResolver.ts",
@@ -195,7 +203,9 @@
         "One client rolls the +50% branch, other rolls the -25% branch",
         "Deltas diverge — merged result is the arithmetic sum of the two divergent outcomes"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "1e7624430",
+      "resolvedAt": "2026-04-11T14:55:00.000Z"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400013-11-014",
@@ -212,7 +222,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 6,
       "score": 15,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/rewardRoom/screenshot.png",
@@ -225,7 +235,9 @@
         "Search DOM for any button, [role=button], or interactive element",
         "Layout dump DOM layer shows only topbar elements — no Continue DOM button"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "003fe7d73",
+      "resolvedAt": "2026-04-11T14:55:00.000Z"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400021-11-022",
@@ -242,7 +254,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 7,
       "score": 15,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/deckSelectionHub/screenshot.png",
@@ -255,7 +267,9 @@
         "Press Tab to navigate — only back-btn is reachable via keyboard",
         "Layout dump: no button elements for the two dungeon panels"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "f660da6db",
+      "resolvedAt": "2026-04-11T14:55:00.000Z"
     },
     {
       "canonicalId": "04-combat-core-issue-1744339200000-04-001",
@@ -272,7 +286,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 8,
       "score": 10,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": null,
@@ -285,7 +299,9 @@
         "Expected output: 118",
         "To see examples: SELECT id, quiz_question, correct_answer, distractors FROM facts WHERE distractors LIKE '%{%' LIMIT 5"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "closingCommit": "0418807eb",
+      "resolvedAt": "2026-04-11T14:55:00.000Z"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247405-06-014",
@@ -302,7 +318,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 9,
       "score": 10,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screenshots/medical_terminology/quiz_01.jpg",
@@ -320,7 +336,9 @@
         "Draw question about ren/o (should see 'Kidney' twice in choices)",
         "Also: mast/o question shows 'ovary' twice; bronch/o shows 'Respiratory' twice"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "closingCommit": "9ed34ba25",
+      "resolvedAt": "2026-04-11T14:55:00.000Z"
     },
     {
       "canonicalId": "01-stat-baseline-issue-1744334400000-01-001",
@@ -551,7 +569,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 17,
       "score": 7.5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "file": "src/services/relicAcquisitionService.ts",
@@ -566,7 +584,9 @@
         "Proceed to reward screen",
         "Host and guest see different relics offered"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "closingCommit": "1e7624430",
+      "resolvedAt": "2026-04-11T14:55:00.000Z"
     },
     {
       "canonicalId": "02-neural-optimal-issue-1775871222977-02-002",
@@ -864,7 +884,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 27,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screenshots/korean_topik1/quiz_01.jpg",
@@ -882,7 +902,9 @@
         "Draw vocabulary questions",
         "Observe mixed POS distractors"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "closingCommit": "afc6cedea",
+      "resolvedAt": "2026-04-11T14:55:00.000Z"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247398-06-007",
@@ -3063,7 +3085,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 98,
       "score": 1,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": null,
@@ -3076,7 +3098,9 @@
         "Run: npx vitest run src/services/damagePreviewService.test.ts",
         "Test 'card without strike tag gets no barbed_edge bonus' fails"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "closingCommit": "auto-passing",
+      "resolvedAt": "2026-04-11T14:55:00.000Z"
     },
     {
       "canonicalId": "07-mode-coverage-issue-1775873221654-07-005",
@@ -4252,6 +4276,99 @@
         "Profile: average, Seed: 93001"
       ],
       "sourceBatch": "smoke-campaign-postmove-2026-03-14"
+    },
+    {
+      "canonicalId": "meta-lint-001",
+      "category": "stale_field_read",
+      "severity": "high",
+      "title": "gym-server.ts:316 assigns to non-existent TurnState.ascensionComboResetsOnTurnEnd",
+      "description": "Second stale-field bug in gym-server.ts (sibling to the comboCount fix from 2fd8e70cf). Discovered by check-wiring.mjs lint on day-1 run. Runtime will produce undefined assignment, likely a silent no-op that hides ascension behavior in RL training.",
+      "source": "check-wiring.mjs",
+      "severity_note": "HIGH — affects RL training reward for ascension runs",
+      "status": "open",
+      "score": 5,
+      "affectedTracks": [
+        "meta-lint"
+      ],
+      "reproductionSteps": [
+        "npm run lint:wiring"
+      ],
+      "suggestedFix": "Either add ascensionComboResetsOnTurnEnd to TurnState in src/services/turnManager.ts, or delete the assignment in gym-server.ts:316. Game-logic agent scope.",
+      "firstSeen": "2026-04-11T14:50:00.000Z"
+    },
+    {
+      "canonicalId": "meta-lint-002",
+      "category": "orphan_component",
+      "severity": "medium",
+      "title": "RaceResultsScreen.svelte orphan — not imported by CardApp router",
+      "description": "Third orphan screen beyond BATCH-ULTRA T7 TriviaRoundScreen. In-progress multiplayer feature that was never wired up. Either route it or add // @wiring-check:skip comment.",
+      "source": "check-wiring.mjs",
+      "status": "open",
+      "score": 3,
+      "affectedTracks": [
+        "meta-lint"
+      ],
+      "reproductionSteps": [
+        "npm run lint:wiring"
+      ],
+      "suggestedFix": "Wire into CardApp.svelte routing with a new {:else if} branch, OR add suppression comment if it is intentionally not yet routed.",
+      "firstSeen": "2026-04-11T14:50:00.000Z"
+    },
+    {
+      "canonicalId": "meta-lint-003",
+      "category": "orphan_component",
+      "severity": "medium",
+      "title": "SocialScreen.svelte orphan — not imported by CardApp router",
+      "description": "Fourth orphan screen. Social features that were never wired up.",
+      "source": "check-wiring.mjs",
+      "status": "open",
+      "score": 3,
+      "affectedTracks": [
+        "meta-lint"
+      ],
+      "reproductionSteps": [
+        "npm run lint:wiring"
+      ],
+      "suggestedFix": "Wire or suppress.",
+      "firstSeen": "2026-04-11T14:50:00.000Z"
+    },
+    {
+      "canonicalId": "meta-lint-004",
+      "category": "rng_determinism",
+      "severity": "high",
+      "title": "relicAcquisitionService.ts:140 shouldDropRandomRelic uses unseeded Math.random()",
+      "description": "Third unsanctioned Math.random() in relic acquisition pipeline, not covered by BATCH-ULTRA T9 fix (1e7624430). Co-op peers will get different relic drops. Discovered by no-bare-math-random.mjs lint on day-1 run.",
+      "source": "no-bare-math-random.mjs",
+      "status": "open",
+      "score": 5,
+      "affectedTracks": [
+        "meta-lint"
+      ],
+      "reproductionSteps": [
+        "npm run lint:rng"
+      ],
+      "suggestedFix": "Apply same seeded-RNG guard pattern: isRunRngActive() ? getRunRng('relicDrops').next() : Math.random().",
+      "firstSeen": "2026-04-11T14:50:00.000Z"
+    },
+    {
+      "canonicalId": "meta-lint-005",
+      "category": "ux_touch_target_small",
+      "severity": "high",
+      "title": "RewardRoomScene.ts Accept/Leave/Close buttons still Phaser-only (lines 820, 851, 970, 999)",
+      "description": "T11 BATCH-ULTRA fix handled the Continue button DOM overlay via 003fe7d73, but 4 OTHER reward-room buttons are still Phaser-only. Keyboard/assistive-tech users are still partially blocked in the reward room. check-wiring.mjs WARN on each.",
+      "source": "check-wiring.mjs",
+      "status": "open",
+      "score": 5,
+      "affectedTracks": [
+        "meta-lint"
+      ],
+      "reproductionSteps": [
+        "npm run lint:wiring"
+      ],
+      "suggestedFix": "Add 4 additional DOM <button> overlays in CardApp.svelte reward-room section mapped to the 4 Phaser button data-phaser-ids. Follow the pattern from 003fe7d73.",
+      "firstSeen": "2026-04-11T14:50:00.000Z"
     }
-  ]
+  ],
+  "openCount": 117,
+  "resolvedCount": 12
 }

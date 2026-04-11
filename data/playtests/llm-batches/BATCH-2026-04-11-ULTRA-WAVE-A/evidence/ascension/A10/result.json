@@ -1,0 +1,43 @@
+{
+  "testId": "wave-a-ascension_combat-basic_1775886322169",
+  "agentId": "wave-a-ascension",
+  "scenario": "combat-basic",
+  "timestamp": "2026-04-11T05:45:22.171Z",
+  "success": true,
+  "screenshotPath": "/tmp/rr-test-output/wave-a-ascension_combat-basic_1775886322169/screenshot.png",
+  "rrScreenshotPath": "/tmp/rr-test-output/wave-a-ascension_combat-basic_1775886322169/rr-screenshot.jpg",
+  "layoutDumpPath": "/tmp/rr-test-output/wave-a-ascension_combat-basic_1775886322169/layout-dump.txt",
+  "actionLog": [
+    {
+      "type": "eval",
+      "ok": true,
+      "out": {
+        "ok": true,
+        "message": "Combat scenario loaded: staple_bug on floor 3",
+        "state": {
+          "screen": "combat",
+          "enemy": "staple_bug"
+        }
+      }
+    },
+    {
+      "type": "wait",
+      "ok": true,
+      "ms": 6000
+    },
+    {
+      "type": "rrScreenshot",
+      "ok": true,
+      "name": "asc10-combat",
+      "path": "/tmp/rr-test-output/wave-a-ascension_combat-basic_1775886322169/asc10-combat.rr.jpg"
+    },
+    {
+      "type": "eval",
+      "ok": true,
+      "out": "{\"enemyHp\":65,\"enemyMaxHp\":65,\"enemyName\":\"Staple Bug\"}"
+    }
+  ],
+  "consoleErrors": [],
+  "durationMs": 10863,
+  "error": null
+}

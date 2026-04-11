@@ -1,0 +1,56 @@
+{
+  "testId": "wave-a-ascension_combat-basic_1775886205134",
+  "agentId": "wave-a-ascension",
+  "scenario": "combat-basic",
+  "timestamp": "2026-04-11T05:43:25.138Z",
+  "success": true,
+  "screenshotPath": "/tmp/rr-test-output/wave-a-ascension_combat-basic_1775886205134/screenshot.png",
+  "rrScreenshotPath": "/tmp/rr-test-output/wave-a-ascension_combat-basic_1775886205134/rr-screenshot.jpg",
+  "layoutDumpPath": "/tmp/rr-test-output/wave-a-ascension_combat-basic_1775886205134/layout-dump.txt",
+  "actionLog": [
+    {
+      "type": "eval",
+      "ok": true,
+      "out": "available"
+    },
+    {
+      "type": "eval",
+      "ok": true,
+      "out": {
+        "ok": true,
+        "message": "Combat scenario loaded: staple_bug on floor 3",
+        "state": {
+          "screen": "combat",
+          "enemy": "staple_bug"
+        }
+      }
+    },
+    {
+      "type": "wait",
+      "ok": true,
+      "ms": 6000
+    },
+    {
+      "type": "rrScreenshot",
+      "ok": true,
+      "name": "asc5-combat",
+      "path": "/tmp/rr-test-output/wave-a-ascension_combat-basic_1775886205134/asc5-combat.rr.jpg"
+    },
+    {
+      "type": "layoutDump",
+      "ok": true,
+      "name": "asc5-layout",
+      "path": "/tmp/rr-test-output/wave-a-ascension_combat-basic_1775886205134/asc5-layout.layout.txt"
+    },
+    {
+      "type": "eval",
+      "ok": true,
+      "out": "{\"playerHp\":100,\"playerMaxHp\":100,\"playerBlock\":0,\"playerStatusEffects\":[],\"ap\":3,\"apMax\":3,\"enemyName\":\"Staple Bug\",\"enemyHp\":68,\"enemyMaxHp\":68,\"enemyBlock\":0,\"enemyIntent\":{\"type\":\"defend\",\"value\":10,\"displayDamage\":0,\"telegraph\":\"Harden shell\",\"statusEffect\":null},\"enemyStatusEffects\":[],\"handSize\":5,\"hand\":[{\"type\":\"shield\",\"mechanic\":\"block\",\"mechanicName\":\"Block\",\"tier\":\"1\",\"apCost\":1,\"baseEffectValue\":6,\"domain\":\"general_knowledge\",\"factId\":\"cs_6_svm_institution\",\"factQuestion\":\"Support Vector Machines (SVMs), published in 1995 by Corinna Cortes and Vladimir Vapnik, were developed at which legendary research institution?\",\"factAnswer\":\"AT&T Bell Laboratories\",\"isLocked\":false,\"isCursed\":false,\"isUpgraded\":false,\"masteryLevel\":0,\"chainType\":1},{\"type\":\"shield\",\"mechanic\":\"block\",\"mechanicName\":\"Block\",\"tier\":\"1\",\"apCost\":1,\"baseEffectValue\":6,\"domain\":\"general_knowledge\",\"factId\":\"philosophy_nc_meinong_theory_of_objects\",\"factQuestion\":\"What did Meinong call his systematic ontological account that encompasses non-existent entities — like the golden mountain or the round square?\",\"factAnswer\":\"theory of objects\",\"isLocked\":false,\"isCursed\":false,\"isUpgraded\":false,\"masteryLevel\":0,\"chainType\":1},{\"type\":\"attack\",\"mechanic\":\"strike\",\"mechanicName\":\"Strike\",\"tier\":\"1\",\"apCost\":1,\"baseEffectValue\":8,\"domain\":\"general_knowledge\",\"factId\":\"philosophy_nc_meinong_theory_of_objects\",\"factQuestion\":\"What did Meinong call his systematic ontological account that encompasses non-existent entities — like the golden mountain or the round square?\",\"factAnswer\":\"theory of objects\",\"isLocked\":false,\"isCursed\":false,\"isUpgraded\":false,\"masteryLevel\":0,\"chainType\":4},{\"type\":\"utility\",\"mechanic\":\"transmute\",\"mechanicName\":\"Transmute\",\"tier\":\"1\",\"apCost\":1,\"baseEffectValue\":1,\"domain\":\"general_knowledge\",\"factId\":\"pc_3_tiktok_global_launch_year\",\"factQuestion\":\"In what year did ByteDance launch TikTok for international audiences outside China?\",\"factAnswer\":\"{2017}\",\"isLocked\":false,\"isCursed\":false,\"isUpgraded\":false,\"masteryLevel\":0,\"chainType\":4},{\"type\":\"attack\",\"mechanic\":\"strike\",\"mechanicName\":\"Strike\",\"tier\":\"1\",\"apCost\":1,\"baseEffectValue\":8,\"domain\":\"general_knowledge\",\"factId\":\"cs_1_four_generations_summary\",\"factQuestion\":\"What type of component defines the fourth generation of computing (1971 to present), integrating an entire CPU onto a single chip for the first time?\",\"factAnswer\":\"microprocessor\",\"isLocked\":false,\"isCursed\":false,\"isUpgraded\":false,\"masteryLevel\":0,\"chainType\":4}],\"cardsPlayedThisTurn\":0,\"gold\":0}"
+    }
+  ],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+  ],
+  "durationMs": 24917,
+  "error": null
+}
