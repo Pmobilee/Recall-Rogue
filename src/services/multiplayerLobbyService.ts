@@ -797,8 +797,11 @@ interface LobbyBackend {
  *  3. Web/Fastify (default — mobile, web browser, no Steam)
  */
 function pickBackend(): LobbyBackend {
-  if (hasSteam) return steamBackend;
+  // `?mp` URL param is an explicit dev opt-in and beats auto-detected Steam.
+  // This lets devs running a Steam build two-tab test the broadcast path without
+  // uninstalling Steam or fighting the factory's auto-selection.
   if (isBroadcastMode()) return broadcastBackend;
+  if (hasSteam) return steamBackend;
   return webBackend;
 }
 

@@ -119,6 +119,7 @@
   import { audioManager } from './services/audioService'
   import { languageService } from './services/languageService'
   import { getDueReviews, playerSave, persistPlayer } from './ui/stores/playerData'
+  import { authStore } from './ui/stores/authStore'
   import { lastRunSummary } from './services/hubState'
   import { factsDB } from './services/factsDB'
   import { initializeCuratedDecks } from './data/curatedDeckStore'
@@ -1918,7 +1919,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     <div in:fly={{ y: 8, duration: 350 }}>
       <LobbyBrowserScreen
         localPlayerId={localPlayerId}
-        localDisplayName="Player 1"
+        localDisplayName={$authStore.displayName ?? $authStore.email ?? 'Player'}
         onBack={() => transitionScreen('multiplayerMenu')}
         onJoined={handleLobbyJoined}
       />
